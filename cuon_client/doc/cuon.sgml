@@ -231,15 +231,29 @@ Procedural languages
 	  <para>aus. Dies speichert die verschiedenen XML-Dateien für die z.B. GUI in eine objektorientierte Database auf den ZOPE-Server.</para>
 	  
 	</section>
-	
+	<section>
+	  <title>Client Modul</title>
+	  <para>Folgende python-module sollten installiert sein </para>
+
+
+	  <para>Bitte beachten sie bei der client-installation, das Sie die Umgebungsvariablen setzen und entsprechen die Verzeichnisse einrichten ( falls nicht vorhanden ). Desweiteren sollten für die Benutzung des DMS ( Document Management System), des Dokumentenverwaltungssystems, folgende Programme installiert sein:
+ </para>
+	  <simplelist>
+	    <member>OpenOffice</member>
+	    <member>Gimp</member>
+	    <member>XMMS</member>
+	    <member>gedit</member>
+	    <member>gpdf</member>
+	  </simplelist>
+	</section>
       </section>
     </chapter>
     <chapter>
       <title>Benutzer</title>
       <para>Zuerst muß ein Benutzer angelegt werden.</para>
-      <para> Ab Version 0.24 geschieht dies über die Datei grants.xml, später ist eine seperate Datei vorgesehen. Editeren sie die XML-Datei mit einem beliebige Editor und legen sie Ihren Benutzer an.</para>
+      <para> Bis Version 0.24 geschieht dies über die Datei grants.xml, spätere Versionen benutzen ZOPE als Authentifiezierung. Legen sie die Benutzer in ZOPE an und benutzen Sie das dazugehörige user-interface. Die Benutzung von grants.xml wird aber weiterhin unterstützt, das so einfacher Benutzer verwaltet werden können. Editieren Sie einfach die  XML-Datei mit einem beliebige Editor und legen sie Ihren Benutzer an.</para>
       <para>Ab Version 0.25 können Sie Benutzer und Gruppen über ein Webinterface anlegen.</para>
-      <para> Ordnen sie den Benutzer im zweifelsfalle der Gruppe cuon_all zu. Damit kann er so ziemlich alles in &cu machen. </para>
+      <para> Ordnen sie den Benutzer im Zweifelsfalle der Gruppe cuon_all zu. Damit kann er so ziemlich alles in &cu machen. </para>
       <para>Eine vernünfitige Gruppenplanung sollte aber auf jeden Fall eingeführt werden.  </para>
     </chapter>
   </part>

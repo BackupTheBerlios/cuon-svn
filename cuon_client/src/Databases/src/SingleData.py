@@ -75,51 +75,57 @@ class SingleData(gladeXml, logs):
         @param dicDetail: details for statusbar
         @return: list of records
         '''
-        
-        if dicDetail:
-            dicColumns = dicDetail
-        else:
-            dicColumns = {}
+        try:
+            assert record >= 0 and  (isinstance(record, types.IntType) or isinstance(record, types.LongType))
+
+            if dicDetail:
+                dicColumns = dicDetail
+            else:
+                dicColumns = {}
+
+                for i in self.table.getColumns():
+                    dicColumns[str(i.getName())] = str(i.getType())
+
+            # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++***')
+            # self.out( self.table.getName())
+            # self.out( str(self.table))
+            # self.out( 'len von dicUser' + str(len(self.dicUser)) + ' --> ' + str(self.dicUser))
+            # self.out( 'diccolumns = ')
+            # self.out( `dicColumns`)
+
+
+            #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
+            liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
+            # print liRecords
+
+            if liRecords:
+                for r in range(len(liRecords)) :
+                     record =  liRecords[r]
+                     for key in record.keys():
+                         if  isinstance(record[key], types.StringType):
+                             pass
+                             #record[key] =  unicode(record[key], 'utf-7')
+                         if isinstance(record[key], types.UnicodeType):
+                             record[key] = record[key].encode(self.oUser.userEncoding)
+                     liRecords[r] = record
+
+
+                firstRecord = liRecords[0]
+                #print ('nach user-encoding')
+                #print firstRecord
+                self.ID = firstRecord['id']
+                self.sStatus = ''
+
+                if self.statusfields:
+                    for i in range(len(self.statusfields)):
+                        print i
+                        self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
+
+            self.firstRecord = firstRecord
+        except AssertionError:
+            print 'assert error'
+            liRecords = None
             
-            for i in self.table.getColumns():
-                dicColumns[str(i.getName())] = str(i.getType())
-
-        # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++***')
-        # self.out( self.table.getName())
-        # self.out( str(self.table))
-        # self.out( 'len von dicUser' + str(len(self.dicUser)) + ' --> ' + str(self.dicUser))
-        # self.out( 'diccolumns = ')
-        # self.out( `dicColumns`)
-
-        
-        #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
-        liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
-        # print liRecords
-        
-        if liRecords:
-            for r in range(len(liRecords)) :
-                 record =  liRecords[r]
-                 for key in record.keys():
-                     if  isinstance(record[key], types.StringType):
-                         pass
-                         #record[key] =  unicode(record[key], 'utf-7')
-                     if isinstance(record[key], types.UnicodeType):
-                         record[key] = record[key].encode(self.oUser.userEncoding)
-                 liRecords[r] = record
-                 
-
-            firstRecord = liRecords[0]
-            #print ('nach user-encoding')
-            #print firstRecord
-            self.ID = firstRecord['id']
-            self.sStatus = ''
-            
-            if self.statusfields:
-                for i in range(len(self.statusfields)):
-                    print i
-                    self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
-
-            self.firstRecord = firstRecord            
         return liRecords
 
     def getFirstRecord(self):
@@ -380,97 +386,102 @@ class SingleData(gladeXml, logs):
         pass
 
     def readEntries(self):
-        dicValues = {}
-        # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
-        for i in range(self.dicEntries.getCountOfEntries() ):
-            entry =  self.dicEntries.getEntryAtIndex(i)
-            # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
-            print entry.getName()
-            widget = self.getWidget(entry.getName())
-            if string.count(str(widget), "GtkEntry") > 0:
-                sValue = widget.get_text()
-            elif string.count(str(widget), "GtkTextView") > 0:
-                buffer = widget.get_buffer()
-                sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
-            #elif string.count(str(widget), "GtkCombo") > 0:
-            elif string.count(str(widget), "GtkCheckButton") > 0:
-                sValue = `widget.get_active()`
-            elif string.count(str(widget), "GnomeDateEdit") > 0:
-                newTime = time.localtime(widget.get_time())
-#                print "Datum und Zeit"
-#                print newTime
-                sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
-#                print sValue
-            else:
-                sValue = widget.get_text()
-            
-         
-            
-            dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
-            # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
-            
-        # self.out( 'dicValue by readEntries = ')
-        # self.out(  dicValues)
-        print  dicValues 
-        dicValues = self.readNonWidgetEntries(dicValues)
+        try:
+            assert self.dicEntries != None
+            dicValues = {}
+            # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
+            for i in range(self.dicEntries.getCountOfEntries() ):
+                entry =  self.dicEntries.getEntryAtIndex(i)
+                # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
+                print entry.getName()
+                widget = self.getWidget(entry.getName())
+                if string.count(str(widget), "GtkEntry") > 0:
+                    sValue = widget.get_text()
+                elif string.count(str(widget), "GtkTextView") > 0:
+                    buffer = widget.get_buffer()
+                    sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+                #elif string.count(str(widget), "GtkCombo") > 0:
+                elif string.count(str(widget), "GtkCheckButton") > 0:
+                    sValue = `widget.get_active()`
+                elif string.count(str(widget), "GnomeDateEdit") > 0:
+                    newTime = time.localtime(widget.get_time())
+    #                print "Datum und Zeit"
+    #                print newTime
+                    sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+    #                print sValue
+                else:
+                    sValue = widget.get_text()
 
-        for i in dicValues.keys():
-            oValue = dicValues[i][0]
-            sVerify = dicValues[i][1]
-            
-            if sVerify  == 'string':
-                # self.out( oValue)
-                oValue = oValue.encode('utf-8')
-                # self.out( oValue)
-                # self.out( '++++++++++++++++++++++++++++++++++')
 
-            if sVerify  == 'int':
-                # self.out( oValue,self.INFO)
-                if oValue == '':
-                    oValue = 0
-                # self.out( oValue, self.INFO)
-                # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
-                print oValue
-                if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
-                    if oValue.isdigit():
-                        oValue = int(oValue)
+
+                dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
+                # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
+
+            # self.out( 'dicValue by readEntries = ')
+            # self.out(  dicValues)
+            print  dicValues 
+            dicValues = self.readNonWidgetEntries(dicValues)
+
+            for i in dicValues.keys():
+                oValue = dicValues[i][0]
+                sVerify = dicValues[i][1]
+
+                if sVerify  == 'string':
+                    # self.out( oValue)
+                    oValue = oValue.encode('utf-8')
+                    # self.out( oValue)
+                    # self.out( '++++++++++++++++++++++++++++++++++')
+
+                if sVerify  == 'int':
+                    # self.out( oValue,self.INFO)
+                    if oValue == '':
+                        oValue = 0
+                    # self.out( oValue, self.INFO)
+                    # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
+                    print oValue
+                    if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
+                        if oValue.isdigit():
+                            oValue = int(oValue)
+                        else:
+                            oValue = string.strip(oValue)
+                            oValue = long(oValue[0:len(oValue) -1])
+
+                    elif isinstance(oValue, types.IntType):
+                        pass
+                    elif isinstance(oValue, types.LongType):
+                        pass
+
                     else:
-                        oValue = string.strip(oValue)
-                        oValue = long(oValue[0:len(oValue) -1])
-                        
-                elif isinstance(oValue, types.IntType):
-                    pass
-                elif isinstance(oValue, types.LongType):
-                    pass
-                
-                else:
-                    oValue = 0
-                
-            if sVerify  == 'float':
-                # self.out( oValue)
-                if oValue == '':
-                    oValue = 0.0
-                # self.out( oValue)
-                # self.out( '++++++++++++++++++++++++++++++++++')
-                print oValue
-                if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
-                    oValue = string.replace(oValue,',','.')
-                    oValue = float(oValue)
-                elif isinstance(oValue, types.FloatType):
-                    pass
-                elif isinstance(oValue, types.IntType):
-                    oValue = float(oValue)
-   
-                else:
-                    oValue = 0.0
-                                                                          
-                                                                          
+                        oValue = 0
+
+                if sVerify  == 'float':
+                    # self.out( oValue)
+                    if oValue == '':
+                        oValue = 0.0
+                    # self.out( oValue)
+                    # self.out( '++++++++++++++++++++++++++++++++++')
+                    print oValue
+                    if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
+                        oValue = string.replace(oValue,',','.')
+                        oValue = float(oValue)
+                    elif isinstance(oValue, types.FloatType):
+                        pass
+                    elif isinstance(oValue, types.IntType):
+                        oValue = float(oValue)
+
+                    else:
+                        oValue = 0.0
 
 
-            dicValues[i][0] = oValue
-            dicValues[i][1] = sVerify
-            
-       
+
+
+                dicValues[i][0] = oValue
+                dicValues[i][1] = sVerify
+
+            except AssertionError:
+                print 'assert error'
+                dicValues = None
+     
         
         return dicValues
 
