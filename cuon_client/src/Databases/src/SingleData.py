@@ -125,7 +125,7 @@ class SingleData(gladeXml, logs):
         except AssertionError:
             print 'assert error'
             liRecords = None
-            
+        print liRecords    
         return liRecords
 
     def getFirstRecord(self):

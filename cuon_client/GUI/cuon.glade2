@@ -278,20 +278,11 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="vat1">
+			    <widget class="GtkMenuItem" id="finances1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">VAT</property>
+			      <property name="label" translatable="yes">Finances</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_pref_vat1_activate" last_modification_time="Wed, 23 Jun 2004 16:22:17 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="terms_of_payment1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">terms of payment</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_pref_terms_of_payment1_activate" last_modification_time="Wed, 23 Jun 2004 16:22:17 GMT"/>
+			      <signal name="activate" handler="on_prefs_finances_activate" last_modification_time="Mon, 08 Nov 2004 19:07:14 GMT"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -407,7 +398,7 @@
 	      <property name="max_length">0</property>
 	      <property name="text" translatable="yes"></property>
 	      <property name="has_frame">True</property>
-	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
 	      <signal name="changed" handler="on_eUserName_changed" last_modification_time="Tue, 27 Apr 2004 11:05:17 GMT"/>
 	    </widget>
@@ -453,7 +444,7 @@
 	      <property name="max_length">0</property>
 	      <property name="text" translatable="yes"></property>
 	      <property name="has_frame">True</property>
-	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
 	      <signal name="changed" handler="on_eUserName_changed" last_modification_time="Tue, 27 Apr 2004 11:05:17 GMT"/>
 	    </widget>

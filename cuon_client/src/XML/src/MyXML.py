@@ -146,10 +146,10 @@ class MyXML(logs):
             for oneName in allName:
                 rc = oneName.firstChild
                 if rc.nodeType == Node.TEXT_NODE:
-                    self.log.debug("rc.data = " +  rc.data)
+                    self.out("rc.data = " +  rc.data)
                     if(cyValue == rc.data):
-                        self.log.debug( iNode.toxml())
-                        self.log.debug("rc.data found = " +  rc.data)
+                        self.out( iNode.toxml())
+                        self.out("rc.data found = " +  rc.data)
                         return iNode
 
                     
@@ -161,15 +161,15 @@ class MyXML(logs):
             for oneName in allName:
                 rc = oneName.firstChild
                 if rc.nodeType == Node.TEXT_NODE:
-                    self.log.debug("rc.data = " +  rc.data)
+                    self.out("rc.data = " +  rc.data)
                     if(cyValue == rc.data):
-                        self.log.debug( iNode.toxml())
-                        self.log.debug("rc.data found = " +  rc.data)
+                        self.out( iNode.toxml())
+                        self.out("rc.data found = " +  rc.data)
                         return iNode
                                      
 
     def getNumberOfFields(self, cyTable):
-        self.log.debug("cyTable =  " + cyTable.toxml() )
+        self.out("cyTable =  " + cyTable.toxml() )
 
         allColumns = cyTable.getElementsByTagName("field")
         return len(allColumns)
@@ -177,12 +177,12 @@ class MyXML(logs):
 
     def getColumnAt(self, cyTable, iIndex):
         allColumns = cyTable.getElementsByTagName("field")
-        self.log.debug( allColumns[iIndex].toxml())
+        self.out( allColumns[iIndex].toxml())
         return allColumns[iIndex]
 
 
     def getTableSpecification(self, cyTable, sValue):
-        self.log.debug("cyTable =  = " + cyTable.toxml() )
+        self.out("cyTable =  = " + cyTable.toxml() )
         nameTag = cyTable.getElementsByTagName(sValue)
         for oneName in nameTag:
             rc = oneName.firstChild
@@ -274,7 +274,7 @@ class MyXML(logs):
 
     def getEntryAt(self, cyEntries, iIndex):
         all = cyEntries.getElementsByTagName("entry")
-        self.log.debug( all[iIndex].toxml())
+        self.out( all[iIndex].toxml())
         return all[iIndex]
 
 

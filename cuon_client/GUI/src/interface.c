@@ -172,16 +172,9 @@ static GnomeUIInfo preferences1_menu_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   {
-    GNOME_APP_UI_ITEM, N_("VAT"),
+    GNOME_APP_UI_ITEM, N_("Finances"),
     NULL,
-    (gpointer) on_pref_vat1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("terms of payment"),
-    NULL,
-    (gpointer) on_pref_terms_of_payment1_activate, NULL, NULL,
+    (gpointer) on_prefs_finances_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -293,6 +286,9 @@ create_window1 (void)
   GtkWidget *eUserName;
   GtkWidget *label2;
   GtkWidget *eServer;
+  GtkAccelGroup *accel_group;
+
+  accel_group = gtk_accel_group_new ();
 
   window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window1), _("C U O N"));
@@ -312,7 +308,7 @@ create_window1 (void)
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
   gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       NULL, FALSE, 0);
+                       accel_group, FALSE, 0);
 
   table1 = gtk_table_new (3, 4, FALSE);
   gtk_widget_show (table1);
@@ -384,8 +380,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "tools1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
   GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[0].widget, "user1");
-  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[1].widget, "vat1");
-  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[2].widget, "terms_of_payment1");
+  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[1].widget, "finances1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[1].widget, "update1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[2].widget, "report_generator1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[3].widget, "separator1");
@@ -397,6 +392,8 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, eUserName, "eUserName");
   GLADE_HOOKUP_OBJECT (window1, label2, "label2");
   GLADE_HOOKUP_OBJECT (window1, eServer, "eServer");
+
+  gtk_window_add_accel_group (GTK_WINDOW (window1), accel_group);
 
   return window1;
 }

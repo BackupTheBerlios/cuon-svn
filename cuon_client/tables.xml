@@ -92,7 +92,7 @@
 
       <default>"create"</default>
 
-      <comment>set by trigger</comment>
+      g<comment>set by trigger</comment>
     </field>
 
     <!--update_time-->
@@ -215,6 +215,108 @@
       <notnull>0</notnull>
 
       <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_type</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_country</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_def</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_coefficient</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_acct1</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>vat_acct2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
 
       <default />
 
@@ -2950,7 +3052,7 @@
     <field>
       <name>term_of_payment</name>
 
-      <type>varchar</type>
+      <type>text</type>
 
       <pkey>0</pkey>
 
@@ -2964,6 +3066,297 @@
 
       <comment />
     </field>
+  <field>
+      <name>value1</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value3</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value4</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value5</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value6</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value7</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value8</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value9</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>value10</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>200</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>days</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>delay</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+  </table>
+
+  <!--account info-->
+
+  <table>
+    <nameOfTable>account_info</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>account_number</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>type</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>eg</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+
+
+
+
   </table>
 
   <database_sequence>

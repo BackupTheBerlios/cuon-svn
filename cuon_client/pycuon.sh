@@ -22,7 +22,7 @@ case $1 in
 
 server)
 cp ../cuon_server.py . 
-$EXEC Cuon.py $Server server $3
+$EXEC cuon_server.py $Server server $3
 ;;
 
 client)

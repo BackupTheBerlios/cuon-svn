@@ -318,6 +318,8 @@ import cuon.Order.order
 import cuon.ReportGenerator.reportGenerator
 import cuon.Login.User
 import cuon.Preferences.preferences
+import cuon.PrefsFinance.prefsFinance
+
 import cuon.Stock.stock
 import cuon.DMS.dms
 
@@ -484,6 +486,10 @@ class MainWindow(windows):
 
     def on_pref_user1_activate(self,event):
         prefs = cuon.Preferences.preferences.preferenceswindow(self.allTables)
+
+    def on_prefs_finances_activate(self,event):
+        prefs = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+
 
         
     def updateVersion(self):

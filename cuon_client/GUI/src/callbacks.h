@@ -52,3 +52,11 @@ on_pref_vat1_activate                  (GtkMenuItem     *menuitem,
 void
 on_pref_terms_of_payment1_activate     (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_finances1_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_prefs_finances_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
