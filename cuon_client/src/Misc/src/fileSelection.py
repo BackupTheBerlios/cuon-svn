@@ -20,18 +20,19 @@ import gobject
 from gtk import TRUE, FALSE
 
 import logging
-from cuon.Windows.windows  import windows
+from cuon.Windows.chooseWindows  import chooseWindows
 
-class fileSelection(windows):
+class fileSelection(chooseWindows):
 
     
     def __init__(self, initialWidget = None, initialFilename = None):
 
-        windows.__init__(self)
+        chooseWindows.__init__(self)
+        self.chooseMenuitem = None
         
         self.loadGlade('fileselection.xml')
         self.fileWidget = None
-        self.filename = None
+        self.fileName = None
         self.filedata = []
         
         if initialWidget:
@@ -43,20 +44,31 @@ class fileSelection(windows):
             
 
         
-    def ok_button1_clicked(self, event):
+    def on_ok_button1_clicked(self, event):
+        print 'ok clicked'
         filedata =  self.getWidget('fileselection1').get_selections()
         if not filedata:
             filedata = self.filedata
         self.fileName = filedata[0]
+
         if self.fileWidget:
-            
             self.getWidget(self.fileWidget).set_text(self.FileName)
+
+        if self.chooseEntry:
+            self.setChooseValue(self.fileName)
+            
         self.quitFiledialog()
 
     def on_cancel_button1_clicked(self, event):
+        print 'Cancel clicked'
         self.quitFiledialog()
 
+    def showFiledialog(self):
+        self.getWidget('fileselection1').show()
+ 
 
     def quitFiledialog(self):
         self.getWidget('fileselection1').hide()
         
+    def getFilenames(self):
+        return self.fileName

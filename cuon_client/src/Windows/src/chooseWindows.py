@@ -37,8 +37,9 @@ class chooseWindows(windows):
         print '<<<<<<<<<<<<<<< setCooseValue <<<<<<<<<<<<<<<<<<<<<'
         
         self.chooseEntry.set_text(`chooseValue`)
-        self.chooseMenuitem.set_sensitive(FALSE)
-        self.closeWindow()
+        if self.chooseMenuitem:
+            self.chooseMenuitem.set_sensitive(FALSE)
+            self.closeWindow()
 
     def getChangedValue(self, sName):
         iNumber = 0

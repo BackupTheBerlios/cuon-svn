@@ -20,7 +20,6 @@ import copy
 import cPickle
 import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
-
 import os
 import os.path
 import string
@@ -118,7 +117,7 @@ class report(dumps, MyXML):
             self.writeXmlReport(nameOfReportFiles[i])
  
 
-    def loadXmlReport(self, sFile, sReportPath = None):
+    def loadXmlReportFile(self, sFile, sReportPath = None):
         if sReportPath:
             
             fname = os.path.normpath( self.oUser.prefPath[sReportPath] + '/'  +  'report_' + sFile + '.xml')
@@ -129,6 +128,12 @@ class report(dumps, MyXML):
         
         
         doc = self.readDocument(fname)
+
+        return doc
+
+    def loadXmlReport(self, sFile, sReportPath = None):
+        doc = self.loadXmlReportFile(sFile, sReportPath)
+    
         #print  doc.toxml() 
         cyRootNode = self.getRootNode(doc)
 

@@ -352,7 +352,23 @@
 	  </child>
 
 	  <child>
-	    <placeholder/>
+	    <widget class="GtkEntry" id="eFile">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="editable">False</property>
+	      <property name="visibility">True</property>
+	      <property name="max_length">0</property>
+	      <property name="text" translatable="yes"></property>
+	      <property name="has_frame">True</property>
+	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="activates_default">False</property>
+	      <signal name="changed" handler="on_eFile_changed" last_modification_time="Mon, 12 Apr 2004 09:39:13 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">True</property>
+	      <property name="fill">True</property>
+	    </packing>
 	  </child>
 
 	  <child>
@@ -420,7 +436,7 @@
 			  <property name="metric">GTK_PIXELS</property>
 			  <property name="lower">0</property>
 			  <property name="upper">10</property>
-			  <property name="position">0.602241</property>
+			  <property name="position">1.72269</property>
 			  <property name="max_size">10</property>
 			</widget>
 			<packing>
@@ -586,7 +602,7 @@
 			  <property name="metric">GTK_PIXELS</property>
 			  <property name="lower">0</property>
 			  <property name="upper">10</property>
-			  <property name="position">0.504202</property>
+			  <property name="position">0.966387</property>
 			  <property name="max_size">10</property>
 			</widget>
 			<packing>
