@@ -6,11 +6,11 @@ case $2 in
 
 n) Server=http://server2:9673/Cuon 
 ;;
-ssl) Server=http://server2:8443/Cuon
+ssl) Server=https://server2:9443/Cuon
 ;;
 inn) Server=http://innovatec.dyndns.org:9673/Cuon
 ;;
-innssl) Server=http://innovatec.dyndns.org:8443/Cuon
+innssl) Server=https://innovatec.dyndns.org:8443/Cuon
 ;;
 *) Server=http://server2:9673/Cuon
 ;;

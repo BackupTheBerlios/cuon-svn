@@ -15,7 +15,7 @@
 
 
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_order_standard_invoice
+import cuon.PDF.report_order_standard_invoice
 from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path

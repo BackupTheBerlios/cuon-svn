@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [Juergen Hamel, D-32584 Loehne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -40,15 +40,16 @@ import cuon.Articles.SingleArticle
 import cuon.Order.standard_invoice
 import cuon.Order.standard_delivery_note
 import cuon.Order.standard_pickup_note
+import cuon.XMLRPC.xmlrpc
 
 
 
 
 class orderwindow(chooseWindows):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: Juergen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Loehne
+    @copyright: by Juergen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -175,6 +176,7 @@ class orderwindow(chooseWindows):
         self.tabSupply = 1
         self.tabGet = 2
         self.tabPosition = 3
+        self.tabInvoice = 4
 
         # start
         
@@ -424,6 +426,10 @@ class orderwindow(chooseWindows):
         if self.singleOrderPosition.ID == -1 and record:
             self.getWidget('eOrderPositionsTaxVat').set_text(record['tax_vat'])
           
+    def fillcbeTOP(self):
+        cbeTop = self.getWidget('cbeTOP')
+        liCbe = XMLRPC.xmlrpc().callRP('py_getListOfTOPs')
+        print `liCbe`
 
     def refreshTree(self):
         self.singleOrder.disconnectTree()
@@ -449,7 +455,12 @@ class orderwindow(chooseWindows):
             self.singleOrderPosition.sWhere  ='where orderid = ' + `int(self.singleOrder.ID)`
             self.singleOrderPosition.connectTree()
             self.singleOrderPosition.refreshTree()
- 
+            
+        elif self.tabOption == self.tabInvoice:
+            self.singleOrder.connectTree()
+            self.singleOrder.refreshTree()
+            self.fillcbeTOP()
+
 
 
          
@@ -478,7 +489,15 @@ class orderwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('positions')
             self.editAction = 'editPositions'
-            print 'Seite 3'     
+            print 'Seite 3'  
+         
+         
+        elif self.tabOption == self.tabInvoice:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('invoice')
+            self.editAction = 'editInvoice'
+            print 'Seite 4'  
+         
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.5.dtd">
 <!-- Project file for project cuon-client -->
-<!-- Saved: 2004-12-18, 19:42:18 -->
-<!-- Copyright (C) 2004 Juergen Hamel, jh@cyrus.de -->
+<!-- Saved: 2005-01-07, 22:39:47 -->
+<!-- Copyright (C) 2005 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.5">
   <Description>a business-suite</Description>
   <Version>0.1</Version>
@@ -490,6 +490,9 @@
   <Interfaces>
   </Interfaces>
   <Others>
+    <Other>
+      <Name>tables.xml~</Name>
+    </Other>
   </Others>
   <MainScript>
     <Name>Cuon.py</Name>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -17,15 +17,16 @@
 import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
 from cuon.Logging.logs import logs
-from M2Crypto.m2xmlrpclib import  Server, SSL_Transport
+#from M2Crypto.m2xmlrpclib import  Server, SSL_Transport
 from gtk import TRUE, FALSE
 import time
+from xmlrpclib import ServerProxy
 
 class myXmlRpc(dumps, logs):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: JÃ¼rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 LÃ¶hne
+    @copyright: by JÃ¼rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -48,13 +49,14 @@ class myXmlRpc(dumps, logs):
         self.out( self.td.server)
         self.out( `self.td.server`)
         self.out( '++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        self.out( ' ')
+        self.out( ' neue xmlrpclib')
         sv = None
         try:
             if self.td.server[0:5] == 'https':
-                sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8' )
+                #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
+                sv =  ServerProxy( self.td.server ) 
             else:
-                sv =  Server( self.td.server )
+                sv =  ServerProxy( self.td.server )
         except:
             print 'Server error'
             

@@ -274,7 +274,7 @@ create_OrderMainwindow (void)
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
-  gint tmp_toolbar_icon_size;
+  GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
   GtkWidget *eFindName;
@@ -338,7 +338,7 @@ create_OrderMainwindow (void)
   GtkWidget *eGetsDesignation;
   GtkWidget *hbox12;
   GtkWidget *label15;
-  GtkWidget *eNumber;
+  GtkWidget *eGetsNumber;
   GtkWidget *vbox4;
   GtkWidget *hbox13;
   GtkWidget *label16;
@@ -397,6 +397,13 @@ create_OrderMainwindow (void)
   GtkWidget *label25;
   GtkWidget *eOrderPositionsTaxVat;
   GtkWidget *label4;
+  GtkWidget *table3;
+  GtkWidget *label30;
+  GtkWidget *cbeTOP;
+  GtkWidget *label29;
+  GtkAccelGroup *accel_group;
+
+  accel_group = gtk_accel_group_new ();
 
   OrderMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (OrderMainwindow, 0, 0);
@@ -410,7 +417,7 @@ create_OrderMainwindow (void)
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
   gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       NULL, FALSE, 0);
+                       accel_group, FALSE, 0);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -733,9 +740,9 @@ create_OrderMainwindow (void)
   gtk_widget_show (label15);
   gtk_box_pack_start (GTK_BOX (hbox12), label15, FALSE, FALSE, 0);
 
-  eNumber = gtk_entry_new ();
-  gtk_widget_show (eNumber);
-  gtk_box_pack_start (GTK_BOX (hbox12), eNumber, TRUE, TRUE, 0);
+  eGetsNumber = gtk_entry_new ();
+  gtk_widget_show (eGetsNumber);
+  gtk_box_pack_start (GTK_BOX (hbox12), eGetsNumber, TRUE, TRUE, 0);
 
   vbox4 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox4);
@@ -1040,6 +1047,27 @@ create_OrderMainwindow (void)
   gtk_widget_show (label4);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), label4);
 
+  table3 = gtk_table_new (3, 4, FALSE);
+  gtk_widget_show (table3);
+  gtk_container_add (GTK_CONTAINER (notebook1), table3);
+
+  label30 = gtk_label_new (_("Terms of Payment"));
+  gtk_widget_show (label30);
+  gtk_table_attach (GTK_TABLE (table3), label30, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label30), 0, 0.5);
+
+  cbeTOP = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeTOP);
+  gtk_table_attach (GTK_TABLE (table3), cbeTOP, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label29 = gtk_label_new (_("Invoice"));
+  gtk_widget_show (label29);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), label29);
+
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
@@ -1195,7 +1223,7 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eGetsDesignation, "eGetsDesignation");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox12, "hbox12");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label15, "label15");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eNumber, "eNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eGetsNumber, "eGetsNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox4, "vbox4");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox13, "hbox13");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label16, "label16");
@@ -1253,6 +1281,12 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label25, "label25");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsTaxVat, "eOrderPositionsTaxVat");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label4, "label4");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table3, "table3");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label30, "label30");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbeTOP, "cbeTOP");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label29, "label29");
+
+  gtk_window_add_accel_group (GTK_WINDOW (OrderMainwindow), accel_group);
 
   return OrderMainwindow;
 }

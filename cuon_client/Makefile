@@ -23,51 +23,51 @@ src_server = ./cuon_server.py
 dest_server =$(dest_cuon)
  
 
-src_typedefs = ./cuon/TypeDefs/src/*.py
+src_typedefs = ./cuon/TypeDefs/*.py
 dest_typedefs = $(dest_cuon)/TypeDefs
 
 
-src_login = ./cuon/Login/src/*.py
+src_login = ./cuon/Login/*.py
 dest_login = $(dest_cuon)/Login
 
-src_misc = ./cuon/Misc/src/*.py
+src_misc = ./cuon/Misc/*.py
 dest_misc = $(dest_cuon)/Misc
 
-src_addresses = ./cuon/Addresses/src/*.py
+src_addresses = ./cuon/Addresses/*.py
 dest_addresses = $(dest_cuon)/Addresses
 
 
-src_articles = ./cuon/Articles/src/*.py
+src_articles = ./cuon/Articles/*.py
 dest_articles = $(dest_cuon)/Articles
 
-src_order = ./cuon/Order/src/*.py
+src_order = ./cuon/Order/*.py
 dest_order = $(dest_cuon)/Order
 
 
-src_databases = ./cuon/Databases/src/*.py
+src_databases = ./cuon/Databases/*.py
 dest_databases = $(dest_cuon)/Databases
 
 
 
-src_xml = ./cuon/XML/src/*.py
+src_xml = ./cuon/XML/*.py
 dest_xml = $(dest_cuon)/XML
 
-src_xmlrpc = ./cuon/XMLRPC/src/*.py
+src_xmlrpc = ./cuon/XMLRPC/*.py
 dest_xmlrpc = $(dest_cuon)/XMLRPC
 
 
-src_windows = ./cuon/Windows/src/*.py
+src_windows = ./cuon/Windows/*.py
 dest_windows = $(dest_cuon)/Windows
 
 
-src_log = ./cuon/Logging/src/*.py
+src_log = ./cuon/Logging/*.py
 dest_log = $(dest_cuon)/Logging
 
 
-src_oo = ./cuon/OpenOffice/src/*.py
+src_oo = ./cuon/OpenOffice/*.py
 dest_oo = $(dest_cuon)/OpenOffice
 
-src_pdf = ./cuon/PDF/src/*.py 
+src_pdf = ./cuon/PDF/*.py 
 dest_pdf = $(dest_cuon)/PDF
 
 src_pdf_xml = ./cuon/PDF/XML/*.py
@@ -75,31 +75,31 @@ dest_pdf_xml = $(dest_cuon)/PDF/XML
 
 
 
-src_preferences = ./cuon/Preferences/src/*.py 
+src_preferences = ./cuon/Preferences/*.py 
 dest_preferences = $(dest_cuon)/Preferences
 
 src_preferences_xml = ./cuon/Preferences/XML/*.py
 dest_preferences_xml = $(dest_cuon)/Preferences/XML
 
 
-src_repgen = ./cuon/ReportGenerator/src/*.py
+src_repgen = ./cuon/ReportGenerator/*.py
 dest_repgen = $(dest_cuon)/ReportGenerator
 
-src_stock = ./cuon/Stock/src/*.py
+src_stock = ./cuon/Stock/*.py
 dest_stock = $(dest_cuon)/Stock
 
-src_email = ./cuon/E_Mail/src/*.py
+src_email = ./cuon/E_Mail/*.py
 dest_email = $(dest_cuon)/E_Mail
 
 
-src_dms = ./cuon/DMS/src/*.py
+src_dms = ./cuon/DMS/*.py
 dest_dms = $(dest_cuon)/DMS
 
 
-src_vtk = ./cuon/VTK/src/*.py
+src_vtk = ./cuon/VTK/*.py
 dest_vtk = $(dest_cuon)/VTK
 
-src_prefs_finance = ./cuon/PrefsFinance/src/*.py 
+src_prefs_finance = ./cuon/PrefsFinance/*.py 
 dest_prefs_finance = $(dest_cuon)/PrefsFinance
 
 src_cuon =  $(dest_cuon)/*
@@ -173,8 +173,8 @@ install_server:
 	if  [ ! -d $(dest_report) ] ; then mkdir $(dest_report) ; fi 	
 
 	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
-	find ./ -name "*.glade2" -exec cp {} $(dest_glade) \; 
-	find ./ -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
+	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
+	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 
 install_zope:
