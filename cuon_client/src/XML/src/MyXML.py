@@ -196,10 +196,11 @@ class MyXML(logs):
         nameTag = cyColumn.getElementsByTagName(sValue)
         for oneName in nameTag:
             rc = oneName.firstChild
-            if rc.nodeType == Node.TEXT_NODE:
-                return rc.data
+            if rc:
+                if rc.nodeType == Node.TEXT_NODE:
+                    return rc.data
             else:
-                return "EMPTY"
+                return None
             
                         
         

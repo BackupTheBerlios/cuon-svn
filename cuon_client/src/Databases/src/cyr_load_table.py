@@ -132,6 +132,7 @@ class cyr_load_table(MyXML, dumps):
             column.setSizeOfDatafield(string.atoi(self.getColumnSpecification(xmlCol, "size")) )
             column.setAllowNull(string.atoi(self.getColumnSpecification(xmlCol, "notnull")) )
             column.setPrimaryKey(string.atoi(self.getColumnSpecification(xmlCol, "pkey")) )
+            column.setDefaultValue(self.getColumnSpecification(xmlCol, "default") )
 
             
             table.addColumn(column)
@@ -178,15 +179,19 @@ class cyr_load_table(MyXML, dumps):
 
 
     def loadLocalTable(self, sNameOfTable):
+        print '--------------------------'
+        print 'table = ' + `sNameOfTable`
+        print '--------------------------'
         self.openDB()
         table = self.loadObject('table_' + sNameOfTable.encode('ascii'))
-        print 'table of Columns --> ' + str (table.nameOfColumns) 
-        for i in table.nameOfColumns:
-            print i
-            coColumn = self.loadObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii')) 
-            table.addColumn(coColumn)
-        print table.nameOfColumns
-        print table.getCountOfColumns()
+        if table:
+            print 'table of Columns --> ' + str (table.nameOfColumns) 
+            for i in table.nameOfColumns:
+                print i
+                coColumn = self.loadObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii')) 
+                table.addColumn(coColumn)
+                print table.nameOfColumns
+                print table.getCountOfColumns()
         self.closeDB()
         return table
         

@@ -97,7 +97,7 @@ class SingleData(gladeXml, logs):
             #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
             liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
             # print liRecords
-
+            firstRecord = []
             if liRecords:
                 for r in range(len(liRecords)) :
                      record =  liRecords[r]

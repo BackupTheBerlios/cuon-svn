@@ -162,12 +162,38 @@ static GnomeUIInfo visualizing1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo preferences1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("User"),
+    NULL,
+    (gpointer) on_pref_user1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("VAT"),
+    NULL,
+    (gpointer) on_pref_vat1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("terms of payment"),
+    NULL,
+    (gpointer) on_pref_terms_of_payment1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo tools1_menu_uiinfo[] =
 {
   {
-    GNOME_APP_UI_ITEM, N_("Preferences"),
+    GNOME_APP_UI_SUBTREE, N_("Preferences"),
     NULL,
-    (gpointer) on_preferences1_activate, NULL, NULL,
+    preferences1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -357,6 +383,9 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mayavi1_menu_uiinfo[0].widget, "test1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "tools1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
+  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[0].widget, "user1");
+  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[1].widget, "vat1");
+  GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[2].widget, "terms_of_payment1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[1].widget, "update1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[2].widget, "report_generator1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[3].widget, "separator1");

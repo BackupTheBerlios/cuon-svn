@@ -265,14 +265,20 @@ class databaseswindow(windows):
         if (string.find(co.getType(), 'char' )>= 0 ) :
             # find char, so take size to it
             sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
-        if ( co.isAllowNull()  == 0) :
+        if  co.isAllowNull()  == 0 :
             self.out( co.isAllowNull())
             sSql = sSql + ' not null '
-            
-        self.out( sSql)
+
+   
+        print sSql
         
         self.rpc.callRP('src.sql.py_executeNormalQuery',sSql, self.dicUser)
-  
+
+        if co.getDefaultValue():
+            sSql = 'alter table ' + str(table.getName()) + ' alter column  ' + co.getName()
+            sSql = sSql + " SET DEFAULT " + co.getDefaultValue()
+
+        self.rpc.callRP('src.sql.py_executeNormalQuery',sSql, self.dicUser)
     
     #
     # start xml defaults, entries, etc.

@@ -119,9 +119,9 @@
 
 
     <grant>
-      <nameOfGrant>some_admin</nameOfGrant>
+      <nameOfGrant>cuon_all_rights_of_prefs_finance</nameOfGrant>
       <this_grants>select, insert, update, delete</this_grants>
-      <this_tables>tax_vat, tax_vat_id</this_tables>
+      <this_tables>tax_vat, tax_vat_id, terms_of_payment, terms_payment_id</this_tables>
       <this_group>cuon_admin</this_group>
       <comment></comment>
     </grant>

@@ -92,6 +92,8 @@ dest_dms = $(dest_cuon)/DMS
 src_vtk = ./src/VTK/src/*.py
 dest_vtk = $(dest_cuon)/VTK
 
+src_prefs_finance = ./src/PrefsFinance/src/*.py 
+dest_prefs_finance = $(dest_cuon)/PrefsFinance
 
 src_cuon =  $(dest_cuon)/*
 dest_primus_cuon = ~/Projekte/Primus/Py/cuon
@@ -127,6 +129,7 @@ all :
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
 	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
 	if [ ! -d $(dest_vtk) ] ; then mkdir $(dest_vtk) ; fi ; cp $(src_vtk) $(dest_vtk) 
+	if [ ! -d $(dest_prefs_finance) ] ; then mkdir $(dest_prefs_finance) ; fi ; cp $(src_prefs_finance) $(dest_prefs_finance) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi

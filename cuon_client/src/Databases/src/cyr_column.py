@@ -19,7 +19,9 @@ class cyr_column:
         self.Name = "EMPTY"
         self.nameOfVariable = "EMPTY"
         self.sizeOfDatafield = 0
-
+        self.Type = None
+        self.defaultValue = None
+        
     
     # set the name of the column */
     def setName(self, s):
@@ -73,13 +75,15 @@ class cyr_column:
     def getPrimaryKey(self):
         return self.primaryKey
 
+
 ### set the default value */
-##void def setDefaultValue(std::string s)
-##	defaultValue.assign(s);
+    def setDefaultValue(self, s=None):
+        self.defaultValue = s
 
 ### get the default value */
-##std::string def getDefaultValue()
-##	return defaultValue;
+    def getDefaultValue(self):
+        return self.defaultValue
+
 
 ### set the extras */
 ##void def setExtras(std::string s)

@@ -359,7 +359,7 @@ gtk.glade.textdomain(APP)
 class MainWindow(windows):
     """
     @author: J rgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Lö¨®¥
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
     @copyright: by J rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
@@ -369,7 +369,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 27, 'Rev': 2, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 27, 'Rev': 3, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -482,7 +482,7 @@ class MainWindow(windows):
     def on_update1_activate(self, event):
         self.updateVersion()
 
-    def on_preferences1_activate(self,event):
+    def on_pref_user1_activate(self,event):
         prefs = cuon.Preferences.preferences.preferenceswindow(self.allTables)
 
         

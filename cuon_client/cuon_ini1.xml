@@ -93,6 +93,17 @@
       <Entry-File>preferences_scanner.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_preferences_scanner.xml</Entry-FileValue>
     </Entries>
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>prefs_finance_top.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_top.xml</Entry-FileValue>
+    </Entries>
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>prefs_finance_vat.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_vat.xml</Entry-FileValue>
+    </Entries>
+
 
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
@@ -150,6 +161,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>preferences.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/preferences.glade2</Glade-FileValue>
+    </GladeEntries>
+   <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>prefs_finance.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/prefs_finance.glade2</Glade-FileValue>
     </GladeEntries>
 
    <GladeEntries>

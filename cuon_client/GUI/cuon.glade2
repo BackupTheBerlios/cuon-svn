@@ -16,6 +16,11 @@
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="icon">cuon-logo.xpm</property>
+  <property name="decorated">True</property>
+  <property name="skip_taskbar_hint">False</property>
+  <property name="skip_pager_hint">False</property>
+  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
+  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
 
   <child>
     <widget class="GtkVBox" id="vbox1">
@@ -58,7 +63,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="trennlinie1">
+		    <widget class="GtkSeparatorMenuItem" id="trennlinie1">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -259,6 +264,38 @@
 		      <property name="label" translatable="yes">Preferences</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_preferences1_activate"/>
+
+		      <child>
+			<widget class="GtkMenu" id="preferences1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="user1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">User</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_pref_user1_activate" last_modification_time="Wed, 23 Jun 2004 16:22:17 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="vat1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">VAT</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_pref_vat1_activate" last_modification_time="Wed, 23 Jun 2004 16:22:17 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="terms_of_payment1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">terms of payment</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_pref_terms_of_payment1_activate" last_modification_time="Wed, 23 Jun 2004 16:22:17 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 
@@ -281,7 +318,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="separator1">
+		    <widget class="GtkSeparatorMenuItem" id="separator1">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
