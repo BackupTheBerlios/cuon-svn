@@ -190,6 +190,17 @@
       <Glade-File>dms.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/dms.glade2</Glade-FileValue>
     </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>clients.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/clients.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>webshop.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/webshop.glade2</Glade-FileValue>
+    </GladeEntries>
+
   </Glade_Init_Files>
   <Grant_Init_Files>	
     <GrantEntries>
