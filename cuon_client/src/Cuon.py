@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 
 ##		    GNU GENERAL PUBLIC LICENSE
@@ -360,7 +361,7 @@ class MainWindow(windows):
    
     def __init__(self):
         windows.__init__(self)
-        self.Version = {'Major': 0, 'Minor': 25, 'Rev': 0, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 25, 'Rev': 3, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -383,16 +384,7 @@ class MainWindow(windows):
             self.disableMenuItem('user')
             self.enableMenuItem('login')
             self.openDB()
-            version = self.loadObject('ProgramVersion')
-            if not version:
-                version = self.Version
-                version['Major'] = 0
-                version['Minor'] = 0
-                version['Rev'] = 0
-
-            if version['Major'] != self.Version['Major'] or version['Minor'] != self.Version['Minor'] or version['Rev'] != self.Version['Rev']:
-                print ' ungleiche Versionen'
-                
+       
                 
             if self.startProgressBar():
                 self.generateLocalSqlObjects()
@@ -455,6 +447,13 @@ class MainWindow(windows):
 
 
     def on_update1_activate(self, event):
+        self.updateVersion()
+
+    def on_preferences1_activate(self,event):
+        prefs = cuon.Preferences.preferences.preferenceswindow(self.allTables)
+
+        
+    def updateVersion(self):
         if self.startProgressBar():
             self.generateSqlObjects()
             rep = cuon.PDF.report.report()
@@ -463,17 +462,45 @@ class MainWindow(windows):
             self.stopProgressBar()
     
     
-    def on_preferences1_activate(self,event):
-        prefs = cuon.Preferences.preferences.preferenceswindow(self.allTables)
-
+   
     def startMain(self):
+        
+        self.openDB()
+        version = self.loadObject('ProgramVersion')
+        self.closeDB()
+        print 'Version:' + str(version)
+        
+        print self.Version['Major'] 
+        print self.Version['Minor'] 
+        print self.Version['Rev'] 
+        
+        if not version:
+            print 'no Version'
+            
+            version = {}
+            version['Major'] = 0
+            version['Minor'] = 0
+            version['Rev'] = 0
 
+            print self.Version['Major'] 
+            print self.Version['Minor'] 
+            print self.Version['Rev'] 
+
+        if version['Major'] != self.Version['Major'] or version['Minor'] != self.Version['Minor'] or version['Rev'] != self.Version['Rev']:
+            print ' ungleiche Versionen'
+            self.updateVersion()
+            self.openDB()
+            self.saveObject('ProgramVersion', self.Version)
+            self.closeDB()
+ 
+  
         self.writeAllGladeFiles()
    
  
         # create widget tree ...
        
 #        self.gladeName = td.main_glade_name
+       
         self.loadGlade('main.xml')
  
          # Menu-items

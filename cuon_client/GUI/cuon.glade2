@@ -254,7 +254,7 @@
 	  <child>
 	    <widget class="GtkEntry" id="eUserName">
 	      <property name="visible">True</property>
-	      <property name="can_focus">True</property>
+	      <property name="sensitive">False</property>
 	      <property name="editable">False</property>
 	      <property name="visibility">True</property>
 	      <property name="max_length">0</property>
@@ -262,7 +262,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char" translatable="yes">*</property>
 	      <property name="activates_default">False</property>
-	      <signal name="changed" handler="on_eUserName_changed" last_modification_time="Mon, 26 Apr 2004 19:07:55 GMT"/>
+	      <signal name="changed" handler="on_eUserName_changed" last_modification_time="Tue, 27 Apr 2004 11:05:17 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="left_attach">1</property>

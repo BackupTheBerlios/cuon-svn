@@ -68,6 +68,9 @@ class User:
 
         
     def refreshDicUser(self):
+        '''
+        set self.dicuser to actual values
+        '''
         self.dicUser['Locales'] = self.userLocales
         self.dicUser['Encoding'] = self.userEncoding
         self.dicUser['DateTimeformatString'] = self.userDateTimeFormatString
@@ -80,6 +83,10 @@ class User:
         self.dicUser['prefPath'] = self.prefPath
 
     def getDicUser(self):
+        '''
+        @return: Dictionary with user-infos
+        '''
+  
         return self.dicUser
 
 
@@ -101,6 +108,7 @@ class User:
         self.refreshDicUser()
   
     def getUserPassword(self):
+        ''' return: Password of this User'''
         return self.userPassword
 
     

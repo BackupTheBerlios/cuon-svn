@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
@@ -64,6 +66,12 @@ class SingleData(gladeXml, logs):
 
         
     def load(self, record, dicDetail = None):
+        '''
+        @param record: id of the record
+        @param dicDetail: details for statusbar
+        @return: list of records
+        '''
+        
         if dicDetail:
             dicColumns = dicDetail
         else:

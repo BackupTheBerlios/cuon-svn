@@ -209,11 +209,8 @@ create_window1 (void)
   gtk_table_attach (GTK_TABLE (table1), eUserName, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (eUserName, GTK_CAN_FOCUS);
   gtk_editable_set_editable (GTK_EDITABLE (eUserName), FALSE);
-
-  g_signal_connect ((gpointer) eUserName, "changed",
-                    G_CALLBACK (on_eUserName_changed),
-                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
