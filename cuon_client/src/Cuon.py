@@ -334,6 +334,8 @@ import cuon.Databases.cyr_load_table
 from gtk import TRUE, FALSE
 import threading
 import cuon.PDF.report
+import cuon.VTK.mainLogo
+import cuon.VTK.test
 
 
 import gnome.ui
@@ -367,10 +369,13 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 27, 'Rev': 0, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 27, 'Rev': 1, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
+        self.sDebug = 'NO'
+        
+        
     
     def on_end1_activate(self,event):
         print "exit cuon"
@@ -396,6 +401,9 @@ class MainWindow(windows):
         if self.getWidget('eUserName').get_text() != 'EMPTY':
             self.openDB()
             self.oUser = self.loadObject('User')
+            print 'sDebug (Cuon) = '  + self.sDebug
+            self.oUser.setDebug(self.sDebug)
+            self.saveObject('User', self.oUser)
             self.closeDB()
                           
             self.disableMenuItem('user')
@@ -403,13 +411,13 @@ class MainWindow(windows):
             if self.sStartType == 'server':
                 self.enableMenuItem('serverMode')
 
-            self.openDB()
+           # self.openDB()
        
                 
             if self.startProgressBar():
                 self.generateLocalSqlObjects()
                 self.stopProgressBar()
-        print self.oUser.getDicUser()
+            print self.oUser.getDicUser()
         
         
     def generateSqlObjects(self):
@@ -460,8 +468,8 @@ class MainWindow(windows):
 
     def on_stock1_activate(self,event):
         ord = cuon.Stock.stock.stockwindow(self.allTables)
-
-
+  
+        
     def on_report_generator1_activate(self,event):
         rep1  = cuon.ReportGenerator.reportGenerator.reportgeneratorwindow(self.allTables)
         
@@ -483,12 +491,24 @@ class MainWindow(windows):
             self.generateSqlObjects()
             rep = cuon.PDF.report.report()
             rep.writeAllReportFiles()
-     
+            self.writeAllGladeFiles()
             self.stopProgressBar()
     
     
-   
-    def startMain(self, sStartType):
+    def on_test1_activate(self, event):
+        te = cuon.VTK.test.test()
+        te.show()
+        
+        
+    def startMain(self, sStartType, sDebug):
+        ML = cuon.VTK.mainLogo.mainLogo()
+        ML.startLogo()
+        
+        if sDebug:
+            self.sDebug = sDebug
+        else:
+            self.sDebug = 'NO'
+            
         if sStartType == 'server':
             print 'Server-Modus'
             td = typedefs_server()
@@ -526,7 +546,7 @@ class MainWindow(windows):
                 self.closeDB()
 
 
-            self.writeAllGladeFiles()
+           
 
 
             # create widget tree ...
@@ -566,8 +586,13 @@ class MainWindow(windows):
         gtk.main_quit()
 
 sStartType = 'client'
+sDebug = 'NO'
+print sys.argv
 
-
+if len(sys.argv) > 3: 
+    if len(sys.argv[3]) > 1:
+        sDebug =  sys.argv[3]
+        
 if len(sys.argv) > 2: 
     if len(sys.argv[2]) > 1:
         sStartType =  sys.argv[2]
@@ -585,10 +610,10 @@ d = cuon.Databases.dumps.dumps()
 d.openDB()
 d.saveObject('td', td)
 d.closeDB()
-print _('Hello, this is a test')
+print _('Hello, this is a test' ), sDebug
 
 m = MainWindow(sStartType)
-m.startMain(sStartType)
+m.startMain(sStartType, sDebug)
 gtk.main()
 
 

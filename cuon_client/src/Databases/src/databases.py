@@ -106,7 +106,7 @@ class databaseswindow(windows):
         ### for Server-functions set the td-object
         cle.td = self.td
         for key in self.td.nameOfXmlEntriesFiles.keys():
-            self.out( 'xml = ' + key)
+            print 'xml = ' + key
             lEntry = cle.getListOfEntriesNames(key)
             for i in lEntry:
                 self.out( i.toxml())
@@ -307,8 +307,11 @@ class databaseswindow(windows):
         nameOfGladeFiles = []
         for key in self.td.nameOfGladeFiles.keys():
             self.out( 'xml = ' + key, self.INFO)
+            print  'glade-xml = ' + key
+            
             gladeName = self.td.nameOfGladeFiles[key]
             self.out( 'gladename = ' + `gladeName`, self.INFO)
+            print 'gladename = ' + `gladeName`
             f1 = open(gladeName)
             xml1 = f1.read()
             f1.close()

@@ -50,9 +50,11 @@ class reportgeneratorwindow(windows ):
 
 
     def on_new1_activate(self, event):
-        print 'new 1'
-        rf = reportField.reportField(self.drawingarea)
-
+      ##  print 'new 1'
+      ##  rf = reportField.reportField(self.drawingarea)
+        Report = cuon.PDF.report.report()
+        Report.createTestSite()
+        
     def on_open1_activate(self, event):
         print 'open1'
         fd = cuon.Misc.fileSelection.fileSelection()

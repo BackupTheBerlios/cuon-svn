@@ -210,6 +210,41 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="visualizing1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Visualizing</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="visualizing1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="mayavi1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Mayavi</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="mayavi1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="test1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Test</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_test1_activate" last_modification_time="Sun, 30 May 2004 11:53:41 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="tools1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Tools</property>

@@ -478,9 +478,9 @@ class SingleData(gladeXml, logs):
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify
 
-            except AssertionError:
-                print 'assert error'
-                dicValues = None
+        except AssertionError:
+            print 'assert error'
+            dicValues = None
      
         
         return dicValues

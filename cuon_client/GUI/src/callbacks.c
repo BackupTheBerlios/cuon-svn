@@ -80,3 +80,11 @@ on_dms1_activate                       (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_test1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

@@ -15,6 +15,7 @@ import os.path
 import cuon.TypeDefs
 #from cuon.Windows.windows import windows
 from cuon.Databases.dumps import dumps
+from gtk import TRUE, FALSE
 
 class User:
     """
@@ -49,6 +50,7 @@ class User:
         self.userDateTimeFormatString = "%d.%m.%Y %H:%M"
         self.userDateTimeFormatEncoding = "%Y.%m.%d %H:%M:%S"
         self.userTimeFormatString = "%H:%M"
+        self.sDebug = 'NO'
         
         self.serverAddress = None
         self.userSQLDateFormat = 'DD.MM.YYYY'
@@ -128,6 +130,7 @@ class User:
         self.dicUser['SQLDateTimeFormat'] = self.userSQLDateTimeFormat
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
+        self.dicUser['Debug'] = self.sDebug
         self.dicUser['prefPath'] = self.prefPath
         self.dicUser['SessionID'] = self.getSessionID()
         self.dicUser['userType'] = self.userType
@@ -141,6 +144,7 @@ class User:
         '''
   
         return self.dicUser
+
 
 
  
@@ -169,3 +173,16 @@ class User:
         return self.sessionID
 		
 		
+    def setDebug(self, sDebug='NO'):
+        self.sDebug = sDebug
+        print 'sDebug(User)  = ' + sDebug
+        self.refreshDicUser()
+        
+        
+    
+    def getDebug(self):
+        if self.sDebug == 'YES':
+            return TRUE
+        else:
+            return FALSE
+        

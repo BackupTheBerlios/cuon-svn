@@ -14,6 +14,8 @@
 
 from reportlab.pdfgen import canvas
 from reportlab.lib import pagesizes
+from reportlab.lib.units import inch
+
 from gtk import TRUE, FALSE
 
 from cuon.XML.MyXML import MyXML
@@ -781,6 +783,22 @@ class report(dumps, MyXML):
             
         return dicEntry
     
+    def createTestSite(self, c):
+        grids = []
+        for i in range(0,55):
+            grids.append(i/2*inch)
+            
+        c.grid(grids, grids)
+        for i in grids:
+            for j in grids:
+                
+                c.drawString(i,j,'' + `i` + ',' +`j`)
+                
+
+        return c
+  
+        
+     
         
     def createPdf(self, cyRootNode):
         self.out( 'createPdf')
@@ -790,10 +808,15 @@ class report(dumps, MyXML):
                  
         self.startReport(c, cyRootNode)
     
+        if self.oUser.getDebug():
+            print 'DebugMode'
+            self.createTestSite(c)
+        else:
+            print 'No Debug Mode'
+            print self.oUser.getDicUser()
+            
         c.save()
-
         os.system('gpdf  ' + self.pdfFile + ' &')
-
 
 
 

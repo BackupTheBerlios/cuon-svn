@@ -36,3 +36,7 @@ on_databases1_activate                 (GtkMenuItem     *menuitem,
 void
 on_dms1_activate                       (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_test1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
