@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import random	
 
 
 sys.path.append('/usr/lib/zope/lib/python')
@@ -104,4 +105,27 @@ def writeLog(sLogEntry):
     file.close()
     
                
-    
+def createSessionID(secValue = 36000):
+
+	s = ''
+	
+	n = random.randint(0,1000000000)
+	for i in range(27):
+	     ok = 1
+	     while ok:
+	        r = random.randint(65,123)
+	        if r < 91 or r > 96:
+	           ok = 0
+	           s = s + chr(r)
+	
+	s = s + `n`
+	
+	return {'SessionID':s, 'endTime': time.time() + secValue}
+	
+def checkEndTime(fTime):
+	ok = 0
+	if time.time() < fTime:
+		ok = 1
+	 
+	return ok
+	
