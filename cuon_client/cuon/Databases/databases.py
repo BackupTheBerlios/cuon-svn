@@ -19,7 +19,7 @@ import gtk
 import gtk.glade
 import SingleData, cyr_load_table, cyr_table, cyr_column
 import SingleImportZip
-from cuon.Windows.windows  import windows
+from cuon.Windows.windows import windows
 import cuon.Windows.cyr_load_entries
 import cuon.TypeDefs.typedefs_server
 import cuon.XMLRPC.xmlrpc
