@@ -3,7 +3,7 @@
   <table>
     <table_name>terms_of_payment</table_name>
     <entry>
-      <name>name</name>
+      <name>eTPName</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>string</verify_type>
@@ -13,12 +13,142 @@
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>name</name>
+      <name>eTPDesignation</name>
       <type>textline</type>
-      <size>10</size>
+      <size>50</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>number</sql_field>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>tvTPText</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>term_of_payment</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eTPValue1</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value1</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>eTPValue2</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value2</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>eTPValue3</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value3</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue4</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value4</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue5</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value5</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue6</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value6</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue7</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value7</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue8</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value8</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue9</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value9</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
+<entry>
+      <name>eTPValue10</name>
+      <type>textline</type>
+      <size>200</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>value10</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>eTPDays</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>days</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>eTPDelay</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>delay</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>

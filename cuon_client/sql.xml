@@ -1,4 +1,3 @@
-
 <sql>
   <postgre_sql>
     <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>

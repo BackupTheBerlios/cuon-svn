@@ -3012,7 +3012,7 @@
 
       <notnull>1</notnull>
 
-      <size>10</size>
+      <size>50</size>
 
       <default />
 
@@ -3030,7 +3030,7 @@
 
       <notnull>0</notnull>
 
-      <size>50</size>
+      <size>250</size>
 
       <default />
     </field>
