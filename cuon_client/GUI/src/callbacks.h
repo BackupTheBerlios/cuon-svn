@@ -60,3 +60,7 @@ on_finances1_activate                  (GtkMenuItem     *menuitem,
 void
 on_prefs_finances_activate             (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_cash_account_book1_activate         (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

@@ -138,6 +138,18 @@ static GnomeUIInfo action1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo accounting1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("cash account book"),
+    NULL,
+    (gpointer) on_cash_account_book1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo mayavi1_menu_uiinfo[] =
 {
   {
@@ -247,6 +259,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Action"),
     NULL,
     action1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Accounting"),
+    NULL,
+    accounting1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -374,10 +393,12 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[1].widget, "stock1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[2].widget, "dms1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[3].widget, "staff1");
-  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[3].widget, "visualizing1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[3].widget, "accounting1");
+  GLADE_HOOKUP_OBJECT (window1, accounting1_menu_uiinfo[0].widget, "cash_account_book1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "visualizing1");
   GLADE_HOOKUP_OBJECT (window1, visualizing1_menu_uiinfo[0].widget, "mayavi1");
   GLADE_HOOKUP_OBJECT (window1, mayavi1_menu_uiinfo[0].widget, "test1");
-  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[5].widget, "tools1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
   GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[0].widget, "user1");
   GLADE_HOOKUP_OBJECT (window1, preferences1_menu_uiinfo[1].widget, "finances1");
@@ -385,7 +406,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[2].widget, "report_generator1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[3].widget, "separator1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[4].widget, "databases1");
-  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[5].widget, "help1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[6].widget, "help1");
   GLADE_HOOKUP_OBJECT (window1, help1_menu_uiinfo[0].widget, "about1");
   GLADE_HOOKUP_OBJECT (window1, table1, "table1");
   GLADE_HOOKUP_OBJECT (window1, label1, "label1");

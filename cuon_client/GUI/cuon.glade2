@@ -215,6 +215,28 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="accounting1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Accounting</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="accounting1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="cash_account_book1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">cash account book</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_cash_account_book1_activate" last_modification_time="Fri, 14 Jan 2005 17:05:40 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="visualizing1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Visualizing</property>

@@ -173,6 +173,7 @@ install_server:
 	if  [ ! -d $(dest_report) ] ; then mkdir $(dest_report) ; fi 	
 
 	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
+	cp ./GUI/*.glade2 $(dest_glade) 
 	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
 	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
