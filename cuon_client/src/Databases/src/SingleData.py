@@ -36,6 +36,7 @@ import cuon.TypeDefs.typedefs
 import cuon.XMLRPC.xmlrpc
 import cuon.Windows
 import time
+import gnome.ui
 
 class SingleData(gladeXml, logs):
 
@@ -347,8 +348,11 @@ class SingleData(gladeXml, logs):
                             
                         widget.set_active(sValue)
                             
-                    
-                        
+                    elif string.count(str(widget), "GnomeDateEdit") > 0:
+                        newDate = time.strptime(sValue, self.dicUser['DateTimeformatString'] )
+                        print newDate
+                        widget.set_time(int(time.mktime(newDate)))
+                                           
 
         self.fillOtherEntries()
 
@@ -373,8 +377,10 @@ class SingleData(gladeXml, logs):
                 sValue = `widget.get_active()`
             elif string.count(str(widget), "GnomeDateEdit") > 0:
                 newTime = time.localtime(widget.get_time())
-                sValue = time.strftime(self.dicUser['DateTimeformatString'])
-                
+#                print "Datum und Zeit"
+#                print newTime
+                sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+#                print sValue
             else:
                 sValue = widget.get_text()
             
@@ -515,7 +521,7 @@ class SingleData(gladeXml, logs):
                     #    sValue = unicode(sValue, 'utf-7')
                     if isinstance(sValue, types.UnicodeType):
                         sValue = sValue.encode(self.sCoding)     
-                    print ( 'name of j = ' + `j` + 'Value = ' + `sValue`)
+                    # print ( 'name of j = ' + `j` + 'Value = ' + `sValue`)
                     if j != 'id':
                         entry = self.dicEntries.getEntryByName(j)
                         if entry:

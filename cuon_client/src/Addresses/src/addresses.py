@@ -115,11 +115,11 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesPartnerSchedul )
         self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
         self.singleSchedul.setGladeXml(self.xml)
-        self.singleSchedul.setTreeFields( ['schedul_date', 'schedul_time','short_remark','priority','process_status'] )
-        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+        self.singleSchedul.setTreeFields( ['schedul_datetime', 'short_remark','priority','process_status'] )
+        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
 
-        self.singleSchedul.setTreeOrder('schedul_date, schedul_time')
-        self.singleSchedul.setListHeader([_('Date'), _('Time'), _('short Remark'), _('Priority'), _('Status')])
+        self.singleSchedul.setTreeOrder('schedul_datetime')
+        self.singleSchedul.setListHeader([_('Date and Time'),  _('short Remark'), _('Priority'), _('Status')])
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`

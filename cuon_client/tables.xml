@@ -394,11 +394,11 @@
     </field>
   
       <field>
-      <name>schedul_time</name>
-      <type>time</type>
+      <name>schedul_datetime</name>
+      <type>timestamp</type>
       <pkey>0</pkey>
       <unique>0</unique>
-      <notnull>0</notnull>
+      <notnull>1</notnull>
       <size>0</size>
       <default></default>
       <comment></comment>

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
@@ -40,6 +42,7 @@ class User:
         self.userType = 'cuon'        
         self.userDateFormatString = "%d.%m.%Y"
         self.userDateTimeFormatString = "%d.%m.%Y %H:%M"
+        self.userDateTimeFormatEncoding = "%Y.%m.%d %H:%M:%S"
         self.userTimeFormatString = "%H:%M"
         
         self.serverAddress = None
@@ -77,6 +80,7 @@ class User:
         self.dicUser['Locales'] = self.userLocales
         self.dicUser['Encoding'] = self.userEncoding
         self.dicUser['DateTimeformatString'] = self.userDateTimeFormatString
+        self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         #self.dicUser['serverAddress'] = self.serverAddress
         self.dicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat

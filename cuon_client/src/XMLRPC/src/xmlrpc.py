@@ -94,11 +94,25 @@ class myXmlRpc(dumps, logs):
             try:
                 exec s
                 startRP = FALSE
-            except:
+
+            except IOError, param:
+                print 'IO-Error'
+                print param
+                
+            except KeyError, param:
+                print 'KEY-Error'
+                print param
+
+            except Exception, param:
+                print 'unknown exception'
+                print param
+                
+            if startRP:
                 print 'error, next try'
+                
                 rp_tries = rp_tries + 1
                 
-                if rp_tries > 10:
+                if rp_tries > 3:
                     startRP = FALSE
                 else:
                     print ' wait for 10 sec. '

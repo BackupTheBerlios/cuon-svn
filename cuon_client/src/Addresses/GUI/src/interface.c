@@ -469,11 +469,9 @@ create_AddressMainwindow (void)
   GtkWidget *combo1;
   GtkWidget *eSchedulProcess;
   GtkWidget *hbox7;
-  GtkWidget *label29;
   GtkWidget *vbox2;
+  GtkWidget *label29;
   GtkWidget *gdeDate;
-  GtkWidget *eSchedulDate;
-  GtkWidget *eSchedulTime;
   GtkWidget *lSchedul;
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -1237,44 +1235,28 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  label29 = gtk_label_new (_("Date"));
-  gtk_widget_show (label29);
-  gtk_table_attach (GTK_TABLE (table8), label29, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0.5);
-
   vbox2 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox2);
   gtk_table_attach (GTK_TABLE (table8), vbox2, 2, 3, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
+  label29 = gtk_label_new (_("Date"));
+  gtk_widget_show (label29);
+  gtk_table_attach (GTK_TABLE (table8), label29, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0.5);
+
   gdeDate = gnome_date_edit_new ((time_t) 0, TRUE, TRUE);
   gtk_widget_show (gdeDate);
-  gtk_table_attach (GTK_TABLE (table8), gdeDate, 1, 2, 1, 2,
+  gtk_table_attach (GTK_TABLE (table8), gdeDate, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gnome_date_edit_set_flags (GNOME_DATE_EDIT (gdeDate),
                              GNOME_DATE_EDIT_SHOW_TIME
                              | GNOME_DATE_EDIT_24_HR
                              | GNOME_DATE_EDIT_WEEK_STARTS_ON_MONDAY);
-
-  eSchedulDate = gtk_entry_new ();
-  gtk_table_attach (GTK_TABLE (table8), eSchedulDate, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_sensitive (eSchedulDate, FALSE);
-  gtk_editable_set_editable (GTK_EDITABLE (eSchedulDate), FALSE);
-  gtk_entry_set_visibility (GTK_ENTRY (eSchedulDate), FALSE);
-
-  eSchedulTime = gtk_entry_new ();
-  gtk_table_attach (GTK_TABLE (table8), eSchedulTime, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_sensitive (eSchedulTime, FALSE);
-  gtk_editable_set_editable (GTK_EDITABLE (eSchedulTime), FALSE);
-  gtk_entry_set_visibility (GTK_ENTRY (eSchedulTime), FALSE);
 
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
@@ -1457,11 +1439,9 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, combo1, "combo1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox7, "hbox7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, gdeDate, "gdeDate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDate, "eSchedulDate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulTime, "eSchedulTime");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
 
   gtk_widget_grab_default (eFashion);
