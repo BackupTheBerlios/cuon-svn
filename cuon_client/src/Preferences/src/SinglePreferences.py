@@ -39,7 +39,11 @@ class SinglePreferences(SingleData):
         self.out( len(self.table.Columns))
         #
         self.statusfields = ['profile_name']
+        self.profileName = None
 
+    def fillOtherEntries(self, oneRecord):
+        self.profileName = oneRecord['profile_name']
+      
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePreferences'
         dicValues['username'] = [self.username,'string']

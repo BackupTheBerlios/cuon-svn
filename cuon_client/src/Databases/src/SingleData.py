@@ -84,12 +84,12 @@ class SingleData(gladeXml, logs):
             for i in self.table.getColumns():
                 dicColumns[str(i.getName())] = str(i.getType())
 
-        self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++***')
-        self.out( self.table.getName())
-        self.out( str(self.table))
-        self.out( 'len von dicUser' + str(len(self.dicUser)) + ' --> ' + str(self.dicUser))
-        self.out( 'diccolumns = ')
-        self.out( `dicColumns`)
+        # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++***')
+        # self.out( self.table.getName())
+        # self.out( str(self.table))
+        # self.out( 'len von dicUser' + str(len(self.dicUser)) + ' --> ' + str(self.dicUser))
+        # self.out( 'diccolumns = ')
+        # self.out( `dicColumns`)
 
         
         #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
@@ -129,7 +129,7 @@ class SingleData(gladeXml, logs):
     def findSingleId(self):
         liItems = self.getListEntries()
         if liItems:
-            self.out('---> liItems = ' + str(liItems))
+            # self.out('---> liItems = ' + str(liItems))
             self.ID = liItems[0][0]
         else:
             self.newRecord()
@@ -201,17 +201,17 @@ class SingleData(gladeXml, logs):
         self.connectTreeId = self.tree1.get_selection().connect("changed", self.tree_select_callback)
    
     def tree_select_callback(self, treeSelection):
-        self.out( 'tree_select entered')
+        # self.out( 'tree_select entered')
         listStore, self.iter = treeSelection.get_selected()
-        self.out('liststore = ' + str(listStore), self.INFO)
-        self.out('iter = ' + str(iter), self.INFO)
+        # self.out('liststore = ' + str(listStore), self.INFO)
+        # self.out('iter = ' + str(iter), self.INFO)
         
         
         if listStore:
            # [0] = gtk.listStore , [1] = treeiter , int = column
            #self.path = listStore[0].get_path(listStore[1])
-           #self.out('path in callback',self.INFO)
-           #self.out(str(self.path), self.INFO)
+           ## self.out('path in callback',self.INFO)
+           ## self.out(str(self.path), self.INFO)
            self.row = listStore[0]
         else:
             self.row = -1
@@ -225,25 +225,26 @@ class SingleData(gladeXml, logs):
             
             
     def treeSelectRowById(self):
-        self.out( self.ID, self.INFO)
+        pass
+        # self.out( self.ID, self.INFO)
         
         
     def treeSelectRow(self):
-        #self.out( 'Iter: ' + str(self.listIter))
+        ## self.out( 'Iter: ' + str(self.listIter))
         #self.treeSelection.select_iter(self.listIter)
         #model = self.treeSelection.get_tree_view().get_model()
         #rootIter = model.get_iter_root()
         #while rootIter != None:
-        #    self.out( str(rootIter))
+        #    # self.out( str(rootIter))
         #    rootIter = model.iter_next(rootIter)
         #self.treeSelection.select_path(self.ID)
         #self.treeSelection = self.tree1.get_selection()
-        self.out( 'tree selected', self.INFO)
-        self.out( str(self.tree1.get_selection()), self.INFO )
-        self.out( str(self.path) , self.INFO)
+        # self.out( 'tree selected', self.INFO)
+        # self.out( str(self.tree1.get_selection()), self.INFO )
+        # self.out( str(self.path) , self.INFO)
                   
         if self.tree1.get_selection() != None and self.path != None:
-            self.out('select tree by path',self.INFO)
+            # self.out('select tree by path',self.INFO)
             self.tree1.get_selection().select_path(self.path)
 
 
@@ -278,55 +279,55 @@ class SingleData(gladeXml, logs):
 
       # NEU (abstract), dient nur dazu, -Aüberschrieben zu werden-b
     def fillExternalWidget(self, value, id):
-        self.out( "SingleData.fillExternalWidget()")
-        self.out( "Value: " + str(value))
-        self.out( "ID: " + str(id))
+        # self.out( "SingleData.fillExternalWidget()")
+        # self.out( "Value: " + str(value))
+        # self.out( "ID: " + str(id))
         return ''
 
     
     def fillEntries(self, id):
-        self.out( id)
+        # self.out( id)
         self.ID = id
         if id > 0:
             dicRecord = self.load(id)
-            # self.out( dicRecord)
+            # # self.out( dicRecord)
             oneRecord = dicRecord[0]
             for i in range(len(oneRecord)):
 
     
-                self.out( "dicEntries-getEntryByName: " + str(self.dicEntries.getEntryByName(oneRecord.keys()[i])))
+                # self.out( "dicEntries-getEntryByName: " + str(self.dicEntries.getEntryByName(oneRecord.keys()[i])))
       
                 if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #sValue = self.getEntrySqlField(oneRecord.keys()[i], id)
-                    #self.out( "oneRecord: " + str(oneRecord))
-                    #self.out( "keys: " + str(oneRecord.keys()))
-                    #self.out( "values: " + str(oneRecord.values()))
+                    ## self.out( "oneRecord: " + str(oneRecord))
+                    ## self.out( "keys: " + str(oneRecord.keys()))
+                    ## self.out( "values: " + str(oneRecord.values()))
                     sValue = oneRecord.keys()[i]
-                    self.out( "#################################")
-                    self.out( "DICENTRIES: " + str(self.dicEntries.EntrySet))
-                    self.out( "#################################")
-                    #self.out( "key: " + `sValue`)
+                    # self.out( "#################################")
+                    # self.out( "DICENTRIES: " + str(self.dicEntries.EntrySet))
+                    # self.out( "#################################")
+                    ## self.out( "key: " + `sValue`)
                 else:
                     #entry =  self.dicEntries.getEntryAtIndex(i)
                     entry = self.dicEntries.getEntryByName(oneRecord.keys()[i])
-                    self.out( "entry: " + str(entry))
-                    self.out( "name : " + str(entry.getName()))
-                    self.out( "sql  : " + str(entry.getSqlField()))
-                    self.out( "wert : " + str(oneRecord[entry.getSqlField()]))
-                    self.out( "typ  : " + str(entry.getVerifyType()))
+                    # self.out( "entry: " + str(entry))
+                    # self.out( "name : " + str(entry.getName()))
+                    # self.out( "sql  : " + str(entry.getSqlField()))
+                    # self.out( "wert : " + str(oneRecord[entry.getSqlField()]))
+                    # self.out( "typ  : " + str(entry.getVerifyType()))
                     sValue = oneRecord[entry.getSqlField()]
 
                 # NEU, s.o.
                 #if i >= self.dicEntries.getCountOfEntries():
                 if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #self.fillExternalWidget(oneRecord[sValue], id)
-                    self.out( "sValue: " + str(sValue))
-                    self.out( "id: " + str(id))
+                    # self.out( "sValue: " + str(sValue))
+                    # self.out( "id: " + str(id))
                     #self.fillExternalWidget(sValue, id)
                     self.fillExternalWidget(sValue, oneRecord[sValue])
                 else:
                     # Wenn nichts drin steht (eigenart von PostgreSQL)
-                    self.out( type(sValue))
+                    # self.out( type(sValue))
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
                         sValue = `sValue`
                     if entry.getVerifyType() == 'string' and isinstance(sValue, types.StringType):
@@ -340,7 +341,7 @@ class SingleData(gladeXml, logs):
                     #    dt = DateTime.DateTimeFrom(sValue)
                     #dt = DateTime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
                     #dt = DateTime.DateTime(1999)
-                    #    self.out( dt)
+                    #    # self.out( dt)
                     #    sValue = dt.strftime(self.sDateFormat)
                     elif entry.getVerifyType() == 'bool' :
                            pass
@@ -349,10 +350,10 @@ class SingleData(gladeXml, logs):
                         sValue = str(sValue)
 
                     widget = self.getWidget(entry.getName())
-                    self.out( "widget: " + str(widget))
+                    # self.out( "widget: " + str(widget))
                     if string.count(str(widget), "GtkEntry") > 0:
-                        self.out( "GtkEntry:")
-                        self.out( "Name: " + str(widget.get_name()))
+                        # self.out( "GtkEntry:")
+                        # self.out( "Name: " + str(widget.get_name()))
                         widget.set_text(sValue)
                     elif string.count(str(widget), "GtkTextView") > 0:
                         buffer = gtk.TextBuffer(None)
@@ -380,10 +381,10 @@ class SingleData(gladeXml, logs):
 
     def readEntries(self):
         dicValues = {}
-        self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
+        # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
         for i in range(self.dicEntries.getCountOfEntries() ):
             entry =  self.dicEntries.getEntryAtIndex(i)
-            self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
+            # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
             print entry.getName()
             widget = self.getWidget(entry.getName())
             if string.count(str(widget), "GtkEntry") > 0:
@@ -406,10 +407,10 @@ class SingleData(gladeXml, logs):
          
             
             dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
-            self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
+            # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
             
-        self.out( 'dicValue by readEntries = ')
-        self.out(  dicValues)
+        # self.out( 'dicValue by readEntries = ')
+        # self.out(  dicValues)
         print  dicValues 
         dicValues = self.readNonWidgetEntries(dicValues)
 
@@ -418,17 +419,17 @@ class SingleData(gladeXml, logs):
             sVerify = dicValues[i][1]
             
             if sVerify  == 'string':
-                self.out( oValue)
+                # self.out( oValue)
                 oValue = oValue.encode('utf-8')
-                self.out( oValue)
-                self.out( '++++++++++++++++++++++++++++++++++')
+                # self.out( oValue)
+                # self.out( '++++++++++++++++++++++++++++++++++')
 
             if sVerify  == 'int':
-                self.out( oValue,self.INFO)
+                # self.out( oValue,self.INFO)
                 if oValue == '':
                     oValue = 0
-                self.out( oValue, self.INFO)
-                self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
+                # self.out( oValue, self.INFO)
+                # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
                 print oValue
                 if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
                     if oValue.isdigit():
@@ -446,11 +447,11 @@ class SingleData(gladeXml, logs):
                     oValue = 0
                 
             if sVerify  == 'float':
-                self.out( oValue)
+                # self.out( oValue)
                 if oValue == '':
                     oValue = 0.0
-                self.out( oValue)
-                self.out( '++++++++++++++++++++++++++++++++++')
+                # self.out( oValue)
+                # self.out( '++++++++++++++++++++++++++++++++++')
                 print oValue
                 if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
                     oValue = string.replace(oValue,',','.')
@@ -474,17 +475,17 @@ class SingleData(gladeXml, logs):
         return dicValues
 
     def readNonWidgetEntries(self, dicValues):
-        self.out( 'readNonWidgetEntries(self) by SingleData')
+        # self.out( 'readNonWidgetEntries(self) by SingleData')
         return dicValues
 
 
     def setEntries(self, dicEntries01):
-        self.out( 'singleData - set Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
-        self.out( dicEntries01)
+        # self.out( 'singleData - set Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
+        # self.out( dicEntries01)
         self.dicEntries = dicEntries01
         
     def getEntries(self):
-        self.out( 'singleData - get Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
+        # self.out( 'singleData - get Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
         return self.dicEntries 
       
   
@@ -498,7 +499,7 @@ class SingleData(gladeXml, logs):
         self.liFields = liFields01
         self.listboxId = len(liFields01)
         self.liFields.append('id')
-        self.out( 'lifield = ' + `self.liFields`)
+        # self.out( 'lifield = ' + `self.liFields`)
 
     def setTreeOrder(self, sSort01):
         self.sSort = sSort01
@@ -521,15 +522,15 @@ class SingleData(gladeXml, logs):
             else:
                 dicFields[i] = 'string'
 
-        self.out('dicFields = ')
-        self.out(dicFields)
+        ## self.out('dicFields = ')
+        ## self.out(dicFields)
         
         if dicFields:        
             dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicUser)
         else:
             dicLists = {}
             
-        self.out( dicLists)
+        # self.out( dicLists)
         print  dicLists
         try:
             for i in dicLists:
@@ -544,7 +545,8 @@ class SingleData(gladeXml, logs):
                     if j != 'id':
                         entry = self.dicEntries.getEntryByName(j)
                         if entry:
-                            self.out( entry.getName())
+                            pass
+                            # self.out( entry.getName())
 
                         else:
                             print 'no entry with this  name found'
@@ -556,9 +558,9 @@ class SingleData(gladeXml, logs):
         except:
             print 'Error '
                 
-        self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
-        self.out( liItems)
-        self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        # self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
+        # self.out( liItems)
+        # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         return liItems
     
 
@@ -573,16 +575,16 @@ class SingleData(gladeXml, logs):
             entry =  self.dicEntries.getEntryAtIndex(i)
             widget = self.getWidget(entry.getName())
             
-            self.out( "index : " + str(i))
-            self.out( "entry : " + str(entry))
-            self.out( "name  : " + str(entry.getName()))
+            # self.out( "index : " + str(i))
+            # self.out( "entry : " + str(entry))
+            # self.out( "name  : " + str(entry.getName()))
             
-            self.out( "widget: " + str(widget))
+            # self.out( "widget: " + str(widget))
             
             if string.count(str(widget), "GtkEntry") > 0:
                 widget.set_text('')
             elif string.count(str(widget), "GtkTextView") > 0:
-                self.out( "GtkTextView")
+                # self.out( "GtkTextView")
                 buffer = gtk.TextBuffer(None)
                 buffer.set_text('')
                 widget.set_buffer(buffer)

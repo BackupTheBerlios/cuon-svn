@@ -76,11 +76,7 @@
       <Entry-File>preferences_printing.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
     </Entries>
- <Entries>		
-      <Entry-Name>cuon</Entry-Name>
-      <Entry-File>dms.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
-    </Entries>
+
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_path_to_reports.xml</Entry-File>
@@ -92,7 +88,17 @@
       <Entry-File>preferences_path_to_docs.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_preferences_path_to_docs.xml</Entry-FileValue>
     </Entries>
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>preferences_scanner.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_preferences_scanner.xml</Entry-FileValue>
+    </Entries>
 
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>dms.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
+    </Entries>
 
   </Entry_Init_Files>
   

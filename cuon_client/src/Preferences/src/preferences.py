@@ -25,6 +25,8 @@ import logging
 from cuon.Windows.windows  import windows
 import cuon.Login.User
 import SinglePreferences
+import sane
+
 
 class preferenceswindow(windows):
 
@@ -51,12 +53,14 @@ class preferenceswindow(windows):
         self.EntriesPreferencesPrinting = 'preferences_printing.xml'
         self.EntriesPreferencesPathToReports = 'preferences_path_to_reports.xml'
         self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
+        self.EntriesPreferencesScanner = 'preferences_scanner.xml'
 
         
         self.loadEntries(self.EntriesPreferences)
         self.loadEntries(self.EntriesPreferencesPrinting)
         self.loadEntries(self.EntriesPreferencesPathToReports)
         self.loadEntries(self.EntriesPreferencesPathToDocs)
+        self.loadEntries(self.EntriesPreferencesScanner)
         
         
         self.singlePreferences.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
@@ -90,11 +94,13 @@ class preferenceswindow(windows):
         self.tabPrinting = 1
         self.tabPathToReports = 2
         self.tabPathToDocs = 3
+        self.tabScanner = 4
         
         
         self.tabOption = self.tabProfile
         self.tabChanged()
-        
+        print 'SANE version:', sane.init()
+ 
 
 
     def on_save1_activate(self, event):
@@ -107,6 +113,11 @@ class preferenceswindow(windows):
         self.singlePreferences.newRecord()
         self.setEntriesEditable(self.EntriesPreferences, TRUE)
 
+    def on_choose_profile1_activate(self, event):
+        print 'choose Profil'
+        self.loadProfile(self.singlePreferences.profileName)
+
+        
     def on_edit1_activate(self, event):
         if self.tabOption == self.tabProfile:
             self.setEntriesEditable(self.EntriesPreferences, TRUE)
@@ -116,14 +127,25 @@ class preferenceswindow(windows):
             self.setEntriesEditable(self.EntriesPreferencesPathToReports, TRUE)
         elif self.tabOption == self.tabPathToDocs:
             self.setEntriesEditable(self.EntriesPreferencesPathToDocs, TRUE)
+        elif self.tabOption == self.tabScanner:
+            self.setEntriesEditable(self.EntriesPreferencesScanner, TRUE)
 
-
+    
     def on_delete1_activate(self, event):
         self.singlePreferences.deleteRecord()
 
     def on_quit1_activate(self, event):
         self.closeWindow() 
-    
+
+    # Buttons
+    def on_bListScanDevices_clicked(self, event):
+        liDevs = sane.get_devices()
+        print 'Available devices=', liDevs
+        cb = self.getWidget('cbScanDevice')
+        for devs in liDevs:
+            listItem_a = gtk.ListItem(devs[0])
+            cb.list.append_items([listItem_a])
+            
    
     def refreshTree(self):
         self.singlePreferences.disconnectTree()
@@ -170,6 +192,13 @@ class preferenceswindow(windows):
             self.editAction = 'editProfile'
             self.setTreeVisible(FALSE)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToDocs) )
+            # set the Entries manually, because there is no tree event
+            self.singlePreferences.fillEntries(self.singlePreferences.ID)
+
+        elif self.tabOption == self.tabScanner:
+            self.editAction = 'editProfile'
+            self.setTreeVisible(FALSE)
+            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesScanner) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
            

@@ -30,13 +30,19 @@ import os
 import sane
 import Image
 import bz2
+import re
+import binascii
+import gnome.ui
+
 
 class dmswindow(windows):
 
     
     def __init__(self, allTables):
-
+        gnome.init("cuon", "0")
         windows.__init__(self)
+ 
+        
         self.openDB()
         self.oUser = self.loadObject('User')
         self.closeDB()
@@ -96,8 +102,8 @@ class dmswindow(windows):
         
         print 'SANE version:', sane.init()
         print 'Available devices=', sane.get_devices()
- 
 
+    
 
     def on_save1_activate(self, event):
         print 'save1'
@@ -126,10 +132,62 @@ class dmswindow(windows):
     def on_quit1_activate(self, event):
         self.closeWindow() 
 
+    def on_bSearch_clicked(self, event):
+        print 'Search'
+        dicSearchfields = self.readSearchDatafields(  {'title':'eSearchTitle', 'category':'eSearchCategory',  'sub1':'eSearchSub1',  'sub2':'eSearchSub2',  'sub3': 'eSearchSub3',  'sub4':'eSearchSub4',  'sub5':'eSearchSub5',  'search1':'eSearchSearch1',  'search2': 'eSearchSearch2',   'search3':'eSearchSearch3',  'search4': 'eSearchSearch4'})
 
+        print dicSearchfields
+        
+        sWhere = ''
+        if dicSearchfields:
+            for key in dicSearchfields.keys():
+                if dicSearchfields[key]:
+                    if sWhere:
+                        sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
+                    else:
+                        sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
+
+        print sWhere
+        
+        self.singleDMS.sWhere = sWhere
+        self.refreshTree()
+        
+        
     def on_bScan_clicked(self, event):
         self.scanDocument()
-   
+        self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat']['scanImage']['format']
+
+    def on_bImport_clicked(self, event):
+        print 'bImport'
+        self.importDocument()
+
+
+    def on_bView_clicked(self, event):
+        print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
+        print  self.singleDMS.fileFormat
+        exe = None
+        if self.singleDMS.fileFormat:
+            if self.singleDMS.fileFormat == self.dicUser['prefDMS']['fileformat']['scanImage']['format']:
+                print 'show'
+                s = bz2.decompress( self.singleDMS.imageData)
+              
+                newIm = Image.fromstring('RGB',[self.singleDMS.size_x, self.singleDMS.size_y], s)
+                newIm.show()
+            else:
+                for key in  self.dicUser['prefDMS']['fileformat'].keys():
+                    if self.singleDMS.fileFormat ==  self.dicUser['prefDMS']['fileformat'][key]['format']:
+                        exe =  self.dicUser['prefDMS']['fileformat'][key]['executable']
+                        sEXT =  self.dicUser['prefDMS']['fileformat'][key]['suffix'][0]
+
+            if exe:
+                self.singleDMS.createTmpFile(sEXT)
+                os.system(exe + ' ' + self.singleDMS.tmpFile)
+                        
+
+               
+                
+            
+        
     def refreshTree(self):
         self.singleDMS.disconnectTree()
     
@@ -189,17 +247,20 @@ class dmswindow(windows):
         print 'Device parameters:', scanner.get_parameters()
         
         # Set scan parameters
-        scanner.mode = 'Color'
-        #scanner.contrast=170.0
-        #scanner.brightness=150.0
-        #scanner.white_level=190.0
-        scanner.depth=24
-        scanner.br_x=1024.0
-        scanner.br_y=768.0
-        scanner.resolution = 150
+        scanner.mode = self.dicUser['prefDMS']['scan_mode']
+        scanner.contrast=self.dicUser['prefDMS']['scan_contrast']
+        scanner.brightness=self.dicUser['prefDMS']['scan_brightness']
+        #scanner.white_level=self.dicUser['prefDMS']['scan_white_level']
+        scanner.depth=self.dicUser['prefDMS']['scan_depth']
+        scanner.br_x=self.dicUser['prefDMS']['scan_r']['x']
+        scanner.br_y=self.dicUser['prefDMS']['scan_r']['y']
+        scanner.resolution = self.dicUser['prefDMS']['scan_resolution']
         
         print 'Device parameters after setting:', scanner.get_parameters()
-   
+        print scanner.contrast
+        print scanner.brightness
+        #print scanner.white_level
+        
         # Initiate the scan
         scanner.start()
         
@@ -231,3 +292,20 @@ class dmswindow(windows):
         
 
         
+    def importDocument(self):
+        sFile = self.getWidget('eImportFile').get_text()
+        if sFile:
+            print sFile
+            f = file(sFile,'rb')
+            b = f.read()
+            self.singleDMS.imageData = bz2.compress(b)
+            
+            for key in  self.dicUser['prefDMS']['fileformat'].keys():
+                for i in self.dicUser['prefDMS']['fileformat'][key]['suffix']:
+                    print i
+                    suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
+                    print suffix
+                    if i == suffix:
+                        self.singleDMS.fileFormat = self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat'][key]['format']
+
+                        

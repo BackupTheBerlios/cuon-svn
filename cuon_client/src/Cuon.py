@@ -367,7 +367,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 3, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 27, 'Rev': 0, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}

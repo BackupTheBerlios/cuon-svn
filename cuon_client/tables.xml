@@ -44,6 +44,41 @@
       
     </field>
     
+        <field>
+      <name>insert_time</name>
+      <type>timestamp</type>
+      <pkey>0</pkey>
+      <unique>0</unique>	
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>"create"</default>
+      <comment>set by trigger</comment>
+      
+    </field>
+
+    
+        <field>
+      <name>update_time</name>
+      <type>timestamp</type>
+      <pkey>0</pkey>
+      <unique>0</unique>	
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>"create"</default>
+      <comment>set by trigger</comment>
+      
+    </field>
+    <field>
+      <name>update_user_id</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default></default>
+      <comment>set by trigger</comment>
+      
+    </field>
     
   </table>
 
@@ -1616,7 +1651,42 @@
       <comment></comment>
     </field>
 
+  <field>
+      <name>file_format</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+  <field>
+      <name>insert_from</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+  <field>
+      <name>insert_at_date</name>
+      <type>timestamp</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
   </table>
+
 
 
   <database_sequence>

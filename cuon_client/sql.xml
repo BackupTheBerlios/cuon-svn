@@ -34,7 +34,27 @@
       <language>plpgsql</language>
   	<textOfFunction>
 	BEGIN
+	    NEW.update_user_id = current_user   ;
+	    NEW.update_time = (select  now()) ;
+	    NEW.user_id = OLD.user_id;
+                      NEW.insert_time = OLD.insert_time ;
+                      NEW.status = 'update' ;
+	    RAISE NOTICE ''Name =  % '', TG_NAME ;
+	    RETURN NEW; 
+	END;
+      </textOfFunction>
+   	<description>set the user_id to current_user </description>
+
+    </function>
+<function>
+      <old_name>fct_insert() </old_name>
+      <nameOfFunction>fct_insert( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+	BEGIN
 	    NEW.user_id = current_user   ;
+	    NEW.insert_time = (select  now()) ;
+                      NEW.status = 'insert' ;
 	    RAISE NOTICE ''Name =  % '', TG_NAME ;
 	    RETURN NEW; 
 	END;
@@ -78,7 +98,7 @@
     <trigger>
       <nameOfTrigger>trg_updateAddress</nameOfTrigger>
       <table>address</table>
-      <action>before update or insert</action>
+      <action>before update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update address </description>
@@ -94,9 +114,18 @@
       
     </trigger>
     <trigger>
+      <nameOfTrigger>trg_insertArticle</nameOfTrigger>
+      <table>articles</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>update article </description>
+      
+    </trigger>
+    <trigger>
       <nameOfTrigger>trg_updateArticle</nameOfTrigger>
       <table>articles</table>
-      <action>before update or  insert</action>
+      <action>before update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update article </description>
@@ -109,6 +138,34 @@
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_stock_goods_insert() ;  </textOfTrigger>
       <description>update article </description>
+      
+    </trigger>
+
+  <trigger>
+      <nameOfTrigger>trg_insertDMS</nameOfTrigger>
+      <table>dms</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert dms </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteDMS</nameOfTrigger>
+      <table>dms</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a dms, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateDMS</nameOfTrigger>
+      <table>dms</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update dms </description>
       
     </trigger>
 

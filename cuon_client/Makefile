@@ -144,7 +144,8 @@ install:
 	cp $(src_locale_de) $(I18LDIR_DE)/cuon.mo 
 	cp ./createUserDirs.sh $(INSTALLDIR)
 	chmod a+x $(INSTALLDIR)/createUserDirs.sh
-
+	if  [ ! -d $(INSTALLDIR)/icons ] ; then mkdir $(INSTALLDIR)/icons ; fi 
+	cp doc/cuon-logo* $(INSTALLDIR)/icons
 
 install_server:
 

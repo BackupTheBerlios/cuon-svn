@@ -113,7 +113,7 @@ def createSessionID(secValue = 36000):
 	for i in range(27):
 	     ok = 1
 	     while ok:
-	        r = random.randint(65,123)
+	        r = random.randint(65,122)
 	        if r < 91 or r > 96:
 	           ok = 0
 	           s = s + chr(r)

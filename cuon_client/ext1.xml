@@ -229,6 +229,119 @@
       <default></default>
       <comment></comment>
     </field>
+
+       <field>
+      <name>scanner_device</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+       <field>
+      <name>scanner_mode</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+       <field>
+      <name>scanner_resolution</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+       <field>
+      <name>scanner_depth</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+       <field>
+      <name>scanner_brx</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+       <field>
+      <name>scanner_bry</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+
+       <field>
+      <name>scanner_brightness</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+
+       <field>
+      <name>scanner_white_level</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+
+       <field>
+      <name>scanner_contrast</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+
+
+
   </table>
   
 </database>

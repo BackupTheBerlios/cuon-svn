@@ -12,8 +12,9 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 import os.path
-
-from cuon.Windows.windows import windows
+import cuon.TypeDefs
+#from cuon.Windows.windows import windows
+from cuon.Databases.dumps import dumps
 
 class User:
     """
@@ -28,7 +29,11 @@ class User:
         Variables:
             1. self.userName: Name of the User
         """
-        
+#        self.openDB()
+#        self.td = self.loadObject('td')
+#        self.closeDB()
+#        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
+
         self.userName = 'EMPTY'
         
         self.sessionID = 0
@@ -67,15 +72,38 @@ class User:
         self.prefColor = {'FG':0, 'BG':0}
 
         self.prefDMS = {}
+        #Scanner prefs
         self.prefDMS['scan_device'] = 'plustek:libusb:002:002'
         self.prefDMS['scan_r'] = {'x':1024.0, 'y':768.0}
         self.prefDMS['scan_mode'] = 'color'
-        self.prefDMS['scan_contrast'] = 170.0
-        self.prefDMS['scan_brightness'] = 150.0
-        self.prefDMS['scan_white_level'] = 190.0
+        self.prefDMS['scan_contrast'] = 0.0
+        self.prefDMS['scan_brightness'] = 0.0
+        self.prefDMS['scan_white_level'] = 0.0
         self.prefDMS['scan_depth'] = 24
         self.prefDMS['scan_resolution'] = 300
+        # File-format
+        self.prefDMS['fileformat'] = {}
+        self.prefDMS['fileformat']['scanImage'] = {'format':'Image Scanner', 'suffix':['NONE'], 'executable': 'INTERN'}
+        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw'], 'executable': '/usr/bin/oowriter'}
+        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc'], 'executable': '/usr/bin/oocalc'}
+        self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd'], 'executable': '/usr/bin/oodraw'}
+        self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sxi'], 'executable': '/usr/bin/ooimpress'}
+        self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf'], 'executable': '/usr/bin/gimp'}
+        self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': '/usr/bin/xmms'}
+        self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': '/usr/bin/xmms'}
+        self.prefDMS['fileformat']['txt'] =  {'format':'Text',  'suffix':['txt'], 'executable': '/usr/bin/gedit'}
+        self.prefDMS['fileformat']['tex'] =  {'format':'TEX',  'suffix':['tex',], 'executable': '/usr/bin/xemacs'}
+        self.prefDMS['fileformat']['latex'] =  {'format':'LATEX',  'suffix':['ltx',], 'executable': '/usr/bin/xemacs'}
+        self.prefDMS['fileformat']['pdf'] =  {'format':'Adobe PDF',  'suffix':['pdf',], 'executable': '/usr/bin/gpdf'}
 
+        self.prefDMS['fileformat']['dia'] =  {'format':'DIA ', 'suffix':['dia'], 'executables': '/usr/bin/dia'}
+        
+        
+        
+        
+ 
+
+        
         self.dicUser = {}
         
         

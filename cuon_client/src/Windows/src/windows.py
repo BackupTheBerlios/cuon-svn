@@ -83,6 +83,16 @@ class windows(MyXML, gladeXml):
         
         
 
+    def readSearchDatafields(self, dicWidgets):
+        dicSearchfields = {}
+   
+        for key in dicWidgets.keys():
+            print key
+            text = self.getWidget(dicWidgets[key]).get_text()
+            if text:
+                dicSearchfields[key] = text
+        return dicSearchfields
+
     def setProperties(self, sName):
         self.out('entries for property  = ' + sName)
         
@@ -298,3 +308,61 @@ class windows(MyXML, gladeXml):
 
     
         return newStyle
+
+
+
+
+    def loadProfile(self, sProfile = None):
+        
+        if  not sProfile :
+            sProfile = self.rpc.callRP('src.User.py_getNameOfStandardProfile', self.oUser.getDicUser() )
+
+            print 'Profile = '
+            print sProfile
+
+        print '-----------------------------------------------------------------------------------'
+        print 'Profile = ', sProfile
+        
+        if sProfile:
+            result = self.rpc.callRP('src.User.py_getStandardProfile',  sProfile,  self.oUser.getDicUser() )
+            print 'Result Profile'
+            print result
+            if result:
+                self.oUser.userLocales ='de'
+                if result.has_key('encoding'):
+                    self.oUser.userEncoding = result['encoding']
+                self.oUser.userPdfEncoding = 'latin-1'
+
+                self.oUser.userDateTimeFormatString = "%d.%m.%Y"
+                self.oUser.userTimeFormatString = "%H:%M"
+
+                self.oUser.serverAddress = None
+                self.oUser.userSQLDateFormat = 'DD.MM.YYYY'
+                self.oUser.userSQLTimeFormat = 'HH24:MI'
+                self.oUser.prefPath = {}
+
+                self.oUser.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']
+                self.oUser.prefPath['StandardSupply1'] =  result['path_to_docs_supply']
+                self.oUser.prefPath['StandardPickup1'] =  result['path_to_docs_pickup']
+                self.oUser.prefPath['AddressLists'] =   result['path_to_docs_address_lists']
+
+                self.oUser.prefPath['ReportStandardInvoice1'] =   result['path_to_report_invoices']
+                self.oUser.prefPath['ReportStandardSupply1'] =  result['path_to_report_supply']
+                self.oUser.prefPath['ReportStandardPickup1'] =  result['path_to_report_pickup']
+
+                self.oUser.prefPath['ReportAddressLists'] =  result['path_to_report_address_lists']
+
+                self.oUser.prefDMS['scan_device'] = result['scanner_device']
+                self.oUser.prefDMS['scan_r'] = {'x':result['scanner_brx'], 'y':result['scanner_bry']}
+                self.oUser.prefDMS['scan_mode'] = result['scanner_mode']
+                self.oUser.prefDMS['scan_contrast'] = result['scanner_contrast']
+                self.oUser.prefDMS['scan_brightness'] = result['scanner_brightness']
+                self.oUser.prefDMS['scan_white_level'] = result['scanner_white_level']
+                self.oUser.prefDMS['scan_depth'] = result['scanner_depth']
+                self.oUser.prefDMS['scan_resolution'] = result['scanner_resolution']
+
+                
+        else:
+            print 'no standard-Profile defined'
+            
+        self.oUser.refreshDicUser()

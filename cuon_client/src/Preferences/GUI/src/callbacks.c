@@ -72,3 +72,11 @@ on_bSearch_clicked                     (GtkButton       *button,
 
 }
 
+
+void
+on_bListScanDevices_clicked            (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

@@ -20,7 +20,12 @@ import threading
 import Image
 import bz2
 import base64
-
+import cuon.Misc.misc
+import pygtk
+pygtk.require('2.0')
+import gtk
+import gtk.glade
+import time
 
 class SingleDMS(SingleData):
 
@@ -47,16 +52,37 @@ class SingleDMS(SingleData):
         #
         self.statusfields = ['title']
         self.imageWidget = None
+        self.fileformat = None
+        self.tmpfile = None
 
+    def createTmpFile(self, sEXT):
+        b = bz2.decompress(self.imageData)
+        mi = cuon.Misc.misc.misc()
+          
+        sFile =self.dicUser['prefPath']['tmp'] +  mi.getRandomFilename('_dms.' + sEXT)
+        if b:
+            f = open(sFile, 'wb')
+            if f:
+                f.write(b)
+                self.tmpFile = sFile
+                
+            
     def readNonWidgetEntries(self, dicValues):
+        newTime = time.localtime()
+        tValue =  time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        
         print 'readNonWidgetEntries(self) by SingleDMS'
         dicValues['size_x'] = [self.size_x,'int']
         dicValues['size_y'] = [self.size_y,'int']
         dicValues['document_image'] = [self.imageData,'text']
-                
+        dicValues['file_format'] = [self.fileFormat, 'string']
+     
         return dicValues
 
     def fillOtherEntries(self, oneRecord):
+        
+        self.fileFormat = oneRecord['file_format']
+        print 'FileFormat by SDMS', self.fileFormat
         self.size_x = oneRecord['size_x']
         self.size_y =  oneRecord['size_y']
 
@@ -66,13 +92,23 @@ class SingleDMS(SingleData):
         print 'Size'
         print self.size_x
         print self.size_y
-        
-        self.imageData =   bz2.decompress(s2)
+        self.imageData = s2
+        if self.fileFormat == 'Image Scanner':
 
-                
-        newIm = Image.fromstring('RGB',[self.size_x, self.size_y], self.imageData)
-        newIm.thumbnail([480,400])
-        sFile = self.dicUser['prefPath']['tmp'] + 'dms_thumbnail.png'
-        newIm.save(sFile)
-        self.imageWidget.set_from_file(sFile)
-        
+            UC =   bz2.decompress(s2)
+
+
+            newIm = Image.fromstring('RGB',[self.size_x, self.size_y], UC)
+            newIm.thumbnail([480,400])
+            sFile = self.dicUser['prefPath']['tmp'] + 'dms_thumbnail.png'
+            newIm.save(sFile)
+            self.imageWidget.set_from_file(sFile)
+
+        else:
+             
+            logopic = '/usr/lib/cuon/icons/cuon-logo.png'
+            pixbuf = gtk.gdk.pixbuf_new_from_file(logopic)
+            scaled_buf = pixbuf.scale_simple(480,400,gtk.gdk.INTERP_BILINEAR)
+            self.imageWidget.set_from_pixbuf(scaled_buf)
+            self.imageWidget.show()
+            #self.imageWidget.set_from_file('/usr/lib/cuon/icons/cuon-logo.jpeg')

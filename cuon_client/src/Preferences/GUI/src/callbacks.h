@@ -32,3 +32,7 @@ on_clear1_activate                     (GtkMenuItem     *menuitem,
 void
 on_bSearch_clicked                     (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bListScanDevices_clicked            (GtkButton       *button,
+                                        gpointer         user_data);

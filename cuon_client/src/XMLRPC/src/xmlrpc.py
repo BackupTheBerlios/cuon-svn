@@ -112,7 +112,7 @@ class myXmlRpc(dumps, logs):
                 
                 rp_tries = rp_tries + 1
                 
-                if rp_tries > 3:
+                if rp_tries > 5:
                     startRP = FALSE
                 else:
                     print ' wait for 10 sec. '

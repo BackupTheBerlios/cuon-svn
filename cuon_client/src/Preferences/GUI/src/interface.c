@@ -127,7 +127,7 @@ create_PreferencesMainwindow (void)
   GtkWidget *label7;
   GtkWidget *eLocales;
   GtkWidget *label13;
-  GtkWidget *chbStandardProfile;
+  GtkWidget *chkbStandardProfile;
   GtkWidget *lProfile;
   GtkWidget *fixed1;
   GtkWidget *label8;
@@ -163,6 +163,32 @@ create_PreferencesMainwindow (void)
   GtkWidget *fileentry9;
   GtkWidget *cbPath_Docs_Pickup;
   GtkWidget *label6;
+  GtkWidget *table3;
+  GtkWidget *label19;
+  GtkWidget *label20;
+  GtkWidget *label21;
+  GtkWidget *label22;
+  GtkWidget *label23;
+  GtkWidget *label24;
+  GtkWidget *label25;
+  GtkWidget *label26;
+  GtkWidget *label27;
+  GtkWidget *label28;
+  GtkWidget *eScanMode;
+  GtkWidget *eScanResolution;
+  GtkWidget *eScanDepth;
+  GtkWidget *eScanBR_x;
+  GtkWidget *eScanContrast;
+  GtkWidget *eScanBrightness;
+  GtkWidget *eScanWhiteLevel;
+  GtkWidget *entry9;
+  GtkWidget *entry10;
+  GtkWidget *label29;
+  GtkWidget *eScanBR_y;
+  GtkWidget *hbox2;
+  GtkWidget *eScanDevice;
+  GtkWidget *bListScanDevices;
+  GtkWidget *label18;
 
   PreferencesMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (PreferencesMainwindow), _("Preferences"));
@@ -272,10 +298,10 @@ create_PreferencesMainwindow (void)
   gtk_fixed_put (GTK_FIXED (fixed3), label13, 344, 56);
   gtk_widget_set_size_request (label13, 0, 0);
 
-  chbStandardProfile = gtk_check_button_new_with_mnemonic (_("standard Profile"));
-  gtk_widget_show (chbStandardProfile);
-  gtk_fixed_put (GTK_FIXED (fixed3), chbStandardProfile, 0, 120);
-  gtk_widget_set_size_request (chbStandardProfile, 0, 0);
+  chkbStandardProfile = gtk_check_button_new_with_mnemonic (_("standard Profile"));
+  gtk_widget_show (chkbStandardProfile);
+  gtk_fixed_put (GTK_FIXED (fixed3), chkbStandardProfile, 0, 120);
+  gtk_widget_set_size_request (chkbStandardProfile, 0, 0);
 
   lProfile = gtk_label_new (_("Profile"));
   gtk_widget_show (lProfile);
@@ -462,11 +488,173 @@ create_PreferencesMainwindow (void)
   gtk_widget_show (label6);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), label6);
 
+  table3 = gtk_table_new (6, 4, FALSE);
+  gtk_widget_show (table3);
+  gtk_container_add (GTK_CONTAINER (notebook1), table3);
+
+  label19 = gtk_label_new (_("Scan Device"));
+  gtk_widget_show (label19);
+  gtk_table_attach (GTK_TABLE (table3), label19, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label19), 0, 0.5);
+
+  label20 = gtk_label_new (_("Mode"));
+  gtk_widget_show (label20);
+  gtk_table_attach (GTK_TABLE (table3), label20, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label20), 0, 0.5);
+
+  label21 = gtk_label_new (_("Resolution"));
+  gtk_widget_show (label21);
+  gtk_table_attach (GTK_TABLE (table3), label21, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label21), 0, 0.5);
+
+  label22 = gtk_label_new (_("Depth"));
+  gtk_widget_show (label22);
+  gtk_table_attach (GTK_TABLE (table3), label22, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0.5);
+
+  label23 = gtk_label_new (_("BR_x"));
+  gtk_widget_show (label23);
+  gtk_table_attach (GTK_TABLE (table3), label23, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0.5);
+
+  label24 = gtk_label_new (_("Contrast"));
+  gtk_widget_show (label24);
+  gtk_table_attach (GTK_TABLE (table3), label24, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label24), 0, 0.5);
+
+  label25 = gtk_label_new (_("Brightness"));
+  gtk_widget_show (label25);
+  gtk_table_attach (GTK_TABLE (table3), label25, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label25), 0, 0.5);
+
+  label26 = gtk_label_new (_("White Level"));
+  gtk_widget_show (label26);
+  gtk_table_attach (GTK_TABLE (table3), label26, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label26), 0, 0.5);
+
+  label27 = gtk_label_new (_("label27"));
+  gtk_widget_show (label27);
+  gtk_table_attach (GTK_TABLE (table3), label27, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label27), 0, 0.5);
+
+  label28 = gtk_label_new (_("label28"));
+  gtk_widget_show (label28);
+  gtk_table_attach (GTK_TABLE (table3), label28, 2, 3, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label28), 0, 0.5);
+
+  eScanMode = gtk_entry_new ();
+  gtk_widget_show (eScanMode);
+  gtk_table_attach (GTK_TABLE (table3), eScanMode, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanResolution = gtk_entry_new ();
+  gtk_widget_show (eScanResolution);
+  gtk_table_attach (GTK_TABLE (table3), eScanResolution, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanDepth = gtk_entry_new ();
+  gtk_widget_show (eScanDepth);
+  gtk_table_attach (GTK_TABLE (table3), eScanDepth, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanBR_x = gtk_entry_new ();
+  gtk_widget_show (eScanBR_x);
+  gtk_table_attach (GTK_TABLE (table3), eScanBR_x, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanContrast = gtk_entry_new ();
+  gtk_widget_show (eScanContrast);
+  gtk_table_attach (GTK_TABLE (table3), eScanContrast, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanBrightness = gtk_entry_new ();
+  gtk_widget_show (eScanBrightness);
+  gtk_table_attach (GTK_TABLE (table3), eScanBrightness, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eScanWhiteLevel = gtk_entry_new ();
+  gtk_widget_show (eScanWhiteLevel);
+  gtk_table_attach (GTK_TABLE (table3), eScanWhiteLevel, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  entry9 = gtk_entry_new ();
+  gtk_widget_show (entry9);
+  gtk_table_attach (GTK_TABLE (table3), entry9, 3, 4, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  entry10 = gtk_entry_new ();
+  gtk_widget_show (entry10);
+  gtk_table_attach (GTK_TABLE (table3), entry10, 3, 4, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label29 = gtk_label_new (_("BR_Y"));
+  gtk_widget_show (label29);
+  gtk_table_attach (GTK_TABLE (table3), label29, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0.5);
+
+  eScanBR_y = gtk_entry_new ();
+  gtk_widget_show (eScanBR_y);
+  gtk_table_attach (GTK_TABLE (table3), eScanBR_y, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  hbox2 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox2);
+  gtk_table_attach (GTK_TABLE (table3), hbox2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  eScanDevice = gtk_entry_new ();
+  gtk_widget_show (eScanDevice);
+  gtk_box_pack_start (GTK_BOX (hbox2), eScanDevice, TRUE, TRUE, 0);
+
+  bListScanDevices = gtk_button_new_with_mnemonic (_("Show Devices"));
+  gtk_widget_show (bListScanDevices);
+  gtk_box_pack_start (GTK_BOX (hbox2), bListScanDevices, FALSE, FALSE, 0);
+
+  label18 = gtk_label_new (_("Scanner"));
+  gtk_widget_show (label18);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), label18);
+
   g_signal_connect ((gpointer) button1, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
   g_signal_connect ((gpointer) notebook1, "switch_page",
                     G_CALLBACK (on_notebook1_switch_page),
+                    NULL);
+  g_signal_connect ((gpointer) bListScanDevices, "clicked",
+                    G_CALLBACK (on_bListScanDevices_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -505,7 +693,7 @@ create_PreferencesMainwindow (void)
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label7, "label7");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eLocales, "eLocales");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label13, "label13");
-  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, chbStandardProfile, "chbStandardProfile");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, chkbStandardProfile, "chkbStandardProfile");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, lProfile, "lProfile");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, fixed1, "fixed1");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label8, "label8");
@@ -540,6 +728,32 @@ create_PreferencesMainwindow (void)
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, fileentry9, "fileentry9");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, cbPath_Docs_Pickup, "cbPath_Docs_Pickup");
   GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label6, "label6");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, table3, "table3");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label19, "label19");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label20, "label20");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label21, "label21");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label22, "label22");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label23, "label23");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label24, "label24");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label25, "label25");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label26, "label26");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label27, "label27");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label28, "label28");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanMode, "eScanMode");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanResolution, "eScanResolution");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanDepth, "eScanDepth");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanBR_x, "eScanBR_x");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanContrast, "eScanContrast");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanBrightness, "eScanBrightness");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanWhiteLevel, "eScanWhiteLevel");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, entry9, "entry9");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, entry10, "entry10");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanBR_y, "eScanBR_y");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, hbox2, "hbox2");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, eScanDevice, "eScanDevice");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, bListScanDevices, "bListScanDevices");
+  GLADE_HOOKUP_OBJECT (PreferencesMainwindow, label18, "label18");
 
   return PreferencesMainwindow;
 }

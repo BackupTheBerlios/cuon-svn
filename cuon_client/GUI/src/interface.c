@@ -228,6 +228,7 @@ GtkWidget*
 create_window1 (void)
 {
   GtkWidget *window1;
+  GdkPixbuf *window1_icon_pixbuf;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *table1;
@@ -239,6 +240,12 @@ create_window1 (void)
   window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window1), _("C U O N"));
   gtk_window_set_default_size (GTK_WINDOW (window1), 662, 142);
+  window1_icon_pixbuf = create_pixbuf ("gui/cuon-logo.xpm");
+  if (window1_icon_pixbuf)
+    {
+      gtk_window_set_icon (GTK_WINDOW (window1), window1_icon_pixbuf);
+      gdk_pixbuf_unref (window1_icon_pixbuf);
+    }
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox1);
