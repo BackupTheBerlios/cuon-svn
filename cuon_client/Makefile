@@ -14,7 +14,7 @@ zope_import =  root@server2://var/lib/zope/instance/default/import
 src_ini=./cuon_ini1.xml
 
 
-src_main = ./src/*.py cuon.sh
+src_main = ./cuon/*.py cuon.sh
 dest_main = ./CUON
 dest_cuon = $(dest_main)/cuon
 
@@ -23,76 +23,83 @@ src_server = ./cuon_server.py
 dest_server =$(dest_cuon)
  
 
-src_typedefs = ./src/TypeDefs/src/*.py
+src_typedefs = ./cuon/TypeDefs/src/*.py
 dest_typedefs = $(dest_cuon)/TypeDefs
 
 
-src_login = ./src/Login/src/*.py
+src_login = ./cuon/Login/src/*.py
 dest_login = $(dest_cuon)/Login
 
-src_misc = ./src/Misc/src/*.py
+src_misc = ./cuon/Misc/src/*.py
 dest_misc = $(dest_cuon)/Misc
 
-src_addresses = ./src/Addresses/src/*.py
+src_addresses = ./cuon/Addresses/src/*.py
 dest_addresses = $(dest_cuon)/Addresses
 
 
-src_articles = ./src/Articles/src/*.py
+src_articles = ./cuon/Articles/src/*.py
 dest_articles = $(dest_cuon)/Articles
 
-src_order = ./src/Order/src/*.py
+src_order = ./cuon/Order/src/*.py
 dest_order = $(dest_cuon)/Order
 
 
-src_databases = ./src/Databases/src/*.py
+src_databases = ./cuon/Databases/src/*.py
 dest_databases = $(dest_cuon)/Databases
 
 
 
-src_xml = ./src/XML/src/*.py
+src_xml = ./cuon/XML/src/*.py
 dest_xml = $(dest_cuon)/XML
 
-src_xmlrpc = ./src/XMLRPC/src/*.py
+src_xmlrpc = ./cuon/XMLRPC/src/*.py
 dest_xmlrpc = $(dest_cuon)/XMLRPC
 
 
-src_windows = ./src/Windows/src/*.py
+src_windows = ./cuon/Windows/src/*.py
 dest_windows = $(dest_cuon)/Windows
 
 
-src_log = ./src/Logging/src/*.py
+src_log = ./cuon/Logging/src/*.py
 dest_log = $(dest_cuon)/Logging
 
 
-src_oo = ./src/OpenOffice/src/*.py
+src_oo = ./cuon/OpenOffice/src/*.py
 dest_oo = $(dest_cuon)/OpenOffice
 
-src_pdf = ./src/PDF/src/*.py ./src/PDF/XML/*.py
+src_pdf = ./cuon/PDF/src/*.py 
 dest_pdf = $(dest_cuon)/PDF
 
+src_pdf_xml = ./cuon/PDF/XML/*.py
+dest_pdf_xml = $(dest_cuon)/PDF/XML
 
 
-src_preferences = ./src/Preferences/src/*.py ./src/Preferences/XML/*.py
+
+src_preferences = ./cuon/Preferences/src/*.py 
 dest_preferences = $(dest_cuon)/Preferences
 
-src_repgen = ./src/ReportGenerator/src/*.py
+src_preferences_xml = ./cuon/Preferences/XML/*.py
+dest_preferences_xml = $(dest_cuon)/Preferences/XML
+
+
+src_repgen = ./cuon/ReportGenerator/src/*.py
 dest_repgen = $(dest_cuon)/ReportGenerator
 
-src_stock = ./src/Stock/src/*.py
+src_stock = ./cuon/Stock/src/*.py
 dest_stock = $(dest_cuon)/Stock
 
-src_email = ./src/E_Mail/src/*.py
+src_email = ./cuon/E_Mail/src/*.py
 dest_email = $(dest_cuon)/E_Mail
 
 
-src_dms = ./src/DMS/src/*.py
+src_dms = ./cuon/DMS/src/*.py
 dest_dms = $(dest_cuon)/DMS
 
 
-src_vtk = ./src/VTK/src/*.py
+src_vtk = ./cuon/VTK/src/*.py
 dest_vtk = $(dest_cuon)/VTK
 
-src_prefs_finance = ./src/PrefsFinance/src/*.py 
+src_prefs_finance = ./cuon/PrefsFinance/src/*.py 
 dest_prefs_finance = $(dest_cuon)/PrefsFinance
 
 src_cuon =  $(dest_cuon)/*
@@ -124,6 +131,8 @@ all :
 	if [ ! -d $(dest_misc) ] ; then mkdir $(dest_misc) ; fi ; cp $(src_misc) $(dest_misc) 
 	if [ ! -d $(dest_pdf) ] ; then mkdir $(dest_pdf) ; fi ; cp $(src_pdf) $(dest_pdf) 
 	if [ ! -d $(dest_preferences) ] ; then mkdir $(dest_preferences) ; fi ; cp $(src_preferences) $(dest_preferences) 
+	if [ ! -d $(dest_pdf_xml) ] ; then mkdir $(dest_pdf_xml) ; fi ; cp $(src_pdf_xml) $(dest_pdf_xml) 
+	if [ ! -d $(dest_preferences_xml) ] ; then mkdir $(dest_preferences_xml) ; fi ; cp $(src_preferences_xml) $(dest_preferences_xml) 
 	if [ ! -d $(dest_repgen) ] ; then mkdir $(dest_repgen) ; fi ; cp $(src_repgen) $(dest_repgen) 
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
@@ -166,7 +175,7 @@ install_server:
 	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
 	find ./ -name "*.glade2" -exec cp {} $(dest_glade) \; 
 	find ./ -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
-	find ./src/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
+	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 
 install_zope:
 
