@@ -56,7 +56,6 @@ class stockwindow(chooseWindows):
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
-        # self.singleOrder.loadTable()
               
         self.EntriesStock = 'stock.xml'
         self.EntriesStockGoods = 'stockgoods.xml'
@@ -167,6 +166,7 @@ class stockwindow(chooseWindows):
     def on_GoodsSave1_activate(self, event):
         print "save Goods v2"
         self.singleStockGoods.stock_id = self.singleStock.ID
+        self.singleStockGoods.article_id = self.singleArticle.ID        
         self.singleStockGoods.save()
         self.setEntriesEditable(self.EntriesStockGoods, FALSE)
         self.tabChanged()
@@ -195,74 +195,11 @@ class stockwindow(chooseWindows):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
 
-    # signals from entry eAddressNumber
-    
-    def on_eAddressNumber_changed(self, event):
-        print 'eAdrnbr changed'
-        iAdrNumber = self.getChangedValue('eAddressNumber')
-        eAdrField = self.getWidget('tvAddress')
-        liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-
+ 
     # Tab Supply choose address 
     def on_bSearchSupply_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         adr.setChooseEntry('chooseAddress', self.getWidget( 'eSupplyNumber'))
-
-    def on_eSupplyNumber_changed(self, event):
-        print 'eSupply changed'
-        iAdrNumber = self.getChangedValue('eSupplyNumber')
-        eAdrField = self.getWidget('tvSupply')
-        liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-
-        # Tab Gets  choose address 
-    def on_bSearchGet_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry('chooseAddress', self.getWidget( 'eGetsNumber'))
-
-    def on_eGetsNumber_changed(self, event):
-        print 'eGets changed'
-        iAdrNumber = self.getChangedValue('eGetsNumber')
-        eAdrField = self.getWidget('tvGets')
-        liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-
-    def on_bSearchGetsPartner_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry('chooseAddress', self.getWidget( 'eGetsPartner'))
-
-    def on_eGetsPartner_changed(self, event):
-        print 'eGetsPartner changed'
-        iAdrNumber = self.getChangedValue('eGetsPartner')
-        eAdrField = self.getWidget('tvGetsPartner')
-        liAdr = self.singlePartner.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-
-
-
-    def on_bSearchForwardingAgency_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry('chooseAddress', self.getWidget( 'eForwardingAgency'))
-
-    def on_eForwardingAgency_changed(self, event):
-        print 'eForwardingAgency changed'
-        iAdrNumber = self.getChangedValue('eForwardingAgency')
-        eAdrField = self.getWidget('tvForwardingAgency')
-        liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-
-
-    def on_bContactPerson_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry('chooseAddress', self.getWidget( 'eContactPerson'))
-
-    def on_eContactPerson_changed(self, event):
-        print 'eContactPerson changed'
-        iAdrNumber = self.getChangedValue('eContactPerson')
-        eAdrField = self.getWidget('tvContactPerson')
-        liAdr = self.singlePartner.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
 
         
         # Tab Positions choose article 
@@ -275,10 +212,11 @@ class stockwindow(chooseWindows):
     def on_eArticleID_changed(self, event):
         print 'eArticle changed'
         iArtNumber = self.getChangedValue('eArticleID')
-        eArtField = self.getWidget('tvArticle')
-        liArt = self.singleArticle.getArticle(iArtNumber)
-        self.setTextbuffer(eArtField,liArt)
+        self.singleArticle.load(iArtNumber)
+        firstRecord  = self.singleArticle.getFirstRecord()
+        self.getWidget('eGoodsArticleDesignation').set_text(firstRecord['designation'])
 
+        
     def refreshTree(self):
         self.singleStock.disconnectTree()
         self.singleStockGoods.disconnectTree()
@@ -288,7 +226,7 @@ class stockwindow(chooseWindows):
             self.singleStock.refreshTree()
 
         elif self.tabOption == self.tabGoods:
-            self.singleStockGoods.sWhere  ='where ordernumber = ' + `int(self.singleStock.ID)`
+            self.singleStockGoods.sWhere  ='where stock_id = ' + `int(self.singleStock.ID)`
             self.singleStockGoods.connectTree()
             self.singleStockGoods.refreshTree()
 
@@ -297,14 +235,14 @@ class stockwindow(chooseWindows):
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
         if self.tabOption == self.tabStock:
-            #Address
+            #Stock
             self.disableMenuItem('tabs')
             self.enableMenuItem('stock')
             print 'Seite 0'
             self.editAction = 'editStock'
             
         elif self.tabOption == self.tabGoods:
-            #Partner
+            #Goods
             self.disableMenuItem('tabs')
             self.enableMenuItem('goods')
             self.editAction = 'editGoods'

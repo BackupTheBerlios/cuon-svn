@@ -45,7 +45,14 @@ import cuon.Order.standard_pickup_note
 
 
 class orderwindow(chooseWindows):
-
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
+    
     
     def __init__(self, allTables):
 
@@ -409,6 +416,14 @@ class orderwindow(chooseWindows):
         eArtField = self.getWidget('tvArticle')
         liArt = self.singleArticle.getArticle(iArtNumber)
         self.setTextbuffer(eArtField,liArt)
+        record = self.singleArticle.getFirstRecord()
+        if record:
+            print record
+            self.getWidget('eOrderPositionsUnit').set_text(record['unit'])
+            
+        if self.singleOrderPosition.ID == -1 and record:
+            self.getWidget('eOrderPositionsTaxVat').set_text(record['tax_vat'])
+          
 
     def refreshTree(self):
         self.singleOrder.disconnectTree()

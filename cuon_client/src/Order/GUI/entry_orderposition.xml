@@ -10,6 +10,7 @@
       <verify_type>int</verify_type>
       <create_sql>1</create_sql>
       <sql_field>articleid</sql_field>
+      <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
       
@@ -32,6 +33,7 @@
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
       <sql_field>amount</sql_field>
+      <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
       
@@ -54,11 +56,22 @@
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
       <sql_field>price</sql_field>
+      <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-      
-    </entry>
-    
+    </entry>   
+    <entry>
+      <name>eOrderPositionsTaxVat</name>
+      <type>testline</type>
+      <size>11</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>price</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+   </entry>   
+   
   </table>
   
   </entries_for_table>

@@ -38,12 +38,14 @@ class User:
         self.userEncoding = 'utf-8'
         self.userPdfEncoding = 'latin-1'
         self.userType = 'cuon'        
-        self.userDateTimeFormatString = "%d.%m.%Y"
+        self.userDateFormatString = "%d.%m.%Y"
+        self.userDateTimeFormatString = "%d.%m.%Y %H:%M"
         self.userTimeFormatString = "%H:%M"
         
         self.serverAddress = None
         self.userSQLDateFormat = 'DD.MM.YYYY'
         self.userSQLTimeFormat = 'HH24:MI'
+        self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
         self.prefPath = {}
 
         self.prefPath['StandardInvoice1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Invoice' )
@@ -56,7 +58,7 @@ class User:
         self.prefPath['ReportStandardPickup1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         
         self.prefPath['ReportAddressLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-
+        self.prefColor = {'FG':0, 'BG':0}
         
         self.dicUser = {}
         
@@ -78,11 +80,13 @@ class User:
         #self.dicUser['serverAddress'] = self.serverAddress
         self.dicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
+        self.dicUser['SQLDateTimeFormat'] = self.userSQLDateTimeFormat
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
         self.dicUser['prefPath'] = self.prefPath
         self.dicUser['SessionID'] = self.getSessionID()
         self.dicUser['userType'] = self.userType
+        self.dicUser['prefColor'] = self.prefColor
 		
     def getDicUser(self):
         '''

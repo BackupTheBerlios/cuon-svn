@@ -338,6 +338,8 @@ import gnome.ui
 
 # localisation
 import locale, gettext
+import time
+
 
 locale.setlocale (locale.LC_ALL, '')
 APP = 'cuon'
@@ -360,9 +362,10 @@ class MainWindow(windows):
     """
 
    
-    def __init__(self):
+    def __init__(self, sT):
         windows.__init__(self)
-        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 1, 'Species': 0, 'Maschine': 'i386'}
+        self.sStartType = sT
+        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 2, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -387,7 +390,7 @@ class MainWindow(windows):
                 
         self.disableMenuItem('login')
         self.enableMenuItem('user')
-
+ 
     def on_eUserName_changed(self, event):
         if self.getWidget('eUserName').get_text() != 'EMPTY':
             self.openDB()
@@ -396,6 +399,9 @@ class MainWindow(windows):
                           
             self.disableMenuItem('user')
             self.enableMenuItem('login')
+            if self.sStartType == 'server':
+                self.enableMenuItem('serverMode')
+
             self.openDB()
        
                 
@@ -534,6 +540,8 @@ class MainWindow(windows):
         
         self.addEnabledMenuItems('login','tools1')
         self.addEnabledMenuItems('login','preferences1')
+
+        self.addEnabledMenuItems('serverMode','databases1')
         
         
         
@@ -543,6 +551,7 @@ class MainWindow(windows):
         self.addEnabledMenuItems('user','update1')
         
         self.disableMenuItem('login')
+        self.disableMenuItem('serverMode')
         self.enableMenuItem('user')
 
         self.setTitle('window1',self.sTitle)
@@ -574,7 +583,7 @@ d.saveObject('td', td)
 d.closeDB()
 print _('Hello, this is a test')
 
-m = MainWindow()
+m = MainWindow(sStartType)
 m.startMain(sStartType)
 gtk.main()
 

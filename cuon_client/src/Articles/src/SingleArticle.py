@@ -48,9 +48,9 @@ class SingleArticle(SingleData):
             dicRecord = dicRecords[0]
             liArticle.append(dicRecord['number'])
             liArticle.append(dicRecord['designation'])
-            liArticle.append (_('Wrapping: ') + dicRecord['wrapping'])
-            liArticle.append(_('Quant. per Wrap.: ') + `dicRecord['quantumperwrap']`)
-            liArticle.append(_('Unit: ' ) + dicRecord['unit'] )
+            liArticle.append (' ')
+            liArticle.append(' ')
+            liArticle.append(' ' )
         if not liArticle:
             liArticle.append(' ')
             liArticle.append(' ')
@@ -59,3 +59,12 @@ class SingleArticle(SingleData):
             liArticle.append(' ')
             
         return liArticle
+
+       
+    def getArticleFields(self, id):
+        dicRecords = self.load(id)
+
+    def getArticleNumber(self, id):
+        dicRecords = self.load(id)
+        return dicRecords[0]['number']
+    

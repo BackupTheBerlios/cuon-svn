@@ -35,6 +35,7 @@ from cuon.XML.MyXML import MyXML
 import cuon.TypeDefs.typedefs
 import cuon.XMLRPC.xmlrpc
 import cuon.Windows
+import time
 
 class SingleData(gladeXml, logs):
 
@@ -63,7 +64,7 @@ class SingleData(gladeXml, logs):
         self.path = None
         self.statusfields = []
         self.sStatus = ''
-
+        self.firstRecord = None
         
     def load(self, record, dicDetail = None):
         '''
@@ -104,8 +105,9 @@ class SingleData(gladeXml, logs):
                  
 
             firstRecord = liRecords[0]
-            print ('nach user-encoding')
-            print firstRecord
+            #print ('nach user-encoding')
+            #print firstRecord
+            self.ID = firstRecord['id']
             self.sStatus = ''
             
             if self.statusfields:
@@ -113,10 +115,12 @@ class SingleData(gladeXml, logs):
                     print i
                     self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
 
-                    
+            self.firstRecord = firstRecord            
         return liRecords
 
-
+    def getFirstRecord(self):
+        return  self.firstRecord
+    
    
     def findSingleId(self):
         liItems = self.getListEntries()
@@ -367,6 +371,10 @@ class SingleData(gladeXml, logs):
             #elif string.count(str(widget), "GtkCombo") > 0:
             elif string.count(str(widget), "GtkCheckButton") > 0:
                 sValue = `widget.get_active()`
+            elif string.count(str(widget), "GnomeDateEdit") > 0:
+                newTime = time.localtime(widget.get_time())
+                sValue = time.strftime(self.dicUser['DateTimeformatString'])
+                
             else:
                 sValue = widget.get_text()
             
@@ -532,6 +540,7 @@ class SingleData(gladeXml, logs):
     def newRecord(self):
         self.ID = -1
         self.setEmptyEntries()
+
         
     
     def setEmptyEntries(self):

@@ -19,6 +19,7 @@
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
       <sql_field>lastname</sql_field>
+      <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
@@ -90,14 +91,15 @@
 
       </entry>
   <entry>
-	<name>eCity</name>
-	<type>textline</type>
-               <size>50</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>city</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
+      <name>eCity</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>city</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
 
       </entry>
  <entry>

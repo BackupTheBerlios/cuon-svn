@@ -81,6 +81,9 @@ dest_repgen = $(dest_cuon)/ReportGenerator
 src_stock = ./src/Stock/src/*.py
 dest_stock = $(dest_cuon)/Stock
 
+src_email = ./src/E_Mail/src/*.py
+dest_email = $(dest_cuon)/E_Mail
+
 
 
 
@@ -115,6 +118,7 @@ all :
 	if [ ! -d $(dest_preferences) ] ; then mkdir $(dest_preferences) ; fi ; cp $(src_preferences) $(dest_preferences) 
 	if [ ! -d $(dest_repgen) ] ; then mkdir $(dest_repgen) ; fi ; cp $(src_repgen) $(dest_repgen) 
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
+	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi

@@ -22,6 +22,7 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
+import gnome.ui
 import string
 from cuon.Databases.SingleData import SingleData
 import SingleAddress
@@ -38,8 +39,6 @@ import cPickle
 # localisation
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
-import gtk
-import gtk.glade
 import threading
 import mx.DateTime
 
@@ -283,56 +282,66 @@ class addresswindow(chooseWindows):
         self.out( "delete Schedul addresses v2")
         self.singleSchedul.deleteRecord()
 
-    def on_calendar1_day_selected(self, cal):
-        print cal
-        date  = cal.get_date()
-        print date
-        print date[0]
-        print date[1]
-        print date[2]
-        eSchedulDate = self.getWidget('eSchedulDate')
-        newDate = mx.DateTime.DateTime(date[0], date[1] + 1, date[2])
-        sDate = newDate.strftime(self.oUser.userDateTimeFormatString)
-        eSchedulDate.set_text(sDate)
+    def on_gdeDate_date_changed(self, event ):
+        print str(event)
+        gdeSchedul = self.getWidget('gdeDate')
+        newDate = gdeSchedul.get_time()
+        print newDate
         
-    def on_eSchedulDate_changed(self, event):
-        pass
+        
+        
+        
 
-    def on_hscale1_value_changed(self, hScale):
-        tTime = None
-        hourValue =  hScale.get_value()
-        eSchedulTime = self.getWidget('eSchedulTime')
-        sTime = eSchedulTime.get_text()
-        if sTime:
-            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
-            oldHour = tTime.hour
-            oldMinute = tTime.minute
+##    def on_calendar1_day_selected(self, cal):
+##        print cal
+##        date  = cal.get_date()
+##        print date
+##        print date[0]
+##        print date[1]
+##        print date[2]
+##        eSchedulDate = self.getWidget('eSchedulDate')
+##        newDate = mx.DateTime.DateTime(date[0], date[1] + 1, date[2])
+##        sDate = newDate.strftime(self.oUser.userDateTimeFormatString)
+##        eSchedulDate.set_text(sDate)
+        
+##    def on_eSchedulDate_changed(self, event):
+##        pass
+
+##    def on_hscale1_value_changed(self, hScale):
+##        tTime = None
+##        hourValue =  hScale.get_value()
+##        eSchedulTime = self.getWidget('eSchedulTime')
+##        sTime = eSchedulTime.get_text()
+##        if sTime:
+##            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
+##            oldHour = tTime.hour
+##            oldMinute = tTime.minute
             
-            print 'oldHour = ' + `oldHour`
+##            print 'oldHour = ' + `oldHour`
             
-            tTime = mx.DateTime.today(hourValue, oldMinute)
-        else:
-            tTime = mx.DateTime.today(hourValue, 0)
+##            tTime = mx.DateTime.today(hourValue, oldMinute)
+##        else:
+##            tTime = mx.DateTime.today(hourValue, 0)
             
-        sTime = tTime.strftime(self.oUser.userTimeFormatString)
-        eSchedulTime.set_text(sTime)
+##        sTime = tTime.strftime(self.oUser.userTimeFormatString)
+##        eSchedulTime.set_text(sTime)
             
-    def on_vscale1_value_changed(self, vScale):
-        tTime = None
-        minuteValue =  vScale.get_value()
-        eSchedulTime = self.getWidget('eSchedulTime')
-        sTime = eSchedulTime.get_text()
-        if sTime:
-            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
-            oldHour = tTime.hour
-            oldMinute = tTime.minute
+##    def on_vscale1_value_changed(self, vScale):
+##        tTime = None
+##        minuteValue =  vScale.get_value()
+##        eSchedulTime = self.getWidget('eSchedulTime')
+##        sTime = eSchedulTime.get_text()
+##        if sTime:
+##            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
+##            oldHour = tTime.hour
+##            oldMinute = tTime.minute
             
-            tTime = mx.DateTime.today(oldHour, minuteValue)
-        else:
-            tTime = mx.DateTime.today(0, minuteValue)
+##            tTime = mx.DateTime.today(oldHour, minuteValue)
+##        else:
+##            tTime = mx.DateTime.today(0, minuteValue)
             
-        sTime = tTime.strftime(self.oUser.userTimeFormatString)
-        eSchedulTime.set_text(sTime)
+##        sTime = tTime.strftime(self.oUser.userTimeFormatString)
+##        eSchedulTime.set_text(sTime)
             
         
         

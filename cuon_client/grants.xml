@@ -101,6 +101,14 @@
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_stocks </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>stocks, stocks_id, stock_goods, stock_goods_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+
 
     <grant>
       <nameOfGrant>some_admin</nameOfGrant>

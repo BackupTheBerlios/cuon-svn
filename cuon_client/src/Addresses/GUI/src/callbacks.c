@@ -290,3 +290,19 @@ on_vscale1_value_changed               (GtkRange        *range,
 
 }
 
+
+void
+on_gdeDate_date_changed                (GnomeDateEdit   *gnomedateedit,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_gdeDate_time_changed                (GnomeDateEdit   *gnomedateedit,
+                                        gpointer         user_data)
+{
+
+}
+

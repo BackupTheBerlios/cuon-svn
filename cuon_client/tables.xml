@@ -1041,6 +1041,19 @@
       <comment></comment>
       
     </field>
+
+   <field>
+      <name>tax_vat</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+
     
   </table>
   

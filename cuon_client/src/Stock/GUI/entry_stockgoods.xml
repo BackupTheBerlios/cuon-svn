@@ -1,18 +1,18 @@
 <entries_for_table>
-    <table>
-      <table_name>stock_goods</table_name>
-  <entry>
-	<name>eArticleID</name>
-	<type>textline</type>
-               <size>30</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>number</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry> 
-     <entry>
+  <table>
+    <table_name>stock_goods</table_name>
+    <entry>
+      <name>eArticleID</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>article_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    <entry>
 	<name>eToEmbed</name>
 	<type>float</type>
                 <size>10</size>

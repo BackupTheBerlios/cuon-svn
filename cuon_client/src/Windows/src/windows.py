@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+
+##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+
+##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
+##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+##for more details.
+
+##You should have received a copy of the GNU General Public License along with this program; if not, write to the
+##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
+
+
 import sys
 from types import *
 import pygtk
@@ -222,70 +237,64 @@ class windows(MyXML, gladeXml):
         '''        
         defaultStyle = self.win1.get_style()
         map = self.win1.get_colormap()
-        color = map.alloc_color("#FF9999")
-  
+        pColor = self.dicUser['prefColor']
+        colorFG =  map.alloc_color(0,0,0)
+        colorBG =  map.alloc_color(255*255,255*255, 255*255)
+        colorBase =  map.alloc_color(130*255,180*255,220*255)
+        colorText = map.alloc_color(180*255, 180*255,70*255)
+        colorLight = map.alloc_color("#FF9999")
+        colorMid = map.alloc_color("#FF9999")
+        colorDark = map.alloc_color("#FF9999")
+        
+        if pColor['FG'] == 0:
+            if pColor['BG'] == 0:
+                if cType == 'duty':
+                    colorBase =  map.alloc_color("#5feeec")
+                    colorText = map.alloc_color("#af0000")
+                
         newStyle = defaultStyle.copy()
         '''
-        entry : s for background, t for foreground
-        button: b for background, f for foreground
+        entry : s (base) for background, t ( text) for foreground
+        button: b (BG) for background, f (FG) for foreground
         '''
         
         cSwitch = []
         
         if cType == 'duty':
-            color1 =  map.alloc_color("#FF9999")
-            color2 =  map.alloc_color("#FF9999")
-            color3 =  map.alloc_color("#2244ee")
-
+   
             if cWidget == 'entry':
                 cSwitch.append( 's')
                 cSwitch.append('t')
                 
         for cs in cSwitch:
             if cs == 'f':
-                print 'set color for foreground'
                 for  i in range(5 ):
-                    newStyle.fg[i] = color1;
+                    newStyle.fg[i] = colorFG;
 
 
             elif cs == 'b':
-                print 'set color for background'
                 for  i in range(5 ):
-                    newStyle.bg[i] = color2;
+                    newStyle.bg[i] = colorBG;
 
             elif cs == 's':
-                print 'set color for background'
                 for  i in range(5 ):
-                    newStyle.base[i] = color3;
+                    newStyle.base[i] = colorBase;
                   
-                 
-##         break;
-##      case 'l':
-##      case 'L':
-##         for ( i = 0; i < 5; i++ )
-##            style->light[i] = color;
-##         break;
-##      case 'd':
-##      case 'D':
-##         for ( i = 0; i < 5; i++ )
-##            style->dark[i] = color;
-##         break;
-##      case 'm':
-##      case 'M':
-##         for ( i = 0; i < 5; i++ )
-##            style->mid[i] = color;
-##         break;
-##      case 't':
-##      case 'T':
-##         for ( i = 0; i < 5; i++ )
-##            style->text[i] = color;
-##         break;
-##      case 's':
-##      case 'S':
-##         for ( i = 0; i < 5; i++ )
-##            style->base[i] = color;
-##         break;
-##   }
-##}
+            elif cs == 'l':
+                for  i in range(5 ):
+                    newStyle.light[i] = colorLight;
+
+            elif cs == 'd':
+                for  i in range(5 ):
+                    newStyle.dark[i] = colorDark;
+
+            elif cs == 'm':
+                for  i in range(5 ):
+                    newStyle.mid[i] = colorMid;
+
+            elif cs == 't':
+                for  i in range(5 ):
+                    newStyle.text[i] = colorText;
+
     
         return newStyle

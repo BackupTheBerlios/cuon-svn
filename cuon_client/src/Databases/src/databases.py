@@ -441,7 +441,7 @@ class databaseswindow(windows):
                         user = self.getData(userNode[0])
                         self.out('User = ' + `user`)
                         print 'User = ' + `user`
-                        ok = self.rpc.callRP('src.Databases.py_createUser', user, self.dicUser)       
+                        ok = self.rpc.callRP('src.Databases.py_createUser', user, self.dicUser, 1)       
                         self.out(ok)
 
 
@@ -513,7 +513,7 @@ class databaseswindow(windows):
                         func = self.getData(funcNode[0])
                         self.out(func)
                         # first delete the function ( specified in Old_name )
-                        sSql = 'DROP FUNCTION ' + oldName
+                        sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
                         #ok = self.rpc.callRP('src.Databases.py_createPsql', 'cuon','sat1','5432','jhamel', sSql)
                         self.out("td-values")
                         self.out(self.td.SQL_DB)

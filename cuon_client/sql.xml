@@ -50,17 +50,20 @@
 	DECLARE
 	f_upd     varchar(400);
 	v_delete varchar(20) ;
+                  v_actual_stock float;
 	BEGIN
 	    
-	    f_upd := '' update '' || TG_RELNAME  || '' set actual_stock = (select actual_stock from '' || TG_RELNAME || '' where id = (select max(id) from '' || TG_RELNAME || '' )) +  ''||  to_embed  -  roll_out || ''  where id = '' || NEW.id   ;
+	    f_upd := ''  update '' || TG_RELNAME || '' set actual_stock = (select sum(to_embed) - sum(roll_out) from '' || TG_RELNAME || '' where  stock_id = '' || NEW.stock_id || '' and article_id = '' || NEW.article_id ||'' )  where  id = '' || NEW.id   ;
+
 	    RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
 	    RAISE NOTICE '' sql =  % '',f_upd  ;
-	    execute f_upd ;
 	    RAISE NOTICE '' Name =  % '', TG_NAME ;
- 	    RETURN NULL ;
+	    execute f_upd ;
+ 	    RETURN NEW ;
 	END;
       </textOfFunction>
-   	<description>if insert new goods, actual the stock </description>
+   	<description>if insert new goods, actual the stock, old = f_upd := '' select case when (select actual_stock from '' || TG_RELNAME || '' where id = (select max(id) from '' || TG_RELNAME || '' where stock_id = '' || NEW.stock_id || '' and article_id = '' || NEW.article_id ||'' ))  is  NULL  then  0 END  +  ''||  NEW.to_embed  -  NEW.roll_out || ''  into v_actual_stock from '' || TG_RELNAME  || ''  where id = '' || NEW.id   ;
+ </description>
 
     </function>
     <trigger>
@@ -102,7 +105,7 @@
    <trigger>
       <nameOfTrigger>trg_insertStockGoods</nameOfTrigger>
       <table>stock_goods</table>
-      <action>before insert</action>
+      <action>after insert</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_stock_goods_insert() ;  </textOfTrigger>
       <description>update article </description>
