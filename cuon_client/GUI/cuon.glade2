@@ -154,15 +154,6 @@
 		      </child>
 		    </widget>
 		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="staff1">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Staff</property>
-		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
-		    </widget>
-		  </child>
 		</widget>
 	      </child>
 	    </widget>
@@ -192,6 +183,24 @@
 		      <property name="label" translatable="yes">Stock</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_stock1_activate" last_modification_time="Mon, 12 Apr 2004 11:54:38 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="dms1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">DMS</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_dms1_activate" last_modification_time="Sat, 08 May 2004 11:45:38 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="staff1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Staff</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

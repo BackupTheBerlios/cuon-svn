@@ -319,6 +319,8 @@ import cuon.ReportGenerator.reportGenerator
 import cuon.Login.User
 import cuon.Preferences.preferences
 import cuon.Stock.stock
+import cuon.DMS.dms
+
 
 import  cuon.Databases.databases
 import cuon.XML.MyXML
@@ -365,7 +367,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 2, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 3, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -376,8 +378,7 @@ class MainWindow(windows):
 
     def on_databases1_activate(self,event):
         daba = cuon.Databases.databases.databaseswindow()
- 
-        
+   
     def on_login1_activate(self,event):
         lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
         
@@ -464,7 +465,10 @@ class MainWindow(windows):
     def on_report_generator1_activate(self,event):
         rep1  = cuon.ReportGenerator.reportGenerator.reportgeneratorwindow(self.allTables)
         
-
+ 
+    def on_dms1_activate(self,event):
+        dms = cuon.DMS.dms.dmswindow(self.allTables)
+   
 
 
     def on_update1_activate(self, event):

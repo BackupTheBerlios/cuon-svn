@@ -37,6 +37,8 @@ import cuon.XMLRPC.xmlrpc
 import cuon.Windows
 import time
 import gnome.ui
+import base64
+
 
 class SingleData(gladeXml, logs):
 
@@ -92,6 +94,7 @@ class SingleData(gladeXml, logs):
         
         #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
         liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
+        # print liRecords
         
         if liRecords:
             for r in range(len(liRecords)) :
@@ -136,16 +139,32 @@ class SingleData(gladeXml, logs):
             
 
         
-    def save(self):
+    def save(self, liBigEntries='NO'):
         dicValues = self.readEntries()
-#        self.out( self.sNameOfTable)
-#        self.out( self.ID)
-#        self.out( dicValues)
-        #self.out( self.rpc.getServer().src.sql.py_saveRecord(self.sNameOfTable, self.ID, dicValues, self.dicUser))
-        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.dicUser)
+        if liBigEntries != 'NO':
+            for lb in liBigEntries:
+                print 'lb = '
+                print lb
+                j = 0
+                k = 2048*30
+                en =  base64.encodestring(dicValues[lb][0])
+
+                endFile = len(en)
+                print endFile
+                while j < endFile:
+                    ok = self.rpc.callRP('src.sql.py_createBigRow',lb, en[j:k] , j,  self.dicUser)
+                    print ok
+                    j = k
+                    k = k + 2048*30
+                    print j
+                    print k
+                dicValues[lb][0] = ' '
+
+        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.dicUser, liBigEntries)
         
         self.refreshTree()
 
+ 
     def deleteRecord(self):
         self.rpc.callRP('src.sql.py_deleteRecord',self.sNameOfTable, self.ID, self.dicUser )
         self.refreshTree()
@@ -270,7 +289,7 @@ class SingleData(gladeXml, logs):
         self.ID = id
         if id > 0:
             dicRecord = self.load(id)
-            self.out( dicRecord)
+            # self.out( dicRecord)
             oneRecord = dicRecord[0]
             for i in range(len(oneRecord)):
 
@@ -341,7 +360,7 @@ class SingleData(gladeXml, logs):
                         widget.set_buffer(buffer)
                     elif string.count(str(widget), "GtkCheckButton") > 0:
                         print 'Bool-Value from Database'
-                        print sValue
+                        #print sValue
                         
                         if sValue :
                             print 'is true !'
@@ -354,9 +373,9 @@ class SingleData(gladeXml, logs):
                         widget.set_time(int(time.mktime(newDate)))
                                            
 
-        self.fillOtherEntries()
+            self.fillOtherEntries(oneRecord)
 
-    def fillOtherEntries(self):
+    def fillOtherEntries(self, oneRecord):
         pass
 
     def readEntries(self):

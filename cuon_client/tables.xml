@@ -1382,7 +1382,7 @@
     </field>
   </table>
 
- <table>
+  <table>
     <nameOfTable>stock_goods</nameOfTable>
     <specials>inherits (t_standard);</specials>
     <x>152</x>
@@ -1457,7 +1457,7 @@
       <default></default>
       <comment></comment>
     </field>
-   <field>
+    <field>
       <name>actual_stock</name>
       <type>float</type>
       <pkey>0</pkey>
@@ -1468,6 +1468,157 @@
       <comment></comment>
     </field>
   </table>
+
+   <table>
+    <nameOfTable>dms</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>title</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>category</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>size_x</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>size_y</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>document_image</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+ 
+  <field>
+      <name>sub1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>sub2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>sub3</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>sub4</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>sub5</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>85</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>search1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>search2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>search3</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  <field>
+      <name>search4</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+  </table>
+
+
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
     <sequence_increment>1</sequence_increment>

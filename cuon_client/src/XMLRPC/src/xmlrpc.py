@@ -105,7 +105,7 @@ class myXmlRpc(dumps, logs):
 
             except Exception, param:
                 print 'unknown exception'
-                print param
+                print param[0:100]
                 
             if startRP:
                 print 'error, next try'

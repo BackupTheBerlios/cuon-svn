@@ -85,6 +85,9 @@ src_email = ./src/E_Mail/src/*.py
 dest_email = $(dest_cuon)/E_Mail
 
 
+src_dms = ./src/DMS/src/*.py
+dest_dms = $(dest_cuon)/DMS
+
 
 
 src_cuon =  $(dest_cuon)/*
@@ -119,6 +122,7 @@ all :
 	if [ ! -d $(dest_repgen) ] ; then mkdir $(dest_repgen) ; fi ; cp $(src_repgen) $(dest_repgen) 
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
+	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi

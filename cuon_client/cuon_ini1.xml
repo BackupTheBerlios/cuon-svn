@@ -76,7 +76,11 @@
       <Entry-File>preferences_printing.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
     </Entries>
-
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>dms.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
+    </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_path_to_reports.xml</Entry-File>
@@ -141,6 +145,7 @@
       <Glade-File>preferences.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/preferences.glade2</Glade-FileValue>
     </GladeEntries>
+
    <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>stock.xml</Glade-File>
@@ -150,6 +155,12 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>reportGenerator.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/reportGenerator.glade2</Glade-FileValue>
+    </GladeEntries>
+  
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>dms.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/dms.glade2</Glade-FileValue>
     </GladeEntries>
   </Glade_Init_Files>
   <Grant_Init_Files>	

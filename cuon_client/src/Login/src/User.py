@@ -51,6 +51,8 @@ class User:
         self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
         self.prefPath = {}
 
+        self.prefPath['tmp'] =  os.path.normpath(os.environ['CUON_HOME']) + '/'  
+
         self.prefPath['StandardInvoice1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Invoice' )
         self.prefPath['StandardSupply1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Delivery' )
         self.prefPath['StandardPickup1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Pickup' )
@@ -61,8 +63,19 @@ class User:
         self.prefPath['ReportStandardPickup1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         
         self.prefPath['ReportAddressLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefColor = {'FG':0, 'BG':0}
         
+        self.prefColor = {'FG':0, 'BG':0}
+
+        self.prefDMS = {}
+        self.prefDMS['scan_device'] = 'plustek:libusb:002:002'
+        self.prefDMS['scan_r'] = {'x':1024.0, 'y':768.0}
+        self.prefDMS['scan_mode'] = 'color'
+        self.prefDMS['scan_contrast'] = 170.0
+        self.prefDMS['scan_brightness'] = 150.0
+        self.prefDMS['scan_white_level'] = 190.0
+        self.prefDMS['scan_depth'] = 24
+        self.prefDMS['scan_resolution'] = 300
+
         self.dicUser = {}
         
         
@@ -91,6 +104,8 @@ class User:
         self.dicUser['SessionID'] = self.getSessionID()
         self.dicUser['userType'] = self.userType
         self.dicUser['prefColor'] = self.prefColor
+        self.dicUser['prefDMS'] = self.prefDMS
+        
 		
     def getDicUser(self):
         '''

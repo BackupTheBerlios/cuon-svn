@@ -51,7 +51,7 @@ class SingleArticlePurchase(SingleData):
         dicValues['articles_number'] = [self.articlesNumber, 'int']
         return dicValues
        
-    def fillOtherEntries(self):
+    def fillOtherEntries(self, oneRecord):
         # name of Entry with value ( addressid )
         # which SingleData ( at this point singleAddress )
         # 

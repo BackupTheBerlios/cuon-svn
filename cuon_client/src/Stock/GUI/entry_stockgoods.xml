@@ -69,6 +69,17 @@
                 <fg_color>0</fg_color>
 
       </entry>
+    <entry>
+	<name>eGoodsActualStock</name>
+	<type>textline</type>
+                <size>30</size>
+                <verify_type>float</verify_type>
+                <create_sql>0</create_sql>
+                <sql_field>actual_stock</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
     </table>
 
   </entries_for_table>

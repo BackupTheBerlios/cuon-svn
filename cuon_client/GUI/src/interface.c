@@ -102,13 +102,6 @@ static GnomeUIInfo data_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
-  {
-    GNOME_APP_UI_ITEM, N_("Staff"),
-    NULL,
-    (gpointer) on_staff1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
   GNOMEUIINFO_END
 };
 
@@ -125,6 +118,20 @@ static GnomeUIInfo action1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Stock"),
     NULL,
     (gpointer) on_stock1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("DMS"),
+    NULL,
+    (gpointer) on_dms1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Staff"),
+    NULL,
+    (gpointer) on_staff1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -302,10 +309,11 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[0].widget, "insurances1");
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[1].widget, "rent1");
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[2].widget, "leasing1");
-  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[3].widget, "staff1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[2].widget, "action1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[0].widget, "order1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[1].widget, "stock1");
+  GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[2].widget, "dms1");
+  GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[3].widget, "staff1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[3].widget, "tools1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[1].widget, "update1");
