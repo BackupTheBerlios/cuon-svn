@@ -350,6 +350,7 @@ create_AddressMainwindow (void)
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
+  gint tmp_toolbar_icon_size;
   GtkWidget *hbox1;
   GtkWidget *lFindName;
   GtkWidget *eFindName;
@@ -408,6 +409,7 @@ create_AddressMainwindow (void)
   GtkWidget *eLine;
   GtkWidget *label36;
   GtkWidget *cbFashion;
+  GList *cbFashion_items = NULL;
   GtkWidget *eFashion;
   GtkWidget *label37;
   GtkWidget *eTaxnumber;
@@ -495,6 +497,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (toolbar1);
   gtk_box_pack_start (GTK_BOX (vbox1), toolbar1, FALSE, FALSE, 0);
   gtk_toolbar_set_style (GTK_TOOLBAR (toolbar1), GTK_TOOLBAR_BOTH);
+  tmp_toolbar_icon_size = gtk_toolbar_get_icon_size (GTK_TOOLBAR (toolbar1));
 
   hbox1 = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (hbox1);
@@ -860,6 +863,13 @@ create_AddressMainwindow (void)
   gtk_table_attach (GTK_TABLE (table9), cbFashion, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Customer"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Vendor"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Authority"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Private"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Misc"));
+  gtk_combo_set_popdown_strings (GTK_COMBO (cbFashion), cbFashion_items);
+  g_list_free (cbFashion_items);
 
   eFashion = GTK_COMBO (cbFashion)->entry;
   gtk_widget_show (eFashion);

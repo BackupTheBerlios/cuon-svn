@@ -100,9 +100,9 @@ class MyXML(logs):
         #    reader = PyExpat.Reader()
         #    doc = reader.fromUri(filename)
         #build a DOM tree from the file
-        self.out("filename = " + `filename`) 
+        #self.out("filename = " + `filename`) 
         doc = minidom.parse(filename)
-        self.out("Document =  " + doc.toxml() )
+        #self.out("Document =  " + doc.toxml() )
 
 
         return  doc
