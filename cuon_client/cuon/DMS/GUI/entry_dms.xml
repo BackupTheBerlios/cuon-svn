@@ -1,0 +1,127 @@
+<entries_for_table>
+  <table>
+    <table_name>dms</table_name>
+    <entry>
+      <name>eCategory</name>
+      <type>textline</type>
+      <size>85</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>category</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    <entry>
+	<name>eTitle</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>title</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eSub1</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sub1</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+	<name>eSub2</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sub2</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+	<name>eSub3</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sub3</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+	<name>eSub4</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sub4</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+	<name>eSub5</name>
+	<type>textline</type>
+                <size>85</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sub5</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eSearch1</name>
+	<type>textline</type>
+                <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>search1</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+	<name>eSearch2</name>
+	<type>textline</type>
+                <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>search2</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eSearch3</name>
+	<type>textline</type>
+                <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>search3</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eSearch4</name>
+	<type>textline</type>
+                <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>search4</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    </table>
+
+  </entries_for_table>

@@ -1,0 +1,23 @@
+# German translations for cuon package.
+# Copyright (C) 2003 THE cuon'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the cuon package.
+# Juergen Hamel <juergenprv@cyrus.de>, 2003.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: cuon 0.01\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-22 23:28+0200\n"
+"PO-Revision-Date: 2003-10-22 23:30+0200\n"
+"Last-Translator: Juergen Hamel <juergenprv@cyrus.de>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
+
+#: Cuon.py:409
+msgid "Hello, this is a test"
+msgstr "Hallo, dies ist ein Test"
+

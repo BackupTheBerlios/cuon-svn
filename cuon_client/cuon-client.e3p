@@ -1,1138 +1,486 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.5.dtd">
 <!-- Project file for project cuon-client -->
-<!-- Saved: 2004-12-16, 15:42:11 -->
+<!-- Saved: 2004-12-18, 19:42:18 -->
 <!-- Copyright (C) 2004 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.5">
-  <Description></Description>
+  <Description>a business-suite</Description>
   <Version>0.1</Version>
   <Author>Juergen Hamel</Author>
   <Email>jh@cyrus.de</Email>
   <Sources>
     <Source>
-      <Dir>src</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Dir>src</Dir>
-      <Name>reportGenerator.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Dir>src</Dir>
-      <Name>reportField.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>TypeDefs</Dir>
-      <Dir>src</Dir>
-      <Name>typedefs_server.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>TypeDefs</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>TypeDefs</Dir>
-      <Dir>src</Dir>
-      <Name>typedefs.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Logging</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Logging</Dir>
-      <Dir>src</Dir>
-      <Name>logs.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>dumps.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>SingleImportZip.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>cyr_column.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>SingleData.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>SingleDataTreeModel.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>cyr_load_table.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>cyr_table.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Databases</Dir>
-      <Dir>src</Dir>
-      <Name>databases.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>cyr_load_entries.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>setOfEntries.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>windows.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>chooseWindows.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>dataEntry.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>gladeXml.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Windows</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Misc</Dir>
-      <Dir>src</Dir>
-      <Name>fileSelection.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Misc</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Misc</Dir>
-      <Dir>src</Dir>
-      <Name>misc.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>XML</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>XML</Dir>
-      <Dir>src</Dir>
-      <Name>MyXML.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
       <Name>Cuon.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>ReportGenerator</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>ReportGenerator</Dir>
+      <Name>reportField.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>ReportGenerator</Dir>
+      <Name>reportGenerator.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>TypeDefs</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>TypeDefs</Dir>
+      <Name>typedefs.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>TypeDefs</Dir>
+      <Name>typedefs_server.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Logging</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Logging</Dir>
+      <Name>logs.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>cyr_column.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>cyr_load_table.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>cyr_table.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>databases.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>dumps.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>SingleData.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>SingleDataTreeModel.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>SingleImportZip.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>chooseWindows.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>cyr_load_entries.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>dataEntry.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>gladeXml.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>setOfEntries.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Windows</Dir>
+      <Name>windows.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Misc</Dir>
+      <Name>fileSelection.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Misc</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Misc</Dir>
+      <Name>misc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>XML</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>XML</Dir>
+      <Name>MyXML.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Name>preferences.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Name>SinglePreferences.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>Preferences</Dir>
       <Dir>XML</Dir>
       <Name>xml.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>Preferences</Dir>
-      <Dir>src</Dir>
-      <Name>preferences.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Preferences</Dir>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>XMLRPC</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>Preferences</Dir>
-      <Dir>src</Dir>
-      <Name>SinglePreferences.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>XMLRPC</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>XMLRPC</Dir>
-      <Dir>src</Dir>
       <Name>xmlrpc.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Articles</Dir>
-      <Dir>src</Dir>
-      <Name>SingleArticlePurchase.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Articles</Dir>
-      <Dir>src</Dir>
-      <Name>SingleArticleSale.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Articles</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Articles</Dir>
-      <Dir>src</Dir>
-      <Name>SingleArticle.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Articles</Dir>
-      <Dir>src</Dir>
       <Name>articles.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>Login</Dir>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Name>SingleArticlePurchase.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Name>SingleArticle.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Name>SingleArticleSale.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>Login</Dir>
-      <Dir>src</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Login</Dir>
       <Name>login.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Login</Dir>
-      <Dir>src</Dir>
       <Name>User.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Name>report.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Name>standardlist.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>PDF</Dir>
       <Dir>XML</Dir>
       <Name>report_order_standard_invoice.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>PDF</Dir>
       <Dir>XML</Dir>
       <Name>report_addresses_phone1.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>PDF</Dir>
       <Dir>XML</Dir>
       <Name>report_addresses_phone11.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>PDF</Dir>
-      <Dir>src</Dir>
-      <Name>standardlist.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PDF</Dir>
-      <Dir>src</Dir>
-      <Name>report.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PDF</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>DMS</Dir>
-      <Dir>src</Dir>
       <Name>dms.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>DMS</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>DMS</Dir>
-      <Dir>src</Dir>
       <Name>SingleDMS.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Order</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Order</Dir>
-      <Dir>src</Dir>
       <Name>order.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Order</Dir>
-      <Dir>src</Dir>
-      <Name>standard_delivery_note.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Order</Dir>
-      <Dir>src</Dir>
-      <Name>SingleOrderSupply.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Order</Dir>
-      <Dir>src</Dir>
-      <Name>standard_pickup_note.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Order</Dir>
-      <Dir>src</Dir>
-      <Name>standard_invoice.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Order</Dir>
-      <Dir>src</Dir>
       <Name>SingleOrderGet.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Order</Dir>
-      <Dir>src</Dir>
-      <Name>SingleOrder.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Order</Dir>
-      <Dir>src</Dir>
       <Name>SingleOrderPosition.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Order</Dir>
-      <Dir>src</Dir>
+      <Name>SingleOrder.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Order</Dir>
+      <Name>SingleOrderSupply.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Order</Dir>
       <Name>standard_bill.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>Addresses</Dir>
-      <Dir>src</Dir>
-      <Name>SingleMisc.py</Name>
+      <Dir>cuon</Dir>
+      <Dir>Order</Dir>
+      <Name>standard_delivery_note.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>Addresses</Dir>
-      <Dir>src</Dir>
-      <Name>SinglePartner.py</Name>
+      <Dir>cuon</Dir>
+      <Dir>Order</Dir>
+      <Name>standard_invoice.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Order</Dir>
+      <Name>standard_pickup_note.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>Addresses</Dir>
-      <Dir>src</Dir>
       <Name>addresses.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Addresses</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Addresses</Dir>
-      <Dir>src</Dir>
-      <Name>selectionDialog.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Addresses</Dir>
-      <Dir>src</Dir>
-      <Name>SingleAddress.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Addresses</Dir>
-      <Dir>src</Dir>
-      <Name>lists_addresses_phone1.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Addresses</Dir>
-      <Dir>src</Dir>
       <Name>lists_addresses_phone11.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Addresses</Dir>
-      <Dir>src</Dir>
+      <Name>lists_addresses_phone1.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
       <Name>lists_addresses_phone2.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Addresses</Dir>
-      <Dir>src</Dir>
+      <Name>selectionDialog.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Name>SingleAddress.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Name>SingleMisc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Name>SinglePartner.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
       <Name>SingleScheduling.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>OpenOffice</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>OpenOffice</Dir>
-      <Dir>src</Dir>
       <Name>letter.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>OpenOffice</Dir>
-      <Dir>src</Dir>
-      <Name>ooMain.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>OpenOffice</Dir>
-      <Dir>src</Dir>
       <Name>ooconnect.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>OpenOffice</Dir>
+      <Name>ooMain.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>Stock</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>Stock</Dir>
-      <Dir>src</Dir>
-      <Name>stock.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Stock</Dir>
-      <Dir>src</Dir>
-      <Name>SingleStock.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>Stock</Dir>
-      <Dir>src</Dir>
       <Name>SingleStockGoods.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Stock</Dir>
+      <Name>SingleStock.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>Stock</Dir>
+      <Name>stock.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
       <Dir>E_Mail</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>E_Mail</Dir>
-      <Dir>src</Dir>
       <Name>sendEmail.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>E_Mail</Dir>
       <Dir>dia</Dir>
       <Name>SingleEmail.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>E_Mail</Dir>
       <Dir>dia</Dir>
       <Name>SingleData.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
+      <Dir>cuon</Dir>
       <Dir>VTK</Dir>
-      <Dir>src</Dir>
-      <Name>mainLogo.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>VTK</Dir>
-      <Dir>src</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>src</Dir>
-      <Dir>VTK</Dir>
-      <Dir>src</Dir>
-      <Name>test.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Dir>src</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Dir>src</Dir>
-      <Name>prefsFinance.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Dir>src</Dir>
-      <Name>SinglePrefsFinanceTop.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Dir>src</Dir>
-      <Name>SinglePrefsFinanceVat.py</Name>
-    </Source>
-    <Source>
-      <Dir>src</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Dir>src</Dir>
-      <Name>SinglePrefsFinanceAcctInfo.py</Name>
-    </Source>
-    <Source>
-      <Name>cuon_server.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Name>Cuon.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Name>cuon_server.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Login</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Login</Dir>
-      <Name>login.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Login</Dir>
-      <Name>User.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>addresses.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>lists_addresses_phone11.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>lists_addresses_phone1.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>lists_addresses_phone2.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>selectionDialog.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>SingleAddress.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>SingleMisc.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>SinglePartner.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Addresses</Dir>
-      <Name>SingleScheduling.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Articles</Dir>
-      <Name>articles.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Articles</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Articles</Dir>
-      <Name>SingleArticlePurchase.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Articles</Dir>
-      <Name>SingleArticle.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Articles</Dir>
-      <Name>SingleArticleSale.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>order.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>SingleOrderGet.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>SingleOrderPosition.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>SingleOrder.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>SingleOrderSupply.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>standard_bill.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>standard_delivery_note.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>standard_invoice.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Order</Dir>
-      <Name>standard_pickup_note.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>cyr_column.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>cyr_load_table.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>cyr_table.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>databases.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>dumps.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>SingleData.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>SingleDataTreeModel.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Databases</Dir>
-      <Name>SingleImportZip.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>XML</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>XML</Dir>
-      <Name>MyXML.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>XMLRPC</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>XMLRPC</Dir>
-      <Name>xmlrpc.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>TypeDefs</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>TypeDefs</Dir>
-      <Name>typedefs.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>TypeDefs</Dir>
-      <Name>typedefs_server.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>chooseWindows.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>cyr_load_entries.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>dataEntry.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>gladeXml.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>setOfEntries.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Windows</Dir>
-      <Name>windows.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Logging</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Logging</Dir>
-      <Name>logs.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>OpenOffice</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>OpenOffice</Dir>
-      <Name>letter.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>OpenOffice</Dir>
-      <Name>ooconnect.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>OpenOffice</Dir>
-      <Name>ooMain.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Misc</Dir>
-      <Name>fileSelection.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Misc</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Misc</Dir>
-      <Name>misc.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>report.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>standardlist.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>report_addresses_phone11.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>report_addresses_phone1.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PDF</Dir>
-      <Name>report_order_standard_invoice.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Preferences</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Preferences</Dir>
-      <Name>preferences.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Preferences</Dir>
-      <Name>SinglePreferences.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Preferences</Dir>
-      <Name>xml.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>reportField.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>reportGenerator.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Stock</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Stock</Dir>
-      <Name>SingleStock.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Stock</Dir>
-      <Name>stock.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Stock</Dir>
-      <Name>SingleStockGoods.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>E_Mail</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>E_Mail</Dir>
-      <Name>sendEmail.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>DMS</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>DMS</Dir>
-      <Name>dms.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>DMS</Dir>
-      <Name>SingleDMS.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
       <Dir>cuon</Dir>
       <Dir>VTK</Dir>
       <Name>mainLogo.py</Name>
     </Source>
     <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>VTK</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
       <Dir>cuon</Dir>
       <Dir>VTK</Dir>
       <Name>test.py</Name>
     </Source>
     <Source>
-      <Dir>CUON</Dir>
       <Dir>cuon</Dir>
       <Dir>PrefsFinance</Dir>
       <Name>__init__.py</Name>
     </Source>
     <Source>
-      <Dir>CUON</Dir>
       <Dir>cuon</Dir>
       <Dir>PrefsFinance</Dir>
       <Name>prefsFinance.py</Name>
     </Source>
     <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Name>SinglePrefsFinanceTop.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
-      <Dir>cuon</Dir>
-      <Dir>PrefsFinance</Dir>
-      <Name>SinglePrefsFinanceVat.py</Name>
-    </Source>
-    <Source>
-      <Dir>CUON</Dir>
       <Dir>cuon</Dir>
       <Dir>PrefsFinance</Dir>
       <Name>SinglePrefsFinanceAcctInfo.py</Name>
     </Source>
     <Source>
-      <Dir>CUON</Dir>
-      <Name>cuon_server.py</Name>
+      <Dir>cuon</Dir>
+      <Dir>PrefsFinance</Dir>
+      <Name>SinglePrefsFinanceTop.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon</Dir>
+      <Dir>PrefsFinance</Dir>
+      <Name>SinglePrefsFinanceVat.py</Name>
     </Source>
   </Sources>
   <Forms>
@@ -1143,6 +491,9 @@
   </Interfaces>
   <Others>
   </Others>
+  <MainScript>
+    <Name>Cuon.py</Name>
+  </MainScript>
   <Vcs>
     <VcsType>Subversion</VcsType>
     <VcsOptions>{'status': [], 'log': [], 'global': [], 'update': [], 'remove': [], 'add': [], 'tag': [], 'export': [], 'diff': [], 'commit': [], 'checkout': [], 'history': []}</VcsOptions>

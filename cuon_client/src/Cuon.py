@@ -285,7 +285,7 @@
 
 
 
-##Copyright (C) [2003]  [J rgen Hamel, D-32584 Lö¨®¥]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -360,9 +360,9 @@ gtk.glade.textdomain(APP)
 
 class MainWindow(windows):
     """
-    @author: J rgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by J rgen Hamel
+    @author: JÃ¼rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 LÃ¶hne
+    @copyright: by JÃ¼rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """

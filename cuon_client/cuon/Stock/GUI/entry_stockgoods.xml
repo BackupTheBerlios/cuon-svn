@@ -1,0 +1,85 @@
+<entries_for_table>
+  <table>
+    <table_name>stock_goods</table_name>
+    <entry>
+      <name>eArticleID</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>article_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    <entry>
+	<name>eToEmbed</name>
+	<type>float</type>
+                <size>10</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>to_embed</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ 
+    <entry>
+	<name>eRollOut</name>
+	<type>float</type>
+                <size>10</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>roll_out</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+      <entry>
+	<name>eGoodsDesignation</name>
+	<type>textline</type>
+                <size>30</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>designation</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+     <entry>
+	<name>eGoodsDate</name>
+	<type>gnomedate</type>
+                <size>30</size>
+                <verify_type>datetime</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>date_of_change</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+     <entry>
+	<name>eGoodsReferenceNumber</name>
+	<type>textline</type>
+                <size>30</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>reference_number</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eGoodsActualStock</name>
+	<type>textline</type>
+                <size>30</size>
+                <verify_type>float</verify_type>
+                <create_sql>0</create_sql>
+                <sql_field>actual_stock</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    </table>
+
+  </entries_for_table>

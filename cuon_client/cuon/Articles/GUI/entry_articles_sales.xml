@@ -1,0 +1,61 @@
+<entries_for_table>
+  <table>
+    <table_name>articles_sales</table_name>
+
+    <entry>
+      <name>eSellingPrice1</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice1</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice2</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice2</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice3</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice3</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice4</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice4</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eVat</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>tax_vat</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>       
+  
+  </table>
+  
+  </entries_for_table>

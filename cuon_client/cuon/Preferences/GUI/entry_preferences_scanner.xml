@@ -1,0 +1,107 @@
+<entries_for_table>
+  <table>
+    <table_name>preferences</table_name>
+    <entry>
+      <name>eScanDevice</name>
+      <type>textline</type>
+      <size>120</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_device</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eScanMode</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_mode</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+ 
+   <entry>
+       <name>eScanResolution</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_resolution</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+       <name>eScanDepth</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_depth</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+
+     <entry>
+      <name>eScanBR_x</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_brx</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+     <entry>
+      <name>eScanBR_y</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_bry</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+
+     <entry>
+      <name>eScanBrightness</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_brightness</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+
+     <entry>
+      <name>eScanContrast</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_contrast</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+
+     <entry>
+      <name>eScanWhiteLevel</name>
+      <type>textline</type>
+      <size>40</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>scanner_white_level</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+  </table>
+</entries_for_table>    

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 EXEC=/usr/bin/python
 
 case $2 in
