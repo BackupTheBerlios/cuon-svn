@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -147,6 +147,13 @@ class SingleData(gladeXml, logs):
         
     def save(self, liBigEntries='NO'):
         dicValues = self.readEntries()
+        self.saveValues(dicValues)
+        
+    def saveExternalData(self, dicValues):
+        self.saveValues(dicValues)
+        
+    
+    def saveValues(self, dicValues):
         if liBigEntries != 'NO':
             for lb in liBigEntries:
                 print 'lb = '
@@ -283,7 +290,7 @@ class SingleData(gladeXml, logs):
 
     # Entries
 
-      # NEU (abstract), dient nur dazu, -Aüberschrieben zu werden-b
+      # NEU (abstract), dient nur dazu, -AÃ¼berschrieben zu werden-b
     def fillExternalWidget(self, value, id):
         # self.out( "SingleData.fillExternalWidget()")
         # self.out( "Value: " + str(value))
@@ -421,7 +428,18 @@ class SingleData(gladeXml, logs):
             # self.out(  dicValues)
             print  dicValues 
             dicValues = self.readNonWidgetEntries(dicValues)
-
+        except AssertionError:
+            print 'assert error'
+            dicValues = None
+        
+        dicValues = verifyValues(dicValues)
+        
+        return dicValues
+ 
+    def verifyValues(self, dicValues):
+        try:
+            assert self.dicValues != None
+        
             for i in dicValues.keys():
                 oValue = dicValues[i][0]
                 sVerify = dicValues[i][1]

@@ -350,7 +350,7 @@ create_AddressMainwindow (void)
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
-  gint tmp_toolbar_icon_size;
+  GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *hbox1;
   GtkWidget *lFindName;
   GtkWidget *eFindName;
@@ -418,6 +418,8 @@ create_AddressMainwindow (void)
   GtkWidget *combo2;
   GList *combo2_items = NULL;
   GtkWidget *cbPriceGroup;
+  GtkWidget *label41;
+  GtkWidget *eAddressNumber;
   GtkWidget *lMisc;
   GtkWidget *table2;
   GtkWidget *label15;
@@ -475,6 +477,9 @@ create_AddressMainwindow (void)
   GtkWidget *label29;
   GtkWidget *gdeDate;
   GtkWidget *lSchedul;
+  GtkAccelGroup *accel_group;
+
+  accel_group = gtk_accel_group_new ();
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (AddressMainwindow, 1024, 768);
@@ -489,7 +494,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
   gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       NULL, FALSE, 0);
+                       accel_group, FALSE, 0);
 
   gtk_widget_set_sensitive (mi_edit_menu_uiinfo[2].widget, FALSE);
 
@@ -832,7 +837,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (lBank);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), lBank);
 
-  table9 = gtk_table_new (4, 4, FALSE);
+  table9 = gtk_table_new (5, 4, FALSE);
   gtk_widget_show (table9);
   gtk_container_add (GTK_CONTAINER (notebook1), table9);
 
@@ -918,6 +923,19 @@ create_AddressMainwindow (void)
 
   cbPriceGroup = GTK_COMBO (combo2)->entry;
   gtk_widget_show (cbPriceGroup);
+
+  label41 = gtk_label_new (_("address-Number"));
+  gtk_widget_show (label41);
+  gtk_table_attach (GTK_TABLE (table9), label41, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label41), 0, 0.5);
+
+  eAddressNumber = gtk_entry_new ();
+  gtk_widget_show (eAddressNumber);
+  gtk_table_attach (GTK_TABLE (table9), eAddressNumber, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
@@ -1396,6 +1414,8 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label40, "label40");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, combo2, "combo2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbPriceGroup, "cbPriceGroup");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label41, "label41");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressNumber, "eAddressNumber");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
@@ -1455,6 +1475,8 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
 
   gtk_widget_grab_default (eFashion);
+  gtk_window_add_accel_group (GTK_WINDOW (AddressMainwindow), accel_group);
+
   return AddressMainwindow;
 }
 

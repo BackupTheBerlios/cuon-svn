@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-3.5.dtd">
+<!-- Project file for project cuon_server -->
+<!-- Saved: 2005-02-02, 13:08:52 -->
+<!-- Copyright (C) 2005 Juergen Hamel, jh@cyrus.de -->
+<Project version="3.5">
+  <Description>serverside cuon</Description>
+  <Version>0.1</Version>
+  <Author>Juergen Hamel</Author>
+  <Email>jh@cyrus.de</Email>
+  <Sources>
+    <Source>
+      <Dir>src</Dir>
+      <Name>cuon_zope.py</Name>
+    </Source>
+  </Sources>
+  <Forms>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <Vcs>
+    <VcsType>Subversion</VcsType>
+    <VcsOptions>{'status': [''], 'log': [''], 'global': [''], 'update': [''], 'remove': [''], 'add': [''], 'tag': [''], 'export': [''], 'diff': [''], 'commit': [''], 'checkout': [''], 'history': ['']}</VcsOptions>
+    <VcsOtherData>{'standardLayout': 1}</VcsOtherData>
+  </Vcs>
+</Project>

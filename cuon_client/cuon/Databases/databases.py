@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
@@ -10,6 +9,7 @@
 
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
+# -*- coding: utf-8 -*-
 
 import sys
 from types import *
@@ -26,6 +26,7 @@ import cuon.XMLRPC.xmlrpc
 import string
 import cPickle
 import sys
+import cuon.Databases.import_generic1
 
 class databaseswindow(windows):
     """
@@ -146,8 +147,11 @@ class databaseswindow(windows):
         
     def on_fd_cancel_button1_clicked(self,event):
         self.fd.hide()
+            
+    def on_import_generic1_activate(self,event):
+        imf = cuon.Databases.import_generic1.import_generic1()
         
-
+        
     def startCheck(self, key, lTable, tableList):
  
         clt = cyr_load_table.cyr_load_table()

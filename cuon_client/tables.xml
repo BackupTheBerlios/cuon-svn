@@ -2256,6 +2256,24 @@
 
       <comment />
     </field>
+  <field>
+      <name>address_number</name>
+
+      <type>char</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>55</size>
+
+      <default />
+
+      <comment>To use for accounts, etc.</comment>
+
+    </field>
   </table>
 
   <table>

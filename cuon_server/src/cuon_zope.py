@@ -119,7 +119,7 @@ def createSessionID(secValue = 36000):
 	           s = s + chr(r)
 	
 	s = s + `n`
-	
+	writeLog(s)
 	return {'SessionID':s, 'endTime': time.time() + secValue}
 	
 def checkEndTime(fTime):
