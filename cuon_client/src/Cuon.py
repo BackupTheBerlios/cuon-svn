@@ -285,7 +285,7 @@
 
 
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [J rgen Hamel, D-32584 Lö¨®¥]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -358,9 +358,9 @@ gtk.glade.textdomain(APP)
 
 class MainWindow(windows):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: J rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Lö¨®¥
+    @copyright: by J rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -428,7 +428,7 @@ class MainWindow(windows):
         iCount = len(liAllTables)
         for i in range(iCount):
             self.loadSqlDefs(liAllTables, i)
-            self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
+            #self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
             print 'Progress-Value = ' + str(float(i) * 1.0/float(iCount) * 100.0)
         print self.allTables
 
@@ -487,12 +487,12 @@ class MainWindow(windows):
 
         
     def updateVersion(self):
-        if self.startProgressBar():
-            self.generateSqlObjects()
-            rep = cuon.PDF.report.report()
-            rep.writeAllReportFiles()
-            self.writeAllGladeFiles()
-            self.stopProgressBar()
+        #if self.startProgressBar():
+        self.generateSqlObjects()
+        rep = cuon.PDF.report.report()
+        rep.writeAllReportFiles()
+        self.writeAllGladeFiles()
+        #self.stopProgressBar()
     
     
     def on_test1_activate(self, event):
@@ -501,8 +501,8 @@ class MainWindow(windows):
         
         
     def startMain(self, sStartType, sDebug):
-        ML = cuon.VTK.mainLogo.mainLogo()
-        ML.startLogo()
+        #ML = cuon.VTK.mainLogo.mainLogo()
+        #ML.startLogo()
         
         if sDebug:
             self.sDebug = sDebug
