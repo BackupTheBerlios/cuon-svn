@@ -94,8 +94,10 @@ class databaseswindow(windows):
         self.rpc.getServer().src.Databases.py_saveInfoOfTable('allTables', cPickle.dumps(tableList) )
         
         
-        self.createProcedureAndTrigger()
-     
+    def on_trigger1_activate(self, event):
+         print 'create procedures and trigger'
+         
+         self.createProcedureAndTrigger()
        
     def on_load_defaults1_activate(self, event):
         cle = cuon.Windows.cyr_load_entries.cyr_load_entries()
@@ -521,7 +523,8 @@ class databaseswindow(windows):
                         
                         ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
                         self.out(ok)
-                    
+                        print sSql                       
+                        print ok
 
                         
                         sSql = 'CREATE FUNCTION ' + newName + ' AS \'  '  
@@ -532,6 +535,8 @@ class databaseswindow(windows):
                         sSql = string.replace(sSql,';', '\\;')
                         ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)
                         self.out(ok)
+                        print sSql                       
+                        print ok
 
 
                 # Trigger
@@ -566,6 +571,8 @@ class databaseswindow(windows):
                         
                         ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
                         self.out(ok) 
+                        print sSql                       
+                        print ok
 
                         #then create the trigger called newName
                         sSql = 'CREATE TRIGGER ' + newName + ' '
@@ -573,5 +580,7 @@ class databaseswindow(windows):
                         sSql = sSql + ' ' + cursor + ' ' + triggerText 
                         
                         ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
-                        self.out(ok) 
+                        self.out(ok)
+                        print sSql                       
+                        print ok
 

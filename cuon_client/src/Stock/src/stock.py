@@ -18,18 +18,25 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
+import SingleStock
+import SingleStockGoods
+
 import cuon.Articles.articles
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.Addresses.SinglePartner
 
 import cuon.Articles.SingleArticle
-import cuon.Order.standard_invoice
-import cuon.Order.standard_delivery_note
-import cuon.Order.standard_pickup_note
 
 
 class stockwindow(chooseWindows):
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
 
 
     def __init__(self, allTables):
@@ -40,10 +47,8 @@ class stockwindow(chooseWindows):
         self.win1 = self.getWidget('StockMainwindow')
         
         self.allTables = allTables
-        self.singleOrder = SingleOrder.SingleOrder(allTables)
-        self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)
-        self.singleOrderGet = SingleOrderGet.SingleOrderGet(allTables)
-        self.singleOrderPosition = SingleOrderPosition.SingleOrderPosition(allTables)
+        self.singleStock = SingleStock.SingleStock(allTables)
+        self.singleStockGoods = SingleStockGoods.SingleStockGoods(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         
@@ -51,63 +56,35 @@ class stockwindow(chooseWindows):
        
         # self.singleOrder.loadTable()
               
-        self.EntriesOrder = 'stock.xml'
-        self.EntriesOrderSupply = 'stockgoods.xml'
-        self.EntriesOrderGet = 'order_get.xml'
-        self.EntriesOrderPosition = 'order_position.xml'
+        self.EntriesStock = 'stock.xml'
+        self.EntriesStockGoods = 'stockgoods.xml'
         
         
         
-        #singleOrder
+        #singleStock
         
-        self.loadEntries(self.EntriesOrder)
-        self.singleOrder.setEntries(self.getDataEntries('order.xml') )
-        self.singleOrder.setGladeXml(self.xml)
-        self.singleOrder.setTreeFields( ['number', 'designation'] )
-        self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleOrder.setTreeOrder('number')
-        self.singleOrder.setTree(self.xml.get_widget('tree1') )
-        self.singleOrder.setListHeader([_('number'), _('designation') ])
+        self.loadEntries(self.EntriesStock)
+        self.singleStock.setEntries(self.getDataEntries('stock.xml') )
+        self.singleStock.setGladeXml(self.xml)
+        self.singleStock.setTreeFields( ['name', 'designation'] )
+        self.singleStock.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleStock.setTreeOrder('name')
+        self.singleStock.setTree(self.xml.get_widget('tree1') )
+        self.singleStock.setListHeader([_('name'), _('designation') ])
         
-         #singleOrderSupply
+         #singleStockGoods
         
-        self.loadEntries(self.EntriesOrderSupply)
-        self.singleOrderSupply.setEntries(self.getDataEntries('order_supply.xml') )
-        self.singleOrderSupply.setGladeXml(self.xml)
-        self.singleOrderSupply.setTreeFields( ['designation' ] )
-        self.singleOrderSupply.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderSupply.setTreeOrder('designation')
-        self.singleOrderSupply.setListHeader([_('Designation')])
+        self.loadEntries(self.EntriesStockGoods)
+        self.singleStockGoods.setEntries(self.getDataEntries('stock_goods.xml') )
+        self.singleStockGoods.setGladeXml(self.xml)
+        self.singleStockGoods.setTreeFields( ['designation' ] )
+        self.singleStockGoods.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleStockGoods.setTreeOrder('designation')
+        self.singleStockGoods.setListHeader([_('Designation')])
 
-        self.singleOrderSupply.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderSupply.setTree(self.xml.get_widget('tree1') )
-  
-        #singleOrderGet
-        
-        self.loadEntries(self.EntriesOrderGet)
-        self.singleOrderGet.setEntries(self.getDataEntries('order_get.xml') )
-        self.singleOrderGet.setGladeXml(self.xml)
-        self.singleOrderGet.setTreeFields( ['designation'] )
-        self.singleOrderGet.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderGet.setTreeOrder('designation')
-        self.singleOrderGet.setListHeader([_('Designation')])
+        self.singleStockGoods.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
+        self.singleStockGoods.setTree(self.xml.get_widget('tree1') )
 
-        self.singleOrderGet.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderGet.setTree(self.xml.get_widget('tree1') )
-
-        # singlePositions
-        
-        self.loadEntries(self.EntriesOrderPosition)
-        self.singleOrderPosition.setEntries(self.getDataEntries('order_position.xml') )
-        self.singleOrderPosition.setGladeXml(self.xml)
-        self.singleOrderPosition.setTreeFields( ['designation'] )
-        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderPosition.setTreeOrder('designation')
-        self.singleOrderPosition.setListHeader([_('Designation')])
-
-        self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID`
-        self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
-  
         
 
         # Menu-items
@@ -115,26 +92,22 @@ class stockwindow(chooseWindows):
 
         # Close Menus for Tab
 
-        self.addEnabledMenuItems('tabs','order1')
-        self.addEnabledMenuItems('tabs','supply1')
-        self.addEnabledMenuItems('tabs','gets1')
-        self.addEnabledMenuItems('tabs','positions1')
+        self.addEnabledMenuItems('tabs','stock1')
+        self.addEnabledMenuItems('tabs','goods1')
 
 
         # seperate Menus
-        self.addEnabledMenuItems('order','order1')
-        self.addEnabledMenuItems('supply','supply1')
-        self.addEnabledMenuItems('gets','gets1')
-        self.addEnabledMenuItems('positions','positions1')
+        self.addEnabledMenuItems('stock','stock1')
+        self.addEnabledMenuItems('goods','goods1')
 
         
         # enabledMenues for Order
-        self.addEnabledMenuItems('editOrder','new1')
-        self.addEnabledMenuItems('editOrder','clear1')
-        self.addEnabledMenuItems('editOrder','print1')
+        self.addEnabledMenuItems('editStock','new1')
+        self.addEnabledMenuItems('editStock','clear1')
+        self.addEnabledMenuItems('editStock','print1')
 
         # enabledMenues for Supply
-        self.addEnabledMenuItems('editSupply','SupplyNew1')
+        self.addEnabledMenuItems('editGoods','SupplyNew1')
         self.addEnabledMenuItems('editSuppy','SupplyClear1')
     
        # enabledMenues for Gets
@@ -149,10 +122,8 @@ class stockwindow(chooseWindows):
 
 
         # tabs from notebook
-        self.tabOrder = 0
-        self.tabSupply = 1
-        self.tabGet = 2
-        self.tabPosition = 3
+        self.tabStock = 0
+        self.tabGoods = 1
 
         # start
         
@@ -163,136 +134,56 @@ class stockwindow(chooseWindows):
          
     #Menu File
 
-    def on_print_invoice1_activate(self, event):
-        dicOrder = {}
-        dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
-        dicOrder['invoiceNumber'] =  self.singleOrder.getInvoiceNumber()        
-        invoice = cuon.Order.standard_invoice.standard_invoice(dicOrder)
-
-    def on_print_delivery_note1_activate(self, event):
-        print 'delivery note'
-        dicOrder = {}
-        dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
-        dicOrder['deliveryNumber'] =  self.singleOrderSupply.getDeliveryNumber(self.singleOrder.ID)        
-        invoice = cuon.Order.standard_delivery_note.standard_delivery_note(dicOrder)
-               
-    def on_print_pickup_note1_activate(self, event):
-        print 'pickup note'
-        
-        dicOrder = {}
-        dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
-        dicOrder['pickupNumber'] =  self.singleOrderGet.getPickupNumber(self.singleOrder.ID)
-        dicOrder['addressNumber'] = self.singleOrderGet.getAddressNumber(self.singleOrderGet.ID)
-        print 'Addressnumber by Orderget = ' + `dicOrder['addressNumber']`
-        dicOrder['partnerNumber'] = self.singleOrderGet.getPartnerNumber(self.singleOrderGet.ID)
-        print 'partnernumber by Orderget = ' + `dicOrder['partnerNumber']`
-        dicOrder['forwardingAgencyNumber'] = self.singleOrderGet.getForwardingAgencyNumber(self.singleOrderGet.ID)
-        print 'ForwardAgencynumber by Orderget = ' + `dicOrder['forwardingAgencyNumber']`
-        dicOrder['contactPersonNumber'] = self.singleOrderGet.getContactPersonNumber(self.singleOrderGet.ID)
-        print 'ContactPersonnumber by Orderget = ' + `dicOrder['contactPersonNumber']`
-              
-                
-        
-        pdf = cuon.Order.standard_pickup_note.standard_pickup_note(dicOrder)
-               
     def on_quit1_activate(self, event):
-        print "exit order v2"
+        print "exit stock"
         self.closeWindow()
 
 
-    #Menu Order
+    #Menu Stock
   
     def on_save1_activate(self, event):
-        print "save order v2"
-        self.singleOrder.save()
-        self.setEntriesEditable(self.EntriesOrder, FALSE)   
+        print "save stock v2"
+        self.singleStock.save()
+        self.setEntriesEditable(self.EntriesStock, FALSE)   
         self.tabChanged()
          
         
     def on_new1_activate(self, event):
         print "new order v2"
-        self.singleOrder.newRecord()
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.singleStock.newRecord()
+        self.setEntriesEditable(self.EntriesStock, TRUE)
 
     def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.setEntriesEditable(self.EntriesStock, TRUE)
 
     def on_delete1_activate(self, event):
         print "delete order v2"
-        self.singleOrder.deleteRecord()
+        self.singleStock.deleteRecord()
 
  
-    #Menu Gets
-  
-    def on_GetsSave1_activate(self, event):
-        print "save order v2"
-        self.singleOrderGet.ordernumber = self.singleOrder.ID
-        self.singleOrderGet.save()
-        self.setEntriesEditable(self.EntriesOrderGet, FALSE)   
-        self.tabChanged()
-         
-        
-    def on_GetsNew1_activate(self, event):
-        print "new order v2"
-        self.singleOrderGet.newRecord()
-        self.setEntriesEditable(self.EntriesOrderGet, TRUE)
-
-    def on_GetsEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrderGet, TRUE)
-
-    def on_GetsDelete1_activate(self, event):
-        print "delete order v2"
-        self.singleOrderGet.deleteRecord()
-
-
- 
-    # Menu Supply
-
-    def on_SupplyNew1_activate(self, event):
-        self.singleOrderSupply.newRecord()
-        self.setEntriesEditable(self.EntriesOrderSupply, TRUE)
-
-    def on_SupplyEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrderSupply, TRUE)
-
-    def on_SupplySave1_activate(self, event):
-        print "save Supply v2"
-        self.singleOrderSupply.ordernumber = self.singleOrder.ID
-        self.singleOrderSupply.save()
-        self.setEntriesEditable(self.EntriesOrderSupply, FALSE)
-        self.tabChanged()
-        
-
-    def on_SupplyDelete1_activate(self, event):
-        print "delete Supply v2"
-        self.singleOrderSupply.deleteRecord()
-
-    #Menu Positions
-    def on_PositionSave1_activate(self, event):
-        print "save Positions v2"
-       
-        self.singleOrderPosition.orderID = self.singleOrder.ID
-
-        self.singleOrderPosition.save()
-        self.setEntriesEditable(self.EntriesOrderSupply, FALSE)
-
-        self.tabChanged()
-
-    def on_PositionEdit1_activate(self, event):
-        print 'PositionEdit1'
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
+    #Menu stockGoods
     
-    def on_PositionNew1_activate(self, event):
-        print "new Partner articles v2"
-        self.singleOrderPosition.newRecord()
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
 
-    def on_PositionClear1_activate(self, event):
-        print "delete Partner articles v2"
-        self.singleOrderPosition.deleteRecord()
+    def on_GoodsNew1_activate(self, event):
+        self.singleStockGoods.newRecord()
+        self.setEntriesEditable(self.EntriesStockGoods, TRUE)
 
+    def on_GoodsEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesStockGoods, TRUE)
 
- 
+    def on_GoodsSave1_activate(self, event):
+        print "save Goods v2"
+        self.singleStockGoods.ordernumber = self.singleOrder.ID
+        self.singleStockGoods.save()
+        self.setEntriesEditable(self.EntriesStockGoods, FALSE)
+        self.tabChanged()
+        
+
+    def on_GoodsDelete1_activate(self, event):
+        print "delete Goods v2"
+        self.singleStockGoods.deleteRecord()
+
+  
 
 
     # search button
@@ -301,8 +192,8 @@ class stockwindow(chooseWindows):
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
         self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
-        self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
-        self.out(self.singleOrder.sWhere, self.ERROR)
+        self.singleStock.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+        self.out(self.singleStock.sWhere, self.ERROR)
         self.refreshTree()
 
 
@@ -396,59 +287,36 @@ class stockwindow(chooseWindows):
         self.setTextbuffer(eArtField,liArt)
 
     def refreshTree(self):
-        self.singleOrder.disconnectTree()
-        self.singleOrderSupply.disconnectTree()
-        self.singleOrderGet.disconnectTree()
-        self.singleOrderPosition.disconnectTree()
+        self.singleStock.disconnectTree()
+        self.singleStockGoods.disconnectTree()
         
-        if self.tabOption == self.tabOrder:
-            self.singleOrder.connectTree()
-            self.singleOrder.refreshTree()
+        if self.tabOption == self.tabStock:
+            self.singleStock.connectTree()
+            self.singleStock.refreshTree()
 
-        elif self.tabOption == self.tabSupply:
-            self.singleOrderSupply.sWhere  ='where ordernumber = ' + `int(self.singleOrder.ID)`
-            self.singleOrderSupply.connectTree()
-            self.singleOrderSupply.refreshTree()
+        elif self.tabOption == self.tabGoods:
+            self.singleStockGoods.sWhere  ='where ordernumber = ' + `int(self.singleStock.ID)`
+            self.singleStockGoods.connectTree()
+            self.singleStockGoods.refreshTree()
 
-        elif self.tabOption == self.tabGet:
-            self.singleOrderGet.sWhere  ='where ordernumber = ' + `int(self.singleOrder.ID)`
-            self.singleOrderGet.connectTree()
-            self.singleOrderGet.refreshTree()
- 
-        elif self.tabOption == self.tabPosition:
-            self.singleOrderPosition.sWhere  ='where orderid = ' + `int(self.singleOrder.ID)`
-            self.singleOrderPosition.connectTree()
-            self.singleOrderPosition.refreshTree()
- 
-
-
+  
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
-        if self.tabOption == self.tabOrder:
+        if self.tabOption == self.tabStock:
             #Address
             self.disableMenuItem('tabs')
-            self.enableMenuItem('order')
+            self.enableMenuItem('stock')
             print 'Seite 0'
-            self.editAction = 'editOrder'
+            self.editAction = 'editStock'
             
-        elif self.tabOption == self.tabSupply:
+        elif self.tabOption == self.tabGoods:
             #Partner
             self.disableMenuItem('tabs')
-            self.enableMenuItem('supply')
-            self.editAction = 'editSupply'
+            self.enableMenuItem('goods')
+            self.editAction = 'editGoods'
             print 'Seite 1'
-            
-        elif self.tabOption == self.tabGet:
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('gets')
-            self.editAction = 'editGets'
-            print 'Seite 2'
-        elif self.tabOption == self.tabPosition:
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('positions')
-            self.editAction = 'editPositions'
-            print 'Seite 3'     
+    
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

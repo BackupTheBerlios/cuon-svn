@@ -8,3 +8,11 @@
 #include "interface.h"
 #include "support.h"
 
+
+void
+on_eUserName_changed                   (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+

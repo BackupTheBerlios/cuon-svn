@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+#include <bonobo.h>
+#include <gnome.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -61,12 +61,14 @@ create_UserID_Dialog (void)
   gtk_table_attach (GTK_TABLE (table1), label1, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_CENTER);
 
   label2 = gtk_label_new (_("Password"));
   gtk_widget_show (label2);
   gtk_table_attach (GTK_TABLE (table1), label2, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label2), GTK_JUSTIFY_CENTER);
 
   TUserID = gtk_entry_new ();
   gtk_widget_show (TUserID);

@@ -158,6 +158,20 @@
 	<section>
 	  <title>Postgres SQL</title>
 	  <para>Postgres installieren, Database anlegen ( im Zweifelsfall cuon nennen ), grants.xml anppassen. Dieses XML-File von &cu verwaltet die USER und deren Rechte.</para>
+	  <para>In der Konfigurationsdatei /etc/cuon/cuon.ini muß der SQL-Benutzer eingetragen werden. </para>
+	  <para>Das Anlegen von proceduren und Triggern geschieht mit <emphasis>plpgsql</emphasis> Dies Sprache muß installiert sein. Folgender Aufruf prüft dies :</para>
+	  <programlisting> 
+/usr/lib/postgresql/bin/createlang -dcuon -l
+
+Procedural languages
+  Name   | Trusted?
+---------+----------
+ plpgsql | t
+(1 Zeile)
+
+</programlisting>
+	  <para>Ist das Ergebnis ähnlich wie oben und wird<emphasis>plpgsql</emphasis> angezeigt, ist alles in Ordnung. Andernfalls führen Sie folgendes aus. ( Am besten als user postgres ) :  </para>
+	  <programlisting>sh-2.05b$ /usr/lib/postgresql/bin/createlang -d cuon plpgsql</programlisting>
 	</section>
       </section>
       
@@ -183,6 +197,22 @@
       </section>
       <section>
 	<title>Konfiguration</title>
+	<section>
+	  <title>SSL</title>
+	  <para>Für die SSL-Verschlüsselung müssen Sie auf den ZOPE-Server das Paket zserverssl (m2crypto) installieren. Dann nehmen Sie bitte folgende Änderung vor:</para>
+	  <para>in der Datei /usr/lib/zope/ZServer/medusa/https_server.py </para>
+	  <programlisting>
+	    class https_channel(http_server.http_channel):
+	    # next 2 rows are important to use cuon
+	    # if there not, you can only 4096 Byte Buffer use - very small
+                      # and cuon do not run !!!
+                                                          
+	    ac_in_buffer_size = 65536
+	    
+	    ac_out_buffer_size = 65536
+</programlisting>
+	  <para>Auf dem client muß m2crypto installiert sein. </para>
+	</section>
 	<section>
 	  <title>cuon_server</title>
 	  <para>Wenn Sie cuon_server.py gestartet haben, klicken Sie folgenden Menüpunkte an: </para>

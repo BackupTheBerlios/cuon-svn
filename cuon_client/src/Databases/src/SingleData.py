@@ -374,7 +374,7 @@ class SingleData(gladeXml, logs):
             
             if sVerify  == 'string':
                 self.out( oValue)
-                oValue = oValue.encode('utf-7')
+                oValue = oValue.encode('utf-8')
                 self.out( oValue)
                 self.out( '++++++++++++++++++++++++++++++++++')
 

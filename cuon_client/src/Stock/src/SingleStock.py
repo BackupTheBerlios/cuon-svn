@@ -21,13 +21,20 @@ from gtk import TRUE, FALSE
 
 
 class SingleStock(SingleData):
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "stock"
+        self.sNameOfTable =  "stocks"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
@@ -39,22 +46,4 @@ class SingleStock(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
-        
-    def getArticle(self, id):
-        dicRecords = self.load(id)
-        liArticle = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liArticle.append(dicRecord['number'])
-            liArticle.append(dicRecord['designation'])
-            liArticle.append (_('Wrapping: ') + dicRecord['wrapping'])
-            liArticle.append(_('Quant. per Wrap.: ') + `dicRecord['quantumperwrap']`)
-            liArticle.append(_('Unit: ' ) + dicRecord['unit'] )
-        if not liArticle:
-            liArticle.append(' ')
-            liArticle.append(' ')
-            liArticle.append(' ')
-            liArticle.append(' ')
-            liArticle.append(' ')
-            
-        return liArticle
+ 

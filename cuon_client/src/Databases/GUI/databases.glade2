@@ -45,6 +45,15 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkMenuItem" id="trigger1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">trigger</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_trigger1_activate" last_modification_time="Fri, 23 Apr 2004 13:59:09 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkMenuItem" id="grants1">
 		      <property name="visible">True</property>
 		      <property name="tooltip" translatable="yes">set groups, user and grants to sql-server</property>

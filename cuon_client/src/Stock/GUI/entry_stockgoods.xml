@@ -47,7 +47,28 @@
                 <fg_color>0</fg_color>
 
       </entry>
+     <entry>
+	<name>eGoodsDate</name>
+	<type>gnomedate</type>
+                <size>30</size>
+                <verify_type>datetime</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>date_of_change</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
 
+      </entry>
+     <entry>
+	<name>eGoodsReferenceNumber</name>
+	<type>textline</type>
+                <size>30</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>reference_number</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
     </table>
 
   </entries_for_table>

@@ -26,37 +26,220 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
-GtkWidget*
-create_fileselection1 (void)
+static GnomeUIInfo connect1_menu_uiinfo[] =
 {
-  GtkWidget *fileselection1;
-  GtkWidget *ok_button1;
-  GtkWidget *cancel_button1;
+  {
+    GNOME_APP_UI_ITEM, N_("Login"),
+    NULL,
+    (gpointer) on_login1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Logout"),
+    NULL,
+    (gpointer) NULL, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("quit"),
+    N_("Close the Application"),
+    (gpointer) on_end1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-quit",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
 
-  fileselection1 = gtk_file_selection_new (_("Select File"));
-  gtk_container_set_border_width (GTK_CONTAINER (fileselection1), 10);
-  gtk_window_set_modal (GTK_WINDOW (fileselection1), TRUE);
+static GnomeUIInfo data_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_Addresses"),
+    NULL,
+    (gpointer) on_addresses1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Arti_cles"),
+    NULL,
+    (gpointer) on_articles1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
 
-  ok_button1 = GTK_FILE_SELECTION (fileselection1)->ok_button;
-  gtk_widget_show (ok_button1);
-  GTK_WIDGET_SET_FLAGS (ok_button1, GTK_CAN_DEFAULT);
+static GnomeUIInfo action1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_Order"),
+    NULL,
+    (gpointer) on_order1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Stock"),
+    NULL,
+    (gpointer) on_stock1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
 
-  cancel_button1 = GTK_FILE_SELECTION (fileselection1)->cancel_button;
-  gtk_widget_show (cancel_button1);
-  GTK_WIDGET_SET_FLAGS (cancel_button1, GTK_CAN_DEFAULT);
+static GnomeUIInfo tools1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Preferences"),
+    NULL,
+    (gpointer) on_preferences1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Update"),
+    NULL,
+    (gpointer) on_update1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Report-Generator"),
+    NULL,
+    (gpointer) on_report_generator1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
 
-  g_signal_connect ((gpointer) ok_button1, "clicked",
-                    G_CALLBACK (on_ok_button1_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) cancel_button1, "clicked",
-                    G_CALLBACK (on_cancel_button1_clicked),
+static GnomeUIInfo help1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("About"),
+    NULL,
+    (gpointer) on_about1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo menubar1_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_SUBTREE, N_("Connect"),
+    NULL,
+    connect1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Data"),
+    NULL,
+    data_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Action"),
+    NULL,
+    action1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Tools"),
+    NULL,
+    tools1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Help"),
+    NULL,
+    help1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+GtkWidget*
+create_window1 (void)
+{
+  GtkWidget *window1;
+  GtkWidget *vbox1;
+  GtkWidget *menubar1;
+  GtkWidget *table1;
+  GtkWidget *label1;
+  GtkWidget *eUserName;
+
+  window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window1), _("C U O N"));
+  gtk_window_set_default_size (GTK_WINDOW (window1), 662, 142);
+
+  vbox1 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox1);
+  gtk_container_add (GTK_CONTAINER (window1), vbox1);
+
+  menubar1 = gtk_menu_bar_new ();
+  gtk_widget_show (menubar1);
+  gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
+  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
+                       NULL, FALSE, 0);
+
+  table1 = gtk_table_new (3, 4, FALSE);
+  gtk_widget_show (table1);
+  gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
+
+  label1 = gtk_label_new (_("User"));
+  gtk_widget_show (label1);
+  gtk_table_attach (GTK_TABLE (table1), label1, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label1), 0, 0.5);
+
+  eUserName = gtk_entry_new ();
+  gtk_widget_show (eUserName);
+  gtk_table_attach (GTK_TABLE (table1), eUserName, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eUserName), FALSE);
+
+  g_signal_connect ((gpointer) eUserName, "changed",
+                    G_CALLBACK (on_eUserName_changed),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, fileselection1, "fileselection1");
-  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, ok_button1, "ok_button1");
-  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, cancel_button1, "cancel_button1");
+  GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
+  GLADE_HOOKUP_OBJECT (window1, vbox1, "vbox1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1, "menubar1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[0].widget, "connect1");
+  GLADE_HOOKUP_OBJECT (window1, connect1_menu_uiinfo[0].widget, "login1");
+  GLADE_HOOKUP_OBJECT (window1, connect1_menu_uiinfo[1].widget, "logout1");
+  GLADE_HOOKUP_OBJECT (window1, connect1_menu_uiinfo[2].widget, "trennlinie1");
+  GLADE_HOOKUP_OBJECT (window1, connect1_menu_uiinfo[3].widget, "end1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[1].widget, "data");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[0].widget, "addresses1");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[1].widget, "articles1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[2].widget, "action1");
+  GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[0].widget, "order1");
+  GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[1].widget, "stock1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[3].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
+  GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[1].widget, "update1");
+  GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[2].widget, "report_generator1");
+  GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "help1");
+  GLADE_HOOKUP_OBJECT (window1, help1_menu_uiinfo[0].widget, "about1");
+  GLADE_HOOKUP_OBJECT (window1, table1, "table1");
+  GLADE_HOOKUP_OBJECT (window1, label1, "label1");
+  GLADE_HOOKUP_OBJECT (window1, eUserName, "eUserName");
 
-  return fileselection1;
+  return window1;
 }
 

@@ -28,9 +28,10 @@ import cuon.Login.User
 class loginwindow(windows):
 
     
-    def __init__(self):
+    def __init__(self, eUserName):
 
         windows.__init__(self)
+        self.eUserName = eUserName
         self.oUser = cuon.Login.User.User()
         
         self.loadGlade('login.xml')
@@ -73,28 +74,41 @@ class loginwindow(windows):
            
         self.oUser.setUserName(username )
         sPw = self.getWidget('TPassword').get_text()
-        while(len(sPw) < 16):
-            sPw= sPw +' '
-        print len(sPw)    
+##        while(len(sPw) < 16):
+##            sPw= sPw +' '
+##        print len(sPw)    
        
-        self.oUser.setUserPassword(obj.encrypt(sPw))
+##        self.oUser.setUserPassword(obj.encrypt(sPw))
         
-        print self.oUser.userPassword
-        print  obj.decrypt(self.oUser.userPassword)
+##        print self.oUser.userPassword
+##        print  obj.decrypt(self.oUser.userPassword)
 
-        sPw = string.replace(sPw,' ','')
-        print len(sPw)
-          
-        self.loadProfile()
+##        sPw = string.replace(sPw,' ','')
+##        print len(sPw)
         
-        self.openDB()
-        self.saveObject('User', self.oUser)
-        self.closeDB()
-        print 'end Login'
-        print str(self.oUser)
-        self.quitLogin()
+        self.oUser.setUserPassword(sPw)
+        if self.rpc.getServer().src.sql.py_checkUser(self.oUser.getUserName(), self.oUser.getUserPassword()) :
+            
+            self.loadProfile()
+
+            self.openDB()
+            self.saveObject('User', self.oUser)
+            self.closeDB()
+            print 'end Login'
+            print str(self.oUser)
+
+            self.eUserName.set_text(self.oUser.getUserName())
+            self.quitLogin()
+
+        else:
+            print "No korrekt user and/or  password !"
+            self.oUser.setUserName('EMPTY')
+            self.quitLogin()
+
        
-    def on_okcancel1_clicked(self, event):
+    def on_cancelbutton1_clicked(self, event):
+        self.oUser.setUserName('EMPTY')
+        
         self.quitLogin()
 
     def quitLogin(self):

@@ -76,7 +76,7 @@ class User:
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
-        self.dicUser['Password'] = 'test'
+        self.dicUser['Password'] = self.getUserPassword()
         self.dicUser['prefPath'] = self.prefPath
 
     def getDicUser(self):

@@ -63,7 +63,7 @@
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
-      <Entry-File>stock_googs.xml</Entry-File>
+      <Entry-File>stockgoods.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_stockgoods.xml</Entry-FileValue>
     </Entries>
    <Entries>		

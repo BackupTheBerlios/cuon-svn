@@ -42,7 +42,27 @@
    	<description>set the user_id to current_user </description>
 
     </function>
+   <function>
+      <old_name>fct_stock_goods_insert() </old_name>
+      <nameOfFunction>fct_stock_goods_insert( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+	DECLARE
+	f_upd     varchar(400);
+	v_delete varchar(20) ;
+	BEGIN
+	    v_delete   := ''delete'' ;
+	    f_upd := '' update '' || TG_RELNAME  || '' set actual_stock =  ''|| actual_stock  +  to_embed  -  roll_out || ''  where id = '' || OLD.id   ;
+	    RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
+	    RAISE NOTICE '' sql =  % '',f_upd  ;
+	    execute f_upd ;
+	    RAISE NOTICE '' Name =  % '', TG_NAME ;
+ 	    RETURN NULL ;
+	END;
+      </textOfFunction>
+   	<description>if insert new goods, actual the stock </description>
 
+    </function>
     <trigger>
       <nameOfTrigger>trg_deleteAddress</nameOfTrigger>
       <table>address</table>
@@ -55,12 +75,40 @@
     <trigger>
       <nameOfTrigger>trg_updateAddress</nameOfTrigger>
       <table>address</table>
-      <action>before update</action>
+      <action>before update or insert</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update address </description>
       
     </trigger>
+  <trigger>
+      <nameOfTrigger>trg_deleteArticle</nameOfTrigger>
+      <table>articles</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a article, check for use in order, then delete all partner </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_updateArticle</nameOfTrigger>
+      <table>articles</table>
+      <action>before update or  insert</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update article </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_insertStockGoods</nameOfTrigger>
+      <table>stock_goods</table>
+      <action>before  insert</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_stock_goods_insert() ;  </textOfTrigger>
+      <description>update article </description>
+      
+    </trigger>
+
   </postgre_sql>
   
 </sql>

@@ -11,12 +11,12 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 
-import xmlrpclib
+#import xmlrpclib
 #from xmlrpclib import Server
 import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
 from cuon.Logging.logs import logs
-from M2Crypto.m2xmlrpclib import Server, SSL_Transport
+from M2Crypto.m2xmlrpclib import  Server, SSL_Transport
 
 class myXmlRpc(dumps, logs):
     """
@@ -37,18 +37,18 @@ class myXmlRpc(dumps, logs):
     def getServer(self):
         """
         if the CUON_SERVER environment-variable begins with https,
-        then the server use SSL for security
+        then the server use SSL for security.
         @return: Server-Object for xmlrpc
         """
         
         self.out( self.td.server)
-        self.out( 'https://' + `self.td.server`)
+        self.out( `self.td.server`)
         self.out( '++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         self.out( ' ')
         sv = None
         try:
             if self.td.server[0:5] == 'https':
-                sv =  Server( self.td.server  , SSL_Transport() )
+                sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8' )
             else:
                 sv =  Server( self.td.server )
         except:

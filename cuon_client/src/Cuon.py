@@ -372,13 +372,14 @@ class MainWindow(windows):
   
         
     def on_login1_activate(self,event):
-        lgi = cuon.Login.login.loginwindow()
-        self.openDB()
-        oUser = self.loadObject('User')
-        self.closeDB()
-        
-        if oUser.userName != 'EMPTY':
-            
+        lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
+
+    def on_eUserName_changed(self, event):
+        if self.getWidget('eUserName').get_text() != 'EMPTY':
+            self.openDB()
+            oUser = self.loadObject('User')
+            self.closeDB()
+                          
             self.disableMenuItem('user')
             self.enableMenuItem('login')
             self.openDB()
@@ -480,6 +481,8 @@ class MainWindow(windows):
 
         self.addEnabledMenuItems('login','logout1')
         self.addEnabledMenuItems('login','data')
+        self.addEnabledMenuItems('login','action1')
+        
         self.addEnabledMenuItems('login','tools1')
         self.addEnabledMenuItems('login','preferences1')
         
