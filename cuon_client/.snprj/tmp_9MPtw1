@@ -1,8 +1,0 @@
-#;User;cl;src/Login/src/User.py;
-User;__init__;mi;src/Login/src/User.py;
-User;refreshDicUser;mi;src/Login/src/User.py;
-User;getDicUser;mi;src/Login/src/User.py;
-User;setUserName;mi;src/Login/src/User.py;
-User;getUserName;mi;src/Login/src/User.py;
-User;setUserPassword;mi;src/Login/src/User.py;
-User;getUserPassword;mi;src/Login/src/User.py;

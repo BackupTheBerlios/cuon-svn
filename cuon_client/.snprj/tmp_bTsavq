@@ -1,9 +1,0 @@
-SingleOrderGet;SingleData;in;src/Order/src/SingleOrderGet.py;
-#;SingleOrderGet;cl;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;__init__;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;readNonWidgetEntries;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;getPickupNumber;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;getAddressNumber;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;getPartnerNumber;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;getForwardAgencyNumber;mi;src/Order/src/SingleOrderGet.py;
-SingleOrderGet;getContactPersonNumber;mi;src/Order/src/SingleOrderGet.py;

@@ -1,2 +1,0 @@
-(progn (add-to-list 'load-path "/usr/lib/sourcenav/share/etc") (require 'sn))
-(sn-startup "/home/jhamel/Projekte/cuon_client/.snprj/tmp_lD6qVc" "127.0.0.1" "/home/jhamel/Projekte/cuon_client" 36984)

@@ -1,7 +1,0 @@
-loginwindow;windows;in;src/Login/src/login.py;
-#;loginwindow;cl;src/Login/src/login.py;
-loginwindow;__init__;mi;src/Login/src/login.py;
-loginwindow;okButtonPressed;mi;src/Login/src/login.py;
-loginwindow;on_okcancel1_clicked;mi;src/Login/src/login.py;
-loginwindow;quitLogin;mi;src/Login/src/login.py;
-loginwindow;loadProfile;mi;src/Login/src/login.py;
