@@ -282,8 +282,9 @@ class SingleData(gladeXml, logs):
     
     def refreshTree(self):
         self.setEmptyEntries()
-        self.fillTree(self.tree1, self.getListEntries() )
-        self.treeSelectRow()
+        if self.tree1:
+            self.fillTree(self.tree1, self.getListEntries() )
+            self.treeSelectRow()
 
     def getTreeModel(self, listEntries):
         model = cuon.Databases.SingleDataTreeModel.SingleDataTreeModel()

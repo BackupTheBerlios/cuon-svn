@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -19,12 +19,13 @@ from xml.dom import Node
 from xml.dom.ext.reader import PyExpat
 from cuon.Logging.logs import logs
 import string
+# from amara import *
 
 class MyXML(logs):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: JÃ¼rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 LÃ¶hne
+    @copyright: by JÃ¼rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -346,3 +347,17 @@ class MyXML(logs):
 ##      if node3.nodeType == Node.TEXT_NODE:
 ##        title += node3.data
 ##    mapping[isbn] = title
+
+### New Classes with AMARA-Object-Bindings
+##
+##    def getXmlDocument(self, filename)
+##        assert filename
+##        try:
+##            doc = binderytools.bind_file('tables.xml')
+##        exception:
+##            doc = None
+##            
+##        return doc
+##        
+##        
+

@@ -316,6 +316,103 @@
       <comment />
     </field>
   </table>
+  <!-- table webshop -->
+<table>
+    <nameOfTable>webshop</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+      <field>
+      <name>sqlserver_url</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>sqlserver_port</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+  <field>
+      <name>sqlserver_database</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+   <field>
+      <name>webshop_table</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+      <field>
+      <name>my_table</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+    </table>
   <!--table: countries-->
  <table>
     <nameOfTable>countries</nameOfTable>

@@ -330,7 +330,7 @@ class MainWindow(windows):
 
         
     def on_login1_activate(self,event):
-        lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
+        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')])
         
         #lgi = cuon.Login.login.loginwindow()
   #      lgi.setUser( self.oUser)

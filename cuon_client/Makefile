@@ -1,5 +1,6 @@
 EXECDIR = /usr/bin
 INSTALLDIR = /usr/lib/cuon
+ICONDIR = /usr/lib/cuon/icons
 SERVERDIRSHARE = /usr/share/cuon
 SERVERDIRCONFIG = /etc/cuon
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
@@ -102,8 +103,11 @@ dest_vtk = $(dest_cuon)/VTK
 src_prefs_finance = ./cuon/PrefsFinance/*.py 
 dest_prefs_finance = $(dest_cuon)/PrefsFinance
 
-src_cuon =  $(dest_cuon)/*
-dest_primus_cuon = ~/Projekte/Primus/Py/cuon
+src_webshop = ./cuon/WebShop/*.py
+dest_webshop = $(dest_cuon)/WebShop
+
+#src_cuon =  $(dest_cuon)/*
+#dest_primus_cuon = ~/Projekte/Primus/Py/cuon
 
 
 src_xmlDefaults = ./*.xml
@@ -139,6 +143,7 @@ all :
 	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
 	if [ ! -d $(dest_vtk) ] ; then mkdir $(dest_vtk) ; fi ; cp $(src_vtk) $(dest_vtk) 
 	if [ ! -d $(dest_prefs_finance) ] ; then mkdir $(dest_prefs_finance) ; fi ; cp $(src_prefs_finance) $(dest_prefs_finance) 
+	if [ ! -d $(dest_webshop) ] ; then mkdir $(dest_webshop) ; fi ; cp $(src_webshop) $(dest_webshop) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
@@ -161,7 +166,10 @@ install:
 	cp ./createUserDirs.sh $(INSTALLDIR)
 	chmod a+x $(INSTALLDIR)/createUserDirs.sh
 	if  [ ! -d $(INSTALLDIR)/icons ] ; then mkdir $(INSTALLDIR)/icons ; fi 
-	cp doc/cuon-logo* $(INSTALLDIR)/icons
+
+	if  [ ! -d $(ICONDIR)/ ] ; then mkdir $(ICONDIR) ; fi 	
+
+	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
 
 install_server:
 
@@ -169,6 +177,7 @@ install_server:
 	if  [ ! -d $(SERVERDIRCONFIG) ] ; then mkdir $(SERVERDIRCONFIG) ; fi 	
 	cp $(src_ini) $(SERVERDIRCONFIG)
 	if  [ ! -d $(SERVERDIRSHARE) ] ; then mkdir $(SERVERDIRSHARE) ; fi 	
+	if  [ ! -d $(ICONDIR) ] ; then mkdir $(ICONDIR) ; fi 	
 	if  [ ! -d $(dest_glade) ] ; then mkdir $(dest_glade) ; fi 	
 	if  [ ! -d $(dest_report) ] ; then mkdir $(dest_report) ; fi 	
 
@@ -177,6 +186,7 @@ install_server:
 	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
 	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
+	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
 
 install_zope:
 

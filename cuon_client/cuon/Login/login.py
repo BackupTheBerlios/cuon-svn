@@ -30,10 +30,10 @@ import cuon.Login.User
 class loginwindow(windows):
 
     
-    def __init__(self, eUserName):
+    def __init__(self, eFields):
 
         windows.__init__(self)
-        self.eUserName = eUserName
+        self.eUserName = eFields[0]
         self.oUser = cuon.Login.User.User()
         
         self.loadGlade('login.xml')

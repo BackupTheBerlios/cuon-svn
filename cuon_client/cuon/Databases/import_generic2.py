@@ -31,7 +31,8 @@ class import_generic2(fileSelection):
         self.fromChangedValue = ' '
         self.toChangedValue = ';'
         
-        
+        # set later here args to self.ImportTable
+        self.ImportTable = 'countries'
         
     def on_ok_button1_clicked(self, event):
     
@@ -46,6 +47,7 @@ class import_generic2(fileSelection):
         importFile = self.readDocument(self.iFileName)
 
         oSingleCountry = cuon.Addresses.SingleCountry.SingleCountry()
+        oSingleCountry.tree1 = None
         
         if importFile:
             cyRootNode = self.getRootNode(importFile)
@@ -53,23 +55,32 @@ class import_generic2(fileSelection):
             #print cyRootNode[0].toxml()
             #print cyRootNode[1].toxml()
             #print cyRootNode[2].toxml()
-            cyNodes1 = self.getNodes(cyRootNode[2],'countries')
-
+            if self.ImportTable == 'countries':
+                cyNodes1 = self.getNodes(cyRootNode[2],'countries')
+                liImportValues = ['countries_id', 'countries_name', 'countries_iso_code_2','countries_iso_code_3', 'address_format_id']
+                liOurValues = ['webshop_id', 'name', 'iso_code_2', 'iso_code_3', 'format_id']
+                liOurCheckValues = ['int', 'string', 'string', 'string', 'int']
+                
             for i in cyNodes1:
                 print `i.toxml()`
-                
-                xmlDataRecord = self.getNodes(i,'countries_id')
-                sData = self.getData(xmlDataRecord[0] )
-                print '-------->', sData
+                j = 0
+                dicValues = {}
+                oSingleCountry.ID = (-1)
+                for Imp in liImportValues: 
+                    xmlDataRecord = self.getNodes(i,Imp)
+                    sData = self.getData(xmlDataRecord[0] )
+                    print isinstance(`sData`,StringType) , `sData`
 
-            # now set the values
-            #dicValues = {}
+                    # now set the values
+                    if liOurCheckValues[j] == 'int' or liOurCheckValues[j] == 'float':
+                        dicValues[liOurValues[j]] = [sData.encode('ascii'), liOurCheckValues[j]]
+                    j = j + 1
+
+                # verify Fields
+                dicValues = oSingleCountry.verifyValues(dicValues)
             
-            # verify Fields
-            #dicValues = oSingleAddress.verifyValues(dicValues)
-            
-            # save to Database
-            #oSingleAddress.saveExternalData(dicValues)
-            
+                # save to Database
+                oSingleCountry.saveExternalData(dicValues)
+                    
             
             
