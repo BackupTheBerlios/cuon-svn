@@ -54,7 +54,7 @@ class loginwindow(windows):
         ##elif response == gtk.RESPONSE_HELP:
         ##    print "Hilfe"
             
-##        elif response == gtk.RESPONSE_DELETE_EVENT:
+		##elif response == gtk.RESPONSE_DELETE_EVENT:
         ##else:
         ##print "else"
             
@@ -76,21 +76,11 @@ class loginwindow(windows):
            
         self.oUser.setUserName(username )
         sPw = self.getWidget('TPassword').get_text()
-##        while(len(sPw) < 16):
-##            sPw= sPw +' '
-##        print len(sPw)    
-       
-##        self.oUser.setUserPassword(obj.encrypt(sPw))
-        
-##        print self.oUser.userPassword
-##        print  obj.decrypt(self.oUser.userPassword)
 
-##        sPw = string.replace(sPw,' ','')
-##        print len(sPw)
-        
-        self.oUser.setUserPassword(sPw)
-        if self.rpc.getServer().src.sql.py_checkUser(self.oUser.getUserName(), self.oUser.getUserPassword()) :
-            
+       
+        sid = self.rpc.getServer().src.Databases.py_createSessionID(self.oUser.getUserName(), sPw) 
+        if sid:
+            self.oUser.setSessionID(sid)
             self.loadProfile()
 
             self.openDB()

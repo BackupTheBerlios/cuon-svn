@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
@@ -35,6 +36,8 @@ class SingleScheduling(SingleData):
         self.out( len(self.table.Columns))
         #
         self.partnerId = 0
+        
+	
 
     def readNonWidgetEntries(self, dicValues):
         dicValues['partnerid'] = [self.partnerId, 'int']

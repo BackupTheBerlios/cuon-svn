@@ -361,7 +361,7 @@ class MainWindow(windows):
    
     def __init__(self):
         windows.__init__(self)
-        self.Version = {'Major': 0, 'Minor': 25, 'Rev': 3, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 0, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -374,11 +374,21 @@ class MainWindow(windows):
         
     def on_login1_activate(self,event):
         lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
+        
+    def on_logout1_activate(self, event):
+        print 'Logout'
+        try:
+            self.rpc.getServer().src.Databases.py_logout(self.oUser.getUserName()) 
+        except:
+            print 'Exception'
+                
+        self.disableMenuItem('login')
+        self.enableMenuItem('user')
 
     def on_eUserName_changed(self, event):
         if self.getWidget('eUserName').get_text() != 'EMPTY':
             self.openDB()
-            oUser = self.loadObject('User')
+            self.oUser = self.loadObject('User')
             self.closeDB()
                           
             self.disableMenuItem('user')
@@ -417,9 +427,11 @@ class MainWindow(windows):
         print self.allTables
 
     def loadSqlDefs(self, liAllTables, i ):
-        clt = cuon.Databases.cyr_load_table.cyr_load_table()
-        self.allTables[liAllTables[i]] =  clt.loadTable(liAllTables[i])
-
+        try:
+            clt = cuon.Databases.cyr_load_table.cyr_load_table()
+            self.allTables[liAllTables[i]] =  clt.loadTable(liAllTables[i])
+        except:
+            print 'ERROR'
     def loadLocalSqlDefs(self, liAllTables, i ):
         clt = cuon.Databases.cyr_load_table.cyr_load_table()
         self.allTables[liAllTables[i]] =  clt.loadLocalTable(liAllTables[i])

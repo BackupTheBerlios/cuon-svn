@@ -28,7 +28,8 @@ class User:
         """
         
         self.userName = 'EMPTY'
-        self.userPassword = 'EMPTY'
+        
+        self.sessionID = 0
         #self.openDB()
         #self.td = self.loadObject('td')
         #self.closeDB()
@@ -36,7 +37,7 @@ class User:
         self.userLocales ='de'
         self.userEncoding = 'utf-8'
         self.userPdfEncoding = 'latin-1'
-        
+        self.userType = 'cuon'        
         self.userDateTimeFormatString = "%d.%m.%Y"
         self.userTimeFormatString = "%H:%M"
         
@@ -79,9 +80,10 @@ class User:
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
-        self.dicUser['Password'] = self.getUserPassword()
         self.dicUser['prefPath'] = self.prefPath
-
+        self.dicUser['SessionID'] = self.getSessionID()
+        self.dicUser['userType'] = self.userType
+		
     def getDicUser(self):
         '''
         @return: Dictionary with user-infos
@@ -101,15 +103,18 @@ class User:
         """@return: Name of the user"""
         return self.userName
 
-    
-    def setUserPassword(self, s):
-        """@param s: Password of the User """
-        self.userPassword = s
-        self.refreshDicUser()
-  
-    def getUserPassword(self):
-        ''' return: Password of this User'''
-        return self.userPassword
-
+   
     
         
+    def setSessionID(self, sid):
+        ''' 
+        set the sessionID 
+        @param sid: session-id
+        '''
+        self.sessionID = sid
+		
+		
+    def getSessionID(self):
+        return self.sessionID
+		
+		

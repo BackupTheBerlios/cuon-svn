@@ -24,7 +24,7 @@
  	    RETURN NULL ;
 	END;
       </textOfFunction>
-   	<description>if delete a record, don't realy delete, set status to delete </description>
+   	<description>if delete a record, dont realy delete, set status to delete </description>
 
     </function>
 
@@ -51,8 +51,8 @@
 	f_upd     varchar(400);
 	v_delete varchar(20) ;
 	BEGIN
-	    v_delete   := ''delete'' ;
-	    f_upd := '' update '' || TG_RELNAME  || '' set actual_stock =  ''|| actual_stock  +  to_embed  -  roll_out || ''  where id = '' || OLD.id   ;
+	    
+	    f_upd := '' update '' || TG_RELNAME  || '' set actual_stock = (select actual_stock from '' || TG_RELNAME || '' where id = (select max(id) from '' || TG_RELNAME || '' )) +  ''||  to_embed  -  roll_out || ''  where id = '' || NEW.id   ;
 	    RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
 	    RAISE NOTICE '' sql =  % '',f_upd  ;
 	    execute f_upd ;
@@ -102,7 +102,7 @@
    <trigger>
       <nameOfTrigger>trg_insertStockGoods</nameOfTrigger>
       <table>stock_goods</table>
-      <action>before  insert</action>
+      <action>before insert</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_stock_goods_insert() ;  </textOfTrigger>
       <description>update article </description>

@@ -52,6 +52,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Logout</property>
 		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_logout1_activate" last_modification_time="Wed, 28 Apr 2004 16:56:35 GMT"/>
 		    </widget>
 		  </child>
 

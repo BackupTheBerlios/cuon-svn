@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
@@ -75,14 +77,14 @@ class stockwindow(chooseWindows):
          #singleStockGoods
         
         self.loadEntries(self.EntriesStockGoods)
-        self.singleStockGoods.setEntries(self.getDataEntries('stock_goods.xml') )
+        self.singleStockGoods.setEntries(self.getDataEntries('stockgoods.xml') )
         self.singleStockGoods.setGladeXml(self.xml)
         self.singleStockGoods.setTreeFields( ['designation' ] )
         self.singleStockGoods.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
         self.singleStockGoods.setTreeOrder('designation')
         self.singleStockGoods.setListHeader([_('Designation')])
 
-        self.singleStockGoods.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
+        self.singleStockGoods.sWhere  ='where stock_id = ' + `self.singleStock.ID`
         self.singleStockGoods.setTree(self.xml.get_widget('tree1') )
 
         
@@ -101,7 +103,7 @@ class stockwindow(chooseWindows):
         self.addEnabledMenuItems('goods','goods1')
 
         
-        # enabledMenues for Order
+        # enabledMenues for Stock
         self.addEnabledMenuItems('editStock','new1')
         self.addEnabledMenuItems('editStock','clear1')
         self.addEnabledMenuItems('editStock','print1')
@@ -149,7 +151,7 @@ class stockwindow(chooseWindows):
          
         
     def on_new1_activate(self, event):
-        print "new order v2"
+        print "new stock v2"
         self.singleStock.newRecord()
         self.setEntriesEditable(self.EntriesStock, TRUE)
 
@@ -157,7 +159,7 @@ class stockwindow(chooseWindows):
         self.setEntriesEditable(self.EntriesStock, TRUE)
 
     def on_delete1_activate(self, event):
-        print "delete order v2"
+        print "delete stock v2"
         self.singleStock.deleteRecord()
 
  
@@ -173,7 +175,7 @@ class stockwindow(chooseWindows):
 
     def on_GoodsSave1_activate(self, event):
         print "save Goods v2"
-        self.singleStockGoods.ordernumber = self.singleOrder.ID
+        self.singleStockGoods.stock_id = self.singleStock.ID
         self.singleStockGoods.save()
         self.setEntriesEditable(self.EntriesStockGoods, FALSE)
         self.tabChanged()
