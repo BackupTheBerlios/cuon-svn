@@ -14,7 +14,7 @@ zope_import =  root@server2://var/lib/zope/instance/default/import
 src_ini=./cuon_ini1.xml
 
 
-src_main = ./cuon/*.py cuon.sh
+src_main = ./cuon/*.py cuon.sh Cuon.py
 dest_main = ./CUON
 dest_cuon = $(dest_main)/cuon
 
