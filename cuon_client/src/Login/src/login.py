@@ -81,6 +81,7 @@ class loginwindow(windows):
         sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw) 
         if sid:
             self.oUser.setSessionID(sid)
+            
             self.loadProfile()
 
             self.openDB()

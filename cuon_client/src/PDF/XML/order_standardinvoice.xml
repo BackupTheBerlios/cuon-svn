@@ -259,6 +259,39 @@
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
 
+<entry>
+      <name>tax_vat_percent</name>
+      <class>Label</class>
+      <value>Vat %</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>410</posX1>
+      <posY1>20</posY1>
+      <posX2>450</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+<entry>
+      <name>tax_vat_value</name>
+      <class>Label</class>
+      <value>Tax-Vat</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>450</posX1>
+      <posY1>20</posY1>
+      <posX2>490</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
 
 <entry>
       <name>sep1</name>
@@ -403,6 +436,7 @@
 	  <formula>!Var price * !Var amount</formula>
 	  <type>float</type>
 	  <format>%-10.2f</format>
+	  <variable>total</variable>
 	  <memory>total</memory>
 	  <posX1>420</posX1>
 	  <posY1>10</posY1>
@@ -414,7 +448,42 @@
 	  <foregroundColor>0,0,0</foregroundColor>
 	  <backgroundColor>0,0,0</backgroundColor>
 	</entry>
+	<entry>
+	  <name>tax_vat</name>
+	  <class>DatabaseField</class>
+	  <resultSet>positions</resultSet>
+	  <type>float</type>
+	  <format>%-10.2f</format>
+	  <variable>tax_vat</variable>
+	  <posX1>465</posX1>
+	  <posY1>10</posY1>
+	  <posX2>470</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>right</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
 
+	  <name>tax_vat_value</name>
+	  <class>Function</class>
+	  <resultSet>positions</resultSet>
+	  <formula>!Var tax_vat * !Var total / 100 </formula>
+	  <type>float</type>
+	  <format>%-10.2f</format>
+	  <memory>tax_vat_value_mem</memory>
+	  <posX1>505</posX1>
+	  <posY1>10</posY1>
+	  <posX2>500</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>right</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
 
 	<entry>
 	  <name>designation</name>
@@ -444,6 +513,8 @@
     <posY1>20</posY1>
     <posX2>400</posX2>
     <posY2>60</posY2>
+
+
        <entry>
       <name>lPageFooterTitle</name>
       <class>Label</class>
@@ -464,18 +535,36 @@
   </pageFooter>
 
 <reportFooter>
-   <posX1>40</posX1>
-    <posY1>200</posY1>
+   <posX1>0</posX1>
+    <posY1>220</posY1>
     <posX2>400</posX2>
-    <posY2>60</posY2>
+    <posY2>80</posY2>
+    <entry>
+      <name>sepF1</name>
+      <class>Line</class>
+      <value>1</value>
+      <type>full</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>110</posY1>
+      <posX2>540</posX2>
+      <posY2>210</posY2>
+      <font>0</font>
+      <fontsize>3</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.2,0.9,0.2</foregroundColor>
+      <backgroundColor>0.1,0.1,0.1</backgroundColor>
+    </entry>
+
+
        <entry>
       <name>lcommodity_value</name>
       <class>Label</class>
-      <value>commodity value</value>
+      <value>commodity </value>
       <type>string</type>
       <format>%s</format>
-      <posX1>20</posX1>
-      <posY1>50</posY1>
+      <posX1>0</posX1>
+      <posY1>90</posY1>
       <posX2>190</posX2>
       <posY2>40</posY2>
       <font>Helvetica</font>
@@ -484,6 +573,42 @@
       <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
+
+      <entry>
+      <name>taxvat__value</name>
+      <class>Label</class>
+      <value>Tax-VAT </value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>110</posX1>
+      <posY1>90</posY1>
+      <posX2>190</posX2>
+      <posY2>40</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+
+     <entry>
+      <name>GrandTotalValue</name>
+      <class>Label</class>
+      <value>GrandTotal</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>420</posX1>
+      <posY1>90</posY1>
+      <posX2>190</posX2>
+      <posY2>40</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
 
     <entry>  
       <name>comValue</name>
@@ -493,7 +618,8 @@
       <type>float</type>
       <format>%-10.2f</format>
       <memory>com_net</memory>
-      <posX1>20</posX1>
+      <variable>com_net</variable>
+      <posX1>50</posX1>
       <posY1>70</posY1>
       <posX2>240</posX2>
       <posY2>60</posY2>
@@ -504,33 +630,17 @@
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
 
-
-    <entry>
-    <name>vat_percent</name>
-      <class>Label</class>
-     <value>VAT in %</value>
-      <type>string</type>
-      <format>%s</format>
-      <posX1>20</posX1>
-      <posY1>50</posY1>
-      <posX2>190</posX2>
-      <posY2>40</posY2>
-      <font>Helvetica</font>
-      <fontsize>12</fontsize>
-      <fontJustification>left</fontJustification>
-      <foregroundColor>0,0,0</foregroundColor>
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
 
     <entry>  
-      <name>vatValuePercent</name>
-      <class>DatabaseField</class>
+      <name>vatValue</name>
+      <class>Function</class>
       <resultSet>positions</resultSet>
-      <formula></formula>
+      <formula>!SUM  tax_vat_value_mem</formula>
       <type>float</type>
       <format>%-10.2f</format>
-      <memory>vat_percent</memory>
-      <posX1>20</posX1>
+      <memory>com_vat</memory>
+      <variable>com_vat</variable>
+      <posX1>160</posX1>
       <posY1>70</posY1>
       <posX2>240</posX2>
       <posY2>60</posY2>
@@ -540,6 +650,45 @@
       <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
+
+   <entry>  
+      <name>grandTotal</name>
+      <class>Function</class>
+      <resultSet>positions</resultSet>
+      <formula> !Var com_vat +  !Var com_net </formula>
+      <type>float</type>
+      <format>%-10.2f</format>
+      <memory>grand_total</memory>
+      <posX1>480</posX1>
+      <posY1>70</posY1>
+      <posX2>240</posX2>
+      <posY2>60</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>right</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+    <entry>
+      <name>sepF3</name>
+      <class>Line</class>
+      <value>1</value>
+      <type>full</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>60</posY1>
+      <posX2>550</posX2>
+      <posY2>160</posY2>
+      <font>0</font>
+      <fontsize>3</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.2,0.9,0.2</foregroundColor>
+      <backgroundColor>0.1,0.1,0.1</backgroundColor>
+    </entry>
+
+  
+
 
   </reportFooter>
 

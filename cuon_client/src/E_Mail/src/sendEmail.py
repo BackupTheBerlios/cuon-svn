@@ -68,6 +68,6 @@ class sendEmail:
             self.msg.attach(txt)
  
             # Send the email via our own SMTP server.
-            s = smtplib.SMTP()
-            s.connect()
-            s.sendmail(self.msg['From'], self.msg['To'], self.msg.as_string())
+        s = smtplib.SMTP()
+        s.connect()
+        s.sendmail(self.msg['From'], self.msg['To'], self.msg.as_string())

@@ -37,7 +37,9 @@ class report(dumps, MyXML):
         self.openDB()
         self.td = self.loadObject('td')
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        self.oUser = self.loadObject('user')
+        self.oUser = self.loadObject('User')
+        self.dicUser = self.oUser.getDicUser()
+        
         self.closeDB()
 
         
@@ -106,6 +108,7 @@ class report(dumps, MyXML):
         # print '------------------------------------------------------------------------------------------------------------------------------'
         #self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         # x = self.rpc.callRP('src.XML.py_readDocument', 'cuon_addresses')  self.enableMenuItems(self.editAction)
+        
         d1 = open(os.path.normpath(os.environ['CUON_HOME'] + '/Reports/' + fname),'w')
         d1.write(cPickle.loads(xml1))
         d1.close()

@@ -167,7 +167,8 @@ class User:
         @param sid: session-id
         '''
         self.sessionID = sid
-		
+        self.refreshDicUser()
+        
 		
     def getSessionID(self):
         return self.sessionID
