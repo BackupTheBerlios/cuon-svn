@@ -20,14 +20,14 @@ import gobject
 from gtk import TRUE, FALSE
 
 
-class SingleOrder(SingleData):
+class SingleStock(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "orderbook"
+        self.sNameOfTable =  "stock"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
@@ -39,22 +39,22 @@ class SingleOrder(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
-        self.invoiceNumber = 0
-       
-      
-
-    def getInvoiceNumber(self):
-        self.invoiceNumber =  self.rpc.getServer().src.Order.py_getInvoiceNumber(self.getOrderNumber(self.ID), self.dicUser)
-        print 'Invoice-Number' + `self.invoiceNumber`
-        return self.invoiceNumber
-
-
-
-    def getOrderNumber(self, id):
-        ordernr = 'NULL'
+        
+    def getArticle(self, id):
         dicRecords = self.load(id)
+        liArticle = []
         if dicRecords:
             dicRecord = dicRecords[0]
-            ordernr = dicRecord['number']
-        return ordernr
-        
+            liArticle.append(dicRecord['number'])
+            liArticle.append(dicRecord['designation'])
+            liArticle.append (_('Wrapping: ') + dicRecord['wrapping'])
+            liArticle.append(_('Quant. per Wrap.: ') + `dicRecord['quantumperwrap']`)
+            liArticle.append(_('Unit: ' ) + dicRecord['unit'] )
+        if not liArticle:
+            liArticle.append(' ')
+            liArticle.append(' ')
+            liArticle.append(' ')
+            liArticle.append(' ')
+            liArticle.append(' ')
+            
+        return liArticle

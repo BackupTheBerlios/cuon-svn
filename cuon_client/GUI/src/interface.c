@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+#include <bonobo.h>
+#include <gnome.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -27,48 +27,36 @@
   g_object_set_data (G_OBJECT (component), name, widget)
 
 GtkWidget*
-create_SqlProgressBar (void)
+create_fileselection1 (void)
 {
-  GtkWidget *SqlProgressBar;
-  GtkWidget *vbox1;
-  GtkWidget *label1;
-  GtkWidget *progressbar1;
-  GtkWidget *label2;
+  GtkWidget *fileselection1;
+  GtkWidget *ok_button1;
+  GtkWidget *cancel_button1;
 
-  SqlProgressBar = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (SqlProgressBar, 392, -1);
-  gtk_window_set_title (GTK_WINDOW (SqlProgressBar), _("Load Sql-Definitions from Server"));
-  gtk_window_set_position (GTK_WINDOW (SqlProgressBar), GTK_WIN_POS_CENTER);
-  gtk_window_set_modal (GTK_WINDOW (SqlProgressBar), TRUE);
-  gtk_window_set_resizable (GTK_WINDOW (SqlProgressBar), FALSE);
+  fileselection1 = gtk_file_selection_new (_("Select File"));
+  gtk_container_set_border_width (GTK_CONTAINER (fileselection1), 10);
+  gtk_window_set_modal (GTK_WINDOW (fileselection1), TRUE);
 
-  vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (SqlProgressBar), vbox1);
+  ok_button1 = GTK_FILE_SELECTION (fileselection1)->ok_button;
+  gtk_widget_show (ok_button1);
+  GTK_WIDGET_SET_FLAGS (ok_button1, GTK_CAN_DEFAULT);
 
-  label1 = gtk_label_new ("");
-  gtk_widget_show (label1);
-  gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
+  cancel_button1 = GTK_FILE_SELECTION (fileselection1)->cancel_button;
+  gtk_widget_show (cancel_button1);
+  GTK_WIDGET_SET_FLAGS (cancel_button1, GTK_CAN_DEFAULT);
 
-  progressbar1 = gtk_progress_bar_new ();
-  gtk_widget_show (progressbar1);
-  gtk_box_pack_start (GTK_BOX (vbox1), progressbar1, FALSE, TRUE, 0);
-  gtk_progress_bar_set_pulse_step (GTK_PROGRESS_BAR (progressbar1), 0.05);
-  gtk_progress_bar_set_text (GTK_PROGRESS_BAR (progressbar1), _("load SQL-Definition"));
-
-  label2 = gtk_label_new ("");
-  gtk_widget_show (label2);
-  gtk_box_pack_start (GTK_BOX (vbox1), label2, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label2), GTK_JUSTIFY_LEFT);
+  g_signal_connect ((gpointer) ok_button1, "clicked",
+                    G_CALLBACK (on_ok_button1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) cancel_button1, "clicked",
+                    G_CALLBACK (on_cancel_button1_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (SqlProgressBar, SqlProgressBar, "SqlProgressBar");
-  GLADE_HOOKUP_OBJECT (SqlProgressBar, vbox1, "vbox1");
-  GLADE_HOOKUP_OBJECT (SqlProgressBar, label1, "label1");
-  GLADE_HOOKUP_OBJECT (SqlProgressBar, progressbar1, "progressbar1");
-  GLADE_HOOKUP_OBJECT (SqlProgressBar, label2, "label2");
+  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, fileselection1, "fileselection1");
+  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, ok_button1, "ok_button1");
+  GLADE_HOOKUP_OBJECT_NO_REF (fileselection1, cancel_button1, "cancel_button1");
 
-  return SqlProgressBar;
+  return fileselection1;
 }
 

@@ -44,7 +44,7 @@ class fileSelection(chooseWindows):
             
 
         
-    def on_ok_button1_clicked(self, event):
+    def on_ok_button_clicked(self, event):
         print 'ok clicked'
         filedata =  self.getWidget('fileselection1').get_selections()
         if not filedata:

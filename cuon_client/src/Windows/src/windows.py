@@ -26,7 +26,7 @@ class windows(MyXML, gladeXml):
         self.oUser = self.loadObject('User')
         
         print `self.oUser`
-        print `self.oUser.getDicUser()`
+        self.dicUser = self.oUser.getDicUser()
         
         self.td = self.loadObject('td')
         self.closeDB()

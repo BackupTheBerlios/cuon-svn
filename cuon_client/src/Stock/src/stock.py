@@ -10,26 +10,14 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import sys
-from types import *
+from cuon.Windows.chooseWindows import chooseWindows
+import logging
 import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
-import string
-
-from cuon.Databases.SingleData import SingleData
-import SingleOrder
-import SingleOrderSupply
-import SingleOrderGet
-import SingleOrderPosition
-
-
-
-import logging
-from cuon.Windows.chooseWindows  import chooseWindows
 import cuon.Articles.articles
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
@@ -41,17 +29,15 @@ import cuon.Order.standard_delivery_note
 import cuon.Order.standard_pickup_note
 
 
+class stockwindow(chooseWindows):
 
 
-class orderwindow(chooseWindows):
-
-    
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('order.xml')
-        self.win1 = self.getWidget('OrderMainwindow')
+        self.loadGlade('stock.xml')
+        self.win1 = self.getWidget('StockMainwindow')
         
         self.allTables = allTables
         self.singleOrder = SingleOrder.SingleOrder(allTables)
@@ -65,8 +51,8 @@ class orderwindow(chooseWindows):
        
         # self.singleOrder.loadTable()
               
-        self.EntriesOrder = 'order.xml'
-        self.EntriesOrderSupply = 'order_supply.xml'
+        self.EntriesOrder = 'stock.xml'
+        self.EntriesOrderSupply = 'stockgoods.xml'
         self.EntriesOrderGet = 'order_get.xml'
         self.EntriesOrderPosition = 'order_position.xml'
         

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-26 10:35+0100\n"
-"PO-Revision-Date: 2004-02-26 10:37+0100\n"
+"PO-Revision-Date: 2004-04-14 15:09+0200\n"
 "Last-Translator: Jürgen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -217,7 +217,7 @@ msgstr "Erneuern"
 
 #: GUI/cuon.c:20
 msgid "Report-Generator"
-msgstr ""
+msgstr "Report-Generator"
 
 #: GUI/cuon.c:21
 msgid "Help"
@@ -537,7 +537,7 @@ msgstr "Löschen"
 
 #: src/Articles/GUI/src/interface.c:203 src/Articles/GUI/src/interface.c:521
 msgid "Purchase"
-msgstr "Verkauf"
+msgstr "Einkauf"
 
 #: src/Articles/GUI/src/interface.c:231
 msgid "Sales"
@@ -659,7 +659,7 @@ msgstr "schließen"
 
 #: src/Order/GUI/src/interface.c:52
 msgid "Invoice"
-msgstr ""
+msgstr "Rechnung"
 
 #: src/Order/GUI/src/interface.c:65
 msgid "New Order"
@@ -761,7 +761,7 @@ msgstr "Löschen "
 #: src/Preferences/GUI/src/interface.c:101
 #: src/Preferences/GUI/src/interface.c:264
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: src/Preferences/GUI/src/interface.c:197
 #, fuzzy
@@ -784,11 +784,11 @@ msgstr "Name 2"
 
 #: src/Preferences/GUI/src/interface.c:259
 msgid "SQL-Encoding"
-msgstr ""
+msgstr "SQL-Kodierung"
 
 #: src/Preferences/GUI/src/interface.c:287
 msgid "Print command"
-msgstr ""
+msgstr "Drucker Kommando"
 
 #: src/Preferences/GUI/src/interface.c:304
 #, fuzzy
@@ -797,19 +797,19 @@ msgstr "Dr_ucken"
 
 #: src/Preferences/GUI/src/interface.c:318
 msgid "Printing-System"
-msgstr ""
+msgstr "Drucker System"
 
 #: src/Preferences/GUI/src/interface.c:326
 msgid "Path to Report Invoice"
-msgstr ""
+msgstr "Pfad zum Rechnungs-Report"
 
 #: src/Preferences/GUI/src/interface.c:332
 msgid "Path to Report Address Lists"
-msgstr ""
+msgstr "Pfad zum Adresslisten-Report"
 
 #: src/Preferences/GUI/src/interface.c:354
 msgid "Path"
-msgstr ""
+msgstr "Pfad"
 
 #: src/Preferences/GUI/src/interface.c:394
 #, fuzzy

@@ -28,6 +28,12 @@ class standardlist(report):
         
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.filedata = []
+        self.openDB()
+        self.td = self.loadObject('td')
+        self.oUser = self.loadObject('User')
+        self.closeDB()
+        self.dicUser = self.oUser.getDicUser()
+        
         
     def setFileName(self, sName):
         

@@ -56,6 +56,16 @@
       <Entry-File>order_position.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_orderposition.xml</Entry-FileValue>
     </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>stock.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_stock.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>stock_googs.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_stockgoods.xml</Entry-FileValue>
+    </Entries>
    <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences.xml</Entry-File>
@@ -130,6 +140,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>preferences.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/preferences.glade2</Glade-FileValue>
+    </GladeEntries>
+   <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>stock.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/stock.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>

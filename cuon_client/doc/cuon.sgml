@@ -61,7 +61,7 @@
       <title>Webinterface</title>
       <section>
 	<title>Einleitung</title>
-	<para>Wenn Sie in einem beliebigen Browser ( empfohlen wird mozilla) die Addresse Ihres Zope-Servers (im Normalfall http://server:9673/Cuon aufrufen</para>
+	<para>Wenn Sie in einem beliebigen Browser ( empfohlen wird mozilla) die Addresse Ihres Zope-Servers (im Normalfall http://server:9673/Cuon, SSL = https://server:8443/Cuon aufrufen</para>
       </section>
     </chapter>
   </part>
@@ -169,7 +169,7 @@
 	<para>in der .bashrc setzen sie bitte die Variablen (Hier mit Beispiel)  </para>
 	<para> nur Server  "export CUON_INI=/etc/cuon/cuon.ini "</para>
 	<para>Client und Server "export CUON_HOME=~/cuon " </para>
-	<para>Client und Server "export CUON_SERVER=192.168.17.251:9673/Cuon, Hier gilt also IP_Adresse:Port/Verzeichnis</para>
+	<para>Client und Server "export CUON_SERVER=https://192.168.17.251:8443/Cuon, Hier gilt also IP_Adresse:Port/Verzeichnis ( ohne SSL ist der Port im Regelfall 9673 ) </para>
 	<para>nur Client CUON_OOEXEC=/opt/OpenOffice.org1.1.0/program/python, dies ist das eingebaute Python von Openoffice für die uno-bridge </para>
 	
 	<para>Wichtig ist hierbei, das sich der Wert Server auf den Rechner bezieht, von dem aus das Program cuon_server gestartet wird. Dies kann durchaus ein Computer sein, der auch als client definiert ist oder eine normale Arbeitsstation ist. ( entsprechend muß die ip in cuon.ini angepaßt werden. </para>

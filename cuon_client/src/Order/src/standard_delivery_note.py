@@ -35,7 +35,7 @@ class standard_delivery_note(standardlist, fileSelection):
         
         self.closeDB()
         
-        sFile = self.setFileName( self.oUser.prefPath['ReportStandardDelivery1'] +  '/' +_('delivery_note-') + `self.dicOrder['deliveryNumber']` + '.pdf' )
+        sFile = self.setFileName( self.oUser.prefPath['StandardDelivery1'] +  '/' +_('delivery_note-') + `self.dicOrder['deliveryNumber']` + '.pdf' )
         fileSelection.__init__(self, initialFilename = sFile )
 
 
@@ -44,7 +44,7 @@ class standard_delivery_note(standardlist, fileSelection):
     def on_ok_button1_clicked(self, event):
     
 
-        self.ok_button1_clicked(event)
+        self.on_ok_button_clicked(event)
         self.pdfFile = os.path.normpath(self.fileName)
         print self.dicOrder
         print  self.rpc.getServer()

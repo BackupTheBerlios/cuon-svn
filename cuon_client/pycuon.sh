@@ -2,7 +2,7 @@ EXEC=/usr/bin/python
 
 sudo make install_server
 
-cd Py/
+cd CUON/
 
 case $1 in 
 

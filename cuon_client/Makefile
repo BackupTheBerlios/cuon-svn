@@ -15,7 +15,7 @@ src_ini=./cuon_ini1.xml
 
 
 src_main = ./src/*.py cuon.sh
-dest_main = ./Py
+dest_main = ./CUON
 dest_cuon = $(dest_main)/cuon
 
 
@@ -78,8 +78,10 @@ dest_preferences = $(dest_cuon)/Preferences
 src_repgen = ./src/ReportGenerator/src/*.py
 dest_repgen = $(dest_cuon)/ReportGenerator
 
+src_stock = ./src/Stock/src/*.py
+dest_stock = $(dest_cuon)/Stock
 
-src_report = 
+
 
 
 src_cuon =  $(dest_cuon)/*
@@ -112,6 +114,7 @@ all :
 	if [ ! -d $(dest_pdf) ] ; then mkdir $(dest_pdf) ; fi ; cp $(src_pdf) $(dest_pdf) 
 	if [ ! -d $(dest_preferences) ] ; then mkdir $(dest_preferences) ; fi ; cp $(src_preferences) $(dest_preferences) 
 	if [ ! -d $(dest_repgen) ] ; then mkdir $(dest_repgen) ; fi ; cp $(src_repgen) $(dest_repgen) 
+	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
@@ -124,7 +127,7 @@ all :
 install:
 	make  all
 	if  [ ! -d $(INSTALLDIR) ] ; then mkdir $(INSTALLDIR) ; fi 
-	cp -R Py/* $(INSTALLDIR)
+	cp -R $(dest_main)/* $(INSTALLDIR)
 	if [ -f $(EXECDIR)/cuon ] ; then rm $(EXECDIR)/cuon ; fi
 	cp $(INSTALLDIR)/cuon.sh $(EXECDIR)/cuon
 	if [ -f de.mo ] ; then rm de.mo ; fi 

@@ -11,7 +11,7 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 import sys
-from types import *
+import types
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -60,10 +60,11 @@ class lists_addresses_phone1(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.getServer().src.Address.py_getPhonelist1(dicSearchfields)
+        dicResult =  self.rpc.getServer().src.Address.py_getPhonelist1(dicSearchfields, self.dicUser)
         for i in dicResult:
             for j in i.keys():
-                i[j] = (i[j].decode('utf-7')).encode('latin-1')
+                if isinstance(i[j],types.UnicodeType):
+                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
             
 
     

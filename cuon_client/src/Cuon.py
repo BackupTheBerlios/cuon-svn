@@ -317,7 +317,7 @@ import cuon.Order.order
 import cuon.ReportGenerator.reportGenerator
 import cuon.Login.User
 import cuon.Preferences.preferences
-
+import cuon.Stock.stock
 
 import  cuon.Databases.databases
 import cuon.XML.MyXML
@@ -330,6 +330,7 @@ import cuon.Databases.cyr_load_table
 from gtk import TRUE, FALSE
 import threading
 import cuon.PDF.report
+
 
 import gnome.ui
 
@@ -347,8 +348,14 @@ gtk.glade.textdomain(APP)
 
 
 
-
 class MainWindow(windows):
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
 
    
     def __init__(self):
@@ -434,6 +441,10 @@ class MainWindow(windows):
 
     def on_order1_activate(self,event):
         ord = cuon.Order.order.orderwindow(self.allTables)
+
+
+    def on_stock1_activate(self,event):
+        ord = cuon.Stock.stock.stockwindow(self.allTables)
 
 
     def on_report_generator1_activate(self,event):

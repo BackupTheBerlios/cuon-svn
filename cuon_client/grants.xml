@@ -29,10 +29,7 @@
       <nameOfUser>cuon_admin</nameOfUser>
       <comment></comment>
     </user>
-    <user>
-      <nameOfUser>dlinne</nameOfUser>
-      <comment></comment>
-    </user>
+  
                                                                                 
   </users>
 
@@ -47,11 +44,7 @@
       <this_user>cuon1</this_user>
       <comment></comment>
     </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>dlinne</this_user>
-      <comment></comment>
-    </addgroup>
+    
    <addgroup>
       <this_group>cuon_admin</this_group>
       <this_user>cuon_admin</this_user>
@@ -101,7 +94,13 @@
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
-
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_preferences </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>preferences, preferences_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
 
     <grant>
       <nameOfGrant>some_admin</nameOfGrant>

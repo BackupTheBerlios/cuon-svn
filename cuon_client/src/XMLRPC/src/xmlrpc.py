@@ -12,12 +12,20 @@
 
 
 import xmlrpclib
-from xmlrpclib import Server
+#from xmlrpclib import Server
 import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
 from cuon.Logging.logs import logs
+from M2Crypto.m2xmlrpclib import Server, SSL_Transport
 
 class myXmlRpc(dumps, logs):
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
     def __init__(self):
         dumps.__init__(self)
         logs.__init__(self)
@@ -27,12 +35,28 @@ class myXmlRpc(dumps, logs):
         
 
     def getServer(self):
+        """
+        if the CUON_SERVER environment-variable begins with https,
+        then the server use SSL for security
+        @return: Server-Object for xmlrpc
+        """
+        
         self.out( self.td.server)
-        self.out( 'http://' + `self.td.server`)
+        self.out( 'https://' + `self.td.server`)
         self.out( '++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         self.out( ' ')
+        sv = None
+        try:
+            if self.td.server[0:5] == 'https':
+                sv =  Server( self.td.server  , SSL_Transport() )
+            else:
+                sv =  Server( self.td.server )
+        except:
+            print 'Server error'
+            
         
-        return Server('http://' + self.td.server)
+        return sv
+    
 
     def test(self):
         s1 = "select * from address"

@@ -104,13 +104,13 @@ class loginwindow(windows):
     def loadProfile(self, sProfile = None):
         
         if  not sProfile :
-            sProfile = self.rpc.getServer().src.User.py_getNameOfStandardProfile(self.oUser.getUserName())
+            sProfile = self.rpc.getServer().src.User.py_getNameOfStandardProfile(self.oUser.getDicUser() )
 
             print 'Profile = '
             print sProfile
 
         if sProfile:
-            result = self.rpc.getServer().src.User.py_getStandardProfile(self.oUser.getUserName(),sProfile )
+            result = self.rpc.getServer().src.User.py_getStandardProfile( sProfile,  self.oUser.getDicUser() )
             print 'Result Profile'
             print result
             if result:

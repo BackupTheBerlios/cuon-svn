@@ -7,7 +7,13 @@ from cuon.Logging.logs import logs
 import string
 
 class MyXML(logs):
-
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
     def __init__(self):
         logs.__init__(self) 
      
@@ -37,15 +43,15 @@ class MyXML(logs):
         """
         nodeToDic() scans through the children of node and makes a
         dictionary from the content.
-        three cases are differentiated:
-	- if the node contains no other nodes, it is a text-node
-        and {nodeName:text} is merged into the dictionary.
-	- if the node has the attribute "method" set to "true",
-        then it's children will be appended to a list and this
-        list is merged to the dictionary in the form: {nodeName:list}.
-	- else, nodeToDic() will call itself recursively on
-        the nodes children (merging {nodeName:nodeToDic()} to
-        the dictionary).
+            1. three cases are differentiated.
+                  - if the node contains no other nodes, it is a text-node
+                    and {nodeName:text} is merged into the dictionary.
+                  - if the node has the attribute "method" set to "true",
+                    then it's children will be appended to a list and this
+                    list is merged to the dictionary in the form: {nodeName:list}.
+                  - else, nodeToDic() will call itself recursively on
+                    the nodes children (merging {nodeName:nodeToDic()} to
+                    the dictionary).
         """
         print "nodeToDic"
         dic = {} 

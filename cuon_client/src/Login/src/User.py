@@ -14,8 +14,19 @@ import os.path
 from cuon.Windows.windows import windows
 
 class User:
-
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
     def __init__(self):
+        """
+        Variables:
+            1. self.userName: Name of the User
+        """
+        
         self.userName = 'EMPTY'
         self.userPassword = 'EMPTY'
         #self.openDB()
@@ -65,6 +76,7 @@ class User:
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
+        self.dicUser['Password'] = 'test'
         self.dicUser['prefPath'] = self.prefPath
 
     def getDicUser(self):
@@ -74,14 +86,17 @@ class User:
  
         
     def setUserName(self, s):
+        """@param s: Name of the User """
         self.userName = s
         self.refreshDicUser()
 
     def getUserName(self):
+        """@return: Name of the user"""
         return self.userName
 
     
     def setUserPassword(self, s):
+        """@param s: Password of the User """
         self.userPassword = s
         self.refreshDicUser()
   

@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+#include <bonobo.h>
+#include <gnome.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,73 +26,329 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
+static GnomeUIInfo mi_datei1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Print S_etup..."),
+    NULL,
+    (gpointer) on_choosePrinter1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("close"),
+    NULL,
+    (gpointer) on_quit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-quit",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_edit_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-undo"),
+    NULL,
+    (gpointer) on_undo1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-find"),
+    NULL,
+    (gpointer) on_find1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("choose"),
+    NULL,
+    (gpointer) on_chooseAddress_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_address1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_New"),
+    NULL,
+    (gpointer) on_new1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-new",
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_edit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Save"),
+    NULL,
+    (gpointer) on_save1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("_Print"),
+    NULL,
+    (gpointer) on_print1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-print",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("_Delete"),
+    NULL,
+    (gpointer) on_delete1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-delete",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_bank1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-new"),
+    NULL,
+    (gpointer) on_BankNew1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_BankEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_misc1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_MiscSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_MiscEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_partner1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_New"),
+    NULL,
+    (gpointer) on_PartnerNew1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-new",
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_PartnerEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_PartnerSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-print"),
+    NULL,
+    (gpointer) on_mi_PartnerPrint1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("_Delete"),
+    NULL,
+    (gpointer) on_PartnerDelete1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-delete",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-new"),
+    NULL,
+    (gpointer) on_SchedulNew_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_SchedulEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("gtk-save"),
+    NULL,
+    (gpointer) on_SchedulSave_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo listAddresses1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Phone"),
+    NULL,
+    (gpointer) on_liAddressesPhone1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo list_partner1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Phone"),
+    NULL,
+    (gpointer) on_liAddressesPhone11_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_lists1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_SUBTREE, N_("Addresses"),
+    NULL,
+    listAddresses1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Partner"),
+    NULL,
+    list_partner1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_writer1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("NewLetter"),
+    NULL,
+    (gpointer) on_newletter1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo menubar1_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_SUBTREE, N_("_File"),
+    NULL,
+    mi_datei1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Edit"),
+    NULL,
+    mi_edit_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("_Addresses"),
+    NULL,
+    mi_address1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Bank"),
+    NULL,
+    mi_bank1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Misc"),
+    NULL,
+    mi_misc1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("_Partner"),
+    NULL,
+    mi_partner1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Schedul"),
+    NULL,
+    mi_schedul1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Lists"),
+    NULL,
+    mi_lists1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Writer"),
+    NULL,
+    mi_writer1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 GtkWidget*
 create_AddressMainwindow (void)
 {
   GtkWidget *AddressMainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
-  GtkWidget *mi_datei1;
-  GtkWidget *mi_datei1_menu;
-  GtkWidget *mi_choosePrinter1;
-  GtkWidget *separator2;
-  GtkWidget *mi_quit1;
-  GtkWidget *image557;
-  GtkWidget *mi_edit;
-  GtkWidget *mi_edit_menu;
-  GtkWidget *undo1;
-  GtkWidget *find1;
-  GtkWidget *chooseAddress;
-  GtkWidget *mi_address1;
-  GtkWidget *mi_address1_menu;
-  GtkWidget *mi_new1;
-  GtkWidget *image558;
-  GtkWidget *mi_edit1;
-  GtkWidget *mi_save1;
-  GtkWidget *image559;
-  GtkWidget *trennlinie2;
-  GtkWidget *mi_print1;
-  GtkWidget *image560;
-  GtkWidget *trennlinie5;
-  GtkWidget *mi_clear1;
-  GtkWidget *image561;
-  GtkWidget *mi_bank1;
-  GtkWidget *mi_bank1_menu;
-  GtkWidget *new1;
-  GtkWidget *mi_BankEdit1;
-  GtkWidget *mi_misc1;
-  GtkWidget *mi_misc1_menu;
-  GtkWidget *mi_MiscSave1;
-  GtkWidget *image562;
-  GtkWidget *mi_MiscEdit1;
-  GtkWidget *mi_partner1;
-  GtkWidget *mi_partner1_menu;
-  GtkWidget *mi_PartnerNew1;
-  GtkWidget *image563;
-  GtkWidget *mi_PartnerEdit1;
-  GtkWidget *mi_PartnerSave1;
-  GtkWidget *image564;
-  GtkWidget *separator1;
-  GtkWidget *mi_partnerPrint1;
-  GtkWidget *separator3;
-  GtkWidget *mi_PartnerDelete1;
-  GtkWidget *image565;
-  GtkWidget *mi_schedul1;
-  GtkWidget *mi_schedul1_menu;
-  GtkWidget *mi_SchedulNew;
-  GtkWidget *mi_SchedulEdit1;
-  GtkWidget *mi_schedulSave;
-  GtkWidget *mi_lists1;
-  GtkWidget *mi_lists1_menu;
-  GtkWidget *listAddresses1;
-  GtkWidget *listAddresses1_menu;
-  GtkWidget *PhoneList;
-  GtkWidget *list_partner1;
-  GtkWidget *list_partner1_menu;
-  GtkWidget *phone1;
-  GtkWidget *mi_writer1;
-  GtkWidget *mi_writer1_menu;
-  GtkWidget *newletter1;
   GtkWidget *toolbar1;
   GtkWidget *hbox1;
   GtkWidget *lFindName;
@@ -156,6 +412,10 @@ create_AddressMainwindow (void)
   GtkWidget *label37;
   GtkWidget *eTaxnumber;
   GtkWidget *chkbCalcTax;
+  GtkWidget *label40;
+  GtkWidget *combo2;
+  GList *combo2_items = NULL;
+  GtkWidget *cbPriceGroup;
   GtkWidget *lMisc;
   GtkWidget *table2;
   GtkWidget *label15;
@@ -218,9 +478,6 @@ create_AddressMainwindow (void)
   GtkWidget *hscale1;
   GtkWidget *vscale1;
   GtkWidget *lSchedul;
-  GtkAccelGroup *accel_group;
-
-  accel_group = gtk_accel_group_new ();
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (AddressMainwindow, 1024, 768);
@@ -234,245 +491,10 @@ create_AddressMainwindow (void)
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
+  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
+                       NULL, FALSE, 0);
 
-  mi_datei1 = gtk_menu_item_new_with_mnemonic (_("_File"));
-  gtk_widget_show (mi_datei1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_datei1);
-
-  mi_datei1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_datei1), mi_datei1_menu);
-
-  mi_choosePrinter1 = gtk_menu_item_new_with_mnemonic (_("Print S_etup..."));
-  gtk_widget_show (mi_choosePrinter1);
-  gtk_container_add (GTK_CONTAINER (mi_datei1_menu), mi_choosePrinter1);
-
-  separator2 = gtk_menu_item_new ();
-  gtk_widget_show (separator2);
-  gtk_container_add (GTK_CONTAINER (mi_datei1_menu), separator2);
-  gtk_widget_set_sensitive (separator2, FALSE);
-
-  mi_quit1 = gtk_image_menu_item_new_with_mnemonic (_("close"));
-  gtk_widget_show (mi_quit1);
-  gtk_container_add (GTK_CONTAINER (mi_datei1_menu), mi_quit1);
-
-  image557 = gtk_image_new_from_stock ("gtk-quit", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image557);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_quit1), image557);
-
-  mi_edit = gtk_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_widget_show (mi_edit);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_edit);
-
-  mi_edit_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_edit), mi_edit_menu);
-
-  undo1 = gtk_image_menu_item_new_from_stock ("gtk-undo", accel_group);
-  gtk_widget_show (undo1);
-  gtk_container_add (GTK_CONTAINER (mi_edit_menu), undo1);
-
-  find1 = gtk_image_menu_item_new_from_stock ("gtk-find", accel_group);
-  gtk_widget_show (find1);
-  gtk_container_add (GTK_CONTAINER (mi_edit_menu), find1);
-
-  chooseAddress = gtk_menu_item_new_with_mnemonic (_("choose"));
-  gtk_widget_show (chooseAddress);
-  gtk_container_add (GTK_CONTAINER (mi_edit_menu), chooseAddress);
-  gtk_widget_set_sensitive (chooseAddress, FALSE);
-
-  mi_address1 = gtk_menu_item_new_with_mnemonic (_("_Addresses"));
-  gtk_widget_show (mi_address1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_address1);
-
-  mi_address1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_address1), mi_address1_menu);
-
-  mi_new1 = gtk_image_menu_item_new_with_mnemonic (_("_New"));
-  gtk_widget_show (mi_new1);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), mi_new1);
-
-  image558 = gtk_image_new_from_stock ("gtk-new", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image558);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_new1), image558);
-
-  mi_edit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
-  gtk_widget_show (mi_edit1);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), mi_edit1);
-
-  mi_save1 = gtk_image_menu_item_new_with_mnemonic (_("_Save"));
-  gtk_widget_show (mi_save1);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), mi_save1);
-
-  image559 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image559);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_save1), image559);
-
-  trennlinie2 = gtk_menu_item_new ();
-  gtk_widget_show (trennlinie2);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), trennlinie2);
-  gtk_widget_set_sensitive (trennlinie2, FALSE);
-
-  mi_print1 = gtk_image_menu_item_new_with_mnemonic (_("_Print"));
-  gtk_widget_show (mi_print1);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), mi_print1);
-
-  image560 = gtk_image_new_from_stock ("gtk-print", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image560);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_print1), image560);
-
-  trennlinie5 = gtk_menu_item_new ();
-  gtk_widget_show (trennlinie5);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), trennlinie5);
-  gtk_widget_set_sensitive (trennlinie5, FALSE);
-
-  mi_clear1 = gtk_image_menu_item_new_with_mnemonic (_("_Delete"));
-  gtk_widget_show (mi_clear1);
-  gtk_container_add (GTK_CONTAINER (mi_address1_menu), mi_clear1);
-
-  image561 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image561);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_clear1), image561);
-
-  mi_bank1 = gtk_menu_item_new_with_mnemonic (_("Bank"));
-  gtk_widget_show (mi_bank1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_bank1);
-
-  mi_bank1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_bank1), mi_bank1_menu);
-
-  new1 = gtk_image_menu_item_new_from_stock ("gtk-new", accel_group);
-  gtk_widget_show (new1);
-  gtk_container_add (GTK_CONTAINER (mi_bank1_menu), new1);
-
-  mi_BankEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
-  gtk_widget_show (mi_BankEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_bank1_menu), mi_BankEdit1);
-
-  mi_misc1 = gtk_menu_item_new_with_mnemonic (_("Misc"));
-  gtk_widget_show (mi_misc1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_misc1);
-
-  mi_misc1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_misc1), mi_misc1_menu);
-
-  mi_MiscSave1 = gtk_image_menu_item_new_with_mnemonic (_("Save"));
-  gtk_widget_show (mi_MiscSave1);
-  gtk_container_add (GTK_CONTAINER (mi_misc1_menu), mi_MiscSave1);
-
-  image562 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image562);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_MiscSave1), image562);
-
-  mi_MiscEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
-  gtk_widget_show (mi_MiscEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_misc1_menu), mi_MiscEdit1);
-
-  mi_partner1 = gtk_menu_item_new_with_mnemonic (_("_Partner"));
-  gtk_widget_show (mi_partner1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_partner1);
-
-  mi_partner1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_partner1), mi_partner1_menu);
-
-  mi_PartnerNew1 = gtk_image_menu_item_new_with_mnemonic (_("_New"));
-  gtk_widget_show (mi_PartnerNew1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), mi_PartnerNew1);
-
-  image563 = gtk_image_new_from_stock ("gtk-new", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image563);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_PartnerNew1), image563);
-
-  mi_PartnerEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
-  gtk_widget_show (mi_PartnerEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), mi_PartnerEdit1);
-
-  mi_PartnerSave1 = gtk_image_menu_item_new_with_mnemonic (_("Save"));
-  gtk_widget_show (mi_PartnerSave1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), mi_PartnerSave1);
-
-  image564 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image564);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_PartnerSave1), image564);
-
-  separator1 = gtk_menu_item_new ();
-  gtk_widget_show (separator1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), separator1);
-  gtk_widget_set_sensitive (separator1, FALSE);
-
-  mi_partnerPrint1 = gtk_image_menu_item_new_from_stock ("gtk-print", accel_group);
-  gtk_widget_show (mi_partnerPrint1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), mi_partnerPrint1);
-
-  separator3 = gtk_menu_item_new ();
-  gtk_widget_show (separator3);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), separator3);
-  gtk_widget_set_sensitive (separator3, FALSE);
-
-  mi_PartnerDelete1 = gtk_image_menu_item_new_with_mnemonic (_("_Delete"));
-  gtk_widget_show (mi_PartnerDelete1);
-  gtk_container_add (GTK_CONTAINER (mi_partner1_menu), mi_PartnerDelete1);
-
-  image565 = gtk_image_new_from_stock ("gtk-delete", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image565);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi_PartnerDelete1), image565);
-
-  mi_schedul1 = gtk_menu_item_new_with_mnemonic (_("Schedul"));
-  gtk_widget_show (mi_schedul1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_schedul1);
-
-  mi_schedul1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_schedul1), mi_schedul1_menu);
-
-  mi_SchedulNew = gtk_image_menu_item_new_from_stock ("gtk-new", accel_group);
-  gtk_widget_show (mi_SchedulNew);
-  gtk_container_add (GTK_CONTAINER (mi_schedul1_menu), mi_SchedulNew);
-
-  mi_SchedulEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
-  gtk_widget_show (mi_SchedulEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_schedul1_menu), mi_SchedulEdit1);
-
-  mi_schedulSave = gtk_image_menu_item_new_from_stock ("gtk-save", accel_group);
-  gtk_widget_show (mi_schedulSave);
-  gtk_container_add (GTK_CONTAINER (mi_schedul1_menu), mi_schedulSave);
-
-  mi_lists1 = gtk_menu_item_new_with_mnemonic (_("Lists"));
-  gtk_widget_show (mi_lists1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_lists1);
-
-  mi_lists1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_lists1), mi_lists1_menu);
-
-  listAddresses1 = gtk_menu_item_new_with_mnemonic (_("Addresses"));
-  gtk_widget_show (listAddresses1);
-  gtk_container_add (GTK_CONTAINER (mi_lists1_menu), listAddresses1);
-
-  listAddresses1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (listAddresses1), listAddresses1_menu);
-
-  PhoneList = gtk_menu_item_new_with_mnemonic (_("Phone"));
-  gtk_widget_show (PhoneList);
-  gtk_container_add (GTK_CONTAINER (listAddresses1_menu), PhoneList);
-
-  list_partner1 = gtk_menu_item_new_with_mnemonic (_("Partner"));
-  gtk_widget_show (list_partner1);
-  gtk_container_add (GTK_CONTAINER (mi_lists1_menu), list_partner1);
-
-  list_partner1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (list_partner1), list_partner1_menu);
-
-  phone1 = gtk_menu_item_new_with_mnemonic (_("Phone"));
-  gtk_widget_show (phone1);
-  gtk_container_add (GTK_CONTAINER (list_partner1_menu), phone1);
-
-  mi_writer1 = gtk_menu_item_new_with_mnemonic (_("Writer"));
-  gtk_widget_show (mi_writer1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_writer1);
-
-  mi_writer1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_writer1), mi_writer1_menu);
-
-  newletter1 = gtk_menu_item_new_with_mnemonic (_("NewLetter"));
-  gtk_widget_show (newletter1);
-  gtk_container_add (GTK_CONTAINER (mi_writer1_menu), newletter1);
+  gtk_widget_set_sensitive (mi_edit_menu_uiinfo[2].widget, FALSE);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -868,6 +890,31 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (chkbCalcTax), TRUE);
 
+  label40 = gtk_label_new (_("Price-Group"));
+  gtk_widget_show (label40);
+  gtk_table_attach (GTK_TABLE (table9), label40, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label40), 0, 0.5);
+
+  combo2 = gtk_combo_new ();
+  g_object_set_data (G_OBJECT (GTK_COMBO (combo2)->popwin),
+                     "GladeParentKey", combo2);
+  gtk_widget_show (combo2);
+  gtk_table_attach (GTK_TABLE (table9), combo2, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price I"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price II"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price III"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price IV"));
+  gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
+  g_list_free (combo2_items);
+
+  cbPriceGroup = GTK_COMBO (combo2)->entry;
+  gtk_widget_show (cbPriceGroup);
+  gtk_entry_set_text (GTK_ENTRY (cbPriceGroup), _("Price I"));
+
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), lMisc);
@@ -1246,90 +1293,6 @@ create_AddressMainwindow (void)
   gtk_widget_show (lSchedul);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), lSchedul);
 
-  g_signal_connect ((gpointer) mi_choosePrinter1, "activate",
-                    G_CALLBACK (on_choosePrinter1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_quit1, "activate",
-                    G_CALLBACK (on_quit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) undo1, "activate",
-                    G_CALLBACK (on_undo1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) find1, "activate",
-                    G_CALLBACK (on_find1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) chooseAddress, "activate",
-                    G_CALLBACK (on_chooseAddress_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_new1, "activate",
-                    G_CALLBACK (on_new1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_edit1, "activate",
-                    G_CALLBACK (on_edit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_save1, "activate",
-                    G_CALLBACK (on_save1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_print1, "activate",
-                    G_CALLBACK (on_print1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_clear1, "activate",
-                    G_CALLBACK (on_delete1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_bank1, "activate",
-                    G_CALLBACK (on_bank1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) new1, "activate",
-                    G_CALLBACK (on_BankNew1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_BankEdit1, "activate",
-                    G_CALLBACK (on_BankEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_misc1, "activate",
-                    G_CALLBACK (on_misc1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_MiscSave1, "activate",
-                    G_CALLBACK (on_MiscSave1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_MiscEdit1, "activate",
-                    G_CALLBACK (on_MiscEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_PartnerNew1, "activate",
-                    G_CALLBACK (on_PartnerNew1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_PartnerEdit1, "activate",
-                    G_CALLBACK (on_PartnerEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_PartnerSave1, "activate",
-                    G_CALLBACK (on_PartnerSave1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_partnerPrint1, "activate",
-                    G_CALLBACK (on_mi_PartnerPrint1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_PartnerDelete1, "activate",
-                    G_CALLBACK (on_PartnerDelete1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_schedul1, "activate",
-                    G_CALLBACK (on_schedul1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_SchedulNew, "activate",
-                    G_CALLBACK (on_SchedulNew_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_SchedulEdit1, "activate",
-                    G_CALLBACK (on_SchedulEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_schedulSave, "activate",
-                    G_CALLBACK (on_SchedulSave_activate),
-                    NULL);
-  g_signal_connect ((gpointer) PhoneList, "activate",
-                    G_CALLBACK (on_liAddressesPhone1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) phone1, "activate",
-                    G_CALLBACK (on_liAddressesPhone11_activate),
-                    NULL);
-  g_signal_connect ((gpointer) newletter1, "activate",
-                    G_CALLBACK (on_newletter1_activate),
-                    NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
@@ -1353,67 +1316,47 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1, "mi_datei1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu, "mi_datei1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_choosePrinter1, "mi_choosePrinter1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, separator2, "separator2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_quit1, "mi_quit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image557, "image557");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit, "mi_edit");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu, "mi_edit_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, undo1, "undo1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, find1, "find1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chooseAddress, "chooseAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1, "mi_address1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu, "mi_address1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_new1, "mi_new1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image558, "image558");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit1, "mi_edit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_save1, "mi_save1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image559, "image559");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, trennlinie2, "trennlinie2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_print1, "mi_print1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image560, "image560");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, trennlinie5, "trennlinie5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_clear1, "mi_clear1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image561, "image561");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1, "mi_bank1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu, "mi_bank1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, new1, "new1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_BankEdit1, "mi_BankEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1, "mi_misc1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu, "mi_misc1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_MiscSave1, "mi_MiscSave1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image562, "image562");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_MiscEdit1, "mi_MiscEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1, "mi_partner1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu, "mi_partner1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_PartnerNew1, "mi_PartnerNew1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image563, "image563");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_PartnerEdit1, "mi_PartnerEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_PartnerSave1, "mi_PartnerSave1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image564, "image564");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, separator1, "separator1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partnerPrint1, "mi_partnerPrint1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, separator3, "separator3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_PartnerDelete1, "mi_PartnerDelete1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image565, "image565");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1, "mi_schedul1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu, "mi_schedul1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_SchedulNew, "mi_SchedulNew");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_SchedulEdit1, "mi_SchedulEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedulSave, "mi_schedulSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1, "mi_lists1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu, "mi_lists1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1, "listAddresses1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu, "listAddresses1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, PhoneList, "PhoneList");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1, "list_partner1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu, "list_partner1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, phone1, "phone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_writer1, "mi_writer1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_writer1_menu, "mi_writer1_menu");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, newletter1, "newletter1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[0].widget, "mi_datei1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[0].widget, "mi_choosePrinter1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[1].widget, "separator2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[2].widget, "mi_quit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[1].widget, "mi_edit");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[0].widget, "undo1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[1].widget, "find1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[2].widget, "chooseAddress");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[2].widget, "mi_address1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[0].widget, "mi_new1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[1].widget, "mi_edit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[2].widget, "mi_save1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[3].widget, "trennlinie2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[4].widget, "mi_print1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[5].widget, "trennlinie5");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[6].widget, "mi_clear1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[3].widget, "mi_bank1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[0].widget, "new1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[1].widget, "mi_BankEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[4].widget, "mi_misc1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[0].widget, "mi_MiscSave1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[1].widget, "mi_MiscEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[5].widget, "mi_partner1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[0].widget, "mi_PartnerNew1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "mi_PartnerEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[2].widget, "mi_PartnerSave1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[3].widget, "separator1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[4].widget, "mi_partnerPrint1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[5].widget, "separator3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[6].widget, "mi_PartnerDelete1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[6].widget, "mi_schedul1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[0].widget, "mi_SchedulNew");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[1].widget, "mi_SchedulEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[2].widget, "mi_schedulSave");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_lists1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[0].widget, "listAddresses1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_writer1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_writer1_menu_uiinfo[0].widget, "newletter1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindName, "lFindName");
@@ -1477,6 +1420,9 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label37, "label37");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eTaxnumber, "eTaxnumber");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbCalcTax, "chkbCalcTax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label40, "label40");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, combo2, "combo2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbPriceGroup, "cbPriceGroup");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
@@ -1541,8 +1487,6 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
 
   gtk_widget_grab_default (eFashion);
-  gtk_window_add_accel_group (GTK_WINDOW (AddressMainwindow), accel_group);
-
   return AddressMainwindow;
 }
 

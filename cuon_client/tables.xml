@@ -1218,6 +1218,16 @@
       <default></default>
       <comment></comment>
     </field>
+    <field>
+      <name>price_group</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>35</size>
+      <default></default>
+      <comment></comment>
+    </field>
   </table>
 
  <table>
@@ -1312,8 +1322,109 @@
     </field>
   </table>
 
+ <table>
+    <nameOfTable>stocks</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>35</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>125</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>address</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>phone</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  </table>
 
-
+ <table>
+    <nameOfTable>stock_goods</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>stock_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>article_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>to_embed</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>roll_out</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  </table>
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
     <sequence_increment>1</sequence_increment>

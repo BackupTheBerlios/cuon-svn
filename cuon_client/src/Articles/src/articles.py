@@ -38,6 +38,7 @@ class articleswindow(chooseWindows):
 
         self.loadGlade('articles.xml')
         self.win1 = self.getWidget('ArticlesMainwindow')
+
         
         self.allTables = allTables
         self.singleArticle = SingleArticle.SingleArticle(allTables)
@@ -146,8 +147,15 @@ class articleswindow(chooseWindows):
         self.addEnabledMenuItems('editArticlePurchase','PurchaseNew1')
         self.addEnabledMenuItems('editArticlePurchase','PurchaseClear1')
 
-         
-         
+        # init Comboboxes
+        tax_vat =  self.rpc.getServer().src.Misc.py_getListOfTaxVat( self.dicUser)
+        cb = self.getWidget('cbVat')
+        
+        for i in range(len(tax_vat)) :
+            li = gtk.ListItem(tax_vat[i])
+            cb.list.append_items([li])
+            li.show()
+            
     #Menu File
               
     def on_quit1_activate(self, event):

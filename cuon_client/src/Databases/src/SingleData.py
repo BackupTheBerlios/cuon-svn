@@ -14,7 +14,7 @@ import sys
 import os
 sys.path.append(os.environ['CUON_PATH'])
 
-from types import *
+
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -123,19 +123,19 @@ class SingleData(gladeXml, logs):
         
     def save(self):
         dicValues = self.readEntries()
-        self.out( self.sNameOfTable)
-        self.out( self.ID)
-        self.out( dicValues)
-        self.out( self.rpc.getServer().src.sql.py_saveRecord(self.sNameOfTable, self.ID, dicValues))
+#        self.out( self.sNameOfTable)
+#        self.out( self.ID)
+#        self.out( dicValues)
+        self.out( self.rpc.getServer().src.sql.py_saveRecord(self.sNameOfTable, self.ID, dicValues, self.dicUser))
         self.refreshTree()
 
     def deleteRecord(self):
-        self.rpc.getServer().src.sql.py_deleteRecord(self.sNameOfTable, self.ID)
+        self.rpc.getServer().src.sql.py_deleteRecord(self.sNameOfTable, self.ID, self.dicUser )
         self.refreshTree()
          
 
     def loadCompleteTable(self):
-        return self.rpc.getServer().src.sql.py_loadCompleteTable(self.sNameOfTable)
+        return self.rpc.getServer().src.sql.py_loadCompleteTable(self.sNameOfTable, self.dicUser)
         
 
 
@@ -480,7 +480,7 @@ class SingleData(gladeXml, logs):
         self.out(dicFields)
         
         if dicFields:        
-            dicLists = self.rpc.getServer().src.sql.py_getListEntries(dicFields, self.table.getName() , self.sSort, self.sWhere)
+            dicLists = self.rpc.getServer().src.sql.py_getListEntries(dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicUser)
         else:
             dicLists = {}
             

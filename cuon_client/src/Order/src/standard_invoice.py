@@ -35,7 +35,7 @@ class standard_invoice(standardlist, fileSelection):
         
         self.closeDB()
         
-        sFile = self.setFileName( self.oUser.prefPath['ReportStandardInvoice1'] +  '/' +_('bill-') + `self.dicOrder['invoiceNumber']` + '.pdf' )
+        sFile = self.setFileName( self.oUser.prefPath['StandardInvoice1'] +  '/' +_('bill-') + `self.dicOrder['invoiceNumber']` + '.pdf' )
         fileSelection.__init__(self, initialFilename = sFile )
 
 
@@ -44,7 +44,7 @@ class standard_invoice(standardlist, fileSelection):
     def on_ok_button1_clicked(self, event):
     
 
-        self.ok_button1_clicked(event)
+        self.on_ok_button_clicked(event)
         self.pdfFile = os.path.normpath(self.fileName)
         print self.dicOrder
         print  self.rpc.getServer()

@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+#include <bonobo.h>
+#include <gnome.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,43 +26,194 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
+static GnomeUIInfo menuitem1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Print S_etup..."),
+    NULL,
+    (gpointer) on_choosePrinter1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("close"),
+    NULL,
+    (gpointer) on_quit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo edit_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("choose"),
+    NULL,
+    (gpointer) on_chooseArticle_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_article1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_new1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Edit"),
+    NULL,
+    (gpointer) on_edit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_save1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Print"),
+    NULL,
+    (gpointer) on_print1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Clear"),
+    NULL,
+    (gpointer) on_clear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_purchase1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_PurchaseNew1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Edit"),
+    NULL,
+    (gpointer) on_PurchaseEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_PurchaseSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Clear"),
+    NULL,
+    (gpointer) on_PurchaseClear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_sales1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_SalesNew1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Edit"),
+    NULL,
+    (gpointer) on_SalesEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_SalesSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Clear"),
+    NULL,
+    (gpointer) on_SalesClear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo menubar1_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_SUBTREE, N_("_File"),
+    NULL,
+    menuitem1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Edit"),
+    NULL,
+    edit_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Article"),
+    NULL,
+    mi_article1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Purchase"),
+    NULL,
+    mi_purchase1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Sales"),
+    NULL,
+    mi_sales1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 GtkWidget*
 create_ArticlesMainwindow (void)
 {
   GtkWidget *ArticlesMainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
-  GtkWidget *menuitem1;
-  GtkWidget *menuitem1_menu;
-  GtkWidget *menuitem2;
-  GtkWidget *menuitem3;
-  GtkWidget *quit1;
-  GtkWidget *edit;
-  GtkWidget *edit_menu;
-  GtkWidget *chooseArticle;
-  GtkWidget *mi_article1;
-  GtkWidget *mi_article1_menu;
-  GtkWidget *new1;
-  GtkWidget *edit1;
-  GtkWidget *save1;
-  GtkWidget *menuitem5;
-  GtkWidget *print1;
-  GtkWidget *menuitem6;
-  GtkWidget *clear1;
-  GtkWidget *mi_purchase1;
-  GtkWidget *mi_purchase1_menu;
-  GtkWidget *PurchaseNew1;
-  GtkWidget *PurchaseEdit1;
-  GtkWidget *PurchaseSave1;
-  GtkWidget *menuitem8;
-  GtkWidget *PurchaseClear1;
-  GtkWidget *mi_sales1;
-  GtkWidget *mi_sales1_menu;
-  GtkWidget *SalesNew1;
-  GtkWidget *SalesEdit1;
-  GtkWidget *SalesSave1;
-  GtkWidget *separator1;
-  GtkWidget *SalesClear1;
   GtkWidget *toolbar1;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
@@ -136,131 +287,10 @@ create_ArticlesMainwindow (void)
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
+  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
+                       NULL, FALSE, 0);
 
-  menuitem1 = gtk_menu_item_new_with_mnemonic (_("_File"));
-  gtk_widget_show (menuitem1);
-  gtk_container_add (GTK_CONTAINER (menubar1), menuitem1);
-
-  menuitem1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem1), menuitem1_menu);
-
-  menuitem2 = gtk_menu_item_new_with_mnemonic (_("Print S_etup..."));
-  gtk_widget_show (menuitem2);
-  gtk_container_add (GTK_CONTAINER (menuitem1_menu), menuitem2);
-
-  menuitem3 = gtk_menu_item_new ();
-  gtk_widget_show (menuitem3);
-  gtk_container_add (GTK_CONTAINER (menuitem1_menu), menuitem3);
-  gtk_widget_set_sensitive (menuitem3, FALSE);
-
-  quit1 = gtk_menu_item_new_with_mnemonic (_("close"));
-  gtk_widget_show (quit1);
-  gtk_container_add (GTK_CONTAINER (menuitem1_menu), quit1);
-
-  edit = gtk_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_widget_show (edit);
-  gtk_container_add (GTK_CONTAINER (menubar1), edit);
-
-  edit_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (edit), edit_menu);
-
-  chooseArticle = gtk_menu_item_new_with_mnemonic (_("choose"));
-  gtk_widget_show (chooseArticle);
-  gtk_container_add (GTK_CONTAINER (edit_menu), chooseArticle);
-  gtk_widget_set_sensitive (chooseArticle, FALSE);
-
-  mi_article1 = gtk_menu_item_new_with_mnemonic (_("Article"));
-  gtk_widget_show (mi_article1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_article1);
-
-  mi_article1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_article1), mi_article1_menu);
-
-  new1 = gtk_menu_item_new_with_mnemonic (_("New"));
-  gtk_widget_show (new1);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), new1);
-
-  edit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_widget_show (edit1);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), edit1);
-
-  save1 = gtk_menu_item_new_with_mnemonic (_("Save"));
-  gtk_widget_show (save1);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), save1);
-
-  menuitem5 = gtk_menu_item_new ();
-  gtk_widget_show (menuitem5);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), menuitem5);
-  gtk_widget_set_sensitive (menuitem5, FALSE);
-
-  print1 = gtk_menu_item_new_with_mnemonic (_("Print"));
-  gtk_widget_show (print1);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), print1);
-
-  menuitem6 = gtk_menu_item_new ();
-  gtk_widget_show (menuitem6);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), menuitem6);
-  gtk_widget_set_sensitive (menuitem6, FALSE);
-
-  clear1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
-  gtk_widget_show (clear1);
-  gtk_container_add (GTK_CONTAINER (mi_article1_menu), clear1);
-
-  mi_purchase1 = gtk_menu_item_new_with_mnemonic (_("Purchase"));
-  gtk_widget_show (mi_purchase1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_purchase1);
-
-  mi_purchase1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_purchase1), mi_purchase1_menu);
-
-  PurchaseNew1 = gtk_menu_item_new_with_mnemonic (_("New"));
-  gtk_widget_show (PurchaseNew1);
-  gtk_container_add (GTK_CONTAINER (mi_purchase1_menu), PurchaseNew1);
-
-  PurchaseEdit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_widget_show (PurchaseEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_purchase1_menu), PurchaseEdit1);
-
-  PurchaseSave1 = gtk_menu_item_new_with_mnemonic (_("Save"));
-  gtk_widget_show (PurchaseSave1);
-  gtk_container_add (GTK_CONTAINER (mi_purchase1_menu), PurchaseSave1);
-
-  menuitem8 = gtk_menu_item_new ();
-  gtk_widget_show (menuitem8);
-  gtk_container_add (GTK_CONTAINER (mi_purchase1_menu), menuitem8);
-  gtk_widget_set_sensitive (menuitem8, FALSE);
-
-  PurchaseClear1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
-  gtk_widget_show (PurchaseClear1);
-  gtk_container_add (GTK_CONTAINER (mi_purchase1_menu), PurchaseClear1);
-
-  mi_sales1 = gtk_menu_item_new_with_mnemonic (_("Sales"));
-  gtk_widget_show (mi_sales1);
-  gtk_container_add (GTK_CONTAINER (menubar1), mi_sales1);
-
-  mi_sales1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi_sales1), mi_sales1_menu);
-
-  SalesNew1 = gtk_menu_item_new_with_mnemonic (_("New"));
-  gtk_widget_show (SalesNew1);
-  gtk_container_add (GTK_CONTAINER (mi_sales1_menu), SalesNew1);
-
-  SalesEdit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_widget_show (SalesEdit1);
-  gtk_container_add (GTK_CONTAINER (mi_sales1_menu), SalesEdit1);
-
-  SalesSave1 = gtk_menu_item_new_with_mnemonic (_("Save"));
-  gtk_widget_show (SalesSave1);
-  gtk_container_add (GTK_CONTAINER (mi_sales1_menu), SalesSave1);
-
-  separator1 = gtk_menu_item_new ();
-  gtk_widget_show (separator1);
-  gtk_container_add (GTK_CONTAINER (mi_sales1_menu), separator1);
-  gtk_widget_set_sensitive (separator1, FALSE);
-
-  SalesClear1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
-  gtk_widget_show (SalesClear1);
-  gtk_container_add (GTK_CONTAINER (mi_sales1_menu), SalesClear1);
+  gtk_widget_set_sensitive (edit_menu_uiinfo[0].widget, FALSE);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -624,54 +654,6 @@ create_ArticlesMainwindow (void)
   gtk_widget_show (label19);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label19);
 
-  g_signal_connect ((gpointer) menuitem2, "activate",
-                    G_CALLBACK (on_choosePrinter1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) quit1, "activate",
-                    G_CALLBACK (on_quit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) chooseArticle, "activate",
-                    G_CALLBACK (on_chooseArticle_activate),
-                    NULL);
-  g_signal_connect ((gpointer) new1, "activate",
-                    G_CALLBACK (on_new1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) edit1, "activate",
-                    G_CALLBACK (on_edit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) save1, "activate",
-                    G_CALLBACK (on_save1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) print1, "activate",
-                    G_CALLBACK (on_print1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) clear1, "activate",
-                    G_CALLBACK (on_clear1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) PurchaseNew1, "activate",
-                    G_CALLBACK (on_PurchaseNew1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) PurchaseEdit1, "activate",
-                    G_CALLBACK (on_PurchaseEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) PurchaseSave1, "activate",
-                    G_CALLBACK (on_PurchaseSave1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) PurchaseClear1, "activate",
-                    G_CALLBACK (on_PurchaseClear1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) SalesNew1, "activate",
-                    G_CALLBACK (on_SalesNew1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) SalesEdit1, "activate",
-                    G_CALLBACK (on_SalesEdit1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) SalesSave1, "activate",
-                    G_CALLBACK (on_SalesSave1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) SalesClear1, "activate",
-                    G_CALLBACK (on_SalesClear1_activate),
-                    NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
@@ -689,37 +671,32 @@ create_ArticlesMainwindow (void)
   GLADE_HOOKUP_OBJECT_NO_REF (ArticlesMainwindow, ArticlesMainwindow, "ArticlesMainwindow");
   GLADE_HOOKUP_OBJECT (ArticlesMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem1, "menuitem1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem1_menu, "menuitem1_menu");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem2, "menuitem2");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem3, "menuitem3");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, quit1, "quit1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, edit, "edit");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, edit_menu, "edit_menu");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, chooseArticle, "chooseArticle");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1, "mi_article1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu, "mi_article1_menu");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, new1, "new1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, edit1, "edit1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, save1, "save1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem5, "menuitem5");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, print1, "print1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem6, "menuitem6");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, clear1, "clear1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1, "mi_purchase1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu, "mi_purchase1_menu");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, PurchaseNew1, "PurchaseNew1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, PurchaseEdit1, "PurchaseEdit1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, PurchaseSave1, "PurchaseSave1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem8, "menuitem8");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, PurchaseClear1, "PurchaseClear1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1, "mi_sales1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu, "mi_sales1_menu");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, SalesNew1, "SalesNew1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, SalesEdit1, "SalesEdit1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, SalesSave1, "SalesSave1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, separator1, "separator1");
-  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, SalesClear1, "SalesClear1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1_uiinfo[0].widget, "menuitem1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem1_menu_uiinfo[0].widget, "menuitem2");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem1_menu_uiinfo[1].widget, "menuitem3");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menuitem1_menu_uiinfo[2].widget, "quit1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1_uiinfo[1].widget, "edit");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, edit_menu_uiinfo[0].widget, "chooseArticle");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1_uiinfo[2].widget, "mi_article1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[0].widget, "new1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[1].widget, "edit1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[2].widget, "save1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[3].widget, "menuitem5");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[4].widget, "print1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[5].widget, "menuitem6");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_article1_menu_uiinfo[6].widget, "clear1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1_uiinfo[3].widget, "mi_purchase1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu_uiinfo[0].widget, "PurchaseNew1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu_uiinfo[1].widget, "PurchaseEdit1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu_uiinfo[2].widget, "PurchaseSave1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu_uiinfo[3].widget, "menuitem8");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_purchase1_menu_uiinfo[4].widget, "PurchaseClear1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, menubar1_uiinfo[4].widget, "mi_sales1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu_uiinfo[0].widget, "SalesNew1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu_uiinfo[1].widget, "SalesEdit1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu_uiinfo[2].widget, "SalesSave1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu_uiinfo[3].widget, "separator1");
+  GLADE_HOOKUP_OBJECT (ArticlesMainwindow, mi_sales1_menu_uiinfo[4].widget, "SalesClear1");
   GLADE_HOOKUP_OBJECT (ArticlesMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (ArticlesMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (ArticlesMainwindow, lFindNumber, "lFindNumber");

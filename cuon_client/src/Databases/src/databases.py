@@ -27,7 +27,13 @@ import cPickle
 import sys
 
 class databaseswindow(windows):
-
+    """
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
+    @license: GPL ( GNU GENERAL PUBLIC LICENSE )
+    @contact: jh@cyrus.de
+    """
     
     def __init__(self):
         windows.__init__(self)
@@ -54,7 +60,12 @@ class databaseswindow(windows):
 
         self.fd = self.xml.get_widget('zip_fileselection1')
         self.fd.hide()
-
+        
+        # User auf zope setzen
+        self.oUser.setUserName('zope')
+        self.oUser.setUserPassword('test')
+        
+        self.dicUser = self.oUser.getDicUser()
         
         
         # self.singleAddress.loadTable()
@@ -70,7 +81,6 @@ class databaseswindow(windows):
         clt.td = self.td
         tableList = []
         for key in self.td.nameOfXmlTableFiles.keys():
-            self.out( "start check for : " + `key`)
             print  "start check for : " + `key`
   
             lTable = clt.getListOfTableNames(key)
@@ -158,7 +168,7 @@ class databaseswindow(windows):
  
         for i in lSequences:
             print i
-            ok =  self.rpc.getServer().src.Databases.py_checkExistSequence(i)
+            ok =  self.rpc.getServer().src.Databases.py_checkExistSequence(i, self.dicUser)
             if not ok:
                 print 'create Sequence'
                 dicSeq = clt.getSequenceDefinition(key, i)
@@ -181,13 +191,13 @@ class databaseswindow(windows):
                     
                 self.out( sSql)
    
-                self.rpc.getServer().src.sql.py_executeNormalQuery(sSql)
+                self.rpc.getServer().src.sql.py_executeNormalQuery(sSql, self.dicUser)
         
 
 
     def dbcheck(self, table):
         self.out("check Databases")
-        ok = self.rpc.getServer().src.Databases.py_checkExistTable(table.getName())
+        ok = self.rpc.getServer().src.Databases.py_checkExistTable(table.getName(), self.dicUser)
         self.out("ok = " + `ok`,1)
         if ok == 0:
             # create table
@@ -208,14 +218,14 @@ class databaseswindow(windows):
         sSql1 = string.replace(sSql,';',' ')    
         self.out( sSql1)
         
-        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql1)
+        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql1, self.dicUser)
 
         # create the sequence
         
         sSql1 = "create sequence " + str(table.getName()) +"_id " 
         self.out( sSql1)
    
-        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql1)
+        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql1, self.dicUser)
 
 
 
@@ -224,16 +234,20 @@ class databaseswindow(windows):
         for i in range(len(table.Columns)):
             co = table.Columns[i]
             self.out( ('Name OfColumn : ' + str(co.getName() ) ) )
-            ok = self.rpc.getServer().src.Databases.py_checkExistColumn(table.getName(), co.getName() )
+            ok = self.rpc.getServer().src.Databases.py_checkExistColumn(table.getName(), co.getName() , self.dicUser)
             self.out("column-ok = " + str(ok),1)
+            print "column-ok = " + str(ok) 
+            
             if ok == 0:
                 # create Column
+                print 'create Column ' + str(co.getName())
                 self.createColumn(table, co)
             else:
-                ok = self.rpc.getServer().src.sql.py_checkTypeOfColumn(table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield()  )
+                ok = self.rpc.getServer().src.sql.py_checkTypeOfColumn(table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
 
                 
                 self.out("column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok),1)
+                print "column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok) 
                 if ok == 0:
                     # change column
                     self.modifyColumn(table, co)
@@ -254,7 +268,7 @@ class databaseswindow(windows):
             
         self.out( sSql)
         
-        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql)
+        self.rpc.getServer().src.sql.py_executeNormalQuery(sSql, self.dicUser)
   
     
     #
@@ -409,7 +423,7 @@ class databaseswindow(windows):
                         group = self.getData(groupNode[0])
                         self.out(group)
                         print 'group = ' + `group`
-                        ok = self.rpc.getServer().src.Databases.py_createGroup(group)       
+                        ok = self.rpc.getServer().src.Databases.py_createGroup(group, self.dicUser)       
                         self.out(ok)
 
             # user
@@ -424,7 +438,7 @@ class databaseswindow(windows):
                         user = self.getData(userNode[0])
                         self.out('User = ' + `user`)
                         print 'User = ' + `user`
-                        ok = self.rpc.getServer().src.Databases.py_createUser(user)       
+                        ok = self.rpc.getServer().src.Databases.py_createUser(user, self.dicUser)       
                         self.out(ok)
 
 
@@ -441,7 +455,7 @@ class databaseswindow(windows):
                         groupNode = self.getNodes(i,'this_group')
                         group = self.getData(groupNode[0])
                         self.out('User = ' + `user` + ' , Group = ' + group)
-                        ok = self.rpc.getServer().src.Databases.py_addUserToGroup(user, group)       
+                        ok = self.rpc.getServer().src.Databases.py_addUserToGroup(user, group, self.dicUser)       
                         self.out(ok)
 
             # add grants to group
@@ -459,7 +473,7 @@ class databaseswindow(windows):
                         groupNode = self.getNodes(i,'this_group')
                         group = self.getData(groupNode[0])
                         self.out('Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables)
-                        ok = self.rpc.getServer().src.Databases.py_addGrantToGroup(grants, group, tables)       
+                        ok = self.rpc.getServer().src.Databases.py_addGrantToGroup(grants, group, tables, self.dicUser)       
                         self.out(ok)
                                                                     
                         
@@ -505,7 +519,7 @@ class databaseswindow(windows):
                         self.out(self.td.SQL_USER)
                         self.out(sSql)
                         
-                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
+                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
                         self.out(ok)
                     
 
@@ -516,7 +530,7 @@ class databaseswindow(windows):
                         sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
                         self.out('sql = ' + sSql)
                         sSql = string.replace(sSql,';', '\\;')
-                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)
+                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)
                         self.out(ok)
 
 
@@ -550,7 +564,7 @@ class databaseswindow(windows):
                         # first delete the trigger called newName
                         sSql = 'DROP TRIGGER ' + newName
                         
-                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
+                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
                         self.out(ok) 
 
                         #then create the trigger called newName
@@ -558,6 +572,6 @@ class databaseswindow(windows):
                         sSql = sSql + action + ' ON ' + table
                         sSql = sSql + ' ' + cursor + ' ' + triggerText 
                         
-                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
+                        ok = self.rpc.getServer().src.Databases.py_createPsql(self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
                         self.out(ok) 
 

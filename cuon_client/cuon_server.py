@@ -331,10 +331,10 @@ class MainWindow(windows):
         
     def on_login1_activate(self,event):
         
-        lgi = cuon.Login.login.loginwindow(self.oUser)
+        lgi = cuon.Login.login.loginwindow()
   #      lgi.setUser( self.oUser)
         print 'User Login'
-        print self.oUser.userName
+        #print self.oUser.userName
 
     def on_database1_activate(self,event):
         daba = cuon.Databases.databases.databaseswindow()
