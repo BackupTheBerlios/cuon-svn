@@ -118,14 +118,14 @@ class SingleData(gladeXml, logs):
 
                 if self.statusfields:
                     for i in range(len(self.statusfields)):
-                        print i
+                        #pint i
                         self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
 
             self.firstRecord = firstRecord
         except AssertionError:
             print 'assert error'
             liRecords = None
-        print liRecords    
+        #print liRecords    
         return liRecords
 
     def getFirstRecord(self):
@@ -147,30 +147,29 @@ class SingleData(gladeXml, logs):
         
     def save(self, liBigEntries='NO'):
         dicValues = self.readEntries()
-        self.saveValues(dicValues)
+        self.saveValues(dicValues, liBigEntries)
         
-    def saveExternalData(self, dicValues):
-        self.saveValues(dicValues)
-        
+    def saveExternalData(self, dicValues, liBigEntries='NO'):
+        self.saveValues(dicValues, liBigEntries)        
     
-    def saveValues(self, dicValues):
+    def saveValues(self, dicValues, liBigEntries='NO'):
         if liBigEntries != 'NO':
             for lb in liBigEntries:
-                print 'lb = '
-                print lb
+                #print 'lb = '
+                #print lb
                 j = 0
                 k = 2048*30
                 en =  base64.encodestring(dicValues[lb][0])
 
                 endFile = len(en)
-                print endFile
+                #print endFile
                 while j < endFile:
                     ok = self.rpc.callRP('src.sql.py_createBigRow',lb, en[j:k] , j,  self.dicUser)
-                    print ok
+                    #print ok
                     j = k
                     k = k + 2048*30
-                    print j
-                    print k
+                    #print j
+                    #print k
                 dicValues[lb][0] = ' '
 
         self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.dicUser, liBigEntries)
@@ -432,21 +431,22 @@ class SingleData(gladeXml, logs):
             print 'assert error'
             dicValues = None
         
-        dicValues = verifyValues(dicValues)
+        dicValues = self.verifyValues(dicValues)
         
         return dicValues
  
     def verifyValues(self, dicValues):
         try:
-            assert self.dicValues != None
-        
+            assert dicValues != None
+            print dicValues
             for i in dicValues.keys():
                 oValue = dicValues[i][0]
                 sVerify = dicValues[i][1]
-
+                
                 if sVerify  == 'string':
                     # self.out( oValue)
-                    oValue = oValue.encode('utf-8')
+                    if oValue:
+                        oValue = oValue.encode('utf-8')
                     # self.out( oValue)
                     # self.out( '++++++++++++++++++++++++++++++++++')
 

@@ -160,6 +160,21 @@
 		      </child>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator3">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="clients1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Clients</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_clients1_activate" last_modification_time="Thu, 10 Mar 2005 12:43:18 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

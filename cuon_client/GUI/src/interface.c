@@ -102,6 +102,14 @@ static GnomeUIInfo data_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Clients"),
+    NULL,
+    (gpointer) on_clients1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -388,6 +396,8 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[0].widget, "insurances1");
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[1].widget, "rent1");
   GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[2].widget, "leasing1");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[3].widget, "separator3");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[4].widget, "clients1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[2].widget, "action1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[0].widget, "order1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[1].widget, "stock1");

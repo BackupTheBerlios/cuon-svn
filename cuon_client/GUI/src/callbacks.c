@@ -136,3 +136,11 @@ on_cash_account_book1_activate         (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_clients1_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

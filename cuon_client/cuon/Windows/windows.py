@@ -346,7 +346,7 @@ class windows(MyXML, gladeXml):
                 self.oUser.serverAddress = None
                 self.oUser.userSQLDateFormat = 'DD.MM.YYYY'
                 self.oUser.userSQLTimeFormat = 'HH24:MI'
-                self.oUser.prefPath = {}
+                #self.oUser.prefPath = {}
 
                 self.oUser.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']
                 self.oUser.prefPath['StandardSupply1'] =  result['path_to_docs_supply']
