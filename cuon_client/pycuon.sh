@@ -12,6 +12,12 @@ inn) Server=http://innovatec.dyndns.org:9673/Cuon
 ;;
 innssl) Server=https://innovatec.dyndns.org:8443/Cuon
 ;;
+
+die) Server=http://dietzel-normteile.dyndns.org:9673/Cuon
+;;
+diessl) Server=https://dietzel-normteile.dyndns.org:8443/Cuon
+;;
+
 *) Server=http://server2:9673/Cuon
 ;;
 esac

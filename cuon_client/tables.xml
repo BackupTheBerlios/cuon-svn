@@ -79,7 +79,7 @@
 
     <field> <name>insert_time</name> <type>timestamp</type> <pkey>0</pkey>
     <unique>0</unique> <notnull>0</notnull> <size>0</size>
-    <default>"create"</default> g<comment>set by trigger</comment> </field>
+    <default></default> g<comment>set by trigger</comment> </field>
 
     <!--update_time-->
 
@@ -96,7 +96,7 @@
 
       <size>0</size>
 
-      <default>"create"</default>
+      <default></default>
 
       <comment>set by trigger</comment>
     </field>

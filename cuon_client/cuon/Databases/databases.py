@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -29,9 +29,9 @@ import sys
 
 class databaseswindow(windows):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: JÃ¼rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 LÃ¶hne
+    @copyright: by JÃ¼rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -237,21 +237,25 @@ class databaseswindow(windows):
         for i in range(len(table.Columns)):
             co = table.Columns[i]
             self.out( ('Name OfColumn : ' + str(co.getName() ) ) )
+            #print `self.dicUser`
             ok = self.rpc.callRP('src.Databases.py_checkExistColumn',table.getName(), co.getName() , self.dicUser)
             self.out("column-ok = " + str(ok),1)
-            print "column-ok = " + str(ok) 
             
             if ok == 0:
+                print "column-ok = " + str(ok) + ' , Column must be created' 
+
                 # create Column
                 print 'create Column ' + str(co.getName())
                 self.createColumn(table, co)
             else:
+                print 'Column exist, now check Column Type'
                 ok = self.rpc.callRP('src.sql.py_checkTypeOfColumn',table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
 
                 
                 self.out("column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok),1)
                 print "column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok) 
                 if ok == 0:
+                    print 'Column Type false, modify !'
                     # change column
                     self.modifyColumn(table, co)
                 

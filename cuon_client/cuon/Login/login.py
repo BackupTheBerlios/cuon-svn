@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -65,19 +65,20 @@ class loginwindow(windows):
         
         obj = AES.new('Th77777777key456', AES.MODE_ECB)
         username = self.getWidget('TUserID').get_text()
-        self.openDB()
-        userObj = self.loadObject('User')
-        self.closeDB()
+        #self.openDB()
+        #userObj = self.loadObject(username)
+        #self.closeDB()
         
-        if userObj :
-            
-            print 'User found'
-            #self.oUser = userObj
-           
+        #if userObj :
+        #    
+        #    print 'User found'
+        #    self.oUser = userObj
+        #else:
+        #    
         self.oUser.setUserName(username )
         sPw = self.getWidget('TPassword').get_text()
 
-       
+        print 'New Auth data ( Session_id )'
         sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw) 
         if sid:
             self.oUser.setSessionID(sid)
@@ -89,14 +90,22 @@ class loginwindow(windows):
             self.closeDB()
             print 'end Login'
             print str(self.oUser)
-
-            self.eUserName.set_text(self.oUser.getUserName())
+            if self.eUserName:
+                self.eUserName.set_text(self.oUser.getUserName())
             self.quitLogin()
 
         else:
             print "No korrekt user and/or  password !"
-            self.oUser.setUserName('EMPTY')
-            self.quitLogin()
+            if self.oUser.getUserName() == "zope":
+                self.openDB()
+                self.saveObject('User', self.oUser)
+                self.closeDB()
+                print 'end Zope Login'
+                print str(self.oUser)
+            else:
+                    
+                self.oUser.setUserName('EMPTY')
+                self.quitLogin()
 
        
     def on_cancelbutton1_clicked(self, event):

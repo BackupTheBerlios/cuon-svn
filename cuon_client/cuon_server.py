@@ -330,8 +330,9 @@ class MainWindow(windows):
 
         
     def on_login1_activate(self,event):
+        lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
         
-        lgi = cuon.Login.login.loginwindow()
+        #lgi = cuon.Login.login.loginwindow()
   #      lgi.setUser( self.oUser)
         print 'User Login'
         #print self.oUser.userName
@@ -341,7 +342,7 @@ class MainWindow(windows):
     
 
     def startMain(self):
-        td = typedefs_server()
+        #td = typedefs_server()
         # create widget tree ...
        
         self.gladeName = '/usr/share/cuon/glade/cuon_server.glade2'
@@ -353,6 +354,8 @@ class MainWindow(windows):
 td = cuon.TypeDefs.typedefs_server.typedefs_server() 
 if len(sys.argv) > 1:
     td.server =  sys.argv[1]
+    print "Server = ", td.server
+    print "-------------####################--------------"
     
 d = cuon.Databases.dumps.dumps()
 d.openDB()

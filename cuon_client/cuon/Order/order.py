@@ -311,7 +311,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPosition.newRecord()
         self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
 
-    def on_PositionClear1_activate(self, event):
+    def on_PositionDelete1_activate(self, event):
         print "delete Partner articles v2"
         self.singleOrderPosition.deleteRecord()
 
