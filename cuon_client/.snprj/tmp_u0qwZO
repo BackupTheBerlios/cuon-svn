@@ -1,0 +1,5 @@
+standard_pickup_note;fileSelection;in;src/Order/src/standard_pickup_note.py;
+standard_pickup_note;standardlist;in;src/Order/src/standard_pickup_note.py;
+#;standard_pickup_note;cl;src/Order/src/standard_pickup_note.py;
+standard_pickup_note;__init__;mi;src/Order/src/standard_pickup_note.py;
+standard_pickup_note;on_ok_button1_clicked;mi;src/Order/src/standard_pickup_note.py;

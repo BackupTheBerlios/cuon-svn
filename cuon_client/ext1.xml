@@ -1,0 +1,236 @@
+<database>
+
+
+  <nameOfDatabase>cuon</nameOfDatabase>
+  
+  <author>Hamel</author>
+  <plugin>Standard</plugin>
+  
+  <table>
+    <nameOfTable>xmlvalues</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_standard);</specials>
+    
+    
+    <field>
+      <name>name</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    <field>
+      <name>description</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    <field>
+      <name>text</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+  </table>
+  
+  
+	
+  <table>
+    <nameOfTable>preferences</nameOfTable>
+    <x>152</x>
+    <y>115</y>
+    <specials>inherits (t_standard);</specials>
+    
+    
+    
+    <field>
+      <name>username</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>60</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    <field>
+      <name>userdescription</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>60</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    <field>
+      <name>locales</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    <field>
+      <name>encoding</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>15</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>profile_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>25</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+    <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>30</size>
+      <default></default>
+      <comment></comment>
+    </field>
+        <field>
+      <name>printing_system</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  
+    <field>
+      <name>path_to_report_invoices</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+     <field>
+      <name>path_to_report_address_lists</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>path_to_docs_invoices</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+       <field>
+      <name>path_to_docs_address_lists</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>path_to_report_supply</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   <field>
+      <name>path_to_report_pickup</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+       <field>
+      <name>path_to_docs_supply</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+       <field>
+      <name>path_to_docs_pickup</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+       <field>
+      <name>is_standard_profile</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+  </table>
+  
+</database>
+
+	

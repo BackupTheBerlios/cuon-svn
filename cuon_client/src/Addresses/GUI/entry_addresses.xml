@@ -1,0 +1,164 @@
+<entries_for_table>
+  <table>
+    <table_name>addresses</table_name>
+    <entry>
+      <name>eAddress</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>address</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+    <entry>
+      <name>eLastName</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>lastname</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>eLastName2</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>lastname2</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eFirstName</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>firstname</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      </entry>
+
+
+    <entry>
+      <name>eStreet</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>street</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      </entry>
+    <entry>
+	<name>eCountry</name>
+	<type>textline</type>
+               <size>6</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>country</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eState</name>
+	<type>textline</type>
+               <size>6</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>state</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+  <entry>
+	<name>eZip</name>
+	<type>textline</type>
+               <size>10</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>zip</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eCity</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>city</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ <entry>
+	<name>ePhone</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>phone</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ <entry>
+	<name>eEmail</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>email</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+ <entry>
+	<name>eFax</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fax</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eZipForPostbox</name>
+	<type>textline</type>
+               <size>7</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>zip_for_postbox</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+  <entry>
+	<name>ePostbox</name>
+	<type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>postbox</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+
+    </table>
+
+  </entries_for_table>

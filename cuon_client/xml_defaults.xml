@@ -1,0 +1,53 @@
+
+<defaults>
+    <printstyle>
+    <name>latex_defaults</name>
+      <style>
+	<name>0010LatexDocumentFirst</name>
+                <userid>zzzzUserAll</userid>
+	<description>Latex </description>
+	<text>documentclass [a4paper]{article} 
+	  \\usepackage[latin1]{inputenc} 
+	  \\usepackage[T1]{fontenc} 
+	  \\usepackage{graphicx}
+	  \\usepackage{german} 
+	  \\pagestyle{headings}
+	  \\setlength{parindent}{0em} </text>
+      </style>
+    <style>
+	<name>0020LatexDocumentFirst2</name>
+                <userid>zzzzUserAll</userid>
+	<description>Latex </description>
+	<text>documentclass [a4paper]{article} 
+	  \\usepackage[latin1]{inputenc} 
+	  \\usepackage[T1]{fontenc} 
+	  \\usepackage{graphicx}
+	  \\usepackage{german} 
+	  \\pagestyle{headings}
+	  \\setlength{parindent}{0em} </text>
+      </style>
+
+    <style>
+      <name>1000LatexDocumentBegin</name>
+                <userid>zzzzUserAll</userid>
+	<description>Latex </description>
+      <text>\\begin{document}</text>
+    </style>
+    <style>
+      <name>9000LatexDocumentEnd</name>
+                <userid>zzzzUserAll</userid>
+	<description>Latex </description>
+      <text>\\end{document}</text>
+    </style>
+
+    </printstyle>
+
+  <printsystem>
+    <name>001Latex</name>
+    <userid>zzzzUserAll</userid>
+    <description>Latex printing</description>
+    <printcommand>latex $filename | dvips | lpr</printcommand>
+    <printstyle>LATEX</printstyle>
+  </printsystem>
+
+  </defaults>

@@ -1,0 +1,18 @@
+Name of program:	cuon
+Type : Cient-Server
+programming-language: python
+Database : Postgres
+Application-Server: ZOPE
+GUI: glade
+Licence: GPL
+OS-Systems : Linux, Windows, MAC
+
+Source-code: www.cyrus-computer.de/cuon/src
+
+The project ist hostet at sourceforge.net, but now I wish to host  the project 
+at savannah .
+
+With cuon you can manage a small company. The Data are transfered to
+the application-server ( zope ) and this will store the Data in a SQL-Server,
+normaly POSTGRES. 
+								

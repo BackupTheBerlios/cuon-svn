@@ -1,0 +1,26 @@
+EXEC=/usr/bin/python
+
+cd /usr/bin/cuon
+
+
+case $1 in 
+
+server)
+cp ../cuon_server.py . 
+$EXEC cuon_server.py
+;;
+
+client)
+$EXEC Cuon.py 
+;;
+
+*)
+$EXEC Cuon.py 
+;;
+
+esac
+
+
+
+cd ../
+

@@ -1,0 +1,6 @@
+SingleOrder;SingleData;in;src/Order/src/SingleOrder.py;
+#;SingleOrder;cl;src/Order/src/SingleOrder.py;
+SingleOrder;__init__;mi;src/Order/src/SingleOrder.py;
+SingleOrder;getInvoiceNumber;mi;src/Order/src/SingleOrder.py;
+SingleOrder;getDeliveryNumber;mi;src/Order/src/SingleOrder.py;
+SingleOrder;getOrderNumber;mi;src/Order/src/SingleOrder.py;

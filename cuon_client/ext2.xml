@@ -1,0 +1,23 @@
+<database>
+
+	<nameOfDatabase>cuon</nameOfDatabase>
+	<author>J. Hamel</author>
+	<plugin>Standard</plugin>
+	<table>
+		<nameOfTable>ext_two</nameOfTable>
+		<x>52</x>
+		<y>15</y>
+		<specials>inherits (t_standard);</specials>
+
+		<field>
+			<name>d1</name>
+			<type>varchar</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>30</size>
+			<default></default>
+			<comment></comment>
+		</field>
+                 </table>
+</database>

@@ -1,0 +1,81 @@
+Install:
+
+At first, you must install ZOPE and POSTGRES and normaly
+this python programs ( Debian SID in Nov. 2003 :
+
+ii  python2.3      2.3.2-3        An interactive high-level object-oriented la
+ii  python2.3-cryp 1.9a6+dp1-1    Cryptographic algorithms and protocols for P
+ii  python2.3-dev  2.3.2-3        Header files and a static library for Python
+ii  python2.3-doc  2.3-4          Documentation for the high-level object-orie
+ii  python2.3-egen 2.0.4-1        Date and time handling routines for Python 2
+ii  python2.3-egen 2.0.4-1        A collection of new builtins for Python 2.3
+ii  python2.3-glad 2.0.0-2        GTK+ bindings: Glade support
+ii  python2.3-gnom 2.0.0-5        Python bindings for GNOME 2
+ii  python2.3-gtk2 2.0.0-2        Python bindings for the GTK+ widget set
+ii  python2.3-html 2.2.2-9.1      Generation of HTML documents with Python scr
+ii  python2.3-imag 1.1.4-2.1      Python Imaging Library (PIL)
+ii  python2.3-kjbu 1.0.0-4        Set and graph data types for Python 2.3
+ii  python2.3-kore 2.0.5-4        Korean Codecs for Python 2.3
+ii  python2.3-ldap 1.9.999.pre13- A LDAP interface module for Python 2.3
+ii  python2.3-ldap 0.0.20         Pure-Python library for LDAP
+ii  python2.3-mysq 0.9.2-0.4      A Python interface for MySQL
+ii  python2.3-nume 23.0-7         Numerical (matrix-oriented) Mathematics for
+ii  python2.3-pyor 2.0.0-1        A Python language binding for the ORBit2 COR
+ii  python2.3-repo 1.18debian-1   ReportLab library to create PDF documents us
+ii  python2.3-tk   2.3.2-3        Tkinter - Writing Tk applications with Pytho
+ii  python2.3-twis 1.0.6-1.1      Event-based framework for internet applicati
+ii  python2.3-twis 1.0.6-1.1      Event-based framework for internet applicati
+ii  python2.3-xml  0.8.3-1        XML tools for Python (2.3.x)
+ 
+unpack the cuon-xxx.tgz
+
+go to dir cuon_client
+
+on the client:
+be root and type make install
+
+on the client or server ( client/server) for install ZOPE and POSTGRES
+edit Makefile to set server-Information
+be root and type make install_server
+
+make install_zope
+
+Go with the Browser to your ZOPE-Site, login as Manager and
+import Cuon.zexp and cuon_database_connection.zexp
+update the extended Module for Zope
+
+set up the enviroment-Variables:
+      only Server  "export CUON_INI=/etc/cuon/cuon.ini "
+      client und server "export CUON_HOME=~/cuon " 
+      client und server "export CUON_SERVER=192.168.17.251:9673/Cuon ( in this example is IP_Adresse:Port/dir
+      Client CUON_OOEXEC=/opt/OpenOffice.org1.1.0/program/python if you use Openoffice
+
+ 
+
+edit cuon_database_connection and set the Values for your Postgres-Installation
+
+On your client/server goto cuon_client and run 
+sh pycuon server
+choose Tools
+
+then :
+
+1.  choose SQL-SERVER
+        db-check
+        grants
+    ( this will take some times )
+
+2. choose XML-Tools
+       load Defaults
+
+okay,
+now you can run /usr/bin/cuon 
+
+Any Question :
+mailto jh@cyrus.de
+
+
+ 
+
+
+

@@ -1,0 +1,21 @@
+
+--This line, and those below, will be ignored--
+
+    src/Databases/src/SingleData.py
+    src/Login/src/User.py
+    src/PDF/XML/order_standardpickup.xml
+    src/PDF/src/report.py
+    src/Order/GUI/src/interface.c
+    src/Order/GUI/src/interface.c.bak
+    src/Order/GUI/entry_orderget.xml
+    src/Order/GUI/order.glade2.bak
+    src/Order/GUI/order.glade2
+    src/Order/src/order.py
+    src/Order/src/SingleOrder.py
+    src/Order/src/SingleOrderGet.py
+    src/Order/src/standard_pickup_note.py
+    cuon_client.proj
+    Makefile
+    tables.xml
+
+now you can save the pickup-note

@@ -1,0 +1,10 @@
+preferenceswindow;windows;in;src/Preferences/src/preferences.py;
+#;preferenceswindow;cl;src/Preferences/src/preferences.py;
+preferenceswindow;__init__;mi;src/Preferences/src/preferences.py;
+preferenceswindow;on_save1_activate;mi;src/Preferences/src/preferences.py;
+preferenceswindow;on_new1_activate;mi;src/Preferences/src/preferences.py;
+preferenceswindow;on_edit1_activate;mi;src/Preferences/src/preferences.py;
+preferenceswindow;on_delete1_activate;mi;src/Preferences/src/preferences.py;
+preferenceswindow;on_quit1_activate;mi;src/Preferences/src/preferences.py;
+preferenceswindow;refreshTree;mi;src/Preferences/src/preferences.py;
+preferenceswindow;tabChanged;mi;src/Preferences/src/preferences.py;

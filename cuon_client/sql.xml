@@ -1,0 +1,66 @@
+
+<sql>
+  <postgre_sql>
+    <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
+
+
+
+
+   <function>
+      <old_name>fct_delete() </old_name>
+      <nameOfFunction>fct_delete( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+	DECLARE
+	f_upd     varchar(400);
+	v_delete varchar(20) ;
+	BEGIN
+	    v_delete   := ''delete'' ;
+	    f_upd := '' update '' || TG_RELNAME  || '' set status =  ''|| quote_literal(v_delete) || ''  where id = '' || OLD.id   ;
+	    RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
+	    RAISE NOTICE '' sql =  % '',f_upd  ;
+	    execute f_upd ;
+	    RAISE NOTICE '' Name =  % '', TG_NAME ;
+ 	    RETURN NULL ;
+	END;
+      </textOfFunction>
+   	<description>if delete a record, don't realy delete, set status to delete </description>
+
+    </function>
+
+<function>
+      <old_name>fct_update() </old_name>
+      <nameOfFunction>fct_update( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+	BEGIN
+	    NEW.user_id = current_user   ;
+	    RAISE NOTICE ''Name =  % '', TG_NAME ;
+	    RETURN NEW; 
+	END;
+      </textOfFunction>
+   	<description>set the user_id to current_user </description>
+
+    </function>
+
+    <trigger>
+      <nameOfTrigger>trg_deleteAddress</nameOfTrigger>
+      <table>address</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a address, check for use in order, then delete all partner </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_updateAddress</nameOfTrigger>
+      <table>address</table>
+      <action>before update</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update address </description>
+      
+    </trigger>
+  </postgre_sql>
+  
+</sql>

@@ -1,0 +1,13 @@
+cyr_load_table;MyXML;in;src/Databases/src/cyr_load_table.py;
+cyr_load_table;dumps;in;src/Databases/src/cyr_load_table.py;
+#;cyr_load_table;cl;src/Databases/src/cyr_load_table.py;
+cyr_load_table;__init__;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;getListOfTableNames;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;getListOfSequenceNames;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;getDatabaseDescription;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;getSequence;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;getTableDefinition;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;saveTable;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;loadTable;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;loadLocalTable;mi;src/Databases/src/cyr_load_table.py;
+cyr_load_table;loadTableOld;mi;src/Databases/src/cyr_load_table.py;
