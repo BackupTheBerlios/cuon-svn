@@ -194,9 +194,14 @@ class SingleData(gladeXml, logs):
       #  clt.loadTable(self.sNameOfTable)
 
 
-    def loadTable(self, allTables):
+    def loadTable(self, allTables = None):
         
-        self.table = allTables[self.sNameOfTable]
+        if allTables:
+            self.table = allTables[self.sNameOfTable]
+        else:
+            clt = cuon.Databases.cyr_load_table.cyr_load_table()
+            self.table =  clt.loadTable(self.sNameOfTable)
+  
      
         
 

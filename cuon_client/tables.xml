@@ -205,7 +205,8 @@
       <default />
 
       <comment />
-    </field>
+
+      </field>
 
     <field>
       <name>vat_type</name>
@@ -315,7 +316,104 @@
       <comment />
     </field>
   </table>
+  <!--table: countries-->
+ <table>
+    <nameOfTable>countries</nameOfTable>
 
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+   <field>
+      <name>webshop_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>64</size>
+
+      <default />
+
+      <comment />
+    </field>
+       <field>
+      <name>iso_code_2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>2</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+       <field>
+      <name>iso_code_3</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>3</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+       <field>
+      <name>format_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    </table>
   <!--table: userlogin-->
 
   <table>

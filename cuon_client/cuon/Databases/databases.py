@@ -27,6 +27,7 @@ import string
 import cPickle
 import sys
 import cuon.Databases.import_generic1
+import cuon.Databases.import_generic2
 
 class databaseswindow(windows):
     """
@@ -150,7 +151,10 @@ class databaseswindow(windows):
             
     def on_import_generic1_activate(self,event):
         imf = cuon.Databases.import_generic1.import_generic1()
-        
+
+    def on_import_generic2_activate(self,event):
+        imf = cuon.Databases.import_generic2.import_generic2()
+       
         
     def startCheck(self, key, lTable, tableList):
  

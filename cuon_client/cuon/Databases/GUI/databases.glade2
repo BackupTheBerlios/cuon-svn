@@ -184,6 +184,15 @@
 		      <signal name="activate" handler="on_import_generic1_activate" last_modification_time="Tue, 14 Sep 2004 18:22:38 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="generic2">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">generic2</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_import_generic2_activate" last_modification_time="Fri, 01 Apr 2005 11:39:30 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>
