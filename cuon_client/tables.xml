@@ -77,23 +77,9 @@
 
     <!--insert_time-->
 
-    <field>
-      <name>insert_time</name>
-
-      <type>timestamp</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>0</size>
-
-      <default>"create"</default>
-
-      g<comment>set by trigger</comment>
-    </field>
+    <field> <name>insert_time</name> <type>timestamp</type> <pkey>0</pkey>
+    <unique>0</unique> <notnull>0</notnull> <size>0</size>
+    <default>"create"</default> g<comment>set by trigger</comment> </field>
 
     <!--update_time-->
 
@@ -220,6 +206,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_type</name>
 
@@ -237,6 +224,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_country</name>
 
@@ -254,6 +242,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_def</name>
 
@@ -271,6 +260,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_coefficient</name>
 
@@ -288,6 +278,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_acct1</name>
 
@@ -305,6 +296,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>vat_acct2</name>
 
@@ -666,6 +658,8 @@
     <specials>inherits (t_address);</specials>
   </table>
 
+  <!--table: partner-->
+
   <table>
     <nameOfTable>partner</nameOfTable>
 
@@ -801,6 +795,8 @@
       <comment />
     </field>
   </table>
+
+  <!--table: partner_schedul-->
 
   <table>
     <nameOfTable>partner_schedul</nameOfTable>
@@ -938,6 +934,8 @@
     </field>
   </table>
 
+  <!--table: articles-->
+
   <table>
     <nameOfTable>articles</nameOfTable>
 
@@ -1037,6 +1035,8 @@
       <comment />
     </field>
   </table>
+
+  <!--table: articles_purchase-->
 
   <table>
     <nameOfTable>articles_purchase</nameOfTable>
@@ -1191,6 +1191,8 @@
       <comment />
     </field>
   </table>
+
+  <!--table: articles_sales-->
 
   <table>
     <nameOfTable>articles_sales</nameOfTable>
@@ -1483,6 +1485,8 @@
       <comment />
     </field>
   </table>
+
+  <!--table: ordersupply-->
 
   <table>
     <nameOfTable>ordersupply</nameOfTable>
@@ -3066,7 +3070,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value1</name>
 
       <type>varchar</type>
@@ -3083,7 +3088,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value2</name>
 
       <type>varchar</type>
@@ -3100,7 +3106,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value3</name>
 
       <type>varchar</type>
@@ -3117,7 +3124,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value4</name>
 
       <type>varchar</type>
@@ -3134,7 +3142,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value5</name>
 
       <type>varchar</type>
@@ -3151,7 +3160,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value6</name>
 
       <type>varchar</type>
@@ -3168,7 +3178,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value7</name>
 
       <type>varchar</type>
@@ -3185,7 +3196,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value8</name>
 
       <type>varchar</type>
@@ -3202,7 +3214,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value9</name>
 
       <type>varchar</type>
@@ -3219,7 +3232,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>value10</name>
 
       <type>varchar</type>
@@ -3236,7 +3250,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>days</name>
 
       <type>int</type>
@@ -3253,7 +3268,8 @@
 
       <comment />
     </field>
-  <field>
+
+    <field>
       <name>delay</name>
 
       <type>int</type>
@@ -3300,6 +3316,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>type</name>
 
@@ -3317,6 +3334,7 @@
 
       <comment />
     </field>
+
     <field>
       <name>designation</name>
 
@@ -3352,11 +3370,6 @@
 
       <comment />
     </field>
-
-
-
-
-
   </table>
 
   <database_sequence>
