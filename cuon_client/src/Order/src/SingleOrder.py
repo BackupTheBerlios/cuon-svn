@@ -46,7 +46,7 @@ class SingleOrder(SingleData):
       
 
     def getInvoiceNumber(self):
-        self.invoiceNumber =  self.rpc.getServer().src.Order.py_getInvoiceNumber(self.getOrderNumber(self.ID), self.dicUser)
+        self.invoiceNumber =  self.rpc.callRP('src.Order.py_getInvoiceNumber', self.getOrderNumber(self.ID), self.dicUser)
         print 'Invoice-Number' + `self.invoiceNumber`
         return self.invoiceNumber
 

@@ -18,6 +18,8 @@ import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
 from cuon.Logging.logs import logs
 from M2Crypto.m2xmlrpclib import  Server, SSL_Transport
+from gtk import TRUE, FALSE
+import time
 
 class myXmlRpc(dumps, logs):
     """
@@ -33,9 +35,10 @@ class myXmlRpc(dumps, logs):
         self.openDB()
         self.td = self.loadObject('td')
         self.closeDB()
-        
+        self.zope_server = self.getZopeServer()
 
-    def getServer(self):
+
+    def getZopeServer(self):
         """
         if the CUON_SERVER environment-variable begins with https,
         then the server use SSL for security.
@@ -57,6 +60,9 @@ class myXmlRpc(dumps, logs):
             
         
         return sv
+
+    def getServer(self):
+        return self.zope_server
     
 
     def test(self):
@@ -73,7 +79,34 @@ class myXmlRpc(dumps, logs):
         return self.getServer().src.Databases.py_getTable(sNameOfTable)
     
 
-        
+    def callRP(self, rp, *c):
+        r = None
+        s = 'r = self.getServer().' + rp + '('
+        for i in c:
+            s = s + `i` + ', '
+        if len(c) > 0:
+            s = s[0:len(s) -1]
+        s = s + ')'
+        #print s
+        startRP = TRUE
+        rp_tries = 0
+        while startRP:
+            try:
+                exec s
+                startRP = FALSE
+            except:
+                print 'error, next try'
+                rp_tries = rp_tries + 1
+                
+                if rp_tries > 10:
+                    startRP = FALSE
+                else:
+                    print ' wait for 10 sec. '
+                    print ' Try :' + `rp_tries`
+                    time.sleep(10)
+        return    r
+
+    
 # wert = server.py_parseResult(recordset, 0, "id" )
 # self.out( wert
 

@@ -104,24 +104,15 @@ class stockwindow(chooseWindows):
 
         
         # enabledMenues for Stock
-        self.addEnabledMenuItems('editStock','new1')
-        self.addEnabledMenuItems('editStock','clear1')
-        self.addEnabledMenuItems('editStock','print1')
+        self.addEnabledMenuItems('editStock','New1')
+        self.addEnabledMenuItems('editStock','Edit1')
+        self.addEnabledMenuItems('editStock','Delete1')
 
-        # enabledMenues for Supply
-        self.addEnabledMenuItems('editGoods','SupplyNew1')
-        self.addEnabledMenuItems('editSuppy','SupplyClear1')
+        # enabledMenues for StockGoods
+        self.addEnabledMenuItems('editGoods','goodsnew1')
+        self.addEnabledMenuItems('editGoods','goodsedit1')
+        self.addEnabledMenuItems('editGoods','goodsclear1')
     
-       # enabledMenues for Gets
-        self.addEnabledMenuItems('editGets','GetsNew1')
-        self.addEnabledMenuItems('editGets','GetsClear1')
-
-        # enabledMenues for Positions
-        self.addEnabledMenuItems('editPositions','PositionNew1')
-        self.addEnabledMenuItems('editPositions','PositionClear1')
-
-
-
 
         # tabs from notebook
         self.tabStock = 0
@@ -143,22 +134,22 @@ class stockwindow(chooseWindows):
 
     #Menu Stock
   
-    def on_save1_activate(self, event):
+    def on_Save1_activate(self, event):
         print "save stock v2"
         self.singleStock.save()
         self.setEntriesEditable(self.EntriesStock, FALSE)   
         self.tabChanged()
          
         
-    def on_new1_activate(self, event):
+    def on_New1_activate(self, event):
         print "new stock v2"
         self.singleStock.newRecord()
         self.setEntriesEditable(self.EntriesStock, TRUE)
 
-    def on_edit1_activate(self, event):
+    def on_Edit1_activate(self, event):
         self.setEntriesEditable(self.EntriesStock, TRUE)
 
-    def on_delete1_activate(self, event):
+    def on_Delete1_activate(self, event):
         print "delete stock v2"
         self.singleStock.deleteRecord()
 
@@ -181,7 +172,7 @@ class stockwindow(chooseWindows):
         self.tabChanged()
         
 
-    def on_GoodsDelete1_activate(self, event):
+    def on_GoodsClear1_activate(self, event):
         print "delete Goods v2"
         self.singleStockGoods.deleteRecord()
 

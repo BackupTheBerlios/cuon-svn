@@ -78,7 +78,7 @@ class loginwindow(windows):
         sPw = self.getWidget('TPassword').get_text()
 
        
-        sid = self.rpc.getServer().src.Databases.py_createSessionID(self.oUser.getUserName(), sPw) 
+        sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw) 
         if sid:
             self.oUser.setSessionID(sid)
             self.loadProfile()
@@ -110,13 +110,13 @@ class loginwindow(windows):
     def loadProfile(self, sProfile = None):
         
         if  not sProfile :
-            sProfile = self.rpc.getServer().src.User.py_getNameOfStandardProfile(self.oUser.getDicUser() )
+            sProfile = self.rpc.callRP('src.User.py_getNameOfStandardProfile', self.oUser.getDicUser() )
 
             print 'Profile = '
             print sProfile
 
         if sProfile:
-            result = self.rpc.getServer().src.User.py_getStandardProfile( sProfile,  self.oUser.getDicUser() )
+            result = self.rpc.callRP('src.User.py_getStandardProfile',  sProfile,  self.oUser.getDicUser() )
             print 'Result Profile'
             print result
             if result:

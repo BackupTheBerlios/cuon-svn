@@ -98,6 +98,8 @@ class cyr_load_entries(MyXML, dumps):
             entry.setSqlField(self.getEntrySpecification(xmlCol, "sql_field") )
             entry.setBgColor(self.getEntrySpecification(xmlCol, "bg_color") )
             entry.setFgColor(self.getEntrySpecification(xmlCol, "fg_color") )
+            entry.setDuty(self.getEntrySpecification(xmlCol, "duty") )
+            
     
 
             self.out( 'entry-gets = ' + str(entry.getName())  + ', ' + str(entry.getType()))
@@ -115,7 +117,7 @@ class cyr_load_entries(MyXML, dumps):
         self.out( cPickle.dumps(entries))
         self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
-        self.rpc.getServer().src.Databases.py_saveInfoOfTable(sNameOfEntries, cPickle.dumps(entries) )
+        self.rpc.callRP('src.Databases.py_saveInfoOfTable', sNameOfEntries, cPickle.dumps(entries) )
         
 
 
@@ -125,7 +127,7 @@ class cyr_load_entries(MyXML, dumps):
         self.out( "load : " + sNameOfEntries)
         self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
-        dictEntries = self.rpc.getServer().src.Databases.py_getInfoOfTable(sNameOfEntries)
+        dictEntries = self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfEntries)
 
         entries = cPickle.loads(dictEntries)   
 

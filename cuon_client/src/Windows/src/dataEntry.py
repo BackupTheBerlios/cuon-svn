@@ -5,11 +5,14 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import string
+from gtk import TRUE, FALSE
+
 class dataEntry:
 
     def __init__(self):
         self.nameOfEntry="EMPTY"
         self.typeOfEntry="EMPTY"
+        self.bDuty = FALSE
         
 
 
@@ -65,9 +68,16 @@ class dataEntry:
 
     def setFgColor(self,sColor):
         self.fgColor = sColor
-
       
     def getFgColor(self):
         return self.fgColor
 
+    def setDuty(self, bDuty = FALSE):
+        if bDuty == 'EMPTY':
+            bDuty = FALSE
+            
+        self.bDuty = bDuty
 
+    def getDuty(self):
+        return self.bDuty
+    

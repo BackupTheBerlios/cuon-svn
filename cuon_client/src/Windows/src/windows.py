@@ -14,7 +14,7 @@ from  cuon.Windows.gladeXml import gladeXml
 from gtk import TRUE, FALSE
 import os
 import os.path
-
+import re
 
 
 class windows(MyXML, gladeXml):
@@ -33,7 +33,7 @@ class windows(MyXML, gladeXml):
         self.testV = "Hallo"
         
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        # x = self.rpc.getServer().src.XML.py_readDocument('cuon_addresses')
+        # x = self.rpc.callRP('src.XML.py_readDocument','cuon_addresses')
         self.DataEntries = { }
         self.tabOption = 0
 #        self.setLogLevel(0)
@@ -42,6 +42,7 @@ class windows(MyXML, gladeXml):
         self.editAction = 'closeMenuItemsForEdit'
         self.editEntries = FALSE
 
+        
         
     def closeWindow(self):
         self.win1.hide()
@@ -69,13 +70,18 @@ class windows(MyXML, gladeXml):
 
     def setProperties(self, sName):
         self.out('entries for property  = ' + sName)
+        
         entries = self.getDataEntries(sName)
-        ##for i in range(0,entries.getCountOfEntries()):
-##            entry = entries.getEntryAtIndex(i)
-##            # do some stuff with the entry
-##            self.out('entry = ' + entry.getName())
-##            e1 = self.getWidget(entry.getName())
-##            if e1:
+        for i in range(0,entries.getCountOfEntries()):
+            entry = entries.getEntryAtIndex(i)
+            # do some stuff with the entry
+            ##self.out('entry = ' + entry.getName())
+            print 'entry = ' + entry.getName()
+            if entry.getDuty():
+                e1 = self.getWidget(entry.getName())
+                if e1:
+                    print 'Duty is TRUE by : ' + `entry.getName()`
+                    e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
 ##                e1.connect('key_press_event', self.closeMenuEntries)
         self.setEntriesEditable(sName, FALSE)
         
@@ -192,7 +198,94 @@ class windows(MyXML, gladeXml):
 ##        return gtk.FALSE
         
 
-    
+    def getStyle(self, cType, cWidget,  numberFG, numberBG):
+        '''
+        define an new Style for gtk-widgets
+        thanks to
+        /-----------------------------------------------------------------------\
+        | Tony Denault                     | Email: denault@irtf.ifa.hawaii.edu |
+        | Institute for Astronomy          |              Phone: (808) 932-2378 |
+        | 640 North Aohoku Place           |                Fax: (808) 933-0737 |
+        | Hilo, Hawaii 96720               |                                    |
+        \-----------------------------------------------------------------------/
+        @param cSwitch: a switch for the applied item
+        f = foreground
+        b = background
+        l = light
+        d = dark
+        m = mid
+        t = text
+        s = base
 
+        
+        @return: the new style
+        '''        
+        defaultStyle = self.win1.get_style()
+        map = self.win1.get_colormap()
+        color = map.alloc_color("#FF9999")
+  
+        newStyle = defaultStyle.copy()
+        '''
+        entry : s for background, t for foreground
+        button: b for background, f for foreground
+        '''
+        
+        cSwitch = []
+        
+        if cType == 'duty':
+            color1 =  map.alloc_color("#FF9999")
+            color2 =  map.alloc_color("#FF9999")
+            color3 =  map.alloc_color("#2244ee")
+
+            if cWidget == 'entry':
+                cSwitch.append( 's')
+                cSwitch.append('t')
+                
+        for cs in cSwitch:
+            if cs == 'f':
+                print 'set color for foreground'
+                for  i in range(5 ):
+                    newStyle.fg[i] = color1;
+
+
+            elif cs == 'b':
+                print 'set color for background'
+                for  i in range(5 ):
+                    newStyle.bg[i] = color2;
+
+            elif cs == 's':
+                print 'set color for background'
+                for  i in range(5 ):
+                    newStyle.base[i] = color3;
+                  
+                 
+##         break;
+##      case 'l':
+##      case 'L':
+##         for ( i = 0; i < 5; i++ )
+##            style->light[i] = color;
+##         break;
+##      case 'd':
+##      case 'D':
+##         for ( i = 0; i < 5; i++ )
+##            style->dark[i] = color;
+##         break;
+##      case 'm':
+##      case 'M':
+##         for ( i = 0; i < 5; i++ )
+##            style->mid[i] = color;
+##         break;
+##      case 't':
+##      case 'T':
+##         for ( i = 0; i < 5; i++ )
+##            style->text[i] = color;
+##         break;
+##      case 's':
+##      case 'S':
+##         for ( i = 0; i < 5; i++ )
+##            style->base[i] = color;
+##         break;
+##   }
+##}
     
-    
+        return newStyle

@@ -50,23 +50,23 @@ class gladeXml(dumps):
         self.setXmlAutoconnect()
 
     def writeGlade(self, fname):
-        xml1  = self.rpc.getServer().src.Databases.py_getInfoOfTable(fname)
+        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
 
-        # x = self.rpc.getServer().src.XML.py_readDocument('cuon_addresses')  self.enableMenuItems(self.editAction)
+        # x = self.rpc.callRP('src.XML.py_readDocument', 'cuon_addresses')  self.enableMenuItems(self.editAction)
         d1 = open(os.path.normpath(os.environ['CUON_HOME'] + '/' + fname),'w')
         d1.write(cPickle.loads(xml1))
         d1.close()
 
     def loadGladeComplete(self, gladeName):
         fname = 'glade_' + gladeName
-        xml1  = self.rpc.getServer().src.Databases.py_getInfoOfTable(fname)
+        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
 
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        # x = self.rpc.getServer().src.XML.py_readDocument('cuon_addresses')
+        # x = self.rpc.callRP('src.XML.py_readDocument', 'cuon_addresses')
         d1 = open(fname,'w')
         d1.write(cPickle.loads(xml1))
         d1.close()
@@ -162,7 +162,7 @@ class gladeXml(dumps):
 
     def writeAllGladeFiles(self):
 
-        nameOfGladeFiles  = cPickle.loads(self.rpc.getServer().src.Databases.py_getInfoOfTable('nameOfGladeFiles'))
+        nameOfGladeFiles  = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfGladeFiles'))
         print 'nameOfGladefiles' + `nameOfGladeFiles`
         print len(nameOfGladeFiles)
         

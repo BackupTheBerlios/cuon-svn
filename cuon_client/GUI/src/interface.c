@@ -38,7 +38,7 @@ static GnomeUIInfo connect1_menu_uiinfo[] =
   {
     GNOME_APP_UI_ITEM, N_("Logout"),
     NULL,
-    (gpointer) NULL, NULL, NULL,
+    (gpointer) on_logout1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -48,6 +48,32 @@ static GnomeUIInfo connect1_menu_uiinfo[] =
     N_("Close the Application"),
     (gpointer) on_end1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_STOCK, "gtk-quit",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo contracts1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Insurances"),
+    NULL,
+    (gpointer) on_insurances1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Rent"),
+    NULL,
+    (gpointer) on_rent1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Leasing"),
+    NULL,
+    (gpointer) on_leasing1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_END
@@ -66,6 +92,20 @@ static GnomeUIInfo data_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Arti_cles"),
     NULL,
     (gpointer) on_articles1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Contracts"),
+    NULL,
+    contracts1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Staff"),
+    NULL,
+    (gpointer) on_staff1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -111,6 +151,14 @@ static GnomeUIInfo tools1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Report-Generator"),
     NULL,
     (gpointer) on_report_generator1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Databases"),
+    NULL,
+    (gpointer) on_databases1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -178,6 +226,8 @@ create_window1 (void)
   GtkWidget *table1;
   GtkWidget *label1;
   GtkWidget *eUserName;
+  GtkWidget *label2;
+  GtkWidget *eServer;
 
   window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window1), _("C U O N"));
@@ -197,7 +247,7 @@ create_window1 (void)
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
 
-  label1 = gtk_label_new (_("User"));
+  label1 = gtk_label_new (_("connected user"));
   gtk_widget_show (label1);
   gtk_table_attach (GTK_TABLE (table1), label1, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -209,8 +259,32 @@ create_window1 (void)
   gtk_table_attach (GTK_TABLE (table1), eUserName, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_sensitive (eUserName, FALSE);
   GTK_WIDGET_UNSET_FLAGS (eUserName, GTK_CAN_FOCUS);
   gtk_editable_set_editable (GTK_EDITABLE (eUserName), FALSE);
+
+  label2 = gtk_label_new (_("connected server"));
+  gtk_widget_show (label2);
+  gtk_table_attach (GTK_TABLE (table1), label2, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label2), 0, 0.5);
+
+  eServer = gtk_entry_new ();
+  gtk_widget_show (eServer);
+  gtk_table_attach (GTK_TABLE (table1), eServer, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_sensitive (eServer, FALSE);
+  GTK_WIDGET_UNSET_FLAGS (eServer, GTK_CAN_FOCUS);
+  gtk_editable_set_editable (GTK_EDITABLE (eServer), FALSE);
+
+  g_signal_connect ((gpointer) eUserName, "changed",
+                    G_CALLBACK (on_eUserName_changed),
+                    NULL);
+  g_signal_connect ((gpointer) eServer, "changed",
+                    G_CALLBACK (on_eUserName_changed),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
@@ -224,6 +298,11 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[1].widget, "data");
   GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[0].widget, "addresses1");
   GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[1].widget, "articles1");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[2].widget, "contracts1");
+  GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[0].widget, "insurances1");
+  GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[1].widget, "rent1");
+  GLADE_HOOKUP_OBJECT (window1, contracts1_menu_uiinfo[2].widget, "leasing1");
+  GLADE_HOOKUP_OBJECT (window1, data_menu_uiinfo[3].widget, "staff1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[2].widget, "action1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[0].widget, "order1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu_uiinfo[1].widget, "stock1");
@@ -231,11 +310,15 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[0].widget, "preferences1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[1].widget, "update1");
   GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[2].widget, "report_generator1");
+  GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[3].widget, "separator1");
+  GLADE_HOOKUP_OBJECT (window1, tools1_menu_uiinfo[4].widget, "databases1");
   GLADE_HOOKUP_OBJECT (window1, menubar1_uiinfo[4].widget, "help1");
   GLADE_HOOKUP_OBJECT (window1, help1_menu_uiinfo[0].widget, "about1");
   GLADE_HOOKUP_OBJECT (window1, table1, "table1");
   GLADE_HOOKUP_OBJECT (window1, label1, "label1");
   GLADE_HOOKUP_OBJECT (window1, eUserName, "eUserName");
+  GLADE_HOOKUP_OBJECT (window1, label2, "label2");
+  GLADE_HOOKUP_OBJECT (window1, eServer, "eServer");
 
   return window1;
 }

@@ -327,6 +327,7 @@ from cuon.Windows.windows  import windows
 import cuon.Login.login
 import cPickle
 import cuon.Databases.dumps
+from cuon.TypeDefs.typedefs_server import typedefs_server
 import cuon.Databases.cyr_load_table
 from gtk import TRUE, FALSE
 import threading
@@ -361,7 +362,7 @@ class MainWindow(windows):
    
     def __init__(self):
         windows.__init__(self)
-        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 0, 'Species': 0, 'Maschine': 'i386'}
+        self.Version = {'Major': 0, 'Minor': 26, 'Rev': 1, 'Species': 0, 'Maschine': 'i386'}
         
         self.sTitle = _("C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
         self.allTables = {}
@@ -370,7 +371,9 @@ class MainWindow(windows):
         print "exit cuon"
         self.gtk_main_quit()
 
-  
+    def on_databases1_activate(self,event):
+        daba = cuon.Databases.databases.databaseswindow()
+ 
         
     def on_login1_activate(self,event):
         lgi = cuon.Login.login.loginwindow( self.getWidget('eUserName'))
@@ -378,7 +381,7 @@ class MainWindow(windows):
     def on_logout1_activate(self, event):
         print 'Logout'
         try:
-            self.rpc.getServer().src.Databases.py_logout(self.oUser.getUserName()) 
+            self.rpc.callRP('src.Databases.py_logout', self.oUser.getUserName()) 
         except:
             print 'Exception'
                 
@@ -404,7 +407,7 @@ class MainWindow(windows):
         
     def generateSqlObjects(self):
         
-        liAllTables = cPickle.loads(self.rpc.getServer().src.Databases.py_getInfoOfTable('allTables'))
+        liAllTables = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables'))
         print 'liAllTables = '
         print liAllTables
         iCount = len(liAllTables)
@@ -416,7 +419,7 @@ class MainWindow(windows):
 
     def generateLocalSqlObjects(self):
         
-        liAllTables = cPickle.loads(self.rpc.getServer().src.Databases.py_getInfoOfTable('allTables'))
+        liAllTables = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables'))
         print 'liAllTables = '
         print liAllTables
         iCount = len(liAllTables)
@@ -475,47 +478,54 @@ class MainWindow(windows):
     
     
    
-    def startMain(self):
-        
-        self.openDB()
-        version = self.loadObject('ProgramVersion')
-        self.closeDB()
-        print 'Version:' + str(version)
-        
-        print self.Version['Major'] 
-        print self.Version['Minor'] 
-        print self.Version['Rev'] 
-        
-        if not version:
-            print 'no Version'
-            
-            version = {}
-            version['Major'] = 0
-            version['Minor'] = 0
-            version['Rev'] = 0
+    def startMain(self, sStartType):
+        if sStartType == 'server':
+            print 'Server-Modus'
+            td = typedefs_server()
+            # create widget tree ...
+       
+            self.gladeName = '/usr/share/cuon/glade/cuon.glade2'
+            self.loadGladeFile(self.gladeName)
+        else:
+            self.openDB()
+            version = self.loadObject('ProgramVersion')
+            self.closeDB()
+            print 'Version:' + str(version)
 
             print self.Version['Major'] 
             print self.Version['Minor'] 
             print self.Version['Rev'] 
 
-        if version['Major'] != self.Version['Major'] or version['Minor'] != self.Version['Minor'] or version['Rev'] != self.Version['Rev']:
-            print ' ungleiche Versionen'
-            self.updateVersion()
-            self.openDB()
-            self.saveObject('ProgramVersion', self.Version)
-            self.closeDB()
+            if not version:
+                print 'no Version'
+
+                version = {}
+                version['Major'] = 0
+                version['Minor'] = 0
+                version['Rev'] = 0
+
+                print self.Version['Major'] 
+                print self.Version['Minor'] 
+                print self.Version['Rev'] 
+
+            if version['Major'] != self.Version['Major'] or version['Minor'] != self.Version['Minor'] or version['Rev'] != self.Version['Rev']:
+                print ' ungleiche Versionen'
+                self.updateVersion()
+                self.openDB()
+                self.saveObject('ProgramVersion', self.Version)
+                self.closeDB()
+
+
+            self.writeAllGladeFiles()
+
+
+            # create widget tree ...
+
+            # self.gladeName = td.main_glade_name
+
+            self.loadGlade('main.xml')
  
-  
-        self.writeAllGladeFiles()
-   
- 
-        # create widget tree ...
-       
-#        self.gladeName = td.main_glade_name
-       
-        self.loadGlade('main.xml')
- 
-         # Menu-items
+        # Menu-items
         self.initMenuItems()
 
         self.addEnabledMenuItems('login','logout1')
@@ -542,12 +552,22 @@ class MainWindow(windows):
     def gtk_main_quit(self):
         gtk.main_quit()
 
+sStartType = 'client'
 
-td = cuon.TypeDefs.typedefs.typedefs()
+
+if len(sys.argv) > 2: 
+    if len(sys.argv[2]) > 1:
+        sStartType =  sys.argv[2]
+        print sStartType
+if sStartType == 'server':
+    td = cuon.TypeDefs.typedefs_server.typedefs_server()
+else:
+    td = cuon.TypeDefs.typedefs.typedefs()
+    
 if len(sys.argv) > 1:
     if len(sys.argv[1]) > 1:
         td.server =  sys.argv[1]
-        print td.server
+        print td.server   
 d = cuon.Databases.dumps.dumps()
 d.openDB()
 d.saveObject('td', td)
@@ -555,7 +575,7 @@ d.closeDB()
 print _('Hello, this is a test')
 
 m = MainWindow()
-m.startMain()
+m.startMain(sStartType)
 gtk.main()
 
 

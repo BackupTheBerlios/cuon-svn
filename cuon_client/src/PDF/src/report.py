@@ -99,18 +99,18 @@ class report(dumps, MyXML):
         
     def writeXmlReport(self, fname):
 
-        xml1  = self.rpc.getServer().src.Databases.py_getInfoOfTable(fname)
+        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
-        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        # x = self.rpc.getServer().src.XML.py_readDocument('cuon_addresses')  self.enableMenuItems(self.editAction)
+        #self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
+        # x = self.rpc.callRP('src.XML.py_readDocument', 'cuon_addresses')  self.enableMenuItems(self.editAction)
         d1 = open(os.path.normpath(os.environ['CUON_HOME'] + '/Reports/' + fname),'w')
         d1.write(cPickle.loads(xml1))
         d1.close()
 
     def writeAllReportFiles(self):
 
-        nameOfReportFiles  = cPickle.loads(self.rpc.getServer().src.Databases.py_getInfoOfTable('nameOfReportFiles'))
+        nameOfReportFiles  = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfReportFiles'))
         #print 'nameOfReportfiles' + `nameOfReportFiles`
         #print len(nameOfReportFiles)
         

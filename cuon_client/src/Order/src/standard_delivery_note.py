@@ -51,14 +51,14 @@ class standard_delivery_note(standardlist, fileSelection):
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
 
-        dicResult =  self.rpc.getServer().src.Order.py_getInvoiceAddress(self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Order.py_getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
                     i[j] = (i[j].decode('utf-7')).encode('latin-1')
 
         self.dicResults['address'] = dicResult   
-        dicResult =  self.rpc.getServer().src.Order.py_getStandardInvoice(self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Order.py_getStandardInvoice', self.dicOrder,  self.oUser.getDicUser() )
         print dicResult
         
 

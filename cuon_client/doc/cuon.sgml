@@ -153,12 +153,17 @@
 	    </simplelist>
 	  </para>
 	  
-	  <para>Unter ZOPE müssen jetzt die ZOPE-Module von &cu importiert werden, sowie die externen Methoden aktualisiert werden</para>
+	  <para>Unter ZOPE müssen jetzt die ZOPE-Module von &cu importiert werden, sowie die externen Methoden aktualisiert werden. Legen sie bitte dann in ZOPE --> RootFolder - acl_users die entsprechenden Benutzer an.  Zu jeden Benutzer legen Sie bitte folgendes an: </para>
+	  <simplelist>
+	    <member>Database-Connection (Z Psycopg Databaseconnection ) mit Namen user_XXXX_cuon_database_connection</member>
+	    <member>Z SQL-Methode mit Namen user_XXXX_executeNormalQuery</member>
+	  </simplelist>
+	  <para>Für das XXXX setzen sie bitte den usernamen ein.</para>
 	</section>
 	<section>
 	  <title>Postgres SQL</title>
 	  <para>Postgres installieren, Database anlegen ( im Zweifelsfall cuon nennen ), grants.xml anppassen. Dieses XML-File von &cu verwaltet die USER und deren Rechte.</para>
-	  <para>In der Konfigurationsdatei /etc/cuon/cuon.ini muß der SQL-Benutzer eingetragen werden. </para>
+	  <para>In der Konfigurationsdatei /etc/cuon/cuon.ini muß der SQL-Benutzer ( Datenbankadministrator)  eingetragen werden. </para>
 	  <para>Das Anlegen von proceduren und Triggern geschieht mit <emphasis>plpgsql</emphasis> Dies Sprache muß installiert sein. Folgender Aufruf prüft dies :</para>
 	  <programlisting> 
 /usr/lib/postgresql/bin/createlang -dcuon -l
@@ -186,7 +191,7 @@ Procedural languages
 	<para>Client und Server "export CUON_SERVER=https://192.168.17.251:8443/Cuon, Hier gilt also IP_Adresse:Port/Verzeichnis ( ohne SSL ist der Port im Regelfall 9673 ) </para>
 	<para>nur Client CUON_OOEXEC=/opt/OpenOffice.org1.1.0/program/python, dies ist das eingebaute Python von Openoffice für die uno-bridge </para>
 	
-	<para>Wichtig ist hierbei, das sich der Wert Server auf den Rechner bezieht, von dem aus das Program cuon_server gestartet wird. Dies kann durchaus ein Computer sein, der auch als client definiert ist oder eine normale Arbeitsstation ist. ( entsprechend muß die ip in cuon.ini angepaßt werden. </para>
+	<para>Wichtig ist hierbei, das sich der Wert Server auf den Rechner bezieht, von dem aus das Program &cu im Servermod gestartet wird. Dies kann durchaus ein Computer sein, der auch als client definiert ist oder eine normale Arbeitsstation ist. ( entsprechend muß die ip in cuon.ini angepaßt werden. </para>
       </section>
       <section>
 	<title>Verzeichnisse</title>
@@ -214,8 +219,8 @@ Procedural languages
 	  <para>Auf dem client muß m2crypto installiert sein. </para>
 	</section>
 	<section>
-	  <title>cuon_server</title>
-	  <para>Wenn Sie cuon_server.py gestartet haben, klicken Sie folgenden Menüpunkte an: </para>
+	  <title>&cu im Servermode</title>
+	  <para>Wenn Sie &cu im Servermode  starten wollen, übergen Sie bitte als 2. Argument den Begriff 'server'. Dann melden Sie sich an  klicken Sie folgenden Menüpunkte an: </para>
 	  <para><emphasis>Tools --- Database --- SQL-Server --- db-check</emphasis></para>
 	  <para>Hiermit werden die Postgres-Tabellen unter cuon erzeugt  </para>
 	  <para>bevor Sie mit </para>

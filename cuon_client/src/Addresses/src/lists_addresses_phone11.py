@@ -61,7 +61,7 @@ class lists_addresses_phone11(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.getServer().src.Address.py_getPhonelist11(dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('src.Address.py_getPhonelist11', dicSearchfields, self.dicUser)
         
         for i in dicResult:
             for j in i.keys():

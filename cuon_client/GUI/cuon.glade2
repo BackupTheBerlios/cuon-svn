@@ -114,6 +114,55 @@
 		      <signal name="activate" handler="on_articles1_activate"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="contracts1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Contracts</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="contracts1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="insurances1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Insurances</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_insurances1_activate" last_modification_time="Thu, 29 Apr 2004 18:46:09 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="rent1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Rent</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_rent1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="leasing1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Leasing</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_leasing1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="staff1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Staff</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>
@@ -185,6 +234,21 @@
 		      <signal name="activate" handler="on_report_generator1_activate" last_modification_time="Tue, 24 Feb 2004 12:49:09 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="separator1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="databases1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Databases</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_databases1_activate" last_modification_time="Fri, 30 Apr 2004 08:42:16 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>
@@ -231,7 +295,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="label1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">User</property>
+	      <property name="label" translatable="yes">connected user</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -270,6 +334,52 @@
 	      <property name="right_attach">2</property>
 	      <property name="top_attach">0</property>
 	      <property name="bottom_attach">1</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="label2">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">connected server</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">0</property>
+	      <property name="right_attach">1</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
+	      <property name="x_options">fill</property>
+	      <property name="y_options"></property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkEntry" id="eServer">
+	      <property name="visible">True</property>
+	      <property name="sensitive">False</property>
+	      <property name="editable">False</property>
+	      <property name="visibility">True</property>
+	      <property name="max_length">0</property>
+	      <property name="text" translatable="yes"></property>
+	      <property name="has_frame">True</property>
+	      <property name="invisible_char" translatable="yes">*</property>
+	      <property name="activates_default">False</property>
+	      <signal name="changed" handler="on_eUserName_changed" last_modification_time="Tue, 27 Apr 2004 11:05:17 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="left_attach">1</property>
+	      <property name="right_attach">2</property>
+	      <property name="top_attach">1</property>
+	      <property name="bottom_attach">2</property>
 	      <property name="y_options"></property>
 	    </packing>
 	  </child>

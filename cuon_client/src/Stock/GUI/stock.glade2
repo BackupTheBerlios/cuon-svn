@@ -63,13 +63,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="stock">
+	    <widget class="GtkMenuItem" id="stock1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Stock</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="stock_menu">
+		<widget class="GtkMenu" id="stock1_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="New1">
@@ -142,11 +142,11 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="googsedit1">
+		    <widget class="GtkMenuItem" id="goodsedit1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_GoogsEdit1_activate" last_modification_time="Thu, 15 Apr 2004 17:22:59 GMT"/>
+		      <signal name="activate" handler="on_GoodsEdit1_activate" last_modification_time="Fri, 30 Apr 2004 19:26:29 GMT"/>
 		    </widget>
 		  </child>
 
@@ -496,7 +496,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="entry3">
+		<widget class="GtkEntry" id="eStockAddress">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -541,7 +541,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="ePhone">
+		<widget class="GtkEntry" id="eStockPhone">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>

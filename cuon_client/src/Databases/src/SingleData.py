@@ -88,7 +88,9 @@ class SingleData(gladeXml, logs):
         self.out( `dicColumns`)
 
         
-        liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
+        #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
+        liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
+        
         if liRecords:
             for r in range(len(liRecords)) :
                  record =  liRecords[r]
@@ -134,16 +136,18 @@ class SingleData(gladeXml, logs):
 #        self.out( self.sNameOfTable)
 #        self.out( self.ID)
 #        self.out( dicValues)
-        self.out( self.rpc.getServer().src.sql.py_saveRecord(self.sNameOfTable, self.ID, dicValues, self.dicUser))
+        #self.out( self.rpc.getServer().src.sql.py_saveRecord(self.sNameOfTable, self.ID, dicValues, self.dicUser))
+        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.dicUser)
+        
         self.refreshTree()
 
     def deleteRecord(self):
-        self.rpc.getServer().src.sql.py_deleteRecord(self.sNameOfTable, self.ID, self.dicUser )
+        self.rpc.callRP('src.sql.py_deleteRecord',self.sNameOfTable, self.ID, self.dicUser )
         self.refreshTree()
          
 
     def loadCompleteTable(self):
-        return self.rpc.getServer().src.sql.py_loadCompleteTable(self.sNameOfTable, self.dicUser)
+        return self.rpc.callRP('src.sql.py_loadCompleteTable',self.sNameOfTable, self.dicUser)
         
 
 
@@ -488,7 +492,7 @@ class SingleData(gladeXml, logs):
         self.out(dicFields)
         
         if dicFields:        
-            dicLists = self.rpc.getServer().src.sql.py_getListEntries(dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicUser)
+            dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicUser)
         else:
             dicLists = {}
             

@@ -51,7 +51,7 @@ class standard_pickup_note(standardlist, fileSelection):
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
 
-        dicResult =  self.rpc.getServer().src.Address.py_getAddress(self.dicOrder['addressNumber'],  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Address.py_getAddress', self.dicOrder['addressNumber'],  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
@@ -60,7 +60,7 @@ class standard_pickup_note(standardlist, fileSelection):
         self.dicResults['pickup_address'] = dicResult
 
         dicResult2 = []
-        dicResult =  self.rpc.getServer().src.Address.py_getPartnerAddress(self.dicOrder['partnerNumber'],  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Address.py_getPartnerAddress', self.dicOrder['partnerNumber'],  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
@@ -69,7 +69,7 @@ class standard_pickup_note(standardlist, fileSelection):
         
         self.dicResults['partner_address'] = dicResult
 
-        dicResult =  self.rpc.getServer().src.Address.py_getAddress(self.dicOrder['forwardingAgencyNumber'],  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Address.py_getAddress', self.dicOrder['forwardingAgencyNumber'],  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
@@ -79,7 +79,7 @@ class standard_pickup_note(standardlist, fileSelection):
 
 
 
-        dicResult =  self.rpc.getServer().src.Address.py_getPartnerAddress(self.dicOrder['contactPersonNumber'],  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Address.py_getPartnerAddress', self.dicOrder['contactPersonNumber'],  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
@@ -87,7 +87,7 @@ class standard_pickup_note(standardlist, fileSelection):
 
         self.dicResults['contact_person_address'] = dicResult
 
-        dicResult =  self.rpc.getServer().src.Order.py_getPickupData(self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Order.py_getPickupData', self.dicOrder,  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
@@ -96,7 +96,7 @@ class standard_pickup_note(standardlist, fileSelection):
         self.dicResults['pickup_data'] = dicResult
 
  
-        dicResult =  self.rpc.getServer().src.Order.py_getStandardInvoice(self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('src.Order.py_getStandardInvoice', self.dicOrder,  self.oUser.getDicUser() )
         print dicResult
         for i in dicResult:
             for j in i.keys():
