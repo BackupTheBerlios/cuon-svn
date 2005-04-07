@@ -36,6 +36,12 @@
       <Entry-File>articles_sales.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_articles_sales.xml</Entry-FileValue>
     </Entries>
+     <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>articles_webshop.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_articles_webshop.xml</Entry-FileValue>
+    </Entries>
+    
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order.xml</Entry-File>
@@ -115,6 +121,8 @@
       <Entry-File>dms.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
     </Entries>
+ 
+
 
   </Entry_Init_Files>
 

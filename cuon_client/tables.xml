@@ -316,103 +316,7 @@
       <comment />
     </field>
   </table>
-  <!-- table webshop -->
-<table>
-    <nameOfTable>webshop</nameOfTable>
-
-    <specials>inherits (t_standard);</specials>
-
-    <x>152</x>
-
-    <y>115</y>
-      <field>
-      <name>sqlserver_url</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>250</size>
-
-      <default />
-
-      <comment />
-    </field>
-  <field>
-      <name>sqlserver_port</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>10</size>
-
-      <default />
-
-      <comment />
-    </field>
-  <field>
-      <name>sqlserver_database</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>250</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-   <field>
-      <name>webshop_table</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>250</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-      <field>
-      <name>my_table</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>250</size>
-
-      <default />
-
-      <comment />
-    </field>
-    </table>
+  
   <!--table: countries-->
  <table>
     <nameOfTable>countries</nameOfTable>
@@ -1229,6 +1133,26 @@
 
       <comment />
     </field>
+    
+       <field>
+      <name>manufactor_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+    
   </table>
 
   <!--table: articles_purchase-->
@@ -1525,6 +1449,99 @@
     </field>
   </table>
 
+    <!-- table articles_webshop -->
+<table>
+    <nameOfTable>articles_webshop</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+    
+      <field>
+      <name>articles_number</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>30</size>
+
+      <default />
+
+      <comment />
+      
+      
+    </field>
+    
+         <field>
+      <name>is_webshop_stock</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+      
+      
+    </field>
+    
+            <field>
+      <name>is_webshop_article</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+      
+      
+      
+    </field>
+    
+
+           <field>
+      <name>pricegroup</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>50</size>
+
+      <default />
+
+      <comment />
+      
+      
+    </field>
+    </table>
+    
   <!--table: orderbook-->
 
   <table>

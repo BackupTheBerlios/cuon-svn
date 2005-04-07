@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -19,7 +19,6 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
-
 from cuon.Databases.SingleData import SingleData
 import SingleArticle
 import SingleArticlePurchase
@@ -162,7 +161,7 @@ class articleswindow(chooseWindows):
     def on_quit1_activate(self, event):
         print "exit articles v2"
         self.closeWindow()
-
+  
 
     #Menu Article
   
@@ -186,8 +185,21 @@ class articleswindow(chooseWindows):
         print "delete articles v2"
         self.singleArticle.deleteRecord()
 
-    def on_quit1_activate(self, event):
-        self.closeWindow() 
+
+    #choose Manufactor button
+    def on_bChooseManufactor_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))
+        
+    # signals from entry eManufactorNumber
+    
+    def on_eManufactorNumber_changed(self, event):
+        print 'eManufactor changed'
+        eAdrField = self.getWidget('eManufactorField1')
+        liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
+        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
+
+
  
 
   #Menu Purchase

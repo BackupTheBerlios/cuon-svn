@@ -41,7 +41,14 @@ class SingleAddress(SingleData):
         self.statusfields = ['lastname', 'city']
 
     def getAddress(self, id):
-        dicRecords = self.load(id)
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            id = 0
+            dicRecords = {}
+        
         liAddress = []
         if dicRecords:
             dicRecord = dicRecords[0]
