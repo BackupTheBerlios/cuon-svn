@@ -35,25 +35,31 @@ import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import mx.DateTime
-from cuon.XMLRPC.xmlrpc import myXmlRpc
+import cuon.XMLRPC.xmlrpc 
 import SingleWebshop
 
-class webshopwindow(windows, myXmlRpc):
+class webshopwindow(windows):
 
     
     def __init__(self, allTables):
 
         windows.__init__(self)
-        myXmlRpc.__init__(self)
-        self.singleWebshop = SingleWebshop.SingleWebshop(allTables)
-
-        self.WebTable = self.callRP('src.Databases.py_getXmlData','countries')
+        #myXmlRpc.__init__(self)
+        #self.singleWebshop = SingleWebshop.SingleWebshop(allTables)
+        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
+  
+        self.WebTable = self.rpc.callRP('src.Databases.py_getXmlData','countries')
 
         print `self.WebTable`
         self.loadGlade('webshop.xml')
         self.win1 = self.getWidget('WebshopMainwindow')
         self.setStatusBar()
-
-    def on_new1_activate(self, event):
-        pass
+  
+    def on_choosePrinter1_activate(self, event):
+        sNameOfTable = 'address_book'
+        self.dicUser['Database'] = 'osCommerce'
+        print `self.dicUser`
+        
+        liRecords = self.rpc.callRP('src.WebShop.py_loadCompleteTable', sNameOfTable, self.dicUser)
+        print `liRecords`
         
