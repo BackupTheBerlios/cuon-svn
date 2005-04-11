@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2005]  [Juergen Hamel, D-32584 Loehne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -19,9 +19,9 @@ from gtk import TRUE, FALSE
 
 class User:
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: Jï¿½rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Lï¿½hne
+    @copyright: by Jï¿½rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -41,9 +41,11 @@ class User:
         #self.openDB()
         #self.td = self.loadObject('td')
         #self.closeDB()
+        self.Database = 'cuon'
         # setting for locales
         self.userLocales ='de'
         self.userEncoding = 'utf-8'
+        self.Encode = True
         self.userPdfEncoding = 'latin-1'
         self.userType = 'cuon'        
         self.userDateFormatString = "%d.%m.%Y"
@@ -121,7 +123,9 @@ class User:
         set self.dicuser to actual values
         '''
         self.dicUser['Locales'] = self.userLocales
+        self.dicUser['Database'] = self.Database
         self.dicUser['Encoding'] = self.userEncoding
+        self.dicUser['Encode'] = self.Encode
         self.dicUser['DateTimeformatString'] = self.userDateTimeFormatString
         self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         #self.dicUser['serverAddress'] = self.serverAddress

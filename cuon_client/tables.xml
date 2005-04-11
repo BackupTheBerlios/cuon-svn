@@ -77,9 +77,16 @@
 
     <!--insert_time-->
 
-    <field> <name>insert_time</name> <type>timestamp</type> <pkey>0</pkey>
-    <unique>0</unique> <notnull>0</notnull> <size>0</size>
-    <default></default> g<comment>set by trigger</comment> </field>
+    <field> 
+    <name>insert_time</name> 
+    <type>timestamp</type> 
+    <pkey>0</pkey>
+    <unique>0</unique> 
+    <notnull>0</notnull> 
+    <size>0</size>
+    <default></default>
+    <comment>set by trigger</comment> 
+    </field>
 
     <!--update_time-->
 
@@ -106,7 +113,7 @@
     <field>
       <name>update_user_id</name>
 
-      <type>char</type>
+      <type>varchar</type>
 
       <pkey>0</pkey>
 
@@ -415,6 +422,72 @@
       <comment />
     </field>
     </table>
+     <!--table: state-->
+
+  <table>
+    <nameOfTable>state</nameOfTable>
+
+    <x>52</x>
+
+    <y>15</y>
+
+    <specials>inherits (t_standard);</specials>
+    
+       <field>
+      <name>name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>70</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+          <field>
+      <name>short_name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>6</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+          <field>
+      <name>country_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+</table>    
   <!--table: userlogin-->
 
   <table>
@@ -743,6 +816,25 @@
 
       <comment />
     </field>
+        <field>
+      <name>suburb</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>50</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+    
   </table>
 
   <!--table: address-->
@@ -755,6 +847,76 @@
     <y>15</y>
 
     <specials>inherits (t_address);</specials>
+    
+       <field>
+      <name>webshop_address_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+        <field>
+      <name>webshop_zone_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+        <field>
+      <name>webshop_gender</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>1</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>webshop_customers_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
   </table>
 
   <!--table: partner-->
@@ -2351,7 +2513,76 @@
       <comment />
     </field>
   </table>
+  <table>
+    <nameOfTable>states</nameOfTable>
 
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>country_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
+        <field>
+      <name>name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>60</size>
+
+      <default />
+
+      <comment />
+    </field>
+        <field>
+      <name>state_short</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>6</size>
+
+      <default />
+
+      <comment />
+    </field>
+   </table>
+   
+    
+    
+    
+    
+    
+    
+    
   <table>
     <nameOfTable>addresses_misc</nameOfTable>
 
@@ -2468,6 +2699,7 @@
 
       <comment />
     </field>
+    
   <field>
       <name>address_number</name>
 
@@ -2486,6 +2718,41 @@
       <comment>To use for accounts, etc.</comment>
 
     </field>
+       <field>
+      <name>is_webshop</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+	<field>
+      <name>update_from_webshop</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
   </table>
 
   <table>
