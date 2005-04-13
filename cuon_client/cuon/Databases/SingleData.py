@@ -302,14 +302,45 @@ class SingleData(gladeXml, logs):
         # self.out( "ID: " + str(id))
         return ''
 
+    def clearAllFields(self):
+        print 'clear all widgets '
+        nCount = self.dicEntries.getCountOfEntries()
+        
+        
+        for n in range(nCount):
+            oneEntry = self.dicEntries.getEntryAtIndex(n)
+            widget = self.getWidget(oneEntry.getName())                   
+            if string.count(str(widget), "GtkEntry") > 0:
+               # self.out( "GtkEntry:")
+               # self.out( "Name: " + str(widget.get_name()))
+               widget.set_text('')
+            elif string.count(str(widget), "GtkTextView") > 0:
+               buffer = gtk.TextBuffer(None)
+               buffer.set_text('')
+               widget.set_buffer(buffer)
+            elif string.count(str(widget), "GtkCheckButton") > 0:
+               widget.set_active(False)
+                            
+            elif string.count(str(widget), "GnomeDateEdit") > 0:
+                 newDate = time.strptime('0001/01/01', 'Y/m/d') 
+                 print newDate
+                 widget.set_time(int(time.mktime(newDate)))
+                                           
+           
     
     def fillEntries(self, id):
-        # self.out( id)
+        print 'id by fillentries: ',  id
         self.ID = id
-        if id > 0:
+        if id < 1:
+            self.clearAllFields()
+        else:
+            oneRecord = []
             dicRecord = self.load(id)
-            # # self.out( dicRecord)
-            oneRecord = dicRecord[0]
+            print  'Record by fillEntries: ', dicRecord
+            if dicRecord:
+                oneRecord = dicRecord[0]
+            if not oneRecord:
+                self.clearAllFields()
             for i in range(len(oneRecord)):
 
     
@@ -381,8 +412,13 @@ class SingleData(gladeXml, logs):
                         print 'Bool-Value from Database'
                         #print sValue
                         
-                        if sValue :
+                        
+                        if sValue: 
+                            sValue = True
                             print 'is true !'
+                        else:
+                            sValue = False
+                            print 'is false'
                             
                         widget.set_active(sValue)
                             

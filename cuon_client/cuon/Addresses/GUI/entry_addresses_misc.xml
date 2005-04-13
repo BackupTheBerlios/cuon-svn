@@ -77,7 +77,7 @@
       <size>1</size>
       <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>update_from_web</sql_field>
+      <sql_field>update_from_webshop</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
