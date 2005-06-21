@@ -324,7 +324,7 @@ Procedural languages
         Beispiel)</para>
 
         <para>nur Server "export CUON_INI=/etc/cuon/cuon.ini "</para>
-
+		<para>CUON_INI_XML=/etc/cuon/cuon_ini1.xml</para>
         <para>Client und Server "export CUON_HOME=~/cuon "</para>
 
         <para>Client und Server "export

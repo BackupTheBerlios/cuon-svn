@@ -18,7 +18,7 @@ import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
 from cuon.Logging.logs import logs
 #from M2Crypto.m2xmlrpclib import  Server, SSL_Transport
-from gtk import TRUE, FALSE
+
 import time
 from xmlrpclib import ServerProxy
 
@@ -90,12 +90,12 @@ class myXmlRpc(dumps, logs):
             s = s[0:len(s) -1]
         s = s + ')'
         #print s
-        startRP = TRUE
+        startRP = True
         rp_tries = 0
         while startRP:
             try:
                 exec s
-                startRP = FALSE
+                startRP = False
 
             except IOError, param:
                 print 'IO-Error'
@@ -115,7 +115,7 @@ class myXmlRpc(dumps, logs):
                 rp_tries = rp_tries + 1
                 
                 if rp_tries > 5:
-                    startRP = FALSE
+                    startRP = False
                 else:
                     print ' wait for 10 sec. '
                     print ' Try :' + `rp_tries`

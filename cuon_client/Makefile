@@ -106,6 +106,16 @@ dest_prefs_finance = $(dest_cuon)/PrefsFinance
 src_webshop = ./cuon/WebShop/*.py
 dest_webshop = $(dest_cuon)/WebShop
 
+
+
+src_finances_cab = ./cuon/Finances/CashAccountBook/*.py 
+src_finances_ib =  ./cuon/Finances/InvoiceBook/*.py
+
+dest_Finances = $(dest_cuon)/Finances
+
+
+
+
 #src_cuon =  $(dest_cuon)/*
 #dest_primus_cuon = ~/Projekte/Primus/Py/cuon
 
@@ -144,6 +154,9 @@ all :
 	if [ ! -d $(dest_vtk) ] ; then mkdir $(dest_vtk) ; fi ; cp $(src_vtk) $(dest_vtk) 
 	if [ ! -d $(dest_prefs_finance) ] ; then mkdir $(dest_prefs_finance) ; fi ; cp $(src_prefs_finance) $(dest_prefs_finance) 
 	if [ ! -d $(dest_webshop) ] ; then mkdir $(dest_webshop) ; fi ; cp $(src_webshop) $(dest_webshop) 
+	if [ ! -d $(dest_finances) ] ; then mkdir $(dest_finances) ; fi 
+    cp $(src_finances_cab) $(dest_finances) 
+    cp $(src_finances_ib) $(dest_finances) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi

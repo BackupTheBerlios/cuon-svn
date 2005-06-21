@@ -213,7 +213,7 @@ class databaseswindow(windows):
         if ok == 0:
             # create table
             self.createTable(table)
-
+        
         self.checkColumn(table)
         
 
@@ -238,6 +238,7 @@ class databaseswindow(windows):
    
         self.rpc.callRP('src.sql.py_executeNormalQuery',sSql1, self.dicUser)
 
+ 
 
 
     def checkColumn(self, table):
@@ -281,7 +282,9 @@ class databaseswindow(windows):
             self.out( co.isAllowNull())
             sSql = sSql + ' not null '
 
-   
+        if co.getPrimaryKey() == 1:
+            sSql = sSql + ' PRIMARY KEY '
+            
         print sSql
         
         self.rpc.callRP('src.sql.py_executeNormalQuery',sSql, self.dicUser)
@@ -447,6 +450,7 @@ class databaseswindow(windows):
                         group = self.getData(groupNode[0])
                         self.out(group)
                         print 'group = ' + `group`
+                        print `self.dicUser`
                         ok = self.rpc.callRP('src.Databases.py_createGroup', group, self.dicUser)       
                         self.out(ok)
 
@@ -462,7 +466,7 @@ class databaseswindow(windows):
                         user = self.getData(userNode[0])
                         self.out('User = ' + `user`)
                         print 'User = ' + `user`
-                        ok = self.rpc.callRP('src.Databases.py_createUser', user, self.dicUser, 1)       
+                        ok = self.rpc.callRP('src.Databases.py_createUser', user,'None', self.dicUser, 1)       
                         self.out(ok)
 
 
@@ -496,7 +500,7 @@ class databaseswindow(windows):
                         tables = self.getData(tableNode[0])
                         groupNode = self.getNodes(i,'this_group')
                         group = self.getData(groupNode[0])
-                        self.out('Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables)
+                        print'Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables
                         ok = self.rpc.callRP('src.Databases.py_addGrantToGroup', grants, group, tables, self.dicUser)       
                         self.out(ok)
                                                                     

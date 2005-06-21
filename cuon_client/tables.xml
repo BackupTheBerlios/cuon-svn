@@ -15,8 +15,7 @@
 
     <y>15</y>
 
-    <!--id-->
-
+	
     <field>
       <name>id</name>
 
@@ -148,6 +147,73 @@
       <comment>set by trigger</comment>
     </field>
   </table>
+
+
+
+ <!--table: clients-->
+
+  <table>
+    <nameOfTable>clients</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>50</size>
+
+      <default />
+
+      <comment />
+    </field>
+        <field>
+      <name>designation</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+        <field>
+      <name>address_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+    </table>
+    
 
   <!--table: tax_vat-->
 
@@ -564,7 +630,7 @@
     <y>15</y>
 
     <specials>inherits (t_standard);</specials>
-
+    
     <field>
       <name>address</name>
 
@@ -3934,4 +4000,11 @@
 
     <sequence_cache>0</sequence_cache>
   </database_sequence>
+  
+
+ 	<foreign_key>
+		<foreign_key_name>PartnerAddress</foreign_key_name> 
+		<foreign_key_sql>foreign_key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+	</foreign_key>
+
 </database>

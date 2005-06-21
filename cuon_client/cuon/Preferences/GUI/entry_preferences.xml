@@ -40,6 +40,7 @@
       <sql_field>locales</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+   </entry>   
      <entry>
       <name>chkbStandardProfile</name>
       <type>checkbutton</type>
@@ -49,7 +50,7 @@
       <sql_field>is_standard_profile</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-    </entry></entry>
+    </entry>
 
   </table>
 </entries_for_table>

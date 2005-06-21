@@ -1,4 +1,4 @@
-cd Py
+cd cuon
 find -name "*.py" > po.files
 cd ..
 

@@ -440,25 +440,29 @@ class SingleData(gladeXml, logs):
             # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
             for i in range(self.dicEntries.getCountOfEntries() ):
                 entry =  self.dicEntries.getEntryAtIndex(i)
-                # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
-                print entry.getName()
-                widget = self.getWidget(entry.getName())
-                if string.count(str(widget), "GtkEntry") > 0:
-                    sValue = widget.get_text()
-                elif string.count(str(widget), "GtkTextView") > 0:
-                    buffer = widget.get_buffer()
-                    sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
-                #elif string.count(str(widget), "GtkCombo") > 0:
-                elif string.count(str(widget), "GtkCheckButton") > 0:
-                    sValue = `widget.get_active()`
-                elif string.count(str(widget), "GnomeDateEdit") > 0:
-                    newTime = time.localtime(widget.get_time())
-    #                print "Datum und Zeit"
-    #                print newTime
-                    sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
-    #                print sValue
-                else:
-                    sValue = widget.get_text()
+                try:
+                    # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
+                    print entry.getName()
+                    widget = self.getWidget(entry.getName())
+                    if string.count(str(widget), "GtkEntry") > 0:
+                        sValue = widget.get_text()
+                    elif string.count(str(widget), "GtkTextView") > 0:
+                        buffer = widget.get_buffer()
+                        sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+                    #elif string.count(str(widget), "GtkCombo") > 0:
+                    elif string.count(str(widget), "GtkCheckButton") > 0:
+                        sValue = `widget.get_active()`
+                    elif string.count(str(widget), "GnomeDateEdit") > 0:
+                        newTime = time.localtime(widget.get_time())
+        #                print "Datum und Zeit"
+        #                print newTime
+                        sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        #                print sValue
+                    else:
+                        sValue = widget.get_text()
+                except Exception, param:
+                        print 'Exception Error:', param 
+                        sValue = ''
 
 
 
@@ -467,14 +471,14 @@ class SingleData(gladeXml, logs):
 
             # self.out( 'dicValue by readEntries = ')
             # self.out(  dicValues)
-            print  dicValues 
+            print  'read-Entries' , dicValues 
             dicValues = self.readNonWidgetEntries(dicValues)
         except AssertionError:
             print 'assert error'
             dicValues = None
         
         dicValues = self.verifyValues(dicValues)
-        
+        print  'after Verify' , dicValues
         return dicValues
  
     def verifyValues(self, dicValues):
