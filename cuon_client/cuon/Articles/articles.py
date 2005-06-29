@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+
 from cuon.Databases.SingleData import SingleData
 import SingleArticle
 import SingleArticlePurchase
@@ -168,18 +168,18 @@ class articleswindow(chooseWindows):
     def on_save1_activate(self, event):
         print "save articles v2"
         self.singleArticle.save()
-        self.setEntriesEditable(self.EntriesArticles, FALSE)
+        self.setEntriesEditable(self.EntriesArticles, False)
         self.tabChanged()
          
         
     def on_new1_activate(self, event):
         print "new articles v2"
         self.singleArticle.newRecord()
-        self.setEntriesEditable(self.EntriesArticles, TRUE)
+        self.setEntriesEditable(self.EntriesArticles, True)
         
 
     def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticles, TRUE)
+        self.setEntriesEditable(self.EntriesArticles, True)
 
     def on_delete1_activate(self, event):
         print "delete articles v2"
@@ -209,17 +209,17 @@ class articleswindow(chooseWindows):
         print "save Partner articles v2"
         self.singleArticlePurchase.articlesNumber = self.singleArticle.ID
         self.singleArticlePurchase.save()
-        self.setEntriesEditable(self.EntriesArticlesPurchase, FALSE)
+        self.setEntriesEditable(self.EntriesArticlesPurchase, False)
 
         self.tabChanged()
         
     def on_PurchaseNew1_activate(self, event):
         print "new Partner articles v2"
         self.singleArticlePurchase.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesPurchase, TRUE)
+        self.setEntriesEditable(self.EntriesArticlesPurchase, True)
 
     def on_PurchaseEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesPurchase, TRUE)
+        self.setEntriesEditable(self.EntriesArticlesPurchase, True)
 
     def on_PurchaseClear1_activate(self, event):
         print "delete Partner articles v2"
@@ -231,17 +231,17 @@ class articleswindow(chooseWindows):
         
         self.singleArticleSales.articlesNumber = self.singleArticle.ID
         self.singleArticleSales.save()
-        self.setEntriesEditable(self.EntriesArticlesSales, FALSE)
+        self.setEntriesEditable(self.EntriesArticlesSales, False)
 
         self.tabChanged()
         
     def on_SalesNew1_activate(self, event):
         print "new Partner articles v2"
         self.singleArticleSales.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesSales, TRUE)
+        self.setEntriesEditable(self.EntriesArticlesSales, True)
 
     def on_SalesEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesSales, TRUE)
+        self.setEntriesEditable(self.EntriesArticlesSales, True)
 
     def on_SalesClear1_activate(self, event):
         print "delete Partner articles v2"
@@ -329,4 +329,4 @@ class articleswindow(chooseWindows):
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False

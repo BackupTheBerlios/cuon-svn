@@ -86,10 +86,14 @@ class myXmlRpc(dumps, logs):
         s = 'r = self.getServer().' + rp + '('
         for i in c:
             s = s + `i` + ', '
+            #print '-------------------------------------------------'
+            #print 'i = ', `i`
+            #print '-------------------------------------------------'
+            
         if len(c) > 0:
-            s = s[0:len(s) -1]
+            s = s[0:len(s) -2]
         s = s + ')'
-        #print s
+        print s
         startRP = True
         rp_tries = 0
         while startRP:
@@ -107,7 +111,8 @@ class myXmlRpc(dumps, logs):
 
             except Exception, param:
                 print 'unknown exception'
-                print param[0:100]
+                print `Exception`
+                print param[0:200]
                 
             if startRP:
                 print 'error, next try'
