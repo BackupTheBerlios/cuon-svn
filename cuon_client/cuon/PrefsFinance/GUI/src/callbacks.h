@@ -70,3 +70,7 @@ on_VatPrint1_activate                  (GtkMenuItem     *menuitem,
 void
 on_VatClear1_activate                  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_bImportAcct_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);

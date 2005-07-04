@@ -3953,6 +3953,155 @@
     </field>
   </table>
 
+
+ <!--account sentence -->
+
+  <table>
+    <nameOfTable>account_sentence</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>document_number1</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment> increment with sequence </comment>
+    </field>
+        <field>
+      <name>document_number2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>50</size>
+
+      <default />
+
+      <comment />
+    </field>
+       <field>
+      <name>designation</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>70</size>
+
+      <default />
+
+      <comment> designation </comment>
+    </field>
+   </table>
+   
+   
+    <!--account values-->
+
+  <table>
+    <nameOfTable>account_values</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>document_number1</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment> key to account_sentence </comment>
+    </field>
+       <field>
+      <name>debit_credit</name>
+
+      <type>char</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>1</size>
+
+      <default />
+
+      <comment> debit = +, credit = - </comment>
+    </field>
+       <field>
+      <name>value</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment> key to account_account_info </comment>
+     </field>
+     
+     
+   </table>
+   
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
 
@@ -4000,7 +4149,21 @@
 
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-  
+   <database_sequence>
+    <nameOfSequence>numerical_finance_account_number1</nameOfSequence>
+
+    <sequence_increment>1</sequence_increment>
+
+    <sequence_start>1</sequence_start>
+
+    <sequence_minvalue>1</sequence_minvalue>
+
+    <sequence_maxvalue>500000</sequence_maxvalue>
+
+    <sequence_cycle>Yes</sequence_cycle>
+
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
 
  	<foreign_key>
 		<foreign_key_name>PartnerAddress</foreign_key_name> 

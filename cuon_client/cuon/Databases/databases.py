@@ -278,6 +278,10 @@ class databaseswindow(windows):
         if (string.find(co.getType(), 'char' )>= 0 ) :
             # find char, so take size to it
             sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
+        if (string.find(co.getType(), 'numeric' )>= 0 ) :
+            # find numeric, so take size to it
+            sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
+            
         if  co.isAllowNull()  == 0 :
             self.out( co.isAllowNull())
             sSql = sSql + ' not null '

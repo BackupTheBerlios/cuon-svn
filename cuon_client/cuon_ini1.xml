@@ -121,7 +121,11 @@
       <Entry-File>dms.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
     </Entries>
- 
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>cashAccount.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
+    </Entries>
 
 
   </Entry_Init_Files>
@@ -207,6 +211,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>webshop.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/webshop.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>cashAccountBook.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
     </GladeEntries>
 
   </Glade_Init_Files>

@@ -146,3 +146,11 @@ on_VatClear1_activate                  (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_bImportAcct_clicked                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

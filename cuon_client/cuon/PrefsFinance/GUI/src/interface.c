@@ -82,6 +82,48 @@ static GnomeUIInfo mi_vat1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo mi_top1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_TopNew1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-new",
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Edit"),
+    NULL,
+    (gpointer) on_TopEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-yes",
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_TopSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Print"),
+    NULL,
+    (gpointer) on_TopPrint1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-print",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Clear"),
+    NULL,
+    (gpointer) on_TopClear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-delete",
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo menubar1_uiinfo[] =
 {
   {
@@ -95,6 +137,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Vat"),
     NULL,
     mi_vat1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Terms Of Payment"),
+    NULL,
+    mi_top1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -192,6 +241,7 @@ create_PreferencesFinancesMainwindow (void)
   GtkWidget *entry28;
   GtkWidget *entry29;
   GtkWidget *label70;
+  GtkWidget *bImportAcct;
   GtkWidget *label71;
   GtkAccelGroup *accel_group;
 
@@ -691,6 +741,12 @@ create_PreferencesFinancesMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label70), 0, 0.5);
 
+  bImportAcct = gtk_button_new_with_mnemonic (_("import Acct."));
+  gtk_widget_show (bImportAcct);
+  gtk_table_attach (GTK_TABLE (table1), bImportAcct, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
   label71 = gtk_label_new (_("Acct"));
   gtk_widget_show (label71);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label71);
@@ -700,6 +756,9 @@ create_PreferencesFinancesMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) notebook1, "switch_page",
                     G_CALLBACK (on_notebook1_switch_page),
+                    NULL);
+  g_signal_connect ((gpointer) bImportAcct, "clicked",
+                    G_CALLBACK (on_bImportAcct_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -718,6 +777,14 @@ create_PreferencesFinancesMainwindow (void)
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_vat1_menu_uiinfo[4].widget, "print1");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_vat1_menu_uiinfo[5].widget, "separator1");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_vat1_menu_uiinfo[6].widget, "clear1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, menubar1_uiinfo[2].widget, "mi_top1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[0].widget, "TopNew1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[1].widget, "TopEdit1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[2].widget, "TopSave1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[3].widget, "separator4");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[4].widget, "TopPrint1");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[5].widget, "separator5");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, mi_top1_menu_uiinfo[6].widget, "TopClear1");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, lFindName, "lFindName");
@@ -802,6 +869,7 @@ create_PreferencesFinancesMainwindow (void)
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, entry28, "entry28");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, entry29, "entry29");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, label70, "label70");
+  GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, bImportAcct, "bImportAcct");
   GLADE_HOOKUP_OBJECT (PreferencesFinancesMainwindow, label71, "label71");
 
   gtk_window_add_accel_group (GTK_WINDOW (PreferencesFinancesMainwindow), accel_group);

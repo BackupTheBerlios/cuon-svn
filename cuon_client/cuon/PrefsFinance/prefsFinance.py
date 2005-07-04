@@ -38,7 +38,8 @@ class prefsFinancewindow(windows):
 
         self.loadGlade('prefs_finance.xml')
         self.win1 = self.getWidget('PreferencesFinancesMainwindow')
-
+        self.filesel = gtk.FileSelection(title=None)
+  
         
         self.allTables = allTables
         self.singlePrefsFinanceVat = SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
@@ -195,18 +196,8 @@ class prefsFinancewindow(windows):
 
 
 
-    def on_chooseArticle_activate(self, event):
-        # choose Article from other Modul
-        self.setChooseValue(self.singlePrefsFinance.ID)
-        print 'Article-ID = ' + `self.singlePrefsFinance.ID`
-        self.closeWindow()
-  
-
-    #choose Vendor button
-    def on_bChooseVendor_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
-        
+    def on_bImportAcct_clicked(self, event):
+        self.importAcct()
     # signals from entry eAddressNumber
     
     def on_eAddressNumber_changed(self, event):
@@ -247,9 +238,36 @@ class prefsFinancewindow(windows):
             self.singlePrefsFinanceAcctInfo.connectTree()
             self.singlePrefsFinanceAcctInfo.refreshTree()
  
+ 
+    def filesel_destroy(self,w):
+        self.filesel.destroy()
+  
      
+    def filesel_ok(self, w):
+        sFile =  self.filesel.get_filename()
+        self.filesel_destroy(w)
+        if sFile:
+            print "%s" % sFile
+            doc = self.readDocument(sFile)
+            if doc:
+                print doc.toxml()
+                
+     
+ 
 
-
+    def importAcct(self):
+       
+        
+        self.filesel.connect("destroy", self.filesel_destroy)
+        
+        # Connect the ok_button to file_ok_sel method
+        self.filesel.ok_button.connect("clicked", self.filesel_ok)
+    
+        # Connect the cancel_button to destroy the widget
+        self.filesel.cancel_button.connect("clicked",self.filesel_destroy )
+    
+  
+        self.filesel.show()
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
@@ -271,6 +289,8 @@ class prefsFinancewindow(windows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editSales'
+            # fill box_entry
+            
             print 'Seite 2'
             
         # refresh the Tree
