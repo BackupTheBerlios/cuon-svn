@@ -317,7 +317,7 @@ class MyXML(logs):
 
     def getData(self, cyNode):
         rc = cyNode.firstChild
-        if rc.nodeType == Node.TEXT_NODE:
+        if rc and rc.nodeType == Node.TEXT_NODE:
             return rc.data
         else:
             return "EMPTY"   

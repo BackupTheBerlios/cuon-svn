@@ -477,10 +477,14 @@ class SingleData(gladeXml, logs):
             print 'assert error'
             dicValues = None
         
+        dicValues = self.readExtraEntries(dicValues)
         dicValues = self.verifyValues(dicValues)
         print  'after Verify' , dicValues
         return dicValues
  
+    def readExtraEntries(self, dicValues):
+        return dicValues
+        
     def verifyValues(self, dicValues):
         try:
             assert dicValues != None

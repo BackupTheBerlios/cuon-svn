@@ -1,15 +1,45 @@
 <entries_for_table>
   <table>
-    <table_name>tax_vat</table_name>
+    <table_name>account_info</table_name>
     <entry>
-      <name>name</name>
+      <name>eAcctAccount</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>tax_vat</sql_field>
+      <sql_field>account_number</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+    <entry>
+      <name>eAcctType</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>type</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eAcctDesignation</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>    
+       <entry>
+      <name>eAcctEG</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>eg</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
   </table>
 </entries_for_table>    

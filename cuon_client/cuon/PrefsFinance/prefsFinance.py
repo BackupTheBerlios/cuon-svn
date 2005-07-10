@@ -19,11 +19,13 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
+import cuon.XMLRPC.xmlrpc
 
 from cuon.Databases.SingleData import SingleData
 import SinglePrefsFinanceVat
 import SinglePrefsFinanceTop
 import SinglePrefsFinanceAcctInfo
+import cuon.Finances.SingleAccountInfo
 
 import logging
 from cuon.Windows.windows  import windows
@@ -35,6 +37,7 @@ class prefsFinancewindow(windows):
     def __init__(self, allTables):
 
         windows.__init__(self)
+        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
 
         self.loadGlade('prefs_finance.xml')
         self.win1 = self.getWidget('PreferencesFinancesMainwindow')
@@ -45,6 +48,8 @@ class prefsFinancewindow(windows):
         self.singlePrefsFinanceVat = SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
         self.singlePrefsFinanceTop = SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.singlePrefsFinanceAcctInfo = SinglePrefsFinanceAcctInfo.SinglePrefsFinanceAcctInfo(allTables)
+        # finances
+        #self.sai = cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         
         # self.singlePrefsFinance.loadTable()
               
@@ -221,6 +226,8 @@ class prefsFinancewindow(windows):
 
     def refreshTree(self):
         self.singlePrefsFinanceVat.disconnectTree()
+        self.singlePrefsFinanceTop.disconnectTree()
+        self.singlePrefsFinanceAcctInfo.disconnectTree()
         
         if self.tabOption == self.tabVat:
             
@@ -250,11 +257,40 @@ class prefsFinancewindow(windows):
             print "%s" % sFile
             doc = self.readDocument(sFile)
             if doc:
-                print doc.toxml()
-                
-     
- 
-
+                #print doc.toxml()
+                rn = self.getRootNode(doc)
+                if rn:
+                    #print rn[0].toxml()
+                    acctNodes = self.getNodes(rn[0],'account')
+                    if acctNodes:
+                        
+                        for an in acctNodes:
+                            #print '-----------------------------'
+                            #print an.toxml()
+                            dicAcct = {}
+                            dicAcct['account_number'] = [self.getData(self.getNodes(an,'account_number')[0]),'string']
+                            dicAcct['type'] = [self.getData(self.getNodes(an,'type')[0]),'string']
+                            dicAcct['eg'] = [self.getData(self.getNodes(an,'eg')[0]),'string']
+                            dicAcct['designation'] = [self.getData(self.getNodes(an,'designation')[0]),'string']
+                            print `dicAcct`
+                            if dicAcct:
+                                if dicAcct['account_number'][0] == 'EMPTY':
+                                    dicAcct = {}
+                                elif dicAcct['type'][0] == 'EMPTY': 
+                                    dicAcct['type'] = [' ', 'string']
+                                elif dicAcct['eg'][0] == 'EMPTY': 
+                                    dicAcct['eg'] = [' ', 'string']
+                                elif dicAcct['designation'][0] == 'EMPTY': 
+                                    dicAcct['type'] = {}
+                                    
+                              
+                            #dicAcct = {'eg': ' ', 'type': [u'V', 'string'], 'account_number': [u'1', 'string'], 'designation': [u'Aufwendungen fuer die Ingangsetzung und Erweiterung des Geschaeftsbetriebes', 'string']}
+                            print 'After: ', `dicAcct`         
+                            if dicAcct:
+                                self.rpc.callRP('src.Finances.py_updateAccountInfo',dicAcct, self.dicUser)
+                                #print self.rpc.callRP('src.sql.py_test', self.dicUser)
+                                
+                                
     def importAcct(self):
        
         

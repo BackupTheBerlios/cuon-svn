@@ -1,10 +1,131 @@
 <?xml version="1.0" standalone="yes"?>
 <account_info>
-	<account>
-		<account_number>27</account_number>
-		<type>V</type>
-		<eg></eg>
-		<designation>EDV-Software</designation>
-	</account>
+     <account>
+        <account_number>1</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebes</designation>
+    </account>
+    <account>
+        <account_number>10</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Konzessionen, gewerblíche Schutzrechte und ähnliche Rechte und Werte</designation>
+    </account>
+    <account>
+        <account_number>27</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>EDV-Sortware</designation>
+    </account>
+    <account>
+        <account_number>35</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Geschärts- oder Firmenwert</designation>
+    </account>
+    <account>
+        <account_number>39</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Anzahlungen auf immaterielle Vermögensgegenstände</designation>
+    </account>
+    <account>
+        <account_number>50</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Grundstücke,grundstücksgleiche Rechte und Bauten eínschl. Bauten auf fremden Grundstücken</designation>
+    </account>
+    <account>
+        <account_number>60</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Grundstücke und grundstücksgleiche Rechte ohne Bauten</designation>
+    </account>
+    <account>
+        <account_number>65</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Unbebaute Grundstücke</designation>
+    </account>
+    <account>
+        <account_number>79</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Anzahlungen auf Grundstücke und grundstücksgleiche Rechte ohne Bauten</designation>
+    </account>
+    <account>
+        <account_number>80</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Bauten auf eigenen Grundstücken und grundstücksgleichen Rechten</designation>
+    </account>
+    <account>
+        <account_number>90</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Geschärtsbauten</designation>
+    </account>
+    <account>
+        <account_number>100</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Fabrikbauten</designation>
+    </account>
+    <account>
+        <account_number>111</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Außenanlagen</designation>
+    </account>
+    <account>
+        <account_number>112</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Hor- und Wegberestigungen</designation>
+    </account>
+    <account>
+        <account_number>113</account_number>
+        <type>V</type>
+        <eg></eg>
+        <designation>Einrichtungen für Geschärts- und Fabrikbauten</designation>
+    </account>
+    <account>
+        <account_number>l40</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Wohnbauten</designation>
+    </account>
+    <account>
+        <account_number>160</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Bauten auf fremden Grundstücken</designation>
+    </account>
+    <account>
+        <account_number>165</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Geschärtsbauten</designation>
+    </account>
+    <account>
+        <account_number>170</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Fabrikbauten</designation>
+    </account>
+    <account>
+        <account_number>176</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Außenanlagen</designation>
+    </account>
+    <account>
+        <account_number>177</account_number>
+        <type></type>
+        <eg></eg>
+        <designation>Hof- und Wegbefestigungen</designation>
+    </account>
+  
 </account_info>
 		

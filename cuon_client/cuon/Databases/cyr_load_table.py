@@ -169,35 +169,35 @@ class cyr_load_table(MyXML, dumps):
         self.out(dictTable)
         self.out('****************************************************************************UU')
         table = cPickle.loads(dictTable)
-        print '******************************************************************PPPP'
+        #print '******************************************************************PPPP'
         self.saveObject('table_' + sNameOfTable.encode('ascii'), table)
         print 'table of Columns --> ' + str (table.nameOfColumns) 
         for i in table.nameOfColumns:
-            print i
+            #print i
             sColumn = self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfTable + '_' + i)
             coColumn = cPickle.loads(sColumn)
             table.addColumn(coColumn)
             self.saveObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii'), coColumn) 
-        print table.nameOfColumns
-        print table.getCountOfColumns()
+        #print table.nameOfColumns
+        #print table.getCountOfColumns()
         self.closeDB()
         return table
 
 
     def loadLocalTable(self, sNameOfTable):
-        print '--------------------------'
-        print 'table = ' + `sNameOfTable`
-        print '--------------------------'
+        #print '--------------------------'
+        #print 'table = ' + `sNameOfTable`
+        #print '--------------------------'
         self.openDB()
         table = self.loadObject('table_' + sNameOfTable.encode('ascii'))
         if table:
-            print 'table of Columns --> ' + str (table.nameOfColumns) 
+            #print 'table of Columns --> ' + str (table.nameOfColumns) 
             for i in table.nameOfColumns:
-                print i
+                #print i
                 coColumn = self.loadObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii')) 
                 table.addColumn(coColumn)
-                print table.nameOfColumns
-                print table.getCountOfColumns()
+                #print table.nameOfColumns
+                #print table.getCountOfColumns()
         self.closeDB()
         return table
         

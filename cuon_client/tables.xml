@@ -4016,6 +4016,61 @@
 
       <comment> designation </comment>
     </field>
+       
+       <field>
+      <name>short_key</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment>short key for find the same sentence </comment>
+      
+    </field>
+          <field>
+      <name>automatic_calc</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment>short key for find the same sentence </comment>
+      
+    </field>
+    <field>
+      <name>accounting_date</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment> date of accounting </comment>
+    </field>
+    
    </table>
    
    
