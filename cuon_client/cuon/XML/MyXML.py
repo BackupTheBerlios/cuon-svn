@@ -13,10 +13,10 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 from xml.dom import minidom
-from xml.dom.ext.reader import Sax2
-from xml.dom import ext
+#from xml.dom.ext.reader import Sax2
+#from xml.dom import ext
 from xml.dom import Node
-from xml.dom.ext.reader import PyExpat
+#from xml.dom.ext.reader import PyExpat
 from cuon.Logging.logs import logs
 import string
 # from amara import *

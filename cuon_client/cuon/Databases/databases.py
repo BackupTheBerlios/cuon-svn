@@ -69,7 +69,8 @@ class databaseswindow(windows):
         #self.oUser.setUserPassword('test')
         
         self.dicUser = self.oUser.getDicUser()
-        
+        # set to 0 for disable 'where client =  '
+        self.dicUser['client'] = 0
         
         # self.singleAddress.loadTable()
   

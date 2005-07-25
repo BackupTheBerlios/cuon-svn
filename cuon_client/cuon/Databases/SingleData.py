@@ -24,7 +24,7 @@ import gtk.glade
 import types
 import string
 from gtk import TRUE, FALSE
-from mx import DateTime
+import datetime as DateTime
 from cuon.Logging.logs import logs
 from cuon.Databases.cyr_table import cyr_table
 from cuon.Databases.cyr_load_table import cyr_load_table

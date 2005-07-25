@@ -41,6 +41,10 @@ dest_addresses = $(dest_cuon)/Addresses
 src_articles = ./cuon/Articles/*.py
 dest_articles = $(dest_cuon)/Articles
 
+
+src_clients = ./cuon/Clients/*.py
+dest_clients = $(dest_cuon)/Clients
+
 src_order = ./cuon/Order/*.py
 dest_order = $(dest_cuon)/Order
 
@@ -134,6 +138,7 @@ all :
 	if [ ! -d $(dest_login) ] ; then mkdir $(dest_login) ; fi ; cp $(src_login) $(dest_login) 
 	if [ ! -d $(dest_addresses) ] ; then mkdir $(dest_addresses) ; fi ; cp $(src_addresses) $(dest_addresses) 
 	if [ ! -d $(dest_articles) ] ; then mkdir $(dest_articles) ; fi ; cp $(src_articles) $(dest_articles) 
+	if [ ! -d $(dest_clients) ] ; then mkdir $(dest_clients) ; fi ; cp $(src_clients) $(dest_clients) 
 	if [ ! -d $(dest_order) ] ; then mkdir $(dest_order) ; fi ; cp $(src_order) $(dest_order) 
 	if [ ! -d $(dest_databases) ] ; then mkdir $(dest_databases) ; fi ; cp $(src_databases) $(dest_databases) 
 	if [ ! -d $(dest_xml) ] ; then mkdir $(dest_xml) ; fi ; cp $(src_xml) $(dest_xml) 

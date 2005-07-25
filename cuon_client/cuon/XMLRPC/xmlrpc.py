@@ -93,7 +93,7 @@ class myXmlRpc(dumps, logs):
         if len(c) > 0:
             s = s[0:len(s) -2]
         s = s + ')'
-        print s
+        #print s
         startRP = True
         rp_tries = 0
         while startRP:

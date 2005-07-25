@@ -60,6 +60,8 @@ class User:
         self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
         self.prefPath = {}
 
+        self.client = 0
+        
         self.prefPath['tmp'] =  os.path.normpath(os.environ['CUON_HOME']) + '/'  
 
         self.prefPath['StandardInvoice1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Invoice' )
@@ -140,6 +142,8 @@ class User:
         self.dicUser['userType'] = self.userType
         self.dicUser['prefColor'] = self.prefColor
         self.dicUser['prefDMS'] = self.prefDMS
+        
+        self.dicUser['client'] = self.client
         
 		
     def getDicUser(self):

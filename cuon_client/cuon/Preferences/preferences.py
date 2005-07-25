@@ -25,7 +25,7 @@ import logging
 from cuon.Windows.windows  import windows
 import cuon.Login.User
 import SinglePreferences
-import sane
+import _sane as sane
 
 
 class preferenceswindow(windows):

@@ -40,7 +40,7 @@ import cPickle
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 import threading
-import mx.DateTime
+import datetime as DateTime
 
 
 class addresswindow(chooseWindows):

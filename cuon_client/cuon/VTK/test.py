@@ -1,9 +1,9 @@
 # generate the data.
 from Numeric import *
-import mayavi
+#import mayavi
 import time
-import pyvtk
-import vtk
+#import pyvtk
+#import vtk
 import os
 
 class test:

@@ -212,6 +212,25 @@
 
       <comment />
     </field>
+    
+    <field>
+      <name>client_number</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>25</size>
+
+      <default />
+
+      <comment />
+    </field>
+    
     </table>
     
 
@@ -3545,30 +3564,9 @@
 
       <comment />
 
-      <entries_for_table>
-        <table>
-          <table_name>preferences</table_name>
+ </field>
 
-          <entry>
-            <name>cbPrintSystem</name>
-
-            <type>textline</type>
-
-            <size>20</size>
-
-            <verify_type>string</verify_type>
-
-            <create_sql>1</create_sql>
-
-            <sql_field>printing_system</sql_field>
-
-            <bg_color>0</bg_color>
-
-            <fg_color>0</fg_color>
-          </entry>
-        </table>
-      </entries_for_table>
-    </field>
+ 
   </table>
 
   <!--terms of payment-->
