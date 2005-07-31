@@ -64,6 +64,8 @@ class SingleData(gladeXml, logs):
         self.sCoding = 'utf-8'
         self.sDateFormat = "%d.%m.%Y"
         self.dicUser = self.oUser.getDicUser()
+        self.sqlDicUser = self.oUser.getSqlDicUser()
+        
         self.path = None
         self.statusfields = []
         self.sStatus = ''
@@ -95,7 +97,7 @@ class SingleData(gladeXml, logs):
 
 
             #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
-            liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.dicUser, dicColumns )
+            liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.sqlDicUser, dicColumns )
             # print liRecords
             firstRecord = []
             if liRecords:
@@ -164,7 +166,7 @@ class SingleData(gladeXml, logs):
                 endFile = len(en)
                 #print endFile
                 while j < endFile:
-                    ok = self.rpc.callRP('src.sql.py_createBigRow',lb, en[j:k] , j,  self.dicUser)
+                    ok = self.rpc.callRP('src.sql.py_createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
                     #print ok
                     j = k
                     k = k + 2048*30
@@ -172,18 +174,18 @@ class SingleData(gladeXml, logs):
                     #print k
                 dicValues[lb][0] = ' '
 
-        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.dicUser, liBigEntries)
+        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
         
         self.refreshTree()
 
  
     def deleteRecord(self):
-        self.rpc.callRP('src.sql.py_deleteRecord',self.sNameOfTable, self.ID, self.dicUser )
+        self.rpc.callRP('src.sql.py_deleteRecord',self.sNameOfTable, self.ID, self.sqlDicUser )
         self.refreshTree()
          
 
     def loadCompleteTable(self):
-        return self.rpc.callRP('src.sql.py_loadCompleteTable',self.sNameOfTable, self.dicUser)
+        return self.rpc.callRP('src.sql.py_loadCompleteTable',self.sNameOfTable, self.sqlDicUser)
         
 
 
@@ -423,7 +425,7 @@ class SingleData(gladeXml, logs):
                         widget.set_active(sValue)
                             
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
-                        newDate = time.strptime(sValue, self.dicUser['DateTimeformatString'] )
+                        newDate = time.strptime(sValue, self.sqlDicUser['DateTimeformatString'] )
                         print newDate
                         widget.set_time(int(time.mktime(newDate)))
                                            
@@ -456,7 +458,7 @@ class SingleData(gladeXml, logs):
                         newTime = time.localtime(widget.get_time())
         #                print "Datum und Zeit"
         #                print newTime
-                        sValue = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+                        sValue = time.strftime(self.sqlDicUser['DateTimeformatString'], newTime)
         #                print sValue
                     else:
                         sValue = widget.get_text()
@@ -476,7 +478,7 @@ class SingleData(gladeXml, logs):
         except AssertionError:
             print 'assert error'
             dicValues = None
-        
+        dicValues['client'] = [self.sqlDicUser['client'], 'int']
         dicValues = self.readExtraEntries(dicValues)
         dicValues = self.verifyValues(dicValues)
         print  'after Verify' , dicValues
@@ -605,7 +607,7 @@ class SingleData(gladeXml, logs):
         ## self.out(dicFields)
         
         if dicFields:        
-            dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicUser)
+            dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.sqlDicUser)
         else:
             dicLists = {}
             

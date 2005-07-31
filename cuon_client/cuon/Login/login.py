@@ -58,7 +58,13 @@ class loginwindow(windows):
         ##else:
         ##print "else"
             
-            
+    #set this Functions to None
+    def loadUserInfo(self):
+        pass
+        
+    def checkClient(self):
+        pass 
+             
 
     #def on_okbutton1_clicked(self, event):
     def okButtonPressed(self):

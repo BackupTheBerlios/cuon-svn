@@ -71,9 +71,15 @@ class databaseswindow(windows):
         self.dicUser = self.oUser.getDicUser()
         # set to 0 for disable 'where client =  '
         self.dicUser['client'] = 0
+     
+     
+     
+    def checkClient(self):
+        pass
+           
         
-        # self.singleAddress.loadTable()
   
+    
     def on_close1_activate(self, event):
         win1 = self.xml.get_widget('DatabasesMainwindow')
         win1.hide()
@@ -91,6 +97,19 @@ class databaseswindow(windows):
             tableList = self.startCheck(key,lTable, tableList)
 
             lSequences = clt.getListOfSequenceNames(key)
+            print 'Sequences'
+            print `lSequences`
+            
+            liClients = self.rpc.callRP('src.Databases.py_getListOfClients', self.dicUser)
+            print `liClients`
+            for cli in liClients:
+                for s in range(len(lSequences)):
+                    seq = lSequences[s]
+                    print 'seq 1 ' + seq
+                    seq = seq + '_client_' + `cli`
+                    lSequences[s] = seq
+                    print 'seq 2 ' + seq
+            print `lSequences`        
             self.startCheckSequences(key,lSequences)
 
         print 'allTables = '
@@ -179,13 +198,16 @@ class databaseswindow(windows):
         clt.td = self.td
  
         for i in lSequences:
-            print i
+            print 'Check this Sequence = ' , `i`
             ok =  self.rpc.callRP('src.Databases.py_checkExistSequence',i, self.dicUser)
             if not ok:
                 print 'create Sequence'
-                dicSeq = clt.getSequenceDefinition(key, i)
+                iSeq = i.upper().find('_CLIENT_')
+                if iSeq > 0:
+                    seqname =i[0:iSeq]
+                dicSeq = clt.getSequenceDefinition(key, seqname)
                 print dicSeq
-                sSql = "create sequence " + dicSeq['name']
+                sSql = "create sequence " + i
                 if dicSeq['increment']:
                     sSql = sSql + ' INCREMENT ' + dicSeq['increment']
                 if dicSeq['minvalue']:
@@ -202,7 +224,7 @@ class databaseswindow(windows):
 
                     
                 self.out( sSql)
-   
+                print 'Sql Sequence = ', sSql
                 self.rpc.callRP('src.sql.py_executeNormalQuery', sSql, self.dicUser)
         
 

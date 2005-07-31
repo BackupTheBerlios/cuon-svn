@@ -111,15 +111,15 @@ class articleswindow(chooseWindows):
 
         
         # enabledMenues for Article
-        self.addEnabledMenuItems('editArticle','new1')
-        self.addEnabledMenuItems('editArticle','clear1')
-        self.addEnabledMenuItems('editArticle','print1')
-        self.addEnabledMenuItems('editArticle','edit1')
+        self.addEnabledMenuItems('editArticle','new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editArticle','clear1', self.dicUserKeys['articles_delete'])
+        self.addEnabledMenuItems('editArticle','print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editArticle','edit1',self.dicUserKeys['articles_edit'])
 
         # enabledMenues for ArticlePurchase
-        self.addEnabledMenuItems('editPurchase','PurchaseNew1')
+        self.addEnabledMenuItems('editPurchase','PurchaseNew1', self.dicUserKeys['articles_purchase_new'])
         self.addEnabledMenuItems('editPurchase','PurchaseClear1')
-        self.addEnabledMenuItems('editPurchase','PurchaseEdit1')
+        self.addEnabledMenuItems('editPurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
     
        # enabledMenues for ArticlePurchase
         self.addEnabledMenuItems('editSales','SalesNew1')
@@ -155,7 +155,8 @@ class articleswindow(chooseWindows):
             li = gtk.ListItem(tax_vat[i])
             cb.list.append_items([li])
             li.show()
-            
+    
+        self.win1.add_accel_group(self.accel_group)
     #Menu File
               
     def on_quit1_activate(self, event):

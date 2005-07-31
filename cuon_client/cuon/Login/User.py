@@ -36,6 +36,7 @@ class User:
 #        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
 
         self.userName = 'EMPTY'
+        self.dicTest = {}
         
         self.sessionID = 0
         #self.openDB()
@@ -110,7 +111,11 @@ class User:
  
 
         
+        
         self.dicUser = {}
+        self.sqlDicUser = {}
+        
+        self.dicUserKeys = {}
         
         
         
@@ -118,7 +123,35 @@ class User:
         self.pathAddressPhoneListing1 = os.path.abspath('.')
         print  self.pathAddressPhoneListing1
         
+        # setting keys for eachWindow
+        self.setDicUserKeys('address_edit','e')
+        self.setDicUserKeys('address_delete','d')
+        self.setDicUserKeys('address_new','n')
+        self.setDicUserKeys('address_print','p')
+       
+        self.setDicUserKeys('address_partner_edit','e')
+        self.setDicUserKeys('address_partner_delete','d')
+        self.setDicUserKeys('address_partner_new','n')
+        self.setDicUserKeys('address_partner_print','p')
+    
+        #address
+        
+        # articles
+        
+        self.setDicUserKeys('articles_edit','e')
+        self.setDicUserKeys('articles_delete','d')
+        self.setDicUserKeys('articles_new','n')
+        self.setDicUserKeys('articles_print','p')
 
+        self.setDicUserKeys('articles_purchase_edit','e')
+        self.setDicUserKeys('articles_purchase_delete','d')
+        self.setDicUserKeys('articles_purchase_new','n')
+        self.setDicUserKeys('articles_purchase_print','p')
+
+        
+        self.refreshDicUser()
+
+        
         
     def refreshDicUser(self):
         '''
@@ -145,7 +178,25 @@ class User:
         
         self.dicUser['client'] = self.client
         
-		
+        
+        self.refreshSqlDicUser()
+        
+    def refreshSqlDicUser(self):
+        self.sqlDicUser['Name'] = self.userName
+        self.sqlDicUser['SessionID'] = self.getSessionID()
+        self.sqlDicUser['userType'] = self.userType
+        self.sqlDicUser['client'] = self.client
+        self.sqlDicUser['Locales'] = self.userLocales
+        self.sqlDicUser['Database'] = self.Database
+        self.sqlDicUser['Encoding'] = self.userEncoding
+        self.sqlDicUser['Encode'] = self.Encode
+        self.sqlDicUser['DateTimeformatString'] = self.userDateTimeFormatString
+        self.sqlDicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
+        #self.sqlDicUser['serverAddress'] = self.serverAddress
+        self.sqlDicUser['SQLDateFormat'] = self.userSQLDateFormat
+        self.sqlDicUser['SQLTimeFormat'] = self.userSQLTimeFormat
+        self.sqlDicUser['SQLDateTimeFormat'] = self.userSQLDateTimeFormat
+        
     def getDicUser(self):
         '''
         @return: Dictionary with user-infos
@@ -154,8 +205,18 @@ class User:
         return self.dicUser
 
 
+    def getSqlDicUser(self):
+        return self.sqlDicUser
+        
 
- 
+    def getDicUserKeys(self):
+        
+        return self.dicUserKeys
+        
+    def setDicUserKeys(self, dKey, sKey):
+        self.dicUserKeys[dKey] = sKey
+
+        
         
     def setUserName(self, s):
         """@param s: Name of the User """

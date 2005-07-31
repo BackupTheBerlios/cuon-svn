@@ -126,6 +126,11 @@
       <Entry-File>cashAccount.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
     </Entries>
+     <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>cashAccount2.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_cashAccountBook2.xml</Entry-FileValue>
+    </Entries>
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>

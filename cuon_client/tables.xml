@@ -3974,7 +3974,7 @@
 
       <notnull>1</notnull>
 
-      <size>10</size>
+      <size>0</size>
 
       <default />
 
@@ -4036,7 +4036,7 @@
           <field>
       <name>automatic_calc</name>
 
-      <type>varchar</type>
+      <type>bool</type>
 
       <pkey>0</pkey>
 
@@ -4044,7 +4044,7 @@
 
       <notnull>0</notnull>
 
-      <size>10</size>
+      <size>1</size>
 
       <default />
 
@@ -4208,6 +4208,21 @@
     <sequence_increment>1</sequence_increment>
 
     <sequence_start>1</sequence_start>
+
+    <sequence_minvalue>1</sequence_minvalue>
+
+    <sequence_maxvalue>500000</sequence_maxvalue>
+
+    <sequence_cycle>Yes</sequence_cycle>
+
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
+  <database_sequence>
+  <nameOfSequence>numerical_cash_account_book_doc_number1</nameOfSequence>
+
+    <sequence_increment>1</sequence_increment>
+
+    <sequence_start>1000</sequence_start>
 
     <sequence_minvalue>1</sequence_minvalue>
 

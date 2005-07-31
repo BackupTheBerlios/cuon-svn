@@ -5,14 +5,29 @@ import time
 import random	
 
 
-sys.path.append('/usr/lib/zope/lib/python')
-
+CUON_FS = None
+#sys.path.append('/usr/lib/zope/lib/python')
+f = open('/etc/cuon/cuon_zope.ini')
+if f:
+    s1 = f.readline()
+    while s1:
+        liIni = s1.split('=')
+        if liIni[0].strip() == 'ZOPE_PYTHON':
+            sys.path.append(liIni[1].strip())
+        if liIni[0].strip() == 'CUON_FS':
+            CUON_FS = liIni[1].strip()
+            
+        s1 = f.readline()
+        
+    f.close()
+    
 from ZODB import FileStorage, DB
 
-ZopePath = '/var/lib/zope/instance/default/var/Cuon.fs'
+#CUON_FS = '/var/lib/zope/instance/default/var/Cuon.fs'
+#CUON_FS = os.environ['CUON_FS']
  
 def getInfoOfTable(sNameOfTable):
-    storage = FileStorage.FileStorage(ZopePath)
+    storage = FileStorage.FileStorage(CUON_FS)
     db = DB(storage)
     connection = db.open()
     t2 = None
@@ -31,9 +46,13 @@ def getInfoOfTable(sNameOfTable):
 def saveInfoOfTable(self, sNameOfTable, table ):
 #    t1 = cyr_table.cyr_table()
     t1 = table
+    writeLog(`t1`)
+    writeLog(`CUON_FS`)
+    storage = FileStorage.FileStorage(CUON_FS)
+    writeLog(`storage`)
     
-    storage = FileStorage.FileStorage(ZopePath)
     db = DB(storage)
+    writeLog(`db`)
     connection = db.open()
     try:
         root = connection.root()
@@ -46,13 +65,13 @@ def saveInfoOfTable(self, sNameOfTable, table ):
 
 
 def packing(self):
-    storage = FileStorage.FileStorage(ZopePath)
+    storage = FileStorage.FileStorage(CUON_FS)
     db = DB(storage)
     db.pack()
     
 
 def getInfoOfEntry(sNameOfEntry):
-    storage = FileStorage.FileStorage(ZopePath)
+    storage = FileStorage.FileStorage(CUON_FS)
     db = DB(storage)
     connection = db.open()
     t2 = None
@@ -72,7 +91,7 @@ def saveInfoOfEntry(self, sNameOfEntry, table ):
 #    t1 = cyr_table.cyr_table()
     t1 = table
     
-    storage = FileStorage.FileStorage(ZopePath)
+    storage = FileStorage.FileStorage(CUON_FS)
     db = DB(storage)
     connection = db.open()
     try:

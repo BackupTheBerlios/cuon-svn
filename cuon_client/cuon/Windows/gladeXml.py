@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -39,8 +39,15 @@ class gladeXml(dumps):
         self.mainwindowTitle = "C.U.O.N."
         self.xmlAutoconnect = FALSE
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
+        self.accel_group = gtk.AccelGroup()
+        self.dicAccelKeys = {}
+        self.dicAccelKeys['edit'] = 'e'
+        self.dicAccelKeys['save'] = 's'
+        self.dicAccelKeys['new'] = 'n'
+        self.dicAccelKeys['print'] = 'p'
+        self.dicAccelKeys['edit'] = 'e'
 
-
+        
     def setXml(self, xml):
         self.xml = xml
         
@@ -119,14 +126,19 @@ class gladeXml(dumps):
                 i.set_sensitive(FALSE)
 
     
-    def addEnabledMenuItems(self, sName, sMenuItem):
+    def addEnabledMenuItems(self, sName, sMenuItem, cKey = None):
 
         if self.dictEnabledMenuItems.has_key(sName):
             liMenuItems = self.dictEnabledMenuItems[sName]
         else:
             liMenuItems = []
-
-        liMenuItems.append(self.getWidget(sMenuItem))
+        item = self.getWidget(sMenuItem)
+        if cKey:
+            item.add_accelerator("activate", self.accel_group,
+                    ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+                                
+                                
+        liMenuItems.append(item)
 
         self.dictEnabledMenuItems[sName] = liMenuItems
         
@@ -137,12 +149,15 @@ class gladeXml(dumps):
         
 
     def enableMenuItem(self, sName):
+    
         if  self.dictEnabledMenuItems.has_key(sName):
             liMenuItems =  self.dictEnabledMenuItems[sName]
             for i in liMenuItems:
                 if i != None:
                     print sName
                     i.set_sensitive(TRUE)
+                    print i.get_name()
+                    
                 else:
                     print 'No Menuitem'
 

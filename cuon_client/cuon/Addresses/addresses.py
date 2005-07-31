@@ -153,10 +153,10 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('misc','mi_misc1')
 
         # enabledMenues for Address
-        self.addEnabledMenuItems('editAddress','mi_new1')
-        self.addEnabledMenuItems('editAddress','mi_clear1')
-        self.addEnabledMenuItems('editAddress','mi_print1')
-        self.addEnabledMenuItems('editAddress','mi_edit1')
+        self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
+        self.addEnabledMenuItems('editAddress','mi_clear1', self.dicUserKeys['address_delete'])
+        self.addEnabledMenuItems('editAddress','mi_print1', self.dicUserKeys['address_print'])
+        self.addEnabledMenuItems('editAddress','mi_edit1', self.dicUserKeys['address_edit'])
 
 
         # enabledMenues for Misc
@@ -164,10 +164,10 @@ class addresswindow(chooseWindows):
   
 
         # enabledMenues for Partner
-        self.addEnabledMenuItems('editPartner', 'mi_PartnerNew1')
-        self.addEnabledMenuItems('editPartner','mi_PartnerDelete1')
-        self.addEnabledMenuItems('editPartner','mi_PartnerPrint1')
-        self.addEnabledMenuItems('editPartner','mi_PartnerEdit1')
+        self.addEnabledMenuItems('editPartner', 'mi_PartnerNew1', self.dicUserKeys['address_partner_new'])
+        self.addEnabledMenuItems('editPartner','mi_PartnerDelete1', self.dicUserKeys['address_partner_delete'])
+        self.addEnabledMenuItems('editPartner','mi_PartnerPrint1', self.dicUserKeys['address_partner_print'])
+        self.addEnabledMenuItems('editPartner','mi_PartnerEdit1', self.dicUserKeys['address_partner_edit'])
 
         # enabledMenues for Schedul
         self.addEnabledMenuItems('editSchedul', 'mi_SchedulNew1')

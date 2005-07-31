@@ -1,10 +1,10 @@
 #!/bin/sh
 
 EXEC=/usr/bin/python
-
+MyServer=http://localhost:8080
 case $2 in
 
-n) Server=http://server2:9673/Cuon 
+n) Server=$MyServer/Cuon 
 ;;
 ssl) Server=https://server2:9443/Cuon
 ;;
@@ -18,7 +18,7 @@ die) Server=http://dietzel-normteile.dyndns.org:9673/Cuon
 diessl) Server=https://dietzel-normteile.dyndns.org:8443/Cuon
 ;;
 
-*) Server=http://server2:9673/Cuon
+*) Server=$MyServer/Cuon
 ;;
 esac
 

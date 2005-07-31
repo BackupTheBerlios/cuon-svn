@@ -28,7 +28,7 @@ import cuon.Windows.cyr_load_entries
 from  cuon.Windows.gladeXml import gladeXml
 # from cuon.XMLRPC.xmlrpc import xmlrpc
 
-from gtk import TRUE, FALSE
+
 import os
 import os.path
 import re
@@ -42,13 +42,14 @@ class windows(MyXML, gladeXml):
         #xmlrpc.__init__(self)
         
         self.openDB()
-        self.oUser = self.loadObject('User')
-        if self.oUser:
-            print `self.oUser`
-            self.dicUser = self.oUser.getDicUser()
-        else:
-            self.dicUser = {}
+        self.oUser = None
+        self.dicUser = None
+        self.dicUserKeys = None
+        self.loadUserInfo()
         
+
+        self.checkClient()
+            
         self.td = self.loadObject('td')
         self.closeDB()
         self.testV = "Hallo"
@@ -61,13 +62,28 @@ class windows(MyXML, gladeXml):
         self.actualEntries = None
         self.win1 = None
         self.editAction = 'closeMenuItemsForEdit'
-        self.editEntries = FALSE
+        self.editEntries = False
 
         
         
     def closeWindow(self):
         self.win1.hide()
 
+    def checkClient(self):
+        if not self.dicUser['client'] > 0:
+            self.dicUser = {}
+            
+    def loadUserInfo(self):
+        self.oUser = self.loadObject('User')
+        if self.oUser:
+            print `self.oUser`
+            self.dicUser = self.oUser.getDicUser()
+            print `self.dicUser`
+        else:
+            self.dicUser = {}
+        self.dicUserKeys = self.oUser.getDicUserKeys()
+           
+    
         
      
     def setDataEntries(self,sName, dicDE):
@@ -111,10 +127,10 @@ class windows(MyXML, gladeXml):
             if entry.getDuty():
                 e1 = self.getWidget(entry.getName())
                 if e1:
-                    print 'Duty is TRUE by : ' + `entry.getName()`
+                    print 'Duty is True by : ' + `entry.getName()`
                     e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
 ##                e1.connect('key_press_event', self.closeMenuEntries)
-        self.setEntriesEditable(sName, FALSE)
+        self.setEntriesEditable(sName, False)
         
       
                 
@@ -144,8 +160,8 @@ class windows(MyXML, gladeXml):
 
 
     def closeMenuEntries(self,sendEntry = None, event = None):
-        if self.editEntries == FALSE:
-            self.editEntries = TRUE
+        if self.editEntries == False:
+            self.editEntries = True
             self.disableMenuItem(self.editAction)
             
 
@@ -158,7 +174,7 @@ class windows(MyXML, gladeXml):
         vbox = self.getWidget('vbox1')
         if vbox:
             print '###----> vbox exist'
-            vbox.pack_end(self.statusbar,expand=FALSE)
+            vbox.pack_end(self.statusbar,expand=False)
             self.sb_id = self.statusbar.get_context_id('general_info')
             self.statusbar.show()
        
@@ -171,25 +187,25 @@ class windows(MyXML, gladeXml):
 
     def setTreeVisible(self, ok):
         if ok:
-            self.getWidget('tree1').set_sensitive(TRUE)
+            self.getWidget('tree1').set_sensitive(True)
         else:
-            self.getWidget('tree1').set_sensitive(FALSE)
+            self.getWidget('tree1').set_sensitive(False)
             
             
-    def startProgressBar(self, Pulse = FALSE):
+    def startProgressBar(self, Pulse = False):
         fname = os.path.normpath(os.environ['CUON_HOME'] + '/' +  'glade_sqlprogressbar.xml')  
         self.progressbarWindowXML = gtk.glade.XML(fname)
         self.progressbarWindowXML.get_widget('SqlProgressBar').show()
         self.progressbar = self.progressbarWindowXML.get_widget('progressbar1')
         if Pulse:
             self.progressbar.pulse()
-        return TRUE
+        return True
         
     def stopProgressBar(self):
          self.progressbarWindowXML.get_widget('SqlProgressBar').hide()
          
     
-    def setProgressBar(self, fPercent, Pulse = FALSE):
+    def setProgressBar(self, fPercent, Pulse = False):
         if self.progressbar:
             if Pulse:
                 self.progressbar.pulse()
@@ -198,7 +214,7 @@ class windows(MyXML, gladeXml):
         else:
             print 'no progressbar'
             
-        return TRUE
+        return True
     
 
   ##  def setNextFocus(self,oldEntry, event, iOldTabOrder):
@@ -226,7 +242,7 @@ class windows(MyXML, gladeXml):
 ##                #entryGtk.set_text('Hallo')
 ##                entryGtk.grab_focus()
 
-##        return gtk.FALSE
+##        return False
         
 
     def getStyle(self, cType, cWidget,  numberFG, numberBG):
