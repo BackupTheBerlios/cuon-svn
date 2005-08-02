@@ -137,6 +137,8 @@ class prefsFinancewindow(windows):
         self.tabVat = 0
         self.tabTop = 1
         self.tabAcct = 2
+        self.tabAcctPlan = 3
+        
         
         print self.tabVat
         
@@ -263,11 +265,13 @@ class prefsFinancewindow(windows):
                     #print rn[0].toxml()
                     acctNodes = self.getNodes(rn[0],'account')
                     if acctNodes:
-                        
+                        plan_number = 'SK-03'
                         for an in acctNodes:
                             #print '-----------------------------'
                             #print an.toxml()
                             dicAcct = {}
+                            dictAcct['account_plan_number'] = [plan_number,'string']
+
                             dicAcct['account_number'] = [self.getData(self.getNodes(an,'account_number')[0]),'string']
                             dicAcct['type'] = [self.getData(self.getNodes(an,'type')[0]),'string']
                             dicAcct['eg'] = [self.getData(self.getNodes(an,'eg')[0]),'string']
@@ -282,7 +286,8 @@ class prefsFinancewindow(windows):
                                     dicAcct['eg'] = [' ', 'string']
                                 elif dicAcct['designation'][0] == 'EMPTY': 
                                     dicAcct['type'] = {}
-                                    
+                                elif dicAcct['account_plan_number'][0] == 'EMPTY': 
+                                    dicAcct = {}
                               
                             #dicAcct = {'eg': ' ', 'type': [u'V', 'string'], 'account_number': [u'1', 'string'], 'designation': [u'Aufwendungen fuer die Ingangsetzung und Erweiterung des Geschaeftsbetriebes', 'string']}
                             print 'After: ', `dicAcct`         

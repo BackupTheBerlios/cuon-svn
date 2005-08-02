@@ -148,8 +148,54 @@
     </field>
   </table>
 
+<!--table: account_plan-->
 
+  <table>
+    <nameOfTable>account_plan</nameOfTable>
 
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>50</size>
+
+      <default />
+
+      <comment />
+    </field>
+   <field>
+      <name>designation</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>250</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    </table>
+    
  <!--table: clients-->
 
   <table>
@@ -225,6 +271,23 @@
       <notnull>0</notnull>
 
       <size>25</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>account_plan_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
 
       <default />
 
@@ -3936,6 +3999,23 @@
       <name>eg</name>
 
       <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment />
+    </field>
+    <field>
+      <name>account_plan_number</name>
+
+      <type>int</type>
 
       <pkey>0</pkey>
 

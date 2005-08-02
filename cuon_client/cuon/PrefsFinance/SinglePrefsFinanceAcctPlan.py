@@ -21,14 +21,14 @@ import gobject
 from gtk import TRUE, FALSE
 
 
-class SinglePrefsFinanceAcctInfo(SingleData):
+class SinglePrefsFinanceAcctPlan(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "account_info"
+        self.sNameOfTable =  "account_plan"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()

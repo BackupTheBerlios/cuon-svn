@@ -1,0 +1,26 @@
+<entries_for_table>
+  <table>
+    <table_name>account_plan</table_name>
+    <entry>
+      <name>eAcctPlanNumber</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>name</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eAcctPlanDesignation</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+  </table>
+</entries_for_table>    
