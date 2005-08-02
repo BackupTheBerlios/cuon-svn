@@ -303,8 +303,10 @@ class databaseswindow(windows):
             sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
         if (string.find(co.getType(), 'numeric' )>= 0 ) :
             # find numeric, so take size to it
+            print '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
             sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
-            
+            print sSql
+            print '----------------------------------------------------------------'
         if  co.isAllowNull()  == 0 :
             self.out( co.isAllowNull())
             sSql = sSql + ' not null '

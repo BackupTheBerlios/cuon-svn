@@ -98,7 +98,6 @@ class loginwindow(windows):
             print str(self.oUser)
             if self.eUserName:
                 self.eUserName.set_text(self.oUser.getUserName())
-            self.quitLogin()
 
         else:
             print "No korrekt user and/or  password !"
@@ -111,8 +110,10 @@ class loginwindow(windows):
             else:
                     
                 self.oUser.setUserName('EMPTY')
-                self.quitLogin()
-
+                self.openDB()
+                self.saveObject('User', self.oUser)
+                self.closeDB()
+        self.quitLogin()
        
     def on_cancelbutton1_clicked(self, event):
         self.oUser.setUserName('EMPTY')

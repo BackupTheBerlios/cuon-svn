@@ -27,18 +27,20 @@ import cuon.TypeDefs
 import cuon.Windows.cyr_load_entries
 from  cuon.Windows.gladeXml import gladeXml
 # from cuon.XMLRPC.xmlrpc import xmlrpc
-
+from cuon.Misc.messages import messages
 
 import os
 import os.path
 import re
 
 
-class windows(MyXML, gladeXml):
+class windows(MyXML, gladeXml, messages):
 
     def __init__(self):
         gladeXml.__init__(self)
         MyXML.__init__(self)
+        messages.__init__(self)
+        
         #xmlrpc.__init__(self)
         
         self.openDB()

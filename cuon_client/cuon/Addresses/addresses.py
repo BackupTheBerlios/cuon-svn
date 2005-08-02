@@ -166,7 +166,7 @@ class addresswindow(chooseWindows):
         # enabledMenues for Partner
         self.addEnabledMenuItems('editPartner', 'mi_PartnerNew1', self.dicUserKeys['address_partner_new'])
         self.addEnabledMenuItems('editPartner','mi_PartnerDelete1', self.dicUserKeys['address_partner_delete'])
-        self.addEnabledMenuItems('editPartner','mi_PartnerPrint1', self.dicUserKeys['address_partner_print'])
+        #self.addEnabledMenuItems('editPartner','mi_PartnerPrint1', self.dicUserKeys['address_partner_print'])
         self.addEnabledMenuItems('editPartner','mi_PartnerEdit1', self.dicUserKeys['address_partner_edit'])
 
         # enabledMenues for Schedul

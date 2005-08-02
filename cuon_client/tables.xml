@@ -4068,25 +4068,10 @@
 
       <comment> date of accounting </comment>
     </field>
-    
-   </table>
-   
-   
-    <!--account values-->
+       <field>
+      <name>value_d1</name>
 
-  <table>
-    <nameOfTable>account_values</nameOfTable>
-
-    <specials>inherits (t_standard);</specials>
-
-    <x>152</x>
-
-    <y>115</y>
-
-    <field>
-      <name>document_number1</name>
-
-      <type>int</type>
+      <type>numeric</type>
 
       <pkey>0</pkey>
 
@@ -4094,31 +4079,14 @@
 
       <notnull>0</notnull>
 
-      <size>0</size>
+      <size>10,2</size>
 
       <default />
 
-      <comment> key to account_sentence </comment>
+      <comment> values </comment>
     </field>
-       <field>
-      <name>debit_credit</name>
-
-      <type>char</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>1</size>
-
-      <default />
-
-      <comment> debit = +, credit = - </comment>
-    </field>
-       <field>
-      <name>value</name>
+      <field>
+      <name>value_c1</name>
 
       <type>numeric</type>
 
@@ -4135,7 +4103,7 @@
       <comment> values </comment>
     </field>
     <field>
-      <name>account</name>
+      <name>account_1</name>
 
       <type>varchar</type>
 
@@ -4152,6 +4120,161 @@
       <comment> key to account_account_info </comment>
      </field>
      
+     <field>
+      <name>value_d2</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c2</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment> key to account_account_info </comment>
+     </field>
+     
+     <field>
+      <name>value_d3</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c3</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_3</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment> key to account_account_info </comment>
+     </field>
+     
+     <field>
+      <name>value_d4</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c4</name>
+
+      <type>numeric</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>10,2</size>
+
+      <default />
+
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_4</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>0</notnull>
+
+      <size>10</size>
+
+      <default />
+
+      <comment> key to account_account_info </comment>
+     </field>
      
    </table>
    

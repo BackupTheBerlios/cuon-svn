@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -18,7 +18,7 @@ class cyr_column:
     def __init__(self):
         self.Name = "EMPTY"
         self.nameOfVariable = "EMPTY"
-        self.sizeOfDatafield = 0
+        self.sizeOfDatafield = '0'
         self.Type = None
         self.defaultValue = None
         
@@ -52,8 +52,8 @@ class cyr_column:
 
 
     ##  # set the fieldsisze for the column */
-    def setSizeOfDatafield(self, iSize):
-        self.sizeOfDatafield = iSize
+    def setSizeOfDatafield(self, sSize):
+        self.sizeOfDatafield = sSize
 
 
 

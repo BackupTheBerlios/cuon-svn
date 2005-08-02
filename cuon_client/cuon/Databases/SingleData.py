@@ -13,7 +13,7 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 import sys
-import os
+import os 
 sys.path.append(os.environ['CUON_PATH'])
 
 
@@ -460,6 +460,9 @@ class SingleData(gladeXml, logs):
         #                print newTime
                         sValue = time.strftime(self.sqlDicUser['DateTimeformatString'], newTime)
         #                print sValue
+                    elif string.count(str(widget), "GtkComboBoxEntry") > 0:
+                        #sValue = `widget.get_active()`
+                        sValue = 'Test'
                     else:
                         sValue = widget.get_text()
                 except Exception, param:

@@ -130,10 +130,12 @@ class cyr_load_table(MyXML, dumps):
             table.nameOfColumns.append(column.getName())
 
             column.setType(self.getColumnSpecification(xmlCol, "type") )
-            if column.getType() == 'string':
-                column.setSizeOfDatafield(string.atoi(self.getColumnSpecification(xmlCol, "size")) )
+            sSize = string.strip(self.getColumnSpecification(xmlCol, "size"))
+            if sSize: 
+                column.setSizeOfDatafield(string.strip(self.getColumnSpecification(xmlCol, "size")) )
             else:
-                column.setSizeOfDatafield(18)
+                column.setSizeOfDatafield('18')
+
                 
             
             column.setAllowNull(string.atoi(self.getColumnSpecification(xmlCol, "notnull")) )
