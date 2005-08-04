@@ -268,6 +268,7 @@ class MyXML(logs):
         
 
     
+    
     def getNumberOfEntries(self, cyEntries):
             all = cyEntries.getElementsByTagName("entry")
             return len(all)
@@ -322,7 +323,21 @@ class MyXML(logs):
         else:
             return "EMPTY"   
 
-
+            
+    def getAttributValue(self, node, sName):
+        s = None
+        #print 'getAttributValue'
+        #print node.toxml()
+        #print '------------------------------------------------------'
+        if node.hasAttributes():
+            #print `node.attributes`
+            #print '+++++++++++++++++++++++++++++++++++++++++++++++++++'
+            s = node.getAttribute(sName)
+            #print s
+        return s
+        
+        
+        
 ##        pprint.pprint(dic)
 ##        print dic["database"]["name"]
 ##        print

@@ -115,7 +115,11 @@
       <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_acctinfo.xml</Entry-FileValue>
     </Entries>
 
-
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>prefs_finance_acctplan.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_acctplan.xml</Entry-FileValue>
+    </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>dms.xml</Entry-File>

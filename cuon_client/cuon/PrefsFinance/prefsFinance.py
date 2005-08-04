@@ -24,8 +24,8 @@ import cuon.XMLRPC.xmlrpc
 from cuon.Databases.SingleData import SingleData
 import SinglePrefsFinanceVat
 import SinglePrefsFinanceTop
-import SinglePrefsFinanceAcctInfo
 import cuon.Finances.SingleAccountInfo
+import cuon.Finances.SingleAccountPlan
 
 import logging
 from cuon.Windows.windows  import windows
@@ -47,7 +47,8 @@ class prefsFinancewindow(windows):
         self.allTables = allTables
         self.singlePrefsFinanceVat = SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
         self.singlePrefsFinanceTop = SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
-        self.singlePrefsFinanceAcctInfo = SinglePrefsFinanceAcctInfo.SinglePrefsFinanceAcctInfo(allTables)
+        self.singleFinanceAccountInfo = cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
+        self.singleFinanceAccountPlan = cuon.Finances.SingleAccountPlan.SingleAccountPlan(allTables)
         # finances
         #self.sai = cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         
@@ -56,6 +57,7 @@ class prefsFinancewindow(windows):
         self.EntriesPrefsFinanceVat = 'prefs_finance_vat.xml'
         self.EntriesPrefsFinanceTop = 'prefs_finance_top.xml'
         self.EntriesPrefsFinanceAcctInfo = 'prefs_finance_acctinfo.xml'
+        self.EntriesPrefsFinanceAcctPlan = 'prefs_finance_acctplan.xml'
                 
         
         #singlePrefsFinanceVat
@@ -83,21 +85,33 @@ class prefsFinancewindow(windows):
         #self.singlePrefsFinanceTop.setListHeader(['top_name', 'designation', ])
 
    
-     #singlePrefsFinanceAcctInfo
+     #singleFinanceAccountInfo
         
         self.loadEntries(self.EntriesPrefsFinanceAcctInfo)
-        self.singlePrefsFinanceAcctInfo.setEntries(self.getDataEntries(self.EntriesPrefsFinanceAcctInfo) )
-        self.singlePrefsFinanceAcctInfo.setGladeXml(self.xml)
-        self.singlePrefsFinanceAcctInfo.setTreeFields( ['account_number', 'designation'] )
-        self.singlePrefsFinanceAcctInfo.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singlePrefsFinanceAcctInfo.setTreeOrder('account_number')
-        self.singlePrefsFinanceAcctInfo.setListHeader([_('Account-Number'), _('Designation')])
+        self.singleFinanceAccountInfo.setEntries(self.getDataEntries(self.EntriesPrefsFinanceAcctInfo) )
+        self.singleFinanceAccountInfo.setGladeXml(self.xml)
+        self.singleFinanceAccountInfo.setTreeFields( ['account_number', 'designation'] )
+        self.singleFinanceAccountInfo.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleFinanceAccountInfo.setTreeOrder('account_number')
+        self.singleFinanceAccountInfo.setListHeader([_('Account-Number'), _('Designation')])
 
-        #self.singlePrefsFinanceAcctInfo.sWhere  ='where articles_number = ' + `self.singlePrefsFinance.ID`
-        self.singlePrefsFinanceAcctInfo.setTree(self.xml.get_widget('tree1') )
+        #self.singleFinanceAccountInfo.sWhere  ='where articles_number = ' + `self.singlePrefsFinance.ID`
+        self.singleFinanceAccountInfo.setTree(self.xml.get_widget('tree1') )
   
 
+        #singleFinanceAccountPlan
         
+        self.loadEntries(self.EntriesPrefsFinanceAcctPlan)
+        self.singleFinanceAccountPlan.setEntries(self.getDataEntries(self.EntriesPrefsFinanceAcctPlan) )
+        self.singleFinanceAccountPlan.setGladeXml(self.xml)
+        self.singleFinanceAccountPlan.setTreeFields( ['name', 'designation'] )
+        self.singleFinanceAccountPlan.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleFinanceAccountPlan.setTreeOrder('name')
+        self.singleFinanceAccountPlan.setListHeader([_('Name'), _('Designation')])
+
+        #self.singleFinanceAccountPlan.sWhere  ='where articles_number = ' + `self.singlePrefsFinance.ID`
+        self.singleFinanceAccountPlan.setTree(self.xml.get_widget('tree1') )
+       
 
         # Menu-items
         self.initMenuItems()
@@ -127,16 +141,20 @@ class prefsFinancewindow(windows):
         self.addEnabledMenuItems('editTop','TopEdit1')
     
        # enabledMenues for Account Info
-        self.addEnabledMenuItems('editAcct','SalesNew1')
-        self.addEnabledMenuItems('editAcct','SalesClear1')
-        self.addEnabledMenuItems('editAcct','SalesEdit1')
+        self.addEnabledMenuItems('editAcct','AcctNew1')
+        self.addEnabledMenuItems('editAcct','AcctClear1')
+        self.addEnabledMenuItems('editAcct','AcctEdit1')
 
+       # enabledMenues for Account Plan
+        self.addEnabledMenuItems('editPlan','AcctPlanNew1')
+        self.addEnabledMenuItems('editPlan','AcctPlanClear1')
+        self.addEnabledMenuItems('editPlan','AcctPlanEdit1')
 
 
         # tabs from notebook
         self.tabVat = 0
         self.tabTop = 1
-        self.tabAcct = 2
+        self.tabAcctInfo = 2
         self.tabAcctPlan = 3
         
         
@@ -202,6 +220,55 @@ class prefsFinancewindow(windows):
         self.singlePrefsFinanceTop.deleteRecord()
 
 
+        
+        
+    #Menu Acct Info
+        
+   
+    def on_AcctInfoSave1_activate(self, event):
+        print "save Info  v2"
+        self.singleFinanceAccountInfo.save()
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, FALSE)
+
+        self.tabChanged()
+        
+    def on_AcctInfoNew1_activate(self, event):
+        print "new Info  v2"
+        self.singleFinanceAccountInfo.newRecord()
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, TRUE)
+
+    def on_AcctInfoEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, TRUE)
+
+    def on_AcctInfoClear1_activate(self, event):
+        print "delete Info  v2"
+        self.singleFinanceAccountInfo.deleteRecord()
+
+    #Menu Acct Plan
+        
+   
+    def on_AcctPlanSave1_activate(self, event):
+        print "save Plan  v2"
+        self.singleFinanceAccountPlan.save()
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, FALSE)
+
+        self.tabChanged()
+        
+    def on_AcctPlanNew1_activate(self, event):
+        print "new Plan  v2"
+        self.singleFinanceAccountPlan.newRecord()
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, TRUE)
+
+    def on_AcctPlanEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, TRUE)
+
+    def on_AcctPlanClear1_activate(self, event):
+        print "delete Plan  v2"
+        self.singleFinanceAccountPlan.deleteRecord()
+
+        
+        
+    # import account-infos from xml-file
 
     def on_bImportAcct_clicked(self, event):
         self.importAcct()
@@ -229,7 +296,8 @@ class prefsFinancewindow(windows):
     def refreshTree(self):
         self.singlePrefsFinanceVat.disconnectTree()
         self.singlePrefsFinanceTop.disconnectTree()
-        self.singlePrefsFinanceAcctInfo.disconnectTree()
+        self.singleFinanceAccountInfo.disconnectTree()
+        self.singleFinanceAccountPlan.disconnectTree()
         
         if self.tabOption == self.tabVat:
             
@@ -243,9 +311,13 @@ class prefsFinancewindow(windows):
             self.singlePrefsFinanceTop.refreshTree()
 
 
-        elif self.tabOption == self.tabAcct:
-            self.singlePrefsFinanceAcctInfo.connectTree()
-            self.singlePrefsFinanceAcctInfo.refreshTree()
+        elif self.tabOption == self.tabAcctInfo:
+            self.singleFinanceAccountInfo.connectTree()
+            self.singleFinanceAccountInfo.refreshTree()
+ 
+        elif self.tabOption == self.tabAcctPlan:
+            self.singleFinanceAccountPlan.connectTree()
+            self.singleFinanceAccountPlan.refreshTree()
  
  
     def filesel_destroy(self,w):
@@ -265,12 +337,12 @@ class prefsFinancewindow(windows):
                     #print rn[0].toxml()
                     acctNodes = self.getNodes(rn[0],'account')
                     if acctNodes:
-                        plan_number = 'SK-03'
+                        plan_number = self.getAttributValue(rn[0],'plan_number')
                         for an in acctNodes:
                             #print '-----------------------------'
                             #print an.toxml()
                             dicAcct = {}
-                            dictAcct['account_plan_number'] = [plan_number,'string']
+                            dicAcct['account_plan_number'] = [plan_number,'string']
 
                             dicAcct['account_number'] = [self.getData(self.getNodes(an,'account_number')[0]),'string']
                             dicAcct['type'] = [self.getData(self.getNodes(an,'type')[0]),'string']
@@ -326,13 +398,20 @@ class prefsFinancewindow(windows):
             self.editAction = 'editTop'
             print 'Seite 1'
             
-        elif self.tabOption == self.tabAcct:
+        elif self.tabOption == self.tabAcctInfo:
             self.disableMenuItem('tabs')
-            self.enableMenuItem('sales')
-            self.editAction = 'editSales'
+            self.enableMenuItem('info')
+            self.editAction = 'editInfo'
             # fill box_entry
             
             print 'Seite 2'
+        elif self.tabOption == self.tabAcctPlan:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('plan')
+            self.editAction = 'editPlan'
+            # fill box_entry
+            
+            print 'Seite 3'
             
         # refresh the Tree
         self.refreshTree()

@@ -52,6 +52,9 @@ class SingleData(gladeXml, logs):
         self.td = self.loadObject('td')
         self.oUser = self.loadObject('User')
         self.closeDB()
+        print '##############################################################'
+        print `self.oUser.getSqlDicUser()`
+        print '**************************************************************'
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.listHeader = {}
         self.dicEntries =  cuon.Windows.setOfEntries.setOfEntries()
@@ -481,10 +484,11 @@ class SingleData(gladeXml, logs):
         except AssertionError:
             print 'assert error'
             dicValues = None
+        
         dicValues['client'] = [self.sqlDicUser['client'], 'int']
         dicValues = self.readExtraEntries(dicValues)
         dicValues = self.verifyValues(dicValues)
-        print  'after Verify' , dicValues
+        print  'after Verify' , `dicValues`
         return dicValues
  
     def readExtraEntries(self, dicValues):
