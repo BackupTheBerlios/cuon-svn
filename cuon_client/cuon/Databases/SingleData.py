@@ -382,6 +382,7 @@ class SingleData(gladeXml, logs):
                 else:
                     # Wenn nichts drin steht (eigenart von PostgreSQL)
                     # self.out( type(sValue))
+                    print sValue, type(sValue)
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
                         sValue = `sValue`
                     if entry.getVerifyType() == 'string' and isinstance(sValue, types.StringType):
@@ -389,8 +390,16 @@ class SingleData(gladeXml, logs):
                         pass
                     elif entry.getVerifyType() == 'int' and isinstance(sValue, types.IntType):
                         sValue = `sValue`
+                    
                     elif entry.getVerifyType() == 'float' and isinstance(sValue, types.FloatType):
-                        sValue = `sValue`
+                        iR = entry.getRound()
+                        sValue = "%0.*f" % (iR, sValue)
+                        print sValue
+
+                    elif entry.getVerifyType() == 'numeric' and isinstance(sValue, types.FloatType):
+                        sValue = `round(sValue,entry.getRound())`
+                       
+                    
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                     #    dt = DateTime.DateTimeFrom(sValue)
                     #dt = DateTime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")

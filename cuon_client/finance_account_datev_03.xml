@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <account_info plan_number="SK-03">
   <account>
     <account_number>1</account_number>
@@ -10,7 +10,7 @@
     <account_number>10</account_number>
     <type>V</type>
     <eg/>
-    <designation>Konzessionen, gewerblíche Schutzrechte und ähnliche Rechte und Werte</designation>
+    <designation>Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte</designation>
   </account>
   <account>
     <account_number>27</account_number>
@@ -22,7 +22,7 @@
     <account_number>35</account_number>
     <type/>
     <eg/>
-    <designation>Geschärts- oder Firmenwert</designation>
+    <designation>Geschäfts- oder Firmenwert</designation>
   </account>
   <account>
     <account_number>39</account_number>
@@ -34,7 +34,7 @@
     <account_number>50</account_number>
     <type/>
     <eg/>
-    <designation>Grundstücke,grundstücksgleiche Rechte und Bauten eínschl. Bauten auf fremden Grundstücken</designation>
+    <designation>Grundstücke,grundstücksgleiche Rechte und Bauten einschl. Bauten auf fremden Grundstücken</designation>
   </account>
   <account>
     <account_number>60</account_number>
@@ -125,5 +125,1949 @@
     <type/>
     <eg/>
     <designation>Hof- und Wegbefestigungen</designation>
+  </account>
+  <account>
+    <account_number>l90</account_number>
+    <type/>
+    <eg/>
+    <designation>Wohnbauten</designation>
+  </account>
+  <account>
+    <account_number>200</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Technische Anlagen und Maschinen 2lO _   Maschinen</designation>
+  </account>
+  <account>
+    <account_number>240</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Maschinelle Anlagen</designation>
+  </account>
+  <account>
+    <account_number>280</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Betriebsvorrichtungen</designation>
+  </account>
+  <account>
+    <account_number>290</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Technische Anlagen und Maschinen im Bau </designation>
+  </account>
+  <account>
+    <account_number>299</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Anzahlungen aur technische Anlagen und Maschinen</designation>
+  </account>
+  <account>
+    <account_number>300</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Andere Anlagen, Betriebs- und Geschäftsausstattung</designation>
+  </account>
+  <account>
+    <account_number>320</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Pkw</designation>
+  </account>
+  <account>
+    <account_number>350</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Lkw</designation>
+  </account>
+  <account>
+    <account_number>380</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>sontige Transportmittel</designation>
+  </account>
+  <account>
+    <account_number>400</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>. 4lO V   Geschärtsausstattung</designation>
+  </account>
+  <account>
+    <account_number>420</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>. fq3o v   Ladeneinricht</designation>
+  </account>
+  <account>
+    <account_number>440</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>-_</designation>
+  </account>
+  <account>
+    <account_number>450</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Einbauten</designation>
+  </account>
+  <account>
+    <account_number>460</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Gerust- und Schalungsmaterial</designation>
+  </account>
+  <account>
+    <account_number>480</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Geringwertige Wirtschaftsguter</designation>
+  </account>
+  <account>
+    <account_number>498</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Andere Anlagen, Betriebs- und Geschäftsausstattung im Bau</designation>
+  </account>
+  <account>
+    <account_number>499</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Zahlungen auf andere Anlagen, Betriebs- und Geschäftsausstattung </designation>
+  </account>
+  <account>
+    <account_number>510</account_number>
+    <type/>
+    <eg/>
+    <designation>Beteiligungen. 520'     Ausleihungen an Unternehmen, mit denen ein Beteiligungsver- hältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>525</account_number>
+    <type/>
+    <eg/>
+    <designation>Mertpapiere d. Anlagevermögens</designation>
+  </account>
+  <account>
+    <account_number>540</account_number>
+    <type/>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>550</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>Darlehen</designation>
+  </account>
+  <account>
+    <account_number>600</account_number>
+    <type/>
+    <eg/>
+    <designation>Anleihen, nicht konvertibel 6l5     Anleihen, konvertibel</designation>
+  </account>
+  <account>
+    <account_number>630</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten gegenüber Kreditinstituten</designation>
+  </account>
+  <account>
+    <account_number>700</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten gegenü'ber verbundenen Unternehmen 7l5     Verbindlichkeiten gegenüber Unternehmen mit denen ein Beteiligungsverhältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>730</account_number>
+    <type/>
+    <eg/>
+    <designation>' Gesellschartern</designation>
+  </account>
+  <account>
+    <account_number>510</account_number>
+    <type/>
+    <eg/>
+    <designation>Beteiligungen. 520'     Ausleihungen an Unternehmen, mit denen ein Beteiligungsver- hältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>525</account_number>
+    <type/>
+    <eg/>
+    <designation>Mertpapiere d. Anlagevermögens</designation>
+  </account>
+  <account>
+    <account_number>540</account_number>
+    <type/>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>550</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>Darlehen</designation>
+  </account>
+  <account>
+    <account_number>600</account_number>
+    <type/>
+    <eg/>
+    <designation>Anleihen, nicht konvertibel 6l5     Anleihen, konvertibel</designation>
+  </account>
+  <account>
+    <account_number>630</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindli,chkeiten gegenüber Kreditinstituten</designation>
+  </account>
+  <account>
+    <account_number>700</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten gegenü'ber verbundenen Unternehmen </designation>
+  </account>
+  <account>
+    <account_number>715</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten gegenüber Unternehmen mit denen ein Beteiligungsverhältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>730</account_number>
+    <type/>
+    <eg/>
+    <designation>' Gesellschartern</designation>
+  </account>
+  <account>
+    <account_number>800</account_number>
+    <type/>
+    <eg/>
+    <designation>Gezeichnetes Kapital _</designation>
+  </account>
+  <account>
+    <account_number>801</account_number>
+    <type/>
+    <eg/>
+    <designation>Ausstehende Einlagen aur das fgezeichnete Kapital, nicht _   eingerordert (_tivausweis)</designation>
+  </account>
+  <account>
+    <account_number>810</account_number>
+    <type/>
+    <eg/>
+    <designation>Ausstehende Einlagen aur das gezeichnete Kapital,           l   \ ' eing.erordert (_!tivausweis3 </designation>
+  </account>
+  <account>
+    <account_number>820</account_number>
+    <type/>
+    <eg/>
+    <designation>_ gezeichnete Kapital, nicht eingerordert (Passivausweis)  .</designation>
+  </account>
+  <account>
+    <account_number>830</account_number>
+    <type/>
+    <eg/>
+    <designation>Ausstehende Einlagen aur das gezeichnete Kapital, eingerordert (Passivausweis)</designation>
+  </account>
+  <account>
+    <account_number>839</account_number>
+    <type/>
+    <eg/>
+    <designation>Eingerorderte Nachschüsse ,  . (Forderungen, Gegenkojto 0845)</designation>
+  </account>
+  <account>
+    <account_number>840</account_number>
+    <type/>
+    <eg/>
+    <designation>Kapitalrücklage</designation>
+  </account>
+  <account>
+    <account_number>845</account_number>
+    <type>EingefordertesNachschuss</type>
+    <eg/>
+    <designation>EingefordertesNachschuss kapital (Gegenkonto 08393</designation>
+  </account>
+  <account>
+    <account_number>846</account_number>
+    <type/>
+    <eg/>
+    <designation>Gesetzliche Rücklage</designation>
+  </account>
+  <account>
+    <account_number>850</account_number>
+    <type/>
+    <eg/>
+    <designation>Rücklage rür eigene Anteile</designation>
+  </account>
+  <account>
+    <account_number>851</account_number>
+    <type/>
+    <eg/>
+    <designation>Satzungsmässige Rücklagen</designation>
+  </account>
+  <account>
+    <account_number>855</account_number>
+    <type/>
+    <eg/>
+    <designation>Andere Gewinnrücklagen</designation>
+  </account>
+  <account>
+    <account_number>860</account_number>
+    <type/>
+    <eg/>
+    <designation>Gewinnvortrag v,or Verwendung</designation>
+  </account>
+  <account>
+    <account_number>868</account_number>
+    <type/>
+    <eg/>
+    <designation>Verlustvortrag vor Verwendung</designation>
+  </account>
+  <account>
+    <account_number>869</account_number>
+    <type/>
+    <eg/>
+    <designation>Vorträge auf neue Rechnung (Bilanz)</designation>
+  </account>
+  <account>
+    <account_number>870</account_number>
+    <type/>
+    <eg/>
+    <designation>Festkapital</designation>
+  </account>
+  <account>
+    <account_number>880</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Variables'Kapital</designation>
+  </account>
+  <account>
+    <account_number>890</account_number>
+    <type/>
+    <eg/>
+    <designation>GesellscharterDarlehen</designation>
+  </account>
+  <account>
+    <account_number>900</account_number>
+    <type/>
+    <eg/>
+    <designation>KommanditKapital</designation>
+  </account>
+  <account>
+    <account_number>910</account_number>
+    <type/>
+    <eg/>
+    <designation>Verlustausgleichskonto</designation>
+  </account>
+  <account>
+    <account_number>920</account_number>
+    <type/>
+    <eg/>
+    <designation>GesellscharterDarlehen</designation>
+  </account>
+  <account>
+    <account_number>930</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonderposten m. Rücklageanteil</designation>
+  </account>
+  <account>
+    <account_number>950</account_number>
+    <type/>
+    <eg/>
+    <designation>Rückstellungen für Rensionen und ähnliche Ve.rprlichtungen _955     Steuerrückstellungen</designation>
+  </account>
+  <account>
+    <account_number>957</account_number>
+    <type/>
+    <eg/>
+    <designation>Gewerbesteuerrückstellung</designation>
+  </account>
+  <account>
+    <account_number>963</account_number>
+    <type/>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>970</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonstige Rückstellungen</designation>
+  </account>
+  <account>
+    <account_number>973</account_number>
+    <type/>
+    <eg/>
+    <designation>'Rückstellungen für Abraum und Abfallbeseitigung</designation>
+  </account>
+  <account>
+    <account_number>979</account_number>
+    <type/>
+    <eg/>
+    <designation>Rückstellungen für Umweltschutz</designation>
+  </account>
+  <account>
+    <account_number>980</account_number>
+    <type/>
+    <eg/>
+    <designation>_tive Rechnungsabgren,zu/ng</designation>
+  </account>
+  <account>
+    <account_number>983</account_number>
+    <type/>
+    <eg/>
+    <designation>%grenzung aktive latente_ steuern                       </designation>
+  </account>
+  <account>
+    <account_number>985</account_number>
+    <type/>
+    <eg/>
+    <designation>AlUmsatzsteuer aur Anzahlung</designation>
+  </account>
+  <account>
+    <account_number>990</account_number>
+    <type/>
+    <eg/>
+    <designation>Passive Rechnungsabgrenzung</designation>
+  </account>
+  <account>
+    <account_number>992</account_number>
+    <type>_</type>
+    <eg/>
+    <designation>Mertberichtigungen (zur unterjährigen Kosten- verrechnung rür BWA)</designation>
+  </account>
+  <account>
+    <account_number>996</account_number>
+    <type/>
+    <eg/>
+    <designation>Pauschalwertberichtigung aur Forderungen mit einer Rest- laurzeit bis zu l _ahr</designation>
+  </account>
+  <account>
+    <account_number>997</account_number>
+    <type/>
+    <eg/>
+    <designation>Pauschalwertberichtigung aur Forderungen mit einer Rest- laufzeit von mehr als l _ahr ,,- 998     Einzelwertberichtigungen aur Forderungen mit einer Rest- laurzeit bis zu l _ahr</designation>
+  </account>
+  <account>
+    <account_number>999</account_number>
+    <type/>
+    <eg/>
+    <designation>Einzelwertberichtigungen aur Forderungen mit einer Restlaufzeit von mehr als 1 Jahr</designation>
+  </account>
+  <account>
+    <account_number>1000</account_number>
+    <type>Kasse</type>
+    <eg/>
+    <designation>Kasse</designation>
+  </account>
+  <account>
+    <account_number>2010</account_number>
+    <type/>
+    <eg/>
+    <designation>Nebenkasse 1</designation>
+  </account>
+  <account>
+    <account_number>1020</account_number>
+    <type/>
+    <eg/>
+    <designation>Nebenkasse 2</designation>
+  </account>
+  <account>
+    <account_number>1100</account_number>
+    <type/>
+    <eg/>
+    <designation>Postgiro</designation>
+  </account>
+  <account>
+    <account_number>1110</account_number>
+    <type/>
+    <eg/>
+    <designation>Postgiro 1</designation>
+  </account>
+  <account>
+    <account_number>1200</account_number>
+    <type/>
+    <eg/>
+    <designation>Bank</designation>
+  </account>
+  <account>
+    <account_number>1210</account_number>
+    <type/>
+    <eg/>
+    <designation>Bank 1</designation>
+  </account>
+  <account>
+    <account_number>1220</account_number>
+    <type/>
+    <eg/>
+    <designation>Bank 2</designation>
+  </account>
+  <account>
+    <account_number>1230</account_number>
+    <type/>
+    <eg/>
+    <designation>Bank 3</designation>
+  </account>
+  <account>
+    <account_number>1300</account_number>
+    <type/>
+    <eg/>
+    <designation>Nechsel aus Liererungen und Leistunge,n</designation>
+  </account>
+  <account>
+    <account_number>1310</account_number>
+    <type/>
+    <eg/>
+    <designation>Besitzwechse1 gegen verbundene Unternehmen</designation>
+  </account>
+  <account>
+    <account_number>1320</account_number>
+    <type/>
+    <eg/>
+    <designation>Besitzwechsel gegen Unter nehmen, mit denen ein Betei             _ 1igungsverhältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>1327</account_number>
+    <type/>
+    <eg/>
+    <designation>\</designation>
+  </account>
+  <account>
+    <account_number>1330</account_number>
+    <type/>
+    <eg/>
+    <designation>Schecks</designation>
+  </account>
+  <account>
+    <account_number>1340</account_number>
+    <type/>
+    <eg/>
+    <designation>Unternehmen (Umlaurvermögen)</designation>
+  </account>
+  <account>
+    <account_number>1345</account_number>
+    <type/>
+    <eg/>
+    <designation/>
+  </account>
+  <account>
+    <account_number>1348</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonstige Mertpapiere</designation>
+  </account>
+  <account>
+    <account_number>1360</account_number>
+    <type/>
+    <eg/>
+    <designation>Geldtransit</designation>
+  </account>
+  <account>
+    <account_number>1370</account_number>
+    <type/>
+    <eg/>
+    <designation>J e_rmittlung g 4/3 EStG, e,gebni,wirk,,m     _  '</designation>
+  </account>
+  <account>
+    <account_number>1371</account_number>
+    <type/>
+    <eg/>
+    <designation>Verrechnungskonto rür Gewi_n '       ermittlung _ 4/3 EStG, nicht ergebniswirksam</designation>
+  </account>
+  <account>
+    <account_number>1400</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Forderungen aus Liererungen und Leistungen</designation>
+  </account>
+  <account>
+    <account_number>1460</account_number>
+    <type/>
+    <eg/>
+    <designation>Zweifelhafte Forderungen</designation>
+  </account>
+  <account>
+    <account_number>1470</account_number>
+    <type>ForderungenausLiererungen</type>
+    <eg/>
+    <designation>ForderungenausLiererungen und Leistungen gegen verbundenen Unternehmen</designation>
+  </account>
+  <account>
+    <account_number>1480</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungen aus Liererungen und Leistungen geg, Unterneh., m. d. ein Beteiligungsv. best.</designation>
+  </account>
+  <account>
+    <account_number>1490</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungen aus Liererungen und Leistungen gegen Gesellscharter</designation>
+  </account>
+  <account>
+    <account_number>1500</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonstige Vermögens.gegenstände</designation>
+  </account>
+  <account>
+    <account_number>1510</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Geleistete Anzahlungen aur Vorräte</designation>
+  </account>
+  <account>
+    <account_number>1511</account_number>
+    <type>V 8</type>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>1516</account_number>
+    <type>V 7</type>
+    <eg/>
+    <designation>Geleistete Anzahlungen l5 _g</designation>
+  </account>
+  <account>
+    <account_number>1517</account_number>
+    <type>V 9</type>
+    <eg/>
+    <designation>Geleistete Anzahlungen 16 __</designation>
+  </account>
+  <account>
+    <account_number>1525</account_number>
+    <type/>
+    <eg/>
+    <designation>Kautionen</designation>
+  </account>
+  <account>
+    <account_number>1530</account_number>
+    <type/>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>1540</account_number>
+    <type/>
+    <eg/>
+    <designation>Steuerüberzahlungen</designation>
+  </account>
+  <account>
+    <account_number>1542</account_number>
+    <type/>
+    <eg/>
+    <designation>Steuererstattungsanspruch    gegen anderes EGLand</designation>
+  </account>
+  <account>
+    <account_number>1545</account_number>
+    <type/>
+    <eg/>
+    <designation>Umsatzsteuerrorderungen</designation>
+  </account>
+  <account>
+    <account_number>1547</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungen aus entrichteten Verbrauchsteuern (EG)</designation>
+  </account>
+  <account>
+    <account_number>1548</account_number>
+    <type/>
+    <eg/>
+    <designation>Vorsteuer im Folgejahr abziehbar</designation>
+  </account>
+  <account>
+    <account_number>1549</account_number>
+    <type/>
+    <eg/>
+    <designation>Körperschartsteuer rückrorderung      ' '    _ J</designation>
+  </account>
+  <account>
+    <account_number>1550</account_number>
+    <type/>
+    <eg/>
+    <designation>/</designation>
+  </account>
+  <account>
+    <account_number>1560</account_number>
+    <type/>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>1561</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurzuteilende Vorsteuer 7 __</designation>
+  </account>
+  <account>
+    <account_number>1562</account_number>
+    <type/>
+    <eg/>
+    <designation>A'urzuteilende Vorsteuer aus EGErwerb</designation>
+  </account>
+  <account>
+    <account_number>1565</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurzuteilende Vorsteuer 16 __</designation>
+  </account>
+  <account>
+    <account_number>1566</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurzuteilende Vorsteuer 15 __</designation>
+  </account>
+  <account>
+    <account_number>1572</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer 7 __</designation>
+  </account>
+  <account>
+    <account_number>2572</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer aus EGErwerb</designation>
+  </account>
+  <account>
+    <account_number>2573</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer aus EGErwerb 26 Po</designation>
+  </account>
+  <account>
+    <account_number>2574</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer aus EGErwerb vonNeurahrzeugen von Liererern Q_e UStIdNr.       '</designation>
+  </account>
+  <account>
+    <account_number>1575</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer l6 __</designation>
+  </account>
+  <account>
+    <account_number>1576</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer 15 __ f_</designation>
+  </account>
+  <account>
+    <account_number>1577</account_number>
+    <type/>
+    <eg/>
+    <designation>Vorsteuer nach allgemeinen Dur\code(0107)hschnittsätzen UStVA KZ63 15i8    Berichtigung des Vorsteuerab zugs rrüherer _ahre UStVA KZ64</designation>
+  </account>
+  <account>
+    <account_number>2584</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Anrechenbare Vorsteuer aus EGErwerb vonNeurahrzeugen.              von Liererern o_e UStIdNr</designation>
+  </account>
+  <account>
+    <account_number>1588</account_number>
+    <type/>
+    <eg/>
+    <designation>Bezahlte Einruhrumsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>1590</account_number>
+    <type>_</type>
+    <eg/>
+    <designation>Durchlaurende Posten</designation>
+  </account>
+  <account>
+    <account_number>1594</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungen gegen verbundene _     Unternehmen</designation>
+  </account>
+  <account>
+    <account_number>1597</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungen gegen Un'ternehmen, mit denen ein Beteiligungs   ,          . verhältnis besteht</designation>
+  </account>
+  <account>
+    <account_number>2600</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Verbindlic,hkeiten aus Liererungen und Leist.ungen 1630, _    Verbindlichkeiten aus Liere rungen und Leistungen gegen über verbundenen Unternehmen</designation>
+  </account>
+  <account>
+    <account_number>1640</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Verbindlichkeiten aus Lier und Leist. geg. Vntern., m_t d. e. Beteiligungsverh, best.</designation>
+  </account>
+  <account>
+    <account_number>1650</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten aus .   Liererungen und Leistungen gegenüber Gesellschartern</designation>
+  </account>
+  <account>
+    <account_number>2660</account_number>
+    <type/>
+    <eg/>
+    <designation>Schuldwechsel</designation>
+  </account>
+  <account>
+    <account_number>1705</account_number>
+    <type/>
+    <eg/>
+    <designation>Darlehen (erhalten)</designation>
+  </account>
+  <account>
+    <account_number>1710</account_number>
+    <type/>
+    <eg/>
+    <designation>Erhaltene Anzahlungen (Verbindlichkeiten)</designation>
+  </account>
+  <account>
+    <account_number>1711</account_number>
+    <type>M 2</type>
+    <eg/>
+    <designation>Erhaltene, versteuerte Anzahlungen 7 /_ USt (Verbindlichkeiten)</designation>
+  </account>
+  <account>
+    <account_number>1716</account_number>
+    <type>M 5</type>
+    <eg/>
+    <designation>Erhaltene, versteuerte Anzahlungen 15 _/ USt (Verbindlichkeiten)</designation>
+  </account>
+  <account>
+    <account_number>1717</account_number>
+    <type>M 3</type>
+    <eg/>
+    <designation>Erhaltene, versteuerte Anzahlungen 16 /_ USt       (Verbindlichkeiten)</designation>
+  </account>
+  <account>
+    <account_number>1722</account_number>
+    <type>M</type>
+    <eg/>
+    <designation>Erhaltene Anzahlungen (von Vorräten orren abgesetzt3</designation>
+  </account>
+  <account>
+    <account_number>1732</account_number>
+    <type/>
+    <eg/>
+    <designation>Erhaltene Kautionen</designation>
+  </account>
+  <account>
+    <account_number>1736</account_number>
+    <type/>
+    <eg/>
+    <designation>_ Betriebssteuern und%ggben</designation>
+  </account>
+  <account>
+    <account_number>1740</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten aus Lohn und Gehalt</designation>
+  </account>
+  <account>
+    <account_number>1741</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Verbindlichkeiten aus Lohn und Kirchensteuer</designation>
+  </account>
+  <account>
+    <account_number>1742</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten im Rahmen der sozialen Sicherheit</designation>
+  </account>
+  <account>
+    <account_number>1747</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten rür Verbrauchssteuern (EG)</designation>
+  </account>
+  <account>
+    <account_number>1750</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbindlichkeiten aus Vermögensbildung</designation>
+  </account>
+  <account>
+    <account_number>1755</account_number>
+    <type/>
+    <eg/>
+    <designation>Lohn und Gehaltsverrechnung J</designation>
+  </account>
+  <account>
+    <account_number>1758</account_number>
+    <type/>
+    <eg/>
+    <designation>USt%zugsverrahren l6 _/ USt</designation>
+  </account>
+  <account>
+    <account_number>1759</account_number>
+    <type/>
+    <eg/>
+    <designation>USt%zugsverrahren l5 _/ USt</designation>
+  </account>
+  <account>
+    <account_number>1760</account_number>
+    <type/>
+    <eg/>
+    <designation>U,msatzsteuer nicht fällig</designation>
+  </account>
+  <account>
+    <account_number>1761</account_number>
+    <type>A</type>
+    <eg/>
+    <designation>Umsatz5teuer nicht fällig 7 _/</designation>
+  </account>
+  <account>
+    <account_number>1762</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Umsatzsteuer nicht fällig aus im Inland steuerprlichtigen EGLiererungen     !</designation>
+  </account>
+  <account>
+    <account_number>1763</account_number>
+    <type>Umsatzsteuernichträlligaus</type>
+    <eg/>
+    <designation>Umsatzsteuernichträlligaus im Inland steuerprlichtigen EGbiererungen l6 9o</designation>
+  </account>
+  <account>
+    <account_number>1765</account_number>
+    <type>A</type>
+    <eg/>
+    <designation>Umsatzsteuer nicht rällig l6 gx</designation>
+  </account>
+  <account>
+    <account_number>1766</account_number>
+    <type>A</type>
+    <eg/>
+    <designation>Umsatzsteuer nicht rällig l5 _x</designation>
+  </account>
+  <account>
+    <account_number>1767</account_number>
+    <type/>
+    <eg/>
+    <designation>Umsatzsteuer aus im anderen EGLand steuerprlichtigen biererungen und Leistungen</designation>
+  </account>
+  <account>
+    <account_number>1769</account_number>
+    <type/>
+    <eg/>
+    <designation>Steuerzahlungen, an andere EG bänder</designation>
+  </account>
+  <account>
+    <account_number>1770</account_number>
+    <type/>
+    <eg/>
+    <designation>Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>1771</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Umsatzsteuer 7 _x</designation>
+  </account>
+  <account>
+    <account_number>1772</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Umsatzsteuer aus EGErwerb</designation>
+  </account>
+  <account>
+    <account_number>1773</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Umsatzsteuer aus EGErwerb l6_x</designation>
+  </account>
+  <account>
+    <account_number>1774</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Umsatzsteuer aus EGErwerb von Neurahrzeugen von Liererern   _ ohne UstIdNr.</designation>
+  </account>
+  <account>
+    <account_number>1775</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Umsatzsteuer l6 _x</designation>
+  </account>
+  <account>
+    <account_number>1776</account_number>
+    <type>G</type>
+    <eg/>
+    <designation>Umsatz5teuer 15 _x</designation>
+  </account>
+  <account>
+    <account_number>1777</account_number>
+    <type>R '</type>
+    <eg/>
+    <designation>Umsatzsteuer aus im Inland steuerprlichtigen EG .     Liererungen</designation>
+  </account>
+  <account>
+    <account_number>1778</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Umsatzsteuer aus im Inland ''  _   steuerprlichtigen EG biererungen l6 _x      '</designation>
+  </account>
+  <account>
+    <account_number>1780</account_number>
+    <type/>
+    <eg/>
+    <designation>UStVorauszahlung</designation>
+  </account>
+  <account>
+    <account_number>1781</account_number>
+    <type/>
+    <eg/>
+    <designation>.</designation>
+  </account>
+  <account>
+    <account_number>1782</account_number>
+    <type/>
+    <eg/>
+    <designation>Nachsteuer, UStVA KZ65</designation>
+  </account>
+  <account>
+    <account_number>1783</account_number>
+    <type/>
+    <eg/>
+    <designation>, '    ausgewiesene und geschuldete  ' Steuerbeträge UStVA Kz. 69</designation>
+  </account>
+  <account>
+    <account_number>1784</account_number>
+    <type>R</type>
+    <eg/>
+    <designation>Umsatzsteuer aus EGErwerb v'on Neurahrzeugen von Liererern ohne UStIdNr.</designation>
+  </account>
+  <account>
+    <account_number>1790</account_number>
+    <type/>
+    <eg/>
+    <designation>.</designation>
+  </account>
+  <account>
+    <account_number>1791</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>USt frühere Jahre</designation>
+  </account>
+  <account>
+    <account_number>1792</account_number>
+    <type>SonstigeVerrechnungskonten</type>
+    <eg/>
+    <designation>SonstigeVerrechnungskonten (_nterimskonten)</designation>
+  </account>
+  <account>
+    <account_number>1793</account_number>
+    <type/>
+    <eg/>
+    <designation>Verrechnungskonto geleistete Anzahlungen bei Buchung über KreditorenKonto</designation>
+  </account>
+  <account>
+    <account_number>1800</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatentnahmen Vollharter</designation>
+  </account>
+  <account>
+    <account_number>1810</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatsteuern</designation>
+  </account>
+  <account>
+    <account_number>1820</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonderausgaben beschränkt abzugsrähig</designation>
+  </account>
+  <account>
+    <account_number>1830</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonderausgaben'unbeschränkt abzugsrähig</designation>
+  </account>
+  <account>
+    <account_number>1840</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatspenden</designation>
+  </account>
+  <account>
+    <account_number>1850</account_number>
+    <type/>
+    <eg/>
+    <designation>Aussergewöhnliche Belastungen</designation>
+  </account>
+  <account>
+    <account_number>1860</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Grundstücksaurwand</designation>
+  </account>
+  <account>
+    <account_number>1870</account_number>
+    <type/>
+    <eg/>
+    <designation>Grundstücksertrag</designation>
+  </account>
+  <account>
+    <account_number>1880</account_number>
+    <type/>
+    <eg/>
+    <designation>Eigenverbrauch</designation>
+  </account>
+  <account>
+    <account_number>1890</account_number>
+    <type/>
+    <eg/>
+    <designation>Privateinlagen Vollharter</designation>
+  </account>
+  <account>
+    <account_number>1900</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatentnahmen Teilharter</designation>
+  </account>
+  <account>
+    <account_number>1910</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatsteuern</designation>
+  </account>
+  <account>
+    <account_number>1920</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonderausgaben beschränkt ,   abzugsrähig</designation>
+  </account>
+  <account>
+    <account_number>1930</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonderausgaben unbeschränkt abzugsrähig                  _</designation>
+  </account>
+  <account>
+    <account_number>1940</account_number>
+    <type/>
+    <eg/>
+    <designation>Privatspenden</designation>
+  </account>
+  <account>
+    <account_number>1950</account_number>
+    <type/>
+    <eg/>
+    <designation>Aussergewöhnliche Belastungen</designation>
+  </account>
+  <account>
+    <account_number>1960</account_number>
+    <type/>
+    <eg/>
+    <designation>Grundstücksaurwand</designation>
+  </account>
+  <account>
+    <account_number>1970</account_number>
+    <type/>
+    <eg/>
+    <designation>Grundstücksertrag</designation>
+  </account>
+  <account>
+    <account_number>1980</account_number>
+    <type/>
+    <eg/>
+    <designation>Eigenverbrauch</designation>
+  </account>
+  <account>
+    <account_number>1990</account_number>
+    <type/>
+    <eg/>
+    <designation>Privateinlagen Teilharter</designation>
+  </account>
+  <account>
+    <account_number>2020</account_number>
+    <type>V.</type>
+    <eg/>
+    <designation>Periodenrremde Aurwendungen 21OO     Zinsen und ähnliche Aurwendungen</designation>
+  </account>
+  <account>
+    <account_number>2109</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsaurwendungen an verbundene Unternehmen</designation>
+  </account>
+  <account>
+    <account_number>2110</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsaurwendungen rü'r kurzrristige Verbindlichkeiten</designation>
+  </account>
+  <account>
+    <account_number>2118</account_number>
+    <type/>
+    <eg/>
+    <designation>_n Dauerschuldzinsen umquali rizierte Zinsen aur kurz ,_      rristige Verbindlichkeiten</designation>
+  </account>
+  <account>
+    <account_number>2120</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsaurwendungen rür langrristige Verbindlichkeiten</designation>
+  </account>
+  <account>
+    <account_number>2127</account_number>
+    <type/>
+    <eg/>
+    <designation>Renten und dauernde Lasten aus Gründung/Erwerb  8 GewStG</designation>
+  </account>
+  <account>
+    <account_number>2128</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsen an Mitunternehmer rür die Hingabe von langrristigem             ' _   Kapital  15 EStG</designation>
+  </account>
+  <account>
+    <account_number>2130</account_number>
+    <type/>
+    <eg/>
+    <designation>Diskontaurwendungen</designation>
+  </account>
+  <account>
+    <account_number>2140</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsähnliche Aurwendungen</designation>
+  </account>
+  <account>
+    <account_number>2150</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurwendungen aus Kursdirrerenzen ,,._170     Nic__t anrechenbare Vorsteuer 2171'     Nicht anrechenbare Vorsteuer 7 __</designation>
+  </account>
+  <account>
+    <account_number>2175</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare Vorsteuer l6 __</designation>
+  </account>
+  <account>
+    <account_number>2176</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare Vorsteuer l5 _g</designation>
+  </account>
+  <account>
+    <account_number>2200</account_number>
+    <type/>
+    <eg/>
+    <designation>Körperschartsteuer</designation>
+  </account>
+  <account>
+    <account_number>2203</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>Körperschartsteuer rür Vorjahre</designation>
+  </account>
+  <account>
+    <account_number>2208</account_number>
+    <type/>
+    <eg/>
+    <designation>Solidaritätszuschlag</designation>
+  </account>
+  <account>
+    <account_number>2209</account_number>
+    <type/>
+    <eg/>
+    <designation>Solidaritätszuschlag für Vorjahre</designation>
+  </account>
+  <account>
+    <account_number>2215</account_number>
+    <type/>
+    <eg/>
+    <designation>Zinsabschlagsteuer</designation>
+  </account>
+  <account>
+    <account_number>2220</account_number>
+    <type/>
+    <eg/>
+    <designation>Vermögensteuer</designation>
+  </account>
+  <account>
+    <account_number>2222</account_number>
+    <type/>
+    <eg/>
+    <designation>Sonstige Betriebssteuern</designation>
+  </account>
+  <account>
+    <account_number>2223</account_number>
+    <type/>
+    <eg/>
+    <designation>Vermögensteuer rür Vorjahre</designation>
+  </account>
+  <account>
+    <account_number>2280</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>Seuernachzahlung Vorjahre für Steuern vom Einkommen und Ertrag</designation>
+  </account>
+  <account>
+    <account_number>2285</account_number>
+    <type/>
+    <eg/>
+    <designation>Steuernachzahlu!ngen Vorjahre sonstige steuern</designation>
+  </account>
+  <account>
+    <account_number>2300</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Sonstige Aurwendungen</designation>
+  </account>
+  <account>
+    <account_number>2310</account_number>
+    <type/>
+    <eg/>
+    <designation>Anlagenabgänge (Restbuchwert bei Buchverlust)</designation>
+  </account>
+  <account>
+    <account_number>2315</account_number>
+    <type/>
+    <eg/>
+    <designation>Anlagenabgänge (Restbuchwert bei Buchgewinn)</designation>
+  </account>
+  <account>
+    <account_number>2320</account_number>
+    <type/>
+    <eg/>
+    <designation>Verluste aus dem%gang von Gegenständen des Anlagever              _ mögens</designation>
+  </account>
+  <account>
+    <account_number>2325</account_number>
+    <type/>
+    <eg/>
+    <designation>Verluste aus dem%gang von Gegenständen des Umlaurver mögens (ausser Vorräten)</designation>
+  </account>
+  <account>
+    <account_number>2340</account_number>
+    <type>_</type>
+    <eg/>
+    <designation>Einstellungen in Sonderposten _     mit Rücklageanteil</designation>
+  </account>
+  <account>
+    <account_number>2341</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellungen in Sonderposten _    mit Rücklageanteil (Ansparabschreibungen)</designation>
+  </account>
+  <account>
+    <account_number>2345</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellungen in Sonderposten mit Rücklageanteil (Sonderabschreibungen)</designation>
+  </account>
+  <account>
+    <account_number>2350</account_number>
+    <type>. V</type>
+    <eg/>
+    <designation>Grundstücksaurwendungen</designation>
+  </account>
+  <account>
+    <account_number>2375</account_number>
+    <type/>
+    <eg/>
+    <designation>.</designation>
+  </account>
+  <account>
+    <account_number>2380</account_number>
+    <type/>
+    <eg/>
+    <designation>spenden</designation>
+  </account>
+  <account>
+    <account_number>2381</account_number>
+    <type/>
+    <eg/>
+    <designation>Beiträge und Spenden rür wissenschartliche und kulturelle Zwecke</designation>
+  </account>
+  <account>
+    <account_number>2382</account_number>
+    <type/>
+    <eg/>
+    <designation>Beiträge und Spenden für mildtätige Zwecke</designation>
+  </account>
+  <account>
+    <account_number>2383</account_number>
+    <type>BeiträgeundSpendenrür</type>
+    <eg/>
+    <designation>BeiträgeundSpendenrür kirchliche, religiöse und gemeinnützige Zwecke</designation>
+  </account>
+  <account>
+    <account_number>2384</account_number>
+    <type/>
+    <eg/>
+    <designation>Beiträge und spenden an politische Parteien</designation>
+  </account>
+  <account>
+    <account_number>2386</account_number>
+    <type/>
+    <eg/>
+    <designation>%ziehbare Hälrte der Aur sichtsratsvergütungen</designation>
+  </account>
+  <account>
+    <account_number>2400</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungsverluste (übliche Höhe)</designation>
+  </account>
+  <account>
+    <account_number>2401</account_number>
+    <type>M 2</type>
+    <eg/>
+    <designation>Forderungsverluste 7 __</designation>
+  </account>
+  <account>
+    <account_number>2402</account_number>
+    <type/>
+    <eg/>
+    <designation>Forderungsverluste aus steuer rreien EGLiererungen</designation>
+  </account>
+  <account>
+    <account_number>2403</account_number>
+    <type>M 32</type>
+    <eg/>
+    <designation>Forderungsverluste aus im Inland steuerprlichtigen EG Liererungen 7 _/</designation>
+  </account>
+  <account>
+    <account_number>2404</account_number>
+    <type>M 33</type>
+    <eg/>
+    <designation>Forderungsverluste aus im Inland steuerprlichtigen EG Liererungen 15 _//16 Po</designation>
+  </account>
+  <account>
+    <account_number>2405</account_number>
+    <type>M 3</type>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>2406</account_number>
+    <type>M 3</type>
+    <eg/>
+    <designation>Forderungsverluste 16 _/</designation>
+  </account>
+  <account>
+    <account_number>2407</account_number>
+    <type>M 5</type>
+    <eg/>
+    <designation>Forderungsverluste 15 _/</designation>
+  </account>
+  <account>
+    <account_number>2408</account_number>
+    <type>M 33</type>
+    <eg/>
+    <designation>Forderungsverluste aus im Inland steuerprlichtigen EG Liererungen 16 _/</designation>
+  </account>
+  <account>
+    <account_number>2409</account_number>
+    <type>M 35</type>
+    <eg/>
+    <designation>Forderungsverluste aus im _     Inland steuerprlichtigen EG Liererungen 15 Po</designation>
+  </account>
+  <account>
+    <account_number>2450</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Einstellung in die Pausch.al wertberichtigung zu Forderungen            '  2451'     Einstellung in die Einzelwert berichtigung zu Forderungen</designation>
+  </account>
+  <account>
+    <account_number>2490</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurwendungen aus Verlustübernahme</designation>
+  </account>
+  <account>
+    <account_number>2492</account_number>
+    <type/>
+    <eg/>
+    <designation>Abgerührte Gewinne aurgrund einer Gewinngemeinschart</designation>
+  </account>
+  <account>
+    <account_number>2493</account_number>
+    <type/>
+    <eg/>
+    <designation>Ageführte Gewinnanteile an stille Gesellschafter  8 GewStG</designation>
+  </account>
+  <account>
+    <account_number>2494</account_number>
+    <type>AgerührteGewinneaurgrund</type>
+    <eg/>
+    <designation>AgerührteGewinneaurgrund eines Gewinn oder Teilgewinn abrührungsvertrages</designation>
+  </account>
+  <account>
+    <account_number>2495</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellungen in die Kapital rücklage nach d. Vorschr. über d. vereinr. Kapitalherabsetzg.</designation>
+  </account>
+  <account>
+    <account_number>2496</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellung in die gesetzliche Rücklage</designation>
+  </account>
+  <account>
+    <account_number>2497</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellung in satzungsmässige Rücklagen</designation>
+  </account>
+  <account>
+    <account_number>2498</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellung in'die Rücklage rür eigene Anteile</designation>
+  </account>
+  <account>
+    <account_number>2499</account_number>
+    <type/>
+    <eg/>
+    <designation>Einstellung in andere Gewinnrücklagen</designation>
+  </account>
+  <account>
+    <account_number>2500</account_number>
+    <type>M</type>
+    <eg/>
+    <designation>Ausserordentliche Erträge</designation>
+  </account>
+  <account>
+    <account_number>2510</account_number>
+    <type>M.</type>
+    <eg/>
+    <designation>Betriebsrremde Erträge</designation>
+  </account>
+  <account>
+    <account_number>2520</account_number>
+    <type>M</type>
+    <eg/>
+    <designation>Periodenrremde Erträge</designation>
+  </account>
+  <account>
+    <account_number>2600</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus Beteiligungen</designation>
+  </account>
+  <account>
+    <account_number>2618</account_number>
+    <type/>
+    <eg/>
+    <designation>Gewinnanteile aus Mitunter nehmerscharten  9 GewStG                _/</designation>
+  </account>
+  <account>
+    <account_number>2620</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus anderen Wert papieren undAusleihungen des Finanzanlagevermögens</designation>
+  </account>
+  <account>
+    <account_number>2650</account_number>
+    <type/>
+    <eg/>
+    <designation>\ Erträge</designation>
+  </account>
+  <account>
+    <account_number>2660</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus Kursdirrerenzen</designation>
+  </account>
+  <account>
+    <account_number>2670</account_number>
+    <type/>
+    <eg/>
+    <designation>Diskonterträge</designation>
+  </account>
+  <account>
+    <account_number>2700</account_number>
+    <type>M</type>
+    <eg/>
+    <designation/>
+  </account>
+  <account>
+    <account_number>2710</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus Zuschreibungen des Anlagevermögens</designation>
+  </account>
+  <account>
+    <account_number>2715</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus Zuschreibungen des Umlaurvermögens</designation>
+  </account>
+  <account>
+    <account_number>2720</account_number>
+    <type/>
+    <eg/>
+    <designation>Erträge aus dem Abgang von Gegenständen des Anlagevermögens</designation>
+  </account>
+  <account>
+    <account_number>3100</account_number>
+    <type>_</type>
+    <eg/>
+    <designation>Fremdleistungen</designation>
+  </account>
+  <account>
+    <account_number>3150</account_number>
+    <type/>
+    <eg/>
+    <designation>Leistungen von ausländischen Unternehmen, Nullregelung</designation>
+  </account>
+  <account>
+    <account_number>3200</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Wareneingang</designation>
+  </account>
+  <account>
+    <account_number>3300</account_number>
+    <type>V 8</type>
+    <eg/>
+    <designation>Wareneingang 7 _/ Vorsteuer</designation>
+  </account>
+  <account>
+    <account_number>3340</account_number>
+    <type>V 7</type>
+    <eg/>
+    <designation>Wareneingang l5 _/ Vorsteuer</designation>
+  </account>
+  <account>
+    <account_number>3400</account_number>
+    <type>V 9</type>
+    <eg/>
+    <designation>Wareneingang 15 _?/16 /_ Vorsteuer  _</designation>
+  </account>
+  <account>
+    <account_number>3410</account_number>
+    <type>V 9</type>
+    <eg/>
+    <designation>Wareneingang 16 _/ Vorsteuer</designation>
+  </account>
+  <account>
+    <account_number>3420</account_number>
+    <type>V 38</type>
+    <eg/>
+    <designation>EGErwerb 7 _? Vorsteuer und Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3425</account_number>
+    <type>V 39</type>
+    <eg/>
+    <designation>EGErwerb l5 ^/o/16 9o Vorsteuer und Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3430</account_number>
+    <type>V 88</type>
+    <eg/>
+    <designation>EGErwerb ohne Vorsteuerabzug, 7 ^/o Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3431</account_number>
+    <type>V 39</type>
+    <eg/>
+    <designation>EGErwerb 16 _/ Vorsteuer und Umsatzsteuer                   .</designation>
+  </account>
+  <account>
+    <account_number>3433</account_number>
+    <type>V 37</type>
+    <eg/>
+    <designation>EGErwerb 15 _/ Vorsteuer und Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3435</account_number>
+    <type>V 89</type>
+    <eg/>
+    <designation>EGErwerb ohne Vorsteuerabzug, 15 %/16 % Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3436</account_number>
+    <type>V 89</type>
+    <eg/>
+    <designation>EGErwerb ohne Vorsteuerabzug,\ _*_     16 _/ Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3437</account_number>
+    <type>V 87</type>
+    <eg/>
+    <designation>EGErwerb ohne Vorsteuerabzug, 15 ^/o Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3440</account_number>
+    <type>V 49</type>
+    <eg/>
+    <designation>EGErwerb von Neurahrzeugen von Liererern ohne UStIdNr 15 ^/o/l6 ^/o Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3441</account_number>
+    <type>V. 49</type>
+    <eg/>
+    <designation>EGErwerb von Neurahrzeugen von Liererern ohne UStIdNr.               , 16 O/o Umsatzsteuer</designation>
+  </account>
+  <account>
+    <account_number>3442</account_number>
+    <type>V 47</type>
+    <eg/>
+    <designation>EGErwerb von Neufahrzeugen von Liererern oh\code(01f9)e UStIdNr 15 ^/o Umsatzsteuer ,   9</designation>
+  </account>
+  <account>
+    <account_number>3500</account_number>
+    <type>V 15</type>
+    <eg/>
+    <designation>Wareneingang 5 _/ Vorsteuer</designation>
+  </account>
+  <account>
+    <account_number>4100</account_number>
+    <type/>
+    <eg/>
+    <designation>Löhne und Gehälter</designation>
+  </account>
+  <account>
+    <account_number>4110</account_number>
+    <type/>
+    <eg/>
+    <designation>Löhne</designation>
+  </account>
+  <account>
+    <account_number>4120</account_number>
+    <type/>
+    <eg/>
+    <designation>Gehälter</designation>
+  </account>
+  <account>
+    <account_number>4125</account_number>
+    <type/>
+    <eg/>
+    <designation>Ehegattengehalt</designation>
+  </account>
+  <account>
+    <account_number>4126</account_number>
+    <type/>
+    <eg/>
+    <designation>Tantiemen</designation>
+  </account>
+  <account>
+    <account_number>4127</account_number>
+    <type/>
+    <eg/>
+    <designation>Geschärtsrü'hrergehalt</designation>
+  </account>
+  <account>
+    <account_number>4128</account_number>
+    <type/>
+    <eg/>
+    <designation>Vergütungen an,angestellte Mitunternehmer g 15 EStG</designation>
+  </account>
+  <account>
+    <account_number>4130</account_number>
+    <type/>
+    <eg/>
+    <designation>Gesetzliche soziale Aurwen dungen</designation>
+  </account>
+  <account>
+    <account_number>4137</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Gesetzliche soziale Aurwen dungen rürMitunternehmer g 15 EstG</designation>
+  </account>
+  <account>
+    <account_number>4138</account_number>
+    <type/>
+    <eg/>
+    <designation>Berursgenossen5chart</designation>
+  </account>
+  <account>
+    <account_number>4140</account_number>
+    <type>v</type>
+    <eg/>
+    <designation>' dungen, lohnsteuerrrei</designation>
+  </account>
+  <account>
+    <account_number>4145</account_number>
+    <type>v</type>
+    <eg/>
+    <designation>Freiwillige soziale Aurwen dungen, lohsteuerprlichtig</designation>
+  </account>
+  <account>
+    <account_number>4149</account_number>
+    <type/>
+    <eg/>
+    <designation>pauschale Lohnsteuer aur sonstige Bezüge (z.B. Fahrtkostenzuschüsse)</designation>
+  </account>
+  <account>
+    <account_number>4150</account_number>
+    <type/>
+    <eg/>
+    <designation>Krankengeldzuschüsse</designation>
+  </account>
+  <account>
+    <account_number>4165</account_number>
+    <type/>
+    <eg/>
+    <designation>Aufwendungen für Altersversorgung</designation>
+  </account>
+  <account>
+    <account_number>4167</account_number>
+    <type>.</type>
+    <eg/>
+    <designation>pauschale Lohnsteuer aur sonstige Bezüge (z.B. _      Direktversicherungen)</designation>
+  </account>
+  <account>
+    <account_number>4168</account_number>
+    <type/>
+    <eg/>
+    <designation>Aurwendungen rür Altersversor gung rür Mitunternehmer       J EStG</designation>
+  </account>
+  <account>
+    <account_number>4170</account_number>
+    <type/>
+    <eg/>
+    <designation>Vermö'genswirksame Leistu.ngen</designation>
+  </account>
+  <account>
+    <account_number>4175</account_number>
+    <type>v</type>
+    <eg/>
+    <designation>'Fahrtkostenerstattung Wo_ung/Arbeitsstätte</designation>
+  </account>
+  <account>
+    <account_number>4190</account_number>
+    <type/>
+    <eg/>
+    <designation>Aushilrslöhne</designation>
+  </account>
+  <account>
+    <account_number>4200</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Raumkosten</designation>
+  </account>
+  <account>
+    <account_number>4210</account_number>
+    <type>V'</type>
+    <eg/>
+    <designation>Miete</designation>
+  </account>
+  <account>
+    <account_number>4218</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Gewerbesteuerlich zu berück sichtigende Miete</designation>
+  </account>
+  <account>
+    <account_number>4219</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Vergütungen an Mitunternehmer rür die mietweise überlassung ihrer Wirtschartsgüter</designation>
+  </account>
+  <account>
+    <account_number>4220</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>/</designation>
+  </account>
+  <account>
+    <account_number>4228</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Gewerbesteuerlich zu berück sichtigende Pacht</designation>
+  </account>
+  <account>
+    <account_number>4229</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Vergütungen an Mitunternehmer      rür die pachtweise überlassung ihrer Wirtschartsgüter</designation>
+  </account>
+  <account>
+    <account_number>4230</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Heizung</designation>
+  </account>
+  <account>
+    <account_number>4240</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>1</designation>
+  </account>
+  <account>
+    <account_number>4250</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>_</designation>
+  </account>
+  <account>
+    <account_number>4260</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>_nstandhaltung betrieblicher Räume</designation>
+  </account>
+  <account>
+    <account_number>4270</account_number>
+    <type/>
+    <eg/>
+    <designation>%gaben rür betrieblich _   genutzten Grundbesitz</designation>
+  </account>
+  <account>
+    <account_number>4280</account_number>
+    <type>V</type>
+    <eg/>
+    <designation>Sonst,ige Raumkosten</designation>
+  </account>
+  <account>
+    <account_number>4300</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare Vorsteuer</designation>
+  </account>
+  <account>
+    <account_number>4301</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare Vorsteuer 7 9o</designation>
+  </account>
+  <account>
+    <account_number>4305</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare l    Vorsteuer 16 __</designation>
+  </account>
+  <account>
+    <account_number>4306</account_number>
+    <type/>
+    <eg/>
+    <designation>Nicht anrechenbare Vorsteuer l5 __</designation>
+  </account>
+  <account>
+    <account_number>4320</account_number>
+    <type/>
+    <eg/>
+    <designation>Gewerbesteuer (Vorauszahlung)</designation>
+  </account>
+  <account>
+    <account_number>4330</account_number>
+    <type>'</type>
+    <eg/>
+    <designation>Gewerbeertragsteuer</designation>
+  </account>
+  <account>
+    <account_number>4335</account_number>
+    <type/>
+    <eg/>
+    <designation>G'ewerbekapitalsteuer .ge Bet,,.ebssteue,      (           _</designation>
+  </account>
+  <account>
+    <account_number>4350</account_number>
+    <type/>
+    <eg/>
+    <designation>Verbrauchsteuer (EG)</designation>
   </account>
 </account_info>

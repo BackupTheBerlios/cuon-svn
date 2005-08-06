@@ -85,6 +85,8 @@ class cyr_column:
         return self.defaultValue
 
 
+        
+        
 ### set the extras */
 ##void def setExtras(std::string s)
 ##	Extras.assign(s);

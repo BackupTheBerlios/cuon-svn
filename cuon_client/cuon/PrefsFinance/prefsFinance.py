@@ -364,7 +364,7 @@ class prefsFinancewindow(windows):
                             #dicAcct = {'eg': ' ', 'type': [u'V', 'string'], 'account_number': [u'1', 'string'], 'designation': [u'Aufwendungen fuer die Ingangsetzung und Erweiterung des Geschaeftsbetriebes', 'string']}
                             print 'After: ', `dicAcct`         
                             if dicAcct:
-                                self.rpc.callRP('src.Finances.py_updateAccountInfo',dicAcct, self.dicUser)
+                                self.rpc.callRP('src.Finances.py_updateAccountInfo',dicAcct, self.dicSqlUser)
                                 #print self.rpc.callRP('src.sql.py_test', self.dicUser)
                                 
                                 

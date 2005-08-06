@@ -46,6 +46,7 @@ class windows(MyXML, gladeXml, messages):
         self.openDB()
         self.oUser = None
         self.dicUser = None
+        self.dicSqlUser = None
         self.dicUserKeys = None
         self.loadUserInfo()
         
@@ -80,6 +81,7 @@ class windows(MyXML, gladeXml, messages):
         if self.oUser:
             print `self.oUser`
             self.dicUser = self.oUser.getDicUser()
+            self.dicSqlUser = self.oUser.getSqlDicUser()
             print `self.dicUser`
         else:
             self.dicUser = {}
