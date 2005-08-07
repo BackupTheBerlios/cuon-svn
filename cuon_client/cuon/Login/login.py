@@ -81,6 +81,7 @@ class loginwindow(windows):
         #    self.oUser = userObj
         #else:
         #    
+        self.oUser = cuon.Login.User.User()
         self.oUser.setUserName(username )
         sPw = self.getWidget('TPassword').get_text()
 

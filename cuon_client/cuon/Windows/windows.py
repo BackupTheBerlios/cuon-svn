@@ -28,6 +28,10 @@ import cuon.Windows.cyr_load_entries
 from  cuon.Windows.gladeXml import gladeXml
 # from cuon.XMLRPC.xmlrpc import xmlrpc
 from cuon.Misc.messages import messages
+import datetime
+import time
+import calendar
+
 
 import os
 import os.path
@@ -66,7 +70,11 @@ class windows(MyXML, gladeXml, messages):
         self.win1 = None
         self.editAction = 'closeMenuItemsForEdit'
         self.editEntries = False
-
+        self.dicKeys = {}
+        self.dicKeys['CTRL'] = gtk.gdk.CONTROL_MASK 
+        self.dicKeys['SHIFT'] = gtk.gdk.SHIFT_MASK 
+        self.dicKeys['ALT'] = gtk.gdk.MOD1_MASK 
+        
         
         
     def closeWindow(self):
@@ -220,7 +228,48 @@ class windows(MyXML, gladeXml, messages):
             
         return True
     
-
+    def checkKey(self, event,sState, cKey):
+        ok = False
+        print 'keyval', event.keyval
+        print 'state', event.state
+        if event.state and self.dicKeys[sState]:
+            print 'state is found'
+            
+            if gtk.gdk.keyval_name(event.keyval) == cKey :
+                ok = True
+        print 'ok = ', ok
+        return ok
+        
+        
+    def getDate(self, entry):
+        #print 'orig', `entry.get_time()`
+        #newTime = time.localtime(entry.get_time())
+        #                print "Datum und Zeit"
+        #                print newTime
+        #sValue = time.strftime(self.dicSqlUser['DateTimeformatString'], newTime)
+        print 'entry = ', entry
+        newTime = time.strptime(entry.get_text(), self.dicSqlUser['DateformatString'])
+        
+        return newTime
+        
+    def setDate(self, entry, newTime):
+        entry.set_text(time.strftime(self.dicSqlUser['DateformatString'],newTime))
+        
+        
+    def addOneDay(self, entry, event):
+        oldTime = self.getDate(entry)
+        aDay = datetime.timedelta(days=1)
+        newTime = datetime.datetime(oldTime[0],oldTime[1], oldTime[2]) + aDay
+        self.setDate(entry, newTime.timetuple())
+        
+    def removeOneDay(self, entry, event):
+        oldTime = self.getDate(entry)
+        aDay = datetime.timedelta(days=-1)
+        newTime = datetime.datetime(oldTime[0],oldTime[1], oldTime[2]) + aDay
+        self.setDate(entry, newTime.timetuple())
+  
+            
+    
   ##  def setNextFocus(self,oldEntry, event, iOldTabOrder):
 ##        # cle = cuon.Windows.cyr_load_entries.cyr_load_entries()
 ##        print iOldTabOrder
@@ -360,8 +409,8 @@ class windows(MyXML, gladeXml, messages):
                     self.oUser.userEncoding = result['encoding']
                 self.oUser.userPdfEncoding = 'latin-1'
 
-                self.oUser.userDateTimeFormatString = "%d.%m.%Y"
-                self.oUser.userTimeFormatString = "%H:%M"
+                #self.oUser.userDateTimeFormatString = "%x %X"
+                #self.oUser.userTimeFormatString = "%H:%M"
 
                 self.oUser.serverAddress = None
                 self.oUser.userSQLDateFormat = 'DD.MM.YYYY'

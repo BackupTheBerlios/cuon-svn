@@ -162,6 +162,7 @@ class User:
         self.dicUser['Encoding'] = self.userEncoding
         self.dicUser['Encode'] = self.Encode
         self.dicUser['DateTimeformatString'] = self.userDateTimeFormatString
+        self.dicUser['DateformatString'] = self.userDateFormatString
         self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         #self.dicUser['serverAddress'] = self.serverAddress
         self.dicUser['SQLDateFormat'] = self.userSQLDateFormat
@@ -191,6 +192,8 @@ class User:
         self.sqlDicUser['Encoding'] = self.userEncoding
         self.sqlDicUser['Encode'] = self.Encode
         self.sqlDicUser['DateTimeformatString'] = self.userDateTimeFormatString
+        self.sqlDicUser['DateformatString'] = self.userDateFormatString
+
         self.sqlDicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         #self.sqlDicUser['serverAddress'] = self.serverAddress
         self.sqlDicUser['SQLDateFormat'] = self.userSQLDateFormat

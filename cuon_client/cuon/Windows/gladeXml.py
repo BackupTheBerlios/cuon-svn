@@ -18,7 +18,6 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
-from gtk import TRUE, FALSE
 import cPickle
 import cuon.TypeDefs
 from cuon.Databases.dumps import dumps
@@ -37,7 +36,7 @@ class gladeXml(dumps):
         self.dictEnabledMenuItems = {}
         self.td = self.loadObject('td')
         self.mainwindowTitle = "C.U.O.N."
-        self.xmlAutoconnect = FALSE
+        self.xmlAutoconnect = False
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.accel_group = gtk.AccelGroup()
         self.dicAccelKeys = {}
@@ -97,7 +96,7 @@ class gladeXml(dumps):
                                
                 self.xml.signal_autoconnect(nameFuncMap)
 
-            self.xmlAutoconnect = TRUE
+            self.xmlAutoconnect = True
 
         
     def getWidget(self, sName):
@@ -118,12 +117,12 @@ class gladeXml(dumps):
     def enableAllMenuItems(self):
         for i in self.liAllMenuItems:
             if i != None:
-                i.set_sensitive(TRUE)
+                i.set_sensitive(True)
 
     def disableAllMenuItems(self):
         for i in self.liAllMenuItems:
             if i != None:
-                i.set_sensitive(FALSE)
+                i.set_sensitive(False)
 
     
     def addEnabledMenuItems(self, sName, sMenuItem, cKey = None):
@@ -155,7 +154,7 @@ class gladeXml(dumps):
             for i in liMenuItems:
                 if i != None:
                     print sName
-                    i.set_sensitive(TRUE)
+                    i.set_sensitive(True)
                     print i.get_name()
                     
                 else:
@@ -166,7 +165,7 @@ class gladeXml(dumps):
             liMenuItems =  self.dictEnabledMenuItems[sName]
             for i in liMenuItems:
                 if i != None:
-                    i.set_sensitive(FALSE)
+                    i.set_sensitive(False)
                 else:
                     print 'No Menuitem'
             

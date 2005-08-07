@@ -380,7 +380,7 @@ class SingleData(gladeXml, logs):
                     #self.fillExternalWidget(sValue, id)
                     self.fillExternalWidget(sValue, oneRecord[sValue])
                 else:
-                    # Wenn nichts drin steht (eigenart von PostgreSQL)
+                    
                     # self.out( type(sValue))
                     print sValue, type(sValue)
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
@@ -399,7 +399,10 @@ class SingleData(gladeXml, logs):
                     elif entry.getVerifyType() == 'numeric' and isinstance(sValue, types.FloatType):
                         sValue = `round(sValue,entry.getRound())`
                        
-                    
+                    if entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
+                        #sValue = sValue.encode(self.sCoding)
+                        print 'date string = ', sValue
+                        
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                     #    dt = DateTime.DateTimeFrom(sValue)
                     #dt = DateTime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
@@ -437,6 +440,7 @@ class SingleData(gladeXml, logs):
                         widget.set_active(sValue)
                             
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
+                        print self.sqlDicUser['DateTimeformatString']
                         newDate = time.strptime(sValue, self.sqlDicUser['DateTimeformatString'] )
                         print newDate
                         widget.set_time(int(time.mktime(newDate)))
@@ -470,6 +474,9 @@ class SingleData(gladeXml, logs):
                         newTime = time.localtime(widget.get_time())
         #                print "Datum und Zeit"
         #                print newTime
+                        #if entry.getVerifyType() == 'date':
+                         #   sValue = time.strftime(self.sqlDicUser['DateformatString'], newTime)
+                        #else:
                         sValue = time.strftime(self.sqlDicUser['DateTimeformatString'], newTime)
         #                print sValue
                     elif string.count(str(widget), "GtkComboBoxEntry") > 0:
@@ -518,7 +525,7 @@ class SingleData(gladeXml, logs):
                     # self.out( oValue)
                     # self.out( '++++++++++++++++++++++++++++++++++')
 
-                if sVerify  == 'int':
+                elif sVerify  == 'int':
                     # self.out( oValue,self.INFO)
                     if oValue == '':
                         oValue = 0
@@ -540,7 +547,7 @@ class SingleData(gladeXml, logs):
                     else:
                         oValue = 0
 
-                if sVerify  == 'float':
+                elif sVerify  == 'float':
                     # self.out( oValue)
                     if oValue == '':
                         oValue = 0.0
@@ -558,6 +565,9 @@ class SingleData(gladeXml, logs):
                     else:
                         oValue = 0.0
 
+                elif sVerify == 'date' :
+                    if oValue == '':
+                        oValue = '01.01.1900'
 
 
 
@@ -665,6 +675,13 @@ class SingleData(gladeXml, logs):
         self.ID = -1
         self.setEmptyEntries()
 
+    def isNewRecord(self):
+        ok = False
+        if self.ID == -1:
+            ok = True
+        return ok 
+        
+        
         
     
     def setEmptyEntries(self):
