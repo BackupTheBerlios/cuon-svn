@@ -92,7 +92,7 @@ class prefsFinancewindow(windows):
         self.singleFinanceAccountInfo.setGladeXml(self.xml)
         self.singleFinanceAccountInfo.setTreeFields( ['account_number', 'designation'] )
         self.singleFinanceAccountInfo.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleFinanceAccountInfo.setTreeOrder('account_number')
+        self.singleFinanceAccountInfo.setTreeOrder('account_plan_number, account_number')
         self.singleFinanceAccountInfo.setListHeader([_('Account-Number'), _('Designation')])
 
         #self.singleFinanceAccountInfo.sWhere  ='where articles_number = ' + `self.singlePrefsFinance.ID`
@@ -280,17 +280,25 @@ class prefsFinancewindow(windows):
         liAdr = self.singleAddress.getAddress(long(self.getWidget( 'eAddressNumber').get_text()))
         eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
 
+    def on_eAcctAcctPlan_changed(self, entry):
+        print entry
+        s = entry.get_text()
+        if s:
+            des = self.rpc.callRP('src.Finances.py_get_AccountPlanNumber', s, self.oUser.getSqlDicUser())
+            if des:
+                self.getWidget('eAcctPlanText').set_text(des)
+        else:
+            self.getWidget('eAcctPlanText').set_text('')
 
     # search button
     def on_bSearch_clicked(self, event):
         self.out( 'Searching ....', self.ERROR)
-        sNumber = self.getWidget('eFindNumber').get_text()
-        sDesignation = self.getWidget('eFindDesignation').get_text()
-        self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
-        self.singlePrefsFinance.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
-        self.out(self.singlePrefsFinance.sWhere, self.ERROR)
-        self.refreshTree()
-
+        sName = self.getWidget('eFindName').get_text()
+        sDesignation = self.getWidget('eFindDescription').get_text()
+        #self.out('Name and City = ' + `sName` + ', ' + sDesignation, self.ERROR)
+        self.Search = True
+        self.tabChanged()
+        
                      
 
     def refreshTree(self):
@@ -402,8 +410,11 @@ class prefsFinancewindow(windows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('info')
             self.editAction = 'editInfo'
-            # fill box_entry
-            
+            # SEARCH FOR iNFO
+            if self.Search:
+                self.singleFinanceAccountInfo.sWhere = 'where account_number ~* \'.*' + self.searchName + '.*\' and designation ~* \'.*' + self.searchDesignation + '.*\''
+                #self.out(self.singlePrefsFinance.sWhere, self.ERROR)
+        
             print 'Seite 2'
         elif self.tabOption == self.tabAcctPlan:
             self.disableMenuItem('tabs')
@@ -417,3 +428,5 @@ class prefsFinancewindow(windows):
         self.refreshTree()
         self.enableMenuItem(self.editAction)
         self.editEntries = FALSE
+        self.Search = False
+        

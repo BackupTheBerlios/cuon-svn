@@ -495,7 +495,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="lFindName">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Name1</property>
+	      <property name="label" translatable="yes">Name</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -514,7 +514,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindname">
+	    <widget class="GtkEntry" id="eFindName">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -2211,25 +2211,59 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eAcctAcctPlan">
+		<widget class="GtkHBox" id="hbox4">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="editable">True</property>
-		  <property name="visibility">True</property>
-		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
-		  <property name="has_frame">True</property>
-		  <property name="invisible_char">*</property>
-		  <property name="activates_default">False</property>
-		  <signal name="activate" handler="on_eAcctAcctPlan_activate" last_modification_time="Tue, 02 Aug 2005 12:05:00 GMT"/>
-		  <accelerator key="F1" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkEntry" id="eAcctAcctPlan">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <property name="width_chars">6</property>
+		      <signal name="changed" handler="on_eAcctAcctPlan_changed" last_modification_time="Sun, 07 Aug 2005 17:47:58 GMT"/>
+		      <accelerator key="F1" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eAcctPlanText">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">False</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
-		  <property name="y_options"></property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
 	    </widget>

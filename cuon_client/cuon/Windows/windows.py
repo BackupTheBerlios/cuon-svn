@@ -44,6 +44,7 @@ class windows(MyXML, gladeXml, messages):
         gladeXml.__init__(self)
         MyXML.__init__(self)
         messages.__init__(self)
+        self.Search = False
         
         #xmlrpc.__init__(self)
         

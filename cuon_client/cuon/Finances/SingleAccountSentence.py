@@ -46,3 +46,4 @@ class SingleAccountSentence(SingleData):
         
         return dicEntries
         
+    
