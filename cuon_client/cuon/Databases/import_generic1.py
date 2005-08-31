@@ -18,19 +18,23 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
+import string
+
 from cuon.Misc.fileSelection import fileSelection
-import cuon.Addresses.SingleAddress
+import SingleImport
+
 
 
 class import_generic1(fileSelection):
     
-    def __init__(self):
+    def __init__(self, allTables):
         
         fileSelection.__init__(self)
         self.iFile = None
-        self.fromChangedValue = ' '
-        self.toChangedValue = ';'
-        
+        self.splitValue = ';'
+        self.fromChangedValue = None
+        self.toChangedValue = ''
+        self.allTables = allTables
         
         
     def on_ok_button1_clicked(self, event):
@@ -42,39 +46,98 @@ class import_generic1(fileSelection):
         print self.iFileName
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+
+        ctrlFile = open(self.iFileName)
+        inputFile = None
+        importTable = None
+        importHeader = None
         
-        importFile = open(self.iFileName)
-        #exportFile = open('/home/jh/exp2.asc','wa')
+        liColumns = []
+
+        
+        if ctrlFile:
+            s = ctrlFile.readline()
+            while s:
+                liS = s.split('=')
+                if liS:
+                    for i in range(len(liS)):
+                        liS[i] = liS[i].strip()
+                        liS[0] = liS[0][0:len(liS[0])]
+                        print '1:', `liS`
+                    if liS[0] == 'filename':
+                        inputFile = liS[1]
+                    if liS[0] == 'table':
+                        importTable = liS[1]
+                    if liS[0] == 'splitvalue':
+                        self.splitValue = liS[1]
+                    if liS[0] == 'from_changed_value':
+                        self.fromChangedValue = liS[1]
+                    if liS[0] == 'to_changed_value':
+                        self.toChangedValue = liS[1]
+    
+                    if liS[0] == 'header':
+                        importHeader = liS[1]        
+                    if liS[0] == 'column':
+                        s2 = liS[1]
+                        if s2:
+                            liS2 = s2.split(',')
+                            print 'liS2', `liS2`
+                            dicColumn = {}
+                            dicColumn['name'] = liS2[0].strip()
+                            dicColumn['field'] = liS2[1].strip()
+                            liColumns.append(dicColumn)
+                            print 'licolumns-0', `liColumns`
+                s = ctrlFile.readline()
+            
+            print 'licolumns', `liColumns`
+                        
+            ctrlFile.close()
+        
+        importFile = open(inputFile)
+
         s1 = importFile.readline()
         lS2 = s1.split(self.fromChangedValue)
-        # Headlines
-        # for exmple 
-        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
-        #
-        oSingleAddress = cuon.Addresses.SingleAddress.SingleAddress()
+##        # Headlines
+##        # for exmple 
+##        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
+##        #
+        
+        oSingleImport = SingleImport.SingleImport(self.allTables)
+        oSingleImport.setImportTable(importTable)
+            
+        
         
         s1 = importFile.readline()
+        if importHeader.upper() == 'YES':
+                    s1 = importFile.readline()
+                    
         while s1:
             print s1
             print '----'
-            lS1 = s1.split(self.fromChangedValue)
-            s1 = s1.replace(self.fromChangedValue,self.toChangedValue)
+            if self.fromChangedValue:
+                s1 = s1.replace(self.fromChangedValue,self.toChangedValue)
+            lS1 = s1.split(self.splitValue)
+            
             #exportFile.write(s1)
-            print lS1
+            #print lS1
             # now set the values
             dicValues = {}
-            
+            for i in range(len(liColumns)):
+                dicValues[liColumns[i]['name']] = [lS1[i].strip(),liColumns[i]['field']]
+
+            print `dicValues`
             # verify Fields
-            dicValues = oSingleAddress.verifyValues(dicValues)
-            
+            dicValues = oSingleImport.verifyValues(dicValues)
+          
             # save to Database
-            oSingleAddress.saveExternalData(dicValues)
+            oSingleImport.newRecord()
+            
+            oSingleImport.saveExternalData(dicValues)
             
             s1 = importFile.readline()
-            
+            #s1 = None
         importFile.close()
-        print lS2
-        #exportFile.close()
+
             
 
         

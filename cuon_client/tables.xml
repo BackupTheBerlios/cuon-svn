@@ -636,32 +636,142 @@
     </field>
     
 </table>    
+
+
+  <!--table: biblio-->
+
+  <table>
+    <nameOfTable>biblio</nameOfTable>
+
+    <x>52</x>
+    <y>15</y>
+
+    <specials>inherits (t_standard);</specials>
+
+    <field>
+      <name>title</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+
+    <field>
+      <name>author</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>publisher</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+
+    <field>
+      <name>series</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+
+    <field>
+      <name>year</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   <field>
+      <name>month</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   <field>
+      <name>isbn</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>70</size>
+      <default />
+      <comment />
+    </field>
+   <field>
+      <name>description</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   <field>
+      <name>page</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+</table>
+
+
   <!--table: userlogin-->
 
   <table>
     <nameOfTable>userlogin</nameOfTable>
 
     <x>52</x>
-
     <y>15</y>
 
     <specials>inherits (t_standard);</specials>
 
     <field>
       <name>username</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>16</size>
-
       <default />
-
       <comment />
     </field>
 

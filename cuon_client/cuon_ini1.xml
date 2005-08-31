@@ -136,7 +136,11 @@
       <Entry-File>clients.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_clients.xml</Entry-FileValue>
     </Entries>
-
+  <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>biblio.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_biblio.xml</Entry-FileValue>
+    </Entries>
 
 
   </Entry_Init_Files>
@@ -228,7 +232,11 @@
       <Glade-File>cashAccountBook.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
     </GladeEntries>
-
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>biblio.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/biblio.glade2</Glade-FileValue>
+    </GladeEntries>
   </Glade_Init_Files>
   <Grant_Init_Files>	
     <GrantEntries>

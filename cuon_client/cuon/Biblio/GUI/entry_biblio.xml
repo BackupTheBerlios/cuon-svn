@@ -1,0 +1,123 @@
+<entries_for_table>
+  <table>
+    <table_name>biblio</table_name>
+    <entry>
+      <name>eTitle</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>title</sql_field>
+      <duty>YES</duty>
+      
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    <entry>
+      <name>eDesignation</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+
+    <entry>
+      <name>eAuthor</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>author</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>ePublisher</name>
+      <type>textline</type>
+      <size>150</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>publisher</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eSeries</name>
+      <type>textline</type>
+      <size>150</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>series</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+
+    <entry>
+      <name>eYear</name>
+      <type>textline</type>
+      <size>6</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>year</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+
+    <entry>
+      <name>eMonth</name>
+      <type>textline</type>
+      <size>6</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>month</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+
+    <entry>
+      <name>eISBN</name>
+      <type>textline</type>
+      <size>70</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>isbn</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+   <entry>
+      <name>tvDescription</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>description</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+   <entry>
+      <name>ePage</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>page</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+
+  </table>
+  
+  </entries_for_table>

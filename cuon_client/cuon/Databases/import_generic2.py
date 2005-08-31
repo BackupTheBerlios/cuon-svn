@@ -43,6 +43,8 @@ class import_generic2(fileSelection):
         print self.iFileName
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+
+        
         
         importFile = self.readDocument(self.iFileName)
 

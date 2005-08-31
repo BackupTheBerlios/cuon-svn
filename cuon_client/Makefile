@@ -117,6 +117,11 @@ src_finances_ib =  ./cuon/Finances/InvoiceBook/*.py
 
 dest_finances = $(dest_cuon)/Finances
 
+src_biblio = ./cuon/Biblio/*.py
+dest_biblio = $(dest_cuon)/Biblio
+
+
+
 
 
 
@@ -163,6 +168,7 @@ all :
 	cp $(src_finances_misc) $(dest_finances)
 	cp $(src_finances_cab) $(dest_finances)
 	cp $(src_finances_ib) $(dest_finances) 
+	if [ ! -d $(dest_biblio) ] ; then mkdir $(dest_biblio) ; fi ; cp $(src_biblio) $(dest_biblio) 
 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
