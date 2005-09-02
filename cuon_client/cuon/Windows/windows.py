@@ -55,7 +55,19 @@ class windows(MyXML, gladeXml, messages):
         self.dicUserKeys = None
         self.loadUserInfo()
         
+        self.ModulNumber = 1
+        self.MN = {}
+        self.MN['Client'] = 1000
+        self.MN['Address'] = 2000
+        self.MN['Articles'] = 3000
+        self.MN['Order'] = 4000
+        self.MN['Stock'] = 5000
+        self.MN['DMS'] = 11000
+        self.MN['Biblio'] = 12000
 
+        self.sWhereStandard = ''
+        self.sepInfo = {}
+        
         self.checkClient()
             
         self.td = self.loadObject('td')

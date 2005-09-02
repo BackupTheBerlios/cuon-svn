@@ -146,6 +146,68 @@
 
       <comment>set by trigger</comment>
     </field>
+   <!--separate Informations ID 1-->
+
+    <field>
+      <name>sep_info_1</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment>set by cuon-prg-modules</comment>
+    </field>
+
+   <!--separate Informations ID 2-->
+
+    <field>
+      <name>sep_info_2</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <!--separate Informations ID 3-->
+
+    <field>
+      <name>sep_info_3</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment>set by cuon-prg-modules</comment>
+    </field>   <default>0</default>
+
+      <comment>set by cuon-prg-modules</comment>
+    </field>
+
+
+
+
+
   </table>
 
 <!--table: account_plan-->
@@ -3734,6 +3796,61 @@
       <size>0</size>
 
       <default />
+
+      <comment />
+
+ </field>
+    <field>
+      <name>insert_at_date</name>
+
+      <type>timestamp</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+
+ </field>
+    <field>
+      <name>insert_at_date</name>
+
+      <type>timestamp</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+
+ </field>
+
+    <field>
+      <name>insert_from_module</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>1</default>
 
       <comment />
 

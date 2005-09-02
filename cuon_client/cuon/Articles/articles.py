@@ -27,6 +27,8 @@ import logging
 from cuon.Windows.chooseWindows  import chooseWindows
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
+import cuon.DMS.documentTools
+import cuon.DMS.dms
 
 
 class articleswindow(chooseWindows):
@@ -38,8 +40,8 @@ class articleswindow(chooseWindows):
 
         self.loadGlade('articles.xml')
         self.win1 = self.getWidget('ArticlesMainwindow')
-
-        
+        self.oDocumentTools = cuon.DMS.documentTools.documentTools()
+        self.ModulNumber = self.MN['Articles']        
         self.allTables = allTables
         self.singleArticle = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)
@@ -201,7 +203,12 @@ class articleswindow(chooseWindows):
         eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
 
 
- 
+    def on_bShowDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleArticle.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+        
 
   #Menu Purchase
         

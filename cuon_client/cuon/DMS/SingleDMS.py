@@ -41,6 +41,8 @@ class SingleDMS(SingleData):
         self.size_x = 0
         self.size_y = 0
         self.imageData = 'No Image'
+        self.ModulNumber = 0
+        
         
         #self.athread = threading.Thread(target = self.loadTable())
         #self.athread.start()
@@ -76,7 +78,8 @@ class SingleDMS(SingleData):
         dicValues['size_y'] = [self.size_y,'int']
         dicValues['document_image'] = [self.imageData,'text']
         dicValues['file_format'] = [self.fileFormat, 'string']
-     
+        dicValues['insert_from_module'] = [self.ModulNumber, 'int']
+        dicValues['sep_info_1'] = [self.sep_info_1, 'int']
         return dicValues
 
     def fillOtherEntries(self, oneRecord):

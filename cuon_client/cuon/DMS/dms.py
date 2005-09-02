@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2005]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -33,21 +33,23 @@ import bz2
 import re
 import binascii
 import gnome.ui
-
+import cuon.DMS.documentTools
 
 class dmswindow(windows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, module = 0, sep_info = None):
         gnome.init("cuon", "0")
         windows.__init__(self)
- 
+
+        self.ModulNumber = self.MN['DMS']
         
         self.openDB()
         self.oUser = self.loadObject('User')
         self.closeDB()
         print self.oUser
         print '-.............................'
+        self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         
 
         self.singleDMS = SingleDMS.SingleDMS(allTables)
@@ -56,17 +58,29 @@ class dmswindow(windows):
         self.loadGlade('dms.xml')
         self.win1 = self.getWidget('DMSMainwindow')
         self.scanfile = None
-
+        
 
         self.EntriesPreferences = 'dms.xml'
+        if module > 0:
+            self.ModulNumber = module
+            
+        self.sWhereStandard = ' where insert_from_modul = ' + `self.ModulNumber`
+        if sep_info:
+            self.sepInfo = sep_info
+            self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`
 
+            
+            
+        
         
         self.loadEntries(self.EntriesPreferences)
         
         
-        #self.singleDMS.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
+        self.singleDMS.sWhere = self.sWhereStandard
         self.singleDMS.setEntries(self.getDataEntries('dms.xml') )
         self.singleDMS.setGladeXml(self.xml)
+        self.singleDMS.ModulNumber = self.ModulNumber
+        
         self.singleDMS.setTreeFields( ['title', 'category'] )
         self.singleDMS.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleDMS.setTreeOrder('title')
@@ -102,12 +116,15 @@ class dmswindow(windows):
         
         print 'SANE version:', sane.init()
         print 'Available devices=', sane.get_devices()
-
+        
     
 
     def on_save1_activate(self, event):
         print 'save1'
+        self.singleDMS.sep_info_1 = self.sepInfo['1']
+        self.singleDMS.ModulNumber = self.ModulNumber
         self.singleDMS.save(['document_image'])
+        
         self.setEntriesEditable(self.EntriesPreferences, FALSE)
         self.tabChanged()
         
@@ -146,7 +163,11 @@ class dmswindow(windows):
                         sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
                     else:
                         sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
-
+            sWhere = sWhere + self.sWhereStandard
+            
+        else:
+            sWhere = self.sWhereStandard
+            
         print sWhere
         
         self.singleDMS.sWhere = sWhere
@@ -165,27 +186,9 @@ class dmswindow(windows):
     def on_bView_clicked(self, event):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat
-        exe = None
-        if self.singleDMS.fileFormat:
-            if self.singleDMS.fileFormat == self.dicUser['prefDMS']['fileformat']['scanImage']['format']:
-                print 'show'
-                s = bz2.decompress( self.singleDMS.imageData)
-              
-                newIm = Image.fromstring('RGB',[self.singleDMS.size_x, self.singleDMS.size_y], s)
-                newIm.show()
-            else:
-                for key in  self.dicUser['prefDMS']['fileformat'].keys():
-                    if self.singleDMS.fileFormat ==  self.dicUser['prefDMS']['fileformat'][key]['format']:
-                        exe =  self.dicUser['prefDMS']['fileformat'][key]['executable']
-                        sEXT =  self.dicUser['prefDMS']['fileformat'][key]['suffix'][0]
 
-            if exe:
-                self.singleDMS.createTmpFile(sEXT)
-                os.system(exe + ' ' + self.singleDMS.tmpFile)
-                        
-
-               
-                
+        self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser)
+        
             
         
     def refreshTree(self):
@@ -227,85 +230,9 @@ class dmswindow(windows):
         
 
     def scanDocument(self):
- ##       misc = cuon.Misc.misc.misc()
-        
-##        sc = self.dicUser['prefDMS']['scan_program']
-##        sc = sc + ' --mode ' + self.dicUser['prefDMS']['scan_mode']
-##        sc = sc + ' --resolution ' + self.dicUser['prefDMS']['scan_resolution']
-        
-##        print sc
-##        self.scanfile = self.dicUser['prefPath']['tmp'] +  misc.getRandomFilename('_scan.tmp')
-##        print self.scanfile
-##        sc = sc + ' >> ' + self.scanfile
-
-##        print sc
-##        ok = os.system(sc)
-##        print ok
-        
-        scanner=sane.open(self.dicUser['prefDMS']['scan_device'])
-        print 'SaneDev object=', scanner
-        print 'Device parameters:', scanner.get_parameters()
-        
-        # Set scan parameters
-        scanner.mode = self.dicUser['prefDMS']['scan_mode']
-        scanner.contrast=self.dicUser['prefDMS']['scan_contrast']
-        scanner.brightness=self.dicUser['prefDMS']['scan_brightness']
-        #scanner.white_level=self.dicUser['prefDMS']['scan_white_level']
-        scanner.depth=self.dicUser['prefDMS']['scan_depth']
-        scanner.br_x=self.dicUser['prefDMS']['scan_r']['x']
-        scanner.br_y=self.dicUser['prefDMS']['scan_r']['y']
-        scanner.resolution = self.dicUser['prefDMS']['scan_resolution']
-        
-        print 'Device parameters after setting:', scanner.get_parameters()
-        print scanner.contrast
-        print scanner.brightness
-        #print scanner.white_level
-        
-        # Initiate the scan
-        scanner.start()
-        
-        # Get an Image object
-        # (For my B&W QuickCam, this is a grey-scale image.  Other scanning devices
-        #  may return a
-        im=scanner.snap()
-        print 'Device parameters after snap:', scanner.get_parameters()
-
-        # Write the image out as a GIF file
-        #im.save('/home/jhamel/foo.png')
-        
-        im.show()
-        if (im.mode != "RGB"):
-            im = im.convert("RGB")
-
-        self.singleDMS.size_x = im.size[0]
-        self.singleDMS.size_y = im.size[1]
-        
-        s = im.tostring('raw','RGB')
-        print len(s)
-        s2 = bz2.compress(s)
-        print len(s2)
-        self.singleDMS.imageData = s2
-        
-
-        #newIm = Image.fromstring('RGB',[1024.0,768.0], s)
-        #newIm.show()
-        
-
+    
+        self.oDocumentTools.scanDocument(self.singleDMS, self.dicUser)
         
     def importDocument(self):
         sFile = self.getWidget('eImportFile').get_text()
-        if sFile:
-            print sFile
-            f = file(sFile,'rb')
-            b = f.read()
-            self.singleDMS.imageData = bz2.compress(b)
-            
-            for key in  self.dicUser['prefDMS']['fileformat'].keys():
-                for i in self.dicUser['prefDMS']['fileformat'][key]['suffix']:
-                    print i
-                    suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
-                    print suffix
-                    if i == suffix:
-                        self.singleDMS.fileFormat = self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat'][key]['format']
-
-                        
+        self.oDocumentTools.importDocument(self.singleDMS, self.dicUser, sFile)                        
