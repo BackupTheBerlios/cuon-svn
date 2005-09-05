@@ -554,11 +554,12 @@ class report(dumps, MyXML):
                             self.dicReportValues['pageDetails'] = liRecord
                             self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode)
                             self.printPageDetails(c)
-                            self.dicReportValues['pageHeader'] = self.getPageHeader(cyRootNode)
+
                             liRecord = []
-                            self.numberOfPage = self.numberOfPage + 1
+                            #self.numberOfPage = self.numberOfPage + 1
                             lineOffset = 0
                             self.printNewPage(c)
+                            self.dicReportValues['pageHeader'] = self.getPageHeader(cyRootNode)
                             self.printPageHeader(c)
 
                         lineOffset = lineOffset + self.dicPage['lineY']
@@ -834,7 +835,18 @@ class report(dumps, MyXML):
         
         os.system('gpdf  ' + self.pdfFile + ' &')
 
-
+    def printNewPage(self, c) :
+        print "report15 new page"
+        c.showPage()
+        #c.save()
+        #self.pdfStory.append(c)
+        self.dicReportData['fPageNumber'] += 1
+        
+    def closePDF(self, c):
+        print "report16 close page"
+        c.showPage()
+        c.save()
+        
 
     def printReportHeader(self, c) :
 
@@ -881,18 +893,7 @@ class report(dumps, MyXML):
                 print '-------------------------------------------------------------------------------------------'
                 self.printPdfField(c, dicField)
 
-    def printNewPage(self, c) :
-        print "report15 new page"
-        c.showPage()
-        #c.save()
-        #self.pdfStory.append(c)
-        self.dicReportData['fPageNumber'] += 1
-        
-    def closePDF(self, c):
-        print "report16 close page"
-        c.showPage()
-        c.save()
-        
+
                 
         
 
@@ -996,9 +997,9 @@ class report(dumps, MyXML):
             
         return self.liHeader
 
-    def createStandardPageHeader(self, numberOfPage, liRecord):
+    def createStandardPageHeader(self,  liRecord):
         liRows = []
-        print 'numberOfPage : ' + `numberOfPage`
+        #print 'numberOfPage : ' + `numberOfPage`
         dicPageInfo = self.dicHeaderInfo['pageinfo']
         dicHeader = copy.deepcopy(self.dicText)
        #dicHeader['text'] = 'Pagenumber: '
@@ -1007,7 +1008,7 @@ class report(dumps, MyXML):
         liRows.append(dicHeader)
 
         dicHeader = copy.deepcopy(self.dicText)
-        dicHeader['text'] = `numberOfPage`
+        #dicHeader['text'] = `numberOfPage`
         dicHeader['x1'] = dicPageInfo['x2']
         dicHeader['y1'] = dicPageInfo['y2']
         liRows.append(dicHeader)
@@ -1047,15 +1048,15 @@ class report(dumps, MyXML):
         #return liRecord, yRow
 
     def firstPage(self, liRecord):
-        self.numberOfPage = self.numberOfPage + 1
-        liRecord = self.createStandardPageHeader(self.numberOfPage, liRecord)
+        #self.numberOfPage = self.numberOfPage + 1
+        liRecord = self.createStandardPageHeader(liRecord)
         return liRecord
     
     def newPage(self, liRecord):
      
         yRow = self.dicText['TopMargin']
-        self.numberOfPage = self.numberOfPage + 1
-        liRecord = self.createStandardPageHeader(self.numberOfPage, liRecord)
+        #self.numberOfPage = self.numberOfPage + 1
+        liRecord = self.createStandardPageHeader(liRecord)
         liRecord.append('Pagebreak')
         
         return liRecord, yRow

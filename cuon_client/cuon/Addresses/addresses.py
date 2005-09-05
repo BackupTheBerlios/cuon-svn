@@ -58,7 +58,7 @@ class addresswindow(chooseWindows):
         self.singleMisc = SingleMisc.SingleMisc(allTables)
         self.singlePartner = SinglePartner.SinglePartner(allTables)
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
-            
+        self.allTables = allTables
        
         
         # self.singleAddress.loadTable()
@@ -229,14 +229,14 @@ class addresswindow(chooseWindows):
 
     def on_bShowDMS_clicked(self, event):
         print 'dms clicked'
-        if self.singleArticle.ID > 0:
+        if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
         
 
     def on_bShowPartnerDMS_clicked(self, event):
         print 'dms Partner clicked'
-        if self.singleArticle.ID > 0:
+        if self.singlePartner.ID > 0:
             print 'ModulNumber', self.MN['Partner']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
         
