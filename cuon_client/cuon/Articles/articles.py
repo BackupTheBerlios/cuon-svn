@@ -29,6 +29,8 @@ import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.DMS.documentTools
 import cuon.DMS.dms
+import cuon.Articles.lists_articles_number1
+
 
 
 class articleswindow(chooseWindows):
@@ -254,6 +256,15 @@ class articleswindow(chooseWindows):
     def on_SalesClear1_activate(self, event):
         print "delete Partner articles v2"
         self.singleArticleSales.deleteRecord()
+
+
+    # Menu Lists
+
+    def on_liArticlesNumber1_activate(self, event):
+        self.out( "lists startet")
+        Pdf = cuon.Articles.lists_articles_number1.lists_articles_number1()
+
+
 
 
 

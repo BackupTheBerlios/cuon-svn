@@ -64,7 +64,7 @@ class dmswindow(windows):
         if module > 0:
             self.ModulNumber = module
             
-        self.sWhereStandard = ' where insert_from_modul = ' + `self.ModulNumber`
+        self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
         if sep_info:
             self.sepInfo = sep_info
             self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`

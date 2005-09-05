@@ -101,8 +101,15 @@ class MyXML(logs):
         #    reader = PyExpat.Reader()
         #    doc = reader.fromUri(filename)
         #build a DOM tree from the file
-        #self.out("filename = " + `filename`) 
-        doc = minidom.parse(filename)
+        #self.out("filename = " + `filename`)
+        doc = None
+        try:
+            doc = minidom.parse(filename)
+        except Exception, param:
+                print 'unknown exception'
+                print `Exception`
+                print `param`
+        
         #self.out("Document =  " + doc.toxml() )
 
 

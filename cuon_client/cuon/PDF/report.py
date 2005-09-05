@@ -15,8 +15,9 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib import pagesizes
 from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
-from gtk import TRUE, FALSE
+from reportlab.lib.styles import getSampleStyleSheet
 
 from cuon.XML.MyXML import MyXML
 import copy
@@ -42,6 +43,11 @@ class report(dumps, MyXML):
         
         self.closeDB()
 
+        self.pdfDoc = None
+        self.pdfStory = None
+        self.pdfStyles = getSampleStyleSheet()
+        self.pdfStyle = None
+        
         
         self.dicReportData = {}
         
@@ -127,11 +133,11 @@ class report(dumps, MyXML):
         if sReportPath:
             
             fname = os.path.normpath( self.oUser.prefPath[sReportPath] + '/'  +  'report_' + sFile + '.xml')
-
+            print 'fname1', fname
         else:
 
             fname = os.path.normpath(os.environ['CUON_HOME'] + '/Resports/' +  'report_' + sFile + '.xml')
-        
+            print 'fname2', fname
         
         doc = self.readDocument(fname)
 
@@ -569,6 +575,8 @@ class report(dumps, MyXML):
         self.printPageFooter(c)
         self.dicReportValues['reportFooter']  = self.getReportFooter(cyRootNode)
         self.printReportFooter(c)
+        self.closePDF(c)
+        #self.pdfStory.append(c)
         
 
 
@@ -706,7 +714,7 @@ class report(dumps, MyXML):
                 # Parse formula
                 liFormula = string.split(dicEntry['formula'],' ')
                 formula = 'a = '
-                checkTrigger = TRUE
+                checkTrigger = True
                 print liFormula
                 if liFormula:
                     z = 0
@@ -729,7 +737,7 @@ class report(dumps, MyXML):
                                      print 'Function***********************************************1'
                                      print formula
                                      print 'Function***********************************************2'
-                                     checkTrigger = FALSE
+                                     checkTrigger = False
                                      z = 1
 
                                 elif liFormula[fw] == '!Var':
@@ -737,7 +745,7 @@ class report(dumps, MyXML):
                                     print 'Function***********************************************3'
                                     print formula
                                     print 'Function***********************************************4'
-                                    checkTrigger = FALSE
+                                    checkTrigger = False
 
                                 else:
                                     print liFormula[fw]
@@ -747,7 +755,7 @@ class report(dumps, MyXML):
                                     print 'Function***********************************************6' 
 
                             else:
-                                checkTrigger = TRUE
+                                checkTrigger = True
                             
                 if formula:
                     print formula
@@ -806,7 +814,11 @@ class report(dumps, MyXML):
     def createPdf(self, cyRootNode):
         self.out( 'createPdf')
        
- 
+        self.pdfDoc = SimpleDocTemplate(self.pdfFile)
+        self.pdfStory = [Spacer(1, 1 * inch)]
+        self.pdfStyle = self.pdfStyles['Normal']
+
+        
         c = canvas.Canvas(self.pdfFile, pagesize = self.dicText['Papersize'] )
                  
         self.startReport(c, cyRootNode)
@@ -818,7 +830,8 @@ class report(dumps, MyXML):
             print 'No Debug Mode'
             print self.oUser.getDicUser()
             
-        c.save()
+        #self.pdfDoc.build(self.pdfStory)
+        
         os.system('gpdf  ' + self.pdfFile + ' &')
 
 
@@ -869,9 +882,19 @@ class report(dumps, MyXML):
                 self.printPdfField(c, dicField)
 
     def printNewPage(self, c) :
-
-                
+        print "report15 new page"
         c.showPage()
+        #c.save()
+        #self.pdfStory.append(c)
+        self.dicReportData['fPageNumber'] += 1
+        
+    def closePDF(self, c):
+        print "report16 close page"
+        c.showPage()
+        c.save()
+        
+                
+        
 
 
     def printPdfField(self, c, dicField):
@@ -1008,10 +1031,16 @@ class report(dumps, MyXML):
 
     
     def testEndOfPage(self, yRow, papersizeHeight, offSet ):
-        ok = FALSE
-        if yRow + offSet > papersizeHeight:
+        ok = False
+        print "report17 test end of page"
+        print 'yRow', yRow
+        print 'offSet', offSet
+        print 'papersizeHeight',  papersizeHeight
+        print 'sum', yRow + offSet
+        
+        if  offSet > papersizeHeight:
             #liRecord, yRow  = self.newPage(liRecord)
-            ok = TRUE
+            ok = True
            
         return ok
     

@@ -27,14 +27,14 @@ from cuon.Windows.windows  import windows
 class selectionDialog1(windows):
 
     
-    def __init__(self):
+    def __init__(self, selDialog='addresses_search1.xml'):
 
         windows.__init__(self)
         
         # self.gladeName =  '/usr/share/cuon/glade/addresses_search1.glade2'
         # self.singleAddress.loadTable()
               
-        self.loadGlade('addresses_search1.xml')
+        self.loadGlade(selDialog)
         self.getWidget('fileselection1').hide()
         self.filedata = []
 

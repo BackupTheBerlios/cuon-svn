@@ -41,6 +41,9 @@ import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import datetime as DateTime
+import cuon.DMS.documentTools
+import cuon.DMS.dms
+
 
 
 class addresswindow(chooseWindows):
@@ -49,12 +52,13 @@ class addresswindow(chooseWindows):
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
-       
+        self.oDocumentTools = cuon.DMS.documentTools.documentTools()
+        
         self.singleAddress = SingleAddress.SingleAddress(allTables)
         self.singleMisc = SingleMisc.SingleMisc(allTables)
         self.singlePartner = SinglePartner.SinglePartner(allTables)
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
-                
+            
        
         
         # self.singleAddress.loadTable()
@@ -220,6 +224,22 @@ class addresswindow(chooseWindows):
     def on_delete1_activate(self, event):
         self.out( "delete addresses v2")
         self.singleAddress.deleteRecord()
+
+
+
+    def on_bShowDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleArticle.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+        
+
+    def on_bShowPartnerDMS_clicked(self, event):
+        print 'dms Partner clicked'
+        if self.singleArticle.ID > 0:
+            print 'ModulNumber', self.MN['Partner']
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
+        
 
     # Menu misc
     def on_MiscSave1_activate(self, event):

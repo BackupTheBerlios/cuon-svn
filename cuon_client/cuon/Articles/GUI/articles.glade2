@@ -304,6 +304,28 @@
 	      </child>
 	    </widget>
 	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="lists1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Lists</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="lists1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="articlenumber1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Articlenumber</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_liArticlesNumber1_activate" last_modification_time="Sun, 04 Sep 2005 10:43:06 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>

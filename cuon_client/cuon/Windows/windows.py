@@ -59,6 +59,8 @@ class windows(MyXML, gladeXml, messages):
         self.MN = {}
         self.MN['Client'] = 1000
         self.MN['Address'] = 2000
+        self.MN['Partner'] = 2100
+
         self.MN['Articles'] = 3000
         self.MN['Order'] = 4000
         self.MN['Stock'] = 5000

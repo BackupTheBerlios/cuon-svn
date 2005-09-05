@@ -29,23 +29,23 @@ import os.path
 import cuon.XMLRPC.xmlrpc
 
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_addresses_phone1
+import cuon.PDF.XML.report_articles_number1
 import copy
 
-class lists_addresses_phone1(selectionDialog1, standardlist):
+class lists_articles_number1(selectionDialog1, standardlist):
 
     
     def __init__(self):
-        selectionDialog1.__init__(self)
+        selectionDialog1.__init__(self,'articles_search1.xml')
         standardlist.__init__(self)
 
-        rep = cuon.PDF.XML.report_addresses_phone1.report_addresses_phone1()
+        rep = cuon.PDF.XML.report_articles_number1.report_articles_number1()
         self.dicReportData =  rep.dicReportData
 
         
-        print "lists_addresses_phone1 start"
+        print "lists_articles_number1 start"
         
-        sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('phonelist.pdf') ))
+        sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('articles_number1.pdf') ))
         sFile = self.setFileName ( _('Test' ))
  
       
@@ -61,7 +61,7 @@ class lists_addresses_phone1(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.callRP('src.Address.py_getPhonelist1', dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('src.Articles.py_getArticlelist1', dicSearchfields, self.dicUser)
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],types.UnicodeType):
@@ -73,24 +73,24 @@ class lists_addresses_phone1(selectionDialog1, standardlist):
         print dicResult
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         
-        self.dicResults['address'] = dicResult
-        self.loadXmlReport('addresses_phonelist1', 'ReportAddressLists')
+        self.dicResults['articles'] = dicResult
+        self.loadXmlReport('articles_number1', 'ReportArticleLists')
 
 
    
     def readSearchDatafields(self):
         dicSearchfields = {}
-        dicSearchfields['eLastnameFrom'] = self.getWidget('eLastnameFrom').get_text()
-        dicSearchfields['eLastnameTo'] = self.getWidget('eLastnameTo').get_text()
+        dicSearchfields['eNumberFrom'] = self.getWidget('eNumberFrom').get_text()
+        dicSearchfields['eNumberTo'] = self.getWidget('eNumberTo').get_text()
 
-        dicSearchfields['eFirstnameFrom'] = self.getWidget('eFirstnameFrom').get_text()
-        dicSearchfields['eFirstnameTo'] = self.getWidget('eFirstnameTo').get_text()
+        dicSearchfields['eDesignationFrom'] = self.getWidget('eDesignationFrom').get_text()
+        dicSearchfields['eDesignationTo'] = self.getWidget('eDesignationTo').get_text()
         
-        dicSearchfields['eCityFrom'] = self.getWidget('eCityFrom').get_text()
-        dicSearchfields['eCityTo'] = self.getWidget('eCityTo').get_text()
+ ##       dicSearchfields['eCityFrom'] = self.getWidget('eCityFrom').get_text()
+##        dicSearchfields['eCityTo'] = self.getWidget('eCityTo').get_text()
 
-        dicSearchfields['eCountryFrom'] = self.getWidget('eCountryFrom').get_text()
-        dicSearchfields['eCountryTo'] = self.getWidget('eCountryTo').get_text()
+##        dicSearchfields['eCountryFrom'] = self.getWidget('eCountryFrom').get_text()
+##        dicSearchfields['eCountryTo'] = self.getWidget('eCountryTo').get_text()
 
 
         return dicSearchfields
