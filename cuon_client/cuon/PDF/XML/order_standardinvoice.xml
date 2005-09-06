@@ -10,10 +10,29 @@
 
   <reportHeader>
     <posX1>40</posX1>
-    <posY1>100</posY1>
+    <posY1>40</posY1>
     <posX2>400</posX2>
-    <posY2>230</posY2>
+    <posY2>250</posY2>
     <resultSet>address</resultSet>
+    <entry>
+      <name>headimage</name>
+      <class>ImageURL</class>
+      <value>/users2/cuon/cyrus.jpg</value>
+      <type>string</type>
+
+      <format>%s</format>
+      <posX1>30</posX1>
+      <posY1>40</posY1>
+      <posX2>440</posX2>
+      <posY2>30</posY2>
+      <width>400</width>
+      <height>70</height>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
 
     <entry>
       <name>address</name>
@@ -23,7 +42,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>0</posY1>
+      <posY1>100</posY1>
       <posX2>180</posX2>
       <posY2>15</posY2>
       <font>Helvetica</font>
@@ -40,7 +59,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>15</posY1>
+      <posY1>115</posY1>
       <posX2>180</posX2>
       <posY2>30</posY2>
       <font>Helvetica</font>
@@ -57,7 +76,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>30</posY1>
+      <posY1>130</posY1>
       <posX2>180</posX2>
       <posY2>45</posY2>
       <font>Helvetica</font>
@@ -75,7 +94,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>45</posY1>
+      <posY1>145</posY1>
       <posX2>180</posX2>
       <posY2>60</posY2>
       <font>Helvetica</font>
@@ -93,7 +112,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>70</posY1>
+      <posY1>170</posY1>
       <posX2>180</posX2>
       <posY2>85</posY2>
       <font>Helvetica</font>
@@ -111,7 +130,7 @@
       <resultSet>address</resultSet>
       <format>%s</format>
       <posX1>20</posX1>
-      <posY1>100</posY1>
+      <posY1>200</posY1>
       <posX2>130</posX2>
       <posY2>150</posY2>
       <font>Helvetica</font>

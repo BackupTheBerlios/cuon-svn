@@ -27,6 +27,7 @@ from cuon.Databases.dumps import dumps
 import os
 import os.path
 import string
+import math
 
 
 
@@ -614,11 +615,20 @@ class report(dumps, MyXML):
         dicEntry = {}
        
         dicEntry['eName']  =  self.getEntrySpecification(cyNode,'name').encode('ascii')
-    
+        try:
+            dicEntry['width'] =  int(self.getEntrySpecification(cyNode,'width'))
+        except:
+            dicEntry['width'] =  0
+        try:
+            dicEntry['height'] =  int(self.getEntrySpecification(cyNode,'height'))
+        except:
+            dicEntry['height'] =  0
+            
         dicEntry['x1'] =  int(self.getEntrySpecification(cyNode,'posX1'))
         dicEntry['x2'] =  int(self.getEntrySpecification(cyNode,'posX2'))
         dicEntry['y1'] =  int(self.getEntrySpecification(cyNode,'posY1'))
         dicEntry['y2'] =  int(self.getEntrySpecification(cyNode,'posY2'))
+        
         dicEntry['eType'] =  self.getEntrySpecification(cyNode,'type').encode('ascii')
         
         dicEntry['class'] =  self.getEntrySpecification(cyNode,'class').encode('ascii')
@@ -703,6 +713,13 @@ class report(dumps, MyXML):
             else:
                 eValue =  dicEntry['value']
                 print eValue
+
+        elif dicEntry['class'] == 'ImageURL':
+            if self.dicReportData.has_key( dicEntry['eName']):
+                eValue =  self.dicReportData[dicEntry['eName']]
+            else:
+                eValue =  dicEntry['value']
+                print eValue
                 
         elif dicEntry['class'] == 'Field':
             if self.dicReportData.has_key(dicEntry['eName']):
@@ -759,10 +776,13 @@ class report(dumps, MyXML):
                                 checkTrigger = True
                             
                 if formula:
-                    print formula
-                    exec formula
-                    print a
-                    eValue = a
+                    try:
+                        print formula
+                        exec formula
+                        print a
+                        eValue = a
+                    except:
+                        eValue = None
                 else:
                     eValue = None
 
@@ -923,13 +943,21 @@ class report(dumps, MyXML):
             p.rect(dicField['x1'],dicField['y1'], dicField['x2'] - dicField['x1']  , dicField['y2'] -  dicField['y1'])
             c.drawPath(p, stroke = 1, fill = 1)
 
-#            print dicField['x1']
-#            print dicField['x2']
-#           print dicField['y1']
-#            print dicField['y2']
-#            print dicField['grayScale']
-#            print '----------------------------------------------------'
+        elif dicField['class'] == 'ImageURL'  :
+            sImage = str(dicField['text'])
+            print 'ImageURL = ', sImage
+            nWidth = dicField['width'] 
+            nHeight =dicField['height'] 
+            print 'ImageURL values'
+            print 'x1', dicField['x1']
+            print 'x2', dicField['x2']
+            print 'y1', dicField['y1']
+            print 'y2', dicField['y2']
             
+            if nWidth > 0 and nHeight > 0:
+                c.drawImage(sImage, dicField['x1'] ,dicField['y1'], width = nWidth, height = nHeight)
+            else:
+                c.drawImage(sImage, dicField['x1'] ,dicField['y1'])
         else:
                 
             #            if dicField['eType'] == 'int':
