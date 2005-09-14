@@ -214,7 +214,8 @@ class stockwindow(chooseWindows):
         iArtNumber = self.getChangedValue('eArticleID')
         self.singleArticle.load(iArtNumber)
         firstRecord  = self.singleArticle.getFirstRecord()
-        self.getWidget('eGoodsArticleDesignation').set_text(firstRecord['designation'])
+        if firstRecord.has_key('designation'):
+            self.getWidget('eGoodsArticleDesignation').set_text(firstRecord['designation'])
 
         
     def refreshTree(self):

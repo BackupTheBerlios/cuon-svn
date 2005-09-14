@@ -291,6 +291,20 @@ class articleswindow(chooseWindows):
 
     # search button
     def on_bSearch_clicked(self, event):
+        self.searchArticle()
+
+
+    def on_eFindNumber_editing_done(self, event):
+        print 'Find Number'
+        self.searchArticle()
+
+    def on_eFindNumber_key_press_event(self, entry,event):
+        if self.checkKey(event,'NONE','Return'):
+            self.searchArticle()
+        
+
+
+    def searchArticle(self):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
@@ -298,8 +312,6 @@ class articleswindow(chooseWindows):
         self.singleArticle.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
         self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()
-
-                     
 
     def refreshTree(self):
         self.singleArticle.disconnectTree()

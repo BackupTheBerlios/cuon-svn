@@ -88,7 +88,8 @@ class windows(MyXML, gladeXml, messages):
         self.dicKeys = {}
         self.dicKeys['CTRL'] = gtk.gdk.CONTROL_MASK 
         self.dicKeys['SHIFT'] = gtk.gdk.SHIFT_MASK 
-        self.dicKeys['ALT'] = gtk.gdk.MOD1_MASK 
+        self.dicKeys['ALT'] = gtk.gdk.MOD1_MASK
+        self.dicKeys['NONE'] = 0 
         
         
         
@@ -246,8 +247,9 @@ class windows(MyXML, gladeXml, messages):
     def checkKey(self, event,sState, cKey):
         ok = False
         print 'keyval', event.keyval
+        print 'keyval-name', gtk.gdk.keyval_name(event.keyval)
         print 'state', event.state
-        if event.state and self.dicKeys[sState]:
+        if (event.state and self.dicKeys[sState])  or sState == 'NONE':
             print 'state is found'
             
             if gtk.gdk.keyval_name(event.keyval) == cKey :

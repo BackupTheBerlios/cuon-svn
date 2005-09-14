@@ -102,7 +102,7 @@ class SingleData(gladeXml, logs):
             #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
             liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.sqlDicUser, dicColumns )
             # print liRecords
-            firstRecord = []
+            firstRecord = {}
             if liRecords:
                 for r in range(len(liRecords)) :
                      record =  liRecords[r]
@@ -453,12 +453,13 @@ class SingleData(gladeXml, logs):
 
     def readEntries(self):
         try:
-            assert self.dicEntries != None
+            assert self.dicEntries != None 
             dicValues = {}
             # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
             for i in range(self.dicEntries.getCountOfEntries() ):
                 entry =  self.dicEntries.getEntryAtIndex(i)
                 try:
+                    
                     # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
                     print entry.getName()
                     widget = self.getWidget(entry.getName())
@@ -489,8 +490,13 @@ class SingleData(gladeXml, logs):
                         sValue = ''
 
 
-
-                dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
+                try:
+                    assert entry.getCreateSql() == '1'
+                    dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
+                except Exception, param:
+                    print 'no SQL-Field'
+                    
+                    
                 # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
 
             # self.out( 'dicValue by readEntries = ')
