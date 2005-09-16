@@ -23,7 +23,7 @@ import string
 
 import logging
 from cuon.Windows.windows  import windows
-import cuon.Login.User
+#import cuon.Login.User
 import SingleDMS
 import cuon.Misc.misc
 import os

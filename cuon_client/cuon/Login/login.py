@@ -25,7 +25,7 @@ import string
 import logging
 from cuon.Windows.windows  import windows
 from Crypto.Cipher import AES
-import cuon.Login.User
+import cuon.User.user
 
 class loginwindow(windows):
 
@@ -34,7 +34,7 @@ class loginwindow(windows):
 
         windows.__init__(self)
         self.eUserName = eFields[0]
-        self.oUser = cuon.Login.User.User()
+        self.oUser = cuon.User.user.User()
         
         self.loadGlade('login.xml')
    
@@ -81,7 +81,7 @@ class loginwindow(windows):
         #    self.oUser = userObj
         #else:
         #    
-        self.oUser = cuon.Login.User.User()
+        self.oUser = cuon.User.user.User()
         self.oUser.setUserName(username )
         sPw = self.getWidget('TPassword').get_text()
 

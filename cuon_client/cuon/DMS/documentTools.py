@@ -22,7 +22,7 @@ import string
 
 import logging
 
-import cuon.Login.User
+#import cuon.Login.User
 import SingleDMS
 import cuon.Misc.misc
 import os

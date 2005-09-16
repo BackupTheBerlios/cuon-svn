@@ -31,6 +31,10 @@ dest_typedefs = $(dest_cuon)/TypeDefs
 src_login = ./cuon/Login/*.py
 dest_login = $(dest_cuon)/Login
 
+src_user = ./cuon/User/*.py
+dest_user = $(dest_cuon)/User
+
+
 src_misc = ./cuon/Misc/*.py
 dest_misc = $(dest_cuon)/Misc
 
@@ -141,6 +145,7 @@ all :
 
 	if [ ! -d $(dest_server) ] ; then mkdir $(dest_server) ; fi ; cp $(src_server) $(dest_server) 
 	if [ ! -d $(dest_login) ] ; then mkdir $(dest_login) ; fi ; cp $(src_login) $(dest_login) 
+	if [ ! -d $(dest_user) ] ; then mkdir $(dest_user) ; fi ; cp $(src_user) $(dest_user) 
 	if [ ! -d $(dest_addresses) ] ; then mkdir $(dest_addresses) ; fi ; cp $(src_addresses) $(dest_addresses) 
 	if [ ! -d $(dest_articles) ] ; then mkdir $(dest_articles) ; fi ; cp $(src_articles) $(dest_articles) 
 	if [ ! -d $(dest_clients) ] ; then mkdir $(dest_clients) ; fi ; cp $(src_clients) $(dest_clients) 

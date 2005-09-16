@@ -212,6 +212,8 @@
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">*</property>
 		  <property name="activates_default">False</property>
+		  <signal name="editing_done" handler="on_eFindTitle_editing_done" last_modification_time="Wed, 14 Sep 2005 17:15:04 GMT"/>
+		  <signal name="key_press_event" handler="on_eFindTitle_key_press_event" last_modification_time="Wed, 14 Sep 2005 17:15:24 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -253,6 +255,8 @@
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">*</property>
 		  <property name="activates_default">False</property>
+		  <signal name="editing_done" handler="on_eFindDesignation_editing_done" last_modification_time="Wed, 14 Sep 2005 17:15:47 GMT"/>
+		  <signal name="key_press_event" handler="on_eFindDesignation_key_press_event" last_modification_time="Wed, 14 Sep 2005 17:16:00 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -306,6 +310,8 @@
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">*</property>
 		  <property name="activates_default">False</property>
+		  <signal name="editing_done" handler="on_eFindYear_editing_done" last_modification_time="Wed, 14 Sep 2005 17:16:54 GMT"/>
+		  <signal name="key_press_event" handler="on_eFindYear_key_press_event" last_modification_time="Wed, 14 Sep 2005 17:17:02 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -346,6 +352,8 @@
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">*</property>
 		  <property name="activates_default">False</property>
+		  <signal name="editing_done" handler="on_eFindAuthor_editing_done" last_modification_time="Wed, 14 Sep 2005 17:17:15 GMT"/>
+		  <signal name="key_press_event" handler="on_eFindAuthor_key_press_event" last_modification_time="Wed, 14 Sep 2005 17:17:27 GMT"/>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>

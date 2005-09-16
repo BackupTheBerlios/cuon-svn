@@ -301,6 +301,14 @@ class articleswindow(chooseWindows):
     def on_eFindNumber_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
+            
+    def on_eFindDesignation_editing_done(self, event):
+        print 'Find Designation'
+        self.searchArticle()
+
+    def on_eFindDesignation_key_press_event(self, entry,event):
+        if self.checkKey(event,'NONE','Return'):
+            self.searchArticle()
         
 
 

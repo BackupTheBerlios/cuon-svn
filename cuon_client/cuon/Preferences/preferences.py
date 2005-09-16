@@ -23,7 +23,7 @@ import string
 
 import logging
 from cuon.Windows.windows  import windows
-import cuon.Login.User
+#import cuon.User.user
 import SinglePreferences
 import _sane as sane
 
