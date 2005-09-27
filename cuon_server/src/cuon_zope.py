@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import random	
-
+import base64
 
 CUON_FS = None
 #sys.path.append('/usr/lib/zope/lib/python')
@@ -41,9 +41,13 @@ def getInfoOfTable(sNameOfTable):
     db.close()
     return t2
 
+def packing():
+    storage = FileStorage.FileStorage(CUON_FS)
+    db = DB(storage)
+    db.pack()
 
 
-def saveInfoOfTable(self, sNameOfTable, table ):
+def saveInfoOfTable(sNameOfTable, table ):
 #    t1 = cyr_table.cyr_table()
     t1 = table
     writeLog(`t1`)
@@ -62,12 +66,9 @@ def saveInfoOfTable(self, sNameOfTable, table ):
         pass
     connection.close()
     db.close()
+    packing()
 
 
-def packing(self):
-    storage = FileStorage.FileStorage(CUON_FS)
-    db = DB(storage)
-    db.pack()
     
 
 def getInfoOfEntry(sNameOfEntry):
@@ -87,7 +88,7 @@ def getInfoOfEntry(sNameOfEntry):
 
 
 
-def saveInfoOfEntry(self, sNameOfEntry, table ):
+def saveInfoOfEntry( sNameOfEntry, table ):
 #    t1 = cyr_table.cyr_table()
     t1 = table
     
@@ -103,6 +104,7 @@ def saveInfoOfEntry(self, sNameOfEntry, table ):
         
     connection.close()
     db.close()
+    packing()
 
 def createPsql(sDatabase, sHost, sPort, sUser,  sSql):
     

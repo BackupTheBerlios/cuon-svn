@@ -119,6 +119,28 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="user1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">User</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="user1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="user1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">User</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_user1_activate" last_modification_time="Fri, 16 Sep 2005 11:44:15 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="export1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Export</property>

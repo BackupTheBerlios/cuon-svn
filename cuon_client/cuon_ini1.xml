@@ -1,5 +1,20 @@
 <IniFile>
   <Entry_Init_Files>	
+  <Entries>	
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>user.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_user.xml</Entry-FileValue>
+    </Entries>
+  <Entries>	
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>user_groups.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_user_groups.xml</Entry-FileValue>
+    </Entries>
+  <Entries>	
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>user_clients.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_user_clients.xml</Entry-FileValue>
+    </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>addresses.xml</Entry-File>
@@ -25,6 +40,7 @@
       <Entry-File>articles.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_articles.xml</Entry-FileValue>
     </Entries>
+ 
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_purchase.xml</Entry-File>
@@ -153,6 +169,13 @@
       <Glade-FileValue>/usr/share/cuon/glade/login.glade2</Glade-FileValue>
     </GladeEntries>
 
+  <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>user.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/user.glade2</Glade-FileValue>
+    </GladeEntries>
+
+
      <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>fileselection.xml</Glade-File>
@@ -213,6 +236,12 @@
       <Glade-FileValue>/usr/share/cuon/glade/stock.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
+<GladeEntries>	
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>stockgoods_search1.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/stockgoods_search1.glade2</Glade-FileValue>
+</GladeEntries>
+
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>reportGenerator.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/reportGenerator.glade2</Glade-FileValue>

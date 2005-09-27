@@ -285,7 +285,23 @@ class windows(MyXML, gladeXml, messages):
         newTime = datetime.datetime(oldTime[0],oldTime[1], oldTime[2]) + aDay
         self.setDate(entry, newTime.timetuple())
   
-            
+    def getWhere(self, args):
+        sWhere = None
+        args.reverse()
+        firstWhere = True
+        while args:
+            s = args.pop()
+            v = args.pop()
+            #print 'args s = ', s
+            #print 'args v = ', v
+            if v:
+                if firstWhere:
+                    sWhere = " where " + s +" ~* \'.*" + v + '.*\''
+                    firstWhere = False
+                else:
+                    sWhere = sWhere +" and " + s + ' ~* \'.*' + v + '.*\''
+                    
+        return sWhere
     
   ##  def setNextFocus(self,oldEntry, event, iOldTabOrder):
 ##        # cle = cuon.Windows.cyr_load_entries.cyr_load_entries()
@@ -463,3 +479,4 @@ class windows(MyXML, gladeXml, messages):
         print self.oUser.getDicUser()
         print '__________________________________________________________'
         
+

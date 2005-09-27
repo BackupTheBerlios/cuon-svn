@@ -56,7 +56,7 @@ class gladeXml(dumps):
         self.setXmlAutoconnect()
 
     def writeGlade(self, fname):
-        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
+        xml1  = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)))
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
 
@@ -67,7 +67,7 @@ class gladeXml(dumps):
 
     def loadGladeComplete(self, gladeName):
         fname = 'glade_' + gladeName
-        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
+        xml1  =eval(self.decode( self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)))
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
 
@@ -176,7 +176,7 @@ class gladeXml(dumps):
 
     def writeAllGladeFiles(self):
 
-        nameOfGladeFiles  = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfGladeFiles'))
+        nameOfGladeFiles  = cPickle.loads(eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfGladeFiles'))))
         print 'nameOfGladefiles' + `nameOfGladeFiles`
         print len(nameOfGladeFiles)
         

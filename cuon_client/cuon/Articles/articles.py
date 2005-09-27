@@ -317,7 +317,10 @@ class articleswindow(chooseWindows):
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
         self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
-        self.singleArticle.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+        
+        #self.singleArticle.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+        liSearch = ['number',sNumber, 'designation', sDesignation]
+        self.singleArticle.sWhere = self.getWhere(liSearch)
         self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()
 

@@ -138,6 +138,14 @@
       <this_group>cuon_admin</this_group>
       <comment></comment>
     </grant>
+<grant>
+      <nameOfGrant>cuon_select_rights_of_clients</nameOfGrant>
+      <this_grants>select </this_grants>
+      <this_tables>clients, clients_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+
      <grant>
       <nameOfGrant>cuon_all_rights_of_accounts1 </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>

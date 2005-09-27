@@ -110,7 +110,7 @@ class report(dumps, MyXML):
         
     def writeXmlReport(self, fname):
 
-        xml1  = self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)
+        xml1  = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)))
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
         #self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -122,7 +122,7 @@ class report(dumps, MyXML):
 
     def writeAllReportFiles(self):
 
-        nameOfReportFiles  = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfReportFiles'))
+        nameOfReportFiles  = cPickle.loads(eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfReportFiles'))))
         #print 'nameOfReportfiles' + `nameOfReportFiles`
         #print len(nameOfReportFiles)
         

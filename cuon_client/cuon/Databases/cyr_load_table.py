@@ -153,20 +153,20 @@ class cyr_load_table(MyXML, dumps):
         self.out( sNameOfTable)
         self.out( table.getName())
 #        self.out( cPickle.dumps(table))
-
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', sNameOfTable, cPickle.dumps(table) )
+        print "::::::::::::::::::::::::::", ` cPickle.dumps(table)`
+        self.rpc.callRP('src.Databases.py_saveInfoOfTable', sNameOfTable, self.doEncode(repr(cPickle.dumps(table) )))
         liColumns = table.getColumns()
         for i in liColumns:
             print 'save table-columns TTTZZ'
             print i.getName()
             co_name = sNameOfTable + '_' + i.getName()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable', co_name, cPickle.dumps(i) )
+            self.rpc.callRP('src.Databases.py_saveInfoOfTable', co_name, self.doEncode(repr(cPickle.dumps(i))) )
             print co_name
             print ' TTTTUU'
 
     def loadTable(self,sNameOfTable):
         self.openDB()
-        dictTable = self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfTable)
+        dictTable = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfTable)))
         self.out('*****************************************************************************ZZ')
         self.out(dictTable)
         self.out('****************************************************************************UU')
@@ -176,13 +176,14 @@ class cyr_load_table(MyXML, dumps):
         print 'table of Columns --> ' + str (table.nameOfColumns) 
         for i in table.nameOfColumns:
             #print i
-            sColumn = self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfTable + '_' + i)
+            sColumn = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfTable + '_' + i)))
             coColumn = cPickle.loads(sColumn)
             table.addColumn(coColumn)
             self.saveObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii'), coColumn) 
         #print table.nameOfColumns
         #print table.getCountOfColumns()
         self.closeDB()
+        #ok = self.rpc.callRP('src.Databases.py_packCuonFS')
         return table
 
 

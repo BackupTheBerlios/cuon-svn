@@ -15,6 +15,7 @@ import shelve
 import sys
 import os
 import pickle
+import base64
 
 #import os.path
 
@@ -65,3 +66,8 @@ class dumps:
     
         
     
+    def doEncode(self, s):
+        return base64.encodestring(s)
+
+    def doDecode(self, s):
+        return  base64.decodestring(s)

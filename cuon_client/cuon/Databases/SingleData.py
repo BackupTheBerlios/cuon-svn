@@ -52,9 +52,9 @@ class SingleData(gladeXml, logs):
         self.td = self.loadObject('td')
         self.oUser = self.loadObject('User')
         self.closeDB()
-        print '##############################################################'
-        print `self.oUser.getSqlDicUser()`
-        print '**************************************************************'
+        #print '##############################################################'
+        #print `self.oUser.getSqlDicUser()`
+        #print '**************************************************************'
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.listHeader = {}
         self.dicEntries =  cuon.Windows.setOfEntries.setOfEntries()
@@ -308,7 +308,7 @@ class SingleData(gladeXml, logs):
         return ''
 
     def clearAllFields(self):
-        print 'clear all widgets '
+        #print 'clear all widgets '
         nCount = self.dicEntries.getCountOfEntries()
         
         
@@ -440,10 +440,14 @@ class SingleData(gladeXml, logs):
                         widget.set_active(sValue)
                             
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
-                        print self.sqlDicUser['DateTimeformatString']
-                        newDate = time.strptime(sValue, self.sqlDicUser['DateTimeformatString'] )
-                        print newDate
-                        widget.set_time(int(time.mktime(newDate)))
+                        try:
+                            print self.sqlDicUser['DateTimeformatString']
+                            newDate = time.strptime(sValue, self.sqlDicUser['DateTimeformatString'] )
+                            print newDate
+                            widget.set_time(int(time.mktime(newDate)))
+                        except:
+                            print 'ERORR - Time not match'
+                            
                                            
 
             self.fillOtherEntries(oneRecord)
@@ -501,7 +505,7 @@ class SingleData(gladeXml, logs):
 
             # self.out( 'dicValue by readEntries = ')
             # self.out(  dicValues)
-            print  'read-Entries' , dicValues 
+            #print  'read-Entries' , dicValues 
             dicValues = self.readNonWidgetEntries(dicValues)
         except AssertionError:
             print 'assert error'
@@ -510,7 +514,7 @@ class SingleData(gladeXml, logs):
         dicValues['client'] = [self.sqlDicUser['client'], 'int']
         dicValues = self.readExtraEntries(dicValues)
         dicValues = self.verifyValues(dicValues)
-        print  'after Verify' , `dicValues`
+        #print  'after Verify' , `dicValues`
         return dicValues
  
     def readExtraEntries(self, dicValues):
@@ -519,7 +523,7 @@ class SingleData(gladeXml, logs):
     def verifyValues(self, dicValues):
         try:
             assert dicValues != None
-            print dicValues
+            #print dicValues
             for i in dicValues.keys():
                 oValue = dicValues[i][0]
                 sVerify = dicValues[i][1]
@@ -644,7 +648,7 @@ class SingleData(gladeXml, logs):
             dicLists = {}
             
         # self.out( dicLists)
-        print  dicLists
+        #print  dicLists
         try:
             for i in dicLists:
                 liSubItems =[]

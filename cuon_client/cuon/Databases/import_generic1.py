@@ -30,29 +30,25 @@ class import_generic1(fileSelection):
     def __init__(self, allTables):
         
         fileSelection.__init__(self)
-        self.iFile = None
-        self.splitValue = ';'
-        self.fromChangedValue = None
-        self.toChangedValue = ''
-        self.allTables = allTables
+        self.dicFileAttributes = {}
+        self.dicFileAttributes['iFile'] = None
+        self.dicFileAttributes['splitValue'] = ';'
+        self.dicFileAttributes['fromChangedValue'] = None
+        self.dicFileAttributes['toChangedValue'] = ''
+        self.dicFileAttributes['allTables'] = allTables
         
         
-    def on_ok_button1_clicked(self, event):
-    
+          
+         
+                               
 
-        self.on_ok_button_clicked(event)
-        self.iFileName = os.path.normpath(self.fileName)
-        
-        print self.iFileName
-        print  self.rpc.getServer()
-        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-
+    def readCtrlFile(self, iFilename):
         ctrlFile = open(self.iFileName)
-        inputFile = None
-        importTable = None
-        importHeader = None
-        
-        liColumns = []
+        self.dicFileAttributes['inputFile'] = None
+        self.dicFileAttributes['importTable'] = None
+        self.dicFileAttributes['importHeader'] = None
+        self.dicFileAttributes['inputType'] = 'Standard'
+        self.dicFileAttributes['liColumns'] = []
 
         
         if ctrlFile:
@@ -65,18 +61,20 @@ class import_generic1(fileSelection):
                         liS[0] = liS[0][0:len(liS[0])]
                         print '1:', `liS`
                     if liS[0] == 'filename':
-                        inputFile = liS[1]
+                        self.dicFileAttributes['inputFile'] = liS[1]
+                    if liS[0] == 'type':
+                        self.dicFileAttributes['inputType'] = liS[1]
                     if liS[0] == 'table':
-                        importTable = liS[1]
+                        self.dicFileAttributes['importTable'] = liS[1]
                     if liS[0] == 'splitvalue':
-                        self.splitValue = liS[1]
+                        self.dicFileAttributes['splitValue'] = liS[1]
                     if liS[0] == 'from_changed_value':
-                        self.fromChangedValue = liS[1]
+                        self.dicFileAttributes['fromChangedValue'] = liS[1]
                     if liS[0] == 'to_changed_value':
-                        self.toChangedValue = liS[1]
+                        self.dicFileAttributes['toChangedValue'] = liS[1]
     
                     if liS[0] == 'header':
-                        importHeader = liS[1]        
+                        self.dicFileAttributes['importHeader'] = liS[1]        
                     if liS[0] == 'column':
                         s2 = liS[1]
                         if s2:
@@ -85,55 +83,61 @@ class import_generic1(fileSelection):
                             dicColumn = {}
                             dicColumn['name'] = liS2[0].strip()
                             dicColumn['field'] = liS2[1].strip()
-                            liColumns.append(dicColumn)
-                            print 'licolumns-0', `liColumns`
+                            self.dicFileAttributes['liColumns'].append(dicColumn)
+                            print 'licolumns-0', `self.dicFileAttributes['liColumns']`
                 s = ctrlFile.readline()
             
-            print 'licolumns', `liColumns`
+            print 'licolumns', `self.dicFileAttributes['liColumns']`
                         
             ctrlFile.close()
-        
-        importFile = open(inputFile)
+
+                               
+    def standardImport(self):
+        importFile = open(self.dicFileAttributes['inputFile'])
 
         s1 = importFile.readline()
-        lS2 = s1.split(self.fromChangedValue)
+        lS2 = s1.split(self.dicFileAttributes['fromChangedValue'])
 ##        # Headlines
 ##        # for exmple 
 ##        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
 ##        #
         
-        oSingleImport = SingleImport.SingleImport(self.allTables)
-        oSingleImport.setImportTable(importTable)
+        oSingleImport = SingleImport.SingleImport(self.dicFileAttributes['allTables'])
+        oSingleImport.setImportTable(self.dicFileAttributes['importTable'])
             
         
         
         s1 = importFile.readline()
-        if importHeader.upper() == 'YES':
+        if self.dicFileAttributes['importHeader'].upper() == 'YES':
                     s1 = importFile.readline()
                     
         while s1:
             print s1
             print '----'
-            if self.fromChangedValue:
-                s1 = s1.replace(self.fromChangedValue,self.toChangedValue)
-            lS1 = s1.split(self.splitValue)
+            if self.dicFileAttributes['fromChangedValue']:
+                s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
+            lS1 = s1.split(self.dicFileAttributes['splitValue'])
             
             #exportFile.write(s1)
             #print lS1
             # now set the values
             dicValues = {}
-            for i in range(len(liColumns)):
-                dicValues[liColumns[i]['name']] = [lS1[i].strip(),liColumns[i]['field']]
+            for i in range(len(self.dicFileAttributes['liColumns'])):
+                dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
 
             print `dicValues`
-            # verify Fields
-            dicValues = oSingleImport.verifyValues(dicValues)
-          
-            # save to Database
-            oSingleImport.newRecord()
-            
-            oSingleImport.saveExternalData(dicValues)
-            
+            #print `self.dicUser`    
+                
+            if self.dicFileAttributes['inputType'] == 'Standard':
+                # verify Fields
+                dicValues = oSingleImport.verifyValues(dicValues)
+                # save to Database
+                oSingleImport.newRecord()
+                oSingleImport.saveExternalData(dicValues)
+
+            elif self.dicFileAttributes['inputType'] == 'stock_goods':
+                    self.rpc.callRP('src.Articles.py_insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)
+                    
             s1 = importFile.readline()
             #s1 = None
         importFile.close()
@@ -141,3 +145,20 @@ class import_generic1(fileSelection):
             
 
         
+
+
+
+    def on_ok_button1_clicked(self, event):
+    
+
+        self.on_ok_button_clicked(event)
+        self.iFileName = os.path.normpath(self.fileName)
+        
+        print self.iFileName
+        print  self.rpc.getServer()
+        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+
+        self.readCtrlFile(self.iFileName)
+        self.standardImport()        
+        
+                     

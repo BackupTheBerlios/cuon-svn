@@ -95,7 +95,7 @@ class databaseswindow(windows):
   
             lTable = clt.getListOfTableNames(key)
             tableList = self.startCheck(key,lTable, tableList)
-
+            print 'check finished - now create sequences'
             lSequences = clt.getListOfSequenceNames(key)
             print 'Sequences'
             print `lSequences`
@@ -114,7 +114,7 @@ class databaseswindow(windows):
 
         print 'allTables = '
         print tableList    
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'allTables', cPickle.dumps(tableList) )
+        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
         
         
     def on_trigger1_activate(self, event):
@@ -181,14 +181,26 @@ class databaseswindow(windows):
         clt = cyr_load_table.cyr_load_table()
        ### for Server-functions set the td-object
         clt.td = self.td
- 
+        # first - the infotable cuon must be setup
+        ok =  self.rpc.callRP('src.Databases.py_createCuon', self.dicUser)
+
+        # now check the rest
+        
         for i in lTable:
             self.out( i)
+            print 'tableDefinition = ' ,key,i
             table = clt.getTableDefinition(key,i)
+            print '1---clt.savetable', table.getName()
             clt.saveTable(i,table )
-            self.dbcheck(table)      
+            print '1+++++++++++++++++++++++++++++++++++++++++++++++++++'
+            
+            print '2---dbcheck', table.getName()
+            self.dbcheck(table)
+            print '2+++++++++++++++++++++++++++++++++++++++++++++++++++'
+            
+            print '3---List of tables', `tableList`
             tableList.append(table.getName())
-
+            print '3--------------------------------------------------------------------------------------'
         return tableList
 
     def startCheckSequences(self, key, lSequences):
@@ -205,6 +217,8 @@ class databaseswindow(windows):
                 iSeq = i.upper().find('_CLIENT_')
                 if iSeq > 0:
                     seqname =i[0:iSeq]
+                else:
+                    seqname = i
                 dicSeq = clt.getSequenceDefinition(key, seqname)
                 print dicSeq
                 sSql = "create sequence " + i
@@ -231,8 +245,10 @@ class databaseswindow(windows):
 
     def dbcheck(self, table):
         self.out("check Databases")
+        #ok = self.rpc.callRP('src.Databases.py_packCuonFS')
         ok = self.rpc.callRP('src.Databases.py_checkExistTable',table.getName(), self.dicUser)
         self.out("ok = " + `ok`,1)
+        
         if ok == 0:
             # create table
             self.createTable(table)
@@ -347,7 +363,7 @@ class databaseswindow(windows):
         self.out( 'entry-Set = ' + str(entrySet.getName()))
         cle.saveEntries('entry_' + entrySet.getName() + '.xml', entrySet )
         self.out( 'end startXMLCheck')
-    
+        #ok = self.rpc.callRP('src.Databases.py_packCuonFS')    
 
        
     def saveGladeFiles(self):
@@ -365,11 +381,11 @@ class databaseswindow(windows):
             f1 = open(gladeName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable',key, cPickle.dumps(xml1) )
+            self.rpc.callRP('src.Databases.py_saveInfoOfTable',key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfGladeFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfGladeFiles', cPickle.dumps(nameOfGladeFiles) )
-   
+        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
+#        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
 
     def saveReportFiles(self):
 
@@ -383,12 +399,12 @@ class databaseswindow(windows):
             f1 = open(reportName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable', key, cPickle.dumps(xml1) )
+            self.rpc.callRP('src.Databases.py_saveInfoOfTable', key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfReportFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfReportFiles', cPickle.dumps(nameOfReportFiles) )
+        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
    
-
+#        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
    
     def importZip(self, filename):
         zip = open(filename)

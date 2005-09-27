@@ -180,7 +180,9 @@
       <notnull>0</notnull>
 
       <size>0</size>
-
+     <default>0</default>
+  <comment>set by cuon-prg-modules</comment>
+</field>
       <!--separate Informations ID 3-->
 
     <field>
@@ -199,14 +201,7 @@
       <default>0</default>
 
       <comment>set by cuon-prg-modules</comment>
-    </field>   <default>0</default>
-
-      <comment>set by cuon-prg-modules</comment>
-    </field>
-
-
-
-
+    </field>  
 
   </table>
 
@@ -4595,6 +4590,172 @@
      
    </table>
  
+ <!--user_info -->
+
+  <table>
+    <nameOfTable>user_info</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>user_id</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>55</size>
+      <default />
+      <comment>user id  </comment>
+    </field>
+
+    <field>
+      <name>real_name</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>title</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment />
+    </field>
+</table>
+
+ <!--groups -->
+
+  <table>
+    <nameOfTable>usergroups</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>user_id</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>55</size>
+      <default />
+      <comment>user id  </comment>
+    </field>
+   <field>
+      <name>group_name</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>55</size>
+      <default />
+      <comment>name of the group  </comment>
+    </field>
+   <field>
+      <name>group_designation</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>254</size>
+      <default />
+      <comment>designation of the group  </comment>
+    </field>
+
+</table>
+
+ <!--user_client -->
+
+  <table>
+    <nameOfTable>user_client</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>user_id</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>55</size>
+      <default />
+      <comment>user id  </comment>
+    </field>
+   <field>
+      <name>client_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment>client id  </comment>
+    </field>
+
+</table>
+
+ <!--user_groups -->
+
+  <table>
+    <nameOfTable>user_groups</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>user_id</name>
+      <type>string</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>55</size>
+      <default />
+      <comment>user id  </comment>
+    </field>
+   <field>
+      <name>groups_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment>client id  </comment>
+    </field>
+</table>
+
+
 
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
