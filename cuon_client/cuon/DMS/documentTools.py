@@ -142,3 +142,6 @@ class documentTools:
                     print suffix
                     if i == suffix:
                         singleDMS.fileFormat = singleDMS.fileFormat = dicUser['prefDMS']['fileformat'][key]['format']
+
+            f.close()
+            

@@ -28,6 +28,8 @@ import cPickle
 import sys
 import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
+import  cuon.Databases.SingleCuon
+
 
 class databaseswindow(windows):
     """
@@ -47,6 +49,7 @@ class databaseswindow(windows):
         self.gladeName = self.td.databases_glade_name
 
         # self.setLogLevel(self.INFO)
+        self.allTables = {}
         
         self.xml = gtk.glade.XML(self.gladeName)
         self.setXmlAutoconnect()
@@ -77,8 +80,44 @@ class databaseswindow(windows):
     def checkClient(self):
         pass
            
+
+    def on_save_client1_activate(self,event):
+
+        liAllTables = cPickle.loads(eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables'))))
+
+        print `liAllTables`
         
-  
+        try:
+            clt = cuon.Databases.cyr_load_table.cyr_load_table()
+            for lt in liAllTables:
+                self.allTables[lt] =  clt.loadTable(lt)
+        except:
+            print 'ERROR'
+            
+        sc = cuon.Databases.SingleCuon.SingleCuon(self.allTables)
+        f = file('version','r')
+        s = f.readline()
+        s1 = s.split()
+        n1 = s1[0].strip()
+        v1 = s1[1].strip()
+        sFile = s1[2].strip()
+        f.close()
+        print s1
+        
+        try:
+            f = file(sFile,'rb')
+            b = f.read()
+            f.close()
+            dicValues = {'name':[n1,'string'],'version' : [v1,'string'], 'clientdata':[b,'app']}
+            sc.newRecord()
+            sc.saveExternalData(dicValues,['clientdata'])
+
+        except:
+            print "Error open Versionsfile"
+            
+                                
+                            
+        
     
     def on_close1_activate(self, event):
         win1 = self.xml.get_widget('DatabasesMainwindow')

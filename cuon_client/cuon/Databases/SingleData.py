@@ -120,12 +120,13 @@ class SingleData(gladeXml, logs):
                 #print firstRecord
                 self.ID = firstRecord['id']
                 self.sStatus = ''
-
-                if self.statusfields:
-                    for i in range(len(self.statusfields)):
-                        #pint i
-                        self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
-
+                try:
+                    if self.statusfields:
+                        for i in range(len(self.statusfields)):
+                            self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
+                except:
+                    print 'no statusfield'
+                    
             self.firstRecord = firstRecord
         except AssertionError:
             print 'assert error'
@@ -287,9 +288,12 @@ class SingleData(gladeXml, logs):
     
     def refreshTree(self):
         self.setEmptyEntries()
-        if self.tree1:
+        try:
+            assert self.tree1
             self.fillTree(self.tree1, self.getListEntries() )
             self.treeSelectRow()
+        except:
+            print 'no Tree exist'
 
     def getTreeModel(self, listEntries):
         model = cuon.Databases.SingleDataTreeModel.SingleDataTreeModel()

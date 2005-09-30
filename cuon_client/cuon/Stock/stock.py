@@ -29,7 +29,7 @@ import cuon.Addresses.SingleAddress
 import cuon.Addresses.SinglePartner
 
 import cuon.Articles.SingleArticle
-
+import cuon.Stock.lists_stockgoods_number1
 
 class stockwindow(chooseWindows):
     """
@@ -175,6 +175,13 @@ class stockwindow(chooseWindows):
     def on_GoodsClear1_activate(self, event):
         print "delete Goods v2"
         self.singleStockGoods.deleteRecord()
+
+    # Menu Lists
+
+    def on_articleList1_activate(self, event):
+        self.out( "lists startet")
+        Pdf = cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1()
+
 
   
 

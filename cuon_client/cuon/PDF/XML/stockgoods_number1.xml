@@ -16,7 +16,7 @@
     <entry>
       <name>Title</name>
       <class>Label</class>
-      <value>Articleslist001_1 generatet by CUON</value>
+      <value>Stockgoods list001_1 generatet by CUON</value>
       <type>string</type>
       <format>%s</format>
       <posX1>0</posX1>
@@ -106,14 +106,14 @@
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
   <entry>
-      <name>Category</name>
+      <name>Amount</name>
       <class>Label</class>
-      <value>Category</value>
+      <value>Amount</value>
       <type>string</type>
       <format>%s</format>
-      <posX1>320</posX1>
+      <posX1>460</posX1>
       <posY1>20</posY1>
-      <posX2>320</posX2>
+      <posX2>460</posX2>
       <posY2>20</posY2>
       <font>Helvetica</font>
       <fontsize>12</fontsize>
@@ -147,7 +147,7 @@
     <count>1</count>
     <groupEntry>
       <number>1</number>
-      <resultSet>articles</resultSet>
+      <resultSet>goods</resultSet>
       <pageDetails>
 	<posX1>0</posX1>
 	<posY1>0</posY1>
@@ -175,9 +175,9 @@
 	</entry>
 	<entry>
 
-	  <name>number</name>
+	  <name>article_number</name>
 	  <class>DatabaseField</class>
-	  <resultSet>articles</resultSet>
+	  <resultSet>goods</resultSet>
 	  <type>string</type>
 	  <format>%s</format>
 	  <posX1>0</posX1>
@@ -191,9 +191,9 @@
 	  <backgroundColor>0,0,0</backgroundColor>
 	</entry>
 	<entry>
-	  <name>designation</name>
+	  <name>article_designation</name>
 	  <class>DatabaseField</class>
-	  <resultSet>articles</resultSet>
+	  <resultSet>goods</resultSet>
 	  <type>string</type>
 	  <format>%s</format>
 	  <posX1>180</posX1>
@@ -207,14 +207,14 @@
 	  <backgroundColor>0,0,0</backgroundColor>
 	</entry>
 	<entry>
-	  <name>sep_info_1</name>
+	  <name>amount</name>
 	  <class>DatabaseField</class>
-	  <resultSet>articles</resultSet>
+	  <resultSet>goods</resultSet>
 	  <type>string</type>
 	  <format>%s</format>
-	  <posX1>320</posX1>
+	  <posX1>460</posX1>
 	  <posY1>10</posY1>
-	  <posX2>320</posX2>
+	  <posX2>460</posX2>
 	  <posY2>10</posY2>
 	  <font>Helvetica</font>
 	  <fontsize>11</fontsize>

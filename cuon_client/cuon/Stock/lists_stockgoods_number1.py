@@ -61,7 +61,7 @@ class lists_stockgoods_number1(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.callRP('src.Stock.py_getstockgoodslist1', dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('src.Stock.py_getGoodsList1', dicSearchfields, self.dicUser)
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],types.UnicodeType):
@@ -73,8 +73,8 @@ class lists_stockgoods_number1(selectionDialog1, standardlist):
         print dicResult
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         
-        self.dicResults['articles'] = dicResult
-        self.loadXmlReport('stockgoods_number1', 'ReportStockgoodsLists')
+        self.dicResults['goods'] = dicResult
+        self.loadXmlReport('stockgoods_number1', 'ReportStockGoodsLists')
 
 
    

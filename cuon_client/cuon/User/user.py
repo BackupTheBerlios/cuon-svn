@@ -78,6 +78,7 @@ class User:
         
         self.prefPath['ReportAddressLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         self.prefPath['ReportArticleLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
+        self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         
         
         self.prefColor = {'FG':0, 'BG':0}

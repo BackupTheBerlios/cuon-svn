@@ -57,6 +57,8 @@ class windows(MyXML, gladeXml, messages):
         
         self.ModulNumber = 1
         self.MN = {}
+
+        self.MN['Mainwindow'] = 10
         self.MN['Client'] = 1000
         self.MN['Address'] = 2000
         self.MN['Partner'] = 2100

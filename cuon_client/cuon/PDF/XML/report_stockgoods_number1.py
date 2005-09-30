@@ -12,11 +12,11 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 
-class report_articles_number1:
+class report_stockgoods_number1:
     def __init__(self):
         self.dicReportData = {}
         
-        self.dicReportData['Title'] = _('articles_number001 generatet by CUON')
+        self.dicReportData['Title'] = _('stockgoods_number001 generatet by CUON')
 
         self.dicReportData['lPageNumber'] = _('Pagenumber:')
         self.dicReportData['fPageNumber'] = 1

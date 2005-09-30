@@ -21,3 +21,14 @@ class messages:
         dialog.destroy ();
         
         return ok
+
+
+    def infoMsg(self, sText):
+        # gtk
+        ok = False
+        print 'infoMsg'
+        dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO,gtk.BUTTONS_CLOSE, sText);
+        dialog.run ();
+        dialog.destroy ();
+        
+        return ok
