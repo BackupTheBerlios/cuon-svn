@@ -205,6 +205,48 @@
 
   </table>
 
+<!--table: cuon_clients-->
+
+  <table>
+    <nameOfTable>cuon_clients</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>version</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>clientdata</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+</table>
+
+
+
+
 <!--table: account_plan-->
 
   <table>

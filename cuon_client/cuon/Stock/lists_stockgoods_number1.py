@@ -29,7 +29,7 @@ import os.path
 import cuon.XMLRPC.xmlrpc
 
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_articles_number1
+import cuon.PDF.XML.report_stockgoods_number1
 import copy
 
 class lists_stockgoods_number1(selectionDialog1, standardlist):
@@ -39,11 +39,11 @@ class lists_stockgoods_number1(selectionDialog1, standardlist):
         selectionDialog1.__init__(self,'stockgoods_search1.xml')
         standardlist.__init__(self)
 
-        rep = cuon.PDF.XML.report_articles_number1.report_articles_number1()
+        rep = cuon.PDF.XML.report_stockgoods_number1.report_stockgoods_number1()
         self.dicReportData =  rep.dicReportData
 
         
-        print "lists_articles_number1 start"
+        print "lists_stockgoods_number1 start"
         
         sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('stockgoods_number1.pdf') ))
         sFile = self.setFileName ( _('Test' ))

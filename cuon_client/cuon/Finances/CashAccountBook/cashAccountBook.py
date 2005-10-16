@@ -27,6 +27,8 @@ import datetime
 import logging
 
 from cuon.Windows.windows import windows
+import cuon.Finances.standard_cab_monthly
+
 
 class cashAccountBookwindow(windows):
 
@@ -164,9 +166,14 @@ class cashAccountBookwindow(windows):
     def on_monthly1_activate(self, event):
         month = 04
         year = 2005
+        dicCab = {}
+        dicCab['CabNumber'] = '1'
         
-        dicCab = self.rpc.callRP('src.Finances.py_get_cab_monthly',month,year, self.dicUser)
+        Pdf = cuon.Finances.standard_cab_monthly.standard_cab_monthly(dicCab)
+
+       # dicCab = self.rpc.callRP('src.Finances.py_get_cab_monthly',month,year, self.dicUser)
     #choose Manufactor button
+    
     def on_bChooseManufactor_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))

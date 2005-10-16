@@ -12,20 +12,21 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 
-
+from  cuon.Addresses.selectionDialog import selectionDialog1
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.report_cab_monthly
-from cuon.Misc.fileSelection import fileSelection
+import cuon.PDF.XML.report_cab_monthly
+#from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path
 
-class  standard_cab_monthly(standardlist, fileSelection):
+class  standard_cab_monthly(selectionDialog1, standardlist):
     
     def __init__(self, dicCab):
+
+        selectionDialog1.__init__(self,'cab_search1.xml')
+        standardlist.__init__(self)
         
-       standardlist.__init__(self)
-        
-        rep = cuon.PDF.report_cab_monthly.report_cab_monthly()
+        rep = cuon.PDF.XML.report_cab_monthly.report_cab_monthly()
         self.dicReportData =  rep.dicReportData
         self.dicCab = dicCab
         self.openDB()
@@ -36,77 +37,77 @@ class  standard_cab_monthly(standardlist, fileSelection):
         
         self.closeDB()
         self.dicUser = self.oUser.getDicUser()
-        
+        sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('stockgoods_number1.pdf') ))
         sFile = self.setFileName( self.oUser.prefPath['StandardCAB1'] +  '/' +_('cabM-') + `self.dicCab['CabNumber']` + '.pdf' )
-        fileSelection.__init__(self, initialFilename = sFile )
+        #fileSelection.__init__(self, initialFilename = sFile )
 
 
         
         
-    def on_ok_button1_clicked(self, event):
-    
-
-        self.on_ok_button_clicked(event)
-        self.pdfFile = os.path.normpath(self.fileName)
+    def on_okbutton1_clicked(self, event):
+        print 'ok to print CashaccountBook'
+        sFile  = self.getWidget('eFiledata').get_text()
+        #self.on_ok_button_clicked(event)
+        self.pdfFile = os.path.normpath(sFile)
         print self.dicCab
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-
-        dicResult =  self.rpc.callRP('src.Finances.py_getClientAddress', self.dicUser['client'],  self.dicUser() )
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],  types.StringType):
-                    i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
-
-        self.dicResults['client'] = dicResult
-
-        dicResult2 = []
-        dicResult =  self.rpc.callRP('src.Address.py_getPartnerAddress', self.dicCab['partnerNumber'],  self.oUser.getDicUser() )
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],  types.StringType):
-                    i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
-            
+        self.dicSearchfields = self.readSearchDatafields()
+        print "dicSearchfields", `self.dicSearchfields`
         
-        self.dicResults['partner_address'] = dicResult
-
-        dicResult =  self.rpc.callRP('src.Address.py_getAddress', self.dicCab['forwardingAgencyNumber'],  self.oUser.getDicUser() )
+        dicResults =  self.rpc.callRP('src.Finances.py_getCashAccountBook', self.dicSearchfields,  self.dicUser )
+        
+        #print `dicResult`
+        dicResult = dicResults['cab']
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
                     i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
 
-        self.dicResults['forwarding_agency_address'] = dicResult
-
-
-
-        dicResult =  self.rpc.callRP('src.Address.py_getPartnerAddress', self.dicCab['contactPersonNumber'],  self.oUser.getDicUser() )
+        self.dicResults['cab'] = dicResult
+        
+        dicResult = dicResults['before']
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
                     i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
 
-        self.dicResults['contact_person_address'] = dicResult
-
-        dicResult =  self.rpc.callRP('src.Order.py_getPickupData', self.dicCab,  self.oUser.getDicUser() )
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],  types.StringType):
-                    i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
-
-        self.dicResults['pickup_data'] = dicResult
-
- 
-        dicResult =  self.rpc.callRP('src.Order.py_getStandardInvoice', self.dicCab,  self.oUser.getDicUser() )
-        print dicResult
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],  types.StringType):
-                    i[j] = (i[j].decode('utf-7')).encode(self.oUser.userPdfEncoding)
-        self.out( dicResult )
-        self.dicResults['positions'] = dicResult
+        self.dicResults['before'] = dicResult
 
         
-        self.loadXmlReport('finances_cab_monthly', 'ReportStandardPickup1')
+        di1 = self.getWidget('dialog1')
+        di1.hide()
+
+        
+        self.loadXmlReport('finances_cab_monthly1', 'ReportStandardFinancesCAB')
         
 
+    def readSearchDatafields(self):
+        dicSearchfields = {}
+        dicSearchfields['eMonth'] = self.getWidget('eMonth').get_text()
+        dicSearchfields['eYear'] = self.getWidget('eYear').get_text()
+
+        dicSearchfields['eAccountNumber'] = self.getWidget('eAccountNumber').get_text()
+#        dicSearchfields['eDesignationTo'] = self.getWidget('eDesignationTo').get_text()
+        
+#        dicSearchfields['eStockFrom'] = self.getWidget('eStockFrom').get_text()
+#        dicSearchfields['eStockTo'] = self.getWidget('eStockTo').get_text()
+
+#        dicSearchfields['eActualStockFrom'] = self.getWidget('eActualStockFrom').get_text()
+#        dicSearchfields['eActualStockTo'] = self.getWidget('eActualStockTo').get_text()
+
+
+        return dicSearchfields
+    
+    def on_cancelbutton1_clicked(self,event):
+        print 'cancel'
+        di1 = self.getWidget('dialog1')
+        di1.hide()
+
+
+    def on_bFileDialog_clicked(self, event):
+        print self.filedata
+        self.getWidget('fileselection1').set_filename(self.filedata[0])
+        self.getWidget('fileselection1').show()
+        
+  

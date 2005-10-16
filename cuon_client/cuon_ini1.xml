@@ -267,6 +267,11 @@
       <Glade-File>cashAccountBook.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
     </GladeEntries>
+<GladeEntries>	
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>cab_search1.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/cab_search1.glade2</Glade-FileValue>
+    </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>biblio.xml</Glade-File>
@@ -310,6 +315,15 @@
     </ReportEntries>
   </Report_Init_Files>
 
+ <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>stockgoods_number1.xml</Report-File>
+      <Report-FileValue>/usr/share/cuon/report/stockgoods_number1.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
+
+
   <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
@@ -317,6 +331,7 @@
       <Report-FileValue>/usr/share/cuon/report/order_standardinvoice.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
+
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
@@ -331,4 +346,14 @@
       <Report-FileValue>/usr/share/cuon/report/order_standarddelivery.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
+
+ <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>finances_cab_monthly1.xml</Report-File>
+      <Report-FileValue>/usr/share/cuon/report/finances_cab_monthly1.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
+
+
   </IniFile>

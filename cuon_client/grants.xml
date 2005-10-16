@@ -13,7 +13,10 @@
       <nameOfGroup>cuon_admin</nameOfGroup>
       <comment>select, update, delete on some preferences</comment>
     </group>
-
+<group>
+      <nameOfGroup>zope</nameOfGroup>
+      <comment>select on some speziel zope Groups</comment>
+    </group>
   </groups>
 
   <users>
@@ -29,8 +32,12 @@
       <nameOfUser>cuon_admin</nameOfUser>
       <comment></comment>
     </user>
-  
-                                                                                
+   <user>
+      <nameOfUser>zope</nameOfUser>
+      <comment></comment>
+    </user>
+                      
+                                                          
   </users>
 
   <addgroups>
@@ -44,7 +51,11 @@
       <this_user>cuon1</this_user>
       <comment></comment>
     </addgroup>
-    
+    <addgroup>
+      <this_group>zope</this_group>
+      <this_user>zope</this_user>
+      <comment></comment>
+    </addgroup>
    <addgroup>
       <this_group>cuon_admin</this_group>
       <this_user>cuon_admin</this_user>
@@ -58,6 +69,13 @@
 
   </addgroups>
   <setGrants>
+<grant>
+      <nameOfGrant>zope_rights </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>cuon, cuon_id, cuon_clients,cuon_clients_id </this_tables>
+      <this_group>zope</this_group>
+      <comment>for update client, all values</comment>
+    </grant>
     <grant>
       <nameOfGrant>cuon_all_rights_of_addresses </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
