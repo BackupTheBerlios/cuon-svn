@@ -153,7 +153,7 @@ class databaseswindow(windows):
 
         print 'allTables = '
         print tableList    
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
+        self.rpc.callRP('src.Databases.py_saveValue', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
         
         
     def on_trigger1_activate(self, event):
@@ -420,10 +420,10 @@ class databaseswindow(windows):
             f1 = open(gladeName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable',key, self.doEncode(repr(cPickle.dumps(xml1) )))
+            self.rpc.callRP('src.Databases.py_saveValue',key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfGladeFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
+        self.rpc.callRP('src.Databases.py_saveValue', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
 
     def saveReportFiles(self):
@@ -438,10 +438,10 @@ class databaseswindow(windows):
             f1 = open(reportName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable', key, self.doEncode(repr(cPickle.dumps(xml1) )))
+            self.rpc.callRP('src.Databases.py_saveValue', key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfReportFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
+        self.rpc.callRP('src.Databases.py_saveValue', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
    
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
    

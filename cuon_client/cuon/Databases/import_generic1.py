@@ -103,9 +103,11 @@ class import_generic1(fileSelection):
 ##        #
         
         oSingleImport = SingleImport.SingleImport(self.dicFileAttributes['allTables'])
-        oSingleImport.setImportTable(self.dicFileAttributes['importTable'])
-            
-        
+        print 'Type : ', self.dicFileAttributes['inputType'][0:8]
+        if len(self.dicFileAttributes['inputType']) > 8 and  self.dicFileAttributes['inputType'][0:8] == 'webshop_':
+            print 'Webshop settings'
+        else:
+            oSingleImport.setImportTable(self.dicFileAttributes['importTable'])
         
         s1 = importFile.readline()
         if self.dicFileAttributes['importHeader'].upper() == 'YES':
@@ -129,6 +131,7 @@ class import_generic1(fileSelection):
             #print `self.dicUser`    
                 
             if self.dicFileAttributes['inputType'] == 'Standard':
+                
                 # verify Fields
                 dicValues = oSingleImport.verifyValues(dicValues)
                 # save to Database
@@ -137,6 +140,11 @@ class import_generic1(fileSelection):
 
             elif self.dicFileAttributes['inputType'] == 'stock_goods':
                     self.rpc.callRP('src.Articles.py_insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)
+            elif self.dicFileAttributes['inputType'] == 'webshop_article':
+                    result = self.rpc.callRP('src.Articles.py_insertWebshopArticle', dicValues, self.dicUser)
+                    print ' webshop-data for article', `result`
+                    
+                    
                     
             s1 = importFile.readline()
             #s1 = None

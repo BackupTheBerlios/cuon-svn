@@ -19,9 +19,9 @@ die) Server=http://dietzel-normteile.dyndns.org:9673/Cuon
 diessl) Server=https://dietzel-normteile.dyndns.org:8443/Cuon
 ;;
 
-cweb) Server=http://84.244.7.139:9673/Cuon
+cuweb) Server=http://84.244.7.139:9673/Cuon
 ;;
-cwebssl) Server=https://84.244.7.139:8443/Cuon
+cuwebssl) Server=https://84.244.7.139:8443/Cuon
 ;;
 
 *) Server=$MyServer/Cuon

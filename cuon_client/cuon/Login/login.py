@@ -86,8 +86,11 @@ class loginwindow(windows):
         sPw = self.getWidget('TPassword').get_text()
 
         print 'New Auth data ( Session_id )'
-        sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw) 
+        sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw)
+        print "Session-ID0 = ", `sid`
         if sid:
+            print "Session-ID1 = ", `sid`
+            
             self.oUser.setSessionID(sid)
             
             self.loadProfile()

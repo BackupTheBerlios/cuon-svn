@@ -118,7 +118,7 @@ class cyr_load_entries(MyXML, dumps):
         self.out( cPickle.dumps(entries))
         self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', sNameOfEntries, self.doEncode(repr(cPickle.dumps(entries) )))
+        self.rpc.callRP('src.Databases.py_saveValue', sNameOfEntries, self.doEncode(repr(cPickle.dumps(entries) )))
         
 
 

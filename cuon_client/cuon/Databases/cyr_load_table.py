@@ -154,13 +154,13 @@ class cyr_load_table(MyXML, dumps):
         self.out( table.getName())
 #        self.out( cPickle.dumps(table))
         print "::::::::::::::::::::::::::", ` cPickle.dumps(table)`
-        self.rpc.callRP('src.Databases.py_saveInfoOfTable', sNameOfTable, self.doEncode(repr(cPickle.dumps(table) )))
+        self.rpc.callRP('src.Databases.py_saveValue', sNameOfTable, self.doEncode(repr(cPickle.dumps(table) )))
         liColumns = table.getColumns()
         for i in liColumns:
             print 'save table-columns TTTZZ'
             print i.getName()
             co_name = sNameOfTable + '_' + i.getName()
-            self.rpc.callRP('src.Databases.py_saveInfoOfTable', co_name, self.doEncode(repr(cPickle.dumps(i))) )
+            self.rpc.callRP('src.Databases.py_saveValue', co_name, self.doEncode(repr(cPickle.dumps(i))) )
             print co_name
             print ' TTTTUU'
 

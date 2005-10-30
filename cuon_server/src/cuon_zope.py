@@ -3,7 +3,7 @@ import os
 import sys
 import time
 import random	
-import base64
+
 
 CUON_FS = None
 #sys.path.append('/usr/lib/zope/lib/python')
@@ -50,20 +50,21 @@ def packing():
 def saveInfoOfTable(sNameOfTable, table ):
 #    t1 = cyr_table.cyr_table()
     t1 = table
-    writeLog(`t1`)
-    writeLog(`CUON_FS`)
+    writeLog('ST1' + `t1`)
+    writeLog('ST2'  + `CUON_FS`)
     storage = FileStorage.FileStorage(CUON_FS)
-    writeLog(`storage`)
+    writeLog(`'ST3' + storage`)
     
     db = DB(storage)
-    writeLog(`db`)
+    writeLog('ST4' + `db`)
     connection = db.open()
     try:
         root = connection.root()
         root[sNameOfTable] = t1
         get_transaction().commit()
-    except StandardError:
-        pass
+    except :
+        writeLog('ST5' + 'saveInfoOfTable - ERROR')
+        writeLog('ST6' + `exception`)
     connection.close()
     db.close()
     packing()
@@ -127,26 +128,30 @@ def writeLog(sLogEntry):
     
                
 def createSessionID(secValue = 36000):
-
-	s = ''
+    
+    s = ''
 	
-	n = random.randint(0,1000000000)
-	for i in range(27):
-	     ok = 1
-	     while ok:
-	        r = random.randint(65,122)
-	        if r < 91 or r > 96:
-	           ok = 0
-	           s = s + chr(r)
+    n = random.randint(0,1000000000)
+    for i in range(27):
+        ok = 1
+    while ok:
+        r = random.randint(65,122)
+        if r < 91 or r > 96:
+            ok = 0
+            s = s + chr(r)
 	
-	s = s + `n`
-	writeLog(s)
-	return {'SessionID':s, 'endTime': time.time() + secValue}
+            s = s + `n`
+            writeLog(s)
+        return {'SessionID':s, 'endTime': time.time() + secValue}
 	
 def checkEndTime(fTime):
-	ok = 0
-	if time.time() < fTime:
-		ok = 1
-	 
-	return ok
+    writeLog('checkEndTime : ' + `fTime`)
+    ok = 0
+    try:
+        if time.time() < fTime:
+            ok = 1
+    except:
+        writeLog('Error in time-routine')
+                
+    return ok
 	
