@@ -32,14 +32,13 @@ import Image
 import bz2
 import re
 import binascii
-import gnome.ui
 import cuon.DMS.documentTools
 
 class dmswindow(windows):
 
     
     def __init__(self, allTables, module = 0, sep_info = None):
-        gnome.init("cuon", "0")
+        
         windows.__init__(self)
 
         self.ModulNumber = self.MN['DMS']

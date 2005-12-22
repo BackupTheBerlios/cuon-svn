@@ -86,6 +86,7 @@ class loginwindow(windows):
         sPw = self.getWidget('TPassword').get_text()
 
         print 'New Auth data ( Session_id )'
+        #print self.oUser.getUserName(), sPw
         sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw)
         print "Session-ID0 = ", `sid`
         if sid:
@@ -104,7 +105,7 @@ class loginwindow(windows):
                 self.eUserName.set_text(self.oUser.getUserName())
 
         else:
-            print "No korrekt user and/or  password !"
+            print "No correkt user and/or  password !"
             if self.oUser.getUserName() == "zope":
                 self.openDB()
                 self.saveObject('User', self.oUser)

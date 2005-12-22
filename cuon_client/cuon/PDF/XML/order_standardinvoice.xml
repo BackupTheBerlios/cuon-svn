@@ -17,7 +17,7 @@
     <entry>
       <name>headimage</name>
       <class>ImageURL</class>
-      <value>/users2/cuon/cyrus.jpg</value>
+      <value>~/cuon/cyrus.jpg</value>
       <type>string</type>
 
       <format>%s</format>

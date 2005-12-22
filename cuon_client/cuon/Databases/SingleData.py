@@ -36,7 +36,6 @@ import cuon.TypeDefs.typedefs
 import cuon.XMLRPC.xmlrpc
 import cuon.Windows
 import time
-import gnome.ui
 import base64
 
 
@@ -230,7 +229,7 @@ class SingleData(gladeXml, logs):
         # self.out('iter = ' + str(iter), self.INFO)
         
         
-        if listStore:
+        if listStore and len(listStore) > 0:
            # [0] = gtk.listStore , [1] = treeiter , int = column
            #self.path = listStore[0].get_path(listStore[1])
            ## self.out('path in callback',self.INFO)
@@ -355,7 +354,7 @@ class SingleData(gladeXml, logs):
     
                 # self.out( "dicEntries-getEntryByName: " + str(self.dicEntries.getEntryByName(oneRecord.keys()[i])))
       
-                if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
+                if self.dicEntries.getCreateSql() == 1 and self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #sValue = self.getEntrySqlField(oneRecord.keys()[i], id)
                     ## self.out( "oneRecord: " + str(oneRecord))
                     ## self.out( "keys: " + str(oneRecord.keys()))
@@ -604,7 +603,12 @@ class SingleData(gladeXml, logs):
         # self.out( 'singleData - set Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
         # self.out( dicEntries01)
         self.dicEntries = dicEntries01
-        
+
+        self.setExtraEntries(dicEntries01)
+
+    def setExtraEntries(self, dicEntries01):
+        pass
+    
     def getEntries(self):
         # self.out( 'singleData - get Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')
         return self.dicEntries 
@@ -646,7 +650,10 @@ class SingleData(gladeXml, logs):
         ## self.out('dicFields = ')
         ## self.out(dicFields)
         
-        if dicFields:        
+        if dicFields:
+            print 'SingleData - dicFields = ', `dicFields`
+            
+            
             dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.sqlDicUser)
         else:
             dicLists = {}

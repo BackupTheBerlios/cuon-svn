@@ -7,6 +7,10 @@ I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
 dest_glade = $(SERVERDIRSHARE)/glade
 dest_report = $(SERVERDIRSHARE)/report
 
+iClientDir = /opt/Projekte/cuon/iClient
+iClientDirLocale = $(iClientDir)/locale/de/LC_MESSAGES
+
+
 # Please set here your values
 zope_extension =  root@server2://var/lib/zope/instance/default/Extensions
 zope_import =  root@server2://var/lib/zope/instance/default/import
@@ -181,6 +185,11 @@ all :
 
 
 
+iClient:
+	cp /usr/share/locale/de/LC_MESSAGES/cuon.mo $(iClientDirLocale)
+	cp ~/cuon/*.xml $(iClientDir)/cuon
+	cp ~/cuon/Reports/* $(iClientDir)/cuon/Reports
+	cp ~/cuon/*.jpg $(iClientDir)/cuon
 
 
 install:

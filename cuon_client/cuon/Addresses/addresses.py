@@ -22,7 +22,6 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
-import gnome.ui
 import string
 from cuon.Databases.SingleData import SingleData
 import SingleAddress
@@ -121,7 +120,8 @@ class addresswindow(chooseWindows):
         self.singleSchedul.setGladeXml(self.xml)
         self.singleSchedul.setTreeFields( ['schedul_datetime', 'short_remark','priority','process_status'] )
         self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-
+        #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
+        #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         self.singleSchedul.setTreeOrder('schedul_datetime')
         self.singleSchedul.setListHeader([_('Date and Time'),  _('short Remark'), _('Priority'), _('Status')])
  

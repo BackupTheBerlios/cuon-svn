@@ -3,11 +3,11 @@
     <table_name>partner_schedul</table_name>
  
    <entry>
-      <name>gdeDate</name>
-      <type>gnomedate</type>
+      <name>eDate</name>
+      <type>date</type>
       <size>10</size>
       <verify_type>datetime</verify_type>
-      <create_sql>1</create_sql>
+      <create_sql>0</create_sql>
       <sql_field>schedul_datetime</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>

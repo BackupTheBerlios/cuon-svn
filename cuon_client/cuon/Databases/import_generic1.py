@@ -112,10 +112,11 @@ class import_generic1(fileSelection):
         s1 = importFile.readline()
         if self.dicFileAttributes['importHeader'].upper() == 'YES':
                     s1 = importFile.readline()
-                    
+
+        se = 1
         while s1:
-            print s1
-            print '----'
+            #print s1
+            #print '----'
             if self.dicFileAttributes['fromChangedValue']:
                 s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
             lS1 = s1.split(self.dicFileAttributes['splitValue'])
@@ -127,9 +128,10 @@ class import_generic1(fileSelection):
             for i in range(len(self.dicFileAttributes['liColumns'])):
                 dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
 
-            print `dicValues`
+
             #print `self.dicUser`    
-                
+
+
             if self.dicFileAttributes['inputType'] == 'Standard':
                 
                 # verify Fields
@@ -141,12 +143,23 @@ class import_generic1(fileSelection):
             elif self.dicFileAttributes['inputType'] == 'stock_goods':
                     self.rpc.callRP('src.Articles.py_insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)
             elif self.dicFileAttributes['inputType'] == 'webshop_article':
-                    result = self.rpc.callRP('src.Articles.py_insertWebshopArticle', dicValues, self.dicUser)
-                    print ' webshop-data for article', `result`
+                    dicValues['products_model'][0] = dicValues['products_model'][0].decode('latin-1').encode('utf-8')
+                    dicValues['remark_w'][0] = dicValues['remark_w'][0].decode('latin-1').encode('utf-8')
+                    dicValues['s9'][0] = dicValues['s9'][0].decode('latin-1').encode('utf-8')
+                    if dicValues['s8'][0]:
+                        dicValues['s8'][0] = dicValues['s8'][0].decode('latin-1').encode('utf-8')
+                    
+                    s9 = dicValues['products_model'][0][0:3]
+                    if  s9 == '913' or s9 == '311' or  s9 == '301' or s9 =='302' or s9 =='303'  :
+                        print `dicValues`
+                        result = self.rpc.callRP('src.Articles.py_insertWebshopArticle', dicValues, self.dicUser)
+                    #print ' webshop-data for article', `result`
                     
                     
                     
             s1 = importFile.readline()
+            se += 1
+            print se
             #s1 = None
         importFile.close()
 

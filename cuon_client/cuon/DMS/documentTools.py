@@ -31,7 +31,7 @@ import Image
 import bz2
 import re
 import binascii
-import gnome.ui
+
 
 
 class documentTools:
