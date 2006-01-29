@@ -1578,6 +1578,40 @@
 
       <comment />
     </field>
+<field>
+      <name>alarm_notify</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>1</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>alarm_time</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
   </table>
 
   <!--table: articles-->
@@ -2230,6 +2264,113 @@
       <name>misc_cost</name>
 
       <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+
+    <field>
+      <name>build_retry</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+
+    <field>
+      <name>type_retry</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+
+    <field>
+      <name>supply_retry</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+
+    <field>
+      <name>gets_retry</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+    <field>
+      <name>invoice_retry</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default>0</default>
+
+      <comment />
+    </field>
+
+    <field>
+      <name>custom_retry_days</name>
+
+      <type>int</type>
 
       <pkey>0</pkey>
 
@@ -3202,6 +3343,27 @@
 
       <comment />
     </field>
+
+ <field>
+      <name>date_of_invoice</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+
+
   </table>
 
   <table>
@@ -3248,6 +3410,25 @@
 
       <comment />
     </field>
+
+ <field>
+      <name>date_of_delivery</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
   </table>
 
   <table>
@@ -3294,6 +3475,24 @@
 
       <comment />
     </field>
+ <field>
+      <name>date_of_pickup</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
   </table>
 
   <table>

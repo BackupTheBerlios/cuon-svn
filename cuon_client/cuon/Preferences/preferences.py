@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+
 import string
 
 import logging
@@ -106,12 +106,12 @@ class preferenceswindow(windows):
     def on_save1_activate(self, event):
         print 'save1'
         self.singlePreferences.save()
-        self.setEntriesEditable(self.EntriesPreferences, FALSE)
+        self.setEntriesEditable(self.EntriesPreferences, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.singlePreferences.newRecord()
-        self.setEntriesEditable(self.EntriesPreferences, TRUE)
+        self.setEntriesEditable(self.EntriesPreferences, True)
 
     def on_choose_profile1_activate(self, event):
         print 'choose Profil'
@@ -120,15 +120,15 @@ class preferenceswindow(windows):
         
     def on_edit1_activate(self, event):
         if self.tabOption == self.tabProfile:
-            self.setEntriesEditable(self.EntriesPreferences, TRUE)
+            self.setEntriesEditable(self.EntriesPreferences, True)
         elif self.tabOption == self.tabPrinting:
-            self.setEntriesEditable(self.EntriesPreferencesPrinting, TRUE)
+            self.setEntriesEditable(self.EntriesPreferencesPrinting, True)
         elif self.tabOption == self.tabPathToReports:
-            self.setEntriesEditable(self.EntriesPreferencesPathToReports, TRUE)
+            self.setEntriesEditable(self.EntriesPreferencesPathToReports, True)
         elif self.tabOption == self.tabPathToDocs:
-            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, TRUE)
+            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, True)
         elif self.tabOption == self.tabScanner:
-            self.setEntriesEditable(self.EntriesPreferencesScanner, TRUE)
+            self.setEntriesEditable(self.EntriesPreferencesScanner, True)
 
     
     def on_delete1_activate(self, event):
@@ -168,7 +168,7 @@ class preferenceswindow(windows):
 
             self.actualEntries = self.singlePreferences.getEntries()
             self.editAction = 'editProfile'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.out( 'Seite 0')
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferences) )
             # set the Entries manually, because there is no tree event
@@ -176,28 +176,28 @@ class preferenceswindow(windows):
 
         elif self.tabOption == self.tabPrinting:
             self.editAction = 'editProfile'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPrinting) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
             
         elif self.tabOption == self.tabPathToReports:
             self.editAction = 'editProfile'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToReports) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 
         elif self.tabOption == self.tabPathToDocs:
             self.editAction = 'editProfile'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToDocs) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 
         elif self.tabOption == self.tabScanner:
             self.editAction = 'editProfile'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesScanner) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
@@ -206,10 +206,10 @@ class preferenceswindow(windows):
 
         else:
             
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
 
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         

@@ -3664,11 +3664,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
-		  </child>
-
-		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="eAlarm">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes">30</property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
 		  </child>
 		</widget>
 		<packing>
@@ -3761,18 +3772,16 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkComboBoxEntry" id="cbeTime">
+		    <widget class="GtkEntry" id="eTime">
 		      <property name="visible">True</property>
-		      <property name="items" translatable="yes">8:00
-8:15
-8:30
-8:45
-9:00
-
-</property>
-		      <property name="add_tearoffs">False</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="focus_on_click">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>

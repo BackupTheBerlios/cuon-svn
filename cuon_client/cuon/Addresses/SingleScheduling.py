@@ -15,6 +15,7 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 import threading
+import string
 
 
 class SingleScheduling(SingleData):
@@ -43,4 +44,24 @@ class SingleScheduling(SingleData):
         dicValues['partnerid'] = [self.partnerId, 'int']
         return dicValues
 
-    
+    def fillExtraEntries(self, oneRecord):
+        if oneRecord.has_key('schedul_datetime'):
+            print '-----------------------------------------------------'
+            print 'Schedul-Time: ', oneRecord['schedul_datetime']
+            liDate = string.split(oneRecord['schedul_datetime'])
+            if liDate:
+                try:
+                    assert len(liDate) == 2
+                    eDate = self.getWidget('eDate')
+                    eTime = self.getWidget('eTime')
+                    eDate.set_text(liDate[0])
+                    eTime.set_text(liDate[1])
+                    #(liDate[1])
+                    
+                except:
+                    print 'error in Date'
+                    
+                
+        else :
+            print `oneRecord`
+            

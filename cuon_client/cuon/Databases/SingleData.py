@@ -23,7 +23,6 @@ import gtk
 import gtk.glade
 import types
 import string
-from gtk import TRUE, FALSE
 import datetime as DateTime
 from cuon.Logging.logs import logs
 from cuon.Databases.cyr_table import cyr_table
@@ -176,7 +175,7 @@ class SingleData(gladeXml, logs):
                     #print j
                     #print k
                 dicValues[lb][0] = ' '
-
+        print "saveValues - self.id = ", self.ID
         self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
         
         self.refreshTree()
@@ -350,40 +349,21 @@ class SingleData(gladeXml, logs):
             if not oneRecord:
                 self.clearAllFields()
             for i in range(len(oneRecord)):
-
-    
-                # self.out( "dicEntries-getEntryByName: " + str(self.dicEntries.getEntryByName(oneRecord.keys()[i])))
-      
-                if self.dicEntries.getCreateSql() == 1 and self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
-                    #sValue = self.getEntrySqlField(oneRecord.keys()[i], id)
-                    ## self.out( "oneRecord: " + str(oneRecord))
-                    ## self.out( "keys: " + str(oneRecord.keys()))
-                    ## self.out( "values: " + str(oneRecord.values()))
-                    sValue = oneRecord.keys()[i]
-                    # self.out( "#################################")
-                    # self.out( "DICENTRIES: " + str(self.dicEntries.EntrySet))
-                    # self.out( "#################################")
-                    ## self.out( "key: " + `sValue`)
-                else:
-                    #entry =  self.dicEntries.getEntryAtIndex(i)
-                    entry = self.dicEntries.getEntryByName(oneRecord.keys()[i])
-                    # self.out( "entry: " + str(entry))
-                    # self.out( "name : " + str(entry.getName()))
-                    # self.out( "sql  : " + str(entry.getSqlField()))
-                    # self.out( "wert : " + str(oneRecord[entry.getSqlField()]))
-                    # self.out( "typ  : " + str(entry.getVerifyType()))
-                    sValue = oneRecord[entry.getSqlField()]
-
-                # NEU, s.o.
-                #if i >= self.dicEntries.getCountOfEntries():
+                sValue = oneRecord[oneRecord.keys()[i]]
+                print 'sValue = ', sValue
+                
                 if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #self.fillExternalWidget(oneRecord[sValue], id)
                     # self.out( "sValue: " + str(sValue))
                     # self.out( "id: " + str(id))
                     #self.fillExternalWidget(sValue, id)
-                    self.fillExternalWidget(sValue, oneRecord[sValue])
-                else:
-                    
+                    self.fillExternalWidget(sValue, oneRecord)
+                elif self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql() == '0'  :
+                    print 'createSql 0= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql()
+                    self.fillExtraEntries(oneRecord)
+                else :
+                    print 'createSql 1= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql()
+                    entry = self.dicEntries.getEntryByName(oneRecord.keys()[i])
                     # self.out( type(sValue))
                     print sValue, type(sValue)
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
@@ -451,12 +431,17 @@ class SingleData(gladeXml, logs):
                         except:
                             print 'ERORR - Time not match'
                             
-                                           
+                    elif string.count(str(widget), "GtkFileChooserButton") > 0:
+                        widget.set_filename(sValue)
 
             self.fillOtherEntries(oneRecord)
 
     def fillOtherEntries(self, oneRecord):
         pass
+
+    def fillExtraEntries(self, oneRecord):
+        pass
+
 
     def readEntries(self):
         try:
@@ -490,6 +475,12 @@ class SingleData(gladeXml, logs):
                     elif string.count(str(widget), "GtkComboBoxEntry") > 0:
                         #sValue = `widget.get_active()`
                         sValue = 'Test'
+
+                    elif string.count(str(widget), "GtkFileChooserButton") > 0:
+                        print "  GtkFileChooserButton "
+                        sValue =  widget.get_filename()
+                        print sValue
+                        
                     else:
                         sValue = widget.get_text()
                 except Exception, param:
@@ -604,10 +595,9 @@ class SingleData(gladeXml, logs):
         # self.out( dicEntries01)
         self.dicEntries = dicEntries01
 
-        self.setExtraEntries(dicEntries01)
 
-    def setExtraEntries(self, dicEntries01):
-        pass
+
+
     
     def getEntries(self):
         # self.out( 'singleData - get Entries ++++++++++++++++++++++++++++++++++++++++++++++++++ ')

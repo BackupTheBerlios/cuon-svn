@@ -24,6 +24,11 @@ cuweb) Server=http://84.244.7.139:9673/Cuon
 cuwebssl) Server=https://84.244.7.139:8443/Cuon
 ;;
 
+cyweb) Server=http://84.244.4.80:9673/Cuon
+;;
+cywebssl) Server=https://84.244.4.80:8443/Cuon
+;;
+
 *) Server=$MyServer/Cuon
 ;;
 

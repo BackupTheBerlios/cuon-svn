@@ -2,7 +2,7 @@
   <table>
     <table_name>preferences</table_name>
     <entry>
-      <name>cbPath_Report_Addresslists</name>
+      <name>gfcb_path_to_addresslists</name>
       <type>textline</type>
       <size>255</size>
       <verify_type>string</verify_type>
@@ -12,7 +12,7 @@
       <fg_color>0</fg_color>
     </entry>
    <entry>
-      <name>cbPath_Report_Invoice</name>
+      <name>gfcb_path_to_invoice</name>
       <type>textline</type>
       <size>255</size>
       <verify_type>string</verify_type>
@@ -23,7 +23,7 @@
     </entry>
  
    <entry>
-      <name>cbPath_Report_Supply</name>
+      <name>gfcb_path_to_supply</name>
       <type>textline</type>
       <size>255</size>
       <verify_type>string</verify_type>
@@ -33,7 +33,7 @@
       <fg_color>0</fg_color>
     </entry>
    <entry>
-      <name>cbPath_Report_Pickup</name>
+      <name>gfcb_path_to_pickup</name>
       <type>textline</type>
       <size>255</size>
       <verify_type>string</verify_type>
