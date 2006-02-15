@@ -46,8 +46,8 @@ class dmswindow(windows):
         self.openDB()
         self.oUser = self.loadObject('User')
         self.closeDB()
-        print self.oUser
-        print '-.............................'
+        #print self.oUser
+        #print '-.............................'
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         
 
@@ -64,12 +64,14 @@ class dmswindow(windows):
             self.ModulNumber = module
             
         self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
+        self.sepInfo['1'] = self.MN['DMS']
         if sep_info:
-            self.sepInfo = sep_info
-            self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`
+            self.sepInfo['1'] = sep_info
 
+        print "Sep-Info 1 ",  self.sepInfo['1']
+           
             
-            
+        self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`            
         
         
         self.loadEntries(self.EntriesPreferences)
@@ -179,7 +181,7 @@ class dmswindow(windows):
 
     def on_bImport_clicked(self, event):
         print 'bImport'
-        self.importDocument()
+        self.oDocumentTools.importDocument( self.singleDMS, self.dicUser, self.getWidget("gfcb_ImportFile").get_filename() )
 
 
     def on_bView_clicked(self, event):
@@ -232,6 +234,5 @@ class dmswindow(windows):
     
         self.oDocumentTools.scanDocument(self.singleDMS, self.dicUser)
         
-    def importDocument(self):
-        sFile = self.getWidget('eImportFile').get_text()
-        self.oDocumentTools.importDocument(self.singleDMS, self.dicUser, sFile)                        
+   
+                        

@@ -109,7 +109,7 @@ class SingleDMS(SingleData):
 
         else:
              
-            logopic = '/usr/lib/cuon/icons/cuon-logo.png'
+            logopic = '/usr/lib/cuon/icons/cuon-logo.xpm'
             pixbuf = gtk.gdk.pixbuf_new_from_file(logopic)
             scaled_buf = pixbuf.scale_simple(480,400,gtk.gdk.INTERP_BILINEAR)
             self.imageWidget.set_from_pixbuf(scaled_buf)

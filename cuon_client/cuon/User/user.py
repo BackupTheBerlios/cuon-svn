@@ -104,6 +104,7 @@ class User:
         self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf'], 'executable': '/usr/bin/gimp'}
         self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': '/usr/bin/xmms'}
         self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': '/usr/bin/xmms'}
+        self.prefDMS['fileformat']['wav'] =  {'format':'WAV',  'suffix':['wav'], 'executable': '/usr/bin/xmms'}
         self.prefDMS['fileformat']['txt'] =  {'format':'Text',  'suffix':['txt'], 'executable': '/usr/bin/gedit'}
         self.prefDMS['fileformat']['tex'] =  {'format':'TEX',  'suffix':['tex',], 'executable': '/usr/bin/xemacs'}
         self.prefDMS['fileformat']['latex'] =  {'format':'LATEX',  'suffix':['ltx',], 'executable': '/usr/bin/xemacs'}

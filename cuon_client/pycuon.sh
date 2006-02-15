@@ -44,6 +44,7 @@ cd CUON/
 case $1 in 
 
 server)
+make iClient
 cp ../cuon_server.py . 
 $EXEC cuon_server.py $Server server $3
 ;;

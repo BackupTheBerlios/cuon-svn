@@ -350,7 +350,7 @@ class SingleData(gladeXml, logs):
                 self.clearAllFields()
             for i in range(len(oneRecord)):
                 sValue = oneRecord[oneRecord.keys()[i]]
-                print 'sValue = ', sValue
+                #print 'sValue = ', sValue
                 
                 if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #self.fillExternalWidget(oneRecord[sValue], id)
