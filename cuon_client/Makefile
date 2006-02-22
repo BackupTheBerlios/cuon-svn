@@ -190,7 +190,7 @@ iClient:
 	cp ~/cuon/*.xml $(iClientDir)/cuon
 	cp ~/cuon/Reports/* $(iClientDir)/cuon/Reports
 	cp ~/cuon/*.jpg $(iClientDir)/cuon
-
+	cp ~/cuon/cuonObjects $(iClientDir)/cuon
 
 install:
 	make  all

@@ -135,6 +135,7 @@ class User:
         self.setDicUserKeys('address_delete','d')
         self.setDicUserKeys('address_new','n')
         self.setDicUserKeys('address_print','p')
+
        
         self.setDicUserKeys('address_partner_edit','e')
         self.setDicUserKeys('address_partner_delete','d')

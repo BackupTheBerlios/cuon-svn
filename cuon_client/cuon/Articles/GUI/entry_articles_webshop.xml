@@ -23,10 +23,10 @@
       <fg_color>0</fg_color>
     </entry>
        <entry>
-      <name>cbWebshopPrice</name>
-      <type>textline</type>
+      <name>cbeWebshopPrice</name>
+      <type>combobox</type>
       <size>35</size>
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
       <create_sql>1</create_sql>
       <sql_field>pricegroup</sql_field>
       <bg_color>0</bg_color>

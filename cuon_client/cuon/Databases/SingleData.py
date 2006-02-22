@@ -267,7 +267,8 @@ class SingleData(gladeXml, logs):
         if self.tree1.get_selection() != None and self.path != None:
             # self.out('select tree by path',self.INFO)
             self.tree1.get_selection().select_path(self.path)
-
+        
+            
 
     def treeSelectRowByIter(self):
         if self.iter:
@@ -309,6 +310,22 @@ class SingleData(gladeXml, logs):
         # self.out( "ID: " + str(id))
         return ''
 
+
+    def getFirstListRecord(self):
+        
+        liEntries = self.rpc.callRP('src.sql.py_getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser)
+        try:
+            dicEntry = liEntries[0]
+            id  = dicEntry['id']
+            self.load(id)
+            
+        except:
+            self.ID = 0
+            
+        print "getFirstentry", liEntries
+        
+        
+        
     def clearAllFields(self):
         #print 'clear all widgets '
         nCount = self.dicEntries.getCountOfEntries()
@@ -318,22 +335,26 @@ class SingleData(gladeXml, logs):
             oneEntry = self.dicEntries.getEntryAtIndex(n)
             widget = self.getWidget(oneEntry.getName())                   
             if string.count(str(widget), "GtkEntry") > 0:
-               # self.out( "GtkEntry:")
-               # self.out( "Name: " + str(widget.get_name()))
-               widget.set_text('')
+                # self.out( "GtkEntry:")
+                # self.out( "Name: " + str(widget.get_name()))
+                widget.set_text('')
             elif string.count(str(widget), "GtkTextView") > 0:
-               buffer = gtk.TextBuffer(None)
-               buffer.set_text('')
-               widget.set_buffer(buffer)
+                buffer = gtk.TextBuffer(None)
+                buffer.set_text('')
+                widget.set_buffer(buffer)
             elif string.count(str(widget), "GtkCheckButton") > 0:
-               widget.set_active(False)
+                widget.set_active(False)
                             
             elif string.count(str(widget), "GnomeDateEdit") > 0:
-                 newDate = time.strptime('0001/01/01', 'Y/m/d') 
-                 print newDate
-                 widget.set_time(int(time.mktime(newDate)))
+                newDate = time.strptime('0001/01/01', 'Y/m/d') 
+                print newDate
+                widget.set_time(int(time.mktime(newDate)))
                                            
-           
+            elif string.count(str(widget), "GtkComboBoxEntry") > 0:
+                print "Cbe", 'löschen'
+                print widget.get_name()
+                
+                widget.set_active(0)
     
     def fillEntries(self, id):
         print 'id by fillentries: ',  id
@@ -408,6 +429,12 @@ class SingleData(gladeXml, logs):
                         buffer = gtk.TextBuffer(None)
                         buffer.set_text(sValue)
                         widget.set_buffer(buffer)
+                    elif string.count(str(widget), "GtkComboBoxEntry") > 0:
+                        if sValue and int(sValue) > -1:
+                            widget.set_active(int(sValue))
+                        else:
+                            # -1 don`t function -- proof later
+                            widget.set_active(0)
                     elif string.count(str(widget), "GtkCheckButton") > 0:
                         print 'Bool-Value from Database'
                         #print sValue
@@ -473,8 +500,9 @@ class SingleData(gladeXml, logs):
                         sValue = time.strftime(self.sqlDicUser['DateTimeformatString'], newTime)
         #                print sValue
                     elif string.count(str(widget), "GtkComboBoxEntry") > 0:
-                        #sValue = `widget.get_active()`
-                        sValue = 'Test'
+                        sValue = widget.get_active()
+                        print "GtkComboEntry", sValue
+                        print "Text = ", widget.get_active_text()
 
                     elif string.count(str(widget), "GtkFileChooserButton") > 0:
                         print "  GtkFileChooserButton "
@@ -713,5 +741,10 @@ class SingleData(gladeXml, logs):
                 buffer = gtk.TextBuffer(None)
                 buffer.set_text('')
                 widget.set_buffer(buffer)
+        self.setOtherEmptyEntries()
 
+    def setOtherEmptyEntries(self):
+        pass
+
+        
 

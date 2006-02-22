@@ -23,6 +23,9 @@ from cuon.Databases.SingleData import SingleData
 import SingleArticle
 import SingleArticlePurchase
 import SingleArticleSale
+import SingleArticleWebshop
+import SingleArticleStock
+
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
 import cuon.Addresses.addresses
@@ -48,6 +51,8 @@ class articleswindow(chooseWindows):
         self.singleArticle = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)
         self.singleArticleSales = SingleArticleSale.SingleArticleSale(allTables)
+        self.singleArticleWebshop = SingleArticleWebshop.SingleArticleWebshop(allTables)
+        self.singleArticleStock = SingleArticleStock.SingleArticleStock(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
         # self.singleArticle.loadTable()
@@ -55,13 +60,15 @@ class articleswindow(chooseWindows):
         self.EntriesArticles = 'articles.xml'
         self.EntriesArticlesPurchase = 'articles_purchase.xml'
         self.EntriesArticlesSales = 'articles_sales.xml'
+        self.EntriesArticlesWebshop = 'articles_webshop.xml'
+        self.EntriesArticlesStock = 'articles_stock.xml'
                 
         
         #singleArticle
  
  
         self.loadEntries(self.EntriesArticles)
-        self.singleArticle.setEntries(self.getDataEntries('articles.xml') )
+        self.singleArticle.setEntries(self.getDataEntries( self.EntriesArticles) )
         self.singleArticle.setGladeXml(self.xml)
         self.singleArticle.setTreeFields( ['number', 'designation'] )
 #        self.singleArticle.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
@@ -72,7 +79,7 @@ class articleswindow(chooseWindows):
          #singleArticlePurchase
         
         self.loadEntries(self.EntriesArticlesPurchase)
-        self.singleArticlePurchase.setEntries(self.getDataEntries('articles_purchase.xml') )
+        self.singleArticlePurchase.setEntries(self.getDataEntries( self.EntriesArticlesPurchase) )
         self.singleArticlePurchase.setGladeXml(self.xml)
         self.singleArticlePurchase.setTreeFields( ['designation' ] )
         self.singleArticlePurchase.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
@@ -85,7 +92,7 @@ class articleswindow(chooseWindows):
      #singleArticleSales
         
         self.loadEntries(self.EntriesArticlesSales)
-        self.singleArticleSales.setEntries(self.getDataEntries('articles_sales.xml') )
+        self.singleArticleSales.setEntries(self.getDataEntries( self.EntriesArticlesSales) )
         self.singleArticleSales.setGladeXml(self.xml)
         self.singleArticleSales.setTreeFields( ['designation'] )
         self.singleArticleSales.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
@@ -94,8 +101,34 @@ class articleswindow(chooseWindows):
 
         self.singleArticleSales.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
         self.singleArticleSales.setTree(self.xml.get_widget('tree1') )
-  
 
+  
+  #singleArticleWebshop
+        
+        self.loadEntries(self.EntriesArticlesWebshop)
+        self.singleArticleWebshop.setEntries(self.getDataEntries( self.EntriesArticlesWebshop) )
+        self.singleArticleWebshop.setGladeXml(self.xml)
+##        self.singleArticleWebshop.setTreeFields( ['articles_number'] )
+ ##       self.singleArticleWebshop.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+  ##      self.singleArticleWebshop.setTreeOrder('articles_number')
+   ##     self.singleArticleWebshop.setListHeader([_('article')])
+
+        self.singleArticleWebshop.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
+        self.singleArticleWebshop.setTree(self.xml.get_widget('tree1') )
+
+    #singleArticleStock
+        
+        self.loadEntries(self.EntriesArticlesStock)
+        self.singleArticleStock.setEntries(self.getDataEntries( self.EntriesArticlesStock ))
+        self.singleArticleStock.setGladeXml(self.xml)
+##        self.singleArticleStock.setTreeFields( ['designation'] )
+##        self.singleArticleStock.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+##        self.singleArticleStock.setTreeOrder('designation')
+##        self.singleArticleStock.setListHeader([_('Designation')])
+
+        self.singleArticleStock.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
+        self.singleArticleStock.setTree(self.xml.get_widget('tree1') )
+  
         
 
         # Menu-items
@@ -125,10 +158,18 @@ class articleswindow(chooseWindows):
         self.addEnabledMenuItems('editPurchase','PurchaseClear1')
         self.addEnabledMenuItems('editPurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
     
-       # enabledMenues for ArticlePurchase
+       # enabledMenues for ArticleSales
         self.addEnabledMenuItems('editSales','SalesNew1')
         self.addEnabledMenuItems('editSales','SalesClear1')
         self.addEnabledMenuItems('editSales','SalesEdit1')
+
+       # enabledMenues for ArticleWebshop
+        self.addEnabledMenuItems('editWebshop','WebshopClear1')
+        self.addEnabledMenuItems('editWebshop','WebshopEdit1')
+
+       # enabledMenues for ArticleStock
+        self.addEnabledMenuItems('editStock','StockClear1')
+        self.addEnabledMenuItems('editStock','StockEdit1')
 
 
 
@@ -136,6 +177,8 @@ class articleswindow(chooseWindows):
         self.tabArticle = 0
         self.tabPurchase = 1
         self.tabSales = 2
+        self.tabWebshop = 3
+        self.tabStock = 4
         
 
         # start
@@ -258,6 +301,53 @@ class articleswindow(chooseWindows):
         self.singleArticleSales.deleteRecord()
 
 
+ #Articles Webshop
+    def on_WebshopSave1_activate(self, event):
+        print "save  articles Webshop v2"
+        print "article ID = ", self.singleArticle.ID
+        self.singleArticleWebshop.articlesNumber = self.singleArticle.ID
+        self.singleArticleWebshop.save()
+        self.setEntriesEditable(self.EntriesArticlesWebshop, False)
+
+        self.tabChanged()
+        
+    def on_WebshopNew1_activate(self, event):
+        print "new Partner articles v2"
+        self.singleArticleWebshop.newRecord()
+        self.setEntriesEditable(self.EntriesArticlesWebshop, True)
+
+    def on_WebshopEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesArticlesWebshop, True)
+
+    def on_WebshopClear1_activate(self, event):
+        print "delete Partner articles v2"
+        self.singleArticleWebshop.deleteRecord()
+
+
+ #Articles Stock
+    def on_StockSave1_activate(self, event):
+        print "save Partner articles v2"
+        
+        self.singleArticleStock.articlesNumber = self.singleArticle.ID
+        self.singleArticleStock.save()
+        self.setEntriesEditable(self.EntriesArticlesStock, False)
+
+        self.tabChanged()
+        
+    def on_StockNew1_activate(self, event):
+        print "new Partner articles v2"
+        self.singleArticleStock.newRecord()
+        self.setEntriesEditable(self.EntriesArticlesStock, True)
+
+    def on_StockEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesArticlesStock, True)
+
+    def on_StockClear1_activate(self, event):
+        print "delete Partner articles v2"
+        self.singleArticleStock.deleteRecord()
+
+
+
     # Menu Lists
 
     def on_liArticlesNumber1_activate(self, event):
@@ -341,13 +431,38 @@ class articleswindow(chooseWindows):
             self.singleArticleSales.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
             self.singleArticleSales.connectTree()
             self.singleArticleSales.refreshTree()
- 
+
+        elif self.tabOption == self.tabWebshop:
+
+            self.singleArticleWebshop.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
+            self.singleArticleWebshop.setEmptyEntries()
+            self.singleArticleWebshop.getFirstRecord()
+            
+            self.singleArticleWebshop.fillEntries(self.singleArticleWebshop.ID)
+
+            
+            print "-----------> end tab Webshop"
+            
+
+        elif self.tabOption == self.tabStock:
+            print "-----------> begin tab Stock"
+            self.singleArticleStock.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
+            self.singleArticleWebshop.setEmptyEntries()
+            self.singleArticleStock.getFirstRecord()
+            if self.singleArticleStock.ID > 0:
+                self.singleArticleStock.fillEntries(self.singleArticleStock.ID)
+            else:
+                dicAr = {'articles_number':self.singleArticle.getArticleNumber(self.singleArticle.ID)}
+                self.singleArticleStock.fillOtherEntries(dicAr)
+
+            print "-----------> end tab Stock"
      
 
 
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
+        self.setTreeVisible(True)
         if self.tabOption == self.tabArticle:
             #Address
             self.disableMenuItem('tabs')
@@ -367,6 +482,20 @@ class articleswindow(chooseWindows):
             self.enableMenuItem('sales')
             self.editAction = 'editArticleSales'
             print 'Seite 2'
+
+        elif self.tabOption == self.tabWebshop:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('sales')
+            self.editAction = 'editArticleWebshop'
+            self.setTreeVisible(False)
+            print 'Seite 3'
+
+        elif self.tabOption == self.tabStock:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('sales')
+            self.editAction = 'editArticleStock'
+            self.setTreeVisible(False)
+            print 'Seite 4'
             
         # refresh the Tree
         self.refreshTree()

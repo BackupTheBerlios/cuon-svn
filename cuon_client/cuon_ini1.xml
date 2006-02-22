@@ -57,6 +57,11 @@
       <Entry-File>articles_webshop.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_articles_webshop.xml</Entry-FileValue>
     </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>articles_stock.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
+    </Entries>
     
     <Entries>		
       <Entry-Name>cuon</Entry-Name>

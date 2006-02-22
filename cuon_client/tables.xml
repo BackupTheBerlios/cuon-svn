@@ -2105,7 +2105,7 @@
            <field>
       <name>pricegroup</name>
 
-      <type>varchar</type>
+      <type>int</type>
 
       <pkey>0</pkey>
 
@@ -2113,7 +2113,7 @@
 
       <notnull>0</notnull>
 
-      <size>50</size>
+      <size>0</size>
 
       <default />
 
@@ -2123,6 +2123,98 @@
     </field>
     </table>
     
+ <!--table: articles_stock-->
+
+  <table>
+    <nameOfTable>articles_stock</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>52</x>
+
+    <y>15</y>
+
+    <field>
+      <name>articles_number</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>1</notnull>
+
+      <size>30</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+
+
+<field>
+      <name>minimum_stock</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default >0</default>
+
+      <comment />
+    </field>
+
+<field>
+      <name>maximum_stock</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default >0</default>
+
+      <comment />
+    </field>
+
+         <field>
+      <name>is_check_stock</name>
+
+      <type>bool</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+      
+      
+      
+    </field>
+
+
+</table>
+
+
   <!--table: orderbook-->
 
   <table>

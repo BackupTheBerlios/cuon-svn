@@ -218,15 +218,18 @@ class stockwindow(chooseWindows):
 
     def on_eArticleID_changed(self, event):
         print 'eArticle changed'
-        iArtNumber = self.getChangedValue('eArticleID')
-        self.singleArticle.load(iArtNumber)
-        firstRecord  = self.singleArticle.getFirstRecord()
-        print 'firstRecord by article = ', `firstRecord`
-        if firstRecord.has_key('number'):
-            self.getWidget('eGoodsArticleNumber').set_text(firstRecord['number'])
-            if firstRecord['designation'] :
-                self.getWidget('eGoodsArticleDesignation1').set_text(firstRecord['designation'])
-
+        try:
+            iArtNumber = self.getChangedValue('eArticleID')
+            print 'eArticleID', iArtNumber
+            self.singleArticle.load(iArtNumber)
+            firstRecord  = self.singleArticle.getFirstRecord()
+            print 'firstRecord by article = ', `firstRecord`
+            if firstRecord.has_key('number'):
+                self.getWidget('eGoodsArticleNumber').set_text(firstRecord['number'])
+                if firstRecord['designation'] :
+                    self.getWidget('eGoodsArticleDesignation1').set_text(firstRecord['designation'])
+        except Exception,param:
+            print Exception, param
         
     def refreshTree(self):
         self.singleStock.disconnectTree()
