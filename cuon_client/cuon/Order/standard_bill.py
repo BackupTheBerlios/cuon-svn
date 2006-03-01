@@ -15,7 +15,7 @@
 from cuon.PDF.standardlist import standardlist
 import cuon.PDF.report_addresses_phone1
 
-class standard_invoice(standardlist):
+class standard_bill(standardlist):
     def __init__(self):
         standardlist.__init__(self)
         

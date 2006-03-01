@@ -55,8 +55,19 @@ class logs :
             f = open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonLog'),'a')
             tValue =  time.strftime("%d.%m.%Y %H:%M", newTime)
             f.write(tValue)
-            f.write(`sLog`)
-            f.write('---------------------------------------------------------------------------------------------------')
+            f.write(`sLog`+ "\n")
+            f.write('---------------------------------------------------------------------------------------------------\n')
             f.close()
 
+    def printOut(self, s1,s2=None):
+        ok = True
+        if ok:
+            if s2:
+                print s1, s2
+            else:
+                print s1
+                
+               
+        
+    
         

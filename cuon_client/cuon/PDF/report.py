@@ -147,7 +147,7 @@ class report(dumps, MyXML):
     def loadXmlReport(self, sFile, sReportPath = None):
         doc = self.loadXmlReportFile(sFile, sReportPath)
     
-        #print  doc.toxml() 
+        print  `doc`
         cyRootNode = self.getRootNode(doc)
 
         self.out( cyRootNode[0].toxml())

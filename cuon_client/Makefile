@@ -129,6 +129,12 @@ src_biblio = ./cuon/Biblio/*.py
 dest_biblio = $(dest_cuon)/Biblio
 
 
+src_ai = ./cuon/AI/*.py
+dest_ai = $(dest_cuon)/AI
+src_aiml = ./cuon/AI/AIML
+dest_aiml = $(SERVERDIRSHARE)/AI/AIML
+
+
 
 
 
@@ -178,7 +184,7 @@ all :
 	cp $(src_finances_cab) $(dest_finances)
 	cp $(src_finances_ib) $(dest_finances) 
 	if [ ! -d $(dest_biblio) ] ; then mkdir $(dest_biblio) ; fi ; cp $(src_biblio) $(dest_biblio) 
-
+	if [ ! -d $(dest_ai) ] ; then mkdir $(dest_ai) ; fi ; cp $(src_ai) $(dest_ai) 
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 
@@ -209,6 +215,15 @@ install:
 	if  [ ! -d $(ICONDIR)/ ] ; then mkdir $(ICONDIR) ; fi 	
 
 	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
+
+ai:
+
+	if  [ ! -d $(SERVERDIRSHARE)/AI ] ; then mkdir $(SERVERDIRSHARE)/AI ; fi 
+	if  [ ! -d $(dest_aiml) ] ; then mkdir $(dest_aiml) ; fi 
+	cp $(src_aiml)/de_startup.aiml $(dest_aiml)/startup.aiml
+	cp $(src_aiml)/de_main.aiml $(dest_aiml)/main.aiml
+	cp $(src_aiml)/de_cuon.aiml $(dest_aiml)/cuon.aiml
+	chmod a+r $(dest_aiml)/*
 
 install_server:
 

@@ -93,6 +93,7 @@ class import_generic1(fileSelection):
 
                                
     def standardImport(self):
+        print 'dicfileAttributes', self.dicFileAttributes
         importFile = open(self.dicFileAttributes['inputFile'])
 
         s1 = importFile.readline()

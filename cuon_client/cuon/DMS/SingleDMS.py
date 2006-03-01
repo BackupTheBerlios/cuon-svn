@@ -13,6 +13,8 @@
 import sys
 import os
 sys.path.append(os.environ['CUON_PATH'])
+sys.path.append('/usr/lib/python/')
+sys.path.append('/usr/lib/python/site-packages/PIL')
 
 from cuon.Databases.SingleData import SingleData
 import logging

@@ -3,9 +3,10 @@ import os
 import sys
 import time
 import random	
-
+import xmlrpclib
 
 CUON_FS = None
+CUON_AI_SERVER="http://localhost:8765"
 #sys.path.append('/usr/lib/zope/lib/python')
 f = open('/etc/cuon/cuon_zope.ini')
 if f:
@@ -16,10 +17,16 @@ if f:
             sys.path.append(liIni[1].strip())
         if liIni[0].strip() == 'CUON_FS':
             CUON_FS = liIni[1].strip()
-            
+        if liIni[0].strip() == 'CUON_AI_SERVER':
+            CUON_AI_SERVER = liIni[1].strip()
+
+        
         s1 = f.readline()
         
     f.close()
+
+ai_server = xmlrpclib.ServerProxy(CUON_AI_SERVER)
+
     
 from ZODB import FileStorage, DB
 
@@ -155,3 +162,7 @@ def checkEndTime(fTime):
                 
     return ok
 	
+
+
+def getAI(question):
+    return ai_server.getAnswer(question)

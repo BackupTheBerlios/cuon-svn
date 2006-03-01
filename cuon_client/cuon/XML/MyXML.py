@@ -23,9 +23,9 @@ import string
 
 class MyXML(logs):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: Juergen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Loehne
+    @copyright: by Juergen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -106,7 +106,7 @@ class MyXML(logs):
         try:
             doc = minidom.parse(filename)
         except Exception, param:
-                print 'unknown exception'
+                print 'unknown exception by read XML-document'
                 print `Exception`
                 print `param`
         

@@ -51,11 +51,11 @@ class cashAccountBookwindow(windows):
     
         self.singleAccountSentence.setEntries(self.getDataEntries(self.EntriesCAB) )
         self.singleAccountSentence.setGladeXml(self.xml)
-        self.singleAccountSentence.setTreeFields( ['document_number1','document_number2', 'designation'] )
-        self.singleAccountSentence.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleAccountSentence.setTreeOrder('document_number1')
+        self.singleAccountSentence.setTreeFields( ['accounting_date','document_number1','document_number2', 'designation'] )
+        self.singleAccountSentence.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleAccountSentence.setTreeOrder('accounting_date, document_number1')
         self.singleAccountSentence.setTree(self.xml.get_widget('tree1') )
-        self.singleAccountSentence.setListHeader(['document_number1','document_number2', 'designation'])
+        self.singleAccountSentence.setListHeader(['date','document_number1','document_number2', 'designation'])
         
          
    
@@ -152,6 +152,12 @@ class cashAccountBookwindow(windows):
         cab_nr = self.rpc.callRP('src.Finances.py_get_cab_doc_number1', self.dicUser)
         print 'cab_nr = ' , cab_nr
         self.getWidget('eDocumentNumber1').set_text(`cab_nr`)
+        last_date = self.rpc.callRP('src.Finances.py_getLastDate', self.dicUser)
+        self.out('Last-Date = ' + `last_date`)
+        last_date = time.strptime(last_date, "%d.%m.%Y",  )
+        self.getWidget('eDate').set_text(time.strftime(self.dicUser['DateformatString'],last_date))
+        self.getWidget('eDate').grab_focus()
+        
         self.setEntriesEditable(self.EntriesCAB, True)
 
     def on_edit1_activate(self, event):
@@ -185,15 +191,15 @@ class cashAccountBookwindow(windows):
         self.setInfo('eCAB1','eInfo1')
  
     def on_eCAB2_changed(self, event):
-        print 'eCAB1 insertText'
+        print 'eCAB2 insertText'
         self.setInfo('eCAB2','eInfo2')
 
     def on_eCAB3_changed(self, event):
-        print 'eCAB1 insertText'
+        print 'eCAB3 insertText'
         self.setInfo('eCAB3','eInfo3')
     
     def on_eCAB4_changed(self, event):
-        print 'eCAB1 insertText'
+        print 'eCAB4 insertText'
         self.setInfo('eCAB4','eInfo4')
   
 
@@ -224,7 +230,7 @@ class cashAccountBookwindow(windows):
             s = entry.get_text()
             if len(s) >1:
                 id = self.rpc.callRP('src.Finances.py_get_cabShortKeyValues', s, self.oUser.getSqlDicUser())
-                if id:
+                if id > 0:
                     print id
                     sDes = self.rpc.callRP('src.Finances.py_get_cab_designation', id, self.oUser.getSqlDicUser())
                     if sDes:

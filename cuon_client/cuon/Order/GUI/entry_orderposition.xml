@@ -32,6 +32,7 @@
       <size>120</size>
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
+      <round>2</round>
       <sql_field>amount</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
@@ -56,6 +57,7 @@
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
       <sql_field>price</sql_field>
+ <round>2</round>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
@@ -67,6 +69,7 @@
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
       <sql_field>tax_vat</sql_field>
+ <round>2</round>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>

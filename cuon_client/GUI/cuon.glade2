@@ -276,13 +276,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="visualizing1">
+	    <widget class="GtkMenuItem" id="Extras1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Visualizing</property>
+	      <property name="label" translatable="yes">Extras</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="visualizing1_menu">
+		<widget class="GtkMenu" id="Extras1_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="mayavi1">
@@ -303,6 +303,21 @@
 			  </child>
 			</widget>
 		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="expert_system1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Expert System</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_expert_system1_activate" last_modification_time="Wed, 01 Mar 2006 09:24:55 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="trennlinie5">
+		      <property name="visible">True</property>
 		    </widget>
 		  </child>
 		</widget>

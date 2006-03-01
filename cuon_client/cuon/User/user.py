@@ -60,7 +60,7 @@ class User:
         self.userSQLTimeFormat = 'HH24:MI'
         self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
         self.prefPath = {}
-
+        self.serverSqlDateFormat = '%Y-%m-%d'
         self.client = 0
         
         self.prefPath['tmp'] =  os.path.normpath(os.environ['CUON_HOME']) + '/'  

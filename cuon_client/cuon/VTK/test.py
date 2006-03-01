@@ -1,3 +1,7 @@
+import sys
+sys.path.append('/usr/lib/python/')
+sys.path.append('/usr/lib/python/site-packages/Numeric')
+
 # generate the data.
 from Numeric import *
 #import mayavi

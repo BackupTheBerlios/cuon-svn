@@ -12,13 +12,15 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 import sys
+sys.path.append('/usr/lib/python/')
+sys.path.append('/usr/lib/python/site-packages/PIL')
+
 from types import *
 import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
 import string
 
 import logging
@@ -28,7 +30,12 @@ import SingleDMS
 import cuon.Misc.misc
 import os
 import sane
-import Image
+try:
+    import Image
+except:
+    print "no package Image found"
+    print ""
+    
 import bz2
 import re
 import binascii
@@ -126,22 +133,22 @@ class dmswindow(windows):
         self.singleDMS.ModulNumber = self.ModulNumber
         self.singleDMS.save(['document_image'])
         
-        self.setEntriesEditable(self.EntriesPreferences, FALSE)
+        self.setEntriesEditable(self.EntriesPreferences, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.singleDMS.newRecord()
-        self.setEntriesEditable(self.EntriesPreferences, TRUE)
+        self.setEntriesEditable(self.EntriesPreferences, True)
 
     def on_edit1_activate(self, event):
         if self.tabOption == self.tabDocument:
-            self.setEntriesEditable(self.EntriesPreferences, TRUE)
+            self.setEntriesEditable(self.EntriesPreferences, True)
 ##        elif self.tabOption == self.tabPrinting:
-##            self.setEntriesEditable(self.EntriesPreferencesPrinting, TRUE)
+##            self.setEntriesEditable(self.EntriesPreferencesPrinting, True)
 ##        elif self.tabOption == self.tabPathToReports:
-##            self.setEntriesEditable(self.EntriesPreferencesPathToReports, TRUE)
+##            self.setEntriesEditable(self.EntriesPreferencesPathToReports, True)
 ##        elif self.tabOption == self.tabPathToDocs:
-##            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, TRUE)
+##            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, True)
 
 
     def on_delete1_activate(self, event):
@@ -213,7 +220,7 @@ class dmswindow(windows):
 
             self.actualEntries = self.singleDMS.getEntries()
             self.editAction = 'editDMS'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.out( 'Seite 0')
             self.singleDMS.setEntries(self.getDataEntries(self.EntriesPreferences) )
             # set the Entries manually, because there is no tree event
@@ -222,12 +229,12 @@ class dmswindow(windows):
 
         else:
             
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
 
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         
 
     def scanDocument(self):

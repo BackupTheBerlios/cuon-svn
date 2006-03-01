@@ -23,7 +23,7 @@ import logging
 from cuon.XML.MyXML import MyXML
 import dataEntry
 import cuon.XMLRPC.xmlrpc
-import cuon.TypeDefs
+import cuon.TypeDefs.typedefs
 import cuon.Windows.cyr_load_entries
 from  cuon.Windows.gladeXml import gladeXml
 # from cuon.XMLRPC.xmlrpc import xmlrpc
@@ -54,6 +54,8 @@ class windows(MyXML, gladeXml, messages):
         self.dicSqlUser = None
         self.dicUserKeys = None
         self.loadUserInfo()
+
+        self.td = cuon.TypeDefs.typedefs.typedefs()
         
         self.ModulNumber = 1
         self.MN = {}
@@ -68,6 +70,7 @@ class windows(MyXML, gladeXml, messages):
         self.MN['Stock'] = 5000
         self.MN['DMS'] = 11000
         self.MN['Biblio'] = 12000
+        self.MN['AI'] = 13000
 
         self.sWhereStandard = ''
         self.sepInfo = {}

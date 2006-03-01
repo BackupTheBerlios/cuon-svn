@@ -84,13 +84,13 @@ class dataEntry:
     
 
     def setRound(self,sRound):
-        iRound1 = 0
+        iRound1 = -1
         if sRound != 'EMPTY':
             try:
                 iRound1 = int(sRound)
             except:
                 print 'ERROR - No Integer'
-            
+                
         self.iRound = iRound1
         
     def getRound(self):

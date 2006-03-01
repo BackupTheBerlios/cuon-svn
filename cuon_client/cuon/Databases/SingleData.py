@@ -397,15 +397,24 @@ class SingleData(gladeXml, logs):
                     
                     elif entry.getVerifyType() == 'float' and isinstance(sValue, types.FloatType):
                         iR = entry.getRound()
+                        if iR == -1:
+                            iR = 2
                         sValue = "%0.*f" % (iR, sValue)
                         print sValue
 
                     elif entry.getVerifyType() == 'numeric' and isinstance(sValue, types.FloatType):
                         sValue = `round(sValue,entry.getRound())`
                        
-                    if entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
+                    elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                         #sValue = sValue.encode(self.sCoding)
                         print 'date string = ', sValue
+                        #dt = time.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
+                        #print dt
+                        #dt = DateTime.strptime(sValue, self.sqlDicUser['DateFormatString'])
+                        #print dt
+                        #print self.sqlDicUser['DateTimeformatString']
+                        #sValue = time.strptime(sValue, self.sqlDicUser['DateFormatString'] )
+                        #print newDate
                         
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                     #    dt = DateTime.DateTimeFrom(sValue)
@@ -600,8 +609,11 @@ class SingleData(gladeXml, logs):
                 elif sVerify == 'date' :
                     if oValue == '':
                         oValue = '01.01.1900'
-
-
+                    else:
+                        self.printOut('Date by Verify:', oValue)
+                        oDate =  time.strptime(oValue, self.sqlDicUser['DateformatString'])
+                        oValue = time.strftime("%Y/%m/%d",oDate)
+                        self.printOut('Date by Verify 2:', oValue)
 
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-EXEC=/usr/bin/python2.3
+EXEC=/usr/bin/python
 MyServer=http://localhost:8080
 #MyServer=http://server2:9673
 case $2 in
