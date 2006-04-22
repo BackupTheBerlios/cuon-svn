@@ -71,7 +71,7 @@ class databaseswindow(windows):
         #self.oUser.setUserName('zope')
         #self.oUser.setUserPassword('test')
         
-        self.dicUser = self.oUser.getDicUser()
+        self.dicUser = self.oUser.getSqlDicUser()
         # set to 0 for disable 'where client =  '
         self.dicUser['client'] = 0
      
@@ -172,7 +172,7 @@ class databaseswindow(windows):
             for i in lEntry:
                 self.out( i.toxml())
                 sNameOfTable = key[6:(len(`key`) -7)]
-                self.out( "sNameOfTable" + sNameOfTable)
+                print  "sNameOfTable" , sNameOfTable 
                 self.startXMLCheck(key,i , sNameOfTable)        
 
 
@@ -221,6 +221,7 @@ class databaseswindow(windows):
        ### for Server-functions set the td-object
         clt.td = self.td
         # first - the infotable cuon must be setup
+        #print 'User:', self.dicUser
         ok =  self.rpc.callRP('src.Databases.py_createCuon', self.dicUser)
 
         # now check the rest

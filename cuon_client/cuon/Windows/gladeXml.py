@@ -103,7 +103,17 @@ class gladeXml(dumps):
         return self.xml.get_widget(sName )
 
     def getWidgets(self,sPrefix):
-        return self.xml.get_widget_prefix(sPrefix)
+        # bad function in gtk2.8
+        #liW = self.xml.get_widget_prefix(sPrefix)
+        liW = self.xml.get_widget_prefix('')
+        liW2 = []
+        for i in liW:
+            print  i.get_name()[0:3]
+            if i.get_name()[0:3] == 'mi_':
+                liW2.append(i)
+        
+        print 'Widgets = ', `liW2`
+        return liW2
 
 
     def setTitle(self, sName, sTitle):
@@ -111,8 +121,8 @@ class gladeXml(dumps):
     
     
     def initMenuItems(self):
-        self.liAllMenuItems = self.getWidgets('mi_')
-        
+        self.liAllMenuItems =  self.getWidgets('mi_')
+        print 'MenuItems by Init = ', self.liAllMenuItems 
 
     def enableAllMenuItems(self):
         for i in self.liAllMenuItems:
@@ -132,16 +142,18 @@ class gladeXml(dumps):
         else:
             liMenuItems = []
         item = self.getWidget(sMenuItem)
+        print 'item by Enable Menu', `item`
         if cKey:
-            item.add_accelerator("activate", self.accel_group,
-                    ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-                                
-                                
+            item = self.addKeyToItem(item,cKey)
+            
         liMenuItems.append(item)
 
         self.dictEnabledMenuItems[sName] = liMenuItems
-        
 
+    def addKeyToItem(self, item, cKey):
+        item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        return item
+    
     def removeEnabledMenuItems(self, sName):
         if self.dictEnabledMenuItems.has_key(sName):
                  del self.dictEnabledMenuItems[sName]
@@ -153,9 +165,11 @@ class gladeXml(dumps):
             liMenuItems =  self.dictEnabledMenuItems[sName]
             for i in liMenuItems:
                 if i != None:
-                    print sName
+                    print 'GladeXML-Name = ',sName
                     i.set_sensitive(True)
-                    print i.get_name()
+
+                    
+                    print 'GladeXML-Widget-Name = ', i.get_name()
                     
                 else:
                     print 'No Menuitem'
@@ -185,3 +199,12 @@ class gladeXml(dumps):
  
 
     
+    def addMenuItem(self, item,sMenue):
+        sub1 = item.get_submenu()
+        print 'sub1 = ', `sub1`
+        newItem = gtk.MenuItem(label = sMenue)
+        sub1.append(newItem)
+        item.set_submenu(sub1)
+        newItem.show()
+        return newItem
+                 

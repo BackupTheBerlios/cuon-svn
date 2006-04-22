@@ -107,7 +107,7 @@
 		<widget class="GtkMenu" id="data_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="addresses1">
+		    <widget class="GtkMenuItem" id="mi_addresses1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">_Addresses</property>
 		      <property name="use_underline">True</property>
@@ -116,7 +116,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="articles1">
+		    <widget class="GtkMenuItem" id="mi_articles1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Arti_cles</property>
 		      <property name="use_underline">True</property>
@@ -131,11 +131,20 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="bibliographic">
+		    <widget class="GtkMenuItem" id="mi_bibliographic">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Bibliographic</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_bibliographic_activate" last_modification_time="Fri, 19 Aug 2005 11:36:47 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="mi_staff1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Staff</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
 		    </widget>
 		  </child>
 
@@ -155,7 +164,7 @@
 			<widget class="GtkMenu" id="contracts1_menu">
 
 			  <child>
-			    <widget class="GtkMenuItem" id="insurances1">
+			    <widget class="GtkMenuItem" id="mi_insurances1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Insurances</property>
 			      <property name="use_underline">True</property>
@@ -164,7 +173,7 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="rent1">
+			    <widget class="GtkMenuItem" id="mi_rent1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Rent</property>
 			      <property name="use_underline">True</property>
@@ -173,7 +182,7 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="leasing1">
+			    <widget class="GtkMenuItem" id="mi_leasing1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Leasing</property>
 			      <property name="use_underline">True</property>
@@ -192,7 +201,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="clients1">
+		    <widget class="GtkMenuItem" id="mi_clients1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Clients</property>
 		      <property name="use_underline">True</property>
@@ -214,7 +223,7 @@
 		<widget class="GtkMenu" id="action1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="order1">
+		    <widget class="GtkMenuItem" id="mi_order1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">_Order</property>
 		      <property name="use_underline">True</property>
@@ -223,7 +232,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="stock1">
+		    <widget class="GtkMenuItem" id="mi_stock1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Stock</property>
 		      <property name="use_underline">True</property>
@@ -232,20 +241,11 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="dms1">
+		    <widget class="GtkMenuItem" id="mi_dms1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">DMS</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_dms1_activate" last_modification_time="Sat, 08 May 2004 11:45:38 GMT"/>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="staff1">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Staff</property>
-		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -263,7 +263,7 @@
 		<widget class="GtkMenu" id="accounting1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="cash_account_book1">
+		    <widget class="GtkMenuItem" id="mi_cash_account_book1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">cash account book</property>
 		      <property name="use_underline">True</property>
@@ -276,13 +276,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="Extras1">
+	    <widget class="GtkMenuItem" id="extras">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Extras</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="Extras1_menu">
+		<widget class="GtkMenu" id="extras_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="mayavi1">
@@ -294,7 +294,7 @@
 			<widget class="GtkMenu" id="mayavi1_menu">
 
 			  <child>
-			    <widget class="GtkMenuItem" id="test1">
+			    <widget class="GtkMenuItem" id="mi_test1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Test</property>
 			      <property name="use_underline">True</property>
@@ -307,11 +307,20 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="expert_system1">
+		    <widget class="GtkMenuItem" id="mi_expert_system1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Expert System</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_expert_system1_activate" last_modification_time="Wed, 01 Mar 2006 09:24:55 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="mi_project1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Project</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_project1_activate" last_modification_time="Fri, 21 Apr 2006 16:32:46 GMT"/>
 		    </widget>
 		  </child>
 
@@ -326,13 +335,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="tools1">
+	    <widget class="GtkMenuItem" id="tools">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Tools</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="tools1_menu">
+		<widget class="GtkMenu" id="tools_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="preferences1">
@@ -345,7 +354,7 @@
 			<widget class="GtkMenu" id="preferences1_menu">
 
 			  <child>
-			    <widget class="GtkMenuItem" id="user1">
+			    <widget class="GtkMenuItem" id="mi_user1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">User</property>
 			      <property name="use_underline">True</property>
@@ -354,7 +363,7 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="finances1">
+			    <widget class="GtkMenuItem" id="mi_finances1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Finances</property>
 			      <property name="use_underline">True</property>
@@ -376,7 +385,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="report-generator1">
+		    <widget class="GtkMenuItem" id="mi_report-generator1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Report-Generator</property>
 		      <property name="use_underline">True</property>
@@ -385,7 +394,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="webshop1">
+		    <widget class="GtkMenuItem" id="mi_webshop1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">WebShop</property>
 		      <property name="use_underline">True</property>
@@ -415,7 +424,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="import_data1">
+		    <widget class="GtkMenuItem" id="mi_import_data1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Import Data</property>
 		      <property name="use_underline">True</property>

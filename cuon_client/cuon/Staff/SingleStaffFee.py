@@ -18,14 +18,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleAddress(SingleData):
+class SingleStaffFee(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "address"
+        self.sNameOfTable =  "staff_fee"
         self.xmlTableDef = 0
         print 'allTables = ',`allTables`
         self.loadTable(allTables)
@@ -40,32 +40,12 @@ class SingleAddress(SingleData):
         self.out( len(self.table.Columns))
         #
         self.statusfields = ['lastname', 'city']
-
-    def getAddress(self, id):
-        try:
-            id = long(id)
-            
-            dicRecords = self.load(id)
-        except:
-            id = 0
-            dicRecords = {}
+        self.staff_id = 0
         
-        liAddress = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
-            liAddress.append(dicRecord['firstname'])
-            liAddress.append(dicRecord['street'])
-            liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
-        if not liAddress:
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            
-        return liAddress
-
+    def readNonWidgetEntries(self, dicValues):
+        print 'readNonWidgetEntries(self) by SingleStaffFee'
+        dicValues['staff_id'] = [self.staffID, 'int']
+        return dicValues
+       
            
         

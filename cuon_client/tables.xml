@@ -4922,7 +4922,231 @@
      </field>
      
    </table>
+
+
+  <!--table: staff-->
+
+  <table>
+    <nameOfTable>staff</nameOfTable>
+
+    <specials>inherits (t_address);</specials>
+
+    <x>82</x>
+
+    <y>45</y>
+
  
+    <field>
+      <name>titular</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>30</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>phone1</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>25</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>phone2</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>25</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>homepage</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>100</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>faxprivat</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>25</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>birthday</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+
+  </table>
+
+  <!--table: staff_fee-->
+
+  <table>
+    <nameOfTable>staff_fee</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>82</x>
+
+    <y>45</y>
+
+ 
+    <field>
+      <name>staff_id</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>working_time_from</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>5</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>working_time_to</name>
+
+      <type>varchar</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>5</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+<field>
+      <name>fee_per_hour</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>fee_per_overtime</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+ </table>
+
  <!--user_info -->
 
   <table>

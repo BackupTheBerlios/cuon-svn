@@ -18,14 +18,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleAddress(SingleData):
+class SingleStaff(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "address"
+        self.sNameOfTable =  "staff"
         self.xmlTableDef = 0
         print 'allTables = ',`allTables`
         self.loadTable(allTables)
@@ -54,7 +54,6 @@ class SingleAddress(SingleData):
         if dicRecords:
             dicRecord = dicRecords[0]
             liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
             liAddress.append(dicRecord['firstname'])
             liAddress.append(dicRecord['street'])
             liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])

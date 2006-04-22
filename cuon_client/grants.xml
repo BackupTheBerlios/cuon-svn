@@ -149,6 +149,21 @@
       <this_group>cuon_admin</this_group>
       <comment></comment>
     </grant>
+
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_staff </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>staff, staff_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_staff_fee </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>staff_fee, staff_fee_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
     <grant>
       <nameOfGrant>cuon_all_rights_of_clients</nameOfGrant>
       <this_grants>select, insert, update, delete</this_grants>

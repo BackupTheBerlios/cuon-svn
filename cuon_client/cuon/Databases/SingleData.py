@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -143,7 +143,7 @@ class SingleData(gladeXml, logs):
             self.ID = liItems[0][0]
         else:
             self.newRecord()
-
+        
         return self.ID
     
             
@@ -199,7 +199,7 @@ class SingleData(gladeXml, logs):
 
 
     def loadTable(self, allTables = None):
-        
+        print 'allTables (SD)  = ',`allTables`
         if allTables:
             self.table = allTables[self.sNameOfTable]
         else:
@@ -303,7 +303,7 @@ class SingleData(gladeXml, logs):
 
     # Entries
 
-      # NEU (abstract), dient nur dazu, -Aüberschrieben zu werden-b
+      # NEU (abstract), dient nur dazu, -AÃ¼berschrieben zu werden-b
     def fillExternalWidget(self, value, id):
         # self.out( "SingleData.fillExternalWidget()")
         # self.out( "Value: " + str(value))
@@ -351,7 +351,7 @@ class SingleData(gladeXml, logs):
                 widget.set_time(int(time.mktime(newDate)))
                                            
             elif string.count(str(widget), "GtkComboBoxEntry") > 0:
-                print "Cbe", 'l�schen'
+                print "Cbe", 'löschen'
                 print widget.get_name()
                 
                 widget.set_active(0)
@@ -689,7 +689,7 @@ class SingleData(gladeXml, logs):
             dicLists = {}
             
         # self.out( dicLists)
-        #print  dicLists
+        print  dicLists
         try:
             for i in dicLists:
                 liSubItems =[]
@@ -719,6 +719,7 @@ class SingleData(gladeXml, logs):
         # self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
         # self.out( liItems)
         # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        print 'liItems ---', `liItems`
         return liItems
     
 

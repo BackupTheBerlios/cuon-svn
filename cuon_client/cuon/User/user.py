@@ -156,7 +156,17 @@ class User:
         self.setDicUserKeys('articles_purchase_new','n')
         self.setDicUserKeys('articles_purchase_print','p')
 
-        
+        # staff
+        self.setDicUserKeys('staff_edit','e')
+        self.setDicUserKeys('staff_delete','d')
+        self.setDicUserKeys('staff_new','n')
+        self.setDicUserKeys('staff_print','p')
+
+        self.setDicUserKeys('staff_fee_edit','e')
+        self.setDicUserKeys('staff_fee_delete','d')
+        self.setDicUserKeys('staff_fee_new','n')
+        self.setDicUserKeys('staff_fee_print','p')
+
         self.refreshDicUser()
 
         

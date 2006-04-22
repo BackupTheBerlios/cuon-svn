@@ -32,7 +32,9 @@ class aiwindow(windows):
         self.wAnswer =   self.getWidget('tvAnswer')
         self.qBuffer = gtk.TextBuffer(None)
         self.aBuffer = gtk.TextBuffer(None)
-        
+
+
+        self.wQuestion.grab_focus()
                 
 
     def on_quit1_activate(self, event):
@@ -50,18 +52,40 @@ class aiwindow(windows):
         print "AI send"
         buffer = self.wQuestion.get_buffer()
         q1 = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
-        print 'Question', q1
-        a1 = self.rpc.callRP('src.AI.py_getAI',q1, self.dicSqlUser)
-        q1 = q1 + '\n'
-        self.aBuffer = self.wAnswer.get_buffer()
-        self.aBuffer.insert(self.aBuffer.get_end_iter(), q1, len(q1) )
-        self.wAnswer.set_buffer(self.aBuffer)
+        if q1:
+            ##try:
+##                q1 = q1.decode('latin-1')
+##            except:
+##                pass
+##            try:
+##                q1 = q1.encode('utf-8')
+##            except:
+##                pass
+            
+            print 'Question', q1
+            a1 = self.rpc.callRP('src.AI.py_getAI',q1.encode('utf-8'), self.dicSqlUser)
+            if a1:
+                a1 = a1.decode('utf-7').encode('utf-8')
+                a1 = a1 + '\n'
+            
+                q1 = q1 + '\n'
+                self.aBuffer = self.wAnswer.get_buffer()
+                self.aBuffer.insert(self.aBuffer.get_end_iter(), q1, len(q1) )
+                self.wAnswer.set_buffer(self.aBuffer)
 
+                
+            
+                
+                print "Answer", a1
+        
+                self.aBuffer = self.wAnswer.get_buffer()
+                self.aBuffer.insert(self.aBuffer.get_end_iter(), a1, len(a1) )
+                self.wAnswer.set_buffer(self.aBuffer)
+                self.aBuffer = self.wAnswer.get_buffer()
+                self.wAnswer.scroll_to_iter(self.aBuffer.get_end_iter(),0.0,False,0.0,0.0)
+        
         self.qBuffer.set_text('')
         self.wQuestion.set_buffer(self.qBuffer)
+        self.wQuestion.scroll_to_iter(self.qBuffer.get_start_iter(),0.0,False,0.0,0.0)
         
-        print "Answer", a1
-        a1 = a1 + '\n'
-        self.aBuffer = self.wAnswer.get_buffer()
-        self.aBuffer.insert(self.aBuffer.get_end_iter(), a1, len(a1) )
-        self.wAnswer.set_buffer(self.aBuffer)
+        self.wQuestion.grab_focus()        

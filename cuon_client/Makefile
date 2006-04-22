@@ -2,19 +2,26 @@ EXECDIR = /usr/bin
 INSTALLDIR = /usr/lib/cuon
 ICONDIR = /usr/lib/cuon/icons
 SERVERDIRSHARE = /usr/share/cuon
+CUWEBSHARE = root@cuweb://usr/share/cuon
+CUWEB = root@cuweb:/
+CUWEBEXECDIR = $(CUWEB)/usr/bin
+CUWEBLOCALEXECDIR = $(CUWEB)/usr/local/bin
+CUWEBCONFIGDIR = $(CUWEB)/etc/cuon
+
 SERVERDIRCONFIG = /etc/cuon
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
 dest_glade = $(SERVERDIRSHARE)/glade
 dest_report = $(SERVERDIRSHARE)/report
-
 iClientDir = /opt/Projekte/cuon/iClient
 iClientDirLocale = $(iClientDir)/locale/de/LC_MESSAGES
 
 
 # Please set here your values
-zope_extension =  root@server2://var/lib/zope/instance/default/Extensions
-zope_import =  root@server2://var/lib/zope/instance/default/import
+zope_extension =  root@cyweb://var/lib/zope2.8/instance/default/Extensions
+zope_import =  root@cyweb://var/lib/zope2.8/instance/default/import
 
+zope_extension2 =  root@cuweb://var/lib/zope2.8/instance/default/Extensions
+zope_import2 =  root@cuweb://var/lib/zope2.8/instance/default/import
 
 src_ini=./cuon_ini1.xml
 
@@ -108,6 +115,9 @@ dest_email = $(dest_cuon)/E_Mail
 src_dms = ./cuon/DMS/*.py
 dest_dms = $(dest_cuon)/DMS
 
+src_staff = ./cuon/Staff/*.py
+dest_staff = $(dest_cuon)/Staff
+
 
 src_vtk = ./cuon/VTK/*.py
 dest_vtk = $(dest_cuon)/VTK
@@ -133,7 +143,12 @@ src_ai = ./cuon/AI/*.py
 dest_ai = $(dest_cuon)/AI
 src_aiml = ./cuon/AI/AIML
 dest_aiml = $(SERVERDIRSHARE)/AI/AIML
+dest_aiml_cuweb = $(CUWEBSHARE)/AI/AIML
+src_ai_clients = ./cuon/AI
+dest_ai_gtkMiniClient = ./gtkMiniClient
 
+src_project = ./cuon/Project/*.py
+dest_project = $(dest_cuon)/Project
 
 
 
@@ -176,6 +191,7 @@ all :
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
 	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
+	if [ ! -d $(dest_staff) ] ; then mkdir $(dest_staff) ; fi ; cp $(src_staff) $(dest_staff) 
 	if [ ! -d $(dest_vtk) ] ; then mkdir $(dest_vtk) ; fi ; cp $(src_vtk) $(dest_vtk) 
 	if [ ! -d $(dest_prefs_finance) ] ; then mkdir $(dest_prefs_finance) ; fi ; cp $(src_prefs_finance) $(dest_prefs_finance) 
 	if [ ! -d $(dest_webshop) ] ; then mkdir $(dest_webshop) ; fi ; cp $(src_webshop) $(dest_webshop) 
@@ -185,10 +201,10 @@ all :
 	cp $(src_finances_ib) $(dest_finances) 
 	if [ ! -d $(dest_biblio) ] ; then mkdir $(dest_biblio) ; fi ; cp $(src_biblio) $(dest_biblio) 
 	if [ ! -d $(dest_ai) ] ; then mkdir $(dest_ai) ; fi ; cp $(src_ai) $(dest_ai) 
+	cp ../cuon_server/src/ai_main.py $(dest_ai)
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
-
-
+	if [ ! -d $(dest_project) ] ; then mkdir $(dest_project) ; fi ; cp $(src_project) $(dest_project)
 
 
 iClient:
@@ -220,14 +236,41 @@ ai:
 
 	if  [ ! -d $(SERVERDIRSHARE)/AI ] ; then mkdir $(SERVERDIRSHARE)/AI ; fi 
 	if  [ ! -d $(dest_aiml) ] ; then mkdir $(dest_aiml) ; fi 
-	cp $(src_aiml)/de_startup.aiml $(dest_aiml)/startup.aiml
-	cp $(src_aiml)/de_main.aiml $(dest_aiml)/main.aiml
-	cp $(src_aiml)/de_cuon.aiml $(dest_aiml)/cuon.aiml
+	cp $(src_aiml)/de_startup.ini $(dest_aiml)/startup.ini
+	cp $(src_aiml)/de_main.sgml $(dest_aiml)/main.sgml
+	cp $(src_aiml)/cuon.sgml $(dest_aiml)/cuon.sgml
+	cp $(src_aiml)/de_cuon*.sgml $(dest_aiml)/
+
+
 	chmod a+r $(dest_aiml)/*
+	cp ../cuon_server/src/ai_subs.ini $(SERVERDIRCONFIG)/
+	cp ../cuon_server/src/ai_aiml.ini $(SERVERDIRCONFIG)/
+
+gtkMiniClient:
+	sudo make ai
+	if [ ! -d $(dest_ai_gtkMiniClient) ] ; then mkdir $(dest_ai_gtkMiniClient) ; fi ; cp $(src_ai_clients)/gtkMiniClient.py $(dest_ai_gtkMiniClient)/ 
+	cp $(src_ai_clients)/GUI/ai.glade2 $(dest_ai_gtkMiniClient)/gtkMiniClient.glade
+
+aicuweb_prg:
+	scp ../cuon_server/src/ai.py $(CUWEBLOCALEXECDIR)
+	scp ../cuon_server/src/ai_main.py $(CUWEBLOCALEXECDIR)
+
+aicuweb_aiml:
+	scp $(src_aiml)/de_startup.ini $(dest_aiml_cuweb)/startup.ini
+	scp $(src_aiml)/de_cuon*.sgml $(dest_aiml_cuweb)/
+	scp ../cuon_server/src/ai_subs.ini $(CUWEBCONFIGDIR)/	
+	scp ../cuon_server/src/ai_aiml.ini $(CUWEBCONFIGDIR)/	
+	scp $(src_aiml)/cuon.sgml $(dest_aiml_cuweb)/cuon.sgml
+
+aicuweb:
+	make aicuweb_prg
+	make aicuweb_aiml
+	scp $(src_aiml)/de_main.sgml $(dest_aiml_cuweb)/main.sgml
 
 install_server:
 
 	make install
+	make ai
 	if  [ ! -d $(SERVERDIRCONFIG) ] ; then mkdir $(SERVERDIRCONFIG) ; fi 	
 	cp $(src_ini) $(SERVERDIRCONFIG)
 	if  [ ! -d $(SERVERDIRSHARE) ] ; then mkdir $(SERVERDIRSHARE) ; fi 	
@@ -242,8 +285,12 @@ install_server:
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
 
-install_zope:
+install_zope_cy:
 
-	scp ../cuon_server//src/cuon_zope.py $(zope_extension)
-	scp ../cuon_server//zope/*.zexp $(zope_import)
+	scp ../cuon_server/src/cuon_zope.py $(zope_extension)
+	scp ../cuon_server/zope/*.zexp $(zope_import)
 
+install_zope_cu:
+
+	scp ../cuon_server/src/cuon_zope.py $(zope_extension2)
+	scp ../cuon_server/zope/*.zexp $(zope_import2)

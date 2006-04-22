@@ -102,6 +102,7 @@
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
 		  <signal name="clicked" handler="on_bSend_clicked" last_modification_time="Wed, 01 Mar 2006 09:38:37 GMT"/>
+		  <accelerator key="Return" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
 		</widget>
 	      </child>
 	    </widget>
@@ -173,6 +174,10 @@
       </child>
 
       <child>
+	<placeholder/>
+      </child>
+
+      <child>
 	<widget class="GtkScrolledWindow" id="scrolledwindow2">
 	  <property name="visible">True</property>
 	  <property name="can_focus">True</property>
@@ -210,6 +215,10 @@
 	  <property name="expand">True</property>
 	  <property name="fill">True</property>
 	</packing>
+      </child>
+
+      <child>
+	<placeholder/>
       </child>
     </widget>
   </child>

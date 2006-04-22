@@ -83,6 +83,12 @@
       <Entry-File>order_position.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_orderposition.xml</Entry-FileValue>
     </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>order_misc.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_ordermisc.xml</Entry-FileValue>
+    </Entries>
+
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>stock.xml</Entry-File>
@@ -161,6 +167,16 @@
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>biblio.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_biblio.xml</Entry-FileValue>
+    </Entries>
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>staff.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_staff.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>staff_fee.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_staff_fee.xml</Entry-FileValue>
     </Entries>
 
 
@@ -287,7 +303,19 @@
       <Glade-File>ai.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/ai.glade2</Glade-FileValue>
     </GladeEntries>
+<GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>project.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/project.glade2</Glade-FileValue>
+    </GladeEntries>
+<GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>staff.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/staff.glade2</Glade-FileValue>
+    </GladeEntries>
   </Glade_Init_Files>
+  
+  
   <Grant_Init_Files>	
     <GrantEntries>
       <Grant-Name>cuon</Grant-Name>	
@@ -314,6 +342,13 @@
       <Report-Name>cuon</Report-Name>	
       <Report-File>addresses_phonelist11.xml</Report-File>
       <Report-FileValue>/usr/share/cuon/report/addresses_phonelist11.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
+ <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>printAddress.xml</Report-File>
+      <Report-FileValue>/usr/share/cuon/report/printAddress.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 

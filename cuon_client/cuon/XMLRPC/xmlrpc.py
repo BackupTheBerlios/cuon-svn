@@ -54,9 +54,9 @@ class myXmlRpc(dumps, logs):
         try:
             if self.td.server[0:5] == 'https':
                 #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
-                sv =  ServerProxy( self.td.server ) 
+                sv =  ServerProxy( self.td.server,allow_none = 1 ) 
             else:
-                sv =  ServerProxy( self.td.server )
+                sv =  ServerProxy( self.td.server, allow_none = 1 )
         except:
             print 'Server error'
             
@@ -96,6 +96,8 @@ class myXmlRpc(dumps, logs):
         #print s
         startRP = True
         rp_tries = 0
+        #print 'Server by connection: ', self.getServer()
+        #print 'Servercall by Connection: ', s
         while startRP:
             try:
                 exec s

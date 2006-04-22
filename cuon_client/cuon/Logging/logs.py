@@ -40,12 +40,14 @@ class logs :
             
 
 
-    def out(self, sLog, iLogLevel = 100):
+    def out(self, sLog, iLogLevel = -1):
         #print 'iLoglevel = ' +  `iLogLevel`
         iLevel = self.INFO
-        if iLogLevel != 100:
+        if iLogLevel != -1:
             iLevel = iLogLevel
-
+        else:
+            iLogLevel = 0
+            
         if iLevel > self.maxLevel:
             self.iLogLevel = self.INFO
 

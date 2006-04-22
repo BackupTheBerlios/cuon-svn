@@ -42,6 +42,7 @@ import threading
 import datetime as DateTime
 import cuon.DMS.documentTools
 import cuon.DMS.dms
+import printAddress
 
 
 
@@ -203,7 +204,7 @@ class addresswindow(chooseWindows):
         
 
 
-    #Menu Addressimport cuon.Login.User
+    #Menu Address
   
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
@@ -219,8 +220,10 @@ class addresswindow(chooseWindows):
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
-
-
+    def on_print1_activate(self, event):
+        self.out( "print addresses v2")
+        p = printAddress.printAddress(self.singleAddress.getFirstRecord() )
+        
     def on_delete1_activate(self, event):
         self.out( "delete addresses v2")
         self.singleAddress.deleteRecord()

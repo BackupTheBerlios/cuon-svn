@@ -1,0 +1,199 @@
+<entries_for_table>
+    <table>
+      <table_name>staff</table_name>
+  <entry>
+	<name>eStaffAddress</name>
+	<type>textline</type>
+               <size>30</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>address</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffTitular</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>titular</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry> 
+     <entry>
+	<name>eStaffLastname</name>
+	<type>textline</type>
+                <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>lastname</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ 
+      <entry>
+	<name>eStaffFirstname</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>firstname</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+
+    <entry>
+	<name>eStaffStreet</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>street</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eStaffCountry</name>
+	<type>textline</type>
+               <size>6</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>country</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffState</name>
+	<type>textline</type>
+               <size>6</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>state</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+  <entry>
+	<name>eStaffZip</name>
+	<type>textline</type>
+               <size>10</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>zip</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffCity</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>city</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffPhone</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>phone</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffFax</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fax</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffPhone1</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>phone1</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffPhone2</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>phone2</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+  <entry>
+	<name>eStaffEmail</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>email</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffFaxPrivate</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>faxprivat</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffHomepage</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>homepage</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+    <entry>
+	<name>eBirthday</name>
+	<type>textline</type>
+               <size>10</size>
+                <verify_type>date</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>birthday</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+    </table>
+
+  </entries_for_table>

@@ -26,6 +26,7 @@ cuwebssl) Server=https://84.244.7.139:8443/Cuon
 
 cyweb) Server=http://84.244.4.80:9673/Cuon
 ;;
+
 cywebssl) Server=https://84.244.4.80:8443/Cuon
 ;;
 
@@ -34,23 +35,50 @@ cywebssl) Server=https://84.244.4.80:8443/Cuon
 
 esac
 
+case $1 in  
+ai)
+make all
+sudo make ai
+cp ../cuon_server/src/ai_main.py cuon/AI
+cd cuon/AI
+$EXEC tki1.py
+;;
+mini)
+make all
+sudo make ai
+cd cuon/AI
+$EXEC miniClient.py
+;;
+gtkmini)
+make all
+sudo make ai
 
-
-
-sudo make install_server
-
-cd CUON/
-
-case $1 in 
+rm -R gtkMiniClient
+make gtkMiniClient
+cd gtkMiniClient
+$EXEC gtkMiniClient.py
+;;
 
 server)
+sudo make install_server
+cd CUON/
+
 make iClient
 cp ../cuon_server.py . 
 $EXEC cuon_server.py $Server server $3
 ;;
 
 client)
+echo " Server = $Server"
+sudo make install_server
+cd CUON/
 $EXEC Cuon.py $Server client $3
+;;
+
+profile)
+sudo make install_server
+cd CUON/
+$EXEC -m profile Cuon.py $Server client $3
 ;;
 
 esac

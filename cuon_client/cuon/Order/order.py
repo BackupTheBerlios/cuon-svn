@@ -78,13 +78,15 @@ class orderwindow(chooseWindows):
         self.EntriesOrderSupply = 'order_supply.xml'
         self.EntriesOrderGet = 'order_get.xml'
         self.EntriesOrderPosition = 'order_position.xml'
+        self.EntriesOrderMisc = 'order_misc.xml'
+        
         
         
         
         #singleOrder
         
         self.loadEntries(self.EntriesOrder)
-        self.singleOrder.setEntries(self.getDataEntries('order.xml') )
+        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
         self.singleOrder.setGladeXml(self.xml)
         self.singleOrder.setTreeFields( ['number', 'designation'] )
         self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
@@ -121,7 +123,7 @@ class orderwindow(chooseWindows):
         # singlePositions
         
         self.loadEntries(self.EntriesOrderPosition)
-        self.singleOrderPosition.setEntries(self.getDataEntries('order_position.xml') )
+        self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
         self.singleOrderPosition.setGladeXml(self.xml)
         self.singleOrderPosition.setTreeFields( ['designation'] )
         self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
@@ -132,7 +134,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
   
         
-
+        self.loadEntries(self.EntriesOrderMisc)
         # Menu-items
         self.initMenuItems()
 
@@ -142,6 +144,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','supply1')
         self.addEnabledMenuItems('tabs','gets1')
         self.addEnabledMenuItems('tabs','positions1')
+        self.addEnabledMenuItems('tabs','misc1')
 
 
         # seperate Menus
@@ -149,6 +152,8 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('supply','supply1')
         self.addEnabledMenuItems('gets','gets1')
         self.addEnabledMenuItems('positions','positions1')
+        self.addEnabledMenuItems('misc','misc1')
+        
 
         
         # enabledMenues for Order
@@ -177,6 +182,7 @@ class orderwindow(chooseWindows):
         self.tabGet = 2
         self.tabPosition = 3
         self.tabInvoice = 4
+        self.tabMisc = 5
 
         # start
         
@@ -315,8 +321,19 @@ class orderwindow(chooseWindows):
         print "delete Partner articles v2"
         self.singleOrderPosition.deleteRecord()
 
-
- 
+    # Menu Misc
+    def on_MiscEdit_activate(self, event):
+        print 'MiscEdit1'
+        self.setEntriesEditable(self.EntriesOrderMisc, TRUE)
+    
+    def on_MiscSave_activate(self, event):
+        print "save misc v2"
+        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
+        self.singleOrder.save()
+        self.setEntriesEditable(self.EntriesOrderMisc, FALSE)
+        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+        self.tabChanged()
+  
 
 
     # search button
@@ -438,6 +455,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPosition.disconnectTree()
         
         if self.tabOption == self.tabOrder:
+            self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
 
@@ -461,6 +479,12 @@ class orderwindow(chooseWindows):
             self.singleOrder.refreshTree()
             self.fillcbeTOP()
 
+        elif self.tabOption == self.tabMisc:
+            self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
+            self.singleOrder.connectTree()
+            self.singleOrder.refreshTree()
+
+            
 
 
          
@@ -496,8 +520,14 @@ class orderwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('invoice')
             self.editAction = 'editInvoice'
+            print 'Seite 4'
+            
+        elif self.tabOption == self.tabMisc:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('misc')
+            self.editAction = 'editMisc'
             print 'Seite 4'  
-         
+  
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

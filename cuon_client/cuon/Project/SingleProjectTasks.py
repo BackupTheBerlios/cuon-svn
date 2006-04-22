@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2006]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -18,14 +18,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleAddress(SingleData):
+class SingleProjectTasks(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "address"
+        self.sNameOfTable =  "projects_tasks"
         self.xmlTableDef = 0
         print 'allTables = ',`allTables`
         self.loadTable(allTables)
@@ -41,31 +41,5 @@ class SingleAddress(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
-    def getAddress(self, id):
-        try:
-            id = long(id)
-            
-            dicRecords = self.load(id)
-        except:
-            id = 0
-            dicRecords = {}
-        
-        liAddress = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
-            liAddress.append(dicRecord['firstname'])
-            liAddress.append(dicRecord['street'])
-            liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
-        if not liAddress:
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            
-        return liAddress
-
-           
+ 
         
