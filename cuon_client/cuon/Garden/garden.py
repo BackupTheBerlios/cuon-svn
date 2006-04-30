@@ -20,11 +20,6 @@ import gtk.glade
 import gobject
 
 from cuon.Databases.SingleData import SingleData
-import SingleArticle
-import SingleArticlePurchase
-import SingleArticleSale
-import SingleArticleWebshop
-import SingleArticleStock
 
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
@@ -32,21 +27,20 @@ import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.DMS.documentTools
 import cuon.DMS.dms
-import cuon.Articles.lists_articles_number1
 
 
 
-class articleswindow(chooseWindows):
+class gardenwindow(chooseWindows):
 
     
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('articles.xml')
-        self.win1 = self.getWidget('ArticlesMainwindow')
+        self.loadGlade('garden.xml')
+        self.win1 = self.getWidget('GardenMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        self.ModulNumber = self.MN['Articles']        
+        self.ModulNumber = self.MN['Garden']        
         self.allTables = allTables
         self.singleArticle = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)

@@ -77,6 +77,10 @@ class windows(MyXML, gladeXml, messages):
         self.MN['Biblio'] = 12000
         self.MN['AI'] = 13000
 
+        # ext. Modules with GPL
+        self.MN['Garden'] = 110000
+
+
         self.sWhereStandard = ''
         self.sepInfo = {}
         

@@ -179,7 +179,23 @@
       <Entry-FileValue>/usr/share/cuon/entry_staff_fee.xml</Entry-FileValue>
     </Entries>
 
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>garden.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_garden.xml</Entry-FileValue>
+    </Entries>
 
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>hibernation.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_hibernation.xml</Entry-FileValue>
+    </Entries>
+
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>hibernation_plant.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_hibernation_plant.xml</Entry-FileValue>
+    </Entries>
   </Entry_Init_Files>
 
   
@@ -313,6 +329,12 @@
       <Glade-File>staff.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/staff.glade2</Glade-FileValue>
     </GladeEntries>
+<GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>garden.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/garden.glade2</Glade-FileValue>
+    </GladeEntries>
+
   </Glade_Init_Files>
   
   

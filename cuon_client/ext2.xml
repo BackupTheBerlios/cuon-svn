@@ -20,4 +20,53 @@
 			<comment></comment>
 		</field>
                  </table>
+
+ <!-- GPL Modul Garden -->
+  <!--table: hibernation-->
+
+  <table>
+    <nameOfTable>hibernation</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>hibernation_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+   <field>
+      <name>hibernation_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>1</unique>
+
+      <notnull>1</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+</table>
+
 </database>

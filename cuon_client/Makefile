@@ -151,6 +151,9 @@ src_project = ./cuon/Project/*.py
 dest_project = $(dest_cuon)/Project
 
 
+# Ext. modules with GPL
+src_garden = ./cuon/Garden/*.py
+dest_garden = $(dest_cuon)/Garden
 
 
 
@@ -206,6 +209,8 @@ all :
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -d $(dest_project) ] ; then mkdir $(dest_project) ; fi ; cp $(src_project) $(dest_project)
 
+	# ext. Modules with GPL
+	if [ ! -d $(dest_garden) ] ; then mkdir $(dest_garden) ; fi ; cp $(src_garden) $(dest_garden) 
 
 iClient:
 	cp /usr/share/locale/de/LC_MESSAGES/cuon.mo $(iClientDirLocale)

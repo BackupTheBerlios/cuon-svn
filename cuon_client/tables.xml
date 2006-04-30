@@ -5129,7 +5129,75 @@
       <comment />
     </field>
 <field>
+      <name>fee_per_hour_calc</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>fee_per_hour_invoice</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
       <name>fee_per_overtime</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>fee_per_overtime_calc</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+<field>
+      <name>fee_per_overtime_invoice</name>
 
       <type>float</type>
 

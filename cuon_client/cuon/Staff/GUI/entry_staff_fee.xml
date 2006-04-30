@@ -35,6 +35,28 @@
                 <fg_color>0</fg_color>
 
       </entry>
+ <entry>
+	<name>eStaffFeePerHourCalc</name>
+	<type>textline</type>
+               <size>8</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fee_per_hour_calc</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ <entry>
+	<name>eStaffFeePerHourInvoice</name>
+	<type>textline</type>
+               <size>8</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fee_per_hour_invoice</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
   <entry>
 	<name>eStaffFeePerOvertime</name>
 	<type>textline</type>
@@ -42,6 +64,28 @@
                 <verify_type>float</verify_type>
                 <create_sql>1</create_sql>
                 <sql_field>fee_per_overtime</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffFeePerOvertimeCalc</name>
+	<type>textline</type>
+               <size>8</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fee_per_overtime_calc</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eStaffFeePerOvertimeInvoice</name>
+	<type>textline</type>
+               <size>8</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>fee_per_overtime_invoice</sql_field>
                 <bg_color>0</bg_color>
                 <fg_color>0</fg_color>
 
