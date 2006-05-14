@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>botany</table_name>
+
+    <entry>
+      <name>eBotanyName</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_name</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+        <entry>
+      <name>eBotanyFamily</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_family</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+        <entry>
+      <name>eBotanyOrder</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_order</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+        <entry>
+      <name>eBotanySubClass</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_sub_class</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+        <entry>
+      <name>eBotanyClass</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_class</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+        <entry>
+      <name>eBotanyDivision</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>botany_Division</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+  
+  </table>
+</entries_for_table>

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003-2005]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2005]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -73,7 +73,16 @@ class dmswindow(windows):
         self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
         self.sepInfo['1'] = self.MN['DMS']
         if sep_info:
-            self.sepInfo['1'] = sep_info
+            try:
+                if sep_info.has_key('1'):
+                    self.sepInfo['1'] = sep_info['1']
+                if sep_info.has_key('2'):
+                    self.sepInfo['2'] = sep_info['2']
+                if sep_info.has_key('3'):
+                    self.sepInfo['3'] = sep_info['3']
+            except:
+                print 'Error by sep-info'
+                
 
         print "Sep-Info 1 ",  self.sepInfo['1']
            

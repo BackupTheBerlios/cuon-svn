@@ -57,6 +57,8 @@ class SingleDMS(SingleData):
         self.statusfields = ['title']
         self.imageWidget = None
         self.fileFormat = None
+        self.fileSuffix = None
+        
         self.tmpfile = None
 
     def createTmpFile(self, sEXT):
@@ -74,19 +76,27 @@ class SingleDMS(SingleData):
     def readNonWidgetEntries(self, dicValues):
         newTime = time.localtime()
         tValue =  time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        if not self.fileFormat:
+            self.fileFormat = 'NONE'
+        if not self.fileSuffix:
+            self.fileSuffix = 'NONE'
         
         print 'readNonWidgetEntries(self) by SingleDMS'
         dicValues['size_x'] = [self.size_x,'int']
         dicValues['size_y'] = [self.size_y,'int']
         dicValues['document_image'] = [self.imageData,'text']
         dicValues['file_format'] = [self.fileFormat, 'string']
+        dicValues['file_suffix'] = [self.fileSuffix, 'string']
         dicValues['insert_from_module'] = [self.ModulNumber, 'int']
         dicValues['sep_info_1'] = [self.sep_info_1, 'int']
+        
         return dicValues
 
     def fillOtherEntries(self, oneRecord):
         
         self.fileFormat = oneRecord['file_format']
+        self.fileSuffix = oneRecord['file_suffix']
+        
         print 'FileFormat by SDMS', self.fileFormat
         self.size_x = oneRecord['size_x']
         self.size_y =  oneRecord['size_y']

@@ -101,7 +101,7 @@ class User:
         self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc'], 'executable': '/usr/bin/oocalc'}
         self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd'], 'executable': '/usr/bin/oodraw'}
         self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sxi'], 'executable': '/usr/bin/ooimpress'}
-        self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf'], 'executable': '/usr/bin/gimp'}
+        self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf','jpg','gif','png'], 'executable': '/usr/bin/gimp'}
         self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': '/usr/bin/xmms'}
         self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': '/usr/bin/xmms'}
         self.prefDMS['fileformat']['wav'] =  {'format':'WAV',  'suffix':['wav'], 'executable': '/usr/bin/xmms'}

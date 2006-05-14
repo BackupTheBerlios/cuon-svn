@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003-2005]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2005]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -54,7 +54,10 @@ class documentTools:
                 for key in  dicUser['prefDMS']['fileformat'].keys():
                     if singleDMS.fileFormat ==  dicUser['prefDMS']['fileformat'][key]['format']:
                         exe =  dicUser['prefDMS']['fileformat'][key]['executable']
-                        sEXT =  dicUser['prefDMS']['fileformat'][key]['suffix'][0]
+                        if singleDMS.fileSuffix and singleDMS.fileSuffix != 'NONE':
+                            sEXT = singleDMS.fileSuffix
+                        else:   
+                            sEXT =  dicUser['prefDMS']['fileformat'][key]['suffix'][0]
 
             if exe:
                 singleDMS.createTmpFile(sEXT)
@@ -142,6 +145,6 @@ class documentTools:
                     print suffix
                     if i == suffix:
                         singleDMS.fileFormat = singleDMS.fileFormat = dicUser['prefDMS']['fileformat'][key]['format']
-
+                        singleDMS.fileSuffix = suffix
             f.close()
             
