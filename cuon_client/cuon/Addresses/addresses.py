@@ -39,6 +39,7 @@ import cPickle
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 import threading
+import time
 import datetime as DateTime
 import cuon.DMS.documentTools
 import cuon.DMS.dms
@@ -119,12 +120,12 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesPartnerSchedul )
         self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
         self.singleSchedul.setGladeXml(self.xml)
-        self.singleSchedul.setTreeFields( ['schedul_datetime', 'short_remark','priority','process_status'] )
-        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+        self.singleSchedul.setTreeFields( ['schedul_date','schedul_time','short_remark','priority','process_status'] )
+        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
         #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-        self.singleSchedul.setTreeOrder('schedul_datetime')
-        self.singleSchedul.setListHeader([_('Date and Time'),  _('short Remark'), _('Priority'), _('Status')])
+        self.singleSchedul.setTreeOrder('schedul_date, schedul_time')
+        self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('short Remark'), _('Priority'), _('Status')])
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`
@@ -305,15 +306,36 @@ class addresswindow(chooseWindows):
         self.out( "delete Schedul addresses v2")
         self.singleSchedul.deleteRecord()
 
-    def on_gdeDate_date_changed(self, event ):
-        print str(event)
-        gdeSchedul = self.getWidget('gdeDate')
-        newDate = gdeSchedul.get_time()
-        print newDate
+    
         
+    def on_calendar1_day_selected_double_click(self, event):
+        print event
+        cal = self.getWidget('calendar1')
+        if cal:
+            print cal.get_date()
+            t0 = cal.get_date()
+            print t0
+            t1 = `t0[0]`+' '+ `t0[1] +1` + ' ' + `t0[2]` 
+            
+            print t1
+            t2 = time.localtime(time.mktime(time.strptime(t1,'%Y %m %d')))
+            
+            
+            sTime = time.strftime(self.dicUser['DateformatString'], t2)
+            print sTime
+            
         
+            eDate = self.getWidget('eSchedulDate')
+            eDate.set_text(sTime)
+            
+       
+    def on_eSchedulDate_changed(self, event):
+        self.out(event)
+        al = self.getWidget('calendar1')
         
-        
+        #cal.select_month(month, year)
+        # cal.select_day(day)
+
 
 ##    def on_calendar1_day_selected(self, cal):
 ##        print cal

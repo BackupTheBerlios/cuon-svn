@@ -595,6 +595,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eAddressNumber_changed" last_modification_time="Fri, 19 May 2006 10:32:29 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>

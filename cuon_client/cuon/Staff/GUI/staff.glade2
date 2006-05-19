@@ -73,21 +73,21 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="edit">
+	    <widget class="GtkMenuItem" id="mi_edit">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Edit</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="edit_menu">
+		<widget class="GtkMenu" id="mi_edit_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="chooseArticle">
+		    <widget class="GtkMenuItem" id="chooseStaff">
 		      <property name="visible">True</property>
 		      <property name="sensitive">False</property>
 		      <property name="label" translatable="yes">choose</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_chooseArticle_activate" last_modification_time="Fri, 13 Feb 2004 12:27:11 GMT"/>
+		      <signal name="activate" handler="on_chooseStaff_activate" last_modification_time="Fri, 19 May 2006 17:11:23 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

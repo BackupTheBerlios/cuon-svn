@@ -622,6 +622,7 @@ class SingleData(gladeXml, logs):
             print 'assert error'
             dicValues = None
      
+        self.out("DicValues by readEntries = " + `dicValues`)
         
         return dicValues
 

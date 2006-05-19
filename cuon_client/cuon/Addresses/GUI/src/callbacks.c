@@ -306,3 +306,52 @@ on_gdeDate_time_changed                (GnomeDateEdit   *gnomedateedit,
 
 }
 
+
+void
+on_bShowDMS_clicked                    (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bShowPartnerDMS_clicked             (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_eDate_changed                       (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_calendar1_day_selected_double_click (GtkCalendar     *calendar,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_calendar1_state_changed             (GtkWidget       *widget,
+                                        GtkStateType     state,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_eSchedulDate_changed                (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+

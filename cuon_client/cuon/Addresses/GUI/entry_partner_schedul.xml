@@ -3,17 +3,27 @@
     <table_name>partner_schedul</table_name>
  
    <entry>
-      <name>eDate</name>
-      <type>date</type>
+      <name>eSchedulDate</name>
+      <type>textline</type>
       <size>10</size>
-      <verify_type>datetime</verify_type>
-      <create_sql>0</create_sql>
-      <sql_field>schedul_datetime</sql_field>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>schedul_date</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-
+<entry>
+      <name>eSchedulTime</name>
+      <type>textline</type>
+      <size>12</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>schedul_time</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
    <entry>
       <name>eSchedulPriority</name>
       <type>textline</type>

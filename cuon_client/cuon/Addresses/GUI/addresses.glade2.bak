@@ -3664,11 +3664,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
-		  </child>
-
-		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="eAlarm">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes">30</property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
 		  </child>
 		</widget>
 		<packing>
@@ -3716,7 +3727,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="eDate">
+		    <widget class="GtkEntry" id="eSchedulDate">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3726,7 +3737,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <signal name="changed" handler="on_eDate_changed" last_modification_time="Wed, 21 Dec 2005 15:18:53 GMT"/>
+		      <signal name="changed" handler="on_eSchedulDate_changed" last_modification_time="Wed, 17 May 2006 20:52:37 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -3761,7 +3772,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eTime">
+		    <widget class="GtkEntry" id="eSchedulTime">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>

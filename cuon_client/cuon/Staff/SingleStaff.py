@@ -66,5 +66,18 @@ class SingleStaff(SingleData):
             
         return liAddress
 
-           
+    def getFullName(self, id):
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            id = 0
+            dicRecords = {}
+        
+        cAddress = None
+        if dicRecords:
+            dicRecord = dicRecords[0]
+            cAddress = dicRecord['lastname'] + ', ' + dicRecord['firstname']
+        return cAddress
         

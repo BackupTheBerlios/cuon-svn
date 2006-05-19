@@ -10,7 +10,6 @@ import dataEntry
 import cuon.XMLRPC.xmlrpc
 import cuon.TypeDefs
 import cuon.Windows.cyr_load_entries
-from gtk import TRUE, FALSE
 import os
 import os.path
 from  cuon.Windows.windows  import windows
@@ -30,7 +29,7 @@ class chooseWindows(windows):
         print '<<<<<<<<<<<<<<< setCooseEntry <<<<<<<<<<<<<<<<<<<<<'
         self.chooseEntry = entry
         self.chooseMenuitem = self.getWidget(sName)
-        self.chooseMenuitem.set_sensitive(TRUE)
+        self.chooseMenuitem.set_sensitive()
         
 
     def setChooseValue(self, chooseValue):
@@ -38,7 +37,7 @@ class chooseWindows(windows):
         
         self.chooseEntry.set_text(`chooseValue`)
         if self.chooseMenuitem:
-            self.chooseMenuitem.set_sensitive(FALSE)
+            self.chooseMenuitem.set_sensitive(False)
             self.closeWindow()
 
     def getChangedValue(self, sName):

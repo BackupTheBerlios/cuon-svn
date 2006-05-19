@@ -42,25 +42,26 @@ class logs :
 
     def out(self, sLog, iLogLevel = -1):
         #print 'iLoglevel = ' +  `iLogLevel`
-        iLevel = self.INFO
-        if iLogLevel != -1:
-            iLevel = iLogLevel
-        else:
-            iLogLevel = 0
-            
-        if iLevel > self.maxLevel:
-            self.iLogLevel = self.INFO
-
+##        iLevel = self.INFO
+##        if iLogLevel != -1:
+##            iLevel = iLogLevel
+##        else:
+##            iLogLevel = 0
+##            
+##        if iLevel > self.maxLevel:
+##            self.iLogLevel = self.INFO
+##
+##        
+##        if iLevel <= self.iLogLevel and self.iLogLevel > -1:
+##            newTime = time.localtime()
+##            f = open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonLog'),'a')
+##            tValue =  time.strftime("%d.%m.%Y %H:%M", newTime)
+##            f.write(tValue)
+##            f.write(`sLog`+ "\n")
+##            f.write('---------------------------------------------------------------------------------------------------\n')
+##            f.close()
+        print sLog
         
-        if iLevel <= self.iLogLevel and self.iLogLevel > -1:
-            newTime = time.localtime()
-            f = open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonLog'),'a')
-            tValue =  time.strftime("%d.%m.%Y %H:%M", newTime)
-            f.write(tValue)
-            f.write(`sLog`+ "\n")
-            f.write('---------------------------------------------------------------------------------------------------\n')
-            f.close()
-
     def printOut(self, s1,s2=None):
         ok = True
         if ok:

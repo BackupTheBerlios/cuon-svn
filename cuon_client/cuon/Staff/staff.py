@@ -204,7 +204,12 @@ class staffwindow(chooseWindows):
         self.singleStaffFee.deleteRecord()
 
 
-
+    def on_chooseStaff_activate(self, event):
+        # choose Staff from other Modul
+        print '############### Staff choose ID ###################'
+        self.setChooseValue(self.singleStaff.ID)
+        self.closeWindow()
+        
     # search button
     def on_bSearch_clicked(self, event):
         self.searchStaff()

@@ -25,9 +25,13 @@ import logging
 from cuon.Windows.chooseWindows  import chooseWindows
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
+import cuon.Staff.SingleStaff
+
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import SingleHibernation
+
+import SingleHibernationPlant
 
 
 class hibernationwindow(chooseWindows):
@@ -42,87 +46,57 @@ class hibernationwindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Hibernation']        
         self.allTables = allTables
-        self.singleHibernation = SingleArticle.SingleArticle(allTables)
-        self.singleHibernationPurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)
-        self.singleHibernationSales = SingleArticleSale.SingleArticleSale(allTables)
-        self.singleHibernationWebshop = SingleArticleWebshop.SingleArticleWebshop(allTables)
-        self.singleHibernationStock = SingleArticleStock.SingleArticleStock(allTables)
+        self.dicUserKeys['hibernation_edit'] = 'e'
+        self.dicUserKeys['hibernation_delete'] = 'd'
+        self.dicUserKeys['hibernation_new'] = 'n'
+        self.dicUserKeys['hibernation_print'] = 'p'
+
+
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
+
+        self.singleHibernation = SingleHibernation.SingleHibernation(allTables)
+        self.singleHibernationPlant = SingleHibernationPlant.SingleHibernationPlant(allTables)
+        #self.singleHibernationSales = SingleHibernationSale.SingleHibernationSale(allTables)
+        #self.singleHibernationWebshop = SingleHibernationWebshop.SingleHibernationWebshop(allTables)
+        #self.singleHibernationStock = SingleHibernationStock.SingleHibernationStock(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
         # self.singleHibernation.loadTable()
               
-        self.EntriesArticles = 'articles.xml'
-        self.EntriesArticlesPurchase = 'articles_purchase.xml'
-        self.EntriesArticlesSales = 'articles_sales.xml'
-        self.EntriesArticlesWebshop = 'articles_webshop.xml'
-        self.EntriesArticlesStock = 'articles_stock.xml'
+        self.EntriesHibernations = 'hibernation.xml'
+        self.EntriesHibernationsPlant = 'hibernation_plant.xml'
+        #self.EntriesHibernationsSales = 'Hibernations_sales.xml'
+        #self.EntriesHibernationsWebshop = 'Hibernations_webshop.xml'
+        #self.EntriesHibernationsStock = 'Hibernations_stock.xml'
                 
         
         #singleHibernation
  
  
-        self.loadEntries(self.EntriesArticles)
-        self.singleHibernation.setEntries(self.getDataEntries( self.EntriesArticles) )
+        self.loadEntries(self.EntriesHibernations)
+        self.singleHibernation.setEntries(self.getDataEntries( self.EntriesHibernations) )
         self.singleHibernation.setGladeXml(self.xml)
-        self.singleHibernation.setTreeFields( ['number', 'designation'] )
-#        self.singleHibernation.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleHibernation.setTreeOrder('number')
+        self.singleHibernation.setTreeFields( ['hibernation_number', 'addressnumber'] )
+#        self.singleHibernation.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_UINT, gobject.TYPE_UINT) ) 
+        self.singleHibernation.setTreeOrder('hibernation_number')
         self.singleHibernation.setTree(self.xml.get_widget('tree1') )
         self.singleHibernation.setListHeader(['number', 'designation', ])
         
-         #singleHibernationPurchase
+         #singleHibernationPlant
         
-        self.loadEntries(self.EntriesArticlesPurchase)
-        self.singleHibernationPurchase.setEntries(self.getDataEntries( self.EntriesArticlesPurchase) )
-        self.singleHibernationPurchase.setGladeXml(self.xml)
-        self.singleHibernationPurchase.setTreeFields( ['designation' ] )
-        self.singleHibernationPurchase.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleHibernationPurchase.setTreeOrder('designation')
-#        self.singleHibernationPurchase.setListHeader([''])
+        self.loadEntries(self.EntriesHibernationsPlant)
+        self.singleHibernationPlant.setEntries(self.getDataEntries( self.EntriesHibernationsPlant) )
+        self.singleHibernationPlant.setGladeXml(self.xml)
+        self.singleHibernationPlant.setTreeFields( ['designation' ] )
+        self.singleHibernationPlant.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleHibernationPlant.setTreeOrder('designation')
+#        self.singleHibernationPlant.setListHeader([''])
 
-        self.singleHibernationPurchase.sWhere  ='where articles_number = ' + `self.singleHibernation.ID`
-        self.singleHibernationPurchase.setTree(self.xml.get_widget('tree1') )
+        self.singleHibernationPlant.sWhere  ='where Hibernations_number = ' + `self.singleHibernation.ID`
+        self.singleHibernationPlant.setTree(self.xml.get_widget('tree1') )
   
-     #singleHibernationSales
-        
-        self.loadEntries(self.EntriesArticlesSales)
-        self.singleHibernationSales.setEntries(self.getDataEntries( self.EntriesArticlesSales) )
-        self.singleHibernationSales.setGladeXml(self.xml)
-        self.singleHibernationSales.setTreeFields( ['designation'] )
-        self.singleHibernationSales.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleHibernationSales.setTreeOrder('designation')
-        self.singleHibernationSales.setListHeader([_('Designation')])
-
-        self.singleHibernationSales.sWhere  ='where articles_number = ' + `self.singleHibernation.ID`
-        self.singleHibernationSales.setTree(self.xml.get_widget('tree1') )
-
-  
-  #singleHibernationWebshop
-        
-        self.loadEntries(self.EntriesArticlesWebshop)
-        self.singleHibernationWebshop.setEntries(self.getDataEntries( self.EntriesArticlesWebshop) )
-        self.singleHibernationWebshop.setGladeXml(self.xml)
-##        self.singleHibernationWebshop.setTreeFields( ['articles_number'] )
- ##       self.singleHibernationWebshop.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-  ##      self.singleHibernationWebshop.setTreeOrder('articles_number')
-   ##     self.singleHibernationWebshop.setListHeader([_('article')])
-
-        self.singleHibernationWebshop.sWhere  ='where articles_number = ' + `self.singleHibernation.ID`
-        self.singleHibernationWebshop.setTree(self.xml.get_widget('tree1') )
-
-    #singleHibernationStock
-        
-        self.loadEntries(self.EntriesArticlesStock)
-        self.singleHibernationStock.setEntries(self.getDataEntries( self.EntriesArticlesStock ))
-        self.singleHibernationStock.setGladeXml(self.xml)
-##        self.singleHibernationStock.setTreeFields( ['designation'] )
-##        self.singleHibernationStock.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-##        self.singleHibernationStock.setTreeOrder('designation')
-##        self.singleHibernationStock.setListHeader([_('Designation')])
-
-        self.singleHibernationStock.sWhere  ='where articles_number = ' + `self.singleHibernation.ID`
-        self.singleHibernationStock.setTree(self.xml.get_widget('tree1') )
-  
+    
         
 
         # Menu-items
@@ -130,63 +104,41 @@ class hibernationwindow(chooseWindows):
 
         # Close Menus for Tab
 
-        self.addEnabledMenuItems('tabs','mi_article1')
-        self.addEnabledMenuItems('tabs','mi_purchase1')
+        self.addEnabledMenuItems('tabs','mi_Hibernation1')
+        self.addEnabledMenuItems('tabs','mi_Plant1')
         self.addEnabledMenuItems('tabs','mi_sales1')
 
 
         # seperate Menus
-        self.addEnabledMenuItems('article','mi_article1')
-        self.addEnabledMenuItems('purchase','mi_purchase1')
+        self.addEnabledMenuItems('Hibernation','mi_Hibernation1')
+        self.addEnabledMenuItems('Plant','mi_Plant1')
         self.addEnabledMenuItems('sales','mi_sales1')
 
         
-        # enabledMenues for Article
-        self.addEnabledMenuItems('editArticle','new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editArticle','clear1', self.dicUserKeys['articles_delete'])
-        self.addEnabledMenuItems('editArticle','print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editArticle','edit1',self.dicUserKeys['articles_edit'])
+        # enabledMenues for Hibernation
+        self.addEnabledMenuItems('editHibernation','new1', self.dicUserKeys['hibernation_new'])
+        self.addEnabledMenuItems('editHibernation','clear1', self.dicUserKeys['hibernation_delete'])
+        self.addEnabledMenuItems('editHibernation','print1', self.dicUserKeys['hibernation_print'])
+        self.addEnabledMenuItems('editHibernation','edit1',self.dicUserKeys['hibernation_edit'])
 
-        # enabledMenues for ArticlePurchase
-        self.addEnabledMenuItems('editPurchase','PurchaseNew1', self.dicUserKeys['articles_purchase_new'])
-        self.addEnabledMenuItems('editPurchase','PurchaseClear1')
-        self.addEnabledMenuItems('editPurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
-    
-       # enabledMenues for ArticleSales
-        self.addEnabledMenuItems('editSales','SalesNew1')
-        self.addEnabledMenuItems('editSales','SalesClear1')
-        self.addEnabledMenuItems('editSales','SalesEdit1')
-
-       # enabledMenues for ArticleWebshop
-        self.addEnabledMenuItems('editWebshop','WebshopClear1')
-        self.addEnabledMenuItems('editWebshop','WebshopEdit1')
-
-       # enabledMenues for ArticleStock
-        self.addEnabledMenuItems('editStock','StockClear1')
-        self.addEnabledMenuItems('editStock','StockEdit1')
-
-
+       
 
         # tabs from notebook
-        self.tabArticle = 0
-        self.tabPurchase = 1
-        self.tabSales = 2
-        self.tabWebshop = 3
-        self.tabStock = 4
+        self.tabHibernation = 0
+        self.tabPlant = 1
         
-
         # start
         
         self.tabChanged()
 
-        # enabled menus for article
-        self.addEnabledMenuItems('editArticle','new1')
-        self.addEnabledMenuItems('editArticle','clear1')
-        self.addEnabledMenuItems('editArticle','print1')
+        # enabled menus for Hibernation
+        self.addEnabledMenuItems('editHibernation','new1')
+        self.addEnabledMenuItems('editHibernation','clear1')
+        self.addEnabledMenuItems('editHibernation','print1')
 
-        # enabled menus for article_purchase
-        self.addEnabledMenuItems('editArticlePurchase','PurchaseNew1')
-        self.addEnabledMenuItems('editArticlePurchase','PurchaseClear1')
+        # enabled menus for Hibernation_Plant
+        self.addEnabledMenuItems('editHibernationPlant','PlantNew1')
+        self.addEnabledMenuItems('editHibernationPlant','PlantClear1')
 
         # init Comboboxes
         tax_vat =  self.rpc.callRP('src.Misc.py_getListOfTaxVat', self.dicUser)
@@ -201,30 +153,30 @@ class hibernationwindow(chooseWindows):
     #Menu File
               
     def on_quit1_activate(self, event):
-        print "exit articles v2"
+        print "exit Hibernations v2"
         self.closeWindow()
   
 
-    #Menu Article
+    #Menu Hibernation
   
     def on_save1_activate(self, event):
-        print "save articles v2"
+        print "save Hibernations v2"
         self.singleHibernation.save()
-        self.setEntriesEditable(self.EntriesArticles, False)
+        self.setEntriesEditable(self.EntriesHibernations, False)
         self.tabChanged()
          
         
     def on_new1_activate(self, event):
-        print "new articles v2"
+        print "new Hibernations v2"
         self.singleHibernation.newRecord()
-        self.setEntriesEditable(self.EntriesArticles, True)
+        self.setEntriesEditable(self.EntriesHibernations, True)
         
 
     def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticles, True)
+        self.setEntriesEditable(self.EntriesHibernations, True)
 
     def on_delete1_activate(self, event):
-        print "delete articles v2"
+        print "delete Hibernations v2"
         self.singleHibernation.deleteRecord()
 
 
@@ -249,118 +201,51 @@ class hibernationwindow(chooseWindows):
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleHibernation.ID})
         
 
-  #Menu Purchase
+  #Menu Plant
         
    
-    def on_PurchaseSave1_activate(self, event):
-        print "save Partner articles v2"
-        self.singleHibernationPurchase.articlesNumber = self.singleHibernation.ID
-        self.singleHibernationPurchase.save()
-        self.setEntriesEditable(self.EntriesArticlesPurchase, False)
+    def on_PlantSave1_activate(self, event):
+        print "save Partner Hibernations v2"
+        self.singleHibernationPlant.HibernationsNumber = self.singleHibernation.ID
+        self.singleHibernationPlant.save()
+        self.setEntriesEditable(self.EntriesHibernationsPlant, False)
 
         self.tabChanged()
         
-    def on_PurchaseNew1_activate(self, event):
-        print "new Partner articles v2"
-        self.singleHibernationPurchase.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesPurchase, True)
+    def on_PlantNew1_activate(self, event):
+        print "new Partner Hibernations v2"
+        self.singleHibernationPlant.newRecord()
+        self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
-    def on_PurchaseEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesPurchase, True)
+    def on_PlantEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
-    def on_PurchaseClear1_activate(self, event):
-        print "delete Partner articles v2"
-        self.singleHibernationPurchase.deleteRecord()
+    def on_PlantClear1_activate(self, event):
+        print "delete Partner Hibernations v2"
+        self.singleHibernationPlant.deleteRecord()
 
-    #Articles Sales
-    def on_SalesSave1_activate(self, event):
-        print "save Partner articles v2"
-        
-        self.singleHibernationSales.articlesNumber = self.singleHibernation.ID
-        self.singleHibernationSales.save()
-        self.setEntriesEditable(self.EntriesArticlesSales, False)
-
-        self.tabChanged()
-        
-    def on_SalesNew1_activate(self, event):
-        print "new Partner articles v2"
-        self.singleHibernationSales.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesSales, True)
-
-    def on_SalesEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesSales, True)
-
-    def on_SalesClear1_activate(self, event):
-        print "delete Partner articles v2"
-        self.singleHibernationSales.deleteRecord()
-
-
- #Articles Webshop
-    def on_WebshopSave1_activate(self, event):
-        print "save  articles Webshop v2"
-        print "article ID = ", self.singleHibernation.ID
-        self.singleHibernationWebshop.articlesNumber = self.singleHibernation.ID
-        self.singleHibernationWebshop.save()
-        self.setEntriesEditable(self.EntriesArticlesWebshop, False)
-
-        self.tabChanged()
-        
-    def on_WebshopNew1_activate(self, event):
-        print "new Partner articles v2"
-        self.singleHibernationWebshop.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesWebshop, True)
-
-    def on_WebshopEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesWebshop, True)
-
-    def on_WebshopClear1_activate(self, event):
-        print "delete Partner articles v2"
-        self.singleHibernationWebshop.deleteRecord()
-
-
- #Articles Stock
-    def on_StockSave1_activate(self, event):
-        print "save Partner articles v2"
-        
-        self.singleHibernationStock.articlesNumber = self.singleHibernation.ID
-        self.singleHibernationStock.save()
-        self.setEntriesEditable(self.EntriesArticlesStock, False)
-
-        self.tabChanged()
-        
-    def on_StockNew1_activate(self, event):
-        print "new Partner articles v2"
-        self.singleHibernationStock.newRecord()
-        self.setEntriesEditable(self.EntriesArticlesStock, True)
-
-    def on_StockEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesArticlesStock, True)
-
-    def on_StockClear1_activate(self, event):
-        print "delete Partner articles v2"
-        self.singleHibernationStock.deleteRecord()
-
+   
 
 
     # Menu Lists
 
-    def on_liArticlesNumber1_activate(self, event):
+    def on_liHibernationsNumber1_activate(self, event):
         self.out( "lists startet")
-        Pdf = cuon.Articles.lists_articles_number1.lists_articles_number1()
+        Pdf = cuon.Hibernations.lists_Hibernations_number1.lists_Hibernations_number1()
 
 
 
 
 
-    def on_chooseArticle_activate(self, event):
-        # choose Article from other Modul
+    def on_chooseHibernation_activate(self, event):
+        # choose Hibernation from other Modul
         self.setChooseValue(self.singleHibernation.ID)
-        print 'Article-ID = ' + `self.singleHibernation.ID`
+        print 'Hibernation-ID = ' + `self.singleHibernation.ID`
         self.closeWindow()
   
 
-    #choose Vendor button
-    def on_bChooseVendor_clicked(self, event):
+    #choose Address button
+    def on_bChooseAddress_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
         
@@ -368,35 +253,50 @@ class hibernationwindow(chooseWindows):
     
     def on_eAddressNumber_changed(self, event):
         print 'eAdrnbr changed'
-        eAdrField = self.getWidget('eAddressField1')
-        liAdr = self.singleAddress.getAddress(long(self.getWidget( 'eAddressNumber').get_text()))
-        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
+        iAdrNumber = self.getChangedValue('eAddressNumber')
+        eAdrField = self.getWidget('tvAddress')
+        liAdr = self.singleAddress.getAddress(iAdrNumber)
+        self.setTextbuffer(eAdrField,liAdr)
+
+
+    #   choose begin Staff button
+    def on_bChooseBeginStaff_clicked(self, event):
+        adr = cuon.Staff.staff.staffwindow(self.allTables)
+        adr.setChooseEntry('chooseStaff', self.getWidget( 'eBeginStaffNumber'))
+        
+    # signals from entry eBeginStaffNumber
+    
+    def on_eBeginStaffNumber_changed(self, event):
+        print 'eBeginStaffNumber changed'
+        eAdrField = self.getWidget('eBeginStaffName')
+        cAdr = self.singleStaff.getFullName(long(self.getWidget( 'eBeginStaffNumber').get_text()))
+        eAdrField.set_text(cAdr)
 
 
     # search button
     def on_bSearch_clicked(self, event):
-        self.searchArticle()
+        self.searchHibernation()
 
 
     def on_eFindNumber_editing_done(self, event):
         print 'Find Number'
-        self.searchArticle()
+        self.searchHibernation()
 
     def on_eFindNumber_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
-            self.searchArticle()
+            self.searchHibernation()
             
     def on_eFindDesignation_editing_done(self, event):
         print 'Find Designation'
-        self.searchArticle()
+        self.searchHibernation()
 
     def on_eFindDesignation_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
-            self.searchArticle()
+            self.searchHibernation()
         
 
 
-    def searchArticle(self):
+    def searchHibernation(self):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
@@ -410,87 +310,39 @@ class hibernationwindow(chooseWindows):
 
     def refreshTree(self):
         self.singleHibernation.disconnectTree()
-        self.singleHibernationPurchase.disconnectTree()
+        self.singleHibernationPlant.disconnectTree()
         
-        if self.tabOption == self.tabArticle:
+        if self.tabOption == self.tabHibernation:
             self.singleHibernation.connectTree()
             self.singleHibernation.refreshTree()
 
-        elif self.tabOption == self.tabPurchase:
-            self.singleHibernationPurchase.sWhere  ='where articles_number = ' + `int(self.singleHibernation.ID)`
-            self.singleHibernationPurchase.connectTree()
-            self.singleHibernationPurchase.refreshTree()
+        elif self.tabOption == self.tabPlant:
+            self.singleHibernationPlant.sWhere  ='where Hibernations_number = ' + `int(self.singleHibernation.ID)`
+            self.singleHibernationPlant.connectTree()
+            self.singleHibernationPlant.refreshTree()
 
-        elif self.tabOption == self.tabSales:
-            self.singleHibernationSales.sWhere  ='where articles_number = ' + `int(self.singleHibernation.ID)`
-            self.singleHibernationSales.connectTree()
-            self.singleHibernationSales.refreshTree()
-
-        elif self.tabOption == self.tabWebshop:
-
-            self.singleHibernationWebshop.sWhere  ='where articles_number = ' + `int(self.singleHibernation.ID)`
-            self.singleHibernationWebshop.setEmptyEntries()
-            self.singleHibernationWebshop.getFirstRecord()
-            
-            self.singleHibernationWebshop.fillEntries(self.singleHibernationWebshop.ID)
-
-            
-            print "-----------> end tab Webshop"
-            
-
-        elif self.tabOption == self.tabStock:
-            print "-----------> begin tab Stock"
-            self.singleHibernationStock.sWhere  ='where articles_number = ' + `int(self.singleHibernation.ID)`
-            self.singleHibernationWebshop.setEmptyEntries()
-            self.singleHibernationStock.getFirstRecord()
-            if self.singleHibernationStock.ID > 0:
-                self.singleHibernationStock.fillEntries(self.singleHibernationStock.ID)
-            else:
-                dicAr = {'articles_number':self.singleHibernation.getArticleNumber(self.singleHibernation.ID)}
-                self.singleHibernationStock.fillOtherEntries(dicAr)
-
-            print "-----------> end tab Stock"
-     
+   
 
 
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
         self.setTreeVisible(True)
-        if self.tabOption == self.tabArticle:
+        if self.tabOption == self.tabHibernation:
             #Address
             self.disableMenuItem('tabs')
-            self.enableMenuItem('article')
+            self.enableMenuItem('Hibernation')
             print 'Seite 0'
-            self.editAction = 'editArticle'
+            self.editAction = 'editHibernation'
             
-        elif self.tabOption == self.tabPurchase:
+        elif self.tabOption == self.tabPlant:
             #Partner
             self.disableMenuItem('tabs')
-            self.enableMenuItem('purchase')
-            self.editAction = 'editArticlePurchase'
+            self.enableMenuItem('Plant')
+            self.editAction = 'editHibernationPlant'
             print 'Seite 1'
             
-        elif self.tabOption == self.tabSales:
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('sales')
-            self.editAction = 'editArticleSales'
-            print 'Seite 2'
-
-        elif self.tabOption == self.tabWebshop:
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('sales')
-            self.editAction = 'editArticleWebshop'
-            self.setTreeVisible(False)
-            print 'Seite 3'
-
-        elif self.tabOption == self.tabStock:
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('sales')
-            self.editAction = 'editArticleStock'
-            self.setTreeVisible(False)
-            print 'Seite 4'
-            
+     
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

@@ -111,23 +111,23 @@
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>eBeginNote</name>
+      <name>tvBeginNote</name>
       <type>textline</type>
       <size>0</size>
       <verify_type>text</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>begin_note</sql_field>
+      <sql_field>begin_notes</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
 
     <entry>
-      <name>eEndsNote</name>
+      <name>tvEndsNote</name>
       <type>textline</type>
       <size>0</size>
       <verify_type>text</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>ends_note</sql_field>
+      <sql_field>ends_notes</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
