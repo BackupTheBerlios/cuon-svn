@@ -42,7 +42,8 @@ class botanywindow(chooseWindows):
         self.loadGlade('botany.xml')
         self.win1 = self.getWidget('BotanyMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        self.ModulNumber = self.MN['Botany']        
+        self.ModulNumber = 110500
+        
         self.allTables = allTables
         self.singleBotany = SingleBotany.SingleBotany(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
@@ -161,7 +162,14 @@ class botanywindow(chooseWindows):
         if self.singleBotany.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleBotany.ID})
+   
+    def on_chooseBotany_activate(self, event):
+        # choose Botany from other Modul
+        print '############### Botany choose ID ###################'
+        self.setChooseValue(self.singleBotany.ID)
+        self.closeWindow()      
         
+      
 
 
     def searchBotany(self):

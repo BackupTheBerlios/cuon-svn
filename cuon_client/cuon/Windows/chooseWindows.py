@@ -27,9 +27,10 @@ class chooseWindows(windows):
         # sName = name of Menuitem for choose
         # entry = entry to set value
         print '<<<<<<<<<<<<<<< setCooseEntry <<<<<<<<<<<<<<<<<<<<<'
+        self.out(sName + ' ' + `entry`)
         self.chooseEntry = entry
         self.chooseMenuitem = self.getWidget(sName)
-        self.chooseMenuitem.set_sensitive()
+        self.chooseMenuitem.set_sensitive(True)
         
 
     def setChooseValue(self, chooseValue):

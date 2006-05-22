@@ -22,17 +22,17 @@
 
   
     <entry>
-      <name>ePlantBotanyName</name>
+      <name>ePlantBotanyNumber</name>
 
       <type>textline</type>
 
       <size>50</size>
 
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
 
       <create_sql>1</create_sql>
 
-      <sql_field>botany_name</sql_field>
+      <sql_field>botany_number</sql_field>
     <duty>YES</duty>
 
       <bg_color>0</bg_color>
@@ -47,7 +47,7 @@
 
       <size>60</size>
 
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
 
       <create_sql>1</create_sql>
 

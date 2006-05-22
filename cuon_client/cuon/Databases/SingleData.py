@@ -158,6 +158,7 @@ class SingleData(gladeXml, logs):
     
     def saveValues(self, dicValues, liBigEntries='NO'):
         if liBigEntries != 'NO':
+            
             for lb in liBigEntries:
                 #print 'lb = '
                 #print lb
@@ -562,7 +563,10 @@ class SingleData(gladeXml, logs):
                 if sVerify  == 'string':
                     # self.out( oValue)
                     if oValue:
-                        oValue = oValue.encode('utf-8')
+                        try:
+                            oValue = oValue.encode('utf-8')
+                        except:
+                            self.out('No encoding')
                     # self.out( oValue)
                     # self.out( '++++++++++++++++++++++++++++++++++')
 

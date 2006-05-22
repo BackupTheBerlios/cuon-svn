@@ -144,3 +144,51 @@ on_clients1_activate                   (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_bibliographic_activate              (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_expert_system1_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_project1_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_webshop1_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_import_data1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_okAbout1_clicked                    (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

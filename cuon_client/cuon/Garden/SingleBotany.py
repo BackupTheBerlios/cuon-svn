@@ -68,3 +68,6 @@ class SingleBotany(SingleData):
         dicRecords = self.load(id)
         return dicRecords[0]['number']
     
+    def getBotanyName(self,id):
+        dicRecords = self.load(id)
+        return dicRecords[0]['botany_name']

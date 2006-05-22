@@ -184,6 +184,11 @@
       <Entry-File>garden.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_garden.xml</Entry-FileValue>
     </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany.xml</Entry-FileValue>
+    </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
@@ -334,6 +339,17 @@
       <Glade-File>garden.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/garden.glade2</Glade-FileValue>
     </GladeEntries>
+<GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>hibernation.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/hibernation.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>botany.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/botany.glade2</Glade-FileValue>
+    </GladeEntries>
+
 
   </Glade_Init_Files>
   

@@ -82,12 +82,12 @@
 		<widget class="GtkMenu" id="edit_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="chooseArticle">
+		    <widget class="GtkMenuItem" id="chooseBotany">
 		      <property name="visible">True</property>
 		      <property name="sensitive">False</property>
 		      <property name="label" translatable="yes">choose</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_chooseArticle_activate" last_modification_time="Fri, 13 Feb 2004 12:27:11 GMT"/>
+		      <signal name="activate" handler="on_chooseBotany_activate" last_modification_time="Sat, 20 May 2006 11:28:10 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

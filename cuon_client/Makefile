@@ -293,9 +293,13 @@ install_server:
 install_zope_cy:
 
 	scp ../cuon_server/src/cuon_zope.py $(zope_extension)
+	scp ../cuon_server/src/iCal.py $(zope_extension)
+
 	scp ../cuon_server/zope/*.zexp $(zope_import)
 
 install_zope_cu:
 
 	scp ../cuon_server/src/cuon_zope.py $(zope_extension2)
+	scp ../cuon_server/src/iCal.py $(zope_extension2)
+    
 	scp ../cuon_server/zope/*.zexp $(zope_import2)

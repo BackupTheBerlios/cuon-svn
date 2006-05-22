@@ -36,6 +36,10 @@
       <nameOfUser>zope</nameOfUser>
       <comment></comment>
     </user>
+<user>
+      <nameOfUser>heino</nameOfUser>
+      <comment></comment>
+    </user>
                       
                                                           
   </users>
@@ -51,6 +55,11 @@
       <this_user>cuon1</this_user>
       <comment></comment>
     </addgroup>
+   <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>heino</this_user>
+      <comment></comment>
+    </addgroup>
     <addgroup>
       <this_group>zope</this_group>
       <this_user>zope</this_user>
@@ -61,6 +70,7 @@
       <this_user>cuon_admin</this_user>
       <comment></comment>
     </addgroup>
+
     <addgroup>
       <this_group>cuon_admin</this_group>
       <this_user>jhamel</this_user>
@@ -183,6 +193,13 @@
       <nameOfGrant>cuon_all_rights_of_accounts1 </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
       <this_tables>account_info,account_info_id,account_sentence,account_sentence_id,account_values, account_values_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_garden </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id</this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>

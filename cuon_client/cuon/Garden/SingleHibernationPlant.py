@@ -37,10 +37,17 @@ class SingleHibernationPlant(SingleData):
         self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
         self.listHeader['names'] = ['number', 'designation', 'ID']
         self.listHeader['size'] = [25,10,25,25,10]
-        print "number of Columns "
-        print len(self.table.Columns)
+        self.hibernationID = 0
+        #print "number of Columns "
+        #print len(self.table.Columns)
         #
+    def readNonWidgetEntries(self, dicValues):
+        self.out('readNonWidgetEntries(self) by SingleHibernationPlant')
+        dicValues['hibernation_number'] = [self.hibernationID, 'int']
+        return dicValues
         
+     
+     
     def getHibernation(self, id):
         dicRecords = self.load(id)
         liHibernation = []
