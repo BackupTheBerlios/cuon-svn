@@ -290,7 +290,10 @@ class addresswindow(chooseWindows):
     def on_SchedulSave_activate(self, event):
         self.out( "save Schedul addresses v2")
         self.singleSchedul.partnerId = self.singlePartner.ID
-        self.singleSchedul.save()
+        id = self.singleSchedul.save()
+        self.singleSchedul.load(id)
+        sCalendar = 'iCal_'+ self.dicUser['Name']
+        self.rpc.callRP('iCal.addEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
         self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
         self.tabChanged()
 

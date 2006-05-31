@@ -282,6 +282,7 @@ install_server:
 	if  [ ! -d $(ICONDIR) ] ; then mkdir $(ICONDIR) ; fi 	
 	if  [ ! -d $(dest_glade) ] ; then mkdir $(dest_glade) ; fi 	
 	if  [ ! -d $(dest_report) ] ; then mkdir $(dest_report) ; fi 	
+	if  [ ! -d $(SERVERDIRSHARE)/cuon_server ] ; then mkdir $(SERVERDIRSHARE)/cuon_server ; fi 	
 
 	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
 	cp ./GUI/*.glade2 $(dest_glade) 
@@ -289,9 +290,10 @@ install_server:
 	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
+	cp -R ../cuon_server/src/*  $(SERVERDIRSHARE)/cuon_server/
+
 
 install_zope_cy:
-
 	scp ../cuon_server/src/cuon_zope.py $(zope_extension)
 	scp ../cuon_server/src/iCal.py $(zope_extension)
 
@@ -303,3 +305,7 @@ install_zope_cu:
 	scp ../cuon_server/src/iCal.py $(zope_extension2)
     
 	scp ../cuon_server/zope/*.zexp $(zope_import2)
+
+install_server_cu:
+	sudo make install
+	scp -r ../cuon_server/src $(CUWEBSHARE)/cuon_server

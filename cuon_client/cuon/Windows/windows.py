@@ -435,7 +435,7 @@ class windows(MyXML, gladeXml, messages):
         
         if  not sProfile :
             print self.oUser.getDicUser()['Name']
-            sProfile = self.rpc.callRP('src.User.py_getNameOfStandardProfile', self.oUser.getDicUser() )
+            sProfile = self.rpc.callRP('User.getNameOfStandardProfile', self.oUser.getDicUser() )
 
             print 'Profile = '
             print sProfile
@@ -444,10 +444,10 @@ class windows(MyXML, gladeXml, messages):
         print 'Profile = ', sProfile
         
         if sProfile:
-            result = self.rpc.callRP('src.User.py_getStandardProfile',  sProfile,  self.oUser.getDicUser() )
+            result = self.rpc.callRP('User.getStandardProfile',  sProfile,  self.oUser.getDicUser() )
             print 'Result Profile'
             print result
-            if result:
+            if result != 'NONE':
                 self.oUser.userLocales ='de'
                 if result.has_key('encoding'):
                     self.oUser.userEncoding = result['encoding']

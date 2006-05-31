@@ -128,7 +128,7 @@ class cyr_load_entries(MyXML, dumps):
         self.out( cPickle.dumps(entries))
         self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
-        self.rpc.callRP('src.Databases.py_saveValue', sNameOfEntries, self.doEncode(repr(cPickle.dumps(entries) )))
+        self.rpc.callRP('Database.saveInfo', sNameOfEntries, self.doEncode(repr(cPickle.dumps(entries) )))
         
 
 
@@ -138,7 +138,7 @@ class cyr_load_entries(MyXML, dumps):
         self.out( "load : " + sNameOfEntries)
         self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
-        dictEntries = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', sNameOfEntries)))
+        dictEntries = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfEntries)))
 
         entries = cPickle.loads(dictEntries)   
 

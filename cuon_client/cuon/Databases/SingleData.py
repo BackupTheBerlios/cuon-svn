@@ -97,8 +97,7 @@ class SingleData(gladeXml, logs):
             # self.out( `dicColumns`)
 
 
-            #liRecords = self.rpc.getServer().src.sql.py_loadRecord(self.sNameOfTable, record, self.dicUser, dicColumns)
-            liRecords = self.rpc.callRP('src.sql.py_loadRecord', self.sNameOfTable, record, self.sqlDicUser, dicColumns )
+            liRecords = self.rpc.callRP('Database.loadRecord', self.sNameOfTable, record, self.sqlDicUser, dicColumns )
             # print liRecords
             firstRecord = {}
             if liRecords:
@@ -151,12 +150,15 @@ class SingleData(gladeXml, logs):
         
     def save(self, liBigEntries='NO'):
         dicValues = self.readEntries()
-        self.saveValues(dicValues, liBigEntries)
+        id = self.saveValues(dicValues, liBigEntries)
+        return id
         
     def saveExternalData(self, dicValues, liBigEntries='NO'):
-        self.saveValues(dicValues, liBigEntries)        
+        id = self.saveValues(dicValues, liBigEntries)        
+        return id
     
     def saveValues(self, dicValues, liBigEntries='NO'):
+        id = 0
         if liBigEntries != 'NO':
             
             for lb in liBigEntries:
@@ -169,7 +171,7 @@ class SingleData(gladeXml, logs):
                 endFile = len(en)
                 #print endFile
                 while j < endFile:
-                    ok = self.rpc.callRP('src.sql.py_createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
+                    ok = self.rpc.callRP('Database.createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
                     #print ok
                     j = k
                     k = k + 2048*30
@@ -177,18 +179,27 @@ class SingleData(gladeXml, logs):
                     #print k
                 dicValues[lb][0] = ' '
         print "saveValues - self.id = ", self.ID
-        self.rpc.callRP('src.sql.py_saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
+        liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
+        if self.ID < 0 and liResult:
+            try:
+                id = liResult[0]['last_value']
+            except:
+                pass
+
+        return id
+                
+                
         
         self.refreshTree()
 
  
     def deleteRecord(self):
-        self.rpc.callRP('src.sql.py_deleteRecord',self.sNameOfTable, self.ID, self.sqlDicUser )
+        self.rpc.callRP('Database.deleteRecord',self.sNameOfTable, self.ID, self.sqlDicUser )
         self.refreshTree()
          
 
     def loadCompleteTable(self):
-        return self.rpc.callRP('src.sql.py_loadCompleteTable',self.sNameOfTable, self.sqlDicUser)
+        return self.rpc.callRP('Database.loadCompleteTable',self.sNameOfTable, self.sqlDicUser)
         
 
 
@@ -314,7 +325,7 @@ class SingleData(gladeXml, logs):
 
     def getFirstListRecord(self):
         
-        liEntries = self.rpc.callRP('src.sql.py_getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser)
+        liEntries = self.rpc.callRP('Database.getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser)
         try:
             dicEntry = liEntries[0]
             id  = dicEntry['id']
@@ -563,10 +574,12 @@ class SingleData(gladeXml, logs):
                 if sVerify  == 'string':
                     # self.out( oValue)
                     if oValue:
-                        try:
-                            oValue = oValue.encode('utf-8')
-                        except:
-                            self.out('No encoding')
+                        pass
+##                        try:
+##                            oValue = oValue.encode('utf-8')
+##                            
+##                        except:
+##                            self.out('No encoding')
                     # self.out( oValue)
                     # self.out( '++++++++++++++++++++++++++++++++++')
 
@@ -689,7 +702,7 @@ class SingleData(gladeXml, logs):
             print 'SingleData - dicFields = ', `dicFields`
             
             
-            dicLists = self.rpc.callRP('src.sql.py_getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.sqlDicUser)
+            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.sqlDicUser)
         else:
             dicLists = {}
             

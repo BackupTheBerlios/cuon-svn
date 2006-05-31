@@ -6,7 +6,7 @@ import random
 import xmlrpclib
 
 CUON_FS = None
-CUON_AI_SERVER="http://localhost:8765"
+CUON_AI_SERVER="http://84.244.7.139:8765"
 #sys.path.append('/usr/lib/zope/lib/python')
 f = open('/etc/cuon/cuon_zope.ini')
 if f:
@@ -140,17 +140,17 @@ def createSessionID(secValue = 36000):
 	
     n = random.randint(0,1000000000)
     for i in range(27):
-        ok = 1
-    while ok:
-        r = random.randint(65,122)
-        if r < 91 or r > 96:
-            ok = 0
-            s = s + chr(r)
-	
-            s = s + `n`
-            writeLog(s)
-        return {'SessionID':s, 'endTime': time.time() + secValue}
-	
+        ok = True
+        while ok:
+            r = random.randint(65,122)
+            if r < 91 or r > 96:
+                ok = False
+                s = s + chr(r)
+
+    s = s + `n`
+    writeLog(s)
+    return {'SessionID':s, 'endTime': time.time() + secValue}
+
 def checkEndTime(fTime):
     writeLog('checkEndTime : ' + `fTime`)
     ok = 0

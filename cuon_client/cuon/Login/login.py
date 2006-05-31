@@ -87,7 +87,7 @@ class loginwindow(windows):
 
         print 'New Auth data ( Session_id )'
         #print self.oUser.getUserName(), sPw
-        sid = self.rpc.callRP('src.Databases.py_createSessionID', self.oUser.getUserName(), sPw)
+        sid = self.rpc.callRP('Database.createSessionID', self.oUser.getUserName(), sPw)
         print "Session-ID0 = ", `sid`
         if sid:
             print "Session-ID1 = ", `sid`

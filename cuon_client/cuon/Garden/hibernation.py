@@ -143,9 +143,7 @@ class hibernationwindow(chooseWindows):
         self.addEnabledMenuItems('editHibernationPlant','PlantNew1')
         self.addEnabledMenuItems('editHibernationPlant','PlantClear1')
 
-        # init Comboboxes
-        tax_vat =  self.rpc.callRP('src.Misc.py_getListOfTaxVat', self.dicUser)
-        cb = self.getWidget('cbVat')
+        
         
         for i in range(len(tax_vat)) :
             li = gtk.ListItem(tax_vat[i])

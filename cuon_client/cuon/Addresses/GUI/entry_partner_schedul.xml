@@ -14,13 +14,25 @@
       <fg_color>0</fg_color>
     </entry>
 <entry>
-      <name>eSchedulTime</name>
+      <name>cbeSchedulTimeBegin</name>
       <type>textline</type>
       <size>12</size>
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>schedul_time</sql_field>
+      <sql_field>schedul_time_begin</sql_field>
       <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   
+   <entry>
+      <name>cbeSchedulTimeEnd</name>
+      <type>textline</type>
+      <size>12</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>schedul_time_end</sql_field>
+      <duty>NO</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>

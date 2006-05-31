@@ -1490,23 +1490,39 @@
     </field>
 
     <field>
-      <name>schedul_time</name>
+      <name>schedul_time_begin</name>
 
-      <type>varchar</type>
+      <type>int</type>
 
       <pkey>0</pkey>
 
       <unique>0</unique>
 
-      <notnull>1</notnull>
+      <notnull>0</notnull>
 
-      <size>12</size>
+      <size>0</size>
 
       <default />
 
       <comment />
     </field>
+   <field>
+      <name>schedul_time_end</name>
 
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
     <field>
       <name>priority</name>
 

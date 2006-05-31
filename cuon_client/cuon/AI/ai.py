@@ -63,7 +63,7 @@ class aiwindow(windows):
 ##                pass
             
             print 'Question', q1
-            a1 = self.rpc.callRP('src.AI.py_getAI',q1.encode('utf-8'), self.dicSqlUser)
+            a1 = self.rpc.callRP('AI.getAI',q1.encode('utf-8'), self.dicSqlUser)
             if a1:
                 a1 = a1.decode('utf-7').encode('utf-8')
                 a1 = a1 + '\n'
