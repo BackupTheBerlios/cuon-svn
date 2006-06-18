@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003-2004]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2004]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -110,7 +110,7 @@ class report(dumps, MyXML):
         
     def writeXmlReport(self, fname):
 
-        xml1  = eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', fname)))
+        xml1  = eval(self.doDecode(self.rpc.callRP('Database.getInfo', fname)))
         #        print xml1
         # print '------------------------------------------------------------------------------------------------------------------------------'
         #self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -122,7 +122,7 @@ class report(dumps, MyXML):
 
     def writeAllReportFiles(self):
 
-        nameOfReportFiles  = cPickle.loads(eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'nameOfReportFiles'))))
+        nameOfReportFiles  = cPickle.loads(eval(self.doDecode(self.rpc.callRP('Database.getInfo', 'nameOfReportFiles'))))
         #print 'nameOfReportfiles' + `nameOfReportFiles`
         #print len(nameOfReportFiles)
         
@@ -980,7 +980,7 @@ class report(dumps, MyXML):
                 sq = s % dicField['text']                
                 #to.textOut(sq)
                 #c.drawText(to)
-
+                print 'SQ = ', sq
                 if dicField['fontjustification']:
                     print 'Justification' + dicField['fontjustification']
                     if dicField['fontjustification'] == 'left':

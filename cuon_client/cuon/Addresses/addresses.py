@@ -99,7 +99,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
         self.singleMisc.setTree(self.xml.get_widget('tree1') )
         # self.singleMisc.setStore(gtk.ListStore())
-         #singlePartner
+        #singlePartner
         
         self.loadEntries(self.EntriesPartner )
         self.singlePartner.setEntries(self.getDataEntries('partner.xml') )
@@ -120,12 +120,12 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesPartnerSchedul )
         self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
         self.singleSchedul.setGladeXml(self.xml)
-        self.singleSchedul.setTreeFields( ['schedul_date','schedul_time','short_remark','priority','process_status'] )
+        self.singleSchedul.setTreeFields( ['schedul_date','schedul_time_begin','short_remark','priority','process_status'] )
         self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
         #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-        self.singleSchedul.setTreeOrder('schedul_date, schedul_time')
-        self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('short Remark'), _('Priority'), _('Status')])
+        self.singleSchedul.setTreeOrder('schedul_date, schedul_time_begin')
+        self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('shortRemark'), _('Priority'), _('Status')])
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`

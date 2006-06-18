@@ -128,6 +128,11 @@ class SingleData(gladeXml, logs):
         except AssertionError:
             print 'assert error'
             liRecords = None
+        except Exception, param:
+            print 'Error by save Data'
+            print Exception
+            print param
+            
         #print liRecords    
         return liRecords
 

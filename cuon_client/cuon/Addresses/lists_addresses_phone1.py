@@ -61,11 +61,14 @@ class lists_addresses_phone1(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.callRP('src.Address.py_getPhonelist1', dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('Address.getPhonelist1', dicSearchfields, self.dicUser)
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],types.UnicodeType):
-                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
+                    try:
+                        i[j] = (i[j].decode('utf-8')).encode('latin-1')
+                    except:
+                        pass
             
 
     

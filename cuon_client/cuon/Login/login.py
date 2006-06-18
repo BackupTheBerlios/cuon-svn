@@ -24,7 +24,11 @@ import string
 
 import logging
 from cuon.Windows.windows  import windows
-from Crypto.Cipher import AES
+try:
+    from Crypto.Cipher import AES
+except:
+    print 'No Crypto-Module found -- !'
+    
 import cuon.User.user
 
 class loginwindow(windows):
@@ -69,7 +73,7 @@ class loginwindow(windows):
     #def on_okbutton1_clicked(self, event):
     def okButtonPressed(self):
         
-        obj = AES.new('Th77777777key456', AES.MODE_ECB)
+        #obj = AES.new('Th77777777key456', AES.MODE_ECB)
         username = self.getWidget('TUserID').get_text()
         #self.openDB()
         #userObj = self.loadObject(username)

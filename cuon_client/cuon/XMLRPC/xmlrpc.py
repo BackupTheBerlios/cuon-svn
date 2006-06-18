@@ -36,7 +36,7 @@ class myXmlRpc(dumps, logs):
         self.openDB()
         self.td = self.loadObject('td')
         self.closeDB()
-        self.zope_server = self.getZopeServer()
+        #self.zope_server = self.getZopeServer()
         self.MyServer = self.getMyServer()
         
     def getMyServer(self):
@@ -52,16 +52,9 @@ class myXmlRpc(dumps, logs):
                 #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
                 sv =  ServerProxy( self.td.server,allow_none = 1 ) 
             else:
-                s1 = self.td.server
-                if s1.find('8080') > 0:
-                    s1 = s1.replace('8080','7080')
-                if s1.find('9673') > 0:
-                    s1 = s1.replace('9673','7080')
-                
-                
-                print 'Server2 = ', s1
+                print 'Server2 = ', self.td.server
                 #sv =  ServerProxy( self.td.server, allow_none = 1 )
-                sv = ServerProxy(s1,allow_none = 1)
+                sv = ServerProxy(self.td.server,allow_none = 1)
                 
         except:
             print 'Server error'
@@ -93,7 +86,7 @@ class myXmlRpc(dumps, logs):
         return sv
 
     def getServer(self):
-        return self.zope_server
+        return self.MyServer
         
     def getServer2(self):
         return self.MyServer
@@ -115,12 +108,9 @@ class myXmlRpc(dumps, logs):
 
     def callRP(self, rp, *c):
         r = None
-        print 'rp',rp
-        print rp[0:3]
-        if rp[0:4] == 'src.':
-            s = 'r = self.getServer().' + rp + '('
-        else:
-            s = 'r = self.getServer2().' + rp + '('
+        #print 'rp',rp
+        #print rp[0:3]
+        s = 'r = self.getServer().' + rp + '('
         for i in c:
             s = s + `i` + ', '
             #print '-------------------------------------------------'
@@ -130,7 +120,7 @@ class myXmlRpc(dumps, logs):
         if len(c) > 0:
             s = s[0:len(s) -2]
         s = s + ')'
-        print s
+        #print s
         startRP = True
         rp_tries = 0
         #print 'Server by connection: ', self.getServer()
@@ -161,9 +151,9 @@ class myXmlRpc(dumps, logs):
                 if rp_tries > 5:
                     startRP = False
                 else:
-                    print ' wait for 10 sec. '
+                    print ' wait for 3 sec. '
                     print ' Try :' + `rp_tries`
-                    time.sleep(10)
+                    time.sleep(3)
         if r == 'NONE':
             r = None
         return    r

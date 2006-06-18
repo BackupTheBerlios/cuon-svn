@@ -5260,7 +5260,7 @@
 
     <field>
       <name>user_id</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>1</unique>
       <notnull>1</notnull>
@@ -5271,7 +5271,7 @@
 
     <field>
       <name>real_name</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
@@ -5281,7 +5281,7 @@
     </field>
     <field>
       <name>designation</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
@@ -5291,7 +5291,7 @@
     </field>
     <field>
       <name>title</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
@@ -5314,7 +5314,7 @@
 
     <field>
       <name>user_id</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
@@ -5324,7 +5324,7 @@
     </field>
    <field>
       <name>group_name</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>1</notnull>
@@ -5334,7 +5334,7 @@
     </field>
    <field>
       <name>group_designation</name>
-      <type>string</type>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>1</notnull>
@@ -5345,10 +5345,11 @@
 
 </table>
 
- <!--user_client -->
+
+ <!--Projects Main -->
 
   <table>
-    <nameOfTable>user_client</nameOfTable>
+    <nameOfTable>projects</nameOfTable>
 
     <specials>inherits (t_standard);</specials>
 
@@ -5357,62 +5358,326 @@
     <y>115</y>
 
     <field>
-      <name>user_id</name>
-      <type>string</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>55</size>
-      <default />
-      <comment>user id  </comment>
-    </field>
-   <field>
-      <name>client_id</name>
-      <type>int</type>
+      <name>name</name>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>name  </comment>
+    </field>
+   <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>140</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+   <field>
+      <name>customer_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
       <size>0</size>
       <default />
-      <comment>client id  </comment>
+      <comment />
     </field>
-
+<field>
+      <name>project_time_in_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+ <field>
+      <name>project_starts_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+     <field>
+      <name>project_ends_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>  
 </table>
 
- <!--user_groups -->
+<!--Projects Phase -->
 
   <table>
-    <nameOfTable>user_groups</nameOfTable>
+    <nameOfTable>project_phases</nameOfTable>
 
     <specials>inherits (t_standard);</specials>
 
     <x>152</x>
 
     <y>115</y>
-
+<field>
+      <name>project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>project id  </comment>
+    </field>
+    
     <field>
-      <name>user_id</name>
-      <type>string</type>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>name  </comment>
+    </field>
+   <field>
+      <name>designation</name>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
-      <size>55</size>
+      <size>140</size>
       <default />
-      <comment>user id  </comment>
+      <comment>short designation  </comment>
+    </field>
+ 
+<field>
+      <name>time_in_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+ <field>
+      <name>starts_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+     <field>
+      <name>ends_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>  
+</table>
+
+<!--Projects Task -->
+
+  <table>
+    <nameOfTable>project_tasks</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+<field>
+      <name>phase_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>project id  </comment>
+    </field>
+    
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>name  </comment>
     </field>
    <field>
-      <name>groups_id</name>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>140</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+ 
+<field>
+      <name>time_in_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+ <field>
+      <name>starts_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+     <field>
+      <name>ends_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>  
+</table>
+
+<!--Projects Tasks Staff Resources -->
+
+  <table>
+    <nameOfTable>project_task_staff_res</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+<field>
+      <name>task_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>project id  </comment>
+    </field>
+    
+    <field>
+      <name>staff_id</name>
       <type>int</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>1</notnull>
       <size>0</size>
       <default />
-      <comment>client id  </comment>
+      <comment> staff id  </comment>
+    </field>
+  
+
+ <field>
+      <name>working_day</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+    
+    <field>
+      <name>planed_time_begin1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment />
+    </field>
+    
+     <field>
+      <name>planed_time_ends1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment />
+    </field>  
+    
+    <field>
+      <name>planed_time_in_Hours1</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
     </field>
 </table>
+<!--Projects Tasks Material Resources -->
 
+  <table>
+    <nameOfTable>project_task_material_res</nameOfTable>
 
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+<field>
+      <name>task_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>project id  </comment>
+    </field>
+    
+    <field>
+      <name>article_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment> staff id  </comment>
+    </field>
+  
+
+</table>
 
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>

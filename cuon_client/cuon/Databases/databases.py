@@ -83,7 +83,7 @@ class databaseswindow(windows):
 
     def on_save_client1_activate(self,event):
 
-        liAllTables = cPickle.loads(eval(self.doDecode(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables'))))
+        liAllTables = cPickle.loads(eval(self.doDecode(self.rpc.callRP('Database.getInfo', 'allTables'))))
 
         print `liAllTables`
         
@@ -91,8 +91,11 @@ class databaseswindow(windows):
             clt = cuon.Databases.cyr_load_table.cyr_load_table()
             for lt in liAllTables:
                 self.allTables[lt] =  clt.loadTable(lt)
-        except:
-            print 'ERROR'
+        except Exception, param:
+            print 'ERROR '
+            print Exception
+            print param
+            
             
         sc = cuon.Databases.SingleCuon.SingleCuon(self.allTables)
         f = file('version','r')
@@ -108,13 +111,18 @@ class databaseswindow(windows):
             f = file(sFile,'rb')
             b = f.read()
             f.close()
+            print 'Read by saveClient f = ', sFile
+            print 'len = ', len(b)
+            
             dicValues = {'name':[n1,'string'],'version' : [v1,'string'], 'clientdata':[b,'app']}
             sc.newRecord()
             sc.saveExternalData(dicValues,['clientdata'])
 
-        except:
+        except Exception, param:
             print "Error open Versionsfile"
-            
+            print Exception
+            print param
+ 
                                 
                             
         
@@ -139,7 +147,7 @@ class databaseswindow(windows):
             print 'Sequences'
             print `lSequences`
             
-            liClients = self.rpc.callRP('src.Databases.py_getListOfClients', self.dicUser)
+            liClients = self.rpc.callRP('Database.getListOfClients', self.dicUser)
             print `liClients`
             for cli in liClients:
                 for s in range(len(lSequences)):
@@ -153,7 +161,7 @@ class databaseswindow(windows):
 
         print 'allTables = '
         print tableList    
-        self.rpc.callRP('src.Databases.py_saveValue', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
+        self.rpc.callRP('Database.saveInfo', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
         
         
     def on_trigger1_activate(self, event):
@@ -222,7 +230,7 @@ class databaseswindow(windows):
         clt.td = self.td
         # first - the infotable cuon must be setup
         #print 'User:', self.dicUser
-        ok =  self.rpc.callRP('src.Databases.py_createCuon', self.dicUser)
+        ok =  self.rpc.callRP('Database.createCuon', self.dicUser)
 
         # now check the rest
         
@@ -251,7 +259,7 @@ class databaseswindow(windows):
  
         for i in lSequences:
             print 'Check this Sequence = ' , `i`
-            ok =  self.rpc.callRP('src.Databases.py_checkExistSequence',i, self.dicUser)
+            ok =  self.rpc.callRP('Database.checkExistSequence',i, self.dicUser)
             if not ok:
                 print 'create Sequence'
                 iSeq = i.upper().find('_CLIENT_')
@@ -279,14 +287,14 @@ class databaseswindow(windows):
                     
                 self.out( sSql)
                 print 'Sql Sequence = ', sSql
-                self.rpc.callRP('src.sql.py_executeNormalQuery', sSql, self.dicUser)
+                self.rpc.callRP('Database.xml_executeNormalQuery', sSql, self.dicUser)
         
 
 
     def dbcheck(self, table):
         self.out("check Databases")
         #ok = self.rpc.callRP('src.Databases.py_packCuonFS')
-        ok = self.rpc.callRP('src.Databases.py_checkExistTable',table.getName(), self.dicUser)
+        ok = self.rpc.callRP('Database.checkExistTable',table.getName(), self.dicUser)
         self.out("ok = " + `ok`,1)
         
         if ok == 0:
@@ -308,14 +316,14 @@ class databaseswindow(windows):
         sSql1 = string.replace(sSql,';',' ')    
         self.out( sSql1)
         
-        self.rpc.callRP('src.sql.py_executeNormalQuery',sSql1, self.dicUser)
+        self.rpc.callRP('Database.executeNormalQuery',sSql1, self.dicUser)
 
         # create the sequence
         
         sSql1 = "create sequence " + str(table.getName()) +"_id " 
         self.out( sSql1)
    
-        self.rpc.callRP('src.sql.py_executeNormalQuery',sSql1, self.dicUser)
+        self.rpc.callRP('Database.executeNormalQuery',sSql1, self.dicUser)
 
  
 
@@ -326,7 +334,7 @@ class databaseswindow(windows):
             co = table.Columns[i]
             self.out( ('Name OfColumn : ' + str(co.getName() ) ) )
             #print `self.dicUser`
-            ok = self.rpc.callRP('src.Databases.py_checkExistColumn',table.getName(), co.getName() , self.dicUser)
+            ok = self.rpc.callRP('Database.checkExistColumn',table.getName(), co.getName() , self.dicUser)
             self.out("column-ok = " + str(ok),1)
             
             if ok == 0:
@@ -337,7 +345,7 @@ class databaseswindow(windows):
                 self.createColumn(table, co)
             else:
                 print 'Column exist, now check Column Type'
-                ok = self.rpc.callRP('src.sql.py_checkTypeOfColumn',table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
+                ok = self.rpc.callRP('Database.checkTypeOfColumn',table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
 
                 
                 self.out("column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok),1)
@@ -372,13 +380,13 @@ class databaseswindow(windows):
             
         print sSql
         
-        self.rpc.callRP('src.sql.py_executeNormalQuery',sSql, self.dicUser)
+        self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
 
         if co.getDefaultValue():
             sSql = 'alter table ' + str(table.getName()) + ' alter column  ' + co.getName()
             sSql = sSql + " SET DEFAULT " + co.getDefaultValue()
 
-        self.rpc.callRP('src.sql.py_executeNormalQuery',sSql, self.dicUser)
+        self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
     
     #
     # start xml defaults, entries, etc.
@@ -421,10 +429,10 @@ class databaseswindow(windows):
             f1 = open(gladeName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveValue',key, self.doEncode(repr(cPickle.dumps(xml1) )))
+            self.rpc.callRP('Database.saveInfo',key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfGladeFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveValue', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
+        self.rpc.callRP('Database.saveInfo', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
 
     def saveReportFiles(self):
@@ -439,10 +447,10 @@ class databaseswindow(windows):
             f1 = open(reportName)
             xml1 = f1.read()
             f1.close()
-            self.rpc.callRP('src.Databases.py_saveValue', key, self.doEncode(repr(cPickle.dumps(xml1) )))
+            self.rpc.callRP('Database.saveInfo', key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfReportFiles.append(key)
 
-        self.rpc.callRP('src.Databases.py_saveValue', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
+        self.rpc.callRP('Database.saveInfo', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
    
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
    
@@ -536,7 +544,7 @@ class databaseswindow(windows):
                         self.out(group)
                         print 'group = ' + `group`
                         print `self.dicUser`
-                        ok = self.rpc.callRP('src.Databases.py_createGroup', group, self.dicUser)       
+                        ok = self.rpc.callRP('Database.createGroup', group, self.dicUser)       
                         self.out(ok)
 
             # user
@@ -551,7 +559,7 @@ class databaseswindow(windows):
                         user = self.getData(userNode[0])
                         self.out('User = ' + `user`)
                         print 'User = ' + `user`
-                        ok = self.rpc.callRP('src.Databases.py_createUser', user,'None', self.dicUser, 1)       
+                        ok = self.rpc.callRP('Database.createUser', user,'None', self.dicUser, 1)       
                         self.out(ok)
 
 
@@ -568,7 +576,7 @@ class databaseswindow(windows):
                         groupNode = self.getNodes(i,'this_group')
                         group = self.getData(groupNode[0])
                         self.out('User = ' + `user` + ' , Group = ' + group)
-                        ok = self.rpc.callRP('src.Databases.py_addUserToGroup', user, group, self.dicUser)       
+                        ok = self.rpc.callRP('Database.addUserToGroup', user, group, self.dicUser)       
                         self.out(ok)
 
             # add grants to group
@@ -586,7 +594,7 @@ class databaseswindow(windows):
                         groupNode = self.getNodes(i,'this_group')
                         group = self.getData(groupNode[0])
                         print'Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables
-                        ok = self.rpc.callRP('src.Databases.py_addGrantToGroup', grants, group, tables, self.dicUser)       
+                        ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, tables, self.dicUser)       
                         self.out(ok)
                                                                     
                         
@@ -624,7 +632,7 @@ class databaseswindow(windows):
                         self.out(func)
                         # first delete the function ( specified in Old_name )
                         sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
-                        #ok = self.rpc.callRP('src.Databases.py_createPsql', 'cuon','sat1','5432','jhamel', sSql)
+                        #ok = self.rpc.callRP('Database.createPsql', 'cuon','sat1','5432','jhamel', sSql)
                         self.out("td-values")
                         self.out(self.td.SQL_DB)
                         self.out(self.td.SQL_HOST)
@@ -632,7 +640,7 @@ class databaseswindow(windows):
                         self.out(self.td.SQL_USER)
                         self.out(sSql)
                         
-                        ok = self.rpc.callRP('src.Databases.py_createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
+                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
                         self.out(ok)
                         print sSql                       
                         print ok
@@ -644,7 +652,7 @@ class databaseswindow(windows):
                         sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
                         self.out('sql = ' + sSql)
                         sSql = string.replace(sSql,';', '\\;')
-                        ok = self.rpc.callRP('src.Databases.py_createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)
+                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)
                         self.out(ok)
                         print sSql                       
                         print ok
@@ -680,7 +688,7 @@ class databaseswindow(windows):
                         # first delete the trigger called newName
                         sSql = 'DROP TRIGGER ' + newName
                         
-                        ok = self.rpc.callRP('src.Databases.py_createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
+                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
                         self.out(ok) 
                         print sSql                       
                         print ok
@@ -690,7 +698,7 @@ class databaseswindow(windows):
                         sSql = sSql + action + ' ON ' + table
                         sSql = sSql + ' ' + cursor + ' ' + triggerText 
                         
-                        ok = self.rpc.callRP('src.Databases.py_createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql, self.dicUser)       
+                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
                         self.out(ok)
                         print sSql                       
                         print ok

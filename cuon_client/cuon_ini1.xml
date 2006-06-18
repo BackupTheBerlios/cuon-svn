@@ -181,6 +181,33 @@
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_project.xml</Entry-FileValue>
+    </Entries>  
+  <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project_phases.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_project_phases.xml</Entry-FileValue>
+    </Entries> 
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project_tasks.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_project_tasks.xml</Entry-FileValue>
+    </Entries>   
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project_staff_resources.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_project_staff_resources.xml</Entry-FileValue>
+    </Entries>     
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project_material_resources.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_project_material_resources.xml</Entry-FileValue>
+    </Entries> 
+
+  
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>garden.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_garden.xml</Entry-FileValue>
     </Entries>
@@ -346,10 +373,14 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>project.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/project.glade2</Glade-FileValue>
+    </GladeEntries>
+ <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>botany.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/botany.glade2</Glade-FileValue>
     </GladeEntries>
-
 
   </Glade_Init_Files>
   
@@ -361,6 +392,7 @@
       <Grant-FileValue>/usr/share/cuon/grants.xml</Grant-FileValue>
     </GrantEntries>
   </Grant_Init_Files>
+  
   <SQL_Init_Files>	
     <SQLEntries>
       <SQL-Name>cuon</SQL-Name>	
@@ -437,6 +469,19 @@
       <Report-FileValue>/usr/share/cuon/report/finances_cab_monthly1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
-
-
+  
+ <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>hibernation_incoming_document.xml</Report-File>
+      <Report-FileValue>/usr/share/cuon/report/hibernation_incoming_document.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
+ <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>hibernation_outgoing_document.xml</Report-File>
+      <Report-FileValue>/usr/share/cuon/report/hibernation_outgoing_document.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
   </IniFile>

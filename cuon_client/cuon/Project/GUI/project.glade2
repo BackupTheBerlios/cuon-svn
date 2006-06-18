@@ -758,7 +758,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="eProjectTime">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
 		  </child>
 
 		  <child>
@@ -792,62 +807,6 @@
 		  <property name="top_attach">0</property>
 		  <property name="bottom_attach">1</property>
 		  <property name="y_options">fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkLabel" id="label52">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">start at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkLabel" id="label53">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">ends at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -886,7 +845,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="eAddressNumber">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
 		  </child>
 
 		  <child>
@@ -897,6 +871,7 @@
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bChoose_clicked" last_modification_time="Sat, 10 Jun 2006 13:37:42 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -915,32 +890,301 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkScrolledWindow" id="scrolledwindow6">
+		<widget class="GtkEntry" id="eName">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
-		  <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
-		  <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
-		  <property name="shadow_type">GTK_SHADOW_IN</property>
-		  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkEntry" id="eDesignation">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkHBox" id="hbox47">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkTextView" id="tvOrderer">
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox9">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">True</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label52">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">start at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eProjectStartAt">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
-		      <property name="overwrite">False</property>
-		      <property name="accepts_tab">True</property>
-		      <property name="justification">GTK_JUSTIFY_LEFT</property>
-		      <property name="wrap_mode">GTK_WRAP_NONE</property>
-		      <property name="cursor_visible">True</property>
-		      <property name="pixels_above_lines">0</property>
-		      <property name="pixels_below_lines">0</property>
-		      <property name="pixels_inside_wrap">0</property>
-		      <property name="left_margin">0</property>
-		      <property name="right_margin">0</property>
-		      <property name="indent">0</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eProjectStartAt_changed" last_modification_time="Sat, 10 Jun 2006 17:37:58 GMT"/>
 		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label53">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">ends at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eProjectEndsAt">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eProjectEndsAt_changed" last_modification_time="Sat, 10 Jun 2006 17:37:43 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox10">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkCalendar" id="calendar1">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_calendar1_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 13:43:19 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkCalendar" id="calendar2">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_calendar2_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 13:43:53 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox13">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkScrolledWindow" id="scrolledwindow6">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		      <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		      <property name="shadow_type">GTK_SHADOW_IN</property>
+		      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+		      <child>
+			<widget class="GtkTextView" id="tvOrderer">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="overwrite">False</property>
+			  <property name="accepts_tab">True</property>
+			  <property name="justification">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap_mode">GTK_WRAP_NONE</property>
+			  <property name="cursor_visible">True</property>
+			  <property name="pixels_above_lines">0</property>
+			  <property name="pixels_below_lines">0</property>
+			  <property name="pixels_inside_wrap">0</property>
+			  <property name="left_margin">0</property>
+			  <property name="right_margin">0</property>
+			  <property name="indent">0</property>
+			  <property name="text" translatable="yes"></property>
+			</widget>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -949,6 +1193,7 @@
 		  <property name="top_attach">3</property>
 		  <property name="bottom_attach">4</property>
 		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
 	    </widget>
@@ -1081,7 +1326,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="ePhaseDays">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
 		  </child>
 
 		  <child>
@@ -1119,50 +1379,174 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label59">
+		<widget class="GtkEntry" id="ePhaseName">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">starts at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
 		</widget>
 		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">fill</property>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label60">
+		<widget class="GtkEntry" id="ePhaseDesignation">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">ends at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox11">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">True</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label169">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">start at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="ePhaseStartAt">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_ePhaseStartAt_changed" last_modification_time="Sat, 10 Jun 2006 17:38:33 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label170">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">ends at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="ePhaseEndsAt">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_ePhaseEndsAt_changed" last_modification_time="Sat, 10 Jun 2006 17:38:42 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">2</property>
@@ -1170,7 +1554,50 @@
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
 		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox12">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkCalendar" id="PhaseCalendar1">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_PhaseCalendar1_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 13:48:16 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkCalendar" id="PhaseCalendar2">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_PhaseCalendar2_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 13:48:49 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
 	    </widget>
@@ -1303,7 +1730,22 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkEntry" id="eTaskDays">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
 		  </child>
 
 		  <child>
@@ -1341,50 +1783,174 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label151">
+		<widget class="GtkEntry" id="eTaskName">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">starts at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
 		</widget>
 		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="x_options">fill</property>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label152">
+		<widget class="GtkEntry" id="eTaskDesignation">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">ends at</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox14">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">True</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label171">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">start at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eTaskStartAt">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eTaskStartAt_changed" last_modification_time="Sat, 10 Jun 2006 17:38:54 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label172">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">ends at</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eTaskEndsAt">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eTaskEndsAt_changed" last_modification_time="Sat, 10 Jun 2006 17:39:03 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">2</property>
@@ -1392,7 +1958,50 @@
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
 		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox15">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkCalendar" id="TaskCalendar1">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_TaskCalendar1_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 17:15:23 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkCalendar" id="TaskCalendar2">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected_double_click" handler="on_TaskCalendar2_day_selected_double_click" last_modification_time="Sat, 10 Jun 2006 17:15:47 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
 	    </widget>
@@ -1594,7 +2203,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry71">
+			<widget class="GtkEntry" id="eSRRealBegin1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1644,7 +2253,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry72">
+			<widget class="GtkEntry" id="eSRRealEnds1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1694,7 +2303,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry73">
+			<widget class="GtkEntry" id="eSRRealHours1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1716,7 +2325,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry74">
+			<widget class="GtkEntry" id="eSRRealBegin2">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1738,7 +2347,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry75">
+			<widget class="GtkEntry" id="eSRRealBegin3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1760,7 +2369,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry76">
+			<widget class="GtkEntry" id="eSRRealBegin4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1782,7 +2391,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry77">
+			<widget class="GtkEntry" id="eeSRRealBegin5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1804,7 +2413,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry78">
+			<widget class="GtkEntry" id="eSRRealBegin6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1826,7 +2435,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry79">
+			<widget class="GtkEntry" id="eSRRealBegin7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1848,7 +2457,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry80">
+			<widget class="GtkEntry" id="eSRRealEnds2">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1870,7 +2479,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry81">
+			<widget class="GtkEntry" id="eSRRealEnds3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1892,7 +2501,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry82">
+			<widget class="GtkEntry" id="eSRRealEnds4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1914,7 +2523,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry83">
+			<widget class="GtkEntry" id="eSRRealEnds5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1936,7 +2545,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry84">
+			<widget class="GtkEntry" id="eSRRealEnds6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1958,7 +2567,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry85">
+			<widget class="GtkEntry" id="eSRRealEnds7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1980,7 +2589,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry86">
+			<widget class="GtkEntry" id="eSRRealHours2">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2002,7 +2611,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry87">
+			<widget class="GtkEntry" id="eSRRealHours3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2024,7 +2633,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry88">
+			<widget class="GtkEntry" id="eSRRealHours4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2046,7 +2655,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry89">
+			<widget class="GtkEntry" id="eSRRealHours5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2068,7 +2677,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry90">
+			<widget class="GtkEntry" id="eSRRealHours6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2090,7 +2699,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry91">
+			<widget class="GtkEntry" id="eSRRealHours7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2393,7 +3002,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry92">
+			<widget class="GtkEntry" id="eSRPlanedbegin1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2443,7 +3052,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry93">
+			<widget class="GtkEntry" id="eSRPlanedEnd1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2493,7 +3102,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry94">
+			<widget class="GtkEntry" id="eSRPlanedHours1">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2515,29 +3124,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry95">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
-			  <property name="width_chars">10</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">0</property>
-			  <property name="right_attach">1</property>
-			  <property name="top_attach">2</property>
-			  <property name="bottom_attach">3</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkEntry" id="entry96">
+			<widget class="GtkEntry" id="eSRPlanedBegin3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2559,7 +3146,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry97">
+			<widget class="GtkEntry" id="eSRPlanedBegin4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2581,7 +3168,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry98">
+			<widget class="GtkEntry" id="eSRPlanedBegin5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2603,7 +3190,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry99">
+			<widget class="GtkEntry" id="eSRPlanedBigin6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2625,7 +3212,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry100">
+			<widget class="GtkEntry" id="eSRPlanedBegin7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2647,7 +3234,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry101">
+			<widget class="GtkEntry" id="eSRPlanedEnd2">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2669,7 +3256,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry102">
+			<widget class="GtkEntry" id="eSRPlanedEnd3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2691,7 +3278,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry103">
+			<widget class="GtkEntry" id="eSRPlanedEnd4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2713,7 +3300,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry104">
+			<widget class="GtkEntry" id="eSRPlanedEnd5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2735,7 +3322,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry105">
+			<widget class="GtkEntry" id="eSRPlanedEnd6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2757,7 +3344,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry106">
+			<widget class="GtkEntry" id="eSRPlanedEnd7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2779,7 +3366,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry107">
+			<widget class="GtkEntry" id="eSRPlanedHours2">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2801,7 +3388,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry108">
+			<widget class="GtkEntry" id="eSRPlanedHours3">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2823,7 +3410,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry109">
+			<widget class="GtkEntry" id="eSRPlanedHours4">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2845,7 +3432,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry110">
+			<widget class="GtkEntry" id="eSRPlanedhours5">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2867,7 +3454,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry111">
+			<widget class="GtkEntry" id="eSRPlanedHours6">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2889,7 +3476,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry112">
+			<widget class="GtkEntry" id="eSRPlanedHours7">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2906,6 +3493,28 @@
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">7</property>
 			  <property name="bottom_attach">8</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="eSRPlanedBegin2">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			  <property name="width_chars">10</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">2</property>
+			  <property name="bottom_attach">3</property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -3004,7 +3613,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry10">
+		    <widget class="GtkEntry" id="eMRArticleNumber">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3030,6 +3639,7 @@
 		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bChooseArticle_clicked" last_modification_time="Sun, 11 Jun 2006 11:24:22 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -3044,62 +3654,6 @@
 		  <property name="top_attach">0</property>
 		  <property name="bottom_attach">1</property>
 		  <property name="y_options">fill</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkLabel" id="label113">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Planed</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkLabel" id="label114">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Real</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">3</property>
-		  <property name="right_attach">4</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -3135,7 +3689,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry14">
+		    <widget class="GtkEntry" id="eMRDate1">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3195,7 +3749,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry15">
+		    <widget class="GtkEntry" id="eMRUnit1">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3284,7 +3838,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry16">
+		    <widget class="GtkEntry" id="eMRDate2">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3343,7 +3897,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry17">
+		    <widget class="GtkEntry" id="eMRDate3">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3402,7 +3956,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry18">
+		    <widget class="GtkEntry" id="eMRDate4">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3461,7 +4015,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry19">
+		    <widget class="GtkEntry" id="eMRDate5">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3520,7 +4074,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry20">
+		    <widget class="GtkEntry" id="eMRDate6">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3579,7 +4133,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry21">
+		    <widget class="GtkEntry" id="eMRDate7">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3638,7 +4192,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry22">
+		    <widget class="GtkEntry" id="eMRDate8">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3697,7 +4251,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry23">
+		    <widget class="GtkEntry" id="eMRDate9">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3756,7 +4310,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry24">
+		    <widget class="GtkEntry" id="eMRUnit2">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3845,7 +4399,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry25">
+		    <widget class="GtkEntry" id="eMRUnit3">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -3934,7 +4488,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry26">
+		    <widget class="GtkEntry" id="eMRUnit4">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4023,7 +4577,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry27">
+		    <widget class="GtkEntry" id="eMRUnit5">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4112,7 +4666,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry28">
+		    <widget class="GtkEntry" id="eMRUnit6">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4201,7 +4755,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry29">
+		    <widget class="GtkEntry" id="eMRUnit7">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4290,7 +4844,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry30">
+		    <widget class="GtkEntry" id="eMRUnit8">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4379,7 +4933,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry31">
+		    <widget class="GtkEntry" id="eMRUnit9">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4443,7 +4997,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry113">
+		    <widget class="GtkEntry" id="eMRAmountPlaned1">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4462,10 +5016,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry114">
+		    <widget class="GtkEntry" id="eMRAmountReal1">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4497,7 +5051,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry115">
+		    <widget class="GtkEntry" id="eMRAmountPlaned2">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4516,10 +5070,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry116">
+		    <widget class="GtkEntry" id="eMRAmountReal2">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4551,7 +5105,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry117">
+		    <widget class="GtkEntry" id="eMRAmountPlaned3">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4570,10 +5124,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry118">
+		    <widget class="GtkEntry" id="eMRAmountReal3">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4605,7 +5159,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry119">
+		    <widget class="GtkEntry" id="eMRAmountPlaned4">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4624,10 +5178,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry120">
+		    <widget class="GtkEntry" id="eMRAmountReal4">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4659,7 +5213,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry121">
+		    <widget class="GtkEntry" id="eMRAmountPlaned5">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4678,10 +5232,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry122">
+		    <widget class="GtkEntry" id="eMRAmountReal5">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4713,7 +5267,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry123">
+		    <widget class="GtkEntry" id="eMRAmountPlaned6">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4732,10 +5286,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry124">
+		    <widget class="GtkEntry" id="eMRAmountReal6">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4767,7 +5321,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry125">
+		    <widget class="GtkEntry" id="eMRAmountPlaned7">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4786,10 +5340,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry126">
+		    <widget class="GtkEntry" id="eMRAmountReal7">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4821,7 +5375,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry127">
+		    <widget class="GtkEntry" id="eMRAmountPlaned8">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4840,10 +5394,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry128">
+		    <widget class="GtkEntry" id="eMRAmountReal8">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4875,7 +5429,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry129">
+		    <widget class="GtkEntry" id="eMRAmountPlaned9">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -4894,10 +5448,10 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry130">
+		    <widget class="GtkEntry" id="eMRAmountReal9">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
+		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
@@ -4929,41 +5483,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry131">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry132">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -4983,41 +5507,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry133">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry134">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5037,41 +5531,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry135">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry136">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5091,41 +5555,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry137">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry138">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5145,41 +5579,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry139">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry140">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5199,41 +5603,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry141">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry142">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5253,41 +5627,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry143">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry144">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5307,41 +5651,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry145">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry146">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5361,41 +5675,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry147">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry148">
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">False</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="padding">0</property>
-		      <property name="expand">True</property>
-		      <property name="fill">True</property>
-		    </packing>
+		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -5403,6 +5687,72 @@
 		  <property name="right_attach">4</property>
 		  <property name="top_attach">9</property>
 		  <property name="bottom_attach">10</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkHBox" id="hbox48">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">True</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label113">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Planed</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label114">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Real</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
 		  <property name="x_options">fill</property>
 		  <property name="y_options">fill</property>
 		</packing>
@@ -5444,27 +5794,6 @@
 	</packing>
       </child>
     </widget>
-  </child>
-</widget>
-
-<widget class="GtkWindow" id="window1">
-  <property name="visible">True</property>
-  <property name="title" translatable="yes">window1</property>
-  <property name="type">GTK_WINDOW_TOPLEVEL</property>
-  <property name="window_position">GTK_WIN_POS_NONE</property>
-  <property name="modal">False</property>
-  <property name="resizable">True</property>
-  <property name="destroy_with_parent">False</property>
-  <property name="decorated">True</property>
-  <property name="skip_taskbar_hint">False</property>
-  <property name="skip_pager_hint">False</property>
-  <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
-  <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
-  <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
-
-  <child>
-    <placeholder/>
   </child>
 </widget>
 

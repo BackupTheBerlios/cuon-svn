@@ -67,16 +67,16 @@ class projectwindow(chooseWindows):
         self.setStatusBar()
 
 
-        self.EntriesAddresses = 'addresses.xml'
+        self.EntriesProject = 'project.xml'
         
-        self.loadEntries(self.EntriesAddresses)
+        self.loadEntries(self.EntriesProject)
         
-        self.singleProject.setEntries(self.getDataEntries('addresses.xml') )
+        self.singleProject.setEntries(self.getDataEntries(self.EntriesProject) )
         self.singleProject.setGladeXml(self.xml)
-        self.singleProject.setTreeFields( ['lastname', 'firstname','city'] )
-        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleProject.setTreeOrder('lastname, firstname')
-        self.singleProject.setListHeader([_('Lastname'), _('Firstname'), _('City')])
+        self.singleProject.setTreeFields( ['name', 'designation'] )
+        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleProject.setTreeOrder('name')
+        self.singleProject.setListHeader([_('Name'), _('Designation')])
         self.singleProject.setTree(self.xml.get_widget('tree1') )
 
   
@@ -107,9 +107,10 @@ class projectwindow(chooseWindows):
 
         # tabs from notebook
         self.tabProject = 0
-        self.tabPhase = 1
-        self.tabTask = 2
-        self.tabResources = 3
+        self.tabPhases = 1
+        self.tabTasks = 2
+        self.tabStaffResources = 3
+        self.tabMaterialResources = 4
         
         
 
@@ -130,17 +131,17 @@ class projectwindow(chooseWindows):
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
         self.singleProject.save()
-        self.setEntriesEditable(self.EntriesAddresses, FALSE)
+        self.setEntriesEditable(self.EntriesProjectes, FALSE)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
         self.singleProject.newRecord()
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesProjectes, TRUE)
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesProjectes, TRUE)
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
         p = printAddress.printAddress(self.singleProject.getFirstRecord() )
@@ -162,11 +163,11 @@ class projectwindow(chooseWindows):
         
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabProject:
             print '############### Address choose ID ###################'
             self.setChooseValue(self.singleProject.ID)
             self.closeWindow()
-        elif self.tabOption == self.tabPartner:
+        elif self.tabOption == self.tabStaffResources:
             print '############### Address choose ID ###################'
             self.setChooseValue(self.singlePartner.ID)
             self.closeWindow()
@@ -193,18 +194,18 @@ class projectwindow(chooseWindows):
         self.singleProject.disconnectTree()
         self.singlePartner.disconnectTree()
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabProject:
             self.singleProject.connectTree()
             self.singleProject.refreshTree()
-        elif self.tabOption == self.tabMisc:
+        elif self.tabOption == self.tabTasks:
             self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleProject.ID)`
             self.singleMisc.fillEntries(self.singleMisc.findSingleId())
 
-        elif self.tabOption == self.tabPartner:
+        elif self.tabOption == self.tabStaffResources:
             self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleProject.ID)`
             self.singlePartner.connectTree()
             self.singlePartner.refreshTree()
-        elif self.tabOption == self.tabSchedul:
+        elif self.tabOption == self.tabMaterialResources:
             self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)`
             self.singleSchedul.connectTree()
             self.singleSchedul.refreshTree()
@@ -216,7 +217,7 @@ class projectwindow(chooseWindows):
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabProject:
             #Address
             self.disableMenuItem('tabs')
             self.enableMenuItem('address')
@@ -231,7 +232,7 @@ class projectwindow(chooseWindows):
             self.out( 'Seite 0')
 
 
-        elif self.tabOption == self.tabBank:
+        elif self.tabOption == self.tabPhases:
             self.out( 'Seite 2')
             self.disableMenuItem('tabs')
             self.enableMenuItem('bank')
@@ -241,7 +242,7 @@ class projectwindow(chooseWindows):
             self.setStatusbarText([self.singleProject.sStatus])
 
 
-        elif self.tabOption == self.tabMisc:
+        elif self.tabOption == self.tabTasks:
             self.out( 'Seite 3')
 
             self.disableMenuItem('tabs')
@@ -253,7 +254,7 @@ class projectwindow(chooseWindows):
 
 
 
-        elif self.tabOption == self.tabPartner:
+        elif self.tabOption == self.tabStaffResources:
             #Partner
             self.disableMenuItem('tabs')
             self.enableMenuItem('partner')
@@ -264,7 +265,7 @@ class projectwindow(chooseWindows):
             self.setStatusbarText([self.singleProject.sStatus])
 
             
-        elif self.tabOption == self.tabSchedul:
+        elif self.tabOption == self.tabMaterialResources:
             #Scheduling
             self.disableMenuItem('tabs')
             self.enableMenuItem('schedul')

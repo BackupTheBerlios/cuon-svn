@@ -14,12 +14,13 @@
 
 
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_order_standard_invoice
+import cuon.PDF.XML.report_hibernation_outgoing_document
+
 from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path
 
-class standard_delivery_note(standardlist, fileSelection):
+class hibernation_outgoing_document(standardlist, fileSelection):
     
     def __init__(self, dicOrder):
         
@@ -36,7 +37,7 @@ class standard_delivery_note(standardlist, fileSelection):
         
         self.closeDB()
         
-        sFile = self.setFileName( self.oUser.prefPath['StandardDelivery1'] +  '/' +_('delivery_note-') + `self.dicOrder['deliveryNumber']` + '.pdf' )
+        sFile = self.setFileName( self.oUser.prefPath['StandardDelivery1'] +  '/' +_('Outgoing_Document-') + `self.dicOrder['outgoingNumber']` + '.pdf' )
         fileSelection.__init__(self, initialFilename = sFile )
 
 
@@ -51,7 +52,7 @@ class standard_delivery_note(standardlist, fileSelection):
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
 
-        dicResult =  self.rpc.callRP('Order.getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('Garden.getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):

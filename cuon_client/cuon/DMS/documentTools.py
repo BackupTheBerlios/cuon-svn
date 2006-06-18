@@ -26,7 +26,11 @@ import logging
 import SingleDMS
 import cuon.Misc.misc
 import os
-import sane
+try:
+    import sane
+except:
+    print 'No Sane found --> No scanner !'
+    
 import Image
 import bz2
 import re
@@ -52,6 +56,8 @@ class documentTools:
                 newIm.show()
             else:
                 for key in  dicUser['prefDMS']['fileformat'].keys():
+                    print singleDMS.fileFormat
+                    print dicUser['prefDMS']['fileformat'][key]['format']
                     if singleDMS.fileFormat ==  dicUser['prefDMS']['fileformat'][key]['format']:
                         exe =  dicUser['prefDMS']['fileformat'][key]['executable']
                         if singleDMS.fileSuffix and singleDMS.fileSuffix != 'NONE':
@@ -137,14 +143,17 @@ class documentTools:
             f = file(sFile,'rb')
             b = f.read()
             singleDMS.imageData = bz2.compress(b)
-            
+            suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
             for key in  dicUser['prefDMS']['fileformat'].keys():
                 for i in dicUser['prefDMS']['fileformat'][key]['suffix']:
                     print i
-                    suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
                     print suffix
                     if i == suffix:
+                        print 'suffix found'
                         singleDMS.fileFormat = singleDMS.fileFormat = dicUser['prefDMS']['fileformat'][key]['format']
                         singleDMS.fileSuffix = suffix
+                        print 'singleDMS -f-format', `singleDMS.fileFormat`
+                        print 'singleDMS -f-suffix', `singleDMS.fileSuffix`
+                        
             f.close()
             

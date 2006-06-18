@@ -40,7 +40,7 @@ class lists_addresses_phone11(selectionDialog1, standardlist):
     def __init__(self):
         selectionDialog1.__init__(self)
         standardlist.__init__(self)
-        rep = cuon.PDF.report_addresses_phone11.report_addresses_phone11()
+        rep = cuon.PDF.XML.report_addresses_phone11.report_addresses_phone11()
         self.dicReportData =  rep.dicReportData
 
       
@@ -61,12 +61,16 @@ class lists_addresses_phone11(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.callRP('src.Address.py_getPhonelist11', dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('Address.getPhonelist11', dicSearchfields, self.dicUser)
         
         for i in dicResult:
             for j in i.keys():
-                if type(i[j]) == types.StringType: 
-                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
+                if isinstance(i[j],types.UnicodeType):
+                    try:
+                        i[j] = (i[j].decode('utf-8')).encode('latin-1')
+                    except:
+                        pass
+                        
             
 
         self.dicResults['address'] = dicResult

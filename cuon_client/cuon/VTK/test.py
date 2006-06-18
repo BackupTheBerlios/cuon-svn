@@ -3,7 +3,11 @@ sys.path.append('/usr/lib/python/')
 sys.path.append('/usr/lib/python/site-packages/Numeric')
 
 # generate the data.
-from Numeric import *
+try:
+    from Numeric import *
+except:
+    print 'No Numeric installed'
+    
 #import mayavi
 import time
 #import pyvtk

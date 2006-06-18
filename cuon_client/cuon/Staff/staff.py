@@ -172,8 +172,7 @@ class staffwindow(chooseWindows):
         liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
         eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
 
-
-    def on_bShowDMS_clicked(self, event):
+    def on_bShowStaffDMS_clicked(self, event):
         print 'dms clicked'
         if self.singleStaff.ID > 0:
             print 'ModulNumber', self.ModulNumber

@@ -63,12 +63,13 @@ class aiwindow(windows):
 ##                pass
             
             print 'Question', q1
-            a1 = self.rpc.callRP('AI.getAI',q1.encode('utf-8'), self.dicSqlUser)
+#            a1 = self.rpc.callRP('AI.getAI',q1.encode('utf-8'), self.dicSqlUser)
+            a1 = self.rpc.callRP('AI.getAI',q1, self.dicSqlUser)
             if a1:
-                a1 = a1.decode('utf-7').encode('utf-8')
+                #a1 = a1.decode('utf-7').encode('utf-8')
                 a1 = a1 + '\n'
             
-                q1 = q1 + '\n'
+                q1 = '\n' + q1 + '\n'
                 self.aBuffer = self.wAnswer.get_buffer()
                 self.aBuffer.insert(self.aBuffer.get_end_iter(), q1, len(q1) )
                 self.wAnswer.set_buffer(self.aBuffer)
@@ -77,7 +78,8 @@ class aiwindow(windows):
             
                 
                 print "Answer", a1
-        
+                #print "Answer2", a1.decode('utf-7').encode('utf-8')
+                #a1 = a1.decode('utf-7').encode('utf-8')
                 self.aBuffer = self.wAnswer.get_buffer()
                 self.aBuffer.insert(self.aBuffer.get_end_iter(), a1, len(a1) )
                 self.wAnswer.set_buffer(self.aBuffer)

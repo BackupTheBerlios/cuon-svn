@@ -28,6 +28,9 @@ import cuon.Addresses.SingleAddress
 import cuon.Staff.SingleStaff
 
 import cuon.DMS.documentTools
+import hibernation_outgoing_document
+import hibernation_incoming_document
+
 import cuon.DMS.dms
 import SingleHibernation
 
@@ -145,11 +148,11 @@ class hibernationwindow(chooseWindows):
 
         
         
-        for i in range(len(tax_vat)) :
-            li = gtk.ListItem(tax_vat[i])
-            cb.list.append_items([li])
-            li.show()
-    
+##        for i in range(len(tax_vat)) :
+##            li = gtk.ListItem(tax_vat[i])
+##            cb.list.append_items([li])
+##            li.show()
+##    
         self.win1.add_accel_group(self.accel_group)
     #Menu File
               
@@ -227,14 +230,15 @@ class hibernationwindow(chooseWindows):
 
    
 
-
-    # Menu Lists
-
-    def on_liHibernationsNumber1_activate(self, event):
-        self.out( "lists startet")
-        Pdf = cuon.Hibernations.lists_Hibernations_number1.lists_Hibernations_number1()
+    # Print Menus
 
 
+    def on_print_icoming_document1_activate(self, event):
+        dicOrder = {}
+        Pdf = hibernation_incoming_document(dicOrder)
+    def on_print_outgoing_document1_activate(self, event):
+        dicOrder = {}
+        Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)
 
 
 

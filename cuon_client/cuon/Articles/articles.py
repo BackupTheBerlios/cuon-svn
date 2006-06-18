@@ -195,7 +195,7 @@ class articleswindow(chooseWindows):
         self.addEnabledMenuItems('editArticlePurchase','PurchaseClear1')
 
         # init Comboboxes
-        tax_vat =  self.rpc.callRP('src.Misc.py_getListOfTaxVat', self.dicUser)
+        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
         cb = self.getWidget('cbVat')
         
         for i in range(len(tax_vat)) :

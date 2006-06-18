@@ -14,12 +14,12 @@
 
 
 from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_order_standard_invoice
+import cuon.PDF.XML.report_hibernation_incoming_document
 from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path
 
-class standard_delivery_note(standardlist, fileSelection):
+class hibernation_incoming_document(standardlist, fileSelection):
     
     def __init__(self, dicOrder):
         
@@ -36,7 +36,7 @@ class standard_delivery_note(standardlist, fileSelection):
         
         self.closeDB()
         
-        sFile = self.setFileName( self.oUser.prefPath['StandardDelivery1'] +  '/' +_('delivery_note-') + `self.dicOrder['deliveryNumber']` + '.pdf' )
+        sFile = self.setFileName( self.oUser.prefPath['ReportStandardPickup1'] +  '/' +_('Incoming_Document-') + `self.dicOrder['incomingNumber']` + '.pdf' )
         fileSelection.__init__(self, initialFilename = sFile )
 
 

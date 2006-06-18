@@ -61,7 +61,7 @@ class lists_articles_number1(selectionDialog1, standardlist):
         di1 = self.getWidget('dialog1')
         di1.hide()
 
-        dicResult =  self.rpc.callRP('src.Articles.py_getArticlelist1', dicSearchfields, self.dicUser)
+        dicResult =  self.rpc.callRP('Article.getArticlelist1', dicSearchfields, self.dicUser)
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],types.UnicodeType):

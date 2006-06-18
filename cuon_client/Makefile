@@ -204,7 +204,6 @@ all :
 	cp $(src_finances_ib) $(dest_finances) 
 	if [ ! -d $(dest_biblio) ] ; then mkdir $(dest_biblio) ; fi ; cp $(src_biblio) $(dest_biblio) 
 	if [ ! -d $(dest_ai) ] ; then mkdir $(dest_ai) ; fi ; cp $(src_ai) $(dest_ai) 
-	cp ../cuon_server/src/ai_main.py $(dest_ai)
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -e $(dest_cuon)/__init__.py ] ; then touch $(dest_cuon)/__init__.py ; fi
 	if [ ! -d $(dest_project) ] ; then mkdir $(dest_project) ; fi ; cp $(src_project) $(dest_project)
@@ -256,9 +255,6 @@ gtkMiniClient:
 	if [ ! -d $(dest_ai_gtkMiniClient) ] ; then mkdir $(dest_ai_gtkMiniClient) ; fi ; cp $(src_ai_clients)/gtkMiniClient.py $(dest_ai_gtkMiniClient)/ 
 	cp $(src_ai_clients)/GUI/ai.glade2 $(dest_ai_gtkMiniClient)/gtkMiniClient.glade
 
-aicuweb_prg:
-	scp ../cuon_server/src/ai.py $(CUWEBLOCALEXECDIR)
-	scp ../cuon_server/src/ai_main.py $(CUWEBLOCALEXECDIR)
 
 aicuweb_aiml:
 	scp $(src_aiml)/de_startup.ini $(dest_aiml_cuweb)/startup.ini
@@ -268,7 +264,6 @@ aicuweb_aiml:
 	scp $(src_aiml)/cuon.sgml $(dest_aiml_cuweb)/cuon.sgml
 
 aicuweb:
-	make aicuweb_prg
 	make aicuweb_aiml
 	scp $(src_aiml)/de_main.sgml $(dest_aiml_cuweb)/main.sgml
 
@@ -290,8 +285,12 @@ install_server:
 	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
 	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
-	cp -R ../cuon_server/src/*  $(SERVERDIRSHARE)/cuon_server/
-
+	cp -R ../cuon_server/src  $(SERVERDIRSHARE)/cuon_server/
+	cp -R ../cuon_server/src/cuonai /etc/init.d
+	cp -R ../cuon_server/src/cuonweb /etc/init.d
+	cp -R ../cuon_server/src/cuonxmlrpc /etc/init.d
+    
+ 
 
 install_zope_cy:
 	scp ../cuon_server/src/cuon_zope.py $(zope_extension)
@@ -308,4 +307,9 @@ install_zope_cu:
 
 install_server_cu:
 	sudo make install
-	scp -r ../cuon_server/src $(CUWEBSHARE)/cuon_server
+
+	#scp -r ../cuon_server/src $(CUWEBSHARE)/cuon_server
+	rsync -v -e ssh ../cuon_server/src/*.py $(CUWEBSHARE)/cuon_server/src
+	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CUWEBSHARE)/cuon_server/src/cuon
+
+

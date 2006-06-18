@@ -29,7 +29,11 @@ from cuon.Windows.windows  import windows
 import SingleDMS
 import cuon.Misc.misc
 import os
-import sane
+try:
+    import sane
+except:
+    pass
+    
 try:
     import Image
 except:

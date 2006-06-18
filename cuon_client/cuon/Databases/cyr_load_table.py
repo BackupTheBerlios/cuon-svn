@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [J�rgen Hamel, D-32584 L�hne]
+##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -154,19 +154,19 @@ class cyr_load_table(MyXML, dumps):
         self.out( table.getName())
 #        self.out( cPickle.dumps(table))
         print "::::::::::::::::::::::::::", ` cPickle.dumps(table)`
-        self.rpc.callRP('Database.saveValue', sNameOfTable, self.doEncode(repr(cPickle.dumps(table) )))
+        self.rpc.callRP('Database.saveInfo', sNameOfTable, self.doEncode(repr(cPickle.dumps(table) )))
         liColumns = table.getColumns()
         for i in liColumns:
             print 'save table-columns TTTZZ'
             print i.getName()
             co_name = sNameOfTable + '_' + i.getName()
-            self.rpc.callRP('Database.saveValue', co_name, self.doEncode(repr(cPickle.dumps(i))) )
+            self.rpc.callRP('Database.saveInfo', co_name, self.doEncode(repr(cPickle.dumps(i))) )
             print co_name
             print ' TTTTUU'
 
     def loadTable(self,sNameOfTable):
         self.openDB()
-        dictTable = eval(self.doDecode(self.rpc.callRP('Database.getValue', sNameOfTable)))
+        dictTable = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfTable)))
         self.out('*****************************************************************************ZZ')
         self.out(dictTable)
         self.out('****************************************************************************UU')
@@ -176,7 +176,7 @@ class cyr_load_table(MyXML, dumps):
         print 'table of Columns --> ' + str (table.nameOfColumns) 
         for i in table.nameOfColumns:
             #print i
-            sColumn = eval(self.doDecode(self.rpc.callRP('Database.getValue', sNameOfTable + '_' + i)))
+            sColumn = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfTable + '_' + i)))
             coColumn = cPickle.loads(sColumn)
             table.addColumn(coColumn)
             self.saveObject('column_' + sNameOfTable.encode('ascii') + '_' + i.encode('ascii'), coColumn) 

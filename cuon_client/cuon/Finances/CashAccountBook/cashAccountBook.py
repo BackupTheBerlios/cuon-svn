@@ -149,10 +149,10 @@ class cashAccountBookwindow(windows):
     def on_new1_activate(self, event):
         print "new cashAccountBook"
         self.singleAccountSentence.newRecord()
-        cab_nr = self.rpc.callRP('src.Finances.py_get_cab_doc_number1', self.dicUser)
+        cab_nr = self.rpc.callRP('Finances.get_cab_doc_number1', self.dicUser)
         print 'cab_nr = ' , cab_nr
         self.getWidget('eDocumentNumber1').set_text(`cab_nr`)
-        last_date = self.rpc.callRP('src.Finances.py_getLastDate', self.dicUser)
+        last_date = self.rpc.callRP('Finances.getLastDate', self.dicUser)
         self.out('Last-Date = ' + `last_date`)
         last_date = time.strptime(last_date, "%d.%m.%Y",  )
         self.getWidget('eDate').set_text(time.strftime(self.dicUser['DateformatString'],last_date))
@@ -229,10 +229,10 @@ class cashAccountBookwindow(windows):
         if self.singleAccountSentence.isNewRecord():
             s = entry.get_text()
             if len(s) >1:
-                id = self.rpc.callRP('src.Finances.py_get_cabShortKeyValues', s, self.oUser.getSqlDicUser())
+                id = self.rpc.callRP('Finances.get_cabShortKeyValues', s, self.oUser.getSqlDicUser())
                 if id > 0:
                     print id
-                    sDes = self.rpc.callRP('src.Finances.py_get_cab_designation', id, self.oUser.getSqlDicUser())
+                    sDes = self.rpc.callRP('Finances.get_cab_designation', id, self.oUser.getSqlDicUser())
                     if sDes:
                         self.getWidget('eDesignation').set_text(sDes)
                 else:

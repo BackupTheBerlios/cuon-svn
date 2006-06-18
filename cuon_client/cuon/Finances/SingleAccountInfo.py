@@ -41,7 +41,7 @@ class SingleAccountInfo(SingleData):
         #self.statusfields = ['lastname', 'city']
 
     def getInfoline(self, sAccount):
-        return self.rpc.callRP('src.Finances.py_get_acct', sAccount, self.oUser.getSqlDicUser())
+        return self.rpc.callRP('Finances.get_acct', sAccount, self.oUser.getSqlDicUser())
         
         
         
