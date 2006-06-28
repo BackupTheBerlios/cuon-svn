@@ -153,6 +153,7 @@
 
       <comment />
     </field>
+    
     <field>
       <name>ends_notes</name>
 
@@ -170,6 +171,70 @@
 
       <comment />
     </field>
+    
+    	<field>
+			<name>begin_date</name>
+			<type>date</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>
+      	<field>
+			<name>end_date</name>
+			<type>date</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>
+        
+        <field>
+			<name>check_begin_delivered</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+        <field>
+			<name>check_ends_fetched</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+    
+     <field>
+			<name>check_begin_fetched</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+        <field>
+			<name>check_ends_delivered</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+    
 </table>
 <table>
     <nameOfTable>hibernation_plant</nameOfTable>
@@ -397,4 +462,131 @@
 
 
     </table>
+<table>
+    <nameOfTable>list_of_hibernation_incoming</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>incoming_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>order_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+ <field>
+      <name>date_of_incoming</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+  </table>
+  
+  <table>
+    <nameOfTable>list_of_hibernation_outgoing</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>outgoing_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>order_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+ <field>
+      <name>date_of_outgoing</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+  </table>
 </database>

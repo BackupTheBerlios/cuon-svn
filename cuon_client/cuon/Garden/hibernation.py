@@ -36,6 +36,8 @@ import SingleHibernation
 
 import SingleHibernationPlant
 import SingleBotany
+import base64
+import os
 
 class hibernationwindow(chooseWindows):
 
@@ -235,7 +237,23 @@ class hibernationwindow(chooseWindows):
 
     def on_print_icoming_document1_activate(self, event):
         dicOrder = {}
-        Pdf = hibernation_incoming_document(dicOrder)
+        print "Start print incoming document 1"
+        
+        dicOrder['incomingNumber'] = self.rpc.callRP('Garden.getIncomingNumber',self.singleHibernation.ID, self.dicUser)
+        print "Start print incoming document 2"
+
+        dicOrder['orderNumber'] = self.singleHibernation.ID
+        print "Start print incoming document 3"
+
+        Pdf = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
+        print "PDF", Pdf
+        
+        s = self.doDecode(Pdf)
+        fname = self.saveTmpData(s)
+        os.system('gpdf  ' + fname + ' &')
+        
+        
+        #Pdf = hibernation_incoming_document.hibernation_incoming_document(dicOrder)
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}
         Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-05-29, 22:44:26 -->
+<!-- Saved: 2006-06-27, 23:31:54 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="0">Python</ProgLanguage>
@@ -869,16 +869,6 @@
       <Name>cronjops.py</Name>
     </Source>
     <Source>
-      <Dir>cuon_server</Dir>
-      <Dir>src</Dir>
-      <Name>ai.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_server</Dir>
-      <Dir>src</Dir>
-      <Name>ai_main.py</Name>
-    </Source>
-    <Source>
       <Dir>cuon_client</Dir>
       <Name>Cuon.py</Name>
     </Source>
@@ -1013,11 +1003,6 @@
     <Source>
       <Dir>cuon_server</Dir>
       <Dir>src</Dir>
-      <Name>server.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_server</Dir>
-      <Dir>src</Dir>
       <Dir>cuon</Dir>
       <Name>Database.py</Name>
     </Source>
@@ -1032,6 +1017,239 @@
       <Dir>src</Dir>
       <Dir>cuon</Dir>
       <Name>User.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Address.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Article.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>AI.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Order.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Finances.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Stock.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Misc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>server_ai.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>server_ical.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>server_xmlrpc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>ai.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>ai_main.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>ai.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>server.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Dir>XML</Dir>
+      <Name>report_hibernation_incoming_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Dir>XML</Dir>
+      <Name>report_hibernation_outgoing_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>hibernation_incoming_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>hibernation_outgoing_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Garden.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>PDF</Dir>
+      <Dir>XML</Dir>
+      <Name>follower.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>standardlist.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Report.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>follower.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_addresses_phone11.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_addresses_phone1.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_articles_number1.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_cab_monthly.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_hibernation_incoming_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_hibernation_outgoing_document.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_order_standard_invoice.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_printAddress.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_stockgoods_number1.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>server_report.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>ReportServer.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>MyXML.py</Name>
     </Source>
   </Sources>
   <Forms>

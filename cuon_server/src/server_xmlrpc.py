@@ -16,9 +16,12 @@ import cuon.Article
 import cuon.Order
 import cuon.Finances
 import cuon.Misc
+import cuon.Garden
+import cuon.Report
+
 
 baseSettings = cuon.basics.basics()
-print baseSettings.CUON_WEBPATH
+print baseSettings.WEBPATH
 r = cuon.CuonFuncs.CuonFuncs()
 oiCal = cuon.iCal.iCal()
 oDatabase = cuon.Database.Database()
@@ -29,6 +32,8 @@ oArticle = cuon.Article.Article()
 oOrder = cuon.Order.Order()
 oFinances = cuon.Finances.Finances()
 oMisc = cuon.Misc.Misc()
+oGarden = cuon.Garden.Garden()
+oReport = cuon.Report.Report()
 
 
 r.putSubHandler('iCal', oiCal)
@@ -40,14 +45,10 @@ r.putSubHandler('Address', oAddress)
 r.putSubHandler('Order', oOrder)
 r.putSubHandler('Finances', oFinances)
 r.putSubHandler('Misc', oMisc)
+r.putSubHandler('Garden', oGarden)
+r.putSubHandler('Report', oReport)
 
-
-reactor.listenTCP(7080, server.Site(r))
-#reactor.run()
-
-site = server.Site(static.File(baseSettings.CUON_WEBPATH))
-reactor.listenTCP(7081, server.Site(site))
+reactor.listenTCP(baseSettings.XMLRPC_PORT, server.Site(r))
 reactor.run()
-
 
 

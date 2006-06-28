@@ -5,40 +5,78 @@ from twisted.internet import reactor
 from twisted.web import server
 import time
 import random
-import sys
+import sys 
 
+import ConfigParser
 
 
 
 
 class basics(xmlrpc.XMLRPC):
     def __init__(self):
+        self.debug = 0
+        
         self.CUON_FS = None  
-        self.CUON_AI_SERVER = "http://84.244.7.139:8765"
-        self.CUON_WEBPATH = '/var/cuon_www/'
-        self.CUON_ICALPATH = '/var/cuon_www/iCal/'
-        f = open('/etc/cuon/cuon_zope.ini')
-        if f:
-            s1 = f.readline()
-            while s1:
-                liIni = s1.split('=')
-                if liIni[0].strip() == 'ZOPE_PYTHON':
-                    sys.path.append(liIni[1].strip())
-                if liIni[0].strip() == 'CUON_FS':
-                    self.CUON_FS = liIni[1].strip()
-                if liIni[0].strip() == 'CUON_AI_SERVER':
-                    self.CUON_AI_SERVER = liIni[1].strip()
-                if liIni[0].strip() == 'CUON_WEBPATH':
-                    self.CUON_WEBPATH = liIni[1].strip()
-                if liIni[0].strip() == 'CUON_ICALPATH':
-                    self.CUON_ICALPATH = liIni[1].strip()
-                s1 = f.readline()
-                
-            f.close()
-        self.ai_server = xmlrpclib.ServerProxy(self.CUON_AI_SERVER)
+        
+       
+        self.XMLRPC_PORT = 7080
+        self.XMLRPC_HOST = 'localhost'
+        
+        
+        self.WEBPATH = '/var/cuon_www/'
+        self.WEB_HOST = 'localhost'
+        self.WEB_PORT = 7081
+        self.ICALPATH = '/var/cuon_www/iCal/'
+        
+	
+        
+        self.AI_PORT = 7082
+	self.AI_HOST = '84.244.7.139'
+        self.AI_SERVER = "http://84.244.7.139:" + `self.AI_PORT`
+        
+        self.REPORT_PORT = 7083
+        self.REPORT_HOST = 'localhost'
+        self.REPORTPATH = "/usr/share/cuon/cuon_server/src/cuon/Reports/XML"
+        self.DocumentPathHibernationIncoming='/var/cuon/Documents/Hibernation/Incoming'
+
+        try:
+            self.cpServer = ConfigParser.ConfigParser()
+            self.cpServer.readfp(open('/etc/cuon/server.ini'))
     
+            
+            
+            # AI
+            value = self.getConfigOption('AI','AI_HOST')
+            if value:
+                self.AI_HOST = value
+                
+            value = self.getConfigOption('AI','AI_PORT')
+            if value:
+                self.AI_PORT = value
+                
+            
+        except Exception, params:
+            print "Error read ini-File"
+            print Exception
+            print params
+            
+            
+        AI_SERVER = "http://" + self.AI_HOST + ":" + `self.AI_PORT`
+        self.ai_server = xmlrpclib.ServerProxy(AI_SERVER)
+        REPORT_SERVER = "http://" + self.REPORT_HOST + ":" + `self.REPORT_PORT`
+        self.report_server = xmlrpclib.ServerProxy(REPORT_SERVER)
+        
+        
+    
+    def getConfigOption(self, section, option):
+        value = None
+        if self.cpServer.has_option(section,option):
+            value = self.cpServer.get(section, option)
+            print 'getConfigOption', section + ', ' + option + ' = ' + value
+        return value
+
     def out(self, s):
-        print s
+        self.writeLog(s,self.debug)
         
     def checkEndTime(self, fTime):
         ok = 0
@@ -87,14 +125,19 @@ class basics(xmlrpc.XMLRPC):
         self.writeLog('getWhere = ' + `sWhere`)
         return sWhere       
     
-    def writeLog(self, sLogEntry):
-##        file = open('cuon_sql.log','a')
-##        file.write(time.ctime(time.time() ))
-##        file.write('\n')
-##        file.write(sLogEntry)
-##        file.write('\n')
-##        file.close()
-        print sLogEntry
+    def writeLog(self, sLogEntry, debugValue = 1):
+        debugValue = 1
+        print 'debugValue', debugValue
+        if debugValue > 0:
+        
+            file = open('/tmp/cuon_server.log','a')
+            file.write(time.ctime(time.time() ))
+            file.write('\n')
+            file.write(sLogEntry)
+            file.write('\n')
+            file.close()
+            #print sLogEntry
+        
         
               
     def getTimeString(self, time_id):

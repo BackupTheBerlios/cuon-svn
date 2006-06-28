@@ -52,7 +52,7 @@ class standard_invoice(standardlist, fileSelection):
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
 
-        dicResult =  self.rpc.callRP('src.Order.py_getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('Order.getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):

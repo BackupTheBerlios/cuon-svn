@@ -5,6 +5,7 @@ import time
 import random	
 import xmlrpclib
 import psycopg
+import string
 from basics import basics
 from cuon.SQL import SQL
 from ConfigParser import ConfigParser
@@ -15,29 +16,44 @@ class Database(xmlrpc.XMLRPC, SQL):
         basics.__init__(self)
         SQL.__init__(self)
         
+    def xmlrpc_is_running(self):
+        return 12
+        
     def getValue(self, sKey):
-        v = None
+        v = 'NONE'
         sSql = "select svalue from cuon where skey = '" + sKey + "'"
         result = self.xmlrpc_executeNormalQuery(sSql)
-        if result:
+        if result != 'NONE':
            try:
               v = result[0]['svalue']
            except:
-              v = None
-        
+              v = 'NONE'
+        if not v:
+            v = 'NONE'
+            
         return v
     def saveValue(self, sKey, cKey):
         self.out('py_saveValue cKey = ' + cKey)
         sSql = "select skey from cuon where skey = '" + sKey + "'"
         result = self.xmlrpc_executeNormalQuery(sSql)
         self.out('py_saveValue result = ' + `result`)
-        if result:
+        if result != 'NONE':
            sSql = "update cuon set svalue = '" + cKey +"' where skey = '" + sKey + "'"
         else:
            sSql = "insert into cuon (skey, svalue) values ('" + sKey + "','" + cKey +"')"
         self.out('py_saveValue sSql = ' + `sSql`)
         result = self.xmlrpc_executeNormalQuery(sSql)
         return result
+
+    def xmlrpc_createPsql(self, sDatabase, sHost, sPort, sUser,  sSql):
+
+        # os.system('pysql ' + '-h ' + sHost + '-p ' + sPort + ' -U ' + sUser + ' ' + sDatabase + ' < ' + sSql) 
+        
+        sysCommand = 'echo \"' + sSql + '\" | ' + 'psql  ' + '-h ' + sHost + ' -p ' + sPort + ' -U ' + sUser +   ' '  + sDatabase
+        
+        os.system(sysCommand)
+        
+        return sysCommand
 
 #context.exSaveInfoOfTable(sKey, oKey )
     
@@ -125,7 +141,291 @@ class Database(xmlrpc.XMLRPC, SQL):
         return self.getValue(sSearch)
     def xmlrpc_saveInfo(self, sKey, cKey):
         return self.saveValue(sKey, cKey)
+    
+    def xmlrpc_getListOfClients(self, dicUser):
+        self.writeLog('Start List Of Clients')
+        sSql = "select id from clients"
+        dicClients = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        liClients = []
+        self.writeLog('Clients = ' + `dicClients`)
+
+        if dicClients != 'NONE':
+           for i in dicClients:
+              self.writeLog('i = ' + `i`)
+              cli = i['id']
+              self.writeLog('cli = ' + `cli`)
+              
+              liClients.append(cli)
+        
+        self.writeLog('liClients = ' + `liClients`)
+        return liClients
+    
+    def xmlrpc_checkExistSequence(self, sName, dicUser):
+
+        sSql = "select relname from pg_class where relname = '" + sName + "'"
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        ok = 0
+
+        if dicName != 'NONE':
+            ok = len(dicName)
+
+        return  ok
+        
+    
+    def xmlrpc_checkExistTable(self, sName, dicUser):
+        sSql = "select tablename from pg_tables where tablename = '" + sName + "'"
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        ok = 0
+
+        if dicName != 'NONE':
+            ok = len(dicName)
+
+        return  ok
+        
+    def xmlrpc_checkExistColumn(self, sTableName, sColumnName, dicUser):
+        sSql =  "select attname from pg_attribute where attrelid = ( select relfilenode from pg_class where relname = '" + sTableName +"')" 
+        
+        # and atttypmod != -1 )"
+        
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        ok = 0
+        #print `dicName`
+        
+        for i in range(len(dicName)):
+            #print dicName[i]['attname']
+            if sColumnName == dicName[i]['attname']:
+               ok = 1
+    
+
+        return ok
+        
+    def xmlrpc_checkTypeOfColumn(self, sTable, sColumn, sType, iSize, dicUser ):
+        
+        bCheck = 0
+        sSql = "select typname from pg_type where pg_type.oid = (select atttypid from pg_attribute where attrelid = (select relfilenode from pg_class where relname = \'"
+        
+        sSql = sSql + sTable + "\') and attname = \'" + sColumn + "\' ) "
+        
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser )
+        #print result 
+        self.writeLog('types by ColumnCheck: ' + `result[0]['typname']` + ' ### ' + `sType`)
+        if string.find(result[0]['typname'],sType) > -1 :
+           self.writeLog( 'type is equal')
+           if string.find(sType,'char') > -1:
+              result2 = self.xmlrpc_getSizeOfColumn(sTable, sColumn, dicUser)
+              
+              if (result2[0]['atttypmod'] -4) == iSize:
+                 bCheck = 1
+           else:
+              bCheck = 1
+        
+        return bCheck
+    
+    def xmlrpc_getSizeOfColumn(self, sTable, sColumn, dicUser):
+        sSql = "select pg_attribute.atttypmod from pg_attribute where  attrelid = (select relfilenode from pg_class where relname = \'" + sTable + "\') and attname = \'" + sColumn + "\'"
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        return result
+
 
     def xmlrpc_logout(self, sUser):
         self.saveValue('user_' + sUser,{'SessionID':'0', 'endTime': 0})
+       
+    def xmlrpc_createGroup(self, sGroup, dicUser):
+        # check the group
+        sSql = "select groname from pg_group where groname = '" + sGroup + "'"
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
+        if len(dicName):
+           ok = 'Group exists'
+        else:
+           sSql = 'CREATE GROUP ' + sGroup
+           ok = self.xmlrpc_executeNormalQuery(sSql,dicUser )
+        
+        return ok
+        
+    def xmlrpc_createUser(self, sUser, sPassword,  dicUser, createDBUser=1):
+        ok = 'No action'
+        if createDBUser:
+            # check the user
             
+            sSql = "select usename from pg_user where usename = '" + sUser + "'"
+            dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            
+            if len(dicName):
+               ok = 'User exists'
+            else:
+               sSql = 'CREATE USER ' + sUser
+               ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            
+        # context.Cuon.src.Databases.py_saveValue('user_'+ sUser, sPassword)
+        
+        return ok
+
+    def xmlrpc_addGrantToGroup(self, sGrants, sGroup, sTable, dicUser):
+        # check the group
+        ok = 'ERROR'
+        
+        sSql = "select groname from pg_group where groname = '" + sGroup + "'"
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if len(dicName):
+           ok = 'GROUP'
+           sSql = 'Grant ' +sGrants + ' ON '  + sTable + ' TO GROUP ' + sGroup
+           ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+         
+        
+        else:
+           ok = 'Group does not exist'
+        
+        return ok
+    def xmlrpc_addUserToGroup(self, sUser, sGroup, dicUser):
+        
+        # check the user
+        self.writeLog(dicUser['Name'])
+        self.writeLog(dicUser['SessionID'])
+        
+        sSql = "select usename from pg_user where usename = '" + sUser + "'"
+        dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        ok = 'ERROR'
+        if len(dicName):
+           # check the group
+           sSql = "select groname from pg_group where groname = '" + sGroup + "'"
+           dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+           ok = 'USER'
+           if len(dicName):
+              ok = 'GROUP'
+              sSql = 'ALTER GROUP ' +sGroup + ' ADD USER ' + sUser
+              ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+         
+        
+        else:
+           ok = 'Group or User does not exist'
+        
+        return ok
+        
+    def xmlrpc_createCuon(self, dicUser):
+        
+        self.writeLog('start py_createCuon')
+        retValue = True
+        ok = self.xmlrpc_checkExistTable('cuon', dicUser)
+        self.writeLog('py_createCuon1 ' + `ok`)
+        if ok == 0:
+           retValue = False
+           sSql = 'create table cuon ( skey varchar(255) NOT NULL UNIQUE , svalue text NOT NULL, PRIMARY KEY (skey) )'
+           ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+           
+        return retValue
+        
+        
+    def saveWebshopRecord(self, sNameOfTable='EMPTY', id=0, id_field='id', dicValues ={}, dicUser={}):
+        import string
+        import types
+        
+        context.logging.writeLog('begin RECORD2')
+        dicUser['Database'] = 'osCommerce'
+        
+        if id > -1:
+            # update
+            sSql = 'update ' + sNameOfTable + ' set  '
+            
+            for i in dicValues.keys():
+                sSql = sSql + i
+                liValue = dicValues[i]
+                if liValue[1] == 'string' or liValue[1] == 'varchar':
+                    sSql = sSql  + " = \'" + liValue[0]+ "\', "
+        
+                elif liValue[1] == 'int':
+                    sSql = sSql  + " =  " + `int(liValue[0])` + ", "
+        
+                elif liValue[1] == 'float':
+                    sSql = sSql  + " = " + `float(liValue[0])` + ", "
+        
+                elif liValue[1] == 'date':
+                    if len(liValue[0]) < 10:
+                        sSql = sSql  + " = NULL, "
+                    else:
+                        sSql = sSql  + " = \'" + liValue[0]+ "\', "
+        
+                elif liValue[1] ==  'bool':
+                    context.logging.writeLog('REC2-bool ')
+                    if liValue[0] == 1:
+                        liValue[0] = 'True'
+                    if liValue[0] == 0:
+                        liValue[0] = 'False'
+                    sSql = sSql + " = " + liValue[0] + ", "
+                else:
+                    sSql = sSql  + " = \'" + liValue[0]+ "\', "
+            
+            sSql = sSql[0:string.rfind(sSql,',')]
+        
+            sSql = sSql + ' where ' + id_field + ' = ' + `id`
+            #print sSql
+        else:
+            context.logging.writeLog('new RECORD2')
+            sSql = 'insert into  ' + sNameOfTable + ' (  '
+            sSql2 = 'values ('
+            context.logging.writeLog('REC2-1 ' + `sSql` + `sSql2`)
+            for i in dicValues.keys():
+                sSql = sSql + i + ', '
+                context.logging.writeLog('REC2-1.1 ' + `sSql`)
+                liValue = dicValues[i]
+                context.logging.writeLog('REC2-1.2 ' + `liValue`)
+                if liValue == None :
+                    sSql2 = sSql2 + "\'\', " 
+                else:
+                    if liValue[1] ==  'string' or liValue[1] == 'varchar':
+                        if len(liValue[0]) == 0:
+                            sSql2 = sSql2 + "\'\', " 
+                        else:
+                            sSql2 = sSql2  + "\'" + liValue[0] + "\', "
+                        context.logging.writeLog('REC2-2 ' + `sSql` + `sSql2`)
+                    elif liValue[1] == 'int':
+                        sSql2 = sSql2  + `int(liValue[0])` + ", "
+                        context.logging.writeLog('REC2-3 ' + `sSql` + `sSql2`)
+                    elif liValue[1] == 'float':
+                        sSql2 = sSql2  + `float(liValue[0])` + ", "
+                        context.logging.writeLog('REC2-4 ' + `sSql` + `sSql2`)
+                    elif liValue[1] == 'date':
+                        if len(liValue[0]) < 10:
+                            sSql2 = sSql2  +  " NULL, "
+                        else:
+                            sSql2 = sSql2  + " \'" + liValue[0] + "\', "
+                            context.logging.writeLog('REC2-5 ' + `sSql` + `sSql2`)
+                    elif liValue[1] ==  'bool':
+                        context.logging.writeLog('REC2-bool ')
+                        if liValue[0] == 1:
+                           liValue[0] = 'True'
+                        if liValue[0] == 0:
+                           liValue[0] = 'False'
+        
+                        sSql2 = sSql2  +"\'" + liValue[0] + "\', "
+                        context.logging.writeLog('REC2-6 ' + `sSql` + `sSql2`)
+                    else:
+                        sSql2 = sSql2  +  " \'" + liValue[0] + "\', "
+                        context.logging.writeLog('REC2-6 ' + `sSql` + `sSql2`) 
+             
+                        
+            context.logging.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
+            sSql = sSql[0:sSql.rfind(',')]
+            sSql2 = sSql2[0:sSql2.rfind(',')]
+            #sSql2 = sSql2 + 'nextval(\'' + sNameOfTable + '_id\'), current_user, \'create\''  
+            
+            # set brackets and add
+            sSql = sSql + ') ' + sSql2 + ')'
+        
+            # execute insert
+            context.logging.writeLog('SQL by RECORD2 = ' + `sSql`)
+            #print sSql
+            context.py_executeNormalQuery(sSql, dicUser)
+        
+            # find last id 
+        
+            sSql = 'select max(' + id_field + ') as last_value from ' + sNameOfTable 
+            # sSql = sSql[0:string.rfind(sSql,',')]
+        
+            
+        
+        #print sSql
+        #return printed
+                   
+        return context.py_executeNormalQuery(sSql,dicUser)
+                

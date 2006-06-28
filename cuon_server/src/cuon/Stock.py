@@ -54,3 +54,19 @@ class Stock(xmlrpc.XMLRPC, basics):
            pass
         
         return act
+    def xmlrpc_getGoodsList1 (self, dicSearchlists, dicUser):
+        
+        context.logging.writeLog('start goods list 1')
+        client = dicUser['client']
+        sSql =  "select  b.number as article_number, b.designation as article_designation,"
+        sSql = sSql + " sum(a.to_embed) as amount " 
+        sSql = sSql + "from stock_goods as a, articles as b where a.article_id = b.id "
+        sSql = sSql + "and a.client = " + `client` 
+        sSql = sSql + "and b.client = " + `client` 
+        sSql = sSql + "and b.status != 'delete' and a.status != 'delete' " 
+        sSql = sSql + "group by b.number, b.designation order by b.number "
+        context.logging.writeLog('goods-List1 Sql = ' + `sSql` )
+        dicUser['noWhereClient'] = 'YES'
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
+        return result

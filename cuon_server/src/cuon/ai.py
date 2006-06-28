@@ -1,4 +1,13 @@
 #! /usr/bin/python
+from twisted.web import xmlrpc
+#import os
+#import sys
+#import time
+#import random	
+import xmlrpclib
+#import psycopg
+#from basics import basics
+#from ConfigParser import ConfigParser
 
 try:
     import aiml
@@ -8,7 +17,7 @@ import SimpleXMLRPCServer
 from ai_main import ai_main
 
 
-class ai(ai_main):
+class ai(xmlrpc.XMLRPC, ai_main):
 
     def __init__(self):
         ai_main.__init__(self)

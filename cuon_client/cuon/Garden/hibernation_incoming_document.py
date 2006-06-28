@@ -16,6 +16,7 @@
 from cuon.PDF.standardlist import standardlist
 import cuon.PDF.XML.report_hibernation_incoming_document
 from cuon.Misc.fileSelection import fileSelection
+
 import types
 import os.path
 
@@ -51,15 +52,16 @@ class hibernation_incoming_document(standardlist, fileSelection):
         print  self.rpc.getServer()
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
 
-        dicResult =  self.rpc.callRP('Order.getInvoiceAddress', self.dicOrder,  self.oUser.getDicUser() )
+        dicResult =  self.rpc.callRP('Garden.getIncomingAddress', self.dicOrder,  self.oUser.getDicUser() )
+        print "result by address: ", dicResult
         for i in dicResult:
             for j in i.keys():
                 if isinstance(i[j],  types.StringType):
                     i[j] = (i[j].decode('utf-7')).encode('latin-1')
 
         self.dicResults['address'] = dicResult   
-        dicResult =  self.rpc.callRP('src.Order.py_getStandardInvoice', self.dicOrder,  self.oUser.getDicUser() )
-        print dicResult
+        dicResult =  self.rpc.callRP('Garden.getHibernationIncoming', self.dicOrder,  self.oUser.getDicUser() )
+        print "result by positions", dicResult
         
 
         for i in dicResult:
@@ -72,6 +74,6 @@ class hibernation_incoming_document(standardlist, fileSelection):
         self.out( dicResult )
         self.dicResults['positions'] = dicResult
         
-        self.loadXmlReport('order_standarddelivery', 'ReportStandardDelivery1')
+        self.loadXmlReport('hibernation_incoming_document', 'ReportStandardPickup1')
         
 

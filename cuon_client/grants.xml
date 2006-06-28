@@ -226,16 +226,16 @@
       <comment></comment>
     </grant>
     <grant>
-      <nameOfGrant>cuon_all_rights_of_project </nameOfGrant>
+      <nameOfGrant>cuon_all_rights_of_projects </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>project, project_id, project_phases, project_phases_id, project_tasks, project_tasks_id, project_tasks_staff_res, project_tasks_staff_res_id, project_tasks_material_res, project_tasks_material_res_id</this_tables>
+      <this_tables>projects, projects_id, project_phases, project_phases_id, project_tasks, project_tasks_id, project_tasks_staff_res, project_tasks_staff_res_id, project_tasks_material_res, project_tasks_material_res_id</this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
     <grant>
       <nameOfGrant>cuon_all_rights_of_garden </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id</this_tables>
+      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id, numerical_garden_incoming_document, numerical_garden_outgoing_document</this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>

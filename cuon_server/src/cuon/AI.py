@@ -15,38 +15,42 @@ class AI(xmlrpc.XMLRPC, basics):
 
 
     def sendQuestion(self, question):
-        return self.ai_server.getAnswer(question)
+        return self.ai_server.AI.getAnswer(question)
    
     def xmlrpc_getAI(self, question, dicUser):
         import string
-        self.writeLog('py_getAI question = ' + `question`)
+        self.writeLog('py_getAI question = ' + `question`,1)
         goDecode = False
         #answer = context.ex_getAI(question)
         answer = self.sendQuestion(question.encode('utf-7'))
         
-        self.writeLog('py_getAI answer = ' + `answer`)
-        try:
-           answer = answer.decode('utf-7').encode('utf-8')
-        except:
-           pass
-        
+        self.writeLog('py_getAI answer = ' + `answer`,1)
+##        try:
+##           answer = answer.decode('utf-7').encode('utf-8')
+##        except:
+##           pass
+##        
         answer = answer.strip()
         liAnswer = answer.split()
-        if liAnswer[0] == "ENDPROGRAM":
-           answer = sendQuestion('ENDPROGRAM')
-        elif liAnswer[0] == 'CUON':
-           goDecode = True
-           if liAnswer[1] == 'ARTICLES':
-              answer = self.articles(liAnswer, dicUser)
-           elif liAnswer[1] == 'ADDRESS':
-              answer = self.addresses(liAnswer, dicUser)
-           elif liAnswer[1] == 'PHONE':
-              answer = self.addresses_phone(liAnswer, dicUser)
-        
-        if goDecode:
-           answer = answer.encode('utf-7')
-        
-        
+        try:
+            assert liAnswer
+            if liAnswer[0] == "ENDPROGRAM":
+               answer = sendQuestion('ENDPROGRAM')
+            elif liAnswer[0] == 'CUON':
+               goDecode = True
+               if liAnswer[1] == 'ARTICLES':
+                  answer = self.articles(liAnswer, dicUser)
+               elif liAnswer[1] == 'ADDRESS':
+                  answer = self.addresses(liAnswer, dicUser)
+               elif liAnswer[1] == 'PHONE':
+                  answer = self.addresses_phone(liAnswer, dicUser)
+            
+            if goDecode:
+               answer = answer.encode('utf-7')
+            
+        except:
+            self.out('No correct answer from AI = ' + `answer`)
+            
         
         #return printed
         
@@ -66,13 +70,13 @@ class AI(xmlrpc.XMLRPC, basics):
         
               self.writeLog('article_ai1' + `sSql`)
         
-              result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result:
+              result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+              if result!= 'NONE':
                  answer = ''
                  for r1 in result:
                     answer = answer + "%s \t\t %s \n" %(r1['number'],r1['designation'] )
               else:
-                 answer = answer = self.sendQuestion('NO ARTICLES FOUND')
+                 answer = self.sendQuestion('NO ARTICLES FOUND')
         return answer      
 
     def addresses(self, liAnswer, dicUser):
@@ -88,7 +92,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_ai1' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result:
+              if result!= 'NONE':
                  answer = ''
                  for r1 in result:
                     answer = answer + "%s\n%s\n%s\n%s\n%s %s\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
@@ -101,7 +105,7 @@ class AI(xmlrpc.XMLRPC, basics):
         import string
         ok = False
         answer = ''
-        self.writeLog('address_phone_ai1 lianswer[4] = ' + `liAnswer[4]`)
+        self.writeLog('address_phone_ai1 lianswer[4] = ' + `liAnswer[4]`,1)
         #liAnswer[4] = liAnswer[4].decode('latin-1').decode('utf-7')
         self.writeLog('address_phone_ai1 lianswer[4](2) = ' + `liAnswer[4]`)
         if liAnswer[2] == 'SEARCH':
@@ -115,7 +119,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_phone_ai1 ' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result:
+              if result != 'NONE':
                  ok = True
         
                  for r1 in result:
@@ -129,7 +133,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_phone_ai1_2 ' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result:
+              if result != 'NONE':
                  ok = True
                  
                  for r1 in result:

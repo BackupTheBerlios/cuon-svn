@@ -58,6 +58,42 @@
 
       <fg_color>0</fg_color>
     </entry>
+    
+      <entry>
+      <name>eBeginDate</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>date</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>begin_date</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eEndDate</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>date</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>end_date</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
 
     <entry>
       <name>eEndsStaffNumber</name>
@@ -95,19 +131,12 @@
     </entry>
       <entry>
       <name>eEndsWorkingTime</name>
-
       <type>textline</type>
-
       <size>20</size>
-
       <verify_type>float</verify_type>
-
       <create_sql>1</create_sql>
-
       <sql_field>ends_working_time</sql_field>
-
       <bg_color>0</bg_color>
-
       <fg_color>0</fg_color>
     </entry>
     <entry>
@@ -132,5 +161,46 @@
       <fg_color>0</fg_color>
     </entry>
    
+   <entry>
+      <name>rbBeginDelivered</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>check_begin_delivered</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>rbEndsFetched</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>check_ends_fetched</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>rbBeginFetched</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>check_begin_fetched</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>rbEndsDelivered</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>check_ends_delivered</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
   </table>
 </entries_for_table>

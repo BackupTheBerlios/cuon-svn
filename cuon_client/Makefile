@@ -15,6 +15,12 @@ dest_report = $(SERVERDIRSHARE)/report
 iClientDir = /opt/Projekte/cuon/iClient
 iClientDirLocale = $(iClientDir)/locale/de/LC_MESSAGES
 
+CUON_VAR = /var/cuon
+CUON_DOCUMENTS = $(CUON_VAR)/Documents
+CUON_DOCUMENTS_HIBERNATION = $(CUON_DOCUMENTS)/Hibernation
+CUON_DOCUMENTS_HIBERNATION_INCOMING = $(CUON_DOCUMENTS_HIBERNATION)/Incoming
+
+
 
 # Please set here your values
 zope_extension =  root@cyweb://var/lib/zope2.8/instance/default/Extensions
@@ -279,6 +285,14 @@ install_server:
 	if  [ ! -d $(dest_report) ] ; then mkdir $(dest_report) ; fi 	
 	if  [ ! -d $(SERVERDIRSHARE)/cuon_server ] ; then mkdir $(SERVERDIRSHARE)/cuon_server ; fi 	
 
+	if  [ ! -d $(CUON_VAR) ] ; then mkdir $(CUON_VAR) ; fi 
+	if  [ ! -d $(CUON_DOCUMENTS) ] ; then mkdir $(CUON_DOCUMENTS) ; fi 
+
+
+	if  [ ! -d $(CUON_DOCUMENTS_HIBERNATION) ] ; then mkdir $(CUON_DOCUMENTS_HIBERNATION) ; fi 
+	if  [ ! -d $(CUON_DOCUMENTS_HIBERNATION_INCOMING) ] ; then mkdir $(CUON_DOCUMENTS_HIBERNATION_INCOMING) ; fi 
+
+
 	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
 	cp ./GUI/*.glade2 $(dest_glade) 
 	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
@@ -289,7 +303,7 @@ install_server:
 	cp -R ../cuon_server/src/cuonai /etc/init.d
 	cp -R ../cuon_server/src/cuonweb /etc/init.d
 	cp -R ../cuon_server/src/cuonxmlrpc /etc/init.d
-    
+	cp -R ../cuon_server/src/cuonreport /etc/init.d
  
 
 install_zope_cy:
@@ -308,7 +322,9 @@ install_zope_cu:
 install_server_cu:
 	sudo make install
 
-	#scp -r ../cuon_server/src $(CUWEBSHARE)/cuon_server
+	scp  ../cuon_server/src/cuonxmlrpc $(CUWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonai $(CUWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonweb $(CUWEB)/etc/init.d
 	rsync -v -e ssh ../cuon_server/src/*.py $(CUWEBSHARE)/cuon_server/src
 	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CUWEBSHARE)/cuon_server/src/cuon
 

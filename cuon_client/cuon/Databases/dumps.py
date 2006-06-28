@@ -16,6 +16,9 @@ import sys
 import os
 import pickle
 import base64
+import time
+import random
+
 
 #import os.path
 
@@ -72,3 +75,24 @@ class dumps:
 
     def doDecode(self, s):
         return  base64.decodestring(s)
+
+    def saveTmpData(self, data):
+        s = ''
+        
+        n = random.randint(0,1000000000)
+        for i in range(27):
+            ok = True
+            while ok:
+                r = random.randint(65,122)
+                if r < 91 or r > 96:
+                    ok = False
+                    s = s + chr(r)
+    
+        s = s + `n`
+        s = "/tmp/cuon__" + s + `time.time()`
+        f = open(s,'wb')
+        f.write(data)
+        f.close()
+        return s
+        
+        

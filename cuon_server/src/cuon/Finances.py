@@ -9,7 +9,7 @@ class Finances(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
-        
+        self.debugFinances = 1
         
 
 
@@ -32,8 +32,8 @@ class Finances(xmlrpc.XMLRPC, basics):
         sSql = sSql + self.getWhere("",dicUser,2,'a.')
         sSql = sSql + " order by a.accounting_date "
         
-        self.writeLog('getCashAcountBook sSql = ' + `sSql`)
-        result_main = oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        self.writeLog('getCashAcountBook sSql = ' + `sSql`,self.debugFinances)
+        result_main = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
         
         sDate_begin = dicSearchfields['eYear'] + '/' + dicSearchfields['eMonth'] + '/' + '01'
@@ -42,15 +42,15 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         sSql = sSql + self.getWhere(sW, dicUser,1)
         
-        result = oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result:
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if result != 'NONE':
            if result[0]['saldo'] >= 0:
               result[0]['saldo_debit'] =  result[0]['saldo']
            else:
               result[0]['saldo_credit'] =  result[0]['saldo']
         
         fSaldo = result[0]['saldo']
-        self.writeLog('getCashAcountBook result_main = ' + `result_main`)
+        self.writeLog('getCashAcountBook result_main = ' + `result_main`,self.debugFinances)
         for v1 in result_main:
             fSaldo = fSaldo + v1['debit'] - v1['credit']
             v1['saldo'] = fSaldo
@@ -59,3 +59,132 @@ class Finances(xmlrpc.XMLRPC, basics):
         dicResults['cab'] = result_main
         dicResults['before'] = result
         return dicResults
+    def xmlrpc_get_cab_doc_number1(self, dicUser):
+        
+        self.writeLog('new CAB-Number for doc1')
+        ret = -1
+        cSql = "select nextval(\'numerical_cash_account_book_doc_number1" + "_client_" + `dicUser['client']` + "\') "
+        self.writeLog('CAB1-cSql = ' + cSql,self.debugFinances)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        dicNumber = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        self.writeLog('dicNumber = ' + `dicNumber`)
+        if dicNumber:
+           ret = dicNumber[0]['nextval']
+        return ret
+        
+    def xmlrpc_getLastDate(self, dicUser):
+        self.writeLog('start py_get_LastDate',self.debugFinances)
+        ret = '1900/01/01'
+        cSql = "select to_char(accounting_date,'" +dicUser['SQLDateFormat'] + "\') as last_date from account_sentence "
+        cSql = cSql + " where id = (select max(id) as max_id from account_sentence "
+        self.writeLog('get0  cSql = ' + cSql,self.debugFinances)
+        cSql = cSql + self.getWhere("",dicUser,1)
+        cSql = cSql + ")"
+        self.writeLog('get  cSql = ' + `cSql`,self.debugFinances)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+        self.writeLog('liS = ' + `liS`,self.debugFinances)
+        if liS != 'NONE':
+           ret = liS[0]['last_date']
+        return ret
+        
+    def xmlrpc_get_AccountPlanNumber(self, id, dicUser):
+        
+        self.writeLog('get acctPlanNumber for ' + `id`)
+        ret = 'NONE'
+        cSql = "select name from account_plan where id = " + `id`  
+        sSql = sSql + self.getWhere("",dicUser, 2)
+        self.writeLog('get AcctPlan cSql = ' + cSql)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+        self.writeLog('liAcct = ' + `liAcct`)
+        if liAcct != 'NONE':
+           ret = liAcct[0]['name']
+        return ret
+        
+    def xmlrpc_get_acct(self,sAcct, dicUser): 
+        self.writeLog('new acct Info for ' + `sAcct`)
+        ret = 'NONE'
+        liAcct = None
+        
+        if sAcct != 'NONE':
+            cSql = "select designation from account_info where account_number = '" + sAcct + "'"
+            self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
+            cSql = cSql + self.getWhere("",dicUser,2)
+            self.writeLog('get Acct cSql = ' + cSql)
+            #context.src.logging.writeLog('User = ' + `dicUser`)
+            liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+            self.writeLog('liAcct = ' + `liAcct`)
+        if liAcct != 'NONE':
+           ret = liAcct[0]['designation']
+        return ret
+    def xmlrpc_get_cabShortKeyValues(self, s, dicUser):
+        
+        self.writeLog('start py_get_cabShortKeyValues')
+        ret = -1
+        cSql = "select max(id) as max_id from account_sentence where short_key = '" + s + "'"
+        self.writeLog('get0  cSql = ' + cSql)
+        cSql = cSql + self.getWhere("",dicUser,1)
+        
+        self.writeLog('get  cSql = ' + cSql)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+        self.writeLog('liS = ' + `liS`)
+        if liS != 'NONE':
+           ret = liS[0]['max_id']
+        return ret
+        
+    def xmlrpc_get_cab_designation(self, id, dicUser):
+        ret = 'NONE'
+        cSql = "select designation from account_sentence where id = " + `id` 
+        sSql = sSql + self.getWhere("",dicUser,1)
+        self.writeLog('get  cSql = ' + cSql)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+        self.writeLog('liS = ' + `liS`)
+        if liS != 'NONE':
+           ret = liS[0]['designation']
+        return ret
+    def xmlrpc_get_cab_doc_number1(self, dicUser):
+        self.writeLog('new CAB-Number for doc1')
+        ret = -1
+        cSql = "select nextval(\'numerical_cash_account_book_doc_number1" + "_client_" + `dicUser['client']` + "\') "
+        self.writeLog('CAB1-cSql = ' + cSql)
+        #context.src.logging.writeLog('User = ' + `dicUser`)
+        dicNumber = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        self.writeLog('dicNumber = ' + `dicNumber`)
+        if dicNumber != 'NONE':
+           ret = dicNumber[0]['nextval']
+        return ret
+    def xmlrpc_updateAccountInfo(self, dicAcct, dicUser):
+        self.writeLog('Search for account_Number ' )
+        sSql = "select id from account_plan where name = '" + dicAcct['account_plan_number'][0] + "'"
+        sSql = sSql + self.getWhere("",dicUser,2)
+        
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        pn = 'NONE'
+        if result != 'NONE':
+            dicAcct['account_plan_number'] = [result[0]['id'], 'int']
+            pn = result[0]['id']
+        
+        if pn != 'NONE':
+            sSql = "select id from account_info where account_number = '" + dicAcct['account_number'][0] + "' and account_plan_number = " + `pn` 
+            sSql = sSql + self.getWhere("",dicUser,1)
+            self.writeLog('Search for account_Number sSql =  ' + `sSql` )
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+            self.writeLog('result id by finances = ' + `result`)
+            if result != 'NONE':
+            
+                id = result[0]['id']
+            else:
+                id = -1
+            dicAcct['client'] = [dicUser['client'],'int']
+            result = self.oDatabase.xmlrpc_saveRecord('account_info',id, dicAcct, dicUser)
+            self.writeLog('dicAcct = ' + `dicAcct`)
+        
+        return result

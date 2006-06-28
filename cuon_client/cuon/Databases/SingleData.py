@@ -361,7 +361,9 @@ class SingleData(gladeXml, logs):
                 widget.set_buffer(buffer)
             elif string.count(str(widget), "GtkCheckButton") > 0:
                 widget.set_active(False)
-                            
+            elif string.count(str(widget), "GtkRadioButton") > 0:
+                widget.set_active(False)
+                  
             elif string.count(str(widget), "GnomeDateEdit") > 0:
                 newDate = time.strptime('0001/01/01', 'Y/m/d') 
                 print newDate
@@ -461,20 +463,38 @@ class SingleData(gladeXml, logs):
                         else:
                             # -1 don`t function -- proof later
                             widget.set_active(0)
-                    elif string.count(str(widget), "GtkCheckButton") > 0:
-                        print 'Bool-Value from Database'
-                        #print sValue
+                    elif string.count(str(widget), "GtkCheckButton") > 0 :
+                        print 'Bool-Value from Database', sValue
+                        print "GtkCheckButton ", entry.getName()
                         
                         
-                        if sValue: 
+                        if sValue == 1 or sValue == 't' or sValue == 'True': 
+                            sValue = True
+                            print 'is true !'
+                        else:
+                            sValue = False
+                            print 'is false'
+                        print 'Widget set to ', sValue
+                        widget.set_active(sValue)
+                        print widget, widget.get_active()
+                            
+                    elif string.count(str(widget), "GtkRadioButton") > 0:
+                        print 'Bool-Value from Database', sValue
+                        print "GtkCheckButton ", entry.getName()
+                        
+                        
+                        if sValue == 1 or sValue == 't' or sValue == 'True': 
                             sValue = True
                             print 'is true !'
                         else:
                             sValue = False
                             print 'is false'
                             
-                        widget.set_active(sValue)
+                        print 'Widget set to ', sValue
+                        if sValue:
+                            widget.set_active(sValue)
                             
+                        print widget, widget.get_active()
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
                         try:
                             print self.sqlDicUser['DateTimeformatString']
@@ -515,6 +535,8 @@ class SingleData(gladeXml, logs):
                         sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
                     #elif string.count(str(widget), "GtkCombo") > 0:
                     elif string.count(str(widget), "GtkCheckButton") > 0:
+                        sValue = `widget.get_active()`
+                    elif string.count(str(widget), "GtkRadioButton") > 0:
                         sValue = `widget.get_active()`
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
                         newTime = time.localtime(widget.get_time())

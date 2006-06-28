@@ -5,6 +5,7 @@ import time
 import random	
 import xmlrpclib
 import pg
+import string
 from basics import basics
 
 class SQL(xmlrpc.XMLRPC, basics):
@@ -12,6 +13,8 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
+        self.writeLog('execute SQL = ' + `cSql`,self.debug)
+
         rows = None
         if not dicUser['Name'] or dicUser['Name'] == 'zope':
             sUser = 'zope'
@@ -23,11 +26,10 @@ class SQL(xmlrpc.XMLRPC, basics):
             sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
 
         # put here sUser
-        print 'sUser=', sUser
+        #print 'sUser=', sUser
         #DSN = 'dbname=cuon host=localhost user=' + sUser
         conn = pg.connect(dbname = 'cuon',host = 'localhost', user = sUser)
         #curs = conn.cursor()
-        print 'execute SQL = ' , cSql
         
         #ok = curs.execute(cSql.decode('utf-8'))
         rows = conn.query(cSql.encode('utf-8'))
@@ -38,17 +40,20 @@ class SQL(xmlrpc.XMLRPC, basics):
 ##            rows = curs.dictfetchall()
 ##        except:
 ##            pass
-        #print 'Rows', rows
+        self.writeLog('Rows = ' + `rows`, self.debug)
         conn.close()
         
         if rows:
-            dicResult = rows.dictresult()
+            try:
+                dicResult = rows.dictresult()
+            except:
+                dicResult = None
         else:
             dicResult = None
 
         try:
             assert dicResult
-            print 'dicResult', dicResult
+            #print 'dicResult', dicResult
             sDecode = None
             sEncode = None
             if dicUser.has_key('Database'):
@@ -89,7 +94,7 @@ class SQL(xmlrpc.XMLRPC, basics):
      
         
     def xmlrpc_getListEntries(self, dicEntries, sTable, sSort, sWhere="", dicUser={}):
-        print 'start xmlrpc_getListEntries'
+        #print 'start xmlrpc_getListEntries'
         
         import string
         import time
@@ -208,7 +213,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql[0:string.rfind(sSql,',')]
         
             sSql = sSql + ' where id = ' + `id`
-            #print sSql
+            
         else:
             self.writeLog('new RECORD2')
             sSql = 'insert into  ' + sNameOfTable + ' (  '
@@ -279,21 +284,28 @@ class SQL(xmlrpc.XMLRPC, basics):
         return self.xmlrpc_executeNormalQuery(sSql,dicUser)
     
     def xmlrpc_createBigRow(self, sFile, data, j, dicUser=None):
+        debug = 1
         ok = 1
-        self.writeLog('createBigRow reached')
-        self.writeLog('first j = ' + `j`)
+        self.writeLog('createBigRow reached', debug)
+        self.writeLog('first j = ' + `j`,debug)
         
         sKey = dicUser['Name'] +'_' +sFile
         
-        self.writeLog(sKey)
+        self.writeLog(sKey, debug)
         if j == 0:
-            self.writeLog('j = ' + `j`)
-            context.self.saveValue(sKey,data)
+            self.writeLog('j = ' + `j`, debug)
+            self.saveValue(sKey,data)
         else:
-            self.writeLog('j = ' + `j`)
+            self.writeLog('j = ' + `j`, debug)
             sData =  self.getValue(sKey)
-            sData = sData + data
-            context.self.saveValue(sKey,sData)
+            if sData != 'NONE':
+                self.writeLog('len sData = ' + `len(sData)`, debug)
+                sData = sData + data
+            else:
+                sData = data
+                
+            
+            self.saveValue(sKey,sData)
         
         return ok
         
