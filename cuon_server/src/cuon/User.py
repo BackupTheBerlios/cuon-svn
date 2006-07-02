@@ -5,7 +5,6 @@ import sys
 import time
 import random	
 import xmlrpclib
-import pg
 from basics import basics
 import Database
 

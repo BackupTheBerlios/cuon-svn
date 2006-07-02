@@ -31,14 +31,17 @@ class basics(xmlrpc.XMLRPC):
 	
         
         self.AI_PORT = 7082
-	self.AI_HOST = '84.244.7.139'
+        self.AI_HOST = '84.244.7.139'
         self.AI_SERVER = "http://84.244.7.139:" + `self.AI_PORT`
         
         self.REPORT_PORT = 7083
         self.REPORT_HOST = 'localhost'
         self.REPORTPATH = "/usr/share/cuon/cuon_server/src/cuon/Reports/XML"
-        self.DocumentPathHibernationIncoming='/var/cuon/Documents/Hibernation/Incoming'
-
+        self.DocumentPathHibernationIncoming = '/var/cuon/Documents/Hibernation/Incoming'
+        self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
+        
+        self.WIKI_PORT = 7084
+        
         try:
             self.cpServer = ConfigParser.ConfigParser()
             self.cpServer.readfp(open('/etc/cuon/server.ini'))
@@ -52,7 +55,7 @@ class basics(xmlrpc.XMLRPC):
                 
             value = self.getConfigOption('AI','AI_PORT')
             if value:
-                self.AI_PORT = value
+                self.AI_PORT = int(value)
                 
             
         except Exception, params:

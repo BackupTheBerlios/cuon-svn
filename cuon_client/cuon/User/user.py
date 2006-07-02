@@ -60,8 +60,10 @@ class User:
         self.userSQLTimeFormat = 'HH24:MI'
         self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
         self.prefPath = {}
+        self.prefApps = {}
         self.serverSqlDateFormat = '%Y-%m-%d'
         self.client = 0
+        
         
         self.prefPath['tmp'] =  os.path.normpath(os.environ['CUON_HOME']) + '/'  
 
@@ -80,6 +82,7 @@ class User:
         self.prefPath['ReportArticleLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
+        self.prefApps['PDF']='/usr/bin/gpdf'
         
         
         self.prefColor = {'FG':0, 'BG':0}
@@ -189,7 +192,10 @@ class User:
         self.dicUser['Name'] = self.userName
         #self.dicUser['Password'] = self.userPassword
         self.dicUser['Debug'] = self.sDebug
+        
         self.dicUser['prefPath'] = self.prefPath
+        self.dicUser['prefApps'] = self.prefApps
+        
         self.dicUser['SessionID'] = self.getSessionID()
         self.dicUser['userType'] = self.userType
         self.dicUser['prefColor'] = self.prefColor

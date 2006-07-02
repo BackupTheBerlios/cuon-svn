@@ -399,9 +399,9 @@ class addresswindow(chooseWindows):
     # Menu Lists
 
     def on_liAddressesPhone1_activate(self, event):
-        self.out( "lists startet")
+        #self.out( "lists startet")
         Pdf = lists_addresses_phone1.lists_addresses_phone1()
-
+        
 
     def on_liAddressesPhone11_activate(self, event):
         self.out( "lists startet")

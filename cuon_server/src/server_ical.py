@@ -10,14 +10,14 @@ import cuon.iCal
 import cuon.basics
 
 baseSettings = cuon.basics.basics()
-print baseSettings.CUON_WEBPATH
+print baseSettings.WEBPATH
 #r = cuon.CuonFuncs.CuonFuncs()
 
 
 #r.putSubHandler('iCal', oiCal)
 
-site = server.Site(static.File(baseSettings.CUON_WEBPATH))
-reactor.listenTCP(baseSettings.PORT_ICAL, server.Site(site))
+site = server.Site(static.File(baseSettings.WEBPATH))
+reactor.listenTCP(baseSettings.WEB_PORT, server.Site(site))
 reactor.run()
 
 

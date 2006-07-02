@@ -4,7 +4,8 @@ import sys
 import time
 import random	
 import xmlrpclib
-import pg
+import pg 
+
 import string
 from basics import basics
 
@@ -32,6 +33,8 @@ class SQL(xmlrpc.XMLRPC, basics):
         #curs = conn.cursor()
         
         #ok = curs.execute(cSql.decode('utf-8'))
+        #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
+        
         rows = conn.query(cSql.encode('utf-8'))
 
         #print 'Sql-Execute = ', ok

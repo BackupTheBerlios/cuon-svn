@@ -27,7 +27,7 @@ class dumps:
         self.dbase = None
 
     def openDB(self):
-        print 'OS.ENViron', os.environ['CUON_HOME']
+        #print 'OS.ENViron', os.environ['CUON_HOME']
         self.dbase = shelve.open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonObjects'))
 
     def closeDB(self):
@@ -89,10 +89,16 @@ class dumps:
                     s = s + chr(r)
     
         s = s + `n`
-        s = "/tmp/cuon__" + s + `time.time()`
+        s =  os.path.normpath(os.environ['CUON_HOME'] + '/cuon__' +  s + `time.time()`)
         f = open(s,'wb')
         f.write(data)
         f.close()
         return s
         
+    def showPdf(self, Pdf, dicUser):
+        #print "PDF", Pdf
+        
+        s = self.doDecode(Pdf)
+        fname = self.saveTmpData(s)
+        os.system(self.dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
         

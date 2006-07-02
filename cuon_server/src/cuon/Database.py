@@ -4,7 +4,6 @@ import sys
 import time
 import random	
 import xmlrpclib
-import psycopg
 import string
 from basics import basics
 from cuon.SQL import SQL

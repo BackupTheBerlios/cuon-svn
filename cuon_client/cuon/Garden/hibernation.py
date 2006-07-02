@@ -28,8 +28,6 @@ import cuon.Addresses.SingleAddress
 import cuon.Staff.SingleStaff
 
 import cuon.DMS.documentTools
-import hibernation_outgoing_document
-import hibernation_incoming_document
 
 import cuon.DMS.dms
 import SingleHibernation
@@ -246,17 +244,12 @@ class hibernationwindow(chooseWindows):
         print "Start print incoming document 3"
 
         Pdf = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
-        print "PDF", Pdf
-        
-        s = self.doDecode(Pdf)
-        fname = self.saveTmpData(s)
-        os.system('gpdf  ' + fname + ' &')
-        
+        self.showPdf(Pdf, self.dicUser)
         
         #Pdf = hibernation_incoming_document.hibernation_incoming_document(dicOrder)
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}
-        Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)
+        #Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)
 
 
 

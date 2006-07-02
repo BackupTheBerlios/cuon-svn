@@ -38,6 +38,7 @@ class myXmlRpc(dumps, logs):
         self.closeDB()
         #self.zope_server = self.getZopeServer()
         self.MyServer = self.getMyServer()
+        self.MyHelpServer = self.getMyHelpServer()
         
     def getMyServer(self):
         """
@@ -55,6 +56,28 @@ class myXmlRpc(dumps, logs):
                 print 'Server2 = ', self.td.server
                 #sv =  ServerProxy( self.td.server, allow_none = 1 )
                 sv = ServerProxy(self.td.server,allow_none = 1)
+                
+        except:
+            print 'Server error'
+            
+        
+        return sv
+    def getMyHelpServer(self):
+        """
+        if the CUON_SERVER environment-variable begins with https,
+        then the server use SSL for security.
+        @return: Server-Object for xmlrpc
+        """
+        
+        sv = None
+        try:
+            if self.td.server[0:5] == 'https':
+                #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
+                sv =  ServerProxy( self.td.help_serverSSL,allow_none = 1 ) 
+            else:
+                print 'Server2 = ', self.td.server
+                #sv =  ServerProxy( self.td.server, allow_none = 1 )
+                sv = ServerProxy(self.td.help_server)
                 
         except:
             print 'Server error'
@@ -90,6 +113,9 @@ class myXmlRpc(dumps, logs):
         
     def getServer2(self):
         return self.MyServer
+        
+    def getHelpServer(self):
+        return self.MyHelpServer
         
 
     def test(self):
@@ -158,8 +184,15 @@ class myXmlRpc(dumps, logs):
             r = None
         return    r
 
-    
-# wert = server.py_parseResult(recordset, 0, "id" )
-# self.out( wert
+    def getHelpBook(self):
+        #Server = xmlrpclib.ServerProxy(self.getHelpServer())
+
+        #print self.getHelpServer()
+        #print self.getHelpServer().getRPCVersionSupported()
+        s = self.getHelpServer().getPageHTML(u"Benutzerhandbuch")
+        return s
+        
+        
+        
 
 

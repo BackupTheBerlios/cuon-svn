@@ -17,6 +17,15 @@ iClientDirLocale = $(iClientDir)/locale/de/LC_MESSAGES
 
 CUON_VAR = /var/cuon
 CUON_DOCUMENTS = $(CUON_VAR)/Documents
+
+CUON_DOCUMENTS_LISTS = $(CUON_DOCUMENTS)/Lists
+
+CUON_DOCUMENTS_LISTS_ADDRESSES = $(CUON_DOCUMENTS_LISTS)/Addresses
+CUON_DOCUMENTS_LISTS_ARTICLES = $(CUON_DOCUMENTS_LISTS)/Articles
+CUON_DOCUMENTS_LISTS_STOCK = $(CUON_DOCUMENTS_LISTS)/Stock
+
+
+
 CUON_DOCUMENTS_HIBERNATION = $(CUON_DOCUMENTS)/Hibernation
 CUON_DOCUMENTS_HIBERNATION_INCOMING = $(CUON_DOCUMENTS_HIBERNATION)/Incoming
 
@@ -88,6 +97,10 @@ dest_windows = $(dest_cuon)/Windows
 
 src_log = ./cuon/Logging/*.py
 dest_log = $(dest_cuon)/Logging
+
+src_help = ./cuon/Help/*.py
+dest_help = $(dest_cuon)/Help
+
 
 
 src_oo = ./cuon/OpenOffice/*.py
@@ -200,6 +213,7 @@ all :
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
 	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
+	if [ ! -d $(dest_help) ] ; then mkdir $(dest_help) ; fi ; cp $(src_help) $(dest_help) 
 	if [ ! -d $(dest_staff) ] ; then mkdir $(dest_staff) ; fi ; cp $(src_staff) $(dest_staff) 
 	if [ ! -d $(dest_vtk) ] ; then mkdir $(dest_vtk) ; fi ; cp $(src_vtk) $(dest_vtk) 
 	if [ ! -d $(dest_prefs_finance) ] ; then mkdir $(dest_prefs_finance) ; fi ; cp $(src_prefs_finance) $(dest_prefs_finance) 
@@ -288,7 +302,13 @@ install_server:
 	if  [ ! -d $(CUON_VAR) ] ; then mkdir $(CUON_VAR) ; fi 
 	if  [ ! -d $(CUON_DOCUMENTS) ] ; then mkdir $(CUON_DOCUMENTS) ; fi 
 
+	if  [ ! -d $(CUON_DOCUMENTS_LISTS) ] ; then mkdir $(CUON_DOCUMENTS_LISTS) ; fi 
+	if  [ ! -d $(CUON_DOCUMENTS_LISTS_ADDRESSES) ] ; then mkdir $(CUON_DOCUMENTS_LISTS_ADDRESSES) ; fi 
+	if  [ ! -d $(CUON_DOCUMENTS_LISTS_ARTICLES) ] ; then mkdir $(CUON_DOCUMENTS_LISTS_ARTICLES) ; fi 
+	if  [ ! -d $(CUON_DOCUMENTS_LISTS_STOCK) ] ; then mkdir $(CUON_DOCUMENTS_LISTS_STOCK) ; fi 
 
+    
+    
 	if  [ ! -d $(CUON_DOCUMENTS_HIBERNATION) ] ; then mkdir $(CUON_DOCUMENTS_HIBERNATION) ; fi 
 	if  [ ! -d $(CUON_DOCUMENTS_HIBERNATION_INCOMING) ] ; then mkdir $(CUON_DOCUMENTS_HIBERNATION_INCOMING) ; fi 
 
@@ -325,7 +345,15 @@ install_server_cu:
 	scp  ../cuon_server/src/cuonxmlrpc $(CUWEB)/etc/init.d
 	scp  ../cuon_server/src/cuonai $(CUWEB)/etc/init.d
 	scp  ../cuon_server/src/cuonweb $(CUWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonreport $(CUWEB)/etc/init.d
+
+	scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
+	scp /etc/cuon/server.ini $(CUWEB)/etc/cuon
+    
 	rsync -v -e ssh ../cuon_server/src/*.py $(CUWEBSHARE)/cuon_server/src
 	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CUWEBSHARE)/cuon_server/src/cuon
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/* $(CUWEBSHARE)/cuon_server/src/cuon/Reports
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/XML/* $(CUWEBSHARE)/cuon_server/src/cuon/Reports/XML
+
 
 

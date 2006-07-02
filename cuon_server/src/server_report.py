@@ -12,7 +12,7 @@ import locale, gettext
 
 
 locale.setlocale (locale.LC_ALL, '')
-APP = 'cuon_report'
+APP = 'cuon_server_report'
 DIR = '/usr/share/locale'
 
 gettext.bindtextdomain (APP, DIR)

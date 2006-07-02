@@ -28,59 +28,27 @@ from  cuon.Addresses.selectionDialog import selectionDialog1
 import os.path
 import cuon.XMLRPC.xmlrpc
 
-from cuon.PDF.standardlist import standardlist
+from cuon.Databases.dumps import dumps
+
 import cuon.PDF.XML.report_addresses_phone1
 import copy
 
-class lists_addresses_phone1(selectionDialog1, standardlist):
+class lists_addresses_phone1(selectionDialog1, dumps):
 
     
     def __init__(self):
         selectionDialog1.__init__(self)
-        standardlist.__init__(self)
-
-        rep = cuon.PDF.XML.report_addresses_phone1.report_addresses_phone1()
-        self.dicReportData =  rep.dicReportData
-
+        dumps.__init__(self)
         
-        print "lists_addresses_phone1 start"
-        
-        sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('phonelist.pdf') ))
-        sFile = self.setFileName ( _('Test' ))
- 
-      
-    
+
 
         
     def on_okbutton1_clicked(self,event):
         print 'ok'
-        sFile  = self.getWidget('eFiledata').get_text()
-        self.pdfFile = os.path.normpath(sFile)
         dicSearchfields = self.readSearchDatafields()
-        self.out(dicSearchfields)
-        di1 = self.getWidget('dialog1')
-        di1.hide()
+        Pdf = self.rpc.callRP('Report.server_address_phonelist1', dicSearchfields, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
 
-        dicResult =  self.rpc.callRP('Address.getPhonelist1', dicSearchfields, self.dicUser)
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],types.UnicodeType):
-                    try:
-                        i[j] = (i[j].decode('utf-8')).encode('latin-1')
-                    except:
-                        pass
-            
-
-    
-        self.out( dicResult )
-        print dicResult
-        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-        
-        self.dicResults['address'] = dicResult
-        self.loadXmlReport('addresses_phonelist1', 'ReportAddressLists')
-
-
-   
     def readSearchDatafields(self):
         dicSearchfields = {}
         dicSearchfields['eLastnameFrom'] = self.getWidget('eLastnameFrom').get_text()
