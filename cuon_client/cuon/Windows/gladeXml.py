@@ -108,11 +108,11 @@ class gladeXml(dumps):
         liW = self.xml.get_widget_prefix('')
         liW2 = []
         for i in liW:
-            print  i.get_name()[0:3]
+            self.printOut(  i.get_name()[0:3])
             if i.get_name()[0:3] == 'mi_':
                 liW2.append(i)
         
-        print 'Widgets = ', `liW2`
+        self.printOut( 'Widgets = ', `liW2`)
         return liW2
 
 
@@ -122,7 +122,7 @@ class gladeXml(dumps):
     
     def initMenuItems(self):
         self.liAllMenuItems =  self.getWidgets('mi_')
-        print 'MenuItems by Init = ', self.liAllMenuItems 
+        self.printOut( 'MenuItems by Init = ', self.liAllMenuItems )
 
     def enableAllMenuItems(self):
         for i in self.liAllMenuItems:
@@ -142,7 +142,7 @@ class gladeXml(dumps):
         else:
             liMenuItems = []
         item = self.getWidget(sMenuItem)
-        print 'item by Enable Menu', `item`
+        self.printOut( 'item by Enable Menu', `item`)
         if cKey:
             item = self.addKeyToItem(item,cKey)
             
@@ -165,14 +165,14 @@ class gladeXml(dumps):
             liMenuItems =  self.dictEnabledMenuItems[sName]
             for i in liMenuItems:
                 if i != None:
-                    print 'GladeXML-Name = ',sName
+                    self.printOut( 'GladeXML-Name = ',sName)
                     i.set_sensitive(True)
 
                     
-                    print 'GladeXML-Widget-Name = ', i.get_name()
+                    self.printOut( 'GladeXML-Widget-Name = ', i.get_name())
                     
                 else:
-                    print 'No Menuitem'
+                    self.printOut( 'No Menuitem')
 
     def disableMenuItem(self, sName):
         try:
@@ -181,18 +181,18 @@ class gladeXml(dumps):
                 if i != None:
                     i.set_sensitive(False)
                 else:
-                    print 'No Menuitem'
+                    self.printOut( 'No Menuitem')
             
         except:
-            print 'No Menuitem'
+            self.printOut( 'No Menuitem')
             
         
 
     def writeAllGladeFiles(self):
 
         nameOfGladeFiles  = cPickle.loads(eval(self.doDecode(self.rpc.callRP('Database.getInfo', 'nameOfGladeFiles'))))
-        print 'nameOfGladefiles' + `nameOfGladeFiles`
-        print len(nameOfGladeFiles)
+        self.printOut( 'nameOfGladefiles' + `nameOfGladeFiles`)
+        self.printOut( len(nameOfGladeFiles))
         
         for i in range(0,len(nameOfGladeFiles)):
             self.writeGlade(nameOfGladeFiles[i])
@@ -201,7 +201,7 @@ class gladeXml(dumps):
     
     def addMenuItem(self, item,sMenue):
         sub1 = item.get_submenu()
-        print 'sub1 = ', `sub1`
+        self.printOut( 'sub1 = ', `sub1`)
         newItem = gtk.MenuItem(label = sMenue)
         sub1.append(newItem)
         item.set_submenu(sub1)

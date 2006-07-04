@@ -62,16 +62,23 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         if userType:
            if userType == 'cuon':
-               dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
-               dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
-               self.out('py_checkUser dSession is found')
+                try:
+                    dSession['SessionID'] = self.dicVerifyUser[sUser]['SessionID']
+                    dSession['endTime'] = self.dicVerifyUser[sUser]['endTime']
+                    if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
+                        ok = sUser
+                except:
+                    #dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
+                    #dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
+                    #self.out('py_checkUser dSession is found')
+                    pass
         
-        self.out('Session = ' + `dSession`)
-        if dSession:
-            if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
-                ok = sUser
-        
-        self.out('end checkUser ok = ' + `ok`)
+        #self.out('Session = ' + `dSession`)
+##        if dSession:
+##            if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
+##                ok = sUser
+##        
+##        self.out('end checkUser ok = ' + `ok`)
         return ok
         
     def authenticate(self, name, password, request):
@@ -96,6 +103,9 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
             self.out('4 -- createSessionID User is write ')
+            self.dicVerifyUser[sUser] = {}
+            self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
+            self.dicVerifyUser[sUser]['endTime'] = `s['endTime']`
         else:
             self.out('createSessionID User not found')
         if not s.has_key('SessionID'):

@@ -10,74 +10,34 @@
 
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
+from cuon.Windows.rawWindow import rawWindow
 
-import sys
-import types
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gtk.glade
-import gobject
-from gtk import TRUE, FALSE
 
-from cuon.Databases.SingleData import SingleData
-import logging
-from cuon.Windows.windows  import windows
-from  cuon.Addresses.selectionDialog import selectionDialog1
-
-import os.path
-import cuon.XMLRPC.xmlrpc
-
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_articles_number1
-import copy
-
-class lists_articles_number1(selectionDialog1, standardlist):
+class lists_articles_number1(rawWindow):
 
     
     def __init__(self):
-        selectionDialog1.__init__(self,'articles_search1.xml')
-        standardlist.__init__(self)
-
-        rep = cuon.PDF.XML.report_articles_number1.report_articles_number1()
-        self.dicReportData =  rep.dicReportData
-
+        rawWindow.__init__(self)
+        
+        self.loadGlade('articles_search1.xml')
+        self.win1 = self.getWidget('dialog1')
         
         print "lists_articles_number1 start"
         
-        sFile = self.getWidget('eFiledata').set_text(self.setFileName (_('articles_number1.pdf') ))
-        sFile = self.setFileName ( _('Test' ))
  
-      
-    
-
-        
     def on_okbutton1_clicked(self,event):
         print 'ok'
-        sFile  = self.getWidget('eFiledata').get_text()
-        self.pdfFile = os.path.normpath(sFile)
         dicSearchfields = self.readSearchDatafields()
-        self.out(dicSearchfields)
+        Pdf = self.rpc.callRP('Report.server_articles_number1', dicSearchfields, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
         di1 = self.getWidget('dialog1')
         di1.hide()
-
-        dicResult =  self.rpc.callRP('Article.getArticlelist1', dicSearchfields, self.dicUser)
-        for i in dicResult:
-            for j in i.keys():
-                if isinstance(i[j],types.UnicodeType):
-                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
-            
-
     
-        self.out( dicResult )
-        print dicResult
-        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+    def on_cancelbutton1_clicked(self,event):
+        print 'cancel'
+        di1 = self.getWidget('dialog1')
+        di1.hide()
         
-        self.dicResults['articles'] = dicResult
-        self.loadXmlReport('articles_number1', 'ReportArticleLists')
-
-
-   
     def readSearchDatafields(self):
         dicSearchfields = {}
         dicSearchfields['eNumberFrom'] = self.getWidget('eNumberFrom').get_text()
@@ -86,27 +46,50 @@ class lists_articles_number1(selectionDialog1, standardlist):
         dicSearchfields['eDesignationFrom'] = self.getWidget('eDesignationFrom').get_text()
         dicSearchfields['eDesignationTo'] = self.getWidget('eDesignationTo').get_text()
         
- ##       dicSearchfields['eCityFrom'] = self.getWidget('eCityFrom').get_text()
-##        dicSearchfields['eCityTo'] = self.getWidget('eCityTo').get_text()
-
-##        dicSearchfields['eCountryFrom'] = self.getWidget('eCountryFrom').get_text()
-##        dicSearchfields['eCountryTo'] = self.getWidget('eCountryTo').get_text()
-
+ 
 
         return dicSearchfields
-    
+            
         
-    def on_cancelbutton1_clicked(self,event):
-        print 'cancel'
-        di1 = self.getWidget('dialog1')
-        di1.hide()
+##    def on_okbutton1_clicked_old(self,event):
+##        print 'ok'
+##        sFile  = self.getWidget('eFiledata').get_text()
+##        self.pdfFile = os.path.normpath(sFile)
+##        dicSearchfields = self.readSearchDatafields()
+##        self.out(dicSearchfields)
+##        di1 = self.getWidget('dialog1')
+##        di1.hide()
+##
+##        dicResult =  self.rpc.callRP('Article.getArticlelist1', dicSearchfields, self.dicUser)
+##        for i in dicResult:
+##            for j in i.keys():
+##                if isinstance(i[j],types.UnicodeType):
+##                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
+##            
+##
+##    
+##        self.out( dicResult )
+##        print dicResult
+##        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+##        
+##        self.dicResults['articles'] = dicResult
+##        self.loadXmlReport('articles_number1', 'ReportArticleLists')
+##
+##
+##   
 
-
-    def on_bFileDialog_clicked(self, event):
-        print self.filedata
-        self.getWidget('fileselection1').set_filename(self.filedata[0])
-        self.getWidget('fileselection1').show()
-        
-  
-
-  
+##        
+##    def on_cancelbutton1_clicked(self,event):
+##        print 'cancel'
+##        di1 = self.getWidget('dialog1')
+##        di1.hide()
+##
+##
+##    def on_bFileDialog_clicked(self, event):
+##        print self.filedata
+##        self.getWidget('fileselection1').set_filename(self.filedata[0])
+##        self.getWidget('fileselection1').show()
+##        
+##  
+##
+##  

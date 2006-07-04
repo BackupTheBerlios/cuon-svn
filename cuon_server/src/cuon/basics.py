@@ -17,7 +17,7 @@ class basics(xmlrpc.XMLRPC):
         self.debug = 0
         
         self.CUON_FS = None  
-        
+        self.dicVerifyUser = {} 
        
         self.XMLRPC_PORT = 7080
         self.XMLRPC_HOST = 'localhost'
@@ -39,6 +39,7 @@ class basics(xmlrpc.XMLRPC):
         self.REPORTPATH = "/usr/share/cuon/cuon_server/src/cuon/Reports/XML"
         self.DocumentPathHibernationIncoming = '/var/cuon/Documents/Hibernation/Incoming'
         self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
+        self.DocumentPathListsArticles = '/var/cuon/Documents/Lists/Articles'
         
         self.WIKI_PORT = 7084
         self.ONLINE_BOOK = 'http://84.244.7.139:7084/?action=xmlrpc2'
@@ -131,7 +132,7 @@ class basics(xmlrpc.XMLRPC):
     
     def writeLog(self, sLogEntry, debugValue = 1):
         debugValue = 1
-        print 'debugValue', debugValue
+        #print 'debugValue', debugValue
         if debugValue > 0:
         
             file = open('/tmp/cuon_server.log','a')

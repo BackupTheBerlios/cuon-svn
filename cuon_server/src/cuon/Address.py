@@ -120,7 +120,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
-    def xmlrpc_getPhonelist11(self, dicSearchlist, dicUser):
+    def getPhonelist11(self, dicSearchlist, dicUser):
         import string 
         
         sSql = 'select address.id as address_id, address.lastname as address_lastname, address.lastname2 as ddress_lastname2, address.firstname as address_firstname, address.street as address_street, address.zip as ddress_zip, address.city as address_city, address.phone as address_phone, '

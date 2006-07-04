@@ -13,6 +13,7 @@ import cuon.User
 import cuon.AI
 import cuon.Address
 import cuon.Article
+import cuon.Stock
 import cuon.Order
 import cuon.Finances
 import cuon.Misc
@@ -44,7 +45,9 @@ r = cuon.CuonFuncs.CuonFuncs()
 oiCal = cuon.iCal.iCal()
 oDatabase = cuon.Database.Database()
 oUser = cuon.User.User()
+oStock = cuon.Stock.Stock()
 oAI = cuon.AI.AI()
+
 oAddress = cuon.Address.Address()
 oArticle = cuon.Article.Article()
 oOrder = cuon.Order.Order()
@@ -58,6 +61,7 @@ r.putSubHandler('iCal', oiCal)
 r.putSubHandler('Database', oDatabase)
 r.putSubHandler('User', oUser)
 r.putSubHandler('AI', oAI)
+r.putSubHandler('Stock', oStock)
 r.putSubHandler('Article', oArticle)
 r.putSubHandler('Address', oAddress)
 r.putSubHandler('Order', oOrder)

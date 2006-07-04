@@ -28,16 +28,13 @@ from  cuon.Addresses.selectionDialog import selectionDialog1
 import os.path
 import cuon.XMLRPC.xmlrpc
 
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_stockgoods_number1
 import copy
 
-class lists_stockgoods_number1(selectionDialog1, standardlist):
+class lists_stockgoods_number1:
 
     
     def __init__(self):
         selectionDialog1.__init__(self,'stockgoods_search1.xml')
-        standardlist.__init__(self)
 
         rep = cuon.PDF.XML.report_stockgoods_number1.report_stockgoods_number1()
         self.dicReportData =  rep.dicReportData

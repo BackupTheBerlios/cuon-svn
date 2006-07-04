@@ -13,18 +13,15 @@
 
 
 from  cuon.Addresses.selectionDialog import selectionDialog1
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_cab_monthly
 #from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path
 
-class  standard_cab_monthly(selectionDialog1, standardlist):
+class  standard_cab_monthly(selectionDialog1):
     
     def __init__(self, dicCab):
 
         selectionDialog1.__init__(self,'cab_search1.xml')
-        standardlist.__init__(self)
         
         rep = cuon.PDF.XML.report_cab_monthly.report_cab_monthly()
         self.dicReportData =  rep.dicReportData

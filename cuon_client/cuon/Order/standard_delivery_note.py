@@ -13,17 +13,12 @@
 
 
 
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_order_standard_invoice
-from cuon.Misc.fileSelection import fileSelection
 import types
 import os.path
 
-class standard_delivery_note(standardlist, fileSelection):
+class standard_delivery_note:
     
     def __init__(self, dicOrder):
-        
-        standardlist.__init__(self)
         
         rep = cuon.PDF.report_order_standard_invoice.report_order_standard_invoice()
         self.dicReportData =  rep.dicReportData

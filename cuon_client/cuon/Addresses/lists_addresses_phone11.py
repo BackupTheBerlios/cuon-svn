@@ -10,11 +10,10 @@
 
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
-import cuon.XMLRPC.xmlrpc
-
-
-import cuon.PDF.XML.report_addresses_phone1
-import copy
+##import cuon.XMLRPC.xmlrpc
+##
+##
+##import copy
 from cuon.Windows.rawWindow import rawWindow
 
 class lists_addresses_phone11(rawWindow):

@@ -1,4 +1,4 @@
-##Copyright (C) [2003-2004]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003-2004]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -12,11 +12,8 @@
 
 
 
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.report_addresses_phone1
 
-class standard_bill(standardlist):
+class standard_bill:
     def __init__(self):
-        standardlist.__init__(self)
-        
+        pass
     

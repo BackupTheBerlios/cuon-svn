@@ -30,7 +30,7 @@ class Stock(xmlrpc.XMLRPC, basics):
         act = 0
         client = dicUser['client']
         sSql = "select id from articles where number = '" + ar_id + "'"
-        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         if result != 'NONE':
            try:
               id1 = result[0]['id']
@@ -47,7 +47,7 @@ class Stock(xmlrpc.XMLRPC, basics):
         sSql = sSql + "group by  b.number, b.designation order by b.number "
         self.writeLog('goods-List1 Sql = ' + `sSql` )
         dicUser['noWhereClient'] = 'YES'
-        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         try:
            act = result[0]['amount']
         except:

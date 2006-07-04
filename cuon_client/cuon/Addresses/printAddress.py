@@ -28,18 +28,14 @@ from  cuon.Addresses.selectionDialog import selectionDialog1
 import os.path
 import cuon.XMLRPC.xmlrpc
 
-from cuon.PDF.standardlist import standardlist
-import cuon.PDF.XML.report_printAddress
 import copy
 
-class printAddress( standardlist):
+class printAddress:
 
     
     def __init__(self, resultSet):
 
-        standardlist.__init__(self)
 
-        rep = cuon.PDF.XML.report_printAddress.report_printAddress()
         self.dicReportData =  rep.dicReportData
 
         

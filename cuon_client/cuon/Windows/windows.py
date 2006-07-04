@@ -130,7 +130,7 @@ class windows(rawWindow, MyXML, messages):
         dicSearchfields = {}
    
         for key in dicWidgets.keys():
-            print key
+            self.printOut(key)
             text = self.getWidget(dicWidgets[key]).get_text()
             if text:
                 dicSearchfields[key] = text
@@ -144,11 +144,11 @@ class windows(rawWindow, MyXML, messages):
             entry = entries.getEntryAtIndex(i)
             # do some stuff with the entry
             ##self.out('entry = ' + entry.getName())
-            print 'entry = ' + entry.getName()
+            self.printOut( 'entry = ' + entry.getName())
             if entry.getDuty():
                 e1 = self.getWidget(entry.getName())
                 if e1:
-                    print 'Duty is True by : ' + `entry.getName()`
+                    self.printOut( 'Duty is True by : ' + `entry.getName()`)
                     e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
 ##                e1.connect('key_press_event', self.closeMenuEntries)
         self.setEntriesEditable(sName, False)
@@ -189,18 +189,18 @@ class windows(rawWindow, MyXML, messages):
         
         
     def setStatusBar(self):
-        print '###----> Statusbar <----###'
+        self.printOut( '###----> Statusbar <----###')
 
         self.statusbar = gtk.Statusbar()
         vbox = self.getWidget('vbox1')
         if vbox:
-            print '###----> vbox exist'
+            self.printOut( '###----> vbox exist')
             vbox.pack_end(self.statusbar,expand=False)
             self.sb_id = self.statusbar.get_context_id('general_info')
             self.statusbar.show()
        
         else:
-            print '###----> vbox do not exist <---###'
+            self.printOut( '###----> vbox do not exist <---###')
             
 
     def setStatusbarText( self, liText):
@@ -233,21 +233,21 @@ class windows(rawWindow, MyXML, messages):
             else:
                 self.progressbar.set_fraction(fPercent/100.0)
         else:
-            print 'no progressbar'
+            self.printOut( 'no progressbar')
             
         return True
     
     def checkKey(self, event,sState, cKey):
         ok = False
-        print 'keyval', event.keyval
-        print 'keyval-name', gtk.gdk.keyval_name(event.keyval)
-        print 'state', event.state
+        self.printOut( 'keyval', event.keyval)
+        self.printOut( 'keyval-name', gtk.gdk.keyval_name(event.keyval))
+        self.printOut( 'state', event.state)
         if (event.state and self.dicKeys[sState])  or sState == 'NONE':
-            print 'state is found'
+            self.printOut( 'state is found')
             
             if gtk.gdk.keyval_name(event.keyval) == cKey :
                 ok = True
-        print 'ok = ', ok
+        self.printOut( 'ok = ', ok)
         return ok
         
         
@@ -416,19 +416,19 @@ class windows(rawWindow, MyXML, messages):
     def loadProfile(self, sProfile = None):
         
         if  not sProfile :
-            print self.oUser.getDicUser()['Name']
+            self.printOut( self.oUser.getDicUser()['Name'])
             sProfile = self.rpc.callRP('User.getNameOfStandardProfile', self.oUser.getDicUser() )
 
-            print 'Profile = '
-            print sProfile
+            self.printOut( 'Profile = ')
+            self.printOut( sProfile)
 
-        print '-----------------------------------------------------------------------------------'
-        print 'Profile = ', sProfile
+        self.printOut( '-----------------------------------------------------------------------------------')
+        self.printOut( 'Profile = ', sProfile)
         
         if sProfile:
             result = self.rpc.callRP('User.getStandardProfile',  sProfile,  self.oUser.getDicUser() )
-            print 'Result Profile'
-            print result
+            self.printOut( 'Result Profile')
+            self.printOut( result)
             if result != 'NONE':
                 self.oUser.userLocales ='de'
                 if result.has_key('encoding'):
@@ -465,12 +465,12 @@ class windows(rawWindow, MyXML, messages):
 
                 
         else:
-            print 'no standard-Profile defined'
-        print '__________________________________________________________'
-        print 'Profile loaded'
+            self.printOut( 'no standard-Profile defined')
+        self.printOut( '__________________________________________________________')
+        self.printOut( 'Profile loaded')
         self.oUser.refreshDicUser()
-        print self.oUser.getDicUser()
-        print '__________________________________________________________'
+        self.printOut( self.oUser.getDicUser())
+        self.printOut( '__________________________________________________________')
         
 
     

@@ -108,11 +108,6 @@ dest_help = $(dest_cuon)/Help
 src_oo = ./cuon/OpenOffice/*.py
 dest_oo = $(dest_cuon)/OpenOffice
 
-src_pdf = ./cuon/PDF/*.py 
-dest_pdf = $(dest_cuon)/PDF
-
-src_pdf_xml = ./cuon/PDF/XML/*.py
-dest_pdf_xml = $(dest_cuon)/PDF/XML
 
 
 
@@ -123,8 +118,6 @@ src_preferences_xml = ./cuon/Preferences/XML/*.py
 dest_preferences_xml = $(dest_cuon)/Preferences/XML
 
 
-src_repgen = ./cuon/ReportGenerator/*.py
-dest_repgen = $(dest_cuon)/ReportGenerator
 
 src_stock = ./cuon/Stock/*.py
 dest_stock = $(dest_cuon)/Stock
@@ -207,11 +200,8 @@ all :
 	if [ ! -d $(dest_log) ] ; then mkdir $(dest_log) ; fi ; cp $(src_log) $(dest_log) 
 	if [ ! -d $(dest_oo) ] ; then mkdir $(dest_oo) ; fi ; cp $(src_oo) $(dest_oo) 
 	if [ ! -d $(dest_misc) ] ; then mkdir $(dest_misc) ; fi ; cp $(src_misc) $(dest_misc) 
-	if [ ! -d $(dest_pdf) ] ; then mkdir $(dest_pdf) ; fi ; cp $(src_pdf) $(dest_pdf) 
 	if [ ! -d $(dest_preferences) ] ; then mkdir $(dest_preferences) ; fi ; cp $(src_preferences) $(dest_preferences) 
-	if [ ! -d $(dest_pdf_xml) ] ; then mkdir $(dest_pdf_xml) ; fi ; cp $(src_pdf_xml) $(dest_pdf_xml) 
 	if [ ! -d $(dest_preferences_xml) ] ; then mkdir $(dest_preferences_xml) ; fi ; cp $(src_preferences_xml) $(dest_preferences_xml) 
-	if [ ! -d $(dest_repgen) ] ; then mkdir $(dest_repgen) ; fi ; cp $(src_repgen) $(dest_repgen) 
 	if [ ! -d $(dest_stock) ] ; then mkdir $(dest_stock) ; fi ; cp $(src_stock) $(dest_stock) 
 	if [ ! -d $(dest_email) ] ; then mkdir $(dest_email) ; fi ; cp $(src_email) $(dest_email) 
 	if [ ! -d $(dest_dms) ] ; then mkdir $(dest_dms) ; fi ; cp $(src_dms) $(dest_dms) 
@@ -319,7 +309,6 @@ install_server:
 	cp ./GUI/*.glade2 $(dest_glade) 
 	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
 	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
-	find ./cuon/PDF/XML -name "*.xml" -exec cp {} $(dest_report) \; 
 	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
 	cp -R ../cuon_server/src  $(SERVERDIRSHARE)/cuon_server/
 	cp -R ../cuon_server/src/cuonai /etc/init.d

@@ -14,7 +14,7 @@ class Article(xmlrpc.XMLRPC, basics):
         
         
 
-    def xmlrpc_getArticlelist1(self, dicSearchlist, dicUser):
+    def getArticlelist1(self, dicSearchlist, dicUser):
         
         import string 
         

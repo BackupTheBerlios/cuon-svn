@@ -131,17 +131,17 @@ class projectwindow(chooseWindows):
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
         self.singleProject.save()
-        self.setEntriesEditable(self.EntriesProjectes, FALSE)
+        self.setEntriesEditable(self.EntriesProject, FALSE)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
         self.singleProject.newRecord()
-        self.setEntriesEditable(self.EntriesProjectes, TRUE)
+        self.setEntriesEditable(self.EntriesProject, TRUE)
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesProjectes, TRUE)
+        self.setEntriesEditable(self.EntriesProject, TRUE)
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
         p = printAddress.printAddress(self.singleProject.getFirstRecord() )

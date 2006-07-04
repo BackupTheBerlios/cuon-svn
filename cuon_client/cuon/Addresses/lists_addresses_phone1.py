@@ -11,25 +11,24 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import sys
-import types
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gtk.glade
-import gobject
-from gtk import TRUE, FALSE
+##import sys
+##import types
+##import pygtk
+##pygtk.require('2.0')
+##import gtk
+##import gtk.glade
+##import gobject
+##from gtk import TRUE, FALSE
+##
+##from cuon.Databases.SingleData import SingleData
+##import logging
+###from cuon.Windows.windows  import windows
+##
+##import os.path
+##import cuon.XMLRPC.xmlrpc
 
-from cuon.Databases.SingleData import SingleData
-import logging
-#from cuon.Windows.windows  import windows
+#import copy
 
-import os.path
-import cuon.XMLRPC.xmlrpc
-
-
-import cuon.PDF.XML.report_addresses_phone1
-import copy
 from cuon.Windows.rawWindow import rawWindow
 
 class lists_addresses_phone1(rawWindow):
