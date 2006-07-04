@@ -15,8 +15,7 @@ class ReportServer(xmlrpc.XMLRPC, basics):
         self.ReportDefs = {}
         
         self.report = Reports.report.report()
-
-
+ 
 ##    def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
 ##        import Reports.report_hibernation_incoming_document
 ##        import Garden

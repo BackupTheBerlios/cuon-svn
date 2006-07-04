@@ -23,10 +23,12 @@ import logging
 from cuon.XML.MyXML import MyXML
 import dataEntry
 import cuon.XMLRPC.xmlrpc
-import cuon.TypeDefs.typedefs
+
 import cuon.Windows.cyr_load_entries
-from  cuon.Windows.gladeXml import gladeXml
+#from  cuon.Windows.gladeXml import gladeXml
 # from cuon.XMLRPC.xmlrpc import xmlrpc
+from  cuon.Windows.rawWindow import rawWindow
+
 from cuon.Misc.messages import messages
 import datetime
 import time
@@ -38,24 +40,16 @@ import os.path
 import re
 
 
-class windows(MyXML, gladeXml, messages):
+class windows(rawWindow, MyXML, messages):
 
     def __init__(self):
-        gladeXml.__init__(self)
+        #gladeXml.__init__(self)
+        rawWindow.__init__(self)
         MyXML.__init__(self)
         messages.__init__(self)
         self.Search = False
         
         #xmlrpc.__init__(self)
-        
-        self.openDB()
-        self.oUser = None
-        self.dicUser = None
-        self.dicSqlUser = None
-        self.dicUserKeys = None
-        self.loadUserInfo()
-
-        self.td = cuon.TypeDefs.typedefs.typedefs()
         
         self.ModulNumber = 1
         self.MN = {}
@@ -83,8 +77,7 @@ class windows(MyXML, gladeXml, messages):
         
         self.checkClient()
             
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         self.testV = "Hallo"
         
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -111,18 +104,7 @@ class windows(MyXML, gladeXml, messages):
         if not self.dicUser['client'] > 0:
             self.dicUser = {}
             
-    def loadUserInfo(self):
-        self.oUser = self.loadObject('User')
-        if self.oUser:
-            print `self.oUser`
-            self.dicUser = self.oUser.getDicUser()
-            self.dicSqlUser = self.oUser.getSqlDicUser()
-            print `self.dicUser`
-        else:
-            self.dicUser = {}
-        self.dicUserKeys = self.oUser.getDicUserKeys()
-           
-    
+
         
      
     def setDataEntries(self,sName, dicDE):

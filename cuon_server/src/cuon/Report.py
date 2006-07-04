@@ -4,17 +4,10 @@ from twisted.web import xmlrpc
  
 from basics import basics
 import Database
-# localisation
-import locale, gettext
 
 
-locale.setlocale (locale.LC_ALL, '')
-APP = 'cuon_report'
-DIR = '/usr/share/locale'
+#locale.setlocale (locale.LC_ALL, '')
 
-gettext.bindtextdomain (APP, DIR)
-gettext.textdomain (APP)
-gettext.install (APP, DIR, unicode=1)
 
 
 class Report(xmlrpc.XMLRPC, basics):
@@ -24,8 +17,7 @@ class Report(xmlrpc.XMLRPC, basics):
         self.debugFinances = 1
         self.ReportDefs = {}
         self.ReportDefs['ReportPath'] = self.REPORTPATH
-
-
+        
         self.ReportDefs['DocumentPathHibernationIncoming'] = self.DocumentPathHibernationIncoming
         self.ReportDefs['DocumentPathListsAddresses'] = self.DocumentPathListsAddresses
 

@@ -41,6 +41,7 @@ class basics(xmlrpc.XMLRPC):
         self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
         
         self.WIKI_PORT = 7084
+        self.ONLINE_BOOK = 'http://84.244.7.139:7084/?action=xmlrpc2'
         
         try:
             self.cpServer = ConfigParser.ConfigParser()

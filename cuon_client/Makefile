@@ -7,9 +7,11 @@ CUWEB = root@cuweb:/
 CUWEBEXECDIR = $(CUWEB)/usr/bin
 CUWEBLOCALEXECDIR = $(CUWEB)/usr/local/bin
 CUWEBCONFIGDIR = $(CUWEB)/etc/cuon
-
+CUWEBLOCALE = $(CUWEB)/usr/share/locale/de/LC_MESSAGES
 SERVERDIRCONFIG = /etc/cuon
+
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
+
 dest_glade = $(SERVERDIRSHARE)/glade
 dest_report = $(SERVERDIRSHARE)/report
 iClientDir = /opt/Projekte/cuon/iClient
@@ -324,7 +326,11 @@ install_server:
 	cp -R ../cuon_server/src/cuonweb /etc/init.d
 	cp -R ../cuon_server/src/cuonxmlrpc /etc/init.d
 	cp -R ../cuon_server/src/cuonreport /etc/init.d
- 
+
+	 
+	msgfmt -o ../cuon_server/src/de.mo ../cuon_server/src/de.po
+	if [ ! -d $(I18LDIR_DE) ] ; then mkdir $(I18LDIR_DE) ; fi ; 
+	cp ../cuon_server/src/de.mo $(I18LDIR_DE)/cuon_server.mo 
 
 install_zope_cy:
 	scp ../cuon_server/src/cuon_zope.py $(zope_extension)
@@ -349,6 +355,7 @@ install_server_cu:
 
 	scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
 	scp /etc/cuon/server.ini $(CUWEB)/etc/cuon
+	scp ../cuon_server/src/de.mo $(CUWEBLOCALE)/cuon_server.mo
     
 	rsync -v -e ssh ../cuon_server/src/*.py $(CUWEBSHARE)/cuon_server/src
 	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CUWEBSHARE)/cuon_server/src/cuon

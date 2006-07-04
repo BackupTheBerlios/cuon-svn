@@ -10,49 +10,33 @@
 
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
-
-import sys
-from types import *
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gtk.glade
-import gobject
-from gtk import TRUE, FALSE
-
-from cuon.Databases.SingleData import SingleData
-import logging
-from cuon.Windows.windows  import windows
-from  cuon.Addresses.selectionDialog import selectionDialog1
-
-import os.path
 import cuon.XMLRPC.xmlrpc
 
-from cuon.PDF.standardlist import standardlist
+
+import cuon.PDF.XML.report_addresses_phone1
 import copy
-import cuon.PDF.XML.report_addresses_phone11
-import types
+from cuon.Windows.rawWindow import rawWindow
 
-
-class lists_addresses_phone11(selectionDialog1, standardlist):
-
+class lists_addresses_phone11(rawWindow):
     
     def __init__(self):
-        selectionDialog1.__init__(self)
-        standardlist.__init__(self)
-        rep = cuon.PDF.XML.report_addresses_phone11.report_addresses_phone11()
-        self.dicReportData =  rep.dicReportData
+        rawWindow.__init__(self)
+        self.loadGlade('addresses_search1.xml')
+        self.win1 = self.getWidget('dialog1')
 
-      
-        print "lists_addresses_phone1 start"
-        self.getWidget('eFiledata').set_text( self.setFileName(_('partnerphonelist.pdf')))
-    
-      
-       
-        self.dicText['yOffSet'] = 20
+ 
+
+    def on_okbutton1_clicked(self,event):
+        print 'ok'
+        dicSearchfields = self.readSearchDatafields()
+        Pdf = self.rpc.callRP('Report.server_address_phonelist11', dicSearchfields, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
+        di1 = self.getWidget('dialog1')
+        di1.hide()
+
 
         
-    def on_okbutton1_clicked(self,event):
+    def on_okbutton1_clicked_old(self,event):
         print 'ok'
         sFile  = self.getWidget('eFiledata').get_text()
         self.pdfFile = os.path.normpath(sFile)
@@ -102,14 +86,7 @@ class lists_addresses_phone11(selectionDialog1, standardlist):
         di1.hide()
 
 
-    def on_bFileDialog_clicked(self, event):
-        print self.filedata
-        self.getWidget('fileselection1').set_filename(self.filedata[0])
-        self.getWidget('fileselection1').show()
-        
-  
-
-  
+    
                                                                                                     
                                                                                                     
                                                                                                     

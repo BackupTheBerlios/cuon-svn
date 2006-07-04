@@ -22,7 +22,7 @@ class helpwindow(windows):
         self.win1 = self.getWidget('HelpMainwindow')
         
 
-        s = self.rpc.getHelpBook()
+        s = self.rpc.callRP('Misc.getHelpBook')
         s = s.decode('utf-8').encode('latin-1')
         document = gtkhtml2.Document()
         

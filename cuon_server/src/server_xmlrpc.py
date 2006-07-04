@@ -19,6 +19,24 @@ import cuon.Misc
 import cuon.Garden
 import cuon.Report
 
+import locale, gettext
+
+print 'Start'
+# localisation
+APP = 'cuon_server'
+DIR = '/usr/share/locale'
+locale.setlocale (locale.LC_ALL, '')
+
+gettext.bindtextdomain (APP, DIR)
+gettext.textdomain (APP)
+gettext.install (APP,DIR,unicode=1)
+_ = gettext.gettext 
+s = gettext.find(APP)
+
+print 'Gettext', s
+
+s = _('Lastname')
+print s
 
 baseSettings = cuon.basics.basics()
 print baseSettings.WEBPATH

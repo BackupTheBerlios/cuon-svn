@@ -22,25 +22,22 @@ from gtk import TRUE, FALSE
 
 from cuon.Databases.SingleData import SingleData
 import logging
-from cuon.Windows.windows  import windows
-from  cuon.Addresses.selectionDialog import selectionDialog1
+#from cuon.Windows.windows  import windows
 
 import os.path
 import cuon.XMLRPC.xmlrpc
 
-from cuon.Databases.dumps import dumps
 
 import cuon.PDF.XML.report_addresses_phone1
 import copy
+from cuon.Windows.rawWindow import rawWindow
 
-class lists_addresses_phone1(selectionDialog1, dumps):
-
+class lists_addresses_phone1(rawWindow):
     
     def __init__(self):
-        selectionDialog1.__init__(self)
-        dumps.__init__(self)
-        
-
+        rawWindow.__init__(self)
+        self.loadGlade('addresses_search1.xml')
+        self.win1 = self.getWidget('dialog1')
 
         
     def on_okbutton1_clicked(self,event):
@@ -48,6 +45,8 @@ class lists_addresses_phone1(selectionDialog1, dumps):
         dicSearchfields = self.readSearchDatafields()
         Pdf = self.rpc.callRP('Report.server_address_phonelist1', dicSearchfields, self.dicUser)
         self.showPdf(Pdf, self.dicUser)
+        di1 = self.getWidget('dialog1')
+        di1.hide()
 
     def readSearchDatafields(self):
         dicSearchfields = {}
@@ -73,11 +72,7 @@ class lists_addresses_phone1(selectionDialog1, dumps):
         di1.hide()
 
 
-    def on_bFileDialog_clicked(self, event):
-        print self.filedata
-        self.getWidget('fileselection1').set_filename(self.filedata[0])
-        self.getWidget('fileselection1').show()
-        
+   
   
 
   

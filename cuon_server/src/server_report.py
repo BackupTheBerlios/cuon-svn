@@ -7,17 +7,6 @@ from twisted.web import server
 
 import cuon.CuonFuncs
 import cuon.ReportServer
-# localisation
-import locale, gettext
-
-
-locale.setlocale (locale.LC_ALL, '')
-APP = 'cuon_server_report'
-DIR = '/usr/share/locale'
-
-gettext.bindtextdomain (APP, DIR)
-gettext.textdomain (APP)
-gettext.install (APP, DIR, unicode=1)
 
 
 baseSettings = cuon.basics.basics()
