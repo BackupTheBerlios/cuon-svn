@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-07-04, 09:37:33 -->
+<!-- Saved: 2006-07-04, 09:42:42 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1365,13 +1365,6 @@
       <Dir>Reports</Dir>
       <Dir>XML</Dir>
       <Name>stockgoods_number1.xml</Name>
-    </Other>
-    <Other>
-      <Dir>cuon_server</Dir>
-      <Dir>src</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Reports</Dir>
-      <Name>XML</Name>
     </Other>
     <Other>
       <Dir>cuon_client</Dir>
