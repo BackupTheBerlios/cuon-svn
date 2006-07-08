@@ -21,7 +21,6 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
 import string
 
 
@@ -39,7 +38,9 @@ import cuon.DMS.dms
 import SingleProject
 import SingleProjectPhases
 import SingleProjectTasks
-import SingleProjectResourses
+import SingleProjectStaffResources
+import SingleProjectMaterialResources
+
 
 
 
@@ -54,6 +55,10 @@ class projectwindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         
         self.singleProject = SingleProject.SingleProject(allTables)
+        self.singleProjectPhases = SingleProjectPhases.SingleProjectPhases(allTables)
+        self.singleProjectTasks = SingleProjectTasks.SingleProjectTasks(allTables)
+        self.singleProjectTaskStaff = SingleProjectStaffResources.SingleProjectStaffResources(allTables)
+        self.singleProjectTaskMaterial = SingleProjectMaterialResources.SingleProjectMaterialResources(allTables)
         
         self.allTables = allTables
        
@@ -68,8 +73,17 @@ class projectwindow(chooseWindows):
 
 
         self.EntriesProject = 'project.xml'
+        self.EntriesPhase = 'project_phases.xml'
+        self.EntriesTask = 'project_tasks.xml'
+        self.EntriesTaskStaff = 'project_staff_resources.xml'
+        self.EntriesTaskMaterial = 'project_material_resources.xml'
+        
         
         self.loadEntries(self.EntriesProject)
+        self.loadEntries(self.EntriesPhase)
+        self.loadEntries(self.EntriesTask)
+        self.loadEntries(self.EntriesTaskStaff)
+        self.loadEntries(self.EntriesTaskMaterial)
         
         self.singleProject.setEntries(self.getDataEntries(self.EntriesProject) )
         self.singleProject.setGladeXml(self.xml)
@@ -80,30 +94,72 @@ class projectwindow(chooseWindows):
         self.singleProject.setTree(self.xml.get_widget('tree1') )
 
   
-      
+        self.singleProjectPhases.setEntries(self.getDataEntries(self.EntriesPhase) )
+        self.singleProjectPhases.setGladeXml(self.xml)
+        self.singleProjectPhases.setTreeFields( ['name', 'designation'] )
+        self.singleProjectPhases.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleProjectPhases.setTreeOrder('name')
+        self.singleProjectPhases.setListHeader([_('Name'), _('Designation')])
+        self.singleProjectPhases.setTree(self.xml.get_widget('tree1') )
+
+        self.singleProjectTasks.setEntries(self.getDataEntries(self.EntriesTask) )
+        self.singleProjectTasks.setGladeXml(self.xml)
+        self.singleProjectTasks.setTreeFields( ['name', 'designation'] )
+        self.singleProjectTasks.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleProjectTasks.setTreeOrder('name')
+        self.singleProjectTasks.setListHeader([_('Name'), _('Designation')])
+        self.singleProjectTasks.setTree(self.xml.get_widget('tree1') )
+
+        self.singleProjectTaskStaff.setEntries(self.getDataEntries(self.EntriesTaskStaff) )
+        self.singleProjectTaskStaff.setGladeXml(self.xml)
+        self.singleProjectTaskStaff.setTree(self.xml.get_widget('tree1') )
+
+        self.singleProjectTaskMaterial.setEntries(self.getDataEntries(self.EntriesTaskMaterial) )
+        self.singleProjectTaskMaterial.setGladeXml(self.xml)
+        self.singleProjectTaskMaterial.setTree(self.xml.get_widget('tree1') )
+
 
 
         # Menu-items
         self.initMenuItems()
 
         # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','mi_address1')
-        self.addEnabledMenuItems('tabs','mi_bank1')
-        self.addEnabledMenuItems('tabs','mi_misc1')
-        self.addEnabledMenuItems('tabs','mi_partner1')
-        self.addEnabledMenuItems('tabs','mi_schedul1')
+        self.addEnabledMenuItems('tabs','mi_project1')
+        self.addEnabledMenuItems('tabs','mi_phase1')
+        self.addEnabledMenuItems('tabs','mi_task1')
+        self.addEnabledMenuItems('tabs','mi_staff_resources1')
+        self.addEnabledMenuItems('tabs','mi_material_resources1')
 
                
         # seperate Menus
-        self.addEnabledMenuItems('address','mi_address1')
-        self.addEnabledMenuItems('partner','mi_partner1')
-        self.addEnabledMenuItems('schedul','mi_schedul1')
-        self.addEnabledMenuItems('bank','mi_bank1')
-        self.addEnabledMenuItems('misc','mi_misc1')
-
-      
-         
+        self.addEnabledMenuItems('project','mi_project1')
+        self.addEnabledMenuItems('phase','mi_phase1')
+        self.addEnabledMenuItems('tasks','mi_task1')
+        self.addEnabledMenuItems('staff_resources','mi_staff_resources1')
+        self.addEnabledMenuItems('material_resources','mi_material_resources1')
         
+        # enabledMenues for Project
+        self.addEnabledMenuItems('editProject','mi_new1' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editProject','mi_clear1', self.dicUserKeys['project_delete'])
+#        self.addEnabledMenuItems('editProject','mi_print1', self.dicUserKeys['project_print'])
+        self.addEnabledMenuItems('editProject','mi_edit1', self.dicUserKeys['project_edit'])
+        
+        
+        self.addEnabledMenuItems('editPhase','phasenew1' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editPhase','phasedelete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editPhase','phaseedit1', self.dicUserKeys['project_edit'])
+
+        self.addEnabledMenuItems('editTasks','task_new' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editTasks','task_delete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editTasks','task_edit', self.dicUserKeys['project_edit'])
+
+        self.addEnabledMenuItems('editStaffRes','task_new' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editStaffRes','task_delete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editStaffRes','task_edit', self.dicUserKeys['project_edit'])
+        
+        self.addEnabledMenuItems('editMaterialRes','task_new' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editMaterialRes','task_delete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editMaterialRes','task_edit', self.dicUserKeys['project_edit'])
 
         # tabs from notebook
         self.tabProject = 0
@@ -126,32 +182,135 @@ class projectwindow(chooseWindows):
         
 
 
-    #Menu Address
+    #Menu Project
   
     def on_save1_activate(self, event):
-        self.out( "save addresses v2")
+        self.out( "save project v2")
         self.singleProject.save()
-        self.setEntriesEditable(self.EntriesProject, FALSE)
+        self.setEntriesEditable(self.EntriesProject, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
-        self.out( "new addresses v2")
+        self.out( "new project v2")
         self.singleProject.newRecord()
-        self.setEntriesEditable(self.EntriesProject, TRUE)
+        self.setEntriesEditable(self.EntriesProject, True)
 
     def on_edit1_activate(self, event):
-        self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesProject, TRUE)
-    def on_print1_activate(self, event):
-        self.out( "print addresses v2")
-        p = printAddress.printAddress(self.singleProject.getFirstRecord() )
+        self.out( "edit project v2")
+        self.setEntriesEditable(self.EntriesProject, True)
         
     def on_delete1_activate(self, event):
-        self.out( "delete addresses v2")
+        self.out( "delete project v2")
         self.singleProject.deleteRecord()
 
 
+    #Menu Phases
+  
+    def on_phasesave1_activate(self, event):
+        self.out( "save projectphases v2")
+        self.singleProjectPhases.projectId = self.singleProject.ID
+        self.singleProjectPhases.save()
+        self.setEntriesEditable(self.EntriesPhase, False)
+        self.tabChanged()
+        
+    def on_phasenew1_activate(self, event):
+        self.out( "new projectphases v2")
+        self.singleProjectPhases.newRecord()
+        self.setEntriesEditable(self.EntriesPhase, True)
 
+    def on_phaseedit1_activate(self, event):
+        self.out( "edit projectphases v2")
+        self.setEntriesEditable(self.EntriesPhase, True)
+        
+        
+    def on_phasedelete1_activate(self, event):
+        self.out( "delete projectphases v2")
+        self.singleProjectPhases.deleteRecord()
+        
+#Menu Tasks
+  
+    def on_task_save1_activate(self, event):
+        self.out( "save projectphases v2")
+        self.singleProjectTasks.phaseId = self.singleProjectPhases.ID
+        self.singleProjectTasks.save()
+        self.setEntriesEditable(self.EntriesTask, False)
+        self.tabChanged()
+        
+    def on_tasknew1_activate(self, event):
+        self.out( "new projectphases v2")
+        self.singleProjectTasks.newRecord()
+        self.setEntriesEditable(self.EntriesTask, True)
+
+    def on_taskedit1_activate(self, event):
+        self.out( "edit projectphases v2")
+        self.setEntriesEditable(self.EntriesTask, True)
+        
+        
+    def on_task_delete1_activate(self, event):
+        self.out( "delete projectphases v2")
+        self.singleProjectTasks.deleteRecord()
+                
+        
+#Menu Staff resources
+  
+    def on_staff_resources_save1_activate(self, event):
+        self.out( "save projectphases v2")
+        print 'staff2'
+        self.singleProjectTaskStaff.taskId = self.singleProjectTasks.ID
+        print 'task4 = ', self.singleProjectTasks.ID
+
+        self.singleProjectTaskStaff.save()
+        print 'task5 = ', self.singleProjectTasks.ID
+        
+        self.setEntriesEditable(self.EntriesTaskStaff, False)
+        print 'task6 = ', self.singleProjectTasks.ID
+        
+        self.tabChanged()
+        print 'task7 = ', self.singleProjectTasks.ID
+        
+    def on_staff_resources_new1_activate(self, event):
+        self.out( "new projectphases v2")
+        print 'staff1'
+        print 'task1 = ', self.singleProjectTasks.ID
+        self.singleProjectTaskStaff.newRecord()
+        print 'task2 = ', self.singleProjectTasks.ID
+        self.setEntriesEditable(self.EntriesTaskStaff, True)
+        print 'task3 = ', self.singleProjectTasks.ID
+
+    def on_staff_resources_edit1_activate(self, event):
+        self.out( "edit projectphases v2")
+        self.setEntriesEditable(self.EntriesTaskStaff, True)
+        
+        
+    def on_staff_resources_delete1_activate(self, event):
+        self.out( "delete projectphases v2")
+        self.singleProjectTaskStaff.deleteRecord()
+                
+        
+ #Menu Material resources
+  
+    def on_material_resources_save1_activate(self, event):
+        self.out( "save projectphases v2")
+        self.singleProjectTaskMaterial.taskId = self.singleProjectTasks.ID
+        self.singleProjectTaskMaterial.save()
+        self.setEntriesEditable(self.EntriesTaskMaterial, False)
+        self.tabChanged()
+        
+    def on_material_resources_new1_activate(self, event):
+        self.out( "new projectphases v2")
+        self.singleProjectTaskMaterial.newRecord()
+        self.setEntriesEditable(self.EntriesTaskMaterial, True)
+
+    def on_material_resources_edit1_activate(self, event):
+        self.out( "edit projectphases v2")
+        self.setEntriesEditable(self.EntriesTaskMaterial, True)
+        
+        
+    def on_material_resources_delete1_activate(self, event):
+        self.out( "delete projectphases v2")
+        self.singleProjectTaskMaterial.deleteRecord()
+                
+               
     def on_bShowDMS_clicked(self, event):
         print 'dms clicked'
         if self.singleProject.ID > 0:
@@ -189,26 +348,118 @@ class projectwindow(chooseWindows):
         self.singleProject.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
         self.out(self.singleProject.sWhere, self.ERROR)
         self.refreshTree()
+    # Calendar events
+    
+    # Project
+    def on_calendar1_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eProjectStartAt')
+        
+    def on_calendar2_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eProjectEndsAt')
+        
+    def on_eProjectStartAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'calendar1')
+            
+    def on_eProjectEndsAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'calendar2')
+    
+    # Phase
 
+    def on_PhaseCalendar1_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'ePhaseStartAt')
+        
+    def on_PhaseCalendar2_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'ePhaseEndsAt')
+        
+    def on_ePhaseStartAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'PhaseCalendar1')
+            
+    def on_ePhaseEndsAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'PhaseCalendar2')
+        
+        
+    
+    # Tasks 
+    
+    def on_TaskCalendar1_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eTaskStartAt')
+        
+    def on_TaskCalendar2_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eTaskEndsAt')
+        
+    def on_eTaskStartAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'TaskCalendar1')
+            
+    def on_eTaskEndsAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'TaskCalendar2')
+                
+        
+    # Staff-Resources 
+    
+    def on_TaskCalendar1_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eTaskStartAt')
+        
+    def on_TaskCalendar2_day_selected_double_click(self, event):
+        print event
+        print event.get_date()
+        self.setDateToEntry(event,'eTaskEndsAt')
+        
+    def on_eTaskStartAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'TaskCalendar1')
+            
+    def on_eTaskEndsAt_changed(self, event):
+        print event 
+        self.setDateToCalendar(event.get_text(),'TaskCalendar2')
+                
+                
+        
     def refreshTree(self):
         self.singleProject.disconnectTree()
-        self.singlePartner.disconnectTree()
         
         if self.tabOption == self.tabProject:
             self.singleProject.connectTree()
             self.singleProject.refreshTree()
+            
+        elif self.tabOption == self.tabPhases:
+            self.singleProjectPhases.sWhere  ='where project_id = ' + `int(self.singleProject.ID)`
+            self.singleProjectPhases.connectTree()
+            self.singleProjectPhases.refreshTree()
+                
         elif self.tabOption == self.tabTasks:
-            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleProject.ID)`
-            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
-
+            self.singleProjectTasks.sWhere  ='where phase_id = ' + `int(self.singleProjectPhases.ID)`
+            self.singleProjectTasks.connectTree()
+            self.singleProjectTasks.refreshTree()
+            
         elif self.tabOption == self.tabStaffResources:
-            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleProject.ID)`
-            self.singlePartner.connectTree()
-            self.singlePartner.refreshTree()
+            self.singleProjectTaskStaff.sWhere  ='where task_id = ' + `int(self.singleProjectTasks.ID)`
+            self.singleProjectTaskStaff.connectTree()
+            self.singleProjectTaskStaff.refreshTree()
+            
         elif self.tabOption == self.tabMaterialResources:
-            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)`
-            self.singleSchedul.connectTree()
-            self.singleSchedul.refreshTree()
+            self.singleProjectTaskMaterial.sWhere  ='where task_id = ' + `int(self.singleProjectTasks.ID)`
+            self.singleProjectTaskMaterial.connectTree()
+            self.singleProjectTaskMaterial.refreshTree()
             
      
 
@@ -216,39 +467,34 @@ class projectwindow(chooseWindows):
          
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
+        print self.tabProject
         
-        if self.tabOption == self.tabProject:
-            #Address
+        if self.tabOption == self.tabProject :
+            #Project
             self.disableMenuItem('tabs')
-            self.enableMenuItem('address')
+            self.enableMenuItem('project')
 
             self.actualEntries = self.singleProject.getEntries()
-            self.editAction = 'editAddress'
+            self.editAction = 'editProject'
             self.setStatusbarText([''])
           
-            self.setTreeVisible(TRUE)
-            
-
-            self.out( 'Seite 0')
-
+            self.setTreeVisible(True)
 
         elif self.tabOption == self.tabPhases:
-            self.out( 'Seite 2')
             self.disableMenuItem('tabs')
-            self.enableMenuItem('bank')
+            self.enableMenuItem('phase')
            
-            self.editAction = 'editBank'
-            self.setTreeVisible(FALSE)
+            self.editAction = 'editPhase'
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleProject.sStatus])
 
 
         elif self.tabOption == self.tabTasks:
-            self.out( 'Seite 3')
 
             self.disableMenuItem('tabs')
-            self.enableMenuItem('misc')
-            self.editAction = 'editMisc'
-            self.setTreeVisible(FALSE)
+            self.enableMenuItem('tasks')
+            self.editAction = 'editTask'
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleProject.sStatus])
 
 
@@ -257,26 +503,26 @@ class projectwindow(chooseWindows):
         elif self.tabOption == self.tabStaffResources:
             #Partner
             self.disableMenuItem('tabs')
-            self.enableMenuItem('partner')
+            self.enableMenuItem('staff_resources')
             
-            self.out( 'Seite 1')
-            self.editAction = 'editPartner'
-            self.setTreeVisible(TRUE)
+            self.editAction = 'editStaffRes'
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleProject.sStatus])
 
             
         elif self.tabOption == self.tabMaterialResources:
-            #Scheduling
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('schedul')
+            print 'tabchanged material Resources'
             
-            self.out( 'Seite 4')
-            self.editAction = 'editSchedul'
-            self.setTreeVisible(TRUE)
-            self.setStatusbarText([self.singlePartner.sStatus])
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('material_resources')
+            
+            self.editAction = 'editMaterialRes'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleProjectTaskMaterial.sStatus])
 
         # refresh the Tree
+        print "refresh Tree 1"
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         

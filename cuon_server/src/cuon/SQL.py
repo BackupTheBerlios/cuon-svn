@@ -27,7 +27,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
 
         # put here sUser
-        #print 'sUser=', sUser
+        print 'sUser=', sUser
         #DSN = 'dbname=cuon host=localhost user=' + sUser
         conn = pg.connect(dbname = 'cuon',host = 'localhost', user = sUser)
         #curs = conn.cursor()

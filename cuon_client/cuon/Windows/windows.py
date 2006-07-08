@@ -473,5 +473,45 @@ class windows(rawWindow, MyXML, messages):
         self.printOut( '__________________________________________________________')
         
 
-    
+    def setDateToEntry(self, event, entryName):
+        ok = False
+        try:
+            print event
+            t0 = event.get_date()
+            print t0
+            t1 = `t0[0]`+' '+ `t0[1] +1` + ' ' + `t0[2]` 
+            print t1
+            t2 = time.localtime(time.mktime(time.strptime(t1,'%Y %m %d')))
+            sTime = time.strftime(self.dicUser['DateformatString'], t2)
+            print sTime
+           
+            eDate = self.getWidget(entryName)
+            eDate.set_text(sTime)
+            ok = True
+        except:
+          pass  
+        
+        return ok
+        
+
+    def setDateToCalendar(self, sDate, entryName):
+        ok = False
+        try:
+            
+            Cal  = self.getWidget(entryName)
+            dt = time.strptime(sDate, self.dicUser['DateformatString'])
+            print 'Date', dt
+            print dt[0]
+            print dt[1]
+            Cal.select_month(dt[1] - 1, dt[0])
+            Cal.select_day(dt[3])
+
+        except:
+            pass
+        
+        return ok
+        
+        
+        
+        
         

@@ -334,7 +334,8 @@ class addresswindow(chooseWindows):
        
     def on_eSchedulDate_changed(self, event):
         self.out(event)
-        al = self.getWidget('calendar1')
+        setDateToCalendar(event.get_text(),'calendar1')
+        #cal = self.getWidget('calendar1')
         
         #cal.select_month(month, year)
         # cal.select_day(day)

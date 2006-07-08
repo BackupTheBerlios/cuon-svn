@@ -27,7 +27,7 @@ class SingleProject(SingleData):
         # tables.dbd and address
         self.sNameOfTable =  "projects"
         self.xmlTableDef = 0
-        print 'allTables = ',`allTables`
+        #print 'allTables = ',`allTables`
         self.loadTable(allTables)
         # self.saveTable()
 

@@ -655,10 +655,10 @@ class SingleData(gladeXml, logs):
                     if oValue == '':
                         oValue = '01.01.1900'
                     else:
-                        self.self.printOut('Date by Verify:', oValue)
+                        self.printOut('Date by Verify:', oValue)
                         oDate =  time.strptime(oValue, self.sqlDicUser['DateformatString'])
                         oValue = time.strftime("%Y/%m/%d",oDate)
-                        self.self.printOut('Date by Verify 2:', oValue)
+                        self.printOut('Date by Verify 2:', oValue)
 
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify

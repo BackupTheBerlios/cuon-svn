@@ -17,7 +17,7 @@ class basics(xmlrpc.XMLRPC):
         self.debug = 0
         
         self.CUON_FS = None  
-        self.dicVerifyUser = {} 
+        
        
         self.XMLRPC_PORT = 7080
         self.XMLRPC_HOST = 'localhost'

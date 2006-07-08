@@ -170,6 +170,13 @@ class User:
         self.setDicUserKeys('staff_fee_new','n')
         self.setDicUserKeys('staff_fee_print','p')
 
+        # project
+        self.setDicUserKeys('project_edit','e')
+        self.setDicUserKeys('project_delete','d')
+        self.setDicUserKeys('project_new','n')
+        self.setDicUserKeys('project_print','p')
+
+
         self.refreshDicUser()
 
         

@@ -59,20 +59,22 @@ class Database(xmlrpc.XMLRPC, SQL):
     def checkUser(self, sUser, sID, userType = None):
         ok = None
         dSession = {}
-        
+        print sUser, userType
         if userType:
            if userType == 'cuon':
                 try:
-                    dSession['SessionID'] = self.dicVerifyUser[sUser]['SessionID']
-                    dSession['endTime'] = self.dicVerifyUser[sUser]['endTime']
+                    #dSession['SessionID'] = self.dicVerifyUser[sUser]['SessionID']
+                    #dSession['endTime'] = self.dicVerifyUser[sUser]['endTime']
+                    dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
+                    dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
                     if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
                         ok = sUser
                 except:
                     #dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
                     #dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
                     #self.out('py_checkUser dSession is found')
-                    pass
-        
+                    ok = 'Test'
+                    
         #self.out('Session = ' + `dSession`)
 ##        if dSession:
 ##            if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
@@ -103,9 +105,10 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
             self.out('4 -- createSessionID User is write ')
-            self.dicVerifyUser[sUser] = {}
-            self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
-            self.dicVerifyUser[sUser]['endTime'] = `s['endTime']`
+            #self.dicVerifyUser[sUser] = {}
+            #self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
+            #self.dicVerifyUser[sUser]['endTime'] = `s['endTime']`
+            
         else:
             self.out('createSessionID User not found')
         if not s.has_key('SessionID'):

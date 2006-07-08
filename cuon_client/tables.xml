@@ -1749,8 +1749,25 @@
       <comment />
     </field>
     
-    
-  </table>
+     <field>
+      <name>weight</name>
+
+      <type>float</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    </table>
 
   <!--table: articles_purchase-->
 
@@ -5511,7 +5528,7 @@
       <notnull>1</notnull>
       <size>140</size>
       <default />
-      <comment>project id  </comment>
+      <comment>phase id  </comment>
     </field>
     
     <field>
@@ -5601,7 +5618,17 @@
   
 
  <field>
-      <name>working_day</name>
+      <name>planed_working_day</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+    <field>
+      <name>real_working_day</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -5611,8 +5638,9 @@
       <comment />
     </field>   
     
+    
     <field>
-      <name>planed_time_begin1</name>
+      <name>planed_time_begin</name>
       <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -5623,7 +5651,7 @@
     </field>
     
      <field>
-      <name>planed_time_ends1</name>
+      <name>planed_time_ends</name>
       <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -5633,16 +5661,29 @@
       <comment />
     </field>  
     
-    <field>
-      <name>planed_time_in_Hours1</name>
-      <type>float</type>
+   
+     <field>
+      <name>real_time_begin</name>
+      <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
-      <size>0</size>
+      <size>10</size>
       <default />
       <comment />
     </field>
+    
+     <field>
+      <name>real_time_ends</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment />
+    </field>  
+    
 </table>
 <!--Projects Tasks Material Resources -->
 
@@ -5677,6 +5718,46 @@
     </field>
   
 
+    <field>
+      <name>get_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+    <field>
+      <name>unit</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>   
+    <field>
+      <name>planed_amount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
+    <field>
+      <name>real_amount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>   
 </table>
 
   <database_sequence>

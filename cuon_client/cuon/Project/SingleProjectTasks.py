@@ -25,9 +25,9 @@ class SingleProjectTasks(SingleData):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "projects_tasks"
+        self.sNameOfTable =  "project_tasks"
         self.xmlTableDef = 0
-        print 'allTables = ',`allTables`
+        #print 'allTables = ',`allTables`
         self.loadTable(allTables)
         # self.saveTable()
 
@@ -41,5 +41,10 @@ class SingleProjectTasks(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
- 
+        self.phaseId = 0
+    
+    def readNonWidgetEntries(self, dicValues):
+        print 'readNonWidgetEntries(self) by SinglePartner'
+        dicValues['phase_id'] = [self.phaseId, 'int']
+        return dicValues    
         

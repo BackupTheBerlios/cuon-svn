@@ -342,7 +342,7 @@ install_server_cu:
 	scp  ../cuon_server/src/cuonweb $(CUWEB)/etc/init.d
 	scp  ../cuon_server/src/cuonreport $(CUWEB)/etc/init.d
 
-	scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
+	#scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
 	scp /etc/cuon/server.ini $(CUWEB)/etc/cuon
 	scp ../cuon_server/src/de.mo $(CUWEBLOCALE)/cuon_server.mo
     

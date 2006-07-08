@@ -26,7 +26,7 @@ print 'Start'
 # localisation
 APP = 'cuon_server'
 DIR = '/usr/share/locale'
-locale.setlocale (locale.LC_ALL, '')
+#locale.setlocale (locale.LC_ALL, '')
 
 gettext.bindtextdomain (APP, DIR)
 gettext.textdomain (APP)

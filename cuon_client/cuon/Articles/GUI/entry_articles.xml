@@ -75,6 +75,19 @@
       <fg_color>0</fg_color>
       
     </entry>
+    <entry>
+      <name>eWeight</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>weight</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    
   </table>
   
   </entries_for_table>

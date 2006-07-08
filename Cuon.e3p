@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-07-05, 00:17:10 -->
+<!-- Saved: 2006-07-08, 00:20:36 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -15,24 +15,6 @@
       <Dir>cuon_client</Dir>
       <Dir>cuon</Dir>
       <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>reportField.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>ReportGenerator</Dir>
-      <Name>reportGenerator.py</Name>
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
@@ -816,12 +798,6 @@
       <Dir>cuon_client</Dir>
       <Dir>cuon</Dir>
       <Dir>Project</Dir>
-      <Name>SingleProjectResourses.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Project</Dir>
       <Name>SingleProjectTasks.py</Name>
     </Source>
     <Source>
@@ -1155,6 +1131,60 @@
       <Dir>Addresses</Dir>
       <Name>selectionDialog.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectStaffResources.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectMaterialResources.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectMaterialResources.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectStaffResources.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>project.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProject.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectTasks.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Name>SingleProjectPhases.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1279,6 +1309,103 @@
       <Dir>cuon_client</Dir>
       <Name>Makefile</Name>
     </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>cuonai</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>cuonreport</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>cuonweb</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>cuonxmlrpc</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project_material_resources.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project_phases.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project_staff_resources.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project_tasks.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_articles_purchase.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_articles_sales.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_articles_stock.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_articles_webshop.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_articles.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>src</Dir>
+      <Dir>Project</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_project_material_resources.xml</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1286,10 +1413,10 @@
     <VcsOtherData>{'standardLayout': 1}</VcsOtherData>
   </Vcs>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>
