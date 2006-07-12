@@ -37,10 +37,10 @@ class SingleProjectStaffResources(SingleData):
         #self.athread.start()
         
         self.listHeader['size'] = [25,10,25,25,10]
-        self.setTreeFields( ['staff_id'] )
+        self.setTreeFields( ['(select lastname from staff where id = staff_id) as staff_name','planed_working_day', 'real_working_day'] )
         self.setTreeOrder('staff_id, planed_working_day')
-        self.setListHeader([_('staff'),_('planed')])
-        self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.setListHeader([_('staff'),_('planed'), _('real')])
+        self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
 
         self.statusfields = ['lastname', 'city']
 

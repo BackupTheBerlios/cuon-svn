@@ -40,7 +40,8 @@ import SingleProjectPhases
 import SingleProjectTasks
 import SingleProjectStaffResources
 import SingleProjectMaterialResources
-
+import cuon.Staff.staff
+import cuon.Staff.SingleStaff
 
 
 
@@ -59,6 +60,8 @@ class projectwindow(chooseWindows):
         self.singleProjectTasks = SingleProjectTasks.SingleProjectTasks(allTables)
         self.singleProjectTaskStaff = SingleProjectStaffResources.SingleProjectStaffResources(allTables)
         self.singleProjectTaskMaterial = SingleProjectMaterialResources.SingleProjectMaterialResources(allTables)
+
+        self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         
         self.allTables = allTables
        
@@ -320,22 +323,22 @@ class projectwindow(chooseWindows):
     
 
         
-    def on_chooseAddress_activate(self, event):
-        # choose Address from other Modul
-        if self.tabOption == self.tabProject:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singleProject.ID)
-            self.closeWindow()
-        elif self.tabOption == self.tabStaffResources:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singlePartner.ID)
-            self.closeWindow()
-
-        else:
-            print '############### No ID found,  choose ID -1 ###################'
-            self.setChooseValue('-1')
-            self.closeWindow()
- 
+##    def on_chooseAddress_activate(self, event):
+##        # choose Address from other Modul
+##        if self.tabOption == self.tabProject:
+##            print '############### Address choose ID ###################'
+##            self.setChooseValue(self.singleProject.ID)
+##            self.closeWindow()
+##        elif self.tabOption == self.tabStaffResources:
+##            print '############### Address choose ID ###################'
+##            self.setChooseValue(self.singlePartner.ID)
+##            self.closeWindow()
+##
+##        else:
+##            print '############### No ID found,  choose ID -1 ###################'
+##            self.setChooseValue('-1')
+##            self.closeWindow()
+## 
               
 
         
@@ -414,29 +417,46 @@ class projectwindow(chooseWindows):
         
     # Staff-Resources 
     
-    def on_TaskCalendar1_day_selected_double_click(self, event):
+    def on_staffCalendar1_day_selected_double_click(self, event):
         print event
         print event.get_date()
-        self.setDateToEntry(event,'eTaskStartAt')
+        self.setDateToEntry(event,'eSRPlanedDate')
         
-    def on_TaskCalendar2_day_selected_double_click(self, event):
+    def on_staffCalendar2_day_selected_double_click(self, event):
         print event
         print event.get_date()
-        self.setDateToEntry(event,'eTaskEndsAt')
+        self.setDateToEntry(event,'eSRRealDate')
         
-    def on_eTaskStartAt_changed(self, event):
+    def on_eSRPlanedDate_changed(self, event):
         print event 
-        self.setDateToCalendar(event.get_text(),'TaskCalendar1')
+        self.setDateToCalendar(event.get_text(),'staffCalendar1')
             
-    def on_eTaskEndsAt_changed(self, event):
+    def on_eSRRealDate_changed(self, event):
         print event 
-        self.setDateToCalendar(event.get_text(),'TaskCalendar2')
+        self.setDateToCalendar(event.get_text(),'staffCalendar2')
                 
                 
+    #choose Staff button
+    def on_bChooseStaff_clicked(self, event):
+        adr = cuon.Staff.staff.staffwindow(self.allTables)
+        adr.setChooseEntry(_('chooseStaff'), self.getWidget( 'eSRStaffNumber'))
+        
+    # signals from entry eSRStaffNumber
+    
+    def on_eSRStaffNumber_changed(self, event):
+        print 'eStaf changed'
+        eAdrField = self.getWidget('tvStaff')
+        liAdr = self.singleStaff.getAddress(self.getWidget( 'eSRStaffNumber').get_text())
+        self.setTextbuffer(eAdrField,liAdr)
         
     def refreshTree(self):
         self.singleProject.disconnectTree()
-        
+        self.singleProjectPhases.disconnectTree()
+        self.singleProjectTasks.disconnectTree()
+        self.singleProjectTaskStaff.disconnectTree()
+        self.singleProjectTaskMaterial.disconnectTree()
+
+
         if self.tabOption == self.tabProject:
             self.singleProject.connectTree()
             self.singleProject.refreshTree()

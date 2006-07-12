@@ -19,9 +19,9 @@ from gtk import TRUE, FALSE
 
 class User:
     """
-    @author: J�rgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 L�hne
-    @copyright: by J�rgen Hamel
+    @author: Jürgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 Löhne
+    @copyright: by Jürgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -97,23 +97,42 @@ class User:
         self.prefDMS['scan_white_level'] = 0.0
         self.prefDMS['scan_depth'] = 24
         self.prefDMS['scan_resolution'] = 300
+        
+        # Executables
+        self.prefDMS['exe'] = {}
+        self.prefDMS['exe']['writer'] = '/usr/bin/oowriter'
+        self.prefDMS['exe']['calc'] = '/usr/bin/oocalc'
+        self.prefDMS['exe']['draw'] = '/usr/bin/oodraw'
+        self.prefDMS['exe']['impress'] = '/usr/bin/ooimpress'
+        self.prefDMS['exe']['image'] = '/usr/bin/gimp'
+        self.prefDMS['exe']['music'] = '/usr/bin/xmms'
+        self.prefDMS['exe']['ogg'] = '/usr/bin/xmms'
+        self.prefDMS['exe']['wav'] = '/usr/bin/xmms'
+        self.prefDMS['exe']['pdf'] = '/usr/bin/evince'
+        self.prefDMS['exe']['tex'] = '/usr/bin/xemacs'
+        self.prefDMS['exe']['ltx'] = '/usr/bin/xemacs'
+        self.prefDMS['exe']['txt'] = '/usr/bin/gedit'
+        self.prefDMS['exe']['flowchart'] = '/usr/bin/dia'
+
+
+
         # File-format
         self.prefDMS['fileformat'] = {}
         self.prefDMS['fileformat']['scanImage'] = {'format':'Image Scanner', 'suffix':['NONE'], 'executable': 'INTERN'}
-        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw'], 'executable': '/usr/bin/oowriter'}
-        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc'], 'executable': '/usr/bin/oocalc'}
-        self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd'], 'executable': '/usr/bin/oodraw'}
-        self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sxi'], 'executable': '/usr/bin/ooimpress'}
-        self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf','jpg','gif','png'], 'executable': '/usr/bin/gimp'}
-        self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': '/usr/bin/xmms'}
-        self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': '/usr/bin/xmms'}
-        self.prefDMS['fileformat']['wav'] =  {'format':'WAV',  'suffix':['wav'], 'executable': '/usr/bin/xmms'}
-        self.prefDMS['fileformat']['txt'] =  {'format':'Text',  'suffix':['txt'], 'executable': '/usr/bin/gedit'}
-        self.prefDMS['fileformat']['tex'] =  {'format':'TEX',  'suffix':['tex',], 'executable': '/usr/bin/xemacs'}
-        self.prefDMS['fileformat']['latex'] =  {'format':'LATEX',  'suffix':['ltx',], 'executable': '/usr/bin/xemacs'}
-        self.prefDMS['fileformat']['pdf'] =  {'format':'Adobe PDF',  'suffix':['pdf',], 'executable': '/usr/bin/gpdf'}
+        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw'], 'executable': self.prefDMS['exe']['writer'] }
+        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc'], 'executable': self.prefDMS['exe']['calc']}
+        self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd'], 'executable': self.prefDMS['exe']['draw']}
+        self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sxi'], 'executable': self.prefDMS['exe']['impress']}
+        self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf','jpg','gif','png'], 'executable': self.prefDMS['exe']['image']}
+        self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': self.prefDMS['exe']['music']}
+        self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': self.prefDMS['exe']['ogg']}
+        self.prefDMS['fileformat']['wav'] =  {'format':'WAV',  'suffix':['wav'], 'executable': self.prefDMS['exe']['wav']}
+        self.prefDMS['fileformat']['txt'] =  {'format':'Text',  'suffix':['txt'], 'executable': self.prefDMS['exe']['txt']}
+        self.prefDMS['fileformat']['tex'] =  {'format':'TEX',  'suffix':['tex',], 'executable': self.prefDMS['exe']['tex']}
+        self.prefDMS['fileformat']['latex'] =  {'format':'LATEX',  'suffix':['ltx',], 'executable': self.prefDMS['exe']['ltx']}
+        self.prefDMS['fileformat']['pdf'] =  {'format':'Adobe PDF',  'suffix':['pdf',], 'executable': self.prefDMS['exe']['pdf']}
 
-        self.prefDMS['fileformat']['dia'] =  {'format':'DIA ', 'suffix':['dia'], 'executables': '/usr/bin/dia'}
+        self.prefDMS['fileformat']['dia'] =  {'format':'DIA ', 'suffix':['dia'], 'executables': self.prefDMS['exe']['flowchart']}
         
         
         

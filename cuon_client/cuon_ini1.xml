@@ -360,6 +360,11 @@
       <Glade-File>project.xml</Glade-File>
       <Glade-FileValue>/usr/share/cuon/glade/project.glade2</Glade-FileValue>
     </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>project_drange.xml</Glade-File>
+      <Glade-FileValue>/usr/share/cuon/glade/dRange.glade2</Glade-FileValue>
+    </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>staff.xml</Glade-File>

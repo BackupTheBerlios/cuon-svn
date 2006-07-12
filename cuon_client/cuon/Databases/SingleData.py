@@ -37,6 +37,7 @@ import cuon.XMLRPC.xmlrpc
 import cuon.Windows
 import time
 import base64
+import re
 
 
 class SingleData(gladeXml, logs):
@@ -72,6 +73,7 @@ class SingleData(gladeXml, logs):
         self.statusfields = []
         self.sStatus = ''
         self.firstRecord = None
+        self.p1 = re.compile('\(select .*\) as')
         
     def load(self, record, dicDetail = None):
         '''
@@ -714,8 +716,10 @@ class SingleData(gladeXml, logs):
     def getListEntries(self):
         liItems = []
         dicFields = {}
+        self.printOut('liFields',self.liFields)
         for i in self.liFields:
             entry = self.dicEntries.getEntryByName(i)
+            self.printOut('entry = ', `entry`)
             if entry:
                 dicFields[i] = entry.getVerifyType()
             elif i == 'id':
@@ -735,17 +739,26 @@ class SingleData(gladeXml, logs):
             dicLists = {}
             
         # self.out( dicLists)
-        self.printOut(  dicLists)
+        self.printOut( 'dicLists =',  dicLists)
+        
         try:
             for i in dicLists:
                 liSubItems =[]
                 for j in self.liFields:
+                    m = self.p1.match(j)
+                    self.printOut('m = ', m)
+                    if m:
+                        m1 = j[m.end():]
+                        self.printOut('m1 = ', m1)    
+                        j = m1.strip()
+                        self.printOut('j = ',j)    
                     sValue = i[j]
+                    self.printOut('sValue = ',sValue)
                     #if isinstance(sValue, types.StringType):
                     #    sValue = unicode(sValue, 'utf-7')
                     if isinstance(sValue, types.UnicodeType):
                         sValue = sValue.encode(self.sCoding)     
-                    # self.printOut( ( 'name of j = ' + `j` + 'Value = ' + `sValue`))
+                    self.printOut( ( 'name of j = ' + `j` + 'Value = ' + `sValue`))
                     if j != 'id':
                         entry = self.dicEntries.getEntryByName(j)
                         if entry:
@@ -754,13 +767,15 @@ class SingleData(gladeXml, logs):
 
                         else:
                             self.printOut( 'no entry with this  name found')
-                            sValue = None
+                            #sValue = None
 
 
                     liSubItems.append(sValue)
                 liItems.append(liSubItems)
-        except:
+        except Exception, param:
             self.printOut( 'Error ')
+            self.printOut( Exception,param)
+            
                 
         # self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
         # self.out( liItems)

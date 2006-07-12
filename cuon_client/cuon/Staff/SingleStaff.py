@@ -27,7 +27,7 @@ class SingleStaff(SingleData):
         # tables.dbd and address
         self.sNameOfTable =  "staff"
         self.xmlTableDef = 0
-        print 'allTables = ',`allTables`
+        #print 'allTables = ',`allTables`
         self.loadTable(allTables)
         # self.saveTable()
 

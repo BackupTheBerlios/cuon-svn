@@ -105,7 +105,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         if sWhere == None:
             sWhere = ''
             
-        dicEntries['status'] = 'string'
+        #dicEntries['status'] = 'string'
         
         sSql = 'select '
         

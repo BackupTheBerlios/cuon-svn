@@ -37,11 +37,14 @@ class setOfEntries:
     
 
     def getEntryByName(self, sName):
+        entry = None
         for i in range(self.getCountOfEntries()):
             entry = self.getEntryAtIndex(i)
             #self.out( entry.getSqlField() + ' = ' + sName )
             if entry.getSqlField() == sName:
                 return entry
+        return None
+        
 
            
 
