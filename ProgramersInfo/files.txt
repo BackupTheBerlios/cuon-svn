@@ -1,0 +1,145 @@
+# Database id 20 
+CUON/cuon/Databases/cyr_column.py,20,#88CCDD,450x120
+CUON/cuon/Databases/cyr_load_table.py,21,#88CCDD,480x120
+CUON/cuon/Databases/cyr_table.py,22,#88CCDD,480x150
+CUON/cuon/Databases/databases.py,23,#88CCDD,400x160
+CUON/cuon/Databases/dumps.py,24,#88CCDD,430x120
+CUON/cuon/Databases/SingleData.py,25,#88CCDD,400x120
+CUON/cuon/Databases/SingleDataTreeModel.py,26,#88CCDD,430x150
+CUON/cuon/Databases/SingleImportZip.py,27,#88CCDD,480x180
+CUON/cuon/Databases/import_generic1.py,28,#88CCDD,440x140
+CUON/cuon/Databases/import_generic2.py,29,#88CCDD,440x160
+CUON/cuon/Databases/SingleImport.py,2A,#88CCDD,430x180
+CUON/cuon/Databases/SingleCuon.py,2B,#88CCDD,450x180
+# Mainprogramm
+CUON/Cuon.py,01,#CDFF88,40x20
+CUON/cuon/Login/login.py,02,#CDFF88,70x20
+CUON/cuon/Login/User.py,03,#CDFF88,100x20
+# Addresses 100 
+CUON/cuon/Addresses/addresses.py,100,#DD55AA,50x100
+CUON/cuon/Addresses/lists_addresses_phone11.py,101,#DD55AA,80x100
+CUON/cuon/Addresses/lists_addresses_phone1.py,102,#DD55AA,80x140
+CUON/cuon/Addresses/SingleAddress.py,103,#DD55AA,50x160
+CUON/cuon/Addresses/SingleMisc.py,104,#DD55AA,50x180
+CUON/cuon/Addresses/SinglePartner.py,105,#DD55AA,80x160
+CUON/cuon/Addresses/SingleScheduling.py,106,#DD55AA,110x100
+CUON/cuon/Addresses/SingleCountry.py,107,#DD55AA,110x130
+#CUON/cuon/Addresses/printAddress.py,108,#DD55AA,110x160
+# Articles 110
+CUON/cuon/Articles/articles.py,110,#F8C241,50x200
+CUON/cuon/Articles/SingleArticlePurchase.py,111,#F8C241,80x200
+CUON/cuon/Articles/SingleArticle.py,112,#F8C241,80x230
+CUON/cuon/Articles/SingleArticleSale.py,113,#F8C241,80x260
+CUON/cuon/Articles/lists_articles_number1.py,114,#F8C241,110x200
+CUON/cuon/Articles/SingleArticleStock.py,115,#F8C241,150x200
+CUON/cuon/Articles/SingleArticleWebshop.py,116,#F8C241,180x200
+# Order,120
+CUON/cuon/Order/order.py,120,#EA7340,220x200
+CUON/cuon/Order/SingleOrderGet.py,121,#EA7340,250x200
+CUON/cuon/Order/SingleOrderPosition.py,122,#EA7340,250x230
+CUON/cuon/Order/SingleOrder.py,123,#EA7340,250x260
+CUON/cuon/Order/SingleOrderSupply.py,124,#EA7340,250x290
+#CUON/cuon/Order/standard_bill.py
+#CUON/cuon/Order/standard_delivery_note.py
+#CUON/cuon/Order/standard_invoice.py
+#CUON/cuon/Order/standard_pickup_note.py
+# typedef and xml, 40
+CUON/cuon/XML/MyXML.py,30,#4FB0BF,600x100
+CUON/cuon/XMLRPC/xmlrpc.py,31,#4FB0BF,600x160
+CUON/cuon/TypeDefs/typedefs.py,32,#4FB0BF,630x100
+#CUON/cuon/TypeDefs/typedefs_server.py
+# Windows 30
+CUON/cuon/Windows/chooseWindows.py,30,#17B5E4,400x210
+CUON/cuon/Windows/cyr_load_entries.py,31,#17B5E4,450x210
+CUON/cuon/Windows/dataEntry.py,32,#17B5E4,450x240
+CUON/cuon/Windows/gladeXml.py,33,#17B5E4,460x280
+CUON/cuon/Windows/setOfEntries.py,34,#17B5E4,460x210
+CUON/cuon/Windows/windows.py,35,#17B5E4,410x230
+CUON/cuon/Windows/rawWindow.py,36,#17B5E4,410x270
+# Logs 48
+CUON/cuon/Logging/logs.py,48,#4FA0BF,600x200
+
+#CUON/cuon/OpenOffice/letter.py
+#CUON/cuon/OpenOffice/ooconnect.py
+#CUON/cuon/OpenOffice/ooMain.py
+# Misc 51
+CUON/cuon/Misc/fileSelection.py,51,#681EC5,600x300
+CUON/cuon/Misc/misc.py,51,#681EC5,600x330
+CUON/cuon/Misc/messages.py,51,#681EC5,640x300
+# Preferences 60
+CUON/cuon/Preferences/preferences.py,60,#BF3B31,30x100
+CUON/cuon/Preferences/SinglePreferences.py,61,#BF3B31,30x130
+
+# Stock 130
+CUON/cuon/Stock/SingleStock.py,130,#EE4840,260x360
+CUON/cuon/Stock/stock.py,131,#EE4840,260x300
+CUON/cuon/Stock/SingleStockGoods.py,132,#EE4840,260x330
+CUON/cuon/Stock/lists_stockgoods_number1.py,133,#EE4840,220x300
+#Email 70
+CUON/cuon/E_Mail/sendEmail.py,70,#E324B7,30x150
+# DMS 140
+CUON/cuon/DMS/dms.py,140,#20DE71,220x500
+CUON/cuon/DMS/SingleDMS.py,141,#20DE71,220x530
+CUON/cuon/DMS/documentTools.py,142,#20DE71,220x560
+#CUON/cuon/VTK/mainLogo.py
+#CUON/cuon/VTK/test.py
+#PrefsFinances 150
+CUON/cuon/PrefsFinance/prefsFinance.py,150,#41B2BC,700x100
+CUON/cuon/PrefsFinance/SinglePrefsFinanceTop.py,151,#41B2BC,730x100
+CUON/cuon/PrefsFinance/SinglePrefsFinanceVat.py,152,#41B2BC,730x130
+CUON/cuon/PrefsFinance/SinglePrefsFinanceAcctInfo.py,153,#41B2BC,730x150
+CUON/cuon/PrefsFinance/SinglePrefsFinanceAcctPlan.py,154,#41B2BC,730x180
+# Webshop 160
+CUON/cuon/WebShop/webshop.py,161,#F6A64A,300x500
+CUON/cuon/WebShop/SingleWebshop.py,162,#F6A64A,330x500
+# Finaces 170
+CUON/cuon/Finances/cashAccountBook.py,170,#C9F64A,200x700
+CUON/cuon/Finances/SingleCashAccountBook.py,171,#C9F64A,230x700
+CUON/cuon/Finances/SingleAccountInfo.py,172,#C9F64A,230x730
+CUON/cuon/Finances/SingleAccountSentence.py,173,#C9F64A,230x750
+CUON/cuon/Finances/SingleAccountValues.py,174,#C9F64A,230x780
+CUON/cuon/Finances/SingleAccountPlan.py,175,#C9F64A,260x700
+CUON/cuon/Finances/standard_cab_monthly.py,176,#C9F64A,260x730
+#clients 180
+CUON/cuon/Clients/SingleClient.py,180,#DA1599,630x200
+CUON/cuon/Clients/clients.py,181,#DA1599,600x200
+# Biblio 190
+CUON/cuon/Biblio/biblio.py,190,#23AD7B,600x400
+CUON/cuon/Biblio/SingleBiblio.py,190,#23AD7B,600x430
+# User 6
+CUON/cuon/User/user.py,6,#DE205B,600x500
+# AI 210
+CUON/cuon/AI/ai.py,210,#24E3AD,200x30
+#CUON/cuon/AI/miniClient.py
+#CUON/cuon/AI/testcodec.py
+#CUON/cuon/AI/tki1.py
+CUON/cuon/AI/ai_main.py,210,#24E3AD,230x30
+
+#CUON/cuon/AI/gtkMiniClient.py
+# Help 220 
+CUON/cuon/Help/help.py,220,#629784,600x600
+#CUON/cuon/Ext1/ext1.py
+#CUON/cuon/Ext1/ext2.py
+#Projects 225
+CUON/cuon/Project/SingleProject.py,225,#609E48,330x600
+CUON/cuon/Project/SingleProjectPhases.py,226,#609E48,330x630
+CUON/cuon/Project/SingleProjectResourses.py,227,#609E48,330x660
+CUON/cuon/Project/SingleProjectTasks.py,228,#609E48,330x690
+CUON/cuon/Project/project.py,229,#609E48,300x600
+CUON/cuon/Project/SingleProjectMaterialResources.py,230,#609E48,360x600
+CUON/cuon/Project/SingleProjectStaffResources.py,231,#609E48,360x630
+# Staff 240
+CUON/cuon/Staff/SingleStaff.py,240,#70C131,130x500
+CUON/cuon/Staff/staff.py,241,#70C131,100x500
+CUON/cuon/Staff/SingleStaffFee.py,241,#70C131,130x530
+# Botany anf Hibernation 400 
+#CUON/cuon/Garden/garden.py,400,#9AA31C,700x100
+CUON/cuon/Garden/botany.py,400,#9AA31C,800x100
+CUON/cuon/Garden/hibernation.py,400,#9AA31C,800x200
+CUON/cuon/Garden/SingleBotany.py,400,#9AA31C,830x100
+CUON/cuon/Garden/SingleHibernation.py,400,#9AA31C,830x200
+CUON/cuon/Garden/SingleHibernationPlant.py,400,#9AA31C,820x230
+CUON/cuon/Garden/hibernation_incoming_document.py,400,#9AA31C,850x200
+CUON/cuon/Garden/hibernation_outgoing_document.py,400,#9AA31C,850x230
+
+#CUON/cuon_server.py

@@ -303,7 +303,7 @@ class umlInherits:
         self.Y = 60.0
         self.targetX = 70.0
         self.targetY = 100.0
-        
+        self.lineColor = '#000000'
         self.P1x = 10.0
         self.P1y = 10.0
         self.P2x = 20.0
@@ -353,7 +353,7 @@ class umlInherits:
                 <dia:color val="#000000"/> \n \
               </dia:attribute> \n \
               <dia:attribute name="line_colour"> \n \
-                <dia:color val="#000000"/> \n \
+                <dia:color val="%s"/> \n \
               </dia:attribute> \n \
               <dia:attribute name="name"> \n \
                 <dia:string>##</dia:string> \n \
@@ -366,7 +366,10 @@ class umlInherits:
                 <dia:connection handle="1" to="%s" connection="%s"/> \n \
               </dia:connections> \n \
             </dia:object>          \n ' \
-            %( self.X, self.Y, self.P1x, self.P1y, self.P2x, self.P2y, self.P3x, self.P3y, self.P4x, self.P4y, self.ConnID1, self.ConnID2, self.Conn1, self.Conn2)
+            %( self.X, self.Y, self.P1x, self.P1y, self.P2x, self.P2y, self.P3x, 
+            self.P3y, self.P4x, self.P4y, 
+            self.lineColor, 
+            self.ConnID1, self.Conn1, self.ConnID2, self.Conn2)
             
         return s
         
@@ -485,6 +488,7 @@ def start():
                     dicClasses['X1'] = sO.X1
                     dicClasses['Y1'] = sO.Y1
                     dicClasses['id'] = sO.id
+                    dicClasses['lineColor'] = sColor
                     liClasses.append(deepcopy(dicClasses))
 
                     dia.add(deepcopy(sO))
@@ -535,19 +539,20 @@ def start():
 
                 print inh1['Name'], len(inherits)
                 print 'Inherits',  inherits
+                print 'ID = ', inh1['id']
             
                 for search1 in liClasses:
                     if search1['Name'] == inherits:
                         oInherits.X = search1['X1']
                         oInherits.Y = search1['Y1']
-                        oInherits.connID1 = search1['id']
+                        oInherits.ConnID1 = search1['id']
                         print 'Search1-ID', search1['id']
                         
                 oInherits.name = inh1['Name']
                 oInherits.targetX = inh1['X1']
                 oInherits.targetY = inh1['Y1']
-                oInherits.connID2 = inh1['id']
-                
+                oInherits.ConnID2 = inh1['id']
+                oInherits.lineColor = inh1['lineColor']
                 oInherits.setValues()
                 
                 oInherits.Conn1 = `counterHex2`
@@ -561,6 +566,9 @@ def start():
                 liInherits.append(deepcopy(oInherits))
     
     for u1 in liInherits:
+        print '#####################################'
+        print u1.ConnID1,u1.ConnID2
+        print u1.Conn1, u1.Conn2
         dia.add(u1)
         
     dia.add(Footer())
