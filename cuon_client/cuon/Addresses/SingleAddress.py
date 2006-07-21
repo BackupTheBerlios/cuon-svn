@@ -36,8 +36,8 @@ class SingleAddress(SingleData):
         
         self.listHeader['names'] = ['name', 'zip', 'city', 'Street', 'ID']
         self.listHeader['size'] = [25,10,25,25,10]
-        self.out( "number of Columns ")
-        self.out( len(self.table.Columns))
+        #self.out( "number of Columns ")
+        #self.out( len(self.table.Columns))
         #
         self.statusfields = ['lastname', 'city']
 

@@ -527,6 +527,70 @@
   </table>
   
   <table>
+    <nameOfTable>list_of_hibernation_pickup</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>pickup_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+    <field>
+      <name>order_number</name>
+
+      <type>int</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+ <field>
+      <name>date_of_pickup</name>
+
+      <type>date</type>
+
+      <pkey>0</pkey>
+
+      <unique>0</unique>
+
+      <notnull>0</notnull>
+
+      <size>0</size>
+
+      <default />
+
+      <comment />
+    </field>
+
+  </table>
+  
+  <table>
     <nameOfTable>list_of_hibernation_outgoing</nameOfTable>
 
     <specials>inherits (t_standard);</specials>

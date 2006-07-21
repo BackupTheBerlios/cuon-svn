@@ -25,11 +25,11 @@ import cuon.TypeDefs.typedefs_server
 import cuon.XMLRPC.xmlrpc
 import string
 import cPickle
-import sys
+import sys, os
 import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
 import  cuon.Databases.SingleCuon
-
+import codecs
 
 class databaseswindow(windows):
     """
@@ -260,7 +260,7 @@ class databaseswindow(windows):
         for i in lSequences:
             print 'Check this Sequence = ' , `i`
             ok =  self.rpc.callRP('Database.checkExistSequence',i, self.dicUser)
-            if not ok:
+            if ok == 'NONE':
                 print 'create Sequence'
                 iSeq = i.upper().find('_CLIENT_')
                 if iSeq > 0:
@@ -380,13 +380,13 @@ class databaseswindow(windows):
             
         print sSql
         
-        self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
+        res = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
 
         if co.getDefaultValue():
             sSql = 'alter table ' + str(table.getName()) + ' alter column  ' + co.getName()
             sSql = sSql + " SET DEFAULT " + co.getDefaultValue()
 
-        self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
+            res = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
     
     #
     # start xml defaults, entries, etc.
@@ -455,69 +455,109 @@ class databaseswindow(windows):
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
    
     def importZip(self, filename):
-        zip = open(filename)
-        line = zip.readline()
-        singleImportZip = SingleImportZip.SingleImportZip()
-        sTypes1 = u'string'
-        sTypes2 = u'float'
+        sDir = os.path.dirname(filename)
+        dicPlanet = {}
+        f = open(sDir + '/planet.txt')
         
-        while line:
-            if line[0] != '#' and line[0] != ' ':
-                line = line.decode("latin-1")
-                line = line.encode("utf-7")
+        if f:
+            line = f.readline()
+            while line:
+                line = unicode(line)
+                liLines = line.split(';')
+                #dicPlanet['SolarSystem'] = 1
+                dicPlanet['name'] = [liLines[0],'string']
+                dicPlanet['name2'] = [liLines[1],'string']
+                dicPlanet['orbit'] = [liLines[2],'float']
+                dicPlanet['diameter'] = [liLines[3],'float']
+
+                dicPlanet['solar_system_id'] = [1,'int']
                 
-                zips = {}
-                self.out( line)
-                iStart = 0
-                iEnd = 0
-                iEnd = string.find(line, ';')
-                zips['Country'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['State'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['AdministrativeDistrict'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['County'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['Management'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['City'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['District'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['Longitude'] = [string.strip(line[iStart:iEnd]), sTypes2]
-                zips['Longitude'] = [ string.replace(zips['Longitude'][0],',','.'), zips['Longitude'][1] ]
+                print dicPlanet
+                result = self.rpc.callRP('Database.saveZipPlanet', dicPlanet, self.dicUser)
+                print 'result = ' + `result`
+                line = f.readline()
+            f.close()
+        # read  country
+        dicCountry = {}
+        f = open(sDir + '/country.txt','rb')
+        
+        if f:
+            line = f.readline()
+            while line:
+                #line = line.decode('iso-8859-15')
+##                print line
+##                line = unicode(line)
+##                print 'ö ä ü ß Ö Ä Ü'
+##                print u'ö ä ü ß Ö Ä Ü'
+##                print line
+##                line = line.decode('latin-1')
+##                print line
                 
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                zips['Latitude'] = [string.strip(line[iStart:iEnd]), sTypes2]
-                zips['Latitude'] =  [string.replace(zips['Latitude'][0],',','.'), zips['Latitude'][1] ]
+                liLines = line.split(';')
                 
-                iStart = iEnd +1 
-                iEnd = string.find(line, ';', iStart )
-                # zips['Car'] = [string.strip(line[iStart:iEnd]), sTypes1]
-
-                iStart = iEnd +1 
-                zips['Zipcode'] = [string.strip(line[iStart:len(line)-2]), sTypes1]
-
-                self.out( zips)
-                singleImportZip.Zips = zips
-                singleImportZip.newRecord()
-                singleImportZip.save()
+                dicCountry['planet_id'] = [1,'int']
+                dicCountry['name'] = [liLines[0],'string']
+                dicCountry['short_name'] = [liLines[1],'string']
+                dicCountry['name2'] = [liLines[2],'string']
+                
+                print dicCountry
+                result = self.rpc.callRP('Database.saveZipCountry', dicCountry, self.dicUser)
+                print 'result = ' + `result`
+                line = f.readline()
+            f.close()           
+        
+        dicState = {}
+        f = codecs.open(sDir + '/states.txt','rb',encoding="utf-8")
+        
+        if f:
+            line = f.readline()
+            while line:
+                #line = unicode(line)
+                print line
+                print 'öäüßÖÄÜ'
+                print u'öäüßÖÄÜ'
+                print line
+                #line = line.decode('latin-1')
+                print line
+                #line = line.decode('utf-8')
+                print line
+                
+                liLines = line.split(';')
+                
+                dicState['country_id'] = [liLines[0],'int']
+                dicState['name'] = [liLines[2].strip(),'string']
+                dicState['state_short'] = [liLines[1].strip(),'string']
+                
+                print dicState
+                result = self.rpc.callRP('Database.saveZipState', dicState, self.dicUser)
+                print 'result = ' + `result`
+                line = f.readline()
+            f.close()
+            
+        dicCity = {}
+        f = codecs.open(filename,'rb',encoding="utf-8")
+        
+        if f:
+            line = f.readline()
+            while line and len(line.strip()) > 1 and line[0] != '#':
+                
+                liLines = line.split(';')
+                if liLines[0] == 'DE':
+                    liLines[0] = 'D'
+                dicCity['country_id'] = [liLines[0],'int']
+                dicCity['name'] = [liLines[2].strip(),'string']
+                dicCity['state_short'] = [liLines[1].strip(),'string']
+                
+                print dicCity
+                result = self.rpc.callRP('Database.saveZipState', dicCity, self.dicUser)
+                print 'result = ' + `result`
+                line = f.readline()
+            f.close()
+                
+                    
+                #singleImportZip.Zips = zips
+                #singleImportZip.newRecord()
+                #singleImportZip.save()
                 
                 
                 

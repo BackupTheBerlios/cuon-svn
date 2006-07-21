@@ -1,81 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
   <nameOfDatabase>cuon</nameOfDatabase>
-
   <author>J. Hamel</author>
-
   <plugin>Standard</plugin>
-
   <!--table: t_standard-->
-
   <table>
     <nameOfTable>t_standard</nameOfTable>
-
     <x>52</x>
-
     <y>15</y>
-
 	
     <field>
       <name>id</name>
-
       <type>int</type>
-
       <pkey>1</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment>autoincrement by sequence</comment>
     </field>
-
     <!--user_id-->
-
     <field>
       <name>user_id</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment>set by trigger</comment>
     </field>
-
     <!--status-->
-
     <field>
       <name>status</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default>"create"</default>
-
       <comment>set by trigger</comment>
     </field>
-
     <!--insert_time-->
-
     <field> 
     <name>insert_time</name> 
     <type>timestamp</type> 
@@ -86,127 +52,74 @@
     <default></default>
     <comment>set by trigger</comment> 
     </field>
-
     <!--update_time-->
-
     <field>
       <name>update_time</name>
-
       <type>timestamp</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default></default>
-
       <comment>set by trigger</comment>
     </field>
-
     <!--update_user_id-->
-
     <field>
       <name>update_user_id</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment>set by trigger</comment>
     </field>
-
     <!--client-->
-
     <field>
       <name>client</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default>1</default>
-
       <comment>set by trigger</comment>
     </field>
    <!--separate Informations ID 1-->
-
     <field>
       <name>sep_info_1</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment>set by cuon-prg-modules</comment>
     </field>
-
    <!--separate Informations ID 2-->
-
     <field>
       <name>sep_info_2</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
      <default>0</default>
   <comment>set by cuon-prg-modules</comment>
 </field>
       <!--separate Informations ID 3-->
-
     <field>
       <name>sep_info_3</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment>set by cuon-prg-modules</comment>
     </field>  
-
   </table>
-
 <!--table: cuon_clients-->
-
   <table>
     <nameOfTable>cuon_clients</nameOfTable>
     <specials>inherits (t_standard);</specials>
@@ -243,510 +156,194 @@
       <comment />
     </field>
 </table>
-
-
-
-
 <!--table: account_plan-->
-
   <table>
     <nameOfTable>account_plan</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>name</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
    <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     </table>
-    
  <!--table: clients-->
-
   <table>
     <nameOfTable>clients</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>name</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
         <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
         <field>
       <name>address_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-    
     <field>
       <name>client_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
     <field>
       <name>account_plan_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-    
     </table>
-    
-
   <!--table: tax_vat-->
-
   <table>
     <nameOfTable>tax_vat</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>vat_name</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>20</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>60</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_value</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-
       </field>
-
     <field>
       <name>vat_type</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_country</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_def</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_coefficient</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_acct1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vat_acct2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-  
-  <!--table: countries-->
- <table>
-    <nameOfTable>countries</nameOfTable>
-
-    <specials>inherits (t_standard);</specials>
-
-    <x>152</x>
-
-    <y>115</y>
-   <field>
-      <name>webshop_id</name>
-
-      <type>int</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>0</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>name</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>64</size>
-
-      <default />
-
-      <comment />
-    </field>
-       <field>
-      <name>iso_code_2</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>2</size>
-
-      <default />
-
-      <comment />
-    </field>
-    
-       <field>
-      <name>iso_code_3</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>3</size>
-
-      <default />
-
-      <comment />
-    </field>
-    
-       <field>
-      <name>format_id</name>
-
-      <type>int</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>0</size>
-
-      <default />
-
-      <comment />
-    </field>
-    </table>
-     <!--table: state-->
-
-  <table>
-    <nameOfTable>state</nameOfTable>
-
-    <x>52</x>
-
-    <y>15</y>
-
-    <specials>inherits (t_standard);</specials>
-    
-       <field>
-      <name>name</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>70</size>
-
-      <default />
-
-      <comment />
-    </field>
-    
-          <field>
-      <name>short_name</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>6</size>
-
-      <default />
-
-      <comment />
-    </field>
-    
-          <field>
-      <name>country_id</name>
-
-      <type>int</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>1</notnull>
-
-      <size>0</size>
-
-      <default />
-
-      <comment />
-    </field>
-    
-</table>    
-
-
+ 
   <!--table: biblio-->
-
   <table>
     <nameOfTable>biblio</nameOfTable>
-
     <x>52</x>
     <y>15</y>
-
     <specials>inherits (t_standard);</specials>
-
     <field>
       <name>title</name>
       <type>varchar</type>
@@ -767,7 +364,6 @@
       <default />
       <comment />
     </field>
-
     <field>
       <name>author</name>
       <type>varchar</type>
@@ -788,7 +384,6 @@
       <default />
       <comment />
     </field>
-
     <field>
       <name>series</name>
       <type>varchar</type>
@@ -799,7 +394,6 @@
       <default />
       <comment />
     </field>
-
     <field>
       <name>year</name>
       <type>int</type>
@@ -861,18 +455,12 @@
       <comment />
     </field>
 </table>
-
-
   <!--table: userlogin-->
-
   <table>
     <nameOfTable>userlogin</nameOfTable>
-
     <x>52</x>
     <y>15</y>
-
     <specials>inherits (t_standard);</specials>
-
     <field>
       <name>username</name>
       <type>varchar</type>
@@ -883,4398 +471,2646 @@
       <default />
       <comment />
     </field>
-
     <field>
       <name>lastname</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>firstname</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--table: t_address-->
-
   <table>
     <nameOfTable>t_address</nameOfTable>
-
     <x>52</x>
-
     <y>15</y>
-
     <specials>inherits (t_standard);</specials>
-    
     <field>
       <name>address</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>lastname</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>lastname2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>firstname</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>street</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>country</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>6</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>state</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>6</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>zip</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>city</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>fax</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>email</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>100</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>zip_for_postbox</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>postbox</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>20</size>
-
       <default />
-
       <comment />
     </field>
         <field>
       <name>suburb</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-       
       <field>
       <name>state_full</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-    
-    
   </table>
-
   <!--table: address-->
-
   <table>
     <nameOfTable>address</nameOfTable>
-
     <x>52</x>
-
     <y>15</y>
-
     <specials>inherits (t_address);</specials>
-    
        <field>
       <name>webshop_address_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
         <field>
       <name>webshop_zone_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
         <field>
       <name>webshop_gender</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>1</size>
-
       <default />
-
       <comment />
     </field>
     <field>
       <name>webshop_customers_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-    
   </table>
-
   <!--table: partner-->
-
   <table>
     <nameOfTable>partner</nameOfTable>
-
     <specials>inherits (t_address);</specials>
-
     <x>82</x>
-
     <y>45</y>
-
     <field>
       <name>addressid</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>titular</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>homepage</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>100</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>faxprivat</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>birthday</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--table: partner_schedul-->
-
   <table>
     <nameOfTable>partner_schedul</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>82</x>
-
     <y>45</y>
-
     <field>
       <name>partnerid</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>schedul_date</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>schedul_time_begin</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
    <field>
       <name>schedul_time_end</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
     <field>
       <name>priority</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>process_status</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>1</default>
-
       <comment />
     </field>
-
     <field>
       <name>notes</name>
-
       <type>text</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>short_remark</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>60</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>alarm_notify</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>1</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>alarm_time</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--table: articles-->
-
   <table>
     <nameOfTable>articles</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>52</x>
-
     <y>15</y>
-
     <field>
       <name>number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>wrapping</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>15</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>quantumperwrap</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>unit</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>15</size>
-
       <default />
-
       <comment />
     </field>
-    
        <field>
       <name>manufactor_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-    
      <field>
       <name>weight</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     </table>
-
   <!--table: articles_purchase-->
-
   <table>
     <nameOfTable>articles_purchase</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>52</x>
-
     <y>15</y>
-
     <field>
       <name>articles_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>60</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>addressid</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>unitprice</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>discount</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>minquantum</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vendorsnumber</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>vendorsdesignation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>55</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--table: articles_sales-->
-
   <table>
     <nameOfTable>articles_sales</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>52</x>
-
     <y>15</y>
-
     <field>
       <name>articles_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sellingprice1</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sellingprice2</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sellingprice3</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sellingprice4</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>tax_vat</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>20</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
     <!-- table articles_webshop -->
 <table>
     <nameOfTable>articles_webshop</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-    
       <field>
       <name>articles_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
-      
-      
     </field>
-    
          <field>
       <name>is_webshop_stock</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-      
-      
     </field>
-    
             <field>
       <name>is_webshop_article</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-      
-      
-      
     </field>
-    
-
            <field>
       <name>pricegroup</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-      
-      
     </field>
     </table>
-    
  <!--table: articles_stock-->
-
   <table>
     <nameOfTable>articles_stock</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>52</x>
-
     <y>15</y>
-
     <field>
       <name>articles_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
-
-
 <field>
       <name>minimum_stock</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default >0</default>
-
       <comment />
     </field>
-
 <field>
       <name>maximum_stock</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default >0</default>
-
       <comment />
     </field>
-
          <field>
       <name>is_check_stock</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-      
-      
-      
     </field>
-
-
 </table>
-
-
   <!--table: orderbook-->
-
   <table>
     <nameOfTable>orderbook</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>orderedat</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>deliveredat</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>addressnumber</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>packing_cost</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>postage_cost</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>misc_cost</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>build_retry</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>type_retry</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>supply_retry</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>gets_retry</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
     <field>
       <name>invoice_retry</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
-
     <field>
       <name>custom_retry_days</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>0</default>
-
       <comment />
     </field>
   </table>
-
   <!--table: ordersupply-->
-
   <table>
     <nameOfTable>ordersupply</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>ordernumber</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>addressnumber</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <table>
     <nameOfTable>orderget</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>ordernumber</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>addressnumber</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment>number of this note</comment>
     </field>
-
     <field>
       <name>partnernumber</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>loadreference</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>20</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>pickup_at</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>remark_to_pickup_at</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>100</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>partnernumber</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>forwarding_agency_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>contact_person_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>pickup_note_number</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>20</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>pickup_note_date</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>pickup_note_status</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>40</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <table>
     <nameOfTable>orderposition</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>orderid</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>articleid</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>120</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>amount</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>position</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>price</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>tax_vat</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
-      <comment />
-    </field>
-  </table>
-
-  <table>
-    <nameOfTable>zipcode</nameOfTable>
-
-    <specials>inherits (t_standard);</specials>
-
-    <x>152</x>
-
-    <y>115</y>
-
-    <field>
-      <name>varcountry</name>
-
-      <type>char</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>6</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>state</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>6</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>administrative_district</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>35</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>county</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>35</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>management</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>35</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>city</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>35</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>district</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>35</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>longitude</name>
-
-      <type>float</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>0</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>latitude</name>
-
-      <type>float</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>0</size>
-
-      <default />
-
-      <comment />
-    </field>
-
-    <field>
-      <name>zipcode</name>
-
-      <type>varchar</type>
-
-      <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>10</size>
-
-      <default />
-
       <comment />
     </field>
   </table>
   <table>
-    <nameOfTable>states</nameOfTable>
-
+    <nameOfTable>planet</nameOfTable>
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
-      <name>country_id</name>
-
-      <type>int</type>
-
+      <name>name</name>
+      <type>varchar</type>
       <pkey>0</pkey>
-
-      <unique>0</unique>
-
-      <notnull>0</notnull>
-
-      <size>0</size>
-
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>100</size>
       <default />
-
+      <comment />
+    </field>
+    <field>
+      <name>name2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>orbit</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
       <comment />
     </field>
     
+    <field>
+      <name>diameter</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>solar_system_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    
+    </table>
+<table>
+    <nameOfTable>country</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>planet_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>short_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>8</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>name2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>iso_code_2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>2</size>
+      <default />
+      <comment />
+    </field>
+       <field>
+      <name>iso_code_3</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>3</size>
+      <default />
+      <comment />
+    </field>
+       <field>
+      <name>format_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    
+  <table>
+    <nameOfTable>states</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>country_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
         <field>
       <name>name</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
-      <size>60</size>
-
+      <size>160</size>
       <default />
-
       <comment />
     </field>
         <field>
       <name>state_short</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>6</size>
-
       <default />
-
       <comment />
     </field>
    </table>
-   
+   <table>
+    <nameOfTable>administrative_district</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>state_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>ar_short</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>6</size>
+      <default />
+      <comment />
+    </field>
+   </table>
+    <table>
+    <nameOfTable>district</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>ar_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+        <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+      </field>
+   </table>
+  <table>
+    <nameOfTable>city</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>country_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+<field>
+      <name>state_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>ar_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>district_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>city</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>35</size>
+      <default />
+      <comment />
+    </field>
     
+    <field>
+      <name>longitude</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>latitude</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     
-    
-    
-    
-    
-    
+  </table>
+  <table>
+    <nameOfTable>zipcodes</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>city_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+  <field>
+      <name>zipcode</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
+    </table>
   <table>
     <nameOfTable>addresses_misc</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>address_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>line</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>fashion</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>taxnumber</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>to_calc_tax</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>price_group</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-    
   <field>
       <name>address_number</name>
-
       <type>char</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>55</size>
-
       <default />
-
       <comment>To use for accounts, etc.</comment>
-
     </field>
        <field>
       <name>is_webshop</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 	<field>
       <name>update_from_webshop</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-    
   </table>
-
   <table>
     <nameOfTable>list_of_invoices</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>invoice_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>order_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>total_amount</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
  <field>
       <name>date_of_invoice</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
-
-
   </table>
-
   <table>
     <nameOfTable>list_of_deliveries</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>delivery_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>order_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
  <field>
       <name>date_of_delivery</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
   </table>
-
   <table>
     <nameOfTable>list_of_pickups</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>pickup_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>order_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
  <field>
       <name>date_of_pickup</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
   </table>
-
   <table>
     <nameOfTable>stocks</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>name</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>35</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>125</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>address</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>255</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <table>
     <nameOfTable>stock_goods</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>stock_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>article_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>to_embed</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>roll_out</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>date_of_change</name>
-
       <type>timestamp</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>reference_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>actual_stock</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <table>
     <nameOfTable>dms</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>title</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>1</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>category</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>size_x</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>size_y</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>document_image</name>
-
       <type>text</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sub1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sub2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sub3</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sub4</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>sub5</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>85</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>search1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>search2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>search3</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>search4</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>file_format</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>insert_from</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>insert_at_date</name>
-
       <type>timestamp</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-
  </field>
     <field>
       <name>insert_at_date</name>
-
       <type>timestamp</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-
  </field>
     <field>
       <name>insert_at_date</name>
-
       <type>timestamp</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
-
  </field>
-
     <field>
       <name>insert_from_module</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default>1</default>
-
       <comment />
-
  </field>
-
  <field>
       <name>file_suffix</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--terms of payment-->
-
   <table>
     <nameOfTable>terms_of_payment</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>250</size>
-
       <default />
     </field>
-
     <field>
       <name>short_expression</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>900</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>term_of_payment</name>
-
       <type>text</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>1200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value3</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value4</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value5</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value6</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value7</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value8</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value9</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>value10</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>200</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>days</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>delay</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
   <!--account info-->
-
   <table>
     <nameOfTable>account_info</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>account_number</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>type</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>250</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>eg</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
     <field>
       <name>account_plan_number</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment />
     </field>
   </table>
-
-
  <!--account sentence -->
-
   <table>
     <nameOfTable>account_sentence</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>document_number1</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment> increment with sequence </comment>
     </field>
         <field>
       <name>document_number2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>50</size>
-
       <default />
-
       <comment />
     </field>
        <field>
       <name>designation</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>70</size>
-
       <default />
-
       <comment> designation </comment>
     </field>
-       
        <field>
       <name>short_key</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment>short key for find the same sentence </comment>
-      
     </field>
           <field>
       <name>automatic_calc</name>
-
       <type>bool</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>1</size>
-
       <default />
-
       <comment>short key for find the same sentence </comment>
-      
     </field>
     <field>
       <name>accounting_date</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment> date of accounting </comment>
     </field>
        <field>
       <name>value_d1</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
       <field>
       <name>value_c1</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
     <field>
       <name>account_1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment> key to account_account_info </comment>
      </field>
-     
      <field>
       <name>value_d2</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
       <field>
       <name>value_c2</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
     <field>
       <name>account_2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment> key to account_account_info </comment>
      </field>
-     
      <field>
       <name>value_d3</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
       <field>
       <name>value_c3</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
     <field>
       <name>account_3</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment> key to account_account_info </comment>
      </field>
-     
      <field>
       <name>value_d4</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
       <field>
       <name>value_c4</name>
-
       <type>numeric</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>10,2</size>
-
       <default />
-
       <comment> values </comment>
     </field>
     <field>
       <name>account_4</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>0</notnull>
-
       <size>10</size>
-
       <default />
-
       <comment> key to account_account_info </comment>
      </field>
-     
    </table>
-
-
   <!--table: staff-->
-
   <table>
     <nameOfTable>staff</nameOfTable>
-
     <specials>inherits (t_address);</specials>
-
     <x>82</x>
-
     <y>45</y>
-
- 
     <field>
       <name>titular</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>30</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone1</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>phone2</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>homepage</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>100</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>faxprivat</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>25</size>
-
       <default />
-
       <comment />
     </field>
-
     <field>
       <name>birthday</name>
-
       <type>date</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
-
-
   </table>
-
   <!--table: staff_fee-->
-
   <table>
     <nameOfTable>staff_fee</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>82</x>
-
     <y>45</y>
-
- 
     <field>
       <name>staff_id</name>
-
       <type>int</type>
-
       <pkey>0</pkey>
-
       <unique>1</unique>
-
       <notnull>1</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>working_time_from</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>5</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>working_time_to</name>
-
       <type>varchar</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>5</size>
-
       <default />
-
       <comment />
     </field>
-
 <field>
       <name>fee_per_hour</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>fee_per_hour_calc</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>fee_per_hour_invoice</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>fee_per_overtime</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>fee_per_overtime_calc</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
 <field>
       <name>fee_per_overtime_invoice</name>
-
       <type>float</type>
-
       <pkey>0</pkey>
-
       <unique>0</unique>
-
       <notnull>0</notnull>
-
       <size>0</size>
-
       <default />
-
       <comment />
     </field>
  </table>
-
  <!--user_info -->
-
   <table>
     <nameOfTable>user_info</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>user_id</name>
       <type>varchar</type>
@@ -5285,7 +3121,6 @@
       <default />
       <comment>user id  </comment>
     </field>
-
     <field>
       <name>real_name</name>
       <type>varchar</type>
@@ -5317,18 +3152,12 @@
       <comment />
     </field>
 </table>
-
  <!--groups -->
-
   <table>
     <nameOfTable>usergroups</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>user_id</name>
       <type>varchar</type>
@@ -5359,21 +3188,13 @@
       <default />
       <comment>designation of the group  </comment>
     </field>
-
 </table>
-
-
  <!--Projects Main -->
-
   <table>
     <nameOfTable>projects</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
-
     <field>
       <name>name</name>
       <type>varchar</type>
@@ -5435,16 +3256,11 @@
       <comment />
     </field>  
 </table>
-
 <!--Projects Phase -->
-
   <table>
     <nameOfTable>project_phases</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
 <field>
       <name>project_id</name>
@@ -5456,7 +3272,6 @@
       <default />
       <comment>project id  </comment>
     </field>
-    
     <field>
       <name>name</name>
       <type>varchar</type>
@@ -5477,7 +3292,6 @@
       <default />
       <comment>short designation  </comment>
     </field>
- 
 <field>
       <name>time_in_days</name>
       <type>int</type>
@@ -5509,16 +3323,11 @@
       <comment />
     </field>  
 </table>
-
 <!--Projects Task -->
-
   <table>
     <nameOfTable>project_tasks</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
 <field>
       <name>phase_id</name>
@@ -5530,7 +3339,6 @@
       <default />
       <comment>phase id  </comment>
     </field>
-    
     <field>
       <name>name</name>
       <type>varchar</type>
@@ -5551,7 +3359,6 @@
       <default />
       <comment>short designation  </comment>
     </field>
- 
 <field>
       <name>time_in_days</name>
       <type>int</type>
@@ -5583,16 +3390,11 @@
       <comment />
     </field>  
 </table>
-
 <!--Projects Tasks Staff Resources -->
-
   <table>
     <nameOfTable>project_task_staff_res</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
 <field>
       <name>task_id</name>
@@ -5604,7 +3406,6 @@
       <default />
       <comment>project id  </comment>
     </field>
-    
     <field>
       <name>staff_id</name>
       <type>int</type>
@@ -5615,8 +3416,6 @@
       <default />
       <comment> staff id  </comment>
     </field>
-  
-
  <field>
       <name>planed_working_day</name>
       <type>date</type>
@@ -5637,8 +3436,6 @@
       <default />
       <comment />
     </field>   
-    
-    
     <field>
       <name>planed_time_begin</name>
       <type>varchar</type>
@@ -5649,7 +3446,6 @@
       <default />
       <comment />
     </field>
-    
      <field>
       <name>planed_time_ends</name>
       <type>varchar</type>
@@ -5660,8 +3456,6 @@
       <default />
       <comment />
     </field>  
-    
-   
      <field>
       <name>real_time_begin</name>
       <type>varchar</type>
@@ -5672,7 +3466,6 @@
       <default />
       <comment />
     </field>
-    
      <field>
       <name>real_time_ends</name>
       <type>varchar</type>
@@ -5683,17 +3476,12 @@
       <default />
       <comment />
     </field>  
-    
 </table>
 <!--Projects Tasks Material Resources -->
-
   <table>
     <nameOfTable>project_task_material_res</nameOfTable>
-
     <specials>inherits (t_standard);</specials>
-
     <x>152</x>
-
     <y>115</y>
 <field>
       <name>task_id</name>
@@ -5705,7 +3493,6 @@
       <default />
       <comment>project id  </comment>
     </field>
-    
     <field>
       <name>article_id</name>
       <type>int</type>
@@ -5716,8 +3503,6 @@
       <default />
       <comment> staff id  </comment>
     </field>
-  
-
     <field>
       <name>get_at</name>
       <type>date</type>
@@ -5759,120 +3544,89 @@
       <comment />
     </field>   
 </table>
-
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
-
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1000</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_pickup</nameOfSequence>
-
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1000</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_delivery</nameOfSequence>
-
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1000</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
    <database_sequence>
     <nameOfSequence>numerical_finance_account_number1</nameOfSequence>
-
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
   <database_sequence>
   <nameOfSequence>numerical_cash_account_book_doc_number1</nameOfSequence>
-
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1000</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-
   <database_sequence>
-    <nameOfSequence>numerical_garden_incoming_document</nameOfSequence>
-
+    <nameOfSequence>numerical_hibernation_incoming_document</nameOfSequence>
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-  
+  <database_sequence>
+    <nameOfSequence>numerical_hibernation_pickup_document</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
+  <database_sequence>
+    <nameOfSequence>numerical_hibernation_invoice_document</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
    <database_sequence>
-    <nameOfSequence>numerical_garden_outgoing_document</nameOfSequence>
-
+    <nameOfSequence>numerical_hibernation_outgoing_document</nameOfSequence>
     <sequence_increment>1</sequence_increment>
-
     <sequence_start>1</sequence_start>
-
     <sequence_minvalue>1</sequence_minvalue>
-
     <sequence_maxvalue>500000</sequence_maxvalue>
-
     <sequence_cycle>Yes</sequence_cycle>
-
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-  
  	<foreign_key>
 		<foreign_key_name>PartnerAddress</foreign_key_name> 
 		<foreign_key_sql>foreign_key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
 	</foreign_key>
-
 </database>
