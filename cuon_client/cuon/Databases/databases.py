@@ -260,7 +260,7 @@ class databaseswindow(windows):
         for i in lSequences:
             print 'Check this Sequence = ' , `i`
             ok =  self.rpc.callRP('Database.checkExistSequence',i, self.dicUser)
-            if ok == 'NONE':
+            if ok == 0:
                 print 'create Sequence'
                 iSeq = i.upper().find('_CLIENT_')
                 if iSeq > 0:
@@ -287,7 +287,7 @@ class databaseswindow(windows):
                     
                 self.out( sSql)
                 print 'Sql Sequence = ', sSql
-                self.rpc.callRP('Database.xml_executeNormalQuery', sSql, self.dicUser)
+                result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
         
 
 
@@ -536,21 +536,28 @@ class databaseswindow(windows):
             
         dicCity = {}
         f = codecs.open(filename,'rb',encoding="utf-8")
-        
+        print f
         if f:
             line = f.readline()
-            while line and len(line.strip()) > 1 and line[0] != '#':
-                
-                liLines = line.split(';')
-                if liLines[0] == 'DE':
-                    liLines[0] = 'D'
-                dicCity['country_id'] = [liLines[0],'int']
-                dicCity['name'] = [liLines[2].strip(),'string']
-                dicCity['state_short'] = [liLines[1].strip(),'string']
-                
-                print dicCity
-                result = self.rpc.callRP('Database.saveZipState', dicCity, self.dicUser)
-                print 'result = ' + `result`
+            while line :
+                if len(line.strip()) > 1 and line[0] != '#':
+                    dicCity = {}
+                    dicZip = {}
+                    liLines = line.split(';')
+                    if liLines[1] == 'DE':
+                        liLines[1] = 'D'
+                    dicCity['country_id'] = [liLines[1].strip(),'int']
+                    dicCity['state_id'] = [liLines[2].strip(),'int']
+                    dicCity['ad_id'] = [liLines[3].strip(),'int']
+                    dicCity['district_id'] = [liLines[4].strip(),'int']
+    
+                    dicCity['name'] = [liLines[6].strip(),'string']
+                    dicCity['longitude'] = [float(liLines[10].strip()),'float']
+                    dicZip['zipcode'] = [liLines[13].strip(),'string']
+                    
+                    print dicCity
+                    result = self.rpc.callRP('Database.saveZipCity', dicCity, dicZip, self.dicUser)
+                    print 'result = ' + `result`
                 line = f.readline()
             f.close()
                 
@@ -561,7 +568,6 @@ class databaseswindow(windows):
                 
                 
                 
-            line = zip.readline()
 
 
         

@@ -5,8 +5,8 @@ import time
 import random	
 import xmlrpclib
 import pg 
-
 import string
+
 from basics import basics
 
 class SQL(xmlrpc.XMLRPC, basics):
@@ -30,13 +30,11 @@ class SQL(xmlrpc.XMLRPC, basics):
         print 'sUser=', sUser
         #DSN = 'dbname=cuon host=localhost user=' + sUser
         conn = pg.connect(dbname = 'cuon',host = 'localhost', user = sUser)
-        #curs = conn.cursor()
-        
-        #ok = curs.execute(cSql.decode('utf-8'))
+        #curs.execute(cSql.decode('utf-8'))
         #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
         
         rows = conn.query(cSql.encode('utf-8'))
-
+        #print 'rows = ', rows
         #print 'Sql-Execute = ', ok
         #conn.commit()
 ##        try:
@@ -44,7 +42,7 @@ class SQL(xmlrpc.XMLRPC, basics):
 ##        except:
 ##            pass
         self.writeLog('Rows = ' + `rows`, self.debug)
-        conn.close()
+        #conn.close()
         
         if rows:
             try:
@@ -85,8 +83,10 @@ class SQL(xmlrpc.XMLRPC, basics):
             
                     except:
                         pass
-        except:
+        except Exception, param:
             self.writeLog('Except-Error')
+            self.writeLog(`Exception` +', \n' + `param`)
+           
             dicResult = None
         self.writeLog('sql return = ' + `dicResult`)
         if dicResult == None:
@@ -318,3 +318,6 @@ class SQL(xmlrpc.XMLRPC, basics):
     def xmlrpc_loadCompeteTable(self, nameOfTable, dicUser):
         sSql = "select * from " + nameOfTable
         return xmlrpc_executeNormalQuery(sSql, dicUser)
+
+
+    

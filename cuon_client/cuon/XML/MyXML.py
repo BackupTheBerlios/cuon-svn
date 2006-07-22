@@ -142,7 +142,7 @@ class MyXML(logs):
                 if rc.nodeType == Node.TEXT_NODE:
                     self.out("rc.data = " +  rc.data)
                     allNames.append( rc.data) 
-            
+        print "sequences allNames", allNames 
         return allNames
     
 

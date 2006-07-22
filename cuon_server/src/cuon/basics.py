@@ -5,8 +5,8 @@ from twisted.internet import reactor
 from twisted.web import server
 import time
 import random
-import sys 
-
+import sys,os  
+import shelve
 import ConfigParser
 
 
@@ -16,7 +16,7 @@ class basics(xmlrpc.XMLRPC):
     def __init__(self):
         self.debug = 0
         
-        self.CUON_FS = None  
+        self.CUON_FS = '/etc/cuon'  
         
        
         self.XMLRPC_PORT = 7080
@@ -46,7 +46,7 @@ class basics(xmlrpc.XMLRPC):
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
-            self.cpServer.readfp(open('/etc/cuon/server.ini'))
+            self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
     
             
             
@@ -129,7 +129,24 @@ class basics(xmlrpc.XMLRPC):
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
         self.writeLog('getWhere = ' + `sWhere`)
         return sWhere       
-    
+    def openDB(self):
+        self.dbase = shelve.open(os.path.normpath(self.CUON_FS + '/' + 'cuonData'))
+
+    def closeDB(self):
+        self.dbase.close()
+        
+    def saveObject(self, key, oValue):
+
+        self.dbase[key] = oValue
+
+    def loadObject(self, key):
+        oValue = None
+        try:
+            oValue = self.dbase[key]
+        except:
+            oValue = None
+            
+        return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
         debugValue = 1
         #print 'debugValue', debugValue

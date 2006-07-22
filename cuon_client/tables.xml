@@ -1916,7 +1916,7 @@
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
-      <size>35</size>
+      <size>65</size>
       <default />
       <comment />
     </field>

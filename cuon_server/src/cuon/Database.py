@@ -22,6 +22,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         v = 'NONE'
         sSql = "select svalue from cuon where skey = '" + sKey + "'"
         result = self.xmlrpc_executeNormalQuery(sSql)
+        #print 'get-Value = ', result
         if result != 'NONE':
            try:
               v = result[0]['svalue']
@@ -34,6 +35,7 @@ class Database(xmlrpc.XMLRPC, SQL):
     def saveValue(self, sKey, cKey):
         self.out('py_saveValue cKey = ' + cKey)
         sSql = "select skey from cuon where skey = '" + sKey + "'"
+        self.out('py_saveValue sSql = ' + `sKey`)
         result = self.xmlrpc_executeNormalQuery(sSql)
         self.out('py_saveValue result = ' + `result`)
         if result != 'NONE':
@@ -65,8 +67,14 @@ class Database(xmlrpc.XMLRPC, SQL):
                 try:
                     #dSession['SessionID'] = self.dicVerifyUser[sUser]['SessionID']
                     #dSession['endTime'] = self.dicVerifyUser[sUser]['endTime']
-                    dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
-                    dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
+                    #--dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
+                    #--dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
+                    self.openDB()
+                    dSession['SessionID'] = self.loadObject('user_' + sUser + '_Session_ID')
+                    dSession['endTime'] = float(self.loadObject('user_' + sUser + '_Session_endTime'))
+                    self.closeDB()
+                    print 'dSession', dSession
+                    
                     if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
                         ok = sUser
                 except:
@@ -86,7 +94,7 @@ class Database(xmlrpc.XMLRPC, SQL):
     def authenticate(self, name, password, request):
         ok = False
         cParser = ConfigParser()
-        cParser.read('/etc/cuon/user.cfg')
+        cParser.read(self.CUON_FS + '/user.cfg')
         sP = cParser.get('password',name)
         self.writeLog('Password = ' + sP )
         if sP == password:
@@ -101,14 +109,18 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.out('2 -- createSessionID User found ')
             s = self.createNewSessionID()
             self.out('3 -- createSessionID id created for ' + sUser + ' = '  + `s`)
-            self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
-            self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
+            self.openDB()
+            self.saveObject('user_'+ sUser + '_Session_ID' , s['SessionID'])
+            self.saveObject('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
+ 
+            #--self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
+            #--self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
             self.out('4 -- createSessionID User is write ')
             #self.dicVerifyUser[sUser] = {}
             #self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
             #self.dicVerifyUser[sUser]['endTime'] = `s['endTime']`
-            
+            self.closeDB()
         else:
             self.out('createSessionID User not found')
         if not s.has_key('SessionID'):
@@ -324,6 +336,8 @@ class Database(xmlrpc.XMLRPC, SQL):
            retValue = False
            sSql = 'create table cuon ( skey varchar(255) NOT NULL UNIQUE , svalue text NOT NULL, PRIMARY KEY (skey) )'
            ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+           sSql = 'GRANT ALL ON  cuon TO PUBLIC'
+           ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
            
         return retValue
         
@@ -440,4 +454,109 @@ class Database(xmlrpc.XMLRPC, SQL):
         #return printed
                    
         return context.py_executeNormalQuery(sSql,dicUser)
+    def xmlrpc_saveZipPlanet(self, dicPlanet, dicUser):   
+        print 'dicPlanet', dicPlanet
+        sSql = "select id from planet where name = '" + dicPlanet['name'][0] + "'"
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print 'zipPlanet 1', result
+        if result == 'NONE':
+            print 'zipPlanet 2', result
+            result = self.xmlrpc_saveRecord('planet', -1, dicPlanet, dicUser, liBigEntries='NO') 
+            print 'zipPlanet 3', result
+        else:
+            result = self.xmlrpc_saveRecord('planet', result[0]['id'], dicPlanet, dicUser, liBigEntries='NO')
+            print 'zipPlanet 4', result
+        return result
+    def xmlrpc_saveZipCountry(self, dicCountry, dicUser):   
+        print 'dicCountry', dicCountry
+        sSql = "select id from country where name = '" + dicCountry['name'][0] + "'"
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print 'zipCountry 1', result
+        if result == 'NONE':
+            print 'zipCountry 2', result
+            result = self.xmlrpc_saveRecord('country', -1, dicCountry, dicUser, liBigEntries='NO') 
+            print 'zipCountry 3', result
+        else:
+            result = self.xmlrpc_saveRecord('country', result[0]['id'], dicCountry, dicUser, liBigEntries='NO')
+            print 'zipCountry 4', result
+        return result
+        
+        
+    def xmlrpc_saveZipState(self, dicState, dicUser):   
+        print 'dicState', dicState
+        sSql = "select id from country where short_name = '"+ dicState['country_id'][0] +"'"
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        dicState['country_id'][0] = result[0]['id']
+        if int(dicState['country_id'][0]) > 0:
+            sSql = "select id from states where name = '" + dicState['name'][0] +"'"
+            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            print 'zipState 1', result
+            if result == 'NONE':
+                print 'zipState 2', result
+                result = self.xmlrpc_saveRecord('states', -1, dicState, dicUser, liBigEntries='NO') 
+                print 'zipState 3', result
+            else:
+                result = self.xmlrpc_saveRecord('states', result[0]['id'], dicState, dicUser, liBigEntries='NO')
+                print 'zipState 4', result
+            return result
+        else:
+            print 'No Country found'
+        return result 
                 
+                
+                
+    def xmlrpc_saveZipCity(self, dicCity,dicZip, dicUser):  
+         
+        country_id = 0
+        print 'dicCity', dicCity
+        sSql = "select id from country where short_name = '"+ dicCity['country_id'][0] +"'"
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if result != 'NONE' and int(result[0]['id']) > 0:
+            country_id = int(result[0]['id'])
+        dicCity['country_id'][0] = country_id
+        
+        state_id = 0    
+        sSql = "select id from states where state_short = '"+ dicCity['state_id'][0] +"' and country_id = " + `country_id` 
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if result != 'NONE' and int(result[0]['id']) > 0:
+            state_id = int(result[0]['id'])
+        dicCity['state_id'][0] = state_id
+        ad_id = 0
+        district_id = 0
+        if country_id and state_id:
+            if dicCity['ad_id'] != '-':
+            
+                sSql = "select id from administrative_district where state_id = " + `state_id` + " and name = '" + dicCity['ad_id'][0] + "'"
+                result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+                if result != 'NONE' and int(result[0]['id']) > 0:
+                    ad_id = int(result[0]['id'])
+                else:
+                    dicAD = {}
+                    dicAD['name'] = [dicCity['ad_id'][0],'string']
+                    dicAD['state_id'] = [state_id,'int']
+                    if result == 'NONE':
+                        result = self.xmlrpc_saveRecord('administrative_district', -1, dicAD, dicUser, liBigEntries='NO') 
+                    else:
+                        result = self.xmlrpc_saveRecord('administrative_district', result[0]['id'], dicAD, dicUser, liBigEntries='NO')
+                    
+##                    sSql = "select id from district where state_id = ' + `state_id`
+##                    result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+##                    if result != 'NONE' and int(result[0]['id']) > 0:
+##                        ad_id = int(result[0]['id'])
+##            if int(dicCity['country_id'][0]) > 0:
+##                sSql = "select id from states where name = '" + dicCity['name'][0] +"'"
+##                result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+##                print 'zipCity 1', result
+##                if result == 'NONE':
+##                    print 'zipCity 2', result
+##                    result = self.xmlrpc_saveRecord('states', -1, dicCity, dicUser, liBigEntries='NO') 
+##                    print 'zipCity 3', result
+##                else:
+##                    result = self.xmlrpc_saveRecord('states', result[0]['id'], dicCity, dicUser, liBigEntries='NO')
+##                    print 'zipCity 4', result
+##                return result
+        else:
+            print 'No Country or state  found'
+            print '___________________________'
+        return result 
+                        

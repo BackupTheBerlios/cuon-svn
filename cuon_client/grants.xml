@@ -53,7 +53,11 @@
       <nameOfUser>rainer</nameOfUser>
       <comment></comment>
     </user>                          
-                                                          
+    <user>
+      <nameOfUser>daniel</nameOfUser>
+      <comment></comment>
+    </user>                          
+                                                                   
   </users>
 
   <addgroups>
@@ -85,6 +89,11 @@
         <addgroup>
       <this_group>cuon_all</this_group>
       <this_user>rainer</this_user>
+      <comment></comment>
+    </addgroup>
+    <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>daniel</this_user>
       <comment></comment>
     </addgroup>
     
@@ -171,7 +180,13 @@
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
-
+<grant>
+      <nameOfGrant>cuon_all_rights_of_biblio </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>biblio, biblio_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
  <grant>
       <nameOfGrant>cuon_all_rights_of_dms </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
@@ -235,10 +250,11 @@
     <grant>
       <nameOfGrant>cuon_all_rights_of_garden </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id, numerical_garden_incoming_document, numerical_garden_outgoing_document</this_tables>
+      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id</this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
+    
   </setGrants>  
     
   </grants>

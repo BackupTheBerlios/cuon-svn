@@ -25,21 +25,7 @@ class Report(xmlrpc.XMLRPC, basics):
         #self.report = Reports.report.report()
        
 
-    def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
-        print `self.report_server`
-        import Reports.report_hibernation_incoming_document
-        import Garden
-        
-        print "startReport"
-        oGarden = Garden.Garden()
-        oReports = Reports.report_hibernation_incoming_document.report_hibernation_incoming_document()
-        repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
-        
-        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
-        print repData
-        
-        return self.report_server.ReportServer.createReport(repData)
-        
+    
     def xmlrpc_server_address_phonelist1(self, dicSearchlist, dicUser):
         import Reports.report_addresses_phone1
         import Address
@@ -79,3 +65,33 @@ class Report(xmlrpc.XMLRPC, basics):
         
         return self.report_server.ReportServer.createReport(repData)
         
+    def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
+        print `self.report_server`
+        import Reports.report_hibernation_incoming_document
+        import Garden
+        
+        print "startReport"
+        oGarden = Garden.Garden()
+        oReports = Reports.report_hibernation_incoming_document.report_hibernation_incoming_document()
+        repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
+        
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
+        print repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+        
+    def xmlrpc_server_hibernation_pickup_document(self, dicOrder, dicUser):
+        print `self.report_server`
+        import Reports.report_hibernation_pickup_document
+        import Garden
+        
+        print "startReport"
+        oGarden = Garden.Garden()
+        oReports = Reports.report_hibernation_pickup_document.report_hibernation_pickup_document()
+        repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
+        
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
+        print repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+         
