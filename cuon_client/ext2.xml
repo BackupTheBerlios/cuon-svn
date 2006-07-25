@@ -403,65 +403,306 @@
     </field>
 
        <field>
-      <name>botany_family</name>
-      <type>varchar</type>
+      <name>genus_id</name>
+      <type>int</type>
       <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>1</notnull>
-      <size>160</size>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
       <default />
       <comment />
-    </field>
-
+    </field>     
+   
+    
+    
        <field>
-      <name>botany_order</name>
+      <name>local_name</name>
       <type>varchar</type>
       <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>1</notnull>
+      <unique>0</unique>
+      <notnull>0</notnull>
       <size>160</size>
       <default />
       <comment />
     </field>
 
-   <field>
-      <name>botany_sub_class</name>
+    <field>
+      <name>description</name>
       <type>varchar</type>
       <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>1</notnull>
-      <size>160</size>
-      <default />
-      <comment />
-    </field>
-
-   <field>
-      <name>botany_class</name>
-      <type>varchar</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>1</notnull>
-      <size>160</size>
-      <default />
-      <comment />
-    </field>
-
-   <field>
-      <name>botany_division</name>
-      <type>varchar</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>1</notnull>
-      <size>160</size>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
       <default />
       <comment />
     </field>
 
 
+  <field>
+      <name>habitat</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>200</size>
+      <default />
+      <comment />
+    </field>
 
 
 
     </table>
+       <table>
+    <nameOfTable>botany_divisio</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+          <field>
+      <name>local_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+
+    </table>
+          <table>
+    <nameOfTable>botany_class</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+           <field>
+      <name>divisio_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>     
+      <field>
+      <name>local_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+   
+    
+    </table>
+    
+          <table>
+    <nameOfTable>botany_ordo</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+           <field>
+      <name>class_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>     
+   
+          <field>
+      <name>local_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+
+    </table>
+          <table>
+    <nameOfTable>botany_family</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+           <field>
+      <name>ordo_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>     
+         <field>
+      <name>local_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+
+    
+    </table>
+          <table>
+    <nameOfTable>botany_genus</nameOfTable>
+
+    <specials>inherits (t_standard);</specials>
+
+    <x>152</x>
+
+    <y>115</y>
+
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>description</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment />
+    </field>
+           <field>
+      <name>family_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>     
+   
+        <field>
+      <name>local_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>160</size>
+      <default />
+      <comment />
+    </field>
+  
+    </table>
+    
 <table>
     <nameOfTable>list_of_hibernation_incoming</nameOfTable>
 

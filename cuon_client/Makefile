@@ -11,6 +11,10 @@ CUWEBLOCALE = $(CUWEB)/usr/share/locale/de/LC_MESSAGES
 SERVERDIRCONFIG = /etc/cuon
 
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
+I18LDIR_PT=/usr/share/locale/pt/LC_MESSAGES
+
+src_locale_de = ./de.mo
+src_locale_pt = ./pt.mo
 
 dest_glade = $(SERVERDIRSHARE)/glade
 dest_report = $(SERVERDIRSHARE)/report
@@ -177,7 +181,6 @@ dest_garden = $(dest_cuon)/Garden
 
 src_xmlDefaults = ./*.xml
 
-src_locale_de = ./de.mo
 
  
 
@@ -238,9 +241,15 @@ install:
 	cp $(INSTALLDIR)/cuon.sh $(EXECDIR)/cuon
 	if [ -f de.mo ] ; then rm de.mo ; fi 
 	msgfmt -o de.mo de.po
+	if [ -f pt.mo ] ; then rm pt.mo ; fi 
+	msgfmt -o pt.mo pt.po
+
 	if [ ! -d $(I18LDIR_DE) ] ; then mkdir $(I18LDIR_DE) ; fi ; 
 	cp $(src_locale_de) $(I18LDIR_DE)/cuon.mo 
+	if [ ! -d $(I18LDIR_PT) ] ; then mkdir $(I18LDIR_PT) ; fi ; 
+	cp $(src_locale_pt) $(I18LDIR_PT)/cuon.mo 
 	cp ./createUserDirs.sh $(INSTALLDIR)
+    
 	chmod a+x $(INSTALLDIR)/createUserDirs.sh
 	if  [ ! -d $(INSTALLDIR)/icons ] ; then mkdir $(INSTALLDIR)/icons ; fi 
 

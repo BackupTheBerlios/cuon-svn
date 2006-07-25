@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2005]  [Juergen Hamel, D-32584 Löhne]
+##Copyright (C) [2005]  [Juergen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -34,7 +34,7 @@ locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import datetime as DateTime
 import SingleBiblio
-
+import cuon.DMS.dms
 
 class bibliowindow(chooseWindows):
 
@@ -49,7 +49,7 @@ class bibliowindow(chooseWindows):
         self.loadGlade('biblio.xml')
         self.win1 = self.getWidget('BiblioMainwindow')
         #self.setStatusBar()
-
+        self.allTables = allTables
 
         self.EntriesBiblio = 'biblio.xml'
         
@@ -151,6 +151,11 @@ class bibliowindow(chooseWindows):
         self.singleBiblio.deleteRecord()
 
  
+    def on_bDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleBiblio.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleBiblio.ID})
         
     # search button
     def on_bSearch_clicked(self, event):

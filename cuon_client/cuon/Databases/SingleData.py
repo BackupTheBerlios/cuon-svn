@@ -186,9 +186,9 @@ class SingleData(gladeXml, logs):
                     #self.printOut( j)
                     #self.printOut( k)
                 dicValues[lb][0] = ' '
-        else:
-            self.printOut( "saveValues - self.id = ", self.ID)
-            liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
+        
+        self.printOut( "saveValues - self.id = ", self.ID)
+        liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
         if self.ID < 0 and liResult:
             try:
                 id = liResult[0]['last_value']

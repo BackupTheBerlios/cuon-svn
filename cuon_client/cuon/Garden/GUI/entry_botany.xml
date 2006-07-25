@@ -4,71 +4,45 @@
     <table_name>botany</table_name>
 
     <entry>
-      <name>eBotanyName</name>
+      <name>eTypusName</name>
       <type>textline</type>
       <size>160</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
       <sql_field>botany_name</sql_field>
+      <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-
-        <entry>
-      <name>eBotanyFamily</name>
+    <entry>
+      <name>eTypusLocalName</name>
       <type>textline</type>
       <size>160</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>botany_family</sql_field>
+      <sql_field>local_name</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-
-        <entry>
-      <name>eBotanyOrder</name>
+      <entry>
+      <name>eTypusDescription</name>
+      <type>textline</type>
+      <size>240</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>description</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+      <entry>
+      <name>eTypusHabitat</name>
       <type>textline</type>
       <size>160</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>botany_order</sql_field>
+      <sql_field>habitat</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-
-        <entry>
-      <name>eBotanySubClass</name>
-      <type>textline</type>
-      <size>160</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>botany_sub_class</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-
-        <entry>
-      <name>eBotanyClass</name>
-      <type>textline</type>
-      <size>160</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>botany_class</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-
-        <entry>
-      <name>eBotanyDivision</name>
-      <type>textline</type>
-      <size>160</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>botany_Division</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-
-  
   </table>
 </entries_for_table>

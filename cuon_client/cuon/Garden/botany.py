@@ -28,6 +28,11 @@ import cuon.Addresses.SingleAddress
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 
+import SingleBotanyDivisio
+import SingleBotanyClass
+import SingleBotanyOrdo
+import SingleBotanyFamily
+import SingleBotanyGenus
 import SingleBotany
 
 
@@ -43,28 +48,61 @@ class botanywindow(chooseWindows):
         self.win1 = self.getWidget('BotanyMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = 110500
+        self.setStatusBar()
         
         self.allTables = allTables
+        self.singleBotanyDivisio = SingleBotanyDivisio.SingleBotanyDivisio(allTables)
+        self.singleBotanyClass = SingleBotanyClass.SingleBotanyClass(allTables)
+        self.singleBotanyOrdo = SingleBotanyOrdo.SingleBotanyOrdo(allTables)
+        self.singleBotanyFamily = SingleBotanyFamily.SingleBotanyFamily(allTables)
+        self.singleBotanyGenus = SingleBotanyGenus.SingleBotanyGenus(allTables)
         self.singleBotany = SingleBotany.SingleBotany(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
         # self.singleBotany.loadTable()
               
+        self.EntriesBotanyDivisio = 'botany_divisio.xml'
+        self.EntriesBotanyClass = 'botany_class.xml'
+        self.EntriesBotanyOrdo = 'botany_ordo.xml'
+        self.EntriesBotanyFamily = 'botany_family.xml'
+        self.EntriesBotanyGenus = 'botany_genus.xml'
         self.EntriesBotany = 'botany.xml'
                 
         
         #singleBotany
  
  
+        self.loadEntries(self.EntriesBotanyDivisio)
+        self.loadEntries(self.EntriesBotanyClass)
+        self.loadEntries(self.EntriesBotanyOrdo)
+        self.loadEntries(self.EntriesBotanyFamily)
+        self.loadEntries(self.EntriesBotanyGenus)
         self.loadEntries(self.EntriesBotany)
+        
+        
+        self.singleBotanyDivisio.setEntries(self.getDataEntries( self.EntriesBotanyDivisio) )
+        self.singleBotanyDivisio.setGladeXml(self.xml)
+        self.singleBotanyDivisio.setTree(self.xml.get_widget('tree1') )
+        
+        self.singleBotanyClass.setEntries(self.getDataEntries( self.EntriesBotanyClass) )
+        self.singleBotanyClass.setGladeXml(self.xml)
+        self.singleBotanyClass.setTree(self.xml.get_widget('tree1') )
+
+        self.singleBotanyOrdo.setEntries(self.getDataEntries( self.EntriesBotanyOrdo) )
+        self.singleBotanyOrdo.setGladeXml(self.xml)
+        self.singleBotanyOrdo.setTree(self.xml.get_widget('tree1') )
+
+        self.singleBotanyFamily.setEntries(self.getDataEntries( self.EntriesBotanyFamily) )
+        self.singleBotanyFamily.setGladeXml(self.xml)
+        self.singleBotanyFamily.setTree(self.xml.get_widget('tree1') )
+        
+        self.singleBotanyGenus.setEntries(self.getDataEntries( self.EntriesBotanyGenus) )
+        self.singleBotanyGenus.setGladeXml(self.xml)
+        self.singleBotanyGenus.setTree(self.xml.get_widget('tree1') )
+        
         self.singleBotany.setEntries(self.getDataEntries( self.EntriesBotany) )
         self.singleBotany.setGladeXml(self.xml)
-        self.singleBotany.setTreeFields( ['botany_name', 'botany_family'] )
-#        self.singleBotany.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleBotany.setTreeOrder('botany_name')
         self.singleBotany.setTree(self.xml.get_widget('tree1') )
-        self.singleBotany.setListHeader(['botany_name', 'botany_family', ])
-        
    
         
 
@@ -73,36 +111,71 @@ class botanywindow(chooseWindows):
 
         # Close Menus for Tab
 
+        self.addEnabledMenuItems('tabs','divisio1')
+        self.addEnabledMenuItems('tabs','class1')
+        self.addEnabledMenuItems('tabs','ordo1')
+        self.addEnabledMenuItems('tabs','family1')
+        self.addEnabledMenuItems('tabs','genus1')
         self.addEnabledMenuItems('tabs','botany1')
 
 
         # seperate Menus
         self.addEnabledMenuItems('botany','botany1')
+        self.addEnabledMenuItems('divisio','divisio1')
+        self.addEnabledMenuItems('class','class1')
+        self.addEnabledMenuItems('ordo','ordo1')
+        self.addEnabledMenuItems('family','family1')
+        self.addEnabledMenuItems('genus','genus1')
 
         
-        # enabledMenues for Article
+        # enabledMenues for Divisio
+        self.addEnabledMenuItems('editDivisio','divisio_new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editDivisio','divisio_clear1', self.dicUserKeys['articles_delete'])
+        #self.addEnabledMenuItems('editDivisio','divisio_print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editDivisio','divisio_edit1',self.dicUserKeys['articles_edit'])
+
+        # enabledMenues for Class
+        self.addEnabledMenuItems('editClass','class_new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editClass','class_clear1', self.dicUserKeys['articles_delete'])
+        #self.addEnabledMenuItems('editClass','class_print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editClass','class_edit1',self.dicUserKeys['articles_edit'])
+        # enabledMenues for Ordo
+        self.addEnabledMenuItems('editOrdo','ordo_new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editOrdo','ordo_clear1', self.dicUserKeys['articles_delete'])
+        #self.addEnabledMenuItems('editOrdo','ordo_print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editOrdo','ordo_edit1',self.dicUserKeys['articles_edit'])
+        # enabledMenues for Family
+        self.addEnabledMenuItems('editFamily','family_new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editFamily','family_clear1', self.dicUserKeys['articles_delete'])
+        #self.addEnabledMenuItems('editFamily','family_print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editFamily','family_edit1',self.dicUserKeys['articles_edit'])
+        # enabledMenues for Genus
+        self.addEnabledMenuItems('editGenus','genus_new1', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editGenus','genus_clear1', self.dicUserKeys['articles_delete'])
+        #self.addEnabledMenuItems('editGenus','genus_print1', self.dicUserKeys['articles_print'])
+        self.addEnabledMenuItems('editGenus','genus_edit1',self.dicUserKeys['articles_edit'])
+        # enabledMenues for Typus
         self.addEnabledMenuItems('editBotany','new1', self.dicUserKeys['articles_new'])
         self.addEnabledMenuItems('editBotany','clear1', self.dicUserKeys['articles_delete'])
         self.addEnabledMenuItems('editBotany','print1', self.dicUserKeys['articles_print'])
         self.addEnabledMenuItems('editBotany','edit1',self.dicUserKeys['articles_edit'])
-
       
 
 
         # tabs from notebook
-        self.tabBotany = 0
+        self.tabDivisio = 0
+        self.tabClass = 1
+        self.tabOrdo = 2
+        self.tabFamily = 3
+        self.tabGenus = 4
+        self.tabBotany = 5
         
 
         # start
         
         self.tabChanged()
 
-        # enabled menus for article
-        self.addEnabledMenuItems('editBotany','new1')
-        self.addEnabledMenuItems('editBotany','clear1')
-        self.addEnabledMenuItems('editBotany','print1')
-
-        
+              
        
     
         self.win1.add_accel_group(self.accel_group)
@@ -111,12 +184,105 @@ class botanywindow(chooseWindows):
     def on_quit1_activate(self, event):
         print "exit botany v2"
         self.closeWindow()
-  
+    # Menu Divisio
+    def on_divisio_save1_activate(self, event):
+        self.singleBotanyDivisio.save()
+        self.setEntriesEditable(self.EntriesBotanyDivisio, False)
+        self.tabChanged()
+        
+    def on_divisio_new1_activate(self, event):
+        self.singleBotanyDivisio.newRecord()
+        self.setEntriesEditable(self.EntriesBotanyDivisio, True)
 
+    def on_divisio_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesBotanyDivisio, True)
+        
+        
+    def on_divisio_clear1_activate(self, event):
+        self.singleBotanyDivisio.deleteRecord()
+                
+    # Menu Class
+    def on_class_save1_activate(self, event):
+        self.singleBotanyClass.divisioId = self.singleBotanyDivisio.ID
+        self.singleBotanyClass.save()
+        self.setEntriesEditable(self.EntriesBotanyClass, False)
+        self.tabChanged()
+        
+    def on_class_new1_activate(self, event):
+        self.singleBotanyClass.newRecord()
+        self.setEntriesEditable(self.EntriesBotanyClass, True)
+
+    def on_class_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesBotanyClass, True)
+        
+        
+    def on_class_clear1_activate(self, event):
+        self.singleBotanyClass.deleteRecord()
+
+
+    # Menu Ordo
+    def on_ordo_save1_activate(self, event):
+        self.singleBotanyOrdo.botclassId = self.singleBotanyClass.ID
+        self.singleBotanyOrdo.save()
+        self.setEntriesEditable(self.EntriesBotanyOrdo, False)
+        self.tabChanged()
+        
+    def on_ordo_new1_activate(self, event):
+        self.singleBotanyOrdo.newRecord()
+        self.setEntriesEditable(self.EntriesBotanyOrdo, True)
+
+    def on_ordo_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesBotanyOrdo, True)
+        
+        
+    def on_ordo_clear1_activate(self, event):
+        self.singleBotanyOrdo.deleteRecord()
+        
+        
+        
+    # Menu Family
+    def on_family_save1_activate(self, event):
+        self.singleBotanyFamily.ordoId = self.singleBotanyOrdo.ID
+        self.singleBotanyFamily.save()
+        self.setEntriesEditable(self.EntriesBotanyFamily, False)
+        self.tabChanged()
+        
+    def on_family_new1_activate(self, event):
+        self.singleBotanyFamily.newRecord()
+        self.setEntriesEditable(self.EntriesBotanyFamily, True)
+
+    def on_family_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesBotanyFamily, True)
+        
+        
+    def on_family_clear1_activate(self, event):
+        self.singleBotanyFamily.deleteRecord()        
+        
+
+    # Menu Genus
+    def on_genus_save1_activate(self, event):
+        self.singleBotanyGenus.familyId = self.singleBotanyFamily.ID
+        self.singleBotanyGenus.save()
+        self.setEntriesEditable(self.EntriesBotanyGenus, False)
+        self.tabChanged()
+        
+    def on_genus_new1_activate(self, event):
+        self.singleBotanyGenus.newRecord()
+        self.setEntriesEditable(self.EntriesBotanyGenus, True)
+
+    def on_genus_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesBotanyGenus, True)
+        
+        
+    def on_genus_clear1_activate(self, event):
+        self.singleBotanyGenus.deleteRecord()
+        
+        
     #Menu Botany
   
     def on_save1_activate(self, event):
         print "save articles v2"
+        self.singleBotany.genusId = self.singleBotanyGenus.ID
         self.singleBotany.save()
         self.setEntriesEditable(self.EntriesBotany, False)
         self.tabChanged()
@@ -187,24 +353,82 @@ class botanywindow(chooseWindows):
     def refreshTree(self):
         self.singleBotany.disconnectTree()
         
-        if self.tabOption == self.tabBotany:
+
+        if self.tabOption == self.tabDivisio:
+            #self.singleBotanyDivisio.sWhere  ='where task_id = ' + `int(self.singleProjectTasks.ID)`
+            self.singleBotanyDivisio.connectTree()
+            self.singleBotanyDivisio.refreshTree()
+        elif self.tabOption == self.tabClass:
+            self.singleBotanyClass.sWhere  ='where divisio_id = ' + `int(self.singleBotanyDivisio.ID)`
+            self.singleBotanyClass.connectTree()
+            self.singleBotanyClass.refreshTree()
+        elif self.tabOption == self.tabOrdo:
+            self.singleBotanyOrdo.sWhere  ='where class_id = ' + `int(self.singleBotanyClass.ID)`
+            self.singleBotanyOrdo.connectTree()
+            self.singleBotanyOrdo.refreshTree()
+        elif self.tabOption == self.tabFamily:
+            self.singleBotanyFamily.sWhere  ='where ordo_id = ' + `int(self.singleBotanyOrdo.ID)`
+            self.singleBotanyFamily.connectTree()
+            self.singleBotanyFamily.refreshTree()
+        elif self.tabOption == self.tabGenus:
+            self.singleBotanyGenus.sWhere  ='where family_id = ' + `int(self.singleBotanyFamily.ID)`
+            self.singleBotanyGenus.connectTree()
+            self.singleBotanyGenus.refreshTree()
+        elif self.tabOption == self.tabBotany:
+            self.singleBotany.sWhere  ='where genus_id = ' + `int(self.singleBotanyGenus.ID)`
             self.singleBotany.connectTree()
             self.singleBotany.refreshTree()
-
-  
-
 
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
         self.setTreeVisible(True)
-        if self.tabOption == self.tabBotany:
-            #Address
+        if self.tabOption == self.tabDivisio :
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('divisio')
+            self.actualEntries = self.singleBotanyDivisio.getEntries()
+            self.editAction = 'editDivisio'
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+        elif self.tabOption == self.tabClass :
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('class')
+            self.actualEntries = self.singleBotanyClass.getEntries()
+            self.editAction = 'editClass'
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+        elif self.tabOption == self.tabOrdo :
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('ordo')
+            self.actualEntries = self.singleBotanyOrdo.getEntries()
+            self.editAction = 'editOrdo'
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+        elif self.tabOption == self.tabFamily :
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('family')
+            self.actualEntries = self.singleBotanyFamily.getEntries()
+            self.editAction = 'editFamily'
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+        elif self.tabOption == self.tabGenus :
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('genus')
+            self.actualEntries = self.singleBotanyGenus.getEntries()
+            self.editAction = 'editGenus'
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+            
+        elif self.tabOption == self.tabBotany:
+        
             self.disableMenuItem('tabs')
             self.enableMenuItem('botany')
-            print 'Seite 0'
+            self.actualEntries = self.singleBotany.getEntries()
             self.editAction = 'editBotany'
-   
+            self.setStatusbarText([''])
+            self.setTreeVisible(True)
+            
+            
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

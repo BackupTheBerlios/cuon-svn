@@ -220,6 +220,32 @@
       <Entry-File>botany.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_botany.xml</Entry-FileValue>
     </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany_divisio.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany_divisio.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany_class.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany_class.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany_ordo.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany_ordo.xml</Entry-FileValue>
+    </Entries>
+
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany_family.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany_family.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>botany_genus.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_botany_genus.xml</Entry-FileValue>
+    </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>

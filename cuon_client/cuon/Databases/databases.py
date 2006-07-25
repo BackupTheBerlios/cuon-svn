@@ -343,34 +343,35 @@ class databaseswindow(windows):
                 # create Column
                 print 'create Column ' + str(co.getName())
                 self.createColumn(table, co)
-            else:
-                print 'Column exist, now check Column Type'
-                ok = self.rpc.callRP('Database.checkTypeOfColumn',table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
+            
+            print 'Column exist, now check Column Type'
+            ok = self.rpc.callRP('Database.checkTypeOfColumn',table.getName(), co.getName(), co.getType(), co.getSizeOfDatafield() , self.dicUser )
 
                 
-                self.out("column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok),1)
-                print "column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok) 
-                if ok == 0:
-                    print 'Column Type false, modify !'
-                    # change column
-                    self.modifyColumn(table, co)
+            self.out("column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok),1)
+            print "column-ok = " +`co.getType()` + ', ' + ` co.getSizeOfDatafield()` + ', -- ' +  str(ok) 
+            if ok == 0:
+                print 'Column Type false, modify !'
+                # change column
+                self.modifyColumn(table, co)
                 
-        
-            
+    def getSqlField(self,sSql, co):
+        if (string.find(co.getType(), 'char' )>= 0 ) :
+            # find char, so take size to it
+            sSql = sSql + ' (' + str(co.getSizeOfDatafield()) +') '
+        if (string.find(co.getType(), 'numeric' )>= 0 ) :
+            # find numeric, so take size to it
+            print '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
+            sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '    
+        return sSql 
     def createColumn(self, table, co):
         self.out( co.getName())
 
         
         sSql = 'alter table ' + str(table.getName()) + ' add column  ' + co.getName() + ' ' + co.getType()
-        if (string.find(co.getType(), 'char' )>= 0 ) :
-            # find char, so take size to it
-            sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
-        if (string.find(co.getType(), 'numeric' )>= 0 ) :
-            # find numeric, so take size to it
-            print '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
-            sSql = sSql + '(' + str(co.getSizeOfDatafield()) +') '
-            print sSql
-            print '----------------------------------------------------------------'
+        sSql = self.getSqlField(sSql, co)
+        print sSql
+        print '----------------------------------------------------------------'
         if  co.isAllowNull()  == 0 :
             self.out( co.isAllowNull())
             sSql = sSql + ' not null '
@@ -393,9 +394,11 @@ class databaseswindow(windows):
     #
 
     def modifyColumn(self, table, co):
+        #at this time to many problems with Postgres 
+        #sSql = 'alter table ' + str(table.getName()) + ' alter column ' + co.getName() + ' type ' + ' ' + co.getType()  
+        #sSql = self.getSqlField(sSql,co)
+        #res = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
         pass
-    
- 
  
     def startXMLCheck(self, key, lEntry, sNameOfTable):
         self.out( 'XML-Check')

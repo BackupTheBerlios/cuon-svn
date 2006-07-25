@@ -56,7 +56,11 @@
     <user>
       <nameOfUser>daniel</nameOfUser>
       <comment></comment>
-    </user>                          
+    </user> 
+     <user>
+      <nameOfUser>christian</nameOfUser>
+      <comment>gayer</comment>
+    </user> 
                                                                    
   </users>
 
@@ -96,7 +100,11 @@
       <this_user>daniel</this_user>
       <comment></comment>
     </addgroup>
-    
+    <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>christian</this_user>
+      <comment></comment>
+    </addgroup>
     
     <addgroup>
       <this_group>zope</this_group>
@@ -155,17 +163,11 @@
   <grant>
       <nameOfGrant>cuon_all_rights_of_misc </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>zipcode, zipcode_id </this_tables>
+      <this_tables>zipcodes, zipcodes_id </this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
-  <grant>
-      <nameOfGrant>cuon_all_rights_of_sequences </nameOfGrant>
-      <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>numerical_misc_standard_invoice, numerical_misc_standard_pickup, numerical_misc_standard_delivery </this_tables>
-      <this_group>cuon_all</this_group>
-      <comment></comment>
-    </grant>
+  
  <grant>
       <nameOfGrant>cuon_all_rights_of_preferences </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
@@ -243,7 +245,7 @@
     <grant>
       <nameOfGrant>cuon_all_rights_of_projects </nameOfGrant>
       <this_grants>select, insert,  update, delete</this_grants>
-      <this_tables>projects, projects_id, project_phases, project_phases_id, project_tasks, project_tasks_id, project_tasks_staff_res, project_tasks_staff_res_id, project_tasks_material_res, project_tasks_material_res_id</this_tables>
+      <this_tables>projects, projects_id, project_phases, project_phases_id, project_tasks, project_tasks_id, project_task_staff_res, project_task_staff_res_id, project_task_material_res, project_task_material_res_id</this_tables>
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
@@ -254,7 +256,13 @@
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
-    
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_botany </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>botany, botany_id, botany_divisio, botany_divisio_id, botany_class, botany_class_id, botany_ordo, botany_ordo_id, botany_family, botany_family_id, botany_genus, botany_genus_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
   </setGrants>  
     
   </grants>

@@ -63,13 +63,13 @@ class logs :
         #print sLog
         pass
     def printOut(self, s1,s2=None):
-        ok = True
-        if ok:
-            if s2:
-                print s1, s2
-            else:
-                print s1
-               
+##        ok = True
+##        if ok:
+##            if s2:
+##                print s1, s2
+##            else:
+##                print s1
+      pass     
         
     
         

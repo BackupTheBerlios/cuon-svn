@@ -902,7 +902,7 @@
       <pkey>0</pkey>
       <unique>1</unique>
       <notnull>1</notnull>
-      <size>30</size>
+      <size>150</size>
       <default />
       <comment />
     </field>
@@ -912,7 +912,7 @@
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>
-      <size>50</size>
+      <size>220</size>
       <default />
       <comment />
     </field>

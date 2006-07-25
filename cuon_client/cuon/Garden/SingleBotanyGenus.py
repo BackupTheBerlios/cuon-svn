@@ -18,17 +18,17 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-import SingleBotanyGenus
 
 
-class SingleBotany(SingleData):
+
+class SingleBotanyGenus(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "botany"
+        self.sNameOfTable =  "botany_genus"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
@@ -38,50 +38,19 @@ class SingleBotany(SingleData):
         
         self.listHeader['size'] = [25,10,25,25,10]
         
-        self.setTreeFields( ['botany_name', 'local_name'] )
-        self.setTreeOrder('botany_name')
-        self.setListHeader([_('name'),_('local name')])
-        self.oSingleBotanyGenus = SingleBotanyGenus.SingleBotanyGenus(allTables)
-
-
-
-        self.genusId = 0
+        
+        self.setTreeFields( ['name', 'description'] )
+        self.setTreeOrder('name')
+        self.setListHeader([_('name'),_('description')])
+ 
+        self.familyId = 0
     
     def readNonWidgetEntries(self, dicValues):
-        dicValues['genus_id'] = [self.genusId, 'int']
+        dicValues['family_id'] = [self.familyId, 'int']
         return dicValues     
-
-    def getBotany(self, id):
-        dicRecords = self.load(id)
-        liBotany = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liBotany.append(dicRecord['botany_name'])
-            liBotany.append(dicRecord['local name'])
-            liBotany.append(dicRecord['description'])
-            liBotany.append(' ')
-            liBotany.append(' ' )
-        if not liBotany:
-            liBotany.append(' ')
-            liBotany.append(' ')
-            liBotany.append(' ')
-            liBotany.append(' ')
-            liBotany.append(' ')
-            
-        return liBotany
-
-       
-    def getBotanyFields(self, id):
-        dicRecords = self.load(id)
-
-    def getBotanyNumber(self, id):
-        dicRecords = self.load(id)
-        return dicRecords[0]['number']
-    
-    def getBotanyName(self,id):
+    def getGenusName(self,id):
         dicRecords = self.load(id)
         sName = ''
-        if dicRecords and dicRecords[0].has_key('botany_name'):
-            sName =  self.oSingleBotanyGenus.getGenusName(dicRecords[0]['genus_id']) + ' ' + dicRecords[0]['botany_name']
+        if dicRecords and dicRecords[0].has_key('name'):
+            sName =  dicRecords[0]['name']
         return sName
-            

@@ -258,7 +258,7 @@ class hibernationwindow(chooseWindows):
         dicOrder['orderNumber'] = self.singleHibernation.ID
         print "Start print incoming document 3"
 
-        Pdf = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
+        Pdf = self.rpc.callRP('Report.server_hibernation_pickup_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser)    
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}
