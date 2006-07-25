@@ -12,9 +12,11 @@ SERVERDIRCONFIG = /etc/cuon
 
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
 I18LDIR_PT=/usr/share/locale/pt/LC_MESSAGES
+I18LDIR_PT_BR=/usr/share/locale/pt_BR/LC_MESSAGES
 
 src_locale_de = ./de.mo
 src_locale_pt = ./pt.mo
+src_locale_pt_BR = ./pt_BR.mo
 
 dest_glade = $(SERVERDIRSHARE)/glade
 dest_report = $(SERVERDIRSHARE)/report
@@ -243,11 +245,15 @@ install:
 	msgfmt -o de.mo de.po
 	if [ -f pt.mo ] ; then rm pt.mo ; fi 
 	msgfmt -o pt.mo pt.po
+	if [ -f pt_BR.mo ] ; then rm pt_BR.mo ; fi 
+	msgfmt -o pt_BR.mo pt_BR.po
 
 	if [ ! -d $(I18LDIR_DE) ] ; then mkdir $(I18LDIR_DE) ; fi ; 
 	cp $(src_locale_de) $(I18LDIR_DE)/cuon.mo 
 	if [ ! -d $(I18LDIR_PT) ] ; then mkdir $(I18LDIR_PT) ; fi ; 
 	cp $(src_locale_pt) $(I18LDIR_PT)/cuon.mo 
+	if [ ! -d $(I18LDIR_PT_BR) ] ; then mkdir $(I18LDIR_PT_BR) ; fi ; 
+	cp $(src_locale_pt_BR) $(I18LDIR_PT_BR)/cuon.mo 
 	cp ./createUserDirs.sh $(INSTALLDIR)
     
 	chmod a+x $(INSTALLDIR)/createUserDirs.sh
