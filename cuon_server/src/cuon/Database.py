@@ -61,7 +61,7 @@ class Database(xmlrpc.XMLRPC, SQL):
     def checkUser(self, sUser, sID, userType = None):
         ok = None
         dSession = {}
-        print sUser, userType
+        #print sUser, userType
         if userType:
            if userType == 'cuon':
                 try:
@@ -73,7 +73,7 @@ class Database(xmlrpc.XMLRPC, SQL):
                     dSession['SessionID'] = self.loadObject('user_' + sUser + '_Session_ID')
                     dSession['endTime'] = float(self.loadObject('user_' + sUser + '_Session_endTime'))
                     self.closeDB()
-                    print 'dSession', dSession
+                    #print 'dSession', dSession
                     
                     if sID == dSession['SessionID'] and self.checkEndTime(dSession['endTime']):
                         ok = sUser
@@ -213,10 +213,10 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         ok = 0
-        #print `dicName`
+        print `dicName`
         
         for i in range(len(dicName)):
-            #print dicName[i]['attname']
+            print dicName[i]['attname']
             if sColumnName == dicName[i]['attname']:
                ok = 1
     
@@ -237,8 +237,8 @@ class Database(xmlrpc.XMLRPC, SQL):
            self.writeLog( 'type is equal')
            if string.find(sType,'char') > -1:
               result2 = self.xmlrpc_getSizeOfColumn(sTable, sColumn, dicUser)
-              
-              if (result2[0]['atttypmod'] -4) == iSize:
+              self.writeLog( 'Size =' + `result2[0]['atttypmod'] -4` + ', ' +  `int(iSize)`)
+              if (result2[0]['atttypmod'] -4) == int(iSize):
                  bCheck = 1
            else:
               bCheck = 1

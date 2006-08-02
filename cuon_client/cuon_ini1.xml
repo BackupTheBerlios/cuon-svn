@@ -128,6 +128,11 @@
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>preferences_dms.xml</Entry-File>
+      <Entry-FileValue>/usr/share/cuon/entry_preferencesDMS.xml</Entry-FileValue>
+    </Entries> 
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>prefs_finance_top.xml</Entry-File>
       <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_top.xml</Entry-FileValue>
     </Entries>

@@ -26,12 +26,16 @@ import logging
 import SingleDMS
 import cuon.Misc.misc
 import os
+
+from PIL import Image
 try:
     import sane
-except:
-    print 'No Sane found --> No scanner !'
+    #from _sane import *
+except Exception, param:
     
-import Image
+    print 'No Sane found --> No scanner !'
+    print Exception, param
+    
 import bz2
 import re
 import binascii
@@ -48,17 +52,25 @@ class documentTools:
                              
         exe = None
         if singleDMS.fileFormat:
+            print 'Format = ', singleDMS.fileFormat
             if singleDMS.fileFormat == dicUser['prefDMS']['fileformat']['scanImage']['format']:
                 print 'show'
                 s = bz2.decompress( singleDMS.imageData)
               
                 newIm = Image.fromstring('RGB',[singleDMS.size_x, singleDMS.size_y], s)
                 newIm.show()
+            elif singleDMS.fileFormat == dicUser['prefDMS']['fileformat']['LINK']['format']:
+                print 'Link'
+                s = singleDMS.imageData
+                print 's = ', s
+                os.system(dicUser['prefDMS']['exe']['internet'] + ' ' + `s` )
+                
             else:
                 for key in  dicUser['prefDMS']['fileformat'].keys():
-                    print singleDMS.fileFormat
-                    print dicUser['prefDMS']['fileformat'][key]['format']
+                    print 'file-format', singleDMS.fileFormat
+                    print 'User-fileformat', dicUser['prefDMS']['fileformat'][key]['format']
                     if singleDMS.fileFormat ==  dicUser['prefDMS']['fileformat'][key]['format']:
+                        print 'dicUser-prefDMS', dicUser['prefDMS']['fileformat'][key]
                         exe =  dicUser['prefDMS']['fileformat'][key]['executable']
                         if singleDMS.fileSuffix and singleDMS.fileSuffix != 'NONE':
                             sEXT = singleDMS.fileSuffix
@@ -85,7 +97,12 @@ class documentTools:
 ##        print sc
 ##        ok = os.system(sc)
 ##        print ok
+        # SANE for scan images
         
+        print 'SANE version:', sane.init()
+        print 'Available devices=', sane.get_devices()
+        
+    
         scanner=sane.open(dicUser['prefDMS']['scan_device'])
         print 'SaneDev object=', scanner
         print 'Device parameters:', scanner.get_parameters()
@@ -101,8 +118,8 @@ class documentTools:
         scanner.resolution = dicUser['prefDMS']['scan_resolution']
         
         print 'Device parameters after setting:', scanner.get_parameters()
-        print scanner.contrast
-        print scanner.brightness
+        #print scanner.contrast
+        #print scanner.brightness
         #print scanner.white_level
         
         # Initiate the scan

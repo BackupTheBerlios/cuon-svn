@@ -82,7 +82,6 @@ class User:
         self.prefPath['ReportArticleLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
         self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefApps['PDF']='/usr/bin/gpdf'
         
         
         self.prefColor = {'FG':0, 'BG':0}
@@ -100,10 +99,10 @@ class User:
         
         # Executables
         self.prefDMS['exe'] = {}
-        self.prefDMS['exe']['writer'] = '/usr/bin/oowriter'
-        self.prefDMS['exe']['calc'] = '/usr/bin/oocalc'
-        self.prefDMS['exe']['draw'] = '/usr/bin/oodraw'
-        self.prefDMS['exe']['impress'] = '/usr/bin/ooimpress'
+        self.prefDMS['exe']['writer'] = '/usr/bin/oowriter2'
+        self.prefDMS['exe']['calc'] = '/usr/bin/oocalc2'
+        self.prefDMS['exe']['draw'] = '/usr/bin/oodraw2'
+        self.prefDMS['exe']['impress'] = '/usr/bin/ooimpress2'
         self.prefDMS['exe']['image'] = '/usr/bin/gimp'
         self.prefDMS['exe']['music'] = '/usr/bin/xmms'
         self.prefDMS['exe']['ogg'] = '/usr/bin/xmms'
@@ -113,16 +112,22 @@ class User:
         self.prefDMS['exe']['ltx'] = '/usr/bin/xemacs'
         self.prefDMS['exe']['txt'] = '/usr/bin/gedit'
         self.prefDMS['exe']['flowchart'] = '/usr/bin/dia'
+        self.prefDMS['exe']['googleearth'] = 'googleearth'
+        self.prefDMS['exe']['internet'] = '/usr/bin/firefox'
+        self.prefDMS['exe']['html'] = '/usr/bin/firefox'
+
+        self.prefApps['PDF']=self.prefDMS['exe']['pdf']
 
 
 
         # File-format
         self.prefDMS['fileformat'] = {}
         self.prefDMS['fileformat']['scanImage'] = {'format':'Image Scanner', 'suffix':['NONE'], 'executable': 'INTERN'}
-        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw'], 'executable': self.prefDMS['exe']['writer'] }
-        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc'], 'executable': self.prefDMS['exe']['calc']}
-        self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd'], 'executable': self.prefDMS['exe']['draw']}
-        self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sxi'], 'executable': self.prefDMS['exe']['impress']}
+        self.prefDMS['fileformat']['LINK'] =  {'format':'LINK', 'suffix':['NONE'], 'executables': 'INTERN'}
+        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw','odt','ott'], 'executable': self.prefDMS['exe']['writer'] }
+        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc','ods','ots'], 'executable': self.prefDMS['exe']['calc']}
+        self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd','odg','otg'], 'executable': self.prefDMS['exe']['draw']}
+        self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sti','sxi','odp','otp'], 'executable': self.prefDMS['exe']['impress']}
         self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf','jpg','gif','png'], 'executable': self.prefDMS['exe']['image']}
         self.prefDMS['fileformat']['mp3'] =  {'format':'MP3',  'suffix':['mp3'], 'executable': self.prefDMS['exe']['music']}
         self.prefDMS['fileformat']['ogg'] =  {'format':'OGG',  'suffix':['ogg'], 'executable': self.prefDMS['exe']['ogg']}
@@ -131,9 +136,12 @@ class User:
         self.prefDMS['fileformat']['tex'] =  {'format':'TEX',  'suffix':['tex',], 'executable': self.prefDMS['exe']['tex']}
         self.prefDMS['fileformat']['latex'] =  {'format':'LATEX',  'suffix':['ltx',], 'executable': self.prefDMS['exe']['ltx']}
         self.prefDMS['fileformat']['pdf'] =  {'format':'Adobe PDF',  'suffix':['pdf',], 'executable': self.prefDMS['exe']['pdf']}
-
-        self.prefDMS['fileformat']['dia'] =  {'format':'DIA ', 'suffix':['dia'], 'executables': self.prefDMS['exe']['flowchart']}
         
+        self.prefDMS['fileformat']['dia'] =  {'format':'DIA', 'suffix':['dia'], 'executable': self.prefDMS['exe']['flowchart']}
+        self.prefDMS['fileformat']['googleearth'] =  {'format':'KMZ', 'suffix':['kmz','kml','eta'], 'executable': self.prefDMS['exe']['googleearth']}
+        self.prefDMS['fileformat']['html'] =  {'format':'HTML', 'suffix':['html','htm'], 'executable': self.prefDMS['exe']['html']}
+        
+
         
         
         
@@ -249,7 +257,58 @@ class User:
         self.sqlDicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.sqlDicUser['SQLTimeFormat'] = self.userSQLTimeFormat
         self.sqlDicUser['SQLDateTimeFormat'] = self.userSQLDateTimeFormat
+
+    def getUser(self, result):
+        try:
+             
+            self.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']
+            self.prefPath['StandardSupply1'] =  result['path_to_docs_supply']
+            self.prefPath['StandardPickup1'] =  result['path_to_docs_pickup']
+            self.prefPath['AddressLists'] =   result['path_to_docs_address_lists']
+    
+            self.prefPath['ReportStandardInvoice1'] =   result['path_to_report_invoices']
+            self.prefPath['ReportStandardSupply1'] =  result['path_to_report_supply']
+            self.prefPath['ReportStandardPickup1'] =  result['path_to_report_pickup']
+    
+            self.prefPath['ReportAddressLists'] =  result['path_to_report_address_lists']
+    
+            self.prefDMS['scan_device'] = result['scanner_device']
+            self.prefDMS['scan_r'] = {'x':result['scanner_brx'], 'y':result['scanner_bry']}
+            self.prefDMS['scan_mode'] = result['scanner_mode']
+            self.prefDMS['scan_contrast'] = result['scanner_contrast']
+            self.prefDMS['scan_brightness'] = result['scanner_brightness']
+            self.prefDMS['scan_white_level'] = result['scanner_white_level']
+            self.prefDMS['scan_depth'] = result['scanner_depth']
+            self.prefDMS['scan_resolution'] = result['scanner_resolution']
+            # Executables
+            
+            self.prefDMS['exe']['writer'] = result['exe_oowriter']
+            self.prefDMS['exe']['calc'] = result['exe_oocalc']
+            self.prefDMS['exe']['draw'] = result['exe_oodraw']
+            self.prefDMS['exe']['impress'] = result['exe_ooimpress']
+            self.prefDMS['exe']['image'] = result['exe_image']
+            self.prefDMS['exe']['music'] = result['exe_music']
+            self.prefDMS['exe']['ogg'] = result['exe_ogg']
+            self.prefDMS['exe']['wav'] = result['exe_wav']
+            self.prefDMS['exe']['pdf'] = result['exe_pdf']
+            self.prefDMS['exe']['tex'] = result['exe_tex']
+            self.prefDMS['exe']['ltx'] = result['exe_ltx']
+            self.prefDMS['exe']['txt'] = result['exe_txt']
+            self.prefDMS['exe']['flowchart'] = result['exe_flowchart']
+            self.prefDMS['exe']['googleearth'] = result['exe_googleearth']
+            self.prefDMS['exe']['internet'] = result['exe_internet']
+            self.prefDMS['exe']['html'] = result['exe_html']
+            
+            self.prefApps['PDF']=self.prefDMS['exe']['pdf']
+        except Exception, param:
+            print Exception
+            print param
+            
+        self.refreshDicUser()
         
+        
+        return self
+
     def getDicUser(self):
         '''
         @return: Dictionary with user-infos

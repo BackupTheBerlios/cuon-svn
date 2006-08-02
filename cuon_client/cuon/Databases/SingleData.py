@@ -194,6 +194,8 @@ class SingleData(gladeXml, logs):
                 id = liResult[0]['last_value']
             except:
                 pass
+        elif self.ID > 0:
+            id = self.ID
 
         return id
                 

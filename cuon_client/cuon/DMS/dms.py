@@ -29,11 +29,7 @@ from cuon.Windows.windows  import windows
 import SingleDMS
 import cuon.Misc.misc
 import os
-try:
-    import sane
-except:
-    pass
-    
+
 try:
     import Image
 except:
@@ -67,15 +63,14 @@ class dmswindow(windows):
         self.singleDMS.username = self.oUser.getUserName()
         self.loadGlade('dms.xml')
         self.win1 = self.getWidget('DMSMainwindow')
+        self.diaLink = self.getWidget('diaLink')
+        self.diaLink.hide()
+        
         self.scanfile = None
         
 
         self.EntriesPreferences = 'dms.xml'
-        if module > 0:
-            self.ModulNumber = module
-            
-        self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
-        self.sepInfo['1'] = self.MN['DMS']
+        
         if sep_info:
             try:
                 if sep_info.has_key('1'):
@@ -86,12 +81,21 @@ class dmswindow(windows):
                     self.sepInfo['3'] = sep_info['3']
             except:
                 print 'Error by sep-info'
-                
+        else:
+            self.sepInfo['1'] = self.MN['DMS']
 
         print "Sep-Info 1 ",  self.sepInfo['1']
            
+        if module > 0:
+            self.ModulNumber = module
+        if   self.ModulNumber != self.MN['DMS'] :
+            self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
+            self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`            
+        else:
+            self.sWhereStandard = ''
             
-        self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`            
+        
+            
         
         
         self.loadEntries(self.EntriesPreferences)
@@ -133,12 +137,7 @@ class dmswindow(windows):
         self.tabOption = self.tabDocument
         self.tabChanged()
 
-        # SANE for scan images
         
-        print 'SANE version:', sane.init()
-        print 'Available devices=', sane.get_devices()
-        
-    
 
     def on_save1_activate(self, event):
         print 'save1'
@@ -164,7 +163,7 @@ class dmswindow(windows):
 ##            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, True)
 
 
-    def on_delete1_activate(self, event):
+    def on_clear1_activate(self, event):
         self.singleDMS.deleteRecord()
 
     def on_quit1_activate(self, event):
@@ -199,11 +198,26 @@ class dmswindow(windows):
         self.scanDocument()
         self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat']['scanImage']['format']
 
+    
     def on_bImport_clicked(self, event):
         print 'bImport'
         self.oDocumentTools.importDocument( self.singleDMS, self.dicUser, self.getWidget("gfcb_ImportFile").get_filename() )
 
+    def on_bLink_clicked(self, event):
+        print 'bLink'
+        self.diaLink.show()
+    def on_okbutton1_clicked(self, event):
+        print 'ok clicked'
+        sLink = self.getWidget('eLink').get_text()
+        print sLink
+        self.diaLink.hide()
+        self.singleDMS.imageData = sLink
+        self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat']['LINK']['format']
 
+    def on_cancelbutton1_clicked(self, event):
+        print 'cancel clicked'
+        self.diaLink.hide()
+        
     def on_bView_clicked(self, event):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat
@@ -221,7 +235,7 @@ class dmswindow(windows):
             #self.singleDMS.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
             self.singleDMS.connectTree()
             self.singleDMS.refreshTree()
-
+            self.ModulNumber = self.MN['DMS']
             
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))

@@ -71,7 +71,8 @@ class basics(xmlrpc.XMLRPC):
         REPORT_SERVER = "http://" + self.REPORT_HOST + ":" + `self.REPORT_PORT`
         self.report_server = xmlrpclib.ServerProxy(REPORT_SERVER)
         
-        
+        WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
+        self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
     
     def getConfigOption(self, section, option):
         value = None

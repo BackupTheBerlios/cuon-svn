@@ -125,7 +125,7 @@ if __name__ == '__main__':
     from operator import itemgetter
 
     # Read a database
-    filename = '/home/jhamel/test/species.dbf'      
+    filename = '/home/jhamel/test/taxonno.dbf'      
     #if len(sys.argv) == 2:
     #  filename = sys.argv[1]
     f = open(filename, 'rb')

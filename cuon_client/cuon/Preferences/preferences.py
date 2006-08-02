@@ -36,7 +36,7 @@ class preferenceswindow(windows):
 
     
     def __init__(self, allTables):
-
+        print 'start preferences'
         windows.__init__(self)
         self.openDB()
         self.oUser = self.loadObject('User')
@@ -48,24 +48,27 @@ class preferenceswindow(windows):
         self.singlePreferences = SinglePreferences.SinglePreferences(allTables)
        
         self.singlePreferences.username = self.oUser.getUserName()
+        print 'load glade-file'
         self.loadGlade('preferences.xml')
+        print 'windows started'
         self.win1 = self.getWidget('PreferencesMainwindow')
-
-
+        print 'set Entries'
 
         self.EntriesPreferences = 'preferences.xml'
         self.EntriesPreferencesPrinting = 'preferences_printing.xml'
         self.EntriesPreferencesPathToReports = 'preferences_path_to_reports.xml'
         self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
         self.EntriesPreferencesScanner = 'preferences_scanner.xml'
+        self.EntriesPreferencesDMS = 'preferences_dms.xml'
 
-        
+        print 'load entries'
         self.loadEntries(self.EntriesPreferences)
         self.loadEntries(self.EntriesPreferencesPrinting)
         self.loadEntries(self.EntriesPreferencesPathToReports)
         self.loadEntries(self.EntriesPreferencesPathToDocs)
         self.loadEntries(self.EntriesPreferencesScanner)
-        
+        self.loadEntries(self.EntriesPreferencesDMS)
+        print 'set databases'
         
         self.singlePreferences.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
         self.singlePreferences.setEntries(self.getDataEntries('preferences.xml') )
@@ -99,10 +102,12 @@ class preferenceswindow(windows):
         self.tabPathToReports = 2
         self.tabPathToDocs = 3
         self.tabScanner = 4
+        self.tabDMS = 5
         
         
         self.tabOption = self.tabProfile
         self.tabChanged()
+        print 'starting sane'
         print 'SANE version:', sane.init()
  
 
@@ -111,6 +116,7 @@ class preferenceswindow(windows):
         print 'save1'
         self.singlePreferences.save()
         self.setEntriesEditable(self.EntriesPreferences, False)
+        self.loadProfile(self.singlePreferences.profileName)
         self.tabChanged()
         
     def on_new1_activate(self, event):
@@ -133,6 +139,8 @@ class preferenceswindow(windows):
             self.setEntriesEditable(self.EntriesPreferencesPathToDocs, True)
         elif self.tabOption == self.tabScanner:
             self.setEntriesEditable(self.EntriesPreferencesScanner, True)
+        elif self.tabOption == self.tabDMS:
+            self.setEntriesEditable(self.EntriesPreferencesDMS, True)
 
     
     def on_delete1_activate(self, event):
@@ -203,6 +211,12 @@ class preferenceswindow(windows):
             self.editAction = 'editProfile'
             self.setTreeVisible(False)
             self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesScanner) )
+            # set the Entries manually, because there is no tree event
+            self.singlePreferences.fillEntries(self.singlePreferences.ID)
+        elif self.tabOption == self.tabDMS:
+            self.editAction = 'editProfileDMS'
+            self.setTreeVisible(False)
+            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesDMS) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
            

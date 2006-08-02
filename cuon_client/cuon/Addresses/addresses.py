@@ -293,7 +293,7 @@ class addresswindow(chooseWindows):
         id = self.singleSchedul.save()
         self.singleSchedul.load(id)
         sCalendar = 'iCal_'+ self.dicUser['Name']
-        self.rpc.callRP('iCal.addEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
+        self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
         self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
         self.tabChanged()
 
@@ -334,7 +334,7 @@ class addresswindow(chooseWindows):
        
     def on_eSchedulDate_changed(self, event):
         self.out(event)
-        setDateToCalendar(event.get_text(),'calendar1')
+        self.setDateToCalendar(event.get_text(),'calendar1')
         #cal = self.getWidget('calendar1')
         
         #cal.select_month(month, year)

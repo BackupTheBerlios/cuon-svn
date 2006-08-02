@@ -114,3 +114,35 @@ on_bImport_clicked                     (GtkButton       *button,
 
 }
 
+
+void
+on_bLink_clicked                       (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_helpbutton1_clicked                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_cancelbutton1_clicked               (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_okbutton1_clicked                   (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

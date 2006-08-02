@@ -6,7 +6,6 @@ from twisted.internet import reactor
 from twisted.web import server
 
 import cuon.CuonFuncs
-import cuon.iCal
 import cuon.basics
 
 baseSettings = cuon.basics.basics()

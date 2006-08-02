@@ -338,9 +338,179 @@
       <default></default>
       <comment></comment>
     </field>
+ <field>
+      <name>exe_oowriter</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+<field>
+      <name>exe_oocalc</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
 
+<field>
+      <name>exe_oodraw</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
 
+<field>
+      <name>exe_ooimpress</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
 
+<field>
+      <name>exe_music</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_ogg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_wav</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_pdf</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_tex</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_ltx</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_txt</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_image</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_flowchart</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_googleearth</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+
+<field>
+      <name>exe_internet</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+<field>
+      <name>exe_html</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
 
   </table>
   

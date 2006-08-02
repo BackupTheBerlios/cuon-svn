@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-07-20, 00:52:06 -->
+<!-- Saved: 2006-08-01, 23:20:04 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1236,6 +1236,48 @@
       <Dir>Zip</Dir>
       <Name>SingleCountry.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>SingleBotanyDivisio.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>SingleBotanyClass.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>SingleBotanyOrdo.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>SingleBotanyFamily.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Name>SingleBotanyGenus.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Databases</Dir>
+      <Name>xbase.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Web.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1456,6 +1498,111 @@
       <Dir>Project</Dir>
       <Dir>GUI</Dir>
       <Name>entry_project_material_resources.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Clients</Dir>
+      <Dir>GUI</Dir>
+      <Name>clients.glade2</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Clients</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_clients.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany_divisio.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany_class.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany_ordo.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany_family.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_botany_genus.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferences_path_to_docs.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferences_path_to_reports.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferences_printing.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferences_scanner.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferences.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>preferences.glade2</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Preferences</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_preferencesDMS.xml</Name>
     </Other>
   </Others>
   <Vcs>

@@ -73,7 +73,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         
     def writeCalendar(self, sName, Cal):
         try:
-            f = open(self.CUON_ICALPATH + sName,'w')
+            f = open(self.ICALPATH + sName,'w')
             f.write(Cal.as_string())
             f.close()
         except Exception, param:
@@ -85,19 +85,25 @@ class iCal(xmlrpc.XMLRPC, basics):
         
     def readCalendar(self,sName):
         sCal = None
+        f = None
         try:
-            f = open(self.CUON_ICALPATH + sName)
+            f = open(self.ICALPATH + sName)
         
             sCal = f.read()
             f.close()
         except Exception, param:
-            print 'Except error'
+            
+            print 'Except error by open iCal'
             print Exception
             print param
-            
+            if f:
+                print 'close f'
+                f.close()
+            sCal = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'
+
         return sCal
         
-    def xmlrpc_addEvent(self, sName, firstRecord, dicUser):
+    def addEvent(self, sName, firstRecord, dicUser):
         ok = False
         Cal = self.getCalendar(sName)
         print 'Cal', Cal
@@ -118,6 +124,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         self.writeLog('getDicCal firstRecord = ' + `firstRecord`)
         
         dicCal = {}
+        print 'firstRecord = ', firstRecord
         # Save TimeTransformation
         dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
         sDate =  firstRecord['schedul_date']

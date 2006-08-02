@@ -60,7 +60,7 @@ class SingleDMS(SingleData):
         self.fileSuffix = None
         
         self.tmpfile = None
-
+        self.ModulNumber = 0
     def createTmpFile(self, sEXT):
         b = bz2.decompress(self.imageData)
         mi = cuon.Misc.misc.misc()
@@ -96,6 +96,7 @@ class SingleDMS(SingleData):
         
         self.fileFormat = oneRecord['file_format']
         self.fileSuffix = oneRecord['file_suffix']
+        self.ModulNumber = oneRecord['insert_from_module']
         
         print 'FileFormat by SDMS', self.fileFormat
         self.size_x = oneRecord['size_x']

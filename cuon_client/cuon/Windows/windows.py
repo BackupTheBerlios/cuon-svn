@@ -442,33 +442,17 @@ class windows(rawWindow, MyXML, messages):
                 self.oUser.userSQLDateFormat = 'DD.MM.YYYY'
                 self.oUser.userSQLTimeFormat = 'HH24:MI'
                 #self.oUser.prefPath = {}
-
-                self.oUser.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']
-                self.oUser.prefPath['StandardSupply1'] =  result['path_to_docs_supply']
-                self.oUser.prefPath['StandardPickup1'] =  result['path_to_docs_pickup']
-                self.oUser.prefPath['AddressLists'] =   result['path_to_docs_address_lists']
-
-                self.oUser.prefPath['ReportStandardInvoice1'] =   result['path_to_report_invoices']
-                self.oUser.prefPath['ReportStandardSupply1'] =  result['path_to_report_supply']
-                self.oUser.prefPath['ReportStandardPickup1'] =  result['path_to_report_pickup']
-
-                self.oUser.prefPath['ReportAddressLists'] =  result['path_to_report_address_lists']
-
-                self.oUser.prefDMS['scan_device'] = result['scanner_device']
-                self.oUser.prefDMS['scan_r'] = {'x':result['scanner_brx'], 'y':result['scanner_bry']}
-                self.oUser.prefDMS['scan_mode'] = result['scanner_mode']
-                self.oUser.prefDMS['scan_contrast'] = result['scanner_contrast']
-                self.oUser.prefDMS['scan_brightness'] = result['scanner_brightness']
-                self.oUser.prefDMS['scan_white_level'] = result['scanner_white_level']
-                self.oUser.prefDMS['scan_depth'] = result['scanner_depth']
-                self.oUser.prefDMS['scan_resolution'] = result['scanner_resolution']
+                
+                self.oUser = self.oUser.getUser(result)
+                print 'user by windows = ', self.oUser
+                print 'dicUser = ', self.oUser.getDicUser()
 
                 
         else:
             self.printOut( 'no standard-Profile defined')
         self.printOut( '__________________________________________________________')
         self.printOut( 'Profile loaded')
-        self.oUser.refreshDicUser()
+        #self.oUser.refreshDicUser()
         self.printOut( self.oUser.getDicUser())
         self.printOut( '__________________________________________________________')
         

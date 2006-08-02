@@ -6,7 +6,7 @@ from twisted.internet import reactor
 from twisted.web import server
 
 import cuon.CuonFuncs
-import cuon.iCal
+import cuon.Web
 import cuon.basics
 import cuon.Database
 import cuon.User
@@ -42,7 +42,7 @@ print s
 baseSettings = cuon.basics.basics()
 print baseSettings.WEBPATH
 r = cuon.CuonFuncs.CuonFuncs()
-oiCal = cuon.iCal.iCal()
+oWeb = cuon.Web.Web()
 oDatabase = cuon.Database.Database()
 oUser = cuon.User.User()
 oStock = cuon.Stock.Stock()
@@ -57,7 +57,7 @@ oGarden = cuon.Garden.Garden()
 oReport = cuon.Report.Report()
 
 
-r.putSubHandler('iCal', oiCal)
+r.putSubHandler('Web', oWeb)
 r.putSubHandler('Database', oDatabase)
 r.putSubHandler('User', oUser)
 r.putSubHandler('AI', oAI)

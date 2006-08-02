@@ -82,6 +82,74 @@ static GnomeUIInfo profile1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo related1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("new"),
+    NULL,
+    (gpointer) on_related_new1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("edit"),
+    NULL,
+    (gpointer) on_related_edit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_related_save1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("clear"),
+    NULL,
+    (gpointer) on_related_clear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo associated1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("new"),
+    NULL,
+    (gpointer) on_associated_new1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("edit"),
+    NULL,
+    (gpointer) on_associated_edit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("save"),
+    NULL,
+    (gpointer) on_associated_save1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("clear"),
+    NULL,
+    (gpointer) on_associated_clear1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo menubar1_uiinfo[] =
 {
   {
@@ -98,6 +166,20 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Related"),
+    NULL,
+    related1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Associated"),
+    NULL,
+    associated1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -109,6 +191,7 @@ create_DMSMainwindow (void)
   GtkWidget *alignment1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
+  GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *table5;
   GtkWidget *label31;
   GtkWidget *label32;
@@ -164,17 +247,30 @@ create_DMSMainwindow (void)
   GtkWidget *bScan;
   GtkWidget *bOCR;
   GtkWidget *bView;
-  GtkWidget *fileentry1;
-  GtkWidget *eImportFile;
   GtkWidget *bImport;
+  GtkWidget *gfcb_ImportFile;
+  GtkWidget *bLink;
   GtkWidget *iThumbnail;
-  GtkWidget *lProfile;
+  GtkWidget *lDocs;
   GtkWidget *table3;
   GtkWidget *label21;
+  GtkWidget *eDocInsertAt;
+  GtkWidget *label42;
+  GtkWidget *eLastChange;
+  GtkWidget *label43;
+  GtkWidget *label44;
+  GtkWidget *label45;
+  GtkWidget *eStatus;
   GtkWidget *label20;
   GtkWidget *table4;
   GtkWidget *label22;
+  GtkWidget *hbox3;
+  GtkWidget *eAddressID;
+  GtkWidget *bSearchAddress;
   GtkWidget *label19;
+  GtkAccelGroup *accel_group;
+
+  accel_group = gtk_accel_group_new ();
 
   DMSMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (DMSMainwindow), _("Document Management System"));
@@ -191,12 +287,13 @@ create_DMSMainwindow (void)
   gtk_widget_show (menubar1);
   gtk_container_add (GTK_CONTAINER (alignment1), menubar1);
   gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       NULL, FALSE, 0);
+                       accel_group, FALSE, 0);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
   gtk_box_pack_start (GTK_BOX (vbox1), toolbar1, FALSE, FALSE, 0);
   gtk_toolbar_set_style (GTK_TOOLBAR (toolbar1), GTK_TOOLBAR_BOTH);
+  tmp_toolbar_icon_size = gtk_toolbar_get_icon_size (GTK_TOOLBAR (toolbar1));
 
   table5 = gtk_table_new (4, 6, TRUE);
   gtk_widget_show (table5);
@@ -539,18 +636,21 @@ create_DMSMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  fileentry1 = gnome_file_entry_new (NULL, NULL);
-  gtk_widget_show (fileentry1);
-  gtk_table_attach (GTK_TABLE (table2), fileentry1, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eImportFile = gnome_file_entry_gtk_entry (GNOME_FILE_ENTRY (fileentry1));
-  gtk_widget_show (eImportFile);
-
   bImport = gtk_button_new_with_mnemonic (_("Import"));
   gtk_widget_show (bImport);
   gtk_table_attach (GTK_TABLE (table2), bImport, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  gfcb_ImportFile = gtk_file_chooser_button_new (_("Datei ausw\303\244hlen"), GTK_FILE_CHOOSER_ACTION_OPEN);
+  gtk_widget_show (gfcb_ImportFile);
+  gtk_table_attach (GTK_TABLE (table2), gfcb_ImportFile, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  bLink = gtk_button_new_with_mnemonic (_("LINK"));
+  gtk_widget_show (bLink);
+  gtk_table_attach (GTK_TABLE (table2), bLink, 2, 3, 4, 5,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
@@ -559,20 +659,69 @@ create_DMSMainwindow (void)
   gtk_box_pack_start (GTK_BOX (hbox2), iThumbnail, TRUE, TRUE, 0);
   gtk_widget_set_size_request (iThumbnail, 28, 125);
 
-  lProfile = gtk_label_new (_("Profile"));
-  gtk_widget_show (lProfile);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), lProfile);
+  lDocs = gtk_label_new (_("Documents"));
+  gtk_widget_show (lDocs);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), lDocs);
 
-  table3 = gtk_table_new (3, 3, FALSE);
+  table3 = gtk_table_new (3, 4, FALSE);
   gtk_widget_show (table3);
   gtk_container_add (GTK_CONTAINER (notebook1), table3);
 
-  label21 = gtk_label_new (_("label21"));
+  label21 = gtk_label_new (_("Document insert at"));
   gtk_widget_show (label21);
   gtk_table_attach (GTK_TABLE (table3), label21, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label21), 0, 0.5);
+
+  eDocInsertAt = gtk_entry_new ();
+  gtk_widget_show (eDocInsertAt);
+  gtk_table_attach (GTK_TABLE (table3), eDocInsertAt, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eDocInsertAt), FALSE);
+
+  label42 = gtk_label_new (_("last change"));
+  gtk_widget_show (label42);
+  gtk_table_attach (GTK_TABLE (table3), label42, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label42), 0, 0.5);
+
+  eLastChange = gtk_entry_new ();
+  gtk_widget_show (eLastChange);
+  gtk_table_attach (GTK_TABLE (table3), eLastChange, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eLastChange), FALSE);
+
+  label43 = gtk_label_new (_("from user"));
+  gtk_widget_show (label43);
+  gtk_table_attach (GTK_TABLE (table3), label43, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label43), 0, 0.5);
+
+  label44 = gtk_label_new (_("from user"));
+  gtk_widget_show (label44);
+  gtk_table_attach (GTK_TABLE (table3), label44, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label44), 0, 0.5);
+
+  label45 = gtk_label_new (_("status"));
+  gtk_widget_show (label45);
+  gtk_table_attach (GTK_TABLE (table3), label45, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label45), 0, 0.5);
+
+  eStatus = gtk_entry_new ();
+  gtk_widget_show (eStatus);
+  gtk_table_attach (GTK_TABLE (table3), eStatus, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eStatus), FALSE);
 
   label20 = gtk_label_new (_("Related"));
   gtk_widget_show (label20);
@@ -582,12 +731,26 @@ create_DMSMainwindow (void)
   gtk_widget_show (table4);
   gtk_container_add (GTK_CONTAINER (notebook1), table4);
 
-  label22 = gtk_label_new (_("label22"));
+  label22 = gtk_label_new (_("with Address"));
   gtk_widget_show (label22);
   gtk_table_attach (GTK_TABLE (table4), label22, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label22), 0, 0.5);
+
+  hbox3 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox3);
+  gtk_table_attach (GTK_TABLE (table4), hbox3, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  eAddressID = gtk_entry_new ();
+  gtk_widget_show (eAddressID);
+  gtk_box_pack_start (GTK_BOX (hbox3), eAddressID, TRUE, TRUE, 0);
+
+  bSearchAddress = gtk_button_new_with_mnemonic (_("search Address ..."));
+  gtk_widget_show (bSearchAddress);
+  gtk_box_pack_start (GTK_BOX (hbox3), bSearchAddress, FALSE, FALSE, 0);
 
   label19 = gtk_label_new (_("Associated"));
   gtk_widget_show (label19);
@@ -611,6 +774,9 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bImport, "clicked",
                     G_CALLBACK (on_bImport_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bLink, "clicked",
+                    G_CALLBACK (on_bLink_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (DMSMainwindow, DMSMainwindow, "DMSMainwindow");
@@ -629,6 +795,18 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, profile1_menu_uiinfo[4].widget, "print1");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, profile1_menu_uiinfo[5].widget, "separator1");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, profile1_menu_uiinfo[6].widget, "clear1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, menubar1_uiinfo[2].widget, "related1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, related1_menu_uiinfo[0].widget, "related_new1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, related1_menu_uiinfo[1].widget, "related_edit1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, related1_menu_uiinfo[2].widget, "related_save1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, related1_menu_uiinfo[3].widget, "separator4");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, related1_menu_uiinfo[4].widget, "related_clear1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, menubar1_uiinfo[3].widget, "associated1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, associated1_menu_uiinfo[0].widget, "associated_new1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, associated1_menu_uiinfo[1].widget, "associated_edit1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, associated1_menu_uiinfo[2].widget, "associated_save1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, associated1_menu_uiinfo[3].widget, "separator6");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, associated1_menu_uiinfo[4].widget, "associated_clear1");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table5, "table5");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label31, "label31");
@@ -685,18 +863,106 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bScan, "bScan");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bOCR, "bOCR");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, fileentry1, "fileentry1");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, eImportFile, "eImportFile");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, gfcb_ImportFile, "gfcb_ImportFile");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bLink, "bLink");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, iThumbnail, "iThumbnail");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, lProfile, "lProfile");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, lDocs, "lDocs");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label21, "label21");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eDocInsertAt, "eDocInsertAt");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label42, "label42");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eLastChange, "eLastChange");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label43, "label43");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label44, "label44");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label45, "label45");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eStatus, "eStatus");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label20, "label20");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table4, "table4");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label22, "label22");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox3, "hbox3");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eAddressID, "eAddressID");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bSearchAddress, "bSearchAddress");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label19, "label19");
 
+  gtk_window_add_accel_group (GTK_WINDOW (DMSMainwindow), accel_group);
+
   return DMSMainwindow;
+}
+
+GtkWidget*
+create_diaLink (void)
+{
+  GtkWidget *diaLink;
+  GtkWidget *dialog_vbox1;
+  GtkWidget *hbox4;
+  GtkWidget *label46;
+  GtkWidget *eLink;
+  GtkWidget *dialog_action_area1;
+  GtkWidget *helpbutton1;
+  GtkWidget *cancelbutton1;
+  GtkWidget *okbutton1;
+
+  diaLink = gtk_dialog_new ();
+  gtk_window_set_title (GTK_WINDOW (diaLink), _("Link eingeben"));
+  gtk_window_set_type_hint (GTK_WINDOW (diaLink), GDK_WINDOW_TYPE_HINT_DIALOG);
+
+  dialog_vbox1 = GTK_DIALOG (diaLink)->vbox;
+  gtk_widget_show (dialog_vbox1);
+
+  hbox4 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox4);
+  gtk_box_pack_start (GTK_BOX (dialog_vbox1), hbox4, TRUE, TRUE, 0);
+
+  label46 = gtk_label_new (_("Link"));
+  gtk_widget_show (label46);
+  gtk_box_pack_start (GTK_BOX (hbox4), label46, FALSE, FALSE, 0);
+
+  eLink = gtk_entry_new ();
+  gtk_widget_show (eLink);
+  gtk_box_pack_start (GTK_BOX (hbox4), eLink, TRUE, TRUE, 0);
+  gtk_entry_set_text (GTK_ENTRY (eLink), _("http://"));
+
+  dialog_action_area1 = GTK_DIALOG (diaLink)->action_area;
+  gtk_widget_show (dialog_action_area1);
+  gtk_button_box_set_layout (GTK_BUTTON_BOX (dialog_action_area1), GTK_BUTTONBOX_END);
+
+  helpbutton1 = gtk_button_new_from_stock ("gtk-help");
+  gtk_widget_show (helpbutton1);
+  gtk_dialog_add_action_widget (GTK_DIALOG (diaLink), helpbutton1, GTK_RESPONSE_HELP);
+  GTK_WIDGET_SET_FLAGS (helpbutton1, GTK_CAN_DEFAULT);
+
+  cancelbutton1 = gtk_button_new_from_stock ("gtk-cancel");
+  gtk_widget_show (cancelbutton1);
+  gtk_dialog_add_action_widget (GTK_DIALOG (diaLink), cancelbutton1, GTK_RESPONSE_CANCEL);
+  GTK_WIDGET_SET_FLAGS (cancelbutton1, GTK_CAN_DEFAULT);
+
+  okbutton1 = gtk_button_new_from_stock ("gtk-ok");
+  gtk_widget_show (okbutton1);
+  gtk_dialog_add_action_widget (GTK_DIALOG (diaLink), okbutton1, GTK_RESPONSE_OK);
+  GTK_WIDGET_SET_FLAGS (okbutton1, GTK_CAN_DEFAULT);
+
+  g_signal_connect ((gpointer) helpbutton1, "clicked",
+                    G_CALLBACK (on_helpbutton1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) cancelbutton1, "clicked",
+                    G_CALLBACK (on_cancelbutton1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) okbutton1, "clicked",
+                    G_CALLBACK (on_okbutton1_clicked),
+                    NULL);
+
+  /* Store pointers to all widgets, for use by lookup_widget(). */
+  GLADE_HOOKUP_OBJECT_NO_REF (diaLink, diaLink, "diaLink");
+  GLADE_HOOKUP_OBJECT_NO_REF (diaLink, dialog_vbox1, "dialog_vbox1");
+  GLADE_HOOKUP_OBJECT (diaLink, hbox4, "hbox4");
+  GLADE_HOOKUP_OBJECT (diaLink, label46, "label46");
+  GLADE_HOOKUP_OBJECT (diaLink, eLink, "eLink");
+  GLADE_HOOKUP_OBJECT_NO_REF (diaLink, dialog_action_area1, "dialog_action_area1");
+  GLADE_HOOKUP_OBJECT (diaLink, helpbutton1, "helpbutton1");
+  GLADE_HOOKUP_OBJECT (diaLink, cancelbutton1, "cancelbutton1");
+  GLADE_HOOKUP_OBJECT (diaLink, okbutton1, "okbutton1");
+
+  return diaLink;
 }
 

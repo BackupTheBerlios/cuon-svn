@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-25 17:26+0200\n"
-"PO-Revision-Date: 2006-05-31 11:15+0200\n"
+"PO-Revision-Date: 2006-07-26 13:39+0200\n"
 "Last-Translator: Jürgen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1983,43 +1983,38 @@ msgid "new"
 msgstr "_Neu"
 
 #: cuon/Garden/GUI/src/interface.c:290 cuon/Garden/GUI/src/interface.c:528
-#, fuzzy
 msgid "Divisio"
-msgstr "Reich"
+msgstr "Abteilung"
 
 #: cuon/Garden/GUI/src/interface.c:297 cuon/Garden/GUI/src/interface.c:575
 msgid "Class"
 msgstr "Klasse"
 
 #: cuon/Garden/GUI/src/interface.c:304 cuon/Garden/GUI/src/interface.c:622
-#, fuzzy
 msgid "Ordo"
-msgstr "Auftrag"
+msgstr "Ordnung"
 
 #: cuon/Garden/GUI/src/interface.c:311 cuon/Garden/GUI/src/interface.c:669
 msgid "Family"
 msgstr "Familie"
 
 #: cuon/Garden/GUI/src/interface.c:318 cuon/Garden/GUI/src/interface.c:716
-#, fuzzy
 msgid "Genus"
-msgstr "Abholung"
+msgstr "Gattung"
 
 #: cuon/Garden/GUI/src/interface.c:325 cuon/Garden/GUI/src/interface.c:416
 msgid "Botany"
 msgstr "Botanik"
 
 #: cuon/Garden/GUI/src/interface.c:449
-#, fuzzy
 msgid "Local name"
-msgstr "Verkaufen"
+msgstr "Deutscher Name"
 
 #: cuon/Garden/GUI/src/interface.c:515 cuon/Garden/GUI/src/interface.c:562
 #: cuon/Garden/GUI/src/interface.c:609 cuon/Garden/GUI/src/interface.c:656
 #: cuon/Garden/GUI/src/interface.c:703 cuon/Garden/GUI/src/interface.c:805
-#, fuzzy
 msgid "local name"
-msgstr "Nachname\t"
+msgstr "Deutscher Name"
 
 #: cuon/Garden/GUI/src/interface.c:779
 msgid "bot. Name"
@@ -2027,11 +2022,11 @@ msgstr "bot. Name"
 
 #: cuon/Garden/GUI/src/interface.c:798
 msgid "Habitat"
-msgstr ""
+msgstr "Herkunft"
 
 #: cuon/Garden/GUI/src/interface.c:825
 msgid "Typus"
-msgstr ""
+msgstr "Art"
 
 #: cuon/Staff/GUI/src/interface.c:161 cuon/Staff/GUI/src/interface.c:675
 msgid "Fee"
@@ -2557,3 +2552,4 @@ msgstr ""
 
 #~ msgid "city"
 #~ msgstr "Stadt"
+

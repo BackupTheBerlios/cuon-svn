@@ -3,3 +3,4 @@
  */
 
 GtkWidget* create_DMSMainwindow (void);
+GtkWidget* create_diaLink (void);
