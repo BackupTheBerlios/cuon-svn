@@ -83,20 +83,18 @@ class hibernationwindow(chooseWindows):
         self.loadEntries(self.EntriesHibernations)
         self.singleHibernation.setEntries(self.getDataEntries( self.EntriesHibernations) )
         self.singleHibernation.setGladeXml(self.xml)
-        self.singleHibernation.setTreeFields( ['hibernation_number', 'addressnumber'] )
-#        self.singleHibernation.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_UINT, gobject.TYPE_UINT) ) 
-        self.singleHibernation.setTreeOrder('hibernation_number')
+        
         self.singleHibernation.setTree(self.xml.get_widget('tree1') )
-        self.singleHibernation.setListHeader(['number', 'designation', ])
+       
         
          #singleHibernationPlant
         
         self.loadEntries(self.EntriesHibernationsPlant)
         self.singleHibernationPlant.setEntries(self.getDataEntries( self.EntriesHibernationsPlant) )
         self.singleHibernationPlant.setGladeXml(self.xml)
-        self.singleHibernationPlant.setTreeFields( ['plant_number','botany_number' ] )
-        self.singleHibernationPlant.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_UINT, gobject.TYPE_UINT) ) 
-        self.singleHibernationPlant.setTreeOrder('plant_number')
+##        self.singleHibernationPlant.setTreeFields( ['plant_number','botany_number' ] )
+##        self.singleHibernationPlant.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_UINT, gobject.TYPE_UINT) ) 
+##        self.singleHibernationPlant.setTreeOrder('plant_number')
 #        self.singleHibernationPlant.setListHeader([''])
 
         self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `self.singleHibernation.ID`
@@ -127,7 +125,15 @@ class hibernationwindow(chooseWindows):
         self.addEnabledMenuItems('editHibernation','print1', self.dicUserKeys['hibernation_print'])
         self.addEnabledMenuItems('editHibernation','edit1',self.dicUserKeys['hibernation_edit'])
 
-       
+        # enabledMenues for Hibernation_plant
+        self.addEnabledMenuItems('editHibernationPlant','PlantNew1', self.dicUserKeys['hibernation_plant_new'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantClear1', self.dicUserKeys['hibernation_plant_delete'])
+        #self.addEnabledMenuItems('editHibernationPlant','PlantPrint1', self.dicUserKeys['hibernation_plant_print'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['hibernation_plant_edit'])
+
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['hibernation_save'])
+        self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['hibernation_plant_save'])
+
 
         # tabs from notebook
         self.tabHibernation = 0
@@ -137,14 +143,14 @@ class hibernationwindow(chooseWindows):
         
         self.tabChanged()
 
-        # enabled menus for Hibernation
-        self.addEnabledMenuItems('editHibernation','new1')
-        self.addEnabledMenuItems('editHibernation','clear1')
-        self.addEnabledMenuItems('editHibernation','print1')
-
-        # enabled menus for Hibernation_Plant
-        self.addEnabledMenuItems('editHibernationPlant','PlantNew1')
-        self.addEnabledMenuItems('editHibernationPlant','PlantClear1')
+##        # enabled menus for Hibernation
+##        self.addEnabledMenuItems('editHibernation','new1')
+##        self.addEnabledMenuItems('editHibernation','clear1')
+##        self.addEnabledMenuItems('editHibernation','print1')
+##
+##        # enabled menus for Hibernation_Plant
+##        self.addEnabledMenuItems('editHibernationPlant','PlantNew1')
+##        self.addEnabledMenuItems('editHibernationPlant','PlantClear1')
 
         
         

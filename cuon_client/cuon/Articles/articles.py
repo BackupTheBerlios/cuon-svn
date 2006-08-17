@@ -364,7 +364,9 @@ class articleswindow(chooseWindows):
         print 'Article-ID = ' + `self.singleArticle.ID`
         self.closeWindow()
   
-
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseArticle', event)
     #choose Vendor button
     def on_bChooseVendor_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)

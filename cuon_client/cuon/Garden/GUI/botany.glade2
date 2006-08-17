@@ -371,13 +371,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="botany1">
+	    <widget class="GtkMenuItem" id="typus1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Botany</property>
+	      <property name="label" translatable="yes">Typus</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="botany1_menu">
+		<widget class="GtkMenu" id="typus1_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="new1">
@@ -613,6 +613,8 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="editing_done" handler="on_eFindDescription_editing_done" last_modification_time="Mon, 14 Aug 2006 14:48:35 GMT"/>
+	      <signal name="key_press_event" handler="on_eFindDescription_key_press_event" last_modification_time="Mon, 14 Aug 2006 14:48:48 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -631,6 +633,22 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <signal name="clicked" handler="on_bSearch_clicked"/>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkButton" id="bClearSearch">
+	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="label" translatable="yes">clear Search</property>
+	      <property name="use_underline">True</property>
+	      <property name="relief">GTK_RELIEF_NORMAL</property>
+	      <property name="focus_on_click">True</property>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -667,6 +685,7 @@
 	      <property name="fixed_height_mode">False</property>
 	      <property name="hover_selection">False</property>
 	      <property name="hover_expand">False</property>
+	      <signal name="row_activated" handler="on_tree1_row_activated" last_modification_time="Mon, 14 Aug 2006 10:32:35 GMT"/>
 	    </widget>
 	  </child>
 	</widget>

@@ -204,6 +204,33 @@ class User:
         self.setDicUserKeys('project_print','p')
 
 
+        # botany
+        
+        self.setDicUserKeys('botany_edit','e')
+        self.setDicUserKeys('botany_delete','d')
+        self.setDicUserKeys('botany_new','n')
+        self.setDicUserKeys('botany_print','p')
+        
+        
+        # hibernation
+        
+        self.setDicUserKeys('hibernation_edit','e')
+        self.setDicUserKeys('hibernation_delete','d')
+        self.setDicUserKeys('hibernation_new','n')
+        self.setDicUserKeys('hibernation_save','s')
+        self.setDicUserKeys('hibernation_print','p')
+        
+        # hibernation_plant
+        
+        self.setDicUserKeys('hibernation_plant_edit','f')
+        self.setDicUserKeys('hibernation_plant_delete','g')
+        self.setDicUserKeys('hibernation_plant_new','h')
+        self.setDicUserKeys('hibernation_plant_save','a')
+        self.setDicUserKeys('hibernation_plant_print','t')
+        
+        
+        
+        
         self.refreshDicUser()
 
         

@@ -72,13 +72,13 @@ client)
 echo " Server = $Server"
 sudo make install_server
 cd CUON/
-$EXEC Cuon.py $Server client $3
+$EXEC  Cuon.py $Server client $3
 ;;
 
 profile)
 sudo make install_server
 cd CUON/
-$EXEC -m profile Cuon.py $Server client $3
+$EXEC -m profile -o cuonprofile Cuon.py $Server client $3
 ;;
 
 esac

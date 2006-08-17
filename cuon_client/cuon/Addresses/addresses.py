@@ -436,12 +436,12 @@ class addresswindow(chooseWindows):
             self.setChooseValue(self.singlePartner.ID)
             self.closeWindow()
 
-        else:
-            print '############### No ID found,  choose ID -1 ###################'
-            self.setChooseValue('-1')
-            self.closeWindow()
- 
-              
+##        else:
+##            print '############### No ID found,  choose ID -1 ###################'
+##            self.setChooseValue('-1')
+##            self.closeWindow()
+## 
+##              
 
         
     # search button
@@ -453,6 +453,9 @@ class addresswindow(chooseWindows):
         self.singleAddress.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
         self.out(self.singleAddress.sWhere, self.ERROR)
         self.refreshTree()
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseAddress', event)
 
     def refreshTree(self):
         self.singleAddress.disconnectTree()
@@ -490,7 +493,7 @@ class addresswindow(chooseWindows):
             self.editAction = 'editAddress'
             self.setStatusbarText([''])
           
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             
 
             self.out( 'Seite 0')
@@ -502,7 +505,7 @@ class addresswindow(chooseWindows):
             self.enableMenuItem('bank')
            
             self.editAction = 'editBank'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -512,7 +515,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -525,7 +528,7 @@ class addresswindow(chooseWindows):
             
             self.out( 'Seite 1')
             self.editAction = 'editPartner'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
             
@@ -536,11 +539,11 @@ class addresswindow(chooseWindows):
             
             self.out( 'Seite 4')
             self.editAction = 'editSchedul'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singlePartner.sStatus])
 
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         

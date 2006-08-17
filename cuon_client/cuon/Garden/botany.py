@@ -49,7 +49,8 @@ class botanywindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = 110500
         self.setStatusBar()
-        
+        self.sSearchTable = None
+
         self.allTables = allTables
         self.singleBotanyDivisio = SingleBotanyDivisio.SingleBotanyDivisio(allTables)
         self.singleBotanyClass = SingleBotanyClass.SingleBotanyClass(allTables)
@@ -58,6 +59,7 @@ class botanywindow(chooseWindows):
         self.singleBotanyGenus = SingleBotanyGenus.SingleBotanyGenus(allTables)
         self.singleBotany = SingleBotany.SingleBotany(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+
         
         # self.singleBotany.loadTable()
               
@@ -278,7 +280,7 @@ class botanywindow(chooseWindows):
         self.singleBotanyGenus.deleteRecord()
         
         
-    #Menu Botany
+    #Menu typus
   
     def on_save1_activate(self, event):
         print "save articles v2"
@@ -308,21 +310,23 @@ class botanywindow(chooseWindows):
         self.searchBotany()
 
 
-    def on_eFindNumber_editing_done(self, event):
-        print 'Find Number'
-        self.searchArticle()
+##    def on_eFindNumber_editing_done(self, event):
+##        print 'Find Number'
+##        self.searchArticle()
 
     def on_eFindNumber_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
-            self.searchArticle()
+            self.searchBotany()
             
-    def on_eFindDesignation_editing_done(self, event):
-        print 'Find Designation'
-        self.searchArticle()
+##    def on_eFindDesignation_editing_done(self, event):
+##        print 'Find Designation'
+##        self.searchArticle()
 
     def on_eFindDesignation_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
-            self.searchArticle()
+            self.searchBotany()
+            
+            
     def on_bBotanyDMS_clicked(self, event):
         print 'dms clicked'
         if self.singleBotany.ID > 0:
@@ -336,17 +340,32 @@ class botanywindow(chooseWindows):
         self.closeWindow()      
         
       
-
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        print event
+        print data1
+        print data2
+        if self.tabOption == self.tabBotany:
+            self.activateClick('chooseBotany', event)
+    
 
     def searchBotany(self):
         self.out( 'Searching ....', self.ERROR)
-        sNumber = self.getWidget('eFindNumber').get_text()
-        sDesignation = self.getWidget('eFindDesignation').get_text()
-        self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
+        sName = self.getWidget('eFindName').get_text()
+        sLocalName = self.getWidget('eFindLocalName').get_text()
+        sDescription = self.getWidget('eFindDescription').get_text()
+        #self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
         
         #self.singleBotany.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
-        liSearch = ['number',sNumber, 'designation', sDesignation]
-        self.singleBotany.sWhere = self.getWhere(liSearch)
+        if self.tabOption == self.tabBotany:
+            sSearchName = 'botany_name'
+        else:
+            sSearchName = 'name'
+            
+                
+        liSearch = [sSearchName,sName, 'localname', sLocalName,'description',sDescription]
+        
+        self.sWhereSearch = self.getWhere(liSearch)
         self.out(self.singleBotany.sWhere, self.ERROR)
         self.refreshTree()
 
@@ -356,26 +375,43 @@ class botanywindow(chooseWindows):
 
         if self.tabOption == self.tabDivisio:
             #self.singleBotanyDivisio.sWhere  ='where task_id = ' + `int(self.singleProjectTasks.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotanyDivisio.sNameOfTable:
+               self.singleBotanyDivisio.sWhere  = self.sWhereSearch 
             self.singleBotanyDivisio.connectTree()
             self.singleBotanyDivisio.refreshTree()
         elif self.tabOption == self.tabClass:
-            self.singleBotanyClass.sWhere  ='where divisio_id = ' + `int(self.singleBotanyDivisio.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotanyClass.sNameOfTable:
+               self.singleBotanyClass.sWhere  = self.sWhereSearch             
+            else:
+                self.singleBotanyClass.sWhere  ='where divisio_id = ' + `int(self.singleBotanyDivisio.ID)`
             self.singleBotanyClass.connectTree()
             self.singleBotanyClass.refreshTree()
         elif self.tabOption == self.tabOrdo:
-            self.singleBotanyOrdo.sWhere  ='where class_id = ' + `int(self.singleBotanyClass.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotanyOrdo.sNameOfTable:
+               self.singleBotanyOrdo.sWhere  = self.sWhereSearch             
+            else:
+                self.singleBotanyOrdo.sWhere  ='where class_id = ' + `int(self.singleBotanyClass.ID)`
             self.singleBotanyOrdo.connectTree()
             self.singleBotanyOrdo.refreshTree()
         elif self.tabOption == self.tabFamily:
-            self.singleBotanyFamily.sWhere  ='where ordo_id = ' + `int(self.singleBotanyOrdo.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotanyFamily.sNameOfTable:
+               self.singleBotanyFamily.sWhere  = self.sWhereSearch             
+            else:
+                self.singleBotanyFamily.sWhere  ='where ordo_id = ' + `int(self.singleBotanyOrdo.ID)`
             self.singleBotanyFamily.connectTree()
             self.singleBotanyFamily.refreshTree()
         elif self.tabOption == self.tabGenus:
-            self.singleBotanyGenus.sWhere  ='where family_id = ' + `int(self.singleBotanyFamily.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotanyGenus.sNameOfTable:
+               self.singleBotanyGenus.sWhere  = self.sWhereSearch             
+            else:
+                self.singleBotanyGenus.sWhere  ='where family_id = ' + `int(self.singleBotanyFamily.ID)`
             self.singleBotanyGenus.connectTree()
             self.singleBotanyGenus.refreshTree()
         elif self.tabOption == self.tabBotany:
-            self.singleBotany.sWhere  ='where genus_id = ' + `int(self.singleBotanyGenus.ID)`
+            if self.sWhereSearch and self.sSearchTable == self.singleBotany.sNameOfTable:
+               self.singleBotany.sWhere  = self.sWhereSearch             
+            else:
+                self.singleBotany.sWhere  ='where genus_id = ' + `int(self.singleBotanyGenus.ID)`
             self.singleBotany.connectTree()
             self.singleBotany.refreshTree()
 
@@ -390,6 +426,7 @@ class botanywindow(chooseWindows):
             self.editAction = 'editDivisio'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotanyDivisio.sNameOfTable
         elif self.tabOption == self.tabClass :
             self.disableMenuItem('tabs')
             self.enableMenuItem('class')
@@ -397,6 +434,8 @@ class botanywindow(chooseWindows):
             self.editAction = 'editClass'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotanyClass.sNameOfTable
+
         elif self.tabOption == self.tabOrdo :
             self.disableMenuItem('tabs')
             self.enableMenuItem('ordo')
@@ -404,6 +443,8 @@ class botanywindow(chooseWindows):
             self.editAction = 'editOrdo'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotanyOrdo.sNameOfTable
+            
         elif self.tabOption == self.tabFamily :
             self.disableMenuItem('tabs')
             self.enableMenuItem('family')
@@ -411,6 +452,8 @@ class botanywindow(chooseWindows):
             self.editAction = 'editFamily'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotanyFamily.sNameOfTable
+            
         elif self.tabOption == self.tabGenus :
             self.disableMenuItem('tabs')
             self.enableMenuItem('genus')
@@ -418,6 +461,7 @@ class botanywindow(chooseWindows):
             self.editAction = 'editGenus'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotanyGenus.sNameOfTable
             
         elif self.tabOption == self.tabBotany:
         
@@ -427,6 +471,8 @@ class botanywindow(chooseWindows):
             self.editAction = 'editBotany'
             self.setStatusbarText([''])
             self.setTreeVisible(True)
+            self.sSearchTable = self.singleBotany.sNameOfTable
+            
             
             
         # refresh the Tree

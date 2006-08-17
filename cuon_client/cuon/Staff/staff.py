@@ -230,7 +230,10 @@ class staffwindow(chooseWindows):
         if self.checkKey(event,'NONE','Return'):
             self.searchStaff()
         
-
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        if self.tabOption == self.tabStaff:
+            self.activateClick('chooseStaff', event)
 
     def searchStaff(self):
         self.out( 'Searching ....', self.ERROR)

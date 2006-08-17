@@ -34,10 +34,14 @@ class SingleHibernationPlant(SingleData):
         # self.saveTable()
 
         self.loadTable(allTables)
-        self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
-        self.listHeader['names'] = ['number', 'designation', 'ID']
+        self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT,  gobject.TYPE_UINT) )
         self.listHeader['size'] = [25,10,25,25,10]
+        self.setTreeFields(  ['plant_number','botany_number','diameter' ])
+        self.setTreeOrder('plant_number')
+        self.setListHeader([_('number'),_('plant'), _('diameter')])
         self.hibernationID = 0
+        
+        
         #print "number of Columns "
         #print len(self.table.Columns)
         #

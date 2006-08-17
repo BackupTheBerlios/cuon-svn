@@ -42,19 +42,31 @@ class loginwindow(windows):
         
         self.loadGlade('login.xml')
    
-        win1 = self.getWidget('UserID_Dialog')
-        response = win1.run()
+        self.win1 = self.getWidget('UserID_Dialog')
+        #self.win1.hide()
+        response = self.win1.run()
         
-        while response == gtk.RESPONSE_DELETE_EVENT or response == gtk.RESPONSE_CANCEL:
-            response = win1.run()
+        #while response == gtk.RESPONSE_DELETE_EVENT or response == gtk.RESPONSE_CANCEL:
+        #    response = win1.run()
 
         while response != gtk.RESPONSE_OK:
             if response == gtk.RESPONSE_HELP:
                 print "Hilfe"
+            elif response == gtk.RESPONSE_CANCEL:
+                print 'Cancel'
+                self.oUser.setUserName('EMPTY')
+                self.openDB()
+                self.saveObject('User', self.oUser)
+                self.closeDB()
+                self.quitLogin()
+                break ;
+            
+            
             response = win1.run()
                 
-        ##if response == gtk.RESPONSE_OK:
-        self.okButtonPressed()
+        if response == gtk.RESPONSE_OK:
+            print 'ok pressed 0'
+            self.okButtonPressed()
         ##elif response == gtk.RESPONSE_HELP:
         ##    print "Hilfe"
             
@@ -63,16 +75,31 @@ class loginwindow(windows):
         ##print "else"
             
     #set this Functions to None
+##    def start(self):
+##        self.loadGlade('login.xml')
+##   
+##        self.win1 = self.getWidget('UserID_Dialog')
+##        
     def loadUserInfo(self):
         pass
         
     def checkClient(self):
         pass 
              
-
-    #def on_okbutton1_clicked(self, event):
-    def okButtonPressed(self):
+    def on_TPassword_key_press_event(self, entry,event):
+        if self.checkKey(event,'NONE','Return'):
+            self.activateClick('okbutton1', event, 'clicked')
+            
+    def on_TUserID_key_press_event(self, entry,event):
+        if self.checkKey(event,'NONE','Return'):
+            self.getWidget('TPassword').grab_focus()
+              
+    def on_okbutton1_clicked(self, event):
+        self.okButtonPressed()
         
+        
+    def okButtonPressed(self):
+        print 'ok pressed 1'
         #obj = AES.new('Th77777777key456', AES.MODE_ECB)
         username = self.getWidget('TUserID').get_text()
         #self.openDB()
@@ -130,5 +157,4 @@ class loginwindow(windows):
         self.quitLogin()
 
     def quitLogin(self):
-        win1 = self.getWidget('UserID_Dialog')
-        win1.hide()
+        self.win1.hide()

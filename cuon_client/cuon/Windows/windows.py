@@ -39,7 +39,6 @@ import os
 import os.path
 import re
 
-
 class windows(rawWindow, MyXML, messages):
 
     def __init__(self):
@@ -73,6 +72,7 @@ class windows(rawWindow, MyXML, messages):
 
         
         self.sWhereStandard = ''
+        self.sWhereSearch = None
         self.sepInfo = {}
         
         self.checkClient()
@@ -104,7 +104,15 @@ class windows(rawWindow, MyXML, messages):
         if not self.dicUser['client'] > 0:
             self.dicUser = {}
             
-
+    def clearSearch(self, event):
+        print 'Clear Search activate'
+        self.sWhereSearch = None
+        self.tabChanged()
+        
+    def activateClick(self, sItem, event = None, sAction = 'activate'):
+        item = self.getWidget(sItem)
+        if item:
+            item.emit(sAction)
         
      
     def setDataEntries(self,sName, dicDE):
@@ -288,12 +296,22 @@ class windows(rawWindow, MyXML, messages):
             #print 'args s = ', s
             #print 'args v = ', v
             if v:
-                if firstWhere:
-                    sWhere = " where " + s +" ~* \'.*" + v + '.*\''
-                    firstWhere = False
+                if v[0] == '#':
+                    v = v[1:]
+                    if firstWhere:
+                        sWhere = " where " + s +" " + v 
+                        firstWhere = False
+                    else:
+                        sWhere = sWhere +" and " + s + " " + v 
+                        
                 else:
-                    sWhere = sWhere +" and " + s + ' ~* \'.*' + v + '.*\''
-                    
+                    if firstWhere:
+                        sWhere = " where " + s +" ~* \'.*" + v + '.*\''
+                        firstWhere = False
+                    else:
+                        sWhere = sWhere +" and " + s + ' ~* \'.*' + v + '.*\''
+        
+        print sWhere 
         return sWhere
     
   ##  def setNextFocus(self,oldEntry, event, iOldTabOrder):

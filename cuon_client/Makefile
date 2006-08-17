@@ -9,6 +9,7 @@ CUWEBLOCALEXECDIR = $(CUWEB)/usr/local/bin
 CUWEBCONFIGDIR = $(CUWEB)/etc/cuon
 CUWEBLOCALE = $(CUWEB)/usr/share/locale/de/LC_MESSAGES
 SERVERDIRCONFIG = /etc/cuon
+VERSION_CFG = ./version.cfg
 
 I18LDIR_DE=/usr/share/locale/de/LC_MESSAGES
 I18LDIR_PT=/usr/share/locale/pt/LC_MESSAGES
@@ -188,6 +189,7 @@ src_xmlDefaults = ./*.xml
 
 all :
 	if [ ! -d $(dest_main) ] ; then mkdir $(dest_main) ; fi ; cp $(src_main) $(dest_main) 
+	cp $(VERSION_CFG) $(dest_main) 
 	if [ ! -d $(dest_cuon) ] ; then mkdir $(dest_cuon) ; fi  
 
 	if [ ! -d $(dest_server) ] ; then mkdir $(dest_server) ; fi ; cp $(src_server) $(dest_server) 

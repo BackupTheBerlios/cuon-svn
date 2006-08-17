@@ -32,13 +32,14 @@ class SingleHibernation(SingleData):
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
-
         self.loadTable(allTables)
         self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
-        self.listHeader['names'] = ['number', 'designation', 'ID']
         self.listHeader['size'] = [25,10,25,25,10]
-        print "number of Columns "
-        print len(self.table.Columns)
+        #
+        self.setTreeFields( ['hibernation_number', 'addressnumber'] )
+        self.setTreeOrder('hibernation_number')
+        self.setListHeader([_('name'),_('customer')])
+        
         #
         
     def getHibernation(self, id):
