@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-08-01, 23:20:04 -->
+<!-- Saved: 2006-08-25, 00:18:29 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1278,6 +1278,10 @@
       <Dir>cuon</Dir>
       <Name>Web.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Name>startCuon.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1604,6 +1608,54 @@
       <Dir>GUI</Dir>
       <Name>entry_preferencesDMS.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>CUON</Dir>
+      <Name>version.cfg</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Name>version.cfg</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>addresses.glade2</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_addresses_misc.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_addresses.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_partner_schedul.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_partner.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Name>sql.xml</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1612,9 +1664,9 @@
   </Vcs>
   <FiletypeAssociations>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

@@ -10,6 +10,7 @@
       <sql_field>address</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+      <next_widget>eLastName</next_widget>
     </entry> 
     
     <entry>
@@ -22,6 +23,7 @@
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+      <next_widget>eLastName2</next_widget>
     </entry>
     
     <entry>
@@ -33,7 +35,8 @@
       <sql_field>lastname2</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-    </entry>
+      <next_widget>eFirstName</next_widget>
+</entry>
     <entry>
       <name>eFirstName</name>
       <type>textline</type>
@@ -43,6 +46,7 @@
       <sql_field>firstname</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+      <next_widget>eStreet</next_widget>
       </entry>
 
 

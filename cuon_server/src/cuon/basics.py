@@ -46,6 +46,7 @@ class basics(xmlrpc.XMLRPC):
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
+            
             self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
     
             
@@ -80,7 +81,15 @@ class basics(xmlrpc.XMLRPC):
             value = self.cpServer.get(section, option)
             print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value
-
+        
+    def getParser(self, sFile):
+        cpParser = ConfigParser.ConfigParser()
+        f = open(sFile)
+        print 'f1 = ', f
+        cpParser.readfp(f)
+        print 'cpp', cpParser
+        return cpParser, f
+        
     def out(self, s):
         self.writeLog(s,self.debug)
         

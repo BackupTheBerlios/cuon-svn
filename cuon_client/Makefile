@@ -2,12 +2,23 @@ EXECDIR = /usr/bin
 INSTALLDIR = /usr/lib/cuon
 ICONDIR = /usr/lib/cuon/icons
 SERVERDIRSHARE = /usr/share/cuon
+
+
 CUWEBSHARE = root@cuweb://usr/share/cuon
 CUWEB = root@cuweb:/
 CUWEBEXECDIR = $(CUWEB)/usr/bin
 CUWEBLOCALEXECDIR = $(CUWEB)/usr/local/bin
 CUWEBCONFIGDIR = $(CUWEB)/etc/cuon
 CUWEBLOCALE = $(CUWEB)/usr/share/locale/de/LC_MESSAGES
+
+CYWEBSHARE = root@cyweb://usr/share/cuon
+CYWEB = root@cyweb:/
+CYWEBEXECDIR = $(CYWEB)/usr/bin
+CYWEBLOCALEXECDIR = $(CYWEB)/usr/local/bin
+CYWEBCONFIGDIR = $(CYWEB)/etc/cuon
+CYWEBLOCALE = $(CYWEB)/usr/share/locale/de/LC_MESSAGES
+
+
 SERVERDIRCONFIG = /etc/cuon
 VERSION_CFG = ./version.cfg
 
@@ -367,6 +378,24 @@ install_server_cu:
 	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CUWEBSHARE)/cuon_server/src/cuon
 	rsync -v -e ssh ../cuon_server/src/cuon/Reports/* $(CUWEBSHARE)/cuon_server/src/cuon/Reports
 	rsync -v -e ssh ../cuon_server/src/cuon/Reports/XML/* $(CUWEBSHARE)/cuon_server/src/cuon/Reports/XML
+
+install_server_cy:
+	sudo make install
+
+	scp  ../cuon_server/src/cuonxmlrpc $(CYWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonai $(CYWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonweb $(CYWEB)/etc/init.d
+	scp  ../cuon_server/src/cuonreport $(CYWEB)/etc/init.d
+
+	#scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
+	scp /etc/cuon/server.ini $(CYWEB)/etc/cuon
+	scp ../cuon_server/src/de.mo $(CYWEBLOCALE)/cuon_server.mo
+    
+	rsync -v -e ssh ../cuon_server/src/*.py $(CYWEBSHARE)/cuon_server/src
+	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CYWEBSHARE)/cuon_server/src/cuon
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/* $(CYWEBSHARE)/cuon_server/src/cuon/Reports
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/XML/* $(CYWEBSHARE)/cuon_server/src/cuon/Reports/XML
+
 
 
 

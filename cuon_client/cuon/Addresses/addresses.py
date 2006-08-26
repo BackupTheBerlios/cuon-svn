@@ -202,8 +202,7 @@ class addresswindow(chooseWindows):
         self.out( "exit addresses v2")
         self.closeWindow() 
     
-        
-
+    
 
     #Menu Address
   

@@ -362,142 +362,156 @@ create_AddressMainwindow (void)
   GtkWidget *notebook1;
   GtkWidget *hbox4;
   GtkWidget *table4;
-  GtkWidget *eAddress;
-  GtkWidget *eLastName;
-  GtkWidget *eLastName2;
-  GtkWidget *eFirstName;
-  GtkWidget *eStreet;
-  GtkWidget *lAddress;
-  GtkWidget *lLastName;
-  GtkWidget *lLastName2;
-  GtkWidget *lFirstName;
-  GtkWidget *lStreet;
-  GtkWidget *lZip;
-  GtkWidget *lCountry;
-  GtkWidget *lZip_PB;
-  GtkWidget *lState;
-  GtkWidget *hbox8;
-  GtkWidget *eZip;
-  GtkWidget *label38;
-  GtkWidget *eCity;
-  GtkWidget *hbox9;
-  GtkWidget *eZipForPostbox;
-  GtkWidget *label39;
-  GtkWidget *ePostbox;
-  GtkWidget *hbox10;
-  GtkWidget *eCountry;
-  GtkWidget *button1;
-  GtkWidget *eCountryNumber;
   GtkWidget *hbox11;
   GtkWidget *entry3;
   GtkWidget *button2;
   GtkWidget *entry4;
+  GtkWidget *hbox10;
+  GtkWidget *eCountry;
+  GtkWidget *button1;
+  GtkWidget *eCountryNumber;
+  GtkWidget *hbox9;
+  GtkWidget *eZipForPostbox;
+  GtkWidget *label39;
+  GtkWidget *ePostbox;
+  GtkWidget *hbox8;
+  GtkWidget *eZip;
+  GtkWidget *label38;
+  GtkWidget *eCity;
+  GtkWidget *lState;
+  GtkWidget *lZip_PB;
+  GtkWidget *lCountry;
+  GtkWidget *lZip;
+  GtkWidget *lStreet;
+  GtkWidget *lFirstName;
+  GtkWidget *lLastName2;
+  GtkWidget *lLastName;
+  GtkWidget *lAddress;
+  GtkWidget *eStreet;
+  GtkWidget *eFirstName;
+  GtkWidget *eLastName2;
+  GtkWidget *eLastName;
+  GtkWidget *eAddress;
   GtkWidget *table5;
-  GtkWidget *lPhone;
-  GtkWidget *ePhone;
-  GtkWidget *lEmail;
-  GtkWidget *lFax;
-  GtkWidget *eEmail;
-  GtkWidget *eFax;
   GtkWidget *bShowDMS;
+  GtkWidget *eFax;
+  GtkWidget *eEmail;
+  GtkWidget *lFax;
+  GtkWidget *lEmail;
+  GtkWidget *ePhone;
+  GtkWidget *lPhone;
   GtkWidget *lAddress;
   GtkWidget *table7;
-  GtkWidget *label26;
-  GtkWidget *label27;
-  GtkWidget *label28;
+  GtkWidget *eBCN;
+  GtkWidget *eAccount;
   GtkWidget *scrolledwindow2;
   GtkWidget *textview1;
-  GtkWidget *eAccount;
-  GtkWidget *eBCN;
+  GtkWidget *label28;
+  GtkWidget *label27;
+  GtkWidget *label26;
   GtkWidget *lBank;
   GtkWidget *table9;
-  GtkWidget *label35;
-  GtkWidget *eLine;
-  GtkWidget *label36;
-  GtkWidget *cbFashion;
-  GList *cbFashion_items = NULL;
-  GtkWidget *eFashion;
-  GtkWidget *label37;
-  GtkWidget *eTaxnumber;
-  GtkWidget *chkbCalcTax;
-  GtkWidget *label40;
+  GtkWidget *chkbUpdateFromWeb;
+  GtkWidget *label43;
+  GtkWidget *label42;
+  GtkWidget *chkbIsWebshop;
+  GtkWidget *eAddressNumber;
+  GtkWidget *label41;
   GtkWidget *combo2;
   GList *combo2_items = NULL;
   GtkWidget *cbPriceGroup;
-  GtkWidget *label41;
-  GtkWidget *eAddressNumber;
-  GtkWidget *chkbIsWebshop;
-  GtkWidget *label42;
-  GtkWidget *label43;
-  GtkWidget *chkbUpdateFromWeb;
+  GtkWidget *label40;
+  GtkWidget *chkbCalcTax;
+  GtkWidget *eTaxnumber;
+  GtkWidget *label37;
+  GtkWidget *cbFashion;
+  GList *cbFashion_items = NULL;
+  GtkWidget *eFashion;
+  GtkWidget *label36;
+  GtkWidget *eLine;
+  GtkWidget *label35;
   GtkWidget *lMisc;
   GtkWidget *table2;
-  GtkWidget *label15;
-  GtkWidget *label16;
-  GtkWidget *label17;
-  GtkWidget *label18;
-  GtkWidget *ePartnerAddress;
-  GtkWidget *ePartnerTitular;
-  GtkWidget *ePartnerLastname;
-  GtkWidget *ePartnerFirstname;
-  GtkWidget *lpartnerPhone1;
-  GtkWidget *lPartnerPhone2;
-  GtkWidget *lPartnerEmail;
-  GtkWidget *lPartnerInternet;
-  GtkWidget *lPartnerFaxPrivate;
-  GtkWidget *ePartnerPhone1;
-  GtkWidget *ePartnerPhone2;
-  GtkWidget *ePartnerEmail;
-  GtkWidget *ePartnerHomepage;
-  GtkWidget *ePartnerFaxPrivate;
-  GtkWidget *lPartnerFax;
-  GtkWidget *ePartnerFax;
-  GtkWidget *lPartnerPhone;
-  GtkWidget *lpartnerCounty;
-  GtkWidget *hbox2;
-  GtkWidget *lPartnerZip;
-  GtkWidget *ePartnerZip;
-  GtkWidget *ePartnerPhone;
-  GtkWidget *ePartnerCountry;
+  GtkWidget *bShowPartnerDMS;
+  GtkWidget *eBirthday;
+  GtkWidget *label23;
+  GtkWidget *ePartnerState;
+  GtkWidget *label22;
+  GtkWidget *ePartnerStreet;
+  GtkWidget *lPartnerStreet;
   GtkWidget *hbox3;
   GtkWidget *lPartnerCity;
   GtkWidget *ePartnerCity;
-  GtkWidget *lPartnerStreet;
-  GtkWidget *ePartnerStreet;
-  GtkWidget *label22;
-  GtkWidget *ePartnerState;
-  GtkWidget *label23;
-  GtkWidget *eBirthday;
-  GtkWidget *bShowPartnerDMS;
+  GtkWidget *ePartnerCountry;
+  GtkWidget *ePartnerPhone;
+  GtkWidget *hbox2;
+  GtkWidget *lPartnerZip;
+  GtkWidget *ePartnerZip;
+  GtkWidget *lpartnerCounty;
+  GtkWidget *lPartnerPhone;
+  GtkWidget *ePartnerFax;
+  GtkWidget *lPartnerFax;
+  GtkWidget *ePartnerFaxPrivate;
+  GtkWidget *ePartnerHomepage;
+  GtkWidget *ePartnerEmail;
+  GtkWidget *ePartnerPhone2;
+  GtkWidget *ePartnerPhone1;
+  GtkWidget *lPartnerFaxPrivate;
+  GtkWidget *lPartnerInternet;
+  GtkWidget *lPartnerEmail;
+  GtkWidget *lPartnerPhone2;
+  GtkWidget *lpartnerPhone1;
+  GtkWidget *ePartnerFirstname;
+  GtkWidget *ePartnerLastname;
+  GtkWidget *ePartnerTitular;
+  GtkWidget *ePartnerAddress;
+  GtkWidget *label18;
+  GtkWidget *label17;
+  GtkWidget *label16;
+  GtkWidget *label15;
   GtkWidget *lPartner;
   GtkWidget *table8;
-  GtkWidget *label31;
-  GtkWidget *scrolledwindow3;
-  GtkWidget *eSchedulNotes;
-  GtkWidget *eShortRemark;
+  GtkWidget *vbox4;
   GtkWidget *hbox5;
-  GtkWidget *label32;
-  GtkWidget *hbox6;
-  GtkWidget *label33;
-  GtkWidget *combo1;
-  GtkWidget *eSchedulProcess;
-  GtkWidget *hbox7;
-  GtkWidget *vbox2;
-  GtkWidget *eAlarm;
-  GtkWidget *label29;
+  GtkWidget *eSchedulCallerID;
+  GtkWidget *bChooseCaller;
+  GtkWidget *eSchedulCaller;
+  GtkWidget *hbox14;
+  GtkWidget *eSchedulRepID;
+  GtkWidget *bChooseRep;
+  GtkWidget *eSchedulRep;
+  GtkWidget *hbox15;
+  GtkWidget *eSchedulContractID;
+  GtkWidget *bChooseContract;
+  GtkWidget *eSchedulContract;
+  GtkWidget *vbox3;
+  GtkWidget *label45;
+  GtkWidget *cbeSchedulTimeBegin;
+  GtkWidget *comboboxentry_entry1;
+  GtkWidget *label46;
+  GtkWidget *cbeSchedulTimeEnd;
+  GtkWidget *comboboxentry_entry2;
+  GtkWidget *hbox13;
+  GtkWidget *label34;
+  GtkWidget *eSchedulPriority;
+  GtkWidget *calendar1;
   GtkWidget *hbox12;
   GtkWidget *eSchedulDate;
   GtkWidget *label44;
   GtkWidget *cbAlarm;
-  GtkWidget *calendar1;
-  GtkWidget *hbox13;
-  GtkWidget *label34;
-  GtkWidget *eSchedulPriority;
-  GtkWidget *vbox3;
-  GtkWidget *label45;
-  GtkWidget *cbeSchedulTimeBegin;
-  GtkWidget *label46;
-  GtkWidget *cbeSchedulTimeEnd;
+  GtkWidget *label29;
+  GtkWidget *vbox2;
+  GtkWidget *eAlarm;
+  GtkWidget *hbox6;
+  GtkWidget *label33;
+  GtkWidget *combo1;
+  GtkWidget *eSchedulProcess;
+  GtkWidget *label32;
+  GtkWidget *eShortRemark;
+  GtkWidget *scrolledwindow3;
+  GtkWidget *eSchedulNotes;
+  GtkWidget *label31;
+  GtkWidget *vbox5;
   GtkWidget *lSchedul;
   GtkAccelGroup *accel_group;
 
@@ -505,7 +519,7 @@ create_AddressMainwindow (void)
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (AddressMainwindow, 1024, 768);
-  gtk_window_set_title (GTK_WINDOW (AddressMainwindow), _("Adresses"));
+  gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
   gtk_window_set_default_size (GTK_WINDOW (AddressMainwindow), 1024, 768);
 
   vbox1 = gtk_vbox_new (FALSE, 17);
@@ -534,6 +548,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (lFindName);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindName, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindName), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lFindName), 0, 0);
 
   eFindName = gtk_entry_new ();
   gtk_widget_show (eFindName);
@@ -543,6 +558,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (lFindCity);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindCity, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindCity), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lFindCity), 0, 0);
 
   eFindCity = gtk_entry_new ();
   gtk_widget_show (eFindCity);
@@ -578,182 +594,11 @@ create_AddressMainwindow (void)
   gtk_table_set_row_spacings (GTK_TABLE (table4), 1);
   gtk_table_set_col_spacings (GTK_TABLE (table4), 12);
 
-  eAddress = gtk_entry_new ();
-  gtk_widget_show (eAddress);
-  gtk_table_attach (GTK_TABLE (table4), eAddress, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eAddress, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eAddress), 30);
-
-  eLastName = gtk_entry_new ();
-  gtk_widget_show (eLastName);
-  gtk_table_attach (GTK_TABLE (table4), eLastName, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eLastName, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eLastName), 30);
-
-  eLastName2 = gtk_entry_new ();
-  gtk_widget_show (eLastName2);
-  gtk_table_attach (GTK_TABLE (table4), eLastName2, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eLastName2, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eLastName2), 30);
-
-  eFirstName = gtk_entry_new ();
-  gtk_widget_show (eFirstName);
-  gtk_table_attach (GTK_TABLE (table4), eFirstName, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eFirstName, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eFirstName), 30);
-
-  eStreet = gtk_entry_new ();
-  gtk_widget_show (eStreet);
-  gtk_table_attach (GTK_TABLE (table4), eStreet, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eStreet, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eStreet), 30);
-
-  lAddress = gtk_label_new (_("Address"));
-  gtk_widget_show (lAddress);
-  gtk_table_attach (GTK_TABLE (table4), lAddress, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lAddress, 0, 0);
-
-  lLastName = gtk_label_new (_("Name1"));
-  gtk_widget_show (lLastName);
-  gtk_table_attach (GTK_TABLE (table4), lLastName, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lLastName, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lLastName), GTK_JUSTIFY_CENTER);
-
-  lLastName2 = gtk_label_new (_("Name2"));
-  gtk_widget_show (lLastName2);
-  gtk_table_attach (GTK_TABLE (table4), lLastName2, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lLastName2, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lLastName2), GTK_JUSTIFY_CENTER);
-
-  lFirstName = gtk_label_new (_("Firstname"));
-  gtk_widget_show (lFirstName);
-  gtk_table_attach (GTK_TABLE (table4), lFirstName, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lFirstName, 0, 0);
-
-  lStreet = gtk_label_new (_("Street"));
-  gtk_widget_show (lStreet);
-  gtk_table_attach (GTK_TABLE (table4), lStreet, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lStreet, 0, 0);
-
-  lZip = gtk_label_new (_("Zip"));
-  gtk_widget_show (lZip);
-  gtk_table_attach (GTK_TABLE (table4), lZip, 0, 1, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lZip, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lZip), GTK_JUSTIFY_CENTER);
-
-  lCountry = gtk_label_new (_("Country"));
-  gtk_widget_show (lCountry);
-  gtk_table_attach (GTK_TABLE (table4), lCountry, 0, 1, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lCountry, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lCountry), GTK_JUSTIFY_CENTER);
-
-  lZip_PB = gtk_label_new (_("Zip for PB"));
-  gtk_widget_show (lZip_PB);
-  gtk_table_attach (GTK_TABLE (table4), lZip_PB, 0, 1, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lZip_PB, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lZip_PB), GTK_JUSTIFY_CENTER);
-
-  lState = gtk_label_new (_("State"));
-  gtk_widget_show (lState);
-  gtk_table_attach (GTK_TABLE (table4), lState, 0, 1, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lState, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lState), GTK_JUSTIFY_CENTER);
-
-  hbox8 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox8);
-  gtk_table_attach (GTK_TABLE (table4), hbox8, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eZip = gtk_entry_new ();
-  gtk_widget_show (eZip);
-  gtk_box_pack_start (GTK_BOX (hbox8), eZip, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eZip, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eZip), 7);
-
-  label38 = gtk_label_new (_("City"));
-  gtk_widget_show (label38);
-  gtk_box_pack_start (GTK_BOX (hbox8), label38, FALSE, FALSE, 0);
-
-  eCity = gtk_entry_new ();
-  gtk_widget_show (eCity);
-  gtk_box_pack_start (GTK_BOX (hbox8), eCity, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eCity, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eCity), 30);
-
-  hbox9 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox9);
-  gtk_table_attach (GTK_TABLE (table4), hbox9, 1, 2, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eZipForPostbox = gtk_entry_new ();
-  gtk_widget_show (eZipForPostbox);
-  gtk_box_pack_start (GTK_BOX (hbox9), eZipForPostbox, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eZipForPostbox, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eZipForPostbox), 7);
-
-  label39 = gtk_label_new (_("Postbox"));
-  gtk_widget_show (label39);
-  gtk_box_pack_start (GTK_BOX (hbox9), label39, FALSE, FALSE, 0);
-
-  ePostbox = gtk_entry_new ();
-  gtk_widget_show (ePostbox);
-  gtk_box_pack_start (GTK_BOX (hbox9), ePostbox, TRUE, TRUE, 0);
-
-  hbox10 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox10);
-  gtk_table_attach (GTK_TABLE (table4), hbox10, 1, 2, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eCountry = gtk_entry_new ();
-  gtk_widget_show (eCountry);
-  gtk_box_pack_start (GTK_BOX (hbox10), eCountry, TRUE, TRUE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eCountry), FALSE);
-
-  button1 = gtk_button_new_with_mnemonic (_("search"));
-  gtk_widget_show (button1);
-  gtk_box_pack_start (GTK_BOX (hbox10), button1, FALSE, FALSE, 0);
-
-  eCountryNumber = gtk_entry_new ();
-  gtk_widget_show (eCountryNumber);
-  gtk_box_pack_start (GTK_BOX (hbox10), eCountryNumber, TRUE, TRUE, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eCountryNumber), 3);
-
   hbox11 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox11);
   gtk_table_attach (GTK_TABLE (table4), hbox11, 1, 2, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
 
   entry3 = gtk_entry_new ();
   gtk_widget_show (entry3);
@@ -769,50 +614,198 @@ create_AddressMainwindow (void)
   gtk_editable_set_editable (GTK_EDITABLE (entry4), FALSE);
   gtk_entry_set_width_chars (GTK_ENTRY (entry4), 3);
 
+  hbox10 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox10);
+  gtk_table_attach (GTK_TABLE (table4), hbox10, 1, 2, 7, 8,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eCountry = gtk_entry_new ();
+  gtk_widget_show (eCountry);
+  gtk_box_pack_start (GTK_BOX (hbox10), eCountry, TRUE, TRUE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eCountry), FALSE);
+
+  button1 = gtk_button_new_with_mnemonic (_("search"));
+  gtk_widget_show (button1);
+  gtk_box_pack_start (GTK_BOX (hbox10), button1, FALSE, FALSE, 0);
+
+  eCountryNumber = gtk_entry_new ();
+  gtk_widget_show (eCountryNumber);
+  gtk_box_pack_start (GTK_BOX (hbox10), eCountryNumber, TRUE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eCountryNumber), 3);
+
+  hbox9 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox9);
+  gtk_table_attach (GTK_TABLE (table4), hbox9, 1, 2, 6, 7,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eZipForPostbox = gtk_entry_new ();
+  gtk_widget_show (eZipForPostbox);
+  gtk_box_pack_start (GTK_BOX (hbox9), eZipForPostbox, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (eZipForPostbox, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eZipForPostbox), 7);
+
+  label39 = gtk_label_new (_("Postbox"));
+  gtk_widget_show (label39);
+  gtk_box_pack_start (GTK_BOX (hbox9), label39, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label39), 0, 0);
+
+  ePostbox = gtk_entry_new ();
+  gtk_widget_show (ePostbox);
+  gtk_box_pack_start (GTK_BOX (hbox9), ePostbox, TRUE, TRUE, 0);
+
+  hbox8 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox8);
+  gtk_table_attach (GTK_TABLE (table4), hbox8, 1, 2, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eZip = gtk_entry_new ();
+  gtk_widget_show (eZip);
+  gtk_box_pack_start (GTK_BOX (hbox8), eZip, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (eZip, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eZip), 7);
+
+  label38 = gtk_label_new (_("City"));
+  gtk_widget_show (label38);
+  gtk_box_pack_start (GTK_BOX (hbox8), label38, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label38), 0, 0);
+
+  eCity = gtk_entry_new ();
+  gtk_widget_show (eCity);
+  gtk_box_pack_start (GTK_BOX (hbox8), eCity, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (eCity, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eCity), 30);
+
+  lState = gtk_label_new (_("State"));
+  gtk_widget_show (lState);
+  gtk_table_attach (GTK_TABLE (table4), lState, 0, 1, 8, 9,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lState, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lState), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lState), 0, 0);
+
+  lZip_PB = gtk_label_new (_("Zip for PB"));
+  gtk_widget_show (lZip_PB);
+  gtk_table_attach (GTK_TABLE (table4), lZip_PB, 0, 1, 6, 7,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lZip_PB, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lZip_PB), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lZip_PB), 0, 0);
+
+  lCountry = gtk_label_new (_("Country"));
+  gtk_widget_show (lCountry);
+  gtk_table_attach (GTK_TABLE (table4), lCountry, 0, 1, 7, 8,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lCountry, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lCountry), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lCountry), 0, 0);
+
+  lZip = gtk_label_new (_("Zip"));
+  gtk_widget_show (lZip);
+  gtk_table_attach (GTK_TABLE (table4), lZip, 0, 1, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lZip, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lZip), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lZip), 0, 0);
+
+  lStreet = gtk_label_new (_("Street"));
+  gtk_widget_show (lStreet);
+  gtk_table_attach (GTK_TABLE (table4), lStreet, 0, 1, 4, 5,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lStreet, 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lStreet), 0, 0);
+
+  lFirstName = gtk_label_new (_("Firstname"));
+  gtk_widget_show (lFirstName);
+  gtk_table_attach (GTK_TABLE (table4), lFirstName, 0, 1, 3, 4,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lFirstName, 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lFirstName), 0, 0);
+
+  lLastName2 = gtk_label_new (_("Name2"));
+  gtk_widget_show (lLastName2);
+  gtk_table_attach (GTK_TABLE (table4), lLastName2, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lLastName2, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lLastName2), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lLastName2), 0, 0);
+
+  lLastName = gtk_label_new (_("Name1"));
+  gtk_widget_show (lLastName);
+  gtk_table_attach (GTK_TABLE (table4), lLastName, 0, 1, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lLastName, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lLastName), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lLastName), 0, 0);
+
+  lAddress = gtk_label_new (_("Address"));
+  gtk_widget_show (lAddress);
+  gtk_table_attach (GTK_TABLE (table4), lAddress, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lAddress, 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lAddress), 0, 0);
+
+  eStreet = gtk_entry_new ();
+  gtk_widget_show (eStreet);
+  gtk_table_attach (GTK_TABLE (table4), eStreet, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eStreet, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eStreet), 30);
+
+  eFirstName = gtk_entry_new ();
+  gtk_widget_show (eFirstName);
+  gtk_table_attach (GTK_TABLE (table4), eFirstName, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eFirstName, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eFirstName), 30);
+
+  eLastName2 = gtk_entry_new ();
+  gtk_widget_show (eLastName2);
+  gtk_table_attach (GTK_TABLE (table4), eLastName2, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eLastName2, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eLastName2), 30);
+
+  eLastName = gtk_entry_new ();
+  gtk_widget_show (eLastName);
+  gtk_table_attach (GTK_TABLE (table4), eLastName, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eLastName, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eLastName), 30);
+
+  eAddress = gtk_entry_new ();
+  gtk_widget_show (eAddress);
+  gtk_table_attach (GTK_TABLE (table4), eAddress, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eAddress, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eAddress), 30);
+
   table5 = gtk_table_new (6, 2, FALSE);
   gtk_widget_show (table5);
   gtk_box_pack_start (GTK_BOX (hbox4), table5, TRUE, TRUE, 0);
   gtk_widget_set_size_request (table5, 355, 106);
 
-  lPhone = gtk_label_new (_("Phone"));
-  gtk_widget_show (lPhone);
-  gtk_table_attach (GTK_TABLE (table5), lPhone, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
+  bShowDMS = gtk_button_new_with_mnemonic (_("show extendet infos"));
+  gtk_widget_show (bShowDMS);
+  gtk_table_attach (GTK_TABLE (table5), bShowDMS, 1, 2, 3, 4,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lPhone, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPhone), GTK_JUSTIFY_CENTER);
-
-  ePhone = gtk_entry_new ();
-  gtk_widget_show (ePhone);
-  gtk_table_attach (GTK_TABLE (table5), ePhone, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (ePhone, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (ePhone), 30);
-
-  lEmail = gtk_label_new (_("E-Mail"));
-  gtk_widget_show (lEmail);
-  gtk_table_attach (GTK_TABLE (table5), lEmail, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lEmail, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lEmail), GTK_JUSTIFY_CENTER);
-
-  lFax = gtk_label_new (_("Fax"));
-  gtk_widget_show (lFax);
-  gtk_table_attach (GTK_TABLE (table5), lFax, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lFax, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lFax), GTK_JUSTIFY_CENTER);
-
-  eEmail = gtk_entry_new ();
-  gtk_widget_show (eEmail);
-  gtk_table_attach (GTK_TABLE (table5), eEmail, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eEmail, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eEmail), 30);
 
   eFax = gtk_entry_new ();
   gtk_widget_show (eFax);
@@ -822,56 +815,57 @@ create_AddressMainwindow (void)
   gtk_widget_set_size_request (eFax, 0, 0);
   gtk_entry_set_width_chars (GTK_ENTRY (eFax), 30);
 
-  bShowDMS = gtk_button_new_with_mnemonic (_("show extendet infos"));
-  gtk_widget_show (bShowDMS);
-  gtk_table_attach (GTK_TABLE (table5), bShowDMS, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
+  eEmail = gtk_entry_new ();
+  gtk_widget_show (eEmail);
+  gtk_table_attach (GTK_TABLE (table5), eEmail, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eEmail, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eEmail), 30);
+
+  lFax = gtk_label_new (_("Fax"));
+  gtk_widget_show (lFax);
+  gtk_table_attach (GTK_TABLE (table5), lFax, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lFax, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lFax), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lFax), 0, 0);
+
+  lEmail = gtk_label_new (_("E-Mail"));
+  gtk_widget_show (lEmail);
+  gtk_table_attach (GTK_TABLE (table5), lEmail, 0, 1, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lEmail, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lEmail), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lEmail), 0, 0);
+
+  ePhone = gtk_entry_new ();
+  gtk_widget_show (ePhone);
+  gtk_table_attach (GTK_TABLE (table5), ePhone, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (ePhone, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (ePhone), 30);
+
+  lPhone = gtk_label_new (_("Phone"));
+  gtk_widget_show (lPhone);
+  gtk_table_attach (GTK_TABLE (table5), lPhone, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lPhone, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPhone), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPhone), 0, 0);
 
   lAddress = gtk_label_new (_("Addresses"));
   gtk_widget_show (lAddress);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), lAddress);
+  gtk_misc_set_alignment (GTK_MISC (lAddress), 0, 0);
 
   table7 = gtk_table_new (4, 2, FALSE);
   gtk_widget_show (table7);
   gtk_container_add (GTK_CONTAINER (notebook1), table7);
-
-  label26 = gtk_label_new (_("Name of the Bank"));
-  gtk_widget_show (label26);
-  gtk_table_attach (GTK_TABLE (table7), label26, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label26), 0, 0.5);
-
-  label27 = gtk_label_new (_("Account"));
-  gtk_widget_show (label27);
-  gtk_table_attach (GTK_TABLE (table7), label27, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label27), 0, 0.5);
-
-  label28 = gtk_label_new (_("B C N"));
-  gtk_widget_show (label28);
-  gtk_table_attach (GTK_TABLE (table7), label28, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label28), 0, 0.5);
-
-  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow2);
-  gtk_table_attach (GTK_TABLE (table7), scrolledwindow2, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  textview1 = gtk_text_view_new ();
-  gtk_widget_show (textview1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), textview1);
-
-  eAccount = gtk_entry_new ();
-  gtk_widget_show (eAccount);
-  gtk_table_attach (GTK_TABLE (table7), eAccount, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
 
   eBCN = gtk_entry_new ();
   gtk_widget_show (eBCN);
@@ -879,33 +873,134 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
+  eAccount = gtk_entry_new ();
+  gtk_widget_show (eAccount);
+  gtk_table_attach (GTK_TABLE (table7), eAccount, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow2);
+  gtk_table_attach (GTK_TABLE (table7), scrolledwindow2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  textview1 = gtk_text_view_new ();
+  gtk_widget_show (textview1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow2), textview1);
+
+  label28 = gtk_label_new (_("B C N"));
+  gtk_widget_show (label28);
+  gtk_table_attach (GTK_TABLE (table7), label28, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label28), 0, 0);
+
+  label27 = gtk_label_new (_("Account"));
+  gtk_widget_show (label27);
+  gtk_table_attach (GTK_TABLE (table7), label27, 0, 1, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label27), 0, 0);
+
+  label26 = gtk_label_new (_("Name of the Bank"));
+  gtk_widget_show (label26);
+  gtk_table_attach (GTK_TABLE (table7), label26, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label26), 0, 0);
+
   lBank = gtk_label_new (_("Bank"));
   gtk_widget_show (lBank);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), lBank);
+  gtk_misc_set_alignment (GTK_MISC (lBank), 0, 0);
 
   table9 = gtk_table_new (6, 4, FALSE);
   gtk_widget_show (table9);
   gtk_container_add (GTK_CONTAINER (notebook1), table9);
 
-  label35 = gtk_label_new (_("Line"));
-  gtk_widget_show (label35);
-  gtk_table_attach (GTK_TABLE (table9), label35, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
+  chkbUpdateFromWeb = gtk_check_button_new_with_mnemonic (_("update from Web"));
+  gtk_widget_show (chkbUpdateFromWeb);
+  gtk_table_attach (GTK_TABLE (table9), chkbUpdateFromWeb, 1, 2, 5, 6,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label35), 0, 0.5);
 
-  eLine = gtk_entry_new ();
-  gtk_widget_show (eLine);
-  gtk_table_attach (GTK_TABLE (table9), eLine, 1, 2, 0, 1,
+  label43 = gtk_label_new ("");
+  gtk_widget_show (label43);
+  gtk_table_attach (GTK_TABLE (table9), label43, 0, 1, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label43), 0, 0);
+
+  label42 = gtk_label_new (_("Webshop"));
+  gtk_widget_show (label42);
+  gtk_table_attach (GTK_TABLE (table9), label42, 0, 1, 4, 5,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label42), 0, 0);
+
+  chkbIsWebshop = gtk_check_button_new_with_mnemonic (_("Is Webshop Address"));
+  gtk_widget_show (chkbIsWebshop);
+  gtk_table_attach (GTK_TABLE (table9), chkbIsWebshop, 1, 2, 4, 5,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eAddressNumber = gtk_entry_new ();
+  gtk_widget_show (eAddressNumber);
+  gtk_table_attach (GTK_TABLE (table9), eAddressNumber, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label36 = gtk_label_new (_("fashion"));
-  gtk_widget_show (label36);
-  gtk_table_attach (GTK_TABLE (table9), label36, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
+  label41 = gtk_label_new (_("address-Number"));
+  gtk_widget_show (label41);
+  gtk_table_attach (GTK_TABLE (table9), label41, 0, 1, 3, 4,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label36), 0, 0.5);
+  gtk_misc_set_alignment (GTK_MISC (label41), 0, 0);
+
+  combo2 = gtk_combo_new ();
+  g_object_set_data (G_OBJECT (GTK_COMBO (combo2)->popwin),
+                     "GladeParentKey", combo2);
+  gtk_widget_show (combo2);
+  gtk_table_attach (GTK_TABLE (table9), combo2, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price I"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price II"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price III"));
+  combo2_items = g_list_append (combo2_items, (gpointer) _("Price IV"));
+  gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
+  g_list_free (combo2_items);
+
+  cbPriceGroup = GTK_COMBO (combo2)->entry;
+  gtk_widget_show (cbPriceGroup);
+
+  label40 = gtk_label_new (_("Price-Group"));
+  gtk_widget_show (label40);
+  gtk_table_attach (GTK_TABLE (table9), label40, 2, 3, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label40), 0, 0);
+
+  chkbCalcTax = gtk_check_button_new_with_mnemonic (_("to calc Tax"));
+  gtk_widget_show (chkbCalcTax);
+  gtk_table_attach (GTK_TABLE (table9), chkbCalcTax, 2, 3, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (chkbCalcTax), TRUE);
+
+  eTaxnumber = gtk_entry_new ();
+  gtk_widget_show (eTaxnumber);
+  gtk_table_attach (GTK_TABLE (table9), eTaxnumber, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label37 = gtk_label_new (_("Tax-Nr."));
+  gtk_widget_show (label37);
+  gtk_table_attach (GTK_TABLE (table9), label37, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label37), 0, 0);
 
   cbFashion = gtk_combo_new ();
   g_object_set_data (G_OBJECT (GTK_COMBO (cbFashion)->popwin),
@@ -926,208 +1021,158 @@ create_AddressMainwindow (void)
   gtk_widget_show (eFashion);
   gtk_editable_set_editable (GTK_EDITABLE (eFashion), FALSE);
 
-  label37 = gtk_label_new (_("Tax-Nr."));
-  gtk_widget_show (label37);
-  gtk_table_attach (GTK_TABLE (table9), label37, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
+  label36 = gtk_label_new (_("fashion"));
+  gtk_widget_show (label36);
+  gtk_table_attach (GTK_TABLE (table9), label36, 0, 1, 1, 2,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label37), 0, 0.5);
+  gtk_misc_set_alignment (GTK_MISC (label36), 0, 0);
 
-  eTaxnumber = gtk_entry_new ();
-  gtk_widget_show (eTaxnumber);
-  gtk_table_attach (GTK_TABLE (table9), eTaxnumber, 1, 2, 2, 3,
+  eLine = gtk_entry_new ();
+  gtk_widget_show (eLine);
+  gtk_table_attach (GTK_TABLE (table9), eLine, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  chkbCalcTax = gtk_check_button_new_with_mnemonic (_("to calc Tax"));
-  gtk_widget_show (chkbCalcTax);
-  gtk_table_attach (GTK_TABLE (table9), chkbCalcTax, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
+  label35 = gtk_label_new (_("Line"));
+  gtk_widget_show (label35);
+  gtk_table_attach (GTK_TABLE (table9), label35, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (chkbCalcTax), TRUE);
-
-  label40 = gtk_label_new (_("Price-Group"));
-  gtk_widget_show (label40);
-  gtk_table_attach (GTK_TABLE (table9), label40, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label40), 0, 0.5);
-
-  combo2 = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (combo2)->popwin),
-                     "GladeParentKey", combo2);
-  gtk_widget_show (combo2);
-  gtk_table_attach (GTK_TABLE (table9), combo2, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price I"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price II"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price III"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price IV"));
-  gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
-  g_list_free (combo2_items);
-
-  cbPriceGroup = GTK_COMBO (combo2)->entry;
-  gtk_widget_show (cbPriceGroup);
-
-  label41 = gtk_label_new (_("address-Number"));
-  gtk_widget_show (label41);
-  gtk_table_attach (GTK_TABLE (table9), label41, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label41), 0, 0.5);
-
-  eAddressNumber = gtk_entry_new ();
-  gtk_widget_show (eAddressNumber);
-  gtk_table_attach (GTK_TABLE (table9), eAddressNumber, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  chkbIsWebshop = gtk_check_button_new_with_mnemonic (_("Is Webshop Address"));
-  gtk_widget_show (chkbIsWebshop);
-  gtk_table_attach (GTK_TABLE (table9), chkbIsWebshop, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label42 = gtk_label_new (_("Webshop"));
-  gtk_widget_show (label42);
-  gtk_table_attach (GTK_TABLE (table9), label42, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label42), 0, 0.5);
-
-  label43 = gtk_label_new ("");
-  gtk_widget_show (label43);
-  gtk_table_attach (GTK_TABLE (table9), label43, 0, 1, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label43), 0, 0.5);
-
-  chkbUpdateFromWeb = gtk_check_button_new_with_mnemonic (_("update from Web"));
-  gtk_widget_show (chkbUpdateFromWeb);
-  gtk_table_attach (GTK_TABLE (table9), chkbUpdateFromWeb, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label35), 0, 0);
 
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), lMisc);
+  gtk_misc_set_alignment (GTK_MISC (lMisc), 0, 0);
 
   table2 = gtk_table_new (9, 4, FALSE);
   gtk_widget_show (table2);
   gtk_container_add (GTK_CONTAINER (notebook1), table2);
 
-  label15 = gtk_label_new (_("Address"));
-  gtk_widget_show (label15);
-  gtk_table_attach (GTK_TABLE (table2), label15, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
+  bShowPartnerDMS = gtk_button_new_with_mnemonic (_("show extendet infos"));
+  gtk_widget_show (bShowPartnerDMS);
+  gtk_table_attach (GTK_TABLE (table2), bShowPartnerDMS, 3, 4, 7, 8,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label15), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (label15), 0, 0.5);
 
-  label16 = gtk_label_new (_("titular"));
-  gtk_widget_show (label16);
-  gtk_table_attach (GTK_TABLE (table2), label16, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label16), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (label16), 0, 0.5);
-
-  label17 = gtk_label_new (_("Lastname"));
-  gtk_widget_show (label17);
-  gtk_table_attach (GTK_TABLE (table2), label17, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label17), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (label17), 0, 0.5);
-
-  label18 = gtk_label_new (_("Firstname"));
-  gtk_widget_show (label18);
-  gtk_table_attach (GTK_TABLE (table2), label18, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label18), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (label18), 0, 0.5);
-
-  ePartnerAddress = gtk_entry_new ();
-  gtk_widget_show (ePartnerAddress);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerAddress, 1, 2, 0, 1,
+  eBirthday = gtk_entry_new ();
+  gtk_widget_show (eBirthday);
+  gtk_table_attach (GTK_TABLE (table2), eBirthday, 3, 4, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerTitular = gtk_entry_new ();
-  gtk_widget_show (ePartnerTitular);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerTitular, 1, 2, 1, 2,
+  label23 = gtk_label_new (_("Birthday"));
+  gtk_widget_show (label23);
+  gtk_table_attach (GTK_TABLE (table2), label23, 2, 3, 6, 7,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0);
+
+  ePartnerState = gtk_entry_new ();
+  gtk_widget_show (ePartnerState);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerState, 3, 4, 5, 6,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerLastname = gtk_entry_new ();
-  gtk_widget_show (ePartnerLastname);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerLastname, 1, 2, 2, 3,
+  label22 = gtk_label_new (_("State"));
+  gtk_widget_show (label22);
+  gtk_table_attach (GTK_TABLE (table2), label22, 2, 3, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0);
+
+  ePartnerStreet = gtk_entry_new ();
+  gtk_widget_show (ePartnerStreet);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerStreet, 1, 2, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerFirstname = gtk_entry_new ();
-  gtk_widget_show (ePartnerFirstname);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFirstname, 1, 2, 3, 4,
+  lPartnerStreet = gtk_label_new (_("Street"));
+  gtk_widget_show (lPartnerStreet);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerStreet, 0, 1, 4, 5,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerStreet), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerStreet), 0, 0);
+
+  hbox3 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox3);
+  gtk_table_attach (GTK_TABLE (table2), hbox3, 1, 2, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  lPartnerCity = gtk_label_new (_("City"));
+  gtk_widget_show (lPartnerCity);
+  gtk_box_pack_start (GTK_BOX (hbox3), lPartnerCity, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerCity), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerCity), 0, 0);
+
+  ePartnerCity = gtk_entry_new ();
+  gtk_widget_show (ePartnerCity);
+  gtk_box_pack_start (GTK_BOX (hbox3), ePartnerCity, TRUE, TRUE, 0);
+
+  ePartnerCountry = gtk_entry_new ();
+  gtk_widget_show (ePartnerCountry);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerCountry, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  lpartnerPhone1 = gtk_label_new (_("Phone 1"));
-  gtk_widget_show (lpartnerPhone1);
-  gtk_table_attach (GTK_TABLE (table2), lpartnerPhone1, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lpartnerPhone1), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lpartnerPhone1), 0, 0.5);
-
-  lPartnerPhone2 = gtk_label_new (_("Phone 2"));
-  gtk_widget_show (lPartnerPhone2);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone2, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerPhone2), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone2), 0, 0.5);
-
-  lPartnerEmail = gtk_label_new (_("E-Mail"));
-  gtk_widget_show (lPartnerEmail);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerEmail, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerEmail), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerEmail), 0, 0.5);
-
-  lPartnerInternet = gtk_label_new (_("Homepage"));
-  gtk_widget_show (lPartnerInternet);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerInternet, 2, 3, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerInternet), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerInternet), 0, 0.5);
-
-  lPartnerFaxPrivate = gtk_label_new (_("Fax"));
-  gtk_widget_show (lPartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerFaxPrivate, 2, 3, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerFaxPrivate), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerFaxPrivate), 0, 0.5);
-
-  ePartnerPhone1 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone1);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone1, 3, 4, 0, 1,
+  ePartnerPhone = gtk_entry_new ();
+  gtk_widget_show (ePartnerPhone);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone, 1, 2, 7, 8,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerPhone2 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone2);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone2, 3, 4, 1, 2,
+  hbox2 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox2);
+  gtk_table_attach (GTK_TABLE (table2), hbox2, 0, 1, 5, 6,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  lPartnerZip = gtk_label_new (_("Zip"));
+  gtk_widget_show (lPartnerZip);
+  gtk_box_pack_start (GTK_BOX (hbox2), lPartnerZip, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerZip), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerZip), 0, 0);
+
+  ePartnerZip = gtk_entry_new ();
+  gtk_widget_show (ePartnerZip);
+  gtk_box_pack_start (GTK_BOX (hbox2), ePartnerZip, TRUE, TRUE, 0);
+
+  lpartnerCounty = gtk_label_new (_("Country"));
+  gtk_widget_show (lpartnerCounty);
+  gtk_table_attach (GTK_TABLE (table2), lpartnerCounty, 0, 1, 6, 7,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lpartnerCounty), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lpartnerCounty), 0, 0);
+
+  lPartnerPhone = gtk_label_new (_("Phone in Company"));
+  gtk_widget_show (lPartnerPhone);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone, 0, 1, 7, 8,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerPhone), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone), 0, 0);
+
+  ePartnerFax = gtk_entry_new ();
+  gtk_widget_show (ePartnerFax);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerFax, 1, 2, 8, 9,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerEmail = gtk_entry_new ();
-  gtk_widget_show (ePartnerEmail);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerEmail, 3, 4, 2, 3,
+  lPartnerFax = gtk_label_new (_("Fax in company"));
+  gtk_widget_show (lPartnerFax);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerFax, 0, 1, 8, 9,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerFax), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerFax), 0, 0);
+
+  ePartnerFaxPrivate = gtk_entry_new ();
+  gtk_widget_show (ePartnerFaxPrivate);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerFaxPrivate, 3, 4, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
@@ -1137,270 +1182,202 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerFaxPrivate = gtk_entry_new ();
-  gtk_widget_show (ePartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFaxPrivate, 3, 4, 4, 5,
+  ePartnerEmail = gtk_entry_new ();
+  gtk_widget_show (ePartnerEmail);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerEmail, 3, 4, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  lPartnerFax = gtk_label_new (_("Fax in company"));
-  gtk_widget_show (lPartnerFax);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerFax, 0, 1, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerFax), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerFax), 0, 0.5);
-
-  ePartnerFax = gtk_entry_new ();
-  gtk_widget_show (ePartnerFax);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFax, 1, 2, 8, 9,
+  ePartnerPhone2 = gtk_entry_new ();
+  gtk_widget_show (ePartnerPhone2);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone2, 3, 4, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  lPartnerPhone = gtk_label_new (_("Phone in Company"));
-  gtk_widget_show (lPartnerPhone);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone, 0, 1, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerPhone), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone), 0, 0.5);
-
-  lpartnerCounty = gtk_label_new (_("Country"));
-  gtk_widget_show (lpartnerCounty);
-  gtk_table_attach (GTK_TABLE (table2), lpartnerCounty, 0, 1, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lpartnerCounty), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lpartnerCounty), 0, 0.5);
-
-  hbox2 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox2);
-  gtk_table_attach (GTK_TABLE (table2), hbox2, 0, 1, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  lPartnerZip = gtk_label_new (_("Zip"));
-  gtk_widget_show (lPartnerZip);
-  gtk_box_pack_start (GTK_BOX (hbox2), lPartnerZip, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerZip), GTK_JUSTIFY_CENTER);
-
-  ePartnerZip = gtk_entry_new ();
-  gtk_widget_show (ePartnerZip);
-  gtk_box_pack_start (GTK_BOX (hbox2), ePartnerZip, TRUE, TRUE, 0);
-
-  ePartnerPhone = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone, 1, 2, 7, 8,
+  ePartnerPhone1 = gtk_entry_new ();
+  gtk_widget_show (ePartnerPhone1);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone1, 3, 4, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  ePartnerCountry = gtk_entry_new ();
-  gtk_widget_show (ePartnerCountry);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerCountry, 1, 2, 6, 7,
+  lPartnerFaxPrivate = gtk_label_new (_("Fax"));
+  gtk_widget_show (lPartnerFaxPrivate);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerFaxPrivate, 2, 3, 4, 5,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerFaxPrivate), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerFaxPrivate), 0, 0);
+
+  lPartnerInternet = gtk_label_new (_("Homepage"));
+  gtk_widget_show (lPartnerInternet);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerInternet, 2, 3, 3, 4,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerInternet), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerInternet), 0, 0);
+
+  lPartnerEmail = gtk_label_new (_("E-Mail"));
+  gtk_widget_show (lPartnerEmail);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerEmail, 2, 3, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerEmail), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerEmail), 0, 0);
+
+  lPartnerPhone2 = gtk_label_new (_("Phone 2"));
+  gtk_widget_show (lPartnerPhone2);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone2, 2, 3, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerPhone2), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone2), 0, 0);
+
+  lpartnerPhone1 = gtk_label_new (_("Phone 1"));
+  gtk_widget_show (lpartnerPhone1);
+  gtk_table_attach (GTK_TABLE (table2), lpartnerPhone1, 2, 3, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lpartnerPhone1), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lpartnerPhone1), 0, 0);
+
+  ePartnerFirstname = gtk_entry_new ();
+  gtk_widget_show (ePartnerFirstname);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerFirstname, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  hbox3 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox3);
-  gtk_table_attach (GTK_TABLE (table2), hbox3, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  lPartnerCity = gtk_label_new (_("City"));
-  gtk_widget_show (lPartnerCity);
-  gtk_box_pack_start (GTK_BOX (hbox3), lPartnerCity, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerCity), GTK_JUSTIFY_CENTER);
-
-  ePartnerCity = gtk_entry_new ();
-  gtk_widget_show (ePartnerCity);
-  gtk_box_pack_start (GTK_BOX (hbox3), ePartnerCity, TRUE, TRUE, 0);
-
-  lPartnerStreet = gtk_label_new (_("Street"));
-  gtk_widget_show (lPartnerStreet);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerStreet, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerStreet), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerStreet), 0, 0.5);
-
-  ePartnerStreet = gtk_entry_new ();
-  gtk_widget_show (ePartnerStreet);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerStreet, 1, 2, 4, 5,
+  ePartnerLastname = gtk_entry_new ();
+  gtk_widget_show (ePartnerLastname);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerLastname, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label22 = gtk_label_new (_("State"));
-  gtk_widget_show (label22);
-  gtk_table_attach (GTK_TABLE (table2), label22, 2, 3, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0.5);
-
-  ePartnerState = gtk_entry_new ();
-  gtk_widget_show (ePartnerState);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerState, 3, 4, 5, 6,
+  ePartnerTitular = gtk_entry_new ();
+  gtk_widget_show (ePartnerTitular);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerTitular, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label23 = gtk_label_new (_("Birthday"));
-  gtk_widget_show (label23);
-  gtk_table_attach (GTK_TABLE (table2), label23, 2, 3, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0.5);
-
-  eBirthday = gtk_entry_new ();
-  gtk_widget_show (eBirthday);
-  gtk_table_attach (GTK_TABLE (table2), eBirthday, 3, 4, 6, 7,
+  ePartnerAddress = gtk_entry_new ();
+  gtk_widget_show (ePartnerAddress);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerAddress, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  bShowPartnerDMS = gtk_button_new_with_mnemonic (_("show extendet infos"));
-  gtk_widget_show (bShowPartnerDMS);
-  gtk_table_attach (GTK_TABLE (table2), bShowPartnerDMS, 3, 4, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
+  label18 = gtk_label_new (_("Firstname"));
+  gtk_widget_show (label18);
+  gtk_table_attach (GTK_TABLE (table2), label18, 0, 1, 3, 4,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label18), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (label18), 0, 0);
+
+  label17 = gtk_label_new (_("Lastname"));
+  gtk_widget_show (label17);
+  gtk_table_attach (GTK_TABLE (table2), label17, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label17), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (label17), 0, 0);
+
+  label16 = gtk_label_new (_("titular"));
+  gtk_widget_show (label16);
+  gtk_table_attach (GTK_TABLE (table2), label16, 0, 1, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label16), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (label16), 0, 0);
+
+  label15 = gtk_label_new (_("Address"));
+  gtk_widget_show (label15);
+  gtk_table_attach (GTK_TABLE (table2), label15, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label15), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (label15), 0, 0);
 
   lPartner = gtk_label_new (_("Partner"));
   gtk_widget_show (lPartner);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPartner);
+  gtk_misc_set_alignment (GTK_MISC (lPartner), 0, 0);
 
   table8 = gtk_table_new (4, 4, FALSE);
   gtk_widget_show (table8);
   gtk_container_add (GTK_CONTAINER (notebook1), table8);
 
-  label31 = gtk_label_new (_("short Remark"));
-  gtk_widget_show (label31);
-  gtk_table_attach (GTK_TABLE (table8), label31, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0.5);
-
-  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow3);
-  gtk_table_attach (GTK_TABLE (table8), scrolledwindow3, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eSchedulNotes = gtk_text_view_new ();
-  gtk_widget_show (eSchedulNotes);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), eSchedulNotes);
-
-  eShortRemark = gtk_entry_new ();
-  gtk_widget_show (eShortRemark);
-  gtk_table_attach (GTK_TABLE (table8), eShortRemark, 1, 2, 2, 3,
+  vbox4 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox4);
+  gtk_table_attach (GTK_TABLE (table8), vbox4, 3, 4, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
 
-  hbox5 = gtk_hbox_new (FALSE, 0);
+  hbox5 = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (hbox5);
-  gtk_table_attach (GTK_TABLE (table8), hbox5, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_box_pack_start (GTK_BOX (vbox4), hbox5, TRUE, TRUE, 0);
 
-  label32 = gtk_label_new (_("Note"));
-  gtk_widget_show (label32);
-  gtk_table_attach (GTK_TABLE (table8), label32, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0.5);
+  eSchedulCallerID = gtk_entry_new ();
+  gtk_widget_show (eSchedulCallerID);
+  gtk_box_pack_start (GTK_BOX (hbox5), eSchedulCallerID, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (eSchedulCallerID, GTK_CAN_FOCUS);
 
-  hbox6 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox6);
-  gtk_table_attach (GTK_TABLE (table8), hbox6, 3, 4, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  bChooseCaller = gtk_button_new_with_mnemonic (_("Choose Caller"));
+  gtk_widget_show (bChooseCaller);
+  gtk_box_pack_start (GTK_BOX (hbox5), bChooseCaller, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (bChooseCaller, GTK_CAN_FOCUS);
 
-  label33 = gtk_label_new (_("Process"));
-  gtk_widget_show (label33);
-  gtk_box_pack_start (GTK_BOX (hbox6), label33, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0.5);
+  eSchedulCaller = gtk_entry_new ();
+  gtk_widget_show (eSchedulCaller);
+  gtk_box_pack_start (GTK_BOX (vbox4), eSchedulCaller, FALSE, FALSE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eSchedulCaller), FALSE);
 
-  combo1 = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (combo1)->popwin),
-                     "GladeParentKey", combo1);
-  gtk_widget_show (combo1);
-  gtk_box_pack_start (GTK_BOX (hbox6), combo1, TRUE, TRUE, 0);
+  hbox14 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox14);
+  gtk_box_pack_start (GTK_BOX (vbox4), hbox14, TRUE, TRUE, 0);
 
-  eSchedulProcess = GTK_COMBO (combo1)->entry;
-  gtk_widget_show (eSchedulProcess);
-  gtk_entry_set_max_length (GTK_ENTRY (eSchedulProcess), 5);
+  eSchedulRepID = gtk_entry_new ();
+  gtk_widget_show (eSchedulRepID);
+  gtk_box_pack_start (GTK_BOX (hbox14), eSchedulRepID, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (eSchedulRepID, GTK_CAN_FOCUS);
 
-  hbox7 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox7);
-  gtk_table_attach (GTK_TABLE (table8), hbox7, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  bChooseRep = gtk_button_new_with_mnemonic (_("Choose Rep."));
+  gtk_widget_show (bChooseRep);
+  gtk_box_pack_start (GTK_BOX (hbox14), bChooseRep, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (bChooseRep, GTK_CAN_FOCUS);
 
-  vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox2);
-  gtk_table_attach (GTK_TABLE (table8), vbox2, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  eSchedulRep = gtk_entry_new ();
+  gtk_widget_show (eSchedulRep);
+  gtk_box_pack_start (GTK_BOX (vbox4), eSchedulRep, FALSE, FALSE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eSchedulRep), FALSE);
 
-  eAlarm = gtk_entry_new ();
-  gtk_widget_show (eAlarm);
-  gtk_box_pack_start (GTK_BOX (vbox2), eAlarm, FALSE, FALSE, 0);
-  gtk_entry_set_text (GTK_ENTRY (eAlarm), _("30"));
+  hbox15 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox15);
+  gtk_box_pack_start (GTK_BOX (vbox4), hbox15, TRUE, TRUE, 0);
 
-  label29 = gtk_label_new (_("Date"));
-  gtk_widget_show (label29);
-  gtk_table_attach (GTK_TABLE (table8), label29, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0.5);
+  eSchedulContractID = gtk_entry_new ();
+  gtk_widget_show (eSchedulContractID);
+  gtk_box_pack_start (GTK_BOX (hbox15), eSchedulContractID, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (eSchedulContractID, GTK_CAN_FOCUS);
 
-  hbox12 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox12);
-  gtk_table_attach (GTK_TABLE (table8), hbox12, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  bChooseContract = gtk_button_new_with_mnemonic (_("Choose Salesman"));
+  gtk_widget_show (bChooseContract);
+  gtk_box_pack_start (GTK_BOX (hbox15), bChooseContract, TRUE, TRUE, 0);
+  GTK_WIDGET_UNSET_FLAGS (bChooseContract, GTK_CAN_FOCUS);
 
-  eSchedulDate = gtk_entry_new ();
-  gtk_widget_show (eSchedulDate);
-  gtk_box_pack_start (GTK_BOX (hbox12), eSchedulDate, TRUE, TRUE, 0);
-
-  label44 = gtk_label_new (_("Time"));
-  gtk_widget_show (label44);
-  gtk_box_pack_start (GTK_BOX (hbox12), label44, FALSE, FALSE, 0);
-
-  cbAlarm = gtk_check_button_new_with_mnemonic (_("Alarm"));
-  gtk_widget_show (cbAlarm);
-  gtk_box_pack_start (GTK_BOX (hbox12), cbAlarm, FALSE, FALSE, 0);
-
-  calendar1 = gtk_calendar_new ();
-  gtk_widget_show (calendar1);
-  gtk_table_attach (GTK_TABLE (table8), calendar1, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_calendar_display_options (GTK_CALENDAR (calendar1),
-                                GTK_CALENDAR_SHOW_HEADING
-                                | GTK_CALENDAR_SHOW_DAY_NAMES);
-
-  hbox13 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox13);
-  gtk_table_attach (GTK_TABLE (table8), hbox13, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  label34 = gtk_label_new (_("Priority"));
-  gtk_widget_show (label34);
-  gtk_box_pack_start (GTK_BOX (hbox13), label34, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label34), 0, 0.5);
-
-  eSchedulPriority = gtk_entry_new ();
-  gtk_widget_show (eSchedulPriority);
-  gtk_box_pack_start (GTK_BOX (hbox13), eSchedulPriority, TRUE, TRUE, 0);
+  eSchedulContract = gtk_entry_new ();
+  gtk_widget_show (eSchedulContract);
+  gtk_box_pack_start (GTK_BOX (vbox4), eSchedulContract, FALSE, FALSE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eSchedulContract), FALSE);
 
   vbox3 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox3);
   gtk_table_attach (GTK_TABLE (table8), vbox3, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
 
   label45 = gtk_label_new (_("Schedul  begins at"));
   gtk_widget_show (label45);
   gtk_box_pack_start (GTK_BOX (vbox3), label45, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label45), 0, 0);
 
   cbeSchedulTimeBegin = gtk_combo_box_entry_new_text ();
   gtk_widget_show (cbeSchedulTimeBegin);
@@ -1502,9 +1479,15 @@ create_AddressMainwindow (void)
   gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:30"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:45"));
 
+  comboboxentry_entry1 = gtk_entry_new ();
+  gtk_widget_show (comboboxentry_entry1);
+  gtk_container_add (GTK_CONTAINER (cbeSchedulTimeBegin), comboboxentry_entry1);
+  GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry1, GTK_CAN_FOCUS);
+
   label46 = gtk_label_new (_("Schedul ends at"));
   gtk_widget_show (label46);
   gtk_box_pack_start (GTK_BOX (vbox3), label46, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label46), 0, 0);
 
   cbeSchedulTimeEnd = gtk_combo_box_entry_new_text ();
   gtk_widget_show (cbeSchedulTimeEnd);
@@ -1606,12 +1589,139 @@ create_AddressMainwindow (void)
   gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:30"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:45"));
 
+  comboboxentry_entry2 = gtk_entry_new ();
+  gtk_widget_show (comboboxentry_entry2);
+  gtk_container_add (GTK_CONTAINER (cbeSchedulTimeEnd), comboboxentry_entry2);
+  GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry2, GTK_CAN_FOCUS);
+
+  hbox13 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox13);
+  gtk_table_attach (GTK_TABLE (table8), hbox13, 3, 4, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label34 = gtk_label_new (_("Priority"));
+  gtk_widget_show (label34);
+  gtk_box_pack_start (GTK_BOX (hbox13), label34, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label34), 0, 0);
+
+  eSchedulPriority = gtk_entry_new ();
+  gtk_widget_show (eSchedulPriority);
+  gtk_box_pack_start (GTK_BOX (hbox13), eSchedulPriority, TRUE, TRUE, 0);
+
+  calendar1 = gtk_calendar_new ();
+  gtk_widget_show (calendar1);
+  gtk_table_attach (GTK_TABLE (table8), calendar1, 1, 2, 1, 2,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_calendar_display_options (GTK_CALENDAR (calendar1),
+                                GTK_CALENDAR_SHOW_HEADING
+                                | GTK_CALENDAR_SHOW_DAY_NAMES);
+
+  hbox12 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox12);
+  gtk_table_attach (GTK_TABLE (table8), hbox12, 1, 2, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eSchedulDate = gtk_entry_new ();
+  gtk_widget_show (eSchedulDate);
+  gtk_box_pack_start (GTK_BOX (hbox12), eSchedulDate, TRUE, TRUE, 0);
+
+  label44 = gtk_label_new (_("Time"));
+  gtk_widget_show (label44);
+  gtk_box_pack_start (GTK_BOX (hbox12), label44, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label44), 0, 0);
+
+  cbAlarm = gtk_check_button_new_with_mnemonic (_("Alarm"));
+  gtk_widget_show (cbAlarm);
+  gtk_box_pack_start (GTK_BOX (hbox12), cbAlarm, FALSE, FALSE, 0);
+
+  label29 = gtk_label_new (_("Date"));
+  gtk_widget_show (label29);
+  gtk_table_attach (GTK_TABLE (table8), label29, 0, 1, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0);
+
+  vbox2 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox2);
+  gtk_table_attach (GTK_TABLE (table8), vbox2, 2, 3, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eAlarm = gtk_entry_new ();
+  gtk_widget_show (eAlarm);
+  gtk_box_pack_start (GTK_BOX (vbox2), eAlarm, FALSE, FALSE, 0);
+  gtk_entry_set_text (GTK_ENTRY (eAlarm), "30");
+
+  hbox6 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox6);
+  gtk_table_attach (GTK_TABLE (table8), hbox6, 3, 4, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label33 = gtk_label_new (_("Process"));
+  gtk_widget_show (label33);
+  gtk_box_pack_start (GTK_BOX (hbox6), label33, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0);
+
+  combo1 = gtk_combo_new ();
+  g_object_set_data (G_OBJECT (GTK_COMBO (combo1)->popwin),
+                     "GladeParentKey", combo1);
+  gtk_widget_show (combo1);
+  gtk_box_pack_start (GTK_BOX (hbox6), combo1, TRUE, TRUE, 0);
+
+  eSchedulProcess = GTK_COMBO (combo1)->entry;
+  gtk_widget_show (eSchedulProcess);
+  gtk_entry_set_max_length (GTK_ENTRY (eSchedulProcess), 5);
+
+  label32 = gtk_label_new (_("Note"));
+  gtk_widget_show (label32);
+  gtk_table_attach (GTK_TABLE (table8), label32, 0, 1, 3, 4,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0);
+
+  eShortRemark = gtk_entry_new ();
+  gtk_widget_show (eShortRemark);
+  gtk_table_attach (GTK_TABLE (table8), eShortRemark, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow3);
+  gtk_table_attach (GTK_TABLE (table8), scrolledwindow3, 1, 2, 3, 4,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eSchedulNotes = gtk_text_view_new ();
+  gtk_widget_show (eSchedulNotes);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow3), eSchedulNotes);
+
+  label31 = gtk_label_new (_("short Remark"));
+  gtk_widget_show (label31);
+  gtk_table_attach (GTK_TABLE (table8), label31, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0);
+
+  vbox5 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox5);
+  gtk_table_attach (GTK_TABLE (table8), vbox5, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), lSchedul);
+  gtk_misc_set_alignment (GTK_MISC (lSchedul), 0, 0);
 
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tree1, "row_activated",
+                    G_CALLBACK (on_tree1_row_activated),
                     NULL);
   g_signal_connect ((gpointer) notebook1, "switch_page",
                     G_CALLBACK (on_notebook1_switch_page),
@@ -1622,14 +1732,29 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bShowPartnerDMS, "clicked",
                     G_CALLBACK (on_bShowPartnerDMS_clicked),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulDate, "changed",
-                    G_CALLBACK (on_eSchedulDate_changed),
+  g_signal_connect ((gpointer) eSchedulCallerID, "changed",
+                    G_CALLBACK (on_eSchedulCallerID_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bChooseCaller, "clicked",
+                    G_CALLBACK (on_bChooseCaller_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eSchedulRepID, "changed",
+                    G_CALLBACK (on_eSchedulRepID_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bChooseRep, "clicked",
+                    G_CALLBACK (on_bChooseRep_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eSchedulContractID, "changed",
+                    G_CALLBACK (on_eSchedulContractID_changed),
                     NULL);
   g_signal_connect ((gpointer) calendar1, "day_selected_double_click",
                     G_CALLBACK (on_calendar1_day_selected_double_click),
                     NULL);
   g_signal_connect ((gpointer) calendar1, "state_changed",
                     G_CALLBACK (on_calendar1_state_changed),
+                    NULL);
+  g_signal_connect ((gpointer) eSchedulDate, "changed",
+                    G_CALLBACK (on_eSchedulDate_changed),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -1689,140 +1814,154 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook1, "notebook1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox4, "hbox4");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table4, "table4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddress, "eAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName, "eLastName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName2, "eLastName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFirstName, "eFirstName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eStreet, "eStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName, "lLastName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName2, "lLastName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFirstName, "lFirstName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lStreet, "lStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip, "lZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lCountry, "lCountry");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip_PB, "lZip_PB");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lState, "lState");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox8, "hbox8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZip, "eZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label38, "label38");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCity, "eCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox9, "hbox9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZipForPostbox, "eZipForPostbox");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label39, "label39");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePostbox, "ePostbox");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox10, "hbox10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountry, "eCountry");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, button1, "button1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountryNumber, "eCountryNumber");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox11, "hbox11");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, entry3, "entry3");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, button2, "button2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, entry4, "entry4");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox10, "hbox10");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountry, "eCountry");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, button1, "button1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountryNumber, "eCountryNumber");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox9, "hbox9");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZipForPostbox, "eZipForPostbox");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label39, "label39");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePostbox, "ePostbox");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox8, "hbox8");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZip, "eZip");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label38, "label38");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCity, "eCity");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lState, "lState");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip_PB, "lZip_PB");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lCountry, "lCountry");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip, "lZip");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lStreet, "lStreet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFirstName, "lFirstName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName2, "lLastName2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName, "lLastName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eStreet, "eStreet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFirstName, "eFirstName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName2, "eLastName2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName, "eLastName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddress, "eAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table5, "table5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPhone, "lPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePhone, "ePhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lEmail, "lEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFax, "lFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eEmail, "eEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFax, "eFax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowDMS, "bShowDMS");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFax, "eFax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eEmail, "eEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFax, "lFax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lEmail, "lEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePhone, "ePhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPhone, "lPhone");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table7, "table7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label26, "label26");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label27, "label27");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label28, "label28");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBCN, "eBCN");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAccount, "eAccount");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow2, "scrolledwindow2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, textview1, "textview1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAccount, "eAccount");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBCN, "eBCN");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label28, "label28");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label27, "label27");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label26, "label26");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lBank, "lBank");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table9, "table9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label35, "label35");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLine, "eLine");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label36, "label36");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbFashion, "cbFashion");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFashion, "eFashion");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label37, "label37");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eTaxnumber, "eTaxnumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbCalcTax, "chkbCalcTax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label40, "label40");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbUpdateFromWeb, "chkbUpdateFromWeb");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label43, "label43");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label42, "label42");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbIsWebshop, "chkbIsWebshop");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressNumber, "eAddressNumber");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label41, "label41");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, combo2, "combo2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbPriceGroup, "cbPriceGroup");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label41, "label41");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressNumber, "eAddressNumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbIsWebshop, "chkbIsWebshop");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label42, "label42");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label43, "label43");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbUpdateFromWeb, "chkbUpdateFromWeb");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label40, "label40");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbCalcTax, "chkbCalcTax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eTaxnumber, "eTaxnumber");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label37, "label37");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbFashion, "cbFashion");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFashion, "eFashion");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label36, "label36");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLine, "eLine");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label35, "label35");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label16, "label16");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label17, "label17");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label18, "label18");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerAddress, "ePartnerAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerTitular, "ePartnerTitular");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerLastname, "ePartnerLastname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFirstname, "ePartnerFirstname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerPhone1, "lpartnerPhone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone2, "lPartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerEmail, "lPartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerInternet, "lPartnerInternet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFaxPrivate, "lPartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone1, "ePartnerPhone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone2, "ePartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerEmail, "ePartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHomepage, "ePartnerHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFaxPrivate, "ePartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFax, "lPartnerFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFax, "ePartnerFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone, "lPartnerPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerCounty, "lpartnerCounty");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox2, "hbox2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerZip, "lPartnerZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerZip, "ePartnerZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone, "ePartnerPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCountry, "ePartnerCountry");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowPartnerDMS, "bShowPartnerDMS");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBirthday, "eBirthday");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label23, "label23");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerState, "ePartnerState");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label22, "label22");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerStreet, "lPartnerStreet");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox3, "hbox3");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerCity, "lPartnerCity");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCity, "ePartnerCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerStreet, "lPartnerStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label22, "label22");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerState, "ePartnerState");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label23, "label23");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBirthday, "eBirthday");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowPartnerDMS, "bShowPartnerDMS");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCountry, "ePartnerCountry");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone, "ePartnerPhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox2, "hbox2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerZip, "lPartnerZip");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerZip, "ePartnerZip");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerCounty, "lpartnerCounty");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone, "lPartnerPhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFax, "ePartnerFax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFax, "lPartnerFax");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFaxPrivate, "ePartnerFaxPrivate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHomepage, "ePartnerHomepage");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerEmail, "ePartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone2, "ePartnerPhone2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone1, "ePartnerPhone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFaxPrivate, "lPartnerFaxPrivate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerInternet, "lPartnerInternet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerEmail, "lPartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone2, "lPartnerPhone2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerPhone1, "lpartnerPhone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFirstname, "ePartnerFirstname");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerLastname, "ePartnerLastname");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerTitular, "ePartnerTitular");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerAddress, "ePartnerAddress");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label18, "label18");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label17, "label17");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label16, "label16");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartner, "lPartner");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table8, "table8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label31, "label31");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulNotes, "eSchedulNotes");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eShortRemark, "eShortRemark");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox4, "vbox4");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox5, "hbox5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label32, "label32");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox6, "hbox6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label33, "label33");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, combo1, "combo1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox7, "hbox7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAlarm, "eAlarm");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulCallerID, "eSchedulCallerID");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseCaller, "bChooseCaller");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulCaller, "eSchedulCaller");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox14, "hbox14");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulRepID, "eSchedulRepID");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseRep, "bChooseRep");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulRep, "eSchedulRep");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox15, "hbox15");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulContractID, "eSchedulContractID");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseContract, "bChooseContract");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulContract, "eSchedulContract");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox3, "vbox3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label45, "label45");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeBegin, "cbeSchedulTimeBegin");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, comboboxentry_entry1, "comboboxentry_entry1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label46, "label46");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeEnd, "cbeSchedulTimeEnd");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, comboboxentry_entry2, "comboboxentry_entry2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox13, "hbox13");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label34, "label34");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulPriority, "eSchedulPriority");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, calendar1, "calendar1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox12, "hbox12");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDate, "eSchedulDate");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label44, "label44");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbAlarm, "cbAlarm");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, calendar1, "calendar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox13, "hbox13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label34, "label34");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulPriority, "eSchedulPriority");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox3, "vbox3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label45, "label45");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeBegin, "cbeSchedulTimeBegin");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label46, "label46");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeEnd, "cbeSchedulTimeEnd");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAlarm, "eAlarm");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox6, "hbox6");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label33, "label33");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, combo1, "combo1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label32, "label32");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eShortRemark, "eShortRemark");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow3, "scrolledwindow3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulNotes, "eSchedulNotes");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label31, "label31");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox5, "vbox5");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
 
   gtk_widget_grab_default (eFashion);

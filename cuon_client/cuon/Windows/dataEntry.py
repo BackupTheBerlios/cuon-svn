@@ -14,7 +14,7 @@ class dataEntry:
         self.typeOfEntry="EMPTY"
         self.bDuty = False
         self.iRound = 0
-        
+        self.nextWidget = 'EMPTY'
 
 
     def setName(self,s):
@@ -95,3 +95,11 @@ class dataEntry:
         
     def getRound(self):
         return self.iRound
+    
+    def setNextWidget(self, sName):
+        self.nextWidget = sName
+        
+    def getNextWidget(self):
+        return self.nextWidget
+        
+        

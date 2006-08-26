@@ -42,7 +42,11 @@ import SingleProjectStaffResources
 import SingleProjectMaterialResources
 import cuon.Staff.staff
 import cuon.Staff.SingleStaff
+import cuon.Addresses.addresses
+import cuon.Addresses.SingleAddress
 
+import cuon.Articles.articles
+import cuon.Articles.SingleArticle
 
 
 
@@ -62,6 +66,8 @@ class projectwindow(chooseWindows):
         self.singleProjectTaskMaterial = SingleProjectMaterialResources.SingleProjectMaterialResources(allTables)
 
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.singleArticles = cuon.Articles.SingleArticle.SingleArticle(allTables)
         
         self.allTables = allTables
        
@@ -351,7 +357,7 @@ class projectwindow(chooseWindows):
         self.singleProject.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
         self.out(self.singleProject.sWhere, self.ERROR)
         self.refreshTree()
-    # Calendar events
+    # events and buttons
     
     # Project
     def on_calendar1_day_selected_double_click(self, event):
@@ -371,7 +377,19 @@ class projectwindow(chooseWindows):
     def on_eProjectEndsAt_changed(self, event):
         print event 
         self.setDateToCalendar(event.get_text(),'calendar2')
+        
+    #choose button
+    def on_bChoose_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eAddressNumber'))
+        
+    # signals from entry eAddressNumber
     
+    def on_eAddressNumber_changed(self, event):
+        print 'eAdressNumber changed'
+        eAdrField = self.getWidget('tvOrderer')
+        liAdr = self.singleAddress.getAddress(self.getWidget( 'eAddressNumber').get_text())
+        self.setTextbuffer(eAdrField,liAdr)
     # Phase
 
     def on_PhaseCalendar1_day_selected_double_click(self, event):
@@ -448,7 +466,21 @@ class projectwindow(chooseWindows):
         eAdrField = self.getWidget('tvStaff')
         liAdr = self.singleStaff.getAddress(self.getWidget( 'eSRStaffNumber').get_text())
         self.setTextbuffer(eAdrField,liAdr)
+    
+    
+    # material resources
+    #choose button
+    def on_bChooseArticle_clicked(self, event):
+        art = cuon.Articles.articles.articleswindow(self.allTables)
+        art.setChooseEntry(_('chooseArticle'), self.getWidget( 'eMRArticleNumber'))
         
+    # signals from entry eAddressNumber
+    
+    def on_eMRArticleNumber_changed(self, event):
+        print 'eMRArticleNumber changed'
+        eArticleDes  = self.getWidget('eArticleDesignation')
+        sArticleDes  = self.singleArticle.getArticleDesignation(self.getWidget( 'eMRArticleNumber').get_text())
+        eArticleDes.set_text(sArticleDes)
     def refreshTree(self):
         self.singleProject.disconnectTree()
         self.singleProjectPhases.disconnectTree()

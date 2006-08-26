@@ -132,7 +132,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         
        
         self.writeLog(`sSql`)
-        sSql = sSql + ' LIMIT 100 '
+        sSql = sSql + ' LIMIT 30 '
         
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         #result2 = []

@@ -100,18 +100,20 @@ class cyr_load_entries(MyXML, dumps):
             entry.setFgColor(self.getEntrySpecification(xmlCol, "fg_color") )
             entry.setDuty(self.getEntrySpecification(xmlCol, "duty") )
             entry.setRound(self.getEntrySpecification(xmlCol, "round") )
+            entry.setNextWidget(self.getEntrySpecification(xmlCol, "next_widget") )
             
-            s1 = `self.getEntrySpecification(xmlCol, "name") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "type") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "size") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "verify_type") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "create_sql") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "sql_field") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "bg_color") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "fg_color") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "duty") ` + ", "
-            s1 = s1 + `self.getEntrySpecification(xmlCol, "round")`
-            print s1
+##            s1 = `self.getEntrySpecification(xmlCol, "name") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "type") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "size") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "verify_type") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "create_sql") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "sql_field") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "bg_color") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "fg_color") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "duty") ` + ", "
+##            s1 = s1 + `self.getEntrySpecification(xmlCol, "round")`
+##            
+##            print s1
             
             self.out( 'entry-gets = ' + str(entry.getName())  + ', ' + str(entry.getType()))
             entrySet.addEntry(entry)

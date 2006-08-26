@@ -101,10 +101,24 @@ class User(xmlrpc.XMLRPC, basics):
         
         dicUserClients = {}
         
-        dicUserClients['AllUser']={}
-        dicUserClients['AllUser']['clientsRight']={}
-        dicUserClients['AllUser']['clientsRight']['create']='NO'
-        dicUserClients['AllUser']['clientsID']=[1]
+        try:
+            cpClients, f = self.getParser(self.CUON_FS + '/clients.ini')
+            print 'f = ', f
+            assert cpClients.get(dicUser['Name'], 'clientsRightCreate')
+            assert cpClients.get(dicUser['Name'], 'clientsIDs')
+            
+            dicUserClients[dicUser['Name']]= {}
+            dicUserClients[dicUser['Name']]['clientsRight']={}
+            dicUserClients[dicUser['Name']]['clientsRight']['create']=cpClients.get(dicUser['Name'], 'clientsRightCreate')
+            dicUserClients[dicUser['Name']]['clientsID']=cpClients.get(dicUser['Name'], 'clientsIDs').split(',')
+            print 'dicUserClients-1', dicUserClients
+        except Exception, params:
+            print Exception, params
+            dicUserClients['AllUser']={}
+            dicUserClients['AllUser']['clientsRight']={}
+            dicUserClients['AllUser']['clientsRight']['create']='NO'
+            dicUserClients['AllUser']['clientsID']=[1]
+            print 'dicUserClients-except', dicUserClients
         
         
         try:

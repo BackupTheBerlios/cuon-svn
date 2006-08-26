@@ -93,11 +93,11 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         self.writeLog('get acctPlanNumber for ' + `id`)
         ret = 'NONE'
-        cSql = "select name from account_plan where id = " + `id`  
+        sSql = "select name from account_plan where id = " + `id`  
         sSql = sSql + self.getWhere("",dicUser, 2)
-        self.writeLog('get AcctPlan cSql = ' + cSql)
+        self.writeLog('get AcctPlan cSql = ' + sSql)
         #context.src.logging.writeLog('User = ' + `dicUser`)
-        liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        liAcct = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
         self.writeLog('liAcct = ' + `liAcct`)
         if liAcct != 'NONE':
@@ -174,7 +174,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         if pn != 'NONE':
             sSql = "select id from account_info where account_number = '" + dicAcct['account_number'][0] + "' and account_plan_number = " + `pn` 
-            sSql = sSql + self.getWhere("",dicUser,1)
+            sSql = sSql + self.getWhere("",dicUser,2)
             self.writeLog('Search for account_Number sSql =  ' + `sSql` )
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             self.writeLog('result id by finances = ' + `result`)

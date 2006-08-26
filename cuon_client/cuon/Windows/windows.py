@@ -164,6 +164,7 @@ class windows(rawWindow, MyXML, messages):
       
                 
     def setEntriesEditable(self, sName, ok):
+        self.actualEntries = sName
         entries = self.getDataEntries(sName)
         for i in range(0,entries.getCountOfEntries()):
             entry = entries.getEntryAtIndex(i)
@@ -247,9 +248,9 @@ class windows(rawWindow, MyXML, messages):
     
     def checkKey(self, event,sState, cKey):
         ok = False
-        self.printOut( 'keyval', event.keyval)
-        self.printOut( 'keyval-name', gtk.gdk.keyval_name(event.keyval))
-        self.printOut( 'state', event.state)
+        #self.printOut( 'keyval', event.keyval)
+        #self.printOut( 'keyval-name', gtk.gdk.keyval_name(event.keyval))
+        #self.printOut( 'state', event.state)
         if (event.state and self.dicKeys[sState])  or sState == 'NONE':
             self.printOut( 'state is found')
             
@@ -515,5 +516,26 @@ class windows(rawWindow, MyXML, messages):
         
         
         
+    def on_key_press_event(self, oEntry, data):
+        print 'Key-event',oEntry
+        print oEntry.get_name()
+        sEntryName = oEntry.get_name()
+        entries = self.getDataEntries(self.actualEntries)
+        for i in range(0,entries.getCountOfEntries()):
+            entry = entries.getEntryAtIndex(i)
+            if entry.getName() == sEntryName:
+            # do some stuff with the entry
+            #self.out('entry = ' + entry.getName())
+                try:
+                    #e1.set_editable(ok)
+                    print 'My-Entry = ', entry.getName()
+                    if gtk.gdk.keyval_name(data.keyval) == 'Return' :
+                        print 'return found'
+                        
+                except:
+                    pass
         
+        print 'key-data', data
+        
+   
         

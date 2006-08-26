@@ -155,6 +155,6 @@ class loginwindow(windows):
         self.oUser.setUserName('EMPTY')
         
         self.quitLogin()
-
+    
     def quitLogin(self):
         self.win1.hide()

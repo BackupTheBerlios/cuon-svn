@@ -36,7 +36,7 @@ class SingleHibernation(SingleData):
         self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
         self.listHeader['size'] = [25,10,25,25,10]
         #
-        self.setTreeFields( ['hibernation_number', 'addressnumber'] )
+        self.setTreeFields( ['hibernation_number', '(select firstname || \' \' || lastname  from address where id = addressnumber) as address_name'] )
         self.setTreeOrder('hibernation_number')
         self.setListHeader([_('name'),_('customer')])
         

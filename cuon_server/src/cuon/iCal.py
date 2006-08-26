@@ -165,10 +165,25 @@ class iCal(xmlrpc.XMLRPC, basics):
         self.writeLog('dicCal = ' + `dicCal`)
         
         return dicCal     
+    
+    def createCal(self):
+        sCal = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'
+        Cal = Calendar.from_string(s)
+        return Cal
+    def overwriteCal(self, sName, liRecords, dicUser):
+        Cal = self.createCal()
+        for record in liRecords:
+            dicEvent = self.getDicCal(record, dicUser)
+        
+            newEvent = self.createEvent(dicEvent)
+            print 'newEvent = ' + `newEvent`
+            if newEvent:
+                Cal.add_component(newEvent)
+                
+        self.writeCalendar(sName, Cal)
         
         
         
-
 #i=iCal()
 #dicEvent={}
 #s = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'

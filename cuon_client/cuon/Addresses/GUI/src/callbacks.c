@@ -355,3 +355,43 @@ on_eSchedulDate_changed                (GtkEditable     *editable,
 
 }
 
+
+void
+on_eSchedulCallerID_changed            (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bChooseCaller_clicked               (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_eSchedulRepID_changed               (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bChooseRep_clicked                  (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_eSchedulContractID_changed          (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+
