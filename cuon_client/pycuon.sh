@@ -7,7 +7,7 @@ case $2 in
 
 n) Server=$MyServer/Cuon 
 ;;
-ssl) Server=https://server2:9443/Cuon
+ssl) Server=https://localhost:7580/Cuon
 ;;
 inn) Server=http://innovatec.dyndns.org:7080/Cuon
 ;;

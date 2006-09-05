@@ -20,6 +20,10 @@
   </groups>
 
   <users>
+  <user>
+      <nameOfUser>cuon</nameOfUser>
+      <comment></comment>
+    </user>
     <user>
       <nameOfUser>jhamel</nameOfUser>
       <comment></comment>
@@ -72,6 +76,11 @@
     <addgroup>
       <this_group>cuon_all</this_group>
       <this_user>jhamel</this_user>
+      <comment></comment>
+    </addgroup>
+    <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>cuon</this_user>
       <comment></comment>
     </addgroup>
     <addgroup>

@@ -69,7 +69,9 @@ class windows(rawWindow, MyXML, messages):
         self.MN['DMS'] = 11000
         self.MN['Biblio'] = 12000
         self.MN['AI'] = 13000
-
+        self.doEdit = -1
+        self.noEdit = -1
+        
         
         self.sWhereStandard = ''
         self.sWhereSearch = None
@@ -98,6 +100,7 @@ class windows(rawWindow, MyXML, messages):
         
         
     def closeWindow(self):
+        self.saveDataQuestion()
         self.win1.hide()
 
     def checkClient(self):
@@ -181,13 +184,22 @@ class windows(rawWindow, MyXML, messages):
             
             
     def on_notebook1_switch_page(self, notebook1, page, page_num ):
-        self.out( "Notebook switch to page " + `page`)
-        self.out( "Notebook switch to page_num" + `page_num`)
-        self.out( "Notebook switch to notebook " + `notebook1`)
+        #self.out( "Notebook switch to page " + `page`)
+        #self.out( "Notebook switch to page_num" + `page_num`)
+        #self.out( "Notebook switch to notebook " + `notebook1`)
+        if self.doEdit > self.noEdit:
+            if self.QuestionMsg('Unsaved Data ! Wish you save them ?'):
+                self.saveData()
+                self.doEdit = self.noEdit
+                
+                
+            
         self.tabOption = page_num
         
         self.tabChanged()
-
+    def saveData(self):
+        pass
+        
 
     def closeMenuEntries(self,sendEntry = None, event = None):
         if self.editEntries == False:
@@ -518,24 +530,35 @@ class windows(rawWindow, MyXML, messages):
         
     def on_key_press_event(self, oEntry, data):
         print 'Key-event',oEntry
-        print oEntry.get_name()
-        sEntryName = oEntry.get_name()
-        entries = self.getDataEntries(self.actualEntries)
-        for i in range(0,entries.getCountOfEntries()):
-            entry = entries.getEntryAtIndex(i)
-            if entry.getName() == sEntryName:
-            # do some stuff with the entry
-            #self.out('entry = ' + entry.getName())
-                try:
-                    #e1.set_editable(ok)
-                    print 'My-Entry = ', entry.getName()
-                    if gtk.gdk.keyval_name(data.keyval) == 'Return' :
-                        print 'return found'
-                        
-                except:
-                    pass
+        if gtk.gdk.keyval_name(data.keyval) == 'Return' :
+            print 'return found'
+            
+            print oEntry.get_name()
+            sEntryName = oEntry.get_name()
+            entries = self.getDataEntries(self.actualEntries)
+            for i in range(0,entries.getCountOfEntries()):
+                entry = entries.getEntryAtIndex(i)
+                if entry.getName() == sEntryName:
+                # do some stuff with the entry
+                #self.out('entry = ' + entry.getName())
+                    try:
+                        #e1.set_editable(ok)
+                        print 'My-Entry = ', entry.getName()
+                        sNextWidget = entry.getNextWidget()
+                        if sNextWidget == 'LAST':
+                            self.saveDataQuestion()
+                            
+                        else:
+                            self.getWidget(sNextWidget).grab_focus()
+                            
+                            
+                    except:
+                        pass
         
         print 'key-data', data
         
    
+    def saveDataQuestion(self):
+        self.saveData()
+        self.doEdit = self.noEdit
         

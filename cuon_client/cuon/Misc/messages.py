@@ -32,3 +32,15 @@ class messages:
         dialog.destroy ();
         
         return ok
+
+    def QuestionMsg(self, sText):
+        # gtk
+        ok = False
+        print 'QuestionMsg'
+        dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_QUESTION,gtk.BUTTONS_YES_NO, sText);
+        response = dialog.run ();
+        dialog.destroy ();
+        print 'Response', response
+        if response == gtk.RESPONSE_YES:
+            ok = True
+        return ok

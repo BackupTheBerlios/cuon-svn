@@ -20,6 +20,7 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+      <next_widget>eAddressNumber</next_widget>
     </entry>
 
     
@@ -39,6 +40,8 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+      <next_widget>eBeginDate</next_widget>
+
     </entry>
 
        <entry>
@@ -57,7 +60,8 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
-    </entry>
+      <next_widget>eBeginWorkingTime</next_widget>
+</entry>
     
       <entry>
       <name>eBeginDate</name>
@@ -75,6 +79,8 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+     <next_widget>rbBeginDelivered</next_widget>
+
     </entry>
 
     <entry>
@@ -93,6 +99,8 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+      <next_widget>rbEndsFetched</next_widget>
+
     </entry>
 
     <entry>
@@ -111,6 +119,8 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+            <next_widget>eEndsWorkingTime</next_widget>
+
     </entry>
     <entry>
       <name>eBeginWorkingTime</name>
@@ -128,6 +138,7 @@
       <bg_color>0</bg_color>
 
       <fg_color>0</fg_color>
+      <next_widget>tvBeginNote</next_widget>
     </entry>
       <entry>
       <name>eEndsWorkingTime</name>
@@ -138,6 +149,8 @@
       <sql_field>ends_working_time</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+      <next_widget>tvEndsNote</next_widget>
+
     </entry>
     <entry>
       <name>tvBeginNote</name>
@@ -148,6 +161,8 @@
       <sql_field>begin_notes</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+     <next_widget>eEndDate</next_widget>
+
     </entry>
 
     <entry>
@@ -159,6 +174,8 @@
       <sql_field>ends_notes</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+    <next_widget>LAST</next_widget>
+
     </entry>
    
    <entry>
@@ -170,6 +187,8 @@
       <sql_field>check_begin_delivered</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+        <next_widget>eBeginStaffNumber</next_widget>
+
     </entry>
     <entry>
       <name>rbEndsFetched</name>
@@ -180,6 +199,8 @@
       <sql_field>check_ends_fetched</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+     <next_widget>eEndsStaffNumber</next_widget>
+
     </entry>
     
     <entry>
@@ -191,6 +212,8 @@
       <sql_field>check_begin_fetched</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+     <next_widget>eBeginStaffNumber</next_widget>
+
     </entry>
     <entry>
       <name>rbEndsDelivered</name>
@@ -201,6 +224,8 @@
       <sql_field>check_ends_delivered</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
+     <next_widget>eEndsStaffNumber</next_widget>
+
     </entry>
   </table>
 </entries_for_table>

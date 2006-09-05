@@ -208,17 +208,22 @@ class addresswindow(chooseWindows):
   
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
+        self.doEdit = self.noEdit
         self.singleAddress.save()
         self.setEntriesEditable(self.EntriesAddresses, FALSE)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
+        self.doEdit = self.tabAddress
+
         self.singleAddress.newRecord()
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
+        self.doEdit = self.tabAddress
+
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
@@ -248,6 +253,7 @@ class addresswindow(chooseWindows):
     def on_MiscSave1_activate(self, event):
         
         self.out( "save Misc addresses v2")
+        self.doEdit = self.noEdit
         self.singleMisc.addressId = self.singleAddress.ID
         
         self.singleMisc.save()
@@ -256,6 +262,8 @@ class addresswindow(chooseWindows):
 
     def on_MiscEdit1_activate(self, event):
         self.out( "edit addresses v2")
+        self.doEdit = self.tabMisc
+        
         self.setEntriesEditable(self.EntriesAddressesMisc, TRUE)
 
   #Menu Partner
@@ -263,6 +271,7 @@ class addresswindow(chooseWindows):
    
     def on_PartnerSave1_activate(self, event):
         self.out( "save Partner addresses v2")
+        self.doEdit = self.noEdit
         self.singlePartner.addressId = self.singleAddress.ID
         self.singlePartner.save()
         self.setEntriesEditable(self.EntriesPartner, FALSE)
@@ -270,11 +279,15 @@ class addresswindow(chooseWindows):
         
     def on_PartnerNew1_activate(self, event):
         self.out( "new Partner addresses v2")
+        self.doEdit = self.tabPartner
+        
         self.singlePartner.newRecord()
         self.setEntriesEditable(self.EntriesPartner, TRUE)
 
         
     def on_PartnerEdit1_activate(self, event):
+        self.doEdit = self.tabPartner
+
         self.setEntriesEditable(self.EntriesPartner, TRUE)
 
 
@@ -288,6 +301,7 @@ class addresswindow(chooseWindows):
    
     def on_SchedulSave_activate(self, event):
         self.out( "save Schedul addresses v2")
+        self.doEdit = self.noEdit
         self.singleSchedul.partnerId = self.singlePartner.ID
         id = self.singleSchedul.save()
         self.singleSchedul.load(id)
@@ -297,10 +311,14 @@ class addresswindow(chooseWindows):
         self.tabChanged()
 
     def on_SchedulEdit1_activate(self, event):
+        self.doEdit = self.tabSchedul
+
         self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
    
     def on_SchedulNew_activate(self, event):
         self.out( "new Schedul for partner v2")
+        self.doEdit = self.tabSchedul
+
         self.singleSchedul.newRecord()
         self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
 
@@ -456,6 +474,22 @@ class addresswindow(chooseWindows):
         print 'DoubleClick tree1'
         self.activateClick('chooseAddress', event)
 
+
+    def saveData(self):
+        print 'save Addresses'
+        if self.doEdit == tabAddress:
+            print 'save 1'
+            self.on_save1_activate(None)
+        elif self.doEdit == tabBank:
+            print 'save 2'
+            #self.on_(None)
+        elif self.doEdit == tabMisc:
+            self.on_MiscSave1_activate(None)
+        elif self.doEdit == tabPartner:
+            self.on_PartnerSave1_activate(None)
+        elif self.doEdit == tabSchedul:
+            self.on_SchedulSave_activate(None)
+     
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()

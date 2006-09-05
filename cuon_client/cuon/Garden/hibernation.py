@@ -174,15 +174,19 @@ class hibernationwindow(chooseWindows):
         self.singleHibernation.save()
         self.setEntriesEditable(self.EntriesHibernations, False)
         self.tabChanged()
+        self.doEdit = self.noEdit
+
          
         
     def on_new1_activate(self, event):
         print "new Hibernations v2"
+        self.doEdit = tabHibernation
         self.singleHibernation.newRecord()
         self.setEntriesEditable(self.EntriesHibernations, True)
         
 
     def on_edit1_activate(self, event):
+        self.doEdit = tabHibernation
         self.setEntriesEditable(self.EntriesHibernations, True)
 
     def on_delete1_activate(self, event):
@@ -216,6 +220,9 @@ class hibernationwindow(chooseWindows):
    
     def on_PlantSave1_activate(self, event):
         print "save Partner Hibernations v2"
+        self.doEdit = self.noEdit
+        
+
         self.singleHibernationPlant.hibernationID = self.singleHibernation.ID
         self.singleHibernationPlant.save()
         self.setEntriesEditable(self.EntriesHibernationsPlant, False)
@@ -224,10 +231,14 @@ class hibernationwindow(chooseWindows):
         
     def on_PlantNew1_activate(self, event):
         print "new Partner Hibernations v2"
+        self.doEdit = tabPlant
+
         self.singleHibernationPlant.newRecord()
         self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
     def on_PlantEdit1_activate(self, event):
+        self.doEdit = tabPlant
+     
         self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
     def on_PlantClear1_activate(self, event):
@@ -391,6 +402,16 @@ class hibernationwindow(chooseWindows):
             print 'ModulNumber', self.ModulHibernationPlantNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulHibernationPlantNumber, {'1':self.singleHibernation.ID})
         
+    def saveData(self):
+        print 'save Hibernation'
+        if self.doEdit == tabHibernation:
+            print 'save 1'
+            self.on_save1_activate(None)
+        elif self.doEdit == tabPlant:
+            print 'save 2'
+            self.on_PlantSave1_activate(None)
+            
+            
     def refreshTree(self):
         self.singleHibernation.disconnectTree()
         self.singleHibernationPlant.disconnectTree()

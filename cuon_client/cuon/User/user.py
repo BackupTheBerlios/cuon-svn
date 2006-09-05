@@ -280,7 +280,6 @@ class User:
         self.sqlDicUser['DateformatString'] = self.userDateFormatString
 
         self.sqlDicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
-        #self.sqlDicUser['serverAddress'] = self.serverAddress
         self.sqlDicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.sqlDicUser['SQLTimeFormat'] = self.userSQLTimeFormat
         self.sqlDicUser['SQLDateTimeFormat'] = self.userSQLDateTimeFormat

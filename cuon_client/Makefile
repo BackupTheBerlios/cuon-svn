@@ -381,21 +381,36 @@ install_server_cu:
 
 install_server_cy:
 	sudo make install
+	
+	INSTALLNET=$(CYWEB)
+	INSTALLNETLOCALE=$(CYWEBLOCALE)
+	INSTALLNETSHARE=$(CYWEBSHARE)
+	install_server_all
+    
 
-	scp  ../cuon_server/src/cuonxmlrpc $(CYWEB)/etc/init.d
-	scp  ../cuon_server/src/cuonai $(CYWEB)/etc/init.d
-	scp  ../cuon_server/src/cuonweb $(CYWEB)/etc/init.d
-	scp  ../cuon_server/src/cuonreport $(CYWEB)/etc/init.d
+install_server_qemu:
+	sudo make install
+	INSTALLNET=$(QUEMUWEB)
+	INSTALLNETLOCALE=$(QUEMUWEBLOCALE)
+	INSTALLNETSHARE=$(QUEMUWEBSHARE)
+	make install_server_all
+    
+    
+install_server_all:
+  
+	scp  ../cuon_server/src/cuonxmlrpc $(INSTALLNET)/etc/init.d
+	scp  ../cuon_server/src/cuonai $(INSTALLNET)/etc/init.d
+	scp  ../cuon_server/src/cuonweb $(INSTALLNET)/etc/init.d
+	scp  ../cuon_server/src/cuonreport $(INSTALLNET)/etc/init.d
 
 	#scp -r $(CUON_DOCUMENTS) $(CUWEB)$(CUON_DOCUMENTS)
-	scp /etc/cuon/server.ini $(CYWEB)/etc/cuon
-	scp ../cuon_server/src/de.mo $(CYWEBLOCALE)/cuon_server.mo
+	scp /etc/cuon/server.ini $(INSTALLNET)/etc/cuon
+	scp ../cuon_server/src/de.mo $(INSTALLNETLOCALE)/cuon_server.mo
     
-	rsync -v -e ssh ../cuon_server/src/*.py $(CYWEBSHARE)/cuon_server/src
-	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(CYWEBSHARE)/cuon_server/src/cuon
-	rsync -v -e ssh ../cuon_server/src/cuon/Reports/* $(CYWEBSHARE)/cuon_server/src/cuon/Reports
-	rsync -v -e ssh ../cuon_server/src/cuon/Reports/XML/* $(CYWEBSHARE)/cuon_server/src/cuon/Reports/XML
-
+	rsync -v -e ssh ../cuon_server/src/*.py $(INSTALLNETSHARE)/cuon_server/src
+	rsync -v -e ssh ../cuon_server/src/cuon/*.py $(INSTALLNETSHARE)/cuon_server/src/cuon
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/* $(INSTALLNETSHARE)/cuon_server/src/cuon/Reports
+	rsync -v -e ssh ../cuon_server/src/cuon/Reports/XML/* $(INSTALLNETSHARE)/cuon_server/src/cuon/Reports/XML
 
 
 
