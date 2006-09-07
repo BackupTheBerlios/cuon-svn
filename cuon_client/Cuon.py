@@ -364,7 +364,10 @@ import time
 
 #http connections
 import httplib, urllib
-#import profile
+try:
+    import profile
+except:
+    print "no Profile"
 
 class MainWindow(windows):
     """
