@@ -310,7 +310,6 @@ aicuweb:
 install_server:
 
 	make install
-	make ai
 	if  [ ! -d $(SERVERDIRCONFIG) ] ; then mkdir $(SERVERDIRCONFIG) ; fi 	
 	cp $(src_ini) $(SERVERDIRCONFIG)
 	if  [ ! -d $(SERVERDIRSHARE) ] ; then mkdir $(SERVERDIRSHARE) ; fi 	

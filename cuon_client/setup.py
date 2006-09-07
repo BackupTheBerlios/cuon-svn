@@ -405,7 +405,8 @@ class setup:
     def executeString(self, s):
         print s
         liResult = os.system(s)
-      
+        self.setTv1(`liResult`)
+        
         
     def testDir(self):
         s = "if [ ! -d " +  self.dest  + " ] ; then mkdir " +  self.dest  + " ; fi "
@@ -557,16 +558,16 @@ class setup:
         return self.xml.get_widget(sName )
 
     def setTv1(self, sText):
-        
-        buffer = self.getWidget('tv1').get_buffer()
+        tv1 = self.getWidget('tv1')
+        buffer = self.tv1.get_buffer()
         a1 = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
         
         a1.insert(a1.get_end_iter(),sText , len(sText) ) 
         
-        self.wAnswer.set_buffer(self.aBuffer)
-        self.aBuffer = self.wAnswer.get_buffer()
-        self.wAnswer.scroll_to_iter(self.aBuffer.get_end_iter(),0.0,False,0.0,0.0)
-  
+        self.a1.set_buffer(buffer)
+        buffer = a1.get_buffer()
+        a1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
+        
     def main(self, args):
         self.xml = gtk.glade.XML('GUI/setup.glade2')
         self.setXmlAutoconnect()

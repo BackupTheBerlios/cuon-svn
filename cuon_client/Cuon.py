@@ -364,7 +364,7 @@ import time
 
 #http connections
 import httplib, urllib
-import profile
+#import profile
 
 class MainWindow(windows):
     """
