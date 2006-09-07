@@ -15,6 +15,7 @@ import ConfigParser
 class basics(xmlrpc.XMLRPC):
     def __init__(self):
         self.debug = 0
+        self.SSL_OFFSET = 500
         
         self.CUON_FS = '/etc/cuon'  
         
@@ -43,6 +44,10 @@ class basics(xmlrpc.XMLRPC):
         
         self.WIKI_PORT = 7084
         self.ONLINE_BOOK = 'http://84.244.7.139:7084/?action=xmlrpc2'
+        
+        self.POSTGRES_HOST = 'localhost'
+        self.POSTGRES_PORT = 5432
+        
         
         try:
             self.cpServer = ConfigParser.ConfigParser()

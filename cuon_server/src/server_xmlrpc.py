@@ -22,8 +22,32 @@ import cuon.Finances
 import cuon.Misc
 import cuon.Garden
 import cuon.Report
+openssl = False
+try:
+    from OpenSSL import SSL
+    openssl = True
 
+except:
+    pass
+    
+print 'Openssl = ', openssl
 import locale, gettext
+
+class ServerContextFactory:
+
+    def getContext(self):
+        """Create an SSL context.
+
+        Similar to twisted's echoserv_ssl example, except the private key
+        and certificate are in separate files."""
+        ctx = SSL.Context(SSL.SSLv23_METHOD)
+        ctx.use_privatekey_file('/etc/cuon/serverkey.pem')
+        ctx.use_certificate_file('/etc/cuon/servercert.pem')
+        return ctx
+
+
+    
+
 
 print 'Start'
 # localisation
@@ -74,6 +98,13 @@ r.putSubHandler('Garden', oGarden)
 r.putSubHandler('Report', oReport)
 
 reactor.listenTCP(baseSettings.XMLRPC_PORT, server.Site(r))
+if openssl:
+    """Create an SSL context."""
+    
+    
+    reactor.listenSSL(baseSettings.XMLRPC_PORT + baseSettings.SSL_OFFSET,  server.Site(r), ServerContextFactory())
+    print 'HTTPS activated'
+
 reactor.run()
 
 

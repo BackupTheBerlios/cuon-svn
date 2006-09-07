@@ -105,6 +105,8 @@ class Database(xmlrpc.XMLRPC, SQL):
     def xmlrpc_createSessionID(self, sUser, sPassword):
         self.out('1 -- createSessionID start')
         s = ''
+        
+        
         if self.authenticate(name=sUser,password=sPassword,request=None):
             self.out('2 -- createSessionID User found ')
             s = self.createNewSessionID()
@@ -112,11 +114,14 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.openDB()
             self.saveObject('user_'+ sUser + '_Session_ID' , s['SessionID'])
             self.saveObject('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
+            dicUserACL = self.getUserAcl(sUser) 
+            self.saveObject('user_'+ sUser + '_dicUserACL' , dicUserACL)
  
             #--self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
             #--self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
             self.out('4 -- createSessionID User is write ')
+            
             #self.dicVerifyUser[sUser] = {}
             #self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
             #self.dicVerifyUser[sUser]['endTime'] = `s['endTime']`
@@ -126,7 +131,13 @@ class Database(xmlrpc.XMLRPC, SQL):
         if not s.has_key('SessionID'):
             s['SessionID'] = 'TEST'
         self.out('createSessionID ID = ' + `s`)
+        
         return s['SessionID']
+    def getUserAcl(self, sUser):
+        dicUserACL = {}
+        
+        return dicUserACL
+        
     def xmlrpc_checkVersion(self, VersionClient, version):
         ok = 'O.K.'
         if version['Major'] != VersionClient['Major'] or version['Minor'] != VersionClient['Minor'] or version['Rev'] != VersionClient['Rev']:
@@ -231,8 +242,11 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql = sSql + sTable + "\') and attname = \'" + sColumn + "\' ) "
         
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser )
-        #print result 
-        self.writeLog('types by ColumnCheck: ' + `result[0]['typname']` + ' ### ' + `sType`)
+        #print result
+        try: 
+            self.writeLog('types by ColumnCheck: ' + `result[0]['typname']` + ' ### ' + `sType`)
+        except:
+            pass 
         if string.find(result[0]['typname'],sType) > -1 :
            self.writeLog( 'type is equal')
            if string.find(sType,'char') > -1:
