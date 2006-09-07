@@ -9,9 +9,9 @@ n) Server=$MyServer/Cuon
 ;;
 ssl) Server=https://localhost:7580/Cuon
 ;;
-inn) Server=http://innovatec.dyndns.org:7080/Cuon
+qemu) Server=http://192.168.17.2:4080/Cuon
 ;;
-innssl) Server=https://innovatec.dyndns.org:8443/Cuon
+qemussl) Server=https://192.168.17.2:4580/Cuon
 ;;
 
 die) Server=http://dietzel-normteile.dyndns.org:7080/Cuon
