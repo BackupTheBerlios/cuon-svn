@@ -2,6 +2,7 @@ import os
 import pygtk
 import gtk
 import gtk.glade
+import gobject
 import ConfigParser
 
 
@@ -11,22 +12,27 @@ class setup:
         self.xml = None
         self.xmlAutoconnect = False
         self.cpParser = ConfigParser.ConfigParser()
-        sFile = cuon_setup.ini
+        self.sFile = 'cuon_setup.ini'
         try:
-            f = open(sFile)
+            f = open(self.sFile, 'rw')
         except:
-            f = open(sFile,'w')
+            print 'create new ini file'
+            f = open(self.sFile,'w')
             s = '[local]\n'
-            s += 'Description: Install on local host'
+            s += 'Description: Install on local host\n'
             s += 'IP: 127.0.0.1\n'
             s += 'SSH_PORT: 22\n'
             s += 'XMLRPC_PORT: 7080\n'
             s += 'Default: True\n'
             
             f.write(s)
+            f.close()
+            f = open(self.sFile,'rw')
+            
         if f:    
             self.cpParser.readfp(f)
             self.ConfigStatus = True
+            f.close()
         else:
             print 'Configuration-Error'
             self.ConfigStatus = False
@@ -339,7 +345,8 @@ class setup:
         scp2 = self.sPrefix 
         
         self.executeString("scp " +scp1 + src + ' ' + scp2 +  dest )
-        
+    
+  
     def copyFiles(self):
         
         ssh = "-p -P " + self.sshPort + self.sPrefix 
@@ -398,7 +405,8 @@ class setup:
     def executeString(self, s):
         print s
         liResult = os.system(s)
-        print liResult
+      
+        
     def testDir(self):
         s = "if [ ! -d " +  self.dest  + " ] ; then mkdir " +  self.dest  + " ; fi "
         self.executeString(s)
@@ -418,18 +426,119 @@ class setup:
     def touchFile(self, dest, sFile):
         dest = dest.replace(self.sPrefix,'')
         self.executeString("if [ ! -e " + dest + "/__init__.py ] ; then touch "+ dest + "/__init__.py ; fi")
-      
+    
+    def getConfigOption(self, section, option):
+        value = None
+        if self.cpParser.has_option(section,option):
+            value = self.cpParser.get(section, option)
+            print 'getConfigOption', section + ', ' + option + ' = ' + value
+        return value   
+     
     def setDefaultServer(self):
+        existDefaultSection = None
+        firstSection = None
+        cbe = -1
+        z = -1
+        liName = []
+        store = gtk.ListStore(gobject.TYPE_STRING)
         if self.ConfigStatus:
             for sect in self.cpParser.sections():
                 print sect
-                for item in sect:
-                    print item
+                z += 1  
+                if z == -1:
+                    firstSection = sect
                     
+                store.append([sect])
+                if self.getConfigOption(sect, 'default') == 'True':
+                    existDefaultSection =  sect
+                    cbe = z
+        
+        if existDefaultSection:
+            sSect = existDefaultSection
+        else:
+            sSect = firstSection
             
+
+        self.getWidget('cbeName').set_model(store)
+        print 'cbe', cbe
+        
+        #s += 'Description: Install on local host\n'
+        #    s += 'IP: 127.0.0.1\n'
+        #    s += 'SSH_PORT: 22\n'
+        #    s += 'XMLRPC_PORT: 7080\n'
+        #    s += 'Default: True\n'
+            
+        self.getWidget('cbeName').set_text_column(cbe)
+        self.setData2Widget(sSect)
+    
+    
+    def setData2Widget(self, sSect):
+        
+        self.getWidget('eHostIP').set_text(self.getConfigOption(sSect,'IP'))
+        self.getWidget('ePortSSH').set_text(self.getConfigOption(sSect,'SSH_PORT'))
+        self.getWidget('ePortXmlrpc').set_text(self.getConfigOption(sSect,'XMLRPC_PORT'))
+        self.getWidget('eDescription').set_text(self.getConfigOption(sSect,'Description'))
+        if self.getConfigOption(sSect,'Default') == 'True':
+            self.getWidget('rbTrue').set_active(True)
+        else:
+            self.getWidget('rbFalse').set_active(True)
+            
+
+
     def on_bOK_clicked(self, event):
-        print 'ok'
+        # save ini
+        print 'bOK', event
+        existSect = False
+        nSect = self.getWidget('cbeName').get_text_column()
+        sSect = self.getWidget('cbeName').get_model()[nSect][0]
+        for sect in self.cpParser.sections():
+            if sSect == sect:
+                print 'Data found in Config-file'
+                existSect = True
+                
+        
+        if not existSect:
+            self.cpParser.add_section(sSect)
+        
+        self.cpParser.set(sSect,'IP', self.getWidget('eHostIP').get_text())
+        self.cpParser.set(sSect,'SSH_PORT', self.getWidget('ePortSSH').get_text())
+        self.cpParser.set(sSect,'XMLRPC_PORT', self.getWidget('ePortXmlrpc').get_text())
+        self.cpParser.set(sSect,'Description', self.getWidget('eDescription').get_text())
+        if self.getWidget('rbTrue').get_active():
+            self.cpParser.set(sSect,'Default','True')
+        else:
+            self.cpParser.set(sSect,'Default','False')
+        print 'Save File'
+        
+        f = open(self.sFile,'w')
+        self.cpParser.write(f)
+        f.close()
+        
+        # start install
+        
+        
+        
+        
+    def on_cbeName_editing_done(self, event):
         print event
+        print 'line = ', event.get_model()[nSect][0]
+        
+    
+    def on_cbeName_changed(self, event):
+        print event
+        nSect = self.getWidget('cbeName').get_text_column()
+        print 'nSect = ', nSect
+        print event.get_model()
+        for sL in event.get_model():
+            print sL[0]
+            
+            
+        for sect in self.cpParser.sections():
+            if event.get_model()[nSect][0] == sect:
+                print 'Data found', sect
+                self.setData2Widget(sect)
+        
+    
         
     def setXmlAutoconnect(self):
         if self.xmlAutoconnect:
@@ -446,11 +555,22 @@ class setup:
             self.xmlAutoconnect = True
     def getWidget(self, sName):
         return self.xml.get_widget(sName )
+
+    def setTv1(self, sText):
         
+        buffer = self.getWidget('tv1').get_buffer()
+        a1 = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+        
+        a1.insert(a1.get_end_iter(),sText , len(sText) ) 
+        
+        self.wAnswer.set_buffer(self.aBuffer)
+        self.aBuffer = self.wAnswer.get_buffer()
+        self.wAnswer.scroll_to_iter(self.aBuffer.get_end_iter(),0.0,False,0.0,0.0)
+  
     def main(self, args):
         self.xml = gtk.glade.XML('GUI/setup.glade2')
         self.setXmlAutoconnect()
-        setDefaultServer()
+        self.setDefaultServer()
         gtk.main()
 stu = setup()
 stu.main(None)
