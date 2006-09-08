@@ -325,7 +325,7 @@ import cuon.Clients.clients
 
 import cuon.Biblio.biblio
 import cuon.Order.order
-import cuon.Login.User
+import cuon.User
 import cuon.Preferences.preferences
 import cuon.PrefsFinance.prefsFinance
 

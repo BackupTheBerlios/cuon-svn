@@ -284,7 +284,7 @@
 
 
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -304,7 +304,7 @@ import gtk.glade
 
 import cuon.Addresses.addresses
 import cuon.Articles.articles
-import cuon.Login.User
+import cuon.User
 
 import  cuon.Databases.databases
 import cuon.XML.MyXML
@@ -321,7 +321,7 @@ class MainWindow(windows):
         windows.__init__(self)
         
      
-        self.oUser = cuon.Login.User.User()
+        self.oUser = cuon.User.user.User()
 
     def on_end1_activate(self,event):
         print "exit cuon"
