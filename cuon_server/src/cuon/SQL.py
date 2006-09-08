@@ -29,7 +29,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         # put here sUser
         print 'sUser=', sUser
         #DSN = 'dbname=cuon host=localhost user=' + sUser
-        conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST + ":" + `POSTGRES_PORT`, user = sUser)
+        conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
         #curs.execute(cSql.decode('utf-8'))
         #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
         
