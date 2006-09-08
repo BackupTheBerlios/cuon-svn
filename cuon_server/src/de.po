@@ -1,0 +1,146 @@
+# translation of de.po to
+# translation of messages.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Jürgen Hamel <jh@cyrus.de>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: de\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-04 12:24+0200\n"
+"PO-Revision-Date: 2006-07-04 12:26+0200\n"
+"Last-Translator: Jürgen Hamel <jh@cyrus.de>\n"
+"Language-Team:  <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+
+#: server_xmlrpc.py:38 cuon/Reports/report_addresses_phone11.py:25
+#: cuon/Reports/report_addresses_phone1.py:27
+msgid "Lastname"
+msgstr "Nachname"
+
+#: cuon/Reports/report_addresses_phone11.py:21
+msgid "Phonelist 011 generatet by CUON"
+msgstr "Telefonliste 011 produziert von C.U.O.N."
+
+#: cuon/Reports/report_addresses_phone11.py:23
+#: cuon/Reports/report_addresses_phone1.py:25
+#: cuon/Reports/report_articles_number1.py:21
+#: cuon/Reports/report_cab_monthly.py:20
+#: cuon/Reports/report_hibernation_incoming_document.py:29
+#: cuon/Reports/report_hibernation_outgoing_document.py:21
+#: cuon/Reports/report_order_standard_invoice.py:20
+#: cuon/Reports/report_printAddress.py:21
+#: cuon/Reports/report_stockgoods_number1.py:21
+msgid "Pagenumber:"
+msgstr "Seitennr.:"
+
+#: cuon/Reports/report_addresses_phone11.py:26
+#: cuon/Reports/report_addresses_phone1.py:28
+msgid "Firstname"
+msgstr "Vorname"
+
+#: cuon/Reports/report_addresses_phone11.py:27
+msgid "City"
+msgstr "Stadt"
+
+#: cuon/Reports/report_addresses_phone11.py:28
+msgid "Phone"
+msgstr "Telefon"
+
+#: cuon/Reports/report_addresses_phone11.py:33
+#, fuzzy
+msgid "Addresslist11-"
+msgstr "Adressenliste 1 -"
+
+#: cuon/Reports/report_addresses_phone1.py:23
+msgid "Phonelist 001 generatet by CUON"
+msgstr "Telefonliste 001 produziert von C.U.O.N."
+
+#: cuon/Reports/report_addresses_phone1.py:34
+msgid "Addresslist1-"
+msgstr "Adressenliste 1 -"
+
+#: cuon/Reports/report_articles_number1.py:19
+msgid "articles_number001 generatet by CUON"
+msgstr "Artikelliste 001 produziert von C.U.O.N."
+
+#: cuon/Reports/report_articles_number1.py:23
+#: cuon/Reports/report_hibernation_incoming_document.py:31
+#: cuon/Reports/report_hibernation_outgoing_document.py:23
+#: cuon/Reports/report_stockgoods_number1.py:23
+msgid "Designation"
+msgstr ""
+
+#: cuon/Reports/report_cab_monthly.py:18
+msgid "Cashaccountbook "
+msgstr ""
+
+#: cuon/Reports/report_hibernation_incoming_document.py:27
+msgid "Hibernation Incoming generatet by CUON"
+msgstr ""
+
+#: cuon/Reports/report_hibernation_incoming_document.py:32
+msgid "Incoming Document"
+msgstr "Eingangsbeleg"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:33
+msgid "Pick up by:"
+msgstr "Abholung von: "
+
+#: cuon/Reports/report_hibernation_incoming_document.py:34
+msgid "Pickup-Nr.:"
+msgstr "Eingangs-Nr.:"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:35
+msgid "Order-Number:"
+msgstr "Auftrags-Nr.:"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:36
+msgid "Begin at:"
+msgstr "Beginnt am:"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:37
+msgid "Plant:"
+msgstr "Pflanze"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:38
+msgid "Botany name:"
+msgstr "Botanischer Name"
+
+#: cuon/Reports/report_hibernation_incoming_document.py:45
+msgid "Incoming_Document-"
+msgstr ""
+
+#: cuon/Reports/report_hibernation_outgoing_document.py:19
+msgid "Hibernation Outgoing generatet by CUON"
+msgstr ""
+
+#: cuon/Reports/report_order_standard_invoice.py:18
+msgid "INVOICE"
+msgstr "RECHNUNG"
+
+#: cuon/Reports/report_printAddress.py:19
+msgid "Index Card"
+msgstr ""
+
+#: cuon/Reports/report_printAddress.py:23
+msgid "Lastname : "
+msgstr "Nachname : "
+
+#: cuon/Reports/report_stockgoods_number1.py:19
+msgid "stockgoods_number001 generatet by CUON"
+msgstr ""
+
+#~ msgid "NoTitle"
+#~ msgstr "Kein Titel"
+
+#~ msgid "text"
+#~ msgstr "Text"
+
+#~ msgid "Date: "
+#~ msgstr "Datum: "
+
