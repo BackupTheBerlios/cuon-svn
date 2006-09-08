@@ -63,8 +63,8 @@ server)
 sudo make install_server
 cd CUON/
 
-make iClient
-cp ../cuon_server.py . 
+#make iClient
+sudo cp ../cuon_server.py . 
 $EXEC cuon_server.py $Server server $3
 ;;
 
