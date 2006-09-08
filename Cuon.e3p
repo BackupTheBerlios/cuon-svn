@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-08-25, 00:18:29 -->
+<!-- Saved: 2006-09-08, 00:14:57 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1133,18 +1133,6 @@
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>SingleProjectStaffResources.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>SingleProjectMaterialResources.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
       <Dir>cuon</Dir>
       <Dir>Project</Dir>
       <Name>SingleProjectMaterialResources.py</Name>
@@ -1154,36 +1142,6 @@
       <Dir>cuon</Dir>
       <Dir>Project</Dir>
       <Name>SingleProjectStaffResources.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>project.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>SingleProject.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>SingleProjectTasks.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>src</Dir>
-      <Dir>Project</Dir>
-      <Name>SingleProjectPhases.py</Name>
     </Source>
     <Source>
       <Dir>cuon_server</Dir>
@@ -1281,6 +1239,10 @@
     <Source>
       <Dir>cuon_client</Dir>
       <Name>startCuon.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Name>setup.py</Name>
     </Source>
   </Sources>
   <Forms>
@@ -1656,6 +1618,27 @@
       <Dir>cuon_client</Dir>
       <Name>sql.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>hibernation.glade2</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_hibernation_plant.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Garden</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_hibernation.xml</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1664,9 +1647,9 @@
   </Vcs>
   <FiletypeAssociations>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>
