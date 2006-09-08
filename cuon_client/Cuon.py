@@ -321,7 +321,11 @@ import gtk.glade
 
 import cuon.Addresses.addresses
 import cuon.Articles.articles
-import cuon.Clients.clients
+try:
+    import cuon.Clients.clients
+except Exception, params:
+    print 'import failed'
+    print Exception, params
 
 import cuon.Biblio.biblio
 import cuon.Order.order
@@ -389,7 +393,7 @@ class MainWindow(windows):
         self.sDebug = 'NO'
         self.ModulNumber = self.MN['Mainwindow']
         self.extMenucommand = {}
-        self.extMenucommand['ext1'] = 'Test'
+        #self.extMenucommand['ext1'] = 'Test'
     #set this Functions to None
     def loadUserInfo(self):
         pass
@@ -530,8 +534,11 @@ class MainWindow(windows):
                     if newProgram.has_key('Imports'):
                         newImports = newProgram['Imports']
                         for nI in newImports:
-                            exec('import ' + nI)
-                            print 'import', nI
+                            try:
+                                exec('import ' + nI)
+                                print 'import', nI
+                            except:
+                                pass
 
                         if newProgram.has_key('MenuStart'):
                             print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
