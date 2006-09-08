@@ -1,0 +1,192 @@
+  <grants>
+
+    <name>cuon</name>
+    <author>J. Hamel</author>
+    <plugin>Standard</plugin>
+
+  <groups>
+    <group>
+      <nameOfGroup>cuon_all</nameOfGroup>
+      <comment>select on some public Groups</comment>
+    </group>
+    <group>
+      <nameOfGroup>cuon_admin</nameOfGroup>
+      <comment>select, update, delete on some preferences</comment>
+    </group>
+
+  </groups>
+
+  <users>
+  <user>
+      <nameOfUser>cuon</nameOfUser>
+      <comment></comment>
+    </user>
+    <user>
+      <nameOfUser>jhamel</nameOfUser>
+      <comment></comment>
+    </user>
+                                     
+  </users>
+
+  <addgroups>
+    <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>jhamel</this_user>
+      <comment></comment>
+    </addgroup>
+    <addgroup>
+      <this_group>cuon_all</this_group>
+      <this_user>cuon</this_user>
+      <comment></comment>
+    </addgroup>
+   
+  </addgroups>
+  <setGrants>
+<grant>
+      <nameOfGrant>zope_rights </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>cuon, cuon_clients,cuon_clients_id </this_tables>
+      <this_group>zope</this_group>
+      <comment>for update client, all values</comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_addresses </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>address,address_id,  partner, partner_id , addresses_misc, addresses_misc_id, partner_schedul, partner_schedul_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  <grant>
+      <nameOfGrant>cuon_all_rights_of_articles </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>articles, articles_id, articles_purchase, articles_purchase_id, articles_sales, articles_sales_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  <grant>
+      <nameOfGrant>cuon_all_rights_of_order </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>orderbook, orderbook_id,  orderposition,orderposition_id,  orderget, orderget_id,  ordersupply, ordersupply_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  <grant>
+      <nameOfGrant>cuon_all_rights_of_lists </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>list_of_invoices, list_of_invoices_id,  list_of_pickups, list_of_pickups_id, list_of_deliveries, list_of_deliveries_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  <grant>
+      <nameOfGrant>cuon_all_rights_of_misc </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>zipcodes, zipcodes_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_preferences </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>preferences, preferences_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_stocks </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>stocks, stocks_id, stock_goods, stock_goods_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+<grant>
+      <nameOfGrant>cuon_all_rights_of_biblio </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>biblio, biblio_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_dms </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>dms, dms_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+
+    <grant>
+      <nameOfGrant>cuon_read_rights_of_prefs_finance</nameOfGrant>
+      <this_grants>select </this_grants>
+      <this_tables>tax_vat, tax_vat_id, terms_of_payment, terms_of_payment_id,account_info, account_info_id, account_plan, account_plan_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_prefs_finance</nameOfGrant>
+      <this_grants>select, insert, update, delete</this_grants>
+      <this_tables>tax_vat, tax_vat_id, terms_of_payment, terms_of_payment_id,account_info, account_info_id, account_plan, account_plan_id</this_tables>
+      <this_group>cuon_admin</this_group>
+      <comment></comment>
+    </grant>
+
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_staff </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>staff, staff_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+ <grant>
+      <nameOfGrant>cuon_all_rights_of_staff_fee </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>staff_fee, staff_fee_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_clients</nameOfGrant>
+      <this_grants>select, insert, update, delete</this_grants>
+      <this_tables>clients, clients_id</this_tables>
+      <this_group>cuon_admin</this_group>
+      <comment></comment>
+    </grant>
+<grant>
+      <nameOfGrant>cuon_select_rights_of_clients</nameOfGrant>
+      <this_grants>select </this_grants>
+      <this_tables>clients, clients_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+
+     <grant>
+      <nameOfGrant>cuon_all_rights_of_accounts1 </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>account_info,account_info_id,account_sentence,account_sentence_id, account_plan, account_plan_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_projects </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>projects, projects_id, project_phases, project_phases_id, project_tasks, project_tasks_id, project_task_staff_res, project_task_staff_res_id, project_task_material_res, project_task_material_res_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_garden </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>botany, botany_id, hibernation, hibernation_id, hibernation_plant, hibernation_plant_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+    <grant>
+      <nameOfGrant>cuon_all_rights_of_botany </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>botany, botany_id, botany_divisio, botany_divisio_id, botany_class, botany_class_id, botany_ordo, botany_ordo_id, botany_family, botany_family_id, botany_genus, botany_genus_id </this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+  </setGrants>  
+    
+  </grants>
