@@ -329,6 +329,7 @@ class botanywindow(chooseWindows):
             
     def on_bBotanyDMS_clicked(self, event):
         print 'dms clicked'
+        
         if self.singleBotany.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleBotany.ID})
@@ -363,15 +364,20 @@ class botanywindow(chooseWindows):
             sSearchName = 'name'
             
                 
-        liSearch = [sSearchName,sName, 'localname', sLocalName,'description',sDescription]
+        liSearch = [sSearchName,sName, 'local_name', sLocalName,'description',sDescription]
         
         self.sWhereSearch = self.getWhere(liSearch)
         self.out(self.singleBotany.sWhere, self.ERROR)
         self.refreshTree()
 
     def refreshTree(self):
+        self.singleBotanyDivisio.disconnectTree()
+        self.singleBotanyClass.disconnectTree()
+        self.singleBotanyOrdo.disconnectTree()
+        self.singleBotanyFamily.disconnectTree()
+        self.singleBotanyGenus.disconnectTree()
         self.singleBotany.disconnectTree()
-        
+
 
         if self.tabOption == self.tabDivisio:
             #self.singleBotanyDivisio.sWhere  ='where task_id = ' + `int(self.singleProjectTasks.ID)`

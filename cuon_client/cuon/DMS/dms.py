@@ -105,7 +105,7 @@ class dmswindow(windows):
         self.singleDMS.setEntries(self.getDataEntries('dms.xml') )
         self.singleDMS.setGladeXml(self.xml)
         self.singleDMS.ModulNumber = self.ModulNumber
-        
+        print 'self.singleDMS.ModulNumber', self.singleDMS.ModulNumber
         self.singleDMS.setTreeFields( ['title', 'category'] )
         self.singleDMS.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleDMS.setTreeOrder('title')
@@ -235,7 +235,7 @@ class dmswindow(windows):
             #self.singleDMS.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
             self.singleDMS.connectTree()
             self.singleDMS.refreshTree()
-            self.ModulNumber = self.MN['DMS']
+            #self.ModulNumber = self.MN['DMS']
             
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))

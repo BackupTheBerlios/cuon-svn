@@ -39,10 +39,12 @@ class setup:
    
         
     def start(self):
-##        self.sPrefix = 'root@192.168.17.2:/'
-##        self.sshPort = '3222' 
-##    
-
+        ''' Set default Values '''
+        
+        ##        self.sPrefix = 'root@192.168.17.2:/'
+        ##        self.sshPort = '3222' 
+        
+        
 
         self.EXECDIR = "/usr/bin"
         self.INSTALLDIR = "/usr/lib/cuon"
@@ -50,23 +52,8 @@ class setup:
         self.SERVERDIRSHARE =  "/usr/share/cuon"
         self.SERVERCONFIGDIR =  "/etc/cuon"
         self.SERVERLOCALEDIR = "/usr/share/locale/"
-##        
-##        self.CUWEBSHARE = root@cuweb://usr/share/cuon
-##        self.CUWEB = root@cuweb:/
-##        self.CUWEBEXECDIR = self.CUWEB)/usr/bin
-##        self.CUWEBLOCALEXECDIR = self.CUWEB)/usr/local/bin
-##        self.CUWEBCONFIGDIR = self.CUWEB)/etc/cuon
-##        self.CUWEBLOCALE = self.CUWEB)/usr/share/locale/de/LC_MESSAGES
-##        
-##        CYWEBSHARE = root@cyweb://usr/share/cuon
-##        CYWEB = root@cyweb:/
-##        CYWEBEXECDIR = self.CYWEB)/usr/bin
-##        CYWEBLOCALEXECDIR = self.CYWEB)/usr/local/bin
-##        CYWEBCONFIGDIR = self.CYWEB)/etc/cuon
-##        CYWEBLOCALE = self.CYWEB)/usr/share/locale/de/LC_MESSAGES
-##        
-##        
-##        SERVERDIRCONFIG = /etc/cuon
+
+        
         self.VERSION_CFG ="./version.cfg"
         
         self.I18LDIR_DE=self.SERVERLOCALEDIR + "de/LC_MESSAGES"
@@ -249,32 +236,41 @@ class setup:
         self.copyFiles()
         
     def install_server(self):
-        self.executeSSH('mkdir ' + self.SERVERCONFIGDIR)
+        
         self.install_all()
         scp1 = " -P " + self.sshPort + " "
         scp2 = self.sPrefix 
         self.executeSSH(" mkdir " + self.INSTALLDIR)
         self.executeString("scp -r " + scp1 + ' ' + self.dest_main + "/* " + scp2 + self.INSTALLDIR)
         self.executeString("scp " + scp1 + ' ' + "./cuon.sh " + scp2 + self.EXECDIR )
+        # create Locale client
         self.executeString("if [ -f cuon_de.mo ] ; then rm -f cuon_de.mo ; fi ")
         self.executeString("msgfmt -o cuon_de.mo de.po")  
         self.executeString("if [ -f cuon_pt.mo ] ; then rm -f cuon_pt.mo ; fi ")
         self.executeString("msgfmt -o cuon_pt.mo pt.po")
         self.executeString("if [ -f cuon_pt_BR.mo ] ; then rm -f cuon_pt_BR.mo ; fi ")
         self.executeString("msgfmt -o cuon_pt_BR.mo pt_BR.po")
+
+        #create Locale server 
+        self.executeString('msgfmt -o ../cuon_server/src/de.mo ../cuon_server/src/de.po')
         
+        # Locale de
         self.executeSSH("if [ ! -d  " + self.I18LDIR_DE + " ; then mkdir " +  self.I18LDIR_DE + " ; fi ")
         self.executeSCP(self.src_locale_de, self.I18LDIR_DE )
         self.executeSSH("mv " + self.I18LDIR_DE + "/cuon_de.mo "+  self.I18LDIR_DE +"/cuon.mo")
+        self.executeSSH('cp ../cuon_server/src/de.mo ' + self.I18LDIR_DE + '/cuon_server.mo')
         
+        # Locale pt
         self.executeSSH("if [ ! -d  " + self.I18LDIR_PT + " ; then mkdir " +  self.I18LDIR_PT + " ; fi ")
         self.executeSCP(self.src_locale_pt, self.I18LDIR_PT )
         self.executeSSH("mv " + self.I18LDIR_PT + "/cuon_pt.mo "+  self.I18LDIR_PT +"/cuon.mo")
-        
+            
+        # locale pt_BR
         self.executeSSH("if [ ! -d  " + self.I18LDIR_PT_BR + " ; then mkdir " +  self.I18LDIR_PT_BR + " ; fi ")
         self.executeSCP(self.src_locale_pt, self.I18LDIR_PT_BR )
         self.executeSSH("mv " + self.I18LDIR_PT_BR + "/cuon_pt_BR.mo "+  self.I18LDIR_PT_BR +"/cuon.mo")
-  
+
+        # create server dirs in share
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE)
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src')
@@ -289,6 +285,7 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.ICONDIR + " ] ; then mkdir " + self.ICONDIR + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.dest_glade + " ] ; then mkdir " + self.dest_glade + " ; fi ")	
 
+        # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS + " ; fi ")	
@@ -299,28 +296,37 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")	
 
+        
         self.executeSCP(self.src_xmlDefaults, self.SERVERDIRSHARE)
         self.executeSCP('.GUI/*.glade2', self.dest_glade)
         self.executeString('find ./cuon  -name "*.glade2" -exec scp ' + scp1 + ' {} ' +scp2 + self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec scp ' + scp1 + ' {} ' +scp2 + self.SERVERDIRSHARE + ' \;' )
         self.executeString('find ./GUI/pixmaps  -name "*.xpm" -exec scp ' + scp1 + ' {} ' +scp2 + self.ICONDIR + ' \;' )
 
+        # startscripts in /etc/init.d
+        
+        self.executeString("scp ../cuon_server/src/cuonxmlrpc " + ssh +  "/etc/init.d")
+        self.executeString("scp ../cuon_server/src/cuonai " + ssh +  "/etc/init.d")
+        self.executeString("scp ../cuon_server/src/cuonreport " + ssh +  "/etc/init.d")
+        self.executeString("scp ../cuon_server/src/cuonweb " + ssh +  "/etc/init.d")
 
-##	cp $(src_xmlDefaults) $(SERVERDIRSHARE)
-##	cp ./GUI/*.glade2 $(dest_glade) 
-##	find ./cuon  -name "*.glade2" -exec cp {} $(dest_glade) \; 
-##	find ./cuon  -name "entry_*" -exec cp {}  $(SERVERDIRSHARE) \; 
-##	find ./GUI/pixmaps  -name "*.xpm" -exec cp {} $(ICONDIR) \; 
-##	cp -R ../cuon_server/src  $(SERVERDIRSHARE)/cuon_server/
-##	cp -R ../cuon_server/src/cuonai /etc/init.d
-##	cp -R ../cuon_server/src/cuonweb /etc/init.d
-##	cp -R ../cuon_server/src/cuonxmlrpc /etc/init.d
-##	cp -R ../cuon_server/src/cuonreport /etc/init.d
-##
-##	 
-##	msgfmt -o ../cuon_server/src/de.mo ../cuon_server/src/de.po
-##	if [ ! -d $(I18LDIR_DE) ] ; then mkdir $(I18LDIR_DE) ; fi ; 
-##	cp ../cuon_server/src/de.mo $(I18LDIR_DE)/cuon_server.mo 
+        # copy config-files to configdir or configdir/examples
+        self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + " ] ; then mkdir " + self.SERVERCONFIGDIR + " ; fi ")
+        self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + "/examples ] ; then mkdir " + self.SERVERCONFIGDIR + "/examples ; fi ")
+        self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + "/sql ] ; then mkdir " + self.SERVERCONFIGDIR + "/sql ; fi ")
+        
+        # copy all files to example
+        self.executeSCP('../cuon_server/*', self.SERVERCONFIGDIR + "/examples ")
+        
+        # Then check the files 
+        #server.ini
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
+        #server.ini
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/grants.xml ] ; then cp " + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
+        
+        
+        
+
 
         
     def install_client(self):
@@ -356,17 +362,12 @@ class setup:
         
         ssh = "-p -P " + self.sshPort + self.sPrefix 
         
-        print "first copy files to /etc/init.d"
-        
-        self.executeString("scp ../cuon_server/src/cuonxmlrpc " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonai " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonreport " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonweb " + ssh +  "/etc/init.d")
+       
+        self.removePrefix(self.src_main, self.dest_cuon)
         
         print "now create local dirs"
         self.copyLocalValues(self.src_main, self.dest_main)
         self.copyLocalValues(self.VERSION_CFG, self.dest_main)
-        self.removePrefix(self.src_main, self.dest_cuon)
         self.testDir()
         self.touchFile(self.dest_cuon, '__init__.py')
         self.copyLocalValues(self.src_server, self.dest_server)
@@ -524,7 +525,7 @@ class setup:
         # start install
         self.sPrefix = 'root@' + self.getConfigOption(sSect,'IP') + ':/'
         self.sshPort = self.getConfigOption(sSect,'SSH_PORT')
-        self.start()
+        
         self.install_server()
         
         
@@ -581,6 +582,7 @@ class setup:
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
         
     def main(self, args):
+        self.start()
         self.xml = gtk.glade.XML('GUI/setup.glade2')
         self.setXmlAutoconnect()
         self.setDefaultServer()

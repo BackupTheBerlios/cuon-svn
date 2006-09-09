@@ -63,6 +63,7 @@ class documentTools:
                 print 'Link'
                 s = singleDMS.imageData
                 print 's = ', s
+                
                 os.system(dicUser['prefDMS']['exe']['internet'] + ' ' + `s` )
                 
             else:

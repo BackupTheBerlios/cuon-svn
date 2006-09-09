@@ -58,7 +58,7 @@ class myXmlRpc(dumps, logs):
                 sv = ServerProxy(self.td.server,allow_none = 1)
                 
         except Exception, params:
-            print 'Server error'
+            print 'Server error by xmlrpc : ', self.td.server
             print Exception
             print params
             

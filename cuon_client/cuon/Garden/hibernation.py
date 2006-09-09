@@ -180,13 +180,13 @@ class hibernationwindow(chooseWindows):
         
     def on_new1_activate(self, event):
         print "new Hibernations v2"
-        self.doEdit = tabHibernation
+        self.doEdit = self.tabHibernation
         self.singleHibernation.newRecord()
         self.setEntriesEditable(self.EntriesHibernations, True)
         
 
     def on_edit1_activate(self, event):
-        self.doEdit = tabHibernation
+        self.doEdit = self.tabHibernation
         self.setEntriesEditable(self.EntriesHibernations, True)
 
     def on_delete1_activate(self, event):
@@ -231,13 +231,13 @@ class hibernationwindow(chooseWindows):
         
     def on_PlantNew1_activate(self, event):
         print "new Partner Hibernations v2"
-        self.doEdit = tabPlant
+        self.doEdit = self.tabPlant
 
         self.singleHibernationPlant.newRecord()
         self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
     def on_PlantEdit1_activate(self, event):
-        self.doEdit = tabPlant
+        self.doEdit = self.tabPlant
      
         self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
@@ -404,10 +404,10 @@ class hibernationwindow(chooseWindows):
         
     def saveData(self):
         print 'save Hibernation'
-        if self.doEdit == tabHibernation:
+        if self.doEdit == self.tabHibernation:
             print 'save 1'
             self.on_save1_activate(None)
-        elif self.doEdit == tabPlant:
+        elif self.doEdit == self.tabPlant:
             print 'save 2'
             self.on_PlantSave1_activate(None)
             

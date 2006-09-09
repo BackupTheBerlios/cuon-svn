@@ -477,17 +477,17 @@ class addresswindow(chooseWindows):
 
     def saveData(self):
         print 'save Addresses'
-        if self.doEdit == tabAddress:
+        if self.doEdit == self.tabAddress:
             print 'save 1'
             self.on_save1_activate(None)
-        elif self.doEdit == tabBank:
+        elif self.doEdit == self.tabBank:
             print 'save 2'
             #self.on_(None)
-        elif self.doEdit == tabMisc:
+        elif self.doEdit == self.tabMisc:
             self.on_MiscSave1_activate(None)
-        elif self.doEdit == tabPartner:
+        elif self.doEdit == self.tabPartner:
             self.on_PartnerSave1_activate(None)
-        elif self.doEdit == tabSchedul:
+        elif self.doEdit == self.tabSchedul:
             self.on_SchedulSave_activate(None)
      
     def refreshTree(self):
