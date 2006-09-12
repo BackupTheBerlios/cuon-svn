@@ -296,7 +296,7 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import sys
+import sys, os
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -313,6 +313,7 @@ from cuon.Windows.windows  import windows
 import cuon.Login.login
 import cPickle
 
+import cuon.Editor.editor
 
 class MainWindow(windows):
 
@@ -340,12 +341,20 @@ class MainWindow(windows):
     def on_database1_activate(self,event):
         daba = cuon.Databases.databases.databaseswindow()
     
-
+    def on_usercfg1_activate(self, event):
+        self.openDB()
+        self.td = self.loadObject('td')
+        self.closeDB()
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/user.cfg .')
+        ed = cuon.Editor.editor.editorwindow('user.cfg', True)
+        print 'Now Save back'
+        os.system('scp -P ' + td.sshPort + 'user.cfg ' +td.sPrefix + '/etc/cuon/')
+        
     def startMain(self):
         #td = typedefs_server()
         # create widget tree ...
        
-        self.gladeName = '/usr/share/cuon/glade/cuon_server.glade2'
+        self.gladeName = '../usr/share/cuon/glade/cuon_server.glade2'
         self.loadGladeFile(self.gladeName)
 
     def gtk_main_quit(self):
@@ -356,7 +365,19 @@ if len(sys.argv) > 1:
     td.server =  sys.argv[1]
     print "Server = ", td.server
     print "-------------####################--------------"
+if len(sys.argv) > 2:
+    td.sshPort =  sys.argv[2]
+    print "SSH = ", td.sshPort
+    print "-------------####################--------------"
     
+if len(sys.argv) > 3:
+    td.sPrefix = 'root@' + sys.argv[3] + ':/'
+    print "Server = ", td.sPrefix
+    print "-------------####################--------------"
+    
+
+
+
 d = cuon.Databases.dumps.dumps()
 d.openDB()
 d.saveObject('td', td)

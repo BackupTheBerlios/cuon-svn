@@ -3,265 +3,265 @@
   <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>user.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_user.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_user.xml</Entry-FileValue>
     </Entries>
   <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>user_groups.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_user_groups.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_user_groups.xml</Entry-FileValue>
     </Entries>
   <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>user_clients.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_user_clients.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_user_clients.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>addresses.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_addresses.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_addresses.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>addresses_misc.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_addresses_misc.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_addresses_misc.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>partner.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_partner.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_partner.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>partner_schedul.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_partner_schedul.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_partner_schedul.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_articles.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_articles.xml</Entry-FileValue>
     </Entries>
  
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_purchase.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_articles_purchase.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_articles_purchase.xml</Entry-FileValue>
     </Entries>
     
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_sales.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_articles_sales.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_articles_sales.xml</Entry-FileValue>
     </Entries>
      <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_webshop.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_articles_webshop.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_articles_webshop.xml</Entry-FileValue>
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_stock.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
     </Entries>
     
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_order.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_order.xml</Entry-FileValue>
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_supply.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_ordersupply.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_ordersupply.xml</Entry-FileValue>
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_get.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_orderget.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_orderget.xml</Entry-FileValue>
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_position.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_orderposition.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_orderposition.xml</Entry-FileValue>
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_misc.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_ordermisc.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_ordermisc.xml</Entry-FileValue>
     </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>stock.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_stock.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_stock.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>stockgoods.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_stockgoods.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_stockgoods.xml</Entry-FileValue>
     </Entries>
    <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferences.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_printing.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
     </Entries>
 
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_path_to_reports.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferences_path_to_reports.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences_path_to_reports.xml</Entry-FileValue>
     </Entries>
 
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_path_to_docs.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferences_path_to_docs.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences_path_to_docs.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_scanner.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferences_scanner.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences_scanner.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_dms.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_preferencesDMS.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_preferencesDMS.xml</Entry-FileValue>
     </Entries> 
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>prefs_finance_top.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_top.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_prefs_finance_top.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>prefs_finance_vat.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_vat.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_prefs_finance_vat.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>prefs_finance_acctinfo.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_acctinfo.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_prefs_finance_acctinfo.xml</Entry-FileValue>
     </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>prefs_finance_acctplan.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_prefs_finance_acctplan.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_prefs_finance_acctplan.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>dms.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_dms.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_dms.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>cashAccount.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
     </Entries>
      
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_clients.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_clients.xml</Entry-FileValue>
     </Entries>
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>biblio.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_biblio.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_biblio.xml</Entry-FileValue>
     </Entries>
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>staff.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_staff.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_staff.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>staff_fee.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_staff_fee.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_staff_fee.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>help.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_help.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_help.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>project.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_project.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_project.xml</Entry-FileValue>
     </Entries>  
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>project_phases.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_project_phases.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_project_phases.xml</Entry-FileValue>
     </Entries> 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>project_tasks.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_project_tasks.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_project_tasks.xml</Entry-FileValue>
     </Entries>   
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>project_staff_resources.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_project_staff_resources.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_project_staff_resources.xml</Entry-FileValue>
     </Entries>     
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>project_material_resources.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_project_material_resources.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_project_material_resources.xml</Entry-FileValue>
     </Entries> 
 
   
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>garden.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_garden.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_garden.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany_divisio.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany_divisio.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany_divisio.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany_class.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany_class.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany_class.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany_ordo.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany_ordo.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany_ordo.xml</Entry-FileValue>
     </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany_family.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany_family.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany_family.xml</Entry-FileValue>
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>botany_genus.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_botany_genus.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_botany_genus.xml</Entry-FileValue>
     </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>hibernation.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_hibernation.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_hibernation.xml</Entry-FileValue>
     </Entries>
 
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>hibernation_plant.xml</Entry-File>
-      <Entry-FileValue>/usr/share/cuon/entry_hibernation_plant.xml</Entry-FileValue>
+      <Entry-FileValue>../usr/share/cuon/entry_hibernation_plant.xml</Entry-FileValue>
     </Entries>
   </Entry_Init_Files>
 
@@ -270,161 +270,167 @@
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>login.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/login.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/login.glade2</Glade-FileValue>
     </GladeEntries>
 
   <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>user.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/user.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/user.glade2</Glade-FileValue>
     </GladeEntries>
 
 
      <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>fileselection.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/fileselection.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/fileselection.glade2</Glade-FileValue>
     </GladeEntries>
 
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>address.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/addresses.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/addresses.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>addresses_search1.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/addresses_search1.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/addresses_search1.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>sqlprogressbar.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/sqlprogressbar.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/sqlprogressbar.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>main.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/cuon.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/cuon.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>articles.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/articles.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/articles.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>articles_search1.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/articles_search1.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/articles_search1.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>order.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/order.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/order.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>preferences.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/preferences.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/preferences.glade2</Glade-FileValue>
     </GladeEntries>
    <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>prefs_finance.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/prefs_finance.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/prefs_finance.glade2</Glade-FileValue>
     </GladeEntries>
 
    <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>stock.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/stock.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/stock.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
 <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>stockgoods_search1.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/stockgoods_search1.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/stockgoods_search1.glade2</Glade-FileValue>
 </GladeEntries>
 
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>reportGenerator.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/reportGenerator.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/reportGenerator.glade2</Glade-FileValue>
     </GladeEntries>
   
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>dms.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/dms.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/dms.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>clients.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/clients.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/clients.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>webshop.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/webshop.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/webshop.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>cashAccountBook.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>cab_search1.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/cab_search1.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/cab_search1.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>biblio.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/biblio.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/biblio.glade2</Glade-FileValue>
     </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>editor.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/editor.glade2</Glade-FileValue>
+    </GladeEntries>
+    
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>ai.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/ai.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/ai.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>project.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/project.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/project.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>project_drange.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/dRange.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/dRange.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>staff.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/staff.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/staff.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>help.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/help.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/help.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>garden.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/garden.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/garden.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>hibernation.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/hibernation.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/hibernation.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>project.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/project.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/project.glade2</Glade-FileValue>
     </GladeEntries>
  <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>botany.xml</Glade-File>
-      <Glade-FileValue>/usr/share/cuon/glade/botany.glade2</Glade-FileValue>
+      <Glade-FileValue>../usr/share/cuon/glade/botany.glade2</Glade-FileValue>
     </GladeEntries>
 
   </Glade_Init_Files>
@@ -434,7 +440,7 @@
     <GrantEntries>
       <Grant-Name>cuon</Grant-Name>	
       <Grant-File>cuon_grants.xml</Grant-File>
-      <Grant-FileValue>/usr/share/cuon/grants.xml</Grant-FileValue>
+      <Grant-FileValue>../usr/share/cuon/grants.xml</Grant-FileValue>
     </GrantEntries>
   </Grant_Init_Files>
   
@@ -442,28 +448,28 @@
     <SQLEntries>
       <SQL-Name>cuon</SQL-Name>	
       <SQL-File>cuon_sql.xml</SQL-File>
-      <SQL-FileValue>/usr/share/cuon/sql.xml</SQL-FileValue>
+      <SQL-FileValue>../usr/share/cuon/sql.xml</SQL-FileValue>
     </SQLEntries>
   </SQL_Init_Files>
   <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>addresses_phonelist1.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/addresses_phonelist1.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/addresses_phonelist1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
   <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>addresses_phonelist11.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/addresses_phonelist11.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/addresses_phonelist11.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>printAddress.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/printAddress.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/printAddress.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 
@@ -471,7 +477,7 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>articles_number1.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/articles_number1.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/articles_number1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 
@@ -479,7 +485,7 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>stockgoods_number1.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/stockgoods_number1.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/stockgoods_number1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 
@@ -488,7 +494,7 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>order_standardinvoice.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/order_standardinvoice.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/order_standardinvoice.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 
@@ -496,14 +502,14 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>order_standardpickup.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/order_standardpickup.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/order_standardpickup.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>order_standarddelivery.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/order_standarddelivery.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/order_standarddelivery.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
 
@@ -511,7 +517,7 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>finances_cab_monthly1.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/finances_cab_monthly1.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/finances_cab_monthly1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
   
@@ -519,14 +525,14 @@
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>hibernation_incoming_document.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/hibernation_incoming_document.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/hibernation_incoming_document.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	
       <Report-File>hibernation_outgoing_document.xml</Report-File>
-      <Report-FileValue>/usr/share/cuon/report/hibernation_outgoing_document.xml</Report-FileValue>
+      <Report-FileValue>../usr/share/cuon/report/hibernation_outgoing_document.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
   </IniFile>

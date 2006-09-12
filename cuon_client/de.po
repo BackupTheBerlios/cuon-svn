@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-25 17:26+0200\n"
-"PO-Revision-Date: 2006-07-26 13:39+0200\n"
+"PO-Revision-Date: 2006-09-12 13:38+0200\n"
 "Last-Translator: Jürgen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2205,351 +2205,350 @@ msgstr "Menge"
 msgid "Material-Resources"
 msgstr ""
 
+msgid "Hibernation"
+msgstr "Überwinterung"
+
+msgid "delivered"
+msgstr "geliefert "
+
+msgid "fetched"
+msgstr "Abholung"
+
+msgid "Fetched"
+msgstr "Abholung"
+
+msgid "Delievered"
+msgstr "Anlieferung"
+
+#, fuzzy
+msgid "working time"
+msgstr "Arbeitszeit  "
+
+#, fuzzy
+msgid "Notice\n"
+msgstr "Notiz"
+
+msgid "Price Last Year"
+msgstr "Preis im letzten Jahr"
+
+msgid "additional Material"
+msgstr "zus. Material"
+
+msgid "additional pot"
+msgstr "zus. Topf"
+
+msgid "additional earth"
+msgstr "zus. Erde"
+
+msgid "Price hibernation"
+msgstr "Preis Überwinterung"
+
+msgid "diameter"
+msgstr "Durchmesser"
+
+msgid "Vermin"
+msgstr "Schädling"
+
+#, fuzzy
+msgid "Notice"
+msgstr "Notiz"
+
+#, fuzzy
+msgid "status"
+msgstr "Status"
+
+msgid "1 very good"
+msgstr "1 Sehr gut"
+
+msgid "2 good"
+msgstr "2 gut"
+
+msgid "3"
+msgstr "3 befriedigend"
+
+msgid "4"
+msgstr "4 ausreichend"
+
+msgid "5 bad"
+msgstr "5 schlecht"
+
+msgid "6 very bad"
+msgstr "1 Sehr schlecht"
+
+#, fuzzy
+msgid "Int. Number"
+msgstr "Nummer"
+
+#, fuzzy
+msgid "Total Price"
+msgstr "Profil"
+
+#, fuzzy
+msgid "choose Botany"
+msgstr "wählen "
+
+msgid "Sub-Class"
+msgstr "Unterklasse"
+
+msgid "Visualizing"
+msgstr "Visualisierung"
+
+msgid "button1"
+msgstr "button1 "
+
+msgid "Hello, this is a test"
+msgstr "Hallo, dies ist ein Test"
+
+msgid "Name of partner"
+msgstr "Nachname des Gesprächspartners"
+
+msgid "Firstname of partner"
+msgstr "Vorname des Gesprächspartners"
+
+msgid "partnerphonelist.pdf"
+msgstr "Telefonliste_für_Gesprächspartner.pdf"
+
+msgid "phonelist.pdf"
+msgstr "Telefonliste.pdf"
+
+msgid "designation"
+msgstr "Beschreibung "
+
+#, fuzzy
+msgid "delivery_note-"
+msgstr "geliefert am"
+
+msgid "bill-"
+msgstr "Rechnung"
+
+msgid "pickup-"
+msgstr "Abholung"
+
+msgid "NoTitle"
+msgstr "Kein Titel"
+
+msgid "text"
+msgstr "Text"
+
+msgid "Date: "
+msgstr "Datum:"
+
+#, fuzzy
+msgid "Phonelist 011 generatet by CUON"
+msgstr "Telefonliste 001 erstellt von CUON "
+
+msgid "Pagenumber:"
+msgstr "Seiten-Nr.: "
+
+msgid "Phonelist 001 generatet by CUON"
+msgstr "Telefonliste 001 erstellt von CUON "
+
+msgid "INVOICE"
+msgstr "Rechnung"
+
+#, fuzzy
+msgid "name"
+msgstr "Name 2"
+
+#, fuzzy
+msgid "Account-Number"
+msgstr "Kunden-Nummer"
+
+#, fuzzy
+msgid "New "
+msgstr "_Neu"
+
+#, fuzzy
+msgid "Descript."
+msgstr "Beschr."
+
+msgid "SQL-Encoding"
+msgstr "SQL-Kodierung"
+
+#, fuzzy
+msgid "standard Profile"
+msgstr "Profil"
+
+msgid "Printing-System"
+msgstr "Drucker System"
+
+#, fuzzy
+msgid "Path to Addresslists"
+msgstr "Pfad zum Adresslisten-Report"
+
+#, fuzzy
+msgid "Path to Invoices"
+msgstr "Pfad zum Rechnungs-Report"
+
+#, fuzzy
+msgid "Path to Supply"
+msgstr "Liefern"
+
+msgid "Path to Pickup"
+msgstr "Pfad zum Abholschein"
+
+#, fuzzy
+msgid "Path to Reports"
+msgstr "Pfad zum Rechnungs-Report"
+
+msgid "Path to Doc`s"
+msgstr "Pfad zu Dokumenten"
+
+msgid "Scan Device"
+msgstr "Scanner"
+
+msgid "Mode"
+msgstr "Modus"
+
+msgid "Resolution"
+msgstr "Auflösung"
+
+msgid "Depth"
+msgstr "Tiefe"
+
+#, fuzzy
+msgid "Contrast"
+msgstr "Staat"
+
+msgid "Brightness"
+msgstr "Helligkeit"
+
+#, fuzzy
+msgid "label28"
+msgstr "label16"
+
+msgid "Show Devices"
+msgstr "Zeige Geräte"
+
+msgid "Scanner"
+msgstr "Scanner"
+
+#, fuzzy
+msgid "Finances Preferences"
+msgstr "Einstellungen"
+
+#, fuzzy
+msgid "Vat Value"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "Def."
+msgstr "Beschr."
+
+#, fuzzy
+msgid "Text"
+msgstr "Text"
+
+#, fuzzy
+msgid "##Value1"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value2"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value3"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value4"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value5"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value6"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value7"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value8"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value9"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "##Value10"
+msgstr "Verkauf"
+
+#, fuzzy
+msgid "Acct."
+msgstr "Über Cuon"
+
+#, fuzzy
+msgid "Descr."
+msgstr "Beschr."
+
+#, fuzzy
+msgid "label70"
+msgstr "label16"
+
+#, fuzzy
+msgid "Acct"
+msgstr "Über Cuon"
+
+msgid "Phonelist"
+msgstr "Telefonliste "
+
+msgid "Load Sql-Definitions from Server"
+msgstr "Lade die SQL-Definitionen vom Server"
+
+msgid "load SQL-Definition"
+msgstr "lade SQL-Definitionen"
+
+msgid "Search for lists"
+msgstr "FÃƒÂ¼r die Liste suchen"
+
+msgid "from:"
+msgstr "von:"
+
+msgid "to"
+msgstr "bis:"
+
+msgid "Filedialog"
+msgstr "Dateidialog"
+
+msgid "Select File"
+msgstr "wÃƒÂ¤hle Datei"
+
+msgid "Print command"
+msgstr "Drucker Kommando"
+
+#, fuzzy
+msgid "Print-Style"
+msgstr "Dr_ucken"
+
+msgid "Phonelist 011"
+msgstr "Telefonliste 011"
+
+msgid "Pagenumber: "
+msgstr "Seiten-Nr.:"
+
+msgid "Phonelist001 generatet by CUON"
+msgstr "Telefonliste 001 erstellt von CUON"
+
+#, fuzzy
+msgid "Phonelist 001"
+msgstr "Telefon"
+
+msgid "This is Nr. 2"
+msgstr "Dies ist Nr. 2"
+
+msgid "firstname"
+msgstr "Vorname"
+
+msgid "city"
+msgstr "Stadt"
+
 #, fuzzy
 #~ msgid "label34"
 #~ msgstr "label16"
-
-#, fuzzy
-#~ msgid "Hibernation"
-#~ msgstr "Beschreibung"
-
-#~ msgid "delivered"
-#~ msgstr "geliefert "
-
-#~ msgid "fetched"
-#~ msgstr "Abholung"
-
-#~ msgid "Fetched"
-#~ msgstr "Abholung"
-
-#~ msgid "Delievered"
-#~ msgstr "Anlieferung"
-
-#, fuzzy
-#~ msgid "working time"
-#~ msgstr "Arbeitszeit  "
-
-#, fuzzy
-#~ msgid "Notice\n"
-#~ msgstr "Notiz"
-
-#~ msgid "Price Last Year"
-#~ msgstr "Preis im letzten Jahr"
-
-#~ msgid "additional Material"
-#~ msgstr "zus. Material"
-
-#~ msgid "additional pot"
-#~ msgstr "zus. Topf"
-
-#~ msgid "additional earth"
-#~ msgstr "zus. Erde"
-
-#~ msgid "Price hibernation"
-#~ msgstr "Preis Überwinterung"
-
-#~ msgid "diameter"
-#~ msgstr "Durchmesser"
-
-#~ msgid "Vermin"
-#~ msgstr "Schädling"
-
-#, fuzzy
-#~ msgid "Notice"
-#~ msgstr "Notiz"
-
-#, fuzzy
-#~ msgid "status"
-#~ msgstr "Status"
-
-#~ msgid "1 very good"
-#~ msgstr "1 Sehr gut"
-
-#~ msgid "2 good"
-#~ msgstr "2 gut"
-
-#~ msgid "3"
-#~ msgstr "3 befriedigend"
-
-#~ msgid "4"
-#~ msgstr "4 ausreichend"
-
-#~ msgid "5 bad"
-#~ msgstr "5 schlecht"
-
-#~ msgid "6 very bad"
-#~ msgstr "1 Sehr schlecht"
-
-#, fuzzy
-#~ msgid "Int. Number"
-#~ msgstr "Nummer"
-
-#, fuzzy
-#~ msgid "Total Price"
-#~ msgstr "Profil"
-
-#, fuzzy
-#~ msgid "choose Botany"
-#~ msgstr "wählen "
-
-#~ msgid "Sub-Class"
-#~ msgstr "Unterklasse"
-
-#~ msgid "Visualizing"
-#~ msgstr "Visualisierung"
-
-#~ msgid "button1"
-#~ msgstr "button1 "
-
-#~ msgid "Hello, this is a test"
-#~ msgstr "Hallo, dies ist ein Test"
-
-#~ msgid "Name of partner"
-#~ msgstr "Nachname des Gesprächspartners"
-
-#~ msgid "Firstname of partner"
-#~ msgstr "Vorname des Gesprächspartners"
-
-#~ msgid "partnerphonelist.pdf"
-#~ msgstr "Telefonliste_für_Gesprächspartner.pdf"
-
-#~ msgid "phonelist.pdf"
-#~ msgstr "Telefonliste.pdf"
-
-#~ msgid "designation"
-#~ msgstr "Beschreibung "
-
-#, fuzzy
-#~ msgid "delivery_note-"
-#~ msgstr "geliefert am"
-
-#~ msgid "bill-"
-#~ msgstr "Rechnung"
-
-#~ msgid "pickup-"
-#~ msgstr "Abholung"
-
-#~ msgid "NoTitle"
-#~ msgstr "Kein Titel"
-
-#~ msgid "text"
-#~ msgstr "Text"
-
-#~ msgid "Date: "
-#~ msgstr "Datum:"
-
-#, fuzzy
-#~ msgid "Phonelist 011 generatet by CUON"
-#~ msgstr "Telefonliste 001 erstellt von CUON "
-
-#~ msgid "Pagenumber:"
-#~ msgstr "Seiten-Nr.: "
-
-#~ msgid "Phonelist 001 generatet by CUON"
-#~ msgstr "Telefonliste 001 erstellt von CUON "
-
-#~ msgid "INVOICE"
-#~ msgstr "Rechnung"
-
-#, fuzzy
-#~ msgid "name"
-#~ msgstr "Name 2"
-
-#, fuzzy
-#~ msgid "Account-Number"
-#~ msgstr "Kunden-Nummer"
-
-#, fuzzy
-#~ msgid "New "
-#~ msgstr "_Neu"
-
-#, fuzzy
-#~ msgid "Descript."
-#~ msgstr "Beschr."
-
-#~ msgid "SQL-Encoding"
-#~ msgstr "SQL-Kodierung"
-
-#, fuzzy
-#~ msgid "standard Profile"
-#~ msgstr "Profil"
-
-#~ msgid "Printing-System"
-#~ msgstr "Drucker System"
-
-#, fuzzy
-#~ msgid "Path to Addresslists"
-#~ msgstr "Pfad zum Adresslisten-Report"
-
-#, fuzzy
-#~ msgid "Path to Invoices"
-#~ msgstr "Pfad zum Rechnungs-Report"
-
-#, fuzzy
-#~ msgid "Path to Supply"
-#~ msgstr "Liefern"
-
-#~ msgid "Path to Pickup"
-#~ msgstr "Pfad zum Abholschein"
-
-#, fuzzy
-#~ msgid "Path to Reports"
-#~ msgstr "Pfad zum Rechnungs-Report"
-
-#~ msgid "Path to Doc`s"
-#~ msgstr "Pfad zu Dokumenten"
-
-#~ msgid "Scan Device"
-#~ msgstr "Scanner"
-
-#~ msgid "Mode"
-#~ msgstr "Modus"
-
-#~ msgid "Resolution"
-#~ msgstr "Auflösung"
-
-#~ msgid "Depth"
-#~ msgstr "Tiefe"
-
-#, fuzzy
-#~ msgid "Contrast"
-#~ msgstr "Staat"
-
-#~ msgid "Brightness"
-#~ msgstr "Helligkeit"
-
-#, fuzzy
-#~ msgid "label28"
-#~ msgstr "label16"
-
-#~ msgid "Show Devices"
-#~ msgstr "Zeige Geräte"
-
-#~ msgid "Scanner"
-#~ msgstr "Scanner"
-
-#, fuzzy
-#~ msgid "Finances Preferences"
-#~ msgstr "Einstellungen"
-
-#, fuzzy
-#~ msgid "Vat Value"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "Def."
-#~ msgstr "Beschr."
-
-#, fuzzy
-#~ msgid "Text"
-#~ msgstr "Text"
-
-#, fuzzy
-#~ msgid "##Value1"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value2"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value3"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value4"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value5"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value6"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value7"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value8"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value9"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "##Value10"
-#~ msgstr "Verkauf"
-
-#, fuzzy
-#~ msgid "Acct."
-#~ msgstr "Über Cuon"
-
-#, fuzzy
-#~ msgid "Descr."
-#~ msgstr "Beschr."
-
-#, fuzzy
-#~ msgid "label70"
-#~ msgstr "label16"
-
-#, fuzzy
-#~ msgid "Acct"
-#~ msgstr "Über Cuon"
-
-#~ msgid "Phonelist"
-#~ msgstr "Telefonliste "
-
-#~ msgid "Load Sql-Definitions from Server"
-#~ msgstr "Lade die SQL-Definitionen vom Server"
-
-#~ msgid "load SQL-Definition"
-#~ msgstr "lade SQL-Definitionen"
-
-#~ msgid "Search for lists"
-#~ msgstr "FÃƒÂ¼r die Liste suchen"
-
-#~ msgid "from:"
-#~ msgstr "von:"
-
-#~ msgid "to"
-#~ msgstr "bis:"
-
-#~ msgid "Filedialog"
-#~ msgstr "Dateidialog"
-
-#~ msgid "Select File"
-#~ msgstr "wÃƒÂ¤hle Datei"
-
-#~ msgid "Print command"
-#~ msgstr "Drucker Kommando"
-
-#, fuzzy
-#~ msgid "Print-Style"
-#~ msgstr "Dr_ucken"
-
-#~ msgid "Phonelist 011"
-#~ msgstr "Telefonliste 011"
-
-#~ msgid "Pagenumber: "
-#~ msgstr "Seiten-Nr.:"
-
-#~ msgid "Phonelist001 generatet by CUON"
-#~ msgstr "Telefonliste 001 erstellt von CUON"
-
-#, fuzzy
-#~ msgid "Phonelist 001"
-#~ msgstr "Telefon"
-
-#~ msgid "This is Nr. 2"
-#~ msgstr "Dies ist Nr. 2"
-
-#~ msgid "firstname"
-#~ msgstr "Vorname"
-
-#~ msgid "city"
-#~ msgstr "Stadt"
 

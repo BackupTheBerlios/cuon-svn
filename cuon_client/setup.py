@@ -8,7 +8,10 @@ import ConfigParser
 
 class setup:
     def __init__(self):
-        
+
+        self.store = []
+        self.liLocale = ['de','pt','pt_BR']
+
         self.xml = None
         self.xmlAutoconnect = False
         self.cpParser = ConfigParser.ConfigParser()
@@ -38,38 +41,44 @@ class setup:
             self.ConfigStatus = False
    
         
-    def start(self):
+    def setVars(self):
         ''' Set default Values '''
         
         ##        self.sPrefix = 'root@192.168.17.2:/'
         ##        self.sshPort = '3222' 
         
+        self.src_ini="./cuon_ini1.xml"
         
+        self.destClient = './Client'
+        self.src_main = "./cuon/*.py cuon.sh Cuon.py"
+        self.dest_main = self.destClient + "/CUON"
+        self.dest_cuon = self.dest_main + "/cuon"
+        self.ClientDirLocale = self.destClient + "/locale"
+        self.ClientDirUsr = self.destClient + '/usr'
+        self.ClientDirUsrShare = self.ClientDirUsr + '/share'
+        self.ClientDirUsrShareCuon = self.ClientDirUsrShare + '/cuon'
+        self.ClientDirIcon =  self.ClientDirUsrShareCuon
+
+        
+        self.src_server = "./cuon_server.py"
+        self.dest_server =self.dest_main
+         
 
         self.EXECDIR = "/usr/bin"
         self.INSTALLDIR = "/usr/lib/cuon"
-        self.ICONDIR =  "/usr/lib/cuon/icons"
         self.SERVERDIRSHARE =  "/usr/share/cuon"
         self.SERVERCONFIGDIR =  "/etc/cuon"
         self.SERVERLOCALEDIR = "/usr/share/locale/"
-
         
         self.VERSION_CFG ="./version.cfg"
         
-        self.I18LDIR_DE=self.SERVERLOCALEDIR + "de/LC_MESSAGES"
-        self.I18LDIR_PT=self.SERVERLOCALEDIR + "pt/LC_MESSAGES"
-        self.I18LDIR_PT_BR=self.SERVERLOCALEDIR + "pt_BR/LC_MESSAGES"
         
-        self.src_locale_de = "./cuon_de.mo"
-        self.src_locale_pt = "./cuon_pt.mo"
-        self.src_locale_pt_BR = "./cuon_pt_BR.mo"
         
-        self.dest_glade = self.SERVERDIRSHARE + "/glade"
+        self.dest_glade = self.ClientDirUsrShareCuon + "/glade"
         self.dest_report = self.SERVERDIRSHARE + "/report"
         
         
         self.iClientDir = "/opt/Projekte/cuon/iClient"
-        self.iClientDirLocale = self.iClientDir + "/locale/de/LC_MESSAGES"
         
         self.CUON_VAR =  "/var/cuon"
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
@@ -94,134 +103,42 @@ class setup:
 ##        zope_extension2 =  root@cuweb://var/lib/zope2.8/instance/default/Extensions
 ##        zope_import2 =  root@cuweb://var/lib/zope2.8/instance/default/import
         
-        self.src_ini="./cuon_ini1.xml"
         
+        self.liLocaldirs = []
+        liDirs = os.listdir('./cuon')
+        print liDirs
+        for sDir in  liDirs:
+            self.liLocaldirs.append(["./cuon/" + sDir + "/*.py",self.dest_cuon + "/" + sDir])
         
-        self.src_main = "./cuon/*.py cuon.sh Cuon.py"
-        self.dest_main = "./CUON"
-        self.dest_cuon = self.dest_main + "/cuon"
+
+##        
+##        self.src_finances_misc = "./cuon/Finances/*.py"
+        self.liLocaldirs.append(["./cuon/Finances/CashAccountBook/*.py", self.dest_cuon + "/Finances"])
+        self.liLocaldirs.append(["./cuon/Finances/InvoiceBook/*.py", self.dest_cuon + "/Finances"])
+        self.liLocaldirs.append(["./*.py",self.dest_main + "/"])
         
+##        self.src_finances_ib =  "./cuon/Finances/InvoiceBook/*.py"
+##        
+##        self.dest_finances = self.dest_cuon + "/Finances"
+##        
+##        self.src_biblio = "./cuon/Biblio/*.py"
+##        self.dest_biblio = self.dest_cuon + "/Biblio"
+##        
+##        
+##        self.src_ai = "./cuon/AI/*.py"
+##        self.dest_ai = self.dest_cuon + "/AI"
         
-        self.src_server = "./cuon_server.py"
-        self.dest_server =self.dest_cuon
-         
-        
-        self.src_typedefs = "./cuon/TypeDefs/*.py"
-        self.dest_typedefs = self.dest_cuon + "/TypeDefs"
-        
-        
-        self.src_login = "./cuon/Login/*.py"
-        self.dest_login = self.dest_cuon + "/Login"
-        
-        self.src_user = "./cuon/User/*.py"
-        self.dest_user = self.dest_cuon + "/User"
-        
-        
-        self.src_misc = "./cuon/Misc/*.py"
-        self.dest_misc = self.dest_cuon + "/Misc"
-        
-        self.src_addresses = "./cuon/Addresses/*.py"
-        self.dest_addresses = self.dest_cuon + "/Addresses"
-        
-        
-        self.src_articles = "./cuon/Articles/*.py"
-        self.dest_articles = self.dest_cuon + "/Articles"
-        
-        
-        self.src_clients = "./cuon/Clients/*.py"
-        self.dest_clients = self.dest_cuon + "/Clients"
-        
-        self.src_order = "./cuon/Order/*.py"
-        self.dest_order = self.dest_cuon + "/Order"
-        
-        
-        self.src_databases = "./cuon/Databases/*.py"
-        self.dest_databases = self.dest_cuon + "/Databases"
-        
-        
-        
-        self.src_xml = "./cuon/XML/*.py"
-        self.dest_xml = self.dest_cuon + "/XML"
-        
-        self.src_xmlrpc = "./cuon/XMLRPC/*.py"
-        self.dest_xmlrpc = self.dest_cuon + "/XMLRPC"
-        
-        
-        self.src_windows = "./cuon/Windows/*.py"
-        self.dest_windows = self.dest_cuon + "/Windows"
-        
-        
-        self.src_log = "./cuon/Logging/*.py"
-        self.dest_log = self.dest_cuon + "/Logging"
-        
-        self.src_help = "./cuon/Help/*.py"
-        self.dest_help = self.dest_cuon + "/Help"
-        
-        
-        
-        self.src_oo = "./cuon/OpenOffice/*.py"
-        self.dest_oo = self.dest_cuon + "/OpenOffice"
-        
-        
-        
-        
-        self.src_preferences = "./cuon/Preferences/*.py" 
-        self.dest_preferences = self.dest_cuon + "/Preferences"
-        
-        self.src_preferences_xml = "./cuon/Preferences/XML/*.py"
-        self.dest_preferences_xml = self.dest_cuon + "/Preferences/XML"
-        
-        
-        
-        self.src_stock = "./cuon/Stock/*.py"
-        self.dest_stock = self.dest_cuon + "/Stock"
-        
-        self.src_email = "./cuon/E_Mail/*.py"
-        self.dest_email = self.dest_cuon + "/E_Mail"
-        
-        
-        self.src_dms = "./cuon/DMS/*.py"
-        self.dest_dms = self.dest_cuon + "/DMS"
-        
-        self.src_staff = "./cuon/Staff/*.py"
-        self.dest_staff = self.dest_cuon + "/Staff"
-        
-        
-        self.src_vtk = "./cuon/VTK/*.py"
-        self.dest_vtk = self.dest_cuon + "/VTK"
-        
-        self.src_prefs_finance = "./cuon/PrefsFinance/*.py" 
-        self.dest_prefs_finance = self.dest_cuon + "/PrefsFinance"
-        
-        self.src_webshop = "./cuon/WebShop/*.py"
-        self.dest_webshop = self.dest_cuon + "/WebShop"
-        
-        
-        self.src_finances_misc = "./cuon/Finances/*.py"
-        self.src_finances_cab = "./cuon/Finances/CashAccountBook/*.py" 
-        self.src_finances_ib =  "./cuon/Finances/InvoiceBook/*.py"
-        
-        self.dest_finances = self.dest_cuon + "/Finances"
-        
-        self.src_biblio = "./cuon/Biblio/*.py"
-        self.dest_biblio = self.dest_cuon + "/Biblio"
-        
-        
-        self.src_ai = "./cuon/AI/*.py"
-        self.dest_ai = self.dest_cuon + "/AI"
-        self.src_aiml = "./cuon/AI/AIML"
-        self.dest_aiml = self.SERVERDIRSHARE + "/AI/AIML"
-        self.src_ai_clients = "./cuon/AI"
-        self.dest_ai_gtkMiniClient = "./gtkMiniClient"
-        
-        self.src_project = "./cuon/Project/*.py"
-        self.dest_project = self.dest_cuon + "/Project"
-        
-        
-        # Ext. modules with GPL
-        self.src_garden = "./cuon/Garden/*.py"
-        self.dest_garden = self.dest_cuon + "/Garden"
-        
+    #    self.src_ai_clients = "./cuon/AI"
+    #    self.dest_ai_gtkMiniClient = "./gtkMiniClient"
+##        
+##        self.src_project = "./cuon/Project/*.py"
+##        self.dest_project = self.dest_cuon + "/Project"
+##        
+##        
+##        # Ext. modules with GPL
+##        self.src_garden = "./cuon/Garden/*.py"
+##        self.dest_garden = self.dest_cuon + "/Garden"
+##        
         
         
         #src_cuon =  self.dest_cuon)/*
@@ -231,45 +148,50 @@ class setup:
         self.src_xmlDefaults = "./*.xml"
         
     
-    def install_all(self):
+    def install_local(self):
         
         self.copyFiles()
         
+        for sLocale in self.liLocale:
+            # create Locale client
+
+            self.executeString("if [ -f cuon_" + sLocale + ".mo ] ; then rm -f cuon_" + sLocale + ".mo ; fi ")
+            self.executeString("msgfmt -o cuon_"+ sLocale + ".mo " + sLocale + ".po")  
+
+            #create Locale server 
+            
+            self.executeString('msgfmt -o ../cuon_server/src/' + sLocale + '.mo ../cuon_server/src/' + sLocale + '.po')
+        
+        for sLocale in self.liLocale:
+            dir = self.ClientDirLocale +"/" + sLocale
+            self.executeString("if [ ! -d  " + dir + " ; then mkdir " +  dir + " ] ; fi ")
+            dir2 = dir + "/LC_MESSAGES"
+            self.executeString("if [ ! -d  " + dir2 + " ; then mkdir " +  dir2 + " ] ; fi ")
+            
+            self.executeString("cp cuon_" + sLocale + " " + dir2 + '/cuon.mo')
+        
+            self.executeString('cp ../cuon_server/src/'+ sLocale + '.mo ' + dir2 + '/cuon_server.mo')
+        
+        self.testDir(self.ClientDirUsr)
+        self.testDir(self.ClientDirUsrShare)
+        self.testDir(self.ClientDirUsrShareCuon)
+        
+        self.copyLocalValues(self.src_xmlDefaults, self.ClientDirUsrShare)
+        self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
+        self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
+        self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
+        self.executeString('find ./GUI/pixmaps  -name "*.xpm" -exec cp {} '  + self.ClientDirIcon + ' \;' )
+
     def install_server(self):
         
-        self.install_all()
+        self.install_local()
         scp1 = " -P " + self.sshPort + " "
         scp2 = self.sPrefix 
         self.executeSSH(" mkdir " + self.INSTALLDIR)
         self.executeString("scp -r " + scp1 + ' ' + self.dest_main + "/* " + scp2 + self.INSTALLDIR)
         self.executeString("scp " + scp1 + ' ' + "./cuon.sh " + scp2 + self.EXECDIR )
-        # create Locale client
-        self.executeString("if [ -f cuon_de.mo ] ; then rm -f cuon_de.mo ; fi ")
-        self.executeString("msgfmt -o cuon_de.mo de.po")  
-        self.executeString("if [ -f cuon_pt.mo ] ; then rm -f cuon_pt.mo ; fi ")
-        self.executeString("msgfmt -o cuon_pt.mo pt.po")
-        self.executeString("if [ -f cuon_pt_BR.mo ] ; then rm -f cuon_pt_BR.mo ; fi ")
-        self.executeString("msgfmt -o cuon_pt_BR.mo pt_BR.po")
-
-        #create Locale server 
-        self.executeString('msgfmt -o ../cuon_server/src/de.mo ../cuon_server/src/de.po')
         
-        # Locale de
-        self.executeSSH("if [ ! -d  " + self.I18LDIR_DE + " ; then mkdir " +  self.I18LDIR_DE + " ; fi ")
-        self.executeSCP(self.src_locale_de, self.I18LDIR_DE )
-        self.executeSSH("mv " + self.I18LDIR_DE + "/cuon_de.mo "+  self.I18LDIR_DE +"/cuon.mo")
-        self.executeSSH('cp ../cuon_server/src/de.mo ' + self.I18LDIR_DE + '/cuon_server.mo')
         
-        # Locale pt
-        self.executeSSH("if [ ! -d  " + self.I18LDIR_PT + " ; then mkdir " +  self.I18LDIR_PT + " ; fi ")
-        self.executeSCP(self.src_locale_pt, self.I18LDIR_PT )
-        self.executeSSH("mv " + self.I18LDIR_PT + "/cuon_pt.mo "+  self.I18LDIR_PT +"/cuon.mo")
-            
-        # locale pt_BR
-        self.executeSSH("if [ ! -d  " + self.I18LDIR_PT_BR + " ; then mkdir " +  self.I18LDIR_PT_BR + " ; fi ")
-        self.executeSCP(self.src_locale_pt, self.I18LDIR_PT_BR )
-        self.executeSSH("mv " + self.I18LDIR_PT_BR + "/cuon_pt_BR.mo "+  self.I18LDIR_PT_BR +"/cuon.mo")
-
         # create server dirs in share
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE)
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server')
@@ -282,8 +204,6 @@ class setup:
         self.executeSCP(" ../cuon_server/src/cuon/*.py", self.SERVERDIRSHARE + "/cuon_server/src/cuon")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/*",  self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/XML/*", self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports/XML")
-        self.executeSSH(" if  [ ! -d " + self.ICONDIR + " ] ; then mkdir " + self.ICONDIR + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.dest_glade + " ] ; then mkdir " + self.dest_glade + " ; fi ")	
 
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ")	
@@ -297,18 +217,13 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")	
 
         
-        self.executeSCP(self.src_xmlDefaults, self.SERVERDIRSHARE)
-        self.executeSCP('.GUI/*.glade2', self.dest_glade)
-        self.executeString('find ./cuon  -name "*.glade2" -exec scp ' + scp1 + ' {} ' +scp2 + self.dest_glade + ' \;' )
-        self.executeString('find ./cuon  -name "entry_*" -exec scp ' + scp1 + ' {} ' +scp2 + self.SERVERDIRSHARE + ' \;' )
-        self.executeString('find ./GUI/pixmaps  -name "*.xpm" -exec scp ' + scp1 + ' {} ' +scp2 + self.ICONDIR + ' \;' )
-
+        
         # startscripts in /etc/init.d
         
-        self.executeString("scp ../cuon_server/src/cuonxmlrpc " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonai " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonreport " + ssh +  "/etc/init.d")
-        self.executeString("scp ../cuon_server/src/cuonweb " + ssh +  "/etc/init.d")
+        self.executeSCP("scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
+        self.executeSCP("scp ../cuon_server/src/cuonai " , "/etc/init.d")
+        self.executeSCP("scp ../cuon_server/src/cuonreport " , "/etc/init.d")
+        self.executeSCP("scp ../cuon_server/src/cuonweb " , "/etc/init.d")
 
         # copy config-files to configdir or configdir/examples
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + " ] ; then mkdir " + self.SERVERCONFIGDIR + " ; fi ")
@@ -316,16 +231,20 @@ class setup:
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + "/sql ] ; then mkdir " + self.SERVERCONFIGDIR + "/sql ; fi ")
         
         # copy all files to example
-        self.executeSCP('../cuon_server/*', self.SERVERCONFIGDIR + "/examples ")
+        self.executeSCP('../cuon_server/examples/*', self.SERVERCONFIGDIR + "/examples ")
         
         # Then check the files 
         #server.ini
-        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
-        #server.ini
-        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/grants.xml ] ; then cp " + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
+        #grants.xml
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/grants.xml ] ; then cp " + self.SERVERCONFIGDIR + "/examples/grants.xml " + self.SERVERCONFIGDIR + "/sql ;  fi ")
+        # user.cfg
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/user.cfg ] ; then cp " + self.SERVERCONFIGDIR + "/examples/user.cfg " + self.SERVERCONFIGDIR + " ; fi ")
         
         
-        
+        #self.src_aiml = "./cuon/AI/AIML"
+        #self.dest_aiml = self.SERVERDIRSHARE + "/AI/AIML"
 
 
         
@@ -343,10 +262,10 @@ class setup:
 
     def executeSSH(self, s):
         ssh = " -p" + self.sshPort + " " + self.sPrefix[0:len(self.sPrefix)-2] 
-        s1 = "ssh " +  ssh +' ' + s
+        s1 = "ssh " +  ssh +' ' + ' "' +  s +'"'
         print s1
         self.setTv1(s1)
-        self.executeString(s1 )
+        self.executeString( s1  )
         
     def executeSCP(self, src, dest):
         scp1 = " -P " + self.sshPort + " "
@@ -366,48 +285,54 @@ class setup:
         self.removePrefix(self.src_main, self.dest_cuon)
         
         print "now create local dirs"
-        self.copyLocalValues(self.src_main, self.dest_main)
+        self.testDir(self.destClient)
+        self.testDir(self.dest_main)
+        
+        self.testDir(self.ClientDirLocale)
+        self.testDir(self.dest_cuon)
+        for key in self.liLocaldirs:
+            self.copyLocalValues(key[0], key[1])
         self.copyLocalValues(self.VERSION_CFG, self.dest_main)
-        self.testDir()
         self.touchFile(self.dest_cuon, '__init__.py')
-        self.copyLocalValues(self.src_server, self.dest_server)
-        self.copyLocalValues(self.src_user,self.dest_user)
-        self.copyLocalValues(self.src_addresses,self.dest_addresses)
-        self.copyLocalValues(self.src_articles,self.dest_articles)
-        self.copyLocalValues(self.src_login,self.dest_login)
-        self.copyLocalValues(self.src_clients,self.dest_clients)
-        self.copyLocalValues(self.src_order,self.dest_order)
-        self.copyLocalValues(self.src_databases,self.dest_databases)
-        self.copyLocalValues(self.src_xml,self.dest_xml)
-        self.copyLocalValues(self.src_xmlrpc,self.dest_xmlrpc)
-        self.copyLocalValues(self.src_typedefs,self.dest_typedefs)
-        self.copyLocalValues(self.src_windows,self.dest_windows)
-        self.copyLocalValues(self.src_log,self.dest_log)
-        self.copyLocalValues(self.src_oo,self.dest_oo)
-        self.copyLocalValues(self.src_misc,self.dest_misc)
-        self.copyLocalValues(self.src_preferences,self.dest_preferences)
-        self.copyLocalValues(self.src_preferences_xml,self.dest_preferences_xml)
-        self.copyLocalValues(self.src_stock,self.dest_stock)
-        self.copyLocalValues(self.src_email,self.dest_email)
-        self.copyLocalValues(self.src_dms,self.dest_dms)
-        self.copyLocalValues(self.src_help,self.dest_help)
-        self.copyLocalValues(self.src_staff,self.dest_staff)
-        self.copyLocalValues(self.src_vtk,self.dest_vtk)
-        self.copyLocalValues(self.src_prefs_finance,self.dest_prefs_finance)
-        self.copyLocalValues(self.src_finances_cab,self.dest_finances)
-        self.copyLocalValues(self.src_finances_ib,self.dest_finances)
-        self.copyLocalValues(self.src_finances_misc,self.dest_finances)
-        self.copyLocalValues(self.src_biblio,self.dest_biblio)
-        self.copyLocalValues(self.src_ai,self.dest_ai)
-        self.copyLocalValues(self.src_project,self.dest_project)
-        #self.copyLocalValues(self.src_,self.dest_)
-        
-        
-        # ext. Modules with GPL
-        self.copyLocalValues(self.src_garden,self.dest_garden)
-        
+##        self.copyLocalValues(self.src_server, self.dest_server)
+##        self.copyLocalValues(self.src_user,self.dest_user)
+##        self.copyLocalValues(self.src_addresses,self.dest_addresses)
+##        self.copyLocalValues(self.src_articles,self.dest_articles)
+##        self.copyLocalValues(self.src_login,self.dest_login)
+##        self.copyLocalValues(self.src_clients,self.dest_clients)
+##        self.copyLocalValues(self.src_order,self.dest_order)
+##        self.copyLocalValues(self.src_databases,self.dest_databases)
+##        self.copyLocalValues(self.src_xml,self.dest_xml)
+##        self.copyLocalValues(self.src_xmlrpc,self.dest_xmlrpc)
+##        self.copyLocalValues(self.src_typedefs,self.dest_typedefs)
+##        self.copyLocalValues(self.src_windows,self.dest_windows)
+##        self.copyLocalValues(self.src_log,self.dest_log)
+##        self.copyLocalValues(self.src_oo,self.dest_oo)
+##        self.copyLocalValues(self.src_misc,self.dest_misc)
+##        self.copyLocalValues(self.src_preferences,self.dest_preferences)
+##        self.copyLocalValues(self.src_preferences_xml,self.dest_preferences_xml)
+##        self.copyLocalValues(self.src_stock,self.dest_stock)
+##        self.copyLocalValues(self.src_email,self.dest_email)
+##        self.copyLocalValues(self.src_dms,self.dest_dms)
+##        self.copyLocalValues(self.src_help,self.dest_help)
+##        self.copyLocalValues(self.src_staff,self.dest_staff)
+##        self.copyLocalValues(self.src_vtk,self.dest_vtk)
+##        self.copyLocalValues(self.src_prefs_finance,self.dest_prefs_finance)
+##        self.copyLocalValues(self.src_finances_cab,self.dest_finances)
+##        self.copyLocalValues(self.src_finances_ib,self.dest_finances)
+##        self.copyLocalValues(self.src_finances_misc,self.dest_finances)
+##        self.copyLocalValues(self.src_biblio,self.dest_biblio)
+##        self.copyLocalValues(self.src_ai,self.dest_ai)
+##        self.copyLocalValues(self.src_project,self.dest_project)
+##        #self.copyLocalValues(self.src_,self.dest_)
+##        
+##        
+##        # ext. Modules with GPL
+##        self.copyLocalValues(self.src_garden,self.dest_garden)
+##        
 
-
+        
+        
     def executeString(self, s):
         print s
         self.setTv1(s)
@@ -415,9 +340,10 @@ class setup:
         self.setTv1(`liResult`)
         
         
-    def testDir(self):
-        s = "if [ ! -d " +  self.dest  + " ] ; then mkdir " +  self.dest  + " ; fi "
+    def testDir(self, destdir):
+        s = "if [ ! -d " +  destdir  + " ] ; then mkdir " +  destdir  + " ; fi "
         self.executeString(s)
+        
     def removePrefix(self, src,dest):
         self.dest = dest.replace(self.sPrefix,'')
         self.src = src.replace(self.sPrefix,'')
@@ -425,7 +351,7 @@ class setup:
     def copyLocalValues(self, src, dest):
         self.removePrefix(src, dest)
         
-        self.testDir()
+        self.testDir(dest)
         
         
         s = " cp " + self.src + " " + self.dest
@@ -442,21 +368,22 @@ class setup:
             print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value   
      
-    def setDefaultServer(self):
+    def setDefaultServer(self,sNewSect = None):
         existDefaultSection = None
         firstSection = None
         cbe = -1
         z = -1
         liName = []
-        store = gtk.ListStore(gobject.TYPE_STRING)
+        self.store = []
         if self.ConfigStatus:
             for sect in self.cpParser.sections():
-                print sect
+                
+                print 'sect = ', sect
                 z += 1  
                 if z == -1:
                     firstSection = sect
                     
-                store.append([sect])
+                self.store.append(sect)
                 if self.getConfigOption(sect, 'default') == 'True':
                     existDefaultSection =  sect
                     cbe = z
@@ -465,10 +392,19 @@ class setup:
             sSect = existDefaultSection
         else:
             sSect = firstSection
+        
+        print 'store = ', `self.store`
+        for i in self.store:
+            print 'listentry = ', i
             
+        
+        for i in range(len(self.store)):
+            s = 'radiobutton'+`i+1`
+            print 's = ', s
+            print 'store = ', self.store[i]
+            self.getWidget(s).set_label(self.store[i])
+            self.getWidget(s).show()
 
-        self.getWidget('cbeName').set_model(store)
-        print 'cbe', cbe
         
         #s += 'Description: Install on local host\n'
         #    s += 'IP: 127.0.0.1\n'
@@ -476,12 +412,17 @@ class setup:
         #    s += 'XMLRPC_PORT: 7080\n'
         #    s += 'Default: True\n'
             
-        self.getWidget('cbeName').set_text_column(cbe)
-        self.setData2Widget(sSect)
-    
+        #self.getWidget('cbeName').set_text_column(cbe)
+        if sNewSect:
+                sSect = sNewSect
+                
+        self.setActiveRadiobutton(sSect)
+            
+        #self.setData2Widget(sSect)
     
     def setData2Widget(self, sSect):
-        
+        self.getWidget('eName').set_text(sSect)
+       
         self.getWidget('eHostIP').set_text(self.getConfigOption(sSect,'IP'))
         self.getWidget('ePortSSH').set_text(self.getConfigOption(sSect,'SSH_PORT'))
         self.getWidget('ePortXmlrpc').set_text(self.getConfigOption(sSect,'XMLRPC_PORT'))
@@ -492,19 +433,45 @@ class setup:
             self.getWidget('rbFalse').set_active(True)
             
 
-
+    def setActiveRadiobutton(self, sSect):
+        for i in range(len(self.store)):
+            s = 'radiobutton'+`i+1`
+            if self.getWidget(s).get_label() == sSect:
+                self.getWidget(s).set_active(True)
+                self.setData2Widget(sSect)
+                
+    def on_radiobutton_toggled(self, event):
+        for i in range(len(self.store)):
+            s = 'radiobutton'+`i+1`
+            if self.getWidget(s).get_active():
+                print 'active = ', s
+                s2 = self.getWidget(s).get_label()
+                print 's2', s2
+                self.setActiveRadiobutton(s2)
+            
     def on_bOK_clicked(self, event):
         # save ini
         print 'bOK', event
         existSect = False
-        nSect = self.getWidget('cbeName').get_text_column()
-        sSect = self.getWidget('cbeName').get_model()[nSect][0]
+##        nSect = self.getWidget('cbeName').get_text_column()
+##        sSect = self.getWidget('cbeName').get_model()[nSect][0]
+##        for sect in self.cpParser.sections():
+##            if sSect == sect:
+##                print 'Data found in Config-file'
+##                existSect = True
+##        print 'nSect = ', nSect
+##        print 'sSect = ', sSect
+##        self.getWidget('cbeName').get_model()[nSect][0]
+##        print 'model = ', self.getWidget('cbeName').get_model()
+##        for i in self.getWidget('cbeName').get_model():
+##            print 'i = ', i 
+##        #self.getWidget('cbeName').get_model()[1][0]
+        
+        sSect = self.getWidget('eName').get_text()
         for sect in self.cpParser.sections():
             if sSect == sect:
                 print 'Data found in Config-file'
                 existSect = True
-                
-        
         if not existSect:
             self.cpParser.add_section(sSect)
         
@@ -521,10 +488,12 @@ class setup:
         f = open(self.sFile,'w')
         self.cpParser.write(f)
         f.close()
-        
+        self.setDefaultServer(sSect)
         # start install
         self.sPrefix = 'root@' + self.getConfigOption(sSect,'IP') + ':/'
         self.sshPort = self.getConfigOption(sSect,'SSH_PORT')
+        print 'install sPrefix = ', self.sPrefix
+        print 'install sshPort = ', self.sshPort
         
         self.install_server()
         
@@ -580,14 +549,13 @@ class setup:
         tv1.set_buffer(buffer)
         buffer = tv1.get_buffer()
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
+        tv1.show()
         
     def main(self, args):
-        self.start()
+        self.setVars()
         self.xml = gtk.glade.XML('GUI/setup.glade2')
         self.setXmlAutoconnect()
         self.setDefaultServer()
         gtk.main()
 stu = setup()
 stu.main(None)
-#stu.start()
-#stu.install_server()

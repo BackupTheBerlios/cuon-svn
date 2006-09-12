@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -27,12 +27,12 @@ class typedefs_server(typedefs):
     def __init__(self):
         typedefs.__init__(self)
         # cuon glade-files
-        self.main_glade_name = '/usr/share/cuon/glade/cuon.glade2'
-        self.databases_glade_name =  '/usr/share/cuon/glade/databases.glade2'
+        self.main_glade_name = './usr/share/cuon/glade/cuon.glade2'
+        self.databases_glade_name =  './usr/share/cuon/glade/databases.glade2'
         #cuon-server
         # self.server = Server ('http://sat1:9673/Cuon')
         #cuon xml-defs
-        self.nameOfXmlTableFiles ={ 'tables.xml' : '/usr/share/cuon/tables.xml', 'ext1.xml' : '/usr/share/cuon/ext1.xml', 'ext2.xml' : '/usr/share/cuon/ext2.xml' }
+        self.nameOfXmlTableFiles ={ 'tables.xml' : './usr/share/cuon/tables.xml', 'ext1.xml' : './usr/share/cuon/ext1.xml', 'ext2.xml' : './usr/share/cuon/ext2.xml' }
 
         self.nameOfXmlEntriesFiles ={  }
         self.nameOfXmlGrantFiles ={ }
@@ -41,31 +41,32 @@ class typedefs_server(typedefs):
         self.nameOfReportFiles ={ }
 
         
-        self.server = os.environ['CUON_SERVER']
-
-        # read init-file
-        fname = os.environ['CUON_INI']
-        MyXml = cuon.XML.MyXML.MyXML()
-        doc = MyXml.readDocument(fname)
-        if doc:
-            cyRootNode = MyXml.getRootNode(doc)
-          
-            cyNode = MyXml.getNode(cyRootNode,'SQLServer')
-            if cyNode:
-                self.SQL_HOST = MyXml.getNodeData(cyNode,'SQL-HOST')
-                self.SQL_USER = MyXml.getNodeData(cyNode,'SQL-USER')
-                self.SQL_PORT = MyXml.getNodeData(cyNode,'SQL-PORT')
-                self.SQL_DB = MyXml.getNodeData(cyNode,'DB')
-
-                print "sql-values"
-                print self.SQL_DB
-                print self.SQL_HOST
-                print self.SQL_PORT
-                print self.SQL_USER
-                   
-         
+##        self.server = os.environ['CUON_SERVER']
+##
+##        # read init-file
+##        fname = os.environ['CUON_INI']
+##        MyXml = cuon.XML.MyXML.MyXML()
+##        doc = MyXml.readDocument(fname)
+##        if doc:
+##            cyRootNode = MyXml.getRootNode(doc)
+##          
+##            cyNode = MyXml.getNode(cyRootNode,'SQLServer')
+##            if cyNode:
+##                self.SQL_HOST = MyXml.getNodeData(cyNode,'SQL-HOST')
+##                self.SQL_USER = MyXml.getNodeData(cyNode,'SQL-USER')
+##                self.SQL_PORT = MyXml.getNodeData(cyNode,'SQL-PORT')
+##                self.SQL_DB = MyXml.getNodeData(cyNode,'DB')
+##
+##                print "sql-values"
+##                print self.SQL_DB
+##                print self.SQL_HOST
+##                print self.SQL_PORT
+##                print self.SQL_USER
+##                   
+##         
         # read xml_init-file
-        fname = os.environ['CUON_INI_XML']
+        #fname = os.environ['CUON_INI_XML']
+        fname = './usr/share/cuon/cuon_ini1.xml'
         MyXml = cuon.XML.MyXML.MyXML()
         doc = MyXml.readDocument(fname)
         if doc:
