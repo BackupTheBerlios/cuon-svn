@@ -339,7 +339,7 @@ class MainWindow(windows):
         #print self.oUser.userName
 
     def on_database1_activate(self,event):
-        daba = cuon.Databases.databases.databaseswindow()
+        daba = cuon.Databases.databases.databaseswindow(True)
     
     def on_usercfg1_activate(self, event):
         self.openDB()
@@ -347,9 +347,13 @@ class MainWindow(windows):
         self.closeDB()
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/user.cfg .')
         ed = cuon.Editor.editor.editorwindow('user.cfg', True)
-        print 'Now Save back'
-        os.system('scp -P ' + td.sshPort + 'user.cfg ' +td.sPrefix + '/etc/cuon/')
         
+    def on_save_configfiles1_activate(self, event):
+        print 'save_config'
+        s = 'scp -P ' + td.sshPort + ' user.cfg ' +td.sPrefix + '/etc/cuon/'
+        print s
+        os.system(s)
+
     def startMain(self):
         #td = typedefs_server()
         # create widget tree ...
@@ -358,6 +362,8 @@ class MainWindow(windows):
         self.loadGladeFile(self.gladeName)
 
     def gtk_main_quit(self):
+        os.system('rm users.cfg')
+        
         gtk.main_quit()
 
 td = cuon.TypeDefs.typedefs_server.typedefs_server() 

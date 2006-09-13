@@ -32,7 +32,7 @@ class typedefs_server(typedefs):
         #cuon-server
         # self.server = Server ('http://sat1:9673/Cuon')
         #cuon xml-defs
-        self.nameOfXmlTableFiles ={ 'tables.xml' : './usr/share/cuon/tables.xml', 'ext1.xml' : './usr/share/cuon/ext1.xml', 'ext2.xml' : './usr/share/cuon/ext2.xml' }
+        self.nameOfXmlTableFiles ={ 'tables.xml' : '../usr/share/cuon/tables.xml', 'ext1.xml' : '../usr/share/cuon/ext1.xml', 'ext2.xml' : '../usr/share/cuon/ext2.xml' }
 
         self.nameOfXmlEntriesFiles ={  }
         self.nameOfXmlGrantFiles ={ }
@@ -66,9 +66,10 @@ class typedefs_server(typedefs):
 ##         
         # read xml_init-file
         #fname = os.environ['CUON_INI_XML']
-        fname = './usr/share/cuon/cuon_ini1.xml'
+        fname = '../usr/share/cuon/cuon_ini1.xml'
         MyXml = cuon.XML.MyXML.MyXML()
         doc = MyXml.readDocument(fname)
+        print doc
         if doc:
             cyRootNode = MyXml.getRootNode(doc)
             cyNode = MyXml.getNode(cyRootNode,'Database')
@@ -97,7 +98,7 @@ class typedefs_server(typedefs):
             print "-----------------> cyNodes(glade) = " + `cyNodes`
 
             cyNodes1 = MyXml.getNodes(cyRootNode[0],'GladeEntries')
-
+            print cyNodes1
             for i in cyNodes1:
 
                 cyFileValue = MyXml.getNodes(i,'Glade-FileValue')

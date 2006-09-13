@@ -9,6 +9,10 @@ import ConfigParser
 class setup:
     def __init__(self):
 
+        self.IP = None
+        self.sPrefix = None
+        self.sshPort = None
+        
         self.store = []
         self.liLocale = ['de','pt','pt_BR']
 
@@ -60,7 +64,7 @@ class setup:
         self.ClientDirIcon =  self.ClientDirUsrShareCuon
 
         
-        self.src_server = "./cuon_server.py"
+        self.src_server = "./cuon_server.py ./cuon_client.py"
         self.dest_server =self.dest_main
          
 
@@ -176,7 +180,7 @@ class setup:
         self.testDir(self.ClientDirUsrShare)
         self.testDir(self.ClientDirUsrShareCuon)
         
-        self.copyLocalValues(self.src_xmlDefaults, self.ClientDirUsrShare)
+        self.copyLocalValues(self.src_xmlDefaults, self.ClientDirUsrShareCuon)
         self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
@@ -220,11 +224,20 @@ class setup:
         
         # startscripts in /etc/init.d
         
-        self.executeSCP("scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
-        self.executeSCP("scp ../cuon_server/src/cuonai " , "/etc/init.d")
-        self.executeSCP("scp ../cuon_server/src/cuonreport " , "/etc/init.d")
-        self.executeSCP("scp ../cuon_server/src/cuonweb " , "/etc/init.d")
-
+        self.executeSCP(" scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
+        self.executeSCP(" scp ../cuon_server/src/cuonai " , "/etc/init.d")
+        self.executeSCP(" scp ../cuon_server/src/cuonreport " , "/etc/init.d")
+        self.executeSCP(" scp ../cuon_server/src/cuonweb " , "/etc/init.d")
+        # make executable
+        self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
+        # aktivierung setzen
+        self.executeSSH(" update-rc.d cuonxmlrpc defaults")
+        self.executeSSH(" update-rc.d cuonweb defaults")
+        self.executeSSH(" update-rc.d cuonreport defaults")
+        self.executeSSH(" update-rc.d cuonai defaults")
+        
+        
+        
         # copy config-files to configdir or configdir/examples
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + " ] ; then mkdir " + self.SERVERCONFIGDIR + " ; fi ")
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + "/examples ] ; then mkdir " + self.SERVERCONFIGDIR + "/examples ; fi ")
@@ -491,6 +504,7 @@ class setup:
         self.setDefaultServer(sSect)
         # start install
         self.sPrefix = 'root@' + self.getConfigOption(sSect,'IP') + ':/'
+        self.IP = self.getConfigOption(sSect,'IP')
         self.sshPort = self.getConfigOption(sSect,'SSH_PORT')
         print 'install sPrefix = ', self.sPrefix
         print 'install sshPort = ', self.sshPort
@@ -550,7 +564,27 @@ class setup:
         buffer = tv1.get_buffer()
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
         tv1.show()
+
+    def on_database_tools1_activate(self, event):
+        s1 = "cd " + self.dest_main + " ;  cuon_server.py " +  self.sPrefix + " " +  self.IP
+        print 's1 = ', s1
+        os.system(s1)
+        print os.system('pwd')
         
+    
+
+    def on_quit1_activate(self, event):
+        self.gtk_main_quit()
+        
+        
+        
+
+
+    def gtk_main_quit(self):
+        #os.system('rm users.cfg')
+        
+        gtk.main_quit()
+
     def main(self, args):
         self.setVars()
         self.xml = gtk.glade.XML('GUI/setup.glade2')

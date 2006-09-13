@@ -40,7 +40,7 @@ class databaseswindow(windows):
     @contact: jh@cyrus.de
     """
     
-    def __init__(self):
+    def __init__(self, servermod = False):
         windows.__init__(self)
         self.openDB()
         self.td = self.loadObject('td')
@@ -50,9 +50,11 @@ class databaseswindow(windows):
 
         # self.setLogLevel(self.INFO)
         self.allTables = {}
-        
-        self.xml = gtk.glade.XML(self.gladeName)
-        self.setXmlAutoconnect()
+        if servermod:
+            self.xml = gtk.glade.XML('../usr/share/cuon/glade/databases.glade2')
+            self.setXmlAutoconnect()
+        else:
+            self.loadGlade('databases.xml')          
 
 #        self.xml.signal_autoconnect({ 'on_close1_activate' : self.on_close1_activate} )
 #        self.xml.signal_autoconnect({ 'on_dbcheck1_activate' : self.on_dbcheck1_activate} )
@@ -439,22 +441,22 @@ class databaseswindow(windows):
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
 
     def saveReportFiles(self):
-
-        self.out( 'start save report-files to zodb')
-        self.out( self.td.nameOfReportFiles, self.INFO)
-        nameOfReportFiles = []
-        for key in self.td.nameOfReportFiles.keys():
-            self.out( 'xml = ' + key, self.INFO)
-            reportName = self.td.nameOfReportFiles[key]
-            self.out( 'reportname = ' + `reportName`, self.INFO)
-            f1 = open(reportName)
-            xml1 = f1.read()
-            f1.close()
-            self.rpc.callRP('Database.saveInfo', key, self.doEncode(repr(cPickle.dumps(xml1) )))
-            nameOfReportFiles.append(key)
-
-        self.rpc.callRP('Database.saveInfo', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
-   
+        pass
+##        self.out( 'start save report-files to zodb')
+##        self.out( self.td.nameOfReportFiles, self.INFO)
+##        nameOfReportFiles = []
+##        for key in self.td.nameOfReportFiles.keys():
+##            self.out( 'xml = ' + key, self.INFO)
+##            reportName = self.td.nameOfReportFiles[key]
+##            self.out( 'reportname = ' + `reportName`, self.INFO)
+##            f1 = open(reportName)
+##            xml1 = f1.read()
+##            f1.close()
+##            self.rpc.callRP('Database.saveInfo', key, self.doEncode(repr(cPickle.dumps(xml1) )))
+##            nameOfReportFiles.append(key)
+##
+##        self.rpc.callRP('Database.saveInfo', 'nameOfReportFiles', self.doEncode(repr( cPickle.dumps(nameOfReportFiles) )))
+##   
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
    
     def importZip(self, filename):

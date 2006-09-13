@@ -13,133 +13,33 @@
       <nameOfGroup>cuon_admin</nameOfGroup>
       <comment>select, update, delete on some preferences</comment>
     </group>
-<group>
-      <nameOfGroup>zope</nameOfGroup>
-      <comment>select on some speziel zope Groups</comment>
-    </group>
+
   </groups>
 
   <users>
   <user>
-      <nameOfUser>cuon</nameOfUser>
-      <comment></comment>
-    </user>
-    <user>
-      <nameOfUser>jhamel</nameOfUser>
-      <comment></comment>
-    </user>
-    <user>
       <nameOfUser>cuon1</nameOfUser>
       <comment></comment>
     </user>
     <user>
-      <nameOfUser>cuon_admin</nameOfUser>
+      <nameOfUser>cuon2</nameOfUser>
       <comment></comment>
     </user>
-   <user>
-      <nameOfUser>zope</nameOfUser>
-      <comment></comment>
-    </user>
-<user>
-      <nameOfUser>heino</nameOfUser>
-      <comment></comment>
-    </user>
-    <user>
-      <nameOfUser>samu2000</nameOfUser>
-      <comment></comment>
-    </user>
-    <user>
-      <nameOfUser>bpfeifer</nameOfUser>
-      <comment></comment>
-    </user>
-    
-    <user>
-      <nameOfUser>rainer</nameOfUser>
-      <comment></comment>
-    </user>                          
-    <user>
-      <nameOfUser>daniel</nameOfUser>
-      <comment></comment>
-    </user> 
-     <user>
-      <nameOfUser>christian</nameOfUser>
-      <comment>gayer</comment>
-    </user> 
-    
-     <user>
-      <nameOfUser>mathis</nameOfUser>
-      <comment>gerkensmeyer</comment>
-    </user>                                                               
+                                     
   </users>
 
   <addgroups>
     <addgroup>
       <this_group>cuon_all</this_group>
-      <this_user>jhamel</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>cuon</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
       <this_user>cuon1</this_user>
       <comment></comment>
     </addgroup>
-   <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>heino</this_user>
-      <comment></comment>
-    </addgroup>
     <addgroup>
       <this_group>cuon_all</this_group>
-      <this_user>bpfeifer</this_user>
+      <this_user>cuon2</this_user>
       <comment></comment>
     </addgroup>
-        <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>samu2000</this_user>
-      <comment></comment>
-    </addgroup>
-        <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>rainer</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>daniel</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>christian</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>cuon_all</this_group>
-      <this_user>mathis</this_user>
-      <comment></comment>
-    </addgroup>
-    <addgroup>
-      <this_group>zope</this_group>
-      <this_user>zope</this_user>
-      <comment></comment>
-    </addgroup>
-   <addgroup>
-      <this_group>cuon_admin</this_group>
-      <this_user>cuon_admin</this_user>
-      <comment></comment>
-    </addgroup>
-
-    <addgroup>
-      <this_group>cuon_admin</this_group>
-      <this_user>jhamel</this_user>
-      <comment></comment>
-    </addgroup>
-
+   
   </addgroups>
   <setGrants>
 <grant>

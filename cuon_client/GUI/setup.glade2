@@ -32,6 +32,50 @@
 	  <property name="child_pack_direction">GTK_PACK_DIRECTION_LTR</property>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="file1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">File</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="file1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="quit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Quit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_quit1_activate" last_modification_time="Wed, 13 Sep 2006 09:05:21 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="services1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Services</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="services1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="database_tools1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Database Tools</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_database_tools1_activate" last_modification_time="Wed, 13 Sep 2006 09:05:21 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="help1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Help</property>
