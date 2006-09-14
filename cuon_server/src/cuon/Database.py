@@ -10,6 +10,7 @@ from cuon.SQL import SQL
 from ConfigParser import ConfigParser
 
 
+
 class Database(xmlrpc.XMLRPC, SQL):
     def __init__(self):
         basics.__init__(self)
@@ -270,10 +271,11 @@ class Database(xmlrpc.XMLRPC, SQL):
        
     def xmlrpc_createGroup(self, sGroup, dicUser):
         # check the group
+        
         sSql = "select groname from pg_group where groname = '" + sGroup + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         
-        if len(dicName):
+        if dicName != 'NONE':
            ok = 'Group exists'
         else:
            sSql = 'CREATE GROUP ' + sGroup
@@ -289,7 +291,7 @@ class Database(xmlrpc.XMLRPC, SQL):
             sSql = "select usename from pg_user where usename = '" + sUser + "'"
             dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
             
-            if len(dicName):
+            if dicName != 'NONE':
                ok = 'User exists'
             else:
                sSql = 'CREATE USER ' + sUser
@@ -305,7 +307,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         sSql = "select groname from pg_group where groname = '" + sGroup + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if len(dicName):
+        if dicName != 'NONE':
            ok = 'GROUP'
            sSql = 'Grant ' +sGrants + ' ON '  + sTable + ' TO GROUP ' + sGroup
            ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -324,12 +326,12 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql = "select usename from pg_user where usename = '" + sUser + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         ok = 'ERROR'
-        if len(dicName):
+        if dicName != 'NONE':
            # check the group
            sSql = "select groname from pg_group where groname = '" + sGroup + "'"
            dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
            ok = 'USER'
-           if len(dicName):
+           if dicName != 'NONE':
               ok = 'GROUP'
               sSql = 'ALTER GROUP ' +sGroup + ' ADD USER ' + sUser
               ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)

@@ -79,7 +79,7 @@
 		      <signal name="activate" handler="on_end1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image9">
+			<widget class="GtkImage" id="image18">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -151,7 +151,20 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Local</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_local1_activate" last_modification_time="Tue, 12 Sep 2006 22:39:15 GMT"/>
+
+		      <child>
+			<widget class="GtkMenu" id="local1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="versioncfg1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">version.cfg</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_versioncfg1_activate" last_modification_time="Thu, 14 Sep 2006 12:25:50 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
 		    </widget>
 		  </child>
 
@@ -183,30 +196,32 @@
 			  </child>
 
 			  <child>
+			    <widget class="GtkSeparatorMenuItem" id="separator2">
+			      <property name="visible">True</property>
+			    </widget>
+			  </child>
+
+			  <child>
 			    <widget class="GtkMenuItem" id="grantsxml1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">grants.xml</property>
 			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_grantsxml1_activate" last_modification_time="Wed, 13 Sep 2006 17:36:03 GMT"/>
+			    </widget>
+			  </child>
 
-			      <child>
-				<widget class="GtkMenu" id="grantsxml1_menu">
+			  <child>
+			    <widget class="GtkSeparatorMenuItem" id="separator1">
+			      <property name="visible">True</property>
+			    </widget>
+			  </child>
 
-				  <child>
-				    <widget class="GtkSeparatorMenuItem" id="separator1">
-				      <property name="visible">True</property>
-				    </widget>
-				  </child>
-
-				  <child>
-				    <widget class="GtkMenuItem" id="save_configfiles1">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Save Configfiles</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_save_configfiles1_activate" last_modification_time="Tue, 12 Sep 2006 15:20:31 GMT"/>
-				    </widget>
-				  </child>
-				</widget>
-			      </child>
+			  <child>
+			    <widget class="GtkMenuItem" id="save_configfiles1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Save Configfiles</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_save_configfiles1_activate" last_modification_time="Tue, 12 Sep 2006 15:20:31 GMT"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -235,7 +250,7 @@
 		      <signal name="activate" handler="on_about1_activate" last_modification_time="Mon, 06 Jan 2003 17:18:21 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image10">
+			<widget class="GtkImage" id="image19">
 			  <property name="visible">True</property>
 			  <property name="stock">gnome-stock-about</property>
 			  <property name="icon_size">1</property>

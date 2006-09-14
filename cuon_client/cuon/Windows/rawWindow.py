@@ -28,6 +28,9 @@ class rawWindow( gladeXml):
             print `self.dicUser`
         else:
             self.dicUser = {}
-        self.dicUserKeys = self.oUser.getDicUserKeys()
+        try:
+            self.dicUserKeys = self.oUser.getDicUserKeys()
+        except Exception, params:
+            print Exception, params
            
     

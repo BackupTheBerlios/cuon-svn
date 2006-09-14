@@ -18,6 +18,10 @@
 
   <users>
   <user>
+      <nameOfUser>zope</nameOfUser>
+      <comment></comment>
+    </user>
+  <user>
       <nameOfUser>cuon1</nameOfUser>
       <comment></comment>
     </user>

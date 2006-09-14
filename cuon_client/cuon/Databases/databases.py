@@ -11,7 +11,7 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 # -*- coding: utf-8 -*-
 
-import sys
+
 from types import *
 import pygtk
 pygtk.require('2.0')
@@ -30,6 +30,8 @@ import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
 import  cuon.Databases.SingleCuon
 import codecs
+import ConfigParser
+
 
 class databaseswindow(windows):
     """
@@ -100,15 +102,20 @@ class databaseswindow(windows):
             
             
         sc = cuon.Databases.SingleCuon.SingleCuon(self.allTables)
-        f = file('version','r')
-        s = f.readline()
-        s1 = s.split()
-        n1 = s1[0].strip()
-        v1 = s1[1].strip()
-        sFile = s1[2].strip()
-        f.close()
-        print s1
+        cpParser = ConfigParser.ConfigParser()
+        f = file('version.cfg','r')
+        cpParser.readfp(f)
         
+        try:
+            
+            n1 = self.cpParser.get('version', 'Name')
+            v1 = self.cpParser.get('version', 'Major') + '.' + self.cpParser.get('version', 'Minor') + '-' + self.cpParser.get('version', 'Rev')
+            sFile = self.cpParser.get('version', 'File')
+        except Exception, param:
+            print "Error read version-configfile" + `sFile`
+            print Exception
+            print param
+
         try:
             f = file(sFile,'rb')
             b = f.read()
@@ -121,11 +128,12 @@ class databaseswindow(windows):
             sc.saveExternalData(dicValues,['clientdata'])
 
         except Exception, param:
-            print "Error open Versionsfile"
+            print "Error open Versionsfile" + `sFile`
             print Exception
             print param
  
-                                
+        f.close()
+        
                             
         
     
@@ -580,75 +588,78 @@ class databaseswindow(windows):
     def setGrants(self):
         self.out("set grants")
         self.out(self.td.nameOfXmlGrantFiles)
-        for key in self.td.nameOfXmlGrantFiles.keys():
-            print 'xml = ' + key
-            doc = self.readDocument(self.td.nameOfXmlGrantFiles[key])
-            # groups
-            if doc:
-                cyRootNode = self.getRootNode(doc)
-                cyNode = self.getNode(cyRootNode,'groups')
-                cyNodes = self.getNodes(cyNode[0],'group')
-                if cyNodes:
-                    for i in cyNodes:
-                        groupNode = self.getNodes(i,'nameOfGroup')
-                        group = self.getData(groupNode[0])
-                        self.out(group)
-                        print 'group = ' + `group`
-                        print `self.dicUser`
-                        ok = self.rpc.callRP('Database.createGroup', group, self.dicUser)       
-                        self.out(ok)
+        
+        #for key in self.td.nameOfXmlGrantFiles.keys():
+        
+        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/grants.xml inifiles')
+        #doc = self.readDocument(self.td.nameOfXmlGrantFiles[key])
+        doc = self.readDocument('inifiles/grants.xml')
+        # groups
+        if doc:
+            cyRootNode = self.getRootNode(doc)
+            cyNode = self.getNode(cyRootNode,'groups')
+            cyNodes = self.getNodes(cyNode[0],'group')
+            if cyNodes:
+                for i in cyNodes:
+                    groupNode = self.getNodes(i,'nameOfGroup')
+                    group = self.getData(groupNode[0])
+                    self.out(group)
+                    print 'group = ' + `group`
+                    print `self.dicUser`
+                    ok = self.rpc.callRP('Database.createGroup', group, self.dicUser)       
+                    self.out(ok)
+        
+        # user
+        if doc:
+            cyRootNode = self.getRootNode(doc)
+            cyNode = self.getNode(cyRootNode,'users')
+            cyNodes = self.getNodes(cyNode[0],'user')
+            self.out('CyNodes' + `cyNodes`) 
+            if cyNodes:
+                for i in cyNodes:
+                    userNode = self.getNodes(i,'nameOfUser')
+                    user = self.getData(userNode[0])
+                    self.out('User = ' + `user`)
+                    print 'User = ' + `user`
+                    ok = self.rpc.callRP('Database.createUser', user,'None', self.dicUser, 1)       
+                    self.out(ok)
 
-            # user
-            if doc:
-                cyRootNode = self.getRootNode(doc)
-                cyNode = self.getNode(cyRootNode,'users')
-                cyNodes = self.getNodes(cyNode[0],'user')
-                self.out('CyNodes' + `cyNodes`) 
-                if cyNodes:
-                    for i in cyNodes:
-                        userNode = self.getNodes(i,'nameOfUser')
-                        user = self.getData(userNode[0])
-                        self.out('User = ' + `user`)
-                        print 'User = ' + `user`
-                        ok = self.rpc.callRP('Database.createUser', user,'None', self.dicUser, 1)       
-                        self.out(ok)
 
+        # add user to group
+        if doc:
+            cyRootNode = self.getRootNode(doc)
+            cyNode = self.getNode(cyRootNode,'addgroups')
+            cyNodes = self.getNodes(cyNode[0],'addgroup')
+            self.out('CyNodes' + `cyNodes`) 
+            if cyNodes:
+                for i in cyNodes:
+                    userNode = self.getNodes(i,'this_user')
+                    user = self.getData(userNode[0])
+                    groupNode = self.getNodes(i,'this_group')
+                    group = self.getData(groupNode[0])
+                    self.out('User = ' + `user` + ' , Group = ' + group)
+                    ok = self.rpc.callRP('Database.addUserToGroup', user, group, self.dicUser)       
+                    self.out(ok)
 
-            # add user to group
-            if doc:
-                cyRootNode = self.getRootNode(doc)
-                cyNode = self.getNode(cyRootNode,'addgroups')
-                cyNodes = self.getNodes(cyNode[0],'addgroup')
-                self.out('CyNodes' + `cyNodes`) 
-                if cyNodes:
-                    for i in cyNodes:
-                        userNode = self.getNodes(i,'this_user')
-                        user = self.getData(userNode[0])
-                        groupNode = self.getNodes(i,'this_group')
-                        group = self.getData(groupNode[0])
-                        self.out('User = ' + `user` + ' , Group = ' + group)
-                        ok = self.rpc.callRP('Database.addUserToGroup', user, group, self.dicUser)       
-                        self.out(ok)
-
-            # add grants to group
-            if doc:
-                cyRootNode = self.getRootNode(doc)
-                cyNode = self.getNode(cyRootNode,'setGrants')
-                cyNodes = self.getNodes(cyNode[0],'grant')
-                self.out('CyNodes' + `cyNodes`) 
-                if cyNodes:
-                    for i in cyNodes:
-                        grantNode = self.getNodes(i,'this_grants')
-                        grants = self.getData(grantNode[0])
-                        tableNode = self.getNodes(i,'this_tables')
-                        tables = self.getData(tableNode[0])
-                        groupNode = self.getNodes(i,'this_group')
-                        group = self.getData(groupNode[0])
-                        print'Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables
-                        ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, tables, self.dicUser)       
-                        self.out(ok)
-                                                                    
-                        
+        # add grants to group
+        if doc:
+            cyRootNode = self.getRootNode(doc)
+            cyNode = self.getNode(cyRootNode,'setGrants')
+            cyNodes = self.getNodes(cyNode[0],'grant')
+            self.out('CyNodes' + `cyNodes`) 
+            if cyNodes:
+                for i in cyNodes:
+                    grantNode = self.getNodes(i,'this_grants')
+                    grants = self.getData(grantNode[0])
+                    tableNode = self.getNodes(i,'this_tables')
+                    tables = self.getData(tableNode[0])
+                    groupNode = self.getNodes(i,'this_group')
+                    group = self.getData(groupNode[0])
+                    print'Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables
+                    ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, tables, self.dicUser)       
+                    self.out(ok)
+                                                                
+                    
 
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)

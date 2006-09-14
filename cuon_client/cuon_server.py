@@ -323,6 +323,8 @@ class MainWindow(windows):
         
      
         self.oUser = cuon.User.user.User()
+        os.system('rm -Rf inifiles')
+        os.system('mkdir inifiles')
 
     def on_end1_activate(self,event):
         print "exit cuon"
@@ -341,18 +343,49 @@ class MainWindow(windows):
     def on_database1_activate(self,event):
         daba = cuon.Databases.databases.databaseswindow(True)
     
+
+    #edit local config-files
+    def on_versioncfg1_activate(self, event):
+        ed = cuon.Editor.editor.editorwindow('version.cfg', True)
+        
+    #edit Server config-files
     def on_usercfg1_activate(self, event):
         self.openDB()
         self.td = self.loadObject('td')
         self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/user.cfg .')
-        ed = cuon.Editor.editor.editorwindow('user.cfg', True)
+        os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
+        
+    def on_serverini1_activate(self, event):
+        self.openDB()
+        self.td = self.loadObject('td')
+        self.closeDB()
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/server.ini inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/server.ini', True)
+        
+    
+    def on_grantsxml1_activate(self, event):
+        self.openDB()
+        self.td = self.loadObject('td')
+        self.closeDB()
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/grants.xml inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/grants.xml', True)
         
     def on_save_configfiles1_activate(self, event):
+        
         print 'save_config'
-        s = 'scp -P ' + td.sshPort + ' user.cfg ' +td.sPrefix + '/etc/cuon/'
+        s = 'scp -P ' + td.sshPort + ' inifiles/user.cfg ' +td.sPrefix + '/etc/cuon/'
         print s
         os.system(s)
+
+        s = 'scp -P ' + td.sshPort + ' inifiles/server.ini ' +td.sPrefix + '/etc/cuon/'
+        print s
+        os.system(s)
+
+        s = 'scp -P ' + td.sshPort + ' inifiles/grants.xml ' +td.sPrefix + '/etc/cuon/sql'
+        print s
+        os.system(s)
+
 
     def startMain(self):
         #td = typedefs_server()
@@ -378,7 +411,7 @@ if len(sys.argv) > 2:
     
 if len(sys.argv) > 3:
     td.sPrefix = 'root@' + sys.argv[3] + ':/'
-    print "Server = ", td.sPrefix
+    print "sPrefix = ", td.sPrefix
     print "-------------####################--------------"
     
 

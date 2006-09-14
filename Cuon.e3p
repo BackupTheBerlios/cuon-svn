@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.8.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-09-08, 00:14:57 -->
+<!-- Saved: 2006-09-14, 00:48:42 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.8">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1238,11 +1238,23 @@
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
-      <Name>startCuon.py</Name>
+      <Name>setup.py</Name>
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
-      <Name>setup.py</Name>
+      <Dir>cuon</Dir>
+      <Dir>Editor</Dir>
+      <Name>editor.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Editor</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Name>cuon_client.py</Name>
     </Source>
   </Sources>
   <Forms>
@@ -1639,6 +1651,11 @@
       <Dir>GUI</Dir>
       <Name>entry_hibernation.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Name>Editor</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1646,10 +1663,10 @@
     <VcsOtherData>{'standardLayout': 1}</VcsOtherData>
   </Vcs>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

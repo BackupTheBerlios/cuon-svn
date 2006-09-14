@@ -1,3 +1,4 @@
+#!/usr/bin/python 
 import os
 import pygtk
 import gtk
@@ -12,6 +13,9 @@ class setup:
         self.IP = None
         self.sPrefix = None
         self.sshPort = None
+        self.XmlrpcPort = None
+        self.Locale = None
+        self.Protocol = None
         
         self.store = []
         self.liLocale = ['de','pt','pt_BR']
@@ -31,6 +35,10 @@ class setup:
             s += 'SSH_PORT: 22\n'
             s += 'XMLRPC_PORT: 7080\n'
             s += 'Default: True\n'
+            s += 'Locale: de\n'
+            s += 'Protocol: http\n'
+            
+            
             
             f.write(s)
             f.close()
@@ -168,11 +176,11 @@ class setup:
         
         for sLocale in self.liLocale:
             dir = self.ClientDirLocale +"/" + sLocale
-            self.executeString("if [ ! -d  " + dir + " ; then mkdir " +  dir + " ] ; fi ")
+            self.executeString("if [ ! -d  " + dir + " ] ; then mkdir " +  dir + "  ; fi ")
             dir2 = dir + "/LC_MESSAGES"
-            self.executeString("if [ ! -d  " + dir2 + " ; then mkdir " +  dir2 + " ] ; fi ")
+            self.executeString("if [ ! -d  " + dir2 + " ] ; then mkdir " +  dir2 + "  ; fi ")
             
-            self.executeString("cp cuon_" + sLocale + " " + dir2 + '/cuon.mo')
+            self.executeString("cp cuon_" + sLocale + ".mo " + dir2 + '/cuon.mo')
         
             self.executeString('cp ../cuon_server/src/'+ sLocale + '.mo ' + dir2 + '/cuon_server.mo')
         
@@ -430,7 +438,8 @@ class setup:
                 sSect = sNewSect
                 
         self.setActiveRadiobutton(sSect)
-            
+        self.setOptions2Data(sSect)
+        
         #self.setData2Widget(sSect)
     
     def setData2Widget(self, sSect):
@@ -444,8 +453,19 @@ class setup:
             self.getWidget('rbTrue').set_active(True)
         else:
             self.getWidget('rbFalse').set_active(True)
+        try:    
+            self.getWidget('eLocale').set_text(self.getConfigOption(sSect,'Locale'))
+        except:
+            pass
+        try:    
+            self.getWidget('eProtocol').set_text(self.getConfigOption(sSect,'Protocol'))
+        except:
+            pass
             
-
+            
+            
+        self.setOptions2Data(sSect)
+        
     def setActiveRadiobutton(self, sSect):
         for i in range(len(self.store)):
             s = 'radiobutton'+`i+1`
@@ -462,55 +482,19 @@ class setup:
                 print 's2', s2
                 self.setActiveRadiobutton(s2)
             
-    def on_bOK_clicked(self, event):
-        # save ini
-        print 'bOK', event
-        existSect = False
-##        nSect = self.getWidget('cbeName').get_text_column()
-##        sSect = self.getWidget('cbeName').get_model()[nSect][0]
-##        for sect in self.cpParser.sections():
-##            if sSect == sect:
-##                print 'Data found in Config-file'
-##                existSect = True
-##        print 'nSect = ', nSect
-##        print 'sSect = ', sSect
-##        self.getWidget('cbeName').get_model()[nSect][0]
-##        print 'model = ', self.getWidget('cbeName').get_model()
-##        for i in self.getWidget('cbeName').get_model():
-##            print 'i = ', i 
-##        #self.getWidget('cbeName').get_model()[1][0]
+    
         
-        sSect = self.getWidget('eName').get_text()
-        for sect in self.cpParser.sections():
-            if sSect == sect:
-                print 'Data found in Config-file'
-                existSect = True
-        if not existSect:
-            self.cpParser.add_section(sSect)
-        
-        self.cpParser.set(sSect,'IP', self.getWidget('eHostIP').get_text())
-        self.cpParser.set(sSect,'SSH_PORT', self.getWidget('ePortSSH').get_text())
-        self.cpParser.set(sSect,'XMLRPC_PORT', self.getWidget('ePortXmlrpc').get_text())
-        self.cpParser.set(sSect,'Description', self.getWidget('eDescription').get_text())
-        if self.getWidget('rbTrue').get_active():
-            self.cpParser.set(sSect,'Default','True')
-        else:
-            self.cpParser.set(sSect,'Default','False')
-        print 'Save File'
-        
-        f = open(self.sFile,'w')
-        self.cpParser.write(f)
-        f.close()
-        self.setDefaultServer(sSect)
-        # start install
+    def setOptions2Data(self, sSect):
         self.sPrefix = 'root@' + self.getConfigOption(sSect,'IP') + ':/'
         self.IP = self.getConfigOption(sSect,'IP')
         self.sshPort = self.getConfigOption(sSect,'SSH_PORT')
+        self.XmlrpcPort = self.getConfigOption(sSect,'XMLRPC_PORT')
+        self.Locale = self.getConfigOption(sSect,'Locale')
+        self.Protocol = self.getConfigOption(sSect,'Protocol')
+        
         print 'install sPrefix = ', self.sPrefix
         print 'install sshPort = ', self.sshPort
-        
-        self.install_server()
-        
+        print 'install XmlrpcPort = ', self.XmlrpcPort
         
         
         
@@ -565,20 +549,85 @@ class setup:
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
         tv1.show()
 
+    def saveData2File(self):
+        print 'save Data to config-File'
+        existSect = False
+##        nSect = self.getWidget('cbeName').get_text_column()
+##        sSect = self.getWidget('cbeName').get_model()[nSect][0]
+##        for sect in self.cpParser.sections():
+##            if sSect == sect:
+##                print 'Data found in Config-file'
+##                existSect = True
+##        print 'nSect = ', nSect
+##        print 'sSect = ', sSect
+##        self.getWidget('cbeName').get_model()[nSect][0]
+##        print 'model = ', self.getWidget('cbeName').get_model()
+##        for i in self.getWidget('cbeName').get_model():
+##            print 'i = ', i 
+##        #self.getWidget('cbeName').get_model()[1][0]
+        
+        sSect = self.getWidget('eName').get_text()
+        for sect in self.cpParser.sections():
+            if sSect == sect:
+                print 'Data found in Config-file'
+                existSect = True
+        if not existSect:
+            self.cpParser.add_section(sSect)
+        
+        self.cpParser.set(sSect,'IP', self.getWidget('eHostIP').get_text())
+        self.cpParser.set(sSect,'SSH_PORT', self.getWidget('ePortSSH').get_text())
+        self.cpParser.set(sSect,'XMLRPC_PORT', self.getWidget('ePortXmlrpc').get_text())
+        self.cpParser.set(sSect,'Description', self.getWidget('eDescription').get_text())
+        if self.getWidget('rbTrue').get_active():
+            self.cpParser.set(sSect,'Default','True')
+        else:
+            self.cpParser.set(sSect,'Default','False')
+            
+        self.cpParser.set(sSect,'Locale', self.getWidget('eLocale').get_text())
+        self.cpParser.set(sSect,'Protocol', self.getWidget('eProtocol').get_text())
+            
+        print 'Save File'
+        
+        f = open(self.sFile,'w')
+        self.cpParser.write(f)
+        f.close()
+        self.setDefaultServer(sSect)
+        
+        
     def on_database_tools1_activate(self, event):
-        s1 = "cd " + self.dest_main + " ;  cuon_server.py " +  self.sPrefix + " " +  self.IP
+        s1 = "cd " + self.dest_main + " ; python  cuon_server.py " + self.Protocol + '://' +  self.IP +':' + self.XmlrpcPort + ' ' + self.sshPort + " " + self.IP
         print 's1 = ', s1
         os.system(s1)
         print os.system('pwd')
         
-    
+    def on_create_client1_activate(self, event):
+        print 'create client'
+        s1 = "python cuon_client.py " + self.Protocol + '://' +  self.IP +':' + self.XmlrpcPort + ' ' + self.Locale
+        
+        print 's1 = ', s1
+        os.system(s1)
+        print os.system('pwd')
 
     def on_quit1_activate(self, event):
         self.gtk_main_quit()
         
         
         
-
+    # Buttons
+    
+    # save Data
+    def on_bSaveData_clicked(self, event):
+        self.saveData2File()
+        
+    # Install 
+    def on_bOK_clicked(self, event):
+        # save ini
+        self.saveData2File()
+        
+        # start install
+        
+        
+        self.install_server()
 
     def gtk_main_quit(self):
         #os.system('rm users.cfg')

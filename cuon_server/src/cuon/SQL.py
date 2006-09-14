@@ -28,6 +28,7 @@ class SQL(xmlrpc.XMLRPC, basics):
 
         # put here sUser
         print 'sUser=', sUser
+        self.writeLog('User = ' + sUser, self.debug)
         #DSN = 'dbname=cuon host=localhost user=' + sUser
         conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
         #curs.execute(cSql.decode('utf-8'))
@@ -47,7 +48,12 @@ class SQL(xmlrpc.XMLRPC, basics):
         if rows:
             try:
                 dicResult = rows.dictresult()
-            except:
+            except Exception, params:
+                self.writeLog('try dic-Result', self.debug)
+                self.writeLog(Exception, self.debug)
+                self.writeLog(params, self.debug)
+                self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
+                
                 dicResult = None
         else:
             dicResult = None

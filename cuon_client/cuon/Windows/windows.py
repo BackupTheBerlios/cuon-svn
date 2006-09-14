@@ -104,7 +104,7 @@ class windows(rawWindow, MyXML, messages):
         self.win1.hide()
 
     def checkClient(self):
-        if not self.dicUser['client'] > 0:
+        if not self.dicUser.has_key('client') or not self.dicUser['client'] > 0:
             self.dicUser = {}
             
     def clearSearch(self, event):
