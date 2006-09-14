@@ -516,7 +516,7 @@ class setup:
             if event.get_model()[nSect][0] == sect:
                 print 'Data found', sect
                 self.setData2Widget(sect)
-        
+                
     
         
     def setXmlAutoconnect(self):
