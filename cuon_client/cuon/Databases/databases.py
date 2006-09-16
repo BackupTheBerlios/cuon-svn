@@ -105,17 +105,17 @@ class databaseswindow(windows):
         cpParser = ConfigParser.ConfigParser()
         f = file('version.cfg','r')
         cpParser.readfp(f)
-        
+        sFile = None
         try:
             
-            n1 = self.cpParser.get('version', 'Name')
-            v1 = self.cpParser.get('version', 'Major') + '.' + self.cpParser.get('version', 'Minor') + '-' + self.cpParser.get('version', 'Rev')
-            sFile = self.cpParser.get('version', 'File')
+            n1 = cpParser.get('version', 'Name')
+            v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '-' + cpParser.get('version', 'Rev')
+            sFile = cpParser.get('version', 'File')
         except Exception, param:
             print "Error read version-configfile" + `sFile`
             print Exception
             print param
-
+        
         try:
             f = file(sFile,'rb')
             b = f.read()
@@ -128,7 +128,7 @@ class databaseswindow(windows):
             sc.saveExternalData(dicValues,['clientdata'])
 
         except Exception, param:
-            print "Error open Versionsfile" + `sFile`
+            print "Error open Versionsfile " + `sFile`
             print Exception
             print param
  
