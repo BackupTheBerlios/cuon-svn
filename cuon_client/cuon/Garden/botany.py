@@ -175,8 +175,9 @@ class botanywindow(chooseWindows):
 
         # start
         self.singleBotanyGenus.ID = -3
-        self.tabOption = self.tabBotany
-        self.tabChanged()
+        nb = self.getWidget('notebook1')
+        nb.set_current_page(self.tabBotany)
+        #self.tabChanged()
 
               
        
