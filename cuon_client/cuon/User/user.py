@@ -255,12 +255,12 @@ class User:
         self.dicUser['Debug'] = self.sDebug
         
         self.dicUser['prefPath'] = self.prefPath
-        self.dicUser['prefApps'] = self.prefApps
         
         self.dicUser['SessionID'] = self.getSessionID()
         self.dicUser['userType'] = self.userType
         self.dicUser['prefColor'] = self.prefColor
         self.dicUser['prefDMS'] = self.prefDMS
+        self.dicUser['prefApps'] = self.prefApps
         
         self.dicUser['client'] = self.client
         
@@ -325,7 +325,9 @@ class User:
             self.prefDMS['exe']['internet'] = result['exe_internet']
             self.prefDMS['exe']['html'] = result['exe_html']
             
-            self.prefApps['PDF']=self.prefDMS['exe']['pdf']
+            self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
+            print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
+            print "prefApps['PDF'] 1= ",  prefApps['PDF']
         except Exception, param:
             print Exception
             print param

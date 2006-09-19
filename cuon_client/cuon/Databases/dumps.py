@@ -76,9 +76,11 @@ class dumps:
     def doDecode(self, s):
         return  base64.decodestring(s)
 
-    def saveTmpData(self, data):
+    def saveTmpData(self, data, typ):
         s = ''
-        
+        if not typ:
+            typ = 'pdf'
+            
         n = random.randint(0,1000000000)
         for i in range(27):
             ok = True
@@ -89,7 +91,7 @@ class dumps:
                     s = s + chr(r)
     
         s = s + `n`
-        s =  os.path.normpath(os.environ['CUON_HOME'] + '/cuon__' +  s + `time.time()`)
+        s =  os.path.normpath(os.environ['CUON_HOME'] + '/cuon__' +  s + `time.time()` + '.' + typ)
         f = open(s,'wb')
         f.write(data)
         f.close()
@@ -99,6 +101,7 @@ class dumps:
         #print "PDF", Pdf
         
         s = self.doDecode(Pdf)
-        fname = self.saveTmpData(s)
-        os.system(self.dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
+        fname = self.saveTmpData(s, 'pdf')
+        print 'PDF-App = ', dicUser['prefApps']['PDF']
+        print os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
         

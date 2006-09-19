@@ -174,7 +174,8 @@ class botanywindow(chooseWindows):
         
 
         # start
-        
+        self.singleBotanyGenus.ID = -3
+        self.tabOption = self.tabBotany
         self.tabChanged()
 
               
@@ -416,6 +417,8 @@ class botanywindow(chooseWindows):
         elif self.tabOption == self.tabBotany:
             if self.sWhereSearch and self.sSearchTable == self.singleBotany.sNameOfTable:
                self.singleBotany.sWhere  = self.sWhereSearch             
+            elif int(self.singleBotanyGenus.ID) == -3:
+                self.singleBotany.sWhere  = self.sWhereSearch
             else:
                 self.singleBotany.sWhere  ='where genus_id = ' + `int(self.singleBotanyGenus.ID)`
             self.singleBotany.connectTree()

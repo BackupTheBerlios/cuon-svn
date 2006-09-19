@@ -459,7 +459,8 @@ class windows(rawWindow, MyXML, messages):
         if sProfile:
             result = self.rpc.callRP('User.getStandardProfile',  sProfile,  self.oUser.getDicUser() )
             self.printOut( 'Result Profile')
-            self.printOut( result)
+            print  'result: ', result
+            
             if result != 'NONE':
                 self.oUser.userLocales ='de'
                 if result.has_key('encoding'):

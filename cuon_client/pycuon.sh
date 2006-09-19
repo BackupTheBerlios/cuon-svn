@@ -70,9 +70,13 @@ $EXEC cuon_server.py $Server server $3
 
 client)
 echo " Server = $Server"
-sudo make install_server
-cd CUON/
-$EXEC  Cuon.py $Server client $3
+#sudo make install_server
+cd Client
+cp -R CUON/* ~/cuon/bin
+cp -R locale ~/cuon
+cd ~/cuon/bin
+
+$EXEC  Cuon.py $Server client NO ~/cuon/locale
 ;;
 
 profile)

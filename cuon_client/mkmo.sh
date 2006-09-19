@@ -1,9 +1,13 @@
-cd cuon
-find -name "*.py" > po.files
-cd ..
+
+find cuon/ -name "*.py" > po.files
+find cuon/ -name "*.c" >> po.files
+
+
 echo "./Cuon.py" >> po.files
 
-find -name "*.c" >> po.files
+find GUI/ -name "*.c" >> po.files
+
+echo "`pwd`"
 echo "po.files created"
 
 xgettext -k_ -kN_ -o messages.pot -f po.files  

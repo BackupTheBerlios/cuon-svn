@@ -234,6 +234,27 @@
 			<default></default>
 			<comment></comment>
 		</field>  
+        <field>
+			<name>status_ready</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+      <field>
+			<name>status_invoice_printed</name>
+			<type>bool</type>
+			<pkey>0</pkey>
+			<unique>0</unique>
+			<notnull>0</notnull>
+			<size>0</size>
+			<default></default>
+			<comment></comment>
+		</field>  
+
     
 </table>
 <table>

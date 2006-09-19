@@ -1560,7 +1560,7 @@
 		  <child>
 		    <widget class="GtkFileChooserButton" id="gfcb_ImportFile">
 		      <property name="visible">True</property>
-		      <property name="title" translatable="yes">Datei auswählen</property>
+		      <property name="title" translatable="yes">choose file</property>
 		      <property name="action">GTK_FILE_CHOOSER_ACTION_OPEN</property>
 		      <property name="local_only">True</property>
 		      <property name="show_hidden">False</property>

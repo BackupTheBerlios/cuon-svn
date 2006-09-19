@@ -92,8 +92,8 @@ except Exception, param:
     print "Error read version-configfile" 
     print Exception
     print param
-os.system('rm cuon_client-' + v1 + 'tar.bz2 ')
-print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar -cjf $S1/cuon_client-' + v1 + 'tar.bz2 *' )
+os.system('rm cuon_client-' + v1 + '.tar.bz2 ')
+print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar -cjf $S1/cuon_client-' + v1 + '.tar.bz2 *' )
 
 
 

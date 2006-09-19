@@ -227,5 +227,29 @@
      <next_widget>eEndsStaffNumber</next_widget>
 
     </entry>
+    <entry>
+      <name>cbHibernationReady</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>status_ready</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+     <next_widget>LAST</next_widget>
+
+    </entry>
+    <entry>
+      <name>cbHibernationInvoicePrinted</name>
+      <type>checkbox</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>status_invoice_printed</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+     <next_widget>LAST</next_widget>
+
+    </entry>
   </table>
 </entries_for_table>

@@ -50,8 +50,8 @@ class SQL(xmlrpc.XMLRPC, basics):
                 dicResult = rows.dictresult()
             except Exception, params:
                 self.writeLog('try dic-Result', self.debug)
-                self.writeLog(Exception, self.debug)
-                self.writeLog(params, self.debug)
+                self.writeLog(`Exception`, self.debug)
+                self.writeLog(`params`, self.debug)
                 self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
                 
                 dicResult = None

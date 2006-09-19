@@ -95,11 +95,13 @@ class Garden(xmlrpc.XMLRPC, basics):
     def xmlrpc_getIncomingNumber(self, orderNumber, dicUser):
                 
         nr = 0
-        sSqlSearch = 'select incoming_number from list_of_hibernation_incoming where order_number = ' + `orderNumber`
+        sSqlSearch = 'select incoming_number from list_of_hibernation_incoming where order_number = ' \
+            + `orderNumber`  + ' and client = ' + `dicUser['client']`
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         if dicResult == 'NONE':
            sSql1 = 'insert into list_of_hibernation_incoming ( id, incoming_number, order_number) '
-           sSql1 = sSql1 + ' values (nextval(\'list_of_hibernation_incoming_id\'),nextval(\'numerical_hibernation_incoming_document\'), ' 
+           sSql1 = sSql1 + ' values (nextval(\'list_of_hibernation_incoming_id\'),nextval(\'numerical_hibernation_incoming_document_client_'  \
+            + `dicUser['client']` +'\'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'
            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
