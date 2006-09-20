@@ -1,0 +1,60 @@
+<entries_for_table>
+  <table>
+    <table_name>project_task_staff_res</table_name>
+    <entry>
+      <name>eMRArticleNumber</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>article_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+     <entry>
+      <name>eMRDate</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>get_at</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+ <entry>
+      <name>eMRUnit</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>unit</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+     <entry>
+      <name>eMRPlanedAmount</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>planed_amount</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+      <entry>
+      <name>eMRRealAmount</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>real_amount</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+    </table>
+
+  </entries_for_table>

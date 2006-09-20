@@ -1,0 +1,69 @@
+<entries_for_table>
+  <table>
+    <table_name>projects</table_name>
+    <entry>
+      <name>eName</name>
+      <type>textline</type>
+      <size>140</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>name</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+    <entry>
+      <name>eDesignation</name>
+      <type>textline</type>
+      <size>140</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+ <entry>
+      <name>eProjectTime</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>project_time_in_days</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+<entry>
+      <name>eProjectStartAt</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>project_starts_at</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eProjectEndsAt</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>project_ends_at</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+       <entry>
+      <name>eAddressNumber</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>customer_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    </table>
+    
+  </entries_for_table>

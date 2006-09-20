@@ -260,6 +260,10 @@ class setup:
             + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
         #grants.xml
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/grants.xml ] ; then cp " + self.SERVERCONFIGDIR + "/examples/grants.xml " + self.SERVERCONFIGDIR + "/sql ;  fi ")
+        # sql.xml
+        # copy trigger to etc/cuon/sql
+        self.executeSCP('sql.xml', self.SERVERCONFIGDIR + "/sql")
+        
         # user.cfg
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/user.cfg ] ; then cp " + self.SERVERCONFIGDIR + "/examples/user.cfg " + self.SERVERCONFIGDIR + " ; fi ")
         

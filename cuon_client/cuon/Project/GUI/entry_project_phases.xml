@@ -1,0 +1,58 @@
+<entries_for_table>
+  <table>
+    <table_name>project_phases</table_name>
+    <entry>
+      <name>ePhaseName</name>
+      <type>textline</type>
+      <size>140</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>name</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+    <entry>
+      <name>ePhaseDesignation</name>
+      <type>textline</type>
+      <size>140</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+ <entry>
+      <name>ePhaseTime</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>time_in_days</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+<entry>
+      <name>ePhaseStartAt</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>starts_at</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>ePhaseEndsAt</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>ends_at</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    </table>
+    
+  </entries_for_table>

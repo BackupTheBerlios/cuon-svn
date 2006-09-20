@@ -1,0 +1,85 @@
+<entries_for_table>
+  <table>
+    <table_name>project_task_staff_res</table_name>
+    <entry>
+      <name>eSRStaffNumber</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>staff_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+     <entry>
+      <name>eSRPlanedDate</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>planed_working_day</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+ <entry>
+      <name>eSRRealDate</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>real_working_day</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+     <entry>
+      <name>eSRPlanedBegin</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type></verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>planed_time_begin</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+      <entry>
+      <name>eSRPlanedEnd</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type></verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>planed_time_ends</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+     <entry>
+      <name>eSRRealBegin</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type></verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>real_time_begin</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+      <entry>
+      <name>eSRRealEnd</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type></verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>real_time_ends</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
+    
+    
+    </table>
+
+  </entries_for_table>

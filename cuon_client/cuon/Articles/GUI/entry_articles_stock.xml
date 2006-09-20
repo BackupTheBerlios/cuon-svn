@@ -1,0 +1,37 @@
+<entries_for_table>
+  <table>
+    <table_name>articles_webshop</table_name>
+ 
+    <entry>
+      <name>chkbVerifyStock</name>
+      <type>checkbutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>is_check_stock</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+   </entry>
+   <entry>
+      <name>eMinimumAmount</name>
+      <type>textline</type>
+      <size>1</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>minimum_stock</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>eMaximumAmount</name>
+      <type>textline</type>
+      <size>1</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>maximum_stock</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+ 
+ </table>
+</entries_for_table>

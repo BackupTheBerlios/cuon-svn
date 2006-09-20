@@ -664,107 +664,115 @@ class databaseswindow(windows):
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)
         self.out("set procedures and trigger")
-        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/trigger.xml inifiles')
+        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/sql.xml inifiles')
+        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/server.ini inifiles')
         
         
-        self.out(self.td.nameOfXmlSQLFiles)
-        for key in self.td.nameOfXmlSQLFiles.keys():
-            self.out( 'xml = ' + key)
-            doc = self.readDocument(self.td.nameOfXmlSQLFiles[key])
-            # procedures
-            if doc:
-                cyRootNode = self.getRootNode(doc)
-                cyNode = self.getNode(cyRootNode,'postgre_sql')
-                cyNodes = self.getNodes(cyNode[0],'function')
-                if cyNodes:
-                    for i in cyNodes:
-                        self.out("Werte in xml")
-                                                
-                        funcNode = self.getNodes(i,'nameOfFunction')
-                        newName = self.getData(funcNode[0])
-                        self.out(newName)
+        doc = self.readDocument('inifiles/sql.xml')
+        # procedures
+        if doc:
+            cyRootNode = self.getRootNode(doc)
+            cyNode = self.getNode(cyRootNode,'postgre_sql')
+            cyNodes = self.getNodes(cyNode[0],'function')
+            f = file('inifiles/server.ini','r')
+            cpParser = ConfigParser.ConfigParser()
+            cpParser.readfp(f)
+            sFile = None
+            f.close()
+            
+            try:
+            
+                SQL_DB = cpParser.get('POSTGRES', 'POSTGRES_DB')
+                SQL_HOST = cpParser.get('POSTGRES', 'POSTGRES_HOST')
+                SQL_USER = cpParser.get('POSTGRES', 'POSTGRES_USER')
+                SQL_PORT = cpParser.get('POSTGRES', 'POSTGRES_PORT')
+            except Exception, param:
+                print Exception, param
+                
+            if cyNodes:
+                for i in cyNodes:
+                    self.out("Werte in xml")
+                                            
+                    funcNode = self.getNodes(i,'nameOfFunction')
+                    newName = self.getData(funcNode[0])
+                    self.out(newName)
 
-                        funcNode = self.getNodes(i,'old_name')
-                        oldName = self.getData(funcNode[0])
-                        self.out(oldName)
+                    funcNode = self.getNodes(i,'old_name')
+                    oldName = self.getData(funcNode[0])
+                    self.out(oldName)
 
-                        funcNode = self.getNodes(i,'language')
-                        sql_lang = self.getData(funcNode[0])
-                        self.out(sql_lang)
+                    funcNode = self.getNodes(i,'language')
+                    sql_lang = self.getData(funcNode[0])
+                    self.out(sql_lang)
 
-                        funcNode = self.getNodes(i,'textOfFunction')
-                        func = self.getData(funcNode[0])
-                        self.out(func)
-                        # first delete the function ( specified in Old_name )
-                        sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
-                        #ok = self.rpc.callRP('Database.createPsql', 'cuon','sat1','5432','jhamel', sSql)
-                        self.out("td-values")
-                        self.out(self.td.SQL_DB)
-                        self.out(self.td.SQL_HOST)
-                        self.out(self.td.SQL_PORT)
-                        self.out(self.td.SQL_USER)
-                        self.out(sSql)
-                        
-                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
-                        self.out(ok)
-                        print sSql                       
-                        print ok
+                    funcNode = self.getNodes(i,'textOfFunction')
+                    func = self.getData(funcNode[0])
+                    self.out(func)
+                    # first delete the function ( specified in Old_name )
+                    sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
+                    #ok = self.rpc.callRP('Database.createPsql', 'cuon','sat1','5432','jhamel', sSql)
+                    
+                    
+                    ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)       
+                    self.out(ok)
+                    print sSql                       
+                    print ok
 
-                        
-                        sSql = 'CREATE FUNCTION ' + newName + ' AS \'  '  
-                        sSql = sSql + func
-                        sSql = sSql + ' \''
-                        sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
-                        self.out('sql = ' + sSql)
-                        sSql = string.replace(sSql,';', '\\;')
-                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)
-                        self.out(ok)
-                        print sSql                       
-                        print ok
+                    
+                    sSql = 'CREATE FUNCTION ' + newName + ' AS \'  '  
+                    sSql = sSql + func
+                    sSql = sSql + ' \''
+                    sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
+                    self.out('sql = ' + sSql)
+                    sSql = string.replace(sSql,';', '\\;')
+                    ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
+                    self.out(ok)
+                    print sSql                       
+                    print ok
 
 
-                # Trigger
-                cyNodes = self.getNodes(cyNode[0],'trigger')
-                if cyNodes:
-                    for i in cyNodes:
-                        self.out("Werte in xml")
-                                                
-                        triggerNode = self.getNodes(i,'nameOfTrigger')
-                        newName = self.getData(triggerNode[0])
-                        self.out(newName)
+            # Trigger
+            cyNodes = self.getNodes(cyNode[0],'trigger')
+            if cyNodes:
+                for i in cyNodes:
+                    self.out("Werte in xml")
+                                            
+                    triggerNode = self.getNodes(i,'nameOfTrigger')
+                    newName = self.getData(triggerNode[0])
+                    self.out(newName)
 
-                        triggerNode = self.getNodes(i,'table')
-                        table = self.getData(triggerNode[0])
-                        self.out(table)
+                    triggerNode = self.getNodes(i,'table')
+                    table = self.getData(triggerNode[0])
+                    self.out(table)
 
-                        triggerNode = self.getNodes(i,'action')
-                        action = self.getData(triggerNode[0])
-                        self.out(action)
+                    triggerNode = self.getNodes(i,'action')
+                    action = self.getData(triggerNode[0])
+                    self.out(action)
 
-                        triggerNode = self.getNodes(i,'cursor')
-                        cursor = self.getData(triggerNode[0])
-                        self.out(cursor)
+                    triggerNode = self.getNodes(i,'cursor')
+                    cursor = self.getData(triggerNode[0])
+                    self.out(cursor)
 
-                        triggerNode = self.getNodes(i,'textOfTrigger')
-                        triggerText = self.getData(triggerNode[0])
-                        self.out(triggerText)
+                    triggerNode = self.getNodes(i,'textOfTrigger')
+                    triggerText = self.getData(triggerNode[0])
+                    self.out(triggerText)
 
-                        
-                        # first delete the trigger called newName
-                        sSql = 'DROP TRIGGER ' + newName
-                        
-                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
-                        self.out(ok) 
-                        print sSql                       
-                        print ok
+                    
+                    # first delete the trigger called newName
+                    sSql = 'DROP TRIGGER ' + newName
+                    
+                    ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
+                    self.out(ok) 
+                    print sSql                       
+                    print ok
 
-                        #then create the trigger called newName
-                        sSql = 'CREATE TRIGGER ' + newName + ' '
-                        sSql = sSql + action + ' ON ' + table
-                        sSql = sSql + ' ' + cursor + ' ' + triggerText 
-                        
-                        ok = self.rpc.callRP('Database.createPsql', self.td.SQL_DB,self.td.SQL_HOST,self.td.SQL_PORT, self.td.SQL_USER, sSql)       
-                        self.out(ok)
-                        print sSql                       
-                        print ok
+                    #then create the trigger called newName
+                    sSql = 'CREATE TRIGGER ' + newName + ' '
+                    sSql = sSql + action + ' ON ' + table
+                    sSql = sSql + ' ' + cursor + ' ' + triggerText 
+                    
+                    ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
+                    self.out(ok)
+                    print sSql                       
+                    print ok
 
