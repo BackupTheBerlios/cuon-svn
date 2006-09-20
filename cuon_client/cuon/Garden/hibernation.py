@@ -384,7 +384,15 @@ class hibernationwindow(chooseWindows):
         self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
         
         #self.singleHibernation.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
-        liSearch = ['number',sNumber, 'designation', sDesignation]
+        liSearch = []
+        if sNumber:
+            liSearch.append('number')
+            liSearch.append(sNumber)
+        if sDesignation:
+            liSearch.append('designation')
+            liSearch.append(sDesignation)
+            
+            
         self.singleHibernation.sWhere = self.getWhere(liSearch)
         self.out(self.singleHibernation.sWhere, self.ERROR)
         self.refreshTree()

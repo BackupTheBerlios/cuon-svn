@@ -664,6 +664,9 @@ class databaseswindow(windows):
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)
         self.out("set procedures and trigger")
+        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/trigger.xml inifiles')
+        
+        
         self.out(self.td.nameOfXmlSQLFiles)
         for key in self.td.nameOfXmlSQLFiles.keys():
             self.out( 'xml = ' + key)

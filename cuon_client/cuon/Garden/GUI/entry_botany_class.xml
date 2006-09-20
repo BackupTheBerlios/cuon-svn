@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>botany_class</table_name>
+
+    <entry>
+      <name>eClassName</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>name</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+       
+      <entry>
+      <name>eClassDescription</name>
+      <type>textline</type>
+      <size>240</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>description</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eClassLocalName</name>
+      <type>textline</type>
+      <size>160</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>local_name</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     </table>
+</entries_for_table>

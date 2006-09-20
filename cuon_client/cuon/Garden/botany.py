@@ -365,8 +365,18 @@ class botanywindow(chooseWindows):
         else:
             sSearchName = 'name'
             
-                
-        liSearch = [sSearchName,sName, 'local_name', sLocalName,'description',sDescription]
+        
+        liSearch = []
+        if sName:
+            liSearch.append(sSearchName)
+            liSearch.append(sName)
+        if sLocalName:
+            liSearch.append('local_name')
+            liSearch.append( sLocalName)
+        if sDescription:
+            liSearch.append('description')
+            liSearch.append(sDescription)
+            
         
         self.sWhereSearch = self.getWhere(liSearch)
         self.out(self.singleBotany.sWhere, self.ERROR)

@@ -303,6 +303,7 @@ class windows(rawWindow, MyXML, messages):
         sWhere = None
         args.reverse()
         firstWhere = True
+        print args
         while args:
             s = args.pop()
             v = args.pop()
@@ -475,9 +476,7 @@ class windows(rawWindow, MyXML, messages):
                 self.oUser.userSQLTimeFormat = 'HH24:MI'
                 #self.oUser.prefPath = {}
                 
-                self.oUser = self.oUser.getUser(result)
-                print 'user by windows = ', self.oUser
-                print 'dicUser = ', self.oUser.getDicUser()
+                self.loadUserFromPreferences(result)
 
                 
         else:
@@ -562,4 +561,12 @@ class windows(rawWindow, MyXML, messages):
     def saveDataQuestion(self):
         self.saveData()
         self.doEdit = self.noEdit
+        
+    def loadUserFromPreferences(self, result):
+        self.oUser = self.oUser.getUser(result)
+        print 'user by windows = ', self.oUser
+        print 'dicUser = ', self.oUser.getDicUser()
+        self.openDB()
+        self.saveObject('User', self.oUser)
+        self.closeDB()
         
