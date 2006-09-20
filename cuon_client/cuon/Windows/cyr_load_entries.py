@@ -51,9 +51,11 @@ class cyr_load_entries(MyXML, dumps):
 
 
     def getListOfEntriesNames(self, sFile):
+        allLists = []
         doc = self.getEntriesDescription(sFile)
         #        cyRootNode = self.getRootNode(doc)
-        allLists = doc.getElementsByTagName("table")
+        if doc:
+            allLists = doc.getElementsByTagName("table")
         return allLists
     
 

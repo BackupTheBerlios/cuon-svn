@@ -157,12 +157,7 @@
       <Entry-File>dms.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_dms.xml</Entry-FileValue>
     </Entries>
- <Entries>		
-      <Entry-Name>cuon</Entry-Name>
-      <Entry-File>cashAccount.xml</Entry-File>
-      <Entry-FileValue>../usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
-    </Entries>
-     
+ 
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>
