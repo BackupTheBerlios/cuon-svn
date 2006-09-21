@@ -40,12 +40,12 @@ class gladeXml(dumps):
         self.xmlAutoconnect = False
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.accel_group = gtk.AccelGroup()
+        self.accel_groups = {}
         self.dicAccelKeys = {}
         self.dicAccelKeys['edit'] = 'e'
         self.dicAccelKeys['save'] = 's'
         self.dicAccelKeys['new'] = 'n'
         self.dicAccelKeys['print'] = 'p'
-        self.dicAccelKeys['edit'] = 'e'
 
         
     def setXml(self, xml):
@@ -145,22 +145,40 @@ class gladeXml(dumps):
         item = self.getWidget(sMenuItem)
         self.printOut( 'item by Enable Menu', `item`)
         if cKey:
-            item = self.addKeyToItem(item,cKey)
+            item = self.addKeyToItem(sName, item,cKey)
             
         liMenuItems.append(item)
 
         self.dictEnabledMenuItems[sName] = liMenuItems
 
-    def addKeyToItem(self, item, cKey):
+    
+    def addKeyToItem(self,sName, item, cKey):
+##        if self.accel_groups.has_key(sName):
+##            accel = self.accel_groups[sName]
+##        else:
+##            accel = gtk.AccelGroup()
+##            self.accel_groups[sName] = accel
+##            
+        
+            
         item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        ##self.accel_groups[sName] = accel
+        
         return item
     
+##    def setAccel(self, sMenuItem, sName):
+##        item = self.getWidget('menuitem1_menu')
+##        accel = self.accel_groups[sName]
+##        print 'accel by set = ', accel
+##        item.set_accel_group(accel)
+##        
+##        
     def removeEnabledMenuItems(self, sName):
         if self.dictEnabledMenuItems.has_key(sName):
                  del self.dictEnabledMenuItems[sName]
         
 
-    def enableMenuItem(self, sName):
+    def enableMenuItem(self, sName, sAccel = None, sMenuItem = None):
     
         if  self.dictEnabledMenuItems.has_key(sName):
             liMenuItems =  self.dictEnabledMenuItems[sName]
@@ -168,13 +186,16 @@ class gladeXml(dumps):
                 if i != None:
                     self.printOut( 'GladeXML-Name = ',sName)
                     i.set_sensitive(True)
-
+                    
                     
                     self.printOut( 'GladeXML-Widget-Name = ', i.get_name())
                     
                 else:
                     self.printOut( 'No Menuitem')
-
+##        if sAccel:
+##            print 'set Accel'
+##            self.setAccel(sMenuItem,sAccel)
+##            
     def disableMenuItem(self, sName):
         try:
             liMenuItems =  self.dictEnabledMenuItems[sName]

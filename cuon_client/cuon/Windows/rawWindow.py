@@ -1,6 +1,8 @@
 from  gladeXml import gladeXml
 import cuon.TypeDefs.typedefs
 import ConfigParser
+import gtk
+import types
 
 class rawWindow( gladeXml):
     def __init__(self):

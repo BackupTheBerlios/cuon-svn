@@ -108,15 +108,15 @@ class hibernationwindow(chooseWindows):
 
         # Close Menus for Tab
 
-        self.addEnabledMenuItems('tabs','mi_Hibernation1')
-        self.addEnabledMenuItems('tabs','mi_Plant1')
-        self.addEnabledMenuItems('tabs','mi_sales1')
+        self.addEnabledMenuItems('tabs','hibernation1')
+        self.addEnabledMenuItems('tabs','plant1')
+        #self.addEnabledMenuItems('tabs','mi_sales1')
 
 
         # seperate Menus
-        self.addEnabledMenuItems('Hibernation','mi_Hibernation1')
-        self.addEnabledMenuItems('Plant','mi_Plant1')
-        self.addEnabledMenuItems('sales','mi_sales1')
+        self.addEnabledMenuItems('Hibernation','hibernation1')
+        self.addEnabledMenuItems('Plant','plant1')
+        #self.addEnabledMenuItems('sales','mi_sales1')
 
         
         # enabledMenues for Hibernation
@@ -126,13 +126,13 @@ class hibernationwindow(chooseWindows):
         self.addEnabledMenuItems('editHibernation','edit1',self.dicUserKeys['hibernation_edit'])
 
         # enabledMenues for Hibernation_plant
-        self.addEnabledMenuItems('editHibernationPlant','PlantNew1', self.dicUserKeys['hibernation_plant_new'])
-        self.addEnabledMenuItems('editHibernationPlant','PlantClear1', self.dicUserKeys['hibernation_plant_delete'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantNew1', self.dicUserKeys['hibernation_new'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantClear1', self.dicUserKeys['hibernation_delete'])
         #self.addEnabledMenuItems('editHibernationPlant','PlantPrint1', self.dicUserKeys['hibernation_plant_print'])
-        self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['hibernation_plant_edit'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['hibernation_edit'])
 
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['hibernation_save'])
-        self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['hibernation_plant_save'])
+        self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['hibernation_save'])
 
 
         # tabs from notebook
@@ -443,14 +443,16 @@ class hibernationwindow(chooseWindows):
         if self.tabOption == self.tabHibernation:
             #Address
             self.disableMenuItem('tabs')
-            self.enableMenuItem('Hibernation')
+            self.enableMenuItem('Hibernation','editHibernation','hibernation1' )
+            
             print 'Seite 0'
             self.editAction = 'editHibernation'
+            
             
         elif self.tabOption == self.tabPlant:
             #Partner
             self.disableMenuItem('tabs')
-            self.enableMenuItem('Plant')
+            self.enableMenuItem('Plant','editHibernationPlant','plant1')
             self.editAction = 'editHibernationPlant'
             print 'Seite 1'
             
