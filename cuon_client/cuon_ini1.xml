@@ -32,8 +32,18 @@
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>addresses_bank.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_addresses_bank.xml</Entry-FileValue>
+    </Entries>
+    <Entries>	
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>partner_schedul.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_partner_schedul.xml</Entry-FileValue>
+    </Entries>
+    <Entries>	
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>bank.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_bank.xml</Entry-FileValue>
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
@@ -427,7 +437,11 @@
       <Glade-File>botany.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/botany.glade2</Glade-FileValue>
     </GladeEntries>
-
+<GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>bank.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/bank.glade2</Glade-FileValue>
+    </GladeEntries>
   </Glade_Init_Files>
   
   

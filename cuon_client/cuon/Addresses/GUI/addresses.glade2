@@ -39,7 +39,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_datei1">
 	      <property name="visible">True</property>
-	      <property name="label">_File</property>
+	      <property name="label" translatable="yes">_File</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -48,14 +48,14 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_choosePrinter1">
 		      <property name="visible">True</property>
-		      <property name="label">Print S_etup...</property>
+		      <property name="label" translatable="yes">Print S_etup...</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_choosePrinter1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="separator2">
+		    <widget class="GtkSeparatorMenuItem" id="separator2">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -63,17 +63,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_quit1">
 		      <property name="visible">True</property>
-		      <property name="label">close</property>
+		      <property name="label" translatable="yes">close</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image557">
+			<widget class="GtkImage" id="image565">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -88,25 +88,25 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_edit">
 	      <property name="visible">True</property>
-	      <property name="label">Edit</property>
+	      <property name="label" translatable="yes">Edit</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
 		<widget class="GtkMenu" id="mi_edit_menu">
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="undo1">
+		    <widget class="GtkMenuItem" id="undo1">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-undo</property>
+		      <property name="label" translatable="yes">gtk-undo</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_undo1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="find1">
+		    <widget class="GtkMenuItem" id="find1">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-find</property>
+		      <property name="label" translatable="yes">gtk-find</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_find1_activate"/>
 		    </widget>
@@ -116,7 +116,7 @@
 		    <widget class="GtkMenuItem" id="chooseAddress">
 		      <property name="visible">True</property>
 		      <property name="sensitive">False</property>
-		      <property name="label">choose</property>
+		      <property name="label" translatable="yes">choose</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_chooseAddress_activate"/>
 		    </widget>
@@ -129,7 +129,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_address1">
 	      <property name="visible">True</property>
-	      <property name="label">_Addresses</property>
+	      <property name="label" translatable="yes">_Addresses</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -138,17 +138,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_new1">
 		      <property name="visible">True</property>
-		      <property name="label">_New</property>
+		      <property name="label" translatable="yes">_New</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_new1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image558">
+			<widget class="GtkImage" id="image566">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -159,7 +159,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_edit1">
 		      <property name="visible">True</property>
-		      <property name="label">_Edit</property>
+		      <property name="label" translatable="yes">_Edit</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_edit1_activate"/>
 		    </widget>
@@ -168,17 +168,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_save1">
 		      <property name="visible">True</property>
-		      <property name="label">_Save</property>
+		      <property name="label" translatable="yes">_Save</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_save1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image559">
+			<widget class="GtkImage" id="image567">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -187,7 +187,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="trennlinie2">
+		    <widget class="GtkSeparatorMenuItem" id="trennlinie2">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -195,17 +195,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_print1">
 		      <property name="visible">True</property>
-		      <property name="label">_Print</property>
+		      <property name="label" translatable="yes">_Print</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_print1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image560">
+			<widget class="GtkImage" id="image568">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -214,7 +214,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="trennlinie5">
+		    <widget class="GtkSeparatorMenuItem" id="trennlinie5">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -222,17 +222,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_clear1">
 		      <property name="visible">True</property>
-		      <property name="label">_Delete</property>
+		      <property name="label" translatable="yes">_Delete</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_delete1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image561">
+			<widget class="GtkImage" id="image569">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -247,7 +247,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_bank1">
 	      <property name="visible">True</property>
-	      <property name="label">Bank</property>
+	      <property name="label" translatable="yes">Bank</property>
 	      <property name="use_underline">True</property>
 	      <signal name="activate" handler="on_bank1_activate"/>
 
@@ -255,20 +255,29 @@
 		<widget class="GtkMenu" id="mi_bank1_menu">
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="new1">
+		    <widget class="GtkMenuItem" id="new1">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-new</property>
+		      <property name="label" translatable="yes">gtk-new</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_BankNew1_activate"/>
+		      <signal name="activate" handler="on_bank_new1_activate" last_modification_time="Wed, 20 Sep 2006 14:34:28 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="mi_BankEdit1">
+		    <widget class="GtkMenuItem" id="save1">
 		      <property name="visible">True</property>
-		      <property name="label">_Edit</property>
+		      <property name="label" translatable="yes">save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_BankEdit1_activate"/>
+		      <signal name="activate" handler="on_bank_save1_activate" last_modification_time="Wed, 20 Sep 2006 14:34:28 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="bank_edit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">_Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_bank_edit1_activate" last_modification_time="Wed, 20 Sep 2006 14:34:28 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -279,7 +288,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_misc1">
 	      <property name="visible">True</property>
-	      <property name="label">Misc</property>
+	      <property name="label" translatable="yes">Misc</property>
 	      <property name="use_underline">True</property>
 	      <signal name="activate" handler="on_misc1_activate"/>
 
@@ -289,17 +298,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_MiscSave1">
 		      <property name="visible">True</property>
-		      <property name="label">Save</property>
+		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_MiscSave1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image562">
+			<widget class="GtkImage" id="image570">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -310,7 +319,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_MiscEdit1">
 		      <property name="visible">True</property>
-		      <property name="label">_Edit</property>
+		      <property name="label" translatable="yes">_Edit</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_MiscEdit1_activate"/>
 		    </widget>
@@ -323,7 +332,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_partner1">
 	      <property name="visible">True</property>
-	      <property name="label">_Partner</property>
+	      <property name="label" translatable="yes">_Partner</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -332,17 +341,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_PartnerNew1">
 		      <property name="visible">True</property>
-		      <property name="label">_New</property>
+		      <property name="label" translatable="yes">_New</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_PartnerNew1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image563">
+			<widget class="GtkImage" id="image571">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -353,7 +362,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_PartnerEdit1">
 		      <property name="visible">True</property>
-		      <property name="label">_Edit</property>
+		      <property name="label" translatable="yes">_Edit</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_PartnerEdit1_activate"/>
 		    </widget>
@@ -362,17 +371,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_PartnerSave1">
 		      <property name="visible">True</property>
-		      <property name="label">Save</property>
+		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_PartnerSave1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image564">
+			<widget class="GtkImage" id="image572">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -381,22 +390,22 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="separator1">
+		    <widget class="GtkSeparatorMenuItem" id="separator1">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="mi_partnerPrint1">
+		    <widget class="GtkMenuItem" id="mi_partnerPrint1">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-print</property>
+		      <property name="label" translatable="yes">gtk-print</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_mi_PartnerPrint1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="separator3">
+		    <widget class="GtkSeparatorMenuItem" id="separator3">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -404,17 +413,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="mi_PartnerDelete1">
 		      <property name="visible">True</property>
-		      <property name="label">_Delete</property>
+		      <property name="label" translatable="yes">_Delete</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_PartnerDelete1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image565">
+			<widget class="GtkImage" id="image573">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
 			  <property name="xpad">0</property>
 			  <property name="ypad">0</property>
 			</widget>
@@ -429,7 +438,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_schedul1">
 	      <property name="visible">True</property>
-	      <property name="label">Schedul</property>
+	      <property name="label" translatable="yes">Schedul</property>
 	      <property name="use_underline">True</property>
 	      <signal name="activate" handler="on_schedul1_activate"/>
 
@@ -437,9 +446,9 @@
 		<widget class="GtkMenu" id="mi_schedul1_menu">
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="mi_SchedulNew">
+		    <widget class="GtkMenuItem" id="mi_SchedulNew">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-new</property>
+		      <property name="label" translatable="yes">gtk-new</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_SchedulNew_activate"/>
 		    </widget>
@@ -448,16 +457,16 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_SchedulEdit1">
 		      <property name="visible">True</property>
-		      <property name="label">_Edit</property>
+		      <property name="label" translatable="yes">_Edit</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_SchedulEdit1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="mi_schedulSave">
+		    <widget class="GtkMenuItem" id="mi_schedulSave">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-save</property>
+		      <property name="label" translatable="yes">gtk-save</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_SchedulSave_activate"/>
 		    </widget>
@@ -470,7 +479,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_lists1">
 	      <property name="visible">True</property>
-	      <property name="label">Lists</property>
+	      <property name="label" translatable="yes">Lists</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -479,7 +488,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="listAddresses1">
 		      <property name="visible">True</property>
-		      <property name="label">Addresses</property>
+		      <property name="label" translatable="yes">Addresses</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
@@ -488,7 +497,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="PhoneList">
 			      <property name="visible">True</property>
-			      <property name="label">Phone</property>
+			      <property name="label" translatable="yes">Phone</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_liAddressesPhone1_activate"/>
 			    </widget>
@@ -501,7 +510,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="list_partner1">
 		      <property name="visible">True</property>
-		      <property name="label">Partner</property>
+		      <property name="label" translatable="yes">Partner</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
@@ -510,7 +519,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="phone1">
 			      <property name="visible">True</property>
-			      <property name="label">Phone</property>
+			      <property name="label" translatable="yes">Phone</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_liAddressesPhone11_activate"/>
 			    </widget>
@@ -527,7 +536,7 @@
 	  <child>
 	    <widget class="GtkMenuItem" id="mi_writer1">
 	      <property name="visible">True</property>
-	      <property name="label">Writer</property>
+	      <property name="label" translatable="yes">Writer</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
@@ -536,7 +545,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="newletter1">
 		      <property name="visible">True</property>
-		      <property name="label">NewLetter</property>
+		      <property name="label" translatable="yes">NewLetter</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_newletter1_activate"/>
 		    </widget>
@@ -1264,7 +1273,7 @@
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			  <property name="width_chars">7</property>
-	      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
+			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1312,8 +1321,8 @@
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			  <property name="width_chars">30</property>
-		    <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
- 		 </widget>
+			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
+			</widget>
 			<packing>
 			  <property name="padding">0</property>
 			  <property name="expand">True</property>
@@ -1349,7 +1358,7 @@
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
-     </widget>
+			</widget>
 			<packing>
 			  <property name="padding">0</property>
 			  <property name="expand">True</property>
@@ -1385,7 +1394,7 @@
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			  <property name="width_chars">3</property>
-		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
+			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1492,7 +1501,7 @@
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
-		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
+			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1516,7 +1525,7 @@
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
 			  <property name="width_chars">7</property>
-		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
+			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1811,48 +1820,6 @@
 	      <property name="column_spacing">0</property>
 
 	      <child>
-		<widget class="GtkEntry" id="eBCN">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="editable">True</property>
-		  <property name="visibility">True</property>
-		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
-		  <property name="has_frame">True</property>
-		  <property name="invisible_char">*</property>
-		  <property name="activates_default">False</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkEntry" id="eAccount">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="editable">True</property>
-		  <property name="visibility">True</property>
-		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
-		  <property name="has_frame">True</property>
-		  <property name="invisible_char">*</property>
-		  <property name="activates_default">False</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">1</property>
-		  <property name="right_attach">2</property>
-		  <property name="top_attach">1</property>
-		  <property name="bottom_attach">2</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
 		<widget class="GtkScrolledWindow" id="scrolledwindow2">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
@@ -1862,7 +1829,7 @@
 		  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 		  <child>
-		    <widget class="GtkTextView" id="textview1">
+		    <widget class="GtkTextView" id="tvBank">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -1891,9 +1858,87 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label28">
+		<widget class="GtkVBox" id="vbox7">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">B C N</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkButton" id="bChooseBank">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">choose Bank</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bChooseBank_clicked" last_modification_time="Wed, 20 Sep 2006 15:02:07 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eBankID">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <signal name="changed" handler="on_eBankID_changed" last_modification_time="Wed, 20 Sep 2006 15:02:43 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">0</property>
+		  <property name="bottom_attach">1</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkEntry" id="eAccountNumber">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkLabel" id="label27">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">Account-Nr.</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1913,15 +1958,15 @@
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
-		  <property name="x_options"></property>
+		  <property name="x_options">fill</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label27">
+		<widget class="GtkLabel" id="label28">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Account</property>
+		  <property name="label" translatable="yes">depositor</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1941,22 +1986,43 @@
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">1</property>
 		  <property name="bottom_attach">2</property>
-		  <property name="x_options"></property>
+		  <property name="x_options">fill</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="label26">
+		<widget class="GtkEntry" id="eDepositor">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Name of the Bank</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkLabel" id="label48">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">IBAN</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
 		  <property name="wrap">False</property>
 		  <property name="selectable">False</property>
 		  <property name="xalign">0</property>
-		  <property name="yalign">0</property>
+		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
 		  <property name="ypad">0</property>
 		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
@@ -1967,9 +2033,30 @@
 		<packing>
 		  <property name="left_attach">0</property>
 		  <property name="right_attach">1</property>
-		  <property name="top_attach">0</property>
-		  <property name="bottom_attach">1</property>
-		  <property name="x_options"></property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkEntry" id="eIban">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="editable">True</property>
+		  <property name="visibility">True</property>
+		  <property name="max_length">0</property>
+		  <property name="text" translatable="yes"></property>
+		  <property name="has_frame">True</property>
+		  <property name="invisible_char">*</property>
+		  <property name="activates_default">False</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">1</property>
+		  <property name="right_attach">2</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>

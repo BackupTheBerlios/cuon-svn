@@ -79,7 +79,7 @@
 		      <signal name="activate" handler="on_end1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image18">
+			<widget class="GtkImage" id="image20">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -202,11 +202,43 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="grantsxml1">
+			    <widget class="GtkMenuItem" id="sqlrights">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">grants.xml</property>
+			      <property name="label" translatable="yes">SQL Rights</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_grantsxml1_activate" last_modification_time="Wed, 13 Sep 2006 17:36:03 GMT"/>
+			      <signal name="activate" handler=" " last_modification_time="Thu, 21 Sep 2006 12:15:13 GMT"/>
+
+			      <child>
+				<widget class="GtkMenu" id="sqlrights_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="user_and_groups1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">User and Groups</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_user_and_groups1_activate" last_modification_time="Thu, 21 Sep 2006 12:15:13 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="group_and_tabular1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Group and tabular</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_group_and_tabular1_activate" last_modification_time="Thu, 21 Sep 2006 12:15:13 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="create_grants_file1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Create Grants File</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_create_grants_file1_activate" last_modification_time="Thu, 21 Sep 2006 12:15:13 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
 			    </widget>
 			  </child>
 
@@ -250,7 +282,7 @@
 		      <signal name="activate" handler="on_about1_activate" last_modification_time="Mon, 06 Jan 2003 17:18:21 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image19">
+			<widget class="GtkImage" id="image21">
 			  <property name="visible">True</property>
 			  <property name="stock">gnome-stock-about</property>
 			  <property name="icon_size">1</property>

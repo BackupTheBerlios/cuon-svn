@@ -258,14 +258,22 @@ class setup:
         #server.ini
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/server.ini " + self.SERVERCONFIGDIR + " ; fi ")
-        #grants.xml
-        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/grants.xml ] ; then cp " + self.SERVERCONFIGDIR + "/examples/grants.xml " + self.SERVERCONFIGDIR + "/sql ;  fi ")
+            
+        #cfg files for sql
+        # all right to user cuon_all
+        self.executeSCP('GroupRightsCuon.cfg', self.SERVERCONFIGDIR + "/sql")
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/GroupRightsOther.cfg ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/GroupRightsOther.cfg " + self.SERVERCONFIGDIR + "/sql ;  fi ")
+            
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/UserGroups.cfg ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/UserGroups.cfg " + self.SERVERCONFIGDIR + "/sql ;  fi ")
         # sql.xml
         # copy trigger to etc/cuon/sql
         self.executeSCP('sql.xml', self.SERVERCONFIGDIR + "/sql")
         
         # user.cfg
-        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/user.cfg ] ; then cp " + self.SERVERCONFIGDIR + "/examples/user.cfg " + self.SERVERCONFIGDIR + " ; fi ")
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/user.cfg ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/user.cfg " + self.SERVERCONFIGDIR + " ; fi ")
         
         
         #self.src_aiml = "./cuon/AI/AIML"

@@ -321,6 +321,7 @@ import gtk.glade
 
 import cuon.Addresses.addresses
 import cuon.Articles.articles
+import cuon.Bank.bank
 try:
     import cuon.Clients.clients
 except Exception, params:
@@ -638,6 +639,10 @@ class MainWindow(windows):
 
     def on_articles1_activate(self,event):
         art = cuon.Articles.articles.articleswindow(self.allTables)
+
+    def on_bank1_activate(self,event):
+        bank = cuon.Bank.bank.bankwindow(self.allTables)
+
 
     #-->
     def on_bibliographic_activate(self, event):

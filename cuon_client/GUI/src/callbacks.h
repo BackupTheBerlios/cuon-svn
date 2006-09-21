@@ -92,3 +92,27 @@ on_import_data1_activate               (GtkMenuItem     *menuitem,
 void
 on_okAbout1_clicked                    (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bank1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_onlinehelp_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+_                                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_user_and_groups1_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_group_and_tabular1_activate         (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_create_grants_file1_activate        (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

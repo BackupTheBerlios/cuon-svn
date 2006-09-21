@@ -706,6 +706,95 @@
       <comment />
     </field>
   </table>
+  <!--table: bank-->
+  <table>
+    <nameOfTable>bank</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>82</x>
+    <y>45</y>
+    
+    <field>
+      <name>address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+
+    
+    <field>
+      <name>bcn</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>35</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+  <!--table: address_bank-->
+  <table>
+    <nameOfTable>address_bank</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>82</x>
+    <y>45</y>
+    <field>
+      <name>address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>bank_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>depositor</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>80</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>account_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>40</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>iban</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>80</size>
+      <default />
+      <comment />
+    </field>
+    </table>
   <!--table: partner-->
   <table>
     <nameOfTable>partner</nameOfTable>

@@ -395,3 +395,77 @@ on_eSchedulContractID_changed          (GtkEditable     *editable,
 
 }
 
+
+void
+on_bank_new1_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bank_save1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bank_edit1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+gboolean
+on_key_press_event                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+
+
+void
+on_bChooseBank_clicked                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_eBankID_changed                     (GtkEditable     *editable,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bSchedulLetter_clicked              (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bSchedulEmail_clicked               (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bSchedulDMS_clicked                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

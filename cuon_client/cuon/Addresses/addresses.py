@@ -25,9 +25,11 @@ from gtk import TRUE, FALSE
 import string
 from cuon.Databases.SingleData import SingleData
 import SingleAddress
+import SingleAddressBank
 import SingleMisc
 import SinglePartner
 import SingleScheduling
+import cuon.Bank.SingleBank
 import lists_addresses_phone1
 import lists_addresses_phone11
 
@@ -56,8 +58,10 @@ class addresswindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         
         self.singleAddress = SingleAddress.SingleAddress(allTables)
+        self.singleAddressBank = SingleAddressBank.SingleAddressBank(allTables)
         self.singleMisc = SingleMisc.SingleMisc(allTables)
         self.singlePartner = SinglePartner.SinglePartner(allTables)
+        self.singleBank = cuon.Bank.SingleBank.SingleBank(allTables)
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
         self.allTables = allTables
        
@@ -86,6 +90,21 @@ class addresswindow(chooseWindows):
         self.singleAddress.setTreeOrder('lastname, firstname')
         self.singleAddress.setListHeader([_('Lastname'), _('Firstname'), _('City')])
         self.singleAddress.setTree(self.xml.get_widget('tree1') )
+
+        #singleAddressBank
+        
+        self.loadEntries(self.EntriesAddressesBank )
+        self.singleAddressBank.setEntries(self.getDataEntries(self.EntriesAddressesBank) )
+        self.singleAddressBank.setGladeXml(self.xml)
+        self.singleAddressBank.setTreeFields( ['depositor', 'account_number','(select lastname  from address where id = (select address_id from bank where id = bank_id) )as address_name'] )
+        self.singleAddressBank.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+
+        self.singleAddressBank.setTreeOrder('depositor, account_number')
+        self.singleAddressBank.setListHeader([_('Depositor'), _('Account'), _('Bank')])
+
+        self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
+        self.singleAddressBank.setTree(self.xml.get_widget('tree1') )
+
 
   
         #singleMisc
@@ -234,21 +253,17 @@ class addresswindow(chooseWindows):
         self.singleAddress.deleteRecord()
 
 
-
-    def on_bShowDMS_clicked(self, event):
-        print 'dms clicked'
-        if self.singleAddress.ID > 0:
-            print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+    # Menu Bank
+    def on_bank_new1_activate(self, event):
+        
+        self.doEdit = self.noEdit
+        self.singleBa.addressId = self.singleAddress.ID
+        self.singlePartner.save()
+        self.setEntriesEditable(self.EntriesPartner, FALSE)
+        self.tabChanged()
         
 
-    def on_bShowPartnerDMS_clicked(self, event):
-        print 'dms Partner clicked'
-        if self.singlePartner.ID > 0:
-            print 'ModulNumber', self.MN['Partner']
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
-        
-
+    
     # Menu misc
     def on_MiscSave1_activate(self, event):
         
@@ -439,7 +454,21 @@ class addresswindow(chooseWindows):
         os.system(sExec + ' cuon/OpenOffice/ooMain.py ' + fkey )
         #letter1 = cuon.OpenOffice.letter.letter()
         #letter1.createAddress(singleAddress.ID)
+        
 
+    def on_bShowDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleAddress.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+        
+
+    def on_bShowPartnerDMS_clicked(self, event):
+        print 'dms Partner clicked'
+        if self.singlePartner.ID > 0:
+            print 'ModulNumber', self.MN['Partner']
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
+        
 
         
     def on_chooseAddress_activate(self, event):
@@ -475,6 +504,17 @@ class addresswindow(chooseWindows):
         self.activateClick('chooseAddress', event)
 
 
+    def on_bChooseBank_clicked(self, event):
+        bank = cuon.Bank.bank.bankwindow(self.allTables)
+        bank.setChooseEntry('chooseBank', self.getWidget( 'eBankID'))
+        
+    def on_eBankID_changed(self, event):
+        print 'eBankID changed'
+        eAdrField = self.getWidget('tvBank')
+        liAdr = self.singleBank.getAddress(long(self.getWidget( 'eBankID').get_text()))
+        self.setTextbuffer(eAdrField, liAdr)
+
+        
     def saveData(self):
         print 'save Addresses'
         if self.doEdit == self.tabAddress:

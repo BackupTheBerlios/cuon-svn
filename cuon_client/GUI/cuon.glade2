@@ -125,6 +125,15 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkMenuItem" id="bank1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Bank</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_bank1_activate" last_modification_time="Wed, 20 Sep 2006 21:09:29 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="trennlinie3">
 		      <property name="visible">True</property>
 		    </widget>

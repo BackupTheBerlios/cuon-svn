@@ -312,6 +312,7 @@ from cuon.TypeDefs.typedefs_server import typedefs_server
 from cuon.Windows.windows  import windows
 import cuon.Login.login
 import cPickle
+import ConfigParser
 
 import cuon.Editor.editor
 
@@ -351,25 +352,35 @@ class MainWindow(windows):
     #edit Server config-files
     def on_usercfg1_activate(self, event):
         self.openDB()
-        self.td = self.loadObject('td')
+        td = self.loadObject('td')
         self.closeDB()
         os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
         ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
         
     def on_serverini1_activate(self, event):
         self.openDB()
-        self.td = self.loadObject('td')
+        td = self.loadObject('td')
         self.closeDB()
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/server.ini inifiles')
         ed = cuon.Editor.editor.editorwindow('inifiles/server.ini', True)
         
+    # SQL Rights and Groups
     
-    def on_grantsxml1_activate(self, event):
+    def on_user_and_groups1_activate(self, event):
         self.openDB()
-        self.td = self.loadObject('td')
+        td = self.loadObject('td')
         self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/grants.xml inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/grants.xml', True)
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/UserGroups.cfg inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/UserGroups.cfg', True)
+        
+    def on_group_and_tabular1_activate(self, event):
+        self.openDB()
+        td = self.loadObject('td')
+        self.closeDB()
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsOther.cfg inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/GroupRightsOther.cfg', True)
+        
+        
         
     def on_save_configfiles1_activate(self, event):
         
@@ -382,11 +393,143 @@ class MainWindow(windows):
         print s
         os.system(s)
 
-        s = 'scp -P ' + td.sshPort + ' inifiles/grants.xml ' +td.sPrefix + '/etc/cuon/sql'
+        s = 'scp -P ' + td.sshPort + ' inifiles/UserGroups.cfg ' +td.sPrefix + '/etc/cuon/sql'
         print s
         os.system(s)
+        
+        s = 'scp -P ' + td.sshPort + ' inifiles/GroupRightsOther.cfg ' +td.sPrefix + '/etc/cuon/sql'
+        print s
+        os.system(s)
+        
+        
+        
+    def on_create_grants_file1_activate(self, event):
+        self.activateClick('save_configfiles1')
+        print 'create grants.xml'
+        
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/UserGroups.cfg inifiles')
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsOther.cfg inifiles')
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsCuon.cfg inifiles')
+        
+        f_UserGroups = open('inifiles/UserGroups.cfg')
+        f_GroupRightsOther = open('inifiles/GroupRightsOther.cfg')
+        f_GroupRightsCuon = open('inifiles/GroupRightsCuon.cfg')
+        
+        f_grants = open('inifiles/grants.xml','w')
+        # create Header
+        f_grants.write('<grants>\n')
+        
+        f_grants.write('   <name>cuon</name>\n')
+        f_grants.write('   <author>J. Hamel</author>\n')
+        f_grants.write('   <plugin>Standard</plugin>\n')
+        
+        self.cpParser.readfp(f_UserGroups)
+        
+        liUser = self.getListOfParserItems('USER')
+        
+        # create User 
+        print liUser
+        f_grants.write('   <users>\n')
+        for User in liUser:
+            self.createGrantsUser(f_grants, User[0])
+        f_grants.write('   </users>\n')
+        
+        # create Groups
+        f_grants.write('   <groups>\n')
 
+        for Group in liUser:
+            self.createGrantsGroup(f_grants, Group[1])
+        f_grants.write('   </groups>\n')
+        f_grants.write('   <addgroups>\n')
+        #set user to Group
+        for User in liUser:
+            self.addUserToGroup(f_grants, User)
 
+        f_grants.write('   </addgroups>\n')
+        
+        
+        # create Right of tabular
+        self.cpParser.readfp(f_GroupRightsCuon)
+        f_grants.write('   <setGrants>\n')
+        
+        liSections = self.getListOfParserSections()
+        for sect in liSections:
+            liItems = self.getListOfParserItems(sect)
+            for item in liItems:
+                print 'sect = ', sect
+                print 'item = ', item 
+                self.createGrant(f_grants, sect,item)
+                
+        self.cpParser.readfp(f_GroupRightsOther)
+        liSections = self.getListOfParserSections()
+        for sect in liSections:
+            liItems = self.getListOfParserItems(sect)
+            for item in liItems:
+                print 'sect = ', sect
+                print 'item = ', item 
+                self.createGrant(f_grants, sect,item)
+                       
+        f_grants.write('   </setGrants>\n')
+        
+        # create Footer
+        f_grants.write('</grants>\n')
+        f_grants.close()
+        
+        # save grants.xml to server
+        s = 'scp -P ' + td.sshPort + ' inifiles/grants.xml ' +td.sPrefix + '/etc/cuon/sql'
+        
+        print s
+
+        os.system(s)
+        
+        # close all 
+        f_UserGroups.close()
+        f_GroupRightsCuon.close()
+        f_GroupRightsOther.close()
+        
+        
+        
+        
+    def createGrantsUser(self, f_grants, sUser):
+        print 'sUser = ', sUser
+        f_grants.write('      <user>\n')
+        f_grants.write('         <nameOfUser>' + sUser +'</nameOfUser>\n')
+        
+        f_grants.write('         <comment></comment>\n')
+        f_grants.write('      </user>\n')
+    
+    def createGrantsGroup(self, f_grants, sGroup):
+        print 'sGroup = ', sGroup
+        f_grants.write('      <group>\n')
+        f_grants.write('         <nameOfGroup>' + sGroup +'</nameOfGroup>\n')
+        
+        f_grants.write('         <comment></comment>\n')
+        f_grants.write('      </group>\n')
+        
+    def addUserToGroup(self, f_grants, User):
+        
+        
+        f_grants.write('      <addgroup>\n')
+      
+        f_grants.write('         <this_group>' + User[1] + '</this_group>\n')
+        f_grants.write('         <this_user>' + User[0] + '</this_user>\n')
+        f_grants.write('         <comment></comment>\n')
+        f_grants.write('</addgroup>\n')
+       
+    def createGrant(self,f_grants, sect, item):
+        f_grants.write('   <grant>\n')
+        
+        f_grants.write('        <nameOfGrant>Rights of ' + sect + ' for tabular ' + item[0] + '</nameOfGrant>\n')
+        f_grants.write('        <this_grants>' + item[1] + '</this_grants>\n')
+        if item[0].strip() == 'cuon':
+            f_grants.write('        <this_tables>' + item[0] + '</this_tables>\n')
+        else:
+            f_grants.write('        <this_tables>' + item[0] +',' + item[0] +'_id' + '</this_tables>\n')
+            
+        f_grants.write('        <this_group>' + sect + '</this_group>\n')
+        f_grants.write('        <comment>Rights for ' + item[0] + '</comment>\n')
+        f_grants.write('    </grant>\n')
+        
     def startMain(self):
         #td = typedefs_server()
         # create widget tree ...
