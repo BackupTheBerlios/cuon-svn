@@ -288,7 +288,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="family-save1">
+		    <widget class="GtkMenuItem" id="family_save1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>

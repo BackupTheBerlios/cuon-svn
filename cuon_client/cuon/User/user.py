@@ -161,6 +161,15 @@ class User:
         print  self.pathAddressPhoneListing1
         
         # setting keys for eachWindow
+        #normal
+        self.setDicUserKeys('edit','e')
+        self.setDicUserKeys('delete','d')
+        self.setDicUserKeys('new','n')
+        self.setDicUserKeys('print','p')
+        self.setDicUserKeys('save','s')
+        
+        
+        #Address
         self.setDicUserKeys('address_edit','e')
         self.setDicUserKeys('address_delete','d')
         self.setDicUserKeys('address_new','n')

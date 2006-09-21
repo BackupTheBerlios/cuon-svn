@@ -120,19 +120,19 @@ class hibernationwindow(chooseWindows):
 
         
         # enabledMenues for Hibernation
-        self.addEnabledMenuItems('editHibernation','new1', self.dicUserKeys['hibernation_new'])
-        self.addEnabledMenuItems('editHibernation','clear1', self.dicUserKeys['hibernation_delete'])
-        self.addEnabledMenuItems('editHibernation','print1', self.dicUserKeys['hibernation_print'])
-        self.addEnabledMenuItems('editHibernation','edit1',self.dicUserKeys['hibernation_edit'])
+        self.addEnabledMenuItems('editHibernation','new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editHibernation','clear1', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editHibernation','print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editHibernation','edit1',self.dicUserKeys['edit'])
 
         # enabledMenues for Hibernation_plant
-        self.addEnabledMenuItems('editHibernationPlant','PlantNew1', self.dicUserKeys['hibernation_new'])
-        self.addEnabledMenuItems('editHibernationPlant','PlantClear1', self.dicUserKeys['hibernation_delete'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantNew1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantClear1', self.dicUserKeys['delete'])
         #self.addEnabledMenuItems('editHibernationPlant','PlantPrint1', self.dicUserKeys['hibernation_plant_print'])
-        self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['hibernation_edit'])
+        self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['edit'])
 
-        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['hibernation_save'])
-        self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['hibernation_save'])
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['save'])
 
 
         # tabs from notebook
@@ -189,7 +189,7 @@ class hibernationwindow(chooseWindows):
         self.doEdit = self.tabHibernation
         self.setEntriesEditable(self.EntriesHibernations, True)
 
-    def on_delete1_activate(self, event):
+    def on_clear1_activate(self, event):
         print "delete Hibernations v2"
         self.singleHibernation.deleteRecord()
 

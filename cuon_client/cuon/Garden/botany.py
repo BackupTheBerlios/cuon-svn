@@ -131,38 +131,44 @@ class botanywindow(chooseWindows):
 
         
         # enabledMenues for Divisio
-        self.addEnabledMenuItems('editDivisio','divisio_new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editDivisio','divisio_clear1', self.dicUserKeys['articles_delete'])
-        #self.addEnabledMenuItems('editDivisio','divisio_print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editDivisio','divisio_edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editDivisio','divisio_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editDivisio','divisio_clear1', self.dicUserKeys['delete'])
+        #self.addEnabledMenuItems('editDivisio','divisio_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editDivisio','divisio_edit1',self.dicUserKeys['edit'])
 
         # enabledMenues for Class
-        self.addEnabledMenuItems('editClass','class_new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editClass','class_clear1', self.dicUserKeys['articles_delete'])
-        #self.addEnabledMenuItems('editClass','class_print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editClass','class_edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editClass','class_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editClass','class_clear1', self.dicUserKeys['delete'])
+        #self.addEnabledMenuItems('editClass','class_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editClass','class_edit1',self.dicUserKeys['edit'])
         # enabledMenues for Ordo
-        self.addEnabledMenuItems('editOrdo','ordo_new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editOrdo','ordo_clear1', self.dicUserKeys['articles_delete'])
-        #self.addEnabledMenuItems('editOrdo','ordo_print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editOrdo','ordo_edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editOrdo','ordo_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editOrdo','ordo_clear1', self.dicUserKeys['delete'])
+        #self.addEnabledMenuItems('editOrdo','ordo_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editOrdo','ordo_edit1',self.dicUserKeys['edit'])
         # enabledMenues for Family
-        self.addEnabledMenuItems('editFamily','family_new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editFamily','family_clear1', self.dicUserKeys['articles_delete'])
-        #self.addEnabledMenuItems('editFamily','family_print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editFamily','family_edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editFamily','family_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editFamily','family_clear1', self.dicUserKeys['delete'])
+        #self.addEnabledMenuItems('editFamily','family_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editFamily','family_edit1',self.dicUserKeys['edit'])
         # enabledMenues for Genus
-        self.addEnabledMenuItems('editGenus','genus_new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editGenus','genus_clear1', self.dicUserKeys['articles_delete'])
-        #self.addEnabledMenuItems('editGenus','genus_print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editGenus','genus_edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editGenus','genus_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editGenus','genus_clear1', self.dicUserKeys['delete'])
+        #self.addEnabledMenuItems('editGenus','genus_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editGenus','genus_edit1',self.dicUserKeys['edit'])
         # enabledMenues for Typus
-        self.addEnabledMenuItems('editBotany','new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editBotany','clear1', self.dicUserKeys['articles_delete'])
-        self.addEnabledMenuItems('editBotany','print1', self.dicUserKeys['articles_print'])
-        self.addEnabledMenuItems('editBotany','edit1',self.dicUserKeys['articles_edit'])
+        self.addEnabledMenuItems('editBotany','new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editBotany','clear1', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editBotany','print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editBotany','edit1',self.dicUserKeys['edit'])
       
+        self.addEnabledMenuItems('editSave','divisio_save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','class_save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','ordo_save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','family_save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','genus_save1', self.dicUserKeys['save'])
 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
 
         # tabs from notebook
         self.tabDivisio = 0
@@ -301,8 +307,8 @@ class botanywindow(chooseWindows):
     def on_edit1_activate(self, event):
         self.setEntriesEditable(self.EntriesBotany, True)
 
-    def on_delete1_activate(self, event):
-        print "delete articles v2"
+    def on_clear1_activate(self, event):
+        print "delete typus v2"
         self.singleBotany.deleteRecord()
 
 
