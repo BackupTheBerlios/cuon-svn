@@ -327,6 +327,8 @@ class setup:
             self.copyLocalValues(key[0], key[1])
         self.copyLocalValues(self.VERSION_CFG, self.dest_main)
         self.touchFile(self.dest_cuon, '__init__.py')
+        self.copyLocalValues('cuonObjects',self.dest_main)
+        
 ##        self.copyLocalValues(self.src_server, self.dest_server)
 ##        self.copyLocalValues(self.src_user,self.dest_user)
 ##        self.copyLocalValues(self.src_addresses,self.dest_addresses)
