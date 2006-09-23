@@ -60,7 +60,7 @@ class logs :
 ##            f.write(`sLog`+ "\n")
 ##            f.write('---------------------------------------------------------------------------------------------------\n')
 ##            f.close()
-        #print sLog
+        print sLog
         pass
     def printOut(self, s1,s2=None):
 ##        ok = True

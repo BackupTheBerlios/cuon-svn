@@ -47,7 +47,8 @@ class basics(xmlrpc.XMLRPC):
         
         self.POSTGRES_HOST = 'localhost'
         self.POSTGRES_PORT = 5432
-        
+        self.POSTGRES_DB = 'cuon'
+        self.POSTGRES_USER = 'Test'
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
@@ -65,7 +66,25 @@ class basics(xmlrpc.XMLRPC):
             if value:
                 self.AI_PORT = int(value)
                 
-            
+            # Postgres
+            value = self.getConfigOption('POSTGRES','POSTGRES_HOST')
+            if value:
+                self.POSTGRES_HOST = value
+                
+            value = self.getConfigOption('POSTGRES','POSTGRES_PORT')
+            if value:
+                self.POSTGRES_PORT = int(value)
+                
+            value = self.getConfigOption('POSTGRES','POSTGRES_DB')
+            if value:
+                self.POSTGRES_DB = value
+                
+            value = self.getConfigOption('POSTGRES','POSTGRES_USER')
+            if value:
+                self.POSTGRES_USER = value
+                
+                
+                
         except Exception, params:
             print "Error read ini-File"
             print Exception
