@@ -380,21 +380,28 @@ class hibernationwindow(chooseWindows):
     def searchHibernation(self):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindNumber').get_text()
-        sDesignation = self.getWidget('eFindDesignation').get_text()
-        self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
+        sAddressLastname = self.getWidget('eFindDesignation').get_text()
+        self.out('Name and City = ' + sNumber + ', ' + sAddressLastname, self.ERROR)
         
         #self.singleHibernation.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
         liSearch = []
         if sNumber:
-            liSearch.append('number')
+            liSearch.append('hibernation_number')
             liSearch.append(sNumber)
-        if sDesignation:
-            liSearch.append('designation')
-            liSearch.append(sDesignation)
-            
-            
+        if sAddressLastname:
+            liSearch.append('address.lastname')
+            liSearch.append(sAddressLastname)
+        bHR = self.getWidget('cbSearchHibReady').get_active()
+        bIW = self.getWidget('cbSearchInvoiceWrote').get_active()
+        print 'bHR = ', bHR
+        print 'bIW = ', bIW
+        liSearch.append('status_ready')
+        liSearch.append(bHR)
+        liSearch.append('status_invoice_printed')
+        liSearch.append(bIW)
+        
         self.singleHibernation.sWhere = self.getWhere(liSearch)
-        self.out(self.singleHibernation.sWhere, self.ERROR)
+        self.out('Hibernation sWhere = ' + `self.singleHibernation.sWhere`)
         self.refreshTree()
 
 

@@ -322,7 +322,8 @@ class MainWindow(windows):
     def __init__(self):
         windows.__init__(self)
         
-     
+        self.cpParser = ConfigParser.ConfigParser()
+        
         self.oUser = cuon.User.user.User()
         os.system('rm -Rf inifiles')
         os.system('mkdir inifiles')
@@ -380,6 +381,12 @@ class MainWindow(windows):
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsOther.cfg inifiles')
         ed = cuon.Editor.editor.editorwindow('inifiles/GroupRightsOther.cfg', True)
         
+    def on_clients1_activate(self, event):
+        self.openDB()
+        td = self.loadObject('td')
+        self.closeDB()
+        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/clients.ini inifiles')
+        ed = cuon.Editor.editor.editorwindow('inifiles/clients.ini', True)
         
         
     def on_save_configfiles1_activate(self, event):
@@ -398,6 +405,10 @@ class MainWindow(windows):
         os.system(s)
         
         s = 'scp -P ' + td.sshPort + ' inifiles/GroupRightsOther.cfg ' +td.sPrefix + '/etc/cuon/sql'
+        print s
+        os.system(s)
+        
+        s = 'scp -P ' + td.sshPort + ' inifiles/clients.ini ' +td.sPrefix + '/etc/cuon'
         print s
         os.system(s)
         
@@ -422,7 +433,7 @@ class MainWindow(windows):
         f_grants.write('   <name>cuon</name>\n')
         f_grants.write('   <author>J. Hamel</author>\n')
         f_grants.write('   <plugin>Standard</plugin>\n')
-        
+        self.cpParser = ConfigParser.ConfigParser()
         self.cpParser.readfp(f_UserGroups)
         
         liUser = self.getListOfParserItems('USER')
@@ -449,6 +460,8 @@ class MainWindow(windows):
         
         
         # create Right of tabular
+        self.cpParser = ConfigParser.ConfigParser()
+        
         self.cpParser.readfp(f_GroupRightsCuon)
         f_grants.write('   <setGrants>\n')
         
@@ -459,7 +472,7 @@ class MainWindow(windows):
                 print 'sect = ', sect
                 print 'item = ', item 
                 self.createGrant(f_grants, sect,item)
-                
+        self.cpParser = ConfigParser.ConfigParser()       
         self.cpParser.readfp(f_GroupRightsOther)
         liSections = self.getListOfParserSections()
         for sect in liSections:
@@ -514,7 +527,7 @@ class MainWindow(windows):
         f_grants.write('         <this_group>' + User[1] + '</this_group>\n')
         f_grants.write('         <this_user>' + User[0] + '</this_user>\n')
         f_grants.write('         <comment></comment>\n')
-        f_grants.write('</addgroup>\n')
+        f_grants.write('       </addgroup>\n')
        
     def createGrant(self,f_grants, sect, item):
         f_grants.write('   <grant>\n')

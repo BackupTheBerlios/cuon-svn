@@ -42,10 +42,10 @@ class SingleBank(SingleData):
         #self.statusfields = ['lastname', 'firstname']
 
             
-    def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SingleBank'
-        dicValues['addressid'] = [self.addressId, 'int']
-        return dicValues
+##    def readNonWidgetEntries(self, dicValues):
+##        print 'readNonWidgetEntries(self) by SingleBank'
+##        dicValues['addres_sid'] = [self.addressId, 'int']
+##        return dicValues
 
     def getAddress(self, id):
         dicRecords = self.load(id)

@@ -14,7 +14,7 @@
 
 
 import sys
-from types import *
+import types
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -310,7 +310,15 @@ class windows(rawWindow, MyXML, messages):
             #print 'args s = ', s
             #print 'args v = ', v
             if v:
-                if v[0] == '#':
+                if isinstance(v, types.BooleanType) :
+                    print 'sWhere = ', v 
+                    if firstWhere:
+                        sWhere = " where " + s +" = " + `v` 
+                        firstWhere = False
+                    else:
+                        sWhere = sWhere +" and " + s + " = " + `v` 
+                        
+                elif v[0] == '#':
                     v = v[1:]
                     if firstWhere:
                         sWhere = " where " + s +" " + v 

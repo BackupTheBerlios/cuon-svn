@@ -57,8 +57,35 @@ class cyr_load_table(MyXML, dumps):
         allLists = self.getListOfSequences(doc)
         return allLists
     
+    def getListOfForeignKeyNames(self, sFile):
+        doc = self.getDatabaseDescription(sFile)
+        #        cyRootNode = self.getRootNode(doc)
+        allLists = self.getListOfForeignKeys(doc)
+        return allLists
+    
 
+    def getForeignKeyDefinition(self, sFile, nameOfForeignKey):
+        dicForeign= {}
+        doc = self.getDatabaseDescription(sFile)
+        self.out( doc.toxml() )
+        dicForeign['name'] = nameOfForeignKey.encode('ascii')
 
+        cyRootNode = self.getRootNode(doc)
+        #print cyRootNode[0].toxml()
+        #print nameOfSequence
+        
+        cyForeignNode = self.getForeignKey(cyRootNode[0], "foreign_key", nameOfForeignKey)
+        print 'cyForeignNode'
+        print cyForeignNode.toxml()
+        
+                
+        dicForeign['name'] = self.getData(self.getNodes(cyForeignNode, 'foreign_key_name')[0]).encode('ascii')
+        dicForeign['sql'] = self.getData(self.getNodes(cyForeignNode, 'foreign_key_sql')[0]).encode('ascii')
+        dicForeign['table'] = self.getData(self.getNodes(cyForeignNode, 'foreign_table')[0]).encode('ascii')
+        print dicForeign
+        
+        return dicForeign
+    
     def getDatabaseDescription(self, sFile):
         return  self.readDocument(self.td.nameOfXmlTableFiles[sFile])
 

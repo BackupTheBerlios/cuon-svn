@@ -43,6 +43,13 @@ static GnomeUIInfo file1_menu_uiinfo[] =
 static GnomeUIInfo bank1_menu_uiinfo[] =
 {
   GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_new1_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_edit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_MENU_SAVE_ITEM (on_save1_activate, NULL),
   GNOMEUIINFO_SEPARATOR,
   GNOMEUIINFO_MENU_PRINT_ITEM (on_print1_activate, NULL),
@@ -96,15 +103,13 @@ create_BankMainwindow (void)
   GtkWidget *label18;
   GtkWidget *label19;
   GtkWidget *scrolledwindow3;
-  GtkWidget *textview1;
+  GtkWidget *tvAddress;
   GtkWidget *hbox2;
   GtkWidget *eAddressID;
   GtkWidget *hbox4;
   GtkWidget *bChooseAddressOfBank;
   GtkWidget *label29;
   GtkWidget *eBCN;
-  GtkWidget *scrolledwindow2;
-  GtkWidget *tvAddress;
   GtkWidget *label16;
   GtkAccelGroup *accel_group;
 
@@ -218,9 +223,10 @@ create_BankMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow3), GTK_SHADOW_IN);
 
-  textview1 = gtk_text_view_new ();
-  gtk_widget_show (textview1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), textview1);
+  tvAddress = gtk_text_view_new ();
+  gtk_widget_show (tvAddress);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow3), tvAddress);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
@@ -253,14 +259,6 @@ create_BankMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow2);
-  gtk_box_pack_start (GTK_BOX (vbox2), scrolledwindow2, TRUE, TRUE, 0);
-
-  tvAddress = gtk_text_view_new ();
-  gtk_widget_show (tvAddress);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), tvAddress);
-
   label16 = gtk_label_new (_("Bank"));
   gtk_widget_show (label16);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label16);
@@ -291,11 +289,12 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, file1_menu_uiinfo[2].widget, "quit1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, menubar1_uiinfo[1].widget, "bank1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[0].widget, "new1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[1].widget, "save1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[2].widget, "separator3");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[3].widget, "print1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[4].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[5].widget, "delete1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[1].widget, "edit1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[2].widget, "save1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[3].widget, "separator3");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[4].widget, "print1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[5].widget, "separator1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[6].widget, "delete1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolitem1, "toolitem1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bChooseClient, "bChooseClient");
@@ -315,15 +314,13 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, label18, "label18");
   GLADE_HOOKUP_OBJECT (BankMainwindow, label19, "label19");
   GLADE_HOOKUP_OBJECT (BankMainwindow, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, textview1, "textview1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, tvAddress, "tvAddress");
   GLADE_HOOKUP_OBJECT (BankMainwindow, hbox2, "hbox2");
   GLADE_HOOKUP_OBJECT (BankMainwindow, eAddressID, "eAddressID");
   GLADE_HOOKUP_OBJECT (BankMainwindow, hbox4, "hbox4");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bChooseAddressOfBank, "bChooseAddressOfBank");
   GLADE_HOOKUP_OBJECT (BankMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (BankMainwindow, eBCN, "eBCN");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, scrolledwindow2, "scrolledwindow2");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, tvAddress, "tvAddress");
   GLADE_HOOKUP_OBJECT (BankMainwindow, label16, "label16");
 
   gtk_window_add_accel_group (GTK_WINDOW (BankMainwindow), accel_group);

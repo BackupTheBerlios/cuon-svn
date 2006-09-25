@@ -3718,5 +3718,6 @@
  	<foreign_key>
 		<foreign_key_name>PartnerAddress</foreign_key_name> 
 		<foreign_key_sql>foreign_key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+    <foreign_table>address</foreign_table>
 	</foreign_key>
 </database>

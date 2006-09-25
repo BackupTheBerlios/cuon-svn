@@ -14,90 +14,95 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
-        self.writeLog('execute SQL = ' + `cSql`,self.debug)
-
-        rows = None
-        if not dicUser['Name'] or dicUser['Name'] == 'zope':
-            sUser = 'zope'
-            dicUser['noWhereClient'] = 'YES'
-    
-        elif dicUser.has_key('userType'):
-            sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
-        else:
-            sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
-
-        # put here sUser
-        print 'sUser=', sUser
-        self.writeLog('User = ' + sUser, self.debug)
-        #DSN = 'dbname=cuon host=localhost user=' + sUser
-        conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
-        #curs.execute(cSql.decode('utf-8'))
-        #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
-        
-        rows = conn.query(cSql.encode('utf-8'))
-        #print 'rows = ', rows
-        #print 'Sql-Execute = ', ok
-        #conn.commit()
-##        try:
-##            rows = curs.dictfetchall()
-##        except:
-##            pass
-        self.writeLog('Rows = ' + `rows`, self.debug)
-        #conn.close()
-        
-        if rows:
-            try:
-                dicResult = rows.dictresult()
-            except Exception, params:
-                self.writeLog('try dic-Result', self.debug)
-                self.writeLog(`Exception`, self.debug)
-                self.writeLog(`params`, self.debug)
-                self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
-                
-                dicResult = None
-        else:
-            dicResult = None
-
+        dicResult = "NONE"
         try:
-            assert dicResult
-            #print 'dicResult', dicResult
-            sDecode = None
-            sEncode = None
-            if dicUser.has_key('Database'):
-                if dicUser['Database'] == 'osCommerce':
-                    
-                    sEncode = 'latin-1'
-                elif dicUser['Database'] == 'cuon':
-                    sEncode = None
-                    sDecode = None
-                    
+            self.writeLog('execute SQL = ' + `cSql`,self.debug)
+        
+            rows = None
+            if not dicUser['Name'] or dicUser['Name'] == 'zope':
+                sUser = 'zope'
+                dicUser['noWhereClient'] = 'YES'
+        
+            elif dicUser.has_key('userType'):
+                sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
             else:
+                sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
+        
+            # put here sUser
+            print 'sUser=', sUser
+            self.writeLog('User = ' + sUser, self.debug)
+            #DSN = 'dbname=cuon host=localhost user=' + sUser
+            conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
+            #curs.execute(cSql.decode('utf-8'))
+            #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
+            
+            rows = conn.query(cSql.encode('utf-8'))
+            #print 'rows = ', rows
+            #print 'Sql-Execute = ', ok
+            #conn.commit()
+        ##        try:
+        ##            rows = curs.dictfetchall()
+        ##        except:
+        ##            pass
+            self.writeLog('Rows = ' + `rows`, self.debug)
+            #conn.close()
+            
+            if rows:
+                try:
+                    dicResult = rows.dictresult()
+                except Exception, params:
+                    self.writeLog('try dic-Result', self.debug)
+                    self.writeLog(`Exception`, self.debug)
+                    self.writeLog(`params`, self.debug)
+                    self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
+                    
+                    dicResult = None
+            else:
+                dicResult = None
+        
+            try:
+                assert dicResult
+                #print 'dicResult', dicResult
                 sDecode = None
-
-           
-            
-            for i in range(len(dicResult)):
-                for j in dicResult[i].keys():
-            
-                    try:
-                        if dicResult[i][j] == None:
-                            dicResult[i][j] = 'NONE'
-                        if sDecode:
-                            dicResult[i][j]=dicResult[i][j].decode(sDecode)
-                        if sEncode:
-                            dicResult[i][j]=dicResult[i][j].encode(sEncode)
-            
-                    except:
-                        pass
+                sEncode = None
+                if dicUser.has_key('Database'):
+                    if dicUser['Database'] == 'osCommerce':
+                        
+                        sEncode = 'latin-1'
+                    elif dicUser['Database'] == 'cuon':
+                        sEncode = None
+                        sDecode = None
+                        
+                else:
+                    sDecode = None
+        
+               
+                
+                for i in range(len(dicResult)):
+                    for j in dicResult[i].keys():
+                
+                        try:
+                            if dicResult[i][j] == None:
+                                dicResult[i][j] = 'NONE'
+                            if sDecode:
+                                dicResult[i][j]=dicResult[i][j].decode(sDecode)
+                            if sEncode:
+                                dicResult[i][j]=dicResult[i][j].encode(sEncode)
+                
+                        except:
+                            pass
+            except Exception, param:
+                self.writeLog('Except-Error')
+                self.writeLog(`Exception` +', \n' + `param`)
+               
+                dicResult = None
+            self.writeLog('sql return = ' + `dicResult`)
+            if dicResult == None:
+                dicResult ='NONE'
+            self.writeLog('sql return 2 = ' + `dicResult`)
         except Exception, param:
-            self.writeLog('Except-Error')
-            self.writeLog(`Exception` +', \n' + `param`)
-           
-            dicResult = None
-        self.writeLog('sql return = ' + `dicResult`)
-        if dicResult == None:
-            dicResult ='NONE'
-        self.writeLog('sql return 2 = ' + `dicResult`)
+            print Exception
+            print param
             
         return dicResult
      

@@ -36,6 +36,7 @@ import threading
 import datetime as DateTime
 import SingleBank
 import cuon.Addresses.addresses
+import cuon.Addresses.SingleAddress
 
 class bankwindow(chooseWindows):
 
@@ -45,7 +46,8 @@ class bankwindow(chooseWindows):
         chooseWindows.__init__(self)
        
         self.singleBank = SingleBank.SingleBank(allTables)
-
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        
     
         self.loadGlade('bank.xml')
         self.win1 = self.getWidget('BankMainwindow')
@@ -110,8 +112,7 @@ class bankwindow(chooseWindows):
               
     def on_quit1_activate(self, event):
         self.out( "exit clients V1")
-        self.on_bChooseClient_clicked(event)
-        
+        self.closeWindow()        
 
         
     def on_tree1_row_activated(self, event, data1, data2):
@@ -166,22 +167,7 @@ class bankwindow(chooseWindows):
 
 
         
-    def on_chooseAddress_activate(self, event):
-        # choose Address from other Modul
-        if self.tabOption == self.tabClients:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singleBank.ID)
-            self.closeWindow()
-        elif self.tabOption == self.tabPartner:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singlePartner.ID)
-            self.closeWindow()
-
-        else:
-            print '############### No ID found,  choose ID -1 ###################'
-            self.setChooseValue('-1')
-            self.closeWindow()
- 
+    
               
 
         

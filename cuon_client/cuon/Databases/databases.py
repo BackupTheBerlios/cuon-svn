@@ -153,10 +153,12 @@ class databaseswindow(windows):
             lTable = clt.getListOfTableNames(key)
             tableList = self.startCheck(key,lTable, tableList)
             print 'check finished - now create sequences'
+            # Sequences !!
             lSequences = clt.getListOfSequenceNames(key)
             print 'Sequences'
             print `lSequences`
             
+            # Sequences per client
             liClients = self.rpc.callRP('Database.getListOfClients', self.dicUser)
             print `liClients`
             for cli in liClients:
@@ -168,7 +170,11 @@ class databaseswindow(windows):
                     print 'seq 2 ' + seq
             print `lSequences`        
             self.startCheckSequences(key,lSequences)
+            # Foreign keys
 
+            liForeign = clt.getListOfForeignKeyNames(key)
+            self.startCheckForeignKey(key, liForeign)
+            
         print 'allTables = '
         print tableList    
         self.rpc.callRP('Database.saveInfo', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
@@ -300,6 +306,26 @@ class databaseswindow(windows):
                 result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
         
 
+    def startCheckForeignKey(self, key, liForeign):
+        print 'start check Foreign'
+        clt = cyr_load_table.cyr_load_table()
+       ### for Server-functions set the td-object
+        clt.td = self.td
+ 
+        for i in liForeign:
+            print 'Check this Foreign key = ' , `i`
+            dicForeign = clt.getForeignKeyDefinition(key, i)
+            # alter table partner ADD CONSTRAINT "f_address" foreign key (addressid) references address (id) on delete restrict on update restrict ;
+
+            sSql = 'alter table ' + dicForeign['table']
+            sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
+            sSql += dicForeign['sql']
+            
+            self.out( sSql)
+            print 'Sql Sequence = ', sSql
+            result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+        
+
 
     def dbcheck(self, table):
         self.out("check Databases")
@@ -364,6 +390,11 @@ class databaseswindow(windows):
                 print 'Column Type false, modify !'
                 # change column
                 self.modifyColumn(table, co)
+            
+            if co.getName() == 'id':
+                print 'create unique index', table.getName()
+                sSql =  'create unique index index_' + table.getName() + '_id on ' + table.getName() + " (id)"
+                ok = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
                 
     def getSqlField(self,sSql, co):
         if (string.find(co.getType(), 'char' )>= 0 ) :

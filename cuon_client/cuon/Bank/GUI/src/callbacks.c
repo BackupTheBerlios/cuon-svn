@@ -106,3 +106,11 @@ on_bChooseAddressOfBank_clicked        (GtkButton       *button,
 
 }
 
+
+void
+on_edit1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

@@ -144,7 +144,19 @@ class MyXML(logs):
                     allNames.append( rc.data) 
         print "sequences allNames", allNames 
         return allNames
-    
+        
+    def getListOfForeignKeys(self, cyNode):
+        allTable = cyNode.getElementsByTagName("foreign_key")
+        allNames = []
+        for iNode in allTable:
+            allName = iNode.getElementsByTagName("foreign_key_name")
+            for oneName in allName:
+                rc = oneName.firstChild
+                if rc.nodeType == Node.TEXT_NODE:
+                    self.out("rc.data = " +  rc.data)
+                    allNames.append( rc.data) 
+        print "foreign_key allNames", allNames 
+        return allNames
 
     def getTable(self, cyNode, cyName, cyValue):
 
@@ -175,7 +187,20 @@ class MyXML(logs):
                         self.out("rc.data found = " +  rc.data)
                         return iNode
                                      
+    def getForeignKey(self, cyNode, cyName, cyValue):
 
+        allTable = cyNode.getElementsByTagName("foreign_key")
+        for iNode in allTable:
+            allName = iNode.getElementsByTagName("foreign_key_name")
+            for oneName in allName:
+                rc = oneName.firstChild
+                if rc.nodeType == Node.TEXT_NODE:
+                    self.out("rc.data = " +  rc.data)
+                    if(cyValue == rc.data):
+                        self.out( iNode.toxml())
+                        self.out("rc.data found = " +  rc.data)
+                        return iNode
+                        
     def getNumberOfFields(self, cyTable):
         self.out("cyTable =  " + cyTable.toxml() )
 
