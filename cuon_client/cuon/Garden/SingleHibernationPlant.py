@@ -71,7 +71,13 @@ class SingleHibernationPlant(SingleData):
             
         return liHibernation
 
-       
+    def getLastNumber(self, hib_id):
+        sSql = "select max(plant_number) from hibernation_plant where hibernation_number = " + `hib_id`
+        Number = self.rpc.callRP('Database.executeNormalQuery',sSql, self.oUser.getSqlDicUser())
+        print 'Number = ', Number
+        
+        return Number[0]['max']
+        
     def getHibernationFields(self, id):
         dicRecords = self.load(id)
 

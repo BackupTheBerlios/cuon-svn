@@ -234,6 +234,15 @@ class hibernationwindow(chooseWindows):
         self.doEdit = self.tabPlant
 
         self.singleHibernationPlant.newRecord()
+        # set ePlantNumber + 1
+        ePN = self.singleHibernationPlant.getLastNumber(self.singleHibernation.ID)
+        print 'ePN = ', ePN
+        if ePN :
+            ePN1 = ePN + 1
+        else:
+            ePN1 = 1
+        
+        self.getWidget('ePlantNumber').set_text(`ePN1`)
         self.setEntriesEditable(self.EntriesHibernationsPlant, True)
 
     def on_PlantEdit1_activate(self, event):
