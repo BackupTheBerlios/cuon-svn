@@ -307,11 +307,11 @@ class windows(rawWindow, MyXML, messages):
         while args:
             s = args.pop()
             v = args.pop()
-            #print 'args s = ', s
-            #print 'args v = ', v
-            if v:
+            self.printOut( 'args s = ', s)
+            self.printOut( 'args v = ', v)
+            if s:
                 if isinstance(v, types.BooleanType) :
-                    print 'sWhere = ', v 
+                    self.printOut( 'sWhere = ', v )
                     if firstWhere:
                         sWhere = " where " + s +" = " + `v` 
                         firstWhere = False

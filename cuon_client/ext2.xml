@@ -917,7 +917,7 @@
   </table>
   <foreign_key>
 		<foreign_key_name>HibernationAddressID</foreign_key_name> 
-		<foreign_key_sql>foreign_key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+		<foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
     <foreign_table>hibernation</foreign_table>        
 	</foreign_key>
 </database>

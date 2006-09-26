@@ -85,7 +85,7 @@ class hibernationwindow(chooseWindows):
         self.singleHibernation.setGladeXml(self.xml)
         
         self.singleHibernation.setTree(self.xml.get_widget('tree1') )
-       
+        self.singleHibernation.sWhere  = ' where address.id = addressnumber'
         
          #singleHibernationPlant
         
@@ -402,6 +402,8 @@ class hibernationwindow(chooseWindows):
             liSearch.append(sAddressLastname)
         bHR = self.getWidget('cbSearchHibReady').get_active()
         bIW = self.getWidget('cbSearchInvoiceWrote').get_active()
+        
+            
         print 'bHR = ', bHR
         print 'bIW = ', bIW
         liSearch.append('status_ready')
@@ -409,7 +411,7 @@ class hibernationwindow(chooseWindows):
         liSearch.append('status_invoice_printed')
         liSearch.append(bIW)
         
-        self.singleHibernation.sWhere = self.getWhere(liSearch)
+        self.singleHibernation.sWhere = self.getWhere(liSearch) + ' and address.id = addressnumber'
         self.out('Hibernation sWhere = ' + `self.singleHibernation.sWhere`)
         self.refreshTree()
 

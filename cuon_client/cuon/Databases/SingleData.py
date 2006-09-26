@@ -730,8 +730,8 @@ class SingleData(gladeXml, logs):
             else:
                 dicFields[i] = 'string'
 
-        ## self.out('dicFields = ')
-        ## self.out(dicFields)
+        self.out('dicFields = ')
+        self.out(dicFields)
         
         if dicFields:
             self.printOut( 'SingleData - dicFields = ', `dicFields`)
@@ -755,6 +755,14 @@ class SingleData(gladeXml, logs):
                         self.printOut('m1 = ', m1)    
                         j = m1.strip()
                         self.printOut('j = ',j)    
+                    self.printOut('i-end = ', i)
+                    self.printOut('j-end = ', j)
+                    zAs = j.find(' as ')
+                    if zAs > 0:
+                        j = j[zAs + 4:]
+                        j = j.strip()
+                    self.printOut('j0 = ', j)
+                    
                     sValue = i[j]
                     self.printOut('sValue = ',sValue)
                     #if isinstance(sValue, types.StringType):

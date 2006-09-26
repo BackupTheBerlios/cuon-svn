@@ -119,7 +119,14 @@ class SQL(xmlrpc.XMLRPC, basics):
         #dicEntries['status'] = 'string'
         
         sSql = 'select '
-        
+        liTable = []
+        try:    
+            print 'replace id with table.id'
+            del dicEntries['id']
+            dicEntries[sTable + '.id'] = 'int'
+        except Exception, params:
+            print Exception, params
+            
         for i in dicEntries.keys():
             if dicEntries[i] == 'date':
                 sSql = sSql + "to_char(" + i + ",  \'" + dicUser['SQLDateFormat'] + "\') as " + i  + ', '
@@ -127,23 +134,42 @@ class SQL(xmlrpc.XMLRPC, basics):
                 sSql = sSql + "to_char(" + i + ",  \'" + dicUser['SQLTimeFormat'] + "\') as " + i  + ', '
             elif dicEntries[i] == 'datetime':
                 sSql = sSql  + "to_char(" + i +", \'" + dicUser['SQLDateTimeFormat'] + "\') as " + i  + ', '
-         
+            
             else:
               sSql = sSql + i + ', '
-        
-        
+            if i.find('.') > 0:
+                liTable.append(i[:i.find('.')])
+            
+                
+        print liTable
         sSql = sSql[0: string.rfind(sSql,',') ]
         self.writeLog('sWhere =' + `sWhere`)
-        sWhere = self.getWhere(sWhere, dicUser)
+        
+        sWhere = self.getWhere(sWhere, dicUser, Prefix=sTable + '.')
         
         
            
-        sSql = sSql + ' from ' + sTable + ' ' + sWhere + ' order by ' + sSort
+        sSql += ' from ' + sTable 
+        #zComa = 0
+        liTableNames = [sTable]
+        for i in liTable:
+            appendTablename = True
+            for name in liTableNames:
+                if i == name:
+                   appendTablename = False 
+            if appendTablename:
+                sSql += ',' + i 
+                liTableNames.append(i)
+            #zComa += 1
+        #if zComa > 0:
+        #    sSql = sSql[0: string.rfind(sSql,',') ]
+                
+        sSql +=  ' ' + sWhere + ' order by ' + sSort
         
         
        
         self.writeLog(`sSql`)
-        sSql = sSql + ' LIMIT 30 '
+        sSql = sSql + ' LIMIT 150 '
         
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         #result2 = []

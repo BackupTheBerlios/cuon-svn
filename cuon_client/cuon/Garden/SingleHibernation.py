@@ -33,12 +33,12 @@ class SingleHibernation(SingleData):
         # self.loadTable()
         # self.saveTable()
         self.loadTable(allTables)
-        self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
+        self.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_UINT) )
         self.listHeader['size'] = [25,10,25,25,10]
         #
-        self.setTreeFields( ['hibernation_number', '(select firstname || \' \' || lastname  from address where id = addressnumber) as address_name'] )
+        self.setTreeFields( ['hibernation_number', 'address.lastname as lastname', 'address.firstname as firstname'] )
         self.setTreeOrder('hibernation_number')
-        self.setListHeader([_('name'),_('customer')])
+        self.setListHeader([_('Number'),_('Lastname'), _('Firstname')])
         
         #
         
