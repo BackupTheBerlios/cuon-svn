@@ -60,13 +60,13 @@ class bankwindow(chooseWindows):
         
         self.singleBank.setEntries(self.getDataEntries(self.EntriesBank) )
         self.singleBank.setGladeXml(self.xml)
-        self.singleBank.setTreeFields( ['(select lastname  from address where id = address_id) as address_name', \
-        '(select city  from address where id = address_id) as city','bcn'] )
+        self.singleBank.setTreeFields( ['address.lastname as address_name', \
+        'address.city as city','bcn'] )
         self.singleBank.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleBank.setTreeOrder('bcn')
         self.singleBank.setListHeader([_('Lastname'), _('City'),_('BCN')])
         self.singleBank.setTree(self.xml.get_widget('tree1') )
-
+        self.singleBank.sWhere = 'where address.id = address_id '
   
   
 
