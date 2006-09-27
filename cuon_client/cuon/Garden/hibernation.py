@@ -97,7 +97,8 @@ class hibernationwindow(chooseWindows):
 ##        self.singleHibernationPlant.setTreeOrder('plant_number')
 #        self.singleHibernationPlant.setListHeader([''])
 
-        self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `self.singleHibernation.ID`
+        self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `self.singleHibernation.ID` + ' and botany.id = botany_number '
+            
         self.singleHibernationPlant.setTree(self.xml.get_widget('tree1') )
   
     

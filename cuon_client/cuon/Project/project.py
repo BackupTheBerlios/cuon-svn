@@ -122,7 +122,7 @@ class projectwindow(chooseWindows):
         self.singleProjectTaskStaff.setEntries(self.getDataEntries(self.EntriesTaskStaff) )
         self.singleProjectTaskStaff.setGladeXml(self.xml)
         self.singleProjectTaskStaff.setTree(self.xml.get_widget('tree1') )
-
+        self.singleProjectTaskStaff.sWhere = 'where staff.id = staff_id '
         self.singleProjectTaskMaterial.setEntries(self.getDataEntries(self.EntriesTaskMaterial) )
         self.singleProjectTaskMaterial.setGladeXml(self.xml)
         self.singleProjectTaskMaterial.setTree(self.xml.get_widget('tree1') )
