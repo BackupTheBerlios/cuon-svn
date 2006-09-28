@@ -1444,7 +1444,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label59">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Sequenz</property>
+		  <property name="label" translatable="yes">Sequence</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1470,7 +1470,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="entry1">
+		<widget class="GtkEntry" id="eSequence">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>

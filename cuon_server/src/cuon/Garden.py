@@ -118,7 +118,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         if dicResult == 'NONE':
            sSql1 = 'insert into list_of_hibernation_pickup ( id, incoming_number, order_number) '
-           sSql1 = sSql1 + ' values (nextval(\'list_of_hibernation_pickup_id\'),nextval(\'numerical_hibernation_pickup_document\'), ' 
+           sSql1 = sSql1 + ' values (nextval(\'list_of_hibernation_pickup_id\'),nextval(\'numerical_hibernation_pickup_document_client_' + `dicUser['client']` + '\'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'
            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
            
@@ -128,7 +128,18 @@ class Garden(xmlrpc.XMLRPC, basics):
            nr = dicResult[0]['incoming_number']
         
             
-        return nr               
+        return nr   
+    def xmlrpc_getNewHibernationNumber(self, dicUser):
+        sSql = 'select nextval(\'numerical_hibernation_ordernumber_client_' + `dicUser['client']` + '\') as number '
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        Number = 0
+        try:
+            Number = result[0]['number']
+        except Exception, params:
+            print Exception, params
+        return Number
+        
+        
     def xmlrpc_getHibernationIncoming(self, dicOrder , dicUser):
         sSql = "select hibernation.hibernation_number as order_number,  "
         sSql = sSql + " to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')  as begin_date ,"

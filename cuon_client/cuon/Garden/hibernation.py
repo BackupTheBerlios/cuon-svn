@@ -97,7 +97,7 @@ class hibernationwindow(chooseWindows):
 ##        self.singleHibernationPlant.setTreeOrder('plant_number')
 #        self.singleHibernationPlant.setListHeader([''])
 
-        self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `self.singleHibernation.ID` + ' and botany.id = botany_number '
+        self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `int(self.singleHibernation.ID)` + ' and botany.id = botany_number'
             
         self.singleHibernationPlant.setTree(self.xml.get_widget('tree1') )
   
@@ -184,12 +184,16 @@ class hibernationwindow(chooseWindows):
         self.doEdit = self.tabHibernation
         self.singleHibernation.newRecord()
         self.setEntriesEditable(self.EntriesHibernations, True)
+        NewNumber = self.rpc.callRP('Garden.getNewHibernationNumber', self.dicUser)
+        self.getWidget('eHibernationNumber').set_text(`NewNumber`)
+        self.getWidget('eHibernationNumber').grab_focus()
         
 
     def on_edit1_activate(self, event):
         self.doEdit = self.tabHibernation
         self.setEntriesEditable(self.EntriesHibernations, True)
-
+        self.getWidget('eHibernationNumber').grab_focus()
+        
     def on_clear1_activate(self, event):
         print "delete Hibernations v2"
         self.singleHibernation.deleteRecord()
@@ -448,7 +452,7 @@ class hibernationwindow(chooseWindows):
             self.singleHibernation.refreshTree()
 
         elif self.tabOption == self.tabPlant:
-            self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `int(self.singleHibernation.ID)`
+            self.singleHibernationPlant.sWhere  ='where hibernation_number = ' + `int(self.singleHibernation.ID)`+ ' and botany.id = botany_number'
             self.singleHibernationPlant.connectTree()
             self.singleHibernationPlant.refreshTree()
 
