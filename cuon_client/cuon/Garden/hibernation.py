@@ -186,6 +186,7 @@ class hibernationwindow(chooseWindows):
         self.setEntriesEditable(self.EntriesHibernations, True)
         NewNumber = self.rpc.callRP('Garden.getNewHibernationNumber', self.dicUser)
         self.getWidget('eHibernationNumber').set_text(`NewNumber`)
+        
         self.getWidget('eHibernationNumber').grab_focus()
         
 

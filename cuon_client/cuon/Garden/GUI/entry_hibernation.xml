@@ -10,7 +10,7 @@
 
       <size>30</size>
 
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
 
       <create_sql>1</create_sql>
 
@@ -30,7 +30,7 @@
 
       <size>30</size>
 
-      <verify_type>string</verify_type>
+      <verify_type>int</verify_type>
 
       <create_sql>1</create_sql>
 

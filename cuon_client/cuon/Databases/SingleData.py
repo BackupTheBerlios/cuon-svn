@@ -417,9 +417,17 @@ class SingleData(gladeXml, logs):
                     if entry.getVerifyType() == 'string' and isinstance(sValue, types.StringType):
                         #sValue = sValue.encode(self.sCoding)
                         pass
-                    elif entry.getVerifyType() == 'int' and isinstance(sValue, types.IntType):
-                        sValue = `sValue`
-                    
+                    elif entry.getVerifyType() == 'int':
+                        print '--- Int ---', sValue
+                        if isinstance(sValue, types.IntType):
+                            sValue = `sValue`
+                        elif isinstance(sValue, types.StringType):
+                            sValue = '0'
+                        elif sValue == None:
+                            sValue = '0'
+                        else:
+                            sValue = '0'
+                            
                     elif entry.getVerifyType() == 'float' and isinstance(sValue, types.FloatType):
                         iR = entry.getRound()
                         if iR == -1:
@@ -472,14 +480,19 @@ class SingleData(gladeXml, logs):
                     elif string.count(str(widget), "GtkCheckButton") > 0 :
                         self.printOut( 'Bool-Value from Database', sValue)
                         self.printOut( "GtkCheckButton ", entry.getName())
-                        
-                        
-                        if sValue == 1 or sValue == 't' or sValue == 'True': 
-                            sValue = True
-                            self.printOut( 'is true !')
-                        else:
-                            sValue = False
-                            self.printOut( 'is false')
+                        bValue = False
+                        try:
+                            if sValue == 1:
+                                bValue = True
+                        except:
+                            pass
+                        try:    
+                            if sValue == 't' or sValue == 'True': 
+                                bValue = True
+                        except:
+                            pass
+
+                        sValue = bValue
                         self.printOut( 'Widget set to ', sValue)
                         widget.set_active(sValue)
                         self.printOut( widget, widget.get_active())
@@ -618,7 +631,10 @@ class SingleData(gladeXml, logs):
 
                 elif sVerify  == 'int':
                     # self.out( oValue,self.INFO)
-                    if oValue == '':
+                    try:
+                        if oValue == '':
+                            oValue = 0
+                    except:
                         oValue = 0
                     # self.out( oValue, self.INFO)
                     # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
@@ -636,6 +652,8 @@ class SingleData(gladeXml, logs):
                         pass
 
                     else:
+                        oValue = 0
+                    if not ( isinstance(oValue, types.IntType) or isinstance(oValue, types.longType) ):
                         oValue = 0
 
                 elif sVerify  == 'float':
@@ -809,23 +827,7 @@ class SingleData(gladeXml, logs):
         
     
     def setEmptyEntries(self):
-        for i in range(self.dicEntries.getCountOfEntries() ):
-            entry =  self.dicEntries.getEntryAtIndex(i)
-            widget = self.getWidget(entry.getName())
-            
-            # self.out( "index : " + str(i))
-            # self.out( "entry : " + str(entry))
-            # self.out( "name  : " + str(entry.getName()))
-            
-            # self.out( "widget: " + str(widget))
-            
-            if string.count(str(widget), "GtkEntry") > 0:
-                widget.set_text('')
-            elif string.count(str(widget), "GtkTextView") > 0:
-                # self.out( "GtkTextView")
-                buffer = gtk.TextBuffer(None)
-                buffer.set_text('')
-                widget.set_buffer(buffer)
+        self.clearAllFields()
         self.setOtherEmptyEntries()
 
     def setOtherEmptyEntries(self):
