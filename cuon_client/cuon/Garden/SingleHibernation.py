@@ -64,7 +64,19 @@ class SingleHibernation(SingleData):
        
     def getHibernationFields(self, id):
         dicRecords = self.load(id)
-
+        
+        
+    def getHibernationRecord(self, id):
+        
+        dicRecords = self.load(id)
+        print 'dicRecords = ', dicRecords
+        
+        if dicRecords and len(dicRecords) >= 1:
+            return dicRecords[0]
+        else:
+            return {}
+            
+        
     def getHibernationNumber(self, id):
         dicRecords = self.load(id)
         return dicRecords[0]['number']

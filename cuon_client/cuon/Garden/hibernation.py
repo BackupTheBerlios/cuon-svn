@@ -438,6 +438,95 @@ class hibernationwindow(chooseWindows):
         if self.singleHibernationPlant.ID > 0:
             print 'ModulNumber', self.ModulHibernationPlantNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulHibernationPlantNumber, {'1':self.singleHibernation.ID})
+     
+  
+    def on_bDupOrder_clicked(self, event):
+        self.printOut('bDupOrder pressed')
+        # first load new OrderNumber
+        NewNumber = self.rpc.callRP('Garden.getNewHibernationNumber', self.dicUser)
+        # then dup EntriesHibernations
+        oldHibID = self.singleHibernation.ID
+        dicEntries = self.singleHibernation.readEntries()
+        self.out(dicEntries)
+        oldHibernationNumber = 0
+        if dicEntries:
+            
+            # replace Values
+            for sField in dicEntries:
+                print sField
+                print dicEntries[sField]
+                print '--------------------------'
+                if sField == 'hibernation_number':
+                    oldHibernationNumber = dicEntries[sField][0] 
+                    print 'set new Number'
+                    dicEntries[sField][0] = NewNumber
+                elif sField == 'addressnumber':
+                    pass
+                elif sField == 'client':
+                    pass
+                elif dicEntries[sField][1] == u'int':
+                    print 'Field ist int'
+                    dicEntries[sField][0] = 0
+                    
+                elif dicEntries[sField][1] == u'float':
+                    print 'Field ist float'
+                    dicEntries[sField][0] = 0.0
+                
+                elif dicEntries[sField][1] == u'bool':
+                    print 'Field ist bool'
+                    dicEntries[sField][0] = False
+
+                elif dicEntries[sField][1] == u'text':
+                    print 'Field ist text'
+                    
+                elif dicEntries[sField][1] == u'string':
+                    print 'Field ist string'
+                    dicEntries[sField][0] = ''
+        self.out(dicEntries)
+        # Now save the values:
+        self.singleHibernation.ID = -1
+        newID = self.singleHibernation.saveExternalData(dicEntries)
+        print 'newID = ', newID
+        #now add the plants
+        sSql = 'select id from hibernation_plant where hibernation_number = ' + `oldHibID`
+        sSql += ' and client = ' + `self.dicUser['client']` + " and status != 'delete' "
+        liIds = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
+        self.out(liIds)
+        if liIds:
+            for plantid in range(len(liIds)):
+                liRecord = self.singleHibernationPlant.load(liIds[plantid]['id'])
+                self.out('liRecord = ')
+                self.out(liRecord)
+                self.out('-----------------------------------------------')
+                dicEntries = {}
+                dicEntries['price_last_year'] = [liRecord[0]['price'],u'float']
+                dicEntries['price'] = [0.0,u'float']
+                dicEntries['hibernation_number'] = [newID,u'int']
+                dicEntries['plant_notice'] = [liRecord[0]['plant_notice'],u'string']
+                dicEntries['botany_number'] = [liRecord[0]['botany_number'],u'int']
+                dicEntries['diameter'] = [liRecord[0]['diameter'],u'float']
+                
+                self.singleHibernationPlant.ID = -1
+                self.singleHibernationPlant.saveExternalData(dicEntries)
+        
+
+
+                
+                    
+                    
+
+            
+                    
+                
+                
+        
+            
+        #restore the values
+        self.singleHibernation.ID = oldHibID
+        self.singleHibernation.load(oldHibID)
+        self.refreshTree()
+        
+        
         
     def saveData(self):
         print 'save Hibernation'
