@@ -22,6 +22,9 @@ class Report(xmlrpc.XMLRPC, basics):
         self.ReportDefs['DocumentPathListsAddresses'] = self.DocumentPathListsAddresses
         self.ReportDefs['DocumentPathListsArticles'] = self.DocumentPathListsAddresses
 
+        self.ReportDefs['PdfEncoding'] = self.PdfEncoding
+
+    
         #self.report = Reports.report.report()
        
 

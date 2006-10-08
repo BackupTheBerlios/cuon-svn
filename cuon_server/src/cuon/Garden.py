@@ -20,20 +20,33 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = 'select delivery_number from list_of_deliveries where order_number = ' + `orderNumber`
         sSql = sSql + self.getWhere("",dicUser,1)
         
-        dicResult =  oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         if dicResult == 'NONE':
             sSql1 = 'insert into list_of_deliveries ( id, delivery_number, order_number) '
             sSql1 = sSql1 + ' values (nextval(\'list_of_deliveries_id+ sc +\'),nextval(\'numerical_misc_standard_delivery +sc +\'), ' 
             sSql1 = sSql1 + `orderNumber` + ' )'
         
-            oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
+            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
-            dicResult =  oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
         if dicResult != 'NONE':
            nr = dicResult[0]['delivery_number']
         return nr
-
+        
+    def xmlrpc_getNewSequenceNumber(self, year, dicUser ):
+        nr = 0
+        sSql = "select sequence_of_stock as nr from hibernation  where date_part('year', \"begin_date\") = " + `year`
+        sSql = sSql + self.getWhere("",dicUser,1)
+        
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        if dicResult == 'NONE':
+            nr = 0
+        else:
+            nr = dicResult[0]['nr']
+        
+        return nr
+            
 
     def xmlrpc_getInvoiceAddress(self, dicOrder, dicUser):
         

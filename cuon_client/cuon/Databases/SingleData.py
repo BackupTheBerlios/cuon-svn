@@ -415,32 +415,47 @@ class SingleData(gladeXml, logs):
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
                         sValue = `sValue`
                     if entry.getVerifyType() == 'string' and isinstance(sValue, types.StringType):
-                        #sValue = sValue.encode(self.sCoding)
-                        pass
+                        sValue = self.getCheckedValue(sValue, 'string')
+                        
+                        
                     elif entry.getVerifyType() == 'int':
-                        print '--- Int ---', sValue
-                        if isinstance(sValue, types.IntType):
-                            sValue = `sValue`
-                        elif isinstance(sValue, types.StringType):
-                            sValue = '0'
-                        elif sValue == None:
-                            sValue = '0'
-                        else:
-                            sValue = '0'
+##                        print '--- Int ---', sValue
+##                        if isinstance(sValue, types.IntType):
+##                            sValue = `sValue`
+##                        elif isinstance(sValue, types.StringType):
+##                            sValue = '0'
+##                        elif sValue == None:
+##                            sValue = '0'
+##                        else:
+##                            sValue = '0'
+                        sValue = `self.getCheckedValue(sValue, 'int')`
                             
                     elif entry.getVerifyType() == 'float' and isinstance(sValue, types.FloatType):
-                        iR = entry.getRound()
-                        if iR == -1:
-                            iR = 2
-                        sValue = "%0.*f" % (iR, sValue)
-                        self.printOut( sValue)
+                        try:
+                            iR = entry.getRound()
+                            if iR == -1:
+                                iR = 2
+                            sValue = "%0.*f" % (iR, sValue)
+                            self.printOut( sValue)
+                        except:
+                            pass
+                            
+                        sValue = self.getCheckedValue(sValue,'toStringFloat')
+                        
+                    elif entry.getVerifyType() == 'float' and isinstance(sValue, types.StringType):
+                            
+                        sValue = self.getCheckedValue(sValue,'toStringFloat')
 
                     elif entry.getVerifyType() == 'numeric' and isinstance(sValue, types.FloatType):
                         sValue = `round(sValue,entry.getRound())`
+                        
                        
                     elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
+                        
                         #sValue = sValue.encode(self.sCoding)
                         self.printOut( 'date string = ', sValue)
+                        sValue = self.getCheckedValue(sValue, 'formatedDate')
+                        
                         #dt = time.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
                         #self.printOut( dt
                         #dt = DateTime.strptime(sValue, self.sqlDicUser['DateFormatString'])
@@ -466,7 +481,11 @@ class SingleData(gladeXml, logs):
                     if string.count(str(widget), "GtkEntry") > 0:
                         # self.out( "GtkEntry:")
                         # self.out( "Name: " + str(widget.get_name()))
-                        widget.set_text(sValue)
+                        try:
+                            widget.set_text(sValue)
+                        except:
+                            pass
+                            
                     elif string.count(str(widget), "GtkTextView") > 0:
                         buffer = gtk.TextBuffer(None)
                         buffer.set_text(sValue)
@@ -631,48 +650,50 @@ class SingleData(gladeXml, logs):
 
                 elif sVerify  == 'int':
                     # self.out( oValue,self.INFO)
-                    try:
-                        if oValue == '':
-                            oValue = 0
-                    except:
-                        oValue = 0
-                    # self.out( oValue, self.INFO)
-                    # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
-                    self.printOut( oValue)
-                    if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
-                        if oValue.isdigit():
-                            oValue = int(oValue)
-                        else:
-                            oValue = string.strip(oValue)
-                            oValue = long(oValue[0:len(oValue) -1])
-
-                    elif isinstance(oValue, types.IntType):
-                        pass
-                    elif isinstance(oValue, types.LongType):
-                        pass
-
-                    else:
-                        oValue = 0
-                    if not ( isinstance(oValue, types.IntType) or isinstance(oValue, types.longType) ):
-                        oValue = 0
+                    oValue = self.getCheckedValue(oValue,'int')
+##                    try:
+##                        if oValue == '':
+##                            oValue = 0
+##                    except:
+##                        oValue = 0
+##                    # self.out( oValue, self.INFO)
+##                    # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
+##                    self.printOut( oValue)
+##                    if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
+##                        if oValue.isdigit():
+##                            oValue = int(oValue)
+##                        else:
+##                            oValue = string.strip(oValue)
+##                            oValue = long(oValue[0:len(oValue) -1])
+##
+##                    elif isinstance(oValue, types.IntType):
+##                        pass
+##                    elif isinstance(oValue, types.LongType):
+##                        pass
+##
+##                    else:
+##                        oValue = 0
+##                    if not ( isinstance(oValue, types.IntType) or isinstance(oValue, types.longType) ):
+##                        oValue = 0
 
                 elif sVerify  == 'float':
                     # self.out( oValue)
-                    if oValue == '':
-                        oValue = 0.0
-                    # self.out( oValue)
-                    # self.out( '++++++++++++++++++++++++++++++++++')
-                    self.printOut( oValue)
-                    if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
-                        oValue = string.replace(oValue,',','.')
-                        oValue = float(oValue)
-                    elif isinstance(oValue, types.FloatType):
-                        pass
-                    elif isinstance(oValue, types.IntType):
-                        oValue = float(oValue)
-
-                    else:
-                        oValue = 0.0
+                    oValue = self.getCheckedValue(oValue, 'float')
+##                    if oValue == '':
+##                        oValue = 0.0
+##                    # self.out( oValue)
+##                    # self.out( '++++++++++++++++++++++++++++++++++')
+##                    self.printOut( oValue)
+##                    if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
+##                        oValue = string.replace(oValue,',','.')
+##                        oValue = float(oValue)
+##                    elif isinstance(oValue, types.FloatType):
+##                        pass
+##                    elif isinstance(oValue, types.IntType):
+##                        oValue = float(oValue)
+##
+##                    else:
+##                        oValue = 0.0
 
                 elif sVerify == 'date' :
                     if oValue == '':

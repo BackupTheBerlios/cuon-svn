@@ -94,7 +94,7 @@
       <fg_color>0</fg_color>
     </entry>
 <entry>
-      <name>ePlantPricelastYear</name>
+      <name>ePlantPriceLastYear</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>float</verify_type>

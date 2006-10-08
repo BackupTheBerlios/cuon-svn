@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-19 10:58+0200\n"
-"PO-Revision-Date: 2006-09-19 11:01+0200\n"
+"PO-Revision-Date: 2006-10-06 14:46+0200\n"
 "Last-Translator: Jürgen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -249,7 +249,7 @@ msgstr "Personal"
 #: cuon/Project/SingleProjectStaffResources.py:42
 #, fuzzy
 msgid "planed"
-msgstr "Pflanze"
+msgstr "geplant"
 
 #: cuon/Project/SingleProjectStaffResources.py:42
 #, fuzzy
@@ -293,7 +293,7 @@ msgstr "Deutscher Name"
 
 #: cuon/Garden/SingleHibernationPlant.py:41
 msgid "plant"
-msgstr ""
+msgstr "Pflanze"
 
 #: cuon/Garden/SingleHibernationPlant.py:41
 #: cuon/Garden/GUI/src/interface.c:806
@@ -1365,11 +1365,11 @@ msgstr "Hilfe"
 
 #: cuon/Addresses/GUI/src/interface.c:52
 msgid "gtk-undo"
-msgstr ""
+msgstr "Rückgängig"
 
 #: cuon/Addresses/GUI/src/interface.c:59
 msgid "gtk-find"
-msgstr ""
+msgstr "Suchen"
 
 #: cuon/Addresses/GUI/src/interface.c:108
 #: cuon/Addresses/GUI/src/interface.c:188 cuon/Addresses/GUI/addresses.c:18
@@ -1391,7 +1391,7 @@ msgstr "Dr_ucken"
 #: cuon/Addresses/GUI/src/interface.c:214
 #, fuzzy
 msgid "gtk-save"
-msgstr "schließen"
+msgstr "Sichern"
 
 #: cuon/Addresses/GUI/src/interface.c:226
 #: cuon/Addresses/GUI/src/interface.c:238
@@ -2207,11 +2207,11 @@ msgstr "Literatur"
 #: cuon/Biblio/GUI/src/interface.c:211 cuon/Biblio/GUI/src/interface.c:325
 #, fuzzy
 msgid "Author"
-msgstr "Behörde"
+msgstr "Autor"
 
 #: cuon/Biblio/GUI/src/interface.c:305
 msgid "Series"
-msgstr ""
+msgstr "Serie"
 
 #: cuon/Biblio/GUI/src/interface.c:312
 msgid "Publisher"
@@ -2227,19 +2227,19 @@ msgstr "Seite"
 
 #: cuon/Biblio/GUI/src/interface.c:385
 msgid "Bib.-Type"
-msgstr ""
+msgstr "Art"
 
 #: cuon/Biblio/GUI/src/interface.c:398
 msgid "Book"
-msgstr ""
+msgstr "Buch"
 
 #: cuon/Biblio/GUI/src/interface.c:399
 msgid "Magazine"
-msgstr ""
+msgstr "Zeitschrift"
 
 #: cuon/Biblio/GUI/src/interface.c:407
 msgid "Extend. Info"
-msgstr ""
+msgstr "Weitere Infos"
 
 #: cuon/Project/GUI/src/interface.c:128
 #, fuzzy
@@ -2260,19 +2260,19 @@ msgstr "Projekt"
 #: cuon/Project/GUI/src/interface.c:263 cuon/Project/GUI/src/interface.c:756
 #, fuzzy
 msgid "Phase"
-msgstr "Einkauf"
+msgstr "Phase"
 
 #: cuon/Project/GUI/src/interface.c:270 cuon/Project/GUI/src/interface.c:855
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #: cuon/Project/GUI/src/interface.c:277 cuon/Project/GUI/src/interface.c:1079
 msgid "Staff-Resources"
-msgstr ""
+msgstr "Personal Resourcen"
 
 #: cuon/Project/GUI/src/interface.c:284 cuon/Project/GUI/src/interface.c:1213
 msgid "Material-Resources"
-msgstr ""
+msgstr "Material Resourcen"
 
 #: cuon/Project/GUI/src/interface.c:451
 #, fuzzy
@@ -2282,12 +2282,12 @@ msgstr "Projekt"
 #: cuon/Project/GUI/src/interface.c:538
 #, fuzzy
 msgid "Project Time"
-msgstr "Projekt"
+msgstr "Zeitrahmen"
 
 #: cuon/Project/GUI/src/interface.c:555 cuon/Project/GUI/src/interface.c:696
 #: cuon/Project/GUI/src/interface.c:795
 msgid "Days"
-msgstr ""
+msgstr "Tage"
 
 #: cuon/Project/GUI/src/interface.c:559
 #, fuzzy
@@ -2302,7 +2302,7 @@ msgstr "suche Adresse"
 #: cuon/Project/GUI/src/interface.c:604 cuon/Project/GUI/src/interface.c:718
 #: cuon/Project/GUI/src/interface.c:817
 msgid "start at"
-msgstr ""
+msgstr "startet"
 
 #: cuon/Project/GUI/src/interface.c:613 cuon/Project/GUI/src/interface.c:727
 #: cuon/Project/GUI/src/interface.c:826
@@ -2317,12 +2317,12 @@ msgstr "Projekt"
 #: cuon/Project/GUI/src/interface.c:679
 #, fuzzy
 msgid "Phase Time"
-msgstr "Datum und Zeit"
+msgstr "Phasen Zeit"
 
 #: cuon/Project/GUI/src/interface.c:778
 #, fuzzy
 msgid "Task Time"
-msgstr "Uhrzeit"
+msgstr "Aufgabenzeit"
 
 #: cuon/Project/GUI/src/interface.c:863 cuon/Garden/GUI/src/interface.c:483
 #: cuon/Garden/GUI/src/interface.c:574
@@ -2600,12 +2600,12 @@ msgstr "1 Sehr schlecht"
 
 #: cuon/Garden/GUI/src/interface.c:859
 msgid "Int. Number"
-msgstr "Auftragsnummer"
+msgstr "Lagernummer"
 
 #: cuon/Garden/GUI/src/interface.c:884
 #, fuzzy
 msgid "Total Price"
-msgstr "Profil"
+msgstr "Gesamtsumme"
 
 #: cuon/Garden/GUI/src/interface.c:925
 #, fuzzy

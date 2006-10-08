@@ -36,6 +36,7 @@ import SingleHibernationPlant
 import SingleBotany
 import base64
 import os
+import time
 
 class hibernationwindow(chooseWindows):
 
@@ -240,17 +241,8 @@ class hibernationwindow(chooseWindows):
         self.doEdit = self.tabPlant
 
         self.singleHibernationPlant.newRecord()
-        # set ePlantNumber + 1
-        ePN = self.singleHibernationPlant.getLastNumber(self.singleHibernation.ID)
-        print 'ePN = ', ePN
-        try:
-            if ePN and int(ePN) > 0:
-                
-                ePN1 = ePN + 1
-            else:
-                ePN1 = 1
-        except:
-            ePN1 = 1
+        ePN1 = self.getNewPlantNumber()
+        
             
         
         self.getWidget('ePlantNumber').set_text(`ePN1`)
@@ -373,7 +365,27 @@ class hibernationwindow(chooseWindows):
             eAdrField.set_text(' ') 
 
 
-
+    def on_bSetSequence_clicked(self, event):
+        print 'Set Sequence clicked'
+        sSeq = self.getWidget('eSequence').get_text()
+        nSeq = self.getCheckedValue(sSeq,'int')
+        if not nSeq > 0:
+            print nSeq
+            year = time.localtime(time.time())[0]
+            print year
+            newSeq = self.rpc.callRP('Garden.getNewSequenceNumber', year, self.dicUser) + 1
+            
+            print 'nSeq2 = ', newSeq
+            if newSeq > 0:
+                self.getWidget('eSequence').set_text(`newSeq`)
+                if self.getWidget('eBeginDate').get_text() == '':
+                    
+                    sDate = self.getCheckedValue(time.localtime(time.time()),'date')
+                    print 'sDate = ', sDate
+                    
+                    self.getWidget('eBeginDate').set_text(self.getCheckedValue(sDate,'toStringDate' ))
+                    
+                    
     # search button
     def on_bSearch_clicked(self, event):
         self.searchHibernation()
@@ -505,10 +517,16 @@ class hibernationwindow(chooseWindows):
                 dicEntries['plant_notice'] = [liRecord[0]['plant_notice'],u'string']
                 dicEntries['botany_number'] = [liRecord[0]['botany_number'],u'int']
                 dicEntries['diameter'] = [liRecord[0]['diameter'],u'float']
-                
+                dicEntries['plant_number'] = [0,u'int']
+
                 self.singleHibernationPlant.ID = -1
-                self.singleHibernationPlant.saveExternalData(dicEntries)
-        
+                newPlantID = self.singleHibernationPlant.saveExternalData(dicEntries)
+                print 'newPlantID = ', newPlantID
+                
+                #self.singleHibernationPlant.ID = newPlantID
+                #self.singleHibernationPlant.load(newPlantID)
+                
+                
 
 
                 
@@ -537,7 +555,22 @@ class hibernationwindow(chooseWindows):
             print 'save 2'
             self.on_PlantSave1_activate(None)
             
-            
+    def getNewPlantNumber(self):
+        # set ePlantNumber + 1
+        ePN1 = 0
+        ePN = self.singleHibernationPlant.getLastNumber(self.singleHibernation.ID)
+        print 'ePN = ', ePN
+        try:
+            if ePN and int(ePN) > 0:
+                
+                ePN1 = ePN + 1
+            else:
+                ePN1 = 1
+        except:
+            ePN1 = 1
+        return ePN1
+        
+        
     def refreshTree(self):
         self.singleHibernation.disconnectTree()
         self.singleHibernationPlant.disconnectTree()

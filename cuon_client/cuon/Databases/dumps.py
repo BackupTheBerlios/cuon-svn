@@ -17,7 +17,9 @@ import os
 import pickle
 import base64
 import time
+import datetime as DateTime
 import random
+import types
 
 
 #import os.path
@@ -25,7 +27,9 @@ import random
 class dumps:
     def __init__(self):
         self.dbase = None
-
+        self.decimalLocale = {}
+        self.decimalLocale['coma'] = ['de','nl','it','pl','au','ch']
+        
     def openDB(self):
         #print 'OS.ENViron', os.environ['CUON_HOME']
         self.dbase = shelve.open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonObjects'))
@@ -104,4 +108,131 @@ class dumps:
         fname = self.saveTmpData(s, 'pdf')
         print 'PDF-App = ', dicUser['prefApps']['PDF']
         print os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
+        
+
+    def getCheckedValue(self, value, type, min = None, max = None):
+        retValue = None
+        try:
+            assert type
+            if type == 'int':
+                if not isinstance(value, types.IntType) and not isinstance(value, types.LongType) :
+                    try:
+                        assert value != None
+
+                        if isinstance(value, types.StringType):
+                            value = value.strip()
+                            if value[0] == 'L'  or value[0] == 'l':
+                                value = value[1:]
+                            
+                        retValue = int(value)
+                    except:
+                        retValue = 0
+                else:
+                    retValue = int(value)
+            elif type == 'float':
+                if not isinstance(value, types.FloatType):
+                    try:
+                        assert value != None
+
+                        if isinstance(value, types.StringType):
+                            
+                            value = value.strip()
+                            convert = False
+                            print 'convert userlocales = ', self.dicUser['Locales']
+                            for sLocale in self.decimalLocale['coma']:
+                                print sLocale
+                                if sLocale == self.dicUser['Locales']:
+                                    convert = True
+                            if convert:
+                                print 'convert to normal float'
+                                value = value.replace('.','')
+                                value = value.replace(',','.')
+                                
+                                    
+                            if value[0] == 'L'  or value[0] == 'l':
+                                value = value[1:]
+                        retValue = float(value)
+                    except:
+                        retValue = 0.0
+                else:
+                    retValue =  value 
+            elif type == 'toStringFloat':
+                if isinstance(value, types.StringType):
+                    if value == 'NONE':
+                        value = '0.00'
+                    elif value == 'None':
+                        value = '0.00'
+                        
+                        
+                    convert = False
+                    print 'convert userlocales = ', self.dicUser['Locales']
+                    for sLocale in self.decimalLocale['coma']:
+                        print sLocale
+                        if sLocale == self.dicUser['Locales']:
+                            convert = True
+                    if convert:
+                        print 'convert to normal float'
+                        value = value.replace('.',',')
+                        #value = value.replace(',','.')
+                         
+                retValue = value 
+                
+            elif type == 'date':
+                print 'value by date', value
+                retvalue = time.strptime(value, self.dicUser['DateformatString'])
+                self.printOut( 'dt2 = ', retvalue)
+                
+                        
+                    #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
+                    #    dt = DateTime.DateTimeFrom(sValue)
+                    #dt = DateTime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
+                    #dt = DateTime.DateTime(1999)
+                    #    # self.out( dt)
+                    #    sValue = dt.strftime(self.sDateFormat)
+                    
+            elif type == 'formatedDate':
+                print 'value by formatedDate', value
+                checkvalue = time.strptime(value, self.dicUser['DateformatString'])
+                self.printOut( 'dtFormated2 = ', checkvalue)
+                if checkvalue[0] == 1900 and checkvalue[1] == 1 and checkvalue[2] == 1:
+                    # 1900/1/1 --> set to empty
+                    retvalue = ''
+                else:
+                    retValue = value
+                    
+            elif type == 'toStringDate':
+                print 'value by toStringDate', value
+                retValue = time.strftime(self.dicUser['DateformatString'],value)
+                self.printOut( 'dt5 = ', retValue) 
+                
+            elif type == 'string':    
+                print 'check string = ', value
+                
+                if not isinstance(value, types.StringType):
+                    value = `value`
+                if value == 'NONE':
+                    value = ''
+                elif value == 'None':
+                    value = ''
+                
+                retValue = value
+                
+                
+                
+            else:
+                retValue = value
+        
+        except AssertionError:
+            print 'No type set '
+            retValue = value
+        except Exception,params:
+            print Exception, params
+            retValue = value
+        
+        print 'retvalue = ', retValue
+        
+        return retValue
+        
+        
+            
         

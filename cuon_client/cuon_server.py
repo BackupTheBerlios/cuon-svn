@@ -313,7 +313,7 @@ from cuon.Windows.windows  import windows
 import cuon.Login.login
 import cPickle
 import ConfigParser
-
+import cuon.XMLRPC.xmlrpc
 import cuon.Editor.editor
 
 class MainWindow(windows):
@@ -327,6 +327,11 @@ class MainWindow(windows):
         self.oUser = cuon.User.user.User()
         os.system('rm -Rf inifiles')
         os.system('mkdir inifiles')
+        self.openDB()
+        self.td = self.loadObject('td')
+        self.closeDB()
+        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
+        self.rpc.td = self.td
 
     def on_end1_activate(self,event):
         print "exit cuon"
@@ -335,6 +340,9 @@ class MainWindow(windows):
 
         
     def on_login1_activate(self,event):
+        # first check table cuon
+        ok =  self.rpc.callRP('Database.createCuon', {'Name':'zope'})
+
         lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')])
         
         #lgi = cuon.Login.login.loginwindow()

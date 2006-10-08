@@ -50,6 +50,9 @@ class basics(xmlrpc.XMLRPC):
         self.POSTGRES_DB = 'cuon'
         self.POSTGRES_USER = 'Test'
         
+        self.PdfEncoding = 'latin-2'
+        
+        
         try:
             self.cpServer = ConfigParser.ConfigParser()
             
@@ -82,6 +85,10 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('POSTGRES','POSTGRES_USER')
             if value:
                 self.POSTGRES_USER = value
+                
+            value = self.getConfigOption('PDF','ENCODING')
+            if value:
+                self.PdfEncoding = value
                 
                 
                 

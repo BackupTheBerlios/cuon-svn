@@ -295,7 +295,7 @@ class setup:
 
     def executeSSH(self, s):
         ssh = " -p" + self.sshPort + " " + self.sPrefix[0:len(self.sPrefix)-2] 
-        s1 = "ssh " +  ssh +' ' + ' "' +  s +'"'
+        s1 = "ssh " +  ssh + ' "'+  s +'"'
         print s1
         self.setTv1(s1)
         self.executeString( s1  )
