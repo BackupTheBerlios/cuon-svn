@@ -36,8 +36,8 @@ class Garden(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getNewSequenceNumber(self, year, dicUser ):
         nr = 0
-        sSql = "select sequence_of_stock as nr from hibernation  where date_part('year', \"begin_date\") = " + `year`
-        sSql = sSql + self.getWhere("",dicUser,1)
+        sSql = "select max(sequence_of_stock) as nr from hibernation  where date_part('year', \"begin_date\") = " + `year`
+        sSql = sSql + self.getWhere("",dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         if dicResult == 'NONE':
