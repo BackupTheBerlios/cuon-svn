@@ -576,3 +576,17 @@ class Database(xmlrpc.XMLRPC, SQL):
             print '___________________________'
         return result 
                         
+    def bindSql(self, liFields ):
+        print 'bindSql start'
+        sSql = ''
+        for liValues in liFields:
+            sSql += liValues[0] + ' as ' + liValues[1] + ', '
+        
+        
+        sSql = sSql[0:sSql.rfind(',')]
+        print 'bindSql = ', sSql
+        
+        return sSql
+        
+            
+            

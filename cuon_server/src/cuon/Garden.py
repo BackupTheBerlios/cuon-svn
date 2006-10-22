@@ -81,18 +81,27 @@ class Garden(xmlrpc.XMLRPC, basics):
         return nr
 
     def xmlrpc_getIncomingAddress(self, dicOrder, dicUser):
-
-        sSql = "select hibernation.hibernation_number as order_number,  "
-        Sql = sSql + " to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')  as begin_date ,"
-        sSql = sSql + " hibernation.begin_working_time as  begin_working_time, "
-   
-        sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
-        sSql = sSql + " address.firstname as firstname, "
-
-        sSql = sSql + " address.street as street, (address.zip || ' ' ||  address.city)  as city "
+        
+         
+        liFields = []
+        liFields.append(["hibernation.hibernation_number","order_number"])
+        liFields.append(["to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')","begin_date"])
+        liFields.append(["hibernation.begin_working_time","begin_working_time"])
+        liFields.append(["hibernation.begin_notes","begin_notes"])
+        liFields.append(["hibernation.ends_notes","ends_notes"])
+        liFields.append(["address.lastname","lastname"])
+        liFields.append(["address.lastname2","lastname2"])
+        liFields.append(["address.firstname","firstname"])
+        liFields.append(["address.street","street"])
+        liFields.append(["(address.zip || ' ' ||  address.city)","city "])
+        
+        sSql = "select " + self.oDatabase.bindSql(liFields) 
+        
         sSql = sSql + " from hibernation, address where hibernation.id = \'" + `dicOrder['orderNumber']` +"\' " 
         sSql = sSql + "and address.id = hibernation.addressnumber" 
         self.writeLog('xmlrpc_getIncomingAddress = ' + `sSql`)
+        print sSql
+
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
         
@@ -154,18 +163,30 @@ class Garden(xmlrpc.XMLRPC, basics):
         
         
     def xmlrpc_getHibernationIncoming(self, dicOrder , dicUser):
-        sSql = "select hibernation.hibernation_number as order_number,  "
-        sSql = sSql + " to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')  as begin_date ,"
-        sSql = sSql + " hibernation.begin_working_time as  begin_working_time, "
-        #sSql = sSql + " orderposition.tax_vat as tax_vat, "
-        sSql = sSql + " hibernation_plant.plant_number as article_id,  "
-        #sSql = sSql + " hibernation_plant.amount as amount, "
-        sSql = sSql + " hibernation_plant.price as price, "
-	sSql = sSql + " botany.botany_name as botany_name "
+        
+        liFields = []
+        liFields.append(['hibernation.hibernation_number','order_number'])
+        liFields.append(["to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')","begin_date"])
+        liFields.append(["hibernation.begin_working_time","begin_working_time"])
+        liFields.append(["hibernation_plant.plant_number","article_id"])
+        liFields.append(["hibernation_plant.price","price"])
+        liFields.append(["hibernation_plant.status","status"])
+        liFields.append(["hibernation_plant.plant_notice","plantnotice"])
+        liFields.append(["hibernation_plant.vermin","vermin"])
+        liFields.append(["hibernation_plant.diameter","diameter"])
+
+        liFields.append(["botany.botany_name","botany_name"])
+        liFields.append(["botany.local_name","local_name"])
+        
+    
+        sSql = "select " + self.oDatabase.bindSql(liFields)
+        
+        
+            
         sSql = sSql + " from hibernation, hibernation_plant, botany where hibernation.id = \'" + `dicOrder['orderNumber']` +"\' "
         sSql = sSql + "and hibernation_plant.hibernation_number = hibernation.id "
-	sSql = sSql + "and hibernation_plant.botany_number = botany.id and "
-	sSql = sSql + " hibernation.client = " + `dicUser['client']` 
+        sSql = sSql + "and hibernation_plant.botany_number = botany.id and "
+        sSql = sSql + " hibernation.client = " + `dicUser['client']` 
         sSql = sSql + " order by hibernation_plant.plant_number "
         dicUser['noWhereClient'] = 'Yes'
         print sSql

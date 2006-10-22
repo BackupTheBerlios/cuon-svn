@@ -494,6 +494,12 @@ class hibernationwindow(chooseWindows):
                 elif dicEntries[sField][1] == u'string':
                     print 'Field ist string'
                     dicEntries[sField][0] = ''
+                elif dicEntries[sField][1] == u'date':
+                    print 'Field ist date'
+                    dicEntries[sField][0] = ''   
+                else:
+                    dicEntries[sField][0] = ''
+                
         self.out(dicEntries)
         # Now save the values:
         self.singleHibernation.ID = -1
@@ -517,6 +523,7 @@ class hibernationwindow(chooseWindows):
                 dicEntries['plant_notice'] = [liRecord[0]['plant_notice'],u'string']
                 dicEntries['botany_number'] = [liRecord[0]['botany_number'],u'int']
                 dicEntries['diameter'] = [liRecord[0]['diameter'],u'float']
+                #ePN1 = self.getNewPlantNumber()
                 dicEntries['plant_number'] = [0,u'int']
 
                 self.singleHibernationPlant.ID = -1
@@ -544,6 +551,8 @@ class hibernationwindow(chooseWindows):
         self.singleHibernation.load(oldHibID)
         self.refreshTree()
         
+    def on_bReorgPlantnumber_clicked(self, event):
+        print 'bReorgPlantNumber pressed'
         
         
     def saveData(self):
