@@ -553,6 +553,7 @@ class hibernationwindow(chooseWindows):
         
     def on_bReorgPlantnumber_clicked(self, event):
         print 'bReorgPlantNumber pressed'
+        self.rpc.callRP('Garden.reorgPlantNumber',self.singleHibernation.ID, self.dicUser)
         
         
     def saveData(self):

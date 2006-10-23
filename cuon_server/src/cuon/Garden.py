@@ -191,3 +191,24 @@ class Garden(xmlrpc.XMLRPC, basics):
         dicUser['noWhereClient'] = 'Yes'
         print sSql
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+
+    def xmlrpc_reorgPlantNumber(self, hib_nr, dicUser):
+        print 'hib_nr', hib_nr
+        ok = True
+        
+        sSql = 'select id from hibernation_plant where hibernation_number = ' + `hib_nr`
+        
+        sSql += self.getWhere("",dicUser,2)
+        print sSql
+        sSql += 'order by id '
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        print result
+        z1 = 1
+        for ids in result:
+            print ids
+            sSql = 'update hibernation_plant set plant_number = ' + `z1` + ' where id = ' + `ids['id']`
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            z1 += 1
+            
+            
+        return ok
