@@ -211,12 +211,12 @@ class SQL(xmlrpc.XMLRPC, basics):
     def xmlrpc_saveRecord(self, sNameOfTable='EMPTY', id=0, dicValues ={}, dicUser={}, liBigEntries='NO'):       
         import string
         import types
-        if liBigEntries != 'NO':
-            for lb in liBigEntries:
-                sKey = dicUser['Name'] + '_' + lb
-                self.writeLog('sKey in Entries' + `sKey`)
-                dicValues[lb][0] = self.getValue(sKey)
-        
+##        if liBigEntries != 'NO':
+##            for lb in liBigEntries:
+##                sKey = dicUser['Name'] + '_' + lb
+##                self.writeLog('sKey in Entries' + `sKey`)
+##                dicValues[lb][0] = self.getValue(sKey)
+##        
         self.writeLog('begin RECORD2')
         if id > 0:
             # update
