@@ -170,22 +170,31 @@ class SingleData(gladeXml, logs):
         if liBigEntries != 'NO':
             
             for lb in liBigEntries:
-                #self.printOut( 'lb = '
+                #self.printOut( 'lb = ' + `lb`)
                 #self.printOut( lb
-                j = 0
-                k = 2048*30
-                en =  base64.encodestring(dicValues[lb][0])
+                #print dicValues[lb][0]
+                dicValues[lb][0] =  base64.encodestring(dicValues[lb][0])
+                
 
-                endFile = len(en)
-                #self.printOut( endFile)
-                while j < endFile:
-                    ok = self.rpc.callRP('Database.createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
-                    #self.printOut( ok)
-                    j = k
-                    k = k + 2048*30
-                    #self.printOut( j)
-                    #self.printOut( k)
-                dicValues[lb][0] = ' '
+##        if liBigEntries != 'NO':
+##            
+##            for lb in liBigEntries:
+##                #self.printOut( 'lb = '
+##                #self.printOut( lb
+##                j = 0
+##                k = 2048*30
+##                en =  base64.encodestring(dicValues[lb][0])
+##
+##                endFile = len(en)
+##                #self.printOut( endFile)
+##                while j < endFile:
+##                    ok = self.rpc.callRP('Database.createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
+##                    #self.printOut( ok)
+##                    j = k
+##                    k = k + 2048*30
+##                    #self.printOut( j)
+##                    #self.printOut( k)
+##                dicValues[lb][0] = ' '
         
         self.printOut( "saveValues - self.id = ", self.ID)
         liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)

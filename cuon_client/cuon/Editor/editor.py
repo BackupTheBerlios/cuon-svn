@@ -1,6 +1,6 @@
 import gtk.glade
-
-
+import sys, os
+import os.path
 
 import string
 
@@ -8,13 +8,13 @@ import string
 from cuon.Windows.windows  import windows 
 
 class editorwindow(windows):
-    def __init__(self, filename, servermod = False):
+    def __init__(self, dicFilename, servermod = False):
         windows.__init__(self)
         
         self.close_dialog = None
     
         self.ModulNumber = 0
-        print filename, servermod
+        print dicFilename, servermod
         self.openDB()
         self.oUser = self.loadObject('User')
         self.closeDB()
@@ -27,13 +27,18 @@ class editorwindow(windows):
         self.textbuffer = self.getWidget('tv1').get_buffer()
         
         
-        if filename:
-            self.open_file(filename)
+        self.actualTab = 0
+        
+        
+        if dicFilename:
+            self.dicCurrentFilename = dicFilename
+            self.open_file(dicFilename)
         else:
-            self.current_filename = "./new.txt"
+            self.dicCurrentFilename = {'TYPE':'FILE','NAME':'./new.txt'}
     
     def on_quit1_activate(self, event):
         print 'quit editor'
+        os.system('rm tmp_editor_ssh_tab_*')
         self.closeWindow()
         
     def on_save1_activate(self, event):
@@ -85,14 +90,26 @@ class editorwindow(windows):
         self.open_file(self.filesel.get_filename())
         self.filesel.destroy()	
     
-    def open_file(self, filename):
+    def open_file(self, dicFilename):
         "Opens the file given in filename and reads it in"
+        if dicFilename['TYPE'] == 'SSH':
+            dicFilename['TMPNAME'] = 'tmp_editor_ssh_tab_' + `self.actualTab` 
+            s1 = 'scp -P ' + dicFilename['PORT'] +  ' ' + dicFilename['USER'] + '@' + dicFilename['HOST'] + '://' 
+            s1 +=  dicFilename['NAME'] + ' ' + dicFilename['TMPNAME']
+            os.system(s1)
+            filename = dicFilename['TMPNAME']
+            
+        else:
+           
+           filename = dicFilename['NAME']
+            
+            
         infile = open(filename, "r")
         if infile:
             self.textbuffer.set_text(infile.read())
             infile.close()
-            self.current_filename = filename
-            self.win1.set_title(self.current_filename)
+            #self.dicCurrentFilename = filename
+            self.win1.set_title(self.dicCurrentFilename['NAME'])
     
     def save_as_item_clicked(self, data=None):
         "Creates a file chooser and allows the user to save to it"
@@ -104,23 +121,39 @@ class editorwindow(windows):
     def save_selected_file(self, data=None):
         "Saves the selected file"
         self.save_file(self.filesel.get_filename(), self.get_text())
-        self.current_filename = self.filesel.get_filename()
-        self.window.set_title(self.current_filename)
+        self.dicCurrentFilename = self.filesel.get_filename()
+        self.window.set_title(self.dicCurrentFilename)
         self.filesel.destroy()
         
-    def save_file(self, filename, data):
+    def save_file(self, dicFilename, data):
         "Saves the data to the file located by the filename"
-        outfile = open(filename, "w")
+        print 'save this ', dicFilename
+        
+        if dicFilename['TYPE'] == 'SSH':
+            sFile = dicFilename['TMPNAME']
+        else:
+            sFile = dicFilename['NAME']
+        outfile = open(sFile, "w")
         if outfile:
             outfile.write(data)
             outfile.close()	
             #mark as unmodified since last save
             self.textbuffer.set_modified(False)
-    
+            
+        if dicFilename['TYPE'] == 'SSH':
+            os.system('cp -f ' + dicFilename['TMPNAME']  +' ' + os.path.basename(dicFilename['NAME'] ) )
+            s1 = 'scp -P ' + dicFilename['PORT'] +   ' ' + os.path.basename(dicFilename['NAME'] )  + ' '  + dicFilename['USER'] + '@' + dicFilename['HOST'] + '://' 
+            s1 +=  os.path.dirname(dicFilename['NAME'] )
+            print s1
+            
+            os.system(s1)
+            os.system('rm ' +  os.path.basename(dicFilename['NAME'] ) )
+            print 'Files saved'
+            
     def save_current_file(self, data=None):
         "Saves the text to the current file"
-        if self.current_filename != "/new":
-            self.save_file(self.current_filename, self.get_text())
+        if self.dicCurrentFilename['NAME'] != "/new":
+            self.save_file(self.dicCurrentFilename, self.get_text())
         else:
             self.save_as_item_clicked()
     

@@ -354,76 +354,76 @@ class MainWindow(windows):
         daba = cuon.Databases.databases.databaseswindow(True)
     
 
+    
+    def startSSHEdit(self, infile):
+        self.openDB()
+        td = self.loadObject('td')
+        self.closeDB()
+        
+        #os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
+        #ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
+        dicFilename = {'TYPE':'SSH', 'USER':td.sPrefix[0:td.sPrefix.find('@')]}
+        dicFilename['HOST'] = td.sPrefix[td.sPrefix.find('@')+ 1:td.sPrefix.find(':/')]
+        dicFilename['PORT'] = td.sshPort 
+        dicFilename['NAME'] = infile 
+        
+        print 'dicFilename = ', dicFilename
+        
+            
+        ed = cuon.Editor.editor.editorwindow(dicFilename, True)
     #edit local config-files
     def on_versioncfg1_activate(self, event):
-        ed = cuon.Editor.editor.editorwindow('version.cfg', True)
+        ed = cuon.Editor.editor.editorwindow({'TYPE':'FILE','NAME':'version.cfg'}, True)
+        
         
     #edit Server config-files
     def on_usercfg1_activate(self, event):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
+        self.startSSHEdit('etc/cuon/user.cfg')
         
     def on_serverini1_activate(self, event):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/server.ini inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/server.ini', True)
+        self.startSSHEdit('etc/cuon/server.ini')
         
     # SQL Rights and Groups
     
     def on_user_and_groups1_activate(self, event):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/UserGroups.cfg inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/UserGroups.cfg', True)
+        self.startSSHEdit('etc/cuon/sql/UserGroups.cfg')
         
+       
     def on_group_and_tabular1_activate(self, event):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsOther.cfg inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/GroupRightsOther.cfg', True)
+        self.startSSHEdit('etc/cuon/sql/GroupRightsOther.cfg')
+        
         
     def on_clients1_activate(self, event):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/clients.ini inifiles')
-        ed = cuon.Editor.editor.editorwindow('inifiles/clients.ini', True)
+        self.startSSHEdit('etc/cuon/clients.ini')
         
         
-    def on_save_configfiles1_activate(self, event):
-        
-        print 'save_config'
-        s = 'scp -P ' + td.sshPort + ' inifiles/user.cfg ' +td.sPrefix + '/etc/cuon/'
-        print s
-        os.system(s)
-
-        s = 'scp -P ' + td.sshPort + ' inifiles/server.ini ' +td.sPrefix + '/etc/cuon/'
-        print s
-        os.system(s)
-
-        s = 'scp -P ' + td.sshPort + ' inifiles/UserGroups.cfg ' +td.sPrefix + '/etc/cuon/sql'
-        print s
-        os.system(s)
-        
-        s = 'scp -P ' + td.sshPort + ' inifiles/GroupRightsOther.cfg ' +td.sPrefix + '/etc/cuon/sql'
-        print s
-        os.system(s)
-        
-        s = 'scp -P ' + td.sshPort + ' inifiles/clients.ini ' +td.sPrefix + '/etc/cuon'
-        print s
-        os.system(s)
-        
+##    def on_save_configfiles1_activate(self, event):
+##        
+##        print 'save_config'
+##        s = 'scp -P ' + td.sshPort + ' inifiles/user.cfg ' +td.sPrefix + '/etc/cuon/'
+##        print s
+##        os.system(s)
+##
+##        s = 'scp -P ' + td.sshPort + ' inifiles/server.ini ' +td.sPrefix + '/etc/cuon/'
+##        print s
+##        os.system(s)
+##
+##        s = 'scp -P ' + td.sshPort + ' inifiles/UserGroups.cfg ' +td.sPrefix + '/etc/cuon/sql'
+##        print s
+##        os.system(s)
+##        
+##        s = 'scp -P ' + td.sshPort + ' inifiles/GroupRightsOther.cfg ' +td.sPrefix + '/etc/cuon/sql'
+##        print s
+##        os.system(s)
+##        
+##        s = 'scp -P ' + td.sshPort + ' inifiles/clients.ini ' +td.sPrefix + '/etc/cuon'
+##        print s
+##        os.system(s)
+##        
         
         
     def on_create_grants_file1_activate(self, event):
-        self.activateClick('save_configfiles1')
+        #self.activateClick('save_configfiles1')
         print 'create grants.xml'
         
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/UserGroups.cfg inifiles')
