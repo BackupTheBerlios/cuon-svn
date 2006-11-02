@@ -196,11 +196,13 @@ class Garden(xmlrpc.XMLRPC, basics):
         print 'hib_nr', hib_nr
         ok = True
         
-        sSql = 'select id from hibernation_plant where hibernation_number = ' + `hib_nr`
+        sSql = 'select hibernation_plant.id as id from hibernation_plant, botany where hibernation_number = ' + `hib_nr`
+        sSql += ' and hibernation_plant.botany_number = botany.id '
         
-        sSql += self.getWhere("",dicUser,2)
+        sSql += self.getWhere("",dicUser,2,'hibernation_plant.')
+        sSql += ' order by botany.botany_name'
         print sSql
-        sSql += 'order by id '
+        
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         print result
         z1 = 1
