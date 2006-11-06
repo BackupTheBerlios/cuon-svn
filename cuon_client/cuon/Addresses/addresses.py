@@ -72,6 +72,8 @@ class addresswindow(chooseWindows):
     
         self.loadGlade('address.xml')
         self.win1 = self.getWidget('AddressMainwindow')
+        self.win1.maximize()
+        
         self.setStatusBar()
 
 
