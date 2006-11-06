@@ -115,7 +115,17 @@ class SQL(xmlrpc.XMLRPC, basics):
         
         if sWhere == None:
             sWhere = ''
-            
+        print 'table = ', sTable
+        ok = False
+        
+        for cModul in self.liModules:
+            if not ok:
+                for li in self.dicLimitTables[cModul]['list']:
+                    if li == sTable:
+                        ok = True
+                        self.LIMITSQL = self.dicLimitTables[cModul]['limit']
+                        
+        
         #dicEntries['status'] = 'string'
         
         sSql = 'select '
@@ -169,7 +179,8 @@ class SQL(xmlrpc.XMLRPC, basics):
         
        
         self.writeLog(`sSql`)
-        sSql = sSql + ' LIMIT 150 '
+        sSql = sSql + ' LIMIT ' + `self.LIMITSQL`
+        print 'self.LIMITSQL', self.LIMITSQL
         
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         #result2 = []

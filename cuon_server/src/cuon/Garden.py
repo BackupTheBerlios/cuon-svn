@@ -12,7 +12,6 @@ class Garden(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
         self.oDatabase = Database.Database()
         
-        
 
     def xmlrpc_getOutgoingNumber(self, orderNumber, dicUser ):
         nr = 0

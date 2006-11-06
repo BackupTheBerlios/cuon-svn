@@ -105,6 +105,54 @@ class basics(xmlrpc.XMLRPC):
         
         WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
         self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
+        # Limits
+        self.LIMITSQL = 100
+        self.LIMITGARDEN = 100
+        self.LIMITADDRESS = 100
+        self.LIMITARTICLES = 100
+        self.LIMITPROJECT = 100
+        self.LIMITORDER = 100
+        
+        
+        try:
+            self.cpServer = ConfigParser.ConfigParser()
+            
+            self.cpServer.readfp(open(self.CUON_FS + '/sql.ini'))
+            
+            value = self.getConfigOption('LIMIT','GARDEN')
+            if value:
+                self.LIMITGARDEN = value
+                
+            value = self.getConfigOption('LIMIT','ADDRESS')
+            if value:
+                self.LIMITADDRESS = value
+   
+            value = self.getConfigOption('LIMIT','ARTICLES')
+            if value:
+                self.LIMITARTICLES = value
+   
+            value = self.getConfigOption('LIMIT','PROJECT')
+            if value:
+                self.LIMITPROJECT = value
+   
+            value = self.getConfigOption('LIMIT','ORDER')
+            if value:
+                self.LIMITORDER = value
+      
+        except Exception, params:
+            print "Error read ini-File = sql.ini" 
+            print Exception
+            print params        
+            
+    
+        self.liModules = []
+        self.dicLimitTables = {}
+        self.dicLimitTables['GARDEN'] = {'list':['hibernation', 'hibernation_plant', 'botany'],'limit':self.LIMITGARDEN}
+        self.liModules.append('GARDEN')
+        self.dicLimitTables['ADDRESS'] = {'list':['address', 'partner'], 'limit':self.LIMITADDRESS}
+        self.liModules.append('ADDRESS')
+            
+            
     
     def getConfigOption(self, section, option):
         value = None

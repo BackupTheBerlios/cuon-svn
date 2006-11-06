@@ -395,6 +395,46 @@ class MainWindow(windows):
         
     def on_clients1_activate(self, event):
         self.startSSHEdit('etc/cuon/clients.ini')
+    
+    def on_sqlini1_activate(self, event):
+        self.startSSHEdit('etc/cuon/sql.ini')
+        
+        
+    #Buttons in notebook
+    
+    # /etc
+    
+    def on_etc_hosts_clicked(self, event):
+       self.startSSHEdit('etc/hosts') 
+       
+    
+    def on_etc_resolv_clicked(self, event):
+       self.startSSHEdit('etc/resolv.conf')
+    
+    # Postgres
+      
+    def on_etc_postgres_pg_hba_clicked(self, event):
+       self.startSSHEdit('etc/postgres/pg_hba.conf') 
+       
+    def on_etc_postgres_postgresql_clicked(self, event):
+       self.startSSHEdit('etc/postgtes/postgresql.conf') 
+       
+    # Postfix
+    
+    def on_etc_postfix_main_clicked(self, event):
+       self.startSSHEdit('etc/postfix/main.cfg') 
+       
+    def on_etc_postfix_master_clicked(self, event):
+       self.startSSHEdit('etc/postfix/master.cfg') 
+       
+    #Hylafax
+    
+        
+    def on_etc_hylafax_hosts_clicked(self, event):
+       self.startSSHEdit('etc/hylafax/hosts.hfaxd') 
+       
+       
+        
         
         
 ##    def on_save_configfiles1_activate(self, event):
