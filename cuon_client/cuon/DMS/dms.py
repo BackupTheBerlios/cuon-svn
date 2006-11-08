@@ -44,11 +44,12 @@ import cuon.DMS.documentTools
 class dmswindow(windows):
 
     
-    def __init__(self, allTables, module = 0, sep_info = None):
+    def __init__(self, allTables, module = 0, sep_info = None, dicVars={}):
         
         windows.__init__(self)
 
         self.ModulNumber = self.MN['DMS']
+        self.dicVars = dicVars
         
         self.openDB()
         self.oUser = self.loadObject('User')
@@ -222,7 +223,7 @@ class dmswindow(windows):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat
 
-        self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser)
+        self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, self.dicVars)
         
             
         

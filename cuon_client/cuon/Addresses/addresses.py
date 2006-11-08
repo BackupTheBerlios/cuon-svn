@@ -202,7 +202,10 @@ class addresswindow(chooseWindows):
         #self.addEnabledMenuItems('editSchedul','mi_SchedulDelete')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
 
-         
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','mi_PartnerSave1', self.dicUserKeys['address_partner_save'])
+
         
 
         # tabs from notebook
@@ -216,7 +219,9 @@ class addresswindow(chooseWindows):
 
         self.tabChanged()
         
-
+        self.win1.add_accel_group(self.accel_group)
+        
+        
     #Menu File
               
     def on_quit1_activate(self, event):
@@ -463,6 +468,14 @@ class addresswindow(chooseWindows):
         if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+        
+    def on_bLetter_clicked(self, event):
+        print 'bLetter clicked'
+        if self.singleAddress.ID > 0:
+            self.singleAddress.load(self.singleAddress.ID)
+            print 'firstRecord = ', self.singleAddress.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord)
         
 
     def on_bShowPartnerDMS_clicked(self, event):

@@ -55,8 +55,12 @@ class windows(rawWindow, MyXML, messages):
 
         self.MN['Mainwindow'] = 10
         self.MN['Client'] = 1000
+        
         self.MN['Address'] = 2000
+        self.MN['Address_info'] = 2001
+        
         self.MN['Partner'] = 2100
+        self.MN['Partner_info'] = 2101
 
         self.MN['Articles'] = 3000
         self.MN['Order'] = 4000

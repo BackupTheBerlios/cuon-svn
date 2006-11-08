@@ -19,7 +19,7 @@ import gtk
 import gtk.glade
 import gobject
 import string
-
+import zipfile
 import logging
 
 #import cuon.Login.User
@@ -48,8 +48,9 @@ class documentTools:
         pass
 
 
-    def viewDocument(self, singleDMS,dicUser):
-                             
+    def viewDocument(self, singleDMS,dicUser, dicVars):
+        print 'dicVars1 ', dicVars
+        
         exe = None
         if singleDMS.fileFormat:
             print 'Format = ', singleDMS.fileFormat
@@ -80,6 +81,50 @@ class documentTools:
 
             if exe:
                 singleDMS.createTmpFile(sEXT)
+                if dicVars:
+                    print ' '
+                    print 'dicVars = ', dicVars
+                    try:
+                        if zipfile.is_zipfile(singleDMS.tmpFile):
+                            print 'zipfile found'
+                            z1 = zipfile.ZipFile(singleDMS.tmpFile,'a')
+                            print z1.namelist()
+                            f_in = str(z1.read('content.xml'))
+                            #print 'content.xml', f_in
+                            
+                            for key in dicVars.keys():
+                                try:
+                                    f_in = f_in.replace('##'+ key + ';;',dicVars[key] )
+                                except:
+                                    pass
+                            #print 'replaced Content', f_in
+                            z1.writestr('content.xml',f_in)
+                            z1.close()
+
+                        else:
+                            
+                            f_out = open(singleDMS.tmpFile + '_w1','a')
+                                                        
+                            f_in = open(singleDMS.tmpFile,'r')
+                            if f_in and f_out:
+                                s = f_in.readline()
+                                while s:
+                                    print s
+                                    
+                                    for key in dicVars.keys():
+                                        s = s.replace('##'+key+';;',dicVars[key])
+                                    f_out.write(s)
+                                    s = f_in.readline()
+                                    
+                                singleDMS.tmpFile = singleDMS.tmpFile + '_w1'
+                            else:
+                                'error read/create tmp-file'
+                    except Exception, param:
+                        print Exception
+                        print param
+                        
+                        
+                    
                 os.system(exe + ' ' + singleDMS.tmpFile)
                         
 

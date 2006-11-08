@@ -63,7 +63,7 @@ class logs :
         self.printOut(sLog)
         #pass
     def printOut(self, s1,s2=None):
-        ok = False
+        ok = True
         if ok:
             if s2:
                 print s1, s2

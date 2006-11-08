@@ -133,8 +133,9 @@ class hibernationwindow(chooseWindows):
         #self.addEnabledMenuItems('editHibernationPlant','PlantPrint1', self.dicUserKeys['hibernation_plant_print'])
         self.addEnabledMenuItems('editHibernationPlant','PlantEdit1',self.dicUserKeys['edit'])
 
-        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
+        # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','PlantSave1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
 
 
         # tabs from notebook

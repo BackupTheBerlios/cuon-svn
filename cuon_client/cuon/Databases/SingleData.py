@@ -104,20 +104,20 @@ class SingleData(gladeXml, logs):
             # print liRecords
             firstRecord = {}
             if liRecords:
-                for r in range(len(liRecords)) :
-                     record =  liRecords[r]
-                     for key in record.keys():
-                         if  isinstance(record[key], types.StringType):
-                             pass
-                             #record[key] =  unicode(record[key], 'utf-7')
-                         if isinstance(record[key], types.UnicodeType):
-                             record[key] = record[key].encode(self.oUser.userEncoding)
-                     liRecords[r] = record
+##                for r in range(len(liRecords)) :
+##                     record =  liRecords[r]
+##                     for key in record.keys():
+##                         if  isinstance(record[key], types.StringType):
+##                             pass
+##                             #record[key] =  unicode(record[key], 'utf-7')
+##                         if isinstance(record[key], types.UnicodeType):
+##                             record[key] = record[key].encode(self.oUser.userEncoding)
+##                     liRecords[r] = record
 
 
                 firstRecord = liRecords[0]
                 #print ('nach user-encoding')
-                #print firstRecord
+                print 'firstRecord by SingleData', firstRecord
                 self.ID = firstRecord['id']
                 self.sStatus = ''
                 try:
@@ -128,11 +128,12 @@ class SingleData(gladeXml, logs):
                     self.printOut( 'no statusfield')
                     
             self.firstRecord = firstRecord
+            print 'firstRecord by SingleData2', firstRecord
         except AssertionError:
             self.printOut( 'assert error')
             liRecords = None
         except Exception, param:
-            self.printOut( 'Error by save Data')
+            self.printOut( 'Error by load Data')
             self.printOut( Exception)
             self.printOut( param)
             
