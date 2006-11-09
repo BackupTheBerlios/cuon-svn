@@ -61,6 +61,7 @@ class windows(rawWindow, MyXML, messages):
         
         self.MN['Partner'] = 2100
         self.MN['Partner_info'] = 2101
+        self.MN['Partner_Schedul_info'] = 2102
 
         self.MN['Articles'] = 3000
         self.MN['Order'] = 4000
@@ -321,7 +322,13 @@ class windows(rawWindow, MyXML, messages):
                         firstWhere = False
                     else:
                         sWhere = sWhere +" and " + s + " = " + `v` 
-                        
+                if isinstance(v, types.IntType) :
+                    self.printOut( 'sWhere = ', v )
+                    if firstWhere:
+                        sWhere = " where " + s +" = " + `v` 
+                        firstWhere = False
+                    else:
+                        sWhere = sWhere +" and " + s + " = " + `v`        
                 elif v[0] == '#':
                     v = v[1:]
                     if firstWhere:

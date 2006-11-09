@@ -62,6 +62,10 @@ class SingleDMS(SingleData):
         self.tmpfile = None
         self.ModulNumber = 0
     def createTmpFile(self, sEXT):
+        print '#############################################################'
+        print 'sExt = ', sEXT
+        print '#############################################################'
+        
         b = bz2.decompress(self.imageData)
         mi = cuon.Misc.misc.misc()
         print self.dicUser  

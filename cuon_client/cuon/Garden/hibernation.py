@@ -396,31 +396,31 @@ class hibernationwindow(chooseWindows):
         print 'Find Number'
         self.searchHibernation()
 
-    def on_eFindNumber_key_press_event(self, entry,event):
+    def on_eFindButton_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
             self.searchHibernation()
             
-    def on_eFindDesignation_editing_done(self, event):
-        print 'Find Designation'
-        self.searchHibernation()
-
-    def on_eFindDesignation_key_press_event(self, entry,event):
-        if self.checkKey(event,'NONE','Return'):
-            self.searchHibernation()
-        
-
+    
 
     def searchHibernation(self):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindNumber').get_text()
         sAddressLastname = self.getWidget('eFindDesignation').get_text()
-        self.out('Name and City = ' + sNumber + ', ' + sAddressLastname, self.ERROR)
+        #self.out('Name and City = ' + sNumber + ', ' + sAddressLastname, self.ERROR)
         
         #self.singleHibernation.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+        sSeq = self.getWidget('eFindSequence').get_text()
         liSearch = []
         if sNumber:
             liSearch.append('hibernation_number')
             liSearch.append(sNumber)
+        if sSeq:
+            liSearch.append('sequence_of_stock')
+            try:
+                liSearch.append(int(sSeq))
+            except:
+                liSearch.append(0)
+            
         if sAddressLastname:
             liSearch.append('address.lastname')
             liSearch.append(sAddressLastname)

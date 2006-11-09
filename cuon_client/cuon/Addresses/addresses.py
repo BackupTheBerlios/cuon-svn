@@ -245,12 +245,16 @@ class addresswindow(chooseWindows):
 
         self.singleAddress.newRecord()
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        
+        self.getWidget('eAddress').grab_focus()
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
         self.doEdit = self.tabAddress
 
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.getWidget('eAddress').grab_focus()
+
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
         p = printAddress.printAddress(self.singleAddress.getFirstRecord() )
@@ -472,10 +476,11 @@ class addresswindow(chooseWindows):
     def on_bLetter_clicked(self, event):
         print 'bLetter clicked'
         if self.singleAddress.ID > 0:
-            self.singleAddress.load(self.singleAddress.ID)
+            #self.singleAddress.load(self.singleAddress.ID)
             print 'firstRecord = ', self.singleAddress.firstRecord
             print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord)
+            dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord,dicExtInfo)
         
 
     def on_bShowPartnerDMS_clicked(self, event):
@@ -484,8 +489,21 @@ class addresswindow(chooseWindows):
             print 'ModulNumber', self.MN['Partner']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
         
-
-        
+    def on_bPartnerLetter_clicked(self, event):
+    
+        print 'bPartnerLetter clicked'
+        if self.singleAddress.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            #self.singlePartner.load(self.singleAddress.ID)
+            
+            #print 'firstRecord = ', self.singleAddress.firstRecord
+            #print 'ModulNumber', self.ModulNumber
+            dicExtInfo = {'sep_info':{'1':self.singlePartner.ID},'Modul':self.MN['Partner']}
+            dicPartner = self.singlePartner.firstRecord
+            for key in self.singleAddress.firstRecord.keys():
+                dicPartner['address_' + key] = self.singleAddress.firstRecord[key]
+                
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabAddress:

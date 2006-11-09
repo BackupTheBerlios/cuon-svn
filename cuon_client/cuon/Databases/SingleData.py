@@ -104,15 +104,20 @@ class SingleData(gladeXml, logs):
             # print liRecords
             firstRecord = {}
             if liRecords:
-##                for r in range(len(liRecords)) :
-##                     record =  liRecords[r]
-##                     for key in record.keys():
-##                         if  isinstance(record[key], types.StringType):
-##                             pass
-##                             #record[key] =  unicode(record[key], 'utf-7')
-##                         if isinstance(record[key], types.UnicodeType):
-##                             record[key] = record[key].encode(self.oUser.userEncoding)
-##                     liRecords[r] = record
+                for r in range(len(liRecords)) :
+                     record =  liRecords[r]
+                     for key in record.keys():
+                         if  isinstance(record[key], types.StringType):
+                             pass
+                             #record[key] =  unicode(record[key], 'utf-7')
+                         if isinstance(record[key], types.UnicodeType):
+                            try:
+                                record[key] = record[key].encode(self.oUser.userEncoding)
+                            except Exception, param:
+                                print Exception
+                                print param
+                                
+                     liRecords[r] = record
 
 
                 firstRecord = liRecords[0]

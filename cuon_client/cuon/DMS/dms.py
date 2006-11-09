@@ -27,6 +27,8 @@ import logging
 from cuon.Windows.windows  import windows
 #import cuon.Login.User
 import SingleDMS
+import dms 
+
 import cuon.Misc.misc
 import os
 
@@ -44,12 +46,16 @@ import cuon.DMS.documentTools
 class dmswindow(windows):
 
     
-    def __init__(self, allTables, module = 0, sep_info = None, dicVars={}):
+    def __init__(self, allTables, module = 0, sep_info = None, dicVars={}, dicExtInfo={}):
         
         windows.__init__(self)
 
         self.ModulNumber = self.MN['DMS']
         self.dicVars = dicVars
+        self.dicExtInfo = dicExtInfo
+        
+            
+        self.allTables = allTables
         
         self.openDB()
         self.oUser = self.loadObject('User')
@@ -137,6 +143,15 @@ class dmswindow(windows):
         
         self.tabOption = self.tabDocument
         self.tabChanged()
+        
+        #Now check for automatic-Actions
+        self.LastDoc = None
+        if self.dicExtInfo and self.dicExtInfo.has_key('LastDoc'):
+            print 'lastdoc found'
+            self.activateClick('new1')
+            self.LastDoc =self.dicExtInfo['LastDoc']
+            self.activateClick('bImport',None,'clicked')
+            
 
         
 
@@ -202,7 +217,14 @@ class dmswindow(windows):
     
     def on_bImport_clicked(self, event):
         print 'bImport'
-        self.oDocumentTools.importDocument( self.singleDMS, self.dicUser, self.getWidget("gfcb_ImportFile").get_filename() )
+        if self.LastDoc:
+            filename = self.LastDoc
+            self.LastDoc = None
+        else:
+            filename = self.getWidget("gfcb_ImportFile").get_filename()
+            
+        self.oDocumentTools.importDocument( self.singleDMS, self.dicUser, filename )
+        
 
     def on_bLink_clicked(self, event):
         print 'bLink'
@@ -218,7 +240,12 @@ class dmswindow(windows):
     def on_cancelbutton1_clicked(self, event):
         print 'cancel clicked'
         self.diaLink.hide()
-        
+    
+    def on_bWriteLastDocument_clicked(self, event):
+        if self.dicExtInfo:
+            self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
+            dm2 = cuon.DMS.dms.dmswindow(self.allTables, self.dicExtInfo['Modul'], self.dicExtInfo['sep_info'],None,self.dicExtInfo)
+            
     def on_bView_clicked(self, event):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat

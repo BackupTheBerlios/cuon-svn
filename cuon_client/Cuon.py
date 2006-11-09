@@ -407,8 +407,20 @@ class MainWindow(windows):
         #clean up the tmp-files
         try:
             os.system( 'rm ' + os.path.normpath(os.environ['CUON_HOME'] + '/cuon__*' ))
+        except Exception, params:
+            #print Exception, params
+            pass
+        try:
             os.system( 'rm ' + os.path.normpath(self.dicUser['prefPath']['tmp'] + '/*__dms*' ))
+        except Exception, params:
+            #print Exception, params
+            pass
+        try:
             os.system( 'rm ' + os.path.normpath( os.environ['CUON_HOME'] + '/*__dms*' ))
+        except Exception, params:
+            #print Exception, params
+            pass
+            
             
             
         except Exception, params:

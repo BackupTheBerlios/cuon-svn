@@ -26,7 +26,7 @@ import logging
 import SingleDMS
 import cuon.Misc.misc
 import os
-
+import types
 from PIL import Image
 try:
     import sane
@@ -92,11 +92,7 @@ class documentTools:
                             f_in = str(z1.read('content.xml'))
                             #print 'content.xml', f_in
                             
-                            for key in dicVars.keys():
-                                try:
-                                    f_in = f_in.replace('##'+ key + ';;',dicVars[key] )
-                                except:
-                                    pass
+                            f_in = self.replaceValues(dicVars,f_in)
                             #print 'replaced Content', f_in
                             z1.writestr('content.xml',f_in)
                             z1.close()
@@ -109,10 +105,8 @@ class documentTools:
                             if f_in and f_out:
                                 s = f_in.readline()
                                 while s:
-                                    print s
+                                    s = self.replaceValues(dicVars,s)                                 
                                     
-                                    for key in dicVars.keys():
-                                        s = s.replace('##'+key+';;',dicVars[key])
                                     f_out.write(s)
                                     s = f_in.readline()
                                     
@@ -126,7 +120,7 @@ class documentTools:
                         
                     
                 os.system(exe + ' ' + singleDMS.tmpFile)
-                        
+        
 
     def scanDocument(self, singleDMS, dicUser):
         ##       misc = cuon.Misc.misc.misc()
@@ -220,3 +214,15 @@ class documentTools:
                         
             f.close()
             
+    def replaceValues(self, dicVars, s):
+        for key in dicVars.keys():
+            try:
+                if dicVars[key] == None or dicVars[key] == 'NONE':
+                    dicVars[key] = ''
+                if isinstance(dicVars[key], types.StringType) or dicVars[key] == '' :
+                    s = s.replace('##'+ key + ';;',dicVars[key] )
+                else:
+                    s = s.replace('##'+ key + ';;',`dicVars[key]` )
+            except:
+                pass
+        return s
