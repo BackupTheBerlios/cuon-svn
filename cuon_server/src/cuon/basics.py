@@ -38,7 +38,11 @@ class basics(xmlrpc.XMLRPC):
         self.REPORT_PORT = 7083
         self.REPORT_HOST = 'localhost'
         self.REPORTPATH = "/usr/share/cuon/cuon_server/src/cuon/Reports/XML"
+        
         self.DocumentPathHibernationIncoming = '/var/cuon/Documents/Hibernation/Incoming'
+        self.DocumentPathHibernationPickup = '/var/cuon/Documents/Hibernation/Pickup'
+        self.DocumentPathHibernationInvoice = '/var/cuon/Documents/Hibernation/Invoice'
+        
         self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
         self.DocumentPathListsArticles = '/var/cuon/Documents/Lists/Articles'
         

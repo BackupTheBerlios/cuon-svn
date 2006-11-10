@@ -74,6 +74,11 @@ class documentTools:
                     if singleDMS.fileFormat ==  dicUser['prefDMS']['fileformat'][key]['format']:
                         print 'dicUser-prefDMS', dicUser['prefDMS']['fileformat'][key]
                         exe =  dicUser['prefDMS']['fileformat'][key]['executable']
+                        print '-------------------------------------------------------------------'
+                        print 'exe = ', exe
+                        print '-------------------------------------------------------------------'
+                        #sys.exit(0)
+                        
                         if singleDMS.fileSuffix and singleDMS.fileSuffix != 'NONE':
                             sEXT = singleDMS.fileSuffix
                         else:   

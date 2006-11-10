@@ -290,6 +290,22 @@ class hibernationwindow(chooseWindows):
 
         Pdf = self.rpc.callRP('Report.server_hibernation_pickup_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser)    
+        
+    def on_print_invoice1_activate(self, event):
+        dicOrder = {}
+        print "Start print invoice 1"
+        
+        dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
+        dicOrder['invoiceNumber'] = self.rpc.callRP('Garden.getInvoiceNumber',self.singleHibernation.ID, self.dicUser)
+        
+        print "Start print invoice 2"
+
+        dicOrder['orderNumber'] = self.singleHibernation.ID
+        print "Start print invoice 3"
+
+        Pdf = self.rpc.callRP('Report.server_hibernation_invoice', dicOrder, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)            
+        
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}
         #Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)

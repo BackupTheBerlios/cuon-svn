@@ -105,6 +105,8 @@ class setup:
         
         self.CUON_DOCUMENTS_HIBERNATION = self.CUON_DOCUMENTS + "/Hibernation"
         self.CUON_DOCUMENTS_HIBERNATION_INCOMING = self.CUON_DOCUMENTS_HIBERNATION + "/Incoming"
+        self.CUON_DOCUMENTS_HIBERNATION_PICKUP = self.CUON_DOCUMENTS_HIBERNATION + "/Pickup"
+        self.CUON_DOCUMENTS_HIBERNATION_INVOICE = self.CUON_DOCUMENTS_HIBERNATION + "/Invoice"
         
         
         
@@ -227,6 +229,8 @@ class setup:
 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ; fi ")	
 
         
         

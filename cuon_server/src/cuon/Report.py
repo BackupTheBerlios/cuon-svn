@@ -19,6 +19,8 @@ class Report(xmlrpc.XMLRPC, basics):
         self.ReportDefs['ReportPath'] = self.REPORTPATH
         
         self.ReportDefs['DocumentPathHibernationIncoming'] = self.DocumentPathHibernationIncoming
+        self.ReportDefs['DocumentPathHibernationPickup'] = self.DocumentPathHibernationPickup
+        self.ReportDefs['DocumentPathHibernationInvoice'] = self.DocumentPathHibernationInvoice
         self.ReportDefs['DocumentPathListsAddresses'] = self.DocumentPathListsAddresses
         self.ReportDefs['DocumentPathListsArticles'] = self.DocumentPathListsAddresses
 
@@ -97,4 +99,19 @@ class Report(xmlrpc.XMLRPC, basics):
         print repData
         
         return self.report_server.ReportServer.createReport(repData)
-         
+        
+    def xmlrpc_server_hibernation_invoice(self, dicOrder, dicUser):
+        print `self.report_server`
+        import Reports.report_hibernation_invoice
+        import Garden
+        
+        print "startReport"
+        oGarden = Garden.Garden()
+        oReports = Reports.report_hibernation_invoice.report_hibernation_invoice()
+        repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
+        
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
+        print repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+        

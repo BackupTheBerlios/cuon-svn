@@ -126,7 +126,12 @@ class loginwindow(windows):
             self.oUser.setSessionID(sid)
             
             self.loadProfile()
-
+            print 'writer'
+            print '---------------------------------------------------'
+            print self.oUser.prefDMS['exe']['writer']
+            print '---------------------------------------------------'
+            
+            #sys.exit(0)
             self.openDB()
             self.saveObject('User', self.oUser)
             self.closeDB()

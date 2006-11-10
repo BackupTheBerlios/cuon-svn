@@ -166,15 +166,6 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="print_invoice1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Invoice</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_print_invoice1_activate" last_modification_time="Sat, 17 Jun 2006 10:48:56 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
 			    <widget class="GtkMenuItem" id="icoming_document">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Incoming document</property>
@@ -184,11 +175,29 @@
 			  </child>
 
 			  <child>
+			    <widget class="GtkMenuItem" id="pickup_document1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Pickup document</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_pickup_document1_activate" last_modification_time="Fri, 10 Nov 2006 09:58:27 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
 			    <widget class="GtkMenuItem" id="outgoing_document1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Outgoing document</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_print_outgoing_document1_activate" last_modification_time="Sun, 18 Jun 2006 12:23:04 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="print_invoice1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Invoice</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_print_invoice1_activate" last_modification_time="Sat, 17 Jun 2006 10:48:56 GMT"/>
 			    </widget>
 			  </child>
 			</widget>
