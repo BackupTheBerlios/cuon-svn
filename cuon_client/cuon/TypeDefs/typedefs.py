@@ -25,7 +25,37 @@ import os
 class typedefs:
 
     def __init__(self):
-       
+
+        # initial-Values
+        self.server = None
+        self.cuon_path = None
+        
+        try:
+            self.cuon_path = os.environ(['CUON_PATH'])
+            
+        except:
+            pass
+        
+        try:
+            self.cuon_path = os.environ(['CUON_SERVER'])
+            
+        except:
+            pass            
+            
+        try:
+            pass
+        except:
+            pass
+        
+        
+                
+        if not self.cuon_path:    
+            self.cuon_path = '~/cuon'
+        
+        if not self.server:
+            self.server = 'http://localhost:7080'
+            
+            
         self.server = os.environ['CUON_SERVER']
         self.homePath = os.environ['CUON_HOME']        
         self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'

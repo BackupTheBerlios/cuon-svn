@@ -22,6 +22,8 @@ import cuon.Finances
 import cuon.Misc
 import cuon.Garden
 import cuon.Report
+import cuon.WebShop
+
 openssl = False
 try:
     from OpenSSL import SSL
@@ -82,6 +84,7 @@ oFinances = cuon.Finances.Finances()
 oMisc = cuon.Misc.Misc()
 oGarden = cuon.Garden.Garden()
 oReport = cuon.Report.Report()
+oWebShop = cuon.WebShop.WebShop()
 
 
 r.putSubHandler('Web', oWeb)
@@ -96,6 +99,7 @@ r.putSubHandler('Finances', oFinances)
 r.putSubHandler('Misc', oMisc)
 r.putSubHandler('Garden', oGarden)
 r.putSubHandler('Report', oReport)
+r.putSubHandler('WebShop', oWebShop)
 
 reactor.listenTCP(baseSettings.XMLRPC_PORT, server.Site(r))
 if openssl:
@@ -106,5 +110,3 @@ if openssl:
     print 'HTTPS activated'
 
 reactor.run()
-
-

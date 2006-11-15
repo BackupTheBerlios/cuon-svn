@@ -15,7 +15,7 @@ import os
 import gtk
 import gobject
 
-sys.path.append(os.environ['CUON_PATH'])
+#sys.path.append(os.environ['CUON_PATH'])
 
 from cuon.Databases.SingleData import SingleData
 import logging

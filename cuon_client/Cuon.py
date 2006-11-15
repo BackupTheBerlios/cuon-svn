@@ -299,10 +299,12 @@
 import os
 import sys
 
-sys.path.append(os.environ['CUON_PATH'])
+        
 sys.path.append('/usr/lib/python/')
 sys.path.append('/usr/lib64/python2.4/site-packages')
-sys.path.append('/usr/lib64/python2.4/site-packages/gtk-2.0')
+sys.path.append('/usr/lib64/python2.4/site-packages/gtk-2.0')  
+sys.path.append(os.environ['CUON_PATH'])
+
 #try:
 import pygtk
 #except:
@@ -914,7 +916,8 @@ if sStartType == 'server':
     td = cuon.TypeDefs.typedefs_server.typedefs_server()
 else:
     td = cuon.TypeDefs.typedefs.typedefs()
-    
+
+
 if len(sys.argv) > 1:
     if len(sys.argv[1]) > 1:
         td.server =  sys.argv[1]

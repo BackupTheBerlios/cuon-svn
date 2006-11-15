@@ -1201,7 +1201,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">20</property>
 		      <signal name="key_press_event" handler="on_press_event" last_modification_time="Thu, 09 Nov 2006 18:45:40 GMT"/>
 		    </widget>
 		    <packing>
@@ -1226,7 +1226,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">20</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 09 Nov 2006 18:45:21 GMT"/>
 		    </widget>
 		    <packing>
@@ -1251,7 +1251,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">20</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 		    </widget>
 		    <packing>
@@ -1276,7 +1276,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">20</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:25 GMT"/>
 		    </widget>
 		    <packing>
@@ -1301,7 +1301,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">20</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 11:50:49 GMT"/>
 		    </widget>
 		    <packing>
@@ -1380,7 +1380,7 @@
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
-			  <property name="width_chars">30</property>
+			  <property name="width_chars">20</property>
 			  <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 			</widget>
 			<packing>
@@ -1723,7 +1723,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">15</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 		    </widget>
 		    <packing>
@@ -1748,7 +1748,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">15</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 		    </widget>
 		    <packing>
@@ -1834,7 +1834,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">30</property>
+		      <property name="width_chars">15</property>
 		      <signal name="key_press_event" handler="on_key_press_event" last_modification_time="Thu, 24 Aug 2006 16:54:53 GMT"/>
 		    </widget>
 		    <packing>

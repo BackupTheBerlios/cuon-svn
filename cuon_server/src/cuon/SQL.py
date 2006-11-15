@@ -15,37 +15,40 @@ class SQL(xmlrpc.XMLRPC, basics):
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
         dicResult = "NONE"
+        rows = None
         try:
             self.writeLog('execute SQL = ' + `cSql`,self.debug)
-        
-            rows = None
-            if not dicUser['Name'] or dicUser['Name'] == 'zope':
-                sUser = 'zope'
-                dicUser['noWhereClient'] = 'YES'
-        
-            elif dicUser.has_key('userType'):
-                sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
+            if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
+                pass
             else:
-                sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
-        
-            # put here sUser
-            print 'sUser=', sUser
-            self.writeLog('User = ' + sUser, self.debug)
-            #DSN = 'dbname=cuon host=localhost user=' + sUser
-            conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
-            #curs.execute(cSql.decode('utf-8'))
-            #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
+                rows = None
+                if not dicUser['Name'] or dicUser['Name'] == 'zope':
+                    sUser = 'zope'
+                    dicUser['noWhereClient'] = 'YES'
             
-            rows = conn.query(cSql.encode('utf-8'))
-            #print 'rows = ', rows
-            #print 'Sql-Execute = ', ok
-            #conn.commit()
-        ##        try:
-        ##            rows = curs.dictfetchall()
-        ##        except:
-        ##            pass
-            self.writeLog('Rows = ' + `rows`, self.debug)
-            #conn.close()
+                elif dicUser.has_key('userType'):
+                    sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
+                else:
+                    sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
+            
+                # put here sUser
+                print 'sUser=', sUser
+                self.writeLog('User = ' + sUser, self.debug)
+                #DSN = 'dbname=cuon host=localhost user=' + sUser
+                conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
+                #curs.execute(cSql.decode('utf-8'))
+                #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
+                
+                rows = conn.query(cSql.encode('utf-8'))
+                #print 'rows = ', rows
+                #print 'Sql-Execute = ', ok
+                #conn.commit()
+            ##        try:
+            ##            rows = curs.dictfetchall()
+            ##        except:
+            ##            pass
+                self.writeLog('Rows = ' + `rows`, self.debug)
+                #conn.close()
             
             if rows:
                 try:

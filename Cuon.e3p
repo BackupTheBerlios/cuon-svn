@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-10-21, 01:00:16 -->
+<!-- Saved: 2006-11-11, 23:11:21 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1287,6 +1287,19 @@
       <Dir>Reports</Dir>
       <Name>report_basics.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_hibernation_invoice.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>WebShop.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1709,6 +1722,22 @@
       <Dir>cuon_client</Dir>
       <Name>GroupRightsCuon.cfg</Name>
     </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Dir>XML</Dir>
+      <Name>hibernation_pickup_document.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Dir>XML</Dir>
+      <Name>hibernation_invoice_document.xml</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1770,10 +1799,10 @@ I1
 s.</VcsOtherData>
   </Vcs>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

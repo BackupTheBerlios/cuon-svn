@@ -37,7 +37,7 @@
 	    NEW.update_time = (select  now()) ;
 	    NEW.user_id = OLD.user_id;
                       NEW.insert_time = OLD.insert_time ;
-                      NEW.status = 'update' ;
+                      NEW.status = ''update'' ;
 	    RAISE NOTICE ''Name =  % '', TG_NAME ;
 	    RETURN NEW; 
 	END;
@@ -53,7 +53,7 @@
 	BEGIN
 	    NEW.user_id = current_user   ;
 	    NEW.insert_time = (select  now()) ;
-                      NEW.status = 'insert' ;
+                      NEW.status = ''insert'' ;
 	    RAISE NOTICE ''Name =  % '', TG_NAME ;
 	    RETURN NEW; 
 	END;
