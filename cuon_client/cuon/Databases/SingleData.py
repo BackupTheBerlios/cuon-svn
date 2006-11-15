@@ -15,7 +15,7 @@
 
 import sys
 import os 
-sys.path.append(os.environ['CUON_PATH'])
+#sys.path.append(os.environ['CUON_PATH'])
 
 
 import pygtk
@@ -49,7 +49,7 @@ class SingleData(gladeXml, logs):
         self.xmlTableDef = 1
         self.sNameOfTable = "EMPTY"
         self.openDB()
-        self.td = self.loadObject('td')
+        
         self.oUser = self.loadObject('User')
         self.closeDB()
         #print '##############################################################'

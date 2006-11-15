@@ -20,33 +20,43 @@ import time
 import datetime as DateTime
 import random
 import types
-
+import cuon.TypeDefs.typedefs
 
 #import os.path
 
 class dumps:
-    def __init__(self):
+    def __init__(self, td=None):
         self.dbase = None
         self.decimalLocale = {}
         self.decimalLocale['coma'] = ['de','nl','it','pl','au','ch']
+        self.td = None
+        print '------------------------------------------------'
+        if td:
+            print 'td is not None'
+            self.td = td
+        else:
+            print 'set td new'
+            self.td = cuon.TypeDefs.typedefs.typedefs()
+        print 'td', self.td
+        print '------------------------------------------------'
         
     def openDB(self):
-        #print 'OS.ENViron', os.environ['CUON_HOME']
-        self.dbase = shelve.open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonObjects'))
+        print 'PATH = ', self.td.cuon_path
+        self.dbase = shelve.open(os.path.normpath(self.td.cuon_path + '/' + 'cuonObjects'))
 
     def closeDB(self):
         self.dbase.close()
         
     def saveObject(self, key, oValue):
-        # print "Save = " + `key` + ", " + os.environ['CUON_HOME'] + '/' + 'cuonObjects'
+        # print "Save = " + `key` + ", " + self.td.cuon_path + '/' + 'cuonObjects'
 
         self.dbase[key] = oValue
 
     def loadObject(self, key):
-        # print "Home = " + os.environ['CUON_HOME'] + '/' + 'cuonObjects'
+        # print "Home = " + self.td.cuon_path + '/' + 'cuonObjects'
         # print key
         oValue = None
-        # dbase  = shelve.open(os.path.normpath(os.environ['CUON_HOME'] + '/' + 'cuonObjects'))
+        # dbase  = shelve.open(os.path.normpath(self.td.cuon_path + '/' + 'cuonObjects'))
         try:
             oValue = self.dbase[key]
         except:
@@ -58,7 +68,7 @@ class dumps:
 
     def pickleObject(self, key, obj):
         # print key
-        pkey = os.path.normpath(os.environ['CUON_HOME'] +'/' + `key`)
+        pkey = os.path.normpath(self.td.cuon_path +'/' + `key`)
         fkey = open(pkey,'w')
         pickle.dump(obj,fkey, 1)
         fkey.close()
@@ -66,7 +76,7 @@ class dumps:
 
     def unpickleObject(self, key):
         print key
-        pkey = os.path.normpath(os.environ['CUON_HOME'] +'/' + `key`)
+        pkey = os.path.normpath(self.td.cuon_path +'/' + `key`)
         fkey = open(pkey)
         obj =  pickle.load(fkey)
         fkey.close()
@@ -95,7 +105,7 @@ class dumps:
                     s = s + chr(r)
     
         s = s + `n`
-        s =  os.path.normpath(os.environ['CUON_HOME'] + '/cuon__' +  s + `time.time()` + '.' + typ)
+        s =  os.path.normpath(self.td.cuon_path + '/cuon__' +  s + `time.time()` + '.' + typ)
         f = open(s,'wb')
         f.write(data)
         f.close()

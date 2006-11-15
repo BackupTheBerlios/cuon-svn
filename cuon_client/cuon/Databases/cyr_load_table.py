@@ -31,11 +31,10 @@ class cyr_load_table(MyXML, dumps):
 
     def __init__(self):
         MyXML.__init__(self)
+        dumps.__init__(self)
         
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        self.openDB()
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         self.configPath = "/etc/cuon/"
 
 

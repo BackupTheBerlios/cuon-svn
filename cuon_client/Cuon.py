@@ -303,7 +303,7 @@ import sys
 sys.path.append('/usr/lib/python/')
 sys.path.append('/usr/lib64/python2.4/site-packages')
 sys.path.append('/usr/lib64/python2.4/site-packages/gtk-2.0')  
-sys.path.append(os.environ['CUON_PATH'])
+#sys.path.append(os.environ['CUON_PATH'])
 
 #try:
 import pygtk
@@ -922,7 +922,7 @@ if len(sys.argv) > 1:
     if len(sys.argv[1]) > 1:
         td.server =  sys.argv[1]
         print 'td-server =', td.server   
-d = cuon.Databases.dumps.dumps()
+d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)
 d.closeDB()

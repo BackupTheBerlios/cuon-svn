@@ -17,7 +17,7 @@ from xmlrpclib import Server
 import cuon.XML.MyXML
 import sys
 import os
-
+import ConfigParser
 #if len(sys.argv) > 1:
 #    fname = sys.argv[1]
 #else:
@@ -29,7 +29,8 @@ class typedefs:
         # initial-Values
         self.server = None
         self.cuon_path = None
-        
+        self.help_server = None
+        self.cpParser = None
         try:
             self.cuon_path = os.environ(['CUON_PATH'])
             
@@ -37,29 +38,95 @@ class typedefs:
             pass
         
         try:
-            self.cuon_path = os.environ(['CUON_SERVER'])
+            self.server = os.environ(['CUON_SERVER'])
             
         except:
             pass            
+            
+            
+            
+        try:
+            self.help_server = os.environ(['CUON_HELPSERVER'])
+            
+        except:
+            pass            
+            
+            
             
         try:
             pass
         except:
             pass
         
-        
-                
+        # start read /etc/cuon/cuon.ini
+        self.getConfigParser('/etc/cuon/cuon.ini')
+        value = self.getConfigOption('PATH','CUON_PATH')
+        if value:
+          self.cuon_path = value
+          
+        value = self.getConfigOption('SERVER','CUON_SERVER')
+        if value:
+          self.server = value
+          
+        value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+        if value:
+          self.help_server = value
+          
+        try:
+            
+            # start read /etc/cuon/cuon.ini
+            self.getConfigParser(os.environ['HOME'] + '/.cuon.ini')
+            value = self.getConfigOption('PATH','CUON_PATH')
+            if value:
+              self.cuon_path = value
+              
+            value = self.getConfigOption('SERVER','CUON_SERVER')
+            if value:
+              self.server = value
+              
+            value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+            if value:
+              self.help_server = value
+              
+        except Exception, params:
+            print Exception, params
+            
+            
+          
+        # If noc config-Options found, fallback to defaults   
         if not self.cuon_path:    
-            self.cuon_path = '~/cuon'
+            self.cuon_path = os.environ['HOME'] +'/cuon'
         
         if not self.server:
             self.server = 'http://localhost:7080'
+        
+        if not self.homePath:
+            self.homePath = os.environ['HOME'] + '/cuon'
             
             
-        self.server = os.environ['CUON_SERVER']
-        self.homePath = os.environ['CUON_HOME']        
-        self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+        #self.server = os.environ['CUON_SERVER']
+        #self.homePath = os.environ['CUON_HOME']        
+        if not self.help_server:
+            self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+            
+            
         
         print 'Server by typedef : ' + self.server
         
-    
+    def getConfigParser(self, f):
+        try:
+            self.cpParser = ConfigParser.ConfigParser()
+            f = open(self.sFile, 'rw')
+            if f:    
+                self.cpParser.readfp(f)
+                f.close()
+        except:
+            self.cpParser = None
+            
+        
+    def getConfigOption(self, section, option):
+        value = None
+        if self.cpParser.has_option(section,option):
+            value = self.cpParser.get(section, option)
+            print 'getConfigOption', section + ', ' + option + ' = ' + value
+        return value       

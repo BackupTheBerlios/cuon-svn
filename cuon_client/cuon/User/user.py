@@ -16,8 +16,8 @@ import cuon.TypeDefs
 #from cuon.Windows.windows import windows
 from cuon.Databases.dumps import dumps
 from gtk import TRUE, FALSE
-
-class User:
+from cuon.TypeDefs.defaultValues import defaultValues
+class User(defaultValues):
     """
     @author: Jürgen Hamel
     @organization: Cyrus-Computer GmbH, D-32584 Löhne
@@ -30,6 +30,7 @@ class User:
         Variables:
             1. self.userName: Name of the User
         """
+        defaultValues.__init__(self)
 #        self.openDB()
 #        self.td = self.loadObject('td')
 #        self.closeDB()
@@ -65,23 +66,23 @@ class User:
         self.client = 0
         
         
-        self.prefPath['tmp'] =  os.path.normpath(os.environ['CUON_HOME']) + '/'  
+        self.prefPath['tmp'] =  os.path.normpath(self.td.cuon_path) + '/'  
 
-        self.prefPath['StandardInvoice1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Invoice' )
-        self.prefPath['StandardSupply1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Delivery' )
-        self.prefPath['StandardPickup1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Pickup' )
-        self.prefPath['AddressLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'address' )
-        self.prefPath['ArticleLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'article' )
-        self.prefPath['StandardCAB1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'address' )
+        self.prefPath['StandardInvoice1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Invoice' )
+        self.prefPath['StandardSupply1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Delivery' )
+        self.prefPath['StandardPickup1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Pickup' )
+        self.prefPath['AddressLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'address' )
+        self.prefPath['ArticleLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'article' )
+        self.prefPath['StandardCAB1'] =  os.path.normpath(self.td.cuon_path + '/' +  'address' )
 
-        self.prefPath['ReportStandardInvoice1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefPath['ReportStandardSupply1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefPath['ReportStandardPickup1'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
+        self.prefPath['ReportStandardInvoice1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
+        self.prefPath['ReportStandardSupply1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
+        self.prefPath['ReportStandardPickup1'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
         
-        self.prefPath['ReportAddressLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefPath['ReportArticleLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
-        self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(os.environ['CUON_HOME'] + '/' +  'Reports' )
+        self.prefPath['ReportAddressLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
+        self.prefPath['ReportArticleLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
+        self.prefPath['ReportStockGoodsLists'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
+        self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
         
         
         self.prefColor = {'FG':0, 'BG':0}

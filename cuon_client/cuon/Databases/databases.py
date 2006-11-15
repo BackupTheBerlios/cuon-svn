@@ -44,9 +44,7 @@ class databaseswindow(windows):
     
     def __init__(self, servermod = False):
         windows.__init__(self)
-        self.openDB()
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         
         self.gladeName = self.td.databases_glade_name
 

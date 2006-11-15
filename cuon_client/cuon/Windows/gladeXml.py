@@ -21,21 +21,20 @@ import gtk
 import gtk.glade
 import cPickle
 import cuon.TypeDefs
-from cuon.Databases.dumps import dumps
+from cuon.TypeDefs.defaultValues import defaultValues
 import os
 import os.path
 
 
 
-class gladeXml(dumps):
+class gladeXml(defaultValues):
 
     def __init__(self):
 
-        dumps.__init__(self)
-        
+        defaultValues.__init__(self)
+
         self.liAllMenuItems = []
         self.dictEnabledMenuItems = {}
-        self.td = self.loadObject('td')
         self.mainwindowTitle = "C.U.O.N."
         self.xmlAutoconnect = False
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -52,7 +51,7 @@ class gladeXml(dumps):
         self.xml = xml
         
     def loadGlade(self, gladeName):
-        fname = os.path.normpath(os.environ['CUON_HOME'] + '/' +  'glade_' + gladeName)  
+        fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
         self.xml = gtk.glade.XML(fname)
         self.setXmlAutoconnect()
 
@@ -62,7 +61,7 @@ class gladeXml(dumps):
         # print '------------------------------------------------------------------------------------------------------------------------------'
 
         # x = self.rpc.callRP('src.XML.py_readDocument', 'cuon_addresses')  self.enableMenuItems(self.editAction)
-        d1 = open(os.path.normpath(os.environ['CUON_HOME'] + '/' + fname),'w')
+        d1 = open(os.path.normpath(self.td.cuon_path + '/' + fname),'w')
         d1.write(cPickle.loads(xml1))
         d1.close()
 

@@ -33,9 +33,7 @@ class myXmlRpc(dumps, logs):
     def __init__(self):
         dumps.__init__(self)
         logs.__init__(self)
-        self.openDB()
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         #self.zope_server = self.getZopeServer()
         self.MyServer = self.getMyServer()
         

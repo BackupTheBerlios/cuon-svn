@@ -1,7 +1,7 @@
 
 import os
 import sys
-sys.path.append(os.environ['CUON_PATH'])
+#sys.path.append(os.environ['CUON_PATH'])
 import uno
 import letter
 

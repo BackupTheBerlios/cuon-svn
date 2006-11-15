@@ -13,8 +13,9 @@ class rawWindow( gladeXml):
         self.dicSqlUser = None
         self.dicUserKeys = None
         self.openDB()
-        self.td = cuon.TypeDefs.typedefs.typedefs()
-        self.td = self.loadObject('td')
+        #self.td = cuon.TypeDefs.typedefs.typedefs()
+        
+        
         
         self.loadUserInfo()
         

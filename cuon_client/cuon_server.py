@@ -327,9 +327,7 @@ class MainWindow(windows):
         self.oUser = cuon.User.user.User()
         os.system('rm -Rf inifiles')
         os.system('mkdir inifiles')
-        self.openDB()
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.rpc.td = self.td
 
@@ -621,7 +619,7 @@ if len(sys.argv) > 3:
 
 
 
-d = cuon.Databases.dumps.dumps()
+d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)
 d.closeDB()

@@ -37,9 +37,7 @@ class cyr_load_entries(MyXML, dumps):
         MyXML.__init__(self)
   
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
-        self.openDB()
-        self.td = self.loadObject('td')
-        self.closeDB()
+        
         #self.setLogLevel(self.ERROR)
         self.configPath = "/etc/cuon/"
 
