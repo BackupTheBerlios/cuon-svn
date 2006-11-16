@@ -57,7 +57,7 @@ class documentTools:
             if singleDMS.fileFormat == dicUser['prefDMS']['fileformat']['scanImage']['format']:
                 print 'show'
                 s = bz2.decompress( singleDMS.imageData)
-                sys.exit(0)
+                #sys.exit(0)
                 newIm = Image.fromstring('RGB',[singleDMS.size_x, singleDMS.size_y], s)
                 newIm.show()
             elif singleDMS.fileFormat == dicUser['prefDMS']['fileformat']['LINK']['format']:
