@@ -45,7 +45,7 @@ class databaseswindow(windows):
     def __init__(self, servermod = False):
         windows.__init__(self)
         
-        
+        self.iPB = 0
         self.gladeName = self.td.databases_glade_name
 
         # self.setLogLevel(self.INFO)
@@ -82,7 +82,34 @@ class databaseswindow(windows):
     def checkClient(self):
         pass
            
-
+    def on_start_complete_update1_activate(self, event):
+        print 'start complete Update'
+        self.iPB = 1
+        self.startProgressBar(Title='Complete Update')
+        
+        self.activateClick('dbcheck1')
+        self.iPB = 35
+        self.setProgressBar(self.iPB)
+        
+        self.activateClick('trigger1')
+        self.iPB = 45
+        self.setProgressBar(self.iPB)
+        
+        self.activateClick('grants1')
+        self.iPB = 65
+        self.setProgressBar(self.iPB)
+        
+        self.activateClick('load_defaults1')
+        self.iPB = 85
+        self.setProgressBar(self.iPB)
+        
+        self.activateClick('save_client1')
+        self.iPB = 100
+        self.setProgressBar(self.iPB)
+        
+        self.stopProgressBar()
+        
+        
     def on_save_client1_activate(self,event):
 
         liAllTables = cPickle.loads(eval(self.doDecode(self.rpc.callRP('Database.getInfo', 'allTables'))))
@@ -107,7 +134,7 @@ class databaseswindow(windows):
         try:
             
             n1 = cpParser.get('version', 'Name')
-            v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '-' + cpParser.get('version', 'Rev')
+            v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '.' + cpParser.get('version', 'Rev')
             sFile = cpParser.get('version', 'File')
         except Exception, param:
             print "Error read version-configfile" + `sFile`
@@ -141,6 +168,7 @@ class databaseswindow(windows):
 
 
     def on_dbcheck1_activate(self, event):
+        self.iPB = 1
         clt = cyr_load_table.cyr_load_table()
         ### for Server-functions set the td-object
         clt.td = self.td
@@ -249,6 +277,8 @@ class databaseswindow(windows):
         # now check the rest
         
         for i in lTable:
+            self.iPB += 0.3
+            self.setProgressBar(self.iPB)
             self.out( i)
             print 'tableDefinition = ' ,key,i
             table = clt.getTableDefinition(key,i)

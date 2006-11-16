@@ -23,8 +23,7 @@ if len(sys.argv) > 2:
     print "Locale = ", Locale
     print "-------------####################--------------"
 
-print os.environ['HOME']
-cuon_home = os.environ['HOME'] + '/cuon_newclient'
+cuon_home = './cuon_newclient'
 cuon_bin = cuon_home + '/bin'
 
 try:
@@ -44,7 +43,7 @@ except Exception, params:
 try:
     #shutil.copytree('Client/CUON/cuon',cuon_bin )
     os.system('cp -R Client/CUON/* ' + cuon_bin)
-    os.system('cp -R Client/cuonObjects ' + cuon_home)
+    os.system('mv ' + cuon_bin + '/cuonObjects ' + cuon_home)
     
 except Exception, params:
     print 'shutil'
@@ -86,7 +85,7 @@ print cpParser.sections()
 try:
             
     n1 = cpParser.get('version', 'Name')
-    v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '-' + cpParser.get('version', 'Rev')
+    v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '.' + cpParser.get('version', 'Rev')
     #sFile = self.cpParser.get('version', 'File')
 except Exception, param:
     print "Error read version-configfile" 

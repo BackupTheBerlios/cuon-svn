@@ -239,13 +239,20 @@ class windows(rawWindow, MyXML, messages):
             self.getWidget('tree1').set_sensitive(False)
             
             
-    def startProgressBar(self, Pulse = False):
-        fname = os.path.normpath(os.environ['CUON_HOME'] + '/' +  'glade_sqlprogressbar.xml')  
+    def startProgressBar(self, Pulse = False, Title=None):
+        fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_sqlprogressbar.xml')  
         self.progressbarWindowXML = gtk.glade.XML(fname)
-        self.progressbarWindowXML.get_widget('SqlProgressBar').show()
+        self.PBW = self.progressbarWindowXML.get_widget('SqlProgressBar')
+        if Title:
+            self.PBW.set_title(Title)
+        self.PBW.show()
         self.progressbar = self.progressbarWindowXML.get_widget('progressbar1')
         if Pulse:
             self.progressbar.pulse()
+        
+        self.progressbar.show()
+        
+        print 'progressbar = ', self.progressbar
         return True
         
     def stopProgressBar(self):
@@ -257,10 +264,16 @@ class windows(rawWindow, MyXML, messages):
             if Pulse:
                 self.progressbar.pulse()
             else:
+                if fPercent > 100:
+                    fPercent = 0
+                print 'fPercent/100 = ', fPercent/100.0
                 self.progressbar.set_fraction(fPercent/100.0)
+                while gtk.events_pending():
+                    gtk.main_iteration(gtk.FALSE)
+            
         else:
             self.printOut( 'no progressbar')
-            
+        
         return True
     
     def checkKey(self, event,sState, cKey):

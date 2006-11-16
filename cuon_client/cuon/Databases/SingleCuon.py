@@ -53,7 +53,7 @@ class SingleCuon(SingleData):
             
         data = result['clientdata']
         print 'len data = ', `len(data)`
-        cuonpath = os.environ['CUON_HOME']
+        cuonpath = self.td.cuon_path
         f = file(cuonpath + '/newclient','wb')
         data = self.doDecode(data)
         f.write(data)

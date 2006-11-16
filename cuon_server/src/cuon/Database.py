@@ -141,6 +141,8 @@ class Database(xmlrpc.XMLRPC, SQL):
         
     def xmlrpc_checkVersion(self, VersionClient, version):
         ok = 'O.K.'
+        print version
+        print VersionClient
         if version['Major'] != VersionClient['Major'] or version['Minor'] != VersionClient['Minor'] or version['Rev'] != VersionClient['Rev']:
             ok = 'Wrong'
 
@@ -164,15 +166,18 @@ class Database(xmlrpc.XMLRPC, SQL):
         else:
            id = -1
         if id == -1:
-           version = 0
+           version = '0.0.0'
         else:
            sSql = 'select version from cuon_clients where id = ' + `id`
            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
            
            if result != 'NONE':
-              version = result[0]['version']
-        self.writeLog('check version id, version = ' + `id` + ', ' + `version` )  
-        return id, version
+               version = result[0]['version']
+        liVersion = version.split('.')
+        print liVersion
+        dicVersion = {'Major':int(liVersion[0]),'Minor':int(liVersion[1]), 'Rev':int(liVersion[2])}
+        self.writeLog('check version id, version = ' + `id` + ', ' + `dicVersion` )  
+        return id, dicVersion
     def xmlrpc_getInfo(self, sSearch):
         return self.getValue(sSearch)
     def xmlrpc_saveInfo(self, sKey, cKey):

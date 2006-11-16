@@ -389,9 +389,9 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 31, 'Rev': 0, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 3, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
-        self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '-' + `self.Version['Rev']` 
+        self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.allTables = {}
         self.sDebug = 'NO'
         self.ModulNumber = self.MN['Mainwindow']
@@ -604,15 +604,15 @@ class MainWindow(windows):
     def generateSqlObjects(self):
         #self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables')
         at = self.rpc.callRP('Database.getInfo', 'allTables')
-        print 'at23 = ', `at`
+        #print 'at23 = ', `at`
         liAllTables = cPickle.loads(eval(self.doDecode(at)))
         #sys.exit(0)
-        print 'liAllTables = '
+        #print 'liAllTables = '
         #print liAllTables
         iCount = len(liAllTables)
         for i in range(iCount):
             self.loadSqlDefs(liAllTables, i)
-            #self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
+            self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
             #print 'Progress-Value = ' + str(float(i) * 1.0/float(iCount) * 100.0)
         #print self.allTables
 
@@ -716,10 +716,10 @@ class MainWindow(windows):
 
         
     def updateVersion(self):
-        #if self.startProgressBar():
-        self.generateSqlObjects()
-        self.writeAllGladeFiles()
-        #self.stopProgressBar()
+        if self.startProgressBar():
+            self.generateSqlObjects()
+            self.writeAllGladeFiles()
+        self.stopProgressBar()
     
     def on_import_data1_activate(self, event):
         imp1 =  cuon.Databases.import_generic1.import_generic1(self.allTables)
@@ -770,7 +770,7 @@ class MainWindow(windows):
             print 'No StartModule'
 
     def getNewClientSoftware(self, id):
-        cuonpath = os.environ['CUON_HOME']
+        cuonpath = self.td.cuon_path
         self.infoMsg('C.U.O.N. will now try to load the new Clientversion. ')
         shellcommand = 'rm ' + cuonpath + '/newclient'
         liStatus = commands.getstatusoutput(shellcommand)
@@ -782,15 +782,15 @@ class MainWindow(windows):
         sc = cuon.Databases.SingleCuon.SingleCuon(self.allTables)
         sc.saveNewVersion(id)
         
-        shellcommand = 'tar -C '+ cuonpath +' -xvjf ' + cuonpath + '/newclient'
+        shellcommand = 'cd '+cuonpath+' ;  tar -xvjf newclient'
         liStatus = commands.getstatusoutput(shellcommand)
         print shellcommand, liStatus
         #shellcommand = 'sh ' + cuonpath + '/iClient/iCuon  '
         #liStatus = commands.getstatusoutput(shellcommand)
         #print shellcommand, liStatus
         
-        self.infoMsg('Update complete. Please start C.U.O.N. from home/cuon/iClient new  ')
-        sys.exit(0)
+        self.infoMsg('Update complete. Please start C.U.O.N. new  ')
+        
         
            
     def startMain(self, sStartType, sDebug,sLocal='NO'):
@@ -818,38 +818,45 @@ class MainWindow(windows):
 
 
              
-            self.openDB()
-            version = self.loadObject('ProgramVersion')
-            self.closeDB()
-            
+##            self.openDB()
+##            version = self.loadObject('ProgramVersion')
+##            self.closeDB()
+##            
             print 'Version:' + str(version)
 
-            print self.Version['Major'] 
-            print self.Version['Minor'] 
-            print self.Version['Rev'] 
-
-            if not version:
-                print 'no Version'
-
-                version = {}
-                version['Major'] = 0
-                version['Minor'] = 0
-                version['Rev'] = 0
-
+            print self.Version['Major'], version['Major']
+            print self.Version['Minor'], version['Minor'] 
+            print self.Version['Rev'], version['Rev']
             print self.Version, version
+            
+            if not version:
+                print 'no Version, please inform Cuon-Administrator'
+
+                sys.exit(0)
             
             if self.rpc.callRP('Database.checkVersion', self.Version, version) == 'Wrong':
                 print ' ungleiche Versionen'
+                print 'load new version of pyCuon'
+                self.getNewClientSoftware(id)
+                self.openDB()
+                version = self.saveObject('newClientVersion',True)
+                self.closeDB()
+                sys.exit(0)
                 
+            self.openDB()
+            newClientExist = self.loadObject('newClientVersion')
+            self.closeDB()
+            if newClientExist:
                 self.updateVersion()
                 self.openDB()
                 self.saveObject('ProgramVersion', self.Version)
+                version = self.saveObject('newClientVersion',False)
                 self.closeDB()
                 version = self.rpc.callRP('Database.getLastVersion')
                 print 'Version', version
                 if sLocal != 'NO' and  self.rpc.callRP('Database.checkVersion', self.Version, version) == 'Wrong':
+                    
                     self.getNewClientSoftware(id)
-                    print 'load new version of pyCuon'
                     
                     sys.exit(0)
  
