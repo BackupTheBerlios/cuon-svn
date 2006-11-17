@@ -73,26 +73,26 @@ class typedefs:
             if value:
               self.help_server = value
               
-            try:
-                
-                # start read /etc/cuon/cuon.ini
-                self.getConfigParser(os.environ['HOME'] + '/.cuon.ini')
-                if self.cpParser:
-                    value = self.getConfigOption('PATH','CUON_PATH')
-                    if value:
-                      self.cuon_path = value
-                      
-                    value = self.getConfigOption('SERVER','CUON_SERVER')
-                    if value:
-                      self.server = value
-                      
-                    value = self.getConfigOption('SERVER','CUON_HELPSERVER')
-                    if value:
-                      self.help_server = value
+        try:
+            
+            # start read /etc/cuon/cuon.ini
+            self.getConfigParser(os.environ['HOME'] + '/.cuon.ini')
+            if self.cpParser:
+                value = self.getConfigOption('PATH','CUON_PATH')
+                if value:
+                  self.cuon_path = value
                   
-            except Exception, params:
-                print Exception, params
-                
+                value = self.getConfigOption('SERVER','CUON_SERVER')
+                if value:
+                  self.server = value
+                  
+                value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+                if value:
+                  self.help_server = value
+              
+        except Exception, params:
+            print Exception, params
+            
                  
           
         # If noc config-Options found, fallback to defaults   
@@ -115,14 +115,15 @@ class typedefs:
         
         print 'Server by typedef : ' + self.server
         
-    def getConfigParser(self, f):
+    def getConfigParser(self, sFile):
         try:
             self.cpParser = ConfigParser.ConfigParser()
-            f = open(self.sFile, 'rw')
+            f = open(sFile, 'rw')
             if f:    
                 self.cpParser.readfp(f)
                 f.close()
         except:
+            print 'no file ' + sFile + 'found '
             self.cpParser = None
             
         

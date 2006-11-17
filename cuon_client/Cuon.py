@@ -389,7 +389,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 4, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.allTables = {}
@@ -927,8 +927,9 @@ else:
 
 if len(sys.argv) > 1:
     if len(sys.argv[1]) > 1:
-        td.server =  sys.argv[1]
-        print 'td-server =', td.server   
+        if sys.argv[1] != 'NO':
+            td.server =  sys.argv[1]
+            print 'td-server =', td.server   
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

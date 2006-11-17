@@ -23,7 +23,7 @@ if len(sys.argv) > 2:
     print "Locale = ", Locale
     print "-------------####################--------------"
 
-cuon_home = './cuon_newclient'
+cuon_home = './cuon'
 cuon_bin = cuon_home + '/bin'
 
 try:
@@ -69,7 +69,7 @@ os.system('cp -R Client/locale ' +  cuon_home)
 
 f = open(cuon_bin + '/startcuon','w')
 s = '#!/usr/bin/sh \n'
-s += 'python Cuon.py ' + server + ' client NO ' + cuon_home + '/locale/' +  Locale
+s += 'python Cuon.py ' + 'NO' + ' client NO ' + cuon_home + '/locale' 
 
 f.write(s)
 f.close()
@@ -83,7 +83,7 @@ f.close()
 
 print cpParser.sections()
 try:
-            
+        
     n1 = cpParser.get('version', 'Name')
     v1 = cpParser.get('version', 'Major') + '.' + cpParser.get('version', 'Minor') + '.' + cpParser.get('version', 'Rev')
     #sFile = self.cpParser.get('version', 'File')
@@ -91,8 +91,8 @@ except Exception, param:
     print "Error read version-configfile" 
     print Exception
     print param
-os.system('rm cuon_client-' + v1 + '.tar.bz2 ')
-print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar -cjf $S1/cuon_client-' + v1 + '.tar.bz2 *' )
+os.system('rm cuon_client.tar.bz2 ')
+print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar -cjf $S1/cuon_client.tar.bz2 *' )
 
 
 
