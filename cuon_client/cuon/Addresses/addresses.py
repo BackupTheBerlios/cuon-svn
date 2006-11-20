@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
@@ -525,13 +525,63 @@ class addresswindow(chooseWindows):
         
     # search button
     def on_bSearch_clicked(self, event):
+        self.findAddress()
+    def on_eSearch_key_press_event(self, entry, event):
+        print 'eSearch_key_press_event'
+        if self.checkKey(event,'NONE','Return'):
+            self.findAddress()
+    
+    def findAddress(self):
+        print 'findAddress'
         self.out( 'Searching ....', self.ERROR)
         sName = self.getWidget('eFindName').get_text()
         sCity = self.getWidget('eFindCity').get_text()
-        self.out('Name and City = ' + sName + ', ' + sCity, self.ERROR)
-        self.singleAddress.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
-        self.out(self.singleAddress.sWhere, self.ERROR)
+        sZip = self.getWidget('eFindZipcode').get_text()
+        sFirstname = self.getWidget('eFindFirstname').get_text()
+        sID = self.getWidget('eFindID').get_text()
+        sStreet = self.getWidget('eFindStreet').get_text()
+        sPhone = self.getWidget('eFindPhone').get_text()
+
+        liSearch = []
+        if sName:
+            liSearch.append('lastname')
+            liSearch.append(sName)
+        if sID:
+            liSearch.append('id')
+            try:
+                liSearch.append(int(sID))
+            except:
+                liSearch.append(0)
+            
+        if sFirstname:
+            liSearch.append('firstname')
+            liSearch.append(sFirstname)
+        if sCity:
+            liSearch.append('city')
+            liSearch.append(sCity)    
+             
+        if sZip:
+            liSearch.append('zip')
+            liSearch.append(sZip)    
+        if sStreet:
+            liSearch.append('street')
+            liSearch.append(sStreet)
+            
+        if sPhone:
+            liSearch.append('phone')
+            liSearch.append(sPhone)    
+             
+        self.singleAddress.sWhere = self.getWhere(liSearch) 
+        
+        self.out('Address sWhere = ' + `self.singleAddress.sWhere`)
         self.refreshTree()
+
+        
+        
+        
+        
+        
+        
     def on_tree1_row_activated(self, event, data1, data2):
         print 'DoubleClick tree1'
         self.activateClick('chooseAddress', event)

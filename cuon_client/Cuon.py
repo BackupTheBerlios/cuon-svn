@@ -389,7 +389,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.allTables = {}
@@ -854,7 +854,7 @@ class MainWindow(windows):
                 self.closeDB()
                 version = self.rpc.callRP('Database.getLastVersion')
                 print 'Version', version
-                if sLocal != 'NO' and  self.rpc.callRP('Database.checkVersion', self.Version, version) == 'Wrong':
+                if sLocal != 'NO' and  self.rpc.callRP('Database.checkVersion', self.Version, version[1]) == 'Wrong':
                     
                     self.getNewClientSoftware(id)
                     
@@ -865,7 +865,7 @@ class MainWindow(windows):
 
             # self.gladeName = td.main_glade_name
 
-            self.loadGlade('main.xml')
+            self.loadGlade('cuon.xml')
  
         # Menu-items
        
@@ -930,6 +930,9 @@ if len(sys.argv) > 1:
         if sys.argv[1] != 'NO':
             td.server =  sys.argv[1]
             print 'td-server =', td.server   
+        else:
+            td.server = 'NO'
+            
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

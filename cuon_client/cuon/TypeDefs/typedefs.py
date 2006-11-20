@@ -18,6 +18,8 @@ import cuon.XML.MyXML
 import sys
 import os
 import ConfigParser
+import shelve
+
 #if len(sys.argv) > 1:
 #    fname = sys.argv[1]
 #else:
@@ -31,6 +33,7 @@ class typedefs:
         self.cuon_path = None
         self.help_server = None
         self.cpParser = None
+        
         try:
             self.cuon_path = os.environ(['CUON_PATH'])
             
@@ -94,7 +97,7 @@ class typedefs:
             print Exception, params
             
                  
-          
+        
         # If noc config-Options found, fallback to defaults   
         if not self.cuon_path:    
             self.cuon_path = os.environ['HOME'] +'/cuon'
@@ -112,8 +115,24 @@ class typedefs:
             self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
             
             
-        
+        try:
+            print 'just self.server = ', self.server
+            dbase = shelve.open(os.path.normpath(self.cuon_path + '/' + 'cuonObjects'))
+            oValue = None
+            try:
+                oValue = dbase['td']
+            except:
+                oValue = None
+            
+            dbase.close()
+            if oValue.server != 'NO':
+                self.server = oValue.server
+        except Exception, params:
+            print Exception, params
+            
+            
         print 'Server by typedef : ' + self.server
+        print '#########################################################'
         
     def getConfigParser(self, sFile):
         try:

@@ -68,7 +68,7 @@ os.system('cp -R Client/locale ' +  cuon_home)
 # create startFile
 
 f = open(cuon_bin + '/startcuon','w')
-s = '#!/usr/bin/sh \n'
+s = '#!/bin/sh \n'
 s += 'python Cuon.py ' + 'NO' + ' client NO ' + cuon_home + '/locale' 
 
 f.write(s)
@@ -92,7 +92,7 @@ except Exception, param:
     print Exception
     print param
 os.system('rm cuon_client.tar.bz2 ')
-print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar -cjf $S1/cuon_client.tar.bz2 *' )
+print os.system('S1=`pwd` ; cd ' + cuon_home + ' ; tar --exclude=".svn*" -cjf $S1/cuon_client.tar.bz2 *' )
 
 
 

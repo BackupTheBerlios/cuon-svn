@@ -232,3 +232,40 @@ on_bSchedulEmail_clicked               (GtkButton       *button,
 void
 on_bSchedulDMS_clicked                 (GtkButton       *button,
                                         gpointer         user_data);
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+gboolean
+on_key_press_event                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+gboolean
+on_press_event                         (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+void
+on_bLetter_clicked                     (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bPartnerLetter_clicked              (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSchedulLetter_clicked              (GtkButton       *button,
+                                        gpointer         user_data);
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

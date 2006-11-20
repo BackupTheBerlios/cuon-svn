@@ -49,7 +49,7 @@ class import_generic1(fileSelection):
         self.dicFileAttributes['importHeader'] = None
         self.dicFileAttributes['inputType'] = 'Standard'
         self.dicFileAttributes['liColumns'] = []
-
+        self.dicFileAttributes['decodeData'] = None
         
         if ctrlFile:
             s = ctrlFile.readline()
@@ -72,6 +72,8 @@ class import_generic1(fileSelection):
                         self.dicFileAttributes['fromChangedValue'] = liS[1]
                     if liS[0] == 'to_changed_value':
                         self.dicFileAttributes['toChangedValue'] = liS[1]
+                    if liS[0] == 'decode_data':
+                        self.dicFileAttributes['decodeData'] = liS[1]
     
                     if liS[0] == 'header':
                         self.dicFileAttributes['importHeader'] = liS[1]        
@@ -102,6 +104,7 @@ class import_generic1(fileSelection):
 ##        # for exmple 
 ##        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
 ##        #
+        print 'len lS2 = ', len(lS2)
         
         oSingleImport = SingleImport.SingleImport(self.dicFileAttributes['allTables'])
         print 'Type : ', self.dicFileAttributes['inputType'][0:8]
@@ -118,16 +121,22 @@ class import_generic1(fileSelection):
         while s1:
             #print s1
             #print '----'
+            if self.dicFileAttributes['decodeData']:
+                s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
             if self.dicFileAttributes['fromChangedValue']:
                 s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
             lS1 = s1.split(self.dicFileAttributes['splitValue'])
             
             #exportFile.write(s1)
-            #print lS1
+            print lS1
             # now set the values
             dicValues = {}
+            print 'self.dicFileAttributes = ', self.dicFileAttributes
+            
             for i in range(len(self.dicFileAttributes['liColumns'])):
-                dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
+                if self.dicFileAttributes['liColumns'][i]['field'] != 'none':
+                    print '###--> ', self.dicFileAttributes['liColumns'][i]['field']
+                    dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
 
 
             #print `self.dicUser`    
