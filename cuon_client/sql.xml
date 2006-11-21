@@ -43,7 +43,7 @@
             RETURN NEW; 
       else 
             RETURN OLD;
-      end if 
+      end if \;
 	END;
       </textOfFunction>
    	<description>set the user_id to current_user </description>
