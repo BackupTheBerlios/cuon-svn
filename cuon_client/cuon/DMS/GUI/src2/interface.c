@@ -224,8 +224,6 @@ create_DMSMainwindow (void)
   GtkWidget *table2;
   GtkWidget *label16;
   GtkWidget *eTitle;
-  GtkWidget *label17;
-  GtkWidget *eCategory;
   GtkWidget *label23;
   GtkWidget *eSub1;
   GtkWidget *label24;
@@ -244,13 +242,19 @@ create_DMSMainwindow (void)
   GtkWidget *eSearch2;
   GtkWidget *eSearch3;
   GtkWidget *eSearch4;
+  GtkWidget *label17;
+  GtkWidget *eCategory;
+  GtkWidget *hbox5;
+  GtkWidget *label47;
+  GtkWidget *eDokumentDate;
+  GtkWidget *vbox2;
   GtkWidget *bScan;
   GtkWidget *bOCR;
-  GtkWidget *bView;
-  GtkWidget *bImport;
   GtkWidget *gfcb_ImportFile;
+  GtkWidget *bImport;
   GtkWidget *bLink;
-  GtkWidget *iThumbnail;
+  GtkWidget *bWriteLastDocument;
+  GtkWidget *bView;
   GtkWidget *lDocs;
   GtkWidget *table3;
   GtkWidget *label21;
@@ -467,7 +471,7 @@ create_DMSMainwindow (void)
   gtk_widget_show (notebook1);
   gtk_box_pack_start (GTK_BOX (vbox1), notebook1, TRUE, TRUE, 0);
 
-  hbox2 = gtk_hbox_new (TRUE, 0);
+  hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
   gtk_container_add (GTK_CONTAINER (notebook1), hbox2);
 
@@ -485,19 +489,6 @@ create_DMSMainwindow (void)
   eTitle = gtk_entry_new ();
   gtk_widget_show (eTitle);
   gtk_table_attach (GTK_TABLE (table2), eTitle, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label17 = gtk_label_new (_("Category"));
-  gtk_widget_show (label17);
-  gtk_table_attach (GTK_TABLE (table2), label17, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label17), 0, 0.5);
-
-  eCategory = gtk_entry_new ();
-  gtk_widget_show (eCategory);
-  gtk_table_attach (GTK_TABLE (table2), eCategory, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
@@ -618,46 +609,64 @@ create_DMSMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  bScan = gtk_button_new_with_mnemonic (_("Scan"));
-  gtk_widget_show (bScan);
-  gtk_table_attach (GTK_TABLE (table2), bScan, 2, 3, 0, 1,
+  label17 = gtk_label_new (_("Category"));
+  gtk_widget_show (label17);
+  gtk_table_attach (GTK_TABLE (table2), label17, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label17), 0, 0.5);
+
+  eCategory = gtk_entry_new ();
+  gtk_widget_show (eCategory);
+  gtk_table_attach (GTK_TABLE (table2), eCategory, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  hbox5 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox5);
+  gtk_table_attach (GTK_TABLE (table2), hbox5, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label47 = gtk_label_new (_("Document-Date"));
+  gtk_widget_show (label47);
+  gtk_box_pack_start (GTK_BOX (hbox5), label47, FALSE, FALSE, 0);
+
+  eDokumentDate = gtk_entry_new ();
+  gtk_widget_show (eDokumentDate);
+  gtk_box_pack_start (GTK_BOX (hbox5), eDokumentDate, TRUE, TRUE, 0);
+
+  vbox2 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox2);
+  gtk_box_pack_start (GTK_BOX (hbox2), vbox2, TRUE, TRUE, 0);
+
+  bScan = gtk_button_new_with_mnemonic (_("Scan"));
+  gtk_widget_show (bScan);
+  gtk_box_pack_start (GTK_BOX (vbox2), bScan, FALSE, FALSE, 0);
 
   bOCR = gtk_button_new_with_mnemonic (_("OCR"));
   gtk_widget_show (bOCR);
-  gtk_table_attach (GTK_TABLE (table2), bOCR, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  bView = gtk_button_new_with_mnemonic (_("View"));
-  gtk_widget_show (bView);
-  gtk_table_attach (GTK_TABLE (table2), bView, 2, 3, 10, 11,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  bImport = gtk_button_new_with_mnemonic (_("Import"));
-  gtk_widget_show (bImport);
-  gtk_table_attach (GTK_TABLE (table2), bImport, 2, 3, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_box_pack_start (GTK_BOX (vbox2), bOCR, FALSE, FALSE, 0);
 
   gfcb_ImportFile = gtk_file_chooser_button_new (_("choose file"), GTK_FILE_CHOOSER_ACTION_OPEN);
   gtk_widget_show (gfcb_ImportFile);
-  gtk_table_attach (GTK_TABLE (table2), gfcb_ImportFile, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_box_pack_start (GTK_BOX (vbox2), gfcb_ImportFile, TRUE, TRUE, 0);
+
+  bImport = gtk_button_new_with_mnemonic (_("Import"));
+  gtk_widget_show (bImport);
+  gtk_box_pack_start (GTK_BOX (vbox2), bImport, FALSE, FALSE, 0);
 
   bLink = gtk_button_new_with_mnemonic (_("LINK"));
   gtk_widget_show (bLink);
-  gtk_table_attach (GTK_TABLE (table2), bLink, 2, 3, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_box_pack_start (GTK_BOX (vbox2), bLink, FALSE, FALSE, 0);
 
-  iThumbnail = create_pixmap (DMSMainwindow, NULL);
-  gtk_widget_show (iThumbnail);
-  gtk_box_pack_start (GTK_BOX (hbox2), iThumbnail, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (iThumbnail, 28, 125);
+  bWriteLastDocument = gtk_button_new_with_mnemonic (_("Save Last Document"));
+  gtk_widget_show (bWriteLastDocument);
+  gtk_box_pack_start (GTK_BOX (vbox2), bWriteLastDocument, FALSE, FALSE, 0);
+
+  bView = gtk_button_new_with_mnemonic (_("View"));
+  gtk_widget_show (bView);
+  gtk_box_pack_start (GTK_BOX (vbox2), bView, FALSE, FALSE, 0);
 
   lDocs = gtk_label_new (_("Documents"));
   gtk_widget_show (lDocs);
@@ -768,14 +777,17 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bOCR, "clicked",
                     G_CALLBACK (on_bOCR_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bView, "clicked",
-                    G_CALLBACK (on_bView_clicked),
-                    NULL);
   g_signal_connect ((gpointer) bImport, "clicked",
                     G_CALLBACK (on_bImport_clicked),
                     NULL);
   g_signal_connect ((gpointer) bLink, "clicked",
                     G_CALLBACK (on_bLink_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bWriteLastDocument, "clicked",
+                    G_CALLBACK (on_bWriteLastDocument_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bView, "clicked",
+                    G_CALLBACK (on_bView_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -840,8 +852,6 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label16, "label16");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eTitle, "eTitle");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, label17, "label17");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, eCategory, "eCategory");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label23, "label23");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eSub1, "eSub1");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label24, "label24");
@@ -860,13 +870,19 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eSearch2, "eSearch2");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eSearch3, "eSearch3");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eSearch4, "eSearch4");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label17, "label17");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eCategory, "eCategory");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox5, "hbox5");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label47, "label47");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eDokumentDate, "eDokumentDate");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, vbox2, "vbox2");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bScan, "bScan");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bOCR, "bOCR");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, gfcb_ImportFile, "gfcb_ImportFile");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bLink, "bLink");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, iThumbnail, "iThumbnail");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bWriteLastDocument, "bWriteLastDocument");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, lDocs, "lDocs");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label21, "label21");

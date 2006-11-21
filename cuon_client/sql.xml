@@ -33,7 +33,7 @@
       <language>plpgsql</language>
   	<textOfFunction>
 	BEGIN
-      if not OLD.status == ''delete'' then 
+      if not OLD.status = ''delete'' then 
             NEW.update_user_id = current_user   ;
             NEW.update_time = (select  now()) ;
             NEW.user_id = OLD.user_id;
@@ -89,13 +89,23 @@
  </description>
 
     </function>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertAddress</nameOfTrigger>
+      <table>address</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert address </description>
+      
+    </trigger>
     <trigger>
       <nameOfTrigger>trg_deleteAddress</nameOfTrigger>
       <table>address</table>
       <action>before delete</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
-      <description>if delete a address, check for use in order, then delete all partner </description>
+      <description>if delete a address, check for use in order, then delete all CUON_CLIENTS </description>
       
     </trigger>
     <trigger>
@@ -107,13 +117,14 @@
       <description>update address </description>
       
     </trigger>
+    
   <trigger>
       <nameOfTrigger>trg_deleteArticle</nameOfTrigger>
       <table>articles</table>
       <action>before delete</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
-      <description>if delete a article, check for use in order, then delete all partner </description>
+      <description>if delete a article, check for use in order, then delete all CUON_CLIENTS </description>
       
     </trigger>
     <trigger>
@@ -145,33 +156,424 @@
     </trigger>
 
   <trigger>
-      <nameOfTrigger>trg_insertDMS</nameOfTrigger>
-      <table>dms</table>
+      <nameOfTrigger>trg_insertCUON_CLIENTS</nameOfTrigger>
+      <table>CUON_CLIENTS</table>
       <action>before insert </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
-      <description>insert dms </description>
+      <description>insert CUON_CLIENTS </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteCUON_CLIENTS</nameOfTrigger>
+      <table>CUON_CLIENTS</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a CUON_CLIENTS, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateCUON_CLIENTS</nameOfTrigger>
+      <table>CUON_CLIENTS</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update CUON_CLIENTS </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertSTAFF</nameOfTrigger>
+      <table>STAFF</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert STAFF </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteSTAFF</nameOfTrigger>
+      <table>STAFF</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a STAFF, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateSTAFF</nameOfTrigger>
+      <table>STAFF</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update STAFF </description>
+      
+    </trigger>
+    
+    
+    
+<trigger>
+      <nameOfTrigger>trg_insertPROJECTS</nameOfTrigger>
+      <table>PROJECTS</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PROJECTS </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePROJECTS</nameOfTrigger>
+      <table>PROJECTS</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PROJECTS, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePROJECTS</nameOfTrigger>
+      <table>PROJECTS</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PROJECTS </description>
+      
+    </trigger>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertPROJECT_TASKS</nameOfTrigger>
+      <table>PROJECT_TASKS</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PROJECT_TASKS </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePROJECT_TASKS</nameOfTrigger>
+      <table>PROJECT_TASKS</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PROJECT_TASKS, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePROJECT_TASKS</nameOfTrigger>
+      <table>PROJECT_TASKS</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PROJECT_TASKS </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertPROJECT_TASK_STAFF_RES</nameOfTrigger>
+      <table>PROJECT_TASK_STAFF_RES</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PROJECT_TASK_STAFF_RES </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePROJECT_TASK_STAFF_RES</nameOfTrigger>
+      <table>PROJECT_TASK_STAFF_RES</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PROJECT_TASK_STAFF_RES, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePROJECT_TASK_STAFF_RES</nameOfTrigger>
+      <table>PROJECT_TASK_STAFF_RES</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PROJECT_TASK_STAFF_RES </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertPROJECT_TASK_MATERIAL_RES</nameOfTrigger>
+      <table>PROJECT_TASK_MATERIAL_RES</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PROJECT_TASK_MATERIAL_RES </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePROJECT_TASK_MATERIAL_RES</nameOfTrigger>
+      <table>PROJECT_TASK_MATERIAL_RES</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PROJECT_TASK_MATERIAL_RES, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePROJECT_TASK_MATERIAL_RES</nameOfTrigger>
+      <table>PROJECT_TASK_MATERIAL_RES</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PROJECT_TASK_MATERIAL_RES </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertPROJECT_PHASES</nameOfTrigger>
+      <table>PROJECT_PHASES</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PROJECT_PHASES </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePROJECT_PHASES</nameOfTrigger>
+      <table>PROJECT_PHASES</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PROJECT_PHASES, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePROJECT_PHASES</nameOfTrigger>
+      <table>PROJECT_PHASES</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PROJECT_PHASES </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertORDERBOOK</nameOfTrigger>
+      <table>ORDERBOOK</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert ORDERBOOK </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteORDERBOOK</nameOfTrigger>
+      <table>ORDERBOOK</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a ORDERBOOK, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateORDERBOOK</nameOfTrigger>
+      <table>ORDERBOOK</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update ORDERBOOK </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertDMS</nameOfTrigger>
+      <table>DMS</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert DMS </description>
       
     </trigger>
  <trigger>
       <nameOfTrigger>trg_deleteDMS</nameOfTrigger>
-      <table>dms</table>
+      <table>DMS</table>
       <action>before delete</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
-      <description>if delete a dms, set status to delete  </description>
+      <description>if delete a DMS, set status to delete  </description>
       
     </trigger>
    <trigger>
       <nameOfTrigger>trg_updateDMS</nameOfTrigger>
-      <table>dms</table>
+      <table>DMS</table>
       <action>before update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
-      <description>update dms </description>
+      <description>update DMS </description>
       
     </trigger>
-
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertPARTNER_SCHEDUL</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert PARTNER_SCHEDUL </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePARTNER_SCHEDUL</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PARTNER_SCHEDUL, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatePARTNER_SCHEDUL</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update PARTNER_SCHEDUL </description>
+      
+    </trigger>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertCLIENTS</nameOfTrigger>
+      <table>CLIENTS</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert CLIENTS </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteCLIENTS</nameOfTrigger>
+      <table>CLIENTS</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a CLIENTS, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateCLIENTS</nameOfTrigger>
+      <table>CLIENTS</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update CLIENTS </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertBIBLIO</nameOfTrigger>
+      <table>BIBLIO</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert BIBLIO </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteBIBLIO</nameOfTrigger>
+      <table>BIBLIO</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a BIBLIO, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateBIBLIO</nameOfTrigger>
+      <table>BIBLIO</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update BIBLIO </description>
+      
+    </trigger>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertBOTANY</nameOfTrigger>
+      <table>BOTANY</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert BOTANY </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteBOTANY</nameOfTrigger>
+      <table>BOTANY</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a BOTANY, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateBOTANY</nameOfTrigger>
+      <table>BOTANY</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update BOTANY </description>
+      
+    </trigger>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertHIBERNATION_PLANT</nameOfTrigger>
+      <table>HIBERNATION_PLANT</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert HIBERNATION_PLANT </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteHIBERNATION_PLANT</nameOfTrigger>
+      <table>HIBERNATION_PLANT</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a HIBERNATION_PLANT, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateHIBERNATION_PLANT</nameOfTrigger>
+      <table>HIBERNATION_PLANT</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update HIBERNATION_PLANT </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertHIBERNATION</nameOfTrigger>
+      <table>HIBERNATION</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert HIBERNATION </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deleteHIBERNATION</nameOfTrigger>
+      <table>HIBERNATION</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a HIBERNATION, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updateHIBERNATION</nameOfTrigger>
+      <table>HIBERNATION</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update HIBERNATION </description>
+      
+    </trigger>
+    
   </postgre_sql>
   
 </sql>

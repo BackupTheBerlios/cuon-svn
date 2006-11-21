@@ -48,6 +48,7 @@ class SingleData(gladeXml, logs):
         self.table = cyr_table()
         self.xmlTableDef = 1
         self.sNameOfTable = "EMPTY"
+        self.withoutColumns = None
         self.openDB()
         
         self.oUser = self.loadObject('User')
@@ -90,7 +91,14 @@ class SingleData(gladeXml, logs):
                 dicColumns = {}
 
                 for i in self.table.getColumns():
-                    dicColumns[str(i.getName())] = str(i.getType())
+                    ok = True
+                    if self.withoutColumns:
+                        for cols in self.withoutColumns:
+                            if i.getName() == cols:
+                                ok = False
+                    if ok:
+                        dicColumns[str(i.getName())] = str(i.getType())
+                        
 
             # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++***')
             # self.out( self.table.getName())
@@ -251,6 +259,7 @@ class SingleData(gladeXml, logs):
 
     def setTree(self, tree01):
         self.tree1 = tree01
+        #print self.getListEntries()
         self.fillTree(self.tree1, self.getListEntries() )
         
     def disconnectTree(self):

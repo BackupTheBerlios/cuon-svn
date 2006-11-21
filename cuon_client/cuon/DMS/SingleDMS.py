@@ -37,6 +37,7 @@ class SingleDMS(SingleData):
         SingleData.__init__(self)
         # tables.dbd and address
         self.sNameOfTable =  "dms"
+        self.withoutColumns = ['document_image']
         self.xmlTableDef = 0
         self.loadTable(allTables)
         # self.saveTable()
@@ -95,7 +96,19 @@ class SingleDMS(SingleData):
         dicValues['sep_info_1'] = [self.sep_info_1, 'int']
         
         return dicValues
-
+    def loadDocument(self):
+        
+        sSql = 'select document_image from dms where id = ' + `self.ID`
+        liResult = self.rpc.callRP('Database.executeNormalQuery', sSql, self.sqlDicUser )
+        if liResult:
+            s = liResult[0]['document_image']
+            try:
+                s2 = base64.decodestring(s)
+                self.imageData = s2
+            except Exception, param:
+                print Exception, param
+                self.imageData = None
+                
     def fillOtherEntries(self, oneRecord):
         
         self.fileFormat = oneRecord['file_format']
@@ -106,29 +119,29 @@ class SingleDMS(SingleData):
         self.size_x = oneRecord['size_x']
         self.size_y =  oneRecord['size_y']
 
-        s = oneRecord['document_image']
-        print len(s)
-        s2 = base64.decodestring(s)
-        print 'Size'
-        print self.size_x
-        print self.size_y
-        self.imageData = s2
-        if self.fileFormat == 'Image Scanner':
-
-            UC =   bz2.decompress(s2)
-
-
-            newIm = Image.fromstring('RGB',[self.size_x, self.size_y], UC)
-            newIm.thumbnail([480,400])
-            sFile = self.dicUser['prefPath']['tmp'] + 'dms_thumbnail.png'
-            newIm.save(sFile)
-            self.imageWidget.set_from_file(sFile)
-
-        else:
-             
-            logopic = '/usr/lib/cuon/icons/cuon-logo.xpm'
-            pixbuf = gtk.gdk.pixbuf_new_from_file(logopic)
-            scaled_buf = pixbuf.scale_simple(480,400,gtk.gdk.INTERP_BILINEAR)
-            self.imageWidget.set_from_pixbuf(scaled_buf)
-            self.imageWidget.show()
-            #self.imageWidget.set_from_file('/usr/lib/cuon/icons/cuon-logo.jpeg')
+##        s = oneRecord['document_image']
+##        print len(s)
+##        s2 = base64.decodestring(s)
+##        print 'Size'
+##        print self.size_x
+##        print self.size_y
+##        self.imageData = s2
+##        if self.fileFormat == 'Image Scanner':
+##
+##            UC =   bz2.decompress(s2)
+##
+##
+##            newIm = Image.fromstring('RGB',[self.size_x, self.size_y], UC)
+##            newIm.thumbnail([480,400])
+##            sFile = self.dicUser['prefPath']['tmp'] + 'dms_thumbnail.png'
+##            newIm.save(sFile)
+##            self.imageWidget.set_from_file(sFile)
+##
+##        else:
+##             
+##            logopic = '/usr/lib/cuon/icons/cuon-logo.xpm'
+##            pixbuf = gtk.gdk.pixbuf_new_from_file(logopic)
+##            scaled_buf = pixbuf.scale_simple(480,400,gtk.gdk.INTERP_BILINEAR)
+##            self.imageWidget.set_from_pixbuf(scaled_buf)
+##            self.imageWidget.show()
+##            #self.imageWidget.set_from_file('/usr/lib/cuon/icons/cuon-logo.jpeg')

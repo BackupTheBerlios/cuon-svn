@@ -256,24 +256,33 @@ class windows(rawWindow, MyXML, messages):
         return True
         
     def stopProgressBar(self):
-         self.progressbarWindowXML.get_widget('SqlProgressBar').hide()
+        try:
+            
+            self.progressbarWindowXML.get_widget('SqlProgressBar').hide()
+        except:
+            pass
          
     
     def setProgressBar(self, fPercent, Pulse = False):
-        if self.progressbar:
-            if Pulse:
-                self.progressbar.pulse()
-            else:
-                if fPercent > 100:
-                    fPercent = 0
-                print 'fPercent/100 = ', fPercent/100.0
-                self.progressbar.set_fraction(fPercent/100.0)
-                while gtk.events_pending():
-                    gtk.main_iteration(gtk.FALSE)
+        try:
             
-        else:
-            self.printOut( 'no progressbar')
         
+            if self.progressbar:
+                if Pulse:
+                    self.progressbar.pulse()
+                else:
+                    if fPercent > 100:
+                        fPercent = 0
+                    print 'fPercent/100 = ', fPercent/100.0
+                    self.progressbar.set_fraction(fPercent/100.0)
+                    while gtk.events_pending():
+                        gtk.main_iteration(gtk.FALSE)
+                
+            else:
+                self.printOut( 'no progressbar')
+        except:
+            pass
+            
         return True
     
     def checkKey(self, event,sState, cKey):

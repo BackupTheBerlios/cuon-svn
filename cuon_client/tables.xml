@@ -2659,7 +2659,18 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>document_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
   </table>
+  
   <!--terms of payment-->
   <table>
     <nameOfTable>terms_of_payment</nameOfTable>

@@ -168,6 +168,7 @@ class databaseswindow(windows):
 
 
     def on_dbcheck1_activate(self, event):
+        
         self.iPB = 1
         clt = cyr_load_table.cyr_load_table()
         ### for Server-functions set the td-object

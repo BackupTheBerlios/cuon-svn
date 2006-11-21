@@ -123,7 +123,17 @@
                 <fg_color>0</fg_color>
 
       </entry>
-
+<entry>
+      <name>eDocumentDate</name>
+      <type>textline</type>
+      <size>85</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_date</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
     </table>
 
   </entries_for_table>

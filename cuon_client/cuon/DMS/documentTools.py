@@ -50,7 +50,7 @@ class documentTools:
 
     def viewDocument(self, singleDMS,dicUser, dicVars):
         print 'dicVars1 ', dicVars
-        
+        singleDMS.loadDocument()
         exe = None
         if singleDMS.fileFormat:
             print 'Format = ', singleDMS.fileFormat
