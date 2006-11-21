@@ -389,7 +389,7 @@ class MainWindow(windows):
     def __init__(self, sT):
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 15, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.allTables = {}

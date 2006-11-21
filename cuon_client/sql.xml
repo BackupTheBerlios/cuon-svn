@@ -33,13 +33,17 @@
       <language>plpgsql</language>
   	<textOfFunction>
 	BEGIN
-	    NEW.update_user_id = current_user   ;
-	    NEW.update_time = (select  now()) ;
-	    NEW.user_id = OLD.user_id;
-                      NEW.insert_time = OLD.insert_time ;
-                      NEW.status = ''update'' ;
-	    RAISE NOTICE ''Name =  % '', TG_NAME ;
-	    RETURN NEW; 
+      if not OLD.status == ''delete'' then 
+            NEW.update_user_id = current_user   ;
+            NEW.update_time = (select  now()) ;
+            NEW.user_id = OLD.user_id;
+                          NEW.insert_time = OLD.insert_time ;
+                          NEW.status = ''update'' ;
+            RAISE NOTICE ''Name =  % '', TG_NAME ;
+            RETURN NEW; 
+      else 
+            RETURN OLD;
+      end if 
 	END;
       </textOfFunction>
    	<description>set the user_id to current_user </description>
