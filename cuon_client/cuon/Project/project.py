@@ -58,7 +58,7 @@ class projectwindow(chooseWindows):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        
+        self.ModulNumber = self.MN['Project']
         self.singleProject = SingleProject.SingleProject(allTables)
         self.singleProjectPhases = SingleProjectPhases.SingleProjectPhases(allTables)
         self.singleProjectTasks = SingleProjectTasks.SingleProjectTasks(allTables)
@@ -476,6 +476,16 @@ class projectwindow(chooseWindows):
         
     # signals from entry eAddressNumber
     
+    
+    # Buttons
+    
+    # DMS
+    def on_bProjectDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleAddress.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+        
     def on_eMRArticleNumber_changed(self, event):
         print 'eMRArticleNumber changed'
         eArticleDes  = self.getWidget('eArticleDesignation')

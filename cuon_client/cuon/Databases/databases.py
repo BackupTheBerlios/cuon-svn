@@ -827,7 +827,7 @@ class databaseswindow(windows):
 
                     
                     # first delete the trigger called newName
-                    sSql = 'DROP TRIGGER ' + newName
+                    sSql = 'DROP TRIGGER ' + newName + ' on ' + table 
                     
                     ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
                     self.out(ok) 

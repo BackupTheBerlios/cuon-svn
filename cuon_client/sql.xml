@@ -111,7 +111,7 @@
     <trigger>
       <nameOfTrigger>trg_updateAddress</nameOfTrigger>
       <table>address</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update address </description>

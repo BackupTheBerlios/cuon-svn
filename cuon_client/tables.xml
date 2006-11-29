@@ -705,7 +705,42 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>caller_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>rep_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>salesman_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    
   </table>
+  
+  
   <!--table: bank-->
   <table>
     <nameOfTable>bank</nameOfTable>
@@ -979,6 +1014,25 @@
       <comment />
     </field>
   </table>
+  
+  <!--table: Contact-->
+  <table>
+    <nameOfTable>contact</nameOfTable>
+    <specials>inherits (partner_schedul);</specials>
+    <x>82</x>
+    <y>45</y>
+    <field>
+      <name>address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+</table>
   <!--table: articles-->
   <table>
     <nameOfTable>articles</nameOfTable>

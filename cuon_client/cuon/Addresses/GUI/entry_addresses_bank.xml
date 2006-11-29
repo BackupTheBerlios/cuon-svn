@@ -1,0 +1,53 @@
+<entries_for_table>
+    <table>
+      <table_name>address_bank</table_name>
+  <entry>
+	<name>eBankID</name>
+	<type>textline</type>
+               <size>30</size>
+                <verify_type>int</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>bank_id</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+  <entry>
+	<name>eDepositor</name>
+	<type>textline</type>
+               <size>80</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>depositor</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry> 
+     <entry>
+	<name>eAccountNumber</name>
+	<type>textline</type>
+                <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>account_number</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ 
+<entry>
+	<name>eIban</name>
+	<type>textline</type>
+                <size>80</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>iban</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+ 
+
+    </table>
+
+  </entries_for_table>

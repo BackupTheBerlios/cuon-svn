@@ -65,7 +65,25 @@ class SingleStaff(SingleData):
             liAddress.append(' ')
             
         return liAddress
-
+        
+    
+    def getAddressEntry(self, id):
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            id = 0
+            dicRecords = {}
+        
+        cAdr = ''
+        if dicRecords:
+            dicRecord = dicRecords[0]
+            cAdr = dicRecord['lastname'] + ', ' + dicRecord['firstname']
+            
+            
+        return cAdr
+        
     def getFullName(self, id):
         try:
             id = long(id)

@@ -1509,7 +1509,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="eDokumentDate">
+			<widget class="GtkEntry" id="eDocumentDate">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>

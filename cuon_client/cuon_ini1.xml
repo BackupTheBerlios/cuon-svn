@@ -42,6 +42,11 @@
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>contact.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_contact.xml</Entry-FileValue>
+    </Entries>
+    <Entries>	
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>bank.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_bank.xml</Entry-FileValue>
     </Entries>
@@ -300,6 +305,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>addresses_search1.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/addresses_search1.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>contact.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/contact.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>

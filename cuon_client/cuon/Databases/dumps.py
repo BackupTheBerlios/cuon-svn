@@ -125,10 +125,18 @@ class dumps:
         try:
             assert type
             if type == 'int':
-                if not isinstance(value, types.IntType) and not isinstance(value, types.LongType) :
+                if isinstance(value, types.IntType) or isinstance(value, types.LongType) :
+                
+                
+                    try:
+                        retValue = int(value)
+                    except:
+                        retValue = 0
+                    
+
+                else:
                     try:
                         assert value != None
-
                         if isinstance(value, types.StringType):
                             value = value.strip()
                             if value[0] == 'L'  or value[0] == 'l':
@@ -137,8 +145,8 @@ class dumps:
                         retValue = int(value)
                     except:
                         retValue = 0
-                else:
-                    retValue = int(value)
+                
+                        
             elif type == 'float':
                 if not isinstance(value, types.FloatType):
                     try:

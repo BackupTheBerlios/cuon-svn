@@ -269,3 +269,43 @@ gboolean
 on_eSearch_key_press_event             (GtkWidget       *widget,
                                         GdkEventKey     *event,
                                         gpointer         user_data);
+
+void
+on_eAddressCallerID_changed            (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_bChooseCaller_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bChooseContract_clicked             (GtkButton       *button,
+                                        gpointer         user_data);
+
+gboolean
+on_comboboxentry_entry1_key_press_event
+                                        (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+gboolean
+on_comboboxentry_entry2_key_press_event
+                                        (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+void
+on_bContact_clicked                    (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_edit1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_calendar1_day_selected_double_click (GtkCalendar     *calendar,
+                                        gpointer         user_data);
+
+void
+on_eDate_changed                       (GtkEditable     *editable,
+                                        gpointer         user_data);

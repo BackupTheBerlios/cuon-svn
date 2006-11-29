@@ -46,7 +46,8 @@ import datetime as DateTime
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import printAddress
-
+import cuon.Staff.staff
+import cuon.Staff.SingleStaff
 
 
 class addresswindow(chooseWindows):
@@ -56,7 +57,7 @@ class addresswindow(chooseWindows):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        
+        self.ModulNumber = self.MN['Address']
         self.singleAddress = SingleAddress.SingleAddress(allTables)
         self.singleAddressBank = SingleAddressBank.SingleAddressBank(allTables)
         self.singleMisc = SingleMisc.SingleMisc(allTables)
@@ -580,7 +581,7 @@ class addresswindow(chooseWindows):
         
         
         
-        
+    # Bank aussuchen
         
     def on_tree1_row_activated(self, event, data1, data2):
         print 'DoubleClick tree1'
@@ -596,6 +597,23 @@ class addresswindow(chooseWindows):
         eAdrField = self.getWidget('tvBank')
         liAdr = self.singleBank.getAddress(long(self.getWidget( 'eBankID').get_text()))
         self.setTextbuffer(eAdrField, liAdr)
+
+
+    # choose Caller ID 
+    
+    def on_bChooseCaller_clicked(self, event):
+        staff = cuon.Staff.staff.staffwindow(self.allTables)
+        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressCallerID'))
+        
+    def on_eAddressCallerID_changed(self, event):
+        print 'eCallerID changed'
+        try:
+            eAdrField = self.getWidget('eAddressCaller')
+            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressCallerID').get_text()))
+            eAdrField.set_text(cAdr)
+        except Exception, params:
+            print Exception, params
+            
 
         
     def saveData(self):

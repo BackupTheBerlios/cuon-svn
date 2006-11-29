@@ -1,6 +1,6 @@
 <entries_for_table>
   <table>
-    <table_name>addresses</table_name>
+    <table_name>contact</table_name>
     <entry>
       <name>eAddress</name>
       <type>textline</type>
@@ -178,7 +178,7 @@
         <name>eAddressRepID</name>
         <type>textline</type>
         <size>7</size>
-        <verify_type>int</verify_type>
+        <verify_type>string</verify_type>
         <create_sql>1</create_sql>
         <sql_field>rep_id</sql_field>
         <bg_color>0</bg_color>
@@ -189,7 +189,7 @@
         <name>eAddressContractID</name>
         <type>textline</type>
         <size>7</size>
-        <verify_type>int</verify_type>
+        <verify_type>string</verify_type>
         <create_sql>1</create_sql>
         <sql_field>salesman_id</sql_field>
         <bg_color>0</bg_color>

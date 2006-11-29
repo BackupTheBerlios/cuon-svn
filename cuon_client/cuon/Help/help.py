@@ -8,7 +8,14 @@ import gtk.glade
 import gobject
 import cuon.XMLRPC.xmlrpc
 from cuon.Windows.windows  import windows
-import gtkmozembed as moz
+
+try:
+    import gtkmozembed as moz
+except:
+    print ' No Module gtkmozembed found'
+    print ' search to python-gnome-extras '
+    print ' SuSE 10.1 has problems'
+    print ' No Online-Help avaible '
 
 
 class helpwindow(windows):

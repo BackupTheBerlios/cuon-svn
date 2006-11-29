@@ -246,7 +246,7 @@ create_DMSMainwindow (void)
   GtkWidget *eCategory;
   GtkWidget *hbox5;
   GtkWidget *label47;
-  GtkWidget *eDokumentDate;
+  GtkWidget *eDocumentDate;
   GtkWidget *vbox2;
   GtkWidget *bScan;
   GtkWidget *bOCR;
@@ -632,9 +632,9 @@ create_DMSMainwindow (void)
   gtk_widget_show (label47);
   gtk_box_pack_start (GTK_BOX (hbox5), label47, FALSE, FALSE, 0);
 
-  eDokumentDate = gtk_entry_new ();
-  gtk_widget_show (eDokumentDate);
-  gtk_box_pack_start (GTK_BOX (hbox5), eDokumentDate, TRUE, TRUE, 0);
+  eDocumentDate = gtk_entry_new ();
+  gtk_widget_show (eDocumentDate);
+  gtk_box_pack_start (GTK_BOX (hbox5), eDocumentDate, TRUE, TRUE, 0);
 
   vbox2 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox2);
@@ -874,7 +874,7 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eCategory, "eCategory");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox5, "hbox5");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label47, "label47");
-  GLADE_HOOKUP_OBJECT (DMSMainwindow, eDokumentDate, "eDokumentDate");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, eDocumentDate, "eDocumentDate");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, vbox2, "vbox2");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bScan, "bScan");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bOCR, "bOCR");
