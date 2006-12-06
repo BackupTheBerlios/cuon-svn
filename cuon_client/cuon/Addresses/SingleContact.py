@@ -39,6 +39,9 @@ class SingleContact(SingleData):
         self.out( len(self.table.Columns))
         #
         self.addressId = 0
+        self.partnerId = 0
+        
+        
         #self.statusfields = ['lastname', 'firstname']
 
             
@@ -47,13 +50,23 @@ class SingleContact(SingleData):
 ##        dicValues['addres_sid'] = [self.addressId, 'int']
 ##        return dicValues
 
-    def getAddress(self, id):
-        dicRecords = self.load(id)
-        address_id = dicRecords[0]['address_id']
+    def getAddress(self, address_id):
         print address_id
-        singleAddress = cuon.Address.SingleAddress.SingleAddress(self.allTables)
+        singleAddress = cuon.Addresses.SingleAddress.SingleAddress(self.allTables)
         
         liAddress = singleAddress.getAddress(address_id)
         print 'liAddress', liAddress
         
         return liAddress
+    def fillOtherEntries(self, oneRecord):
+        print 'fill tvAddress'
+        if oneRecord['address_id'] > 0:
+            liAddr = self.getAddress(oneRecord['address_id'])
+            print liAddr
+            self.setTextbuffer(self.getWidget('tvAddress'),liAddr)
+            
+    def readNonWidgetEntries(self, dicValues):
+        print 'readNonWidgetEntries(self) by SinglePartner'
+        dicValues['address_id'] = [self.addressId, 'int']
+        dicValues['partnerid'] = [self.partnerId, 'int']
+        return dicValues

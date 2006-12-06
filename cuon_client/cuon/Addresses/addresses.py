@@ -48,7 +48,7 @@ import cuon.DMS.dms
 import printAddress
 import cuon.Staff.staff
 import cuon.Staff.SingleStaff
-
+import contact
 
 class addresswindow(chooseWindows):
 
@@ -64,6 +64,8 @@ class addresswindow(chooseWindows):
         self.singlePartner = SinglePartner.SinglePartner(allTables)
         self.singleBank = cuon.Bank.SingleBank.SingleBank(allTables)
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
+        self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
+        
         self.allTables = allTables
        
         
@@ -473,6 +475,11 @@ class addresswindow(chooseWindows):
         if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+                
+    def on_bContact_clicked(self, event):
+        print 'Contact pressed'
+        con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,0)
+        
         
     def on_bLetter_clicked(self, event):
         print 'bLetter clicked'

@@ -160,6 +160,17 @@
                 <fg_color>0</fg_color>
 
       </entry>
+        <entry>
+	<name>ePartnerHandy</name>
+	<type>textline</type>
+               <size>120</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>phone_handy</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
   <entry>
 	<name>ePartnerFaxPrivate</name>
 	<type>textline</type>
@@ -193,7 +204,17 @@
                 <fg_color>0</fg_color>
 
       </entry>
+ <entry>
+	<name>ePartnerLetterAddress</name>
+	<type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
 
+      </entry>
     </table>
 
   </entries_for_table>

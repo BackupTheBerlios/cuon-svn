@@ -1,200 +1,110 @@
 <entries_for_table>
   <table>
     <table_name>contact</table_name>
-    <entry>
-      <name>eAddress</name>
+ 
+   <entry>
+      <name>eDate</name>
       <type>textline</type>
-      <size>30</size>
+      <size>10</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>address</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      <next_widget>eLastName</next_widget>
-    </entry> 
-    
-    <entry>
-      <name>eLastName</name>
-      <type>textline</type>
-      <size>50</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>lastname</sql_field>
+      <sql_field>schedul_date</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-      <next_widget>eLastName2</next_widget>
     </entry>
-    
-    <entry>
-      <name>eLastName2</name>
+<entry>
+      <name>cbTime</name>
       <type>textline</type>
-      <size>50</size>
-      <verify_type>string</verify_type>
+      <size>12</size>
+      <verify_type>int</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>lastname2</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      <next_widget>eFirstName</next_widget>
-</entry>
-    <entry>
-      <name>eFirstName</name>
-      <type>textline</type>
-      <size>50</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>firstname</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      <next_widget>eStreet</next_widget>
-      </entry>
-
-
-    <entry>
-      <name>eStreet</name>
-      <type>textline</type>
-      <size>50</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>street</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      </entry>
-    <entry>
-	<name>eCountry</name>
-	<type>textline</type>
-               <size>6</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>country</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-  <entry>
-	<name>eState</name>
-	<type>textline</type>
-               <size>6</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>state</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-
-  <entry>
-	<name>eZip</name>
-	<type>textline</type>
-               <size>10</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>zip</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-  <entry>
-      <name>eCity</name>
-      <type>textline</type>
-      <size>50</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>city</sql_field>
+      <sql_field>schedul_time_begin</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-
-      </entry>
- <entry>
-	<name>ePhone</name>
-	<type>textline</type>
-               <size>50</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>phone</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
- <entry>
-	<name>eEmail</name>
-	<type>textline</type>
-               <size>50</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>email</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-
- <entry>
-	<name>eFax</name>
-	<type>textline</type>
-               <size>50</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>fax</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-    <entry>
-        <name>eZipForPostbox</name>
-        <type>textline</type>
-        <size>7</size>
-        <verify_type>string</verify_type>
-        <create_sql>1</create_sql>
-        <sql_field>zip_for_postbox</sql_field>
-        <bg_color>0</bg_color>
-        <fg_color>0</fg_color>
     </entry>
-
-  <entry>
-	<name>ePostbox</name>
-	<type>textline</type>
-               <size>20</size>
-                <verify_type>string</verify_type>
-                <create_sql>1</create_sql>
-                <sql_field>postbox</sql_field>
-                <bg_color>0</bg_color>
-                <fg_color>0</fg_color>
-
-      </entry>
-
+   
+   
+   <entry>
+      <name>cbePriority</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>priority</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
     <entry>
-        <name>eAddressCallerID</name>
-        <type>textline</type>
-        <size>7</size>
-        <verify_type>int</verify_type>
-        <create_sql>1</create_sql>
-        <sql_field>caller_id</sql_field>
-        <bg_color>0</bg_color>
-        <fg_color>0</fg_color>
+      <name>cbeStatus</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>process_status</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eAlarmDay</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>alarm_days</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>eAlarmHour</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>alarm_hours</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>eAlarmMinutes</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>alarm_minutes</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>tvNotes</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   <entry>
+      <name>cbeStatus</name>
+      <type>textline</type>
+      <size>3</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>process_status</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
     </entry>
     
-    <entry>
-        <name>eAddressRepID</name>
-        <type>textline</type>
-        <size>7</size>
-        <verify_type>string</verify_type>
-        <create_sql>1</create_sql>
-        <sql_field>rep_id</sql_field>
-        <bg_color>0</bg_color>
-        <fg_color>0</fg_color>
-    </entry>
-    
-    <entry>
-        <name>eAddressContractID</name>
-        <type>textline</type>
-        <size>7</size>
-        <verify_type>string</verify_type>
-        <create_sql>1</create_sql>
-        <sql_field>salesman_id</sql_field>
-        <bg_color>0</bg_color>
-        <fg_color>0</fg_color>
-    </entry>    
-    </table>
+   
+  </table>
 
-  </entries_for_table>
+
+</entries_for_table>

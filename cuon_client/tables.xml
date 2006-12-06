@@ -658,6 +658,26 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>letter_address</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>120</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>phone_handy</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>35</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: address-->
   <table>
@@ -1005,6 +1025,36 @@
     </field>
 <field>
       <name>alarm_time</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>alarm_days</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>alarm_hours</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>alarm_minutes</name>
       <type>int</type>
       <pkey>0</pkey>
       <unique>0</unique>

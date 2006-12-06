@@ -37,34 +37,40 @@ import datetime as DateTime
 import SingleContact
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
+import cuon.Addresses.SinglePartner
 
 class contactwindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, address_nr=0, partner_nr=0):
 
         chooseWindows.__init__(self)
        
         self.singleContact = SingleContact.SingleContact(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
+        self.singleContact.addressId = address_nr
+        
+        self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
+        
+        self.singleContact.partnerId = partner_nr
     
         self.loadGlade('contact.xml')
         self.win1 = self.getWidget('ContactMainwindow')
         #self.setStatusBar()
         self.allTables = allTables
 
-        self.EntriesContact = 'bank.xml'
+        self.EntriesContact = 'contact.xml'
         
         self.loadEntries(self.EntriesContact)
         
         self.singleContact.setEntries(self.getDataEntries(self.EntriesContact) )
         self.singleContact.setGladeXml(self.xml)
-        self.singleContact.setTreeFields( ['address.lastname as address_name', \
-        'address.city as city','bcn'] )
-        self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleContact.setTreeOrder('bcn')
-        self.singleContact.setListHeader([_('Lastname'), _('City'),_('BCN')])
+        self.singleContact.setTreeFields( ['schedul_date','schedul_time_begin', \
+        'address.lastname as lastname'] )
+        self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleContact.setTreeOrder('schedul_date')
+        self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
         self.singleContact.sWhere = 'where address.id = address_id '
   
@@ -78,26 +84,26 @@ class contactwindow(chooseWindows):
         self.initMenuItems()
 
         # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','bank11')
+        self.addEnabledMenuItems('tabs','contact1')
   
 
                
         # seperate Menus
-        self.addEnabledMenuItems('address','bank1')
+        self.addEnabledMenuItems('contact','contact1')
           
 
         # enabledMenues for Address
-        self.addEnabledMenuItems('editAddress','mi_new1')
-        self.addEnabledMenuItems('editAddress','mi_clear1')
-        self.addEnabledMenuItems('editAddress','mi_print1')
-        self.addEnabledMenuItems('editAddress','mi_edit1')
+        self.addEnabledMenuItems('editContact','new1')
+        self.addEnabledMenuItems('editContact','clear1')
+        self.addEnabledMenuItems('editContact','print1')
+        self.addEnabledMenuItems('editContact','edit1')
 
 
     
         
 
         # tabs from notebook
-        self.tabClients = 0
+        self.tabContact = 0
     
         
         
@@ -126,13 +132,14 @@ class contactwindow(chooseWindows):
     
   
     def on_save1_activate(self, event):
-        self.out( "save addresses v2")
+        print 'save contact'
+        print 'Address-ID = ', self.singleContact.addressId 
         self.singleContact.save()
         self.setEntriesEditable(self.EntriesContact, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
-        self.out( "new addresses v2")
+        print 'new contact'
         self.singleContact.newRecord()
         self.setEntriesEditable(self.EntriesContact, True)
 
@@ -184,22 +191,10 @@ class contactwindow(chooseWindows):
     def refreshTree(self):
         self.singleContact.disconnectTree()
         
-        if self.tabOption == self.tabClients:
+        if self.tabOption == self.tabContact:
             self.singleContact.connectTree()
             self.singleContact.refreshTree()
-        elif self.tabOption == self.tabMisc:
-            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleContact.ID)`
-            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
-
-        elif self.tabOption == self.tabPartner:
-            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleContact.ID)`
-            self.singlePartner.connectTree()
-            self.singlePartner.refreshTree()
-        elif self.tabOption == self.tabSchedul:
-            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)`
-            self.singleSchedul.connectTree()
-            self.singleSchedul.refreshTree()
-            
+        
      
 
 
@@ -207,13 +202,13 @@ class contactwindow(chooseWindows):
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
-        if self.tabOption == self.tabClients:
+        if self.tabOption == self.tabContact:
             #Address
             self.disableMenuItem('tabs')
-            self.enableMenuItem('address')
+            self.enableMenuItem('contact')
 
             self.actualEntries = self.singleContact.getEntries()
-            self.editAction = 'editAddress'
+            self.editAction = 'editContact'
             #self.setStatusbarText([''])
           
             self.setTreeVisible(True)
@@ -222,15 +217,7 @@ class contactwindow(chooseWindows):
             self.out( 'Seite 0')
 
 
-        elif self.tabOption == self.tabContact:
-            self.out( 'Seite 2')
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('bank')
-           
-            self.editAction = 'editContact'
-            self.setTreeVisible(False)
-            #self.setStatusbarText([self.singleContact.sStatus])
-
+        
 
         elif self.tabOption == self.tabMisc:
             self.out( 'Seite 3')
@@ -242,28 +229,6 @@ class contactwindow(chooseWindows):
             #self.setStatusbarText([self.singleContact.sStatus])
 
 
-
-
-        elif self.tabOption == self.tabPartner:
-            #Partner
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('partner')
-            
-            self.out( 'Seite 1')
-            self.editAction = 'editPartner'
-            self.setTreeVisible(True)
-            #self.setStatusbarText([self.singleContact.sStatus])
-
-            
-        elif self.tabOption == self.tabSchedul:
-            #Scheduling
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('schedul')
-            
-            self.out( 'Seite 4')
-            self.editAction = 'editSchedul'
-            self.setTreeVisible(True)
-            self.setStatusbarText([self.singlePartner.sStatus])
 
         # refresh the Tree
         self.refreshTree()

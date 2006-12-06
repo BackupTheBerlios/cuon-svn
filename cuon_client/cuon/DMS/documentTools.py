@@ -222,6 +222,15 @@ class documentTools:
     def replaceValues(self, dicVars, s):
         for key in dicVars.keys():
             try:
+                if isinstance(dicVars[key], types.StringType) :
+                    dicVars[key]  = dicVars[key].replace('&','&amp;' )
+                    print key, dicVars[key]
+                    print '\n'
+                    
+            except:
+                pass
+                    
+            try:
                 if dicVars[key] == None or dicVars[key] == 'NONE':
                     dicVars[key] = ''
                 if isinstance(dicVars[key], types.StringType) or dicVars[key] == '' :
