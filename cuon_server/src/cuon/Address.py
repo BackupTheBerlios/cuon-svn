@@ -49,7 +49,7 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql = sSql + "address.lastname2 as address_lastname2 "
         sSql = sSql + " from  address, contact "
         sW = " where address.id = contact.address_id and "
-        sW = sW + " process_status != 2 and contacter_id = " + self.getStaffID(dicUser)  
+        sW = sW + " process_status != 2 and contacter_id = " + self.getStaffID(dicUser) + " "  
         
         sSql = sSql + self.getWhere(sW, dicUser, Prefix='contact.')
         

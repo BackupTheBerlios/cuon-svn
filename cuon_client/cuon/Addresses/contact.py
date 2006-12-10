@@ -73,6 +73,8 @@ class contactwindow(chooseWindows):
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
         self.singleContact.sWhere = 'where address.id = address_id and process_status != 2 '
+        if address_nr > 0:
+            self.singleContact.sWhere += 'and address_id = ' + `address_nr`
   
   
 

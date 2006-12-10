@@ -879,6 +879,6 @@ class SingleData(gladeXml, logs):
         pass
 
     def getStaffID(self, dicUser):
-        return "(select id from staff where staff.cuon_username = " +  dicUser['Name'] + ") "
+        return "(select id from staff where staff.cuon_username = '" +  dicUser['Name'] + "') "
         
 
