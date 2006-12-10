@@ -64,7 +64,7 @@ class User(defaultValues):
         self.prefApps = {}
         self.serverSqlDateFormat = '%Y-%m-%d'
         self.client = 0
-        
+        self.contact_id = 0
         
         self.prefPath['tmp'] =  os.path.normpath(self.td.cuon_path) + '/'  
 

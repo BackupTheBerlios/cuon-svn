@@ -107,7 +107,8 @@ class windows(rawWindow, MyXML, messages):
     def closeWindow(self):
         self.saveDataQuestion()
         self.win1.hide()
-
+    def openWindow(self):
+        self.win1.show()
     def checkClient(self):
         if not self.dicUser.has_key('client') or not self.dicUser['client'] > 0:
             self.dicUser = {}

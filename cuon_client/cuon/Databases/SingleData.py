@@ -878,5 +878,7 @@ class SingleData(gladeXml, logs):
     def setOtherEmptyEntries(self):
         pass
 
+    def getStaffID(self, dicUser):
+        return "(select id from staff where staff.cuon_username = " +  dicUser['Name'] + ") "
         
 

@@ -158,13 +158,18 @@ class basics(xmlrpc.XMLRPC):
             
             
     
-    def getConfigOption(self, section, option):
+    def getConfigOption(self, section, option, configParser = None):
         value = None
-        if self.cpServer.has_option(section,option):
-            value = self.cpServer.get(section, option)
+        if configParser:
+            cps = configParser
+        else:
+           cps = self.cpServer
+           
+        if cps.has_option(section,option):
+            value = cps.get(section, option)
             print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value
-        
+    
     def getParser(self, sFile):
         cpParser = ConfigParser.ConfigParser()
         f = open(sFile)
@@ -253,7 +258,8 @@ class basics(xmlrpc.XMLRPC):
             file.close()
             #print sLogEntry
         
-        
+    def getStaffID(self, dicUser):
+        return "(select id from staff where staff.cuon_username = " +  dicUser['Name'] + ") "
               
     def getTimeString(self, time_id):
         dicTime = []

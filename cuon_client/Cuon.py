@@ -317,6 +317,7 @@ pygtk.require('2.0')
 
 import gtk
 import gtk.glade
+import gobject
 
   
 
@@ -324,6 +325,7 @@ import gtk.glade
 import cuon.Addresses.addresses
 import cuon.Articles.articles
 import cuon.Bank.bank
+import cuon.Addresses.contact
 try:
     import cuon.Clients.clients
 except Exception, params:
@@ -349,7 +351,7 @@ import cPickle
 import cuon.Databases.dumps
 from cuon.TypeDefs.typedefs_server import typedefs_server
 import cuon.Databases.cyr_load_table
-import threading
+#import threading
 import cuon.VTK.mainLogo
 import cuon.VTK.test
 import cuon.WebShop.webshop
@@ -387,11 +389,14 @@ class MainWindow(windows):
 
    
     def __init__(self, sT):
+        
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 18, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 20, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
+        self.t0 = None
+        self.t1 = None
         self.allTables = {}
         self.sDebug = 'NO'
         self.ModulNumber = self.MN['Mainwindow']
@@ -446,7 +451,9 @@ class MainWindow(windows):
             self.getWidget('eServer').set_text(self.td.server)
             #choose the client 
             self.on_clients1_activate(None)
+            print 'Hallo - client'
             self.checkMenus()
+            
 
     def checkMenus(self):
         liModullist = self.rpc.callRP('User.getModulList', self.oUser.getSqlDicUser())
@@ -599,7 +606,10 @@ class MainWindow(windows):
                 self.generateLocalSqlObjects()
             #    self.stopProgressBar()
             #print self.oUser.getDicUser()
-        
+            # now start scheduling
+            print 'Client = ', self.oUser.getSqlDicUser()['client']
+            
+    
         
     def generateSqlObjects(self):
         #self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables')
@@ -791,8 +801,81 @@ class MainWindow(windows):
         
         self.infoMsg('Update complete. Please start C.U.O.N. new  ')
         
+    def startT0(self):
+        try:
+            print 'First T0'
+            self.openDB()
+            oUser = self.loadObject('User')
+            self.closeDB()
+            if oUser:
+                print 'T0 Client = ', oUser.client
+                if oUser.client > 0:
+                    self.startTiming()
+        except Exception, params:
+            print Exception, params
+        return True
         
-           
+    def startTiming(self):
+        'print start Timer'
+        if self.t0:
+                gobject.source_remove(self.t0)
+          
+        if self.t1:
+                gobject.source_remove(self.t1)
+                
+        self.t1 = gobject.timeout_add(120000, self.startChecking)
+    
+    def startChecking(self):
+        #gtk.gdk.threads_enter()
+        try:
+            print 'start scheduling'
+            print self.Version
+            self.openDB()
+            oUser = self.loadObject('User')
+            liSchedul = self.loadObject('Scheduling')
+
+            self.closeDB()
+            #print `self.oUser.getDicUser()`
+            print 'Client = ', oUser.getDicUser()['client']
+            liContacts = self.rpc.callRP('Address.getAllActiveContacts', oUser.getSqlDicUser())
+
+            print liContacts
+            try:
+                if not liSchedul:
+                    liSchedul = []
+                for contacts in liContacts:
+                    ok = False
+                    for oldSchedul in liSchedul:
+                        if oldSchedul == contacts['id']:
+                            ok = True
+                    if not ok:
+                        cuon.Addresses.contact.contactwindow(self.allTables, contacts['address_id'], contacts['partner_id'])
+                        liSchedul.append(contacts['id'])
+                        
+                    
+                    
+                
+                
+            except Exception, params:
+                print Exception, params
+            self.openDB()
+            
+            self.saveObject('Scheduling', liSchedul)
+
+            self.closeDB()
+            #cuon.Addresses.contact.contactwindow(self.allTables)
+        finally:
+            print 'Ende'
+        return True
+        
+            
+            #gtk.gdk.threads_leave() 
+        #self.startTimer(10)
+            
+        
+    #def startTimer(self, seconds):
+    #    self.t1 = threading.Timer(seconds, self.startChecking)
+    #    self.t1.start()    
     def startMain(self, sStartType, sDebug,sLocal='NO'):
         #ML = cuon.VTK.mainLogo.mainLogo()
         #ML.startLogo()
@@ -894,12 +977,25 @@ class MainWindow(windows):
         self.enableMenuItem('user')
 
         self.setTitle('window1',self.sTitle)
-        #self.updateVersion()
-
+        self.openDB()
+        oUser = self.loadObject('User')
+        oUser.client = 0
+        self.saveObject('User',oUser)
+        self.closeDB()
+        
+        
+        self.t0 = gobject.timeout_add(2000, self.startT0)
+        
 
     def gtk_main_quit(self):
+        if self.t1:
+            
+            gobject.source_remove(self.t1)
+            
+            
         gtk.main_quit()
                 
+#gtk.gdk.threads_init()
 
 sStartType = 'client'
 sDebug = 'NO'
@@ -965,7 +1061,10 @@ m.startMain(sStartType, sDebug,sLocal)
 ##    psyco.full()
 ##except ImportError:
 ##    pass
-
+#gtk.gdk.threads_enter()
 gtk.main()
+#gtk.gdk.threads_leave()
+
+#gtk.main()
 
 

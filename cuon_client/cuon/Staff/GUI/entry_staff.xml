@@ -193,6 +193,29 @@
                 <fg_color>0</fg_color>
 
       </entry>
+<entry>
+	<name>eStaffNumber</name>
+	<type>textline</type>
+               <size>55</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>staff_number</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+      <entry>
+	<name>eCuonUsername</name>
+	<type>textline</type>
+               <size>10</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>cuon_username</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
 
     </table>
 

@@ -1081,6 +1081,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>contacter_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     
 </table>
   <!--table: articles-->
@@ -3251,6 +3261,27 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>staff_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>55</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>cuon_username</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>55</size>
+      <default />
+      <comment />
+    </field>
+    
   </table>
   <!--table: staff_fee-->
   <table>

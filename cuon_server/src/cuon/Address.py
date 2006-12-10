@@ -38,6 +38,26 @@ class Address(xmlrpc.XMLRPC, basics):
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
+    def xmlrpc_getAllActiveContacts(self, dicUser):
+        #caller_id = self.getConfigOption('caller_id',dicUser['name'],self.getParser(self.CUON_FS +'/user.cfg'))
+        #print caller_id
+        sSql = "select contact.schedul_date as date, contact.id as id, "
+        
+        sSql = sSql + "contact.schedul_time_begin as time, "
+        sSql = sSql + "address.city, contact.partnerid as partner_id, contact.address_id as address_id, "
+        sSql = sSql + " (select lastname as partner_lastname from partner where contact.partnerid = id), address.lastname as address_lastname, "
+        sSql = sSql + "address.lastname2 as address_lastname2 "
+        sSql = sSql + " from  address, contact "
+        sW = " where address.id = contact.address_id and "
+        sW = sW + " process_status != 2 and contacter_id = " + self.getStaffID(dicUser)  
+        
+        sSql = sSql + self.getWhere(sW, dicUser, Prefix='contact.')
+        
+        sSql = sSql + " order by contact.schedul_date, contact.schedul_time_begin " 
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
+        
     def xmlrpc_getPartnerAddress(self, id, dicUser):
         sSql = 'select address, lastname, lastname2,firstname, street, zip, city, state, country, phone from partner where id = ' + `id`
         

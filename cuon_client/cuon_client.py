@@ -69,7 +69,7 @@ os.system('cp -R Client/locale ' +  cuon_home)
 
 f = open(cuon_bin + '/startcuon','w')
 s = '#!/bin/sh \n'
-s += 'python Cuon.py ' + 'NO' + ' client NO ' + cuon_home + '/locale' 
+s += 'python Cuon.py ' + 'NO' + ' client NO ' +  '../locale' 
 
 f.write(s)
 f.close()

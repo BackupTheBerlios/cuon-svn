@@ -69,4 +69,5 @@ class SingleContact(SingleData):
         print 'readNonWidgetEntries(self) by SinglePartner'
         dicValues['address_id'] = [self.addressId, 'int']
         dicValues['partnerid'] = [self.partnerId, 'int']
+        dicValues['contacter_id'] = self.getStaffID(self.dicUser)
         return dicValues

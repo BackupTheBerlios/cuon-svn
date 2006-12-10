@@ -72,7 +72,7 @@ class contactwindow(chooseWindows):
         self.singleContact.setTreeOrder('schedul_date')
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
-        self.singleContact.sWhere = 'where address.id = address_id '
+        self.singleContact.sWhere = 'where address.id = address_id and process_status != 2 '
   
   
 
@@ -188,6 +188,23 @@ class contactwindow(chooseWindows):
         self.out(self.singleContact.sWhere, self.ERROR)
         self.refreshTree()
 
+
+    # sleeping 
+    def on_bSleeping_clicked(self, event):
+        print 'sleeps'
+        try:
+            sTime = int(self.getWidget('eSleepingTime').get_text()) 
+            if sTime > 0:
+                sTime = sTime * 60000
+            else:
+                stime = 3000000
+                
+            gobject.timeout_add(sTime, self.openWindow)
+            self.closeWindow()
+        except:
+            pass
+            
+        
     def refreshTree(self):
         self.singleContact.disconnectTree()
         
