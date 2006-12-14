@@ -1,4 +1,9 @@
-import gtkhtml2
+try:
+    import gtkhtml2
+except:
+    print 'gtkhtml not found'
+    
+    
 import sys
 from types import *
 import pygtk

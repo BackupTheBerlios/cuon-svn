@@ -727,7 +727,8 @@ class SingleData(gladeXml, logs):
                         oDate =  time.strptime(oValue, self.sqlDicUser['DateformatString'])
                         oValue = time.strftime("%Y/%m/%d",oDate)
                         self.printOut('Date by Verify 2:', oValue)
-
+                print i, dicValues[i]
+                print oValue, sVerify
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify
 
@@ -878,7 +879,17 @@ class SingleData(gladeXml, logs):
     def setOtherEmptyEntries(self):
         pass
 
-    def getStaffID(self, dicUser):
-        return "(select id from staff where staff.cuon_username = '" +  dicUser['Name'] + "') "
+    def getStaffID(self, dicUser, setBraces = True):
+        sSql = ''
+        if setBraces:
+            sSql += "("
+            
+        sSql +=  "select id from staff where staff.cuon_username = '" +  dicUser['Name']
+        if setBraces:
+            sSql += "') "
+        else:
+            sSql += "' "
+            
         
+        return sSql 
 

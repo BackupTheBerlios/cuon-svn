@@ -72,7 +72,7 @@ class contactwindow(chooseWindows):
         self.singleContact.setTreeOrder('schedul_date')
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
-        self.singleContact.sWhere = 'where address.id = address_id and process_status != 2 '
+        self.singleContact.sWhere = 'where address.id = address_id and process_status != 1 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
         if address_nr > 0:
             self.singleContact.sWhere += 'and address_id = ' + `address_nr`
   
@@ -196,16 +196,55 @@ class contactwindow(chooseWindows):
         print 'sleeps'
         try:
             sTime = int(self.getWidget('eSleepingTime').get_text()) 
-            if sTime > 0:
-                sTime = sTime * 60000
-            else:
-                stime = 3000000
-                
-            gobject.timeout_add(sTime, self.openWindow)
-            self.closeWindow()
         except:
-            pass
+            sTime = 0
             
+        if sTime > 0:
+            sTime = sTime * 60000
+        else:
+            stime = 300000
+        print 'sTime by sleep ', sTime    
+        gobject.timeout_add(sTime, self.openWindow)
+        self.closeWindow()
+        
+    def on_calendar1_day_selected_double_click(self, event):
+        self.setDateToEntry(event,'eDate')
+        
+        
+    def on_rbDay_clicked(self, event):
+        print event
+        print event.get_name()
+        sDay = event.get_name()
+        nDay = '0'
+        try:
+            nDay = sDay[len(sDay)-1]
+        except:
+            nDay = '0'
+        self.getWidget('eAlarmDay').set_text(nDay)
+        
+        
+    def on_rbHour_clicked(self, event):
+        print event
+        print event.get_name()
+        sHour = event.get_name()
+        nHour = '0'
+        try:
+            nHour = sHour[len(sHour)-1]
+        except:
+            nHour = '0'
+        self.getWidget('eAlarmHour').set_text(nHour)
+        
+        
+    def on_rbMinute_clicked(self, event):
+        print event
+        print event.get_name()
+        sMinute = event.get_name()
+        nMinute = '00'
+        try:
+            nMinute = sMinute[len(sMinute)-2:]
+        except:
+            nMinute = '00'
+        self.getWidget('eAlarmMinutes').set_text(nMinute)
         
     def refreshTree(self):
         self.singleContact.disconnectTree()

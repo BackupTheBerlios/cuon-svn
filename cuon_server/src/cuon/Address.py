@@ -43,19 +43,67 @@ class Address(xmlrpc.XMLRPC, basics):
         #print caller_id
         sSql = "select contact.schedul_date as date, contact.id as id, "
         
-        sSql = sSql + "contact.schedul_time_begin as time, "
-        sSql = sSql + "address.city, contact.partnerid as partner_id, contact.address_id as address_id, "
-        sSql = sSql + " (select lastname as partner_lastname from partner where contact.partnerid = id), address.lastname as address_lastname, "
-        sSql = sSql + "address.lastname2 as address_lastname2 "
-        sSql = sSql + " from  address, contact "
+        sSql +=  "contact.schedul_time_begin as time, "
+        sSql += "alarm_days, alarm_hours, alarm_minutes, "
+        sSql +=  "address.city, contact.partnerid as partner_id, contact.address_id as address_id, "
+        sSql +=  " (select lastname as partner_lastname from partner where contact.partnerid = id), address.lastname as address_lastname, "
+        sSql +=  "address.lastname2 as address_lastname2 "
+        sSql +=  " from  address, contact "
         sW = " where address.id = contact.address_id and "
-        sW = sW + " process_status != 2 and contacter_id = " + self.getStaffID(dicUser) + " "  
+        sW +=  " process_status != 1 and contacter_id = " + self.getStaffID(dicUser) + " "  
         
         sSql = sSql + self.getWhere(sW, dicUser, Prefix='contact.')
         
         sSql = sSql + " order by contact.schedul_date, contact.schedul_time_begin " 
         
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        liResult2 = []
+        if liResult != 'NONE':
+            for dicResult in liResult:
+                try:
+                    print 'Len1 = ', len(liResult)
+                    Hour,Minute = divmod(dicResult['time'],4)
+                    Minute = Minute * 15
+                    sDate = dicResult['date'] + ' ' + `Hour` + ':' + `Minute` +':00'
+                    print 'Date =',  sDate
+                    if sDate.find('.') > 0:
+                        sFormat = '%d.%m.%Y %H:%M:%S'
+                    else:
+                        sFormat = '%Y/%m/%d %H:%M:%S'
+                    wakeDate = time.strptime(sDate,sFormat)
+                    print wakeDate
+
+                    nD1 = datetime(wakeDate[0], wakeDate[1],wakeDate[2],wakeDate[3],wakeDate[4], wakeDate[5])
+                    print 'nD1', nD1
+                    currentDate = time.localtime()
+                    print currentDate
+                    nD2 = datetime(currentDate[0], currentDate[1],currentDate[2],currentDate[3],currentDate[4], currentDate[5])
+                    print nD2
+                    nD3 = nD1 -nD2
+                    print nD3
+                    print '---------------------------------------------------'
+                    print nD3.days
+                    print nD3.seconds
+                    ok = True
+                    if dicResult['alarm_days'] > nD3.days : 
+                        ok = False
+                    elif (dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60) < nD3.seconds :
+                       ok = False
+                    if  ok:
+                        print 'copy entry to  list'
+                        liResult2.append(dicResult)
+                        print 'Len2 = ', len(liResult2)
+                        
+                    
+                except Exception, params:
+                    print Exception, params
+        
+        
+        print liResult2
+        print 'Len3 = ', len(liResult2)
+
+        return liResult2
+        
         
         
     def xmlrpc_getPartnerAddress(self, id, dicUser):

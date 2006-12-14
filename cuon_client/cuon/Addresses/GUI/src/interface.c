@@ -135,10 +135,10 @@ create_ContactMainwindow (void)
   GtkWidget *rbHour6;
   GtkWidget *rbHour7;
   GtkWidget *vbox7;
-  GtkWidget *rbMinute0;
-  GSList *rbMinute0_group = NULL;
-  GtkWidget *rbMinute2;
-  GtkWidget *rbMinute5;
+  GtkWidget *rbMinute00;
+  GSList *rbMinute00_group = NULL;
+  GtkWidget *rbMinute02;
+  GtkWidget *rbMinute05;
   GtkWidget *rbMinute10;
   GtkWidget *rbMinute15;
   GtkWidget *rbMinute20;
@@ -160,6 +160,7 @@ create_ContactMainwindow (void)
   GtkWidget *label24;
   GtkWidget *scrolledwindow3;
   GtkWidget *tvAddress;
+  GtkWidget *vbox8;
   GtkWidget *hbox4;
   GtkWidget *bCloseWindow;
   GtkWidget *bSleeping;
@@ -572,65 +573,65 @@ create_ContactMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  rbMinute0 = gtk_radio_button_new_with_mnemonic (NULL, _("0 Minutes"));
-  gtk_widget_show (rbMinute0);
-  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute0, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute0), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute0));
+  rbMinute00 = gtk_radio_button_new_with_mnemonic (NULL, _("0 Minutes"));
+  gtk_widget_show (rbMinute00);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute00, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute00), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute00));
 
-  rbMinute2 = gtk_radio_button_new_with_mnemonic (NULL, _("2 Minutes"));
-  gtk_widget_show (rbMinute2);
-  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute2, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute2), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute2));
+  rbMinute02 = gtk_radio_button_new_with_mnemonic (NULL, _("2 Minutes"));
+  gtk_widget_show (rbMinute02);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute02, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute02), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute02));
 
-  rbMinute5 = gtk_radio_button_new_with_mnemonic (NULL, _("5 Minutes"));
-  gtk_widget_show (rbMinute5);
-  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute5, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute5), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute5));
+  rbMinute05 = gtk_radio_button_new_with_mnemonic (NULL, _("5 Minutes"));
+  gtk_widget_show (rbMinute05);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute05, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute05), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute05));
 
   rbMinute10 = gtk_radio_button_new_with_mnemonic (NULL, _("10 Minutes"));
   gtk_widget_show (rbMinute10);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute10, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute10), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute10));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute10), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute10));
 
   rbMinute15 = gtk_radio_button_new_with_mnemonic (NULL, _("15 Minutes"));
   gtk_widget_show (rbMinute15);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute15, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute15), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute15));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute15), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute15));
 
   rbMinute20 = gtk_radio_button_new_with_mnemonic (NULL, _("20 Minutes"));
   gtk_widget_show (rbMinute20);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute20, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute20), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute20));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute20), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute20));
 
   rbMinute30 = gtk_radio_button_new_with_mnemonic (NULL, _("30 Minutes"));
   gtk_widget_show (rbMinute30);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute30, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute30), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute30));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute30), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute30));
 
   rbMinute40 = gtk_radio_button_new_with_mnemonic (NULL, _("40 Minutes"));
   gtk_widget_show (rbMinute40);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute40, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute40), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute40));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute40), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute40));
 
   rbMinute45 = gtk_radio_button_new_with_mnemonic (NULL, _("45 Minutes"));
   gtk_widget_show (rbMinute45);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute45, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute45), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute45));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute45), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute45));
 
   rbMinute50 = gtk_radio_button_new_with_mnemonic (NULL, _("50 Minutes"));
   gtk_widget_show (rbMinute50);
   gtk_box_pack_start (GTK_BOX (vbox7), rbMinute50, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute50), rbMinute0_group);
-  rbMinute0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute50));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute50), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute50));
 
   hbox3 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox3);
@@ -698,10 +699,15 @@ create_ContactMainwindow (void)
   tvAddress = gtk_text_view_new ();
   gtk_widget_show (tvAddress);
   gtk_container_add (GTK_CONTAINER (scrolledwindow3), tvAddress);
+  gtk_widget_set_size_request (tvAddress, 254, 68);
 
-  hbox4 = gtk_hbox_new (TRUE, 0);
+  vbox8 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox8);
+  gtk_box_pack_start (GTK_BOX (hbox2), vbox8, TRUE, TRUE, 0);
+
+  hbox4 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox4);
-  gtk_box_pack_start (GTK_BOX (hbox2), hbox4, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox8), hbox4, TRUE, TRUE, 0);
 
   bCloseWindow = gtk_button_new_with_mnemonic (_("Close"));
   gtk_widget_show (bCloseWindow);
@@ -744,6 +750,84 @@ create_ContactMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) eDate, "changed",
                     G_CALLBACK (on_eDate_changed),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay0, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay1, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay2, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay3, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay4, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay5, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay6, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbDay7, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour0, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour1, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour2, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour3, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour4, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHours5, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour6, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbHour7, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute00, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute02, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute05, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute10, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute15, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute20, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute30, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute40, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute45, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute50, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
   g_signal_connect ((gpointer) bCloseWindow, "clicked",
                     G_CALLBACK (on_bCloseWindow_clicked),
@@ -817,9 +901,9 @@ create_ContactMainwindow (void)
   GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour6, "rbHour6");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour7, "rbHour7");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox7, "vbox7");
-  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute0, "rbMinute0");
-  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute2, "rbMinute2");
-  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute5, "rbMinute5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute00, "rbMinute00");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute02, "rbMinute02");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute05, "rbMinute05");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute10, "rbMinute10");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute15, "rbMinute15");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute20, "rbMinute20");
@@ -841,6 +925,7 @@ create_ContactMainwindow (void)
   GLADE_HOOKUP_OBJECT (ContactMainwindow, label24, "label24");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, scrolledwindow3, "scrolledwindow3");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox8, "vbox8");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox4, "hbox4");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, bCloseWindow, "bCloseWindow");
   GLADE_HOOKUP_OBJECT (ContactMainwindow, bSleeping, "bSleeping");

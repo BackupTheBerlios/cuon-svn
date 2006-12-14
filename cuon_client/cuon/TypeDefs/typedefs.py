@@ -79,7 +79,7 @@ class typedefs:
         try:
             
             # start read /etc/cuon/cuon.ini
-            self.getConfigParser(os.environ['HOME'] + '/.cuon.ini')
+            self.getConfigParser(os.path.normpath(os.environ['HOME'] + '/.cuon.ini'))
             if self.cpParser:
                 value = self.getConfigOption('PATH','CUON_PATH')
                 if value:
@@ -99,20 +99,45 @@ class typedefs:
                  
         
         # If noc config-Options found, fallback to defaults   
-        if not self.cuon_path:    
-            self.cuon_path = os.environ['HOME'] +'/cuon'
+        try:
+            if not self.cuon_path:    
+                self.cuon_path = os.environ['HOME'] +'/cuon'
         
-        if not self.server:
-            self.server = 'http://localhost:7080'
+            if not self.server:
+                self.server = 'http://localhost:7080'
+                
         
 ##        if not self.homePath:
 ##            self.homePath = os.environ['HOME'] + '/cuon'
 ##            
             
-        #self.server = os.environ['CUON_SERVER']
-        #self.homePath = os.environ['CUON_HOME']        
-        if not self.help_server:
-            self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+            #self.server = os.environ['CUON_SERVER']
+            #self.homePath = os.environ['CUON_HOME']        
+            if not self.help_server:
+                self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+                
+        except:
+            print ' no environ found'
+            
+        try:
+            if not self.cuon_path: 
+                # normaly ini-file ist jaust found here
+                self.getConfigParser(os.path.normpath('../../.cuon.ini'))
+                if self.cpParser:
+                    value = self.getConfigOption('PATH','CUON_PATH')
+                    if value:
+                      self.cuon_path = value
+                      
+                    value = self.getConfigOption('SERVER','CUON_SERVER')
+                    if value:
+                      self.server = value
+                      
+                    value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+                    if value:
+                      self.help_server = value
+                  
+        except Exception, params:
+            print Exception, params
             
             
         try:

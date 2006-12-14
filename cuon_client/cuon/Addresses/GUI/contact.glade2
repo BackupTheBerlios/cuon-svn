@@ -823,6 +823,7 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -843,6 +844,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -863,6 +865,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -883,6 +886,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -903,6 +907,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -923,6 +928,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -943,6 +949,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -963,6 +970,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbDay0</property>
+			  <signal name="clicked" handler="on_rbDay_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -998,6 +1006,7 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1018,6 +1027,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1038,6 +1048,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1058,6 +1069,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1078,6 +1090,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1098,6 +1111,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1118,6 +1132,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1138,6 +1153,7 @@ ready</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
 			  <property name="group">rbHour0</property>
+			  <signal name="clicked" handler="on_rbHour_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1163,7 +1179,7 @@ ready</property>
 		      <property name="spacing">0</property>
 
 		      <child>
-			<widget class="GtkRadioButton" id="rbMinute0">
+			<widget class="GtkRadioButton" id="rbMinute00">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">0 Minutes</property>
@@ -1173,6 +1189,7 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1182,7 +1199,7 @@ ready</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkRadioButton" id="rbMinute2">
+			<widget class="GtkRadioButton" id="rbMinute02">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">2 Minutes</property>
@@ -1192,7 +1209,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1202,7 +1220,7 @@ ready</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkRadioButton" id="rbMinute5">
+			<widget class="GtkRadioButton" id="rbMinute05">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">5 Minutes</property>
@@ -1212,7 +1230,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1232,7 +1251,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1252,7 +1272,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1272,7 +1293,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1292,7 +1314,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1312,7 +1335,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1332,7 +1356,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1352,7 +1377,8 @@ ready</property>
 			  <property name="active">False</property>
 			  <property name="inconsistent">False</property>
 			  <property name="draw_indicator">True</property>
-			  <property name="group">rbMinute0</property>
+			  <property name="group">rbMinute00</property>
+			  <signal name="clicked" handler="on_rbMinute_clicked" last_modification_time="Wed, 13 Dec 2006 15:24:26 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1635,6 +1661,8 @@ ready</property>
 
 		      <child>
 			<widget class="GtkTextView" id="tvAddress">
+			  <property name="width_request">254</property>
+			  <property name="height_request">68</property>
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1665,68 +1693,34 @@ ready</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkHBox" id="hbox4">
+		    <widget class="GtkVBox" id="vbox8">
 		      <property name="visible">True</property>
-		      <property name="homogeneous">True</property>
+		      <property name="homogeneous">False</property>
 		      <property name="spacing">0</property>
 
 		      <child>
-			<widget class="GtkButton" id="bCloseWindow">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">Close</property>
-			  <property name="use_underline">True</property>
-			  <property name="relief">GTK_RELIEF_NORMAL</property>
-			  <property name="focus_on_click">True</property>
-			  <signal name="clicked" handler="on_bCloseWindow_clicked" last_modification_time="Tue, 21 Jan 2003 09:23:22 GMT"/>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
-			</packing>
+			<placeholder/>
 		      </child>
 
 		      <child>
-			<widget class="GtkButton" id="bSleeping">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">Sleeps</property>
-			  <property name="use_underline">True</property>
-			  <property name="relief">GTK_RELIEF_NORMAL</property>
-			  <property name="focus_on_click">True</property>
-			  <signal name="clicked" handler="on_bSleeping_clicked" last_modification_time="Tue, 21 Jan 2003 09:23:54 GMT"/>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
-			</packing>
+			<placeholder/>
 		      </child>
 
 		      <child>
-			<widget class="GtkHBox" id="hbox5">
+			<widget class="GtkHBox" id="hbox4">
 			  <property name="visible">True</property>
 			  <property name="homogeneous">False</property>
 			  <property name="spacing">0</property>
 
 			  <child>
-			    <widget class="GtkLabel" id="label29">
+			    <widget class="GtkButton" id="bCloseWindow">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">sleeps for Minutes</property>
-			      <property name="use_underline">False</property>
-			      <property name="use_markup">False</property>
-			      <property name="justify">GTK_JUSTIFY_LEFT</property>
-			      <property name="wrap">False</property>
-			      <property name="selectable">False</property>
-			      <property name="xalign">0.5</property>
-			      <property name="yalign">0.5</property>
-			      <property name="xpad">0</property>
-			      <property name="ypad">0</property>
-			      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			      <property name="width_chars">-1</property>
-			      <property name="single_line_mode">False</property>
-			      <property name="angle">0</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Close</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bCloseWindow_clicked" last_modification_time="Tue, 21 Jan 2003 09:23:22 GMT"/>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
@@ -1736,28 +1730,83 @@ ready</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="eSleepingTime">
+			    <widget class="GtkButton" id="bSleeping">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
-			      <property name="editable">True</property>
-			      <property name="visibility">True</property>
-			      <property name="max_length">0</property>
-			      <property name="text" translatable="yes"></property>
-			      <property name="has_frame">True</property>
-			      <property name="invisible_char">*</property>
-			      <property name="activates_default">False</property>
+			      <property name="label" translatable="yes">Sleeps</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bSleeping_clicked" last_modification_time="Tue, 21 Jan 2003 09:23:54 GMT"/>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
-			      <property name="expand">True</property>
-			      <property name="fill">True</property>
+			      <property name="expand">False</property>
+			      <property name="fill">False</property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkHBox" id="hbox5">
+			      <property name="visible">True</property>
+			      <property name="homogeneous">False</property>
+			      <property name="spacing">0</property>
+
+			      <child>
+				<widget class="GtkLabel" id="label29">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">sleeps for Minutes</property>
+				  <property name="use_underline">False</property>
+				  <property name="use_markup">False</property>
+				  <property name="justify">GTK_JUSTIFY_LEFT</property>
+				  <property name="wrap">False</property>
+				  <property name="selectable">False</property>
+				  <property name="xalign">0.5</property>
+				  <property name="yalign">0.5</property>
+				  <property name="xpad">0</property>
+				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
+				</widget>
+				<packing>
+				  <property name="padding">0</property>
+				  <property name="expand">False</property>
+				  <property name="fill">False</property>
+				</packing>
+			      </child>
+
+			      <child>
+				<widget class="GtkEntry" id="eSleepingTime">
+				  <property name="visible">True</property>
+				  <property name="can_focus">True</property>
+				  <property name="editable">True</property>
+				  <property name="visibility">True</property>
+				  <property name="max_length">0</property>
+				  <property name="text" translatable="yes"></property>
+				  <property name="has_frame">True</property>
+				  <property name="invisible_char">*</property>
+				  <property name="activates_default">False</property>
+				</widget>
+				<packing>
+				  <property name="padding">0</property>
+				  <property name="expand">True</property>
+				  <property name="fill">True</property>
+				</packing>
+			      </child>
+			    </widget>
+			    <packing>
+			      <property name="padding">0</property>
+			      <property name="expand">False</property>
+			      <property name="fill">False</property>
 			    </packing>
 			  </child>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
 			</packing>
 		      </child>
 		    </widget>

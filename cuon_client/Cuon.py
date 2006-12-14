@@ -594,6 +594,7 @@ class MainWindow(windows):
             print 'sDebug (Cuon) = '  + self.sDebug
             self.oUser.setDebug(self.sDebug)
             self.saveObject('User', self.oUser)
+            self.saveObject('Scheduling', [])
             self.closeDB()
                           
             
@@ -798,6 +799,9 @@ class MainWindow(windows):
         #shellcommand = 'sh ' + cuonpath + '/iClient/iCuon  '
         #liStatus = commands.getstatusoutput(shellcommand)
         #print shellcommand, liStatus
+        f = open('newversion',a)
+        f.write(`self.Version`)
+        f.close()
         
         self.infoMsg('Update complete. Please start C.U.O.N. new  ')
         

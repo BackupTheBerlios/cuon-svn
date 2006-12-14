@@ -91,18 +91,7 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-   <entry>
-      <name>cbeStatus</name>
-      <type>textline</type>
-      <size>3</size>
-      <verify_type>int</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>process_status</sql_field>
-      <duty>YES</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-    
+   
    
   </table>
 

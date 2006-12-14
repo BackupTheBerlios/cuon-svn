@@ -69,5 +69,13 @@ class SingleContact(SingleData):
         print 'readNonWidgetEntries(self) by SinglePartner'
         dicValues['address_id'] = [self.addressId, 'int']
         dicValues['partnerid'] = [self.partnerId, 'int']
-        dicValues['contacter_id'] = self.getStaffID(self.dicUser)
+        try:
+            cID = self.rpc.callRP('Database.executeNormalQuery',self.getStaffID(self.dicUser, False), self.dicUser)[0]['id']
+        except Exception, param:
+            print Exception, param
+            cID = 0
+            
+            
+        
+        dicValues['contacter_id'] = [cID,'int']
         return dicValues

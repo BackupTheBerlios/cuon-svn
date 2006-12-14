@@ -1,0 +1,14 @@
+
+echo start cuon
+rem testing to see if a file exists
+if  exist  newversion  goto  filefound
+echo  file does not exist
+goto end
+:filefound
+cd ..
+c:\python24\python untar.python
+cd bin
+del newversion
+
+:end
+c:\python24\python  Cuon.py NO client NO ../locale

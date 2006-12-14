@@ -341,3 +341,35 @@ on_calendar1_day_selected_double_click (GtkCalendar     *calendar,
 void
 on_eDate_changed                       (GtkEditable     *editable,
                                         gpointer         user_data);
+
+void
+on_edit1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_new1_activate                       (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_save1_activate                      (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_calendar1_day_selected_double_click (GtkCalendar     *calendar,
+                                        gpointer         user_data);
+
+void
+on_eDate_changed                       (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_rbDay_clicked                       (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_rbHour_clicked                      (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_rbMinute_clicked                    (GtkButton       *button,
+                                        gpointer         user_data);
