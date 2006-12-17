@@ -194,17 +194,18 @@ class contactwindow(chooseWindows):
     # sleeping 
     def on_bSleeping_clicked(self, event):
         print 'sleeps'
+        iTime = 0
         try:
-            sTime = int(self.getWidget('eSleepingTime').get_text()) 
+            iTime = int(self.getWidget('eSleepingTime').get_text()) 
         except:
-            sTime = 0
+            iTime = 0
             
-        if sTime > 0:
-            sTime = sTime * 60000
+        if iTime > 0:
+            iTime = iTime * 60000
         else:
-            stime = 300000
-        print 'sTime by sleep ', sTime    
-        gobject.timeout_add(sTime, self.openWindow)
+            iTime = 300000
+        print 'iTime by sleep ', iTime    
+        gobject.timeout_add(iTime, self.openWindow)
         self.closeWindow()
         
     def on_calendar1_day_selected_double_click(self, event):
