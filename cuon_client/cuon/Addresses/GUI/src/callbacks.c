@@ -749,3 +749,36 @@ on_rbMinute_clicked                    (GtkButton       *button,
 
 }
 
+
+void
+on_bGoToAddress_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bAddFormular2NoticesMisc_clicked    (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bAddFormulat2NoticesContacter_clicked
+                                        (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bAddformular2NoticesRep_clicked     (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

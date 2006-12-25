@@ -15,14 +15,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleMisc(SingleData):
+class SingleNotes(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "addresses_misc"
+        self.sNameOfTable =  "address_notes"
         self.xmlTableDef = 0
         self.loadTable(allTables)
 

@@ -47,6 +47,11 @@
     </Entries>
     <Entries>	
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>address_notes.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_addresses_notes.xml</Entry-FileValue>
+    </Entries>
+    <Entries>	
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>bank.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_bank.xml</Entry-FileValue>
     </Entries>

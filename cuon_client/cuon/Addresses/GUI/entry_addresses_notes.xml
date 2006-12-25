@@ -1,0 +1,50 @@
+<entries_for_table>
+  <table>
+    <table_name>address_notes</table_name>
+ <entry>
+      <name>tvNotesMisc</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes_misc</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>tvNotesContacter</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes_contacter</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>tvNotesRep</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes_representant</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>tvNotesSalesman</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes_salesman</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+      </table>
+
+
+</entries_for_table>

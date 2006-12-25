@@ -759,8 +759,65 @@
     
     
   </table>
-  
-  
+  <!--table: address_notes-->
+  <table>
+    <nameOfTable>address_notes</nameOfTable>
+    <x>52</x>
+    <y>15</y>
+    <specials>inherits (t_standard);</specials>
+    <field>
+      <name>address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+
+  <field>
+      <name>notes_misc</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+     <field>
+      <name>notes_contacter</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>notes_representant</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>notes_salesman</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
   <!--table: bank-->
   <table>
     <nameOfTable>bank</nameOfTable>

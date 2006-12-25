@@ -554,6 +554,30 @@ create_AddressMainwindow (void)
   GtkWidget *eSchedulFor;
   GtkWidget *bSchedulFor;
   GtkWidget *lSchedul;
+  GtkWidget *vbox10;
+  GtkWidget *hbox25;
+  GtkWidget *bAddFormular2NoticesMisc;
+  GtkWidget *scrolledwindow6;
+  GtkWidget *tvNoticesMisc;
+  GtkWidget *label60;
+  GtkWidget *vbox11;
+  GtkWidget *hbox26;
+  GtkWidget *bAddFormulat2NoticesContacter;
+  GtkWidget *scrolledwindow7;
+  GtkWidget *tvNoticesContacter;
+  GtkWidget *label61;
+  GtkWidget *vbox12;
+  GtkWidget *hbox27;
+  GtkWidget *bAddformular2NoticesRep;
+  GtkWidget *scrolledwindow8;
+  GtkWidget *tvNoticesRep;
+  GtkWidget *label62;
+  GtkWidget *vbox13;
+  GtkWidget *hbox28;
+  GtkWidget *baddformular2NoticesSalesman;
+  GtkWidget *scrolledwindow9;
+  GtkWidget *tvNoticesSalesman;
+  GtkWidget *label63;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -562,6 +586,7 @@ create_AddressMainwindow (void)
   accel_group = gtk_accel_group_new ();
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (AddressMainwindow, 1024, 720);
   gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
 
   vbox1 = gtk_vbox_new (FALSE, 17);
@@ -1473,7 +1498,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (bPartnerLetter);
   gtk_box_pack_start (GTK_BOX (hbox23), bPartnerLetter, FALSE, FALSE, 0);
 
-  bPartnerContact = gtk_button_new_with_mnemonic (_("button3"));
+  bPartnerContact = gtk_button_new_with_mnemonic (_("Contact"));
   gtk_widget_show (bPartnerContact);
   gtk_box_pack_start (GTK_BOX (hbox23), bPartnerContact, FALSE, FALSE, 0);
 
@@ -2000,6 +2025,112 @@ create_AddressMainwindow (void)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), lSchedul);
   gtk_misc_set_alignment (GTK_MISC (lSchedul), 0, 0);
 
+  vbox10 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox10);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox10);
+  gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (notebook1), vbox10,
+                                      FALSE, FALSE, GTK_PACK_START);
+
+  hbox25 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox25);
+  gtk_box_pack_start (GTK_BOX (vbox10), hbox25, TRUE, TRUE, 0);
+
+  bAddFormular2NoticesMisc = gtk_button_new_with_mnemonic (_("add Formular"));
+  gtk_widget_show (bAddFormular2NoticesMisc);
+  gtk_box_pack_start (GTK_BOX (hbox25), bAddFormular2NoticesMisc, FALSE, FALSE, 0);
+
+  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow6);
+  gtk_box_pack_start (GTK_BOX (vbox10), scrolledwindow6, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow6), GTK_SHADOW_IN);
+
+  tvNoticesMisc = gtk_text_view_new ();
+  gtk_widget_show (tvNoticesMisc);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow6), tvNoticesMisc);
+  gtk_widget_set_size_request (tvNoticesMisc, -1, 295);
+
+  label60 = gtk_label_new (_("Notices misc"));
+  gtk_widget_show (label60);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label60);
+
+  vbox11 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox11);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox11);
+
+  hbox26 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox26);
+  gtk_box_pack_start (GTK_BOX (vbox11), hbox26, TRUE, TRUE, 0);
+
+  bAddFormulat2NoticesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
+  gtk_widget_show (bAddFormulat2NoticesContacter);
+  gtk_box_pack_start (GTK_BOX (hbox26), bAddFormulat2NoticesContacter, FALSE, FALSE, 0);
+
+  scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow7);
+  gtk_box_pack_start (GTK_BOX (vbox11), scrolledwindow7, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow7), GTK_SHADOW_IN);
+
+  tvNoticesContacter = gtk_text_view_new ();
+  gtk_widget_show (tvNoticesContacter);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvNoticesContacter);
+  gtk_widget_set_size_request (tvNoticesContacter, -1, 295);
+
+  label61 = gtk_label_new (_("Notice contacter"));
+  gtk_widget_show (label61);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label61);
+
+  vbox12 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox12);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox12);
+
+  hbox27 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox27);
+  gtk_box_pack_start (GTK_BOX (vbox12), hbox27, TRUE, TRUE, 0);
+
+  bAddformular2NoticesRep = gtk_button_new_with_mnemonic (_("add Formular"));
+  gtk_widget_show (bAddformular2NoticesRep);
+  gtk_box_pack_start (GTK_BOX (hbox27), bAddformular2NoticesRep, FALSE, FALSE, 0);
+
+  scrolledwindow8 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow8);
+  gtk_box_pack_start (GTK_BOX (vbox12), scrolledwindow8, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow8), GTK_SHADOW_IN);
+
+  tvNoticesRep = gtk_text_view_new ();
+  gtk_widget_show (tvNoticesRep);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow8), tvNoticesRep);
+  gtk_widget_set_size_request (tvNoticesRep, -1, 295);
+
+  label62 = gtk_label_new (_("notices representant"));
+  gtk_widget_show (label62);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 7), label62);
+
+  vbox13 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox13);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox13);
+
+  hbox28 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox28);
+  gtk_box_pack_start (GTK_BOX (vbox13), hbox28, TRUE, TRUE, 0);
+
+  baddformular2NoticesSalesman = gtk_button_new_with_mnemonic (_("add Formular"));
+  gtk_widget_show (baddformular2NoticesSalesman);
+  gtk_box_pack_start (GTK_BOX (hbox28), baddformular2NoticesSalesman, FALSE, FALSE, 0);
+
+  scrolledwindow9 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow9);
+  gtk_box_pack_start (GTK_BOX (vbox13), scrolledwindow9, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow9), GTK_SHADOW_IN);
+
+  tvNoticesSalesman = gtk_text_view_new ();
+  gtk_widget_show (tvNoticesSalesman);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvNoticesSalesman);
+  gtk_widget_set_size_request (tvNoticesSalesman, -1, 295);
+
+  label63 = gtk_label_new (_("notices salesman"));
+  gtk_widget_show (label63);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 8), label63);
+
   g_signal_connect ((gpointer) tbNew1, "clicked",
                     G_CALLBACK (on_tbNew1_clicked),
                     NULL);
@@ -2152,6 +2283,15 @@ create_AddressMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) bSchedulFor, "clicked",
                     G_CALLBACK (on_bSchedulFor_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bAddFormular2NoticesMisc, "clicked",
+                    G_CALLBACK (on_bAddFormular2NoticesMisc_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bAddFormulat2NoticesContacter, "clicked",
+                    G_CALLBACK (on_bAddFormulat2NoticesContacter_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bAddformular2NoticesRep, "clicked",
+                    G_CALLBACK (on_bAddformular2NoticesRep_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -2411,6 +2551,30 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulFor, "eSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulFor, "bSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NoticesMisc, "bAddFormular2NoticesMisc");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow6, "scrolledwindow6");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNoticesMisc, "tvNoticesMisc");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label60, "label60");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox11, "vbox11");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox26, "hbox26");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormulat2NoticesContacter, "bAddFormulat2NoticesContacter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow7, "scrolledwindow7");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNoticesContacter, "tvNoticesContacter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label61, "label61");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox12, "vbox12");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox27, "hbox27");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddformular2NoticesRep, "bAddformular2NoticesRep");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow8, "scrolledwindow8");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNoticesRep, "tvNoticesRep");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label62, "label62");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox13, "vbox13");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox28, "hbox28");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, baddformular2NoticesSalesman, "baddformular2NoticesSalesman");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow9, "scrolledwindow9");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNoticesSalesman, "tvNoticesSalesman");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label63, "label63");
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
 
   gtk_widget_grab_default (eFashion);
