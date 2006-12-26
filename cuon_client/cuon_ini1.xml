@@ -324,7 +324,7 @@
     
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
-      <Glade-File>main.xml</Glade-File>
+      <Glade-File>cuon.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/cuon.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>

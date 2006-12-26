@@ -37,6 +37,26 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql = sSql + " order by partner_schedul.schedul_date, partner_schedul.schedul_time " 
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+    
+
+    def xmlrpc_getAllActiveSchedulByNames(self, dicUser):
+        
+                
+        sSql = "select partner_schedul.schedul_date as date, "
+        sSql +=  "partner_schedul.schedul_time_begin as time_begin, "
+        sSql +=  "address.city, partner_schedul.short_remark, partner_schedul.notes , "
+        sSql +=  "partner.lastname as partner_lastname, address.lastname as address_lastname, "
+        sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
+        sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
+        sSql +=  "address.lastname2 as address_lastname2, partner.firstname as partner_firstname "
+        sSql += " from partner, address, partner_schedul "
+        sW = " where partner.id = partnerid and address.id = partner.addressid and "
+        sW = sW + " process_status != 999 "
+        sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+        
+        sSql = sSql + " order by partner_schedul.schedul_date, partner_schedul.schedul_time_begin " 
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
     def xmlrpc_getAllActiveContacts(self, dicUser):
         #caller_id = self.getConfigOption('caller_id',dicUser['name'],self.getParser(self.CUON_FS +'/user.cfg'))

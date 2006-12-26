@@ -240,3 +240,31 @@ on_create_grants_file1_activate        (GtkMenuItem     *menuitem,
 
 }
 
+
+gboolean
+on_treeSchedul_select_cursor_row       (GtkTreeView     *treeview,
+                                        gboolean         start_editing,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+
+
+void
+on_treeSchedul_columns_changed         (GtkTreeView     *treeview,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_treeSchedul_row_activated           (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data)
+{
+
+}
+

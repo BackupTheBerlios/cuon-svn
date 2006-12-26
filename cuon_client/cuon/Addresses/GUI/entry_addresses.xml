@@ -209,7 +209,7 @@
     </entry>
     
     <entry>
-        <name>eAddressContractID</name>
+        <name>eAddressSalesmanID</name>
         <type>textline</type>
         <size>7</size>
         <verify_type>int</verify_type>

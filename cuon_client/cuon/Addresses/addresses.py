@@ -29,6 +29,7 @@ import SingleAddressBank
 import SingleMisc
 import SinglePartner
 import SingleScheduling
+import SingleNotes
 import cuon.Bank.SingleBank
 import lists_addresses_phone1
 import lists_addresses_phone11
@@ -65,6 +66,7 @@ class addresswindow(chooseWindows):
         self.singleBank = cuon.Bank.SingleBank.SingleBank(allTables)
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
+        self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
         
         self.allTables = allTables
        
@@ -85,6 +87,8 @@ class addresswindow(chooseWindows):
         self.EntriesAddressesBank = 'addresses_bank.xml'
         self.EntriesPartner = 'partner.xml'
         self.EntriesPartnerSchedul = 'partner_schedul.xml'
+        self.EntriesNotes = 'address_notes.xml'
+        
         
         self.loadEntries(self.EntriesAddresses)
         
@@ -155,8 +159,19 @@ class addresswindow(chooseWindows):
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`
         self.singleSchedul.setTree(self.xml.get_widget('tree1') )
   
-
+#singleNotes
+        
+        self.loadEntries(self.EntriesNotes )
+        self.singleMisc.setEntries(self.getDataEntries('address_notes.xml') )
+        self.singleMisc.setGladeXml(self.xml)
+        self.singleMisc.setTreeFields([])
+        self.singleMisc.setTreeOrder('id')
+        
+        self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
+        self.singleMisc.setTree(self.xml.get_widget('tree1') )
+        # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
+
 
         cbFashion = self.getWidget('cbFashion')
         if cbFashion:
@@ -606,11 +621,19 @@ class addresswindow(chooseWindows):
         self.setTextbuffer(eAdrField, liAdr)
 
 
-    # choose Caller ID 
+    # choose Caller, Representant, Salesman ID`s
     
     def on_bChooseCaller_clicked(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables)
         staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressCallerID'))
+        
+    def on_bChooseRep_clicked(self, event):
+        staff = cuon.Staff.staff.staffwindow(self.allTables)
+        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressRepID'))
+        
+    def on_bChooseSalesman_clicked(self, event):
+        staff = cuon.Staff.staff.staffwindow(self.allTables)
+        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressSalesmanID'))
         
     def on_eAddressCallerID_changed(self, event):
         print 'eCallerID changed'

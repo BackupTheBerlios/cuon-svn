@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-12-11, 23:36:35 -->
+<!-- Saved: 2006-12-26, 00:20:54 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1326,6 +1326,18 @@
       <Dir>cuon_client</Dir>
       <Name>untar.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>CalendarGen.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Name>SingleNotes.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1796,6 +1808,13 @@
       <Dir>cuon_client</Dir>
       <Name>startcuon.bat_example</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Addresses</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_addresses_notes.xml</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1858,9 +1877,9 @@ s.</VcsOtherData>
   </Vcs>
   <FiletypeAssociations>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

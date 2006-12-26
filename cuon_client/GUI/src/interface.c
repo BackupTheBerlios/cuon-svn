@@ -102,10 +102,15 @@ create_window1 (void)
   GtkWidget *eWebshop;
   GtkWidget *hbox1;
   GtkWidget *scrolledwindow3;
-  GtkWidget *tree1;
+  GtkWidget *treeSchedul;
   GtkWidget *vbox3;
+  GtkWidget *vbox4;
+  GtkWidget *hbox2;
+  GtkWidget *scrolledwindow5;
+  GtkWidget *tvAddress;
+  GtkWidget *eShortRemark;
   GtkWidget *scrolledwindow4;
-  GtkWidget *tvEvents;
+  GtkWidget *tvEvent;
   GtkWidget *calendar1;
   GtkTooltips *tooltips;
 
@@ -440,22 +445,46 @@ create_window1 (void)
   gtk_box_pack_start (GTK_BOX (hbox1), scrolledwindow3, TRUE, TRUE, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow3), GTK_SHADOW_IN);
 
-  tree1 = gtk_tree_view_new ();
-  gtk_widget_show (tree1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), tree1);
+  treeSchedul = gtk_tree_view_new ();
+  gtk_widget_show (treeSchedul);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow3), treeSchedul);
 
   vbox3 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox3);
   gtk_box_pack_start (GTK_BOX (hbox1), vbox3, TRUE, TRUE, 0);
+
+  vbox4 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox4);
+  gtk_box_pack_start (GTK_BOX (vbox3), vbox4, TRUE, TRUE, 0);
+
+  hbox2 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox2);
+  gtk_box_pack_start (GTK_BOX (vbox4), hbox2, TRUE, TRUE, 0);
+
+  scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow5);
+  gtk_box_pack_start (GTK_BOX (vbox4), scrolledwindow5, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow5), GTK_SHADOW_IN);
+
+  tvAddress = gtk_text_view_new ();
+  gtk_widget_show (tvAddress);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow5), tvAddress);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
+
+  eShortRemark = gtk_entry_new ();
+  gtk_widget_show (eShortRemark);
+  gtk_box_pack_start (GTK_BOX (vbox4), eShortRemark, FALSE, FALSE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eShortRemark), FALSE);
 
   scrolledwindow4 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow4);
   gtk_box_pack_start (GTK_BOX (vbox3), scrolledwindow4, TRUE, TRUE, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow4), GTK_SHADOW_IN);
 
-  tvEvents = gtk_text_view_new ();
-  gtk_widget_show (tvEvents);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow4), tvEvents);
+  tvEvent = gtk_text_view_new ();
+  gtk_widget_show (tvEvent);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow4), tvEvent);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvEvent), FALSE);
 
   calendar1 = gtk_calendar_new ();
   gtk_widget_show (calendar1);
@@ -560,6 +589,15 @@ create_window1 (void)
   g_signal_connect ((gpointer) eServer, "changed",
                     G_CALLBACK (on_eUserName_changed),
                     NULL);
+  g_signal_connect ((gpointer) treeSchedul, "select_cursor_row",
+                    G_CALLBACK (on_treeSchedul_select_cursor_row),
+                    NULL);
+  g_signal_connect ((gpointer) treeSchedul, "columns_changed",
+                    G_CALLBACK (on_treeSchedul_columns_changed),
+                    NULL);
+  g_signal_connect ((gpointer) treeSchedul, "row_activated",
+                    G_CALLBACK (on_treeSchedul_row_activated),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
@@ -634,10 +672,15 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, eWebshop, "eWebshop");
   GLADE_HOOKUP_OBJECT (window1, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (window1, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (window1, tree1, "tree1");
+  GLADE_HOOKUP_OBJECT (window1, treeSchedul, "treeSchedul");
   GLADE_HOOKUP_OBJECT (window1, vbox3, "vbox3");
+  GLADE_HOOKUP_OBJECT (window1, vbox4, "vbox4");
+  GLADE_HOOKUP_OBJECT (window1, hbox2, "hbox2");
+  GLADE_HOOKUP_OBJECT (window1, scrolledwindow5, "scrolledwindow5");
+  GLADE_HOOKUP_OBJECT (window1, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (window1, eShortRemark, "eShortRemark");
   GLADE_HOOKUP_OBJECT (window1, scrolledwindow4, "scrolledwindow4");
-  GLADE_HOOKUP_OBJECT (window1, tvEvents, "tvEvents");
+  GLADE_HOOKUP_OBJECT (window1, tvEvent, "tvEvent");
   GLADE_HOOKUP_OBJECT (window1, calendar1, "calendar1");
   GLADE_HOOKUP_OBJECT_NO_REF (window1, tooltips, "tooltips");
 

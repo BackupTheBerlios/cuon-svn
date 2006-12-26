@@ -363,7 +363,7 @@ import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
 import commands
 import cuon.Help.help
-
+import cuon.Databases.SingleDataTreeModel
 
  
 # localisation
@@ -401,6 +401,8 @@ class MainWindow(windows):
         self.sDebug = 'NO'
         self.ModulNumber = self.MN['Mainwindow']
         self.extMenucommand = {}
+        self.store = None
+        self.connectTreeId = None
         #self.extMenucommand['ext1'] = 'Test'
     #set this Functions to None
     def loadUserInfo(self):
@@ -821,14 +823,21 @@ class MainWindow(windows):
         
     def startTiming(self):
         'print start Timer'
+        time_contact = 2*60*1000
+        time_schedul = 10*60*1000
+        
         if self.t0:
                 gobject.source_remove(self.t0)
           
         if self.t1:
                 gobject.source_remove(self.t1)
                 
-        self.t1 = gobject.timeout_add(120000, self.startChecking)
-    
+        self.t1 = gobject.timeout_add(time_contact, self.startChecking)
+        try:
+            
+            self.t1 = gobject.timeout_add(time_schedul,self.setSchedulTree())
+        except Exception, params:
+            print Exception, params
     def startChecking(self):
         #gtk.gdk.threads_enter()
         try:
@@ -875,7 +884,77 @@ class MainWindow(windows):
             
             #gtk.gdk.threads_leave() 
         #self.startTimer(10)
+    def disconnectTree(self):
+        try:
             
+            self.getWidget('treeSchedul').get_selection().disconnect(self.connectTreeId)
+        except:
+            pass
+
+    def connectTree(self):
+        try:
+            self.connectTreeId = self.getWidget('treeSchedul').get_selection().connect("changed", self.tree_select_callback)
+        except:
+            pass
+   
+    def tree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            newId = listStore.get_value(iter, 0)
+            print newId
+            
+            #self.fillEntries(newId)
+    def on_treeSchedul_row_activated(self, event):
+        print 'event'
+        
+    def setSchedulTree(self):
+        self.openDB()
+        oUser = self.loadObject('User')
+        self.closeDB()
+        #liststore = gtk.ListStore(str)
+        self.disconnectTree()
+        treeview = self.getWidget('treeSchedul')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
+        treeview.append_column(column)
+        treestore = gtk.TreeStore(object)
+        treestore = gtk.TreeStore(str)
+##        renderer = gtk.CellRendererText()
+##        column = gtk.TreeViewColumn("Zweite Spalte", renderer, text=0)
+## 
+##        treeview.append_column(column)
+        treeview.set_model(treestore)
+
+        # Data
+        liDates = self.rpc.callRP('Address.getAllActiveSchedulByNames', oUser.getSqlDicUser())
+        print 'Schedul by names: ', liDates
+        try:
+            iter = treestore.append(None,['Names'])
+            iter2 = treestore.insert_after(iter,None,['jhamel'])
+            iter3 = treestore.insert_after(iter2,None,['termin1'])
+            iter = treestore.append(None,['Scheduls'])
+            iter2 = treestore.insert_after(iter,None,['date'])
+            iter3 = treestore.insert_after(iter2,None,['termin1'])
+        except Exception,params:
+            print Exception,params
+            
+        
+        treeview.show()
+        
+        self.connectTree()
+        
+        return True
+        
         
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
@@ -990,7 +1069,7 @@ class MainWindow(windows):
         
         self.t0 = gobject.timeout_add(2000, self.startT0)
         
-
+        
     def gtk_main_quit(self):
         if self.t1:
             

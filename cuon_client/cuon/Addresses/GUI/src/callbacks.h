@@ -390,3 +390,11 @@ on_bAddFormulat2NoticesContacter_clicked
 void
 on_bAddformular2NoticesRep_clicked     (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bAddFormular2NotesSalesman_clicked  (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bChooseSalesman_clicked             (GtkButton       *button,
+                                        gpointer         user_data);
