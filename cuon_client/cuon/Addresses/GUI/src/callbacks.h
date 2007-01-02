@@ -398,3 +398,35 @@ on_bAddFormular2NotesSalesman_clicked  (GtkButton       *button,
 void
 on_bChooseSalesman_clicked             (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_notes1_activate                     (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_NotesNew_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_NotesEdit1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_NotesSave_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_bAddNameMisc_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bAddNameContacter_clicked           (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bAddNameRep_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bAddnameSalesman_clicked            (GtkButton       *button,
+                                        gpointer         user_data);

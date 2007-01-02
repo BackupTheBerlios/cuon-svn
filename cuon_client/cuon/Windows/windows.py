@@ -72,6 +72,12 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Project'] = 14000
 
         self.MN['DMS'] = 11000
+        self.MN['Forms_Address_Notes_Misc'] = 11010
+        self.MN['Forms_Address_Notes_Contacter'] = 11011
+        self.MN['Forms_Address_Notes_Rep'] = 11012
+        self.MN['Forms_Address_Notes_Salesman'] = 11013
+        
+        
         self.MN['Biblio'] = 12000
         self.MN['AI'] = 13000
         self.doEdit = -1

@@ -268,3 +268,44 @@ on_treeSchedul_row_activated           (GtkTreeView     *treeview,
 
 }
 
+
+void
+on_forms_addresses1_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_addresses_notes_misc1_activate      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_addresses_notes_contacter1_activate (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_addresses_notes_representant1_activate
+                                        (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_addresses_notes_salesman1_activate  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

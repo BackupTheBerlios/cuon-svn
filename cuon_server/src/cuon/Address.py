@@ -44,17 +44,18 @@ class Address(xmlrpc.XMLRPC, basics):
                 
         sSql = "select partner_schedul.schedul_date as date, "
         sSql +=  "partner_schedul.schedul_time_begin as time_begin, "
-        sSql +=  "address.city, partner_schedul.short_remark, partner_schedul.notes , "
-        sSql +=  "partner.lastname as partner_lastname, address.lastname as address_lastname, "
+        sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
+        sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
+        sSql += "( select staff.lastname || ', ' || staff.firstname from staff where staff.id = (select schedul_staff_id from partner_schedul where partner.id = partner_schedul.partnerid)) as schedul_name, " 
         sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
         sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
-        sSql +=  "address.lastname2 as address_lastname2, partner.firstname as partner_firstname "
+        sSql +=  "address.lastname2 as a_lastname2, partner.firstname as p_firstname "
         sSql += " from partner, address, partner_schedul "
         sW = " where partner.id = partnerid and address.id = partner.addressid and "
         sW = sW + " process_status != 999 "
         sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
         
-        sSql = sSql + " order by partner_schedul.schedul_date, partner_schedul.schedul_time_begin " 
+        sSql = sSql + " order by schedul_name, partner_schedul.schedul_date, partner_schedul.schedul_time_begin " 
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
@@ -109,11 +110,17 @@ class Address(xmlrpc.XMLRPC, basics):
                     print dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60, nD3.seconds, nD1, nD2 
 
                     ok = False
-                    if dicResult['alarm_days'] > 0:
-                        if dicResult['alarm_days'] <= nD3.days : 
-                            ok = True
-                    elif (dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60) > nD3.seconds :
-                       ok = True
+                    if nD3.days < 0:
+                        ok = True
+                        
+                    if dicResult['alarm_days'] <= nD3.days : 
+                        ok = True
+                    if dicResult['alarm_days'] == 0 and not ok:
+                        AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
+                        print 'AlarmSeconds = ', AlarmSeconds
+                        print 'Differenz', nD3.seconds
+                        if AlarmSeconds > nD3.seconds :
+                           ok = True
                     if  ok:
                         print 'copy entry to  list'
                         liResult2.append(dicResult)

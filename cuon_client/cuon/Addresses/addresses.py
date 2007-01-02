@@ -54,7 +54,7 @@ import contact
 class addresswindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, addrid=0, partnerid=0):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
@@ -99,7 +99,8 @@ class addresswindow(chooseWindows):
         self.singleAddress.setTreeOrder('lastname, firstname')
         self.singleAddress.setListHeader([_('Lastname'), _('Firstname'), _('City')])
         self.singleAddress.setTree(self.xml.get_widget('tree1') )
-
+        if addrid > 0:
+            self.singleAddress.sWhere = ' where id = ' + `addrid`
         #singleAddressBank
         
         self.loadEntries(self.EntriesAddressesBank )
@@ -139,6 +140,8 @@ class addresswindow(chooseWindows):
         self.singlePartner.setListHeader([_('Name of partner'), _('Firstname of partner'), _('City')])
 
         self.singlePartner.sWhere  ='where addressid = ' + `self.singleAddress.ID`
+        if partnerid > 0:
+            self.singlePartner.sWhere  += ' and id = ' + `partnerid`
         self.singlePartner.setTree(self.xml.get_widget('tree1') )
 
 
@@ -159,16 +162,16 @@ class addresswindow(chooseWindows):
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`
         self.singleSchedul.setTree(self.xml.get_widget('tree1') )
   
-#singleNotes
+        #singleNotes
         
         self.loadEntries(self.EntriesNotes )
-        self.singleMisc.setEntries(self.getDataEntries('address_notes.xml') )
-        self.singleMisc.setGladeXml(self.xml)
-        self.singleMisc.setTreeFields([])
-        self.singleMisc.setTreeOrder('id')
+        self.singleAddressNotes.setEntries(self.getDataEntries('address_notes.xml') )
+        self.singleAddressNotes.setGladeXml(self.xml)
+        self.singleAddressNotes.setTreeFields([])
+        self.singleAddressNotes.setTreeOrder('id')
         
-        self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleMisc.setTree(self.xml.get_widget('tree1') )
+        self.singleAddressNotes.sWhere  ='where address_id = ' + `self.singleAddress.ID`
+        self.singleAddressNotes.setTree(self.xml.get_widget('tree1') )
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
@@ -188,7 +191,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('tabs','mi_misc1')
         self.addEnabledMenuItems('tabs','mi_partner1')
         self.addEnabledMenuItems('tabs','mi_schedul1')
-
+        self.addEnabledMenuItems('tabs','mi_notes1')
                
         # seperate Menus
         self.addEnabledMenuItems('address','mi_address1')
@@ -196,7 +199,8 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('schedul','mi_schedul1')
         self.addEnabledMenuItems('bank','mi_bank1')
         self.addEnabledMenuItems('misc','mi_misc1')
-
+        self.addEnabledMenuItems('notes','mi_notes1')
+        
         # enabledMenues for Address
         self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
         self.addEnabledMenuItems('editAddress','mi_clear1', self.dicUserKeys['address_delete'])
@@ -219,7 +223,10 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('editSchedul', 'mi_SchedulEdit1')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulDelete')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
-
+        
+        # enabledMenues for Notes
+        self.addEnabledMenuItems('editNotes', '')
+  
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','mi_PartnerSave1', self.dicUserKeys['address_partner_save'])
@@ -232,6 +239,7 @@ class addresswindow(chooseWindows):
         self.tabMisc = 2
         self.tabPartner = 3
         self.tabSchedul = 4
+        self.tabNotes = 5
         
         
 
@@ -645,7 +653,18 @@ class addresswindow(chooseWindows):
             print Exception, params
             
 
+    def on_bSchedulFor_clicked(self, event):
+        staff = cuon.Staff.staff.staffwindow(self.allTables)
+        staff.setChooseEntry('chooseStaff', self.getWidget( 'eSchedulFor'))
         
+    def on_eSchedulFor_changed(self, event):
+        print 'eSchedulfor changed'
+        try:
+            eAdrField = self.getWidget('eSchedulForName')
+            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eSchedulFor').get_text()))
+            eAdrField.set_text(cAdr)
+        except Exception, params:
+            print Exception, params    
     def saveData(self):
         print 'save Addresses'
         if self.doEdit == self.tabAddress:

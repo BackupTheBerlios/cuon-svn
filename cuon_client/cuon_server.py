@@ -377,6 +377,10 @@ class MainWindow(windows):
     #edit Server config-files
     def on_usercfg1_activate(self, event):
         self.startSSHEdit('etc/cuon/user.cfg')
+    
+    
+    def on_menuscfg1_activate(self, event):
+        self.startSSHEdit('etc/cuon/menus.cfg')
         
     def on_serverini1_activate(self, event):
         self.startSSHEdit('etc/cuon/server.ini')

@@ -82,6 +82,7 @@ class SingleData(gladeXml, logs):
         @param dicDetail: details for statusbar
         @return: list of records
         '''
+        self.ID = -1
         try:
             assert record >= 0 and  (isinstance(record, types.IntType) or isinstance(record, types.LongType))
 

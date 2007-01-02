@@ -336,6 +336,69 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkMenuItem" id="forms1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Forms</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="forms1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="forms_addresses1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Addresses</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_forms_addresses1_activate" last_modification_time="Fri, 29 Dec 2006 16:48:46 GMT"/>
+
+			      <child>
+				<widget class="GtkMenu" id="forms_addresses1_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="mi_addresses_notes_misc1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Notes Misc</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_addresses_notes_misc1_activate" last_modification_time="Fri, 29 Dec 2006 22:06:48 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="mi_addresses_notes_contacter1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Notes contacter</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_addresses_notes_contacter1_activate" last_modification_time="Fri, 29 Dec 2006 22:06:48 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="mi_addresses_notes_representant1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Notes Representant</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_addresses_notes_representant1_activate" last_modification_time="Fri, 29 Dec 2006 22:06:48 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="mi_addresses_notes_salesman1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Notes Salesman</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_addresses_notes_salesman1_activate" last_modification_time="Fri, 29 Dec 2006 22:06:48 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="trennlinie5">
 		      <property name="visible">True</property>
 		    </widget>

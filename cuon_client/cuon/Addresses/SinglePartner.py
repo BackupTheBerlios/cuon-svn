@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -40,7 +40,27 @@ class SinglePartner(SingleData):
         self.addressId = 0
         self.statusfields = ['lastname', 'firstname']
 
+    def getPartnerPhone1(self, id):
+        Phone = ''
+        assert id > 0
+        try:
+            id = long(id)
             
+            dicRecords = self.load(id)
+        except:
+            print 'Exception by getAddressPhone1-1'
+            id = 0
+            dicRecords = {}
+        try:
+            if dicRecords:
+                Phone = dicRecords[0]['phone']
+        except:
+            print 'Exception by getAddressPhone1-2'
+
+            Phone = ''
+        
+        return Phone        
+        
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePartner'
         dicValues['addressid'] = [self.addressId, 'int']

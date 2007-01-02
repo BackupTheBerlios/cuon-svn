@@ -392,17 +392,22 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 32, 'Rev': 26, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 33, 'Rev': 2, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
         self.t1 = None
+        self.t2 = None
+        
         self.allTables = {}
         self.sDebug = 'NO'
         self.ModulNumber = self.MN['Mainwindow']
         self.extMenucommand = {}
         self.store = None
         self.connectTreeId = None
+        
+        
+        
         #self.extMenucommand['ext1'] = 'Test'
     #set this Functions to None
     def loadUserInfo(self):
@@ -486,14 +491,17 @@ class MainWindow(windows):
                 self.addEnabledMenuItems('work','mi_dms1')
                 #accounting
                 self.addEnabledMenuItems('work','mi_cash_account_book1')
-                # tools
+                # extras
                 self.addEnabledMenuItems('work','mi_expert_system1')
                 self.addEnabledMenuItems('work','mi_project1')
-                #extras
+##                self.addEnabledMenuItems('work','mi_forms1')
+##                self.addEnabledMenuItems('work','mi_forms_addresses1')
+
+                #tools
                 self.addEnabledMenuItems('work','mi_preferences1')
                 self.addEnabledMenuItems('work','mi_user1')
                 self.addEnabledMenuItems('work','mi_finances1')
-                self.addEnabledMenuItems('work','mi_project1')
+                #self.addEnabledMenuItems('work','mi_project1')
                 self.addEnabledMenuItems('work','mi_import_data1')
                 self.enableMenuItem('work')
 
@@ -533,7 +541,20 @@ class MainWindow(windows):
                 print 'key project found '
                 self.addEnabledMenuItems('misc','mi_project1')
                 misc_menu = True
+            if iL.has_key('forms'):
+                print 'key forms found '
+                self.addEnabledMenuItems('misc','forms1')
+                misc_menu = True
                 print '-----------------------'
+            if iL.has_key('forms_addresses'):
+                print 'key forms_addresses found '
+                self.addEnabledMenuItems('misc','forms_addresses1')
+                self.addEnabledMenuItems('misc','mi_addresses_notes_misc1')
+                self.addEnabledMenuItems('misc','mi_addresses_notes_contacter1')
+                self.addEnabledMenuItems('misc','mi_addresses_notes_representant1')
+                self.addEnabledMenuItems('misc','mi_addresses_notes_salesman1')
+                
+                misc_menu = True
             if iL.has_key('experimental'):
                 print 'key experimental found'
                 self.addEnabledMenuItems('experimental','mi_mayavi1')
@@ -697,6 +718,7 @@ class MainWindow(windows):
     def on_dms1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables)
    
+   
     # Finances
     
     # Cash Account Book
@@ -711,6 +733,18 @@ class MainWindow(windows):
     def on_project1_activate(self, event):
         cpro = cuon.Project.project.projectwindow(self.allTables)
 
+    def on_addresses_notes_misc1_activate(self,event):
+        dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Misc'])
+   
+    def on_addresses_notes_contacter1_activate(self,event):
+        dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Contacter'])
+   
+    def on_addresses_notes_representant_activate(self,event):
+        dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Rep'])
+   
+    def on_addresses_notes_salesman_activate(self,event):
+        dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Salesman'])
+   
     # Tools   
 
     def on_update1_activate(self, event):
@@ -741,7 +775,8 @@ class MainWindow(windows):
     def on_test1_activate(self, event):
         te = cuon.VTK.test.test()
         te.show()
-        
+   
+    # help and info
     def on_about1_activate(self, event):
         about1 = self.getWidget('aCuon')
         about1.show()
@@ -756,7 +791,7 @@ class MainWindow(windows):
         about1.hide()
 
     # extendet Menu
-    # set by Zope user control
+    
     def on_ext1_activate(self, event):
         print 'ext1 menu activated !!!!!'
         ext1 = eval(self.extMenucommand['ext1']) 
@@ -823,21 +858,28 @@ class MainWindow(windows):
         
     def startTiming(self):
         'print start Timer'
+        # 60*1000 = 1 minute
         time_contact = 2*60*1000
-        time_schedul = 10*60*1000
+        time_schedul = 1*60*1000
         
         if self.t0:
-                gobject.source_remove(self.t0)
+            gobject.source_remove(self.t0)
           
         if self.t1:
-                gobject.source_remove(self.t1)
+            gobject.source_remove(self.t1)
+        if self.t2:
+            gobject.source_remove(self.t2)
                 
-        self.t1 = gobject.timeout_add(time_contact, self.startChecking)
         try:
-            
-            self.t1 = gobject.timeout_add(time_schedul,self.setSchedulTree())
+            if not self.t1:
+                self.t1 = gobject.timeout_add(time_contact, self.startChecking)
+         
+            if not self.t2:
+                self.t2 = gobject.timeout_add(time_schedul,self.setSchedulTree)
         except Exception, params:
             print Exception, params
+            
+            
     def startChecking(self):
         #gtk.gdk.threads_enter()
         try:
@@ -924,9 +966,11 @@ class MainWindow(windows):
         treeview = self.getWidget('treeSchedul')
         #treeview.set_model(liststore)
  
-        renderer = gtk.CellRendererText()
-        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
-        treeview.append_column(column)
+        #renderer = gtk.CellRendererText()
+        #column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
+        #treeview.append_column(column)
+        
+        
         treestore = gtk.TreeStore(object)
         treestore = gtk.TreeStore(str)
 ##        renderer = gtk.CellRendererText()
@@ -938,16 +982,32 @@ class MainWindow(windows):
         # Data
         liDates = self.rpc.callRP('Address.getAllActiveSchedulByNames', oUser.getSqlDicUser())
         print 'Schedul by names: ', liDates
-        try:
-            iter = treestore.append(None,['Names'])
-            iter2 = treestore.insert_after(iter,None,['jhamel'])
-            iter3 = treestore.insert_after(iter2,None,['termin1'])
-            iter = treestore.append(None,['Scheduls'])
-            iter2 = treestore.insert_after(iter,None,['date'])
-            iter3 = treestore.insert_after(iter2,None,['termin1'])
-        except Exception,params:
-            print Exception,params
+        if liDates:
+            lastRep = None
+            lastSalesman = None
+            Schedulname = None
+            lastSchedulname = None
             
+            iter = treestore.append(None,['Names'])
+            iter2 = None
+            iter3 = None
+            for oneDate in liDates:
+                Schedulname = oneDate['schedul_name']
+                if lastSchedulname != Schedulname:
+                    lastSchedulname = Schedulname
+                    iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
+                iter3 = treestore.insert_after(iter2,None,[oneDate['date']])   
+                
+##        try:
+##            iter = treestore.append(None,['Names'])
+##            iter2 = treestore.insert_after(iter,None,['jhamel'])
+##            iter3 = treestore.insert_after(iter2,None,['termin1'])
+##            iter = treestore.append(None,['Scheduls'])
+##            iter2 = treestore.insert_after(iter,None,['date'])
+##            iter3 = treestore.insert_after(iter2,None,['termin1'])
+##        except Exception,params:
+##            print Exception,params
+##            
         
         treeview.show()
         
@@ -1065,6 +1125,15 @@ class MainWindow(windows):
         oUser.client = 0
         self.saveObject('User',oUser)
         self.closeDB()
+        
+        # set initial columns
+        
+        treeview = self.getWidget('treeSchedul')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
+        treeview.append_column(column)
         
         
         self.t0 = gobject.timeout_add(2000, self.startT0)

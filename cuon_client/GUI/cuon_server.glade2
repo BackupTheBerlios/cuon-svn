@@ -79,7 +79,7 @@
 		      <signal name="activate" handler="on_end1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image23">
+			<widget class="GtkImage" id="image25">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -183,6 +183,15 @@
 			      <property name="label" translatable="yes">user.cfg</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_usercfg1_activate" last_modification_time="Mon, 11 Sep 2006 11:16:01 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="menuscfg1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">menus.cfg</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_menuscfg1_activate" last_modification_time="Sat, 30 Dec 2006 11:32:57 GMT"/>
 			    </widget>
 			  </child>
 
@@ -300,7 +309,7 @@
 		      <signal name="activate" handler="on_about1_activate" last_modification_time="Mon, 06 Jan 2003 17:18:21 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image24">
+			<widget class="GtkImage" id="image26">
 			  <property name="visible">True</property>
 			  <property name="stock">gnome-stock-about</property>
 			  <property name="icon_size">1</property>

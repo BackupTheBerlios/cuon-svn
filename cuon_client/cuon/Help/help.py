@@ -17,7 +17,7 @@ from cuon.Windows.windows  import windows
 try:
     import gtkmozembed as moz
 except:
-    print ' No Module gtkmozembed found'
+    print ' No Module self.helpmozembed found'
     print ' search to python-gnome-extras '
     print ' SuSE 10.1 has problems'
     print ' No Online-Help avaible '
@@ -32,35 +32,31 @@ class helpwindow(windows):
 
         self.loadGlade('help.xml')
         self.win1 = self.getWidget('HelpMainwindow')
+
+
         
 
-        s = self.rpc.callRP('Misc.getHelpBook')
-        s = s.decode('utf-8').encode('latin-1')
-        document = gtkhtml2.Document()
-        
-        document.clear()
-        document.open_stream('text/html')
-        document.write_stream(s)
-        document.close_stream()
-        
-        
-
-        sw1 = self.getWidget('swHelp')
-        view = gtkhtml2.View()
-        view.set_document(document)
-        sw1.add(view)
+        self.helpmoz = moz.MozEmbed()
+        #sw1 = self.getWidget('swHelp')
+        self.vbox = self.getWidget('vbox2')
+        self.vbox.add(self.helpmoz)
+        self.helpmoz.load_url("http://84.244.7.139:7084")
+        self.helpmoz.set_size_request(816,600)
+        self.helpmoz.show()
         self.win1.show_all()
-##        
-##        moz.set_profile_path("/tmp/","foo")
-##
-##        gtkmoz = moz.MozEmbed()
-##        gtkmoz.load_url("http://www.pro-linux.de")
-##        sw1 = self.getWidget('swHelp')
-##        
-##        sw1.add(gtkmoz)
-##        self.win1.show_all()
-##        
-
+        
+    def on_tBack_clicked(self, event):
+        self.helpmoz.go_back()
+    
+    def on_tForward_clicked(self, event):
+        self.helpmoz.go_forward()
+        
+    def on_tRelaod_clicked(self, event):
+        self.helpmoz.reload(moz.GTK_MOZ_EMBED_FLAG_RELOADNORMAL)
+        
+    def on_tQuit_clicked(self, event):
+        self.closeWindow()
+        
     def on_quit1_activate(self, event):
         print "exit help v2"
         self.closeWindow()

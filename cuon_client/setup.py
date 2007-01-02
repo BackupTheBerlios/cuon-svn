@@ -268,7 +268,14 @@ class setup:
         #clients.ini
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/clients.ini ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/clients.ini " + self.SERVERCONFIGDIR + " ; fi ")
+        
+        #menus.cfg
+        self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/menus.cfg ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/menus.cfg " + self.SERVERCONFIGDIR + " ; fi ")
+        
+        
         #cfg files for sql
+        
         # all right to user cuon_all
         self.executeSCP('GroupRightsCuon.cfg', self.SERVERCONFIGDIR + "/sql")
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/sql/GroupRightsOther.cfg ] ; then cp " 

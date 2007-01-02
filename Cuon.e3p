@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2006-12-26, 00:20:54 -->
+<!-- Saved: 2006-12-30, 23:25:39 -->
 <!-- Copyright (C) 2006 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1815,6 +1815,15 @@
       <Dir>GUI</Dir>
       <Name>entry_addresses_notes.xml</Name>
     </Other>
+    <Other>
+      <Dir>doc</Dir>
+      <Name>doc_src</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>examples</Dir>
+      <Name>menus.cfg</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1875,11 +1884,35 @@ p1
 I1
 s.</VcsOtherData>
   </Vcs>
+  <Eric3Doc>
+    <Eric3DocParams>(dp0
+S'sourceExtensions'
+p1
+(lp2
+V
+p3
+asS'useRecursion'
+p4
+I01
+sS'cssFile'
+p5
+V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
+p6
+sS'filenamePrefix'
+p7
+Vcuon
+p8
+sS'outputDirectory'
+p9
+Vdoc/doc_src
+p10
+s.</Eric3DocParams>
+  </Eric3Doc>
   <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

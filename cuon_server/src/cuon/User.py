@@ -33,8 +33,8 @@ class User(xmlrpc.XMLRPC, basics):
            return result
 
     def xmlrpc_getModulList(self, dicUser):
-        dicUser = {'Name':'jhamel'}
-        dicUserModules = {}
+        #dicUser = {'Name':'jhamel'}
+        cp1,f = self.getParser('/etc/cuon/menus.cfg')
         # Name of known modules
         # addresses
         # articles
@@ -44,6 +44,72 @@ class User(xmlrpc.XMLRPC, basics):
         # dms
         # staff
         # expert_system
+        values = ['all','addresses','articles','biblio','account_book','order','dms','staff','expert_system','forms','forms_addresses']
+        dicUserModules = {}
+        dicUserModules[dicUser['Name']] = []
+
+
+        for key in values:
+            value = self.getConfigOption(dicUser['Name'],key,cp1)
+            
+            if value:
+                liValue = value.split('#')
+                liKey = []
+                for i in liValue:
+                    i = i.strip()
+                    liPoint = i.split(';')
+                    print liPoint
+                    print i
+                    try:
+                        
+                        print 'item',liPoint
+                        dicKey = {}
+
+                        dicKey[key] = {liPoint[0]:liPoint[1]}
+                        dicUserModules[dicUser['Name']].append(dicKey)
+                        
+
+                    except Exception,params:
+                        print Exception,params
+                
+        values = ['extendet_gpl']
+        for key in values:
+            value = self.getConfigOption(dicUser['Name'],key,cp1)
+            
+            if value:
+                liValue = value.split('#')
+                dicKey = {}
+
+                for i in liValue:
+                    i = i.strip()
+                    liPoint = i.split(';')
+                    print liPoint
+                    print i
+                    try:
+                        if liPoint[1][0] == '[':
+                            print 'list',liPoint
+                            liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
+                            print liList
+                            dicKey[liPoint[0]] = liList
+                            
+                           
+                        elif liPoint[1][0] == '{':
+
+                            print 'dic',liPoint
+                            liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
+                            print liList
+                            dicKey[liPoint[0]] = liList
+                            
+
+                        else:
+                            print 'item',liPoint
+
+                            dicKey[liPoint[0]] = liPoint[1]
+                            
+
+                    except Exception,params:
+                        print Exception,params
+                dicUserModules[dicUser['Name']].append(dicKey)
         
         dicModul = {}
         # User alle
@@ -53,14 +119,14 @@ class User(xmlrpc.XMLRPC, basics):
         dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
         
         dicUserModules['AllUser'].append(dicExt1)
-        
+        print dicUserModules
         
         # User jhamel
-        dicUserModules['jhamel'] = [{'all':{'Priv':'all'}},{'experimental':{'Priv':'all'}} ]
-        dicUserModules['jhamel'].append({'staff':{'Priv':'all'}})
-        dicUserModules['jhamel'].append({'expert_system':{'Priv':'all'}})
-        dicUserModules['jhamel'].append({'project':{'Priv':'all'}})
-        
+##        dicUserModules['jhamel'] = [{'all':{'Priv':'all'}},{'experimental':{'Priv':'all'}} ]
+##        dicUserModules['jhamel'].append({'staff':{'Priv':'all'}})
+##        dicUserModules['jhamel'].append({'expert_system':{'Priv':'all'}})
+##        dicUserModules['jhamel'].append({'project':{'Priv':'all'}})
+##        dicUserModules['jhamel'].append({'forms':{'Priv':'all'}})
         dicExt1 = {'extendet_gpl':[{'Priv':'all','MenuItem':{'Main':'data','Sub':'Extendet1', 'ExternalNumber':'ext1'},'Imports':['cuon.Ext1.ext1','cuon.Ext1.ext2']}]}
         dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
         
@@ -71,7 +137,7 @@ class User(xmlrpc.XMLRPC, basics):
         dicExt1['extendet_gpl'].append({'Priv':'all','MenuItem':{'Main':'data','Sub':'botany1', 'ExternalNumber':'ext3'},'Imports':['cuon.Garden.botany','cuon.Garden.botany']})
         dicExt1['extendet_gpl'][2]['MenuStart']='cuon.Garden.botany.botanywindow(self.allTables)'
         
-        dicUserModules['jhamel'].append(dicExt1)
+        dicUserModules[dicUser['Name']].append(dicExt1)
         
         
         

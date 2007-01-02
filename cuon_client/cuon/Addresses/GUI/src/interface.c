@@ -48,25 +48,13 @@ static GnomeUIInfo mi_datei1_menu_uiinfo[] =
 
 static GnomeUIInfo mi_edit_menu_uiinfo[] =
 {
-  {
-    GNOME_APP_UI_ITEM, N_("gtk-undo"),
-    NULL,
-    (gpointer) on_undo1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("gtk-find"),
-    NULL,
-    (gpointer) on_find1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
+  GNOMEUIINFO_MENU_UNDO_ITEM (on_undo1_activate, NULL),
+  GNOMEUIINFO_MENU_FIND_ITEM (on_find1_activate, NULL),
   {
     GNOME_APP_UI_ITEM, N_("choose"),
     NULL,
     (gpointer) on_chooseAddress_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-yes",
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_END
@@ -116,13 +104,7 @@ static GnomeUIInfo mi_address1_menu_uiinfo[] =
 
 static GnomeUIInfo mi_bank1_menu_uiinfo[] =
 {
-  {
-    GNOME_APP_UI_ITEM, N_("gtk-new"),
-    NULL,
-    (gpointer) on_bank_new1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
+  GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_bank_new1_activate, NULL),
   {
     GNOME_APP_UI_ITEM, N_("save"),
     NULL,
@@ -183,13 +165,7 @@ static GnomeUIInfo mi_partner1_menu_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("gtk-print"),
-    NULL,
-    (gpointer) on_mi_PartnerPrint1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
+  GNOMEUIINFO_MENU_PRINT_ITEM (on_mi_PartnerPrint1_activate, NULL),
   GNOMEUIINFO_SEPARATOR,
   {
     GNOME_APP_UI_ITEM, N_("_Delete"),
@@ -203,13 +179,7 @@ static GnomeUIInfo mi_partner1_menu_uiinfo[] =
 
 static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
 {
-  {
-    GNOME_APP_UI_ITEM, N_("gtk-new"),
-    NULL,
-    (gpointer) on_SchedulNew_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
+  GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_SchedulNew_activate, NULL),
   {
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
@@ -217,13 +187,20 @@ static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  GNOMEUIINFO_MENU_SAVE_ITEM (on_SchedulSave_activate, NULL),
+  GNOMEUIINFO_END
+};
+
+static GnomeUIInfo mi_notes1_menu_uiinfo[] =
+{
   {
-    GNOME_APP_UI_ITEM, N_("gtk-save"),
+    GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
-    (gpointer) on_SchedulSave_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    (gpointer) on_NotesEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
+  GNOMEUIINFO_MENU_SAVE_ITEM (on_NotesSave_activate, NULL),
   GNOMEUIINFO_END
 };
 
@@ -318,6 +295,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Schedul"),
     NULL,
     mi_schedul1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Notes"),
+    NULL,
+    mi_notes1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -553,31 +537,42 @@ create_AddressMainwindow (void)
   GtkWidget *hbox22;
   GtkWidget *eSchedulFor;
   GtkWidget *bSchedulFor;
+  GtkWidget *eSchedulForName;
   GtkWidget *lSchedul;
+  GtkWidget *notebook2;
   GtkWidget *vbox10;
   GtkWidget *hbox25;
+  GtkWidget *bAddNameMisc;
+  GtkWidget *cbeNotesMisc;
   GtkWidget *bAddFormular2NotesMisc;
   GtkWidget *scrolledwindow6;
   GtkWidget *tvNotesMisc;
   GtkWidget *label60;
   GtkWidget *vbox11;
   GtkWidget *hbox26;
+  GtkWidget *bAddNameContacter;
+  GtkWidget *cbeNotescontacter;
   GtkWidget *bAddFormulat2NotesContacter;
   GtkWidget *scrolledwindow7;
   GtkWidget *tvNotesContacter;
   GtkWidget *label61;
   GtkWidget *vbox12;
   GtkWidget *hbox27;
+  GtkWidget *bAddNameRep;
+  GtkWidget *cbeNotesRep;
   GtkWidget *bAddformular2NotesRep;
   GtkWidget *scrolledwindow8;
   GtkWidget *tvNotesRep;
   GtkWidget *label62;
   GtkWidget *vbox13;
   GtkWidget *hbox28;
+  GtkWidget *bAddnameSalesman;
+  GtkWidget *cbeNotesSalesman;
   GtkWidget *bAddFormular2NotesSalesman;
   GtkWidget *scrolledwindow9;
   GtkWidget *tvNotesSalesman;
   GtkWidget *label63;
+  GtkWidget *label64;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -2020,20 +2015,35 @@ create_AddressMainwindow (void)
   gtk_widget_show (bSchedulFor);
   gtk_box_pack_start (GTK_BOX (hbox22), bSchedulFor, FALSE, FALSE, 0);
 
+  eSchedulForName = gtk_entry_new ();
+  gtk_widget_show (eSchedulForName);
+  gtk_box_pack_start (GTK_BOX (vbox9), eSchedulForName, FALSE, FALSE, 0);
+
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), lSchedul);
   gtk_misc_set_alignment (GTK_MISC (lSchedul), 0, 0);
 
+  notebook2 = gtk_notebook_new ();
+  gtk_widget_show (notebook2);
+  gtk_container_add (GTK_CONTAINER (notebook1), notebook2);
+
   vbox10 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox10);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox10);
-  gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (notebook1), vbox10,
-                                      FALSE, FALSE, GTK_PACK_START);
+  gtk_container_add (GTK_CONTAINER (notebook2), vbox10);
 
   hbox25 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox25);
   gtk_box_pack_start (GTK_BOX (vbox10), hbox25, TRUE, TRUE, 0);
+
+  bAddNameMisc = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddNameMisc);
+  gtk_box_pack_start (GTK_BOX (hbox25), bAddNameMisc, FALSE, FALSE, 0);
+
+  cbeNotesMisc = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeNotesMisc);
+  gtk_box_pack_start (GTK_BOX (hbox25), cbeNotesMisc, TRUE, TRUE, 0);
+  gtk_widget_set_sensitive (cbeNotesMisc, FALSE);
 
   bAddFormular2NotesMisc = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormular2NotesMisc);
@@ -2047,19 +2057,27 @@ create_AddressMainwindow (void)
   tvNotesMisc = gtk_text_view_new ();
   gtk_widget_show (tvNotesMisc);
   gtk_container_add (GTK_CONTAINER (scrolledwindow6), tvNotesMisc);
-  gtk_widget_set_size_request (tvNotesMisc, -1, 295);
+  gtk_widget_set_size_request (tvNotesMisc, -1, 265);
 
   label60 = gtk_label_new (_("Notes misc"));
   gtk_widget_show (label60);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label60);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 0), label60);
 
   vbox11 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox11);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox11);
+  gtk_container_add (GTK_CONTAINER (notebook2), vbox11);
 
   hbox26 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox26);
   gtk_box_pack_start (GTK_BOX (vbox11), hbox26, TRUE, TRUE, 0);
+
+  bAddNameContacter = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddNameContacter);
+  gtk_box_pack_start (GTK_BOX (hbox26), bAddNameContacter, FALSE, FALSE, 0);
+
+  cbeNotescontacter = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeNotescontacter);
+  gtk_box_pack_start (GTK_BOX (hbox26), cbeNotescontacter, TRUE, TRUE, 0);
 
   bAddFormulat2NotesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormulat2NotesContacter);
@@ -2073,19 +2091,27 @@ create_AddressMainwindow (void)
   tvNotesContacter = gtk_text_view_new ();
   gtk_widget_show (tvNotesContacter);
   gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvNotesContacter);
-  gtk_widget_set_size_request (tvNotesContacter, -1, 295);
+  gtk_widget_set_size_request (tvNotesContacter, -1, 280);
 
   label61 = gtk_label_new (_("Notes contacter"));
   gtk_widget_show (label61);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label61);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 1), label61);
 
   vbox12 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox12);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox12);
+  gtk_container_add (GTK_CONTAINER (notebook2), vbox12);
 
   hbox27 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox27);
   gtk_box_pack_start (GTK_BOX (vbox12), hbox27, TRUE, TRUE, 0);
+
+  bAddNameRep = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddNameRep);
+  gtk_box_pack_start (GTK_BOX (hbox27), bAddNameRep, FALSE, FALSE, 0);
+
+  cbeNotesRep = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeNotesRep);
+  gtk_box_pack_start (GTK_BOX (hbox27), cbeNotesRep, TRUE, TRUE, 0);
 
   bAddformular2NotesRep = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddformular2NotesRep);
@@ -2099,19 +2125,27 @@ create_AddressMainwindow (void)
   tvNotesRep = gtk_text_view_new ();
   gtk_widget_show (tvNotesRep);
   gtk_container_add (GTK_CONTAINER (scrolledwindow8), tvNotesRep);
-  gtk_widget_set_size_request (tvNotesRep, -1, 295);
+  gtk_widget_set_size_request (tvNotesRep, -1, 280);
 
   label62 = gtk_label_new (_("notes representant"));
   gtk_widget_show (label62);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 7), label62);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 2), label62);
 
   vbox13 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox13);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox13);
+  gtk_container_add (GTK_CONTAINER (notebook2), vbox13);
 
   hbox28 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox28);
   gtk_box_pack_start (GTK_BOX (vbox13), hbox28, TRUE, TRUE, 0);
+
+  bAddnameSalesman = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddnameSalesman);
+  gtk_box_pack_start (GTK_BOX (hbox28), bAddnameSalesman, FALSE, FALSE, 0);
+
+  cbeNotesSalesman = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeNotesSalesman);
+  gtk_box_pack_start (GTK_BOX (hbox28), cbeNotesSalesman, TRUE, TRUE, 0);
 
   bAddFormular2NotesSalesman = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormular2NotesSalesman);
@@ -2125,11 +2159,15 @@ create_AddressMainwindow (void)
   tvNotesSalesman = gtk_text_view_new ();
   gtk_widget_show (tvNotesSalesman);
   gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvNotesSalesman);
-  gtk_widget_set_size_request (tvNotesSalesman, -1, 295);
+  gtk_widget_set_size_request (tvNotesSalesman, -1, 280);
 
   label63 = gtk_label_new (_("notes salesman"));
   gtk_widget_show (label63);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 8), label63);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 3), label63);
+
+  label64 = gtk_label_new (_("Notes"));
+  gtk_widget_show (label64);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label64);
 
   g_signal_connect ((gpointer) tbNew1, "clicked",
                     G_CALLBACK (on_tbNew1_clicked),
@@ -2284,14 +2322,26 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bSchedulFor, "clicked",
                     G_CALLBACK (on_bSchedulFor_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bAddNameMisc, "clicked",
+                    G_CALLBACK (on_bAddNameMisc_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bAddFormular2NotesMisc, "clicked",
                     G_CALLBACK (on_bAddFormular2NoticesMisc_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bAddNameContacter, "clicked",
+                    G_CALLBACK (on_bAddNameContacter_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddFormulat2NotesContacter, "clicked",
                     G_CALLBACK (on_bAddFormulat2NoticesContacter_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bAddNameRep, "clicked",
+                    G_CALLBACK (on_bAddNameRep_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bAddformular2NotesRep, "clicked",
                     G_CALLBACK (on_bAddformular2NoticesRep_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bAddnameSalesman, "clicked",
+                    G_CALLBACK (on_bAddnameSalesman_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddFormular2NotesSalesman, "clicked",
                     G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
@@ -2336,7 +2386,10 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[0].widget, "mi_SchedulNew");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[1].widget, "mi_SchedulEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[2].widget, "mi_schedulSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_lists1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_notes1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[0].widget, "NotesEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[1].widget, "NotesSave");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_lists1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[0].widget, "listAddresses1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
@@ -2553,31 +2606,42 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox22, "hbox22");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulFor, "eSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulFor, "bSchedulFor");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulForName, "eSchedulForName");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook2, "notebook2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameMisc, "bAddNameMisc");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesMisc, "cbeNotesMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesMisc, "bAddFormular2NotesMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow6, "scrolledwindow6");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesMisc, "tvNotesMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label60, "label60");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox11, "vbox11");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox26, "hbox26");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameContacter, "bAddNameContacter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotescontacter, "cbeNotescontacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormulat2NotesContacter, "bAddFormulat2NotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow7, "scrolledwindow7");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesContacter, "tvNotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label61, "label61");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox12, "vbox12");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox27, "hbox27");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameRep, "bAddNameRep");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesRep, "cbeNotesRep");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddformular2NotesRep, "bAddformular2NotesRep");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow8, "scrolledwindow8");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesRep, "tvNotesRep");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label62, "label62");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox13, "vbox13");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox28, "hbox28");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddnameSalesman, "bAddnameSalesman");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesSalesman, "cbeNotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesSalesman, "bAddFormular2NotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow9, "scrolledwindow9");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesSalesman, "tvNotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label63, "label63");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label64, "label64");
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
 
   gtk_widget_grab_default (eFashion);

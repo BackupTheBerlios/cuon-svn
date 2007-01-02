@@ -36,6 +36,8 @@ class SingleMisc(SingleData):
         #
         self.addressId = 0
         
+    
+        
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SingleMisc'
         dicValues['address_id'] = [self.addressId, 'int']

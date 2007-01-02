@@ -41,6 +41,28 @@ class SingleAddress(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
+    def getAddressPhone1(self, id):
+        
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            print 'Exception by getAddressPhone1-1'
+            id = 0
+            dicRecords = {}
+        Phone = ''
+        try:
+            if dicRecords:
+                Phone = dicRecords[0]['phone']
+        except:
+            print 'Exception by getAddressPhone1-2'
+
+            Phone = ''
+        
+        return Phone
+        
+        
     def getAddress(self, id):
         try:
             id = long(id)

@@ -71,6 +71,14 @@ create_window1 (void)
   GtkWidget *mi_test1;
   GtkWidget *mi_expert_system1;
   GtkWidget *mi_project1;
+  GtkWidget *forms1;
+  GtkWidget *forms1_menu;
+  GtkWidget *forms_addresses1;
+  GtkWidget *forms_addresses1_menu;
+  GtkWidget *mi_addresses_notes_misc1;
+  GtkWidget *mi_addresses_notes_contacter1;
+  GtkWidget *mi_addresses_notes_representant1;
+  GtkWidget *mi_addresses_notes_salesman1;
   GtkWidget *trennlinie5;
   GtkWidget *tools;
   GtkWidget *tools_menu;
@@ -285,6 +293,36 @@ create_window1 (void)
   mi_project1 = gtk_menu_item_new_with_mnemonic (_("Project"));
   gtk_widget_show (mi_project1);
   gtk_container_add (GTK_CONTAINER (extras_menu), mi_project1);
+
+  forms1 = gtk_menu_item_new_with_mnemonic (_("Forms"));
+  gtk_widget_show (forms1);
+  gtk_container_add (GTK_CONTAINER (extras_menu), forms1);
+
+  forms1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (forms1), forms1_menu);
+
+  forms_addresses1 = gtk_menu_item_new_with_mnemonic (_("Addresses"));
+  gtk_widget_show (forms_addresses1);
+  gtk_container_add (GTK_CONTAINER (forms1_menu), forms_addresses1);
+
+  forms_addresses1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (forms_addresses1), forms_addresses1_menu);
+
+  mi_addresses_notes_misc1 = gtk_menu_item_new_with_mnemonic (_("Notes Misc"));
+  gtk_widget_show (mi_addresses_notes_misc1);
+  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_misc1);
+
+  mi_addresses_notes_contacter1 = gtk_menu_item_new_with_mnemonic (_("Notes contacter"));
+  gtk_widget_show (mi_addresses_notes_contacter1);
+  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_contacter1);
+
+  mi_addresses_notes_representant1 = gtk_menu_item_new_with_mnemonic (_("Notes Representant"));
+  gtk_widget_show (mi_addresses_notes_representant1);
+  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_representant1);
+
+  mi_addresses_notes_salesman1 = gtk_menu_item_new_with_mnemonic (_("Notes Salesman"));
+  gtk_widget_show (mi_addresses_notes_salesman1);
+  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_salesman1);
 
   trennlinie5 = gtk_separator_menu_item_new ();
   gtk_widget_show (trennlinie5);
@@ -553,6 +591,21 @@ create_window1 (void)
   g_signal_connect ((gpointer) mi_project1, "activate",
                     G_CALLBACK (on_project1_activate),
                     NULL);
+  g_signal_connect ((gpointer) forms_addresses1, "activate",
+                    G_CALLBACK (on_forms_addresses1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) mi_addresses_notes_misc1, "activate",
+                    G_CALLBACK (on_addresses_notes_misc1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) mi_addresses_notes_contacter1, "activate",
+                    G_CALLBACK (on_addresses_notes_contacter1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) mi_addresses_notes_representant1, "activate",
+                    G_CALLBACK (on_addresses_notes_representant1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) mi_addresses_notes_salesman1, "activate",
+                    G_CALLBACK (on_addresses_notes_salesman1_activate),
+                    NULL);
   g_signal_connect ((gpointer) preferences1, "activate",
                     G_CALLBACK (on_preferences1_activate),
                     NULL);
@@ -641,6 +694,14 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mi_test1, "mi_test1");
   GLADE_HOOKUP_OBJECT (window1, mi_expert_system1, "mi_expert_system1");
   GLADE_HOOKUP_OBJECT (window1, mi_project1, "mi_project1");
+  GLADE_HOOKUP_OBJECT (window1, forms1, "forms1");
+  GLADE_HOOKUP_OBJECT (window1, forms1_menu, "forms1_menu");
+  GLADE_HOOKUP_OBJECT (window1, forms_addresses1, "forms_addresses1");
+  GLADE_HOOKUP_OBJECT (window1, forms_addresses1_menu, "forms_addresses1_menu");
+  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_misc1, "mi_addresses_notes_misc1");
+  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_contacter1, "mi_addresses_notes_contacter1");
+  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_representant1, "mi_addresses_notes_representant1");
+  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_salesman1, "mi_addresses_notes_salesman1");
   GLADE_HOOKUP_OBJECT (window1, trennlinie5, "trennlinie5");
   GLADE_HOOKUP_OBJECT (window1, tools, "tools");
   GLADE_HOOKUP_OBJECT (window1, tools_menu, "tools_menu");

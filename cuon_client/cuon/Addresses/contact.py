@@ -45,7 +45,9 @@ class contactwindow(chooseWindows):
     def __init__(self, allTables, address_nr=0, partner_nr=0):
 
         chooseWindows.__init__(self)
-       
+        self.contact_address_id = address_nr
+        self.contact_partner_id = partner_nr
+        
         self.singleContact = SingleContact.SingleContact(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
@@ -174,7 +176,9 @@ class contactwindow(chooseWindows):
         self.setTextbuffer(eAdrField,liAdr)
     
 
-
+    def on_bGoToAddress_clicked(self, event):
+        print 'go to address'
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.contact_address_id, partnerid=self.contact_partner_id)
         
     
               

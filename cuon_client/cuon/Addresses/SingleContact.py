@@ -16,6 +16,7 @@
 from cuon.Databases.SingleData import SingleData
 import logging
 import cuon.Addresses.SingleAddress
+import cuon.Addresses.SinglePartner
 
 class SingleContact(SingleData):
 
@@ -58,12 +59,34 @@ class SingleContact(SingleData):
         print 'liAddress', liAddress
         
         return liAddress
+        
+    def getPhone(self, address_id):
+        print address_id
+        singleAddress = cuon.Addresses.SingleAddress.SingleAddress(self.allTables)
+        
+        Phone = singleAddress.getAddressPhone1(address_id)
+        
+        return Phone
+        
+    def getPhonePartner(self, partnerid):
+        print partnerid
+        
+        singlePartner = cuon.Addresses.SinglePartner.SinglePartner(self.allTables)
+        
+        Phone = singlePartner.getPartnerPhone1(partnerid)
+        
+        return Phone
+        
+        
     def fillOtherEntries(self, oneRecord):
         print 'fill tvAddress'
         if oneRecord['address_id'] > 0:
             liAddr = self.getAddress(oneRecord['address_id'])
             print liAddr
             self.setTextbuffer(self.getWidget('tvAddress'),liAddr)
+            self.getWidget('ePhoneAddress1').set_text(self.getPhone(oneRecord['address_id']))
+        if oneRecord['partnerid'] > 0:
+            self.getWidget('ePhonePartner').set_text(self.getPhonePartner(oneRecord['partnerid']))
             
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePartner'
