@@ -106,16 +106,16 @@ static GnomeUIInfo mi_bank1_menu_uiinfo[] =
 {
   GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_bank_new1_activate, NULL),
   {
-    GNOME_APP_UI_ITEM, N_("save"),
+    GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
-    (gpointer) on_bank_save1_activate, NULL, NULL,
+    (gpointer) on_bank_edit1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
   {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
+    GNOME_APP_UI_ITEM, N_("save"),
     NULL,
-    (gpointer) on_bank_edit1_activate, NULL, NULL,
+    (gpointer) on_bank_save1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -125,17 +125,17 @@ static GnomeUIInfo mi_bank1_menu_uiinfo[] =
 static GnomeUIInfo mi_misc1_menu_uiinfo[] =
 {
   {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_MiscSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_MiscEdit1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_MiscSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_END
@@ -2369,11 +2369,11 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[6].widget, "mi_clear1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[3].widget, "mi_bank1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[0].widget, "new1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[1].widget, "save1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[2].widget, "bank_edit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[1].widget, "bank_edit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[2].widget, "save1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[4].widget, "mi_misc1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[0].widget, "mi_MiscSave1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[1].widget, "mi_MiscEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[0].widget, "mi_MiscEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[1].widget, "mi_MiscSave1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[5].widget, "mi_partner1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[0].widget, "mi_PartnerNew1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "mi_PartnerEdit1");

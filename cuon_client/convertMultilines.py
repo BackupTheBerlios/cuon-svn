@@ -6,12 +6,12 @@ def writeValues(f_out, liS1):
     s = ''
     for i in liS1:
         s += i.strip() + ';'
-    print 'AAAA----------------------------------------'
+    #print 'AAAA----------------------------------------'
        
     s = s[:len(s)-1]
-    print 's = ', s
+    #print 's = ', s
 
-    print 'BBBB----------------------------------------'
+    #print 'BBBB----------------------------------------'
     f_out.write(s+'\n')
 
 print sys.argv
@@ -36,7 +36,7 @@ ok = False
 s1 = f_in.readline()
 liAll = []
 while s1:
-    print '----------------------------------------------------------------'
+    #print '----------------------------------------------------------------'
     #print s1
     liS1 = s1.split(';')
     liS1.append('\"\"')
@@ -46,34 +46,34 @@ while s1:
     if len(liAll) > 0:
         lastIndex = len(liAll) -1
         liS2 = liAll[lastIndex]
-        print liS1
-        print '::::::'
-        print liS2
-        print 
+        #print liS1
+        #print '::::::'
+        #print liS2
+        #print 
         
         if liS1[11].strip() == 'Telefax':
-            print 'set Telefax'
+            #print 'set Telefax'
             
             liS1[17] = liS1[15]
-            print liS1
+            #print liS1
         elif liS1[11].strip() == 'Mobil':
             liS1[18] = liS1[15]
         else:
-            print 'Normal'
+            #print 'Normal'
             liS1[16] = liS1[15]
-        print liS1
-        print '::::::'
-        print liS2
-        print 
+        #print liS1
+        #print '::::::'
+        #print liS2
+        #print 
         
         if liS1[1] == liS2[1] and liS1[2] == liS2[2] and  liS1[4] == liS2[4] and liS1[7] == liS2[7] and liS1[10] == liS2[10]:
-            print liS1[1], liS2[1]
-            print liS1[2], liS2[2]
-            print liS1[4], liS2[4]
-            print liS1[7], liS2[7]
-            print liS1[10], liS2[10]
+            #print liS1[1], liS2[1]
+            #print liS1[2], liS2[2]
+            #print liS1[4], liS2[4]
+            #print liS1[7], liS2[7]
+            #print liS1[10], liS2[10]
         
-            print 'len liS1', len(liS1)
+            #print 'len liS1', len(liS1)
             if liS1[11].strip() == '"Telefax"':
                 liS2[17] = liS1[15]
             elif liS1[11].strip() == '"Mobil"':
@@ -89,9 +89,9 @@ while s1:
         liAll.append(liS1)
         
     s1 = f_in.readline()
-    print '################################################################'
-    print 
-print len(liAll)
+    #print '################################################################'
+    #print 
+#print len(liAll)
 
 f_in.close()
 for liS in liAll:

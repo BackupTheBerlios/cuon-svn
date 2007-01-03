@@ -225,11 +225,13 @@ class addresswindow(chooseWindows):
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
         
         # enabledMenues for Notes
-        self.addEnabledMenuItems('editNotes', '')
+        self.addEnabledMenuItems('editNotes', 'NotesEdit1')
   
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','mi_PartnerSave1', self.dicUserKeys['address_partner_save'])
+        self.addEnabledMenuItems('editSave','NotesSave', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','mi_MiscSave1', self.dicUserKeys['address_save'])
 
         
 
@@ -378,7 +380,24 @@ class addresswindow(chooseWindows):
         self.out( "delete Schedul addresses v2")
         self.singleSchedul.deleteRecord()
 
-    
+    # Menu Notes
+    def on_NotesSave_activate(self, event):
+        
+        self.out( "save Notes addresses v2")
+        self.doEdit = self.noEdit
+        self.singleAddressNotes.addressId = self.singleAddress.ID
+        
+        self.singleAddressNotes.save()
+        self.setEntriesEditable(self.EntriesNotes, FALSE)
+        self.tabChanged()
+
+    def on_NotesEdit1_activate(self, event):
+        self.out( "edit notes v2")
+        self.doEdit = self.tabNotes
+        
+        self.setEntriesEditable(self.EntriesNotes, TRUE)
+
+    # several functions
         
     def on_calendar1_day_selected_double_click(self, event):
         print event
@@ -665,6 +684,13 @@ class addresswindow(chooseWindows):
             eAdrField.set_text(cAdr)
         except Exception, params:
             print Exception, params    
+            
+            
+            
+    def on_bAddNameMisc_clicked(self, event):
+        text = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
+        self.add2Textbuffer(self.getWidget('tvNotesMisc'),text,'Head')
+        
     def saveData(self):
         print 'save Addresses'
         if self.doEdit == self.tabAddress:
@@ -700,8 +726,9 @@ class addresswindow(chooseWindows):
             self.singleSchedul.connectTree()
             self.singleSchedul.refreshTree()
             
-     
-
+        elif self.tabOption == self.tabNotes:
+            self.singleAddressNotes.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
+            self.singleAddressNotes.fillEntries(self.singleAddressNotes.findSingleId())
 
          
     def tabChanged(self):
@@ -764,6 +791,16 @@ class addresswindow(chooseWindows):
             self.editAction = 'editSchedul'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singlePartner.sStatus])
+            
+            
+        elif self.tabOption == self.tabNotes:
+            self.out( 'Seite 3')
+
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('notes')
+            self.editAction = 'editNotes'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
 
         # refresh the Tree
         self.refreshTree()
