@@ -3169,7 +3169,7 @@
 		      <property name="editable">False</property>
 		      <property name="visibility">True</property>
 		      <property name="max_length">0</property>
-		      <property name="text"></property>
+		      <property name="text">Customer</property>
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
@@ -3182,7 +3182,7 @@
 		      <property name="selection_mode">GTK_SELECTION_BROWSE</property>
 
 		      <child>
-			<widget class="GtkListItem" id="listitem126">
+			<widget class="GtkListItem" id="listitem365">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Customer</property>
@@ -3190,7 +3190,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkListItem" id="listitem127">
+			<widget class="GtkListItem" id="listitem366">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Vendor</property>
@@ -3198,7 +3198,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkListItem" id="listitem128">
+			<widget class="GtkListItem" id="listitem367">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Authority</property>
@@ -3206,7 +3206,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkListItem" id="listitem129">
+			<widget class="GtkListItem" id="listitem368">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Private</property>
@@ -3214,10 +3214,34 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkListItem" id="listitem130">
+			<widget class="GtkListItem" id="listitem369">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Misc</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem370">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">No Interest</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem371">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Some Interest</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkListItem" id="listitem372">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Mostly Interest</property>
 			</widget>
 		      </child>
 		    </widget>

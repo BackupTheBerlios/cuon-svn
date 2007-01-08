@@ -110,17 +110,24 @@ class Address(xmlrpc.XMLRPC, basics):
                     print dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60, nD3.seconds, nD1, nD2 
 
                     ok = False
+                    
                     if nD3.days < 0:
                         ok = True
+                    
+                    elif nD3.days >= 0:
+                    
+                        warningDays = nD3.days - dicResult['alarm_days'] 
                         
-                    if dicResult['alarm_days'] <= nD3.days : 
-                        ok = True
-                    if dicResult['alarm_days'] == 0 and not ok:
-                        AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
-                        print 'AlarmSeconds = ', AlarmSeconds
-                        print 'Differenz', nD3.seconds
-                        if AlarmSeconds > nD3.seconds :
-                           ok = True
+                        if warningDays < 0 : 
+                            ok = True
+                        elif warningDays > 0 : 
+                            ok = False
+                        elif warningDays == 0 :
+                            AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
+                            print 'AlarmSeconds = ', AlarmSeconds
+                            print 'Differenz', nD3.seconds
+                            if AlarmSeconds > nD3.seconds :
+                               ok = True
                     if  ok:
                         print 'copy entry to  list'
                         liResult2.append(dicResult)

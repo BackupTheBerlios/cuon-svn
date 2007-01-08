@@ -688,9 +688,26 @@ class addresswindow(chooseWindows):
             
             
     def on_bAddNameMisc_clicked(self, event):
-        text = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
-        self.add2Textbuffer(self.getWidget('tvNotesMisc'),text,'Head')
+        self.addName2Note('tvNotesMisc')
+
+    def on_bAddNameContacter_clicked(self, event):
+        self.addName2Note('tvNotesMisc')
+    def on_bAddNameRep_clicked(self, event):
+        self.addName2Note('tvNotesMisc')
+    def on_bAddNameSalesman_clicked(self, event):
+        self.addName2Note('tvNotesMisc')
+
+
+
+
+    def addName2Note(self, sWidget):
+        t1 = self.rpc.callRP('User.getDate', self.dicUser)
+        t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
+        text = t1 + ' : ' + t2
+        print text
+        self.add2Textbuffer(self.getWidget(sWidget),text,'Head')
         
+    
     def saveData(self):
         print 'save Addresses'
         if self.doEdit == self.tabAddress:

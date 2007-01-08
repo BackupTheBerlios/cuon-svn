@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2005]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2005]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -37,8 +37,8 @@ class SingleImport(SingleData):
         #self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
         #self.listHeader['names'] = ['title', 'designation', 'ID']
         #self.listHeader['size'] = [25,10,25,25,10]
-        print "number of Columns "
-        print len(self.table.Columns)
+        #print "number of Columns "
+        #print len(self.table.Columns)
         #
         self.tree1 = None
         

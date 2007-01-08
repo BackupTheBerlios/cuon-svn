@@ -37,6 +37,7 @@ class import_generic1(fileSelection):
         self.dicFileAttributes['toChangedValue'] = ''
         self.dicFileAttributes['allTables'] = allTables
         
+        self.iColumns = 0
         
           
          
@@ -78,28 +79,35 @@ class import_generic1(fileSelection):
                     if liS[0] == 'header':
                         self.dicFileAttributes['importHeader'] = liS[1]        
                     if liS[0] == 'column':
+                        self.iColumns += 1
                         s2 = liS[1]
                         if s2:
                             liS2 = s2.split(',')
-                            print 'liS2', `liS2`
+                            #print 'liS2', `liS2`
                             dicColumn = {}
                             dicColumn['name'] = liS2[0].strip()
                             dicColumn['field'] = liS2[1].strip()
                             self.dicFileAttributes['liColumns'].append(dicColumn)
-                            print 'licolumns-0', `self.dicFileAttributes['liColumns']`
+                            #print 'licolumns-0', `self.dicFileAttributes['liColumns']`
                 s = ctrlFile.readline()
             
-            print 'licolumns', `self.dicFileAttributes['liColumns']`
+            #print 'licolumns', `self.dicFileAttributes['liColumns']`
                         
             ctrlFile.close()
 
                                
     def standardImport(self):
-        print 'dicfileAttributes', self.dicFileAttributes
+        #print 'dicfileAttributes', self.dicFileAttributes
         importFile = open(self.dicFileAttributes['inputFile'])
 
         s1 = importFile.readline()
-        lS2 = s1.split(self.dicFileAttributes['fromChangedValue'])
+        lS2 = s1.split(self.dicFileAttributes['splitValue'])
+        print 'icolumns = ', self.iColumns
+        while (len(lS2) < self.iColumns):
+            s1 += importFile.readline()
+            lS2 = s1.split(self.dicFileAttributes['splitValue'])
+##            
+            
 ##        # Headlines
 ##        # for exmple 
 ##        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
@@ -118,24 +126,34 @@ class import_generic1(fileSelection):
                     s1 = importFile.readline()
 
         se = 1
-        while s1:
+        while True:
             #print s1
-            #print '----'
+            print '----'
             if self.dicFileAttributes['decodeData']:
                 s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
             if self.dicFileAttributes['fromChangedValue']:
                 s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
             lS1 = s1.split(self.dicFileAttributes['splitValue'])
             
+                
+            while (len(lS1) < self.iColumns):
+                s1 += importFile.readline().strip()
+                if self.dicFileAttributes['decodeData']:
+                    s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
+                if self.dicFileAttributes['fromChangedValue']:
+                    s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
+                    
+                lS1 = s1.split(self.dicFileAttributes['splitValue'])
+                
             #exportFile.write(s1)
             print lS1
             # now set the values
             dicValues = {}
-            print 'self.dicFileAttributes = ', self.dicFileAttributes
+            #print 'self.dicFileAttributes = ', self.dicFileAttributes
             
             for i in range(len(self.dicFileAttributes['liColumns'])):
                 if self.dicFileAttributes['liColumns'][i]['field'] != 'none':
-                    print '###--> ', self.dicFileAttributes['liColumns'][i]['field']
+                    #print '###--> ', self.dicFileAttributes['liColumns'][i]['field']
                     dicValues[self.dicFileAttributes['liColumns'][i]['name']] = [lS1[i].strip(),self.dicFileAttributes['liColumns'][i]['field']]
 
 
@@ -161,15 +179,15 @@ class import_generic1(fileSelection):
                     
                     s9 = dicValues['products_model'][0][0:3]
                     if  s9 == '913' or s9 == '311' or  s9 == '301' or s9 =='302' or s9 =='303'  :
-                        print `dicValues`
+                        #print `dicValues`
                         result = self.rpc.callRP('src.Articles.py_insertWebshopArticle', dicValues, self.dicUser)
                     #print ' webshop-data for article', `result`
                     
                     
                     
-            s1 = importFile.readline()
+            s1 = importFile.readline().strip()
             se += 1
-            print se
+            #print se
             #s1 = None
         importFile.close()
 

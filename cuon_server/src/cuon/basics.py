@@ -260,7 +260,8 @@ class basics(xmlrpc.XMLRPC):
         
     def getStaffID(self, dicUser):
         return "(select id from staff where staff.cuon_username = '" +  dicUser['Name'] + "') "
-              
+    
+    
     def getTimeString(self, time_id):
         dicTime = []
         

@@ -3,6 +3,7 @@ from twisted.web import xmlrpc
 import os
 import sys
 import time
+from datetime import datetime
 import random	
 import xmlrpclib
 from basics import basics
@@ -197,3 +198,22 @@ class User(xmlrpc.XMLRPC, basics):
         self.writeLog('ListOfclients = ' + `dicClients`)
         
         return dicClients
+    def xmlrpc_getDate(self, dicUser):
+        #currentDate = time.localtime()
+        #print currentDate
+        #nD2 = datetime(currentDate[0], currentDate[1],currentDate[2],currentDate[3],currentDate[4], currentDate[5])
+        dt = time.strftime(dicUser['DateformatString'])
+        print dt
+        return dt
+        
+    def xmlrpc_getStaffAddressString(self, dicUser):
+        sSql = "select staff.lastname || ', ' || staff.firstname as address_string from staff where staff.cuon_username = '"
+        sSql += dicUser['Name']  + "' " 
+        sSql += self.getWhere('', dicUser, Single = 2)
+        result = self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
+        if result != 'NONE':
+            return result[0]['address_string']
+        else:
+            return result
+            
+            

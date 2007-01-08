@@ -1295,12 +1295,16 @@ create_AddressMainwindow (void)
   cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Authority"));
   cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Private"));
   cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Misc"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("No Interest"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Some Interest"));
+  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Mostly Interest"));
   gtk_combo_set_popdown_strings (GTK_COMBO (cbFashion), cbFashion_items);
   g_list_free (cbFashion_items);
 
   eFashion = GTK_COMBO (cbFashion)->entry;
   gtk_widget_show (eFashion);
   gtk_editable_set_editable (GTK_EDITABLE (eFashion), FALSE);
+  gtk_entry_set_text (GTK_ENTRY (eFashion), "Customer");
 
   label36 = gtk_label_new (_("fashion"));
   gtk_widget_show (label36);

@@ -73,22 +73,25 @@ class gladeXml(defaultValues):
         widget.set_buffer(buffer)
     
     def add2Textbuffer(self, widget, text, direction = None):
-        buffer = widget.get_buffer()
-        bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
-        
-        if direction and direction == 'Head':
-            bText = text + bText
-            buffer.set_text(bText)
-
-        elif direction and direction == 'Tail':
-            bText += text
-            buffer.set_text(text)
-        elif direction and direction == 'Overwrite':
-            buffer = gtk.TextBuffer(None)
-            buffer.set_text(text)
+        if text:
+            buffer = widget.get_buffer()
+            bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+            if not bText:
+                bText = ''
             
-        widget.set_buffer(buffer)
-        
+            if direction and direction == 'Head':
+                bText = text + bText
+                buffer.set_text(bText)
+    
+            elif direction and direction == 'Tail':
+                bText += text
+                buffer.set_text(text)
+            elif direction and direction == 'Overwrite':
+                buffer = gtk.TextBuffer(None)
+                buffer.set_text(text)
+                
+            widget.set_buffer(buffer)
+            
             
 
     def setXml(self, xml):
