@@ -67,3 +67,23 @@ class Misc(xmlrpc.XMLRPC, basics):
                li.append(result[i]['vat_name'])
         
         return li
+    def xmlrpc_getFormsAddressNotes(self,iType, dicUser):
+        
+        sSql = 'select title, id  from dms where insert_from_module = ' + `iType`
+        sSql += self.getWhere('', dicUser, Single = 2)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        liValues = []
+        if result != 'NONE':
+            for value in result:
+                liValues.append(value['title'] + '###' + `value['id']`)
+                
+                
+        if not liValues:
+            liValues = 'NONE'
+        return liValues
+        
+    def xmlrpc_getForm(self, id, dicUser):
+        sSql = "select * from dms where id = " + `id` 
+        print sSql
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        

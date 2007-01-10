@@ -180,6 +180,25 @@ class addresswindow(chooseWindows):
         if cbFashion:
             cbFashion.set_popdown_strings([_('Customer'),_('Vendor'),_('Authority')])
         
+        # set popdown for forms
+        
+        liCBE = self.rpc.callRP('Misc.getFormsAddressNotes', self.MN['Forms_Address_Notes_Misc'], self.dicUser) 
+        self.fillComboboxForms('cbeNotesMisc', liCBE)
+        
+        liCBE = self.rpc.callRP('Misc.getFormsAddressNotes', self.MN['Forms_Address_Notes_Contacter'], self.dicUser) 
+        self.fillComboboxForms('cbeNotesContacter', liCBE)
+        
+        liCBE = self.rpc.callRP('Misc.getFormsAddressNotes', self.MN['Forms_Address_Notes_Rep'], self.dicUser) 
+        self.fillComboboxForms('cbeNotesRep', liCBE)
+        
+        liCBE = self.rpc.callRP('Misc.getFormsAddressNotes', self.MN['Forms_Address_Notes_Salesman'], self.dicUser) 
+        self.fillComboboxForms('cbeNotesSalesman', liCBE)
+        
+
+
+
+        
+            
         
 
         # Menu-items
@@ -256,7 +275,35 @@ class addresswindow(chooseWindows):
         self.out( "exit addresses v2")
         self.closeWindow() 
     
-    
+    def fillComboboxForms(self, sName, liCBE):
+        widget = self.getWidget(sName)
+        
+        if widget:
+            print sName
+       
+        print liCBE
+        #for value in liCBE:
+            
+        #    cbeNotesMisc.append_text(value)
+        #cbeNotesMisc.set_text_column(liCBE)
+        #treestore = cbeNotesMisc.get_model()
+        #treestore = gtk.TreeStore(str)
+        if liCBE and liCBE != 'NONE':
+            for sColumn in liCBE:
+                print sColumn
+                widget.append_text(sColumn)
+                #treestore.set(iter,i, sColumn )
+            
+            
+            model = widget.get_model()
+            print model
+            print `model`
+            
+            widget.show()
+            widget.set_active(0)
+            #cbeNotesMisc.set_sensitive(True)
+        
+        
 
     #Menu Address
   
@@ -691,13 +738,45 @@ class addresswindow(chooseWindows):
         self.addName2Note('tvNotesMisc')
 
     def on_bAddNameContacter_clicked(self, event):
-        self.addName2Note('tvNotesMisc')
+        self.addName2Note('tvNotesContacter')
     def on_bAddNameRep_clicked(self, event):
-        self.addName2Note('tvNotesMisc')
+        self.addName2Note('tvNotesRep')
     def on_bAddNameSalesman_clicked(self, event):
-        self.addName2Note('tvNotesMisc')
+        self.addName2Note('tvNotesSalesman')
 
-
+    def on_bAddFormular2NoticesMisc_clicked(self, event):
+        self.addForm2Note('cbeNotesMisc','tvNotesMisc')
+        
+    def on_bAddFormular2NoticesContacter_clicked(self, event):
+        self.addForm2Note('cbeNotesContacter','tvNotesContacter')
+    
+    def on_bAddFormular2NoticesRep_clicked(self, event):
+        self.addForm2Note('cbeNotesRep','tvNotesRep')
+       
+    def on_bAddFormular2NoticesSalesman_clicked(self, event):
+        self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
+       
+        
+    def addForm2Note(self, sInput, sOutput):
+        
+        s = self.getActiveText(self.getWidget(sInput))
+        print 'ActiveText', s
+        
+        if s:
+            iNr = 0
+            try:
+                iFind = s.find('###')
+                iNr = int(s[iFind+3:])
+            except Exception, param:
+                print Exception,param
+            
+            if iNr:
+                Formular = self.rpc.callRP('Misc.getForm',iNr, self.dicUser)
+                print Formular
+                if Formular  and Formular != 'NONE':
+                    newForm = self.doDecode(Formular[0]['document_image'])
+                    print 'newForm', newForm
+                    self.add2Textbuffer(self.getWidget(sOutput),newForm,'Tail')
 
 
     def addName2Note(self, sWidget):
@@ -705,7 +784,7 @@ class addresswindow(chooseWindows):
         t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
         text = t1 + ' : ' + t2
         print text
-        self.add2Textbuffer(self.getWidget(sWidget),text,'Head')
+        self.add2Textbuffer(self.getWidget(sWidget),text,'Tail')
         
     
     def saveData(self):

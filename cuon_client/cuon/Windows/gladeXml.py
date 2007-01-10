@@ -71,11 +71,25 @@ class gladeXml(defaultValues):
                 
         buffer.set_text(text)
         widget.set_buffer(buffer)
-    
+        
+        
+    def getActiveText(self, combobox):
+        model = combobox.get_model()
+        active = combobox.get_active()
+        if active < 0:
+            return None
+        return model[active][0]
+
     def add2Textbuffer(self, widget, text, direction = None):
         if text:
             buffer = widget.get_buffer()
             bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+            print '**********************'
+            print bText
+            print '................'
+            print text
+            print '====================='
+            
             if not bText:
                 bText = ''
             
@@ -85,7 +99,7 @@ class gladeXml(defaultValues):
     
             elif direction and direction == 'Tail':
                 bText += text
-                buffer.set_text(text)
+                buffer.set_text(bText)
             elif direction and direction == 'Overwrite':
                 buffer = gtk.TextBuffer(None)
                 buffer.set_text(text)

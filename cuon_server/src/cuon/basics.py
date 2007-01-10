@@ -15,6 +15,13 @@ import ConfigParser
 class basics(xmlrpc.XMLRPC):
     def __init__(self):
         self.debug = 0
+        self.MN = {}
+        self.MN['DMS'] = 11000
+        self.MN['Forms_Address_Notes_Misc'] = 11010
+        self.MN['Forms_Address_Notes_Contacter'] = 11011
+        self.MN['Forms_Address_Notes_Rep'] = 11012
+        self.MN['Forms_Address_Notes_Salesman'] = 11013
+        
         self.SSL_OFFSET = 500
         
         self.CUON_FS = '/etc/cuon'  

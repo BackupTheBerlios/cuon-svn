@@ -551,7 +551,7 @@ create_AddressMainwindow (void)
   GtkWidget *vbox11;
   GtkWidget *hbox26;
   GtkWidget *bAddNameContacter;
-  GtkWidget *cbeNotescontacter;
+  GtkWidget *cbeNotesContacter;
   GtkWidget *bAddFormulat2NotesContacter;
   GtkWidget *scrolledwindow7;
   GtkWidget *tvNotesContacter;
@@ -1304,7 +1304,6 @@ create_AddressMainwindow (void)
   eFashion = GTK_COMBO (cbFashion)->entry;
   gtk_widget_show (eFashion);
   gtk_editable_set_editable (GTK_EDITABLE (eFashion), FALSE);
-  gtk_entry_set_text (GTK_ENTRY (eFashion), "Customer");
 
   label36 = gtk_label_new (_("fashion"));
   gtk_widget_show (label36);
@@ -2044,10 +2043,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bAddNameMisc);
   gtk_box_pack_start (GTK_BOX (hbox25), bAddNameMisc, FALSE, FALSE, 0);
 
-  cbeNotesMisc = gtk_combo_box_entry_new_text ();
+  cbeNotesMisc = gtk_combo_box_new_text ();
   gtk_widget_show (cbeNotesMisc);
   gtk_box_pack_start (GTK_BOX (hbox25), cbeNotesMisc, TRUE, TRUE, 0);
-  gtk_widget_set_sensitive (cbeNotesMisc, FALSE);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesMisc), _("No Entry"));
 
   bAddFormular2NotesMisc = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormular2NotesMisc);
@@ -2079,9 +2078,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bAddNameContacter);
   gtk_box_pack_start (GTK_BOX (hbox26), bAddNameContacter, FALSE, FALSE, 0);
 
-  cbeNotescontacter = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (cbeNotescontacter);
-  gtk_box_pack_start (GTK_BOX (hbox26), cbeNotescontacter, TRUE, TRUE, 0);
+  cbeNotesContacter = gtk_combo_box_new_text ();
+  gtk_widget_show (cbeNotesContacter);
+  gtk_box_pack_start (GTK_BOX (hbox26), cbeNotesContacter, TRUE, TRUE, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesContacter), _("No Entry"));
 
   bAddFormulat2NotesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormulat2NotesContacter);
@@ -2095,7 +2095,7 @@ create_AddressMainwindow (void)
   tvNotesContacter = gtk_text_view_new ();
   gtk_widget_show (tvNotesContacter);
   gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvNotesContacter);
-  gtk_widget_set_size_request (tvNotesContacter, -1, 280);
+  gtk_widget_set_size_request (tvNotesContacter, -1, 265);
 
   label61 = gtk_label_new (_("Notes contacter"));
   gtk_widget_show (label61);
@@ -2113,9 +2113,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bAddNameRep);
   gtk_box_pack_start (GTK_BOX (hbox27), bAddNameRep, FALSE, FALSE, 0);
 
-  cbeNotesRep = gtk_combo_box_entry_new_text ();
+  cbeNotesRep = gtk_combo_box_new_text ();
   gtk_widget_show (cbeNotesRep);
   gtk_box_pack_start (GTK_BOX (hbox27), cbeNotesRep, TRUE, TRUE, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesRep), _("No Entry"));
 
   bAddformular2NotesRep = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddformular2NotesRep);
@@ -2129,7 +2130,7 @@ create_AddressMainwindow (void)
   tvNotesRep = gtk_text_view_new ();
   gtk_widget_show (tvNotesRep);
   gtk_container_add (GTK_CONTAINER (scrolledwindow8), tvNotesRep);
-  gtk_widget_set_size_request (tvNotesRep, -1, 280);
+  gtk_widget_set_size_request (tvNotesRep, -1, 265);
 
   label62 = gtk_label_new (_("notes representant"));
   gtk_widget_show (label62);
@@ -2147,9 +2148,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bAddnameSalesman);
   gtk_box_pack_start (GTK_BOX (hbox28), bAddnameSalesman, FALSE, FALSE, 0);
 
-  cbeNotesSalesman = gtk_combo_box_entry_new_text ();
+  cbeNotesSalesman = gtk_combo_box_new_text ();
   gtk_widget_show (cbeNotesSalesman);
   gtk_box_pack_start (GTK_BOX (hbox28), cbeNotesSalesman, TRUE, TRUE, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesSalesman), _("No Entry"));
 
   bAddFormular2NotesSalesman = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (bAddFormular2NotesSalesman);
@@ -2163,7 +2165,7 @@ create_AddressMainwindow (void)
   tvNotesSalesman = gtk_text_view_new ();
   gtk_widget_show (tvNotesSalesman);
   gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvNotesSalesman);
-  gtk_widget_set_size_request (tvNotesSalesman, -1, 280);
+  gtk_widget_set_size_request (tvNotesSalesman, -1, 265);
 
   label63 = gtk_label_new (_("notes salesman"));
   gtk_widget_show (label63);
@@ -2624,7 +2626,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox11, "vbox11");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox26, "hbox26");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameContacter, "bAddNameContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotescontacter, "cbeNotescontacter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesContacter, "cbeNotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormulat2NotesContacter, "bAddFormulat2NotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow7, "scrolledwindow7");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesContacter, "tvNotesContacter");
