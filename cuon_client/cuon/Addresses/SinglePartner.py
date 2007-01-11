@@ -84,3 +84,26 @@ class SinglePartner(SingleData):
             liAddress.append(' ')
             
         return liAddress
+        
+        
+    def getAddressID(self):
+        id = 0
+        if self.firstRecord.has_key('addressid'):
+             id = self.firstRecord['addressid']
+        return id 
+        
+    def getMailAddress(self):
+        
+        s = None
+        try:
+            s = self.firstRecord['lastname'] + '\n'
+            s += self.firstRecord['lastname2'] + '\n'
+            s += self.firstRecord['firstname'] + '\n\n'
+            s += self.firstRecord['street'] + '\n'
+            s += self.firstRecord['country'] + '-' + self.firstRecord['zip'] + ' ' + self.firstRecord['city']
+            
+        except:
+            pass
+            
+        return s
+            

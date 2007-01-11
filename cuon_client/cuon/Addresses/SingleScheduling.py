@@ -43,6 +43,31 @@ class SingleScheduling(SingleData):
     def readNonWidgetEntries(self, dicValues):
         dicValues['partnerid'] = [self.partnerId, 'int']
         return dicValues
+    def getPartnerID(self):
+        id = 0
+        if self.firstRecord.has_key('partnerid'):
+             id = self.firstRecord['partnerid']
+        return id 
+        
+    def getShortRemark(self):
+        s = None
+        if self.firstRecord.has_key('short_remark'):
+             s = self.firstRecord['short_remark']
+        return s
+        
+    def getShortRemark(self):
+        s = None
+        if self.firstRecord.has_key('short_remark'):
+             s = self.firstRecord['short_remark']
+        return s    
+    
+    def getNotes(self):
+        s = None
+        if self.firstRecord.has_key('notes'):
+             s = self.firstRecord['notes']
+        return s    
+    
+
 
     def fillExtraEntries(self, oneRecord):
         if oneRecord.has_key('schedul_datetime'):

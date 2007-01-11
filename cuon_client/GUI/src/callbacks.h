@@ -152,3 +152,7 @@ on_addresses_notes_representant1_activate
 void
 on_addresses_notes_salesman1_activate  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_bGotoAddress_clicked                (GtkButton       *button,
+                                        gpointer         user_data);

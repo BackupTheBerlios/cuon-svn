@@ -309,3 +309,11 @@ on_addresses_notes_salesman1_activate  (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_bGotoAddress_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

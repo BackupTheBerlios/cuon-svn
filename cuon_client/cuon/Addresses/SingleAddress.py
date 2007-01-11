@@ -89,5 +89,18 @@ class SingleAddress(SingleData):
             
         return liAddress
 
-           
+    def getMailAddress(self):
+        
+        s = None
+        try:
+            s = self.firstRecord['lastname'] + '\n'
+            s += self.firstRecord['lastname2'] + '\n'
+            s += self.firstRecord['firstname'] + '\n\n'
+            s += self.firstRecord['street'] + '\n'
+            s += self.firstRecord['country'] + '-' + self.firstRecord['zip'] + ' ' + self.firstRecord['city']
+            
+        except:
+            pass
+            
+        return s       
         

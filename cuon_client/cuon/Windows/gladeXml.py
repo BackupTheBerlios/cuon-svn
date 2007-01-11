@@ -84,11 +84,11 @@ class gladeXml(defaultValues):
         if text:
             buffer = widget.get_buffer()
             bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
-            print '**********************'
-            print bText
-            print '................'
-            print text
-            print '====================='
+            #print '**********************'
+            #print bText
+            #print '................'
+            #print text
+            #print '====================='
             
             if not bText:
                 bText = ''

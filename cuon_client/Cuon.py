@@ -323,6 +323,10 @@ import gobject
 
 
 import cuon.Addresses.addresses
+import cuon.Addresses.SingleAddress
+import cuon.Addresses.SinglePartner
+import cuon.Addresses.SingleScheduling
+
 import cuon.Articles.articles
 import cuon.Bank.bank
 import cuon.Addresses.contact
@@ -392,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 33, 'Rev': 5, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 33, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -405,6 +409,9 @@ class MainWindow(windows):
         self.extMenucommand = {}
         self.store = None
         self.connectTreeId = None
+        self.singleAddress = None
+        self.singlePartner = None
+        self.singleSchedul = None
         
         
         
@@ -851,6 +858,10 @@ class MainWindow(windows):
             if oUser:
                 print 'T0 Client = ', oUser.client
                 if oUser.client > 0:
+                    self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(self.allTables)
+                    self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(self.allTables)
+                    self.singleSchedul = cuon.Addresses.SingleScheduling.SingleScheduling(self.allTables)
+                    
                     self.startTiming()
         except Exception, params:
             print Exception, params
@@ -950,9 +961,15 @@ class MainWindow(windows):
            row = -1
    
         if iter != None:
-            newId = listStore.get_value(iter, 0)
-            print newId
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                newID = int(sNewId[sNewId.find('###')+ 3:])
+                self.setDateValues(newID)
             
+            except:
+                pass
+                
             #self.fillEntries(newId)
     def on_treeSchedul_row_activated(self, event):
         print 'event'
@@ -996,7 +1013,7 @@ class MainWindow(windows):
                 if lastSchedulname != Schedulname:
                     lastSchedulname = Schedulname
                     iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
-                iter3 = treestore.insert_after(iter2,None,[oneDate['date']])   
+                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] + '###' +  `oneDate['id']`])   
                 
 ##        try:
 ##            iter = treestore.append(None,['Names'])
@@ -1014,6 +1031,44 @@ class MainWindow(windows):
         self.connectTree()
         
         return True
+        
+    def setDateValues(self, id):
+        widgetTVAddress = self.getWidget('tvAddress')
+        widgetTVPartner = self.getWidget('tvPartner')
+        widgetEShortRemark = self.getWidget('eShortRemark')
+        widgetTvEvent = self.getWidget('tvEvent')
+        
+        self.singleSchedul.load(id)
+        partnerid = self.singleSchedul.getPartnerID()
+        self.singlePartner.load(partnerid)
+        addressid = self.singlePartner.getAddressID()
+        self.singleAddress.load(addressid)
+        print partnerid
+        print addressid
+        
+        
+        s = self.singleSchedul.getShortRemark()
+        print 's=', s
+        if s:
+            widgetEShortRemark.set_text(s)
+            
+        s = self.singleSchedul.getNotes()
+        print 's=', s
+        if s:
+            self.add2Textbuffer(widgetTvEvent,s,'Overwrite')  
+       
+        
+        
+        s = self.singleAddress.getMailAddress()
+        if s:
+            self.add2Textbuffer(widgetTVAddress,s,'Overwrite')
+        
+        s = self.singlePartner.getMailAddress()
+        if s:
+            self.add2Textbuffer(widgetTVPartner,s,'Overwrite')
+                
+        
+        
         
         
     #def startTimer(self, seconds):

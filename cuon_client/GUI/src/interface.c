@@ -114,8 +114,12 @@ create_window1 (void)
   GtkWidget *vbox3;
   GtkWidget *vbox4;
   GtkWidget *hbox2;
-  GtkWidget *scrolledwindow5;
+  GtkWidget *bGotoAddress;
+  GtkWidget *hbox3;
+  GtkWidget *scrolledwindow6;
   GtkWidget *tvAddress;
+  GtkWidget *scrolledwindow7;
+  GtkWidget *tvPartner;
   GtkWidget *eShortRemark;
   GtkWidget *scrolledwindow4;
   GtkWidget *tvEvent;
@@ -499,15 +503,31 @@ create_window1 (void)
   gtk_widget_show (hbox2);
   gtk_box_pack_start (GTK_BOX (vbox4), hbox2, TRUE, TRUE, 0);
 
-  scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow5);
-  gtk_box_pack_start (GTK_BOX (vbox4), scrolledwindow5, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow5), GTK_SHADOW_IN);
+  bGotoAddress = gtk_button_new_with_mnemonic (_("Address"));
+  gtk_widget_show (bGotoAddress);
+  gtk_box_pack_start (GTK_BOX (hbox2), bGotoAddress, FALSE, FALSE, 0);
+
+  hbox3 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox3);
+  gtk_box_pack_start (GTK_BOX (vbox4), hbox3, TRUE, TRUE, 0);
+
+  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow6);
+  gtk_box_pack_start (GTK_BOX (hbox3), scrolledwindow6, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow6), GTK_SHADOW_IN);
 
   tvAddress = gtk_text_view_new ();
   gtk_widget_show (tvAddress);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow5), tvAddress);
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow6), tvAddress);
+
+  scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow7);
+  gtk_box_pack_start (GTK_BOX (hbox3), scrolledwindow7, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow7), GTK_SHADOW_IN);
+
+  tvPartner = gtk_text_view_new ();
+  gtk_widget_show (tvPartner);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvPartner);
 
   eShortRemark = gtk_entry_new ();
   gtk_widget_show (eShortRemark);
@@ -651,6 +671,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) treeSchedul, "row_activated",
                     G_CALLBACK (on_treeSchedul_row_activated),
                     NULL);
+  g_signal_connect ((gpointer) bGotoAddress, "clicked",
+                    G_CALLBACK (on_bGotoAddress_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
@@ -737,8 +760,12 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, vbox3, "vbox3");
   GLADE_HOOKUP_OBJECT (window1, vbox4, "vbox4");
   GLADE_HOOKUP_OBJECT (window1, hbox2, "hbox2");
-  GLADE_HOOKUP_OBJECT (window1, scrolledwindow5, "scrolledwindow5");
+  GLADE_HOOKUP_OBJECT (window1, bGotoAddress, "bGotoAddress");
+  GLADE_HOOKUP_OBJECT (window1, hbox3, "hbox3");
+  GLADE_HOOKUP_OBJECT (window1, scrolledwindow6, "scrolledwindow6");
   GLADE_HOOKUP_OBJECT (window1, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (window1, scrolledwindow7, "scrolledwindow7");
+  GLADE_HOOKUP_OBJECT (window1, tvPartner, "tvPartner");
   GLADE_HOOKUP_OBJECT (window1, eShortRemark, "eShortRemark");
   GLADE_HOOKUP_OBJECT (window1, scrolledwindow4, "scrolledwindow4");
   GLADE_HOOKUP_OBJECT (window1, tvEvent, "tvEvent");
