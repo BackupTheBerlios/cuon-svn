@@ -47,12 +47,20 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql +=  "partner_schedul.schedul_time_begin as time_begin, "
         sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
         sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
-        sSql += "( select staff.lastname || ', ' || staff.firstname from staff where staff.id = (select schedul_staff_id from partner_schedul where partner.id = partner_schedul.partnerid)) as schedul_name, " 
-        sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
-        sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
+    
+        #
+        sSql += " case  schedul_staff_id "
+        sSql += " when 0 then  'NONE' else ( select staff.lastname || ', ' || staff.firstname from staff where staff.id = schedul_staff_id) END as schedul_name,  "
+        
+
+        #sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
+        #sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
         sSql +=  "address.lastname2 as a_lastname2, partner.firstname as p_firstname "
+        # from 
         sSql += " from partner, address, partner_schedul "
-        sW = " where partner.id = partnerid and address.id = partner.addressid and "
+        
+        # where
+        sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
         sW = sW + " process_status != 999 "
         sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
         

@@ -329,6 +329,11 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>email.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/e_mail.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>articles.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/articles.glade2</Glade-FileValue>
     </GladeEntries>

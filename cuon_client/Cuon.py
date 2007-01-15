@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 33, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 34, 'Rev': 0, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -746,10 +746,10 @@ class MainWindow(windows):
     def on_addresses_notes_contacter1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Contacter'])
    
-    def on_addresses_notes_representant_activate(self,event):
+    def on_addresses_notes_representant1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Rep'])
    
-    def on_addresses_notes_salesman_activate(self,event):
+    def on_addresses_notes_salesman1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Salesman'])
    
     # Tools   
@@ -1070,7 +1070,10 @@ class MainWindow(windows):
         
         
         
-        
+    def on_bGotoAddress_clicked(self, event):
+        if self.singleAddress.ID > 0:
+            adr = cuon.Addresses.addresses.addresswindow(self.allTables, addrid = self.singleAddress.ID)
+            
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    

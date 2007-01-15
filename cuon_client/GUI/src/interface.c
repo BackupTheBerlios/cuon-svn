@@ -503,7 +503,7 @@ create_window1 (void)
   gtk_widget_show (hbox2);
   gtk_box_pack_start (GTK_BOX (vbox4), hbox2, TRUE, TRUE, 0);
 
-  bGotoAddress = gtk_button_new_with_mnemonic (_("Address"));
+  bGotoAddress = gtk_button_new_with_mnemonic (_("goto Address"));
   gtk_widget_show (bGotoAddress);
   gtk_box_pack_start (GTK_BOX (hbox2), bGotoAddress, FALSE, FALSE, 0);
 

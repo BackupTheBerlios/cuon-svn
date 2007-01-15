@@ -103,4 +103,87 @@ class SingleAddress(SingleData):
             pass
             
         return s       
+    def getLastname(self):
+        s = None
+        try:
+            s = self.firstRecord['lastname']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+
+    def getLastname2(self):
+        s = None
+        try:
+            s = self.firstRecord['lastname2']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
         
+    def getFirstname(self):
+        s = None
+        try:
+            s = self.firstRecord['firstname']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+        
+    def getStreet(self):
+        s = None
+        try:
+            s = self.firstRecord['street']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+        
+        
+        
+    def getCity(self):
+        s = None
+        try:
+            s = self.firstRecord['city']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+        
+    def getZip(self):
+        s = None
+        try:
+            s = self.firstRecord['zip']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+        
+        
+    def getCountry(self):
+        s = None
+        try:
+            s = self.firstRecord['country']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s
+        
+        
+        
+    def getLetterAddress(self):
+        s = None
+        try:
+            s = self.firstRecord['letter_address']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s

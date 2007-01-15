@@ -50,7 +50,7 @@ import printAddress
 import cuon.Staff.staff
 import cuon.Staff.SingleStaff
 import contact
-
+import cuon.E_Mail.sendEmail
 class addresswindow(chooseWindows):
 
     
@@ -564,11 +564,29 @@ class addresswindow(chooseWindows):
         if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
-                
+            
+    def on_bGeneratePartner_clicked(self, event):
+        self.activateClick('mi_PartnerNew1')
+        try:
+            self.getWidget('ePartnerLastname').set_text(self.singleAddress.getLastname())
+            self.getWidget('ePartnerFirstname').set_text(self.singleAddress.getFirstname())
+            self.getWidget('ePartnerStreet').set_text(self.singleAddress.getStreet())
+            self.getWidget('ePartnerZip').set_text(self.singleAddress.getZip())
+            self.getWidget('ePartnerCity').set_text(self.singleAddress.getCity())
+            self.getWidget('ePartnerCountry').set_text(self.singleAddress.getCountry())
+            self.getWidget('ePartnerLetterAddress').set_text(self.singleAddress.getLetterAddress())
+            
+        except Exception, params:
+            print Exception, params
+            
+        self.activateClick('mi_PartnerSave1')
+        
     def on_bContact_clicked(self, event):
         print 'Contact pressed'
         con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,0)
         
+    def on_bPartnerContact_clicked(self, event):
+        con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,self.singlePartner.ID)
         
     def on_bLetter_clicked(self, event):
         print 'bLetter clicked'
@@ -732,7 +750,7 @@ class addresswindow(chooseWindows):
         except Exception, params:
             print Exception, params    
             
-            
+    # add date and name to notes
             
     def on_bAddNameMisc_clicked(self, event):
         self.addName2Note('tvNotesMisc')
@@ -744,6 +762,7 @@ class addresswindow(chooseWindows):
     def on_bAddNameSalesman_clicked(self, event):
         self.addName2Note('tvNotesSalesman')
 
+    # add formular to notes
     def on_bAddFormular2NoticesMisc_clicked(self, event):
         self.addForm2Note('cbeNotesMisc','tvNotesMisc')
         
@@ -755,7 +774,14 @@ class addresswindow(chooseWindows):
        
     def on_bAddFormular2NoticesSalesman_clicked(self, event):
         self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
-       
+
+    # send E-mail 
+    def on_bSendEmailAddress(self, event):
+        em = self.cuon.E_Mail.sendEmail.sendEmail()
+    def on_bSendEmailPartner(self, event):
+        em = self.cuon.E_Mail.sendEmail.sendEmail()
+    def on_bSendEmailSchedul(self, event):
+        em = self.cuon.E_Mail.sendEmail.sendEmail()
         
     def addForm2Note(self, sInput, sOutput):
         
@@ -782,7 +808,7 @@ class addresswindow(chooseWindows):
     def addName2Note(self, sWidget):
         t1 = self.rpc.callRP('User.getDate', self.dicUser)
         t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
-        text = t1 + ' : ' + t2
+        text = t1 + ' : ' + t2 + '\n'
         print text
         self.add2Textbuffer(self.getWidget(sWidget),text,'Tail')
         

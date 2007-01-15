@@ -389,6 +389,7 @@ create_AddressMainwindow (void)
   GtkWidget *bShowDMS;
   GtkWidget *hbox18;
   GtkWidget *bLetter;
+  GtkWidget *bSendEmailAddress;
   GtkWidget *bContact;
   GtkWidget *label56;
   GtkWidget *eLetterAddress;
@@ -476,6 +477,7 @@ create_AddressMainwindow (void)
   GtkWidget *ePartnerLetterAddress;
   GtkWidget *hbox23;
   GtkWidget *bPartnerLetter;
+  GtkWidget *bSendEmailPartner;
   GtkWidget *bPartnerContact;
   GtkWidget *bShowPartnerDMS;
   GtkWidget *label57;
@@ -496,6 +498,7 @@ create_AddressMainwindow (void)
   GtkWidget *ePartnerCountry;
   GtkWidget *label22;
   GtkWidget *ePartnerState;
+  GtkWidget *bGeneratePartner;
   GtkWidget *lPartner;
   GtkWidget *table8;
   GtkWidget *vbox3;
@@ -533,11 +536,14 @@ create_AddressMainwindow (void)
   GtkWidget *bSchedulDMS;
   GtkWidget *hbox20;
   GtkWidget *bSchedulLetter;
+  GtkWidget *bSendEmailSchedul;
   GtkWidget *vbox9;
   GtkWidget *hbox22;
   GtkWidget *eSchedulFor;
   GtkWidget *bSchedulFor;
   GtkWidget *eSchedulForName;
+  GtkWidget *scrolledwindow10;
+  GtkWidget *treeSchedul;
   GtkWidget *lSchedul;
   GtkWidget *notebook2;
   GtkWidget *vbox10;
@@ -969,6 +975,10 @@ create_AddressMainwindow (void)
   bLetter = gtk_button_new_with_mnemonic (_("Letter"));
   gtk_widget_show (bLetter);
   gtk_box_pack_start (GTK_BOX (hbox18), bLetter, FALSE, FALSE, 0);
+
+  bSendEmailAddress = gtk_button_new_with_mnemonic (_("E-Mail"));
+  gtk_widget_show (bSendEmailAddress);
+  gtk_box_pack_start (GTK_BOX (hbox18), bSendEmailAddress, FALSE, FALSE, 0);
 
   bContact = gtk_button_new_with_mnemonic (_("Contact"));
   gtk_widget_show (bContact);
@@ -1496,6 +1506,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bPartnerLetter);
   gtk_box_pack_start (GTK_BOX (hbox23), bPartnerLetter, FALSE, FALSE, 0);
 
+  bSendEmailPartner = gtk_button_new_with_mnemonic (_("E-Mail"));
+  gtk_widget_show (bSendEmailPartner);
+  gtk_box_pack_start (GTK_BOX (hbox23), bSendEmailPartner, FALSE, FALSE, 0);
+
   bPartnerContact = gtk_button_new_with_mnemonic (_("Contact"));
   gtk_widget_show (bPartnerContact);
   gtk_box_pack_start (GTK_BOX (hbox23), bPartnerContact, FALSE, FALSE, 0);
@@ -1615,14 +1629,22 @@ create_AddressMainwindow (void)
   gtk_widget_show (ePartnerState);
   gtk_box_pack_start (GTK_BOX (hbox24), ePartnerState, TRUE, TRUE, 0);
 
+  bGeneratePartner = gtk_button_new_with_mnemonic (_("button3"));
+  gtk_widget_show (bGeneratePartner);
+  gtk_table_attach (GTK_TABLE (table2), bGeneratePartner, 3, 4, 12, 13,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
   lPartner = gtk_label_new (_("Partner"));
   gtk_widget_show (lPartner);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPartner);
   gtk_misc_set_alignment (GTK_MISC (lPartner), 0, 0);
 
-  table8 = gtk_table_new (4, 4, FALSE);
+  table8 = gtk_table_new (4, 5, FALSE);
   gtk_widget_show (table8);
   gtk_container_add (GTK_CONTAINER (notebook1), table8);
+  gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (notebook1), table8,
+                                      TRUE, TRUE, GTK_PACK_START);
 
   vbox3 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox3);
@@ -2000,6 +2022,10 @@ create_AddressMainwindow (void)
   gtk_widget_show (bSchedulLetter);
   gtk_box_pack_start (GTK_BOX (hbox20), bSchedulLetter, FALSE, FALSE, 0);
 
+  bSendEmailSchedul = gtk_button_new_with_mnemonic (_("E-Mail"));
+  gtk_widget_show (bSendEmailSchedul);
+  gtk_box_pack_start (GTK_BOX (hbox20), bSendEmailSchedul, FALSE, FALSE, 0);
+
   vbox9 = gtk_vbox_new (TRUE, 0);
   gtk_widget_show (vbox9);
   gtk_table_attach (GTK_TABLE (table8), vbox9, 3, 4, 1, 2,
@@ -2013,6 +2039,7 @@ create_AddressMainwindow (void)
   eSchedulFor = gtk_entry_new ();
   gtk_widget_show (eSchedulFor);
   gtk_box_pack_start (GTK_BOX (hbox22), eSchedulFor, TRUE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eSchedulFor), 6);
 
   bSchedulFor = gtk_button_new_with_mnemonic (_("search ..."));
   gtk_widget_show (bSchedulFor);
@@ -2021,6 +2048,19 @@ create_AddressMainwindow (void)
   eSchedulForName = gtk_entry_new ();
   gtk_widget_show (eSchedulForName);
   gtk_box_pack_start (GTK_BOX (vbox9), eSchedulForName, FALSE, FALSE, 0);
+
+  scrolledwindow10 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow10);
+  gtk_table_attach (GTK_TABLE (table8), scrolledwindow10, 4, 5, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (scrolledwindow10, 77, -1);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow10), GTK_SHADOW_IN);
+
+  treeSchedul = gtk_tree_view_new ();
+  gtk_widget_show (treeSchedul);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow10), treeSchedul);
+  gtk_widget_set_size_request (treeSchedul, 185, -1);
 
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
@@ -2259,6 +2299,9 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bLetter, "clicked",
                     G_CALLBACK (on_bLetter_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bSendEmailAddress, "clicked",
+                    G_CALLBACK (on_bSendEmailAddress_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bContact, "clicked",
                     G_CALLBACK (on_bContact_clicked),
                     NULL);
@@ -2295,11 +2338,17 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bPartnerLetter, "clicked",
                     G_CALLBACK (on_bPartnerLetter_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bSendEmailPartner, "clicked",
+                    G_CALLBACK (on_bSendEmailPartner_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bPartnerContact, "clicked",
                     G_CALLBACK (on_bPartnerContact_clicked),
                     NULL);
   g_signal_connect ((gpointer) bShowPartnerDMS, "clicked",
                     G_CALLBACK (on_bShowPartnerDMS_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bGeneratePartner, "clicked",
+                    G_CALLBACK (on_bGeneratePartner_clicked),
                     NULL);
   g_signal_connect ((gpointer) comboboxentry_entry1, "key_press_event",
                     G_CALLBACK (on_comboboxentry_entry1_key_press_event),
@@ -2321,6 +2370,9 @@ create_AddressMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) bSchedulLetter, "clicked",
                     G_CALLBACK (on_bSchedulLetter_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSendEmailSchedul, "clicked",
+                    G_CALLBACK (on_bSendEmailSchedul_clicked),
                     NULL);
   g_signal_connect ((gpointer) eSchedulFor, "changed",
                     G_CALLBACK (on_eSchedulFor_changed),
@@ -2466,6 +2518,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowDMS, "bShowDMS");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox18, "hbox18");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bLetter, "bLetter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendEmailAddress, "bSendEmailAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bContact, "bContact");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label56, "label56");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eLetterAddress, "eLetterAddress");
@@ -2551,6 +2604,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerLetterAddress, "ePartnerLetterAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox23, "hbox23");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerLetter, "bPartnerLetter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendEmailPartner, "bSendEmailPartner");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerContact, "bPartnerContact");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowPartnerDMS, "bShowPartnerDMS");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label57, "label57");
@@ -2571,6 +2625,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCountry, "ePartnerCountry");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label22, "label22");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerState, "ePartnerState");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGeneratePartner, "bGeneratePartner");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartner, "lPartner");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table8, "table8");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox3, "vbox3");
@@ -2608,11 +2663,14 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulDMS, "bSchedulDMS");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox20, "hbox20");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulLetter, "bSchedulLetter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendEmailSchedul, "bSendEmailSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox9, "vbox9");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox22, "hbox22");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulFor, "eSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulFor, "bSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulForName, "eSchedulForName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow10, "scrolledwindow10");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, treeSchedul, "treeSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook2, "notebook2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");

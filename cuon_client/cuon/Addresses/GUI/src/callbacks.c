@@ -862,3 +862,35 @@ on_bAddnameSalesman_clicked            (GtkButton       *button,
 
 }
 
+
+void
+on_bSendEmailAddress_clicked           (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bSendEmailPartner_clicked           (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bSendEmailSchedul_clicked           (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bGeneratePartner_clicked            (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

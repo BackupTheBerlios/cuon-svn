@@ -1966,6 +1966,35 @@
 		      </child>
 
 		      <child>
+			<widget class="GtkButton" id="bSendEmailAddress">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">E-Mail</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_bSendEmailAddress_clicked" last_modification_time="Sun, 14 Jan 2007 21:03:06 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<placeholder/>
+		      </child>
+
+		      <child>
+			<placeholder/>
+		      </child>
+
+		      <child>
+			<placeholder/>
+		      </child>
+
+		      <child>
 			<widget class="GtkButton" id="bContact">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
@@ -1980,10 +2009,6 @@
 			  <property name="expand">False</property>
 			  <property name="fill">False</property>
 			</packing>
-		      </child>
-
-		      <child>
-			<placeholder/>
 		      </child>
 		    </widget>
 		    <packing>
@@ -3959,6 +3984,27 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkButton" id="bSendEmailPartner">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">E-Mail</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bSendEmailPartner_clicked" last_modification_time="Sun, 14 Jan 2007 21:03:20 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+
+		  <child>
 		    <widget class="GtkButton" id="bPartnerContact">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
@@ -3973,14 +4019,6 @@
 		      <property name="expand">False</property>
 		      <property name="fill">False</property>
 		    </packing>
-		  </child>
-
-		  <child>
-		    <placeholder/>
-		  </child>
-
-		  <child>
-		    <placeholder/>
 		  </child>
 		</widget>
 		<packing>
@@ -4422,6 +4460,26 @@
 		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
+
+	      <child>
+		<widget class="GtkButton" id="bGeneratePartner">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">Generate Partner</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <signal name="clicked" handler="on_bGeneratePartner_clicked" last_modification_time="Mon, 15 Jan 2007 11:24:50 GMT"/>
+		</widget>
+		<packing>
+		  <property name="left_attach">3</property>
+		  <property name="right_attach">4</property>
+		  <property name="top_attach">12</property>
+		  <property name="bottom_attach">13</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
 	    </widget>
 	    <packing>
 	      <property name="tab_expand">False</property>
@@ -4456,7 +4514,7 @@
 	    <widget class="GtkTable" id="table8">
 	      <property name="visible">True</property>
 	      <property name="n_rows">4</property>
-	      <property name="n_columns">4</property>
+	      <property name="n_columns">5</property>
 	      <property name="homogeneous">False</property>
 	      <property name="row_spacing">0</property>
 	      <property name="column_spacing">0</property>
@@ -5318,14 +5376,6 @@
 		      <property name="spacing">0</property>
 
 		      <child>
-			<placeholder/>
-		      </child>
-
-		      <child>
-			<placeholder/>
-		      </child>
-
-		      <child>
 			<widget class="GtkButton" id="bSchedulLetter">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
@@ -5340,6 +5390,27 @@
 			  <property name="expand">False</property>
 			  <property name="fill">False</property>
 			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkButton" id="bSendEmailSchedul">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">E-Mail</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_bSendEmailSchedul_clicked" last_modification_time="Sun, 14 Jan 2007 21:03:33 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<placeholder/>
 		      </child>
 		    </widget>
 		    <packing>
@@ -5382,6 +5453,7 @@
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">*</property>
 			  <property name="activates_default">False</property>
+			  <property name="width_chars">6</property>
 			  <signal name="changed" handler="on_eSchedulFor_changed" last_modification_time="Sat, 02 Dec 2006 13:10:58 GMT"/>
 			</widget>
 			<packing>
@@ -5463,9 +5535,43 @@
 		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
+
+	      <child>
+		<widget class="GtkScrolledWindow" id="scrolledwindow10">
+		  <property name="width_request">77</property>
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		  <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		  <property name="shadow_type">GTK_SHADOW_IN</property>
+		  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+		  <child>
+		    <widget class="GtkTreeView" id="treeSchedul">
+		      <property name="width_request">185</property>
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="headers_visible">True</property>
+		      <property name="rules_hint">False</property>
+		      <property name="reorderable">False</property>
+		      <property name="enable_search">True</property>
+		      <property name="fixed_height_mode">False</property>
+		      <property name="hover_selection">False</property>
+		      <property name="hover_expand">False</property>
+		    </widget>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="left_attach">4</property>
+		  <property name="right_attach">5</property>
+		  <property name="top_attach">1</property>
+		  <property name="bottom_attach">2</property>
+		  <property name="y_options">fill</property>
+		</packing>
+	      </child>
 	    </widget>
 	    <packing>
-	      <property name="tab_expand">False</property>
+	      <property name="tab_expand">True</property>
 	      <property name="tab_fill">True</property>
 	    </packing>
 	  </child>

@@ -63,6 +63,12 @@ class basics(xmlrpc.XMLRPC):
         
         self.PdfEncoding = 'latin-2'
         
+        self.EMAILSERVER = None
+        self.EMAILPORT = '25'
+        self.EMAILUSER = 'jhamel'
+        self.EMAILPASSWORD = None
+        self.EMAILENCODING = 'utf-8'
+        
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
@@ -96,12 +102,33 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('POSTGRES','POSTGRES_USER')
             if value:
                 self.POSTGRES_USER = value
-                
+            
+            #PDF
             value = self.getConfigOption('PDF','ENCODING')
             if value:
                 self.PdfEncoding = value
-                
-                
+
+            # EMAIL Config
+            value = self.getConfigOption('EMAIL','DEFAULTSERVER')
+            if value:
+                self.EMAILSERVER = value
+            
+            value = self.getConfigOption('EMAIL','DEFAULTPORT')
+            if value:
+                self.EMAILPORT = value
+                        
+            value = self.getConfigOption('EMAIL','DEFAULTUSER')
+            if value:
+                self.EMAILUSER = value
+            
+            value = self.getConfigOption('EMAIL','DEFAULTPASSWORD')
+            if value:
+                self.EMAILPASSWORD = value
+            
+            value = self.getConfigOption('EMAIL','ENCODING')
+            if value:
+                self.EMAILENCODING = value
+            
                 
         except Exception, params:
             print "Error read ini-File"
