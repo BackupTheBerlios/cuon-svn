@@ -1629,7 +1629,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (ePartnerState);
   gtk_box_pack_start (GTK_BOX (hbox24), ePartnerState, TRUE, TRUE, 0);
 
-  bGeneratePartner = gtk_button_new_with_mnemonic (_("button3"));
+  bGeneratePartner = gtk_button_new_with_mnemonic (_("Generate Partner"));
   gtk_widget_show (bGeneratePartner);
   gtk_table_attach (GTK_TABLE (table2), bGeneratePartner, 3, 4, 12, 13,
                     (GtkAttachOptions) (GTK_FILL),

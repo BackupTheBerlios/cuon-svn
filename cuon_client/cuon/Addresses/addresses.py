@@ -619,6 +619,20 @@ class addresswindow(chooseWindows):
                 dicPartner['address_' + key] = self.singleAddress.firstRecord[key]
                 
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
+            
+    def on_bSchedulLetter_clicked(self, event):
+    
+        print 'bSchulLetter clicked'
+        if self.singleSchedul.ID > 0:
+            dicExtInfo = {'sep_info':{'1':self.singleSchedul.ID},'Modul':self.MN['Partner_Schedul']}
+            dicSchedul = self.singleSchedul.firstRecord
+            for key in self.singleAddress.firstRecord.keys():
+                dicSchedul['address_' + key] = self.singleAddress.firstRecord[key]
+            for key in self.singlePartner.firstRecord.keys():
+                dicSchedul['partner_' + key] = self.singlePartner.firstRecord[key]
+                
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
+                    
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabAddress:
@@ -776,12 +790,12 @@ class addresswindow(chooseWindows):
         self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
 
     # send E-mail 
-    def on_bSendEmailAddress(self, event):
-        em = self.cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailPartner(self, event):
-        em = self.cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailSchedul(self, event):
-        em = self.cuon.E_Mail.sendEmail.sendEmail()
+    def on_bSendEmailAddress_clicked(self, event):
+        em = cuon.E_Mail.sendEmail.sendEmail()
+    def on_bSendEmailPartner_clicked(self, event):
+        em = cuon.E_Mail.sendEmail.sendEmail()
+    def on_bSendEmailSchedul_clicked(self, event):
+        em = cuon.E_Mail.sendEmail.sendEmail()
         
     def addForm2Note(self, sInput, sOutput):
         

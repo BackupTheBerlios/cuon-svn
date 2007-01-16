@@ -66,7 +66,8 @@ class Email(basics):
                     self.EMAILUSER = dicValues['Username']
                 if dicValues.has_key('Password'):
                     self.EMAILPASSWORD = dicValues['Password']
-                       
+                if dicValues.has_key('To'):
+                    self.setTo(dicValues['To'])
             except:
                 pass
                     

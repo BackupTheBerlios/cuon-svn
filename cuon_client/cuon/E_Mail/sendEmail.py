@@ -23,7 +23,7 @@ import gtk
 import gtk.glade
 
 from cuon.Windows.windows  import windows
-class sendEmail:
+class sendEmail(windows):
 
     def __init__(self, Modul = None, dicValues = None):
         windows.__init__(self)
