@@ -558,7 +558,7 @@ create_AddressMainwindow (void)
   GtkWidget *hbox26;
   GtkWidget *bAddNameContacter;
   GtkWidget *cbeNotesContacter;
-  GtkWidget *bAddFormulat2NotesContacter;
+  GtkWidget *bAddFormular2NotesContacter;
   GtkWidget *scrolledwindow7;
   GtkWidget *tvNotesContacter;
   GtkWidget *label61;
@@ -2123,9 +2123,9 @@ create_AddressMainwindow (void)
   gtk_box_pack_start (GTK_BOX (hbox26), cbeNotesContacter, TRUE, TRUE, 0);
   gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesContacter), _("No Entry"));
 
-  bAddFormulat2NotesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (bAddFormulat2NotesContacter);
-  gtk_box_pack_start (GTK_BOX (hbox26), bAddFormulat2NotesContacter, FALSE, FALSE, 0);
+  bAddFormular2NotesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
+  gtk_widget_show (bAddFormular2NotesContacter);
+  gtk_box_pack_start (GTK_BOX (hbox26), bAddFormular2NotesContacter, FALSE, FALSE, 0);
 
   scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow7);
@@ -2384,19 +2384,19 @@ create_AddressMainwindow (void)
                     G_CALLBACK (on_bAddNameMisc_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddFormular2NotesMisc, "clicked",
-                    G_CALLBACK (on_bAddFormular2NoticesMisc_clicked),
+                    G_CALLBACK (on_bAddFormular2NotesMisc_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddNameContacter, "clicked",
                     G_CALLBACK (on_bAddNameContacter_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddFormulat2NotesContacter, "clicked",
-                    G_CALLBACK (on_bAddFormulat2NoticesContacter_clicked),
+  g_signal_connect ((gpointer) bAddFormular2NotesContacter, "clicked",
+                    G_CALLBACK (on_bAddFormular2NotesContacter_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddNameRep, "clicked",
                     G_CALLBACK (on_bAddNameRep_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddformular2NotesRep, "clicked",
-                    G_CALLBACK (on_bAddformular2NoticesRep_clicked),
+                    G_CALLBACK (on_bAddformular2NotesRep_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddnameSalesman, "clicked",
                     G_CALLBACK (on_bAddnameSalesman_clicked),
@@ -2685,7 +2685,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox26, "hbox26");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameContacter, "bAddNameContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesContacter, "cbeNotesContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormulat2NotesContacter, "bAddFormulat2NotesContacter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesContacter, "bAddFormular2NotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow7, "scrolledwindow7");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesContacter, "tvNotesContacter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label61, "label61");

@@ -263,7 +263,7 @@ class windows(rawWindow, MyXML, messages):
         
         self.progressbar.show()
         
-        print 'progressbar = ', self.progressbar
+        #print 'progressbar = ', self.progressbar
         return True
         
     def stopProgressBar(self):
@@ -284,7 +284,7 @@ class windows(rawWindow, MyXML, messages):
                 else:
                     if fPercent > 100:
                         fPercent = 0
-                    print 'fPercent/100 = ', fPercent/100.0
+                    #print 'fPercent/100 = ', fPercent/100.0
                     self.progressbar.set_fraction(fPercent/100.0)
                     while gtk.events_pending():
                         gtk.main_iteration(gtk.FALSE)
@@ -316,7 +316,7 @@ class windows(rawWindow, MyXML, messages):
         #                print "Datum und Zeit"
         #                print newTime
         #sValue = time.strftime(self.dicSqlUser['DateTimeformatString'], newTime)
-        print 'entry = ', entry
+        #print 'entry = ', entry
         newTime = time.strptime(entry.get_text(), self.dicSqlUser['DateformatString'])
         
         return newTime
@@ -341,7 +341,7 @@ class windows(rawWindow, MyXML, messages):
         sWhere = None
         args.reverse()
         firstWhere = True
-        print args
+        #print args
         while args:
             s = args.pop()
             v = args.pop()
@@ -377,7 +377,7 @@ class windows(rawWindow, MyXML, messages):
                     else:
                         sWhere = sWhere +" and " + s + ' ~* \'.*' + v + '.*\''
         
-        print sWhere 
+        #print sWhere 
         return sWhere
     
   ##  def setNextFocus(self,oldEntry, event, iOldTabOrder):
@@ -512,7 +512,7 @@ class windows(rawWindow, MyXML, messages):
         if sProfile:
             result = self.rpc.callRP('User.getStandardProfile',  sProfile,  self.oUser.getDicUser() )
             self.printOut( 'Result Profile')
-            print  'result: ', result
+            #print  'result: ', result
             
             if result != 'NONE':
                 self.oUser.userLocales ='de'

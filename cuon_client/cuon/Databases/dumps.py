@@ -21,6 +21,8 @@ import datetime as DateTime
 import random
 import types
 import cuon.TypeDefs.typedefs
+import bz2
+
 
 #import os.path
 
@@ -30,18 +32,18 @@ class dumps:
         self.decimalLocale = {}
         self.decimalLocale['coma'] = ['de','nl','it','pl','au','ch']
         self.td = None
-        print '------------------------------------------------'
+        #print '------------------------------------------------'
         if td:
-            print 'td is not None'
+            #print 'td is not None'
             self.td = td
         else:
-            print 'set td new'
+            #print 'set td new'
             self.td = cuon.TypeDefs.typedefs.typedefs()
-        print 'td', self.td
-        print '------------------------------------------------'
+        #print 'td', self.td
+        #print '------------------------------------------------'
         
     def openDB(self):
-        print 'PATH = ', self.td.cuon_path
+        #print 'PATH = ', self.td.cuon_path
         self.dbase = shelve.open(os.path.normpath(self.td.cuon_path + '/' + 'cuonObjects'))
 
     def closeDB(self):
@@ -90,6 +92,12 @@ class dumps:
     def doDecode(self, s):
         return  base64.decodestring(s)
 
+
+    def doCompress(self,s):
+        return bz2.compress( s)
+    def doUncompress(self,s):
+        return bz2.decompress( s)
+        
     def saveTmpData(self, data, typ):
         s = ''
         if not typ:
@@ -158,11 +166,11 @@ class dumps:
                             convert = False
                             print 'convert userlocales = ', self.dicUser['Locales']
                             for sLocale in self.decimalLocale['coma']:
-                                print sLocale
+                                #print sLocale
                                 if sLocale == self.dicUser['Locales']:
                                     convert = True
                             if convert:
-                                print 'convert to normal float'
+                                #print 'convert to normal float'
                                 value = value.replace('.','')
                                 value = value.replace(',','.')
                                 
@@ -185,18 +193,18 @@ class dumps:
                     convert = False
                     print 'convert userlocales = ', self.dicUser['Locales']
                     for sLocale in self.decimalLocale['coma']:
-                        print sLocale
+                        #print sLocale
                         if sLocale == self.dicUser['Locales']:
                             convert = True
                     if convert:
-                        print 'convert to normal float'
+                        #print 'convert to normal float'
                         value = value.replace('.',',')
                         #value = value.replace(',','.')
                          
                 retValue = value 
                 
             elif type == 'date':
-                print 'value by date', value
+                #print 'value by date', value
                 retvalue = time.strptime(value, self.dicUser['DateformatString'])
                 self.printOut( 'dt2 = ', retvalue)
                 
@@ -209,7 +217,7 @@ class dumps:
                     #    sValue = dt.strftime(self.sDateFormat)
                     
             elif type == 'formatedDate':
-                print 'value by formatedDate', value
+                #print 'value by formatedDate', value
                 checkvalue = time.strptime(value, self.dicUser['DateformatString'])
                 self.printOut( 'dtFormated2 = ', checkvalue)
                 if checkvalue[0] == 1900 and checkvalue[1] == 1 and checkvalue[2] == 1:
@@ -219,12 +227,12 @@ class dumps:
                     retValue = value
                     
             elif type == 'toStringDate':
-                print 'value by toStringDate', value
+                #print 'value by toStringDate', value
                 retValue = time.strftime(self.dicUser['DateformatString'],value)
                 self.printOut( 'dt5 = ', retValue) 
                 
             elif type == 'string':    
-                print 'check string = ', value
+                #print 'check string = ', value
                 
                 if not isinstance(value, types.StringType):
                     value = `value`
@@ -247,8 +255,13 @@ class dumps:
             print Exception, params
             retValue = value
         
-        print 'retvalue = ', retValue
+        #print 'retvalue = ', retValue
         
         return retValue
         
     
+    def getTime(self,s ):
+        Hour,Minute = divmod(s,4)
+        Minute = Minute * 15
+        
+        return Hour, Minute

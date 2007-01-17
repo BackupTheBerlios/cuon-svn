@@ -398,5 +398,8 @@ class basics(xmlrpc.XMLRPC):
         return dicTime[time_id]
                 
               
-
-
+    def getTime(self,s ):
+        Hour,Minute = divmod(s,4)
+        Minute = Minute * 15
+        
+        return Hour, Minute

@@ -141,7 +141,7 @@ class typedefs:
             
             
         try:
-            print 'just self.server = ', self.server
+            #print 'just self.server = ', self.server
             dbase = shelve.open(os.path.normpath(self.cuon_path + '/' + 'cuonObjects'))
             oValue = None
             try:
@@ -156,8 +156,8 @@ class typedefs:
             print Exception, params
             
             
-        print 'Server by typedef : ' + self.server
-        print '#########################################################'
+        #print 'Server by typedef : ' + self.server
+        #print '#########################################################'
         
     def getConfigParser(self, sFile):
         try:
@@ -167,7 +167,7 @@ class typedefs:
                 self.cpParser.readfp(f)
                 f.close()
         except:
-            print 'no file ' + sFile + 'found '
+            #print 'no file ' + sFile + 'found '
             self.cpParser = None
             
         
@@ -175,5 +175,5 @@ class typedefs:
         value = None
         if self.cpParser.has_option(section,option):
             value = self.cpParser.get(section, option)
-            print 'getConfigOption', section + ', ' + option + ' = ' + value
+            #print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value       

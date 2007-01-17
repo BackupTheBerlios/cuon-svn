@@ -446,3 +446,15 @@ on_bSendEmailSchedul_clicked           (GtkButton       *button,
 void
 on_bGeneratePartner_clicked            (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bAddFormular2NotesMisc_clicked      (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bAddFormular2NotesContacter_clicked (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bAddformular2NotesRep_clicked       (GtkButton       *button,
+                                        gpointer         user_data);

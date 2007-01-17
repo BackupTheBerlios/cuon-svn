@@ -51,6 +51,8 @@ import cuon.Staff.staff
 import cuon.Staff.SingleStaff
 import contact
 import cuon.E_Mail.sendEmail
+
+
 class addresswindow(chooseWindows):
 
     
@@ -777,16 +779,20 @@ class addresswindow(chooseWindows):
         self.addName2Note('tvNotesSalesman')
 
     # add formular to notes
-    def on_bAddFormular2NoticesMisc_clicked(self, event):
+    def on_bAddFormular2NotesMisc_clicked(self, event):
+        print 'AddFormular2NoticesMisc clicked'
         self.addForm2Note('cbeNotesMisc','tvNotesMisc')
         
-    def on_bAddFormular2NoticesContacter_clicked(self, event):
+    def on_bAddFormular2NotesContacter_clicked(self, event):
+        print 'AddFormular2NoticesContacter clicked'
         self.addForm2Note('cbeNotesContacter','tvNotesContacter')
     
-    def on_bAddFormular2NoticesRep_clicked(self, event):
+    def on_bAddFormular2NotesRep_clicked(self, event):
+        print 'AddFormular2NoticesRep clicked'
         self.addForm2Note('cbeNotesRep','tvNotesRep')
        
-    def on_bAddFormular2NoticesSalesman_clicked(self, event):
+    def on_bAddFormular2NotesSalesman_clicked(self, event):
+        print 'AddFormular2NoticesSalesman clicked'
         self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
 
     # send E-mail 
@@ -814,7 +820,7 @@ class addresswindow(chooseWindows):
                 Formular = self.rpc.callRP('Misc.getForm',iNr, self.dicUser)
                 print Formular
                 if Formular  and Formular != 'NONE':
-                    newForm = self.doDecode(Formular[0]['document_image'])
+                    newForm = self.doUncompress(self.doDecode(Formular[0]['document_image']))
                     print 'newForm', newForm
                     self.add2Textbuffer(self.getWidget(sOutput),newForm,'Tail')
 

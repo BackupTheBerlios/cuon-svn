@@ -60,10 +60,10 @@ class logs :
 ##            f.write(`sLog`+ "\n")
 ##            f.write('---------------------------------------------------------------------------------------------------\n')
 ##            f.close()
-        self.printOut(sLog)
-        #pass
+        #self.printOut(sLog)
+        pass
     def printOut(self, s1,s2=None, ok=False):
-        
+        ok = False
         if ok:
             if s2:
                 print s1, s2

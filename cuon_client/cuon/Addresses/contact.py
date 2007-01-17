@@ -38,24 +38,32 @@ import SingleContact
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.Addresses.SinglePartner
+import time
+
 
 class contactwindow(chooseWindows):
 
     
     def __init__(self, allTables, address_nr=0, partner_nr=0):
-
+        print 'time 01 = ', time.localtime()
         chooseWindows.__init__(self)
+        print 'time 02 = ', time.localtime()
+
         self.contact_address_id = address_nr
         self.contact_partner_id = partner_nr
         
         self.singleContact = SingleContact.SingleContact(allTables)
+        print 'time 03 = ', time.localtime()
+
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        print 'time 04 = ', time.localtime()
         
         self.singleContact.addressId = address_nr
         
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         
         self.singleContact.partnerId = partner_nr
+        print 'time 05 = ', time.localtime()
     
         self.loadGlade('contact.xml')
         self.win1 = self.getWidget('ContactMainwindow')
@@ -65,6 +73,7 @@ class contactwindow(chooseWindows):
         self.EntriesContact = 'contact.xml'
         
         self.loadEntries(self.EntriesContact)
+        print 'time 06= ', time.localtime()
         
         self.singleContact.setEntries(self.getDataEntries(self.EntriesContact) )
         self.singleContact.setGladeXml(self.xml)
@@ -113,6 +122,8 @@ class contactwindow(chooseWindows):
         
 
         self.tabChanged()
+        
+        print 'time 99 ', time.localtime()
         
      
     def checkClient(self):

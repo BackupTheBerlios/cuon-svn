@@ -92,8 +92,8 @@ class Address(xmlrpc.XMLRPC, basics):
             for dicResult in liResult:
                 try:
                     print 'Len1 = ', len(liResult)
-                    Hour,Minute = divmod(dicResult['time'],4)
-                    Minute = Minute * 15
+                    Hour, Minute = self.getTime(dicResult['time'])
+                    
                     sDate = dicResult['date'] + ' ' + `Hour` + ':' + `Minute` +':00'
                     print 'Date =',  sDate
                     if sDate.find('.') > 0:

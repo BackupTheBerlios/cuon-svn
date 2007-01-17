@@ -47,11 +47,11 @@ class myXmlRpc(dumps, logs):
         sv = None
         try:
             if self.td.server[0:5] == 'https':
-                print "------ HTTPS ------", self.td.server
+                #print "------ HTTPS ------", self.td.server
                 #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
                 sv =  ServerProxy( self.td.server, allow_none = 1) 
             else:
-                print 'Server2 = ', self.td.server
+                #print 'Server2 = ', self.td.server
                 #sv =  ServerProxy( self.td.server, allow_none = 1 )
                 sv = ServerProxy(self.td.server,allow_none = 1)
                 
@@ -99,12 +99,12 @@ class myXmlRpc(dumps, logs):
 
     def test(self):
         s1 = "select * from address"
-        recordset = self.getServer().src.sql.py_executeNormalQuery(s1)
-        for record in recordset:
-            self.out( record)
-            for key in record:
-                self.out( key)
-                self.out( record[key])
+        #recordset = self.getServer().src.sql.py_executeNormalQuery(s1)
+        #for record in recordset:
+            #self.out( record)
+            #for key in record:
+                #self.out( key)
+                #self.out( record[key])
 
 
     def getInfoOfTable(self, sNameOfTable):
@@ -125,7 +125,7 @@ class myXmlRpc(dumps, logs):
         if len(c) > 0:
             s = s[0:len(s) -2]
         s = s + ')'
-        self.out(s)
+        #self.out(s)
         startRP = True
         rp_tries = 0
         #print 'Server by connection: ', self.getServer()

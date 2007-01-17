@@ -131,7 +131,7 @@ class SingleData(gladeXml, logs):
 
                 firstRecord = liRecords[0]
                 #print ('nach user-encoding')
-                print 'firstRecord by SingleData', firstRecord
+                #print 'firstRecord by SingleData', firstRecord
                 self.ID = firstRecord['id']
                 self.sStatus = ''
                 try:
@@ -142,7 +142,7 @@ class SingleData(gladeXml, logs):
                     self.printOut( 'no statusfield')
                     
             self.firstRecord = firstRecord
-            print 'firstRecord by SingleData2', firstRecord
+            #print 'firstRecord by SingleData2', firstRecord
         except AssertionError:
             self.printOut( 'assert error')
             liRecords = None
@@ -728,8 +728,8 @@ class SingleData(gladeXml, logs):
                         oDate =  time.strptime(oValue, self.sqlDicUser['DateformatString'])
                         oValue = time.strftime("%Y/%m/%d",oDate)
                         self.printOut('Date by Verify 2:', oValue)
-                print i, dicValues[i]
-                print oValue, sVerify
+                #print i, dicValues[i]
+                #print oValue, sVerify
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify
 
