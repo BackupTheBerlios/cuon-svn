@@ -44,7 +44,7 @@ import time
 class contactwindow(chooseWindows):
 
     
-    def __init__(self, allTables, address_nr=0, partner_nr=0):
+    def __init__(self, allTables, address_nr=0, partner_nr=0, autoNew = False):
         print 'time 01 = ', time.localtime()
         chooseWindows.__init__(self)
         print 'time 02 = ', time.localtime()
@@ -77,13 +77,13 @@ class contactwindow(chooseWindows):
         
         self.singleContact.setEntries(self.getDataEntries(self.EntriesContact) )
         self.singleContact.setGladeXml(self.xml)
-        self.singleContact.setTreeFields( ['schedul_date','schedul_time_begin', \
-        'address.lastname as lastname'] )
+        self.singleContact.setTreeFields( ['schedul_date','schedul_time_begin','id'])
+        #'select address.lastname where partner_schedul.address_id = address.id) as lastname'] )
         self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleContact.setTreeOrder('schedul_date')
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
-        self.singleContact.sWhere = 'where address.id = address_id and process_status != 1 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
+        self.singleContact.sWhere = ', address where address.id = address_id and process_status != 1 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
         if address_nr > 0:
             self.singleContact.sWhere += 'and address_id = ' + `address_nr`
   
@@ -125,7 +125,10 @@ class contactwindow(chooseWindows):
         
         print 'time 99 ', time.localtime()
         
-     
+        if autoNew:
+            self.activateClick('new1')
+            
+            
     def checkClient(self):
         pass
         

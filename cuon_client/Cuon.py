@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 34, 'Rev': 3, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 34, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1015,7 +1015,13 @@ class MainWindow(windows):
                     iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
                 Hour, Minute = self.getTime(oneDate['time_begin'] )
                 print Hour, Minute
-                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + `Hour` +':' + `Minute` +  '###' +  `oneDate['id']`])   
+                sHour = `Hour`
+                if Minute == 0:
+                    sMinute = '00'
+                else:
+                    sMinute = `Minute`
+                    
+                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + sHour +':' + sMinute +  ' ###' +  `oneDate['id']`])   
                 
 ##        try:
 ##            iter = treestore.append(None,['Names'])

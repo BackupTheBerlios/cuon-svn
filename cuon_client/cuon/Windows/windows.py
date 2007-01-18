@@ -47,7 +47,7 @@ class windows(rawWindow, MyXML, messages):
         MyXML.__init__(self)
         messages.__init__(self)
         self.Search = False
-        
+        self.cursor = None
         #xmlrpc.__init__(self)
         
         self.ModulNumber = 1
@@ -197,7 +197,27 @@ class windows(rawWindow, MyXML, messages):
                     pass
         if ok:
             self.closeMenuEntries()
-            
+        
+    def saveCursor(self):
+        self.cursor = self.win1.get_cursor()
+
+    def setEditCursor(self):
+        self.saveCursor()
+        self.win1.set_cursor(gtk.gdk.PENCIL)
+    
+    def restoreCursor(self):
+        if self.cursor:
+            self.win1.set_cursor(self.cursor)
+        
+    def startEdit(self):
+        pass
+        #self.setEditCursor()
+        
+    def endEdit(self):
+        pass
+        #self.restoreCursor()
+        
+        
             
     def on_notebook1_switch_page(self, notebook1, page, page_num ):
         #self.out( "Notebook switch to page " + `page`)
@@ -207,8 +227,9 @@ class windows(rawWindow, MyXML, messages):
             if self.QuestionMsg('Unsaved Data ! Wish you save them ?'):
                 self.saveData()
                 self.doEdit = self.noEdit
-                
-                
+            else:
+                self.doEdit = self.noEdit
+                self.endEdit()
             
         self.tabOption = page_num
         

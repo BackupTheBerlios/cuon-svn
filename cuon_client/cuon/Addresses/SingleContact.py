@@ -93,12 +93,16 @@ class SingleContact(SingleData):
         dicValues['address_id'] = [self.addressId, 'int']
         dicValues['partnerid'] = [self.partnerId, 'int']
         try:
-            cID = self.rpc.callRP('Database.executeNormalQuery',self.getStaffID(self.dicUser, False), self.dicUser)[0]['id']
+            sSql = self.getStaffID(self.dicUser, False)
+            result = self.rpc.callRP('Database.executeNormalQuery',sSql,self.dicUser)
+            print result
+            cID = result[0]['id']
+            
         except Exception, param:
             print Exception, param
             cID = 0
             
             
-        
+        print 'cID = ', cID
         dicValues['contacter_id'] = [cID,'int']
         return dicValues

@@ -75,7 +75,8 @@ class SingleData(gladeXml, logs):
         self.sStatus = ''
         self.firstRecord = None
         self.p1 = re.compile('\(select .*\) as')
-        
+        self.iter = None
+
     def load(self, record, dicDetail = None):
         '''
         @param record: id of the record
@@ -262,13 +263,28 @@ class SingleData(gladeXml, logs):
         self.tree1 = tree01
         #print self.getListEntries()
         self.fillTree(self.tree1, self.getListEntries() )
-        
+        #iter = self.tree1.get_model().get_iter_root()
+        #print 'iter by setTree= ', iter
+        #if iter:
+        #    path = self.tree1.get_model().get_path(iter)
+        #    if path:
+        #        self.tree1.set_cursor(path)
+            
     def disconnectTree(self):
         self.tree1.get_selection().disconnect(self.connectTreeId)
 
     def connectTree(self):
         self.connectTreeId = self.tree1.get_selection().connect("changed", self.tree_select_callback)
-   
+        
+    def refreshTree(self):
+        self.setEmptyEntries()
+        try:
+            assert self.tree1
+            self.fillTree(self.tree1, self.getListEntries() )
+            self.treeSelectRow()
+        except:
+            self.printOut( 'no Tree exist')
+
     def tree_select_callback(self, treeSelection):
         # self.out( 'tree_select entered')
         listStore, self.iter = treeSelection.get_selected()
@@ -311,10 +327,19 @@ class SingleData(gladeXml, logs):
         # self.out( 'tree selected', self.INFO)
         # self.out( str(self.tree1.get_selection()), self.INFO )
         # self.out( str(self.path) , self.INFO)
-                  
-        if self.tree1.get_selection() != None and self.path != None:
-            # self.out('select tree by path',self.INFO)
+        if not self.iter:
+            self.iter = self.tree1.get_model().get_iter_root()
+        
+        if not self.path:                
+            self.path = self.tree1.get_model().get_path(self.iter)
+        
+        if self.iter and self.path:
+            self.tree1.scroll_to_cell(self.path)
             self.tree1.get_selection().select_path(self.path)
+                            
+        #if self.tree1.get_selection() != None and self.path != None:
+            # self.out('select tree by path',self.INFO)
+        #    self.tree1.get_selection().select_path(self.path)
         
             
 
@@ -333,15 +358,7 @@ class SingleData(gladeXml, logs):
         #selection.set_selection(iter)
         
     
-    def refreshTree(self):
-        self.setEmptyEntries()
-        try:
-            assert self.tree1
-            self.fillTree(self.tree1, self.getListEntries() )
-            self.treeSelectRow()
-        except:
-            self.printOut( 'no Tree exist')
-
+    
     def getTreeModel(self, listEntries):
         model = cuon.Databases.SingleDataTreeModel.SingleDataTreeModel()
         if self.store:
@@ -808,6 +825,7 @@ class SingleData(gladeXml, logs):
             
         # self.out( dicLists)
         self.printOut( 'dicLists =',  dicLists)
+        print 'dicLists =',  dicLists
         
         try:
             for i in dicLists:
@@ -857,6 +875,8 @@ class SingleData(gladeXml, logs):
         # self.out( liItems)
         # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         self.printOut( 'liItems ---', `liItems`)
+        print  'liItems ---', `liItems`
+        
         return liItems
     
 

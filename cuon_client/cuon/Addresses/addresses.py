@@ -314,6 +314,7 @@ class addresswindow(chooseWindows):
         self.doEdit = self.noEdit
         self.singleAddress.save()
         self.setEntriesEditable(self.EntriesAddresses, FALSE)
+        self.endEdit()
         self.tabChanged()
         
     def on_new1_activate(self, event):
@@ -324,14 +325,16 @@ class addresswindow(chooseWindows):
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
         
         self.getWidget('eAddress').grab_focus()
+        self.startEdit()
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
         self.doEdit = self.tabAddress
-
+        
         self.setEntriesEditable(self.EntriesAddresses, TRUE)
         self.getWidget('eAddress').grab_focus()
-
+        self.startEdit()
+        
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
         p = printAddress.printAddress(self.singleAddress.getFirstRecord() )
@@ -348,6 +351,7 @@ class addresswindow(chooseWindows):
         self.singleBa.addressId = self.singleAddress.ID
         self.singlePartner.save()
         self.setEntriesEditable(self.EntriesPartner, FALSE)
+        #self.startEdit()
         self.tabChanged()
         
 
@@ -362,6 +366,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.save()
         self.setEntriesEditable(self.EntriesAddressesMisc, FALSE)
         self.tabChanged()
+        
 
     def on_MiscEdit1_activate(self, event):
         self.out( "edit addresses v2")
@@ -378,6 +383,7 @@ class addresswindow(chooseWindows):
         self.singlePartner.addressId = self.singleAddress.ID
         self.singlePartner.save()
         self.setEntriesEditable(self.EntriesPartner, FALSE)
+        self.endEdit()
         self.tabChanged()
         
     def on_PartnerNew1_activate(self, event):
@@ -386,12 +392,14 @@ class addresswindow(chooseWindows):
         
         self.singlePartner.newRecord()
         self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.startEdit()
 
         
     def on_PartnerEdit1_activate(self, event):
         self.doEdit = self.tabPartner
 
         self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.startEdit()
 
 
     def on_PartnerDelete1_activate(self, event):
@@ -411,19 +419,22 @@ class addresswindow(chooseWindows):
         sCalendar = 'iCal_'+ self.dicUser['Name']
         self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
         self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
+        self.endEdit()
         self.tabChanged()
 
     def on_SchedulEdit1_activate(self, event):
         self.doEdit = self.tabSchedul
 
         self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
-   
+        self.startEdit()
+
     def on_SchedulNew_activate(self, event):
         self.out( "new Schedul for partner v2")
         self.doEdit = self.tabSchedul
 
         self.singleSchedul.newRecord()
         self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
+        self.startEdit()
 
     def on_SchedulDelete_activate(self, event):
         self.out( "delete Schedul addresses v2")

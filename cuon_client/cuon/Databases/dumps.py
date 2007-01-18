@@ -264,4 +264,5 @@ class dumps:
         Hour,Minute = divmod(s,4)
         Minute = Minute * 15
         
+        
         return Hour, Minute
