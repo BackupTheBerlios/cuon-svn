@@ -5,6 +5,8 @@ def writeValues(f_out, liS1):
     #print liS1
     s = ''
     for i in liS1:
+        if len(i) > 49:
+            i=i[0:49]
         s += i.strip() + ';'
     #print 'AAAA----------------------------------------'
        
