@@ -135,7 +135,7 @@ class Address(xmlrpc.XMLRPC, basics):
                             AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
                             print 'AlarmSeconds = ', AlarmSeconds
                             print 'Differenz', nD3.seconds
-                            if AlarmSeconds > nD3.seconds :
+                            if nD2.seconds + AlarmSeconds > nD1.seconds :
                                ok = True
                     if  ok:
                         print 'copy entry to  list'

@@ -630,6 +630,10 @@ class addresswindow(chooseWindows):
             dicPartner = self.singlePartner.firstRecord
             for key in self.singleAddress.firstRecord.keys():
                 dicPartner['address_' + key] = self.singleAddress.firstRecord[key]
+            dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser)
+            if dicInternInformation != 'NONE':
+                for key in dicInternInformation:
+                    dicPartner[key] = dicInternInformation[key]
                 
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
             
@@ -643,7 +647,13 @@ class addresswindow(chooseWindows):
                 dicSchedul['address_' + key] = self.singleAddress.firstRecord[key]
             for key in self.singlePartner.firstRecord.keys():
                 dicSchedul['partner_' + key] = self.singlePartner.firstRecord[key]
-                
+            dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser, dicSchedul['schedul_staff_id'])
+            if dicInternInformation != 'NONE':    
+                for key in dicInternInformation:
+                    dicSchedul[key] = dicInternInformation[key]
+            
+            dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
+        
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
                     
     def on_chooseAddress_activate(self, event):

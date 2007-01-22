@@ -403,3 +403,5 @@ class basics(xmlrpc.XMLRPC):
         Minute = Minute * 15
         
         return Hour, Minute
+        
+        

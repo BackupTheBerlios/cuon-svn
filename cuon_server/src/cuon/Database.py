@@ -594,4 +594,32 @@ class Database(xmlrpc.XMLRPC, SQL):
         return sSql
         
             
+    def xmlrpc_getInternInformation(self, dicUser, Pers1=None, Pers2=None):
+        dicRet = {}
+        sSql = "select lastname, firstname  from staff where id = " + self.getStaffID(dicUser)
+        liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if liResult and liResult != 'NONE':
+            dicPers = liResult[0]
+            for key in dicPers.keys():
+                dicRet['userinfo_' + key] = dicPers[key]
             
+            
+        if Pers1:
+            Sql = "select lastname, firstname  from staff where id = " + `Pers1`
+            liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            if liResult and liResult != 'NONE':
+                dicPers = liResult[0]
+                for key in dicPers.keys():
+                    dicRet['person1_' + key] = dicPers[key]
+        if Pers2:
+            Sql = "select lastname, firstname  from staff where id = " + `Pers2`
+            liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            if liResult and liResult != 'NONE':
+                dicPers = liResult[0]
+                for key in dicPers.keys():
+                    dicRet['person2_' + key] = dicPers[key]
+        
+        if not dicRet:
+            dicRet = 'NONE'
+            
+        return dicRet

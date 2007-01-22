@@ -266,3 +266,17 @@ class dumps:
         
         
         return Hour, Minute
+        
+    def getTimeString(self, s):
+        Hour, Minute = self.getTime(s)
+        #print Hour, Minute
+        sHour = `Hour`
+        if Minute == 0:
+            sMinute = '00'
+        else:
+            sMinute = `Minute`
+        
+        s = sHour + ':' + sMinute
+        return s
+        
+        
