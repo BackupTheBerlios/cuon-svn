@@ -69,7 +69,7 @@ class SingleDMS(SingleData):
         
         b = bz2.decompress(self.imageData)
         mi = cuon.Misc.misc.misc()
-        print self.dicUser  
+        #print self.dicUser  
         sFile =self.dicUser['prefPath']['tmp'] +  mi.getRandomFilename('__dms.' + sEXT)
         if b:
             f = open(sFile, 'wb')

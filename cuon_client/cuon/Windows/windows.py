@@ -49,7 +49,7 @@ class windows(rawWindow, MyXML, messages):
         self.Search = False
         self.cursor = None
         #xmlrpc.__init__(self)
-        
+        self.FirstInit = True
         self.ModulNumber = 1
         self.MN = {}
 

@@ -77,7 +77,7 @@ class dumps:
         
 
     def unpickleObject(self, key):
-        print key
+        #print key
         pkey = os.path.normpath(self.td.cuon_path +'/' + `key`)
         fkey = open(pkey)
         obj =  pickle.load(fkey)

@@ -144,11 +144,11 @@ class basics(xmlrpc.XMLRPC):
         WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
         self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
         # Limits
-        self.LIMITSQL = 100
+        self.LIMITSQL = 20
         self.LIMITGARDEN = 100
         self.LIMITADDRESS = 100
         self.LIMITARTICLES = 100
-        self.LIMITPROJECT = 100
+        self.LIMITPROJECT = 30
         self.LIMITORDER = 100
         
         
@@ -225,7 +225,7 @@ class basics(xmlrpc.XMLRPC):
                     
         return ok
         
-    def createNewSessionID(self, secValue = 36000):
+    def createNewSessionID(self, secValue = 42000):
         
         s = ''
         
@@ -280,9 +280,9 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        debugValue = 1
+        debugValue = 0
         #print 'debugValue', debugValue
-        if debugValue > 0:
+        if debugValue == 1:
         
             file = open('/tmp/cuon_server.log','a')
             file.write(time.ctime(time.time() ))

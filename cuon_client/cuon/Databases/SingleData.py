@@ -262,7 +262,7 @@ class SingleData(gladeXml, logs):
     def setTree(self, tree01):
         self.tree1 = tree01
         #print self.getListEntries()
-        self.fillTree(self.tree1, self.getListEntries() )
+        #self.fillTree(self.tree1, self.getListEntries() )
         #iter = self.tree1.get_model().get_iter_root()
         #print 'iter by setTree= ', iter
         #if iter:

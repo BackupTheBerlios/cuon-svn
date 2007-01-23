@@ -27,7 +27,7 @@ class SingleAddress(SingleData):
         # tables.dbd and address
         self.sNameOfTable =  "address"
         self.xmlTableDef = 0
-        print 'allTables = ',`allTables`
+        #print 'allTables = ',`allTables`
         self.loadTable(allTables)
         # self.saveTable()
 
