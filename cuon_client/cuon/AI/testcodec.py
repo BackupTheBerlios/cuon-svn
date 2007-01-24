@@ -34,6 +34,3 @@ def testcodec( txt, destination="utf_8" ):
             pass
     print "-"*80
 
-testcodec( "Ein ue...: ü" )
-testcodec( "latin-1..: \xfc" )
-testcodec( "UTF8.....: \xc3\xbc" )

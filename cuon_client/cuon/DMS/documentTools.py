@@ -227,6 +227,7 @@ class documentTools:
             try:
                 if isinstance(dicVars[key], types.StringType) :
                     dicVars[key]  = dicVars[key].replace('&','&amp;' )
+                    
                     print key, dicVars[key]
                     print '\n'
                     

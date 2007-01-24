@@ -216,6 +216,17 @@
                 <fg_color>0</fg_color>
 
       </entry>
+<entry>
+	<name>eLetterPhrase1</name>
+	<type>textline</type>
+               <size>155</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_phrase_1</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
 
     </table>
 

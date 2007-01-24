@@ -1,7 +1,59 @@
 <sql>
   <postgre_sql>
     <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-
+    
+    <index>
+        <index_name>address_idx_lastname</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>lastname</index_column>
+    </index>
+    <index>
+        <index_name>address_idx_lastname2</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>lastname2</index_column>
+    </index>
+    <index>
+        <index_name>address_idx_firstname</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>firstname</index_column>
+    </index>
+    <index>
+        <index_name>address_idx_zip</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>zip</index_column>
+    </index>
+    <index>
+        <index_name>address_idx_city</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>city</index_column>
+    </index>
+    
+    
+    <index>
+        <index_name>partner_idx_lastname</index_name>
+        <index_special> </index_special>
+        <index_table>partner</index_table>
+        <index_column>lastname</index_column>
+    </index>
+    
+    <index>
+        <index_name>partner_idx_addressid</index_name>
+        <index_special> </index_special>
+        <index_table>partner</index_table>
+        <index_column>addressid</index_column>
+    </index>
+    
+    
+    <foreign_key>
+            <foreign_key_name>PartnerAddress</foreign_key_name> 
+            <foreign_key_sql>foreign key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+        <foreign_table>address</foreign_table>
+    </foreign_key>
 
         
 

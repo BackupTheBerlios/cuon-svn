@@ -61,7 +61,7 @@ class addresswindow(chooseWindows):
         chooseWindows.__init__(self)
         self.InitForms = True
         
-        print 'time 1 = ', time.localtime()
+        #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Address']
         self.singleAddress = SingleAddress.SingleAddress(allTables)
@@ -74,7 +74,7 @@ class addresswindow(chooseWindows):
         self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
         
         self.allTables = allTables
-        print 'time 2 = ', time.localtime()
+        #print 'time 2 = ', time.localtime()
         
         
         # self.singleAddress.loadTable()
@@ -86,7 +86,7 @@ class addresswindow(chooseWindows):
         self.win1.maximize()
         
         self.setStatusBar()
-        print 'time 3 = ', time.localtime()
+        #print 'time 3 = ', time.localtime()
 
 
         self.EntriesAddresses = 'addresses.xml'
@@ -96,7 +96,7 @@ class addresswindow(chooseWindows):
         self.EntriesPartnerSchedul = 'partner_schedul.xml'
         self.EntriesNotes = 'address_notes.xml'
         
-        print 'time 4 = ', time.localtime()
+        #print 'time 4 = ', time.localtime()
         
         self.loadEntries(self.EntriesAddresses)
         
@@ -110,7 +110,7 @@ class addresswindow(chooseWindows):
             self.singleAddress.sWhere = ' where id = ' + `addrid`
             
         self.singleAddress.setTree(self.xml.get_widget('tree1') )
-        print 'time 5 = ', time.localtime()
+        #print 'time 5 = ', time.localtime()
         
         #singleAddressBank
         
@@ -125,7 +125,7 @@ class addresswindow(chooseWindows):
 
         self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
         self.singleAddressBank.setTree(self.xml.get_widget('tree1') )
-        print 'time 6 = ', time.localtime()
+        #print 'time 6 = ', time.localtime()
 
 
   
@@ -141,7 +141,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.setTree(self.xml.get_widget('tree1') )
         # self.singleMisc.setStore(gtk.ListStore())
         #singlePartner
-        print 'time 7 = ', time.localtime()
+        #print 'time 7 = ', time.localtime()
 
         self.loadEntries(self.EntriesPartner )
         self.singlePartner.setEntries(self.getDataEntries('partner.xml') )
@@ -156,7 +156,7 @@ class addresswindow(chooseWindows):
         if partnerid > 0:
             self.singlePartner.sWhere  += ' and id = ' + `partnerid`
         self.singlePartner.setTree(self.xml.get_widget('tree1') )
-        print 'time 8 = ', time.localtime()
+        #print 'time 8 = ', time.localtime()
 
 
 
@@ -176,7 +176,7 @@ class addresswindow(chooseWindows):
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`
         self.singleSchedul.setTree(self.xml.get_widget('tree1') )
   
-        print 'time 9 = ', time.localtime()
+        #print 'time 9 = ', time.localtime()
 
         #singleNotes
         
@@ -191,7 +191,7 @@ class addresswindow(chooseWindows):
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
-        print 'time 10 = ', time.localtime()
+        #print 'time 10 = ', time.localtime()
 
 
         cbFashion = self.getWidget('cbFashion')
@@ -203,7 +203,7 @@ class addresswindow(chooseWindows):
 
         
             
-        print 'time 11 = ', time.localtime()
+        #print 'time 11 = ', time.localtime()
         
 
         # Menu-items
@@ -268,12 +268,12 @@ class addresswindow(chooseWindows):
         self.tabNotes = 5
         
         
-        print 'time 20 = ', time.localtime()
+        #print 'time 20 = ', time.localtime()
 
         self.tabChanged()
         
         self.win1.add_accel_group(self.accel_group)
-        print 'time 21 = ', time.localtime()
+        #print 'time 21 = ', time.localtime()
         
         
     #Menu File

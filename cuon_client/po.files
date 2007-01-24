@@ -280,8 +280,6 @@ cuon/Stock/lists_stockgoods_number1.py
 cuon/WebShop/webshop.py
 cuon/WebShop/__init__.py
 cuon/WebShop/SingleWebshop.py
-cuon/E_Mail/dia/SingleEmail.py
-cuon/E_Mail/dia/SingleData.py
 cuon/E_Mail/__init__.py
 cuon/E_Mail/sendEmail.py
 cuon/VTK/__init__.py
@@ -359,7 +357,6 @@ cuon/DMS/GUI/src2/main.c
 cuon/DMS/GUI/src2/interface.c
 cuon/DMS/GUI/src2/callbacks.c
 cuon/DMS/GUI/src/callbacks.c
-cuon/DMS/GUI/src/interface.c
 cuon/DMS/GUI/src/main.c
 cuon/DMS/GUI/src/support.c
 cuon/Order/GUI/src/callbacks.c
@@ -379,6 +376,10 @@ cuon/Stock/GUI/src/support.c
 cuon/Stock/GUI/src/main.c
 cuon/Stock/GUI/src/interface.c
 cuon/Stock/GUI/src/callbacks.c
+cuon/E_Mail/GUI/src/support.c
+cuon/E_Mail/GUI/src/main.c
+cuon/E_Mail/GUI/src/interface.c
+cuon/E_Mail/GUI/src/callbacks.c
 cuon/Finances/CashAccountBook/GUI/src/support.c
 cuon/Finances/CashAccountBook/GUI/src/main.c
 cuon/Finances/CashAccountBook/GUI/src/interface.c

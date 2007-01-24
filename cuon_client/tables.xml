@@ -3358,6 +3358,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>letter_phrase_1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>155</size>
+      <default />
+      <comment />
+    </field>
     
   </table>
   <!--table: staff_fee-->
@@ -3987,10 +3997,5 @@
     <sequence_cycle>Yes</sequence_cycle>
     <sequence_cache>0</sequence_cache>
   </database_sequence>
- 	<foreign_key>
-		<foreign_key_name>PartnerAddress</foreign_key_name> 
-		<foreign_key_sql>foreign key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
-    <foreign_table>address</foreign_table>
-	</foreign_key>
-
+ 	
 </database>

@@ -192,7 +192,8 @@ class contactwindow(chooseWindows):
 
     def on_bGoToAddress_clicked(self, event):
         print 'go to address'
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.contact_address_id, partnerid=self.contact_partner_id)
+        #adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.contact_address_id, partnerid=self.contact_partner_id)
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.contact_address_id)
         
     
               

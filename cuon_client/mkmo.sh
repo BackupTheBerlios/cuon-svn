@@ -9,8 +9,8 @@ find GUI/ -name "*.c" >> po.files
 
 echo "`pwd`"
 echo "po.files created"
-
-xgettext -k_ -kN_ -o messages.pot -f po.files  
+grep -v cuon/bin po.files > p2.files
+xgettext -k_ -kN_ -o messages.pot -f po2.files  
 echo "messages.pot created"
 
 echo "creating german"

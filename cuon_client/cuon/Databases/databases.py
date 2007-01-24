@@ -1,4 +1,6 @@
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+# -*- coding: utf-8 -*-
+
+##Copyright (C) [2003]  [Juergen Hamel, D-32584 Loehne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -9,8 +11,6 @@
 
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
-# -*- coding: utf-8 -*-
-
 
 from types import *
 import pygtk
@@ -197,11 +197,7 @@ class databaseswindow(windows):
                     print 'seq 2 ' + seq
             print `lSequences`        
             self.startCheckSequences(key,lSequences)
-            # Foreign keys
-
-            liForeign = clt.getListOfForeignKeyNames(key)
-            self.startCheckForeignKey(key, liForeign)
-            
+           
         print 'allTables = '
         print tableList    
         self.rpc.callRP('Database.saveInfo', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
@@ -335,25 +331,25 @@ class databaseswindow(windows):
                 result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
         
 
-    def startCheckForeignKey(self, key, liForeign):
-        print 'start check Foreign'
-        clt = cyr_load_table.cyr_load_table()
-       ### for Server-functions set the td-object
-        clt.td = self.td
- 
-        for i in liForeign:
-            print 'Check this Foreign key = ' , `i`
-            dicForeign = clt.getForeignKeyDefinition(key, i)
-            # alter table partner ADD CONSTRAINT "f_address" foreign key (addressid) references address (id) on delete restrict on update restrict ;
-
-            sSql = 'alter table ' + dicForeign['table']
-            sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
-            sSql += dicForeign['sql']
-            
-            self.out( sSql)
-            print 'Sql Sequence = ', sSql
-            result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
-        
+##    def startCheckForeignKey(self, key, liForeign):
+##        print 'start check Foreign'
+##        clt = cyr_load_table.cyr_load_table()
+##       ### for Server-functions set the td-object
+##        clt.td = self.td
+## 
+##        for i in liForeign:
+##            print 'Check this Foreign key = ' , `i`
+##            dicForeign = clt.getForeignKeyDefinition(key, i)
+##            # alter table partner ADD CONSTRAINT "f_address" foreign key (addressid) references address (id) on delete restrict on update restrict ;
+##
+##            sSql = 'alter table ' + dicForeign['table']
+##            sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
+##            sSql += dicForeign['sql']
+##            
+##            self.out( sSql)
+##            print 'Sql Sequence = ', sSql
+##            result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+##        
 
 
     def dbcheck(self, table):
@@ -798,7 +794,72 @@ class databaseswindow(windows):
                     print sSql                       
                     print ok
 
+            # Indexe 
+            cyNodes = self.getNodes(cyNode[0],'index')
+            if cyNodes:
+                for i in cyNodes:
+                    self.out("Werte in xml")
+                    dicIndex = {}                        
+                    indexNode = self.getNodes(i,'index_name')
+                    dicIndex['name'] = self.getData(indexNode[0])
 
+                    indexNode = self.getNodes(i,'index_special')
+                    dicIndex['special'] = self.getData(indexNode[0])
+                    
+                    indexNode = self.getNodes(i,'index_table')
+                    dicIndex['table'] = self.getData(indexNode[0])
+                    
+                    indexNode = self.getNodes(i,'index_column')
+                    dicIndex['column'] = self.getData(indexNode[0])
+                    
+                    
+                    # first drop index
+                    
+                    sSql = "drop index " + dicIndex['name']
+                    print 'Sql INDEX = ', sSql
+                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                 
+                    # now set new index
+                    sSql = "create " 
+                    if len(dicIndex['special']) > 1:
+                        sSql += dicIndex['special']
+                    sSql += " index " + dicIndex['name']
+                    sSql += " on " + dicIndex['table']
+                    sSql += " (" + dicIndex['column'] + ")"
+                    
+                    
+                    
+                    print 'Sql INDEX = ', sSql
+                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                    print result
+
+
+            # Foreign keys
+            cyNodes = self.getNodes(cyNode[0],'foreign_key')
+            if cyNodes:
+                for i in cyNodes:
+                    self.out("Werte in xml")
+                    dicForeign = {}                        
+                    foreignNode = self.getNodes(i,'foreign_key_name')
+                    dicForeign['name'] = self.getData(foreignNode[0])
+
+                    foreignNode = self.getNodes(i,'foreign_table')
+                    dicForeign['table'] = self.getData(foreignNode[0])
+
+                    foreignNode = self.getNodes(i,'foreign_key_sql')
+                    dicForeign['sql'] = self.getData(foreignNode[0])
+
+                    Sql = 'alter table ' + dicForeign['table']
+                    sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
+                    sSql += dicForeign['sql']
+                    
+                    self.out( sSql)
+                    print 'Sql Foreign key = ', sSql
+                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                
+                    
+            
+            
             # Trigger
             cyNodes = self.getNodes(cyNode[0],'trigger')
             if cyNodes:
