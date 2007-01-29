@@ -64,7 +64,7 @@ class Address(xmlrpc.XMLRPC, basics):
         sW = sW + " process_status != 999 "
         sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
         
-        sSql = sSql + " order by schedul_name, partner_schedul.schedul_date, partner_schedul.schedul_time_begin " 
+        sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin " 
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         

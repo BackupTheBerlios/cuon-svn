@@ -18,7 +18,7 @@ import cuon.Finances
 import cuon.Misc
 
 baseSettings = cuon.basics.basics()
-print baseSettings.CUON_WEBPATH
+#print baseSettings.CUON_WEBPATH
 r = cuon.CuonFuncs.CuonFuncs()
 oiCal = cuon.iCal.iCal()
 oDatabase = cuon.Database.Database()

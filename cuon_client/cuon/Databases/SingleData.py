@@ -213,6 +213,15 @@ class SingleData(gladeXml, logs):
 ##                dicValues[lb][0] = ' '
         
         self.printOut( "saveValues - self.id = ", self.ID)
+        print 'save record'
+        print self.sNameOfTable, self.ID
+        print 'int Type = ', isinstance(self.ID, types.IntType)
+        print 'long Type = ', isinstance(self.ID, types.LongType)
+        print 'String Type = ', isinstance(self.ID, types.StringType)
+        
+        print dicValues
+        print '-----------------------------------------------------------------------_'
+        
         liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
         if self.ID < 0 and liResult:
             try:

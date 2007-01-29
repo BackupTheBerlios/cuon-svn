@@ -558,7 +558,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="lFindName">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Name1</property>
+	      <property name="label" translatable="yes">Name</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -592,6 +592,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_eFind_key_press_event" last_modification_time="Fri, 26 Jan 2007 10:09:09 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -603,7 +604,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="lFindCity">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">City</property>
+	      <property name="label" translatable="yes">Designation</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -626,7 +627,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindCity">
+	    <widget class="GtkEntry" id="eFindDesignation">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -637,6 +638,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_eFind_key_press_event" last_modification_time="Fri, 26 Jan 2007 10:09:30 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -648,7 +650,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="label180">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Zipcode</property>
+	      <property name="label" translatable="yes">id</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -671,7 +673,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindZipcode">
+	    <widget class="GtkEntry" id="eFindID">
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="editable">True</property>
@@ -681,7 +683,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
-	      <signal name="key_press_event" handler="on_eFindZipcode_key_press_event" last_modification_time="Tue, 22 Aug 2006 10:56:02 GMT"/>
+	      <signal name="key_press_event" handler="on_eFind_key_press_event" last_modification_time="Fri, 26 Jan 2007 10:09:55 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -1322,11 +1324,37 @@
 		  </child>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkButton" id="bGotoAddress">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">goto Address</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bGotoAddress_clicked" last_modification_time="Thu, 25 Jan 2007 18:10:47 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
 		  </child>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkButton" id="bLetter">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="label" translatable="yes">Letter</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bLetter_clicked" last_modification_time="Thu, 25 Jan 2007 18:10:35 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">False</property>
+		      <property name="fill">False</property>
+		    </packing>
 		  </child>
 
 		  <child>

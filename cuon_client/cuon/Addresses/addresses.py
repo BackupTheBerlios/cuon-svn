@@ -417,9 +417,12 @@ class addresswindow(chooseWindows):
    
     def on_SchedulSave_activate(self, event):
         self.out( "save Schedul addresses v2")
-        self.doEdit = self.noEdit
         self.singleSchedul.partnerId = self.singlePartner.ID
+        self.doEdit = self.noEdit
+        print 'ID = ', self.singleSchedul.ID
+        
         id = self.singleSchedul.save()
+        print 'save ready'
         self.singleSchedul.load(id)
         sCalendar = 'iCal_'+ self.dicUser['Name']
         self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
@@ -658,7 +661,8 @@ class addresswindow(chooseWindows):
                     dicSchedul[key] = dicInternInformation[key]
             
             dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
-        
+            print 'dicSchedul = ', dicSchedul
+            print 'lastname', dicSchedul['person1_lastname']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
                     
     def on_chooseAddress_activate(self, event):
@@ -786,9 +790,13 @@ class addresswindow(chooseWindows):
     def on_eSchedulFor_changed(self, event):
         print 'eSchedulfor changed'
         try:
+            # first set the lastname, firstname to the Field
             eAdrField = self.getWidget('eSchedulForName')
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eSchedulFor').get_text()))
             eAdrField.set_text(cAdr)
+            # now try to set the scheduls for this staff
+            ts = self.getWidget('treeSchedul')
+            
         except Exception, params:
             print Exception, params    
             

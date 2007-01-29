@@ -9,7 +9,7 @@ find GUI/ -name "*.c" >> po.files
 
 echo "`pwd`"
 echo "po.files created"
-grep -v cuon/bin po.files > p2.files
+grep -v cuon/bin po.files > po2.files
 xgettext -k_ -kN_ -o messages.pot -f po2.files  
 echo "messages.pot created"
 

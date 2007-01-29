@@ -347,16 +347,42 @@ class projectwindow(chooseWindows):
 ## 
               
 
-        
+    def on_eFind_key_press_event(self, entry, event):
+        print 'eSearch_key_press_event'
+        if self.checkKey(event,'NONE','Return'):
+            self.findProject()
+      
     # search button
+    
+    
     def on_bSearch_clicked(self, event):
+        self.findProject()
+    def findProject(self):
+        
         self.out( 'Searching ....', self.ERROR)
         sName = self.getWidget('eFindName').get_text()
-        sCity = self.getWidget('eFindCity').get_text()
-        self.out('Name and City = ' + sName + ', ' + sCity, self.ERROR)
-        self.singleProject.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
-        self.out(self.singleProject.sWhere, self.ERROR)
+        sDesignation = self.getWidget('eFindDesignation').get_text()
+        self.out('Name and City = ' + sName + ', ' + sDesignation, self.ERROR)
+        sID = self.getWidget('eFindID').get_text()
+        liSearch = []
+        if sName:
+            liSearch.append('name')
+            liSearch.append(sName)
+        if sDesignation:
+            liSearch.append('designation')
+            liSearch.append(sDesignation)
+        if sID:
+            liSearch.append('id')
+            try:
+                liSearch.append(int(sID))
+            except:
+                liSearch.append(0)
+                
+        self.singleProject.sWhere = self.getWhere(liSearch) 
+        
         self.refreshTree()
+        
+        
     # events and buttons
     
     # Project
@@ -491,6 +517,25 @@ class projectwindow(chooseWindows):
         eArticleDes  = self.getWidget('eArticleDesignation')
         sArticleDes  = self.singleArticle.getArticleDesignation(self.getWidget( 'eMRArticleNumber').get_text())
         eArticleDes.set_text(sArticleDes)
+        
+        
+        
+        
+    def on_bGotoAddress_clicked(self, event):
+        print 'Customer-ID ', self.singleProject.firstRecord['customer_id']
+        if self.singleProject.firstRecord['customer_id'] > 0:
+            print 'start address'
+            adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.singleProject.firstRecord['customer_id'])
+        
+    def on_bLetter_clicked(self, event):
+        print 'bLetter clicked'
+        if self.singleProject.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            print 'firstRecord = ', self.singleProject.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            dicExtInfo ={'sep_info':{'1':self.singleProject.ID},'Modul':self.ModulNumber}
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, self.singleProject.firstRecord,dicExtInfo)
+        
     def refreshTree(self):
         self.singleProject.disconnectTree()
         self.singleProjectPhases.disconnectTree()

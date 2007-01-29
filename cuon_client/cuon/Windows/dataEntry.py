@@ -89,7 +89,8 @@ class dataEntry:
             try:
                 iRound1 = int(sRound)
             except:
-                print 'ERROR - No Integer'
+                pass
+                #print 'ERROR - No Integer'
                 
         self.iRound = iRound1
         

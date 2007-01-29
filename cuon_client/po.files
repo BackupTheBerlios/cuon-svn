@@ -356,9 +356,6 @@ cuon/DMS/GUI/src2/support.c
 cuon/DMS/GUI/src2/main.c
 cuon/DMS/GUI/src2/interface.c
 cuon/DMS/GUI/src2/callbacks.c
-cuon/DMS/GUI/src/callbacks.c
-cuon/DMS/GUI/src/main.c
-cuon/DMS/GUI/src/support.c
 cuon/Order/GUI/src/callbacks.c
 cuon/Order/GUI/src/main.c
 cuon/Order/GUI/src/interface.c
