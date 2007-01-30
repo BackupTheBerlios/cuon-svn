@@ -1252,7 +1252,8 @@ if sLocal == 'NO':
 else:
     DIR = sLocal
     
-locale.setlocale (locale.LC_ALL, '')
+#locale.setlocale (locale.LC_ALL, '')
+
 APP = 'cuon'
 gettext.bindtextdomain (APP, DIR)
 gettext.textdomain (APP)

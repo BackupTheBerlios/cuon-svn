@@ -173,7 +173,7 @@ class addresswindow(chooseWindows):
         self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('shortRemark'), _('Priority'), _('Status')])
  
 
-        self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID`
+        self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
         self.singleSchedul.setTree(self.xml.get_widget('tree1') )
   
         #print 'time 9 = ', time.localtime()
@@ -416,12 +416,17 @@ class addresswindow(chooseWindows):
         
    
     def on_SchedulSave_activate(self, event):
+        nID = 0
         self.out( "save Schedul addresses v2")
         self.singleSchedul.partnerId = self.singlePartner.ID
         self.doEdit = self.noEdit
         print 'ID = ', self.singleSchedul.ID
-        
+        if self.singleSchedul.ID > 0:
+            nID =  self.singleSchedul.ID
+            
         id = self.singleSchedul.save()
+        if nID > 0:
+            id = nID
         print 'save ready'
         self.singleSchedul.load(id)
         sCalendar = 'iCal_'+ self.dicUser['Name']
@@ -898,7 +903,7 @@ class addresswindow(chooseWindows):
             self.singlePartner.connectTree()
             self.singlePartner.refreshTree()
         elif self.tabOption == self.tabSchedul:
-            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)`
+            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)` + ' and process_status != 999 '
             self.singleSchedul.connectTree()
             self.singleSchedul.refreshTree()
             
