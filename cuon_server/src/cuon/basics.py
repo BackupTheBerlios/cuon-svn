@@ -61,6 +61,13 @@ class basics(xmlrpc.XMLRPC):
         self.POSTGRES_DB = 'cuon'
         self.POSTGRES_USER = 'Test'
         
+        
+        self.OSC_HOST = 'localhost'
+        self.POSC_ORT = 5432
+        self.OSC_DB = 'cuon'
+        self.OSC_USER = 'Test'
+        
+        
         self.PdfEncoding = 'latin-2'
         
         self.EMAILSERVER = None
@@ -102,7 +109,24 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('POSTGRES','POSTGRES_USER')
             if value:
                 self.POSTGRES_USER = value
-            
+            # OSCOMMERCE
+            value = self.getConfigOption('OSCOMMERCE','OSC_HOST')
+            if value:
+                self.OSC_HOST = value
+                
+            value = self.getConfigOption('OSCOMMERCE','OSC_PORT')
+            if value:
+                self.OSC_PORT = int(value)
+                
+            value = self.getConfigOption('OSCOMMERCE','OSC_DB')
+            if value:
+                self.OSC_DB = value
+                
+            value = self.getConfigOption('OSCOMMERCE','OSC_USER')
+            if value:
+                self.OSC_USER = value
+                
+                
             #PDF
             value = self.getConfigOption('PDF','ENCODING')
             if value:
@@ -280,7 +304,7 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        debugValue = 0
+        debugValue = 1
         #print 'debugValue', debugValue
         if debugValue == 1:
         

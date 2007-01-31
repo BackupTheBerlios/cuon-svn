@@ -229,7 +229,11 @@ class Address(xmlrpc.XMLRPC, basics):
         
                sSql = sSql6
         
-        sSql = sSql + self.getWhere("",dicUser,1)
+        if dicSearchlist:
+            sSql = sSql + self.getWhere("",dicUser,2)
+        else:
+            sSql = sSql + self.getWhere("",dicUser,1)
+            
         
         
         sSql = sSql + ' order by lastname, lastname2, firstname, city'
