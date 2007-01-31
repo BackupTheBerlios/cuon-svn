@@ -61,9 +61,9 @@ for i in liGlade:
 # copy locale
 os.system('cp -R Client/locale ' +  cuon_home)
 
-# Todo 
+ 
 # icon
-
+os.system('cp cuon-logo.xpm ' + cuon_home)
 
 # create startFile
 

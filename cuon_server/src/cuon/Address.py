@@ -253,12 +253,12 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql6 = ''
         
         if dicSearchlist:
-            sSql2 = sSqlWhere + ' and where '
+            sSql2 = sSql + sSqlWhere + ' and '
             if dicSearchlist['eLastnameFrom'] and dicSearchlist['eLastnameTo'] :
                lastnameFrom =  string.upper(dicSearchlist['eLastnameFrom']) 
                lastnameTo = string.lower(dicSearchlist['eLastnameTo']) 
                 
-               sSql3 = sSql2 + " lastname  between  '" +  lastnameFrom + "' and '" + lastnameTo +"'"  
+               sSql3 = sSql2 + " address.lastname  between  '" +  lastnameFrom + "' and '" + lastnameTo +"'"  
                sSql = sSql3
         
             if dicSearchlist['eFirstnameFrom'] and dicSearchlist['eFirstnameTo'] :
@@ -266,7 +266,7 @@ class Address(xmlrpc.XMLRPC, basics):
                firstnameTo = string.lower(dicSearchlist['eFirstnameTo']) 
                 
                
-               sSql4 = " firstname  between  '" +  firstnameFrom + "' and '" + firstnameTo +"'"  
+               sSql4 = " address.firstname  between  '" +  firstnameFrom + "' and '" + firstnameTo +"'"  
                if sSql3:
                    sSql4 = sSql3 + ' and ' + sSql4
                else:
@@ -280,7 +280,7 @@ class Address(xmlrpc.XMLRPC, basics):
                cityTo = string.lower(dicSearchlist['eCityTo']) 
                 
                
-               sSql5 = " city  between  '" +  cityFrom + "' and '" + cityTo +"'"  
+               sSql5 = " address.city  between  '" +  cityFrom + "' and '" + cityTo +"'"  
                if sSql3 and not sSql4:
                    sSql5 = sSql3 + ' and ' + sSql5
                elif sSql3 and sSql4:
@@ -296,7 +296,7 @@ class Address(xmlrpc.XMLRPC, basics):
                countryTo = string.lower(dicSearchlist['eCountryTo']) 
                 
                
-               sSql6 = " country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
+               sSql6 = " address.country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
                if sSql3 and not sSql4 and not sSql5:
                    sSql6 = sSql3 + ' and ' + sSql6
                elif sSql4 and not sSql5:
@@ -307,8 +307,12 @@ class Address(xmlrpc.XMLRPC, basics):
                    sSql6 = sSql2 + sSql6
         
                sSql = sSql6
-        
-        sSql = sSql + self.getWhere(sSqlWhere,dicUser,0,'partner.')
+        if dicSearchlist:
+            sSql = sSql + self.getWhere("",dicUser,2,'partner.')
+        else:
+            sSql = sSql + self.getWhere("",dicUser,1,'partner.')
+            
+        #sSql = sSql + self.getWhere(sSqlWhere,dicUser,0,'partner.')
         sSql = sSql + ' order by address.lastname, address.lastname2, address.firstname, address.city, partner.lastname, partner.lastname2, partner.firstname, partner.city'
         print sSql
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
