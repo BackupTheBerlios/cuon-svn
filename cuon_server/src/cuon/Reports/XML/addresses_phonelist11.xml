@@ -1,0 +1,414 @@
+<report>
+
+  <orientation>Portrait</orientation>
+  <topMargin>20</topMargin>
+  <bottomMargin>20</bottomMargin>
+  <rightMargin>40</rightMargin>
+  <leftMargin>40</leftMargin>
+  <papersizeX>595</papersizeX>
+  <papersizeY>842</papersizeY>
+
+  <reportHeader>
+    <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+    
+    <entry>
+      <name>Title</name>
+      <class>Label</class>
+      <value>Phonelist 011 generatet by CUON</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>20</posY1>
+      <posX2>80</posX2>
+      <posY2>40</posY2>
+      <font>Helvetica</font>
+      <fontsize>16</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+
+
+    </reportHeader>
+
+
+<pageHeader>
+    <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>400</posX2>
+    <posY2>50</posY2>
+   <entry>
+      <name>lPageNumber</name>
+      <class>Label</class>
+      <value>Page:</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>390</posX1>
+      <posY1>0</posY1>
+      <posX2>419</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+     <entry>
+      <name>fPageNumber</name>
+      <class>Field</class>
+      <type>int</type>
+      <format>%i</format>
+      <posX1>460</posX1>
+      <posY1>0</posY1>
+      <posX2>470</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+  <entry>
+      <name>Lastname</name>
+      <class>Label</class>
+      <value>Lastname1</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>20</posY1>
+      <posX2>60</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+  <entry>
+      <name>Lastname2</name>
+      <class>Label</class>
+      <value>Lastname2</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>180</posX1>
+      <posY1>20</posY1>
+      <posX2>180</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+  <entry>
+      <name>City</name>
+      <class>Label</class>
+      <value>City</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>320</posX1>
+      <posY1>20</posY1>
+      <posX2>320</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+<entry>
+      <name>Phone</name>
+      <class>Label</class>
+      <value>Phone</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>420</posX1>
+      <posY1>20</posY1>
+      <posX2>320</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+<entry>
+      <name>sep1</name>
+      <class>Line</class>
+      <value>1</value>
+      <type>full</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>30</posY1>
+      <posX2>495</posX2>
+      <posY2>30</posY2>
+      <font>0</font>
+      <fontsize>3</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.2,0.9,0.2</foregroundColor>
+      <backgroundColor>0.1,0.1,0.1</backgroundColor>
+    </entry>
+
+
+  </pageHeader>
+
+
+<groups>
+    <count>2</count>
+ 
+    <groupEntry>
+      <number>1</number>
+      <changeGroupBy>address_id</changeGroupBy>
+      <resultSet>address</resultSet>
+
+      <pageDetails>
+	<posX1>0</posX1>
+	<posY1>0</posY1>
+	<posX2>400</posX2>
+	<posY2>30</posY2>
+	<lineY>25</lineY>
+
+	<entry>
+	  <name>Rectangle1</name>
+	  <class>Rectangle</class>
+	  <value>1</value>
+	  <type>full</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>0</posY1>
+	  <posX2>495</posX2>
+	  <posY2>13</posY2>
+	  
+	  <font>0</font>
+	  <fontsize>1</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0.8,0.2,0.1</foregroundColor>
+	  <backgroundColor>0.7,0.2,0.2</backgroundColor>
+	  <grayScale>0.8</grayScale>
+	</entry>
+	<entry>
+
+	  <name>address_lastname</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>10</posY1>
+	  <posX2>60</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
+	  <name>address_lastname2</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>180</posX1>
+	  <posY1>10</posY1>
+	  <posX2>180</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
+	  <name>address_city</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>320</posX1>
+	  <posY1>10</posY1>
+	  <posX2>320</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	
+	<entry>
+	  <name>address_phone</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>420</posX1>
+	  <posY1>10</posY1>
+	  <posX2>420</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
+      </pageDetails>
+      </groupEntry>
+
+
+    <groupEntry>
+      <number>2</number>
+      <resultSet>address</resultSet>
+
+      <pageDetails>
+	<posX1>0</posX1>
+	<posY1>0</posY1>
+	<posX2>400</posX2>
+	<posY2>30</posY2>
+	<lineY>25</lineY>
+
+	<entry>
+	  <name>Rectangle1</name>
+	  <class>Rectangle</class>
+	  <value>1</value>
+	  <type>full</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>0</posY1>
+	  <posX2>495</posX2>
+	  <posY2>13</posY2>
+	  
+	  <font>0</font>
+	  <fontsize>1</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0.9,0.9,0.9</foregroundColor>
+	  <backgroundColor>0.1,0.1,0.9</backgroundColor>
+	  <grayScale>0.95</grayScale>
+	</entry>
+	<entry>
+
+	  <name>partner_lastname</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>10</posY1>
+	  <posX2>60</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
+	  <name>partner_lastname2</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>180</posX1>
+	  <posY1>10</posY1>
+	  <posX2>180</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
+	  <name>partner_city</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>320</posX1>
+	  <posY1>10</posY1>
+	  <posX2>320</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	
+	<entry>
+	  <name>partner_phone</name>
+	  <class>DatabaseField</class>
+	  <resultSet>address</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>420</posX1>
+	  <posY1>10</posY1>
+	  <posX2>420</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
+      </pageDetails>
+      </groupEntry>
+    </groups>
+
+<pageFooter>
+   <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+       <entry>
+      <name>lPageFooterTitle</name>
+      <class>Label</class>
+      <value>end Page</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>190</posX1>
+      <posY1>0</posY1>
+      <posX2>190</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+  </pageFooter>
+
+<reportFooter>
+   <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+       <entry>
+      <name>lReportFooter</name>
+      <class>Label</class>
+      <value>end Report:</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>190</posX1>
+      <posY1>0</posY1>
+      <posX2>190</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+  </reportFooter>
+
+</report>
