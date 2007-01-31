@@ -1169,6 +1169,9 @@ class report(MyXML):
                 
                 if nWidth > 0 and nHeight > 0:
                     c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
+                else:
+                    c.drawImage(sImage, x1, y1)
+                    
         except Exception, params:
             print Exception, params
                  
