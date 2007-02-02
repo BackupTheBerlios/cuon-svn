@@ -18,6 +18,9 @@ from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
 
 from MyXML import MyXML
 import copy
@@ -696,8 +699,17 @@ class report(MyXML):
             dicEntry['Variable'] = sVariable
         else:
             dicEntry['Variable'] = None 
-
-        dicEntry['font'] = self.getEntrySpecification(cyNode,'font')
+            
+        sFont = self.getEntrySpecification(cyNode,'font')
+        liFont = sFont.split(';')
+        
+        dicEntry['font'] = liFont[0]
+        if len(liFont)> 1:
+            if liFont[1] == 'TTF':
+                print liFont[0], type(liFont[0])
+                print liFont[2], type(liFont[2])
+                pdfmetrics.registerFont( TTFont( liFont[0].encode('ascii'),liFont[2].encode('ascii')))
+                
         dicEntry['fontsize'] = int( self.getEntrySpecification(cyNode,'fontsize'))
         sColor = self.getEntrySpecification(cyNode,'foregroundColor').encode('ascii')
         #print sColor
