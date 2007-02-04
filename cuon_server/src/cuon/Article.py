@@ -81,7 +81,7 @@ class Article(xmlrpc.XMLRPC, basics):
         ##       sSql = sSql6
         
         
-        sSql = sSql + self.getWhere("",dicUser,1)
+        sSql = sSql + self.getWhere("",dicUser,2)
         sSql = sSql + ' order by number, designation'
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -90,7 +90,7 @@ class Article(xmlrpc.XMLRPC, basics):
         
         article_id = None
         sSql = "select id from articles " 
-        sSql = sSql + self.getWhere("where number = '" + article_number + "'",dicUser,1)
+        sSql = sSql + self.getWhere("where number = '" + article_number + "'" ,dicUser,1)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)
         if result != 'NONE':
            article_id = result[0]['id']

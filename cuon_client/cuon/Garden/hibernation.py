@@ -368,8 +368,8 @@ class hibernationwindow(chooseWindows):
 
 
     def on_bChooseBotany_clicked(self, event):
-        adr = cuon.Garden.botany.botanywindow(self.allTables)
-        adr.setChooseEntry('chooseBotany', self.getWidget( 'ePlantBotanyNumber'))
+        bot = cuon.Garden.botany.botanywindow(self.allTables)
+        bot.setChooseEntry('chooseBotany', self.getWidget( 'ePlantBotanyNumber'))
         
     # signals from entry eEndsStaffNumber
     def on_ePlantBotanyNumber_changed(self, event):
@@ -402,7 +402,11 @@ class hibernationwindow(chooseWindows):
                     
                     self.getWidget('eBeginDate').set_text(self.getCheckedValue(sDate,'toStringDate' ))
                     
-                    
+      
+    # goto Address 
+    def on_bGotoAddress_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables, self.singleAddress.ID)
+        
     # search button
     def on_bSearch_clicked(self, event):
         self.searchHibernation()
@@ -417,6 +421,10 @@ class hibernationwindow(chooseWindows):
             self.searchHibernation()
             
     
+    # goto Botany
+    def on_bGotoBotany_clicked(self, event):
+        if self.singleBotany.ID > 0:
+            bot = cuon.Garden.botany.botanywindow(self.allTables, self.singleBotany.ID)
 
     def searchHibernation(self):
         self.out( 'Searching ....', self.ERROR)

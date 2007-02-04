@@ -169,7 +169,7 @@ class import_generic1(fileSelection):
                 oSingleImport.saveExternalData(dicValues)
 
             elif self.dicFileAttributes['inputType'] == 'stock_goods':
-                    self.rpc.callRP('src.Articles.py_insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)
+                    self.rpc.callRP('Article.insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)
             elif self.dicFileAttributes['inputType'] == 'webshop_article':
                     dicValues['products_model'][0] = dicValues['products_model'][0].decode('latin-1').encode('utf-8')
                     dicValues['remark_w'][0] = dicValues['remark_w'][0].decode('latin-1').encode('utf-8')
@@ -180,7 +180,7 @@ class import_generic1(fileSelection):
                     s9 = dicValues['products_model'][0][0:3]
                     if  s9 == '913' or s9 == '311' or  s9 == '301' or s9 =='302' or s9 =='303'  :
                         #print `dicValues`
-                        result = self.rpc.callRP('src.Articles.py_insertWebshopArticle', dicValues, self.dicUser)
+                        result = self.rpc.callRP('Article.insertWebshopArticle', dicValues, self.dicUser)
                     #print ' webshop-data for article', `result`
                     
                     

@@ -422,9 +422,13 @@ class SingleData(gladeXml, logs):
                 widget.set_active(False)
                   
             elif string.count(str(widget), "GnomeDateEdit") > 0:
-                newDate = time.strptime('0001/01/01', 'Y/m/d') 
-                self.printOut( newDate)
-                widget.set_time(int(time.mktime(newDate)))
+                newDate = '01.01.1900'
+                try:
+                    newDate = time.strptime('0001/01/01', 'Y/m/d') 
+                    self.printOut( newDate)
+                    widget.set_time(int(time.mktime(newDate)))
+                except:
+                    pass
                                            
             elif string.count(str(widget), "GtkComboBoxEntry") > 0:
                 self.printOut( "Cbe", 'löschen')

@@ -88,6 +88,8 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(["hibernation.begin_working_time","begin_working_time"])
         liFields.append(["hibernation.begin_notes","begin_notes"])
         liFields.append(["hibernation.ends_notes","ends_notes"])
+
+        liFields.append(["address.address","address"])
         liFields.append(["address.lastname","lastname"])
         liFields.append(["address.lastname2","lastname2"])
         liFields.append(["address.firstname","firstname"])
@@ -101,7 +103,22 @@ class Garden(xmlrpc.XMLRPC, basics):
         self.writeLog('xmlrpc_getIncomingAddress = ' + `sSql`)
         print sSql
 
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        try:
+            if liResult:
+                dicResult = liResult[0]
+                if dicResult['firstname'] == None:
+                    dicResult['first_last'] = dicResult['lastname']
+                    dicResult['last_first'] = dicResult['lastname']
+                else:
+                    dicResult['first_last'] = dicResult['firstname'] + ' ' + dicResult['lastname']
+                    dicResult['last_first'] = dicResult['lastname'] + ', ' + dicResult['firstname']
+                liResult[0] = dicResult
+        except Exception, params:
+            print Exception, params
+    
+
+        return liResult
         
         
     def xmlrpc_getPickupData(self, dicOrder, dicUser):

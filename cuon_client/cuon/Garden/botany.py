@@ -40,7 +40,7 @@ import SingleBotany
 class botanywindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, botid=0):
 
         chooseWindows.__init__(self)
 

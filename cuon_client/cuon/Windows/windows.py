@@ -318,8 +318,17 @@ class windows(rawWindow, MyXML, messages):
             
         return True
     
-    def checkKey(self, event,sState, cKey):
+    def checkKey(self, event,sState, cKey, cKey2=None, cKey3=None):
         ok = False
+        cKeyR1 = None
+        cKeyR2 = None
+        cKeyR3 = None
+        
+        if cKey == 'Return':
+            cKeyR1 = 'KP_Enter'
+            cKeyR2 = 'ISO_Enter'
+            
+        
         #self.printOut( 'keyval', event.keyval)
         #self.printOut( 'keyval-name', gtk.gdk.keyval_name(event.keyval))
         #self.printOut( 'state', event.state)
@@ -328,6 +337,17 @@ class windows(rawWindow, MyXML, messages):
             
             if gtk.gdk.keyval_name(event.keyval) == cKey :
                 ok = True
+            elif cKey2 and gtk.gdk.keyval_name(event.keyval) == cKey2 :
+                ok = True
+            elif cKey3 and gtk.gdk.keyval_name(event.keyval) == cKey3 :
+                ok = True
+            elif cKeyR1 and gtk.gdk.keyval_name(event.keyval) == cKeyR1 :
+                ok = True
+            elif cKeyR2 and gtk.gdk.keyval_name(event.keyval) == cKeyR2 :
+                ok = True
+            elif cKeyR3 and gtk.gdk.keyval_name(event.keyval) == cKeyR3 :
+                ok = True
+            
         self.printOut( 'ok = ', ok)
         return ok
         
