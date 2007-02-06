@@ -283,7 +283,7 @@ class hibernationwindow(chooseWindows):
         print "Start print pickup document 1"
         
         dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
-        print "Start print incoming document 2"
+        print "Start print pickup document 2"
 
         dicOrder['orderNumber'] = self.singleHibernation.ID
         print "Start print incoming document 3"

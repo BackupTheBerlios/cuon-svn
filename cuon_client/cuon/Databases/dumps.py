@@ -261,9 +261,18 @@ class dumps:
         
     
     def getTime(self,s ):
-        Hour,Minute = divmod(s,4)
-        Minute = Minute * 15
-        
+        try:
+            if isinstance(s,types.StringType):
+                iS = int(s)
+            else:
+                iS = s
+                
+            Hour,Minute = divmod(iS,4)
+            Minute = Minute * 15
+        except:
+            Hour = 0
+            Minute = 0
+            
         
         return Hour, Minute
         

@@ -22,24 +22,26 @@ class Address(xmlrpc.XMLRPC, basics):
         
         return self.xmlrpc_executeNormalQuery(sSql, dicUser)
 
-    def xmlrpc_getAllActiveSchedul(self, dicUser):
+##    def xmlrpc_getAllActiveSchedul(self, dicUser):
+##        
+##        sSql = "select to_char(partner_schedul.schedul_date, \'" + dicUser['SQLDateFormat'] + "\') as date, "
+##        sSql = sSql + "to_char(partner_schedul.schedul_time, \'" + dicUser['SQLTimeFormat'] + "\') as time, "
+##        sSql = sSql + "address.city, partner_schedul.short_remark, partner_schedul.notes , "
+##        sSql = sSql + "partner.lastname as partner_lastname, address.lastname as address_lastname, "
+##        sSql = sSql + "address.lastname2 as address_lastname2, partner.firstname as partner_firstname "
+##        sSql = sSql + " from partner, address, partner_schedul "
+##        sW = " where partner.id = partnerid and address.id = partner.addressid and "
+##        sW = sW + " process_status != 999 "
+##        sSql = sSql + self.getWhere(sW, dicUser)
+##        
+##        sSql = sSql + " order by partner_schedul.schedul_date, partner_schedul.schedul_time " 
+##        
+##        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+##    
+    def xmlrpc_getAllActiveSchedulByNames(self, dicUser, OrderType='Name', SelectStaff='All'):
+        self.xmlrpc_getAllActiveSchedul(dicUser)
         
-        sSql = "select to_char(partner_schedul.schedul_date, \'" + dicUser['SQLDateFormat'] + "\') as date, "
-        sSql = sSql + "to_char(partner_schedul.schedul_time, \'" + dicUser['SQLTimeFormat'] + "\') as time, "
-        sSql = sSql + "address.city, partner_schedul.short_remark, partner_schedul.notes , "
-        sSql = sSql + "partner.lastname as partner_lastname, address.lastname as address_lastname, "
-        sSql = sSql + "address.lastname2 as address_lastname2, partner.firstname as partner_firstname "
-        sSql = sSql + " from partner, address, partner_schedul "
-        sW = " where partner.id = partnerid and address.id = partner.addressid and "
-        sW = sW + " process_status != 999 "
-        sSql = sSql + self.getWhere(sW, dicUser)
-        
-        sSql = sSql + " order by partner_schedul.schedul_date, partner_schedul.schedul_time " 
-        
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-    
-
-    def xmlrpc_getAllActiveSchedulByNames(self, dicUser):
+    def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All'):
         
                 
         sSql = "select partner_schedul.schedul_date as date, "
@@ -60,12 +62,23 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql += " from partner, address, partner_schedul "
         
         # where
-        sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
-        sW = sW + " process_status != 999 "
-        sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
-        
-        sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin " 
-        
+        if SelectStaff == 'All':
+            sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
+            sW = sW + " process_status != 999 "
+            sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+            
+        else:
+            sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
+            sW +=  " process_status != 999 "
+            sW += " and schedul_staff_id = " + SelectStaff + " "
+            sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+            
+            
+        if OrderType == 'Name' :
+            sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin desc " 
+        elif OrderType == 'Schedul' :
+            sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') desc , schedul_name,  partner_schedul.schedul_time_begin desc" 
+            
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
     def xmlrpc_getAllActiveContacts(self, dicUser):

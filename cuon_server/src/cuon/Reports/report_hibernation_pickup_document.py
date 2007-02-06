@@ -25,7 +25,7 @@ class report_hibernation_pickup_document(report_basics):
         self.dicResults = {}
         
         
-        self.dicReportData['Title'] = _('Hibernation Incoming generatet by CUON')
+        self.dicReportData['Title'] = _('Hibernation Pickup generatet by CUON')
 
         self.dicReportData['lPageNumber'] = _('Pagenumber:')
         self.dicReportData['fPageNumber'] = 1
@@ -43,7 +43,7 @@ class report_hibernation_pickup_document(report_basics):
     def getReportData(self, dicOrder, dicUser, oGarden, reportDefs ):
         
         
-        self.fileName = reportDefs['DocumentPathHibernationIncoming'] + '/' +_('Pickup_Document-') + `dicOrder['pickupNumber']` + '.pdf' 
+        self.fileName = reportDefs['DocumentPathHibernationPickup'] + '/' +_('Pickup_Document-') + `dicOrder['pickupNumber']` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
         print dicOrder
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
@@ -56,7 +56,7 @@ class report_hibernation_pickup_document(report_basics):
                     i[j] = self.getPdfEncoding(i[j],reportDefs )
 
         self.dicResults['address'] = dicResult   
-        dicResult =  oGarden.xmlrpc_getHibernationIncoming( dicOrder,  dicUser )
+        dicResult =  oGarden.xmlrpc_getHibernationPickup( dicOrder,  dicUser )
         print "result by positions", dicResult
         
 
@@ -74,7 +74,7 @@ class report_hibernation_pickup_document(report_basics):
         # 3 dicResults
         # 4 dicReportData
         # 5 reportDefs
-        return reportDefs['ReportPath'] + '/hibernation_incoming_document.xml', dicUser, self.dicResults, self.dicReportData, reportDefs
+        return reportDefs['ReportPath'] + '/hibernation_pickup_document.xml', dicUser, self.dicResults, self.dicReportData, reportDefs
         
         
         

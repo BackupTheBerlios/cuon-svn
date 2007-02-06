@@ -1297,6 +1297,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>tax_vat</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
     </table>
   <!--table: articles_purchase-->
   <table>
@@ -1458,6 +1468,16 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>20</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat2</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
       <default />
       <comment />
     </field>

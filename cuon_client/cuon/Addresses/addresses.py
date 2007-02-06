@@ -154,7 +154,8 @@ class addresswindow(chooseWindows):
 
         self.singlePartner.sWhere  ='where addressid = ' + `self.singleAddress.ID`
         if partnerid > 0:
-            self.singlePartner.sWhere  += ' and id = ' + `partnerid`
+            pass
+            #self.singlePartner.sWhere  += ' and id = ' + `partnerid`
         self.singlePartner.setTree(self.xml.get_widget('tree1') )
         #print 'time 8 = ', time.localtime()
 
@@ -353,8 +354,8 @@ class addresswindow(chooseWindows):
     def on_bank_new1_activate(self, event):
         
         self.doEdit = self.noEdit
-        self.singleBa.addressId = self.singleAddress.ID
-        self.singlePartner.save()
+        self.singleBank.addressId = self.singleAddress.ID
+        self.singleBank.save()
         self.setEntriesEditable(self.EntriesPartner, FALSE)
         #self.startEdit()
         self.tabChanged()
@@ -781,6 +782,7 @@ class addresswindow(chooseWindows):
     def on_eAddressCallerID_changed(self, event):
         print 'eCallerID changed'
         try:
+        
             eAdrField = self.getWidget('eAddressCaller')
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressCallerID').get_text()))
             eAdrField.set_text(cAdr)
@@ -800,7 +802,34 @@ class addresswindow(chooseWindows):
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eSchedulFor').get_text()))
             eAdrField.set_text(cAdr)
             # now try to set the scheduls for this staff
-            ts = self.getWidget('treeSchedul')
+            ts = self.getWidget('treeScheduls')
+            
+            treestore = gtk.TreeStore(object)
+            treestore = gtk.TreeStore(str)
+            ts.set_model(treestore)
+                
+            liDates = self.rpc.callRP('Address.getAllActiveSchedul',self.dicUser,'Schedul',self.getWidget( 'eSchedulFor').get_text() )
+            print 'Schedul by schedul_date: ', liDates
+            if liDates:
+                lastRep = None
+                lastSalesman = None
+                Schedulname = None
+                lastSchedulname = None
+                
+                iter = treestore.append(None,[_('Schedul')])
+                iter2 = None
+                iter3 = None
+                for oneDate in liDates:
+                    Schedulname = oneDate['date']
+                    if lastSchedulname != Schedulname:
+                        lastSchedulname = Schedulname
+                        iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
+                    sTime  = self.getTimeString(oneDate['time_begin'] )
+                        
+                    iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + ' ###' +  `oneDate['id']`])           
+                print 'End liDates'
+            ts.show()
+            print 'ts', ts
             
         except Exception, params:
             print Exception, params    
@@ -890,10 +919,12 @@ class addresswindow(chooseWindows):
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()
+        self.singleSchedul.disconnectTree()
         
         if self.tabOption == self.tabAddress:
             self.singleAddress.connectTree()
             self.singleAddress.refreshTree()
+            
         elif self.tabOption == self.tabMisc:
             self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
             self.singleMisc.fillEntries(self.singleMisc.findSingleId())
@@ -902,6 +933,7 @@ class addresswindow(chooseWindows):
             self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleAddress.ID)`
             self.singlePartner.connectTree()
             self.singlePartner.refreshTree()
+            
         elif self.tabOption == self.tabSchedul:
             self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)` + ' and process_status != 999 '
             self.singleSchedul.connectTree()

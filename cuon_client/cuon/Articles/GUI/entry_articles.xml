@@ -88,7 +88,7 @@
       
     </entry>
     <entry>
-      <name>eSP_I</name>
+      <name>eSellingPrice1</name>
       <type>textline</type>
       <size>20</size>
       <verify_type>float</verify_type>
@@ -99,7 +99,7 @@
     </entry> 
 
     <entry>
-      <name>eSP_II</name>
+      <name>eSellingPrice2</name>
       <type>textline</type>
       <size>20</size>
       <verify_type>float</verify_type>
@@ -110,7 +110,7 @@
     </entry> 
 
     <entry>
-      <name>eSP_III</name>
+      <name>eSellingPrice3</name>
       <type>textline</type>
       <size>20</size>
       <verify_type>float</verify_type>
@@ -121,7 +121,7 @@
     </entry> 
 
     <entry>
-      <name>eSP_IV</name>
+      <name>eSellingPrice4</name>
       <type>textline</type>
       <size>20</size>
       <verify_type>float</verify_type>
@@ -130,6 +130,17 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+    <entry>
+      <name>eVat</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>tax_vat</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>       
+    
     
   </table>
   

@@ -935,3 +935,13 @@ on_calSchedulStaff_day_selected_double_click
 
 }
 
+
+void
+on_treeScheduls_row_activated          (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data)
+{
+
+}
+

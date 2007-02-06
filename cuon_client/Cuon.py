@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 1, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 3, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -991,13 +991,13 @@ class MainWindow(windows):
         treestore = gtk.TreeStore(object)
         treestore = gtk.TreeStore(str)
 ##        renderer = gtk.CellRendererText()
-##        column = gtk.TreeViewColumn("Zweite Spalte", renderer, text=0)
 ## 
+##        column = gtk.TreeViewColumn("Zweite Spalte", renderer, text=0)
 ##        treeview.append_column(column)
         treeview.set_model(treestore)
 
         # Data
-        liDates = self.rpc.callRP('Address.getAllActiveSchedulByNames', oUser.getSqlDicUser())
+        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All')
         print 'Schedul by names: ', liDates
         if liDates:
             lastRep = None
@@ -1005,7 +1005,7 @@ class MainWindow(windows):
             Schedulname = None
             lastSchedulname = None
             
-            iter = treestore.append(None,['Names'])
+            iter = treestore.append(None,[_('Names')])
             iter2 = None
             iter3 = None
             for oneDate in liDates:
@@ -1027,6 +1027,27 @@ class MainWindow(windows):
 ##        except Exception,params:
 ##            print Exception,params
 ##            
+        
+        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All')
+        print 'Schedul by schedul_date: ', liDates
+        if liDates:
+            lastRep = None
+            lastSalesman = None
+            Schedulname = None
+            lastSchedulname = None
+            
+            iter = treestore.append(None,[_('Schedul')])
+            iter2 = None
+            iter3 = None
+            for oneDate in liDates:
+                Schedulname = oneDate['date']
+                if lastSchedulname != Schedulname:
+                    lastSchedulname = Schedulname
+                    iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
+                sTime  = self.getTimeString(oneDate['time_begin'] )
+                    
+                iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + ' ###' +  `oneDate['id']`])   
+                
         
         treeview.show()
         

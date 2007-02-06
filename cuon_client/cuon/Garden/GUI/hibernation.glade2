@@ -179,7 +179,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">Pickup document</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_pickup_document1_activate" last_modification_time="Fri, 10 Nov 2006 09:58:27 GMT"/>
+			      <signal name="activate" handler="on_print_pickup_document1_activate" last_modification_time="Tue, 06 Feb 2007 10:05:07 GMT"/>
 			    </widget>
 			  </child>
 

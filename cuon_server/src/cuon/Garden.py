@@ -186,7 +186,36 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(["hibernation.begin_working_time","begin_working_time"])
         liFields.append(["hibernation_plant.plant_number","article_id"])
         liFields.append(["hibernation_plant.price","price"])
-        liFields.append(["hibernation_plant.status","status"])
+        liFields.append(["hibernation_plant.plant_status","status"])
+        liFields.append(["hibernation_plant.plant_notice","plantnotice"])
+        liFields.append(["hibernation_plant.vermin","vermin"])
+        liFields.append(["hibernation_plant.diameter","diameter"])
+
+        liFields.append(["botany.botany_name","botany_name"])
+        liFields.append(["botany.local_name","local_name"])
+        
+    
+        sSql = "select " + self.oDatabase.bindSql(liFields)
+        
+        
+            
+        sSql = sSql + " from hibernation, hibernation_plant, botany where hibernation.id = \'" + `dicOrder['orderNumber']` +"\' "
+        sSql = sSql + "and hibernation_plant.hibernation_number = hibernation.id "
+        sSql = sSql + "and hibernation_plant.botany_number = botany.id and "
+        sSql = sSql + " hibernation.client = " + `dicUser['client']` 
+        sSql = sSql + " order by hibernation_plant.plant_number "
+        dicUser['noWhereClient'] = 'Yes'
+        print sSql
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+    def xmlrpc_getHibernationPickup(self, dicOrder , dicUser):
+        
+        liFields = []
+        liFields.append(['hibernation.hibernation_number','order_number'])
+        liFields.append(["to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')","begin_date"])
+        liFields.append(["hibernation.begin_working_time","begin_working_time"])
+        liFields.append(["hibernation_plant.plant_number","article_id"])
+        liFields.append(["hibernation_plant.price","price"])
+        liFields.append(["hibernation_plant.plant_status","status"])
         liFields.append(["hibernation_plant.plant_notice","plantnotice"])
         liFields.append(["hibernation_plant.vermin","vermin"])
         liFields.append(["hibernation_plant.diameter","diameter"])
