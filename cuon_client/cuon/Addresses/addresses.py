@@ -60,6 +60,7 @@ class addresswindow(chooseWindows):
 
         chooseWindows.__init__(self)
         self.InitForms = True
+        self.connectSchedulTreeId = None
         
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
@@ -83,7 +84,7 @@ class addresswindow(chooseWindows):
     
         self.loadGlade('address.xml')
         self.win1 = self.getWidget('AddressMainwindow')
-        self.win1.maximize()
+        #self.win1.maximize()
         
         self.setStatusBar()
         #print 'time 3 = ', time.localtime()
@@ -238,14 +239,14 @@ class addresswindow(chooseWindows):
   
 
         # enabledMenues for Partner
-        self.addEnabledMenuItems('editPartner', 'mi_PartnerNew1', self.dicUserKeys['address_partner_new'])
-        self.addEnabledMenuItems('editPartner','mi_PartnerDelete1', self.dicUserKeys['address_partner_delete'])
-        #self.addEnabledMenuItems('editPartner','mi_PartnerPrint1', self.dicUserKeys['address_partner_print'])
-        self.addEnabledMenuItems('editPartner','mi_PartnerEdit1', self.dicUserKeys['address_partner_edit'])
+        self.addEnabledMenuItems('editPartner', 'PartnerNew1', self.dicUserKeys['address_partner_new'])
+        self.addEnabledMenuItems('editPartner','PartnerDelete1', self.dicUserKeys['address_partner_delete'])
+        #self.addEnabledMenuItems('editPartner','PartnerPrint1', self.dicUserKeys['address_partner_print'])
+        self.addEnabledMenuItems('editPartner','PartnerEdit1', self.dicUserKeys['address_partner_edit'])
 
         # enabledMenues for Schedul
-        self.addEnabledMenuItems('editSchedul', 'mi_SchedulNew1')
-        self.addEnabledMenuItems('editSchedul', 'mi_SchedulEdit1')
+        self.addEnabledMenuItems('editSchedul', 'SchedulNew1')
+        self.addEnabledMenuItems('editSchedul', 'SchedulEdit1')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulDelete')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
         
@@ -254,7 +255,7 @@ class addresswindow(chooseWindows):
   
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
-        self.addEnabledMenuItems('editSave','mi_PartnerSave1', self.dicUserKeys['address_partner_save'])
+        self.addEnabledMenuItems('editSave','PartnerSave1', self.dicUserKeys['address_partner_save'])
         self.addEnabledMenuItems('editSave','NotesSave', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','mi_MiscSave1', self.dicUserKeys['address_save'])
 
@@ -268,6 +269,12 @@ class addresswindow(chooseWindows):
         self.tabSchedul = 4
         self.tabNotes = 5
         
+        ts = self.getWidget('treeScheduls')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
+        ts.append_column(column)
         
         #print 'time 20 = ', time.localtime()
 
@@ -593,7 +600,7 @@ class addresswindow(chooseWindows):
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
             
     def on_bGeneratePartner_clicked(self, event):
-        self.activateClick('mi_PartnerNew1')
+        self.activateClick('PartnerNew1')
         try:
             self.getWidget('ePartnerLastname').set_text(self.singleAddress.getLastname())
             self.getWidget('ePartnerFirstname').set_text(self.singleAddress.getFirstname())
@@ -606,7 +613,7 @@ class addresswindow(chooseWindows):
         except Exception, params:
             print Exception, params
             
-        self.activateClick('mi_PartnerSave1')
+        self.activateClick('PartnerSave1')
         
     def on_bContact_clicked(self, event):
         print 'Contact pressed'
@@ -794,6 +801,40 @@ class addresswindow(chooseWindows):
         staff = cuon.Staff.staff.staffwindow(self.allTables)
         staff.setChooseEntry('chooseStaff', self.getWidget( 'eSchedulFor'))
         
+        
+    def disconnectSchedulTree(self):
+        try:
+            
+            self.getWidget('treeScheduls').get_selection().disconnect(self.connectSchedulTreeId)
+        except:
+            pass
+
+    def connectSchedulTree(self):
+        try:
+            self.connectSchedulTreeId = self.getWidget('treeScheduls').get_selection().connect("changed", self.SchedulTree_select_callback)
+        except:
+            pass
+   
+    def SchedulTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                newID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                   
     def on_eSchedulFor_changed(self, event):
         print 'eSchedulfor changed'
         try:
@@ -803,7 +844,7 @@ class addresswindow(chooseWindows):
             eAdrField.set_text(cAdr)
             # now try to set the scheduls for this staff
             ts = self.getWidget('treeScheduls')
-            
+            print 'ts = ', ts
             treestore = gtk.TreeStore(object)
             treestore = gtk.TreeStore(str)
             ts.set_model(treestore)
@@ -816,19 +857,22 @@ class addresswindow(chooseWindows):
                 Schedulname = None
                 lastSchedulname = None
                 
-                iter = treestore.append(None,[_('Schedul')])
+                #iter = treestore.append(None,[_('Schedul')])
+                #print 'iter = ', iter
                 iter2 = None
                 iter3 = None
                 for oneDate in liDates:
                     Schedulname = oneDate['date']
                     if lastSchedulname != Schedulname:
                         lastSchedulname = Schedulname
-                        iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
+                        iter = treestore.append(None,[lastSchedulname])   
                     sTime  = self.getTimeString(oneDate['time_begin'] )
                         
-                    iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + ' ###' +  `oneDate['id']`])           
+                    iter2 = treestore.insert_after(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +'--' + sTime + ' ###' +  `oneDate['id']`])           
                 print 'End liDates'
             ts.show()
+            #self.getWidget('scrolledwindow10').show()
+            self.connectSchedulTree()
             print 'ts', ts
             
         except Exception, params:

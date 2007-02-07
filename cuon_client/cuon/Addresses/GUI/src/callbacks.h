@@ -473,3 +473,11 @@ on_treeScheduls_row_activated          (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
+
+void
+on_bGotoSchedulAddress_clicked         (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_set_ready1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

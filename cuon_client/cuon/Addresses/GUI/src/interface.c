@@ -188,6 +188,14 @@ static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_MENU_SAVE_ITEM (on_SchedulSave_activate, NULL),
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("Set ready"),
+    NULL,
+    (gpointer) on_set_ready1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gnome-stock-timer-stop",
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -512,25 +520,21 @@ create_AddressMainwindow (void)
   GtkWidget *label46;
   GtkWidget *cbeSchedulTimeEnd;
   GtkWidget *comboboxentry_entry2;
-  GtkWidget *hbox13;
-  GtkWidget *label34;
-  GtkWidget *eSchedulPriority;
-  GtkWidget *calendar1;
-  GtkWidget *hbox12;
-  GtkWidget *eSchedulDate;
-  GtkWidget *vseparator1;
+  GtkWidget *hbox30;
   GtkWidget *cbAlarm;
   GtkWidget *label54;
-  GtkWidget *label29;
-  GtkWidget *vbox2;
   GtkWidget *eAlarm;
-  GtkWidget *label32;
-  GtkWidget *eShortRemark;
-  GtkWidget *scrolledwindow3;
-  GtkWidget *eSchedulNotes;
-  GtkWidget *label31;
-  GtkWidget *vbox9;
-  GtkWidget *calSchedulStaff;
+  GtkWidget *hbox31;
+  GtkWidget *label34;
+  GtkWidget *eSchedulPriority;
+  GtkWidget *hbox32;
+  GtkWidget *label33;
+  GtkWidget *cProcess;
+  GtkWidget *eSchedulProcess;
+  GtkWidget *hbox13;
+  GtkWidget *eSchedulForName;
+  GtkWidget *calendar1;
+  GtkWidget *vbox2;
   GtkWidget *hbox22;
   GtkWidget *eSchedulFor;
   GtkWidget *bSchedulFor;
@@ -538,20 +542,37 @@ create_AddressMainwindow (void)
   GtkWidget *hbox29;
   GtkWidget *image732;
   GtkWidget *label78;
-  GtkWidget *eSchedulForName;
-  GtkWidget *label77;
+  GtkWidget *label32;
+  GtkWidget *eShortRemark;
+  GtkWidget *scrolledwindow3;
+  GtkWidget *eSchedulNotes;
+  GtkWidget *label31;
+  GtkWidget *vbox9;
+  GtkWidget *calSchedulStaff;
+  GtkWidget *bGotoSchedulAddress;
+  GtkWidget *alignment2;
+  GtkWidget *hbox34;
+  GtkWidget *image744;
+  GtkWidget *label79;
   GtkWidget *vbox14;
   GtkWidget *hbox6;
-  GtkWidget *label33;
-  GtkWidget *cProcess;
-  GtkWidget *eSchedulProcess;
+  GtkWidget *vbox15;
   GtkWidget *hbox20;
   GtkWidget *bSchedulLetter;
   GtkWidget *bSendEmailSchedul;
   GtkWidget *bSchedulDMS;
   GtkWidget *vbox5;
+  GtkWidget *scrolledwindow11;
+  GtkWidget *tvSchedulDetails;
   GtkWidget *scrolledwindow10;
   GtkWidget *treeScheduls;
+  GtkWidget *hbox33;
+  GtkWidget *label29;
+  GtkWidget *eSchedulDate;
+  GtkWidget *vseparator2;
+  GtkWidget *vseparator3;
+  GtkWidget *vseparator4;
+  GtkWidget *vseparator5;
   GtkWidget *lSchedul;
   GtkWidget *notebook2;
   GtkWidget *vbox10;
@@ -741,7 +762,7 @@ create_AddressMainwindow (void)
   scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow5);
   gtk_box_pack_start (GTK_BOX (vbox1), scrolledwindow5, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (scrolledwindow5, -1, 190);
+  gtk_widget_set_size_request (scrolledwindow5, -1, 110);
 
   tree1 = gtk_tree_view_new ();
   gtk_widget_show (tree1);
@@ -1674,11 +1695,11 @@ create_AddressMainwindow (void)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPartner);
   gtk_misc_set_alignment (GTK_MISC (lPartner), 0, 0);
 
-  table8 = gtk_table_new (4, 5, FALSE);
+  table8 = gtk_table_new (4, 6, FALSE);
   gtk_widget_show (table8);
   gtk_container_add (GTK_CONTAINER (notebook1), table8);
   gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (notebook1), table8,
-                                      TRUE, TRUE, GTK_PACK_START);
+                                      FALSE, FALSE, GTK_PACK_START);
 
   vbox3 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox3);
@@ -1906,20 +1927,64 @@ create_AddressMainwindow (void)
   gtk_container_add (GTK_CONTAINER (cbeSchedulTimeEnd), comboboxentry_entry2);
   GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry2, GTK_CAN_FOCUS);
 
-  hbox13 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox13);
-  gtk_table_attach (GTK_TABLE (table8), hbox13, 3, 4, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
+  hbox30 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox30);
+  gtk_box_pack_start (GTK_BOX (vbox3), hbox30, TRUE, TRUE, 0);
+
+  cbAlarm = gtk_check_button_new_with_mnemonic (_("Alarm"));
+  gtk_widget_show (cbAlarm);
+  gtk_box_pack_start (GTK_BOX (hbox30), cbAlarm, FALSE, FALSE, 0);
+
+  label54 = gtk_label_new (_(" min. before"));
+  gtk_widget_show (label54);
+  gtk_box_pack_start (GTK_BOX (hbox30), label54, FALSE, FALSE, 0);
+
+  eAlarm = gtk_entry_new ();
+  gtk_widget_show (eAlarm);
+  gtk_box_pack_start (GTK_BOX (hbox30), eAlarm, TRUE, TRUE, 0);
+  gtk_entry_set_text (GTK_ENTRY (eAlarm), "30");
+
+  hbox31 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox31);
+  gtk_box_pack_start (GTK_BOX (vbox3), hbox31, TRUE, TRUE, 0);
 
   label34 = gtk_label_new (_("Priority"));
   gtk_widget_show (label34);
-  gtk_box_pack_start (GTK_BOX (hbox13), label34, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox31), label34, FALSE, FALSE, 0);
   gtk_misc_set_alignment (GTK_MISC (label34), 0, 0);
 
   eSchedulPriority = gtk_entry_new ();
   gtk_widget_show (eSchedulPriority);
-  gtk_box_pack_start (GTK_BOX (hbox13), eSchedulPriority, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox31), eSchedulPriority, TRUE, TRUE, 0);
+
+  hbox32 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox32);
+  gtk_box_pack_start (GTK_BOX (vbox3), hbox32, TRUE, TRUE, 0);
+
+  label33 = gtk_label_new (_("Process"));
+  gtk_widget_show (label33);
+  gtk_box_pack_start (GTK_BOX (hbox32), label33, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0);
+
+  cProcess = gtk_combo_new ();
+  g_object_set_data (G_OBJECT (GTK_COMBO (cProcess)->popwin),
+                     "GladeParentKey", cProcess);
+  gtk_widget_show (cProcess);
+  gtk_box_pack_start (GTK_BOX (hbox32), cProcess, TRUE, TRUE, 0);
+
+  eSchedulProcess = GTK_COMBO (cProcess)->entry;
+  gtk_widget_show (eSchedulProcess);
+  gtk_entry_set_max_length (GTK_ENTRY (eSchedulProcess), 5);
+
+  hbox13 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox13);
+  gtk_table_attach (GTK_TABLE (table8), hbox13, 4, 5, 0, 1,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eSchedulForName = gtk_entry_new ();
+  gtk_widget_show (eSchedulForName);
+  gtk_box_pack_start (GTK_BOX (hbox13), eSchedulForName, FALSE, FALSE, 0);
 
   calendar1 = gtk_calendar_new ();
   gtk_widget_show (calendar1);
@@ -1930,97 +1995,15 @@ create_AddressMainwindow (void)
                                 GTK_CALENDAR_SHOW_HEADING
                                 | GTK_CALENDAR_SHOW_DAY_NAMES);
 
-  hbox12 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox12);
-  gtk_table_attach (GTK_TABLE (table8), hbox12, 1, 2, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eSchedulDate = gtk_entry_new ();
-  gtk_widget_show (eSchedulDate);
-  gtk_box_pack_start (GTK_BOX (hbox12), eSchedulDate, TRUE, TRUE, 0);
-  gtk_entry_set_text (GTK_ENTRY (eSchedulDate), _("3:30"));
-
-  vseparator1 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator1);
-  gtk_box_pack_start (GTK_BOX (hbox12), vseparator1, FALSE, FALSE, 0);
-
-  cbAlarm = gtk_check_button_new_with_mnemonic (_("Alarm"));
-  gtk_widget_show (cbAlarm);
-  gtk_box_pack_start (GTK_BOX (hbox12), cbAlarm, FALSE, FALSE, 0);
-
-  label54 = gtk_label_new (_(" min. before"));
-  gtk_widget_show (label54);
-  gtk_box_pack_start (GTK_BOX (hbox12), label54, FALSE, FALSE, 0);
-
-  label29 = gtk_label_new (_("Date"));
-  gtk_widget_show (label29);
-  gtk_table_attach (GTK_TABLE (table8), label29, 0, 1, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0);
-
   vbox2 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox2);
-  gtk_table_attach (GTK_TABLE (table8), vbox2, 2, 3, 0, 1,
+  gtk_table_attach (GTK_TABLE (table8), vbox2, 3, 4, 0, 1,
                     (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-
-  eAlarm = gtk_entry_new ();
-  gtk_widget_show (eAlarm);
-  gtk_box_pack_start (GTK_BOX (vbox2), eAlarm, FALSE, FALSE, 0);
-  gtk_entry_set_text (GTK_ENTRY (eAlarm), "30");
-
-  label32 = gtk_label_new (_("Note"));
-  gtk_widget_show (label32);
-  gtk_table_attach (GTK_TABLE (table8), label32, 0, 1, 3, 4,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0);
-
-  eShortRemark = gtk_entry_new ();
-  gtk_widget_show (eShortRemark);
-  gtk_table_attach (GTK_TABLE (table8), eShortRemark, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow3);
-  gtk_table_attach (GTK_TABLE (table8), scrolledwindow3, 1, 2, 3, 4,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (scrolledwindow3, 315, 96);
-  gtk_container_set_border_width (GTK_CONTAINER (scrolledwindow3), 2);
-
-  eSchedulNotes = gtk_text_view_new ();
-  gtk_widget_show (eSchedulNotes);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), eSchedulNotes);
-
-  label31 = gtk_label_new (_("short Remark"));
-  gtk_widget_show (label31);
-  gtk_table_attach (GTK_TABLE (table8), label31, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0);
-
-  vbox9 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox9);
-  gtk_table_attach (GTK_TABLE (table8), vbox9, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  calSchedulStaff = gtk_calendar_new ();
-  gtk_widget_show (calSchedulStaff);
-  gtk_box_pack_start (GTK_BOX (vbox9), calSchedulStaff, FALSE, FALSE, 0);
-  gtk_calendar_display_options (GTK_CALENDAR (calSchedulStaff),
-                                GTK_CALENDAR_SHOW_HEADING
-                                | GTK_CALENDAR_SHOW_DAY_NAMES
-                                | GTK_CALENDAR_SHOW_WEEK_NUMBERS
-                                | GTK_CALENDAR_WEEK_START_MONDAY);
 
   hbox22 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox22);
-  gtk_box_pack_start (GTK_BOX (vbox9), hbox22, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox2), hbox22, FALSE, FALSE, 0);
 
   eSchedulFor = gtk_entry_new ();
   gtk_widget_show (eSchedulFor);
@@ -2047,22 +2030,76 @@ create_AddressMainwindow (void)
   gtk_widget_show (label78);
   gtk_box_pack_start (GTK_BOX (hbox29), label78, FALSE, FALSE, 0);
 
-  eSchedulForName = gtk_entry_new ();
-  gtk_widget_show (eSchedulForName);
-  gtk_table_attach (GTK_TABLE (table8), eSchedulForName, 3, 4, 2, 3,
+  label32 = gtk_label_new (_("Note"));
+  gtk_widget_show (label32);
+  gtk_table_attach (GTK_TABLE (table8), label32, 0, 1, 3, 4,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0);
+
+  eShortRemark = gtk_entry_new ();
+  gtk_widget_show (eShortRemark);
+  gtk_table_attach (GTK_TABLE (table8), eShortRemark, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label77 = gtk_label_new (_("Schedul for"));
-  gtk_widget_show (label77);
-  gtk_table_attach (GTK_TABLE (table8), label77, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
+  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow3);
+  gtk_table_attach (GTK_TABLE (table8), scrolledwindow3, 1, 2, 3, 4,
+                    (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label77), 0, 0.5);
+  gtk_widget_set_size_request (scrolledwindow3, 250, -1);
+  gtk_container_set_border_width (GTK_CONTAINER (scrolledwindow3), 2);
+
+  eSchedulNotes = gtk_text_view_new ();
+  gtk_widget_show (eSchedulNotes);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow3), eSchedulNotes);
+
+  label31 = gtk_label_new (_("short Remark"));
+  gtk_widget_show (label31);
+  gtk_table_attach (GTK_TABLE (table8), label31, 0, 1, 2, 3,
+                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0);
+
+  vbox9 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox9);
+  gtk_table_attach (GTK_TABLE (table8), vbox9, 4, 5, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  calSchedulStaff = gtk_calendar_new ();
+  gtk_widget_show (calSchedulStaff);
+  gtk_box_pack_start (GTK_BOX (vbox9), calSchedulStaff, FALSE, FALSE, 0);
+  gtk_calendar_display_options (GTK_CALENDAR (calSchedulStaff),
+                                GTK_CALENDAR_SHOW_HEADING
+                                | GTK_CALENDAR_SHOW_DAY_NAMES
+                                | GTK_CALENDAR_SHOW_WEEK_NUMBERS
+                                | GTK_CALENDAR_WEEK_START_MONDAY);
+
+  bGotoSchedulAddress = gtk_button_new ();
+  gtk_widget_show (bGotoSchedulAddress);
+  gtk_box_pack_start (GTK_BOX (vbox9), bGotoSchedulAddress, FALSE, FALSE, 0);
+
+  alignment2 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment2);
+  gtk_container_add (GTK_CONTAINER (bGotoSchedulAddress), alignment2);
+
+  hbox34 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox34);
+  gtk_container_add (GTK_CONTAINER (alignment2), hbox34);
+
+  image744 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image744);
+  gtk_box_pack_start (GTK_BOX (hbox34), image744, FALSE, FALSE, 0);
+
+  label79 = gtk_label_new_with_mnemonic (_("Goto Address"));
+  gtk_widget_show (label79);
+  gtk_box_pack_start (GTK_BOX (hbox34), label79, FALSE, FALSE, 0);
 
   vbox14 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox14);
-  gtk_table_attach (GTK_TABLE (table8), vbox14, 3, 4, 3, 4,
+  gtk_table_attach (GTK_TABLE (table8), vbox14, 4, 5, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
@@ -2070,20 +2107,9 @@ create_AddressMainwindow (void)
   gtk_widget_show (hbox6);
   gtk_box_pack_start (GTK_BOX (vbox14), hbox6, FALSE, FALSE, 0);
 
-  label33 = gtk_label_new (_("Process"));
-  gtk_widget_show (label33);
-  gtk_box_pack_start (GTK_BOX (hbox6), label33, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0);
-
-  cProcess = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (cProcess)->popwin),
-                     "GladeParentKey", cProcess);
-  gtk_widget_show (cProcess);
-  gtk_box_pack_start (GTK_BOX (hbox6), cProcess, TRUE, TRUE, 0);
-
-  eSchedulProcess = GTK_COMBO (cProcess)->entry;
-  gtk_widget_show (eSchedulProcess);
-  gtk_entry_set_max_length (GTK_ENTRY (eSchedulProcess), 5);
+  vbox15 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox15);
+  gtk_box_pack_start (GTK_BOX (vbox14), vbox15, TRUE, TRUE, 0);
 
   hbox20 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox20);
@@ -2103,13 +2129,22 @@ create_AddressMainwindow (void)
 
   vbox5 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox5);
-  gtk_table_attach (GTK_TABLE (table8), vbox5, 2, 3, 3, 4,
+  gtk_table_attach (GTK_TABLE (table8), vbox5, 3, 4, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
+  scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow11);
+  gtk_box_pack_start (GTK_BOX (vbox5), scrolledwindow11, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow11), GTK_SHADOW_IN);
+
+  tvSchedulDetails = gtk_text_view_new ();
+  gtk_widget_show (tvSchedulDetails);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow11), tvSchedulDetails);
+
   scrolledwindow10 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow10);
-  gtk_table_attach (GTK_TABLE (table8), scrolledwindow10, 2, 3, 1, 2,
+  gtk_table_attach (GTK_TABLE (table8), scrolledwindow10, 3, 4, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow10), GTK_SHADOW_IN);
@@ -2117,6 +2152,50 @@ create_AddressMainwindow (void)
   treeScheduls = gtk_tree_view_new ();
   gtk_widget_show (treeScheduls);
   gtk_container_add (GTK_CONTAINER (scrolledwindow10), treeScheduls);
+  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeScheduls), FALSE);
+
+  hbox33 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox33);
+  gtk_table_attach (GTK_TABLE (table8), hbox33, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label29 = gtk_label_new (_("Date"));
+  gtk_widget_show (label29);
+  gtk_box_pack_start (GTK_BOX (hbox33), label29, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0);
+
+  eSchedulDate = gtk_entry_new ();
+  gtk_widget_show (eSchedulDate);
+  gtk_box_pack_start (GTK_BOX (hbox33), eSchedulDate, TRUE, TRUE, 0);
+
+  vseparator2 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator2);
+  gtk_table_attach (GTK_TABLE (table8), vseparator2, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (vseparator2, 4, -1);
+
+  vseparator3 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator3);
+  gtk_table_attach (GTK_TABLE (table8), vseparator3, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (vseparator3, 4, -1);
+
+  vseparator4 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator4);
+  gtk_table_attach (GTK_TABLE (table8), vseparator4, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (vseparator4, 4, -1);
+
+  vseparator5 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator5);
+  gtk_table_attach (GTK_TABLE (table8), vseparator5, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (vseparator5, 4, -1);
 
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
@@ -2418,8 +2497,11 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) calendar1, "state_changed",
                     G_CALLBACK (on_calendar1_state_changed),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulDate, "changed",
-                    G_CALLBACK (on_eSchedulDate_changed),
+  g_signal_connect ((gpointer) eSchedulFor, "changed",
+                    G_CALLBACK (on_eSchedulFor_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bSchedulFor, "clicked",
+                    G_CALLBACK (on_bSchedulFor_clicked),
                     NULL);
   g_signal_connect ((gpointer) calSchedulStaff, "day_selected",
                     G_CALLBACK (on_calSchedulStaff_day_selected),
@@ -2427,11 +2509,8 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) calSchedulStaff, "day_selected_double_click",
                     G_CALLBACK (on_calSchedulStaff_day_selected_double_click),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulFor, "changed",
-                    G_CALLBACK (on_eSchedulFor_changed),
-                    NULL);
-  g_signal_connect ((gpointer) bSchedulFor, "clicked",
-                    G_CALLBACK (on_bSchedulFor_clicked),
+  g_signal_connect ((gpointer) bGotoSchedulAddress, "clicked",
+                    G_CALLBACK (on_bGotoSchedulAddress_clicked),
                     NULL);
   g_signal_connect ((gpointer) bSchedulLetter, "clicked",
                     G_CALLBACK (on_bSchedulLetter_clicked),
@@ -2444,6 +2523,9 @@ create_AddressMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) treeScheduls, "row_activated",
                     G_CALLBACK (on_treeScheduls_row_activated),
+                    NULL);
+  g_signal_connect ((gpointer) eSchedulDate, "changed",
+                    G_CALLBACK (on_eSchedulDate_changed),
                     NULL);
   g_signal_connect ((gpointer) bAddNameMisc, "clicked",
                     G_CALLBACK (on_bAddNameMisc_clicked),
@@ -2498,17 +2580,19 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[0].widget, "mi_MiscEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[1].widget, "mi_MiscSave1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[5].widget, "mi_partner1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[0].widget, "mi_PartnerNew1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "mi_PartnerEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[2].widget, "mi_PartnerSave1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[0].widget, "PartnerNew1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "PartnerEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[2].widget, "PartnerSave1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[3].widget, "separator1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[4].widget, "mi_partnerPrint1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[5].widget, "separator3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[6].widget, "mi_PartnerDelete1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[6].widget, "PartnerDelete1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[6].widget, "mi_schedul1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[0].widget, "mi_SchedulNew");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[1].widget, "mi_SchedulEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[2].widget, "mi_schedulSave");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[0].widget, "SchedulNew");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[1].widget, "SchedulEdit1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[2].widget, "schedulSave");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[3].widget, "separator4");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[4].widget, "set_ready1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_notes1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[0].widget, "NotesEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[1].widget, "NotesSave");
@@ -2704,25 +2788,21 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label46, "label46");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeEnd, "cbeSchedulTimeEnd");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, comboboxentry_entry2, "comboboxentry_entry2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox13, "hbox13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label34, "label34");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulPriority, "eSchedulPriority");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, calendar1, "calendar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox12, "hbox12");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDate, "eSchedulDate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator1, "vseparator1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox30, "hbox30");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbAlarm, "cbAlarm");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label54, "label54");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eAlarm, "eAlarm");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label32, "label32");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eShortRemark, "eShortRemark");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulNotes, "eSchedulNotes");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label31, "label31");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox9, "vbox9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, calSchedulStaff, "calSchedulStaff");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox31, "hbox31");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label34, "label34");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulPriority, "eSchedulPriority");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox32, "hbox32");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label33, "label33");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cProcess, "cProcess");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox13, "hbox13");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulForName, "eSchedulForName");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, calendar1, "calendar1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox22, "hbox22");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulFor, "eSchedulFor");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulFor, "bSchedulFor");
@@ -2730,20 +2810,37 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox29, "hbox29");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, image732, "image732");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label78, "label78");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulForName, "eSchedulForName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label77, "label77");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label32, "label32");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eShortRemark, "eShortRemark");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow3, "scrolledwindow3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulNotes, "eSchedulNotes");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label31, "label31");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox9, "vbox9");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, calSchedulStaff, "calSchedulStaff");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGotoSchedulAddress, "bGotoSchedulAddress");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment2, "alignment2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox34, "hbox34");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image744, "image744");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label79, "label79");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox14, "vbox14");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox6, "hbox6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label33, "label33");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cProcess, "cProcess");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox15, "vbox15");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox20, "hbox20");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulLetter, "bSchedulLetter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendEmailSchedul, "bSendEmailSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulDMS, "bSchedulDMS");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox5, "vbox5");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow11, "scrolledwindow11");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvSchedulDetails, "tvSchedulDetails");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow10, "scrolledwindow10");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, treeScheduls, "treeScheduls");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox33, "hbox33");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDate, "eSchedulDate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator2, "vseparator2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator3, "vseparator3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator4, "vseparator4");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator5, "vseparator5");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook2, "notebook2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");

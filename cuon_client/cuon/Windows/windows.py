@@ -218,6 +218,8 @@ class windows(rawWindow, MyXML, messages):
         pass
         #self.restoreCursor()
         
+    def setPageVisible(self, sNotebook, page_num, visible=True):
+        nb = self.getWidget(sNotebook)
         
             
     def on_notebook1_switch_page(self, notebook1, page, page_num ):

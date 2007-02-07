@@ -46,7 +46,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 
         sSql = "select partner_schedul.schedul_date as date, "
         sSql += "partner_schedul.id as id,  "
-        sSql +=  "partner_schedul.schedul_time_begin as time_begin, "
+        sSql +=  "partner_schedul.schedul_time_begin as time_begin,address.zip as a_zip, "
         sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
         sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
     

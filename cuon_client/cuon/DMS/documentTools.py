@@ -97,7 +97,7 @@ class documentTools:
                             f_in = str(z1.read('content.xml'))
                             #print 'content.xml', f_in
                             
-                            f_in = self.replaceValues(dicVars,f_in)
+                            f_in = self.replaceValues(dicVars,f_in, dicUser)
                             #print 'replaced Content', f_in
                             z1.writestr('content.xml',f_in)
                             z1.close()
@@ -222,17 +222,23 @@ class documentTools:
                         
             f.close()
             
-    def replaceValues(self, dicVars, s):
+    def replaceValues(self, dicVars, s, dicUser):
         for key in dicVars.keys():
             try:
-                if isinstance(dicVars[key], types.StringType) :
-                    dicVars[key]  = dicVars[key].replace('&','&amp;' )
+                if isinstance(dicVars[key], types.UnicodeType) :
+                    if dicUser['Locales'] == 'de':
+                        dicVars[key] = dicVars[key].encode('utf-8')
+                        #print 'de and unicode'
+                        #print dicVars[key]
                     
-                    print key, dicVars[key]
-                    print '\n'
-                    
-            except:
-                pass
+                        
+                dicVars[key]  = dicVars[key].replace('&','&amp;' )
+                
+                print key, dicVars[key]
+                print '\n'
+                
+            except Exception, params:
+                print Exception, params
                     
             try:
                 if dicVars[key] == None or dicVars[key] == 'NONE':

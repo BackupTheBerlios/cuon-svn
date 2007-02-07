@@ -2,6 +2,7 @@ from twisted.web import xmlrpc
 import os
 import sys
 import time
+import types
 import random	
 import xmlrpclib
 import string
@@ -603,7 +604,9 @@ class Database(xmlrpc.XMLRPC, SQL):
         if liResult and liResult != 'NONE':
             dicPers = liResult[0]
             for key in dicPers.keys():
+                
                 dicRet['userinfo_' + key] = dicPers[key]
+                    
             
             
         if Pers1:
