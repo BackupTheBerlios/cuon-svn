@@ -46,8 +46,8 @@ class bibliowindow(chooseWindows):
         self.singleBiblio = SingleBiblio.SingleBiblio(allTables)
 
     
-        self.loadGlade('biblio.xml')
-        self.win1 = self.getWidget('BiblioMainwindow')
+        self.loadGlade('biblio.xml', 'BiblioMainwindow')
+        #self.win1 = self.getWidget('BiblioMainwindow')
         #self.setStatusBar()
         self.allTables = allTables
 

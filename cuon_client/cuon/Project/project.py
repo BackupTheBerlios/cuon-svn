@@ -76,8 +76,8 @@ class projectwindow(chooseWindows):
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('project.xml')
-        self.win1 = self.getWidget('ProjectMainwindow')
+        self.loadGlade('project.xml','ProjectMainwindow' )
+        #self.win1 = self.getWidget('ProjectMainwindow')
         self.setStatusBar()
 
 

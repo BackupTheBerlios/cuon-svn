@@ -32,13 +32,15 @@ class gladeXml(defaultValues):
     def __init__(self):
 
         defaultValues.__init__(self)
-
+        self.win1 = None
         self.liAllMenuItems = []
         self.dictEnabledMenuItems = {}
         self.mainwindowTitle = "C.U.O.N."
         self.xmlAutoconnect = False
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.accel_group = gtk.AccelGroup()
+        self.win_accel_group = gtk.AccelGroup()
+        
         self.accel_groups = {}
         self.dicAccelKeys = {}
         self.dicAccelKeys['edit'] = 'e'
@@ -111,9 +113,11 @@ class gladeXml(defaultValues):
     def setXml(self, xml):
         self.xml = xml
         
-    def loadGlade(self, gladeName):
+    def loadGlade(self, gladeName,sMainWindow=None):
         fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
         self.xml = gtk.glade.XML(fname)
+        if sMainWindow:
+            self.win1 = self.getWidget(sMainWindow)
         self.setXmlAutoconnect()
 
     def writeGlade(self, fname):
@@ -141,9 +145,12 @@ class gladeXml(defaultValues):
         self.setXmlAutoconnect()
 
        
-    def loadGladeFile(self, gladeName):
+    def loadGladeFile(self, gladeName,sMainWindow=None):
          self.xml = gtk.glade.XML(gladeName)
+         if sMainWindow:
+            self.win1 = self.getWidget(sMainWindow)
          self.setXmlAutoconnect()
+         
 
     def setXmlAutoconnect(self):
         if self.xmlAutoconnect:
@@ -158,7 +165,10 @@ class gladeXml(defaultValues):
                 self.xml.signal_autoconnect(nameFuncMap)
 
             self.xmlAutoconnect = True
-
+            self.setWinAccelGroup()
+        
+    def setWinAccelGroup(self):
+        pass
         
     def getWidget(self, sName):
         return self.xml.get_widget(sName )
@@ -210,7 +220,7 @@ class gladeXml(defaultValues):
         liMenuItems.append(item)
 
         self.dictEnabledMenuItems[sName] = liMenuItems
-
+   
     
     def addKeyToItem(self,sName, item, cKey):
 ##        if self.accel_groups.has_key(sName):
@@ -219,7 +229,11 @@ class gladeXml(defaultValues):
 ##            accel = gtk.AccelGroup()
 ##            self.accel_groups[sName] = accel
 ##            
-        
+        # as an example, make ctrl+e focus the widget "entry":
+        # entry.add_accelerator("grab_focus", accel_group, 'e', 
+        # gtk.GDK.CONTROL_MASK, 0)
+
+
             
         item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
         ##self.accel_groups[sName] = accel

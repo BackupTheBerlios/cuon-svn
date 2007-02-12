@@ -23,37 +23,24 @@ import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
 import string
-from cuon.Databases.SingleData import SingleData
-import SingleAddress
-import SingleAddressBank
-import SingleMisc
-import SinglePartner
-import SingleScheduling
-import SingleNotes
-import cuon.Bank.SingleBank
-import lists_addresses_phone1
-import lists_addresses_phone11
+
 
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
-import cPickle
+
 #import cuon.OpenOffice.letter
 # localisation
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
-import threading
-import time
-import datetime as DateTime
-import cuon.DMS.documentTools
-import cuon.DMS.dms
-import printAddress
-import cuon.Staff.staff
-import cuon.Staff.SingleStaff
+
+import cuon.Articles.SingleMaterialgroup
+import cuon.Articles.SingleMaterialgroup_accounts
+
 import contact
 import cuon.E_Mail.sendEmail
 
 
-class addresswindow(chooseWindows):
+class materialgroupwindow(chooseWindows):
 
     
     def __init__(self, allTables, addrid=0, partnerid=0):
@@ -64,14 +51,8 @@ class addresswindow(chooseWindows):
         
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        self.ModulNumber = self.MN['Address']
+        self.ModulNumber = self.MN['MaterialGroups']
         self.singleAddress = SingleAddress.SingleAddress(allTables)
-        self.singleAddressBank = SingleAddressBank.SingleAddressBank(allTables)
-        self.singleMisc = SingleMisc.SingleMisc(allTables)
-        self.singlePartner = SinglePartner.SinglePartner(allTables)
-        self.singleBank = cuon.Bank.SingleBank.SingleBank(allTables)
-        self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
-        self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
         
         self.allTables = allTables
@@ -82,7 +63,7 @@ class addresswindow(chooseWindows):
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('address.xml', 'AddressMainwindow')
+        self.loadGlade('material_groups.xml', 'MaterialgroupsMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
         #self.win1.maximize()
         
@@ -90,16 +71,12 @@ class addresswindow(chooseWindows):
         #print 'time 3 = ', time.localtime()
 
 
-        self.EntriesAddresses = 'addresses.xml'
-        self.EntriesAddressesMisc = 'addresses_misc.xml'
-        self.EntriesAddressesBank = 'addresses_bank.xml'
-        self.EntriesPartner = 'partner.xml'
-        self.EntriesPartnerSchedul = 'partner_schedul.xml'
-        self.EntriesNotes = 'address_notes.xml'
+        self.EntriesGroups = 'material_groups.xml'
+        self.EntriesAccounts = 'material_groups_accounts.xml'
         
         #print 'time 4 = ', time.localtime()
         
-        self.loadEntries(self.EntriesAddresses)
+        self.loadEntries(self.EntriesGroups)
         
         self.singleAddress.setEntries(self.getDataEntries('addresses.xml') )
         self.singleAddress.setGladeXml(self.xml)
@@ -113,73 +90,7 @@ class addresswindow(chooseWindows):
         self.singleAddress.setTree(self.xml.get_widget('tree1') )
         #print 'time 5 = ', time.localtime()
         
-        #singleAddressBank
-        
-        self.loadEntries(self.EntriesAddressesBank )
-        self.singleAddressBank.setEntries(self.getDataEntries(self.EntriesAddressesBank) )
-        self.singleAddressBank.setGladeXml(self.xml)
-        self.singleAddressBank.setTreeFields( ['depositor', 'account_number','(select lastname  from address where id = (select address_id from bank where id = bank_id) )as address_name'] )
-        self.singleAddressBank.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-
-        self.singleAddressBank.setTreeOrder('depositor, account_number')
-        self.singleAddressBank.setListHeader([_('Depositor'), _('Account'), _('Bank')])
-
-        self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleAddressBank.setTree(self.xml.get_widget('tree1') )
-        #print 'time 6 = ', time.localtime()
-
-
-  
-        #singleMisc
-        
-        self.loadEntries(self.EntriesAddressesMisc )
-        self.singleMisc.setEntries(self.getDataEntries('addresses_misc.xml') )
-        self.singleMisc.setGladeXml(self.xml)
-        self.singleMisc.setTreeFields([])
-        self.singleMisc.setTreeOrder('id')
-        
-        self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleMisc.setTree(self.xml.get_widget('tree1') )
-        # self.singleMisc.setStore(gtk.ListStore())
-        #singlePartner
-        #print 'time 7 = ', time.localtime()
-
-        self.loadEntries(self.EntriesPartner )
-        self.singlePartner.setEntries(self.getDataEntries('partner.xml') )
-        self.singlePartner.setGladeXml(self.xml)
-        self.singlePartner.setTreeFields( ['lastname', 'firstname','city'] )
-        self.singlePartner.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-
-        self.singlePartner.setTreeOrder('lastname, firstname')
-        self.singlePartner.setListHeader([_('Name of partner'), _('Firstname of partner'), _('City')])
-
-        self.singlePartner.sWhere  ='where addressid = ' + `self.singleAddress.ID`
-        if partnerid > 0:
-            pass
-            #self.singlePartner.sWhere  += ' and id = ' + `partnerid`
-        self.singlePartner.setTree(self.xml.get_widget('tree1') )
-        #print 'time 8 = ', time.localtime()
-
-
-
-        #singleScheduling
-        
-        self.loadEntries(self.EntriesPartnerSchedul )
-        self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
-        self.singleSchedul.setGladeXml(self.xml)
-        self.singleSchedul.setTreeFields( ['schedul_date','schedul_time_begin','short_remark','priority','process_status'] )
-        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-        #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
-        #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-        self.singleSchedul.setTreeOrder('schedul_date, schedul_time_begin')
-        self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('shortRemark'), _('Priority'), _('Status')])
- 
-
-        self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
-        self.singleSchedul.setTree(self.xml.get_widget('tree1') )
-  
-        #print 'time 9 = ', time.localtime()
-
+      
         #singleNotes
         
         self.loadEntries(self.EntriesNotes )
@@ -193,16 +104,18 @@ class addresswindow(chooseWindows):
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
-        #print 'time 10 = ', time.localtime()
-
-
-        cbFashion = self.getWidget('cbFashion')
-        if cbFashion:
-            cbFashion.set_popdown_strings([_('Customer'),_('Vendor'),_('Authority')])
         
         
 
-
+        # init Comboboxes
+        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
+        cb = self.getWidget('cbVat')
+        
+        for i in range(len(tax_vat)) :
+            li = gtk.ListItem(tax_vat[i])
+            cb.list.append_items([li])
+            li.show()
+    
         
             
         #print 'time 11 = ', time.localtime()
@@ -213,18 +126,10 @@ class addresswindow(chooseWindows):
 
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','mi_address1')
-        self.addEnabledMenuItems('tabs','mi_bank1')
-        self.addEnabledMenuItems('tabs','mi_misc1')
-        self.addEnabledMenuItems('tabs','mi_partner1')
-        self.addEnabledMenuItems('tabs','mi_schedul1')
         self.addEnabledMenuItems('tabs','mi_notes1')
                
         # seperate Menus
         self.addEnabledMenuItems('address','mi_address1')
-        self.addEnabledMenuItems('partner','mi_partner1')
-        self.addEnabledMenuItems('schedul','mi_schedul1')
-        self.addEnabledMenuItems('bank','mi_bank1')
-        self.addEnabledMenuItems('misc','mi_misc1')
         self.addEnabledMenuItems('notes','mi_notes1')
         
         # enabledMenues for Address
@@ -233,51 +138,20 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('editAddress','mi_print1', self.dicUserKeys['address_print'])
         self.addEnabledMenuItems('editAddress','mi_edit1', self.dicUserKeys['address_edit'])
 
-
-        # enabledMenues for Misc
-        self.addEnabledMenuItems('editMisc', '')
-  
-
-        # enabledMenues for Partner
-        self.addEnabledMenuItems('editPartner', 'PartnerNew1', self.dicUserKeys['address_partner_new'])
-        self.addEnabledMenuItems('editPartner','PartnerDelete1', self.dicUserKeys['address_partner_delete'])
-        #self.addEnabledMenuItems('editPartner','PartnerPrint1', self.dicUserKeys['address_partner_print'])
-        self.addEnabledMenuItems('editPartner','PartnerEdit1', self.dicUserKeys['address_partner_edit'])
-
-        # enabledMenues for Schedul
-        self.addEnabledMenuItems('editSchedul', 'SchedulNew1')
-        self.addEnabledMenuItems('editSchedul', 'SchedulEdit1')
-        #self.addEnabledMenuItems('editSchedul','mi_SchedulDelete')
-        #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
         
         # enabledMenues for Notes
         self.addEnabledMenuItems('editNotes', 'NotesEdit1')
   
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
-        self.addEnabledMenuItems('editSave','PartnerSave1', self.dicUserKeys['address_partner_save'])
         self.addEnabledMenuItems('editSave','NotesSave', self.dicUserKeys['address_save'])
-        self.addEnabledMenuItems('editSave','mi_MiscSave1', self.dicUserKeys['address_save'])
 
         
 
         # tabs from notebook
-        self.tabAddress = 0
-        self.tabBank = 1
-        self.tabMisc = 2
-        self.tabPartner = 3
-        self.tabSchedul = 4
-        self.tabNotes = 5
-        
-        ts = self.getWidget('treeScheduls')
-        #treeview.set_model(liststore)
- 
-        renderer = gtk.CellRendererText()
-        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
-        ts.append_column(column)
-        
-        #print 'time 20 = ', time.localtime()
-
+        self.tabGroup = 0
+        self.tabAccount = 1
+      
         self.tabChanged()
         
         self.win1.add_accel_group(self.accel_group)
@@ -326,25 +200,25 @@ class addresswindow(chooseWindows):
         self.out( "save addresses v2")
         self.doEdit = self.noEdit
         self.singleAddress.save()
-        self.setEntriesEditable(self.EntriesAddresses, FALSE)
+        self.setEntriesEditable(self.EntriesGroups, FALSE)
         self.endEdit()
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
-        self.doEdit = self.tabAddress
+        self.doEdit = self.tabGroup
 
         self.singleAddress.newRecord()
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesGroups, TRUE)
         
         self.getWidget('eAddress').grab_focus()
         self.startEdit()
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.doEdit = self.tabAddress
+        self.doEdit = self.tabGroup
         
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesGroups, TRUE)
         self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
@@ -377,7 +251,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.addressId = self.singleAddress.ID
         
         self.singleMisc.save()
-        self.setEntriesEditable(self.EntriesAddressesMisc, FALSE)
+        self.setEntriesEditable(self.EntriesGroupsMisc, FALSE)
         self.tabChanged()
         
 
@@ -385,7 +259,7 @@ class addresswindow(chooseWindows):
         self.out( "edit addresses v2")
         self.doEdit = self.tabMisc
         
-        self.setEntriesEditable(self.EntriesAddressesMisc, TRUE)
+        self.setEntriesEditable(self.EntriesGroupsMisc, TRUE)
 
   #Menu Partner
         
@@ -474,7 +348,7 @@ class addresswindow(chooseWindows):
 
     def on_NotesEdit1_activate(self, event):
         self.out( "edit notes v2")
-        self.doEdit = self.tabNotes
+        self.doEdit = self.tabAccount
         
         self.setEntriesEditable(self.EntriesNotes, TRUE)
 
@@ -680,7 +554,7 @@ class addresswindow(chooseWindows):
                     
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGroup:
             print '############### Address choose ID ###################'
             self.setChooseValue(self.singleAddress.ID)
             self.closeWindow()
@@ -947,7 +821,7 @@ class addresswindow(chooseWindows):
     
     def saveData(self):
         print 'save Addresses'
-        if self.doEdit == self.tabAddress:
+        if self.doEdit == self.tabGroup:
             print 'save 1'
             self.on_save1_activate(None)
         elif self.doEdit == self.tabBank:
@@ -965,7 +839,7 @@ class addresswindow(chooseWindows):
         self.singlePartner.disconnectTree()
         self.singleSchedul.disconnectTree()
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGroup:
             self.singleAddress.connectTree()
             self.singleAddress.refreshTree()
             
@@ -983,7 +857,7 @@ class addresswindow(chooseWindows):
             self.singleSchedul.connectTree()
             self.singleSchedul.refreshTree()
             
-        elif self.tabOption == self.tabNotes:
+        elif self.tabOption == self.tabAccount:
             self.singleAddressNotes.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
             self.singleAddressNotes.fillEntries(self.singleAddressNotes.findSingleId())
 
@@ -1008,7 +882,7 @@ class addresswindow(chooseWindows):
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGroup:
             #Address
             self.disableMenuItem('tabs')
             self.enableMenuItem('address')
@@ -1067,7 +941,7 @@ class addresswindow(chooseWindows):
             self.setStatusbarText([self.singlePartner.sStatus])
             
             
-        elif self.tabOption == self.tabNotes:
+        elif self.tabOption == self.tabAccount:
             self.out( 'Seite 3')
 
             self.disableMenuItem('tabs')

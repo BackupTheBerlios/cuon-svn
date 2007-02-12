@@ -6,7 +6,7 @@
 
 <widget class="GtkWindow" id="AddressMainwindow">
   <property name="width_request">1024</property>
-  <property name="height_request">720</property>
+  <property name="height_request">730</property>
   <property name="visible">True</property>
   <property name="title">Adresses</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
@@ -1175,7 +1175,6 @@
 
       <child>
 	<widget class="GtkScrolledWindow" id="scrolledwindow5">
-	  <property name="height_request">110</property>
 	  <property name="visible">True</property>
 	  <property name="can_focus">True</property>
 	  <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
@@ -1185,6 +1184,7 @@
 
 	  <child>
 	    <widget class="GtkTreeView" id="tree1">
+	      <property name="height_request">140</property>
 	      <property name="visible">True</property>
 	      <property name="headers_visible">True</property>
 	      <property name="rules_hint">False</property>

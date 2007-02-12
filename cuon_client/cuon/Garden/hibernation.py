@@ -45,8 +45,8 @@ class hibernationwindow(chooseWindows):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('hibernation.xml')
-        self.win1 = self.getWidget('HibernationMainwindow')
+        self.loadGlade('hibernation.xml', 'HibernationMainwindow')
+        #self.win1 = self.getWidget('HibernationMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulHibernationNumber = 110000        
         self.ModulHibernationPlantNumber = 110100

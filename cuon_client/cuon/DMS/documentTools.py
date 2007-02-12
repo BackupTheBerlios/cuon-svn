@@ -147,9 +147,9 @@ class documentTools:
         print 'SANE version:', sane.init()
         print 'Available devices=', sane.get_devices()
         
-    
-        scanner=sane.open(dicUser['prefDMS']['scan_device'])
-        if not scanner or len(scanner) < 2:
+        if dicUser['prefDMS']['scan_device']:
+            scanner=sane.open(dicUser['prefDMS']['scan_device'])
+        else:
             scanner = sane.open(sane.get_devices()[0][0])
             
         print 'SaneDev object=', scanner

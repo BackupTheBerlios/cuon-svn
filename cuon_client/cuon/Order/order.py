@@ -59,8 +59,8 @@ class orderwindow(chooseWindows):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('order.xml')
-        self.win1 = self.getWidget('OrderMainwindow')
+        self.loadGlade('order.xml','OrderMainwindow')
+        #self.win1 = self.getWidget('OrderMainwindow')
         
         self.allTables = allTables
         self.singleOrder = SingleOrder.SingleOrder(allTables)

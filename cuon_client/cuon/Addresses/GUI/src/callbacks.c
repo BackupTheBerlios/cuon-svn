@@ -961,3 +961,19 @@ on_set_ready1_activate                 (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_set_ready1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bQuit_clicked                       (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

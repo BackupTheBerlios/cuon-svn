@@ -38,6 +38,7 @@ import calendar
 import os
 import os.path
 import re
+import commands
 
 class windows(rawWindow, MyXML, messages):
 
@@ -66,6 +67,8 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Partner_Schedul_info'] = 2201
 
         self.MN['Articles'] = 3000
+        self.MN['MaterialGroups'] = 23000
+
         self.MN['Order'] = 4000
         self.MN['Stock'] = 5000
         self.MN['Staff'] = 6000
@@ -102,7 +105,7 @@ class windows(rawWindow, MyXML, messages):
         self.tabOption = 0
 #        self.setLogLevel(0)
         self.actualEntries = None
-        self.win1 = None
+        
         self.editAction = 'closeMenuItemsForEdit'
         self.editEntries = False
         self.dicKeys = {}
@@ -111,7 +114,10 @@ class windows(rawWindow, MyXML, messages):
         self.dicKeys['ALT'] = gtk.gdk.MOD1_MASK
         self.dicKeys['NONE'] = 0 
         
-        
+        # as an example, make ctrl+e focus the widget "entry":
+        # entry.add_accelerator("grab_focus", accel_group, 'e', 
+        # gtk.GDK.CONTROL_MASK, 0)
+
         
     def closeWindow(self):
         self.saveDataQuestion()
@@ -119,6 +125,17 @@ class windows(rawWindow, MyXML, messages):
     def openWindow(self):
         self.win1.show()
         return False
+    def setWinAccelGroup(self):
+        if self.win1:
+            print 'add accelGroup'
+            self.win_accel_group.connect_group(ord('f'),gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE, self.startFind)
+            self.win1.add_accel_group(self.win_accel_group)
+            #self.win1.add_accelerator(self.startFind(), self.win_accel_group, ord('f'), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        
+    def startFind(self,*args):
+        print 'Find something'
+        liStatus = commands.getstatusoutput('tracker-search-tool')
+        return True
         
     def checkClient(self):
         if not self.dicUser.has_key('client') or not self.dicUser['client'] > 0:

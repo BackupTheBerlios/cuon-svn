@@ -68,8 +68,8 @@ class dmswindow(windows):
         self.singleDMS = SingleDMS.SingleDMS(allTables)
        
         self.singleDMS.username = self.oUser.getUserName()
-        self.loadGlade('dms.xml')
-        self.win1 = self.getWidget('DMSMainwindow')
+        self.loadGlade('dms.xml', 'DMSMainwindow')
+        #self.win1 = self.getWidget('DMSMainwindow')
         self.diaLink = self.getWidget('diaLink')
         self.diaLink.hide()
         

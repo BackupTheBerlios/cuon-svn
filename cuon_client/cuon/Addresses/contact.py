@@ -171,8 +171,16 @@ class contactwindow(chooseWindows):
         self.singleContact.deleteRecord()
 
  
- 
-
+    def on_set_ready1_activate(self, event):
+        print 'on_set_ready1_activate'
+        # First set Edit-Mode
+        self.activateClick('edit1')
+        # now set ready
+        cbeStatus = self.getWidget('cbeStatus')
+        cbeStatus.set_active(1)
+        # and last save and close
+        self.activateClick('save1')
+        self.activateClick('quit1')
         
         
     # Button  choose address
@@ -226,6 +234,13 @@ class contactwindow(chooseWindows):
         print 'iTime by sleep ', iTime    
         gobject.timeout_add(iTime, self.openWindow)
         self.closeWindow()
+        
+    def on_bCloseWindow_clicked(self, event):
+        print 'close '
+        self.activateClick('set_ready1')
+        
+    def on_bQuit_clicked(self, event):
+        self.activateClick('quit1')
         
     def on_calendar1_day_selected_double_click(self, event):
         self.setDateToEntry(event,'eDate')

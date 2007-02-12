@@ -79,6 +79,16 @@
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>material.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_material_group.xml</Entry-FileValue>
+    </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>material_group_accounts.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_material_group_accounts.xml</Entry-FileValue>
+    </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_stock.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
     </Entries>
@@ -336,6 +346,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>articles.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/articles.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>material_group.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/materialGroup.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>

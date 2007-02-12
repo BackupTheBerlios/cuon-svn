@@ -1307,6 +1307,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <namematerial_group</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     </table>
   <!--table: articles_purchase-->
   <table>
@@ -1482,6 +1492,7 @@
       <comment />
     </field>
   </table>
+  
     <!-- table articles_webshop -->
 <table>
     <nameOfTable>articles_webshop</nameOfTable>
@@ -1529,6 +1540,71 @@
       <comment />
     </field>
     </table>
+    <!--table: material_group-->
+  <table>
+    <nameOfTable>material_group</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>52</x>
+    <y>15</y>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>30</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>tax_vat</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+      <!--table: material_group_accounts-->
+  <table>
+    <nameOfTable>material_group_accounts</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>52</x>
+    <y>15</y>
+    <field>
+      <name>material_group_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>contra_account_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   </table> 
  <!--table: articles_stock-->
   <table>
     <nameOfTable>articles_stock</nameOfTable>

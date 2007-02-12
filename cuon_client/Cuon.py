@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1172,7 +1172,7 @@ class MainWindow(windows):
 
             # self.gladeName = td.main_glade_name
 
-            self.loadGlade('cuon.xml')
+            self.loadGlade('cuon.xml','window1')
  
         # Menu-items
        

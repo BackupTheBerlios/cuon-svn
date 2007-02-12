@@ -43,8 +43,8 @@ class articleswindow(chooseWindows):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('articles.xml')
-        self.win1 = self.getWidget('ArticlesMainwindow')
+        self.loadGlade('articles.xml', 'ArticlesMainwindow')
+        #self.win1 = self.getWidget('ArticlesMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Articles']        
         self.allTables = allTables
@@ -194,15 +194,7 @@ class articleswindow(chooseWindows):
         self.addEnabledMenuItems('editArticlePurchase','PurchaseNew1')
         self.addEnabledMenuItems('editArticlePurchase','PurchaseClear1')
 
-        # init Comboboxes
-        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
-        cb = self.getWidget('cbVat')
-        
-        for i in range(len(tax_vat)) :
-            li = gtk.ListItem(tax_vat[i])
-            cb.list.append_items([li])
-            li.show()
-    
+       
         self.win1.add_accel_group(self.accel_group)
     #Menu File
               
@@ -323,7 +315,9 @@ class articleswindow(chooseWindows):
         print "delete Partner articles v2"
         self.singleArticleWebshop.deleteRecord()
 
-
+    def on_bChooseCategory_clicked(self, event):
+        pass
+        
  #Articles Stock
     def on_StockSave1_activate(self, event):
         print "save Partner articles v2"

@@ -37,7 +37,7 @@ class staffwindow(chooseWindows):
 
         chooseWindows.__init__(self)
 
-        self.loadGlade('staff.xml')
+        self.loadGlade('staff.xml','StaffMainwindow' )
         self.win1 = self.getWidget('StaffMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Staff']        
