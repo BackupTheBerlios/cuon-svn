@@ -110,3 +110,7 @@ on_okbutton1_clicked                   (GtkButton       *button,
 void
 on_bWriteLastDocument_clicked          (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bScanMulti_clicked                  (GtkButton       *button,
+                                        gpointer         user_data);

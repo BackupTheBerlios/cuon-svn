@@ -22,7 +22,7 @@ class SingleMaterialgroupsAccount(SingleData):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "material_groups_accounts"
+        self.sNameOfTable =  "material_group_accounts"
         self.xmlTableDef = 0
         self.loadTable(allTables)
 

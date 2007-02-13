@@ -248,8 +248,22 @@ create_DMSMainwindow (void)
   GtkWidget *label47;
   GtkWidget *eDocumentDate;
   GtkWidget *vbox2;
+  GtkWidget *hbox6;
   GtkWidget *bScan;
+  GtkWidget *alignment2;
+  GtkWidget *hbox7;
+  GtkWidget *image1;
+  GtkWidget *label48;
+  GtkWidget *bScanMulti;
+  GtkWidget *alignment3;
+  GtkWidget *hbox8;
+  GtkWidget *image2;
+  GtkWidget *label49;
   GtkWidget *bOCR;
+  GtkWidget *alignment4;
+  GtkWidget *hbox9;
+  GtkWidget *image3;
+  GtkWidget *label50;
   GtkWidget *gfcb_ImportFile;
   GtkWidget *bImport;
   GtkWidget *bLink;
@@ -640,13 +654,69 @@ create_DMSMainwindow (void)
   gtk_widget_show (vbox2);
   gtk_box_pack_start (GTK_BOX (hbox2), vbox2, TRUE, TRUE, 0);
 
-  bScan = gtk_button_new_with_mnemonic (_("Scan"));
-  gtk_widget_show (bScan);
-  gtk_box_pack_start (GTK_BOX (vbox2), bScan, FALSE, FALSE, 0);
+  hbox6 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox6);
+  gtk_box_pack_start (GTK_BOX (vbox2), hbox6, FALSE, FALSE, 0);
 
-  bOCR = gtk_button_new_with_mnemonic (_("OCR"));
+  bScan = gtk_button_new ();
+  gtk_widget_show (bScan);
+  gtk_box_pack_start (GTK_BOX (hbox6), bScan, FALSE, FALSE, 0);
+
+  alignment2 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment2);
+  gtk_container_add (GTK_CONTAINER (bScan), alignment2);
+
+  hbox7 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox7);
+  gtk_container_add (GTK_CONTAINER (alignment2), hbox7);
+
+  image1 = gtk_image_new_from_stock ("gtk-dnd", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1);
+  gtk_box_pack_start (GTK_BOX (hbox7), image1, FALSE, FALSE, 0);
+
+  label48 = gtk_label_new_with_mnemonic (_("Single Scan"));
+  gtk_widget_show (label48);
+  gtk_box_pack_start (GTK_BOX (hbox7), label48, FALSE, FALSE, 0);
+
+  bScanMulti = gtk_button_new ();
+  gtk_widget_show (bScanMulti);
+  gtk_box_pack_start (GTK_BOX (hbox6), bScanMulti, FALSE, FALSE, 0);
+
+  alignment3 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment3);
+  gtk_container_add (GTK_CONTAINER (bScanMulti), alignment3);
+
+  hbox8 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox8);
+  gtk_container_add (GTK_CONTAINER (alignment3), hbox8);
+
+  image2 = gtk_image_new_from_stock ("gtk-dnd-multiple", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image2);
+  gtk_box_pack_start (GTK_BOX (hbox8), image2, FALSE, FALSE, 0);
+
+  label49 = gtk_label_new_with_mnemonic (_("Multi Scan"));
+  gtk_widget_show (label49);
+  gtk_box_pack_start (GTK_BOX (hbox8), label49, FALSE, FALSE, 0);
+
+  bOCR = gtk_button_new ();
   gtk_widget_show (bOCR);
   gtk_box_pack_start (GTK_BOX (vbox2), bOCR, FALSE, FALSE, 0);
+
+  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment4);
+  gtk_container_add (GTK_CONTAINER (bOCR), alignment4);
+
+  hbox9 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox9);
+  gtk_container_add (GTK_CONTAINER (alignment4), hbox9);
+
+  image3 = gtk_image_new_from_stock ("gtk-indent", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image3);
+  gtk_box_pack_start (GTK_BOX (hbox9), image3, FALSE, FALSE, 0);
+
+  label50 = gtk_label_new_with_mnemonic (_("OCR"));
+  gtk_widget_show (label50);
+  gtk_box_pack_start (GTK_BOX (hbox9), label50, FALSE, FALSE, 0);
 
   gfcb_ImportFile = gtk_file_chooser_button_new (_("choose file"), GTK_FILE_CHOOSER_ACTION_OPEN);
   gtk_widget_show (gfcb_ImportFile);
@@ -774,6 +844,9 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bScan, "clicked",
                     G_CALLBACK (on_bScan_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bScanMulti, "clicked",
+                    G_CALLBACK (on_bScanMulti_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bOCR, "clicked",
                     G_CALLBACK (on_bOCR_clicked),
                     NULL);
@@ -876,8 +949,22 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label47, "label47");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, eDocumentDate, "eDocumentDate");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, vbox2, "vbox2");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox6, "hbox6");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bScan, "bScan");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment2, "alignment2");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox7, "hbox7");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image1, "image1");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label48, "label48");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bScanMulti, "bScanMulti");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment3, "alignment3");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox8, "hbox8");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image2, "image2");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label49, "label49");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bOCR, "bOCR");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment4, "alignment4");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox9, "hbox9");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image3, "image3");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label50, "label50");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, gfcb_ImportFile, "gfcb_ImportFile");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bLink, "bLink");

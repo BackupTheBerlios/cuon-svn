@@ -1308,7 +1308,7 @@
       <comment />
     </field>
     <field>
-      <namematerial_group</name>
+      <name>material_group</name>
       <type>int</type>
       <pkey>0</pkey>
       <unique>0</unique>

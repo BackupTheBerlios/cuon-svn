@@ -177,7 +177,7 @@ class documentTools:
         # (For my B&W QuickCam, this is a grey-scale image.  Other scanning devices
         #  may return a
         im=scanner.snap()
-        print 'Device parameters after snap:', scanner.get_parameters()
+        #print 'Device parameters after snap:', scanner.get_parameters()
 
         # Write the image out as a GIF file
         #im.save('/home/jhamel/foo.png')
@@ -198,6 +198,9 @@ class documentTools:
 
         #newIm = Image.fromstring('RGB',[1024.0,768.0], s)
         #newIm.show()
+        del scanner
+        sane.exit()
+        
 
     def importDocument(self, singleDMS, dicUser, sFile):
         

@@ -33,6 +33,7 @@ import cuon.Addresses.SingleAddress
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import cuon.Articles.lists_articles_number1
+import cuon.Articles.materialgroup
 
 
 
@@ -396,7 +397,7 @@ class articleswindow(chooseWindows):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
         
-
+    
 
     def searchArticle(self):
         self.out( 'Searching ....', self.ERROR)
@@ -459,7 +460,10 @@ class articleswindow(chooseWindows):
 
             print "-----------> end tab Stock"
      
-
+    def on_bChooseMaterialGroup_clicked(self, event):
+        print 'materialgroup'
+        mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
+        
 
          
     def tabChanged(self):

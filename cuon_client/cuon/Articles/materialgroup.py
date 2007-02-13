@@ -33,12 +33,8 @@ from cuon.Windows.chooseWindows  import chooseWindows
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 
-import cuon.Articles.SingleMaterialgroup
-import cuon.Articles.SingleMaterialgroup_accounts
-
-import contact
-import cuon.E_Mail.sendEmail
-
+import SingleMaterialgroups
+import SingleMaterialgroupsAccount
 
 class materialgroupwindow(chooseWindows):
 
@@ -50,20 +46,19 @@ class materialgroupwindow(chooseWindows):
         self.connectSchedulTreeId = None
         
         #print 'time 1 = ', time.localtime()
-        self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['MaterialGroups']
-        self.singleAddress = SingleAddress.SingleAddress(allTables)
-        self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
+        self.singleGroup = SingleMaterialgroups.SingleMaterialgroups(allTables)
+        self.singleGroupAccounts = SingleMaterialgroupsAccount.SingleMaterialgroupsAccount(allTables)
         
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
         
         
-        # self.singleAddress.loadTable()
+        # self.singleGroup.loadTable()
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('material_groups.xml', 'MaterialgroupsMainwindow')
+        self.loadGlade('material_group.xml', 'MaterialgroupsMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
         #self.win1.maximize()
         
@@ -78,36 +73,36 @@ class materialgroupwindow(chooseWindows):
         
         self.loadEntries(self.EntriesGroups)
         
-        self.singleAddress.setEntries(self.getDataEntries('addresses.xml') )
-        self.singleAddress.setGladeXml(self.xml)
-        self.singleAddress.setTreeFields( ['lastname', 'firstname','city'] )
-        self.singleAddress.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleAddress.setTreeOrder('lastname, firstname')
-        self.singleAddress.setListHeader([_('Lastname'), _('Firstname'), _('City')])
-        if addrid > 0:
-            self.singleAddress.sWhere = ' where id = ' + `addrid`
+        self.singleGroup.setEntries(self.getDataEntries(self.EntriesGroups) )
+        self.singleGroup.setGladeXml(self.xml)
+        self.singleGroup.setTreeFields( ['name', 'designation'] )
+        self.singleGroup.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleGroup.setTreeOrder('name, designation')
+        self.singleGroup.setListHeader([_('Name'), _('Designation')])
             
-        self.singleAddress.setTree(self.xml.get_widget('tree1') )
+        self.singleGroup.setTree(self.xml.get_widget('tree1') )
         #print 'time 5 = ', time.localtime()
         
       
-        #singleNotes
+        #Groupaccounts
         
-        self.loadEntries(self.EntriesNotes )
-        self.singleAddressNotes.setEntries(self.getDataEntries('address_notes.xml') )
-        self.singleAddressNotes.setGladeXml(self.xml)
-        self.singleAddressNotes.setTreeFields([])
-        self.singleAddressNotes.setTreeOrder('id')
+        self.loadEntries(self.EntriesAccounts )
+        self.singleGroupAccounts.setEntries(self.getDataEntries(self.EntriesAccounts) )
+        self.singleGroupAccounts.setGladeXml(self.xml)
+        self.singleGroupAccounts.setTreeFields([])
+        self.singleGroupAccounts.setTreeOrder('id')
         
-        self.singleAddressNotes.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleAddressNotes.setTree(self.xml.get_widget('tree1') )
+        self.singleGroupAccounts.sWhere  ='where material_group_id = ' + `self.singleGroup.ID`
+        self.singleGroupAccounts.setTree(self.xml.get_widget('tree1') )
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
         
         
 
-        # init Comboboxes
+        # init Comboboxes 
+        
+        # Tax-Vat
         tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
         cb = self.getWidget('cbVat')
         
@@ -133,10 +128,10 @@ class materialgroupwindow(chooseWindows):
         self.addEnabledMenuItems('notes','mi_notes1')
         
         # enabledMenues for Address
-        self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
-        self.addEnabledMenuItems('editAddress','mi_clear1', self.dicUserKeys['address_delete'])
-        self.addEnabledMenuItems('editAddress','mi_print1', self.dicUserKeys['address_print'])
-        self.addEnabledMenuItems('editAddress','mi_edit1', self.dicUserKeys['address_edit'])
+        self.addEnabledMenuItems('editMaterialGroup','mi_new1' , self.dicUserKeys['address_new'])
+        self.addEnabledMenuItems('editMaterialGroup','mi_clear1', self.dicUserKeys['address_delete'])
+        self.addEnabledMenuItems('editMaterialGroup','mi_print1', self.dicUserKeys['address_print'])
+        self.addEnabledMenuItems('editMaterialGroup','mi_edit1', self.dicUserKeys['address_edit'])
 
         
         # enabledMenues for Notes
@@ -164,42 +159,14 @@ class materialgroupwindow(chooseWindows):
         self.out( "exit addresses v2")
         self.closeWindow() 
     
-    def fillComboboxForms(self, sName, liCBE):
-        widget = self.getWidget(sName)
-        
-        if widget:
-            print sName
-       
-        print liCBE
-        #for value in liCBE:
-            
-        #    cbeNotesMisc.append_text(value)
-        #cbeNotesMisc.set_text_column(liCBE)
-        #treestore = cbeNotesMisc.get_model()
-        #treestore = gtk.TreeStore(str)
-        if liCBE and liCBE != 'NONE':
-            for sColumn in liCBE:
-                print sColumn
-                widget.append_text(sColumn)
-                #treestore.set(iter,i, sColumn )
-            
-            
-            model = widget.get_model()
-            print model
-            print `model`
-            
-            widget.show()
-            widget.set_active(0)
-            #cbeNotesMisc.set_sensitive(True)
-        
-        
+    
 
     #Menu Address
   
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
         self.doEdit = self.noEdit
-        self.singleAddress.save()
+        self.singleGroup.save()
         self.setEntriesEditable(self.EntriesGroups, FALSE)
         self.endEdit()
         self.tabChanged()
@@ -208,7 +175,7 @@ class materialgroupwindow(chooseWindows):
         self.out( "new addresses v2")
         self.doEdit = self.tabGroup
 
-        self.singleAddress.newRecord()
+        self.singleGroup.newRecord()
         self.setEntriesEditable(self.EntriesGroups, TRUE)
         
         self.getWidget('eAddress').grab_focus()
@@ -224,125 +191,20 @@ class materialgroupwindow(chooseWindows):
         
     def on_print1_activate(self, event):
         self.out( "print addresses v2")
-        p = printAddress.printAddress(self.singleAddress.getFirstRecord() )
+        p = printAddress.printAddress(self.singleGroup.getFirstRecord() )
         
     def on_delete1_activate(self, event):
         self.out( "delete addresses v2")
-        self.singleAddress.deleteRecord()
-
-
-    # Menu Bank
-    def on_bank_new1_activate(self, event):
-        
-        self.doEdit = self.noEdit
-        self.singleBank.addressId = self.singleAddress.ID
-        self.singleBank.save()
-        self.setEntriesEditable(self.EntriesPartner, FALSE)
-        #self.startEdit()
-        self.tabChanged()
-        
-
-    
-    # Menu misc
-    def on_MiscSave1_activate(self, event):
-        
-        self.out( "save Misc addresses v2")
-        self.doEdit = self.noEdit
-        self.singleMisc.addressId = self.singleAddress.ID
-        
-        self.singleMisc.save()
-        self.setEntriesEditable(self.EntriesGroupsMisc, FALSE)
-        self.tabChanged()
-        
-
-    def on_MiscEdit1_activate(self, event):
-        self.out( "edit addresses v2")
-        self.doEdit = self.tabMisc
-        
-        self.setEntriesEditable(self.EntriesGroupsMisc, TRUE)
-
-  #Menu Partner
-        
-   
-    def on_PartnerSave1_activate(self, event):
-        self.out( "save Partner addresses v2")
-        self.doEdit = self.noEdit
-        self.singlePartner.addressId = self.singleAddress.ID
-        self.singlePartner.save()
-        self.setEntriesEditable(self.EntriesPartner, FALSE)
-        self.endEdit()
-        self.tabChanged()
-        
-    def on_PartnerNew1_activate(self, event):
-        self.out( "new Partner addresses v2")
-        self.doEdit = self.tabPartner
-        
-        self.singlePartner.newRecord()
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
-        self.startEdit()
-
-        
-    def on_PartnerEdit1_activate(self, event):
-        self.doEdit = self.tabPartner
-
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
-        self.startEdit()
-
-
-    def on_PartnerDelete1_activate(self, event):
-        self.out( "delete Partner addresses v2")
-        self.singlePartner.deleteRecord()
-
-
-#Menu Schedul
-        
-   
-    def on_SchedulSave_activate(self, event):
-        nID = 0
-        self.out( "save Schedul addresses v2")
-        self.singleSchedul.partnerId = self.singlePartner.ID
-        self.doEdit = self.noEdit
-        print 'ID = ', self.singleSchedul.ID
-        if self.singleSchedul.ID > 0:
-            nID =  self.singleSchedul.ID
-            
-        id = self.singleSchedul.save()
-        if nID > 0:
-            id = nID
-        print 'save ready'
-        self.singleSchedul.load(id)
-        sCalendar = 'iCal_'+ self.dicUser['Name']
-        self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
-        self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
-        self.endEdit()
-        self.tabChanged()
-
-    def on_SchedulEdit1_activate(self, event):
-        self.doEdit = self.tabSchedul
-
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
-        self.startEdit()
-
-    def on_SchedulNew_activate(self, event):
-        self.out( "new Schedul for partner v2")
-        self.doEdit = self.tabSchedul
-
-        self.singleSchedul.newRecord()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
-        self.startEdit()
-
-    def on_SchedulDelete_activate(self, event):
-        self.out( "delete Schedul addresses v2")
-        self.singleSchedul.deleteRecord()
+        self.singleGroup.deleteRecord()
 
     # Menu Notes
     def on_NotesSave_activate(self, event):
         
         self.out( "save Notes addresses v2")
         self.doEdit = self.noEdit
-        self.singleAddressNotes.addressId = self.singleAddress.ID
+        self.singleGroupAccounts.addressId = self.singleGroup.ID
         
-        self.singleAddressNotes.save()
+        self.singleGroupAccounts.save()
         self.setEntriesEditable(self.EntriesNotes, FALSE)
         self.tabChanged()
 
@@ -352,473 +214,7 @@ class materialgroupwindow(chooseWindows):
         
         self.setEntriesEditable(self.EntriesNotes, TRUE)
 
-    # several functions
-        
-    def on_calendar1_day_selected_double_click(self, event):
-        print event
-        cal = self.getWidget('calendar1')
-        if cal:
-            print cal.get_date()
-            t0 = cal.get_date()
-            print t0
-            t1 = `t0[0]`+' '+ `t0[1] +1` + ' ' + `t0[2]` 
-            
-            print t1
-            t2 = time.localtime(time.mktime(time.strptime(t1,'%Y %m %d')))
-            
-            
-            sTime = time.strftime(self.dicUser['DateformatString'], t2)
-            print sTime
-            
-        
-            eDate = self.getWidget('eSchedulDate')
-            eDate.set_text(sTime)
-            
-       
-    def on_eSchedulDate_changed(self, event):
-        self.out(event)
-        self.setDateToCalendar(event.get_text(),'calendar1')
-        #cal = self.getWidget('calendar1')
-        
-        #cal.select_month(month, year)
-        # cal.select_day(day)
-
-
-##    def on_calendar1_day_selected(self, cal):
-##        print cal
-##        date  = cal.get_date()
-##        print date
-##        print date[0]
-##        print date[1]
-##        print date[2]
-##        eSchedulDate = self.getWidget('eSchedulDate')
-##        newDate = mx.DateTime.DateTime(date[0], date[1] + 1, date[2])
-##        sDate = newDate.strftime(self.oUser.userDateTimeFormatString)
-##        eSchedulDate.set_text(sDate)
-        
-##    def on_eSchedulDate_changed(self, event):
-##        pass
-
-##    def on_hscale1_value_changed(self, hScale):
-##        tTime = None
-##        hourValue =  hScale.get_value()
-##        eSchedulTime = self.getWidget('eSchedulTime')
-##        sTime = eSchedulTime.get_text()
-##        if sTime:
-##            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
-##            oldHour = tTime.hour
-##            oldMinute = tTime.minute
-            
-##            print 'oldHour = ' + `oldHour`
-            
-##            tTime = mx.DateTime.today(hourValue, oldMinute)
-##        else:
-##            tTime = mx.DateTime.today(hourValue, 0)
-            
-##        sTime = tTime.strftime(self.oUser.userTimeFormatString)
-##        eSchedulTime.set_text(sTime)
-            
-##    def on_vscale1_value_changed(self, vScale):
-##        tTime = None
-##        minuteValue =  vScale.get_value()
-##        eSchedulTime = self.getWidget('eSchedulTime')
-##        sTime = eSchedulTime.get_text()
-##        if sTime:
-##            tTime = mx.DateTime.strptime(sTime,self.oUser.userTimeFormatString)
-##            oldHour = tTime.hour
-##            oldMinute = tTime.minute
-            
-##            tTime = mx.DateTime.today(oldHour, minuteValue)
-##        else:
-##            tTime = mx.DateTime.today(0, minuteValue)
-            
-##        sTime = tTime.strftime(self.oUser.userTimeFormatString)
-##        eSchedulTime.set_text(sTime)
-            
-        
-        
-    
-
-
-    # Menu Lists
-
-    def on_liAddressesPhone1_activate(self, event):
-        #self.out( "lists startet")
-        Pdf = lists_addresses_phone1.lists_addresses_phone1()
-        
-
-    def on_liAddressesPhone11_activate(self, event):
-        self.out( "lists startet")
-        Pdf = lists_addresses_phone11.lists_addresses_phone11()
-
-
-
-    #Menu Writer
-    def on_newletter1_activate(self, event):
-        self.out("writer startet ")
-
-        fkey = 'cuonAddress' + `self.singleAddress.ID`
-        self.out( fkey)
-        self.pickleObject(fkey , self.singleAddress.getAddress(self.singleAddress.ID))
-
-        sExec = os.environ['CUON_OOEXEC']
-        os.system(sExec + ' cuon/OpenOffice/ooMain.py ' + fkey )
-        #letter1 = cuon.OpenOffice.letter.letter()
-        #letter1.createAddress(singleAddress.ID)
-        
-
-    def on_bShowDMS_clicked(self, event):
-        print 'dms clicked'
-        if self.singleAddress.ID > 0:
-            print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
-            
-    def on_bGeneratePartner_clicked(self, event):
-        self.activateClick('PartnerNew1')
-        try:
-            self.getWidget('ePartnerLastname').set_text(self.singleAddress.getLastname())
-            self.getWidget('ePartnerFirstname').set_text(self.singleAddress.getFirstname())
-            self.getWidget('ePartnerStreet').set_text(self.singleAddress.getStreet())
-            self.getWidget('ePartnerZip').set_text(self.singleAddress.getZip())
-            self.getWidget('ePartnerCity').set_text(self.singleAddress.getCity())
-            self.getWidget('ePartnerCountry').set_text(self.singleAddress.getCountry())
-            self.getWidget('ePartnerLetterAddress').set_text(self.singleAddress.getLetterAddress())
-            
-        except Exception, params:
-            print Exception, params
-            
-        self.activateClick('PartnerSave1')
-        
-    def on_bContact_clicked(self, event):
-        print 'Contact pressed'
-        con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,0)
-        
-    def on_bPartnerContact_clicked(self, event):
-        con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,self.singlePartner.ID)
-        
-    def on_bLetter_clicked(self, event):
-        print 'bLetter clicked'
-        if self.singleAddress.ID > 0:
-            #self.singleAddress.load(self.singleAddress.ID)
-            print 'firstRecord = ', self.singleAddress.firstRecord
-            print 'ModulNumber', self.ModulNumber
-            dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord,dicExtInfo)
-        
-
-    def on_bShowPartnerDMS_clicked(self, event):
-        print 'dms Partner clicked'
-        if self.singlePartner.ID > 0:
-            print 'ModulNumber', self.MN['Partner']
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
-        
-    def on_bPartnerLetter_clicked(self, event):
-    
-        print 'bPartnerLetter clicked'
-        if self.singleAddress.ID > 0:
-            #self.singleAddress.load(self.singleAddress.ID)
-            #self.singlePartner.load(self.singleAddress.ID)
-            
-            #print 'firstRecord = ', self.singleAddress.firstRecord
-            #print 'ModulNumber', self.ModulNumber
-            dicExtInfo = {'sep_info':{'1':self.singlePartner.ID},'Modul':self.MN['Partner']}
-            dicPartner = self.singlePartner.firstRecord
-            for key in self.singleAddress.firstRecord.keys():
-                dicPartner['address_' + key] = self.singleAddress.firstRecord[key]
-            dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser)
-            if dicInternInformation != 'NONE':
-                for key in dicInternInformation:
-                    dicPartner[key] = dicInternInformation[key]
-                
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
-            
-    def on_bSchedulLetter_clicked(self, event):
-    
-        print 'bSchulLetter clicked'
-        if self.singleSchedul.ID > 0:
-            dicExtInfo = {'sep_info':{'1':self.singleSchedul.ID},'Modul':self.MN['Partner_Schedul']}
-            dicSchedul = self.singleSchedul.firstRecord
-            for key in self.singleAddress.firstRecord.keys():
-                dicSchedul['address_' + key] = self.singleAddress.firstRecord[key]
-            for key in self.singlePartner.firstRecord.keys():
-                dicSchedul['partner_' + key] = self.singlePartner.firstRecord[key]
-            dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser, dicSchedul['schedul_staff_id'])
-            if dicInternInformation != 'NONE':    
-                for key in dicInternInformation:
-                    dicSchedul[key] = dicInternInformation[key]
-            
-            dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
-            print 'dicSchedul = ', dicSchedul
-            print 'lastname', dicSchedul['person1_lastname']
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
-                    
-    def on_chooseAddress_activate(self, event):
-        # choose Address from other Modul
-        if self.tabOption == self.tabGroup:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singleAddress.ID)
-            self.closeWindow()
-        elif self.tabOption == self.tabPartner:
-            print '############### Address choose ID ###################'
-            self.setChooseValue(self.singlePartner.ID)
-            self.closeWindow()
-
-##        else:
-##            print '############### No ID found,  choose ID -1 ###################'
-##            self.setChooseValue('-1')
-##            self.closeWindow()
-## 
-##              
-
-        
-    # search button
-    def on_bSearch_clicked(self, event):
-        self.findAddress()
-    def on_eSearch_key_press_event(self, entry, event):
-        print 'eSearch_key_press_event'
-        if self.checkKey(event,'NONE','Return'):
-            self.findAddress()
-    
-    def findAddress(self):
-        print 'findAddress'
-        self.out( 'Searching ....', self.ERROR)
-        sName = self.getWidget('eFindName').get_text()
-        sCity = self.getWidget('eFindCity').get_text()
-        sZip = self.getWidget('eFindZipcode').get_text()
-        sFirstname = self.getWidget('eFindFirstname').get_text()
-        sID = self.getWidget('eFindID').get_text()
-        sStreet = self.getWidget('eFindStreet').get_text()
-        sPhone = self.getWidget('eFindPhone').get_text()
-
-        liSearch = []
-        if sName:
-            liSearch.append('lastname')
-            liSearch.append(sName)
-        if sID:
-            liSearch.append('id')
-            try:
-                liSearch.append(int(sID))
-            except:
-                liSearch.append(0)
-            
-        if sFirstname:
-            liSearch.append('firstname')
-            liSearch.append(sFirstname)
-        if sCity:
-            liSearch.append('city')
-            liSearch.append(sCity)    
-             
-        if sZip:
-            liSearch.append('zip')
-            liSearch.append(sZip)    
-        if sStreet:
-            liSearch.append('street')
-            liSearch.append(sStreet)
-            
-        if sPhone:
-            liSearch.append('phone')
-            liSearch.append(sPhone)    
-             
-        self.singleAddress.sWhere = self.getWhere(liSearch) 
-        
-        self.out('Address sWhere = ' + `self.singleAddress.sWhere`)
-        self.refreshTree()
-
-        
-        
-        
-        
-    # Bank aussuchen
-        
-    def on_tree1_row_activated(self, event, data1, data2):
-        print 'DoubleClick tree1'
-        self.activateClick('chooseAddress', event)
-
-
-    def on_bChooseBank_clicked(self, event):
-        bank = cuon.Bank.bank.bankwindow(self.allTables)
-        bank.setChooseEntry('chooseBank', self.getWidget( 'eBankID'))
-        
-    def on_eBankID_changed(self, event):
-        print 'eBankID changed'
-        eAdrField = self.getWidget('tvBank')
-        liAdr = self.singleBank.getAddress(long(self.getWidget( 'eBankID').get_text()))
-        self.setTextbuffer(eAdrField, liAdr)
-
-
-    # choose Caller, Representant, Salesman ID`s
-    
-    def on_bChooseCaller_clicked(self, event):
-        staff = cuon.Staff.staff.staffwindow(self.allTables)
-        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressCallerID'))
-        
-    def on_bChooseRep_clicked(self, event):
-        staff = cuon.Staff.staff.staffwindow(self.allTables)
-        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressRepID'))
-        
-    def on_bChooseSalesman_clicked(self, event):
-        staff = cuon.Staff.staff.staffwindow(self.allTables)
-        staff.setChooseEntry('chooseStaff', self.getWidget( 'eAddressSalesmanID'))
-        
-    def on_eAddressCallerID_changed(self, event):
-        print 'eCallerID changed'
-        try:
-        
-            eAdrField = self.getWidget('eAddressCaller')
-            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressCallerID').get_text()))
-            eAdrField.set_text(cAdr)
-        except Exception, params:
-            print Exception, params
-            
-
-    def on_bSchedulFor_clicked(self, event):
-        staff = cuon.Staff.staff.staffwindow(self.allTables)
-        staff.setChooseEntry('chooseStaff', self.getWidget( 'eSchedulFor'))
-        
-        
-    def disconnectSchedulTree(self):
-        try:
-            
-            self.getWidget('treeScheduls').get_selection().disconnect(self.connectSchedulTreeId)
-        except:
-            pass
-
-    def connectSchedulTree(self):
-        try:
-            self.connectSchedulTreeId = self.getWidget('treeScheduls').get_selection().connect("changed", self.SchedulTree_select_callback)
-        except:
-            pass
    
-    def SchedulTree_select_callback(self, treeSelection):
-        listStore, iter = treeSelection.get_selected()
-        
-        print listStore,iter
-        
-        if listStore and len(listStore) > 0:
-           row = listStore[0]
-        else:
-           row = -1
-   
-        if iter != None:
-            sNewId = listStore.get_value(iter, 0)
-            print sNewId
-            try:
-                newID = int(sNewId[sNewId.find('###')+ 3:])
-                #self.setDateValues(newID)
-                
-            except:
-                pass
-                   
-    def on_eSchedulFor_changed(self, event):
-        print 'eSchedulfor changed'
-        try:
-            # first set the lastname, firstname to the Field
-            eAdrField = self.getWidget('eSchedulForName')
-            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eSchedulFor').get_text()))
-            eAdrField.set_text(cAdr)
-            # now try to set the scheduls for this staff
-            ts = self.getWidget('treeScheduls')
-            print 'ts = ', ts
-            treestore = gtk.TreeStore(object)
-            treestore = gtk.TreeStore(str)
-            ts.set_model(treestore)
-                
-            liDates = self.rpc.callRP('Address.getAllActiveSchedul',self.dicUser,'Schedul',self.getWidget( 'eSchedulFor').get_text() )
-            print 'Schedul by schedul_date: ', liDates
-            if liDates:
-                lastRep = None
-                lastSalesman = None
-                Schedulname = None
-                lastSchedulname = None
-                
-                #iter = treestore.append(None,[_('Schedul')])
-                #print 'iter = ', iter
-                iter2 = None
-                iter3 = None
-                for oneDate in liDates:
-                    Schedulname = oneDate['date']
-                    if lastSchedulname != Schedulname:
-                        lastSchedulname = Schedulname
-                        iter = treestore.append(None,[lastSchedulname])   
-                    sTime  = self.getTimeString(oneDate['time_begin'] )
-                        
-                    iter2 = treestore.insert_after(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +'--' + sTime + ' ###' +  `oneDate['id']`])           
-                print 'End liDates'
-            ts.show()
-            #self.getWidget('scrolledwindow10').show()
-            self.connectSchedulTree()
-            print 'ts', ts
-            
-        except Exception, params:
-            print Exception, params    
-            
-    # add date and name to notes
-            
-    def on_bAddNameMisc_clicked(self, event):
-        self.addName2Note('tvNotesMisc')
-
-    def on_bAddNameContacter_clicked(self, event):
-        self.addName2Note('tvNotesContacter')
-    def on_bAddNameRep_clicked(self, event):
-        self.addName2Note('tvNotesRep')
-    def on_bAddNameSalesman_clicked(self, event):
-        self.addName2Note('tvNotesSalesman')
-
-    # add formular to notes
-    def on_bAddFormular2NotesMisc_clicked(self, event):
-        print 'AddFormular2NoticesMisc clicked'
-        self.addForm2Note('cbeNotesMisc','tvNotesMisc')
-        
-    def on_bAddFormular2NotesContacter_clicked(self, event):
-        print 'AddFormular2NoticesContacter clicked'
-        self.addForm2Note('cbeNotesContacter','tvNotesContacter')
-    
-    def on_bAddFormular2NotesRep_clicked(self, event):
-        print 'AddFormular2NoticesRep clicked'
-        self.addForm2Note('cbeNotesRep','tvNotesRep')
-       
-    def on_bAddFormular2NotesSalesman_clicked(self, event):
-        print 'AddFormular2NoticesSalesman clicked'
-        self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
-
-    # send E-mail 
-    def on_bSendEmailAddress_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailPartner_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailSchedul_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
-        
-    def addForm2Note(self, sInput, sOutput):
-        
-        s = self.getActiveText(self.getWidget(sInput))
-        print 'ActiveText', s
-        
-        if s:
-            iNr = 0
-            try:
-                iFind = s.find('###')
-                iNr = int(s[iFind+3:])
-            except Exception, param:
-                print Exception,param
-            
-            if iNr:
-                Formular = self.rpc.callRP('Misc.getForm',iNr, self.dicUser)
-                print Formular
-                if Formular  and Formular != 'NONE':
-                    newForm = self.doUncompress(self.doDecode(Formular[0]['document_image']))
-                    print 'newForm', newForm
-                    self.add2Textbuffer(self.getWidget(sOutput),newForm,'Tail')
-
-
-    def addName2Note(self, sWidget):
-        t1 = self.rpc.callRP('User.getDate', self.dicUser)
-        t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
-        text = t1 + ' : ' + t2 + '\n'
-        print text
-        self.add2Textbuffer(self.getWidget(sWidget),text,'Tail')
-        
-    
     def saveData(self):
         print 'save Addresses'
         if self.doEdit == self.tabGroup:
@@ -835,20 +231,20 @@ class materialgroupwindow(chooseWindows):
             self.on_SchedulSave_activate(None)
      
     def refreshTree(self):
-        self.singleAddress.disconnectTree()
+        self.single.disconnectTree()
         self.singlePartner.disconnectTree()
         self.singleSchedul.disconnectTree()
         
         if self.tabOption == self.tabGroup:
-            self.singleAddress.connectTree()
-            self.singleAddress.refreshTree()
+            self.singleGroup.connectTree()
+            self.singleGroup.refreshTree()
             
         elif self.tabOption == self.tabMisc:
-            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
+            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleGroup.ID)`
             self.singleMisc.fillEntries(self.singleMisc.findSingleId())
 
         elif self.tabOption == self.tabPartner:
-            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleAddress.ID)`
+            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleGroup.ID)`
             self.singlePartner.connectTree()
             self.singlePartner.refreshTree()
             
@@ -858,8 +254,8 @@ class materialgroupwindow(chooseWindows):
             self.singleSchedul.refreshTree()
             
         elif self.tabOption == self.tabAccount:
-            self.singleAddressNotes.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
-            self.singleAddressNotes.fillEntries(self.singleAddressNotes.findSingleId())
+            self.singleGroupAccounts.sWhere  ='where address_id = ' + `int(self.singleGroup.ID)`
+            self.singleGroupAccounts.fillEntries(self.singleGroupAccounts.findSingleId())
 
             if self.InitForms:
                 # set popdown for forms
@@ -887,8 +283,8 @@ class materialgroupwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('address')
 
-            self.actualEntries = self.singleAddress.getEntries()
-            self.editAction = 'editAddress'
+            self.actualEntries = self.singleGroup.getEntries()
+            self.editAction = 'editMaterialGroup'
             self.setStatusbarText([''])
           
             self.setTreeVisible(True)
@@ -904,7 +300,7 @@ class materialgroupwindow(chooseWindows):
            
             self.editAction = 'editBank'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setStatusbarText([self.singleGroup.sStatus])
 
 
         elif self.tabOption == self.tabMisc:
@@ -914,7 +310,7 @@ class materialgroupwindow(chooseWindows):
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setStatusbarText([self.singleGroup.sStatus])
 
 
 
@@ -927,7 +323,7 @@ class materialgroupwindow(chooseWindows):
             self.out( 'Seite 1')
             self.editAction = 'editPartner'
             self.setTreeVisible(True)
-            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setStatusbarText([self.singleGroup.sStatus])
 
             
         elif self.tabOption == self.tabSchedul:
@@ -948,7 +344,7 @@ class materialgroupwindow(chooseWindows):
             self.enableMenuItem('notes')
             self.editAction = 'editNotes'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setStatusbarText([self.singleGroup.sStatus])
 
         # refresh the Tree
         self.refreshTree()

@@ -1092,12 +1092,12 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkButton" id="bChooseCategory">
+			<widget class="GtkButton" id="bChooseMaterialGroup">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
-			  <signal name="clicked" handler="on_bChooseCategory_clicked" last_modification_time="Sun, 11 Feb 2007 11:56:47 GMT"/>
+			  <signal name="clicked" handler="on_bChooseMaterialGroup_clicked" last_modification_time="Tue, 13 Feb 2007 09:57:33 GMT"/>
 
 			  <child>
 			    <widget class="GtkAlignment" id="alignment2">
@@ -1137,7 +1137,7 @@
 				  <child>
 				    <widget class="GtkLabel" id="label42">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">choose Category</property>
+				      <property name="label" translatable="yes">choose Material Group</property>
 				      <property name="use_underline">True</property>
 				      <property name="use_markup">False</property>
 				      <property name="justify">GTK_JUSTIFY_LEFT</property>
