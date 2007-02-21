@@ -42,3 +42,4 @@ class SingleMaterialgroupsAccount(SingleData):
         return dicValues
 
     
+    

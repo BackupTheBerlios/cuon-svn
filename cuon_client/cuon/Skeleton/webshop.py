@@ -23,7 +23,6 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
-import gnome.ui
 import string
 from cuon.Databases.SingleData import SingleData
 

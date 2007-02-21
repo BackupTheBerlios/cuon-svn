@@ -33,96 +33,65 @@ class typedefs:
         self.cuon_path = None
         self.help_server = None
         self.cpParser = None
-        
+        self.new_cuon_path = None
+        # First check cuonObjects
         try:
-            self.cuon_path = os.environ(['CUON_PATH'])
+            #print 'just self.server = ', self.server
+                            
+            dbase = shelve.open(os.path.normpath('../' + 'cuonObjects'))
+            oValue = None
+            try:
+                oValue = dbase['td']
+            except:
+                oValue = None
             
-        except:
-            pass
-        
-        try:
-            self.server = os.environ(['CUON_SERVER'])
+            dbase.close()
+            if oValue.server and oValue.server != 'NO' :
+                self.server = oValue.server
+            if oValue.cuon_path and oValue.cuon_path != 'NO':
+                self.cuon_path = oValue.cuon_path
+                
+            if oValue.help_server and oValue.help_server != 'NO':
+                self.help_server = oValue.help_server
+                
             
-        except:
-            pass            
-            
-            
-            
-        try:
-            self.help_server = os.environ(['CUON_HELPSERVER'])
-            
-        except:
-            pass            
-            
-            
-            
-        try:
-            pass
-        except:
-            pass
-        
-        # start read /etc/cuon/cuon.ini
-        self.getConfigParser('/etc/cuon/cuon.ini')
-        if self.cpParser:
-            value = self.getConfigOption('PATH','CUON_PATH')
-            if value:
-              self.cuon_path = value
-              
-            value = self.getConfigOption('SERVER','CUON_SERVER')
-            if value:
-              self.server = value
-              
-            value = self.getConfigOption('SERVER','CUON_HELPSERVER')
-            if value:
-              self.help_server = value
-              
-        try:
-            
-            # start read /etc/cuon/cuon.ini
-            self.getConfigParser(os.path.normpath(os.environ['HOME'] + '/.cuon.ini'))
-            if self.cpParser:
-                value = self.getConfigOption('PATH','CUON_PATH')
-                if value:
-                  self.cuon_path = value
-                  
-                value = self.getConfigOption('SERVER','CUON_SERVER')
-                if value:
-                  self.server = value
-                  
-                value = self.getConfigOption('SERVER','CUON_HELPSERVER')
-                if value:
-                  self.help_server = value
-              
         except Exception, params:
+            print 1
             print Exception, params
             
-                 
-        
-        # If noc config-Options found, fallback to defaults   
-        try:
-            if not self.cuon_path:    
-                self.cuon_path = os.environ['HOME'] +'/cuon'
-        
-            if not self.server:
-                self.server = 'http://localhost:7080'
-                
-        
-##        if not self.homePath:
-##            self.homePath = os.environ['HOME'] + '/cuon'
-##            
+        if not self.cuon_path or not self.server:
+            #print 'Server by typedef : ' + self.server
+            #print '#########################################################'
             
-            #self.server = os.environ['CUON_SERVER']
-            #self.homePath = os.environ['CUON_HOME']        
-            if not self.help_server:
-                self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+            try:
+                self.cuon_path = os.environ(['CUON_PATH'])
                 
-        except:
-            print ' no environ found'
+            except:
+                pass
             
-        try:
-            if not self.cuon_path: 
-                # normaly ini-file ist jaust found here
-                self.getConfigParser(os.path.normpath('../../.cuon.ini'))
+            try:
+                self.server = os.environ(['CUON_SERVER'])
+                
+            except:
+                pass            
+                
+                
+                
+            try:
+                self.help_server = os.environ(['CUON_HELPSERVER'])
+                
+            except:
+                pass            
+                
+                
+                
+            try:
+                pass
+            except:
+                pass
+            if not self.cuon_path or not self.server:
+            # start read /etc/cuon/cuon.ini
+                self.getConfigParser('/etc/cuon/cuon.ini')
                 if self.cpParser:
                     value = self.getConfigOption('PATH','CUON_PATH')
                     if value:
@@ -135,30 +104,73 @@ class typedefs:
                     value = self.getConfigOption('SERVER','CUON_HELPSERVER')
                     if value:
                       self.help_server = value
-                  
-        except Exception, params:
-            print Exception, params
-            
-            
-        try:
-            #print 'just self.server = ', self.server
-            dbase = shelve.open(os.path.normpath(self.cuon_path + '/' + 'cuonObjects'))
-            oValue = None
-            try:
-                oValue = dbase['td']
-            except:
-                oValue = None
-            
-            dbase.close()
-            if oValue.server != 'NO':
-                self.server = oValue.server
-        except Exception, params:
-            print Exception, params
-            
-            
-        #print 'Server by typedef : ' + self.server
-        #print '#########################################################'
-        
+                if not self.cuon_path or not self.server:      
+                    try:
+                        
+                        # start read /etc/cuon/.cuon.ini
+                        self.getConfigParser(os.path.normpath(os.environ['HOME'] + '/.cuon.ini'))
+                        if self.cpParser:
+                            value = self.getConfigOption('PATH','CUON_PATH')
+                            if value:
+                              self.cuon_path = value
+                              
+                            value = self.getConfigOption('SERVER','CUON_SERVER')
+                            if value:
+                              self.server = value
+                              
+                            value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+                            if value:
+                              self.help_server = value
+                          
+                    except Exception, params:
+                        print 3
+                        print Exception, params
+                        
+                             
+                    if not self.cuon_path or not self.server: 
+                        # If noc config-Options found, fallback to defaults   
+                        try:
+                            if not self.cuon_path:    
+                                self.cuon_path = os.environ['HOME'] +'/cuon'
+                        
+                            if not self.server:
+                                self.server = 'http://localhost:7080'
+                                
+                        
+                ##        if not self.homePath:
+                ##            self.homePath = os.environ['HOME'] + '/cuon'
+                ##            
+                            
+                            #self.server = os.environ['CUON_SERVER']
+                            #self.homePath = os.environ['CUON_HOME']        
+                            if not self.help_server:
+                                self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+                                
+                        except:
+                            print ' no environ found'
+                        if not self.cuon_path or not self.server:     
+                            try:
+                                # normaly ini-file ist jaust found here
+                                self.getConfigParser(os.path.normpath('../../.cuon.ini'))
+                                if self.cpParser:
+                                    value = self.getConfigOption('PATH','CUON_PATH')
+                                    if value:
+                                      self.cuon_path = value
+                                      
+                                    value = self.getConfigOption('SERVER','CUON_SERVER')
+                                    if value:
+                                      self.server = value
+                                      
+                                    value = self.getConfigOption('SERVER','CUON_HELPSERVER')
+                                    if value:
+                                      self.help_server = value
+                                  
+                            except Exception, params:
+                                print 5
+                                print Exception, params
+                                
+                        
+                    
     def getConfigParser(self, sFile):
         try:
             self.cpParser = ConfigParser.ConfigParser()

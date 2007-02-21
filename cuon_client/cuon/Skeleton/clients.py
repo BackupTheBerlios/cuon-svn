@@ -22,9 +22,7 @@ import gtk
 import gtk.glade
 import gobject
 from gtk import TRUE, FALSE
-import gnome.ui
 import string
-
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle

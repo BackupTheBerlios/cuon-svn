@@ -39,12 +39,16 @@ class dumps:
         else:
             #print 'set td new'
             self.td = cuon.TypeDefs.typedefs.typedefs()
-        #print 'td', self.td
+        try:
+            print 'td', self.td.server
+            print self.td.cuon_path
+        except:
+            pass
         #print '------------------------------------------------'
         
     def openDB(self):
         #print 'PATH = ', self.td.cuon_path
-        self.dbase = shelve.open(os.path.normpath(self.td.cuon_path + '/' + 'cuonObjects'))
+        self.dbase = shelve.open(os.path.normpath('../' + 'cuonObjects'))
 
     def closeDB(self):
         self.dbase.close()

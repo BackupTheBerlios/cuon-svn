@@ -40,150 +40,28 @@ class SingleMaterialgroups(SingleData):
         #self.out( len(self.table.Columns))
         #
         self.statusfields = ['lastname', 'city']
-
-    def getAddressPhone1(self, id):
         
+        
+        
+    def getNameAndDesignation(self,id):
+        sName = ''
         try:
             id = long(id)
             
             dicRecords = self.load(id)
         except:
-            print 'Exception by getAddressPhone1-1'
+            print 'Exception by SingleMaterialGroup-1'
             id = 0
             dicRecords = {}
-        Phone = ''
+        
         try:
             if dicRecords:
-                Phone = dicRecords[0]['phone']
+                sName = dicRecords[0]['name'] + ', ' + dicRecords[0]['designation']
         except:
-            print 'Exception by getAddressPhone1-2'
+            print 'Exception by SingleMaterialGroup-2'
 
-            Phone = ''
+            sName = ''
         
-        return Phone
+        return sName
         
-        
-    def getAddress(self, id):
-        try:
-            id = long(id)
-            
-            dicRecords = self.load(id)
-        except:
-            id = 0
-            dicRecords = {}
-        
-        liAddress = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
-            liAddress.append(dicRecord['firstname'])
-            liAddress.append(dicRecord['street'])
-            liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
-        if not liAddress:
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            
-        return liAddress
-
-    def getMailAddress(self):
-        
-        s = None
-        try:
-            s = self.firstRecord['lastname'] + '\n'
-            s += self.firstRecord['lastname2'] + '\n'
-            s += self.firstRecord['firstname'] + '\n\n'
-            s += self.firstRecord['street'] + '\n'
-            s += self.firstRecord['country'] + '-' + self.firstRecord['zip'] + ' ' + self.firstRecord['city']
-            
-        except:
-            pass
-            
-        return s       
-    def getLastname(self):
-        s = None
-        try:
-            s = self.firstRecord['lastname']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-
-    def getLastname2(self):
-        s = None
-        try:
-            s = self.firstRecord['lastname2']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-    def getFirstname(self):
-        s = None
-        try:
-            s = self.firstRecord['firstname']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-    def getStreet(self):
-        s = None
-        try:
-            s = self.firstRecord['street']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-        
-        
-    def getCity(self):
-        s = None
-        try:
-            s = self.firstRecord['city']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-    def getZip(self):
-        s = None
-        try:
-            s = self.firstRecord['zip']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-        
-    def getCountry(self):
-        s = None
-        try:
-            s = self.firstRecord['country']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
-        
-        
-        
-    def getLetterAddress(self):
-        s = None
-        try:
-            s = self.firstRecord['letter_address']
-        except:
-            pass
-        if not s or s == 'NONE':
-            s = ''
-        return s
+   

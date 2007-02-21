@@ -1,20 +1,37 @@
 import sys
 
 
-def writeValues(f_out, liS1):
+def writeValues(f_out, liS1,liForbidden):
     #print liS1
     s = ''
-    for i in liS1:
-        if len(i) > 49:
-            i=i[0:49]
-        s += i.strip() + ';'
-    #print 'AAAA----------------------------------------'
-       
-    s = s[:len(s)-1]
-    #print 's = ', s
-
-    #print 'BBBB----------------------------------------'
-    f_out.write(s+'\n')
+    bOK = True
+    for forbidden in liForbidden:
+        #forbidden = forbidden.decode('ISO-8859-15')
+        #print forbidden
+        sL2 = liS1[2].decode('ISO-8859-15').encode('utf-8')
+        sL3 = liS1[3].decode('ISO-8859-15').encode('utf-8')
+        
+        #print sL2
+        
+        if sL2.find(forbidden) >= 0:
+            bOK = False
+        if sL3.find(forbidden) >= 0:
+            bOK = False    
+    if bOK:
+        for i in liS1:
+            
+            if len(i) > 49:
+                i=i[0:49]
+            s += i.strip() + ';'
+            
+        s = s[:len(s)-1]
+        #print 's = ', s
+    
+        f_out.write(s+'\n')
+    else:
+        print 'This is erase:'
+        print liS1
+        
 
 print sys.argv
 sFile = sys.argv[1]
@@ -94,10 +111,26 @@ while s1:
     #print '################################################################'
     #print 
 #print len(liAll)
+liForb = []
+try:
+  f = open('forbidden.txt','r')
+  s = f.readline()
+  while s:
+    sEncode = 'latin-1'
+    sDescode = 'latin-1'
+    #s = s.decode(sDescode)
+    #s = s.encode(sEncode)
+    
+    print sDescode + ' ' + sEncode, s
+    liForb.append(s.strip())
+    s = f.readline()
+except Exception, params:
+    print Exception, params
+print liForb
 
 f_in.close()
 for liS in liAll:
-    writeValues(f_out,liS)
+    writeValues(f_out,liS, liForb)
 f_out.close()
 
 

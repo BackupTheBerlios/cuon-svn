@@ -58,7 +58,7 @@ class materialgroupwindow(chooseWindows):
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('material_group.xml', 'MaterialgroupsMainwindow')
+        self.loadGlade('material_group.xml', 'MaterialGroupMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
         #self.win1.maximize()
         
@@ -66,8 +66,8 @@ class materialgroupwindow(chooseWindows):
         #print 'time 3 = ', time.localtime()
 
 
-        self.EntriesGroups = 'material_groups.xml'
-        self.EntriesAccounts = 'material_groups_accounts.xml'
+        self.EntriesGroups = 'material.xml'
+        self.EntriesAccounts = 'material_group_accounts.xml'
         
         #print 'time 4 = ', time.localtime()
         
@@ -100,17 +100,17 @@ class materialgroupwindow(chooseWindows):
         
         
 
-        # init Comboboxes 
-        
-        # Tax-Vat
-        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
-        cb = self.getWidget('cbVat')
-        
-        for i in range(len(tax_vat)) :
-            li = gtk.ListItem(tax_vat[i])
-            cb.list.append_items([li])
-            li.show()
-    
+##        # init Comboboxes 
+##        
+##        # Tax-Vat
+##        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
+##        cb = self.getWidget('cbVat')
+##        
+##        for i in range(len(tax_vat)) :
+##            li = gtk.ListItem(tax_vat[i])
+##            cb.list.append_items([li])
+##            li.show()
+##    
         
             
         #print 'time 11 = ', time.localtime()
@@ -127,19 +127,19 @@ class materialgroupwindow(chooseWindows):
         self.addEnabledMenuItems('address','mi_address1')
         self.addEnabledMenuItems('notes','mi_notes1')
         
-        # enabledMenues for Address
-        self.addEnabledMenuItems('editMaterialGroup','mi_new1' , self.dicUserKeys['address_new'])
-        self.addEnabledMenuItems('editMaterialGroup','mi_clear1', self.dicUserKeys['address_delete'])
-        self.addEnabledMenuItems('editMaterialGroup','mi_print1', self.dicUserKeys['address_print'])
-        self.addEnabledMenuItems('editMaterialGroup','mi_edit1', self.dicUserKeys['address_edit'])
+        # enabledMenues for group
+        self.addEnabledMenuItems('editMaterialGroup','new1' , self.dicUserKeys['address_new'])
+        self.addEnabledMenuItems('editMaterialGroup','clear1', self.dicUserKeys['address_delete'])
+        self.addEnabledMenuItems('editMaterialGroup','print1', self.dicUserKeys['address_print'])
+        self.addEnabledMenuItems('editMaterialGroup','edit1', self.dicUserKeys['address_edit'])
 
         
         # enabledMenues for Notes
         self.addEnabledMenuItems('editNotes', 'NotesEdit1')
   
         # enabledMenues for Save 
-        self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
-        self.addEnabledMenuItems('editSave','NotesSave', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','save_account1', self.dicUserKeys['address_save'])
 
         
 
@@ -164,7 +164,7 @@ class materialgroupwindow(chooseWindows):
     #Menu Address
   
     def on_save1_activate(self, event):
-        self.out( "save addresses v2")
+        self.out( "save material_group v2")
         self.doEdit = self.noEdit
         self.singleGroup.save()
         self.setEntriesEditable(self.EntriesGroups, FALSE)
@@ -172,29 +172,29 @@ class materialgroupwindow(chooseWindows):
         self.tabChanged()
         
     def on_new1_activate(self, event):
-        self.out( "new addresses v2")
+        self.out( "new materialgroup v2")
         self.doEdit = self.tabGroup
 
         self.singleGroup.newRecord()
         self.setEntriesEditable(self.EntriesGroups, TRUE)
         
-        self.getWidget('eAddress').grab_focus()
+        #self.getWidget('eAddress').grab_focus()
         self.startEdit()
 
     def on_edit1_activate(self, event):
-        self.out( "edit addresses v2")
+        self.out( "edit material_group v2")
         self.doEdit = self.tabGroup
         
         self.setEntriesEditable(self.EntriesGroups, TRUE)
-        self.getWidget('eAddress').grab_focus()
+        #self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
     def on_print1_activate(self, event):
-        self.out( "print addresses v2")
+        self.out( "print material_group v2")
         p = printAddress.printAddress(self.singleGroup.getFirstRecord() )
         
     def on_delete1_activate(self, event):
-        self.out( "delete addresses v2")
+        self.out( "delete material_group v2")
         self.singleGroup.deleteRecord()
 
     # Menu Notes
@@ -220,39 +220,29 @@ class materialgroupwindow(chooseWindows):
         if self.doEdit == self.tabGroup:
             print 'save 1'
             self.on_save1_activate(None)
-        elif self.doEdit == self.tabBank:
-            print 'save 2'
-            #self.on_(None)
-        elif self.doEdit == self.tabMisc:
-            self.on_MiscSave1_activate(None)
-        elif self.doEdit == self.tabPartner:
-            self.on_PartnerSave1_activate(None)
-        elif self.doEdit == self.tabSchedul:
-            self.on_SchedulSave_activate(None)
+        #elif self.doEdit == self.tabBank:
+        #    print 'save 2'
+       
      
+    def on_chooseMaterialgroup_activate(self, event):
+        # choose Article from other Modul
+        self.setChooseValue(self.singleGroup.ID)
+        print 'Group-ID = ' + `self.singleGroup.ID`
+        self.closeWindow()
+  
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseMaterialgroup', event)
+    
     def refreshTree(self):
-        self.single.disconnectTree()
-        self.singlePartner.disconnectTree()
-        self.singleSchedul.disconnectTree()
+        self.singleGroup.disconnectTree()
+        self.singleGroupAccounts.disconnectTree()
         
         if self.tabOption == self.tabGroup:
             self.singleGroup.connectTree()
             self.singleGroup.refreshTree()
             
-        elif self.tabOption == self.tabMisc:
-            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleGroup.ID)`
-            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
-
-        elif self.tabOption == self.tabPartner:
-            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleGroup.ID)`
-            self.singlePartner.connectTree()
-            self.singlePartner.refreshTree()
-            
-        elif self.tabOption == self.tabSchedul:
-            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)` + ' and process_status != 999 '
-            self.singleSchedul.connectTree()
-            self.singleSchedul.refreshTree()
-            
+        
         elif self.tabOption == self.tabAccount:
             self.singleGroupAccounts.sWhere  ='where address_id = ' + `int(self.singleGroup.ID)`
             self.singleGroupAccounts.fillEntries(self.singleGroupAccounts.findSingleId())

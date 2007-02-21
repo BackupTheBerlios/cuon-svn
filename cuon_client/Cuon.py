@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 8, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 12, 'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -825,7 +825,7 @@ class MainWindow(windows):
             print 'No StartModule'
 
     def getNewClientSoftware(self, id):
-        cuonpath = self.td.cuon_path
+        cuonpath = '..'
         self.infoMsg('C.U.O.N. will now try to load the new Clientversion. ')
         shellcommand = 'rm ' + cuonpath + '/newclient'
         liStatus = commands.getstatusoutput(shellcommand)
@@ -871,7 +871,7 @@ class MainWindow(windows):
         'print start Timer'
         # 60*1000 = 1 minute
         time_contact = 2*60*1000
-        time_schedul = 1*60*1000
+        time_schedul = 15*60*1000
         
         if self.t0:
             gobject.source_remove(self.t0)
@@ -883,9 +883,11 @@ class MainWindow(windows):
                 
         try:
             if not self.t1:
+                self.startChecking()
                 self.t1 = gobject.timeout_add(time_contact, self.startChecking)
          
             if not self.t2:
+                self.setSchedulTree()
                 self.t2 = gobject.timeout_add(time_schedul,self.setSchedulTree)
         except Exception, params:
             print Exception, params
@@ -1235,6 +1237,13 @@ sDebug = 'NO'
 sLocal = 'NO'
 
 print sys.argv
+# Args:
+# 1 server http://host:post
+# 2 client/server
+# 3 Debug = ON/OFF
+# 4 Path to Locale/ default
+# 5 cuon_path
+
 
 if len(sys.argv) > 4: 
     if len(sys.argv[4]) > 1:
@@ -1261,6 +1270,14 @@ if len(sys.argv) > 1:
             print 'td-server =', td.server   
         else:
             td.server = 'NO'
+
+if len(sys.argv) > 5:
+    if len(sys.argv[5]) > 1:
+        if sys.argv[5] != 'NO':
+            td.cuon_path =  sys.argv[5]
+            print 'td.cuon_path =', td.cuon_path   
+        else:
+            td.cuon_path = 'NO'
             
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()

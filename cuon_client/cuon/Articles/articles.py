@@ -34,6 +34,7 @@ import cuon.DMS.documentTools
 import cuon.DMS.dms
 import cuon.Articles.lists_articles_number1
 import cuon.Articles.materialgroup
+import cuon.Articles.SingleMaterialgroups
 
 
 
@@ -56,6 +57,7 @@ class articleswindow(chooseWindows):
         self.singleArticleStock = SingleArticleStock.SingleArticleStock(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
+        self.singleMaterialGroup = cuon.Articles.SingleMaterialgroups.SingleMaterialgroups(allTables)
         # self.singleArticle.loadTable()
               
         self.EntriesArticles = 'articles.xml'
@@ -417,6 +419,22 @@ class articleswindow(chooseWindows):
         self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()
 
+
+    
+    def on_bChooseMaterialGroup_clicked(self, event):
+        print 'materialgroup'
+        mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
+        mag.setChooseEntry('chooseMaterialGroup', self.getWidget( 'eCategoryNr'))
+        
+    def on_eCategoryNr_changed(self, event):
+        print 'eCategory changed'
+        iMaterialGroup = self.getChangedValue('eCategoryNr')
+        sGroupName = self.singleMaterialGroup.getNameAndDesignation(iMaterialGroup)
+        if len(sGroupName) > 0:
+            self.getWidget('eCategory').set_text(sGroupName)
+            
+
+
     def refreshTree(self):
         self.singleArticle.disconnectTree()
         self.singleArticlePurchase.disconnectTree()
@@ -459,12 +477,7 @@ class articleswindow(chooseWindows):
                 self.singleArticleStock.fillOtherEntries(dicAr)
 
             print "-----------> end tab Stock"
-     
-    def on_bChooseMaterialGroup_clicked(self, event):
-        print 'materialgroup'
-        mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
-        
-
+ 
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
