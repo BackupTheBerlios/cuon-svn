@@ -130,16 +130,18 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+    
     <entry>
-      <name>eVat</name>
+      <name>eCategoryNr</name>
       <type>textline</type>
-      <size>20</size>
-      <verify_type>string</verify_type>
+      <size>10</size>
+      <verify_type>int</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>tax_vat</sql_field>
+      <sql_field>material_group</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-    </entry>       
+      
+    </entry>
     
     
   </table>

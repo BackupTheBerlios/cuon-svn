@@ -55,10 +55,11 @@ class orderwindow(chooseWindows):
     """
     
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, dicOrder=None):
 
         chooseWindows.__init__(self)
-
+        self.dicOrder = dicOrder
+        
         self.loadGlade('order.xml','OrderMainwindow')
         #self.win1 = self.getWidget('OrderMainwindow')
         
@@ -185,7 +186,10 @@ class orderwindow(chooseWindows):
         self.tabMisc = 5
 
         # start
-        
+        if self.dicOrder:
+            print self.dicOrder
+            
+            
         self.tabChanged()
 
    

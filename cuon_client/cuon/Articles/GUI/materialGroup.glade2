@@ -82,7 +82,7 @@
 		<widget class="GtkMenu" id="edit_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="chooseMaterialgroup">
+		    <widget class="GtkMenuItem" id="chooseMaterialgroup ">
 		      <property name="visible">True</property>
 		      <property name="sensitive">False</property>
 		      <property name="label" translatable="yes">choose</property>
@@ -368,7 +368,7 @@
 
 	  <child>
 	    <widget class="GtkTreeView" id="tree1">
-	      <property name="height_request">60</property>
+	      <property name="height_request">202</property>
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="headers_visible">True</property>

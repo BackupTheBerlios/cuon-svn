@@ -26,7 +26,7 @@ from cuon.Windows.chooseWindows  import chooseWindows
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.Staff.SingleStaff
-
+import cuon.Order.order
 import cuon.DMS.documentTools
 
 import cuon.DMS.dms
@@ -296,15 +296,12 @@ class hibernationwindow(chooseWindows):
         print "Start print invoice 1"
         
         dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
-        dicOrder['invoiceNumber'] = self.rpc.callRP('Garden.getInvoiceNumber',self.singleHibernation.ID, self.dicUser)
         
-        print "Start print invoice 2"
-
         dicOrder['orderNumber'] = self.singleHibernation.ID
-        print "Start print invoice 3"
-
-        Pdf = self.rpc.callRP('Report.server_hibernation_invoice', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser)            
+        dicOrder['orderModulNumber'] = self.self.ModulHibernationNumber
+        
+                 
+        ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
         
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}

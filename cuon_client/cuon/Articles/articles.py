@@ -44,9 +44,10 @@ class articleswindow(chooseWindows):
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
-
         self.loadGlade('articles.xml', 'ArticlesMainwindow')
         #self.win1 = self.getWidget('ArticlesMainwindow')
+        self.win1.maximize()
+        
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Articles']        
         self.allTables = allTables
@@ -424,7 +425,7 @@ class articleswindow(chooseWindows):
     def on_bChooseMaterialGroup_clicked(self, event):
         print 'materialgroup'
         mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
-        mag.setChooseEntry('chooseMaterialGroup', self.getWidget( 'eCategoryNr'))
+        mag.setChooseEntry('chooseMaterialgroup', self.getWidget( 'eCategoryNr'))
         
     def on_eCategoryNr_changed(self, event):
         print 'eCategory changed'
@@ -432,7 +433,8 @@ class articleswindow(chooseWindows):
         sGroupName = self.singleMaterialGroup.getNameAndDesignation(iMaterialGroup)
         if len(sGroupName) > 0:
             self.getWidget('eCategory').set_text(sGroupName)
-            
+        else:
+            self.getWidget('eCategory').set_text('')
 
 
     def refreshTree(self):

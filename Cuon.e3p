@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-02-12, 23:54:43 -->
+<!-- Saved: 2007-02-14, 23:41:28 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1862,6 +1862,11 @@
       <Dir>GUI</Dir>
       <Name>entry_material_group_accounts.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_server</Dir>
+      <Dir>examples</Dir>
+      <Name>clients.ini</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -1929,28 +1934,28 @@ p1
 (lp2
 V
 p3
-asS'useRecursion'
+asS'outputDirectory'
 p4
-I01
-sS'cssFile'
-p5
-V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
-p6
-sS'filenamePrefix'
-p7
-Vcuon
-p8
-sS'outputDirectory'
-p9
 Vdoc/doc_src
+p5
+sS'cssFile'
+p6
+V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
+p7
+sS'filenamePrefix'
+p8
+Vcuon
+p9
+sS'useRecursion'
 p10
+I01
 s.</Eric3DocParams>
   </Eric3Doc>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>
