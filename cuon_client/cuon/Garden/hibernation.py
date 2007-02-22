@@ -298,7 +298,7 @@ class hibernationwindow(chooseWindows):
         dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
         
         dicOrder['orderNumber'] = self.singleHibernation.ID
-        dicOrder['orderModulNumber'] = self.self.ModulHibernationNumber
+        dicOrder['orderModulNumber'] = self.ModulHibernationNumber
         
                  
         ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
