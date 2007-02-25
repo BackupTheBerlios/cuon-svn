@@ -259,3 +259,19 @@ class Garden(xmlrpc.XMLRPC, basics):
             
             
         return ok
+
+    def xmlrpc_getOrderPositions(self, hibID, dicUser):
+        sSql ='select hibernation_plant.*, botany.* from hibernation_plant, botany where hibernation_plant.hibernation_number = ' + `hibID`
+        sSql += ' and hibernation_plant.botany_number = botany.id '
+        
+        sSql += self.getWhere("",dicUser,2,'hibernation_plant.')
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        print 'getOrderPositions.result: ', result
+        result2 = []
+        if result != 'NONE':
+            for row in result:
+                print row
+                
+        return result
+        
+     

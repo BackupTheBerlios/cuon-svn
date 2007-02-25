@@ -489,3 +489,19 @@ on_set_ready1_activate                 (GtkMenuItem     *menuitem,
 void
 on_bQuit_clicked                       (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bViewHomepage_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSendMail_clicked                   (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSendPartnerEmail_clicked           (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bPartnerViewHomepage_clicked        (GtkButton       *button,
+                                        gpointer         user_data);

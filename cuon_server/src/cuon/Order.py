@@ -119,3 +119,28 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = sSql + " order by orderposition.position "
         dicUser['noWhereClient'] = 'Yes'
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+
+
+    def xmlrpc_checkExistModulOrder(self, dicUser, dicOrder):
+        print 'check Exist Modul Order '
+        sSql = 'select * from orderbook where modul_order_number = ' + `dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `dicOrder['ModulNumber']`
+        sSql += self.getWhere(None,dicUser,2)
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        print 'Order99 = ', dicResult 
+        return dicResult
+        
+        
+    def xmlrpc_createNewOrder(self,dicUser,dicOrder):
+        print 'create new Order'
+        dicValues = {}
+        dicValues['modul_order_number'] = [dicOrder['ModulOrderNumber'],'int']
+        dicValues['modul_number'] = [dicOrder['ModulNumber'],'int']
+        dicValues['number'] = [dicOrder['Number'],'string']
+        
+        
+        dicResult =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
+        
+        return dicResult
+        
+        
+    

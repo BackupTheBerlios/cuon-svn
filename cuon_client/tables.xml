@@ -688,6 +688,7 @@
       <default />
       <comment />
     </field>
+
 <field>
       <name>newsletter</name>
       <type>varchar</type>
@@ -698,7 +699,17 @@
       <default />
       <comment />
     </field>
-
+<field>
+      <name>homepage_url</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    
   </table>
   <!--table: address-->
   <table>
@@ -1798,6 +1809,28 @@
       <default>0</default>
       <comment />
     </field>
+    <field>
+      <name>modul_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    <field>
+      <name>modul_order_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    
+    
   </table>
   <!--table: ordersupply-->
   <table>

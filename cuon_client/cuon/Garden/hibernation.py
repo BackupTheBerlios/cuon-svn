@@ -297,10 +297,12 @@ class hibernationwindow(chooseWindows):
         
         dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
         
-        dicOrder['orderNumber'] = self.singleHibernation.ID
-        dicOrder['orderModulNumber'] = self.ModulHibernationNumber
+        dicOrder['ModulNumber'] = self.singleHibernation.ID
+        dicOrder['ModulOrderNumber'] = self.ModulHibernationNumber
         
-                 
+        dicOrder['Positions'] = self.rpc.callRP('Garden.getOrderPositions',self.singleHibernation.ID, self.dicUser)
+        dicOrder['Number'] = `self.singleHibernation.ID`
+        
         ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
         
     def on_print_outgoing_document1_activate(self, event):

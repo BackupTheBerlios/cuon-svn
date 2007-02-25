@@ -40,7 +40,6 @@ import cuon.Articles.SingleArticle
 import cuon.Order.standard_invoice
 import cuon.Order.standard_delivery_note
 import cuon.Order.standard_pickup_note
-import cuon.XMLRPC.xmlrpc
 
 
 
@@ -188,8 +187,13 @@ class orderwindow(chooseWindows):
         # start
         if self.dicOrder:
             print self.dicOrder
-            
-            
+            existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
+            print 'existOrder = ', existOrder
+            if not existOrder or existOrder == 'NONE':
+                print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
+                self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+            self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
+        
         self.tabChanged()
 
    

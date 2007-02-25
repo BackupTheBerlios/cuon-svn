@@ -907,12 +907,13 @@ class addresswindow(chooseWindows):
         print 'AddFormular2NoticesSalesman clicked'
         self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
 
+
+    
     # send E-mail 
-    def on_bSendEmailAddress_clicked(self, event):
+    def on_bSendMail_clicked(self, event):
         em = cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailPartner_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
-    def on_bSendEmailSchedul_clicked(self, event):
+        
+    def on_bSendPartnerEmail_clicked(self, event):
         em = cuon.E_Mail.sendEmail.sendEmail()
         
     def addForm2Note(self, sInput, sOutput):

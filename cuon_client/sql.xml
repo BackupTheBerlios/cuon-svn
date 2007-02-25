@@ -423,7 +423,7 @@
    <trigger>
       <nameOfTrigger>trg_updateORDERBOOK</nameOfTrigger>
       <table>ORDERBOOK</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update ORDERBOOK </description>
@@ -452,7 +452,7 @@
    <trigger>
       <nameOfTrigger>trg_updateDMS</nameOfTrigger>
       <table>DMS</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update DMS </description>
@@ -481,7 +481,7 @@
    <trigger>
       <nameOfTrigger>trg_updatePARTNER_SCHEDUL</nameOfTrigger>
       <table>PARTNER_SCHEDUL</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update PARTNER_SCHEDUL </description>
@@ -509,7 +509,7 @@
    <trigger>
       <nameOfTrigger>trg_updateCLIENTS</nameOfTrigger>
       <table>CLIENTS</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update CLIENTS </description>
@@ -536,7 +536,7 @@
    <trigger>
       <nameOfTrigger>trg_updateBIBLIO</nameOfTrigger>
       <table>BIBLIO</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update BIBLIO </description>
@@ -564,7 +564,7 @@
    <trigger>
       <nameOfTrigger>trg_updateBOTANY</nameOfTrigger>
       <table>BOTANY</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update BOTANY </description>
@@ -592,7 +592,7 @@
    <trigger>
       <nameOfTrigger>trg_updateHIBERNATION_PLANT</nameOfTrigger>
       <table>HIBERNATION_PLANT</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update HIBERNATION_PLANT </description>
@@ -619,7 +619,7 @@
    <trigger>
       <nameOfTrigger>trg_updateHIBERNATION</nameOfTrigger>
       <table>HIBERNATION</table>
-      <action>before update </action>
+      <action>after update </action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update HIBERNATION </description>
