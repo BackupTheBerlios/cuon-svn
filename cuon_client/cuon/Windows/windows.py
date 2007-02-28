@@ -424,7 +424,10 @@ class windows(rawWindow, MyXML, messages):
                     else:
                         sWhere = sWhere +" and " + s + " = " + `v`        
                 elif v[0] == '#':
+                    
                     v = v[1:]
+                    v = v.replace('?','~')
+                    v = v.replace('>','^')
                     if firstWhere:
                         sWhere = " where " + s +" " + v 
                         firstWhere = False

@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 import random
 import xmlrpclib
+import Database 
 from twisted.web import xmlrpc
  
 from basics import basics
@@ -10,7 +11,8 @@ from basics import basics
 class iCal(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
-        
+        self.oDatabase = Database.Database()
+
     def createUID(self):
         s = ''
     
@@ -32,26 +34,38 @@ class iCal(xmlrpc.XMLRPC, basics):
         sValue = time.strftime(sDate, '%Y.%m.%d %H:%M')
         return sValue
     
-    def createEvent(self, dicEvent):
+    def createEvent(self, dicEvent, UID = None):
         event = Event()
+        print ' start create event '
         try:
             if dicEvent.has_key('summary'):
                 event.add('summary', dicEvent['summary'])
+                print 'Summary', dicEvent['summary']
             if dicEvent.has_key('dtstart'):
                 s = time.strptime(dicEvent['dtstart'], dicEvent['DateTimeformatString'])
                 event.add('dtstart', datetime(s[0],s[1],s[2],s[3],s[4],s[5]))
+                print 'dtstart', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
             if dicEvent.has_key('dtend'):
                 s = time.strptime(dicEvent['dtend'], dicEvent['DateTimeformatString'])
                 event.add('dtend', datetime(s[0],s[1],s[2],s[3],s[4],s[5]))
+                print 'dtend', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
             if dicEvent.has_key('dtstamp'):
                 event.add('dtstamp', dicEvent['dtstamp'])
-        
-            dicEvent['uid'] = self.createUID()
-        
+                print 'stamp',  dicEvent['dtstamp']
+            if not UID:
+                dicEvent['uid'] = `dicEvent['id']` + '#### ' + self.createUID()
+            else:
+                dicEvent['uid'] = UID
+                
+            event.add('uid',dicEvent['uid'])
+            
+            print 'UID', dicEvent['uid']
             if dicEvent.has_key('priority'):
                 event.add('priority',dicEvent['priority'] )
+            if dicEvent.has_key('location'):
+                event.add('location',dicEvent['location'] )
         except Exception, param:
-            print 'Except error'
+            print 'Except error 55'
             print Exception
             print param
             
@@ -65,10 +79,10 @@ class iCal(xmlrpc.XMLRPC, basics):
             s = self.readCalendar(sName)
             Cal = Calendar.from_string(s)
         except Exception, param:
-            print 'Except error'
+            print 'Except error 77'
             print Exception
             print param
-            
+           
         return Cal
         
     def writeCalendar(self, sName, Cal):
@@ -77,7 +91,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             f.write(Cal.as_string())
             f.close()
         except Exception, param:
-            print 'Except error'
+            print 'Except error 88'
             print Exception
             print param  
         
@@ -108,27 +122,45 @@ class iCal(xmlrpc.XMLRPC, basics):
         Cal = self.getCalendar(sName)
         print 'Cal', Cal
         dicEvent = self.getDicCal(firstRecord, dicUser)
-        
+        Cal2 = self.createCal()
+        for i in Cal.walk('VEVENT'):
+            print 'i = ', i
+            if i.has_key('UID'):
+                print 'uid = ', i['UID']
+                sSearch = `firstRecord['id']` +'####'
+                print sSearch
+                if i['UID'].find(sSearch) < 0:
+                    print 'uid not found'
+                    Cal2.add_component(i)
+            
         newEvent = self.createEvent(dicEvent)
         print 'newEvent = ' + `newEvent`
         if newEvent:
-            Cal.add_component(newEvent)
-            self.writeCalendar(sName, Cal)
+            Cal2.add_component(newEvent)
+            self.writeCalendar(sName, Cal2)
             ok = True
                 
         return ok
     
     def getDicCal(self, firstRecord, dicUser):
-            
+        result = None
         self.writeLog('Start getDicCal')
         self.writeLog('getDicCal firstRecord = ' + `firstRecord`)
-        
+        try:
+            sSql = " select partner_schedul.id as sch_id, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
+            sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id"
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        except Exception, params:
+            print 'getDicCal sql'
+            print Exception, params
+            
+            
         dicCal = {}
         print 'firstRecord = ', firstRecord
         # Save TimeTransformation
         dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
         sDate =  firstRecord['schedul_date']
-        
+        print 'result = ', result
         try:
             sTime = self.getTimeString( firstRecord['schedul_time_begin'])
             dicCal['dtstart'] = sDate + ' ' + sTime
@@ -153,21 +185,32 @@ class iCal(xmlrpc.XMLRPC, basics):
             print param
             
         try:
-            dicCal['summary'] = firstRecord['short_remark']
-                        
+            dicCal['summary'] = result[0]['st_lastname'] + ', ' +result[0]['st_firstname'] + ' ' + `result[0]['adr_id']` + ' ' + firstRecord['short_remark']
+            dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
             print 'Except error getDicCal 3'
             print Exception
             print param
             
             self.writeLog('String error by ' + `firstRecord['short_remark']`)
-        
+        try:
+            
+            if result and result != 'NONE':
+                dicCal['id'] = result[0]['sch_id']
+
+                dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
+                dicCal['location'] = dicCal['location'].decode('utf-8')
+                
+        except Exception, params:
+            print Exception, params
         self.writeLog('dicCal = ' + `dicCal`)
         
         return dicCal     
     
     def createCal(self):
-        sCal = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'
+        s ='BEGIN:VCALENDAR\r\nPRODID:-//CUON\r\nVERSION:2.0\r\nEND:VCALENDAR\r\n\n'
+       #'BEGIN:VCALENDAR\r\nPRODID:-//CUON\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'
+       
         Cal = Calendar.from_string(s)
         return Cal
     def overwriteCal(self, sName, liRecords, dicUser):
