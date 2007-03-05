@@ -106,4 +106,13 @@ class SinglePartner(SingleData):
             pass
             
         return s
-            
+        
+    def getEmail(self):
+        s = None
+        try:
+            s = self.firstRecord['email']
+        except:
+            pass
+        if not s or s == 'NONE':
+            s = ''
+        return s        

@@ -22,25 +22,104 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 
-from cuon.Windows.windows  import windows
-class sendEmail(windows):
+from cuon.Editor.editor  import editorwindow
+class sendEmail(editorwindow):
 
-    def __init__(self, Modul = None, dicValues = None):
-        windows.__init__(self)
+    def __init__(self, dicV=None):
+        if dicV:
+            self.dicValues = dicV
+        else:
+            self.dicValues = {}
+            
+            
+        editorwindow.__init__(self)
+        table = gtk.Table(2,5)
+        hbox = gtk.HBox()
+        tree1 = gtk.TreeView()
+        treestore = gtk.TreeStore(object)
+        treestore = gtk.TreeStore(str)
+##        renderer = gtk.CellRendererText()
+## 
+##        column = gtk.TreeViewColumn("Zweite Spalte", renderer, text=0)
+##        treeview.append_column(column)
+        tree1.set_model(treestore)
         
         
-        self.loadGlade('email.xml')
-        self.win1 = self.getWidget('EmailMainwindow')
-        self.win1.maximize()
+        label = gtk.Label('From')
+        label2 = gtk.Label('To')
+        label3 = gtk.Label('CC')
+        label4 = gtk.Label('BCC')
+        label5 = gtk.Label('Subject')
         
-        self.setStatusBar()
- 
- 
- 
-    def on_quit1_activate(self, event):
-        self.closeWindow() 
+        self.eFrom = gtk.Entry()
+        self.eTo = gtk.Entry()
+        self.eCC = gtk.Entry()
+        self.eBCC = gtk.Entry()
+        self.eSubject = gtk.Entry()
         
-    def on_send1_activate(self, event):
-        print 'send mail'
+        vbox = self.getWidget('vbox2')
+        vbox.hide()
+        table.attach(label,0,1,0,1)
+        table.attach(label2,0,1,1,2)
+        table.attach(label3,0,1,2,3)
+        table.attach(label4,0,1,3,4)
+        table.attach(label5,0,1,4,5)
+
+        table.attach(self.eFrom,1,2,0,1)
+        table.attach(self.eTo,1,2,1,2)
+        table.attach(self.eCC,1,2,2,3)
+        table.attach(self.eBCC,1,2,3,4)
+        table.attach(self.eSubject,1,2,4,5)
+
+        vbox.pack_start(table)
+        vbox.pack_start(tree1)
+
+        tv1 = self.getWidget('tv1')
         
-       
+        
+        vbox.reorder_child(tree1,0)
+        vbox.reorder_child(table,1)
+        vbox.reorder_child(tv1,2)
+        vbox.show_all()
+        #label.show()
+        
+        menubar1 = self.getWidget('menubar1')
+        
+        
+        mEmail = gtk.Menu()
+        mSend = gtk.MenuItem('Send mail')
+        mSend.connect_object("activate", self.on_send_mail_activate, 'send email')
+        mEmail.append(mSend)
+
+
+
+        mSend.show()
+        mEmail.show()
+
+        iEmail = gtk.MenuItem('Email')
+        iEmail.set_submenu(mEmail)
+        
+        iEmail.show()
+        
+        menubar1.append(iEmail)
+        menubar1.show()
+        if self.dicValues:
+            if self.dicValues['To']:
+                self.eTo.set_text(self.dicValues['To'])
+            if self.dicValues['From']:
+                self.eFrom.set_text(self.dicValues['From'])
+                    
+            
+        
+    def on_send_mail_activate(self, event):
+        print event
+        print 'send mail '
+        self.dicValues['To'] = self.eTo.get_text()
+        self.dicValues['From'] = self.eFrom.get_text()
+        self.dicValues['Subject'] = self.eSubject.get_text()
+        
+        self.dicValues['Body'] = self.readTextBuffer(self.getWidget('tv1'))
+        
+        self.rpc.callRP('Email.sendTheEmail', self.dicValues, None, self.dicUser)
+
+        

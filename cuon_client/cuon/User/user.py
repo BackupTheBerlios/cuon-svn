@@ -120,8 +120,8 @@ class User(defaultValues):
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
-        
- 
+        self.Email = {}
+        self.Email['From']='jhamel@cyrus-computer.net'
 
         
         
@@ -279,7 +279,7 @@ class User(defaultValues):
         self.dicUser['prefApps'] = self.prefApps
         
         self.dicUser['client'] = self.client
-        
+        self.dicUser['Email'] = self.Email
         
         self.refreshSqlDicUser()
         

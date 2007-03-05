@@ -8,7 +8,7 @@ import string
 from cuon.Windows.windows  import windows 
 
 class editorwindow(windows):
-    def __init__(self, dicFilename, servermod = False):
+    def __init__(self, dicFilename=None, servermod=False):
         windows.__init__(self)
         
         self.close_dialog = None

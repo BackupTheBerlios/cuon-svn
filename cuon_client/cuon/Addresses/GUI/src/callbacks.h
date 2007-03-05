@@ -505,3 +505,15 @@ on_bSendPartnerEmail_clicked           (GtkButton       *button,
 void
 on_bPartnerViewHomepage_clicked        (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_newsletter1_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_newsletter_email_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_newsletter_print_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

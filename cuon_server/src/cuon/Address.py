@@ -3,7 +3,6 @@ from datetime import datetime
 import random
 import xmlrpclib
 from twisted.web import xmlrpc
- 
 from basics import basics
 import Database
 
@@ -329,5 +328,12 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql = sSql + ' order by address.lastname, address.lastname2, address.firstname, address.city, partner.lastname, partner.lastname2, partner.firstname, partner.city'
         print sSql
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+    def xmlrpc_sendEmail2Address(self, dicEmail, liAttach, dicUser):
+        print 'read Email-config'
         
+    def xmlrpc_sendNewsletterEmail(self, NewsletterShortcuts, email_text=None, acttachment=None):
+        print NewsletterShortcuts
+        liNLS = NewsletterShortcuts.split(',')
+        for nls in liNLS:
+            sSql = 'select id from address'
         

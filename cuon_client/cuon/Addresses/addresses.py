@@ -51,7 +51,7 @@ import cuon.Staff.staff
 import cuon.Staff.SingleStaff
 import contact
 import cuon.E_Mail.sendEmail
-
+import cuon.Misc.cuon_dialog
 
 class addresswindow(chooseWindows):
 
@@ -284,40 +284,21 @@ class addresswindow(chooseWindows):
         #print 'time 21 = ', time.localtime()
         
         
+    
     #Menu File
               
     def on_quit1_activate(self, event):
         self.out( "exit addresses v2")
         self.closeWindow() 
-    
-    def fillComboboxForms(self, sName, liCBE):
-        widget = self.getWidget(sName)
         
-        if widget:
-            print sName
-       
-        print liCBE
-        #for value in liCBE:
-            
-        #    cbeNotesMisc.append_text(value)
-        #cbeNotesMisc.set_text_column(liCBE)
-        #treestore = cbeNotesMisc.get_model()
-        #treestore = gtk.TreeStore(str)
-        if liCBE and liCBE != 'NONE':
-            for sColumn in liCBE:
-                print sColumn
-                widget.append_text(sColumn)
-                #treestore.set(iter,i, sColumn )
-            
-            
-            model = widget.get_model()
-            print model
-            print `model`
-            
-            widget.show()
-            widget.set_active(0)
-            #cbeNotesMisc.set_sensitive(True)
         
+    def on_newsletter_email_activate(self, event):
+        cd = cuon.Misc.cuon_dialog.cuon_dialog()
+        ok, res = cd.inputLine( _('Email Newsletter'), _('insert label(s) for newsletter'))
+        print ok, res
+        if ok and res:
+            ok = self.rpc.callRP('sendNewsletterEmail', res, email_text=None, acttachment=None)
+            
         
 
     #Menu Address
@@ -911,11 +892,21 @@ class addresswindow(chooseWindows):
     
     # send E-mail 
     def on_bSendMail_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
+        dicV = {}
+        dicV['From'] = self.dicUser['Email']['From']
+        dicV['To'] = self.singleAddress.getEmail()
+        print dicV
+        em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
     def on_bSendPartnerEmail_clicked(self, event):
-        em = cuon.E_Mail.sendEmail.sendEmail()
+            
+        dicV = {}
+        dicV['From'] = self.dicUser['Email']['From']
+        dicV['To'] = self.singlePartner.getEmail()
+        print dicV
+        em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
+    
     def addForm2Note(self, sInput, sOutput):
         
         s = self.getActiveText(self.getWidget(sInput))
@@ -960,7 +951,36 @@ class addresswindow(chooseWindows):
             self.on_PartnerSave1_activate(None)
         elif self.doEdit == self.tabSchedul:
             self.on_SchedulSave_activate(None)
-     
+    
+    def fillComboboxForms(self, sName, liCBE):
+        widget = self.getWidget(sName)
+        
+        if widget:
+            print sName
+       
+        print liCBE
+        #for value in liCBE:
+            
+        #    cbeNotesMisc.append_text(value)
+        #cbeNotesMisc.set_text_column(liCBE)
+        #treestore = cbeNotesMisc.get_model()
+        #treestore = gtk.TreeStore(str)
+        if liCBE and liCBE != 'NONE':
+            for sColumn in liCBE:
+                print sColumn
+                widget.append_text(sColumn)
+                #treestore.set(iter,i, sColumn )
+            
+            
+            model = widget.get_model()
+            print model
+            print `model`
+            
+            widget.show()
+            widget.set_active(0)
+            #cbeNotesMisc.set_sensitive(True)
+            
+            
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()

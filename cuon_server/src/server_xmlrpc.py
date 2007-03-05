@@ -23,6 +23,8 @@ import cuon.Misc
 import cuon.Garden
 import cuon.Report
 import cuon.WebShop
+import cuon.Email
+
 
 openssl = False
 try:
@@ -85,6 +87,7 @@ oMisc = cuon.Misc.Misc()
 oGarden = cuon.Garden.Garden()
 oReport = cuon.Report.Report()
 oWebShop = cuon.WebShop.WebShop()
+oEmail = cuon.Email.cuonemail()
 
 
 r.putSubHandler('Web', oWeb)
@@ -100,6 +103,8 @@ r.putSubHandler('Misc', oMisc)
 r.putSubHandler('Garden', oGarden)
 r.putSubHandler('Report', oReport)
 r.putSubHandler('WebShop', oWebShop)
+r.putSubHandler('Email', oEmail)
+
 
 reactor.listenTCP(baseSettings.XMLRPC_PORT, server.Site(r))
 if openssl:

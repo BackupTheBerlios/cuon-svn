@@ -14,81 +14,187 @@
 
 
 # Import smtplib for the actual sending function
-import smtplib, sys
- 
-# Here are the email pacakge modules we'll need
-from email.MIMEImage import MIMEImage
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEText import MIMEText
+#import smtplib, sys
+import xmlrpclib
+from twisted.web import xmlrpc
+### Here are the email pacakge modules we'll need
+##from email.MIMEImage import MIMEImage
+##from email.MIMEMultipart import MIMEMultipart
+##from email.MIMEText import MIMEText
 from basics import basics
+from Email2 import Email 
 
 
-class Email(basics):
+class cuonemail(xmlrpc.XMLRPC, basics):
 
     def __init__(self):
         
+        
         basics.__init__(self)
-        COMMASPACE = ', '
- 
-        # Create the container (outer) email message.
-        self.msg = MIMEMultipart()
-        self.msg.preamble = ''
         
-        # Guarantees the message ends in a newline
-        self.msg.epilogue = ''
-
-        self.mFiles = []
-
-    def setSubject(self, s):
-        self.msg['Subject'] = s
-
-    def setFrom(self,s):
-        self.msg['From'] = s
         
+    def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
+        ok = True
+        cuonmail = Email(smtp_server = "localhost")
 
-    def setTo(self,s):
-        self.msg['To'] = s
-        
- 
-    def addAttachments(self, *maFiles):
-        for j in range(0, len(mFiles)):
-            self.mFiles.append( maFiles[j])
-
-    def setBody(self,body=None ):
-         if body:
-            pass
-                                                                                
-    def sendTheEmail(self, dicValues):
- 
-        if dicValues:
-            try:
-                if dicValues.has_key('Username'):
-                    self.EMAILUSER = dicValues['Username']
-                if dicValues.has_key('Password'):
-                    self.EMAILPASSWORD = dicValues['Password']
-                if dicValues.has_key('To'):
-                    self.setTo(dicValues['To'])
-            except:
-                pass
-                    
-        # Assume we know that the txt files are all in ascii format
-        for file in self.mFiles:
-            # Open the files in binary mode.  Let the MIMEText class automatically
-            # guess the specific image type.
-            fp = open(file, 'rb')
-            txt = MIMEText(fp.read())
-            fp.close()
-            self.msg.attach(txt)
-       
-            # Send the email via our own SMTP server.
         try:
-            server = smtplib.SMTP(self.EMAILSERVER)
-            server.login(self.EMAILUSER, self.EMAILPASSWORD)
-            server.sendmail(self.msg['From'], self.msg['To'], self.msg.as_string())
-            server.quit()
-        except Exception, param:
-            print Exception
-            print param
+                
+            if dicValues.has_key('Username'):
+                self.EMAILUSER = dicValues['Username']
+            if dicValues.has_key('Password'):
+                self.EMAILPASSWORD = dicValues['Password']
             
+            if dicValues.has_key('From'):
+                cuonmail.from_address = dicValues['From']
+             
+            if dicValues.has_key('To'):
+                cuonmail.recipients.add(dicValues['To']) 
+                
+               
+            if dicValues.has_key('Subject'):
+                cuonmail.subject = dicValues['Subject']
+                
+            if dicValues.has_key('Body'):
+                cuonmail.message = dicValues['Body']
+                
+            cuonmail.smtp_server = self.EMAILSERVER
+            cuonmail.smtp_user = self.EMAILUSER
+            cuonmail.smtp_password = self.EMAILPASSWORD
             
+        except Exception, params:
+            print 'Error in Email'
+            print Exception, params
+
+        s = cuonmail.send()
+        print 'return Value form Email2 ', s
+        print 'Status = ', cuonmail.statusdict
+        if s:
+            ok = s
+        return ok
         
+        
+##        Email(
+##557 	        from_address = "server@gp-server.gp",
+##558 	        smtp_server = "gp-server.gp",
+##559 	        to_address = "gerold@gp-server.gp",
+##560 	        subject = "Einfaches Beispiel (öäüß)",
+##561 	        message = "Das ist der Nachrichtentext mit Umlauten (öäüß)"
+##562 	    ).send()
+
+
+        
+##        COMMASPACE = ', '
+## 
+##        # Create the container (outer) email message.
+##        self.msg = MIMEMultipart('related')
+##        
+##        # Guarantees the message ends in a newline
+##        self.msg.epilogue = ''
+##
+##        self.mFiles = []
+##        
+##        
+##
+##    def setSubject(self, s):
+##        if s:
+##            self.msg['Subject'] = s
+##        else:
+##            self.msg['Subject'] = 'No Subject'
+##            
+##
+##    def setFrom(self,s):
+##        self.msg['From'] = s
+##        
+##
+##    def setTo(self,s):
+##        self.msg['To'] = s
+##        
+## 
+##    def addAttachments(self, *maFiles):
+##        for j in range(0, len(maFiles)):
+##            self.mFiles.append( maFiles[j])
+##
+##    def setBody(self,body=None ):
+##        if body:
+##            self.msg.preamble =  body 
+##        else:
+##            self.msg.preamble = 'No Text' 
+##            
+##            
+##                                                                                
+##    def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
+##        ok = False
+##        
+##        if dicValues:
+##            
+##            try:
+##                if dicValues.has_key('Username'):
+##                    self.EMAILUSER = dicValues['Username']
+##                if dicValues.has_key('Password'):
+##                    self.EMAILPASSWORD = dicValues['Password']
+##                if dicValues.has_key('To'):
+##                    self.setTo(dicValues['To'])
+####                if dicValues.has_key('From'):
+####                    self.setFrom(dicValues['From'])
+##                if dicValues.has_key('Subject'):
+##                    self.setSubject(dicValues['Subject'])
+##                if dicValues.has_key('Body'):
+##                    self.setBody(dicValues['Body'])
+##            except:
+##                pass
+##                    
+##        # Assume we know that the txt files are all in ascii format
+##        if liAttachments:
+##            for file in self.mFiles:
+##                # Open the files in binary mode.  Let the MIMEText class automatically
+##                # guess the specific image type.
+##                fp = open(file, 'rb')
+##                txt = MIMEText(fp.read())
+##                fp.close()
+##                self.msg.attach(txt)
+##                 # Send the email via our own SMTP server.
+##            try:
+##                
+##                print ' start send email'
+##                server = smtplib.SMTP(self.EMAILSERVER)
+##                #print 'Email-Server = ', server
+##                #print self.EMAILUSER, self.EMAILPASSWORD
+##                
+##                server.login(self.EMAILUSER, self.EMAILPASSWORD)
+##                #print 'login'
+##                #print self.msg.as_string()
+##                
+##                server.sendmail(dicValues['From'], dicValues['To'], 'To: ' + dicValues['To'] + '\nSubject: cuon 7 \n\n ' + dicValues['Body'] + '\n')
+##                print 'send'
+##                server.quit()
+##                ok = True
+##            except Exception, param:
+##                print Exception
+##                print param
+##            
+##        # Normal Email without Attachment    
+##        else:
+##                # Send the email via our own SMTP server.
+##            try:
+##                
+##                print ' start send email'
+##                server = smtplib.SMTP(self.EMAILSERVER)
+##                #print 'Email-Server = ', server
+##                #print self.EMAILUSER, self.EMAILPASSWORD
+##                msgText = MIMEText(dicValues['Body'])
+##                server.login(self.EMAILUSER, self.EMAILPASSWORD)
+##                #print 'login'
+##                #print self.msg.as_string()
+##                print dicValues
+##                s = server.sendmail(dicValues['From'], dicValues['To'], 'To: ' + dicValues['To'] + '\nSubject: ' + dicValues['Subject'] +' \n\n ' + msgText + '\n')
+##                print 'send', s
+##                server.quit()
+##                ok = True
+##            except Exception, param:
+##                print Exception
+##                print param
+##            
+##        return ok
+##            
+##            
+##        

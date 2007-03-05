@@ -66,7 +66,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image766">
+			<widget class="GtkImage" id="image799">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -109,6 +109,49 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator6">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="newsletter2">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Newsletter</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="newsletter2_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="newsletter1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Newsletter Email</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_newsletter_email_activate" last_modification_time="Fri, 02 Mar 2007 16:13:36 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="newsletter_print1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Newsletter Print</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_newsletter_print_activate" last_modification_time="Fri, 02 Mar 2007 16:13:36 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator7">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkImageMenuItem" id="chooseAddress">
 		      <property name="visible">True</property>
 		      <property name="sensitive">False</property>
@@ -117,7 +160,7 @@
 		      <signal name="activate" handler="on_chooseAddress_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image767">
+			<widget class="GtkImage" id="image800">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-yes</property>
 			  <property name="icon_size">1</property>
@@ -151,7 +194,7 @@
 		      <signal name="activate" handler="on_new1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image768">
+			<widget class="GtkImage" id="image801">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -181,7 +224,7 @@
 		      <signal name="activate" handler="on_save1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image769">
+			<widget class="GtkImage" id="image802">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -208,7 +251,7 @@
 		      <signal name="activate" handler="on_print1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image770">
+			<widget class="GtkImage" id="image803">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
@@ -235,7 +278,7 @@
 		      <signal name="activate" handler="on_delete1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image771">
+			<widget class="GtkImage" id="image804">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -321,7 +364,7 @@
 		      <signal name="activate" handler="on_MiscSave1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image772">
+			<widget class="GtkImage" id="image805">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -355,7 +398,7 @@
 		      <signal name="activate" handler="on_PartnerNew1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image773">
+			<widget class="GtkImage" id="image806">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -385,7 +428,7 @@
 		      <signal name="activate" handler="on_PartnerSave1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image774">
+			<widget class="GtkImage" id="image807">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -426,7 +469,7 @@
 		      <signal name="activate" handler="on_PartnerDelete1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image775">
+			<widget class="GtkImage" id="image808">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -494,7 +537,7 @@
 		      <signal name="activate" handler="on_set_ready1_activate" last_modification_time="Wed, 07 Feb 2007 17:10:56 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image776">
+			<widget class="GtkImage" id="image809">
 			  <property name="visible">True</property>
 			  <property name="stock">gnome-stock-timer-stop</property>
 			  <property name="icon_size">1</property>
@@ -529,7 +572,7 @@
 		      <signal name="activate" handler="on_NotesEdit1_activate" last_modification_time="Thu, 28 Dec 2006 17:39:09 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image777">
+			<widget class="GtkImage" id="image810">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-edit</property>
 			  <property name="icon_size">1</property>

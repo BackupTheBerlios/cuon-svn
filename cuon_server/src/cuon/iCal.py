@@ -119,6 +119,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         
     def addEvent(self, sName, firstRecord, dicUser):
         ok = False
+        # calendar of the contakter
         Cal = self.getCalendar(sName)
         print 'Cal', Cal
         dicEvent = self.getDicCal(firstRecord, dicUser)
@@ -132,6 +133,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                 if i['UID'].find(sSearch) < 0:
                     print 'uid not found'
                     Cal2.add_component(i)
+            else:
+                Cal2.add_component(i)
             
         newEvent = self.createEvent(dicEvent)
         print 'newEvent = ' + `newEvent`
@@ -139,7 +142,31 @@ class iCal(xmlrpc.XMLRPC, basics):
             Cal2.add_component(newEvent)
             self.writeCalendar(sName, Cal2)
             ok = True
+        # calendar of the schedul staff
+        if dicEvent.has_key('staff_cuon_username'):
+            
+            Cal = self.getCalendar('iCal_' + dicEvent['staff_cuon_username'])
+            print 'Cal', Cal
+            Cal2 = self.createCal()
+            for i in Cal.walk('VEVENT'):
+                print 'i = ', i
+                if i.has_key('UID'):
+                    print 'uid = ', i['UID']
+                    sSearch = `firstRecord['id']` +'####'
+                    print sSearch
+                    if i['UID'].find(sSearch) < 0:
+                        print 'uid not found'
+                        Cal2.add_component(i)
+                else:
+                    Cal2.add_component(i)
                 
+            newEvent = self.createEvent(dicEvent)
+            print 'newEvent = ' + `newEvent`
+            if newEvent:
+                Cal2.add_component(newEvent)
+                self.writeCalendar('iCal_' + dicEvent['staff_cuon_username'], Cal2)
+                ok = True
+                            
         return ok
     
     def getDicCal(self, firstRecord, dicUser):
@@ -147,7 +174,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         self.writeLog('Start getDicCal')
         self.writeLog('getDicCal firstRecord = ' + `firstRecord`)
         try:
-            sSql = " select partner_schedul.id as sch_id, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
+            sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
             sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id"
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         except Exception, params:
@@ -185,7 +212,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             print param
             
         try:
-            dicCal['summary'] = result[0]['st_lastname'] + ', ' +result[0]['st_firstname'] + ' ' + `result[0]['adr_id']` + ' ' + firstRecord['short_remark']
+            dicCal['summary'] = result[0]['st_lastname'] + ', ' +result[0]['st_firstname'] + ' ' + `result[0]['adr_id']` + ' ' + firstRecord['short_remark'].encode('utf-8')
             dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
             print 'Except error getDicCal 3'
@@ -202,9 +229,16 @@ class iCal(xmlrpc.XMLRPC, basics):
                 dicCal['location'] = dicCal['location'].decode('utf-8')
                 
         except Exception, params:
+            print 'Error by location'
             print Exception, params
         self.writeLog('dicCal = ' + `dicCal`)
-        
+            
+        try:
+            dicCal['staff_cuon_username'] = result[0]['staff_cuon_username'] 
+        except Exception, param:
+            print 'Except error getDicCal 4'
+            print Exception
+            print param
         return dicCal     
     
     def createCal(self):

@@ -46,10 +46,38 @@ static GnomeUIInfo mi_datei1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo newsletter2_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Newsletter Email"),
+    NULL,
+    (gpointer) on_newsletter_email_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Newsletter Print"),
+    NULL,
+    (gpointer) on_newsletter_print_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo mi_edit_menu_uiinfo[] =
 {
   GNOMEUIINFO_MENU_UNDO_ITEM (on_undo1_activate, NULL),
   GNOMEUIINFO_MENU_FIND_ITEM (on_find1_activate, NULL),
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_SUBTREE, N_("Newsletter"),
+    NULL,
+    newsletter2_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
   {
     GNOME_APP_UI_ITEM, N_("choose"),
     NULL,
@@ -636,7 +664,7 @@ create_AddressMainwindow (void)
   gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
                        accel_group, FALSE, 0);
 
-  gtk_widget_set_sensitive (mi_edit_menu_uiinfo[2].widget, FALSE);
+  gtk_widget_set_sensitive (mi_edit_menu_uiinfo[5].widget, FALSE);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -2606,7 +2634,12 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[1].widget, "mi_edit");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[0].widget, "undo1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[1].widget, "find1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[2].widget, "chooseAddress");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[2].widget, "separator6");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[3].widget, "newsletter2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, newsletter2_menu_uiinfo[0].widget, "newsletter1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, newsletter2_menu_uiinfo[1].widget, "newsletter_print1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[4].widget, "separator7");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[5].widget, "chooseAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[2].widget, "mi_address1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[0].widget, "mi_new1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[1].widget, "mi_edit1");

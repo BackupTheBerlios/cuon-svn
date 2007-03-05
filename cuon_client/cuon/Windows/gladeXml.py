@@ -74,6 +74,11 @@ class gladeXml(defaultValues):
         buffer.set_text(text)
         widget.set_buffer(buffer)
         
+    def readTextBuffer(self, widget):
+        bText = ''
+        buffer = widget.get_buffer()
+        bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+        return bText
         
     def getActiveText(self, combobox):
         model = combobox.get_model()
