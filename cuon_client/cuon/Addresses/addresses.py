@@ -293,12 +293,19 @@ class addresswindow(chooseWindows):
         
         
     def on_newsletter_email_activate(self, event):
-        cd = cuon.Misc.cuon_dialog.cuon_dialog()
-        ok, res = cd.inputLine( _('Email Newsletter'), _('insert label(s) for newsletter'))
-        print ok, res
-        if ok and res:
-            ok = self.rpc.callRP('sendNewsletterEmail', res, email_text=None, acttachment=None)
-            
+        dicV = {}
+        dicV['From'] = self.dicUser['Email']['From']
+        dicV['To'] = 'Newsletter: '
+        print dicV
+        em = cuon.E_Mail.sendEmail.sendEmail(dicV)
+        
+        
+##        cd = cuon.Misc.cuon_dialog.cuon_dialog()
+##        ok, res = cd.inputLine( _('Email Newsletter'), _('insert label(s) for newsletter'))
+##        print ok, res
+##        if ok and res:
+##            ok = self.rpc.callRP('sendNewsletterEmail', res, email_text=None, acttachment=None)
+##            
         
 
     #Menu Address

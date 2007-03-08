@@ -124,8 +124,9 @@ class Address(xmlrpc.XMLRPC, basics):
                     nD3 = nD1 -nD2
                     print nD3
                     print '---------------------------------------------------'
-                    print 'Differenz', nD3.days
-                    print 'Differenz', nD3.seconds
+                    print 'Name = ', dicResult['address_lastname']
+                    print 'Differenz Tage', nD3.days
+                    print 'Differenz Sekunden', nD3.seconds
                     print 'DB-alarm','Differenz', 'Datum', 'Current'
                    
                     print dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60, nD3.seconds, nD1, nD2 
@@ -146,8 +147,9 @@ class Address(xmlrpc.XMLRPC, basics):
                         elif warningDays == 0 :
                             AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
                             print 'AlarmSeconds = ', AlarmSeconds
-                            print 'Differenz', nD3.seconds
-                            if nD2.seconds + AlarmSeconds > nD1.seconds :
+                            print 'nD3-seconds', nD3.seconds
+                            print 'Differenz' , nD3.seconds - AlarmSeconds
+                            if nD3.seconds - AlarmSeconds < 0 :
                                ok = True
                     if  ok:
                         print 'copy entry to  list'
@@ -331,9 +333,5 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_sendEmail2Address(self, dicEmail, liAttach, dicUser):
         print 'read Email-config'
         
-    def xmlrpc_sendNewsletterEmail(self, NewsletterShortcuts, email_text=None, acttachment=None):
-        print NewsletterShortcuts
-        liNLS = NewsletterShortcuts.split(',')
-        for nls in liNLS:
-            sSql = 'select id from address'
+    
         

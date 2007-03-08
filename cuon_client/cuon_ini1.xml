@@ -134,6 +134,12 @@
       <Entry-File>preferences.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_preferences.xml</Entry-FileValue>
     </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>preferences_email.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_preferencesEmail.xml</Entry-FileValue>
+    </Entries>
+
  <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>preferences_printing.xml</Entry-File>

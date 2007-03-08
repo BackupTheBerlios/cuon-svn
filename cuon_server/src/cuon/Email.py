@@ -23,7 +23,7 @@ from twisted.web import xmlrpc
 ##from email.MIMEText import MIMEText
 from basics import basics
 from Email2 import Email 
-
+import Database
 
 class cuonemail(xmlrpc.XMLRPC, basics):
 
@@ -31,18 +31,58 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         
         
         basics.__init__(self)
+        self.oDatabase = Database.Database()
         
         
     def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
         ok = True
+        
+        if dicValues.has_key('To'):
+            if dicValues['To'][0:11] == 'Newsletter:':
+                cNL = dicValues['To'][12 :]
+                print cNL
+                liNL = cNL.split(',')
+                for oneNL in liNL:
+                    oneNL = oneNL.strip()
+                    if oneNL:
+                        result = self.getNewsletterEmail(oneNL,dicUser)
+                        print 'result = ', result 
+                        for sm in result:
+                            if sm['email']:
+                                dicValues['To'] = sm['email']
+                                self.sendEmail(dicValues, liAttachments,dicUser)
+                                
+                        
+                        
+            else:
+                self.sendEmail(dicValues, liAttachments,dicUser)
+            
+        return ok
+                
+    def sendEmail(self, dicValues, liAttachments,dicUser ):
         cuonmail = Email(smtp_server = "localhost")
-
+        ok = False
         try:
                 
-            if dicValues.has_key('Username'):
-                self.EMAILUSER = dicValues['Username']
-            if dicValues.has_key('Password'):
-                self.EMAILPASSWORD = dicValues['Password']
+            if dicUser.has_key('Email'):
+                dicEmail = dicUser['Email']
+##                self.Email['From']='MyAddress@mail_anywhere.com'
+##                self.Email['Host']='mail_anywhere.com'
+##                self.Email['Port']='25'
+##                self.Email['LoginUser']='login'
+##                self.Email['Password']='secret'
+##                self.Email['Signatur']='NONE'
+
+                
+                if dicEmail['LoginUser'] != 'login':
+                    self.EMAILUSER = dicEmail['LoginUser']
+                    
+                if dicEmail['Password'] != 'secret':
+                    self.EMAILPASSWORD = dicEmail['Password']
+                    
+                if dicEmail['Host'] != 'mail_anywhere.com':
+                    self.EMAILSERVER = dicEmail['Host']
+                      
             
             if dicValues.has_key('From'):
                 cuonmail.from_address = dicValues['From']
@@ -65,13 +105,36 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             print 'Error in Email'
             print Exception, params
 
-        s = cuonmail.send()
-        print 'return Value form Email2 ', s
-        print 'Status = ', cuonmail.statusdict
-        if s:
-            ok = s
+        try:
+            s = cuonmail.send()
+            print 'return Value form Email2 ', s
+            print 'Status = ', cuonmail.statusdict
+            if s:
+                ok = s
+        except Exception, params:
+            print Exception, params
+            
         return ok
         
+    def getNewsletterEmail(self, NewsletterShortcut, dicUser):
+        print NewsletterShortcut
+        sSql = "select email from address where newsletter ~'.*" + NewsletterShortcut +".*'"
+        sSql += self.getWhere("",dicUser,2)
+        print sSql
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result == 'NONE':
+            result = []
+        print 'result 1 ', result
+        sSql = "select email from partner where newsletter ~'.*" + NewsletterShortcut +".*'"
+        sSql += self.getWhere("",dicUser,2)
+        print sSql
+        result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print 'result2 = ', result2
+        if result2 != 'NONE':
+            for res in result2:
+                result.append(res)
+        print 'result3', result
+        return result
         
 ##        Email(
 ##557 	        from_address = "server@gp-server.gp",

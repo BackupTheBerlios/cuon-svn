@@ -59,7 +59,7 @@ class setup:
         ##        self.sPrefix = 'root@192.168.17.2:/'
         ##        self.sshPort = '3222' 
         
-        self.src_ini="./cuon_ini1.xml"
+        self.src_ini = "./cuon_ini1.xml"
         
         self.destClient = './Client'
         self.src_main = "./cuon/*.py cuon.sh Cuon.py"
@@ -191,6 +191,7 @@ class setup:
         self.testDir(self.ClientDirUsrShareCuon)
         
         self.copyLocalValues(self.src_xmlDefaults, self.ClientDirUsrShareCuon)
+        self.copyLocalValues(self.src_ini, self.ClientDirUsrShareCuon)
         self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )

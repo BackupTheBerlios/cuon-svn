@@ -511,7 +511,66 @@
       <default></default>
       <comment></comment>
     </field>
-
+<field>
+      <name>email_user_address</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_host</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_port</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_loginname</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_password</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_signatur</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>6000</size>
+      <default></default>
+      <comment></comment>
+    </field>
   </table>
   
 </database>

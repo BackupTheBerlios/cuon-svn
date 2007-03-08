@@ -9,7 +9,8 @@
 * License:      LGPL: http://www.opensource.org/licenses/lgpl-license.php
 * Requirements: Python 2.3:  http://www.python.org
 *
-* geändert 2007 von Juergen Hamel, siehe Hinweise in der Datei
+* Änderungen 2007 von Juergen Hamel, siehe Hinweise in der Datei
+*
 * Einfaches Beispiel:
 *
 *   from simplemail import Email

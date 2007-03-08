@@ -121,7 +121,13 @@ class User(defaultValues):
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
         self.Email = {}
-        self.Email['From']='jhamel@cyrus-computer.net'
+        self.Email['From']='MyAddress@mail_anywhere.com'
+        self.Email['Host']='mail_anywhere.com'
+        self.Email['Port']='25'
+        self.Email['LoginUser']='login'
+        self.Email['Password']='secret'
+        self.Email['Signatur']='NONE'
+
 
         
         
@@ -343,7 +349,24 @@ class User(defaultValues):
             
             self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
             print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
-            print "prefApps['PDF'] 1= ",  prefApps['PDF']
+            print "prefApps['PDF'] 1= ",  self.prefApps['PDF']
+            
+##            self.Email['From']='MyAddress@mail_anywhere.com'
+##        self.Email['Host']='mail_anywhere.com'
+##        self.Email['Port']='25'
+##        self.Email['LoginUser']='login'
+##        self.Email['Password']='secret'
+##        self.Email['Signatur']='NONE'
+
+
+            self.Email['From'] = result['email_user_address']
+            self.Email['Host'] = result['email_user_host']
+            self.Email['Port'] = result['email_user_port']
+            self.Email['LoginUser'] = result['email_user_loginname']
+            self.Email['Password'] = result['email_user_password']
+            self.Email['Signatur'] = result['email_user_signatur']
+
+            
         except Exception, param:
             print Exception
             print param

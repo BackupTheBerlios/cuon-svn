@@ -56,18 +56,21 @@ class preferenceswindow(windows):
 
         self.EntriesPreferences = 'preferences.xml'
         self.EntriesPreferencesPrinting = 'preferences_printing.xml'
-        self.EntriesPreferencesPathToReports = 'preferences_path_to_reports.xml'
-        self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
+        #self.EntriesPreferencesPathToReports = 'preferences_path_to_reports.xml'
+        #self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
         self.EntriesPreferencesScanner = 'preferences_scanner.xml'
         self.EntriesPreferencesDMS = 'preferences_dms.xml'
+        self.EntriesPreferencesEmail = 'preferences_email.xml'
 
         print 'load entries'
         self.loadEntries(self.EntriesPreferences)
         self.loadEntries(self.EntriesPreferencesPrinting)
-        self.loadEntries(self.EntriesPreferencesPathToReports)
-        self.loadEntries(self.EntriesPreferencesPathToDocs)
+        #self.loadEntries(self.EntriesPreferencesPathToReports)
+        #self.loadEntries(self.EntriesPreferencesPathToDocs)
         self.loadEntries(self.EntriesPreferencesScanner)
         self.loadEntries(self.EntriesPreferencesDMS)
+        self.loadEntries(self.EntriesPreferencesEmail)
+        
         print 'set databases'
         
         self.singlePreferences.sWhere = " where username = \'" + self.oUser.getUserName() + "\'"
@@ -100,7 +103,7 @@ class preferenceswindow(windows):
         self.tabProfile = 0
         self.tabPrinting = 1
         self.tabPathToReports = 2
-        self.tabPathToDocs = 3
+        self.tabEmail = 3
         self.tabScanner = 4
         self.tabDMS = 5
         
@@ -135,8 +138,8 @@ class preferenceswindow(windows):
             self.setEntriesEditable(self.EntriesPreferencesPrinting, True)
         elif self.tabOption == self.tabPathToReports:
             self.setEntriesEditable(self.EntriesPreferencesPathToReports, True)
-        elif self.tabOption == self.tabPathToDocs:
-            self.setEntriesEditable(self.EntriesPreferencesPathToDocs, True)
+        elif self.tabOption == self.tabEmail:
+            self.setEntriesEditable(self.EntriesPreferencesEmail, True)
         elif self.tabOption == self.tabScanner:
             self.setEntriesEditable(self.EntriesPreferencesScanner, True)
         elif self.tabOption == self.tabDMS:
@@ -196,14 +199,14 @@ class preferenceswindow(windows):
         elif self.tabOption == self.tabPathToReports:
             self.editAction = 'editProfile'
             self.setTreeVisible(False)
-            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToReports) )
+            #self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToReports) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 
-        elif self.tabOption == self.tabPathToDocs:
+        elif self.tabOption == self.tabEmail:
             self.editAction = 'editProfile'
             self.setTreeVisible(False)
-            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToDocs) )
+            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesEmail) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 
