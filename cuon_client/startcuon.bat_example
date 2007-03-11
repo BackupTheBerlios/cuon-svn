@@ -6,9 +6,9 @@ echo  file does not exist
 goto end
 :filefound
 cd ..
-c:\python24\python untar.python
+c:\python24\python untar.py
 cd bin
 del newversion
 
 :end
-c:\python24\python  Cuon.py NO client NO ../locale
+c:\python24\python  Cuon.py HTTP://SERVER:7080 client NO ../locale /home/users/cuon

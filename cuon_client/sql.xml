@@ -478,6 +478,7 @@
       <description>if delete a PARTNER_SCHEDUL, set status to delete  </description>
       
     </trigger>
+    
    <trigger>
       <nameOfTrigger>trg_updatePARTNER_SCHEDUL</nameOfTrigger>
       <table>PARTNER_SCHEDUL</table>

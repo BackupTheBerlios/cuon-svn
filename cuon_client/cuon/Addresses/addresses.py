@@ -684,6 +684,11 @@ class addresswindow(chooseWindows):
 ## 
 ##              
 
+    def on_set_ready1_activate(self, event):
+        self.activateClick('SchedulEdit1')
+        sp = self.getWidget('eSchedulProcess')
+        sp.set_text('999')
+        self.activateClick('schedulSave')
         
     # search button
     def on_bSearch_clicked(self, event):
@@ -736,6 +741,7 @@ class addresswindow(chooseWindows):
         self.singleAddress.sWhere = self.getWhere(liSearch) 
         
         self.out('Address sWhere = ' + `self.singleAddress.sWhere`)
+        self.oldTab = -1
         self.refreshTree()
 
         
@@ -995,7 +1001,10 @@ class addresswindow(chooseWindows):
         
         if self.tabOption == self.tabAddress:
             self.singleAddress.connectTree()
-            self.singleAddress.refreshTree()
+            if self.oldTab < 1:
+                self.singleAddress.refreshTree()
+            else:
+                self.singleAddress.refreshTree(False)
             
         elif self.tabOption == self.tabMisc:
             self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
@@ -1032,10 +1041,11 @@ class addresswindow(chooseWindows):
                 
                 self.InitForms = False
                 
-         
+        self.oldTab = self.tabOption
+        
+ 
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
-        
         if self.tabOption == self.tabAddress:
             #Address
             self.disableMenuItem('tabs')
@@ -1074,6 +1084,7 @@ class addresswindow(chooseWindows):
 
 
         elif self.tabOption == self.tabPartner:
+            
             #Partner
             self.disableMenuItem('tabs')
             self.enableMenuItem('partner')
@@ -1104,6 +1115,7 @@ class addresswindow(chooseWindows):
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
+        
         # refresh the Tree
         self.refreshTree()
 

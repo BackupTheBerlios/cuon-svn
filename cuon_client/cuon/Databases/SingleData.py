@@ -76,6 +76,7 @@ class SingleData(gladeXml, logs):
         self.firstRecord = None
         self.p1 = re.compile('\(select .*\) as')
         self.iter = None
+        self.liItems = None
 
     def load(self, record, dicDetail = None):
         '''
@@ -285,10 +286,30 @@ class SingleData(gladeXml, logs):
     def connectTree(self):
         self.connectTreeId = self.tree1.get_selection().connect("changed", self.tree_select_callback)
         
-    def refreshTree(self):
-        self.setEmptyEntries()
+    def refreshTree(self, Full=True):
+        if Full:
+            self.setEmptyEntries()
+            try:
+                assert self.tree1
+                self.fillTree(self.tree1, self.getListEntries() )
+                self.treeSelectRow()
+                
+                    
+            except:
+                self.printOut( 'no Tree exist')
+        else:
+            try:
+                assert self.tree1
+                self.fillTree(self.tree1, self.liItems )
+                self.treeSelectRow()
+                
+                    
+            except:
+                self.printOut( 'no Tree exist') 
+                
+    def refreshTreeWithoutNewItems(self):
         try:
-            assert self.tree1
+            
             self.fillTree(self.tree1, self.getListEntries() )
             self.treeSelectRow()
         except:
@@ -359,9 +380,11 @@ class SingleData(gladeXml, logs):
     def setStore(self, store01):
         self.store = store01 
 
-    def fillTree(self, tree1, listEntries):
+    def fillTree(self, tree1=None, listEntries=None):
+        
         model = self.getTreeModel(listEntries)
         model.setColumns(tree1, self.listHeader)
+       
         #iter = model.get_iter_first()
         #selection = tree1.get_selection()
         #selection.set_selection(iter)
@@ -889,7 +912,7 @@ class SingleData(gladeXml, logs):
         # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
         self.printOut( 'liItems ---', `liItems`)
         print  'liItems ---', `liItems`
-        
+        self.liItems = liItems
         return liItems
     
 

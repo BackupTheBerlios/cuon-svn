@@ -89,6 +89,7 @@ class windows(rawWindow, MyXML, messages):
         self.doEdit = -1
         self.noEdit = -1
         
+        self.oldTab = -1
         
         self.sWhereStandard = ''
         self.sWhereSearch = None
