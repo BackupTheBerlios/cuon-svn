@@ -571,6 +571,48 @@
       <default></default>
       <comment></comment>
     </field>
+    <field>
+      <name>color_bg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>color_fg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default></default>
+      <comment></comment>
+   
+     </field>
+    <field>
+      <name>color_duty_bg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>color_duty_fg</name>
+      <name>color_duty_fg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>40</size>
+      <default></default>
+      <comment></comment>
+    </field>
   </table>
   
 </database>

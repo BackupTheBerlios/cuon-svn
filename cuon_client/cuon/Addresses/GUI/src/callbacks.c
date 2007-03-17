@@ -1033,3 +1033,59 @@ on_newsletter_print_activate           (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_undo1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_find1_activate                      (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bank_new1_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bank_edit1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_partner_print1_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_SchedulSave_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_NotesSave_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

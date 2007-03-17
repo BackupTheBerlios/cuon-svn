@@ -6,6 +6,7 @@ from twisted.web import xmlrpc
 from basics import basics
 import Database
 
+
 class Address(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
@@ -41,44 +42,69 @@ class Address(xmlrpc.XMLRPC, basics):
         self.xmlrpc_getAllActiveSchedul(dicUser)
         
     def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All'):
+        value = None
+        result = 'NONE'
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('SHOW_SCHEDUL',dicUser['Name'], cpServer)
+            
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+        print dicUser['Name']    
+        print 'value = ', value
         
+            
+        if value and value == 'NO':
+            pass
+        elif value and value == 'ALL':
                 
-        sSql = "select partner_schedul.schedul_date as date, "
-        sSql += "partner_schedul.id as id,  "
-        sSql +=  "partner_schedul.schedul_time_begin as time_begin,address.zip as a_zip, "
-        sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
-        sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
+                
+            sSql = "select partner_schedul.schedul_date as date, "
+            sSql += "partner_schedul.id as id,  "
+            sSql +=  "partner_schedul.schedul_time_begin as time_begin,address.zip as a_zip, "
+            sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
+            sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
+        
+            #
+            sSql += " case  schedul_staff_id "
+            sSql += " when 0 then  'NONE' else ( select staff.lastname || ', ' || staff.firstname from staff where staff.id = schedul_staff_id) END as schedul_name,  "
+            
     
-        #
-        sSql += " case  schedul_staff_id "
-        sSql += " when 0 then  'NONE' else ( select staff.lastname || ', ' || staff.firstname from staff where staff.id = schedul_staff_id) END as schedul_name,  "
+            #sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
+            #sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
+            sSql +=  "address.lastname2 as a_lastname2, partner.firstname as p_firstname "
+            # from 
+            sSql += " from partner, address, partner_schedul "
+            
+            # where
+            if SelectStaff == 'All':
+                sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
+                sW = sW + " process_status != 999 "
+                sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+                
+            else:
+                sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
+                sW +=  " process_status != 999 "
+                sW += " and schedul_staff_id = " + SelectStaff + " "
+                sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+                
+                
+            if OrderType == 'Name' :
+                sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin desc " 
+            elif OrderType == 'Schedul' :
+                sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') desc , schedul_name,  partner_schedul.schedul_time_begin desc" 
+                
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        elif value == None:
+            pass
+            
+        return result
         
-
-        #sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
-        #sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
-        sSql +=  "address.lastname2 as a_lastname2, partner.firstname as p_firstname "
-        # from 
-        sSql += " from partner, address, partner_schedul "
-        
-        # where
-        if SelectStaff == 'All':
-            sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
-            sW = sW + " process_status != 999 "
-            sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
-            
-        else:
-            sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
-            sW +=  " process_status != 999 "
-            sW += " and schedul_staff_id = " + SelectStaff + " "
-            sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
-            
-            
-        if OrderType == 'Name' :
-            sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin desc " 
-        elif OrderType == 'Schedul' :
-            sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') desc , schedul_name,  partner_schedul.schedul_time_begin desc" 
-            
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
     def xmlrpc_getAllActiveContacts(self, dicUser):
         #caller_id = self.getConfigOption('caller_id',dicUser['name'],self.getParser(self.CUON_FS +'/user.cfg'))
@@ -103,33 +129,33 @@ class Address(xmlrpc.XMLRPC, basics):
         if liResult != 'NONE':
             for dicResult in liResult:
                 try:
-                    print 'Len1 = ', len(liResult)
+                    #print 'Len1 = ', len(liResult)
                     Hour, Minute = self.getTime(dicResult['time'])
                     
                     sDate = dicResult['date'] + ' ' + `Hour` + ':' + `Minute` +':00'
-                    print 'Date =',  sDate
+                    #print 'Date =',  sDate
                     if sDate.find('.') > 0:
                         sFormat = '%d.%m.%Y %H:%M:%S'
                     else:
                         sFormat = '%Y/%m/%d %H:%M:%S'
                     wakeDate = time.strptime(sDate,sFormat)
-                    print wakeDate
+                    #print wakeDate
 
                     nD1 = datetime(wakeDate[0], wakeDate[1],wakeDate[2],wakeDate[3],wakeDate[4], wakeDate[5])
-                    print 'nD1', nD1
+                    #print 'nD1', nD1
                     currentDate = time.localtime()
-                    print currentDate
+                    #print currentDate
                     nD2 = datetime(currentDate[0], currentDate[1],currentDate[2],currentDate[3],currentDate[4], currentDate[5])
-                    print nD2
+                    #print nD2
                     nD3 = nD1 -nD2
-                    print nD3
-                    print '---------------------------------------------------'
-                    print 'Name = ', dicResult['address_lastname']
-                    print 'Differenz Tage', nD3.days
-                    print 'Differenz Sekunden', nD3.seconds
-                    print 'DB-alarm','Differenz', 'Datum', 'Current'
+                    #print nD3
+                    #print '---------------------------------------------------'
+                    #print 'Name = ', dicResult['address_lastname']
+                    #print 'Differenz Tage', nD3.days
+                    #print 'Differenz Sekunden', nD3.seconds
+                    #print 'DB-alarm','Differenz', 'Datum', 'Current'
                    
-                    print dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60, nD3.seconds, nD1, nD2 
+                    #print dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60, nD3.seconds, nD1, nD2 
 
                     ok = False
                     
@@ -146,23 +172,24 @@ class Address(xmlrpc.XMLRPC, basics):
                             ok = False
                         elif warningDays == 0 :
                             AlarmSeconds = dicResult['alarm_hours'] * 3600 + dicResult['alarm_minutes'] * 60
-                            print 'AlarmSeconds = ', AlarmSeconds
-                            print 'nD3-seconds', nD3.seconds
-                            print 'Differenz' , nD3.seconds - AlarmSeconds
+                            #print 'AlarmSeconds = ', AlarmSeconds
+                            #print 'nD3-seconds', nD3.seconds
+                            #print 'Differenz' , nD3.seconds - AlarmSeconds
                             if nD3.seconds - AlarmSeconds < 0 :
                                ok = True
                     if  ok:
-                        print 'copy entry to  list'
+                        #print 'copy entry to  list'
                         liResult2.append(dicResult)
-                        print 'Len2 = ', len(liResult2)
+                        #print 'Len2 = ', len(liResult2)
                         
                     
                 except Exception, params:
+                    print 'xmlrpc_getAllActiveContacts'
                     print Exception, params
         
         
-        print liResult2
-        print 'Len3 = ', len(liResult2)
+        #print liResult2
+        #print 'Len3 = ', len(liResult2)
 
         return liResult2
         

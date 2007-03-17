@@ -213,7 +213,9 @@ class basics(xmlrpc.XMLRPC):
         self.liModules.append('GARDEN')
         self.dicLimitTables['ADDRESS'] = {'list':['address', 'partner'], 'limit':self.LIMITADDRESS}
         self.liModules.append('ADDRESS')
-            
+        
+        
+        
             
     
     def getConfigOption(self, section, option, configParser = None):

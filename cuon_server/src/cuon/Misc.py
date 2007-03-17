@@ -7,6 +7,9 @@ from twisted.web import xmlrpc
  
 from basics import basics
 import Database
+import commands
+import bz2
+import base64
 
 class Misc(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -81,7 +84,29 @@ class Misc(xmlrpc.XMLRPC, basics):
         if not liValues:
             liValues = 'NONE'
         return liValues
+    def xmlrpc_faxData(self, dicUser, faxdata, phone_number):
+        print 'send Fax'
+        ol = False
+        filename = fax___ + self.createNewSessionID()['SessionID'] 
+        if filename:
+            faxdata = base64.decodestring(faxdata)
+            faxdata = bz2.decompress(faxdata)
+
+            f = open(filename,'wb')
+            f.write(faxdata)
+            f.close()
+            
+            
         
+            shellcommand = 'sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename
+            liStatus = commands.getstatusoutput(shellcommand)
+            print shellcommand
+            print  liStatus
+            ok = True
+            #shellcommand = 'rm ' + filename
+            #liStatus = commands.getstatusoutput(shellcommand)
+            #print shellcommand, liStatus
+        return ok 
     def xmlrpc_getForm(self, id, dicUser):
         sSql = "select * from dms where id = " + `id` 
         print sSql

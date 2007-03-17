@@ -42,6 +42,7 @@ import binascii
 
 
 
+
 class documentTools:
 
     def __init__(self):
@@ -210,6 +211,8 @@ class documentTools:
             print sFile
             f = file(sFile,'rb')
             b = f.read()
+            #print 'len of b', len(b)
+            
             singleDMS.imageData = bz2.compress(b)
             suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
             for key in  dicUser['prefDMS']['fileformat'].keys():

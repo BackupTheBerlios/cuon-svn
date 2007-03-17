@@ -30,6 +30,8 @@ import SingleDMS
 import dms 
 
 import cuon.Misc.misc
+import cuon.Misc.cuon_dialog
+
 import os
 
 try:
@@ -42,6 +44,8 @@ import bz2
 import re
 import binascii
 import cuon.DMS.documentTools
+import base64
+
 
 class dmswindow(windows):
 
@@ -241,12 +245,25 @@ class dmswindow(windows):
     def on_cancelbutton1_clicked(self, event):
         print 'cancel clicked'
         self.diaLink.hide()
-    
+    def on_bFaxLastDocument_clicked(self, event):
+        if self.singleDMS.tmpFile:
+            cDiag = cuon.Misc.cuon_dialog.cuon_dialog()
+            ok, phone_number = cDiag.inputLine('Fax','Input Phone-Number')
+            print ok 
+            if ok:
+                print self.singleDMS.tmpFile
+                filename = self.singleDMS.tmpFile[:len(self.singleDMS.tmpFile)-3] + 'pdf'
+                print filename
+                singleDMS2 = SingleDMS.SingleDMS(self.allTables)
+                
+                self.oDocumentTools.importDocument( singleDMS2, self.dicUser, filename)
+                #phone_number = '05744 511750'
+                self.rpc.callRP('Misc.faxData',self.dicUser, base64.encodestring(singleDMS2.imageData),phone_number)
     def on_bWriteLastDocument_clicked(self, event):
         if self.dicExtInfo:
             self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
             dm2 = cuon.DMS.dms.dmswindow(self.allTables, self.dicExtInfo['Modul'], self.dicExtInfo['sep_info'],None,self.dicExtInfo)
-            
+    
     def on_bView_clicked(self, event):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat

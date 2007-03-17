@@ -161,6 +161,16 @@ class preferenceswindow(windows):
             listItem_a = gtk.ListItem(devs[0])
             cb.list.append_items([listItem_a])
             
+    def on_colorBG_color_set(self, event):
+        self.setColor2Text(event, 'eBG')
+        
+    def on_colorFG_color_set(self, event):
+        self.setColor2Text(event, 'eFG')
+    def on_colorDutyBG_color_set(self, event):
+        self.setColor2Text(event, 'eDutyBG')
+    def on_colorDutyFG_color_set(self, event):
+        self.setColor2Text(event, 'eDutyFG')
+        
    
     def refreshTree(self):
         self.singlePreferences.disconnectTree()

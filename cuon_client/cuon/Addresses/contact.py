@@ -223,7 +223,28 @@ class contactwindow(chooseWindows):
         print 'sleeps'
         iTime = 0
         try:
-            iTime = int(self.getWidget('eSleepingTime').get_text()) 
+            sTime = self.getWidget('eSleepingTime').get_text()
+            sTime = sTime.strip()
+
+            if sTime.find(':') > 0:
+                t1 = time.time()
+                print 't1 = ', t1
+                t1_l = time.localtime(t1)
+                print 't1_l', t1_l
+                #t2 = time.strptime(sTime,'%H:%M')
+                #print 't2 = ', t2
+                liTwake = sTime.split(':')
+                t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]),int(liTwake[1]),0,0,0,0)
+                print t_set
+                tR = time.mktime(t_set)
+                print tR
+                
+                iTime = int((tR - t1)/60)
+                
+                print iTime
+            else:
+                
+                iTime = int(sTime) 
         except:
             iTime = 0
             

@@ -234,3 +234,11 @@ on_bScanMulti_clicked                  (GtkButton       *button,
 
 }
 
+
+void
+on_bFaxLastDocument_clicked            (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

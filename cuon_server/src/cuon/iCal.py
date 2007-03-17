@@ -64,6 +64,11 @@ class iCal(xmlrpc.XMLRPC, basics):
                 event.add('priority',dicEvent['priority'] )
             if dicEvent.has_key('location'):
                 event.add('location',dicEvent['location'] )
+            if dicEvent.has_key('status'):
+                event.add('status',dicEvent['status'] )
+            if dicEvent.has_key('description'):
+                event.add('description',dicEvent['description'] )    
+                
         except Exception, param:
             print 'Except error 55'
             print Exception
@@ -130,7 +135,7 @@ class iCal(xmlrpc.XMLRPC, basics):
                 print 'uid = ', i['UID']
                 sSearch = `firstRecord['id']` +'####'
                 print sSearch
-                if i['UID'].find(sSearch) < 0:
+                if i['UID'][0:len(sSearch)] != sSearch:
                     print 'uid not found'
                     Cal2.add_component(i)
             else:
@@ -153,10 +158,15 @@ class iCal(xmlrpc.XMLRPC, basics):
                 if i.has_key('UID'):
                     print 'uid = ', i['UID']
                     sSearch = `firstRecord['id']` +'####'
+                    print  '--->' + i['UID'][0:len(sSearch)] + '<---', '+++' + sSearch + '+++'
+
                     print sSearch
-                    if i['UID'].find(sSearch) < 0:
+                    if i['UID'][0:len(sSearch)] != sSearch:
                         print 'uid not found'
                         Cal2.add_component(i)
+                    else:
+                        print 'UID found'
+                        print  i['UID'][0:len(sSearch)-1], sSearch
                 else:
                     Cal2.add_component(i)
                 
@@ -231,6 +241,36 @@ class iCal(xmlrpc.XMLRPC, basics):
         except Exception, params:
             print 'Error by location'
             print Exception, params
+            
+        try:
+            
+            if result and result != 'NONE':
+                dicCal['description'] = firstRecord['notes']
+                
+                dicCal['description'] = dicCal['description'].decode('utf-8')
+                
+        except Exception, params:
+            print 'Error by notes'
+            print Exception, params
+        try:
+            
+            if result and result != 'NONE':
+                if firstRecord['process_status'] == 0:
+                    dicCal['status'] = "TENTATIVE"
+                elif firstRecord['process_status'] > 5 and  firstRecord['process_status'] < 800:
+                #dicCal['status'] = `firstRecord['process_status']`
+                    dicCal['status'] = "CONFIRMED"
+                elif firstRecord['process_status'] == 800:
+                    dicCal['status'] = "CANCELLED" 
+                    
+                    
+                
+                
+                
+        except Exception, params:
+            print 'Error by status'
+            print Exception, params
+                
         self.writeLog('dicCal = ' + `dicCal`)
             
         try:
@@ -247,6 +287,7 @@ class iCal(xmlrpc.XMLRPC, basics):
        
         Cal = Calendar.from_string(s)
         return Cal
+        
     def overwriteCal(self, sName, liRecords, dicUser):
         Cal = self.createCal()
         for record in liRecords:

@@ -267,6 +267,7 @@ create_DMSMainwindow (void)
   GtkWidget *gfcb_ImportFile;
   GtkWidget *bImport;
   GtkWidget *bLink;
+  GtkWidget *bFaxLastDocument;
   GtkWidget *bWriteLastDocument;
   GtkWidget *bView;
   GtkWidget *lDocs;
@@ -730,6 +731,10 @@ create_DMSMainwindow (void)
   gtk_widget_show (bLink);
   gtk_box_pack_start (GTK_BOX (vbox2), bLink, FALSE, FALSE, 0);
 
+  bFaxLastDocument = gtk_button_new_with_mnemonic (_("Fax Last Document"));
+  gtk_widget_show (bFaxLastDocument);
+  gtk_box_pack_start (GTK_BOX (vbox2), bFaxLastDocument, FALSE, FALSE, 0);
+
   bWriteLastDocument = gtk_button_new_with_mnemonic (_("Save Last Document"));
   gtk_widget_show (bWriteLastDocument);
   gtk_box_pack_start (GTK_BOX (vbox2), bWriteLastDocument, FALSE, FALSE, 0);
@@ -856,6 +861,9 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bLink, "clicked",
                     G_CALLBACK (on_bLink_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bFaxLastDocument, "clicked",
+                    G_CALLBACK (on_bFaxLastDocument_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bWriteLastDocument, "clicked",
                     G_CALLBACK (on_bWriteLastDocument_clicked),
                     NULL);
@@ -968,6 +976,7 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, gfcb_ImportFile, "gfcb_ImportFile");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bLink, "bLink");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bFaxLastDocument, "bFaxLastDocument");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bWriteLastDocument, "bWriteLastDocument");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, lDocs, "lDocs");

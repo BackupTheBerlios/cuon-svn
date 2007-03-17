@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 35, 'Rev': 21, 'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 36, 'Rev': 0,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -624,7 +624,7 @@ class MainWindow(windows):
             print 'sDebug (Cuon) = '  + self.sDebug
             self.oUser.setDebug(self.sDebug)
             self.saveObject('User', self.oUser)
-            self.saveObject('Scheduling', [])
+            
             self.closeDB()
                           
             
@@ -1207,6 +1207,7 @@ class MainWindow(windows):
         oUser = self.loadObject('User')
         oUser.client = 0
         self.saveObject('User',oUser)
+        self.saveObject('Scheduling', [])
         self.closeDB()
         
         # set initial columns

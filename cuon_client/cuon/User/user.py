@@ -85,7 +85,7 @@ class User(defaultValues):
         self.prefPath['ReportStandardFinancesCAB'] =  os.path.normpath(self.td.cuon_path + '/' +  'Reports' )
         
         
-        self.prefColor = {'FG':0, 'BG':0}
+        self.prefColor = {'FG':'#000000', 'BG':'#FFFFFF', 'DUTY_FG':'#af0000','DUTY_BG':'#5feeec'}
 
         self.prefDMS = {}
         #Scanner prefs
@@ -350,6 +350,11 @@ class User(defaultValues):
             self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
             print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
             print "prefApps['PDF'] 1= ",  self.prefApps['PDF']
+            
+            self.prefColor['BG'] = result['color_bg']
+            self.prefColor['FG'] = result['color_fg']
+            self.prefColor['DUTY_BG'] = result['color_duty_bg']
+            self.prefColor['DUTY_FG'] = result['color_duty_fg']
             
 ##            self.Email['From']='MyAddress@mail_anywhere.com'
 ##        self.Email['Host']='mail_anywhere.com'

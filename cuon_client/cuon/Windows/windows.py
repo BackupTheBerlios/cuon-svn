@@ -182,24 +182,7 @@ class windows(rawWindow, MyXML, messages):
                 dicSearchfields[key] = text
         return dicSearchfields
 
-    def setProperties(self, sName):
-        self.out('entries for property  = ' + sName)
-        
-        entries = self.getDataEntries(sName)
-        for i in range(0,entries.getCountOfEntries()):
-            entry = entries.getEntryAtIndex(i)
-            # do some stuff with the entry
-            ##self.out('entry = ' + entry.getName())
-            self.printOut( 'entry = ' + entry.getName())
-            if entry.getDuty():
-                e1 = self.getWidget(entry.getName())
-                if e1:
-                    self.printOut( 'Duty is True by : ' + `entry.getName()`)
-                    e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
-##                e1.connect('key_press_event', self.closeMenuEntries)
-        self.setEntriesEditable(sName, False)
-        
-      
+    
                 
     def setEntriesEditable(self, sName, ok):
         self.actualEntries = sName
@@ -472,7 +455,27 @@ class windows(rawWindow, MyXML, messages):
 
 ##        return False
         
-
+    def setProperties(self, sName):
+        self.out('entries for property  = ' + sName)
+        
+        entries = self.getDataEntries(sName)
+        for i in range(0,entries.getCountOfEntries()):
+            entry = entries.getEntryAtIndex(i)
+            # do some stuff with the entry
+            ##self.out('entry = ' + entry.getName())
+            self.printOut( 'entry = ' + entry.getName())
+            if entry:
+                e1 = self.getWidget(entry.getName())
+                if entry.getDuty():
+                    self.printOut( 'Duty is True by : ' + `entry.getName()`)
+                    e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
+                else:
+                    e1.set_style(self.getStyle('standard','entry', entry.getFgColor(), entry.getBgColor()))
+                
+##                e1.connect('key_press_event', self.closeMenuEntries)
+        self.setEntriesEditable(sName, False)
+        
+      
     def getStyle(self, cType, cWidget,  numberFG, numberBG):
         '''
         define an new Style for gtk-widgets
@@ -498,6 +501,7 @@ class windows(rawWindow, MyXML, messages):
         defaultStyle = self.win1.get_style()
         map = self.win1.get_colormap()
         pColor = self.dicUser['prefColor']
+        print pColor
         colorFG =  map.alloc_color(0,0,0)
         colorBG =  map.alloc_color(255*255,255*255, 255*255)
         colorBase =  map.alloc_color(130*255,180*255,220*255)
@@ -505,58 +509,85 @@ class windows(rawWindow, MyXML, messages):
         colorLight = map.alloc_color("#FF9999")
         colorMid = map.alloc_color("#FF9999")
         colorDark = map.alloc_color("#FF9999")
-        
-        if pColor['FG'] == 0:
-            if pColor['BG'] == 0:
-                if cType == 'duty':
-                    colorBase =  map.alloc_color("#5feeec")
-                    colorText = map.alloc_color("#af0000")
-                
         newStyle = defaultStyle.copy()
-        '''
-        entry : s (base) for background, t ( text) for foreground
-        button: b (BG) for background, f (FG) for foreground
-        '''
-        
-        cSwitch = []
-        
-        if cType == 'duty':
-   
-            if cWidget == 'entry':
-                cSwitch.append( 's')
-                cSwitch.append('t')
+        try:
+            sTypeBG = 'BG'
+            sTypeFG = 'FG'
+            
+            if cType == 'duty':
                 
-        for cs in cSwitch:
-            if cs == 'f':
-                for  i in range(5 ):
-                    newStyle.fg[i] = colorFG;
-
-
-            elif cs == 'b':
-                for  i in range(5 ):
-                    newStyle.bg[i] = colorBG;
-
-            elif cs == 's':
-                for  i in range(5 ):
-                    newStyle.base[i] = colorBase;
-                  
-            elif cs == 'l':
-                for  i in range(5 ):
-                    newStyle.light[i] = colorLight;
-
-            elif cs == 'd':
-                for  i in range(5 ):
-                    newStyle.dark[i] = colorDark;
-
-            elif cs == 'm':
-                for  i in range(5 ):
-                    newStyle.mid[i] = colorMid;
-
-            elif cs == 't':
-                for  i in range(5 ):
-                    newStyle.text[i] = colorText;
-
+                print 'BG/FG',numberBG, numberFG
+                sTypeBG = 'DUTY_BG'
+                sTypeFG = 'DUTY_FG'
+                
+                    
+        
+                
+            print 'Standard BG/FG',numberBG, numberFG
+            if numberBG[0] == '#':
+                colorBase =  map.alloc_color(numberBG)
+            else:
+                colorBase =  map.alloc_color(pColor[sTypeBG])
+                
+            if numberFG[0] == '#':
+                colorText = map.alloc_color(numberFG)
+            else:
+                colorText = map.alloc_color(pColor[sTypeFG])
     
+            
+                            
+                            
+                
+            
+            '''
+            entry : s (base) for background, t ( text) for foreground
+            button: b (BG) for background, f (FG) for foreground
+            '''
+            
+            cSwitch = []
+            
+            if cType == 'duty':
+       
+                if cWidget == 'entry':
+                    cSwitch.append( 's')
+                    cSwitch.append('t')
+            else:
+                if cWidget == 'entry':
+                    cSwitch.append( 's')
+                    cSwitch.append('t')
+                    
+            for cs in cSwitch:
+                if cs == 'f':
+                    for  i in range(5 ):
+                        newStyle.fg[i] = colorFG;
+    
+    
+                elif cs == 'b':
+                    for  i in range(5 ):
+                        newStyle.bg[i] = colorBG;
+    
+                elif cs == 's':
+                    for  i in range(5 ):
+                        newStyle.base[i] = colorBase;
+                      
+                elif cs == 'l':
+                    for  i in range(5 ):
+                        newStyle.light[i] = colorLight;
+    
+                elif cs == 'd':
+                    for  i in range(5 ):
+                        newStyle.dark[i] = colorDark;
+    
+                elif cs == 'm':
+                    for  i in range(5 ):
+                        newStyle.mid[i] = colorMid;
+    
+                elif cs == 't':
+                    for  i in range(5 ):
+                        newStyle.text[i] = colorText;
+    
+        except:
+            newStyle = defaultStyle.copy()       
         return newStyle
 
 
@@ -686,4 +717,26 @@ class windows(rawWindow, MyXML, messages):
         self.openDB()
         self.saveObject('User', self.oUser)
         self.closeDB()
+            
+    def RGBToHTMLColor(self, rgb_tuple):
+        """ convert an (R, G, B) tuple to #RRGGBB """
+        hexcolor = '#%04x%04x%04x' % rgb_tuple
+        # that's it! '%02x' means zero-padded, 2-digit hex values
+        return hexcolor
+    
+    def HTMLColorToRGB(self, colorstring):
+        """ convert #RRGGBB to an (R, G, B) tuple """
+        colorstring = colorstring.strip()
+        if colorstring[0] == '#': colorstring = colorstring[1:]
+        if len(colorstring) != 6:
+            raise ValueError, "input #%s is not in #RRGGBB format" % colorstring
+        r, g, b = colorstring[:2], colorstring[2:4], colorstring[4:]
+        r, g, b = [int(n, 16) for n in (r, g, b)]
+        return (r, g, b)
+    
+    def setColor2Text(self, event, sEntry):
+        print event
+        Color = event.get_color()
+        eColor = self.getWidget(sEntry)
+        eColor.set_text(self.RGBToHTMLColor((Color.red, Color.green, Color.blue)))
         

@@ -32,7 +32,7 @@ static GnomeUIInfo mi_datei1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Print S_etup..."),
     NULL,
     (gpointer) on_choosePrinter1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-properties",
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_SEPARATOR,
@@ -52,14 +52,14 @@ static GnomeUIInfo newsletter2_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Newsletter Email"),
     NULL,
     (gpointer) on_newsletter_email_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
   {
     GNOME_APP_UI_ITEM, N_("Newsletter Print"),
     NULL,
     (gpointer) on_newsletter_print_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-print",
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_END
@@ -67,8 +67,20 @@ static GnomeUIInfo newsletter2_menu_uiinfo[] =
 
 static GnomeUIInfo mi_edit_menu_uiinfo[] =
 {
-  GNOMEUIINFO_MENU_UNDO_ITEM (on_undo1_activate, NULL),
-  GNOMEUIINFO_MENU_FIND_ITEM (on_find1_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("Undo"),
+    NULL,
+    (gpointer) on_undo1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Find"),
+    NULL,
+    (gpointer) on_find1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-find",
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_SEPARATOR,
   {
     GNOME_APP_UI_SUBTREE, N_("Newsletter"),
@@ -101,7 +113,7 @@ static GnomeUIInfo mi_address1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
   {
@@ -132,19 +144,25 @@ static GnomeUIInfo mi_address1_menu_uiinfo[] =
 
 static GnomeUIInfo mi_bank1_menu_uiinfo[] =
 {
-  GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_bank_new1_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_bank_new1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-new",
+    0, (GdkModifierType) 0, NULL
+  },
   {
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_bank_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
   {
     GNOME_APP_UI_ITEM, N_("save"),
     NULL,
     (gpointer) on_bank_save1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_END
@@ -156,7 +174,7 @@ static GnomeUIInfo mi_misc1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_MiscEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
   {
@@ -182,7 +200,7 @@ static GnomeUIInfo mi_partner1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_PartnerEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
   {
@@ -193,7 +211,13 @@ static GnomeUIInfo mi_partner1_menu_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   GNOMEUIINFO_SEPARATOR,
-  GNOMEUIINFO_MENU_PRINT_ITEM (on_mi_PartnerPrint1_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("Print"),
+    NULL,
+    (gpointer) on_partner_print1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-print",
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_SEPARATOR,
   {
     GNOME_APP_UI_ITEM, N_("_Delete"),
@@ -207,15 +231,27 @@ static GnomeUIInfo mi_partner1_menu_uiinfo[] =
 
 static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
 {
-  GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_SchedulNew_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("New"),
+    NULL,
+    (gpointer) on_SchedulNew_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-new",
+    0, (GdkModifierType) 0, NULL
+  },
   {
     GNOME_APP_UI_ITEM, N_("_Edit"),
     NULL,
     (gpointer) on_SchedulEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
-  GNOMEUIINFO_MENU_SAVE_ITEM (on_SchedulSave_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_SchedulSave_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_SEPARATOR,
   {
     GNOME_APP_UI_ITEM, N_("Set ready"),
@@ -236,7 +272,13 @@ static GnomeUIInfo mi_notes1_menu_uiinfo[] =
     GNOME_APP_PIXMAP_STOCK, "gtk-edit",
     0, (GdkModifierType) 0, NULL
   },
-  GNOMEUIINFO_MENU_SAVE_ITEM (on_NotesSave_activate, NULL),
+  {
+    GNOME_APP_UI_ITEM, N_("_Save"),
+    NULL,
+    (gpointer) on_NotesSave_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gtk-save",
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -270,7 +312,7 @@ static GnomeUIInfo mi_lists1_menu_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Addresses"),
     NULL,
     listAddresses1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
+    GNOME_APP_PIXMAP_STOCK, "gnome-stock-book-open",
     0, (GdkModifierType) 0, NULL
   },
   {
@@ -2633,7 +2675,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[2].widget, "mi_quit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[1].widget, "mi_edit");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[0].widget, "undo1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[1].widget, "find1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[1].widget, "find");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[2].widget, "separator6");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[3].widget, "newsletter2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, newsletter2_menu_uiinfo[0].widget, "newsletter1");
@@ -2649,7 +2691,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[5].widget, "trennlinie5");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[6].widget, "mi_clear1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[3].widget, "mi_bank1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[0].widget, "new1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[0].widget, "new2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[1].widget, "bank_edit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[2].widget, "save1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[4].widget, "mi_misc1");
@@ -2660,7 +2702,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "PartnerEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[2].widget, "PartnerSave1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[3].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[4].widget, "mi_partnerPrint1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[4].widget, "partner_print1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[5].widget, "separator3");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[6].widget, "PartnerDelete1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[6].widget, "mi_schedul1");
