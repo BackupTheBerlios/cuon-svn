@@ -479,16 +479,7 @@
       
     </trigger>
     
-   <trigger>
-      <nameOfTrigger>trg_updatePARTNER_SCHEDUL</nameOfTrigger>
-      <table>PARTNER_SCHEDUL</table>
-      <action>after update </action>
-      <cursor>FOR EACH ROW</cursor>
-      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
-      <description>update PARTNER_SCHEDUL </description>
-      
-    </trigger>
-    
+   
     <trigger>
       <nameOfTrigger>trg_insertCLIENTS</nameOfTrigger>
       <table>CLIENTS</table>

@@ -467,10 +467,16 @@ class windows(rawWindow, MyXML, messages):
             if entry:
                 e1 = self.getWidget(entry.getName())
                 if entry.getDuty():
-                    self.printOut( 'Duty is True by : ' + `entry.getName()`)
-                    e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
+                    try:
+                        self.printOut( 'Duty is True by : ' + `entry.getName()`)
+                        e1.set_style(self.getStyle('duty','entry', entry.getFgColor(), entry.getBgColor()))
+                    except:
+                        pass
                 else:
-                    e1.set_style(self.getStyle('standard','entry', entry.getFgColor(), entry.getBgColor()))
+                    try:
+                        e1.set_style(self.getStyle('standard','entry', entry.getFgColor(), entry.getBgColor()))
+                    except:
+                        pass
                 
 ##                e1.connect('key_press_event', self.closeMenuEntries)
         self.setEntriesEditable(sName, False)

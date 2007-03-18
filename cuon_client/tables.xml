@@ -1016,9 +1016,9 @@
       <comment />
     </field>
   </table>
-  <!--table: partner_schedul-->
+  <!--table: t_partner_schedul-->
   <table>
-    <nameOfTable>partner_schedul</nameOfTable>
+    <nameOfTable>t_partner_schedul</nameOfTable>
     <specials>inherits (t_standard);</specials>
     <x>82</x>
     <y>45</y>
@@ -1163,11 +1163,17 @@
       <comment />
     </field>
   </table>
-  
+  <!--table: partner_schedul-->
+  <table>
+    <nameOfTable>partner_schedul</nameOfTable>
+    <specials>inherits (t_partner_schedul);</specials>
+    <x>82</x>
+    <y>45</y>
+  </table>
   <!--table: Contact-->
   <table>
     <nameOfTable>contact</nameOfTable>
-    <specials>inherits (partner_schedul);</specials>
+    <specials>inherits (t_partner_schedul);</specials>
     <x>82</x>
     <y>45</y>
     <field>
