@@ -36,7 +36,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
         ok = True
-        
+            
         if dicValues.has_key('To'):
             if dicValues['To'][0:11] == 'Newsletter:':
                 cNL = dicValues['To'][12 :]
@@ -61,6 +61,9 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                 
     def sendEmail(self, dicValues, liAttachments,dicUser ):
         cuonmail = Email(smtp_server = "localhost")
+        if liAttachments:
+            cuonmail.attachments = liAttachments
+
         ok = False
         try:
                 
@@ -100,11 +103,12 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             cuonmail.smtp_server = self.EMAILSERVER
             cuonmail.smtp_user = self.EMAILUSER
             cuonmail.smtp_password = self.EMAILPASSWORD
+            cuonmail.smtp_crypt = self.EMAILCRYPT
             
         except Exception, params:
             print 'Error in Email'
             print Exception, params
-
+        
         try:
             s = cuonmail.send()
             print 'return Value form Email2 ', s

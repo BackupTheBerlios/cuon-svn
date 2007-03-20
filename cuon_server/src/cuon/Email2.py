@@ -112,7 +112,9 @@ from email.Message import Message
 from email.MIMEAudio import MIMEAudio
 from email.MIMEBase import MIMEBase
 from email.MIMEImage import MIMEImage
-
+import StringIO
+import base64
+import bz2
 
 
 # Exceptions
@@ -174,13 +176,13 @@ class Attachments(object):
 
 
     #----------------------------------------------------------------------
-    def add_filename(self, filename = ''):
+    def add_filename(self, dicFile = ''):
         """
         en: Adds an attachment
         de: Fuegt einen neuen Anhang hinzu
         """
         
-        self._attachments.append(filename)
+        self._attachments.append(dicFile)
 
 
     #----------------------------------------------------------------------
@@ -313,6 +315,7 @@ class Email(object):
         'smtp_server',
         'smtp_user',
         'smtp_password',
+        'smtp_crypt',
         'attachments',
         'content_subtype',
         'content_charset',
@@ -340,6 +343,7 @@ class Email(object):
         user_agent = "",
         reply_to_address = "",
         reply_to_caption = "",
+        
     ):
         """
         en: Initialize the email object
@@ -385,6 +389,7 @@ class Email(object):
         self.smtp_server = smtp_server
         self.smtp_user = smtp_user
         self.smtp_password = smtp_password
+        self.smtp_crypt = None
         self.attachments = Attachments()
         if attachment_file:
             self.attachments.add_filename(attachment_file)
@@ -435,7 +440,7 @@ class Email(object):
         #
         # Email zusammensetzen
         #
-        if self.attachments.count() == 0:
+        if len(self.attachments) == 0:
             # Nur Text
             msg = MIMEText(
                 _text = self.message,
@@ -478,37 +483,37 @@ class Email(object):
         msg.epilogue = ""
 
         # Falls MULTIPART --> zusammensetzen
-        if self.attachments.count() > 0:
-            for filename in self.attachments.get_list():
+        if len(self.attachments) > 0:
+            for dicFile in self.attachments:
                 # Pruefen ob Datei existiert
-                if not os.path.isfile(filename):
-                    raise AttachmentNotFound_Exception, filename
+                filename = dicFile['filename']
                 # Datentyp herausfinden
                 ctype, encoding = mimetypes.guess_type(filename)
+                print ctype, encoding
+                
                 if ctype is None or encoding is not None:
                     ctype = 'application/octet-stream'
                 maintype, subtype = ctype.split('/', 1)
+                s = base64.decodestring(dicFile['data'])
+                s = bz2.decompress(s)
+                fp = StringIO.StringIO(s)
                 if maintype == 'text':
-                    fp = file(filename)
                     # Note: we should handle calculating the charset
                     att = MIMEText(fp.read(), _subtype=subtype)
-                    fp.close()
                 elif maintype == 'image':
-                    fp = file(filename, 'rb')
                     att = MIMEImage(fp.read(), _subtype=subtype)
-                    fp.close()
                 elif maintype == 'audio':
-                    fp = file(filename, 'rb')
                     att = MIMEAudio(fp.read(), _subtype=subtype)
-                    fp.close()
                 else:
-                    fp = file(filename, 'rb')
                     att = MIMEBase(maintype, subtype)
                     att.set_payload(fp.read())
-                    fp.close()
                     # Encode the payload using Base64
                     Encoders.encode_base64(att)
+                
+                fp.close()
+
                 # Set the filename parameter
+                
                 att.add_header(
                     'Content-Disposition', 
                     'attachment', 
@@ -520,6 +525,14 @@ class Email(object):
         # Am SMTP-Server anmelden und evt. authentifizieren
         #
         smtp = smtplib.SMTP()
+        if self.smtp_crypt == 'TLS':
+            print 'TLS found'
+            try:
+                smtp.starttls()
+            except Exception, param:
+                print Exception, param
+                
+            
         if self.smtp_server:
             smtp.connect(self.smtp_server)
         else:

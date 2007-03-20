@@ -127,7 +127,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         # calendar of the contakter
         Cal = self.getCalendar(sName)
         print 'Cal', Cal
-        dicEvent = self.getDicCal(firstRecord, dicUser)
+        
+        dicEvent = self.getDicCal(firstRecord, dicUser,'User')
         Cal2 = self.createCal()
         for i in Cal.walk('VEVENT'):
             print 'i = ', i
@@ -148,8 +149,9 @@ class iCal(xmlrpc.XMLRPC, basics):
             self.writeCalendar(sName, Cal2)
             ok = True
         # calendar of the schedul staff
-        if dicEvent.has_key('staff_cuon_username'):
-            
+        dicEvent = self.getDicCal(firstRecord, dicUser,'schedul_staff')
+        if dicEvent.has_key('staff_cuon_username') and len(dicEvent['staff_cuon_username']) > 0:
+            print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
             Cal = self.getCalendar('iCal_' + dicEvent['staff_cuon_username'])
             print 'Cal', Cal
             Cal2 = self.createCal()
@@ -179,18 +181,29 @@ class iCal(xmlrpc.XMLRPC, basics):
                             
         return ok
     
-    def getDicCal(self, firstRecord, dicUser):
+    def getDicCal(self, firstRecord, dicUser, sUser):
         result = None
         self.writeLog('Start getDicCal')
         self.writeLog('getDicCal firstRecord = ' + `firstRecord`)
-        try:
-            sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
-            sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id"
-            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        except Exception, params:
-            print 'getDicCal sql'
-            print Exception, params
-            
+        if sUser == 'User':
+            try:
+                sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
+                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.cuon_username = partner_schedul.user_id"
+                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+            except Exception, params:
+                print 'getDicCal sql'
+                print Exception, params
+                
+        elif sUser == 'schedul_staff':
+            try:
+                sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
+                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id"
+                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+            except Exception, params:
+                print 'getDicCal sql'
+                print Exception, params
+                
+                        
             
         dicCal = {}
         print 'firstRecord = ', firstRecord
@@ -198,6 +211,9 @@ class iCal(xmlrpc.XMLRPC, basics):
         dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
         sDate =  firstRecord['schedul_date']
         print 'result = ', result
+        if result and result == 'NONE':
+            result = None
+        
         try:
             sTime = self.getTimeString( firstRecord['schedul_time_begin'])
             dicCal['dtstart'] = sDate + ' ' + sTime
@@ -222,18 +238,26 @@ class iCal(xmlrpc.XMLRPC, basics):
             print param
             
         try:
-            dicCal['summary'] = result[0]['st_lastname'] + ', ' +result[0]['st_firstname'] + ' ' + `result[0]['adr_id']` + ' ' + firstRecord['short_remark'].encode('utf-8')
+            dicCal['summary'] = ''
+            if result and result[0].has_key('st_lastname'):
+                dicCal['summary'] += result[0]['st_lastname'] + ', ' 
+            
+            if result and result[0].has_key('st_firstname'):
+                dicCal['summary'] += result[0]['st_firstname'] + ' ' 
+            if result:
+                dicCal['summary'] += `result[0]['adr_id']` + ' ' + firstRecord['short_remark'].encode('utf-8')
             dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
+            dicCal['summary'] = ' '
             print 'Except error getDicCal 3'
             print Exception
             print param
             
             self.writeLog('String error by ' + `firstRecord['short_remark']`)
         try:
-            
+            dicCal['id'] = firstRecord['id']
             if result and result != 'NONE':
-                dicCal['id'] = result[0]['sch_id']
+                
 
                 dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
                 dicCal['location'] = dicCal['location'].decode('utf-8')
@@ -274,7 +298,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         self.writeLog('dicCal = ' + `dicCal`)
             
         try:
-            dicCal['staff_cuon_username'] = result[0]['staff_cuon_username'] 
+            if result:
+                dicCal['staff_cuon_username'] = result[0]['staff_cuon_username'] 
         except Exception, param:
             print 'Except error getDicCal 4'
             print Exception

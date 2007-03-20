@@ -75,6 +75,7 @@ class basics(xmlrpc.XMLRPC):
         self.EMAILUSER = 'jhamel'
         self.EMAILPASSWORD = None
         self.EMAILENCODING = 'utf-8'
+        self.EMAILCRYPT = None
         
         
         try:
@@ -152,7 +153,9 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('EMAIL','ENCODING')
             if value:
                 self.EMAILENCODING = value
-            
+            value = self.getConfigOption('EMAIL','CRYPT')
+            if value:
+                self.EMAILCRYPT = value
                 
         except Exception, params:
             print "Error read ini-File"

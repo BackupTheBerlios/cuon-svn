@@ -21,6 +21,8 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
+import base64
+import bz2
 
 from cuon.Editor.editor  import editorwindow
 class sendEmail(editorwindow):
@@ -31,7 +33,8 @@ class sendEmail(editorwindow):
         else:
             self.dicValues = {}
             
-            
+        self.liAttachments = []
+        
         editorwindow.__init__(self)
         table = gtk.Table(2,5)
         hbox = gtk.HBox()
@@ -57,6 +60,10 @@ class sendEmail(editorwindow):
         self.eBCC = gtk.Entry()
         self.eSubject = gtk.Entry()
         
+        self.fcAttachment = gtk.FileChooserButton(_('Attachment'), backend=None)
+        self.fcAttachment.connect('file_activated',self.on_fcAttachment_file_activated )
+        self.fcAttachment.connect('selection_changed',self.on_fcAttachment_file_activated )
+        
         vbox = self.getWidget('vbox2')
         vbox.hide()
         table.attach(label,0,1,0,1)
@@ -71,6 +78,8 @@ class sendEmail(editorwindow):
         table.attach(self.eBCC,1,2,3,4)
         table.attach(self.eSubject,1,2,4,5)
 
+        table.attach(self.fcAttachment,2,3,0,1)
+        
         vbox.pack_start(table)
         vbox.pack_start(tree1)
 
@@ -110,6 +119,10 @@ class sendEmail(editorwindow):
                 self.eFrom.set_text(self.dicValues['From'])
                     
             
+    def on_fcAttachment_file_activated(self, event):
+        print event
+        self.addAttachment( event.get_filename())
+        
         
     def on_send_mail_activate(self, event):
         print event
@@ -120,6 +133,21 @@ class sendEmail(editorwindow):
         
         self.dicValues['Body'] = self.readTextBuffer(self.getWidget('tv1'))
         
-        self.rpc.callRP('Email.sendTheEmail', self.dicValues, None, self.dicUser)
+        self.rpc.callRP('Email.sendTheEmail', self.dicValues, self.liAttachments, self.dicUser)
 
         
+    def addAttachment(self, filename):
+        if filename:
+            f = open(filename,'rb')
+            if f:
+                s = f.read()
+                s = bz2.compress(s)
+                s = base64.encodestring(s)
+                dicAtt = {}
+                dicAtt['filename'] = filename
+                dicAtt['data'] = s
+                
+                self.liAttachments.append(dicAtt)
+                print 'len liAtt', len(self.liAttachments)
+                
+                
