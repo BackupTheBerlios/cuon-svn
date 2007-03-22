@@ -145,6 +145,11 @@
       <Entry-File>preferences_printing.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
     </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>preferencesExecutables.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_preferencesExecutables.xml</Entry-FileValue>
+    </Entries>
 
  <Entries>		
       <Entry-Name>cuon</Entry-Name>

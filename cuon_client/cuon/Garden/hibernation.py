@@ -274,7 +274,7 @@ class hibernationwindow(chooseWindows):
         print "Start print incoming document 3"
 
         Pdf = self.rpc.callRP('Report.server_hibernation_incoming_document', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser)
+        self.showPdf(Pdf, self.dicUser,'INCOMING')
         
         #Pdf = hibernation_incoming_document.hibernation_incoming_document(dicOrder)
         
@@ -289,7 +289,7 @@ class hibernationwindow(chooseWindows):
         print "Start print incoming document 3"
 
         Pdf = self.rpc.callRP('Report.server_hibernation_pickup_document', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser)    
+        self.showPdf(Pdf, self.dicUser,'SUPPLY')    
         
     def on_print_invoice1_activate(self, event):
         dicOrder = {}

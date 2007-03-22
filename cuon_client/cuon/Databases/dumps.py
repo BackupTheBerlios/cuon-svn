@@ -123,13 +123,29 @@ class dumps:
         f.close()
         return s
         
-    def showPdf(self, Pdf, dicUser):
+    def showPdf(self, Pdf, dicUser, cDoc = 'PDF'):
         #print "PDF", Pdf
         
         s = self.doDecode(Pdf)
         fname = self.saveTmpData(s, 'pdf')
-        print 'PDF-App = ', dicUser['prefApps']['PDF']
-        print os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
+        #print 'PDF-App = ', dicUser['prefApps']['PDF']
+        if cDoc == 'PDF':
+            sOutput = os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
+        elif cDoc == 'SUPPLY':
+            sOutput = os.system(dicUser['prefApps']['printSupply'] + ' ' + fname + ' &')
+        elif cDoc == 'PICKUP':
+            sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')
+        elif cDoc == 'INCOMING':
+            sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')    
+        elif cDoc == 'INVOICE':
+            sOutput = os.system(dicUser['prefApps']['printInvoice'] + ' ' + fname + ' &')
+        elif cDoc == 'PRINTNEWSLETTE':
+            sOutput = os.system(dicUser['prefApps']['printNewsletter'] + ' ' + fname + ' &')
+            
+          
+        else:
+            sOutput = os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
+            
         
 
     def getCheckedValue(self, value, type, min = None, max = None):

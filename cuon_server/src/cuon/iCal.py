@@ -239,13 +239,15 @@ class iCal(xmlrpc.XMLRPC, basics):
             
         try:
             dicCal['summary'] = ''
+
+            if result:
+                dicCal['summary'] += firstRecord['short_remark'].encode('utf-8') + ' '  + `result[0]['adr_id']` + ' '
             if result and result[0].has_key('st_lastname'):
                 dicCal['summary'] += result[0]['st_lastname'] + ', ' 
             
             if result and result[0].has_key('st_firstname'):
                 dicCal['summary'] += result[0]['st_firstname'] + ' ' 
-            if result:
-                dicCal['summary'] += `result[0]['adr_id']` + ' ' + firstRecord['short_remark'].encode('utf-8')
+            
             dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
             dicCal['summary'] = ' '

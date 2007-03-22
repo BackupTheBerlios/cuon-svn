@@ -56,7 +56,7 @@ class preferenceswindow(windows):
 
         self.EntriesPreferences = 'preferences.xml'
         self.EntriesPreferencesPrinting = 'preferences_printing.xml'
-        #self.EntriesPreferencesPathToReports = 'preferences_path_to_reports.xml'
+        self.EntriesPreferencesExecutables = 'preferencesExecutables.xml'
         #self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
         self.EntriesPreferencesScanner = 'preferences_scanner.xml'
         self.EntriesPreferencesDMS = 'preferences_dms.xml'
@@ -65,7 +65,7 @@ class preferenceswindow(windows):
         print 'load entries'
         self.loadEntries(self.EntriesPreferences)
         self.loadEntries(self.EntriesPreferencesPrinting)
-        #self.loadEntries(self.EntriesPreferencesPathToReports)
+        self.loadEntries(self.EntriesPreferencesExecutables)
         #self.loadEntries(self.EntriesPreferencesPathToDocs)
         self.loadEntries(self.EntriesPreferencesScanner)
         self.loadEntries(self.EntriesPreferencesDMS)
@@ -102,7 +102,7 @@ class preferenceswindow(windows):
         # tabs from notebook
         self.tabProfile = 0
         self.tabPrinting = 1
-        self.tabPathToReports = 2
+        self.tabPathToExecutables = 2
         self.tabEmail = 3
         self.tabScanner = 4
         self.tabDMS = 5
@@ -136,8 +136,8 @@ class preferenceswindow(windows):
             self.setEntriesEditable(self.EntriesPreferences, True)
         elif self.tabOption == self.tabPrinting:
             self.setEntriesEditable(self.EntriesPreferencesPrinting, True)
-        elif self.tabOption == self.tabPathToReports:
-            self.setEntriesEditable(self.EntriesPreferencesPathToReports, True)
+        elif self.tabOption == self.tabPathToExecutables:
+            self.setEntriesEditable(self.EntriesPreferencesExecutables, True)
         elif self.tabOption == self.tabEmail:
             self.setEntriesEditable(self.EntriesPreferencesEmail, True)
         elif self.tabOption == self.tabScanner:
@@ -206,10 +206,10 @@ class preferenceswindow(windows):
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
             
-        elif self.tabOption == self.tabPathToReports:
+        elif self.tabOption == self.tabPathToExecutables:
             self.editAction = 'editProfile'
             self.setTreeVisible(False)
-            #self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPathToReports) )
+            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesExecutables) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 

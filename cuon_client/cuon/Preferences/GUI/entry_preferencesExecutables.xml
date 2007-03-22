@@ -1,0 +1,46 @@
+<entries_for_table>
+  <table>
+    <table_name>preferences</table_name>
+    <entry>
+      <name>ePrintPickup</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>exe_print_pickup</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>ePrintSupply</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>exe_print_supply</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>ePrintInvoice</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>exe_print_invoice</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>ePrintNewsletter</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>exe_print_newsletter</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+   
+  </table>
+</entries_for_table>    

@@ -118,6 +118,11 @@ class User(defaultValues):
         self.prefDMS['exe']['html'] = '/usr/bin/firefox'
 
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
+        self.prefApps['printPickup'] = 'lpr'
+        self.prefApps['printSupply'] = 'lpr'
+        self.prefApps['printInvoice'] = 'lpr'
+        self.prefApps['printNewsletter'] = 'lpr'
+        
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
         self.Email = {}
@@ -347,10 +352,7 @@ class User(defaultValues):
             self.prefDMS['exe']['internet'] = result['exe_internet']
             self.prefDMS['exe']['html'] = result['exe_html']
             
-            self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
-            print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
-            print "prefApps['PDF'] 1= ",  self.prefApps['PDF']
-            
+           
             self.prefColor['BG'] = result['color_bg']
             self.prefColor['FG'] = result['color_fg']
             self.prefColor['DUTY_BG'] = result['color_duty_bg']
@@ -370,7 +372,15 @@ class User(defaultValues):
             self.Email['LoginUser'] = result['email_user_loginname']
             self.Email['Password'] = result['email_user_password']
             self.Email['Signatur'] = result['email_user_signatur']
-
+            
+            self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
+            print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
+            print "prefApps['PDF'] 1= ",  self.prefApps['PDF']
+            
+            self.prefApps['printPickup'] = result['exe_print_pickup']
+            self.prefApps['printSupply'] = result['exe_print_supply']
+            self.prefApps['printInvoice'] = result['exe_print_invoice']
+            self.prefApps['printN'] = result['exe_print_newsletter']
             
         except Exception, param:
             print Exception
