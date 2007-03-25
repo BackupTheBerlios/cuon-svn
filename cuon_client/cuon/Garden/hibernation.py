@@ -303,6 +303,8 @@ class hibernationwindow(chooseWindows):
         dicOrder['Positions'] = self.rpc.callRP('Garden.getOrderPositions',self.singleHibernation.ID, self.dicUser)
         dicOrder['Number'] = `self.singleHibernation.ID`
         
+        print "dicOrder",  dicOrder
+        
         ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
         
     def on_print_outgoing_document1_activate(self, event):

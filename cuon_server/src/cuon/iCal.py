@@ -87,7 +87,8 @@ class iCal(xmlrpc.XMLRPC, basics):
             print 'Except error 77'
             print Exception
             print param
-           
+        if not Cal:
+            self.createCal(sName)
         return Cal
         
     def writeCalendar(self, sName, Cal):
@@ -126,7 +127,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         ok = False
         # calendar of the contakter
         Cal = self.getCalendar(sName)
-        print 'Cal', Cal
+        #print 'Cal', Cal
         
         dicEvent = self.getDicCal(firstRecord, dicUser,'User')
         Cal2 = self.createCal()
@@ -151,6 +152,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         # calendar of the schedul staff
         dicEvent = self.getDicCal(firstRecord, dicUser,'schedul_staff')
         if dicEvent.has_key('staff_cuon_username') and len(dicEvent['staff_cuon_username']) > 0:
+            print 'create Calendar for schedul_staff', dicEvent['staff_cuon_username']
             print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
             Cal = self.getCalendar('iCal_' + dicEvent['staff_cuon_username'])
             print 'Cal', Cal
@@ -188,7 +190,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         if sUser == 'User':
             try:
                 sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
-                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.cuon_username = partner_schedul.user_id"
+                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.cuon_username = partner_schedul.user_id and partner_schedul.id = " + `firstRecord['id']`
                 result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             except Exception, params:
                 print 'getDicCal sql'
@@ -197,7 +199,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         elif sUser == 'schedul_staff':
             try:
                 sSql = " select partner_schedul.id as sch_id,staff.cuon_username as staff_cuon_username, staff.lastname as st_lastname, staff.firstname as st_firstname, address.id as adr_id, address.lastname as adr_lastname, address.firstname as adr_firstname, address.zip as adr_zip, address.country as adr_country, address.city as adr_city from address, partner, partner_schedul, staff where partner.id = " 
-                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id"
+                sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id and partner_schedul.id = " + `firstRecord['id']`
                 result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             except Exception, params:
                 print 'getDicCal sql'
@@ -248,7 +250,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             if result and result[0].has_key('st_firstname'):
                 dicCal['summary'] += result[0]['st_firstname'] + ' ' 
             
-            dicCal['summary'] = dicCal['summary'].decode('utf-8')
+            #dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
             dicCal['summary'] = ' '
             print 'Except error getDicCal 3'
@@ -262,7 +264,7 @@ class iCal(xmlrpc.XMLRPC, basics):
                 
 
                 dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
-                dicCal['location'] = dicCal['location'].decode('utf-8')
+                #dicCal['location'] = dicCal['location'].decode('utf-8')
                 
         except Exception, params:
             print 'Error by location'
@@ -273,7 +275,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             if result and result != 'NONE':
                 dicCal['description'] = firstRecord['notes']
                 
-                dicCal['description'] = dicCal['description'].decode('utf-8')
+                #dicCal['description'] = dicCal['description'].decode('utf-8')
                 
         except Exception, params:
             print 'Error by notes'

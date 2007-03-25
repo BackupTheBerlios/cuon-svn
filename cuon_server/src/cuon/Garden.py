@@ -261,17 +261,121 @@ class Garden(xmlrpc.XMLRPC, basics):
         return ok
 
     def xmlrpc_getOrderPositions(self, hibID, dicUser):
-        sSql ='select hibernation_plant.*, botany.* from hibernation_plant, botany where hibernation_plant.hibernation_number = ' + `hibID`
-        sSql += ' and hibernation_plant.botany_number = botany.id '
         
-        sSql += self.getWhere("",dicUser,2,'hibernation_plant.')
-        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        print 'getOrderPositions.result: ', result
+        iPosition = 1
         result2 = []
-        if result != 'NONE':
-            for row in result:
-                print row
-                
-        return result
+        
+        try:
+            cpServer, f = self.getParser(self.CUON_FS + '/sql.ini')
+            #print cpServer
+            #print cpServer.sections()
+            replace_staff_pickup = self.getConfigOption('modul_hibernation','replace_staff_pickup', cpServer)
+            replace_staff_supply = self.getConfigOption('modul_hibernation','replace_staff_supply', cpServer)
+
+            
+            replace_plant_hibertion = self.getConfigOption('modul_hibernation','replace_plant_hibertion', cpServer)
+           
+            replace_plant_add_earth = self.getConfigOption('modul_hibernation','replace_plant_add_earth', cpServer)
+            replace_plant_add_pot = self.getConfigOption('modul_hibernation','replace_plant_add_pot', cpServer)
+            replace_plant_add_material = self.getConfigOption('modul_hibernation','replace_plant_add_material', cpServer)
+            replace_plant_add_misc = self.getConfigOption('modul_hibernation','replace_plant_add_misc', cpServer)
+            sSql ='select * from hibernation where id = ' + `hibID`
+            
+            
+            sSql += self.getWhere("",dicUser,2)
+            print sSql
+            
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            # TODO search for staff --> fee
+##            if result != 'NONE':
+##                if result['hib_price'] > 0:
+##                        dicPos = {}
+##                        dicPos['position'] = iPosition
+##                        iPosition += 1
+##                        dicPos['price'] = row['hib_price']
+##                        dicPos['article_id'] = int(replace_plant_hibertion)
+##                        dicPos['designation'] = row['bot_name']
+##                        result2.append(dicPos) 
+        
+            sSql ='select hibernation_plant.id as hib_id, hibernation_plant.add_earth as hib_add_earth, '
+            sSql +='hibernation_plant.add_material as hib_add_material, hibernation_plant.add_pot as hib_add_pot, '
+            sSql +='hibernation_plant.add_misc as hib_add_misc, hibernation_plant.price as hib_price, '
+            sSql += ' botany.botany_name as bot_name from hibernation_plant, botany where hibernation_plant.hibernation_number = ' + `hibID`
+            sSql += ' and hibernation_plant.botany_number = botany.id '
+            
+            sSql += self.getWhere("",dicUser,2,'hibernation_plant.')
+            print sSql
+            
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            print 'getOrderPositions.result: ', result
+            
+            if result != 'NONE':
+                for row in result:
+                    print row
+                    
+                    if row['hib_price'] > 0:
+                        dicPos = {}
+                        dicPos['position'] = [ iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [row['hib_price'],'float']
+                        dicPos['articleid'] = [int(replace_plant_hibertion),'int']
+                        dicPos['designation'] = [_('price hibernation for ') + row['bot_name'],'string']
+                        dicPos['amount'] = [1.00,'float']
+
+                        result2.append(dicPos)
+                    
+                    if row['hib_add_earth'] > 0:
+                        dicPos = {}
+                        dicPos['position'] = [iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [row['hib_add_earth'],'float']
+                        dicPos['articleid'] = [int(replace_plant_add_earth),'int']
+                        dicPos['designation'] = [_('price add earth for ') +row['bot_name'],'string']
+                        dicPos['amount'] = [1.00,'float']
+                        result2.append(dicPos)
+                    
+                    
+                    if row['hib_add_material'] > 0:
+                        dicPos = {}
+                        dicPos['position'] = [iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [row['hib_add_material'],'float']
+                        dicPos['articleid'] = [int(replace_plant_add_material),'int']
+                        dicPos['designation'] = [_('price add material for ') + row['bot_name'],'string']
+                        dicPos['amount'] = [1.00,'float']
+                        result2.append(dicPos)
+                        
+                        
+                        
+                      
+                    if row['hib_add_pot'] > 0:
+                        dicPos = {}
+                        dicPos['position'] = [iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [row['hib_add_pot'],'float']
+                        dicPos['articleid'] = [int(replace_plant_add_pot),'int']
+                        dicPos['designation'] = [_('price add pot for ') + row['bot_name'],'string']
+                        dicPos['amount'] = [1.00,'float']
+                        result2.append(dicPos)  
+                        
+                    
+                    if row['hib_add_misc'] > 0:
+                        dicPos = {}
+                        dicPos['position'] = [iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [row['hib_add_misc'],'float']
+                        dicPos['articleid'] = [int(replace_plant_add_misc),'int']
+                        dicPos['designation'] = [_('price misc for ') + row['bot_name'],'string']
+                        dicPos['amount'] = [1.00,'float']
+                        result2.append(dicPos)    
+                    print result2
+                    
+        except Exception, params:
+            print 'Error'
+            print Exception, params  
+        if not result2:
+            resutl2 = 'NONE'
+            
+        return result2
         
      
