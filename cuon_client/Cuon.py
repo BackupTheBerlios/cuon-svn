@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 36, 'Rev': 3,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 36, 'Rev': 4,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1205,6 +1205,8 @@ class MainWindow(windows):
         self.setTitle('window1',self.sTitle)
         self.openDB()
         oUser = self.loadObject('User')
+        if not oUser:
+            oUser = cuon.User.user.User()
         oUser.client = 0
         self.saveObject('User',oUser)
         self.saveObject('Scheduling', [])
@@ -1279,7 +1281,13 @@ if len(sys.argv) > 5:
             print 'td.cuon_path =', td.cuon_path   
         else:
             td.cuon_path = 'NO'
-            
+if len(sys.argv) > 6:
+    if len(sys.argv[6]) > 1:
+        if sys.argv[6] != 'NO':
+            td.SystemName =  sys.argv[6]
+            print 'td.System =', td.SystemName   
+        else:
+            td.SystemName = 'LINUX-Standard'
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

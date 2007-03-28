@@ -34,6 +34,8 @@ class typedefs:
         self.help_server = None
         self.cpParser = None
         self.new_cuon_path = None
+        self.SystemName = 'LINUX-Standard'
+        
         # First check cuonObjects
         try:
             #print 'just self.server = ', self.server

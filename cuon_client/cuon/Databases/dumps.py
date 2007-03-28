@@ -48,26 +48,38 @@ class dumps:
         
     def openDB(self):
         #print 'PATH = ', self.td.cuon_path
-        self.dbase = shelve.open(os.path.normpath('../' + 'cuonObjects'))
+        if self.td.SystemName == 'Maemo':
+            pass
+        else:
+            self.dbase = shelve.open(os.path.normpath('../' + 'cuonObjects'))
 
     def closeDB(self):
-        self.dbase.close()
+        if self.td.SystemName == 'Maemo':
+            pass
+        else:
+            self.dbase.close()
         
     def saveObject(self, key, oValue):
         # print "Save = " + `key` + ", " + self.td.cuon_path + '/' + 'cuonObjects'
-
-        self.dbase[key] = oValue
+        if self.td.SystemName == 'Maemo':
+           self.pickleObject(key, oValue)
+        else:
+            self.dbase[key] = oValue
 
     def loadObject(self, key):
         # print "Home = " + self.td.cuon_path + '/' + 'cuonObjects'
         # print key
         oValue = None
         # dbase  = shelve.open(os.path.normpath(self.td.cuon_path + '/' + 'cuonObjects'))
-        try:
-            oValue = self.dbase[key]
-        except:
-            oValue = None
-            
+        if self.td.SystemName == 'Maemo':
+            print 'Maemo reached'
+            oValue = self.unpickleObject(key)
+        else:
+            try:
+                oValue = self.dbase[key]
+            except:
+                oValue = None
+                
         # dbase.close()
         return oValue
     
@@ -139,7 +151,7 @@ class dumps:
             sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')    
         elif cDoc == 'INVOICE':
             sOutput = os.system(dicUser['prefApps']['printInvoice'] + ' ' + fname + ' &')
-        elif cDoc == 'PRINTNEWSLETTE':
+        elif cDoc == 'PRINTNEWSLETTER':
             sOutput = os.system(dicUser['prefApps']['printNewsletter'] + ' ' + fname + ' &')
             
           

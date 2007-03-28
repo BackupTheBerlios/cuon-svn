@@ -87,7 +87,7 @@ class Misc(xmlrpc.XMLRPC, basics):
     def xmlrpc_faxData(self, dicUser, faxdata, phone_number):
         print 'send Fax'
         ol = False
-        filename = fax___ + self.createNewSessionID()['SessionID'] 
+        filename = 'fax___' + self.createNewSessionID()['SessionID'] 
         if filename:
             faxdata = base64.decodestring(faxdata)
             faxdata = bz2.decompress(faxdata)

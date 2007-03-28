@@ -192,11 +192,14 @@ class contactwindow(chooseWindows):
     
     def on_eAddressID_changed(self, event):
         print 'eAdrnbr changed'
-        iAdrNumber = self.getChangedValue('eAddressID')
-        eAdrField = self.getWidget('tvAddress')
-        liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
-    
+        try:
+            iAdrNumber = self.getChangedValue('eAddressID')
+            eAdrField = self.getWidget('tvAddress')
+            liAdr = self.singleAddress.getAddress(iAdrNumber)
+            self.setTextbuffer(eAdrField,liAdr)
+        except:
+            pass
+            
 
     def on_bGoToAddress_clicked(self, event):
         print 'go to address'
@@ -234,7 +237,7 @@ class contactwindow(chooseWindows):
                 #t2 = time.strptime(sTime,'%H:%M')
                 #print 't2 = ', t2
                 liTwake = sTime.split(':')
-                t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]),int(liTwake[1]),0,0,0,0)
+                t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]),int(liTwake[1]),0,0,0,1)
                 print t_set
                 tR = time.mktime(t_set)
                 print tR
@@ -308,6 +311,19 @@ class contactwindow(chooseWindows):
         if self.tabOption == self.tabContact:
             self.singleContact.connectTree()
             self.singleContact.refreshTree()
+            try:
+                print 'read buffer'
+                self.on_eAddressID_changed('NONE')
+                b1 = self.readTextBuffer(self.getWidget('tvAddress'))
+                print 'b1', b1
+                if b1:
+                    
+                    self.win1.set_title(b1.replace('\n',', '))
+                self.out( 'Seite 0')
+
+            except Exception, params:
+                print Exception, params
+                
         
      
 
@@ -327,11 +343,7 @@ class contactwindow(chooseWindows):
           
             self.setTreeVisible(True)
             
-
-            self.out( 'Seite 0')
-
-
-        
+            
 
         elif self.tabOption == self.tabMisc:
             self.out( 'Seite 3')
