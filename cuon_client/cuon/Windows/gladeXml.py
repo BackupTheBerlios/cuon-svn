@@ -119,7 +119,10 @@ class gladeXml(defaultValues):
         self.xml = xml
         
     def loadGlade(self, gladeName,sMainWindow=None):
+        
         fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+
+        #print fname
         self.xml = gtk.glade.XML(fname)
         if sMainWindow:
             self.win1 = self.getWidget(sMainWindow)

@@ -45,6 +45,7 @@ import re
 import binascii
 import cuon.DMS.documentTools
 import base64
+import cuon.Misc.cuon_dialog
 
 
 class dmswindow(windows):
@@ -78,7 +79,7 @@ class dmswindow(windows):
         self.diaLink.hide()
         
         self.scanfile = None
-        
+        self.liPrintNewsletter = None
 
         self.EntriesPreferences = 'dms.xml'
         
@@ -99,14 +100,22 @@ class dmswindow(windows):
            
         if module > 0:
             self.ModulNumber = module
-        if   self.ModulNumber != self.MN['DMS'] :
+        if  self.ModulNumber != self.MN['DMS'] :
             self.sWhereStandard = ' where insert_from_module = ' + `self.ModulNumber`
             self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`            
         else:
-            self.sWhereStandard = ''
-            
-        
-            
+            scd = cuon.Misc.cuon_dialog.cuon_dialog()
+                
+        if self.ModulNumber == self.MN['Newsletter']:
+            cd = cuon.Misc.cuon_dialog.cuon_dialog()
+            ok, res = cd.inputLine( _('Print Newsletter'), _('insert label(s) for newsletter'))
+            print ok, res
+            if ok and res:
+                self.liPrintNewsletter = self.rpc.callRP('Address.getNewsletterAddresses', res, self.dicUser)
+                if self.liPrintNewsletter and self.liPrintNewsletter != 'NONE':
+                    self.getWidget('bFaxNewsletter').set_sensitive(True)
+                    self.getWidget('bPrintNewsletter').set_sensitive(True)
+    
         
         
         self.loadEntries(self.EntriesPreferences)
@@ -245,6 +254,15 @@ class dmswindow(windows):
     def on_cancelbutton1_clicked(self, event):
         print 'cancel clicked'
         self.diaLink.hide()
+        
+    def on_bFaxNewsletter_clicked(self, event):
+        pass
+    def on_bPrintNewsletter_clicked(self, event):
+        print 'print Newsletter'
+        print self.liPrintNewsletter
+        for onePrint in self.liPrintNewsletter:
+          self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, onePrint, Action='PrintNewsletter')  
+        
     def on_bFaxLastDocument_clicked(self, event):
         if self.singleDMS.tmpFile:
             cDiag = cuon.Misc.cuon_dialog.cuon_dialog()

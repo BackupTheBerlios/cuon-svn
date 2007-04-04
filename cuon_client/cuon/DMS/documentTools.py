@@ -49,7 +49,7 @@ class documentTools:
         pass
 
 
-    def viewDocument(self, singleDMS,dicUser, dicVars):
+    def viewDocument(self, singleDMS,dicUser, dicVars,Action=None):
         print 'dicVars1 ', dicVars
         singleDMS.loadDocument()
         exe = None
@@ -124,8 +124,13 @@ class documentTools:
                         print param
                         
                         
-                    
-                os.system(exe + ' ' + singleDMS.tmpFile)
+                if Action == 'PrintNewsletter':
+                    sExe = dicUser['prefApps']['printNewsletter']
+                    print 'sExe', sExe
+                    os.system(sExe + ' ' + singleDMS.tmpFile)
+                
+                else:
+                    os.system(exe + ' ' + singleDMS.tmpFile)
         
 
     def scanDocument(self, singleDMS, dicUser):

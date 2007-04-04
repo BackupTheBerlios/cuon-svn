@@ -1016,7 +1016,7 @@
       <comment />
     </field>
     <field>
-      <name>buisness_function</name>
+      <name>business_function</name>
       <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>

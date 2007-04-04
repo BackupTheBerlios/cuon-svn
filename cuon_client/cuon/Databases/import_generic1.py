@@ -135,15 +135,15 @@ class import_generic1(fileSelection):
                 s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
             lS1 = s1.split(self.dicFileAttributes['splitValue'])
             
-                
-            while (len(lS1) < self.iColumns):
-                s1 += importFile.readline().strip()
-                if self.dicFileAttributes['decodeData']:
-                    s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
-                if self.dicFileAttributes['fromChangedValue']:
-                    s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
-                    
-                lS1 = s1.split(self.dicFileAttributes['splitValue'])
+##                
+##            while (len(lS1) < self.iColumns):
+##                s1 += importFile.readline().strip()
+##                if self.dicFileAttributes['decodeData']:
+##                    s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
+##                if self.dicFileAttributes['fromChangedValue']:
+##                    s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
+##                    
+##                lS1 = s1.split(self.dicFileAttributes['splitValue'])
                 
             #exportFile.write(s1)
             print lS1

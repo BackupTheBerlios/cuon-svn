@@ -380,7 +380,7 @@ class User(defaultValues):
             self.prefApps['printPickup'] = result['exe_print_pickup']
             self.prefApps['printSupply'] = result['exe_print_supply']
             self.prefApps['printInvoice'] = result['exe_print_invoice']
-            self.prefApps['printN'] = result['exe_print_newsletter']
+            self.prefApps['printNewsletter'] = result['exe_print_newsletter']
             
         except Exception, param:
             print Exception

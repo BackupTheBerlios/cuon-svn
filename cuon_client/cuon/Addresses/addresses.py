@@ -299,6 +299,9 @@ class addresswindow(chooseWindows):
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
+    def on_newsletter_print_activate(self, event):
+        
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Newsletter'])
         
 ##        cd = cuon.Misc.cuon_dialog.cuon_dialog()
 ##        ok, res = cd.inputLine( _('Email Newsletter'), _('insert label(s) for newsletter'))

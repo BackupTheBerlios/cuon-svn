@@ -82,7 +82,7 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Forms_Address_Notes_Contacter'] = 11011
         self.MN['Forms_Address_Notes_Rep'] = 11012
         self.MN['Forms_Address_Notes_Salesman'] = 11013
-        
+        self.MN['Newsletter'] = 11100
         
         self.MN['Biblio'] = 12000
         self.MN['AI'] = 13000
@@ -507,7 +507,7 @@ class windows(rawWindow, MyXML, messages):
         defaultStyle = self.win1.get_style()
         map = self.win1.get_colormap()
         pColor = self.dicUser['prefColor']
-        print pColor
+        #print pColor
         colorFG =  map.alloc_color(0,0,0)
         colorBG =  map.alloc_color(255*255,255*255, 255*255)
         colorBase =  map.alloc_color(130*255,180*255,220*255)
@@ -522,14 +522,14 @@ class windows(rawWindow, MyXML, messages):
             
             if cType == 'duty':
                 
-                print 'BG/FG',numberBG, numberFG
+                #print 'BG/FG',numberBG, numberFG
                 sTypeBG = 'DUTY_BG'
                 sTypeFG = 'DUTY_FG'
                 
                     
         
                 
-            print 'Standard BG/FG',numberBG, numberFG
+            #print 'Standard BG/FG',numberBG, numberFG
             if numberBG[0] == '#':
                 colorBase =  map.alloc_color(numberBG)
             else:
@@ -741,7 +741,7 @@ class windows(rawWindow, MyXML, messages):
         return (r, g, b)
     
     def setColor2Text(self, event, sEntry):
-        print event
+        #print event
         Color = event.get_color()
         eColor = self.getWidget(sEntry)
         eColor.set_text(self.RGBToHTMLColor((Color.red, Color.green, Color.blue)))

@@ -158,7 +158,7 @@ class myXmlRpc(dumps, logs):
                 else:
                     print ' wait for 3 sec. '
                     print ' Try :' + `rp_tries`
-                    #time.sleep(3)
+                    time.sleep(5)
         if r == 'NONE':
             r = None
         return    r

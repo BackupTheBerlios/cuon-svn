@@ -360,5 +360,25 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_sendEmail2Address(self, dicEmail, liAttach, dicUser):
         print 'read Email-config'
         
-    
+    def xmlrpc_getNewsletterAddresses(self, NewsletterShortcut, dicUser):
+        print NewsletterShortcut
+        sSql = "select address,lastname,lastname2,firstname,street,country,zip,city,letter_address from address where newsletter ~'.*" + NewsletterShortcut +".*'"
+        sSql += self.getWhere("",dicUser,2)
+        print sSql
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result == 'NONE':
+            result = []
+        print 'result 1 ', result
+        sSql = "select partner.address as address,partner.lastname as lastname, partner.lastname2 as lastname, partner.firstname as firstname, partner.street as street, partner.country as country, partner.zip as zip , partner.city as city, partner.letter_address as letter_address, address.address as address_address, address.lastname as address_lastname, address.lastname2 as address_lastname2, address.firstname as address_firstname, address.zip as address_zip, address.city as address_city,address.street as address_street,address.country as address_country,address.letter_address as address_letter_address"
+       
+        sSql += " from partner, address where addressid = address.id and partner.newsletter ~'.*" + NewsletterShortcut +".*' "
+        sSql += self.getWhere("",dicUser,2,'partner.')
+        print sSql
+        result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print 'result2 = ', result2
+        if result2 != 'NONE':
+            for res in result2:
+                result.append(res)
+        print 'result3', result
+        return result  
         

@@ -397,6 +397,7 @@ GtkWidget*
 create_AddressMainwindow (void)
 {
   GtkWidget *AddressMainwindow;
+  GtkWidget *scrolledwindow11;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
@@ -693,12 +694,15 @@ create_AddressMainwindow (void)
   accel_group = gtk_accel_group_new ();
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (AddressMainwindow, 1024, 730);
   gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
+
+  scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow11);
+  gtk_container_add (GTK_CONTAINER (AddressMainwindow), scrolledwindow11);
 
   vbox1 = gtk_vbox_new (FALSE, 17);
   gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (AddressMainwindow), vbox1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow11), vbox1);
 
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
@@ -2667,6 +2671,7 @@ create_AddressMainwindow (void)
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow11, "scrolledwindow11");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1, "menubar1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[0].widget, "mi_datei1");

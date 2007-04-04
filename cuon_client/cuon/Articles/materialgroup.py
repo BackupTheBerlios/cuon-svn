@@ -58,7 +58,7 @@ class materialgroupwindow(chooseWindows):
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('material_group.xml', 'MaterialGroupMainwindow')
+        self.loadGlade('materialGroup.xml', 'MaterialGroupMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
         #self.win1.maximize()
         

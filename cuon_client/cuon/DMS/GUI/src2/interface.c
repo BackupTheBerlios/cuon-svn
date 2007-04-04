@@ -267,9 +267,27 @@ create_DMSMainwindow (void)
   GtkWidget *gfcb_ImportFile;
   GtkWidget *bImport;
   GtkWidget *bLink;
+  GtkWidget *bFaxNewsletter;
+  GtkWidget *bPrintNewsletter;
+  GtkWidget *alignment8;
+  GtkWidget *hbox13;
+  GtkWidget *image7;
+  GtkWidget *label54;
   GtkWidget *bFaxLastDocument;
+  GtkWidget *alignment7;
+  GtkWidget *hbox12;
+  GtkWidget *image6;
+  GtkWidget *label53;
   GtkWidget *bWriteLastDocument;
+  GtkWidget *alignment5;
+  GtkWidget *hbox10;
+  GtkWidget *image4;
+  GtkWidget *label51;
   GtkWidget *bView;
+  GtkWidget *alignment6;
+  GtkWidget *hbox11;
+  GtkWidget *image5;
+  GtkWidget *label52;
   GtkWidget *lDocs;
   GtkWidget *table3;
   GtkWidget *label21;
@@ -731,17 +749,91 @@ create_DMSMainwindow (void)
   gtk_widget_show (bLink);
   gtk_box_pack_start (GTK_BOX (vbox2), bLink, FALSE, FALSE, 0);
 
-  bFaxLastDocument = gtk_button_new_with_mnemonic (_("Fax Last Document"));
+  bFaxNewsletter = gtk_button_new_with_mnemonic (_("button2"));
+  gtk_widget_show (bFaxNewsletter);
+  gtk_box_pack_start (GTK_BOX (vbox2), bFaxNewsletter, FALSE, FALSE, 0);
+  gtk_widget_set_sensitive (bFaxNewsletter, FALSE);
+
+  bPrintNewsletter = gtk_button_new ();
+  gtk_widget_show (bPrintNewsletter);
+  gtk_box_pack_start (GTK_BOX (vbox2), bPrintNewsletter, FALSE, FALSE, 0);
+  gtk_widget_set_sensitive (bPrintNewsletter, FALSE);
+
+  alignment8 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment8);
+  gtk_container_add (GTK_CONTAINER (bPrintNewsletter), alignment8);
+
+  hbox13 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox13);
+  gtk_container_add (GTK_CONTAINER (alignment8), hbox13);
+
+  image7 = gtk_image_new_from_stock ("gtk-print", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image7);
+  gtk_box_pack_start (GTK_BOX (hbox13), image7, FALSE, FALSE, 0);
+
+  label54 = gtk_label_new_with_mnemonic (_("Print Newsletter"));
+  gtk_widget_show (label54);
+  gtk_box_pack_start (GTK_BOX (hbox13), label54, FALSE, FALSE, 0);
+
+  bFaxLastDocument = gtk_button_new ();
   gtk_widget_show (bFaxLastDocument);
   gtk_box_pack_start (GTK_BOX (vbox2), bFaxLastDocument, FALSE, FALSE, 0);
 
-  bWriteLastDocument = gtk_button_new_with_mnemonic (_("Save Last Document"));
+  alignment7 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment7);
+  gtk_container_add (GTK_CONTAINER (bFaxLastDocument), alignment7);
+
+  hbox12 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox12);
+  gtk_container_add (GTK_CONTAINER (alignment7), hbox12);
+
+  image6 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image6);
+  gtk_box_pack_start (GTK_BOX (hbox12), image6, FALSE, FALSE, 0);
+
+  label53 = gtk_label_new_with_mnemonic (_("Fax Last Document"));
+  gtk_widget_show (label53);
+  gtk_box_pack_start (GTK_BOX (hbox12), label53, FALSE, FALSE, 0);
+
+  bWriteLastDocument = gtk_button_new ();
   gtk_widget_show (bWriteLastDocument);
   gtk_box_pack_start (GTK_BOX (vbox2), bWriteLastDocument, FALSE, FALSE, 0);
 
-  bView = gtk_button_new_with_mnemonic (_("View"));
+  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment5);
+  gtk_container_add (GTK_CONTAINER (bWriteLastDocument), alignment5);
+
+  hbox10 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox10);
+  gtk_container_add (GTK_CONTAINER (alignment5), hbox10);
+
+  image4 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image4);
+  gtk_box_pack_start (GTK_BOX (hbox10), image4, FALSE, FALSE, 0);
+
+  label51 = gtk_label_new_with_mnemonic (_("Save Last Document"));
+  gtk_widget_show (label51);
+  gtk_box_pack_start (GTK_BOX (hbox10), label51, FALSE, FALSE, 0);
+
+  bView = gtk_button_new ();
   gtk_widget_show (bView);
   gtk_box_pack_start (GTK_BOX (vbox2), bView, FALSE, FALSE, 0);
+
+  alignment6 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment6);
+  gtk_container_add (GTK_CONTAINER (bView), alignment6);
+
+  hbox11 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox11);
+  gtk_container_add (GTK_CONTAINER (alignment6), hbox11);
+
+  image5 = gtk_image_new_from_stock ("gtk-zoom-fit", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image5);
+  gtk_box_pack_start (GTK_BOX (hbox11), image5, FALSE, FALSE, 0);
+
+  label52 = gtk_label_new_with_mnemonic (_("View"));
+  gtk_widget_show (label52);
+  gtk_box_pack_start (GTK_BOX (hbox11), label52, FALSE, FALSE, 0);
 
   lDocs = gtk_label_new (_("Documents"));
   gtk_widget_show (lDocs);
@@ -861,6 +953,12 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bLink, "clicked",
                     G_CALLBACK (on_bLink_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bFaxNewsletter, "clicked",
+                    G_CALLBACK (on_bFaxNewsletter_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bPrintNewsletter, "clicked",
+                    G_CALLBACK (on_bPrintNewsletter_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bFaxLastDocument, "clicked",
                     G_CALLBACK (on_bFaxLastDocument_clicked),
                     NULL);
@@ -976,9 +1074,27 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, gfcb_ImportFile, "gfcb_ImportFile");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bImport, "bImport");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bLink, "bLink");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bFaxNewsletter, "bFaxNewsletter");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bPrintNewsletter, "bPrintNewsletter");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment8, "alignment8");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox13, "hbox13");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image7, "image7");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label54, "label54");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bFaxLastDocument, "bFaxLastDocument");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment7, "alignment7");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox12, "hbox12");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image6, "image6");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label53, "label53");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bWriteLastDocument, "bWriteLastDocument");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment5, "alignment5");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox10, "hbox10");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image4, "image4");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label51, "label51");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment6, "alignment6");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox11, "hbox11");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image5, "image5");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label52, "label52");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, lDocs, "lDocs");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label21, "label21");
