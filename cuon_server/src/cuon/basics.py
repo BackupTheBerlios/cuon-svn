@@ -156,6 +156,7 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('EMAIL','ENCODING')
             if value:
                 self.EMAILENCODING = value
+                
             value = self.getConfigOption('EMAIL','CRYPT')
             if value:
                 self.EMAILCRYPT = value

@@ -63,6 +63,9 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         cuonmail = Email(smtp_server = "localhost")
         if liAttachments:
             cuonmail.attachments = liAttachments
+        else:
+            cuonmail.attachments = []
+            
 
         ok = False
         try:

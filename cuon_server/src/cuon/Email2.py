@@ -525,21 +525,31 @@ class Email(object):
         # Am SMTP-Server anmelden und evt. authentifizieren
         #
         smtp = smtplib.SMTP()
-        if self.smtp_crypt == 'TLS':
-            print 'TLS found'
-            try:
-                smtp.starttls()
-            except Exception, param:
-                print Exception, param
-                
+        
             
         if self.smtp_server:
             smtp.connect(self.smtp_server)
         else:
             smtp.connect()
-        if self.smtp_user:
-            smtp.login(user = self.smtp_user, password = self.smtp_password)
+        print self.smtp_user, self.smtp_password
+        
+       
+        
+        if self.smtp_crypt == 'TLS':
+            print 'TLS found'
+            try:
+                smtp.ehlo()
+                v1 = smtp.starttls()
+                smtp.ehlo()
 
+                print v1
+            except Exception, param:
+                print 'TLS Error'
+                print Exception, param
+        if self.smtp_user:
+            v1 = smtp.login(user = self.smtp_user, password = self.smtp_password)
+            print v1
+        
         #
         # Email versenden
         #
