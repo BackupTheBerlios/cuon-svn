@@ -101,6 +101,8 @@ class setup:
         self.CUON_DOCUMENTS_LISTS_ARTICLES = self.CUON_DOCUMENTS_LISTS + "/Articles"
         self.CUON_DOCUMENTS_LISTS_STOCK = self.CUON_DOCUMENTS_LISTS+ "/Stock"
         
+        self.CUON_DOCUMENTS_ORDER = self.CUON_DOCUMENTS + "/Order"
+        self.CUON_DOCUMENTS_ORDER_INVOICE = self.CUON_DOCUMENTS_ORDER + "/Invoice"
         
         
         self.CUON_DOCUMENTS_HIBERNATION = self.CUON_DOCUMENTS + "/Hibernation"
@@ -229,6 +231,11 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ADDRESSES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ADDRESSES + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ARTICLES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ARTICLES + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_STOCK  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_STOCK + " ; fi ")	
+
+
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ; fi ")	
+
 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")	
@@ -568,6 +575,14 @@ class setup:
     def getWidget(self, sName):
         return self.xml.get_widget(sName )
 
+    def clearTv1(self):
+        tv1 = self.getWidget('tv1')
+        buffer = tv1.get_buffer()
+        buffer.set_text('\n')
+        tv1.set_buffer(buffer)
+        tv1.show()
+        while gtk.events_pending():
+            gtk.main_iteration(gtk.FALSE)
     def setTv1(self, sText):
         sText += '\n'
         
@@ -581,7 +596,9 @@ class setup:
         buffer = tv1.get_buffer()
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
         tv1.show()
-
+        while gtk.events_pending():
+            gtk.main_iteration(gtk.FALSE)
+            
     def saveData2File(self):
         print 'save Data to config-File'
         existSect = False
@@ -658,9 +675,12 @@ class setup:
         self.saveData2File()
         
         # start install
-        
+        self.clearTv1()
         
         self.install_server()
+        
+        self.setTv1('###################### END SETUP #################')
+        
 
     def gtk_main_quit(self):
         #os.system('rm users.cfg')

@@ -436,7 +436,9 @@ class articleswindow(chooseWindows):
         else:
             self.getWidget('eCategory').set_text('')
 
-
+    def on_bGotoAssociated_clicked(self, event):
+        print 'goto associated'
+        
     def refreshTree(self):
         self.singleArticle.disconnectTree()
         self.singleArticlePurchase.disconnectTree()

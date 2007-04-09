@@ -84,7 +84,7 @@ class addresswindow(chooseWindows):
     
         self.loadGlade('address.xml', 'AddressMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
-        self.win1.maximize()
+        
         
         self.setStatusBar()
         #print 'time 3 = ', time.localtime()

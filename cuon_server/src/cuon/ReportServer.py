@@ -30,7 +30,7 @@ class ReportServer(xmlrpc.XMLRPC, basics):
 ##        return en
 ##        
     def xmlrpc_createReport(self, *reportdata):
-        #print reportdata
+        print 'start ReportServer --> createReport : reportdata', reportdata
         
         rep = self.report.start(reportdata)
         #rep = oReports.ServerStartReport(dicOrder, dicUser, oGarden, self.ReportDefs)

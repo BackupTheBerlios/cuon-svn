@@ -1032,10 +1032,11 @@ class report(MyXML):
             c.setFillColorRGB(dicField['foregroundColor']['rColor'], dicField['foregroundColor']['gColor'], dicField['foregroundColor']['bColor'] )
             
             if dicField['text']:
-                sq = s % dicField['text']                
-                #to.textOut(sq)
-                #c.drawText(to)
                 try:
+
+                    sq = s % dicField['text']                
+                    #to.textOut(sq)
+                    #c.drawText(to)
                     print 'SQ = ', sq
                 except Exception, params:
                     print 'Exception utf-8, latin'

@@ -203,9 +203,17 @@ class orderwindow(chooseWindows):
 
     def on_print_invoice1_activate(self, event):
         dicOrder = {}
+        print ' start Invoice printing'
+        dicOrder['orderid'] = self.singleOrder.ID
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
+        print ' start Invoice printing 2'
+
         dicOrder['invoiceNumber'] =  self.singleOrder.getInvoiceNumber()        
-        invoice = cuon.Order.standard_invoice.standard_invoice(dicOrder)
+        print ' start Invoice printing 3'
+        
+        
+        Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
+        self.showPdf(Pdf, self.dicUser,'INVOICE')
 
     def on_print_delivery_note1_activate(self, event):
         print 'delivery note'

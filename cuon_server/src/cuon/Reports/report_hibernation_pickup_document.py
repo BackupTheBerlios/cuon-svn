@@ -74,6 +74,10 @@ class report_hibernation_pickup_document(report_basics):
         # 3 dicResults
         # 4 dicReportData
         # 5 reportDefs
+        
+        print '\n'
+        print 'Return-Data', reportDefs['ReportPath'] + '/hibernation_pickup_document.xml'
+        
         return reportDefs['ReportPath'] + '/hibernation_pickup_document.xml', dicUser, self.dicResults, self.dicReportData, reportDefs
         
         

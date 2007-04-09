@@ -45,8 +45,14 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = sSql + " from orderbook, address where orderbook.number = \'" + dicOrder['orderNumber'] +"\' " 
         sSql = sSql + "and address.id = orderbook.addressnumber" 
         
-        return self.oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
 
+    def xmlrpc_getOrderPositions(self, dicOrder, dicUser):
+        sSql = 'select * from orderposition where orderid = ' + `dicOrder['orderid']`
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        return dicResult
+        
+        
     def xmlrpc_getInvoiceNumber(self, orderNumber, dicUser):
         
         nr = 0

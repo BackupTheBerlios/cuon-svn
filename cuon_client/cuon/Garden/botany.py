@@ -34,8 +34,8 @@ import SingleBotanyOrdo
 import SingleBotanyFamily
 import SingleBotanyGenus
 import SingleBotany
-
-
+import cuon.Articles.articles
+import cuon.Articles.SingleArticle
 
 class botanywindow(chooseWindows):
 
@@ -59,6 +59,7 @@ class botanywindow(chooseWindows):
         self.singleBotanyGenus = SingleBotanyGenus.SingleBotanyGenus(allTables)
         self.singleBotany = SingleBotany.SingleBotany(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
 
         
         # self.singleBotany.loadTable()
@@ -357,7 +358,20 @@ class botanywindow(chooseWindows):
         if self.tabOption == self.tabBotany:
             self.activateClick('chooseBotany', event)
     
+    # Button choose article 
+    def on_bChooseArticle_clicked(self, event):
+        ar = cuon.Articles.articles.articleswindow(self.allTables)
+        ar.setChooseEntry('chooseArticle', self.getWidget( 'eArticleID'))
 
+                           
+
+    def on_eArticleID_changed(self, event):
+        print 'eArticle changed'
+        iArtNumber = self.getChangedValue('eArticleID')
+        eArtField = self.getWidget('eArticleDescription')
+        cArt = self.singleArticle.getArticleShort(iArtNumber)
+        eArtField.set_text(cArt)
+    
     def searchBotany(self):
         self.out( 'Searching ....', self.ERROR)
         sName = self.getWidget('eFindName').get_text()

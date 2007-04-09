@@ -1,4 +1,5 @@
-##Copyright (C) [2003-2004]  [Jürgen Hamel, D-32584 Löhne]
+# -*- coding: utf-8 -*-
+##Copyright (C) [2003-2004]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -11,12 +12,73 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 
-class report_order_standard_invoice:
+import os
+import types
+from report_basics import report_basics
+
+
+
+class report_order_standard_invoice(report_basics):
     def __init__(self):
-        self.dicReportData = {}
+        report_basics.__init__(self)
         
-        self.dicReportData['Title'] = _('INVOICE')
+        self.dicReportData = {}
+        self.dicResults = {}
+        
+        
+        self.dicReportData['Title'] = _('Invoice generatet by CUON')
 
         self.dicReportData['lPageNumber'] = _('Pagenumber:')
         self.dicReportData['fPageNumber'] = 1
+        self.dicReportData['Designation'] = _('Designation')
+        self.dicReportData['lOrderNumber'] = _('Order-Number:')
+        
+    
+    
+    def getReportData(self, dicOrder, dicUser, oOrder, reportDefs ):
+        
+        
+        self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('Invoice-') + `dicOrder['invoiceNumber']` + '.pdf' 
+        reportDefs['pdfFile'] = os.path.normpath(self.fileName)
+        print dicOrder
+        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+
+        dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )
+        print "result by address: ", dicResult
+        if dicResult != 'NONE':
+            for i in dicResult:
+                for j in i.keys():
+                    if isinstance(i[j],  types.StringType):
+                        i[j] = self.getPdfEncoding(i[j],reportDefs )
+                        
+                                    
+                            
+                            
+
+            self.dicResults['address'] = dicResult   
+            dicResult =  oOrder.xmlrpc_getOrderPositions( dicOrder,  dicUser )
+            print "result by positions", dicResult
+            
+    
+            for i in dicResult:
+                for j in i.keys():
+                    if isinstance(i[j],  types.StringType):
+                        i[j] = self.getPdfEncoding(i[j],reportDefs )
+                
+    
+        
+            print  dicResult 
+            self.dicResults['positions'] = dicResult
+            print 'ReportPath = ', reportDefs['ReportPath'] + '/order_standardinvoice.xml'
+            
+            # values in this order:
+            # 1 reportname
+            # 2 dicUser
+            # 3 dicResults
+            # 4 dicReportData
+            # 5 reportDefs
+        return reportDefs['ReportPath'] + '/order_standardinvoice.xml', dicUser, self.dicResults, self.dicReportData, reportDefs
+        
+        
+        
         

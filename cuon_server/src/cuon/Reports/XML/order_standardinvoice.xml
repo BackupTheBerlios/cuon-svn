@@ -17,7 +17,7 @@
     <entry>
       <name>headimage</name>
       <class>ImageURL</class>
-      <value>/home/jhamel/cuon/cyrus.jpg</value>
+      <value>/usr/share/cuon/cyrus.jpg</value>
       <type>string</type>
 
       <format>%s</format>
