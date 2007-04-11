@@ -243,13 +243,17 @@ class iCal(xmlrpc.XMLRPC, basics):
             dicCal['summary'] = ''
 
             if result:
-                dicCal['summary'] += firstRecord['short_remark'] + `result[0]['adr_id']` + ' '
+                dicCal['summary'] += '>> ' + result[0]['adr_zip'] + ' ' + result[0]['adr_city'] + ' <<, '
+                dicCal['summary'] += firstRecord['short_remark'] + ', ID = ' + `result[0]['adr_id']` + ', '
             if result and result[0].has_key('st_lastname'):
                 dicCal['summary'] += result[0]['st_lastname'] + ', ' 
             
             if result and result[0].has_key('st_firstname'):
                 dicCal['summary'] += result[0]['st_firstname'] + ' ' 
             
+            dicCal['summary'] = self.tryDecode(dicCal['summary'] )
+            print 'Summary', dicCal['summary']
+
             #dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
             dicCal['summary'] = ' '
@@ -264,7 +268,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                 
 
                 dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
-                #dicCal['location'] = dicCal['location'].decode('utf-8')
+                dicCal['location'] = self.tryDecode(dicCal['location'])
+            print 'location', dicCal['location']
                 
         except Exception, params:
             print 'Error by location'
@@ -272,10 +277,10 @@ class iCal(xmlrpc.XMLRPC, basics):
             
         try:
             
-            if result and result != 'NONE':
-                dicCal['description'] = firstRecord['notes']
+            dicCal['description'] = firstRecord['notes']
                 
-                #dicCal['description'] = dicCal['description'].decode('utf-8')
+            dicCal['description'] = self.tryDecode(dicCal['description'])
+            print 'description', dicCal['description']
                 
         except Exception, params:
             print 'Error by notes'
@@ -330,7 +335,31 @@ class iCal(xmlrpc.XMLRPC, basics):
         self.writeCalendar(sName, Cal)
         
         
+
+    def tryDecode(self, s):
+        try:
+            s = s.decode('utf-8')
+        except:
+            try:
+                s = s.decode('latin-1')
+            except:
+                try:
+                    s = s.decode('latin-2')
+                except:
+                    try:
+                        s = s.decode('utf-7')
+                    except:
+                        try:
+                            s = s.decode('CP-1250')
+                        except:
+                            try:
+                                v = s.encode('utf-8')
+                            except:
+                                print '-----> no decode method is functional, clean s '
+                                s = ''
+        return s
         
+                
 #i=iCal()
 #dicEvent={}
 #s = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'

@@ -81,3 +81,12 @@ class SingleHibernation(SingleData):
         dicRecords = self.load(id)
         return dicRecords[0]['number']
     
+    def getHibernationAddressNumber(self, id):
+        dicRecords = self.load(id)
+        return dicRecords[0]['addressnumber']
+    
+    def getBeginEndDate(self, id):
+        dicRecords = self.load(id)
+        return [dicRecords[0]['begin_date'],dicRecords[0]['end_date']]
+        
+        

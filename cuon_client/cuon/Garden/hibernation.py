@@ -299,7 +299,10 @@ class hibernationwindow(chooseWindows):
         
         dicOrder['ModulNumber'] = self.singleHibernation.ID
         dicOrder['ModulOrderNumber'] = self.ModulHibernationNumber
-        
+        dicOrder['addressnumber'] = self.singleHibernation.getHibernationAddressNumber(self.singleHibernation.ID)
+        dBegin, dEnd = self.singleHibernation.getBeginEndDate(self.singleHibernation.ID)
+        dicOrder['orderedat'] = dBegin
+        dicOrder['deliveredat'] = dEnd
         dicOrder['Positions'] = self.rpc.callRP('Garden.getOrderPositions',self.singleHibernation.ID, self.dicUser)
         dicOrder['Number'] = `self.singleHibernation.ID`
         

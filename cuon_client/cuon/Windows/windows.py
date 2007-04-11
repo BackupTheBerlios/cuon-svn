@@ -123,6 +123,21 @@ class windows(rawWindow, MyXML, messages):
     def closeWindow(self):
         self.saveDataQuestion()
         self.win1.hide()
+        
+    
+    def delete_event(self, widget, event, data=None):
+        # If you return FALSE in the "delete_event" signal handler,
+        # GTK will emit the "destroy" signal. Returning TRUE means
+        # you don't want the window to be destroyed.
+        # This is useful for popping up 'are you sure you want to quit?'
+        # type dialogs.
+        print "delete event occurred"
+        
+        self.closeWindow()
+        # Change FALSE to TRUE and the main window will not be destroyed
+        # with a "delete_event".
+        return True        
+        
     def openWindow(self):
         self.win1.show()
         return False
@@ -456,6 +471,12 @@ class windows(rawWindow, MyXML, messages):
 ##        return False
         
     def setProperties(self, sName):
+        '''
+        sets the property (colors,etc.) of an gtk-widget
+        @param sName: The name of the widget
+        
+        '''
+        
         self.out('entries for property  = ' + sName)
         
         entries = self.getDataEntries(sName)
@@ -492,7 +513,8 @@ class windows(rawWindow, MyXML, messages):
         | 640 North Aohoku Place           |                Fax: (808) 933-0737 |
         | Hilo, Hawaii 96720               |                                    |
         \-----------------------------------------------------------------------/
-        @param cSwitch: a switch for the applied item
+        @param cSType: a switch for the applied item ( ex. duty )
+        
         f = foreground
         b = background
         l = light

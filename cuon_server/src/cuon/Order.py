@@ -142,6 +142,10 @@ class Order(xmlrpc.XMLRPC, basics):
         dicValues['modul_order_number'] = [dicOrder['ModulOrderNumber'],'int']
         dicValues['modul_number'] = [dicOrder['ModulNumber'],'int']
         dicValues['number'] = [dicOrder['Number'],'string']
+        dicValues['addressnumber'] = [dicOrder['addressnumber'],'int']
+        dicValues['orderedat'] = [dicOrder['orderedat'],'date']
+        dicValues['deliveredat'] = [dicOrder['deliveredat'],'date']
+        
         dicResult =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
         
         if dicOrder.has_key('Positions'):

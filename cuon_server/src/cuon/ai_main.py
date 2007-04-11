@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 try:
     import aiml
@@ -10,20 +11,20 @@ class ai_main:
     def __init__(self):
 
         self.k = aiml.Kernel()
-        self.os1 = 'öß'.decode('latin-1').encode('utf-7')
-        self.Os1 = 'Öß'.decode('latin-1').encode('utf-7')
-        self.us1 = 'üß'.decode('latin-1').encode('utf-7')
-        self.Us1 = 'Üß'.decode('latin-1').encode('utf-7')
-        self.as1 = 'äß'.decode('latin-1').encode('utf-7')
-        self.As1 = 'Äß'.decode('latin-1').encode('utf-7')
+        self.os1 = 'Ã¶ÃŸ'.decode('latin-1').encode('utf-7')
+        self.Os1 = 'Ã–ÃŸ'.decode('latin-1').encode('utf-7')
+        self.us1 = 'Ã¼ÃŸ'.decode('latin-1').encode('utf-7')
+        self.Us1 = 'ÃœÃŸ'.decode('latin-1').encode('utf-7')
+        self.as1 = 'Ã¤ÃŸ'.decode('latin-1').encode('utf-7')
+        self.As1 = 'Ã„ÃŸ'.decode('latin-1').encode('utf-7')
 
-        self.Oe = 'Ö'.decode('latin-1').encode('utf-7')
-        self.Ae = 'Ä'.decode('latin-1').encode('utf-7')
-        self.Ue = 'Ü'.decode('latin-1').encode('utf-7')
-        self.oe = 'ö'.decode('latin-1').encode('utf-7')
-        self.ae = 'ä'.decode('latin-1').encode('utf-7')
-        self.ue = 'ü'.decode('latin-1').encode('utf-7')
-        self.ss = 'ß'.decode('latin-1').encode('utf-7')
+        self.Oe = 'Ã–'.decode('latin-1').encode('utf-7')
+        self.Ae = 'Ã„'.decode('latin-1').encode('utf-7')
+        self.Ue = 'Ãœ'.decode('latin-1').encode('utf-7')
+        self.oe = 'Ã¶'.decode('latin-1').encode('utf-7')
+        self.ae = 'Ã¤'.decode('latin-1').encode('utf-7')
+        self.ue = 'Ã¼'.decode('latin-1').encode('utf-7')
+        self.ss = 'ÃŸ'.decode('latin-1').encode('utf-7')
 
         try:
             ctrlFile = open('/etc/cuon/ai_subs.ini')

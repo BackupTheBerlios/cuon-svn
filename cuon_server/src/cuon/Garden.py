@@ -279,13 +279,61 @@ class Garden(xmlrpc.XMLRPC, basics):
             replace_plant_add_pot = self.getConfigOption('modul_hibernation','replace_plant_add_pot', cpServer)
             replace_plant_add_material = self.getConfigOption('modul_hibernation','replace_plant_add_material', cpServer)
             replace_plant_add_misc = self.getConfigOption('modul_hibernation','replace_plant_add_misc', cpServer)
-            sSql ='select * from hibernation where id = ' + `hibID`
+            
+
+            translate_price_staff_pickup_for = self.getConfigOption('modul_hibernation','translate_price_staff_pickup_for', cpServer)
+            translate_price_staff_supply_for = self.getConfigOption('modul_hibernation','translate_price_staff_supply_for', cpServer)
+
+            translate_price_hibernation_for = self.getConfigOption('modul_hibernation','translate_price_hibernation_for', cpServer)
+            translate_price_add_earth_for = self.getConfigOption('modul_hibernation','translate_price_add_earth_for', cpServer)
+            translate_price_add_pot_for = self.getConfigOption('modul_hibernation','translate_price_add_pot_for', cpServer)
+            translate_price_add_material_for = self.getConfigOption('modul_hibernation','translate_price_add_material_for', cpServer)
+            translate_price_add_misc_for = self.getConfigOption('modul_hibernation','translate_price_add_misc_for', cpServer)
+            
+            
+            
+            sSql ='select begin_working_time, ends_working_time, begin_staff_number, ends_staff_number from hibernation where id = ' + `hibID`
             
             
             sSql += self.getWhere("",dicUser,2)
             print sSql
-            
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+
+            if result != 'NONE':
+                row = result[0]
+                print 'row=', row
+                if row['begin_working_time'] > 0.0001:
+                    sSql = 'select fee_per_hour_invoice from staff_fee where staff_id = ' + `row['begin_staff_number']`
+                    sSql += self.getWhere("",dicUser,2)
+                    print sSql
+                    result_2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+                    print result_2
+                    if result_2 != 'NONE':
+                        dicPos = {}
+                        dicPos['position'] = [ iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] = [result_2[0]['fee_per_hour_invoice'] * row['begin_working_time'],'float']
+                        dicPos['articleid'] = [int(replace_staff_pickup),'int']
+                        dicPos['designation'] = [translate_price_staff_pickup_for + ' ','string']
+                        dicPos['amount'] = [1.00,'float']
+
+                        result2.append(dicPos)
+                        
+                if row['ends_working_time'] > 0.0001:
+                    sSql = 'select fee_per_hour_invoice from staff_fee where staff_id = ' + `row['ends_staff_number']`
+                    sSql += self.getWhere("",dicUser,2)
+                    result_2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+                    if result_2 != 'NONE':
+                        dicPos = {}
+                        dicPos['position'] = [ iPosition,'int']
+                        iPosition += 1
+                        dicPos['price'] =  [result_2[0]['fee_per_hour_invoice'] * row['ends_working_time'],'float']
+                        dicPos['articleid'] = [int(replace_staff_supply),'int']
+                        dicPos['designation'] = [translate_price_staff_supply_for + ' ','string']
+                        dicPos['amount'] = [1.00,'float']
+
+                        result2.append(dicPos)
+            
             # TODO search for staff --> fee
 ##            if result != 'NONE':
 ##                if result['hib_price'] > 0:
@@ -319,7 +367,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         iPosition += 1
                         dicPos['price'] = [row['hib_price'],'float']
                         dicPos['articleid'] = [int(replace_plant_hibertion),'int']
-                        dicPos['designation'] = [_('price hibernation for ') + row['bot_name'],'string']
+                        dicPos['designation'] = [translate_price_hibernation_for + ' ' + row['bot_name'],'string']
                         dicPos['amount'] = [1.00,'float']
 
                         result2.append(dicPos)
@@ -330,7 +378,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         iPosition += 1
                         dicPos['price'] = [row['hib_add_earth'],'float']
                         dicPos['articleid'] = [int(replace_plant_add_earth),'int']
-                        dicPos['designation'] = [_('price add earth for ') +row['bot_name'],'string']
+                        dicPos['designation'] = [translate_price_add_earth_for +' ' + row['bot_name'],'string']
                         dicPos['amount'] = [1.00,'float']
                         result2.append(dicPos)
                     
@@ -341,7 +389,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         iPosition += 1
                         dicPos['price'] = [row['hib_add_material'],'float']
                         dicPos['articleid'] = [int(replace_plant_add_material),'int']
-                        dicPos['designation'] = [_('price add material for ') + row['bot_name'],'string']
+                        dicPos['designation'] = [ translate_price_add_material_for + ' '  + row['bot_name'],'string']
                         dicPos['amount'] = [1.00,'float']
                         result2.append(dicPos)
                         
@@ -354,7 +402,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         iPosition += 1
                         dicPos['price'] = [row['hib_add_pot'],'float']
                         dicPos['articleid'] = [int(replace_plant_add_pot),'int']
-                        dicPos['designation'] = [_('price add pot for ') + row['bot_name'],'string']
+                        dicPos['designation'] = [translate_price_add_pot_for + ' ' + row['bot_name'],'string']
                         dicPos['amount'] = [1.00,'float']
                         result2.append(dicPos)  
                         
@@ -365,7 +413,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         iPosition += 1
                         dicPos['price'] = [row['hib_add_misc'],'float']
                         dicPos['articleid'] = [int(replace_plant_add_misc),'int']
-                        dicPos['designation'] = [_('price misc for ') + row['bot_name'],'string']
+                        dicPos['designation'] = [translate_price_add_misc_for + ' ' + row['bot_name'],'string']
                         dicPos['amount'] = [1.00,'float']
                         result2.append(dicPos)    
                     print result2
