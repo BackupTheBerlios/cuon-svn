@@ -44,6 +44,7 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All'):
         value = None
         result = 'NONE'
+        sw = None
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
@@ -61,7 +62,7 @@ class Address(xmlrpc.XMLRPC, basics):
             
         if value and value == 'NO':
             pass
-        elif value and value == 'ALL':
+        elif value:
                 
                 
             sSql = "select partner_schedul.schedul_date as date, "
@@ -84,14 +85,21 @@ class Address(xmlrpc.XMLRPC, basics):
             # where
             if SelectStaff == 'All':
                 sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
-                sW = sW + " process_status != 999 "
-                sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+                sW += " process_status != 999 "
                 
             else:
                 sW = " where partner.id = partner_schedul.partnerid and address.id = partner.addressid and "
                 sW +=  " process_status != 999 "
                 sW += " and schedul_staff_id = " + SelectStaff + " "
-                sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
+            
+            
+            if value != 'All':
+                liValue = value.split(',')
+                for sOptValue in liValue:
+                    sw += ' and schedul_staff_id = ' + sOptValue
+                
+            
+            sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
                 
                 
             if OrderType == 'Name' :
@@ -194,7 +202,16 @@ class Address(xmlrpc.XMLRPC, basics):
         return liResult2
         
         
+    def xmlrpc_getNotes(self, addressid, dicuser):
+        dicReturn = 'NONE'
+        sSql = 'select * from address_notes where address_id = ' +  `addressid`
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        if liResult != 'NONE':
+            dicReturn = liResult[0]
+        return dicReturn
         
+        
+            
     def xmlrpc_getPartnerAddress(self, id, dicUser):
         sSql = 'select address, lastname, lastname2,firstname, street, zip, city, state, country, phone from partner where id = ' + `id`
         

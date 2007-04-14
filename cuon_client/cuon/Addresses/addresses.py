@@ -167,12 +167,12 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesPartnerSchedul )
         self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
         self.singleSchedul.setGladeXml(self.xml)
-        self.singleSchedul.setTreeFields( ['schedul_date','schedul_time_begin','short_remark','priority','process_status'] )
-        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+        self.singleSchedul.setTreeFields( ['schedul_date',"to_char(round(schedul_time_begin/4),'99') || ':' || to_char(round(mod(schedul_time_begin,4)*15,0),'09MI') as begindate ","to_char(round(schedul_time_end/4),'99') || ':' || to_char(round(mod(schedul_time_end,4)*15,0),'09MI') as enddate ",'short_remark','priority','process_status'] )
+        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
         #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
-        self.singleSchedul.setTreeOrder('schedul_date, schedul_time_begin')
-        self.singleSchedul.setListHeader([_('Date '),_('Time'),  _('shortRemark'), _('Priority'), _('Status')])
+        self.singleSchedul.setTreeOrder("to_date(schedul_date," + "'" + self.dicUser['SQLDateFormat'] + "')" + ',schedul_time_begin')
+        self.singleSchedul.setListHeader([_('Date '),_('Begin'), _('End'), _('shortRemark'), _('Priority'), _('Status')])
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
@@ -663,11 +663,18 @@ class addresswindow(chooseWindows):
             if dicInternInformation != 'NONE':    
                 for key in dicInternInformation:
                     dicSchedul[key] = dicInternInformation[key]
-            
+
+            dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            if dicNotes != 'NONE':
+                for key in dicNotes:
+                    dicSchedul['notes_' + key] = dicNotes[key]
+                    
             dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
             print 'dicSchedul = ', dicSchedul
             print 'lastname', dicSchedul['person1_lastname']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
+    
+        
                     
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul

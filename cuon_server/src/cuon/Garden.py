@@ -184,12 +184,17 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(['hibernation.hibernation_number','order_number'])
         liFields.append(["to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')","begin_date"])
         liFields.append(["hibernation.begin_working_time","begin_working_time"])
+        liFields.append(["hibernation.sequence_of_stock","sequence_of_stock"])
+        liFields.append(["hibernation.begin_notes","begin_notes"])
+        liFields.append(["hibernation.ends_notes","ends_notes"])
+
         liFields.append(["hibernation_plant.plant_number","article_id"])
         liFields.append(["hibernation_plant.price","price"])
         liFields.append(["hibernation_plant.plant_status","status"])
         liFields.append(["hibernation_plant.plant_notice","plantnotice"])
         liFields.append(["hibernation_plant.vermin","vermin"])
         liFields.append(["hibernation_plant.diameter","diameter"])
+        
 
         liFields.append(["botany.botany_name","botany_name"])
         liFields.append(["botany.local_name","local_name"])
@@ -213,6 +218,10 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(['hibernation.hibernation_number','order_number'])
         liFields.append(["to_char(hibernation.begin_date, \'" + dicUser['SQLDateFormat'] + "\')","begin_date"])
         liFields.append(["hibernation.begin_working_time","begin_working_time"])
+        liFields.append(["hibernation.sequence_of_stock","sequence_of_stock"])
+        liFields.append(["hibernation.begin_notes","begin_notes"])
+        liFields.append(["hibernation.ends_notes","ends_notes"])
+
         liFields.append(["hibernation_plant.plant_number","article_id"])
         liFields.append(["hibernation_plant.price","price"])
         liFields.append(["hibernation_plant.plant_status","status"])

@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 36, 'Rev': 11,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 36, 'Rev': 13,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1076,22 +1076,30 @@ class MainWindow(windows):
         print 's=', s
         if s:
             widgetEShortRemark.set_text(s)
+        else:
+            widgetEShortRemark.set_text('')
+            
             
         s = self.singleSchedul.getNotes()
         print 's=', s
         if s:
             self.add2Textbuffer(widgetTvEvent,s,'Overwrite')  
-       
-        
+        else:
+            self.add2Textbuffer(widgetTvEvent,' ','Overwrite')  
+            
         
         s = self.singleAddress.getMailAddress()
         if s:
             self.add2Textbuffer(widgetTVAddress,s,'Overwrite')
-        
+        else:
+            self.add2Textbuffer(widgetTVAddress,' ','Overwrite')
+            
+            
         s = self.singlePartner.getMailAddress()
         if s:
             self.add2Textbuffer(widgetTVPartner,s,'Overwrite')
-                
+        else:
+            self.add2Textbuffer(widgetTVPartner,' ','Overwrite')
         
         
         

@@ -40,18 +40,18 @@ class iCal(xmlrpc.XMLRPC, basics):
         try:
             if dicEvent.has_key('summary'):
                 event.add('summary', dicEvent['summary'])
-                print 'Summary', dicEvent['summary']
+                #print 'Summary', dicEvent['summary']
             if dicEvent.has_key('dtstart'):
                 s = time.strptime(dicEvent['dtstart'], dicEvent['DateTimeformatString'])
                 event.add('dtstart', datetime(s[0],s[1],s[2],s[3],s[4],s[5]))
-                print 'dtstart', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
+                #print 'dtstart', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
             if dicEvent.has_key('dtend'):
                 s = time.strptime(dicEvent['dtend'], dicEvent['DateTimeformatString'])
                 event.add('dtend', datetime(s[0],s[1],s[2],s[3],s[4],s[5]))
-                print 'dtend', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
+                #print 'dtend', datetime(s[0],s[1],s[2],s[3],s[4],s[5])
             if dicEvent.has_key('dtstamp'):
                 event.add('dtstamp', dicEvent['dtstamp'])
-                print 'stamp',  dicEvent['dtstamp']
+                #print 'stamp',  dicEvent['dtstamp']
             if not UID:
                 dicEvent['uid'] = `dicEvent['id']` + '#### ' + self.createUID()
             else:
@@ -122,14 +122,20 @@ class iCal(xmlrpc.XMLRPC, basics):
             sCal = 'BEGIN:VCALENDAR\r\nPRODID:-//My calendar product//mxm.dk//\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTEND:20050404T100000Z\r\nDTSTAMP:20050404T001000Z\r\nDTSTART:20050404T080000Z\r\nPRIORITY:5\r\nSUMMARY:Python meeting about calendaring\r\nUID:20050115T101010/27346262376@mxm.dk\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n\n'
 
         return sCal
-        
-    def addEvent(self, sName, firstRecord, dicUser):
+     
+    def setCalendarValues(self,sName,firstRecord, dicUser, sUserKey):
         ok = False
-        # calendar of the contakter
+        dicEvent = self.getDicCal(firstRecord, dicUser,sUserKey)
+        
+        if dicEvent.has_key('staff_cuon_username') and len(dicEvent['staff_cuon_username']) > 0:
+            print 'create Calendar for schedul_staff', dicEvent['staff_cuon_username']
+            print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
+            sName = 'iCal_' + dicEvent['staff_cuon_username']
+            
+         
         Cal = self.getCalendar(sName)
         #print 'Cal', Cal
         
-        dicEvent = self.getDicCal(firstRecord, dicUser,'User')
         Cal2 = self.createCal()
         for i in Cal.walk('VEVENT'):
             print 'i = ', i
@@ -149,37 +155,44 @@ class iCal(xmlrpc.XMLRPC, basics):
             Cal2.add_component(newEvent)
             self.writeCalendar(sName, Cal2)
             ok = True
-        # calendar of the schedul staff
-        dicEvent = self.getDicCal(firstRecord, dicUser,'schedul_staff')
-        if dicEvent.has_key('staff_cuon_username') and len(dicEvent['staff_cuon_username']) > 0:
-            print 'create Calendar for schedul_staff', dicEvent['staff_cuon_username']
-            print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
-            Cal = self.getCalendar('iCal_' + dicEvent['staff_cuon_username'])
-            print 'Cal', Cal
-            Cal2 = self.createCal()
-            for i in Cal.walk('VEVENT'):
-                print 'i = ', i
-                if i.has_key('UID'):
-                    print 'uid = ', i['UID']
-                    sSearch = `firstRecord['id']` +'####'
-                    print  '--->' + i['UID'][0:len(sSearch)] + '<---', '+++' + sSearch + '+++'
+            
+        return ok
 
-                    print sSearch
-                    if i['UID'][0:len(sSearch)] != sSearch:
-                        print 'uid not found'
-                        Cal2.add_component(i)
-                    else:
-                        print 'UID found'
-                        print  i['UID'][0:len(sSearch)-1], sSearch
-                else:
-                    Cal2.add_component(i)
-                
-            newEvent = self.createEvent(dicEvent)
-            print 'newEvent = ' + `newEvent`
-            if newEvent:
-                Cal2.add_component(newEvent)
-                self.writeCalendar('iCal_' + dicEvent['staff_cuon_username'], Cal2)
-                ok = True
+    def addEvent(self, sName, firstRecord, dicUser):
+        
+        ok = False
+        # calendar of the contakter
+        ok = self.setCalendarValues(sName, firstRecord, dicUser,'User')
+        # calendar of the schedul staff
+        ok = self.setCalendarValues(sName, firstRecord, dicUser,'schedul_staff')
+        
+        
+       
+##            print 'Cal', Cal
+##            Cal2 = self.createCal()
+##            for i in Cal.walk('VEVENT'):
+##                print 'i = ', i
+##                if i.has_key('UID'):
+##                    print 'uid = ', i['UID']
+##                    sSearch = `firstRecord['id']` +'####'
+##                    print  '--->' + i['UID'][0:len(sSearch)] + '<---', '+++' + sSearch + '+++'
+##
+##                    print sSearch
+##                    if i['UID'][0:len(sSearch)] != sSearch:
+##                        print 'uid not found'
+##                        Cal2.add_component(i)
+##                    else:
+##                        print 'UID found'
+##                        print  i['UID'][0:len(sSearch)-1], sSearch
+##                else:
+##                    Cal2.add_component(i)
+##                
+##            newEvent = self.createEvent(dicEvent)
+##            print 'newEvent = ' + `newEvent`
+##            if newEvent:
+##                Cal2.add_component(newEvent)
+##                self.writeCalendar('iCal_' + dicEvent['staff_cuon_username'], Cal2)
+##                ok = True
                             
         return ok
     
@@ -243,16 +256,20 @@ class iCal(xmlrpc.XMLRPC, basics):
             dicCal['summary'] = ''
 
             if result:
-                dicCal['summary'] += '>> ' + result[0]['adr_zip'] + ' ' + result[0]['adr_city'] + ' <<, '
+                dicCal['summary'] += '>> ' + result[0]['adr_zip'] + ' ' + self.tryDecode(result[0]['adr_city']) + ' <<, '
+
                 dicCal['summary'] += firstRecord['short_remark'] + ', ID = ' + `result[0]['adr_id']` + ', '
+                
             if result and result[0].has_key('st_lastname'):
-                dicCal['summary'] += result[0]['st_lastname'] + ', ' 
+                dicCal['summary'] += self.tryDecode(result[0]['st_lastname']) + ', ' 
+                
             
             if result and result[0].has_key('st_firstname'):
-                dicCal['summary'] += result[0]['st_firstname'] + ' ' 
+                dicCal['summary'] += self.tryDecode(result[0]['st_firstname']) + ' ' 
+                
             
-            dicCal['summary'] = self.tryDecode(dicCal['summary'] )
-            print 'Summary', dicCal['summary']
+            #dicCal['summary'] = self.tryDecode(dicCal['summary'] )
+            #print 'Summary', dicCal['summary']
 
             #dicCal['summary'] = dicCal['summary'].decode('utf-8')
         except Exception, param:
@@ -269,7 +286,7 @@ class iCal(xmlrpc.XMLRPC, basics):
 
                 dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
                 dicCal['location'] = self.tryDecode(dicCal['location'])
-            print 'location', dicCal['location']
+            #print 'location', dicCal['location']
                 
         except Exception, params:
             print 'Error by location'
@@ -337,6 +354,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         
 
     def tryDecode(self, s):
+        print 'before:', s
+
         try:
             s = s.decode('utf-8')
         except:
@@ -347,16 +366,38 @@ class iCal(xmlrpc.XMLRPC, basics):
                     s = s.decode('latin-2')
                 except:
                     try:
-                        s = s.decode('utf-7')
+                        s = s.decode('iso-8859-15')
                     except:
                         try:
-                            s = s.decode('CP-1250')
+                            s = s.decode('utf-7')
                         except:
                             try:
-                                v = s.encode('utf-8')
+                                s = s.decode('CP-1250')
                             except:
-                                print '-----> no decode method is functional, clean s '
-                                s = ''
+                                try:
+                                    v = s.encode('utf-8')
+                                except Exception, params:
+                                    print '-----> no decode method is functional, clean s '
+                                    s = ''
+                                    print Exception, params
+
+        print len(s)
+        try:
+            print 'after1:', s
+        except:
+            pass
+
+                                
+##        try:
+##            s = s.encode('utf-8')
+##        except Exception, params:
+##            print 'Error by encode'
+##            print Exception,params
+##        try:    
+##            print 'after2:', s
+##        except:
+##            pass
+##            
         return s
         
                 
