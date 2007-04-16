@@ -155,7 +155,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSqlSearch = 'select pickup_number from list_of_hibernation_pickup where order_number = ' + `orderNumber`
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         if dicResult == 'NONE':
-           sSql1 = 'insert into list_of_hibernation_pickup ( id, incoming_number, order_number) '
+           sSql1 = 'insert into list_of_hibernation_pickup ( id, pickup_number, order_number) '
            sSql1 = sSql1 + ' values (nextval(\'list_of_hibernation_pickup_id\'),nextval(\'numerical_hibernation_pickup_document_client_' + `dicUser['client']` + '\'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'
            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
@@ -163,7 +163,7 @@ class Garden(xmlrpc.XMLRPC, basics):
            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         
         if dicResult != 'NONE':
-           nr = dicResult[0]['incoming_number']
+           nr = dicResult[0]['pickup_number']
         
             
         return nr   

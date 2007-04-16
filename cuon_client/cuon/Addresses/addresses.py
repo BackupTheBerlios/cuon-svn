@@ -620,7 +620,7 @@ class addresswindow(chooseWindows):
             print 'firstRecord = ', self.singleAddress.firstRecord
             print 'ModulNumber', self.ModulNumber
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes != 'NONE':
+            if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     firstRecord['notes_' + key] = dicNotes[key]
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
@@ -651,7 +651,7 @@ class addresswindow(chooseWindows):
                 for key in dicInternInformation:
                     dicPartner[key] = dicInternInformation[key]
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes != 'NONE':
+            if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     dicPartner['notes_' + key] = dicNotes[key]    
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
@@ -672,7 +672,7 @@ class addresswindow(chooseWindows):
                     dicSchedul[key] = dicInternInformation[key]
 
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes != 'NONE':
+            if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     dicSchedul['notes_' + key] = dicNotes[key]
                     
