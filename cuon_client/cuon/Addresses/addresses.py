@@ -619,6 +619,10 @@ class addresswindow(chooseWindows):
             #self.singleAddress.load(self.singleAddress.ID)
             print 'firstRecord = ', self.singleAddress.firstRecord
             print 'ModulNumber', self.ModulNumber
+            dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            if dicNotes != 'NONE':
+                for key in dicNotes:
+                    firstRecord['notes_' + key] = dicNotes[key]
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord,dicExtInfo)
         
@@ -646,7 +650,10 @@ class addresswindow(chooseWindows):
             if dicInternInformation != 'NONE':
                 for key in dicInternInformation:
                     dicPartner[key] = dicInternInformation[key]
-                
+            dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            if dicNotes != 'NONE':
+                for key in dicNotes:
+                    dicPartner['notes_' + key] = dicNotes[key]    
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
             
     def on_bSchedulLetter_clicked(self, event):
@@ -671,7 +678,7 @@ class addresswindow(chooseWindows):
                     
             dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
             print 'dicSchedul = ', dicSchedul
-            print 'lastname', dicSchedul['person1_lastname']
+            #print 'lastname', dicSchedul['person1_lastname']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
     
         

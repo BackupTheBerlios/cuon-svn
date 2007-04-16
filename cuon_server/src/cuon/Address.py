@@ -93,11 +93,14 @@ class Address(xmlrpc.XMLRPC, basics):
                 sW += " and schedul_staff_id = " + SelectStaff + " "
             
             
-            if value != 'All':
+            if value != 'ALL':
                 liValue = value.split(',')
+                sw += ' and ( '
                 for sOptValue in liValue:
-                    sw += ' and schedul_staff_id = ' + sOptValue
+                    sw += ' schedul_staff_id = ' + sOptValue + ' or '
                 
+                sw = sw[:len(sw)-4]
+                sw += ')'
             
             sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
                 
@@ -202,7 +205,7 @@ class Address(xmlrpc.XMLRPC, basics):
         return liResult2
         
         
-    def xmlrpc_getNotes(self, addressid, dicuser):
+    def xmlrpc_getNotes(self, addressid, dicUser):
         dicReturn = 'NONE'
         sSql = 'select * from address_notes where address_id = ' +  `addressid`
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
