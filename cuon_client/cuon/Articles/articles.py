@@ -426,7 +426,7 @@ class articleswindow(chooseWindows):
         print 'materialgroup'
         mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
         mag.setChooseEntry('chooseMaterialgroup', self.getWidget( 'eCategoryNr'))
-        
+                             
     def on_eCategoryNr_changed(self, event):
         print 'eCategory changed'
         iMaterialGroup = self.getChangedValue('eCategoryNr')

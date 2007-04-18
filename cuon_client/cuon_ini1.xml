@@ -360,7 +360,7 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
-      <Glade-File>material_group.xml</Glade-File>
+      <Glade-File>materialGroup.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/materialGroup.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>	

@@ -249,7 +249,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                     sSql = sSql  + " = " + `float(liValue[0])` + ", "
         
                 elif liValue[1] == 'date':
-                    if len(liValue[0]) < 8:
+                    if len(liValue[0]) < 6:
                         sSql = sSql  + " = NULL, "
                     else:
                         sSql = sSql  + " = \'" + liValue[0]+ "\', "
@@ -294,7 +294,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                         sSql2 = sSql2  + `float(liValue[0])` + ", "
                         self.writeLog('REC2-4 ' + `sSql` + `sSql2`)
                     elif liValue[1] == 'date':
-                        if len(liValue[0]) < 8:
+                        if len(liValue[0]) < 6:
                             sSql2 = sSql2  +  " NULL, "
                         else:
                             sSql2 = sSql2  + " \'" + liValue[0] + "\', "

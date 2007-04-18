@@ -46,26 +46,28 @@ class report_order_standard_invoice(report_basics):
         dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )
         print "result by address: ", dicResult
         if dicResult != 'NONE':
-            for i in dicResult:
-                for j in i.keys():
-                    if isinstance(i[j],  types.StringType):
-                        i[j] = self.getPdfEncoding(i[j],reportDefs )
-                        
+##            for i in dicResult:
+##                for j in i.keys():
+##                    if isinstance(i[j],  types.StringType):
+##                        i[j] = self.getPdfEncoding(i[j],reportDefs )
+##                        
                                     
                             
                             
 
             self.dicResults['address'] = dicResult   
-            dicResult =  oOrder.xmlrpc_getOrderPositions( dicOrder,  dicUser )
+            #dicResult =  oOrder.xmlrpc_getOrderPositions( dicOrder,  dicUser )
+            dicResult =  oOrder.xmlrpc_getStandardInvoice( dicOrder,  dicUser )
+
             print "result by positions", dicResult
             
-    
-            for i in dicResult:
-                for j in i.keys():
-                    if isinstance(i[j],  types.StringType):
-                        i[j] = self.getPdfEncoding(i[j],reportDefs )
-                
-    
+##    
+##            for i in dicResult:
+##                for j in i.keys():
+##                    if isinstance(i[j],  types.StringType):
+##                        i[j] = self.getPdfEncoding(i[j],reportDefs )
+##                
+##    
         
             print  dicResult 
             self.dicResults['positions'] = dicResult

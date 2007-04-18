@@ -28,15 +28,15 @@ import cuon.Finances.SingleAccountInfo
 import cuon.Finances.SingleAccountPlan
 
 import logging
-from cuon.Windows.windows  import windows
+from cuon.Windows.chooseWindows  import chooseWindows
 
 
-class prefsFinancewindow(windows):
+class prefsFinancewindow(chooseWindows):
 
     
     def __init__(self, allTables):
 
-        windows.__init__(self)
+        chooseWindows.__init__(self)
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
 
         self.loadGlade('prefs_finance.xml')
@@ -197,7 +197,18 @@ class prefsFinancewindow(windows):
         print "delete VAT  v2"
         self.singlePrefsFinanceVat.deleteRecord()
 
+    #def on_tree1_row_activated
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseTaxVat', event)
+        
+    def on_chooseTaxVat_activate(self, event):
+        # choose TaxVat from other Modul
+        self.setChooseValue(self.singlePrefsFinanceVat.ID)
+        #print 'Group-ID = ' + `self.singleGroup.ID`
+        self.closeWindow()
   #Menu Terms of Payment
+        
         
    
     def on_TopSave1_activate(self, event):
@@ -244,6 +255,8 @@ class prefsFinancewindow(windows):
         print "delete Info  v2"
         self.singleFinanceAccountInfo.deleteRecord()
 
+
+
     #Menu Acct Plan
         
    
@@ -266,7 +279,7 @@ class prefsFinancewindow(windows):
         print "delete Plan  v2"
         self.singleFinanceAccountPlan.deleteRecord()
 
-        
+    
         
     # import account-infos from xml-file
 

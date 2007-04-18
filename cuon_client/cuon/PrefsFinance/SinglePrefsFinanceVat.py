@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -35,13 +35,17 @@ class SinglePrefsFinanceVat(SingleData):
 
         self.loadTable(allTables)
         self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
-        self.listHeader['names'] = ['vat_name', 'designation', 'ID']
+        self.listHeader['names'] = ['vat_name', 'vat_designation', 'ID']
         self.listHeader['size'] = [25,10,25,25,10]
         print "number of Columns "
         print len(self.table.Columns)
         #
         
-
+    def getNameAndDesignation(self,id):
+        self.load(id)
+        if self.firstRecord:
+            return self.firstRecord['vat_name'] + self.firstRecord['vat_designation']
+            
     
                                                                                                      
                                                                                                      

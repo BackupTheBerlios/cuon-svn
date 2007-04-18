@@ -61,8 +61,9 @@ class Misc(xmlrpc.XMLRPC, basics):
    
     def xmlrpc_getListOfTaxVat(self, dicUser):
         sSql = 'select vat_name from tax_vat'
-        sSql = sSql + self.getWhere("",dicUser,1)
-
+        sSql += self.getWhere("",dicUser,1)
+        sSql += ' order by id '
+        print sSql 
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         li = []
         if result != 'NONE':

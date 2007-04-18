@@ -95,12 +95,12 @@ class Address(xmlrpc.XMLRPC, basics):
             
             if value != 'ALL':
                 liValue = value.split(',')
-                sw += ' and ( '
+                sW += ' and ( '
                 for sOptValue in liValue:
-                    sw += ' schedul_staff_id = ' + sOptValue + ' or '
+                    sW += ' schedul_staff_id = ' + sOptValue + ' or '
                 
-                sw = sw[:len(sw)-4]
-                sw += ')'
+                sW = sW[:len(sW)-4]
+                sW += ')'
             
             sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
                 

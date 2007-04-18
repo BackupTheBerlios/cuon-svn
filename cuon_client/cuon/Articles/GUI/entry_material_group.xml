@@ -25,7 +25,17 @@
       
     </entry>
     
-    
+    <entry>
+      <name>eTaxVatID</name>
+      <type>textline</type>
+      <size>8</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>tax_vat</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
   
     </table>
 

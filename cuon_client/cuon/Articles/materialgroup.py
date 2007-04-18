@@ -35,6 +35,8 @@ locale.setlocale (locale.LC_NUMERIC, '')
 
 import SingleMaterialgroups
 import SingleMaterialgroupsAccount
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceVat
 
 class materialgroupwindow(chooseWindows):
 
@@ -49,7 +51,7 @@ class materialgroupwindow(chooseWindows):
         self.ModulNumber = self.MN['MaterialGroups']
         self.singleGroup = SingleMaterialgroups.SingleMaterialgroups(allTables)
         self.singleGroupAccounts = SingleMaterialgroupsAccount.SingleMaterialgroupsAccount(allTables)
-        
+        self.singlePrefsFinanceVat = cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
         
@@ -100,17 +102,7 @@ class materialgroupwindow(chooseWindows):
         
         
 
-##        # init Comboboxes 
-##        
-##        # Tax-Vat
-##        tax_vat =  self.rpc.callRP('Misc.getListOfTaxVat', self.dicUser)
-##        cb = self.getWidget('cbVat')
-##        
-##        for i in range(len(tax_vat)) :
-##            li = gtk.ListItem(tax_vat[i])
-##            cb.list.append_items([li])
-##            li.show()
-##    
+       
         
             
         #print 'time 11 = ', time.localtime()
@@ -215,15 +207,33 @@ class materialgroupwindow(chooseWindows):
         self.setEntriesEditable(self.EntriesNotes, TRUE)
 
    
+    
+        
     def saveData(self):
-        print 'save Addresses'
+        print 'save Materialgroup'
         if self.doEdit == self.tabGroup:
             print 'save 1'
             self.on_save1_activate(None)
         #elif self.doEdit == self.tabBank:
         #    print 'save 2'
-       
-     
+      
+    # Tax Vat choose
+    def on_bSearchTaxVat_clicked(self, event):
+        print 'cbVat search'
+        print event
+        
+        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
+        
+    def on_eTaxVatID_changed(self, event):
+        print 'eCategory changed'
+        iTaxVat = self.getChangedValue('eTaxVatID')
+        sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
+        if sTaxVat:
+            self.getWidget('eTaxVat').set_text(sTaxVat)
+        else:
+            self.getWidget('eTaxVat').set_text('')
+ 
     def on_chooseMaterialgroup_activate(self, event):
         # choose Article from other Modul
         self.setChooseValue(self.singleGroup.ID)

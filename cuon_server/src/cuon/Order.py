@@ -114,15 +114,17 @@ class Order(xmlrpc.XMLRPC, basics):
                
     def xmlrpc_getStandardInvoice(self, dicOrder , dicUser):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
-        sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
-        sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
-        sSql = sSql + " orderposition.tax_vat as tax_vat, "
-        sSql = sSql + " articles.number as article_id, articles.designation as article_designation,  "
-        sSql = sSql + " orderposition.designation as designation, orderposition.amount as amount, "
-        sSql = sSql + " orderposition.position as position, orderposition.price as price "
-        sSql = sSql + " from orderposition, articles, orderbook where orderbook.number = \'" + dicOrder['orderNumber'] +"\' "
-        sSql = sSql + "and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
-        sSql = sSql + " order by orderposition.position "
+        sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
+        sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+        sSql += " orderposition.tax_vat as order_tax_vat, "
+        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
+        sSql += " articles.number as article_id, articles.designation as article_designation,  "
+        sSql += " orderposition.designation as designation, orderposition.amount as amount, "
+        sSql += " orderposition.position as position, orderposition.price as price "
+        sSql += " from orderposition, articles, orderbook  where orderbook.number = \'" + dicOrder['orderNumber'] +"\' "
+        sSql += "and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
+        sSql += " order by orderposition.position "
         dicUser['noWhereClient'] = 'Yes'
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
 

@@ -88,7 +88,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             print Exception
             print param
         if not Cal:
-            self.createCal(sName)
+            Cal = self.createCal()
         return Cal
         
     def writeCalendar(self, sName, Cal):
