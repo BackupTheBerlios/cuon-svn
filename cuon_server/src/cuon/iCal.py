@@ -305,12 +305,12 @@ class iCal(xmlrpc.XMLRPC, basics):
         try:
             
             if result and result != 'NONE':
-                if firstRecord['process_status'] == 0:
+                if firstRecord['process_status'] >= 0 and firstRecord['process_status'] <= 99:
                     dicCal['status'] = "TENTATIVE"
-                elif firstRecord['process_status'] > 5 and  firstRecord['process_status'] < 800:
+                elif firstRecord['process_status'] >= 100 and  firstRecord['process_status'] <= 800:
                 #dicCal['status'] = `firstRecord['process_status']`
                     dicCal['status'] = "CONFIRMED"
-                elif firstRecord['process_status'] == 800:
+                elif firstRecord['process_status'] >= 801:
                     dicCal['status'] = "CANCELLED" 
                     
                     

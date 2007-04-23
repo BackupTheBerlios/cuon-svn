@@ -245,8 +245,8 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('editPartner','PartnerEdit1', self.dicUserKeys['address_partner_edit'])
 
         # enabledMenues for Schedul
-        self.addEnabledMenuItems('editSchedul', 'SchedulNew1')
-        self.addEnabledMenuItems('editSchedul', 'SchedulEdit1')
+        self.addEnabledMenuItems('editSchedul', 'SchedulNew', self.dicUserKeys['address_new'])
+        self.addEnabledMenuItems('editSchedul', 'SchedulEdit1', self.dicUserKeys['address_edit'])
         #self.addEnabledMenuItems('editSchedul','mi_SchedulDelete')
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
         
@@ -257,6 +257,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','PartnerSave1', self.dicUserKeys['address_partner_save'])
         self.addEnabledMenuItems('editSave','NotesSave', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','schedulSave', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','mi_MiscSave1', self.dicUserKeys['address_save'])
 
         
@@ -878,8 +879,8 @@ class addresswindow(chooseWindows):
                         lastSchedulname = Schedulname
                         iter = treestore.append(None,[lastSchedulname])   
                     sTime  = self.getTimeString(oneDate['time_begin'] )
-                        
-                    iter2 = treestore.insert_after(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +'--' + sTime + ' ###' +  `oneDate['id']`])           
+                    sTimeEnd =     self.getTimeString(oneDate['time_end'] )
+                    iter2 = treestore.insert_after(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])           
                 print 'End liDates'
             ts.show()
             #self.getWidget('scrolledwindow10').show()
@@ -981,6 +982,8 @@ class addresswindow(chooseWindows):
             self.on_PartnerSave1_activate(None)
         elif self.doEdit == self.tabSchedul:
             self.on_SchedulSave_activate(None)
+        elif self.doEdit == self.tabNotes:
+            self.on_NotesSave_activate(None)
     
     def fillComboboxForms(self, sName, liCBE):
         widget = self.getWidget(sName)

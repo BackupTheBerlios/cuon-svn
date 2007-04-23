@@ -436,3 +436,22 @@ class Garden(xmlrpc.XMLRPC, basics):
         return result2
         
      
+    def xmlrpc_getSum(self, hibID, dicUser):
+        total_sum = 0
+        try:
+            dicPos = self.xmlrpc_getOrderPositions(hibID,dicUser)
+            
+            for i in dicPos:
+                if i.has_key('price') and i.has_key('amount'):
+                    try:
+                        print i['price'] , i['amount']
+                        total_sum += i['price'][0] * i['amount'][0]
+                    except:
+                        pass
+        except:
+            pass
+            
+        return total_sum
+        
+            
+        

@@ -89,4 +89,9 @@ class SingleHibernation(SingleData):
         dicRecords = self.load(id)
         return [dicRecords[0]['begin_date'],dicRecords[0]['end_date']]
         
+    def fillOtherEntries(self, oneRecord):
+        print 'fill SumTotal'
+        totalSum =  self.rpc.callRP('Garden.getSum', self.ID, self.dicUser)
         
+        self.getWidget('eTotalSum').set_text(`totalSum`)
+              

@@ -67,7 +67,8 @@ class Address(xmlrpc.XMLRPC, basics):
                 
             sSql = "select partner_schedul.schedul_date as date, "
             sSql += "partner_schedul.id as id,  "
-            sSql +=  "partner_schedul.schedul_time_begin as time_begin,address.zip as a_zip, "
+            sSql +=  "partner_schedul.schedul_time_begin as time_begin,partner_schedul.schedul_time_end as time_end, "
+            sSql += " address.zip as a_zip, "
             sSql +=  "address.city as a_city, partner_schedul.short_remark as s_remark, partner_schedul.notes as s_notes, "
             sSql +=  "partner.lastname as p_lastname, address.lastname as a_lastname, "
         
@@ -106,9 +107,9 @@ class Address(xmlrpc.XMLRPC, basics):
                 
                 
             if OrderType == 'Name' :
-                sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') desc, partner_schedul.schedul_time_begin desc " 
+                sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') , partner_schedul.schedul_time_begin " 
             elif OrderType == 'Schedul' :
-                sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') desc , schedul_name,  partner_schedul.schedul_time_begin desc" 
+                sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"')  , schedul_name,  partner_schedul.schedul_time_begin " 
                 
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         elif value == None:
@@ -214,6 +215,25 @@ class Address(xmlrpc.XMLRPC, basics):
         return dicReturn
         
         
+    def sentChangesPerMail(self, sModul, addressID, dicUser):
+        if sModul = 'address_notes':
+            
+            value = None
+            try:
+                           
+                cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+                #print cpServer
+                #print cpServer.sections()
+                
+                value = self.getConfigOption('SENT_MAIL','representant', cpServer)
+                
+            except Exception, params:
+                print 'Error by Schedul Read user.cfg'
+                print Exception, params
+            if value and addressID:
+                
+                
+            
             
     def xmlrpc_getPartnerAddress(self, id, dicUser):
         sSql = 'select address, lastname, lastname2,firstname, street, zip, city, state, country, phone from partner where id = ' + `id`
