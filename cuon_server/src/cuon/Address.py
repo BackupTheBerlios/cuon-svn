@@ -216,7 +216,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
         
     def sentChangesPerMail(self, sModul, addressID, dicUser):
-        if sModul = 'address_notes':
+        if sModul == 'address_notes':
             
             value = None
             try:
@@ -231,6 +231,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 print 'Error by Schedul Read user.cfg'
                 print Exception, params
             if value and addressID:
+                pass
                 
                 
             
