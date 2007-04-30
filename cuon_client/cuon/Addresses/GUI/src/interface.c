@@ -325,6 +325,32 @@ static GnomeUIInfo mi_lists1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo tools1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Contact window"),
+    NULL,
+    (gpointer) on_contact1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("new Order"),
+    NULL,
+    (gpointer) on_new_order_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("show Order"),
+    NULL,
+    (gpointer) on_show_order1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo menubar1_uiinfo[] =
 {
   {
@@ -390,6 +416,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Tools"),
+    NULL,
+    tools1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -398,19 +431,23 @@ create_AddressMainwindow (void)
 {
   GtkWidget *AddressMainwindow;
   GtkWidget *scrolledwindow11;
+  GtkWidget *viewport1;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *tmp_image;
-  GtkWidget *tbNew1;
+  GtkWidget *tbNew;
   GtkWidget *tbEdit;
   GtkWidget *tbSave;
   GtkWidget *separatortoolitem1;
-  GtkWidget *toolbutton5;
-  GtkWidget *toolbutton6;
-  GtkWidget *toolbutton7;
-  GtkWidget *toolbutton8;
+  GtkWidget *tbExtendetInfo;
+  GtkWidget *tbLetter;
+  GtkWidget *tbContact;
+  GtkWidget *tbAllContact;
+  GtkWidget *toolitem1;
+  GtkWidget *vseparator6;
+  GtkWidget *tbNewOrder;
   GtkWidget *vbox8;
   GtkWidget *hbox1;
   GtkWidget *lFindName;
@@ -466,9 +503,21 @@ create_AddressMainwindow (void)
   GtkWidget *eZipForPostbox;
   GtkWidget *label39;
   GtkWidget *bShowDMS;
+  GtkWidget *alignment3;
+  GtkWidget *hbox39;
+  GtkWidget *image1028;
+  GtkWidget *label81;
   GtkWidget *hbox18;
   GtkWidget *bLetter;
+  GtkWidget *alignment5;
+  GtkWidget *hbox41;
+  GtkWidget *image1030;
+  GtkWidget *label83;
   GtkWidget *bContact;
+  GtkWidget *alignment4;
+  GtkWidget *hbox40;
+  GtkWidget *image1029;
+  GtkWidget *label82;
   GtkWidget *label56;
   GtkWidget *eLetterAddress;
   GtkWidget *table5;
@@ -501,6 +550,7 @@ create_AddressMainwindow (void)
   GtkWidget *hbox36;
   GtkWidget *eEmail;
   GtkWidget *bSendMail;
+  GtkWidget *bSendExternEmail;
   GtkWidget *lAddress;
   GtkWidget *table7;
   GtkWidget *scrolledwindow2;
@@ -694,15 +744,20 @@ create_AddressMainwindow (void)
   accel_group = gtk_accel_group_new ();
 
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (AddressMainwindow, 1024, 800);
   gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
 
   scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow11);
   gtk_container_add (GTK_CONTAINER (AddressMainwindow), scrolledwindow11);
 
+  viewport1 = gtk_viewport_new (NULL, NULL);
+  gtk_widget_show (viewport1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow11), viewport1);
+
   vbox1 = gtk_vbox_new (FALSE, 17);
   gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow11), vbox1);
+  gtk_container_add (GTK_CONTAINER (viewport1), vbox1);
 
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
@@ -720,21 +775,21 @@ create_AddressMainwindow (void)
 
   tmp_image = gtk_image_new_from_stock ("gtk-new", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
-  tbNew1 = (GtkWidget*) gtk_tool_button_new (tmp_image, "");
-  gtk_widget_show (tbNew1);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbNew1);
-  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbNew1), tooltips, _("create new Data "), NULL);
+  tbNew = (GtkWidget*) gtk_tool_button_new (tmp_image, _("New"));
+  gtk_widget_show (tbNew);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbNew);
+  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbNew), tooltips, _("create new Data "), NULL);
 
   tmp_image = gtk_image_new_from_stock ("gtk-edit", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
-  tbEdit = (GtkWidget*) gtk_tool_button_new (tmp_image, "");
+  tbEdit = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Edit"));
   gtk_widget_show (tbEdit);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbEdit);
   gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbEdit), tooltips, _("edit current data"), NULL);
 
   tmp_image = gtk_image_new_from_stock ("gtk-save", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
-  tbSave = (GtkWidget*) gtk_tool_button_new (tmp_image, "");
+  tbSave = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Save"));
   gtk_widget_show (tbSave);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbSave);
   gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbSave), tooltips, _("save current data"), NULL);
@@ -743,21 +798,43 @@ create_AddressMainwindow (void)
   gtk_widget_show (separatortoolitem1);
   gtk_container_add (GTK_CONTAINER (toolbar1), separatortoolitem1);
 
-  toolbutton5 = (GtkWidget*) gtk_tool_button_new (NULL, "");
-  gtk_widget_show (toolbutton5);
-  gtk_container_add (GTK_CONTAINER (toolbar1), toolbutton5);
+  tmp_image = gtk_image_new_from_stock ("gtk-info", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbExtendetInfo = (GtkWidget*) gtk_tool_button_new (tmp_image, _("ext. Info"));
+  gtk_widget_show (tbExtendetInfo);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbExtendetInfo);
 
-  toolbutton6 = (GtkWidget*) gtk_tool_button_new (NULL, "");
-  gtk_widget_show (toolbutton6);
-  gtk_container_add (GTK_CONTAINER (toolbar1), toolbutton6);
+  tmp_image = gtk_image_new_from_stock ("gtk-justify-fill", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbLetter = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Letter"));
+  gtk_widget_show (tbLetter);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbLetter);
 
-  toolbutton7 = (GtkWidget*) gtk_tool_button_new (NULL, "");
-  gtk_widget_show (toolbutton7);
-  gtk_container_add (GTK_CONTAINER (toolbar1), toolbutton7);
+  tmp_image = gtk_image_new_from_stock ("gtk-orientation-portrait", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbContact = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Contact"));
+  gtk_widget_show (tbContact);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbContact);
 
-  toolbutton8 = (GtkWidget*) gtk_tool_button_new (NULL, "");
-  gtk_widget_show (toolbutton8);
-  gtk_container_add (GTK_CONTAINER (toolbar1), toolbutton8);
+  tmp_image = gtk_image_new_from_stock ("gtk-select-all", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbAllContact = (GtkWidget*) gtk_tool_button_new (tmp_image, _("All Contact"));
+  gtk_widget_show (tbAllContact);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbAllContact);
+
+  toolitem1 = (GtkWidget*) gtk_tool_item_new ();
+  gtk_widget_show (toolitem1);
+  gtk_container_add (GTK_CONTAINER (toolbar1), toolitem1);
+
+  vseparator6 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator6);
+  gtk_container_add (GTK_CONTAINER (toolitem1), vseparator6);
+
+  tmp_image = gtk_image_new_from_stock ("gtk-paste", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbNewOrder = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Order"));
+  gtk_widget_show (tbNewOrder);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbNewOrder);
 
   vbox8 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox8);
@@ -1070,11 +1147,27 @@ create_AddressMainwindow (void)
   gtk_label_set_justify (GTK_LABEL (label39), GTK_JUSTIFY_CENTER);
   gtk_misc_set_alignment (GTK_MISC (label39), 0, 0);
 
-  bShowDMS = gtk_button_new_with_mnemonic (_("show ext. info"));
+  bShowDMS = gtk_button_new ();
   gtk_widget_show (bShowDMS);
   gtk_table_attach (GTK_TABLE (table4), bShowDMS, 0, 1, 11, 12,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+
+  alignment3 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment3);
+  gtk_container_add (GTK_CONTAINER (bShowDMS), alignment3);
+
+  hbox39 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox39);
+  gtk_container_add (GTK_CONTAINER (alignment3), hbox39);
+
+  image1028 = gtk_image_new_from_stock ("gtk-info", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1028);
+  gtk_box_pack_start (GTK_BOX (hbox39), image1028, FALSE, FALSE, 0);
+
+  label81 = gtk_label_new_with_mnemonic (_("show ext. info"));
+  gtk_widget_show (label81);
+  gtk_box_pack_start (GTK_BOX (hbox39), label81, FALSE, FALSE, 0);
 
   hbox18 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox18);
@@ -1082,13 +1175,45 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  bLetter = gtk_button_new_with_mnemonic (_("Letter"));
+  bLetter = gtk_button_new ();
   gtk_widget_show (bLetter);
   gtk_box_pack_start (GTK_BOX (hbox18), bLetter, FALSE, FALSE, 0);
 
-  bContact = gtk_button_new_with_mnemonic (_("Contact"));
+  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment5);
+  gtk_container_add (GTK_CONTAINER (bLetter), alignment5);
+
+  hbox41 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox41);
+  gtk_container_add (GTK_CONTAINER (alignment5), hbox41);
+
+  image1030 = gtk_image_new_from_stock ("gtk-justify-fill", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1030);
+  gtk_box_pack_start (GTK_BOX (hbox41), image1030, FALSE, FALSE, 0);
+
+  label83 = gtk_label_new_with_mnemonic (_("Letter"));
+  gtk_widget_show (label83);
+  gtk_box_pack_start (GTK_BOX (hbox41), label83, FALSE, FALSE, 0);
+
+  bContact = gtk_button_new ();
   gtk_widget_show (bContact);
   gtk_box_pack_start (GTK_BOX (hbox18), bContact, FALSE, FALSE, 0);
+
+  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment4);
+  gtk_container_add (GTK_CONTAINER (bContact), alignment4);
+
+  hbox40 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox40);
+  gtk_container_add (GTK_CONTAINER (alignment4), hbox40);
+
+  image1029 = gtk_image_new_from_stock ("gtk-orientation-portrait", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1029);
+  gtk_box_pack_start (GTK_BOX (hbox40), image1029, FALSE, FALSE, 0);
+
+  label82 = gtk_label_new_with_mnemonic (_("Contact"));
+  gtk_widget_show (label82);
+  gtk_box_pack_start (GTK_BOX (hbox40), label82, FALSE, FALSE, 0);
 
   label56 = gtk_label_new (_("letter-address"));
   gtk_widget_show (label56);
@@ -1276,6 +1401,10 @@ create_AddressMainwindow (void)
   bSendMail = gtk_button_new_with_mnemonic (_("Send Email"));
   gtk_widget_show (bSendMail);
   gtk_box_pack_start (GTK_BOX (hbox36), bSendMail, FALSE, FALSE, 0);
+
+  bSendExternEmail = gtk_button_new_with_mnemonic (_("ext. Email"));
+  gtk_widget_show (bSendExternEmail);
+  gtk_box_pack_start (GTK_BOX (hbox36), bSendExternEmail, FALSE, FALSE, 0);
 
   lAddress = gtk_label_new (_("Addresses"));
   gtk_widget_show (lAddress);
@@ -2464,14 +2593,29 @@ create_AddressMainwindow (void)
   gtk_widget_show (label64);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label64);
 
-  g_signal_connect ((gpointer) tbNew1, "clicked",
-                    G_CALLBACK (on_tbNew1_clicked),
+  g_signal_connect ((gpointer) tbNew, "clicked",
+                    G_CALLBACK (on_tbNew_clicked),
                     NULL);
   g_signal_connect ((gpointer) tbEdit, "clicked",
                     G_CALLBACK (on_tbEdit_clicked),
                     NULL);
   g_signal_connect ((gpointer) tbSave, "clicked",
                     G_CALLBACK (on_tbSave_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tbExtendetInfo, "clicked",
+                    G_CALLBACK (on_tbExtendetInfo_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tbLetter, "clicked",
+                    G_CALLBACK (on_tbLetter_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tbContact, "clicked",
+                    G_CALLBACK (on_tbContact_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tbAllContact, "clicked",
+                    G_CALLBACK (on_tbAllContact_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) tbNewOrder, "clicked",
+                    G_CALLBACK (on_tbNewOrder_clicked),
                     NULL);
   g_signal_connect ((gpointer) eFindName, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
@@ -2581,6 +2725,9 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bSendMail, "clicked",
                     G_CALLBACK (on_bSendMail_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bSendExternEmail, "clicked",
+                    G_CALLBACK (on_bSendExternEmail_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bChooseBank, "clicked",
                     G_CALLBACK (on_bChooseBank_clicked),
                     NULL);
@@ -2672,6 +2819,7 @@ create_AddressMainwindow (void)
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow11, "scrolledwindow11");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, viewport1, "viewport1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1, "menubar1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[0].widget, "mi_datei1");
@@ -2724,15 +2872,22 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbar1, "toolbar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNew1, "tbNew1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNew, "tbNew");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbEdit, "tbEdit");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbSave, "tbSave");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, separatortoolitem1, "separatortoolitem1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbutton5, "toolbutton5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbutton6, "toolbutton6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbutton7, "toolbutton7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbutton8, "toolbutton8");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbExtendetInfo, "tbExtendetInfo");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbLetter, "tbLetter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbContact, "tbContact");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbAllContact, "tbAllContact");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolitem1, "toolitem1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator6, "vseparator6");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewOrder, "tbNewOrder");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox8, "vbox8");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindName, "lFindName");
@@ -2788,9 +2943,21 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eZipForPostbox, "eZipForPostbox");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label39, "label39");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowDMS, "bShowDMS");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment3, "alignment3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox39, "hbox39");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1028, "image1028");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label81, "label81");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox18, "hbox18");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bLetter, "bLetter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment5, "alignment5");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox41, "hbox41");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1030, "image1030");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label83, "label83");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bContact, "bContact");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment4, "alignment4");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox40, "hbox40");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1029, "image1029");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label82, "label82");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label56, "label56");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eLetterAddress, "eLetterAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table5, "table5");
@@ -2823,6 +2990,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox36, "hbox36");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eEmail, "eEmail");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendMail, "bSendMail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendExternEmail, "bSendExternEmail");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table7, "table7");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow2, "scrolledwindow2");

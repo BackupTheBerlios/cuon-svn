@@ -103,12 +103,18 @@ class SingleDMS(SingleData):
         if liResult:
             s = liResult[0]['document_image']
             try:
-                s2 = base64.decodestring(s)
-                self.imageData = s2
+                self.imageData = base64.decodestring(s)
+                 
             except Exception, param:
                 print Exception, param
                 self.imageData = None
-                
+    
+    def loadNotes0SaveDocument(self):
+        nID = self.rpc.callRP('Misc.getNotes0ID',self.dicUser)
+        if nID:
+            self.load(nID)
+            self.fillOtherEntries(self.firstRecord)
+            
     def fillOtherEntries(self, oneRecord):
         
         self.fileFormat = oneRecord['file_format']

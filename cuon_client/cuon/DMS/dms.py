@@ -48,6 +48,7 @@ import base64
 import cuon.Misc.cuon_dialog
 
 
+
 class dmswindow(windows):
 
     
@@ -74,6 +75,7 @@ class dmswindow(windows):
        
         self.singleDMS.username = self.oUser.getUserName()
         self.loadGlade('dms.xml', 'DMSMainwindow')
+        #self.win1 = self.getWidget('DMSMainwindow')
         #self.win1 = self.getWidget('DMSMainwindow')
         self.diaLink = self.getWidget('diaLink')
         self.diaLink.hide()

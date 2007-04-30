@@ -39,20 +39,25 @@ except Exception, param:
 import bz2
 import re
 import binascii
-
-
+import cuon.XMLRPC.xmlrpc
+import base64
 
 
 class documentTools:
 
     def __init__(self):
-        pass
+        
+        self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
 
-
-    def viewDocument(self, singleDMS,dicUser, dicVars,Action=None):
+    def viewDocument(self, singleDMS,dicUser, dicVars,Action=None, liEmailAddresses = None):
         print 'dicVars1 ', dicVars
+        print 'Action = ', Action
+        print singleDMS.ID, singleDMS.fileFormat
         singleDMS.loadDocument()
+        print singleDMS.ID, singleDMS.fileFormat
+        print 'len Image = ', len(singleDMS.imageData)
         exe = None
+        sEXT = 'txt'
         if singleDMS.fileFormat:
             print 'Format = ', singleDMS.fileFormat
             if singleDMS.fileFormat == dicUser['prefDMS']['fileformat']['scanImage']['format']:
@@ -84,54 +89,83 @@ class documentTools:
                             sEXT = singleDMS.fileSuffix
                         else:   
                             sEXT =  dicUser['prefDMS']['fileformat'][key]['suffix'][0]
-
-            if exe:
-                singleDMS.createTmpFile(sEXT)
-                if dicVars:
-                    print ' '
-                    print 'dicVars = ', dicVars
-                    try:
-                        if zipfile.is_zipfile(singleDMS.tmpFile):
-                            print 'zipfile found'
-                            z1 = zipfile.ZipFile(singleDMS.tmpFile,'a')
-                            print z1.namelist()
-                            f_in = str(z1.read('content.xml'))
-                            #print 'content.xml', f_in
-                            
-                            f_in = self.replaceValues(dicVars,f_in, dicUser)
-                            #print 'replaced Content', f_in
-                            z1.writestr('content.xml',f_in)
-                            z1.close()
-
-                        else:
-                            
-                            f_out = open(singleDMS.tmpFile + '_w1','a')
-                                                        
-                            f_in = open(singleDMS.tmpFile,'r')
-                            if f_in and f_out:
-                                s = f_in.readline()
-                                while s:
-                                    s = self.replaceValues(dicVars,s)                                 
-                                    
-                                    f_out.write(s)
-                                    s = f_in.readline()
-                                    
-                                singleDMS.tmpFile = singleDMS.tmpFile + '_w1'
-                            else:
-                                'error read/create tmp-file'
-                    except Exception, param:
-                        print Exception
-                        print param
-                        
-                        
-                if Action == 'PrintNewsletter':
-                    sExe = dicUser['prefApps']['printNewsletter']
-                    print 'sExe', sExe
-                    os.system(sExe + ' ' + singleDMS.tmpFile)
-                
-                else:
-                    os.system(exe + ' ' + singleDMS.tmpFile)
+        else:
+            exe = None
         
+        print 'exe 1 = ', exe
+        if exe or Action != None:
+            singleDMS.createTmpFile(sEXT)
+            if dicVars:
+                print ' '
+                print 'dicVars = ', dicVars
+                try:
+                    if zipfile.is_zipfile(singleDMS.tmpFile):
+                        print 'zipfile found'
+                        z1 = zipfile.ZipFile(singleDMS.tmpFile,'a')
+                        print z1.namelist()
+                        f_in = str(z1.read('content.xml'))
+                        #print 'content.xml', f_in
+                        
+                        f_in = self.replaceValues(dicVars,f_in, dicUser)
+                        #print 'replaced Content', f_in
+                        z1.writestr('content.xml',f_in)
+                        z1.close()
+
+                    else:
+                        
+                        f_out = open(singleDMS.tmpFile + '_w1','a')
+                                                    
+                        f_in = open(singleDMS.tmpFile,'r')
+                        if f_in and f_out:
+                            s = f_in.readline()
+                            while s:
+                                s = self.replaceValues(dicVars,s)                                 
+                                
+                                f_out.write(s)
+                                s = f_in.readline()
+                                
+                            singleDMS.tmpFile = singleDMS.tmpFile + '_w1'
+                        else:
+                            'error read/create tmp-file'
+                except Exception, param:
+                    print Exception
+                    print param
+                    
+        print 'exe2 = ', exe
+        if Action == 'PrintNewsletter':
+            sExe = dicUser['prefApps']['printNewsletter']
+            print 'sExe', sExe
+            os.system(sExe + ' ' + singleDMS.tmpFile)
+        elif Action == 'sentAutomaticEmail':
+            print 'sentAutomaticEmail'
+            print dicUser
+            if dicUser.has_key('Email'):
+                liAttachments = []
+                filename = singleDMS.tmpFile
+                f = open(filename,'rb')
+                if f:
+                    s = f.read()
+                    s = bz2.compress(s)
+                    s = base64.encodestring(s)
+                    dicAtt = {}
+                    dicAtt['filename'] = filename
+                    dicAtt['data'] = s
+        
+                    liAttachments.append(dicAtt)
+                f.close()
+                
+                for emailTo in liEmailAddresses:
+                    dicV = {}
+                    dicV['From'] = dicUser['Email']['From']
+                    dicV['To'] = emailTo
+                    dicV['Subject'] = dicVars['email_subject']
+                    print 'dicV = ', dicV
+                    em = self.rpc.callRP('Email.sendTheEmail', dicV, liAttachments, dicUser)
+
+        else:
+            print 'else execute ', exe 
+            os.system(exe + ' ' + singleDMS.tmpFile)
+
 
     def scanDocument(self, singleDMS, dicUser):
         ##       misc = cuon.Misc.misc.misc()

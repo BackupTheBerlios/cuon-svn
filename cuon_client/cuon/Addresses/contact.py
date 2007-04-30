@@ -77,17 +77,23 @@ class contactwindow(chooseWindows):
         
         self.singleContact.setEntries(self.getDataEntries(self.EntriesContact) )
         self.singleContact.setGladeXml(self.xml)
-        self.singleContact.setTreeFields( ['schedul_date','schedul_time_begin','id'])
+        self.singleContact.setTreeFields( ['schedul_date','schedul_time_begin','address.lastname as adr '])
         #'select address.lastname where partner_schedul.address_id = address.id) as lastname'] )
         self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleContact.setTreeOrder('schedul_date')
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
-        self.singleContact.sWhere = ', address where address.id = address_id and process_status != 1 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
+        self.singleContact.sWhere = ' where address.id = address_id and process_status != 1 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
         if address_nr > 0:
             self.singleContact.sWhere += 'and address_id = ' + `address_nr`
-  
-  
+            self.singleContact.setTreeOrder('schedul_date')
+
+        elif partner_nr > 0:
+            self.singleContact.sWhere += 'and partner_id = ' + `partner_nr`
+            self.singleContact.setTreeOrder('schedul_date')
+            
+        else:
+            self.singleContact.setTreeOrder('schedul_date')
+
 
         # set values for comboBox
 
@@ -106,12 +112,13 @@ class contactwindow(chooseWindows):
           
 
         # enabledMenues for Address
-        self.addEnabledMenuItems('editContact','new1')
-        self.addEnabledMenuItems('editContact','clear1')
+        self.addEnabledMenuItems('editContact','new1', self.dicUserKeys['address_new'])
+        self.addEnabledMenuItems('editContact','delete1', self.dicUserKeys['address_delete'])
         self.addEnabledMenuItems('editContact','print1')
-        self.addEnabledMenuItems('editContact','edit1')
+        self.addEnabledMenuItems('editContact','edit1', self.dicUserKeys['address_edit'])
 
-
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['address_save'])
     
         
 
@@ -124,7 +131,7 @@ class contactwindow(chooseWindows):
         self.tabChanged()
         
         print 'time 99 ', time.localtime()
-        
+        self.win1.add_accel_group(self.accel_group)
         if autoNew:
             self.activateClick('new1')
             
@@ -344,15 +351,6 @@ class contactwindow(chooseWindows):
             self.setTreeVisible(True)
             
             
-
-        elif self.tabOption == self.tabMisc:
-            self.out( 'Seite 3')
-
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('misc')
-            self.editAction = 'editMisc'
-            self.setTreeVisible(False)
-            #self.setStatusbarText([self.singleContact.sStatus])
 
 
 

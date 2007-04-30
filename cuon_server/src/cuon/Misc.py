@@ -108,8 +108,99 @@ class Misc(xmlrpc.XMLRPC, basics):
             #liStatus = commands.getstatusoutput(shellcommand)
             #print shellcommand, liStatus
         return ok 
+        
     def xmlrpc_getForm(self, id, dicUser):
         sSql = "select * from dms where id = " + `id` 
         print sSql
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+    def xmlrpc_getNotes0ID(self, dicUser):
+        value = 0
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = int(self.getConfigOption('CLIENT_' + `dicUser['client']`,'Notes0_ID', cpServer))
+            
+        except Exception, params:
+            print 'Error by Notes0 ID Read client.cfg'
+            print Exception, params
+        print 'notes_0_id', value
+        return value
+    def xmlrpc_sendNotes0(self, dicUser):
+        ok = False
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0', cpServer)
+            if value and (value == 'Yes' or value == 'YES' or value == 'yes'):
+                ok = True
+                
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+            
+        return ok 
+        
+    def xmlrpc_getAdditionalEmailAddressesNotes0(self, addressid, dicUser):
+        value = None
+        liAddresses = []
+        
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'AdditinalEmailAddressesNotes0', cpServer)
+            if value:
+                liAddresses = value.split(',')
+                
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+        print 'notes_0_addEmailAddresses', value
+        
+        # configOption sendMailsNotes0: caller,rep,salesman
+        value = None
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendMailsNotes0', cpServer)
+            if value:
+                liValues = value.split(',')
+                if liValues:
+                    for i in liValues:
+                        result = None
+                        if i.strip() == 'caller':
+                            sSql = 'select staff.email as email from staff, address where  address.caller_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        elif i.strip() == 'rep':
+                            sSql = 'select staff.email  as email from staff, address where  address.rep_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        elif i.strip() == 'saleman':
+                            sSql = 'select staff.email  as email from staff, address where  address.saleman_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        if result and result != 'NONE':
+                            liAddresses.append(result[0]['email'].strip())
+            
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+        print 'notes_0_addEmailAddresses', value
+        if not liAddresses:
+            liAddresses = 'NONE'
+                
+        return liAddresses
         

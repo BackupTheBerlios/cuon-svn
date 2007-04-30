@@ -117,7 +117,8 @@ class sendEmail(editorwindow):
                 self.eTo.set_text(self.dicValues['To'])
             if self.dicValues['From']:
                 self.eFrom.set_text(self.dicValues['From'])
-                    
+            if self.dicValues['Signatur']:
+                self.add2Textbuffer(self.getWidget('tv1'), self.dicValues['Signatur'])        
             
     def on_fcAttachment_file_activated(self, event):
         print event

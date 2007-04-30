@@ -545,3 +545,52 @@ on_SchedulSave_activate                (GtkMenuItem     *menuitem,
 void
 on_NotesSave_activate                  (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_contact1_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_tbExtendetInfo_clicked              (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_tbLetter_clicked                    (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_tbContact_clicked                   (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_tbAllContact_clicked                (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+gboolean
+on_eFindContact_key_press_event        (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+void
+on_tbNew_clicked                       (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_tbSetReady_clicked                  (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_new_order_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_show_order1_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_tbNewOrder_clicked                  (GtkToolButton   *toolbutton,
+                                        gpointer         user_data);
+
+void
+on_bSendExternEmail_clicked            (GtkButton       *button,
+                                        gpointer         user_data);

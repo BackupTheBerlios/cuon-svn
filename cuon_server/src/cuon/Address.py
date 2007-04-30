@@ -231,7 +231,9 @@ class Address(xmlrpc.XMLRPC, basics):
                 print 'Error by Schedul Read user.cfg'
                 print Exception, params
             if value and addressID:
-                pass
+                dicRecord = self.xmlrpc_getNotes(addressID, dicUser)
+                if dicRecord != 'NONE':
+                    pass
                 
                 
             

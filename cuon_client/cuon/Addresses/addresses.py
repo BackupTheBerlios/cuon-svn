@@ -45,6 +45,8 @@ import threading
 import time
 import datetime as DateTime
 import cuon.DMS.documentTools
+import cuon.DMS.SingleDMS
+
 import cuon.DMS.dms
 import printAddress
 import cuon.Staff.staff
@@ -52,7 +54,7 @@ import cuon.Staff.SingleStaff
 import contact
 import cuon.E_Mail.sendEmail
 import cuon.Misc.cuon_dialog
-
+import cuon.Order.order
 class addresswindow(chooseWindows):
 
     
@@ -73,6 +75,7 @@ class addresswindow(chooseWindows):
         self.singleSchedul = SingleScheduling.SingleScheduling(allTables)
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
+        self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
         
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
@@ -251,7 +254,7 @@ class addresswindow(chooseWindows):
         #self.addEnabledMenuItems('editSchedul','mi_SchedulPrint1')
         
         # enabledMenues for Notes
-        self.addEnabledMenuItems('editNotes', 'NotesEdit1')
+        self.addEnabledMenuItems('editNotes', 'NotesEdit1', self.dicUserKeys['address_edit'])
   
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['address_save'])
@@ -297,6 +300,8 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = 'Newsletter: '
+        dicV['signatur'] = self.dicUser['Email']['Signatur']
+
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
@@ -462,6 +467,16 @@ class addresswindow(chooseWindows):
         
         self.singleAddressNotes.save()
         self.setEntriesEditable(self.EntriesNotes, FALSE)
+        if self.rpc.callRP('Misc.sendNotes0', self.dicUser):
+        
+            liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
+            print 'liEmailAddresses = ', liEmailAddresses
+            if liEmailAddresses and liEmailAddresses != 'NONE':
+                self.singleDMS.loadNotes0SaveDocument()
+                dicVars, dicExtInfo = self.getAddressInfos()
+                dicVars['email_subject'] = `dicVars['id']` + ', ' + dicVars['lastname'] + ', ' + dicVars['city'] + ', ' + _('notes are changed')
+                self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, dicVars, 'sentAutomaticEmail', liEmailAddresses)
+                
         self.tabChanged()
 
     def on_NotesEdit1_activate(self, event):
@@ -617,15 +632,8 @@ class addresswindow(chooseWindows):
     def on_bLetter_clicked(self, event):
         print 'bLetter clicked'
         if self.singleAddress.ID > 0:
-            #self.singleAddress.load(self.singleAddress.ID)
-            print 'firstRecord = ', self.singleAddress.firstRecord
-            print 'ModulNumber', self.ModulNumber
-            dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes and dicNotes != 'NONE':
-                for key in dicNotes:
-                    firstRecord['notes_' + key] = dicNotes[key]
-            dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, self.singleAddress.firstRecord,dicExtInfo)
+            firstRecord, dicExtInfo = self.getAddressInfos()
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, firstRecord,dicExtInfo)
         
 
     def on_bShowPartnerDMS_clicked(self, event):
@@ -658,8 +666,30 @@ class addresswindow(chooseWindows):
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
             
     def on_bSchedulLetter_clicked(self, event):
-    
         print 'bSchulLetter clicked'
+        if self.singleSchedul.ID > 0:
+            dicSchedul, dicExtInfo = self.getSchedulInfos()
+    
+        #print 'lastname', dicSchedul['person1_lastname']
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
+    def getAddressInfos(self):
+    
+        firstRecord = None
+        if self.singleAddress.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            firstRecord = self.singleAddress.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            if dicNotes and dicNotes != 'NONE':
+                for key in dicNotes:
+                    firstRecord['notes_' + key] = dicNotes[key]
+            dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
+        
+        return firstRecord, dicExtInfo
+        
+    def getSchedulInfos(self):
+        dicSchedul = {}
+        dicExtInfo = {}
         if self.singleSchedul.ID > 0:
             dicExtInfo = {'sep_info':{'1':self.singleSchedul.ID},'Modul':self.MN['Partner_Schedul']}
             dicSchedul = self.singleSchedul.firstRecord
@@ -679,9 +709,7 @@ class addresswindow(chooseWindows):
                     
             dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
             print 'dicSchedul = ', dicSchedul
-            #print 'lastname', dicSchedul['person1_lastname']
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
-    
+        return dicSchedul, dicExtInfo
         
                     
     def on_chooseAddress_activate(self, event):
@@ -808,11 +836,37 @@ class addresswindow(chooseWindows):
         except Exception, params:
             print Exception, params
             
-
+    def on_eAddressRepID_changed(self, event):
+        print 'eRepID changed'
+        try:
+        
+            eAdrField = self.getWidget('eAddressRep')
+            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressRepID').get_text()))
+            eAdrField.set_text(cAdr)
+        except Exception, params:
+            print Exception, params
+            
+    def on_eAddressSalesmanID_changed(self, event):
+        print 'eSalesmanID changed'
+        try:
+        
+            eAdrField = self.getWidget('eAddressSalesman')
+            cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressSalesmanID').get_text()))
+            eAdrField.set_text(cAdr)
+        except Exception, params:
+            print Exception, params
+            
     def on_bSchedulFor_clicked(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables)
         staff.setChooseEntry('chooseStaff', self.getWidget( 'eSchedulFor'))
         
+    def on_new_order_activate(self, event):
+        print 'new order'
+        orderwindow = cuon.Order.order.orderwindow(self.allTables,None,self.singleAddress.ID)
+        
+    def on_tbNewOrder_clicked(self, event):
+        print 'new order toolbar '
+        self.activateClick('new_order')
         
     def disconnectSchedulTree(self):
         try:
@@ -926,6 +980,8 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singleAddress.getEmail()
+        dicV['signatur'] = self.dicUser['Email']['Signatur']
+        
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
@@ -1012,8 +1068,69 @@ class addresswindow(chooseWindows):
             widget.show()
             widget.set_active(0)
             #cbeNotesMisc.set_sensitive(True)
+    def on_tbSave_clicked(self, event):
+        print 'save Addresses'
+        if self.tabOption  == self.tabAddress:
+            print 'save 1'
+            self.on_save1_activate(None)
+        elif self.tabOption  == self.tabBank:
+            print 'save 2'
+            #self.on_(None)
+        elif self.tabOption  == self.tabMisc:
+            self.on_MiscSave1_activate(None)
+        elif self.tabOption  == self.tabPartner:
+            self.on_PartnerSave1_activate(None)
+        elif self.tabOption  == self.tabSchedul:
+            self.on_SchedulSave_activate(None)
+        elif self.tabOption  == self.tabNotes:
+            self.on_NotesSave_activate(None)
             
+    def on_tbNew_clicked(self, event):
+        print 'new Addresses'
+        if self.tabOption  == self.tabAddress:
+            self.on_new1_activate(None)
+        elif self.tabOption  == self.tabBank:
+            pass
+        elif self.tabOption  == self.tabMisc:
+            self.on_MiscNew1_activate(None)
+        elif self.tabOption  == self.tabPartner:
+            self.on_PartnerNew1_activate(None)
+        elif self.tabOption  == self.tabSchedul:
+            self.on_SchedulNew_activate(None)
+        elif self.tabOption  == self.tabNotes:
+            self.on_NotesNew_activate(None)
             
+    def on_tbEdit_clicked(self, event):
+        print 'edit Addresses'
+        if self.tabOption  == self.tabAddress:
+            self.on_edit1_activate(None)
+        elif self.tabOption  == self.tabBank:
+            pass
+        elif self.tabOption  == self.tabMisc:
+            self.on_MiscEdit1_activate(None)
+        elif self.tabOption  == self.tabPartner:
+            self.on_PartnerEdit1_activate(None)
+        elif self.tabOption  == self.tabSchedul:
+            self.on_SchedulEdit_activate(None)
+        elif self.tabOption  == self.tabNotes:
+            self.on_NotesEdit_activate(None)
+    def on_tbExtendetInfo_clicked(self, event):
+        if self.tabOption  == self.tabAddress:
+            self.on_bShowDMS_clicked(None)
+        elif self.tabOption  == self.tabPartner:
+            self.on_bShowPartnerDMS_clicked(None)
+           
+    def on_tbLetter_clicked(self, event):
+        if self.tabOption  == self.tabAddress:
+            self.on_bLetter_clicked(None)
+        elif self.tabOption  == self.tabPartner:
+            self.on_bPartnerLetter_clicked(None)
+                  
+    def on_tbAllContact_clicked(self, event):
+        con1 = contact.contactwindow(self.allTables, 0,0)
+    def on_tbContact_clicked(self, event):        
+        self.on_bContact_clicked(None)
+        
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()

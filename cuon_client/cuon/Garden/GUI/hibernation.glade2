@@ -278,6 +278,72 @@
 	      </child>
 	    </widget>
 	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="lists1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Lists</property>
+	      <property name="use_underline">True</property>
+	      <signal name="activate" handler="on_lists1_activate" last_modification_time="Sat, 28 Apr 2007 16:03:54 GMT"/>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="pickerl1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Pickerl</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="pickerl1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="single-row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Single-row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="single-row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_single_row_standard_activate" last_modification_time="Sat, 28 Apr 2007 16:03:54 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="two-row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">two-row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="two-row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_two_row_standard_activate" last_modification_time="Sat, 28 Apr 2007 16:03:54 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>
