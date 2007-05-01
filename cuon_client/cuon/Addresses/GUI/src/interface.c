@@ -538,7 +538,7 @@ create_AddressMainwindow (void)
   GtkWidget *hbox15;
   GtkWidget *eAddressSalesmanID;
   GtkWidget *bChooseSalesman;
-  GtkWidget *eAddressContract;
+  GtkWidget *eAddressSalesman;
   GtkWidget *label58;
   GtkWidget *eHandy;
   GtkWidget *label65;
@@ -1334,10 +1334,10 @@ create_AddressMainwindow (void)
   gtk_box_pack_start (GTK_BOX (hbox15), bChooseSalesman, FALSE, FALSE, 0);
   GTK_WIDGET_UNSET_FLAGS (bChooseSalesman, GTK_CAN_FOCUS);
 
-  eAddressContract = gtk_entry_new ();
-  gtk_widget_show (eAddressContract);
-  gtk_box_pack_start (GTK_BOX (vbox4), eAddressContract, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eAddressContract), FALSE);
+  eAddressSalesman = gtk_entry_new ();
+  gtk_widget_show (eAddressSalesman);
+  gtk_box_pack_start (GTK_BOX (vbox4), eAddressSalesman, FALSE, FALSE, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eAddressSalesman), FALSE);
 
   label58 = gtk_label_new (_("Handy"));
   gtk_widget_show (label58);
@@ -2710,8 +2710,14 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bChooseCaller, "clicked",
                     G_CALLBACK (on_bChooseCaller_clicked),
                     NULL);
+  g_signal_connect ((gpointer) eAddressRepID, "changed",
+                    G_CALLBACK (on_eAddressRepID_changed),
+                    NULL);
   g_signal_connect ((gpointer) bChooseRep, "clicked",
                     G_CALLBACK (on_bChooseRep_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eAddressSalesmanID, "changed",
+                    G_CALLBACK (on_eAddressSalesmanID_changed),
                     NULL);
   g_signal_connect ((gpointer) bChooseSalesman, "clicked",
                     G_CALLBACK (on_bChooseSalesman_clicked),
@@ -2978,7 +2984,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox15, "hbox15");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressSalesmanID, "eAddressSalesmanID");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseSalesman, "bChooseSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressContract, "eAddressContract");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressSalesman, "eAddressSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label58, "label58");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eHandy, "eHandy");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label65, "label65");

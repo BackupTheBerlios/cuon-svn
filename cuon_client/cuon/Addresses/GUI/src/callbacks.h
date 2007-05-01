@@ -594,3 +594,11 @@ on_tbNewOrder_clicked                  (GtkToolButton   *toolbutton,
 void
 on_bSendExternEmail_clicked            (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_eAddressRepID_changed               (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_eAddressSalesmanID_changed          (GtkEditable     *editable,
+                                        gpointer         user_data);

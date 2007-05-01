@@ -54,7 +54,7 @@ class orderwindow(chooseWindows):
     """
     
     
-    def __init__(self, allTables, dicOrder=None, addressid = None):
+    def __init__(self, allTables, dicOrder=None,  newOrder = False):
 
         chooseWindows.__init__(self)
         self.dicOrder = dicOrder
@@ -185,7 +185,7 @@ class orderwindow(chooseWindows):
         self.tabMisc = 5
 
         # start
-        if self.dicOrder:
+        if self.dicOrder and not newOrder:
             print self.dicOrder
             existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
             print 'existOrder = ', existOrder
@@ -193,7 +193,15 @@ class orderwindow(chooseWindows):
                 print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
                 self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
             self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
-        
+        elif self.dicOrder and newOrder:
+            dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+            if dicResult and dicResult != 'NONE':
+                orderid = dicResult[0]['last_value']
+                if orderid > 0:
+                    self.singleOrder.sWhere = ' where id = ' + `orderid` 
+                    
+            
+            
         self.tabChanged()
 
    

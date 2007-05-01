@@ -2846,6 +2846,7 @@
 				      <property name="has_frame">True</property>
 				      <property name="invisible_char">*</property>
 				      <property name="activates_default">False</property>
+				      <signal name="changed" handler="on_eAddressRepID_changed" last_modification_time="Tue, 01 May 2007 08:13:00 GMT"/>
 				    </widget>
 				    <packing>
 				      <property name="padding">0</property>
@@ -2912,6 +2913,7 @@
 				      <property name="has_frame">True</property>
 				      <property name="invisible_char">*</property>
 				      <property name="activates_default">False</property>
+				      <signal name="changed" handler="on_eAddressSalesmanID_changed" last_modification_time="Tue, 01 May 2007 08:13:15 GMT"/>
 				    </widget>
 				    <packing>
 				      <property name="padding">0</property>
@@ -2944,7 +2946,7 @@
 			      </child>
 
 			      <child>
-				<widget class="GtkEntry" id="eAddressContract">
+				<widget class="GtkEntry" id="eAddressSalesman">
 				  <property name="visible">True</property>
 				  <property name="can_focus">True</property>
 				  <property name="editable">False</property>

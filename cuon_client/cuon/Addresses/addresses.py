@@ -862,7 +862,10 @@ class addresswindow(chooseWindows):
         
     def on_new_order_activate(self, event):
         print 'new order'
-        orderwindow = cuon.Order.order.orderwindow(self.allTables,None,self.singleAddress.ID)
+        dicOrder = {}
+        dicOrder['addressnumber'] = self.singleAddress.ID
+        dicOrder['ModulNumber'] = self.ModulNumber
+        orderwindow = cuon.Order.order.orderwindow(self.allTables,dicOrder,True)
         
     def on_tbNewOrder_clicked(self, event):
         print 'new order toolbar '

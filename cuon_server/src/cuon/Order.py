@@ -140,17 +140,29 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_createNewOrder(self,dicUser,dicOrder):
         print 'create new Order'
+        print dicOrder
         dicValues = {}
-        dicValues['modul_order_number'] = [dicOrder['ModulOrderNumber'],'int']
-        dicValues['modul_number'] = [dicOrder['ModulNumber'],'int']
-        dicValues['number'] = [dicOrder['Number'],'string']
+        if dicOrder.has_key('ModulOrderNumber'):
+            dicValues['modul_order_number'] = [dicOrder['ModulOrderNumber'],'int']
+        if dicOrder.has_key('ModulNumber'):
+            dicValues['modul_number'] = [dicOrder['ModulNumber'],'int']
+        if dicOrder.has_key( 'Number'):   
+            dicValues['number'] = [dicOrder['Number'],'string']
         dicValues['addressnumber'] = [dicOrder['addressnumber'],'int']
         print 'Locales:', dicUser['Locales']
         print 'Dateformatstring', dicUser['DateformatString']
-        dO = time.strptime(dicOrder['orderedat'], dicUser['DateformatString'])
-        dD = time.strptime(dicOrder['deliveredat'], dicUser['DateformatString'])
-        dicValues['orderedat'] = [`dO[0]`+'/'+ `dO[1]` + '/'+ `dO[2]`,'date']
-        dicValues['deliveredat'] = [`dD[0]`+'/'+ `dD[1]` + '/'+ `dD[2]`,'date']
+        if dicOrder.has_key('orderedat'):
+                            
+            try:
+                dO = time.strptime(dicOrder['orderedat'], dicUser['DateformatString'])
+                dD = time.strptime(dicOrder['deliveredat'], dicUser['DateformatString'])
+                dicValues['orderedat'] = [`dO[0]`+'/'+ `dO[1]` + '/'+ `dO[2]`,'date']
+                dicValues['deliveredat'] = [`dD[0]`+'/'+ `dD[1]` + '/'+ `dD[2]`,'date']
+            except:
+                pass
+        else:
+            dicValues['orderedat'] = [time.strftime('%m/%d/%Y', time.localtime()),'date']
+            
         print dicValues
         dicResult =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
         
