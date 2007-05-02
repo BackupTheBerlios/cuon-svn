@@ -1016,8 +1016,9 @@ class MainWindow(windows):
                     lastSchedulname = Schedulname
                     iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
                 sTime  = self.getTimeString(oneDate['time_begin'] )
+                sTime2  = self.getTimeString(oneDate['time_end'] )
                     
-                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + sTime + ' ###' +  `oneDate['id']`])   
+                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + sTime + '-' +sTime2 +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] + ' ###' +  `oneDate['id']`])   
                 
 ##        try:
 ##            iter = treestore.append(None,['Names'])
@@ -1047,8 +1048,9 @@ class MainWindow(windows):
                     lastSchedulname = Schedulname
                     iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
                 sTime  = self.getTimeString(oneDate['time_begin'] )
-                    
-                iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + ' ###' +  `oneDate['id']`])   
+                sTime2  = self.getTimeString(oneDate['time_end'] )
+                
+                iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + '-' +sTime2  +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] +' ###' +  `oneDate['id']`])   
                 
         
         treeview.show()

@@ -107,9 +107,9 @@ class Address(xmlrpc.XMLRPC, basics):
                 
                 
             if OrderType == 'Name' :
-                sSql = sSql + " order by schedul_name, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') DESC , partner_schedul.schedul_time_begin " 
+                sSql = sSql + " order by schedul_name DESC, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') DESC , partner_schedul.schedul_time_begin DESC" 
             elif OrderType == 'Schedul' :
-                sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') DESC  , schedul_name,  partner_schedul.schedul_time_begin " 
+                sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') DESC  , schedul_name DESC,  partner_schedul.schedul_time_begin DESC " 
                 
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         elif value == None:

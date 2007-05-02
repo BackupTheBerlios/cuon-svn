@@ -188,8 +188,8 @@ class Misc(xmlrpc.XMLRPC, basics):
                             sSql = 'select staff.email  as email from staff, address where  address.rep_id  = staff.id' 
                             sSql += ' and address.id = ' + `addressid`
                             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                        elif i.strip() == 'saleman':
-                            sSql = 'select staff.email  as email from staff, address where  address.saleman_id  = staff.id' 
+                        elif i.strip() == 'salesman':
+                            sSql = 'select staff.email  as email from staff, address where  address.salesman_id  = staff.id' 
                             sSql += ' and address.id = ' + `addressid`
                             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
                         if result and result != 'NONE':

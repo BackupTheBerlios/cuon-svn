@@ -313,7 +313,7 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        debugValue = 1
+        debugValue = 0
         #print 'debugValue', debugValue
         if debugValue == 1:
         

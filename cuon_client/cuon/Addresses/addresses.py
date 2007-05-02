@@ -930,6 +930,7 @@ class addresswindow(chooseWindows):
                 #print 'iter = ', iter
                 iter2 = None
                 iter3 = None
+                liDates.reverse()
                 for oneDate in liDates:
                     Schedulname = oneDate['date']
                     if lastSchedulname != Schedulname:
@@ -937,7 +938,7 @@ class addresswindow(chooseWindows):
                         iter = treestore.append(None,[lastSchedulname])   
                     sTime  = self.getTimeString(oneDate['time_begin'] )
                     sTimeEnd =     self.getTimeString(oneDate['time_end'] )
-                    iter2 = treestore.insert_after(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])           
+                    iter2 = treestore.insert_before(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + oneDate['a_lastname'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])           
                 print 'End liDates'
             ts.show()
             #self.getWidget('scrolledwindow10').show()

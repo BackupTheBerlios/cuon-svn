@@ -120,10 +120,26 @@ class gladeXml(defaultValues):
         
     def loadGlade(self, gladeName,sMainWindow=None):
         
-        fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+        if self.td.SystemName:
+            if self.td.SystemName == 'LINUX-Standard':
+                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+            else:
+                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + gladeName)  
+            #else:
+            #    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+
+        
+        else:
+            fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+        fnameAlternate = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
 
         #print fname
-        self.xml = gtk.glade.XML(fname)
+        try:
+            self.xml = gtk.glade.XML(fname)
+        except:
+            self.xml = gtk.glade.XML(fnameAlternate)
+        
+
         if sMainWindow:
             self.win1 = self.getWidget(sMainWindow)
             if self.win1 and sMainWindow.find('Mainwindow') > 0:
