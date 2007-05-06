@@ -602,3 +602,8 @@ on_eAddressRepID_changed               (GtkEditable     *editable,
 void
 on_eAddressSalesmanID_changed          (GtkEditable     *editable,
                                         gpointer         user_data);
+
+gboolean
+on_Mainwindow_key_press_event          (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

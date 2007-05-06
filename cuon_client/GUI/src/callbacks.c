@@ -317,3 +317,43 @@ on_bGotoAddress_clicked                (GtkButton       *button,
 
 }
 
+
+void
+on_rbSchedulsNew_activate              (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_rbSchedulsAll_activate              (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_rbSchedulsCancel_activate           (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_rbScheduls_activate                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_rbScheduls_activate                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

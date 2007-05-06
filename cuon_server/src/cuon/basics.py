@@ -292,6 +292,7 @@ class basics(xmlrpc.XMLRPC):
         
             else:
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
+        
         self.writeLog('getWhere = ' + `sWhere`)
         return sWhere       
     def openDB(self):

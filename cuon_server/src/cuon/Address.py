@@ -41,7 +41,7 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_getAllActiveSchedulByNames(self, dicUser, OrderType='Name', SelectStaff='All'):
         self.xmlrpc_getAllActiveSchedul(dicUser)
         
-    def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All'):
+    def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All', sChoice = 'New'):
         value = None
         result = 'NONE'
         sw = None
@@ -93,7 +93,14 @@ class Address(xmlrpc.XMLRPC, basics):
                 sW +=  " process_status != 999 "
                 sW += " and schedul_staff_id = " + SelectStaff + " "
             
-            
+            print 'sChoice = ', sChoice
+            if sChoice == 'New':
+                sW += " and  date_part('doy', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  >=  date_part('doy', now())"
+            elif sChoice == 'Cancel':
+                sW += ' and partner_schedul.process_status between 801 and 998 '
+            elif sChoice == 'All':
+                pass
+                
             if value != 'ALL':
                 liValue = value.split(',')
                 sW += ' and ( '
@@ -110,7 +117,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 sSql = sSql + " order by schedul_name DESC, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') DESC , partner_schedul.schedul_time_begin DESC" 
             elif OrderType == 'Schedul' :
                 sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') DESC  , schedul_name DESC,  partner_schedul.schedul_time_begin DESC " 
-                
+            print sSql    
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         elif value == None:
             pass
@@ -130,7 +137,7 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql +=  "address.lastname2 as address_lastname2 "
         sSql +=  " from  address, contact "
         sW = " where address.id = contact.address_id and "
-        sW +=  " process_status != 1 and contacter_id = " + self.getStaffID(dicUser) + " "  
+        sW +=  " process_status = 0 and contacter_id = " + self.getStaffID(dicUser) + " "  
         
         sSql = sSql + self.getWhere(sW, dicUser, Prefix='contact.')
         

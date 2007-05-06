@@ -1203,3 +1203,13 @@ on_eAddressSalesmanID_changed          (GtkEditable     *editable,
 
 }
 
+
+gboolean
+on_Mainwindow_key_press_event          (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+

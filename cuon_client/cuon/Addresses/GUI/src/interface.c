@@ -2593,6 +2593,9 @@ create_AddressMainwindow (void)
   gtk_widget_show (label64);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label64);
 
+  g_signal_connect ((gpointer) AddressMainwindow, "key_press_event",
+                    G_CALLBACK (on_Mainwindow_key_press_event),
+                    NULL);
   g_signal_connect ((gpointer) tbNew, "clicked",
                     G_CALLBACK (on_tbNew_clicked),
                     NULL);

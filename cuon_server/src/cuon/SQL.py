@@ -184,6 +184,8 @@ class SQL(xmlrpc.XMLRPC, basics):
         self.writeLog(`sSql`)
         sSql = sSql + ' LIMIT ' + `self.LIMITSQL`
         print 'self.LIMITSQL', self.LIMITSQL
+        sSql = sSql.replace('specialsql1','where')
+        print sSql
         
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         #result2 = []

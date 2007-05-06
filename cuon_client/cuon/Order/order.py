@@ -58,7 +58,7 @@ class orderwindow(chooseWindows):
 
         chooseWindows.__init__(self)
         self.dicOrder = dicOrder
-        
+        self.fillArticlesNewID = 0
         self.loadGlade('order.xml','OrderMainwindow')
         #self.win1 = self.getWidget('OrderMainwindow')
         
@@ -125,10 +125,10 @@ class orderwindow(chooseWindows):
         self.loadEntries(self.EntriesOrderPosition)
         self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
         self.singleOrderPosition.setGladeXml(self.xml)
-        self.singleOrderPosition.setTreeFields( ['designation'] )
-        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderPosition.setTreeOrder('designation')
-        self.singleOrderPosition.setListHeader([_('Designation')])
+        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','designation'] )
+        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_STRING , gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleOrderPosition.setTreeOrder('position')
+        self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article'),_('Designation')])
 
         self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID`
         self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
@@ -200,7 +200,23 @@ class orderwindow(chooseWindows):
                 if orderid > 0:
                     self.singleOrder.sWhere = ' where id = ' + `orderid` 
                     
-            
+                    
+        ts = self.getWidget('treeMaterialgroup')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn("Materialgroups", renderer, text=0)
+        ts.append_column(column)
+                    
+        tt = self.getWidget('treeArticles')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn("Articles", renderer, text=0)
+        tt.append_column(column)
+                    
+        self.fillMaterialGroup()
+        
             
         self.tabChanged()
 
@@ -471,6 +487,163 @@ class orderwindow(chooseWindows):
         cbeTop = self.getWidget('cbeTOP')
         liCbe = XMLRPC.xmlrpc().callRP('py_getListOfTOPs')
         print `liCbe`
+    
+    
+    
+    
+    def disconnectArticlesTree(self):
+        try:
+            
+            self.getWidget('treeArticles').get_selection().disconnect(self.connectArticlesTreeId)
+        except:
+            pass
+
+    def connectArticlesTree(self):
+        try:
+            self.connectArticlesTreeId = self.getWidget('treeArticles').get_selection().connect("changed", self.ArticlesTree_select_callback)
+        except:
+            pass
+   
+    def ArticlesTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.fillArticlesNewID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                   
+    def fillArticles(self, mid):
+        print 'fill Articles'
+        try:
+            ts = self.getWidget('treeArticles')
+            print 'ts = ', ts
+            treestore = gtk.TreeStore(object)
+            treestore = gtk.TreeStore(str)
+            ts.set_model(treestore)
+                
+            liArticles = self.rpc.callRP('Article.getArticlesOfMaterialGroup',self.dicUser, mid )
+            print 'liArticles ', liArticles
+            if liArticles:
+                lastGroup = None
+                
+                #iter = treestore.append(None,[_('Schedul')])
+                #print 'iter = ', iter
+                iter2 = None
+                iter3 = None
+                #liDates.reverse()
+                for oneArticle in liArticles:
+                    articlenumber = oneArticle['number']
+                    articledesignation = oneArticle['designation']
+                    
+                    iter = treestore.append(None,[articlenumber +  ', ' + articledesignation +  '     ###' +`oneArticle['id']` ]) 
+                    #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
+                    
+                    #iter2 = treestore.insert_after(iter,None,['TESTEN'])           
+                #print 'End liDates'
+            ts.show()
+            #self.getWidget('scrolledwindow10').show()
+            self.connectArticlesTree()
+            print 'ts', ts
+            
+        except Exception, params:
+            print Exception, params    
+            
+
+
+    def disconnectMaterialGroupTree(self):
+        try:
+            
+            self.getWidget('treeMaterialgroup').get_selection().disconnect(self.connectMaterialGroupTreeId)
+        except:
+            pass
+
+    def connectMaterialGroupTree(self):
+        try:
+            self.connectMaterialGroupTreeId = self.getWidget('treeMaterialgroup').get_selection().connect("changed", self.MaterialGroupTree_select_callback)
+        except:
+            pass
+   
+    def MaterialGroupTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                newID = int(sNewId[sNewId.find('###')+ 3:])
+                self.fillArticles(newID)
+                
+            except:
+                pass
+                   
+    def fillMaterialGroup(self):
+        print 'eSchedulfor changed'
+        try:
+            ts = self.getWidget('treeMaterialgroup')
+            print 'ts = ', ts
+            treestore = gtk.TreeStore(object)
+            treestore = gtk.TreeStore(str)
+            ts.set_model(treestore)
+                
+            liGroups = self.rpc.callRP('Article.getMaterialGroups',self.dicUser )
+            print 'liGroups ', liGroups
+            if liGroups:
+                lastGroup = None
+                
+                #iter = treestore.append(None,[_('Schedul')])
+                #print 'iter = ', iter
+                iter2 = None
+                iter3 = None
+                #liDates.reverse()
+                for oneGroup in liGroups:
+                    groupname = oneGroup['name']
+                    
+                    iter = treestore.append(None,[groupname + '     ###' +`oneGroup['id']` ]) 
+                    #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
+                    
+                    #iter2 = treestore.insert_after(iter,None,['TESTEN'])           
+                #print 'End liDates'
+            ts.show()
+            #self.getWidget('scrolledwindow10').show()
+            self.connectMaterialGroupTree()
+            print 'ts', ts
+            
+        except Exception, params:
+            print Exception, params    
+            
+     
+
+    def on_bQuickAppend_clicked(self, event):
+        # Qick append a positions
+        if self.singleOrderPosition.ID != -1:
+            self.on_PositionNew1_activate(event)
+        if self.getWidget('eAmount').get_text() == '':
+            print 'get_text none'
+            self.getWidget('eAmount').set_text('1')
+        self.getWidget('eArticleID').set_text(`self.fillArticlesNewID`)
+        self.on_PositionSave1_activate(event)
+        
+    def on_treeArticles_row_activated(self, event, data1, data2):
+        self.on_bQuickAppend_clicked(event)
 
     def refreshTree(self):
         self.singleOrder.disconnectTree()
@@ -508,9 +681,7 @@ class orderwindow(chooseWindows):
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
 
-            
-
-
+        
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)

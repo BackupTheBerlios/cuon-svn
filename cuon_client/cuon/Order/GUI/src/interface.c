@@ -227,6 +227,25 @@ static GnomeUIInfo position1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo misc1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Edit"),
+    NULL,
+    (gpointer) on_MiscEdit_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Save"),
+    NULL,
+    (gpointer) on_MiscSave_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo menubar1_uiinfo[] =
 {
   {
@@ -264,6 +283,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Misc"),
+    NULL,
+    misc1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -275,6 +301,7 @@ create_OrderMainwindow (void)
   GtkWidget *menubar1;
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
+  GtkWidget *toolitem2;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
   GtkWidget *eFindName;
@@ -298,12 +325,12 @@ create_OrderMainwindow (void)
   GtkWidget *lOrderedAt;
   GtkWidget *lDeliveredAt;
   GtkWidget *ePostage;
-  GtkWidget *lDesignation;
   GtkWidget *ePacking;
   GtkWidget *label27;
   GtkWidget *label26;
   GtkWidget *eMiscCost;
   GtkWidget *label28;
+  GtkWidget *lDesignation;
   GtkWidget *label2;
   GtkWidget *fixed2;
   GtkWidget *eSupplyNumber;
@@ -372,35 +399,62 @@ create_OrderMainwindow (void)
   GtkWidget *cbPickupNoteStatus;
   GtkWidget *label3;
   GtkWidget *table1;
-  GtkWidget *lPositionDesignation;
-  GtkWidget *ePositionDesignation;
-  GtkWidget *label7;
-  GtkWidget *eAmount;
-  GtkWidget *lPosition;
-  GtkWidget *ePosition;
-  GtkWidget *label10;
-  GtkWidget *ePrice;
-  GtkWidget *scrolledwindow2;
-  GtkWidget *tvArticle;
-  GtkWidget *vbox7;
-  GtkWidget *lArticlesNumber;
-  GtkWidget *label22;
-  GtkWidget *label23;
-  GtkWidget *label24;
-  GtkWidget *vbox8;
-  GtkWidget *eArticleID;
-  GtkWidget *eOrderPositionsUnit;
-  GtkWidget *eOrderPositionsWrapping;
-  GtkWidget *eOrderPositionAmountPerWrap;
-  GtkWidget *vbox9;
-  GtkWidget *bArticleSearch;
   GtkWidget *label25;
   GtkWidget *eOrderPositionsTaxVat;
-  GtkWidget *label4;
+  GtkWidget *vbox7;
+  GtkWidget *vbox8;
+  GtkWidget *lPosition;
+  GtkWidget *lArticlesNumber;
+  GtkWidget *label7;
+  GtkWidget *lPositionDesignation;
+  GtkWidget *ePositionDesignation;
+  GtkWidget *eAmount;
+  GtkWidget *eArticleID;
+  GtkWidget *ePosition;
+  GtkWidget *label22;
+  GtkWidget *label23;
+  GtkWidget *label10;
+  GtkWidget *ePrice;
+  GtkWidget *eOrderPositionsUnit;
+  GtkWidget *eOrderPositionsWrapping;
+  GtkWidget *label24;
+  GtkWidget *eOrderPositionAmountPerWrap;
+  GtkWidget *scrolledwindow2;
+  GtkWidget *tvArticle;
+  GtkWidget *scrolledwindow7;
+  GtkWidget *treeMaterialgroup;
+  GtkWidget *scrolledwindow8;
+  GtkWidget *treeArticles;
+  GtkWidget *vbox9;
+  GtkWidget *bArticleSearch;
+  GtkWidget *bQuickAppend;
+  GtkWidget *alignment1;
+  GtkWidget *hbox21;
+  GtkWidget *image1;
+  GtkWidget *label33;
+  GtkWidget *lPosition;
   GtkWidget *table3;
   GtkWidget *label30;
   GtkWidget *cbeTOP;
   GtkWidget *label29;
+  GtkWidget *table4;
+  GtkWidget *cbRetry;
+  GtkWidget *hbox18;
+  GtkWidget *rbMonthly;
+  GSList *rbMonthly_group = NULL;
+  GtkWidget *rbQuarterly;
+  GtkWidget *rbSemestral;
+  GtkWidget *rbYearly;
+  GtkWidget *hbox19;
+  GtkWidget *cbSupply;
+  GtkWidget *cbGets;
+  GtkWidget *cbInvoice;
+  GtkWidget *hbox20;
+  GtkWidget *rbDaily;
+  GtkWidget *rbWeekly;
+  GtkWidget *rbCustom;
+  GtkWidget *eMiscCustomRetry;
+  GtkWidget *label31;
   GtkAccelGroup *accel_group;
 
   accel_group = gtk_accel_group_new ();
@@ -422,8 +476,15 @@ create_OrderMainwindow (void)
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
   gtk_box_pack_start (GTK_BOX (vbox1), toolbar1, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (toolbar1), 3);
   gtk_toolbar_set_style (GTK_TOOLBAR (toolbar1), GTK_TOOLBAR_BOTH);
   tmp_toolbar_icon_size = gtk_toolbar_get_icon_size (GTK_TOOLBAR (toolbar1));
+
+  toolitem2 = (GtkWidget*) gtk_tool_item_new ();
+  gtk_widget_show (toolitem2);
+  gtk_tool_item_set_homogeneous (GTK_TOOL_ITEM (toolitem2), TRUE);
+  gtk_container_add (GTK_CONTAINER (toolbar1), toolitem2);
+  gtk_container_set_border_width (GTK_CONTAINER (toolitem2), 1);
 
   hbox1 = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (hbox1);
@@ -541,12 +602,6 @@ create_OrderMainwindow (void)
   gtk_fixed_put (GTK_FIXED (fixed1), ePostage, 816, 208);
   gtk_widget_set_size_request (ePostage, 158, 31);
 
-  lDesignation = gtk_label_new (_("Desig."));
-  gtk_widget_show (lDesignation);
-  gtk_fixed_put (GTK_FIXED (fixed1), lDesignation, 376, 8);
-  gtk_widget_set_size_request (lDesignation, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lDesignation), GTK_JUSTIFY_CENTER);
-
   ePacking = gtk_entry_new ();
   gtk_widget_show (ePacking);
   gtk_fixed_put (GTK_FIXED (fixed1), ePacking, 816, 168);
@@ -571,6 +626,12 @@ create_OrderMainwindow (void)
   gtk_widget_show (label28);
   gtk_fixed_put (GTK_FIXED (fixed1), label28, 592, 248);
   gtk_widget_set_size_request (label28, 0, 0);
+
+  lDesignation = gtk_label_new (_("Desig."));
+  gtk_widget_show (lDesignation);
+  gtk_fixed_put (GTK_FIXED (fixed1), lDesignation, 408, 8);
+  gtk_widget_set_size_request (lDesignation, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lDesignation), GTK_JUSTIFY_CENTER);
 
   label2 = gtk_label_new (_("Order"));
   gtk_widget_show (label2);
@@ -901,134 +962,9 @@ create_OrderMainwindow (void)
   gtk_widget_show (label3);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), label3);
 
-  table1 = gtk_table_new (4, 4, FALSE);
+  table1 = gtk_table_new (10, 4, FALSE);
   gtk_widget_show (table1);
   gtk_container_add (GTK_CONTAINER (notebook1), table1);
-
-  lPositionDesignation = gtk_label_new (_("Designation"));
-  gtk_widget_show (lPositionDesignation);
-  gtk_table_attach (GTK_TABLE (table1), lPositionDesignation, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPositionDesignation), 0, 0.5);
-
-  ePositionDesignation = gtk_entry_new ();
-  gtk_widget_show (ePositionDesignation);
-  gtk_table_attach (GTK_TABLE (table1), ePositionDesignation, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (ePositionDesignation), 25);
-
-  label7 = gtk_label_new (_("amount"));
-  gtk_widget_show (label7);
-  gtk_table_attach (GTK_TABLE (table1), label7, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label7), 0, 0.5);
-
-  eAmount = gtk_entry_new ();
-  gtk_widget_show (eAmount);
-  gtk_table_attach (GTK_TABLE (table1), eAmount, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPosition = gtk_label_new (_("Pos."));
-  gtk_widget_show (lPosition);
-  gtk_table_attach (GTK_TABLE (table1), lPosition, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPosition), 0, 0.5);
-
-  ePosition = gtk_entry_new ();
-  gtk_widget_show (ePosition);
-  gtk_table_attach (GTK_TABLE (table1), ePosition, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (ePosition), 5);
-
-  label10 = gtk_label_new (_("Price"));
-  gtk_widget_show (label10);
-  gtk_table_attach (GTK_TABLE (table1), label10, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label10), 0, 0.5);
-
-  ePrice = gtk_entry_new ();
-  gtk_widget_show (ePrice);
-  gtk_table_attach (GTK_TABLE (table1), ePrice, 3, 4, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow2);
-  gtk_table_attach (GTK_TABLE (table1), scrolledwindow2, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (scrolledwindow2, -1, 152);
-
-  tvArticle = gtk_text_view_new ();
-  gtk_widget_show (tvArticle);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), tvArticle);
-
-  vbox7 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox7);
-  gtk_table_attach (GTK_TABLE (table1), vbox7, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  lArticlesNumber = gtk_label_new (_("articles-Number"));
-  gtk_widget_show (lArticlesNumber);
-  gtk_box_pack_start (GTK_BOX (vbox7), lArticlesNumber, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (lArticlesNumber), 0, 0.5);
-
-  label22 = gtk_label_new (_("Unit"));
-  gtk_widget_show (label22);
-  gtk_box_pack_start (GTK_BOX (vbox7), label22, FALSE, FALSE, 0);
-
-  label23 = gtk_label_new (_("Wrapping"));
-  gtk_widget_show (label23);
-  gtk_box_pack_start (GTK_BOX (vbox7), label23, FALSE, FALSE, 0);
-
-  label24 = gtk_label_new (_("Quant. per Wrap."));
-  gtk_widget_show (label24);
-  gtk_box_pack_start (GTK_BOX (vbox7), label24, FALSE, FALSE, 0);
-
-  vbox8 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox8);
-  gtk_table_attach (GTK_TABLE (table1), vbox8, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eArticleID = gtk_entry_new ();
-  gtk_widget_show (eArticleID);
-  gtk_box_pack_start (GTK_BOX (vbox8), eArticleID, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eArticleID), FALSE);
-  gtk_entry_set_width_chars (GTK_ENTRY (eArticleID), 25);
-
-  eOrderPositionsUnit = gtk_entry_new ();
-  gtk_widget_show (eOrderPositionsUnit);
-  gtk_box_pack_start (GTK_BOX (vbox8), eOrderPositionsUnit, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionsUnit), FALSE);
-
-  eOrderPositionsWrapping = gtk_entry_new ();
-  gtk_widget_show (eOrderPositionsWrapping);
-  gtk_box_pack_start (GTK_BOX (vbox8), eOrderPositionsWrapping, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionsWrapping), FALSE);
-
-  eOrderPositionAmountPerWrap = gtk_entry_new ();
-  gtk_widget_show (eOrderPositionAmountPerWrap);
-  gtk_box_pack_start (GTK_BOX (vbox8), eOrderPositionAmountPerWrap, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionAmountPerWrap), FALSE);
-
-  vbox9 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox9);
-  gtk_table_attach (GTK_TABLE (table1), vbox9, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  bArticleSearch = gtk_button_new_with_mnemonic (_("search article"));
-  gtk_widget_show (bArticleSearch);
-  gtk_box_pack_start (GTK_BOX (vbox9), bArticleSearch, FALSE, FALSE, 0);
 
   label25 = gtk_label_new (_("Tax-Vat"));
   gtk_widget_show (label25);
@@ -1043,9 +979,192 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label4 = gtk_label_new (_("Postions"));
-  gtk_widget_show (label4);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), label4);
+  vbox7 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox7);
+  gtk_table_attach (GTK_TABLE (table1), vbox7, 0, 1, 9, 10,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+
+  vbox8 = gtk_vbox_new (TRUE, 0);
+  gtk_widget_show (vbox8);
+  gtk_table_attach (GTK_TABLE (table1), vbox8, 1, 2, 9, 10,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  lPosition = gtk_label_new (_("Pos."));
+  gtk_widget_show (lPosition);
+  gtk_table_attach (GTK_TABLE (table1), lPosition, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lPosition), 0, 0.5);
+
+  lArticlesNumber = gtk_label_new (_("articles-Number"));
+  gtk_widget_show (lArticlesNumber);
+  gtk_table_attach (GTK_TABLE (table1), lArticlesNumber, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lArticlesNumber), 0, 0.5);
+
+  label7 = gtk_label_new (_("amount"));
+  gtk_widget_show (label7);
+  gtk_table_attach (GTK_TABLE (table1), label7, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label7), 0, 0.5);
+
+  lPositionDesignation = gtk_label_new (_("Designation"));
+  gtk_widget_show (lPositionDesignation);
+  gtk_table_attach (GTK_TABLE (table1), lPositionDesignation, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (lPositionDesignation), 0, 0.5);
+
+  ePositionDesignation = gtk_entry_new ();
+  gtk_widget_show (ePositionDesignation);
+  gtk_table_attach (GTK_TABLE (table1), ePositionDesignation, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (ePositionDesignation), 25);
+
+  eAmount = gtk_entry_new ();
+  gtk_widget_show (eAmount);
+  gtk_table_attach (GTK_TABLE (table1), eAmount, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eArticleID = gtk_entry_new ();
+  gtk_widget_show (eArticleID);
+  gtk_table_attach (GTK_TABLE (table1), eArticleID, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eArticleID), FALSE);
+  gtk_entry_set_width_chars (GTK_ENTRY (eArticleID), 25);
+
+  ePosition = gtk_entry_new ();
+  gtk_widget_show (ePosition);
+  gtk_table_attach (GTK_TABLE (table1), ePosition, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (ePosition), 5);
+
+  label22 = gtk_label_new (_("Unit"));
+  gtk_widget_show (label22);
+  gtk_table_attach (GTK_TABLE (table1), label22, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label23 = gtk_label_new (_("Wrapping"));
+  gtk_widget_show (label23);
+  gtk_table_attach (GTK_TABLE (table1), label23, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label10 = gtk_label_new (_("Price"));
+  gtk_widget_show (label10);
+  gtk_table_attach (GTK_TABLE (table1), label10, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label10), 0, 0.5);
+
+  ePrice = gtk_entry_new ();
+  gtk_widget_show (ePrice);
+  gtk_table_attach (GTK_TABLE (table1), ePrice, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eOrderPositionsUnit = gtk_entry_new ();
+  gtk_widget_show (eOrderPositionsUnit);
+  gtk_table_attach (GTK_TABLE (table1), eOrderPositionsUnit, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionsUnit), FALSE);
+
+  eOrderPositionsWrapping = gtk_entry_new ();
+  gtk_widget_show (eOrderPositionsWrapping);
+  gtk_table_attach (GTK_TABLE (table1), eOrderPositionsWrapping, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionsWrapping), FALSE);
+
+  label24 = gtk_label_new (_("Quant. per Wrap."));
+  gtk_widget_show (label24);
+  gtk_table_attach (GTK_TABLE (table1), label24, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eOrderPositionAmountPerWrap = gtk_entry_new ();
+  gtk_widget_show (eOrderPositionAmountPerWrap);
+  gtk_table_attach (GTK_TABLE (table1), eOrderPositionAmountPerWrap, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eOrderPositionAmountPerWrap), FALSE);
+
+  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow2);
+  gtk_table_attach (GTK_TABLE (table1), scrolledwindow2, 3, 4, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (scrolledwindow2, -1, 152);
+
+  tvArticle = gtk_text_view_new ();
+  gtk_widget_show (tvArticle);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow2), tvArticle);
+
+  scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow7);
+  gtk_table_attach (GTK_TABLE (table1), scrolledwindow7, 0, 1, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow7), GTK_SHADOW_IN);
+
+  treeMaterialgroup = gtk_tree_view_new ();
+  gtk_widget_show (treeMaterialgroup);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow7), treeMaterialgroup);
+
+  scrolledwindow8 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow8);
+  gtk_table_attach (GTK_TABLE (table1), scrolledwindow8, 1, 2, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow8), GTK_SHADOW_IN);
+
+  treeArticles = gtk_tree_view_new ();
+  gtk_widget_show (treeArticles);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow8), treeArticles);
+
+  vbox9 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox9);
+  gtk_table_attach (GTK_TABLE (table1), vbox9, 2, 3, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  bArticleSearch = gtk_button_new_with_mnemonic (_("search article"));
+  gtk_widget_show (bArticleSearch);
+  gtk_box_pack_start (GTK_BOX (vbox9), bArticleSearch, FALSE, FALSE, 0);
+
+  bQuickAppend = gtk_button_new ();
+  gtk_widget_show (bQuickAppend);
+  gtk_box_pack_start (GTK_BOX (vbox9), bQuickAppend, FALSE, FALSE, 0);
+
+  alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment1);
+  gtk_container_add (GTK_CONTAINER (bQuickAppend), alignment1);
+
+  hbox21 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox21);
+  gtk_container_add (GTK_CONTAINER (alignment1), hbox21);
+
+  image1 = gtk_image_new_from_stock ("gtk-apply", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1);
+  gtk_box_pack_start (GTK_BOX (hbox21), image1, FALSE, FALSE, 0);
+
+  label33 = gtk_label_new_with_mnemonic (_("Quick Append"));
+  gtk_widget_show (label33);
+  gtk_box_pack_start (GTK_BOX (hbox21), label33, FALSE, FALSE, 0);
+
+  lPosition = gtk_label_new (_("Postions"));
+  gtk_widget_show (lPosition);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPosition);
 
   table3 = gtk_table_new (3, 4, FALSE);
   gtk_widget_show (table3);
@@ -1068,6 +1187,100 @@ create_OrderMainwindow (void)
   gtk_widget_show (label29);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), label29);
 
+  table4 = gtk_table_new (4, 4, FALSE);
+  gtk_widget_show (table4);
+  gtk_container_add (GTK_CONTAINER (notebook1), table4);
+
+  cbRetry = gtk_check_button_new_with_mnemonic (_("retry"));
+  gtk_widget_show (cbRetry);
+  gtk_table_attach (GTK_TABLE (table4), cbRetry, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  hbox18 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox18);
+  gtk_table_attach (GTK_TABLE (table4), hbox18, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  rbMonthly = gtk_radio_button_new_with_mnemonic (NULL, _("monthly"));
+  gtk_widget_show (rbMonthly);
+  gtk_box_pack_start (GTK_BOX (hbox18), rbMonthly, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMonthly), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMonthly));
+
+  rbQuarterly = gtk_radio_button_new_with_mnemonic (NULL, _("quarterly"));
+  gtk_widget_show (rbQuarterly);
+  gtk_box_pack_start (GTK_BOX (hbox18), rbQuarterly, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbQuarterly), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbQuarterly));
+
+  rbSemestral = gtk_radio_button_new_with_mnemonic (NULL, _("semestral"));
+  gtk_widget_show (rbSemestral);
+  gtk_box_pack_start (GTK_BOX (hbox18), rbSemestral, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSemestral), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSemestral));
+
+  rbYearly = gtk_radio_button_new_with_mnemonic (NULL, _("yearly"));
+  gtk_widget_show (rbYearly);
+  gtk_box_pack_start (GTK_BOX (hbox18), rbYearly, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbYearly), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbYearly));
+
+  hbox19 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox19);
+  gtk_table_attach (GTK_TABLE (table4), hbox19, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  cbSupply = gtk_check_button_new_with_mnemonic (_("create supply"));
+  gtk_widget_show (cbSupply);
+  gtk_box_pack_start (GTK_BOX (hbox19), cbSupply, FALSE, FALSE, 0);
+
+  cbGets = gtk_check_button_new_with_mnemonic (_("create get"));
+  gtk_widget_show (cbGets);
+  gtk_box_pack_start (GTK_BOX (hbox19), cbGets, FALSE, FALSE, 0);
+
+  cbInvoice = gtk_check_button_new_with_mnemonic (_("create invoice"));
+  gtk_widget_show (cbInvoice);
+  gtk_box_pack_start (GTK_BOX (hbox19), cbInvoice, FALSE, FALSE, 0);
+
+  hbox20 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox20);
+  gtk_table_attach (GTK_TABLE (table4), hbox20, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  rbDaily = gtk_radio_button_new_with_mnemonic (NULL, _("daily"));
+  gtk_widget_show (rbDaily);
+  gtk_box_pack_start (GTK_BOX (hbox20), rbDaily, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDaily), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDaily));
+
+  rbWeekly = gtk_radio_button_new_with_mnemonic (NULL, _("Weekly"));
+  gtk_widget_show (rbWeekly);
+  gtk_box_pack_start (GTK_BOX (hbox20), rbWeekly, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbWeekly), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbWeekly));
+
+  rbCustom = gtk_radio_button_new_with_mnemonic (NULL, _("custom"));
+  gtk_widget_show (rbCustom);
+  gtk_box_pack_start (GTK_BOX (hbox20), rbCustom, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbCustom), rbMonthly_group);
+  rbMonthly_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbCustom));
+
+  eMiscCustomRetry = gtk_entry_new ();
+  gtk_widget_show (eMiscCustomRetry);
+  gtk_box_pack_start (GTK_BOX (hbox20), eMiscCustomRetry, TRUE, TRUE, 0);
+  gtk_entry_set_text (GTK_ENTRY (eMiscCustomRetry), _("0"));
+
+  label31 = gtk_label_new (_("Misc"));
+  gtk_widget_show (label31);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label31);
+
+  g_signal_connect ((gpointer) OrderMainwindow, "key_press_event",
+                    G_CALLBACK (on_Mainwindow_key_press_event),
+                    NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
@@ -1113,8 +1326,26 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) eArticleID, "changed",
                     G_CALLBACK (on_eArticleID_changed),
                     NULL);
+  g_signal_connect ((gpointer) treeMaterialgroup, "row_activated",
+                    G_CALLBACK (on_treeMaterialgroup_row_activated),
+                    NULL);
+  g_signal_connect ((gpointer) treeArticles, "row_activated",
+                    G_CALLBACK (on_treeArticles_row_activated),
+                    NULL);
   g_signal_connect ((gpointer) bArticleSearch, "clicked",
                     G_CALLBACK (on_bArticleSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bQuickAppend, "clicked",
+                    G_CALLBACK (on_bQuickAppend_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbQuarterly, "toggled",
+                    G_CALLBACK (on_rbQuarterly_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) rbSemestral, "toggled",
+                    G_CALLBACK (on_rbSemestral_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) rbYearly, "toggled",
+                    G_CALLBACK (on_rbYearly_toggled),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -1159,7 +1390,11 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[5].widget, "PositionPrint1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[6].widget, "separator6");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[7].widget, "PositionDelete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[5].widget, "misc1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[0].widget, "MiscEdit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[1].widget, "MiscSave");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolbar1, "toolbar1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, toolitem2, "toolitem2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lFindNumber, "lFindNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindName, "eFindName");
@@ -1183,12 +1418,12 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lOrderedAt, "lOrderedAt");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lDeliveredAt, "lDeliveredAt");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePostage, "ePostage");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lDesignation, "lDesignation");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePacking, "ePacking");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label27, "label27");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label26, "label26");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCost, "eMiscCost");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label28, "label28");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lDesignation, "lDesignation");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label2, "label2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");
@@ -1256,35 +1491,61 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, cbPickupNoteStatus, "cbPickupNoteStatus");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label3, "label3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table1, "table1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lPositionDesignation, "lPositionDesignation");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePositionDesignation, "ePositionDesignation");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label7, "label7");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAmount, "eAmount");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lPosition, "lPosition");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePosition, "ePosition");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label10, "label10");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePrice, "ePrice");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow2, "scrolledwindow2");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, tvArticle, "tvArticle");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox7, "vbox7");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lArticlesNumber, "lArticlesNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label22, "label22");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label23, "label23");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label24, "label24");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox8, "vbox8");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eArticleID, "eArticleID");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsUnit, "eOrderPositionsUnit");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsWrapping, "eOrderPositionsWrapping");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionAmountPerWrap, "eOrderPositionAmountPerWrap");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox9, "vbox9");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, bArticleSearch, "bArticleSearch");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label25, "label25");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsTaxVat, "eOrderPositionsTaxVat");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label4, "label4");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox7, "vbox7");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox8, "vbox8");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lPosition, "lPosition");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lArticlesNumber, "lArticlesNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label7, "label7");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lPositionDesignation, "lPositionDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePositionDesignation, "ePositionDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAmount, "eAmount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eArticleID, "eArticleID");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePosition, "ePosition");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label22, "label22");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label23, "label23");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label10, "label10");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePrice, "ePrice");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsUnit, "eOrderPositionsUnit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionsWrapping, "eOrderPositionsWrapping");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label24, "label24");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderPositionAmountPerWrap, "eOrderPositionAmountPerWrap");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow2, "scrolledwindow2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, tvArticle, "tvArticle");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow7, "scrolledwindow7");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, treeMaterialgroup, "treeMaterialgroup");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow8, "scrolledwindow8");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, treeArticles, "treeArticles");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox9, "vbox9");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bArticleSearch, "bArticleSearch");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bQuickAppend, "bQuickAppend");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, alignment1, "alignment1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox21, "hbox21");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, image1, "image1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label33, "label33");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lPosition, "lPosition");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label30, "label30");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, cbeTOP, "cbeTOP");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table4, "table4");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbRetry, "cbRetry");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox18, "hbox18");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbMonthly, "rbMonthly");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbQuarterly, "rbQuarterly");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbSemestral, "rbSemestral");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbYearly, "rbYearly");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox19, "hbox19");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbSupply, "cbSupply");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbGets, "cbGets");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbInvoice, "cbInvoice");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox20, "hbox20");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbDaily, "rbDaily");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbWeekly, "rbWeekly");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rbCustom, "rbCustom");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCustomRetry, "eMiscCustomRetry");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label31, "label31");
 
   gtk_window_add_accel_group (GTK_WINDOW (OrderMainwindow), accel_group);
 

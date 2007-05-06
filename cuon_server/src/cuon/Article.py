@@ -252,3 +252,15 @@ class Article(xmlrpc.XMLRPC, basics):
             result = context.sql.py_saveWebshopRecord('products_description',-1,'products_id',dicValues, dicUser)
         
         return result
+
+    def xmlrpc_getMaterialGroups(self, dicUser):
+        sSql = 'select name, id  from material_group order by name'
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        return dicResult
+        
+        
+    def xmlrpc_getArticlesOfMaterialGroup(self, dicUser, mid):
+        sSql = 'select number, designation, id from articles where material_group = ' + `mid`
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        return dicResult
+        

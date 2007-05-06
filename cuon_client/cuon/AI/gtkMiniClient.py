@@ -3,7 +3,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gtk.glade
-
+import ConfigParser
 
 class simpleGlade:
     def __init__(self):
@@ -50,9 +50,13 @@ class gtkMiniClient(simpleGlade):
         simpleGlade.__init__(self)
     
         # connection-Data
-        CUON_SERVER="http://84.244.7.139:9673/Cuon"
-        Username = 'cuon'
-        Password = 'test'
+        cpServer = ConfigParser.ConfigParser()
+            
+        cpServer.readfp(open('cuon_mini_client.ini'))
+    
+        CUON_SERVER = self.getConfigOption('USER','host',cpServer)
+        Username = self.getConfigOption('USER','user',cpServer)
+        Password = self.getConfigOption('USER','password',cpServer)
         # connect to Server
         self.Server = xmlrpclib.ServerProxy(CUON_SERVER)
         # Authorized
@@ -72,7 +76,17 @@ class gtkMiniClient(simpleGlade):
    
         
         
-        
+    def getConfigOption(self, section, option, configParser = None):
+        value = None
+        if configParser:
+            cps = configParser
+        else:
+           cps = self.cpServer
+           
+        if cps.has_option(section,option):
+            value = cps.get(section, option)
+            print 'getConfigOption', section + ', ' + option + ' = ' + value
+        return value    
 
     def on_quit1_activate(self, event):
         self.out( "exit ai v2")

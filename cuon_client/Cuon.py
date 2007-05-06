@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 4,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 5,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -471,19 +471,19 @@ class MainWindow(windows):
 
     def checkMenus(self):
         liModullist = self.rpc.callRP('User.getModulList', self.oUser.getSqlDicUser())
-        print liModullist
+        #print liModullist
         if self.sStartType == 'server':
             self.enableMenuItem('serverMode')
 
         self.disableMenuItem('user')
         self.enableMenuItem('login')
         misc_menu = False
-        print 'LI_MODULELIST'
-        print `liModullist`
+        #print 'LI_MODULELIST'
+        #print `liModullist`
         for iL in  liModullist:
-            print iL
+            #print iL
             if iL.has_key('all'):
-                print 'key all found'
+                #print 'key all found'
                 #data
                 self.addEnabledMenuItems('work','mi_addresses1')
                 self.addEnabledMenuItems('work','mi_articles1')
@@ -856,7 +856,7 @@ class MainWindow(windows):
             oUser = self.loadObject('User')
             self.closeDB()
             if oUser:
-                print 'T0 Client = ', oUser.client
+                #print 'T0 Client = ', oUser.client
                 if oUser.client > 0:
                     self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(self.allTables)
                     self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(self.allTables)
@@ -868,7 +868,7 @@ class MainWindow(windows):
         return True
         
     def startTiming(self):
-        'print start Timer'
+        #'print start Timer'
         # 60*1000 = 1 minute
         time_contact = 2*60*1000
         time_schedul = 15*60*1000
@@ -896,18 +896,18 @@ class MainWindow(windows):
     def startChecking(self):
         #gtk.gdk.threads_enter()
         try:
-            print 'start scheduling'
-            print self.Version
+            #print 'start scheduling'
+            #print self.Version
             self.openDB()
             oUser = self.loadObject('User')
             liSchedul = self.loadObject('Scheduling')
 
             self.closeDB()
             #print `self.oUser.getDicUser()`
-            print 'Client = ', oUser.getDicUser()['client']
+            #print 'Client = ', oUser.getDicUser()['client']
             liContacts = self.rpc.callRP('Address.getAllActiveContacts', oUser.getSqlDicUser())
 
-            print liContacts
+            #print liContacts
             try:
                 if not liSchedul:
                     liSchedul = []
@@ -939,6 +939,11 @@ class MainWindow(windows):
             
             #gtk.gdk.threads_leave() 
         #self.startTimer(10)
+        
+        
+    def on_rbScheduls_activate(self, event):
+        print 'rbScheduls clicked'
+        self.setSchedulTree()
     def disconnectTree(self):
         try:
             
@@ -975,6 +980,7 @@ class MainWindow(windows):
             #self.fillEntries(newId)
     def on_treeSchedul_row_activated(self, event):
         print 'event'
+        self.on_bGotoAddress_clicked(event)
         
     def setSchedulTree(self):
         self.openDB()
@@ -999,7 +1005,15 @@ class MainWindow(windows):
         treeview.set_model(treestore)
 
         # Data
-        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All')
+        sChoice = 'All'
+        if self.getWidget('rbSchedulsNew').get_active():
+            sChoice = 'New'
+        elif self.getWidget('rbSchedulsCancel').get_active():
+            sChoice = 'Cancel'
+            
+        print 'sChoice = ', sChoice
+        
+        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice)
         print 'Schedul by names: ', liDates
         if liDates:
             lastRep = None
@@ -1031,7 +1045,7 @@ class MainWindow(windows):
 ##            print Exception,params
 ##            
         
-        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All')
+        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All',sChoice)
         print 'Schedul by schedul_date: ', liDates
         if liDates:
             lastRep = None
@@ -1329,8 +1343,9 @@ m.startMain(sStartType, sDebug,sLocal)
 ##try:
 ##    import psyco
 ##    psyco.full()
+##    print ' start psyco'
 ##except ImportError:
-##    pass
+##    print 'no psyco found'
 #gtk.gdk.threads_enter()
 gtk.main()
 #gtk.gdk.threads_leave()

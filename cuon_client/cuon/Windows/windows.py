@@ -768,3 +768,43 @@ class windows(rawWindow, MyXML, messages):
         eColor = self.getWidget(sEntry)
         eColor.set_text(self.RGBToHTMLColor((Color.red, Color.green, Color.blue)))
         
+    def on_Mainwindow_key_press_event(self, oEntry, data):
+        print 'key Mainwindow pressesd'
+        print 'oentry: ', oEntry
+        print 'data: ', data
+        print 'Pressed : ', gtk.gdk.keyval_name(data.keyval)
+        sKey = gtk.gdk.keyval_name(data.keyval)
+        page_num = -1
+        if sKey == 'F1':
+            page_num = 0
+            
+        elif sKey == 'F2':
+            page_num = 1 
+        elif sKey == 'F3':
+            page_num = 2 
+        elif sKey == 'F4':
+            page_num = 3 
+        elif sKey == 'F5':
+            page_num = 4 
+        elif sKey == 'F6':
+            page_num = 5 
+        elif sKey == 'F7':
+            page_num = 6 
+        elif sKey == 'F8':
+            page_num = 7 
+        elif sKey == 'F9':
+            page_num = 8 
+        
+        if page_num >= 0:
+            
+            notebook = self.getWidget('notebook1')   
+            if notebook:
+                try:
+                    notebook.set_current_page(page_num)
+                except:
+                    pass
+                    
+            
+        
+        
+       

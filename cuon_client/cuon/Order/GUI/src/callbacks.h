@@ -146,3 +146,49 @@ on_bContactPerson_clicked              (GtkButton       *button,
 void
 on_eArticleID_changed                  (GtkEditable     *editable,
                                         gpointer         user_data);
+
+void
+on_MiscEdit_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_MiscSave_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_treeMaterialgroup_row_activated     (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_treeArticles_row_activated          (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_rbQuarterly_toggled                 (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_rbSemestral_toggled                 (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_rbYearly_toggled                    (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_lPosition_notify                    (GObject         *gobject,
+                                        GParamSpec      *arg1,
+                                        gpointer         user_data);
+
+gboolean
+on_Mainwindow_key_press_event          (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+void
+on_bQuickAppend_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
