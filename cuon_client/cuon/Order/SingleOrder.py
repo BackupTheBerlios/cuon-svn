@@ -46,7 +46,7 @@ class SingleOrder(SingleData):
       
 
     def getInvoiceNumber(self):
-        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.getOrderNumber(self.ID), self.dicUser)
+        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
         print 'Invoice-Number' + `self.invoiceNumber`
         return self.invoiceNumber
 
@@ -60,3 +60,9 @@ class SingleOrder(SingleData):
             ordernr = dicRecord['number']
         return ordernr
         
+    def fillOtherEntries(self, oneRecord):
+        self.getWidget('eInvoiceNumber').set_text(`self.getInvoiceNumber()`)
+        
+        
+    def setOtherEmptyEntries(self):
+        self.getWidget('eInvoiceNumber').set_text('')

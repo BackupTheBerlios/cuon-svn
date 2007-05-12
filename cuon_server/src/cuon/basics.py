@@ -80,6 +80,9 @@ class basics(xmlrpc.XMLRPC):
         self.EMAILENCODING = 'utf-8'
         self.EMAILCRYPT = None
         
+        self.CURRENCY_NAME = 'EUR'
+        self.CURRENCY_SIGN = '€'
+        self.CURRENCY_ROUND = 2
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
@@ -160,6 +163,20 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('EMAIL','CRYPT')
             if value:
                 self.EMAILCRYPT = value
+                
+            value = self.getConfigOption('CURRENCY','NAME')
+            if value:
+                self.CURRENCY_NAME = value
+            
+            value = self.getConfigOption('CURRENCY','SIGN')
+            if value:
+                self.CURRENCY_SIGN = value
+                
+            value = self.getConfigOption('CURRENCY','ROUND')
+            if value:
+                self.CURRENCY_ROUND = int(value)
+               
+              
                 
         except Exception, params:
             print "Error read ini-File"
@@ -314,7 +331,7 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        debugValue = 0
+        debugValue = 1
         #print 'debugValue', debugValue
         if debugValue == 1:
         

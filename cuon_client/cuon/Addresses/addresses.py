@@ -106,10 +106,10 @@ class addresswindow(chooseWindows):
         
         self.singleAddress.setEntries(self.getDataEntries('addresses.xml') )
         self.singleAddress.setGladeXml(self.xml)
-        self.singleAddress.setTreeFields( ['lastname', 'firstname','city'] )
-        self.singleAddress.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleAddress.setTreeFields( ['lastname', 'firstname','city','phone','status_info'] )
+        self.singleAddress.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
         self.singleAddress.setTreeOrder('lastname, firstname')
-        self.singleAddress.setListHeader([_('Lastname'), _('Firstname'), _('City')])
+        self.singleAddress.setListHeader([_('Lastname'), _('Firstname'), _('City'),_('Phone'),_('Info')])
         if addrid > 0:
             self.singleAddress.sWhere = ' where id = ' + `addrid`
             

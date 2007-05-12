@@ -232,8 +232,21 @@ class dumps:
                         #print 'convert to normal float'
                         value = value.replace('.',',')
                         #value = value.replace(',','.')
-                         
-                retValue = value 
+                    retValue = value 
+
+            elif type == 'toLocaleString':
+                if isinstance(value, types.FloatType):
+                    convert = False
+                    for sLocale in self.decimalLocale['coma']:
+                        #print sLocale
+                        if sLocale == self.dicUser['Locales']:
+                            convert = True
+                    if convert:
+                        value = `value`.replace('.',',') 
+                    else:
+                        value = `value`
+                    
+                    retValue = value
                 
             elif type == 'date':
                 #print 'value by date', value

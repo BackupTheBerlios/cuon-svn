@@ -127,7 +127,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPosition.setGladeXml(self.xml)
         self.singleOrderPosition.setTreeFields( ['position','amount','articleid','designation'] )
         self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_STRING , gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderPosition.setTreeOrder('position')
+        self.singleOrderPosition.setTreeOrder('position,articleid')
         self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article'),_('Designation')])
 
         self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID`
@@ -157,23 +157,34 @@ class orderwindow(chooseWindows):
 
         
         # enabledMenues for Order
-        self.addEnabledMenuItems('editOrder','new1')
-        self.addEnabledMenuItems('editOrder','clear1')
-        self.addEnabledMenuItems('editOrder','print1')
+        self.addEnabledMenuItems('editOrder','new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editOrder','edit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editOrder','delete1', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editOrder','print1', self.dicUserKeys['print'])
 
         # enabledMenues for Supply
-        self.addEnabledMenuItems('editSupply','SupplyNew1')
-        self.addEnabledMenuItems('editSuppy','SupplyClear1')
+        self.addEnabledMenuItems('editSupply','SupplyNew1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editSupply','SupplyEdit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editSuppy','SupplyDelete1', self.dicUserKeys['delete'])
     
        # enabledMenues for Gets
-        self.addEnabledMenuItems('editGets','GetsNew1')
-        self.addEnabledMenuItems('editGets','GetsClear1')
+        self.addEnabledMenuItems('editGets','GetsNew1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editGets','GetsEdit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editGets','GetsDelete1', self.dicUserKeys['delete'])
 
         # enabledMenues for Positions
-        self.addEnabledMenuItems('editPositions','PositionNew1')
-        self.addEnabledMenuItems('editPositions','PositionClear1')
+        self.addEnabledMenuItems('editPositions','PositionNew1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
 
-
+        # to misc menu
+        
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','SupplySave1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
 
 
         # tabs from notebook
@@ -220,7 +231,7 @@ class orderwindow(chooseWindows):
             
         self.tabChanged()
 
-   
+        self.win1.add_accel_group(self.accel_group)
          
          
     #Menu File
@@ -230,11 +241,13 @@ class orderwindow(chooseWindows):
         print ' start Invoice printing'
         dicOrder['orderid'] = self.singleOrder.ID
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
+        dicOrder['invoiceNumber'] = self.rpc.callRP('Order.setInvoiceNumber', dicOrder['orderid'], self.dicUser)
         print ' start Invoice printing 2'
 
         dicOrder['invoiceNumber'] =  self.singleOrder.getInvoiceNumber()        
         print ' start Invoice printing 3'
         
+        print dicOrder
         
         Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser,'INVOICE')
@@ -641,7 +654,49 @@ class orderwindow(chooseWindows):
             self.getWidget('eAmount').set_text('1')
         self.getWidget('eArticleID').set_text(`self.fillArticlesNewID`)
         self.on_PositionSave1_activate(event)
+
+
+    def on_Mainwindow_key_press_event(self, oEntry, data):
+        ''' Overwrite def '''
+        sKey = gtk.gdk.keyval_name(data.keyval)
+        print 'sKey : ',sKey
+        if self.tabOption == self.tabPosition:
+            if sKey == 'KP_Add' or sKey == 'plus' :
+                self.on_PositionEdit1_activate(None)
+                if self.getWidget('eAmount').get_text() == '':
+                    self.getWidget('eAmount').set_text('1')
+                else:
+                    try:
+                        wAmount = self.getWidget('eAmount')
+                        f1 = float(wAmount.get_text())
+                        f2 = f1 + 1.000
+                        print f1, f2
+                        wAmount.set_text( self.getCheckedValue(f2, 'toLocaleString'))
+                        print 'gesetzte zahl = ', wAmount.get_text()
+                    except Exception, params:
+                        print Exception, params
+                self.on_PositionSave1_activate(None)        
+
+            elif sKey == 'KP_Subtract' or sKey == 'minus' :
+                self.on_PositionEdit1_activate(None)
+                if self.getWidget('eAmount').get_text() == '':
+                    self.getWidget('eAmount').set_text('0')
+                else:
+                    try:
+                        wAmount = self.getWidget('eAmount')
+                        f1 = float(wAmount.get_text())
+                        f2 = f1 - 1.000
+                        print f1, f2
+                        wAmount.set_text( `self.getCheckedValue(f2, 'toStringFloat')`)
+                        print 'gesetzte zahl = ', wAmount.get_text()
+                    except Exception, params:
+                        print Exception, params            
+                self.on_PositionSave1_activate(None)        
+            
         
+        else:
+            self.MainwindowEventHandling(oEntry, data)
+      
     def on_treeArticles_row_activated(self, event, data1, data2):
         self.on_bQuickAppend_clicked(event)
 

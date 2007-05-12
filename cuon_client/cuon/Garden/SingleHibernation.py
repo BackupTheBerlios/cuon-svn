@@ -93,5 +93,5 @@ class SingleHibernation(SingleData):
         print 'fill SumTotal'
         totalSum =  self.rpc.callRP('Garden.getSum', self.ID, self.dicUser)
         
-        self.getWidget('eTotalSum').set_text(`totalSum`)
+        self.getWidget('eTotalSum').set_text(totalSum)
               

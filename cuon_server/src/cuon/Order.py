@@ -51,26 +51,58 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = 'select * from orderposition where orderid = ' + `dicOrder['orderid']`
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         return dicResult
-        
-        
+    
+    
     def xmlrpc_getInvoiceNumber(self, orderNumber, dicUser):
+        
+        nr = 0
+        try:
+            orderNumber = int(orderNumber)
+        except:
+            orderNumber = 0
+            
+        sc = '_client_' + `dicUser['client']`
+        
+        sSql = 'select invoice_number from list_of_invoices where order_number = ' + `orderNumber`
+        sSql += self.getWhere(None, dicUser,2)
+        
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
+        if dicResult != 'NONE':
+            nr = dicResult[0]['invoice_number']
+        else:
+            nr = 0
+        return nr
+        
+        
+    def xmlrpc_setInvoiceNumber(self, orderNumber, dicUser):
         
         nr = 0
         sc = '_client_' + `dicUser['client']`
         
         sSql = 'select invoice_number from list_of_invoices where order_number = ' + `orderNumber`
+        sSql += self.getWhere(None, dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult != 'NONE':
-           sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number) '
-           sSql1 = sSql1 + ' values (nextval(\'list_of_invoices_id +sc +\'),nextval(\'numerical_misc_standard_invoice + sc + \'), ' 
-           sSql1 = sSql1 + `orderNumber` + ' )'
-           self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
+        print 'InvoiceNumber dicResult = ', dicResult
+        
+        if dicResult == 'NONE' or dicResult[0]['invoice_number'] == 0:
+            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number) '
+            print sSql
+            
+            sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
+            print sSql
+
+            sSql1 +=  `orderNumber` + " )"
+            print sSql
+            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
         if dicResult != 'NONE':
-           nr = dicResult[0]['invoice_number']
+            nr = dicResult[0]['invoice_number']
+        else:
+            nr = 0
+        
         return nr
 
     def xmlrpc_getPickupAddress(self, dicOrder, dicUser):

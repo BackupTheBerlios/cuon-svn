@@ -709,7 +709,16 @@
       <default />
       <comment />
     </field>
-    
+    <field>
+      <name>status_info</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: address-->
   <table>
@@ -1017,6 +1026,26 @@
     </field>
     <field>
       <name>business_function</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>225</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>job</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>225</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>department</name>
       <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -2588,6 +2617,16 @@
     </field>
  <field>
       <name>date_of_invoice</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>maturity</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>

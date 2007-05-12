@@ -438,6 +438,7 @@ class Garden(xmlrpc.XMLRPC, basics):
      
     def xmlrpc_getSum(self, hibID, dicUser):
         total_sum = 0
+        retValue = '0'
         try:
             dicPos = self.xmlrpc_getOrderPositions(hibID,dicUser)
             
@@ -446,12 +447,18 @@ class Garden(xmlrpc.XMLRPC, basics):
                     try:
                         print i['price'] , i['amount']
                         total_sum += i['price'][0] * i['amount'][0]
+                        
                     except:
                         pass
         except:
             pass
+        try:
+            total_sum = round(total_sum,self.CURRENCY_ROUND)
+            retValue = `total_sum` + ' ' + self.CURRENCY_SIGN
+        except:
+            pass
             
-        return total_sum
+        return retValue
         
             
         

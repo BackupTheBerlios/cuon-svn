@@ -311,26 +311,43 @@ create_OrderMainwindow (void)
   GtkWidget *scrolledwindow1;
   GtkWidget *tree1;
   GtkWidget *notebook1;
-  GtkWidget *fixed1;
-  GtkWidget *eNumber;
-  GtkWidget *eDesignation;
-  GtkWidget *eDeliveredAt;
-  GtkWidget *eAddressNumber;
-  GtkWidget *tvAddress;
-  GtkWidget *eOrderedAt;
-  GtkWidget *lCustom;
-  GtkWidget *lCustomNumber;
-  GtkWidget *bSearchCustom;
+  GtkWidget *vbox10;
+  GtkWidget *hbox22;
+  GtkWidget *table5;
   GtkWidget *lNumber;
-  GtkWidget *lOrderedAt;
+  GtkWidget *eNumber;
   GtkWidget *lDeliveredAt;
-  GtkWidget *ePostage;
-  GtkWidget *ePacking;
+  GtkWidget *eDeliveredAt;
+  GtkWidget *lOrderedAt;
+  GtkWidget *eOrderedAt;
+  GtkWidget *lDesignation;
+  GtkWidget *eDesignation;
+  GtkWidget *label34;
+  GtkWidget *label35;
+  GtkWidget *label36;
+  GtkWidget *eSupplyNumber;
+  GtkWidget *eGetsNumber;
+  GtkWidget *eInvoiceNumber;
+  GtkWidget *label37;
+  GtkWidget *ePaidAt;
+  GtkWidget *hbox24;
+  GtkWidget *table6;
+  GtkWidget *bSearchCustom;
+  GtkWidget *hbox25;
+  GtkWidget *lCustomNumber;
+  GtkWidget *eAddressNumber;
+  GtkWidget *lCustom;
+  GtkWidget *scrolledwindow9;
+  GtkWidget *tvAddress;
+  GtkWidget *table7;
   GtkWidget *label27;
   GtkWidget *label26;
-  GtkWidget *eMiscCost;
   GtkWidget *label28;
-  GtkWidget *lDesignation;
+  GtkWidget *ePacking;
+  GtkWidget *ePostage;
+  GtkWidget *eMiscCost;
+  GtkWidget *label38;
+  GtkWidget *eTotalSum;
   GtkWidget *label2;
   GtkWidget *fixed2;
   GtkWidget *eSupplyNumber;
@@ -528,110 +545,244 @@ create_OrderMainwindow (void)
   gtk_widget_show (notebook1);
   gtk_box_pack_start (GTK_BOX (vbox1), notebook1, TRUE, TRUE, 0);
 
-  fixed1 = gtk_fixed_new ();
-  gtk_widget_show (fixed1);
-  gtk_container_add (GTK_CONTAINER (notebook1), fixed1);
+  vbox10 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox10);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox10);
 
-  eNumber = gtk_entry_new ();
-  gtk_widget_show (eNumber);
-  gtk_fixed_put (GTK_FIXED (fixed1), eNumber, 120, 8);
-  gtk_widget_set_size_request (eNumber, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eNumber), 20);
+  hbox22 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox22);
+  gtk_box_pack_start (GTK_BOX (vbox10), hbox22, TRUE, TRUE, 0);
 
-  eDesignation = gtk_entry_new ();
-  gtk_widget_show (eDesignation);
-  gtk_fixed_put (GTK_FIXED (fixed1), eDesignation, 528, 8);
-  gtk_widget_set_size_request (eDesignation, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eDesignation), 50);
-
-  eDeliveredAt = gtk_entry_new ();
-  gtk_widget_show (eDeliveredAt);
-  gtk_fixed_put (GTK_FIXED (fixed1), eDeliveredAt, 120, 72);
-  gtk_widget_set_size_request (eDeliveredAt, 0, 0);
-
-  eAddressNumber = gtk_entry_new ();
-  gtk_widget_show (eAddressNumber);
-  gtk_fixed_put (GTK_FIXED (fixed1), eAddressNumber, 384, 144);
-  gtk_widget_set_size_request (eAddressNumber, 0, 0);
-
-  tvAddress = gtk_text_view_new ();
-  gtk_widget_show (tvAddress);
-  gtk_fixed_put (GTK_FIXED (fixed1), tvAddress, 136, 200);
-  gtk_widget_set_size_request (tvAddress, 344, 184);
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
-
-  eOrderedAt = gtk_entry_new ();
-  gtk_widget_show (eOrderedAt);
-  gtk_fixed_put (GTK_FIXED (fixed1), eOrderedAt, 120, 40);
-  gtk_widget_set_size_request (eOrderedAt, 0, 0);
-
-  lCustom = gtk_label_new (_("Customer"));
-  gtk_widget_show (lCustom);
-  gtk_fixed_put (GTK_FIXED (fixed1), lCustom, 24, 200);
-  gtk_widget_set_size_request (lCustom, 0, 0);
-
-  lCustomNumber = gtk_label_new (_("Custom-Number"));
-  gtk_widget_show (lCustomNumber);
-  gtk_fixed_put (GTK_FIXED (fixed1), lCustomNumber, 208, 144);
-  gtk_widget_set_size_request (lCustomNumber, 0, 0);
-
-  bSearchCustom = gtk_button_new_with_mnemonic (_("search address ..."));
-  gtk_widget_show (bSearchCustom);
-  gtk_fixed_put (GTK_FIXED (fixed1), bSearchCustom, 16, 136);
-  gtk_widget_set_size_request (bSearchCustom, 0, 0);
+  table5 = gtk_table_new (4, 4, FALSE);
+  gtk_widget_show (table5);
+  gtk_box_pack_start (GTK_BOX (hbox22), table5, TRUE, TRUE, 0);
 
   lNumber = gtk_label_new (_("Number"));
   gtk_widget_show (lNumber);
-  gtk_fixed_put (GTK_FIXED (fixed1), lNumber, 0, 8);
-  gtk_widget_set_size_request (lNumber, 0, 0);
+  gtk_table_attach (GTK_TABLE (table5), lNumber, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lNumber, 96, 0);
 
-  lOrderedAt = gtk_label_new (_("ordered at"));
-  gtk_widget_show (lOrderedAt);
-  gtk_fixed_put (GTK_FIXED (fixed1), lOrderedAt, 0, 40);
-  gtk_widget_set_size_request (lOrderedAt, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lOrderedAt), GTK_JUSTIFY_CENTER);
+  eNumber = gtk_entry_new ();
+  gtk_widget_show (eNumber);
+  gtk_table_attach (GTK_TABLE (table5), eNumber, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eNumber, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eNumber), 20);
 
   lDeliveredAt = gtk_label_new (_("delivered at"));
   gtk_widget_show (lDeliveredAt);
-  gtk_fixed_put (GTK_FIXED (fixed1), lDeliveredAt, 0, 72);
+  gtk_table_attach (GTK_TABLE (table5), lDeliveredAt, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_widget_set_size_request (lDeliveredAt, 0, 0);
   gtk_label_set_justify (GTK_LABEL (lDeliveredAt), GTK_JUSTIFY_CENTER);
 
-  ePostage = gtk_entry_new ();
-  gtk_widget_show (ePostage);
-  gtk_fixed_put (GTK_FIXED (fixed1), ePostage, 816, 208);
-  gtk_widget_set_size_request (ePostage, 158, 31);
+  eDeliveredAt = gtk_entry_new ();
+  gtk_widget_show (eDeliveredAt);
+  gtk_table_attach (GTK_TABLE (table5), eDeliveredAt, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eDeliveredAt, 0, 0);
 
-  ePacking = gtk_entry_new ();
-  gtk_widget_show (ePacking);
-  gtk_fixed_put (GTK_FIXED (fixed1), ePacking, 816, 168);
-  gtk_widget_set_size_request (ePacking, 158, 31);
+  lOrderedAt = gtk_label_new (_("ordered at"));
+  gtk_widget_show (lOrderedAt);
+  gtk_table_attach (GTK_TABLE (table5), lOrderedAt, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lOrderedAt, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lOrderedAt), GTK_JUSTIFY_CENTER);
+
+  eOrderedAt = gtk_entry_new ();
+  gtk_widget_show (eOrderedAt);
+  gtk_table_attach (GTK_TABLE (table5), eOrderedAt, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eOrderedAt, 0, 0);
+
+  lDesignation = gtk_label_new (_("Desig."));
+  gtk_widget_show (lDesignation);
+  gtk_table_attach (GTK_TABLE (table5), lDesignation, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lDesignation, 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lDesignation), GTK_JUSTIFY_CENTER);
+
+  eDesignation = gtk_entry_new ();
+  gtk_widget_show (eDesignation);
+  gtk_table_attach (GTK_TABLE (table5), eDesignation, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eDesignation, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eDesignation), 50);
+
+  label34 = gtk_label_new (_("Supply-Nr."));
+  gtk_widget_show (label34);
+  gtk_table_attach (GTK_TABLE (table5), label34, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label34), 0, 0.5);
+
+  label35 = gtk_label_new (_("Gets-Nr."));
+  gtk_widget_show (label35);
+  gtk_table_attach (GTK_TABLE (table5), label35, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label35), 0, 0.5);
+
+  label36 = gtk_label_new (_("Invoice-Nr."));
+  gtk_widget_show (label36);
+  gtk_table_attach (GTK_TABLE (table5), label36, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label36), 0, 0.5);
+
+  eSupplyNumber = gtk_entry_new ();
+  gtk_widget_show (eSupplyNumber);
+  gtk_table_attach (GTK_TABLE (table5), eSupplyNumber, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eSupplyNumber), FALSE);
+
+  eGetsNumber = gtk_entry_new ();
+  gtk_widget_show (eGetsNumber);
+  gtk_table_attach (GTK_TABLE (table5), eGetsNumber, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eInvoiceNumber = gtk_entry_new ();
+  gtk_widget_show (eInvoiceNumber);
+  gtk_table_attach (GTK_TABLE (table5), eInvoiceNumber, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eInvoiceNumber), FALSE);
+
+  label37 = gtk_label_new (_("paid at "));
+  gtk_widget_show (label37);
+  gtk_table_attach (GTK_TABLE (table5), label37, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label37), 0, 0.5);
+
+  ePaidAt = gtk_entry_new ();
+  gtk_widget_show (ePaidAt);
+  gtk_table_attach (GTK_TABLE (table5), ePaidAt, 3, 4, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (ePaidAt), FALSE);
+
+  hbox24 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox24);
+  gtk_box_pack_start (GTK_BOX (vbox10), hbox24, TRUE, TRUE, 0);
+
+  table6 = gtk_table_new (2, 4, FALSE);
+  gtk_widget_show (table6);
+  gtk_box_pack_start (GTK_BOX (hbox24), table6, TRUE, TRUE, 0);
+
+  bSearchCustom = gtk_button_new_with_mnemonic (_("search address ..."));
+  gtk_widget_show (bSearchCustom);
+  gtk_table_attach (GTK_TABLE (table6), bSearchCustom, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (bSearchCustom, 0, 0);
+
+  hbox25 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox25);
+  gtk_table_attach (GTK_TABLE (table6), hbox25, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  lCustomNumber = gtk_label_new (_("Custom-Number"));
+  gtk_widget_show (lCustomNumber);
+  gtk_box_pack_start (GTK_BOX (hbox25), lCustomNumber, FALSE, FALSE, 0);
+  gtk_widget_set_size_request (lCustomNumber, 0, 0);
+
+  eAddressNumber = gtk_entry_new ();
+  gtk_widget_show (eAddressNumber);
+  gtk_box_pack_start (GTK_BOX (hbox25), eAddressNumber, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (eAddressNumber, 0, 0);
+
+  lCustom = gtk_label_new (_("Customer"));
+  gtk_widget_show (lCustom);
+  gtk_table_attach (GTK_TABLE (table6), lCustom, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (lCustom, 0, 0);
+
+  scrolledwindow9 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow9);
+  gtk_table_attach (GTK_TABLE (table6), scrolledwindow9, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (scrolledwindow9, 78, 78);
+
+  tvAddress = gtk_text_view_new ();
+  gtk_widget_show (tvAddress);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvAddress);
+  gtk_widget_set_size_request (tvAddress, 344, 184);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
+
+  table7 = gtk_table_new (3, 4, FALSE);
+  gtk_widget_show (table7);
+  gtk_box_pack_start (GTK_BOX (vbox10), table7, TRUE, TRUE, 0);
 
   label27 = gtk_label_new (_("Packing\n"));
   gtk_widget_show (label27);
-  gtk_fixed_put (GTK_FIXED (fixed1), label27, 592, 176);
+  gtk_table_attach (GTK_TABLE (table7), label27, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_widget_set_size_request (label27, 0, 0);
 
   label26 = gtk_label_new (_("Truckage/Postage"));
   gtk_widget_show (label26);
-  gtk_fixed_put (GTK_FIXED (fixed1), label26, 592, 208);
+  gtk_table_attach (GTK_TABLE (table7), label26, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_widget_set_size_request (label26, 0, 0);
-
-  eMiscCost = gtk_entry_new ();
-  gtk_widget_show (eMiscCost);
-  gtk_fixed_put (GTK_FIXED (fixed1), eMiscCost, 816, 248);
-  gtk_widget_set_size_request (eMiscCost, 158, 31);
 
   label28 = gtk_label_new (_("Misc. cost"));
   gtk_widget_show (label28);
-  gtk_fixed_put (GTK_FIXED (fixed1), label28, 592, 248);
+  gtk_table_attach (GTK_TABLE (table7), label28, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_widget_set_size_request (label28, 0, 0);
 
-  lDesignation = gtk_label_new (_("Desig."));
-  gtk_widget_show (lDesignation);
-  gtk_fixed_put (GTK_FIXED (fixed1), lDesignation, 408, 8);
-  gtk_widget_set_size_request (lDesignation, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lDesignation), GTK_JUSTIFY_CENTER);
+  ePacking = gtk_entry_new ();
+  gtk_widget_show (ePacking);
+  gtk_table_attach (GTK_TABLE (table7), ePacking, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (ePacking, 158, 31);
+
+  ePostage = gtk_entry_new ();
+  gtk_widget_show (ePostage);
+  gtk_table_attach (GTK_TABLE (table7), ePostage, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (ePostage, 158, 31);
+
+  eMiscCost = gtk_entry_new ();
+  gtk_widget_show (eMiscCost);
+  gtk_table_attach (GTK_TABLE (table7), eMiscCost, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_widget_set_size_request (eMiscCost, 158, 31);
+
+  label38 = gtk_label_new (_("total sum"));
+  gtk_widget_show (label38);
+  gtk_table_attach (GTK_TABLE (table7), label38, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label38), 0, 0.5);
+
+  eTotalSum = gtk_entry_new ();
+  gtk_widget_show (eTotalSum);
+  gtk_table_attach (GTK_TABLE (table7), eTotalSum, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eTotalSum), FALSE);
 
   label2 = gtk_label_new (_("Order"));
   gtk_widget_show (label2);
@@ -1287,11 +1438,11 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) notebook1, "switch_page",
                     G_CALLBACK (on_notebook1_switch_page),
                     NULL);
-  g_signal_connect ((gpointer) eAddressNumber, "changed",
-                    G_CALLBACK (on_eAddressNumber_changed),
-                    NULL);
   g_signal_connect ((gpointer) bSearchCustom, "clicked",
                     G_CALLBACK (on_bSearchCustom_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eAddressNumber, "changed",
+                    G_CALLBACK (on_eAddressNumber_changed),
                     NULL);
   g_signal_connect ((gpointer) eSupplyNumber, "changed",
                     G_CALLBACK (on_eSupplyNumber_changed),
@@ -1404,26 +1555,43 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow1, "scrolledwindow1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, tree1, "tree1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, notebook1, "notebook1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed1, "fixed1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eNumber, "eNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eDesignation, "eDesignation");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eDeliveredAt, "eDeliveredAt");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAddressNumber, "eAddressNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, tvAddress, "tvAddress");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderedAt, "eOrderedAt");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lCustom, "lCustom");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lCustomNumber, "lCustomNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSearchCustom, "bSearchCustom");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox10, "vbox10");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox22, "hbox22");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table5, "table5");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lNumber, "lNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lOrderedAt, "lOrderedAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eNumber, "eNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lDeliveredAt, "lDeliveredAt");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePostage, "ePostage");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePacking, "ePacking");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eDeliveredAt, "eDeliveredAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lOrderedAt, "lOrderedAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eOrderedAt, "eOrderedAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lDesignation, "lDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eDesignation, "eDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label34, "label34");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label35, "label35");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label36, "label36");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eGetsNumber, "eGetsNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eInvoiceNumber, "eInvoiceNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label37, "label37");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaidAt, "ePaidAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox24, "hbox24");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table6, "table6");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSearchCustom, "bSearchCustom");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox25, "hbox25");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lCustomNumber, "lCustomNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAddressNumber, "eAddressNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, lCustom, "lCustom");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow9, "scrolledwindow9");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table7, "table7");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label27, "label27");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label26, "label26");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCost, "eMiscCost");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label28, "label28");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, lDesignation, "lDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePacking, "ePacking");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePostage, "ePostage");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCost, "eMiscCost");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label38, "label38");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eTotalSum, "eTotalSum");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label2, "label2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");

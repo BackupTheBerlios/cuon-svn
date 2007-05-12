@@ -536,6 +536,35 @@
     </trigger>
     
     <trigger>
+      <nameOfTrigger>trg_insertListOfInvoices</nameOfTrigger>
+      <table>list_of_invoices</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert invoice_number </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_deleteListOfInvoices</nameOfTrigger>
+      <table>list_of_invoices</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a invoice, check for use in order, then delete the invoice </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_updateListOfInvoices</nameOfTrigger>
+      <table>list_of_invoices</table>
+      <action>after update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update  list_of_invoice</description>
+      
+    </trigger>
+    
+    
+    <trigger>
       <nameOfTrigger>trg_insertBOTANY</nameOfTrigger>
       <table>BOTANY</table>
       <action>before insert </action>

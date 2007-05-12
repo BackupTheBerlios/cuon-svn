@@ -239,6 +239,16 @@
                 <fg_color>0</fg_color>
 
       </entry>
+      <entry>
+        <name>eInfo</name>
+        <type>textline</type>
+        <size>7</size>
+        <verify_type>string</verify_type>
+        <create_sql>1</create_sql>
+        <sql_field>status_info</sql_field>
+        <bg_color>0</bg_color>
+        <fg_color>0</fg_color>
+    </entry>    
     </table>
 
   </entries_for_table>

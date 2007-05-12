@@ -139,7 +139,9 @@ class Misc(xmlrpc.XMLRPC, basics):
             
             value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0', cpServer)
             if value and (value == 'Yes' or value == 'YES' or value == 'yes'):
-                ok = True
+                value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0Sender', cpServer)
+                if value and value.find(dicUser['Name']) >= 0:
+                    ok = True
                 
         except Exception, params:
             print 'Error by Schedul Read user.cfg'

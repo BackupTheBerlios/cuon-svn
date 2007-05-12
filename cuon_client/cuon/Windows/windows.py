@@ -769,10 +769,16 @@ class windows(rawWindow, MyXML, messages):
         eColor.set_text(self.RGBToHTMLColor((Color.red, Color.green, Color.blue)))
         
     def on_Mainwindow_key_press_event(self, oEntry, data):
+        self.MainwindowEventHandling(oEntry, data)
+        
+        
+    def MainwindowEventHandling(self, oEntry, data):
         print 'key Mainwindow pressesd'
         print 'oentry: ', oEntry
         print 'data: ', data
         print 'Pressed : ', gtk.gdk.keyval_name(data.keyval)
+        print 'state : ', data.state
+        
         sKey = gtk.gdk.keyval_name(data.keyval)
         page_num = -1
         if sKey == 'F1':
