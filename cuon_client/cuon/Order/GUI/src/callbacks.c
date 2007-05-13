@@ -385,3 +385,11 @@ on_bQuickAppend_clicked                (GtkButton       *button,
 
 }
 
+
+void
+on_Misc_delete1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

@@ -453,7 +453,10 @@ class Garden(xmlrpc.XMLRPC, basics):
         except:
             pass
         try:
-            total_sum = round(total_sum,self.CURRENCY_ROUND)
+            
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            
+            #total_sum = round(total_sum,self.CURRENCY_ROUND)
             retValue = `total_sum` + ' ' + self.CURRENCY_SIGN
         except:
             pass

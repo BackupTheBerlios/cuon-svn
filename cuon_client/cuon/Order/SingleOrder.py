@@ -62,6 +62,7 @@ class SingleOrder(SingleData):
         
     def fillOtherEntries(self, oneRecord):
         self.getWidget('eInvoiceNumber').set_text(`self.getInvoiceNumber()`)
+        self.getWidget('eTotalSum').set_text(self.rpc.callRP('Order.getTotalSum', self.ID, self.dicUser))
         
         
     def setOtherEmptyEntries(self):

@@ -43,7 +43,7 @@ class Report(xmlrpc.XMLRPC, basics):
         oAddress=Address.Address()
         oReports = Reports.report_addresses_phone1.report_addresses_phone1()
         repData = oReports.getReportData(dicSearchlist, dicUser, oAddress, self.ReportDefs)
-        print repData
+        #print repData
         
         
         return self.report_server.ReportServer.createReport(repData)
@@ -56,7 +56,7 @@ class Report(xmlrpc.XMLRPC, basics):
         oAddress=Address.Address()
         oReports = Reports.report_addresses_phone11.report_addresses_phone11()
         repData = oReports.getReportData(dicSearchlist, dicUser, oAddress, self.ReportDefs)
-        print repData
+        #print repData
         
         
         return self.report_server.ReportServer.createReport(repData)        
@@ -85,7 +85,7 @@ class Report(xmlrpc.XMLRPC, basics):
         repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
         
         #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
-        print repData
+        #print repData
         
         return self.report_server.ReportServer.createReport(repData)
         
@@ -100,7 +100,7 @@ class Report(xmlrpc.XMLRPC, basics):
         repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
         
         #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
-        print repData
+        #print repData
         
         return self.report_server.ReportServer.createReport(repData)
         
@@ -115,7 +115,7 @@ class Report(xmlrpc.XMLRPC, basics):
         repData = oReports.getReportData(dicOrder, dicUser, oGarden, self.ReportDefs)
         
         #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
-        print repData
+        #print repData
         
         return self.report_server.ReportServer.createReport(repData)
         
@@ -129,11 +129,11 @@ class Report(xmlrpc.XMLRPC, basics):
         oOrder = Order.Order()
         oReports = Reports.report_order_standard_invoice.report_order_standard_invoice()
         repData = oReports.getReportData(dicOrder, dicUser, oOrder, self.ReportDefs)
-        print '\n\n'
-        print 'get repData'
-        print '\n'
+        #print '\n\n'
+        #print 'get repData'
+        #print '\n'
         #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
-        print '--> Rep-Data = ', repData
+        #print '--> Rep-Data = ', repData
         
         return self.report_server.ReportServer.createReport(repData)
             

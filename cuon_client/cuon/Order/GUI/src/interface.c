@@ -243,6 +243,13 @@ static GnomeUIInfo misc1_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  {
+    GNOME_APP_UI_ITEM, N_("clear"),
+    NULL,
+    (gpointer) on_Misc_delete1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -330,6 +337,8 @@ create_OrderMainwindow (void)
   GtkWidget *eInvoiceNumber;
   GtkWidget *label37;
   GtkWidget *ePaidAt;
+  GtkWidget *label39;
+  GtkWidget *eTotalSum;
   GtkWidget *hbox24;
   GtkWidget *table6;
   GtkWidget *bSearchCustom;
@@ -346,8 +355,8 @@ create_OrderMainwindow (void)
   GtkWidget *ePacking;
   GtkWidget *ePostage;
   GtkWidget *eMiscCost;
-  GtkWidget *label38;
-  GtkWidget *eTotalSum;
+  GtkWidget *label40;
+  GtkWidget *eDiscount;
   GtkWidget *label2;
   GtkWidget *fixed2;
   GtkWidget *eSupplyNumber;
@@ -449,6 +458,8 @@ create_OrderMainwindow (void)
   GtkWidget *hbox21;
   GtkWidget *image1;
   GtkWidget *label33;
+  GtkWidget *label41;
+  GtkWidget *eArticleDiscount;
   GtkWidget *lPosition;
   GtkWidget *table3;
   GtkWidget *label30;
@@ -553,7 +564,7 @@ create_OrderMainwindow (void)
   gtk_widget_show (hbox22);
   gtk_box_pack_start (GTK_BOX (vbox10), hbox22, TRUE, TRUE, 0);
 
-  table5 = gtk_table_new (4, 4, FALSE);
+  table5 = gtk_table_new (6, 4, FALSE);
   gtk_widget_show (table5);
   gtk_box_pack_start (GTK_BOX (hbox22), table5, TRUE, TRUE, 0);
 
@@ -661,17 +672,30 @@ create_OrderMainwindow (void)
 
   label37 = gtk_label_new (_("paid at "));
   gtk_widget_show (label37);
-  gtk_table_attach (GTK_TABLE (table5), label37, 2, 3, 3, 4,
+  gtk_table_attach (GTK_TABLE (table5), label37, 0, 1, 4, 5,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label37), 0, 0.5);
 
   ePaidAt = gtk_entry_new ();
   gtk_widget_show (ePaidAt);
-  gtk_table_attach (GTK_TABLE (table5), ePaidAt, 3, 4, 3, 4,
+  gtk_table_attach (GTK_TABLE (table5), ePaidAt, 1, 2, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_editable_set_editable (GTK_EDITABLE (ePaidAt), FALSE);
+
+  label39 = gtk_label_new (_("total sum"));
+  gtk_widget_show (label39);
+  gtk_table_attach (GTK_TABLE (table5), label39, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label39), 0, 0.5);
+
+  eTotalSum = gtk_entry_new ();
+  gtk_widget_show (eTotalSum);
+  gtk_table_attach (GTK_TABLE (table5), eTotalSum, 3, 4, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   hbox24 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox24);
@@ -770,19 +794,18 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_widget_set_size_request (eMiscCost, 158, 31);
 
-  label38 = gtk_label_new (_("total sum"));
-  gtk_widget_show (label38);
-  gtk_table_attach (GTK_TABLE (table7), label38, 2, 3, 2, 3,
+  label40 = gtk_label_new (_("total discount %"));
+  gtk_widget_show (label40);
+  gtk_table_attach (GTK_TABLE (table7), label40, 2, 3, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label38), 0, 0.5);
+  gtk_misc_set_alignment (GTK_MISC (label40), 0, 0.5);
 
-  eTotalSum = gtk_entry_new ();
-  gtk_widget_show (eTotalSum);
-  gtk_table_attach (GTK_TABLE (table7), eTotalSum, 3, 4, 2, 3,
+  eDiscount = gtk_entry_new ();
+  gtk_widget_show (eDiscount);
+  gtk_table_attach (GTK_TABLE (table7), eDiscount, 3, 4, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eTotalSum), FALSE);
 
   label2 = gtk_label_new (_("Order"));
   gtk_widget_show (label2);
@@ -1313,6 +1336,19 @@ create_OrderMainwindow (void)
   gtk_widget_show (label33);
   gtk_box_pack_start (GTK_BOX (hbox21), label33, FALSE, FALSE, 0);
 
+  label41 = gtk_label_new (_("Articlediscount"));
+  gtk_widget_show (label41);
+  gtk_table_attach (GTK_TABLE (table1), label41, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label41), 0, 0.5);
+
+  eArticleDiscount = gtk_entry_new ();
+  gtk_widget_show (eArticleDiscount);
+  gtk_table_attach (GTK_TABLE (table1), eArticleDiscount, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
   lPosition = gtk_label_new (_("Postions"));
   gtk_widget_show (lPosition);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPosition);
@@ -1544,6 +1580,7 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[5].widget, "misc1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[0].widget, "MiscEdit");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[1].widget, "MiscSave");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[2].widget, "clear1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolitem2, "toolitem2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox1, "hbox1");
@@ -1574,6 +1611,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eInvoiceNumber, "eInvoiceNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label37, "label37");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaidAt, "ePaidAt");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label39, "label39");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eTotalSum, "eTotalSum");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox24, "hbox24");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table6, "table6");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSearchCustom, "bSearchCustom");
@@ -1590,8 +1629,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePacking, "ePacking");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePostage, "ePostage");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCost, "eMiscCost");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, label38, "label38");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eTotalSum, "eTotalSum");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label40, "label40");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eDiscount, "eDiscount");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label2, "label2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");
@@ -1692,6 +1731,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox21, "hbox21");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, image1, "image1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label33, "label33");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label41, "label41");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eArticleDiscount, "eArticleDiscount");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lPosition, "lPosition");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label30, "label30");

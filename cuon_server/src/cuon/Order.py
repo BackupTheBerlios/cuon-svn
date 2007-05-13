@@ -210,6 +210,23 @@ class Order(xmlrpc.XMLRPC, basics):
         
         
         return dicResult
+    def xmlrpc_getTotalSum(self, OrderID, dicUser):
+        total_sum = 0
+        retValue = '0'  
+        sSql = 'select sum(amount * price) as total_sum from orderposition where orderid = '
+        sSql += `OrderID`
+        sSql += self.getWhere(None,dicUser,2)
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        if dicResult and dicResult != 'NONE':
+            total_sum = dicResult[0]['total_sum']
         
-        
+          
+        try:
+            #"%.2f"%y 
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            retValue = total_sum + ' ' + self.CURRENCY_SIGN
+        except:
+            pass
+            
+        return retValue  
     

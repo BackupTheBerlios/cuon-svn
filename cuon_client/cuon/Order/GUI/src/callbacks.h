@@ -192,3 +192,7 @@ on_Mainwindow_key_press_event          (GtkWidget       *widget,
 void
 on_bQuickAppend_clicked                (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_Misc_delete1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
