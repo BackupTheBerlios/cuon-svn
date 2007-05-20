@@ -49,6 +49,14 @@ static GnomeUIInfo print1_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("list of invoices"),
+    NULL,
+    (gpointer) on_list_of_invoices1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -253,6 +261,32 @@ static GnomeUIInfo misc1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo payments1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_New"),
+    NULL,
+    (gpointer) on_payment_new_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_payment_edit_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Save"),
+    NULL,
+    (gpointer) on_payment_save_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo menubar1_uiinfo[] =
 {
   {
@@ -294,6 +328,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Misc"),
     NULL,
     misc1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Payments"),
+    NULL,
+    payments1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -348,6 +389,14 @@ create_OrderMainwindow (void)
   GtkWidget *lCustom;
   GtkWidget *scrolledwindow9;
   GtkWidget *tvAddress;
+  GtkWidget *label55;
+  GtkWidget *table9;
+  GtkWidget *bSimpleCash1;
+  GtkWidget *bSimpleCash2;
+  GtkWidget *table10;
+  GtkWidget *bSimpleBank1;
+  GtkWidget *bSimpleBank2;
+  GtkWidget *bSimpleBank3;
   GtkWidget *table7;
   GtkWidget *label27;
   GtkWidget *label26;
@@ -483,6 +532,41 @@ create_OrderMainwindow (void)
   GtkWidget *rbCustom;
   GtkWidget *eMiscCustomRetry;
   GtkWidget *label31;
+  GtkWidget *table8;
+  GtkWidget *label43;
+  GtkWidget *ePaymentInvoiceNumber;
+  GtkWidget *label45;
+  GtkWidget *epaymentInvoiceAmount;
+  GtkWidget *label47;
+  GtkWidget *ePaymentInpayment;
+  GtkWidget *label46;
+  GtkWidget *ePaymentCashDiscount;
+  GtkWidget *label48;
+  GtkWidget *ePaymentPayments;
+  GtkWidget *label49;
+  GtkWidget *ePaymentResidue;
+  GtkWidget *label50;
+  GtkWidget *ePaymentDate;
+  GtkWidget *rPaymentCash;
+  GSList *rPaymentCash_group = NULL;
+  GtkWidget *rPaymentTransfer;
+  GtkWidget *rPaymentDirectDebit;
+  GtkWidget *rPaymentCreditCard;
+  GtkWidget *hbox28;
+  GtkWidget *label53;
+  GtkWidget *ePaymentCreditCardNumber;
+  GtkWidget *label54;
+  GtkWidget *ePaymentCreditCardTyp;
+  GtkWidget *label51;
+  GtkWidget *hbox29;
+  GtkWidget *ePaymentAccountID;
+  GtkWidget *bPaymentSearchAccount;
+  GtkWidget *alignment2;
+  GtkWidget *hbox27;
+  GtkWidget *image2;
+  GtkWidget *label52;
+  GtkWidget *eAccountDesignation;
+  GtkWidget *label42;
   GtkAccelGroup *accel_group;
 
   accel_group = gtk_accel_group_new ();
@@ -747,6 +831,55 @@ create_OrderMainwindow (void)
   gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvAddress);
   gtk_widget_set_size_request (tvAddress, 344, 184);
   gtk_text_view_set_editable (GTK_TEXT_VIEW (tvAddress), FALSE);
+
+  label55 = gtk_label_new (_("simple Account"));
+  gtk_widget_show (label55);
+  gtk_table_attach (GTK_TABLE (table6), label55, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label55), 0, 0.5);
+
+  table9 = gtk_table_new (3, 3, FALSE);
+  gtk_widget_show (table9);
+  gtk_table_attach (GTK_TABLE (table6), table9, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  bSimpleCash1 = gtk_button_new_with_mnemonic (_("Cash 1"));
+  gtk_widget_show (bSimpleCash1);
+  gtk_table_attach (GTK_TABLE (table9), bSimpleCash1, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bSimpleCash2 = gtk_button_new_with_mnemonic (_("Cash 2"));
+  gtk_widget_show (bSimpleCash2);
+  gtk_table_attach (GTK_TABLE (table9), bSimpleCash2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  table10 = gtk_table_new (3, 3, FALSE);
+  gtk_widget_show (table10);
+  gtk_table_attach (GTK_TABLE (table6), table10, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  bSimpleBank1 = gtk_button_new_with_mnemonic (_("Bank 1"));
+  gtk_widget_show (bSimpleBank1);
+  gtk_table_attach (GTK_TABLE (table10), bSimpleBank1, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bSimpleBank2 = gtk_button_new_with_mnemonic (_("Bank 2"));
+  gtk_widget_show (bSimpleBank2);
+  gtk_table_attach (GTK_TABLE (table10), bSimpleBank2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bSimpleBank3 = gtk_button_new_with_mnemonic (_("Bank 3"));
+  gtk_widget_show (bSimpleBank3);
+  gtk_table_attach (GTK_TABLE (table10), bSimpleBank3, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   table7 = gtk_table_new (3, 4, FALSE);
   gtk_widget_show (table7);
@@ -1465,6 +1598,212 @@ create_OrderMainwindow (void)
   gtk_widget_show (label31);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label31);
 
+  table8 = gtk_table_new (8, 4, FALSE);
+  gtk_widget_show (table8);
+  gtk_container_add (GTK_CONTAINER (notebook1), table8);
+
+  label43 = gtk_label_new (_("Invoice-Nr."));
+  gtk_widget_show (label43);
+  gtk_table_attach (GTK_TABLE (table8), label43, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label43), 0, 0.5);
+
+  ePaymentInvoiceNumber = gtk_entry_new ();
+  gtk_widget_show (ePaymentInvoiceNumber);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentInvoiceNumber, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (ePaymentInvoiceNumber), FALSE);
+
+  label45 = gtk_label_new (_("Invoice amount"));
+  gtk_widget_show (label45);
+  gtk_table_attach (GTK_TABLE (table8), label45, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label45), 0, 0.5);
+
+  epaymentInvoiceAmount = gtk_entry_new ();
+  gtk_widget_show (epaymentInvoiceAmount);
+  gtk_table_attach (GTK_TABLE (table8), epaymentInvoiceAmount, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (epaymentInvoiceAmount), FALSE);
+
+  label47 = gtk_label_new (_("in-payment"));
+  gtk_widget_show (label47);
+  gtk_table_attach (GTK_TABLE (table8), label47, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label47), 0, 0.5);
+
+  ePaymentInpayment = gtk_entry_new ();
+  gtk_widget_show (ePaymentInpayment);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentInpayment, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label46 = gtk_label_new (_("./. cash discount"));
+  gtk_widget_show (label46);
+  gtk_table_attach (GTK_TABLE (table8), label46, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label46), 0, 0.5);
+
+  ePaymentCashDiscount = gtk_entry_new ();
+  gtk_widget_show (ePaymentCashDiscount);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentCashDiscount, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label48 = gtk_label_new (_("./. payments"));
+  gtk_widget_show (label48);
+  gtk_table_attach (GTK_TABLE (table8), label48, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label48), 0, 0.5);
+
+  ePaymentPayments = gtk_entry_new ();
+  gtk_widget_show (ePaymentPayments);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentPayments, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (ePaymentPayments), FALSE);
+
+  label49 = gtk_label_new (_("residue"));
+  gtk_widget_show (label49);
+  gtk_table_attach (GTK_TABLE (table8), label49, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label49), 0, 0.5);
+
+  ePaymentResidue = gtk_entry_new ();
+  gtk_widget_show (ePaymentResidue);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentResidue, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (ePaymentResidue), FALSE);
+
+  label50 = gtk_label_new (_("Date"));
+  gtk_widget_show (label50);
+  gtk_table_attach (GTK_TABLE (table8), label50, 0, 1, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label50), 0, 0.5);
+
+  ePaymentDate = gtk_entry_new ();
+  gtk_widget_show (ePaymentDate);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentDate, 1, 2, 6, 7,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  rPaymentCash = gtk_radio_button_new_with_mnemonic (NULL, _("Cash"));
+  gtk_widget_show (rPaymentCash);
+  gtk_table_attach (GTK_TABLE (table8), rPaymentCash, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rPaymentCash), rPaymentCash_group);
+  rPaymentCash_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rPaymentCash));
+
+  rPaymentTransfer = gtk_radio_button_new_with_mnemonic (NULL, _("Transfer"));
+  gtk_widget_show (rPaymentTransfer);
+  gtk_table_attach (GTK_TABLE (table8), rPaymentTransfer, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rPaymentTransfer), rPaymentCash_group);
+  rPaymentCash_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rPaymentTransfer));
+
+  rPaymentDirectDebit = gtk_radio_button_new_with_mnemonic (NULL, _("direct debit"));
+  gtk_widget_show (rPaymentDirectDebit);
+  gtk_table_attach (GTK_TABLE (table8), rPaymentDirectDebit, 2, 3, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rPaymentDirectDebit), rPaymentCash_group);
+  rPaymentCash_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rPaymentDirectDebit));
+
+  rPaymentCreditCard = gtk_radio_button_new_with_mnemonic (NULL, _("credit card"));
+  gtk_widget_show (rPaymentCreditCard);
+  gtk_table_attach (GTK_TABLE (table8), rPaymentCreditCard, 2, 3, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rPaymentCreditCard), rPaymentCash_group);
+  rPaymentCash_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rPaymentCreditCard));
+
+  hbox28 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox28);
+  gtk_table_attach (GTK_TABLE (table8), hbox28, 3, 4, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label53 = gtk_label_new (_("Number"));
+  gtk_widget_show (label53);
+  gtk_box_pack_start (GTK_BOX (hbox28), label53, FALSE, FALSE, 0);
+
+  ePaymentCreditCardNumber = gtk_entry_new ();
+  gtk_widget_show (ePaymentCreditCardNumber);
+  gtk_box_pack_start (GTK_BOX (hbox28), ePaymentCreditCardNumber, TRUE, TRUE, 0);
+
+  label54 = gtk_label_new (_("Typ"));
+  gtk_widget_show (label54);
+  gtk_table_attach (GTK_TABLE (table8), label54, 2, 3, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label54), 0, 0.5);
+
+  ePaymentCreditCardTyp = gtk_entry_new ();
+  gtk_widget_show (ePaymentCreditCardTyp);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentCreditCardTyp, 3, 4, 6, 7,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label51 = gtk_label_new (_("pay with/acct."));
+  gtk_widget_show (label51);
+  gtk_table_attach (GTK_TABLE (table8), label51, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label51), 0, 0.5);
+
+  hbox29 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox29);
+  gtk_table_attach (GTK_TABLE (table8), hbox29, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePaymentAccountID = gtk_entry_new ();
+  gtk_widget_show (ePaymentAccountID);
+  gtk_box_pack_start (GTK_BOX (hbox29), ePaymentAccountID, TRUE, TRUE, 0);
+
+  bPaymentSearchAccount = gtk_button_new ();
+  gtk_widget_show (bPaymentSearchAccount);
+  gtk_box_pack_start (GTK_BOX (hbox29), bPaymentSearchAccount, FALSE, FALSE, 0);
+
+  alignment2 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment2);
+  gtk_container_add (GTK_CONTAINER (bPaymentSearchAccount), alignment2);
+
+  hbox27 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox27);
+  gtk_container_add (GTK_CONTAINER (alignment2), hbox27);
+
+  image2 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image2);
+  gtk_box_pack_start (GTK_BOX (hbox27), image2, FALSE, FALSE, 0);
+
+  label52 = gtk_label_new_with_mnemonic (_("search account"));
+  gtk_widget_show (label52);
+  gtk_box_pack_start (GTK_BOX (hbox27), label52, FALSE, FALSE, 0);
+
+  eAccountDesignation = gtk_entry_new ();
+  gtk_widget_show (eAccountDesignation);
+  gtk_table_attach (GTK_TABLE (table8), eAccountDesignation, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eAccountDesignation), FALSE);
+
+  label42 = gtk_label_new (_("Payment"));
+  gtk_widget_show (label42);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label42);
+
   g_signal_connect ((gpointer) OrderMainwindow, "key_press_event",
                     G_CALLBACK (on_Mainwindow_key_press_event),
                     NULL);
@@ -1479,6 +1818,21 @@ create_OrderMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) eAddressNumber, "changed",
                     G_CALLBACK (on_eAddressNumber_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bSimpleCash1, "clicked",
+                    G_CALLBACK (on_bSimpleCash1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSimpleCash2, "clicked",
+                    G_CALLBACK (on_bSimpleCash2_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSimpleBank1, "clicked",
+                    G_CALLBACK (on_bSimpleBank1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSimpleBank2, "clicked",
+                    G_CALLBACK (on_bSimpleBank2_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSimpleBank3, "clicked",
+                    G_CALLBACK (on_bSimpleBank3_clicked),
                     NULL);
   g_signal_connect ((gpointer) eSupplyNumber, "changed",
                     G_CALLBACK (on_eSupplyNumber_changed),
@@ -1534,6 +1888,12 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) rbYearly, "toggled",
                     G_CALLBACK (on_rbYearly_toggled),
                     NULL);
+  g_signal_connect ((gpointer) ePaymentAccountID, "changed",
+                    G_CALLBACK (on_ePaymentAccountID_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bPaymentSearchAccount, "clicked",
+                    G_CALLBACK (on_bPaymentSearchAccount_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (OrderMainwindow, OrderMainwindow, "OrderMainwindow");
@@ -1545,6 +1905,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[0].widget, "invoice1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[1].widget, "delivery_note1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[2].widget, "pickup_note1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[3].widget, "separator13");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[4].widget, "list_of_invoices1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[2].widget, "separator4");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[3].widget, "quit1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[1].widget, "order1");
@@ -1581,6 +1943,10 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[0].widget, "MiscEdit");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[1].widget, "MiscSave");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[2].widget, "clear1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[6].widget, "payments1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[0].widget, "payment_new");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[1].widget, "payment_edit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[2].widget, "payment_save");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolitem2, "toolitem2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox1, "hbox1");
@@ -1622,6 +1988,14 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lCustom, "lCustom");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow9, "scrolledwindow9");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label55, "label55");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table9, "table9");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleCash1, "bSimpleCash1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleCash2, "bSimpleCash2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table10, "table10");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank1, "bSimpleBank1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank2, "bSimpleBank2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank3, "bSimpleBank3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table7, "table7");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label27, "label27");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label26, "label26");
@@ -1755,6 +2129,40 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, rbCustom, "rbCustom");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCustomRetry, "eMiscCustomRetry");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label31, "label31");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, table8, "table8");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label43, "label43");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentInvoiceNumber, "ePaymentInvoiceNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label45, "label45");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, epaymentInvoiceAmount, "epaymentInvoiceAmount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label47, "label47");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentInpayment, "ePaymentInpayment");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label46, "label46");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentCashDiscount, "ePaymentCashDiscount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label48, "label48");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentPayments, "ePaymentPayments");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label49, "label49");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentResidue, "ePaymentResidue");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label50, "label50");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentDate, "ePaymentDate");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rPaymentCash, "rPaymentCash");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rPaymentTransfer, "rPaymentTransfer");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rPaymentDirectDebit, "rPaymentDirectDebit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, rPaymentCreditCard, "rPaymentCreditCard");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox28, "hbox28");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label53, "label53");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentCreditCardNumber, "ePaymentCreditCardNumber");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label54, "label54");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentCreditCardTyp, "ePaymentCreditCardTyp");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label51, "label51");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox29, "hbox29");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentAccountID, "ePaymentAccountID");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bPaymentSearchAccount, "bPaymentSearchAccount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, alignment2, "alignment2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox27, "hbox27");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, image2, "image2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label52, "label52");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAccountDesignation, "eAccountDesignation");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label42, "label42");
 
   gtk_window_add_accel_group (GTK_WINDOW (OrderMainwindow), accel_group);
 

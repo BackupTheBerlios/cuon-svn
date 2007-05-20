@@ -115,6 +115,11 @@
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>order_inpayment.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_order_inpayment.xml</Entry-FileValue>
+    </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_misc.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_ordermisc.xml</Entry-FileValue>
     </Entries>

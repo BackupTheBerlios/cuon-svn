@@ -196,3 +196,51 @@ on_bQuickAppend_clicked                (GtkButton       *button,
 void
 on_Misc_delete1_activate               (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_accounting1_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_payment_new_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_payment_edit_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_payment_save_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_bPaymentSearchAccount_clicked       (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_ePaymentAccountID_changed           (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_list_of_invoices1_activate          (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_bSimpleCash1_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSimpleCash2_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSimpleBank1_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSimpleBank2_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bSimpleBank3_clicked                (GtkButton       *button,
+                                        gpointer         user_data);

@@ -110,6 +110,9 @@ class gladeXml(defaultValues):
             elif direction and direction == 'Overwrite':
                 buffer = gtk.TextBuffer(None)
                 buffer.set_text(text)
+            else:
+                bText += text
+                buffer.set_text(bText)
                 
             widget.set_buffer(buffer)
             

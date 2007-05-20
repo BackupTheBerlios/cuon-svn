@@ -334,3 +334,14 @@ class dumps:
         return s
         
         
+    def getActualDateTime(self):
+        newTime = time.localtime()
+        tDate =  time.strftime(self.dicUser['DateformatString'], newTime)
+        tTime =  time.strftime(self.dicUser['TimeformatString'], newTime)
+        tStamp = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        dicTime = {'date':tDate, 'time':tTime, 'timestamp':tStamp }
+        
+        return dicTime
+        
+        
+        

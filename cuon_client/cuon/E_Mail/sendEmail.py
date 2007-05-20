@@ -84,7 +84,7 @@ class sendEmail(editorwindow):
         vbox.pack_start(tree1)
 
         tv1 = self.getWidget('tv1')
-        
+    
         
         vbox.reorder_child(tree1,0)
         vbox.reorder_child(table,1)
@@ -118,7 +118,7 @@ class sendEmail(editorwindow):
             if self.dicValues['From']:
                 self.eFrom.set_text(self.dicValues['From'])
             if self.dicValues['Signatur']:
-                self.add2Textbuffer(self.getWidget('tv1'), self.dicValues['Signatur'])        
+                self.add2Textbuffer(self.getWidget('tv1'), self.dicValues['Signatur'],'Tail')        
             
     def on_fcAttachment_file_activated(self, event):
         print event

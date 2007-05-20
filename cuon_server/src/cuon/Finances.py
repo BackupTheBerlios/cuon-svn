@@ -168,10 +168,11 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         pn = 'NONE'
-        if result != 'NONE':
+        if result != 'NONE' and result[0].has_key('id'):
             dicAcct['account_plan_number'] = [result[0]['id'], 'int']
             pn = result[0]['id']
-        
+            print 'pn = ', pn
+
         if pn != 'NONE':
             sSql = "select id from account_info where account_number = '" + dicAcct['account_number'][0] + "' and account_plan_number = " + `pn` 
             sSql = sSql + self.getWhere("",dicUser,2)

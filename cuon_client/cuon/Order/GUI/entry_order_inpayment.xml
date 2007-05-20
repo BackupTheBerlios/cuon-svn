@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>in_payment</table_name>
+
+    <entry>
+      <name>ePaymentInvoiceNumber</name>
+
+      <type>textline</type>
+
+      <size>30</size>
+
+      <verify_type>string</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>invoice_number</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePaymentCachDiscount</name>
+
+      <type>textline</type>
+
+      <size>50</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>cash_discount</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePaymentInpayment</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>inpayment</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePaymentDate</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>date</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>date_of_paid</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePaymentAccountID</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>int</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>account_id</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePaymentCreditCardNumber</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>varchar</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>credit_card_number</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>ePaymentCreditCardTyp</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>varchar</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>credit_card_type</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+
+  </table>
+</entries_for_table>

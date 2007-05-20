@@ -4112,6 +4112,106 @@
       <comment />
     </field>   
 </table>
+<!--in payment -->
+  <table>
+    <nameOfTable>in_payment</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+<field>
+      <name>invoice_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>invoice number </comment>
+    </field>
+    <field>
+      <name>cash_discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>cash discount </comment>
+    </field>
+    <field>
+      <name>inpayment</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>1</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>date_of_paid</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>1</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>account_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>1</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>account_type</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>1</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>credit_card_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>110</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>credit_card_type</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>110</size>
+      <default />
+      <comment></comment>
+    </field>
+    <field>
+      <name>order_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment></comment>
+    </field>
+    
+    </table>
+    
+    
   <database_sequence>
     <nameOfSequence>numerical_misc_standard_invoice</nameOfSequence>
     <sequence_increment>1</sequence_increment>

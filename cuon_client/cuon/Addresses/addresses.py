@@ -683,6 +683,10 @@ class addresswindow(chooseWindows):
             if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     firstRecord['notes_' + key] = dicNotes[key]
+            dicTime = self.getActualDateTime()
+            if dicTime:
+                for key in dicTime:
+                    firstRecord['date_' + key] = dicTime[key]
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
         
         return firstRecord, dicExtInfo
@@ -984,7 +988,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singleAddress.getEmail()
-        dicV['signatur'] = self.dicUser['Email']['Signatur']
+        dicV['Signatur'] = self.dicUser['Email']['Signatur']
         
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
@@ -1115,9 +1119,9 @@ class addresswindow(chooseWindows):
         elif self.tabOption  == self.tabPartner:
             self.on_PartnerEdit1_activate(None)
         elif self.tabOption  == self.tabSchedul:
-            self.on_SchedulEdit_activate(None)
+            self.on_SchedulEdit1_activate(None)
         elif self.tabOption  == self.tabNotes:
-            self.on_NotesEdit_activate(None)
+            self.on_NotesEdit1_activate(None)
     def on_tbExtendetInfo_clicked(self, event):
         if self.tabOption  == self.tabAddress:
             self.on_bShowDMS_clicked(None)

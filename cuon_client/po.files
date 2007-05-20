@@ -41,6 +41,7 @@ cuon/bin/cuon/Misc/fileSelection.py
 cuon/bin/cuon/Misc/__init__.py
 cuon/bin/cuon/Misc/messages.py
 cuon/bin/cuon/Misc/misc.py
+cuon/bin/cuon/Misc/cuon_dialog.py
 cuon/bin/cuon/XML/__init__.py
 cuon/bin/cuon/XML/MyXML.py
 cuon/bin/cuon/Clients/clients.py
@@ -59,6 +60,9 @@ cuon/bin/cuon/Articles/SingleArticle.py
 cuon/bin/cuon/Articles/SingleArticleSale.py
 cuon/bin/cuon/Articles/SingleArticleStock.py
 cuon/bin/cuon/Articles/SingleArticleWebshop.py
+cuon/bin/cuon/Articles/materialgroup.py
+cuon/bin/cuon/Articles/SingleMaterialgroupsAccount.py
+cuon/bin/cuon/Articles/SingleMaterialgroups.py
 cuon/bin/cuon/Login/__init__.py
 cuon/bin/cuon/Login/login.py
 cuon/bin/cuon/Zip/SingleCountry.py
@@ -76,6 +80,7 @@ cuon/bin/cuon/Order/standard_bill.py
 cuon/bin/cuon/Order/standard_delivery_note.py
 cuon/bin/cuon/Order/standard_invoice.py
 cuon/bin/cuon/Order/standard_pickup_note.py
+cuon/bin/cuon/Order/SingleOrderPayment.py
 cuon/bin/cuon/Help/help.py
 cuon/bin/cuon/Help/__init__.py
 cuon/bin/cuon/Addresses/addresses.py
@@ -211,6 +216,7 @@ cuon/Windows/__init__.py
 cuon/Windows/setOfEntries.py
 cuon/Windows/windows.py
 cuon/Misc/fileSelection.py
+cuon/Misc/cuon_dialog.py
 cuon/Misc/__init__.py
 cuon/Misc/misc.py
 cuon/Misc/messages.py
@@ -228,9 +234,12 @@ cuon/XMLRPC/xmlrpc.py
 cuon/Articles/articles.py
 cuon/Articles/__init__.py
 cuon/Articles/SingleArticlePurchase.py
+cuon/Articles/materialgroup.py
 cuon/Articles/SingleArticle.py
 cuon/Articles/SingleArticleSale.py
 cuon/Articles/SingleArticleWebshop.py
+cuon/Articles/SingleMaterialgroupsAccount.py
+cuon/Articles/SingleMaterialgroups.py
 cuon/Articles/lists_articles_number1.py
 cuon/Articles/SingleArticleStock.py
 cuon/Login/__init__.py
@@ -244,6 +253,7 @@ cuon/Order/__init__.py
 cuon/Order/order.py
 cuon/Order/SingleOrderGet.py
 cuon/Order/SingleOrderPosition.py
+cuon/Order/SingleOrderPayment.py
 cuon/Order/SingleOrder.py
 cuon/Order/standard_bill.py
 cuon/Order/SingleOrderSupply.py
@@ -346,6 +356,10 @@ cuon/Preferences/GUI/src/support.c
 cuon/Preferences/GUI/src/main.c
 cuon/Preferences/GUI/src/interface.c
 cuon/Preferences/GUI/src/callbacks.c
+cuon/Articles/GUI/src/support.c
+cuon/Articles/GUI/src/main.c
+cuon/Articles/GUI/src/interface.c
+cuon/Articles/GUI/src/callbacks.c
 cuon/Login/GUI/src/callbacks.c
 cuon/Login/GUI/src/main.c
 cuon/Login/GUI/src/interface.c
@@ -377,6 +391,10 @@ cuon/E_Mail/GUI/src/support.c
 cuon/E_Mail/GUI/src/main.c
 cuon/E_Mail/GUI/src/interface.c
 cuon/E_Mail/GUI/src/callbacks.c
+cuon/PrefsFinance/GUI/src/support.c
+cuon/PrefsFinance/GUI/src/main.c
+cuon/PrefsFinance/GUI/src/interface.c
+cuon/PrefsFinance/GUI/src/callbacks.c
 cuon/Finances/CashAccountBook/GUI/src/support.c
 cuon/Finances/CashAccountBook/GUI/src/main.c
 cuon/Finances/CashAccountBook/GUI/src/interface.c
@@ -385,6 +403,10 @@ cuon/Biblio/GUI/src/support.c
 cuon/Biblio/GUI/src/main.c
 cuon/Biblio/GUI/src/interface.c
 cuon/Biblio/GUI/src/callbacks.c
+cuon/Editor/GUI/src/support.c
+cuon/Editor/GUI/src/main.c
+cuon/Editor/GUI/src/interface.c
+cuon/Editor/GUI/src/callbacks.c
 cuon/Project/GUI/src/support.c
 cuon/Project/GUI/src/main.c
 cuon/Project/GUI/src/interface.c

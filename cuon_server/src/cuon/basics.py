@@ -192,7 +192,7 @@ class basics(xmlrpc.XMLRPC):
         WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
         self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
         # Limits
-        self.LIMITSQL = 20
+        self.LIMITSQL = 200000
         self.LIMITGARDEN = 100
         self.LIMITADDRESS = 100
         self.LIMITARTICLES = 100

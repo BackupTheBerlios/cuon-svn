@@ -81,6 +81,7 @@ class SingleDMS(SingleData):
     def readNonWidgetEntries(self, dicValues):
         newTime = time.localtime()
         tValue =  time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        
         if not self.fileFormat:
             self.fileFormat = 'NONE'
         if not self.fileSuffix:

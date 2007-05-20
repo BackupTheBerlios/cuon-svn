@@ -26,6 +26,7 @@ import SingleOrder
 import SingleOrderSupply
 import SingleOrderGet
 import SingleOrderPosition
+import SingleOrderPayment
 
 
 
@@ -40,7 +41,8 @@ import cuon.Articles.SingleArticle
 import cuon.Order.standard_invoice
 import cuon.Order.standard_delivery_note
 import cuon.Order.standard_pickup_note
-
+import cuon.PrefsFinance.prefsFinance
+import cuon.Finances.SingleAccountInfo
 
 
 
@@ -69,6 +71,8 @@ class orderwindow(chooseWindows):
         self.singleOrderPosition = SingleOrderPosition.SingleOrderPosition(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
+        self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
+        self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
@@ -79,6 +83,7 @@ class orderwindow(chooseWindows):
         self.EntriesOrderGet = 'order_get.xml'
         self.EntriesOrderPosition = 'order_position.xml'
         self.EntriesOrderMisc = 'order_misc.xml'
+        self.EntriesOrderPayment = 'order_inpayment.xml'
         
         
         
@@ -135,6 +140,21 @@ class orderwindow(chooseWindows):
   
         
         self.loadEntries(self.EntriesOrderMisc)
+        
+        
+        # singleOrderPayment
+        
+        self.loadEntries(self.EntriesOrderPayment)
+        self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )
+        self.singleOrderPayment.setGladeXml(self.xml)
+        self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
+        self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleOrderPayment.setTreeOrder('date_of_paid,invoice_number')
+        self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
+
+        self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
+        self.singleOrderPayment.setTree(self.xml.get_widget('tree1') )
+  
         # Menu-items
         self.initMenuItems()
 
@@ -145,6 +165,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','gets1')
         self.addEnabledMenuItems('tabs','positions1')
         self.addEnabledMenuItems('tabs','misc1')
+        self.addEnabledMenuItems('tabs','payments1')
 
 
         # seperate Menus
@@ -152,6 +173,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('supply','supply1')
         self.addEnabledMenuItems('gets','gets1')
         self.addEnabledMenuItems('positions','positions1')
+        self.addEnabledMenuItems('payment','payments1')
         self.addEnabledMenuItems('misc','misc1')
         
 
@@ -177,6 +199,10 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
         self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
 
+        # enabledMenues for Payment
+        self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
+
         # to misc menu
         
         # enabledMenues for Save 
@@ -185,6 +211,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
 
 
         # tabs from notebook
@@ -194,6 +221,8 @@ class orderwindow(chooseWindows):
         self.tabPosition = 3
         self.tabInvoice = 4
         self.tabMisc = 5
+        self.tabPayment = 6
+        
 
         # start
         if self.dicOrder and not newOrder:
@@ -387,6 +416,30 @@ class orderwindow(chooseWindows):
         self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
         self.tabChanged()
   
+    #Menu Payment
+    def on_payment_save_activate(self, event):
+        print "save Positions v2"
+       
+        self.singleOrderPayment.orderID = self.singleOrder.ID
+    
+        self.singleOrderPayment.invoiceNumber = self.singleOrder.getInvoiceNumber()
+        
+
+        self.singleOrderPayment.save()
+        self.setEntriesEditable(self.EntriesOrderPayment, FALSE)
+
+        self.tabChanged()
+
+    def on_payment_edit_activate(self, event):
+        print 'PositionEdit1'
+        self.setEntriesEditable(self.EntriesOrderPayment, TRUE)
+    
+    def on_payment_new_activate(self, event):
+        print "new Ppayment v2"
+        self.singleOrderPayment.newRecord()
+        self.getWidget('ePaymentInvoiceNumber').set_text(`self.singleOrder.getInvoiceNumber()`)
+        
+        self.setEntriesEditable(self.EntriesOrderPayment, TRUE)
 
 
     # search button
@@ -643,8 +696,27 @@ class orderwindow(chooseWindows):
         except Exception, params:
             print Exception, params    
             
-     
+    def on_bPaymentSearchAccount_clicked(self, event):
+        acc = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        acc.setChooseEntry('choose_acct1', self.getWidget( 'ePaymentAccountID'))
 
+                           
+
+    def on_ePaymentAccountID_changed(self, event):
+        print 'eAccountID changed'
+        iAcctNumber = self.getChangedValue('ePaymentAccountID')
+        eAcctField = self.getWidget('eAccountDesignation')
+        cAcct = self.singleAccountInfo.getInfoLine(iAcctNumber)
+        eAcctField.set_text(cAcct)
+        
+##        record = self.singleArticle.getFirstRecord()
+##        if record:
+##            print record
+##            self.getWidget('eOrderPositionsUnit').set_text(record['unit'])
+##            
+##        if self.singleOrderPosition.ID == -1 and record:
+##            self.getWidget('eOrderPositionsTaxVat').set_text(record['tax_vat'])
+##          
     def on_bQuickAppend_clicked(self, event):
         # Qick append a positions
         if self.singleOrderPosition.ID != -1:
@@ -736,7 +808,10 @@ class orderwindow(chooseWindows):
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
 
-        
+        elif self.tabOption == self.tabPayment:
+            self.singleOrderPayment.sWhere  ='where order_id = ' + `int(self.singleOrder.ID)`
+            self.singleOrderPayment.connectTree()
+            self.singleOrderPayment.refreshTree()
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
@@ -776,8 +851,14 @@ class orderwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
-            print 'Seite 4'  
-  
+            print 'Seite 5'
+            
+        elif self.tabOption == self.tabPayment:
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('payment')
+            self.editAction = 'editPayment'
+            print 'Seite 6'  
+         
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
