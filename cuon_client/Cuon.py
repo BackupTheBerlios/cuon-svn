@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 11,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 13,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -643,9 +643,23 @@ class MainWindow(windows):
     
         
     def generateSqlObjects(self):
+        entryList = self.rpc.callRP('Database.executeNormalQuery',"select  skey from cuon where skey ~* 'entry_' ")
+        print entryList
+        self.openDB()
+        for i in entryList:
+            print i['skey']
+            sk = self.rpc.callRP('Database.getInfo', i['skey'])
+            
+            self.saveObject(i['skey'],sk)
+            #print sk
+        self.closeDB()
+        
+        
         #self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables')
         at = self.rpc.callRP('Database.getInfo', 'allTables')
         #print 'at23 = ', `at`
+        self.setProgressBar( 3.0)
+
         liAllTables = cPickle.loads(eval(self.doDecode(at)))
         #sys.exit(0)
         #print 'liAllTables = '
@@ -653,7 +667,7 @@ class MainWindow(windows):
         iCount = len(liAllTables)
         for i in range(iCount):
             self.loadSqlDefs(liAllTables, i)
-            self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
+            self.setProgressBar( (float(i) * 1.0/float(iCount) * 100.0)  + 5.0)
             #print 'Progress-Value = ' + str(float(i) * 1.0/float(iCount) * 100.0)
         #print self.allTables
 

@@ -14,10 +14,13 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
+        t1 = time.mktime(time.localtime())
+        #print '------->SQL starts at : ', t1
+        
         dicResult = "NONE"
         rows = None
         try:
-            self.writeLog('execute SQL = ' + `cSql`,self.debug)
+            #self.writeLog('execute SQL = ' + `cSql`,self.debug)
             if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
                 pass
             else:
@@ -32,8 +35,8 @@ class SQL(xmlrpc.XMLRPC, basics):
                     sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
             
                 # put here sUser
-                print 'sUser=', sUser
-                self.writeLog('User = ' + sUser, self.debug)
+                #print 'sUser=', sUser
+                #self.writeLog('User = ' + sUser, self.debug)
                 #DSN = 'dbname=cuon host=localhost user=' + sUser
                 conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
                 #curs.execute(cSql.decode('utf-8'))
@@ -47,17 +50,17 @@ class SQL(xmlrpc.XMLRPC, basics):
             ##            rows = curs.dictfetchall()
             ##        except:
             ##            pass
-                self.writeLog('Rows = ' + `rows`, self.debug)
+                #self.writeLog('Rows = ' + `rows`, self.debug)
                 #conn.close()
             
             if rows:
                 try:
                     dicResult = rows.dictresult()
                 except Exception, params:
-                    self.writeLog('try dic-Result', self.debug)
-                    self.writeLog(`Exception`, self.debug)
-                    self.writeLog(`params`, self.debug)
-                    self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
+                    #self.writeLog('try dic-Result', self.debug)
+                    #self.writeLog(`Exception`, self.debug)
+                    #self.writeLog(`params`, self.debug)
+                    #self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
                     
                     dicResult = None
             else:
@@ -95,17 +98,23 @@ class SQL(xmlrpc.XMLRPC, basics):
                         except:
                             pass
             except Exception, param:
-                self.writeLog('Except-Error')
-                self.writeLog(`Exception` +', \n' + `param`)
+                #self.writeLog('Except-Error')
+                #self.writeLog(`Exception` +', \n' + `param`)
                
                 dicResult = None
-            self.writeLog('sql return = ' + `dicResult`)
+            #self.writeLog('sql return = ' + `dicResult`)
             if dicResult == None:
                 dicResult ='NONE'
-            self.writeLog('sql return 2 = ' + `dicResult`)
+            #self.writeLog('sql return 2 = ' + `dicResult`)
         except Exception, param:
             print Exception
             print param
+        try:
+            #print '----------> SQL '
+            print cSql
+            print '<-------SQL need : ', time.mktime(time.localtime()) -t1
+        except Exception, params:
+            print Exception,params
             
         return dicResult
      
@@ -134,19 +143,19 @@ class SQL(xmlrpc.XMLRPC, basics):
         sSql = 'select '
         liTable = []
         try:    
-            print 'replace id with table.id'
+            #print 'replace id with table.id'
             del dicEntries['id']
             dicEntries[sTable + '.id'] = 'int'
         except Exception, params:
-            print Exception, params
-            
+            #print Exception, params
+            pass
         for i in dicEntries.keys():
             if dicEntries[i] == 'date':
-                sSql = sSql + "to_char(" + i + ",  \'" + dicUser['SQLDateFormat'] + "\') as " + i  + ', '
+                sSql = sSql + "to_char(" + i + ",  \'" + self.DIC_USER['SQLDateFormat'] + "\') as " + i  + ', '
             elif dicEntries[i] == 'time':
-                sSql = sSql + "to_char(" + i + ",  \'" + dicUser['SQLTimeFormat'] + "\') as " + i  + ', '
+                sSql = sSql + "to_char(" + i + ",  \'" + self.DIC_USER['SQLTimeFormat'] + "\') as " + i  + ', '
             elif dicEntries[i] == 'datetime':
-                sSql = sSql  + "to_char(" + i +", \'" + dicUser['SQLDateTimeFormat'] + "\') as " + i  + ', '
+                sSql = sSql  + "to_char(" + i +", \'" + self.DIC_USER['SQLDateTimeFormat'] + "\') as " + i  + ', '
             
             else:
               sSql = sSql + i + ', '
@@ -154,9 +163,9 @@ class SQL(xmlrpc.XMLRPC, basics):
                 liTable.append(i[:i.find('.')])
             
                 
-        print liTable
+        #print liTable
         sSql = sSql[0: string.rfind(sSql,',') ]
-        self.writeLog('sWhere =' + `sWhere`)
+        #self.writeLog('sWhere =' + `sWhere`)
         
         sWhere = self.getWhere(sWhere, dicUser, Prefix=sTable + '.')
         
@@ -181,7 +190,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         
         
        
-        self.writeLog(`sSql`)
+        #self.writeLog(`sSql`)
         sSql = sSql + ' LIMIT ' + `self.LIMITSQL`
         #print 'self.LIMITSQL', self.LIMITSQL
         sSql = sSql.replace('specialsql1','where')
@@ -201,16 +210,18 @@ class SQL(xmlrpc.XMLRPC, basics):
         #self.writeLog(repr(result))
         
         return result
+        
     def xmlrpc_loadRecord(self, nameOfTable, record, dicUser , dicColumns):
         import string 
         sSql = 'select '
+        
         for i in dicColumns.keys():
            if dicColumns[i] == 'date':
-              sSql = sSql  + "to_char(" + i +", \'" + dicUser['SQLDateFormat'] + "\') as " +i  + ', '
+              sSql = sSql  + "to_char(" + i +", \'" + self.DIC_USER['SQLDateFormat'] + "\') as " +i  + ', '
            elif dicColumns[i] == 'time':
-              sSql = sSql  + "to_char(" + i +", \'" + dicUser['SQLTimeFormat'] + "\') as " + i  + ', '
+              sSql = sSql  + "to_char(" + i +", \'" + self.DIC_USER['SQLTimeFormat'] + "\') as " + i  + ', '
            elif dicColumns[i] == 'timestamp':
-              sSql = sSql  + "to_char(" + i +", \'" + dicUser['SQLDateTimeFormat'] + "\') as " + i  + ', '
+              sSql = sSql  + "to_char(" + i +", \'" + self.DIC_USER['SQLDateTimeFormat'] + "\') as " + i  + ', '
          
            else:
               sSql = sSql + i + ', ' 
@@ -233,7 +244,7 @@ class SQL(xmlrpc.XMLRPC, basics):
 ##                self.writeLog('sKey in Entries' + `sKey`)
 ##                dicValues[lb][0] = self.getValue(sKey)
 ##        
-        self.writeLog('begin RECORD2')
+        #self.writeLog('begin RECORD2')
         if id > 0:
             # update
             sSql = 'update ' + sNameOfTable + ' set  '
@@ -257,7 +268,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                         sSql = sSql  + " = \'" + liValue[0]+ "\', "
         
                 elif liValue[1] ==  'bool':
-                    self.writeLog('REC2-bool ')
+                    #self.writeLog('REC2-bool ')
                     if liValue[0] == 1:
                         liValue[0] = 'True'
                     if liValue[0] == 0:
@@ -271,15 +282,15 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql + ' where id = ' + `id`
             
         else:
-            self.writeLog('new RECORD2')
+            #self.writeLog('new RECORD2')
             sSql = 'insert into  ' + sNameOfTable + ' (  '
             sSql2 = 'values ('
-            self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
+            #self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
             for i in dicValues.keys():
                 sSql = sSql + i + ', '
                 self.writeLog('REC2-1.1 ' + `sSql`)
                 liValue = dicValues[i]
-                self.writeLog('REC2-1.2 ' + `liValue`)
+                #self.writeLog('REC2-1.2 ' + `liValue`)
                 if liValue == None :
                     sSql2 = sSql2 + "\'\', " 
                 else:
@@ -302,20 +313,20 @@ class SQL(xmlrpc.XMLRPC, basics):
                             sSql2 = sSql2  + " \'" + liValue[0] + "\', "
                             self.writeLog('REC2-5 ' + `sSql` + `sSql2`)
                     elif liValue[1] ==  'bool':
-                        self.writeLog('REC2-bool ')
+                        #self.writeLog('REC2-bool ')
                         if liValue[0] == 1:
                            liValue[0] = 'True'
                         if liValue[0] == 0:
                            liValue[0] = 'False'
         
                         sSql2 = sSql2  +"\'" + liValue[0] + "\', "
-                        self.writeLog('REC2-6 ' + `sSql` + `sSql2`)
+                        #self.writeLog('REC2-6 ' + `sSql` + `sSql2`)
                     else:
                         sSql2 = sSql2  +  " \'" + liValue[0] + "\', "
-                        self.writeLog('REC2-6 ' + `sSql` + `sSql2`) 
+                        #self.writeLog('REC2-6 ' + `sSql` + `sSql2`) 
              
                         
-            self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
+            #self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
             sSql = sSql + 'id, user_id, status'
             sSql2 = sSql2 + 'nextval(\'' + sNameOfTable + '_id\'), current_user, \'create\''  
             
@@ -323,7 +334,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql + ') ' + sSql2 + ')'
         
             # execute insert
-            self.writeLog('SQL by RECORD2 = ' + `sSql`)
+            #self.writeLog('SQL by RECORD2 = ' + `sSql`)
             #print sSql
             self.xmlrpc_executeNormalQuery(sSql, dicUser)
         
@@ -342,20 +353,20 @@ class SQL(xmlrpc.XMLRPC, basics):
     def xmlrpc_createBigRow(self, sFile, data, j, dicUser=None):
         debug = 1
         ok = 1
-        self.writeLog('createBigRow reached', debug)
-        self.writeLog('first j = ' + `j`,debug)
+        #self.writeLog('createBigRow reached', debug)
+        #self.writeLog('first j = ' + `j`,debug)
         
         sKey = dicUser['Name'] +'_' +sFile
         
-        self.writeLog(sKey, debug)
+        #self.writeLog(sKey, debug)
         if j == 0:
-            self.writeLog('j = ' + `j`, debug)
+            #self.writeLog('j = ' + `j`, debug)
             self.saveValue(sKey,data)
         else:
-            self.writeLog('j = ' + `j`, debug)
+            #self.writeLog('j = ' + `j`, debug)
             sData =  self.getValue(sKey)
             if sData != 'NONE':
-                self.writeLog('len sData = ' + `len(sData)`, debug)
+                #self.writeLog('len sData = ' + `len(sData)`, debug)
                 sData = sData + data
             else:
                 sData = data

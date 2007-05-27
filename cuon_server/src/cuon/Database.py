@@ -105,14 +105,14 @@ class Database(xmlrpc.XMLRPC, SQL):
         return ok
         
     def xmlrpc_createSessionID(self, sUser, sPassword):
-        self.out('1 -- createSessionID start')
+        #self.out('1 -- createSessionID start')
         s = ''
         
         
         if self.authenticate(name=sUser,password=sPassword,request=None):
-            self.out('2 -- createSessionID User found ')
+            #self.out('2 -- createSessionID User found ')
             s = self.createNewSessionID()
-            self.out('3 -- createSessionID id created for ' + sUser + ' = '  + `s`)
+            #self.out('3 -- createSessionID id created for ' + sUser + ' = '  + `s`)
             self.openDB()
             self.saveObject('user_'+ sUser + '_Session_ID' , s['SessionID'])
             self.saveObject('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
@@ -122,7 +122,7 @@ class Database(xmlrpc.XMLRPC, SQL):
             #--self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
             #--self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
-            self.out('4 -- createSessionID User is write ')
+            #self.out('4 -- createSessionID User is write ')
             
             #self.dicVerifyUser[sUser] = {}
             #self.dicVerifyUser[sUser]['SessionID'] = s['SessionID']
@@ -155,7 +155,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         version = '0.0.0'
         dicUser={'Name':'zope'}
         sSql = 'select last_value from cuon_clients_id'
-        self.writeLog('Start check version sql= ' + `sSql`)
+        #self.writeLog('Start check version sql= ' + `sSql`)
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         self.writeLog('LastVersion = ' + `result`)
             
@@ -185,11 +185,11 @@ class Database(xmlrpc.XMLRPC, SQL):
         return self.saveValue(sKey, cKey)
     
     def xmlrpc_getListOfClients(self, dicUser):
-        self.writeLog('Start List Of Clients')
+        #self.writeLog('Start List Of Clients')
         sSql = "select id from clients"
         dicClients = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         liClients = []
-        self.writeLog('Clients = ' + `dicClients`)
+        #self.writeLog('Clients = ' + `dicClients`)
 
         if dicClients != 'NONE':
            for i in dicClients:
@@ -199,7 +199,7 @@ class Database(xmlrpc.XMLRPC, SQL):
               
               liClients.append(cli)
         
-        self.writeLog('liClients = ' + `liClients`)
+        #self.writeLog('liClients = ' + `liClients`)
         return liClients
     
     def xmlrpc_checkExistSequence(self, sName, dicUser):
@@ -583,20 +583,20 @@ class Database(xmlrpc.XMLRPC, SQL):
         return result 
                         
     def bindSql(self, liFields ):
-        print 'bindSql start'
+        #print 'bindSql start'
         sSql = ''
         for liValues in liFields:
             sSql += liValues[0] + ' as ' + liValues[1] + ', '
         
         
         sSql = sSql[0:sSql.rfind(',')]
-        print 'bindSql = ', sSql
+        #print 'bindSql = ', sSql
         
         return sSql
         
             
     def xmlrpc_getInternInformation(self, dicUser, Pers1=None, Pers2=None):
-        print 'Pers1 = ', Pers1
+        #print 'Pers1 = ', Pers1
         
         dicRet = {}
         sSql = "select address, lastname, firstname, phone, phone1, letter_phrase_1  from staff where id = " + self.getStaffID(dicUser)
@@ -627,5 +627,5 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         if not dicRet:
             dicRet = 'NONE'
-        print dicRet
+        #print dicRet
         return dicRet

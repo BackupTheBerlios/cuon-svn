@@ -557,7 +557,13 @@
       <Report-FileValue>../usr/share/cuon/report/order_standardinvoice.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
-
+<Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>order_list_of_invoices.xml</Report-File>
+      <Report-FileValue>../usr/share/cuon/report/order_list_of_invoices.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	

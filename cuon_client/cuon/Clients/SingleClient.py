@@ -26,7 +26,7 @@ class SingleClient(SingleData):
         SingleData.__init__(self)
         self.sqlDicUser['noWhereClient'] = 'YES'
         self.dicUser['noWhereClient'] = 'YES'
-   
+        self.dicInternetUser['noWhereClient'] = 'YES'
         # tables.dbd and address
         self.sNameOfTable =  "clients"
         self.xmlTableDef = 0

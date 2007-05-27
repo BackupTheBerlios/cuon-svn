@@ -69,7 +69,7 @@ class SingleData(gladeXml, logs):
         self.sDateFormat = "%d.%m.%Y"
         self.dicUser = self.oUser.getDicUser()
         self.sqlDicUser = self.oUser.getSqlDicUser()
-        
+        self.dicInternetUser = self.oUser.getInternetUser()
         self.path = None
         self.statusfields = []
         self.sStatus = ''
@@ -111,7 +111,7 @@ class SingleData(gladeXml, logs):
             # self.out( `dicColumns`)
 
 
-            liRecords = self.rpc.callRP('Database.loadRecord', self.sNameOfTable, record, self.sqlDicUser, dicColumns )
+            liRecords = self.rpc.callRP('Database.loadRecord', self.sNameOfTable, record, self.dicInternetUser, dicColumns )
             # print liRecords
             firstRecord = {}
             if liRecords:
@@ -855,7 +855,7 @@ class SingleData(gladeXml, logs):
             self.printOut( 'SingleData - dicFields = ', `dicFields`)
             
             
-            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.sqlDicUser)
+            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicInternetUser)
         else:
             dicLists = {}
             

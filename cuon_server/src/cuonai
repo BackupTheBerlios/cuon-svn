@@ -35,17 +35,20 @@ test -x $DAEMON || exit 0
 #	Function that starts the daemon/service.
 #
 d_start() {
-	nohup start-stop-daemon --start --quiet --pidfile $PIDFILE \
-		--exec $DAEMON &
+nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonai.log 2>>/var/log/cuonai_err.log &
+  
 }
 
 #
 #	Function that stops the daemon/service.
 #
 d_stop() {
-	start-stop-daemon --stop --quiet --pidfile $PIDFILE \
-		--name $NAME
-        
+    OLDPID=`ps ax | grep $NAME | grep -v grep | sed  -e "s/^[[:space:]]*//g" | cut -d" " -f 1 `
+    if [ -n "$OLDPID"  ] 
+    then 
+       kill `ps ax | grep $NAME | grep -v grep | sed  -e "s/^[[:space:]]*//g" | cut -d" " -f 1 `
+    fi
+    
 }
 
 #
@@ -65,7 +68,7 @@ case "$1" in
   stop)
 	echo -n "Stopping $DESC: $NAME"
 	d_stop
-        killall ai.py
+        
 	echo "."
 	;;
   #reload)
@@ -88,8 +91,7 @@ case "$1" in
 	#	just the same as "restart".
 	#
 	echo -n "Restarting $DESC: $NAME"
-	d_stop
-	sleep 1
+	d_stop 
 	d_start
 	echo "."
 	;;

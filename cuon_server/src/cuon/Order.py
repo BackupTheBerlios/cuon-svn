@@ -86,18 +86,22 @@ class Order(xmlrpc.XMLRPC, basics):
         print 'InvoiceNumber dicResult = ', dicResult
         
         if dicResult == 'NONE' or dicResult[0]['invoice_number'] == 0:
-            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number) '
-            print sSql
+            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice) '
             
-            sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
-            print sSql
+            sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'),today() " 
+        
 
             sSql1 +=  `orderNumber` + " )"
-            print sSql
+            print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
-        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        
+            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        else:
+            sSql1 = 'update list_of_invoices set date_of_invoice = today() where order_number = ' + `orderNumber` 
+            sSql1 += self.getWhere(None,dicUser,2)
+            print sSql1
+            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
+            
         if dicResult != 'NONE':
             nr = dicResult[0]['invoice_number']
         else:
@@ -210,9 +214,9 @@ class Order(xmlrpc.XMLRPC, basics):
         
         
         return dicResult
-    def xmlrpc_getTotalSum(self, OrderID, dicUser):
+        
+    def getTotalSum(self,OrderID, dicuser):
         total_sum = 0
-        retValue = '0'  
         sSql = 'select sum(amount * price) as total_sum from orderposition where orderid = '
         sSql += `OrderID`
         sSql += self.getWhere(None,dicUser,2)
@@ -220,7 +224,13 @@ class Order(xmlrpc.XMLRPC, basics):
         if dicResult and dicResult != 'NONE':
             total_sum = dicResult[0]['total_sum']
         
+        return total_sum
+        
           
+    def xmlrpc_getTotalSumString(self, OrderID, dicUser):
+        retValue = '0'  
+
+        total_sum = self.getTotalSum(self,OrderID,dicUser)
         try:
             #"%.2f"%y 
             total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
@@ -230,3 +240,10 @@ class Order(xmlrpc.XMLRPC, basics):
             
         return retValue  
     
+
+    def getListOfInvoices( self, dicOrder, dicUser ):
+        sSql = ' select * from list_of_invoices where  invoice_number > 0 '
+        sSql += self.getWhere(None,dicUser,2)
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+        

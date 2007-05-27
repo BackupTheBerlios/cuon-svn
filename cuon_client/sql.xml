@@ -32,14 +32,31 @@
         <index_table>address</index_table>
         <index_column>city</index_column>
     </index>
-    
-    
+    <index>
+        <index_name>address_idx_lower_lastname</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>LOWER(lastname)</index_column>
+    </index>
+    <index>
+        <index_name> address_idx_lastname_firstname</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>lastname,firstname</index_column>
+    </index>
+    <index>
+        <index_name> address_idx_all1</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>lastname,firstname,client,status</index_column>
+    </index>
     <index>
         <index_name>partner_idx_lastname</index_name>
         <index_special> </index_special>
         <index_table>partner</index_table>
         <index_column>lastname</index_column>
     </index>
+    
     
     <index>
         <index_name>partner_idx_addressid</index_name>
@@ -48,6 +65,47 @@
         <index_column>addressid</index_column>
     </index>
     
+    <index>
+        <index_name>partner_schedul_idx_partnerid</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>partnerid</index_column>
+    </index>
+    
+    <index>
+        <index_name>contact_idx_address_id</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column>address_id</index_column>
+    </index>
+    
+    <index>
+        <index_name>contact_idx_process_status</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column>process_status</index_column>
+    </index>
+    
+    <index>
+        <index_name>contact_idx_contacter_id</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column>contacter_id</index_column>
+    </index>
+    
+    <index>
+        <index_name>address_notes_idx_address_id</index_name>
+        <index_special> </index_special>
+        <index_table>address_notes</index_table>
+        <index_column>address_id</index_column>
+    </index>
+    
+    <index>
+        <index_name> staff_idx_cuon_username</index_name>
+        <index_special> </index_special>
+        <index_table>staff</index_table>
+        <index_column> cuon_username</index_column>
+    </index>
     
     <foreign_key>
             <foreign_key_name>PartnerAddress</foreign_key_name> 

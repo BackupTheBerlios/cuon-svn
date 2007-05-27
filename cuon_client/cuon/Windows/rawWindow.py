@@ -11,6 +11,7 @@ class rawWindow( gladeXml):
         self.oUser = None
         self.dicUser = None
         self.dicSqlUser = None
+        self.dicInternetUser = None
         self.dicUserKeys = None
         self.openDB()
         #self.td = cuon.TypeDefs.typedefs.typedefs()
@@ -29,6 +30,7 @@ class rawWindow( gladeXml):
             print `self.oUser`
             self.dicUser = self.oUser.getDicUser()
             self.dicSqlUser = self.oUser.getSqlDicUser()
+            self.dicInternetUser = self.oUser.getInternetUser()
             print `self.dicUser`
         else:
             self.dicUser = {}

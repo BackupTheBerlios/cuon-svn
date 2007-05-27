@@ -56,8 +56,8 @@ class Address(xmlrpc.XMLRPC, basics):
         except Exception, params:
             print 'Error by Schedul Read user.cfg'
             print Exception, params
-        print dicUser['Name']    
-        print 'value = ', value
+        #print dicUser['Name']    
+        #print 'value = ', value
         
             
         if value and value == 'NO':
@@ -93,7 +93,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 sW +=  " process_status != 999 "
                 sW += " and schedul_staff_id = " + SelectStaff + " "
             
-            print 'sChoice = ', sChoice
+            #print 'sChoice = ', sChoice
             if sChoice == 'New':
                 sW += " and  date_part('doy', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  >=  date_part('doy', now())"
             elif sChoice == 'Cancel':
@@ -109,7 +109,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 
                 sW = sW[:len(sW)-4]
                 sW += ')'
-            
+            sW += " and char_length(partner_schedul.schedul_date) = 10 "
             sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
                 
                 
@@ -117,7 +117,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 sSql = sSql + " order by schedul_name DESC, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') DESC , partner_schedul.schedul_time_begin DESC" 
             elif OrderType == 'Schedul' :
                 sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') DESC  , schedul_name DESC,  partner_schedul.schedul_time_begin DESC " 
-            print sSql    
+            #print sSql    
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         elif value == None:
             pass
@@ -138,7 +138,7 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql +=  " from  address, contact "
         sW = " where address.id = contact.address_id and "
         sW +=  " process_status = 0 and contacter_id = " + self.getStaffID(dicUser) + " "  
-        
+        sW += " and char_length(contact.schedul_date) = 10 "
         sSql = sSql + self.getWhere(sW, dicUser, Prefix='contact.')
         
         sSql = sSql + " order by contact.schedul_date, contact.schedul_time_begin " 

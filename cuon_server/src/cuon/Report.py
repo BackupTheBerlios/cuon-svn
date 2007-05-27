@@ -137,3 +137,20 @@ class Report(xmlrpc.XMLRPC, basics):
         
         return self.report_server.ReportServer.createReport(repData)
             
+    def xmlrpc_server_order_list_of_invoices(self, dicOrder, dicUser):
+        print 'report-server = ', `self.report_server`
+        import Reports.report_order_list_of_invoices
+        import Order
+        
+        print "startReport"
+        oOrder = Order.Order()
+        oReports = Reports.report_order_list_of_invoices.report_order_list_of_invoices()
+        repData = oReports.getReportData(dicOrder, dicUser, oOrder, self.ReportDefs)
+        #print '\n\n'
+        #print 'get repData'
+        #print '\n'
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
+        #print '--> Rep-Data = ', repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+            

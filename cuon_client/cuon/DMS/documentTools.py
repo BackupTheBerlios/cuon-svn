@@ -159,6 +159,7 @@ class documentTools:
                     dicV['From'] = dicUser['Email']['From']
                     dicV['To'] = emailTo
                     dicV['Subject'] = dicVars['email_subject']
+                    dicV['Body'] = dicVars['Body']
                     print 'dicV = ', dicV
                     em = self.rpc.callRP('Email.sendTheEmail', dicV, liAttachments, dicUser)
 

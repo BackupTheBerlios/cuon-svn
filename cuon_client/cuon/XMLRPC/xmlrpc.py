@@ -37,6 +37,7 @@ class myXmlRpc(dumps, logs):
         #self.zope_server = self.getZopeServer()
         self.MyServer = self.getMyServer()
         
+        
     def getMyServer(self):
         """
         if the CUON_SERVER environment-variable begins with https,
@@ -153,13 +154,13 @@ class myXmlRpc(dumps, logs):
                 
                 rp_tries = rp_tries + 1
                 
-                if rp_tries > 5:
+                if rp_tries > 0:
                     startRP = False
                 else:
                     print ' wait for 3 sec. '
                     print ' Try :' + `rp_tries`
                     time.sleep(5)
-        if r == 'NONE':
+        if r and r == 'NONE':
             r = None
         return    r
 

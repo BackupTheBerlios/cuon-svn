@@ -55,6 +55,7 @@ class User(defaultValues):
         self.userDateTimeFormatEncoding = "%Y.%m.%d %H:%M:%S"
         self.userTimeFormatString = "%H:%M"
         self.sDebug = 'NO'
+        self.XMLRPC_TRY = 0
         
         self.serverAddress = None
         self.userSQLDateFormat = 'DD.MM.YYYY'
@@ -411,6 +412,16 @@ class User(defaultValues):
     def setDicUserKeys(self, dKey, sKey):
         self.dicUserKeys[dKey] = sKey
 
+    def getInternetUser(self):
+        sqlDicUser2 = {}
+        sqlDicUser2['Name'] = self.userName
+        sqlDicUser2['SessionID'] = self.getSessionID()
+        sqlDicUser2['userType'] = self.userType
+        sqlDicUser2['Database'] = self.Database
+        sqlDicUser2['client'] = self.client
+        
+        
+        return sqlDicUser2
         
         
     def setUserName(self, s):

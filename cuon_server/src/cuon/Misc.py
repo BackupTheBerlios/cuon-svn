@@ -88,7 +88,7 @@ class Misc(xmlrpc.XMLRPC, basics):
     def xmlrpc_faxData(self, dicUser, faxdata, phone_number):
         print 'send Fax'
         ol = False
-        filename = 'fax___' + self.createNewSessionID()['SessionID'] 
+        filename = '/fax/fax___' + self.createNewSessionID()['SessionID'] 
         if filename:
             faxdata = base64.decodestring(faxdata)
             faxdata = bz2.decompress(faxdata)
@@ -129,8 +129,12 @@ class Misc(xmlrpc.XMLRPC, basics):
             print Exception, params
         print 'notes_0_id', value
         return value
-    def xmlrpc_sendNotes0(self, dicUser):
+    def xmlrpc_sendNotes0(self, dicUser,current_page = -1):
         ok = False
+        # For BGU
+        if current_page == -1:
+            current_page = 12
+            
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
@@ -138,15 +142,20 @@ class Misc(xmlrpc.XMLRPC, basics):
             #print cpServer.sections()
             
             value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0', cpServer)
+            
             if value and (value == 'Yes' or value == 'YES' or value == 'yes'):
-                value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0Sender', cpServer)
-                if value and value.find(dicUser['Name']) >= 0:
-                    ok = True
+                value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'Pages', cpServer)
+                if value and int(value)>0:
+                    if int(value)&(2**current_page) == (2**current_page):
+                        print 'Notes are in Bitfield', current_page,2**current_page
+                        value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendNotes0Sender', cpServer)
+                        if value and value.find(dicUser['Name']) >= 0:
+                            ok = True
                 
         except Exception, params:
             print 'Error by Schedul Read user.cfg'
             print Exception, params
-            
+        print 'current_page = ', current_page
         return ok 
         
     def xmlrpc_getAdditionalEmailAddressesNotes0(self, addressid, dicUser):

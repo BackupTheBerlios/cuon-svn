@@ -83,7 +83,11 @@ class basics(xmlrpc.XMLRPC):
         self.CURRENCY_NAME = 'EUR'
         self.CURRENCY_SIGN = '€'
         self.CURRENCY_ROUND = 2
-        
+
+        self.DIC_USER = {}
+        self.DIC_USER['SQLDateFormat'] = 'DD.MM.YYYY'
+        self.DIC_USER['SQLTimeFormat'] = 'HH24:MI'
+        self.DIC_USER['SQLDateTimeFormat'] = 'DD.MM.YYYY HH24:MI'
         try:
             self.cpServer = ConfigParser.ConfigParser()
             
@@ -192,7 +196,7 @@ class basics(xmlrpc.XMLRPC):
         WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
         self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
         # Limits
-        self.LIMITSQL = 200000
+        self.LIMITSQL = 2000
         self.LIMITGARDEN = 100
         self.LIMITADDRESS = 100
         self.LIMITARTICLES = 100
@@ -251,15 +255,15 @@ class basics(xmlrpc.XMLRPC):
            
         if cps.has_option(section,option):
             value = cps.get(section, option)
-            print 'getConfigOption', section + ', ' + option + ' = ' + value
+            #print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value
     
     def getParser(self, sFile):
         cpParser = ConfigParser.ConfigParser()
         f = open(sFile)
-        print 'f1 = ', f
+        #print 'f1 = ', f
         cpParser.readfp(f)
-        print 'cpp', cpParser
+        #print 'cpp', cpParser
         return cpParser, f
         
     def out(self, s):
@@ -293,7 +297,7 @@ class basics(xmlrpc.XMLRPC):
         return {'SessionID':s, 'endTime': time.time() + secValue}
 
     def getWhere(self, sWhere, dicUser, Single = 0, Prefix=""):
-        self.writeLog('Start getWhere Single = ' +`Single`)
+        #self.writeLog('Start getWhere Single = ' +`Single`)
         
         
         if not dicUser.has_key('noWhereClient'):
@@ -310,7 +314,7 @@ class basics(xmlrpc.XMLRPC):
             else:
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
         
-        self.writeLog('getWhere = ' + `sWhere`)
+        #self.writeLog('getWhere = ' + `sWhere`)
         return sWhere       
     def openDB(self):
         self.dbase = shelve.open(os.path.normpath(self.CUON_FS + '/' + 'cuonData'))
@@ -331,18 +335,19 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        debugValue = 1
-        #print 'debugValue', debugValue
-        if debugValue == 1:
-        
-            file = open('/tmp/cuon_server.log','a')
-            file.write(time.ctime(time.time() ))
-            file.write('\n')
-            file.write(sLogEntry)
-            file.write('\n')
-            file.close()
-            #print sLogEntry
-        
+        pass
+##        debugValue = 0
+##        #print 'debugValue', debugValue
+##        if debugValue == 1:
+##        
+##            file = open('/tmp/cuon_server.log','a')
+##            file.write(time.ctime(time.time() ))
+##            file.write('\n')
+##            file.write(sLogEntry)
+##            file.write('\n')
+##            file.close()
+##            #print sLogEntry
+##        
     def getStaffID(self, dicUser):
         return "(select id from staff where staff.cuon_username = '" +  dicUser['Name'] + "') "
     

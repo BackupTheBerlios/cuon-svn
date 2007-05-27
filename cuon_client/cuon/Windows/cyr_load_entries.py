@@ -29,11 +29,12 @@ import sys
 import cuon.TypeDefs.typedefs
 import setOfEntries 
 from cuon.Databases.dumps import dumps
+from cuon.TypeDefs.defaultValues import defaultValues
 
-
-class cyr_load_entries(MyXML, dumps):
+class cyr_load_entries(defaultValues,MyXML, dumps):
 
     def __init__(self):
+        defaultValues.__init__(self)
         MyXML.__init__(self)
   
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -136,14 +137,15 @@ class cyr_load_entries(MyXML, dumps):
 
     def loadEntries(self,sNameOfEntries):
 
-        self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-        self.out( "load : " + sNameOfEntries)
-        self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-        
-        dictEntries = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfEntries)))
-
+        #self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+        #self.out( "load : " + sNameOfEntries)
+        #self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+        self.openDB()
+        #dictEntries = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfEntries)))
+        dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
         entries = cPickle.loads(dictEntries)   
-
+        self.closeDB()
+        
         return entries
 
    

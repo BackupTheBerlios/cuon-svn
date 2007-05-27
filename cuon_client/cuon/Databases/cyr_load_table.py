@@ -25,11 +25,12 @@ import sys
 #from ZODB import FileStorage, DB
 import cuon.TypeDefs 
 from cuon.Databases.dumps import dumps
+from cuon.TypeDefs.defaultValues import defaultValues
 
-
-class cyr_load_table(MyXML, dumps):
+class cyr_load_table(defaultValues, MyXML, dumps):
 
     def __init__(self):
+        defaultValues.__init__(self)
         MyXML.__init__(self)
         dumps.__init__(self)
         

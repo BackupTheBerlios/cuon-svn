@@ -34,8 +34,10 @@ SCRIPTNAME=/etc/init.d/$NAME
 #	Function that starts the daemon/service.
 #
 d_start() {
-	nohup start-stop-daemon --start  --quiet  --exec $DAEMON  &
-    
+	#nohup start-stop-daemon --start  --quiet  --exec $DAEMON   >/var/log/cuonxmlrpc.log 2>/var/log/cuonxmlrpc_err.log   &
+	#nohup  $DAEMON   1>/var/log/cuonxmlrpc.log 2>/var/log/cuonxmlrpc_err.log   &
+  nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonxmlrpc.log 2>>/var/log/cuonxmlrpc_err.log &
+      
                    
 }
 
@@ -43,9 +45,11 @@ d_start() {
 #	Function that stops the daemon/service.
 #
 d_stop() {
-	pidnr=`cat $PIDFILE`
-  echo "Pidnummer = $pidnr" 
-  kill $pidnr
+    OLDPID=`ps ax | grep $NAME | grep -v grep | sed  -e "s/^[[:space:]]*//g" | cut -d" " -f 1 `
+    if [ -n "$OLDPID" ] 
+    then 
+        kill `ps ax | grep $NAME | grep -v grep | sed  -e "s/^[[:space:]]*//g" | cut -d" " -f 1 `
+    fi
   }
 
 #
@@ -60,16 +64,7 @@ case "$1" in
   start)
 	echo  "Starting $DESC: $NAME"
 	d_start
-  sleep 2
-  Var1=`ps -a -o pid,cmd | grep $NAME | egrep ^[[:space:]]`
-    if [ -z $Var1 ] ; then
-        echo "5 Stellig und $Var1" 
-        ps -a -o pid,cmd | grep $NAME | grep -v grep |cut -d" " -f1  > $PIDFILE
-    else
-        echo "4 Stellig und $Var1" 
-        ps -a -o pid,cmd | grep $NAME | grep -v grep |cut -d" " -f2  > $PIDFILE
-    fi
-	echo "."
+  
 	;;
   stop)
 	echo -n "Stopping $DESC: $NAME"

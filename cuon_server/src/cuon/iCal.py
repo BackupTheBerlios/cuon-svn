@@ -36,7 +36,7 @@ class iCal(xmlrpc.XMLRPC, basics):
     
     def createEvent(self, dicEvent, UID = None):
         event = Event()
-        print ' start create event '
+        #print ' start create event '
         try:
             if dicEvent.has_key('summary'):
                 event.add('summary', dicEvent['summary'])
@@ -321,7 +321,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             print 'Error by status'
             print Exception, params
                 
-        self.writeLog('dicCal = ' + `dicCal`)
+        #self.writeLog('dicCal = ' + `dicCal`)
             
         try:
             if result:
@@ -354,7 +354,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         
 
     def tryDecode(self, s):
-        print 'before:', s
+        #print 'before:', s
 
         try:
             s = s.decode('utf-8')
@@ -381,11 +381,11 @@ class iCal(xmlrpc.XMLRPC, basics):
                                     s = ''
                                     print Exception, params
 
-        print len(s)
-        try:
-            print 'after1:', s
-        except:
-            pass
+        #print len(s)
+        #try:
+        #    print 'after1:', s
+        #except:
+        #    pass
 
                                 
 ##        try:
