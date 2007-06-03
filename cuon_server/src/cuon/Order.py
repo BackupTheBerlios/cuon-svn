@@ -42,7 +42,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
         sSql = sSql + " address.street as street, (address.zip || ' ' ||  address.city)  as city "
-        sSql = sSql + " from orderbook, address where orderbook.number = \'" + dicOrder['orderNumber'] +"\' " 
+        sSql = sSql + " from orderbook, address where orderbook.id = " + `dicOrder['orderid']`  
         sSql = sSql + "and address.id = orderbook.addressnumber" 
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
@@ -88,16 +88,16 @@ class Order(xmlrpc.XMLRPC, basics):
         if dicResult == 'NONE' or dicResult[0]['invoice_number'] == 0:
             sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice) '
             
-            sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'),today() " 
+            sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
         
 
-            sSql1 +=  `orderNumber` + " )"
+            sSql1 +=  `orderNumber` + ",'today' )"
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
             dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         else:
-            sSql1 = 'update list_of_invoices set date_of_invoice = today() where order_number = ' + `orderNumber` 
+            sSql1 = "update list_of_invoices set date_of_invoice = 'today' where order_number = " + `orderNumber` 
             sSql1 += self.getWhere(None,dicUser,2)
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
@@ -149,6 +149,7 @@ class Order(xmlrpc.XMLRPC, basics):
         return nr
                
     def xmlrpc_getStandardInvoice(self, dicOrder , dicUser):
+        print dicOrder
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
@@ -158,8 +159,8 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " articles.number as article_id, articles.designation as article_designation,  "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price "
-        sSql += " from orderposition, articles, orderbook  where orderbook.number = \'" + dicOrder['orderNumber'] +"\' "
-        sSql += "and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
+        sSql += " from orderposition, articles, orderbook  where orderbook.id = " + `dicOrder['orderid']` 
+        sSql += " and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
         sSql += " order by orderposition.position "
         dicUser['noWhereClient'] = 'Yes'
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
@@ -215,7 +216,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         return dicResult
         
-    def getTotalSum(self,OrderID, dicuser):
+    def getTotalSum(self,OrderID, dicUser):
         total_sum = 0
         sSql = 'select sum(amount * price) as total_sum from orderposition where orderid = '
         sSql += `OrderID`
@@ -230,7 +231,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getTotalSumString(self, OrderID, dicUser):
         retValue = '0'  
 
-        total_sum = self.getTotalSum(self,OrderID,dicUser)
+        total_sum = self.getTotalSum(OrderID,dicUser)
         try:
             #"%.2f"%y 
             total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
@@ -242,8 +243,18 @@ class Order(xmlrpc.XMLRPC, basics):
     
 
     def getListOfInvoices( self, dicOrder, dicUser ):
-        sSql = ' select * from list_of_invoices where  invoice_number > 0 '
-        sSql += self.getWhere(None,dicUser,2)
+        dBegin = datetime.fromtimestamp(dicOrder['dBegin'])
+        dEnd = datetime.fromtimestamp(dicOrder['dEnd'])
+        print  dBegin, dEnd
+        
+        sSql = ' select list_of_invoices.order_number as order_number,  list_of_invoices.invoice_number as invoice_number, '
+        sSql += ' list_of_invoices.date_of_invoice as date_of_invoice, list_of_invoices.total_amount as total_amount, '
+        sSql += ' list_of_invoices.maturity as maturity, '
+        sSql += 'address.lastname as lastname, address.city as city '
+        sSql += ' from list_of_invoices, orderbook,address where  orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber '
+        sSql += " and list_of_invoices.date_of_invoice between '" + dBegin.strftime('%Y-%m-%d') + "' and '" + dEnd.strftime('%Y-%m-%d') +"' " 
+        sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')
+        sSql += ' order by list_of_invoices.invoice_number ' 
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
         

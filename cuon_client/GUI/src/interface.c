@@ -64,6 +64,7 @@ create_window1 (void)
   GtkWidget *accounting1;
   GtkWidget *accounting1_menu;
   GtkWidget *mi_cash_account_book1;
+  GtkWidget *listofinvoices1;
   GtkWidget *extras;
   GtkWidget *extras_menu;
   GtkWidget *mayavi1;
@@ -277,6 +278,10 @@ create_window1 (void)
   mi_cash_account_book1 = gtk_menu_item_new_with_mnemonic (_("cash account book"));
   gtk_widget_show (mi_cash_account_book1);
   gtk_container_add (GTK_CONTAINER (accounting1_menu), mi_cash_account_book1);
+
+  listofinvoices1 = gtk_menu_item_new_with_mnemonic (_("list_of_invoices"));
+  gtk_widget_show (listofinvoices1);
+  gtk_container_add (GTK_CONTAINER (accounting1_menu), listofinvoices1);
 
   extras = gtk_menu_item_new_with_mnemonic (_("Extras"));
   gtk_widget_show (extras);
@@ -639,6 +644,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) mi_cash_account_book1, "activate",
                     G_CALLBACK (on_cash_account_book1_activate),
                     NULL);
+  g_signal_connect ((gpointer) listofinvoices1, "activate",
+                    G_CALLBACK (on_listOfInvoices1_activate),
+                    NULL);
   g_signal_connect ((gpointer) mi_test1, "activate",
                     G_CALLBACK (on_test1_activate),
                     NULL);
@@ -756,6 +764,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, accounting1, "accounting1");
   GLADE_HOOKUP_OBJECT (window1, accounting1_menu, "accounting1_menu");
   GLADE_HOOKUP_OBJECT (window1, mi_cash_account_book1, "mi_cash_account_book1");
+  GLADE_HOOKUP_OBJECT (window1, listofinvoices1, "listofinvoices1");
   GLADE_HOOKUP_OBJECT (window1, extras, "extras");
   GLADE_HOOKUP_OBJECT (window1, extras_menu, "extras_menu");
   GLADE_HOOKUP_OBJECT (window1, mayavi1, "mayavi1");

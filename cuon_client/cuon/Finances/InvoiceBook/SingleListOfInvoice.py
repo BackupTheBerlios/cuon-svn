@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2005]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -19,55 +18,28 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
 
 
-class SingleOrder(SingleData):
+
+class SingleListOfInvoice(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "orderbook"
+        self.sNameOfTable =  "list_of_invoices"
         self.xmlTableDef = 0
         # self.loadTable()
         # self.saveTable()
 
         self.loadTable(allTables)
         self.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) )
-        self.listHeader['names'] = ['number', 'designation', 'ID']
+        self.listHeader['names'] = ['title', 'designation', 'ID']
         self.listHeader['size'] = [25,10,25,25,10]
         print "number of Columns "
         print len(self.table.Columns)
         #
-        self.invoiceNumber = 0
-       
-      
-
-    def getInvoiceNumber(self):
-        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
-        print 'Invoice-Number' + `self.invoiceNumber`
-        return self.invoiceNumber
-
-
-
-    def getOrderNumber(self, id):
-        ordernr = 'NULL'
-        dicRecords = self.load(id)
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            ordernr = dicRecord['number']
-        return ordernr
         
-    def fillOtherEntries(self, oneRecord):
-        try:
-            self.getWidget('eInvoiceNumber').set_text(`self.getInvoiceNumber()`)
-            self.getWidget('eTotalSum').set_text(self.rpc.callRP('Order.getTotalSumString', self.ID, self.dicUser))
-        except Exception, params:
-            print Exception, params
-            
-        
-        
-    def setOtherEmptyEntries(self):
-        self.getWidget('eInvoiceNumber').set_text('')
+
+    

@@ -307,14 +307,14 @@ class orderwindow(chooseWindows):
         
         pdf = cuon.Order.standard_pickup_note.standard_pickup_note(dicOrder)
 
-    def on_list_of_invoices1_activate(self, event):
-        dicOrder = {}
-        print ' start List of Invoices printing'
-        dicOrder['Year'] = '2007'
-        print 'dicOrder = ', dicOrder
-        
-        Pdf = self.rpc.callRP('Report.server_order_list_of_invoices', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser,'INVOICE')
+##    def on_list_of_invoices1_activate(self, event):
+##        dicOrder = {}
+##        print ' start List of Invoices printing'
+##        dicOrder['Year'] = '2007'
+##        print 'dicOrder = ', dicOrder
+##        
+##        Pdf = self.rpc.callRP('Report.server_order_list_of_invoices', dicOrder, self.dicUser)
+##        self.showPdf(Pdf, self.dicUser,'INVOICE')
 
     def on_quit1_activate(self, event):
         print "exit order v2"

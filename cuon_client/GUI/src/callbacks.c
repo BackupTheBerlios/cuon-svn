@@ -357,3 +357,11 @@ on_rbScheduls_activate                 (GtkButton       *button,
 
 }
 
+
+void
+on_listOfInvoices1_activate            (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

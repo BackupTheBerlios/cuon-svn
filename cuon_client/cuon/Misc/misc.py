@@ -5,6 +5,7 @@ import sys
 import time
 import random	
 
+import datetime
 
 class misc:
     def __init__(self):
@@ -28,3 +29,4 @@ class misc:
         s = s + `n` + sPrefix
 
         return s
+  

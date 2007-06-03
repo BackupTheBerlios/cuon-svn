@@ -60,7 +60,7 @@ class gtkMiniClient(simpleGlade):
         # connect to Server
         self.Server = xmlrpclib.ServerProxy(CUON_SERVER)
         # Authorized
-        sid = self.Server.src.Databases.py_createSessionID( Username, Password)
+        sid = self.Server.Databases.py_createSessionID( Username, Password)
         
         print sid
         # Set Information for cuon

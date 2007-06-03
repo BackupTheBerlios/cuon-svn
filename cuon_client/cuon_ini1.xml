@@ -203,7 +203,17 @@
       <Entry-File>dms.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_dms.xml</Entry-FileValue>
     </Entries>
- 
+ <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>cashAccountBook.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_cashAccountBook.xml</Entry-FileValue>
+    </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>list_of_invoices.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_list_of_invoices.xml</Entry-FileValue>
+    </Entries>
+    
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>
@@ -426,6 +436,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>cashAccountBook.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>invoiceBook.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/invoiceBook.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>	
       <Glade-Name>cuon</Glade-Name>

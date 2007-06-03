@@ -38,7 +38,7 @@ class report_order_list_of_invoices(report_basics):
     def getReportData(self, dicOrder, dicUser, oOrder, reportDefs ):
         
         
-        self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('ListOfInvoices-') + `dicOrder['Year']` + '.pdf' 
+        self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('ListOfInvoices-') + `dicOrder['dBegin']` + '-' + `dicOrder['dEnd']` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
         print dicOrder
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'

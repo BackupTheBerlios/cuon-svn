@@ -368,7 +368,7 @@ import cuon.Databases.import_generic2
 import commands
 import cuon.Help.help
 import cuon.Databases.SingleDataTreeModel
-
+import cuon.Finances.invoicebook
  
 # localisation
 import locale, gettext
@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 13,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 17,'Species': 0, 'Maschine': 'Linux,Windows'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -746,6 +746,9 @@ class MainWindow(windows):
     def on_cash_account_book1_activate(self, event):
         cab = cuon.Finances.cashAccountBook.cashAccountBookwindow(self.allTables)
 
+    def on_listOfInvoices1_activate(self, event):
+        loi = cuon.Finances.invoicebook.invoicebookwindow(self.allTables)
+        
     # Extras
     def on_expert_system1_activate(self, event):
         cai = cuon.AI.ai.aiwindow(self.allTables)
@@ -765,6 +768,7 @@ class MainWindow(windows):
    
     def on_addresses_notes_salesman1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Salesman'])
+   
    
     # Tools   
 

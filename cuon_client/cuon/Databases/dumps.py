@@ -17,7 +17,8 @@ import os
 import pickle
 import base64
 import time
-import datetime as DateTime
+import datetime 
+import time
 import random
 import types
 import cuon.TypeDefs.typedefs
@@ -255,9 +256,9 @@ class dumps:
                 
                         
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
-                    #    dt = DateTime.DateTimeFrom(sValue)
-                    #dt = DateTime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
-                    #dt = DateTime.DateTime(1999)
+                    #    dt = datetime.datetimeFrom(sValue)
+                    #dt = datetime.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
+                    #dt = datetime.datetime(1999)
                     #    # self.out( dt)
                     #    sValue = dt.strftime(self.sDateFormat)
                     
@@ -343,5 +344,108 @@ class dumps:
         
         return dicTime
         
+       
+    
+    def getDateTime(self,dateString,strFormat="%Y-%m-%d"):
+        # Expects "YYYY-MM-DD" string
+        # returns a datetime object
+        eSeconds = time.mktime(time.strptime(dateString,strFormat))
+        return datetime.datetime.fromtimestamp(eSeconds)
+    
+    def formatDate(self,dtDateTime,strFormat="%Y-%m-%d"):
+        # format a datetiself, me object as YYYY-MM-DD string and return
+        return dtDateTime.strftime(strFormat)
+    
+    def getFirstOfMonth2(self, dtDateTime):
+        #what is the first day of the current month
+        ddays = int(dtDateTime.strftime("%d"))-1 #days to subtract to get to the 1st
+        delta = datetime.timedelta(days= ddays)  #create a delta datetime object
+        return dtDateTime - delta                #Subtract delta and return
+    
+    def getFirstOfMonth(self, dtDateTime):
+        #what is the first day of the current month
+        #format the year and month + 01 for the current datetime, then form it back
+        #into a datetime object
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-%m-01"))
         
+    def getFirstOfYear(self, dtDateTime):
+        #what is the first day of the current month
+        #format the year and month + 01 for the current datetime, then form it back
+        #into a datetime object
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-01-01"))
+    
+    def getLastOfMonth(self, dtDateTime):
+        dYear = dtDateTime.strftime("%Y")        #get the year
+        dMonth = str(int(dtDateTime.strftime("%m"))%12+1)#get next month, watch rollover
+        dDay = "1"                               #first day of next month
+        nextMonth = self.getDateTime("%s-%s-%s"%(dYear,dMonth,dDay))#make a datetime obj for 1st of next month
+        delta = datetime.timedelta(seconds=1)    #create a delta of 1 second
+        return nextMonth - delta                 #subtract from nextMonth and return
+        
+    def getLastOfYear(self, dtDateTime):
+        dYear = dtDateTime.strftime("%Y")        #get the year
+        
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-12-31"))
+    
+    
+    def getFirstDayOfMonth(self,sdate=None):
+        if sdate == None:
+            dDate = datetime.date.today()	
+        else:
+            dDate = sdate
+            
+        return self.getFirstOfMonth(dDate)
+        
+    def getLastDayOfMonth(self,sdate=None):
+        if sdate == None:
+            dDate = datetime.date.today()	
+        else:
+            dDate = sdate
+            
+        return self.getLastOfMonth(dDate)
+        
+        
+    def getSeconds(self, dt):
+        eSeconds = time.mktime( dt.timetuple())
+        return eSeconds
+
+    
+    def getFirstDayOfMonthAsSeconds(self,sdate=None):
+        return self.getSeconds(self.getFirstDayOfMonth(sdate))
+        
+    def getLastDayOfMonthAsSeconds(self,sdate=None):
+        return self.getSeconds(self.getLastDayOfMonth(sdate))
+        
+        
+    def getFirstLastDayOfLastMonthAsSeconds(self,sdate=None):
+        currentFirstDay = self.getFirstDayOfMonth(sdate)
+        secs = self.getSeconds(currentFirstDay) - 10
+        print 'secs' , secs
+        ddate = datetime.datetime.fromtimestamp(secs)
+        
+        dBegin = self.getFirstDayOfMonthAsSeconds(ddate)
+        dEnd = self.getLastDayOfMonthAsSeconds(ddate)
+        print dBegin,dEnd
+        return dBegin,dEnd
+        
+        
+        
+         
+##    if __name__=="__main__":
+##        for i in range(12):
+##            thisMonth = ("0%i"%(i+1,))[-2:]
+##            print thisMonth
+##            #d = getDateTime("2004-%s-02"%thisMonth)
+##        d = datetime.date.today()	
+##            print formatDate(d)
+##            print formatDate(d,"%Y%m%d")
+##            print getFirstOfMonth(d)
+##            print getFirstOfMonth2(d)
+##            print getLastOfMonth(d)
+##    
+##        t1 =  datetime.date.today()
+##        print 't1= ',`t1`
+##        print t1.month
+##    
+##        print t1.month   
         

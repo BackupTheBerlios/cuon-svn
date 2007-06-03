@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-05-27, 00:43:41 -->
+<!-- Saved: 2007-06-03, 00:26:10 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1384,6 +1384,20 @@
       <Dir>Reports</Dir>
       <Name>report_order_list_of_invoices.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>InvoiceBook</Dir>
+      <Name>invoicebook.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>InvoiceBook</Dir>
+      <Name>SingleListOfInvoice.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1937,6 +1951,34 @@
       <Dir>Reports</Dir>
       <Dir>XML</Dir>
       <Name>order_list_of_invoices.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>AI</Dir>
+      <Name>JavaClient.java</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>CashAccountBook</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_cashAccountBook.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>InvoiceBook</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_list_of_invoices.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>AI</Dir>
+      <Name>AIML</Name>
     </Other>
   </Others>
   <Vcs>

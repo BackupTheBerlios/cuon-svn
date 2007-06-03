@@ -72,6 +72,13 @@
         <index_column>partnerid</index_column>
     </index>
     
+      <index>
+        <index_name>address_notes_idx_address_id</index_name>
+        <index_special> </index_special>
+        <index_table>address_notes</index_table>
+        <index_column>address_id</index_column>
+    </index>
+    
     <index>
         <index_name>contact_idx_address_id</index_name>
         <index_special> </index_special>
@@ -93,11 +100,32 @@
         <index_column>contacter_id</index_column>
     </index>
     
-    <index>
-        <index_name>address_notes_idx_address_id</index_name>
+  <index>
+        <index_name> article_idx_all1</index_name>
         <index_special> </index_special>
-        <index_table>address_notes</index_table>
-        <index_column>address_id</index_column>
+        <index_table>article</index_table>
+        <index_column> designation,client,status</index_column>
+    </index>
+    
+    <index>
+        <index_name> article_idx_materialgroup</index_name>
+        <index_special> </index_special>
+        <index_table>article</index_table>
+        <index_column> material_group</index_column>
+    </index>
+    
+    <index>
+        <index_name> material_group_idx_name</index_name>
+        <index_special> </index_special>
+        <index_table>material_group</index_table>
+        <index_column> name</index_column>
+    </index>
+    
+    <index>
+        <index_name> orderposition_idx_orderid</index_name>
+        <index_special> </index_special>
+        <index_table>orderposition</index_table>
+        <index_column> orderid</index_column>
     </index>
     
     <index>
@@ -106,6 +134,36 @@
         <index_table>staff</index_table>
         <index_column> cuon_username</index_column>
     </index>
+    
+    <index>
+        <index_name> projects_idx_all1</index_name>
+        <index_special> </index_special>
+        <index_table>projects</index_table>
+        <index_column>name,designation,client,status</index_column>
+    </index>
+    
+    
+    <index>
+        <index_name>botany_idx_all1</index_name>
+        <index_special> </index_special>
+        <index_table>botany</index_table>
+        <index_column>botany_name,local_name,client,status</index_column>
+    </index>
+    
+    <index>
+        <index_name>hibernation_idx_all1</index_name>
+        <index_special> </index_special>
+        <index_table>hibernation</index_table>
+        <index_column>sequence_of_stock, hibernation_number,client,status</index_column>
+    </index>
+    
+    <index>
+        <index_name>hibernation_plant_idx_all1</index_name>
+        <index_special> </index_special>
+        <index_table>hibernation_plant</index_table>
+        <index_column>plant_number,diameter,client,status</index_column>
+    </index>
+    
     
     <foreign_key>
             <foreign_key_name>PartnerAddress</foreign_key_name> 

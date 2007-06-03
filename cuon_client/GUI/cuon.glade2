@@ -281,6 +281,15 @@
 		      <signal name="activate" handler="on_cash_account_book1_activate" last_modification_time="Fri, 14 Jan 2005 17:05:40 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="listofinvoices1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">list_of_invoices</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_listOfInvoices1_activate" last_modification_time="Thu, 31 May 2007 10:25:34 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

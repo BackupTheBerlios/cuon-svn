@@ -89,28 +89,13 @@
 			      <signal name="activate" handler="on_print_pickup_note1_activate" last_modification_time="Wed, 03 Mar 2004 12:53:11 GMT"/>
 			    </widget>
 			  </child>
-
-			  <child>
-			    <widget class="GtkSeparatorMenuItem" id="separator13">
-			      <property name="visible">True</property>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="list_of_invoices1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">list of invoices</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_list_of_invoices1_activate" last_modification_time="Sun, 20 May 2007 13:56:29 GMT"/>
-			    </widget>
-			  </child>
 			</widget>
 		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkSeparatorMenuItem" id="separator4">
+		    <widget class="GtkSeparatorMenuItem" id="separator13">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>

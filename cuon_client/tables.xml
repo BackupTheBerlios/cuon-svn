@@ -4210,6 +4210,425 @@
     </field>
     
     </table>
+    <!--misc user data -->
+  <table>
+    <nameOfTable>misc_data</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+<field>
+      <name>cdata01</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata02</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata03</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata04</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata05</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata06</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata07</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata08</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata09</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>cdata10</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>254</size>
+      <default />
+      <comment>misc data char</comment>
+    </field>
+    <field>
+      <name>idata01</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata02</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata03</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata04</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata05</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata06</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata07</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata08</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata09</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>idata10</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data int</comment>
+    </field>
+    <field>
+      <name>fdata01</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata02</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata03</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata04</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata05</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata06</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata07</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata08</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata09</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>fdata10</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data float</comment>
+    </field>
+    <field>
+      <name>ddata01</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata02</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata03</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata04</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata05</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata06</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata07</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata08</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata09</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+     <field>
+      <name>ddata10</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>misc data date</comment>
+    </field>
+     
+    </table>
+    
+    
     
     
   <database_sequence>

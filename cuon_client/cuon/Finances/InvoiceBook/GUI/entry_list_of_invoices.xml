@@ -1,0 +1,60 @@
+                                                                                                  
+<entries_for_table>
+  <table>
+    <table_name>list_of_invoices</table_name>
+    <entry>
+      <name>eInvoiceNumber</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>invoice_number</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+ 
+     <entry>
+      <name>eOrderNumber</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>order_number</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>eTotalAmount</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>total_amount</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>eDayOfInvoice</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>date_of_invoice</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+     <entry>
+      <name>eMaturity</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>maturity</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+  </table>
+</entries_for_table>                                                                                                  
+                                                                                                     
+             
