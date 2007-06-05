@@ -128,6 +128,8 @@ cuon/bin/cuon/Finances/SingleAccountValues.py
 cuon/bin/cuon/Finances/cashAccountBook.py
 cuon/bin/cuon/Finances/standard_cab_monthly.py
 cuon/bin/cuon/Finances/__init__.py
+cuon/bin/cuon/Finances/invoicebook.py
+cuon/bin/cuon/Finances/SingleListOfInvoice.py
 cuon/bin/cuon/Biblio/biblio.py
 cuon/bin/cuon/Biblio/__init__.py
 cuon/bin/cuon/Biblio/SingleBiblio.py
@@ -300,6 +302,8 @@ cuon/PrefsFinance/prefsFinance.py
 cuon/PrefsFinance/SinglePrefsFinanceTop.py
 cuon/PrefsFinance/SinglePrefsFinanceVat.py
 cuon/Finances/InvoiceBook/__init__.py
+cuon/Finances/InvoiceBook/invoicebook.py
+cuon/Finances/InvoiceBook/SingleListOfInvoice.py
 cuon/Finances/CashAccountBook/cashAccountBook.py
 cuon/Finances/CashAccountBook/standard_cab_monthly.py
 cuon/Finances/SingleAccountSentence.py
@@ -395,6 +399,10 @@ cuon/PrefsFinance/GUI/src/support.c
 cuon/PrefsFinance/GUI/src/main.c
 cuon/PrefsFinance/GUI/src/interface.c
 cuon/PrefsFinance/GUI/src/callbacks.c
+cuon/Finances/InvoiceBook/GUI/src/support.c
+cuon/Finances/InvoiceBook/GUI/src/main.c
+cuon/Finances/InvoiceBook/GUI/src/interface.c
+cuon/Finances/InvoiceBook/GUI/src/callbacks.c
 cuon/Finances/CashAccountBook/GUI/src/support.c
 cuon/Finances/CashAccountBook/GUI/src/main.c
 cuon/Finances/CashAccountBook/GUI/src/interface.c

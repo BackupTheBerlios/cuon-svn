@@ -22,7 +22,7 @@ import gtk
 import gtk.glade
 import gobject
 import string
-
+import commands
 import logging
 from cuon.Windows.windows  import windows
 #import cuon.Login.User
@@ -230,6 +230,21 @@ class dmswindow(windows):
         self.scanDocument()
         self.singleDMS.fileFormat = self.dicUser['prefDMS']['fileformat']['scanImage']['format']
 
+    def on_bScanMulti_clicked(self,event):
+        print 'Multi-Scan'
+        try:
+            status,data = commands.getstatusoutput('scan.sh')
+            if status == 0:
+                if data.find('FILENAME:') > -1:
+                    filename = data[data.find('FILENAME:')+9:data.find('###')]
+                    print 'Filename = ', filename
+                    self.LastDoc = filename
+                    self.on_bImport_clicked(None)
+                
+        except Exception, params:
+            print Exception, params
+            
+        
     
     def on_bImport_clicked(self, event):
         print 'bImport'

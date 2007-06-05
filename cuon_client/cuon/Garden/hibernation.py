@@ -291,7 +291,7 @@ class hibernationwindow(chooseWindows):
         Pdf = self.rpc.callRP('Report.server_hibernation_pickup_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser,'SUPPLY')    
         
-    def on_print_invoice1_activate(self, event):
+    def on_single_invoice1_activate(self, event):
         dicOrder = {}
         print "Start print invoice 1"
         
