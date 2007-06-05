@@ -43,7 +43,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
                 
                 rows = conn.query(cSql.encode('utf-8'))
-                #print 'rows = ', rows
+                print 'rows = ', rows
                 #print 'Sql-Execute = ', ok
                 #conn.commit()
             ##        try:
@@ -63,9 +63,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                     #self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
                     
                     dicResult = None
-            else:
-                dicResult = None
-        
+            
             try:
                 assert dicResult
                 #print 'dicResult', dicResult
@@ -336,7 +334,8 @@ class SQL(xmlrpc.XMLRPC, basics):
             # execute insert
             #self.writeLog('SQL by RECORD2 = ' + `sSql`)
             #print sSql
-            self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            print result
         
             # find last id 
         

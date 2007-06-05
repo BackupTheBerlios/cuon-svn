@@ -67,6 +67,7 @@ class aiwindow(windows):
             a1 = self.rpc.callRP('AI.getAI',q1, self.dicSqlUser)
             if a1:
                 #a1 = a1.decode('utf-7').encode('utf-8')
+                #a1 = a1.decode('utf-7').encode('utf-8')
                 a1 = a1 + '\n'
             
                 q1 = '\n' + q1 + '\n'

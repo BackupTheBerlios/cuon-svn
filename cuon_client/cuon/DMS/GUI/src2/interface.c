@@ -278,11 +278,17 @@ create_DMSMainwindow (void)
   GtkWidget *hbox12;
   GtkWidget *image6;
   GtkWidget *label53;
+  GtkWidget *hbox14;
   GtkWidget *bWriteLastDocument;
   GtkWidget *alignment5;
   GtkWidget *hbox10;
   GtkWidget *image4;
   GtkWidget *label51;
+  GtkWidget *bWriteLastDocumentAs;
+  GtkWidget *alignment9;
+  GtkWidget *hbox15;
+  GtkWidget *image8;
+  GtkWidget *label55;
   GtkWidget *bView;
   GtkWidget *alignment6;
   GtkWidget *hbox11;
@@ -749,7 +755,7 @@ create_DMSMainwindow (void)
   gtk_widget_show (bLink);
   gtk_box_pack_start (GTK_BOX (vbox2), bLink, FALSE, FALSE, 0);
 
-  bFaxNewsletter = gtk_button_new_with_mnemonic (_("button2"));
+  bFaxNewsletter = gtk_button_new_with_mnemonic (_("Fax Newsletter"));
   gtk_widget_show (bFaxNewsletter);
   gtk_box_pack_start (GTK_BOX (vbox2), bFaxNewsletter, FALSE, FALSE, 0);
   gtk_widget_set_sensitive (bFaxNewsletter, FALSE);
@@ -795,9 +801,13 @@ create_DMSMainwindow (void)
   gtk_widget_show (label53);
   gtk_box_pack_start (GTK_BOX (hbox12), label53, FALSE, FALSE, 0);
 
+  hbox14 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox14);
+  gtk_box_pack_start (GTK_BOX (vbox2), hbox14, FALSE, FALSE, 0);
+
   bWriteLastDocument = gtk_button_new ();
   gtk_widget_show (bWriteLastDocument);
-  gtk_box_pack_start (GTK_BOX (vbox2), bWriteLastDocument, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox14), bWriteLastDocument, FALSE, FALSE, 0);
 
   alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
   gtk_widget_show (alignment5);
@@ -814,6 +824,26 @@ create_DMSMainwindow (void)
   label51 = gtk_label_new_with_mnemonic (_("Save Last Document"));
   gtk_widget_show (label51);
   gtk_box_pack_start (GTK_BOX (hbox10), label51, FALSE, FALSE, 0);
+
+  bWriteLastDocumentAs = gtk_button_new ();
+  gtk_widget_show (bWriteLastDocumentAs);
+  gtk_box_pack_start (GTK_BOX (hbox14), bWriteLastDocumentAs, FALSE, FALSE, 0);
+
+  alignment9 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment9);
+  gtk_container_add (GTK_CONTAINER (bWriteLastDocumentAs), alignment9);
+
+  hbox15 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox15);
+  gtk_container_add (GTK_CONTAINER (alignment9), hbox15);
+
+  image8 = gtk_image_new_from_stock ("gtk-save", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image8);
+  gtk_box_pack_start (GTK_BOX (hbox15), image8, FALSE, FALSE, 0);
+
+  label55 = gtk_label_new_with_mnemonic (_("Save Last Document As ..."));
+  gtk_widget_show (label55);
+  gtk_box_pack_start (GTK_BOX (hbox15), label55, FALSE, FALSE, 0);
 
   bView = gtk_button_new ();
   gtk_widget_show (bView);
@@ -965,6 +995,9 @@ create_DMSMainwindow (void)
   g_signal_connect ((gpointer) bWriteLastDocument, "clicked",
                     G_CALLBACK (on_bWriteLastDocument_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bWriteLastDocumentAs, "clicked",
+                    G_CALLBACK (on_bWriteLastDocumentAs_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bView, "clicked",
                     G_CALLBACK (on_bView_clicked),
                     NULL);
@@ -1085,11 +1118,17 @@ create_DMSMainwindow (void)
   GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox12, "hbox12");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, image6, "image6");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label53, "label53");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox14, "hbox14");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bWriteLastDocument, "bWriteLastDocument");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment5, "alignment5");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox10, "hbox10");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, image4, "image4");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, label51, "label51");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, bWriteLastDocumentAs, "bWriteLastDocumentAs");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment9, "alignment9");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox15, "hbox15");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, image8, "image8");
+  GLADE_HOOKUP_OBJECT (DMSMainwindow, label55, "label55");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, bView, "bView");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, alignment6, "alignment6");
   GLADE_HOOKUP_OBJECT (DMSMainwindow, hbox11, "hbox11");

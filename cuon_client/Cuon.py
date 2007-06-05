@@ -396,7 +396,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 17,'Species': 0, 'Maschine': 'Linux,Windows'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 18,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -427,7 +427,7 @@ class MainWindow(windows):
         print "exit cuon"
         #clean up the tmp-files
         try:
-            os.system( 'rm ' + os.path.normpath(os.environ['CUON_HOME'] + '/cuon__*' ))
+            os.system( 'rm ' + os.path.normpath(self.td.cuon_path + '/cuon__*' ))
         except Exception, params:
             #print Exception, params
             pass

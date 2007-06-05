@@ -51,8 +51,35 @@ class gtkMiniClient(simpleGlade):
         self.CUON_SERVER = 'localhost'
         self.CUON_PORT = 7080
         self.CUON_PROTO = 'http'
+        self.User = {}
+        self.Server = None
+       
+        self.loadGlade('login.glade')
+        self.win1 = self.getWidget('UserID_Dialog')
+        #self.win1.hide()
+        response = self.win1.run()
         
-        
+        #while response == gtk.RESPONSE_DELETE_EVENT or response == gtk.RESPONSE_CANCEL:
+        #    response = win1.run()
+
+        while response != gtk.RESPONSE_OK:
+            if response == gtk.RESPONSE_HELP:
+                print "Hilfe"
+            elif response == gtk.RESPONSE_CANCEL:
+                print 'Cancel'
+                self.oUser.setUserName('EMPTY')
+                self.openDB()
+                self.saveObject('User', self.oUser)
+                self.closeDB()
+                self.quitLogin()
+                break ;
+            
+            
+            response = win1.run()
+                
+        if response == gtk.RESPONSE_OK:
+            print 'ok pressed 0'
+            self.okButtonPressed()
         # connection-Data
         cpServer = ConfigParser.ConfigParser()
             
@@ -62,17 +89,9 @@ class gtkMiniClient(simpleGlade):
 ##        Username = self.getConfigOption('USER','user',cpServer)
 ##        Password = self.getConfigOption('USER','password',cpServer)
 
-
-        # connect to Server
-        self.Server = xmlrpclib.ServerProxy(CUON_SERVER)
-        # Authorized
-        sid = self.Server.Databases.py_createSessionID( Username, Password)
+        # connection-Data
         
-        print sid
-        # Set Information for cuon
-        self.dicUser={'Name':Username,'SessionID':sid,'userType':'cuon'}
-        self.loadGlade('gtkMiniClient.glade')
-        
+       
         self.wQuestion =   self.getWidget('tvQuestion')
         self.wAnswer =   self.getWidget('tvAnswer')
         self.qBuffer = gtk.TextBuffer(None)
@@ -82,18 +101,21 @@ class gtkMiniClient(simpleGlade):
    
         
         
-    def getConfigOption(self, section, option, configParser = None):
-        value = None
-        if configParser:
-            cps = configParser
-        else:
-           cps = self.cpServer
-           
-        if cps.has_option(section,option):
-            value = cps.get(section, option)
-            print 'getConfigOption', section + ', ' + option + ' = ' + value
-        return value    
-
+    def okButtonPressed(self):
+        username = self.getWidget('TUserID').get_text()
+        sPw = self.getWidget('TPassword').get_text()
+         # connect to Server
+        self.Server = xmlrpclib.ServerProxy(self.CUON_PROTO + '://' + self.CUON_SERVER + ':' + `self.CUON_PORT`)
+        # Authorized
+   
+        sid = self.Server.Database.createSessionID( username, sPw)
+        
+        print sid
+        # Set Information for cuon
+        self.dicUser={'Name':username,'SessionID':sid,'userType':'cuon'}
+        self.win1.hide()
+        self.loadGlade('gtkMiniClient.glade')
+        
     def on_quit1_activate(self, event):
         self.out( "exit ai v2")
         self.gtk_main_quit()
@@ -111,13 +133,13 @@ class gtkMiniClient(simpleGlade):
         q1 = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
         if q1:
             print 'Question', q1
-            a1 = self.Server.src.AI.py_getAI(q1.decode('iso-8859-1').encode('utf-7'),self.dicUser)
+            a1 = self.Server.AI.getAI(q1,self.dicUser)
                         
             if a1:
-                a1 = a1.decode('utf-7').encode('iso-8859-1')
-                a1 = a1 + '\n'
+                #a1 = a1.decode('utf-7').encode('iso-8859-1')
+                a1 +=  '\n'
             
-                q1 = q1 + '\n'
+                q1 +=  '\n'
                 self.aBuffer = self.wAnswer.get_buffer()
                 self.aBuffer.insert(self.aBuffer.get_end_iter(), q1, len(q1) )
                 self.wAnswer.set_buffer(self.aBuffer)

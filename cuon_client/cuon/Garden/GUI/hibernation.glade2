@@ -192,15 +192,6 @@
 			      <signal name="activate" handler="on_print_outgoing_document1_activate" last_modification_time="Sun, 18 Jun 2006 12:23:04 GMT"/>
 			    </widget>
 			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="print_invoice1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Invoice</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_print_invoice1_activate" last_modification_time="Sat, 17 Jun 2006 10:48:56 GMT"/>
-			    </widget>
-			  </child>
 			</widget>
 		      </child>
 		    </widget>
@@ -339,6 +330,43 @@
 			  </child>
 			</widget>
 		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="Invoice">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Invoice</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="Invoice_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="single_invoice1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Single Invoice</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_single_invoice1_activate" last_modification_time="Tue, 05 Jun 2007 13:46:26 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="all_invoices1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">All Invoices</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_all_invoices1_activate" last_modification_time="Tue, 05 Jun 2007 13:46:26 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

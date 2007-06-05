@@ -14,7 +14,7 @@
 <category>
 <pattern>*</pattern>
 <template><random>
-<li>Ist die Hände zu halten eine symbolische Geste fuer Menschen?</li>
+<li>Ist die HÃ¤nde zu halten eine symbolische Geste fuer Menschen?</li>
 <li>Was ist Dein Lieblingsfilm?</li>
 <li>Worueber haben wir gesprochen?</li>
 <li>Wie hast Du von  erfahren?</li>
@@ -82,7 +82,7 @@
 </category>
 <category>
 <pattern>* FILM</pattern>
-<template>Mein Lieblingsfilm ist <set_thema>Starship Troopers</set_thema>. Hast Du den gesehen?</template>
+<template>Mein Lieblingsfilm ist <set_thema>Odyssee 2001 </set_thema>. Hast Du den gesehen?</template>
 </category>
 <category>
 <pattern>* FOTZE</pattern>
@@ -174,7 +174,7 @@
 </category>
 <category>
 <pattern>* SEX</pattern>
-<template>Da solltest du mal drüber nachdenken.</template>
+<template>Da solltest du mal drÃ¼ber nachdenken.</template>
 </category>
 <category>
 <pattern>* SIEHT TOLL AUS</pattern>

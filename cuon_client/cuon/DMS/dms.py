@@ -280,8 +280,23 @@ class dmswindow(windows):
                 #phone_number = '05744 511750'
                 self.rpc.callRP('Misc.faxData',self.dicUser, base64.encodestring(singleDMS2.imageData),phone_number)
     def on_bWriteLastDocument_clicked(self, event):
+        print 'write last document back'
         if self.dicExtInfo:
             self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
+            self.dicExtInfo['Save'] = 'OVERWRITE'
+        self.LastDoc = self.singleDMS.tmpFile
+
+        self.on_edit1_activate(None)
+        
+        self.on_bImport_clicked(None)
+        self.on_save1_activate(None)
+        
+            
+    def on_bWriteLastDocumentAs_clicked(self, event):
+        if self.dicExtInfo:
+            self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
+            self.dicExtInfo['Save'] = 'NEW'
+
             dm2 = cuon.DMS.dms.dmswindow(self.allTables, self.dicExtInfo['Modul'], self.dicExtInfo['sep_info'],None,self.dicExtInfo)
     
     def on_bView_clicked(self, event):

@@ -59,8 +59,8 @@ class ai_main:
         print 'before:', question
     
         # German translation - later in SUBS ( at this time problems )
-        #question = question.decode('latin-1').encode('utf-7')
-
+        question = question.decode('utf-7').encode('latin-1')
+        print 'before2:', question
         question = question.replace(self.Os1,'Oess')
         question = question.replace(self.os1,'oess')
         question = question.replace(self.Us1,'Uess')
@@ -76,6 +76,8 @@ class ai_main:
         question = question.replace(self.Ue,'UE')
         question = question.replace(self.ss,'ss')
         print 'after:', question
+        question = question.decode('latin-1').encode('utf-7')
+        print 'after2:', question
 
         return question
     

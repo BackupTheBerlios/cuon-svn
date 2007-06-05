@@ -218,12 +218,21 @@ class setup:
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src/cuon')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src/cuon/Reports')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src/cuon/Reports/XML')
+        self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI')
+        self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI/AIML')
+        
         
         self.executeSCP(" ../cuon_server/src/*.py", self.SERVERDIRSHARE + "/cuon_server/src")
         self.executeSCP(" ../cuon_server/src/cuon/*.py", self.SERVERDIRSHARE + "/cuon_server/src/cuon")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/*",  self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/XML/*", self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports/XML")
-
+        # AI 
+        ai_module = ['main.sgml','cuon.sgml','cuon_article.sgml','cuon_address.sgml','cuon_misc.sgml']
+        self.executeSCP(" cuon/AI/AIML/*.sgml", self.SERVERDIRSHARE + "/cuon_server/AI/AIML")
+        self.executeSCP(" cuon/AI/AIML/" + self.Locale + "_startup.ini", self.SERVERDIRSHARE + "/cuon_server/AI/AIML/startup.ini")
+        for aim in ai_module:
+            self.executeSCP(" cuon/AI/AIML/" + self.Locale + '_' + aim, self.SERVERDIRSHARE + "/cuon_server/AI/AIML/" + aim)
+            
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ")	

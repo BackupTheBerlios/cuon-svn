@@ -258,3 +258,11 @@ on_bPrintNewsletter_clicked            (GtkButton       *button,
 
 }
 
+
+void
+on_bWriteLastDocumentAs_clicked        (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

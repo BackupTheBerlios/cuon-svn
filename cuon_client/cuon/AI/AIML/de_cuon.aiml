@@ -2,16 +2,12 @@
 
 <aiml version="1.0">
 
-<!-- Free software (c) 2001 ALICE AI Foundation -->
-<!-- This program is open source code released under -->
-<!-- the terms of the GNU General Public License -->
-<!-- as published by the Free Software Foundation. -->
 
 <meta name="author" content=" Juergen Hamel"/>
 <meta name="language" content="de"/>
 
 
-<category><pattern>ENDPROGRAM</pattern><template>Bis zum n‰chsten Mal</template></category>
+<category><pattern>ENDPROGRAM</pattern><template>Bis zum n√§chsten Mal</template></category>
 <category><pattern>SEARCH ARTICLES *</pattern><template>CUON ARTIKEL SEARCH ALL <star/></template></category>
 <category><pattern>SUCHE ARTIKEL *</pattern><template><srai>SEARCH ARTICLES <star/></srai></template></category>
 <category><pattern>SUCHE ALLE ARTIKEL *</pattern><template><srai>SEARCH ARTICLES <star/></srai></template></category>
