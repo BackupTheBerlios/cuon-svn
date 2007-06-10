@@ -33,9 +33,13 @@ class SQL(xmlrpc.XMLRPC, basics):
                     sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
                 else:
                     sUser = self.checkUser(dicUser['Name'], dicUser['SessionID'])
-            
+              
                 # put here sUser
                 #print 'sUser=', sUser
+                if not sUser:
+                    sUser = 'zope'
+                    dicUser['noWhereClient'] = 'YES'
+            
                 #self.writeLog('User = ' + sUser, self.debug)
                 #DSN = 'dbname=cuon host=localhost user=' + sUser
                 conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)

@@ -1643,6 +1643,26 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>price_type_net</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>price_type_gross</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     </table>
       <!--table: material_group_accounts-->
   <table>

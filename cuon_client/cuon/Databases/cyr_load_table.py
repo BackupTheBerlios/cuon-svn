@@ -47,6 +47,7 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 
     def getListOfTableNames(self, sFile):
         doc = self.getDatabaseDescription(sFile)
+        
         #        cyRootNode = self.getRootNode(doc)
         allLists = self.getListOfTables(doc)
         return allLists

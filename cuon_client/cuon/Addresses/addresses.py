@@ -302,7 +302,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = 'Newsletter: '
-        dicV['signatur'] = self.dicUser['Email']['Signatur']
+        dicV['Signatur'] = self.dicUser['Email']['Signatur']
 
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)

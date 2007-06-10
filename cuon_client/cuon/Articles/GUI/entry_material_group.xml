@@ -36,7 +36,28 @@
       <fg_color>0</fg_color>
       
     </entry>
-  
+   <entry>
+      <name>rbNetPrice</name>
+      <type>radiobutton</type>
+      <size>8</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>price_type_net</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>rbGrossPrice</name>
+      <type>radiobutton</type>
+      <size>8</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>price_type_gross</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
     </table>
 
   </entries_for_table>

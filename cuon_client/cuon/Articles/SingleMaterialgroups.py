@@ -63,5 +63,4 @@ class SingleMaterialgroups(SingleData):
             sName = ''
         
         return sName
-        
-   
+      

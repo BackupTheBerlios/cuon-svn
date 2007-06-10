@@ -742,6 +742,16 @@ create_AddressMainwindow (void)
   GtkWidget *tvNotesSalesman;
   GtkWidget *label63;
   GtkWidget *label64;
+  GtkWidget *vbox16;
+  GtkWidget *hbox43;
+  GtkWidget *label88;
+  GtkWidget *label89;
+  GtkWidget *hbox42;
+  GtkWidget *scrolledwindow12;
+  GtkWidget *tvAddressOrder;
+  GtkWidget *scrolledwindow13;
+  GtkWidget *tvAddressInvoices;
+  GtkWidget *label87;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -2638,6 +2648,48 @@ create_AddressMainwindow (void)
   gtk_widget_show (label64);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label64);
 
+  vbox16 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox16);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox16);
+
+  hbox43 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox43);
+  gtk_box_pack_start (GTK_BOX (vbox16), hbox43, TRUE, TRUE, 0);
+
+  label88 = gtk_label_new (_("Order for this address"));
+  gtk_widget_show (label88);
+  gtk_box_pack_start (GTK_BOX (hbox43), label88, FALSE, FALSE, 0);
+
+  label89 = gtk_label_new (_("Invoices fpr this address"));
+  gtk_widget_show (label89);
+  gtk_box_pack_start (GTK_BOX (hbox43), label89, FALSE, FALSE, 0);
+
+  hbox42 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox42);
+  gtk_box_pack_start (GTK_BOX (vbox16), hbox42, TRUE, TRUE, 0);
+
+  scrolledwindow12 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow12);
+  gtk_box_pack_start (GTK_BOX (hbox42), scrolledwindow12, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow12), GTK_SHADOW_IN);
+
+  tvAddressOrder = gtk_tree_view_new ();
+  gtk_widget_show (tvAddressOrder);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow12), tvAddressOrder);
+
+  scrolledwindow13 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow13);
+  gtk_box_pack_start (GTK_BOX (hbox42), scrolledwindow13, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow13), GTK_SHADOW_IN);
+
+  tvAddressInvoices = gtk_tree_view_new ();
+  gtk_widget_show (tvAddressInvoices);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow13), tvAddressInvoices);
+
+  label87 = gtk_label_new (_("Order"));
+  gtk_widget_show (label87);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label87);
+
   g_signal_connect ((gpointer) AddressMainwindow, "key_press_event",
                     G_CALLBACK (on_Mainwindow_key_press_event),
                     NULL);
@@ -3234,6 +3286,16 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesSalesman, "tvNotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label63, "label63");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label64, "label64");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox16, "vbox16");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox43, "hbox43");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label88, "label88");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label89, "label89");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox42, "hbox42");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow12, "scrolledwindow12");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressOrder, "tvAddressOrder");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow13, "scrolledwindow13");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressInvoices, "tvAddressInvoices");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label87, "label87");
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
 
   gtk_widget_grab_default (eFashion);

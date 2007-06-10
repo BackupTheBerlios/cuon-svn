@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-06-04, 00:35:25 -->
+<!-- Saved: 2007-06-07, 00:21:57 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -732,12 +732,6 @@
       <Dir>cuon_client</Dir>
       <Dir>cuon</Dir>
       <Dir>AI</Dir>
-      <Name>gtkMiniClient.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>AI</Dir>
       <Name>ai_main.py</Name>
     </Source>
     <Source>
@@ -1398,6 +1392,17 @@
       <Dir>InvoiceBook</Dir>
       <Name>SingleListOfInvoice.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>gtkMiniClient</Dir>
+      <Name>gtkMiniClient.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>AI</Dir>
+      <Name>gtkMiniClient.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -1992,6 +1997,11 @@
       <Dir>AIML</Dir>
       <Name>de_cuon_misc.sgml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>gtkMiniClient</Dir>
+      <Name>gtkMiniClient.glade</Name>
+    </Other>
   </Others>
   <Vcs>
     <VcsType>Subversion</VcsType>
@@ -2080,7 +2090,7 @@ s.</Eric3DocParams>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>
