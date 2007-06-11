@@ -334,3 +334,8 @@ class gladeXml(defaultValues):
         newItem.show()
         return newItem
                  
+    def setText2Widget(self,sText,sWidget):
+        if len(sText) > 0:
+            self.getWidget(sWidget).set_text(sText)
+        else:
+            self.getWidget(sWidget).set_text('')

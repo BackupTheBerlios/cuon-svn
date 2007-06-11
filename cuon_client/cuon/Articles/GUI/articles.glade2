@@ -1232,6 +1232,7 @@
 
 		  <child>
 		    <widget class="GtkHBox" id="hbox10">
+		      <property name="border_width">1</property>
 		      <property name="visible">True</property>
 		      <property name="homogeneous">False</property>
 		      <property name="spacing">0</property>
@@ -1298,7 +1299,7 @@ Botany</property>
 				  <child>
 				    <widget class="GtkLabel" id="label44">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Goto</property>
+				      <property name="label" translatable="yes">Goto/Choose</property>
 				      <property name="use_underline">True</property>
 				      <property name="use_markup">False</property>
 				      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1330,6 +1331,26 @@ Botany</property>
 			  <property name="fill">False</property>
 			</packing>
 		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="eAssociatedID">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_eAssociatedID_changed" last_modification_time="Mon, 11 Jun 2007 14:26:57 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -1338,6 +1359,27 @@ Botany</property>
 		      <property name="bottom_attach">5</property>
 		      <property name="x_options">fill</property>
 		      <property name="y_options">fill</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eAssocsiatedText">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">False</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">5</property>
+		      <property name="bottom_attach">6</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 		</widget>

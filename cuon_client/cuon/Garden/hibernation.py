@@ -28,7 +28,7 @@ import cuon.Addresses.SingleAddress
 import cuon.Staff.SingleStaff
 import cuon.Order.order
 import cuon.DMS.documentTools
-
+import cuon.Misc.messages
 import cuon.DMS.dms
 import SingleHibernation
 
@@ -293,23 +293,41 @@ class hibernationwindow(chooseWindows):
         
     def on_single_invoice1_activate(self, event):
         dicOrder = {}
-        print "Start print invoice 1"
+        bOverwrite = False
+        bWrite = False
+        cbh = self.getWidget('cbHibernationInvoicePrinted')
+        bInvoiceWritten = cbh.get_active()
+        if bInvoiceWritten:
+            print 'Invoice written'
+            msg = cuon.Misc.messages.messages()
+            bOverwrite = msg.QuestionMsg('Invoice exist ! Would You overwrite this order ?')
+        else:
+            print 'New Invoice'
+            bWrite = True
+        if bWrite or bOverwrite:
         
-        dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
-        
-        dicOrder['ModulNumber'] = self.singleHibernation.ID
-        dicOrder['ModulOrderNumber'] = self.ModulHibernationNumber
-        dicOrder['addressnumber'] = self.singleHibernation.getHibernationAddressNumber(self.singleHibernation.ID)
-        dBegin, dEnd = self.singleHibernation.getBeginEndDate(self.singleHibernation.ID)
-        dicOrder['orderedat'] = dBegin
-        dicOrder['deliveredat'] = dEnd
-        dicOrder['Positions'] = self.rpc.callRP('Garden.getOrderPositions',self.singleHibernation.ID, self.dicUser)
-        dicOrder['Number'] = `self.singleHibernation.ID`
-        
-        print "dicOrder",  dicOrder
-        
-        ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
-        
+            print "Start print invoice 1"
+            
+            dicOrder['pickupNumber'] = self.rpc.callRP('Garden.getPickupNumber',self.singleHibernation.ID, self.dicUser)
+            
+            dicOrder['ModulNumber'] = self.singleHibernation.ID
+            dicOrder['ModulOrderNumber'] = self.ModulHibernationNumber
+            dicOrder['addressnumber'] = self.singleHibernation.getHibernationAddressNumber(self.singleHibernation.ID)
+            dBegin, dEnd = self.singleHibernation.getBeginEndDate(self.singleHibernation.ID)
+            dicOrder['orderedat'] = dBegin
+            dicOrder['deliveredat'] = dEnd
+            dicOrder['Positions'] = self.rpc.callRP('Garden.getOrderPositions',self.singleHibernation.ID, self.dicUser)
+            dicOrder['Number'] = `self.singleHibernation.ID`
+            
+            print "dicOrder",  dicOrder
+            
+            ord = cuon.Order.order.orderwindow(self.allTables, dicOrder)
+            self.on_edit1_activate(None)
+            cbh.set_active(True)
+            self.on_save1_activate(None)
+            
+            
+            
     def on_print_outgoing_document1_activate(self, event):
         dicOrder = {}
         #Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)

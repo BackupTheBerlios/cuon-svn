@@ -74,3 +74,7 @@ class SingleArticle(SingleData):
     def getArticleShort(self, id):
         dicRecords = self.load(id)
         return dicRecords[0]['number'] + ',' + dicRecords[0]['designation']
+
+    def getArticleAssociatedWith(self):
+        return self.firstRecord['associated_with']
+        

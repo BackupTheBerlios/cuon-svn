@@ -35,7 +35,14 @@ import cuon.DMS.dms
 import cuon.Articles.lists_articles_number1
 import cuon.Articles.materialgroup
 import cuon.Articles.SingleMaterialgroups
-
+# Assosiated
+try:
+    import cuon.Garden.botany
+    import cuon.Garden.SingleBotany
+except:
+    print 'No botany module found'
+    
+    
 
 
 class articleswindow(chooseWindows):
@@ -57,7 +64,11 @@ class articleswindow(chooseWindows):
         self.singleArticleWebshop = SingleArticleWebshop.SingleArticleWebshop(allTables)
         self.singleArticleStock = SingleArticleStock.SingleArticleStock(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
-        
+        try:
+            self.singleBotany = cuon.Garden.SingleBotany.SingleBotany(allTables)
+        except:
+            pass
+            
         self.singleMaterialGroup = cuon.Articles.SingleMaterialgroups.SingleMaterialgroups(allTables)
         # self.singleArticle.loadTable()
               
@@ -438,6 +449,18 @@ class articleswindow(chooseWindows):
 
     def on_bGotoAssociated_clicked(self, event):
         print 'goto associated'
+        articleAssociated = self.singleArticle.getArticleAssociatedWith()
+        if articleAssociated == 1:
+            # Botany
+            bot = cuon.Garden.botany.botanywindow(self.allTables)
+            bot.setChooseEntry('chooseBotany', self.getWidget( 'eAssociatedID'))
+            
+    def on_eAssociatedID_changed(self, event):
+        print 'eAssociatedID changed'
+        iBotID = self.getChangedValue('eAssociatedID')
+        sBotany = self.singleBotany.getBotanyName(iBotID)
+        self.setText2Widget(sBotany,'eAssocsiatedText')
+        
         
     def refreshTree(self):
         self.singleArticle.disconnectTree()
