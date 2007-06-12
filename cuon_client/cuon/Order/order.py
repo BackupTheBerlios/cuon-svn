@@ -56,7 +56,7 @@ class orderwindow(chooseWindows):
     """
     
     
-    def __init__(self, allTables, dicOrder=None,  newOrder = False):
+    def __init__(self, allTables, dicOrder=None,  newOrder = False, orderid = 0):
 
         chooseWindows.__init__(self)
         self.dicOrder = dicOrder
@@ -225,7 +225,7 @@ class orderwindow(chooseWindows):
         
 
         # start
-        if self.dicOrder and not newOrder:
+        if self.dicOrder and not newOrder and orderid == 0:
             print self.dicOrder
             existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
             print 'existOrder = ', existOrder
@@ -233,13 +233,15 @@ class orderwindow(chooseWindows):
                 print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
                 self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
             self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
-        elif self.dicOrder and newOrder:
+        elif self.dicOrder and newOrder and orderid == 0:
             dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
             if dicResult and dicResult != 'NONE':
                 orderid = dicResult[0]['last_value']
                 if orderid > 0:
                     self.singleOrder.sWhere = ' where id = ' + `orderid` 
-                    
+        elif orderid > 0:
+            self.singleOrder.sWhere = ' where id = ' + `orderid`
+            
                     
         ts = self.getWidget('treeMaterialgroup')
         #treeview.set_model(liststore)

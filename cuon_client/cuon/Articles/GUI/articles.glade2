@@ -1245,6 +1245,7 @@ Botany</property>
 			  <property name="add_tearoffs">False</property>
 			  <property name="has_frame">True</property>
 			  <property name="focus_on_click">True</property>
+			  <signal name="changed" handler="on_cbAssociatedWith_changed" last_modification_time="Tue, 12 Jun 2007 12:24:18 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1259,7 +1260,7 @@ Botany</property>
 			  <property name="can_focus">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
-			  <signal name="clicked" handler="on_bGotoAssociated_clicked" last_modification_time="Fri, 06 Apr 2007 12:53:59 GMT"/>
+			  <signal name="clicked" handler="on_bGotoAssociated_clicked" last_modification_time="Tue, 12 Jun 2007 12:29:34 GMT"/>
 
 			  <child>
 			    <widget class="GtkAlignment" id="alignment3">
@@ -1282,7 +1283,7 @@ Botany</property>
 				  <child>
 				    <widget class="GtkImage" id="image3">
 				      <property name="visible">True</property>
-				      <property name="stock">gtk-jump-to</property>
+				      <property name="stock">gtk-go-forward</property>
 				      <property name="icon_size">4</property>
 				      <property name="xalign">0.5</property>
 				      <property name="yalign">0.5</property>
@@ -1299,7 +1300,7 @@ Botany</property>
 				  <child>
 				    <widget class="GtkLabel" id="label44">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Goto/Choose</property>
+				      <property name="label" translatable="yes">Goto</property>
 				      <property name="use_underline">True</property>
 				      <property name="use_markup">False</property>
 				      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1333,23 +1334,7 @@ Botany</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="eAssociatedID">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
-			  <signal name="changed" handler="on_eAssociatedID_changed" last_modification_time="Mon, 11 Jun 2007 14:26:57 GMT"/>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">True</property>
-			  <property name="fill">True</property>
-			</packing>
+			<placeholder/>
 		      </child>
 		    </widget>
 		    <packing>

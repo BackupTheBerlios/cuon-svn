@@ -36,6 +36,8 @@ class basics(xmlrpc.XMLRPC):
         self.WEB_PORT = 7081
         self.ICALPATH = '/var/cuon_www/iCal/'
         
+        self.WEB_HOST2 = 'localhost'
+        self.WEB_PORT2 = 7084
 	
         
         self.AI_PORT = 7082

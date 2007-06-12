@@ -465,3 +465,13 @@ class Garden(xmlrpc.XMLRPC, basics):
         
             
         
+    def xmlrpc_getArticleAssociatedID(self, article_id, dicUser):
+        id = 0
+        sSql = "select id from botany where article_id = " + `article_id`
+        sSql += self.getWhere(None,dicUser,2)
+        
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if liResult and liResult != 'NONE':
+            id = liResult[0]['id']
+        return id 
+        

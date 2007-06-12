@@ -123,7 +123,9 @@ class report(MyXML):
         self.dicResults = reportdata[2]
         self.dicReportData = reportdata[3]
         self.reportDefs = reportdata[4]
-
+        # set empty Value 
+        self.dicMemory = {}
+        self.endOfRegion = 0
         self.pdfFile = self.reportDefs['pdfFile']
         
         self.setDicUser(dicUser)

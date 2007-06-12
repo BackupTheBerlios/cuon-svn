@@ -93,6 +93,10 @@ class setup:
         self.iClientDir = "/opt/Projekte/cuon/iClient"
         
         self.CUON_VAR =  "/var/cuon"
+        self.CUON_VAR_WWW =  "/var/cuon_www"
+        self.CUON_VAR_WWW_ICAL =  "/var/cuon_www/iCal"
+        
+        
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
         
         self.CUON_DOCUMENTS_LISTS = self.CUON_DOCUMENTS + "/Lists"
@@ -232,7 +236,11 @@ class setup:
         self.executeSCP(" cuon/AI/AIML/" + self.Locale + "_startup.ini", self.SERVERDIRSHARE + "/cuon_server/AI/AIML/startup.ini")
         for aim in ai_module:
             self.executeSCP(" cuon/AI/AIML/" + self.Locale + '_' + aim, self.SERVERDIRSHARE + "/cuon_server/AI/AIML/" + aim)
-            
+        # create web and iCal
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")	
+        
+        
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ")	
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ")	
@@ -259,6 +267,7 @@ class setup:
         self.executeSCP(" scp ../cuon_server/src/cuonai " , "/etc/init.d")
         self.executeSCP(" scp ../cuon_server/src/cuonreport " , "/etc/init.d")
         self.executeSCP(" scp ../cuon_server/src/cuonweb " , "/etc/init.d")
+        self.executeSCP(" scp ../cuon_server/src/cuonweb2 " , "/etc/init.d")
         # make executable
         self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
         # aktivierung setzen
@@ -266,6 +275,7 @@ class setup:
         self.executeSSH(" update-rc.d cuonweb defaults")
         self.executeSSH(" update-rc.d cuonreport defaults")
         self.executeSSH(" update-rc.d cuonai defaults")
+        self.executeSSH(" update-rc.d cuonweb2 defaults")
         
         
         

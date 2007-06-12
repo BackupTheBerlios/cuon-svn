@@ -457,7 +457,7 @@
 	  <type>float</type>
 	  <format>%-10.2f</format>
 	  <variable>total</variable>
-	  <memory>total</memory>
+	  <memory>total3</memory>
 	  <posX1>420</posX1>
 	  <posY1>10</posY1>
 	  <posX2>420</posX2>
@@ -634,7 +634,7 @@
       <name>comValue</name>
       <class>Function</class>
       <resultSet>positions</resultSet>
-      <formula>!SUM  total</formula>
+      <formula>!SUM  total3</formula>
       <type>float</type>
       <format>%-10.2f</format>
       <memory>com_net</memory>

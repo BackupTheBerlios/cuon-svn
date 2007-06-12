@@ -84,4 +84,7 @@ class SingleBotany(SingleData):
         if dicRecords and dicRecords[0].has_key('botany_name'):
             sName =  self.oSingleBotanyGenus.getGenusName(dicRecords[0]['genus_id']) + ' ' + dicRecords[0]['botany_name']
         return sName
-            
+    def getAssociatedID(self, ArticleID):
+        return self.rpc.callRP('Garden.getArticleAssociatedID', ArticleID, self.dicUser)
+        
+    

@@ -41,11 +41,25 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as o_orderedat ,"
         sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
+        
         sSql = sSql + " address.street as street, (address.zip || ' ' ||  address.city)  as city "
         sSql = sSql + " from orderbook, address where orderbook.id = " + `dicOrder['orderid']`  
-        sSql = sSql + "and address.id = orderbook.addressnumber" 
-        
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        sSql = sSql + " and address.id = orderbook.addressnumber " 
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        try:
+            if liResult :
+                dicResult = liResult[0]
+                if dicResult['firstname'] == None:
+                    dicResult['first_last'] = dicResult['lastname']
+                    dicResult['last_first'] = dicResult['lastname']
+                else:
+                    dicResult['first_last'] = dicResult['firstname'] + ' ' + dicResult['lastname']
+                    dicResult['last_first'] = dicResult['lastname'] + ', ' + dicResult['firstname']
+                liResult[0] = dicResult
+        except Exception, params:
+            print Exception, params
+    
+        return liResult
 
     def xmlrpc_getOrderPositions(self, dicOrder, dicUser):
         sSql = 'select * from orderposition where orderid = ' + `dicOrder['orderid']`
@@ -158,7 +172,9 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
         sSql += " articles.number as article_id, articles.designation as article_designation,  "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
-        sSql += " orderposition.position as position, orderposition.price as price "
+        sSql += " orderposition.position as position, orderposition.price as price, "
+        sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
+        sSql += " case articles.associated_with when 1 then (select botany.description from botany, articles where botany.article_id = articles.id and articles.id = orderposition.articleid and orderbook.id = " + `dicOrder['orderid']` + ") when 0 then articles.designation end as pos_designation "
         sSql += " from orderposition, articles, orderbook  where orderbook.id = " + `dicOrder['orderid']` 
         sSql += " and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
         sSql += " order by orderposition.position "
@@ -256,5 +272,13 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')
         sSql += ' order by list_of_invoices.invoice_number ' 
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+        
+    def xmlrpc_getOrderForAddress(self, address_id, dicUser):
+        sSql = ' select id, number,designation, orderedat from orderbook '
+        sSql += " where addressnumber = " + `address_id` + " "
+        sSql += self.getWhere(None,dicUser,2)
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
         
         

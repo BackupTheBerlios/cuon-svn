@@ -153,17 +153,7 @@
       <fg_color>0</fg_color>
       
     </entry>
-    <entry>
-      <name>eAssociatedID</name>
-      <type>textline</type>
-      <size>10</size>
-      <verify_type>int</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>associated_id</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      
-    </entry>
+    
     
   </table>
   

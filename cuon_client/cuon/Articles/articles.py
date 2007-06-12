@@ -446,21 +446,25 @@ class articleswindow(chooseWindows):
             self.getWidget('eCategory').set_text(sGroupName)
         else:
             self.getWidget('eCategory').set_text('')
-
     def on_bGotoAssociated_clicked(self, event):
-        print 'goto associated'
-        articleAssociated = self.singleArticle.getArticleAssociatedWith()
-        if articleAssociated == 1:
+        if self.getWidget('cbAssociatedWith').get_active() == 1:
             # Botany
             bot = cuon.Garden.botany.botanywindow(self.allTables)
-            bot.setChooseEntry('chooseBotany', self.getWidget( 'eAssociatedID'))
             
-    def on_eAssociatedID_changed(self, event):
-        print 'eAssociatedID changed'
-        iBotID = self.getChangedValue('eAssociatedID')
-        sBotany = self.singleBotany.getBotanyName(iBotID)
-        self.setText2Widget(sBotany,'eAssocsiatedText')
+    def on_cbAssociatedWith_changed(self, event):
         
+        print 'goto associated'
+        
+        articleAssociated = self.getWidget('cbAssociatedWith').get_active()
+        if articleAssociated == 1:
+            print 'cbAssociatedID read'
+            iBotID = self.singleBotany.getAssociatedID(self.singleArticle.ID)
+            print 'Botany ID = ', iBotID
+            sBotany = self.singleBotany.getBotanyName(iBotID)
+            
+            self.setText2Widget(sBotany,'eAssocsiatedText')
+        else:
+            self.setText2Widget('','eAssocsiatedText')
         
     def refreshTree(self):
         self.singleArticle.disconnectTree()
@@ -469,6 +473,7 @@ class articleswindow(chooseWindows):
         if self.tabOption == self.tabArticle:
             self.singleArticle.connectTree()
             self.singleArticle.refreshTree()
+            self.on_cbAssociatedWith_changed(None)
 
         elif self.tabOption == self.tabPurchase:
             self.singleArticlePurchase.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
@@ -515,7 +520,6 @@ class articleswindow(chooseWindows):
             self.enableMenuItem('article')
             print 'Seite 0'
             self.editAction = 'editArticle'
-            
         elif self.tabOption == self.tabPurchase:
             #Partner
             self.disableMenuItem('tabs')

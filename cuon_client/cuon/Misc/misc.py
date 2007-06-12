@@ -4,7 +4,10 @@ import os
 import sys
 import time
 import random	
-
+import pygtk
+pygtk.require('2.0')
+import gtk
+import gtk.glade
 import datetime
 
 class misc:
@@ -36,8 +39,8 @@ class Treeview:
         pass
         
         
-    def start(self,sName, sType='Text',sTitle = 'Title'):
-        ts = self.getWidget(sName)
+    def start(self,ts, sType='Text',sTitle = 'Title'):
+        #ts = self.getWidget(sName)
         #treeview.set_model(liststore)
  
         if sType == 'Text':
@@ -46,11 +49,10 @@ class Treeview:
         column = gtk.TreeViewColumn(sTitle, renderer, text=0)
         ts.append_column(column)
         
-    def fillTree(self, sName, liGroups,liNames,sConnect):
+    def fillTree(self, ts, liGroups,liNames,sConnect):
+        ''' ts = Widget, '''
         print 'fill Tree'
         try:
-            ts = self.getWidget(sName)
-            print 'ts = ', ts
             treestore = gtk.TreeStore(object)
             treestore = gtk.TreeStore(str)
             ts.set_model(treestore)
@@ -64,7 +66,9 @@ class Treeview:
                 iter3 = None
                 #liDates.reverse()
                 for oneGroup in liGroups:
-                    groupname = oneGroup[liNames[0]]
+                    groupname = ''
+                    for name in liNames:
+                        groupname += oneGroup[name] + ', '
                     
                     iter = treestore.append(None,[groupname + '     ###' +`oneGroup['id']` ]) 
                     #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
@@ -73,7 +77,7 @@ class Treeview:
                 #print 'End liDates'
             ts.show()
             #self.getWidget('scrolledwindow10').show()
-            EXEC (sConnect)
+            #exec (sConnect)
             print 'ts', ts
             
         except Exception, params:

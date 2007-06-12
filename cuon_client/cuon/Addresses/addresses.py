@@ -54,6 +54,7 @@ import cuon.Staff.SingleStaff
 import contact
 import cuon.E_Mail.sendEmail
 import cuon.Misc.cuon_dialog
+import cuon.Misc.misc
 import cuon.Order.order
 class addresswindow(chooseWindows):
 
@@ -63,7 +64,7 @@ class addresswindow(chooseWindows):
         chooseWindows.__init__(self)
         self.InitForms = True
         self.connectSchedulTreeId = None
-        
+        self.OrderID = 0
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Address']
@@ -76,6 +77,8 @@ class addresswindow(chooseWindows):
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
         self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
+        
+       
         
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
@@ -91,7 +94,14 @@ class addresswindow(chooseWindows):
         
         self.setStatusBar()
         #print 'time 3 = ', time.localtime()
-
+ 
+        # Trees for Order and Invoice
+        self.treeOrder = cuon.Misc.misc.Treeview()
+        self.treeInvoice = cuon.Misc.misc.Treeview()
+       
+        self.treeOrder.start(self.getWidget('tvAddressOrder'),'Text','Order')
+        self.treeInvoice.start(self.getWidget('tvAddressInvoices'),'Text','Invoice')
+        
 
         self.EntriesAddresses = 'addresses.xml'
         self.EntriesAddressesMisc = 'addresses_misc.xml'
@@ -221,6 +231,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('tabs','mi_partner1')
         self.addEnabledMenuItems('tabs','mi_schedul1')
         self.addEnabledMenuItems('tabs','mi_notes1')
+        self.addEnabledMenuItems('tabs','mi_order1')
                
         # seperate Menus
         self.addEnabledMenuItems('address','mi_address1')
@@ -229,6 +240,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('bank','mi_bank1')
         self.addEnabledMenuItems('misc','mi_misc1')
         self.addEnabledMenuItems('notes','mi_notes1')
+        self.addEnabledMenuItems('order','mi_order1')
         
         # enabledMenues for Address
         self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
@@ -272,6 +284,7 @@ class addresswindow(chooseWindows):
         self.tabPartner = 3
         self.tabSchedul = 4
         self.tabNotes = 5
+        self.tabOrder = 6
         
         ts = self.getWidget('treeScheduls')
         #treeview.set_model(liststore)
@@ -1147,6 +1160,50 @@ class addresswindow(chooseWindows):
     def on_tbContact_clicked(self, event):        
         self.on_bContact_clicked(None)
         
+    def disconnectOrderTree(self):
+        try:
+            
+            self.getWidget('treeScheduls').get_selection().disconnect(self.connectSchedulTreeId)
+        except:
+            pass
+
+    def connectOrderTree(self):
+        try:
+            self.connectSchedulTreeId = self.getWidget('tvAddressOrder').get_selection().connect("changed", self.OrderTree_select_callback)
+        except:
+            pass
+   
+    def OrderTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        self.OrderID = 0
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.OrderID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                
+    def on_tvAddressOrder_row_activated(self,event,data1, data2):
+        if self.OrderID:
+            orderwindow = cuon.Order.order.orderwindow(self.allTables,None,False,self.OrderID)
+        
+    def setOrderValues(self):
+        liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser)
+        if liGroup and liGroup != 'NONE':
+            self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),liGroup,['number','designation', 'orderedat'],'self.connectOrderTree()')
+            self.connectOrderTree()
+            
+        
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()
@@ -1193,7 +1250,7 @@ class addresswindow(chooseWindows):
                 self.fillComboboxForms('cbeNotesSalesman', liCBE)
                 
                 self.InitForms = False
-                
+
         self.oldTab = self.tabOption
         
  
@@ -1268,7 +1325,16 @@ class addresswindow(chooseWindows):
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
-        
+        elif self.tabOption == self.tabOrder:
+            self.out( 'Seite 3')
+
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('order')
+            self.editAction = 'editOrder'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setOrderValues()
+
         # refresh the Tree
         self.refreshTree()
 
