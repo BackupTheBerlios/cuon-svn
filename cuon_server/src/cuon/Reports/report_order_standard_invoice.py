@@ -40,9 +40,12 @@ class report_order_standard_invoice(report_basics):
         
         self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('Invoice-') + `dicOrder['invoiceNumber']` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
-        print dicOrder
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-
+        dicOrder['invoiceDate'] = oOrder.xmlrpc_getInvoiceDate(dicOrder['orderid'], dicUser)
+        
+        self.dicResults['Order'] = [dicOrder]
+        print dicOrder
+        
         dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )
         print "result by address: ", dicResult
         if dicResult != 'NONE':
@@ -54,7 +57,9 @@ class report_order_standard_invoice(report_basics):
                                     
                             
                             
-
+            #for key in dicOrder.keys():
+            #    dicResult[0][key] = dicOrder[key]
+                
             self.dicResults['address'] = dicResult   
             #dicResult =  oOrder.xmlrpc_getOrderPositions( dicOrder,  dicUser )
             dicResult =  oOrder.xmlrpc_getStandardInvoice( dicOrder,  dicUser )
@@ -72,6 +77,23 @@ class report_order_standard_invoice(report_basics):
             print  dicResult 
             self.dicResults['positions'] = dicResult
             print 'ReportPath = ', reportDefs['ReportPath'] + '/order_standardinvoice.xml'
+            
+            dicResult =  oOrder.xmlrpc_getToP( dicOrder, dicUser )
+
+            print "result by top", dicResult
+            
+##    
+##            for i in dicResult:
+##                for j in i.keys():
+##                    if isinstance(i[j],  types.StringType):
+##                        i[j] = self.getPdfEncoding(i[j],reportDefs )
+##                
+##    
+        
+            print  dicResult 
+            self.dicResults['terms_of_payment'] = dicResult
+            
+            
             
             # values in this order:
             # 1 reportname

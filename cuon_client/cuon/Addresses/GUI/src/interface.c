@@ -410,6 +410,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   {
+    GNOME_APP_UI_ITEM, N_("Order"),
+    NULL,
+    (gpointer) on_mi_order1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
     GNOME_APP_UI_SUBTREE, N_("Lists"),
     NULL,
     mi_lists1_menu_uiinfo, NULL, NULL,
@@ -587,6 +594,15 @@ create_AddressMainwindow (void)
   GtkWidget *label36;
   GtkWidget *eLine;
   GtkWidget *label35;
+  GtkWidget *hbox44;
+  GtkWidget *label90;
+  GtkWidget *hbox45;
+  GtkWidget *hbox46;
+  GtkWidget *eTOPID;
+  GtkWidget *bSearchTOP;
+  GtkWidget *button3;
+  GtkWidget *scrolledwindow14;
+  GtkWidget *textview1;
   GtkWidget *lMisc;
   GtkWidget *table2;
   GtkWidget *ePartnerStreet;
@@ -1512,7 +1528,7 @@ create_AddressMainwindow (void)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), lBank);
   gtk_misc_set_alignment (GTK_MISC (lBank), 0, 0);
 
-  table9 = gtk_table_new (6, 4, FALSE);
+  table9 = gtk_table_new (7, 4, FALSE);
   gtk_widget_show (table9);
   gtk_container_add (GTK_CONTAINER (notebook1), table9);
 
@@ -1640,6 +1656,54 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label35), 0, 0);
+
+  hbox44 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox44);
+  gtk_table_attach (GTK_TABLE (table9), hbox44, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label90 = gtk_label_new (_("Term of Payment"));
+  gtk_widget_show (label90);
+  gtk_table_attach (GTK_TABLE (table9), label90, 2, 3, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label90), 0, 0.5);
+
+  hbox45 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox45);
+  gtk_table_attach (GTK_TABLE (table9), hbox45, 3, 4, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  hbox46 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox46);
+  gtk_box_pack_start (GTK_BOX (hbox45), hbox46, TRUE, TRUE, 0);
+
+  eTOPID = gtk_entry_new ();
+  gtk_widget_show (eTOPID);
+  gtk_box_pack_start (GTK_BOX (hbox46), eTOPID, TRUE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eTOPID), 6);
+
+  bSearchTOP = gtk_button_new_with_mnemonic (_("search ToP"));
+  gtk_widget_show (bSearchTOP);
+  gtk_box_pack_start (GTK_BOX (hbox46), bSearchTOP, FALSE, FALSE, 0);
+
+  button3 = gtk_button_new_with_mnemonic (_("button3"));
+  gtk_widget_show (button3);
+  gtk_box_pack_start (GTK_BOX (hbox45), button3, FALSE, FALSE, 0);
+
+  scrolledwindow14 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow14);
+  gtk_table_attach (GTK_TABLE (table9), scrolledwindow14, 3, 4, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (scrolledwindow14, 60, 80);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow14), GTK_SHADOW_IN);
+
+  textview1 = gtk_text_view_new ();
+  gtk_widget_show (textview1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow14), textview1);
 
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
@@ -2840,6 +2904,12 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) eBankID, "changed",
                     G_CALLBACK (on_eBankID_changed),
                     NULL);
+  g_signal_connect ((gpointer) eTOPID, "changed",
+                    G_CALLBACK (on_eTOPID_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bSearchTOP, "clicked",
+                    G_CALLBACK (on_bSearchTOP_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bPartnerLetter, "clicked",
                     G_CALLBACK (on_bPartnerLetter_clicked),
                     NULL);
@@ -2921,6 +2991,12 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bAddFormular2NotesSalesman, "clicked",
                     G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
                     NULL);
+  g_signal_connect ((gpointer) tvAddressOrder, "row_activated",
+                    G_CALLBACK (on_tvAddressOrder_row_activated),
+                    NULL);
+  g_signal_connect ((gpointer) tvAddressInvoices, "row_activated",
+                    G_CALLBACK (on_tvAddressInvoices_row_activated),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
@@ -2973,12 +3049,13 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_notes1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[0].widget, "NotesEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[1].widget, "NotesSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_lists1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_order1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "mi_lists1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[0].widget, "listAddresses1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[10].widget, "tools1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");
@@ -3131,6 +3208,15 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label36, "label36");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eLine, "eLine");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label35, "label35");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox44, "hbox44");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label90, "label90");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox45, "hbox45");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox46, "hbox46");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eTOPID, "eTOPID");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearchTOP, "bSearchTOP");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, button3, "button3");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow14, "scrolledwindow14");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, textview1, "textview1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");

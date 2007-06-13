@@ -317,6 +317,8 @@ class basics(xmlrpc.XMLRPC):
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
         
         #self.writeLog('getWhere = ' + `sWhere`)
+        if not sWhere:
+            sWhere = ' '
         return sWhere       
     def openDB(self):
         self.dbase = shelve.open(os.path.normpath(self.CUON_FS + '/' + 'cuonData'))

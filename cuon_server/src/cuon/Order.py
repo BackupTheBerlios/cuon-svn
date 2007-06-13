@@ -40,6 +40,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as o_orderedat ,"
         sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+        sSql += " address.address as address , address.firstname as firstname, "
         sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
         
         sSql = sSql + " address.street as street, (address.zip || ' ' ||  address.city)  as city "
@@ -86,6 +87,25 @@ class Order(xmlrpc.XMLRPC, basics):
         else:
             nr = 0
         return nr
+    def xmlrpc_getInvoiceDate(self, orderNumber, dicUser):
+        
+        date = ' '
+        try:
+            orderNumber = int(orderNumber)
+        except:
+            orderNumber = 0
+            
+        sc = '_client_' + `dicUser['client']`
+        
+        sSql = "select to_char(date_of_invoice, \'" + dicUser['SQLDateFormat'] + "\')  as date_of_invoice  from list_of_invoices where order_number = " + `orderNumber`
+        sSql += self.getWhere(None, dicUser,2)
+        
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
+        if dicResult != 'NONE':
+            date = dicResult[0]['date_of_invoice']
+        else:
+            date = ' '
+        return date
         
         
     def xmlrpc_setInvoiceNumber(self, orderNumber, dicUser):
@@ -280,5 +300,35 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None,dicUser,2)
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
+    
+    
+    
+    def xmlrpc_getToP(self, dicOrder, dicUser):
         
+        topID = 0
+        sSql = "select addresses_misc.top_id as topid from addresses_misc,orderbook where addresses_misc.address_id = orderbook.addressnumber and orderbook.id = " + `dicOrder['orderid']`
+        sSql += self.getWhere(None,dicUser,2)
+        print 'Before ', sSql
+        print dicUser['Name']
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print result
+        if result != 'NONE':
+            topID = result[0]['topid']
+            
+            
+        print 'topID = ', topID
+        if topID == 0:
+            cpServer, f = self.getParser(self.CUON_FS + '/sql.ini')
+            #print cpServer
+            #print cpServer.sections()
+            topID = int(self.getConfigOption('modul_order','default_top', cpServer))
+            print 'topID from ini = ', topID
+            
+        if topID > 0:
+            sSql = "select * from terms_of_payment where id = " + `topID`
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        else:
+            result = 'NONE'
+        print 'result by getTop: ', result
+        return result
         

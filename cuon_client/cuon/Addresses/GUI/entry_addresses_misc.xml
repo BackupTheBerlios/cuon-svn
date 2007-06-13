@@ -81,5 +81,17 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+       <entry>
+      <name>eTOPID</name>
+      <type>textline</type>
+      <size>1</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>top_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    
   </table>
 </entries_for_table>

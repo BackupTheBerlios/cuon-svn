@@ -607,3 +607,27 @@ gboolean
 on_Mainwindow_key_press_event          (GtkWidget       *widget,
                                         GdkEventKey     *event,
                                         gpointer         user_data);
+
+void
+on_mi_order1_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_eTOPID_changed                      (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_bSearchTOP_clicked                  (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_tvAddressOrder_row_activated        (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_tvAddressInvoices_row_activated     (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
