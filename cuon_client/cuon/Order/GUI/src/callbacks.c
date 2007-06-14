@@ -489,3 +489,11 @@ on_bSimpleBank3_clicked                (GtkButton       *button,
 
 }
 
+
+void
+on_all_open_invoice1_activate          (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

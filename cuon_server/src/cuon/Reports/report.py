@@ -783,16 +783,42 @@ class report(MyXML):
                 print liFormula
                 if liFormula:
                     z = 0
+                    ok = True
                     for fw in range(len(liFormula)):
                         print self.dicVariable
                         print fw
+                        
                         if z > 0:
                             z = z -1
-                        else:
+                        elif ok:
 
                             if checkTrigger:
+                                if  liFormula[fw] == '!IF':
+                                     print self.dicMemory
+                                     if self.dicMemory.has_key(liFormula[fw + 1]):
+                                          print 'Value by key'
+                                          
+                                          print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
+                                          if self.dicMemory[liFormula[fw + 1]] and self.dicMemory[liFormula[fw + 1]] != 'NONE' and self.dicMemory[liFormula[fw + 1]] != ['NONE']:
 
-                                if  liFormula[fw] == '!SUM':
+                                             if self.dicMemory.has_key(liFormula[fw + 3]):
+                                                print 'fw +3 '    
+                                                print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
+                                                 
+                                                formula += `self.dicMemory[liFormula[fw + 3]][0]`
+                                             else:
+                                                formula +=  liFormula[fw + 3]
+                                          else:
+                                             if self.dicMemory.has_key(liFormula[fw + 5]):
+                                                 
+                                                formula += `self.dicMemory[liFormula[fw + 5]][0]`
+                                             else:
+                                                formula +=  liFormula[fw + 5]
+                                     print 'FW =',  liFormula[fw]    
+                                     print ok , formula
+                                     checkTrigger = False
+                                     ok = False
+                                elif  liFormula[fw] == '!SUM':
                                      if self.dicMemory.has_key(liFormula[fw + 2]):
                                          liVar = self.dicMemory[liFormula[fw + 2]]
                                          print 'liVar = ' + `liVar`
@@ -824,9 +850,9 @@ class report(MyXML):
                             
                 if formula:
                     try:
-                        print formula
+                        print 'Formel = ', formula
                         exec formula
-                        print a
+                        print 'Ergebnis der formel = ', a
                         eValue = a
                     except:
                         eValue = None
@@ -1033,7 +1059,7 @@ class report(MyXML):
             c.setFont(dicField['font'].encode('ascii'), dicField['fontsize'], 0)
             c.setFillColorRGB(dicField['foregroundColor']['rColor'], dicField['foregroundColor']['gColor'], dicField['foregroundColor']['bColor'] )
             
-            if dicField['text']:
+            if dicField['text'] and dicField['fontsize']:
                 try:
 
                     sq = s % dicField['text']                

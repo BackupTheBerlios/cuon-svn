@@ -42,8 +42,13 @@ class report_order_standard_invoice(report_basics):
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         dicOrder['invoiceDate'] = oOrder.xmlrpc_getInvoiceDate(dicOrder['orderid'], dicUser)
+        dicResult = oOrder.xmlrpc_getOrderValues(dicOrder['orderid'], dicUser)
+        if dicResult and dicResult != 'NONE':
+            for key in dicResult[0].keys():
+                dicOrder[key] = dicResult[0][key]
         
         self.dicResults['Order'] = [dicOrder]
+        
         print dicOrder
         
         dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )

@@ -1045,7 +1045,6 @@
     <posX2>400</posX2>
 
     <posY2>80</posY2>
-
     <entry>
       <name>sepF1</name>
 
@@ -1165,7 +1164,136 @@
 
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
+    
 
+
+    <entry>
+          <name>term_of_payment</name>
+
+          <class>DatabaseField</class>
+
+          <resultSet>terms_of_payment</resultSet>
+
+          <type>string</type>
+
+          <format>%s</format>
+
+          <posX1>160</posX1>
+
+          <posY1>90</posY1>
+
+          <posX2>320</posX2>
+
+          <posY2>40</posY2>
+
+          <font>Helvetica</font>
+
+          <fontsize>11</fontsize>
+
+          <fontJustification>left</fontJustification>
+
+          <foregroundColor>0,0,0</foregroundColor>
+
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
+        
+        <entry>
+          <name>discount</name>
+
+          <class>DatabaseField</class>
+
+          <resultSet>Order</resultSet>
+          <memory>discount</memory>
+          <type>float</type>
+
+          <format>%-10.2f</format>
+
+          
+          <posX1>505</posX1>
+
+          <posY1>10</posY1>
+
+          <posX2>500</posX2>
+
+          <posY2>10</posY2>
+
+          <font>Helvetica</font>
+
+          <fontsize>0</fontsize>
+
+          <fontJustification>right</fontJustification>
+
+          <foregroundColor>0,0,0</foregroundColor>
+
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
+    <entry>
+          <name>Rabatt</name>
+
+          <class>Function</class>
+
+          <resultSet>Order</resultSet>
+
+          <formula>!IF discount !THEN "Discount" !ELSE ""</formula>
+
+          <type>string</type>
+
+          <format>% s</format>
+
+          <memory>tax_vat_value_mem</memory>
+
+          <posX1>505</posX1>
+
+          <posY1>10</posY1>
+
+          <posX2>500</posX2>
+
+          <posY2>10</posY2>
+
+          <font>Helvetica</font>
+
+          <fontsize>11</fontsize>
+
+          <fontJustification>right</fontJustification>
+<entry>
+          <name>RabattValue</name>
+
+          <class>Function</class>
+
+          <resultSet>Order</resultSet>
+
+          <formula>!IF discount !THEN discount !ELSE "" </formula>
+
+          <type>string</type>
+
+          <format>%-10.2f</format>
+
+          <memory>tax_vat_value_mem</memory>
+
+          <posX1>505</posX1>
+
+          <posY1>30</posY1>
+
+          <posX2>500</posX2>
+
+          <posY2>30</posY2>
+
+          <font>Helvetica</font>
+
+          <fontsize>11</fontsize>
+
+          <fontJustification>right</fontJustification>
+
+          <foregroundColor>0,0,0</foregroundColor>
+
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
+    
+          <foregroundColor>0,0,0</foregroundColor>
+
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
     
   </reportFooter>
+  
 </report>

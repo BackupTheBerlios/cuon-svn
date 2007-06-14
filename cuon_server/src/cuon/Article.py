@@ -262,5 +262,22 @@ class Article(xmlrpc.XMLRPC, basics):
     def xmlrpc_getArticlesOfMaterialGroup(self, dicUser, mid):
         sSql = 'select number, designation, id from articles where material_group = ' + `mid`
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+
         return dicResult
+        
+    def xmlrpc_getArticlePrice(self, id, dicUser):
+        price = '0.00'
+        sSql = "select sellingprice1 from articles where id = " + `id`
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print 'price', liResult
+        if liResult and liResult != 'NONE':
+            price = liResult[0]['sellingprice1']
+            print 'price2', price
+            price = ("%." + `self.CURRENCY_ROUND` + "f") % round(price,self.CURRENCY_ROUND)
+            print 'price2', price
+            
+        return price
+            
+        
+    
         

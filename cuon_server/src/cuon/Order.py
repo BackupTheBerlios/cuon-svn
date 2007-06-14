@@ -38,7 +38,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getInvoiceAddress(self, dicOrder, dicUser):
         
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
-        sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as o_orderedat ,"
+        sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql += " address.address as address , address.firstname as firstname, "
         sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
@@ -107,6 +107,11 @@ class Order(xmlrpc.XMLRPC, basics):
             date = ' '
         return date
         
+    def xmlrpc_getOrderValues(self, orderid, dicUser):
+        sSql = "select discount, misc_cost,  postage_cost, packing_cost from orderbook where id = " + `orderid`
+        sSql += self.getWhere(None, dicUser,2)
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        
         
     def xmlrpc_setInvoiceNumber(self, orderNumber, dicUser):
         
@@ -120,18 +125,18 @@ class Order(xmlrpc.XMLRPC, basics):
         print 'InvoiceNumber dicResult = ', dicResult
         
         if dicResult == 'NONE' or dicResult[0]['invoice_number'] == 0:
-            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice) '
+            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice, total_amount) '
             
             sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
         
 
-            sSql1 +=  `orderNumber` + ",'today' )"
+            sSql1 +=  `orderNumber` + ",'today', " + `self.getTotalSum(orderNumber, dicUser)` +" )"
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
             dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         else:
-            sSql1 = "update list_of_invoices set date_of_invoice = 'today' where order_number = " + `orderNumber` 
+            sSql1 = "update list_of_invoices set total_amount = " +  `self.getTotalSum(orderNumber, dicUser)` + " where order_number = " + `orderNumber` 
             sSql1 += self.getWhere(None,dicUser,2)
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
@@ -276,7 +281,21 @@ class Order(xmlrpc.XMLRPC, basics):
             pass
             
         return retValue  
-    
+    def xmlrpc_getNextPosition(self, orderid, dicUser):
+        pos = 0
+        sSql = " select max(position) as max_position from orderposition where orderid = " +  `orderid`
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if liResult and liResult != 'NONE':
+            try:
+                pos = liResult[0]['max_position']
+                pos = int(pos)
+            except:
+                pos = 0
+            
+                
+        pos += 1
+        return pos
+        
 
     def getListOfInvoices( self, dicOrder, dicUser ):
         dBegin = datetime.fromtimestamp(dicOrder['dBegin'])
@@ -332,3 +351,31 @@ class Order(xmlrpc.XMLRPC, basics):
         print 'result by getTop: ', result
         return result
         
+    def xmlrpc_getAllOrderWithoutInvoice(self, dicUser):
+        liOrder = []
+        sSql = " select id from orderbook "
+        sSql += self.getWhere(None,dicUser,1)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result != 'NONE':
+            for row in result:
+                order_id = row['id']
+                sSql = " select max(invoice_number) as max_invoice_number from list_of_invoices where order_number = " + `order_id`
+                sSql += self.getWhere(None,dicUser,2)
+                result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                if result2 and result2 != 'NONE':
+                    if result2[0]['max_invoice_number'] < 1:
+                        liOrder.append(order_id)
+                else:
+                    liOrder.append(order_id)
+                    
+        if not liOrder:
+            liOrder = 'NONE'
+            
+        print liOrder
+        
+        return liOrder
+        
+        
+                    
+                
+                

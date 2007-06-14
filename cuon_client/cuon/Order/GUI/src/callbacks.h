@@ -244,3 +244,7 @@ on_bSimpleBank2_clicked                (GtkButton       *button,
 void
 on_bSimpleBank3_clicked                (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_all_open_invoice1_activate          (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

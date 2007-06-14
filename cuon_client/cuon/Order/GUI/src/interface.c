@@ -26,12 +26,39 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
+static GnomeUIInfo file1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Print S_etup"),
+    NULL,
+    (gpointer) on_print_setup1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("_Close"),
+    NULL,
+    (gpointer) on_quit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo print1_menu_uiinfo[] =
 {
   {
-    GNOME_APP_UI_ITEM, N_("Invoice"),
+    GNOME_APP_UI_ITEM, N_("single Invoice"),
     NULL,
     (gpointer) on_print_invoice1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("all open invoice"),
+    NULL,
+    (gpointer) on_all_open_invoice1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -46,41 +73,6 @@ static GnomeUIInfo print1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("Pickup Note"),
     NULL,
     (gpointer) on_print_pickup_note1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("list of invoices"),
-    NULL,
-    (gpointer) on_list_of_invoices1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo file1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Print S_etup"),
-    NULL,
-    (gpointer) on_print_setup1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("_Print"),
-    NULL,
-    print1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Close"),
-    NULL,
-    (gpointer) on_quit1_activate, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -108,6 +100,14 @@ static GnomeUIInfo order1_menu_uiinfo[] =
     GNOME_APP_UI_ITEM, N_("_Save"),
     NULL,
     (gpointer) on_save1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_SUBTREE, N_("_Print"),
+    NULL,
+    print1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -512,7 +512,11 @@ create_OrderMainwindow (void)
   GtkWidget *lPosition;
   GtkWidget *table3;
   GtkWidget *label30;
-  GtkWidget *cbeTOP;
+  GtkWidget *hbox30;
+  GtkWidget *entry1;
+  GtkWidget *button1;
+  GtkWidget *scrolledwindow10;
+  GtkWidget *textview1;
   GtkWidget *label29;
   GtkWidget *table4;
   GtkWidget *cbRetry;
@@ -1497,11 +1501,30 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label30), 0, 0.5);
 
-  cbeTOP = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (cbeTOP);
-  gtk_table_attach (GTK_TABLE (table3), cbeTOP, 1, 2, 0, 1,
+  hbox30 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox30);
+  gtk_table_attach (GTK_TABLE (table3), hbox30, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  entry1 = gtk_entry_new ();
+  gtk_widget_show (entry1);
+  gtk_box_pack_start (GTK_BOX (hbox30), entry1, TRUE, TRUE, 0);
+
+  button1 = gtk_button_new_with_mnemonic (_("button1"));
+  gtk_widget_show (button1);
+  gtk_box_pack_start (GTK_BOX (hbox30), button1, FALSE, FALSE, 0);
+
+  scrolledwindow10 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow10);
+  gtk_table_attach (GTK_TABLE (table3), scrolledwindow10, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow10), GTK_SHADOW_IN);
+
+  textview1 = gtk_text_view_new ();
+  gtk_widget_show (textview1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow10), textview1);
 
   label29 = gtk_label_new (_("Invoice"));
   gtk_widget_show (label29);
@@ -1901,21 +1924,21 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1, "menubar1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[0].widget, "file1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[0].widget, "print_setup1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[1].widget, "print1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[0].widget, "invoice1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[1].widget, "delivery_note1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[2].widget, "pickup_note1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[3].widget, "separator13");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[4].widget, "list_of_invoices1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[2].widget, "separator4");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[3].widget, "quit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[1].widget, "separator13");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[2].widget, "quit1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[1].widget, "order1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[0].widget, "new1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[1].widget, "edit1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[2].widget, "separator7");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[3].widget, "save1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[4].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[5].widget, "delete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[5].widget, "print1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[0].widget, "invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[1].widget, "all_open_invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[2].widget, "delivery_note1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[3].widget, "pickup_note1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[6].widget, "separator14");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[7].widget, "delete1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[2].widget, "supply1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[0].widget, "SupplyNew1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[1].widget, "SupplyEdit1");
@@ -2110,7 +2133,11 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lPosition, "lPosition");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label30, "label30");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbeTOP, "cbeTOP");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox30, "hbox30");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, entry1, "entry1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, button1, "button1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow10, "scrolledwindow10");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, textview1, "textview1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table4, "table4");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, cbRetry, "cbRetry");

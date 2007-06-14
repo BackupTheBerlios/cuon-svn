@@ -655,7 +655,61 @@
     </field>
 
   </table>
-  
+  <table>
+    <nameOfTable>web2</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_standard);</specials>
+    
+    
+    <field>
+      <name>name</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    <field>
+      <name>designation</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    <field>
+      <name>type</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    <field>
+      <name>data</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
+    
+    </table>
+    
+   
 </database>
 
 	

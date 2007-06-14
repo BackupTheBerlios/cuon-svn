@@ -267,6 +267,30 @@ class orderwindow(chooseWindows):
          
     #Menu File
 
+    
+    def on_quit1_activate(self, event):
+        print "exit order v2"
+        self.closeWindow()
+
+
+    #Menu Order
+  
+    def on_save1_activate(self, event):
+        print "save order v2"
+        self.singleOrder.save()
+        self.setEntriesEditable(self.EntriesOrder, FALSE)   
+        self.tabChanged()
+         
+        
+    def on_new1_activate(self, event):
+        print "new order v2"
+        self.singleOrder.newRecord()
+        self.setEntriesEditable(self.EntriesOrder, TRUE)
+
+    def on_edit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesOrder, TRUE)
+
+
     def on_print_invoice1_activate(self, event):
         dicOrder = {}
         print ' start Invoice printing'
@@ -282,7 +306,21 @@ class orderwindow(chooseWindows):
         
         Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser,'INVOICE')
-
+    def on_all_open_invoice1_activate(self, event):
+        
+        if self.QuestionMsg('All new invoices are printed ! Wish you this ?'):
+            oldID = self.singleOrder.ID
+            
+            liOrder = self.rpc.callRP('Order.getAllOrderWithoutInvoice',self.dicUser)
+            if liOrder and liOrder != 'NONE':
+                print 'print new Invoices '
+                for newid in liOrder:
+                    self.singleOrder.load(newID)
+                    self.on_print_invoice1_activate(None)
+                    
+                    
+            
+        
     def on_print_delivery_note1_activate(self, event):
         print 'delivery note'
         dicOrder = {}
@@ -317,28 +355,6 @@ class orderwindow(chooseWindows):
 ##        
 ##        Pdf = self.rpc.callRP('Report.server_order_list_of_invoices', dicOrder, self.dicUser)
 ##        self.showPdf(Pdf, self.dicUser,'INVOICE')
-
-    def on_quit1_activate(self, event):
-        print "exit order v2"
-        self.closeWindow()
-
-
-    #Menu Order
-  
-    def on_save1_activate(self, event):
-        print "save order v2"
-        self.singleOrder.save()
-        self.setEntriesEditable(self.EntriesOrder, FALSE)   
-        self.tabChanged()
-         
-        
-    def on_new1_activate(self, event):
-        print "new order v2"
-        self.singleOrder.newRecord()
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
-
-    def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
 
     def on_delete1_activate(self, event):
         print "delete order v2"
@@ -736,6 +752,9 @@ class orderwindow(chooseWindows):
             print 'get_text none'
             self.getWidget('eAmount').set_text('1')
         self.getWidget('eArticleID').set_text(`self.fillArticlesNewID`)
+        self.getWidget('ePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+        self.getWidget('ePosition').set_text(`self.rpc.callRP('Order.getNextPosition', self.singleOrder.ID,self.dicUser)`)
+        
         self.on_PositionSave1_activate(event)
 
 

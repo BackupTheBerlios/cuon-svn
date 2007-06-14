@@ -1915,6 +1915,16 @@
       <default>0</default>
       <comment />
     </field>
+    <field>
+      <name>discount</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
     
     
   </table>
@@ -2168,6 +2178,16 @@
     </field>
     <field>
       <name>tax_vat</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>discount</name>
       <type>float</type>
       <pkey>0</pkey>
       <unique>0</unique>

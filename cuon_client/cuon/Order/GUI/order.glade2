@@ -55,46 +55,6 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="print1">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">_Print</property>
-		      <property name="use_underline">True</property>
-
-		      <child>
-			<widget class="GtkMenu" id="print1_menu">
-
-			  <child>
-			    <widget class="GtkMenuItem" id="invoice1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Invoice</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_print_invoice1_activate" last_modification_time="Fri, 20 Feb 2004 09:52:18 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="delivery_note1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Delivery Note</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_print_delivery_note1_activate" last_modification_time="Wed, 03 Mar 2004 12:53:11 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="pickup_note1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Pickup Note</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_print_pickup_note1_activate" last_modification_time="Wed, 03 Mar 2004 12:53:11 GMT"/>
-			    </widget>
-			  </child>
-			</widget>
-		      </child>
-		    </widget>
-		  </child>
-
-		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator13">
 		      <property name="visible">True</property>
 		    </widget>
@@ -159,6 +119,61 @@
 
 		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="print1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">_Print</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="print1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="invoice1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">single Invoice</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_print_invoice1_activate" last_modification_time="Fri, 20 Feb 2004 09:52:18 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="all_open_invoice1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">all open invoice</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_all_open_invoice1_activate" last_modification_time="Thu, 14 Jun 2007 09:06:28 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="delivery_note1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Delivery Note</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_print_delivery_note1_activate" last_modification_time="Wed, 03 Mar 2004 12:53:11 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="pickup_note1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Pickup Note</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_print_pickup_note1_activate" last_modification_time="Wed, 03 Mar 2004 12:53:11 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator14">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
