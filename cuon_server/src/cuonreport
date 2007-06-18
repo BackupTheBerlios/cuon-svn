@@ -63,21 +63,12 @@ case "$1" in
   start)
 	echo  "Starting $DESC: $NAME"
 	d_start
-  sleep 2
-  Var1=`ps -a -o pid,cmd | grep $NAME | egrep ^[[:space:]]`
-    if [ -z $Var1 ] ; then
-        echo "5 Stellig und $Var1" 
-        ps -a -o pid,cmd | grep $NAME | grep -v grep |cut -d" " -f1  > $PIDFILE
-    else
-        echo "4 Stellig und $Var1" 
-        ps -a -o pid,cmd | grep $NAME | grep -v grep |cut -d" " -f2  > $PIDFILE
-    fi
-	echo "."
+  
 	;;
   stop)
 	echo -n "Stopping $DESC: $NAME"
 	d_stop
-        	echo "."
+  echo "."
 	;;
   #reload)
 	#

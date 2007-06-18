@@ -116,7 +116,7 @@ class User(defaultValues):
         self.prefDMS['exe']['flowchart'] = '/usr/bin/dia'
         self.prefDMS['exe']['googleearth'] = 'googleearth'
         self.prefDMS['exe']['internet'] = '/usr/bin/firefox'
-        self.prefDMS['exe']['html'] = '/usr/bin/firefox'
+        self.prefDMS['exe']['html'] = '/usr/bin/bluefish'
 
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
         self.prefApps['printPickup'] = 'lpr'

@@ -369,7 +369,11 @@ import commands
 import cuon.Help.help
 import cuon.Databases.SingleDataTreeModel
 import cuon.Finances.invoicebook
- 
+try:
+    import cuon.Web2.web2
+except:
+    print 'no Module Web2'
+
 # localisation
 import locale, gettext
 import time
@@ -396,7 +400,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 33,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 42,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -548,6 +552,11 @@ class MainWindow(windows):
                 print 'key project found '
                 self.addEnabledMenuItems('misc','mi_project1')
                 misc_menu = True
+            if iL.has_key('web2'):
+                print 'key web2 found '
+                self.addEnabledMenuItems('misc','web2')
+                misc_menu = True
+                
             if iL.has_key('forms'):
                 print 'key forms found '
                 self.addEnabledMenuItems('misc','forms1')
@@ -753,9 +762,14 @@ class MainWindow(windows):
     def on_expert_system1_activate(self, event):
         cai = cuon.AI.ai.aiwindow(self.allTables)
 
-    # Extras
     def on_project1_activate(self, event):
         cpro = cuon.Project.project.projectwindow(self.allTables)
+    
+    def on_web2_activate(self, event):
+        web2 = cuon.Web2.web2.web2window(self.allTables)
+
+
+    # Tools   
 
     def on_addresses_notes_misc1_activate(self,event):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Misc'])
@@ -770,8 +784,7 @@ class MainWindow(windows):
         dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Forms_Address_Notes_Salesman'])
    
    
-    # Tools   
-
+   
     def on_update1_activate(self, event):
         self.updateVersion()
 

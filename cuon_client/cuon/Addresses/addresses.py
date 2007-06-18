@@ -1202,7 +1202,9 @@ class addresswindow(chooseWindows):
         if liGroup and liGroup != 'NONE':
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),liGroup,['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
-            
+        else:
+            self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
+            self.connectOrderTree()
         
     def refreshTree(self):
         self.singleAddress.disconnectTree()

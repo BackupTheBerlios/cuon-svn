@@ -314,12 +314,13 @@ class orderwindow(chooseWindows):
             liOrder = self.rpc.callRP('Order.getAllOrderWithoutInvoice',self.dicUser)
             if liOrder and liOrder != 'NONE':
                 print 'print new Invoices '
-                for newid in liOrder:
+                for newID in liOrder:
+                    print newID
                     self.singleOrder.load(newID)
                     self.on_print_invoice1_activate(None)
                     
                     
-            
+        self.singleOrder.load(oldID)    
         
     def on_print_delivery_note1_activate(self, event):
         print 'delivery note'

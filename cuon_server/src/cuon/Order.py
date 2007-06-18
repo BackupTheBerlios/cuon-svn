@@ -108,7 +108,11 @@ class Order(xmlrpc.XMLRPC, basics):
         return date
         
     def xmlrpc_getOrderValues(self, orderid, dicUser):
-        sSql = "select discount, misc_cost,  postage_cost, packing_cost from orderbook where id = " + `orderid`
+        sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
+        sSql += " orderbook.designation as order_designation , "
+        sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
+        sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
+        sSql += " from orderbook where id = " + `orderid`
         sSql += self.getWhere(None, dicUser,2)
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
         
@@ -362,11 +366,14 @@ class Order(xmlrpc.XMLRPC, basics):
                 sSql = " select max(invoice_number) as max_invoice_number from list_of_invoices where order_number = " + `order_id`
                 sSql += self.getWhere(None,dicUser,2)
                 result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                if result2 and result2 != 'NONE':
-                    if result2[0]['max_invoice_number'] < 1:
+                print 'result2', result2
+                if result2 and result2 != 'NONE' and result2[0]['max_invoice_number'] != 'NONE' :
+                    if result2[0]['max_invoice_number'] < 1 or result2[0]['max_invoice_number'] != None:
                         liOrder.append(order_id)
+                        print 'append1 = ', order_id
                 else:
                     liOrder.append(order_id)
+                    print 'append2 = ', order_id
                     
         if not liOrder:
             liOrder = 'NONE'

@@ -264,7 +264,11 @@
       <Entry-File>project_material_resources.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_project_material_resources.xml</Entry-FileValue>
     </Entries> 
-
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>web2.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_web2.xml</Entry-FileValue>
+    </Entries>  
   
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
@@ -472,6 +476,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>project_drange.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/dRange.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>web2.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/web2.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>

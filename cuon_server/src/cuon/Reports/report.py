@@ -112,12 +112,12 @@ class report(MyXML):
         # 5 reportDefs
         
         print len(reportdata)
-        print reportdata
+        #print reportdata
         reportdata = reportdata[0][0]
         for i in range(len(reportdata)):
-            print i,'##################################'
-            print reportdata[i]
-
+            #print i,'##################################'
+            #print reportdata[i]
+            pass
         reportname = reportdata[0]
         dicUser = reportdata[1]
         self.dicResults = reportdata[2]
@@ -147,10 +147,10 @@ class report(MyXML):
             dirClient = dirNorm[0:len(dirNorm) -4] + '/client_' + `self.dicUser['client']` + '/' + sDirFile
             dirUser = dirNorm[0:len(dirNorm) -4] + '/user_' + self.dicUser['Name'] + '/' + sDirFile
                 
-            print 'Pathes for dir'
-            print dirNorm
-            print dirClient
-            print dirUser
+            #print 'Pathes for dir'
+            #print dirNorm
+            #print dirClient
+            #print dirUser
             
             
             if os.path.exists(dirUser):
@@ -176,7 +176,7 @@ class report(MyXML):
         #print  `doc`
         cyRootNode = self.getRootNode(doc)
 
-        self.out( cyRootNode[0].toxml())
+        #self.out( cyRootNode[0].toxml())
         #print  cyRootNode[0].toxml()
 
       
@@ -308,14 +308,14 @@ class report(MyXML):
         #
 
         cyReportPageNode = self.getNode(cyRootNode, 'pageFooter')
-        print '------------------'
-        print cyReportPageNode
-        print cyReportPageNode[0].toxml()
+        #print '------------------'
+        #print cyReportPageNode
+        #print cyReportPageNode[0].toxml()
         
 
         cyReportPageEntries = self.getNodes(cyReportPageNode[0], 'entry')
-        print '+++++++'
-        print cyReportPageEntries
+        #print '+++++++'
+        #print cyReportPageEntries
         liRecord = []
         self.dicPage['pageFooterX1'] =  int(self.getEntrySpecification(cyReportPageNode[0],'posX1'))
         self.dicPage['pageFooterX2'] =  int(self.getEntrySpecification(cyReportPageNode[0],'posX2'))
@@ -417,14 +417,14 @@ class report(MyXML):
     def getPageFooter(self, cyRootNode):
 
         cyReportPageNode = self.getNode(cyRootNode, 'pageFooter')
-        print '------------------'
-        print cyReportPageNode
-        print cyReportPageNode[0].toxml()
+        #print '------------------'
+        #print cyReportPageNode
+        #print cyReportPageNode[0].toxml()
         
 
         cyReportPageEntries = self.getNodes(cyReportPageNode[0], 'entry')
-        print '+++++++'
-        print cyReportPageEntries
+        #print '+++++++'
+        #print cyReportPageEntries
         liRecord = []
      
         
@@ -499,8 +499,8 @@ class report(MyXML):
   
         
         iGroup =  int(self.getEntrySpecification(cyGroupNode[0],'count'))
-        print 'Group'
-        print iGroup
+        #print 'Group'
+        #print iGroup
 
         
         for a in range(1,  iGroup + 1):
@@ -509,8 +509,8 @@ class report(MyXML):
             dicGroup['newValue'] = None
             self.dicGroups[`a`] = dicGroup
 
-        print 'dicGroups'
-        print  self.dicGroups
+        #print 'dicGroups'
+        #print  self.dicGroups
                 
         for dicResult in liResults:
 
@@ -531,8 +531,8 @@ class report(MyXML):
                     dicGroup['newValue'] = self.dicResult[changeGroupBy]
                     
                     
-                print 'Groups with id ' + `groupNumber` 
-                print self.dicGroups
+                #print 'Groups with id ' + `groupNumber` 
+                #print self.dicGroups
                 
                 if ( (dicGroup['newValue'] != dicGroup['oldValue'] ) or iGroup == 1) or dicGroup['newValue'] == None :
                     dicGroup['oldValue'] = dicGroup['newValue']
@@ -569,8 +569,8 @@ class report(MyXML):
 
                         for m in range(len(cyReportDetailsEntries)):
                             dicRow = self.getReportEntry(cyReportDetailsEntries[m])
-                            print dicRow
-                            print '=============================================================================='
+                            #print dicRow
+                            #print '=============================================================================='
 
 
 
@@ -759,14 +759,14 @@ class report(MyXML):
                 eValue =  self.dicReportData[dicEntry['eName']]
             else:
                 eValue =  dicEntry['value']
-                print eValue
+                #print eValue
 
         elif dicEntry['class'] == 'ImageURL':
             if self.dicReportData.has_key( dicEntry['eName']):
                 eValue =  self.dicReportData[dicEntry['eName']]
             else:
                 eValue =  dicEntry['value']
-                print eValue
+                #print eValue
                 
         elif dicEntry['class'] == 'Field':
             if self.dicReportData.has_key(dicEntry['eName']):
@@ -780,13 +780,13 @@ class report(MyXML):
                 liFormula = string.split(dicEntry['formula'],' ')
                 formula = 'a = '
                 checkTrigger = True
-                print liFormula
+                #print liFormula
                 if liFormula:
                     z = 0
                     ok = True
                     for fw in range(len(liFormula)):
-                        print self.dicVariable
-                        print fw
+                        #print self.dicVariable
+                        #print fw
                         
                         if z > 0:
                             z = z -1
@@ -794,16 +794,16 @@ class report(MyXML):
 
                             if checkTrigger:
                                 if  liFormula[fw] == '!IF':
-                                     print self.dicMemory
+                                     #print self.dicMemory
                                      if self.dicMemory.has_key(liFormula[fw + 1]):
-                                          print 'Value by key'
+                                          #print 'Value by key'
                                           
-                                          print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
+                                          #print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
                                           if self.dicMemory[liFormula[fw + 1]] and self.dicMemory[liFormula[fw + 1]] != 'NONE' and self.dicMemory[liFormula[fw + 1]] != ['NONE']:
 
                                              if self.dicMemory.has_key(liFormula[fw + 3]):
-                                                print 'fw +3 '    
-                                                print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
+                                                #print 'fw +3 '    
+                                                #print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
                                                  
                                                 formula += `self.dicMemory[liFormula[fw + 3]][0]`
                                              else:
@@ -814,45 +814,45 @@ class report(MyXML):
                                                 formula += `self.dicMemory[liFormula[fw + 5]][0]`
                                              else:
                                                 formula +=  liFormula[fw + 5]
-                                     print 'FW =',  liFormula[fw]    
-                                     print ok , formula
+                                     #print 'FW =',  liFormula[fw]    
+                                     #print ok , formula
                                      checkTrigger = False
                                      ok = False
                                 elif  liFormula[fw] == '!SUM':
                                      if self.dicMemory.has_key(liFormula[fw + 2]):
                                          liVar = self.dicMemory[liFormula[fw + 2]]
-                                         print 'liVar = ' + `liVar`
+                                         #print 'liVar = ' + `liVar`
                                          for v in liVar:
-                                             print v
+                                             #print v
                                              formula = formula + "+" + " " + `v`
-                                     print 'Function***********************************************1'
-                                     print formula
-                                     print 'Function***********************************************2'
+                                     #print 'Function***********************************************1'
+                                     #print formula
+                                     #print 'Function***********************************************2'
                                      checkTrigger = False
                                      z = 1
 
                                 elif liFormula[fw] == '!Var':
                                     formula = formula + ' ' + `self.dicVariable[liFormula[fw + 1]]`
-                                    print 'Function***********************************************3'
-                                    print formula
-                                    print 'Function***********************************************4'
+                                    #print 'Function***********************************************3'
+                                    #print formula
+                                    #print 'Function***********************************************4'
                                     checkTrigger = False
 
                                 else:
-                                    print liFormula[fw]
+                                    #print liFormula[fw]
                                     formula = formula + ' ' + liFormula[fw]
-                                    print 'Function***********************************************5'
-                                    print formula
-                                    print 'Function***********************************************6' 
+                                    #print 'Function***********************************************5'
+                                    #print formula
+                                    #print 'Function***********************************************6' 
 
                             else:
                                 checkTrigger = True
                             
                 if formula:
                     try:
-                        print 'Formel = ', formula
+                        #print 'Formel = ', formula
                         exec formula
-                        print 'Ergebnis der formel = ', a
+                        #print 'Ergebnis der formel = ', a
                         eValue = a
                     except:
                         eValue = None
@@ -862,11 +862,11 @@ class report(MyXML):
 
                     
         elif dicEntry['class'] == 'DatabaseField':
-            print self.dicResult
-            print '2***********************************************2'
+            #print self.dicResult
+            #print '2***********************************************2'
             if self.dicResult.has_key(dicEntry['eName']) :
                 eValue = self.dicResult[dicEntry['eName']]
-                print 'eValue = ' + `eValue`
+                #print 'eValue = ' + `eValue`
             
 
         
@@ -884,7 +884,7 @@ class report(MyXML):
 
             liVar.append(eValue)
             self.dicMemory[dicEntry['memory']] = liVar
-            print 'Memory = ' + `liVar`
+            #print 'Memory = ' + `liVar`
             
         return dicEntry
     
@@ -906,7 +906,7 @@ class report(MyXML):
      
         
     def createPdf(self, cyRootNode):
-        self.out( 'createPdf')
+        #self.out( 'createPdf')
        
         self.pdfDoc = SimpleDocTemplate(self.pdfFile)
         self.pdfStory = [Spacer(1, 1 * inch)]
@@ -1028,14 +1028,14 @@ class report(MyXML):
 
         elif dicField['class'] == 'ImageURL'  :
             sImage = str(dicField['text'])
-            print 'ImageURL = ', sImage
+            #print 'ImageURL = ', sImage
             nWidth = dicField['width'] 
             nHeight =dicField['height'] 
-            print 'ImageURL values'
-            print 'x1', dicField['x1']
-            print 'x2', dicField['x2']
-            print 'y1', dicField['y1']
-            print 'y2', dicField['y2']
+            #print 'ImageURL values'
+            #print 'x1', dicField['x1']
+            #print 'x2', dicField['x2']
+            #print 'y1', dicField['y1']
+            #print 'y2', dicField['y2']
             
             if nWidth > 0 and nHeight > 0:
                 c.drawImage(sImage, dicField['x1'] ,dicField['y1'], width = nWidth, height = nHeight)
@@ -1065,7 +1065,7 @@ class report(MyXML):
                     sq = s % dicField['text']                
                     #to.textOut(sq)
                     #c.drawText(to)
-                    print 'SQ = ', sq
+                    #print 'SQ = ', sq
                 except Exception, params:
                     print 'Exception utf-8, latin'
                     print Exception, params
@@ -1073,7 +1073,7 @@ class report(MyXML):
                     
                 try:
                     if dicField['fontjustification']:
-                        print 'Justification' + dicField['fontjustification']
+                        #print 'Justification' + dicField['fontjustification']
                         if dicField['fontjustification'] == 'left':
                             c.drawString(x1,y1,sq)
                         elif dicField['fontjustification'] == 'right':
@@ -1202,7 +1202,7 @@ class report(MyXML):
                 
                 
                 sImage = str(self.dicPage['SiteBackground_URL'])
-                print 'ImageURL = ', sImage
+                #print 'ImageURL = ', sImage
                 nWidth = self.dicPage['SiteBackgroundWidth'] 
                 nHeight = self.dicPage['SiteBackgroundHeight'] 
                 x1 = self.dicPage['SiteBackgroundX']

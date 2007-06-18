@@ -365,3 +365,19 @@ on_listOfInvoices1_activate            (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_web1_activate                       (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_web2_activate                       (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

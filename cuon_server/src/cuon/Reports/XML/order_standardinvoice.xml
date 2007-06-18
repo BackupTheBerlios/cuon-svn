@@ -60,6 +60,40 @@
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
 
+<entry>
+      <name>Lieferdatum</name>
+      <class>Label</class>
+      <value>Lieferdatum (soweit nicht anders angegeben):</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>105</posX1>
+      <posY1>52</posY1>
+      <posX2>170</posX2>
+      <posY2>60</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    
+     <entry>
+      <name>order_deliverdat</name>
+      <class>DatabaseField</class>
+      <value>order_deliverdat</value>
+      <type>string</type>
+      <resultSet>address</resultSet>
+      <format>%s</format>
+      <posX1>150</posX1>
+      <posY1>72</posY1>
+      <posX2>120</posX2>
+      <posY2>192</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry> 
     <entry>
       <name>address</name>
 
