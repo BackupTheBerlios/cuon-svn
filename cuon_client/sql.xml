@@ -127,7 +127,12 @@
         <index_table>orderposition</index_table>
         <index_column> orderid</index_column>
     </index>
-    
+    <index>
+        <index_name> orderposition_idx_articleid</index_name>
+        <index_special> </index_special>
+        <index_table>orderposition</index_table>
+        <index_column> articleid</index_column>
+    </index>
     <index>
         <index_name> staff_idx_cuon_username</index_name>
         <index_special> </index_special>
@@ -168,11 +173,23 @@
     <foreign_key>
             <foreign_key_name>PartnerAddress</foreign_key_name> 
             <foreign_key_sql>foreign key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 
-        <foreign_table>address</foreign_table>
+        <foreign_table>partner</foreign_table>
     </foreign_key>
 
         
+<foreign_key>
+            <foreign_key_name>OrderpositionArticleid</foreign_key_name> 
+            <foreign_key_sql>foreign key (articleid) references articles (id) on delete restrict on update restrict </foreign_key_sql> 
+        <foreign_table>orderposition</foreign_table>
+    </foreign_key>
 
+     <foreign_key>
+		<foreign_key_name>HibernationAddressID</foreign_key_name> 
+		<foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+    <foreign_table>hibernation</foreign_table>        
+	</foreign_key>
+ 
+ 
    <function>
       <old_name>fct_delete() </old_name>
       <nameOfFunction>fct_delete( ) returns OPAQUE</nameOfFunction>

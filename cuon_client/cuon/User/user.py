@@ -134,6 +134,24 @@ class User(defaultValues):
         self.Email['Password']='secret'
         self.Email['Signatur']='NONE'
 
+        self.prefFinances = {}
+        self.prefFinances['cash1'] = '16000'
+        self.prefFinances['cash2'] = '16100'
+        self.prefFinances['bank1'] = '18100'
+        self.prefFinances['bank2'] = '18200'
+        self.prefFinances['bank3'] = '18300'
+        self.prefFinances['directDebit1'] = '18100'
+        self.prefFinances['directDebit2'] = '18200'
+        self.prefFinances['directDebit3'] = '18300'
+        self.prefFinances['creditCard1'] = '18100'
+
+        self.prefFinances['debits1'] = '12210'
+        self.prefFinances['payable1'] = '33000'
+        
+
+
+        
+        
 
         
         
@@ -293,7 +311,7 @@ class User(defaultValues):
         
         self.dicUser['client'] = self.client
         self.dicUser['Email'] = self.Email
-        
+        self.dicUser['prefFinances'] = self.prefFinances
         self.refreshSqlDicUser()
         
     def refreshSqlDicUser(self):

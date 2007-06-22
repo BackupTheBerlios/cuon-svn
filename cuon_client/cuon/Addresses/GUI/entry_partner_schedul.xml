@@ -3,7 +3,7 @@
     <table_name>partner_schedul</table_name>
  
    <entry>
-      <name>eSchedulDate</name>
+      <name>eSchedulDateBegin</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>string</verify_type>
@@ -13,7 +13,19 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-<entry>
+    <entry>
+      <name>eSchedulDateEnd</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>schedul_date_end</sql_field>
+      <duty>No</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
       <name>cbeSchedulTimeBegin</name>
       <type>textline</type>
       <size>12</size>

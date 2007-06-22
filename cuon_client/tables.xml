@@ -1201,6 +1201,16 @@
       <default>1</default>
       <comment />
     </field>
+    <field>
+      <name>schedul_date_end</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: partner_schedul-->
   <table>

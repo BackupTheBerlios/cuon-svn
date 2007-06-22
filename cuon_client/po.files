@@ -178,6 +178,9 @@ cuon/bin/cuon/bin/Cuon.py
 cuon/bin/cuon/bin/cuon_server.py
 cuon/bin/cuon/bin/setup.py
 cuon/bin/cuon/bin/untar.py
+cuon/bin/cuon/Web2/__init__.py
+cuon/bin/cuon/Web2/SingleWeb2.py
+cuon/bin/cuon/Web2/web2.py
 cuon/bin/cuon_client.py
 cuon/bin/Cuon.py
 cuon/bin/cuon_server.py
@@ -348,6 +351,9 @@ cuon/Garden/SingleBotanyOrdo.py
 cuon/Garden/SingleBotanyFamily.py
 cuon/Garden/SingleBotanyGenus.py
 cuon/Calendar/__init__.py
+cuon/Web2/web2.py
+cuon/Web2/SingleWeb2.py
+cuon/Web2/__init__.py
 cuon/Bank/GUI/src/support.c
 cuon/Bank/GUI/src/main.c
 cuon/Bank/GUI/src/interface.c
@@ -431,6 +437,10 @@ cuon/Garden/GUI/src/support.c
 cuon/Garden/GUI/src/main.c
 cuon/Garden/GUI/src/interface.c
 cuon/Garden/GUI/src/callbacks.c
+cuon/Web2/GUI/src/support.c
+cuon/Web2/GUI/src/main.c
+cuon/Web2/GUI/src/interface.c
+cuon/Web2/GUI/src/callbacks.c
 ./Cuon.py
 GUI/cuon.c
 GUI/src/callbacks.c

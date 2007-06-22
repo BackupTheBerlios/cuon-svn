@@ -1,32 +1,75 @@
 #! /usr/bin/python
 #xmlrpc-server
-from twisted.web import xmlrpc, resource, static
+from twisted.web import xmlrpc, resource
+#from twisted.web.resource import Resource
 from twisted.internet import defer
 from twisted.internet import reactor
 from twisted.web import server
-from nevow import livepage, tags, loaders, appserver
-
 from twisted.application import internet
 from twisted.application import service
 
+from nevow import livepage,  loaders, appserver
+from nevow import inevow, static, url, rend 
+from nevow import accessors, tags as T
+from twisted.python.components import registerAdapter
+
+
 from zope.interface import implements
 
-from nevow import inevow
-from zope.interface import implements
 
-from nevow import inevow
 
 import cuon.CuonFuncs
 import cuon.basics
 import cuon.Web2
+import sys
+import os 
+import commands
 
 baseSettings = cuon.basics.basics()
 print baseSettings.WEBPATH
 
 oWeb2 = cuon.Web2.Web2()
 
+# 0 = Root-site
+# 1 = Linked-Site
+# 2 = Python code
+# 3 = Directory structure
+
+class Image:
+    """An image consisting of a filename and some comments.
+    """
+    def __init__(self, filename, comments):
+        self.filename = filename
+        self.comments = comments
+  
+
+
+        
+# Register the adapter so Nevow can access Image instance attributes.
+registerAdapter(accessors.ObjectContainer, Image, inevow.IContainer)
+
+
+# Just a list of images to render in the page.
+images = [Image('/var/cuon_www/images/screenshots/Screenshot-1.jpg', ['Meeow', 'Purrrrrrrr']) ]
+    
+oDirs = {}
+dirs = []
+def start():
+    # create data structure
+    liResult = oWeb2.getDirectoryStructure()
+    if liResult and liResult != 'NONE':
+        for result in liResult:
+            liDirs = result['data'].split(',')
+            for sDir in liDirs:
+                sKey = sDir[sDir.rfind('/')+1:]
+                sDir = baseSettings.WEBPATH + sDir
+                sCommand = 'if [ ! -d ' + sDir + ' ] ; then mkdir ' + sDir + ' ; fi '
+                status,output = commands.getstatusoutput(sCommand)
+                oDirs[sKey] = sDir
+    #now save Images
 
 def getRootSite():
+    #child_images = static.File('images/')
     roots = oWeb2.getRootElement()
     liRootChilds = []
     rootSite = roots['data']
@@ -35,11 +78,13 @@ def getRootSite():
         liRootChilds = rootChilds.split(',')
         
     
-    
-    
+    for newDir in oDirs.keys():
+        liRootChilds.append(newDir)
     rootClass = 'class Root(object):\n'
     rootClass +='\timplements(inevow.IResource)\n'
     rootClass +='\n'
+    #rootClass += "\tchild_images = static.File('/images')\n"
+
     rootClass +='\tdef locateChild(self, ctx, segments):\n'
     rootClass +='\t\tif segments[0] == \'\':\n'
     rootClass +='\t\t\treturn self, ()\n'
@@ -52,6 +97,7 @@ def getRootSite():
                 rootClass +='\t\telif segments[0] == \'' + child + '\':\n'
             rootClass +='\t\t\treturn self.' + child.strip() + ', segments[1:]\n'
             z += 1
+        
         rootClass +='\t\telse:\n'
         rootClass +='\t\t\treturn None, ()\n'
     else:
@@ -94,14 +140,38 @@ def getHtmlSite(dicHtmlSite):
     htmlClass +='\t\t\n'
     htmlClass +='\tdef renderHTTP(self, ctx):\n'
     htmlClass +='\t\treturn """' + dicHtmlSite['data'] + '""" \n'
-    print '-------------------------------------------------------------------'
-    print htmlClass
-    print '-------------------------------------------------------------------'
+    #print '-------------------------------------------------------------------'
+    #print htmlClass
+    #print '-------------------------------------------------------------------'
     
     return htmlClass 
+
+class ImagePage(rend.Page):
+    """A simple page that renders a list of images. We registered an adapter
+    earlier so that the data= directives inside the pattern can look inside
+    Image instances.
+    """
     
-#First save Images
+    addSlash = True
     
+    def render_images(self, ctx, data):
+        """Render a list of images.
+        """
+        tag = T.div(data=images, render=rend.sequence)[
+            T.div(pattern='item')[
+                T.p(data=T.directive('filename'), render=T.directive('data')),
+                T.ul(data=T.directive('comments'), render=rend.sequence)[
+                    T.li(pattern='item', render=T.directive('data')),
+                    ],
+                ],
+            ]
+        return tag
+        
+    docFactory = loaders.stan( T.html[T.body[T.directive('images')]] )
+        
+# init server data
+start()
+
 # begin consdtruct websites    
     
     
@@ -110,7 +180,11 @@ rootClass = getRootSite()
 exec (rootClass)
 exec('root = Root()') 
 
-liSites = ['root','MainLeft']
+
+
+#liSites = ['root','MainLeft']
+liSites = oWeb2.getLinkedStructure()
+print 'lisites = ', liSites
 for sName in liSites:
     IDs = oWeb2.getAllSiteElementIDs(sName)
     if IDs and IDs != 'NONE':
@@ -125,18 +199,44 @@ for sName in liSites:
                     for key in liRootKeys:
                         s =  key.strip() +"." + dicHtmlSite[0]['name'].strip() + " = " + dicHtmlSite[0]['name'].strip() + "()"
                         print 's-root = ', s
-                        exec ( s)
+                        exec (s)
+                        
+  
+
 # We are adding children to the pages.
 # This could also happen inside the class.
+##class ADir(rend.Page):
+##    def locateChild(self, request, segments):
+##        path = '/'.join(segments)
+##        return static.File(path), ()
+##
+#root.images = static.File('/var/cuon_www/images')
+print 'oDirs = ', oDirs
+for newDir in oDirs.keys():
+    s = 'root.'+ newDir +' = static.File("' + oDirs[newDir] +'")'
+    print s
+    exec(s)
+    
+static_site = appserver.NevowSite(static.File("/var/cuon_www/images"))
 
+#sites = appserver.NevowSite(root)
 
 #root.foo = Foo()
 #root.foo.baz = Baz()
 #internet.TCPServer(baseSettings.WEB_PORT2, appserver.NevowSite(RootPage())).setServiceParent(application)
-
+#application = service.Application('static')
+#site2 = server.Site(static.File(baseSettings.WEBPATH))
 site = appserver.NevowSite(root)
-reactor.listenTCP(baseSettings.WEB_PORT2, site)
 
+
+#webServer = internet.TCPServer(baseSettings.WEB_PORT2,appserver.NevowSite(root))
+#webServer = internet.TCPServer(baseSettings.WEB_PORT2,sites)
+
+#webServer.setServiceParent(application)
+
+reactor.listenTCP(baseSettings.WEB_PORT2, site)
+#webServer.startService()
+#webServer.run()
 reactor.run()
 
 #<html><body>Hello world!<br />\n'

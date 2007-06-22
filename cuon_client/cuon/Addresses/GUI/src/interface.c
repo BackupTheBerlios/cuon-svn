@@ -717,12 +717,16 @@ create_AddressMainwindow (void)
   GtkWidget *scrolledwindow10;
   GtkWidget *treeScheduls;
   GtkWidget *hbox33;
-  GtkWidget *label29;
-  GtkWidget *eSchedulDate;
+  GtkWidget *rbBeginDate;
+  GSList *rbBeginDate_group = NULL;
+  GtkWidget *eSchedulDateBegin;
   GtkWidget *vseparator2;
   GtkWidget *vseparator3;
   GtkWidget *vseparator4;
   GtkWidget *vseparator5;
+  GtkWidget *hbox47;
+  GtkWidget *rbEndDate;
+  GtkWidget *eSchedulDateEnd;
   GtkWidget *lSchedul;
   GtkWidget *notebook2;
   GtkWidget *vbox10;
@@ -2073,7 +2077,7 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label45 = gtk_label_new (_("Schedul  begins at"));
+  label45 = gtk_label_new (_("Schedul  begins at time"));
   gtk_widget_show (label45);
   gtk_box_pack_start (GTK_BOX (vbox3), label45, FALSE, FALSE, 0);
   gtk_misc_set_alignment (GTK_MISC (label45), 0, 0);
@@ -2183,7 +2187,7 @@ create_AddressMainwindow (void)
   gtk_container_add (GTK_CONTAINER (cbeSchedulTimeBegin), comboboxentry_entry1);
   GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry1, GTK_CAN_FOCUS);
 
-  label46 = gtk_label_new (_("Schedul ends at"));
+  label46 = gtk_label_new (_("Schedul ends at time"));
   gtk_widget_show (label46);
   gtk_box_pack_start (GTK_BOX (vbox3), label46, FALSE, FALSE, 0);
   gtk_misc_set_alignment (GTK_MISC (label46), 0, 0);
@@ -2522,14 +2526,15 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  label29 = gtk_label_new (_("Date"));
-  gtk_widget_show (label29);
-  gtk_box_pack_start (GTK_BOX (hbox33), label29, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label29), 0, 0);
+  rbBeginDate = gtk_radio_button_new_with_mnemonic (NULL, _("Begin at"));
+  gtk_widget_show (rbBeginDate);
+  gtk_box_pack_start (GTK_BOX (hbox33), rbBeginDate, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbBeginDate), rbBeginDate_group);
+  rbBeginDate_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbBeginDate));
 
-  eSchedulDate = gtk_entry_new ();
-  gtk_widget_show (eSchedulDate);
-  gtk_box_pack_start (GTK_BOX (hbox33), eSchedulDate, TRUE, TRUE, 0);
+  eSchedulDateBegin = gtk_entry_new ();
+  gtk_widget_show (eSchedulDateBegin);
+  gtk_box_pack_start (GTK_BOX (hbox33), eSchedulDateBegin, TRUE, TRUE, 0);
 
   vseparator2 = gtk_vseparator_new ();
   gtk_widget_show (vseparator2);
@@ -2558,6 +2563,22 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
   gtk_widget_set_size_request (vseparator5, 4, -1);
+
+  hbox47 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox47);
+  gtk_table_attach (GTK_TABLE (table8), hbox47, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  rbEndDate = gtk_radio_button_new_with_mnemonic (NULL, _("end at"));
+  gtk_widget_show (rbEndDate);
+  gtk_box_pack_start (GTK_BOX (hbox47), rbEndDate, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbEndDate), rbBeginDate_group);
+  rbBeginDate_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbEndDate));
+
+  eSchedulDateEnd = gtk_entry_new ();
+  gtk_widget_show (eSchedulDateEnd);
+  gtk_box_pack_start (GTK_BOX (hbox47), eSchedulDateEnd, TRUE, TRUE, 0);
 
   lSchedul = gtk_label_new (_("Schedul"));
   gtk_widget_show (lSchedul);
@@ -2964,7 +2985,7 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) treeScheduls, "row_activated",
                     G_CALLBACK (on_treeScheduls_row_activated),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulDate, "changed",
+  g_signal_connect ((gpointer) eSchedulDateBegin, "changed",
                     G_CALLBACK (on_eSchedulDate_changed),
                     NULL);
   g_signal_connect ((gpointer) bAddNameMisc, "clicked",
@@ -3331,12 +3352,15 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow10, "scrolledwindow10");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, treeScheduls, "treeScheduls");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox33, "hbox33");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label29, "label29");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDate, "eSchedulDate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, rbBeginDate, "rbBeginDate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDateBegin, "eSchedulDateBegin");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator2, "vseparator2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator3, "vseparator3");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator4, "vseparator4");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator5, "vseparator5");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox47, "hbox47");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, rbEndDate, "rbEndDate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDateEnd, "eSchedulDateEnd");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook2, "notebook2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");

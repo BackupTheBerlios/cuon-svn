@@ -1447,6 +1447,26 @@
 			      <property name="y_options"></property>
 			    </packing>
 			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bCreditCard1">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Credit Card 1</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bCreditCard1_clicked" last_modification_time="Fri, 22 Jun 2007 13:07:24 GMT"/>
+			    </widget>
+			    <packing>
+			      <property name="left_attach">0</property>
+			      <property name="right_attach">1</property>
+			      <property name="top_attach">1</property>
+			      <property name="bottom_attach">2</property>
+			      <property name="x_options">fill</property>
+			      <property name="y_options"></property>
+			    </packing>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="left_attach">2</property>
@@ -1522,6 +1542,66 @@
 			      <property name="right_attach">3</property>
 			      <property name="top_attach">0</property>
 			      <property name="bottom_attach">1</property>
+			      <property name="x_options">fill</property>
+			      <property name="y_options"></property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bDirectDebit1">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">direct Debit 1</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bDirectDebit1_clicked" last_modification_time="Fri, 22 Jun 2007 13:04:42 GMT"/>
+			    </widget>
+			    <packing>
+			      <property name="left_attach">0</property>
+			      <property name="right_attach">1</property>
+			      <property name="top_attach">1</property>
+			      <property name="bottom_attach">2</property>
+			      <property name="x_options">fill</property>
+			      <property name="y_options"></property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bDirectDebit2">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">direct Debit 1</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bDirectDebit2_clicked" last_modification_time="Fri, 22 Jun 2007 13:05:57 GMT"/>
+			    </widget>
+			    <packing>
+			      <property name="left_attach">1</property>
+			      <property name="right_attach">2</property>
+			      <property name="top_attach">1</property>
+			      <property name="bottom_attach">2</property>
+			      <property name="x_options">fill</property>
+			      <property name="y_options"></property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bDirectDebit3">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">direct Debit 3</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bDirectDebit3_clicked" last_modification_time="Fri, 22 Jun 2007 13:06:54 GMT"/>
+			    </widget>
+			    <packing>
+			      <property name="left_attach">2</property>
+			      <property name="right_attach">3</property>
+			      <property name="top_attach">1</property>
+			      <property name="bottom_attach">2</property>
 			      <property name="x_options">fill</property>
 			      <property name="y_options"></property>
 			    </packing>
@@ -4499,7 +4579,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="epaymentInvoiceAmount">
+		<widget class="GtkEntry" id="ePaymentInvoiceAmount">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">False</property>
@@ -4999,17 +5079,50 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkEntry" id="ePaymentAccountID">
+		    <widget class="GtkHBox" id="hbox31">
 		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		      <signal name="changed" handler="on_ePaymentAccountID_changed" last_modification_time="Sun, 20 May 2007 12:22:49 GMT"/>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="eAccountNumber">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_eAccountNumber_changed" last_modification_time="Fri, 22 Jun 2007 12:36:56 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="ePaymentAccountID">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_ePaymentAccountID_changed" last_modification_time="Fri, 22 Jun 2007 12:35:42 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>

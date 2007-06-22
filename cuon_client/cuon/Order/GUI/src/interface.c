@@ -393,10 +393,14 @@ create_OrderMainwindow (void)
   GtkWidget *table9;
   GtkWidget *bSimpleCash1;
   GtkWidget *bSimpleCash2;
+  GtkWidget *bCreditCard1;
   GtkWidget *table10;
   GtkWidget *bSimpleBank1;
   GtkWidget *bSimpleBank2;
   GtkWidget *bSimpleBank3;
+  GtkWidget *bDirectDebit1;
+  GtkWidget *bDirectDebit2;
+  GtkWidget *bDirectDebit3;
   GtkWidget *table7;
   GtkWidget *label27;
   GtkWidget *label26;
@@ -540,7 +544,7 @@ create_OrderMainwindow (void)
   GtkWidget *label43;
   GtkWidget *ePaymentInvoiceNumber;
   GtkWidget *label45;
-  GtkWidget *epaymentInvoiceAmount;
+  GtkWidget *ePaymentInvoiceAmount;
   GtkWidget *label47;
   GtkWidget *ePaymentInpayment;
   GtkWidget *label46;
@@ -563,6 +567,8 @@ create_OrderMainwindow (void)
   GtkWidget *ePaymentCreditCardTyp;
   GtkWidget *label51;
   GtkWidget *hbox29;
+  GtkWidget *hbox31;
+  GtkWidget *eAccountNumber;
   GtkWidget *ePaymentAccountID;
   GtkWidget *bPaymentSearchAccount;
   GtkWidget *alignment2;
@@ -861,6 +867,12 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
+  bCreditCard1 = gtk_button_new_with_mnemonic (_("Credit Card 1"));
+  gtk_widget_show (bCreditCard1);
+  gtk_table_attach (GTK_TABLE (table9), bCreditCard1, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
   table10 = gtk_table_new (3, 3, FALSE);
   gtk_widget_show (table10);
   gtk_table_attach (GTK_TABLE (table6), table10, 3, 4, 1, 2,
@@ -882,6 +894,24 @@ create_OrderMainwindow (void)
   bSimpleBank3 = gtk_button_new_with_mnemonic (_("Bank 3"));
   gtk_widget_show (bSimpleBank3);
   gtk_table_attach (GTK_TABLE (table10), bSimpleBank3, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bDirectDebit1 = gtk_button_new_with_mnemonic (_("direct Debit 1"));
+  gtk_widget_show (bDirectDebit1);
+  gtk_table_attach (GTK_TABLE (table10), bDirectDebit1, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bDirectDebit2 = gtk_button_new_with_mnemonic (_("direct Debit 1"));
+  gtk_widget_show (bDirectDebit2);
+  gtk_table_attach (GTK_TABLE (table10), bDirectDebit2, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bDirectDebit3 = gtk_button_new_with_mnemonic (_("direct Debit 3"));
+  gtk_widget_show (bDirectDebit3);
+  gtk_table_attach (GTK_TABLE (table10), bDirectDebit3, 2, 3, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
@@ -1646,12 +1676,12 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label45), 0, 0.5);
 
-  epaymentInvoiceAmount = gtk_entry_new ();
-  gtk_widget_show (epaymentInvoiceAmount);
-  gtk_table_attach (GTK_TABLE (table8), epaymentInvoiceAmount, 1, 2, 1, 2,
+  ePaymentInvoiceAmount = gtk_entry_new ();
+  gtk_widget_show (ePaymentInvoiceAmount);
+  gtk_table_attach (GTK_TABLE (table8), ePaymentInvoiceAmount, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (epaymentInvoiceAmount), FALSE);
+  gtk_editable_set_editable (GTK_EDITABLE (ePaymentInvoiceAmount), FALSE);
 
   label47 = gtk_label_new (_("in-payment"));
   gtk_widget_show (label47);
@@ -1792,9 +1822,17 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
+  hbox31 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox31);
+  gtk_box_pack_start (GTK_BOX (hbox29), hbox31, TRUE, TRUE, 0);
+
+  eAccountNumber = gtk_entry_new ();
+  gtk_widget_show (eAccountNumber);
+  gtk_box_pack_start (GTK_BOX (hbox31), eAccountNumber, TRUE, TRUE, 0);
+
   ePaymentAccountID = gtk_entry_new ();
   gtk_widget_show (ePaymentAccountID);
-  gtk_box_pack_start (GTK_BOX (hbox29), ePaymentAccountID, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox31), ePaymentAccountID, TRUE, TRUE, 0);
 
   bPaymentSearchAccount = gtk_button_new ();
   gtk_widget_show (bPaymentSearchAccount);
@@ -1848,6 +1886,9 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) bSimpleCash2, "clicked",
                     G_CALLBACK (on_bSimpleCash2_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bCreditCard1, "clicked",
+                    G_CALLBACK (on_bCreditCard1_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bSimpleBank1, "clicked",
                     G_CALLBACK (on_bSimpleBank1_clicked),
                     NULL);
@@ -1856,6 +1897,15 @@ create_OrderMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) bSimpleBank3, "clicked",
                     G_CALLBACK (on_bSimpleBank3_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bDirectDebit1, "clicked",
+                    G_CALLBACK (on_bDirectDebit1_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bDirectDebit2, "clicked",
+                    G_CALLBACK (on_bDirectDebit2_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bDirectDebit3, "clicked",
+                    G_CALLBACK (on_bDirectDebit3_clicked),
                     NULL);
   g_signal_connect ((gpointer) eSupplyNumber, "changed",
                     G_CALLBACK (on_eSupplyNumber_changed),
@@ -1910,6 +1960,9 @@ create_OrderMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) rbYearly, "toggled",
                     G_CALLBACK (on_rbYearly_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) eAccountNumber, "changed",
+                    G_CALLBACK (on_eAccountNumber_changed),
                     NULL);
   g_signal_connect ((gpointer) ePaymentAccountID, "changed",
                     G_CALLBACK (on_ePaymentAccountID_changed),
@@ -2015,10 +2068,14 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table9, "table9");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleCash1, "bSimpleCash1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleCash2, "bSimpleCash2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bCreditCard1, "bCreditCard1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table10, "table10");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank1, "bSimpleBank1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank2, "bSimpleBank2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSimpleBank3, "bSimpleBank3");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bDirectDebit1, "bDirectDebit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bDirectDebit2, "bDirectDebit2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bDirectDebit3, "bDirectDebit3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table7, "table7");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label27, "label27");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label26, "label26");
@@ -2160,7 +2217,7 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label43, "label43");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentInvoiceNumber, "ePaymentInvoiceNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label45, "label45");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, epaymentInvoiceAmount, "epaymentInvoiceAmount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentInvoiceAmount, "ePaymentInvoiceAmount");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label47, "label47");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentInpayment, "ePaymentInpayment");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label46, "label46");
@@ -2182,6 +2239,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentCreditCardTyp, "ePaymentCreditCardTyp");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label51, "label51");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox29, "hbox29");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox31, "hbox31");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eAccountNumber, "eAccountNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, ePaymentAccountID, "ePaymentAccountID");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bPaymentSearchAccount, "bPaymentSearchAccount");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, alignment2, "alignment2");

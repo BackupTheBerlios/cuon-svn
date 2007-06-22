@@ -85,6 +85,7 @@ class SingleContact(SingleData):
             print liAddr
             self.setTextbuffer(self.getWidget('tvAddress'),liAddr)
             self.getWidget('ePhoneAddress1').set_text(self.getPhone(oneRecord['address_id']))
+            self.addressId = oneRecord['address_id']
         if oneRecord['partnerid'] > 0:
             self.getWidget('ePhonePartner').set_text(self.getPhonePartner(oneRecord['partnerid']))
             

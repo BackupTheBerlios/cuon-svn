@@ -40,6 +40,9 @@ class SingleWeb2(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
-        
+        self.cType = 'html' 
 
-    
+    def readNonWidgetEntries(self, dicValues):
+        print 'readNonWidgetEntries(self) by SingleWeb2'
+        dicValues['ctype'] = [self.cType, 'string']
+        return dicValues  

@@ -130,12 +130,12 @@ class orderwindow(chooseWindows):
         self.loadEntries(self.EntriesOrderPosition)
         self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
         self.singleOrderPosition.setGladeXml(self.xml)
-        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','designation'] )
-        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_STRING , gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'orderposition.designation as designation2'] )
+        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_UINT ,gobject.TYPE_STRING , gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleOrderPosition.setTreeOrder('position,articleid')
-        self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article'),_('Designation')])
+        self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article-ID'),_('Number'),_('Designation'),_('Designation2')])
 
-        self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+        self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID` + ' and articleid = articles.id '
         self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
   
         
@@ -149,7 +149,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPayment.setGladeXml(self.xml)
         self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
         self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleOrderPayment.setTreeOrder('date_of_paid,invoice_number')
+        self.singleOrderPayment.setTreeOrder('date_of_paid desc,id desc')
         self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
 
         self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
@@ -298,14 +298,16 @@ class orderwindow(chooseWindows):
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
         dicOrder['invoiceNumber'] = self.rpc.callRP('Order.setInvoiceNumber', dicOrder['orderid'], self.dicUser)
         print ' start Invoice printing 2'
-
-        dicOrder['invoiceNumber'] =  self.singleOrder.getInvoiceNumber()        
+        invoiceNumber = self.singleOrder.getInvoiceNumber() 
+        dicOrder['invoiceNumber'] =  invoiceNumber        
         print ' start Invoice printing 3'
         
         print dicOrder
         
         Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser,'INVOICE')
+        ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
+
     def on_all_open_invoice1_activate(self, event):
         
         if self.QuestionMsg('All new invoices are printed ! Wish you this ?'):
@@ -410,13 +412,17 @@ class orderwindow(chooseWindows):
     #Menu Positions
     def on_PositionSave1_activate(self, event):
         print "save Positions v2"
-       
+        EndPosition = False
         self.singleOrderPosition.orderID = self.singleOrder.ID
-
+        if self.singleOrderPosition.ID == -1:
+            EndPosition = True
         self.singleOrderPosition.save()
-        self.setEntriesEditable(self.EntriesOrderSupply, FALSE)
-
+        self.setEntriesEditable(self.EntriesOrderPosition, FALSE)
+        
         self.tabChanged()
+        if EndPosition:
+            tree1 = self.getWidget('tree1')
+            
 
     def on_PositionEdit1_activate(self, event):
         print 'PositionEdit1'
@@ -453,9 +459,12 @@ class orderwindow(chooseWindows):
         self.singleOrderPayment.invoiceNumber = self.singleOrder.getInvoiceNumber()
         
 
-        self.singleOrderPayment.save()
-        self.setEntriesEditable(self.EntriesOrderPayment, FALSE)
+        newid = self.singleOrderPayment.save()
+        print 'newid = ', newid
+        ok = self.rpc.callRP('Finances.createTicketFromInpayment',newid,self.dicUser)
 
+        self.setEntriesEditable(self.EntriesOrderPayment, FALSE)
+        
         self.tabChanged()
 
     def on_payment_edit_activate(self, event):
@@ -734,8 +743,9 @@ class orderwindow(chooseWindows):
         print 'eAccountID changed'
         iAcctNumber = self.getChangedValue('ePaymentAccountID')
         eAcctField = self.getWidget('eAccountDesignation')
-        cAcct = self.singleAccountInfo.getInfoLine(iAcctNumber)
-        eAcctField.set_text(cAcct)
+        cAcct = self.singleAccountInfo.getInfoLineForID(iAcctNumber)
+        if cAcct and cAcct != 'NONE':
+            eAcctField.set_text(cAcct)
         
 ##        record = self.singleArticle.getFirstRecord()
 ##        if record:
@@ -745,6 +755,67 @@ class orderwindow(chooseWindows):
 ##        if self.singleOrderPosition.ID == -1 and record:
 ##            self.getWidget('eOrderPositionsTaxVat').set_text(record['tax_vat'])
 ##          
+    def on_eAccountNumber_changed(self, event):
+        sAcct = event.get_text()
+        
+        id = self.rpc.callRP('Finances.getAcctID',sAcct, self.dicUser)
+        if id > 0:
+            self.getWidget('ePaymentAccountID').set_text(`id`)
+            
+    def createSimplePayment(self, sType):
+        
+        self.setMainwindowNotebook('F7')
+        self.on_payment_new_activate(None)
+        invoice_sum = self.rpc.callRP('Finances.getTotalAmount', self.singleOrder.ID, self.dicUser)
+        invoice_sum =  self.getCheckedValue(invoice_sum,'toLocaleString')
+        self.getWidget('ePaymentCashDiscount').set_text('0.00')
+        self.getWidget('ePaymentInpayment').set_text(invoice_sum)
+        dicDate = self.getActualDateTime()
+        print dicDate
+        print invoice_sum
+        self.getWidget('ePaymentDate').set_text(dicDate['date'])
+        print 'sType = ', self.dicUser['prefFinances'][sType]
+        self.getWidget('eAccountNumber').set_text(self.dicUser['prefFinances'][sType])
+        if 'cash' in sType:
+            print 'cash found'
+            self.getWidget('rPaymentCash').set_active(True)
+        elif 'bank' in sType:
+            print 'bank found'
+            self.getWidget('rPaymentTransfer').set_active(True)
+        elif 'Debit' in sType:
+            print 'debit found'
+            self.getWidget('rPaymentDirectDebit').set_active(True)
+        elif 'creditCard' in sType:
+            print 'creditCard found'
+            self.getWidget('rPaymentCreditCard').set_active(True)
+        
+        self.on_payment_save_activate(None)
+        
+    
+        
+    def on_bSimpleCash1_clicked(self, event):
+        self.createSimplePayment('cash1')
+    def on_bSimpleCash2_clicked(self, event):
+        self.createSimplePayment('cash2')
+       
+    def on_bSimpleBank1_clicked(self, event):
+        self.createSimplePayment('bank1')
+    def on_bSimpleBank2_clicked(self, event):
+        self.createSimplePayment('bank2')
+    def on_bSimpleBank3_clicked(self, event):
+        self.createSimplePayment('bank3')
+    def on_bDirectDebit1_clicked(self, event):
+        self.createSimplePayment('directDebit1')
+    def on_bDirectDebit2_clicked(self, event):
+        self.createSimplePayment('directDebit2')
+      
+    def on_bDirectDebit3_clicked(self, event):
+        self.createSimplePayment('directDebit3')
+    
+    def on_bCreditCard1_clicked(self, event):
+        self.createSimplePayment('creditCard1')
+      
+    
     def on_bQuickAppend_clicked(self, event):
         # Qick append a positions
         if self.singleOrderPosition.ID != -1:
@@ -764,13 +835,14 @@ class orderwindow(chooseWindows):
         sKey = gtk.gdk.keyval_name(data.keyval)
         print 'sKey : ',sKey
         if self.tabOption == self.tabPosition:
-            if sKey == 'KP_Add' or sKey == 'plus' :
+            if sKey == 'KP_Add' :
+                wAmount = self.getWidget('eAmount')
+
                 self.on_PositionEdit1_activate(None)
-                if self.getWidget('eAmount').get_text() == '':
-                    self.getWidget('eAmount').set_text('1')
+                if wAmount.get_text() == '':
+                    wAmount.set_text('1')
                 else:
                     try:
-                        wAmount = self.getWidget('eAmount')
                         f1 = float(wAmount.get_text())
                         f2 = f1 + 1.000
                         print f1, f2
@@ -780,22 +852,25 @@ class orderwindow(chooseWindows):
                         print Exception, params
                 self.on_PositionSave1_activate(None)        
 
-            elif sKey == 'KP_Subtract' or sKey == 'minus' :
+            elif sKey == 'KP_Subtract' :
+                wAmount = self.getWidget('eAmount')
+
                 self.on_PositionEdit1_activate(None)
-                if self.getWidget('eAmount').get_text() == '':
-                    self.getWidget('eAmount').set_text('0')
+                if wAmount.get_text() == '':
+                    wAmount.set_text('0')
                 else:
                     try:
-                        wAmount = self.getWidget('eAmount')
+                        
                         f1 = float(wAmount.get_text())
                         f2 = f1 - 1.000
                         print f1, f2
-                        wAmount.set_text( `self.getCheckedValue(f2, 'toStringFloat')`)
+                        wAmount.set_text( self.getCheckedValue(f2, 'toLocaleString'))
                         print 'gesetzte zahl = ', wAmount.get_text()
                     except Exception, params:
                         print Exception, params            
                 self.on_PositionSave1_activate(None)        
-            
+            else:
+                self.MainwindowEventHandling(oEntry, data)
         
         else:
             self.MainwindowEventHandling(oEntry, data)
@@ -825,7 +900,7 @@ class orderwindow(chooseWindows):
             self.singleOrderGet.refreshTree()
  
         elif self.tabOption == self.tabPosition:
-            self.singleOrderPosition.sWhere  ='where orderid = ' + `int(self.singleOrder.ID)`
+            self.singleOrderPosition.sWhere  ='where orderid = ' + `int(self.singleOrder.ID)` + ' and articleid = articles.id '
             self.singleOrderPosition.connectTree()
             self.singleOrderPosition.refreshTree()
             

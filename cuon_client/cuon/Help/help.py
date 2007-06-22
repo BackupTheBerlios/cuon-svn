@@ -40,7 +40,7 @@ class helpwindow(windows):
         #sw1 = self.getWidget('swHelp')
         self.vbox = self.getWidget('vbox2')
         self.vbox.add(self.helpmoz)
-        self.helpmoz.load_url("http://84.244.7.139:7084")
+        self.helpmoz.load_url("http://85.214.52.49:7095")
         self.helpmoz.set_size_request(816,600)
         self.helpmoz.show()
         self.win1.show_all()

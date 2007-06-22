@@ -225,6 +225,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         # Save TimeTransformation
         dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
         sDate =  firstRecord['schedul_date']
+        sDateEnd = firstRecord['schedul_date_end']
         print 'result = ', result
         if result and result == 'NONE':
             result = None
@@ -232,6 +233,7 @@ class iCal(xmlrpc.XMLRPC, basics):
         try:
             sTime = self.getTimeString( firstRecord['schedul_time_begin'])
             dicCal['dtstart'] = sDate + ' ' + sTime
+                
                         
         except Exception, param:
             print 'Except error getDicCal 1'
@@ -242,10 +244,13 @@ class iCal(xmlrpc.XMLRPC, basics):
             self.writeLog('1 Time error by ' + `firstRecord['schedul_time_begin']`)
         try:
             sTime = self.getTimeString( firstRecord['schedul_time_end'])
-            dicCal['dtend'] = sDate + ' ' + sTime
+            if len(sDateEnd) > 0:
+                
+                dicCal['dtend'] = sDateEnd + ' ' + sTime
+            else:
+                dicCal['dtend'] = sDate + ' ' + sTime
                         
         
-            self.writeLog('2 Time error by ' + `firstRecord['schedul_time_end']`)
         
         except Exception, param:
             print 'Except error getDicCal 2'

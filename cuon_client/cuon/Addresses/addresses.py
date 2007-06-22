@@ -90,7 +90,7 @@ class addresswindow(chooseWindows):
     
         self.loadGlade('address.xml', 'AddressMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
-        
+        self.win1.maximize()
         
         self.setStatusBar()
         #print 'time 3 = ', time.localtime()
@@ -524,8 +524,11 @@ class addresswindow(chooseWindows):
             sTime = time.strftime(self.dicUser['DateformatString'], t2)
             print sTime
             
-        
-            eDate = self.getWidget('eSchedulDate')
+            if self.getWidget('rbBeginDate').get_active():
+                eDate = self.getWidget('eSchedulDateBegin')
+            else:
+                eDate = self.getWidget('eSchedulDateEnd')
+                
             eDate.set_text(sTime)
             
        
@@ -1309,6 +1312,7 @@ class addresswindow(chooseWindows):
             
         elif self.tabOption == self.tabSchedul:
             #Scheduling
+            
             self.disableMenuItem('tabs')
             self.enableMenuItem('schedul')
             
@@ -1316,6 +1320,7 @@ class addresswindow(chooseWindows):
             self.editAction = 'editSchedul'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singlePartner.sStatus])
+            self.getWidget('rbBeginDate').set_active(True)
             
             
         elif self.tabOption == self.tabNotes:

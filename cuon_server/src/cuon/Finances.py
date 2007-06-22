@@ -103,13 +103,30 @@ class Finances(xmlrpc.XMLRPC, basics):
         if liAcct != 'NONE':
            ret = liAcct[0]['name']
         return ret
+    
+    def xmlrpc_get_iAcct(self,iAcct, dicUser): 
+        ret = 'NONE'
+        liAcct = None
+        
+        if iAcct and iAcct != 'NONE':
+            cSql = "select designation from account_info where id = " + `iAcct` 
+            #self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
+            cSql = cSql + self.getWhere("",dicUser,2)
+            #self.writeLog('get Acct cSql = ' + cSql)
+            #context.src.logging.writeLog('User = ' + `dicUser`)
+            liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+            self.writeLog('liAcct = ' + `liAcct`)
+        if liAcct and liAcct != 'NONE':
+           ret = liAcct[0]['designation']
+        return ret
         
     def xmlrpc_get_acct(self,sAcct, dicUser): 
         self.writeLog('new acct Info for ' + `sAcct`)
         ret = 'NONE'
         liAcct = None
         
-        if sAcct != 'NONE':
+        if sAcct and sAcct != 'NONE':
             cSql = "select designation from account_info where account_number = '" + sAcct + "'"
             self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
             cSql = cSql + self.getWhere("",dicUser,2)
@@ -118,9 +135,27 @@ class Finances(xmlrpc.XMLRPC, basics):
             liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
             self.writeLog('liAcct = ' + `liAcct`)
-        if liAcct != 'NONE':
+        if liAcct and liAcct != 'NONE':
            ret = liAcct[0]['designation']
         return ret
+        
+    def xmlrpc_getAcctID(self, sAcct, dicUser):
+        ret = 0
+        liAcct = None
+        
+        if sAcct and sAcct != 'NONE':
+            cSql = "select id from account_info where account_number = '" + sAcct + "'"
+            #self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
+            cSql = cSql + self.getWhere("",dicUser,2)
+            #self.writeLog('get Acct cSql = ' + cSql)
+            #context.src.logging.writeLog('User = ' + `dicUser`)
+            liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
+        
+            #self.writeLog('liAcct = ' + `liAcct`)
+        if liAcct and liAcct != 'NONE':
+           ret = liAcct[0]['id']
+        return ret
+        
     def xmlrpc_get_cabShortKeyValues(self, s, dicUser):
         
         self.writeLog('start py_get_cabShortKeyValues')
@@ -189,3 +224,27 @@ class Finances(xmlrpc.XMLRPC, basics):
             self.writeLog('dicAcct = ' + `dicAcct`)
         
         return result
+        
+        
+    def xmlrpc_getTotalAmount(self, order_id, dicUser):            
+        total_amount = 0
+        sSql = " select total_amount from list_of_invoices where order_number = " + `order_id` 
+        sSql += self.getWhere(None,dicUser,2)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result != 'NONE':
+            total_amount = result[0]['total_amount']
+            #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
+        return total_amount
+        
+        
+    def xmlrpc_createTicketFromInpayment(self, inpayment_id, dicUser):
+        ret = True
+        
+        return ret
+        
+        
+    def xmlrpc_createTicketFromInvoice(self, invoice_id, dicUser):
+        ret = True
+        
+        return ret    
+    

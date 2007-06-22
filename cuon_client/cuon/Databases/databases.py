@@ -836,8 +836,10 @@ class databaseswindow(windows):
 
             # Foreign keys
             cyNodes = self.getNodes(cyNode[0],'foreign_key')
+            print 'cyNodes = ', cyNodes
             if cyNodes:
                 for i in cyNodes:
+                    print i.toxml()
                     self.out("Werte in xml")
                     dicForeign = {}                        
                     foreignNode = self.getNodes(i,'foreign_key_name')
@@ -849,12 +851,15 @@ class databaseswindow(windows):
                     foreignNode = self.getNodes(i,'foreign_key_sql')
                     dicForeign['sql'] = self.getData(foreignNode[0])
 
-                    Sql = 'alter table ' + dicForeign['table']
+                    sSql = 'alter table ' + dicForeign['table']
                     sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
                     sSql += dicForeign['sql']
                     
                     self.out( sSql)
+                    print '--------------------------------------------------------------'
                     print 'Sql Foreign key = ', sSql
+                    print '--------------------------------------------------------------\n\n'
+
                     result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
                 
                     

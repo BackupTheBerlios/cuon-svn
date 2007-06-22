@@ -46,11 +46,14 @@ class web2window(chooseWindows):
         chooseWindows.__init__(self)
        
         self.singleWeb2 = SingleWeb2.SingleWeb2(allTables)
+        self.singleWebImages = SingleWeb2.SingleWeb2(allTables)
+        self.singleWebDownload = SingleWeb2.SingleWeb2(allTables)
 
     
         self.loadGlade('web2.xml', 'Web2Mainwindow')
         #self.win1 = self.getWidget('Web2Mainwindow')
         #self.setStatusBar()
+        #self.win1.maximize()
         self.allTables = allTables
 
         self.EntriesWeb2 = 'web2.xml'
@@ -64,8 +67,23 @@ class web2window(chooseWindows):
         self.singleWeb2.setTreeOrder('type,name')
         self.singleWeb2.setListHeader([_('Name'), _('Designation')])
         self.singleWeb2.setTree(self.xml.get_widget('tree1') )
+        self.singleWeb2.sWhere = "where ctype = 'html'"
+        
 
-  
+        self.EntriesWebImages = 'web2_images.xml'
+        
+        self.loadEntries(self.EntriesWebImages)
+        
+        self.singleWebImages.setEntries(self.getDataEntries('web2_images.xml') )
+        self.singleWebImages.setGladeXml(self.xml)
+        self.singleWebImages.setTreeFields( ['name', 'designation'] )
+        self.singleWebImages.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleWebImages.setTreeOrder('type,name')
+        self.singleWebImages.setListHeader([_('Name'), _('Designation')])
+        self.singleWebImages.setTree(self.xml.get_widget('tree1') )
+        self.singleWebImages.sWhere = "where ctype = 'image'"
+        
+
   
 
         # set values for comboBox
@@ -98,6 +116,9 @@ class web2window(chooseWindows):
 
         # tabs from notebook
         self.tabWeb2 = 0
+        self.tabWebImages = 1
+        self.tabWebDownload = 2
+        
     
         
         
@@ -195,11 +216,19 @@ class web2window(chooseWindows):
         self.singleWeb2.disconnectTree()
         
         if self.tabOption == self.tabWeb2:
+            self.singleWeb2.sWhere = "where ctype = 'html'"
+            self.singleWeb2.cType = "html"
+            
             self.singleWeb2.connectTree()
             self.singleWeb2.refreshTree()
-  ##      elif self.tabOption == self.tabMisc:
-##            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleWeb2.ID)`
-##            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
+        elif self.tabOption == self.tabWebImages:
+            self.singleWebImages.sWhere = "where ctype = 'image'"
+            self.singleWebImages.cType = "image"
+
+            self.singleWebImages.connectTree()
+            self.singleWebImages.refreshTree()           
+
+            #self.singleWeb2.fillEntries(self.singleMisc.findSingleId())
 
 ##        elif self.tabOption == self.tabPartner:
 ##            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleWeb2.ID)`
@@ -232,14 +261,15 @@ class web2window(chooseWindows):
             self.out( 'Seite 0')
 
 
- ##       elif self.tabOption == self.tabBank:
-##            self.out( 'Seite 2')
-##            self.disableMenuItem('tabs')
-##            self.enableMenuItem('bank')
+        elif self.tabOption == self.tabWebImages:
+            self.out( 'Seite 2')
+            #self.disableMenuItem('tabs')
+            #self.enableMenuItem('bank')
            
-##            self.editAction = 'editBank'
-##            self.setTreeVisible(False)
-##            #self.setStatusbarText([self.singleWeb2.sStatus])
+            #self.editAction = 'editBank'
+            self.setTreeVisible(False)
+            
+            #self.setStatusbarText([self.singleWeb2.sStatus])
 
 
 ##        elif self.tabOption == self.tabMisc:

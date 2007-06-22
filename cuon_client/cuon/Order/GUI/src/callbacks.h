@@ -248,3 +248,27 @@ on_bSimpleBank3_clicked                (GtkButton       *button,
 void
 on_all_open_invoice1_activate          (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_bCreditCard1_clicked                (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bDirectDebit1_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bDirectDebit2_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bDirectDebit3_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_eAccountNumber_changed              (GtkEditable     *editable,
+                                        gpointer         user_data);
+
+void
+on_ePaymentAccountID_changed           (GtkEditable     *editable,
+                                        gpointer         user_data);

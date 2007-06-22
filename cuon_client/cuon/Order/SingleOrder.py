@@ -63,7 +63,7 @@ class SingleOrder(SingleData):
     def fillOtherEntries(self, oneRecord):
         try:
             self.getWidget('eInvoiceNumber').set_text(`self.getInvoiceNumber()`)
-            self.getWidget('eTotalSum').set_text(self.rpc.callRP('Order.getTotalSumString', self.ID, self.dicUser))
+            self.getWidget('eTotalSum').set_text( self.rpc.callRP('Order.getTotalSumString', self.ID, self.dicUser))
         except Exception, params:
             print Exception, params
             

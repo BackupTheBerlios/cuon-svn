@@ -269,6 +269,16 @@
       <Entry-File>web2.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_web2.xml</Entry-FileValue>
     </Entries>  
+  <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>web2_images.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_web2_images.xml</Entry-FileValue>
+    </Entries>  
+  <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>web2_download.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_web2_download.xml</Entry-FileValue>
+    </Entries>  
   
 <Entries>		
       <Entry-Name>cuon</Entry-Name>

@@ -780,6 +780,10 @@ class windows(rawWindow, MyXML, messages):
         print 'state : ', data.state
         
         sKey = gtk.gdk.keyval_name(data.keyval)
+        self.setMainwindowNotebook(sKey)
+        
+    def setMainwindowNotebook(self, sKey):
+        
         page_num = -1
         if sKey == 'F1':
             page_num = 0

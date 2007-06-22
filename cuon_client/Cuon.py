@@ -400,7 +400,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 42,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 51,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -652,6 +652,7 @@ class MainWindow(windows):
     
         
     def generateSqlObjects(self):
+        self.setProgressBar( 0.4)
         entryList = self.rpc.callRP('Database.executeNormalQuery',"select  skey from cuon where skey ~* 'entry_' ")
         print entryList
         self.openDB()
