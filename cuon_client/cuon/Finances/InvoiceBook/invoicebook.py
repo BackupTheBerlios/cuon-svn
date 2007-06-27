@@ -33,6 +33,7 @@ locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import datetime as DateTime
 import SingleListOfInvoice
+import SingleInpayment
 import cuon.DMS.dms
 
 class invoicebookwindow(windows):
@@ -43,6 +44,7 @@ class invoicebookwindow(windows):
         windows.__init__(self)
        
         self.singleListOfInvoice = SingleListOfInvoice.SingleListOfInvoice(allTables)
+        self.singleInpayment = SingleInpayment.SingleInpayment(allTables)
     
         self.loadGlade('invoiceBook.xml', 'InvoiceMainwindow')
         #self.win1 = self.getWidget('ListOfInvoiceMainwindow')
@@ -62,6 +64,18 @@ class invoicebookwindow(windows):
         self.singleListOfInvoice.setTree(self.xml.get_widget('tree1') )
 
   
+        self.EntriesInpayment = 'inpayment.xml'
+        
+        self.loadEntries(self.EntriesInpayment)
+        
+        self.singleInpayment.setEntries(self.getDataEntries(self.EntriesInpayment) )
+        self.singleInpayment.setGladeXml(self.xml)
+        self.singleInpayment.setTreeFields( ['invoice_number', 'date_of_paid','inpayment','order_id'] )
+        self.singleInpayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleInpayment.setTreeOrder('invoice_number,date_of_paid')
+        self.singleInpayment.setListHeader([_('Invoice-Nr.'), _('Date'), _('Inpayment'),_('Order-ID')])
+        self.singleInpayment.setTree(self.xml.get_widget('tree1') )
+
   
 
         # set values for comboBox
@@ -72,28 +86,42 @@ class invoicebookwindow(windows):
         self.initMenuItems()
 
         # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','mi_ListOfInvoice1')
+        self.addEnabledMenuItems('tabs','list_of_invoices1')
+        self.addEnabledMenuItems('tabs','inpayment1')
   
 
                
         # seperate Menus
-        self.addEnabledMenuItems('ListOfInvoice','mi_ListOfInvoice1')
+        self.addEnabledMenuItems('ListOfInvoice','list_of_invoices')
+        self.addEnabledMenuItems('Inpayment','inpayment1')
           
 
-        # enabledMenues for Address
-        self.addEnabledMenuItems('editListOfInvoice','mi_new1')
-        self.addEnabledMenuItems('editListOfInvoice','mi_clear1')
-        self.addEnabledMenuItems('editListOfInvoice','mi_print1')
-        self.addEnabledMenuItems('editListOfInvoice','mi_edit1')
+        # enabledMenues for ListOfInvoice
+        
+        self.addEnabledMenuItems('editListOfInvoice','new', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editListOfInvoice','delete', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editListOfInvoice','print', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editListOfInvoice','edit', self.dicUserKeys['edit'])
 
+        # enabledMenues for Inpayment
+        
+        self.addEnabledMenuItems('editInpayment','inpayment_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editInpayment','inpayment_delete1', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editInpayment', 'inpayment_print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editInpayment','inpayment_edit1', self.dicUserKeys['edit'])
 
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','inpayment_save1', self.dicUserKeys['save'])
     
         
 
         # tabs from notebook
         self.tabListOfInvoice = 0
+        self.tabInpayment = 1
     
         
+        print 'self tab changed'
         
 
         self.tabChanged()
@@ -105,31 +133,16 @@ class invoicebookwindow(windows):
     #Menu File
               
     def on_quit1_activate(self, event):
-        self.out( "exit ListOfInvoice V1")
-        self.on_bChooseClient_clicked(event)
-        
+        print "exit ListOfInvoice V1"
+        self.closeWindows()        
 
-    def on_bChooseClient_clicked(self, event):
-        print 'Client-ID = ', self.singleListOfInvoice.ID
-        
-        if self.singleListOfInvoice.ID  > 0:
-            self.oUser.client = self.singleListOfInvoice.ID 
-            self.oUser.refreshDicUser()
-            print `self.oUser.getSqlDicUser`
-            self.openDB()
-            self.oUser = self.saveObject('User', self.oUser)
-            self.closeDB()
-            self.closeWindow() 
-        else:
-            print 'no client-ID'
     
-        
 
 
     #Menu ListOfInvoice
   
     def on_save_activate(self, event):
-        self.out( "save invoicebook v2")
+        print  "save invoicebook v2"
         self.singleListOfInvoice.save()
         self.setEntriesEditable(self.EntriesListOfInvoice, False)
         self.tabChanged()
@@ -147,6 +160,8 @@ class invoicebookwindow(windows):
     def on_delete_activate(self, event):
         self.out( "delete invoicebook v2")
         self.singleListOfInvoice.deleteRecord()
+
+
 
 
     def on_this_month_activate(self, event):
@@ -172,7 +187,30 @@ class invoicebookwindow(windows):
         Pdf = self.rpc.callRP('Report.server_order_list_of_invoices', dicOrder, self.dicUser)
         self.showPdf(Pdf, self.dicUser,'INVOICE')
 
+#Menu Inpayment
+  
+    def on_inpayment_save1_activate(self, event):
+        print  "save invoicebook v2"
+        self.singleInpayment.save()
+        self.setEntriesEditable(self.EntriesListOfInvoice, False)
+        self.tabChanged()
+        
+    def on_inpayment_new1_activate(self, event):
+        self.out( "new invoicebook v2")
+        self.singleInpayment.newRecord()
+        self.setEntriesEditable(self.EntriesListOfInvoice, True)
 
+    def on_inpayment_edit1_activate(self, event):
+        self.out( "edit invoicebook v2")
+        self.setEntriesEditable(self.EntriesListOfInvoice, True)
+
+
+    def on_inpayment_delete1_activate(self, event):
+        self.out( "delete invoicebook v2")
+        self.singleInpayment.deleteRecord()
+
+
+    # Buttons
  
     def on_bDMS_clicked(self, event):
         print 'dms clicked'
@@ -193,15 +231,19 @@ class invoicebookwindow(windows):
         self.refreshTree()
 
     def refreshTree(self):
+        print 'refresh tree '
         self.singleListOfInvoice.disconnectTree()
+        self.singleInpayment.disconnectTree()
         
         if self.tabOption == self.tabListOfInvoice:
             self.singleListOfInvoice.connectTree()
             self.singleListOfInvoice.refreshTree()
-  ##      elif self.tabOption == self.tabMisc:
-##            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleListOfInvoice.ID)`
-##            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
-
+        elif self.tabOption == self.tabInpayment:
+            print 'refresh tree by singleInpayment'
+            #self.singleInpayment.sWhere  ='where address_id = ' + `int(self.singleListOfInvoice.ID)`
+            #self.singleMisc.fillEntries(self.singleMisc.findSingleId())
+            self.singleInpayment.connectTree()
+            self.singleInpayment.refreshTree()
 ##        elif self.tabOption == self.tabPartner:
 ##            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleListOfInvoice.ID)`
 ##            self.singlePartner.connectTree()
@@ -216,10 +258,11 @@ class invoicebookwindow(windows):
 
          
     def tabChanged(self):
-        #self.out( 'tab changed to :'  + str(self.tabOption))
+        print 'tab changed to :'  + str(self.tabOption)
         
         if self.tabOption == self.tabListOfInvoice:
-            #Address
+            #ListOfInvoice
+            print 'Seite 1'
             self.disableMenuItem('tabs')
             self.enableMenuItem('ListOfInvoice')
 
@@ -233,14 +276,15 @@ class invoicebookwindow(windows):
             self.out( 'Seite 0')
 
 
- ##       elif self.tabOption == self.tabBank:
-##            self.out( 'Seite 2')
-##            self.disableMenuItem('tabs')
-##            self.enableMenuItem('bank')
+        elif self.tabOption == self.tabInpayment:
+            print  'Seite 2'
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('Inpayment')
            
-##            self.editAction = 'editBank'
-##            self.setTreeVisible(False)
-##            #self.setStatusbarText([self.singleListOfInvoice.sStatus])
+            self.editAction = 'editInpayment'
+            self.setTreeVisible(True)
+            print '4'
+            #self.setStatusbarText([self.singleListOfInvoice.sStatus])
 
 
 ##        elif self.tabOption == self.tabMisc:
@@ -278,6 +322,8 @@ class invoicebookwindow(windows):
 
         # refresh the Tree
         self.refreshTree()
+        print '5'
         self.enableMenuItem(self.editAction)
+        print  '6'
         self.editEntries = False
         

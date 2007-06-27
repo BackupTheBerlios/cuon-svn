@@ -8,7 +8,7 @@ import random
 import sys,os  
 import shelve
 import ConfigParser
-
+import bz2, base64
 
 
 
@@ -463,5 +463,32 @@ class basics(xmlrpc.XMLRPC):
         Minute = Minute * 15
         
         return Hour, Minute
+    
+    def rebuild(self, data):
+        s = self.doDecode64(data)
+        Data = self.decompress(s)
+        return Data
         
+    
+    def decompress(self, data):
+        Data = None
+        try:
+            Data = bz2.decompress(data)
+                 
+        except Exception, param:
+            print Exception, param
+        #print 'data', data
+        #print 'Data', Data
+        return Data
+        
+    def doDecode64(self, data):
+        Data = None
+        try:
+            Data = base64.decodestring(data)
+                 
+        except Exception, param:
+            print Exception, param
+        #print 'data', data
+        #print 'Data', Data
+        return Data
         

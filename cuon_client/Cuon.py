@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 
@@ -400,7 +401,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 37, 'Rev': 51,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 38, 'Rev': 1,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -427,6 +428,17 @@ class MainWindow(windows):
     def checkClient(self):
         pass 
     
+    def delete_event(self, widget, event, data=None):
+      self.on_end1_activate(None)
+      return False
+      
+    def destroy(self, widget, data=None):
+      print "destroy signal occurred"
+      self.on_end1_activate(None)
+      
+
+    
+      
     def on_end1_activate(self,event):
         print "exit cuon"
         #clean up the tmp-files
@@ -446,11 +458,7 @@ class MainWindow(windows):
             #print Exception, params
             pass
             
-            
-            
-        except Exception, params:
-            #print Exception, params
-            pass
+        self.on_logout1_activate(None)
             
         self.gtk_main_quit()
 
@@ -618,7 +626,7 @@ class MainWindow(windows):
     def on_logout1_activate(self, event):
         print 'Logout'
         try:
-            self.rpc.callRP('Databases.logout', self.oUser.getUserName()) 
+            self.rpc.callRP('Database.logout', self.oUser.getUserName()) 
         except:
             print 'Exception'
                 
@@ -1046,7 +1054,7 @@ class MainWindow(windows):
         print 'sChoice = ', sChoice
         
         liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice)
-        print 'Schedul by names: ', liDates
+        #print 'Schedul by names: ', liDates
         if liDates:
             lastRep = None
             lastSalesman = None
@@ -1078,7 +1086,7 @@ class MainWindow(windows):
 ##            
         
         liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All',sChoice)
-        print 'Schedul by schedul_date: ', liDates
+        #print 'Schedul by schedul_date: ', liDates
         if liDates:
             lastRep = None
             lastSalesman = None
@@ -1098,7 +1106,28 @@ class MainWindow(windows):
                 
                 iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + '-' +sTime2  +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] +' ###' +  `oneDate['id']`])   
                 
-        
+        # reps and Saleman
+        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'rep_salesman','All', sChoice)
+        #print 'Schedul by names: ', liDates
+        if liDates:
+            lastRep = None
+            lastSalesman = None
+            Schedulname = None
+            lastSchedulname = None
+            
+            iter = treestore.append(None,[_('Salesman')])
+            iter2 = None
+            iter3 = None
+            for oneDate in liDates:
+                Schedulname = oneDate['schedul_name']
+                if lastSchedulname != Schedulname:
+                    lastSchedulname = Schedulname
+                    iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
+                sTime  = self.getTimeString(oneDate['time_begin'] )
+                sTime2  = self.getTimeString(oneDate['time_end'] )
+                    
+                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + sTime + '-' +sTime2 +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] + ' ###' +  `oneDate['id']`])   
+                
         treeview.show()
         
         self.connectTree()
@@ -1231,6 +1260,9 @@ class MainWindow(windows):
             # self.gladeName = td.main_glade_name
 
             self.loadGlade('cuon.xml','window1')
+            self.win1.connect("delete_event", self.delete_event)
+            self.win1.connect("destroy", self.destroy)
+
  
         # Menu-items
        

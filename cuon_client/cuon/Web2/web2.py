@@ -55,7 +55,7 @@ class web2window(chooseWindows):
         #self.setStatusBar()
         #self.win1.maximize()
         self.allTables = allTables
-
+        self.ModulNumber = self.MN['Web2']
         self.EntriesWeb2 = 'web2.xml'
         
         self.loadEntries(self.EntriesWeb2)
@@ -67,23 +67,6 @@ class web2window(chooseWindows):
         self.singleWeb2.setTreeOrder('type,name')
         self.singleWeb2.setListHeader([_('Name'), _('Designation')])
         self.singleWeb2.setTree(self.xml.get_widget('tree1') )
-        self.singleWeb2.sWhere = "where ctype = 'html'"
-        
-
-        self.EntriesWebImages = 'web2_images.xml'
-        
-        self.loadEntries(self.EntriesWebImages)
-        
-        self.singleWebImages.setEntries(self.getDataEntries('web2_images.xml') )
-        self.singleWebImages.setGladeXml(self.xml)
-        self.singleWebImages.setTreeFields( ['name', 'designation'] )
-        self.singleWebImages.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleWebImages.setTreeOrder('type,name')
-        self.singleWebImages.setListHeader([_('Name'), _('Designation')])
-        self.singleWebImages.setTree(self.xml.get_widget('tree1') )
-        self.singleWebImages.sWhere = "where ctype = 'image'"
-        
-
   
 
         # set values for comboBox
@@ -186,48 +169,23 @@ class web2window(chooseWindows):
         self.singleWeb2.sWhere = 'where title ~* \'.*' + sTitle + '.*\' and designation ~* \'.*' + sDesi + '.*\''
         #self.out(self.singleWeb2.sWhere, self.ERROR)
         self.refreshTree()
-    def on_bEditData_clicked(self, event):
-        print 'bEditData'
-        self.on_edit1_activate(None)
-        iType = self.singleWeb2.firstRecord['type']
-        if iType in [0,1]:
-            sExt = 'html'
-            self.editFilename = self.mi.getRandomFilename('__dms.' + sExt )
-            print self.editFilename
-            try:
-                f = open(self.editFilename,'a')
-                f.write(self.singleWeb2.firstRecord['data'])
-                f.close()
-            except:
-                pass
-            os.system(self.dicUser['prefDMS']['exe']['html'] + ' ' + self.editFilename )
-        elif iType in [4]:
-            # edit image
-            pass
-
-    def on_bImportFile_clicked(self, event):
-        print event
-        filename = self.getWidget('fcImport').get_filename()
-        print filename
+   
         
-        
+    def on_bDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleWeb2.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleWeb2.ID})
+                
     
     def refreshTree(self):
         self.singleWeb2.disconnectTree()
         
         if self.tabOption == self.tabWeb2:
-            self.singleWeb2.sWhere = "where ctype = 'html'"
-            self.singleWeb2.cType = "html"
             
             self.singleWeb2.connectTree()
             self.singleWeb2.refreshTree()
-        elif self.tabOption == self.tabWebImages:
-            self.singleWebImages.sWhere = "where ctype = 'image'"
-            self.singleWebImages.cType = "image"
-
-            self.singleWebImages.connectTree()
-            self.singleWebImages.refreshTree()           
-
+      
             #self.singleWeb2.fillEntries(self.singleMisc.findSingleId())
 
 ##        elif self.tabOption == self.tabPartner:

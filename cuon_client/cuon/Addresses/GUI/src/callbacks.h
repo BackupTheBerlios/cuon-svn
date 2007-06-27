@@ -631,3 +631,19 @@ on_tvAddressInvoices_row_activated     (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
+
+void
+on_bPartnerPhoneCompany_clicked        (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bPartnerSip_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bPartnerSkype_clicked               (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_bPartnerPhone1_clicked              (GtkButton       *button,
+                                        gpointer         user_data);

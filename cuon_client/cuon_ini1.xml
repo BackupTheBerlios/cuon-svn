@@ -213,7 +213,11 @@
       <Entry-File>list_of_invoices.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_list_of_invoices.xml</Entry-FileValue>
     </Entries>
-    
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>inpayment.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_inpayment.xml</Entry-FileValue>
+    </Entries>
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>

@@ -739,6 +739,17 @@
       <comment></comment>
       
     </field>
+    <field>
+      <name>save_to_dir</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+      
+    </field>
     
     </table>
     

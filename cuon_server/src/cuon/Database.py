@@ -35,16 +35,16 @@ class Database(xmlrpc.XMLRPC, SQL):
             
         return v
     def saveValue(self, sKey, cKey):
-        self.out('py_saveValue cKey = ' + cKey)
+        #self.out('py_saveValue cKey = ' + cKey)
         sSql = "select skey from cuon where skey = '" + sKey + "'"
-        self.out('py_saveValue sSql = ' + `sKey`)
+        #self.out('py_saveValue sSql = ' + `sKey`)
         result = self.xmlrpc_executeNormalQuery(sSql)
-        self.out('py_saveValue result = ' + `result`)
+        #self.out('py_saveValue result = ' + `result`)
         if result != 'NONE':
            sSql = "update cuon set svalue = '" + cKey +"' where skey = '" + sKey + "'"
         else:
            sSql = "insert into cuon (skey, svalue) values ('" + sKey + "','" + cKey +"')"
-        self.out('py_saveValue sSql = ' + `sSql`)
+        #self.out('py_saveValue sSql = ' + `sSql`)
         result = self.xmlrpc_executeNormalQuery(sSql)
         return result
 
@@ -118,7 +118,13 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.saveObject('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             dicUserACL = self.getUserAcl(sUser) 
             self.saveObject('user_'+ sUser + '_dicUserACL' , dicUserACL)
- 
+            try:
+                f = open('/var/log/cuonlogin.log','a')
+                f.writeline ( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGIN: ' + sUser +'\n')
+                f.close()
+            except:
+                pass
+                
             #--self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
             #--self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)
             #context.exSaveInfoOfTable('user_' + sUser , s)
@@ -273,8 +279,19 @@ class Database(xmlrpc.XMLRPC, SQL):
 
 
     def xmlrpc_logout(self, sUser):
-        self.saveValue('user_' + sUser,{'SessionID':'0', 'endTime': 0})
-       
+        ok = True
+        self.openDB()
+        self.saveObject('user_'+ sUser + '_Session_ID' , 'TEST')
+        self.saveObject('user_'+ sUser + '_Session_endTime' , '0')
+        self.closeDB()    
+        #self.saveValue('user_' + sUser,{'SessionID':'0', 'endTime': 0})
+        try:
+            f = open('/var/log/cuonlogin.log','a')
+            f.writeline ( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGOUT: ' + sUser +'\n')
+            f.close()
+        except:
+            pass
+        return ok 
     def xmlrpc_createGroup(self, sGroup, dicUser):
         # check the group
         

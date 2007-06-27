@@ -719,6 +719,29 @@
       <default />
       <comment />
     </field>
+    
+          
+<field>
+      <name>sip</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>225</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>skype</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>225</size>
+      <default />
+      <comment />
+    </field>
+    
   </table>
   <!--table: address-->
   <table>

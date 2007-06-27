@@ -43,8 +43,10 @@ class Address(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All', sChoice = 'New'):
         value = None
+        rep_salesman = None
         result = 'NONE'
         sw = None
+        SQL = True
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
@@ -52,16 +54,23 @@ class Address(xmlrpc.XMLRPC, basics):
             #print cpServer.sections()
             
             value = self.getConfigOption('SHOW_SCHEDUL',dicUser['Name'], cpServer)
+                       
+            #print cpServer
+            #print cpServer.sections()
+            
+            rep_salesman = self.getConfigOption('SHOW_REP_SALESMAN',dicUser['Name'], cpServer)
             
         except Exception, params:
             print 'Error by Schedul Read user.cfg'
             print Exception, params
-        #print dicUser['Name']    
-        #print 'value = ', value
+        print dicUser['Name']    
+        print 'value = ', value
+        print 'rep_salesman = ', rep_salesman
         
             
         if value and value == 'NO':
             pass
+        
         elif value:
                 
                 
@@ -100,8 +109,13 @@ class Address(xmlrpc.XMLRPC, basics):
                 sW += ' and partner_schedul.process_status between 801 and 998 '
             elif sChoice == 'All':
                 pass
+            if OrderType == 'rep_salesman':
+                if rep_salesman == 'ALL':
+                    #print 'dicUser = ',  dicUser['Name']
+                    sW += " and address.rep_id = (select id from staff where cuon_username = '" + dicUser['Name'] + "') "
+                    sW += ' and address.salesman_id > 0'
                 
-            if value != 'ALL':
+            elif value != 'ALL':
                 liValue = value.split(',')
                 sW += ' and ( '
                 for sOptValue in liValue:
@@ -113,15 +127,22 @@ class Address(xmlrpc.XMLRPC, basics):
             sSql = sSql + self.getWhere(sW, dicUser,Prefix='partner_schedul.')
                 
                 
-            if OrderType == 'Name' :
+            if OrderType == 'Name' or OrderType == 'rep_salesman':
                 sSql = sSql + " order by schedul_name DESC, to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"') DESC , partner_schedul.schedul_time_begin DESC" 
             elif OrderType == 'Schedul' :
                 sSql = sSql + " order by to_date(partner_schedul.schedul_date , '" + dicUser['SQLDateFormat'] +"') DESC  , schedul_name DESC,  partner_schedul.schedul_time_begin DESC " 
             #print sSql    
-            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+            if OrderType == 'rep_salesman':
+                if not rep_salesman or rep_salesman == 'NO':
+                    SQL = False
+            if SQL:
+                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+                
         elif value == None:
             pass
-            
+        if OrderType == 'rep_salesman':
+                if not rep_salesman or rep_salesman == 'NO':
+                    result = 'NONE'
         return result
         
         

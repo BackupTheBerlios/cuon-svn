@@ -47,7 +47,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
                 
                 rows = conn.query(cSql.encode('utf-8'))
-                print 'rows = ', rows
+                #print 'rows = ', rows
                 #print 'Sql-Execute = ', ok
                 #conn.commit()
             ##        try:

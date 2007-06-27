@@ -244,7 +244,31 @@
         <sql_field>department</sql_field>
         <bg_color>0</bg_color>
         <fg_color>0</fg_color>
-    </entry>    
-    </table>
+    </entry>   
+    <entry>
+	<name>ePartnerSIP</name>
+	<type>textline</type>
+               <size>225</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>sip</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+          </entry>
+<entry>
+	<name>ePartnerSkype</name>
+	<type>textline</type>
+               <size>225</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>skype</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
+
+      </table>
 
   </entries_for_table>

@@ -59,20 +59,42 @@ def start():
     liResult = oWeb2.getDirectoryStructure()
     if liResult and liResult != 'NONE':
         for result in liResult:
+            result['data'] = baseSettings.rebuild(result['data'])
             liDirs = result['data'].split(',')
             for sDir in liDirs:
                 sKey = sDir[sDir.rfind('/')+1:]
                 sDir = baseSettings.WEBPATH + sDir
+                print 'sDir = ', sDir
                 sCommand = 'if [ ! -d ' + sDir + ' ] ; then mkdir ' + sDir + ' ; fi '
+                print sCommand
                 status,output = commands.getstatusoutput(sCommand)
                 oDirs[sKey] = sDir
     #now save Images
-
+    liResult = oWeb2.getImageIDs()
+    if liResult and liResult != 'NONE':
+        for result in liResult:
+            
+            id = result['id']
+            print id
+            image = oWeb2.getSiteElementByID(id)[0]
+            sDir = image['save_to_dir'].strip()
+            name = image['name'].strip()
+            if not sDir[len(sDir)-1] == '/':
+                sDir += '/'
+            print name
+            print sDir
+            filename = baseSettings.WEBPATH + sDir + name
+            print filename
+            f = open(filename,'wb')
+            f.write(baseSettings.rebuild(image['data']))
+            f.close
+            
+            
 def getRootSite():
     #child_images = static.File('images/')
     roots = oWeb2.getRootElement()
     liRootChilds = []
-    rootSite = roots['data']
+    rootSite = baseSettings.rebuild(roots['data'])
     rootChilds = roots['linked_keys']
     if rootChilds:
         liRootChilds = rootChilds.split(',')
@@ -80,6 +102,8 @@ def getRootSite():
     
     for newDir in oDirs.keys():
         liRootChilds.append(newDir)
+    print liRootChilds
+    
     rootClass = 'class Root(object):\n'
     rootClass +='\timplements(inevow.IResource)\n'
     rootClass +='\n'
@@ -139,7 +163,7 @@ def getHtmlSite(dicHtmlSite):
     
     htmlClass +='\t\t\n'
     htmlClass +='\tdef renderHTTP(self, ctx):\n'
-    htmlClass +='\t\treturn """' + dicHtmlSite['data'] + '""" \n'
+    htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
     #print '-------------------------------------------------------------------'
     #print htmlClass
     #print '-------------------------------------------------------------------'
@@ -191,7 +215,7 @@ for sName in liSites:
         for id in IDs:
             dicHtmlSite = oWeb2.getSiteElementByID(id['id'])
             if dicHtmlSite and dicHtmlSite != 'NONE':
-                print 'dicHtmlSite = ', dicHtmlSite
+                #print 'dicHtmlSite = ', dicHtmlSite
                 htmlClass = getHtmlSite(dicHtmlSite[0])
                 exec (htmlClass)
                 liRootKeys = dicHtmlSite[0]['root_keys'].split(',')

@@ -611,8 +611,6 @@ create_AddressMainwindow (void)
   GtkWidget *lPartnerZip;
   GtkWidget *ePartnerZip;
   GtkWidget *lpartnerCounty;
-  GtkWidget *ePartnerPhone2;
-  GtkWidget *ePartnerPhone1;
   GtkWidget *lPartnerPhone2;
   GtkWidget *lpartnerPhone1;
   GtkWidget *ePartnerFirstname;
@@ -624,17 +622,17 @@ create_AddressMainwindow (void)
   GtkWidget *label16;
   GtkWidget *label15;
   GtkWidget *hbox17;
+  GtkWidget *hbox52;
   GtkWidget *ePartnerPhone;
+  GtkWidget *bPartnerPhoneCompany;
+  GtkWidget *alignment7;
+  GtkWidget *hbox54;
+  GtkWidget *image1276;
+  GtkWidget *label94;
   GtkWidget *hbox23;
   GtkWidget *bPartnerLetter;
   GtkWidget *bPartnerContact;
   GtkWidget *bShowPartnerDMS;
-  GtkWidget *eBirthday;
-  GtkWidget *ePartnerFaxPrivate;
-  GtkWidget *label23;
-  GtkWidget *lPartnerFaxPrivate;
-  GtkWidget *lPartnerInternet;
-  GtkWidget *lPartnerEmail;
   GtkWidget *label59;
   GtkWidget *ePartnerHandy;
   GtkWidget *hbox3;
@@ -645,14 +643,20 @@ create_AddressMainwindow (void)
   GtkWidget *label22;
   GtkWidget *ePartnerState;
   GtkWidget *bGeneratePartner;
-  GtkWidget *label66;
-  GtkWidget *ePartnerNewsletter;
   GtkWidget *hbox37;
-  GtkWidget *ePartnerEmail;
-  GtkWidget *bSendPartnerEmail;
+  GtkWidget *ePartnerSIP;
+  GtkWidget *bPartnerSip;
+  GtkWidget *alignment9;
+  GtkWidget *hbox56;
+  GtkWidget *image1278;
+  GtkWidget *label96;
   GtkWidget *hbox38;
-  GtkWidget *ePartnerHomepage;
-  GtkWidget *bPartnerViewHomepage;
+  GtkWidget *ePartnerSkype;
+  GtkWidget *bPartnerSkype;
+  GtkWidget *alignment10;
+  GtkWidget *hbox57;
+  GtkWidget *image1279;
+  GtkWidget *label97;
   GtkWidget *label57;
   GtkWidget *lPartnerFax;
   GtkWidget *lPartnerPhone;
@@ -662,6 +666,36 @@ create_AddressMainwindow (void)
   GtkWidget *label86;
   GtkWidget *eDepartment;
   GtkWidget *eJob;
+  GtkWidget *label23;
+  GtkWidget *eBirthday;
+  GtkWidget *label66;
+  GtkWidget *ePartnerNewsletter;
+  GtkWidget *lPartnerFaxPrivate;
+  GtkWidget *ePartnerFaxPrivate;
+  GtkWidget *lPartnerInternet;
+  GtkWidget *lPartnerEmail;
+  GtkWidget *label91;
+  GtkWidget *label92;
+  GtkWidget *hbox48;
+  GtkWidget *ePartnerHomepage;
+  GtkWidget *bPartnerViewHomepage;
+  GtkWidget *hbox49;
+  GtkWidget *ePartnerEmail;
+  GtkWidget *bSendPartnerEmail;
+  GtkWidget *hbox50;
+  GtkWidget *ePartnerPhone1;
+  GtkWidget *bPartnerPhone1;
+  GtkWidget *alignment6;
+  GtkWidget *hbox53;
+  GtkWidget *image1275;
+  GtkWidget *label93;
+  GtkWidget *hbox51;
+  GtkWidget *ePartnerPhone2;
+  GtkWidget *bpartnerPhone2;
+  GtkWidget *alignment8;
+  GtkWidget *hbox55;
+  GtkWidget *image1277;
+  GtkWidget *label95;
   GtkWidget *lPartner;
   GtkWidget *table8;
   GtkWidget *vbox3;
@@ -1754,18 +1788,6 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (lpartnerCounty), 0, 0);
 
-  ePartnerPhone2 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone2);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone2, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerPhone1 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone1);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerPhone1, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
   lPartnerPhone2 = gtk_label_new (_("Phone 2"));
   gtk_widget_show (lPartnerPhone2);
   gtk_table_attach (GTK_TABLE (table2), lPartnerPhone2, 2, 3, 1, 2,
@@ -1840,9 +1862,33 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
+  hbox52 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox52);
+  gtk_box_pack_start (GTK_BOX (hbox17), hbox52, TRUE, TRUE, 0);
+
   ePartnerPhone = gtk_entry_new ();
   gtk_widget_show (ePartnerPhone);
-  gtk_box_pack_start (GTK_BOX (hbox17), ePartnerPhone, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox52), ePartnerPhone, TRUE, TRUE, 0);
+
+  bPartnerPhoneCompany = gtk_button_new ();
+  gtk_widget_show (bPartnerPhoneCompany);
+  gtk_box_pack_start (GTK_BOX (hbox52), bPartnerPhoneCompany, FALSE, FALSE, 0);
+
+  alignment7 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment7);
+  gtk_container_add (GTK_CONTAINER (bPartnerPhoneCompany), alignment7);
+
+  hbox54 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox54);
+  gtk_container_add (GTK_CONTAINER (alignment7), hbox54);
+
+  image1276 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1276);
+  gtk_box_pack_start (GTK_BOX (hbox54), image1276, FALSE, FALSE, 0);
+
+  label94 = gtk_label_new_with_mnemonic (_("Connect"));
+  gtk_widget_show (label94);
+  gtk_box_pack_start (GTK_BOX (hbox54), label94, FALSE, FALSE, 0);
 
   hbox23 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox23);
@@ -1863,49 +1909,6 @@ create_AddressMainwindow (void)
   gtk_table_attach (GTK_TABLE (table2), bShowPartnerDMS, 3, 4, 13, 14,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-
-  eBirthday = gtk_entry_new ();
-  gtk_widget_show (eBirthday);
-  gtk_table_attach (GTK_TABLE (table2), eBirthday, 3, 4, 7, 8,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerFaxPrivate = gtk_entry_new ();
-  gtk_widget_show (ePartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFaxPrivate, 3, 4, 5, 6,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label23 = gtk_label_new (_("Birthday"));
-  gtk_widget_show (label23);
-  gtk_table_attach (GTK_TABLE (table2), label23, 2, 3, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0);
-
-  lPartnerFaxPrivate = gtk_label_new (_("Fax"));
-  gtk_widget_show (lPartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerFaxPrivate, 2, 3, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerFaxPrivate), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerFaxPrivate), 0, 0);
-
-  lPartnerInternet = gtk_label_new (_("Homepage"));
-  gtk_widget_show (lPartnerInternet);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerInternet, 2, 3, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerInternet), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerInternet), 0, 0);
-
-  lPartnerEmail = gtk_label_new (_("E-Mail"));
-  gtk_widget_show (lPartnerEmail);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerEmail, 2, 3, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerEmail), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerEmail), 0, 0);
 
   label59 = gtk_label_new (_("Handy"));
   gtk_widget_show (label59);
@@ -1960,32 +1963,35 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label66 = gtk_label_new (_("Newsletter"));
-  gtk_widget_show (label66);
-  gtk_table_attach (GTK_TABLE (table2), label66, 2, 3, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label66), 0, 0.5);
-
-  ePartnerNewsletter = gtk_entry_new ();
-  gtk_widget_show (ePartnerNewsletter);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerNewsletter, 3, 4, 6, 7,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
   hbox37 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox37);
   gtk_table_attach (GTK_TABLE (table2), hbox37, 3, 4, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  ePartnerEmail = gtk_entry_new ();
-  gtk_widget_show (ePartnerEmail);
-  gtk_box_pack_start (GTK_BOX (hbox37), ePartnerEmail, TRUE, TRUE, 0);
+  ePartnerSIP = gtk_entry_new ();
+  gtk_widget_show (ePartnerSIP);
+  gtk_box_pack_start (GTK_BOX (hbox37), ePartnerSIP, TRUE, TRUE, 0);
 
-  bSendPartnerEmail = gtk_button_new_with_mnemonic (_("send Email"));
-  gtk_widget_show (bSendPartnerEmail);
-  gtk_box_pack_start (GTK_BOX (hbox37), bSendPartnerEmail, FALSE, FALSE, 0);
+  bPartnerSip = gtk_button_new ();
+  gtk_widget_show (bPartnerSip);
+  gtk_box_pack_start (GTK_BOX (hbox37), bPartnerSip, FALSE, FALSE, 0);
+
+  alignment9 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment9);
+  gtk_container_add (GTK_CONTAINER (bPartnerSip), alignment9);
+
+  hbox56 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox56);
+  gtk_container_add (GTK_CONTAINER (alignment9), hbox56);
+
+  image1278 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1278);
+  gtk_box_pack_start (GTK_BOX (hbox56), image1278, FALSE, FALSE, 0);
+
+  label96 = gtk_label_new_with_mnemonic (_("Connect"));
+  gtk_widget_show (label96);
+  gtk_box_pack_start (GTK_BOX (hbox56), label96, FALSE, FALSE, 0);
 
   hbox38 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox38);
@@ -1993,13 +1999,29 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  ePartnerHomepage = gtk_entry_new ();
-  gtk_widget_show (ePartnerHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox38), ePartnerHomepage, TRUE, TRUE, 0);
+  ePartnerSkype = gtk_entry_new ();
+  gtk_widget_show (ePartnerSkype);
+  gtk_box_pack_start (GTK_BOX (hbox38), ePartnerSkype, TRUE, TRUE, 0);
 
-  bPartnerViewHomepage = gtk_button_new_with_mnemonic (_("View"));
-  gtk_widget_show (bPartnerViewHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox38), bPartnerViewHomepage, FALSE, FALSE, 0);
+  bPartnerSkype = gtk_button_new ();
+  gtk_widget_show (bPartnerSkype);
+  gtk_box_pack_start (GTK_BOX (hbox38), bPartnerSkype, FALSE, FALSE, 0);
+
+  alignment10 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment10);
+  gtk_container_add (GTK_CONTAINER (bPartnerSkype), alignment10);
+
+  hbox57 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox57);
+  gtk_container_add (GTK_CONTAINER (alignment10), hbox57);
+
+  image1279 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1279);
+  gtk_box_pack_start (GTK_BOX (hbox57), image1279, FALSE, FALSE, 0);
+
+  label97 = gtk_label_new_with_mnemonic (_("Connect"));
+  gtk_widget_show (label97);
+  gtk_box_pack_start (GTK_BOX (hbox57), label97, FALSE, FALSE, 0);
 
   label57 = gtk_label_new (_("letter-address"));
   gtk_widget_show (label57);
@@ -2059,6 +2081,164 @@ create_AddressMainwindow (void)
   gtk_table_attach (GTK_TABLE (table2), eJob, 1, 2, 8, 9,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+
+  label23 = gtk_label_new (_("Birthday"));
+  gtk_widget_show (label23);
+  gtk_table_attach (GTK_TABLE (table2), label23, 2, 3, 9, 10,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0);
+
+  eBirthday = gtk_entry_new ();
+  gtk_widget_show (eBirthday);
+  gtk_table_attach (GTK_TABLE (table2), eBirthday, 3, 4, 9, 10,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label66 = gtk_label_new (_("Newsletter"));
+  gtk_widget_show (label66);
+  gtk_table_attach (GTK_TABLE (table2), label66, 2, 3, 8, 9,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label66), 0, 0.5);
+
+  ePartnerNewsletter = gtk_entry_new ();
+  gtk_widget_show (ePartnerNewsletter);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerNewsletter, 3, 4, 8, 9,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  lPartnerFaxPrivate = gtk_label_new (_("Fax"));
+  gtk_widget_show (lPartnerFaxPrivate);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerFaxPrivate, 2, 3, 7, 8,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerFaxPrivate), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerFaxPrivate), 0, 0);
+
+  ePartnerFaxPrivate = gtk_entry_new ();
+  gtk_widget_show (ePartnerFaxPrivate);
+  gtk_table_attach (GTK_TABLE (table2), ePartnerFaxPrivate, 3, 4, 7, 8,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  lPartnerInternet = gtk_label_new (_("Homepage"));
+  gtk_widget_show (lPartnerInternet);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerInternet, 2, 3, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerInternet), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerInternet), 0, 0);
+
+  lPartnerEmail = gtk_label_new (_("E-Mail"));
+  gtk_widget_show (lPartnerEmail);
+  gtk_table_attach (GTK_TABLE (table2), lPartnerEmail, 2, 3, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (lPartnerEmail), GTK_JUSTIFY_CENTER);
+  gtk_misc_set_alignment (GTK_MISC (lPartnerEmail), 0, 0);
+
+  label91 = gtk_label_new (_("SIP"));
+  gtk_widget_show (label91);
+  gtk_table_attach (GTK_TABLE (table2), label91, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label91), 0, 0.5);
+
+  label92 = gtk_label_new (_("Skype"));
+  gtk_widget_show (label92);
+  gtk_table_attach (GTK_TABLE (table2), label92, 2, 3, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label92), 0, 0.5);
+
+  hbox48 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox48);
+  gtk_table_attach (GTK_TABLE (table2), hbox48, 3, 4, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePartnerHomepage = gtk_entry_new ();
+  gtk_widget_show (ePartnerHomepage);
+  gtk_box_pack_start (GTK_BOX (hbox48), ePartnerHomepage, TRUE, TRUE, 0);
+
+  bPartnerViewHomepage = gtk_button_new_with_mnemonic (_("View"));
+  gtk_widget_show (bPartnerViewHomepage);
+  gtk_box_pack_start (GTK_BOX (hbox48), bPartnerViewHomepage, FALSE, FALSE, 0);
+
+  hbox49 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox49);
+  gtk_table_attach (GTK_TABLE (table2), hbox49, 3, 4, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePartnerEmail = gtk_entry_new ();
+  gtk_widget_show (ePartnerEmail);
+  gtk_box_pack_start (GTK_BOX (hbox49), ePartnerEmail, TRUE, TRUE, 0);
+
+  bSendPartnerEmail = gtk_button_new_with_mnemonic (_("send Email"));
+  gtk_widget_show (bSendPartnerEmail);
+  gtk_box_pack_start (GTK_BOX (hbox49), bSendPartnerEmail, FALSE, FALSE, 0);
+
+  hbox50 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox50);
+  gtk_table_attach (GTK_TABLE (table2), hbox50, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePartnerPhone1 = gtk_entry_new ();
+  gtk_widget_show (ePartnerPhone1);
+  gtk_box_pack_start (GTK_BOX (hbox50), ePartnerPhone1, TRUE, TRUE, 0);
+
+  bPartnerPhone1 = gtk_button_new ();
+  gtk_widget_show (bPartnerPhone1);
+  gtk_box_pack_start (GTK_BOX (hbox50), bPartnerPhone1, FALSE, FALSE, 0);
+
+  alignment6 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment6);
+  gtk_container_add (GTK_CONTAINER (bPartnerPhone1), alignment6);
+
+  hbox53 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox53);
+  gtk_container_add (GTK_CONTAINER (alignment6), hbox53);
+
+  image1275 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1275);
+  gtk_box_pack_start (GTK_BOX (hbox53), image1275, FALSE, FALSE, 0);
+
+  label93 = gtk_label_new_with_mnemonic (_("Connect"));
+  gtk_widget_show (label93);
+  gtk_box_pack_start (GTK_BOX (hbox53), label93, FALSE, FALSE, 0);
+
+  hbox51 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox51);
+  gtk_table_attach (GTK_TABLE (table2), hbox51, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePartnerPhone2 = gtk_entry_new ();
+  gtk_widget_show (ePartnerPhone2);
+  gtk_box_pack_start (GTK_BOX (hbox51), ePartnerPhone2, TRUE, TRUE, 0);
+
+  bpartnerPhone2 = gtk_button_new ();
+  gtk_widget_show (bpartnerPhone2);
+  gtk_box_pack_start (GTK_BOX (hbox51), bpartnerPhone2, FALSE, FALSE, 0);
+
+  alignment8 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment8);
+  gtk_container_add (GTK_CONTAINER (bpartnerPhone2), alignment8);
+
+  hbox55 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox55);
+  gtk_container_add (GTK_CONTAINER (alignment8), hbox55);
+
+  image1277 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1277);
+  gtk_box_pack_start (GTK_BOX (hbox55), image1277, FALSE, FALSE, 0);
+
+  label95 = gtk_label_new_with_mnemonic (_("Connect"));
+  gtk_widget_show (label95);
+  gtk_box_pack_start (GTK_BOX (hbox55), label95, FALSE, FALSE, 0);
 
   lPartner = gtk_label_new (_("Partner"));
   gtk_widget_show (lPartner);
@@ -2931,6 +3111,9 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bSearchTOP, "clicked",
                     G_CALLBACK (on_bSearchTOP_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bPartnerPhoneCompany, "clicked",
+                    G_CALLBACK (on_bPartnerPhoneCompany_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bPartnerLetter, "clicked",
                     G_CALLBACK (on_bPartnerLetter_clicked),
                     NULL);
@@ -2943,11 +3126,20 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bGeneratePartner, "clicked",
                     G_CALLBACK (on_bGeneratePartner_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bSendPartnerEmail, "clicked",
-                    G_CALLBACK (on_bSendPartnerEmail_clicked),
+  g_signal_connect ((gpointer) bPartnerSip, "clicked",
+                    G_CALLBACK (on_bPartnerSip_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bPartnerSkype, "clicked",
+                    G_CALLBACK (on_bPartnerSkype_clicked),
                     NULL);
   g_signal_connect ((gpointer) bPartnerViewHomepage, "clicked",
                     G_CALLBACK (on_bPartnerViewHomepage_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSendPartnerEmail, "clicked",
+                    G_CALLBACK (on_bSendPartnerEmail_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bPartnerPhone1, "clicked",
+                    G_CALLBACK (on_bPartnerPhone1_clicked),
                     NULL);
   g_signal_connect ((gpointer) comboboxentry_entry1, "key_press_event",
                     G_CALLBACK (on_comboboxentry_entry1_key_press_event),
@@ -3246,8 +3438,6 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerZip, "lPartnerZip");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerZip, "ePartnerZip");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerCounty, "lpartnerCounty");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone2, "ePartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone1, "ePartnerPhone1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone2, "lPartnerPhone2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerPhone1, "lpartnerPhone1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFirstname, "ePartnerFirstname");
@@ -3259,17 +3449,17 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label16, "label16");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox17, "hbox17");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox52, "hbox52");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone, "ePartnerPhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerPhoneCompany, "bPartnerPhoneCompany");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment7, "alignment7");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox54, "hbox54");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1276, "image1276");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label94, "label94");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox23, "hbox23");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerLetter, "bPartnerLetter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerContact, "bPartnerContact");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowPartnerDMS, "bShowPartnerDMS");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBirthday, "eBirthday");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFaxPrivate, "ePartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label23, "label23");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFaxPrivate, "lPartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerInternet, "lPartnerInternet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerEmail, "lPartnerEmail");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label59, "label59");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHandy, "ePartnerHandy");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox3, "hbox3");
@@ -3280,14 +3470,20 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label22, "label22");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerState, "ePartnerState");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bGeneratePartner, "bGeneratePartner");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label66, "label66");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerNewsletter, "ePartnerNewsletter");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox37, "hbox37");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerEmail, "ePartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendPartnerEmail, "bSendPartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerSIP, "ePartnerSIP");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerSip, "bPartnerSip");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment9, "alignment9");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox56, "hbox56");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1278, "image1278");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label96, "label96");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox38, "hbox38");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHomepage, "ePartnerHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerViewHomepage, "bPartnerViewHomepage");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerSkype, "ePartnerSkype");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerSkype, "bPartnerSkype");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment10, "alignment10");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox57, "hbox57");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1279, "image1279");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label97, "label97");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label57, "label57");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFax, "lPartnerFax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone, "lPartnerPhone");
@@ -3297,6 +3493,36 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label86, "label86");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eDepartment, "eDepartment");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eJob, "eJob");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label23, "label23");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBirthday, "eBirthday");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label66, "label66");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerNewsletter, "ePartnerNewsletter");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFaxPrivate, "lPartnerFaxPrivate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFaxPrivate, "ePartnerFaxPrivate");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerInternet, "lPartnerInternet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerEmail, "lPartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label91, "label91");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label92, "label92");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox48, "hbox48");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHomepage, "ePartnerHomepage");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerViewHomepage, "bPartnerViewHomepage");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox49, "hbox49");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerEmail, "ePartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendPartnerEmail, "bSendPartnerEmail");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox50, "hbox50");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone1, "ePartnerPhone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerPhone1, "bPartnerPhone1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment6, "alignment6");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox53, "hbox53");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1275, "image1275");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label93, "label93");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox51, "hbox51");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone2, "ePartnerPhone2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bpartnerPhone2, "bpartnerPhone2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment8, "alignment8");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox55, "hbox55");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1277, "image1277");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label95, "label95");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartner, "lPartner");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table8, "table8");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox3, "vbox3");

@@ -25,7 +25,17 @@
       <fg_color>0</fg_color>
       
     </entry>
-
+    <entry>
+      <name>eSaveToDir</name>
+      <type>textline</type>
+      <size>100</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>save_to_dir</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
     <entry>
       <name>cbType</name>
       <type>textline</type>
@@ -37,17 +47,7 @@
       <fg_color>0</fg_color>
       
     </entry>
-   <entry>
-      <name>tvData</name>
-      <type>textfield</type>
-      <size>0</size>
-      <verify_type>text</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>data</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-      
-    </entry>
+  
     <entry>
       <name>eLinkedTo</name>
       <type>textfield</type>
