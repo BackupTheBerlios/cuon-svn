@@ -317,6 +317,24 @@ class Order(xmlrpc.XMLRPC, basics):
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
         
+        
+    def getListOfInpayment( self, dicOrder, dicUser ):
+        dBegin = datetime.fromtimestamp(dicOrder['dBegin'])
+        dEnd = datetime.fromtimestamp(dicOrder['dEnd'])
+        print  dBegin, dEnd
+        
+        sSql = ' select in_payment.invoice_number as invoice_number, in_payment.inpayment as inpayment, '
+        sSql += 'in_payment.date_of_paid as date_of_paid, in_payment.order_id as order_id, '
+        sSql += "list_of_invoices.date_of_invoice, "
+        sSql += 'address.lastname as lastname, address.city as city '
+        sSql += ' from in_payment, orderbook, address, list_of_invoices where  orderbook.id =  in_payment.order_id and address.id = orderbook.addressnumber '
+        sSql += " and in_payment.date_of_paid between '" + dBegin.strftime('%Y-%m-%d') + "' and '" + dEnd.strftime('%Y-%m-%d') +"' " 
+        sSql += " and list_of_invoices.invoice_number = to_number(in_payment.invoice_number,'999999999') "
+        sSql += self.getWhere(None,dicUser,2,'in_payment.')
+        sSql += ' order by in_payment.date_of_paid ' 
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+        
     def xmlrpc_getOrderForAddress(self, address_id, dicUser):
         sSql = ' select id, number,designation, orderedat from orderbook '
         sSql += " where addressnumber = " + `address_id` + " "

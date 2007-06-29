@@ -137,19 +137,37 @@ class Report(xmlrpc.XMLRPC, basics):
         
         return self.report_server.ReportServer.createReport(repData)
             
-    def xmlrpc_server_order_list_of_invoices(self, dicOrder, dicUser):
+    def xmlrpc_server_list_list_of_invoices(self, dicExtraData, dicUser):
         print 'report-server = ', `self.report_server`
-        import Reports.report_order_list_of_invoices
+        import Reports.report_list_list_of_invoices
         import Order
+        oOrder = Order.Order()
         
         print "startReport"
-        oOrder = Order.Order()
-        oReports = Reports.report_order_list_of_invoices.report_order_list_of_invoices()
-        repData = oReports.getReportData(dicOrder, dicUser, oOrder, self.ReportDefs)
+        oReports = Reports.report_list_list_of_invoices.report_list_list_of_invoices()
+        repData = oReports.getReportData(dicExtraData, dicUser, oOrder, self.ReportDefs)
         #print '\n\n'
         #print 'get repData'
         #print '\n'
-        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicOrder, dicUser)
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicExtraData, dicUser)
+        #print '--> Rep-Data = ', repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+            
+    def xmlrpc_server_list_of_inpayment(self, dicExtraData, dicUser):
+        print 'report-server = ', `self.report_server`
+        import Reports.report_list_of_inpayment
+        import Order
+        oOrder = Order.Order()
+        
+        print "startReport"
+        oOrder = Order.Order()
+        oReports = Reports.report_list_of_inpayment.report_list_of_inpayment()
+        repData = oReports.getReportData(dicExtraData, dicUser, oOrder, self.ReportDefs)
+        #print '\n\n'
+        #print 'get repData'
+        #print '\n'
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicExtraData, dicUser)
         #print '--> Rep-Data = ', repData
         
         return self.report_server.ReportServer.createReport(repData)

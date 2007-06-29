@@ -624,7 +624,13 @@
       <Report-FileValue>../usr/share/cuon/report/finances_cab_monthly1.xml</Report-FileValue>
     </ReportEntries>
   </Report_Init_Files>
-  
+  <Report_Init_Files>	
+    <ReportEntries>
+      <Report-Name>cuon</Report-Name>	
+      <Report-File>list_list_of_invoices.xml</Report-File>
+      <Report-FileValue>../usr/share/cuon/report/list_list_of_invoices.xml</Report-FileValue>
+    </ReportEntries>
+  </Report_Init_Files>
  <Report_Init_Files>	
     <ReportEntries>
       <Report-Name>cuon</Report-Name>	

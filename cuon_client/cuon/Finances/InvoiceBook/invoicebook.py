@@ -92,7 +92,7 @@ class invoicebookwindow(windows):
 
                
         # seperate Menus
-        self.addEnabledMenuItems('ListOfInvoice','list_of_invoices')
+        self.addEnabledMenuItems('ListOfInvoice','list_of_invoices1')
         self.addEnabledMenuItems('Inpayment','inpayment1')
           
 
@@ -177,15 +177,15 @@ class invoicebookwindow(windows):
             
         
     def printListOfInvoices(self, dBegin, dEnd):
-        dicOrder = {}
+        dicExtraData = {}
         print ' start List of Invoices printing'
-        dicOrder['dBegin'] = dBegin
-        dicOrder['dEnd'] = dEnd
+        dicExtraData['dBegin'] = dBegin
+        dicExtraData['dEnd'] = dEnd
         
-        print 'dicOrder = ', dicOrder
+        print 'dicOrder = ', dicExtraData
         
-        Pdf = self.rpc.callRP('Report.server_order_list_of_invoices', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser,'INVOICE')
+        Pdf = self.rpc.callRP('Report.server_list_list_of_invoices', dicExtraData, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
 
 #Menu Inpayment
   
@@ -209,6 +209,27 @@ class invoicebookwindow(windows):
         self.out( "delete invoicebook v2")
         self.singleInpayment.deleteRecord()
 
+    def on_inpayment_this_month1_activate(self, event):
+        dBegin = self.getFirstDayOfMonthAsSeconds()
+        dEnd = self.getLastDayOfMonthAsSeconds()
+        print dBegin,dEnd
+        self.printListOfInpayment(dBegin,dEnd)
+    def on_inpayment_last_month1_activate(self, event):
+        dBegin, dEnd = self.getFirstLastDayOfLastMonthAsSeconds()
+        print dBegin,dEnd
+        self.printListOfInpayment(dBegin,dEnd)
+        
+    def printListOfInpayment(self, dBegin, dEnd):
+        print 'print list this month'
+        dicExtraData = {}
+        print ' start List of Invoices printing'
+        dicExtraData['dBegin'] = dBegin
+        dicExtraData['dEnd'] = dEnd
+        
+        print 'dicOrder = ', dicExtraData
+        
+        Pdf = self.rpc.callRP('Report.server_list_of_inpayment', dicExtraData, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
 
     # Buttons
  

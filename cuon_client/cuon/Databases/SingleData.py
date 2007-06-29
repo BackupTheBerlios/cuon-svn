@@ -381,10 +381,14 @@ class SingleData(gladeXml, logs):
         self.store = store01 
 
     def fillTree(self, tree1=None, listEntries=None):
-        
-        model = self.getTreeModel(listEntries)
-        model.setColumns(tree1, self.listHeader)
-       
+        try:
+            tree1.freeze_child_notify()
+            model = self.getTreeModel(listEntries)
+            model.setColumns(tree1, self.listHeader)
+            tree1.thaw_child_notify()
+        except Exception, params:
+            print Exception, params
+            
         #iter = model.get_iter_first()
         #selection = tree1.get_selection()
         #selection.set_selection(iter)
@@ -397,6 +401,20 @@ class SingleData(gladeXml, logs):
             model.setStore(self.store)
             self.tree1.set_model(model.createModel(listEntries))
         return model
+    
+##    def getTreeModel(self, listEntries):
+##        model = cuon.Databases.SingleDataTreeModel.SingleDataTreeModel()
+##        retmodel = model
+##        if self.store:
+##            
+##            model.setStore(self.store)
+##            smodel = model.createModel(listEntries)
+##
+##            treemodelsort = gtk.TreeModelSort(smodel)
+##
+##            self.tree1.set_model(treemodelsort)
+##            
+##        return model
 
     # Entries
 

@@ -34,6 +34,7 @@ class SingleDataTreeModel:
         
 
     def createModel(self, data):
+        
         self.store.clear()     
         for item in data:
             iter = self.store.append()

@@ -18,7 +18,7 @@ from report_basics import report_basics
 
 
 
-class report_order_list_of_invoices(report_basics):
+class report_list_list_of_invoices(report_basics):
     def __init__(self):
         report_basics.__init__(self)
         
@@ -35,15 +35,15 @@ class report_order_list_of_invoices(report_basics):
         
     
     
-    def getReportData(self, dicOrder, dicUser, oOrder, reportDefs ):
+    def getReportData(self, dicExtraData, dicUser, oOrder, reportDefs ):
         
         
-        self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('ListOfInvoices-') + `dicOrder['dBegin']` + '-' + `dicOrder['dEnd']` + '.pdf' 
+        self.fileName = reportDefs['DocumentPathOrderInvoice'] + '/' +_('ListOfInvoices-') + `dicExtraData['dBegin']` + '-' + `dicExtraData['dEnd']` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
-        print dicOrder
+        print dicExtraData
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-        self.dicResults['Info'] = dicOrder
-        dicResult =  oOrder.getListOfInvoices( dicOrder, dicUser )
+        self.dicResults['Info'] = dicExtraData
+        dicResult =  oOrder.getListOfInvoices( dicExtraData, dicUser )
         print "result by OrderListInvoices: ", dicResult
         if dicResult != 'NONE':
 ##            for i in dicResult:
