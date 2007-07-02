@@ -251,8 +251,9 @@ class dumps:
                 
             elif type == 'date':
                 #print 'value by date', value
+                print 'date1',  value
                 retvalue = time.strptime(value, self.dicUser['DateformatString'])
-                self.printOut( 'dt2 = ', retvalue)
+                print 'dt2 = ', retvalue
                 
                         
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
@@ -263,7 +264,8 @@ class dumps:
                     #    sValue = dt.strftime(self.sDateFormat)
                     
             elif type == 'formatedDate':
-                #print 'value by formatedDate', value
+                print 'value by formatedDate', value
+
                 checkvalue = time.strptime(value, self.dicUser['DateformatString'])
                 self.printOut( 'dtFormated2 = ', checkvalue)
                 if checkvalue[0] == 1900 and checkvalue[1] == 1 and checkvalue[2] == 1:
@@ -273,7 +275,7 @@ class dumps:
                     retValue = value
                     
             elif type == 'toStringDate':
-                #print 'value by toStringDate', value
+                print 'value by toStringDate', value
                 retValue = time.strftime(self.dicUser['DateformatString'],value)
                 self.printOut( 'dt5 = ', retValue) 
                 

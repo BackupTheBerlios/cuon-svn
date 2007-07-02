@@ -122,6 +122,15 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('POSTGRES','POSTGRES_USER')
             if value:
                 self.POSTGRES_USER = value
+                
+            # Web2
+            value = self.getConfigOption('WEB2','HOST')
+            if value:
+                self.WEB_HOST2 = value
+            value = self.getConfigOption('WEB2','PORT')
+            if value:
+                self.WEB_PORT2 = int(value)
+                    
             # OSCOMMERCE
             value = self.getConfigOption('OSCOMMERCE','OSC_HOST')
             if value:

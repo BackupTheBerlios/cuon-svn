@@ -550,6 +550,7 @@ class SingleData(gladeXml, logs):
                         
                         #sValue = sValue.encode(self.sCoding)
                         self.printOut( 'date string = ', sValue)
+                        
                         sValue = self.getCheckedValue(sValue, 'formatedDate')
                         
                         #dt = time.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")

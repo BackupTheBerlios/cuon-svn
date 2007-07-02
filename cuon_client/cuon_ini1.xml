@@ -218,6 +218,11 @@
       <Entry-File>inpayment.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_inpayment.xml</Entry-FileValue>
     </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>residue.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_residue.xml</Entry-FileValue>
+    </Entries>
   <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>clients.xml</Entry-File>

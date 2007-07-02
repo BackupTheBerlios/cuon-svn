@@ -7,7 +7,7 @@ from twisted.web import xmlrpc
 from basics import basics
 import iCal
 import Database
-
+import commands
 
 class Web(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -26,3 +26,9 @@ class Web(xmlrpc.XMLRPC, basics):
         dicResult =  oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
         for sName in liNames:
             self.overwriteCal(sName,dicResult,dicuser)
+            
+    def xmlrpc_restartServerWeb2(self, dicUser):
+        shellcommand = '/etc/init.d/cuonweb2 restart'
+        liStatus = commands.getstatusoutput(shellcommand)
+        print liStatus
+        return liStatus

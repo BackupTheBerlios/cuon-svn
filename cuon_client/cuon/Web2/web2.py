@@ -113,10 +113,15 @@ class web2window(chooseWindows):
         pass
         
     #Menu File
+    
+    def on_server_restart1_activate(self, event):
+        print 'server restart'
+        liStatus = self.rpc.callRP('Web.restartServerWeb2',self.dicUser)
+    
               
-    def on_quit1_activate(self, event):
+    def on_quit_activate(self, event):
         self.out( "exit Web2 V1")
-        self.on_bChooseClient_clicked(event)
+        self.closeWindow()
         
 
 
