@@ -121,7 +121,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         return dicResult
      
         
-    def xmlrpc_getListEntries(self, dicEntries, sTable, sSort, sWhere="", dicUser={}):
+    def xmlrpc_getListEntries(self, dicEntries, sTable, sSort, sWhere="", dicUser={}, bDistinct=False):
         #print 'start xmlrpc_getListEntries'
         
         import string
@@ -141,8 +141,10 @@ class SQL(xmlrpc.XMLRPC, basics):
                         
         
         #dicEntries['status'] = 'string'
-        
-        sSql = 'select '
+        if bDistinct:
+            sSql = 'select distinct '
+        else:
+            sSql = 'select '
         liTable = []
         try:    
             #print 'replace id with table.id'

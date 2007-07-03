@@ -400,6 +400,20 @@ class Order(xmlrpc.XMLRPC, basics):
         
         return liOrder
         
+    def getResidue(self, dicUser):
+        sResidue = "list_of_invoices.total_amount -  (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") "
         
-                    
+        sSql = 'select distinct '
+        sSql += 'list_of_invoices.total_amount as total_amount, '
+        sSql += 'address.lastname as lastname, address.city as city, '
+        sSql += 'orderbook.id as order_id, list_of_invoices.maturity as maturity, '
+        sSql += sResidue + " as residue, "
+        sSql += ' list_of_invoices.order_number as order_number, list_of_invoices.id, list_of_invoices.invoice_number as invoice_number, list_of_invoices.date_of_invoice as date_of_invoice '
+        sSql += " from list_of_invoices ,in_payment, orderbook, address "
+        sSql += self.getWhere('',dicUser,'1','list_of_invoices.')
+        sSql += "and " + sResidue + " > 0.01"
+        sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
+        
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        return result            
     

@@ -77,7 +77,8 @@ class SingleData(gladeXml, logs):
         self.p1 = re.compile('\(select .*\) as')
         self.iter = None
         self.liItems = None
-
+        self.bDistinct = False
+        
     def load(self, record, dicDetail = None):
         '''
         @param record: id of the record
@@ -428,7 +429,7 @@ class SingleData(gladeXml, logs):
 
     def getFirstListRecord(self):
         
-        liEntries = self.rpc.callRP('Database.getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser)
+        liEntries = self.rpc.callRP('Database.getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser, self.bDistinct)
         try:
             dicEntry = liEntries[0]
             id  = dicEntry['id']
@@ -874,7 +875,7 @@ class SingleData(gladeXml, logs):
             self.printOut( 'SingleData - dicFields = ', `dicFields`)
             
             
-            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicInternetUser)
+            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicInternetUser, self.bDistinct)
         else:
             dicLists = {}
             

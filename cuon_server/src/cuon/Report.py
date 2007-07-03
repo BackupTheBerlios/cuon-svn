@@ -171,4 +171,22 @@ class Report(xmlrpc.XMLRPC, basics):
         #print '--> Rep-Data = ', repData
         
         return self.report_server.ReportServer.createReport(repData)
-            
+        
+        
+    def xmlrpc_server_list_of_residue(self, dicExtraData, dicUser):
+        print 'report-server = ', `self.report_server`
+        import Reports.report_list_of_residue
+        import Order
+        oOrder = Order.Order()
+        
+        print "startReport"
+        oReports = Reports.report_list_of_residue.report_list_of_residue()
+        repData = oReports.getReportData(dicExtraData, dicUser, oOrder, self.ReportDefs)
+        #print '\n\n'
+        #print 'get repData'
+        #print '\n'
+        #return self.report_server.ReportServer.server_hibernation_incoming_document(dicExtraData, dicUser)
+        #print '--> Rep-Data = ', repData
+        
+        return self.report_server.ReportServer.createReport(repData)
+                    

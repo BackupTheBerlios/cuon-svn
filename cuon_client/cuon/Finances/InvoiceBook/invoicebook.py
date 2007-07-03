@@ -83,12 +83,14 @@ class invoicebookwindow(windows):
         
         self.singleResidue.setEntries(self.getDataEntries(self.EntriesResidue) )
         self.singleResidue.setGladeXml(self.xml)
-        self.singleResidue.setTreeFields( ['invoice_number', 'order_number','date_of_invoice','total_amount'] )
-        self.singleResidue.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleResidue.bDistinct = True
+        sResidue = "list_of_invoices.total_amount -  (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `self.dicUser['client']` + ") "
+        self.singleResidue.setTreeFields( ['list_of_invoices.invoice_number as invoice_number', 'list_of_invoices.order_number as order_number','list_of_invoices.date_of_invoice as date_of_invoice','list_of_invoices.total_amount as total_amount', sResidue + " as residue "] )
+        self.singleResidue.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleResidue.setTreeOrder('invoice_number')
-        self.singleResidue.setListHeader([_('Invoice-Nr.'),_('Order-Nr.'), _('Date'),_('Amount')])
+        self.singleResidue.setListHeader([_('Invoice-Nr.'),_('Order-Nr.'), _('Date'),_('Amount'),_('Residue')])
         self.singleResidue.setTree(self.xml.get_widget('tree1') )
-        #self.singleResidue.sWhere = ' from in_payment where to_int(invoice_number) = invoice.invoice_number '
+        self.singleResidue.sWhere = ",in_payment where to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and  " + sResidue + " > 0.01 "
   
 
         # set values for comboBox
@@ -252,6 +254,26 @@ class invoicebookwindow(windows):
         print 'dicOrder = ', dicExtraData
         
         Pdf = self.rpc.callRP('Report.server_list_of_inpayment', dicExtraData, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
+
+    # Menu Residue
+    def on_all_outstanding_accounts1_activate(self, event):
+        #dBegin,dEnd = self.getFirstLastDayOfLastMonthAsSeconds()
+        dicDate = self.getActualDateTime()
+        dBegin = dicDate['date']
+        dEnd = dicDate['date']
+        self.printListOfResidue(dBegin,dEnd)
+            
+        
+    def printListOfResidue(self, dBegin, dEnd):
+        dicExtraData = {}
+        print ' start List of Residue printing'
+        dicExtraData['dBegin'] = dBegin
+        dicExtraData['dEnd'] = dEnd
+        
+        print 'dicOrder = ', dicExtraData
+        
+        Pdf = self.rpc.callRP('Report.server_list_of_residue', dicExtraData, self.dicUser)
         self.showPdf(Pdf, self.dicUser)
 
     # Buttons

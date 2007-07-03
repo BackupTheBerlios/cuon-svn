@@ -65,7 +65,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image105">
+			<widget class="GtkImage" id="image109">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -99,7 +99,7 @@
 		      <signal name="activate" handler="on_new_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image106">
+			<widget class="GtkImage" id="image110">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -120,7 +120,7 @@
 		      <signal name="activate" handler="on_edit_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image107">
+			<widget class="GtkImage" id="image111">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-edit</property>
 			  <property name="icon_size">1</property>
@@ -141,7 +141,7 @@
 		      <signal name="activate" handler="on_save_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image108">
+			<widget class="GtkImage" id="image112">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -168,7 +168,7 @@
 		      <signal name="activate" handler="on_delete_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image109">
+			<widget class="GtkImage" id="image113">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -430,6 +430,15 @@
 
 		      <child>
 			<widget class="GtkMenu" id="residue_print_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="all_outstanding_accounts1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">All outstanding accounts</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_all_outstanding_accounts1_activate" last_modification_time="Tue, 03 Jul 2007 12:30:51 GMT"/>
+			    </widget>
+			  </child>
 
 			  <child>
 			    <widget class="GtkMenuItem" id="residue_month1">
