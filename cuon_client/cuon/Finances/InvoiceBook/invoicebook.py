@@ -84,13 +84,13 @@ class invoicebookwindow(windows):
         self.singleResidue.setEntries(self.getDataEntries(self.EntriesResidue) )
         self.singleResidue.setGladeXml(self.xml)
         self.singleResidue.bDistinct = True
-        sResidue = "list_of_invoices.total_amount -  (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `self.dicUser['client']` + ") "
+        sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `self.dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `self.dicUser['client']` + ") else 0 end) "
         self.singleResidue.setTreeFields( ['list_of_invoices.invoice_number as invoice_number', 'list_of_invoices.order_number as order_number','list_of_invoices.date_of_invoice as date_of_invoice','list_of_invoices.total_amount as total_amount', sResidue + " as residue "] )
         self.singleResidue.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleResidue.setTreeOrder('invoice_number')
         self.singleResidue.setListHeader([_('Invoice-Nr.'),_('Order-Nr.'), _('Date'),_('Amount'),_('Residue')])
         self.singleResidue.setTree(self.xml.get_widget('tree1') )
-        self.singleResidue.sWhere = ",in_payment where to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and  " + sResidue + " > 0.01 "
+        self.singleResidue.sWhere = " where  " + sResidue + " > 0.01 "
   
 
         # set values for comboBox

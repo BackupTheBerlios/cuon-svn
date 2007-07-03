@@ -401,7 +401,8 @@ class Order(xmlrpc.XMLRPC, basics):
         return liOrder
         
     def getResidue(self, dicUser):
-        sResidue = "list_of_invoices.total_amount -  (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") "
+        sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
+        
         
         sSql = 'select distinct '
         sSql += 'list_of_invoices.total_amount as total_amount, '
