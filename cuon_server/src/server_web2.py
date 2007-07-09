@@ -29,7 +29,7 @@ baseSettings = cuon.basics.basics()
 print baseSettings.WEBPATH
 
 oWeb2 = cuon.Web2.Web2()
-
+commands.getstatusoutput('mkdir ' + baseSettings.WEBPATH + 'counter')
 # 0 = Root-site
 # 1 = Linked-Site
 # 2 = Python code
@@ -146,6 +146,7 @@ def getHtmlSite(dicHtmlSite):
     htmlClass = 'class ' + dicHtmlSite['name'].strip() + '(object):\n'
     htmlClass +='\timplements(inevow.IResource)\n'
     htmlClass +='\n'
+    
     htmlClass +='\tdef locateChild(self, ctx, segments):\n'
     if liChilds:
         z = 0
@@ -163,6 +164,8 @@ def getHtmlSite(dicHtmlSite):
     
     htmlClass +='\t\t\n'
     htmlClass +='\tdef renderHTTP(self, ctx):\n'
+    htmlClass +='\t\tcounter(\'' + dicHtmlSite['name'].strip() +'\')\n'
+
     htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
     #print '-------------------------------------------------------------------'
     #print htmlClass
@@ -197,6 +200,27 @@ class ImagePage(rend.Page):
 start()
 
 # begin consdtruct websites    
+    
+def counter(sName):
+    print 'sName =',sName
+    fName = baseSettings.WEBPATH + 'counter/' + sName +'.counter'
+    print 'fname = ', fName
+    try:
+        f = open(fName,'r')
+
+        z1 = int(f.readline().strip())
+        
+    except:
+        z1 = 0
+    try:
+        f.close()
+    except:
+        pass
+    f = open(fName,'w')    
+    z1 += 1
+    f.write(`z1`)
+    f.close()
+    
     
     
 rootClass = getRootSite()

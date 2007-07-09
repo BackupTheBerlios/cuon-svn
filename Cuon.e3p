@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-07-02, 00:30:16 -->
+<!-- Saved: 2007-07-08, 00:18:40 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1453,6 +1453,19 @@
       <Dir>Reports</Dir>
       <Name>report_list_of_inpayment.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_list_of_residue.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>createWebAnalysis.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2117,7 +2130,28 @@
       <Dir>GUI</Dir>
       <Name>entry_residue.xml</Name>
     </Other>
+    <Other>
+      <Name>Lizenz_de.txt</Name>
+    </Other>
+    <Other>
+      <Name>License_en.txt</Name>
+    </Other>
+    <Other>
+      <Dir>api</Dir>
+      <Name>20070707.html</Name>
+    </Other>
+    <Other>
+      <Dir>api</Dir>
+      <Name>api.doc</Name>
+    </Other>
+    <Other>
+      <Name>api</Name>
+    </Other>
   </Others>
+  <MainScript>
+    <Dir>cuon_client</Dir>
+    <Name>Cuon.py</Name>
+  </MainScript>
   <Vcs>
     <VcsType>Subversion</VcsType>
     <VcsOptions>(dp0
@@ -2186,7 +2220,7 @@ V
 p3
 asS'outputDirectory'
 p4
-Vdoc/doc_src
+V/opt/Projekte/cuon/api
 p5
 sS'cssFile'
 p6
@@ -2201,11 +2235,24 @@ p10
 I01
 s.</Eric3DocParams>
   </Eric3Doc>
+  <Eric3Api>
+    <Eric3ApiParams>(dp0
+S'sourceExtensions'
+p1
+(lp2
+V
+p3
+asS'outputFile'
+p4
+V/opt/Projekte/cuon/api/20070707.html
+p5
+s.</Eric3ApiParams>
+  </Eric3Api>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

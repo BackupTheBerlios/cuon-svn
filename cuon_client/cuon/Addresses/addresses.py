@@ -3,7 +3,7 @@
 ##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
-##published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
 ##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 ##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
@@ -33,7 +33,7 @@ import SingleNotes
 import cuon.Bank.SingleBank
 import lists_addresses_phone1
 import lists_addresses_phone11
-
+import commands
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
@@ -531,7 +531,10 @@ class addresswindow(chooseWindows):
                 
             eDate.set_text(sTime)
             
-       
+    def on_bPartnerSip_clicked(self, event):
+        s = self.dicUser['prefApps']['SIP'] + ' ' + self.singlePartner.firstRecord['sip']
+        status,data = commands.getstatusoutput(s)
+        
     def on_eSchedulDate_changed(self, event):
         self.out(event)
         self.setDateToCalendar(event.get_text(),'calendar1')
