@@ -531,7 +531,6 @@ create_AddressMainwindow (void)
   GtkWidget *eFax;
   GtkWidget *lFax;
   GtkWidget *lEmail;
-  GtkWidget *ePhone;
   GtkWidget *lPhone;
   GtkWidget *vbox4;
   GtkWidget *hbox5;
@@ -560,6 +559,13 @@ create_AddressMainwindow (void)
   GtkWidget *bSendExternEmail;
   GtkWidget *label84;
   GtkWidget *eInfo;
+  GtkWidget *hbox58;
+  GtkWidget *ePhone;
+  GtkWidget *bPhone;
+  GtkWidget *alignment11;
+  GtkWidget *hbox59;
+  GtkWidget *image1280;
+  GtkWidget *label98;
   GtkWidget *lAddress;
   GtkWidget *table7;
   GtkWidget *scrolledwindow2;
@@ -602,7 +608,7 @@ create_AddressMainwindow (void)
   GtkWidget *bSearchTOP;
   GtkWidget *button3;
   GtkWidget *scrolledwindow14;
-  GtkWidget *textview1;
+  GtkWidget *tvTOP;
   GtkWidget *lMisc;
   GtkWidget *table2;
   GtkWidget *ePartnerStreet;
@@ -1329,14 +1335,6 @@ create_AddressMainwindow (void)
   gtk_label_set_justify (GTK_LABEL (lEmail), GTK_JUSTIFY_CENTER);
   gtk_misc_set_alignment (GTK_MISC (lEmail), 0, 0);
 
-  ePhone = gtk_entry_new ();
-  gtk_widget_show (ePhone);
-  gtk_table_attach (GTK_TABLE (table5), ePhone, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (ePhone, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (ePhone), 15);
-
   lPhone = gtk_label_new (_("Phone"));
   gtk_widget_show (lPhone);
   gtk_table_attach (GTK_TABLE (table5), lPhone, 0, 1, 0, 1,
@@ -1488,6 +1486,38 @@ create_AddressMainwindow (void)
   gtk_table_attach (GTK_TABLE (table5), eInfo, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+
+  hbox58 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox58);
+  gtk_table_attach (GTK_TABLE (table5), hbox58, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  ePhone = gtk_entry_new ();
+  gtk_widget_show (ePhone);
+  gtk_box_pack_start (GTK_BOX (hbox58), ePhone, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (ePhone, 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (ePhone), 15);
+
+  bPhone = gtk_button_new ();
+  gtk_widget_show (bPhone);
+  gtk_box_pack_start (GTK_BOX (hbox58), bPhone, FALSE, FALSE, 0);
+
+  alignment11 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment11);
+  gtk_container_add (GTK_CONTAINER (bPhone), alignment11);
+
+  hbox59 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox59);
+  gtk_container_add (GTK_CONTAINER (alignment11), hbox59);
+
+  image1280 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1280);
+  gtk_box_pack_start (GTK_BOX (hbox59), image1280, FALSE, FALSE, 0);
+
+  label98 = gtk_label_new_with_mnemonic (_("dial"));
+  gtk_widget_show (label98);
+  gtk_box_pack_start (GTK_BOX (hbox59), label98, FALSE, FALSE, 0);
 
   lAddress = gtk_label_new (_("Addresses"));
   gtk_widget_show (lAddress);
@@ -1739,9 +1769,9 @@ create_AddressMainwindow (void)
   gtk_widget_set_size_request (scrolledwindow14, 60, 80);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow14), GTK_SHADOW_IN);
 
-  textview1 = gtk_text_view_new ();
-  gtk_widget_show (textview1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow14), textview1);
+  tvTOP = gtk_text_view_new ();
+  gtk_widget_show (tvTOP);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow14), tvTOP);
 
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
@@ -3066,9 +3096,6 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) lFax, "key_press_event",
                     G_CALLBACK (on_key_press_event),
                     NULL);
-  g_signal_connect ((gpointer) ePhone, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
   g_signal_connect ((gpointer) eAddressCallerID, "changed",
                     G_CALLBACK (on_eAddressCallerID_changed),
                     NULL);
@@ -3098,6 +3125,12 @@ create_AddressMainwindow (void)
                     NULL);
   g_signal_connect ((gpointer) bSendExternEmail, "clicked",
                     G_CALLBACK (on_bSendExternEmail_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) ePhone, "key_press_event",
+                    G_CALLBACK (on_key_press_event),
+                    NULL);
+  g_signal_connect ((gpointer) bPhone, "clicked",
+                    G_CALLBACK (on_bPhone_clicked),
                     NULL);
   g_signal_connect ((gpointer) bChooseBank, "clicked",
                     G_CALLBACK (on_bChooseBank_clicked),
@@ -3360,7 +3393,6 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFax, "eFax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFax, "lFax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lEmail, "lEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePhone, "ePhone");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lPhone, "lPhone");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox4, "vbox4");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox5, "hbox5");
@@ -3389,6 +3421,13 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendExternEmail, "bSendExternEmail");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label84, "label84");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eInfo, "eInfo");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox58, "hbox58");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePhone, "ePhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPhone, "bPhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment11, "alignment11");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox59, "hbox59");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1280, "image1280");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label98, "label98");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table7, "table7");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow2, "scrolledwindow2");
@@ -3429,7 +3468,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearchTOP, "bSearchTOP");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, button3, "button3");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow14, "scrolledwindow14");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, textview1, "textview1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvTOP, "tvTOP");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");

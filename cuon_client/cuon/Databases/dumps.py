@@ -431,7 +431,16 @@ class dumps:
         return dBegin,dEnd
         
         
-        
+    def startExternalPrg (self, sProgramName, *args):
+        "Start an external program and return immediately, returning proc id"
+        print 'program = ',sProgramName
+        print 'args = ', args
+        spawn = os.spawnvp #not available on windows though
+        if os.name == "nt": 
+            spawn = os.spawnv
+            
+        return spawn(os.P_NOWAIT, sProgramName, (sProgramName,) + args)
+    
          
 ##    if __name__=="__main__":
 ##        for i in range(12):

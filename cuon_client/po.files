@@ -130,6 +130,7 @@ cuon/bin/cuon/Finances/standard_cab_monthly.py
 cuon/bin/cuon/Finances/__init__.py
 cuon/bin/cuon/Finances/invoicebook.py
 cuon/bin/cuon/Finances/SingleListOfInvoice.py
+cuon/bin/cuon/Finances/SingleInpayment.py
 cuon/bin/cuon/Biblio/biblio.py
 cuon/bin/cuon/Biblio/__init__.py
 cuon/bin/cuon/Biblio/SingleBiblio.py
@@ -220,9 +221,9 @@ cuon/Windows/dataEntry.py
 cuon/Windows/__init__.py
 cuon/Windows/setOfEntries.py
 cuon/Windows/windows.py
+cuon/Misc/__init__.py
 cuon/Misc/fileSelection.py
 cuon/Misc/cuon_dialog.py
-cuon/Misc/__init__.py
 cuon/Misc/misc.py
 cuon/Misc/messages.py
 cuon/XML/__init__.py
@@ -275,8 +276,8 @@ cuon/Addresses/SingleAddressBank.py
 cuon/Addresses/lists_addresses_phone1.py
 cuon/Addresses/printAddress.py
 cuon/Addresses/lists_addresses_phone2.py
-cuon/Addresses/selectionDialog.py
 cuon/Addresses/contact.py
+cuon/Addresses/selectionDialog.py
 cuon/Addresses/SingleContact.py
 cuon/Addresses/SingleNotes.py
 cuon/Addresses/SingleMisc.py
@@ -307,6 +308,7 @@ cuon/PrefsFinance/SinglePrefsFinanceVat.py
 cuon/Finances/InvoiceBook/__init__.py
 cuon/Finances/InvoiceBook/invoicebook.py
 cuon/Finances/InvoiceBook/SingleListOfInvoice.py
+cuon/Finances/InvoiceBook/SingleInpayment.py
 cuon/Finances/CashAccountBook/cashAccountBook.py
 cuon/Finances/CashAccountBook/standard_cab_monthly.py
 cuon/Finances/SingleAccountSentence.py

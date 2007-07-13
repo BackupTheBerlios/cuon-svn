@@ -55,6 +55,14 @@ static GnomeUIInfo bank1_menu_uiinfo[] =
   GNOMEUIINFO_MENU_PRINT_ITEM (on_print1_activate, NULL),
   GNOMEUIINFO_SEPARATOR,
   GNOMEUIINFO_MENU_CLEAR_ITEM (on_delete1_activate, NULL),
+  GNOMEUIINFO_SEPARATOR,
+  {
+    GNOME_APP_UI_ITEM, N_("choose Bank"),
+    NULL,
+    (gpointer) on_chooseBank_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -295,6 +303,8 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[4].widget, "print1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[5].widget, "separator1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[6].widget, "delete1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[7].widget, "separator4");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[8].widget, "chooseBank");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolitem1, "toolitem1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bChooseClient, "bChooseClient");

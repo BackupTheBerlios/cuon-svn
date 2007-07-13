@@ -123,7 +123,9 @@ class User(defaultValues):
         self.prefApps['printSupply'] = 'lpr'
         self.prefApps['printInvoice'] = 'lpr'
         self.prefApps['printNewsletter'] = 'lpr'
-        self.prefApps['SIP'] = 'ekiga -c'
+        self.prefApps['SIP'] = 'ekiga'
+        self.prefApps['SIP_PARAMS'] = '-c'
+        
         
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()

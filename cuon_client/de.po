@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-22 19:18+0200\n"
-"PO-Revision-Date: 2007-06-22 19:25+0100\n"
+"PO-Revision-Date: 2007-07-11 13:00+0100\n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -310,12 +310,12 @@ msgstr "Info"
 
 #: cuon/Addresses/addresses.py:138
 msgid "Depositor"
-msgstr "Lagerist"
+msgstr "Kontoinhaber"
 
 #: cuon/Addresses/addresses.py:138
 #: cuon/Addresses/GUI/addresses.c:73
 msgid "Account"
-msgstr "Über Cuon"
+msgstr "Konto"
 
 #: cuon/Addresses/addresses.py:138
 #: cuon/Bank/GUI/src/interface.c:71
@@ -1329,9 +1329,8 @@ msgid "Associated with"
 msgstr "Verbunden mit"
 
 #: cuon/Articles/GUI/src/interface.c:658
-#, fuzzy
 msgid "None"
-msgstr "Notiz"
+msgstr "Nichts"
 
 #: cuon/Articles/GUI/src/interface.c:659
 #: cuon/Garden/GUI/src_botany/interface.c:422
@@ -1546,7 +1545,6 @@ msgstr "Über Cuon"
 #: cuon/Project/GUI/src/interface.c:106
 #: cuon/Garden/GUI/src_botany/interface.c:64
 #: cuon/Garden/GUI/src_botany/interface.c:98
-#, fuzzy
 msgid "new"
 msgstr "_Neu"
 
@@ -1554,14 +1552,12 @@ msgstr "_Neu"
 #: cuon/DMS/GUI/src2/interface.c:129
 #: cuon/Project/GUI/src/interface.c:113
 #: cuon/Project/GUI/src/interface.c:215
-#, fuzzy
 msgid "edit"
 msgstr "_Bearbeiten "
 
 #: cuon/DMS/GUI/src2/interface.c:136
 #: cuon/Addresses/GUI/src/interface.c:162
 #: cuon/Project/GUI/src/interface.c:120
-#, fuzzy
 msgid "save"
 msgstr "_Sichern"
 
@@ -2079,7 +2075,7 @@ msgstr "Täglich"
 
 #: cuon/Order/GUI/src/interface.c:1633
 msgid "Weekly"
-msgstr ""
+msgstr "Wöchentlich"
 
 #: cuon/Order/GUI/src/interface.c:1639
 msgid "custom"

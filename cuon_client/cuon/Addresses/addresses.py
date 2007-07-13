@@ -1,6 +1,6 @@
  # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003 -2007]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -56,6 +56,10 @@ import cuon.E_Mail.sendEmail
 import cuon.Misc.cuon_dialog
 import cuon.Misc.misc
 import cuon.Order.order
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceTop
+
+
 class addresswindow(chooseWindows):
 
     
@@ -77,6 +81,7 @@ class addresswindow(chooseWindows):
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddressNotes = SingleNotes.SingleNotes(allTables)
         self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
+        self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         
        
         
@@ -131,8 +136,8 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesAddressesBank )
         self.singleAddressBank.setEntries(self.getDataEntries(self.EntriesAddressesBank) )
         self.singleAddressBank.setGladeXml(self.xml)
-        self.singleAddressBank.setTreeFields( ['depositor', 'account_number','(select lastname  from address where id = (select address_id from bank where id = bank_id) )as address_name'] )
-        self.singleAddressBank.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleAddressBank.setTreeFields( ['depositor', 'account_number','address_id'] )
+        self.singleAddressBank.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
 
         self.singleAddressBank.setTreeOrder('depositor, account_number')
         self.singleAddressBank.setListHeader([_('Depositor'), _('Account'), _('Bank')])
@@ -370,15 +375,37 @@ class addresswindow(chooseWindows):
 
 
     # Menu Bank
-    def on_bank_new1_activate(self, event):
-        
+    
+    def on_bank_save1_activate(self, event):
+        self.out( "save Bank addresses v2")
         self.doEdit = self.noEdit
-        self.singleBank.addressId = self.singleAddress.ID
-        self.singleBank.save()
-        self.setEntriesEditable(self.EntriesPartner, FALSE)
-        #self.startEdit()
+        self.singleAddressBank.addressId = self.singleAddress.ID
+        self.singleAddressBank.save()
+        self.setEntriesEditable(self.EntriesAddressesBank, FALSE)
+        self.endEdit()
         self.tabChanged()
         
+    
+    def on_bank_new1_activate(self, event):
+        print 'bank new activate'
+        self.doEdit = self.tabBank
+        self.singleAddressBank.newRecord()
+        self.setEntriesEditable(self.EntriesAddressesBank, True)
+        self.startEdit()
+        
+    def on_bank_edit1_activate(self, event):
+        print 'bank edit activate'
+
+        self.out( "edit addresses v2")
+        self.doEdit = self.tabBank
+        
+        self.setEntriesEditable(self.EntriesAddressesBank, TRUE)
+        self.startEdit()
+        
+    def on_delete1_activate(self, event):
+        print 'bank delete activate'
+        self.out( "delete addresses v2")
+        self.singleAddressBank.deleteRecord()
 
     
     # Menu misc
@@ -532,8 +559,17 @@ class addresswindow(chooseWindows):
             eDate.set_text(sTime)
             
     def on_bPartnerSip_clicked(self, event):
-        s = self.dicUser['prefApps']['SIP'] + ' ' + self.singlePartner.firstRecord['sip']
-        status,data = commands.getstatusoutput(s)
+        print 'Sip dial startet'
+        cmd1 = self.dicUser['prefApps']['SIP'] 
+        #s = self.dicUser['prefApps']['SIP_PARAMS'], self.singlePartner.firstRecord['sip'] 
+        print 'Address cmd1', cmd1
+        print '1', self.dicUser['prefApps']['SIP_PARAMS']
+        print '2',  self.singlePartner.firstRecord['sip']
+        #print s
+        #print '------------------------------------------'
+        self.startExternalPrg(cmd1, self.dicUser['prefApps']['SIP_PARAMS'], self.singlePartner.firstRecord['sip'])
+        
+        #status,data = commands.getstatusoutput(s)
         
     def on_eSchedulDate_changed(self, event):
         self.out(event)
@@ -742,7 +778,13 @@ class addresswindow(chooseWindows):
             print 'dicSchedul = ', dicSchedul
         return dicSchedul, dicExtInfo
         
-                    
+    # choose Address
+        
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseAddress', event)
+
+
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabAddress:
@@ -824,13 +866,8 @@ class addresswindow(chooseWindows):
         
         
         
-        
-    # Bank aussuchen
-        
-    def on_tree1_row_activated(self, event, data1, data2):
-        print 'DoubleClick tree1'
-        self.activateClick('chooseAddress', event)
-
+    
+    # choose Bank 
 
     def on_bChooseBank_clicked(self, event):
         bank = cuon.Bank.bank.bankwindow(self.allTables)
@@ -839,9 +876,29 @@ class addresswindow(chooseWindows):
     def on_eBankID_changed(self, event):
         print 'eBankID changed'
         eAdrField = self.getWidget('tvBank')
-        liAdr = self.singleBank.getAddress(long(self.getWidget( 'eBankID').get_text()))
-        self.setTextbuffer(eAdrField, liAdr)
+        try:
+            liAdr = self.singleBank.getAddress(long(self.getWidget( 'eBankID').get_text()))
+            self.setTextbuffer(eAdrField, liAdr)
+        except Exception, param:
+            self.setTextbuffer(eAdrField, ' ')
+            print Exception,param
+            
+    # choose terms of payment
+    
 
+    def on_bSearchTOP_clicked(self, event):
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top.setChooseEntry('chooseTOP', self.getWidget( 'eTOPID'))
+        
+    def on_eTOPID_changed(self, event):
+        print 'eTOPID changed'
+        eTopField = self.getWidget('tvTOP')
+        try:
+            liTop = self.singlePrefsFinanceTop.getTOP(long(self.getWidget( 'eTOPID').get_text()))
+            self.setTextbuffer(eTopField, liTop)
+        except Exception,param:
+            self.setTextbuffer(eTopField, ' ')
+            print Exception,param
 
     # choose Caller, Representant, Salesman ID`s
     
@@ -1216,6 +1273,7 @@ class addresswindow(chooseWindows):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()
         self.singleSchedul.disconnectTree()
+        self.singleAddressBank.disconnectTree()
         
         if self.tabOption == self.tabAddress:
             self.singleAddress.connectTree()
@@ -1223,6 +1281,12 @@ class addresswindow(chooseWindows):
                 self.singleAddress.refreshTree()
             else:
                 self.singleAddress.refreshTree(False)
+                
+        elif self.tabOption == self.tabBank:
+            self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
+
+            self.singleAddressBank.connectTree()
+            self.singleAddressBank.refreshTree()    
             
         elif self.tabOption == self.tabMisc:
             self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
@@ -1285,7 +1349,7 @@ class addresswindow(chooseWindows):
             self.enableMenuItem('bank')
            
             self.editAction = 'editBank'
-            self.setTreeVisible(False)
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 

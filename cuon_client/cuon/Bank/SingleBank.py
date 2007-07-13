@@ -46,12 +46,13 @@ class SingleBank(SingleData):
 ##        print 'readNonWidgetEntries(self) by SingleBank'
 ##        dicValues['addres_sid'] = [self.addressId, 'int']
 ##        return dicValues
-
+    
     def getAddress(self, id):
+        print 'getAddress by bank-id = ', id
         dicRecords = self.load(id)
         address_id = dicRecords[0]['address_id']
         print address_id
-        singleAddress = cuon.Address.SingleAddress.SingleAddress(self.allTables)
+        singleAddress = cuon.Addresses.SingleAddress.SingleAddress(self.allTables)
         
         liAddress = singleAddress.getAddress(address_id)
         print 'liAddress', liAddress

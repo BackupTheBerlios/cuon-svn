@@ -132,6 +132,21 @@
 		      <signal name="activate" handler="on_delete1_activate"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator4">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="chooseBank">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">choose Bank</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_chooseBank_activate" last_modification_time="Tue, 10 Jul 2007 08:41:57 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

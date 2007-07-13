@@ -647,3 +647,7 @@ on_bPartnerSkype_clicked               (GtkButton       *button,
 void
 on_bPartnerPhone1_clicked              (GtkButton       *button,
                                         gpointer         user_data);
+
+void
+on_bPhone_clicked                      (GtkButton       *button,
+                                        gpointer         user_data);

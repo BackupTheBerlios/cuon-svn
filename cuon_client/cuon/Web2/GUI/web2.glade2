@@ -4,7 +4,7 @@
 <glade-interface>
 <requires lib="gnome"/>
 
-<widget class="GtkWindow" id="WebMainwindow">
+<widget class="GtkWindow" id="Web2Mainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
   <property name="visible">True</property>
   <property name="title" translatable="yes">Web 2</property>

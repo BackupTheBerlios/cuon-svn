@@ -180,7 +180,20 @@ class bankwindow(chooseWindows):
         self.singleBank.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
         self.out(self.singleBank.sWhere, self.ERROR)
         self.refreshTree()
+    
+    
+    # choose Bank
+            
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1'
+        self.activateClick('chooseBank', event)
 
+
+    def on_chooseBank_activate(self, event):
+        # choose Bank from other Modul
+        print '############### Bank choose ID ###################'
+        self.setChooseValue(self.singleBank.ID)
+        
     def refreshTree(self):
         self.singleBank.disconnectTree()
         

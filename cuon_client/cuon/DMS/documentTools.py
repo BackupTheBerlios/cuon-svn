@@ -41,12 +41,12 @@ import re
 import binascii
 import cuon.XMLRPC.xmlrpc
 import base64
+from cuon.Databases.dumps import dumps
 
-
-class documentTools:
+class documentTools(dumps):
 
     def __init__(self):
-        
+        dumps.__init__(self)
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
 
     def viewDocument(self, singleDMS,dicUser, dicVars,Action=None, liEmailAddresses = None):
@@ -165,8 +165,8 @@ class documentTools:
 
         else:
             print 'else execute ', exe 
-            os.system(exe + ' ' + singleDMS.tmpFile)
-
+            #os.system(exe + ' ' + singleDMS.tmpFile )
+            self.startExternalPrg(exe,singleDMS.tmpFile)
 
     def scanDocument(self, singleDMS, dicUser):
         ##       misc = cuon.Misc.misc.misc()
@@ -192,20 +192,72 @@ class documentTools:
             scanner=sane.open(dicUser['prefDMS']['scan_device'])
         else:
             scanner = sane.open(sane.get_devices()[0][0])
+         
+        try:
+            print 'SaneDev object=', scanner
+            print 'Device parameters:', scanner.get_parameters()
+            print 'mode', scanner.mode
+            print 'contrast', scanner.contrast
+            print 'brightness', scanner.brightness
+            print 'depth', scanner.depth
+            print 'br_x', scanner.br_x
+            print 'br_y', scanner.br_y
+            print 'resolution', scanner.resolution
+        except:
+            pass
             
-        print 'SaneDev object=', scanner
-        print 'Device parameters:', scanner.get_parameters()
-        
         # Set scan parameters
         scanner.mode = dicUser['prefDMS']['scan_mode']
-        scanner.contrast=dicUser['prefDMS']['scan_contrast']
-        scanner.brightness=dicUser['prefDMS']['scan_brightness']
-        #scanner.white_level=dicUser['prefDMS']['scan_white_level']
-        scanner.depth=dicUser['prefDMS']['scan_depth']
-        scanner.br_x=dicUser['prefDMS']['scan_r']['x']
-        scanner.br_y=dicUser['prefDMS']['scan_r']['y']
-        scanner.resolution = dicUser['prefDMS']['scan_resolution']
-        
+        try:
+            if isinstance(scanner.contrast, types.IntType):
+                scanner.contrast= int(dicUser['prefDMS']['scan_contrast'])
+            else:
+                scanner.contrast= dicUser['prefDMS']['scan_contrast']
+        except:
+            pass
+        try:    
+            if isinstance(scanner.brightness, types.IntType):
+                
+                scanner.brightness= int(dicUser['prefDMS']['scan_brightness'])
+            else:
+                scanner.brightness= dicUser['prefDMS']['scan_brightness']
+        except:
+            pass
+            
+            #scanner.white_level=dicUser['prefDMS']['scan_white_level']
+        try:
+            if isinstance(scanner.depth, types.IntType):
+                scanner.depth= int(dicUser['prefDMS']['scan_depth'])
+            else:
+                scanner.depth= dicUser['prefDMS']['scan_depth']
+        except:
+            pass
+            
+        try:
+            if isinstance(scanner.br_x, types.IntType):
+                
+                scanner.br_x= int(dicUser['prefDMS']['scan_r']['x'])
+            else:
+                scanner.br_x= dicUser['prefDMS']['scan_r']['x']
+        except:
+            pass
+    
+        try:
+            if isinstance(scanner.br_y, types.IntType):
+                scanner.br_y = int(dicUser['prefDMS']['scan_r']['y'])
+            else:
+                scanner.br_y=dicUser['prefDMS']['scan_r']['y']
+        except:
+            pass
+    
+        try:
+            if isinstance(scanner.resolution, types.IntType):
+                scanner.resolution = int(dicUser['prefDMS']['scan_resolution'])
+            else:
+                scanner.resolution = dicUser['prefDMS']['scan_resolution']
+        except:
+            pass
+            
         print 'Device parameters after setting:', scanner.get_parameters()
         #print scanner.contrast
         #print scanner.brightness

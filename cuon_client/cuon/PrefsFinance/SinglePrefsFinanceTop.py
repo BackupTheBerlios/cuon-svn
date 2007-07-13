@@ -42,4 +42,28 @@ class SinglePrefsFinanceTop(SingleData):
         #
         
  
-    
+    def getTOP(self, id):
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            id = 0
+            dicRecords = {}
+        
+        liTOP = []
+        if dicRecords:
+            dicRecord = dicRecords[0]
+            liTOP.append(dicRecord['number'])
+            liTOP.append(dicRecord['designation'])
+            liTOP.append(dicRecord['short_expression'])
+            liTOP.append(dicRecord['term_of_payment'])
+        if not liTOP:
+            liTOP.append(' ')
+            liTOP.append(' ')
+            liTOP.append(' ')
+            liTOP.append(' ')
+            liTOP.append(' ')
+            
+        return liTOP
+

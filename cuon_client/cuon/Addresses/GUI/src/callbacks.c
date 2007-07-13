@@ -1289,3 +1289,11 @@ on_bPartnerPhone1_clicked              (GtkButton       *button,
 
 }
 
+
+void
+on_bPhone_clicked                      (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
