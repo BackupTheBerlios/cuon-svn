@@ -272,3 +272,11 @@ on_eAccountNumber_changed              (GtkEditable     *editable,
 void
 on_ePaymentAccountID_changed           (GtkEditable     *editable,
                                         gpointer         user_data);
+
+void
+on_bInvoiceTOP_clicked                 (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_eInvoiceTOPID_changed               (GtkEditable     *editable,
+                                        gpointer         user_data);

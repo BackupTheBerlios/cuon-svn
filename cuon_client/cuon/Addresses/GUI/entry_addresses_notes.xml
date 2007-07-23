@@ -43,7 +43,16 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-    
+     <entry>
+      <name>tvNotesOrganisation</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>notes_organisation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
       </table>
 
 

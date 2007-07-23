@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-22 19:18+0200\n"
-"PO-Revision-Date: 2007-07-11 13:00+0100\n"
+"PO-Revision-Date: 2007-07-16 11:16+0100\n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -793,7 +793,6 @@ msgstr "wähle Datei"
 
 #: cuon/Preferences/GUI/src/interface.c:46
 #: cuon/PrefsFinance/GUI/src/interface.c:46
-#, fuzzy
 msgid "New "
 msgstr "_Neu"
 
@@ -883,7 +882,6 @@ msgstr "wähle Profil"
 #: cuon/Preferences/GUI/src/interface.c:76
 #: cuon/DMS/GUI/src2/interface.c:68
 #: cuon/PrefsFinance/GUI/src/interface.c:68
-#, fuzzy
 msgid "print"
 msgstr "Dr_ucken"
 
@@ -893,7 +891,6 @@ msgstr "Dr_ucken"
 #: cuon/DMS/GUI/src2/interface.c:144
 #: cuon/Order/GUI/src/interface.c:255
 #: cuon/PrefsFinance/GUI/src/interface.c:76
-#, fuzzy
 msgid "clear"
 msgstr "Löschen "
 
@@ -1078,7 +1075,6 @@ msgid "Scanner"
 msgstr "Scanner"
 
 #: cuon/Preferences/GUI/src/interface.c:891
-#, fuzzy
 msgid "OO-Writer"
 msgstr "Textverarbeitung"
 
@@ -1748,7 +1744,6 @@ msgid "_Close"
 msgstr "schließen"
 
 #: cuon/Order/GUI/src/interface.c:52
-#, fuzzy
 msgid "single Invoice"
 msgstr "Einzel-Rechnung"
 
@@ -2381,15 +2376,15 @@ msgstr "wähle Bank"
 
 #: cuon/Addresses/GUI/src/interface.c:1497
 msgid "Account-Nr."
-msgstr "Kunden-Nummer"
+msgstr "Konto-Nummer"
 
 #: cuon/Addresses/GUI/src/interface.c:1504
 msgid "depositor"
-msgstr "Lagerung"
+msgstr "Kontoinhaber"
 
 #: cuon/Addresses/GUI/src/interface.c:1517
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
 #: cuon/Addresses/GUI/src/interface.c:1539
 msgid "update from Web"

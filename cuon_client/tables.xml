@@ -881,6 +881,17 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>notes_organisation</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
     </table>
   <!--table: bank-->
   <table>
@@ -908,6 +919,39 @@
       <unique>0</unique>
       <notnull>1</notnull>
       <size>35</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>short_designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>255</size>
+      <default />
+      <comment />
+      
+    </field>
+    
+    <field>
+      <name>pan</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>70</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>bic</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>70</size>
       <default />
       <comment />
     </field>

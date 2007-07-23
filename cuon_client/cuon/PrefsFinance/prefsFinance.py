@@ -197,10 +197,7 @@ class prefsFinancewindow(chooseWindows):
         print "delete VAT  v2"
         self.singlePrefsFinanceVat.deleteRecord()
 
-    #def on_tree1_row_activated
-    def on_tree1_row_activated(self, event, data1, data2):
-        print 'DoubleClick tree1'
-        self.activateClick('chooseTaxVat', event)
+     
         
     def on_chooseTaxVat_activate(self, event):
         # choose TaxVat from other Modul
@@ -231,7 +228,11 @@ class prefsFinancewindow(chooseWindows):
         self.singlePrefsFinanceTop.deleteRecord()
 
 
-        
+    def on_chooseTop_activate(self, event):
+        # choose Top from other Modul
+        self.setChooseValue(self.singlePrefsFinanceTop.ID)
+        #print 'Group-ID = ' + `self.singleGroup.ID`
+        self.closeWindow()    
         
     #Menu Acct Info
         
@@ -280,7 +281,14 @@ class prefsFinancewindow(chooseWindows):
         self.singleFinanceAccountPlan.deleteRecord()
 
     
-        
+    #def on_tree1_row_activated
+    def on_tree1_row_activated(self, event, data1, data2):
+        print 'DoubleClick tree1 Tab = ', self.tabOption
+        if self.tabOption == self.tabVat:
+            self.activateClick('chooseTaxVat', event)
+        elif self.tabOption == self.tabTop:
+            self.activateClick('chooseTOP', event)
+               
     # import account-infos from xml-file
 
     def on_bImportAcct_clicked(self, event):

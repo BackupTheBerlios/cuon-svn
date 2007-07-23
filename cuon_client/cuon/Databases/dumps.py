@@ -435,11 +435,16 @@ class dumps:
         "Start an external program and return immediately, returning proc id"
         print 'program = ',sProgramName
         print 'args = ', args
-        spawn = os.spawnvp #not available on windows though
-        if os.name == "nt": 
-            spawn = os.spawnv
-            
-        return spawn(os.P_NOWAIT, sProgramName, (sProgramName,) + args)
+        
+        if os.name == "posix": 
+            spawn = os.spawnvp #not available on windows though
+            print 'posix system found'
+            return spawn(os.P_NOWAIT, sProgramName, (sProgramName,) + args)
+        else:
+            sArgs = ''
+            for s in args:
+                sArgs += s + ' ' 
+            return os.system(sProgramName + ' ' + sArgs )
     
          
 ##    if __name__=="__main__":

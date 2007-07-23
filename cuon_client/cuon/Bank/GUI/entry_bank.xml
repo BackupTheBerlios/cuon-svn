@@ -12,6 +12,19 @@
                 <fg_color>0</fg_color>
 
       </entry>
+      <entry>
+	<name>eShortDesignation</name>
+	<type>textline</type>
+               <size>255</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>short_designation</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry> 
+    
+<entry>
   <entry>
 	<name>eBCN</name>
 	<type>textline</type>
@@ -24,7 +37,29 @@
 
       </entry> 
     
+<entry>
+	<name>ePAN</name>
+	<type>textline</type>
+               <size>70</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>pan</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
 
+      </entry> 
+    <entry>
+	<name>eBIC</name>
+	<type>textline</type>
+               <size>70</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>bic</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry> 
+    
     </table>
 
   </entries_for_table>

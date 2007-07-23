@@ -43,6 +43,8 @@ import cuon.Order.standard_delivery_note
 import cuon.Order.standard_pickup_note
 import cuon.PrefsFinance.prefsFinance
 import cuon.Finances.SingleAccountInfo
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceTop
 
 
 
@@ -56,7 +58,7 @@ class orderwindow(chooseWindows):
     """
     
     
-    def __init__(self, allTables, dicOrder=None,  newOrder = False, orderid = 0):
+    def __init__(self, allTables, dicOrder=None,  newOrder = False, orderid = 0,Ordertype='Order'):
 
         chooseWindows.__init__(self)
         self.dicOrder = dicOrder
@@ -73,6 +75,7 @@ class orderwindow(chooseWindows):
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
+        self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
@@ -586,13 +589,7 @@ class orderwindow(chooseWindows):
         if self.singleOrderPosition.ID == -1 and record:
             self.getWidget('eOrderPositionsTaxVat').set_text(record['tax_vat'])
           
-    def fillcbeTOP(self):
-        cbeTop = self.getWidget('cbeTOP')
-        liCbe = XMLRPC.xmlrpc().callRP('py_getListOfTOPs')
-        print `liCbe`
-    
-    
-    
+   
     
     def disconnectArticlesTree(self):
         try:
@@ -791,8 +788,21 @@ class orderwindow(chooseWindows):
         
         self.on_payment_save_activate(None)
         
-    
+    def on_bInvoiceTOP_clicked(self, event):
+        print 'choose TOP'
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top.setChooseEntry('chooseTOP', self.getWidget( 'eInvoiceTOPID'))
         
+    def on_eInvoiceTOPID_changed(self, event):
+        print 'eTOPID changed'
+        eTopField = self.getWidget('tvInvoiceTOP')
+        try:
+            liTop = self.singlePrefsFinanceTop.getTOP(long(self.getWidget( 'eInvoiceTOPID').get_text()))
+            self.setTextbuffer(eTopField, liTop)
+        except Exception,param:
+            self.setTextbuffer(eTopField, ' ')
+            print Exception,param
+
     def on_bSimpleCash1_clicked(self, event):
         self.createSimplePayment('cash1')
     def on_bSimpleCash2_clicked(self, event):
@@ -907,7 +917,6 @@ class orderwindow(chooseWindows):
         elif self.tabOption == self.tabInvoice:
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
-            self.fillcbeTOP()
 
         elif self.tabOption == self.tabMisc:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )

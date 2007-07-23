@@ -517,10 +517,10 @@ create_OrderMainwindow (void)
   GtkWidget *table3;
   GtkWidget *label30;
   GtkWidget *hbox30;
-  GtkWidget *entry1;
-  GtkWidget *button1;
+  GtkWidget *eInvoiceTOPID;
+  GtkWidget *bInvoiceTOP;
   GtkWidget *scrolledwindow10;
-  GtkWidget *textview1;
+  GtkWidget *tvInvoiceTOP;
   GtkWidget *label29;
   GtkWidget *table4;
   GtkWidget *cbRetry;
@@ -1537,13 +1537,13 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  entry1 = gtk_entry_new ();
-  gtk_widget_show (entry1);
-  gtk_box_pack_start (GTK_BOX (hbox30), entry1, TRUE, TRUE, 0);
+  eInvoiceTOPID = gtk_entry_new ();
+  gtk_widget_show (eInvoiceTOPID);
+  gtk_box_pack_start (GTK_BOX (hbox30), eInvoiceTOPID, TRUE, TRUE, 0);
 
-  button1 = gtk_button_new_with_mnemonic (_("button1"));
-  gtk_widget_show (button1);
-  gtk_box_pack_start (GTK_BOX (hbox30), button1, FALSE, FALSE, 0);
+  bInvoiceTOP = gtk_button_new_with_mnemonic (_("choose TOP"));
+  gtk_widget_show (bInvoiceTOP);
+  gtk_box_pack_start (GTK_BOX (hbox30), bInvoiceTOP, FALSE, FALSE, 0);
 
   scrolledwindow10 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow10);
@@ -1552,9 +1552,9 @@ create_OrderMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow10), GTK_SHADOW_IN);
 
-  textview1 = gtk_text_view_new ();
-  gtk_widget_show (textview1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow10), textview1);
+  tvInvoiceTOP = gtk_text_view_new ();
+  gtk_widget_show (tvInvoiceTOP);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow10), tvInvoiceTOP);
 
   label29 = gtk_label_new (_("Invoice"));
   gtk_widget_show (label29);
@@ -1952,6 +1952,12 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) bQuickAppend, "clicked",
                     G_CALLBACK (on_bQuickAppend_clicked),
                     NULL);
+  g_signal_connect ((gpointer) eInvoiceTOPID, "changed",
+                    G_CALLBACK (on_eInvoiceTOPID_changed),
+                    NULL);
+  g_signal_connect ((gpointer) bInvoiceTOP, "clicked",
+                    G_CALLBACK (on_bInvoiceTOP_clicked),
+                    NULL);
   g_signal_connect ((gpointer) rbQuarterly, "toggled",
                     G_CALLBACK (on_rbQuarterly_toggled),
                     NULL);
@@ -2191,10 +2197,10 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table3, "table3");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label30, "label30");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox30, "hbox30");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, entry1, "entry1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, button1, "button1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eInvoiceTOPID, "eInvoiceTOPID");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bInvoiceTOP, "bInvoiceTOP");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow10, "scrolledwindow10");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, textview1, "textview1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, tvInvoiceTOP, "tvInvoiceTOP");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, table4, "table4");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, cbRetry, "cbRetry");

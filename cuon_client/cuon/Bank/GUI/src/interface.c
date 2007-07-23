@@ -98,9 +98,9 @@ create_BankMainwindow (void)
   GtkWidget *alignment1;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
-  GtkWidget *eFindName;
+  GtkWidget *eFindBCN;
   GtkWidget *lFindDesignation;
-  GtkWidget *eFindCity;
+  GtkWidget *eFindDesignation;
   GtkWidget *bSearch;
   GtkWidget *scrolledwindow1;
   GtkWidget *viewport1;
@@ -118,6 +118,14 @@ create_BankMainwindow (void)
   GtkWidget *bChooseAddressOfBank;
   GtkWidget *label29;
   GtkWidget *eBCN;
+  GtkWidget *label30;
+  GtkWidget *eShortDesignation;
+  GtkWidget *hbox5;
+  GtkWidget *label31;
+  GtkWidget *ePAN;
+  GtkWidget *hbox6;
+  GtkWidget *label32;
+  GtkWidget *eBIC;
   GtkWidget *label16;
   GtkAccelGroup *accel_group;
 
@@ -161,23 +169,23 @@ create_BankMainwindow (void)
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 0);
 
-  lFindNumber = gtk_label_new (_("Number"));
+  lFindNumber = gtk_label_new (_("BCN"));
   gtk_widget_show (lFindNumber);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindNumber, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindNumber), GTK_JUSTIFY_CENTER);
 
-  eFindName = gtk_entry_new ();
-  gtk_widget_show (eFindName);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindName, FALSE, FALSE, 0);
+  eFindBCN = gtk_entry_new ();
+  gtk_widget_show (eFindBCN);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindBCN, FALSE, FALSE, 0);
 
-  lFindDesignation = gtk_label_new (_("Designation"));
+  lFindDesignation = gtk_label_new (_("short Designation"));
   gtk_widget_show (lFindDesignation);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindDesignation, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindDesignation), GTK_JUSTIFY_CENTER);
 
-  eFindCity = gtk_entry_new ();
-  gtk_widget_show (eFindCity);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindCity, FALSE, FALSE, 0);
+  eFindDesignation = gtk_entry_new ();
+  gtk_widget_show (eFindDesignation);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindDesignation, FALSE, FALSE, 0);
 
   bSearch = gtk_button_new_with_mnemonic (_("Search"));
   gtk_widget_show (bSearch);
@@ -267,6 +275,47 @@ create_BankMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
+  label30 = gtk_label_new (_("short Designation"));
+  gtk_widget_show (label30);
+  gtk_table_attach (GTK_TABLE (table1), label30, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label30), 0, 0.5);
+
+  eShortDesignation = gtk_entry_new ();
+  gtk_widget_show (eShortDesignation);
+  gtk_table_attach (GTK_TABLE (table1), eShortDesignation, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  hbox5 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox5);
+  gtk_table_attach (GTK_TABLE (table1), hbox5, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label31 = gtk_label_new (_("PAN"));
+  gtk_widget_show (label31);
+  gtk_box_pack_start (GTK_BOX (hbox5), label31, FALSE, FALSE, 0);
+
+  ePAN = gtk_entry_new ();
+  gtk_widget_show (ePAN);
+  gtk_box_pack_start (GTK_BOX (hbox5), ePAN, TRUE, TRUE, 0);
+
+  hbox6 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox6);
+  gtk_table_attach (GTK_TABLE (table1), hbox6, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label32 = gtk_label_new (_("BIC"));
+  gtk_widget_show (label32);
+  gtk_box_pack_start (GTK_BOX (hbox6), label32, FALSE, FALSE, 0);
+
+  eBIC = gtk_entry_new ();
+  gtk_widget_show (eBIC);
+  gtk_box_pack_start (GTK_BOX (hbox6), eBIC, TRUE, TRUE, 0);
+
   label16 = gtk_label_new (_("Bank"));
   gtk_widget_show (label16);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label16);
@@ -311,9 +360,9 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, alignment1, "alignment1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, lFindNumber, "lFindNumber");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindName, "eFindName");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindBCN, "eFindBCN");
   GLADE_HOOKUP_OBJECT (BankMainwindow, lFindDesignation, "lFindDesignation");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindCity, "eFindCity");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindDesignation, "eFindDesignation");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bSearch, "bSearch");
   GLADE_HOOKUP_OBJECT (BankMainwindow, scrolledwindow1, "scrolledwindow1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, viewport1, "viewport1");
@@ -331,6 +380,14 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, bChooseAddressOfBank, "bChooseAddressOfBank");
   GLADE_HOOKUP_OBJECT (BankMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (BankMainwindow, eBCN, "eBCN");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, label30, "label30");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eShortDesignation, "eShortDesignation");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, hbox5, "hbox5");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, label31, "label31");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, ePAN, "ePAN");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, hbox6, "hbox6");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, label32, "label32");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eBIC, "eBIC");
   GLADE_HOOKUP_OBJECT (BankMainwindow, label16, "label16");
 
   gtk_window_add_accel_group (GTK_WINDOW (BankMainwindow), accel_group);

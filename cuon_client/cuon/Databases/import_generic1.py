@@ -51,6 +51,11 @@ class import_generic1(fileSelection):
         self.dicFileAttributes['inputType'] = 'Standard'
         self.dicFileAttributes['liColumns'] = []
         self.dicFileAttributes['decodeData'] = None
+        self.dicFileAttributes['updateData'] = 'NO'
+        self.dicFileAttributes['checkUpdateField'] = None
+        self.dicFileAttributes['fixFields'] = None
+        self.dicFileAttributes['mergeData'] = 'NO'
+        self.dicFileAttributes['extraFunction'] = None
         
         if ctrlFile:
             s = ctrlFile.readline()
@@ -75,6 +80,16 @@ class import_generic1(fileSelection):
                         self.dicFileAttributes['toChangedValue'] = liS[1]
                     if liS[0] == 'decode_data':
                         self.dicFileAttributes['decodeData'] = liS[1]
+                    if liS[0] == 'update_data':
+                        self.dicFileAttributes['updateData'] = liS[1].upper()
+                    if liS[0] == 'check_update_field':
+                        self.dicFileAttributes['checkUpdateField'] = liS[1]
+                    if liS[0] == 'fix_fields':
+                        self.dicFileAttributes['fixFields'] = liS[1]
+                    if liS[0] == 'merge_data':
+                        self.dicFileAttributes['mergeData'] = liS[1].upper()
+                    if liS[0] == 'extra_function':
+                        self.dicFileAttributes['extraFunction'] = liS[1].upper()
     
                     if liS[0] == 'header':
                         self.dicFileAttributes['importHeader'] = liS[1]        
@@ -99,20 +114,34 @@ class import_generic1(fileSelection):
     def standardImport(self):
         #print 'dicfileAttributes', self.dicFileAttributes
         importFile = open(self.dicFileAttributes['inputFile'])
-
-        s1 = importFile.readline()
-        lS2 = s1.split(self.dicFileAttributes['splitValue'])
-        print 'icolumns = ', self.iColumns
-        while (len(lS2) < self.iColumns):
-            s1 += importFile.readline()
-            lS2 = s1.split(self.dicFileAttributes['splitValue'])
+        # generate UpdateField
+##        if self.dicFileAttributes['updateData'] == 'YES':
+##            liUF = self.dicFileAttributes['checkUpdateField'].split(',')
+##            self.dicFileAttributes['checkUpdateField'] =[]
+##            self.dicFileAttributes['checkUpdateField'][0] = liUF[0].strip()
+##            self.dicFileAttributes['checkUpdateField'][1] = liUF[1].strip()
 ##            
+                    
+##        s1 = importFile.readline()
+##        lS2 = s1.split(self.dicFileAttributes['splitValue'])
+##        print 'icolumns = ', self.iColumns
+##        notEnd = True
+##        sNext = None
+##        while (len(lS2) < self.iColumns) or notEnd:
+##            sNext += importFile.readline()
+##            
+##            if sNext and  sNext.split(self.dicFileAttributes['splitValue']):
+##                notEnd = False
+##            else:
+##                s1 += sNext
+##                
+####            
             
 ##        # Headlines
 ##        # for exmple 
 ##        #['ADRNR;ANREDE;LAND;NAME1;NAME2;ORT;PLZ;STRASSE;ANSPRANREDE;ANSPRTITEL;ANSPRNACHNAME;ANSPRVORNAME;BRIEFANREDE;ABTEILUNGKLAR;ABTEILUNG;FUNKTION;KRITERIUM;EINORDNUNG\r\n']
 ##        #
-        print 'len lS2 = ', len(lS2)
+        #print 'len lS2 = ', len(lS2)
         
         oSingleImport = SingleImport.SingleImport(self.dicFileAttributes['allTables'])
         print 'Type : ', self.dicFileAttributes['inputType'][0:8]
@@ -121,30 +150,49 @@ class import_generic1(fileSelection):
         else:
             oSingleImport.setImportTable(self.dicFileAttributes['importTable'])
         
+        #self.executeSomeStuff()
+        #exit()
+        
         s1 = importFile.readline()
         if self.dicFileAttributes['importHeader'].upper() == 'YES':
                     s1 = importFile.readline()
 
         se = 1
-        while True:
+        
+        #lS2 = s1.split(self.dicFileAttributes['splitValue'])
+        print 'icolumns = ', self.iColumns
+                
+        print 's1 begin = ', s1
+        while s1:
             #print s1
-            print '----'
+##            print '----'
+##            if self.dicFileAttributes['decodeData']:
+##                s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
+##            if self.dicFileAttributes['fromChangedValue']:
+##                s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
+##            lS1 = s1.split(self.dicFileAttributes['splitValue'])
+##            
+            if self.dicFileAttributes['mergeData'] == 'YES':
+                goAhead = True    
+                #while (len(lS1) < self.iColumns):
+                while(goAhead):
+                    sNext = importFile.readline()
+                    if sNext:
+                        if len(sNext.split(self.dicFileAttributes['splitValue'])) > 1:
+                            print 'snext = ', sNext
+                            goAhead = False
+                        else:
+                            s1 += '\n' + sNext
+                    else:
+                        goAhead = False
+            print 's1 01 = ', s1    
             if self.dicFileAttributes['decodeData']:
                 s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
             if self.dicFileAttributes['fromChangedValue']:
                 s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
+                
             lS1 = s1.split(self.dicFileAttributes['splitValue'])
             
-##                
-##            while (len(lS1) < self.iColumns):
-##                s1 += importFile.readline().strip()
-##                if self.dicFileAttributes['decodeData']:
-##                    s1 = s1.decode(self.dicFileAttributes['decodeData']).encode('utf-8')
-##                if self.dicFileAttributes['fromChangedValue']:
-##                    s1 = s1.replace(self.dicFileAttributes['fromChangedValue'],self.dicFileAttributes['toChangedValue'])
-##                    
-##                lS1 = s1.split(self.dicFileAttributes['splitValue'])
-                
             #exportFile.write(s1)
             print lS1
             # now set the values
@@ -165,7 +213,19 @@ class import_generic1(fileSelection):
                 # verify Fields
                 dicValues = oSingleImport.verifyValues(dicValues)
                 # save to Database
-                oSingleImport.newRecord()
+                if self.dicFileAttributes['updateData'] == 'YES':
+                    updateID = self.rpc.callRP('Database.checkUpdateID',self.dicFileAttributes['importTable'], self.dicFileAttributes['checkUpdateField'], dicValues[self.dicFileAttributes['checkUpdateField']], self.dicUser)
+                    print 'update-id = ', updateID
+                    if updateID > 0:
+                        oSingleImport.ID = updateID
+                    else:
+                        oSingleImport.newRecord()
+                    
+
+                    
+                else:
+                    oSingleImport.newRecord()
+                print 'save Data'
                 oSingleImport.saveExternalData(dicValues)
 
             elif self.dicFileAttributes['inputType'] == 'stock_goods':
@@ -184,18 +244,34 @@ class import_generic1(fileSelection):
                     #print ' webshop-data for article', `result`
                     
                     
-                    
-            s1 = importFile.readline().strip()
+            print 'Next Data', sNext        
+            if self.dicFileAttributes['mergeData'] == 'YES':
+                s1 = sNext
+            else:
+                s1 = importFile.readline().strip()
+                
+            
             se += 1
             #print se
             #s1 = None
         importFile.close()
-
+        self.executeSomeStuff()
             
-
-        
-
-
+    
+    def executeSomeStuff(self):
+        # after close make some stuff 
+        try:
+            liExtraFunction =  self.dicFileAttributes['extraFunction'].split(',')
+            
+            for eF in liExtraFunction:
+                if eF.strip() == 'UPDATEBANK':
+                    ok = self.rpc.callRP('Database.updateBank',self.dicUser) 
+                
+        except Exception, param:
+            print 'EX 9'
+            print Exception,param
+            
+            
 
     def on_ok_button1_clicked(self, event):
     

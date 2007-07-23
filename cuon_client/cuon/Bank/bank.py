@@ -174,11 +174,9 @@ class bankwindow(chooseWindows):
     # search button
     def on_bSearch_clicked(self, event):
         self.out( 'Searching ....', self.ERROR)
-        sName = self.getWidget('eFindName').get_text()
-        sCity = self.getWidget('eFindCity').get_text()
-        self.out('Name and City = ' + sName + ', ' + sCity, self.ERROR)
-        self.singleBank.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
-        self.out(self.singleBank.sWhere, self.ERROR)
+        sBCN = self.getWidget('eFindBCN').get_text()
+        sShortDesignation = self.getWidget('eFindDesignation').get_text()
+        self.singleBank.sWhere = 'where address.id = address_id and bcn ~* \'.*' + sBCN + '.*\' and short_designation ~* \'.*' + sShortDesignation + '.*\''
         self.refreshTree()
     
     

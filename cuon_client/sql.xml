@@ -42,13 +42,19 @@
         <index_name> address_idx_lastname_firstname</index_name>
         <index_special> </index_special>
         <index_table>address</index_table>
-        <index_column>lastname,firstname</index_column>
+        <index_column>lastname,firstname,client,status</index_column>
     </index>
     <index>
         <index_name> address_idx_all1</index_name>
         <index_special> </index_special>
         <index_table>address</index_table>
         <index_column>lastname,firstname,client,status</index_column>
+    </index>
+     <index>
+        <index_name> address_idx_status_info</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>status_info</index_column>
     </index>
     <index>
         <index_name>partner_idx_lastname</index_name>
@@ -98,6 +104,12 @@
         <index_special> </index_special>
         <index_table>contact</index_table>
         <index_column>contacter_id</index_column>
+    </index>
+     <index>
+        <index_name>bank_idx_bcn</index_name>
+        <index_special> </index_special>
+        <index_table>bank</index_table>
+        <index_column>bcn</index_column>
     </index>
     
   <index>

@@ -402,7 +402,7 @@ class addresswindow(chooseWindows):
         self.setEntriesEditable(self.EntriesAddressesBank, TRUE)
         self.startEdit()
         
-    def on_delete1_activate(self, event):
+    def on_bank_delete1_activate(self, event):
         print 'bank delete activate'
         self.out( "delete addresses v2")
         self.singleAddressBank.deleteRecord()

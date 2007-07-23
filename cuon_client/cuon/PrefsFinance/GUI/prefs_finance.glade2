@@ -86,7 +86,7 @@
 		      <signal name="activate" handler="on_VatNew1_activate" last_modification_time="Fri, 03 Dec 2004 09:37:58 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image216">
+			<widget class="GtkImage" id="image234">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -107,7 +107,7 @@
 		      <signal name="activate" handler="on_VatEdit1_activate" last_modification_time="Fri, 03 Dec 2004 09:37:58 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image217">
+			<widget class="GtkImage" id="image235">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-yes</property>
 			  <property name="icon_size">1</property>
@@ -128,7 +128,7 @@
 		      <signal name="activate" handler="on_VatSave1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image218">
+			<widget class="GtkImage" id="image236">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -155,7 +155,7 @@
 		      <signal name="activate" handler="on_VatPrint1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image219">
+			<widget class="GtkImage" id="image237">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
@@ -182,7 +182,7 @@
 		      <signal name="activate" handler="on_VatClear1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image220">
+			<widget class="GtkImage" id="image238">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -231,7 +231,7 @@
 		      <signal name="activate" handler="on_TopNew1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image221">
+			<widget class="GtkImage" id="image239">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -252,7 +252,7 @@
 		      <signal name="activate" handler="on_TopEdit1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image222">
+			<widget class="GtkImage" id="image240">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-yes</property>
 			  <property name="icon_size">1</property>
@@ -273,7 +273,7 @@
 		      <signal name="activate" handler="on_TopSave1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image223">
+			<widget class="GtkImage" id="image241">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -300,7 +300,7 @@
 		      <signal name="activate" handler="on_TopPrint1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image224">
+			<widget class="GtkImage" id="image242">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
@@ -327,7 +327,7 @@
 		      <signal name="activate" handler="on_TopClear1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image225">
+			<widget class="GtkImage" id="image243">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -347,7 +347,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="chooseTop">
+		    <widget class="GtkMenuItem" id="chooseTOP">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">choose TOP</property>
 		      <property name="use_underline">True</property>

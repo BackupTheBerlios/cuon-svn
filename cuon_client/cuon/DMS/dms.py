@@ -130,7 +130,7 @@ class dmswindow(windows):
         print 'self.singleDMS.ModulNumber', self.singleDMS.ModulNumber
         self.singleDMS.setTreeFields( ['title', 'category','document_date'] )
         self.singleDMS.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleDMS.setTreeOrder('title')
+        self.singleDMS.setTreeOrder('title, document_date')
         self.singleDMS.setListHeader([_('Title'), _('Category'), _('Doc.-Date')])
         self.singleDMS.setTree(self.xml.get_widget('tree1') )
 

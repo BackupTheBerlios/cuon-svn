@@ -87,7 +87,7 @@ class articleswindow(chooseWindows):
         self.singleArticle.setGladeXml(self.xml)
         self.singleArticle.setTreeFields( ['number', 'designation'] )
 #        self.singleArticle.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleArticle.setTreeOrder('number')
+        self.singleArticle.setTreeOrder('number, designation')
         self.singleArticle.setTree(self.xml.get_widget('tree1') )
         self.singleArticle.setListHeader(['number', 'designation', ])
         
