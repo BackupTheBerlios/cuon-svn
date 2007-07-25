@@ -646,3 +646,26 @@ class Database(xmlrpc.XMLRPC, SQL):
             dicRet = 'NONE'
         #print dicRet
         return dicRet
+    def xmlrpc_checkUpdateID(self, sTable, sField, liValue, dicUser):
+        updateID = 0
+        sSql = 'select id from ' + sTable + ' where ' + sField + ' = '
+        if  liValue[1] == 'string':
+            sSql += "'" + liValue[0] + "'"
+        else:
+            sSql += `liValue[0]` 
+        
+        sSql += self.getWhere('',dicUser,2)
+        liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print liResult
+        if liResult and liResult != 'NONE':
+            updateID = liResult[0]['id']
+            
+        return updateID
+        
+    def xmlrpc_updateBank(self, dicUser):
+        updateID = 0    
+        sSql = "update bank set address_id = (select address.id from address, bank where bank.shortDesignation = address.status_info "
+        sSql += self.getWhere('',dicUser,2,'bank.') + ')'
+        liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print liResult
+        return True

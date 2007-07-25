@@ -280,3 +280,11 @@ on_bInvoiceTOP_clicked                 (GtkButton       *button,
 void
 on_eInvoiceTOPID_changed               (GtkEditable     *editable,
                                         gpointer         user_data);
+
+void
+on_InvoiceEdit1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_InvoiceSave1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

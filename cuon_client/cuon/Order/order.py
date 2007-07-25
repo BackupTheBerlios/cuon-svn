@@ -45,7 +45,7 @@ import cuon.PrefsFinance.prefsFinance
 import cuon.Finances.SingleAccountInfo
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
-
+import cuon.Order.SingleOrderInvoice
 
 
 class orderwindow(chooseWindows):
@@ -76,6 +76,7 @@ class orderwindow(chooseWindows):
         self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
+        self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
@@ -86,6 +87,7 @@ class orderwindow(chooseWindows):
         self.EntriesOrderGet = 'order_get.xml'
         self.EntriesOrderPosition = 'order_position.xml'
         self.EntriesOrderMisc = 'order_misc.xml'
+        self.EntriesOrderInvoice = 'order_invoice.xml'
         self.EntriesOrderPayment = 'order_inpayment.xml'
         
         
@@ -144,7 +146,14 @@ class orderwindow(chooseWindows):
         
         self.loadEntries(self.EntriesOrderMisc)
         
-        
+        # singleOrderInvoice
+        self.loadEntries(self.EntriesOrderInvoice)
+        self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+        self.singleOrderInvoice.setEntries(self.getDataEntries(self.EntriesOrderInvoice) )
+        self.singleOrderInvoice.setGladeXml(self.xml)
+        self.singleOrderInvoice.setTreeFields([])
+        self.singleOrderInvoice.setTreeOrder('id')
+        self.singleOrderInvoice.setTree(self.xml.get_widget('tree1') )
         # singleOrderPayment
         
         self.loadEntries(self.EntriesOrderPayment)
@@ -167,6 +176,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','supply1')
         self.addEnabledMenuItems('tabs','gets1')
         self.addEnabledMenuItems('tabs','positions1')
+        self.addEnabledMenuItems('tabs','invoice1')
         self.addEnabledMenuItems('tabs','misc1')
         self.addEnabledMenuItems('tabs','payments1')
 
@@ -177,6 +187,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('gets','gets1')
         self.addEnabledMenuItems('positions','positions1')
         self.addEnabledMenuItems('payment','payments1')
+        self.addEnabledMenuItems('invoice','invoice11')
         self.addEnabledMenuItems('misc','misc1')
         
 
@@ -201,6 +212,8 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('editPositions','PositionNew1', self.dicUserKeys['new'])
         self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
         self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
+        # enabledMenues for Invoice
+        self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
 
         # enabledMenues for Payment
         self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
@@ -213,6 +226,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('editSave','SupplySave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','InvoiceSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
 
@@ -439,7 +453,20 @@ class orderwindow(chooseWindows):
     def on_PositionDelete1_activate(self, event):
         print "delete Partner articles v2"
         self.singleOrderPosition.deleteRecord()
+    # Menu Invoice 
+    def on_InvoiceSave1_activate(self, event):
+        print "save Invoice v2"
+        
+        self.singleOrderInvoice.orderId = self.singleOrder.ID
+        self.singleOrderInvoice.save()
+        self.setEntriesEditable(self.EntriesOrderInvoice, FALSE)
+        
+        #self.tabChanged()
+            
 
+    def on_InvoiceEdit1_activate(self, event):
+        print 'invoiceEdit1'
+        self.setEntriesEditable(self.EntriesOrderInvoice, TRUE)
     # Menu Misc
     def on_MiscEdit_activate(self, event):
         print 'MiscEdit1'
@@ -799,6 +826,7 @@ class orderwindow(chooseWindows):
         try:
             liTop = self.singlePrefsFinanceTop.getTOP(long(self.getWidget( 'eInvoiceTOPID').get_text()))
             self.setTextbuffer(eTopField, liTop)
+            
         except Exception,param:
             self.setTextbuffer(eTopField, ' ')
             print Exception,param
@@ -893,6 +921,7 @@ class orderwindow(chooseWindows):
         self.singleOrderSupply.disconnectTree()
         self.singleOrderGet.disconnectTree()
         self.singleOrderPosition.disconnectTree()
+        #self.singleOrderInvoice.disconnectTree()
         
         if self.tabOption == self.tabOrder:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
@@ -915,9 +944,12 @@ class orderwindow(chooseWindows):
             self.singleOrderPosition.refreshTree()
             
         elif self.tabOption == self.tabInvoice:
-            self.singleOrder.connectTree()
-            self.singleOrder.refreshTree()
-
+            #self.singleOrder.connectTree()
+            #self.singleOrder.refreshTree()
+            self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+            print 'Singleid =',  self.singleOrderInvoice.findSingleId()
+            self.singleOrderInvoice.fillEntries(self.singleOrderInvoice.findSingleId())
+            
         elif self.tabOption == self.tabMisc:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
             self.singleOrder.connectTree()
@@ -936,23 +968,27 @@ class orderwindow(chooseWindows):
             self.enableMenuItem('order')
             print 'Seite 0'
             self.editAction = 'editOrder'
-            
+            self.setTreeVisible(True)
         elif self.tabOption == self.tabSupply:
             #Partner
             self.disableMenuItem('tabs')
             self.enableMenuItem('supply')
             self.editAction = 'editSupply'
+            self.setTreeVisible(True)
+
             print 'Seite 1'
             
         elif self.tabOption == self.tabGet:
             self.disableMenuItem('tabs')
             self.enableMenuItem('gets')
             self.editAction = 'editGets'
+            self.setTreeVisible(True)
             print 'Seite 2'
         elif self.tabOption == self.tabPosition:
             self.disableMenuItem('tabs')
             self.enableMenuItem('positions')
             self.editAction = 'editPositions'
+            self.setTreeVisible(True)
             print 'Seite 3'  
          
          
@@ -960,11 +996,13 @@ class orderwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('invoice')
             self.editAction = 'editInvoice'
+            self.setTreeVisible(False)
             print 'Seite 4'
             
         elif self.tabOption == self.tabMisc:
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
+            self.setTreeVisible(False)
             self.editAction = 'editMisc'
             print 'Seite 5'
             
@@ -972,6 +1010,7 @@ class orderwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('payment')
             self.editAction = 'editPayment'
+            self.setTreeVisible(True)
             print 'Seite 6'  
          
         # refresh the Tree

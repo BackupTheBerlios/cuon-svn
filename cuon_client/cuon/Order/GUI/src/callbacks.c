@@ -561,3 +561,19 @@ on_eInvoiceTOPID_changed               (GtkEditable     *editable,
 
 }
 
+
+void
+on_InvoiceEdit1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_InvoiceSave1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

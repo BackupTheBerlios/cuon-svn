@@ -2275,6 +2275,33 @@
     </field>
   </table>
   <table>
+    <nameOfTable>orderinvoice</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>order_top</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    </table>
+  <table>
     <nameOfTable>planet</nameOfTable>
     <specials>inherits (t_standard);</specials>
     <x>152</x>

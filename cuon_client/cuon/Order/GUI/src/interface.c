@@ -235,6 +235,25 @@ static GnomeUIInfo position1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo invoice1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("_Edit"),
+    NULL,
+    (gpointer) on_InvoiceEdit1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("_Save"),
+    NULL,
+    (gpointer) on_InvoiceSave1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo misc1_menu_uiinfo[] =
 {
   {
@@ -321,6 +340,13 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Position"),
     NULL,
     position1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Invoice"),
+    NULL,
+    invoice1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -2021,11 +2047,14 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[5].widget, "PositionPrint1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[6].widget, "separator6");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[7].widget, "PositionDelete1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[5].widget, "misc1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[5].widget, "invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1_menu_uiinfo[0].widget, "InvoiceEdit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1_menu_uiinfo[1].widget, "InvoiceSave1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[6].widget, "misc1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[0].widget, "MiscEdit");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[1].widget, "MiscSave");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[2].widget, "clear1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[6].widget, "payments1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[7].widget, "payments1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[0].widget, "payment_new");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[1].widget, "payment_edit");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[2].widget, "payment_save");

@@ -113,6 +113,11 @@
       <Entry-File>order_position.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_orderposition.xml</Entry-FileValue>
     </Entries>
+     <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>order_invoice.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_orderinvoice.xml</Entry-FileValue>
+    </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order_inpayment.xml</Entry-File>

@@ -390,6 +390,37 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="invoice1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Invoice</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="invoice1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="InvoiceEdit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">_Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_InvoiceEdit1_activate" last_modification_time="Tue, 24 Jul 2007 08:19:58 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="InvoiceSave1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">_Save</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_InvoiceSave1_activate" last_modification_time="Tue, 24 Jul 2007 08:19:58 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="misc1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Misc</property>

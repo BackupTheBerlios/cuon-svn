@@ -261,6 +261,8 @@ class Article(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getArticlesOfMaterialGroup(self, dicUser, mid):
         sSql = 'select number, designation, id from articles where material_group = ' + `mid`
+        sSql += self.getWhere('',dicUser,2) 
+        sSql += ' order by number, designation '
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
 
         return dicResult
