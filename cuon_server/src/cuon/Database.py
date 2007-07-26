@@ -83,7 +83,7 @@ class Database(xmlrpc.XMLRPC, SQL):
                     #dSession['SessionID'] = self.getValue('user_' + sUser + '_Session_ID')
                     #dSession['endTime'] = float(self.getValue('user_' + sUser + '_Session_endTime'))
                     #self.out('py_checkUser dSession is found')
-                    ok = 'Test'
+                    ok = 'zope'
                     
         #self.out('Session = ' + `dSession`)
 ##        if dSession:

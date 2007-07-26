@@ -44,6 +44,7 @@ try:
     #shutil.copytree('Client/CUON/cuon',cuon_bin )
     os.system('cp -R Client/CUON/* ' + cuon_bin)
     os.system('mv ' + cuon_bin + '/cuonObjects ' + cuon_home)
+    os.system('cp -R Client/starter ' + cuon_home)
     
 except Exception, params:
     print 'shutil'
