@@ -112,9 +112,14 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
+        
         sSql += " from orderbook where id = " + `orderid`
         sSql += self.getWhere(None, dicUser,2)
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        
+        
+        
+        return liResult
         
         
     def xmlrpc_setInvoiceNumber(self, orderNumber, dicUser):
