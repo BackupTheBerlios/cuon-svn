@@ -38,7 +38,7 @@ class editorwindow(windows):
     
     def on_quit1_activate(self, event):
         print 'quit editor'
-        os.system('rm tmp_editor_ssh_tab_*')
+        os.system('find -name "tmp_editor_ssh_tab_*" -exec rm {} \;')
         self.closeWindow()
         
     def on_save1_activate(self, event):
