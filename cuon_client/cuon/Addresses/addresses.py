@@ -726,6 +726,8 @@ class addresswindow(chooseWindows):
             if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     dicPartner['notes_' + key] = dicNotes[key]    
+            dicPartner = self.addDateTime(dicPartner)
+            print dicPartner
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
             
     def on_bSchedulLetter_clicked(self, event):
@@ -746,13 +748,16 @@ class addresswindow(chooseWindows):
             if dicNotes and dicNotes != 'NONE':
                 for key in dicNotes:
                     firstRecord['notes_' + key] = dicNotes[key]
-            dicTime = self.getActualDateTime()
-            if dicTime:
-                for key in dicTime:
-                    firstRecord['date_' + key] = dicTime[key]
+            firstRecord = self.addDateTime(firstRecord)
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
         
         return firstRecord, dicExtInfo
+    def addDateTime(self, firstRecord):
+        dicTime = self.getActualDateTime()
+        if dicTime:
+            for key in dicTime:
+                firstRecord['date_' + key] = dicTime[key]
+        return firstRecord
         
     def getSchedulInfos(self):
         dicSchedul = {}
@@ -775,7 +780,9 @@ class addresswindow(chooseWindows):
                     dicSchedul['notes_' + key] = dicNotes[key]
                     
             dicSchedul['schedul_time_begin'] = self.getTimeString(dicSchedul['schedul_time_begin'])
-            print 'dicSchedul = ', dicSchedul
+            #print 'dicSchedul = ', dicSchedul
+            dicSchedul = self.addDateTime(dicSchedul)
+            
         return dicSchedul, dicExtInfo
         
     # choose Address

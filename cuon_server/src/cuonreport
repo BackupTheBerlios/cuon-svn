@@ -34,8 +34,9 @@ SCRIPTNAME=/etc/init.d/$NAME
 #	Function that starts the daemon/service.
 #
 d_start() {
-	nohup start-stop-daemon --start  --quiet  --exec $DAEMON  &
-   nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonreport.log 2>>/var/log/cuonreport_err.log &
+	#nohup start-stop-daemon --start  --quiet  --exec $DAEMON  &
+  # nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonreport.log 2>>/var/log/cuonreport_err.log &
+  nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonreport.log 2>>/var/log/cuonreport_err.log &
    
                    
 }

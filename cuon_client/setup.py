@@ -324,6 +324,12 @@ class setup:
         #self.src_aiml = "./cuon/AI/AIML"
         #self.dest_aiml = self.SERVERDIRSHARE + "/AI/AIML"
 
+        # restart the server
+        self.executeSSH(" /etc/init.d/cuonxmlrpc restart")
+        self.executeSSH(" /etc/init.d/cuonreport restart")
+        self.executeSSH(" /etc/init.d/cuonweb restart")
+        self.executeSSH(" /etc/init.d/cuonweb2 restart")
+        self.executeSSH(" /etc/init.d/cuonai restart")
 
         
     def install_client(self):

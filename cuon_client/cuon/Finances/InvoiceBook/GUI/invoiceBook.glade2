@@ -65,7 +65,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image109">
+			<widget class="GtkImage" id="image133">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -99,7 +99,7 @@
 		      <signal name="activate" handler="on_new_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image110">
+			<widget class="GtkImage" id="image134">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -120,7 +120,7 @@
 		      <signal name="activate" handler="on_edit_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image111">
+			<widget class="GtkImage" id="image135">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-edit</property>
 			  <property name="icon_size">1</property>
@@ -141,7 +141,7 @@
 		      <signal name="activate" handler="on_save_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image112">
+			<widget class="GtkImage" id="image136">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -168,7 +168,7 @@
 		      <signal name="activate" handler="on_delete_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image113">
+			<widget class="GtkImage" id="image137">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -432,47 +432,87 @@
 			<widget class="GtkMenu" id="residue_print_menu">
 
 			  <child>
-			    <widget class="GtkMenuItem" id="all_outstanding_accounts1">
+			    <widget class="GtkMenuItem" id="overdue_amount1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">All outstanding accounts</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_all_outstanding_accounts1_activate" last_modification_time="Tue, 03 Jul 2007 12:30:51 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="residue_month1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Month</property>
+			      <property name="label" translatable="yes">overdue amount</property>
 			      <property name="use_underline">True</property>
 
 			      <child>
-				<widget class="GtkMenu" id="residue_month1_menu">
+				<widget class="GtkMenu" id="overdue_amount1_menu">
 
 				  <child>
-				    <widget class="GtkMenuItem" id="residue_this_month">
+				    <widget class="GtkMenuItem" id="all_outstanding_accounts1">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">This Month</property>
+				      <property name="label" translatable="yes">All outstanding accounts</property>
 				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_residue_this_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				      <signal name="activate" handler="on_all_outstanding_accounts1_activate" last_modification_time="Tue, 03 Jul 2007 12:30:51 GMT"/>
 				    </widget>
 				  </child>
 
 				  <child>
-				    <widget class="GtkMenuItem" id="residue_last_month">
+				    <widget class="GtkMenuItem" id="residue_month1">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Last Month</property>
+				      <property name="label" translatable="yes">Month</property>
 				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_residue_last_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+
+				      <child>
+					<widget class="GtkMenu" id="residue_month1_menu">
+
+					  <child>
+					    <widget class="GtkMenuItem" id="residue_this_month">
+					      <property name="visible">True</property>
+					      <property name="label" translatable="yes">This Month</property>
+					      <property name="use_underline">True</property>
+					      <signal name="activate" handler="on_residue_this_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+					    </widget>
+					  </child>
+
+					  <child>
+					    <widget class="GtkMenuItem" id="residue_last_month">
+					      <property name="visible">True</property>
+					      <property name="label" translatable="yes">Last Month</property>
+					      <property name="use_underline">True</property>
+					      <signal name="activate" handler="on_residue_last_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+					    </widget>
+					  </child>
+					</widget>
+				      </child>
 				    </widget>
 				  </child>
 
 				  <child>
-				    <widget class="GtkMenuItem" id="residue_custom_month">
+				    <widget class="GtkMenuItem" id="residue_quarter1">
 				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Custom Month</property>
+				      <property name="label" translatable="yes">Quarter</property>
 				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_residue_custom_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				      <signal name="activate" handler="on_residue_quarter1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="residue_half_year1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Half Year</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_residue_half_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="residue_year1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Year</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_residue_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="residue_custom">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Custom </property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_residue_custom_activate" last_modification_time="Sun, 29 Jul 2007 18:02:28 GMT"/>
 				    </widget>
 				  </child>
 				</widget>
@@ -481,29 +521,60 @@
 			  </child>
 
 			  <child>
-			    <widget class="GtkMenuItem" id="residue_quarter1">
+			    <widget class="GtkMenuItem" id="reminder1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Quarter</property>
+			      <property name="label" translatable="yes">Reminder</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_residue_quarter1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-			    </widget>
-			  </child>
 
-			  <child>
-			    <widget class="GtkMenuItem" id="residue_half_year1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Half Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_residue_half_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-			    </widget>
-			  </child>
+			      <child>
+				<widget class="GtkMenu" id="reminder1_menu">
 
-			  <child>
-			    <widget class="GtkMenuItem" id="residue_year1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_residue_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				  <child>
+				    <widget class="GtkMenuItem" id="all_reminder1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">All reminder</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_all_reminder1_activate" last_modification_time="Sun, 29 Jul 2007 18:44:34 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="first_reminder1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">First reminder</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_first_reminder1_activate" last_modification_time="Sun, 29 Jul 2007 18:02:28 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="second_reminder1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Second Reminder</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_second_reminder1_activate" last_modification_time="Sun, 29 Jul 2007 18:02:28 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="last_reminder1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Last Reminder</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_last_reminder1_activate" last_modification_time="Sun, 29 Jul 2007 18:02:28 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="summons1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Summons</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_summons1_activate" last_modification_time="Sun, 29 Jul 2007 18:02:28 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
 			    </widget>
 			  </child>
 			</widget>

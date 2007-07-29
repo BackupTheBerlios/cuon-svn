@@ -117,6 +117,7 @@ class User(defaultValues):
         self.prefDMS['exe']['googleearth'] = 'googleearth'
         self.prefDMS['exe']['internet'] = '/usr/bin/firefox'
         self.prefDMS['exe']['html'] = '/usr/bin/bluefish'
+        self.prefDMS['exe']['python'] = '/usr/bin/gedit'
 
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
         self.prefApps['printPickup'] = 'lpr'
@@ -263,7 +264,7 @@ class User(defaultValues):
         self.prefDMS['fileformat'] = {}
         self.prefDMS['fileformat']['scanImage'] = {'format':'Image Scanner', 'suffix':['NONE'], 'executable': 'INTERN'}
         self.prefDMS['fileformat']['LINK'] =  {'format':'LINK', 'suffix':['NONE'], 'executables': 'INTERN'}
-        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw','odt','ott'], 'executable': self.prefDMS['exe']['writer'] }
+        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw','odt','ott','doc'], 'executable': self.prefDMS['exe']['writer'] }
         self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc','ods','ots'], 'executable': self.prefDMS['exe']['calc']}
         self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd','odg','otg'], 'executable': self.prefDMS['exe']['draw']}
         self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sti','sxi','odp','otp'], 'executable': self.prefDMS['exe']['impress']}
@@ -279,6 +280,7 @@ class User(defaultValues):
         self.prefDMS['fileformat']['dia'] =  {'format':'DIA', 'suffix':['dia'], 'executable': self.prefDMS['exe']['flowchart']}
         self.prefDMS['fileformat']['googleearth'] =  {'format':'KMZ', 'suffix':['kmz','kml','eta'], 'executable': self.prefDMS['exe']['googleearth']}
         self.prefDMS['fileformat']['html'] =  {'format':'HTML', 'suffix':['html','htm'], 'executable': self.prefDMS['exe']['html']}
+        self.prefDMS['fileformat']['python'] =  {'format':'PYTHON', 'suffix':['py'], 'executable': self.prefDMS['exe']['python']}
         
 
         
