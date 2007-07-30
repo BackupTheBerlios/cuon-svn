@@ -244,8 +244,8 @@ class import_generic1(fileSelection):
                     #print ' webshop-data for article', `result`
                     
                     
-            print 'Next Data', sNext        
             if self.dicFileAttributes['mergeData'] == 'YES':
+                print 'Next Data', sNext        
                 s1 = sNext
             else:
                 s1 = importFile.readline().strip()

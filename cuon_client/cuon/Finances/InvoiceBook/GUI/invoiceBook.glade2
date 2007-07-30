@@ -629,7 +629,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="lFindNumber">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Number</property>
+	      <property name="label" translatable="yes">invoicen-Nmber</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -652,7 +652,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindName">
+	    <widget class="GtkEntry" id="eFindInvoiceNumber">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -663,6 +663,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Mon, 30 Jul 2007 16:07:06 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -674,7 +675,7 @@
 	  <child>
 	    <widget class="GtkLabel" id="lFindDesignation">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Designation</property>
+	      <property name="label" translatable="yes">Order-Number</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -697,7 +698,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindCity">
+	    <widget class="GtkEntry" id="eFindOrderNumber">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -708,6 +709,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Mon, 30 Jul 2007 16:06:55 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>

@@ -255,8 +255,10 @@ class invoicebookwindow(windows):
         
         Pdf = self.rpc.callRP('Report.server_list_of_inpayment', dicExtraData, self.dicUser)
         self.showPdf(Pdf, self.dicUser)
-
+    
     # Menu Residue
+    
+    # print outstanding invoices
     def on_all_outstanding_accounts1_activate(self, event):
         #dBegin,dEnd = self.getFirstLastDayOfLastMonthAsSeconds()
         dicDate = self.getActualDateTime()
@@ -264,7 +266,7 @@ class invoicebookwindow(windows):
         dEnd = dicDate['date']
         self.printListOfResidue(dBegin,dEnd)
             
-        
+     
     def printListOfResidue(self, dBegin, dEnd):
         dicExtraData = {}
         print ' start List of Residue printing'
@@ -276,6 +278,27 @@ class invoicebookwindow(windows):
         Pdf = self.rpc.callRP('Report.server_list_of_residue', dicExtraData, self.dicUser)
         self.showPdf(Pdf, self.dicUser)
 
+    # print reminder 
+    def printListOfReminder(self, dBegin, dEnd):
+        dicExtraData = {}
+        print ' start List of Reminder printing'
+        dicExtraData['dBegin'] = dBegin
+        dicExtraData['dEnd'] = dEnd
+        
+        print 'dicOrder = ', dicExtraData
+        
+        Pdf = self.rpc.callRP('Report.server_list_of_reminder', dicExtraData, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
+
+    def on_all_reminder1_activate(self, event):
+        #dBegin,dEnd = self.getFirstLastDayOfLastMonthAsSeconds()
+        dicDate = self.getActualDateTime()
+        dBegin = dicDate['date']
+        dEnd = dicDate['date']
+        self.printListOfReminder(dBegin,dEnd)
+        
+            
+        
     # Buttons
  
     def on_bDMS_clicked(self, event):

@@ -14,7 +14,7 @@
   <property name="modal">False</property>
   <property name="default_width">662</property>
   <property name="default_height">142</property>
-  <property name="resizable">False</property>
+  <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="icon">cuon-logo.xpm</property>
   <property name="decorated">True</property>
