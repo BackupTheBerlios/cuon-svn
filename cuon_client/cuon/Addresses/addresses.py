@@ -752,13 +752,7 @@ class addresswindow(chooseWindows):
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
         
         return firstRecord, dicExtInfo
-    def addDateTime(self, firstRecord):
-        dicTime = self.getActualDateTime()
-        if dicTime:
-            for key in dicTime:
-                firstRecord['date_' + key] = dicTime[key]
-        return firstRecord
-        
+    
     def getSchedulInfos(self):
         dicSchedul = {}
         dicExtInfo = {}

@@ -319,16 +319,15 @@ class projectwindow(chooseWindows):
         self.out( "delete projectphases v2")
         self.singleProjectTaskMaterial.deleteRecord()
                 
-               
     def on_bShowDMS_clicked(self, event):
         print 'dms clicked'
         if self.singleProject.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
-        
+            
+   
     
-
-        
+    
 ##    def on_chooseAddress_activate(self, event):
 ##        # choose Address from other Modul
 ##        if self.tabOption == self.tabProject:
@@ -407,7 +406,7 @@ class projectwindow(chooseWindows):
     #choose button
     def on_bChoose_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eAddressNumber'))
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
         
     # signals from entry eAddressNumber
     
@@ -526,15 +525,41 @@ class projectwindow(chooseWindows):
         if self.singleProject.firstRecord['customer_id'] > 0:
             print 'start address'
             adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.singleProject.firstRecord['customer_id'])
+    
+
+    def getProjectInfos(self):
+    
+        firstRecord = None
+        if self.singleProject.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            firstRecord = self.singleProject.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            #dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            #if dicNotes and dicNotes != 'NONE':
+            #    for key in dicNotes:
+            #        firstRecord['notes_' + key] = dicNotes[key]
+            firstRecord = self.addDateTime(firstRecord)
+            if firstRecord.has_key('customer_id') and firstRecord['customer_id'] > 0:
+                print 'Customer ID = ', firstRecord['customer_id']
+                self.singleAddress.load(firstRecord['customer_id'])
+                print self.singleAddress.firstRecord
+                for key in self.singleAddress.firstRecord:
+                    firstRecord['address_' + key] = self.singleAddress.firstRecord[key]
+                    print 'Key, Value = ',key,self.singleAddress.firstRecord[key]
+                    
+            dicExtInfo ={'sep_info':{'1':self.singleProject.ID},'Modul':self.ModulNumber}
+        
+        return firstRecord, dicExtInfo
         
     def on_bLetter_clicked(self, event):
         print 'bLetter clicked'
         if self.singleProject.ID > 0:
             #self.singleAddress.load(self.singleAddress.ID)
-            print 'firstRecord = ', self.singleProject.firstRecord
+            #print 'firstRecord = ', self.singleProject.firstRecord
             print 'ModulNumber', self.ModulNumber
-            dicExtInfo ={'sep_info':{'1':self.singleProject.ID},'Modul':self.ModulNumber}
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, self.singleProject.firstRecord,dicExtInfo)
+            firstRecord, dicExtInfo = self.getProjectInfos()
+            print 'firstRecord = ', firstRecord
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, firstRecord,dicExtInfo)
         
     def refreshTree(self):
         self.singleProject.disconnectTree()

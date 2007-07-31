@@ -310,12 +310,20 @@ class invoicebookwindow(windows):
         
         
     # search button
-    def on_bSearch_clicked(self, event):
+    def on_bSearch_clicked(self, event, data=None):
         self.out( 'Searching ....', self.ERROR)
-        sTitle = self.getWidget('eFindTitle').get_text()
-        sDesi = self.getWidget('eFindDesignation').get_text()
+        sInvoiceNumber = self.getWidget('eFindInvoiceNumber').get_text()
         
-        self.singleListOfInvoice.sWhere = 'where title ~* \'.*' + sTitle + '.*\' and designation ~* \'.*' + sDesi + '.*\''
+        sOrderNumber = self.getWidget('eFindOrderNumber').get_text()
+        if sInvoiceNumber or sOrderNumber:
+            self.singleListOfInvoice.sWhere = 'where '
+            if sInvoiceNumber:
+                self.singleListOfInvoice.sWhere += ' invoice_number = ' + sInvoiceNumber 
+            if sInvoiceNumber and sOrderNumber:
+                self.singleListOfInvoice.sWhere += ' and ' 
+            if sOrderNumber:
+                self.singleListOfInvoice.sWhere += ' order_number = ' + sOrderNumber   
+            
         #self.out(self.singleListOfInvoice.sWhere, self.ERROR)
         self.refreshTree()
 

@@ -818,7 +818,13 @@ class windows(rawWindow, MyXML, messages):
                 except:
                     pass
                     
-            
+    def addDateTime(self, firstRecord):
+        dicTime = self.getActualDateTime()
+        if dicTime:
+            for key in dicTime:
+                firstRecord['date_' + key] = dicTime[key]
+        return firstRecord
+              
         
         
        

@@ -597,7 +597,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindName">
+	    <widget class="GtkEntry" id="eFindOrderNumber">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -608,6 +608,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Tue, 31 Jul 2007 18:43:06 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -642,7 +643,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkEntry" id="eFindCity">
+	    <widget class="GtkEntry" id="eFindOrderDesignation">
 	      <property agent="glademm" name="cxx_visibility">protected</property>
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
@@ -653,6 +654,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
+	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Tue, 31 Jul 2007 18:57:58 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>

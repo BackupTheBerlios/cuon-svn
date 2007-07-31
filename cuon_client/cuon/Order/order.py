@@ -510,13 +510,15 @@ class orderwindow(chooseWindows):
 
 
     # search button
-    def on_bSearch_clicked(self, event):
+    def on_bSearch_clicked(self, event, data=None):
         self.out( 'Searching ....', self.ERROR)
-        sNumber = self.getWidget('eFindNumber').get_text()
-        sDesignation = self.getWidget('eFindDesignation').get_text()
-        self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
-        self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
-        self.out(self.singleOrder.sWhere, self.ERROR)
+        sNumber = self.getWidget('eFindOrderNumber').get_text()
+        sDesignation = self.getWidget('eFindOrderDesignation').get_text()
+        if self.tabOption == self.tabOrder:
+            self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+            self.out(self.singleOrder.sWhere, self.ERROR)
+        elif self.tabOption == self.tabPayment:
+            pass
         self.refreshTree()
 
 
