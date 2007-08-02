@@ -35,6 +35,8 @@ import datetime as DateTime
 import SingleListOfInvoice
 import SingleInpayment
 import cuon.DMS.dms
+import cuon.Order.SingleOrder
+import cuon.Addresses.SingleAddress
 
 class invoicebookwindow(windows):
 
@@ -44,9 +46,12 @@ class invoicebookwindow(windows):
         windows.__init__(self)
        
         self.singleListOfInvoice = SingleListOfInvoice.SingleListOfInvoice(allTables)
-        self.singleInpayment = SingleInpayment.SingleInpayment(allTables)
         self.singleResidue = SingleListOfInvoice.SingleListOfInvoice(allTables)
-    
+        self.singleInpayment = SingleInpayment.SingleInpayment(allTables)
+        self.singleOrder = cuon.Order.SingleOrder.SingleOrder(allTables)
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.ModulNumber = self.MN['Invoice']
+        
         self.loadGlade('invoiceBook.xml', 'InvoiceMainwindow')
         #self.win1 = self.getWidget('ListOfInvoiceMainwindow')
         #self.setStatusBar()
@@ -298,7 +303,33 @@ class invoicebookwindow(windows):
         self.printListOfReminder(dBegin,dEnd)
         
             
+    def getInvoiceInfos(self):
+    
+        firstRecord = None
+        if self.singleListOfInvoice.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            firstRecord = self.singleListOfInvoice.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            #dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
+            #if dicNotes and dicNotes != 'NONE':
+            #    for key in dicNotes:
+            #        firstRecord['notes_' + key] = dicNotes[key]
+            firstRecord = self.addDateTime(firstRecord)
+            if firstRecord.has_key('order_number') and firstRecord['order_number'] > 0:
+                print 'Order ID = ', firstRecord['order_number']
+                self.singleOrder.load(firstRecord['order_number'])
+                if self.singleOrder.firstRecord:
+                    for key in self.singleOrder.firstRecord:
+                            firstRecord['orderbook_' + key] = self.singleOrder.firstRecord[key]
+                    if self.singleOrder.firstRecord.has_key('addressnumber') and self.singleOrder.firstRecord['addressnumber'] > 0:
+                        self.singleAddress.load(self.singleOrder.firstRecord['addressnumber'])
+                        for key in self.singleAddress.firstRecord:
+                            firstRecord['address_' + key] = self.singleAddress.firstRecord[key]
+                            print 'Key, Value = ',key,self.singleAddress.firstRecord[key]
+                            
+            dicExtInfo ={'sep_info':{'1':self.singleListOfInvoice.ID},'Modul':self.ModulNumber}
         
+        return firstRecord, dicExtInfo    
     # Buttons
  
     def on_bDMS_clicked(self, event):
@@ -307,7 +338,15 @@ class invoicebookwindow(windows):
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleListOfInvoice.ID})
         
-        
+    def on_bLetter_clicked(self, event):
+        print 'letter clicked'
+        if self.singleListOfInvoice.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            firstRecord, dicExtInfo = self.getInvoiceInfos()
+            print 'firstRecord = ', firstRecord
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Invoice_info'], {'1':-161}, firstRecord,dicExtInfo)
+            #Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleListOfInvoice.ID})
+          
         
     # search button
     def on_bSearch_clicked(self, event, data=None):

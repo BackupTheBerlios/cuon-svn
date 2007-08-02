@@ -376,12 +376,20 @@ create_OrderMainwindow (void)
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *toolitem2;
+  GtkWidget *vbox11;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
-  GtkWidget *eFindName;
+  GtkWidget *eFindOrderNumber;
   GtkWidget *lFindDesignation;
-  GtkWidget *eFindCity;
+  GtkWidget *eFindOrderDesignation;
   GtkWidget *bSearch;
+  GtkWidget *hbox32;
+  GtkWidget *label56;
+  GtkWidget *eFindOrderID;
+  GtkWidget *label57;
+  GtkWidget *label58;
+  GtkWidget *label59;
+  GtkWidget *label60;
   GtkWidget *scrolledwindow1;
   GtkWidget *tree1;
   GtkWidget *notebook1;
@@ -634,31 +642,63 @@ create_OrderMainwindow (void)
   gtk_container_add (GTK_CONTAINER (toolbar1), toolitem2);
   gtk_container_set_border_width (GTK_CONTAINER (toolitem2), 1);
 
+  vbox11 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox11);
+  gtk_box_pack_start (GTK_BOX (vbox1), vbox11, FALSE, FALSE, 0);
+
   hbox1 = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (hbox1);
-  gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox11), hbox1, TRUE, TRUE, 0);
 
-  lFindNumber = gtk_label_new (_("Number"));
+  lFindNumber = gtk_label_new (_("Order-Number"));
   gtk_widget_show (lFindNumber);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindNumber, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindNumber), GTK_JUSTIFY_CENTER);
 
-  eFindName = gtk_entry_new ();
-  gtk_widget_show (eFindName);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindName, FALSE, FALSE, 0);
+  eFindOrderNumber = gtk_entry_new ();
+  gtk_widget_show (eFindOrderNumber);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindOrderNumber, FALSE, FALSE, 0);
 
   lFindDesignation = gtk_label_new (_("Designation"));
   gtk_widget_show (lFindDesignation);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindDesignation, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindDesignation), GTK_JUSTIFY_CENTER);
 
-  eFindCity = gtk_entry_new ();
-  gtk_widget_show (eFindCity);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindCity, FALSE, FALSE, 0);
+  eFindOrderDesignation = gtk_entry_new ();
+  gtk_widget_show (eFindOrderDesignation);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindOrderDesignation, FALSE, FALSE, 0);
 
   bSearch = gtk_button_new_with_mnemonic (_("Search"));
   gtk_widget_show (bSearch);
   gtk_box_pack_start (GTK_BOX (hbox1), bSearch, FALSE, FALSE, 0);
+
+  hbox32 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox32);
+  gtk_box_pack_start (GTK_BOX (vbox11), hbox32, TRUE, TRUE, 0);
+
+  label56 = gtk_label_new (_("ID"));
+  gtk_widget_show (label56);
+  gtk_box_pack_start (GTK_BOX (hbox32), label56, FALSE, FALSE, 0);
+
+  eFindOrderID = gtk_entry_new ();
+  gtk_widget_show (eFindOrderID);
+  gtk_box_pack_start (GTK_BOX (hbox32), eFindOrderID, TRUE, TRUE, 0);
+
+  label57 = gtk_label_new ("");
+  gtk_widget_show (label57);
+  gtk_box_pack_start (GTK_BOX (hbox32), label57, FALSE, FALSE, 0);
+
+  label58 = gtk_label_new ("");
+  gtk_widget_show (label58);
+  gtk_box_pack_start (GTK_BOX (hbox32), label58, FALSE, FALSE, 0);
+
+  label59 = gtk_label_new ("");
+  gtk_widget_show (label59);
+  gtk_box_pack_start (GTK_BOX (hbox32), label59, FALSE, FALSE, 0);
+
+  label60 = gtk_label_new ("");
+  gtk_widget_show (label60);
+  gtk_box_pack_start (GTK_BOX (hbox32), label60, FALSE, FALSE, 0);
 
   scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow1);
@@ -1894,7 +1934,16 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) OrderMainwindow, "key_press_event",
                     G_CALLBACK (on_Mainwindow_key_press_event),
                     NULL);
+  g_signal_connect ((gpointer) eFindOrderNumber, "key_press_event",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eFindOrderDesignation, "key_press_event",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eFindOrderID, "key_press_event",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
   g_signal_connect ((gpointer) notebook1, "switch_page",
@@ -2060,12 +2109,20 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[2].widget, "payment_save");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolitem2, "toolitem2");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox11, "vbox11");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lFindNumber, "lFindNumber");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindName, "eFindName");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderNumber, "eFindOrderNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, lFindDesignation, "lFindDesignation");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindCity, "eFindCity");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderDesignation, "eFindOrderDesignation");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bSearch, "bSearch");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox32, "hbox32");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label56, "label56");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderID, "eFindOrderID");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label57, "label57");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label58, "label58");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label59, "label59");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, label60, "label60");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow1, "scrolledwindow1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, tree1, "tree1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, notebook1, "notebook1");

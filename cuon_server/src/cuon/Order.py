@@ -109,7 +109,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getOrderValues(self, orderid, dicUser):
         sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
-        sSql += " orderbook.designation as order_designation , "
+        sSql += " orderbook.designation as order_designation , orderbook.number as order_number, "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
         

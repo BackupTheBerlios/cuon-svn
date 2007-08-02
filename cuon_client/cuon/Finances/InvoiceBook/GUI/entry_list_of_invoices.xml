@@ -14,7 +14,7 @@
     </entry>
  
      <entry>
-      <name>eOrderNumber</name>
+      <name>eOrderID</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>int</verify_type>

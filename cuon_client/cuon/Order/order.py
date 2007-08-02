@@ -514,8 +514,11 @@ class orderwindow(chooseWindows):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindOrderNumber').get_text()
         sDesignation = self.getWidget('eFindOrderDesignation').get_text()
+        sID = self.getWidget('eFindOrderID').get_text()
         if self.tabOption == self.tabOrder:
-            self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\''
+            self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\' '
+            if len(sID) > 0:
+                self.singleOrder.sWhere += ' and id = ' + sID
             self.out(self.singleOrder.sWhere, self.ERROR)
         elif self.tabOption == self.tabPayment:
             pass

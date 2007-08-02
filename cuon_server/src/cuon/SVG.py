@@ -13,10 +13,10 @@ class SVG:
         self.items.append(item)
 
     def getXml(self):
-        var = ["<?xml version=\"1.0\"?>\n",
-               "<svg height=\"%d\" width=\"%d\" >\n" % (self.height,self.width),
-               " <g style=\"%s; stroke:%s;\n" %(self.style,self.stroke),
-               "  stroke-width:%i;\">\n" %(self.stroke_width)]
+        var = ['<?xml version="1.0" standalone="no" ?>\n <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" \n   "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> \n ',
+               '<svg height=\"%d\" width=\"%d\"  xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" > \n ' % (self.height,self.width),
+               ' <g style=\"%s; stroke:%s;\n' %(self.style,self.stroke),
+               '  stroke-width:%i;\">\n' %(self.stroke_width)]
         for item in self.items: 
             var += item.getXml()            
         var += [" </g>\n</svg>\n"]

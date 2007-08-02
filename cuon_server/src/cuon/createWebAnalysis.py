@@ -34,7 +34,7 @@ if liDir:
             f.write(time.strftime('%Y.%m.%d', time.localtime()) + ' ' + `z1` + '\n')
             f.close()
             
-# now create the htmlside
+# now create the htmlside per day
 liDir = os.listdir('./')
 fDay = open('webalyser_days.html','w')    
 fDay.write('<html><body><H2>Hits per Day</H2>\n')
@@ -61,3 +61,35 @@ if liDir:
     
 fDay.write('</body></html>')
 fDay.close()
+
+# now create the htmlside per month
+fDay = open('webalyser_days.html','w')
+s = fDay.readline()
+iYear = 0
+iMonth = 0
+iDay = 0
+iValue = 0
+while s:
+    s = s.trim()
+    liS = s.split(' ')
+    if len(liS) > 1:
+        sDate = liS[0]
+        sValue = liS[1]
+        if len(sDate) > 1:
+            if len(sDate) > 9:
+                iYear = int(sDate[0:3]) 
+                iMonth = int(sDate[5:6])
+                iDay = int(sDat[8:9])
+                iValue = int(sValue)
+                
+                
+                
+                
+                    
+                    
+                
+            
+
+
+
+

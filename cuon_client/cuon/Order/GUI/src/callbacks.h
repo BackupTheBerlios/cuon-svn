@@ -288,3 +288,13 @@ on_InvoiceEdit1_activate               (GtkMenuItem     *menuitem,
 void
 on_InvoiceSave1_activate               (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

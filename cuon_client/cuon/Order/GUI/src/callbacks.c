@@ -577,3 +577,23 @@ on_InvoiceSave1_activate               (GtkMenuItem     *menuitem,
 
 }
 
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+
