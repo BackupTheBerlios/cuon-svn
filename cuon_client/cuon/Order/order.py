@@ -175,7 +175,7 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','order1')
         self.addEnabledMenuItems('tabs','supply1')
         self.addEnabledMenuItems('tabs','gets1')
-        self.addEnabledMenuItems('tabs','positions1')
+        self.addEnabledMenuItems('tabs','position1')
         self.addEnabledMenuItems('tabs','invoice1')
         self.addEnabledMenuItems('tabs','misc1')
         self.addEnabledMenuItems('tabs','payments1')
@@ -185,9 +185,9 @@ class orderwindow(chooseWindows):
         self.addEnabledMenuItems('order','order1')
         self.addEnabledMenuItems('supply','supply1')
         self.addEnabledMenuItems('gets','gets1')
-        self.addEnabledMenuItems('positions','positions1')
+        self.addEnabledMenuItems('positions','position1')
         self.addEnabledMenuItems('payment','payments1')
-        self.addEnabledMenuItems('invoice','invoice11')
+        self.addEnabledMenuItems('invoice','invoice1')
         self.addEnabledMenuItems('misc','misc1')
         
 
@@ -239,10 +239,11 @@ class orderwindow(chooseWindows):
         self.tabInvoice = 4
         self.tabMisc = 5
         self.tabPayment = 6
-        
+        self.OrderID = 0
 
         # start
-        if self.dicOrder and not newOrder and orderid == 0:
+        self.OrderID = orderid
+        if self.dicOrder and not newOrder and self.OrderID == 0:
             print self.dicOrder
             existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
             print 'existOrder = ', existOrder
@@ -250,14 +251,14 @@ class orderwindow(chooseWindows):
                 print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
                 self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
             self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
-        elif self.dicOrder and newOrder and orderid == 0:
+        elif self.dicOrder and newOrder and self.OrderID == 0:
             dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
             if dicResult and dicResult != 'NONE':
-                orderid = dicResult[0]['last_value']
-                if orderid > 0:
-                    self.singleOrder.sWhere = ' where id = ' + `orderid` 
-        elif orderid > 0:
-            self.singleOrder.sWhere = ' where id = ' + `orderid`
+                self.OrderID = dicResult[0]['last_value']
+                if self.OrderID > 0:
+                    self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
+        elif self.OrderID > 0:
+            self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
             
                     
         ts = self.getWidget('treeMaterialgroup')
@@ -930,6 +931,9 @@ class orderwindow(chooseWindows):
         
         if self.tabOption == self.tabOrder:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+            if self.OrderID > 0:
+                self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
+            
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
 

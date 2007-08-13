@@ -58,7 +58,7 @@ import cuon.Misc.misc
 import cuon.Order.order
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
-
+import cuon.Project.project
 
 class addresswindow(chooseWindows):
 
@@ -955,11 +955,22 @@ class addresswindow(chooseWindows):
         dicOrder['addressnumber'] = self.singleAddress.ID
         dicOrder['ModulNumber'] = self.ModulNumber
         orderwindow = cuon.Order.order.orderwindow(self.allTables,dicOrder,True)
-        
+    def on_new_project_activate(self, event):
+        print 'new project'
+        dicProject = {}
+        dicProject['addressnumber'] = self.singleAddress.ID
+        dicProject['ModulNumber'] = self.ModulNumber
+        projectwindow = cuon.Project.project.projectwindow(self.allTables,dicProject,True)
+            
     def on_tbNewOrder_clicked(self, event):
         print 'new order toolbar '
         self.activateClick('new_order')
-        
+    
+
+    def on_tbNewProject_clicked(self, event):
+        print 'new order toolbar '
+        self.activateClick('new_project')
+    
     def disconnectSchedulTree(self):
         try:
             
@@ -1077,7 +1088,9 @@ class addresswindow(chooseWindows):
         
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
-        
+    def on_bSendExternEmail_clicked(self, event):
+        pass
+    
     def on_bSendPartnerEmail_clicked(self, event):
             
         dicV = {}

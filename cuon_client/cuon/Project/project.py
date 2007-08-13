@@ -54,7 +54,7 @@ import cuon.Articles.SingleArticle
 class projectwindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, dicProject = None, newProject = False):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()

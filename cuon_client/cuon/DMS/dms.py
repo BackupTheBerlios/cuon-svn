@@ -146,10 +146,10 @@ class dmswindow(windows):
          
         # enabledMenues for Preferences
         #self.addEnabledMenuItems('editProfile','profile1')
-        self.addEnabledMenuItems('editDMS','clear1')
+        self.addEnabledMenuItems('editDMS','clear1',self.dicUserKeys['delete'])
         #self.addEnabledMenuItems('editProfile','save1')
-        self.addEnabledMenuItems('editDMS','new1')
-        self.addEnabledMenuItems('editDMS','edit1')
+        self.addEnabledMenuItems('editDMS','new1',self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editDMS','edit1',self.dicUserKeys['edit'])
         
 
         # tabs from notebook
@@ -159,6 +159,8 @@ class dmswindow(windows):
         self.tabOption = self.tabDocument
         self.tabChanged()
         
+        # add keys
+        self.win1.add_accel_group(self.accel_group)
         #Now check for automatic-Actions
         self.LastDoc = None
         if self.dicExtInfo and self.dicExtInfo.has_key('LastDoc'):
@@ -181,6 +183,9 @@ class dmswindow(windows):
         
     def on_new1_activate(self, event):
         self.singleDMS.newRecord()
+        dicDate = self.getActualDateTime()
+        self.getWidget('eDocumentDate').set_text(dicDate['date'])
+        
         self.setEntriesEditable(self.EntriesPreferences, True)
         
 

@@ -796,14 +796,14 @@ class report(MyXML):
                                 if  liFormula[fw] == '!IF':
                                      #print self.dicMemory
                                      if self.dicMemory.has_key(liFormula[fw + 1]):
-                                          #print 'Value by key'
+                                          print 'Value by key'
                                           
-                                          #print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
-                                          if self.dicMemory[liFormula[fw + 1]] and self.dicMemory[liFormula[fw + 1]] != 'NONE' and self.dicMemory[liFormula[fw + 1]] != ['NONE']:
+                                          print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
+                                          if self.dicMemory[liFormula[fw + 1]] != 'NONE' and self.dicMemory[liFormula[fw + 1]] != ['NONE'] and self.dicMemory[liFormula[fw + 1]][0]:
 
                                              if self.dicMemory.has_key(liFormula[fw + 3]):
-                                                #print 'fw +3 '    
-                                                #print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
+                                                print 'fw +3 '    
+                                                print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
                                                  
                                                 formula += `self.dicMemory[liFormula[fw + 3]][0]`
                                              else:
@@ -814,8 +814,8 @@ class report(MyXML):
                                                 formula += `self.dicMemory[liFormula[fw + 5]][0]`
                                              else:
                                                 formula +=  liFormula[fw + 5]
-                                     #print 'FW =',  liFormula[fw]    
-                                     #print ok , formula
+                                     print 'FW =',  liFormula[fw]    
+                                     print ok , formula
                                      checkTrigger = False
                                      ok = False
                                 elif  liFormula[fw] == '!SUM':
@@ -850,9 +850,9 @@ class report(MyXML):
                             
                 if formula:
                     try:
-                        #print 'Formel = ', formula
+                        print 'Formula1 = ', formula
                         exec formula
-                        #print 'Ergebnis der formel = ', a
+                        print 'Result of the formula = ', a
                         eValue = a
                     except:
                         eValue = None

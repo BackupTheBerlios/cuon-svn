@@ -348,6 +348,13 @@ static GnomeUIInfo tools1_menu_uiinfo[] =
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
+  {
+    GNOME_APP_UI_ITEM, N_("new Project"),
+    NULL,
+    (gpointer) on_new_project_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
   GNOMEUIINFO_END
 };
 
@@ -455,6 +462,7 @@ create_AddressMainwindow (void)
   GtkWidget *toolitem1;
   GtkWidget *vseparator6;
   GtkWidget *tbNewOrder;
+  GtkWidget *tbNewProject;
   GtkWidget *vbox8;
   GtkWidget *hbox1;
   GtkWidget *lFindName;
@@ -919,6 +927,12 @@ create_AddressMainwindow (void)
   tbNewOrder = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Order"));
   gtk_widget_show (tbNewOrder);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbNewOrder);
+
+  tmp_image = gtk_image_new_from_stock ("gnome-stock-text-bulleted-list", tmp_toolbar_icon_size);
+  gtk_widget_show (tmp_image);
+  tbNewProject = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Project"));
+  gtk_widget_show (tbNewProject);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbNewProject);
 
   vbox8 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox8);
@@ -3055,6 +3069,9 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) tbNewOrder, "clicked",
                     G_CALLBACK (on_tbNewOrder_clicked),
                     NULL);
+  g_signal_connect ((gpointer) tbNewProject, "clicked",
+                    G_CALLBACK (on_tbNewProject_clicked),
+                    NULL);
   g_signal_connect ((gpointer) eFindName, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
                     NULL);
@@ -3354,6 +3371,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[3].widget, "new_project");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNew, "tbNew");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbEdit, "tbEdit");
@@ -3366,6 +3384,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, toolitem1, "toolitem1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator6, "vseparator6");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewOrder, "tbNewOrder");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewProject, "tbNewProject");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox8, "vbox8");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindName, "lFindName");

@@ -1305,3 +1305,27 @@ on_bAddName2_clicked                   (GtkButton       *button,
 
 }
 
+
+void
+on_toolbutton1_clicked                 (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_tbNewProject_clicked                (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_new_project_activate                (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

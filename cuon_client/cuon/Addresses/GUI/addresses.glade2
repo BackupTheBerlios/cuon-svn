@@ -66,7 +66,7 @@
 			      <signal name="activate" handler="on_choosePrinter1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1247">
+				<widget class="GtkImage" id="image1335">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-properties</property>
 				  <property name="icon_size">1</property>
@@ -93,7 +93,7 @@
 			      <signal name="activate" handler="on_quit1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1248">
+				<widget class="GtkImage" id="image1336">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-quit</property>
 				  <property name="icon_size">1</property>
@@ -136,7 +136,7 @@
 			      <signal name="activate" handler="on_find1_activate" last_modification_time="Wed, 14 Mar 2007 13:52:41 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1249">
+				<widget class="GtkImage" id="image1337">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-find</property>
 				  <property name="icon_size">1</property>
@@ -172,7 +172,7 @@
 				      <signal name="activate" handler="on_newsletter_email_activate" last_modification_time="Fri, 02 Mar 2007 16:13:36 GMT"/>
 
 				      <child internal-child="image">
-					<widget class="GtkImage" id="image1250">
+					<widget class="GtkImage" id="image1338">
 					  <property name="visible">True</property>
 					  <property name="stock">gtk-edit</property>
 					  <property name="icon_size">1</property>
@@ -193,7 +193,7 @@
 				      <signal name="activate" handler="on_newsletter_print_activate" last_modification_time="Fri, 02 Mar 2007 16:13:36 GMT"/>
 
 				      <child internal-child="image">
-					<widget class="GtkImage" id="image1251">
+					<widget class="GtkImage" id="image1339">
 					  <property name="visible">True</property>
 					  <property name="stock">gtk-print</property>
 					  <property name="icon_size">1</property>
@@ -225,7 +225,7 @@
 			      <signal name="activate" handler="on_chooseAddress_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1252">
+				<widget class="GtkImage" id="image1340">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-yes</property>
 				  <property name="icon_size">1</property>
@@ -259,7 +259,7 @@
 			      <signal name="activate" handler="on_new1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1253">
+				<widget class="GtkImage" id="image1341">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-new</property>
 				  <property name="icon_size">1</property>
@@ -280,7 +280,7 @@
 			      <signal name="activate" handler="on_edit1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1254">
+				<widget class="GtkImage" id="image1342">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -301,7 +301,7 @@
 			      <signal name="activate" handler="on_save1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1255">
+				<widget class="GtkImage" id="image1343">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -328,7 +328,7 @@
 			      <signal name="activate" handler="on_print1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1256">
+				<widget class="GtkImage" id="image1344">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-print</property>
 				  <property name="icon_size">1</property>
@@ -355,7 +355,7 @@
 			      <signal name="activate" handler="on_delete1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1257">
+				<widget class="GtkImage" id="image1345">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-delete</property>
 				  <property name="icon_size">1</property>
@@ -390,7 +390,7 @@
 			      <signal name="activate" handler="on_bank_new1_activate" last_modification_time="Wed, 14 Mar 2007 13:52:41 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1258">
+				<widget class="GtkImage" id="image1346">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-new</property>
 				  <property name="icon_size">1</property>
@@ -411,7 +411,7 @@
 			      <signal name="activate" handler="on_bank_edit1_activate" last_modification_time="Wed, 14 Mar 2007 13:52:41 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1259">
+				<widget class="GtkImage" id="image1347">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -432,7 +432,7 @@
 			      <signal name="activate" handler="on_bank_save1_activate" last_modification_time="Wed, 20 Sep 2006 14:34:28 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1260">
+				<widget class="GtkImage" id="image1348">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -467,7 +467,7 @@
 			      <signal name="activate" handler="on_MiscEdit1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1261">
+				<widget class="GtkImage" id="image1349">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -488,7 +488,7 @@
 			      <signal name="activate" handler="on_MiscSave1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1262">
+				<widget class="GtkImage" id="image1350">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -522,7 +522,7 @@
 			      <signal name="activate" handler="on_PartnerNew1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1263">
+				<widget class="GtkImage" id="image1351">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-new</property>
 				  <property name="icon_size">1</property>
@@ -543,7 +543,7 @@
 			      <signal name="activate" handler="on_PartnerEdit1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1264">
+				<widget class="GtkImage" id="image1352">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -564,7 +564,7 @@
 			      <signal name="activate" handler="on_PartnerSave1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1265">
+				<widget class="GtkImage" id="image1353">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -591,7 +591,7 @@
 			      <signal name="activate" handler="on_partner_print1_activate" last_modification_time="Wed, 14 Mar 2007 13:52:41 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1266">
+				<widget class="GtkImage" id="image1354">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-print</property>
 				  <property name="icon_size">1</property>
@@ -618,7 +618,7 @@
 			      <signal name="activate" handler="on_PartnerDelete1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1267">
+				<widget class="GtkImage" id="image1355">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-delete</property>
 				  <property name="icon_size">1</property>
@@ -653,7 +653,7 @@
 			      <signal name="activate" handler="on_SchedulNew_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1268">
+				<widget class="GtkImage" id="image1356">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-new</property>
 				  <property name="icon_size">1</property>
@@ -674,7 +674,7 @@
 			      <signal name="activate" handler="on_SchedulEdit1_activate"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1269">
+				<widget class="GtkImage" id="image1357">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -695,7 +695,7 @@
 			      <signal name="activate" handler="on_SchedulSave_activate" last_modification_time="Wed, 14 Mar 2007 14:08:52 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1270">
+				<widget class="GtkImage" id="image1358">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -722,7 +722,7 @@
 			      <signal name="activate" handler="on_set_ready1_activate" last_modification_time="Wed, 07 Feb 2007 17:10:56 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1271">
+				<widget class="GtkImage" id="image1359">
 				  <property name="visible">True</property>
 				  <property name="stock">gnome-stock-timer-stop</property>
 				  <property name="icon_size">1</property>
@@ -757,7 +757,7 @@
 			      <signal name="activate" handler="on_NotesEdit1_activate" last_modification_time="Thu, 28 Dec 2006 17:39:09 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1272">
+				<widget class="GtkImage" id="image1360">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-edit</property>
 				  <property name="icon_size">1</property>
@@ -778,7 +778,7 @@
 			      <signal name="activate" handler="on_NotesSave_activate" last_modification_time="Wed, 14 Mar 2007 14:08:52 GMT"/>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1273">
+				<widget class="GtkImage" id="image1361">
 				  <property name="visible">True</property>
 				  <property name="stock">gtk-save</property>
 				  <property name="icon_size">1</property>
@@ -820,7 +820,7 @@
 			      <property name="use_underline">True</property>
 
 			      <child internal-child="image">
-				<widget class="GtkImage" id="image1274">
+				<widget class="GtkImage" id="image1362">
 				  <property name="visible">True</property>
 				  <property name="stock">gnome-stock-book-open</property>
 				  <property name="icon_size">1</property>
@@ -906,6 +906,15 @@
 			      <property name="label" translatable="yes">show Order</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_show_order1_activate" last_modification_time="Mon, 30 Apr 2007 13:50:31 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="new_project">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">new Project</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_new_project_activate" last_modification_time="Mon, 13 Aug 2007 15:44:46 GMT"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -1104,7 +1113,20 @@
 		  </child>
 
 		  <child>
-		    <placeholder/>
+		    <widget class="GtkToolButton" id="tbNewProject">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">new Project</property>
+		      <property name="use_underline">True</property>
+		      <property name="stock_id">gnome-stock-text-bulleted-list</property>
+		      <property name="visible_horizontal">True</property>
+		      <property name="visible_vertical">True</property>
+		      <property name="is_important">False</property>
+		      <signal name="clicked" handler="on_tbNewProject_clicked" last_modification_time="Mon, 13 Aug 2007 15:34:32 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="expand">False</property>
+		      <property name="homogeneous">True</property>
+		    </packing>
 		  </child>
 
 		  <child>

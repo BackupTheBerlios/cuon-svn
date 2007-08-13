@@ -124,7 +124,7 @@ class Order(xmlrpc.XMLRPC, basics):
             '''No term of payment found, try default from customer '''
             sSql2 = 'select addresses_misc.top_id as top_id from addresses_misc, orderbook '
             sSql2 += ' where addresses_misc.address_id = orderbook.addressnumber '
-            sSql2 += self.getWhere(None, dicUser,2)
+            sSql2 += self.getWhere(None, dicUser,2,'orderbook.')
             liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
         if liResultTop and liResultTop != 'NONE':
             top_id = liResultTop[0]['top_id']
@@ -132,7 +132,7 @@ class Order(xmlrpc.XMLRPC, basics):
                 sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
                 liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
                 if liResultTop2 and liResultTop2 != 'NONE':
-                    liResult['term_of_payment'] = liResultTop2[0]['term_of_payment']
+                    liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
         return liResult
         
         
