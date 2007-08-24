@@ -59,6 +59,10 @@ class windows(rawWindow, MyXML, messages):
         
         self.MN['Address'] = 2000
         self.MN['Address_info'] = 2001
+        self.MN['Address_stat_caller'] = 2002
+        self.MN['Address_stat_rep'] = 2003
+        self.MN['Address_stat_salesman'] = 2004
+        self.MN['Address_stat_schedul'] = 2005
         
         self.MN['Partner'] = 2100
         self.MN['Partner_info'] = 2101
@@ -711,11 +715,11 @@ class windows(rawWindow, MyXML, messages):
         
         
     def on_key_press_event(self, oEntry, data):
-        print 'Key-event',oEntry
+        #print 'Key-event',oEntry
         if gtk.gdk.keyval_name(data.keyval) == 'Return' :
-            print 'return found'
+            #print 'return found'
             
-            print oEntry.get_name()
+            #print oEntry.get_name()
             sEntryName = oEntry.get_name()
             entries = self.getDataEntries(self.actualEntries)
             for i in range(0,entries.getCountOfEntries()):
@@ -725,7 +729,7 @@ class windows(rawWindow, MyXML, messages):
                 #self.out('entry = ' + entry.getName())
                     try:
                         #e1.set_editable(ok)
-                        print 'My-Entry = ', entry.getName()
+                        #print 'My-Entry = ', entry.getName()
                         sNextWidget = entry.getNextWidget()
                         if sNextWidget == 'LAST':
                             self.saveDataQuestion()
@@ -737,7 +741,7 @@ class windows(rawWindow, MyXML, messages):
                     except:
                         pass
         
-        print 'key-data', data
+        #print 'key-data', data
         
    
     def saveDataQuestion(self):
@@ -779,11 +783,11 @@ class windows(rawWindow, MyXML, messages):
         
         
     def MainwindowEventHandling(self, oEntry, data):
-        print 'key Mainwindow pressesd'
-        print 'oentry: ', oEntry
-        print 'data: ', data
-        print 'Pressed : ', gtk.gdk.keyval_name(data.keyval)
-        print 'state : ', data.state
+        #print 'key Mainwindow pressesd'
+        #print 'oentry: ', oEntry
+        #print 'data: ', data
+        #print 'Pressed : ', gtk.gdk.keyval_name(data.keyval)
+        #print 'state : ', data.state
         
         sKey = gtk.gdk.keyval_name(data.keyval)
         self.setMainwindowNotebook(sKey)

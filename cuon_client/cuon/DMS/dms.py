@@ -151,7 +151,8 @@ class dmswindow(windows):
         self.addEnabledMenuItems('editDMS','new1',self.dicUserKeys['new'])
         self.addEnabledMenuItems('editDMS','edit1',self.dicUserKeys['edit'])
         
-
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
         # tabs from notebook
         self.tabDocument = 0
         
@@ -326,6 +327,12 @@ class dmswindow(windows):
         self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, self.dicVars)
         
             
+    def on_tree1_row_activated(self, event):
+        self.on_bView_clicked(event)
+        
+    def on_tree1_columns_changed(self, event, data):
+        print event, data
+        
         
     def refreshTree(self):
         self.singleDMS.disconnectTree()

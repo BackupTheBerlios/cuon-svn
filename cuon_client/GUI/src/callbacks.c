@@ -381,3 +381,11 @@ on_web2_activate                       (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_rbScheduls_activate                 (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

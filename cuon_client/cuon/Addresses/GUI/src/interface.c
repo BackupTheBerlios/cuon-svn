@@ -325,6 +325,39 @@ static GnomeUIInfo mi_lists1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
+static GnomeUIInfo stat1_menu_uiinfo[] =
+{
+  {
+    GNOME_APP_UI_ITEM, N_("Caller"),
+    NULL,
+    (gpointer) on_stat_caller1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Representant"),
+    NULL,
+    (gpointer) on_stat_representant1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Salesman"),
+    NULL,
+    (gpointer) on_stat_salesman1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_ITEM, N_("Scheduls"),
+    NULL,
+    (gpointer) on_stat_scheduls1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  GNOMEUIINFO_END
+};
+
 static GnomeUIInfo tools1_menu_uiinfo[] =
 {
   {
@@ -424,9 +457,23 @@ static GnomeUIInfo menubar1_uiinfo[] =
     0, (GdkModifierType) 0, NULL
   },
   {
+    GNOME_APP_UI_ITEM, N_("Projects"),
+    NULL,
+    (gpointer) on_mi_projects1_activate, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
     GNOME_APP_UI_SUBTREE, N_("Lists"),
     NULL,
     mi_lists1_menu_uiinfo, NULL, NULL,
+    GNOME_APP_PIXMAP_NONE, NULL,
+    0, (GdkModifierType) 0, NULL
+  },
+  {
+    GNOME_APP_UI_SUBTREE, N_("Stat"),
+    NULL,
+    stat1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -828,6 +875,17 @@ create_AddressMainwindow (void)
   GtkWidget *scrolledwindow13;
   GtkWidget *tvAddressInvoices;
   GtkWidget *label87;
+  GtkWidget *table10;
+  GtkWidget *label101;
+  GtkWidget *scrolledwindow16;
+  GtkWidget *treeProjects;
+  GtkWidget *table11;
+  GtkWidget *bGotoProject;
+  GtkWidget *alignment12;
+  GtkWidget *hbox61;
+  GtkWidget *image1363;
+  GtkWidget *label102;
+  GtkWidget *label100;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -928,7 +986,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (tbNewOrder);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbNewOrder);
 
-  tmp_image = gtk_image_new_from_stock ("gnome-stock-text-bulleted-list", tmp_toolbar_icon_size);
+  tmp_image = gtk_image_new_from_stock ("gtk-execute", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
   tbNewProject = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Project"));
   gtk_widget_show (tbNewProject);
@@ -3042,6 +3100,61 @@ create_AddressMainwindow (void)
   gtk_widget_show (label87);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label87);
 
+  table10 = gtk_table_new (3, 4, FALSE);
+  gtk_widget_show (table10);
+  gtk_container_add (GTK_CONTAINER (notebook1), table10);
+
+  label101 = gtk_label_new (_("Projects for this Address"));
+  gtk_widget_show (label101);
+  gtk_table_attach (GTK_TABLE (table10), label101, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label101), 0, 0.5);
+
+  scrolledwindow16 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow16);
+  gtk_table_attach (GTK_TABLE (table10), scrolledwindow16, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+  gtk_widget_set_size_request (scrolledwindow16, 300, -1);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow16), GTK_SHADOW_IN);
+
+  treeProjects = gtk_tree_view_new ();
+  gtk_widget_show (treeProjects);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow16), treeProjects);
+
+  table11 = gtk_table_new (4, 4, FALSE);
+  gtk_widget_show (table11);
+  gtk_table_attach (GTK_TABLE (table10), table11, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+
+  bGotoProject = gtk_button_new ();
+  gtk_widget_show (bGotoProject);
+  gtk_table_attach (GTK_TABLE (table11), bGotoProject, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  alignment12 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment12);
+  gtk_container_add (GTK_CONTAINER (bGotoProject), alignment12);
+
+  hbox61 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox61);
+  gtk_container_add (GTK_CONTAINER (alignment12), hbox61);
+
+  image1363 = gtk_image_new_from_stock ("gtk-jump-to", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image1363);
+  gtk_box_pack_start (GTK_BOX (hbox61), image1363, FALSE, FALSE, 0);
+
+  label102 = gtk_label_new_with_mnemonic (_("goto Project"));
+  gtk_widget_show (label102);
+  gtk_box_pack_start (GTK_BOX (hbox61), label102, FALSE, FALSE, 0);
+
+  label100 = gtk_label_new (_("Projects"));
+  gtk_widget_show (label100);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 7), label100);
+
   g_signal_connect ((gpointer) AddressMainwindow, "key_press_event",
                     G_CALLBACK (on_Mainwindow_key_press_event),
                     NULL);
@@ -3309,6 +3422,12 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) tvAddressInvoices, "row_activated",
                     G_CALLBACK (on_tvAddressInvoices_row_activated),
                     NULL);
+  g_signal_connect ((gpointer) treeProjects, "row_activated",
+                    G_CALLBACK (on_treeProjects_row_activated),
+                    NULL);
+  g_signal_connect ((gpointer) bGotoProject, "clicked",
+                    G_CALLBACK (on_bGotoProject_clicked),
+                    NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
@@ -3362,12 +3481,18 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[0].widget, "NotesEdit1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[1].widget, "NotesSave");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_order1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "mi_lists1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "mi_projects1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[10].widget, "mi_lists1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[0].widget, "listAddresses1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[10].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[11].widget, "stat1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[0].widget, "caller1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[1].widget, "representant1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[2].widget, "salesman1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[3].widget, "scheduls1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[12].widget, "tools1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");
@@ -3747,6 +3872,17 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow13, "scrolledwindow13");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressInvoices, "tvAddressInvoices");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label87, "label87");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, table10, "table10");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label101, "label101");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow16, "scrolledwindow16");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, treeProjects, "treeProjects");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, table11, "table11");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGotoProject, "bGotoProject");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment12, "alignment12");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox61, "hbox61");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1363, "image1363");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label102, "label102");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label100, "label100");
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
 
   gtk_widget_grab_default (eFashion);

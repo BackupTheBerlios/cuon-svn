@@ -341,11 +341,13 @@ class addresswindow(chooseWindows):
   
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
-        self.doEdit = self.noEdit
-        self.singleAddress.save()
-        self.setEntriesEditable(self.EntriesAddresses, FALSE)
-        self.endEdit()
-        self.tabChanged()
+        if self.singleAddress.save() == 0:
+            self.errorMsg( _('saving this Address failed. Please check'))
+        else:
+            self.doEdit = self.noEdit
+            self.setEntriesEditable(self.EntriesAddresses, FALSE)
+            self.endEdit()
+            self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
@@ -378,12 +380,15 @@ class addresswindow(chooseWindows):
     
     def on_bank_save1_activate(self, event):
         self.out( "save Bank addresses v2")
-        self.doEdit = self.noEdit
-        self.singleAddressBank.addressId = self.singleAddress.ID
-        self.singleAddressBank.save()
-        self.setEntriesEditable(self.EntriesAddressesBank, FALSE)
-        self.endEdit()
-        self.tabChanged()
+        if self.singleAddressBank.save() == 0:
+            self.errorMsg( _('saving this bank failed. Please check'))
+        else:
+        
+            self.doEdit = self.noEdit
+            self.singleAddressBank.addressId = self.singleAddress.ID
+            self.setEntriesEditable(self.EntriesAddressesBank, FALSE)
+            self.endEdit()
+            self.tabChanged()
         
     
     def on_bank_new1_activate(self, event):
@@ -431,12 +436,15 @@ class addresswindow(chooseWindows):
    
     def on_PartnerSave1_activate(self, event):
         self.out( "save Partner addresses v2")
-        self.doEdit = self.noEdit
         self.singlePartner.addressId = self.singleAddress.ID
-        self.singlePartner.save()
-        self.setEntriesEditable(self.EntriesPartner, FALSE)
-        self.endEdit()
-        self.tabChanged()
+        if self.singlePartner.save() == 0:
+        
+            self.errorMsg( _('saving this partner failed. Please check'))
+        else:
+            self.doEdit = self.noEdit
+            self.setEntriesEditable(self.EntriesPartner, FALSE)
+            self.endEdit()
+            self.tabChanged()
         
     def on_PartnerNew1_activate(self, event):
         self.out( "new Partner addresses v2")
@@ -466,21 +474,23 @@ class addresswindow(chooseWindows):
         nID = 0
         self.out( "save Schedul addresses v2")
         self.singleSchedul.partnerId = self.singlePartner.ID
-        self.doEdit = self.noEdit
         print 'ID = ', self.singleSchedul.ID
         if self.singleSchedul.ID > 0:
             nID =  self.singleSchedul.ID
             
-        id = self.singleSchedul.save()
-        if nID > 0:
-            id = nID
-        print 'save ready'
-        self.singleSchedul.load(id)
-        sCalendar = 'iCal_'+ self.dicUser['Name']
-        self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
-        self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
-        self.endEdit()
-        self.tabChanged()
+        if self.singleSchedul.save() == 0:
+            self.errorMsg( _('saving this schedul failed. Please check'))
+        else:
+            if nID > 0:
+                id = nID
+            self.doEdit = self.noEdit
+            print 'save ready'
+            self.singleSchedul.load(id)
+            sCalendar = 'iCal_'+ self.dicUser['Name']
+            self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
+            self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
+            self.endEdit()
+            self.tabChanged()
 
     def on_SchedulEdit1_activate(self, event):
         self.doEdit = self.tabSchedul
@@ -504,28 +514,34 @@ class addresswindow(chooseWindows):
     def on_NotesSave_activate(self, event):
         
         self.out( "save Notes addresses v2")
-        self.doEdit = self.noEdit
         self.singleAddressNotes.addressId = self.singleAddress.ID
         
-        self.singleAddressNotes.save()
-        self.setEntriesEditable(self.EntriesNotes, FALSE)
-        if self.rpc.callRP('Misc.sendNotes0', self.dicUser, self.notebook2.get_current_page() ):
-        
-            liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
-            print 'liEmailAddresses = ', liEmailAddresses
-            if liEmailAddresses and liEmailAddresses != 'NONE':
-                self.singleDMS.loadNotes0SaveDocument()
-                dicVars, dicExtInfo = self.getAddressInfos()
-                dicVars['email_subject'] = `dicVars['id']` + ', ' + _('CUON-ID NOTES-01')
-                dicVars['Body'] = _('Notes are changed !') + '\n ID = ' + `dicVars['id']` + '\n\n ' + dicVars['lastname'] + '\n' + dicVars['lastname2'] + '\n'
-                dicVars['Body'] += '\n\n' +  dicVars['street'] +'\n' 
-                dicVars['Body'] +=  dicVars['zip'] + ' ' + dicVars['city'] +'\n\n' 
-                dicVars['Body'] += _('Infos are generated by C.U.O.N.')
-                
-                
-                self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, dicVars, 'sentAutomaticEmail', liEmailAddresses)
-                
-        self.tabChanged()
+        if self.singleAddressNotes.save() == 0:
+         
+            self.errorMsg( _('save this notes failed. Please check'))
+        else:
+            
+    
+            self.doEdit = self.noEdit
+    
+            self.setEntriesEditable(self.EntriesNotes, FALSE)
+            if self.rpc.callRP('Misc.sendNotes0', self.dicUser, self.notebook2.get_current_page() ):
+            
+                liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
+                print 'liEmailAddresses = ', liEmailAddresses
+                if liEmailAddresses and liEmailAddresses != 'NONE':
+                    self.singleDMS.loadNotes0SaveDocument()
+                    dicVars, dicExtInfo = self.getAddressInfos()
+                    dicVars['email_subject'] = `dicVars['id']` + ', ' + _('CUON-ID NOTES-01')
+                    dicVars['Body'] = _('Notes are changed !') + '\n ID = ' + `dicVars['id']` + '\n\n ' + dicVars['lastname'] + '\n' + dicVars['lastname2'] + '\n'
+                    dicVars['Body'] += '\n\n' +  dicVars['street'] +'\n' 
+                    dicVars['Body'] +=  dicVars['zip'] + ' ' + dicVars['city'] +'\n\n' 
+                    dicVars['Body'] += _('Infos are generated by C.U.O.N.')
+                    
+                    
+                    self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, dicVars, 'sentAutomaticEmail', liEmailAddresses)
+                    
+            self.tabChanged()
 
     def on_NotesEdit1_activate(self, event):
         self.out( "edit notes v2")
@@ -958,7 +974,7 @@ class addresswindow(chooseWindows):
     def on_new_project_activate(self, event):
         print 'new project'
         dicProject = {}
-        dicProject['addressnumber'] = self.singleAddress.ID
+        dicProject['addressid'] = self.singleAddress.ID
         dicProject['ModulNumber'] = self.ModulNumber
         projectwindow = cuon.Project.project.projectwindow(self.allTables,dicProject,True)
             
@@ -1282,7 +1298,13 @@ class addresswindow(chooseWindows):
         else:
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
-        
+    # stats 
+  
+    def on_stat_caller1_activate(self, event):
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_caller']}
+        dicCaller = self.rpc.callRP('Address.getStatCaller',self.dicUser)
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-103}, dicCaller, dicExtInfo)
+      
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()

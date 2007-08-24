@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-07-30, 23:21:25 -->
+<!-- Saved: 2007-08-23, 00:37:51 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1473,6 +1473,17 @@
       <Dir>Reports</Dir>
       <Name>report_list_of_reminder.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Name>maintwxmlrpc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Name>Projects.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2279,10 +2290,10 @@ p5
 s.</Eric3ApiParams>
   </Eric3Api>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

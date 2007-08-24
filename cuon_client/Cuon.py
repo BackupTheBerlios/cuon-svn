@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 39, 'Rev': 21,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 40, 'Rev': 2,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -944,7 +944,8 @@ class MainWindow(windows):
             sChoice = 'New'
         elif self.getWidget('rbSchedulsCancel').get_active():
             sChoice = 'Cancel'
-            
+        elif self.getWidget('rbSchedulsActualWeek').get_active():
+            sChoice = 'actualWeek'    
         print 'sChoice = ', sChoice
         
         liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice)

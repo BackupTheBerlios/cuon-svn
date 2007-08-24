@@ -54,7 +54,7 @@ import cuon.Articles.SingleArticle
 class projectwindow(chooseWindows):
 
     
-    def __init__(self, allTables, dicProject = None, newProject = False):
+    def __init__(self, allTables, dicProject = None, newProject = False, project_id = 0):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
@@ -70,7 +70,7 @@ class projectwindow(chooseWindows):
         self.singleArticles = cuon.Articles.SingleArticle.SingleArticle(allTables)
         
         self.allTables = allTables
-       
+        self.dicProject = dicProject
         
         # self.singleProject.loadTable()
 
@@ -126,7 +126,27 @@ class projectwindow(chooseWindows):
         self.singleProjectTaskMaterial.setEntries(self.getDataEntries(self.EntriesTaskMaterial) )
         self.singleProjectTaskMaterial.setGladeXml(self.xml)
         self.singleProjectTaskMaterial.setTree(self.xml.get_widget('tree1') )
-
+        
+        self.ProjectID = project_id
+        
+        # create a new Project from address or somtething else
+        if self.dicProject and not newProject and self.ProjectID == 0:
+            print self.dicProject
+            existProject = self.rpc.callRP('Project.checkExistModulProject', self.dicUser,self.dicProject)
+            print 'existProject = ', existProject
+            if not existProject or existProject == 'NONE':
+                print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
+                self.rpc.callRP('Projects.createNewProject', self.dicUser,self.dicProject)
+            self.singleProject.sWhere = ' where modul_Project_number = ' + `self.dicProject['ModulProjectNumber']` + ' and modul_number = ' + `self.dicProject['ModulNumber']`
+        elif self.dicProject and newProject and self.ProjectID == 0:
+            dicResult = self.rpc.callRP('Projects.createNewProject', self.dicUser,self.dicProject)
+            if dicResult and dicResult != 'NONE':
+                self.ProjectID = dicResult[0]['last_value']
+                if self.ProjectID > 0:
+                    self.singleProject.sWhere = ' where id = ' + `self.ProjectID` 
+        elif self.ProjectID > 0:
+            self.singleProject.sWhere = ' where id = ' + `self.ProjectID`
+            
 
 
         # Menu-items

@@ -264,8 +264,8 @@ class User(defaultValues):
         self.prefDMS['fileformat'] = {}
         self.prefDMS['fileformat']['scanImage'] = {'format':'Image Scanner', 'suffix':['NONE'], 'executable': 'INTERN'}
         self.prefDMS['fileformat']['LINK'] =  {'format':'LINK', 'suffix':['NONE'], 'executables': 'INTERN'}
-        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw','odt','ott','doc'], 'executable': self.prefDMS['exe']['writer'] }
-        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc','ods','ots'], 'executable': self.prefDMS['exe']['calc']}
+        self.prefDMS['fileformat']['oow'] =  {'format':'Open Office Writer',  'suffix':['sxw', 'sdw','odt','ott','doc','rtf'], 'executable': self.prefDMS['exe']['writer'] }
+        self.prefDMS['fileformat']['ooc'] =  {'format':'Open Office Calc',  'suffix':['sxc','sdc','ods','ots','xls'], 'executable': self.prefDMS['exe']['calc']}
         self.prefDMS['fileformat']['ood'] =  {'format':'Open Office Draw',  'suffix':['sxd','odg','otg'], 'executable': self.prefDMS['exe']['draw']}
         self.prefDMS['fileformat']['ooi'] =  {'format':'Open Office Impress', 'suffix':['sti','sxi','odp','otp'], 'executable': self.prefDMS['exe']['impress']}
         self.prefDMS['fileformat']['gimp'] =  {'format':'Gimp',  'suffix':['xcf','jpg','gif','png'], 'executable': self.prefDMS['exe']['image']}

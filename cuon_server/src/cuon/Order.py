@@ -235,7 +235,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = 'select * from orderbook where modul_order_number = ' + `dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `dicOrder['ModulNumber']`
         sSql += self.getWhere(None,dicUser,2)
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        print 'Order99 = ', dicResult 
+        self.writeLog( 'Order99 = ' + `dicResult`) 
         return dicResult
         
         

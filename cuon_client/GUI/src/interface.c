@@ -111,11 +111,13 @@ create_window1 (void)
   GtkWidget *label5;
   GtkWidget *eWebshop;
   GtkWidget *label8;
+  GtkWidget *vbox5;
   GtkWidget *hbox4;
   GtkWidget *rbSchedulsNew;
   GSList *rbSchedulsNew_group = NULL;
   GtkWidget *rbSchedulsAll;
   GtkWidget *rbSchedulsCancel;
+  GtkWidget *rbSchedulsActualWeek;
   GtkWidget *hbox1;
   GtkWidget *scrolledwindow3;
   GtkWidget *treeSchedul;
@@ -500,11 +502,15 @@ create_window1 (void)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label8), 0, 0.5);
 
-  hbox4 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox4);
-  gtk_table_attach (GTK_TABLE (table1), hbox4, 1, 2, 2, 3,
+  vbox5 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox5);
+  gtk_table_attach (GTK_TABLE (table1), vbox5, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  hbox4 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox4);
+  gtk_box_pack_start (GTK_BOX (vbox5), hbox4, TRUE, TRUE, 0);
 
   rbSchedulsNew = gtk_radio_button_new_with_mnemonic (NULL, _("only new"));
   gtk_widget_show (rbSchedulsNew);
@@ -523,6 +529,12 @@ create_window1 (void)
   gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsCancel, FALSE, FALSE, 0);
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsCancel), rbSchedulsNew_group);
   rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsCancel));
+
+  rbSchedulsActualWeek = gtk_radio_button_new_with_mnemonic (NULL, _("actual week"));
+  gtk_widget_show (rbSchedulsActualWeek);
+  gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsActualWeek, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsActualWeek), rbSchedulsNew_group);
+  rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsActualWeek));
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox1);
@@ -723,6 +735,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) rbSchedulsCancel, "clicked",
                     G_CALLBACK (on_rbScheduls_activate),
                     NULL);
+  g_signal_connect ((gpointer) rbSchedulsActualWeek, "clicked",
+                    G_CALLBACK (on_rbScheduls_activate),
+                    NULL);
   g_signal_connect ((gpointer) treeSchedul, "select_cursor_row",
                     G_CALLBACK (on_treeSchedul_select_cursor_row),
                     NULL);
@@ -818,10 +833,12 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, label5, "label5");
   GLADE_HOOKUP_OBJECT (window1, eWebshop, "eWebshop");
   GLADE_HOOKUP_OBJECT (window1, label8, "label8");
+  GLADE_HOOKUP_OBJECT (window1, vbox5, "vbox5");
   GLADE_HOOKUP_OBJECT (window1, hbox4, "hbox4");
   GLADE_HOOKUP_OBJECT (window1, rbSchedulsNew, "rbSchedulsNew");
   GLADE_HOOKUP_OBJECT (window1, rbSchedulsAll, "rbSchedulsAll");
   GLADE_HOOKUP_OBJECT (window1, rbSchedulsCancel, "rbSchedulsCancel");
+  GLADE_HOOKUP_OBJECT (window1, rbSchedulsActualWeek, "rbSchedulsActualWeek");
   GLADE_HOOKUP_OBJECT (window1, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (window1, scrolledwindow3, "scrolledwindow3");
   GLADE_HOOKUP_OBJECT (window1, treeSchedul, "treeSchedul");

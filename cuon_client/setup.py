@@ -260,24 +260,7 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ; fi ")	
 
         
-        
-        # startscripts in /etc/init.d
-        
-        self.executeSCP(" scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
-        self.executeSCP(" scp ../cuon_server/src/cuonai " , "/etc/init.d")
-        self.executeSCP(" scp ../cuon_server/src/cuonreport " , "/etc/init.d")
-        self.executeSCP(" scp ../cuon_server/src/cuonweb " , "/etc/init.d")
-        self.executeSCP(" scp ../cuon_server/src/cuonweb2 " , "/etc/init.d")
-        # make executable
-        self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
-        # aktivierung setzen
-        self.executeSSH(" update-rc.d cuonxmlrpc defaults")
-        self.executeSSH(" update-rc.d cuonweb defaults")
-        self.executeSSH(" update-rc.d cuonreport defaults")
-        self.executeSSH(" update-rc.d cuonai defaults")
-        self.executeSSH(" update-rc.d cuonweb2 defaults")
-        
-        
+       
         
         # copy config-files to configdir or configdir/examples
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + " ] ; then mkdir " + self.SERVERCONFIGDIR + " ; fi ")
@@ -286,7 +269,44 @@ class setup:
         
         # copy all files to example
         self.executeSCP('../cuon_server/examples/*', self.SERVERCONFIGDIR + "/examples ")
+        self.executeSCP('../cuon_server/src/cuon*', self.SERVERCONFIGDIR + "/examples ")
+       
+       
+        # startscripts in /etc/init.d
         
+##        self.executeSCP(" scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
+##        self.executeSCP(" scp ../cuon_server/src/cuonai " , "/etc/init.d")
+##        self.executeSCP(" scp ../cuon_server/src/cuonreport " , "/etc/init.d")
+##        self.executeSCP(" scp ../cuon_server/src/cuonweb " , "/etc/init.d")
+##        self.executeSCP(" scp ../cuon_server/src/cuonweb2 " , "/etc/init.d")
+##        
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonxmlrpc ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonxmlrpc /etc/init.d  ; fi ")
+        
+    
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonai ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonai /etc/init.d  ; fi ")
+        
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonreport ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonreport /etc/init.d  ; fi ")
+        
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonweb ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonweb /etc/init.d  ; fi ")
+        
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonweb2 ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonweb2 /etc/init.d  ; fi ")
+        
+        # make executable
+        self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
+        self.executeSSH(" chmod u+x /etc/init.d/cuon*")
+        # aktivierung setzen
+        self.executeSSH(" update-rc.d cuonxmlrpc defaults")
+        self.executeSSH(" update-rc.d cuonweb defaults")
+        self.executeSSH(" update-rc.d cuonreport defaults")
+        self.executeSSH(" update-rc.d cuonai defaults")
+        self.executeSSH(" update-rc.d cuonweb2 defaults")
+        
+         
         # Then check the files 
         #server.ini
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " 

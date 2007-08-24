@@ -15,12 +15,12 @@ class SQL(xmlrpc.XMLRPC, basics):
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
         t1 = time.mktime(time.localtime())
-        #print '------->SQL starts at : ', t1
+        self.writeLog('------->SQL starts at : ' + `t1`)
         
-        dicResult = "NONE"
+        dicResult = None
         rows = None
         try:
-            #self.writeLog('execute SQL = ' + `cSql`,self.debug)
+            self.writeLog('execute SQL = ' + `cSql`)
             if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
                 pass
             else:
@@ -40,13 +40,16 @@ class SQL(xmlrpc.XMLRPC, basics):
                     sUser = 'zope'
                     dicUser['noWhereClient'] = 'YES'
             
-                #self.writeLog('User = ' + sUser, self.debug)
+                self.writeLog('User = ' + sUser)
                 #DSN = 'dbname=cuon host=localhost user=' + sUser
                 conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
                 #curs.execute(cSql.decode('utf-8'))
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
-                
-                rows = conn.query(cSql.encode('utf-8'))
+                try:
+                    rows = conn.query(cSql.encode('utf-8'))
+                    self.writeLog('return from database = ' + `rows`)
+                except:
+                    rows = 'ERROR'
                 #print 'rows = ', rows
                 #print 'Sql-Execute = ', ok
                 #conn.commit()
@@ -54,69 +57,76 @@ class SQL(xmlrpc.XMLRPC, basics):
             ##            rows = curs.dictfetchall()
             ##        except:
             ##            pass
-                #self.writeLog('Rows = ' + `rows`, self.debug)
+                self.writeLog('Rows = ' + `rows`)
                 #conn.close()
             
-            if rows:
+            if rows and rows != 'ERROR':
                 try:
                     dicResult = rows.dictresult()
                 except Exception, params:
-                    #self.writeLog('try dic-Result', self.debug)
-                    #self.writeLog(`Exception`, self.debug)
-                    #self.writeLog(`params`, self.debug)
-                    #self.writeLog('----------------------------- dicResult should be None --------------', self.debug)
+                    self.writeLog('try dic-Result')
+                    self.writeLog(`Exception`)
+                    self.writeLog(`params`)
+                    self.writeLog('----------------------------- dicResult should be None --------------')
                     
                     dicResult = None
+            elif not rows and rows != 'ERROR':
+                dicResult = 'NONE'
+            
             
             try:
-                assert dicResult
-                #print 'dicResult', dicResult
-                sDecode = None
-                sEncode = None
-                if dicUser.has_key('Database'):
-                    if dicUser['Database'] == 'osCommerce':
-                        
-                        sEncode = 'latin-1'
-                    elif dicUser['Database'] == 'cuon':
-                        sEncode = None
-                        sDecode = None
-                        
+                assert dicResult 
+                if dicResult == 'NONE':
+                    pass
                 else:
+                    #print 'dicResult', dicResult
                     sDecode = None
-        
-               
-                
-                for i in range(len(dicResult)):
-                    for j in dicResult[i].keys():
-                
-                        try:
-                            if dicResult[i][j] == None:
-                                dicResult[i][j] = 'NONE'
-                            if sDecode:
-                                dicResult[i][j]=dicResult[i][j].decode(sDecode)
-                            if sEncode:
-                                dicResult[i][j]=dicResult[i][j].encode(sEncode)
-                
-                        except:
-                            pass
+                    sEncode = None
+                    if dicUser.has_key('Database'):
+                        if dicUser['Database'] == 'osCommerce':
+                            
+                            sEncode = 'latin-1'
+                        elif dicUser['Database'] == 'cuon':
+                            sEncode = None
+                            sDecode = None
+                            
+                    else:
+                        sDecode = None
+            
+                   
+                    
+                    for i in range(len(dicResult)):
+                        for j in dicResult[i].keys():
+                    
+                            try:
+                                if dicResult[i][j] == None:
+                                    dicResult[i][j] = 'NONE'
+                                if sDecode:
+                                    dicResult[i][j]=dicResult[i][j].decode(sDecode)
+                                if sEncode:
+                                    dicResult[i][j]=dicResult[i][j].encode(sEncode)
+                    
+                            except:
+                                pass
             except Exception, param:
-                #self.writeLog('Except-Error')
-                #self.writeLog(`Exception` +', \n' + `param`)
+                self.writeLog('Except-Error')
+                self.writeLog(`Exception` +', \n' + `param`)
                
-                dicResult = None
-            #self.writeLog('sql return = ' + `dicResult`)
+                dicResult = 'ERROR'
             if dicResult == None:
                 dicResult ='NONE'
             #self.writeLog('sql return 2 = ' + `dicResult`)
         except Exception, param:
-            print Exception
-            print param
+            self.writeLog( Exception)
+            self.writeLog( param)
         try:
-            #print '----------> SQL '
-            print cSql
-            print '<-------SQL need : ', time.mktime(time.localtime()) -t1
+            self.writeLog( '----------> SQL ')
+            self.writeLog(cSql)
+            self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
         except Exception, params:
-            print Exception,params
+            self.writeLog( 'executeQuery 3 ERROR = ' + Exception + ' ' + params)
+
+        self.writeLog('sql return = ' + `dicResult`)
             
         return dicResult
      
@@ -248,9 +258,10 @@ class SQL(xmlrpc.XMLRPC, basics):
 ##                self.writeLog('sKey in Entries' + `sKey`)
 ##                dicValues[lb][0] = self.getValue(sKey)
 ##        
-        #self.writeLog('begin RECORD2')
+        self.writeLog('begin RECORD2 id = ' + `id`)
         if id > 0:
             # update
+            self.writeLog('start Update')
             sSql = 'update ' + sNameOfTable + ' set  '
             
             for i in dicValues.keys():
@@ -272,7 +283,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                         sSql = sSql  + " = \'" + liValue[0]+ "\', "
         
                 elif liValue[1] ==  'bool':
-                    #self.writeLog('REC2-bool ')
+                    self.writeLog('REC2-bool ')
                     if liValue[0] == 1:
                         liValue[0] = 'True'
                     if liValue[0] == 0:
@@ -284,12 +295,13 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql[0:string.rfind(sSql,',')]
         
             sSql = sSql + ' where id = ' + `id`
+            self.writeLog('Update SQL = ' + sSql)
             
         else:
-            #self.writeLog('new RECORD2')
+            self.writeLog('new RECORD2')
             sSql = 'insert into  ' + sNameOfTable + ' (  '
             sSql2 = 'values ('
-            #self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
+            self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
             for i in dicValues.keys():
                 sSql = sSql + i + ', '
                 self.writeLog('REC2-1.1 ' + `sSql`)
@@ -330,30 +342,42 @@ class SQL(xmlrpc.XMLRPC, basics):
                         #self.writeLog('REC2-6 ' + `sSql` + `sSql2`) 
              
                         
-            #self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
+            self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
             sSql = sSql + 'id, user_id, status'
             sSql2 = sSql2 + 'nextval(\'' + sNameOfTable + '_id\'), current_user, \'create\''  
             
             # set brackets and add
             sSql = sSql + ') ' + sSql2 + ')'
         
-            # execute insert
-            #self.writeLog('SQL by RECORD2 = ' + `sSql`)
-            #print sSql
-            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-            print result
-        
-            # find last id 
-        
-            sSql = 'select last_value from ' + sNameOfTable + '_id'
-            # sSql = sSql[0:string.rfind(sSql,',')]
+        # execute insert
+        self.writeLog('First SQL by RECORD2 = ' + `sSql`)
+        #print sSql
+        result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+        self.writeLog(result)
         
             
+        try:
+            if result == 'ERROR':
+                id = 0
         
-        #print sSql
-        #return printed
+        except:
+            pass
+            # sSql = sSql[0:string.rfind(sSql,',')]
+             
+        
+        # find last id 
+        if id < 0:
+        # insert
+            try:
+                sSql = 'select last_value from ' + sNameOfTable + '_id'
+                result = self.xmlrpc_executeNormalQuery(sSql,dicUser)
+                id = result[0]['last_value']
+            except:
+                id = 0
+                
+        
                    
-        return self.xmlrpc_executeNormalQuery(sSql,dicUser)
+        return id
     
     def xmlrpc_createBigRow(self, sFile, data, j, dicUser=None):
         debug = 1

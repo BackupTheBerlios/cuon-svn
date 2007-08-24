@@ -105,6 +105,8 @@ class Address(xmlrpc.XMLRPC, basics):
             #print 'sChoice = ', sChoice
             if sChoice == 'New':
                 sW += " and  date_part('doy', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  >=  date_part('doy', now())"
+            elif sChoice == 'actualWeek':
+                sW += " and  date_part('week', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  =  date_part('week', now())"
             elif sChoice == 'Cancel':
                 sW += ' and partner_schedul.process_status between 801 and 998 '
             elif sChoice == 'All':
@@ -453,3 +455,72 @@ class Address(xmlrpc.XMLRPC, basics):
         print 'result3', result
         return result  
         
+        
+    def xmlrpc_getStatCaller(self, dicUser):
+        result = {}
+        CALLER_ID = None
+        WITHOUT_ID = None
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+            #print cpServer
+            #print cpServer.sections()
+            
+            CALLER_ID = self.getConfigOption('STATS','CALLER_ID', cpServer)
+            WITHOUT_ID = self.getConfigOption('STATS','WITHOUT_ID', cpServer)
+        
+        except:
+            pass
+            
+
+        if CALLER_ID:
+            liCaller = CALLER_ID.split(',')
+            liSql = []
+            liSql.append({'id':'day','sql':'doy','logic':'='})
+            liSql.append({'id':'week','sql':'week','logic':'='})
+            liSql.append({'id':'month','sql':'month','logic':'='})
+            liSql.append({'id':'quarter','sql':'quarter','logic':'='})
+            liSql.append({'id':'year','sql':'year','logic':'='})
+            liSql.append({'id':'decade','sql':'decade','logic':'='})
+            liSql.append({'id':'century','sql':'century','logic':'='})
+
+            for caller in liCaller:
+                caller_name = None
+                sSql = 'select cuon_username from staff where staff.id = ' + caller 
+                res1 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                if res1 and res1 != 'NONE':
+                    caller_name = res1[0]['cuon_username']
+                if caller_name:    
+                    for vSql in liSql:
+                        for z1 in range(0,30):
+                            if vSql['id'] == 'decade' and z1 > 4:
+                                pass
+                            elif vSql['id'] == 'century' and z1 > 1:
+                                pass    
+                            else:
+                                sSql = "select '" + caller_name + "' as caller_name,   count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and p.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
+                                sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`
+                                if WITHOUT_ID:
+                                    liWithoutId = WITHOUT_ID.split(',')
+                                    for no_id in liWithoutId:
+                                        sSql += ' and a.id != ' + `no_id`
+                                sSql += self.getWhere('',dicUser,2,'ps.')
+                                #sSql += " group by a.caller_id "
+        
+                                tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                                if tmpResult and tmpResult != 'NONE':
+                                    oneResult = tmpResult[0]
+                                    for key in oneResult.keys():
+                                      result['caller_' + caller +'_'+ vSql['id'] + '_' + key + '_' + `z1` ] = oneResult[key]
+                                      
+                    
+                
+                
+            
+        if not result:
+            result = 'NONE'
+
+
+        self.writeLog('Caller-Result = ' + `result`)
+        
+        return result

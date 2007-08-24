@@ -134,6 +134,140 @@
       <fg_color>0</fg_color>
       
     </entry> 
+    <entry>
+      <name>cbRights</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_activated</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    
+    <entry>
+      <name>cbUserRightRead</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_user_read</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbUserRightWrite</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_user_write</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbUserRightExecute</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_user_execute</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbGroupRightRead</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_group_read</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbGroupRightWrite</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_group_write</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbGroupRightExecute</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_group_execute</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    
+     <entry>
+      <name>cbAllRightRead</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_all_read</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbAllRightWrite</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_all_write</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>cbAllRightExecute</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_all_execute</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>eUser</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_user</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+     <entry>
+      <name>eGroups</name>
+      <type>textline</type>
+      <size>250</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>document_rights_groups</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
     </table>
 
   </entries_for_table>

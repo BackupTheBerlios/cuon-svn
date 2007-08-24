@@ -15,6 +15,8 @@ import bz2, base64
 class basics(xmlrpc.XMLRPC):
     def __init__(self):
         self.debug = 0
+        self.DEBUG = False
+        self.DEBUG_MODUS = 1
         self.MN = {}
         self.MN['DMS'] = 11000
         self.MN['Forms_Address_Notes_Misc'] = 11010
@@ -95,7 +97,12 @@ class basics(xmlrpc.XMLRPC):
             
             self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
     
-            
+            # Debug
+            value = self.getConfigOption('DEBUG','ACTIVATE')
+            if value:
+                if value.upper() == 'YES':
+                    self.DEBUG = True
+                
             
             # AI
             value = self.getConfigOption('AI','AI_HOST')
@@ -325,7 +332,7 @@ class basics(xmlrpc.XMLRPC):
             else:
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
         
-        #self.writeLog('getWhere = ' + `sWhere`)
+        self.writeLog('getWhere = ' + `sWhere`)
         if not sWhere:
             sWhere = ' '
         return sWhere       
@@ -348,19 +355,22 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        pass
-##        debugValue = 0
-##        #print 'debugValue', debugValue
-##        if debugValue == 1:
-##        
-##            file = open('/tmp/cuon_server.log','a')
-##            file.write(time.ctime(time.time() ))
-##            file.write('\n')
-##            file.write(sLogEntry)
-##            file.write('\n')
-##            file.close()
-##            #print sLogEntry
-##        
+        if self.DEBUG:
+            try:
+                #print 'debugValue', debugValue
+                if debugValue == 1 or self.DEBUG_MODUS > 0:
+                
+                    file = open('/var/log//cuon_allserver.log','a')
+                    file.write(time.ctime(time.time() ))
+                    file.write('\n')
+                    file.write(sLogEntry)
+                    file.write('\n')
+                    file.close()
+                    #print sLogEntry
+            except:
+                pass
+                
+            
     def getStaffID(self, dicUser):
         return "(select id from staff where staff.cuon_username = '" +  dicUser['Name'] + "') "
     

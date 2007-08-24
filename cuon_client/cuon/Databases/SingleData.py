@@ -214,30 +214,35 @@ class SingleData(gladeXml, logs):
 ##                    #self.printOut( k)
 ##                dicValues[lb][0] = ' '
         
-        self.printOut( "saveValues - self.id = ", self.ID)
-        print 'save record'
-        print self.sNameOfTable, self.ID
-        print 'int Type = ', isinstance(self.ID, types.IntType)
-        print 'long Type = ', isinstance(self.ID, types.LongType)
-        print 'String Type = ', isinstance(self.ID, types.StringType)
+        #self.printOut( "saveValues - self.id = ", self.ID)
+        #print 'save record'
+        #print self.sNameOfTable, self.ID
+        #print 'int Type = ', isinstance(self.ID, types.IntType)
+        #print 'long Type = ', isinstance(self.ID, types.LongType)
+        #print 'String Type = ', isinstance(self.ID, types.StringType)
         
-        print dicValues
-        print '-----------------------------------------------------------------------_'
+        #print dicValues
+        #print '-----------------------------------------------------------------------_'
         
         liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
+        print 'liResult by SingleData = ', liResult
+        
         if self.ID < 0 and liResult:
             try:
-                id = liResult[0]['last_value']
+                id = liResult
             except:
                 pass
         elif self.ID > 0:
             id = self.ID
 
+        if liResult == 0:
+            id = 0
+        print 'id by save = ', id    
         return id
                 
                 
         
-        self.refreshTree()
+        #self.refreshTree()
 
  
     def deleteRecord(self):
