@@ -53,7 +53,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         sSql = sSql + context.sql.py_getWhere("",dicUser,1)
         result = oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         li = []
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            for i in range(len(result)):
                li.append(result[i]['id'] + '    ' + result[i]['number'])
         
@@ -66,7 +66,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         print sSql 
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         li = []
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            for i in range(len(result)):
                li.append(result[i]['vat_name'])
         
@@ -77,7 +77,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere('', dicUser, Single = 2)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         liValues = []
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
             for value in result:
                 liValues.append(value['title'] + '###' + `value['id']`)
                 
@@ -203,7 +203,7 @@ class Misc(xmlrpc.XMLRPC, basics):
                             sSql = 'select staff.email  as email from staff, address where  address.salesman_id  = staff.id' 
                             sSql += ' and address.id = ' + `addressid`
                             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                        if result and result != 'NONE':
+                        if result and result not in ['NONE','ERROR']:
                             liAddresses.append(result[0]['email'].strip())
             
         except Exception, params:

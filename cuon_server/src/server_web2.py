@@ -57,7 +57,7 @@ dirs = []
 def start():
     # create data structure
     liResult = oWeb2.getDirectoryStructure()
-    if liResult and liResult != 'NONE':
+    if liResult and liResult not in ['NONE','ERROR']:
         for result in liResult:
             result['data'] = baseSettings.rebuild(result['data'])
             liDirs = result['data'].split(',')
@@ -71,7 +71,7 @@ def start():
                 oDirs[sKey] = sDir
     #now save Images
     liResult = oWeb2.getImageIDs()
-    if liResult and liResult != 'NONE':
+    if liResult and liResult not in ['NONE','ERROR']:
         for result in liResult:
             
             id = result['id']
@@ -136,41 +136,46 @@ def getRootSite():
     return rootClass 
 
 def getHtmlSite(dicHtmlSite):
-    
+    print 'dicHtmlSite', dicHtmlSite
+    htmlClass = None
     liChilds = []
-    Childs = dicHtmlSite['linked_keys']
-    if Childs:
-        liChilds = Childs.split(',')
+    if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR'] :
+        try:
+            Childs = dicHtmlSite['linked_keys']
+            if Childs:
+                liChilds = Childs.split(',')
+        except:
+            pass
+    
         
+        htmlClass = 'class ' + dicHtmlSite['name'].strip() + '(object):\n'
+        htmlClass +='\timplements(inevow.IResource)\n'
+        htmlClass +='\n'
+        
+        htmlClass +='\tdef locateChild(self, ctx, segments):\n'
+        if liChilds:
+            z = 0
+            for child in liChilds:
+                if z == 0:
+                    htmlClass +='\t\tif segments[0] == \'' + child + '\':\n'
+                else:
+                    htmlClass +='\t\telif segments[0] == \'' + child + '\':\n'
+                htmlClass +='\t\t\treturn self.' + child.strip() + ', segments[1:]\n'
+                z += 1
+            htmlClass +='\t\telse:\n'
+            htmlClass +='\t\t\treturn None, ()\n'
+        else:
+            htmlClass +='\t\treturn None, ()\n'
+        
+        htmlClass +='\t\t\n'
+        htmlClass +='\tdef renderHTTP(self, ctx):\n'
+        htmlClass +='\t\tcounter(\'' + dicHtmlSite['name'].strip() +'\')\n'
     
-    htmlClass = 'class ' + dicHtmlSite['name'].strip() + '(object):\n'
-    htmlClass +='\timplements(inevow.IResource)\n'
-    htmlClass +='\n'
-    
-    htmlClass +='\tdef locateChild(self, ctx, segments):\n'
-    if liChilds:
-        z = 0
-        for child in liChilds:
-            if z == 0:
-                htmlClass +='\t\tif segments[0] == \'' + child + '\':\n'
-            else:
-                htmlClass +='\t\telif segments[0] == \'' + child + '\':\n'
-            htmlClass +='\t\t\treturn self.' + child.strip() + ', segments[1:]\n'
-            z += 1
-        htmlClass +='\t\telse:\n'
-        htmlClass +='\t\t\treturn None, ()\n'
-    else:
-        htmlClass +='\t\treturn None, ()\n'
-    
-    htmlClass +='\t\t\n'
-    htmlClass +='\tdef renderHTTP(self, ctx):\n'
-    htmlClass +='\t\tcounter(\'' + dicHtmlSite['name'].strip() +'\')\n'
-
-    htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
-    #print '-------------------------------------------------------------------'
-    #print htmlClass
-    #print '-------------------------------------------------------------------'
-    
+        htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
+        #print '-------------------------------------------------------------------'
+        #print htmlClass
+        #print '-------------------------------------------------------------------'
+        
     return htmlClass 
 
 class ImagePage(rend.Page):
@@ -235,20 +240,25 @@ liSites = oWeb2.getLinkedStructure()
 print 'lisites = ', liSites
 for sName in liSites:
     IDs = oWeb2.getAllSiteElementIDs(sName)
-    if IDs and IDs != 'NONE':
+    if IDs and IDs not in ['NONE','ERROR']:
         for id in IDs:
             dicHtmlSite = oWeb2.getSiteElementByID(id['id'])
-            if dicHtmlSite and dicHtmlSite != 'NONE':
+            if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
                 #print 'dicHtmlSite = ', dicHtmlSite
                 htmlClass = getHtmlSite(dicHtmlSite[0])
-                exec (htmlClass)
-                liRootKeys = dicHtmlSite[0]['root_keys'].split(',')
-                if liRootKeys:
-                    for key in liRootKeys:
-                        s =  key.strip() +"." + dicHtmlSite[0]['name'].strip() + " = " + dicHtmlSite[0]['name'].strip() + "()"
-                        print 's-root = ', s
-                        exec (s)
-                        
+                if htmlClass:
+                    exec (htmlClass)
+                    liRootKeys = dicHtmlSite[0]['root_keys'].split(',')
+                    if liRootKeys:
+                        for key in liRootKeys:
+                            s =  key.strip() +"." + dicHtmlSite[0]['name'].strip() + " = " + dicHtmlSite[0]['name'].strip() + "()"
+                            print 's-root = ', s
+                            try:
+                                exec (s)
+                            except Exception, params:
+                                print Exception,params
+                                
+                            
   
 
 # We are adding children to the pages.

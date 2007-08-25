@@ -25,7 +25,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql = "select svalue from cuon where skey = '" + sKey + "'"
         result = self.xmlrpc_executeNormalQuery(sSql)
         #print 'get-Value = ', result
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            try:
               v = result[0]['svalue']
            except:
@@ -40,7 +40,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         #self.out('py_saveValue sSql = ' + `sKey`)
         result = self.xmlrpc_executeNormalQuery(sSql)
         #self.out('py_saveValue result = ' + `result`)
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            sSql = "update cuon set svalue = '" + cKey +"' where skey = '" + sKey + "'"
         else:
            sSql = "insert into cuon (skey, svalue) values ('" + sKey + "','" + cKey +"')"
@@ -165,7 +165,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         self.writeLog('LastVersion = ' + `result`)
             
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
             try:
                 id = int(result[0]['last_value'])
             except:
@@ -178,7 +178,7 @@ class Database(xmlrpc.XMLRPC, SQL):
            sSql = 'select version from cuon_clients where id = ' + `id`
            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
            
-           if result != 'NONE':
+           if result not in ['NONE','ERROR']:
                version = result[0]['version']
         liVersion = version.split('.')
         print liVersion
@@ -197,7 +197,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         liClients = []
         #self.writeLog('Clients = ' + `dicClients`)
 
-        if dicClients != 'NONE':
+        if dicClients not in ['NONE','ERROR']:
            for i in dicClients:
               self.writeLog('i = ' + `i`)
               cli = i['id']
@@ -214,7 +214,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         ok = 0
 
-        if dicName != 'NONE':
+        if dicName not in ['NONE','ERROR']:
             ok = len(dicName)
 
         return  ok
@@ -225,7 +225,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         ok = 0
 
-        if dicName != 'NONE':
+        if dicName not in ['NONE','ERROR']:
             ok = len(dicName)
 
         return  ok
@@ -298,7 +298,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql = "select groname from pg_group where groname = '" + sGroup + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         
-        if dicName != 'NONE':
+        if dicName not in ['NONE','ERROR']:
            ok = 'Group exists'
         else:
            sSql = 'CREATE GROUP ' + sGroup
@@ -314,7 +314,7 @@ class Database(xmlrpc.XMLRPC, SQL):
             sSql = "select usename from pg_user where usename = '" + sUser + "'"
             dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
             
-            if dicName != 'NONE':
+            if dicName not in ['NONE','ERROR']:
                ok = 'User exists'
             else:
                sSql = 'CREATE USER ' + sUser
@@ -330,7 +330,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         sSql = "select groname from pg_group where groname = '" + sGroup + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if dicName != 'NONE':
+        if dicName not in ['NONE','ERROR']:
            ok = 'GROUP'
            sSql = 'Grant ' +sGrants + ' ON '  + sTable + ' TO GROUP ' + sGroup
            ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -349,12 +349,12 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql = "select usename from pg_user where usename = '" + sUser + "'"
         dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         ok = 'ERROR'
-        if dicName != 'NONE':
+        if dicName not in ['NONE','ERROR']:
            # check the group
            sSql = "select groname from pg_group where groname = '" + sGroup + "'"
            dicName = self.xmlrpc_executeNormalQuery(sSql, dicUser)
            ok = 'USER'
-           if dicName != 'NONE':
+           if dicName not in ['NONE','ERROR']:
               ok = 'GROUP'
               sSql = 'ALTER GROUP ' +sGroup + ' ADD USER ' + sUser
               ok = self.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -550,14 +550,14 @@ class Database(xmlrpc.XMLRPC, SQL):
         print 'dicCity', dicCity
         sSql = "select id from country where short_name = '"+ dicCity['country_id'][0] +"'"
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result != 'NONE' and int(result[0]['id']) > 0:
+        if result not in ['NONE','ERROR'] and int(result[0]['id']) > 0:
             country_id = int(result[0]['id'])
         dicCity['country_id'][0] = country_id
         
         state_id = 0    
         sSql = "select id from states where state_short = '"+ dicCity['state_id'][0] +"' and country_id = " + `country_id` 
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result != 'NONE' and int(result[0]['id']) > 0:
+        if result not in ['NONE','ERROR'] and int(result[0]['id']) > 0:
             state_id = int(result[0]['id'])
         dicCity['state_id'][0] = state_id
         ad_id = 0
@@ -567,7 +567,7 @@ class Database(xmlrpc.XMLRPC, SQL):
             
                 sSql = "select id from administrative_district where state_id = " + `state_id` + " and name = '" + dicCity['ad_id'][0] + "'"
                 result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-                if result != 'NONE' and int(result[0]['id']) > 0:
+                if result not in ['NONE','ERROR'] and int(result[0]['id']) > 0:
                     ad_id = int(result[0]['id'])
                 else:
                     dicAD = {}
@@ -618,7 +618,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         dicRet = {}
         sSql = "select address, lastname, firstname, phone, phone1, letter_phrase_1  from staff where id = " + self.getStaffID(dicUser)
         liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if liResult and liResult != 'NONE':
+        if liResult and liResult not in ['NONE','ERROR']:
             dicPers = liResult[0]
             for key in dicPers.keys():
                 
@@ -629,7 +629,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         if Pers1:
             sSql = "select address, lastname, firstname, phone,phone1, letter_phrase_1  from staff where id = " + `Pers1`
             liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-            if liResult and liResult != 'NONE':
+            if liResult and liResult not in ['NONE','ERROR']:
                 dicPers = liResult[0]
                 for key in dicPers.keys():
                     dicRet['person1_' + key] = dicPers[key]
@@ -637,7 +637,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         if Pers2:
             sSql = "select address, lastname, firstname, phone, phone1, letter_phrase_1 from staff where id = " + `Pers2`
             liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-            if liResult and liResult != 'NONE':
+            if liResult and liResult not in ['NONE','ERROR']:
                 dicPers = liResult[0]
                 for key in dicPers.keys():
                     dicRet['person2_' + key] = dicPers[key]
@@ -657,7 +657,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         sSql += self.getWhere('',dicUser,2)
         liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         print liResult
-        if liResult and liResult != 'NONE':
+        if liResult and liResult not in ['NONE','ERROR']:
             updateID = liResult[0]['id']
             
         return updateID

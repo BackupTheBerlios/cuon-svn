@@ -394,7 +394,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         else:
             #self.writeLog('j = ' + `j`, debug)
             sData =  self.getValue(sKey)
-            if sData != 'NONE':
+            if sData not in ['NONE','ERROR']:
                 #self.writeLog('len sData = ' + `len(sData)`, debug)
                 sData = sData + data
             else:

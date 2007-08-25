@@ -42,7 +42,7 @@ class Web2(xmlrpc.XMLRPC, basics):
         sSql += " and dms.status != 'delete' "
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, self.dicUser)
-        if result and result != 'NONE':
+        if result and result not in ['NONE','ERROR']:
             tData = result[0]
             
         
@@ -101,8 +101,8 @@ class Web2(xmlrpc.XMLRPC, basics):
         liSites = []
         sSql = "select name from web2 where type = " + `self.TypeLinkedSite` +" and root_keys ~'" + sKey +"' and char_length(linked_keys) > 0 "
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, self.dicUser)
-        #print result
-        if result and result != 'NONE':
+        print result
+        if result and result not in ['NONE','ERROR'] :
             for site in result:
                 liSites.append(site['name'].strip())
         

@@ -503,7 +503,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                 if WITHOUT_ID:
                                     liWithoutId = WITHOUT_ID.split(',')
                                     for no_id in liWithoutId:
-                                        sSql += ' and a.id != ' + `no_id`
+                                        sSql += ' and a.id != ' + no_id
                                 sSql += self.getWhere('',dicUser,2,'ps.')
                                 #sSql += " group by a.caller_id "
         
