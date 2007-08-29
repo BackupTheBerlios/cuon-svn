@@ -311,7 +311,7 @@ class invoicebookwindow(windows):
             firstRecord = self.singleListOfInvoice.firstRecord
             print 'ModulNumber', self.ModulNumber
             #dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            #if dicNotes and dicNotes != 'NONE':
+            #if dicNotes and dicNotes not in ['NONE','ERROR']:
             #    for key in dicNotes:
             #        firstRecord['notes_' + key] = dicNotes[key]
             firstRecord = self.addDateTime(firstRecord)

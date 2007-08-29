@@ -648,7 +648,7 @@ class windows(rawWindow, MyXML, messages):
             self.printOut( 'Result Profile')
             #print  'result: ', result
             
-            if result != 'NONE':
+            if result not in ['NONE','ERROR']:
                 self.oUser.userLocales ='de'
                 if result.has_key('encoding'):
                     self.oUser.userEncoding = result['encoding']

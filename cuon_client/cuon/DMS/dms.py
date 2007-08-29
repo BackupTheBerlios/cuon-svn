@@ -70,9 +70,9 @@ class dmswindow(windows):
         #print '-.............................'
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         
-
+        print '1 --'
         self.singleDMS = SingleDMS.SingleDMS(allTables)
-       
+        print '2 --'
         self.singleDMS.username = self.oUser.getUserName()
         self.loadGlade('dms.xml', 'DMSMainwindow')
         #self.win1 = self.getWidget('DMSMainwindow')
@@ -82,7 +82,7 @@ class dmswindow(windows):
         
         self.scanfile = None
         self.liPrintNewsletter = None
-
+        print '3 --'
         self.EntriesPreferences = 'dms.xml'
         
         if sep_info:
@@ -99,7 +99,7 @@ class dmswindow(windows):
             self.sepInfo['1'] = self.MN['DMS']
 
         print "Sep-Info 1 ",  self.sepInfo['1']
-           
+        print '4 --'   
         if module > 0:
             self.ModulNumber = module
         if  self.ModulNumber != self.MN['DMS'] :
@@ -107,19 +107,19 @@ class dmswindow(windows):
             self.sWhereStandard = self.sWhereStandard + ' and  sep_info_1 = ' +  `self.sepInfo['1']`            
         else:
             scd = cuon.Misc.cuon_dialog.cuon_dialog()
-                
+        print '5 --'        
         if self.ModulNumber == self.MN['Newsletter']:
             cd = cuon.Misc.cuon_dialog.cuon_dialog()
             ok, res = cd.inputLine( _('Print Newsletter'), _('insert label(s) for newsletter'))
             print ok, res
             if ok and res:
                 self.liPrintNewsletter = self.rpc.callRP('Address.getNewsletterAddresses', res, self.dicUser)
-                if self.liPrintNewsletter and self.liPrintNewsletter != 'NONE':
+                if self.liPrintNewsletter and self.liPrintNewsletter not in ['NONE','ERROR']:
                     self.getWidget('bFaxNewsletter').set_sensitive(True)
                     self.getWidget('bPrintNewsletter').set_sensitive(True)
     
         
-        
+        print '6 --'
         self.loadEntries(self.EntriesPreferences)
         
         
@@ -133,7 +133,7 @@ class dmswindow(windows):
         self.singleDMS.setTreeOrder('title, document_date')
         self.singleDMS.setListHeader([_('Title'), _('Category'), _('Doc.-Date')])
         self.singleDMS.setTree(self.xml.get_widget('tree1') )
-
+        print '7 --'
         self.singleDMS.imageWidget = self.getWidget('iThumbnail')
         
         # Menu-items
@@ -156,7 +156,7 @@ class dmswindow(windows):
         # tabs from notebook
         self.tabDocument = 0
         
-        
+        print '8 --'
         self.tabOption = self.tabDocument
         self.tabChanged()
         
@@ -164,6 +164,7 @@ class dmswindow(windows):
         self.win1.add_accel_group(self.accel_group)
         #Now check for automatic-Actions
         self.LastDoc = None
+        print '9 --'
         if self.dicExtInfo and self.dicExtInfo.has_key('LastDoc'):
             print 'lastdoc found'
             self.activateClick('new1')
@@ -327,12 +328,12 @@ class dmswindow(windows):
         self.oDocumentTools.viewDocument(self.singleDMS, self.dicUser, self.dicVars)
         
             
-    def on_tree1_row_activated(self, event):
-        self.on_bView_clicked(event)
-        
-    def on_tree1_columns_changed(self, event, data):
-        print event, data
-        
+##    def on_tree1_row_activated(self, event):
+##        self.on_bView_clicked(event)
+##        
+##    def on_tree1_columns_changed(self, event=None, data=None):
+##        print event, data
+##        
         
     def refreshTree(self):
         self.singleDMS.disconnectTree()

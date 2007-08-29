@@ -45,7 +45,7 @@ class report_list_of_reminder(report_basics):
         self.dicResults['Info'] = dicExtraData
         dicResult =  oOrder.getReminder(  dicUser )
         print "result by Reminder ", dicResult
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
 ##            for i in dicResult:
 ##                for j in i.keys():
 ##                    if isinstance(i[j],  types.StringType):

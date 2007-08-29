@@ -85,7 +85,7 @@ class documentTools(dumps):
                         print '-------------------------------------------------------------------'
                         #sys.exit(0)
                         
-                        if singleDMS.fileSuffix and singleDMS.fileSuffix != 'NONE':
+                        if singleDMS.fileSuffix and singleDMS.fileSuffix not in ['NONE','ERROR']:
                             sEXT = singleDMS.fileSuffix
                         else:   
                             sEXT =  dicUser['prefDMS']['fileformat'][key]['suffix'][0]

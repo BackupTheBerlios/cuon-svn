@@ -253,7 +253,7 @@ class orderwindow(chooseWindows):
             self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
         elif self.dicOrder and newOrder and self.OrderID == 0:
             dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-            if dicResult and dicResult != 'NONE':
+            if dicResult and dicResult not in ['NONE','ERROR']:
                 self.OrderID = dicResult[0]['last_value']
                 if self.OrderID > 0:
                     self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
@@ -332,7 +332,7 @@ class orderwindow(chooseWindows):
             oldID = self.singleOrder.ID
             
             liOrder = self.rpc.callRP('Order.getAllOrderWithoutInvoice',self.dicUser)
-            if liOrder and liOrder != 'NONE':
+            if liOrder and liOrder not in ['NONE','ERROR']:
                 print 'print new Invoices '
                 for newID in liOrder:
                     print newID
@@ -774,7 +774,7 @@ class orderwindow(chooseWindows):
         iAcctNumber = self.getChangedValue('ePaymentAccountID')
         eAcctField = self.getWidget('eAccountDesignation')
         cAcct = self.singleAccountInfo.getInfoLineForID(iAcctNumber)
-        if cAcct and cAcct != 'NONE':
+        if cAcct and cAcct not in ['NONE','ERROR']:
             eAcctField.set_text(cAcct)
         
 ##        record = self.singleArticle.getFirstRecord()

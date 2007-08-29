@@ -50,6 +50,8 @@ class SQL(xmlrpc.XMLRPC, basics):
                     self.writeLog('return from database = ' + `rows`)
                 except:
                     rows = 'ERROR'
+                    #rows = 'NONE'
+                    
                 #print 'rows = ', rows
                 #print 'Sql-Execute = ', ok
                 #conn.commit()
@@ -60,7 +62,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 self.writeLog('Rows = ' + `rows`)
                 #conn.close()
             
-            if rows and rows != 'ERROR':
+            if rows and rows not in ['NONE','ERROR']:
                 try:
                     dicResult = rows.dictresult()
                 except Exception, params:
@@ -76,7 +78,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             
             try:
                 assert dicResult 
-                if dicResult == 'NONE':
+                if dicResult in ['NONE','ERROR']:
                     pass
                 else:
                     #print 'dicResult', dicResult
@@ -113,6 +115,8 @@ class SQL(xmlrpc.XMLRPC, basics):
                 self.writeLog(`Exception` +', \n' + `param`)
                
                 dicResult = 'ERROR'
+                #dicResult = 'NONE'
+                
             if dicResult == None:
                 dicResult ='NONE'
             #self.writeLog('sql return 2 = ' + `dicResult`)

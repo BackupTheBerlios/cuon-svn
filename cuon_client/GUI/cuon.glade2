@@ -352,6 +352,59 @@
 		      <signal name="activate" handler="on_web2_activate" last_modification_time="Fri, 15 Jun 2007 16:27:04 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="statistik1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Statistik</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="statistik1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="address1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Address</property>
+			      <property name="use_underline">True</property>
+
+			      <child>
+				<widget class="GtkMenu" id="address1_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="stat_adr_caller1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Caller</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_stat_adr_caller1_activate" last_modification_time="Wed, 29 Aug 2007 14:12:09 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="representant1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Representant</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_stat_adr_rep1_activate" last_modification_time="Wed, 29 Aug 2007 14:12:09 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="schedul1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Schedul</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_stat_adr_schedul1_activate" last_modification_time="Wed, 29 Aug 2007 14:12:09 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

@@ -47,7 +47,7 @@ class SingleListOfInvoice(SingleData):
         if oneRecord['order_number'] > 0:
             liResult = self.rpc.callRP('Order.getOrderValues',oneRecord['order_number'], self.dicUser)
             # Now order_number = real order_number, not ID
-            if liResult != 'NONE' and liResult[0].has_key('order_number'):
+            if liResult not in ['NONE','ERROR'] and liResult[0].has_key('order_number'):
                 self.getWidget('eOrderNumber').set_text(liResult[0]['order_number'])
             
     

@@ -43,7 +43,7 @@ class report_order_standard_invoice(report_basics):
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         dicOrder['invoiceDate'] = oOrder.xmlrpc_getInvoiceDate(dicOrder['orderid'], dicUser)
         dicResult = oOrder.xmlrpc_getOrderValues(dicOrder['orderid'], dicUser)
-        if dicResult and dicResult != 'NONE':
+        if dicResult and dicResult not in ['NONE','ERROR']:
             for key in dicResult[0].keys():
                 dicOrder[key] = dicResult[0][key]
         
@@ -53,7 +53,7 @@ class report_order_standard_invoice(report_basics):
         
         dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )
         print "result by address: ", dicResult
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
 ##            for i in dicResult:
 ##                for j in i.keys():
 ##                    if isinstance(i[j],  types.StringType):

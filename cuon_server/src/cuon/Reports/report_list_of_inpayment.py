@@ -45,7 +45,7 @@ class report_list_of_inpayment(report_basics):
         self.dicResults['Info'] = dicExtraData
         dicResult =  oOrder.getListOfInpayment( dicExtraData, dicUser )
         print "result by OrderListInvoices: ", dicResult
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
 ##            for i in dicResult:
 ##                for j in i.keys():
 ##                    if isinstance(i[j],  types.StringType):

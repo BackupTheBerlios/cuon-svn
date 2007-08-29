@@ -472,17 +472,15 @@ class addresswindow(chooseWindows):
    
     def on_SchedulSave_activate(self, event):
         nID = 0
+        id = 0
         self.out( "save Schedul addresses v2")
         self.singleSchedul.partnerId = self.singlePartner.ID
         print 'ID = ', self.singleSchedul.ID
-        if self.singleSchedul.ID > 0:
-            nID =  self.singleSchedul.ID
-            
-        if self.singleSchedul.save() == 0:
+        
+        id = self.singleSchedul.save()
+        if id == 0:
             self.errorMsg( _('saving this schedul failed. Please check'))
         else:
-            if nID > 0:
-                id = nID
             self.doEdit = self.noEdit
             print 'save ready'
             self.singleSchedul.load(id)
@@ -529,7 +527,7 @@ class addresswindow(chooseWindows):
             
                 liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
                 print 'liEmailAddresses = ', liEmailAddresses
-                if liEmailAddresses and liEmailAddresses != 'NONE':
+                if liEmailAddresses and liEmailAddresses not in ['NONE','ERROR']:
                     self.singleDMS.loadNotes0SaveDocument()
                     dicVars, dicExtInfo = self.getAddressInfos()
                     dicVars['email_subject'] = `dicVars['id']` + ', ' + _('CUON-ID NOTES-01')
@@ -735,11 +733,11 @@ class addresswindow(chooseWindows):
             for key in self.singleAddress.firstRecord.keys():
                 dicPartner['address_' + key] = self.singleAddress.firstRecord[key]
             dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser)
-            if dicInternInformation != 'NONE':
+            if dicInternInformation not in ['NONE','ERROR']:
                 for key in dicInternInformation:
                     dicPartner[key] = dicInternInformation[key]
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes and dicNotes != 'NONE':
+            if dicNotes and dicNotes not in ['NONE','ERROR']:
                 for key in dicNotes:
                     dicPartner['notes_' + key] = dicNotes[key]    
             dicPartner = self.addDateTime(dicPartner)
@@ -761,7 +759,7 @@ class addresswindow(chooseWindows):
             firstRecord = self.singleAddress.firstRecord
             print 'ModulNumber', self.ModulNumber
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes and dicNotes != 'NONE':
+            if dicNotes and dicNotes not in ['NONE','ERROR']:
                 for key in dicNotes:
                     firstRecord['notes_' + key] = dicNotes[key]
             firstRecord = self.addDateTime(firstRecord)
@@ -780,12 +778,12 @@ class addresswindow(chooseWindows):
             for key in self.singlePartner.firstRecord.keys():
                 dicSchedul['partner_' + key] = self.singlePartner.firstRecord[key]
             dicInternInformation = self.rpc.callRP('Database.getInternInformation',self.dicUser, dicSchedul['schedul_staff_id'])
-            if dicInternInformation != 'NONE':    
+            if dicInternInformation not in ['NONE','ERROR']:    
                 for key in dicInternInformation:
                     dicSchedul[key] = dicInternInformation[key]
 
             dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            if dicNotes and dicNotes != 'NONE':
+            if dicNotes and dicNotes not in ['NONE','ERROR']:
                 for key in dicNotes:
                     dicSchedul['notes_' + key] = dicNotes[key]
                     
@@ -1036,7 +1034,7 @@ class addresswindow(chooseWindows):
                 
             liDates = self.rpc.callRP('Address.getAllActiveSchedul',self.dicUser,'Schedul',self.getWidget( 'eSchedulFor').get_text() )
             print 'Schedul by schedul_date: ', liDates
-            if liDates:
+            if liDates and liDates not in ['NONE','ERROR']:
                 lastRep = None
                 lastSalesman = None
                 Schedulname = None
@@ -1132,7 +1130,7 @@ class addresswindow(chooseWindows):
             if iNr:
                 Formular = self.rpc.callRP('Misc.getForm',iNr, self.dicUser)
                 print Formular
-                if Formular  and Formular != 'NONE':
+                if Formular  and Formular not in ['NONE','ERROR']:
                     newForm = self.doUncompress(self.doDecode(Formular[0]['document_image']))
                     print 'newForm', newForm
                     self.add2Textbuffer(self.getWidget(sOutput),newForm,'Tail')
@@ -1176,7 +1174,7 @@ class addresswindow(chooseWindows):
         #cbeNotesMisc.set_text_column(liCBE)
         #treestore = cbeNotesMisc.get_model()
         #treestore = gtk.TreeStore(str)
-        if liCBE and liCBE != 'NONE':
+        if liCBE and liCBE not in ['NONE','ERROR']:
             for sColumn in liCBE:
                 print sColumn
                 widget.append_text(sColumn)
@@ -1292,7 +1290,7 @@ class addresswindow(chooseWindows):
         
     def setOrderValues(self):
         liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser)
-        if liGroup and liGroup != 'NONE':
+        if liGroup and liGroup not in ['NONE','ERROR']:
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),liGroup,['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
         else:
@@ -1300,11 +1298,7 @@ class addresswindow(chooseWindows):
             self.connectOrderTree()
     # stats 
   
-    def on_stat_caller1_activate(self, event):
-        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_caller']}
-        dicCaller = self.rpc.callRP('Address.getStatCaller',self.dicUser)
-        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-103}, dicCaller, dicExtInfo)
-      
+    
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()

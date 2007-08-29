@@ -140,7 +140,7 @@ class projectwindow(chooseWindows):
             self.singleProject.sWhere = ' where modul_Project_number = ' + `self.dicProject['ModulProjectNumber']` + ' and modul_number = ' + `self.dicProject['ModulNumber']`
         elif self.dicProject and newProject and self.ProjectID == 0:
             dicResult = self.rpc.callRP('Projects.createNewProject', self.dicUser,self.dicProject)
-            if dicResult and dicResult != 'NONE':
+            if dicResult and dicResult not in ['NONE','ERROR']:
                 self.ProjectID = dicResult[0]['last_value']
                 if self.ProjectID > 0:
                     self.singleProject.sWhere = ' where id = ' + `self.ProjectID` 
@@ -555,7 +555,7 @@ class projectwindow(chooseWindows):
             firstRecord = self.singleProject.firstRecord
             print 'ModulNumber', self.ModulNumber
             #dicNotes = self.rpc.callRP('Address.getNotes',self.singleAddress.ID, self.dicUser)
-            #if dicNotes and dicNotes != 'NONE':
+            #if dicNotes and dicNotes not in ['NONE','ERROR']:
             #    for key in dicNotes:
             #        firstRecord['notes_' + key] = dicNotes[key]
             firstRecord = self.addDateTime(firstRecord)

@@ -325,39 +325,6 @@ static GnomeUIInfo mi_lists1_menu_uiinfo[] =
   GNOMEUIINFO_END
 };
 
-static GnomeUIInfo stat1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Caller"),
-    NULL,
-    (gpointer) on_stat_caller1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Representant"),
-    NULL,
-    (gpointer) on_stat_representant1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Salesman"),
-    NULL,
-    (gpointer) on_stat_salesman1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Scheduls"),
-    NULL,
-    (gpointer) on_stat_scheduls1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
 static GnomeUIInfo tools1_menu_uiinfo[] =
 {
   {
@@ -467,13 +434,6 @@ static GnomeUIInfo menubar1_uiinfo[] =
     GNOME_APP_UI_SUBTREE, N_("Lists"),
     NULL,
     mi_lists1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Stat"),
-    NULL,
-    stat1_menu_uiinfo, NULL, NULL,
     GNOME_APP_PIXMAP_NONE, NULL,
     0, (GdkModifierType) 0, NULL
   },
@@ -3487,12 +3447,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[11].widget, "stat1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[0].widget, "caller1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[1].widget, "representant1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[2].widget, "salesman1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, stat1_menu_uiinfo[3].widget, "scheduls1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[12].widget, "tools1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[11].widget, "tools1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");

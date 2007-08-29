@@ -29,7 +29,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         
             dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['delivery_number']
         return nr
         
@@ -67,7 +67,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = 'select invoice_number from list_of_invoices where order_number = ' + `orderNumber`
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number) '
            sSql1 = sSql1 + ' values (nextval(\'list_of_invoices_id +sc +\'),nextval(\'numerical_misc_standard_invoice + sc + \'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'
@@ -75,7 +75,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['invoice_number']
         return nr
 
@@ -145,7 +145,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         
            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['incoming_number']
         return nr
                
@@ -162,7 +162,7 @@ class Garden(xmlrpc.XMLRPC, basics):
            
            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSqlSearch, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['pickup_number']
         
             
@@ -308,7 +308,7 @@ class Garden(xmlrpc.XMLRPC, basics):
             print sSql
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
 
-            if result != 'NONE':
+            if result not in ['NONE','ERROR']:
                 row = result[0]
                 print 'row=', row
                 if row['begin_working_time'] > 0.0001:
@@ -317,7 +317,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                     print sSql
                     result_2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
                     print result_2
-                    if result_2 != 'NONE':
+                    if result_2 not in ['NONE','ERROR']:
                         dicPos = {}
                         dicPos['position'] = [ iPosition,'int']
                         iPosition += 1
@@ -332,7 +332,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                     sSql = 'select fee_per_hour_invoice from staff_fee where staff_id = ' + `row['ends_staff_number']`
                     sSql += self.getWhere("",dicUser,2)
                     result_2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-                    if result_2 != 'NONE':
+                    if result_2 not in ['NONE','ERROR']:
                         dicPos = {}
                         dicPos['position'] = [ iPosition,'int']
                         iPosition += 1
@@ -344,7 +344,7 @@ class Garden(xmlrpc.XMLRPC, basics):
                         result2.append(dicPos)
             
             # TODO search for staff --> fee
-##            if result != 'NONE':
+##            if result not in ['NONE','ERROR']:
 ##                if result['hib_price'] > 0:
 ##                        dicPos = {}
 ##                        dicPos['position'] = iPosition
@@ -366,7 +366,7 @@ class Garden(xmlrpc.XMLRPC, basics):
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
             print 'getOrderPositions.result: ', result
             
-            if result != 'NONE':
+            if result not in ['NONE','ERROR']:
                 for row in result:
                     print row
                     
@@ -471,7 +471,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None,dicUser,2)
         
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-        if liResult and liResult != 'NONE':
+        if liResult and liResult not in ['NONE','ERROR']:
             id = liResult[0]['id']
         return id 
         

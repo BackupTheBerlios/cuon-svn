@@ -43,7 +43,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         sSql = sSql + self.getWhere(sW, dicUser,1)
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            if result[0]['saldo'] >= 0:
               result[0]['saldo_debit'] =  result[0]['saldo']
            else:
@@ -85,7 +85,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
         self.writeLog('liS = ' + `liS`,self.debugFinances)
-        if liS != 'NONE':
+        if liS not in ['NONE','ERROR']:
            ret = liS[0]['last_date']
         return ret
         
@@ -100,7 +100,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         liAcct = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
         self.writeLog('liAcct = ' + `liAcct`)
-        if liAcct != 'NONE':
+        if liAcct not in ['NONE','ERROR']:
            ret = liAcct[0]['name']
         return ret
     
@@ -108,7 +108,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         ret = 'NONE'
         liAcct = None
         
-        if iAcct and iAcct != 'NONE':
+        if iAcct and iAcct not in ['NONE','ERROR']:
             cSql = "select designation from account_info where id = " + `iAcct` 
             #self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
             cSql = cSql + self.getWhere("",dicUser,2)
@@ -117,7 +117,7 @@ class Finances(xmlrpc.XMLRPC, basics):
             liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
             self.writeLog('liAcct = ' + `liAcct`)
-        if liAcct and liAcct != 'NONE':
+        if liAcct and liAcct not in ['NONE','ERROR']:
            ret = liAcct[0]['designation']
         return ret
         
@@ -126,7 +126,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         ret = 'NONE'
         liAcct = None
         
-        if sAcct and sAcct != 'NONE':
+        if sAcct and sAcct not in ['NONE','ERROR']:
             cSql = "select designation from account_info where account_number = '" + sAcct + "'"
             self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
             cSql = cSql + self.getWhere("",dicUser,2)
@@ -135,7 +135,7 @@ class Finances(xmlrpc.XMLRPC, basics):
             liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
             self.writeLog('liAcct = ' + `liAcct`)
-        if liAcct and liAcct != 'NONE':
+        if liAcct and liAcct not in ['NONE','ERROR']:
            ret = liAcct[0]['designation']
         return ret
         
@@ -143,7 +143,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         ret = 0
         liAcct = None
         
-        if sAcct and sAcct != 'NONE':
+        if sAcct and sAcct not in ['NONE','ERROR']:
             cSql = "select id from account_info where account_number = '" + sAcct + "'"
             #self.writeLog('acct SQL ' + `sAcct` + ', ' + `cSql`)
             cSql = cSql + self.getWhere("",dicUser,2)
@@ -152,7 +152,7 @@ class Finances(xmlrpc.XMLRPC, basics):
             liAcct = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
             #self.writeLog('liAcct = ' + `liAcct`)
-        if liAcct and liAcct != 'NONE':
+        if liAcct and liAcct not in ['NONE','ERROR']:
            ret = liAcct[0]['id']
         return ret
         
@@ -169,7 +169,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
         self.writeLog('liS = ' + `liS`)
-        if liS != 'NONE':
+        if liS not in ['NONE','ERROR']:
            ret = liS[0]['max_id']
         return ret
         
@@ -182,7 +182,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
         self.writeLog('liS = ' + `liS`)
-        if liS != 'NONE':
+        if liS not in ['NONE','ERROR']:
            ret = liS[0]['designation']
         return ret
     def xmlrpc_get_cab_doc_number1(self, dicUser):
@@ -193,7 +193,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         #context.src.logging.writeLog('User = ' + `dicUser`)
         dicNumber = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         self.writeLog('dicNumber = ' + `dicNumber`)
-        if dicNumber != 'NONE':
+        if dicNumber not in ['NONE','ERROR']:
            ret = dicNumber[0]['nextval']
         return ret
     def xmlrpc_updateAccountInfo(self, dicAcct, dicUser):
@@ -203,18 +203,18 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         pn = 'NONE'
-        if result != 'NONE' and result[0].has_key('id'):
+        if result not in ['NONE','ERROR'] and result[0].has_key('id'):
             dicAcct['account_plan_number'] = [result[0]['id'], 'int']
             pn = result[0]['id']
             print 'pn = ', pn
 
-        if pn != 'NONE':
+        if pn not in ['NONE','ERROR']:
             sSql = "select id from account_info where account_number = '" + dicAcct['account_number'][0] + "' and account_plan_number = " + `pn` 
             sSql = sSql + self.getWhere("",dicUser,2)
             self.writeLog('Search for account_Number sSql =  ' + `sSql` )
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             self.writeLog('result id by finances = ' + `result`)
-            if result != 'NONE':
+            if result not in ['NONE','ERROR']:
             
                 id = result[0]['id']
             else:
@@ -231,7 +231,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         sSql = " select total_amount from list_of_invoices where order_number = " + `order_id` 
         sSql += self.getWhere(None,dicUser,2)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-        if result and result != 'NONE':
+        if result and result not in ['NONE','ERROR']:
             total_amount = result[0]['total_amount']
             #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
         return total_amount

@@ -286,7 +286,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             self.writeLog('String error by ' + `firstRecord['short_remark']`)
         try:
             dicCal['id'] = firstRecord['id']
-            if result and result != 'NONE':
+            if result and result not in ['NONE','ERROR']:
                 
 
                 dicCal['location'] = result[0]['adr_lastname']+ ','+ result[0]['adr_country'] + '-' + result[0]['adr_zip'] + ' ' + result[0]['adr_city']
@@ -309,7 +309,7 @@ class iCal(xmlrpc.XMLRPC, basics):
             print Exception, params
         try:
             
-            if result and result != 'NONE':
+            if result and result not in ['NONE','ERROR']:
                 if firstRecord['process_status'] >= 0 and firstRecord['process_status'] <= 99:
                     dicCal['status'] = "TENTATIVE"
                 elif firstRecord['process_status'] >= 100 and  firstRecord['process_status'] <= 800:

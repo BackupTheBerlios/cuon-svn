@@ -112,7 +112,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('article_ai1' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result!= 'NONE':
+              if resultnot in ['NONE','ERROR']:
                  answer = ''
                  for r1 in result:
                     answer = answer + "%s \t\t %s \n" %(r1['number'],r1['designation'] )
@@ -140,7 +140,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_ai1' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result!= 'NONE':
+              if resultnot in ['NONE','ERROR']:
                  answer = ''
                  for r1 in result:
                     answer = answer + "%s\n%s\n%s\n%s\n%s %s\n\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
@@ -176,7 +176,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_phone_ai1 ' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result != 'NONE':
+              if result not in ['NONE','ERROR']:
                  ok = True
         
                  for r1 in result:
@@ -194,7 +194,7 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_phone_ai1_2 ' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result != 'NONE':
+              if result not in ['NONE','ERROR']:
                  ok = True
                  
                  for r1 in result:
@@ -224,7 +224,7 @@ class AI(xmlrpc.XMLRPC, basics):
             print dicValues
             result = self.oDatabase.xmlrpc_saveRecord('misc_data',-1,dicValues,dicUser )
             print 'result by insertData', result
-            if  result != 'NONE':
+            if  result not in ['NONE','ERROR']:
                 answer = "INSERT DATA SUCCESSFULL AT ID " + `result[0]['last_value']`
                 print answer
                 answer = self.sendQuestion(answer.encode('utf-7'))

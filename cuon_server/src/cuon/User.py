@@ -18,7 +18,7 @@ class User(xmlrpc.XMLRPC, basics):
         sSql = 'select profile_name from preferences where username = \'' + dicUser['Name'] +'\' and is_standard_profile = TRUE'
         
         result = self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            return result[0]['profile_name']
         else:
            return result
@@ -28,7 +28,7 @@ class User(xmlrpc.XMLRPC, basics):
         sSql = 'select * from preferences where username = \'' + dicUser['Name'] +'\' and profile_name = \'' + sProfile +'\''
         
         result = self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            return result[0]
         else:
            return result
@@ -211,7 +211,7 @@ class User(xmlrpc.XMLRPC, basics):
         sSql += dicUser['Name']  + "' " 
         sSql += self.getWhere('', dicUser, Single = 2)
         result = self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
             return result[0]['address_string']
         else:
             return result

@@ -30,7 +30,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
             dicResult =  oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['delivery_number']
         return nr
 
@@ -82,7 +82,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None, dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
             nr = dicResult[0]['invoice_number']
         else:
             nr = 0
@@ -101,7 +101,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None, dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
             date = dicResult[0]['date_of_invoice']
         else:
             date = ' '
@@ -126,12 +126,12 @@ class Order(xmlrpc.XMLRPC, basics):
             sSql2 += ' where addresses_misc.address_id = orderbook.addressnumber '
             sSql2 += self.getWhere(None, dicUser,2,'orderbook.')
             liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
-        if liResultTop and liResultTop != 'NONE':
+        if liResultTop and liResultTop not in ['NONE','ERROR']:
             top_id = liResultTop[0]['top_id']
             if top_id > 0:
                 sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
                 liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
-                if liResultTop2 and liResultTop2 != 'NONE':
+                if liResultTop2 and liResultTop2 not in ['NONE','ERROR']:
                     liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
         return liResult
         
@@ -164,7 +164,7 @@ class Order(xmlrpc.XMLRPC, basics):
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
             
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
             nr = dicResult[0]['invoice_number']
         else:
             nr = 0
@@ -197,7 +197,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = 'select pickup_number from list_of_pickups where order_number = ' + `orderNumber`
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            sSql1 = 'insert into list_of_pickups ( id, pickup_number, order_number) '
            sSql1 = sSql1 + ' values (nextval(\'list_of_pickups_id\'),nextval(\'numerical_misc_standard_pickup\'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'
@@ -206,7 +206,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
-        if dicResult != 'NONE':
+        if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['pickup_number']
         return nr
                
@@ -286,7 +286,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += `OrderID`
         sSql += self.getWhere(None,dicUser,2)
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult and dicResult != 'NONE':
+        if dicResult and dicResult not in ['NONE','ERROR']:
             total_sum = dicResult[0]['total_sum']
         
         return total_sum
@@ -308,7 +308,7 @@ class Order(xmlrpc.XMLRPC, basics):
         pos = 0
         sSql = " select max(position) as max_position from orderposition where orderid = " +  `orderid`
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-        if liResult and liResult != 'NONE':
+        if liResult and liResult not in ['NONE','ERROR']:
             try:
                 pos = liResult[0]['max_position']
                 pos = int(pos)
@@ -372,7 +372,7 @@ class Order(xmlrpc.XMLRPC, basics):
         print dicUser['Name']
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         print result
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
             topID = result[0]['topid']
             
             
@@ -397,14 +397,14 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = " select id from orderbook "
         sSql += self.getWhere(None,dicUser,1)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-        if result and result != 'NONE':
+        if result and result not in ['NONE','ERROR']:
             for row in result:
                 order_id = row['id']
                 sSql = " select max(invoice_number) as max_invoice_number from list_of_invoices where order_number = " + `order_id`
                 sSql += self.getWhere(None,dicUser,2)
                 result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
                 print 'result2', result2
-                if result2 and result2 != 'NONE' and result2[0]['max_invoice_number'] != 'NONE' :
+                if result2 and result2 not in ['NONE','ERROR'] and result2[0]['max_invoice_number'] not in ['NONE','ERROR'] :
                     if result2[0]['max_invoice_number'] < 1 or result2[0]['max_invoice_number'] != None:
                         liOrder.append(order_id)
                         print 'append1 = ', order_id

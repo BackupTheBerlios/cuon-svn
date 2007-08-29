@@ -86,6 +86,7 @@ class SingleData(gladeXml, logs):
         @return: list of records
         '''
         self.ID = -1
+        liRecords = []
         try:
             assert record >= 0 and  (isinstance(record, types.IntType) or isinstance(record, types.LongType))
 

@@ -129,7 +129,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere("",dicUser,2)
         print sSql
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-        if result == 'NONE':
+        if result in ['NONE','ERROR']:
             result = []
         print 'result 1 ', result
         sSql = "select email from partner where newsletter ~'.*" + NewsletterShortcut +".*'"
@@ -137,7 +137,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         print sSql
         result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         print 'result2 = ', result2
-        if result2 != 'NONE':
+        if result2 not in ['NONE','ERROR']:
             for res in result2:
                 result.append(res)
         print 'result3', result

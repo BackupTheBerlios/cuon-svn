@@ -31,7 +31,7 @@ class Stock(xmlrpc.XMLRPC, basics):
         client = dicUser['client']
         sSql = "select id from articles where number = '" + ar_id + "'"
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            try:
               id1 = result[0]['id']
            except:

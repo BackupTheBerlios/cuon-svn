@@ -92,7 +92,7 @@ class Article(xmlrpc.XMLRPC, basics):
         sSql = "select id from articles " 
         sSql = sSql + self.getWhere("where number = '" + article_number + "'" ,dicUser,1)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)
-        if result != 'NONE':
+        if result not in ['NONE','ERROR']:
            article_id = result[0]['id']
         
         if not article_id:
@@ -196,7 +196,7 @@ class Article(xmlrpc.XMLRPC, basics):
             self.writeLog('py_insertWebshopArticle 1 sql' + `sSql`)
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)
             self.writeLog('py_insertWebshopArticle 2 result' + `result`)
-            if result != 'NONE':
+            if result not in ['NONE','ERROR']:
                article_id = result[0]['id']
             else:
                article_id = -1
@@ -272,7 +272,7 @@ class Article(xmlrpc.XMLRPC, basics):
         sSql = "select sellingprice1 from articles where id = " + `id`
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         print 'price', liResult
-        if liResult and liResult != 'NONE':
+        if liResult and liResult not in ['NONE','ERROR']:
             price = liResult[0]['sellingprice1']
             print 'price2', price
             price = ("%." + `self.CURRENCY_ROUND` + "f") % round(price,self.CURRENCY_ROUND)

@@ -719,7 +719,7 @@ class databaseswindow(windows):
         sSql = "SELECT relname FROM PG_CLASS WHERE RELKIND = 'S' and relname ~* 'numerical.*' "
         res = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
         print res
-        if res != 'NONE':
+        if res not in ['NONE','ERROR']:
             for seqs in res:
                 sSql = 'GRANT select, update on ' + seqs['relname'] + ' TO PUBLIC'
                 ok = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)

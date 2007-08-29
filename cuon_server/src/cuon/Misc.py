@@ -86,8 +86,25 @@ class Misc(xmlrpc.XMLRPC, basics):
             liValues = 'NONE'
         return liValues
     def xmlrpc_faxData(self, dicUser, faxdata, phone_number):
+        ok = False
+        Faxserver = None
+        Faxport = None
+        Faxuser = None
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/server.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            Faxserver = self.getConfigOption('FAX','HOST', cpServer)
+            Faxport = self.getConfigOption('FAX','PORT', cpServer)
+            Faxuser = self.getConfigOption('FAX','USER', cpServer)
+        
+        except:
+            pass
+            
         print 'send Fax'
-        ol = False
+        
         filename = '/fax/fax___' + self.createNewSessionID()['SessionID'] 
         if filename:
             faxdata = base64.decodestring(faxdata)
@@ -97,16 +114,29 @@ class Misc(xmlrpc.XMLRPC, basics):
             f.write(faxdata)
             f.close()
             
-            
-        
-            shellcommand = 'sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename
-            liStatus = commands.getstatusoutput(shellcommand)
-            print shellcommand
-            print  liStatus
-            ok = True
-            #shellcommand = 'rm ' + filename
-            #liStatus = commands.getstatusoutput(shellcommand)
-            #print shellcommand, liStatus
+        if Faxserver and Faxport and Faxuser:
+            if filename:
+                shellcommand = 'scp -P ' + Faxport.strip() +' '  + filename + ' ' + Faxuser.strip() + '@' + Faxserver.strip() + '://fax'
+                print shellcommand
+                liStatus = commands.getstatusoutput(shellcommand)
+                print  liStatus
+                
+                shellcommand = 'ssh -p ' + Faxport.strip() +' ' + Faxuser.strip() + '@' + Faxserver.strip() +  ' "sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
+                print shellcommand
+
+                liStatus = commands.getstatusoutput(shellcommand)
+                print  liStatus
+                ok = True
+        else:
+            if filename:
+                shellcommand = 'sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename
+                liStatus = commands.getstatusoutput(shellcommand)
+                print shellcommand
+                print  liStatus
+                ok = True
+                #shellcommand = 'rm ' + filename
+                #liStatus = commands.getstatusoutput(shellcommand)
+                #print shellcommand, liStatus
         return ok 
         
     def xmlrpc_getForm(self, id, dicUser):

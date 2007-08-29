@@ -799,7 +799,7 @@ class report(MyXML):
                                           print 'Value by key'
                                           
                                           print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
-                                          if self.dicMemory[liFormula[fw + 1]] != 'NONE' and self.dicMemory[liFormula[fw + 1]] != ['NONE'] and self.dicMemory[liFormula[fw + 1]][0]:
+                                          if self.dicMemory[liFormula[fw + 1]] not in ['NONE','ERROR'] and self.dicMemory[liFormula[fw + 1]] != ['NONE'] and self.dicMemory[liFormula[fw + 1]][0]:
 
                                              if self.dicMemory.has_key(liFormula[fw + 3]):
                                                 print 'fw +3 '    

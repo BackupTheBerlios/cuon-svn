@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 40, 'Rev': 2,'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 40, 'Rev': 8, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1078,7 +1078,19 @@ class MainWindow(windows):
     def on_bGotoAddress_clicked(self, event):
         if self.singleAddress.ID > 0:
             adr = cuon.Addresses.addresses.addresswindow(self.allTables, addrid = self.singleAddress.ID)
-            
+
+
+    def on_stat_adr_caller1_activate(self, event):
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_caller']}
+        dicCaller = self.rpc.callRP('Address.getStatCaller',self.dicUser)
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-103}, dicCaller, dicExtInfo)
+        
+    def on_stat_adr_rep1_activate(self, event):
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_rep']}
+        dicCaller = self.rpc.callRP('Address.getStatRep',self.dicUser)
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-104}, dicCaller, dicExtInfo)
+        
+
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    

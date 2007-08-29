@@ -389,3 +389,27 @@ on_rbScheduls_activate                 (GtkButton       *button,
 
 }
 
+
+void
+on_stat_adr_caller1_activate           (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_stat_adr_rep1_activate              (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_stat_adr_schedul1_activate          (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
