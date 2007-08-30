@@ -73,13 +73,7 @@ create_window1 (void)
   GtkWidget *mi_expert_system1;
   GtkWidget *mi_project1;
   GtkWidget *web2;
-  GtkWidget *statistik1;
-  GtkWidget *statistik1_menu;
-  GtkWidget *address1;
-  GtkWidget *address1_menu;
-  GtkWidget *stat_adr_caller1;
-  GtkWidget *representant1;
-  GtkWidget *schedul1;
+  GtkWidget *stats1;
   GtkWidget *tools;
   GtkWidget *tools_menu;
   GtkWidget *preferences1;
@@ -322,31 +316,9 @@ create_window1 (void)
   gtk_widget_show (web2);
   gtk_container_add (GTK_CONTAINER (extras_menu), web2);
 
-  statistik1 = gtk_menu_item_new_with_mnemonic (_("Statistik"));
-  gtk_widget_show (statistik1);
-  gtk_container_add (GTK_CONTAINER (extras_menu), statistik1);
-
-  statistik1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (statistik1), statistik1_menu);
-
-  address1 = gtk_menu_item_new_with_mnemonic (_("Address"));
-  gtk_widget_show (address1);
-  gtk_container_add (GTK_CONTAINER (statistik1_menu), address1);
-
-  address1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (address1), address1_menu);
-
-  stat_adr_caller1 = gtk_menu_item_new_with_mnemonic (_("Caller"));
-  gtk_widget_show (stat_adr_caller1);
-  gtk_container_add (GTK_CONTAINER (address1_menu), stat_adr_caller1);
-
-  representant1 = gtk_menu_item_new_with_mnemonic (_("Representant"));
-  gtk_widget_show (representant1);
-  gtk_container_add (GTK_CONTAINER (address1_menu), representant1);
-
-  schedul1 = gtk_menu_item_new_with_mnemonic (_("Schedul"));
-  gtk_widget_show (schedul1);
-  gtk_container_add (GTK_CONTAINER (address1_menu), schedul1);
+  stats1 = gtk_menu_item_new_with_mnemonic (_("Stats"));
+  gtk_widget_show (stats1);
+  gtk_container_add (GTK_CONTAINER (extras_menu), stats1);
 
   tools = gtk_menu_item_new_with_mnemonic (_("Tools"));
   gtk_widget_show (tools);
@@ -708,14 +680,8 @@ create_window1 (void)
   g_signal_connect ((gpointer) web2, "activate",
                     G_CALLBACK (on_web2_activate),
                     NULL);
-  g_signal_connect ((gpointer) stat_adr_caller1, "activate",
-                    G_CALLBACK (on_stat_adr_caller1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) representant1, "activate",
-                    G_CALLBACK (on_stat_adr_rep1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) schedul1, "activate",
-                    G_CALLBACK (on_stat_adr_schedul1_activate),
+  g_signal_connect ((gpointer) stats1, "activate",
+                    G_CALLBACK (on_stats1_activate),
                     NULL);
   g_signal_connect ((gpointer) preferences1, "activate",
                     G_CALLBACK (on_preferences1_activate),
@@ -837,13 +803,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mi_expert_system1, "mi_expert_system1");
   GLADE_HOOKUP_OBJECT (window1, mi_project1, "mi_project1");
   GLADE_HOOKUP_OBJECT (window1, web2, "web2");
-  GLADE_HOOKUP_OBJECT (window1, statistik1, "statistik1");
-  GLADE_HOOKUP_OBJECT (window1, statistik1_menu, "statistik1_menu");
-  GLADE_HOOKUP_OBJECT (window1, address1, "address1");
-  GLADE_HOOKUP_OBJECT (window1, address1_menu, "address1_menu");
-  GLADE_HOOKUP_OBJECT (window1, stat_adr_caller1, "stat_adr_caller1");
-  GLADE_HOOKUP_OBJECT (window1, representant1, "representant1");
-  GLADE_HOOKUP_OBJECT (window1, schedul1, "schedul1");
+  GLADE_HOOKUP_OBJECT (window1, stats1, "stats1");
   GLADE_HOOKUP_OBJECT (window1, tools, "tools");
   GLADE_HOOKUP_OBJECT (window1, tools_menu, "tools_menu");
   GLADE_HOOKUP_OBJECT (window1, preferences1, "preferences1");

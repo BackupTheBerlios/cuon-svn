@@ -489,6 +489,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 caller_name = None
                 sSql = 'select cuon_username from staff where staff.id = ' + caller 
                 res1 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                print 'dicUser' , dicUser
                 if res1 and res1 not in ['NONE','ERROR']:
                     caller_name = res1[0]['cuon_username']
                 if caller_name:    

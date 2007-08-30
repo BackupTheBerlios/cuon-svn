@@ -403,6 +403,11 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>stats.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/stats.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>materialGroup.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/materialGroup.glade2</Glade-FileValue>
     </GladeEntries>

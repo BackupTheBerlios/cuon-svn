@@ -16,7 +16,7 @@ class SQL(xmlrpc.XMLRPC, basics):
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
         t1 = time.mktime(time.localtime())
         self.writeLog('------->SQL starts at : ' + `t1`)
-        
+        conn = None
         dicResult = None
         rows = None
         try:
@@ -42,7 +42,8 @@ class SQL(xmlrpc.XMLRPC, basics):
             
                 self.writeLog('User = ' + sUser)
                 #DSN = 'dbname=cuon host=localhost user=' + sUser
-                conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST  , user = sUser)
+                conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, port = self.POSTGRES_PORT, user = sUser)
+                #conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, user = sUser)
                 #curs.execute(cSql.decode('utf-8'))
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
                 try:
@@ -126,9 +127,10 @@ class SQL(xmlrpc.XMLRPC, basics):
         try:
             self.writeLog( '----------> SQL ')
             self.writeLog(cSql)
+            #conn.close()
             self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
         except Exception, params:
-            self.writeLog( 'executeQuery 3 ERROR = ' + Exception + ' ' + params)
+            self.writeLog( 'executeQuery 3 ERROR = ' + `Exception` + ' ' + `params`)
 
         self.writeLog('sql return = ' + `dicResult`)
             

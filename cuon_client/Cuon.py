@@ -264,6 +264,7 @@ import commands
 import cuon.Help.help
 import cuon.Databases.SingleDataTreeModel
 import cuon.Finances.invoicebook
+import cuon.Stats.stats
 try:
     import cuon.Web2.web2
 except:
@@ -671,6 +672,8 @@ class MainWindow(windows):
     def on_web2_activate(self, event):
         web2 = cuon.Web2.web2.web2window(self.allTables)
 
+    def on_stats1_activate(self, event):
+        stats = cuon.Stats.stats.statswindow(self.allTables)
 
     # Tools   
 
@@ -1080,16 +1083,7 @@ class MainWindow(windows):
             adr = cuon.Addresses.addresses.addresswindow(self.allTables, addrid = self.singleAddress.ID)
 
 
-    def on_stat_adr_caller1_activate(self, event):
-        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_caller']}
-        dicCaller = self.rpc.callRP('Address.getStatCaller',self.dicUser)
-        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-103}, dicCaller, dicExtInfo)
-        
-    def on_stat_adr_rep1_activate(self, event):
-        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_rep']}
-        dicCaller = self.rpc.callRP('Address.getStatRep',self.dicUser)
-        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-104}, dicCaller, dicExtInfo)
-        
+    
 
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)

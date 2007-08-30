@@ -90,6 +90,11 @@ class Misc(xmlrpc.XMLRPC, basics):
         Faxserver = None
         Faxport = None
         Faxuser = None
+        s = ''
+        for i in phone_number:
+            if i in ['0','1','2','3','4','5','6','7','8','9']:
+                s += i
+        phone_number = s
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/server.ini')
@@ -103,7 +108,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         except:
             pass
             
-        print 'send Fax'
+        self.writeLog( 'send Fax')
         
         filename = '/fax/fax___' + self.createNewSessionID()['SessionID'] 
         if filename:
@@ -115,17 +120,22 @@ class Misc(xmlrpc.XMLRPC, basics):
             f.close()
             
         if Faxserver and Faxport and Faxuser:
+            self.writeLog( 'Faxserver found')
             if filename:
                 shellcommand = 'scp -P ' + Faxport.strip() +' '  + filename + ' ' + Faxuser.strip() + '@' + Faxserver.strip() + '://fax'
-                print shellcommand
+                self.writeLog( shellcommand)
                 liStatus = commands.getstatusoutput(shellcommand)
-                print  liStatus
+                self.writeLog( `liStatus`)
                 
                 shellcommand = 'ssh -p ' + Faxport.strip() +' ' + Faxuser.strip() + '@' + Faxserver.strip() +  ' "sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
-                print shellcommand
+                self.writeLog(shellcommand)
 
                 liStatus = commands.getstatusoutput(shellcommand)
-                print  liStatus
+                shellcommand = 'ssh -p ' + Faxport.strip() + ' '  + Faxuser.strip() +'@' + Faxserver.strip() + ' "sendfax -n -o ' + dicUser['Name'] + ' -d \"' + phone_number + '\" ' + filename + ' "'
+                self.writeLog(shellcommand)
+                liStatus = commands.getstatusoutput(shellcommand)
+                
+                self.writeLog(`liStatus`)
                 ok = True
         else:
             if filename:
