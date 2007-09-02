@@ -352,11 +352,15 @@ cuon/bin/cuon/bin/untar.py
 cuon/bin/cuon/Web2/__init__.py
 cuon/bin/cuon/Web2/SingleWeb2.py
 cuon/bin/cuon/Web2/web2.py
+cuon/bin/cuon/Stats/__init__.py
+cuon/bin/cuon/Stats/stats.py
 cuon/bin/cuon_client.py
 cuon/bin/Cuon.py
 cuon/bin/cuon_server.py
 cuon/bin/setup.py
 cuon/bin/untar.py
+cuon/Stats/stats.py
+cuon/Stats/__init__.py
 cuon/DMS/GUI/src2/callbacks.c
 cuon/DMS/GUI/src2/interface.c
 cuon/DMS/GUI/src2/main.c
@@ -396,6 +400,10 @@ cuon/Bank/GUI/src/callbacks.c
 cuon/Bank/GUI/src/interface.c
 cuon/Bank/GUI/src/main.c
 cuon/Bank/GUI/src/support.c
+cuon/Stats/GUI/src/support.c
+cuon/Stats/GUI/src/main.c
+cuon/Stats/GUI/src/interface.c
+cuon/Stats/GUI/src/callbacks.c
 ./Cuon.py
 GUI/cuon.c
 GUI/src/callbacks.c

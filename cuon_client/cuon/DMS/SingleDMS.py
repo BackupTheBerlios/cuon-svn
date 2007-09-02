@@ -62,6 +62,14 @@ class SingleDMS(SingleData):
         
         self.tmpfile = None
         self.ModulNumber = 0
+        
+        self.Rights = None
+        self.newTitle = None 
+        self.newCategory = None
+        self.newDate = None
+        
+
+
     def createTmpFile(self, sEXT):
         print '#############################################################'
         print 'sExt = ', sEXT
@@ -95,7 +103,48 @@ class SingleDMS(SingleData):
         dicValues['file_suffix'] = [self.fileSuffix, 'string']
         dicValues['insert_from_module'] = [self.ModulNumber, 'int']
         dicValues['sep_info_1'] = [self.sep_info_1, 'int']
+        print dicValues
+        if self.newTitle:
+            
+            dicValues['title'] = [self.newTitle, 'string']
+        if self.newDate:
+            dicValues['document_date'] = [self.newDate, 'date']
+        if self.newCategory:
+            dicValues['category'] = [self.newCategory, 'string']
         
+        if self.Rights:
+            rights,groups = self.rpc.callRP('Database.getDMSRights',self.Rights )
+            if rights and rights != 'NONE':
+                dicValues['document_rights_activated'] = [True,'bool']
+                if rights[0] == 'r':
+                    dicValues['document_rights_user_read'] = [True,'bool']
+                if rights[1] == 'w':
+                    dicValues['document_rights_user_write'] = [True,'bool']
+                if rights[2] == 'x':
+                    dicValues['document_rights_user_execute'] = [True,'bool']
+                    
+                if rights[3] == 'r':
+                    dicValues['document_rights_group_read'] = [True,'bool']
+                if rights[4] == 'w':
+                    dicValues['document_rights_group_write'] = [True,'bool']
+                if rights[5] == 'x':
+                    dicValues['document_rights_group_execute'] = [True,'bool']
+                if rights[6] == 'r':
+                    dicValues['document_rights_all_read'] = [True,'bool']
+                if rights[7] == 'w':
+                    dicValues['document_rights_all_write'] = [True,'bool']
+                if rights[8] == 'x':
+                    dicValues['document_rights_all_execute'] = [True,'bool']
+                
+                if groups and groups != 'NONE':
+                    dicValues['document_rights_groups'] = [groups,'string']
+                    dicValues['document_rights_user'] = [self.dicUser['Name'],'string']
+                    
+        # set to empty values
+        self.newDate = None
+        self.newTitle = None
+        
+            
         return dicValues
     def loadDocument(self):
         

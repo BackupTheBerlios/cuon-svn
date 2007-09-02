@@ -597,3 +597,11 @@ on_bSearch_clicked                     (GtkWidget       *widget,
   return FALSE;
 }
 
+
+void
+on_bShowExtInfo_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

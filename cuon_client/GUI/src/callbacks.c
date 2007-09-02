@@ -421,3 +421,11 @@ on_stats1_activate                     (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_bRestartServer_clicked              (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

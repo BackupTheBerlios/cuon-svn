@@ -444,6 +444,8 @@ create_OrderMainwindow (void)
   GtkWidget *eMiscCost;
   GtkWidget *label40;
   GtkWidget *eDiscount;
+  GtkWidget *hbox33;
+  GtkWidget *bShowExtInfo;
   GtkWidget *label2;
   GtkWidget *fixed2;
   GtkWidget *eSupplyNumber;
@@ -1039,6 +1041,16 @@ create_OrderMainwindow (void)
   gtk_table_attach (GTK_TABLE (table7), eDiscount, 3, 4, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+
+  hbox33 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox33);
+  gtk_table_attach (GTK_TABLE (table7), hbox33, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  bShowExtInfo = gtk_button_new_with_mnemonic (_("show Ext. Info"));
+  gtk_widget_show (bShowExtInfo);
+  gtk_box_pack_start (GTK_BOX (hbox33), bShowExtInfo, FALSE, FALSE, 0);
 
   label2 = gtk_label_new (_("Order"));
   gtk_widget_show (label2);
@@ -1982,6 +1994,9 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) bDirectDebit3, "clicked",
                     G_CALLBACK (on_bDirectDebit3_clicked),
                     NULL);
+  g_signal_connect ((gpointer) bShowExtInfo, "clicked",
+                    G_CALLBACK (on_bShowExtInfo_clicked),
+                    NULL);
   g_signal_connect ((gpointer) eSupplyNumber, "changed",
                     G_CALLBACK (on_eSupplyNumber_changed),
                     NULL);
@@ -2177,6 +2192,8 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eMiscCost, "eMiscCost");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label40, "label40");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eDiscount, "eDiscount");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox33, "hbox33");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, bShowExtInfo, "bShowExtInfo");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label2, "label2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");

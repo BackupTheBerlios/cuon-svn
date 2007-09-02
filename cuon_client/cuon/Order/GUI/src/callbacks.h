@@ -298,3 +298,7 @@ gboolean
 on_bSearch_clicked                     (GtkWidget       *widget,
                                         GdkEventKey     *event,
                                         gpointer         user_data);
+
+void
+on_bShowExtInfo_clicked                (GtkButton       *button,
+                                        gpointer         user_data);

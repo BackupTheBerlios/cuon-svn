@@ -27,935 +27,901 @@
   g_object_set_data (G_OBJECT (component), name, widget)
 
 GtkWidget*
-create_window1 (void)
+create_Mainwindow (void)
 {
-  GtkWidget *window1;
-  GdkPixbuf *window1_icon_pixbuf;
+  GtkWidget *Mainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
-  GtkWidget *connect1;
-  GtkWidget *connect1_menu;
-  GtkWidget *login1;
-  GtkWidget *logout1;
-  GtkWidget *trennlinie1;
-  GtkWidget *end1;
-  GtkWidget *image8;
-  GtkWidget *data;
-  GtkWidget *data_menu;
-  GtkWidget *mi_addresses1;
-  GtkWidget *mi_articles1;
-  GtkWidget *bank1;
-  GtkWidget *trennlinie3;
-  GtkWidget *mi_bibliographic;
-  GtkWidget *mi_staff1;
-  GtkWidget *trennlinie4;
-  GtkWidget *contracts1;
-  GtkWidget *contracts1_menu;
-  GtkWidget *mi_insurances1;
-  GtkWidget *mi_rent1;
-  GtkWidget *mi_leasing1;
-  GtkWidget *separator3;
-  GtkWidget *mi_clients1;
-  GtkWidget *action1;
-  GtkWidget *action1_menu;
-  GtkWidget *mi_order1;
-  GtkWidget *mi_stock1;
-  GtkWidget *mi_dms1;
-  GtkWidget *accounting1;
-  GtkWidget *accounting1_menu;
-  GtkWidget *mi_cash_account_book1;
-  GtkWidget *listofinvoices1;
-  GtkWidget *extras;
-  GtkWidget *extras_menu;
-  GtkWidget *mayavi1;
-  GtkWidget *mayavi1_menu;
-  GtkWidget *mi_test1;
-  GtkWidget *mi_expert_system1;
-  GtkWidget *mi_project1;
-  GtkWidget *web2;
-  GtkWidget *stats1;
-  GtkWidget *tools;
-  GtkWidget *tools_menu;
-  GtkWidget *preferences1;
-  GtkWidget *preferences1_menu;
-  GtkWidget *mi_user1;
-  GtkWidget *mi_finances1;
-  GtkWidget *update1;
-  GtkWidget *mi_report_generator1;
-  GtkWidget *mi_webshop1;
-  GtkWidget *separator1;
-  GtkWidget *databases1;
-  GtkWidget *trennlinie2;
-  GtkWidget *mi_import_data1;
-  GtkWidget *forms1;
-  GtkWidget *forms1_menu;
-  GtkWidget *forms_addresses1;
-  GtkWidget *forms_addresses1_menu;
-  GtkWidget *mi_addresses_notes_misc1;
-  GtkWidget *mi_addresses_notes_contacter1;
-  GtkWidget *mi_addresses_notes_representant1;
-  GtkWidget *mi_addresses_notes_salesman1;
-  GtkWidget *trennlinie5;
+  GtkWidget *file1;
+  GtkWidget *file1_menu;
+  GtkWidget *quit1;
+  GtkWidget *services1;
+  GtkWidget *services1_menu;
+  GtkWidget *database_tools1;
+  GtkWidget *create_client1;
   GtkWidget *help1;
-  GtkWidget *help1_menu;
-  GtkWidget *about1;
-  GtkWidget *onlinehelp;
+  GtkWidget *table4;
+  GtkWidget *radiobutton1;
+  GSList *radiobutton1_group = NULL;
+  GtkWidget *radiobutton2;
+  GtkWidget *radiobutton3;
+  GtkWidget *radiobutton4;
+  GtkWidget *radiobutton5;
+  GtkWidget *radiobutton6;
+  GtkWidget *radiobutton7;
+  GtkWidget *radiobutton8;
+  GtkWidget *radiobutton9;
+  GtkWidget *radiobutton10;
+  GtkWidget *radiobutton11;
+  GtkWidget *radiobutton12;
+  GtkWidget *radiobutton13;
+  GSList *radiobutton13_group = NULL;
+  GtkWidget *radiobutton14;
+  GSList *radiobutton14_group = NULL;
+  GtkWidget *radiobutton15;
+  GSList *radiobutton15_group = NULL;
+  GtkWidget *radiobutton16;
+  GSList *radiobutton16_group = NULL;
+  GtkWidget *radiobutton17;
+  GSList *radiobutton17_group = NULL;
+  GtkWidget *radiobutton18;
+  GSList *radiobutton18_group = NULL;
+  GtkWidget *radiobutton19;
+  GSList *radiobutton19_group = NULL;
+  GtkWidget *radiobutton20;
+  GSList *radiobutton20_group = NULL;
+  GtkWidget *radiobutton21;
+  GSList *radiobutton21_group = NULL;
+  GtkWidget *radiobutton22;
+  GSList *radiobutton22_group = NULL;
+  GtkWidget *radiobutton23;
+  GSList *radiobutton23_group = NULL;
+  GtkWidget *radiobutton24;
+  GSList *radiobutton24_group = NULL;
+  GtkWidget *radiobutton25;
+  GSList *radiobutton25_group = NULL;
+  GtkWidget *radiobutton26;
+  GSList *radiobutton26_group = NULL;
+  GtkWidget *radiobutton27;
+  GSList *radiobutton27_group = NULL;
+  GtkWidget *radiobutton28;
+  GSList *radiobutton28_group = NULL;
+  GtkWidget *radiobutton29;
+  GSList *radiobutton29_group = NULL;
+  GtkWidget *radiobutton30;
+  GSList *radiobutton30_group = NULL;
+  GtkWidget *radiobutton31;
+  GSList *radiobutton31_group = NULL;
+  GtkWidget *radiobutton32;
+  GSList *radiobutton32_group = NULL;
+  GtkWidget *radiobutton33;
+  GSList *radiobutton33_group = NULL;
+  GtkWidget *radiobutton34;
+  GSList *radiobutton34_group = NULL;
+  GtkWidget *radiobutton35;
+  GSList *radiobutton35_group = NULL;
+  GtkWidget *radiobutton36;
+  GSList *radiobutton36_group = NULL;
+  GtkWidget *radiobutton37;
+  GSList *radiobutton37_group = NULL;
+  GtkWidget *radiobutton38;
+  GSList *radiobutton38_group = NULL;
+  GtkWidget *radiobutton39;
+  GSList *radiobutton39_group = NULL;
+  GtkWidget *radiobutton40;
+  GSList *radiobutton40_group = NULL;
+  GtkWidget *radiobutton41;
+  GSList *radiobutton41_group = NULL;
+  GtkWidget *radiobutton42;
+  GSList *radiobutton42_group = NULL;
+  GtkWidget *notebook1;
   GtkWidget *table1;
-  GtkWidget *label1;
-  GtkWidget *eUserName;
-  GtkWidget *label2;
-  GtkWidget *eServer;
-  GtkWidget *label3;
-  GtkWidget *eAppServer;
-  GtkWidget *label4;
-  GtkWidget *eDatabase;
   GtkWidget *label5;
-  GtkWidget *eWebshop;
+  GtkWidget *ePortXmlrpc;
+  GtkWidget *ePortSSH;
+  GtkWidget *eHostIP;
+  GtkWidget *label7;
+  GtkWidget *label6;
+  GtkWidget *label4;
   GtkWidget *label8;
-  GtkWidget *vbox5;
-  GtkWidget *hbox4;
-  GtkWidget *rbSchedulsNew;
-  GSList *rbSchedulsNew_group = NULL;
-  GtkWidget *rbSchedulsAll;
-  GtkWidget *rbSchedulsCancel;
-  GtkWidget *rbSchedulsActualWeek;
-  GtkWidget *hbox1;
-  GtkWidget *scrolledwindow3;
-  GtkWidget *treeSchedul;
-  GtkWidget *vbox3;
-  GtkWidget *vbox4;
+  GtkWidget *eDescription;
   GtkWidget *hbox2;
-  GtkWidget *bGotoAddress;
-  GtkWidget *hbox3;
-  GtkWidget *scrolledwindow6;
-  GtkWidget *tvAddress;
-  GtkWidget *scrolledwindow7;
-  GtkWidget *tvPartner;
-  GtkWidget *eShortRemark;
-  GtkWidget *scrolledwindow4;
-  GtkWidget *tvEvent;
-  GtkWidget *calendar1;
-  GtkTooltips *tooltips;
+  GtkWidget *rbFalse;
+  GSList *rbFalse_group = NULL;
+  GtkWidget *rbTrue;
+  GtkWidget *label9;
+  GtkWidget *eName;
+  GtkWidget *label10;
+  GtkWidget *eLocale;
+  GtkWidget *label11;
+  GtkWidget *eProtocol;
+  GtkWidget *label1;
+  GtkWidget *scrolledwindow1;
+  GtkWidget *tv1;
+  GtkWidget *hbox1;
+  GtkWidget *bCancel;
+  GtkWidget *bTest;
+  GtkWidget *bSaveData;
+  GtkWidget *bRestartServer;
+  GtkWidget *bOK;
 
-  tooltips = gtk_tooltips_new ();
-
-  window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (window1, 1024, 720);
-  gtk_window_set_title (GTK_WINDOW (window1), _("Client PyCuon"));
-  gtk_window_set_default_size (GTK_WINDOW (window1), 662, 142);
-  window1_icon_pixbuf = create_pixbuf ("cuon-logo.xpm");
-  if (window1_icon_pixbuf)
-    {
-      gtk_window_set_icon (GTK_WINDOW (window1), window1_icon_pixbuf);
-      gdk_pixbuf_unref (window1_icon_pixbuf);
-    }
+  Mainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (Mainwindow), _("CUON Installer"));
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (window1), vbox1);
+  gtk_container_add (GTK_CONTAINER (Mainwindow), vbox1);
 
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
 
-  connect1 = gtk_menu_item_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (connect1);
-  gtk_container_add (GTK_CONTAINER (menubar1), connect1);
+  file1 = gtk_menu_item_new_with_mnemonic (_("File"));
+  gtk_widget_show (file1);
+  gtk_container_add (GTK_CONTAINER (menubar1), file1);
 
-  connect1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (connect1), connect1_menu);
+  file1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
 
-  login1 = gtk_menu_item_new_with_mnemonic (_("Login"));
-  gtk_widget_show (login1);
-  gtk_container_add (GTK_CONTAINER (connect1_menu), login1);
+  quit1 = gtk_menu_item_new_with_mnemonic (_("Quit"));
+  gtk_widget_show (quit1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), quit1);
 
-  logout1 = gtk_menu_item_new_with_mnemonic (_("Logout"));
-  gtk_widget_show (logout1);
-  gtk_container_add (GTK_CONTAINER (connect1_menu), logout1);
+  services1 = gtk_menu_item_new_with_mnemonic (_("Services"));
+  gtk_widget_show (services1);
+  gtk_container_add (GTK_CONTAINER (menubar1), services1);
 
-  trennlinie1 = gtk_separator_menu_item_new ();
-  gtk_widget_show (trennlinie1);
-  gtk_container_add (GTK_CONTAINER (connect1_menu), trennlinie1);
-  gtk_widget_set_sensitive (trennlinie1, FALSE);
+  services1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (services1), services1_menu);
 
-  end1 = gtk_image_menu_item_new_with_mnemonic (_("quit"));
-  gtk_widget_show (end1);
-  gtk_container_add (GTK_CONTAINER (connect1_menu), end1);
-  gtk_tooltips_set_tip (tooltips, end1, _("Close the Application"), NULL);
+  database_tools1 = gtk_menu_item_new_with_mnemonic (_("Database Tools"));
+  gtk_widget_show (database_tools1);
+  gtk_container_add (GTK_CONTAINER (services1_menu), database_tools1);
 
-  image8 = gtk_image_new_from_stock ("gtk-quit", GTK_ICON_SIZE_MENU);
-  gtk_widget_show (image8);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (end1), image8);
-
-  data = gtk_menu_item_new_with_mnemonic (_("Data"));
-  gtk_widget_show (data);
-  gtk_container_add (GTK_CONTAINER (menubar1), data);
-
-  data_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (data), data_menu);
-
-  mi_addresses1 = gtk_menu_item_new_with_mnemonic (_("_Addresses"));
-  gtk_widget_show (mi_addresses1);
-  gtk_container_add (GTK_CONTAINER (data_menu), mi_addresses1);
-
-  mi_articles1 = gtk_menu_item_new_with_mnemonic (_("Arti_cles"));
-  gtk_widget_show (mi_articles1);
-  gtk_container_add (GTK_CONTAINER (data_menu), mi_articles1);
-
-  bank1 = gtk_menu_item_new_with_mnemonic (_("Bank"));
-  gtk_widget_show (bank1);
-  gtk_container_add (GTK_CONTAINER (data_menu), bank1);
-
-  trennlinie3 = gtk_separator_menu_item_new ();
-  gtk_widget_show (trennlinie3);
-  gtk_container_add (GTK_CONTAINER (data_menu), trennlinie3);
-  gtk_widget_set_sensitive (trennlinie3, FALSE);
-
-  mi_bibliographic = gtk_menu_item_new_with_mnemonic (_("Bibliographic"));
-  gtk_widget_show (mi_bibliographic);
-  gtk_container_add (GTK_CONTAINER (data_menu), mi_bibliographic);
-
-  mi_staff1 = gtk_menu_item_new_with_mnemonic (_("Staff"));
-  gtk_widget_show (mi_staff1);
-  gtk_container_add (GTK_CONTAINER (data_menu), mi_staff1);
-
-  trennlinie4 = gtk_separator_menu_item_new ();
-  gtk_widget_show (trennlinie4);
-  gtk_container_add (GTK_CONTAINER (data_menu), trennlinie4);
-  gtk_widget_set_sensitive (trennlinie4, FALSE);
-
-  contracts1 = gtk_menu_item_new_with_mnemonic (_("Contracts"));
-  gtk_widget_show (contracts1);
-  gtk_container_add (GTK_CONTAINER (data_menu), contracts1);
-
-  contracts1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (contracts1), contracts1_menu);
-
-  mi_insurances1 = gtk_menu_item_new_with_mnemonic (_("Insurances"));
-  gtk_widget_show (mi_insurances1);
-  gtk_container_add (GTK_CONTAINER (contracts1_menu), mi_insurances1);
-
-  mi_rent1 = gtk_menu_item_new_with_mnemonic (_("Rent"));
-  gtk_widget_show (mi_rent1);
-  gtk_container_add (GTK_CONTAINER (contracts1_menu), mi_rent1);
-
-  mi_leasing1 = gtk_menu_item_new_with_mnemonic (_("Leasing"));
-  gtk_widget_show (mi_leasing1);
-  gtk_container_add (GTK_CONTAINER (contracts1_menu), mi_leasing1);
-
-  separator3 = gtk_separator_menu_item_new ();
-  gtk_widget_show (separator3);
-  gtk_container_add (GTK_CONTAINER (data_menu), separator3);
-  gtk_widget_set_sensitive (separator3, FALSE);
-
-  mi_clients1 = gtk_menu_item_new_with_mnemonic (_("Clients"));
-  gtk_widget_show (mi_clients1);
-  gtk_container_add (GTK_CONTAINER (data_menu), mi_clients1);
-
-  action1 = gtk_menu_item_new_with_mnemonic (_("Action"));
-  gtk_widget_show (action1);
-  gtk_container_add (GTK_CONTAINER (menubar1), action1);
-
-  action1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (action1), action1_menu);
-
-  mi_order1 = gtk_menu_item_new_with_mnemonic (_("_Order"));
-  gtk_widget_show (mi_order1);
-  gtk_container_add (GTK_CONTAINER (action1_menu), mi_order1);
-
-  mi_stock1 = gtk_menu_item_new_with_mnemonic (_("Stock"));
-  gtk_widget_show (mi_stock1);
-  gtk_container_add (GTK_CONTAINER (action1_menu), mi_stock1);
-
-  mi_dms1 = gtk_menu_item_new_with_mnemonic (_("DMS"));
-  gtk_widget_show (mi_dms1);
-  gtk_container_add (GTK_CONTAINER (action1_menu), mi_dms1);
-
-  accounting1 = gtk_menu_item_new_with_mnemonic (_("Accounting"));
-  gtk_widget_show (accounting1);
-  gtk_container_add (GTK_CONTAINER (menubar1), accounting1);
-
-  accounting1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (accounting1), accounting1_menu);
-
-  mi_cash_account_book1 = gtk_menu_item_new_with_mnemonic (_("cash account book"));
-  gtk_widget_show (mi_cash_account_book1);
-  gtk_container_add (GTK_CONTAINER (accounting1_menu), mi_cash_account_book1);
-
-  listofinvoices1 = gtk_menu_item_new_with_mnemonic (_("list_of_invoices"));
-  gtk_widget_show (listofinvoices1);
-  gtk_container_add (GTK_CONTAINER (accounting1_menu), listofinvoices1);
-
-  extras = gtk_menu_item_new_with_mnemonic (_("Extras"));
-  gtk_widget_show (extras);
-  gtk_container_add (GTK_CONTAINER (menubar1), extras);
-
-  extras_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (extras), extras_menu);
-
-  mayavi1 = gtk_menu_item_new_with_mnemonic (_("Mayavi"));
-  gtk_widget_show (mayavi1);
-  gtk_container_add (GTK_CONTAINER (extras_menu), mayavi1);
-
-  mayavi1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (mayavi1), mayavi1_menu);
-
-  mi_test1 = gtk_menu_item_new_with_mnemonic (_("Test"));
-  gtk_widget_show (mi_test1);
-  gtk_container_add (GTK_CONTAINER (mayavi1_menu), mi_test1);
-
-  mi_expert_system1 = gtk_menu_item_new_with_mnemonic (_("Expert System"));
-  gtk_widget_show (mi_expert_system1);
-  gtk_container_add (GTK_CONTAINER (extras_menu), mi_expert_system1);
-
-  mi_project1 = gtk_menu_item_new_with_mnemonic (_("Project"));
-  gtk_widget_show (mi_project1);
-  gtk_container_add (GTK_CONTAINER (extras_menu), mi_project1);
-
-  web2 = gtk_menu_item_new_with_mnemonic (_("Web"));
-  gtk_widget_show (web2);
-  gtk_container_add (GTK_CONTAINER (extras_menu), web2);
-
-  stats1 = gtk_menu_item_new_with_mnemonic (_("Stats"));
-  gtk_widget_show (stats1);
-  gtk_container_add (GTK_CONTAINER (extras_menu), stats1);
-
-  tools = gtk_menu_item_new_with_mnemonic (_("Tools"));
-  gtk_widget_show (tools);
-  gtk_container_add (GTK_CONTAINER (menubar1), tools);
-
-  tools_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (tools), tools_menu);
-
-  preferences1 = gtk_menu_item_new_with_mnemonic (_("Preferences"));
-  gtk_widget_show (preferences1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), preferences1);
-
-  preferences1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (preferences1), preferences1_menu);
-
-  mi_user1 = gtk_menu_item_new_with_mnemonic (_("User"));
-  gtk_widget_show (mi_user1);
-  gtk_container_add (GTK_CONTAINER (preferences1_menu), mi_user1);
-
-  mi_finances1 = gtk_menu_item_new_with_mnemonic (_("Finances"));
-  gtk_widget_show (mi_finances1);
-  gtk_container_add (GTK_CONTAINER (preferences1_menu), mi_finances1);
-
-  update1 = gtk_menu_item_new_with_mnemonic (_("Update"));
-  gtk_widget_show (update1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), update1);
-
-  mi_report_generator1 = gtk_menu_item_new_with_mnemonic (_("Report-Generator"));
-  gtk_widget_show (mi_report_generator1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), mi_report_generator1);
-
-  mi_webshop1 = gtk_menu_item_new_with_mnemonic (_("WebShop"));
-  gtk_widget_show (mi_webshop1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), mi_webshop1);
-
-  separator1 = gtk_separator_menu_item_new ();
-  gtk_widget_show (separator1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), separator1);
-  gtk_widget_set_sensitive (separator1, FALSE);
-
-  databases1 = gtk_menu_item_new_with_mnemonic (_("Databases"));
-  gtk_widget_show (databases1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), databases1);
-
-  trennlinie2 = gtk_separator_menu_item_new ();
-  gtk_widget_show (trennlinie2);
-  gtk_container_add (GTK_CONTAINER (tools_menu), trennlinie2);
-  gtk_widget_set_sensitive (trennlinie2, FALSE);
-
-  mi_import_data1 = gtk_menu_item_new_with_mnemonic (_("Import Data"));
-  gtk_widget_show (mi_import_data1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), mi_import_data1);
-
-  forms1 = gtk_menu_item_new_with_mnemonic (_("Forms"));
-  gtk_widget_show (forms1);
-  gtk_container_add (GTK_CONTAINER (tools_menu), forms1);
-
-  forms1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (forms1), forms1_menu);
-
-  forms_addresses1 = gtk_menu_item_new_with_mnemonic (_("Addresses"));
-  gtk_widget_show (forms_addresses1);
-  gtk_container_add (GTK_CONTAINER (forms1_menu), forms_addresses1);
-
-  forms_addresses1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (forms_addresses1), forms_addresses1_menu);
-
-  mi_addresses_notes_misc1 = gtk_menu_item_new_with_mnemonic (_("Notes Misc"));
-  gtk_widget_show (mi_addresses_notes_misc1);
-  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_misc1);
-
-  mi_addresses_notes_contacter1 = gtk_menu_item_new_with_mnemonic (_("Notes contacter"));
-  gtk_widget_show (mi_addresses_notes_contacter1);
-  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_contacter1);
-
-  mi_addresses_notes_representant1 = gtk_menu_item_new_with_mnemonic (_("Notes Representant"));
-  gtk_widget_show (mi_addresses_notes_representant1);
-  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_representant1);
-
-  mi_addresses_notes_salesman1 = gtk_menu_item_new_with_mnemonic (_("Notes Salesman"));
-  gtk_widget_show (mi_addresses_notes_salesman1);
-  gtk_container_add (GTK_CONTAINER (forms_addresses1_menu), mi_addresses_notes_salesman1);
-
-  trennlinie5 = gtk_separator_menu_item_new ();
-  gtk_widget_show (trennlinie5);
-  gtk_container_add (GTK_CONTAINER (forms1_menu), trennlinie5);
-  gtk_widget_set_sensitive (trennlinie5, FALSE);
+  create_client1 = gtk_menu_item_new_with_mnemonic (_("Create Client"));
+  gtk_widget_show (create_client1);
+  gtk_container_add (GTK_CONTAINER (services1_menu), create_client1);
 
   help1 = gtk_menu_item_new_with_mnemonic (_("Help"));
   gtk_widget_show (help1);
   gtk_container_add (GTK_CONTAINER (menubar1), help1);
 
-  help1_menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (help1), help1_menu);
+  table4 = gtk_table_new (7, 6, FALSE);
+  gtk_widget_show (table4);
+  gtk_box_pack_start (GTK_BOX (vbox1), table4, TRUE, TRUE, 0);
 
-  about1 = gtk_menu_item_new_with_mnemonic (_("About"));
-  gtk_widget_show (about1);
-  gtk_container_add (GTK_CONTAINER (help1_menu), about1);
+  radiobutton1 = gtk_radio_button_new_with_mnemonic (NULL, "");
+  gtk_widget_show (radiobutton1);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton1, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton1), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton1));
 
-  onlinehelp = gtk_menu_item_new_with_mnemonic (_("Online-Help"));
-  gtk_widget_show (onlinehelp);
-  gtk_container_add (GTK_CONTAINER (help1_menu), onlinehelp);
+  radiobutton2 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton2, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton2), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton2));
 
-  table1 = gtk_table_new (3, 4, FALSE);
+  radiobutton3 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton3, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton3, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton3), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton3));
+
+  radiobutton4 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton4, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton4, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton4), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton4));
+
+  radiobutton5 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton5, 4, 5, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton5, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton5), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton5));
+
+  radiobutton6 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton6, 5, 6, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton6, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton6), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton6));
+
+  radiobutton7 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton7, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton7, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton7), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton7));
+
+  radiobutton8 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton8, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton8, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton8), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton8));
+
+  radiobutton9 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton9, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton9, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton9), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton9));
+
+  radiobutton10 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton10, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton10, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton10), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton10));
+
+  radiobutton11 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton11, 4, 5, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton11, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton11), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton11));
+
+  radiobutton12 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton12, 5, 6, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton12, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton12), radiobutton1_group);
+  radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton12));
+
+  radiobutton13 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton13, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton13, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton13), radiobutton13_group);
+  radiobutton13_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton13));
+
+  radiobutton14 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton14, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton14, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton14), radiobutton14_group);
+  radiobutton14_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton14));
+
+  radiobutton15 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton15, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton15, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton15), radiobutton15_group);
+  radiobutton15_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton15));
+
+  radiobutton16 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton16, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton16, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton16), radiobutton16_group);
+  radiobutton16_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton16));
+
+  radiobutton17 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton17, 4, 5, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton17, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton17), radiobutton17_group);
+  radiobutton17_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton17));
+
+  radiobutton18 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton18, 5, 6, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton18, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton18), radiobutton18_group);
+  radiobutton18_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton18));
+
+  radiobutton19 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton19, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton19, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton19), radiobutton19_group);
+  radiobutton19_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton19));
+
+  radiobutton20 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton20, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton20, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton20), radiobutton20_group);
+  radiobutton20_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton20));
+
+  radiobutton21 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton21, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton21, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton21), radiobutton21_group);
+  radiobutton21_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton21));
+
+  radiobutton22 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton22, 3, 4, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton22, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton22), radiobutton22_group);
+  radiobutton22_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton22));
+
+  radiobutton23 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton23, 4, 5, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton23, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton23), radiobutton23_group);
+  radiobutton23_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton23));
+
+  radiobutton24 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton24, 5, 6, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton24, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton24), radiobutton24_group);
+  radiobutton24_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton24));
+
+  radiobutton25 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton25, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton25, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton25), radiobutton25_group);
+  radiobutton25_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton25));
+
+  radiobutton26 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton26, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton26, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton26), radiobutton26_group);
+  radiobutton26_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton26));
+
+  radiobutton27 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton27, 2, 3, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton27, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton27), radiobutton27_group);
+  radiobutton27_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton27));
+
+  radiobutton28 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton28, 3, 4, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton28, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton28), radiobutton28_group);
+  radiobutton28_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton28));
+
+  radiobutton29 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton29, 4, 5, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton29, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton29), radiobutton29_group);
+  radiobutton29_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton29));
+
+  radiobutton30 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton30, 5, 6, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton30, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton30), radiobutton30_group);
+  radiobutton30_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton30));
+
+  radiobutton31 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton31, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton31, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton31), radiobutton31_group);
+  radiobutton31_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton31));
+
+  radiobutton32 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton32, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton32, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton32), radiobutton32_group);
+  radiobutton32_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton32));
+
+  radiobutton33 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton33, 2, 3, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton33, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton33), radiobutton33_group);
+  radiobutton33_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton33));
+
+  radiobutton34 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton34, 3, 4, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton34, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton34), radiobutton34_group);
+  radiobutton34_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton34));
+
+  radiobutton35 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton35, 4, 5, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton35, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton35), radiobutton35_group);
+  radiobutton35_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton35));
+
+  radiobutton36 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton36, 5, 6, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton36, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton36), radiobutton36_group);
+  radiobutton36_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton36));
+
+  radiobutton37 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton37, 0, 1, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton37, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton37), radiobutton37_group);
+  radiobutton37_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton37));
+
+  radiobutton38 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton38, 1, 2, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton38, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton38), radiobutton38_group);
+  radiobutton38_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton38));
+
+  radiobutton39 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton39, 2, 3, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton39, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton39), radiobutton39_group);
+  radiobutton39_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton39));
+
+  radiobutton40 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton40, 3, 4, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton40, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton40), radiobutton40_group);
+  radiobutton40_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton40));
+
+  radiobutton41 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton41, 4, 5, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton41, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton41), radiobutton41_group);
+  radiobutton41_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton41));
+
+  radiobutton42 = gtk_radio_button_new (NULL);
+  gtk_table_attach (GTK_TABLE (table4), radiobutton42, 5, 6, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  GTK_WIDGET_UNSET_FLAGS (radiobutton42, GTK_CAN_FOCUS);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton42), radiobutton42_group);
+  radiobutton42_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton42));
+
+  notebook1 = gtk_notebook_new ();
+  gtk_widget_show (notebook1);
+  gtk_box_pack_start (GTK_BOX (vbox1), notebook1, TRUE, TRUE, 0);
+
+  table1 = gtk_table_new (6, 4, FALSE);
   gtk_widget_show (table1);
-  gtk_box_pack_start (GTK_BOX (vbox1), table1, FALSE, FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (notebook1), table1);
 
-  label1 = gtk_label_new (_("connected user"));
-  gtk_widget_show (label1);
-  gtk_table_attach (GTK_TABLE (table1), label1, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label1), 0, 0.5);
-
-  eUserName = gtk_entry_new ();
-  gtk_widget_show (eUserName);
-  gtk_table_attach (GTK_TABLE (table1), eUserName, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_sensitive (eUserName, FALSE);
-  GTK_WIDGET_UNSET_FLAGS (eUserName, GTK_CAN_FOCUS);
-  gtk_editable_set_editable (GTK_EDITABLE (eUserName), FALSE);
-
-  label2 = gtk_label_new (_("connected server"));
-  gtk_widget_show (label2);
-  gtk_table_attach (GTK_TABLE (table1), label2, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label2), 0, 0.5);
-
-  eServer = gtk_entry_new ();
-  gtk_widget_show (eServer);
-  gtk_table_attach (GTK_TABLE (table1), eServer, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_sensitive (eServer, FALSE);
-  GTK_WIDGET_UNSET_FLAGS (eServer, GTK_CAN_FOCUS);
-  gtk_editable_set_editable (GTK_EDITABLE (eServer), FALSE);
-
-  label3 = gtk_label_new (_("Application-Server"));
-  gtk_widget_show (label3);
-  gtk_table_attach (GTK_TABLE (table1), label3, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label3), 0, 0.5);
-
-  eAppServer = gtk_entry_new ();
-  gtk_widget_show (eAppServer);
-  gtk_table_attach (GTK_TABLE (table1), eAppServer, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eAppServer), FALSE);
-
-  label4 = gtk_label_new (_("Database"));
-  gtk_widget_show (label4);
-  gtk_table_attach (GTK_TABLE (table1), label4, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label4), 0, 0.5);
-
-  eDatabase = gtk_entry_new ();
-  gtk_widget_show (eDatabase);
-  gtk_table_attach (GTK_TABLE (table1), eDatabase, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eDatabase), FALSE);
-
-  label5 = gtk_label_new (_("Web-Shop"));
+  label5 = gtk_label_new (_("Description"));
   gtk_widget_show (label5);
-  gtk_table_attach (GTK_TABLE (table1), label5, 2, 3, 2, 3,
+  gtk_table_attach (GTK_TABLE (table1), label5, 2, 3, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label5), 0, 0.5);
 
-  eWebshop = gtk_entry_new ();
-  gtk_widget_show (eWebshop);
-  gtk_table_attach (GTK_TABLE (table1), eWebshop, 3, 4, 2, 3,
+  ePortXmlrpc = gtk_entry_new ();
+  gtk_widget_show (ePortXmlrpc);
+  gtk_table_attach (GTK_TABLE (table1), ePortXmlrpc, 1, 2, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eWebshop), FALSE);
 
-  label8 = gtk_label_new (_("show Scheduls"));
+  ePortSSH = gtk_entry_new ();
+  gtk_widget_show (ePortSSH);
+  gtk_table_attach (GTK_TABLE (table1), ePortSSH, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eHostIP = gtk_entry_new ();
+  gtk_widget_show (eHostIP);
+  gtk_table_attach (GTK_TABLE (table1), eHostIP, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label7 = gtk_label_new (_("Port-XMLRPC"));
+  gtk_widget_show (label7);
+  gtk_table_attach (GTK_TABLE (table1), label7, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label7), 0, 0.5);
+
+  label6 = gtk_label_new (_("Port-SSH"));
+  gtk_widget_show (label6);
+  gtk_table_attach (GTK_TABLE (table1), label6, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label6), 0, 0.5);
+
+  label4 = gtk_label_new (_("Host-IP"));
+  gtk_widget_show (label4);
+  gtk_table_attach (GTK_TABLE (table1), label4, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label4), 0, 0.5);
+
+  label8 = gtk_label_new (_("Name"));
   gtk_widget_show (label8);
-  gtk_table_attach (GTK_TABLE (table1), label8, 0, 1, 2, 3,
+  gtk_table_attach (GTK_TABLE (table1), label8, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label8), 0, 0.5);
 
-  vbox5 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox5);
-  gtk_table_attach (GTK_TABLE (table1), vbox5, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  hbox4 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox4);
-  gtk_box_pack_start (GTK_BOX (vbox5), hbox4, TRUE, TRUE, 0);
-
-  rbSchedulsNew = gtk_radio_button_new_with_mnemonic (NULL, _("only new"));
-  gtk_widget_show (rbSchedulsNew);
-  gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsNew, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsNew), rbSchedulsNew_group);
-  rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsNew));
-
-  rbSchedulsAll = gtk_radio_button_new_with_mnemonic (NULL, _("all"));
-  gtk_widget_show (rbSchedulsAll);
-  gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsAll, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsAll), rbSchedulsNew_group);
-  rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsAll));
-
-  rbSchedulsCancel = gtk_radio_button_new_with_mnemonic (NULL, _("canceld"));
-  gtk_widget_show (rbSchedulsCancel);
-  gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsCancel, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsCancel), rbSchedulsNew_group);
-  rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsCancel));
-
-  rbSchedulsActualWeek = gtk_radio_button_new_with_mnemonic (NULL, _("actual week"));
-  gtk_widget_show (rbSchedulsActualWeek);
-  gtk_box_pack_start (GTK_BOX (hbox4), rbSchedulsActualWeek, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbSchedulsActualWeek), rbSchedulsNew_group);
-  rbSchedulsNew_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbSchedulsActualWeek));
-
-  hbox1 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox1);
-  gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
-
-  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow3);
-  gtk_box_pack_start (GTK_BOX (hbox1), scrolledwindow3, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow3), GTK_SHADOW_IN);
-
-  treeSchedul = gtk_tree_view_new ();
-  gtk_widget_show (treeSchedul);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), treeSchedul);
-
-  vbox3 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox3);
-  gtk_box_pack_start (GTK_BOX (hbox1), vbox3, TRUE, TRUE, 0);
-
-  vbox4 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox4);
-  gtk_box_pack_start (GTK_BOX (vbox3), vbox4, TRUE, TRUE, 0);
+  eDescription = gtk_entry_new ();
+  gtk_widget_show (eDescription);
+  gtk_table_attach (GTK_TABLE (table1), eDescription, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox2);
-  gtk_box_pack_start (GTK_BOX (vbox4), hbox2, TRUE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table1), hbox2, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  bGotoAddress = gtk_button_new_with_mnemonic (_("goto Address"));
-  gtk_widget_show (bGotoAddress);
-  gtk_box_pack_start (GTK_BOX (hbox2), bGotoAddress, FALSE, FALSE, 0);
+  rbFalse = gtk_radio_button_new_with_mnemonic (NULL, _("False"));
+  gtk_widget_show (rbFalse);
+  gtk_box_pack_start (GTK_BOX (hbox2), rbFalse, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbFalse), rbFalse_group);
+  rbFalse_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbFalse));
 
-  hbox3 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox3);
-  gtk_box_pack_start (GTK_BOX (vbox4), hbox3, TRUE, TRUE, 0);
+  rbTrue = gtk_radio_button_new_with_mnemonic (NULL, _("True"));
+  gtk_widget_show (rbTrue);
+  gtk_box_pack_start (GTK_BOX (hbox2), rbTrue, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbTrue), rbFalse_group);
+  rbFalse_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbTrue));
 
-  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow6);
-  gtk_box_pack_start (GTK_BOX (hbox3), scrolledwindow6, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow6), GTK_SHADOW_IN);
+  label9 = gtk_label_new (_("Default"));
+  gtk_widget_show (label9);
+  gtk_table_attach (GTK_TABLE (table1), label9, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label9), 0, 0.5);
 
-  tvAddress = gtk_text_view_new ();
-  gtk_widget_show (tvAddress);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow6), tvAddress);
+  eName = gtk_entry_new ();
+  gtk_widget_show (eName);
+  gtk_table_attach (GTK_TABLE (table1), eName, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
-  scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow7);
-  gtk_box_pack_start (GTK_BOX (hbox3), scrolledwindow7, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow7), GTK_SHADOW_IN);
+  label10 = gtk_label_new (_("locale"));
+  gtk_widget_show (label10);
+  gtk_table_attach (GTK_TABLE (table1), label10, 2, 3, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label10), 0, 0.5);
 
-  tvPartner = gtk_text_view_new ();
-  gtk_widget_show (tvPartner);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvPartner);
+  eLocale = gtk_entry_new ();
+  gtk_widget_show (eLocale);
+  gtk_table_attach (GTK_TABLE (table1), eLocale, 3, 4, 3, 4,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
-  eShortRemark = gtk_entry_new ();
-  gtk_widget_show (eShortRemark);
-  gtk_box_pack_start (GTK_BOX (vbox4), eShortRemark, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eShortRemark), FALSE);
+  label11 = gtk_label_new (_("Protocol"));
+  gtk_widget_show (label11);
+  gtk_table_attach (GTK_TABLE (table1), label11, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label11), 0, 0.5);
 
-  scrolledwindow4 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow4);
-  gtk_box_pack_start (GTK_BOX (vbox3), scrolledwindow4, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow4), GTK_SHADOW_IN);
+  eProtocol = gtk_entry_new ();
+  gtk_widget_show (eProtocol);
+  gtk_table_attach (GTK_TABLE (table1), eProtocol, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
-  tvEvent = gtk_text_view_new ();
-  gtk_widget_show (tvEvent);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow4), tvEvent);
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (tvEvent), FALSE);
-
-  calendar1 = gtk_calendar_new ();
-  gtk_widget_show (calendar1);
-  gtk_box_pack_start (GTK_BOX (vbox3), calendar1, TRUE, TRUE, 0);
-  gtk_calendar_display_options (GTK_CALENDAR (calendar1),
-                                GTK_CALENDAR_SHOW_HEADING
-                                | GTK_CALENDAR_SHOW_DAY_NAMES);
-
-  g_signal_connect ((gpointer) login1, "activate_item",
-                    G_CALLBACK (on_login1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) login1, "activate",
-                    G_CALLBACK (on_login1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) logout1, "activate",
-                    G_CALLBACK (on_logout1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) end1, "activate",
-                    G_CALLBACK (on_end1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_addresses1, "activate",
-                    G_CALLBACK (on_addresses1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_articles1, "activate",
-                    G_CALLBACK (on_articles1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) bank1, "activate",
-                    G_CALLBACK (on_bank1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_bibliographic, "activate",
-                    G_CALLBACK (on_bibliographic_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_staff1, "activate",
-                    G_CALLBACK (on_staff1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_insurances1, "activate",
-                    G_CALLBACK (on_insurances1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_rent1, "activate",
-                    G_CALLBACK (on_rent1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_leasing1, "activate",
-                    G_CALLBACK (on_leasing1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_clients1, "activate",
-                    G_CALLBACK (on_clients1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_order1, "activate",
-                    G_CALLBACK (on_order1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_stock1, "activate",
-                    G_CALLBACK (on_stock1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_dms1, "activate",
-                    G_CALLBACK (on_dms1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_cash_account_book1, "activate",
-                    G_CALLBACK (on_cash_account_book1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) listofinvoices1, "activate",
-                    G_CALLBACK (on_listOfInvoices1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_test1, "activate",
-                    G_CALLBACK (on_test1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_expert_system1, "activate",
-                    G_CALLBACK (on_expert_system1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_project1, "activate",
-                    G_CALLBACK (on_project1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) web2, "activate",
-                    G_CALLBACK (on_web2_activate),
-                    NULL);
-  g_signal_connect ((gpointer) stats1, "activate",
-                    G_CALLBACK (on_stats1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) preferences1, "activate",
-                    G_CALLBACK (on_preferences1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_user1, "activate",
-                    G_CALLBACK (on_pref_user1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_finances1, "activate",
-                    G_CALLBACK (on_prefs_finances_activate),
-                    NULL);
-  g_signal_connect ((gpointer) update1, "activate",
-                    G_CALLBACK (on_update1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_report_generator1, "activate",
-                    G_CALLBACK (on_report_generator1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_webshop1, "activate",
-                    G_CALLBACK (on_webshop1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) databases1, "activate",
-                    G_CALLBACK (on_databases1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_import_data1, "activate",
-                    G_CALLBACK (on_import_data1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) forms_addresses1, "activate",
-                    G_CALLBACK (on_forms_addresses1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_addresses_notes_misc1, "activate",
-                    G_CALLBACK (on_addresses_notes_misc1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_addresses_notes_contacter1, "activate",
-                    G_CALLBACK (on_addresses_notes_contacter1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_addresses_notes_representant1, "activate",
-                    G_CALLBACK (on_addresses_notes_representant1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) mi_addresses_notes_salesman1, "activate",
-                    G_CALLBACK (on_addresses_notes_salesman1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) about1, "activate",
-                    G_CALLBACK (on_about1_activate),
-                    NULL);
-  g_signal_connect ((gpointer) onlinehelp, "activate",
-                    G_CALLBACK (on_onlinehelp_activate),
-                    NULL);
-  g_signal_connect ((gpointer) eUserName, "changed",
-                    G_CALLBACK (on_eUserName_changed),
-                    NULL);
-  g_signal_connect ((gpointer) eServer, "changed",
-                    G_CALLBACK (on_eUserName_changed),
-                    NULL);
-  g_signal_connect ((gpointer) rbSchedulsNew, "clicked",
-                    G_CALLBACK (on_rbScheduls_activate),
-                    NULL);
-  g_signal_connect ((gpointer) rbSchedulsAll, "clicked",
-                    G_CALLBACK (on_rbScheduls_activate),
-                    NULL);
-  g_signal_connect ((gpointer) rbSchedulsCancel, "clicked",
-                    G_CALLBACK (on_rbScheduls_activate),
-                    NULL);
-  g_signal_connect ((gpointer) rbSchedulsActualWeek, "clicked",
-                    G_CALLBACK (on_rbScheduls_activate),
-                    NULL);
-  g_signal_connect ((gpointer) treeSchedul, "select_cursor_row",
-                    G_CALLBACK (on_treeSchedul_select_cursor_row),
-                    NULL);
-  g_signal_connect ((gpointer) treeSchedul, "columns_changed",
-                    G_CALLBACK (on_treeSchedul_columns_changed),
-                    NULL);
-  g_signal_connect ((gpointer) treeSchedul, "row_activated",
-                    G_CALLBACK (on_treeSchedul_row_activated),
-                    NULL);
-  g_signal_connect ((gpointer) bGotoAddress, "clicked",
-                    G_CALLBACK (on_bGotoAddress_clicked),
-                    NULL);
-
-  /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (window1, window1, "window1");
-  GLADE_HOOKUP_OBJECT (window1, vbox1, "vbox1");
-  GLADE_HOOKUP_OBJECT (window1, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (window1, connect1, "connect1");
-  GLADE_HOOKUP_OBJECT (window1, connect1_menu, "connect1_menu");
-  GLADE_HOOKUP_OBJECT (window1, login1, "login1");
-  GLADE_HOOKUP_OBJECT (window1, logout1, "logout1");
-  GLADE_HOOKUP_OBJECT (window1, trennlinie1, "trennlinie1");
-  GLADE_HOOKUP_OBJECT (window1, end1, "end1");
-  GLADE_HOOKUP_OBJECT (window1, image8, "image8");
-  GLADE_HOOKUP_OBJECT (window1, data, "data");
-  GLADE_HOOKUP_OBJECT (window1, data_menu, "data_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_addresses1, "mi_addresses1");
-  GLADE_HOOKUP_OBJECT (window1, mi_articles1, "mi_articles1");
-  GLADE_HOOKUP_OBJECT (window1, bank1, "bank1");
-  GLADE_HOOKUP_OBJECT (window1, trennlinie3, "trennlinie3");
-  GLADE_HOOKUP_OBJECT (window1, mi_bibliographic, "mi_bibliographic");
-  GLADE_HOOKUP_OBJECT (window1, mi_staff1, "mi_staff1");
-  GLADE_HOOKUP_OBJECT (window1, trennlinie4, "trennlinie4");
-  GLADE_HOOKUP_OBJECT (window1, contracts1, "contracts1");
-  GLADE_HOOKUP_OBJECT (window1, contracts1_menu, "contracts1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_insurances1, "mi_insurances1");
-  GLADE_HOOKUP_OBJECT (window1, mi_rent1, "mi_rent1");
-  GLADE_HOOKUP_OBJECT (window1, mi_leasing1, "mi_leasing1");
-  GLADE_HOOKUP_OBJECT (window1, separator3, "separator3");
-  GLADE_HOOKUP_OBJECT (window1, mi_clients1, "mi_clients1");
-  GLADE_HOOKUP_OBJECT (window1, action1, "action1");
-  GLADE_HOOKUP_OBJECT (window1, action1_menu, "action1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_order1, "mi_order1");
-  GLADE_HOOKUP_OBJECT (window1, mi_stock1, "mi_stock1");
-  GLADE_HOOKUP_OBJECT (window1, mi_dms1, "mi_dms1");
-  GLADE_HOOKUP_OBJECT (window1, accounting1, "accounting1");
-  GLADE_HOOKUP_OBJECT (window1, accounting1_menu, "accounting1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_cash_account_book1, "mi_cash_account_book1");
-  GLADE_HOOKUP_OBJECT (window1, listofinvoices1, "listofinvoices1");
-  GLADE_HOOKUP_OBJECT (window1, extras, "extras");
-  GLADE_HOOKUP_OBJECT (window1, extras_menu, "extras_menu");
-  GLADE_HOOKUP_OBJECT (window1, mayavi1, "mayavi1");
-  GLADE_HOOKUP_OBJECT (window1, mayavi1_menu, "mayavi1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_test1, "mi_test1");
-  GLADE_HOOKUP_OBJECT (window1, mi_expert_system1, "mi_expert_system1");
-  GLADE_HOOKUP_OBJECT (window1, mi_project1, "mi_project1");
-  GLADE_HOOKUP_OBJECT (window1, web2, "web2");
-  GLADE_HOOKUP_OBJECT (window1, stats1, "stats1");
-  GLADE_HOOKUP_OBJECT (window1, tools, "tools");
-  GLADE_HOOKUP_OBJECT (window1, tools_menu, "tools_menu");
-  GLADE_HOOKUP_OBJECT (window1, preferences1, "preferences1");
-  GLADE_HOOKUP_OBJECT (window1, preferences1_menu, "preferences1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_user1, "mi_user1");
-  GLADE_HOOKUP_OBJECT (window1, mi_finances1, "mi_finances1");
-  GLADE_HOOKUP_OBJECT (window1, update1, "update1");
-  GLADE_HOOKUP_OBJECT (window1, mi_report_generator1, "mi_report_generator1");
-  GLADE_HOOKUP_OBJECT (window1, mi_webshop1, "mi_webshop1");
-  GLADE_HOOKUP_OBJECT (window1, separator1, "separator1");
-  GLADE_HOOKUP_OBJECT (window1, databases1, "databases1");
-  GLADE_HOOKUP_OBJECT (window1, trennlinie2, "trennlinie2");
-  GLADE_HOOKUP_OBJECT (window1, mi_import_data1, "mi_import_data1");
-  GLADE_HOOKUP_OBJECT (window1, forms1, "forms1");
-  GLADE_HOOKUP_OBJECT (window1, forms1_menu, "forms1_menu");
-  GLADE_HOOKUP_OBJECT (window1, forms_addresses1, "forms_addresses1");
-  GLADE_HOOKUP_OBJECT (window1, forms_addresses1_menu, "forms_addresses1_menu");
-  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_misc1, "mi_addresses_notes_misc1");
-  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_contacter1, "mi_addresses_notes_contacter1");
-  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_representant1, "mi_addresses_notes_representant1");
-  GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_salesman1, "mi_addresses_notes_salesman1");
-  GLADE_HOOKUP_OBJECT (window1, trennlinie5, "trennlinie5");
-  GLADE_HOOKUP_OBJECT (window1, help1, "help1");
-  GLADE_HOOKUP_OBJECT (window1, help1_menu, "help1_menu");
-  GLADE_HOOKUP_OBJECT (window1, about1, "about1");
-  GLADE_HOOKUP_OBJECT (window1, onlinehelp, "onlinehelp");
-  GLADE_HOOKUP_OBJECT (window1, table1, "table1");
-  GLADE_HOOKUP_OBJECT (window1, label1, "label1");
-  GLADE_HOOKUP_OBJECT (window1, eUserName, "eUserName");
-  GLADE_HOOKUP_OBJECT (window1, label2, "label2");
-  GLADE_HOOKUP_OBJECT (window1, eServer, "eServer");
-  GLADE_HOOKUP_OBJECT (window1, label3, "label3");
-  GLADE_HOOKUP_OBJECT (window1, eAppServer, "eAppServer");
-  GLADE_HOOKUP_OBJECT (window1, label4, "label4");
-  GLADE_HOOKUP_OBJECT (window1, eDatabase, "eDatabase");
-  GLADE_HOOKUP_OBJECT (window1, label5, "label5");
-  GLADE_HOOKUP_OBJECT (window1, eWebshop, "eWebshop");
-  GLADE_HOOKUP_OBJECT (window1, label8, "label8");
-  GLADE_HOOKUP_OBJECT (window1, vbox5, "vbox5");
-  GLADE_HOOKUP_OBJECT (window1, hbox4, "hbox4");
-  GLADE_HOOKUP_OBJECT (window1, rbSchedulsNew, "rbSchedulsNew");
-  GLADE_HOOKUP_OBJECT (window1, rbSchedulsAll, "rbSchedulsAll");
-  GLADE_HOOKUP_OBJECT (window1, rbSchedulsCancel, "rbSchedulsCancel");
-  GLADE_HOOKUP_OBJECT (window1, rbSchedulsActualWeek, "rbSchedulsActualWeek");
-  GLADE_HOOKUP_OBJECT (window1, hbox1, "hbox1");
-  GLADE_HOOKUP_OBJECT (window1, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (window1, treeSchedul, "treeSchedul");
-  GLADE_HOOKUP_OBJECT (window1, vbox3, "vbox3");
-  GLADE_HOOKUP_OBJECT (window1, vbox4, "vbox4");
-  GLADE_HOOKUP_OBJECT (window1, hbox2, "hbox2");
-  GLADE_HOOKUP_OBJECT (window1, bGotoAddress, "bGotoAddress");
-  GLADE_HOOKUP_OBJECT (window1, hbox3, "hbox3");
-  GLADE_HOOKUP_OBJECT (window1, scrolledwindow6, "scrolledwindow6");
-  GLADE_HOOKUP_OBJECT (window1, tvAddress, "tvAddress");
-  GLADE_HOOKUP_OBJECT (window1, scrolledwindow7, "scrolledwindow7");
-  GLADE_HOOKUP_OBJECT (window1, tvPartner, "tvPartner");
-  GLADE_HOOKUP_OBJECT (window1, eShortRemark, "eShortRemark");
-  GLADE_HOOKUP_OBJECT (window1, scrolledwindow4, "scrolledwindow4");
-  GLADE_HOOKUP_OBJECT (window1, tvEvent, "tvEvent");
-  GLADE_HOOKUP_OBJECT (window1, calendar1, "calendar1");
-  GLADE_HOOKUP_OBJECT_NO_REF (window1, tooltips, "tooltips");
-
-  return window1;
-}
-
-GtkWidget*
-create_aCuon (void)
-{
-  GtkWidget *aCuon;
-  GtkWidget *dialog_vbox1;
-  GtkWidget *vbox2;
-  GtkWidget *label6;
-  GtkWidget *label7;
-  GtkWidget *scrolledwindow1;
-  GtkWidget *textview3;
-  GtkWidget *scrolledwindow2;
-  GtkWidget *textview2;
-  GtkWidget *About_Version;
-  GtkWidget *dialog_action_area1;
-  GtkWidget *okAbout1;
-
-  aCuon = gtk_dialog_new ();
-  gtk_window_set_title (GTK_WINDOW (aCuon), _("About CUON"));
-  gtk_window_set_type_hint (GTK_WINDOW (aCuon), GDK_WINDOW_TYPE_HINT_DIALOG);
-
-  dialog_vbox1 = GTK_DIALOG (aCuon)->vbox;
-  gtk_widget_show (dialog_vbox1);
-  gtk_widget_set_size_request (dialog_vbox1, 297, 253);
-
-  vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox2);
-  gtk_box_pack_start (GTK_BOX (dialog_vbox1), vbox2, TRUE, TRUE, 0);
-
-  label6 = gtk_label_new (_("C.U.O.N."));
-  gtk_widget_show (label6);
-  gtk_box_pack_start (GTK_BOX (vbox2), label6, FALSE, FALSE, 0);
-
-  label7 = gtk_label_new (_("An Internet Business-Software"));
-  gtk_widget_show (label7);
-  gtk_box_pack_start (GTK_BOX (vbox2), label7, FALSE, FALSE, 0);
+  label1 = gtk_label_new (_("Server"));
+  gtk_widget_show (label1);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label1);
 
   scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow1);
-  gtk_box_pack_start (GTK_BOX (vbox2), scrolledwindow1, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox1), scrolledwindow1, TRUE, TRUE, 0);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow1), GTK_SHADOW_IN);
 
-  textview3 = gtk_text_view_new ();
-  gtk_widget_show (textview3);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow1), textview3);
+  tv1 = gtk_text_view_new ();
+  gtk_widget_show (tv1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow1), tv1);
+  gtk_widget_set_size_request (tv1, 590, 160);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (tv1), FALSE);
 
-  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow2);
-  gtk_box_pack_start (GTK_BOX (dialog_vbox1), scrolledwindow2, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow2), GTK_SHADOW_IN);
+  hbox1 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox1);
+  gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
-  textview2 = gtk_text_view_new ();
-  gtk_widget_show (textview2);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), textview2);
-  gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (textview2)), _("Authors:\nJuergen Hamel, 32584 Loehne, Germany"), -1);
+  bCancel = gtk_button_new_with_mnemonic (_("Cancel"));
+  gtk_widget_show (bCancel);
+  gtk_box_pack_start (GTK_BOX (hbox1), bCancel, FALSE, FALSE, 0);
 
-  About_Version = gtk_label_new ("");
-  gtk_widget_show (About_Version);
-  gtk_box_pack_start (GTK_BOX (dialog_vbox1), About_Version, FALSE, FALSE, 0);
+  bTest = gtk_button_new_with_mnemonic (_("Test"));
+  gtk_widget_show (bTest);
+  gtk_box_pack_start (GTK_BOX (hbox1), bTest, FALSE, FALSE, 0);
 
-  dialog_action_area1 = GTK_DIALOG (aCuon)->action_area;
-  gtk_widget_show (dialog_action_area1);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (dialog_action_area1), GTK_BUTTONBOX_SPREAD);
+  bSaveData = gtk_button_new_with_mnemonic (_("Save Data"));
+  gtk_widget_show (bSaveData);
+  gtk_box_pack_start (GTK_BOX (hbox1), bSaveData, FALSE, FALSE, 0);
 
-  okAbout1 = gtk_button_new_from_stock ("gtk-ok");
-  gtk_widget_show (okAbout1);
-  gtk_dialog_add_action_widget (GTK_DIALOG (aCuon), okAbout1, GTK_RESPONSE_OK);
-  gtk_container_set_border_width (GTK_CONTAINER (okAbout1), 2);
-  GTK_WIDGET_SET_FLAGS (okAbout1, GTK_CAN_DEFAULT);
+  bRestartServer = gtk_button_new_with_mnemonic (_("restart server"));
+  gtk_widget_show (bRestartServer);
+  gtk_box_pack_start (GTK_BOX (hbox1), bRestartServer, FALSE, FALSE, 0);
 
-  g_signal_connect ((gpointer) okAbout1, "clicked",
-                    G_CALLBACK (on_okAbout1_clicked),
+  bOK = gtk_button_new_with_mnemonic (_("Start Install"));
+  gtk_widget_show (bOK);
+  gtk_box_pack_start (GTK_BOX (hbox1), bOK, FALSE, FALSE, 0);
+
+  g_signal_connect ((gpointer) quit1, "activate",
+                    G_CALLBACK (on_quit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) database_tools1, "activate",
+                    G_CALLBACK (on_database_tools1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) create_client1, "activate",
+                    G_CALLBACK (on_create_client1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) help1, "activate",
+                    G_CALLBACK (on_help1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton1, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton2, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton3, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton4, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton5, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton6, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton7, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton8, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton9, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton10, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton11, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton12, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton13, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton14, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton15, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton16, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton17, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton18, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton19, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton20, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton21, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton22, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton23, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton24, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton25, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton26, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton27, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton28, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton29, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton30, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton31, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton32, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton33, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton34, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton35, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton36, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton37, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton38, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton39, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton40, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton41, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) radiobutton42, "toggled",
+                    G_CALLBACK (on_radiobutton_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) bSaveData, "clicked",
+                    G_CALLBACK (on_bSaveData_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bRestartServer, "clicked",
+                    G_CALLBACK (on_bRestartServer_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bOK, "clicked",
+                    G_CALLBACK (on_bOK_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (aCuon, aCuon, "aCuon");
-  GLADE_HOOKUP_OBJECT_NO_REF (aCuon, dialog_vbox1, "dialog_vbox1");
-  GLADE_HOOKUP_OBJECT (aCuon, vbox2, "vbox2");
-  GLADE_HOOKUP_OBJECT (aCuon, label6, "label6");
-  GLADE_HOOKUP_OBJECT (aCuon, label7, "label7");
-  GLADE_HOOKUP_OBJECT (aCuon, scrolledwindow1, "scrolledwindow1");
-  GLADE_HOOKUP_OBJECT (aCuon, textview3, "textview3");
-  GLADE_HOOKUP_OBJECT (aCuon, scrolledwindow2, "scrolledwindow2");
-  GLADE_HOOKUP_OBJECT (aCuon, textview2, "textview2");
-  GLADE_HOOKUP_OBJECT (aCuon, About_Version, "About_Version");
-  GLADE_HOOKUP_OBJECT_NO_REF (aCuon, dialog_action_area1, "dialog_action_area1");
-  GLADE_HOOKUP_OBJECT (aCuon, okAbout1, "okAbout1");
+  GLADE_HOOKUP_OBJECT_NO_REF (Mainwindow, Mainwindow, "Mainwindow");
+  GLADE_HOOKUP_OBJECT (Mainwindow, vbox1, "vbox1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, menubar1, "menubar1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, file1, "file1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, file1_menu, "file1_menu");
+  GLADE_HOOKUP_OBJECT (Mainwindow, quit1, "quit1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, services1, "services1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, services1_menu, "services1_menu");
+  GLADE_HOOKUP_OBJECT (Mainwindow, database_tools1, "database_tools1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, create_client1, "create_client1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, help1, "help1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, table4, "table4");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton1, "radiobutton1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton2, "radiobutton2");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton3, "radiobutton3");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton4, "radiobutton4");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton5, "radiobutton5");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton6, "radiobutton6");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton7, "radiobutton7");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton8, "radiobutton8");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton9, "radiobutton9");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton10, "radiobutton10");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton11, "radiobutton11");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton12, "radiobutton12");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton13, "radiobutton13");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton14, "radiobutton14");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton15, "radiobutton15");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton16, "radiobutton16");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton17, "radiobutton17");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton18, "radiobutton18");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton19, "radiobutton19");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton20, "radiobutton20");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton21, "radiobutton21");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton22, "radiobutton22");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton23, "radiobutton23");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton24, "radiobutton24");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton25, "radiobutton25");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton26, "radiobutton26");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton27, "radiobutton27");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton28, "radiobutton28");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton29, "radiobutton29");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton30, "radiobutton30");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton31, "radiobutton31");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton32, "radiobutton32");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton33, "radiobutton33");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton34, "radiobutton34");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton35, "radiobutton35");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton36, "radiobutton36");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton37, "radiobutton37");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton38, "radiobutton38");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton39, "radiobutton39");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton40, "radiobutton40");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton41, "radiobutton41");
+  GLADE_HOOKUP_OBJECT (Mainwindow, radiobutton42, "radiobutton42");
+  GLADE_HOOKUP_OBJECT (Mainwindow, notebook1, "notebook1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, table1, "table1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label5, "label5");
+  GLADE_HOOKUP_OBJECT (Mainwindow, ePortXmlrpc, "ePortXmlrpc");
+  GLADE_HOOKUP_OBJECT (Mainwindow, ePortSSH, "ePortSSH");
+  GLADE_HOOKUP_OBJECT (Mainwindow, eHostIP, "eHostIP");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label7, "label7");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label6, "label6");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label4, "label4");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label8, "label8");
+  GLADE_HOOKUP_OBJECT (Mainwindow, eDescription, "eDescription");
+  GLADE_HOOKUP_OBJECT (Mainwindow, hbox2, "hbox2");
+  GLADE_HOOKUP_OBJECT (Mainwindow, rbFalse, "rbFalse");
+  GLADE_HOOKUP_OBJECT (Mainwindow, rbTrue, "rbTrue");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label9, "label9");
+  GLADE_HOOKUP_OBJECT (Mainwindow, eName, "eName");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label10, "label10");
+  GLADE_HOOKUP_OBJECT (Mainwindow, eLocale, "eLocale");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label11, "label11");
+  GLADE_HOOKUP_OBJECT (Mainwindow, eProtocol, "eProtocol");
+  GLADE_HOOKUP_OBJECT (Mainwindow, label1, "label1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, scrolledwindow1, "scrolledwindow1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, tv1, "tv1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, hbox1, "hbox1");
+  GLADE_HOOKUP_OBJECT (Mainwindow, bCancel, "bCancel");
+  GLADE_HOOKUP_OBJECT (Mainwindow, bTest, "bTest");
+  GLADE_HOOKUP_OBJECT (Mainwindow, bSaveData, "bSaveData");
+  GLADE_HOOKUP_OBJECT (Mainwindow, bRestartServer, "bRestartServer");
+  GLADE_HOOKUP_OBJECT (Mainwindow, bOK, "bOK");
 
-  return aCuon;
+  return Mainwindow;
 }
 

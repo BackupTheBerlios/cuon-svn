@@ -208,3 +208,7 @@ on_stat_adr_schedul1_activate          (GtkMenuItem     *menuitem,
 void
 on_stats1_activate                     (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_bRestartServer_clicked              (GtkButton       *button,
+                                        gpointer         user_data);

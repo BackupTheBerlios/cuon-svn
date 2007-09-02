@@ -344,6 +344,9 @@ class setup:
         #self.src_aiml = "./cuon/AI/AIML"
         #self.dest_aiml = self.SERVERDIRSHARE + "/AI/AIML"
 
+        self.restartServer()
+        
+    def restartServer(self):
         # restart the server
         self.executeSSH(" /etc/init.d/cuonxmlrpc restart")
         self.executeSSH(" /etc/init.d/cuonreport restart")
@@ -713,6 +716,9 @@ class setup:
     # save Data
     def on_bSaveData_clicked(self, event):
         self.saveData2File()
+    def on_bRestartServer_clicked(self, event):
+        # restart cuon server 
+        self.restartServer()
         
     # Install 
     def on_bOK_clicked(self, event):

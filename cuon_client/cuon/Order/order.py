@@ -46,6 +46,9 @@ import cuon.Finances.SingleAccountInfo
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
 import cuon.Order.SingleOrderInvoice
+import cuon.DMS.dms
+import cuon.DMS.SingleDMS
+import cuon.DMS.documentTools
 
 
 class orderwindow(chooseWindows):
@@ -77,6 +80,9 @@ class orderwindow(chooseWindows):
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
+        
+        self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
+        self.documentTools = cuon.DMS.documentTools.documentTools()
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
@@ -323,8 +329,21 @@ class orderwindow(chooseWindows):
         print dicOrder
         
         Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
-        self.showPdf(Pdf, self.dicUser,'INVOICE')
+        fname = self.showPdf(Pdf, self.dicUser,'INVOICE')
         ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
+        # insert invoice into dms 
+        self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
+        self.singleDMS.ModulNumber = self.MN['Order']
+        self.singleDMS.sep_info_1 = self.singleOrder.ID    
+        self.singleDMS.newRecord()
+        self.singleDMS.newDate = self.getActualDateTime()['date']
+        self.singleDMS.newTitle = _('invoice') + ' ' + `invoiceNumber`
+        print self.singleDMS.newDate
+        self.singleDMS.newCategory = _('payments')
+        self.singleDMS.Rights = 'INVOICE'
+        
+        self.singleDMS.save(['document_image'])
+        
 
     def on_all_open_invoice1_activate(self, event):
         
@@ -859,7 +878,10 @@ class orderwindow(chooseWindows):
     def on_bCreditCard1_clicked(self, event):
         self.createSimplePayment('creditCard1')
       
-    
+    def on_bShowExtInfo_clicked(self, event ):
+        print 'show ext. Infos '
+        dms = cuon.DMS.dms.dmswindow(self.allTables,self.MN['Order'], {'1':self.singleOrder.ID})
+        
     def on_bQuickAppend_clicked(self, event):
         # Qick append a positions
         if self.singleOrderPosition.ID != -1:

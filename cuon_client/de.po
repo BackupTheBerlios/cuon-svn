@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-24 10:58+0200\n"
-"PO-Revision-Date: 2007-08-24 13:03+0100\n"
+"POT-Creation-Date: 2007-09-02 15:23+0200\n"
+"PO-Revision-Date: 2007-09-02 15:30+0100\n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Dokument Datum"
 #: cuon/Addresses/addresses.py:127
 #: cuon/Clients/clients.py:64
 #: cuon/Bank/bank.py:67
-#: cuon/Addresses/GUI/src/interface.c:1948
+#: cuon/Addresses/GUI/src/interface.c:1908
 #: cuon/Addresses/GUI/addresses.c:88
 #: cuon/Login/GUI/user.c:14
 msgid "Lastname"
@@ -68,9 +68,9 @@ msgstr "Nachname"
 #: cuon/Garden/SingleHibernation.py:41
 #: cuon/Addresses/addresses.py:127
 #: cuon/Clients/clients.py:64
-#: cuon/Addresses/GUI/src/interface.c:1048
-#: cuon/Addresses/GUI/src/interface.c:1147
-#: cuon/Addresses/GUI/src/interface.c:1941
+#: cuon/Addresses/GUI/src/interface.c:1008
+#: cuon/Addresses/GUI/src/interface.c:1107
+#: cuon/Addresses/GUI/src/interface.c:1901
 #: cuon/Addresses/GUI/addresses.c:51
 #: cuon/Addresses/GUI/addresses.c:89
 #: cuon/Login/GUI/user.c:15
@@ -82,8 +82,8 @@ msgstr "Vorname"
 #: cuon/Addresses/addresses.py:172
 #: cuon/Clients/clients.py:64
 #: cuon/Bank/bank.py:67
-#: cuon/Addresses/GUI/src/interface.c:1013
-#: cuon/Addresses/GUI/src/interface.c:1233
+#: cuon/Addresses/GUI/src/interface.c:973
+#: cuon/Addresses/GUI/src/interface.c:1193
 #: cuon/Addresses/GUI/addresses.c:40
 #: cuon/Addresses/GUI/addresses.c:60
 #: cuon/Addresses/GUI/addresses.c:112
@@ -114,8 +114,8 @@ msgstr "wähle Adresse"
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
 #: cuon/Finances/InvoiceBook/invoicebook.py:96
-#: cuon/Order/GUI/src/interface.c:806
-#: cuon/Order/GUI/src/interface.c:1724
+#: cuon/Order/GUI/src/interface.c:808
+#: cuon/Order/GUI/src/interface.c:1736
 msgid "Invoice-Nr."
 msgstr "Rechnungs-Nr."
 
@@ -127,10 +127,10 @@ msgstr "Auftrag-Nr"
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
 #: cuon/Finances/InvoiceBook/invoicebook.py:96
-#: cuon/Order/order.py:165
+#: cuon/Order/order.py:171
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:704
-#: cuon/Order/GUI/src/interface.c:1332
-#: cuon/Order/GUI/src/interface.c:1806
+#: cuon/Order/GUI/src/interface.c:1344
+#: cuon/Order/GUI/src/interface.c:1818
 #: cuon/Addresses/GUI/addresses.c:131
 #: cuon/Stock/GUI/src/interface.c:438
 msgid "Date"
@@ -138,12 +138,12 @@ msgstr "Datum"
 
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:96
-#: cuon/Order/order.py:141
+#: cuon/Order/order.py:147
 msgid "Amount"
 msgstr "Menge"
 
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
-#: cuon/Order/order.py:165
+#: cuon/Order/order.py:171
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:405
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:717
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:795
@@ -189,19 +189,19 @@ msgstr "Beschreibung"
 #: cuon/PrefsFinance/prefsFinance.py:110
 #: cuon/Articles/materialgroup.py:83
 #: cuon/Articles/articles.py:115
-#: cuon/Order/order.py:115
-#: cuon/Order/order.py:128
-#: cuon/Order/order.py:141
+#: cuon/Order/order.py:121
+#: cuon/Order/order.py:134
+#: cuon/Order/order.py:147
 #: cuon/Stock/stock.py:84
 #: cuon/Web2/web2.py:68
 #: cuon/Biblio/biblio.py:63
 #: cuon/Project/project.py:102
 #: cuon/Project/project.py:111
 #: cuon/Project/project.py:119
-#: cuon/Order/GUI/src/interface.c:662
-#: cuon/Order/GUI/src/interface.c:1067
-#: cuon/Order/GUI/src/interface.c:1192
-#: cuon/Order/GUI/src/interface.c:1422
+#: cuon/Order/GUI/src/interface.c:664
+#: cuon/Order/GUI/src/interface.c:1079
+#: cuon/Order/GUI/src/interface.c:1204
+#: cuon/Order/GUI/src/interface.c:1434
 #: cuon/Stock/GUI/src/interface.c:224
 #: cuon/Stock/GUI/src/interface.c:264
 #: cuon/Stock/GUI/src/interface.c:411
@@ -209,7 +209,7 @@ msgid "Designation"
 msgstr "Beschreibung"
 
 #: cuon/Garden/SingleHibernationPlant.py:41
-#: cuon/Order/order.py:105
+#: cuon/Order/order.py:111
 msgid "number"
 msgstr "Nummer"
 
@@ -226,10 +226,10 @@ msgid "Stocknr"
 msgstr "Lagernr."
 
 #: cuon/Garden/SingleHibernation.py:41
-#: cuon/Order/order.py:141
-#: cuon/Order/GUI/src/interface.c:731
-#: cuon/Order/GUI/src/interface.c:1207
-#: cuon/Order/GUI/src/interface.c:1857
+#: cuon/Order/order.py:147
+#: cuon/Order/GUI/src/interface.c:733
+#: cuon/Order/GUI/src/interface.c:1219
+#: cuon/Order/GUI/src/interface.c:1869
 #: cuon/Stock/GUI/src/interface.c:215
 msgid "Number"
 msgstr "Nummer"
@@ -239,6 +239,7 @@ msgid "Profile"
 msgstr "Profil"
 
 #: cuon/Preferences/preferences.py:82
+#: GUI/src/interface.c:537
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -253,6 +254,7 @@ msgstr "Konto-Nummer"
 #: cuon/Project/project.py:111
 #: cuon/Project/project.py:119
 #: cuon/Stock/GUI/src/interface.c:257
+#: GUI/src/interface.c:583
 msgid "Name"
 msgstr "Name "
 
@@ -260,34 +262,42 @@ msgstr "Name "
 msgid "delivery_note-"
 msgstr "Lieferschein"
 
-#: cuon/Order/order.py:105
+#: cuon/Order/order.py:111
 #: cuon/Stock/stock.py:74
 msgid "designation"
 msgstr "Beschreibung "
 
-#: cuon/Order/order.py:141
-#: cuon/Order/GUI/src/interface.c:1401
+#: cuon/Order/order.py:147
+#: cuon/Order/GUI/src/interface.c:1413
 msgid "Pos."
 msgstr "Pos."
 
-#: cuon/Order/order.py:141
+#: cuon/Order/order.py:147
 msgid "Article-ID"
 msgstr "Artikel-ID"
 
-#: cuon/Order/order.py:141
+#: cuon/Order/order.py:147
 msgid "Designation2"
 msgstr "Beschreibung"
 
-#: cuon/Order/order.py:165
+#: cuon/Order/order.py:171
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:667
 #: cuon/Order/GUI/src/interface.c:347
-#: cuon/Order/GUI/src/interface.c:1625
+#: cuon/Order/GUI/src/interface.c:1637
 msgid "Invoice"
 msgstr "Rechnung"
 
-#: cuon/Order/order.py:165
+#: cuon/Order/order.py:171
 msgid "account"
 msgstr "Menge"
+
+#: cuon/Order/order.py:340
+msgid "invoice"
+msgstr "Rechnung"
+
+#: cuon/Order/order.py:342
+msgid "payments"
+msgstr "Zahlungen"
 
 #: cuon/Order/standard_invoice.py:36
 msgid "bill-"
@@ -308,8 +318,8 @@ msgstr "Uhrzeit"
 
 #: cuon/Addresses/contact.py:83
 #: cuon/Addresses/printAddress.py:45
-#: cuon/Addresses/GUI/src/interface.c:1173
-#: cuon/Addresses/GUI/src/interface.c:1962
+#: cuon/Addresses/GUI/src/interface.c:1133
+#: cuon/Addresses/GUI/src/interface.c:1922
 #: cuon/Addresses/GUI/addresses.c:48
 #: cuon/Addresses/GUI/addresses.c:86
 #: cuon/Stock/GUI/src/interface.c:283
@@ -320,8 +330,8 @@ msgstr "Anrede"
 #: cuon/Addresses/addresses.py:127
 #: cuon/Addresses/GUI/src/interface.c:288
 #: cuon/Addresses/GUI/src/interface.c:300
-#: cuon/Addresses/GUI/src/interface.c:1060
-#: cuon/Addresses/GUI/src/interface.c:1418
+#: cuon/Addresses/GUI/src/interface.c:1020
+#: cuon/Addresses/GUI/src/interface.c:1378
 #: cuon/Addresses/GUI/addresses.c:33
 #: cuon/Addresses/GUI/addresses.c:35
 #: cuon/Addresses/GUI/addresses.c:65
@@ -330,7 +340,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: cuon/Addresses/addresses.py:127
-#: cuon/Addresses/GUI/src/interface.c:1557
+#: cuon/Addresses/GUI/src/interface.c:1517
 msgid "Info"
 msgstr "Info"
 
@@ -344,15 +354,14 @@ msgid "Account"
 msgstr "Konto"
 
 #: cuon/Addresses/addresses.py:143
-#: cuon/Addresses/GUI/src/interface.c:418
-#: cuon/Addresses/GUI/src/interface.c:1674
+#: cuon/Addresses/GUI/src/interface.c:385
+#: cuon/Addresses/GUI/src/interface.c:1634
 #: cuon/Addresses/GUI/addresses.c:19
 #: cuon/Addresses/GUI/addresses.c:77
 #: cuon/Bank/GUI/src/interface.c:79
 #: cuon/Bank/GUI/src/interface.c:135
 #: cuon/Bank/GUI/src/interface.c:265
 #: cuon/Bank/GUI/src/interface.c:319
-#: GUI/src/interface.c:204
 msgid "Bank"
 msgstr "Bank"
 
@@ -381,29 +390,29 @@ msgid "shortRemark"
 msgstr "Kurze Bem."
 
 #: cuon/Addresses/addresses.py:193
-#: cuon/Addresses/GUI/src/interface.c:2611
+#: cuon/Addresses/GUI/src/interface.c:2571
 #: cuon/Addresses/GUI/addresses.c:123
 msgid "Priority"
 msgstr "Priorität"
 
 #: cuon/Addresses/addresses.py:193
-#: cuon/Order/GUI/src/interface.c:1348
+#: cuon/Order/GUI/src/interface.c:1360
 msgid "Status"
 msgstr "Status"
 
 #: cuon/Addresses/addresses.py:219
-#: cuon/Order/GUI/src/interface.c:891
-#: cuon/Addresses/GUI/src/interface.c:1773
+#: cuon/Order/GUI/src/interface.c:893
+#: cuon/Addresses/GUI/src/interface.c:1733
 msgid "Customer"
 msgstr "Kunde"
 
 #: cuon/Addresses/addresses.py:219
-#: cuon/Addresses/GUI/src/interface.c:1774
+#: cuon/Addresses/GUI/src/interface.c:1734
 msgid "Vendor"
 msgstr "Lieferant"
 
 #: cuon/Addresses/addresses.py:219
-#: cuon/Addresses/GUI/src/interface.c:1775
+#: cuon/Addresses/GUI/src/interface.c:1735
 msgid "Authority"
 msgstr "Behörde"
 
@@ -423,24 +432,24 @@ msgstr "Das Speichern dieses Gesprächspartners schlug fehl. Bitte überprüfen !"
 msgid "saving this schedul failed. Please check"
 msgstr "Das Speichern dieses Termins schlug fehl. Bitte überprüfen !"
 
-#: cuon/Addresses/addresses.py:521
+#: cuon/Addresses/addresses.py:519
 msgid "save this notes failed. Please check"
 msgstr "Das Speichern dieser Notiz schlug fehl. Bitte überprüfen !"
 
-#: cuon/Addresses/addresses.py:535
+#: cuon/Addresses/addresses.py:533
 msgid "CUON-ID NOTES-01"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:536
+#: cuon/Addresses/addresses.py:534
 msgid "Notes are changed !"
 msgstr "veränderte Notizen "
 
-#: cuon/Addresses/addresses.py:539
+#: cuon/Addresses/addresses.py:537
 msgid "Infos are generated by C.U.O.N."
 msgstr "Infos von C.U.O.N. erstellt"
 
 #: cuon/Stock/lists_stockgoods_number1.py:46
-#: GUI/src/interface.c:302
+#: GUI/src/interface.c:676
 msgid "Test"
 msgstr "Test"
 
@@ -510,7 +519,7 @@ msgstr "Drucker Se_tup"
 #: cuon/Order/GUI/src/interface.c:163
 #: cuon/Addresses/GUI/src/interface.c:148
 #: cuon/Addresses/GUI/src/interface.c:235
-#: cuon/Addresses/GUI/src/interface.c:928
+#: cuon/Addresses/GUI/src/interface.c:888
 #: cuon/Stock/GUI/src/interface.c:46
 #: cuon/Stock/GUI/src/interface.c:81
 msgid "New"
@@ -523,8 +532,8 @@ msgstr "_Neu"
 #: cuon/Order/GUI/src/interface.c:135
 #: cuon/Order/GUI/src/interface.c:170
 #: cuon/Order/GUI/src/interface.c:260
-#: cuon/Addresses/GUI/src/interface.c:404
-#: cuon/Addresses/GUI/src/interface.c:935
+#: cuon/Addresses/GUI/src/interface.c:371
+#: cuon/Addresses/GUI/src/interface.c:895
 #: cuon/Addresses/GUI/addresses.c:11
 #: cuon/Stock/GUI/src/interface.c:53
 #: cuon/Stock/GUI/src/interface.c:88
@@ -542,7 +551,7 @@ msgstr "_Bearbeiten "
 #: cuon/Addresses/GUI/src/interface.c:181
 #: cuon/Addresses/GUI/src/interface.c:207
 #: cuon/Addresses/GUI/src/interface.c:249
-#: cuon/Addresses/GUI/src/interface.c:942
+#: cuon/Addresses/GUI/src/interface.c:902
 #: cuon/Addresses/GUI/addresses.c:22
 #: cuon/Addresses/GUI/addresses.c:27
 #: cuon/Stock/GUI/src/interface.c:61
@@ -592,7 +601,7 @@ msgstr "_Sichern"
 #: cuon/DMS/GUI/src/interface.c:156
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:391
 #: cuon/Order/GUI/src/interface.c:312
-#: cuon/Addresses/GUI/src/interface.c:397
+#: cuon/Addresses/GUI/src/interface.c:364
 #: cuon/Addresses/GUI/addresses.c:8
 #: cuon/Stock/GUI/src/interface.c:116
 #: cuon/Login/GUI/user.c:8
@@ -674,8 +683,8 @@ msgstr "Suchen4"
 #: cuon/DMS/GUI/src2/interface.c:464
 #: cuon/DMS/GUI/src/interface.c:486
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:543
-#: cuon/Order/GUI/src/interface.c:671
-#: cuon/Addresses/GUI/src/interface.c:1031
+#: cuon/Order/GUI/src/interface.c:673
+#: cuon/Addresses/GUI/src/interface.c:991
 #: cuon/Addresses/GUI/addresses.c:42
 #: cuon/Stock/GUI/src/interface.c:233
 #: cuon/Bank/GUI/src/interface.c:190
@@ -786,8 +795,8 @@ msgstr "Letztes Dokument sichern als ..."
 
 #: cuon/DMS/GUI/src2/interface.c:864
 #: cuon/DMS/GUI/src/interface.c:987
-#: cuon/Addresses/GUI/src/interface.c:1533
-#: cuon/Addresses/GUI/src/interface.c:2275
+#: cuon/Addresses/GUI/src/interface.c:1493
+#: cuon/Addresses/GUI/src/interface.c:2235
 msgid "View"
 msgstr "Ansicht"
 
@@ -856,6 +865,8 @@ msgstr ""
 #: cuon/Login/GUI/src/support.c:85
 #: cuon/Bank/GUI/src/support.c:60
 #: cuon/Bank/GUI/src/support.c:85
+#: cuon/Stats/GUI/src/support.c:60
+#: cuon/Stats/GUI/src/support.c:85
 #: GUI/src/support.c:90
 #: GUI/src/support.c:114
 #, c-format
@@ -869,7 +880,6 @@ msgstr "aktiviere Rechte"
 #: cuon/DMS/GUI/src/interface.c:712
 #: cuon/DMS/GUI/src/interface.c:778
 #: cuon/Login/GUI/user.c:19
-#: GUI/src/interface.c:332
 msgid "User"
 msgstr "Benutzer"
 
@@ -904,6 +914,8 @@ msgid "Groups"
 msgstr "Gruppe"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:40
+#: cuon/Stats/GUI/src/interface.c:32
+#: GUI/src/interface.c:166
 msgid "Quit"
 msgstr "Ende"
 
@@ -1001,7 +1013,7 @@ msgstr "Rechnungs-Nr."
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:534
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:576
-#: cuon/Order/GUI/src/interface.c:653
+#: cuon/Order/GUI/src/interface.c:655
 msgid "Order-Number"
 msgstr "Auftragnummer"
 
@@ -1025,7 +1037,6 @@ msgid "Maturity"
 msgstr "Fällig"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:634
-#: GUI/src/interface.c:269
 msgid "DMS"
 msgstr "DMS"
 
@@ -1035,15 +1046,15 @@ msgid "Order ID"
 msgstr "Auftragsnummer"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:659
-#: cuon/Addresses/GUI/src/interface.c:959
-#: cuon/Addresses/GUI/src/interface.c:1350
-#: cuon/Addresses/GUI/src/interface.c:2009
-#: cuon/Addresses/GUI/src/interface.c:2778
+#: cuon/Addresses/GUI/src/interface.c:919
+#: cuon/Addresses/GUI/src/interface.c:1310
+#: cuon/Addresses/GUI/src/interface.c:1969
+#: cuon/Addresses/GUI/src/interface.c:2738
 msgid "Letter"
 msgstr "Brief"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:663
-#: cuon/Addresses/GUI/src/interface.c:1840
+#: cuon/Addresses/GUI/src/interface.c:1800
 #, fuzzy
 msgid "button3"
 msgstr "button1 "
@@ -1057,12 +1068,10 @@ msgid "cash discount"
 msgstr "./. Rabatt"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:743
-#, fuzzy
 msgid "Account ID"
-msgstr "Konto"
+msgstr "Konto-Nr."
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:762
-#, fuzzy
 msgid "Account Info"
 msgstr "Kontoinformation"
 
@@ -1088,7 +1097,6 @@ msgid "lInpayment"
 msgstr "Zahlung"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:919
-#, fuzzy
 msgid "goto Order"
 msgstr "zeige Aufträge"
 
@@ -1130,7 +1138,7 @@ msgid "php_groupware"
 msgstr ""
 
 #: cuon/Databases/GUI/src/interface.c:111
-#: cuon/Addresses/GUI/src/interface.c:1068
+#: cuon/Addresses/GUI/src/interface.c:1028
 msgid "Zipcode"
 msgstr "PLZ"
 
@@ -1171,7 +1179,6 @@ msgid "Extendet 2"
 msgstr ""
 
 #: cuon/Databases/GUI/src/interface.c:256
-#: GUI/src/interface.c:470
 msgid "Database"
 msgstr "Datenbank"
 
@@ -1273,10 +1280,10 @@ msgid "Clear"
 msgstr "Löschen"
 
 #: cuon/Order/GUI/src/interface.c:319
-#: cuon/Order/GUI/src/interface.c:620
-#: cuon/Order/GUI/src/interface.c:1043
-#: cuon/Addresses/GUI/src/interface.c:453
-#: cuon/Addresses/GUI/src/interface.c:3099
+#: cuon/Order/GUI/src/interface.c:622
+#: cuon/Order/GUI/src/interface.c:1055
+#: cuon/Addresses/GUI/src/interface.c:420
+#: cuon/Addresses/GUI/src/interface.c:3059
 msgid "Order"
 msgstr "Auftrag"
 
@@ -1285,12 +1292,12 @@ msgid "Manage Order"
 msgstr "Aufträge verwalten"
 
 #: cuon/Order/GUI/src/interface.c:326
-#: cuon/Order/GUI/src/interface.c:1082
+#: cuon/Order/GUI/src/interface.c:1094
 msgid "Supply"
 msgstr "Liefern"
 
 #: cuon/Order/GUI/src/interface.c:333
-#: cuon/Order/GUI/src/interface.c:1368
+#: cuon/Order/GUI/src/interface.c:1380
 msgid "Gets"
 msgstr "Abholung"
 
@@ -1299,9 +1306,9 @@ msgid "Position"
 msgstr "Position"
 
 #: cuon/Order/GUI/src/interface.c:354
-#: cuon/Order/GUI/src/interface.c:1716
-#: cuon/Addresses/GUI/src/interface.c:425
-#: cuon/Addresses/GUI/src/interface.c:1777
+#: cuon/Order/GUI/src/interface.c:1728
+#: cuon/Addresses/GUI/src/interface.c:392
+#: cuon/Addresses/GUI/src/interface.c:1737
 #: cuon/Addresses/GUI/addresses.c:21
 msgid "Misc"
 msgstr "Verschiedenes"
@@ -1310,323 +1317,327 @@ msgstr "Verschiedenes"
 msgid "Payments"
 msgstr "Zahlungen"
 
-#: cuon/Order/GUI/src/interface.c:679
-#: cuon/Addresses/GUI/src/interface.c:1039
+#: cuon/Order/GUI/src/interface.c:681
+#: cuon/Addresses/GUI/src/interface.c:999
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#: cuon/Order/GUI/src/interface.c:746
+#: cuon/Order/GUI/src/interface.c:748
 msgid "delivered at"
 msgstr "geliefert am"
 
-#: cuon/Order/GUI/src/interface.c:761
+#: cuon/Order/GUI/src/interface.c:763
 msgid "ordered at"
 msgstr "bestellt am"
 
-#: cuon/Order/GUI/src/interface.c:776
+#: cuon/Order/GUI/src/interface.c:778
 msgid "Desig."
 msgstr "Beschr."
 
-#: cuon/Order/GUI/src/interface.c:792
+#: cuon/Order/GUI/src/interface.c:794
 msgid "Supply-Nr."
 msgstr "Lieferschein-Nr. "
 
-#: cuon/Order/GUI/src/interface.c:799
+#: cuon/Order/GUI/src/interface.c:801
 msgid "Gets-Nr."
 msgstr "Abhol-Nr."
 
-#: cuon/Order/GUI/src/interface.c:833
+#: cuon/Order/GUI/src/interface.c:835
 msgid "paid at "
 msgstr "bezahlt am"
 
-#: cuon/Order/GUI/src/interface.c:847
+#: cuon/Order/GUI/src/interface.c:849
 msgid "total sum"
 msgstr "Gesamtsumme"
 
-#: cuon/Order/GUI/src/interface.c:868
-#: cuon/Order/GUI/src/interface.c:1106
+#: cuon/Order/GUI/src/interface.c:870
+#: cuon/Order/GUI/src/interface.c:1118
 msgid "search address ..."
 msgstr "suche Adresse"
 
-#: cuon/Order/GUI/src/interface.c:881
+#: cuon/Order/GUI/src/interface.c:883
 msgid "Custom-Number"
 msgstr "Kunden-Nummer"
 
-#: cuon/Order/GUI/src/interface.c:911
+#: cuon/Order/GUI/src/interface.c:913
 msgid "simple Account"
 msgstr "einfache Buchung"
 
-#: cuon/Order/GUI/src/interface.c:924
+#: cuon/Order/GUI/src/interface.c:926
 msgid "Cash 1"
 msgstr "Kasse 1"
 
-#: cuon/Order/GUI/src/interface.c:930
+#: cuon/Order/GUI/src/interface.c:932
 msgid "Cash 2"
 msgstr "Kasse 2"
 
-#: cuon/Order/GUI/src/interface.c:936
+#: cuon/Order/GUI/src/interface.c:938
 msgid "Credit Card 1"
 msgstr "Kreditkarte"
 
-#: cuon/Order/GUI/src/interface.c:948
+#: cuon/Order/GUI/src/interface.c:950
 msgid "Bank 1"
 msgstr "Bank 1"
 
-#: cuon/Order/GUI/src/interface.c:954
+#: cuon/Order/GUI/src/interface.c:956
 msgid "Bank 2"
 msgstr "Bank 2"
 
-#: cuon/Order/GUI/src/interface.c:960
+#: cuon/Order/GUI/src/interface.c:962
 msgid "Bank 3"
 msgstr "Bank 3"
 
-#: cuon/Order/GUI/src/interface.c:966
-#: cuon/Order/GUI/src/interface.c:972
+#: cuon/Order/GUI/src/interface.c:968
+#: cuon/Order/GUI/src/interface.c:974
 msgid "direct Debit 1"
 msgstr "Abbuchung 1"
 
-#: cuon/Order/GUI/src/interface.c:978
+#: cuon/Order/GUI/src/interface.c:980
 msgid "direct Debit 3"
 msgstr "Abbuchung 3"
 
-#: cuon/Order/GUI/src/interface.c:988
+#: cuon/Order/GUI/src/interface.c:990
 msgid "Packing\n"
 msgstr ""
 
-#: cuon/Order/GUI/src/interface.c:995
+#: cuon/Order/GUI/src/interface.c:997
 msgid "Truckage/Postage"
 msgstr "Versandkosten"
 
-#: cuon/Order/GUI/src/interface.c:1002
+#: cuon/Order/GUI/src/interface.c:1004
 msgid "Misc. cost"
 msgstr "Verschiedene Kosten"
 
-#: cuon/Order/GUI/src/interface.c:1030
+#: cuon/Order/GUI/src/interface.c:1032
 msgid "total discount %"
 msgstr "Rabatt %"
 
-#: cuon/Order/GUI/src/interface.c:1072
+#: cuon/Order/GUI/src/interface.c:1051
+msgid "show Ext. Info"
+msgstr "Zusatzinformation"
+
+#: cuon/Order/GUI/src/interface.c:1084
 msgid "Supply to"
 msgstr "Liefern an"
 
-#: cuon/Order/GUI/src/interface.c:1077
+#: cuon/Order/GUI/src/interface.c:1089
 msgid "search address"
 msgstr "suche Adresse"
 
-#: cuon/Order/GUI/src/interface.c:1101
+#: cuon/Order/GUI/src/interface.c:1113
 msgid "gets from"
 msgstr "abholen von"
 
-#: cuon/Order/GUI/src/interface.c:1127
+#: cuon/Order/GUI/src/interface.c:1139
 msgid "Load reference"
 msgstr "lade Einstellungen"
 
-#: cuon/Order/GUI/src/interface.c:1139
+#: cuon/Order/GUI/src/interface.c:1151
 msgid "Pick up at"
 msgstr "Abholen am"
 
-#: cuon/Order/GUI/src/interface.c:1151
+#: cuon/Order/GUI/src/interface.c:1163
 msgid "Remark"
 msgstr "Bemerkung"
 
-#: cuon/Order/GUI/src/interface.c:1166
+#: cuon/Order/GUI/src/interface.c:1178
 #: cuon/Addresses/GUI/src/interface.c:319
-#: cuon/Addresses/GUI/src/interface.c:2353
+#: cuon/Addresses/GUI/src/interface.c:2313
 #: cuon/Addresses/GUI/addresses.c:34
 #: cuon/Addresses/GUI/addresses.c:120
 msgid "Partner"
 msgstr "Gesprächspartner"
 
-#: cuon/Order/GUI/src/interface.c:1171
+#: cuon/Order/GUI/src/interface.c:1183
 msgid "search Partner"
 msgstr "suche Gesprächspartner"
 
-#: cuon/Order/GUI/src/interface.c:1225
+#: cuon/Order/GUI/src/interface.c:1237
 msgid "Forwarding Agency"
 msgstr "Spedition"
 
-#: cuon/Order/GUI/src/interface.c:1229
-#: cuon/Order/GUI/src/interface.c:1261
-#: cuon/Addresses/GUI/src/interface.c:1255
-#: cuon/Addresses/GUI/src/interface.c:1274
+#: cuon/Order/GUI/src/interface.c:1241
+#: cuon/Order/GUI/src/interface.c:1273
+#: cuon/Addresses/GUI/src/interface.c:1215
+#: cuon/Addresses/GUI/src/interface.c:1234
 msgid "search"
 msgstr "Suchen"
 
-#: cuon/Order/GUI/src/interface.c:1257
+#: cuon/Order/GUI/src/interface.c:1269
 msgid "Contact Person"
 msgstr "Kontakt Person"
 
-#: cuon/Order/GUI/src/interface.c:1308
+#: cuon/Order/GUI/src/interface.c:1320
 msgid "Pickup-Note"
 msgstr "Abholschein"
 
-#: cuon/Order/GUI/src/interface.c:1318
+#: cuon/Order/GUI/src/interface.c:1330
 msgid "Pickup-Nr.:"
 msgstr "Abhol-Nr."
 
-#: cuon/Order/GUI/src/interface.c:1357
+#: cuon/Order/GUI/src/interface.c:1369
 msgid "in progress"
 msgstr "in Arbeit"
 
-#: cuon/Order/GUI/src/interface.c:1358
+#: cuon/Order/GUI/src/interface.c:1370
 msgid "already done"
 msgstr "schon beendet"
 
-#: cuon/Order/GUI/src/interface.c:1359
+#: cuon/Order/GUI/src/interface.c:1371
 msgid "problems"
 msgstr "Probleme"
 
-#: cuon/Order/GUI/src/interface.c:1376
+#: cuon/Order/GUI/src/interface.c:1388
 msgid "Tax-Vat"
 msgstr "Mwst-Satz"
 
-#: cuon/Order/GUI/src/interface.c:1408
+#: cuon/Order/GUI/src/interface.c:1420
 msgid "articles-Number"
 msgstr "Artikel-Nummer"
 
-#: cuon/Order/GUI/src/interface.c:1415
+#: cuon/Order/GUI/src/interface.c:1427
 msgid "amount"
 msgstr "Menge"
 
-#: cuon/Order/GUI/src/interface.c:1457
+#: cuon/Order/GUI/src/interface.c:1469
 #: cuon/Stock/GUI/src/interface.c:343
 msgid "Unit"
 msgstr "Einheit"
 
-#: cuon/Order/GUI/src/interface.c:1463
+#: cuon/Order/GUI/src/interface.c:1475
 #: cuon/Stock/GUI/src/interface.c:350
 msgid "Wrapping"
 msgstr "Verpackung"
 
-#: cuon/Order/GUI/src/interface.c:1469
+#: cuon/Order/GUI/src/interface.c:1481
 msgid "Price"
 msgstr "Preis"
 
-#: cuon/Order/GUI/src/interface.c:1496
+#: cuon/Order/GUI/src/interface.c:1508
 msgid "Quant. per Wrap."
 msgstr "Menge pro Verp."
 
-#: cuon/Order/GUI/src/interface.c:1548
+#: cuon/Order/GUI/src/interface.c:1560
 msgid "search article"
 msgstr "suche Artikel"
 
-#: cuon/Order/GUI/src/interface.c:1568
+#: cuon/Order/GUI/src/interface.c:1580
 msgid "Quick Append"
 msgstr "Schnelles Anfügen"
 
-#: cuon/Order/GUI/src/interface.c:1572
+#: cuon/Order/GUI/src/interface.c:1584
 msgid "Articlediscount"
 msgstr "Artikelrabatt"
 
-#: cuon/Order/GUI/src/interface.c:1585
+#: cuon/Order/GUI/src/interface.c:1597
 msgid "Postions"
 msgstr "Positionen"
 
-#: cuon/Order/GUI/src/interface.c:1593
+#: cuon/Order/GUI/src/interface.c:1605
 msgid "Terms of Payment"
 msgstr "Zahlungsbedingungen"
 
-#: cuon/Order/GUI/src/interface.c:1610
+#: cuon/Order/GUI/src/interface.c:1622
 msgid "choose TOP"
 msgstr "wähle Zahlungsbed."
 
-#: cuon/Order/GUI/src/interface.c:1633
+#: cuon/Order/GUI/src/interface.c:1645
 msgid "retry"
 msgstr "Nochmal"
 
-#: cuon/Order/GUI/src/interface.c:1645
+#: cuon/Order/GUI/src/interface.c:1657
 msgid "monthly"
 msgstr "Monatlich"
 
-#: cuon/Order/GUI/src/interface.c:1651
+#: cuon/Order/GUI/src/interface.c:1663
 msgid "quarterly"
 msgstr "vierteljährlich"
 
-#: cuon/Order/GUI/src/interface.c:1657
+#: cuon/Order/GUI/src/interface.c:1669
 msgid "semestral"
 msgstr ""
 
-#: cuon/Order/GUI/src/interface.c:1663
+#: cuon/Order/GUI/src/interface.c:1675
 msgid "yearly"
 msgstr "Jährlich"
 
-#: cuon/Order/GUI/src/interface.c:1675
+#: cuon/Order/GUI/src/interface.c:1687
 msgid "create supply"
 msgstr "erzeuge Lieferschein"
 
-#: cuon/Order/GUI/src/interface.c:1679
+#: cuon/Order/GUI/src/interface.c:1691
 msgid "create get"
 msgstr "Abholung erzeugen"
 
-#: cuon/Order/GUI/src/interface.c:1683
+#: cuon/Order/GUI/src/interface.c:1695
 msgid "create invoice"
 msgstr "Rechnung erzeugen"
 
-#: cuon/Order/GUI/src/interface.c:1693
+#: cuon/Order/GUI/src/interface.c:1705
 msgid "daily"
 msgstr "Täglich"
 
-#: cuon/Order/GUI/src/interface.c:1699
+#: cuon/Order/GUI/src/interface.c:1711
 msgid "Weekly"
 msgstr "Wöchentlich"
 
-#: cuon/Order/GUI/src/interface.c:1705
+#: cuon/Order/GUI/src/interface.c:1717
 msgid "custom"
 msgstr "Kunde"
 
-#: cuon/Order/GUI/src/interface.c:1714
+#: cuon/Order/GUI/src/interface.c:1726
 msgid "0"
 msgstr ""
 
-#: cuon/Order/GUI/src/interface.c:1738
+#: cuon/Order/GUI/src/interface.c:1750
 msgid "Invoice amount"
 msgstr "Rechnungsbetrag"
 
-#: cuon/Order/GUI/src/interface.c:1752
+#: cuon/Order/GUI/src/interface.c:1764
 msgid "in-payment"
 msgstr "Zahlung"
 
-#: cuon/Order/GUI/src/interface.c:1765
+#: cuon/Order/GUI/src/interface.c:1777
 msgid "./. cash discount"
 msgstr "./. Rabatt"
 
-#: cuon/Order/GUI/src/interface.c:1778
+#: cuon/Order/GUI/src/interface.c:1790
 msgid "./. payments"
 msgstr "./. Zahlungseingänge"
 
-#: cuon/Order/GUI/src/interface.c:1792
+#: cuon/Order/GUI/src/interface.c:1804
 msgid "residue"
 msgstr "Restbetrag"
 
-#: cuon/Order/GUI/src/interface.c:1819
+#: cuon/Order/GUI/src/interface.c:1831
 msgid "Cash"
 msgstr "Kasse"
 
-#: cuon/Order/GUI/src/interface.c:1827
+#: cuon/Order/GUI/src/interface.c:1839
 msgid "Transfer"
 msgstr "Überweisung"
 
-#: cuon/Order/GUI/src/interface.c:1835
+#: cuon/Order/GUI/src/interface.c:1847
 msgid "direct debit"
 msgstr "Abbuchung"
 
-#: cuon/Order/GUI/src/interface.c:1843
+#: cuon/Order/GUI/src/interface.c:1855
 msgid "credit card"
 msgstr "Kreditkarte"
 
-#: cuon/Order/GUI/src/interface.c:1865
+#: cuon/Order/GUI/src/interface.c:1877
 msgid "Typ"
 msgstr "Art"
 
-#: cuon/Order/GUI/src/interface.c:1878
+#: cuon/Order/GUI/src/interface.c:1890
 msgid "pay with/acct."
 msgstr "Zahlung mit/Konto"
 
-#: cuon/Order/GUI/src/interface.c:1919
+#: cuon/Order/GUI/src/interface.c:1931
 msgid "search account"
 msgstr "suche Zahlung"
 
-#: cuon/Order/GUI/src/interface.c:1930
+#: cuon/Order/GUI/src/interface.c:1942
 msgid "Payment"
 msgstr "Zahlung"
 
@@ -1652,8 +1663,8 @@ msgid "Find"
 msgstr "Finde"
 
 #: cuon/Addresses/GUI/src/interface.c:86
-#: cuon/Addresses/GUI/src/interface.c:1503
-#: cuon/Addresses/GUI/src/interface.c:2208
+#: cuon/Addresses/GUI/src/interface.c:1463
+#: cuon/Addresses/GUI/src/interface.c:2168
 msgid "Newsletter"
 msgstr "Newsletter"
 
@@ -1674,992 +1685,966 @@ msgid "Set ready"
 msgstr "setze erledigt"
 
 #: cuon/Addresses/GUI/src/interface.c:312
-#: cuon/Addresses/GUI/src/interface.c:1602
+#: cuon/Addresses/GUI/src/interface.c:1562
 #: cuon/Addresses/GUI/addresses.c:32
 #: cuon/Addresses/GUI/addresses.c:71
-#: GUI/src/interface.c:377
+#: cuon/Stats/GUI/src/interface.c:70
 msgid "Addresses"
 msgstr "Adressen"
 
 #: cuon/Addresses/GUI/src/interface.c:331
-#, fuzzy
-msgid "Caller"
-msgstr "Löschen"
-
-#: cuon/Addresses/GUI/src/interface.c:338
-msgid "Representant"
-msgstr "Repräsentant"
-
-#: cuon/Addresses/GUI/src/interface.c:345
-#: Cuon.py:1013
-msgid "Salesman"
-msgstr "Berater"
-
-#: cuon/Addresses/GUI/src/interface.c:352
-msgid "Scheduls"
-msgstr "Termine"
-
-#: cuon/Addresses/GUI/src/interface.c:364
 msgid "Contact window"
 msgstr "Kontaktfenster"
 
-#: cuon/Addresses/GUI/src/interface.c:371
-#: cuon/Addresses/GUI/src/interface.c:985
+#: cuon/Addresses/GUI/src/interface.c:338
+#: cuon/Addresses/GUI/src/interface.c:945
 msgid "new Order"
 msgstr "neuer Auftrag"
 
-#: cuon/Addresses/GUI/src/interface.c:378
+#: cuon/Addresses/GUI/src/interface.c:345
 msgid "show Order"
 msgstr "zeige Aufträge"
 
-#: cuon/Addresses/GUI/src/interface.c:385
-#: cuon/Addresses/GUI/src/interface.c:991
+#: cuon/Addresses/GUI/src/interface.c:352
+#: cuon/Addresses/GUI/src/interface.c:951
 msgid "new Project"
 msgstr "neues Projekt"
 
-#: cuon/Addresses/GUI/src/interface.c:411
+#: cuon/Addresses/GUI/src/interface.c:378
 #: cuon/Addresses/GUI/addresses.c:13
 #: GUI/cuon.c:14
-#: GUI/src/interface.c:196
 msgid "_Addresses"
 msgstr "_Adressverwaltung"
 
-#: cuon/Addresses/GUI/src/interface.c:432
+#: cuon/Addresses/GUI/src/interface.c:399
 #: cuon/Addresses/GUI/addresses.c:24
 msgid "_Partner"
 msgstr "_Gesprächspartner"
 
-#: cuon/Addresses/GUI/src/interface.c:439
-#: cuon/Addresses/GUI/src/interface.c:2873
+#: cuon/Addresses/GUI/src/interface.c:406
+#: cuon/Addresses/GUI/src/interface.c:2833
 #: cuon/Addresses/GUI/addresses.c:29
 #: cuon/Addresses/GUI/addresses.c:132
-#: Cuon.py:991
+#: Cuon.py:994
 msgid "Schedul"
 msgstr "Termine"
 
-#: cuon/Addresses/GUI/src/interface.c:446
-#: cuon/Addresses/GUI/src/interface.c:3057
+#: cuon/Addresses/GUI/src/interface.c:413
+#: cuon/Addresses/GUI/src/interface.c:3017
 msgid "Notes"
 msgstr "Notiz"
 
-#: cuon/Addresses/GUI/src/interface.c:460
-#: cuon/Addresses/GUI/src/interface.c:3154
+#: cuon/Addresses/GUI/src/interface.c:427
+#: cuon/Addresses/GUI/src/interface.c:3114
 msgid "Projects"
 msgstr "Projekt"
 
-#: cuon/Addresses/GUI/src/interface.c:467
+#: cuon/Addresses/GUI/src/interface.c:434
 #: cuon/Addresses/GUI/addresses.c:31
 msgid "Lists"
 msgstr "L_isten"
 
-#: cuon/Addresses/GUI/src/interface.c:474
-msgid "Stat"
-msgstr "Statistik"
-
-#: cuon/Addresses/GUI/src/interface.c:481
+#: cuon/Addresses/GUI/src/interface.c:441
 #: GUI/cuon.c:17
-#: GUI/src/interface.c:318
 msgid "Tools"
 msgstr "_Werkzeuge"
 
-#: cuon/Addresses/GUI/src/interface.c:931
+#: cuon/Addresses/GUI/src/interface.c:891
 msgid "create new Data "
 msgstr "neue Daten erzeugen"
 
-#: cuon/Addresses/GUI/src/interface.c:938
+#: cuon/Addresses/GUI/src/interface.c:898
 msgid "edit current data"
 msgstr "bearbeite Daten"
 
-#: cuon/Addresses/GUI/src/interface.c:945
+#: cuon/Addresses/GUI/src/interface.c:905
 msgid "save current data"
 msgstr "sichere Daten"
 
-#: cuon/Addresses/GUI/src/interface.c:953
+#: cuon/Addresses/GUI/src/interface.c:913
 msgid "ext. Info"
 msgstr "Weitere Infos"
 
-#: cuon/Addresses/GUI/src/interface.c:965
-#: cuon/Addresses/GUI/src/interface.c:1370
-#: cuon/Addresses/GUI/src/interface.c:2013
+#: cuon/Addresses/GUI/src/interface.c:925
+#: cuon/Addresses/GUI/src/interface.c:1330
+#: cuon/Addresses/GUI/src/interface.c:1973
 msgid "Contact"
 msgstr "Kontakt"
 
-#: cuon/Addresses/GUI/src/interface.c:971
+#: cuon/Addresses/GUI/src/interface.c:931
 msgid "All Contact"
 msgstr "Alle Kontakte"
 
-#: cuon/Addresses/GUI/src/interface.c:1003
-#: cuon/Addresses/GUI/src/interface.c:1164
+#: cuon/Addresses/GUI/src/interface.c:963
+#: cuon/Addresses/GUI/src/interface.c:1124
 #: cuon/Addresses/GUI/addresses.c:38
 #: cuon/Addresses/GUI/addresses.c:49
 msgid "Name1"
 msgstr "Nachname"
 
-#: cuon/Addresses/GUI/src/interface.c:1023
-#: cuon/Addresses/GUI/src/interface.c:1139
-#: cuon/Addresses/GUI/src/interface.c:1871
+#: cuon/Addresses/GUI/src/interface.c:983
+#: cuon/Addresses/GUI/src/interface.c:1099
+#: cuon/Addresses/GUI/src/interface.c:1831
 #: cuon/Addresses/GUI/addresses.c:52
 #: cuon/Addresses/GUI/addresses.c:114
 msgid "Street"
 msgstr "Straße"
 
-#: cuon/Addresses/GUI/src/interface.c:1103
-#: cuon/Addresses/GUI/src/interface.c:2061
+#: cuon/Addresses/GUI/src/interface.c:1063
+#: cuon/Addresses/GUI/src/interface.c:2021
 #: cuon/Addresses/GUI/addresses.c:57
 #: cuon/Addresses/GUI/addresses.c:116
 msgid "State"
 msgstr "Land"
 
-#: cuon/Addresses/GUI/src/interface.c:1112
+#: cuon/Addresses/GUI/src/interface.c:1072
 #: cuon/Addresses/GUI/addresses.c:56
 msgid "Zip for PB"
 msgstr "PLZ fürs Postfach"
 
-#: cuon/Addresses/GUI/src/interface.c:1121
-#: cuon/Addresses/GUI/src/interface.c:1894
+#: cuon/Addresses/GUI/src/interface.c:1081
+#: cuon/Addresses/GUI/src/interface.c:1854
 #: cuon/Addresses/GUI/addresses.c:54
 #: cuon/Addresses/GUI/addresses.c:107
 msgid "Country"
 msgstr "Staat"
 
-#: cuon/Addresses/GUI/src/interface.c:1130
-#: cuon/Addresses/GUI/src/interface.c:1884
+#: cuon/Addresses/GUI/src/interface.c:1090
+#: cuon/Addresses/GUI/src/interface.c:1844
 #: cuon/Addresses/GUI/addresses.c:53
 #: cuon/Addresses/GUI/addresses.c:108
 msgid "Zip"
 msgstr "PLZ"
 
-#: cuon/Addresses/GUI/src/interface.c:1155
+#: cuon/Addresses/GUI/src/interface.c:1115
 #: cuon/Addresses/GUI/addresses.c:50
 msgid "Name2"
 msgstr "Name 2"
 
-#: cuon/Addresses/GUI/src/interface.c:1300
+#: cuon/Addresses/GUI/src/interface.c:1260
 #: cuon/Addresses/GUI/addresses.c:63
 msgid "Postbox"
 msgstr "Postfach"
 
-#: cuon/Addresses/GUI/src/interface.c:1324
+#: cuon/Addresses/GUI/src/interface.c:1284
 msgid "show ext. info"
 msgstr "Zusatzinformation"
 
-#: cuon/Addresses/GUI/src/interface.c:1374
-#: cuon/Addresses/GUI/src/interface.c:2136
+#: cuon/Addresses/GUI/src/interface.c:1334
+#: cuon/Addresses/GUI/src/interface.c:2096
 msgid "letter-address"
 msgstr "Briefanrede"
 
-#: cuon/Addresses/GUI/src/interface.c:1400
-#: cuon/Addresses/GUI/src/interface.c:2221
+#: cuon/Addresses/GUI/src/interface.c:1360
+#: cuon/Addresses/GUI/src/interface.c:2181
 #: cuon/Addresses/GUI/addresses.c:68
 #: cuon/Addresses/GUI/addresses.c:98
 msgid "Fax"
 msgstr "Fax"
 
-#: cuon/Addresses/GUI/src/interface.c:1409
-#: cuon/Addresses/GUI/src/interface.c:2243
+#: cuon/Addresses/GUI/src/interface.c:1369
+#: cuon/Addresses/GUI/src/interface.c:2203
 #: cuon/Addresses/GUI/addresses.c:67
 #: cuon/Addresses/GUI/addresses.c:96
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: cuon/Addresses/GUI/src/interface.c:1442
+#: cuon/Addresses/GUI/src/interface.c:1402
 msgid "Choose Caller"
 msgstr "wähle Kontakter"
 
-#: cuon/Addresses/GUI/src/interface.c:1461
+#: cuon/Addresses/GUI/src/interface.c:1421
 msgid "Choose Rep."
 msgstr "wähle Representant"
 
-#: cuon/Addresses/GUI/src/interface.c:1480
+#: cuon/Addresses/GUI/src/interface.c:1440
 msgid "Choose Salesman"
 msgstr "wähle Berater"
 
-#: cuon/Addresses/GUI/src/interface.c:1490
-#: cuon/Addresses/GUI/src/interface.c:2023
+#: cuon/Addresses/GUI/src/interface.c:1450
+#: cuon/Addresses/GUI/src/interface.c:1983
 msgid "Handy"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:1516
-#: cuon/Addresses/GUI/src/interface.c:2235
+#: cuon/Addresses/GUI/src/interface.c:1476
+#: cuon/Addresses/GUI/src/interface.c:2195
 #: cuon/Addresses/GUI/addresses.c:97
 msgid "Homepage"
 msgstr "Homepage"
 
-#: cuon/Addresses/GUI/src/interface.c:1549
+#: cuon/Addresses/GUI/src/interface.c:1509
 msgid "Send Email"
 msgstr "Sende Email"
 
-#: cuon/Addresses/GUI/src/interface.c:1553
+#: cuon/Addresses/GUI/src/interface.c:1513
 msgid "ext. Email"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:1598
+#: cuon/Addresses/GUI/src/interface.c:1558
 msgid "dial"
 msgstr "wählen"
 
-#: cuon/Addresses/GUI/src/interface.c:1627
+#: cuon/Addresses/GUI/src/interface.c:1587
 #: cuon/Bank/GUI/src/interface.c:60
 msgid "choose Bank"
 msgstr "wähle Bank"
 
-#: cuon/Addresses/GUI/src/interface.c:1641
+#: cuon/Addresses/GUI/src/interface.c:1601
 msgid "Account-Nr."
 msgstr "Konto-Nummer"
 
-#: cuon/Addresses/GUI/src/interface.c:1648
+#: cuon/Addresses/GUI/src/interface.c:1608
 msgid "depositor"
 msgstr "Kontoinhaber"
 
-#: cuon/Addresses/GUI/src/interface.c:1661
+#: cuon/Addresses/GUI/src/interface.c:1621
 msgid "IBAN"
 msgstr "IBAN"
 
-#: cuon/Addresses/GUI/src/interface.c:1683
+#: cuon/Addresses/GUI/src/interface.c:1643
 msgid "update from Web"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:1696
+#: cuon/Addresses/GUI/src/interface.c:1656
 msgid "Webshop"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:1703
+#: cuon/Addresses/GUI/src/interface.c:1663
 msgid "Is Webshop Address"
 msgstr "ist eine Webshop-Adresse"
 
-#: cuon/Addresses/GUI/src/interface.c:1715
+#: cuon/Addresses/GUI/src/interface.c:1675
 msgid "address-Number"
 msgstr "Adress-Nummer"
 
-#: cuon/Addresses/GUI/src/interface.c:1729
+#: cuon/Addresses/GUI/src/interface.c:1689
 msgid "Price I"
 msgstr "Verkaufspreis I"
 
-#: cuon/Addresses/GUI/src/interface.c:1730
+#: cuon/Addresses/GUI/src/interface.c:1690
 msgid "Price II"
 msgstr "Verkaufspreis II"
 
-#: cuon/Addresses/GUI/src/interface.c:1731
+#: cuon/Addresses/GUI/src/interface.c:1691
 msgid "Price III"
 msgstr "Verkaufspreis III"
 
-#: cuon/Addresses/GUI/src/interface.c:1732
+#: cuon/Addresses/GUI/src/interface.c:1692
 msgid "Price IV"
 msgstr "Verkaufspreis IV"
 
-#: cuon/Addresses/GUI/src/interface.c:1739
+#: cuon/Addresses/GUI/src/interface.c:1699
 msgid "Price-Group"
 msgstr "Preisgruppe"
 
-#: cuon/Addresses/GUI/src/interface.c:1746
+#: cuon/Addresses/GUI/src/interface.c:1706
 #: cuon/Addresses/GUI/addresses.c:84
 msgid "to calc Tax"
 msgstr "Steuer berechnen"
 
-#: cuon/Addresses/GUI/src/interface.c:1759
+#: cuon/Addresses/GUI/src/interface.c:1719
 #: cuon/Addresses/GUI/addresses.c:82
 msgid "Tax-Nr."
 msgstr "Steuer-Nr"
 
-#: cuon/Addresses/GUI/src/interface.c:1776
+#: cuon/Addresses/GUI/src/interface.c:1736
 msgid "Private"
 msgstr "Privat"
 
-#: cuon/Addresses/GUI/src/interface.c:1778
+#: cuon/Addresses/GUI/src/interface.c:1738
 msgid "No Interest"
 msgstr "kein Interesse"
 
-#: cuon/Addresses/GUI/src/interface.c:1779
+#: cuon/Addresses/GUI/src/interface.c:1739
 msgid "Some Interest"
 msgstr "wenig  Interesse"
 
-#: cuon/Addresses/GUI/src/interface.c:1780
+#: cuon/Addresses/GUI/src/interface.c:1740
 msgid "Mostly Interest"
 msgstr "viel Interesse"
 
-#: cuon/Addresses/GUI/src/interface.c:1788
+#: cuon/Addresses/GUI/src/interface.c:1748
 #: cuon/Addresses/GUI/addresses.c:80
 msgid "fashion"
 msgstr "Typus"
 
-#: cuon/Addresses/GUI/src/interface.c:1801
+#: cuon/Addresses/GUI/src/interface.c:1761
 #: cuon/Addresses/GUI/addresses.c:78
 msgid "Line"
 msgstr "Branche"
 
-#: cuon/Addresses/GUI/src/interface.c:1814
+#: cuon/Addresses/GUI/src/interface.c:1774
 msgid "Term of Payment"
 msgstr "Zahlungsbedingungen"
 
-#: cuon/Addresses/GUI/src/interface.c:1836
+#: cuon/Addresses/GUI/src/interface.c:1796
 msgid "search ToP"
 msgstr "Suchen Zahlungsbed."
 
-#: cuon/Addresses/GUI/src/interface.c:1856
+#: cuon/Addresses/GUI/src/interface.c:1816
 #: cuon/Addresses/GUI/addresses.c:85
 msgid "Misc."
 msgstr "Verschiedenes"
 
-#: cuon/Addresses/GUI/src/interface.c:1901
+#: cuon/Addresses/GUI/src/interface.c:1861
 #: cuon/Addresses/GUI/addresses.c:95
 msgid "Phone 2"
 msgstr "Telefon 2"
 
-#: cuon/Addresses/GUI/src/interface.c:1909
+#: cuon/Addresses/GUI/src/interface.c:1869
 #: cuon/Addresses/GUI/addresses.c:94
 msgid "Phone 1"
 msgstr "Telefon 1"
 
-#: cuon/Addresses/GUI/src/interface.c:1955
+#: cuon/Addresses/GUI/src/interface.c:1915
 #: cuon/Addresses/GUI/addresses.c:87
 msgid "titular"
 msgstr "Titel"
 
-#: cuon/Addresses/GUI/src/interface.c:1999
-#: cuon/Addresses/GUI/src/interface.c:2102
-#: cuon/Addresses/GUI/src/interface.c:2132
-#: cuon/Addresses/GUI/src/interface.c:2319
-#: cuon/Addresses/GUI/src/interface.c:2349
+#: cuon/Addresses/GUI/src/interface.c:1959
+#: cuon/Addresses/GUI/src/interface.c:2062
+#: cuon/Addresses/GUI/src/interface.c:2092
+#: cuon/Addresses/GUI/src/interface.c:2279
+#: cuon/Addresses/GUI/src/interface.c:2309
 #: GUI/cuon.c:8
-#: GUI/src/interface.c:160
 msgid "Connect"
 msgstr "Verbinden"
 
-#: cuon/Addresses/GUI/src/interface.c:2017
+#: cuon/Addresses/GUI/src/interface.c:1977
 msgid "show extendet infos"
 msgstr "Zusatzinformation"
 
-#: cuon/Addresses/GUI/src/interface.c:2042
+#: cuon/Addresses/GUI/src/interface.c:2002
 msgid "City  "
 msgstr "Stadt"
 
-#: cuon/Addresses/GUI/src/interface.c:2070
+#: cuon/Addresses/GUI/src/interface.c:2030
 msgid "Generate Partner"
 msgstr "erzeuge Gesprächspartner"
 
-#: cuon/Addresses/GUI/src/interface.c:2143
+#: cuon/Addresses/GUI/src/interface.c:2103
 #: cuon/Addresses/GUI/addresses.c:104
 msgid "Fax in company"
 msgstr "Firmenfax"
 
-#: cuon/Addresses/GUI/src/interface.c:2150
+#: cuon/Addresses/GUI/src/interface.c:2110
 #: cuon/Addresses/GUI/addresses.c:106
 msgid "Phone in Company"
 msgstr "Firmentelefon"
 
-#: cuon/Addresses/GUI/src/interface.c:2169
+#: cuon/Addresses/GUI/src/interface.c:2129
 msgid "Department"
 msgstr "Abteilung"
 
-#: cuon/Addresses/GUI/src/interface.c:2176
+#: cuon/Addresses/GUI/src/interface.c:2136
 msgid "Job"
 msgstr "Position"
 
-#: cuon/Addresses/GUI/src/interface.c:2195
+#: cuon/Addresses/GUI/src/interface.c:2155
 #: cuon/Addresses/GUI/addresses.c:118
 msgid "Birthday"
 msgstr "Geburtstag"
 
-#: cuon/Addresses/GUI/src/interface.c:2251
+#: cuon/Addresses/GUI/src/interface.c:2211
 msgid "SIP"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:2258
+#: cuon/Addresses/GUI/src/interface.c:2218
 msgid "Skype"
 msgstr "Skype"
 
-#: cuon/Addresses/GUI/src/interface.c:2289
+#: cuon/Addresses/GUI/src/interface.c:2249
 msgid "send Email"
 msgstr "sende Email"
 
-#: cuon/Addresses/GUI/src/interface.c:2370
+#: cuon/Addresses/GUI/src/interface.c:2330
 msgid "Schedul  begins at time"
 msgstr "Termin beginnt um"
 
+#: cuon/Addresses/GUI/src/interface.c:2338
+#: cuon/Addresses/GUI/src/interface.c:2448
+msgid "0:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2339
+#: cuon/Addresses/GUI/src/interface.c:2449
+msgid "0:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2340
+#: cuon/Addresses/GUI/src/interface.c:2450
+msgid "0:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2341
+#: cuon/Addresses/GUI/src/interface.c:2451
+msgid "0:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2342
+#: cuon/Addresses/GUI/src/interface.c:2452
+msgid "1:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2343
+#: cuon/Addresses/GUI/src/interface.c:2453
+msgid "1:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2344
+#: cuon/Addresses/GUI/src/interface.c:2454
+msgid "1:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2345
+#: cuon/Addresses/GUI/src/interface.c:2455
+msgid "1:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2346
+#: cuon/Addresses/GUI/src/interface.c:2456
+msgid "2:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2347
+#: cuon/Addresses/GUI/src/interface.c:2457
+msgid "2:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2348
+#: cuon/Addresses/GUI/src/interface.c:2458
+msgid "2:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2349
+#: cuon/Addresses/GUI/src/interface.c:2459
+msgid "2:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2350
+#: cuon/Addresses/GUI/src/interface.c:2460
+msgid "3:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2351
+#: cuon/Addresses/GUI/src/interface.c:2461
+msgid "3:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2352
+#: cuon/Addresses/GUI/src/interface.c:2462
+msgid "3:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2353
+#: cuon/Addresses/GUI/src/interface.c:2463
+msgid "3:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2354
+#: cuon/Addresses/GUI/src/interface.c:2464
+msgid "4:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2355
+#: cuon/Addresses/GUI/src/interface.c:2465
+msgid "4:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2356
+#: cuon/Addresses/GUI/src/interface.c:2466
+msgid "4:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2357
+#: cuon/Addresses/GUI/src/interface.c:2467
+msgid "4:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2358
+#: cuon/Addresses/GUI/src/interface.c:2468
+msgid "5:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2359
+#: cuon/Addresses/GUI/src/interface.c:2469
+msgid "5:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2360
+#: cuon/Addresses/GUI/src/interface.c:2470
+msgid "5:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2361
+#: cuon/Addresses/GUI/src/interface.c:2471
+msgid "5:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2362
+#: cuon/Addresses/GUI/src/interface.c:2472
+msgid "6:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2363
+#: cuon/Addresses/GUI/src/interface.c:2473
+msgid "6:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2364
+#: cuon/Addresses/GUI/src/interface.c:2474
+msgid "6:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2365
+#: cuon/Addresses/GUI/src/interface.c:2475
+msgid "6:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2366
+#: cuon/Addresses/GUI/src/interface.c:2476
+msgid "7:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2367
+#: cuon/Addresses/GUI/src/interface.c:2477
+msgid "7:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2368
+#: cuon/Addresses/GUI/src/interface.c:2478
+msgid "7:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2369
+#: cuon/Addresses/GUI/src/interface.c:2479
+msgid "7:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2370
+#: cuon/Addresses/GUI/src/interface.c:2480
+msgid "8:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2371
+#: cuon/Addresses/GUI/src/interface.c:2481
+msgid "8:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2372
+#: cuon/Addresses/GUI/src/interface.c:2482
+msgid "8:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2373
+#: cuon/Addresses/GUI/src/interface.c:2483
+msgid "8:45"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2374
+#: cuon/Addresses/GUI/src/interface.c:2484
+msgid "9:00"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2375
+#: cuon/Addresses/GUI/src/interface.c:2485
+msgid "9:15"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2376
+#: cuon/Addresses/GUI/src/interface.c:2486
+msgid "9:30"
+msgstr ""
+
+#: cuon/Addresses/GUI/src/interface.c:2377
+#: cuon/Addresses/GUI/src/interface.c:2487
+msgid "9:45"
+msgstr ""
+
 #: cuon/Addresses/GUI/src/interface.c:2378
 #: cuon/Addresses/GUI/src/interface.c:2488
-msgid "0:00"
+msgid "10:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2379
 #: cuon/Addresses/GUI/src/interface.c:2489
-msgid "0:15"
+msgid "10:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2380
 #: cuon/Addresses/GUI/src/interface.c:2490
-msgid "0:30"
+msgid "10:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2381
 #: cuon/Addresses/GUI/src/interface.c:2491
-msgid "0:45"
+msgid "10:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2382
 #: cuon/Addresses/GUI/src/interface.c:2492
-msgid "1:00"
+msgid "11:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2383
 #: cuon/Addresses/GUI/src/interface.c:2493
-msgid "1:15"
+msgid "11:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2384
 #: cuon/Addresses/GUI/src/interface.c:2494
-msgid "1:30"
+msgid "11:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2385
 #: cuon/Addresses/GUI/src/interface.c:2495
-msgid "1:45"
+msgid "11:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2386
 #: cuon/Addresses/GUI/src/interface.c:2496
-msgid "2:00"
+msgid "12:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2387
 #: cuon/Addresses/GUI/src/interface.c:2497
-msgid "2:15"
+msgid "12:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2388
 #: cuon/Addresses/GUI/src/interface.c:2498
-msgid "2:30"
+msgid "12:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2389
 #: cuon/Addresses/GUI/src/interface.c:2499
-msgid "2:45"
+msgid "12:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2390
 #: cuon/Addresses/GUI/src/interface.c:2500
-msgid "3:00"
+msgid "13:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2391
 #: cuon/Addresses/GUI/src/interface.c:2501
-msgid "3:15"
+msgid "13:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2392
 #: cuon/Addresses/GUI/src/interface.c:2502
-msgid "3:30"
+msgid "13:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2393
 #: cuon/Addresses/GUI/src/interface.c:2503
-msgid "3:45"
+msgid "13:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2394
 #: cuon/Addresses/GUI/src/interface.c:2504
-msgid "4:00"
+msgid "14:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2395
 #: cuon/Addresses/GUI/src/interface.c:2505
-msgid "4:15"
+msgid "14:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2396
 #: cuon/Addresses/GUI/src/interface.c:2506
-msgid "4:30"
+msgid "14:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2397
 #: cuon/Addresses/GUI/src/interface.c:2507
-msgid "4:45"
+msgid "14:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2398
 #: cuon/Addresses/GUI/src/interface.c:2508
-msgid "5:00"
+msgid "15:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2399
 #: cuon/Addresses/GUI/src/interface.c:2509
-msgid "5:15"
+msgid "15:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2400
 #: cuon/Addresses/GUI/src/interface.c:2510
-msgid "5:30"
+msgid "15:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2401
 #: cuon/Addresses/GUI/src/interface.c:2511
-msgid "5:45"
+msgid "15:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2402
 #: cuon/Addresses/GUI/src/interface.c:2512
-msgid "6:00"
+msgid "16:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2403
 #: cuon/Addresses/GUI/src/interface.c:2513
-msgid "6:15"
+msgid "16:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2404
 #: cuon/Addresses/GUI/src/interface.c:2514
-msgid "6:30"
+msgid "16:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2405
 #: cuon/Addresses/GUI/src/interface.c:2515
-msgid "6:45"
+msgid "16:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2406
 #: cuon/Addresses/GUI/src/interface.c:2516
-msgid "7:00"
+msgid "17:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2407
 #: cuon/Addresses/GUI/src/interface.c:2517
-msgid "7:15"
+msgid "17:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2408
 #: cuon/Addresses/GUI/src/interface.c:2518
-msgid "7:30"
+msgid "17:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2409
 #: cuon/Addresses/GUI/src/interface.c:2519
-msgid "7:45"
+msgid "17:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2410
 #: cuon/Addresses/GUI/src/interface.c:2520
-msgid "8:00"
+msgid "18:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2411
 #: cuon/Addresses/GUI/src/interface.c:2521
-msgid "8:15"
+msgid "18:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2412
 #: cuon/Addresses/GUI/src/interface.c:2522
-msgid "8:30"
+msgid "18:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2413
 #: cuon/Addresses/GUI/src/interface.c:2523
-msgid "8:45"
+msgid "18:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2414
 #: cuon/Addresses/GUI/src/interface.c:2524
-msgid "9:00"
+msgid "19:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2415
 #: cuon/Addresses/GUI/src/interface.c:2525
-msgid "9:15"
+msgid "19:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2416
 #: cuon/Addresses/GUI/src/interface.c:2526
-msgid "9:30"
+msgid "19:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2417
 #: cuon/Addresses/GUI/src/interface.c:2527
-msgid "9:45"
+msgid "19:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2418
 #: cuon/Addresses/GUI/src/interface.c:2528
-msgid "10:00"
+msgid "20:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2419
 #: cuon/Addresses/GUI/src/interface.c:2529
-msgid "10:15"
+msgid "20:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2420
 #: cuon/Addresses/GUI/src/interface.c:2530
-msgid "10:30"
+msgid "20:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2421
 #: cuon/Addresses/GUI/src/interface.c:2531
-msgid "10:45"
+msgid "20:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2422
 #: cuon/Addresses/GUI/src/interface.c:2532
-msgid "11:00"
+msgid "21:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2423
 #: cuon/Addresses/GUI/src/interface.c:2533
-msgid "11:15"
+msgid "21:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2424
 #: cuon/Addresses/GUI/src/interface.c:2534
-msgid "11:30"
+msgid "21:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2425
 #: cuon/Addresses/GUI/src/interface.c:2535
-msgid "11:45"
+msgid "21:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2426
 #: cuon/Addresses/GUI/src/interface.c:2536
-msgid "12:00"
+msgid "22:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2427
 #: cuon/Addresses/GUI/src/interface.c:2537
-msgid "12:15"
+msgid "22:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2428
 #: cuon/Addresses/GUI/src/interface.c:2538
-msgid "12:30"
+msgid "22:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2429
 #: cuon/Addresses/GUI/src/interface.c:2539
-msgid "12:45"
+msgid "22:45"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2430
 #: cuon/Addresses/GUI/src/interface.c:2540
-msgid "13:00"
+msgid "23:00"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2431
 #: cuon/Addresses/GUI/src/interface.c:2541
-msgid "13:15"
+msgid "23:15"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2432
 #: cuon/Addresses/GUI/src/interface.c:2542
-msgid "13:30"
+msgid "23:30"
 msgstr ""
 
 #: cuon/Addresses/GUI/src/interface.c:2433
 #: cuon/Addresses/GUI/src/interface.c:2543
-msgid "13:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2434
-#: cuon/Addresses/GUI/src/interface.c:2544
-msgid "14:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2435
-#: cuon/Addresses/GUI/src/interface.c:2545
-msgid "14:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2436
-#: cuon/Addresses/GUI/src/interface.c:2546
-msgid "14:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2437
-#: cuon/Addresses/GUI/src/interface.c:2547
-msgid "14:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2438
-#: cuon/Addresses/GUI/src/interface.c:2548
-msgid "15:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2439
-#: cuon/Addresses/GUI/src/interface.c:2549
-msgid "15:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2440
-#: cuon/Addresses/GUI/src/interface.c:2550
-msgid "15:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2441
-#: cuon/Addresses/GUI/src/interface.c:2551
-msgid "15:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2442
-#: cuon/Addresses/GUI/src/interface.c:2552
-msgid "16:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2443
-#: cuon/Addresses/GUI/src/interface.c:2553
-msgid "16:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2444
-#: cuon/Addresses/GUI/src/interface.c:2554
-msgid "16:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2445
-#: cuon/Addresses/GUI/src/interface.c:2555
-msgid "16:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2446
-#: cuon/Addresses/GUI/src/interface.c:2556
-msgid "17:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2447
-#: cuon/Addresses/GUI/src/interface.c:2557
-msgid "17:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2448
-#: cuon/Addresses/GUI/src/interface.c:2558
-msgid "17:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2449
-#: cuon/Addresses/GUI/src/interface.c:2559
-msgid "17:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2450
-#: cuon/Addresses/GUI/src/interface.c:2560
-msgid "18:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2451
-#: cuon/Addresses/GUI/src/interface.c:2561
-msgid "18:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2452
-#: cuon/Addresses/GUI/src/interface.c:2562
-msgid "18:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2453
-#: cuon/Addresses/GUI/src/interface.c:2563
-msgid "18:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2454
-#: cuon/Addresses/GUI/src/interface.c:2564
-msgid "19:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2455
-#: cuon/Addresses/GUI/src/interface.c:2565
-msgid "19:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2456
-#: cuon/Addresses/GUI/src/interface.c:2566
-msgid "19:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2457
-#: cuon/Addresses/GUI/src/interface.c:2567
-msgid "19:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2458
-#: cuon/Addresses/GUI/src/interface.c:2568
-msgid "20:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2459
-#: cuon/Addresses/GUI/src/interface.c:2569
-msgid "20:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2460
-#: cuon/Addresses/GUI/src/interface.c:2570
-msgid "20:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2461
-#: cuon/Addresses/GUI/src/interface.c:2571
-msgid "20:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2462
-#: cuon/Addresses/GUI/src/interface.c:2572
-msgid "21:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2463
-#: cuon/Addresses/GUI/src/interface.c:2573
-msgid "21:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2464
-#: cuon/Addresses/GUI/src/interface.c:2574
-msgid "21:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2465
-#: cuon/Addresses/GUI/src/interface.c:2575
-msgid "21:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2466
-#: cuon/Addresses/GUI/src/interface.c:2576
-msgid "22:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2467
-#: cuon/Addresses/GUI/src/interface.c:2577
-msgid "22:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2468
-#: cuon/Addresses/GUI/src/interface.c:2578
-msgid "22:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2469
-#: cuon/Addresses/GUI/src/interface.c:2579
-msgid "22:45"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2470
-#: cuon/Addresses/GUI/src/interface.c:2580
-msgid "23:00"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2471
-#: cuon/Addresses/GUI/src/interface.c:2581
-msgid "23:15"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2472
-#: cuon/Addresses/GUI/src/interface.c:2582
-msgid "23:30"
-msgstr ""
-
-#: cuon/Addresses/GUI/src/interface.c:2473
-#: cuon/Addresses/GUI/src/interface.c:2583
 msgid "23:45"
 msgstr ""
 
-#: cuon/Addresses/GUI/src/interface.c:2480
+#: cuon/Addresses/GUI/src/interface.c:2440
 msgid "Schedul ends at time"
 msgstr "Termin endet um"
 
-#: cuon/Addresses/GUI/src/interface.c:2594
+#: cuon/Addresses/GUI/src/interface.c:2554
 msgid "Alarm"
-msgstr ""
+msgstr "Alarm"
 
-#: cuon/Addresses/GUI/src/interface.c:2598
+#: cuon/Addresses/GUI/src/interface.c:2558
 msgid " min. before"
 msgstr "Min. vorher"
 
-#: cuon/Addresses/GUI/src/interface.c:2624
+#: cuon/Addresses/GUI/src/interface.c:2584
 #: cuon/Addresses/GUI/addresses.c:126
 msgid "Process"
 msgstr "Status"
 
-#: cuon/Addresses/GUI/src/interface.c:2689
+#: cuon/Addresses/GUI/src/interface.c:2649
 msgid "search Staff"
 msgstr "Suche Mitarbeiter"
 
-#: cuon/Addresses/GUI/src/interface.c:2693
+#: cuon/Addresses/GUI/src/interface.c:2653
 #: cuon/Addresses/GUI/addresses.c:125
 msgid "Note"
 msgstr "Notiz"
 
-#: cuon/Addresses/GUI/src/interface.c:2718
+#: cuon/Addresses/GUI/src/interface.c:2678
 #: cuon/Addresses/GUI/addresses.c:121
 msgid "short Remark"
 msgstr "Kurze Bem."
 
-#: cuon/Addresses/GUI/src/interface.c:2756
+#: cuon/Addresses/GUI/src/interface.c:2716
 msgid "Goto Address"
 msgstr "gehe zu Adresse"
 
-#: cuon/Addresses/GUI/src/interface.c:2782
+#: cuon/Addresses/GUI/src/interface.c:2742
 msgid "D M S"
 msgstr "DMS"
 
-#: cuon/Addresses/GUI/src/interface.c:2819
+#: cuon/Addresses/GUI/src/interface.c:2779
 msgid "Begin at"
 msgstr "beginnt um"
 
-#: cuon/Addresses/GUI/src/interface.c:2863
+#: cuon/Addresses/GUI/src/interface.c:2823
 msgid "end at"
 msgstr "endet um"
 
-#: cuon/Addresses/GUI/src/interface.c:2890
-#: cuon/Addresses/GUI/src/interface.c:2925
-#: cuon/Addresses/GUI/src/interface.c:2960
-#: cuon/Addresses/GUI/src/interface.c:2995
-#: cuon/Addresses/GUI/src/interface.c:3030
+#: cuon/Addresses/GUI/src/interface.c:2850
+#: cuon/Addresses/GUI/src/interface.c:2885
+#: cuon/Addresses/GUI/src/interface.c:2920
+#: cuon/Addresses/GUI/src/interface.c:2955
+#: cuon/Addresses/GUI/src/interface.c:2990
 msgid "add Date/Name"
 msgstr "füge Datum/Name an"
 
-#: cuon/Addresses/GUI/src/interface.c:2897
-#: cuon/Addresses/GUI/src/interface.c:2932
-#: cuon/Addresses/GUI/src/interface.c:2967
-#: cuon/Addresses/GUI/src/interface.c:3002
-#: cuon/Addresses/GUI/src/interface.c:3037
+#: cuon/Addresses/GUI/src/interface.c:2857
+#: cuon/Addresses/GUI/src/interface.c:2892
+#: cuon/Addresses/GUI/src/interface.c:2927
+#: cuon/Addresses/GUI/src/interface.c:2962
+#: cuon/Addresses/GUI/src/interface.c:2997
 msgid "No Entry"
 msgstr "Kein Eintrag"
 
-#: cuon/Addresses/GUI/src/interface.c:2899
-#: cuon/Addresses/GUI/src/interface.c:2934
-#: cuon/Addresses/GUI/src/interface.c:2969
-#: cuon/Addresses/GUI/src/interface.c:3004
-#: cuon/Addresses/GUI/src/interface.c:3039
+#: cuon/Addresses/GUI/src/interface.c:2859
+#: cuon/Addresses/GUI/src/interface.c:2894
+#: cuon/Addresses/GUI/src/interface.c:2929
+#: cuon/Addresses/GUI/src/interface.c:2964
+#: cuon/Addresses/GUI/src/interface.c:2999
 msgid "add Formular"
 msgstr "füge Formular an"
 
-#: cuon/Addresses/GUI/src/interface.c:2913
+#: cuon/Addresses/GUI/src/interface.c:2873
 msgid "Notes misc"
 msgstr "sonstige Notizen"
 
-#: cuon/Addresses/GUI/src/interface.c:2948
-#: GUI/src/interface.c:388
+#: cuon/Addresses/GUI/src/interface.c:2908
 msgid "Notes contacter"
 msgstr "Notizen Kontacter"
 
-#: cuon/Addresses/GUI/src/interface.c:2983
+#: cuon/Addresses/GUI/src/interface.c:2943
 msgid "notes representant"
 msgstr "Notizen Repräsentant"
 
-#: cuon/Addresses/GUI/src/interface.c:3018
+#: cuon/Addresses/GUI/src/interface.c:2978
 msgid "notes salesman"
 msgstr "Notizen Berater"
 
-#: cuon/Addresses/GUI/src/interface.c:3053
+#: cuon/Addresses/GUI/src/interface.c:3013
 msgid "notes organisation"
 msgstr "Notizen Firma"
 
-#: cuon/Addresses/GUI/src/interface.c:3069
+#: cuon/Addresses/GUI/src/interface.c:3029
 msgid "Order for this address"
 msgstr "Aufträge für diese Adresse"
 
-#: cuon/Addresses/GUI/src/interface.c:3073
+#: cuon/Addresses/GUI/src/interface.c:3033
 msgid "Invoices fpr this address"
 msgstr "Rechnung für diese Adresse"
 
-#: cuon/Addresses/GUI/src/interface.c:3107
+#: cuon/Addresses/GUI/src/interface.c:3067
 msgid "Projects for this Address"
 msgstr "Projekte für diese Adresse"
 
-#: cuon/Addresses/GUI/src/interface.c:3150
+#: cuon/Addresses/GUI/src/interface.c:3110
 msgid "goto Project"
 msgstr "gehe zu Projekt"
 
@@ -2741,7 +2726,6 @@ msgstr "Uhrzeit"
 #: cuon/Stock/GUI/src/interface.c:123
 #: cuon/Stock/GUI/src/interface.c:194
 #: cuon/Stock/GUI/src/interface.c:309
-#: GUI/src/interface.c:265
 msgid "Stock"
 msgstr "Lager"
 
@@ -2831,15 +2815,37 @@ msgstr ""
 msgid "BIC"
 msgstr "BLZ"
 
-#: Cuon.py:300
+#: cuon/Stats/GUI/src/interface.c:44
+msgid "Caller"
+msgstr "Kontakter"
+
+#: cuon/Stats/GUI/src/interface.c:51
+msgid "Representant"
+msgstr "Repräsentant"
+
+#: cuon/Stats/GUI/src/interface.c:63
+#: GUI/src/interface.c:159
+#, fuzzy
+msgid "File"
+msgstr "_Datei"
+
+#: cuon/Stats/GUI/src/interface.c:96
+msgid "Stats"
+msgstr "Statistik"
+
+#: Cuon.py:301
 msgid "Client PyCuon for C.U.O.N. Version "
 msgstr "Client PyCuon für C.U.O.N. Version "
 
-#: Cuon.py:959
+#: Cuon.py:962
 msgid "Names"
 msgstr "Namen"
 
-#: Cuon.py:1295
+#: Cuon.py:1016
+msgid "Salesman"
+msgstr "Berater"
+
+#: Cuon.py:1301
 msgid "Debug by C.U.O.N. = "
 msgstr "Debug in C.U.O.N."
 
@@ -2848,227 +2854,194 @@ msgid "C U O N"
 msgstr "C.U.O.N"
 
 #: GUI/cuon.c:9
-#: GUI/src/interface.c:167
 msgid "Login"
 msgstr "Anmelden"
 
 #: GUI/cuon.c:10
-#: GUI/src/interface.c:171
 msgid "Logout"
 msgstr "Abmelden"
 
 #: GUI/cuon.c:11
-#: GUI/src/interface.c:183
 msgid "Close the Application"
 msgstr "Beenden"
 
 #: GUI/cuon.c:12
-#: GUI/src/interface.c:180
 msgid "quit"
 msgstr "Ende"
 
 #: GUI/cuon.c:13
-#: GUI/src/interface.c:189
 msgid "Data"
 msgstr "Stammdaten"
 
 #: GUI/cuon.c:15
-#: GUI/src/interface.c:200
 msgid "Arti_cles"
 msgstr "Arti_kel"
 
 #: GUI/cuon.c:16
-#: GUI/src/interface.c:261
 msgid "_Order"
 msgstr "Auf_trag"
 
 #: GUI/cuon.c:18
-#: GUI/src/interface.c:325
 msgid "Preferences"
 msgstr "Einstellungen"
 
 #: GUI/cuon.c:19
-#: GUI/src/interface.c:340
 msgid "Update"
 msgstr "Erneuern"
 
 #: GUI/cuon.c:20
-#: GUI/src/interface.c:344
 msgid "Report-Generator"
 msgstr "Report-Generator"
 
 #: GUI/cuon.c:21
-#: GUI/src/interface.c:405
+#: GUI/src/interface.c:185
 msgid "Help"
 msgstr "Hilfe"
 
 #: GUI/cuon.c:22
-#: GUI/src/interface.c:412
 msgid "About"
 msgstr "Über Cuon"
 
-#: GUI/src/interface.c:143
-msgid "Client PyCuon"
+#: GUI/src/interface.c:149
+msgid "CUON Installer"
+msgstr "CUON Installationsprogramm"
+
+#: GUI/src/interface.c:170
+msgid "Services"
+msgstr "Dienste"
+
+#: GUI/src/interface.c:177
+msgid "Database Tools"
+msgstr "Tools für Datenbanken"
+
+#: GUI/src/interface.c:181
+msgid "Create Client"
+msgstr "Mandant erzeugen"
+
+#: GUI/src/interface.c:562
+msgid "Port-XMLRPC"
 msgstr ""
 
-#: GUI/src/interface.c:213
-msgid "Bibliographic"
-msgstr "Literatur"
+#: GUI/src/interface.c:569
+msgid "Port-SSH"
+msgstr "Port SSH"
 
-#: GUI/src/interface.c:217
-msgid "Staff"
-msgstr "Personal"
+#: GUI/src/interface.c:576
+msgid "Host-IP"
+msgstr "Computer"
 
-#: GUI/src/interface.c:226
-msgid "Contracts"
-msgstr "Verträge"
+#: GUI/src/interface.c:602
+msgid "False"
+msgstr "Falsch"
 
-#: GUI/src/interface.c:233
-msgid "Insurances"
-msgstr "Versicherungen"
+#: GUI/src/interface.c:608
+msgid "True"
+msgstr "Wahr"
 
-#: GUI/src/interface.c:237
-msgid "Rent"
-msgstr "Miete"
+#: GUI/src/interface.c:614
+msgid "Default"
+msgstr "Vorgabe"
 
-#: GUI/src/interface.c:241
-msgid "Leasing"
-msgstr "Leasing"
+#: GUI/src/interface.c:627
+msgid "locale"
+msgstr "Lokale"
 
-#: GUI/src/interface.c:250
-msgid "Clients"
-msgstr "Mandanten"
+#: GUI/src/interface.c:640
+msgid "Protocol"
+msgstr "Protokoll"
 
-#: GUI/src/interface.c:254
-msgid "Action"
-msgstr "Arbeit"
+#: GUI/src/interface.c:653
+msgid "Server"
+msgstr "Server"
 
-#: GUI/src/interface.c:273
-msgid "Accounting"
-msgstr "Buchhaltung"
+#: GUI/src/interface.c:672
+msgid "Cancel"
+msgstr "abbrechen"
 
-#: GUI/src/interface.c:280
-msgid "cash account book"
-msgstr "Kassenbuch"
+#: GUI/src/interface.c:680
+msgid "Save Data"
+msgstr "sichere Daten"
 
-#: GUI/src/interface.c:284
-msgid "list_of_invoices"
-msgstr "Rechnungsbuch"
+#: GUI/src/interface.c:684
+msgid "restart server"
+msgstr "Server neustart"
 
-#: GUI/src/interface.c:288
-msgid "Extras"
-msgstr "Sonstiges"
+#: GUI/src/interface.c:688
+msgid "Start Install"
+msgstr "start Install"
 
-#: GUI/src/interface.c:295
-msgid "Mayavi"
-msgstr "Mayavi"
-
-#: GUI/src/interface.c:306
-msgid "Expert System"
-msgstr "Experten System"
-
-#: GUI/src/interface.c:310
-msgid "Project"
-msgstr "Projekt"
-
-#: GUI/src/interface.c:314
-msgid "Web"
-msgstr "Internet"
-
-#: GUI/src/interface.c:336
-msgid "Finances"
-msgstr "Buchhaltung"
-
-#: GUI/src/interface.c:348
-msgid "WebShop"
-msgstr ""
-
-#: GUI/src/interface.c:357
-msgid "Databases"
-msgstr "Datenbanken"
-
-#: GUI/src/interface.c:366
-msgid "Import Data"
-msgstr "Daten importieren"
-
-#: GUI/src/interface.c:370
-msgid "Forms"
-msgstr "Formulare"
-
-#: GUI/src/interface.c:384
-msgid "Notes Misc"
-msgstr "sonstige Notizen"
-
-#: GUI/src/interface.c:392
-msgid "Notes Representant"
-msgstr "Notizen Repräsentant"
-
-#: GUI/src/interface.c:396
-msgid "Notes Salesman"
-msgstr "Notizen Berater"
-
-#: GUI/src/interface.c:416
-msgid "Online-Help"
-msgstr "Online-Hilfe"
-
-#: GUI/src/interface.c:424
-msgid "connected user"
-msgstr "verbundener Benutzer"
-
-#: GUI/src/interface.c:440
-msgid "connected server"
-msgstr "verbundener Server"
-
-#: GUI/src/interface.c:456
-msgid "Application-Server"
-msgstr ""
-
-#: GUI/src/interface.c:484
-msgid "Web-Shop"
-msgstr ""
-
-#: GUI/src/interface.c:498
-msgid "show Scheduls"
-msgstr "zeige Termine"
-
-#: GUI/src/interface.c:515
-msgid "only new"
-msgstr "nur Neue"
-
-#: GUI/src/interface.c:521
-msgid "all"
-msgstr "alle"
-
-#: GUI/src/interface.c:527
-msgid "canceld"
-msgstr "abgebrochen"
-
-#: GUI/src/interface.c:533
-msgid "actual week"
-msgstr "aktuelle Woche"
-
-#: GUI/src/interface.c:564
-msgid "goto Address"
-msgstr "gehe zu Adresse"
-
-#: GUI/src/interface.c:880
-msgid "About CUON"
-msgstr "Über Cuon"
-
-#: GUI/src/interface.c:891
-msgid "C.U.O.N."
-msgstr "C.U.O.N."
-
-#: GUI/src/interface.c:895
-msgid "An Internet Business-Software"
-msgstr "Eine Internet Geschäftssoftware"
-
-#: GUI/src/interface.c:916
-msgid ""
-"Authors:\n"
-"Juergen Hamel, 32584 Loehne, Germany"
-msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
-
+#~ msgid "Scheduls"
+#~ msgstr "Termine"
+#~ msgid "Stat"
+#~ msgstr "Statistik"
+#~ msgid "Bibliographic"
+#~ msgstr "Literatur"
+#~ msgid "Staff"
+#~ msgstr "Personal"
+#~ msgid "Contracts"
+#~ msgstr "Verträge"
+#~ msgid "Insurances"
+#~ msgstr "Versicherungen"
+#~ msgid "Rent"
+#~ msgstr "Miete"
+#~ msgid "Leasing"
+#~ msgstr "Leasing"
+#~ msgid "Clients"
+#~ msgstr "Mandanten"
+#~ msgid "Action"
+#~ msgstr "Arbeit"
+#~ msgid "Accounting"
+#~ msgstr "Buchhaltung"
+#~ msgid "cash account book"
+#~ msgstr "Kassenbuch"
+#~ msgid "list_of_invoices"
+#~ msgstr "Rechnungsbuch"
+#~ msgid "Extras"
+#~ msgstr "Sonstiges"
+#~ msgid "Mayavi"
+#~ msgstr "Mayavi"
+#~ msgid "Expert System"
+#~ msgstr "Experten System"
+#~ msgid "Project"
+#~ msgstr "Projekt"
+#~ msgid "Web"
+#~ msgstr "Internet"
+#~ msgid "Finances"
+#~ msgstr "Buchhaltung"
+#~ msgid "Import Data"
+#~ msgstr "Daten importieren"
+#~ msgid "Forms"
+#~ msgstr "Formulare"
+#~ msgid "Notes Misc"
+#~ msgstr "sonstige Notizen"
+#~ msgid "Notes Representant"
+#~ msgstr "Notizen Repräsentant"
+#~ msgid "Notes Salesman"
+#~ msgstr "Notizen Berater"
+#~ msgid "Online-Help"
+#~ msgstr "Online-Hilfe"
+#~ msgid "connected user"
+#~ msgstr "verbundener Benutzer"
+#~ msgid "show Scheduls"
+#~ msgstr "zeige Termine"
+#~ msgid "only new"
+#~ msgstr "nur Neue"
+#~ msgid "all"
+#~ msgstr "alle"
+#~ msgid "actual week"
+#~ msgstr "aktuelle Woche"
+#~ msgid "goto Address"
+#~ msgstr "gehe zu Adresse"
+#~ msgid "About CUON"
+#~ msgstr "Über Cuon"
+#~ msgid "C.U.O.N."
+#~ msgstr "C.U.O.N."
+#~ msgid "An Internet Business-Software"
+#~ msgstr "Eine Internet Geschäftssoftware"
+#~ msgid ""
+#~ "Authors:\n"
+#~ "Juergen Hamel, 32584 Loehne, Germany"
+#~ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgid "New "
 #~ msgstr "_Neu"
 #~ msgid "choose Profile"
@@ -3079,8 +3052,6 @@ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgstr "SQL-Kodierung"
 #~ msgid "standard Profile"
 #~ msgstr "Standardprofil"
-#~ msgid "Locales"
-#~ msgstr "Deutscher Name"
 #~ msgid "Color Background"
 #~ msgstr "Hintergrundfarbe"
 #~ msgid "Color Foreground"
@@ -3097,10 +3068,6 @@ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgstr "zeige/drucke Rechnung"
 #~ msgid "Email address"
 #~ msgstr "Email Adresse"
-#~ msgid "Host"
-#~ msgstr "Computer"
-#~ msgid "Port"
-#~ msgstr "Port"
 #~ msgid "Scan Device"
 #~ msgstr "Scanner"
 #~ msgid "Mode"
@@ -3189,8 +3156,6 @@ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgstr "Nr. des Lieferanten"
 #~ msgid "Des. by Vendor"
 #~ msgstr "Beschr. des Lieferanten"
-#~ msgid "Sale"
-#~ msgstr "Verkauf"
 #~ msgid "Webshop-Article"
 #~ msgstr "Webshop-Artikel"
 #~ msgid "sync. Stock"
@@ -3311,8 +3276,6 @@ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgstr "Literatur"
 #~ msgid "Author"
 #~ msgstr "Autor"
-#~ msgid "Series"
-#~ msgstr "Serie"
 #~ msgid "Publisher"
 #~ msgstr "Verlag"
 #~ msgid "Page"
@@ -3517,8 +3480,6 @@ msgstr "Autoren: Jürgen Hamel, 32584 Löhne, Germany"
 #~ msgstr "Python Programm"
 #~ msgid "Directory Structure"
 #~ msgstr "Verzeichnisstruktur"
-#~ msgid "edit Data"
-#~ msgstr "bearbeite Daten"
 #~ msgid "Preview"
 #~ msgstr "Vorschau"
 #~ msgid "Select A File"

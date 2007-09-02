@@ -159,6 +159,7 @@ class dumps:
         else:
             sOutput = os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
             
+        return fname
         
 
     def getCheckedValue(self, value, type, min = None, max = None):

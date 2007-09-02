@@ -669,3 +669,30 @@ class Database(xmlrpc.XMLRPC, SQL):
         liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         print liResult
         return True
+
+    def xmlrpc_getDMSRights(self,sName):
+        Value = None
+        rights = 'NONE'
+        groups = 'NONE'
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/sql.ini')
+            #print cpServer
+            #print cpServer.sections()
+            if sName == 'INVOICE':
+                value = self.getConfigOption('DEFAULT_MODUL_RIGHTS_DMS','INVOICE', cpServer)
+        
+        except:
+            pass
+        if value:
+            liS = value.split(',')
+            if liS:
+                try:
+                    rights = liS[0]
+                    groups = liS[1]
+                    
+                except:
+                    pass
+                    
+        return rights,groups
+        
