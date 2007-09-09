@@ -362,14 +362,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         self.writeLog(result)
         
             
-        try:
-            if result == 'ERROR':
-                id = 0
         
-        except:
-            pass
-            # sSql = sSql[0:string.rfind(sSql,',')]
-             
         
         # find last id 
         if id < 0:
@@ -381,7 +374,14 @@ class SQL(xmlrpc.XMLRPC, basics):
             except:
                 id = 0
                 
+        try:
+            if result == 'ERROR':
+                id = 0
         
+        except:
+            pass
+            # sSql = sSql[0:string.rfind(sSql,',')]
+             
                    
         return id
     

@@ -92,11 +92,20 @@ class basics(xmlrpc.XMLRPC):
         self.DIC_USER['SQLDateFormat'] = 'DD.MM.YYYY'
         self.DIC_USER['SQLTimeFormat'] = 'HH24:MI'
         self.DIC_USER['SQLDateTimeFormat'] = 'DD.MM.YYYY HH24:MI'
+        self.DIC_USER['DateTimeFormatstring'] = '%d.%m.%Y %H:%M'
+        
+        self.AUTOMATIC_SCHEDUL = False
         try:
             self.cpServer = ConfigParser.ConfigParser()
             
             self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
-    
+            # Automatic schedul 
+
+            value = self.getConfigOption('AUTOMATIC','SCHEDUL')
+            if value:
+                if value.upper() == 'YES':
+                    self.AUTOMATIC_SCHEDUL = True
+              
             # Debug
             value = self.getConfigOption('DEBUG','ACTIVATE')
             if value:
@@ -355,7 +364,8 @@ class basics(xmlrpc.XMLRPC):
             
         return oValue
     def writeLog(self, sLogEntry, debugValue = 1):
-        if self.DEBUG:
+        
+        if debugValue > 100 or self.DEBUG:
             try:
                 #print 'debugValue', debugValue
                 if debugValue == 1 or self.DEBUG_MODUS > 0:

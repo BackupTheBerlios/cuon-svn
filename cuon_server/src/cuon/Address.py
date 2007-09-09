@@ -105,8 +105,10 @@ class Address(xmlrpc.XMLRPC, basics):
             #print 'sChoice = ', sChoice
             if sChoice == 'New':
                 sW += " and  date_part('doy', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  >=  date_part('doy', now())"
+                sW += " and date_part('year', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('year', now())"
             elif sChoice == 'actualWeek':
                 sW += " and  date_part('week', to_date(partner_schedul.schedul_date, '" + dicUser['SQLDateFormat'] +"'))  =  date_part('week', now())"
+                sW += " and date_part('year', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('year', now())"
             elif sChoice == 'Cancel':
                 sW += ' and partner_schedul.process_status between 801 and 998 '
             elif sChoice == 'All':

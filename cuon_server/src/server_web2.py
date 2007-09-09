@@ -62,6 +62,7 @@ def start():
             result['data'] = baseSettings.rebuild(result['data'])
             liDirs = result['data'].split(',')
             for sDir in liDirs:
+                sDir = sDir.strip()
                 sKey = sDir[sDir.rfind('/')+1:]
                 sDir = baseSettings.WEBPATH + sDir
                 print 'sDir = ', sDir

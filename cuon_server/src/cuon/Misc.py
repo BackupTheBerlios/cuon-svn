@@ -51,7 +51,7 @@ class Misc(xmlrpc.XMLRPC, basics):
     def xmlrpc_getListOfTOPs (self, dicuser):
         sSql = 'select id, number from terms_of_payment'
         sSql = sSql + context.sql.py_getWhere("",dicUser,1)
-        result = oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         li = []
         if result not in ['NONE','ERROR']:
            for i in range(len(result)):
@@ -131,9 +131,9 @@ class Misc(xmlrpc.XMLRPC, basics):
                 self.writeLog(shellcommand)
 
                 liStatus = commands.getstatusoutput(shellcommand)
-                shellcommand = 'ssh -p ' + Faxport.strip() + ' '  + Faxuser.strip() +'@' + Faxserver.strip() + ' "sendfax -n -o ' + dicUser['Name'] + ' -d \"' + phone_number + '\" ' + filename + ' "'
-                self.writeLog(shellcommand)
-                liStatus = commands.getstatusoutput(shellcommand)
+                #shellcommand = 'ssh -p ' + Faxport.strip() + ' '  + Faxuser.strip() +'@' + Faxserver.strip() + ' "sendfax -n -o ' + dicUser['Name'] + ' -d \"' + phone_number + '\" ' + filename + ' "'
+                #self.writeLog(shellcommand)
+                #liStatus = commands.getstatusoutput(shellcommand)
                 
                 self.writeLog(`liStatus`)
                 ok = True

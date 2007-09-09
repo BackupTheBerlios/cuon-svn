@@ -14,9 +14,14 @@ class Web(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
         self.iCal = iCal.iCal()
         self.oDatabase = Database.Database()
+        
     def xmlrpc_addCalendarEvent(self, sName, firstRecord, dicUser):
-        ok = self.iCal.addEvent( sName, firstRecord, dicUser)
-        print ok 
+        ok = False
+        self.writeLog('Automatic-Flag = ' + `self.AUTOMATIC_SCHEDUL`)
+        if not self.AUTOMATIC_SCHEDUL:
+            self.writeLog('create Schedul-iCal')
+            ok = self.iCal.addEvent( sName, firstRecord, dicUser)
+        
         return ok 
         
     def xmlrpc_updateCalendar(self, liNames, dicData, dicUser):
@@ -32,3 +37,55 @@ class Web(xmlrpc.XMLRPC, basics):
         liStatus = commands.getstatusoutput(shellcommand)
         print liStatus
         return liStatus
+          
+    def xmlrpc_cron_create_iCal(self, sName, fromDate = None):
+            
+        self.writeLog( 'cron_create_iCal, user = ' + sName)
+        ok = True
+        dicUser = {}
+        dicUser['Name'] = sName
+        sSql = 'select * from partner_schedul where schedul_time_begin > 0 '
+        if not fromDate:
+            sSql += " and date_part('doy', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('doy', now()) -2 "
+            sSql += " and date_part('year', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('year', now())"
+        sSql += ' order by id desc '
+        self.writeLog(sSql,999)
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        #self.writeLog(dicResult)
+        if fromDate == 'All':
+            liStaff = self.oDatabase.xmlrpc_executeNormalQuery('select cuon_username from staff',dicUser)
+            if liStaff and liStaff not in ['NONE','ERROR']:
+                for j in liStaff:
+                    self.iCal.delCalendar('iCal_' + j['cuon_username'])
+                    
+        if dicResult and dicResult not in ['NONE','ERROR']:
+            z1 = len(dicResult)
+            z2 = 0
+            self.writeLog('Len of new icals = ' + `z1`,999)
+            
+            for i in dicResult:
+                if fromDate == 'All':
+                    self.iCal.addEvent(i['user_id'],i,dicUser, True)
+                else:
+                    self.iCal.addEvent(i['user_id'],i,dicUser, False)
+                z2 += 1
+                self.writeLog('new icals  ' + `z2` + ' from ' + `z1`,999)
+                
+        return ok
+    
+    def xmlrpc_cron_create_iCal2(self, sName):
+            
+        self.writeLog( 'cron_create_iCal, user = ' + sName)
+        ok = True
+        dicUser = {}
+        dicUser['Name'] = sName
+        sSql = 'select * from partner_schedul where sep_info_3 = 5 '
+        self.writeLog(sSql)
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        #self.writeLog(dicResult)
+        if dicResult and dicResult not in ['NONE','ERROR']:
+            for i in dicResult:
+                self.iCal.addEvent(i['user_id'],i,dicUser)
+                sSql = 'update partner_schedul set sep_info_3 = 2 where id = ' + `i['id'] `
+                dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        return ok

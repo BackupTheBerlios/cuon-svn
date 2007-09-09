@@ -1,6 +1,7 @@
 
 echo start cuon
 rem testing to see if a file exists
+
 if  exist  newversion  goto  filefound
 echo  file does not exist
 goto end

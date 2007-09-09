@@ -33,6 +33,12 @@
         <index_column>city</index_column>
     </index>
     <index>
+        <index_name>address_idx_phone</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>phone</index_column>
+    </index>
+    <index>
         <index_name>address_idx_lower_lastname</index_name>
         <index_special> </index_special>
         <index_table>address</index_table>
@@ -56,14 +62,20 @@
         <index_table>address</index_table>
         <index_column>status_info</index_column>
     </index>
+    
+    
     <index>
         <index_name>partner_idx_lastname</index_name>
         <index_special> </index_special>
         <index_table>partner</index_table>
         <index_column>lastname</index_column>
     </index>
-    
-    
+    <index>
+        <index_name>partner_idx_firstname</index_name>
+        <index_special> </index_special>
+        <index_table>partner</index_table>
+        <index_column>firstname</index_column>
+    </index>   
     <index>
         <index_name>partner_idx_addressid</index_name>
         <index_special> </index_special>
@@ -72,10 +84,31 @@
     </index>
     
     <index>
+        <index_name>partner_idx_status_client</index_name>
+        <index_special> </index_special>
+        <index_table>partner</index_table>
+        <index_column>status,client</index_column>
+    </index>
+    
+    
+    
+    <index>
         <index_name>partner_schedul_idx_partnerid</index_name>
         <index_special> </index_special>
         <index_table>partner_schedul</index_table>
         <index_column>partnerid</index_column>
+    </index>
+    <index>
+        <index_name>partner_schedul_idx_process_status</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>process_status</index_column>
+    </index>
+     <index>
+        <index_name>partner_schedul_idx_status_client</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>status,client</index_column>
     </index>
     
       <index>
@@ -83,6 +116,12 @@
         <index_special> </index_special>
         <index_table>address_notes</index_table>
         <index_column>address_id</index_column>
+    </index>
+    <index>
+        <index_name>address_notes_idx_status_client</index_name>
+        <index_special> </index_special>
+        <index_table>address_notes</index_table>
+        <index_column>status,client</index_column>
     </index>
     
     <index>
@@ -104,6 +143,12 @@
         <index_special> </index_special>
         <index_table>contact</index_table>
         <index_column>contacter_id</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_status_client</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column>status,client</index_column>
     </index>
      <index>
         <index_name>bank_idx_bcn</index_name>
@@ -286,6 +331,82 @@
  </description>
 
     </function>
+    <function>
+      <old_name>fct_partner_schedul_change() </old_name>
+      <nameOfFunction>fct_partner_schedul_change( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+
+  BEGIN
+      if not OLD.status = ''delete'' then 
+            NEW.update_user_id = current_user   ;
+            NEW.update_time = (select  now()) ;
+            NEW.user_id = OLD.user_id;
+                          NEW.insert_time = OLD.insert_time ;
+                          NEW.status = ''update'' ;
+                          if NEW.sep_info_3 = 2 then 
+                            NEW.sep_info_3 = 0 ;
+                          else  
+                            NEW.sep_info_3 = 5 ;
+                          end if \;
+            RAISE NOTICE ''Name =  % '', TG_NAME ;
+            RETURN NEW; 
+      else 
+            RETURN OLD;
+      end if \;
+	END;
+	
+      </textOfFunction>
+   	<description>set sep_info_3 to 5 </description>
+
+    </function>
+    
+    
+    <function>
+      <old_name>fct_partner_schedul_insert() </old_name>
+      <nameOfFunction>fct_partner_schedul_insert( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+	BEGIN
+	    NEW.user_id = current_user   ;
+	    NEW.insert_time = (select  now()) ;
+                      NEW.status = ''insert'' ;
+                      NEW.sep_info_3 = 5 ;
+	    RAISE NOTICE ''Name =  % '', TG_NAME ;
+	    RETURN NEW; 
+	END;
+      </textOfFunction>
+   	<description>set the user_id to current_user </description>
+
+    </function>
+    <trigger>
+      <nameOfTrigger>trg_change_partner_schedul</nameOfTrigger>
+      <table>partner_schedul</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_partner_schedul_change() ;  </textOfTrigger>
+      <description>update or insert set sep_info_3 to 5 </description>
+      
+    </trigger>
+    
+     <trigger>
+      <nameOfTrigger>trg_insertPartnerSchedul</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_partner_schedul_insert() ;  </textOfTrigger>
+      <description>insert PARTNER_SCHEDUL </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletePARTNER_SCHEDUL</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a PARTNER_SCHEDUL, set status to delete  </description>
+      
+    </trigger>
     
     <trigger>
       <nameOfTrigger>trg_insertAddress</nameOfTrigger>
@@ -605,25 +726,7 @@
     </trigger>
     
     
-    <trigger>
-      <nameOfTrigger>trg_insertPARTNER_SCHEDUL</nameOfTrigger>
-      <table>PARTNER_SCHEDUL</table>
-      <action>before insert </action>
-      <cursor>FOR EACH ROW</cursor>
-      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
-      <description>insert PARTNER_SCHEDUL </description>
-      
-    </trigger>
- <trigger>
-      <nameOfTrigger>trg_deletePARTNER_SCHEDUL</nameOfTrigger>
-      <table>PARTNER_SCHEDUL</table>
-      <action>before delete</action>
-      <cursor>FOR EACH ROW</cursor>
-      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
-      <description>if delete a PARTNER_SCHEDUL, set status to delete  </description>
-      
-    </trigger>
-    
+   
    
     <trigger>
       <nameOfTrigger>trg_insertCLIENTS</nameOfTrigger>

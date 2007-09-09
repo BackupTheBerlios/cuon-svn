@@ -12,6 +12,7 @@ class iCal(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
+        
 
     def createUID(self):
         s = ''
@@ -77,7 +78,10 @@ class iCal(xmlrpc.XMLRPC, basics):
             #event = None
         return event
         
-        
+    def delCalendar(self,sName):
+        newCal = self.createCal()
+        self.writeCalendar(sName, newCal)
+          
     def getCalendar(self, sName):
         Cal = None
         try:
@@ -123,7 +127,7 @@ class iCal(xmlrpc.XMLRPC, basics):
 
         return sCal
      
-    def setCalendarValues(self,sName,firstRecord, dicUser, sUserKey):
+    def setCalendarValues(self,sName,firstRecord, dicUser, sUserKey, completeNew = False):
         ok = False
         dicEvent = self.getDicCal(firstRecord, dicUser,sUserKey)
         
@@ -135,36 +139,43 @@ class iCal(xmlrpc.XMLRPC, basics):
          
         Cal = self.getCalendar(sName)
         #print 'Cal', Cal
-        
-        Cal2 = self.createCal()
-        for i in Cal.walk('VEVENT'):
-            print 'i = ', i
-            if i.has_key('UID'):
-                print 'uid = ', i['UID']
-                sSearch = `firstRecord['id']` +'####'
-                print sSearch
-                if i['UID'][0:len(sSearch)] != sSearch:
-                    print 'uid not found'
-                    Cal2.add_component(i)
-            else:
-                Cal2.add_component(i)
-            
         newEvent = self.createEvent(dicEvent)
-        print 'newEvent = ' + `newEvent`
-        if newEvent:
-            Cal2.add_component(newEvent)
-            self.writeCalendar(sName, Cal2)
+        
+        if completeNew:
+            Cal.add_component(newEvent)
             ok = True
-            
+            self.writeCalendar(sName, Cal)
+                 
+        else:
+            Cal2 = self.createCal()
+            for i in Cal.walk('VEVENT'):
+                print 'i = ', i
+                if i.has_key('UID'):
+                    print 'uid = ', i['UID']
+                    sSearch = `firstRecord['id']` +'####'
+                    print sSearch
+                    if i['UID'][0:len(sSearch)] != sSearch:
+                        print 'uid not found'
+                        Cal2.add_component(i)
+                else:
+                    Cal2.add_component(i)
+                
+            print 'newEvent = ' + `newEvent`
+            if newEvent and ( (newEvent.has_key('status') and  newEvent['status'] != "CANCELLED") or not newEvent.has_key('status')) :
+                Cal2.add_component(newEvent)
+                ok = True
+            self.writeCalendar(sName, Cal2)
+                
         return ok
 
-    def addEvent(self, sName, firstRecord, dicUser):
+    def addEvent(self, sName, firstRecord, dicUser, completeNew = False):
+        
         
         ok = False
         # calendar of the contakter
-        ok = self.setCalendarValues(sName, firstRecord, dicUser,'User')
+        ok = self.setCalendarValues(sName, firstRecord, dicUser,'User', completeNew)
         # calendar of the schedul staff
-        ok = self.setCalendarValues(sName, firstRecord, dicUser,'schedul_staff')
+        ok = self.setCalendarValues(sName, firstRecord, dicUser,'schedul_staff', completeNew)
         
         
        
@@ -223,7 +234,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         dicCal = {}
         print 'firstRecord = ', firstRecord
         # Save TimeTransformation
-        dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
+        #dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
+        dicCal['DateTimeformatString'] = self.DIC_USER['DateTimeFormatstring']
         sDate =  firstRecord['schedul_date']
         sDateEnd = firstRecord['schedul_date_end']
         print 'result = ', result

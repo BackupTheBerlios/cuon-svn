@@ -1102,6 +1102,7 @@ class addresswindow(chooseWindows):
         
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
+        
     def on_bSendExternEmail_clicked(self, event):
         pass
     

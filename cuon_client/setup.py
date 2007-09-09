@@ -322,6 +322,8 @@ class setup:
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/menus.cfg ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/menus.cfg " + self.SERVERCONFIGDIR + " ; fi ")
         
+        #grants.xml 
+        
         
         #cfg files for sql
         

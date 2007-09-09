@@ -471,7 +471,7 @@ class MainWindow(windows):
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/UserGroups.cfg inifiles')
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsOther.cfg inifiles')
         os.system('scp -P ' + td.sshPort + ' ' +td.sPrefix + '/etc/cuon/sql/GroupRightsCuon.cfg inifiles')
-        
+
         f_UserGroups = open('inifiles/UserGroups.cfg')
         f_GroupRightsOther = open('inifiles/GroupRightsOther.cfg')
         f_GroupRightsCuon = open('inifiles/GroupRightsCuon.cfg')
