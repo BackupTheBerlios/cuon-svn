@@ -411,6 +411,7 @@ class articleswindow(chooseWindows):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
         
+        
     
 
     def searchArticle(self):

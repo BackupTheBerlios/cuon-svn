@@ -3,7 +3,7 @@ from datetime import datetime
 import random
 import xmlrpclib
 from twisted.web import xmlrpc
- 
+import types 
 from basics import basics
 import Database
 
@@ -252,19 +252,27 @@ class Order(xmlrpc.XMLRPC, basics):
         dicValues['addressnumber'] = [dicOrder['addressnumber'],'int']
         print 'Locales:', dicUser['Locales']
         print 'Dateformatstring', dicUser['DateformatString']
+        print dicOrder
         if dicOrder.has_key('orderedat'):
                             
             try:
                 dO = time.strptime(dicOrder['orderedat'], dicUser['DateformatString'])
-                dD = time.strptime(dicOrder['deliveredat'], dicUser['DateformatString'])
                 dicValues['orderedat'] = [`dO[0]`+'/'+ `dO[1]` + '/'+ `dO[2]`,'date']
-                dicValues['deliveredat'] = [`dD[0]`+'/'+ `dD[1]` + '/'+ `dD[2]`,'date']
-            except:
-                pass
+                print 'Orderedat = ',  dicValues['orderedat']
+            except Exception,  params:
+                print Exception, params
         else:
             dicValues['orderedat'] = [time.strftime('%m/%d/%Y', time.localtime()),'date']
+           
+        if dicOrder.has_key('deliveredat'):
+            try:
+                dD = time.strptime(dicOrder['deliveredat'], dicUser['DateformatString'])
+                dicValues['deliveredat'] = [`dD[0]`+'/'+ `dD[1]` + '/'+ `dD[2]`,'date']
+                self.writeLog('Deliveredat = ' + `dicValues['deliveredat']`)
+            except Exception,  params:
+                print Exception, params
             
-        print dicValues
+        self.writeLog(dicValues)
         dicResult =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
         
         if dicOrder.has_key('Positions'):
@@ -274,11 +282,85 @@ class Order(xmlrpc.XMLRPC, basics):
                 print 'Position = ', position
                 print ':::::::::::::::::::::::::::::::::::::::::::::::'
                 dicResult2 =  self.oDatabase.xmlrpc_saveRecord('orderposition', -1, position, dicUser, 'NO')
-
-        
+        try:
+            lastID = int(dicResult)
+            if lastID > 0:
+                dicValues,  sSave  = self.checkDefaultOrder(dicUser,  lastID)
+                if sSave:
+                    dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', lastID, dicValues, dicUser, 'NO')
+        except:
+            pass
+            
+    
         
         
         return dicResult
+        
+    def checkDefaultOrder(self,  dicUser,  id) :
+        print 101
+        sSave = False
+        print 102
+        dicValues = {}
+    
+        try:
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            defaultOrderNumber = self.getConfigOption('CLIENT_' + `dicUser['client']`,'orderbook_number', cpServer)
+            defaultOrderDesignation = self.getConfigOption('CLIENT_' + `dicUser['client']`,'orderbook_designation', cpServer)
+            print defaultOrderDesignation, defaultOrderNumber
+            print 0 
+            t1 = time.localtime()
+            print 1
+            if defaultOrderNumber:
+                sSave = True
+                liValues = defaultOrderNumber.split(',')
+                sON = ''
+                for i in liValues:
+                    print 2, i
+                    if i == '!id':
+                        
+                        sON += `id`
+                    elif i=='!year':
+                        sON += `t1.tm_year`
+                    elif i=='!month':
+                        sON += `t1.tm_mon`    
+                    elif i=='!day':
+                        sON += `t1.tm_mday`
+                        
+                    else:
+                        sON += i
+                    print 'sON',  sON
+                dicValues['number'] = [sON, 'string']
+            if defaultOrderDesignation:
+                print 3
+                sSave = True
+                liValues = defaultOrderDesignation.split(',')
+                sOD = ''
+                sSql = ' select * from address where id = ( select addressnumber from orderbook where id = ' +  `id` + ')'
+                print sSql
+                dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+                print dicResult
+                for i in liValues:
+                    print 4, i
+                    print '4-1',i[1:]
+                    if i[0] == '!':
+                        if isinstance(dicResult[0][i[1:]], types.StringType):
+                            sOD += dicResult[0][i[1:]].decode(dicUser['Encoding'])
+                        else:
+                            sOD += `dicResult[0][i[1:]]`
+                    else:
+                        sOD += i
+                print 'sOD',  sOD
+                dicValues['designation'] = [sOD, 'string']
+            print 5    
+            print dicValues,  sSave
+        except Exception, params:
+            print Exception, params
+            
+        return dicValues, sSave
+        
+                    
+            
+        
         
     def getTotalSum(self,OrderID, dicUser):
         total_sum = 0

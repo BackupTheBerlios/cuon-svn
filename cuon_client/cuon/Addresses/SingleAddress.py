@@ -64,28 +64,33 @@ class SingleAddress(SingleData):
         
         
     def getAddress(self, id):
-        try:
-            id = long(id)
+        if id > 0:
+            try:
+                id = long(id)
+                
+                dicRecords = self.load(id)
+            except:
+                id = 0
+                dicRecords = {}
             
-            dicRecords = self.load(id)
-        except:
-            id = 0
-            dicRecords = {}
-        
-        liAddress = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
-            liAddress.append(dicRecord['firstname'])
-            liAddress.append(dicRecord['street'])
-            liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
-        if not liAddress:
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
+            liAddress = []
+            if dicRecords and dicRecords not in ['ERROR', 'NONE']:
+                dicRecord = dicRecords[0]
+                try:
+                    liAddress.append(dicRecord['lastname'])
+                    liAddress.append(dicRecord['lastname2'])
+                    liAddress.append(dicRecord['firstname'])
+                    liAddress.append(dicRecord['street'])
+                    liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
+                except:
+                    pass
+                    
+            if not liAddress:
+                liAddress.append(' ')
+                liAddress.append(' ')
+                liAddress.append(' ')
+                liAddress.append(' ')
+                liAddress.append(' ')
             
         return liAddress
 

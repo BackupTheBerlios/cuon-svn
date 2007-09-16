@@ -249,23 +249,30 @@ class orderwindow(chooseWindows):
 
         # start
         self.OrderID = orderid
-        if self.dicOrder and not newOrder and self.OrderID == 0:
-            print self.dicOrder
-            existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
-            print 'existOrder = ', existOrder
-            if not existOrder or existOrder == 'NONE':
-                print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
-                self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-            self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
-        elif self.dicOrder and newOrder and self.OrderID == 0:
-            dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-            if dicResult and dicResult not in ['NONE','ERROR']:
-                self.OrderID = dicResult[0]['last_value']
-                if self.OrderID > 0:
-                    self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
-        elif self.OrderID > 0:
-            self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
+        if Ordertype == 'Order':
             
+            if self.dicOrder and not newOrder and self.OrderID == 0:
+                print self.dicOrder
+                existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
+                print 'existOrder = ', existOrder
+                if not existOrder or existOrder == 'NONE':
+                    print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
+                    self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+                self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
+            elif self.dicOrder and newOrder and self.OrderID == 0:
+                try:
+                    dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+                    print dicResult
+                    if dicResult and dicResult not in ['NONE','ERROR'] and int(dicResult) > 0:
+                        self.OrderID = dicResult
+                        print 'Order-Id = ',  self.OrderID
+                        if self.OrderID > 0:
+                            self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
+                except:
+                    pass
+            elif self.OrderID > 0:
+                self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
+                
                     
         ts = self.getWidget('treeMaterialgroup')
         #treeview.set_model(liststore)
@@ -698,8 +705,8 @@ class orderwindow(chooseWindows):
                 for oneArticle in liArticles:
                     articlenumber = oneArticle['number']
                     articledesignation = oneArticle['designation']
-                    
-                    iter = treestore.append(None,[articlenumber +  ', ' + articledesignation +  '     ###' +`oneArticle['id']` ]) 
+                    articleprice = self.getCheckedValue( oneArticle['sellingprice1'],  'toLocaleString')
+                    iter = treestore.append(None,[articlenumber +  ' - ' + articleprice + '  ' + articledesignation +  '     ###' +`oneArticle['id']` ]) 
                     #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
                     
                     #iter2 = treestore.insert_after(iter,None,['TESTEN'])           

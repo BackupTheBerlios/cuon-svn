@@ -339,3 +339,25 @@ class gladeXml(defaultValues):
             self.getWidget(sWidget).set_text(sText)
         else:
             self.getWidget(sWidget).set_text('')
+
+    def gotoTreeItem(self, iItem,  tree1):
+        ''' go to Tree Item
+        @param iItem: int to jump to TreeItem, 0 to first, -1 to last Item
+        '''
+        treeModel = tree1.get_moedel()
+        firstIter = treeModel.get_iter_first()
+        treeSelection = tree1.get_selection()
+        iter =firstIter
+        if iItem == 0:
+            treeSelection.select_iter(firstIter)
+        elif iItem == -1:
+            while true:
+                iter0 = treeModel.iter_next(iter)
+                if  iter0:
+                    iter = iter0
+            if iter:
+                treeSelection.select_iter(iter)
+        else:
+            pass
+            
+        

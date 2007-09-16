@@ -81,6 +81,81 @@
 		      <signal name="activate" handler="on_adr_rep1_activate" last_modification_time="Wed, 29 Aug 2007 20:37:24 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="salesman1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Salesman</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_salesman1_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="order1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Order</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="order1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="misc2">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Misc</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_misc2_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="project1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Project</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="project1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="misc1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Misc</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_misc1_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="articles1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Articles</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="articles1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="misc3">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Misc</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_misc3_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

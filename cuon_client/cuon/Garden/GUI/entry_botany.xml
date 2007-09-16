@@ -45,7 +45,7 @@
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>eArticleNumber</name>
+      <name>eArticleID</name>
       <type>textline</type>
       <size>12</size>
       <verify_type>int</verify_type>

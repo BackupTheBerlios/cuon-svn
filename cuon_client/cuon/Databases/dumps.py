@@ -237,18 +237,21 @@ class dumps:
                     retValue = value 
 
             elif type == 'toLocaleString':
-                if isinstance(value, types.FloatType):
-                    convert = False
-                    for sLocale in self.decimalLocale['coma']:
-                        #print sLocale
-                        if sLocale == self.dicUser['Locales']:
-                            convert = True
-                    if convert:
-                        value = `value`.replace('.',',') 
-                    else:
-                        value = `value`
-                    
-                    retValue = value
+                try:
+                    if isinstance(value, types.FloatType):
+                        convert = False
+                        for sLocale in self.decimalLocale['coma']:
+                            #print sLocale
+                            if sLocale == self.dicUser['Locales']:
+                                convert = True
+                        if convert:
+                            value = `value`.replace('.',',') 
+                        else:
+                            value = `value`
+                        
+                        retValue = value
+                except:
+                    retValue = '0'
                 
             elif type == 'date':
                 #print 'value by date', value

@@ -646,3 +646,97 @@ class Address(xmlrpc.XMLRPC, basics):
         self.writeLog('rep-Result = ' + `result`)
         
         return result
+
+    def xmlrpc_getStatSalesman(self, dicUser):
+        result = {}
+        SALESMAN_ID = None
+        WITHOUT_ID = None
+        MIN_SCHEDUL_YEAR = '2003'
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+            #print cpServer
+            #print cpServer.sections()
+            
+            SALESMAN_ID = self.getConfigOption('STATS','SALESMAN_ID', cpServer)
+            WITHOUT_ID = self.getConfigOption('STATS','WITHOUT_ID', cpServer)
+        
+        except:
+            pass
+            
+
+        if SALESMAN_ID:
+            lisalesman = SALESMAN_ID.split(',')
+            liSql = []
+            liSql.append({'id':'day','sql':'doy','logic':'='})
+            liSql.append({'id':'week','sql':'week','logic':'='})
+            liSql.append({'id':'month','sql':'month','logic':'='})
+            liSql.append({'id':'quarter','sql':'quarter','logic':'='})
+            liSql.append({'id':'year','sql':'year','logic':'='})
+            liSql.append({'id':'decade','sql':'decade','logic':'='})
+            liSql.append({'id':'century','sql':'century','logic':'='})
+
+            for salesman in lisalesman:
+                salesman_name = None
+                sSql = 'select cuon_username from staff where staff.id = ' + salesman 
+                res1 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                if res1 and res1 not in ['NONE','ERROR']:
+                    salesman_name = res1[0]['cuon_username']
+                if salesman_name:    
+                    sSql = "select '" + salesman_name + "' as salesman_name_" + salesman + " ,"
+                    for vSql in liSql:
+                        for z1 in range(-5,20):
+                            if vSql['id'] == 'decade' and z1 > 4:
+                                pass
+                            elif vSql['id'] == 'century' and z1 > 1:
+                                pass 
+                            elif vSql['id'] == 'year' and z1 > 5:
+                                pass 
+                            elif vSql['id'] == 'quarter' and z1 > 9:
+                                pass 
+                            elif vSql['id'] == 'month' and z1 > 14:
+                                pass     
+                            elif vSql['id'] == 'week' and z1 > 9:
+                                pass     
+                            
+                            else:
+                                sSql += "(select  count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.schedul_staff_id = '" + salesman + "' and ps.partnerid = p.id and  ps.process_status != 999 "
+                                sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`
+                                if WITHOUT_ID:
+                                    liWithoutId = WITHOUT_ID.split(',')
+                                    for no_id in liWithoutId:
+                                        sSql += ' and a.id != ' + no_id
+                                sSql += " and date_part('year',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"')) >= " + MIN_SCHEDUL_YEAR
+                                sSql += self.getWhere('',dicUser,2,'ps.')
+                                sSql += ") as " + 'salesman_' + salesman +'_'+ vSql['id'] + '_count_' + `z1`.replace('-','M') + " , "
+                                
+                                #sSql += " group by a.salesman_id "
+
+
+                    sSql = sSql[0:len(sSql)-2]
+                    self.writeLog(sSql)
+                    tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                    if tmpResult and tmpResult not in ['NONE','ERROR']:
+                        oneResult = tmpResult[0]
+                        for key in oneResult.keys():
+                            result[key] = oneResult[key]
+                                      
+                 
+
+##                                tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+##                                if tmpResult and tmpResult not in ['NONE','ERROR']:
+##                                    oneResult = tmpResult[0]
+##                                    for key in oneResult.keys():
+##                                      result['salesman_' + salesman +'_'+ vSql['id'] + '_' + key + '_' + `z1` ] = oneResult[key]
+##                                      
+                    
+                
+                
+            
+        if not result:
+            result = 'NONE'
+
+
+        self.writeLog('salesman-Result = ' + `result`)
+        
+        return result

@@ -73,10 +73,16 @@ class statswindow(windows):
     def on_adr_rep1_activate(self, event):
         
         dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_rep']}
-        dicCaller = self.rpc.callRP('Address.getStatRep',self.oUser.getSqlDicUser())
-        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-104}, dicCaller, dicExtInfo)
+        dicRep = self.rpc.callRP('Address.getStatRep',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_caller'], {'1':-104}, dicRep, dicExtInfo)
         
+    def on_adr_salesman1_activate(self, event):
         
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_salesman']}
+        dicSales = self.rpc.callRP('Address.getStatSalesman',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_salesman'], {'1':-105}, dicSales, dicExtInfo)
+        
+           
         
         
                         

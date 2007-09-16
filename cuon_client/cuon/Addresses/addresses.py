@@ -847,6 +847,8 @@ class addresswindow(chooseWindows):
         if sName:
             liSearch.append('lastname')
             liSearch.append(sName)
+            liSearch.append('lastname2')
+            liSearch.append(sName)
         if sID:
             liSearch.append('id')
             try:
@@ -870,6 +872,10 @@ class addresswindow(chooseWindows):
             
         if sPhone:
             liSearch.append('phone')
+            liSearch.append(sPhone)    
+            liSearch.append('fax')
+            liSearch.append(sPhone)    
+            liSearch.append('phone_handy')
             liSearch.append(sPhone)    
              
         self.singleAddress.sWhere = self.getWhere(liSearch) 
@@ -938,7 +944,7 @@ class addresswindow(chooseWindows):
             eAdrField.set_text(cAdr)
         except Exception, params:
             print Exception, params
-            
+            eAdrField.set_text('')
     def on_eAddressRepID_changed(self, event):
         print 'eRepID changed'
         try:
@@ -948,6 +954,7 @@ class addresswindow(chooseWindows):
             eAdrField.set_text(cAdr)
         except Exception, params:
             print Exception, params
+            eAdrField.set_text('')
             
     def on_eAddressSalesmanID_changed(self, event):
         print 'eSalesmanID changed'
@@ -958,6 +965,7 @@ class addresswindow(chooseWindows):
             eAdrField.set_text(cAdr)
         except Exception, params:
             print Exception, params
+            eAdrField.set_text('')
             
     def on_bSchedulFor_clicked(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables)
@@ -968,6 +976,10 @@ class addresswindow(chooseWindows):
         dicOrder = {}
         dicOrder['addressnumber'] = self.singleAddress.ID
         dicOrder['ModulNumber'] = self.ModulNumber
+        dicDate = self.getActualDateTime()
+        dicOrder['orderedat'] = dicDate['date']
+        dicOrder['deliveredat'] = dicDate['date']
+        
         orderwindow = cuon.Order.order.orderwindow(self.allTables,dicOrder,True)
     def on_new_project_activate(self, event):
         print 'new project'

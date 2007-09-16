@@ -605,3 +605,35 @@ on_bShowExtInfo_clicked                (GtkButton       *button,
 
 }
 
+
+void
+on_tbNew_clicked                       (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_tbEdit_clicked                      (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_tbSave_clicked                      (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_tbInfo_clicked                      (GtkToolButton   *toolbutton,
+                                        gpointer         user_data)
+{
+
+}
+
