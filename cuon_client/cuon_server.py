@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# -*- coding: utf-8 -*-
 
 ##		    GNU GENERAL PUBLIC LICENSE
 ##		       Version 2, June 1991

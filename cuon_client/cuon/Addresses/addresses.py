@@ -847,8 +847,8 @@ class addresswindow(chooseWindows):
         if sName:
             liSearch.append('lastname')
             liSearch.append(sName)
-            liSearch.append('lastname2')
-            liSearch.append(sName)
+#            liSearch.append('lastname2')
+#            liSearch.append(sName)
         if sID:
             liSearch.append('id')
             try:
@@ -873,10 +873,10 @@ class addresswindow(chooseWindows):
         if sPhone:
             liSearch.append('phone')
             liSearch.append(sPhone)    
-            liSearch.append('fax')
-            liSearch.append(sPhone)    
-            liSearch.append('phone_handy')
-            liSearch.append(sPhone)    
+#            liSearch.append('fax')
+#            liSearch.append(sPhone)    
+#            liSearch.append('phone_handy')
+#            liSearch.append(sPhone)    
              
         self.singleAddress.sWhere = self.getWhere(liSearch) 
         

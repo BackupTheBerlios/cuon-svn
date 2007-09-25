@@ -120,7 +120,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql2 = 'select order_top as top_id from orderinvoice where orderid = ' +  `orderid`
         sSql2 += self.getWhere(None, dicUser,2)
         liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
-        if not liResultTop or liResultTop == 'NONE':
+        if not liResultTop or liResultTop in ['NONE','ERROR']:
             '''No term of payment found, try default from customer '''
             sSql2 = 'select addresses_misc.top_id as top_id from addresses_misc, orderbook '
             sSql2 += ' where addresses_misc.address_id = orderbook.addressnumber '
@@ -147,7 +147,7 @@ class Order(xmlrpc.XMLRPC, basics):
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         print 'InvoiceNumber dicResult = ', dicResult
         
-        if dicResult == 'NONE' or dicResult[0]['invoice_number'] == 0:
+        if dicResult in ['NONE','ERROR'] or dicResult[0]['invoice_number'] == 0:
             sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice, total_amount) '
             
             sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 

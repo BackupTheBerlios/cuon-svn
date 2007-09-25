@@ -1,75 +1,189 @@
 <report>
   <name>Standard Invoice</name>
-
   <orientation>Portrait</orientation>
-
   <topMargin>20</topMargin>
-
   <bottomMargin>20</bottomMargin>
-
   <rightMargin>40</rightMargin>
-
   <leftMargin>40</leftMargin>
-
   <papersizeX>595</papersizeX>
-
   <papersizeY>842</papersizeY>
-
+  <sitebackground_url>/usr/share/cuon/cuon_server/src/cuon/Reports/client_1/hintergrund.jpg</sitebackground_url>
+  <sitebackground_x>15</sitebackground_x>
+  <sitebackground_y>15</sitebackground_y>
+  <sitebackground_width>550</sitebackground_width>
+  <sitebackground_height>809</sitebackground_height>
   <reportHeader>
-    <posX1>40</posX1>
-
-    <posY1>40</posY1>
-
-    <posX2>400</posX2>
-
-    <posY2>250</posY2>
-
+    <posX1>15</posX1>
+    <posY1>20</posY1>
+    <posX2>250</posX2>
+    <posY2>230</posY2>
     <resultSet>address</resultSet>
-
     <entry>
-      <name>headimage</name>
-
-      <class>ImageURL</class>
-
-      <value>/usr/share/cuon/cyrus.jpg</value>
-
+      <name>address</name>
+      <class>DatabaseField</class>
+      <value>address</value>
       <type>string</type>
-
+      <resultSet>address</resultSet>
       <format>%s</format>
-
-      <posX1>30</posX1>
-
-      <posY1>40</posY1>
-
-      <posX2>440</posX2>
-
-      <posY2>30</posY2>
-
-      <width>400</width>
-
-      <height>70</height>
-
+      <posX1>00</posX1>
+      <posY1>103</posY1>
+      <posX2>180</posX2>
+      <posY2>103</posY2>
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
       <foregroundColor>0,0,0</foregroundColor>
-
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
-<entry>
+    <entry>
+      <name>first_last</name>
+      <class>DatabaseField</class>
+      <value>first_last</value>
+      <type>string</type>
+      <resultSet>address</resultSet>
+      <format>%s</format>
+      <posX1>00</posX1>
+      <posY1>115</posY1>
+      <posX2>38</posX2>
+      <posY2>115</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>lastname2</name>
+      <class>DatabaseField</class>
+      <value>lastname2</value>
+      <type>string</type>
+      <resultSet>address</resultSet>
+      <format>%s</format>
+      <posX1>00</posX1>
+      <posY1>127</posY1>
+      <posX2>180</posX2>
+      <posY2>127</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>street</name>
+      <class>DatabaseField</class>
+      <value>street</value>
+      <type>string</type>
+      <resultSet>address</resultSet>
+      <format>%s</format>
+      <posX1>00</posX1>
+      <posY1>139</posY1>
+      <posX2>180</posX2>
+      <posY2>185</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>city</name>
+      <class>DatabaseField</class>
+      <value>city</value>
+      <type>string</type>
+      <resultSet>address</resultSet>
+      <format>%s</format>
+      <posX1>00</posX1>
+      <posY1>150</posY1>
+      <posX2>130</posX2>
+      <posY2>230</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+  </reportHeader>
+  <pageHeader>
+    <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>400</posX2>
+    <posY2>30</posY2>
+    <entry>
+      <name>Rechnung - Nummer:</name>
+      <class>Label</class>
+      <value>Rechnung - Nummer: </value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>5</posX1>
+      <posY1>0</posY1>
+      <posX2>80</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>13</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>invoiceNumber</name>
+      <class>DatabaseField</class>
+      <resultSet>Order</resultSet>
+      <value>invoiceNumber</value>
+      <type>int</type>
+      <format>C%i</format>
+      <posX1>150</posX1>
+      <posY1>0</posY1>
+      <posX2>400</posX2>
+      <posY2>0</posY2>
+      <font>Helvetica</font>
+      <fontsize>13</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>invoiceDate</name>
+      <class>DatabaseField</class>
+      <value>invoiceDate</value>
+      <type>string</type>
+      <resultSet>Order</resultSet>
+      <format> %s</format>
+      <posX1>420</posX1>
+      <posY1>0</posY1>
+      <posX2>400</posX2>
+      <posY2>0</posY2>
+      <font>Helvetica</font>
+      <fontsize>13</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
+      <name>fPageNumber</name>
+      <class>Field</class>
+      <type>int</type>
+      <format>- %i</format>
+      <posX1>500</posX1>
+      <posY1>0</posY1>
+      <posX2>420</posX2>
+      <posY2>00</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    <entry>
       <name>Lieferdatum</name>
       <class>Label</class>
       <value>Lieferdatum (soweit nicht anders angegeben):</value>
       <type>string</type>
       <format>%s</format>
-      <posX1>105</posX1>
-      <posY1>52</posY1>
-      <posX2>170</posX2>
-      <posY2>60</posY2>
+      <posX1>5</posX1>
+      <posY1>12</posY1>
+      <posX2>70</posX2>
+      <posY2>10</posY2>
       <font>Helvetica</font>
       <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
@@ -82,12 +196,12 @@
       <class>DatabaseField</class>
       <value>order_deliverdat</value>
       <type>string</type>
-      <resultSet>address</resultSet>
+      <resultSet>Order</resultSet>
       <format>%s</format>
-      <posX1>150</posX1>
-      <posY1>72</posY1>
+      <posX1>235</posX1>
+      <posY1>12</posY1>
       <posX2>120</posX2>
-      <posY2>192</posY2>
+      <posY2>12</posY2>
       <font>Helvetica</font>
       <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
@@ -95,1239 +209,536 @@
       <backgroundColor>0,0,0</backgroundColor>
     </entry> 
     <entry>
-      <name>address</name>
-
-      <class>DatabaseField</class>
-
-      <value>address</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>100</posY1>
-
-      <posX2>180</posX2>
-
-      <posY2>15</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>lastname</name>
-
-      <class>DatabaseField</class>
-
-      <value>lastname</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>115</posY1>
-
-      <posX2>180</posX2>
-
-      <posY2>30</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>lastname2</name>
-
-      <class>DatabaseField</class>
-
-      <value>lastname2</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>130</posY1>
-
-      <posX2>180</posX2>
-
-      <posY2>45</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>firstname</name>
-
-      <class>DatabaseField</class>
-
-      <value>firstname</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>145</posY1>
-
-      <posX2>180</posX2>
-
-      <posY2>60</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>street</name>
-
-      <class>DatabaseField</class>
-
-      <value>street</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>170</posY1>
-
-      <posX2>180</posX2>
-
-      <posY2>85</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>city</name>
-
-      <class>DatabaseField</class>
-
-      <value>city</value>
-
-      <type>string</type>
-
-      <resultSet>address</resultSet>
-
-      <format>%s</format>
-
-      <posX1>20</posX1>
-
-      <posY1>200</posY1>
-
-      <posX2>130</posX2>
-
-      <posY2>150</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>invoiceNumber</name>
-
-      <class>DatabaseField</class>
-
-      <value>invoiceNumber</value>
-
-      <type>int</type>
-
-      <resultSet>Order</resultSet>
-
-      <format>%i</format>
-
-      <posX1>180</posX1>
-
-      <posY1>140</posY1>
-
-      <posX2>230</posX2>
-
-      <posY2>150</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>invoiceDate</name>
-
-      <class>DatabaseField</class>
-
-      <value>invoiceDate</value>
-
-      <type>string</type>
-
-      <resultSet>Order</resultSet>
-
-      <format>%s</format>
-
-      <posX1>180</posX1>
-
-      <posY1>160</posY1>
-
-      <posX2>230</posX2>
-
-      <posY2>170</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-  </reportHeader>
-
-  <pageHeader>
-    <posX1>0</posX1>
-
-    <posY1>0</posY1>
-
-    <posX2>400</posX2>
-
-    <posY2>50</posY2>
-
-    <entry>
-      <name>lPageNumber</name>
-
-      <class>Label</class>
-
-      <value>Page:</value>
-
-      <type>string</type>
-
-      <format>%s</format>
-
-      <posX1>390</posX1>
-
-      <posY1>0</posY1>
-
-      <posX2>419</posX2>
-
-      <posY2>20</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>right</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>fPageNumber</name>
-
-      <class>Field</class>
-
-      <type>int</type>
-
-      <format>%i</format>
-
-      <posX1>460</posX1>
-
-      <posY1>0</posY1>
-
-      <posX2>470</posX2>
-
-      <posY2>20</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
       <name>Pos.</name>
-
       <class>Label</class>
-
-      <value>Pos. ü € öä </value>
-
+      <value>Pos.</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>10</posX1>
-
-      <posY1>0</posY1>
-
-      <posX2>10</posX2>
-
-      <posY2>60</posY2>
-
+      <posX1>2</posX1>
+      <posY1>28</posY1>
+      <posX2>60</posX2>
+      <posY2>80</posY2>
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>quantities</name>
-
       <class>Label</class>
-
-      <value>Quant.</value>
-
+      <value>Menge</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>30</posX1>
-
-      <posY1>20</posY1>
-
+      <posX1>29</posX1>
+      <posY1>28</posY1>
       <posX2>80</posX2>
-
       <posY2>80</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>10</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
-      <name>Article-Number</name>
-
+      <name>Beschreibung</name>
       <class>Label</class>
-
-      <value>Article-Nr</value>
-
+      <value>Beschreibung</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>80</posX1>
-
-      <posY1>20</posY1>
-
-      <posX2>160</posX2>
-
-      <posY2>20</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
-
-    <entry>
-      <name>Designation</name>
-
-      <class>Label</class>
-
-      <value>Designation</value>
-
-      <type>string</type>
-
-      <format>%s</format>
-
-      <posX1>160</posX1>
-
-      <posY1>20</posY1>
-
+      <posX1>68</posX1>
+      <posY1>28</posY1>
       <posX2>320</posX2>
-
       <posY2>20</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>Price</name>
-
       <class>Label</class>
-
-      <value>Price</value>
-
+      <value>E-Preis</value>
       <type>string</type>
-
       <format>%s</format>
-
       <posX1>320</posX1>
-
-      <posY1>20</posY1>
-
-      <posX2>370</posX2>
-
-      <posY2>20</posY2>
-
+      <posY1>28</posY1>
+      <posX2>350</posX2>
+      <posY2>25</posY2>
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>Total</name>
-
       <class>Label</class>
-
-      <value>Total</value>
-
+      <value>G-Preis</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>370</posX1>
-
-      <posY1>20</posY1>
-
-      <posX2>420</posX2>
-
+      <posX1>470</posX1>
+      <posY1>28</posY1>
+      <posX2>490</posX2>
       <posY2>20</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>tax_vat_percent</name>
-
       <class>Label</class>
-
-      <value>Vat %</value>
-
+      <value>Mwst. %</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>410</posX1>
-
-      <posY1>20</posY1>
-
-      <posX2>450</posX2>
-
+      <posX1>368</posX1>
+      <posY1>28</posY1>
+      <posX2>400</posX2>
       <posY2>20</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>10</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>tax_vat_value</name>
-
       <class>Label</class>
-
-      <value>Tax-Vat</value>
-
+      <value>Mwst</value>
       <type>string</type>
-
       <format>%s</format>
-
-      <posX1>450</posX1>
-
-      <posY1>20</posY1>
-
-      <posX2>490</posX2>
-
+      <posX1>425</posX1>
+      <posY1>28</posY1>
+      <posX2>450</posX2>
       <posY2>20</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>10</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.4,0.2,1</foregroundColor>
-
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
       <name>sep1</name>
-
       <class>Line</class>
-
       <value>1</value>
-
       <type>full</type>
-
       <format>%s</format>
-
       <posX1>0</posX1>
-
-      <posY1>30</posY1>
-
-      <posX2>495</posX2>
-
-      <posY2>30</posY2>
-
+      <posY1>31</posY1>
+      <posX2>520</posX2>
+      <posY2>31</posY2>
       <font>0</font>
-
-      <fontsize>3</fontsize>
-
+      <fontsize>1</fontsize>
       <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.2,0.9,0.2</foregroundColor>
-
-      <backgroundColor>0.1,0.1,0.1</backgroundColor>
+      <foregroundColor>0,0,0.0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
     </entry>
   </pageHeader>
-
   <groups>
     <count>1</count>
-
     <groupEntry>
       <number>1</number>
-
       <resultSet>positions</resultSet>
-
       <pageDetails>
         <posX1>0</posX1>
-
-        <posY1>0</posY1>
-
+        <posY1>3</posY1>
         <posX2>400</posX2>
-
         <posY2>50</posY2>
-
-        <lineY>35</lineY>
-
-        <entry>
-          <name>Rectangle1</name>
-
-          <class>Rectangle</class>
-
-          <value>1</value>
-
-          <type>full</type>
-
-          <format>%s</format>
-
-          <posX1>0</posX1>
-
-          <posY1>0</posY1>
-
-          <posX2>495</posX2>
-
-          <posY2>25</posY2>
-
-          <font>0</font>
-
-          <fontsize>1</fontsize>
-
-          <fontJustification>left</fontJustification>
-
-          <foregroundColor>0.1,0.2,0.4</foregroundColor>
-
-          <backgroundColor>0.2,0.2,0.9</backgroundColor>
-
-          <grayScale>0.8</grayScale>
-        </entry>
-
+        <lineY>28</lineY>
         <entry>
           <name>position</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>int</type>
-
           <format>%-4i</format>
-
           <variable>position</variable>
-
-          <posX1>25</posX1>
-
+          <posX1>17</posX1>
           <posY1>10</posY1>
-
           <posX2>30</posX2>
-
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
         <entry>
           <name>amount</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>string</type>
-
           <format>%-10.2f</format>
-
           <variable>amount</variable>
-
-          <posX1>80</posX1>
-
+          <posX1>70</posX1>
           <posY1>10</posY1>
-
           <posX2>80</posX2>
-
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
-        <entry>
-          <name>article_id</name>
-
-          <class>DatabaseField</class>
-
-          <resultSet>positions</resultSet>
-
-          <type>string</type>
-
-          <format>%s</format>
-
-          <posX1>80</posX1>
-
-          <posY1>10</posY1>
-
-          <posX2>160</posX2>
-
-          <posY2>10</posY2>
-
-          <font>Helvetica</font>
-
-          <fontsize>11</fontsize>
-
-          <fontJustification>left</fontJustification>
-
-          <foregroundColor>0,0,0</foregroundColor>
-
-          <backgroundColor>0,0,0</backgroundColor>
-        </entry>
-
         <entry>
           <name>article_designation</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>string</type>
-
           <format>%s</format>
-
-          <posX1>160</posX1>
-
+          <posX1>68</posX1>
           <posY1>10</posY1>
-
-          <posX2>320</posX2>
-
+          <posX2>275</posX2>
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>left</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
-        <entry>
+        
+	<entry>
           <name>price</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>float</type>
-
-          <format>%-10.2f</format>
-
+          <memory>preis</memory>
+	  	  <format>%-10.2f</format>
           <variable>price</variable>
-
-          <posX1>370</posX1>
-
+          <posX1>368</posX1>
           <posY1>10</posY1>
-
-          <posX2>370</posX2>
-
+          <posX2>392</posX2>
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
         <entry>
-          <name>total</name>
-
+          <name>sum_total</name>
           <class>Function</class>
-
           <resultSet>positions</resultSet>
-
           <formula>!Var price * !Var amount</formula>
-
           <type>float</type>
-
           <format>%-10.2f</format>
-
-          <variable>total</variable>
-
-          <memory>total3</memory>
-
-          <posX1>420</posX1>
-
+          <variable>total2</variable>
+          <memory>sum_total</memory>
+          <posX1>517</posX1>
           <posY1>10</posY1>
-
-          <posX2>420</posX2>
-
+          <posX2>532</posX2>
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
         <entry>
           <name>tax_vat</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>float</type>
-
-          <format>%-10.2f</format>
-
           <variable>tax_vat</variable>
-
-          <posX1>465</posX1>
-
+	  <memory>tax_vat</memory>
+	  <format>%-10.1f</format>
+           <posX1>412</posX1>
           <posY1>10</posY1>
-
-          <posX2>470</posX2>
-
+          <posX2>442</posX2>
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
-          <fontsize>11</fontsize>
-
+          <fontsize>0</fontsize>
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
+	<entry>
+          <name>taxi</name>
+          <class>Function</class>
+          <resultSet>positions</resultSet>
+          <formula>!IF preis !THEN tax_vat !ELSE ""</formula>
+	  <variable>taxi</variable>
+	  <type>float</type>
+	  <format>%-10.1f</format>
+	  <posX1>412</posX1>
+          <posY1>10</posY1>
+          <posX2>442</posX2>
+          <posY2>10</posY2>
+          <font>Helvetica</font>
+          <fontsize>10</fontsize>
+          <fontJustification>right</fontJustification>
+          <foregroundColor>0,0,0</foregroundColor>
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
+	<entry>   
+	<name>tax_vat_m</name>
+          <class>Function</class>
+          <resultSet>positions</resultSet>
+          <type>float</type>
+          <format>%-10.1f</format>
+          <formula>!Var tax_vat + 100</formula>
+	  <variable>tax_vat_m</variable>
+          <memory>tax_vat_m</memory>
+	  <posX1>412</posX1>
+          <posY1>10</posY1>
+          <posX2>442</posX2>
+          <posY2>10</posY2>
+          <font>Helvetica</font>
+          <fontsize>0</fontsize>
+          <fontJustification>right</fontJustification>
+          <foregroundColor>0,0,0</foregroundColor>
+          <backgroundColor>0,0,0</backgroundColor>
+        </entry>
         <entry>
           <name>tax_vat_value</name>
-
           <class>Function</class>
-
           <resultSet>positions</resultSet>
-
-          <formula>!Var tax_vat * !Var total / 100 </formula>
-
-          <type>float</type>
-
+           <formula>!Var total2 /  !Var tax_vat_m *  !Var tax_vat</formula>
+	   <type>float</type>
           <format>%-10.2f</format>
-
           <memory>tax_vat_value_mem</memory>
-
-          <posX1>505</posX1>
-
+          <posX1>467</posX1>
           <posY1>10</posY1>
-
-          <posX2>500</posX2>
-
+          <posX2>492</posX2>
           <posY2>10</posY2>
-
           <font>Helvetica</font>
-
-          <fontsize>11</fontsize>
-
+          <fontsize>10</fontsize>
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
-
         <entry>
           <name>designation</name>
-
           <class>DatabaseField</class>
-
           <resultSet>positions</resultSet>
-
           <type>string</type>
-
           <format>%s</format>
-
-          <posX1>160</posX1>
-
-          <posY1>20</posY1>
-
-          <posX2>320</posX2>
-
-          <posY2>20</posY2>
-
+          <posX1>70</posX1>
+          <posY1>22</posY1>
+          <posX2>500</posX2>
+          <posY2>22</posY2>
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>left</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
         </entry>
       </pageDetails>
     </groupEntry>
   </groups>
-
   <pageFooter>
     <posX1>40</posX1>
-
-    <posY1>20</posY1>
-
+    <posY1>450</posY1>
     <posX2>400</posX2>
-
-    <posY2>60</posY2>
-
-    <entry>
-      <name>lPageFooterTitle</name>
-
-      <class>Label</class>
-
-      <value>end Page</value>
-
-      <type>string</type>
-
-      <format>%s</format>
-
-      <posX1>190</posX1>
-
-      <posY1>0</posY1>
-
-      <posX2>190</posX2>
-
-      <posY2>20</posY2>
-
-      <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0,0,0</foregroundColor>
-
-      <backgroundColor>0,0,0</backgroundColor>
-    </entry>
+    <posY2>400</posY2>
   </pageFooter>
-
   <reportFooter>
-    <posX1>0</posX1>
-
-    <posY1>220</posY1>
-
-    <posX2>400</posX2>
-
-    <posY2>80</posY2>
-    <entry>
-      <name>sepF1</name>
-
-      <class>Line</class>
-
-      <value>1</value>
-
-      <type>full</type>
-
-      <format>%s</format>
-
-      <posX1>0</posX1>
-
-      <posY1>110</posY1>
-
-      <posX2>540</posX2>
-
-      <posY2>210</posY2>
-
-      <font>0</font>
-
-      <fontsize>3</fontsize>
-
-      <fontJustification>left</fontJustification>
-
-      <foregroundColor>0.2,0.9,0.2</foregroundColor>
-
-      <backgroundColor>0.1,0.1,0.1</backgroundColor>
-    </entry>
-
+    <posX1>10</posX1>
+    <posY1>200</posY1>
+    <posX2>200</posX2>
+    <posY2>0</posY2>
+    
     <entry>
       <name>lcommodity_value</name>
-
       <class>Label</class>
-
-      <value>commodity </value>
-
+      <value>Betrag ohne Mwst. </value>
       <type>string</type>
-
       <format>%s</format>
-
       <posX1>0</posX1>
-
       <posY1>90</posY1>
-
       <posX2>190</posX2>
-
       <posY2>40</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
       <foregroundColor>0,0,0</foregroundColor>
-
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
-      <name>taxvat_value</name>
-
+      <name>taxvat__value</name>
       <class>Label</class>
-
-      <value>Tax-VAT </value>
-
+      <value>Mehrwertsteuer</value>
       <type>string</type>
-
       <format>%s</format>
-
       <posX1>110</posX1>
-
       <posY1>90</posY1>
-
       <posX2>190</posX2>
-
       <posY2>40</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
       <foregroundColor>0,0,0</foregroundColor>
-
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
-
     <entry>
-      <name>GrandTotalValue</name>
-
+      <name>Endpreis</name>
       <class>Label</class>
-
-      <value>GrandTotal</value>
-
+      <value>Gesamtbetrag</value>
       <type>string</type>
-
       <format>%s</format>
-
       <posX1>420</posX1>
-
       <posY1>90</posY1>
-
       <posX2>190</posX2>
-
       <posY2>40</posY2>
-
       <font>Helvetica</font>
-
-      <fontsize>12</fontsize>
-
+      <fontsize>11</fontsize>
       <fontJustification>left</fontJustification>
-
       <foregroundColor>0,0,0</foregroundColor>
-
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+ 
+<entry>
+      <name>grandTotal</name>
+      <class>Function</class>
+      <resultSet>positions</resultSet>
+      <formula>!SUM  sum_total</formula>
+      <type>float</type>
+      <format>%-10.2f EUR</format>
+      <memory>com_net</memory>
+      <variable>com_net</variable>
+      <posX1>510</posX1>
+      <posY1>73</posY1>
+      <posX2>600</posX2>
+      <posY2>73</posY2>
+      <font>Helvetica</font>
+      <fontsize>13</fontsize>
+      <fontJustification>right</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+   </entry>   
+    <entry>
+      <name>vatValue</name>
+      <class>Function</class>
+      <resultSet>positions</resultSet>
+      <formula>!SUM  tax_vat_value_mem</formula>
+      <type>float</type>
+      <format>%-10.2f</format>
+      <memory>com_vat</memory>
+      <variable>com_vat</variable>
+      <posX1>160</posX1>
+      <posY1>73</posY1>
+      <posX2>240</posX2>
+      <posY2>73</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>right</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+   <entry>
+      <name>comValue</name>
+      <class>Function</class>
+      <resultSet>positions</resultSet>
+      <formula>!Var com_net -  !Var com_vat</formula>
+      <type>float</type>
+      <format>%-10.2f</format>
+       <posX1>50</posX1>
+      <variable>kdd</variable>
+       <posY1>73</posY1>
+      <posX2>240</posX2>
+      <posY2>73</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>right</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
       <backgroundColor>0,0,0</backgroundColor>
     </entry>
     
-
-
-    <entry>
-          <name>term_of_payment</name>
-
-          <class>DatabaseField</class>
-
-          <resultSet>terms_of_payment</resultSet>
-
-          <type>string</type>
-
-          <format>%s</format>
-
-          <posX1>160</posX1>
-
-          <posY1>90</posY1>
-
-          <posX2>320</posX2>
-
-          <posY2>40</posY2>
-
-          <font>Helvetica</font>
-
-          <fontsize>11</fontsize>
-
-          <fontJustification>left</fontJustification>
-
-          <foregroundColor>0,0,0</foregroundColor>
-
-          <backgroundColor>0,0,0</backgroundColor>
-        </entry>
-        
-        <entry>
+   
+ 
+   <entry>
           <name>discount</name>
-
           <class>DatabaseField</class>
-
           <resultSet>Order</resultSet>
           <memory>discount</memory>
           <type>float</type>
-
           <format>%-10.2f</format>
-
-          
           <posX1>505</posX1>
-
-          <posY1>10</posY1>
-
+          <posY1>104</posY1>
           <posX2>500</posX2>
-
-          <posY2>10</posY2>
-
+          <posY2>104</posY2>
           <font>Helvetica</font>
-
           <fontsize>0</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
-        </entry>
+    </entry>
+    
+      <entry>
+      <name>term_of_payment</name>
+      <class>DatabaseField</class>
+      <resultSet>terms_of_payment</resultSet>
+      <value>term_of_payment</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>59</posY1>
+      <posX2>500</posX2>
+      <posY2>59</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+    
+    
     <entry>
           <name>Rabatt</name>
-
           <class>Function</class>
-
           <resultSet>Order</resultSet>
-
-          <formula>!IF discount !THEN "Discount" !ELSE ""</formula>
-
+          <formula>!IF discount !THEN "Rabatt:" !ELSE ""</formula>
           <type>string</type>
-
           <format>% s</format>
-
           <memory>tax_vat_value_mem</memory>
-
-          <posX1>505</posX1>
-
-          <posY1>10</posY1>
-
+          <posX1>455</posX1>
+          <posY1>104</posY1>
           <posX2>500</posX2>
-
-          <posY2>10</posY2>
-
+          <posY2>104</posY2>
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-<entry>
+ 	  <foregroundColor>0,0,0</foregroundColor>
+          <backgroundColor>0,0,0</backgroundColor>
+   </entry>
+   <entry>
           <name>RabattValue</name>
-
           <class>Function</class>
-
           <resultSet>Order</resultSet>
-
           <formula>!IF discount !THEN discount !ELSE "" </formula>
-
-          <type>string</type>
-
+          <type>float</type>
           <format>%-10.2f</format>
-
-          <memory>tax_vat_value_mem</memory>
-
-          <posX1>505</posX1>
-
-          <posY1>30</posY1>
-
-          <posX2>500</posX2>
-
-          <posY2>30</posY2>
-
+          <memory>tax_vat_value_mem2</memory>
+          <posX1>500</posX1>
+          <posY1>104</posY1>
+          <posX2>600</posX2>
+          <posY2>104</posY2>
           <font>Helvetica</font>
-
           <fontsize>11</fontsize>
-
           <fontJustification>right</fontJustification>
-
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
-        </entry>
-    
+   </entry>
+   <entry>
+          <name>prozentzeichen</name>
+          <class>Function</class>
+          <formula>!IF discount !THEN "%" !ELSE "" </formula>
+          <type>string</type>
+          <format>% s</format>
+          <memory>tax_vat_value_mem</memory>
+          <posX1>500</posX1>
+          <posY1>104</posY1>
+          <posX2>600</posX2>
+          <posY2>104</posY2>
+          <font>Helvetica</font>
+          <fontsize>11</fontsize>
+          <fontJustification>right</fontJustification>
           <foregroundColor>0,0,0</foregroundColor>
-
           <backgroundColor>0,0,0</backgroundColor>
-        </entry>
-    
-  </reportFooter>
-  
+   </entry> 
+
+</reportFooter>
 </report>
+

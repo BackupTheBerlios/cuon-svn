@@ -269,14 +269,22 @@ class dumps:
                     
             elif type == 'formatedDate':
                 print 'value by formatedDate', value
-
-                checkvalue = time.strptime(value, self.dicUser['DateformatString'])
-                self.printOut( 'dtFormated2 = ', checkvalue)
-                if checkvalue[0] == 1900 and checkvalue[1] == 1 and checkvalue[2] == 1:
+                checkvalue = []
+                retValue = ''
+                try:
+                    checkvalue = time.strptime(value, self.dicUser['DateformatString'])
+                    self.printOut( 'dtFormated2 = ', checkvalue)
+                except:
+                    retValue = ''
+                    checkvalue = []
+                if checkvalue and checkvalue[0] == 1900 and checkvalue[1] == 1 and checkvalue[2] == 1:
                     # 1900/1/1 --> set to empty
                     retvalue = ''
-                else:
+                elif checkvalue:
                     retValue = value
+                    
+                
+                
                     
             elif type == 'toStringDate':
                 print 'value by toStringDate', value

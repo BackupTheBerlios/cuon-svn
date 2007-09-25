@@ -1,3 +1,4 @@
+# coding=utf-8
 import xmlrpclib
 from twisted.web import xmlrpc
 from twisted.internet import defer
