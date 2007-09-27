@@ -110,6 +110,28 @@
         <index_table>partner_schedul</index_table>
         <index_column>status,client</index_column>
     </index>
+    <index>
+        <index_name>partner_schedul_idx_user_id</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>user_id</index_column>
+    </index>
+    
+    <index>
+        <index_name>partner_schedul_idx_schedul_date</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>schedul_date</index_column>
+    </index>
+    
+    <index>
+        <index_name>partner_schedul_idx_schedul_staff_id</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>schedul_staff_id</index_column>
+    </index>
+    
+    
     
       <index>
         <index_name>address_notes_idx_address_id</index_name>

@@ -713,3 +713,9 @@ on_stat_salesman1_activate             (GtkMenuItem     *menuitem,
 void
 on_stat_scheduls1_activate             (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_tvAddressProject_row_activated      (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);

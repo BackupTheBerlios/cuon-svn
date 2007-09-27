@@ -9,6 +9,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import datetime
+import types 
 
 class misc:
     def __init__(self):
@@ -68,11 +69,13 @@ class Treeview:
                 for oneGroup in liGroups:
                     groupname = ''
                     for name in liNames:
-                        groupname += oneGroup[name] + ', '
+                        if isinstance(oneGroup[name], types.StringType):
+                            groupname += oneGroup[name] + ', '
+                        else:
+                            groupname += `oneGroup[name]` + ', '
                     
                     iter = treestore.append(None,[groupname + '     ###' +`oneGroup['id']` ]) 
                     #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
-                    
                     #iter2 = treestore.insert_after(iter,None,['TESTEN'])           
                 #print 'End liDates'
             ts.show()

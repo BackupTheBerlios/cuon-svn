@@ -443,7 +443,13 @@ class Order(xmlrpc.XMLRPC, basics):
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
     
-    
+    def xmlrpc_getInvoicesForAddress(self, address_id, dicUser):
+        sSql = ' select li.id as id , orderbook.designation,  li.invoice_number as number,li.date_of_invoice as date from orderbook, list_of_invoices as li '
+        sSql += " where orderbook.addressnumber = " + `address_id` + " " 
+        sSql += ' and li.order_number = orderbook.id '
+        sSql += self.getWhere(None,dicUser,2,'li.')
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+       
     
     def xmlrpc_getToP(self, dicOrder, dicUser):
         

@@ -1419,3 +1419,13 @@ on_stat_scheduls1_activate             (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_tvAddressProject_row_activated      (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data)
+{
+
+}
+

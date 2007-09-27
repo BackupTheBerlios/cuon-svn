@@ -141,7 +141,8 @@ class projectwindow(chooseWindows):
         elif self.dicProject and newProject and self.ProjectID == 0:
             dicResult = self.rpc.callRP('Projects.createNewProject', self.dicUser,self.dicProject)
             if dicResult and dicResult not in ['NONE','ERROR']:
-                self.ProjectID = dicResult[0]['last_value']
+                print 'dicResut = ', dicResult
+                self.ProjectID = dicResult
                 if self.ProjectID > 0:
                     self.singleProject.sWhere = ' where id = ' + `self.ProjectID` 
         elif self.ProjectID > 0:
@@ -182,13 +183,20 @@ class projectwindow(chooseWindows):
         self.addEnabledMenuItems('editTasks','task_delete1', self.dicUserKeys['project_delete'])
         self.addEnabledMenuItems('editTasks','task_edit', self.dicUserKeys['project_edit'])
 
-        self.addEnabledMenuItems('editStaffRes','task_new' , self.dicUserKeys['project_new'])
-        self.addEnabledMenuItems('editStaffRes','task_delete1', self.dicUserKeys['project_delete'])
-        self.addEnabledMenuItems('editStaffRes','task_edit', self.dicUserKeys['project_edit'])
+        self.addEnabledMenuItems('editStaffRes','staff_resources_new1' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editStaffRes','staff_resources_delete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editStaffRes','staff_resources_edit1', self.dicUserKeys['project_edit'])
         
-        self.addEnabledMenuItems('editMaterialRes','task_new' , self.dicUserKeys['project_new'])
-        self.addEnabledMenuItems('editMaterialRes','task_delete1', self.dicUserKeys['project_delete'])
-        self.addEnabledMenuItems('editMaterialRes','task_edit', self.dicUserKeys['project_edit'])
+        self.addEnabledMenuItems('editMaterialRes','material_resources_new1' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editMaterialRes','material_resources_delete1', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editMaterialRes','material_resources_edit', self.dicUserKeys['project_edit'])
+
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['project_save'])
+        self.addEnabledMenuItems('editSave','phasesave1', self.dicUserKeys['project_save'])
+        self.addEnabledMenuItems('editSave','task_save1', self.dicUserKeys['project_save'])
+        self.addEnabledMenuItems('editSave','staff_resources_save1', self.dicUserKeys['project_save'])
+        self.addEnabledMenuItems('editSave','material_resources_save1', self.dicUserKeys['project_save'])
 
         # tabs from notebook
         self.tabProject = 0
@@ -197,7 +205,7 @@ class projectwindow(chooseWindows):
         self.tabStaffResources = 3
         self.tabMaterialResources = 4
         
-        
+        self.win1.add_accel_group(self.accel_group)
 
         self.tabChanged()
         

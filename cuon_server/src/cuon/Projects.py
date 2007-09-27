@@ -67,3 +67,12 @@ class Projects(xmlrpc.XMLRPC, basics):
         
         return dicResult
         
+    
+    def xmlrpc_getProjectsForAddress(self, address_id, dicUser):
+        sSql = ' select id, name,designation, project_starts_at as date from projects '
+        sSql += " where customer_id = " + `address_id` + " "
+        sSql += self.getWhere(None,dicUser,2)
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+    
+    

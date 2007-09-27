@@ -59,6 +59,7 @@ import cuon.Order.order
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
 import cuon.Project.project
+import cuon.Finances.invoicebook
 
 class addresswindow(chooseWindows):
 
@@ -68,6 +69,11 @@ class addresswindow(chooseWindows):
         chooseWindows.__init__(self)
         self.InitForms = True
         self.connectSchedulTreeId = None
+        self.connectOrderTreeId = None
+        self.connectInvoicesTreeId = None
+        self.connectOfferTreeId = None
+        self.connectProjectTreeId = None
+        
         self.OrderID = 0
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
@@ -103,9 +109,11 @@ class addresswindow(chooseWindows):
         # Trees for Order and Invoice
         self.treeOrder = cuon.Misc.misc.Treeview()
         self.treeInvoice = cuon.Misc.misc.Treeview()
+        self.treeProjects = cuon.Misc.misc.Treeview()
        
         self.treeOrder.start(self.getWidget('tvAddressOrder'),'Text','Order')
-        self.treeInvoice.start(self.getWidget('tvAddressInvoices'),'Text','Invoice')
+        self.treeInvoice.start(self.getWidget('tvAddressInvoices'),'Text','Invoices')
+        self.treeProjects.start(self.getWidget('tvAddressProject'),'Text','Projects')
         
 
         self.EntriesAddresses = 'addresses.xml'
@@ -237,6 +245,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('tabs','mi_schedul1')
         self.addEnabledMenuItems('tabs','mi_notes1')
         self.addEnabledMenuItems('tabs','mi_order1')
+        self.addEnabledMenuItems('tabs','mi_projects1')
                
         # seperate Menus
         self.addEnabledMenuItems('address','mi_address1')
@@ -246,6 +255,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('misc','mi_misc1')
         self.addEnabledMenuItems('notes','mi_notes1')
         self.addEnabledMenuItems('order','mi_order1')
+        self.addEnabledMenuItems('project','mi_projects1')
         
         # enabledMenues for Address
         self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
@@ -289,15 +299,44 @@ class addresswindow(chooseWindows):
         self.tabPartner = 3
         self.tabSchedul = 4
         self.tabNotes = 5
-        self.tabOrder = 6
+        self.tabOffer = 6
+        self.tabOrder = 7
+        self.tabInvoice = 8
+        self.tabProject = 9 
         
+        
+        # Set Values for SchedulTree
         ts = self.getWidget('treeScheduls')
         #treeview.set_model(liststore)
  
         renderer = gtk.CellRendererText()
-        column = gtk.TreeViewColumn("Scheduls", renderer, text=0)
+        column = gtk.TreeViewColumn(_("Scheduls"), renderer, text=0)
         ts.append_column(column)
-        
+##        
+##         # Set Values for OrderTree
+##        ts = self.getWidget('tvAddressOrder')
+##        #treeview.set_model(liststore)
+## 
+##        renderer = gtk.CellRendererText()
+##        column = gtk.TreeViewColumn(_("Order"), renderer, text=0)
+##        ts.append_column(column)
+##        
+##         # Set Values for InvoiceTree
+##        ts = self.getWidget('tvAddressInvoices')
+##        #treeview.set_model(liststore)
+## 
+##        renderer = gtk.CellRendererText()
+##        column = gtk.TreeViewColumn(_("Invoice"), renderer, text=0)
+##        ts.append_column(column)
+##        
+##         # Set Values for ProjectTree
+##        ts = self.getWidget('tvAddressProject')
+##        #treeview.set_model(liststore)
+## 
+##        renderer = gtk.CellRendererText()
+##        column = gtk.TreeViewColumn(_("Project"), renderer, text=0)
+##        ts.append_column(column)
+##        
         #print 'time 20 = ', time.localtime()
 
         # some Variables
@@ -1263,17 +1302,18 @@ class addresswindow(chooseWindows):
         con1 = contact.contactwindow(self.allTables, 0,0)
     def on_tbContact_clicked(self, event):        
         self.on_bContact_clicked(None)
-        
+    
+    # view Order 
     def disconnectOrderTree(self):
         try:
             
-            self.getWidget('treeScheduls').get_selection().disconnect(self.connectSchedulTreeId)
+            self.getWidget('tvAddressOrder').get_selection().disconnect(self.connectOrderTreeId)
         except:
             pass
 
     def connectOrderTree(self):
         try:
-            self.connectSchedulTreeId = self.getWidget('tvAddressOrder').get_selection().connect("changed", self.OrderTree_select_callback)
+            self.connectOrderTreeId = self.getWidget('tvAddressOrder').get_selection().connect("changed", self.OrderTree_select_callback)
         except:
             pass
    
@@ -1309,6 +1349,103 @@ class addresswindow(chooseWindows):
         else:
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
+    
+    # view Invoices
+    def disconnectInvoiceTree(self):
+        try:
+            
+            self.getWidget('tvAddressInvoices').get_selection().disconnect(self.connectInvoicesTreeId)
+        except:
+            pass
+
+    def connectInvoiceTree(self):
+        try:
+            self.connectInvoicesTreeId = self.getWidget('tvAddressInvoices').get_selection().connect("changed", self.InvoiceTree_select_callback)
+        except:
+            pass
+   
+    def InvoiceTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        self.InvoiceID = 0
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.InvoiceID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                
+    def on_tvAddressInvoices_row_activated(self,event,data1, data2):
+        if self.InvoiceID:
+            invoicewindow = cuon.Finances.invoicebook.invoicebookwindow(self.allTables,None,False,self.InvoiceID)
+        
+    def setInvoiceValues(self):
+        liGroup = self.rpc.callRP('Order.getInvoicesForAddress',self.singleAddress.ID, self.dicUser)
+        if liGroup and liGroup not in ['NONE','ERROR']:
+            self.treeInvoice.fillTree(self.getWidget('tvAddressInvoices'),liGroup,['number','designation', 'date'],'self.connectInvoiceTree()')
+            self.connectInvoiceTree()
+        else:
+            self.treeInvoice.fillTree(self.getWidget('tvAddressInvoices'),[],['number','designation', 'date'],'self.connectInvoiceTree()')
+            self.connectInvoiceTree()
+    
+    # Projectview
+  
+  
+      
+    def disconnectProjectTree(self):
+        try:
+            
+            self.getWidget('tvAddressProject').get_selection().disconnect(self.connectProjectTreeId)
+        except:
+            pass
+
+    def connectProjectTree(self):
+        try:
+            self.connectProjectTreeId = self.getWidget('tvAddressProject').get_selection().connect("changed", self.ProjectTree_select_callback)
+        except:
+            pass
+   
+    def ProjectTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        self.ProjectID = 0
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.ProjectID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                
+    def on_tvAddressProject_row_activated(self,event,data1, data2):
+        if self.ProjectID:
+            Projectwindow = cuon.Project.project.projectwindow(self.allTables,None,False,self.ProjectID)
+        
+    def setProjectValues(self):
+        liGroup = self.rpc.callRP('Projects.getProjectsForAddress',self.singleAddress.ID, self.dicUser)
+        if liGroup and liGroup not in ['NONE','ERROR']:
+            self.treeProjects.fillTree(self.getWidget('tvAddressProject'),liGroup,['name','designation', 'date'],'self.connectProjectTree()')
+            self.connectProjectTree()
+        else:
+            self.treeProjects.fillTree(self.getWidget('tvAddressProject'),[],['name','designation', 'date'],'self.connectProjectTree()')
+            self.connectProjectTree()
     # stats 
   
     
@@ -1371,6 +1508,8 @@ class addresswindow(chooseWindows):
  
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
+        print 'tab changed to :'  + str(self.tabOption)
+        
         if self.tabOption == self.tabAddress:
             #Address
             self.disableMenuItem('tabs')
@@ -1434,7 +1573,7 @@ class addresswindow(chooseWindows):
             
             
         elif self.tabOption == self.tabNotes:
-            self.out( 'Seite 3')
+            self.out( 'Seite 5')
 
             self.disableMenuItem('tabs')
             self.enableMenuItem('notes')
@@ -1443,14 +1582,35 @@ class addresswindow(chooseWindows):
             self.setStatusbarText([self.singleAddress.sStatus])
 
         elif self.tabOption == self.tabOrder:
-            self.out( 'Seite 3')
-
+            self.out( 'Seite 7')
+            print 'site 7'
             self.disableMenuItem('tabs')
             self.enableMenuItem('order')
             self.editAction = 'editOrder'
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setOrderValues()
+            
+        elif self.tabOption == self.tabInvoice:
+            self.out( 'Seite 8')
+
+            self.disableMenuItem('tabs')
+            #self.enableMenuItem('Invoice')
+            self.editAction = 'editInvoice'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setInvoiceValues()
+        
+        
+        elif self.tabOption == self.tabProject:
+            self.out( 'Seite 9')
+
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('project')
+            self.editAction = 'editProject'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setProjectValues()
 
         # refresh the Tree
         self.refreshTree()

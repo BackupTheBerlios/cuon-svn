@@ -41,10 +41,10 @@ import cuon.Addresses.SingleAddress
 class invoicebookwindow(windows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, dicInvoices=None,  newInvoice = False, invoiceid = 0):
 
         windows.__init__(self)
-       
+        self.InvoiceID = invoiceid
         self.singleListOfInvoice = SingleListOfInvoice.SingleListOfInvoice(allTables)
         self.singleResidue = SingleListOfInvoice.SingleListOfInvoice(allTables)
         self.singleInpayment = SingleInpayment.SingleInpayment(allTables)
@@ -143,13 +143,15 @@ class invoicebookwindow(windows):
         self.addEnabledMenuItems('editSave','save', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','inpayment_save1', self.dicUserKeys['save'])
     
-        
+        if self.InvoiceID > 0:
+                self.singleListOfInvoice.sWhere = ' where id = ' + `self.InvoiceID`
 
         # tabs from notebook
         self.tabListOfInvoice = 0
         self.tabInpayment = 1
         self.tabResidue = 2
     
+        self.win1.add_accel_group(self.accel_group)
         
         print 'self tab changed'
         
