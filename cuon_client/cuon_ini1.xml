@@ -564,19 +564,19 @@
       <Glade-File>maemo_botany.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/maemo_botany.glade2</Glade-FileValue>
     </GladeEntries>
-  </Glade_Init_Files>
+  
    <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>maemo_hibernation.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/maemo_hibernation.glade2</Glade-FileValue>
     </GladeEntries>
-  </Glade_Init_Files>
+  
   <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>maemo_address.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/maemo_address.glade2</Glade-FileValue>
     </GladeEntries>
-    
+    </Glade_Init_Files>
   <Grant_Init_Files>	
     <GrantEntries>
       <Grant-Name>cuon</Grant-Name>	
