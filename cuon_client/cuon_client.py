@@ -64,7 +64,7 @@ os.system('cp -R Client/locale ' +  cuon_home)
 
  
 # icon
-os.system('cp cuon-logo.xpm ' + cuon_home)
+os.system('cp GUI/pixmaps/*.svg ' + cuon_home)
 
 # create startFile
 

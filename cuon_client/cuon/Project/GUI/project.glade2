@@ -72,7 +72,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image668">
+			<widget class="GtkImage" id="image673">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -130,7 +130,7 @@
 		      <signal name="activate" handler="on_new1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image669">
+			<widget class="GtkImage" id="image674">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -161,7 +161,7 @@
 		      <signal name="activate" handler="on_save1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image670">
+			<widget class="GtkImage" id="image675">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -189,7 +189,7 @@
 		      <signal name="activate" handler="on_print1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image671">
+			<widget class="GtkImage" id="image676">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
@@ -216,7 +216,7 @@
 		      <signal name="activate" handler="on_delete1_activate" last_modification_time="Wed, 23 Jul 2003 13:41:41 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image672">
+			<widget class="GtkImage" id="image677">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -307,7 +307,7 @@
 		      <signal name="activate" handler="on_tasknew1_activate" last_modification_time="Fri, 21 Apr 2006 14:45:22 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image673">
+			<widget class="GtkImage" id="image678">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -432,7 +432,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="on_material_resources_edit1">
+		    <widget class="GtkMenuItem" id="material_resources_edit1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">edit</property>
 		      <property name="use_underline">True</property>

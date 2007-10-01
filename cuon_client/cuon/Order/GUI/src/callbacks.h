@@ -318,3 +318,8 @@ on_tbSave_clicked                      (GtkToolButton   *toolbutton,
 void
 on_tbInfo_clicked                      (GtkToolButton   *toolbutton,
                                         gpointer         user_data);
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

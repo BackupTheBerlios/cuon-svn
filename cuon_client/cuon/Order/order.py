@@ -538,19 +538,48 @@ class orderwindow(chooseWindows):
 
     # search button
     def on_bSearch_clicked(self, event, data=None):
+        self.findOrder()
+        
+        
+    def findOrder(self):
+        print 'findAddress'
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindOrderNumber').get_text()
         sDesignation = self.getWidget('eFindOrderDesignation').get_text()
         sID = self.getWidget('eFindOrderID').get_text()
-        if self.tabOption == self.tabOrder:
-            self.singleOrder.sWhere = 'where number ~* \'.*' + sNumber + '.*\' and designation ~* \'.*' + sDesignation + '.*\' '
-            if len(sID) > 0:
-                self.singleOrder.sWhere += ' and id = ' + sID
-            self.out(self.singleOrder.sWhere, self.ERROR)
-        elif self.tabOption == self.tabPayment:
-            pass
+        sInvoiceNumber = self.getWidget('eFindOrderInvoiceNumber').get_text()
+        sYear = self.getWidget('eFindOrderYear').get_text()
+        
+        liSearch = []
+        if sNumber:
+            liSearch.append('number')
+            liSearch.append(sNumber)
+#            liSearch.append('lastname2')
+#            liSearch.append(sName)
+        if sID:
+            liSearch.append('id')
+            try:
+                liSearch.append(int(sID))
+            except:
+                liSearch.append(0)
+            
+        if sDesignation:
+            liSearch.append('designation')
+            liSearch.append(sDesignation)
+        if sYear:
+            liSearch.append('date_part(orderedat,year)')
+            liSearch.append(sYear)    
+             
+        if sInvoiceNumber:
+            liSearch.append('###id = (select order_number from list_of_invoices where invoice_number = ' + sInvoiceNumber +')')
+            liSearch.append(sInvoiceNumber)    
+       
+             
+        self.singleOrder.sWhere = self.getWhere(liSearch) 
+        
+        
+        self.oldTab = -1
         self.refreshTree()
-
 
     # Tab Custom choose address 
     def on_bSearchCustom_clicked(self, event):

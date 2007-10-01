@@ -637,3 +637,13 @@ on_tbInfo_clicked                      (GtkToolButton   *toolbutton,
 
 }
 
+
+gboolean
+on_bSearch_clicked                     (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+

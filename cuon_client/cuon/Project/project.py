@@ -189,7 +189,7 @@ class projectwindow(chooseWindows):
         
         self.addEnabledMenuItems('editMaterialRes','material_resources_new1' , self.dicUserKeys['project_new'])
         self.addEnabledMenuItems('editMaterialRes','material_resources_delete1', self.dicUserKeys['project_delete'])
-        self.addEnabledMenuItems('editMaterialRes','material_resources_edit', self.dicUserKeys['project_edit'])
+        self.addEnabledMenuItems('editMaterialRes','material_resources_edit1', self.dicUserKeys['project_edit'])
 
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','mi_save1', self.dicUserKeys['project_save'])

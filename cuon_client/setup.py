@@ -203,7 +203,7 @@ class setup:
         
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
-        self.executeString('find ./GUI/pixmaps  -name "*.xpm" -exec cp {} '  + self.ClientDirIcon + ' \;' )
+        self.executeString('find ./GUI/pixmaps  -name "*.svg" -exec cp {} '  + self.ClientDirIcon + ' \;' )
 
     def install_server(self):
         

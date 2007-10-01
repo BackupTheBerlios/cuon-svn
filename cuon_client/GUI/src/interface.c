@@ -143,7 +143,7 @@ create_window1 (void)
   gtk_widget_set_size_request (window1, 1024, 720);
   gtk_window_set_title (GTK_WINDOW (window1), _("Client PyCuon"));
   gtk_window_set_default_size (GTK_WINDOW (window1), 662, 142);
-  window1_icon_pixbuf = create_pixbuf ("cuon-logo.xpm");
+  window1_icon_pixbuf = create_pixbuf ("cuon-logo.svg");
   if (window1_icon_pixbuf)
     {
       gtk_window_set_icon (GTK_WINDOW (window1), window1_icon_pixbuf);

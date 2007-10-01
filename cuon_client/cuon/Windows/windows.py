@@ -415,23 +415,37 @@ class windows(rawWindow, MyXML, messages):
         while args:
             s = args.pop()
             v = args.pop()
-            self.printOut( 'args s = ', s)
-            self.printOut( 'args v = ', v)
+            #print 'getWhere'
+            #print s,v
+            #self.printOut( 'args s = ', s)
+            #self.printOut( 'args v = ', v)
             if s:
-                if isinstance(v, types.BooleanType) :
+                print 's-', s[0:3]
+                print 'v-', v[0:3]
+                
+                if s[0:3] == '###':
+                    #print 'found ###',s,v
+                    if firstWhere:
+                        sWhere = " where " + s[3:]  
+                        firstWhere = False
+                    else:
+                        sWhere = sWhere +" and " + s[3:]
+                        
+                elif isinstance(v, types.BooleanType) :
                     self.printOut( 'sWhere = ', v )
                     if firstWhere:
                         sWhere = " where " + s +" = " + `v` 
                         firstWhere = False
                     else:
                         sWhere = sWhere +" and " + s + " = " + `v` 
-                if isinstance(v, types.IntType) :
+                elif isinstance(v, types.IntType) :
                     self.printOut( 'sWhere = ', v )
                     if firstWhere:
                         sWhere = " where " + s +" = " + `v` 
                         firstWhere = False
                     else:
-                        sWhere = sWhere +" and " + s + " = " + `v`        
+                        sWhere = sWhere +" and " + s + " = " + `v`   
+                
                 elif v[0] == '#':
                     
                     v = v[1:]

@@ -203,28 +203,33 @@ class User(defaultValues):
         self.setDicUserKeys('articles_delete','d')
         self.setDicUserKeys('articles_new','n')
         self.setDicUserKeys('articles_print','p')
+        self.setDicUserKeys('articles_save','s')
 
         self.setDicUserKeys('articles_purchase_edit','e')
         self.setDicUserKeys('articles_purchase_delete','d')
         self.setDicUserKeys('articles_purchase_new','n')
         self.setDicUserKeys('articles_purchase_print','p')
+        self.setDicUserKeys('articles_purchase_save','s')
 
         # staff
         self.setDicUserKeys('staff_edit','e')
         self.setDicUserKeys('staff_delete','d')
         self.setDicUserKeys('staff_new','n')
         self.setDicUserKeys('staff_print','p')
+        self.setDicUserKeys('staff_save','s')
 
         self.setDicUserKeys('staff_fee_edit','e')
         self.setDicUserKeys('staff_fee_delete','d')
         self.setDicUserKeys('staff_fee_new','n')
         self.setDicUserKeys('staff_fee_print','p')
+        self.setDicUserKeys('staff_fee_save','s')
 
         # project
         self.setDicUserKeys('project_edit','e')
         self.setDicUserKeys('project_delete','d')
         self.setDicUserKeys('project_new','n')
         self.setDicUserKeys('project_print','p')
+        self.setDicUserKeys('project_save','s')
 
 
         # botany
@@ -233,6 +238,7 @@ class User(defaultValues):
         self.setDicUserKeys('botany_delete','d')
         self.setDicUserKeys('botany_new','n')
         self.setDicUserKeys('botany_print','p')
+        self.setDicUserKeys('botany_save','s')
         
         
         # hibernation

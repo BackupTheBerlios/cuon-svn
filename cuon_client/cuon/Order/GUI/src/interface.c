@@ -393,9 +393,9 @@ create_OrderMainwindow (void)
   GtkWidget *label56;
   GtkWidget *eFindOrderID;
   GtkWidget *label61;
-  GtkWidget *eSearchInvoice;
+  GtkWidget *eFindOrderInvoiceNumber;
   GtkWidget *label62;
-  GtkWidget *eSearchYear;
+  GtkWidget *eFindOrderYear;
   GtkWidget *scrolledwindow1;
   GtkWidget *tree1;
   GtkWidget *notebook1;
@@ -731,17 +731,17 @@ create_OrderMainwindow (void)
   gtk_widget_show (label61);
   gtk_box_pack_start (GTK_BOX (hbox32), label61, FALSE, FALSE, 0);
 
-  eSearchInvoice = gtk_entry_new ();
-  gtk_widget_show (eSearchInvoice);
-  gtk_box_pack_start (GTK_BOX (hbox32), eSearchInvoice, FALSE, FALSE, 0);
+  eFindOrderInvoiceNumber = gtk_entry_new ();
+  gtk_widget_show (eFindOrderInvoiceNumber);
+  gtk_box_pack_start (GTK_BOX (hbox32), eFindOrderInvoiceNumber, FALSE, FALSE, 0);
 
   label62 = gtk_label_new (_("Year"));
   gtk_widget_show (label62);
   gtk_box_pack_start (GTK_BOX (hbox32), label62, FALSE, FALSE, 0);
 
-  eSearchYear = gtk_entry_new ();
-  gtk_widget_show (eSearchYear);
-  gtk_box_pack_start (GTK_BOX (hbox32), eSearchYear, FALSE, FALSE, 0);
+  eFindOrderYear = gtk_entry_new ();
+  gtk_widget_show (eFindOrderYear);
+  gtk_box_pack_start (GTK_BOX (hbox32), eFindOrderYear, FALSE, FALSE, 0);
 
   scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow1);
@@ -2021,6 +2021,12 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) eFindOrderID, "key_press_event",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
+  g_signal_connect ((gpointer) eFindOrderInvoiceNumber, "key_press_event",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eFindOrderYear, "key_press_event",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
   g_signal_connect ((gpointer) notebook1, "switch_page",
                     G_CALLBACK (on_notebook1_switch_page),
                     NULL);
@@ -2203,9 +2209,9 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label56, "label56");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderID, "eFindOrderID");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label61, "label61");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eSearchInvoice, "eSearchInvoice");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderInvoiceNumber, "eFindOrderInvoiceNumber");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label62, "label62");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, eSearchYear, "eSearchYear");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, eFindOrderYear, "eFindOrderYear");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, scrolledwindow1, "scrolledwindow1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, tree1, "tree1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, notebook1, "notebook1");
