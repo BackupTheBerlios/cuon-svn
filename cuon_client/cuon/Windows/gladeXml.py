@@ -127,7 +127,7 @@ class gladeXml(defaultValues):
             if self.td.SystemName == 'LINUX-Standard':
                 fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
             else:
-                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + gladeName)  
+                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + '_' + gladeName)  
             #else:
             #    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
 

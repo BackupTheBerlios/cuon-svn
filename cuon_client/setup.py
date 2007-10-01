@@ -200,6 +200,7 @@ class setup:
         self.copyLocalValues(self.src_ini, self.ClientDirUsrShareCuon)
         self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
         self.copyLocalValues('./GUI/800/*.glade2', self.dest_glade)
+        self.copyLocalValues('./GUI/alternate1/*.glade2', self.dest_glade)
         
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
