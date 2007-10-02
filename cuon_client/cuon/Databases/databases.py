@@ -500,8 +500,9 @@ class databaseswindow(windows):
             f1.close()
             self.rpc.callRP('Database.saveInfo',key, self.doEncode(repr(cPickle.dumps(xml1) )))
             nameOfGladeFiles.append(key)
-
-        self.rpc.callRP('Database.saveInfo', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
+        print 'nameOfGladeFiles',nameOfGladeFiles
+        ok = self.rpc.callRP('Database.saveInfo', 'nameOfGladeFiles', self.doEncode(repr(cPickle.dumps(nameOfGladeFiles) )))
+        print 'ok = ', ok 
 #        ok = self.rpc.callRP('src.Databases.py_packCuonFS')
 
     def saveReportFiles(self):
