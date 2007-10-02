@@ -137,23 +137,23 @@ class clientswindow(chooseWindows):
 
   
     def on_save1_activate(self, event):
-        self.out( "save addresses v2")
+        self.out( "save client v2")
         self.singleClients.save()
         self.setEntriesEditable(self.EntriesClients, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
-        self.out( "new addresses v2")
+        self.out( "new client v2")
         self.singleClients.newRecord()
         self.setEntriesEditable(self.EntriesClients, True)
 
     def on_edit1_activate(self, event):
-        self.out( "edit addresses v2")
+        self.out( "edit client v2")
         self.setEntriesEditable(self.EntriesClients, True)
 
 
     def on_delete1_activate(self, event):
-        self.out( "delete addresses v2")
+        self.out( "delete client v2")
         self.singleClients.deleteRecord()
 
  
