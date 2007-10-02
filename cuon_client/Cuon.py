@@ -296,7 +296,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 40, 'Rev': 28, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 40, 'Rev': 29, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -488,32 +488,34 @@ class MainWindow(windows):
                 
                 for newProgram in liExtGpl:
                     mi1 = self.addMenuItem(self.getWidget(newProgram['MenuItem']['Main']),newProgram['MenuItem']['Sub'])
-                    
-                    print 'new Item = ', `mi1`
-                    if newProgram['MenuItem']['ExternalNumber'] == 'ext1':
-                        mi1.connect("activate", self.on_ext1_activate)
-                    elif newProgram['MenuItem']['ExternalNumber'] == 'ext2':
-                        mi1.connect("activate", self.on_ext2_activate)
-                    elif newProgram['MenuItem']['ExternalNumber'] == 'ext3':
-                        mi1.connect("activate", self.on_ext3_activate)
-                    
-                    if newProgram.has_key('Imports'):
-                        newImports = newProgram['Imports']
-                        for nI in newImports:
-                            try:
-                                exec('import ' + nI)
-                                print 'import', nI
-                            except:
-                                pass
-
-                        if newProgram.has_key('MenuStart'):
-                            print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
-                            self.extMenucommand[newProgram['MenuItem']['ExternalNumber']] =  newProgram['MenuStart']
-                            
-                            
-                        if newProgram.has_key('Start'):
-                             exec(newProgram['Start'])
-                             print 'EXEC = ', newProgram['Start']
+                    try:
+                        print 'new Item = ', `mi1`
+                        if newProgram['MenuItem']['ExternalNumber'] == 'ext1':
+                            mi1.connect("activate", self.on_ext1_activate)
+                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext2':
+                            mi1.connect("activate", self.on_ext2_activate)
+                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext3':
+                            mi1.connect("activate", self.on_ext3_activate)
+                        
+                        if newProgram.has_key('Imports'):
+                            newImports = newProgram['Imports']
+                            for nI in newImports:
+                                try:
+                                    exec('import ' + nI)
+                                    print 'import', nI
+                                except:
+                                    pass
+    
+                            if newProgram.has_key('MenuStart'):
+                                print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
+                                self.extMenucommand[newProgram['MenuItem']['ExternalNumber']] =  newProgram['MenuStart']
+                                
+                                
+                            if newProgram.has_key('Start'):
+                                 exec(newProgram['Start'])
+                                 print 'EXEC = ', newProgram['Start']
+                    except Exception,params:
+                        print Exception,params
                         
                              
         if misc_menu:
