@@ -213,19 +213,7 @@ class clientswindow(chooseWindows):
         if self.tabOption == self.tabClients:
             self.singleClients.connectTree()
             self.singleClients.refreshTree()
-        elif self.tabOption == self.tabMisc:
-            self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleClients.ID)`
-            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
-
-        elif self.tabOption == self.tabPartner:
-            self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleClients.ID)`
-            self.singlePartner.connectTree()
-            self.singlePartner.refreshTree()
-        elif self.tabOption == self.tabSchedul:
-            self.singleSchedul.sWhere  ='where partnerid = ' + `int(self.singlePartner.ID)`
-            self.singleSchedul.connectTree()
-            self.singleSchedul.refreshTree()
-            
+        
      
 
 
@@ -247,49 +235,6 @@ class clientswindow(chooseWindows):
 
             self.out( 'Seite 0')
 
-
-        elif self.tabOption == self.tabBank:
-            self.out( 'Seite 2')
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('bank')
-           
-            self.editAction = 'editBank'
-            self.setTreeVisible(False)
-            #self.setStatusbarText([self.singleClients.sStatus])
-
-
-        elif self.tabOption == self.tabMisc:
-            self.out( 'Seite 3')
-
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('misc')
-            self.editAction = 'editMisc'
-            self.setTreeVisible(False)
-            #self.setStatusbarText([self.singleClients.sStatus])
-
-
-
-
-        elif self.tabOption == self.tabPartner:
-            #Partner
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('partner')
-            
-            self.out( 'Seite 1')
-            self.editAction = 'editPartner'
-            self.setTreeVisible(True)
-            #self.setStatusbarText([self.singleClients.sStatus])
-
-            
-        elif self.tabOption == self.tabSchedul:
-            #Scheduling
-            self.disableMenuItem('tabs')
-            self.enableMenuItem('schedul')
-            
-            self.out( 'Seite 4')
-            self.editAction = 'editSchedul'
-            self.setTreeVisible(True)
-            self.setStatusbarText([self.singlePartner.sStatus])
 
         # refresh the Tree
         self.refreshTree()
