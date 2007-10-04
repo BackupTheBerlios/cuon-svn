@@ -51,6 +51,10 @@ class SingleBotanyGenus(SingleData):
     def getGenusName(self,id):
         dicRecords = self.load(id)
         sName = ''
-        if dicRecords and dicRecords[0].has_key('name'):
-            sName =  dicRecords[0]['name']
+        try:
+            if dicRecords and dicRecords[0].has_key('name'):
+                sName =  dicRecords[0]['name']
+        except:
+            pass
+            
         return sName
