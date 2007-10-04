@@ -1191,9 +1191,9 @@ class addresswindow(chooseWindows):
     def addName2Note(self, sWidget):
         t1 = self.rpc.callRP('User.getDate', self.dicUser)
         t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
-        text = t1 + ' : ' + t2 + '\n'
-        print text
-        self.add2Textbuffer(self.getWidget(sWidget),text,'Tail')
+        text = t1 + ' : ' + t2 + '\n\n'
+        #print text
+        self.add2Textbuffer(self.getWidget(sWidget),text,'Head')
         
     
     def saveData(self):

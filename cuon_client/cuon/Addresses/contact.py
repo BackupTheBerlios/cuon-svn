@@ -92,7 +92,7 @@ class contactwindow(chooseWindows):
             self.singleContact.setTreeOrder('schedul_date')
             
         else:
-            self.singleContact.setTreeOrder(to_date('schedul_date',self.dicUser['DateformatString']))
+            self.singleContact.setTreeOrder("to_date('schedul_date', '" + self.dicUser['DateformatString'] +"')" )
 
 
         # set values for comboBox
