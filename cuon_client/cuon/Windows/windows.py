@@ -420,10 +420,8 @@ class windows(rawWindow, MyXML, messages):
             #self.printOut( 'args s = ', s)
             #self.printOut( 'args v = ', v)
             if s:
-                print 's-', s[0:3]
-                print 'v-', v[0:3]
                 
-                if s[0:3] == '###':
+                if len(s)>2 and s[0:3] == '###':
                     #print 'found ###',s,v
                     if firstWhere:
                         sWhere = " where " + s[3:]  

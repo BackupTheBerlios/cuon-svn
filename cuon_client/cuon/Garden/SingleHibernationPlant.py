@@ -84,4 +84,5 @@ class SingleHibernationPlant(SingleData):
     def getHibernationNumber(self, id):
         dicRecords = self.load(id)
         return dicRecords[0]['number']
-    
+    def setOtherEmptyEntries(self) :
+        self.getWidget('ePlantBotanyNumber').set_text('0')

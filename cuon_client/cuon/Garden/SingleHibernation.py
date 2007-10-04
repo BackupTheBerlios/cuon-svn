@@ -94,4 +94,9 @@ class SingleHibernation(SingleData):
         totalSum =  self.rpc.callRP('Garden.getSum', self.ID, self.dicUser)
         
         self.getWidget('eTotalSum').set_text(totalSum)
-              
+    def setOtherEmptyEntries(self) :
+        self.getWidget('eAddressNumber').set_text('0')
+        self.getWidget('eBeginStaffName').set_text('0')
+        self.getWidget('eEndsStaffName').set_text('0')
+        
+        

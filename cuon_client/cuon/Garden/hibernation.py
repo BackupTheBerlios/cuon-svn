@@ -393,7 +393,7 @@ class hibernationwindow(chooseWindows):
         bot = cuon.Garden.botany.botanywindow(self.allTables)
         bot.setChooseEntry('chooseBotany', self.getWidget( 'ePlantBotanyNumber'))
         
-    # signals from entry eEndsStaffNumber
+    # signals from entry ePlantBotanyNumber
     def on_ePlantBotanyNumber_changed(self, event):
         print 'eBotanyNumber changed'
         eAdrField = self.getWidget('eBotanyName')
