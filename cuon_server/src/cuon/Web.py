@@ -48,7 +48,7 @@ class Web(xmlrpc.XMLRPC, basics):
         if not fromDate:
             sSql += " and date_part('doy', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('doy', now()) -2 "
             sSql += " and date_part('year', to_date(partner_schedul.schedul_date, '" + self.DIC_USER['SQLDateFormat'] +"'))  >=  date_part('year', now())"
-        sSql += ' order by id desc '
+        sSql += 'and process_status != 999 order by id desc '
         self.writeLog(sSql,999)
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         #self.writeLog(dicResult)

@@ -363,6 +363,107 @@
 	      </child>
 	    </widget>
 	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="pickerl1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Pickerl</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="pickerl1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="one_row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">one row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="one_row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_one_standard1_activate" last_modification_time="Mon, 08 Oct 2007 12:04:30 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="two_row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">two row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="two_row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_two_standard1_activate" last_modification_time="Mon, 08 Oct 2007 12:04:30 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="three_row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">three row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="three_row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard3">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_three_standard1_activate" last_modification_time="Mon, 08 Oct 2007 14:33:25 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="four_row1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">four row</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="four_row1_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="standard4">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">standard</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_four_standard1_activate" last_modification_time="Mon, 08 Oct 2007 14:33:25 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>

@@ -154,7 +154,9 @@ class Database(xmlrpc.XMLRPC, SQL):
             ok = 'Wrong'
 
         return ok
-        
+    def testMulti(self, value):
+        return   value[0] * value[1]
+
     def xmlrpc_getLastVersion(self):
         self.writeLog('Start check version')
         id = 0

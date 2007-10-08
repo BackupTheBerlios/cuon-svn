@@ -1429,3 +1429,19 @@ on_tvAddressProject_row_activated      (GtkTreeView     *treeview,
 
 }
 
+
+void
+on_bAddNameSalesman_clicked            (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_bAddNameOrganisation_clicked        (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+

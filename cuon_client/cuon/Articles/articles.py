@@ -33,6 +33,7 @@ import cuon.Addresses.SingleAddress
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import cuon.Articles.lists_articles_number1
+import cuon.Articles.pickles_articles
 import cuon.Articles.materialgroup
 import cuon.Articles.SingleMaterialgroups
 # Assosiated
@@ -363,7 +364,20 @@ class articleswindow(chooseWindows):
         self.out( "lists startet")
         Pdf = cuon.Articles.lists_articles_number1.lists_articles_number1()
 
-
+    #Menu pickles_articles
+    
+    def on_one_standard1_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(1)
+    
+    def on_two_standard1_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(2)
+    
+    def on_three_standard1_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(3)
+    
+    def on_four_standard1_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(4)
+    
 
 
 

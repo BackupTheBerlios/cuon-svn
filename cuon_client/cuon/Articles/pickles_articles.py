@@ -13,22 +13,22 @@
 from cuon.Windows.rawWindow import rawWindow
 
 
-class lists_articles_number1(rawWindow):
+class pickles_articles(rawWindow):
 
     
-    def __init__(self):
+    def __init__(self, nRows):
         rawWindow.__init__(self)
-        
+        self.nRows = nRows
         self.loadGlade('articles_search1.xml')
         self.win1 = self.getWidget('dialog1')
         
-        print "lists_articles_number1 start"
+        print "pickles_articles start",  self.nRows
         
  
     def on_okbutton1_clicked(self,event):
         print 'ok'
         dicSearchfields = self.readSearchDatafields()
-        Pdf = self.rpc.callRP('Report.server_articles_number1', dicSearchfields, self.dicUser)
+        Pdf = self.rpc.callRP('Report.server_articles_pickles_standard', dicSearchfields, self.dicUser,  self.nRows)
         self.showPdf(Pdf, self.dicUser)
         di1 = self.getWidget('dialog1')
         di1.hide()
@@ -51,45 +51,3 @@ class lists_articles_number1(rawWindow):
         return dicSearchfields
             
         
-##    def on_okbutton1_clicked_old(self,event):
-##        print 'ok'
-##        sFile  = self.getWidget('eFiledata').get_text()
-##        self.pdfFile = os.path.normpath(sFile)
-##        dicSearchfields = self.readSearchDatafields()
-##        self.out(dicSearchfields)
-##        di1 = self.getWidget('dialog1')
-##        di1.hide()
-##
-##        dicResult =  self.rpc.callRP('Article.getArticlelist1', dicSearchfields, self.dicUser)
-##        for i in dicResult:
-##            for j in i.keys():
-##                if isinstance(i[j],types.UnicodeType):
-##                    i[j] = (i[j].decode('utf-7')).encode('latin-1')
-##            
-##
-##    
-##        self.out( dicResult )
-##        print dicResult
-##        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
-##        
-##        self.dicResults['articles'] = dicResult
-##        self.loadXmlReport('articles_number1', 'ReportArticleLists')
-##
-##
-##   
-
-##        
-##    def on_cancelbutton1_clicked(self,event):
-##        print 'cancel'
-##        di1 = self.getWidget('dialog1')
-##        di1.hide()
-##
-##
-##    def on_bFileDialog_clicked(self, event):
-##        print self.filedata
-##        self.getWidget('fileselection1').set_filename(self.filedata[0])
-##        self.getWidget('fileselection1').show()
-##        
-##  
-##
-##  

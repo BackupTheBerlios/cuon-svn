@@ -34,7 +34,13 @@ commands.getstatusoutput('mkdir ' + baseSettings.WEBPATH + 'counter')
 # 1 = Linked-Site
 # 2 = Python code
 # 3 = Directory structure
-
+TypeRootSite = 0
+TypeLinkedSite = 1
+TypePython = 2
+TypeDir = 3
+TypeImage = 4
+TypeFile = 5
+        
 class Image:
     """An image consisting of a filename and some comments.
     """
@@ -74,22 +80,24 @@ def start():
     liResult = oWeb2.getImageIDs()
     if liResult and liResult not in ['NONE','ERROR']:
         for result in liResult:
-            
-            id = result['id']
-            print id
-            image = oWeb2.getSiteElementByID(id)[0]
-            sDir = image['save_to_dir'].strip()
-            name = image['name'].strip()
-            if not sDir[len(sDir)-1] == '/':
-                sDir += '/'
-            print name
-            print sDir
-            filename = baseSettings.WEBPATH + sDir + name
-            print filename
-            f = open(filename,'wb')
-            f.write(baseSettings.rebuild(image['data']))
-            f.close
-            
+            try:
+                id = result['id']
+                print id
+                image = oWeb2.getSiteElementByID(id)[0]
+                sDir = image['save_to_dir'].strip()
+                name = image['name'].strip()
+                if not sDir[len(sDir)-1] == '/':
+                    sDir += '/'
+                print name
+                print sDir
+                filename = baseSettings.WEBPATH + sDir + name
+                print filename
+                f = open(filename,'wb')
+                f.write(baseSettings.rebuild(image['data']))
+                f.close
+            except Exception, params:
+                print Exception,  params
+                
             
 def getRootSite():
     #child_images = static.File('images/')
@@ -179,6 +187,9 @@ def getHtmlSite(dicHtmlSite):
         
     return htmlClass 
 
+
+
+    
 class ImagePage(rend.Page):
     """A simple page that renders a list of images. We registered an adapter
     earlier so that the data= directives inside the pattern can look inside
@@ -243,7 +254,7 @@ for sName in liSites:
     IDs = oWeb2.getAllSiteElementIDs(sName)
     if IDs and IDs not in ['NONE','ERROR']:
         for id in IDs:
-            dicHtmlSite = oWeb2.getSiteElementByID(id['id'])
+            dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypeLinkedSite)
             if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
                 #print 'dicHtmlSite = ', dicHtmlSite
                 htmlClass = getHtmlSite(dicHtmlSite[0])
@@ -259,8 +270,24 @@ for sName in liSites:
                             except Exception, params:
                                 print Exception,params
                                 
-                            
-  
+            dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypePython)
+            if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
+                #print 'dicHtmlSite = ', dicHtmlSite
+                dicPython = dicHtmlSite[0]
+                pythonClass = dicPython['data']
+                if pythonClass:
+                    exec (pythonClass)
+                    liRootKeys = dicPython['root_keys'].split(',')
+                    if liRootKeys:
+                        for key in liRootKeys:
+                            s =  key.strip() +"." + dicPython['name'].strip() + " = " + dicPython[0]['name'].strip() + "()"
+                            print 's-root = ', s
+                            try:
+                                exec (s)
+                            except Exception, params:
+                                print Exception,params
+                                
+                                    
 
 # We are adding children to the pages.
 # This could also happen inside the class.

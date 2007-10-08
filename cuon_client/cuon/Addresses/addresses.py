@@ -1124,7 +1124,8 @@ class addresswindow(chooseWindows):
         self.addName2Note('tvNotesRep')
     def on_bAddNameSalesman_clicked(self, event):
         self.addName2Note('tvNotesSalesman')
-
+    def on_bAddNameOrganisation_clicked(self, event):
+        self.addName2Note('tvNotesSalesman')
     # add formular to notes
     def on_bAddFormular2NotesMisc_clicked(self, event):
         print 'AddFormular2NoticesMisc clicked'
@@ -1141,6 +1142,9 @@ class addresswindow(chooseWindows):
     def on_bAddFormular2NotesSalesman_clicked(self, event):
         print 'AddFormular2NoticesSalesman clicked'
         self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
+    def on_bAddFormular2NotesOrganisation_clicked(self, event):
+        print 'AddFormular2NoticesSalesman clicked'
+        self.addForm2Note('cbeNotesOrganisation','tvNotesOrganisation')
 
 
     
@@ -1185,7 +1189,7 @@ class addresswindow(chooseWindows):
                 if Formular  and Formular not in ['NONE','ERROR']:
                     newForm = self.doUncompress(self.doDecode(Formular[0]['document_image']))
                     print 'newForm', newForm
-                    self.add2Textbuffer(self.getWidget(sOutput),newForm,'Tail')
+                    self.add2Textbuffer(self.getWidget(sOutput),newForm,'Head')
 
 
     def addName2Note(self, sWidget):

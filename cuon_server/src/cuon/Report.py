@@ -74,6 +74,20 @@ class Report(xmlrpc.XMLRPC, basics):
         
         return self.report_server.ReportServer.createReport(repData)
         
+        
+    def xmlrpc_server_articles_pickles_standard(self, dicSearchlist, dicUser,  nRows):
+        import Reports.report_articles_pickles_standard
+        import Article
+        
+        print "startReport"
+        oArticles = Article.Article()
+        oReports = Reports.report_articles_pickles_standard.report_articles_pickles_standard(nRows)
+        repData = oReports.getReportData(dicSearchlist, dicUser, oArticles, self.ReportDefs)
+        print repData
+        
+        
+        return self.report_server.ReportServer.createReport(repData)
+        
     def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
         print `self.report_server`
         import Reports.report_hibernation_incoming_document

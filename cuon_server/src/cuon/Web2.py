@@ -68,11 +68,14 @@ class Web2(xmlrpc.XMLRPC, basics):
         
         return result
                                
-    def getSiteElementByID(self,id):
+    def getSiteElementByID(self,id,  key = 0):
         sSql = "select web2.save_to_dir as save_to_dir, web2.name as name, web2.type as type ,web2.root_keys as root_keys,"
         sSql += " web2.linked_keys as linked_keys,dms.document_image as data, dms.file_format as file_format,"
         sSql += "dms.file_suffix as file_suffix  from web2, dms  where dms.sep_info_1 = web2.id and dms. insert_from_module = " + `self.DMS_MODULNUMBER` 
         sSql += " and dms.status != 'delete' and web2.id = " + `id`
+        
+        sSql += " and  web2.type = " + `key` 
+        
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, self.dicUser)
         

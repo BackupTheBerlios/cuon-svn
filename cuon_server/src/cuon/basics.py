@@ -71,7 +71,7 @@ class basics(xmlrpc.XMLRPC):
         
         
         self.OSC_HOST = 'localhost'
-        self.POSC_ORT = 5432
+        self.OSC_PORT = 5432
         self.OSC_DB = 'cuon'
         self.OSC_USER = 'Test'
         

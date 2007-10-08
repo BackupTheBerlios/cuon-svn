@@ -451,7 +451,6 @@ GtkWidget*
 create_AddressMainwindow (void)
 {
   GtkWidget *AddressMainwindow;
-  GdkPixbuf *AddressMainwindow_icon_pixbuf;
   GtkWidget *scrolledwindow11;
   GtkWidget *viewport1;
   GtkWidget *vbox1;
@@ -811,7 +810,7 @@ create_AddressMainwindow (void)
   GtkWidget *label62;
   GtkWidget *vbox13;
   GtkWidget *hbox28;
-  GtkWidget *bAddnameSalesman;
+  GtkWidget *bAddNameSalesman;
   GtkWidget *cbeNotesSalesman;
   GtkWidget *bAddFormular2NotesSalesman;
   GtkWidget *scrolledwindow9;
@@ -819,8 +818,8 @@ create_AddressMainwindow (void)
   GtkWidget *label63;
   GtkWidget *vbox17;
   GtkWidget *hbox60;
-  GtkWidget *bAddName2;
-  GtkWidget *combobox1;
+  GtkWidget *bAddNameOrganisation;
+  GtkWidget *cbeNotesOrganisation;
   GtkWidget *button5;
   GtkWidget *scrolledwindow15;
   GtkWidget *tvNotesOrganisation;
@@ -863,12 +862,6 @@ create_AddressMainwindow (void)
   gtk_widget_set_size_request (AddressMainwindow, 1024, 800);
   gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
   gtk_window_set_destroy_with_parent (GTK_WINDOW (AddressMainwindow), TRUE);
-  AddressMainwindow_icon_pixbuf = create_pixbuf ("gui/address.svg");
-  if (AddressMainwindow_icon_pixbuf)
-    {
-      gtk_window_set_icon (GTK_WINDOW (AddressMainwindow), AddressMainwindow_icon_pixbuf);
-      gdk_pixbuf_unref (AddressMainwindow_icon_pixbuf);
-    }
 
   scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow11);
@@ -2965,9 +2958,9 @@ create_AddressMainwindow (void)
   gtk_widget_show (hbox28);
   gtk_box_pack_start (GTK_BOX (vbox13), hbox28, TRUE, TRUE, 0);
 
-  bAddnameSalesman = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddnameSalesman);
-  gtk_box_pack_start (GTK_BOX (hbox28), bAddnameSalesman, FALSE, FALSE, 0);
+  bAddNameSalesman = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddNameSalesman);
+  gtk_box_pack_start (GTK_BOX (hbox28), bAddNameSalesman, FALSE, FALSE, 0);
 
   cbeNotesSalesman = gtk_combo_box_new_text ();
   gtk_widget_show (cbeNotesSalesman);
@@ -3000,14 +2993,14 @@ create_AddressMainwindow (void)
   gtk_widget_show (hbox60);
   gtk_box_pack_start (GTK_BOX (vbox17), hbox60, TRUE, TRUE, 0);
 
-  bAddName2 = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddName2);
-  gtk_box_pack_start (GTK_BOX (hbox60), bAddName2, FALSE, FALSE, 0);
+  bAddNameOrganisation = gtk_button_new_with_mnemonic (_("add Date/Name"));
+  gtk_widget_show (bAddNameOrganisation);
+  gtk_box_pack_start (GTK_BOX (hbox60), bAddNameOrganisation, FALSE, FALSE, 0);
 
-  combobox1 = gtk_combo_box_new_text ();
-  gtk_widget_show (combobox1);
-  gtk_box_pack_start (GTK_BOX (hbox60), combobox1, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (combobox1), _("No Entry"));
+  cbeNotesOrganisation = gtk_combo_box_new_text ();
+  gtk_widget_show (cbeNotesOrganisation);
+  gtk_box_pack_start (GTK_BOX (hbox60), cbeNotesOrganisation, TRUE, TRUE, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesOrganisation), _("No Entry"));
 
   button5 = gtk_button_new_with_mnemonic (_("add Formular"));
   gtk_widget_show (button5);
@@ -3400,14 +3393,14 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) bAddformular2NotesRep, "clicked",
                     G_CALLBACK (on_bAddformular2NotesRep_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddnameSalesman, "clicked",
-                    G_CALLBACK (on_bAddnameSalesman_clicked),
+  g_signal_connect ((gpointer) bAddNameSalesman, "clicked",
+                    G_CALLBACK (on_bAddNameSalesman_clicked),
                     NULL);
   g_signal_connect ((gpointer) bAddFormular2NotesSalesman, "clicked",
                     G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddName2, "clicked",
-                    G_CALLBACK (on_bAddName2_clicked),
+  g_signal_connect ((gpointer) bAddNameOrganisation, "clicked",
+                    G_CALLBACK (on_bAddNameOrganisation_clicked),
                     NULL);
   g_signal_connect ((gpointer) button5, "clicked",
                     G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
@@ -3838,7 +3831,7 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label62, "label62");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox13, "vbox13");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox28, "hbox28");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddnameSalesman, "bAddnameSalesman");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameSalesman, "bAddNameSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesSalesman, "cbeNotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesSalesman, "bAddFormular2NotesSalesman");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow9, "scrolledwindow9");
@@ -3846,8 +3839,8 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label63, "label63");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox17, "vbox17");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox60, "hbox60");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddName2, "bAddName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, combobox1, "combobox1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameOrganisation, "bAddNameOrganisation");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesOrganisation, "cbeNotesOrganisation");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, button5, "button5");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow15, "scrolledwindow15");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesOrganisation, "tvNotesOrganisation");
