@@ -35,7 +35,7 @@
 	<posX1>0</posX1>
 	<posY1>0</posY1>
 	<posX2>400</posX2>
-	<posY2>30</posY2>
+	<posY2>60</posY2>
 	<lineY>25</lineY>
 
 	<entry>
@@ -73,6 +73,25 @@
 	  <foregroundColor>0,0,0</foregroundColor>
 	  <backgroundColor>0,0,0</backgroundColor>
 	</entry>
+    
+    
+     <entry>
+	  <name>number_0</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>30</posY1>
+	  <posX2>60</posX2>
+	  <posY2>50</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
 	<entry>
 	  <name>designation_0</name>
 	  <class>DatabaseField</class>
