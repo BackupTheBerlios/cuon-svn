@@ -553,10 +553,21 @@
       <Glade-FileValue>../usr/share/cuon/glade/alternate1_address.glade2</Glade-FileValue>
     </GladeEntries>
     
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate1_order.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate1_order.glade2</Glade-FileValue>
+    </GladeEntries>
+    
      <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>alternate1_botany.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/alternate1_botany.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate1_hibernation.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate1_hibernation.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>
