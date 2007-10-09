@@ -46,7 +46,13 @@ class pickles_articles(rawWindow):
         dicSearchfields['eDesignationFrom'] = self.getWidget('eDesignationFrom').get_text()
         dicSearchfields['eDesignationTo'] = self.getWidget('eDesignationTo').get_text()
         
- 
+        dicSearchfields['eMGFrom'] = self.getWidget('eMGFrom').get_text()
+        dicSearchfields['eMGTo'] = self.getWidget('eMGTo').get_text()
+
+        dicSearchfields['eNumberContains'] = self.getWidget('eNumberContains').get_text()
+        dicSearchfields['eDesignationContains'] = self.getWidget('eDesignationContains').get_text()
+        dicSearchfields['eMGContains'] = self.getWidget('eMGContains').get_text()
+
 
         return dicSearchfields
             
