@@ -143,7 +143,7 @@ class hibernationwindow(chooseWindows):
         self.tabPlant = 1
         
         # start
-        
+        self.on_bSearch_clicked(None)
         self.tabChanged()
 
 ##        # enabled menus for Hibernation

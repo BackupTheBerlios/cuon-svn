@@ -189,7 +189,10 @@ class documentTools(dumps):
         print 'Available devices=', sane.get_devices()
         
         if dicUser['prefDMS']['scan_device']:
-            scanner=sane.open(dicUser['prefDMS']['scan_device'])
+            try:
+                scanner=sane.open(dicUser['prefDMS']['scan_device'])
+            except:
+                scanner = sane.open(sane.get_devices()[0][0])
         else:
             scanner = sane.open(sane.get_devices()[0][0])
          
