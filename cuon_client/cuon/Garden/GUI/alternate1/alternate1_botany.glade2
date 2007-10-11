@@ -720,7 +720,7 @@
 
 	      <child>
 		<widget class="GtkLabel" id="label66">
-		  <property name="label" translatable="yes">Name</property>
+		  <property name="label" translatable="yes">bot. Name</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -747,7 +747,7 @@
 
 	      <child>
 		<widget class="GtkLabel" id="label67">
-		  <property name="label" translatable="yes">Description</property>
+		  <property name="label" translatable="yes">deut. Name</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1865,7 +1865,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label77">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Habitat</property>
+		  <property name="label" translatable="yes">Sonstiges</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1893,7 +1893,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label72">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">local name</property>
+		  <property name="label" translatable="yes">deut. Name</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1921,7 +1921,7 @@
 	      <child>
 		<widget class="GtkLabel" id="label78">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Description</property>
+		  <property name="label" translatable="yes">Familie</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1979,6 +1979,7 @@
 		  <child>
 		    <widget class="GtkTextView" id="tvTips">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Zusatzinformationen, die z.B. auf Etiketten gedruckt werden. (Pflegehinweise o.ä.)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="overwrite">False</property>
@@ -2042,6 +2043,7 @@
 		  <child>
 		    <widget class="GtkEntry" id="eArticleID">
 		      <property name="visible">True</property>
+		      <property name="tooltip" translatable="yes">Verknüpfung zu einem Artikel, nötig für z.B. Etikettendruck.</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -2154,3 +2156,4 @@
 </widget>
 
 </glade-interface>
+

@@ -552,6 +552,11 @@
       <Glade-File>alternate1_address.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/alternate1_address.glade2</Glade-FileValue>
     </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate1_articles.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate1_articles.glade2</Glade-FileValue>
+    </GladeEntries>
     
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
@@ -568,6 +573,23 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>alternate1_hibernation.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/alternate1_hibernation.glade2</Glade-FileValue>
+    </GladeEntries>
+     
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>maemo_address.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/maemo_address.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>maemo_articles.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/maemo_articles.glade2</Glade-FileValue>
+    </GladeEntries>
+    
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>maemo_order.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/maemo_order.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>
