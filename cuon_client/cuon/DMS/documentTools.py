@@ -270,8 +270,6 @@ class documentTools(dumps):
         scanner.start()
         
         # Get an Image object
-        # (For my B&W QuickCam, this is a grey-scale image.  Other scanning devices
-        #  may return a
         im=scanner.snap()
         #print 'Device parameters after snap:', scanner.get_parameters()
 

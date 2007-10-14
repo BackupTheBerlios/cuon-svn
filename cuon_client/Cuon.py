@@ -262,6 +262,7 @@ import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
 import commands
 import cuon.Help.help
+import cuon.Calendar.calendar
 import cuon.Databases.SingleDataTreeModel
 import cuon.Finances.invoicebook
 import cuon.Stats.stats
@@ -296,7 +297,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 3, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 4, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -676,6 +677,9 @@ class MainWindow(windows):
 
     def on_stats1_activate(self, event):
         stats = cuon.Stats.stats.statswindow(self.allTables)
+
+    def on_calendar_activate(self, event):
+        ccal  = cuon.Calendar.calendar.calendarwindow(self.allTables)
 
     # Tools   
 

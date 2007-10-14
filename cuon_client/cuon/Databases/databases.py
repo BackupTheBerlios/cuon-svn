@@ -76,7 +76,7 @@ class databaseswindow(windows):
         self.dicUser = self.oUser.getSqlDicUser()
         # set to 0 for disable 'where client =  '
         self.dicUser['client'] = 0
-     
+        self.DIC_USER = self.rpc.callRP('Database.getDIC_USER')
      
      
     def checkClient(self):
@@ -812,7 +812,18 @@ class databaseswindow(windows):
                     
                     indexNode = self.getNodes(i,'index_column')
                     dicIndex['column'] = self.getData(indexNode[0])
-                    
+                    try:
+                        ok = True
+                        while ok: 
+                            if dicIndex['column'] and dicIndex['column'].find('##')>=0:
+                                searchWord = dicIndex['column'][dicIndex['column'].find('##')+2:dicIndex['column'].find(';;')]
+                                dicIndex['column'] [dicIndex['column'].find('##'):dicIndex['column'].find(';;') +2] = self.DIC_USER[searchWord]
+                            else:
+                                ok = False
+                                
+                    except Exception,  param:
+                        print Exception, param
+                        
                     
                     # first drop index
                     

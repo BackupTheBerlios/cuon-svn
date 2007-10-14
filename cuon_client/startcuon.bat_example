@@ -12,4 +12,4 @@ cd bin
 del newversion
 
 :end
-c:\python24\python  Cuon.py HTTP://SERVER:7080 client NO ../locale /home/users/cuon
+c:\python24\python  Cuon.py HTTP://SERVER:7080 client NO ..\locale /home/users/cuon

@@ -146,6 +146,8 @@
         <index_column>status,client</index_column>
     </index>
     
+    
+    
     <index>
         <index_name>contact_idx_address_id</index_name>
         <index_special> </index_special>
@@ -173,11 +175,70 @@
         <index_column>status,client</index_column>
     </index>
      <index>
+        <index_name> contact_idx_char_length_schedul_date</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column>char_length(schedul_date) </index_column>
+    </index>
+    <index>
+        <index_name>contact_idx_date_century_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('century',insert_time)</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_date_decade_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('decade',insert_time)</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_date_part_year_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('year',insert_time)</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_date_part_quarter_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('quarter',insert_time)</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_date_part_month_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('month',insert_time)</index_column>
+    </index>
+     <index>
+        <index_name>contact_idx_date_part_week_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('week',insert_time)</index_column>
+    </index>
+    <index>
+        <index_name>contact_idx_date_day_insert_time</index_name>
+        <index_special> </index_special>
+        <index_table>contact</index_table>
+        <index_column> date_part('doy',insert_time)</index_column>
+    </index>
+    
+    
+     <index>
         <index_name>bank_idx_bcn</index_name>
         <index_special> </index_special>
         <index_table>bank</index_table>
         <index_column>bcn</index_column>
     </index>
+    
+     <index>
+        <index_name>dms_idx_insert_from_module</index_name>
+        <index_special> </index_special>
+        <index_table>dms</index_table>
+        <index_column>insert_from_module</index_column>
+    </index>
+    
+    
     
   <index>
         <index_name> article_idx_all1</index_name>
@@ -226,6 +287,24 @@
         <index_column>name,designation,client,status</index_column>
     </index>
     
+    <index>
+        <index_name> projects_idx_modul_project_number</index_name>
+        <index_special> </index_special>
+        <index_table>projects</index_table>
+        <index_column>modul_project_number</index_column>
+    </index>
+    <index>
+        <index_name> projects_idx_modul_number</index_name>
+        <index_special> </index_special>
+        <index_table>projects</index_table>
+        <index_column>modul_number</index_column>
+    </index>
+    <index>
+        <index_name> projects_idx_customer_id</index_name>
+        <index_special> </index_special>
+        <index_table>projects</index_table>
+        <index_column>customer_id</index_column>
+    </index>
     
     <index>
         <index_name>botany_idx_all1</index_name>

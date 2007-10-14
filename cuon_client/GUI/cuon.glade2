@@ -361,6 +361,15 @@
 		      <signal name="activate" handler="on_stats1_activate" last_modification_time="Wed, 29 Aug 2007 20:24:07 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="calendar">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Calendar</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_calendar_activate" last_modification_time="Fri, 12 Oct 2007 17:07:47 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

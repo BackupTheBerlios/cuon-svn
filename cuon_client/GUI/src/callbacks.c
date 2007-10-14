@@ -429,3 +429,11 @@ on_bRestartServer_clicked              (GtkButton       *button,
 
 }
 
+
+void
+on_calendar_activate                   (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

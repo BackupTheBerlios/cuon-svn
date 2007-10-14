@@ -74,6 +74,7 @@ create_window1 (void)
   GtkWidget *mi_project1;
   GtkWidget *web2;
   GtkWidget *stats1;
+  GtkWidget *calendar;
   GtkWidget *tools;
   GtkWidget *tools_menu;
   GtkWidget *preferences1;
@@ -319,6 +320,10 @@ create_window1 (void)
   stats1 = gtk_menu_item_new_with_mnemonic (_("Stats"));
   gtk_widget_show (stats1);
   gtk_container_add (GTK_CONTAINER (extras_menu), stats1);
+
+  calendar = gtk_menu_item_new_with_mnemonic (_("Calendar"));
+  gtk_widget_show (calendar);
+  gtk_container_add (GTK_CONTAINER (extras_menu), calendar);
 
   tools = gtk_menu_item_new_with_mnemonic (_("Tools"));
   gtk_widget_show (tools);
@@ -683,6 +688,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) stats1, "activate",
                     G_CALLBACK (on_stats1_activate),
                     NULL);
+  g_signal_connect ((gpointer) calendar, "activate",
+                    G_CALLBACK (on_calendar_activate),
+                    NULL);
   g_signal_connect ((gpointer) preferences1, "activate",
                     G_CALLBACK (on_preferences1_activate),
                     NULL);
@@ -804,6 +812,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mi_project1, "mi_project1");
   GLADE_HOOKUP_OBJECT (window1, web2, "web2");
   GLADE_HOOKUP_OBJECT (window1, stats1, "stats1");
+  GLADE_HOOKUP_OBJECT (window1, calendar, "calendar");
   GLADE_HOOKUP_OBJECT (window1, tools, "tools");
   GLADE_HOOKUP_OBJECT (window1, tools_menu, "tools_menu");
   GLADE_HOOKUP_OBJECT (window1, preferences1, "preferences1");

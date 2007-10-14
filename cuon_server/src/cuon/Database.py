@@ -698,3 +698,6 @@ class Database(xmlrpc.XMLRPC, SQL):
                     
         return rights,groups
         
+    def xmlrpc_getDIC_USER(self):
+        return self.DIC_USER
+        
