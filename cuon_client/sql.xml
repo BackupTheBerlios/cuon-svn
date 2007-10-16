@@ -480,6 +480,31 @@
    	<description>set the user_id to current_user </description>
 
     </function>
+    
+<function>
+      <old_name>fct_update_t_schedul_date() </old_name>
+      <nameOfFunction>fct_update_t_schedul_date( ) returns OPAQUE</nameOfFunction>
+      <language>plpgsql</language>
+  	<textOfFunction>
+    DECLARE
+	sDateFormat    varchar(50);
+
+  	BEGIN
+
+       
+            select into sDateformat type_c from cuon_values where name = ''SQLDateFormat'' ;
+            
+            NEW.dschedul_date = to_date(NEW.schedul_date, sDateFormat) ;
+            NEW.dschedul_date_end = to_date(NEW.schedul_date_end , sDateFormat) ;
+
+            RAISE NOTICE ''Name =  % '', TG_NAME ;
+            RETURN NEW; 
+      
+      END;
+      </textOfFunction>
+   	<description>set the user_id to current_user </description>
+
+    </function>
     <trigger>
       <nameOfTrigger>trg_change_partner_schedul</nameOfTrigger>
       <table>partner_schedul</table>
@@ -508,7 +533,24 @@
       <description>if delete a PARTNER_SCHEDUL, set status to delete  </description>
       
     </trigger>
-    
+    <trigger>
+      <nameOfTrigger>trg_updatePARTNER_SCHEDUL_ddate</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before update</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update_t_schedul_date() ;  </textOfTrigger>
+      <description>if update date, then ddate  </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertPARTNER_SCHEDUL_ddate</nameOfTrigger>
+      <table>PARTNER_SCHEDUL</table>
+      <action>before insert</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update_t_schedul_date() ;  </textOfTrigger>
+      <description>if new date, then ddate  </description>
+      
+    </trigger>
     <trigger>
       <nameOfTrigger>trg_insertAddress</nameOfTrigger>
       <table>address</table>
@@ -534,6 +576,24 @@
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update address </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_updateCONTACT_ddate</nameOfTrigger>
+      <table>contact</table>
+      <action>before update</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update_t_schedul_date() ;  </textOfTrigger>
+      <description>if new date, det ddate  </description>
+      
+    </trigger>
+    <trigger>
+      <nameOfTrigger>trg_insertContact_ddate</nameOfTrigger>
+      <table>contact</table>
+      <action>before insert</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update_t_schedul_date() ;  </textOfTrigger>
+      <description>if new date, det ddate  </description>
       
     </trigger>
     

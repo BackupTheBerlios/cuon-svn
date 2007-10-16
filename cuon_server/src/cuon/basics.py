@@ -370,8 +370,8 @@ class basics(xmlrpc.XMLRPC):
             try:
                 #print 'debugValue', debugValue
                 if debugValue == 1 or self.DEBUG_MODUS > 0:
-                
-                    file = open('/var/log//cuon_allserver.log','a')
+                    
+                    file = open('/var/log/cuon_allserver.log','a')
                     file.write(time.ctime(time.time() ))
                     file.write('\n')
                     file.write(sLogEntry)

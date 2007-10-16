@@ -60,7 +60,7 @@ class iCal(xmlrpc.XMLRPC, basics):
                 
             event.add('uid',dicEvent['uid'])
             
-            print 'UID', dicEvent['uid']
+            #print 'UID', dicEvent['uid']
             if dicEvent.has_key('priority'):
                 event.add('priority',dicEvent['priority'] )
             if dicEvent.has_key('location'):
@@ -72,8 +72,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                 
         except Exception, param:
             print 'Except error 55'
-            print Exception
-            print param
+            #print Exception
+            #print param
             
             #event = None
         return event
@@ -89,8 +89,8 @@ class iCal(xmlrpc.XMLRPC, basics):
             Cal = Calendar.from_string(s)
         except Exception, param:
             print 'Except error 77'
-            print Exception
-            print param
+            #print Exception
+            #print param
         if not Cal:
             Cal = self.createCal()
         return Cal
@@ -102,8 +102,8 @@ class iCal(xmlrpc.XMLRPC, basics):
             f.close()
         except Exception, param:
             print 'Except error 88'
-            print Exception
-            print param  
+            #print Exception
+            #print param  
         
         return True
         
@@ -118,8 +118,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         except Exception, param:
             
             print 'Except error by open iCal'
-            print Exception
-            print param
+            #print Exception
+            #print param
             if f:
                 print 'close f'
                 f.close()
@@ -132,8 +132,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         dicEvent = self.getDicCal(firstRecord, dicUser,sUserKey)
         
         if dicEvent.has_key('staff_cuon_username') and len(dicEvent['staff_cuon_username']) > 0:
-            print 'create Calendar for schedul_staff', dicEvent['staff_cuon_username']
-            print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
+            #print 'create Calendar for schedul_staff', dicEvent['staff_cuon_username']
+            #print dicEvent['staff_cuon_username'], len(dicEvent['staff_cuon_username'])
             sName = 'iCal_' + dicEvent['staff_cuon_username']
             
          
@@ -149,18 +149,18 @@ class iCal(xmlrpc.XMLRPC, basics):
         else:
             Cal2 = self.createCal()
             for i in Cal.walk('VEVENT'):
-                print 'i = ', i
+                #print 'i = ', i
                 if i.has_key('UID'):
-                    print 'uid = ', i['UID']
+                    #print 'uid = ', i['UID']
                     sSearch = `firstRecord['id']` +'####'
-                    print sSearch
+                    #print sSearch
                     if i['UID'][0:len(sSearch)] != sSearch:
-                        print 'uid not found'
+                        #print 'uid not found'
                         Cal2.add_component(i)
                 else:
                     Cal2.add_component(i)
                 
-            print 'newEvent = ' + `newEvent`
+            #print 'newEvent = ' + `newEvent`
             if newEvent and ( (newEvent.has_key('status') and  newEvent['status'] != "CANCELLED") or not newEvent.has_key('status')) :
                 Cal2.add_component(newEvent)
                 ok = True
@@ -217,8 +217,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                 sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.cuon_username = partner_schedul.user_id and partner_schedul.id = " + `firstRecord['id']`
                 result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             except Exception, params:
-                print 'getDicCal sql'
-                print Exception, params
+                print ' Exception getDicCal sql'
+                #print Exception, params
                 
         elif sUser == 'schedul_staff':
             try:
@@ -226,19 +226,19 @@ class iCal(xmlrpc.XMLRPC, basics):
                 sSql += `firstRecord['partnerid']` + " and address.id = partner.addressid and partner.id = partner_schedul.partnerid and staff.id = partner_schedul.schedul_staff_id and partner_schedul.id = " + `firstRecord['id']`
                 result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
             except Exception, params:
-                print 'getDicCal sql'
-                print Exception, params
+                print 'Exception 2 getDicCal sql'
+                #print Exception, params
                 
                         
             
         dicCal = {}
-        print 'firstRecord = ', firstRecord
+        #print 'firstRecord = ', firstRecord
         # Save TimeTransformation
         #dicCal['DateTimeformatString'] = dicUser['DateTimeformatString']
         dicCal['DateTimeformatString'] = self.DIC_USER['DateTimeFormatstring']
         sDate =  firstRecord['schedul_date']
         sDateEnd = firstRecord['schedul_date_end']
-        print 'result = ', result
+        #print 'result = ', result
         if result and result == 'NONE':
             result = None
         
@@ -249,8 +249,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                         
         except Exception, param:
             print 'Except error getDicCal 1'
-            print Exception
-            print param
+            #print Exception
+            #print param
             
             
             self.writeLog('1 Time error by ' + `firstRecord['schedul_time_begin']`)
@@ -266,8 +266,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         
         except Exception, param:
             print 'Except error getDicCal 2'
-            print Exception
-            print param
+            #print Exception
+            #print param
             
         try:
             dicCal['summary'] = ''
@@ -292,8 +292,8 @@ class iCal(xmlrpc.XMLRPC, basics):
         except Exception, param:
             dicCal['summary'] = ' '
             print 'Except error getDicCal 3'
-            print Exception
-            print param
+            #print Exception
+            #print param
             
             self.writeLog('String error by ' + `firstRecord['short_remark']`)
         try:
@@ -307,7 +307,7 @@ class iCal(xmlrpc.XMLRPC, basics):
                 
         except Exception, params:
             print 'Error by location'
-            print Exception, params
+            #print Exception, params
             
         try:
             
@@ -345,8 +345,8 @@ class iCal(xmlrpc.XMLRPC, basics):
                 dicCal['staff_cuon_username'] = result[0]['staff_cuon_username'] 
         except Exception, param:
             print 'Except error getDicCal 4'
-            print Exception
-            print param
+            #print Exception
+            #print param
         return dicCal     
     
     def createCal(self):
@@ -396,7 +396,7 @@ class iCal(xmlrpc.XMLRPC, basics):
                                 except Exception, params:
                                     print '-----> no decode method is functional, clean s '
                                     s = ''
-                                    print Exception, params
+                                    #print Exception, params
 
         #print len(s)
         #try:

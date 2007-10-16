@@ -10,13 +10,34 @@ import Database
 import commands
 import bz2
 import base64
+import types
+
 
 class Misc(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
         self.myHelpServer = self.getMyHelpServer()
-
+        self.setDefaultValues2Database()
+        
+        
+    def setDefaultValues2Database(self):
+        
+        for key in self.DIC_USER.keys():
+            sSql = " select * from cuon_values where name = '" + key +"'"
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)
+            print result
+            if result and result not in ['ERROR', 'NONE']:
+                if isinstance(self.DIC_USER[key],  types.StringType):  
+                    sSql = " update cuon_values  set type_c = '" + self.DIC_USER[key] + "' where name = '" + key + "'"
+                    print sSql
+                    result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)
+            else:
+                 if isinstance(self.DIC_USER[key],  types.StringType):  
+                    sSql = " insert into cuon_values  (id, name,  type_c) values ((select nextval('cuon_values_id')), '" + key + "', '" + self.DIC_USER[key] + "' )"
+                    print sSql
+                    result = self.oDatabase.xmlrpc_executeNormalQuery(sSql)    
+                    
     def getMyHelpServer(self):
         """
         if the CUON_SERVER environment-variable begins with https,

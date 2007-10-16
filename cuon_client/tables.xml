@@ -119,6 +119,63 @@
       <comment>set by cuon-prg-modules</comment>
     </field>  
   </table>
+  <!--table: cuon_values-->
+  <table>
+    <nameOfTable>cuon_values</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>type_c</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>type_i</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>type_f</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>type_d</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    </table>
 <!--table: cuon_clients-->
   <table>
     <nameOfTable>cuon_clients</nameOfTable>
@@ -1278,6 +1335,28 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>dschedul_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>dschedul_date_end</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    
   </table>
   <!--table: partner_schedul-->
   <table>
@@ -1285,6 +1364,7 @@
     <specials>inherits (t_partner_schedul);</specials>
     <x>82</x>
     <y>45</y>
+    
   </table>
   <!--table: Contact-->
   <table>

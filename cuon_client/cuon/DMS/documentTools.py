@@ -292,8 +292,8 @@ class documentTools(dumps):
 
         #newIm = Image.fromstring('RGB',[1024.0,768.0], s)
         #newIm.show()
-        del scanner
-        sane.exit()
+        #del scanner
+        #sane.exit()
         
 
     def importDocument(self, singleDMS, dicUser, sFile):
