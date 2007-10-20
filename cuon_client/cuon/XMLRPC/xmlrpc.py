@@ -47,14 +47,14 @@ class myXmlRpc(dumps, logs):
         
         sv = None
         try:
-            if self.td.server[0:5] == 'https':
-                #print "------ HTTPS ------", self.td.server
-                #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
-                sv =  ServerProxy( self.td.server, allow_none = 1) 
-            else:
-                #print 'Server2 = ', self.td.server
-                #sv =  ServerProxy( self.td.server, allow_none = 1 )
-                sv = ServerProxy(self.td.server,allow_none = 1)
+#            if self.td.server[0:5] == 'https':
+#                #print "------ HTTPS ------", self.td.server
+#                #sv =  Server( self.td.server  , SSL_Transport(), encoding='utf-8')
+#                sv =  ServerProxy( self.td.server, allow_none = 1) 
+#            else:
+#                #print 'Server2 = ', self.td.server
+#                #sv =  ServerProxy( self.td.server, allow_none = 1 )
+            sv = ServerProxy(self.td.server,allow_none = 1)
                 
         except Exception, params:
             print 'Server error by xmlrpc : ', self.td.server

@@ -752,7 +752,143 @@
     </field>
     
     </table>
+     <table>
+    <nameOfTable>t_mindmap</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_standard);</specials>
     
+    
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default></default>
+      <comment></comment>
+    </field>
+     <field>
+      <name>header</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+     <field>
+      <name>designation</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>50000</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>process-status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>fg_color</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>bg_color</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>font_color</name>
+      <type>char</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    <field>
+      <name>orientation</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    </table>
+     <table>
+    <nameOfTable>mindmap</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_mindmap);</specials>
+    </table>
+    
+     <table>
+    <nameOfTable>thinking</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_mindmap);</specials>
+    
+    
+     <field>
+      <name>root_element</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+     <field>
+      <name>pos_x</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>pos_y</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+   </table>
+   
    
 </database>
 

@@ -216,7 +216,6 @@ import gobject
 
   
 
-
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.Addresses.SinglePartner
@@ -238,7 +237,6 @@ import cuon.Preferences.preferences
 import cuon.PrefsFinance.prefsFinance
 
 import cuon.Stock.stock
-import cuon.DMS.dms
 
 
 import  cuon.Databases.databases
@@ -251,8 +249,7 @@ import cuon.Databases.dumps
 from cuon.TypeDefs.typedefs_server import typedefs_server
 import cuon.Databases.cyr_load_table
 #import threading
-import cuon.VTK.mainLogo
-import cuon.VTK.test
+
 import cuon.WebShop.webshop
 import cuon.AI.ai
 import cuon.Staff.staff
@@ -263,6 +260,7 @@ import cuon.Databases.import_generic2
 import commands
 import cuon.Help.help
 import cuon.Calendar.calendar
+import cuon.Think.think
 import cuon.Databases.SingleDataTreeModel
 import cuon.Finances.invoicebook
 import cuon.Stats.stats
@@ -297,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 5, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -621,6 +619,7 @@ class MainWindow(windows):
     # Data-Menu
     #--> 
     def on_addresses1_activate(self,event):
+        
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         
 
@@ -653,6 +652,7 @@ class MainWindow(windows):
        
  
     def on_dms1_activate(self,event):
+        import cuon.DMS.dms
         dms = cuon.DMS.dms.dmswindow(self.allTables)
    
    
@@ -680,6 +680,9 @@ class MainWindow(windows):
 
     def on_calendar_activate(self, event):
         ccal  = cuon.Calendar.calendar.calendarwindow(self.allTables)
+
+    def on_mindmap1_activate(self, event):
+        think = cuon.Think.think.thinkwindow(self.allTables)
 
     # Tools   
 
@@ -723,6 +726,8 @@ class MainWindow(windows):
 
         
     def on_test1_activate(self, event):
+        import cuon.VTK.mainLogo
+        import cuon.VTK.test
         te = cuon.VTK.test.test()
         te.show()
    
@@ -1086,6 +1091,7 @@ class MainWindow(windows):
         
     def on_bGotoAddress_clicked(self, event):
         if self.singleAddress.ID > 0:
+
             adr = cuon.Addresses.addresses.addresswindow(self.allTables, addrid = self.singleAddress.ID)
 
 
@@ -1310,13 +1316,13 @@ m = MainWindow(sStartType)
 m.startMain(sStartType, sDebug,sLocal)
 
 #profile.run('m.startMain(sStartType, sDebug,sLocal)','cuonprofile')
-### Import Psyco if available
-##try:
-##    import psyco
-##    psyco.full()
-##    print ' start psyco'
-##except ImportError:
-##    print 'no psyco found'
+# Import Psyco if available
+try:
+    import psyco
+    psyco.full()
+    print ' start psyco'
+except ImportError:
+    print 'no psyco found'
 #gtk.gdk.threads_enter()
 gtk.main()
 #gtk.gdk.threads_leave()

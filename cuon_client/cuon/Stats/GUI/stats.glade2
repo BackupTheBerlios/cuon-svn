@@ -87,7 +87,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Salesman</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_salesman1_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		      <signal name="activate" handler="on_adr_salesman1_activate" last_modification_time="Sat, 20 Oct 2007 12:22:29 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

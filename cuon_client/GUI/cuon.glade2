@@ -370,6 +370,15 @@
 		      <signal name="activate" handler="on_calendar_activate" last_modification_time="Fri, 12 Oct 2007 17:07:47 GMT"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="mindmap1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Mindmap</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_mindmap1_activate" last_modification_time="Wed, 17 Oct 2007 20:22:25 GMT"/>
+		    </widget>
+		  </child>
 		</widget>
 	      </child>
 	    </widget>

@@ -293,6 +293,17 @@
       <Entry-File>web2_download.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_web2_download.xml</Entry-FileValue>
     </Entries>  
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>mindmap.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_mindmap.xml</Entry-FileValue>
+    </Entries>
+  
+  <Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>think.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_think.xml</Entry-FileValue>
+    </Entries>
   
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
@@ -342,8 +353,8 @@
       <Entry-File>hibernation_plant.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_hibernation_plant.xml</Entry-FileValue>
     </Entries>
-  </Entry_Init_Files>
 
+</Entry_Init_Files>
   
   <Glade_Init_Files>
     <GladeEntries>
@@ -545,6 +556,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>bank.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/bank.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>think.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/think.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>

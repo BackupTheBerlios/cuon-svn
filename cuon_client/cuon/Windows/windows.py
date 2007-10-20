@@ -95,7 +95,10 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Project_info'] = 14001
 
         self.MN['Web2'] = 20000
-        self.MN['Stats'] = 25000
+        self.MN['Stats'] = 22000
+        self.MN['Calendar'] = 28000
+        self.MN['Think'] = 29000
+        
         self.doEdit = -1
         self.noEdit = -1
         
