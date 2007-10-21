@@ -522,3 +522,10 @@ class basics(xmlrpc.XMLRPC):
         #print 'Data', Data
         return Data
         
+    def xmlrpc_testXmlrpc(self, iA = None, iB=None):
+        print 'test xmlrpc', iA, iB
+        if iA and iB:
+            return iA * iB
+        else:
+            return 'Test without Values'
+            

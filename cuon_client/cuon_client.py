@@ -65,6 +65,8 @@ os.system('cp -R Client/locale ' +  cuon_home)
  
 # icon
 os.system('cp GUI/pixmaps/*.svg ' + cuon_home)
+# Plugins
+os.system('cp ../Plugins/Dia/*.py  ' + cuon_home)
 
 # create startFile
 

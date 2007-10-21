@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -794,7 +794,14 @@ class MainWindow(windows):
         f = open('newversion','a')
         f.write(`self.Version`)
         f.close()
-        
+        # Plugins
+        # Dia
+        shellcommand = 'if [ ! -d ~/.dia/python ] ; then mkdir ~/.dia/python ; fi '
+        liStatus = commands.getstatusoutput(shellcommand)
+        print shellcommand, liStatus
+        shellcommand = 'cd ' + cuonpath  +'/Plugins/Dia ; cp  cuon_dia.py ~/.dia/python '
+        liStatus = commands.getstatusoutput(shellcommand)
+        print shellcommand, liStatus
         self.infoMsg('Update complete. Please start C.U.O.N. new  ')
         
     def startT0(self):
