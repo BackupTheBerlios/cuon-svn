@@ -1,4 +1,5 @@
 import time
+import time
 from datetime import datetime
 import random
 import xmlrpclib
@@ -358,7 +359,24 @@ class Article(xmlrpc.XMLRPC, basics):
         
         
     def xmlrpc_getArticlesOfMaterialGroup(self, dicUser, mid):
-        sSql = 'select number,sellingprice1, designation, id from articles where material_group = ' + `mid`
+        cNumber = 'a'
+        cSellingprice = 'b'
+        cDesignation = 'c'
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            cNumber = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_number', cpServer)
+            cSellingprice = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_sellingprice', cpServer)
+            cDesignation = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_designation', cpServer)
+        
+        except:
+            pass
+            
+        sSort = 'number as ' + cNumber +',sellingprice1 as ' + cSellingprice +', designation as ' + cDesignation 
+        sSql = 'select ' + sSort +' , id from articles where material_group = ' + `mid`
         sSql += self.getWhere('',dicUser,2) 
         sSql += ' order by number, designation '
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -380,4 +398,9 @@ class Article(xmlrpc.XMLRPC, basics):
             
         
     
+        
+    def xmlrpc_getStatsMisc(self, dicUser):
+        
+        return ['NONE']
+        
         

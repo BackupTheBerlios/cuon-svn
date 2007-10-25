@@ -875,19 +875,23 @@ class addresswindow(chooseWindows):
         print 'findAddress'
         self.out( 'Searching ....', self.ERROR)
         sName = self.getWidget('eFindName').get_text()
+        sName2 = self.getWidget('eFindName2').get_text()
         sCity = self.getWidget('eFindCity').get_text()
         sZip = self.getWidget('eFindZipcode').get_text()
         sFirstname = self.getWidget('eFindFirstname').get_text()
         sID = self.getWidget('eFindID').get_text()
         sStreet = self.getWidget('eFindStreet').get_text()
         sPhone = self.getWidget('eFindPhone').get_text()
+        sFax = self.getWidget('eFindFax').get_text()
 
         liSearch = []
         if sName:
             liSearch.append('lastname')
             liSearch.append(sName)
-#            liSearch.append('lastname2')
-#            liSearch.append(sName)
+        if sName2:
+            liSearch.append('lastname2')
+            liSearch.append(sName2)
+		
         if sID:
             liSearch.append('id')
             try:
@@ -912,11 +916,10 @@ class addresswindow(chooseWindows):
         if sPhone:
             liSearch.append('phone')
             liSearch.append(sPhone)    
-#            liSearch.append('fax')
-#            liSearch.append(sPhone)    
-#            liSearch.append('phone_handy')
-#            liSearch.append(sPhone)    
-             
+        if sFax:
+            liSearch.append('fax')
+            liSearch.append(sFax)    
+
         self.singleAddress.sWhere = self.getWhere(liSearch) 
         
         self.out('Address sWhere = ' + `self.singleAddress.sWhere`)

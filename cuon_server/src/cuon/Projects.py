@@ -169,5 +169,9 @@ class Projects(xmlrpc.XMLRPC, basics):
         self.writeLog('rep-Result = ' + `result`)
         
         return result
-    
+         
+    def xmlrpc_getStatsMisc(self, dicUser):
+        
+        return ['NONE']
+        
     

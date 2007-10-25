@@ -1857,7 +1857,7 @@
 		  <child>
 		    <widget class="GtkHBox" id="hbox19">
 		      <property name="visible">True</property>
-		      <property name="homogeneous">False</property>
+		      <property name="homogeneous">True</property>
 		      <property name="spacing">0</property>
 
 		      <child>
@@ -1917,7 +1917,7 @@
 		  <child>
 		    <widget class="GtkHBox" id="hbox20">
 		      <property name="visible">True</property>
-		      <property name="homogeneous">False</property>
+		      <property name="homogeneous">True</property>
 		      <property name="spacing">0</property>
 
 		      <child>
@@ -1950,7 +1950,7 @@
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
-			  <property name="visibility">False</property>
+			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
@@ -3139,7 +3139,6 @@
 </widget>
 
 <widget class="GtkDialog" id="diaLink">
-  <property name="visible">True</property>
   <property name="title" translatable="yes">Link eingeben</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>

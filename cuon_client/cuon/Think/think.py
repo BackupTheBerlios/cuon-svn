@@ -13,7 +13,6 @@ import commands
 import logging
 from cuon.Windows.windows  import windows
 import SingleMindmap
-import SingleThink
 
 import os
 
@@ -32,10 +31,8 @@ class thinkwindow(windows):
         self.ModulNumber = self.MN['Think']        
         self.allTables = allTables
         self.singleMindmap = SingleMindmap.SingleMindmap(allTables)
-        self.singleThink = SingleThink.SingleThink(allTables)
         
         self.entriesMindmap = 'mindmap.xml'
-        self.entriesThink = 'think.xml'
     
     
         #singleMindmap
@@ -45,7 +42,7 @@ class thinkwindow(windows):
         self.singleMindmap.setGladeXml(self.xml)
         self.singleMindmap.setTreeFields( ['header'])
         self.singleMindmap.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleMindmap.setTreeOrder('lastname')
+        self.singleMindmap.setTreeOrder('header')
         self.singleMindmap.setTree(self.xml.get_widget('tree1') )
         self.singleMindmap.setListHeader(['Header'])
         #print 'Widgets - win = ', `self.win1`
@@ -69,7 +66,7 @@ class thinkwindow(windows):
     
    # Toolbar-Buttons 
     
-    def on_tbAdd_clicked(self, event):
+    def on_tbNew_clicked(self, event):
         if self.tabOption == self.tabMindmap:
             self.singleMindmap.newRecord()
             self.setEntriesEditable(self.entriesMindmap, True)

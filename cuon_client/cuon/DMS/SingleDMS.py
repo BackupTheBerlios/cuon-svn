@@ -174,6 +174,41 @@ class SingleDMS(SingleData):
         print 'FileFormat by SDMS', self.fileFormat
         self.size_x = oneRecord['size_x']
         self.size_y =  oneRecord['size_y']
+        self.checkPermissions()
+    
+    
+    def setAllWidgetsVisible(self, visible):
+        # Buttons and menu-items
+        for x in ['bView','edit1']:
+            self.getWidget(x).set_sensitive(visible)
+        
+    def setReadWidgetsVisible(self, visible):
+        # Buttons and menu-items
+        for x in ['bView']:
+            self.getWidget(x).set_sensitive(visible)
+            
+    def setWriteWidgetsVisible(self, visible):
+        # Buttons and menu-items
+        for x in ['bView']:
+            self.getWidget(x).set_sensitive(visible)
+    
+    
+        
+    def checkPermissions(self):
+        print self.getWidget('cbRights').get_active()
+        print self.dicUser['Name']
+        Permission = self.rpc.callRP('Misc.dmsCheckPermissions',self.ID,self.dicUser)
+        print Permission
+        # sel all items invisible
+        self.setAllWidgetsVisible(False)
+        # read 
+        if Permission['Read']:
+            self.setReadWidgetsVisible(True)
+                
+        else:
+            
+            self.setAllWidgetsVisible(True)
+        
 
 ##        s = oneRecord['document_image']
 ##        print len(s)

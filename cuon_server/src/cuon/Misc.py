@@ -275,4 +275,105 @@ class Misc(xmlrpc.XMLRPC, basics):
             liAddresses = 'NONE'
                 
         return liAddresses
+
+    def xmlrpc_dmsCheckPermissions(self,id,dicUser):
+        bUser = False
+        bGroup = False
+        bAll = False
+        allRights = False
+        dicRights = {}
+        dicRights['Ur'] = True
+        dicRights['Uw'] = True
+        dicRights['Ux'] = True
+        dicRights['Gr'] = True
+        dicRights['Gw'] = True
+        dicRights['Gx'] = True
+        dicRights['Ar'] = True
+        dicRights['Aw'] = True
+        dicRights['Ax'] = True
         
+        groups = None
+        liGroups = []
+        # read configfile for group
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+            #print cpServer
+            #print cpServer.sections()
+            
+            groups = self.getConfigOption('GROUPS',dicUser['Name'], cpServer)
+        
+        except:
+            pass
+        if groups:
+            liGroups = groups.split(',')
+        
+        sSql = 'select document_rights_activated, document_rights_user_read, document_rights_user_write, document_rights_user_execute, document_rights_group_read, document_rights_group_write, document_rights_group_execute, document_rights_all_read, document_rights_all_write, document_rights_all_execute, document_rights_user,  document_rights_groups from dms where id = ' + `id` 
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['ERROR','NONE']:
+            for key in result[0].keys():
+                if key == 'document_rights_groups' or key == 'document_rights_user':
+                    pass
+                else:
+                    if result[0][key] == 't':
+                        print 'Set True = ',key
+                        result[0][key] = True
+                    else:
+                        print 'Set False = ',key
+                        result[0][key] = False
+            if result[0]['document_rights_activated']: 
+                print 'Rights are activated'
+            
+                if result[0]['document_rights_user'] == dicUser['Name']:
+                    print 'User equal'
+                    bUser = True
+            else:
+                allRights = True
+        else:
+            allRights = True
+            
+            
+        dicRights['Read'] = True
+        dicRights['Write'] = True
+        dicRights['Execute'] = True
+   
+        if not allRights:
+            dicRights['Ur'] = result[0]['document_rights_user_read'] and bUser
+            dicRights['Uw'] = result[0]['document_rights_user_write'] and bUser
+            dicRights['Ux'] = result[0]['document_rights_user_execute'] and bUser
+            if result[0]['document_rights_groups'] in liGroups:
+                bGroup = True
+                
+            dicRights['Gr'] = result[0]['document_rights_group_read'] and bGroup
+            dicRights['Gw'] = result[0]['document_rights_group_write'] and bGroup
+            dicRights['Gx'] = result[0]['document_rights_group_execute'] and bGroup
+            
+            dicRights['Ar'] = result[0]['document_rights_all_read'] 
+            dicRights['Aw'] = result[0]['document_rights_all_write'] 
+            dicRights['Ax'] = result[0]['document_rights_all_execute'] 
+            dicRights['Read'] = False
+            dicRights['Write'] = False
+            dicRights['Execute'] = False
+
+            if dicRights['Ur'] or dicRights['Gr'] or dicRights['Ar']:
+                dicRights['Read'] = True
+            if dicRights['Uw'] or dicRights['Gw'] or dicRights['Aw']:
+                dicRights['Write'] = True
+        
+            if dicRights['Ux'] or dicRights['Gx'] or dicRights['Ax']:
+                dicRights['Execute'] = True
+
+
+             
+                
+        
+        return dicRights
+        
+        
+
+    def xmlrpc_saveDia(self, sType, dicData):
+        print sType
+        print dicData
+
+        return 'Hallo'
+

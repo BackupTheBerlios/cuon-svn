@@ -470,25 +470,26 @@ create_AddressMainwindow (void)
   GtkWidget *vseparator6;
   GtkWidget *tbNewOrder;
   GtkWidget *tbNewProject;
-  GtkWidget *vbox8;
-  GtkWidget *hbox1;
+  GtkWidget *table13;
   GtkWidget *lFindName;
   GtkWidget *eFindName;
   GtkWidget *lFindCity;
   GtkWidget *eFindCity;
-  GtkWidget *label51;
-  GtkWidget *eFindStreet;
-  GtkWidget *bSearch;
-  GtkWidget *hbox19;
-  GtkWidget *label50;
-  GtkWidget *eFindID;
   GtkWidget *label52;
   GtkWidget *eFindFirstname;
-  GtkWidget *hbox21;
   GtkWidget *label53;
   GtkWidget *eFindPhone;
+  GtkWidget *bSearch;
+  GtkWidget *label51;
+  GtkWidget *eFindStreet;
+  GtkWidget *label50;
   GtkWidget *label47;
   GtkWidget *eFindZipcode;
+  GtkWidget *eFindID;
+  GtkWidget *label106;
+  GtkWidget *eFindName2;
+  GtkWidget *label107;
+  GtkWidget *eFindFax;
   GtkWidget *scrolledwindow5;
   GtkWidget *tree1;
   GtkWidget *notebook1;
@@ -958,86 +959,128 @@ create_AddressMainwindow (void)
   gtk_widget_show (tbNewProject);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbNewProject);
 
-  vbox8 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox8);
-  gtk_box_pack_start (GTK_BOX (vbox1), vbox8, FALSE, FALSE, 0);
-
-  hbox1 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox1);
-  gtk_box_pack_start (GTK_BOX (vbox8), hbox1, TRUE, TRUE, 0);
+  table13 = gtk_table_new (3, 7, FALSE);
+  gtk_widget_show (table13);
+  gtk_box_pack_start (GTK_BOX (vbox1), table13, FALSE, FALSE, 0);
 
   lFindName = gtk_label_new (_("Name1"));
   gtk_widget_show (lFindName);
-  gtk_box_pack_start (GTK_BOX (hbox1), lFindName, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (lFindName), GTK_JUSTIFY_CENTER);
+  gtk_table_attach (GTK_TABLE (table13), lFindName, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (lFindName), 0, 0);
 
   eFindName = gtk_entry_new ();
   gtk_widget_show (eFindName);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindName, FALSE, FALSE, 0);
+  gtk_table_attach (GTK_TABLE (table13), eFindName, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   lFindCity = gtk_label_new (_("City"));
   gtk_widget_show (lFindCity);
-  gtk_box_pack_start (GTK_BOX (hbox1), lFindCity, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (lFindCity), GTK_JUSTIFY_CENTER);
+  gtk_table_attach (GTK_TABLE (table13), lFindCity, 4, 5, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (lFindCity), 0, 0);
 
   eFindCity = gtk_entry_new ();
   gtk_widget_show (eFindCity);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindCity, FALSE, FALSE, 0);
-
-  label51 = gtk_label_new (_("Street"));
-  gtk_widget_show (label51);
-  gtk_box_pack_start (GTK_BOX (hbox1), label51, FALSE, FALSE, 0);
-
-  eFindStreet = gtk_entry_new ();
-  gtk_widget_show (eFindStreet);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindStreet, TRUE, TRUE, 0);
-
-  bSearch = gtk_button_new_with_mnemonic (_("Search"));
-  gtk_widget_show (bSearch);
-  gtk_box_pack_start (GTK_BOX (hbox1), bSearch, FALSE, FALSE, 0);
-
-  hbox19 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox19);
-  gtk_box_pack_start (GTK_BOX (vbox8), hbox19, TRUE, TRUE, 0);
-
-  label50 = gtk_label_new (_("ID"));
-  gtk_widget_show (label50);
-  gtk_box_pack_start (GTK_BOX (hbox19), label50, FALSE, FALSE, 0);
-
-  eFindID = gtk_entry_new ();
-  gtk_widget_show (eFindID);
-  gtk_box_pack_start (GTK_BOX (hbox19), eFindID, TRUE, TRUE, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eFindID), 5);
+  gtk_table_attach (GTK_TABLE (table13), eFindCity, 5, 6, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   label52 = gtk_label_new (_("Firstname"));
   gtk_widget_show (label52);
-  gtk_box_pack_start (GTK_BOX (hbox19), label52, FALSE, FALSE, 0);
+  gtk_table_attach (GTK_TABLE (table13), label52, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   eFindFirstname = gtk_entry_new ();
   gtk_widget_show (eFindFirstname);
-  gtk_box_pack_start (GTK_BOX (hbox19), eFindFirstname, TRUE, TRUE, 0);
-
-  hbox21 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox21);
-  gtk_box_pack_start (GTK_BOX (hbox19), hbox21, TRUE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table13), eFindFirstname, 3, 4, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   label53 = gtk_label_new (_("Phone"));
   gtk_widget_show (label53);
-  gtk_box_pack_start (GTK_BOX (hbox21), label53, FALSE, FALSE, 0);
+  gtk_table_attach (GTK_TABLE (table13), label53, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   eFindPhone = gtk_entry_new ();
   gtk_widget_show (eFindPhone);
-  gtk_box_pack_start (GTK_BOX (hbox19), eFindPhone, TRUE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table13), eFindPhone, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  bSearch = gtk_button_new_with_mnemonic (_("Search"));
+  gtk_widget_show (bSearch);
+  gtk_table_attach (GTK_TABLE (table13), bSearch, 6, 7, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label51 = gtk_label_new (_("Street"));
+  gtk_widget_show (label51);
+  gtk_table_attach (GTK_TABLE (table13), label51, 4, 5, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eFindStreet = gtk_entry_new ();
+  gtk_widget_show (eFindStreet);
+  gtk_table_attach (GTK_TABLE (table13), eFindStreet, 5, 6, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label50 = gtk_label_new (_("ID"));
+  gtk_widget_show (label50);
+  gtk_table_attach (GTK_TABLE (table13), label50, 4, 5, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   label47 = gtk_label_new (_("Zipcode"));
   gtk_widget_show (label47);
-  gtk_box_pack_start (GTK_BOX (hbox19), label47, FALSE, FALSE, 0);
+  gtk_table_attach (GTK_TABLE (table13), label47, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   eFindZipcode = gtk_entry_new ();
   gtk_widget_show (eFindZipcode);
-  gtk_box_pack_start (GTK_BOX (hbox19), eFindZipcode, TRUE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table13), eFindZipcode, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  eFindID = gtk_entry_new ();
+  gtk_widget_show (eFindID);
+  gtk_table_attach (GTK_TABLE (table13), eFindID, 5, 6, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eFindID), 5);
+
+  label106 = gtk_label_new (_("Name2"));
+  gtk_widget_show (label106);
+  gtk_table_attach (GTK_TABLE (table13), label106, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label106), 0, 0.5);
+
+  eFindName2 = gtk_entry_new ();
+  gtk_widget_show (eFindName2);
+  gtk_table_attach (GTK_TABLE (table13), eFindName2, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  label107 = gtk_label_new (_("FAX"));
+  gtk_widget_show (label107);
+  gtk_table_attach (GTK_TABLE (table13), label107, 2, 3, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label107), 0, 0.5);
+
+  eFindFax = gtk_entry_new ();
+  gtk_widget_show (eFindFax);
+  gtk_table_attach (GTK_TABLE (table13), eFindFax, 3, 4, 2, 3,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow5);
@@ -3180,22 +3223,28 @@ create_AddressMainwindow (void)
   g_signal_connect ((gpointer) eFindCity, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
                     NULL);
-  g_signal_connect ((gpointer) eFindStreet, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) bSearch, "clicked",
-                    G_CALLBACK (on_bSearch_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eFindID, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
   g_signal_connect ((gpointer) eFindFirstname, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
                     NULL);
   g_signal_connect ((gpointer) eFindPhone, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
                     NULL);
+  g_signal_connect ((gpointer) bSearch, "clicked",
+                    G_CALLBACK (on_bSearch_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) eFindStreet, "key_press_event",
+                    G_CALLBACK (on_eSearch_key_press_event),
+                    NULL);
   g_signal_connect ((gpointer) eFindZipcode, "key_press_event",
+                    G_CALLBACK (on_eSearch_key_press_event),
+                    NULL);
+  g_signal_connect ((gpointer) eFindID, "key_press_event",
+                    G_CALLBACK (on_eSearch_key_press_event),
+                    NULL);
+  g_signal_connect ((gpointer) eFindName2, "key_press_event",
+                    G_CALLBACK (on_eSearch_key_press_event),
+                    NULL);
+  g_signal_connect ((gpointer) eFindFax, "key_press_event",
                     G_CALLBACK (on_eSearch_key_press_event),
                     NULL);
   g_signal_connect ((gpointer) tree1, "row_activated",
@@ -3494,25 +3543,26 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator6, "vseparator6");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewOrder, "tbNewOrder");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewProject, "tbNewProject");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox8, "vbox8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox1, "hbox1");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, table13, "table13");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindName, "lFindName");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindName, "eFindName");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindCity, "lFindCity");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindCity, "eFindCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label51, "label51");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindStreet, "eFindStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearch, "bSearch");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox19, "hbox19");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label50, "label50");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindID, "eFindID");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label52, "label52");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindFirstname, "eFindFirstname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox21, "hbox21");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label53, "label53");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindPhone, "eFindPhone");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearch, "bSearch");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label51, "label51");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindStreet, "eFindStreet");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label50, "label50");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label47, "label47");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindZipcode, "eFindZipcode");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindID, "eFindID");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label106, "label106");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindName2, "eFindName2");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label107, "label107");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindFax, "eFindFax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow5, "scrolledwindow5");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tree1, "tree1");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook1, "notebook1");

@@ -136,6 +136,7 @@ class setup:
         self.liLocaldirs.append(["./cuon/Finances/CashAccountBook/*.py", self.dest_cuon + "/Finances"])
         self.liLocaldirs.append(["./cuon/Finances/InvoiceBook/*.py", self.dest_cuon + "/Finances"])
         self.liLocaldirs.append(["./*.py",self.dest_main + "/"])
+        self.liLocaldirs.append(["./Plugins/Dia/*.py", self.dest_cuon + "/Plugins"])
         
 ##        self.src_finances_ib =  "./cuon/Finances/InvoiceBook/*.py"
 ##        

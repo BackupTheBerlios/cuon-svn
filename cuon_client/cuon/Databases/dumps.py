@@ -237,6 +237,7 @@ class dumps:
                     retValue = value 
 
             elif type == 'toLocaleString':
+                retValue = value
                 try:
                     if isinstance(value, types.FloatType):
                         convert = False

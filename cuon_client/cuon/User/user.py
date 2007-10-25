@@ -118,6 +118,7 @@ class User(defaultValues):
         self.prefDMS['exe']['internet'] = '/usr/bin/firefox'
         self.prefDMS['exe']['html'] = '/usr/bin/bluefish'
         self.prefDMS['exe']['python'] = '/usr/bin/gedit'
+        self.prefDMS['exe']['mindmap'] = '/usr/bin/vym'
 
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
         self.prefApps['printPickup'] = 'lpr'
@@ -287,6 +288,7 @@ class User(defaultValues):
         self.prefDMS['fileformat']['googleearth'] =  {'format':'KMZ', 'suffix':['kmz','kml','eta'], 'executable': self.prefDMS['exe']['googleearth']}
         self.prefDMS['fileformat']['html'] =  {'format':'HTML', 'suffix':['html','htm'], 'executable': self.prefDMS['exe']['html']}
         self.prefDMS['fileformat']['python'] =  {'format':'PYTHON', 'suffix':['py'], 'executable': self.prefDMS['exe']['python']}
+        self.prefDMS['fileformat']['mindmap'] =  {'format':'MINDMAP', 'suffix':['vym'], 'executable': self.prefDMS['exe']['mindmap']}
         
 
         
@@ -382,6 +384,8 @@ class User(defaultValues):
             self.prefDMS['exe']['googleearth'] = result['exe_googleearth']
             self.prefDMS['exe']['internet'] = result['exe_internet']
             self.prefDMS['exe']['html'] = result['exe_html']
+            self.prefDMS['exe']['python'] = result['exe_python']
+            self.prefDMS['exe']['mindmap'] = result['exe_mindmap']
             
            
             self.prefColor['BG'] = result['color_bg']

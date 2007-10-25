@@ -732,10 +732,11 @@ class orderwindow(chooseWindows):
                 iter3 = None
                 #liDates.reverse()
                 for oneArticle in liArticles:
-                    articlenumber = oneArticle['number']
-                    articledesignation = oneArticle['designation']
-                    articleprice = self.getCheckedValue( oneArticle['sellingprice1'],  'toLocaleString')
-                    iter = treestore.append(None,[articlenumber +  ' - ' + articleprice + '  ' + articledesignation +  '     ###' +`oneArticle['id']` ]) 
+                    sA = self.getCheckedValue(oneArticle['a'],  'toLocaleString')
+                    sB = self.getCheckedValue(oneArticle['b'],  'toLocaleString')
+                    sC = articleprice = self.getCheckedValue( oneArticle['c'],  'toLocaleString')
+                    
+                    iter = treestore.append(None,[sA +  ' - ' + sB + '  ' + sC +  '     ###' +`oneArticle['id']` ]) 
                     #print 'add iter', [groupname + '###' +`oneGroup['id']` ]
                     
                     #iter2 = treestore.insert_after(iter,None,['TESTEN'])           

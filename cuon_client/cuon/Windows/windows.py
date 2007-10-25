@@ -71,13 +71,17 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Partner_Schedul_info'] = 2201
 
         self.MN['Articles'] = 3000
+        self.MN['Articles_stat_misc1'] = 3001
+        
         self.MN['MaterialGroups'] = 23000
+
+
 
         self.MN['Order'] = 4000
         self.MN['Stock'] = 5000
         self.MN['Staff'] = 6000
         self.MN['StaffFee'] = 6100
-        
+        self.MN['Order_stat_misc1'] = 4001
         self.MN['Invoice'] = 7000
         self.MN['Invoice_info'] = 7001
         
@@ -93,7 +97,8 @@ class windows(rawWindow, MyXML, messages):
         
         self.MN['Project'] = 14000
         self.MN['Project_info'] = 14001
-
+        self.MN['Project_stat_misc1'] = 14011
+        
         self.MN['Web2'] = 20000
         self.MN['Stats'] = 22000
         self.MN['Calendar'] = 28000

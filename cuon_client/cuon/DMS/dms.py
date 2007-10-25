@@ -334,7 +334,8 @@ class dmswindow(windows):
 ##    def on_tree1_columns_changed(self, event=None, data=None):
 ##        print event, data
 ##        
-        
+       
+    
     def refreshTree(self):
         self.singleDMS.disconnectTree()
     
@@ -372,7 +373,7 @@ class dmswindow(windows):
         self.enableMenuItem(self.editAction)
         self.editEntries = False
         
-
+    
     def scanDocument(self):
     
         self.oDocumentTools.scanDocument(self.singleDMS, self.dicUser)

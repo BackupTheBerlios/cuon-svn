@@ -653,7 +653,26 @@
       <default></default>
       <comment></comment>
     </field>
-
+<field>
+      <name>exe_python</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>exe_mindmap</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
   </table>
   <table>
     <nameOfTable>web2</nameOfTable>
@@ -753,22 +772,13 @@
     
     </table>
      <table>
-    <nameOfTable>t_mindmap</nameOfTable>
+    <nameOfTable>mindmap</nameOfTable>
     <x>22</x>
     <y>35</y>
     <specials>inherits (t_standard);</specials>
     
     
-    <field>
-      <name>name</name>
-      <type>varchar</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>150</size>
-      <default></default>
-      <comment></comment>
-    </field>
+    
      <field>
       <name>header</name>
       <type>varchar</type>
@@ -791,74 +801,7 @@
       <comment></comment>
     </field>
     <field>
-      <name>process-status</name>
-      <type>int</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>0</size>
-      <default></default>
-      <comment></comment>
-    </field>
-    <field>
-      <name>fg_color</name>
-      <type>char</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>20</size>
-      <default></default>
-      <comment></comment>
-    </field>
-    <field>
-      <name>bg_color</name>
-      <type>char</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>20</size>
-      <default></default>
-      <comment></comment>
-    </field>
-    <field>
-      <name>font_color</name>
-      <type>char</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>20</size>
-      <default></default>
-      <comment></comment>
-    </field>
-    
-    <field>
-      <name>orientation</name>
-      <type>int</type>
-      <pkey>0</pkey>
-      <unique>1</unique>
-      <notnull>0</notnull>
-      <size>0</size>
-      <default></default>
-      <comment></comment>
-    </field>
-    
-    </table>
-     <table>
-    <nameOfTable>mindmap</nameOfTable>
-    <x>22</x>
-    <y>35</y>
-    <specials>inherits (t_mindmap);</specials>
-    </table>
-    
-     <table>
-    <nameOfTable>thinking</nameOfTable>
-    <x>22</x>
-    <y>35</y>
-    <specials>inherits (t_mindmap);</specials>
-    
-    
-     <field>
-      <name>root_element</name>
+      <name>process_status</name>
       <type>int</type>
       <pkey>0</pkey>
       <unique>1</unique>
@@ -868,8 +811,8 @@
       <comment></comment>
     </field>
      <field>
-      <name>pos_x</name>
-      <type>int</type>
+      <name>begin_at</name>
+      <type>date</type>
       <pkey>0</pkey>
       <unique>1</unique>
       <notnull>0</notnull>
@@ -877,9 +820,10 @@
       <default></default>
       <comment></comment>
     </field>
+    
     <field>
-      <name>pos_y</name>
-      <type>int</type>
+      <name>end_at</name>
+      <type>date</type>
       <pkey>0</pkey>
       <unique>1</unique>
       <notnull>0</notnull>
@@ -887,7 +831,10 @@
       <default></default>
       <comment></comment>
     </field>
-   </table>
+    
+    
+    </table>
+     
    
    
 </database>

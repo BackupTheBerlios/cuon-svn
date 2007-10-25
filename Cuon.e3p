@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-09-21, 00:09:41 -->
+<!-- Saved: 2007-10-23, 23:29:29 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -45,24 +45,6 @@
       <Dir>cuon</Dir>
       <Dir>Skeleton</Dir>
       <Name>__init__.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Skeleton</Dir>
-      <Name>SingleClient.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Skeleton</Dir>
-      <Name>clients.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Skeleton</Dir>
-      <Name>webshop.py</Name>
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
@@ -1506,6 +1488,64 @@
       <Dir>cuon</Dir>
       <Name>untar.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Name>testXmlrpc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Name>cuon_dia.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Skeleton</Dir>
+      <Name>skeleton.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Skeleton</Dir>
+      <Name>SingleSkeleton.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Articles</Dir>
+      <Name>pickles_articles.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_server</Dir>
+      <Dir>src</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Reports</Dir>
+      <Name>report_articles_pickles_standard.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Think</Dir>
+      <Name>think.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Think</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Think</Dir>
+      <Name>SingleThink.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Think</Dir>
+      <Name>SingleMindmap.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2281,21 +2321,21 @@ p1
 (lp2
 V
 p3
-asS'outputDirectory'
+asS'useRecursion'
 p4
-V/opt/Projekte/cuon/api
-p5
-sS'cssFile'
-p6
-V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
-p7
-sS'filenamePrefix'
-p8
-Vcuon
-p9
-sS'useRecursion'
-p10
 I01
+sS'cssFile'
+p5
+V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
+p6
+sS'filenamePrefix'
+p7
+Vcuon
+p8
+sS'outputDirectory'
+p9
+V/opt/Projekte/cuon/api
+p10
 s.</Eric3DocParams>
   </Eric3Doc>
   <Eric3Api>
@@ -2312,10 +2352,10 @@ p5
 s.</Eric3ApiParams>
   </Eric3Api>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

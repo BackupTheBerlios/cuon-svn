@@ -544,4 +544,8 @@ class Order(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         return result    
-    
+        
+    def xmlrpc_getStatsMisc(self, dicUser):
+        
+        return ['NONE']
+         

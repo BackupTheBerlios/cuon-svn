@@ -727,3 +727,8 @@ on_bAddNameSalesman_clicked            (GtkButton       *button,
 void
 on_bAddNameOrganisation_clicked        (GtkButton       *button,
                                         gpointer         user_data);
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

@@ -1445,3 +1445,13 @@ on_bAddNameOrganisation_clicked        (GtkButton       *button,
 
 }
 
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+

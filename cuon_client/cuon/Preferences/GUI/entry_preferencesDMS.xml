@@ -161,6 +161,26 @@
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>        
+        <entry>
+            <name>ePython</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>exe_python</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>        
+        <entry>
+            <name>eMindmap</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>exe_mindmap</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>        
     </table>
 </entries_for_table>
     

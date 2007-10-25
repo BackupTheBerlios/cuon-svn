@@ -105,11 +105,11 @@
 		<widget class="GtkMenu" id="order1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="misc2">
+		    <widget class="GtkMenuItem" id="order_misc1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Misc</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_misc2_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		      <signal name="activate" handler="on_order_misc1_activate" last_modification_time="Wed, 24 Oct 2007 15:45:51 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -127,11 +127,11 @@
 		<widget class="GtkMenu" id="project1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="misc1">
+		    <widget class="GtkMenuItem" id="project_misc1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Misc</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_misc1_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		      <signal name="activate" handler="on_project_misc1_activate" last_modification_time="Wed, 24 Oct 2007 15:45:51 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -149,11 +149,11 @@
 		<widget class="GtkMenu" id="articles1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="misc3">
+		    <widget class="GtkMenuItem" id="article_misc1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Misc</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_misc3_activate" last_modification_time="Mon, 10 Sep 2007 11:54:01 GMT"/>
+		      <signal name="activate" handler="on_articles_misc1_activate" last_modification_time="Wed, 24 Oct 2007 15:45:51 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
