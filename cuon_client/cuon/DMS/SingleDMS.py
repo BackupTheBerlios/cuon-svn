@@ -67,7 +67,7 @@ class SingleDMS(SingleData):
         self.newTitle = None 
         self.newCategory = None
         self.newDate = None
-        
+        self.loadGlade('dms.xml')
 
 
     def createTmpFile(self, sEXT):
@@ -180,22 +180,25 @@ class SingleDMS(SingleData):
     def setAllWidgetsVisible(self, visible):
         # Buttons and menu-items
         for x in ['bView','edit1']:
-            self.getWidget(x).set_sensitive(visible)
+            if self.xml:
+                self.getWidget(x).set_sensitive(visible)
         
     def setReadWidgetsVisible(self, visible):
         # Buttons and menu-items
         for x in ['bView']:
-            self.getWidget(x).set_sensitive(visible)
+            if self.xml:
+                self.getWidget(x).set_sensitive(visible)
             
     def setWriteWidgetsVisible(self, visible):
         # Buttons and menu-items
         for x in ['bView']:
-            self.getWidget(x).set_sensitive(visible)
+            if self.xml:
+                self.getWidget(x).set_sensitive(visible)
     
     
         
     def checkPermissions(self):
-        print self.getWidget('cbRights').get_active()
+        #print self.getWidget('cbRights').get_active()
         print self.dicUser['Name']
         Permission = self.rpc.callRP('Misc.dmsCheckPermissions',self.ID,self.dicUser)
         print Permission

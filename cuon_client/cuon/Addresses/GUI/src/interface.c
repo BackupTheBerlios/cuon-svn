@@ -451,6 +451,7 @@ GtkWidget*
 create_AddressMainwindow (void)
 {
   GtkWidget *AddressMainwindow;
+  GdkPixbuf *AddressMainwindow_icon_pixbuf;
   GtkWidget *scrolledwindow11;
   GtkWidget *viewport1;
   GtkWidget *vbox1;
@@ -862,7 +863,14 @@ create_AddressMainwindow (void)
   AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (AddressMainwindow, 1024, 800);
   gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
+  gtk_window_set_position (GTK_WINDOW (AddressMainwindow), GTK_WIN_POS_CENTER);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (AddressMainwindow), TRUE);
+  AddressMainwindow_icon_pixbuf = create_pixbuf ("gui/address.svg");
+  if (AddressMainwindow_icon_pixbuf)
+    {
+      gtk_window_set_icon (GTK_WINDOW (AddressMainwindow), AddressMainwindow_icon_pixbuf);
+      gdk_pixbuf_unref (AddressMainwindow_icon_pixbuf);
+    }
 
   scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow11);

@@ -32,6 +32,7 @@ class gladeXml(defaultValues):
     def __init__(self):
 
         defaultValues.__init__(self)
+        self.xml = None
         self.win1 = None
         self.liAllMenuItems = []
         self.dictEnabledMenuItems = {}

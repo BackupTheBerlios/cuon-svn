@@ -673,6 +673,16 @@
       <default></default>
       <comment></comment>
     </field>
+    <field>
+      <name>time_offset</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default></default>
+      <comment>time offset for contacts </comment>
+    </field>
   </table>
   <table>
     <nameOfTable>web2</nameOfTable>

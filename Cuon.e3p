@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-10-23, 23:29:29 -->
+<!-- Saved: 2007-10-30, 00:18:31 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -33,12 +33,6 @@
       <Dir>cuon</Dir>
       <Dir>TypeDefs</Dir>
       <Name>typedefs_server.py</Name>
-    </Source>
-    <Source>
-      <Dir>cuon_client</Dir>
-      <Dir>cuon</Dir>
-      <Dir>Skeleton</Dir>
-      <Name>SingleWebshop.py</Name>
     </Source>
     <Source>
       <Dir>cuon_client</Dir>
@@ -1546,6 +1540,13 @@
       <Dir>Think</Dir>
       <Name>SingleMindmap.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>Bookkeeping</Dir>
+      <Name>bookkeeping.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2250,6 +2251,13 @@
       <Dir>XML</Dir>
       <Name>list_of_reminder.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Think</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_mindmap.xml</Name>
+    </Other>
   </Others>
   <MainScript>
     <Dir>cuon_client</Dir>
@@ -2355,7 +2363,7 @@ s.</Eric3ApiParams>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.py" type="SOURCES" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

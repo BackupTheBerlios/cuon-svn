@@ -61,8 +61,11 @@ class User(defaultValues):
         self.userSQLDateFormat = 'DD.MM.YYYY'
         self.userSQLTimeFormat = 'HH24:MI'
         self.userSQLDateTimeFormat = 'DD.MM.YYYY HH24:MI'
+        self.userTimeOffset = '+0'
         self.prefPath = {}
         self.prefApps = {}
+        self.prefLocale = {}
+        
         self.serverSqlDateFormat = '%Y-%m-%d'
         self.client = 0
         self.contact_id = 0
@@ -153,6 +156,8 @@ class User(defaultValues):
         self.prefFinances['debits1'] = '12210'
         self.prefFinances['payable1'] = '33000'
         
+        
+        self.prefLocale['TimeOffset'] = '+0'
 
 
         
@@ -306,6 +311,7 @@ class User(defaultValues):
         self.dicUser['DateformatString'] = self.userDateFormatString
         self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         self.dicUser['TimeformatString'] = self.userTimeFormatString
+        self.dicUser['TimeOffset'] = self.userTimeOffset
         #self.dicUser['serverAddress'] = self.serverAddress
         self.dicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
@@ -392,6 +398,9 @@ class User(defaultValues):
             self.prefColor['FG'] = result['color_fg']
             self.prefColor['DUTY_BG'] = result['color_duty_bg']
             self.prefColor['DUTY_FG'] = result['color_duty_fg']
+            
+            self.prefLocale['TimeOffset'] = result['time_offset']
+            
             
 ##            self.Email['From']='MyAddress@mail_anywhere.com'
 ##        self.Email['Host']='mail_anywhere.com'

@@ -11,26 +11,50 @@
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
             </entry>
-              <entry>
-            <name>tvText</name>
-            <type>textfield</type>
-            <size>60</size>
-            <verify_type>string</verify_type>
-            <create_sql>1</create_sql>
-            <sql_field>designation</sql_field>
-            <bg_color>0</bg_color>
-            <fg_color>0</fg_color>
-            </entry>
-             <entry>
+            <entry>
             <name>eStatus</name>
             <type>textline</type>
-            <size>60</size>
+            <size>10</size>
             <verify_type>int</verify_type>
             <create_sql>1</create_sql>
             <sql_field>process_status</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
             </entry>
+            
+            <entry>
+            <name>eBeginAt</name>
+            <type>textline</type>
+            <size>10</size>
+            <verify_type>date</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>begin_at</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+            </entry>
+             <entry>
+            <name>eEndAt</name>
+            <type>textline</type>
+            <size>10</size>
+            <verify_type>date</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>end_at</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+            </entry>
+            
+            
+              <entry>
+            <name>tvDesignation</name>
+            <type>textfield</type>
+            <size>50000</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>designation</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+            </entry>
+             
            
     </table>
     </entries_for_table>

@@ -239,12 +239,19 @@ class contactwindow(chooseWindows):
             if sTime.find(':') > 0:
                 t1 = time.time()
                 print 't1 = ', t1
-                t1_l = time.localtime(t1)
+                t1_l = time.localtime()
                 print 't1_l', t1_l
                 #t2 = time.strptime(sTime,'%H:%M')
                 #print 't2 = ', t2
                 liTwake = sTime.split(':')
-                t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]),int(liTwake[1]),0,0,0,1)
+                # last value 0 or 1 ????
+                timeOffset = 0
+                try:
+                    timeOffset = int(self.dicUser['prefLocale']['TimeOffset'])
+                except:
+                    timeOffset = 0
+                    
+                t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]) + timeOffset,int(liTwake[1]),0,0,0,0)
                 print t_set
                 tR = time.mktime(t_set)
                 print tR

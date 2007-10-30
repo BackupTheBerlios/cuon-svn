@@ -364,8 +364,44 @@
 	      <signal name="switch_page" handler="on_notebook1_switch_page" last_modification_time="Fri, 27 Feb 2004 09:45:27 GMT"/>
 
 	      <child>
-		<widget class="GtkFixed" id="fixed3">
+		<widget class="GtkTable" id="table5">
 		  <property name="visible">True</property>
+		  <property name="n_rows">6</property>
+		  <property name="n_columns">4</property>
+		  <property name="homogeneous">False</property>
+		  <property name="row_spacing">0</property>
+		  <property name="column_spacing">0</property>
+
+		  <child>
+		    <widget class="GtkLabel" id="label1">
+		      <property name="width_request">0</property>
+		      <property name="height_request">0</property>
+		      <property agent="glademm" name="cxx_visibility">protected</property>
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Name</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">0</property>
+		      <property name="right_attach">1</property>
+		      <property name="top_attach">0</property>
+		      <property name="bottom_attach">1</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
+		    </packing>
+		  </child>
 
 		  <child>
 		    <widget class="GtkEntry" id="eProfileName">
@@ -383,70 +419,11 @@
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
-		      <property name="x">128</property>
-		      <property name="y">8</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkEntry" id="eProfileDescription">
-		      <property name="width_request">0</property>
-		      <property name="height_request">0</property>
-		      <property agent="glademm" name="cxx_visibility">protected</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="x">128</property>
-		      <property name="y">40</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkEntry" id="eSqlEncoding">
-		      <property name="width_request">158</property>
-		      <property name="height_request">31</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		      <property name="width_chars">20</property>
-		    </widget>
-		    <packing>
-		      <property name="x">128</property>
-		      <property name="y">72</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkEntry" id="eLocales">
-		      <property name="width_request">158</property>
-		      <property name="height_request">31</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="x">128</property>
-		      <property name="y">112</property>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">0</property>
+		      <property name="bottom_attach">1</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -471,8 +448,36 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">0</property>
-		      <property name="y">40</property>
+		      <property name="left_attach">0</property>
+		      <property name="right_attach">1</property>
+		      <property name="top_attach">1</property>
+		      <property name="bottom_attach">2</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eProfileDescription">
+		      <property name="width_request">0</property>
+		      <property name="height_request">0</property>
+		      <property agent="glademm" name="cxx_visibility">protected</property>
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">1</property>
+		      <property name="bottom_attach">2</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -497,55 +502,36 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">0</property>
-		      <property name="y">72</property>
+		      <property name="left_attach">0</property>
+		      <property name="right_attach">1</property>
+		      <property name="top_attach">2</property>
+		      <property name="bottom_attach">3</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkCheckButton" id="chkbStandardProfile">
-		      <property name="width_request">0</property>
-		      <property name="height_request">0</property>
+		    <widget class="GtkEntry" id="eSqlEncoding">
+		      <property name="width_request">158</property>
+		      <property name="height_request">31</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">standard Profile</property>
-		      <property name="use_underline">True</property>
-		      <property name="relief">GTK_RELIEF_NORMAL</property>
-		      <property name="focus_on_click">True</property>
-		      <property name="active">False</property>
-		      <property name="inconsistent">False</property>
-		      <property name="draw_indicator">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		      <property name="width_chars">20</property>
 		    </widget>
 		    <packing>
-		      <property name="x">8</property>
-		      <property name="y">168</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkLabel" id="label1">
-		      <property name="width_request">0</property>
-		      <property name="height_request">0</property>
-		      <property agent="glademm" name="cxx_visibility">protected</property>
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Name</property>
-		      <property name="use_underline">False</property>
-		      <property name="use_markup">False</property>
-		      <property name="justify">GTK_JUSTIFY_LEFT</property>
-		      <property name="wrap">False</property>
-		      <property name="selectable">False</property>
-		      <property name="xalign">0.5</property>
-		      <property name="yalign">0.5</property>
-		      <property name="xpad">0</property>
-		      <property name="ypad">0</property>
-		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		      <property name="width_chars">-1</property>
-		      <property name="single_line_mode">False</property>
-		      <property name="angle">0</property>
-		    </widget>
-		    <packing>
-		      <property name="x">0</property>
-		      <property name="y">8</property>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">2</property>
+		      <property name="bottom_attach">3</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -570,13 +556,70 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">0</property>
-		      <property name="y">112</property>
+		      <property name="left_attach">0</property>
+		      <property name="right_attach">1</property>
+		      <property name="top_attach">3</property>
+		      <property name="bottom_attach">4</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eBG">
+		    <widget class="GtkEntry" id="eLocales">
+		      <property name="width_request">158</property>
+		      <property name="height_request">31</property>
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">*</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">3</property>
+		      <property name="bottom_attach">4</property>
+		      <property name="y_options"></property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label49">
+		      <property name="width_request">50</property>
+		      <property name="height_request">18</property>
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Time-Offset</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">2</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="left_attach">0</property>
+		      <property name="right_attach">1</property>
+		      <property name="top_attach">4</property>
+		      <property name="bottom_attach">5</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkEntry" id="eTimeOffset">
 		      <property name="width_request">158</property>
 		      <property name="height_request">26</property>
 		      <property name="visible">True</property>
@@ -590,68 +633,35 @@
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
-		      <property name="x">560</property>
-		      <property name="y">16</property>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">4</property>
+		      <property name="bottom_attach">5</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eFG">
-		      <property name="width_request">158</property>
-		      <property name="height_request">26</property>
+		    <widget class="GtkCheckButton" id="chkbStandardProfile">
+		      <property name="width_request">0</property>
+		      <property name="height_request">0</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
+		      <property name="label" translatable="yes">standard Profile</property>
+		      <property name="use_underline">True</property>
+		      <property name="relief">GTK_RELIEF_NORMAL</property>
+		      <property name="focus_on_click">True</property>
+		      <property name="active">False</property>
+		      <property name="inconsistent">False</property>
+		      <property name="draw_indicator">True</property>
 		    </widget>
 		    <packing>
-		      <property name="x">560</property>
-		      <property name="y">48</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkEntry" id="eDutyBG">
-		      <property name="width_request">158</property>
-		      <property name="height_request">26</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="x">560</property>
-		      <property name="y">80</property>
-		    </packing>
-		  </child>
-
-		  <child>
-		    <widget class="GtkEntry" id="eDutyFG">
-		      <property name="width_request">158</property>
-		      <property name="height_request">26</property>
-		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="editable">True</property>
-		      <property name="visibility">True</property>
-		      <property name="max_length">0</property>
-		      <property name="text" translatable="yes"></property>
-		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
-		      <property name="activates_default">False</property>
-		    </widget>
-		    <packing>
-		      <property name="x">560</property>
-		      <property name="y">112</property>
+		      <property name="left_attach">1</property>
+		      <property name="right_attach">2</property>
+		      <property name="top_attach">5</property>
+		      <property name="bottom_attach">6</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -676,8 +686,12 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">360</property>
-		      <property name="y">16</property>
+		      <property name="left_attach">2</property>
+		      <property name="right_attach">3</property>
+		      <property name="top_attach">0</property>
+		      <property name="bottom_attach">1</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -702,8 +716,12 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">360</property>
-		      <property name="y">48</property>
+		      <property name="left_attach">2</property>
+		      <property name="right_attach">3</property>
+		      <property name="top_attach">1</property>
+		      <property name="bottom_attach">2</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -728,8 +746,12 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">360</property>
-		      <property name="y">80</property>
+		      <property name="left_attach">2</property>
+		      <property name="right_attach">3</property>
+		      <property name="top_attach">2</property>
+		      <property name="bottom_attach">3</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
@@ -754,72 +776,227 @@
 		      <property name="angle">0</property>
 		    </widget>
 		    <packing>
-		      <property name="x">360</property>
-		      <property name="y">112</property>
+		      <property name="left_attach">2</property>
+		      <property name="right_attach">3</property>
+		      <property name="top_attach">3</property>
+		      <property name="bottom_attach">4</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkColorButton" id="colorFG">
-		      <property name="width_request">51</property>
-		      <property name="height_request">32</property>
+		    <widget class="GtkHBox" id="hbox3">
 		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="use_alpha">False</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="color_set" handler="on_colorFG_color_set" last_modification_time="Fri, 16 Mar 2007 16:13:50 GMT"/>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="eBG">
+			  <property name="width_request">158</property>
+			  <property name="height_request">26</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkColorButton" id="colorBG">
+			  <property name="width_request">51</property>
+			  <property name="height_request">32</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="use_alpha">False</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="color_set" handler="on_colorBG_color_set" last_modification_time="Fri, 16 Mar 2007 16:13:26 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
-		      <property name="x">728</property>
-		      <property name="y">48</property>
+		      <property name="left_attach">3</property>
+		      <property name="right_attach">4</property>
+		      <property name="top_attach">0</property>
+		      <property name="bottom_attach">1</property>
+		      <property name="y_options">fill</property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkColorButton" id="colorDutyBG">
-		      <property name="width_request">51</property>
-		      <property name="height_request">32</property>
+		    <widget class="GtkHBox" id="hbox4">
 		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="use_alpha">False</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="color_set" handler="on_colorDutyBG_color_set" last_modification_time="Fri, 16 Mar 2007 16:14:12 GMT"/>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="eFG">
+			  <property name="width_request">158</property>
+			  <property name="height_request">26</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkColorButton" id="colorFG">
+			  <property name="width_request">51</property>
+			  <property name="height_request">32</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="use_alpha">False</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="color_set" handler="on_colorFG_color_set" last_modification_time="Fri, 16 Mar 2007 16:13:50 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
-		      <property name="x">728</property>
-		      <property name="y">80</property>
+		      <property name="left_attach">3</property>
+		      <property name="right_attach">4</property>
+		      <property name="top_attach">1</property>
+		      <property name="bottom_attach">2</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options">fill</property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkColorButton" id="colorDutyFG">
-		      <property name="width_request">51</property>
-		      <property name="height_request">32</property>
+		    <widget class="GtkHBox" id="hbox5">
 		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="use_alpha">False</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="color_set" handler="on_colorDutyFG_color_set" last_modification_time="Fri, 16 Mar 2007 16:14:52 GMT"/>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="eDutyBG">
+			  <property name="width_request">158</property>
+			  <property name="height_request">26</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkColorButton" id="colorDutyBG">
+			  <property name="width_request">51</property>
+			  <property name="height_request">32</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="use_alpha">False</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="color_set" handler="on_colorDutyBG_color_set" last_modification_time="Fri, 16 Mar 2007 16:14:12 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
-		      <property name="x">728</property>
-		      <property name="y">112</property>
+		      <property name="left_attach">3</property>
+		      <property name="right_attach">4</property>
+		      <property name="top_attach">2</property>
+		      <property name="bottom_attach">3</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options">fill</property>
 		    </packing>
 		  </child>
 
 		  <child>
-		    <widget class="GtkColorButton" id="colorBG">
-		      <property name="width_request">51</property>
-		      <property name="height_request">32</property>
+		    <widget class="GtkHBox" id="hbox6">
 		      <property name="visible">True</property>
-		      <property name="can_focus">True</property>
-		      <property name="use_alpha">False</property>
-		      <property name="focus_on_click">True</property>
-		      <signal name="color_set" handler="on_colorBG_color_set" last_modification_time="Fri, 16 Mar 2007 16:13:26 GMT"/>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="eDutyFG">
+			  <property name="width_request">158</property>
+			  <property name="height_request">26</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkColorButton" id="colorDutyFG">
+			  <property name="width_request">51</property>
+			  <property name="height_request">32</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="use_alpha">False</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="color_set" handler="on_colorDutyFG_color_set" last_modification_time="Fri, 16 Mar 2007 16:14:52 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
 		    </widget>
 		    <packing>
-		      <property name="x">728</property>
-		      <property name="y">16</property>
+		      <property name="left_attach">3</property>
+		      <property name="right_attach">4</property>
+		      <property name="top_attach">3</property>
+		      <property name="bottom_attach">4</property>
+		      <property name="x_options">fill</property>
+		      <property name="y_options">fill</property>
 		    </packing>
 		  </child>
 		</widget>

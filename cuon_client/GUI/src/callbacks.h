@@ -220,3 +220,11 @@ on_calendar_activate                   (GtkMenuItem     *menuitem,
 void
 on_mindmap1_activate                   (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_analyse_costs1_activate             (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);
+
+void
+on_bookkeeping1_activate               (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

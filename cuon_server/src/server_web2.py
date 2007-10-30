@@ -83,7 +83,7 @@ def start():
             try:
                 id = result['id']
                 print id
-                image = oWeb2.getSiteElementByID(id)[0]
+                image = oWeb2.getSiteElementByID(id, TypeImage)[0]
                 sDir = image['save_to_dir'].strip()
                 name = image['name'].strip()
                 if not sDir[len(sDir)-1] == '/':

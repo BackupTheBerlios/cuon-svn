@@ -13,7 +13,8 @@ import commands
 import logging
 from cuon.Windows.windows  import windows
 import SingleMindmap
-
+import cuon.DMS.documentTools
+import cuon.DMS.dms
 import os
 
 
@@ -62,24 +63,22 @@ class thinkwindow(windows):
         
     
     
-    # Idea
-    
-   # Toolbar-Buttons 
-    
-    def on_tbNew_clicked(self, event):
+    # Mindmap
+
+    def on_new1_activate(self, event):
         if self.tabOption == self.tabMindmap:
             self.singleMindmap.newRecord()
             self.setEntriesEditable(self.entriesMindmap, True)
             
-            
     
-    def on_tbEdit_clicked(self, event):
+    def on_edit1_activate(self, event):        
         if self.tabOption == self.tabMindmap:
             self.setEntriesEditable(self.entriesMindmap, True)
-
-
-
-    def on_tbSave_clicked(self, event):
+  
+        
+    
+    def on_save1_activate(self, event):
+        
         if self.tabOption == self.tabMindmap:
             print "save mindmap v2"
             self.singleMindmap.save()
@@ -87,6 +86,39 @@ class thinkwindow(windows):
             
         self.tabChanged()
          
+    
+    def on_delete1_activate(self, event):    
+        
+        if self.tabOption == self.tabMindmap:
+            self.singleMindmap.deleteRecord()
+
+    #Tools
+    def on_dms1_activate(self, event):    
+        print 'dms clicked'
+        if self.singleMindmap.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleMindmap.ID})
+    
+        
+   # Toolbar-Buttons 
+    
+    def on_tbNew_clicked(self, event):
+        self.activateClick('new1')
+          
+    
+    def on_tbEdit_clicked(self, event):
+        self.activateClick('edit1')
+        
+
+
+    def on_tbSave_clicked(self, event):
+        self.activateClick('save1')
+       
+    def on_tbRemove_clicked(self, event):
+        self.activateClick('delete1')
+        
+    def on_tbDMS_clicked(self, event):
+        self.activateClick('dms1')
 
     def refreshTree(self):
         self.singleMindmap.disconnectTree()

@@ -274,6 +274,15 @@
 		<widget class="GtkMenu" id="accounting1_menu">
 
 		  <child>
+		    <widget class="GtkMenuItem" id="bookkeeping1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Bookkeeping</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_bookkeeping1_activate" last_modification_time="Mon, 29 Oct 2007 13:18:34 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkMenuItem" id="mi_cash_account_book1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">cash account book</property>
@@ -288,6 +297,21 @@
 		      <property name="label" translatable="yes">list_of_invoices</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_listOfInvoices1_activate" last_modification_time="Thu, 31 May 2007 10:25:34 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator4">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="analyse_costs1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">analyse costs</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_analyse_costs1_activate" last_modification_time="Sun, 28 Oct 2007 12:34:42 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

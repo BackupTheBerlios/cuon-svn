@@ -710,6 +710,7 @@ class addresswindow(chooseWindows):
         self.out( fkey)
         self.pickleObject(fkey , self.singleAddress.getAddress(self.singleAddress.ID))
 
+
         sExec = os.environ['CUON_OOEXEC']
         os.system(sExec + ' cuon/OpenOffice/ooMain.py ' + fkey )
         #letter1 = cuon.OpenOffice.letter.letter()

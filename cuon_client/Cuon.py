@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -664,6 +664,9 @@ class MainWindow(windows):
 
     def on_listOfInvoices1_activate(self, event):
         loi = cuon.Finances.invoicebook.invoicebookwindow(self.allTables)
+    
+    def on_analyse_costs1_activate(self, event ):
+        pass
         
     # Extras
     def on_expert_system1_activate(self, event):
