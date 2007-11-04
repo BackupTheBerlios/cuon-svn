@@ -135,6 +135,7 @@ class setup:
 ##        self.src_finances_misc = "./cuon/Finances/*.py"
         self.liLocaldirs.append(["./cuon/Finances/CashAccountBook/*.py", self.dest_cuon + "/Finances"])
         self.liLocaldirs.append(["./cuon/Finances/InvoiceBook/*.py", self.dest_cuon + "/Finances"])
+        self.liLocaldirs.append(["./cuon/Finances/Bookkeeping/*.py", self.dest_cuon + "/Finances"])
         self.liLocaldirs.append(["./*.py",self.dest_main + "/"])
         self.liLocaldirs.append(["./Plugins/Dia/*.py", self.dest_cuon + "/Plugins"])
         

@@ -65,6 +65,7 @@ create_window1 (void)
   GtkWidget *accounting1_menu;
   GtkWidget *bookkeeping1;
   GtkWidget *mi_cash_account_book1;
+  GtkWidget *separator5;
   GtkWidget *listofinvoices1;
   GtkWidget *separator4;
   GtkWidget *analyse_costs1;
@@ -290,6 +291,11 @@ create_window1 (void)
   mi_cash_account_book1 = gtk_menu_item_new_with_mnemonic (_("cash account book"));
   gtk_widget_show (mi_cash_account_book1);
   gtk_container_add (GTK_CONTAINER (accounting1_menu), mi_cash_account_book1);
+
+  separator5 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator5);
+  gtk_container_add (GTK_CONTAINER (accounting1_menu), separator5);
+  gtk_widget_set_sensitive (separator5, FALSE);
 
   listofinvoices1 = gtk_menu_item_new_with_mnemonic (_("list_of_invoices"));
   gtk_widget_show (listofinvoices1);
@@ -833,6 +839,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, accounting1_menu, "accounting1_menu");
   GLADE_HOOKUP_OBJECT (window1, bookkeeping1, "bookkeeping1");
   GLADE_HOOKUP_OBJECT (window1, mi_cash_account_book1, "mi_cash_account_book1");
+  GLADE_HOOKUP_OBJECT (window1, separator5, "separator5");
   GLADE_HOOKUP_OBJECT (window1, listofinvoices1, "listofinvoices1");
   GLADE_HOOKUP_OBJECT (window1, separator4, "separator4");
   GLADE_HOOKUP_OBJECT (window1, analyse_costs1, "analyse_costs1");

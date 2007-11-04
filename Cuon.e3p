@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-10-30, 00:18:31 -->
+<!-- Saved: 2007-10-31, 18:13:50 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1547,6 +1547,18 @@
       <Dir>Bookkeeping</Dir>
       <Name>bookkeeping.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Calendar</Dir>
+      <Name>__init__.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Calendar</Dir>
+      <Name>calendar.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2258,6 +2270,14 @@
       <Dir>GUI</Dir>
       <Name>entry_mindmap.xml</Name>
     </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Finances</Dir>
+      <Dir>Bookkeeping</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_bookkeeping.xml</Name>
+    </Other>
   </Others>
   <MainScript>
     <Dir>cuon_client</Dir>
@@ -2363,7 +2383,7 @@ s.</Eric3ApiParams>
     <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
     <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
-    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

@@ -3844,6 +3844,97 @@
       <default />
       <comment> key to account_account_info </comment>
      </field>
+      <field>
+      <name>value_d5</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c5</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_5</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment> key to account_account_info </comment>
+     </field>
+      <field>
+      <name>value_d6</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c6</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_6</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment> key to account_account_info </comment>
+     </field>
+      <field>
+      <name>value_d7</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+      <field>
+      <name>value_c7</name>
+      <type>numeric</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>10,2</size>
+      <default />
+      <comment> values </comment>
+    </field>
+    <field>
+      <name>account_7</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>10</size>
+      <default />
+      <comment> key to account_account_info </comment>
+     </field>
+     
    </table>
   <!--table: staff-->
   <table>

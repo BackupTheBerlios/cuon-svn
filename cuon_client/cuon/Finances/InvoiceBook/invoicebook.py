@@ -122,14 +122,14 @@ class invoicebookwindow(windows):
         
         self.addEnabledMenuItems('editListOfInvoice','new', self.dicUserKeys['new'])
         self.addEnabledMenuItems('editListOfInvoice','delete', self.dicUserKeys['delete'])
-        self.addEnabledMenuItems('editListOfInvoice','print', self.dicUserKeys['print'])
+        #self.addEnabledMenuItems('editListOfInvoice','print', self.dicUserKeys['print'])
         self.addEnabledMenuItems('editListOfInvoice','edit', self.dicUserKeys['edit'])
 
         # enabledMenues for Inpayment
         
         self.addEnabledMenuItems('editInpayment','inpayment_new1', self.dicUserKeys['new'])
         self.addEnabledMenuItems('editInpayment','inpayment_delete1', self.dicUserKeys['delete'])
-        self.addEnabledMenuItems('editInpayment', 'inpayment_print1', self.dicUserKeys['print'])
+        #self.addEnabledMenuItems('editInpayment', 'inpayment_print1', self.dicUserKeys['print'])
         self.addEnabledMenuItems('editInpayment','inpayment_edit1', self.dicUserKeys['edit'])
         
         # enabledMenues for Residue
@@ -166,7 +166,7 @@ class invoicebookwindow(windows):
               
     def on_quit1_activate(self, event):
         print "exit ListOfInvoice V1"
-        self.closeWindows()        
+        self.closeWindow()        
 
     
 
@@ -304,7 +304,22 @@ class invoicebookwindow(windows):
         dEnd = dicDate['date']
         self.printListOfReminder(dBegin,dEnd)
         
-            
+    def  on_directdebit1_activate(self, event):
+        dicExtraData = {}
+        dicDate = self.getActualDateTime()
+        dBegin = dicDate['date']
+        dEnd = dicDate['date']
+        print ' start List of top printing'
+        dicExtraData['dBegin'] = dBegin
+        dicExtraData['dEnd'] = dEnd
+        
+        dicExtraData['Tops'] = 'directDebit'
+        print 'dicExtraData = ', dicExtraData
+
+        Pdf = self.rpc.callRP('Report.server_list_of_invoices_by_top', dicExtraData, self.dicUser)
+        self.showPdf(Pdf, self.dicUser)
+        
+        
     def getInvoiceInfos(self):
     
         firstRecord = None

@@ -292,6 +292,12 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator5">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkMenuItem" id="listofinvoices1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">list_of_invoices</property>

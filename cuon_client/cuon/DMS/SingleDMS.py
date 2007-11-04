@@ -67,8 +67,7 @@ class SingleDMS(SingleData):
         self.newTitle = None 
         self.newCategory = None
         self.newDate = None
-        self.loadGlade('dms.xml')
-
+       
 
     def createTmpFile(self, sEXT):
         print '#############################################################'

@@ -65,7 +65,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image133">
+			<widget class="GtkImage" id="image161">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -99,7 +99,7 @@
 		      <signal name="activate" handler="on_new_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image134">
+			<widget class="GtkImage" id="image162">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -120,7 +120,7 @@
 		      <signal name="activate" handler="on_edit_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image135">
+			<widget class="GtkImage" id="image163">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-edit</property>
 			  <property name="icon_size">1</property>
@@ -141,7 +141,7 @@
 		      <signal name="activate" handler="on_save_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image136">
+			<widget class="GtkImage" id="image164">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -168,7 +168,7 @@
 		      <signal name="activate" handler="on_delete_activate" last_modification_time="Wed, 30 May 2007 14:42:45 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image137">
+			<widget class="GtkImage" id="image165">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -184,86 +184,6 @@
 		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator6">
 		      <property name="visible">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="print">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Print</property>
-		      <property name="use_underline">True</property>
-
-		      <child>
-			<widget class="GtkMenu" id="print_menu">
-
-			  <child>
-			    <widget class="GtkMenuItem" id="month1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Month</property>
-			      <property name="use_underline">True</property>
-
-			      <child>
-				<widget class="GtkMenu" id="month1_menu">
-
-				  <child>
-				    <widget class="GtkMenuItem" id="this_month">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">This Month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_this_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-				    </widget>
-				  </child>
-
-				  <child>
-				    <widget class="GtkMenuItem" id="last_month">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Last Month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_last_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-				    </widget>
-				  </child>
-
-				  <child>
-				    <widget class="GtkMenuItem" id="custom_month">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Custom Month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_custom_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-				    </widget>
-				  </child>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="quarter1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Quarter</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_quarter1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="half_year1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Half Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_half_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="year1">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
-			    </widget>
-			  </child>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 		</widget>
@@ -325,87 +245,6 @@
 		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator8">
 		      <property name="visible">True</property>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="inpayment_print1">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Print</property>
-		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_inpayment_print1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-
-		      <child>
-			<widget class="GtkMenu" id="inpayment_print1_menu">
-
-			  <child>
-			    <widget class="GtkMenuItem" id="month2">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Month</property>
-			      <property name="use_underline">True</property>
-
-			      <child>
-				<widget class="GtkMenu" id="month2_menu">
-
-				  <child>
-				    <widget class="GtkMenuItem" id="this_month2">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">This Month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_inpayment_this_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-				    </widget>
-				  </child>
-
-				  <child>
-				    <widget class="GtkMenuItem" id="last_month2">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Last Month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_inpayment_last_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-				    </widget>
-				  </child>
-
-				  <child>
-				    <widget class="GtkMenuItem" id="custom_month2">
-				      <property name="visible">True</property>
-				      <property name="label" translatable="yes">Custom month</property>
-				      <property name="use_underline">True</property>
-				      <signal name="activate" handler="on_inpayment_custom_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-				    </widget>
-				  </child>
-				</widget>
-			      </child>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="quarter2">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Quarter</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_inpayment_quarter1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="half_year2">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Half Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_inpayment_half_year1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-			    </widget>
-			  </child>
-
-			  <child>
-			    <widget class="GtkMenuItem" id="year2">
-			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Year</property>
-			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_inpayment_year1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
-			    </widget>
-			  </child>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 		</widget>
@@ -575,6 +414,215 @@
 				  </child>
 				</widget>
 			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="lists1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Lists</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="lists1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="invoicebook">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">invoicebook</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="invoicebook_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="month1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Month</property>
+			      <property name="use_underline">True</property>
+
+			      <child>
+				<widget class="GtkMenu" id="month1_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="this_month">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">This Month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_this_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="last_month">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Last Month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_last_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="custom_month">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Custom Month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_custom_month_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="quarter1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Quarter</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_quarter1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="half_year1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Half Year</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_half_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="year1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Year</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_year1_activate" last_modification_time="Wed, 30 May 2007 14:46:10 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="invoices">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Invoices</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="invoices_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="terms_of_payment1">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Terms of Payment</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_terms_of_payment1_activate" last_modification_time="Thu, 01 Nov 2007 12:30:36 GMT"/>
+
+			      <child>
+				<widget class="GtkMenu" id="terms_of_payment1_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="directdebit1">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">directDebit</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_directdebit1_activate" last_modification_time="Sat, 03 Nov 2007 11:51:08 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="inpayment2">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Inpayment</property>
+		      <property name="use_underline">True</property>
+
+		      <child>
+			<widget class="GtkMenu" id="inpayment2_menu">
+
+			  <child>
+			    <widget class="GtkMenuItem" id="month2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Month</property>
+			      <property name="use_underline">True</property>
+
+			      <child>
+				<widget class="GtkMenu" id="month2_menu">
+
+				  <child>
+				    <widget class="GtkMenuItem" id="this_month2">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">This Month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_inpayment_this_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="last_month2">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Last Month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_inpayment_last_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
+				    </widget>
+				  </child>
+
+				  <child>
+				    <widget class="GtkMenuItem" id="custom_month2">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Custom month</property>
+				      <property name="use_underline">True</property>
+				      <signal name="activate" handler="on_inpayment_custom_month1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="quarter2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Quarter</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_inpayment_quarter1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="half_year2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Half Year</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_inpayment_half_year1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
+			    </widget>
+			  </child>
+
+			  <child>
+			    <widget class="GtkMenuItem" id="year2">
+			      <property name="visible">True</property>
+			      <property name="label" translatable="yes">Year</property>
+			      <property name="use_underline">True</property>
+			      <signal name="activate" handler="on_inpayment_year1_activate" last_modification_time="Wed, 27 Jun 2007 08:37:01 GMT"/>
 			    </widget>
 			  </child>
 			</widget>

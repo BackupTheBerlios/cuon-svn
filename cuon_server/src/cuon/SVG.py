@@ -25,6 +25,8 @@ class SVG:
                 print iT
                 liMax.append(iT[1])
             yM = max(liMax)
+            if yM == 0:
+                yM = 1
             
             yMulti0 = ( (dicScene['height'] - dicScene['yMargin'] -30)/yM)*0.9
             yMulti = int(yMulti0)

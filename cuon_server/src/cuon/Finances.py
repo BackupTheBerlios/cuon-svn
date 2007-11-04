@@ -74,7 +74,10 @@ class Finances(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getLastDate(self, dicUser):
         self.writeLog('start py_get_LastDate',self.debugFinances)
-        ret = '1900/01/01'
+        sSql = "select to_char(now(),'" + dicUser['SQLDateFormat'] + "\') as last_date"
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['NONE','ERROR']:
+            ret = result[0]['last_date']
         cSql = "select to_char(accounting_date,'" +dicUser['SQLDateFormat'] + "\') as last_date from account_sentence "
         cSql = cSql + " where id = (select max(id) as max_id from account_sentence "
         self.writeLog('get0  cSql = ' + cSql,self.debugFinances)
@@ -85,7 +88,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         liS = self.oDatabase.xmlrpc_executeNormalQuery(cSql,dicUser)
         
         self.writeLog('liS = ' + `liS`,self.debugFinances)
-        if liS not in ['NONE','ERROR']:
+        if liS and liS not in ['NONE','ERROR']:
            ret = liS[0]['last_date']
         return ret
         

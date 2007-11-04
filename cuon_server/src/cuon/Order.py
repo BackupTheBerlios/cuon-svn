@@ -544,6 +544,47 @@ class Order(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         return result    
+    
+    def getListOfInvoicesByTop(self, dicExtraData, dicUser ):
+        print dicExtraData
+        iReminder = 10
+        sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
+        
+        
+        sSql = 'select distinct '
+        sSql += 'list_of_invoices.total_amount as total_amount, '
+        sSql += 'address.lastname as lastname, address.city as city, '
+        sSql += "orderbook.id as order_id, to_char(list_of_invoices.maturity, \'" + dicUser['SQLDateFormat'] + "\') as maturity, "
+        sSql += sResidue + " as residue, "
+        sSql += " current_date - list_of_invoices.maturity as remind_days, "
+        sSql += " list_of_invoices.order_number as order_number, list_of_invoices.id, list_of_invoices.invoice_number as invoice_number, to_char(list_of_invoices.date_of_invoice, \'" + dicUser['SQLDateFormat'] + "\')  as date_of_invoice "
+        sSql += " from list_of_invoices ,in_payment, orderbook, orderinvoice, address "
+        sSql += self.getWhere('',dicUser,'1','list_of_invoices.')
+        sSql += "and " + sResidue + " > 0.01"
+        sTops = dicExtraData['Tops']
+        tops = None
+        try:
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            if sTops == 'directDebit':
+                tops = self.getConfigOption('CLIENT_' + `dicUser['client']`,'list_of_invoices_directDebit', cpServer)
+                print tops
+        except:
+            tops = None
+
+        if tops:
+            liTops = tops.split(',')
+            if liTops:
+                sSql += ' and ('
+                for sTop in liTops:
+                    sSql += ' orderinvoice.order_top = ' + sTop + ' or'
+                sSql = sSql[:len(sSql)-3]
+                sSql += ' )'
+                
+        #sSql += " and (current_date - list_of_invoices.maturity > " + `iReminder` + ") "
+        sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
+        sSql += ' and orderbook.id = orderinvoice.orderid '
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        return result    
         
     def xmlrpc_getStatsMisc(self, dicUser):
         

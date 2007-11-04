@@ -46,7 +46,7 @@ class cashAccountBookwindow(windows):
         self.singleAccountInfo = SingleAccountInfo.SingleAccountInfo(allTables)
         
                       
-        self.EntriesCAB = 'cashAccount.xml'
+        self.EntriesCAB = 'cashAccountBook.xml'
         self.loadEntries(self.EntriesCAB)
     
         self.singleAccountSentence.setEntries(self.getDataEntries(self.EntriesCAB) )
@@ -153,8 +153,8 @@ class cashAccountBookwindow(windows):
         print 'cab_nr = ' , cab_nr
         self.getWidget('eDocumentNumber1').set_text(`cab_nr`)
         last_date = self.rpc.callRP('Finances.getLastDate', self.dicUser)
-        self.out('Last-Date = ' + `last_date`)
-        last_date = time.strptime(last_date, "%d.%m.%Y",  )
+        print 'Last-Date = ', last_date
+        last_date = time.strptime(last_date, "%d.%m.%Y" )
         self.getWidget('eDate').set_text(time.strftime(self.dicUser['DateformatString'],last_date))
         self.getWidget('eDate').grab_focus()
         
@@ -205,7 +205,7 @@ class cashAccountBookwindow(windows):
 
     def setInfo(self, getWidgetText, setWidgetText ):
         eAcct = self.getWidget(setWidgetText)
-        cCAB1 = self.singleAccountInfo.getInfoline(self.getWidget(getWidgetText).get_text())
+        cCAB1 = self.singleAccountInfo.getInfoLine(self.getWidget(getWidgetText).get_text())
         if cCAB1:
             eAcct.set_text(cCAB1)
         else:

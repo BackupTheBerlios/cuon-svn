@@ -230,7 +230,6 @@ except Exception, params:
     print 'import failed'
     print Exception, params
 
-import cuon.Biblio.biblio
 import cuon.Order.order
 import cuon.User
 import cuon.Preferences.preferences
@@ -239,31 +238,23 @@ import cuon.PrefsFinance.prefsFinance
 import cuon.Stock.stock
 
 
-import  cuon.Databases.databases
 import cuon.XML.MyXML
 from cuon.TypeDefs.typedefs import typedefs
 from cuon.Windows.windows  import windows
-import cuon.Login.login
 import cPickle
 import cuon.Databases.dumps
 from cuon.TypeDefs.typedefs_server import typedefs_server
 import cuon.Databases.cyr_load_table
 #import threading
 
-import cuon.WebShop.webshop
-import cuon.AI.ai
 import cuon.Staff.staff
 import cuon.Project.project
-import cuon.Finances.cashAccountBook
-import cuon.Databases.import_generic1
-import cuon.Databases.import_generic2
 import commands
-import cuon.Help.help
-import cuon.Calendar.calendar
-import cuon.Think.think
 import cuon.Databases.SingleDataTreeModel
 import cuon.Finances.invoicebook
-import cuon.Stats.stats
+import cuon.Finances.bookkeeping
+import cuon.Finances.cashAccountBook
+import cuon.Calendar.calendar
 try:
     import cuon.Web2.web2
 except:
@@ -295,7 +286,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 17, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -357,9 +348,12 @@ class MainWindow(windows):
         self.gtk_main_quit()
 
     def on_databases1_activate(self,event):
+        import  cuon.Databases.databases
         daba = cuon.Databases.databases.databaseswindow()
    
     def on_login1_activate(self,event):
+        import cuon.Login.login
+
         lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')])
         
         self.openDB()
@@ -632,6 +626,7 @@ class MainWindow(windows):
 
     #-->
     def on_bibliographic_activate(self, event):
+        import cuon.Biblio.biblio
         bib = cuon.Biblio.biblio.bibliowindow(self.allTables)
     def on_clients1_activate(self, event):
         cli = cuon.Clients.clients.clientswindow(self.allTables)
@@ -662,6 +657,9 @@ class MainWindow(windows):
     def on_cash_account_book1_activate(self, event):
         cab = cuon.Finances.cashAccountBook.cashAccountBookwindow(self.allTables)
 
+    def on_bookkeeping1_activate(self, event):
+        bk = cuon.Finances.bookkeeping.bookkeepingwindow(self.allTables)
+
     def on_listOfInvoices1_activate(self, event):
         loi = cuon.Finances.invoicebook.invoicebookwindow(self.allTables)
     
@@ -670,6 +668,7 @@ class MainWindow(windows):
         
     # Extras
     def on_expert_system1_activate(self, event):
+        import cuon.AI.ai
         cai = cuon.AI.ai.aiwindow(self.allTables)
 
     def on_project1_activate(self, event):
@@ -679,12 +678,14 @@ class MainWindow(windows):
         web2 = cuon.Web2.web2.web2window(self.allTables)
 
     def on_stats1_activate(self, event):
+        import cuon.Stats.stats
         stats = cuon.Stats.stats.statswindow(self.allTables)
 
     def on_calendar_activate(self, event):
         ccal  = cuon.Calendar.calendar.calendarwindow(self.allTables)
 
     def on_mindmap1_activate(self, event):
+        import cuon.Think.think
         think = cuon.Think.think.thinkwindow(self.allTables)
 
     # Tools   
@@ -714,6 +715,8 @@ class MainWindow(windows):
 
 
     def on_webshop1_activate(self,event):
+        import cuon.WebShop.webshop
+
         print 'Webshop'
         prefs = cuon.WebShop.webshop.webshopwindow(self.allTables)
 
@@ -725,6 +728,7 @@ class MainWindow(windows):
         self.stopProgressBar()
     
     def on_import_data1_activate(self, event):
+        import cuon.Databases.import_generic1
         imp1 =  cuon.Databases.import_generic1.import_generic1(self.allTables)
 
         
@@ -740,6 +744,7 @@ class MainWindow(windows):
         about1.show()
         
     def on_onlinehelp_activate(self, event):
+        import cuon.Help.help
         he1 = cuon.Help.help.helpwindow()
           
     

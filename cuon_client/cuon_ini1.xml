@@ -215,6 +215,11 @@
     </Entries>
     <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>bookkeeping.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_bookkeeping.xml</Entry-FileValue>
+    </Entries>
+    <Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>list_of_invoices.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_list_of_invoices.xml</Entry-FileValue>
     </Entries>
@@ -419,6 +424,11 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>calendar.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/calendar.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>materialGroup.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/materialGroup.glade2</Glade-FileValue>
     </GladeEntries>
@@ -480,6 +490,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>cashAccountBook.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/cashAccountBook.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>bookkeeping.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/bookkeeping.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>

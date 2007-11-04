@@ -24,7 +24,9 @@ class calendarwindow(windows):
         
         windows.__init__(self)
         
-        
+        self.loadGlade('calendar.xml', 'CalendarMainwindow')
+        #self.win1 = self.getWidget('AddressMainwindow')
+        self.win1.maximize()
         
         
         
