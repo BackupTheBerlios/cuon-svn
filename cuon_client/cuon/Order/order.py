@@ -354,7 +354,7 @@ class orderwindow(chooseWindows):
 
     def on_all_open_invoice1_activate(self, event):
         
-        if self.QuestionMsg('All new invoices are printed ! Wish you this ?'):
+        if self.QuestionMsg('All new invoices are printed ! Do you wish this ? Really ?'):
             oldID = self.singleOrder.ID
             
             liOrder = self.rpc.callRP('Order.getAllOrderWithoutInvoice',self.dicUser)

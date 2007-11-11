@@ -586,6 +586,28 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="logs1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Logs</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="logs1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="mail1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Mail</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_logs_mail1_activate" last_modification_time="Fri, 09 Nov 2007 18:36:19 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="help1">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Help</property>

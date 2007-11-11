@@ -24,6 +24,7 @@ from twisted.web import xmlrpc
 from basics import basics
 from Email2 import Email 
 import Database
+import time
 
 class cuonemail(xmlrpc.XMLRPC, basics):
 
@@ -50,17 +51,18 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                         for sm in result:
                             if sm['email']:
                                 dicValues['To'] = sm['email']
-                                self.sendEmail(dicValues, liAttachments,dicUser)
+                                ok = self.sendEmail(dicValues, liAttachments,dicUser)
                                 
                         
                         
             else:
-                self.sendEmail(dicValues, liAttachments,dicUser)
+                ok = self.sendEmail(dicValues, liAttachments,dicUser)
             
         return ok
                 
     def sendEmail(self, dicValues, liAttachments,dicUser ):
         cuonmail = Email(smtp_server = "localhost")
+        print ' send mail'
         if liAttachments:
             cuonmail.attachments = liAttachments
         else:
@@ -112,15 +114,37 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             print 'Error in Email'
             print Exception, params
         
+        s = None
         try:
             s = cuonmail.send()
+        except Exception, params:
+            print Exception
+            print ' -----------------'
+            print  params
+            s = params
+            
+        try:
             print 'return Value form Email2 ', s
             print 'Status = ', cuonmail.statusdict
-            if s:
-                ok = s
-        except Exception, params:
-            print Exception, params
-            
+            print 's = ', s
+            if not s:
+                s = 'Email '
+                try:
+                    s += 'send : ' +  dicValues['To'] + ', ' + `dicValues['Subject']`
+                except:
+                    s += ' wrong To or subject'
+            else:
+                s = `s`
+            ok = s
+            f = open('/var/log/cuonmail.log','a')
+            f.write(time.ctime(time.time() ))
+            f.write('     ')
+            f.write(s)
+            f.write('\n')
+            f.close()
+        except:
+            pass
+        
         return ok
         
     def getNewsletterEmail(self, NewsletterShortcut, dicUser):

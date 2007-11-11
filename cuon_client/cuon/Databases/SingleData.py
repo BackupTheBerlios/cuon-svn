@@ -78,7 +78,8 @@ class SingleData(gladeXml, logs):
         self.iter = None
         self.liItems = None
         self.bDistinct = False
-        
+        self.xml = None
+
     def load(self, record, dicDetail = None):
         '''
         @param record: id of the record

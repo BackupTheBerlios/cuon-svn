@@ -135,7 +135,9 @@ class sendEmail(editorwindow):
         
         self.dicValues['Body'] = self.readTextBuffer(self.getWidget('tv1'))
         
-        self.rpc.callRP('Email.sendTheEmail', self.dicValues, self.liAttachments, self.dicUser)
+        em = self.rpc.callRP('Email.sendTheEmail', self.dicValues, self.liAttachments, self.dicUser)
+        self.writeEmailLog(em)
+        
 
         
     def addAttachment(self, filename):

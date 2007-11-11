@@ -14,6 +14,7 @@
 import shelve
 import sys
 import os
+import os.path
 import pickle
 import base64
 import time
@@ -459,7 +460,21 @@ class dumps:
                 sArgs += s + ' ' 
             return os.system(sProgramName + ' ' + sArgs )
     
-         
+
+
+    def writeEmailLog(self, sMessage):
+        try:
+            f = open(os.path.normpath(self.td.cuon_path + '/' + 'cuonmail.log'),'a')
+            f.write(time.ctime(time.time() ))
+            f.write('     ')
+            f.write(sMessage)
+            f.write('\n')
+            f.close()  
+        except:
+            pass
+    
+     
+            
 ##    if __name__=="__main__":
 ##        for i in range(12):
 ##            thisMonth = ("0%i"%(i+1,))[-2:]

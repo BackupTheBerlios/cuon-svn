@@ -1150,6 +1150,11 @@ class addresswindow(chooseWindows):
         print 'AddFormular2NoticesSalesman clicked'
         self.addForm2Note('cbeNotesOrganisation','tvNotesOrganisation')
 
+    def on_bViewHomepage_clicked(self, event):
+        sUrl = self.singleAddress.firstRecord['homepage_url']
+        if sUrl[0:3] not in ['htt','HTT','FTP','ftp']:
+            sUrl = 'http://' + sUrl
+        self.startExternalPrg(self.dicUser['prefDMS']['exe']['internet'],sUrl)
 
     
     # send E-mail 
@@ -1170,6 +1175,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singlePartner.getEmail()
+        dicV['Signatur'] = self.dicUser['Email']['Signatur']
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         

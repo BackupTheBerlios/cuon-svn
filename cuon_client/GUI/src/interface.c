@@ -102,6 +102,9 @@ create_window1 (void)
   GtkWidget *mi_addresses_notes_representant1;
   GtkWidget *mi_addresses_notes_salesman1;
   GtkWidget *trennlinie5;
+  GtkWidget *logs1;
+  GtkWidget *logs1_menu;
+  GtkWidget *mail1;
   GtkWidget *help1;
   GtkWidget *help1_menu;
   GtkWidget *about1;
@@ -439,6 +442,17 @@ create_window1 (void)
   gtk_container_add (GTK_CONTAINER (forms1_menu), trennlinie5);
   gtk_widget_set_sensitive (trennlinie5, FALSE);
 
+  logs1 = gtk_menu_item_new_with_mnemonic (_("Logs"));
+  gtk_widget_show (logs1);
+  gtk_container_add (GTK_CONTAINER (menubar1), logs1);
+
+  logs1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (logs1), logs1_menu);
+
+  mail1 = gtk_menu_item_new_with_mnemonic (_("Mail"));
+  gtk_widget_show (mail1);
+  gtk_container_add (GTK_CONTAINER (logs1_menu), mail1);
+
   help1 = gtk_menu_item_new_with_mnemonic (_("Help"));
   gtk_widget_show (help1);
   gtk_container_add (GTK_CONTAINER (menubar1), help1);
@@ -766,6 +780,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) mi_addresses_notes_salesman1, "activate",
                     G_CALLBACK (on_addresses_notes_salesman1_activate),
                     NULL);
+  g_signal_connect ((gpointer) mail1, "activate",
+                    G_CALLBACK (on_logs_mail1_activate),
+                    NULL);
   g_signal_connect ((gpointer) about1, "activate",
                     G_CALLBACK (on_about1_activate),
                     NULL);
@@ -876,6 +893,9 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_representant1, "mi_addresses_notes_representant1");
   GLADE_HOOKUP_OBJECT (window1, mi_addresses_notes_salesman1, "mi_addresses_notes_salesman1");
   GLADE_HOOKUP_OBJECT (window1, trennlinie5, "trennlinie5");
+  GLADE_HOOKUP_OBJECT (window1, logs1, "logs1");
+  GLADE_HOOKUP_OBJECT (window1, logs1_menu, "logs1_menu");
+  GLADE_HOOKUP_OBJECT (window1, mail1, "mail1");
   GLADE_HOOKUP_OBJECT (window1, help1, "help1");
   GLADE_HOOKUP_OBJECT (window1, help1_menu, "help1_menu");
   GLADE_HOOKUP_OBJECT (window1, about1, "about1");

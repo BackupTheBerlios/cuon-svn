@@ -124,27 +124,34 @@ class cyr_load_entries(defaultValues,MyXML, dumps):
 
     def saveEntries(self, sNameOfEntries, entries ): 
 
-        self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-        
-        self.out( sNameOfEntries)
-        self.out( entries.getName())
-        self.out( cPickle.dumps(entries))
-        self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
         
         self.rpc.callRP('Database.saveInfo', sNameOfEntries, self.doEncode(repr(cPickle.dumps(entries) )))
         
 
 
     def loadEntries(self,sNameOfEntries):
-
-        #self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-        #self.out( "load : " + sNameOfEntries)
-        #self.out( "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+        dictEntries = None
         self.openDB()
         #dictEntries = eval(self.doDecode(self.rpc.callRP('Database.getInfo', sNameOfEntries)))
-        dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
-        entries = cPickle.loads(dictEntries)   
+        try:
+            if self.td.SystemName:
+                if self.td.SystemName == 'LINUX-Standard':
+                    dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
+                else:
+                    dictEntries = eval(self.doDecode(self.loadObject(+ self.td.SystemName + '_' + sNameOfEntries)))
+            else:
+                dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
+        except:
+            print 'Error reading Entry Definition'
+            dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
+
+        if not dictEntries:
+            dictEntries = eval(self.doDecode(self.loadObject(sNameOfEntries)))
+            
         self.closeDB()
+        if dictEntries:
+            entries = cPickle.loads(dictEntries)   
+
         
         return entries
 

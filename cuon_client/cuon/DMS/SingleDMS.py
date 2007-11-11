@@ -46,7 +46,6 @@ class SingleDMS(SingleData):
         self.imageData = 'No Image'
         self.ModulNumber = 0
         
-        
         #self.athread = threading.Thread(target = self.loadTable())
         #self.athread.start()
         

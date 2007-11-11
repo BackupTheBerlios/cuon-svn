@@ -251,6 +251,7 @@ import cuon.Staff.staff
 import cuon.Project.project
 import commands
 import cuon.Databases.SingleDataTreeModel
+import cuon.Databases.SingleCuon
 import cuon.Finances.invoicebook
 import cuon.Finances.bookkeeping
 import cuon.Finances.cashAccountBook
@@ -286,7 +287,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 17, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 23, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -738,6 +739,13 @@ class MainWindow(windows):
         te = cuon.VTK.test.test()
         te.show()
    
+    # Logs
+    def on_logs_mail1_activate(self, event):
+        import cuon.Editor.editor
+        dicFile = {'TYPE':'FILE','NAME':os.path.normpath(self.td.cuon_path + '/' + 'cuonmail.log'),'Rights':'RO'}
+        em = cuon.Editor.editor.editorwindow(dicFile)
+        
+        
     # help and info
     def on_about1_activate(self, event):
         about1 = self.getWidget('aCuon')

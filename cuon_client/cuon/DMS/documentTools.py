@@ -162,7 +162,8 @@ class documentTools(dumps):
                     dicV['Body'] = dicVars['Body']
                     print 'dicV = ', dicV
                     em = self.rpc.callRP('Email.sendTheEmail', dicV, liAttachments, dicUser)
-
+                    self.writeEmailLog(em)
+                    
         else:
             print 'else execute ', exe 
             #os.system(exe + ' ' + singleDMS.tmpFile )

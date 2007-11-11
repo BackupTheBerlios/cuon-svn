@@ -279,7 +279,64 @@ class CCRecipients(Recipients):
     en: This object stands for all CC-recipients from the email
     de: Dieses Objekt stellt die CC-Empfaenger einer Email dar
     """
-    pass
+   
+
+    __slots__ = ('cc_recipients')
+
+
+    #----------------------------------------------------------------------
+    def __init__(self):
+        """
+        en: Initializes the recipients
+        de: Initialisiert die Empfaenger
+        """
+
+        self.cc_recipients = []
+
+
+    #----------------------------------------------------------------------
+    def add(self, address, caption = ''):
+        """
+        en: Adds a new address to the list of recipients
+            address = email address of the recipient
+            caption = caption (name) of the recipient
+        de: Fuegt der Empfaengerliste eine neue Adresse hinzu.
+            address = Emailadresse des Empfaengrs
+            caption = Bezeichnung (Name) des Empfaengers
+        """
+
+        self.cc_recipients.append(formataddr((caption, address)))
+
+
+    #----------------------------------------------------------------------
+    def count(self):
+        """
+        en: Returns the number of recipients
+        de: Gibt die Anzahl der Empfaenger zurueck
+        """
+
+        return len(self.cc_recipients)
+
+
+    #----------------------------------------------------------------------
+    def __repr__(self):
+        """
+        en: Returns the list of recipients, as string
+        de: Gibt die Empfengerliste als String zurueck
+        """
+
+        return str(self.cc_recipients)
+
+
+    #----------------------------------------------------------------------
+    def get_list(self):
+        """
+        en: Returns the list of recipients, as list
+        de: Gibt die Empfaengerliste als Liste zurueck
+        """
+
+        return self.cc_recipients
+
 
 
 
@@ -290,7 +347,64 @@ class BCCRecipients(Recipients):
     en: This object stands for all BCC-recipients from the email
     de: Dieses Objekt stellt die BCC-Empfaenger einer Email dar
     """
-    pass
+    
+
+    __slots__ = ('bcc_recipients')
+
+
+    #----------------------------------------------------------------------
+    def __init__(self):
+        """
+        en: Initializes the recipients
+        de: Initialisiert die Empfaenger
+        """
+
+        self.bcc_recipients = []
+
+
+    #----------------------------------------------------------------------
+    def add(self, address, caption = ''):
+        """
+        en: Adds a new address to the list of recipients
+            address = email address of the recipient
+            caption = caption (name) of the recipient
+        de: Fuegt der Empfaengerliste eine neue Adresse hinzu.
+            address = Emailadresse des Empfaengrs
+            caption = Bezeichnung (Name) des Empfaengers
+        """
+
+        self.bcc_recipients.append(formataddr((caption, address)))
+
+
+    #----------------------------------------------------------------------
+    def count(self):
+        """
+        en: Returns the number of recipients
+        de: Gibt die Anzahl der Empfaenger zurueck
+        """
+
+        return len(self.bcc_recipients)
+
+
+    #----------------------------------------------------------------------
+    def __repr__(self):
+        """
+        en: Returns the list of recipients, as string
+        de: Gibt die Empfengerliste als String zurueck
+        """
+
+        return str(self.bcc_recipients)
+
+
+    #----------------------------------------------------------------------
+    def get_list(self):
+        """
+        en: Returns the list of recipients, as list
+        de: Gibt die Empfaengerliste als Liste zurueck
+        """
+
+        return self.bcc_recipients
+
 
 
 
@@ -401,7 +515,7 @@ class Email(object):
             self.user_agent = user_agent
         else:
             self.user_agent = (
-                "SimpleMail (http://www.python-forum.de/post-18144.html) " 
+                "CuonSimpleMail (http://www.cuon.org) " 
                 "Python v%s"
             ) % sys.version.split()[0]
         self.reply_to_address = reply_to_address
@@ -469,6 +583,8 @@ class Email(object):
             msg["To"] = ", ".join(self.recipients.get_list())
         if self.cc_recipients.count() > 0:
             msg["Cc"] = ", ".join(self.cc_recipients.get_list())
+        if self.bcc_recipients.count() > 0:
+            msg["Bcc"] = ", ".join(self.bcc_recipients.get_list())
         msg["Date"] = formatdate(time.time())
         msg["User-Agent"] = self.user_agent
         try:
@@ -531,7 +647,7 @@ class Email(object):
             smtp.connect(self.smtp_server)
         else:
             smtp.connect()
-        print self.smtp_user, self.smtp_password
+        #print self.smtp_user, self.smtp_password
         
        
         
@@ -565,7 +681,7 @@ class Email(object):
         smtp.close()
         
         # Rueckmeldung
-        return True
+        return self.statusdict
 
     # Juergen Hamel
     # Löschen der Testroutinen

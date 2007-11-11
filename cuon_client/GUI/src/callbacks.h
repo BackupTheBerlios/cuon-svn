@@ -228,3 +228,7 @@ on_analyse_costs1_activate             (GtkMenuItem     *menuitem,
 void
 on_bookkeeping1_activate               (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_logs_mail1_activate                 (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

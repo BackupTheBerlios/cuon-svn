@@ -484,6 +484,7 @@ class Order(xmlrpc.XMLRPC, basics):
         liOrder = []
         sSql = " select id from orderbook "
         sSql += self.getWhere(None,dicUser,1)
+        sSql += ' order by id '
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         if result and result not in ['NONE','ERROR']:
             for row in result:
@@ -491,9 +492,9 @@ class Order(xmlrpc.XMLRPC, basics):
                 sSql = " select max(invoice_number) as max_invoice_number from list_of_invoices where order_number = " + `order_id`
                 sSql += self.getWhere(None,dicUser,2)
                 result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                print 'result2', result2
+                print 'result2 act.1', result2
                 if result2 and result2 not in ['NONE','ERROR'] and result2[0]['max_invoice_number'] not in ['NONE','ERROR'] :
-                    if result2[0]['max_invoice_number'] < 1 or result2[0]['max_invoice_number'] != None:
+                    if result2[0]['max_invoice_number'] < 1 :
                         liOrder.append(order_id)
                         print 'append1 = ', order_id
                 else:
@@ -558,7 +559,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += sResidue + " as residue, "
         sSql += " current_date - list_of_invoices.maturity as remind_days, "
         sSql += " list_of_invoices.order_number as order_number, list_of_invoices.id, list_of_invoices.invoice_number as invoice_number, to_char(list_of_invoices.date_of_invoice, \'" + dicUser['SQLDateFormat'] + "\')  as date_of_invoice "
-        sSql += " from list_of_invoices ,in_payment, orderbook, orderinvoice, address "
+        sSql += " from list_of_invoices ,in_payment, orderbook, address "
         sSql += self.getWhere('',dicUser,'1','list_of_invoices.')
         sSql += "and " + sResidue + " > 0.01"
         sTops = dicExtraData['Tops']
@@ -576,14 +577,18 @@ class Order(xmlrpc.XMLRPC, basics):
             if liTops:
                 sSql += ' and ('
                 for sTop in liTops:
-                    sSql += ' orderinvoice.order_top = ' + sTop + ' or'
+                    sSql += 'case when (select max(orderinvoice.order_top) = ' + sTop + ' as top from orderinvoice where orderbook.id = orderinvoice.orderid) = true then true else case when (select max(orderinvoice.order_top) isnull as top from orderinvoice where orderbook.id = orderinvoice.orderid) = true then (select top_id = ' + sTop + ' from addresses_misc where addresses_misc.address_id = address.id ) else false end end or '
+                    #sSql += 'case  orderinvoice.order_top = ' + sTop + ' or'
                 sSql = sSql[:len(sSql)-3]
                 sSql += ' )'
                 
         #sSql += " and (current_date - list_of_invoices.maturity > " + `iReminder` + ") "
         sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
-        sSql += ' and orderbook.id = orderinvoice.orderid '
+        #sSql += ' and orderbook.id = orderinvoice.orderid '
+        print sSql
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        result2 = []
+        
         return result    
         
     def xmlrpc_getStatsMisc(self, dicUser):
