@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <bonobo.h>
-#include <gnome.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,71 +26,28 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
-static GnomeUIInfo file1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Print S_etup..."),
-    NULL,
-    (gpointer) on_choosePrinter1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  GNOMEUIINFO_MENU_EXIT_ITEM (on_quit1_activate, NULL),
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo bank1_menu_uiinfo[] =
-{
-  GNOMEUIINFO_MENU_NEW_ITEM (N_("_New"), NULL, on_new1_activate, NULL),
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_MENU_SAVE_ITEM (on_save1_activate, NULL),
-  GNOMEUIINFO_SEPARATOR,
-  GNOMEUIINFO_MENU_PRINT_ITEM (on_print1_activate, NULL),
-  GNOMEUIINFO_SEPARATOR,
-  GNOMEUIINFO_MENU_CLEAR_ITEM (on_delete1_activate, NULL),
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("choose Bank"),
-    NULL,
-    (gpointer) on_chooseBank_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo menubar1_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_SUBTREE, N_("_File"),
-    NULL,
-    file1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Bank"),
-    NULL,
-    bank1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
 GtkWidget*
 create_BankMainwindow (void)
 {
   GtkWidget *BankMainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
+  GtkWidget *file1;
+  GtkWidget *file1_menu;
+  GtkWidget *Print1;
+  GtkWidget *separator2;
+  GtkWidget *quit1;
+  GtkWidget *bank1;
+  GtkWidget *bank1_menu;
+  GtkWidget *new1;
+  GtkWidget *edit1;
+  GtkWidget *save1;
+  GtkWidget *separator3;
+  GtkWidget *print1;
+  GtkWidget *separator1;
+  GtkWidget *delete1;
+  GtkWidget *separator4;
+  GtkWidget *chooseBank;
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *toolitem1;
@@ -141,8 +98,73 @@ create_BankMainwindow (void)
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
-  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       accel_group, FALSE, 0);
+
+  file1 = gtk_menu_item_new_with_mnemonic (_("_File"));
+  gtk_widget_show (file1);
+  gtk_container_add (GTK_CONTAINER (menubar1), file1);
+
+  file1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
+
+  Print1 = gtk_image_menu_item_new_from_stock ("gtk-print", accel_group);
+  gtk_widget_show (Print1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), Print1);
+
+  separator2 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator2);
+  gtk_container_add (GTK_CONTAINER (file1_menu), separator2);
+  gtk_widget_set_sensitive (separator2, FALSE);
+
+  quit1 = gtk_separator_menu_item_new ();
+  gtk_widget_show (quit1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), quit1);
+  gtk_widget_set_sensitive (quit1, FALSE);
+
+  bank1 = gtk_menu_item_new_with_mnemonic (_("Bank"));
+  gtk_widget_show (bank1);
+  gtk_container_add (GTK_CONTAINER (menubar1), bank1);
+
+  bank1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (bank1), bank1_menu);
+
+  new1 = gtk_image_menu_item_new_from_stock ("gtk-new", accel_group);
+  gtk_widget_show (new1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), new1);
+
+  edit1 = gtk_image_menu_item_new_from_stock ("gtk-edit", accel_group);
+  gtk_widget_show (edit1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), edit1);
+
+  save1 = gtk_image_menu_item_new_from_stock ("gtk-save", accel_group);
+  gtk_widget_show (save1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), save1);
+
+  separator3 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator3);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), separator3);
+  gtk_widget_set_sensitive (separator3, FALSE);
+
+  print1 = gtk_image_menu_item_new_from_stock ("gtk-print", accel_group);
+  gtk_widget_show (print1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), print1);
+
+  separator1 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), separator1);
+  gtk_widget_set_sensitive (separator1, FALSE);
+
+  delete1 = gtk_image_menu_item_new_from_stock ("gtk-delete", accel_group);
+  gtk_widget_show (delete1);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), delete1);
+
+  separator4 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator4);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), separator4);
+  gtk_widget_set_sensitive (separator4, FALSE);
+
+  chooseBank = gtk_menu_item_new_with_mnemonic (_("choose Bank"));
+  gtk_widget_show (chooseBank);
+  gtk_container_add (GTK_CONTAINER (bank1_menu), chooseBank);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -320,6 +342,30 @@ create_BankMainwindow (void)
   gtk_widget_show (label16);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label16);
 
+  g_signal_connect ((gpointer) Print1, "activate",
+                    G_CALLBACK (on_Print1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) quit1, "activate",
+                    G_CALLBACK (on_quit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) new1, "activate",
+                    G_CALLBACK (on_new1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) edit1, "activate",
+                    G_CALLBACK (on_edit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) save1, "activate",
+                    G_CALLBACK (on_save1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) print1, "activate",
+                    G_CALLBACK (on_print1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) delete1, "activate",
+                    G_CALLBACK (on_delete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) chooseBank, "activate",
+                    G_CALLBACK (on_chooseBank_activate),
+                    NULL);
   g_signal_connect ((gpointer) bChooseClient, "clicked",
                     G_CALLBACK (on_bChooseClient_clicked),
                     NULL);
@@ -340,20 +386,22 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT_NO_REF (BankMainwindow, BankMainwindow, "BankMainwindow");
   GLADE_HOOKUP_OBJECT (BankMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, menubar1_uiinfo[0].widget, "file1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, file1_menu_uiinfo[0].widget, "choosePrinter1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, file1_menu_uiinfo[1].widget, "separator2");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, file1_menu_uiinfo[2].widget, "quit1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, menubar1_uiinfo[1].widget, "bank1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[0].widget, "new1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[1].widget, "edit1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[2].widget, "save1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[3].widget, "separator3");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[4].widget, "print1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[5].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[6].widget, "delete1");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[7].widget, "separator4");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu_uiinfo[8].widget, "chooseBank");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, file1, "file1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, file1_menu, "file1_menu");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, Print1, "Print1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, separator2, "separator2");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, quit1, "quit1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1, "bank1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, bank1_menu, "bank1_menu");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, new1, "new1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, edit1, "edit1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, save1, "save1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, separator3, "separator3");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, print1, "print1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, separator1, "separator1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, delete1, "delete1");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, separator4, "separator4");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, chooseBank, "chooseBank");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, toolitem1, "toolitem1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bChooseClient, "bChooseClient");

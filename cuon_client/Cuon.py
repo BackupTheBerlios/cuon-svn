@@ -287,9 +287,9 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 23, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 25, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
-        self.sTitle = _("Client PyCuon for C.U.O.N. Version ") + `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
+        self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
         self.t1 = None
         self.t2 = None
@@ -1225,8 +1225,8 @@ class MainWindow(windows):
         self.disableMenuItem('login')
         self.disableMenuItem('serverMode')
         self.enableMenuItem('user')
-
-        self.setTitle('window1',self.sTitle)
+        sTitle = self.getWidget('window1').get_title() + self.sTitle
+        self.setTitle('window1',sTitle)
         self.openDB()
         oUser = self.loadObject('User')
         if not oUser:

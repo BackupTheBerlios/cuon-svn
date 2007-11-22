@@ -2,7 +2,6 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
 
 <widget class="GtkWindow" id="EmailMainwindow">
   <property name="visible">True</property>
@@ -45,17 +44,15 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="new1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_NEW_ITEM</property>
-		      <property name="label" translatable="yes">_New</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_new1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="open1">
+		    <widget class="GtkSeparatorMenuItem" id="open1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_OPEN_ITEM</property>
 		      <signal name="activate" handler="on_open1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
@@ -76,9 +73,8 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="quit1">
+		    <widget class="GtkSeparatorMenuItem" id="quit1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_EXIT_ITEM</property>
 		      <signal name="activate" handler="on_quit1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
@@ -88,41 +84,36 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="edit1">
+	    <widget class="GtkSeparatorMenuItem" id="edit1">
 	      <property name="visible">True</property>
-	      <property name="stock_item">GNOMEUIINFO_MENU_EDIT_TREE</property>
 
 	      <child>
 		<widget class="GtkMenu" id="edit1_menu">
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="cut1">
+		    <widget class="GtkSeparatorMenuItem" id="cut1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_CUT_ITEM</property>
 		      <signal name="activate" handler="on_cut1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="copy1">
+		    <widget class="GtkSeparatorMenuItem" id="copy1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
 		      <signal name="activate" handler="on_copy1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="paste1">
+		    <widget class="GtkSeparatorMenuItem" id="paste1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_PASTE_ITEM</property>
 		      <signal name="activate" handler="on_paste1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="clear1">
+		    <widget class="GtkSeparatorMenuItem" id="clear1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_CLEAR_ITEM</property>
 		      <signal name="activate" handler="on_clear1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
@@ -134,9 +125,8 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="properties1">
+		    <widget class="GtkSeparatorMenuItem" id="properties1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_PROPERTIES_ITEM</property>
 		      <signal name="activate" handler="on_properties1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
@@ -148,9 +138,8 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="preferences1">
+		    <widget class="GtkSeparatorMenuItem" id="preferences1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_PREFERENCES_ITEM</property>
 		      <signal name="activate" handler="on_preferences1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>
@@ -160,24 +149,21 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="view1">
+	    <widget class="GtkSeparatorMenuItem" id="view1">
 	      <property name="visible">True</property>
-	      <property name="stock_item">GNOMEUIINFO_MENU_VIEW_TREE</property>
 	    </widget>
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="help1">
+	    <widget class="GtkSeparatorMenuItem" id="help1">
 	      <property name="visible">True</property>
-	      <property name="stock_item">GNOMEUIINFO_MENU_HELP_TREE</property>
 
 	      <child>
 		<widget class="GtkMenu" id="help1_menu">
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="about1">
+		    <widget class="GtkSeparatorMenuItem" id="about1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_ABOUT_ITEM</property>
 		      <signal name="activate" handler="on_about1_activate" last_modification_time="Sun, 14 Jan 2007 14:09:41 GMT"/>
 		    </widget>
 		  </child>

@@ -98,9 +98,9 @@ create_BankMainwindow (void)
   GtkWidget *alignment1;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
-  GtkWidget *eFindName;
+  GtkWidget *eFindBCN;
   GtkWidget *lFindDesignation;
-  GtkWidget *eFindCity;
+  GtkWidget *eFindDesignation;
   GtkWidget *bSearch;
   GtkWidget *scrolledwindow1;
   GtkWidget *viewport1;
@@ -169,23 +169,23 @@ create_BankMainwindow (void)
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, FALSE, FALSE, 0);
 
-  lFindNumber = gtk_label_new (_("Number"));
+  lFindNumber = gtk_label_new (_("BCN"));
   gtk_widget_show (lFindNumber);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindNumber, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindNumber), GTK_JUSTIFY_CENTER);
 
-  eFindName = gtk_entry_new ();
-  gtk_widget_show (eFindName);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindName, FALSE, FALSE, 0);
+  eFindBCN = gtk_entry_new ();
+  gtk_widget_show (eFindBCN);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindBCN, FALSE, FALSE, 0);
 
-  lFindDesignation = gtk_label_new (_("Designation"));
+  lFindDesignation = gtk_label_new (_("short Designation"));
   gtk_widget_show (lFindDesignation);
   gtk_box_pack_start (GTK_BOX (hbox1), lFindDesignation, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lFindDesignation), GTK_JUSTIFY_CENTER);
 
-  eFindCity = gtk_entry_new ();
-  gtk_widget_show (eFindCity);
-  gtk_box_pack_start (GTK_BOX (hbox1), eFindCity, FALSE, FALSE, 0);
+  eFindDesignation = gtk_entry_new ();
+  gtk_widget_show (eFindDesignation);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindDesignation, FALSE, FALSE, 0);
 
   bSearch = gtk_button_new_with_mnemonic (_("Search"));
   gtk_widget_show (bSearch);
@@ -360,9 +360,9 @@ create_BankMainwindow (void)
   GLADE_HOOKUP_OBJECT (BankMainwindow, alignment1, "alignment1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, lFindNumber, "lFindNumber");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindName, "eFindName");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindBCN, "eFindBCN");
   GLADE_HOOKUP_OBJECT (BankMainwindow, lFindDesignation, "lFindDesignation");
-  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindCity, "eFindCity");
+  GLADE_HOOKUP_OBJECT (BankMainwindow, eFindDesignation, "eFindDesignation");
   GLADE_HOOKUP_OBJECT (BankMainwindow, bSearch, "bSearch");
   GLADE_HOOKUP_OBJECT (BankMainwindow, scrolledwindow1, "scrolledwindow1");
   GLADE_HOOKUP_OBJECT (BankMainwindow, viewport1, "viewport1");

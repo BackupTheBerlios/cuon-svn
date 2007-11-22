@@ -2,7 +2,6 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
 
 <widget class="GtkWindow" id="ContactMainwindow">
   <property name="width_request">926</property>
@@ -63,7 +62,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="quit1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_EXIT_ITEM</property>
+		      <property name="label">gtk-quit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_quit1_activate"/>
 		    </widget>
 		  </child>
@@ -84,17 +84,17 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="new1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_NEW_ITEM</property>
-		      <property name="label" translatable="yes">_New</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_new1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="edit1">
+		    <widget class="GtkImageMenuItem" id="edit1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_EDIT_TREE</property>
+		      <property name="label">gtk-edit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_edit1_activate" last_modification_time="Mon, 27 Nov 2006 18:41:35 GMT"/>
 		    </widget>
 		  </child>
@@ -108,7 +108,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="save1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_SAVE_ITEM</property>
+		      <property name="label">gtk-save</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_save1_activate"/>
 		    </widget>
 		  </child>
@@ -143,7 +144,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="print1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_PRINT_ITEM</property>
+		      <property name="label">gtk-print</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_print1_activate"/>
 		    </widget>
 		  </child>
@@ -157,7 +159,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="delete1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_CLEAR_ITEM</property>
+		      <property name="label">gtk-delete</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_delete1_activate"/>
 		    </widget>
 		  </child>
@@ -2065,8 +2068,7 @@ ready</property>
 				  <child>
 				    <widget class="GtkImage" id="image1">
 				      <property name="visible">True</property>
-				      <property name="stock">gnome-stock-book-green</property>
-				      <property name="icon_size">4</property>
+				      <property name="pixbuf">gnome-stock-book-green</property>
 				      <property name="xalign">0.5</property>
 				      <property name="yalign">0.5</property>
 				      <property name="xpad">0</property>
@@ -2300,8 +2302,7 @@ ready</property>
 				      <child>
 					<widget class="GtkImage" id="image5">
 					  <property name="visible">True</property>
-					  <property name="stock">gnome-stock-timer</property>
-					  <property name="icon_size">4</property>
+					  <property name="pixbuf">gnome-stock-timer</property>
 					  <property name="xalign">0.5</property>
 					  <property name="yalign">0.5</property>
 					  <property name="xpad">0</property>

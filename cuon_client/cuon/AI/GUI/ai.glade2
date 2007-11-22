@@ -2,7 +2,6 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
 
 <widget class="GtkWindow" id="AIMainwindow">
   <property name="width_request">0</property>
@@ -62,7 +61,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="quit1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_EXIT_ITEM</property>
+		      <property name="label">gtk-quit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_quit1_activate" last_modification_time="Thu, 22 Apr 2004 07:43:30 GMT"/>
 		    </widget>
 		  </child>

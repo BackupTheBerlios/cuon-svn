@@ -94,6 +94,8 @@ class basics(xmlrpc.XMLRPC):
         self.DIC_USER['SQLTimeFormat'] = 'HH24:MI'
         self.DIC_USER['SQLDateTimeFormat'] = 'DD.MM.YYYY HH24:MI'
         self.DIC_USER['DateTimeFormatstring'] = '%d.%m.%Y %H:%M'
+        self.DIC_USER['DateformatString'] = '%d.%m.%Y '
+        self.DIC_USER['TimeformatString'] = '%H:%M'
         
         self.AUTOMATIC_SCHEDUL = False
         try:
@@ -529,3 +531,17 @@ class basics(xmlrpc.XMLRPC):
         else:
             return 'Test without Values'
             
+    def getActualDateTime(self):
+        newTime = time.localtime()
+        tDate =  time.strftime(self.DIC_USER['DateformatString'], newTime)
+        tTime =  time.strftime(self.DIC_USER['TimeformatString'], newTime)
+        tStamp = time.strftime(self.DIC_USER['DateTimeFormatstring'], newTime)
+        dicTime = {'date':tDate, 'time':tTime, 'timestamp':tStamp }
+        
+        return dicTime
+    def addDateTime(self, firstRecord):
+        dicTime = self.getActualDateTime()
+        if dicTime:
+            for key in dicTime:
+                firstRecord['date_' + key] = dicTime[key]
+        return firstRecord       

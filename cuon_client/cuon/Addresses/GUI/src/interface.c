@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <bonobo.h>
-#include <gnome.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,833 +26,151 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
-static GnomeUIInfo mi_datei1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Print S_etup..."),
-    NULL,
-    (gpointer) on_choosePrinter1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-properties",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("close"),
-    NULL,
-    (gpointer) on_quit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-quit",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo newsletter2_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Newsletter Email"),
-    NULL,
-    (gpointer) on_newsletter_email_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Newsletter Print"),
-    NULL,
-    (gpointer) on_newsletter_print_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-print",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_edit_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Undo"),
-    NULL,
-    (gpointer) on_undo1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Find"),
-    NULL,
-    (gpointer) on_find1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-find",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_SUBTREE, N_("Newsletter"),
-    NULL,
-    newsletter2_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("choose"),
-    NULL,
-    (gpointer) on_chooseAddress_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-yes",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_address1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_New"),
-    NULL,
-    (gpointer) on_new1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-new",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_save1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Print"),
-    NULL,
-    (gpointer) on_print1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-print",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Delete"),
-    NULL,
-    (gpointer) on_delete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-delete",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_bank1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_bank_new1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-new",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_bank_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("save"),
-    NULL,
-    (gpointer) on_bank_save1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_misc1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_MiscEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_MiscSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_partner1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_New"),
-    NULL,
-    (gpointer) on_PartnerNew1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-new",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_PartnerEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_PartnerSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Print"),
-    NULL,
-    (gpointer) on_partner_print1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-print",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Delete"),
-    NULL,
-    (gpointer) on_PartnerDelete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-delete",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_schedul1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_SchedulNew_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-new",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_SchedulEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_SchedulSave_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Set ready"),
-    NULL,
-    (gpointer) on_set_ready1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gnome-stock-timer-stop",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_notes1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_NotesEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-edit",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_NotesSave_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gtk-save",
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo listAddresses1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Phone"),
-    NULL,
-    (gpointer) on_liAddressesPhone1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo list_partner1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Phone"),
-    NULL,
-    (gpointer) on_liAddressesPhone11_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo mi_lists1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_SUBTREE, N_("Addresses"),
-    NULL,
-    listAddresses1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_STOCK, "gnome-stock-book-open",
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Partner"),
-    NULL,
-    list_partner1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo tools1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Contact window"),
-    NULL,
-    (gpointer) on_contact1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("new Order"),
-    NULL,
-    (gpointer) on_new_order_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("show Order"),
-    NULL,
-    (gpointer) on_show_order1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("new Project"),
-    NULL,
-    (gpointer) on_new_project_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo menubar1_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_SUBTREE, N_("_File"),
-    NULL,
-    mi_datei1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Edit"),
-    NULL,
-    mi_edit_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("_Addresses"),
-    NULL,
-    mi_address1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Bank"),
-    NULL,
-    mi_bank1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Misc"),
-    NULL,
-    mi_misc1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("_Partner"),
-    NULL,
-    mi_partner1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Schedul"),
-    NULL,
-    mi_schedul1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Notes"),
-    NULL,
-    mi_notes1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Order"),
-    NULL,
-    (gpointer) on_mi_order1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Projects"),
-    NULL,
-    (gpointer) on_mi_projects1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Lists"),
-    NULL,
-    mi_lists1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Tools"),
-    NULL,
-    tools1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
 GtkWidget*
-create_AddressMainwindow (void)
+create_ContactMainwindow (void)
 {
-  GtkWidget *AddressMainwindow;
-  GdkPixbuf *AddressMainwindow_icon_pixbuf;
-  GtkWidget *scrolledwindow11;
-  GtkWidget *viewport1;
+  GtkWidget *ContactMainwindow;
+  GdkPixbuf *ContactMainwindow_icon_pixbuf;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
+  GtkWidget *file1;
+  GtkWidget *file1_menu;
+  GtkWidget *choosePrinter1;
+  GtkWidget *separator2;
+  GtkWidget *quit1;
+  GtkWidget *contact1;
+  GtkWidget *contact1_menu;
+  GtkWidget *new1;
+  GtkWidget *edit1;
+  GtkWidget *separator4;
+  GtkWidget *save1;
+  GtkWidget *separator3;
+  GtkWidget *set_ready1;
+  GtkWidget *image6;
+  GtkWidget *print1;
+  GtkWidget *separator1;
+  GtkWidget *delete1;
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *tmp_image;
   GtkWidget *tbNew;
   GtkWidget *tbEdit;
   GtkWidget *tbSave;
-  GtkWidget *separatortoolitem1;
-  GtkWidget *tbExtendetInfo;
-  GtkWidget *tbLetter;
-  GtkWidget *tbContact;
-  GtkWidget *tbAllContact;
   GtkWidget *toolitem1;
-  GtkWidget *vseparator6;
-  GtkWidget *tbNewOrder;
-  GtkWidget *tbNewProject;
-  GtkWidget *table13;
-  GtkWidget *lFindName;
+  GtkWidget *vseparator1;
+  GtkWidget *tbSetReady;
+  GtkWidget *vbox9;
+  GtkWidget *hbox1;
+  GtkWidget *lFindNumber;
   GtkWidget *eFindName;
-  GtkWidget *lFindCity;
-  GtkWidget *eFindCity;
-  GtkWidget *label52;
-  GtkWidget *eFindFirstname;
-  GtkWidget *label53;
-  GtkWidget *eFindPhone;
+  GtkWidget *lFindDesignation;
+  GtkWidget *eFindDesignation;
   GtkWidget *bSearch;
-  GtkWidget *label51;
-  GtkWidget *eFindStreet;
-  GtkWidget *label50;
-  GtkWidget *label47;
-  GtkWidget *eFindZipcode;
-  GtkWidget *eFindID;
-  GtkWidget *label106;
-  GtkWidget *eFindName2;
-  GtkWidget *label107;
-  GtkWidget *eFindFax;
-  GtkWidget *scrolledwindow5;
+  GtkWidget *hbox10;
+  GtkWidget *label38;
+  GtkWidget *eFindZip;
+  GtkWidget *label39;
+  GtkWidget *eFindCity;
+  GtkWidget *label40;
+  GtkWidget *eFindPriority;
+  GtkWidget *scrolledwindow1;
+  GtkWidget *viewport1;
   GtkWidget *tree1;
   GtkWidget *notebook1;
-  GtkWidget *hbox4;
-  GtkWidget *table4;
-  GtkWidget *lState;
-  GtkWidget *lZip_PB;
-  GtkWidget *lCountry;
-  GtkWidget *lZip;
-  GtkWidget *lStreet;
-  GtkWidget *lFirstName;
-  GtkWidget *lLastName2;
-  GtkWidget *lLastName;
-  GtkWidget *lAddress;
-  GtkWidget *eStreet;
-  GtkWidget *eFirstName;
-  GtkWidget *eLastName2;
-  GtkWidget *eLastName;
-  GtkWidget *eAddress;
-  GtkWidget *hbox8;
-  GtkWidget *eZip;
-  GtkWidget *label38;
-  GtkWidget *eCity;
-  GtkWidget *hbox10;
-  GtkWidget *eCountry;
-  GtkWidget *button1;
-  GtkWidget *eCountryNumber;
-  GtkWidget *hbox11;
-  GtkWidget *eState;
-  GtkWidget *button2;
-  GtkWidget *entry4;
-  GtkWidget *hbox9;
-  GtkWidget *ePostbox;
-  GtkWidget *eZipForPostbox;
-  GtkWidget *label39;
-  GtkWidget *bShowDMS;
-  GtkWidget *alignment3;
-  GtkWidget *hbox39;
-  GtkWidget *image1028;
-  GtkWidget *label81;
-  GtkWidget *hbox18;
-  GtkWidget *bLetter;
-  GtkWidget *alignment5;
-  GtkWidget *hbox41;
-  GtkWidget *image1030;
-  GtkWidget *label83;
-  GtkWidget *bContact;
-  GtkWidget *alignment4;
-  GtkWidget *hbox40;
-  GtkWidget *image1029;
-  GtkWidget *label82;
-  GtkWidget *label56;
-  GtkWidget *eLetterAddress;
-  GtkWidget *table5;
-  GtkWidget *eFax;
-  GtkWidget *lFax;
-  GtkWidget *lEmail;
-  GtkWidget *lPhone;
-  GtkWidget *vbox4;
-  GtkWidget *hbox5;
-  GtkWidget *eAddressCallerID;
-  GtkWidget *bChooseCaller;
-  GtkWidget *eAddressCaller;
-  GtkWidget *hbox14;
-  GtkWidget *eAddressRepID;
-  GtkWidget *bChooseRep;
-  GtkWidget *eAddressRep;
-  GtkWidget *hbox15;
-  GtkWidget *eAddressSalesmanID;
-  GtkWidget *bChooseSalesman;
-  GtkWidget *eAddressSalesman;
-  GtkWidget *label58;
-  GtkWidget *eHandy;
-  GtkWidget *label65;
-  GtkWidget *eNewsletter;
-  GtkWidget *label80;
-  GtkWidget *hbox35;
-  GtkWidget *eHomepage;
-  GtkWidget *bViewHomepage;
-  GtkWidget *hbox36;
-  GtkWidget *eEmail;
-  GtkWidget *bSendMail;
-  GtkWidget *bSendExternEmail;
-  GtkWidget *label84;
-  GtkWidget *eInfo;
-  GtkWidget *hbox58;
-  GtkWidget *ePhone;
-  GtkWidget *bPhone;
-  GtkWidget *alignment11;
-  GtkWidget *hbox59;
-  GtkWidget *image1280;
-  GtkWidget *label98;
-  GtkWidget *lAddress;
-  GtkWidget *table7;
-  GtkWidget *scrolledwindow2;
-  GtkWidget *tvBank;
-  GtkWidget *vbox7;
-  GtkWidget *bChooseBank;
-  GtkWidget *eBankID;
-  GtkWidget *eAccountNumber;
-  GtkWidget *label27;
-  GtkWidget *label28;
-  GtkWidget *eDepositor;
-  GtkWidget *label48;
-  GtkWidget *eIban;
-  GtkWidget *lBank;
-  GtkWidget *table9;
-  GtkWidget *chkbUpdateFromWeb;
-  GtkWidget *label43;
-  GtkWidget *label42;
-  GtkWidget *chkbIsWebshop;
-  GtkWidget *eAddressNumber;
-  GtkWidget *label41;
-  GtkWidget *combo2;
-  GList *combo2_items = NULL;
-  GtkWidget *cbPriceGroup;
-  GtkWidget *label40;
-  GtkWidget *chkbCalcTax;
-  GtkWidget *eTaxnumber;
-  GtkWidget *label37;
-  GtkWidget *cbFashion;
-  GList *cbFashion_items = NULL;
-  GtkWidget *eFashion;
-  GtkWidget *label36;
-  GtkWidget *eLine;
-  GtkWidget *label35;
-  GtkWidget *hbox44;
-  GtkWidget *label90;
-  GtkWidget *hbox45;
-  GtkWidget *hbox46;
-  GtkWidget *eTOPID;
-  GtkWidget *bSearchTOP;
-  GtkWidget *button3;
-  GtkWidget *scrolledwindow14;
-  GtkWidget *tvTOP;
-  GtkWidget *lMisc;
-  GtkWidget *table2;
-  GtkWidget *ePartnerStreet;
-  GtkWidget *lPartnerStreet;
-  GtkWidget *hbox2;
-  GtkWidget *lPartnerZip;
-  GtkWidget *ePartnerZip;
-  GtkWidget *lpartnerCounty;
-  GtkWidget *lPartnerPhone2;
-  GtkWidget *lpartnerPhone1;
-  GtkWidget *ePartnerFirstname;
-  GtkWidget *ePartnerLastname;
-  GtkWidget *ePartnerTitular;
-  GtkWidget *ePartnerAddress;
-  GtkWidget *label18;
-  GtkWidget *label17;
-  GtkWidget *label16;
-  GtkWidget *label15;
-  GtkWidget *hbox17;
-  GtkWidget *hbox52;
-  GtkWidget *ePartnerPhone;
-  GtkWidget *bPartnerPhoneCompany;
-  GtkWidget *alignment7;
-  GtkWidget *hbox54;
-  GtkWidget *image1276;
-  GtkWidget *label94;
-  GtkWidget *hbox23;
-  GtkWidget *bPartnerLetter;
-  GtkWidget *bPartnerContact;
-  GtkWidget *bShowPartnerDMS;
-  GtkWidget *label59;
-  GtkWidget *ePartnerHandy;
-  GtkWidget *hbox3;
-  GtkWidget *lPartnerCity;
-  GtkWidget *ePartnerCity;
-  GtkWidget *hbox24;
-  GtkWidget *ePartnerCountry;
-  GtkWidget *label22;
-  GtkWidget *ePartnerState;
-  GtkWidget *bGeneratePartner;
-  GtkWidget *hbox37;
-  GtkWidget *ePartnerSIP;
-  GtkWidget *bPartnerSip;
-  GtkWidget *alignment9;
-  GtkWidget *hbox56;
-  GtkWidget *image1278;
-  GtkWidget *label96;
-  GtkWidget *hbox38;
-  GtkWidget *ePartnerSkype;
-  GtkWidget *bPartnerSkype;
-  GtkWidget *alignment10;
-  GtkWidget *hbox57;
-  GtkWidget *image1279;
-  GtkWidget *label97;
-  GtkWidget *label57;
-  GtkWidget *lPartnerFax;
-  GtkWidget *lPartnerPhone;
-  GtkWidget *ePartnerLetterAddress;
-  GtkWidget *ePartnerFax;
-  GtkWidget *label85;
-  GtkWidget *label86;
-  GtkWidget *eDepartment;
-  GtkWidget *eJob;
-  GtkWidget *label23;
-  GtkWidget *eBirthday;
-  GtkWidget *label66;
-  GtkWidget *ePartnerNewsletter;
-  GtkWidget *lPartnerFaxPrivate;
-  GtkWidget *ePartnerFaxPrivate;
-  GtkWidget *lPartnerInternet;
-  GtkWidget *lPartnerEmail;
-  GtkWidget *label91;
-  GtkWidget *label92;
-  GtkWidget *hbox48;
-  GtkWidget *ePartnerHomepage;
-  GtkWidget *bPartnerViewHomepage;
-  GtkWidget *hbox49;
-  GtkWidget *ePartnerEmail;
-  GtkWidget *bSendPartnerEmail;
-  GtkWidget *hbox50;
-  GtkWidget *ePartnerPhone1;
-  GtkWidget *bPartnerPhone1;
-  GtkWidget *alignment6;
-  GtkWidget *hbox53;
-  GtkWidget *image1275;
-  GtkWidget *label93;
-  GtkWidget *hbox51;
-  GtkWidget *ePartnerPhone2;
-  GtkWidget *bpartnerPhone2;
-  GtkWidget *alignment8;
-  GtkWidget *hbox55;
-  GtkWidget *image1277;
-  GtkWidget *label95;
-  GtkWidget *lPartner;
-  GtkWidget *table8;
-  GtkWidget *vbox3;
-  GtkWidget *label45;
-  GtkWidget *cbeSchedulTimeBegin;
-  GtkWidget *comboboxentry_entry1;
-  GtkWidget *label46;
-  GtkWidget *cbeSchedulTimeEnd;
-  GtkWidget *comboboxentry_entry2;
-  GtkWidget *hbox30;
-  GtkWidget *cbAlarm;
-  GtkWidget *label54;
-  GtkWidget *eAlarm;
-  GtkWidget *hbox31;
-  GtkWidget *label34;
-  GtkWidget *eSchedulPriority;
-  GtkWidget *hbox32;
-  GtkWidget *label33;
-  GtkWidget *cProcess;
-  GtkWidget *eSchedulProcess;
-  GtkWidget *hbox13;
-  GtkWidget *eSchedulForName;
-  GtkWidget *calendar1;
   GtkWidget *vbox2;
-  GtkWidget *hbox22;
-  GtkWidget *eSchedulFor;
-  GtkWidget *bSchedulFor;
-  GtkWidget *alignment1;
-  GtkWidget *hbox29;
-  GtkWidget *image732;
-  GtkWidget *label78;
-  GtkWidget *label32;
-  GtkWidget *eShortRemark;
-  GtkWidget *scrolledwindow3;
-  GtkWidget *eSchedulNotes;
+  GtkWidget *table1;
+  GtkWidget *calendar1;
+  GtkWidget *table2;
+  GtkWidget *cbTime;
+  GtkWidget *eDate;
+  GtkWidget *label18;
+  GtkWidget *label19;
+  GtkWidget *label25;
+  GtkWidget *cbePriority;
+  GtkWidget *label26;
+  GtkWidget *cbeStatus;
+  GtkWidget *label30;
   GtkWidget *label31;
-  GtkWidget *vbox9;
-  GtkWidget *calSchedulStaff;
-  GtkWidget *bGotoSchedulAddress;
-  GtkWidget *alignment2;
-  GtkWidget *hbox34;
-  GtkWidget *image744;
-  GtkWidget *label79;
-  GtkWidget *vbox14;
-  GtkWidget *hbox6;
-  GtkWidget *vbox15;
-  GtkWidget *hbox20;
-  GtkWidget *bSchedulLetter;
-  GtkWidget *bSchedulDMS;
+  GtkWidget *label32;
+  GtkWidget *ePhoneAddress1;
+  GtkWidget *ePhoneAddress2;
+  GtkWidget *ePhonePartner;
+  GtkWidget *label21;
+  GtkWidget *label22;
+  GtkWidget *label23;
+  GtkWidget *vbox4;
+  GtkWidget *rbDay0;
+  GSList *rbDay0_group = NULL;
+  GtkWidget *rbDay1;
+  GtkWidget *rbDay2;
+  GtkWidget *rbDay3;
+  GtkWidget *rbDay4;
+  GtkWidget *rbDay5;
+  GtkWidget *rbDay6;
+  GtkWidget *rbDay7;
+  GtkWidget *vbox6;
+  GtkWidget *rbHour0;
+  GSList *rbHour0_group = NULL;
+  GtkWidget *rbHour1;
+  GtkWidget *rbHour2;
+  GtkWidget *rbHour3;
+  GtkWidget *rbHour4;
+  GtkWidget *rbHours5;
+  GtkWidget *rbHour6;
+  GtkWidget *rbHour7;
+  GtkWidget *vbox7;
+  GtkWidget *rbMinute00;
+  GSList *rbMinute00_group = NULL;
+  GtkWidget *rbMinute02;
+  GtkWidget *rbMinute05;
+  GtkWidget *rbMinute10;
+  GtkWidget *rbMinute15;
+  GtkWidget *rbMinute20;
+  GtkWidget *rbMinute30;
+  GtkWidget *rbMinute40;
+  GtkWidget *rbMinute45;
+  GtkWidget *rbMinute50;
+  GtkWidget *hbox3;
+  GtkWidget *label20;
+  GtkWidget *label27;
+  GtkWidget *eAlarmDay;
+  GtkWidget *eAlarmHour;
+  GtkWidget *eAlarmMinutes;
+  GtkWidget *label28;
+  GtkWidget *label33;
+  GtkWidget *scrolledwindow2;
+  GtkWidget *tvNotes;
+  GtkWidget *hbox2;
   GtkWidget *vbox5;
-  GtkWidget *scrolledwindow11;
-  GtkWidget *tvSchedulDetails;
-  GtkWidget *scrolledwindow10;
-  GtkWidget *treeScheduls;
-  GtkWidget *hbox33;
-  GtkWidget *rbBeginDate;
-  GSList *rbBeginDate_group = NULL;
-  GtkWidget *eSchedulDateBegin;
-  GtkWidget *vseparator2;
-  GtkWidget *vseparator3;
-  GtkWidget *vseparator4;
-  GtkWidget *vseparator5;
-  GtkWidget *hbox47;
-  GtkWidget *rbEndDate;
-  GtkWidget *eSchedulDateEnd;
-  GtkWidget *lSchedul;
-  GtkWidget *notebook2;
-  GtkWidget *vbox10;
-  GtkWidget *hbox25;
-  GtkWidget *bAddNameMisc;
-  GtkWidget *cbeNotesMisc;
-  GtkWidget *bAddFormular2NotesMisc;
-  GtkWidget *scrolledwindow6;
-  GtkWidget *tvNotesMisc;
-  GtkWidget *label60;
-  GtkWidget *vbox11;
-  GtkWidget *hbox26;
-  GtkWidget *bAddNameContacter;
-  GtkWidget *cbeNotesContacter;
-  GtkWidget *bAddFormular2NotesContacter;
-  GtkWidget *scrolledwindow7;
-  GtkWidget *tvNotesContacter;
-  GtkWidget *label61;
-  GtkWidget *vbox12;
-  GtkWidget *hbox27;
-  GtkWidget *bAddNameRep;
-  GtkWidget *cbeNotesRep;
-  GtkWidget *bAddformular2NotesRep;
-  GtkWidget *scrolledwindow8;
-  GtkWidget *tvNotesRep;
-  GtkWidget *label62;
-  GtkWidget *vbox13;
-  GtkWidget *hbox28;
-  GtkWidget *bAddNameSalesman;
-  GtkWidget *cbeNotesSalesman;
-  GtkWidget *bAddFormular2NotesSalesman;
-  GtkWidget *scrolledwindow9;
-  GtkWidget *tvNotesSalesman;
-  GtkWidget *label63;
-  GtkWidget *vbox17;
-  GtkWidget *hbox60;
-  GtkWidget *bAddNameOrganisation;
-  GtkWidget *cbeNotesOrganisation;
-  GtkWidget *button5;
-  GtkWidget *scrolledwindow15;
-  GtkWidget *tvNotesOrganisation;
-  GtkWidget *label99;
-  GtkWidget *label64;
-  GtkWidget *table12;
-  GtkWidget *label105;
-  GtkWidget *label103;
-  GtkWidget *vbox16;
-  GtkWidget *hbox43;
-  GtkWidget *label88;
-  GtkWidget *scrolledwindow12;
-  GtkWidget *tvAddressOrder;
-  GtkWidget *label87;
-  GtkWidget *vbox18;
-  GtkWidget *hbox62;
-  GtkWidget *label89;
-  GtkWidget *scrolledwindow13;
-  GtkWidget *tvAddressInvoices;
-  GtkWidget *label104;
-  GtkWidget *table10;
-  GtkWidget *label101;
-  GtkWidget *scrolledwindow16;
-  GtkWidget *tvAddressProject;
-  GtkWidget *table11;
-  GtkWidget *bGotoProject;
-  GtkWidget *alignment12;
-  GtkWidget *hbox61;
-  GtkWidget *image1363;
-  GtkWidget *label102;
-  GtkWidget *label100;
+  GtkWidget *label24;
+  GtkWidget *bGoToAddress;
+  GtkWidget *alignment1;
+  GtkWidget *hbox6;
+  GtkWidget *image1;
+  GtkWidget *label34;
+  GtkWidget *scrolledwindow3;
+  GtkWidget *tvAddress;
+  GtkWidget *vbox8;
+  GtkWidget *hbox4;
+  GtkWidget *bCloseWindow;
+  GtkWidget *alignment2;
+  GtkWidget *hbox7;
+  GtkWidget *image2;
+  GtkWidget *label35;
+  GtkWidget *bSleeping;
+  GtkWidget *alignment4;
+  GtkWidget *hbox9;
+  GtkWidget *image5;
+  GtkWidget *label37;
+  GtkWidget *hbox5;
+  GtkWidget *label29;
+  GtkWidget *eSleepingTime;
+  GtkWidget *bQuit;
+  GtkWidget *alignment3;
+  GtkWidget *hbox8;
+  GtkWidget *image3;
+  GtkWidget *label36;
+  GtkWidget *label16;
   GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
@@ -860,37 +178,93 @@ create_AddressMainwindow (void)
 
   accel_group = gtk_accel_group_new ();
 
-  AddressMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_size_request (AddressMainwindow, 1024, 800);
-  gtk_window_set_title (GTK_WINDOW (AddressMainwindow), "Adresses");
-  gtk_window_set_position (GTK_WINDOW (AddressMainwindow), GTK_WIN_POS_CENTER);
-  gtk_window_set_destroy_with_parent (GTK_WINDOW (AddressMainwindow), TRUE);
-  AddressMainwindow_icon_pixbuf = create_pixbuf ("gui/address.svg");
-  if (AddressMainwindow_icon_pixbuf)
+  ContactMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_widget_set_size_request (ContactMainwindow, 926, 680);
+  gtk_window_set_title (GTK_WINDOW (ContactMainwindow), _("Contact"));
+  ContactMainwindow_icon_pixbuf = create_pixbuf ("contact.svg");
+  if (ContactMainwindow_icon_pixbuf)
     {
-      gtk_window_set_icon (GTK_WINDOW (AddressMainwindow), AddressMainwindow_icon_pixbuf);
-      gdk_pixbuf_unref (AddressMainwindow_icon_pixbuf);
+      gtk_window_set_icon (GTK_WINDOW (ContactMainwindow), ContactMainwindow_icon_pixbuf);
+      gdk_pixbuf_unref (ContactMainwindow_icon_pixbuf);
     }
-
-  scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow11);
-  gtk_container_add (GTK_CONTAINER (AddressMainwindow), scrolledwindow11);
-
-  viewport1 = gtk_viewport_new (NULL, NULL);
-  gtk_widget_show (viewport1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow11), viewport1);
 
   vbox1 = gtk_vbox_new (FALSE, 17);
   gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (viewport1), vbox1);
+  gtk_container_add (GTK_CONTAINER (ContactMainwindow), vbox1);
 
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
-  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       accel_group, FALSE, 0);
 
-  gtk_widget_set_sensitive (mi_edit_menu_uiinfo[5].widget, FALSE);
+  file1 = gtk_menu_item_new_with_mnemonic (_("_File"));
+  gtk_widget_show (file1);
+  gtk_container_add (GTK_CONTAINER (menubar1), file1);
+
+  file1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
+
+  choosePrinter1 = gtk_menu_item_new_with_mnemonic (_("Print S_etup..."));
+  gtk_widget_show (choosePrinter1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), choosePrinter1);
+
+  separator2 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator2);
+  gtk_container_add (GTK_CONTAINER (file1_menu), separator2);
+  gtk_widget_set_sensitive (separator2, FALSE);
+
+  quit1 = gtk_image_menu_item_new_from_stock ("gtk-quit", accel_group);
+  gtk_widget_show (quit1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), quit1);
+
+  contact1 = gtk_menu_item_new_with_mnemonic (_("Contact"));
+  gtk_widget_show (contact1);
+  gtk_container_add (GTK_CONTAINER (menubar1), contact1);
+
+  contact1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (contact1), contact1_menu);
+
+  new1 = gtk_image_menu_item_new_from_stock ("gtk-new", accel_group);
+  gtk_widget_show (new1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), new1);
+
+  edit1 = gtk_image_menu_item_new_from_stock ("gtk-edit", accel_group);
+  gtk_widget_show (edit1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), edit1);
+
+  separator4 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator4);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), separator4);
+  gtk_widget_set_sensitive (separator4, FALSE);
+
+  save1 = gtk_image_menu_item_new_from_stock ("gtk-save", accel_group);
+  gtk_widget_show (save1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), save1);
+
+  separator3 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator3);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), separator3);
+  gtk_widget_set_sensitive (separator3, FALSE);
+
+  set_ready1 = gtk_image_menu_item_new_with_mnemonic (_("set ready"));
+  gtk_widget_show (set_ready1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), set_ready1);
+
+  image6 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_MENU);
+  gtk_widget_show (image6);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (set_ready1), image6);
+
+  print1 = gtk_image_menu_item_new_from_stock ("gtk-print", accel_group);
+  gtk_widget_show (print1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), print1);
+
+  separator1 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), separator1);
+  gtk_widget_set_sensitive (separator1, FALSE);
+
+  delete1 = gtk_image_menu_item_new_from_stock ("gtk-delete", accel_group);
+  gtk_widget_show (delete1);
+  gtk_container_add (GTK_CONTAINER (contact1_menu), delete1);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -903,3038 +277,1001 @@ create_AddressMainwindow (void)
   tbNew = (GtkWidget*) gtk_tool_button_new (tmp_image, _("New"));
   gtk_widget_show (tbNew);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbNew);
-  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbNew), tooltips, _("create new Data "), NULL);
+  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbNew), tooltips, _("create new contact"), NULL);
 
   tmp_image = gtk_image_new_from_stock ("gtk-edit", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
   tbEdit = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Edit"));
   gtk_widget_show (tbEdit);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbEdit);
-  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbEdit), tooltips, _("edit current data"), NULL);
+  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbEdit), tooltips, _("edit current contact"), NULL);
 
   tmp_image = gtk_image_new_from_stock ("gtk-save", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
   tbSave = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Save"));
   gtk_widget_show (tbSave);
   gtk_container_add (GTK_CONTAINER (toolbar1), tbSave);
-  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbSave), tooltips, _("save current data"), NULL);
-
-  separatortoolitem1 = (GtkWidget*) gtk_separator_tool_item_new ();
-  gtk_widget_show (separatortoolitem1);
-  gtk_container_add (GTK_CONTAINER (toolbar1), separatortoolitem1);
-
-  tmp_image = gtk_image_new_from_stock ("gtk-info", tmp_toolbar_icon_size);
-  gtk_widget_show (tmp_image);
-  tbExtendetInfo = (GtkWidget*) gtk_tool_button_new (tmp_image, _("ext. Info"));
-  gtk_widget_show (tbExtendetInfo);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbExtendetInfo);
-
-  tmp_image = gtk_image_new_from_stock ("gtk-justify-fill", tmp_toolbar_icon_size);
-  gtk_widget_show (tmp_image);
-  tbLetter = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Letter"));
-  gtk_widget_show (tbLetter);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbLetter);
-
-  tmp_image = gtk_image_new_from_stock ("gtk-orientation-portrait", tmp_toolbar_icon_size);
-  gtk_widget_show (tmp_image);
-  tbContact = (GtkWidget*) gtk_tool_button_new (tmp_image, _("Contact"));
-  gtk_widget_show (tbContact);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbContact);
-
-  tmp_image = gtk_image_new_from_stock ("gtk-select-all", tmp_toolbar_icon_size);
-  gtk_widget_show (tmp_image);
-  tbAllContact = (GtkWidget*) gtk_tool_button_new (tmp_image, _("All Contact"));
-  gtk_widget_show (tbAllContact);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbAllContact);
+  gtk_tool_item_set_tooltip (GTK_TOOL_ITEM (tbSave), tooltips, _("save current contact"), NULL);
 
   toolitem1 = (GtkWidget*) gtk_tool_item_new ();
   gtk_widget_show (toolitem1);
   gtk_container_add (GTK_CONTAINER (toolbar1), toolitem1);
 
-  vseparator6 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator6);
-  gtk_container_add (GTK_CONTAINER (toolitem1), vseparator6);
+  vseparator1 = gtk_vseparator_new ();
+  gtk_widget_show (vseparator1);
+  gtk_container_add (GTK_CONTAINER (toolitem1), vseparator1);
 
-  tmp_image = gtk_image_new_from_stock ("gtk-paste", tmp_toolbar_icon_size);
+  tmp_image = gtk_image_new_from_stock ("gtk-cancel", tmp_toolbar_icon_size);
   gtk_widget_show (tmp_image);
-  tbNewOrder = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Order"));
-  gtk_widget_show (tbNewOrder);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbNewOrder);
+  tbSetReady = (GtkWidget*) gtk_tool_button_new (tmp_image, _("set ready"));
+  gtk_widget_show (tbSetReady);
+  gtk_container_add (GTK_CONTAINER (toolbar1), tbSetReady);
 
-  tmp_image = gtk_image_new_from_stock ("gtk-execute", tmp_toolbar_icon_size);
-  gtk_widget_show (tmp_image);
-  tbNewProject = (GtkWidget*) gtk_tool_button_new (tmp_image, _("new Project"));
-  gtk_widget_show (tbNewProject);
-  gtk_container_add (GTK_CONTAINER (toolbar1), tbNewProject);
+  vbox9 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox9);
+  gtk_box_pack_start (GTK_BOX (vbox1), vbox9, FALSE, FALSE, 0);
 
-  table13 = gtk_table_new (3, 7, FALSE);
-  gtk_widget_show (table13);
-  gtk_box_pack_start (GTK_BOX (vbox1), table13, FALSE, FALSE, 0);
+  hbox1 = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (hbox1);
+  gtk_box_pack_start (GTK_BOX (vbox9), hbox1, TRUE, TRUE, 0);
 
-  lFindName = gtk_label_new (_("Name1"));
-  gtk_widget_show (lFindName);
-  gtk_table_attach (GTK_TABLE (table13), lFindName, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lFindName), 0, 0);
+  lFindNumber = gtk_label_new (_("Lastname"));
+  gtk_widget_show (lFindNumber);
+  gtk_box_pack_start (GTK_BOX (hbox1), lFindNumber, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (lFindNumber), GTK_JUSTIFY_CENTER);
 
   eFindName = gtk_entry_new ();
   gtk_widget_show (eFindName);
-  gtk_table_attach (GTK_TABLE (table13), eFindName, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindName, FALSE, FALSE, 0);
 
-  lFindCity = gtk_label_new (_("City"));
-  gtk_widget_show (lFindCity);
-  gtk_table_attach (GTK_TABLE (table13), lFindCity, 4, 5, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lFindCity), 0, 0);
+  lFindDesignation = gtk_label_new (_("Designation"));
+  gtk_widget_show (lFindDesignation);
+  gtk_box_pack_start (GTK_BOX (hbox1), lFindDesignation, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (lFindDesignation), GTK_JUSTIFY_CENTER);
 
-  eFindCity = gtk_entry_new ();
-  gtk_widget_show (eFindCity);
-  gtk_table_attach (GTK_TABLE (table13), eFindCity, 5, 6, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label52 = gtk_label_new (_("Firstname"));
-  gtk_widget_show (label52);
-  gtk_table_attach (GTK_TABLE (table13), label52, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eFindFirstname = gtk_entry_new ();
-  gtk_widget_show (eFindFirstname);
-  gtk_table_attach (GTK_TABLE (table13), eFindFirstname, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label53 = gtk_label_new (_("Phone"));
-  gtk_widget_show (label53);
-  gtk_table_attach (GTK_TABLE (table13), label53, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eFindPhone = gtk_entry_new ();
-  gtk_widget_show (eFindPhone);
-  gtk_table_attach (GTK_TABLE (table13), eFindPhone, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  eFindDesignation = gtk_entry_new ();
+  gtk_widget_show (eFindDesignation);
+  gtk_box_pack_start (GTK_BOX (hbox1), eFindDesignation, FALSE, FALSE, 0);
 
   bSearch = gtk_button_new_with_mnemonic (_("Search"));
   gtk_widget_show (bSearch);
-  gtk_table_attach (GTK_TABLE (table13), bSearch, 6, 7, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_box_pack_start (GTK_BOX (hbox1), bSearch, FALSE, FALSE, 0);
 
-  label51 = gtk_label_new (_("Street"));
-  gtk_widget_show (label51);
-  gtk_table_attach (GTK_TABLE (table13), label51, 4, 5, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  hbox10 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox10);
+  gtk_box_pack_start (GTK_BOX (vbox9), hbox10, TRUE, TRUE, 0);
 
-  eFindStreet = gtk_entry_new ();
-  gtk_widget_show (eFindStreet);
-  gtk_table_attach (GTK_TABLE (table13), eFindStreet, 5, 6, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  label38 = gtk_label_new (_("Zipcode"));
+  gtk_widget_show (label38);
+  gtk_box_pack_start (GTK_BOX (hbox10), label38, FALSE, FALSE, 0);
 
-  label50 = gtk_label_new (_("ID"));
-  gtk_widget_show (label50);
-  gtk_table_attach (GTK_TABLE (table13), label50, 4, 5, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  eFindZip = gtk_entry_new ();
+  gtk_widget_show (eFindZip);
+  gtk_box_pack_start (GTK_BOX (hbox10), eFindZip, TRUE, TRUE, 0);
 
-  label47 = gtk_label_new (_("Zipcode"));
-  gtk_widget_show (label47);
-  gtk_table_attach (GTK_TABLE (table13), label47, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  label39 = gtk_label_new (_("City"));
+  gtk_widget_show (label39);
+  gtk_box_pack_start (GTK_BOX (hbox10), label39, FALSE, FALSE, 0);
 
-  eFindZipcode = gtk_entry_new ();
-  gtk_widget_show (eFindZipcode);
-  gtk_table_attach (GTK_TABLE (table13), eFindZipcode, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  eFindCity = gtk_entry_new ();
+  gtk_widget_show (eFindCity);
+  gtk_box_pack_start (GTK_BOX (hbox10), eFindCity, TRUE, TRUE, 0);
 
-  eFindID = gtk_entry_new ();
-  gtk_widget_show (eFindID);
-  gtk_table_attach (GTK_TABLE (table13), eFindID, 5, 6, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eFindID), 5);
+  label40 = gtk_label_new (_("Priority"));
+  gtk_widget_show (label40);
+  gtk_box_pack_start (GTK_BOX (hbox10), label40, FALSE, FALSE, 0);
 
-  label106 = gtk_label_new (_("Name2"));
-  gtk_widget_show (label106);
-  gtk_table_attach (GTK_TABLE (table13), label106, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label106), 0, 0.5);
+  eFindPriority = gtk_entry_new ();
+  gtk_widget_show (eFindPriority);
+  gtk_box_pack_start (GTK_BOX (hbox10), eFindPriority, TRUE, TRUE, 0);
 
-  eFindName2 = gtk_entry_new ();
-  gtk_widget_show (eFindName2);
-  gtk_table_attach (GTK_TABLE (table13), eFindName2, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  scrolledwindow1 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow1);
+  gtk_box_pack_start (GTK_BOX (vbox1), scrolledwindow1, TRUE, TRUE, 0);
+  gtk_widget_set_size_request (scrolledwindow1, -1, 166);
+  GTK_WIDGET_UNSET_FLAGS (scrolledwindow1, GTK_CAN_FOCUS);
 
-  label107 = gtk_label_new (_("FAX"));
-  gtk_widget_show (label107);
-  gtk_table_attach (GTK_TABLE (table13), label107, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label107), 0, 0.5);
-
-  eFindFax = gtk_entry_new ();
-  gtk_widget_show (eFindFax);
-  gtk_table_attach (GTK_TABLE (table13), eFindFax, 3, 4, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  scrolledwindow5 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow5);
-  gtk_box_pack_start (GTK_BOX (vbox1), scrolledwindow5, TRUE, TRUE, 0);
+  viewport1 = gtk_viewport_new (NULL, NULL);
+  gtk_widget_show (viewport1);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow1), viewport1);
 
   tree1 = gtk_tree_view_new ();
   gtk_widget_show (tree1);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow5), tree1);
-  gtk_widget_set_size_request (tree1, -1, 140);
+  gtk_container_add (GTK_CONTAINER (viewport1), tree1);
   GTK_WIDGET_UNSET_FLAGS (tree1, GTK_CAN_FOCUS);
 
   notebook1 = gtk_notebook_new ();
   gtk_widget_show (notebook1);
   gtk_box_pack_start (GTK_BOX (vbox1), notebook1, TRUE, TRUE, 0);
 
-  hbox4 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox4);
-  gtk_container_add (GTK_CONTAINER (notebook1), hbox4);
-  gtk_widget_set_size_request (hbox4, 0, 0);
-
-  table4 = gtk_table_new (12, 2, FALSE);
-  gtk_widget_show (table4);
-  gtk_box_pack_start (GTK_BOX (hbox4), table4, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (table4, 555, 317);
-  gtk_container_set_border_width (GTK_CONTAINER (table4), 8);
-  gtk_table_set_row_spacings (GTK_TABLE (table4), 1);
-  gtk_table_set_col_spacings (GTK_TABLE (table4), 12);
-
-  lState = gtk_label_new (_("State"));
-  gtk_widget_show (lState);
-  gtk_table_attach (GTK_TABLE (table4), lState, 0, 1, 8, 9,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lState, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lState), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lState), 0, 0);
-
-  lZip_PB = gtk_label_new (_("Zip for PB"));
-  gtk_widget_show (lZip_PB);
-  gtk_table_attach (GTK_TABLE (table4), lZip_PB, 0, 1, 6, 7,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lZip_PB, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lZip_PB), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lZip_PB), 0, 0);
-
-  lCountry = gtk_label_new (_("Country"));
-  gtk_widget_show (lCountry);
-  gtk_table_attach (GTK_TABLE (table4), lCountry, 0, 1, 7, 8,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lCountry, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lCountry), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lCountry), 0, 0);
-
-  lZip = gtk_label_new (_("Zip"));
-  gtk_widget_show (lZip);
-  gtk_table_attach (GTK_TABLE (table4), lZip, 0, 1, 5, 6,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lZip, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lZip), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lZip), 0, 0);
-
-  lStreet = gtk_label_new (_("Street"));
-  gtk_widget_show (lStreet);
-  gtk_table_attach (GTK_TABLE (table4), lStreet, 0, 1, 4, 5,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lStreet, 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lStreet), 0, 0);
-
-  lFirstName = gtk_label_new (_("Firstname"));
-  gtk_widget_show (lFirstName);
-  gtk_table_attach (GTK_TABLE (table4), lFirstName, 0, 1, 3, 4,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lFirstName, 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lFirstName), 0, 0);
-
-  lLastName2 = gtk_label_new (_("Name2"));
-  gtk_widget_show (lLastName2);
-  gtk_table_attach (GTK_TABLE (table4), lLastName2, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lLastName2, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lLastName2), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lLastName2), 0, 0);
-
-  lLastName = gtk_label_new (_("Name1"));
-  gtk_widget_show (lLastName);
-  gtk_table_attach (GTK_TABLE (table4), lLastName, 0, 1, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lLastName, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lLastName), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lLastName), 0, 0);
-
-  lAddress = gtk_label_new (_("Address"));
-  gtk_widget_show (lAddress);
-  gtk_table_attach (GTK_TABLE (table4), lAddress, 0, 1, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lAddress, 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lAddress), 0, 0);
-
-  eStreet = gtk_entry_new ();
-  gtk_widget_show (eStreet);
-  gtk_table_attach (GTK_TABLE (table4), eStreet, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eStreet, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eStreet), 20);
-
-  eFirstName = gtk_entry_new ();
-  gtk_widget_show (eFirstName);
-  gtk_table_attach (GTK_TABLE (table4), eFirstName, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eFirstName, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eFirstName), 20);
-
-  eLastName2 = gtk_entry_new ();
-  gtk_widget_show (eLastName2);
-  gtk_table_attach (GTK_TABLE (table4), eLastName2, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eLastName2, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eLastName2), 20);
-
-  eLastName = gtk_entry_new ();
-  gtk_widget_show (eLastName);
-  gtk_table_attach (GTK_TABLE (table4), eLastName, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eLastName, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eLastName), 20);
-
-  eAddress = gtk_entry_new ();
-  gtk_widget_show (eAddress);
-  gtk_table_attach (GTK_TABLE (table4), eAddress, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eAddress, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eAddress), 20);
-
-  hbox8 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox8);
-  gtk_table_attach (GTK_TABLE (table4), hbox8, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eZip = gtk_entry_new ();
-  gtk_widget_show (eZip);
-  gtk_box_pack_start (GTK_BOX (hbox8), eZip, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eZip, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eZip), 7);
-
-  label38 = gtk_label_new (_("City"));
-  gtk_widget_show (label38);
-  gtk_box_pack_start (GTK_BOX (hbox8), label38, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label38), 0, 0);
-
-  eCity = gtk_entry_new ();
-  gtk_widget_show (eCity);
-  gtk_box_pack_start (GTK_BOX (hbox8), eCity, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eCity, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eCity), 20);
-
-  hbox10 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox10);
-  gtk_table_attach (GTK_TABLE (table4), hbox10, 1, 2, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eCountry = gtk_entry_new ();
-  gtk_widget_show (eCountry);
-  gtk_box_pack_start (GTK_BOX (hbox10), eCountry, TRUE, TRUE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eCountry), FALSE);
-
-  button1 = gtk_button_new_with_mnemonic (_("search"));
-  gtk_widget_show (button1);
-  gtk_box_pack_start (GTK_BOX (hbox10), button1, FALSE, FALSE, 0);
-
-  eCountryNumber = gtk_entry_new ();
-  gtk_widget_show (eCountryNumber);
-  gtk_box_pack_start (GTK_BOX (hbox10), eCountryNumber, TRUE, TRUE, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eCountryNumber), 3);
-
-  hbox11 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox11);
-  gtk_table_attach (GTK_TABLE (table4), hbox11, 1, 2, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eState = gtk_entry_new ();
-  gtk_widget_show (eState);
-  gtk_box_pack_start (GTK_BOX (hbox11), eState, TRUE, TRUE, 0);
-
-  button2 = gtk_button_new_with_mnemonic (_("search"));
-  gtk_widget_show (button2);
-  gtk_box_pack_start (GTK_BOX (hbox11), button2, FALSE, FALSE, 0);
-
-  entry4 = gtk_entry_new ();
-  gtk_widget_show (entry4);
-  gtk_box_pack_start (GTK_BOX (hbox11), entry4, TRUE, TRUE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (entry4), FALSE);
-  gtk_entry_set_width_chars (GTK_ENTRY (entry4), 3);
-
-  hbox9 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox9);
-  gtk_table_attach (GTK_TABLE (table4), hbox9, 1, 2, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePostbox = gtk_entry_new ();
-  gtk_widget_show (ePostbox);
-  gtk_box_pack_end (GTK_BOX (hbox9), ePostbox, FALSE, FALSE, 0);
-
-  eZipForPostbox = gtk_entry_new ();
-  gtk_widget_show (eZipForPostbox);
-  gtk_box_pack_start (GTK_BOX (hbox9), eZipForPostbox, FALSE, FALSE, 0);
-  gtk_widget_set_size_request (eZipForPostbox, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eZipForPostbox), 7);
-
-  label39 = gtk_label_new (_("Postbox"));
-  gtk_widget_show (label39);
-  gtk_box_pack_end (GTK_BOX (hbox9), label39, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label39), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (label39), 0, 0);
-
-  bShowDMS = gtk_button_new ();
-  gtk_widget_show (bShowDMS);
-  gtk_table_attach (GTK_TABLE (table4), bShowDMS, 0, 1, 11, 12,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  alignment3 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment3);
-  gtk_container_add (GTK_CONTAINER (bShowDMS), alignment3);
-
-  hbox39 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox39);
-  gtk_container_add (GTK_CONTAINER (alignment3), hbox39);
-
-  image1028 = gtk_image_new_from_stock ("gtk-info", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1028);
-  gtk_box_pack_start (GTK_BOX (hbox39), image1028, FALSE, FALSE, 0);
-
-  label81 = gtk_label_new_with_mnemonic (_("show ext. info"));
-  gtk_widget_show (label81);
-  gtk_box_pack_start (GTK_BOX (hbox39), label81, FALSE, FALSE, 0);
-
-  hbox18 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox18);
-  gtk_table_attach (GTK_TABLE (table4), hbox18, 1, 2, 11, 12,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  bLetter = gtk_button_new ();
-  gtk_widget_show (bLetter);
-  gtk_box_pack_start (GTK_BOX (hbox18), bLetter, FALSE, FALSE, 0);
-
-  alignment5 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment5);
-  gtk_container_add (GTK_CONTAINER (bLetter), alignment5);
-
-  hbox41 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox41);
-  gtk_container_add (GTK_CONTAINER (alignment5), hbox41);
-
-  image1030 = gtk_image_new_from_stock ("gtk-justify-fill", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1030);
-  gtk_box_pack_start (GTK_BOX (hbox41), image1030, FALSE, FALSE, 0);
-
-  label83 = gtk_label_new_with_mnemonic (_("Letter"));
-  gtk_widget_show (label83);
-  gtk_box_pack_start (GTK_BOX (hbox41), label83, FALSE, FALSE, 0);
-
-  bContact = gtk_button_new ();
-  gtk_widget_show (bContact);
-  gtk_box_pack_start (GTK_BOX (hbox18), bContact, FALSE, FALSE, 0);
-
-  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment4);
-  gtk_container_add (GTK_CONTAINER (bContact), alignment4);
-
-  hbox40 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox40);
-  gtk_container_add (GTK_CONTAINER (alignment4), hbox40);
-
-  image1029 = gtk_image_new_from_stock ("gtk-orientation-portrait", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1029);
-  gtk_box_pack_start (GTK_BOX (hbox40), image1029, FALSE, FALSE, 0);
-
-  label82 = gtk_label_new_with_mnemonic (_("Contact"));
-  gtk_widget_show (label82);
-  gtk_box_pack_start (GTK_BOX (hbox40), label82, FALSE, FALSE, 0);
-
-  label56 = gtk_label_new (_("letter-address"));
-  gtk_widget_show (label56);
-  gtk_table_attach (GTK_TABLE (table4), label56, 0, 1, 9, 10,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label56), 0, 0.5);
-
-  eLetterAddress = gtk_entry_new ();
-  gtk_widget_show (eLetterAddress);
-  gtk_table_attach (GTK_TABLE (table4), eLetterAddress, 1, 2, 9, 10,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  table5 = gtk_table_new (8, 2, FALSE);
-  gtk_widget_show (table5);
-  gtk_box_pack_start (GTK_BOX (hbox4), table5, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (table5, 355, 106);
-
-  eFax = gtk_entry_new ();
-  gtk_widget_show (eFax);
-  gtk_table_attach (GTK_TABLE (table5), eFax, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (eFax, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eFax), 15);
-
-  lFax = gtk_label_new (_("Fax"));
-  gtk_widget_show (lFax);
-  gtk_table_attach (GTK_TABLE (table5), lFax, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lFax, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lFax), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lFax), 0, 0);
-
-  lEmail = gtk_label_new (_("E-Mail"));
-  gtk_widget_show (lEmail);
-  gtk_table_attach (GTK_TABLE (table5), lEmail, 0, 1, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lEmail, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lEmail), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lEmail), 0, 0);
-
-  lPhone = gtk_label_new (_("Phone"));
-  gtk_widget_show (lPhone);
-  gtk_table_attach (GTK_TABLE (table5), lPhone, 0, 1, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (lPhone, 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPhone), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPhone), 0, 0);
-
-  vbox4 = gtk_vbox_new (TRUE, 0);
-  gtk_widget_show (vbox4);
-  gtk_table_attach (GTK_TABLE (table5), vbox4, 1, 2, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-
-  hbox5 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox5);
-  gtk_box_pack_start (GTK_BOX (vbox4), hbox5, TRUE, TRUE, 0);
-
-  eAddressCallerID = gtk_entry_new ();
-  gtk_widget_show (eAddressCallerID);
-  gtk_box_pack_start (GTK_BOX (hbox5), eAddressCallerID, TRUE, TRUE, 0);
-  GTK_WIDGET_UNSET_FLAGS (eAddressCallerID, GTK_CAN_FOCUS);
-
-  bChooseCaller = gtk_button_new_with_mnemonic (_("Choose Caller"));
-  gtk_widget_show (bChooseCaller);
-  gtk_box_pack_start (GTK_BOX (hbox5), bChooseCaller, FALSE, FALSE, 0);
-  GTK_WIDGET_UNSET_FLAGS (bChooseCaller, GTK_CAN_FOCUS);
-
-  eAddressCaller = gtk_entry_new ();
-  gtk_widget_show (eAddressCaller);
-  gtk_box_pack_start (GTK_BOX (vbox4), eAddressCaller, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eAddressCaller), FALSE);
-
-  hbox14 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox14);
-  gtk_box_pack_start (GTK_BOX (vbox4), hbox14, TRUE, TRUE, 0);
-
-  eAddressRepID = gtk_entry_new ();
-  gtk_widget_show (eAddressRepID);
-  gtk_box_pack_start (GTK_BOX (hbox14), eAddressRepID, TRUE, TRUE, 0);
-  GTK_WIDGET_UNSET_FLAGS (eAddressRepID, GTK_CAN_FOCUS);
-
-  bChooseRep = gtk_button_new_with_mnemonic (_("Choose Rep."));
-  gtk_widget_show (bChooseRep);
-  gtk_box_pack_start (GTK_BOX (hbox14), bChooseRep, FALSE, FALSE, 0);
-  GTK_WIDGET_UNSET_FLAGS (bChooseRep, GTK_CAN_FOCUS);
-
-  eAddressRep = gtk_entry_new ();
-  gtk_widget_show (eAddressRep);
-  gtk_box_pack_start (GTK_BOX (vbox4), eAddressRep, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eAddressRep), FALSE);
-
-  hbox15 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox15);
-  gtk_box_pack_start (GTK_BOX (vbox4), hbox15, TRUE, TRUE, 0);
-
-  eAddressSalesmanID = gtk_entry_new ();
-  gtk_widget_show (eAddressSalesmanID);
-  gtk_box_pack_start (GTK_BOX (hbox15), eAddressSalesmanID, TRUE, TRUE, 0);
-  GTK_WIDGET_UNSET_FLAGS (eAddressSalesmanID, GTK_CAN_FOCUS);
-
-  bChooseSalesman = gtk_button_new_with_mnemonic (_("Choose Salesman"));
-  gtk_widget_show (bChooseSalesman);
-  gtk_box_pack_start (GTK_BOX (hbox15), bChooseSalesman, FALSE, FALSE, 0);
-  GTK_WIDGET_UNSET_FLAGS (bChooseSalesman, GTK_CAN_FOCUS);
-
-  eAddressSalesman = gtk_entry_new ();
-  gtk_widget_show (eAddressSalesman);
-  gtk_box_pack_start (GTK_BOX (vbox4), eAddressSalesman, FALSE, FALSE, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eAddressSalesman), FALSE);
-
-  label58 = gtk_label_new (_("Handy"));
-  gtk_widget_show (label58);
-  gtk_table_attach (GTK_TABLE (table5), label58, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label58), 0, 0.5);
-
-  eHandy = gtk_entry_new ();
-  gtk_widget_show (eHandy);
-  gtk_table_attach (GTK_TABLE (table5), eHandy, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label65 = gtk_label_new (_("Newsletter"));
-  gtk_widget_show (label65);
-  gtk_table_attach (GTK_TABLE (table5), label65, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label65), 0, 0.5);
-
-  eNewsletter = gtk_entry_new ();
-  gtk_widget_show (eNewsletter);
-  gtk_table_attach (GTK_TABLE (table5), eNewsletter, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label80 = gtk_label_new (_("Homepage"));
-  gtk_widget_show (label80);
-  gtk_table_attach (GTK_TABLE (table5), label80, 0, 1, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label80), 0, 0.5);
-
-  hbox35 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox35);
-  gtk_table_attach (GTK_TABLE (table5), hbox35, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eHomepage = gtk_entry_new ();
-  gtk_widget_show (eHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox35), eHomepage, TRUE, TRUE, 0);
-
-  bViewHomepage = gtk_button_new_with_mnemonic (_("View"));
-  gtk_widget_show (bViewHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox35), bViewHomepage, FALSE, FALSE, 0);
-
-  hbox36 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox36);
-  gtk_table_attach (GTK_TABLE (table5), hbox36, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  eEmail = gtk_entry_new ();
-  gtk_widget_show (eEmail);
-  gtk_box_pack_start (GTK_BOX (hbox36), eEmail, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (eEmail, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eEmail), 15);
-
-  bSendMail = gtk_button_new_with_mnemonic (_("Send Email"));
-  gtk_widget_show (bSendMail);
-  gtk_box_pack_start (GTK_BOX (hbox36), bSendMail, FALSE, FALSE, 0);
-
-  bSendExternEmail = gtk_button_new_with_mnemonic (_("ext. Email"));
-  gtk_widget_show (bSendExternEmail);
-  gtk_box_pack_start (GTK_BOX (hbox36), bSendExternEmail, FALSE, FALSE, 0);
-
-  label84 = gtk_label_new (_("Info"));
-  gtk_widget_show (label84);
-  gtk_table_attach (GTK_TABLE (table5), label84, 0, 1, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label84), 0, 0.5);
-
-  eInfo = gtk_entry_new ();
-  gtk_widget_show (eInfo);
-  gtk_table_attach (GTK_TABLE (table5), eInfo, 1, 2, 6, 7,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  hbox58 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox58);
-  gtk_table_attach (GTK_TABLE (table5), hbox58, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePhone = gtk_entry_new ();
-  gtk_widget_show (ePhone);
-  gtk_box_pack_start (GTK_BOX (hbox58), ePhone, TRUE, TRUE, 0);
-  gtk_widget_set_size_request (ePhone, 0, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (ePhone), 15);
-
-  bPhone = gtk_button_new ();
-  gtk_widget_show (bPhone);
-  gtk_box_pack_start (GTK_BOX (hbox58), bPhone, FALSE, FALSE, 0);
-
-  alignment11 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment11);
-  gtk_container_add (GTK_CONTAINER (bPhone), alignment11);
-
-  hbox59 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox59);
-  gtk_container_add (GTK_CONTAINER (alignment11), hbox59);
-
-  image1280 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1280);
-  gtk_box_pack_start (GTK_BOX (hbox59), image1280, FALSE, FALSE, 0);
-
-  label98 = gtk_label_new_with_mnemonic (_("dial"));
-  gtk_widget_show (label98);
-  gtk_box_pack_start (GTK_BOX (hbox59), label98, FALSE, FALSE, 0);
-
-  lAddress = gtk_label_new (_("Addresses"));
-  gtk_widget_show (lAddress);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), lAddress);
-  gtk_misc_set_alignment (GTK_MISC (lAddress), 0, 0);
-
-  table7 = gtk_table_new (4, 2, FALSE);
-  gtk_widget_show (table7);
-  gtk_container_add (GTK_CONTAINER (notebook1), table7);
-
-  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow2);
-  gtk_table_attach (GTK_TABLE (table7), scrolledwindow2, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  tvBank = gtk_text_view_new ();
-  gtk_widget_show (tvBank);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow2), tvBank);
-
-  vbox7 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox7);
-  gtk_table_attach (GTK_TABLE (table7), vbox7, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  bChooseBank = gtk_button_new_with_mnemonic (_("choose Bank"));
-  gtk_widget_show (bChooseBank);
-  gtk_box_pack_start (GTK_BOX (vbox7), bChooseBank, FALSE, FALSE, 0);
-
-  eBankID = gtk_entry_new ();
-  gtk_widget_show (eBankID);
-  gtk_box_pack_start (GTK_BOX (vbox7), eBankID, FALSE, FALSE, 0);
-
-  eAccountNumber = gtk_entry_new ();
-  gtk_widget_show (eAccountNumber);
-  gtk_table_attach (GTK_TABLE (table7), eAccountNumber, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label27 = gtk_label_new (_("Account-Nr."));
-  gtk_widget_show (label27);
-  gtk_table_attach (GTK_TABLE (table7), label27, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label27), 0, 0);
-
-  label28 = gtk_label_new (_("depositor"));
-  gtk_widget_show (label28);
-  gtk_table_attach (GTK_TABLE (table7), label28, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label28), 0, 0);
-
-  eDepositor = gtk_entry_new ();
-  gtk_widget_show (eDepositor);
-  gtk_table_attach (GTK_TABLE (table7), eDepositor, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label48 = gtk_label_new (_("IBAN"));
-  gtk_widget_show (label48);
-  gtk_table_attach (GTK_TABLE (table7), label48, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label48), 0, 0.5);
-
-  eIban = gtk_entry_new ();
-  gtk_widget_show (eIban);
-  gtk_table_attach (GTK_TABLE (table7), eIban, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lBank = gtk_label_new (_("Bank"));
-  gtk_widget_show (lBank);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), lBank);
-  gtk_misc_set_alignment (GTK_MISC (lBank), 0, 0);
-
-  table9 = gtk_table_new (7, 4, FALSE);
-  gtk_widget_show (table9);
-  gtk_container_add (GTK_CONTAINER (notebook1), table9);
-
-  chkbUpdateFromWeb = gtk_check_button_new_with_mnemonic (_("update from Web"));
-  gtk_widget_show (chkbUpdateFromWeb);
-  gtk_table_attach (GTK_TABLE (table9), chkbUpdateFromWeb, 1, 2, 5, 6,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label43 = gtk_label_new ("");
-  gtk_widget_show (label43);
-  gtk_table_attach (GTK_TABLE (table9), label43, 0, 1, 5, 6,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label43), 0, 0);
-
-  label42 = gtk_label_new (_("Webshop"));
-  gtk_widget_show (label42);
-  gtk_table_attach (GTK_TABLE (table9), label42, 0, 1, 4, 5,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label42), 0, 0);
-
-  chkbIsWebshop = gtk_check_button_new_with_mnemonic (_("Is Webshop Address"));
-  gtk_widget_show (chkbIsWebshop);
-  gtk_table_attach (GTK_TABLE (table9), chkbIsWebshop, 1, 2, 4, 5,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eAddressNumber = gtk_entry_new ();
-  gtk_widget_show (eAddressNumber);
-  gtk_table_attach (GTK_TABLE (table9), eAddressNumber, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label41 = gtk_label_new (_("address-Number"));
-  gtk_widget_show (label41);
-  gtk_table_attach (GTK_TABLE (table9), label41, 0, 1, 3, 4,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label41), 0, 0);
-
-  combo2 = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (combo2)->popwin),
-                     "GladeParentKey", combo2);
-  gtk_widget_show (combo2);
-  gtk_table_attach (GTK_TABLE (table9), combo2, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price I"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price II"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price III"));
-  combo2_items = g_list_append (combo2_items, (gpointer) _("Price IV"));
-  gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
-  g_list_free (combo2_items);
-
-  cbPriceGroup = GTK_COMBO (combo2)->entry;
-  gtk_widget_show (cbPriceGroup);
-
-  label40 = gtk_label_new (_("Price-Group"));
-  gtk_widget_show (label40);
-  gtk_table_attach (GTK_TABLE (table9), label40, 2, 3, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label40), 0, 0);
-
-  chkbCalcTax = gtk_check_button_new_with_mnemonic (_("to calc Tax"));
-  gtk_widget_show (chkbCalcTax);
-  gtk_table_attach (GTK_TABLE (table9), chkbCalcTax, 2, 3, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (chkbCalcTax), TRUE);
-
-  eTaxnumber = gtk_entry_new ();
-  gtk_widget_show (eTaxnumber);
-  gtk_table_attach (GTK_TABLE (table9), eTaxnumber, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label37 = gtk_label_new (_("Tax-Nr."));
-  gtk_widget_show (label37);
-  gtk_table_attach (GTK_TABLE (table9), label37, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label37), 0, 0);
-
-  cbFashion = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (cbFashion)->popwin),
-                     "GladeParentKey", cbFashion);
-  gtk_widget_show (cbFashion);
-  gtk_table_attach (GTK_TABLE (table9), cbFashion, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Customer"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Vendor"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Authority"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Private"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Misc"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("No Interest"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Some Interest"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Mostly Interest"));
-  gtk_combo_set_popdown_strings (GTK_COMBO (cbFashion), cbFashion_items);
-  g_list_free (cbFashion_items);
-
-  eFashion = GTK_COMBO (cbFashion)->entry;
-  gtk_widget_show (eFashion);
-  gtk_editable_set_editable (GTK_EDITABLE (eFashion), FALSE);
-
-  label36 = gtk_label_new (_("fashion"));
-  gtk_widget_show (label36);
-  gtk_table_attach (GTK_TABLE (table9), label36, 0, 1, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label36), 0, 0);
-
-  eLine = gtk_entry_new ();
-  gtk_widget_show (eLine);
-  gtk_table_attach (GTK_TABLE (table9), eLine, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label35 = gtk_label_new (_("Line"));
-  gtk_widget_show (label35);
-  gtk_table_attach (GTK_TABLE (table9), label35, 0, 1, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label35), 0, 0);
-
-  hbox44 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox44);
-  gtk_table_attach (GTK_TABLE (table9), hbox44, 3, 4, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  label90 = gtk_label_new (_("Term of Payment"));
-  gtk_widget_show (label90);
-  gtk_table_attach (GTK_TABLE (table9), label90, 2, 3, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label90), 0, 0.5);
-
-  hbox45 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox45);
-  gtk_table_attach (GTK_TABLE (table9), hbox45, 3, 4, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  hbox46 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox46);
-  gtk_box_pack_start (GTK_BOX (hbox45), hbox46, TRUE, TRUE, 0);
-
-  eTOPID = gtk_entry_new ();
-  gtk_widget_show (eTOPID);
-  gtk_box_pack_start (GTK_BOX (hbox46), eTOPID, TRUE, TRUE, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eTOPID), 6);
-
-  bSearchTOP = gtk_button_new_with_mnemonic (_("search ToP"));
-  gtk_widget_show (bSearchTOP);
-  gtk_box_pack_start (GTK_BOX (hbox46), bSearchTOP, FALSE, FALSE, 0);
-
-  button3 = gtk_button_new_with_mnemonic (_("button3"));
-  gtk_widget_show (button3);
-  gtk_box_pack_start (GTK_BOX (hbox45), button3, FALSE, FALSE, 0);
-
-  scrolledwindow14 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow14);
-  gtk_table_attach (GTK_TABLE (table9), scrolledwindow14, 3, 4, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (scrolledwindow14, 60, 80);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow14), GTK_SHADOW_IN);
-
-  tvTOP = gtk_text_view_new ();
-  gtk_widget_show (tvTOP);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow14), tvTOP);
-
-  lMisc = gtk_label_new (_("Misc."));
-  gtk_widget_show (lMisc);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 2), lMisc);
-  gtk_misc_set_alignment (GTK_MISC (lMisc), 0, 0);
-
-  table2 = gtk_table_new (14, 4, FALSE);
-  gtk_widget_show (table2);
-  gtk_container_add (GTK_CONTAINER (notebook1), table2);
-
-  ePartnerStreet = gtk_entry_new ();
-  gtk_widget_show (ePartnerStreet);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerStreet, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPartnerStreet = gtk_label_new (_("Street"));
-  gtk_widget_show (lPartnerStreet);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerStreet, 0, 1, 4, 5,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerStreet), 0, 0);
-
-  hbox2 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox2);
-  gtk_table_attach (GTK_TABLE (table2), hbox2, 0, 1, 5, 6,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPartnerZip = gtk_label_new (_("Zip"));
-  gtk_widget_show (lPartnerZip);
-  gtk_box_pack_start (GTK_BOX (hbox2), lPartnerZip, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerZip), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerZip), 0, 0);
-
-  ePartnerZip = gtk_entry_new ();
-  gtk_widget_show (ePartnerZip);
-  gtk_box_pack_start (GTK_BOX (hbox2), ePartnerZip, TRUE, TRUE, 0);
-
-  lpartnerCounty = gtk_label_new (_("Country"));
-  gtk_widget_show (lpartnerCounty);
-  gtk_table_attach (GTK_TABLE (table2), lpartnerCounty, 0, 1, 6, 7,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lpartnerCounty), 0, 0);
-
-  lPartnerPhone2 = gtk_label_new (_("Phone 2"));
-  gtk_widget_show (lPartnerPhone2);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone2, 2, 3, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerPhone2), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone2), 0, 0);
-
-  lpartnerPhone1 = gtk_label_new (_("Phone 1"));
-  gtk_widget_show (lpartnerPhone1);
-  gtk_table_attach (GTK_TABLE (table2), lpartnerPhone1, 2, 3, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lpartnerPhone1), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lpartnerPhone1), 0, 0);
-
-  ePartnerFirstname = gtk_entry_new ();
-  gtk_widget_show (ePartnerFirstname);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFirstname, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerLastname = gtk_entry_new ();
-  gtk_widget_show (ePartnerLastname);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerLastname, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerTitular = gtk_entry_new ();
-  gtk_widget_show (ePartnerTitular);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerTitular, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerAddress = gtk_entry_new ();
-  gtk_widget_show (ePartnerAddress);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerAddress, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label18 = gtk_label_new (_("Firstname"));
-  gtk_widget_show (label18);
-  gtk_table_attach (GTK_TABLE (table2), label18, 0, 1, 3, 4,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label18), 0, 0);
-
-  label17 = gtk_label_new (_("Lastname"));
-  gtk_widget_show (label17);
-  gtk_table_attach (GTK_TABLE (table2), label17, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label17), 0, 0);
-
-  label16 = gtk_label_new (_("titular"));
-  gtk_widget_show (label16);
-  gtk_table_attach (GTK_TABLE (table2), label16, 0, 1, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label16), 0, 0);
-
-  label15 = gtk_label_new (_("Address"));
-  gtk_widget_show (label15);
-  gtk_table_attach (GTK_TABLE (table2), label15, 0, 1, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label15), 0, 0);
-
-  hbox17 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox17);
-  gtk_table_attach (GTK_TABLE (table2), hbox17, 1, 2, 9, 10,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  hbox52 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox52);
-  gtk_box_pack_start (GTK_BOX (hbox17), hbox52, TRUE, TRUE, 0);
-
-  ePartnerPhone = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone);
-  gtk_box_pack_start (GTK_BOX (hbox52), ePartnerPhone, TRUE, TRUE, 0);
-
-  bPartnerPhoneCompany = gtk_button_new ();
-  gtk_widget_show (bPartnerPhoneCompany);
-  gtk_box_pack_start (GTK_BOX (hbox52), bPartnerPhoneCompany, FALSE, FALSE, 0);
-
-  alignment7 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment7);
-  gtk_container_add (GTK_CONTAINER (bPartnerPhoneCompany), alignment7);
-
-  hbox54 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox54);
-  gtk_container_add (GTK_CONTAINER (alignment7), hbox54);
-
-  image1276 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1276);
-  gtk_box_pack_start (GTK_BOX (hbox54), image1276, FALSE, FALSE, 0);
-
-  label94 = gtk_label_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (label94);
-  gtk_box_pack_start (GTK_BOX (hbox54), label94, FALSE, FALSE, 0);
-
-  hbox23 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox23);
-  gtk_table_attach (GTK_TABLE (table2), hbox23, 1, 2, 13, 14,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-
-  bPartnerLetter = gtk_button_new_with_mnemonic (_("Letter"));
-  gtk_widget_show (bPartnerLetter);
-  gtk_box_pack_start (GTK_BOX (hbox23), bPartnerLetter, FALSE, FALSE, 0);
-
-  bPartnerContact = gtk_button_new_with_mnemonic (_("Contact"));
-  gtk_widget_show (bPartnerContact);
-  gtk_box_pack_start (GTK_BOX (hbox23), bPartnerContact, FALSE, FALSE, 0);
-
-  bShowPartnerDMS = gtk_button_new_with_mnemonic (_("show extendet infos"));
-  gtk_widget_show (bShowPartnerDMS);
-  gtk_table_attach (GTK_TABLE (table2), bShowPartnerDMS, 3, 4, 13, 14,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label59 = gtk_label_new (_("Handy"));
-  gtk_widget_show (label59);
-  gtk_table_attach (GTK_TABLE (table2), label59, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label59), 0, 0.5);
-
-  ePartnerHandy = gtk_entry_new ();
-  gtk_widget_show (ePartnerHandy);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerHandy, 3, 4, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  hbox3 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox3);
-  gtk_table_attach (GTK_TABLE (table2), hbox3, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPartnerCity = gtk_label_new (_("City  "));
-  gtk_widget_show (lPartnerCity);
-  gtk_box_pack_start (GTK_BOX (hbox3), lPartnerCity, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerCity), 0, 0);
-
-  ePartnerCity = gtk_entry_new ();
-  gtk_widget_show (ePartnerCity);
-  gtk_box_pack_start (GTK_BOX (hbox3), ePartnerCity, TRUE, TRUE, 0);
-
-  hbox24 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox24);
-  gtk_table_attach (GTK_TABLE (table2), hbox24, 1, 2, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerCountry = gtk_entry_new ();
-  gtk_widget_show (ePartnerCountry);
-  gtk_box_pack_start (GTK_BOX (hbox24), ePartnerCountry, TRUE, TRUE, 0);
-
-  label22 = gtk_label_new (_("State"));
-  gtk_widget_show (label22);
-  gtk_box_pack_start (GTK_BOX (hbox24), label22, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0);
-
-  ePartnerState = gtk_entry_new ();
-  gtk_widget_show (ePartnerState);
-  gtk_box_pack_start (GTK_BOX (hbox24), ePartnerState, TRUE, TRUE, 0);
-
-  bGeneratePartner = gtk_button_new_with_mnemonic (_("Generate Partner"));
-  gtk_widget_show (bGeneratePartner);
-  gtk_table_attach (GTK_TABLE (table2), bGeneratePartner, 3, 4, 12, 13,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  hbox37 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox37);
-  gtk_table_attach (GTK_TABLE (table2), hbox37, 3, 4, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerSIP = gtk_entry_new ();
-  gtk_widget_show (ePartnerSIP);
-  gtk_box_pack_start (GTK_BOX (hbox37), ePartnerSIP, TRUE, TRUE, 0);
-
-  bPartnerSip = gtk_button_new ();
-  gtk_widget_show (bPartnerSip);
-  gtk_box_pack_start (GTK_BOX (hbox37), bPartnerSip, FALSE, FALSE, 0);
-
-  alignment9 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment9);
-  gtk_container_add (GTK_CONTAINER (bPartnerSip), alignment9);
-
-  hbox56 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox56);
-  gtk_container_add (GTK_CONTAINER (alignment9), hbox56);
-
-  image1278 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1278);
-  gtk_box_pack_start (GTK_BOX (hbox56), image1278, FALSE, FALSE, 0);
-
-  label96 = gtk_label_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (label96);
-  gtk_box_pack_start (GTK_BOX (hbox56), label96, FALSE, FALSE, 0);
-
-  hbox38 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox38);
-  gtk_table_attach (GTK_TABLE (table2), hbox38, 3, 4, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerSkype = gtk_entry_new ();
-  gtk_widget_show (ePartnerSkype);
-  gtk_box_pack_start (GTK_BOX (hbox38), ePartnerSkype, TRUE, TRUE, 0);
-
-  bPartnerSkype = gtk_button_new ();
-  gtk_widget_show (bPartnerSkype);
-  gtk_box_pack_start (GTK_BOX (hbox38), bPartnerSkype, FALSE, FALSE, 0);
-
-  alignment10 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment10);
-  gtk_container_add (GTK_CONTAINER (bPartnerSkype), alignment10);
-
-  hbox57 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox57);
-  gtk_container_add (GTK_CONTAINER (alignment10), hbox57);
-
-  image1279 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1279);
-  gtk_box_pack_start (GTK_BOX (hbox57), image1279, FALSE, FALSE, 0);
-
-  label97 = gtk_label_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (label97);
-  gtk_box_pack_start (GTK_BOX (hbox57), label97, FALSE, FALSE, 0);
-
-  label57 = gtk_label_new (_("letter-address"));
-  gtk_widget_show (label57);
-  gtk_table_attach (GTK_TABLE (table2), label57, 0, 1, 11, 12,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label57), 0, 0.5);
-
-  lPartnerFax = gtk_label_new (_("Fax in company"));
-  gtk_widget_show (lPartnerFax);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerFax, 0, 1, 10, 11,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerFax), 0, 0);
-
-  lPartnerPhone = gtk_label_new (_("Phone in Company"));
-  gtk_widget_show (lPartnerPhone);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerPhone, 0, 1, 9, 10,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerPhone), 0, 0);
-
-  ePartnerLetterAddress = gtk_entry_new ();
-  gtk_widget_show (ePartnerLetterAddress);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerLetterAddress, 1, 2, 11, 12,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  ePartnerFax = gtk_entry_new ();
-  gtk_widget_show (ePartnerFax);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFax, 1, 2, 10, 11,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label85 = gtk_label_new (_("Department"));
-  gtk_widget_show (label85);
-  gtk_table_attach (GTK_TABLE (table2), label85, 0, 1, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label85), 0, 0.5);
-
-  label86 = gtk_label_new (_("Job"));
-  gtk_widget_show (label86);
-  gtk_table_attach (GTK_TABLE (table2), label86, 0, 1, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label86), 0, 0.5);
-
-  eDepartment = gtk_entry_new ();
-  gtk_widget_show (eDepartment);
-  gtk_table_attach (GTK_TABLE (table2), eDepartment, 1, 2, 7, 8,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eJob = gtk_entry_new ();
-  gtk_widget_show (eJob);
-  gtk_table_attach (GTK_TABLE (table2), eJob, 1, 2, 8, 9,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label23 = gtk_label_new (_("Birthday"));
-  gtk_widget_show (label23);
-  gtk_table_attach (GTK_TABLE (table2), label23, 2, 3, 9, 10,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0);
-
-  eBirthday = gtk_entry_new ();
-  gtk_widget_show (eBirthday);
-  gtk_table_attach (GTK_TABLE (table2), eBirthday, 3, 4, 9, 10,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label66 = gtk_label_new (_("Newsletter"));
-  gtk_widget_show (label66);
-  gtk_table_attach (GTK_TABLE (table2), label66, 2, 3, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label66), 0, 0.5);
-
-  ePartnerNewsletter = gtk_entry_new ();
-  gtk_widget_show (ePartnerNewsletter);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerNewsletter, 3, 4, 8, 9,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPartnerFaxPrivate = gtk_label_new (_("Fax"));
-  gtk_widget_show (lPartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerFaxPrivate, 2, 3, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerFaxPrivate), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerFaxPrivate), 0, 0);
-
-  ePartnerFaxPrivate = gtk_entry_new ();
-  gtk_widget_show (ePartnerFaxPrivate);
-  gtk_table_attach (GTK_TABLE (table2), ePartnerFaxPrivate, 3, 4, 7, 8,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  lPartnerInternet = gtk_label_new (_("Homepage"));
-  gtk_widget_show (lPartnerInternet);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerInternet, 2, 3, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerInternet), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerInternet), 0, 0);
-
-  lPartnerEmail = gtk_label_new (_("E-Mail"));
-  gtk_widget_show (lPartnerEmail);
-  gtk_table_attach (GTK_TABLE (table2), lPartnerEmail, 2, 3, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (lPartnerEmail), GTK_JUSTIFY_CENTER);
-  gtk_misc_set_alignment (GTK_MISC (lPartnerEmail), 0, 0);
-
-  label91 = gtk_label_new (_("SIP"));
-  gtk_widget_show (label91);
-  gtk_table_attach (GTK_TABLE (table2), label91, 2, 3, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label91), 0, 0.5);
-
-  label92 = gtk_label_new (_("Skype"));
-  gtk_widget_show (label92);
-  gtk_table_attach (GTK_TABLE (table2), label92, 2, 3, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label92), 0, 0.5);
-
-  hbox48 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox48);
-  gtk_table_attach (GTK_TABLE (table2), hbox48, 3, 4, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerHomepage = gtk_entry_new ();
-  gtk_widget_show (ePartnerHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox48), ePartnerHomepage, TRUE, TRUE, 0);
-
-  bPartnerViewHomepage = gtk_button_new_with_mnemonic (_("View"));
-  gtk_widget_show (bPartnerViewHomepage);
-  gtk_box_pack_start (GTK_BOX (hbox48), bPartnerViewHomepage, FALSE, FALSE, 0);
-
-  hbox49 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox49);
-  gtk_table_attach (GTK_TABLE (table2), hbox49, 3, 4, 5, 6,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerEmail = gtk_entry_new ();
-  gtk_widget_show (ePartnerEmail);
-  gtk_box_pack_start (GTK_BOX (hbox49), ePartnerEmail, TRUE, TRUE, 0);
-
-  bSendPartnerEmail = gtk_button_new_with_mnemonic (_("send Email"));
-  gtk_widget_show (bSendPartnerEmail);
-  gtk_box_pack_start (GTK_BOX (hbox49), bSendPartnerEmail, FALSE, FALSE, 0);
-
-  hbox50 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox50);
-  gtk_table_attach (GTK_TABLE (table2), hbox50, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerPhone1 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone1);
-  gtk_box_pack_start (GTK_BOX (hbox50), ePartnerPhone1, TRUE, TRUE, 0);
-
-  bPartnerPhone1 = gtk_button_new ();
-  gtk_widget_show (bPartnerPhone1);
-  gtk_box_pack_start (GTK_BOX (hbox50), bPartnerPhone1, FALSE, FALSE, 0);
-
-  alignment6 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment6);
-  gtk_container_add (GTK_CONTAINER (bPartnerPhone1), alignment6);
-
-  hbox53 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox53);
-  gtk_container_add (GTK_CONTAINER (alignment6), hbox53);
-
-  image1275 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1275);
-  gtk_box_pack_start (GTK_BOX (hbox53), image1275, FALSE, FALSE, 0);
-
-  label93 = gtk_label_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (label93);
-  gtk_box_pack_start (GTK_BOX (hbox53), label93, FALSE, FALSE, 0);
-
-  hbox51 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox51);
-  gtk_table_attach (GTK_TABLE (table2), hbox51, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  ePartnerPhone2 = gtk_entry_new ();
-  gtk_widget_show (ePartnerPhone2);
-  gtk_box_pack_start (GTK_BOX (hbox51), ePartnerPhone2, TRUE, TRUE, 0);
-
-  bpartnerPhone2 = gtk_button_new ();
-  gtk_widget_show (bpartnerPhone2);
-  gtk_box_pack_start (GTK_BOX (hbox51), bpartnerPhone2, FALSE, FALSE, 0);
-
-  alignment8 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment8);
-  gtk_container_add (GTK_CONTAINER (bpartnerPhone2), alignment8);
-
-  hbox55 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox55);
-  gtk_container_add (GTK_CONTAINER (alignment8), hbox55);
-
-  image1277 = gtk_image_new_from_stock ("gtk-connect", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1277);
-  gtk_box_pack_start (GTK_BOX (hbox55), image1277, FALSE, FALSE, 0);
-
-  label95 = gtk_label_new_with_mnemonic (_("Connect"));
-  gtk_widget_show (label95);
-  gtk_box_pack_start (GTK_BOX (hbox55), label95, FALSE, FALSE, 0);
-
-  lPartner = gtk_label_new (_("Partner"));
-  gtk_widget_show (lPartner);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 3), lPartner);
-  gtk_misc_set_alignment (GTK_MISC (lPartner), 0, 0);
-
-  table8 = gtk_table_new (4, 6, FALSE);
-  gtk_widget_show (table8);
-  gtk_container_add (GTK_CONTAINER (notebook1), table8);
-  gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (notebook1), table8,
-                                      FALSE, FALSE, GTK_PACK_START);
-
-  vbox3 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox3);
-  gtk_table_attach (GTK_TABLE (table8), vbox3, 0, 1, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  label45 = gtk_label_new (_("Schedul  begins at time"));
-  gtk_widget_show (label45);
-  gtk_box_pack_start (GTK_BOX (vbox3), label45, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label45), 0, 0);
-
-  cbeSchedulTimeBegin = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (cbeSchedulTimeBegin);
-  gtk_box_pack_start (GTK_BOX (vbox3), cbeSchedulTimeBegin, FALSE, FALSE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("0:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("0:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("0:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("0:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("1:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("1:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("1:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("1:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("2:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("2:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("2:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("2:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("3:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("4:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("4:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("4:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("4:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("5:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("5:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("5:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("5:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("6:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("6:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("6:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("6:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("7:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("7:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("7:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("7:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("8:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("8:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("8:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("8:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("9:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("9:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("9:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("9:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("10:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("10:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("10:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("10:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("11:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("11:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("11:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("11:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("12:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("12:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("12:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("12:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("13:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("13:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("13:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("13:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("14:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("14:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("14:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("14:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("15:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("15:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("15:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("15:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("16:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("16:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("16:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("16:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("17:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("17:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("17:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("17:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("18:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("18:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("18:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("18:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("19:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("19:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("19:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("19:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("20:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("20:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("20:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("20:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("21:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("21:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("21:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("21:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("22:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("22:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("22:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("22:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("23:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("23:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("23:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeBegin), _("23:45"));
-
-  comboboxentry_entry1 = gtk_entry_new ();
-  gtk_widget_show (comboboxentry_entry1);
-  gtk_container_add (GTK_CONTAINER (cbeSchedulTimeBegin), comboboxentry_entry1);
-  GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry1, GTK_CAN_FOCUS);
-
-  label46 = gtk_label_new (_("Schedul ends at time"));
-  gtk_widget_show (label46);
-  gtk_box_pack_start (GTK_BOX (vbox3), label46, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label46), 0, 0);
-
-  cbeSchedulTimeEnd = gtk_combo_box_entry_new_text ();
-  gtk_widget_show (cbeSchedulTimeEnd);
-  gtk_box_pack_start (GTK_BOX (vbox3), cbeSchedulTimeEnd, FALSE, FALSE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("0:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("0:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("0:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("0:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("1:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("1:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("1:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("1:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("2:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("2:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("2:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("2:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("3:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("4:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("4:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("4:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("4:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("5:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("5:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("5:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("5:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("6:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("6:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("6:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("6:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("7:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("7:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("7:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("7:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("8:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("8:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("8:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("8:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("9:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("9:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("9:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("9:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("10:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("10:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("10:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("10:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("11:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("11:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("11:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("11:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("12:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("12:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("12:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("12:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("13:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("13:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("13:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("13:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("14:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("14:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("14:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("14:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("15:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("15:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("15:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("15:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("16:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("16:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("16:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("16:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("17:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("17:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("17:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("17:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("18:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("18:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("18:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("18:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("19:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("19:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("19:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("19:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("20:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("20:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("20:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("20:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("21:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("21:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("21:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("21:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("22:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("22:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("22:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("22:45"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("23:00"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("23:15"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("23:30"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeSchedulTimeEnd), _("23:45"));
-
-  comboboxentry_entry2 = gtk_entry_new ();
-  gtk_widget_show (comboboxentry_entry2);
-  gtk_container_add (GTK_CONTAINER (cbeSchedulTimeEnd), comboboxentry_entry2);
-  GTK_WIDGET_UNSET_FLAGS (comboboxentry_entry2, GTK_CAN_FOCUS);
-
-  hbox30 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox30);
-  gtk_box_pack_start (GTK_BOX (vbox3), hbox30, TRUE, TRUE, 0);
-
-  cbAlarm = gtk_check_button_new_with_mnemonic (_("Alarm"));
-  gtk_widget_show (cbAlarm);
-  gtk_box_pack_start (GTK_BOX (hbox30), cbAlarm, FALSE, FALSE, 0);
-
-  label54 = gtk_label_new (_(" min. before"));
-  gtk_widget_show (label54);
-  gtk_box_pack_start (GTK_BOX (hbox30), label54, FALSE, FALSE, 0);
-
-  eAlarm = gtk_entry_new ();
-  gtk_widget_show (eAlarm);
-  gtk_box_pack_start (GTK_BOX (hbox30), eAlarm, TRUE, TRUE, 0);
-  gtk_entry_set_text (GTK_ENTRY (eAlarm), "30");
-
-  hbox31 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox31);
-  gtk_box_pack_start (GTK_BOX (vbox3), hbox31, TRUE, TRUE, 0);
-
-  label34 = gtk_label_new (_("Priority"));
-  gtk_widget_show (label34);
-  gtk_box_pack_start (GTK_BOX (hbox31), label34, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label34), 0, 0);
-
-  eSchedulPriority = gtk_entry_new ();
-  gtk_widget_show (eSchedulPriority);
-  gtk_box_pack_start (GTK_BOX (hbox31), eSchedulPriority, TRUE, TRUE, 0);
-
-  hbox32 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox32);
-  gtk_box_pack_start (GTK_BOX (vbox3), hbox32, TRUE, TRUE, 0);
-
-  label33 = gtk_label_new (_("Process"));
-  gtk_widget_show (label33);
-  gtk_box_pack_start (GTK_BOX (hbox32), label33, FALSE, FALSE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0);
-
-  cProcess = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (cProcess)->popwin),
-                     "GladeParentKey", cProcess);
-  gtk_widget_show (cProcess);
-  gtk_box_pack_start (GTK_BOX (hbox32), cProcess, TRUE, TRUE, 0);
-
-  eSchedulProcess = GTK_COMBO (cProcess)->entry;
-  gtk_widget_show (eSchedulProcess);
-  gtk_entry_set_max_length (GTK_ENTRY (eSchedulProcess), 5);
-
-  hbox13 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox13);
-  gtk_table_attach (GTK_TABLE (table8), hbox13, 4, 5, 0, 1,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  eSchedulForName = gtk_entry_new ();
-  gtk_widget_show (eSchedulForName);
-  gtk_box_pack_start (GTK_BOX (hbox13), eSchedulForName, FALSE, FALSE, 0);
+  vbox2 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox2);
+  gtk_container_add (GTK_CONTAINER (notebook1), vbox2);
+
+  table1 = gtk_table_new (4, 5, FALSE);
+  gtk_widget_show (table1);
+  gtk_box_pack_start (GTK_BOX (vbox2), table1, TRUE, TRUE, 0);
 
   calendar1 = gtk_calendar_new ();
   gtk_widget_show (calendar1);
-  gtk_table_attach (GTK_TABLE (table8), calendar1, 1, 2, 1, 2,
-                    (GtkAttachOptions) (0),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_table_attach (GTK_TABLE (table1), calendar1, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
   gtk_calendar_display_options (GTK_CALENDAR (calendar1),
                                 GTK_CALENDAR_SHOW_HEADING
                                 | GTK_CALENDAR_SHOW_DAY_NAMES);
 
-  vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox2);
-  gtk_table_attach (GTK_TABLE (table8), vbox2, 3, 4, 0, 1,
-                    (GtkAttachOptions) (0),
+  table2 = gtk_table_new (7, 2, TRUE);
+  gtk_widget_show (table2);
+  gtk_table_attach (GTK_TABLE (table1), table2, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  cbTime = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbTime);
+  gtk_table_attach (GTK_TABLE (table2), cbTime, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("0:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("0:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("0:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("0:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("1:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("1:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("1:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("1:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("2:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("2:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("2:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("2:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("3:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("3:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("3:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("3:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("4:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("4:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("4:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("4:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("5:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("5:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("5:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("5:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("6:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("6:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("6:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("6:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("7:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("7:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("7:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("7:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("8:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("8:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("8:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("8:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("9:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("9:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("9:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("9:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("10:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("10:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("10:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("10:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("11:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("11:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("11:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("11:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("12:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("12:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("12:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("12:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("13:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("13:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("13:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("13:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("14:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("14:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("14:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("14:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("15:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("15:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("15:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("15:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("16:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("16:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("16:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("16:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("17:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("17:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("17:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("17:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("18:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("18:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("18:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("18:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("19:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("19:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("19:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("19:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("20:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("20:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("20:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("20:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("21:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("21:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("21:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("21:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("22:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("22:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("22:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("22:45"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("23:00"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("23:15"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("23:30"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbTime), _("23:45"));
+
+  eDate = gtk_entry_new ();
+  gtk_widget_show (eDate);
+  gtk_table_attach (GTK_TABLE (table2), eDate, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (eDate), FALSE);
 
-  hbox22 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox22);
-  gtk_box_pack_start (GTK_BOX (vbox2), hbox22, FALSE, FALSE, 0);
+  label18 = gtk_label_new (_("Date"));
+  gtk_widget_show (label18);
+  gtk_table_attach (GTK_TABLE (table2), label18, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label18), 0, 0.5);
 
-  eSchedulFor = gtk_entry_new ();
-  gtk_widget_show (eSchedulFor);
-  gtk_box_pack_start (GTK_BOX (hbox22), eSchedulFor, TRUE, TRUE, 0);
-  gtk_entry_set_width_chars (GTK_ENTRY (eSchedulFor), 6);
+  label19 = gtk_label_new (_("Time"));
+  gtk_widget_show (label19);
+  gtk_table_attach (GTK_TABLE (table2), label19, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label19), 0, 0.5);
 
-  bSchedulFor = gtk_button_new ();
-  gtk_widget_show (bSchedulFor);
-  gtk_box_pack_start (GTK_BOX (hbox22), bSchedulFor, FALSE, FALSE, 0);
+  label25 = gtk_label_new (_("Priority"));
+  gtk_widget_show (label25);
+  gtk_table_attach (GTK_TABLE (table2), label25, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label25), 0, 0.5);
 
-  alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment1);
-  gtk_container_add (GTK_CONTAINER (bSchedulFor), alignment1);
+  cbePriority = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbePriority);
+  gtk_table_attach (GTK_TABLE (table2), cbePriority, 1, 2, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Very Important"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Important"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Normal"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Have a nice Day"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Special 1"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Special 2"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbePriority), _("Special 3"));
 
-  hbox29 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox29);
-  gtk_container_add (GTK_CONTAINER (alignment1), hbox29);
+  label26 = gtk_label_new (_("status"));
+  gtk_widget_show (label26);
+  gtk_table_attach (GTK_TABLE (table2), label26, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label26), 0, 0.5);
 
-  image732 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image732);
-  gtk_box_pack_start (GTK_BOX (hbox29), image732, FALSE, FALSE, 0);
+  cbeStatus = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbeStatus);
+  gtk_table_attach (GTK_TABLE (table2), cbeStatus, 1, 2, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeStatus), _("active"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeStatus), _("ready"));
 
-  label78 = gtk_label_new_with_mnemonic (_("search Staff"));
-  gtk_widget_show (label78);
-  gtk_box_pack_start (GTK_BOX (hbox29), label78, FALSE, FALSE, 0);
+  label30 = gtk_label_new (_("Phone Address I"));
+  gtk_widget_show (label30);
+  gtk_table_attach (GTK_TABLE (table2), label30, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label30), 0, 0.5);
 
-  label32 = gtk_label_new (_("Note"));
+  label31 = gtk_label_new (_("Phone Address II"));
+  gtk_widget_show (label31);
+  gtk_table_attach (GTK_TABLE (table2), label31, 0, 1, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0.5);
+
+  label32 = gtk_label_new (_("Phone partner"));
   gtk_widget_show (label32);
-  gtk_table_attach (GTK_TABLE (table8), label32, 0, 1, 3, 4,
-                    (GtkAttachOptions) (0),
+  gtk_table_attach (GTK_TABLE (table2), label32, 0, 1, 6, 7,
+                    (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label32), 0, 0.5);
 
-  eShortRemark = gtk_entry_new ();
-  gtk_widget_show (eShortRemark);
-  gtk_table_attach (GTK_TABLE (table8), eShortRemark, 1, 2, 2, 3,
+  ePhoneAddress1 = gtk_entry_new ();
+  gtk_widget_show (ePhoneAddress1);
+  gtk_table_attach (GTK_TABLE (table2), ePhoneAddress1, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_editable_set_editable (GTK_EDITABLE (ePhoneAddress1), FALSE);
+
+  ePhoneAddress2 = gtk_entry_new ();
+  gtk_widget_show (ePhoneAddress2);
+  gtk_table_attach (GTK_TABLE (table2), ePhoneAddress2, 1, 2, 5, 6,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow3);
-  gtk_table_attach (GTK_TABLE (table8), scrolledwindow3, 1, 2, 3, 4,
-                    (GtkAttachOptions) (0),
+  ePhonePartner = gtk_entry_new ();
+  gtk_widget_show (ePhonePartner);
+  gtk_table_attach (GTK_TABLE (table2), ePhonePartner, 1, 2, 6, 7,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_widget_set_size_request (scrolledwindow3, 250, -1);
-  gtk_container_set_border_width (GTK_CONTAINER (scrolledwindow3), 2);
+  gtk_editable_set_editable (GTK_EDITABLE (ePhonePartner), FALSE);
 
-  eSchedulNotes = gtk_text_view_new ();
-  gtk_widget_show (eSchedulNotes);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow3), eSchedulNotes);
-
-  label31 = gtk_label_new (_("short Remark"));
-  gtk_widget_show (label31);
-  gtk_table_attach (GTK_TABLE (table8), label31, 0, 1, 2, 3,
-                    (GtkAttachOptions) (0),
+  label21 = gtk_label_new (_("Days"));
+  gtk_widget_show (label21);
+  gtk_table_attach (GTK_TABLE (table1), label21, 2, 3, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label31), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label21), 0, 0.5);
 
-  vbox9 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox9);
-  gtk_table_attach (GTK_TABLE (table8), vbox9, 4, 5, 1, 2,
+  label22 = gtk_label_new (_("Hours"));
+  gtk_widget_show (label22);
+  gtk_table_attach (GTK_TABLE (table1), label22, 3, 4, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0.5);
+
+  label23 = gtk_label_new (_("Minutes"));
+  gtk_widget_show (label23);
+  gtk_table_attach (GTK_TABLE (table1), label23, 4, 5, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0.5);
+
+  vbox4 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox4);
+  gtk_table_attach (GTK_TABLE (table1), vbox4, 2, 3, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  calSchedulStaff = gtk_calendar_new ();
-  gtk_widget_show (calSchedulStaff);
-  gtk_box_pack_start (GTK_BOX (vbox9), calSchedulStaff, FALSE, FALSE, 0);
-  gtk_calendar_display_options (GTK_CALENDAR (calSchedulStaff),
-                                GTK_CALENDAR_SHOW_HEADING
-                                | GTK_CALENDAR_SHOW_DAY_NAMES
-                                | GTK_CALENDAR_SHOW_WEEK_NUMBERS
-                                | GTK_CALENDAR_WEEK_START_MONDAY);
+  rbDay0 = gtk_radio_button_new_with_mnemonic (NULL, _("0 Day"));
+  gtk_widget_show (rbDay0);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay0, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay0), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay0));
 
-  bGotoSchedulAddress = gtk_button_new ();
-  gtk_widget_show (bGotoSchedulAddress);
-  gtk_box_pack_start (GTK_BOX (vbox9), bGotoSchedulAddress, FALSE, FALSE, 0);
+  rbDay1 = gtk_radio_button_new_with_mnemonic (NULL, _("1 Day"));
+  gtk_widget_show (rbDay1);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay1, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay1), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay1));
 
-  alignment2 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment2);
-  gtk_container_add (GTK_CONTAINER (bGotoSchedulAddress), alignment2);
+  rbDay2 = gtk_radio_button_new_with_mnemonic (NULL, _("2 Days"));
+  gtk_widget_show (rbDay2);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay2, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay2), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay2));
 
-  hbox34 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox34);
-  gtk_container_add (GTK_CONTAINER (alignment2), hbox34);
+  rbDay3 = gtk_radio_button_new_with_mnemonic (NULL, _("3 Days"));
+  gtk_widget_show (rbDay3);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay3, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay3), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay3));
 
-  image744 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image744);
-  gtk_box_pack_start (GTK_BOX (hbox34), image744, FALSE, FALSE, 0);
+  rbDay4 = gtk_radio_button_new_with_mnemonic (NULL, _("4 Days"));
+  gtk_widget_show (rbDay4);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay4, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay4), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay4));
 
-  label79 = gtk_label_new_with_mnemonic (_("Goto Address"));
-  gtk_widget_show (label79);
-  gtk_box_pack_start (GTK_BOX (hbox34), label79, FALSE, FALSE, 0);
+  rbDay5 = gtk_radio_button_new_with_mnemonic (NULL, _("5 Days"));
+  gtk_widget_show (rbDay5);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay5, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay5), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay5));
 
-  vbox14 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox14);
-  gtk_table_attach (GTK_TABLE (table8), vbox14, 4, 5, 3, 4,
+  rbDay6 = gtk_radio_button_new_with_mnemonic (NULL, _("6 Days"));
+  gtk_widget_show (rbDay6);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay6, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay6), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay6));
+
+  rbDay7 = gtk_radio_button_new_with_mnemonic (NULL, _("7 Days"));
+  gtk_widget_show (rbDay7);
+  gtk_box_pack_start (GTK_BOX (vbox4), rbDay7, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbDay7), rbDay0_group);
+  rbDay0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbDay7));
+
+  vbox6 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox6);
+  gtk_table_attach (GTK_TABLE (table1), vbox6, 3, 4, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  hbox6 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox6);
-  gtk_box_pack_start (GTK_BOX (vbox14), hbox6, FALSE, FALSE, 0);
+  rbHour0 = gtk_radio_button_new_with_mnemonic (NULL, _("0 Hour"));
+  gtk_widget_show (rbHour0);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour0, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour0), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour0));
 
-  vbox15 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox15);
-  gtk_box_pack_start (GTK_BOX (vbox14), vbox15, TRUE, TRUE, 0);
+  rbHour1 = gtk_radio_button_new_with_mnemonic (NULL, _("1 Hour"));
+  gtk_widget_show (rbHour1);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour1, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour1), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour1));
 
-  hbox20 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox20);
-  gtk_box_pack_start (GTK_BOX (vbox14), hbox20, TRUE, TRUE, 0);
+  rbHour2 = gtk_radio_button_new_with_mnemonic (NULL, _("2 Hours"));
+  gtk_widget_show (rbHour2);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour2, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour2), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour2));
 
-  bSchedulLetter = gtk_button_new_with_mnemonic (_("Letter"));
-  gtk_widget_show (bSchedulLetter);
-  gtk_box_pack_start (GTK_BOX (hbox20), bSchedulLetter, FALSE, FALSE, 0);
+  rbHour3 = gtk_radio_button_new_with_mnemonic (NULL, _("3 Hours"));
+  gtk_widget_show (rbHour3);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour3, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour3), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour3));
 
-  bSchedulDMS = gtk_button_new_with_mnemonic (_("D M S"));
-  gtk_widget_show (bSchedulDMS);
-  gtk_box_pack_start (GTK_BOX (hbox20), bSchedulDMS, FALSE, FALSE, 0);
+  rbHour4 = gtk_radio_button_new_with_mnemonic (NULL, _("4 Hours "));
+  gtk_widget_show (rbHour4);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour4, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour4), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour4));
+
+  rbHours5 = gtk_radio_button_new_with_mnemonic (NULL, _("5 Hours"));
+  gtk_widget_show (rbHours5);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHours5, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHours5), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHours5));
+
+  rbHour6 = gtk_radio_button_new_with_mnemonic (NULL, _("6 Hours"));
+  gtk_widget_show (rbHour6);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour6, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour6), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour6));
+
+  rbHour7 = gtk_radio_button_new_with_mnemonic (NULL, _("7 Hours"));
+  gtk_widget_show (rbHour7);
+  gtk_box_pack_start (GTK_BOX (vbox6), rbHour7, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbHour7), rbHour0_group);
+  rbHour0_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbHour7));
+
+  vbox7 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox7);
+  gtk_table_attach (GTK_TABLE (table1), vbox7, 4, 5, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  rbMinute00 = gtk_radio_button_new_with_mnemonic (NULL, _("0 Minutes"));
+  gtk_widget_show (rbMinute00);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute00, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute00), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute00));
+
+  rbMinute02 = gtk_radio_button_new_with_mnemonic (NULL, _("2 Minutes"));
+  gtk_widget_show (rbMinute02);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute02, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute02), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute02));
+
+  rbMinute05 = gtk_radio_button_new_with_mnemonic (NULL, _("5 Minutes"));
+  gtk_widget_show (rbMinute05);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute05, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute05), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute05));
+
+  rbMinute10 = gtk_radio_button_new_with_mnemonic (NULL, _("10 Minutes"));
+  gtk_widget_show (rbMinute10);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute10, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute10), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute10));
+
+  rbMinute15 = gtk_radio_button_new_with_mnemonic (NULL, _("15 Minutes"));
+  gtk_widget_show (rbMinute15);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute15, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute15), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute15));
+
+  rbMinute20 = gtk_radio_button_new_with_mnemonic (NULL, _("20 Minutes"));
+  gtk_widget_show (rbMinute20);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute20, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute20), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute20));
+
+  rbMinute30 = gtk_radio_button_new_with_mnemonic (NULL, _("30 Minutes"));
+  gtk_widget_show (rbMinute30);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute30, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute30), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute30));
+
+  rbMinute40 = gtk_radio_button_new_with_mnemonic (NULL, _("40 Minutes"));
+  gtk_widget_show (rbMinute40);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute40, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute40), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute40));
+
+  rbMinute45 = gtk_radio_button_new_with_mnemonic (NULL, _("45 Minutes"));
+  gtk_widget_show (rbMinute45);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute45, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute45), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute45));
+
+  rbMinute50 = gtk_radio_button_new_with_mnemonic (NULL, _("50 Minutes"));
+  gtk_widget_show (rbMinute50);
+  gtk_box_pack_start (GTK_BOX (vbox7), rbMinute50, FALSE, FALSE, 0);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbMinute50), rbMinute00_group);
+  rbMinute00_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbMinute50));
+
+  hbox3 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox3);
+  gtk_table_attach (GTK_TABLE (table1), hbox3, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label20 = gtk_label_new (_("Alarm notify before: "));
+  gtk_widget_show (label20);
+  gtk_box_pack_start (GTK_BOX (hbox3), label20, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label20), 0, 0.5);
+
+  label27 = gtk_label_new (_("D/H/M"));
+  gtk_widget_show (label27);
+  gtk_box_pack_start (GTK_BOX (hbox3), label27, FALSE, FALSE, 0);
+
+  eAlarmDay = gtk_entry_new ();
+  gtk_widget_show (eAlarmDay);
+  gtk_box_pack_start (GTK_BOX (hbox3), eAlarmDay, FALSE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eAlarmDay), 3);
+
+  eAlarmHour = gtk_entry_new ();
+  gtk_widget_show (eAlarmHour);
+  gtk_box_pack_start (GTK_BOX (hbox3), eAlarmHour, FALSE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eAlarmHour), 2);
+
+  eAlarmMinutes = gtk_entry_new ();
+  gtk_widget_show (eAlarmMinutes);
+  gtk_box_pack_start (GTK_BOX (hbox3), eAlarmMinutes, FALSE, TRUE, 0);
+  gtk_entry_set_width_chars (GTK_ENTRY (eAlarmMinutes), 2);
+
+  label28 = gtk_label_new (_("Notice:"));
+  gtk_widget_show (label28);
+  gtk_table_attach (GTK_TABLE (table1), label28, 0, 1, 3, 4,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label28), 0, 0.5);
+
+  label33 = gtk_label_new ("");
+  gtk_widget_show (label33);
+  gtk_table_attach (GTK_TABLE (table1), label33, 0, 1, 2, 3,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label33), 0, 0.5);
+
+  scrolledwindow2 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow2);
+  gtk_box_pack_start (GTK_BOX (vbox2), scrolledwindow2, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow2), GTK_SHADOW_IN);
+
+  tvNotes = gtk_text_view_new ();
+  gtk_widget_show (tvNotes);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow2), tvNotes);
+
+  hbox2 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox2);
+  gtk_box_pack_start (GTK_BOX (vbox2), hbox2, TRUE, TRUE, 0);
 
   vbox5 = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (vbox5);
-  gtk_table_attach (GTK_TABLE (table8), vbox5, 3, 4, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  scrolledwindow11 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow11);
-  gtk_box_pack_start (GTK_BOX (vbox5), scrolledwindow11, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow11), GTK_SHADOW_IN);
-
-  tvSchedulDetails = gtk_text_view_new ();
-  gtk_widget_show (tvSchedulDetails);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow11), tvSchedulDetails);
-
-  scrolledwindow10 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow10);
-  gtk_table_attach (GTK_TABLE (table8), scrolledwindow10, 3, 4, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow10), GTK_SHADOW_IN);
-
-  treeScheduls = gtk_tree_view_new ();
-  gtk_widget_show (treeScheduls);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow10), treeScheduls);
-  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeScheduls), FALSE);
-
-  hbox33 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox33);
-  gtk_table_attach (GTK_TABLE (table8), hbox33, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  rbBeginDate = gtk_radio_button_new_with_mnemonic (NULL, _("Begin at"));
-  gtk_widget_show (rbBeginDate);
-  gtk_box_pack_start (GTK_BOX (hbox33), rbBeginDate, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbBeginDate), rbBeginDate_group);
-  rbBeginDate_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbBeginDate));
-
-  eSchedulDateBegin = gtk_entry_new ();
-  gtk_widget_show (eSchedulDateBegin);
-  gtk_box_pack_start (GTK_BOX (hbox33), eSchedulDateBegin, TRUE, TRUE, 0);
-
-  vseparator2 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator2);
-  gtk_table_attach (GTK_TABLE (table8), vseparator2, 2, 3, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (vseparator2, 4, -1);
-
-  vseparator3 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator3);
-  gtk_table_attach (GTK_TABLE (table8), vseparator3, 2, 3, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (vseparator3, 4, -1);
-
-  vseparator4 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator4);
-  gtk_table_attach (GTK_TABLE (table8), vseparator4, 2, 3, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (vseparator4, 4, -1);
-
-  vseparator5 = gtk_vseparator_new ();
-  gtk_widget_show (vseparator5);
-  gtk_table_attach (GTK_TABLE (table8), vseparator5, 2, 3, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (vseparator5, 4, -1);
-
-  hbox47 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox47);
-  gtk_table_attach (GTK_TABLE (table8), hbox47, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  rbEndDate = gtk_radio_button_new_with_mnemonic (NULL, _("end at"));
-  gtk_widget_show (rbEndDate);
-  gtk_box_pack_start (GTK_BOX (hbox47), rbEndDate, FALSE, FALSE, 0);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (rbEndDate), rbBeginDate_group);
-  rbBeginDate_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (rbEndDate));
-
-  eSchedulDateEnd = gtk_entry_new ();
-  gtk_widget_show (eSchedulDateEnd);
-  gtk_box_pack_start (GTK_BOX (hbox47), eSchedulDateEnd, TRUE, TRUE, 0);
-
-  lSchedul = gtk_label_new (_("Schedul"));
-  gtk_widget_show (lSchedul);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 4), lSchedul);
-  gtk_misc_set_alignment (GTK_MISC (lSchedul), 0, 0);
-
-  notebook2 = gtk_notebook_new ();
-  gtk_widget_show (notebook2);
-  gtk_container_add (GTK_CONTAINER (notebook1), notebook2);
-
-  vbox10 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox10);
-  gtk_container_add (GTK_CONTAINER (notebook2), vbox10);
-
-  hbox25 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox25);
-  gtk_box_pack_start (GTK_BOX (vbox10), hbox25, TRUE, TRUE, 0);
-
-  bAddNameMisc = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddNameMisc);
-  gtk_box_pack_start (GTK_BOX (hbox25), bAddNameMisc, FALSE, FALSE, 0);
-
-  cbeNotesMisc = gtk_combo_box_new_text ();
-  gtk_widget_show (cbeNotesMisc);
-  gtk_box_pack_start (GTK_BOX (hbox25), cbeNotesMisc, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesMisc), _("No Entry"));
-
-  bAddFormular2NotesMisc = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (bAddFormular2NotesMisc);
-  gtk_box_pack_start (GTK_BOX (hbox25), bAddFormular2NotesMisc, FALSE, FALSE, 0);
-
-  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow6);
-  gtk_box_pack_start (GTK_BOX (vbox10), scrolledwindow6, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow6), GTK_SHADOW_IN);
-
-  tvNotesMisc = gtk_text_view_new ();
-  gtk_widget_show (tvNotesMisc);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow6), tvNotesMisc);
-  gtk_widget_set_size_request (tvNotesMisc, -1, 265);
-
-  label60 = gtk_label_new (_("Notes misc"));
-  gtk_widget_show (label60);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 0), label60);
-
-  vbox11 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox11);
-  gtk_container_add (GTK_CONTAINER (notebook2), vbox11);
-
-  hbox26 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox26);
-  gtk_box_pack_start (GTK_BOX (vbox11), hbox26, TRUE, TRUE, 0);
-
-  bAddNameContacter = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddNameContacter);
-  gtk_box_pack_start (GTK_BOX (hbox26), bAddNameContacter, FALSE, FALSE, 0);
-
-  cbeNotesContacter = gtk_combo_box_new_text ();
-  gtk_widget_show (cbeNotesContacter);
-  gtk_box_pack_start (GTK_BOX (hbox26), cbeNotesContacter, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesContacter), _("No Entry"));
-
-  bAddFormular2NotesContacter = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (bAddFormular2NotesContacter);
-  gtk_box_pack_start (GTK_BOX (hbox26), bAddFormular2NotesContacter, FALSE, FALSE, 0);
-
-  scrolledwindow7 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow7);
-  gtk_box_pack_start (GTK_BOX (vbox11), scrolledwindow7, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow7), GTK_SHADOW_IN);
-
-  tvNotesContacter = gtk_text_view_new ();
-  gtk_widget_show (tvNotesContacter);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow7), tvNotesContacter);
-  gtk_widget_set_size_request (tvNotesContacter, -1, 265);
-
-  label61 = gtk_label_new (_("Notes contacter"));
-  gtk_widget_show (label61);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 1), label61);
-
-  vbox12 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox12);
-  gtk_container_add (GTK_CONTAINER (notebook2), vbox12);
-
-  hbox27 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox27);
-  gtk_box_pack_start (GTK_BOX (vbox12), hbox27, TRUE, TRUE, 0);
-
-  bAddNameRep = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddNameRep);
-  gtk_box_pack_start (GTK_BOX (hbox27), bAddNameRep, FALSE, FALSE, 0);
-
-  cbeNotesRep = gtk_combo_box_new_text ();
-  gtk_widget_show (cbeNotesRep);
-  gtk_box_pack_start (GTK_BOX (hbox27), cbeNotesRep, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesRep), _("No Entry"));
-
-  bAddformular2NotesRep = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (bAddformular2NotesRep);
-  gtk_box_pack_start (GTK_BOX (hbox27), bAddformular2NotesRep, FALSE, FALSE, 0);
-
-  scrolledwindow8 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow8);
-  gtk_box_pack_start (GTK_BOX (vbox12), scrolledwindow8, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow8), GTK_SHADOW_IN);
-
-  tvNotesRep = gtk_text_view_new ();
-  gtk_widget_show (tvNotesRep);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow8), tvNotesRep);
-  gtk_widget_set_size_request (tvNotesRep, -1, 265);
-
-  label62 = gtk_label_new (_("notes representant"));
-  gtk_widget_show (label62);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 2), label62);
-
-  vbox13 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox13);
-  gtk_container_add (GTK_CONTAINER (notebook2), vbox13);
-
-  hbox28 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox28);
-  gtk_box_pack_start (GTK_BOX (vbox13), hbox28, TRUE, TRUE, 0);
-
-  bAddNameSalesman = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddNameSalesman);
-  gtk_box_pack_start (GTK_BOX (hbox28), bAddNameSalesman, FALSE, FALSE, 0);
-
-  cbeNotesSalesman = gtk_combo_box_new_text ();
-  gtk_widget_show (cbeNotesSalesman);
-  gtk_box_pack_start (GTK_BOX (hbox28), cbeNotesSalesman, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesSalesman), _("No Entry"));
-
-  bAddFormular2NotesSalesman = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (bAddFormular2NotesSalesman);
-  gtk_box_pack_start (GTK_BOX (hbox28), bAddFormular2NotesSalesman, FALSE, FALSE, 0);
-
-  scrolledwindow9 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow9);
-  gtk_box_pack_start (GTK_BOX (vbox13), scrolledwindow9, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow9), GTK_SHADOW_IN);
-
-  tvNotesSalesman = gtk_text_view_new ();
-  gtk_widget_show (tvNotesSalesman);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow9), tvNotesSalesman);
-  gtk_widget_set_size_request (tvNotesSalesman, -1, 265);
-
-  label63 = gtk_label_new (_("notes salesman"));
-  gtk_widget_show (label63);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 3), label63);
-
-  vbox17 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox17);
-  gtk_container_add (GTK_CONTAINER (notebook2), vbox17);
-
-  hbox60 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox60);
-  gtk_box_pack_start (GTK_BOX (vbox17), hbox60, TRUE, TRUE, 0);
-
-  bAddNameOrganisation = gtk_button_new_with_mnemonic (_("add Date/Name"));
-  gtk_widget_show (bAddNameOrganisation);
-  gtk_box_pack_start (GTK_BOX (hbox60), bAddNameOrganisation, FALSE, FALSE, 0);
-
-  cbeNotesOrganisation = gtk_combo_box_new_text ();
-  gtk_widget_show (cbeNotesOrganisation);
-  gtk_box_pack_start (GTK_BOX (hbox60), cbeNotesOrganisation, TRUE, TRUE, 0);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (cbeNotesOrganisation), _("No Entry"));
-
-  button5 = gtk_button_new_with_mnemonic (_("add Formular"));
-  gtk_widget_show (button5);
-  gtk_box_pack_start (GTK_BOX (hbox60), button5, FALSE, FALSE, 0);
-
-  scrolledwindow15 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow15);
-  gtk_box_pack_start (GTK_BOX (vbox17), scrolledwindow15, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow15), GTK_SHADOW_IN);
-
-  tvNotesOrganisation = gtk_text_view_new ();
-  gtk_widget_show (tvNotesOrganisation);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow15), tvNotesOrganisation);
-  gtk_widget_set_size_request (tvNotesOrganisation, -1, 265);
-
-  label99 = gtk_label_new (_("notes organisation"));
-  gtk_widget_show (label99);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook2), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook2), 4), label99);
-
-  label64 = gtk_label_new (_("Notes"));
-  gtk_widget_show (label64);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 5), label64);
-
-  table12 = gtk_table_new (3, 3, FALSE);
-  gtk_widget_show (table12);
-  gtk_container_add (GTK_CONTAINER (notebook1), table12);
-
-  label105 = gtk_label_new (_("label105"));
-  gtk_widget_show (label105);
-  gtk_table_attach (GTK_TABLE (table12), label105, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label105), 0, 0.5);
-
-  label103 = gtk_label_new (_("Offer"));
-  gtk_widget_show (label103);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 6), label103);
-
-  vbox16 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox16);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox16);
-
-  hbox43 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_show (hbox43);
-  gtk_box_pack_start (GTK_BOX (vbox16), hbox43, TRUE, TRUE, 0);
-
-  label88 = gtk_label_new (_("Order for this address"));
-  gtk_widget_show (label88);
-  gtk_box_pack_start (GTK_BOX (hbox43), label88, FALSE, FALSE, 0);
-
-  scrolledwindow12 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow12);
-  gtk_box_pack_start (GTK_BOX (vbox16), scrolledwindow12, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow12), GTK_SHADOW_IN);
-
-  tvAddressOrder = gtk_tree_view_new ();
-  gtk_widget_show (tvAddressOrder);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow12), tvAddressOrder);
-
-  label87 = gtk_label_new (_("Order"));
-  gtk_widget_show (label87);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 7), label87);
-
-  vbox18 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (vbox18);
-  gtk_container_add (GTK_CONTAINER (notebook1), vbox18);
-
-  hbox62 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (hbox62);
-  gtk_box_pack_start (GTK_BOX (vbox18), hbox62, TRUE, TRUE, 0);
-
-  label89 = gtk_label_new (_("Invoices fpr this address"));
-  gtk_widget_show (label89);
-  gtk_box_pack_start (GTK_BOX (hbox62), label89, FALSE, FALSE, 0);
-
-  scrolledwindow13 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow13);
-  gtk_box_pack_start (GTK_BOX (vbox18), scrolledwindow13, TRUE, TRUE, 0);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow13), GTK_SHADOW_IN);
-
-  tvAddressInvoices = gtk_tree_view_new ();
-  gtk_widget_show (tvAddressInvoices);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow13), tvAddressInvoices);
-
-  label104 = gtk_label_new (_("Invoices"));
-  gtk_widget_show (label104);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 8), label104);
-
-  table10 = gtk_table_new (3, 4, FALSE);
-  gtk_widget_show (table10);
-  gtk_container_add (GTK_CONTAINER (notebook1), table10);
-
-  label101 = gtk_label_new (_("Projects for this Address"));
-  gtk_widget_show (label101);
-  gtk_table_attach (GTK_TABLE (table10), label101, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label101), 0, 0.5);
-
-  scrolledwindow16 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow16);
-  gtk_table_attach (GTK_TABLE (table10), scrolledwindow16, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-  gtk_widget_set_size_request (scrolledwindow16, 300, -1);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow16), GTK_SHADOW_IN);
-
-  tvAddressProject = gtk_tree_view_new ();
-  gtk_widget_show (tvAddressProject);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow16), tvAddressProject);
-
-  table11 = gtk_table_new (4, 4, FALSE);
-  gtk_widget_show (table11);
-  gtk_table_attach (GTK_TABLE (table10), table11, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-
-  bGotoProject = gtk_button_new ();
-  gtk_widget_show (bGotoProject);
-  gtk_table_attach (GTK_TABLE (table11), bGotoProject, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-
-  alignment12 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment12);
-  gtk_container_add (GTK_CONTAINER (bGotoProject), alignment12);
-
-  hbox61 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox61);
-  gtk_container_add (GTK_CONTAINER (alignment12), hbox61);
-
-  image1363 = gtk_image_new_from_stock ("gtk-jump-to", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image1363);
-  gtk_box_pack_start (GTK_BOX (hbox61), image1363, FALSE, FALSE, 0);
-
-  label102 = gtk_label_new_with_mnemonic (_("goto Project"));
-  gtk_widget_show (label102);
-  gtk_box_pack_start (GTK_BOX (hbox61), label102, FALSE, FALSE, 0);
-
-  label100 = gtk_label_new (_("Projects"));
-  gtk_widget_show (label100);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 9), label100);
-
-  g_signal_connect ((gpointer) AddressMainwindow, "key_press_event",
-                    G_CALLBACK (on_Mainwindow_key_press_event),
+  gtk_box_pack_start (GTK_BOX (hbox2), vbox5, TRUE, TRUE, 0);
+
+  label24 = gtk_label_new (_("Address"));
+  gtk_widget_show (label24);
+  gtk_box_pack_start (GTK_BOX (vbox5), label24, FALSE, FALSE, 0);
+
+  bGoToAddress = gtk_button_new ();
+  gtk_widget_show (bGoToAddress);
+  gtk_box_pack_start (GTK_BOX (vbox5), bGoToAddress, FALSE, FALSE, 0);
+
+  alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment1);
+  gtk_container_add (GTK_CONTAINER (bGoToAddress), alignment1);
+
+  hbox6 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox6);
+  gtk_container_add (GTK_CONTAINER (alignment1), hbox6);
+
+  image1 = create_pixmap (ContactMainwindow, "gnome-stock-book-green");
+  gtk_widget_show (image1);
+  gtk_box_pack_start (GTK_BOX (hbox6), image1, FALSE, FALSE, 0);
+
+  label34 = gtk_label_new_with_mnemonic (_("go to address"));
+  gtk_widget_show (label34);
+  gtk_box_pack_start (GTK_BOX (hbox6), label34, FALSE, FALSE, 0);
+
+  scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow3);
+  gtk_box_pack_start (GTK_BOX (hbox2), scrolledwindow3, TRUE, TRUE, 0);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow3), GTK_SHADOW_IN);
+
+  tvAddress = gtk_text_view_new ();
+  gtk_widget_show (tvAddress);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow3), tvAddress);
+  gtk_widget_set_size_request (tvAddress, 254, 68);
+
+  vbox8 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox8);
+  gtk_box_pack_start (GTK_BOX (hbox2), vbox8, TRUE, TRUE, 0);
+
+  hbox4 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox4);
+  gtk_box_pack_start (GTK_BOX (vbox8), hbox4, TRUE, TRUE, 0);
+
+  bCloseWindow = gtk_button_new ();
+  gtk_widget_show (bCloseWindow);
+  gtk_box_pack_start (GTK_BOX (hbox4), bCloseWindow, FALSE, FALSE, 0);
+
+  alignment2 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment2);
+  gtk_container_add (GTK_CONTAINER (bCloseWindow), alignment2);
+
+  hbox7 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox7);
+  gtk_container_add (GTK_CONTAINER (alignment2), hbox7);
+
+  image2 = gtk_image_new_from_stock ("gtk-cancel", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image2);
+  gtk_box_pack_start (GTK_BOX (hbox7), image2, FALSE, FALSE, 0);
+
+  label35 = gtk_label_new_with_mnemonic (_("Ready"));
+  gtk_widget_show (label35);
+  gtk_box_pack_start (GTK_BOX (hbox7), label35, FALSE, FALSE, 0);
+
+  bSleeping = gtk_button_new ();
+  gtk_widget_show (bSleeping);
+  gtk_box_pack_start (GTK_BOX (hbox4), bSleeping, FALSE, FALSE, 0);
+
+  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment4);
+  gtk_container_add (GTK_CONTAINER (bSleeping), alignment4);
+
+  hbox9 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox9);
+  gtk_container_add (GTK_CONTAINER (alignment4), hbox9);
+
+  image5 = create_pixmap (ContactMainwindow, "gnome-stock-timer");
+  gtk_widget_show (image5);
+  gtk_box_pack_start (GTK_BOX (hbox9), image5, FALSE, FALSE, 0);
+
+  label37 = gtk_label_new_with_mnemonic (_("Sleeps"));
+  gtk_widget_show (label37);
+  gtk_box_pack_start (GTK_BOX (hbox9), label37, FALSE, FALSE, 0);
+
+  hbox5 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (hbox5);
+  gtk_box_pack_start (GTK_BOX (hbox4), hbox5, FALSE, FALSE, 0);
+
+  label29 = gtk_label_new (_("sleeps for Minutes"));
+  gtk_widget_show (label29);
+  gtk_box_pack_start (GTK_BOX (hbox5), label29, FALSE, FALSE, 0);
+
+  eSleepingTime = gtk_entry_new ();
+  gtk_widget_show (eSleepingTime);
+  gtk_box_pack_start (GTK_BOX (hbox5), eSleepingTime, TRUE, TRUE, 0);
+
+  bQuit = gtk_button_new ();
+  gtk_widget_show (bQuit);
+  gtk_box_pack_start (GTK_BOX (hbox4), bQuit, FALSE, FALSE, 0);
+
+  alignment3 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment3);
+  gtk_container_add (GTK_CONTAINER (bQuit), alignment3);
+
+  hbox8 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox8);
+  gtk_container_add (GTK_CONTAINER (alignment3), hbox8);
+
+  image3 = gtk_image_new_from_stock ("gtk-quit", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image3);
+  gtk_box_pack_start (GTK_BOX (hbox8), image3, FALSE, FALSE, 0);
+
+  label36 = gtk_label_new_with_mnemonic (_("Exit"));
+  gtk_widget_show (label36);
+  gtk_box_pack_start (GTK_BOX (hbox8), label36, FALSE, FALSE, 0);
+
+  label16 = gtk_label_new (_("Contact"));
+  gtk_widget_show (label16);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 0), label16);
+
+  g_signal_connect ((gpointer) choosePrinter1, "activate",
+                    G_CALLBACK (on_choosePrinter1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) quit1, "activate",
+                    G_CALLBACK (on_quit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) new1, "activate",
+                    G_CALLBACK (on_new1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) edit1, "activate",
+                    G_CALLBACK (on_edit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) save1, "activate",
+                    G_CALLBACK (on_save1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) set_ready1, "activate",
+                    G_CALLBACK (on_set_ready1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) print1, "activate",
+                    G_CALLBACK (on_print1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) delete1, "activate",
+                    G_CALLBACK (on_delete1_activate),
                     NULL);
   g_signal_connect ((gpointer) tbNew, "clicked",
-                    G_CALLBACK (on_tbNew_clicked),
+                    G_CALLBACK (on_new1_activate),
                     NULL);
   g_signal_connect ((gpointer) tbEdit, "clicked",
-                    G_CALLBACK (on_tbEdit_clicked),
+                    G_CALLBACK (on_edit1_activate),
                     NULL);
   g_signal_connect ((gpointer) tbSave, "clicked",
-                    G_CALLBACK (on_tbSave_clicked),
+                    G_CALLBACK (on_save1_activate),
                     NULL);
-  g_signal_connect ((gpointer) tbExtendetInfo, "clicked",
-                    G_CALLBACK (on_tbExtendetInfo_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) tbLetter, "clicked",
-                    G_CALLBACK (on_tbLetter_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) tbContact, "clicked",
-                    G_CALLBACK (on_tbContact_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) tbAllContact, "clicked",
-                    G_CALLBACK (on_tbAllContact_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) tbNewOrder, "clicked",
-                    G_CALLBACK (on_tbNewOrder_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) tbNewProject, "clicked",
-                    G_CALLBACK (on_tbNewProject_clicked),
+  g_signal_connect ((gpointer) tbSetReady, "clicked",
+                    G_CALLBACK (on_tbSetReady_clicked),
                     NULL);
   g_signal_connect ((gpointer) eFindName, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
+                    G_CALLBACK (on_eFindContact_key_press_event),
                     NULL);
-  g_signal_connect ((gpointer) eFindCity, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eFindFirstname, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eFindPhone, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
+  g_signal_connect ((gpointer) eFindDesignation, "key_press_event",
+                    G_CALLBACK (on_eFindContact_key_press_event),
                     NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
-  g_signal_connect ((gpointer) eFindStreet, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
+  g_signal_connect ((gpointer) eFindZip, "key_press_event",
+                    G_CALLBACK (on_eFindContact_key_press_event),
                     NULL);
-  g_signal_connect ((gpointer) eFindZipcode, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
+  g_signal_connect ((gpointer) eFindCity, "key_press_event",
+                    G_CALLBACK (on_eFindContact_key_press_event),
                     NULL);
-  g_signal_connect ((gpointer) eFindID, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eFindName2, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eFindFax, "key_press_event",
-                    G_CALLBACK (on_eSearch_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) tree1, "row_activated",
-                    G_CALLBACK (on_tree1_row_activated),
-                    NULL);
-  g_signal_connect ((gpointer) notebook1, "switch_page",
-                    G_CALLBACK (on_notebook1_switch_page),
-                    NULL);
-  g_signal_connect ((gpointer) table4, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eStreet, "key_press_event",
-                    G_CALLBACK (on_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eFirstName, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eLastName2, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eLastName, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eAddress, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eZip, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eCity, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eCountry, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eCountryNumber, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eState, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) ePostbox, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eZipForPostbox, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) bShowDMS, "clicked",
-                    G_CALLBACK (on_bShowDMS_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bLetter, "clicked",
-                    G_CALLBACK (on_bLetter_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bContact, "clicked",
-                    G_CALLBACK (on_bContact_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eFax, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) lFax, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) eAddressCallerID, "changed",
-                    G_CALLBACK (on_eAddressCallerID_changed),
-                    NULL);
-  g_signal_connect ((gpointer) bChooseCaller, "clicked",
-                    G_CALLBACK (on_bChooseCaller_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eAddressRepID, "changed",
-                    G_CALLBACK (on_eAddressRepID_changed),
-                    NULL);
-  g_signal_connect ((gpointer) bChooseRep, "clicked",
-                    G_CALLBACK (on_bChooseRep_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eAddressSalesmanID, "changed",
-                    G_CALLBACK (on_eAddressSalesmanID_changed),
-                    NULL);
-  g_signal_connect ((gpointer) bChooseSalesman, "clicked",
-                    G_CALLBACK (on_bChooseSalesman_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bViewHomepage, "clicked",
-                    G_CALLBACK (on_bViewHomepage_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eEmail, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) bSendMail, "clicked",
-                    G_CALLBACK (on_bSendMail_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bSendExternEmail, "clicked",
-                    G_CALLBACK (on_bSendExternEmail_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) ePhone, "key_press_event",
-                    G_CALLBACK (on_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) bPhone, "clicked",
-                    G_CALLBACK (on_bPhone_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bChooseBank, "clicked",
-                    G_CALLBACK (on_bChooseBank_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) eBankID, "changed",
-                    G_CALLBACK (on_eBankID_changed),
-                    NULL);
-  g_signal_connect ((gpointer) eTOPID, "changed",
-                    G_CALLBACK (on_eTOPID_changed),
-                    NULL);
-  g_signal_connect ((gpointer) bSearchTOP, "clicked",
-                    G_CALLBACK (on_bSearchTOP_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerPhoneCompany, "clicked",
-                    G_CALLBACK (on_bPartnerPhoneCompany_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerLetter, "clicked",
-                    G_CALLBACK (on_bPartnerLetter_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerContact, "clicked",
-                    G_CALLBACK (on_bPartnerContact_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bShowPartnerDMS, "clicked",
-                    G_CALLBACK (on_bShowPartnerDMS_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bGeneratePartner, "clicked",
-                    G_CALLBACK (on_bGeneratePartner_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerSip, "clicked",
-                    G_CALLBACK (on_bPartnerSip_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerSkype, "clicked",
-                    G_CALLBACK (on_bPartnerSkype_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerViewHomepage, "clicked",
-                    G_CALLBACK (on_bPartnerViewHomepage_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bSendPartnerEmail, "clicked",
-                    G_CALLBACK (on_bSendPartnerEmail_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) bPartnerPhone1, "clicked",
-                    G_CALLBACK (on_bPartnerPhone1_clicked),
-                    NULL);
-  g_signal_connect ((gpointer) comboboxentry_entry1, "key_press_event",
-                    G_CALLBACK (on_comboboxentry_entry1_key_press_event),
-                    NULL);
-  g_signal_connect ((gpointer) comboboxentry_entry2, "key_press_event",
-                    G_CALLBACK (on_comboboxentry_entry2_key_press_event),
+  g_signal_connect ((gpointer) eFindPriority, "key_press_event",
+                    G_CALLBACK (on_eFindContact_key_press_event),
                     NULL);
   g_signal_connect ((gpointer) calendar1, "day_selected_double_click",
                     G_CALLBACK (on_calendar1_day_selected_double_click),
                     NULL);
-  g_signal_connect ((gpointer) calendar1, "state_changed",
-                    G_CALLBACK (on_calendar1_state_changed),
+  g_signal_connect ((gpointer) eDate, "changed",
+                    G_CALLBACK (on_eDate_changed),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulFor, "changed",
-                    G_CALLBACK (on_eSchedulFor_changed),
+  g_signal_connect ((gpointer) rbDay0, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bSchedulFor, "clicked",
-                    G_CALLBACK (on_bSchedulFor_clicked),
+  g_signal_connect ((gpointer) rbDay1, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) calSchedulStaff, "day_selected",
-                    G_CALLBACK (on_calSchedulStaff_day_selected),
+  g_signal_connect ((gpointer) rbDay2, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) calSchedulStaff, "day_selected_double_click",
-                    G_CALLBACK (on_calSchedulStaff_day_selected_double_click),
+  g_signal_connect ((gpointer) rbDay3, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bGotoSchedulAddress, "clicked",
-                    G_CALLBACK (on_bGotoSchedulAddress_clicked),
+  g_signal_connect ((gpointer) rbDay4, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bSchedulLetter, "clicked",
-                    G_CALLBACK (on_bSchedulLetter_clicked),
+  g_signal_connect ((gpointer) rbDay5, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bSchedulDMS, "clicked",
-                    G_CALLBACK (on_bSchedulDMS_clicked),
+  g_signal_connect ((gpointer) rbDay6, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) treeScheduls, "row_activated",
-                    G_CALLBACK (on_treeScheduls_row_activated),
+  g_signal_connect ((gpointer) rbDay7, "clicked",
+                    G_CALLBACK (on_rbDay_clicked),
                     NULL);
-  g_signal_connect ((gpointer) eSchedulDateBegin, "changed",
-                    G_CALLBACK (on_eSchedulDate_changed),
+  g_signal_connect ((gpointer) rbHour0, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddNameMisc, "clicked",
-                    G_CALLBACK (on_bAddNameMisc_clicked),
+  g_signal_connect ((gpointer) rbHour1, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddFormular2NotesMisc, "clicked",
-                    G_CALLBACK (on_bAddFormular2NotesMisc_clicked),
+  g_signal_connect ((gpointer) rbHour2, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddNameContacter, "clicked",
-                    G_CALLBACK (on_bAddNameContacter_clicked),
+  g_signal_connect ((gpointer) rbHour3, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddFormular2NotesContacter, "clicked",
-                    G_CALLBACK (on_bAddFormular2NotesContacter_clicked),
+  g_signal_connect ((gpointer) rbHour4, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddNameRep, "clicked",
-                    G_CALLBACK (on_bAddNameRep_clicked),
+  g_signal_connect ((gpointer) rbHours5, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddformular2NotesRep, "clicked",
-                    G_CALLBACK (on_bAddformular2NotesRep_clicked),
+  g_signal_connect ((gpointer) rbHour6, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddNameSalesman, "clicked",
-                    G_CALLBACK (on_bAddNameSalesman_clicked),
+  g_signal_connect ((gpointer) rbHour7, "clicked",
+                    G_CALLBACK (on_rbHour_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddFormular2NotesSalesman, "clicked",
-                    G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
+  g_signal_connect ((gpointer) rbMinute00, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bAddNameOrganisation, "clicked",
-                    G_CALLBACK (on_bAddNameOrganisation_clicked),
+  g_signal_connect ((gpointer) rbMinute02, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) button5, "clicked",
-                    G_CALLBACK (on_bAddFormular2NotesSalesman_clicked),
+  g_signal_connect ((gpointer) rbMinute05, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) tvAddressOrder, "row_activated",
-                    G_CALLBACK (on_tvAddressOrder_row_activated),
+  g_signal_connect ((gpointer) rbMinute10, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) tvAddressInvoices, "row_activated",
-                    G_CALLBACK (on_tvAddressInvoices_row_activated),
+  g_signal_connect ((gpointer) rbMinute15, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) tvAddressProject, "row_activated",
-                    G_CALLBACK (on_tvAddressProject_row_activated),
+  g_signal_connect ((gpointer) rbMinute20, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
                     NULL);
-  g_signal_connect ((gpointer) bGotoProject, "clicked",
-                    G_CALLBACK (on_bGotoProject_clicked),
+  g_signal_connect ((gpointer) rbMinute30, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute40, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute45, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) rbMinute50, "clicked",
+                    G_CALLBACK (on_rbMinute_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bGoToAddress, "clicked",
+                    G_CALLBACK (on_bGoToAddress_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bCloseWindow, "clicked",
+                    G_CALLBACK (on_bCloseWindow_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bSleeping, "clicked",
+                    G_CALLBACK (on_bSleeping_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) bQuit, "clicked",
+                    G_CALLBACK (on_bQuit_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
-  GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, AddressMainwindow, "AddressMainwindow");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow11, "scrolledwindow11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, viewport1, "viewport1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox1, "vbox1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[0].widget, "mi_datei1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[0].widget, "mi_choosePrinter1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[1].widget, "separator2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_datei1_menu_uiinfo[2].widget, "mi_quit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[1].widget, "mi_edit");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[0].widget, "undo1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[1].widget, "find");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[2].widget, "separator6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[3].widget, "newsletter2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, newsletter2_menu_uiinfo[0].widget, "newsletter1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, newsletter2_menu_uiinfo[1].widget, "newsletter_print1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[4].widget, "separator7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_edit_menu_uiinfo[5].widget, "chooseAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[2].widget, "mi_address1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[0].widget, "mi_new1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[1].widget, "mi_edit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[2].widget, "mi_save1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[3].widget, "trennlinie2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[4].widget, "mi_print1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[5].widget, "trennlinie5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_address1_menu_uiinfo[6].widget, "mi_clear1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[3].widget, "mi_bank1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[0].widget, "new2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[1].widget, "bank_edit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_bank1_menu_uiinfo[2].widget, "save1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[4].widget, "mi_misc1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[0].widget, "mi_MiscEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_misc1_menu_uiinfo[1].widget, "mi_MiscSave1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[5].widget, "mi_partner1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[0].widget, "PartnerNew1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[1].widget, "PartnerEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[2].widget, "PartnerSave1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[3].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[4].widget, "partner_print1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[5].widget, "separator3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_partner1_menu_uiinfo[6].widget, "PartnerDelete1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[6].widget, "mi_schedul1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[0].widget, "SchedulNew");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[1].widget, "SchedulEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[2].widget, "schedulSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[3].widget, "separator4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_schedul1_menu_uiinfo[4].widget, "set_ready1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[7].widget, "mi_notes1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[0].widget, "NotesEdit1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_notes1_menu_uiinfo[1].widget, "NotesSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[8].widget, "mi_order1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[9].widget, "mi_projects1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[10].widget, "mi_lists1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[0].widget, "listAddresses1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, listAddresses1_menu_uiinfo[0].widget, "PhoneList");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, mi_lists1_menu_uiinfo[1].widget, "list_partner1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, list_partner1_menu_uiinfo[0].widget, "phone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, menubar1_uiinfo[11].widget, "tools1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[0].widget, "contact1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[1].widget, "new_order");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[2].widget, "show_order1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tools1_menu_uiinfo[3].widget, "new_project");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolbar1, "toolbar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNew, "tbNew");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbEdit, "tbEdit");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbSave, "tbSave");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, separatortoolitem1, "separatortoolitem1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbExtendetInfo, "tbExtendetInfo");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbLetter, "tbLetter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbContact, "tbContact");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbAllContact, "tbAllContact");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, toolitem1, "toolitem1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator6, "vseparator6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewOrder, "tbNewOrder");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tbNewProject, "tbNewProject");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table13, "table13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindName, "lFindName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindName, "eFindName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFindCity, "lFindCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindCity, "eFindCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label52, "label52");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindFirstname, "eFindFirstname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label53, "label53");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindPhone, "eFindPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearch, "bSearch");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label51, "label51");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindStreet, "eFindStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label50, "label50");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label47, "label47");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindZipcode, "eFindZipcode");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindID, "eFindID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label106, "label106");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindName2, "eFindName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label107, "label107");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFindFax, "eFindFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow5, "scrolledwindow5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tree1, "tree1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook1, "notebook1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox4, "hbox4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table4, "table4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lState, "lState");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip_PB, "lZip_PB");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lCountry, "lCountry");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lZip, "lZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lStreet, "lStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFirstName, "lFirstName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName2, "lLastName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lLastName, "lLastName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eStreet, "eStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFirstName, "eFirstName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName2, "eLastName2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLastName, "eLastName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddress, "eAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox8, "hbox8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZip, "eZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label38, "label38");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCity, "eCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox10, "hbox10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountry, "eCountry");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, button1, "button1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eCountryNumber, "eCountryNumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox11, "hbox11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eState, "eState");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, button2, "button2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, entry4, "entry4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox9, "hbox9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePostbox, "ePostbox");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eZipForPostbox, "eZipForPostbox");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label39, "label39");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowDMS, "bShowDMS");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment3, "alignment3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox39, "hbox39");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1028, "image1028");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label81, "label81");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox18, "hbox18");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bLetter, "bLetter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment5, "alignment5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox41, "hbox41");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1030, "image1030");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label83, "label83");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bContact, "bContact");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment4, "alignment4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox40, "hbox40");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1029, "image1029");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label82, "label82");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label56, "label56");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLetterAddress, "eLetterAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table5, "table5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFax, "eFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lFax, "lFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lEmail, "lEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPhone, "lPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox4, "vbox4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox5, "hbox5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressCallerID, "eAddressCallerID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseCaller, "bChooseCaller");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressCaller, "eAddressCaller");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox14, "hbox14");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressRepID, "eAddressRepID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseRep, "bChooseRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressRep, "eAddressRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox15, "hbox15");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressSalesmanID, "eAddressSalesmanID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseSalesman, "bChooseSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressSalesman, "eAddressSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label58, "label58");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eHandy, "eHandy");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label65, "label65");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eNewsletter, "eNewsletter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label80, "label80");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox35, "hbox35");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eHomepage, "eHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bViewHomepage, "bViewHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox36, "hbox36");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eEmail, "eEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendMail, "bSendMail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendExternEmail, "bSendExternEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label84, "label84");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eInfo, "eInfo");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox58, "hbox58");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePhone, "ePhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPhone, "bPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment11, "alignment11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox59, "hbox59");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1280, "image1280");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label98, "label98");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lAddress, "lAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table7, "table7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow2, "scrolledwindow2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvBank, "tvBank");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox7, "vbox7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bChooseBank, "bChooseBank");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBankID, "eBankID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAccountNumber, "eAccountNumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label27, "label27");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label28, "label28");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eDepositor, "eDepositor");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label48, "label48");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eIban, "eIban");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lBank, "lBank");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table9, "table9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbUpdateFromWeb, "chkbUpdateFromWeb");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label43, "label43");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label42, "label42");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbIsWebshop, "chkbIsWebshop");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAddressNumber, "eAddressNumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label41, "label41");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, combo2, "combo2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbPriceGroup, "cbPriceGroup");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label40, "label40");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbCalcTax, "chkbCalcTax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eTaxnumber, "eTaxnumber");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label37, "label37");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbFashion, "cbFashion");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFashion, "eFashion");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label36, "label36");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eLine, "eLine");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label35, "label35");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox44, "hbox44");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label90, "label90");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox45, "hbox45");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox46, "hbox46");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eTOPID, "eTOPID");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSearchTOP, "bSearchTOP");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, button3, "button3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow14, "scrolledwindow14");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvTOP, "tvTOP");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerStreet, "lPartnerStreet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox2, "hbox2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerZip, "lPartnerZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerZip, "ePartnerZip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerCounty, "lpartnerCounty");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone2, "lPartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lpartnerPhone1, "lpartnerPhone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFirstname, "ePartnerFirstname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerLastname, "ePartnerLastname");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerTitular, "ePartnerTitular");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerAddress, "ePartnerAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label18, "label18");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label17, "label17");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label16, "label16");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label15, "label15");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox17, "hbox17");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox52, "hbox52");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone, "ePartnerPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerPhoneCompany, "bPartnerPhoneCompany");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment7, "alignment7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox54, "hbox54");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1276, "image1276");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label94, "label94");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox23, "hbox23");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerLetter, "bPartnerLetter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerContact, "bPartnerContact");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bShowPartnerDMS, "bShowPartnerDMS");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label59, "label59");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHandy, "ePartnerHandy");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox3, "hbox3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerCity, "lPartnerCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCity, "ePartnerCity");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox24, "hbox24");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerCountry, "ePartnerCountry");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label22, "label22");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerState, "ePartnerState");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGeneratePartner, "bGeneratePartner");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox37, "hbox37");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerSIP, "ePartnerSIP");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerSip, "bPartnerSip");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment9, "alignment9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox56, "hbox56");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1278, "image1278");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label96, "label96");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox38, "hbox38");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerSkype, "ePartnerSkype");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerSkype, "bPartnerSkype");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment10, "alignment10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox57, "hbox57");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1279, "image1279");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label97, "label97");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label57, "label57");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFax, "lPartnerFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerPhone, "lPartnerPhone");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerLetterAddress, "ePartnerLetterAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFax, "ePartnerFax");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label85, "label85");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label86, "label86");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eDepartment, "eDepartment");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eJob, "eJob");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label23, "label23");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eBirthday, "eBirthday");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label66, "label66");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerNewsletter, "ePartnerNewsletter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerFaxPrivate, "lPartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerFaxPrivate, "ePartnerFaxPrivate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerInternet, "lPartnerInternet");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartnerEmail, "lPartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label91, "label91");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label92, "label92");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox48, "hbox48");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerHomepage, "ePartnerHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerViewHomepage, "bPartnerViewHomepage");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox49, "hbox49");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerEmail, "ePartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSendPartnerEmail, "bSendPartnerEmail");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox50, "hbox50");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone1, "ePartnerPhone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bPartnerPhone1, "bPartnerPhone1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment6, "alignment6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox53, "hbox53");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1275, "image1275");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label93, "label93");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox51, "hbox51");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerPhone2, "ePartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bpartnerPhone2, "bpartnerPhone2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment8, "alignment8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox55, "hbox55");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1277, "image1277");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label95, "label95");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lPartner, "lPartner");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table8, "table8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox3, "vbox3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label45, "label45");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeBegin, "cbeSchedulTimeBegin");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, comboboxentry_entry1, "comboboxentry_entry1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label46, "label46");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeSchedulTimeEnd, "cbeSchedulTimeEnd");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, comboboxentry_entry2, "comboboxentry_entry2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox30, "hbox30");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbAlarm, "cbAlarm");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label54, "label54");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eAlarm, "eAlarm");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox31, "hbox31");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label34, "label34");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulPriority, "eSchedulPriority");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox32, "hbox32");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label33, "label33");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cProcess, "cProcess");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulProcess, "eSchedulProcess");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox13, "hbox13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulForName, "eSchedulForName");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, calendar1, "calendar1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox2, "vbox2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox22, "hbox22");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulFor, "eSchedulFor");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulFor, "bSchedulFor");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment1, "alignment1");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox29, "hbox29");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image732, "image732");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label78, "label78");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label32, "label32");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eShortRemark, "eShortRemark");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow3, "scrolledwindow3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulNotes, "eSchedulNotes");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label31, "label31");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox9, "vbox9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, calSchedulStaff, "calSchedulStaff");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGotoSchedulAddress, "bGotoSchedulAddress");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment2, "alignment2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox34, "hbox34");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image744, "image744");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label79, "label79");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox14, "vbox14");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox6, "hbox6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox15, "vbox15");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox20, "hbox20");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulLetter, "bSchedulLetter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bSchedulDMS, "bSchedulDMS");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox5, "vbox5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow11, "scrolledwindow11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvSchedulDetails, "tvSchedulDetails");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow10, "scrolledwindow10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, treeScheduls, "treeScheduls");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox33, "hbox33");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, rbBeginDate, "rbBeginDate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDateBegin, "eSchedulDateBegin");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator2, "vseparator2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator3, "vseparator3");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator4, "vseparator4");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vseparator5, "vseparator5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox47, "hbox47");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, rbEndDate, "rbEndDate");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eSchedulDateEnd, "eSchedulDateEnd");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, lSchedul, "lSchedul");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, notebook2, "notebook2");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox10, "vbox10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox25, "hbox25");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameMisc, "bAddNameMisc");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesMisc, "cbeNotesMisc");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesMisc, "bAddFormular2NotesMisc");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow6, "scrolledwindow6");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesMisc, "tvNotesMisc");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label60, "label60");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox11, "vbox11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox26, "hbox26");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameContacter, "bAddNameContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesContacter, "cbeNotesContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesContacter, "bAddFormular2NotesContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow7, "scrolledwindow7");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesContacter, "tvNotesContacter");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label61, "label61");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox12, "vbox12");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox27, "hbox27");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameRep, "bAddNameRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesRep, "cbeNotesRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddformular2NotesRep, "bAddformular2NotesRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow8, "scrolledwindow8");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesRep, "tvNotesRep");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label62, "label62");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox13, "vbox13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox28, "hbox28");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameSalesman, "bAddNameSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesSalesman, "cbeNotesSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddFormular2NotesSalesman, "bAddFormular2NotesSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow9, "scrolledwindow9");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesSalesman, "tvNotesSalesman");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label63, "label63");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox17, "vbox17");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox60, "hbox60");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bAddNameOrganisation, "bAddNameOrganisation");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbeNotesOrganisation, "cbeNotesOrganisation");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, button5, "button5");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow15, "scrolledwindow15");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvNotesOrganisation, "tvNotesOrganisation");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label99, "label99");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label64, "label64");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table12, "table12");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label105, "label105");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label103, "label103");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox16, "vbox16");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox43, "hbox43");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label88, "label88");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow12, "scrolledwindow12");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressOrder, "tvAddressOrder");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label87, "label87");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox18, "vbox18");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox62, "hbox62");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label89, "label89");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow13, "scrolledwindow13");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressInvoices, "tvAddressInvoices");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label104, "label104");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table10, "table10");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label101, "label101");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow16, "scrolledwindow16");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, tvAddressProject, "tvAddressProject");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, table11, "table11");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, bGotoProject, "bGotoProject");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, alignment12, "alignment12");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox61, "hbox61");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, image1363, "image1363");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label102, "label102");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, label100, "label100");
-  GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
+  GLADE_HOOKUP_OBJECT_NO_REF (ContactMainwindow, ContactMainwindow, "ContactMainwindow");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox1, "vbox1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, menubar1, "menubar1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, file1, "file1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, file1_menu, "file1_menu");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, choosePrinter1, "choosePrinter1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, separator2, "separator2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, quit1, "quit1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, contact1, "contact1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, contact1_menu, "contact1_menu");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, new1, "new1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, edit1, "edit1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, separator4, "separator4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, save1, "save1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, separator3, "separator3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, set_ready1, "set_ready1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, image6, "image6");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, print1, "print1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, separator1, "separator1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, delete1, "delete1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, toolbar1, "toolbar1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tbNew, "tbNew");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tbEdit, "tbEdit");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tbSave, "tbSave");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, toolitem1, "toolitem1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vseparator1, "vseparator1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tbSetReady, "tbSetReady");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox9, "vbox9");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox1, "hbox1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, lFindNumber, "lFindNumber");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eFindName, "eFindName");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, lFindDesignation, "lFindDesignation");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eFindDesignation, "eFindDesignation");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, bSearch, "bSearch");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox10, "hbox10");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label38, "label38");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eFindZip, "eFindZip");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label39, "label39");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eFindCity, "eFindCity");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label40, "label40");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eFindPriority, "eFindPriority");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, scrolledwindow1, "scrolledwindow1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, viewport1, "viewport1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tree1, "tree1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, notebook1, "notebook1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox2, "vbox2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, table1, "table1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, calendar1, "calendar1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, table2, "table2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, cbTime, "cbTime");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eDate, "eDate");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label18, "label18");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label19, "label19");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label25, "label25");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, cbePriority, "cbePriority");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label26, "label26");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, cbeStatus, "cbeStatus");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label30, "label30");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label31, "label31");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label32, "label32");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, ePhoneAddress1, "ePhoneAddress1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, ePhoneAddress2, "ePhoneAddress2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, ePhonePartner, "ePhonePartner");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label21, "label21");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label22, "label22");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label23, "label23");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox4, "vbox4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay0, "rbDay0");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay1, "rbDay1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay2, "rbDay2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay3, "rbDay3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay4, "rbDay4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay5, "rbDay5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay6, "rbDay6");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbDay7, "rbDay7");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox6, "vbox6");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour0, "rbHour0");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour1, "rbHour1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour2, "rbHour2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour3, "rbHour3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour4, "rbHour4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHours5, "rbHours5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour6, "rbHour6");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbHour7, "rbHour7");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox7, "vbox7");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute00, "rbMinute00");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute02, "rbMinute02");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute05, "rbMinute05");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute10, "rbMinute10");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute15, "rbMinute15");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute20, "rbMinute20");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute30, "rbMinute30");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute40, "rbMinute40");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute45, "rbMinute45");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, rbMinute50, "rbMinute50");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox3, "hbox3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label20, "label20");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label27, "label27");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eAlarmDay, "eAlarmDay");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eAlarmHour, "eAlarmHour");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eAlarmMinutes, "eAlarmMinutes");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label28, "label28");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label33, "label33");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, scrolledwindow2, "scrolledwindow2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tvNotes, "tvNotes");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox2, "hbox2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox5, "vbox5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label24, "label24");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, bGoToAddress, "bGoToAddress");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, alignment1, "alignment1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox6, "hbox6");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, image1, "image1");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label34, "label34");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, scrolledwindow3, "scrolledwindow3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, tvAddress, "tvAddress");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, vbox8, "vbox8");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox4, "hbox4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, bCloseWindow, "bCloseWindow");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, alignment2, "alignment2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox7, "hbox7");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, image2, "image2");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label35, "label35");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, bSleeping, "bSleeping");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, alignment4, "alignment4");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox9, "hbox9");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, image5, "image5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label37, "label37");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox5, "hbox5");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label29, "label29");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, eSleepingTime, "eSleepingTime");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, bQuit, "bQuit");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, alignment3, "alignment3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, hbox8, "hbox8");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, image3, "image3");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label36, "label36");
+  GLADE_HOOKUP_OBJECT (ContactMainwindow, label16, "label16");
+  GLADE_HOOKUP_OBJECT_NO_REF (ContactMainwindow, tooltips, "tooltips");
 
-  gtk_widget_grab_default (eFashion);
-  gtk_window_add_accel_group (GTK_WINDOW (AddressMainwindow), accel_group);
+  gtk_window_add_accel_group (GTK_WINDOW (ContactMainwindow), accel_group);
 
-  return AddressMainwindow;
+  return ContactMainwindow;
 }
 

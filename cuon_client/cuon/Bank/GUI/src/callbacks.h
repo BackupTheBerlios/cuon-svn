@@ -58,3 +58,7 @@ on_edit1_activate                      (GtkMenuItem     *menuitem,
 void
 on_chooseBank_activate                 (GtkMenuItem     *menuitem,
                                         gpointer         user_data);
+
+void
+on_Print1_activate                     (GtkMenuItem     *menuitem,
+                                        gpointer         user_data);

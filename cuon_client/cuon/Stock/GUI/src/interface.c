@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <bonobo.h>
-#include <gnome.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,123 +26,38 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
-static GnomeUIInfo file1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Print S_etup"),
-    NULL,
-    (gpointer) on_print_setup1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  GNOMEUIINFO_MENU_EXIT_ITEM (on_quit1_activate, NULL),
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo stock1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_New1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Edit"),
-    NULL,
-    (gpointer) on_Edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_Save1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Clear"),
-    NULL,
-    (gpointer) on_Delete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo goods1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_GoodsNew1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Edit"),
-    NULL,
-    (gpointer) on_GoodsEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_GoodsSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Clear"),
-    NULL,
-    (gpointer) on_GoodsClear1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo menubar1_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_SUBTREE, N_("_File"),
-    NULL,
-    file1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Stock"),
-    NULL,
-    stock1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Goods"),
-    NULL,
-    goods1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
 GtkWidget*
 create_StockMainwindow (void)
 {
   GtkWidget *StockMainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
+  GtkWidget *file1;
+  GtkWidget *file1_menu;
+  GtkWidget *print_setup1;
+  GtkWidget *separator15;
+  GtkWidget *quit1;
+  GtkWidget *stock1;
+  GtkWidget *stock1_menu;
+  GtkWidget *New1;
+  GtkWidget *Edit1;
+  GtkWidget *separator11;
+  GtkWidget *Save1;
+  GtkWidget *separator12;
+  GtkWidget *Delete1;
+  GtkWidget *goods1;
+  GtkWidget *goods1_menu;
+  GtkWidget *goodsnew1;
+  GtkWidget *goodsedit1;
+  GtkWidget *separator13;
+  GtkWidget *goodssave1;
+  GtkWidget *separator14;
+  GtkWidget *goodsclear1;
+  GtkWidget *lists1;
+  GtkWidget *lists1_menu;
+  GtkWidget *article_list1;
   GtkWidget *toolbar1;
+  GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *hbox1;
   GtkWidget *lFindNumber;
   GtkWidget *eFindName;
@@ -167,27 +82,20 @@ create_StockMainwindow (void)
   GtkWidget *label19;
   GtkWidget *bArticleSearch;
   GtkWidget *eArticleID;
-  GtkWidget *eGoodsArticleDesignation;
-  GtkWidget *label20;
-  GtkWidget *label21;
-  GtkWidget *label22;
-  GtkWidget *eGoodsUnit;
-  GtkWidget *eGoodsWrapping;
-  GtkWidget *eGoodsQuantumPerWrap;
+  GtkWidget *eGoodsArticleNumber;
   GtkWidget *label24;
   GtkWidget *eToEmbed;
   GtkWidget *label25;
   GtkWidget *eRollOut;
   GtkWidget *label27;
   GtkWidget *eGoodsDesignation;
-  GtkWidget *label23;
-  GtkWidget *eActualStock;
   GtkWidget *label28;
   GtkWidget *label29;
   GtkWidget *eGoodsReferenceNumber;
-  GtkWidget *eGoodsDate;
-  GtkWidget *label17;
-  GtkWidget *entry13;
+  GtkWidget *label30;
+  GtkAccelGroup *accel_group;
+
+  accel_group = gtk_accel_group_new ();
 
   StockMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (StockMainwindow, 0, 0);
@@ -200,13 +108,109 @@ create_StockMainwindow (void)
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
-  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       NULL, FALSE, 0);
+
+  file1 = gtk_menu_item_new_with_mnemonic (_("_File"));
+  gtk_widget_show (file1);
+  gtk_container_add (GTK_CONTAINER (menubar1), file1);
+
+  file1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
+
+  print_setup1 = gtk_menu_item_new_with_mnemonic (_("Print S_etup"));
+  gtk_widget_show (print_setup1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), print_setup1);
+
+  separator15 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator15);
+  gtk_container_add (GTK_CONTAINER (file1_menu), separator15);
+  gtk_widget_set_sensitive (separator15, FALSE);
+
+  quit1 = gtk_image_menu_item_new_from_stock ("gtk-quit", accel_group);
+  gtk_widget_show (quit1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), quit1);
+
+  stock1 = gtk_menu_item_new_with_mnemonic (_("Stock"));
+  gtk_widget_show (stock1);
+  gtk_container_add (GTK_CONTAINER (menubar1), stock1);
+
+  stock1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (stock1), stock1_menu);
+
+  New1 = gtk_menu_item_new_with_mnemonic (_("New"));
+  gtk_widget_show (New1);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), New1);
+
+  Edit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
+  gtk_widget_show (Edit1);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), Edit1);
+
+  separator11 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator11);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), separator11);
+  gtk_widget_set_sensitive (separator11, FALSE);
+
+  Save1 = gtk_menu_item_new_with_mnemonic (_("Save"));
+  gtk_widget_show (Save1);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), Save1);
+
+  separator12 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator12);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), separator12);
+  gtk_widget_set_sensitive (separator12, FALSE);
+
+  Delete1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
+  gtk_widget_show (Delete1);
+  gtk_container_add (GTK_CONTAINER (stock1_menu), Delete1);
+
+  goods1 = gtk_menu_item_new_with_mnemonic (_("Goods"));
+  gtk_widget_show (goods1);
+  gtk_container_add (GTK_CONTAINER (menubar1), goods1);
+
+  goods1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (goods1), goods1_menu);
+
+  goodsnew1 = gtk_menu_item_new_with_mnemonic (_("New"));
+  gtk_widget_show (goodsnew1);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), goodsnew1);
+
+  goodsedit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
+  gtk_widget_show (goodsedit1);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), goodsedit1);
+
+  separator13 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator13);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), separator13);
+  gtk_widget_set_sensitive (separator13, FALSE);
+
+  goodssave1 = gtk_menu_item_new_with_mnemonic (_("Save"));
+  gtk_widget_show (goodssave1);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), goodssave1);
+
+  separator14 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator14);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), separator14);
+  gtk_widget_set_sensitive (separator14, FALSE);
+
+  goodsclear1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
+  gtk_widget_show (goodsclear1);
+  gtk_container_add (GTK_CONTAINER (goods1_menu), goodsclear1);
+
+  lists1 = gtk_menu_item_new_with_mnemonic (_("Lists"));
+  gtk_widget_show (lists1);
+  gtk_container_add (GTK_CONTAINER (menubar1), lists1);
+
+  lists1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (lists1), lists1_menu);
+
+  article_list1 = gtk_menu_item_new_with_mnemonic (_("Article-List1"));
+  gtk_widget_show (article_list1);
+  gtk_container_add (GTK_CONTAINER (lists1_menu), article_list1);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
   gtk_box_pack_start (GTK_BOX (vbox1), toolbar1, FALSE, FALSE, 0);
   gtk_toolbar_set_style (GTK_TOOLBAR (toolbar1), GTK_TOOLBAR_BOTH);
+  tmp_toolbar_icon_size = gtk_toolbar_get_icon_size (GTK_TOOLBAR (toolbar1));
 
   hbox1 = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (hbox1);
@@ -333,54 +337,12 @@ create_StockMainwindow (void)
   gtk_box_pack_start (GTK_BOX (hbox12), eArticleID, TRUE, TRUE, 0);
   gtk_entry_set_width_chars (GTK_ENTRY (eArticleID), 8);
 
-  eGoodsArticleDesignation = gtk_entry_new ();
-  gtk_widget_show (eGoodsArticleDesignation);
-  gtk_table_attach (GTK_TABLE (table2), eGoodsArticleDesignation, 1, 2, 0, 1,
+  eGoodsArticleNumber = gtk_entry_new ();
+  gtk_widget_show (eGoodsArticleNumber);
+  gtk_table_attach (GTK_TABLE (table2), eGoodsArticleNumber, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eGoodsArticleDesignation), FALSE);
-
-  label20 = gtk_label_new (_("Unit"));
-  gtk_widget_show (label20);
-  gtk_table_attach (GTK_TABLE (table2), label20, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label20), 0, 0.5);
-
-  label21 = gtk_label_new (_("Wrapping"));
-  gtk_widget_show (label21);
-  gtk_table_attach (GTK_TABLE (table2), label21, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label21), 0, 0.5);
-
-  label22 = gtk_label_new (_("Qu. per Wrap."));
-  gtk_widget_show (label22);
-  gtk_table_attach (GTK_TABLE (table2), label22, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label22), 0, 0.5);
-
-  eGoodsUnit = gtk_entry_new ();
-  gtk_widget_show (eGoodsUnit);
-  gtk_table_attach (GTK_TABLE (table2), eGoodsUnit, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eGoodsUnit), FALSE);
-
-  eGoodsWrapping = gtk_entry_new ();
-  gtk_widget_show (eGoodsWrapping);
-  gtk_table_attach (GTK_TABLE (table2), eGoodsWrapping, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eGoodsWrapping), FALSE);
-
-  eGoodsQuantumPerWrap = gtk_entry_new ();
-  gtk_widget_show (eGoodsQuantumPerWrap);
-  gtk_table_attach (GTK_TABLE (table2), eGoodsQuantumPerWrap, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eGoodsQuantumPerWrap), FALSE);
+  gtk_editable_set_editable (GTK_EDITABLE (eGoodsArticleNumber), FALSE);
 
   label24 = gtk_label_new (_("to embed"));
   gtk_widget_show (label24);
@@ -421,20 +383,6 @@ create_StockMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  label23 = gtk_label_new (_("actual stock"));
-  gtk_widget_show (label23);
-  gtk_table_attach (GTK_TABLE (table2), label23, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_misc_set_alignment (GTK_MISC (label23), 0, 0.5);
-
-  eActualStock = gtk_entry_new ();
-  gtk_widget_show (eActualStock);
-  gtk_table_attach (GTK_TABLE (table2), eActualStock, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_editable_set_editable (GTK_EDITABLE (eActualStock), FALSE);
-
   label28 = gtk_label_new (_("Date"));
   gtk_widget_show (label28);
   gtk_table_attach (GTK_TABLE (table2), label28, 2, 3, 0, 1,
@@ -455,20 +403,43 @@ create_StockMainwindow (void)
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  eGoodsDate = gnome_date_edit_new ((time_t) 0, TRUE, TRUE);
-  gtk_widget_show (eGoodsDate);
-  gtk_table_attach (GTK_TABLE (table2), eGoodsDate, 3, 4, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  label30 = gtk_label_new ("");
+  gtk_widget_show (label30);
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label30);
 
-  label17 = gtk_label_new (_("Goods"));
-  gtk_widget_show (label17);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label17);
-
-  entry13 = gtk_entry_new ();
-  gtk_widget_show (entry13);
-  gtk_box_pack_start (GTK_BOX (vbox1), entry13, FALSE, FALSE, 0);
-
+  g_signal_connect ((gpointer) print_setup1, "activate",
+                    G_CALLBACK (on_print_setup1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) quit1, "activate",
+                    G_CALLBACK (on_quit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) New1, "activate",
+                    G_CALLBACK (on_New1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) Edit1, "activate",
+                    G_CALLBACK (on_Edit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) Save1, "activate",
+                    G_CALLBACK (on_Save1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) Delete1, "activate",
+                    G_CALLBACK (on_Delete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) goodsnew1, "activate",
+                    G_CALLBACK (on_GoodsNew1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) goodsedit1, "activate",
+                    G_CALLBACK (on_GoodsEdit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) goodssave1, "activate",
+                    G_CALLBACK (on_GoodsSave1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) goodsclear1, "activate",
+                    G_CALLBACK (on_GoodsClear1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) article_list1, "activate",
+                    G_CALLBACK (on_articleList1_activate),
+                    NULL);
   g_signal_connect ((gpointer) bSearch, "clicked",
                     G_CALLBACK (on_bSearch_clicked),
                     NULL);
@@ -486,24 +457,30 @@ create_StockMainwindow (void)
   GLADE_HOOKUP_OBJECT_NO_REF (StockMainwindow, StockMainwindow, "StockMainwindow");
   GLADE_HOOKUP_OBJECT (StockMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (StockMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, menubar1_uiinfo[0].widget, "file1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, file1_menu_uiinfo[0].widget, "print_setup1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, file1_menu_uiinfo[1].widget, "separator15");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, file1_menu_uiinfo[2].widget, "quit1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, menubar1_uiinfo[1].widget, "stock1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[0].widget, "New1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[1].widget, "Edit1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[2].widget, "separator11");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[3].widget, "Save1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[4].widget, "separator12");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu_uiinfo[5].widget, "Delete1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, menubar1_uiinfo[2].widget, "goods1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[0].widget, "goodsnew1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[1].widget, "goodsedit1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[2].widget, "separator13");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[3].widget, "goodssave1");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[4].widget, "separator14");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu_uiinfo[5].widget, "goodsclear1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, file1, "file1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, file1_menu, "file1_menu");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, print_setup1, "print_setup1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, separator15, "separator15");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, quit1, "quit1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1, "stock1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, stock1_menu, "stock1_menu");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, New1, "New1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, Edit1, "Edit1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, separator11, "separator11");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, Save1, "Save1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, separator12, "separator12");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, Delete1, "Delete1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1, "goods1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goods1_menu, "goods1_menu");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goodsnew1, "goodsnew1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goodsedit1, "goodsedit1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, separator13, "separator13");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goodssave1, "goodssave1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, separator14, "separator14");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, goodsclear1, "goodsclear1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, lists1, "lists1");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, lists1_menu, "lists1_menu");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, article_list1, "article_list1");
   GLADE_HOOKUP_OBJECT (StockMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (StockMainwindow, hbox1, "hbox1");
   GLADE_HOOKUP_OBJECT (StockMainwindow, lFindNumber, "lFindNumber");
@@ -529,27 +506,19 @@ create_StockMainwindow (void)
   GLADE_HOOKUP_OBJECT (StockMainwindow, label19, "label19");
   GLADE_HOOKUP_OBJECT (StockMainwindow, bArticleSearch, "bArticleSearch");
   GLADE_HOOKUP_OBJECT (StockMainwindow, eArticleID, "eArticleID");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsArticleDesignation, "eGoodsArticleDesignation");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, label20, "label20");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, label21, "label21");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, label22, "label22");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsUnit, "eGoodsUnit");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsWrapping, "eGoodsWrapping");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsQuantumPerWrap, "eGoodsQuantumPerWrap");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsArticleNumber, "eGoodsArticleNumber");
   GLADE_HOOKUP_OBJECT (StockMainwindow, label24, "label24");
   GLADE_HOOKUP_OBJECT (StockMainwindow, eToEmbed, "eToEmbed");
   GLADE_HOOKUP_OBJECT (StockMainwindow, label25, "label25");
   GLADE_HOOKUP_OBJECT (StockMainwindow, eRollOut, "eRollOut");
   GLADE_HOOKUP_OBJECT (StockMainwindow, label27, "label27");
   GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsDesignation, "eGoodsDesignation");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, label23, "label23");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eActualStock, "eActualStock");
   GLADE_HOOKUP_OBJECT (StockMainwindow, label28, "label28");
   GLADE_HOOKUP_OBJECT (StockMainwindow, label29, "label29");
   GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsReferenceNumber, "eGoodsReferenceNumber");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, eGoodsDate, "eGoodsDate");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, label17, "label17");
-  GLADE_HOOKUP_OBJECT (StockMainwindow, entry13, "entry13");
+  GLADE_HOOKUP_OBJECT (StockMainwindow, label30, "label30");
+
+  gtk_window_add_accel_group (GTK_WINDOW (StockMainwindow), accel_group);
 
   return StockMainwindow;
 }

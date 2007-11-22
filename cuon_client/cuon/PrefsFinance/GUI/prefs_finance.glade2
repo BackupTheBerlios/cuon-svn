@@ -2,7 +2,6 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
 
 <widget class="GtkWindow" id="PreferencesFinancesMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
@@ -60,7 +59,8 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="quit1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_CLOSE_ITEM</property>
+		      <property name="label">gtk-quit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_quit1_activate"/>
 		    </widget>
 		  </child>
@@ -81,63 +81,27 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="new1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">New </property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_VatNew1_activate" last_modification_time="Fri, 03 Dec 2004 09:37:58 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image234">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-new</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkImageMenuItem" id="edit1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Edit</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-edit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_VatEdit1_activate" last_modification_time="Fri, 03 Dec 2004 09:37:58 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image235">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-yes</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkImageMenuItem" id="save1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Save</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-save</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_VatSave1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image236">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-save</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -150,21 +114,9 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="print1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">print</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-print</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_VatPrint1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image237">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-print</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -177,21 +129,9 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="clear1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">clear</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-delete</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_VatClear1_activate" last_modification_time="Fri, 03 Dec 2004 09:57:53 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image238">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-delete</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -226,63 +166,27 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="TopNew1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">New</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_TopNew1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image239">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-new</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkImageMenuItem" id="TopEdit1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Edit</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-edit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_TopEdit1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image240">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-yes</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkImageMenuItem" id="TopSave1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Save</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-save</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_TopSave1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image241">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-save</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -295,21 +199,9 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="TopPrint1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Print</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-print</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_TopPrint1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image242">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-print</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -322,21 +214,9 @@
 		  <child>
 		    <widget class="GtkImageMenuItem" id="TopClear1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Clear</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-delete</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_TopClear1_activate" last_modification_time="Mon, 06 Dec 2004 14:38:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image243">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-delete</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
 		    </widget>
 		  </child>
 
@@ -369,28 +249,28 @@
 		<widget class="GtkMenu" id="account-info1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctInfoNew1">
+		    <widget class="GtkImageMenuItem" id="AcctInfoNew1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">New</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctInfoNew1_activate" last_modification_time="Thu, 07 Jul 2005 16:49:25 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctInfoEdit1">
+		    <widget class="GtkImageMenuItem" id="AcctInfoEdit1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Edit</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-edit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctInfoEdit1_activate" last_modification_time="Tue, 02 Aug 2005 21:10:23 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctInfoSave1">
+		    <widget class="GtkImageMenuItem" id="AcctInfoSave1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Save</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-save</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctInfoSave1_activate" last_modification_time="Thu, 07 Jul 2005 16:49:25 GMT"/>
 		    </widget>
 		  </child>
@@ -402,19 +282,19 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctInfoPrint1">
+		    <widget class="GtkImageMenuItem" id="AcctInfoPrint1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Print</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-print</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctInfoPrint1_activate" last_modification_time="Thu, 07 Jul 2005 16:49:25 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctInfoClear1">
+		    <widget class="GtkImageMenuItem" id="AcctInfoClear1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Clear</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-delete</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctInfoClear1_activate" last_modification_time="Thu, 07 Jul 2005 16:49:25 GMT"/>
 		    </widget>
 		  </child>
@@ -448,28 +328,28 @@
 		<widget class="GtkMenu" id="account-plan1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctPlanNew1">
+		    <widget class="GtkImageMenuItem" id="AcctPlanNew1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">New</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-new</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctPlanNew1_activate" last_modification_time="Tue, 02 Aug 2005 21:08:52 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctPlanEdit1">
+		    <widget class="GtkImageMenuItem" id="AcctPlanEdit1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Edit</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-edit</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctPlanEdit1_activate" last_modification_time="Tue, 02 Aug 2005 21:08:52 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctPlanSave1">
+		    <widget class="GtkImageMenuItem" id="AcctPlanSave1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Save</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-save</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctPlanSave1_activate" last_modification_time="Tue, 02 Aug 2005 21:10:23 GMT"/>
 		    </widget>
 		  </child>
@@ -481,18 +361,17 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="AcctPlanPrint1">
+		    <widget class="GtkSeparatorMenuItem" id="AcctPlanPrint1">
 		      <property name="visible">True</property>
-		      <property name="stock_item">GNOMEUIINFO_MENU_PRINT_ITEM</property>
 		      <signal name="activate" handler="on_AcctPlanPrint1_activate" last_modification_time="Tue, 02 Aug 2005 21:11:08 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="AcctPlanClear1">
+		    <widget class="GtkImageMenuItem" id="AcctPlanClear1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Clear</property>
-		      <property name="use_underline">True</property>
+		      <property name="label">gtk-delete</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_AcctPlanClear1_activate" last_modification_time="Tue, 02 Aug 2005 21:08:52 GMT"/>
 		    </widget>
 		  </child>

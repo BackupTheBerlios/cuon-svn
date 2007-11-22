@@ -122,3 +122,11 @@ on_chooseBank_activate                 (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_Print1_activate                     (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+
