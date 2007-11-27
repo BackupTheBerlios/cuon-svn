@@ -47,23 +47,23 @@ class contactwindow(chooseWindows):
     def __init__(self, allTables, address_nr=0, partner_nr=0, autoNew = False):
         print 'time 01 = ', time.localtime()
         chooseWindows.__init__(self)
-        print 'time 02 = ', time.localtime()
+        #print 'time 02 = ', time.localtime()
 
         self.contact_address_id = address_nr
         self.contact_partner_id = partner_nr
         
         self.singleContact = SingleContact.SingleContact(allTables)
-        print 'time 03 = ', time.localtime()
+        #print 'time 03 = ', time.localtime()
 
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
-        print 'time 04 = ', time.localtime()
+        #print 'time 04 = ', time.localtime()
         
         self.singleContact.addressId = address_nr
         
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         
         self.singleContact.partnerId = partner_nr
-        print 'time 05 = ', time.localtime()
+        #print 'time 05 = ', time.localtime()
     
         self.loadGlade('contact.xml')
         self.win1 = self.getWidget('ContactMainwindow')
@@ -73,7 +73,7 @@ class contactwindow(chooseWindows):
         self.EntriesContact = 'contact.xml'
         
         self.loadEntries(self.EntriesContact)
-        print 'time 06= ', time.localtime()
+        #print 'time 06= ', time.localtime()
         
         self.singleContact.setEntries(self.getDataEntries(self.EntriesContact) )
         self.singleContact.setGladeXml(self.xml)
@@ -82,17 +82,17 @@ class contactwindow(chooseWindows):
         self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
         self.singleContact.setTree(self.xml.get_widget('tree1') )
-        self.singleContact.sWhere = ' where address.id = address_id and process_status != 999 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
+        self.singleContact.sWhere = ' where address.id = address_id and process_status = 0 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
         if address_nr > 0:
             self.singleContact.sWhere += 'and address_id = ' + `address_nr`
-            self.singleContact.setTreeOrder('schedul_date')
+            #self.singleContact.setTreeOrder('schedul_date')
 
         elif partner_nr > 0:
             self.singleContact.sWhere += 'and partner_id = ' + `partner_nr`
-            self.singleContact.setTreeOrder('schedul_date')
+            #self.singleContact.setTreeOrder('schedul_date')
             
-        else:
-            self.singleContact.setTreeOrder("to_date('schedul_date', '" + self.dicUser['DateformatString'] +"')" )
+        
+        self.singleContact.setTreeOrder("to_date('schedul_date', '" + self.dicUser['DateformatString'] +"')" )
 
 
         # set values for comboBox
@@ -123,8 +123,7 @@ class contactwindow(chooseWindows):
         
 
         # tabs from notebook
-        self.tabContact = 0
-    
+        self.tabContact = 0    
         
         
 

@@ -1455,3 +1455,13 @@ on_eSearch_key_press_event             (GtkWidget       *widget,
   return FALSE;
 }
 
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data)
+{
+
+  return FALSE;
+}
+

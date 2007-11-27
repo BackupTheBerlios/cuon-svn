@@ -74,52 +74,69 @@ class User(xmlrpc.XMLRPC, basics):
                         print Exception,params
                 
         values = ['extendet_gpl']
+        
+        
+        dicKeys = []
         for key in values:
-            value = self.getConfigOption(dicUser['Name'],key,cp1)
+            value0 = self.getConfigOption(dicUser['Name'],key,cp1)
             
-            if value:
-                liValue = value.split('#')
-                dicKey = {}
-
-                for i in liValue:
-                    i = i.strip()
-                    liPoint = i.split(';')
-                    print liPoint
-                    print i
-                    try:
-                        if liPoint[1][0] == '[':
-                            print 'list',liPoint
-                            liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
-                            print liList
-                            dicKey[liPoint[0]] = liList
-                            
-                           
-                        elif liPoint[1][0] == '{':
-
-                            print 'dic',liPoint
-                            liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
-                            print liList
-                            dicKey[liPoint[0]] = liList
-                            
-
-                        else:
-                            print 'item',liPoint
-
-                            dicKey[liPoint[0]] = liPoint[1]
-                            
-
-                    except Exception,params:
-                        print Exception,params
-                dicUserModules[dicUser['Name']].append(dicKey)
+            if value0:
+                liValue0 = value0.split('%')
+                for value in liValue0:
+                    liValue = value.split('#')
+                    dicKey = {}
+                    print 'Value', value
+                    for i in liValue:
+                        i = i.strip()
+                        liPoint = i.split(';')
+                        print 'liPoint',liPoint
+                        print 'i = ', i
+                        try:
+                            if liPoint[1][0] == '[':
+                                print 'list',liPoint
+                                liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
+                                print 'liList', liList
+                                dicKey[liPoint[0]] = liList
+                                print 'end 1'
+                               
+                            elif liPoint[1][0] == '{':
+    
+                                print 'dic',liPoint
+                                liList = (liPoint[1][1:len(liPoint[1])-1]).split(',')
+                                print 'liList', liList
+                                liDics = {}
+                                for list1 in liList:
+                                    liD = list1.split(',')
+                                    for dic in liD:
+                                        dic_inv = dic.split(':')
+                                        liDics[dic_inv[0]] = dic_inv[1]
+                                        print liDics
+                                dicKey[liPoint[0]] = liDics
+                                print 'end 2'
+                                
+    
+                            else:
+                                print 'item',liPoint
+    
+                                dicKey[liPoint[0]] = liPoint[1]
+                                print 'end 3'
+                                
+    
+                        except Exception,params:
+                            print Exception,params
+                    
+                    print 'DicKey ', dicKey
+                    dicKeys.append(dicKey)
+                dicUserModules[dicUser['Name']].append({key:dicKeys})
         
         dicModul = {}
         # User alle
         dicUserModules['AllUser'] = [{'all':{'Priv':'all'}},{'experimental':{'Priv':'all'}} ]
         dicUserModules['AllUser'].append({'staff':{'Priv':'all'}})
-        dicExt1 = {'extendet_gpl':[{'Priv':'all','MenuItem':{'Main':'data','Sub':'Extendet1'},'Imports':['cuon.Ext1.ext1','cuon.Ext1.ext2']}]}
-        dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
+        #dicExt1 = {'extendet_gpl':[{'Priv':'all','MenuItem':{'Main':'data','Sub':'Extendet1'},'Imports':['cuon.Ext1.ext1','cuon.Ext1.ext2']}]}
+        #dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
         
-        dicUserModules['AllUser'].append(dicExt1)
+        #dicUserModules['AllUser'].append(dicExt1)
         print dicUserModules
         
         # User jhamel
@@ -128,17 +145,19 @@ class User(xmlrpc.XMLRPC, basics):
 ##        dicUserModules['jhamel'].append({'expert_system':{'Priv':'all'}})
 ##        dicUserModules['jhamel'].append({'project':{'Priv':'all'}})
 ##        dicUserModules['jhamel'].append({'forms':{'Priv':'all'}})
-        dicExt1 = {'extendet_gpl':[{'Priv':'all','MenuItem':{'Main':'data','Sub':'Extendet1', 'ExternalNumber':'ext1'},'Imports':['cuon.Ext1.ext1','cuon.Ext1.ext2']}]}
-        dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
+       
+        #dicExt1 = {'extendet_gpl':[{'Priv':'all','MenuItem':{'Main':'data','Sub':'Extendet1', 'ExternalNumber':'ext1'},'Imports':['cuon.Ext1.ext1','cuon.Ext1.ext2']}]}
+        #dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
         
         
-        dicExt1['extendet_gpl'].append({'Priv':'all','MenuItem':{'Main':'action1','Sub':'hibernation1', 'ExternalNumber':'ext2'},'Imports':['cuon.Garden.hibernation','cuon.Garden.hibernation']})
-        dicExt1['extendet_gpl'][1]['MenuStart']='cuon.Garden.hibernation.hibernationwindow(self.allTables)'
+        #dicExt1['extendet_gpl'].append({'Priv':'all','MenuItem':{'Main':'action1','Sub':'hibernation1', 'ExternalNumber':'ext2'},'Imports':['cuon.Garden.hibernation','cuon.Garden.hibernation']})
+       
+        #dicExt1['extendet_gpl'][1]['MenuStart']='cuon.Garden.hibernation.hibernationwindow(self.allTables)'
         
-        dicExt1['extendet_gpl'].append({'Priv':'all','MenuItem':{'Main':'data','Sub':'botany1', 'ExternalNumber':'ext3'},'Imports':['cuon.Garden.botany','cuon.Garden.botany']})
-        dicExt1['extendet_gpl'][2]['MenuStart']='cuon.Garden.botany.botanywindow(self.allTables)'
+        #dicExt1['extendet_gpl'].append({'Priv':'all','MenuItem':{'Main':'data','Sub':'botany1', 'ExternalNumber':'ext3'},'Imports':['cuon.Garden.botany','cuon.Garden.botany']})
+        #dicExt1['extendet_gpl'][2]['MenuStart']='cuon.Garden.botany.botanywindow(self.allTables)'
         
-        dicUserModules[dicUser['Name']].append(dicExt1)
+        #dicUserModules[dicUser['Name']].append(dicExt1)
         
         
         
@@ -160,7 +179,7 @@ class User(xmlrpc.XMLRPC, basics):
               dicModul = dicUserModules['AllUser']
         except:
            pass
-        
+        print 'ModulesTest', dicUserModules
         return dicModul
         
     def xmlrpc_getClientInfo(self, dicUser):

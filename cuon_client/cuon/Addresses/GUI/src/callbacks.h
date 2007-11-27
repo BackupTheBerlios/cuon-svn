@@ -732,3 +732,8 @@ gboolean
 on_eSearch_key_press_event             (GtkWidget       *widget,
                                         GdkEventKey     *event,
                                         gpointer         user_data);
+
+gboolean
+on_eSearch_key_press_event             (GtkWidget       *widget,
+                                        GdkEventKey     *event,
+                                        gpointer         user_data);

@@ -884,7 +884,8 @@ class addresswindow(chooseWindows):
         sStreet = self.getWidget('eFindStreet').get_text()
         sPhone = self.getWidget('eFindPhone').get_text()
         sFax = self.getWidget('eFindFax').get_text()
-
+        sNewsletter =  self.getWidget('eFindNewsletter').get_text()
+        sInfo =  self.getWidget('eFindInfo').get_text()
         liSearch = []
         if sName:
             liSearch.append('lastname')
@@ -920,7 +921,13 @@ class addresswindow(chooseWindows):
         if sFax:
             liSearch.append('fax')
             liSearch.append(sFax)    
-
+        if sNewsletter:
+            liSearch.append('newsletter')
+            liSearch.append(sNewsletter)
+        if sInfo:
+            liSearch.append('status_info')
+            liSearch.append(sInfo)
+			
         self.singleAddress.sWhere = self.getWhere(liSearch) 
         
         self.out('Address sWhere = ' + `self.singleAddress.sWhere`)

@@ -97,64 +97,50 @@ class Article(xmlrpc.XMLRPC, basics):
         sSql4 = ''
         sSql5 = ''
         sSql6 = ''
+        addSql = ''
         
         if dicSearchlist:
-            sSql2 = sSql + ' where '
+            sSql += ' where '
             if dicSearchlist['eNumberFrom'] and dicSearchlist['eNumberTo'] :
                numberFrom =  dicSearchlist['eNumberFrom'].upper()
                numberTo = dicSearchlist['eNumberTo'].lower() 
                 
-               sSql3 = sSql2 + " number  between  '" +  numberFrom + "' and '" + numberTo +"'"  
-               sSql = sSql3
+               sSql+= " number  between  '" +  numberFrom + "' and '" + numberTo +"' and"  
+               
         
             if dicSearchlist['eDesignationFrom'] and dicSearchlist['eDesignationTo'] :
                designationFrom =  dicSearchlist['eDesignationFrom'].upper()
                designationTo = dicSearchlist['eDesignationTo'].lower()
                 
                
-               sSql4 = " designation  between  '" +  designationFrom + "' and '" + designationTo +"'"  
-               if sSql3:
-                   sSql4 = sSql3 + ' and ' + sSql4
-               else:
-                   sSql4 = sSql2 + sSql4
-        
-               sSql = sSql4
-        
-        
-        ##    if dicSearchlist['eCityFrom'] and dicSearchlist['eCityTo'] :
-        ##       cityFrom =  string.upper(dicSearchlist['eCityFrom']) 
-        ##       cityTo = string.lower(dicSearchlist['eCityTo']) 
-                
+               sSql += " designation  between  '" +  designationFrom + "' and '" + designationTo +"' and"  
+              
                
-        ##       sSql5 = " city  between  '" +  cityFrom + "' and '" + cityTo +"'"  
-        ##       if sSql3 and not sSql4:
-        ##           sSql5 = sSql3 + ' and ' + sSql5
-        ##       elif sSql3 and sSql4:
-        ##           sSql5 = sSql4 + ' and ' + sSql5
-        ##       else:
-        ##           sSql5 = sSql2 + sSql5
-        
-        ##       sSql = sSql5
-        
-        
-        ##    if dicSearchlist['eCountryFrom'] and dicSearchlist['eCountryTo'] :
-        ##       countryFrom =  string.upper(dicSearchlist['eCountryFrom']) 
-        ##       countryTo = string.lower(dicSearchlist['eCountryTo']) 
+            if dicSearchlist['eMGFrom'] and dicSearchlist['eMGTo'] :
+                eMGFrom = dicSearchlist['eMGFrom']
+                eMGTo = dicSearchlist['eMGTo']
+                sSql += " materialgroup  between  " +  eMGFrom + " and " + eMGTo + ' and' 
                 
-               
-        ##       sSql6 = " country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
-        ##       if sSql3 and not sSql4 and not sSql5:
-        ##           sSql6 = sSql3 + ' and ' + sSql6
-        ##       elif sSql4 and not sSql5:
-        ##           sSql6 = sSql4 + ' and ' + sSql6
-        ##       elif sSql5:
-        ##           sSql6 = sSql5 + ' and ' + sSql6
-        ##       else:
-        ##           sSql6 = sSql2 + sSql6
+       
         
-        ##       sSql = sSql6
+            if dicSearchlist['eNumberContains']:
+                sSql += " number ~*'" + dicSearchlist['eNumberContains'] + "' and"
+                
+            if dicSearchlist['eDesignationContains']:
+                sSql += " designation ~*'" + dicSearchlist['eDesignationContains'] + "' and"
+              
+            if dicSearchlist['eMGContains']:
+                print 'Material_group'
+                liMG = dicSearchlist['eMGContains'].split(',')
+                print 'liMG', liMG
+                for mg in liMG:
+                    print 'mg = ', mg
+                    sSql += " material_group = " + mg + "  or"
+                    print sSql 
         
-        
+            sSql = sSql[:len(sSql)-3] 
+
+
         sSql = sSql + self.getWhere("",dicUser,2)
         sSql = sSql + ' order by number, designation'
         

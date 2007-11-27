@@ -11,6 +11,23 @@ class Address(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
+    def getComboBoxEntries(self, dicUser):
+        cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+        liTrade0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTrade', cpServer)
+        liTurnover0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTurnover', cpServer)
+        liLegalform0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbLegalform', cpServer)
+        liTrade = ['NONE']
+        liTurnover = ['NONE']
+        liLegalform = ['NONE']
+        if liTrade0:
+            liTrade = liTrade0.split(',')
+        if liTurnover0:
+            liTurnover = liTurnover0.split(',')
+        if liLegalform0:
+            liLegalform = liLegalform0.split(',')
+            
+        return liTrade,liTurnover,liLegalform
+        
         
     def xmlrpc_getAddress(self,id, dicUser ):
     
