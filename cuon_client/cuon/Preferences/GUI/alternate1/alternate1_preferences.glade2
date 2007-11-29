@@ -2637,8 +2637,7 @@ Bitte hier den Usernamen des Mailanbieters angeben.</property>
 		  <child>
 		    <widget class="GtkEntry" id="eImage">
 		      <property name="visible">True</property>
-		      <property name="tooltip" translatable="yes">Standard: xv
-Achtung: Dieses Feld sucht immer nach /usr/bin/xv. Wenn der Bildbetrachter xv nicht installiert ist bitte einen Link setzen: z.B. &quot;ln -s /usr/bin/konqueror /usr/bin/xv&quot; (als root).</property>
+		      <property name="tooltip" translatable="yes">Standard: xv Achtung: Dieses Feld sucht immer nach /usr/bin/xv. Wenn der Bildbetrachter xv nicht installiert ist bitte einen Link setzen: z.B. &quot;ln -s /usr/bin/konqueror /usr/bin/xv&quot; (als root).</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
