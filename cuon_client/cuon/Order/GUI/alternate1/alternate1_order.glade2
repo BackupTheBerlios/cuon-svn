@@ -6,12 +6,13 @@
 <widget class="GtkWindow" id="OrderMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
   <property name="visible">True</property>
-  <property name="title" translatable="yes">Order</property>
+  <property name="title" translatable="yes">Rechnungen / Aufträge</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
+  <property name="icon">order.svg</property>
   <property name="decorated">True</property>
   <property name="skip_taskbar_hint">False</property>
   <property name="skip_pager_hint">False</property>
@@ -912,6 +913,7 @@
 
       <child>
 	<widget class="GtkScrolledWindow" id="scrolledwindow1">
+	  <property name="height_request">116</property>
 	  <property name="visible">True</property>
 	  <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
 	  <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
@@ -936,7 +938,7 @@
 	</widget>
 	<packing>
 	  <property name="padding">0</property>
-	  <property name="expand">False</property>
+	  <property name="expand">True</property>
 	  <property name="fill">True</property>
 	</packing>
       </child>
@@ -1469,8 +1471,9 @@
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Vorsicht! Weißt der Rechnung neuen Empfänger zu!</property>
 			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">search address ...</property>
+			  <property name="label" translatable="yes">Adresse ändern</property>
 			  <property name="use_underline">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
@@ -1579,36 +1582,18 @@
 			  <child>
 			    <widget class="GtkButton" id="bSimpleCash1">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Strg+1</property>
 			      <property name="can_focus">True</property>
-			      <property name="label" translatable="yes">Cash 1</property>
+			      <property name="label" translatable="yes">Kasse 1</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bSimpleCash1_clicked" last_modification_time="Sun, 20 May 2007 16:24:59 GMT"/>
+			      <accelerator key="1" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">0</property>
 			      <property name="right_attach">1</property>
-			      <property name="top_attach">0</property>
-			      <property name="bottom_attach">1</property>
-			      <property name="x_options">fill</property>
-			      <property name="y_options"></property>
-			    </packing>
-			  </child>
-
-			  <child>
-			    <widget class="GtkButton" id="bSimpleCash2">
-			      <property name="visible">True</property>
-			      <property name="can_focus">True</property>
-			      <property name="label" translatable="yes">Cash 2</property>
-			      <property name="use_underline">True</property>
-			      <property name="relief">GTK_RELIEF_NORMAL</property>
-			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bSimpleCash2_clicked" last_modification_time="Sun, 20 May 2007 16:25:07 GMT"/>
-			    </widget>
-			    <packing>
-			      <property name="left_attach">1</property>
-			      <property name="right_attach">2</property>
 			      <property name="top_attach">0</property>
 			      <property name="bottom_attach">1</property>
 			      <property name="x_options">fill</property>
@@ -1619,18 +1604,42 @@
 			  <child>
 			    <widget class="GtkButton" id="bCreditCard1">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Alt+1</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Credit Card 1</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bCreditCard1_clicked" last_modification_time="Fri, 22 Jun 2007 13:07:24 GMT"/>
+			      <accelerator key="1" modifiers="GDK_MOD1_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">0</property>
 			      <property name="right_attach">1</property>
 			      <property name="top_attach">1</property>
 			      <property name="bottom_attach">2</property>
+			      <property name="x_options">fill</property>
+			      <property name="y_options"></property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bSimpleCash2">
+			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Strg+2</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Kasse 2</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bSimpleCash2_clicked" last_modification_time="Sun, 20 May 2007 16:25:07 GMT"/>
+			      <accelerator key="2" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+			    </widget>
+			    <packing>
+			      <property name="left_attach">1</property>
+			      <property name="right_attach">2</property>
+			      <property name="top_attach">0</property>
+			      <property name="bottom_attach">1</property>
 			      <property name="x_options">fill</property>
 			      <property name="y_options"></property>
 			    </packing>
@@ -1658,12 +1667,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bSimpleBank1">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Strg+3</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Bank 1</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bSimpleBank1_clicked" last_modification_time="Sun, 20 May 2007 16:25:22 GMT"/>
+			      <accelerator key="3" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">0</property>
@@ -1678,12 +1689,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bSimpleBank2">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Strg+4</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Bank 2</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bSimpleBank2_clicked" last_modification_time="Sun, 20 May 2007 16:25:50 GMT"/>
+			      <accelerator key="4" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">1</property>
@@ -1698,12 +1711,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bSimpleBank3">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Strg+5</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Bank 3</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bSimpleBank3_clicked" last_modification_time="Sun, 20 May 2007 16:25:59 GMT"/>
+			      <accelerator key="5" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">2</property>
@@ -1718,12 +1733,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bDirectDebit1">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Alt+3</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">direct Debit 1</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bDirectDebit1_clicked" last_modification_time="Fri, 22 Jun 2007 13:04:42 GMT"/>
+			      <accelerator key="3" modifiers="GDK_MOD1_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">0</property>
@@ -1738,12 +1755,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bDirectDebit2">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Alt+4</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">direct Debit 1</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bDirectDebit2_clicked" last_modification_time="Fri, 22 Jun 2007 13:05:57 GMT"/>
+			      <accelerator key="4" modifiers="GDK_MOD1_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">1</property>
@@ -1758,12 +1777,14 @@
 			  <child>
 			    <widget class="GtkButton" id="bDirectDebit3">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Alt+5</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">direct Debit 3</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
 			      <signal name="clicked" handler="on_bDirectDebit3_clicked" last_modification_time="Fri, 22 Jun 2007 13:06:54 GMT"/>
+			      <accelerator key="5" modifiers="GDK_MOD1_MASK" signal="clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="left_attach">2</property>
@@ -5861,4 +5882,3 @@
 </widget>
 
 </glade-interface>
-
