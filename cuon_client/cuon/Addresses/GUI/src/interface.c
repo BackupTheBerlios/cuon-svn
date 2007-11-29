@@ -289,9 +289,6 @@ create_AddressMainwindow (void)
   GtkWidget *chkbCalcTax;
   GtkWidget *eTaxnumber;
   GtkWidget *label37;
-  GtkWidget *cbFashion;
-  GList *cbFashion_items = NULL;
-  GtkWidget *eFashion;
   GtkWidget *label36;
   GtkWidget *eLine;
   GtkWidget *label35;
@@ -305,11 +302,24 @@ create_AddressMainwindow (void)
   GtkWidget *scrolledwindow14;
   GtkWidget *tvTOP;
   GtkWidget *vbox19;
+  GtkWidget *label111;
+  GtkWidget *label112;
+  GtkWidget *label114;
+  GtkWidget *label113;
+  GtkWidget *label115;
+  GtkWidget *label116;
   GtkWidget *label42;
   GtkWidget *vbox20;
+  GtkWidget *eNumberOfEmployees;
+  GtkWidget *cbTurnover;
+  GtkWidget *cbTrade;
   GtkWidget *hbox63;
   GtkWidget *chkbIsWebshop;
   GtkWidget *chkbUpdateFromWeb;
+  GtkWidget *label110;
+  GtkWidget *eMiscDateOfLaunch;
+  GtkWidget *cbLegalForm;
+  GtkWidget *cbFashion;
   GtkWidget *lMisc;
   GtkWidget *table2;
   GtkWidget *ePartnerStreet;
@@ -1788,7 +1798,7 @@ create_AddressMainwindow (void)
   gtk_widget_show (table9);
   gtk_container_add (GTK_CONTAINER (notebook1), table9);
 
-  label43 = gtk_label_new ("");
+  label43 = gtk_label_new (_("legal form"));
   gtk_widget_show (label43);
   gtk_table_attach (GTK_TABLE (table9), label43, 0, 1, 5, 6,
                     (GtkAttachOptions) (0),
@@ -1851,28 +1861,6 @@ create_AddressMainwindow (void)
                     (GtkAttachOptions) (0),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_misc_set_alignment (GTK_MISC (label37), 0, 0);
-
-  cbFashion = gtk_combo_new ();
-  g_object_set_data (G_OBJECT (GTK_COMBO (cbFashion)->popwin),
-                     "GladeParentKey", cbFashion);
-  gtk_widget_show (cbFashion);
-  gtk_table_attach (GTK_TABLE (table9), cbFashion, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Customer"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Vendor"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Authority"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Private"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Misc"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("No Interest"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Some Interest"));
-  cbFashion_items = g_list_append (cbFashion_items, (gpointer) _("Mostly Interest"));
-  gtk_combo_set_popdown_strings (GTK_COMBO (cbFashion), cbFashion_items);
-  g_list_free (cbFashion_items);
-
-  eFashion = GTK_COMBO (cbFashion)->entry;
-  gtk_widget_show (eFashion);
-  gtk_editable_set_editable (GTK_EDITABLE (eFashion), FALSE);
 
   label36 = gtk_label_new (_("fashion"));
   gtk_widget_show (label36);
@@ -1942,22 +1930,58 @@ create_AddressMainwindow (void)
   gtk_widget_show (tvTOP);
   gtk_container_add (GTK_CONTAINER (scrolledwindow14), tvTOP);
 
-  vbox19 = gtk_vbox_new (FALSE, 0);
+  vbox19 = gtk_vbox_new (TRUE, 0);
   gtk_widget_show (vbox19);
   gtk_table_attach (GTK_TABLE (table9), vbox19, 0, 1, 6, 7,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  label111 = gtk_label_new (_("Number of Employees"));
+  gtk_widget_show (label111);
+  gtk_box_pack_start (GTK_BOX (vbox19), label111, FALSE, FALSE, 0);
+
+  label112 = gtk_label_new (_("Turnover"));
+  gtk_widget_show (label112);
+  gtk_box_pack_start (GTK_BOX (vbox19), label112, FALSE, FALSE, 0);
+
+  label114 = gtk_label_new (_("Trade"));
+  gtk_widget_show (label114);
+  gtk_box_pack_start (GTK_BOX (vbox19), label114, FALSE, FALSE, 0);
+
+  label113 = gtk_label_new (_("label113"));
+  gtk_widget_show (label113);
+  gtk_box_pack_start (GTK_BOX (vbox19), label113, FALSE, FALSE, 0);
+
+  label115 = gtk_label_new (_("label115"));
+  gtk_widget_show (label115);
+  gtk_box_pack_start (GTK_BOX (vbox19), label115, FALSE, FALSE, 0);
+
+  label116 = gtk_label_new (_("label116"));
+  gtk_widget_show (label116);
+  gtk_box_pack_start (GTK_BOX (vbox19), label116, FALSE, FALSE, 0);
 
   label42 = gtk_label_new (_("Webshop"));
   gtk_widget_show (label42);
   gtk_box_pack_start (GTK_BOX (vbox19), label42, FALSE, FALSE, 0);
   gtk_misc_set_alignment (GTK_MISC (label42), 0, 0);
 
-  vbox20 = gtk_vbox_new (FALSE, 0);
+  vbox20 = gtk_vbox_new (TRUE, 0);
   gtk_widget_show (vbox20);
   gtk_table_attach (GTK_TABLE (table9), vbox20, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  eNumberOfEmployees = gtk_entry_new ();
+  gtk_widget_show (eNumberOfEmployees);
+  gtk_box_pack_start (GTK_BOX (vbox20), eNumberOfEmployees, FALSE, FALSE, 0);
+
+  cbTurnover = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbTurnover);
+  gtk_box_pack_start (GTK_BOX (vbox20), cbTurnover, TRUE, TRUE, 0);
+
+  cbTrade = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbTrade);
+  gtk_box_pack_start (GTK_BOX (vbox20), cbTrade, TRUE, TRUE, 0);
 
   hbox63 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox63);
@@ -1970,6 +1994,31 @@ create_AddressMainwindow (void)
   chkbUpdateFromWeb = gtk_check_button_new_with_mnemonic (_("update from Web"));
   gtk_widget_show (chkbUpdateFromWeb);
   gtk_box_pack_start (GTK_BOX (hbox63), chkbUpdateFromWeb, FALSE, FALSE, 0);
+
+  label110 = gtk_label_new (_("date of launch"));
+  gtk_widget_show (label110);
+  gtk_table_attach (GTK_TABLE (table9), label110, 0, 1, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_misc_set_alignment (GTK_MISC (label110), 0, 0.5);
+
+  eMiscDateOfLaunch = gtk_entry_new ();
+  gtk_widget_show (eMiscDateOfLaunch);
+  gtk_table_attach (GTK_TABLE (table9), eMiscDateOfLaunch, 1, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
+  cbLegalForm = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbLegalForm);
+  gtk_table_attach (GTK_TABLE (table9), cbLegalForm, 1, 2, 5, 6,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+
+  cbFashion = gtk_combo_box_entry_new_text ();
+  gtk_widget_show (cbFashion);
+  gtk_table_attach (GTK_TABLE (table9), cbFashion, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (GTK_FILL), 0, 0);
 
   lMisc = gtk_label_new (_("Misc."));
   gtk_widget_show (lMisc);
@@ -3959,8 +4008,6 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbCalcTax, "chkbCalcTax");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eTaxnumber, "eTaxnumber");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label37, "label37");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbFashion, "cbFashion");
-  GLADE_HOOKUP_OBJECT (AddressMainwindow, eFashion, "eFashion");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label36, "label36");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, eLine, "eLine");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label35, "label35");
@@ -3974,11 +4021,24 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, scrolledwindow14, "scrolledwindow14");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, tvTOP, "tvTOP");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox19, "vbox19");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label111, "label111");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label112, "label112");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label114, "label114");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label113, "label113");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label115, "label115");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label116, "label116");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label42, "label42");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, vbox20, "vbox20");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eNumberOfEmployees, "eNumberOfEmployees");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbTurnover, "cbTurnover");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbTrade, "cbTrade");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, hbox63, "hbox63");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbIsWebshop, "chkbIsWebshop");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, chkbUpdateFromWeb, "chkbUpdateFromWeb");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, label110, "label110");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, eMiscDateOfLaunch, "eMiscDateOfLaunch");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbLegalForm, "cbLegalForm");
+  GLADE_HOOKUP_OBJECT (AddressMainwindow, cbFashion, "cbFashion");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, lMisc, "lMisc");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, table2, "table2");
   GLADE_HOOKUP_OBJECT (AddressMainwindow, ePartnerStreet, "ePartnerStreet");
@@ -4207,7 +4267,6 @@ create_AddressMainwindow (void)
   GLADE_HOOKUP_OBJECT (AddressMainwindow, label100, "label100");
   GLADE_HOOKUP_OBJECT_NO_REF (AddressMainwindow, tooltips, "tooltips");
 
-  gtk_widget_grab_default (eFashion);
   return AddressMainwindow;
 }
 

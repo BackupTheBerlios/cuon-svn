@@ -11,22 +11,26 @@ class Address(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
-    def getComboBoxEntries(self, dicUser):
+    def xmlrpc_getComboBoxEntries(self, dicUser):
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
         liTrade0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTrade', cpServer)
         liTurnover0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTurnover', cpServer)
         liLegalform0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbLegalform', cpServer)
+        liFashion0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbFashion', cpServer)
         liTrade = ['NONE']
         liTurnover = ['NONE']
         liLegalform = ['NONE']
+        liFashion = ['NONE']
         if liTrade0:
             liTrade = liTrade0.split(',')
         if liTurnover0:
             liTurnover = liTurnover0.split(',')
         if liLegalform0:
             liLegalform = liLegalform0.split(',')
+        if liFashion0:
+            liFashion = liFashion0.split(',')
             
-        return liTrade,liTurnover,liLegalform
+        return liFashion, liTrade,liTurnover,liLegalform
         
         
     def xmlrpc_getAddress(self,id, dicUser ):
@@ -760,3 +764,19 @@ class Address(xmlrpc.XMLRPC, basics):
         self.writeLog('salesman-Result = ' + `result`)
         
         return result
+
+    def xmlrpc_getAllAddressForThisPartner(self,sWhere,dicUser):
+        sAddressWhere = ' where id = 0'
+        sSql = 'select addressid from partner ' + sWhere
+        sSql += self.getWhere('',dicUser,2)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['ERROR','NONE']:
+            sAddressWhere = ' where '
+            for i in result:
+                sAddressWhere += ' id = ' + `i['addressid']` + ' or'
+                #print sAddressWhere
+            sAddressWhere = sAddressWhere[:len(sAddressWhere)-3]
+            
+        return sAddressWhere
+        
+        

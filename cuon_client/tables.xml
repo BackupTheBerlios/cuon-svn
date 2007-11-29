@@ -877,7 +877,7 @@
       <default />
       <comment />
     </field>
-    
+   
     
   </table>
   <!--table: address_notes-->
@@ -2816,6 +2816,68 @@
     </field>
     <field>
       <name>top_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     
+    <field>
+      <name>date_of_launch</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>legal_form</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>turnover</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>count_of_employees</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>trade</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>cb_fashion</name>
       <type>int</type>
       <pkey>0</pkey>
       <unique>0</unique>

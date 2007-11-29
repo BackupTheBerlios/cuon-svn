@@ -453,7 +453,9 @@ class dumps:
         if os.name == "posix": 
             spawn = os.spawnvp #not available on windows though
             print 'posix system found'
-            return spawn(os.P_NOWAIT, sProgramName, (sProgramName,) + args)
+            sret = spawn(os.P_NOWAIT, sProgramName, (sProgramName,) + args)
+            print sret
+            return sret 
         else:
             sArgs = ''
             for s in args:

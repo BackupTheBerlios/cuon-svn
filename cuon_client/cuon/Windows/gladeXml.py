@@ -362,3 +362,12 @@ class gladeXml(defaultValues):
             pass
             
         
+    def setWaitCursor(self):
+        pass
+##        if self.win1:
+##            self.win1.get_parent_window().set_cursor(gtk.gdk.WATCH)
+##        
+    def setNormalCursor(self):
+        pass
+##        if self.win1:
+##            self.win1.get_parent_window().set_cursor(None)

@@ -128,7 +128,7 @@ class addresswindow(chooseWindows):
         self.loadEntries(self.EntriesAddresses)
         
         self.singleAddress.setEntries(self.getDataEntries('addresses.xml') )
-        self.singleAddress.setGladeXml(self.xml)
+        self.singleAddress.setGladeXml(self.xml, self.win1)
         self.singleAddress.setTreeFields( ['lastname', 'firstname','city','phone','status_info'] )
         self.singleAddress.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
         self.singleAddress.setTreeOrder('lastname, firstname')
@@ -221,14 +221,49 @@ class addresswindow(chooseWindows):
 
         #print 'time 10 = ', time.localtime()
 
-
+        liFashion, liTrade,liTurnover,liLegalform = self.rpc.callRP('Address.getComboBoxEntries',self.dicUser)
+        print liFashion, liTrade,liTurnover,liLegalform
+        
         cbFashion = self.getWidget('cbFashion')
         if cbFashion:
-            cbFashion.set_popdown_strings([_('Customer'),_('Vendor'),_('Authority')])
+            liststore = gtk.ListStore(str)
+            for fashion in liFashion:
+                liststore.append([fashion])
+            cbFashion.set_model(liststore)
+            cbFashion.set_text_column(0)
+            cbFashion.show()
+        
+        cbTrade = self.getWidget('cbTrade')
+        if cbTrade:
+            liststore = gtk.ListStore(str)
+            for trade in liTrade:
+                liststore.append([trade])
+            cbTrade.set_model(liststore)
+            cbTrade.set_text_column(0)
+            cbTrade.show()
+                
+            
+        cbTurnover = self.getWidget('cbTurnover')
+        if cbTurnover:
+            liststore = gtk.ListStore(str)
+            for turnover in liTurnover:
+                liststore.append([turnover])
+            cbTurnover.set_model(liststore)
+            cbTurnover.set_text_column(0)
+            cbTurnover.show()
         
         
-
-
+        
+        cbLegalform = self.getWidget('cbLegalForm')
+        if cbLegalform:
+            liststore = gtk.ListStore(str)
+            for legalform in liLegalform:
+                liststore.append([legalform])
+            cbLegalform.set_model(liststore)
+            cbLegalform.set_text_column(0)
+            cbLegalform.show()
+        
+        
         
             
         #print 'time 11 = ', time.localtime()
@@ -928,10 +963,16 @@ class addresswindow(chooseWindows):
             liSearch.append('status_info')
             liSearch.append(sInfo)
 			
-        self.singleAddress.sWhere = self.getWhere(liSearch) 
-        
-        self.out('Address sWhere = ' + `self.singleAddress.sWhere`)
-        self.oldTab = -1
+        if liSearch:
+            if self.tabOption == self.tabAddress:
+                self.singleAddress.sWhere = self.getWhere(liSearch) 
+                self.oldTab = -1
+            elif self.tabOption == self.tabPartner:
+                
+                self.singleAddress.sWhere = self.rpc.callRP('Address.getAllAddressForThisPartner',self.getWhere(liSearch),self.dicUser)
+                self.oldTab = -1
+                self.setMainwindowNotebook('F1')
+                #print self.singleAddress.sWhere
         self.refreshTree()
 
         
@@ -1175,7 +1216,20 @@ class addresswindow(chooseWindows):
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)
         
     def on_bSendExternEmail_clicked(self, event):
-        pass
+        Emailprg = self.dicUser['Email']['extPrg']
+        liEmail = Emailprg.split(' ')
+        s = "self.startExternalPrg(liEmail[0],"
+
+        if len(liEmail) > 1:
+            for i in range(1,len(liEmail)):
+                if liEmail[i] and liEmail[i] not in [' ']:
+                    s += "'" + liEmail[i] +"', "  
+                print s
+        s += "'" + self.singleAddress.getEmail() + "')"
+        exec(s)
+            
+        
+        
     
     def on_bSendPartnerEmail_clicked(self, event):
             

@@ -141,6 +141,7 @@ class User(defaultValues):
         self.Email['LoginUser']='login'
         self.Email['Password']='secret'
         self.Email['Signatur']='NONE'
+        self.Email['extPrg'] = 'evolution'
 
         self.prefFinances = {}
         self.prefFinances['cash1'] = '16000'
@@ -416,6 +417,7 @@ class User(defaultValues):
             self.Email['LoginUser'] = result['email_user_loginname']
             self.Email['Password'] = result['email_user_password']
             self.Email['Signatur'] = result['email_user_signatur']
+            self.Email['extPrg'] = result['email_ext_prg']
             
             self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
             print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']

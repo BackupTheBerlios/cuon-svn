@@ -79,13 +79,15 @@ class SingleData(gladeXml, logs):
         self.liItems = None
         self.bDistinct = False
         self.xml = None
-
+        self.win1 = None
+        
     def load(self, record, dicDetail = None):
         '''
         @param record: id of the record
         @param dicDetail: details for statusbar
         @return: list of records
         '''
+        self.setWaitCursor()
         self.ID = -1
         liRecords = []
         try:
@@ -157,6 +159,7 @@ class SingleData(gladeXml, logs):
             self.printOut( param)
             
         #self.printOut( liRecords    )
+        self.setNormalCursor()
         return liRecords
 
     def getFirstRecord(self):
@@ -177,8 +180,10 @@ class SingleData(gladeXml, logs):
 
         
     def save(self, liBigEntries='NO'):
+        self.setWaitCursor()
         dicValues = self.readEntries()
         id = self.saveValues(dicValues, liBigEntries)
+        self.setNormalCursor()
         return id
         
     def saveExternalData(self, dicValues, liBigEntries='NO'):
@@ -843,8 +848,9 @@ class SingleData(gladeXml, logs):
 
             
         
-    def setGladeXml(self, xml01):
+    def setGladeXml(self, xml01, win1 = None):
         self.setXml(xml01)
+        self.win1 = win1
             
     def setTreeFields(self, liFields01):
         self.liFields = liFields01
