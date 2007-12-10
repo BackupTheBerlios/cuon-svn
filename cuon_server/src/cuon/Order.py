@@ -336,23 +336,28 @@ class Order(xmlrpc.XMLRPC, basics):
                 liValues = defaultOrderDesignation.split(',')
                 sOD = ''
                 sSql = ' select * from address where id = ( select addressnumber from orderbook where id = ' +  `id` + ')'
-                print sSql
+                #print sSql
                 dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-                print dicResult
+                #print dicResult
                 for i in liValues:
-                    print 4, i
-                    print '4-1',i[1:]
+                    #print 4, i
+                    #print '4-1',i[1:]
                     if i[0] == '!':
-                        if isinstance(dicResult[0][i[1:]], types.StringType):
-                            sOD += dicResult[0][i[1:]].decode(dicUser['Encoding'])
-                        else:
-                            sOD += `dicResult[0][i[1:]]`
+                        try:
+                            if isinstance(dicResult[0][i[1:]], types.StringType):
+                                sOD += dicResult[0][i[1:]].decode('utf-8')
+                            else:
+                                sOD += `dicResult[0][i[1:]]`
+                        except Exception, params:
+                            print Exception,params
+                            
+                            
                     else:
                         sOD += i
-                print 'sOD',  sOD
+                #print 'sOD',  sOD
                 dicValues['designation'] = [sOD, 'string']
-            print 5    
-            print dicValues,  sSave
+            #print 5    
+            #print dicValues,  sSave
         except Exception, params:
             print Exception, params
             
@@ -420,6 +425,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         
     def getListOfInpayment( self, dicOrder, dicUser ):
+        self.checkMaturityDay(dicUser)
         dBegin = datetime.fromtimestamp(dicOrder['dBegin'])
         dEnd = datetime.fromtimestamp(dicOrder['dEnd'])
         print  dBegin, dEnd
@@ -451,27 +457,41 @@ class Order(xmlrpc.XMLRPC, basics):
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
        
     
-    def xmlrpc_getToP(self, dicOrder, dicUser):
+    def getToPID(self, dicOrder, dicUser):
         
         topID = 0
         sSql = "select addresses_misc.top_id as topid from addresses_misc,orderbook where addresses_misc.address_id = orderbook.addressnumber and orderbook.id = " + `dicOrder['orderid']`
         sSql += self.getWhere(None,dicUser,2)
-        print 'Before ', sSql
-        print dicUser['Name']
+        #print 'Before ', sSql
+        #print dicUser['Name']
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         print result
         if result not in ['NONE','ERROR']:
-            topID = result[0]['topid']
+            try:
+                topID = int(result[0]['topid'])
+            except:
+                topID = 0
             
             
-        print 'topID = ', topID
-        if topID == 0:
-            cpServer, f = self.getParser(self.CUON_FS + '/sql.ini')
-            #print cpServer
-            #print cpServer.sections()
-            topID = int(self.getConfigOption('modul_order','default_top', cpServer))
-            print 'topID from ini = ', topID
-            
+        #print 'topID = ', topID
+        if not topID or topID == 0 :
+            #print 'read from INI'
+            try:
+                cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+                #print cpServer
+                #print cpServer.sections()
+                topID = self.getConfigOption('CLIENT_' + `dicUser['client']`,'modul_order_default_top', cpServer)
+                #print 'topID from ini = ', topID
+                topID = int(topID.strip())
+                #print 'topID_zahl'
+            except Exception,params:
+                #print Exception,params
+                topID = 0
+        return topID
+        
+    
+    def xmlrpc_getToP(self, dicOrder, dicUser):
+        topID = self.getToPID(dicOrder, dicUser)
         if topID > 0:
             sSql = "select * from terms_of_payment where id = " + `topID`
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
@@ -492,23 +512,43 @@ class Order(xmlrpc.XMLRPC, basics):
                 sSql = " select max(invoice_number) as max_invoice_number from list_of_invoices where order_number = " + `order_id`
                 sSql += self.getWhere(None,dicUser,2)
                 result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                print 'result2 act.1', result2
+                #print 'result2 act.1', result2
                 if result2 and result2 not in ['NONE','ERROR'] and result2[0]['max_invoice_number'] not in ['NONE','ERROR'] :
                     if result2[0]['max_invoice_number'] < 1 :
                         liOrder.append(order_id)
-                        print 'append1 = ', order_id
+                        #print 'append1 = ', order_id
                 else:
                     liOrder.append(order_id)
-                    print 'append2 = ', order_id
+                    #print 'append2 = ', order_id
                     
         if not liOrder:
             liOrder = 'NONE'
             
-        print liOrder
+        #print liOrder
         
         return liOrder
+    def checkMaturityDay(self, dicUser):
+        sSql = 'select id, order_number from list_of_invoices where maturity is null '
+        sSql += self.getWhere('',dicUser,2)
+        result =  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['NONE','ERROR']:
+            for row in result:
+                dicOrder = {}
+
+                dicOrder['orderid'] = row['order_number']
+                topID = self.getToPID(dicOrder, dicUser)
+                sSql = 'select days from terms_of_payment where id = ' + `topID`
+                result2 =  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                days = 0
+                if  result2 and result2 not in ['NONE','ERROR']:
+                    days = result2[0]['days']
+                    
+                sSql = ' update list_of_invoices set maturity = date_of_invoice + ' + `days`
+                sSql += ' where id = ' + `row['id']`
+                result3 =  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
     def getResidue(self, dicUser):
+        self.checkMaturityDay(dicUser)
         sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
         
         
@@ -525,7 +565,9 @@ class Order(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         return result   
+        
     def getReminder(self, dicUser):
+        self.checkMaturityDay(dicUser)
         iReminder = 10
         sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
         
@@ -547,7 +589,8 @@ class Order(xmlrpc.XMLRPC, basics):
         return result    
     
     def getListOfInvoicesByTop(self, dicExtraData, dicUser ):
-        print dicExtraData
+        self.checkMaturityDay(dicUser)
+        #print dicExtraData
         iReminder = 10
         sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
         
@@ -585,7 +628,7 @@ class Order(xmlrpc.XMLRPC, basics):
         #sSql += " and (current_date - list_of_invoices.maturity > " + `iReminder` + ") "
         sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
         #sSql += ' and orderbook.id = orderinvoice.orderid '
-        print sSql
+        #print sSql
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         result2 = []
         

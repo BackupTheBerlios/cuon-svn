@@ -92,7 +92,7 @@ class Article(xmlrpc.XMLRPC, basics):
         
         
         
-        sSql = 'select number, designation, sep_info_1,id from articles'
+        sSql = 'select number, designation,sellingprice1, sellingprice2, sellingprice3, sellingprice4, wrapping, unit,quantumperwrap, manufactor_id, material_group, sep_info_1,id from articles'
         sSql3 = ''
         sSql4 = ''
         sSql5 = ''

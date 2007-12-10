@@ -393,6 +393,13 @@ class dumps:
     def getLastOfMonth(self, dtDateTime):
         dYear = dtDateTime.strftime("%Y")        #get the year
         dMonth = str(int(dtDateTime.strftime("%m"))%12+1)#get next month, watch rollover
+        if int(dMonth) == 1:
+            iYear = int(dYear)
+            iYear += 1
+            dYear = `iYear`
+        print dMonth, len(dMonth)
+        print dYear, len(dYear)
+        
         dDay = "1"                               #first day of next month
         nextMonth = self.getDateTime("%s-%s-%s"%(dYear,dMonth,dDay))#make a datetime obj for 1st of next month
         delta = datetime.timedelta(seconds=1)    #create a delta of 1 second

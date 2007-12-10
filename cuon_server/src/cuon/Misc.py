@@ -147,8 +147,20 @@ class Misc(xmlrpc.XMLRPC, basics):
                 self.writeLog( shellcommand)
                 liStatus = commands.getstatusoutput(shellcommand)
                 self.writeLog( `liStatus`)
-                
-                shellcommand = 'ssh -p ' + Faxport.strip() +' ' + Faxuser.strip() + '@' + Faxserver.strip() +  ' "sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
+                # new Parameter
+                # -D -R send email when all ok
+                # -f emailaddress
+                sSql = "select email from staff where cuon_username = '" +  dicUser['Name'] + "' "
+                sSql += self.getWhere("",dicUser,2)
+                result = self.xmlrpc_executeNormalQuery(sSql,dicUser)
+                sEmail = None
+                if result and result not in ['NONE','ERROR']:
+                    sEmail = result[0]['email']
+                    
+                shellcommand = 'ssh -p ' + Faxport.strip() +' ' + Faxuser.strip() + '@' + Faxserver.strip() +  ' "sendfax -n '
+                if sEmail:
+                    shellcommand += ' -f ' + sEmail
+                shellcommand += '-D -R -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
                 self.writeLog(shellcommand)
 
                 liStatus = commands.getstatusoutput(shellcommand)

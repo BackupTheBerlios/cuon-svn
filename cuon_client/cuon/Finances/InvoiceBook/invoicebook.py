@@ -304,7 +304,7 @@ class invoicebookwindow(windows):
         dEnd = dicDate['date']
         self.printListOfReminder(dBegin,dEnd)
         
-    def  on_directdebit1_activate(self, event):
+    def on_directdebit1_activate(self, event):
         dicExtraData = {}
         dicDate = self.getActualDateTime()
         dBegin = dicDate['date']

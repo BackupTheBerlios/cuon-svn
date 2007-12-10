@@ -287,7 +287,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 29, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 41, 'Rev': 32, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -339,7 +339,7 @@ class MainWindow(windows):
             #print Exception, params
             pass
         try:
-            os.system( 'rm ' + os.path.normpath( os.environ['CUON_HOME'] + '/*__dms*' ))
+            os.system( 'rm ' + os.path.normpath( self.td.cuon_path + '/*__dms*' ))
         except Exception, params:
             #print Exception, params
             pass

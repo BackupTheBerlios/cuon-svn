@@ -780,7 +780,7 @@ class report(MyXML):
                 liFormula = string.split(dicEntry['formula'],' ')
                 formula = 'a = '
                 checkTrigger = True
-                #print liFormula
+                print liFormula
                 if liFormula:
                     z = 0
                     ok = True
@@ -799,20 +799,23 @@ class report(MyXML):
                                           print 'Value by key'
                                           
                                           print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
-                                          if self.dicMemory[liFormula[fw + 1]] not in ['NONE','ERROR'] and self.dicMemory[liFormula[fw + 1]] != ['NONE'] and self.dicMemory[liFormula[fw + 1]][0]:
+                                          if self.dicMemory[liFormula[fw + 1]] not in ['NONE','ERROR'] and self.dicMemory[liFormula[fw + 1]][0]:
+                                            ''' !THEN sequence'''
 
-                                             if self.dicMemory.has_key(liFormula[fw + 3]):
+                                            print "Value bei !IF", self.dicMemory[liFormula[fw + 1]][0]
+                                            if self.dicMemory.has_key(liFormula[fw + 3]):
                                                 print 'fw +3 '    
                                                 print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
                                                  
                                                 formula += `self.dicMemory[liFormula[fw + 3]][0]`
-                                             else:
+                                            else:
                                                 formula +=  liFormula[fw + 3]
                                           else:
-                                             if self.dicMemory.has_key(liFormula[fw + 5]):
+                                            ''' !ELSE sequence '''
+                                            if self.dicMemory.has_key(liFormula[fw + 5]):
                                                  
                                                 formula += `self.dicMemory[liFormula[fw + 5]][0]`
-                                             else:
+                                            else:
                                                 formula +=  liFormula[fw + 5]
                                      print 'FW =',  liFormula[fw]    
                                      print ok , formula

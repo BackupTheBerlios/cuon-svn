@@ -90,6 +90,40 @@
 	  <backgroundColor>0,0,0</backgroundColor>
 	</entry>
 	
+	<entry>
+
+	  <name>number_1</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>220</posX1>
+	  <posY1>10</posY1>
+	  <posX2>220</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	<entry>
+	  <name>designation_1</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>480</posX1>
+	  <posY1>10</posY1>
+	  <posX2>480</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	
 	
 
       </pageDetails>
