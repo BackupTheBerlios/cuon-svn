@@ -255,6 +255,22 @@
     </Entries>
 <Entries>		
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>staff_misc.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_staff_misc.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>staff_vacation.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_staff_vacation.xml</Entry-FileValue>
+    </Entries>
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>staff_disease.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_staff_disease.xml</Entry-FileValue>
+    </Entries>
+    
+<Entries>		
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>help.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_help.xml</Entry-FileValue>
     </Entries>

@@ -4193,6 +4193,177 @@
       <comment />
     </field>
  </table>
+ 
+ <!--table: staff_misc-->
+  <table>
+    <nameOfTable>staff_misc</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>82</x>
+    <y>45</y>
+    <field>
+      <name>staff_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+<field>
+      <name>holyday_code</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    </table>
+    
+  <!--table: staff_vacation-->
+  <table>
+    <nameOfTable>staff_vacation</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>82</x>
+    <y>45</y>
+    <field>
+      <name>staff_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+<field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    
+  <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field> 
+    
+     <field>
+      <name>from</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+     <field>
+      <name>to</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+     <field>
+      <name>days</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+    
+    </table>  
+    
+    <!--table: staff_disease-->
+  <table>
+    <nameOfTable>staff_disease</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>82</x>
+    <y>45</y>
+    <field>
+      <name>staff_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+<field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    
+  <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field> 
+    
+     <field>
+      <name>from</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+     <field>
+      <name>to</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+     <field>
+      <name>days</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field> 
+    
+    </table>  
  <!--user_info -->
   <table>
     <nameOfTable>user_info</nameOfTable>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-3.9.dtd">
 <!-- Project file for project Cuon -->
-<!-- Saved: 2007-11-30, 19:47:41 -->
+<!-- Saved: 2007-12-27, 13:09:19 -->
 <!-- Copyright (C) 2007 Juergen Hamel, jh@cyrus.de -->
 <Project version="3.9">
   <ProgLanguage mixed="1">Python</ProgLanguage>
@@ -1574,6 +1574,30 @@
       <Dir>SecondLife</Dir>
       <Name>MyXmlrpc.py</Name>
     </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>E_Mail</Dir>
+      <Name>incoming_mail.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Name>SingleStaffMisc.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Name>SingleStaffVacation.py</Name>
+    </Source>
+    <Source>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Name>SingleStaffDisease.py</Name>
+    </Source>
   </Sources>
   <Forms>
   </Forms>
@@ -2357,6 +2381,51 @@
       <Dir>XML</Dir>
       <Name>articles_pickles_standard_4.xml</Name>
     </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>sellGood.cpp</Name>
+    </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>SimpleDialog.cpp</Name>
+    </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>001_info_cuon.cpp</Name>
+    </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>101_notecard_configuration.cpp</Name>
+    </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>002_read_notecard.cpp</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_staff_misc.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_staff_vacation.xml</Name>
+    </Other>
+    <Other>
+      <Dir>cuon_client</Dir>
+      <Dir>cuon</Dir>
+      <Dir>Staff</Dir>
+      <Dir>GUI</Dir>
+      <Name>entry_staff_disease.xml</Name>
+    </Other>
+    <Other>
+      <Dir>SecondLife</Dir>
+      <Name>sitDown.cpp</Name>
+    </Other>
   </Others>
   <MainScript>
     <Dir>cuon_client</Dir>
@@ -2428,21 +2497,21 @@ p1
 (lp2
 V
 p3
-asS'useRecursion'
+asS'outputDirectory'
 p4
-I01
-sS'cssFile'
-p5
-V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
-p6
-sS'filenamePrefix'
-p7
-Vcuon
-p8
-sS'outputDirectory'
-p9
 V/opt/Projekte/cuon/api
+p5
+sS'cssFile'
+p6
+V/usr/lib64/python2.4/site-packages/eric3/CSSs/default.css
+p7
+sS'filenamePrefix'
+p8
+Vcuon
+p9
+sS'useRecursion'
 p10
+I01
 s.</Eric3DocParams>
   </Eric3Doc>
   <Eric3Api>
@@ -2459,10 +2528,10 @@ p5
 s.</Eric3ApiParams>
   </Eric3Api>
   <FiletypeAssociations>
-    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
-    <FiletypeAssociation pattern="*.ui" type="FORMS" />
-    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
     <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
     <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
   </FiletypeAssociations>
 </Project>

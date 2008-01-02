@@ -1,0 +1,62 @@
+<entries_for_table>
+    <table>
+      <table_name>staff_disease</table_name>
+  <entry>
+	<name>eDiseaseName</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>name</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+       <entry>
+	<name>eDiseaseDesignation</name>
+	<type>textline</type>
+               <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>designation</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+       <entry>
+	<name>eDiseaseFrom</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>date</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>from</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+         <entry>
+	<name>eDiseaseTo</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>date</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>to</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+         <entry>
+	<name>eDiseaseDays</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>days</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+      </entries_for_table>

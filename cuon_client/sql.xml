@@ -260,7 +260,24 @@
         <index_table>material_group</index_table>
         <index_column> name</index_column>
     </index>
-    
+     <index>
+        <index_name> orderbook_idx_number</index_name>
+        <index_special> </index_special>
+        <index_table>orderbook</index_table>
+        <index_column>number</index_column>
+    </index>
+    <index>
+        <index_name> orderbook_idx_modul_number</index_name>
+        <index_special> </index_special>
+        <index_table>orderbook</index_table>
+        <index_column>modul_number</index_column>
+    </index>
+    <index>
+        <index_name> orderbook_idx_modul_order_number</index_name>
+        <index_special> </index_special>
+        <index_table>orderbook</index_table>
+        <index_column>modul_order_number</index_column>
+    </index>
     <index>
         <index_name> orderposition_idx_orderid</index_name>
         <index_special> </index_special>
@@ -272,6 +289,51 @@
         <index_special> </index_special>
         <index_table>orderposition</index_table>
         <index_column> articleid</index_column>
+    </index>
+    <index>
+        <index_name> orderinvoice_idx_orderid</index_name>
+        <index_special> </index_special>
+        <index_table>orderinvoice</index_table>
+        <index_column> orderid</index_column>
+    </index>
+    <index>
+        <index_name> orderinvoice_idx_order_top</index_name>
+        <index_special> </index_special>
+        <index_table>orderinvoice</index_table>
+        <index_column> order_top</index_column>
+    </index>
+    
+    
+    
+    <index>
+        <index_name> list_of_invoices_idx_invoice_number</index_name>
+        <index_special> </index_special>
+        <index_table>list_of_invoices</index_table>
+        <index_column>invoice_number</index_column>
+    </index>
+    <index>
+        <index_name> list_of_invoices_idx_order_number</index_name>
+        <index_special> </index_special>
+        <index_table>list_of_invoices</index_table>
+        <index_column>order_number</index_column>
+    </index>
+     <index>
+        <index_name> list_of_invoices_idx_date_of_invoice</index_name>
+        <index_special> </index_special>
+        <index_table>list_of_invoices</index_table>
+        <index_column>date_of_invoice</index_column>
+    </index>
+     <index>
+        <index_name> list_of_invoices_idx_maturity</index_name>
+        <index_special> </index_special>
+        <index_table>list_of_invoices</index_table>
+        <index_column>maturity</index_column>
+    </index>
+     <index>
+        <index_name> list_of_invoices_idx_total_amount</index_name>
+        <index_special> </index_special>
+        <index_table>list_of_invoices</index_table>
+        <index_column>total_amount</index_column>
     </index>
     <index>
         <index_name> staff_idx_cuon_username</index_name>

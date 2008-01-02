@@ -1,0 +1,62 @@
+<entries_for_table>
+    <table>
+      <table_name>staff_vacation</table_name>
+  <entry>
+	<name>eVacationName</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>name</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+       <entry>
+	<name>eVacationDesignation</name>
+	<type>textline</type>
+               <size>250</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>designation</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+       <entry>
+	<name>eVacationFrom</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>date</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>from</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+         <entry>
+	<name>eVacationTo</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>date</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>to</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+         <entry>
+	<name>eVacationDays</name>
+	<type>textline</type>
+               <size>50</size>
+                <verify_type>float</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>days</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      
+      </entries_for_table>

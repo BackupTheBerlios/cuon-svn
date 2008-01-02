@@ -49,6 +49,9 @@ class staffwindow(chooseWindows):
               
         self.entriesStaffs = 'staff.xml'
         self.entriesStaffsFee = 'staff_fee.xml'
+        self.entriesStaffsMisc = 'staff_misc.xml'
+        self.entriesStaffsVacation = 'staff_vacation.xml'
+        self.entriesStaffsDisease = 'staff_disease.xml'
                 
         
         #singleStaff
@@ -70,10 +73,15 @@ class staffwindow(chooseWindows):
         self.loadEntries(self.entriesStaffsFee)
         self.singleStaffFee.setEntries(self.getDataEntries( self.entriesStaffsFee) )
         self.singleStaffFee.setGladeXml(self.xml)
-        #self.singleStaffFee.setTreeFields( ['designation' ] )
-        #self.singleStaffFee.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        #self.singleStaffFee.setTreeOrder('designation')
-#        self.singleStaffFee.setListHeader([''])
+
+        self.singleStaffFee.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
+        self.singleStaffFee.setTree(self.xml.get_widget('tree1') )
+        
+   #singleStaffMisc
+        
+        self.loadEntries(self.entriesStaffsMisc)
+        self.singleStaffFee.setEntries(self.getDataEntries( self.entriesStaffsMisc) )
+        self.singleStaffFee.setGladeXml(self.xml)
 
         self.singleStaffFee.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
         self.singleStaffFee.setTree(self.xml.get_widget('tree1') )
@@ -112,6 +120,9 @@ class staffwindow(chooseWindows):
         # tabs from notebook
         self.tabStaff = 0
         self.tabFee = 1
+        self.tabMisc = 2
+        self.tabVacation = 3
+        self.tabDisease = 4
         
 
         # start
@@ -250,19 +261,33 @@ class staffwindow(chooseWindows):
     def refreshTree(self):
         self.singleStaff.disconnectTree()
         self.singleStaffFee.disconnectTree()
-        
+        self.singleStaffMisc.disconnectTree()
+        self.singleStaffVacation.disconnectTree()
+        self.singleStaffDisease.disconnectTree()
+
         if self.tabOption == self.tabStaff:
-            print '-->Start Staff refresh Tree'
             self.singleStaff.connectTree()
             self.singleStaff.refreshTree()
-            print '<--End Staff refresh Tree'
 
         elif self.tabOption == self.tabFee:
-            print 'refresh Tree fpr Staff-Fee'
             self.singleStaffFee.sWhere  ='where staff_id = ' + `int(self.singleStaff.ID)`
             self.singleStaffFee.getFirstListRecord()
             self.singleStaffFee.fillEntries(self.singleStaffFee.ID)
             
+        elif self.tabOption == self.tabMisc:
+            self.singleStaffMisc.sWhere  ='where staff_id = ' + `int(self.singleStaff.ID)`
+            self.singleStaffMisc.getFirstListRecord()
+            self.singleStaffMisc.fillEntries(self.singleStaffFee.ID)
+            
+        elif self.tabOption == self.tabVacation:
+            self.singleStaffVacation.sWhere  ='where staff_id = ' + `int(self.singleStaff.ID)`
+            self.singleStaffVacation.connectTree()
+            self.singleStaffVacation.refreshTree()
+        
+        elif self.tabOption == self.tabDisease:
+            self.singleStaffDisease.sWhere  ='where staff_id = ' + `int(self.singleStaff.ID)`
+            self.singleStaffDisease.connectTree()
+            self.singleStaffDisease.refreshTree()
 
 
          
@@ -282,7 +307,24 @@ class staffwindow(chooseWindows):
             self.enableMenuItem('fee')
             self.editAction = 'editFee'
             print 'Seite 1'
-  
+        elif self.tabOption == self.tabMisc:
+            #Misc
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('misc')
+            self.editAction = 'editMisc'
+            
+        elif self.tabOption == self.tabVacation:
+            #Misc
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('vacation')
+            self.editAction = 'editVacation'
+               
+        elif self.tabOption == self.tabDisease:
+            #Misc
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('disease')
+            self.editAction = 'editDisease'
+               
             
         # refresh the Tree
         self.refreshTree()

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2005]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2008]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -18,14 +18,14 @@ from cuon.Databases.SingleData import SingleData
 import logging
 import threading
 
-class SingleStaffFee(SingleData):
+class SingleStaffMisc(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "staff_fee"
+        self.sNameOfTable =  "staff_misc"
         self.xmlTableDef = 0
         print 'allTables = ',`allTables`
         self.loadTable(allTables)
