@@ -350,12 +350,14 @@ class orderwindow(chooseWindows):
         self.singleDMS.Rights = 'INVOICE'
         
         self.singleDMS.save(['document_image'])
+		
         
 
     def on_all_open_invoice1_activate(self, event):
         
         if self.QuestionMsg('All new invoices are printed ! Do you wish this ? Really ?'):
             oldID = self.singleOrder.ID
+			
             
             liOrder = self.rpc.callRP('Order.getAllOrderWithoutInvoice',self.dicUser)
             if liOrder and liOrder not in ['NONE','ERROR']:

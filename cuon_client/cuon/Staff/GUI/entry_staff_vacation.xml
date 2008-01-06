@@ -30,7 +30,7 @@
                <size>50</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
-                <sql_field>from</sql_field>
+                <sql_field>vacation_from</sql_field>
                 <bg_color>0</bg_color>
                 <fg_color>0</fg_color>
 
@@ -41,7 +41,7 @@
                <size>50</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
-                <sql_field>to</sql_field>
+                <sql_field>vacation_to</sql_field>
                 <bg_color>0</bg_color>
                 <fg_color>0</fg_color>
 
@@ -59,4 +59,5 @@
 
       </entry>
       
+    </table>
       </entries_for_table>

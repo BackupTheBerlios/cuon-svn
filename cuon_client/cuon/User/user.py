@@ -231,6 +231,25 @@ class User(defaultValues):
         self.setDicUserKeys('staff_fee_print','p')
         self.setDicUserKeys('staff_fee_save','s')
 
+ 
+        self.setDicUserKeys('staff_misc_edit','e')
+        self.setDicUserKeys('staff_misc_delete','d')
+        self.setDicUserKeys('staff_misc_new','n')
+        self.setDicUserKeys('staff_misc_print','p')
+        self.setDicUserKeys('staff_misc_save','s')
+
+        self.setDicUserKeys('staff_vacation_edit','e')
+        self.setDicUserKeys('staff_vacation_delete','d')
+        self.setDicUserKeys('staff_vacation_new','n')
+        self.setDicUserKeys('staff_vacation_print','p')
+        self.setDicUserKeys('staff_vacation_save','s')
+
+        self.setDicUserKeys('staff_disease_edit','e')
+        self.setDicUserKeys('staff_disease_delete','d')
+        self.setDicUserKeys('staff_disease_new','n')
+        self.setDicUserKeys('staff_disease_print','p')
+        self.setDicUserKeys('staff_disease_save','s')
+
         # project
         self.setDicUserKeys('project_edit','e')
         self.setDicUserKeys('project_delete','d')

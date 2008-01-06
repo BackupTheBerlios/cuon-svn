@@ -215,6 +215,147 @@
 	      </child>
 	    </widget>
 	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="misc1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Misc</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="misc1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="misc_edit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_misc_edit1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="misc_save1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Save</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_misc_save1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="vacation1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Vacation</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="vacation1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="vacation_new1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">New</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_vacation_new1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="vacation_edit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_vacation_edit1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="vacation_save1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Save</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_vacation_save1_activate" last_modification_time="Sat, 05 Jan 2008 12:37:28 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="vacation_delete1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Delete</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_vacation_delete1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="disease1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Disease</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="disease1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="disease_new1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">New</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_disease_new1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="disease_edit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_disease_edit1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="disease_save1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Save</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_disease_save1_activate" last_modification_time="Sat, 05 Jan 2008 12:37:28 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator2">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="disease_delete1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">delete</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_disease_delete1_activate" last_modification_time="Sat, 05 Jan 2008 12:14:31 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>

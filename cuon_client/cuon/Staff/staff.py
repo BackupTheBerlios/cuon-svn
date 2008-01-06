@@ -22,6 +22,9 @@ import gobject
 from cuon.Databases.SingleData import SingleData
 import SingleStaff
 import SingleStaffFee
+import SingleStaffMisc
+import SingleStaffVacation
+import SingleStaffDisease
 
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
@@ -42,8 +45,13 @@ class staffwindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Staff']        
         self.allTables = allTables
+		
+		
         self.singleStaff = SingleStaff.SingleStaff(allTables)
         self.singleStaffFee = SingleStaffFee.SingleStaffFee(allTables)
+        self.singleStaffMisc = SingleStaffMisc.SingleStaffMisc(allTables)
+        self.singleStaffVacation = SingleStaffVacation.SingleStaffVacation(allTables)
+        self.singleStaffDisease = SingleStaffDisease.SingleStaffDisease(allTables)
       
         # self.singleStaff.loadTable()
               
@@ -80,14 +88,34 @@ class staffwindow(chooseWindows):
    #singleStaffMisc
         
         self.loadEntries(self.entriesStaffsMisc)
-        self.singleStaffFee.setEntries(self.getDataEntries( self.entriesStaffsMisc) )
-        self.singleStaffFee.setGladeXml(self.xml)
+        self.singleStaffMisc.setEntries(self.getDataEntries( self.entriesStaffsMisc) )
+        self.singleStaffMisc.setGladeXml(self.xml)
 
-        self.singleStaffFee.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
-        self.singleStaffFee.setTree(self.xml.get_widget('tree1') )
+        self.singleStaffMisc.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
+        self.singleStaffMisc.setTree(self.xml.get_widget('tree1') )
   
-     
+    #singleStaffVacation
         
+        self.loadEntries(self.entriesStaffsVacation)
+        self.singleStaffVacation.setEntries(self.getDataEntries( self.entriesStaffsVacation) )
+        self.singleStaffVacation.setGladeXml(self.xml)
+        self.singleStaffVacation.setTreeFields( ['name', 'designation'] )
+        self.singleStaffVacation.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING,gobject.TYPE_UINT) ) 
+        self.singleStaffVacation.setTreeOrder('name')
+        self.singleStaffVacation.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
+        self.singleStaffVacation.setTree(self.xml.get_widget('tree1') )
+  
+      
+   #singleStaffDisease
+        
+        self.loadEntries(self.entriesStaffsDisease)
+        self.singleStaffDisease.setEntries(self.getDataEntries( self.entriesStaffsDisease) )
+        self.singleStaffDisease.setGladeXml(self.xml)
+
+        self.singleStaffDisease.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
+        self.singleStaffDisease.setTree(self.xml.get_widget('tree1') )
+  
+          
 
         # Menu-items
         self.initMenuItems()
@@ -96,11 +124,17 @@ class staffwindow(chooseWindows):
 
         self.addEnabledMenuItems('tabs','staff1')
         self.addEnabledMenuItems('tabs','fee1')
+        self.addEnabledMenuItems('tabs','misc')
+        self.addEnabledMenuItems('tabs','vacation')
+        self.addEnabledMenuItems('tabs','disease')
 
 
         # seperate Menus
         self.addEnabledMenuItems('staff','staff1')
         self.addEnabledMenuItems('fee','fee1')
+        self.addEnabledMenuItems('misc','misc1')
+        self.addEnabledMenuItems('vacation','vacation1')
+        self.addEnabledMenuItems('disease','disease1')
 
         
         # enabledMenues for Staff
@@ -111,10 +145,29 @@ class staffwindow(chooseWindows):
 
         #enabledMenues for Stafffee
         self.addEnabledMenuItems('editFee','fee_new1', self.dicUserKeys['staff_fee_new'])
-        self.addEnabledMenuItems('editFee','fee_clear1')
         self.addEnabledMenuItems('editFee','fee_edit1', self.dicUserKeys['staff_fee_edit'])
     
-       
+		#enabledMenues for StaffMisc
+        self.addEnabledMenuItems('editMisc','misc_edit1', self.dicUserKeys['staff_misc_edit'])
+		
+		#enabledMenues for StaffVacation
+        self.addEnabledMenuItems('editVacation','vacation_new1', self.dicUserKeys['staff_vacation_new'])
+        self.addEnabledMenuItems('editVacation','vacation_delete1')
+        self.addEnabledMenuItems('editVacation','vacation_edit1', self.dicUserKeys['staff_vacation_edit'])
+    
+
+		#enabledMenues for StaffDisease
+        self.addEnabledMenuItems('editDisease','disease_new1', self.dicUserKeys['staff_disease_new'])
+        self.addEnabledMenuItems('editDisease','disease_delete1')
+        self.addEnabledMenuItems('editD','disease_edit1', self.dicUserKeys['staff_disease_edit'])
+		
+       # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['staff_save'])
+        self.addEnabledMenuItems('editSave','fee_save1', self.dicUserKeys['staff_save'])
+        self.addEnabledMenuItems('editSave','misc_save1', self.dicUserKeys['staff_save'])
+        self.addEnabledMenuItems('editSave','vacation_save1', self.dicUserKeys['staff_save'])
+        self.addEnabledMenuItems('editSave','disease_save1', self.dicUserKeys['staff_save'])
+
 
 
         # tabs from notebook
@@ -169,27 +222,6 @@ class staffwindow(chooseWindows):
         print "delete staffs v2"
         self.singleStaff.deleteRecord()
 
-
-    #choose Manufactor button
-    def on_bChooseManufactor_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))
-        
-    # signals from entry eManufactorNumber
-    
-    def on_eManufactorNumber_changed(self, event):
-        print 'eManufactor changed'
-        eAdrField = self.getWidget('eManufactorField1')
-        liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
-        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
-
-    def on_bShowStaffDMS_clicked(self, event):
-        print 'dms clicked'
-        if self.singleStaff.ID > 0:
-            print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleStaff.ID})
-        
-
   
     # Fee
     def on_fee_save1_activate(self, event):
@@ -212,6 +244,77 @@ class staffwindow(chooseWindows):
     def on_fee_clear1_activate(self, event):
         print "delete fee staffs v2"
         self.singleStaffFee.deleteRecord()
+
+
+# Misc
+    def on_misc_save1_activate(self, event):
+        print "save staffs Fee v2"
+        
+        self.singleStaffMisc.staffID = self.singleStaff.ID
+        self.singleStaffMisc.save()
+        self.setEntriesEditable(self.entriesStaffsMisc, False)
+
+        self.tabChanged()
+        
+    def on_misc_new1_activate(self, event):
+        print "new misc staffs v2"
+        self.singleStaffMisc.newRecord()
+        self.setEntriesEditable(self.entriesStaffsMisc, True)
+
+    def on_misc_edit1_activate(self, event):
+        self.setEntriesEditable(self.entriesStaffsMisc, True)
+
+    def on_misc_delete1_activate(self, event):
+        print "delete miscstaffs v2"
+        self.singleStaffMisc.deleteRecord()
+
+
+
+# Vacation
+    def on_vacation_save1_activate(self, event):
+        print "save vacation Fee v2"
+        
+        self.singleStaffVacation.staffID = self.singleStaff.ID
+        self.singleStaffVacation.save()
+        self.setEntriesEditable(self.entriesStaffsVacation, False)
+
+        self.tabChanged()
+        
+    def on_vacation_new1_activate(self, event):
+        print "new vacation staffs v2"
+        self.singleStaffVacation.newRecord()
+        self.setEntriesEditable(self.entriesStaffsVacation, True)
+
+    def on_vacation_edit1_activate(self, event):
+        self.setEntriesEditable(self.entriesStaffsVacation, True)
+
+    def on_vacation_delete1_activate(self, event):
+        print "delete vacation staffs v2"
+        self.singleStaffVacation.deleteRecord()
+
+
+
+# Disease
+    def on_disease_save1_activate(self, event):
+        print "save staff disease v2"
+        
+        self.singleStaffDisease.staffID = self.singleStaff.ID
+        self.singleStaffDisease.save()
+        self.setEntriesEditable(self.entriesStaffsDisease, False)
+
+        self.tabChanged()
+        
+    def on_disease_new1_activate(self, event):
+        print "new disease staffs v2"
+        self.singleStaffDisease.newRecord()
+        self.setEntriesEditable(self.entriesStaffsDisease, True)
+
+    def on_disease_edit1_activate(self, event):
+        self.setEntriesEditable(self.entriesStaffsDisease, True)
+
+    def on_disease_delete1_activate(self, event):
+        print "delete disease staffs v2"
+        self.singleStaffDisease.deleteRecord()
 
 
     def on_chooseStaff_activate(self, event):
@@ -257,6 +360,27 @@ class staffwindow(chooseWindows):
         self.singleStaff.sWhere = self.getWhere(liSearch)
         self.out(self.singleStaff.sWhere, self.ERROR)
         self.refreshTree()
+
+
+#    #choose Manufactor button
+#    def on_bChooseManufactor_clicked(self, event):
+#        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+#        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))
+#        
+#    # signals from entry eManufactorNumber
+#    
+#    def on_eManufactorNumber_changed(self, event):
+#        print 'eManufactor changed'
+#        eAdrField = self.getWidget('eManufactorField1')
+#        liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
+#        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
+
+    def on_bShowStaffDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleStaff.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleStaff.ID})
+        
 
     def refreshTree(self):
         self.singleStaff.disconnectTree()

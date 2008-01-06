@@ -4262,7 +4262,7 @@
     </field> 
     
      <field>
-      <name>from</name>
+      <name>vacation_from</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -4272,7 +4272,7 @@
       <comment />
     </field> 
      <field>
-      <name>to</name>
+      <name>vacation_to</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -4333,7 +4333,7 @@
     </field> 
     
      <field>
-      <name>from</name>
+      <name>disease_from</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -4343,7 +4343,7 @@
       <comment />
     </field> 
      <field>
-      <name>to</name>
+      <name>disease_to</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
