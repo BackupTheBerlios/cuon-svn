@@ -125,7 +125,8 @@ class Misc(xmlrpc.XMLRPC, basics):
             Faxserver = self.getConfigOption('FAX','HOST', cpServer)
             Faxport = self.getConfigOption('FAX','PORT', cpServer)
             Faxuser = self.getConfigOption('FAX','USER', cpServer)
-        
+            self.writeLog('Faxserver = ' + Faxserver)
+            
         except:
             pass
             
@@ -150,9 +151,10 @@ class Misc(xmlrpc.XMLRPC, basics):
                 # new Parameter
                 # -D -R send email when all ok
                 # -f emailaddress
+                
                 sSql = "select email from staff where cuon_username = '" +  dicUser['Name'] + "' "
                 sSql += self.getWhere("",dicUser,2)
-                result = self.xmlrpc_executeNormalQuery(sSql,dicUser)
+                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
                 sEmail = None
                 if result and result not in ['NONE','ERROR']:
                     sEmail = result[0]['email']

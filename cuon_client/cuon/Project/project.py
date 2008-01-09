@@ -148,7 +148,16 @@ class projectwindow(chooseWindows):
         elif self.ProjectID > 0:
             self.singleProject.sWhere = ' where id = ' + `self.ProjectID`
             
-
+        liProjectStatus = self.rpc.callRP('Projects.getComboBoxEntries',self.dicUser)
+        
+        cbProjectStatus = self.getWidget('cbStatus')
+        if cbProjectStatus:
+            liststore = gtk.ListStore(str)
+            for oneStatus in liProjectStatus:
+                liststore.append([oneStatus])
+            cbProjectStatus.set_model(liststore)
+            cbProjectStatus.set_text_column(0)
+            cbProjectStatus.show()
 
         # Menu-items
         self.initMenuItems()

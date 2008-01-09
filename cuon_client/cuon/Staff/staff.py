@@ -111,7 +111,9 @@ class staffwindow(chooseWindows):
         self.loadEntries(self.entriesStaffsDisease)
         self.singleStaffDisease.setEntries(self.getDataEntries( self.entriesStaffsDisease) )
         self.singleStaffDisease.setGladeXml(self.xml)
-
+        self.singleStaffDisease.setTreeFields( ['name', 'designation'] )
+        self.singleStaffDisease.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING,gobject.TYPE_UINT) ) 
+        self.singleStaffDisease.setTreeOrder('name')
         self.singleStaffDisease.sWhere  ='where staff_id = ' + `self.singleStaff.ID`
         self.singleStaffDisease.setTree(self.xml.get_widget('tree1') )
   
@@ -124,9 +126,9 @@ class staffwindow(chooseWindows):
 
         self.addEnabledMenuItems('tabs','staff1')
         self.addEnabledMenuItems('tabs','fee1')
-        self.addEnabledMenuItems('tabs','misc')
-        self.addEnabledMenuItems('tabs','vacation')
-        self.addEnabledMenuItems('tabs','disease')
+        self.addEnabledMenuItems('tabs','misc1')
+        self.addEnabledMenuItems('tabs','vacation1')
+        self.addEnabledMenuItems('tabs','disease1')
 
 
         # seperate Menus

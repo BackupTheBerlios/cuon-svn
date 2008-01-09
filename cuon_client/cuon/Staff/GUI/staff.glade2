@@ -2528,7 +2528,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eDeseaseName">
+		<widget class="GtkEntry" id="eDiseaseName">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2577,7 +2577,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eDeseaseDesignation">
+		<widget class="GtkEntry" id="eDiseaseDesignation">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2654,7 +2654,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eDeseaseFrom">
+		<widget class="GtkEntry" id="eDiseaseFrom">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2675,7 +2675,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eDeseaseTo">
+		<widget class="GtkEntry" id="eDiseaseTo">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2724,7 +2724,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eDeseaseDays">
+		<widget class="GtkEntry" id="eDiseaseDays">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2774,7 +2774,7 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="eTotalThisYear">
+		<widget class="GtkEntry" id="eDiseaseTotalThisYear">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">False</property>

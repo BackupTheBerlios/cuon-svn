@@ -34,8 +34,8 @@ class SingleStaffVacation(SingleData):
         #self.athread = threading.Thread(target = self.loadTable())
         #self.athread.start()
         
-        self.listHeader['names'] = ['name', 'zip', 'city', 'Street', 'ID']
-        self.listHeader['size'] = [25,10,25,25,10]
+        self.listHeader['names'] = ['name', 'designation',  'ID']
+        self.listHeader['size'] = [25,35,10]
         #self.out( "number of Columns ")
         #self.out( len(self.table.Columns))
         #

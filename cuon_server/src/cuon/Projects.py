@@ -14,7 +14,15 @@ class Projects(xmlrpc.XMLRPC, basics):
         
         
 
-
+    def xmlrpc_getComboBoxEntries(self, dicUser):
+        cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+        liProject0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbProjectStatus', cpServer)
+        liProject = ['NONE']
+        if liProject0:
+            liProject = liProject0.split(',')
+        
+        return liProject
+        
 
     def xmlrpc_checkExistModulProject(self, dicUser, dicProject):
         print 'check Exist Modul Project '
