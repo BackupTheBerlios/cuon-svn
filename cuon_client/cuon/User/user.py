@@ -507,11 +507,11 @@ class User(defaultValues):
         self.sessionID = sid
         self.refreshDicUser()
         
-		
+        
     def getSessionID(self):
         return self.sessionID
-		
-		
+        
+        
     def setDebug(self, sDebug='NO'):
         self.sDebug = sDebug
         print 'sDebug(User)  = ' + sDebug

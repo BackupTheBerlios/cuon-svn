@@ -45,8 +45,8 @@ class staffwindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Staff']        
         self.allTables = allTables
-		
-		
+        
+        
         self.singleStaff = SingleStaff.SingleStaff(allTables)
         self.singleStaffFee = SingleStaffFee.SingleStaffFee(allTables)
         self.singleStaffMisc = SingleStaffMisc.SingleStaffMisc(allTables)
@@ -149,20 +149,20 @@ class staffwindow(chooseWindows):
         self.addEnabledMenuItems('editFee','fee_new1', self.dicUserKeys['staff_fee_new'])
         self.addEnabledMenuItems('editFee','fee_edit1', self.dicUserKeys['staff_fee_edit'])
     
-		#enabledMenues for StaffMisc
+        #enabledMenues for StaffMisc
         self.addEnabledMenuItems('editMisc','misc_edit1', self.dicUserKeys['staff_misc_edit'])
-		
-		#enabledMenues for StaffVacation
+        
+        #enabledMenues for StaffVacation
         self.addEnabledMenuItems('editVacation','vacation_new1', self.dicUserKeys['staff_vacation_new'])
         self.addEnabledMenuItems('editVacation','vacation_delete1')
         self.addEnabledMenuItems('editVacation','vacation_edit1', self.dicUserKeys['staff_vacation_edit'])
     
 
-		#enabledMenues for StaffDisease
+        #enabledMenues for StaffDisease
         self.addEnabledMenuItems('editDisease','disease_new1', self.dicUserKeys['staff_disease_new'])
         self.addEnabledMenuItems('editDisease','disease_delete1')
         self.addEnabledMenuItems('editD','disease_edit1', self.dicUserKeys['staff_disease_edit'])
-		
+        
        # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['staff_save'])
         self.addEnabledMenuItems('editSave','fee_save1', self.dicUserKeys['staff_save'])

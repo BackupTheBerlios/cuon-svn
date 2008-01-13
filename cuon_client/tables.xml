@@ -8,7 +8,7 @@
     <nameOfTable>t_standard</nameOfTable>
     <x>52</x>
     <y>15</y>
-	
+    
     <field>
       <name>id</name>
       <type>int</type>
@@ -2804,7 +2804,7 @@
       <default />
       <comment />
     </field>
-	<field>
+    <field>
       <name>update_from_webshop</name>
       <type>bool</type>
       <pkey>0</pkey>
@@ -5442,5 +5442,5 @@
     <sequence_cycle>Yes</sequence_cycle>
     <sequence_cache>0</sequence_cache>
   </database_sequence>
- 	
+    
 </database>

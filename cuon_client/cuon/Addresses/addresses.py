@@ -837,6 +837,12 @@ class addresswindow(chooseWindows):
             if dicNotes and dicNotes not in ['NONE','ERROR']:
                 for key in dicNotes:
                     firstRecord['notes_' + key] = dicNotes[key]
+                    
+            dicMisc = self.rpc.callRP('Address.getMisc',self.singleAddress.ID, self.dicUser)
+            if dicMisc and dicMisc not in ['NONE','ERROR']:
+                for key in dicMisc:
+                    firstRecord['misc_' + key] = dicMisc[key]
+                    
             firstRecord = self.addDateTime(firstRecord)
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
         
@@ -928,7 +934,7 @@ class addresswindow(chooseWindows):
         if sName2:
             liSearch.append('lastname2')
             liSearch.append(sName2)
-		
+        
         if sID:
             liSearch.append('id')
             try:
@@ -962,7 +968,7 @@ class addresswindow(chooseWindows):
         if sInfo:
             liSearch.append('status_info')
             liSearch.append(sInfo)
-			
+            
         if liSearch:
             if self.tabOption == self.tabAddress:
                 self.singleAddress.sWhere = self.getWhere(liSearch) 
@@ -977,8 +983,7 @@ class addresswindow(chooseWindows):
 
         
         
-        
-    
+            
     # choose Bank 
 
     def on_bChooseBank_clicked(self, event):

@@ -10,7 +10,7 @@ import sys,os
 import shelve
 import ConfigParser
 import bz2, base64
-
+import types
 
 
 class basics(xmlrpc.XMLRPC):
@@ -41,7 +41,7 @@ class basics(xmlrpc.XMLRPC):
         
         self.WEB_HOST2 = 'localhost'
         self.WEB_PORT2 = 7084
-	
+    
         
         self.AI_PORT = 7082
         self.AI_HOST = '84.244.7.139'
@@ -230,7 +230,7 @@ class basics(xmlrpc.XMLRPC):
         self.LIMITGARDEN = 100
         self.LIMITADDRESS = 100
         self.LIMITARTICLES = 100
-        self.LIMITPROJECT = 30
+        self.LIMITPROJECT = 50
         self.LIMITORDER = 100
         
         
@@ -269,8 +269,12 @@ class basics(xmlrpc.XMLRPC):
         self.dicLimitTables = {}
         self.dicLimitTables['GARDEN'] = {'list':['hibernation', 'hibernation_plant', 'botany'],'limit':self.LIMITGARDEN}
         self.liModules.append('GARDEN')
-        self.dicLimitTables['ADDRESS'] = {'list':['address', 'partner'], 'limit':self.LIMITADDRESS}
+        
+        self.dicLimitTables['ADDRESS'] = {'list':['address'], 'limit':self.LIMITADDRESS}
         self.liModules.append('ADDRESS')
+        
+        self.dicLimitTables['PROJECTS'] = {'list':['projects', 'project_phases'], 'limit':self.LIMITPROJECT}
+        self.liModules.append('PROJECTS')
         
         
         
@@ -530,7 +534,57 @@ class basics(xmlrpc.XMLRPC):
             return iA * iB
         else:
             return 'Test without Values'
+    
+    
+    def getBeforeYears(self, datepart,z1):
+            beforeYears = 0
+            newTime = time.localtime()
+        
+            if datepart == 'month' and z1 > 0:
+                if (newTime.tm_mon - z1) <= 0:
+                    beforeYears = 1
+            if datepart == 'quarter' and z1 > 0:
+                if (newTime.tm_mon - z1)*3 <= 0:
+                    beforeYears = 1
+                
+            return beforeYears       
             
+    def getNow(self, vSql, z1):
+        newTime = time.localtime()
+        datepart = vSql['id']
+        now = 0
+            
+        if datepart == 'month' :
+            now = newTime.tm_mon - z1
+            if now < 1:
+                now += 12
+        elif datepart == 'quarter' :
+            if newTime.tm_mon in [1, 2, 3]:
+                now = 1
+            elif newTime.tm_mon in [4, 5, 6]:
+                now = 2
+            elif newTime.tm_mon in [7, 8, 9]:
+                now = 3
+            elif newTime.tm_mon in [10, 11, 12]:
+                now = 4
+            now -= z1
+            
+            if now < 1:
+                now += 4
+                
+        elif datepart == 'week' :
+           now =  "  date_part('" + vSql['sql'] + "', now()) - " + `z1`
+        elif datepart == 'day' :
+           now =  "  date_part('" + vSql['sql'] + "', now()) - " + `z1`
+            
+        else:
+            now = z1
+        if isinstance(now, types.IntType):
+            now = `now`
+            
+        return now
+        
+        
     def getActualDateTime(self):
         newTime = time.localtime()
         tDate =  time.strftime(self.DIC_USER['DateformatString'], newTime)
@@ -545,3 +599,139 @@ class basics(xmlrpc.XMLRPC):
             for key in dicTime:
                 firstRecord['date_' + key] = dicTime[key]
         return firstRecord       
+
+
+
+
+    def getTime(self,s ):
+        try:
+            if isinstance(s,types.StringType):
+                iS = int(s)
+            else:
+                iS = s
+                
+            Hour,Minute = divmod(iS,4)
+            Minute = Minute * 15
+        except:
+            Hour = 0
+            Minute = 0
+            
+        
+        return Hour, Minute
+        
+    def getTimeString(self, s):
+        Hour, Minute = self.getTime(s)
+        #print Hour, Minute
+        sHour = `Hour`
+        if Minute == 0:
+            sMinute = '00'
+        else:
+            sMinute = `Minute`
+        
+        s = sHour + ':' + sMinute
+        return s
+        
+        
+    def getActualDateTime(self):
+        newTime = time.localtime()
+        tDate =  time.strftime(self.dicUser['DateformatString'], newTime)
+        tTime =  time.strftime(self.dicUser['TimeformatString'], newTime)
+        tStamp = time.strftime(self.dicUser['DateTimeformatString'], newTime)
+        dicTime = {'date':tDate, 'time':tTime, 'timestamp':tStamp }
+        
+        return dicTime
+        
+    
+       
+        
+    
+    def getDateTime(self,dateString,strFormat="%Y-%m-%d"):
+        # Expects "YYYY-MM-DD" string
+        # returns a datetime object
+        eSeconds = time.mktime(time.strptime(dateString,strFormat))
+        return datetime.datetime.fromtimestamp(eSeconds)
+    
+    def formatDate(self,dtDateTime,strFormat="%Y-%m-%d"):
+        # format a datetiself, me object as YYYY-MM-DD string and return
+        return dtDateTime.strftime(strFormat)
+    
+    def getFirstOfMonth2(self, dtDateTime):
+        #what is the first day of the current month
+        ddays = int(dtDateTime.strftime("%d"))-1 #days to subtract to get to the 1st
+        delta = datetime.timedelta(days= ddays)  #create a delta datetime object
+        return dtDateTime - delta                #Subtract delta and return
+    
+    def getFirstOfMonth(self, dtDateTime):
+        #what is the first day of the current month
+        #format the year and month + 01 for the current datetime, then form it back
+        #into a datetime object
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-%m-01"))
+        
+    def getFirstOfYear(self, dtDateTime):
+        #what is the first day of the current month
+        #format the year and month + 01 for the current datetime, then form it back
+        #into a datetime object
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-01-01"))
+    
+    def getLastOfMonth(self, dtDateTime):
+        dYear = dtDateTime.strftime("%Y")        #get the year
+        dMonth = str(int(dtDateTime.strftime("%m"))%12+1)#get next month, watch rollover
+        if int(dMonth) == 1:
+            iYear = int(dYear)
+            iYear += 1
+            dYear = `iYear`
+        print dMonth, len(dMonth)
+        print dYear, len(dYear)
+        
+        dDay = "1"                               #first day of next month
+        nextMonth = self.getDateTime("%s-%s-%s"%(dYear,dMonth,dDay))#make a datetime obj for 1st of next month
+        delta = datetime.timedelta(seconds=1)    #create a delta of 1 second
+        return nextMonth - delta                 #subtract from nextMonth and return
+        
+    def getLastOfYear(self, dtDateTime):
+        dYear = dtDateTime.strftime("%Y")        #get the year
+        
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-12-31"))
+    
+    
+    def getFirstDayOfMonth(self,sdate=None):
+        if sdate == None:
+            dDate = datetime.date.today()   
+        else:
+            dDate = sdate
+            
+        return self.getFirstOfMonth(dDate)
+        
+    def getLastDayOfMonth(self,sdate=None):
+        if sdate == None:
+            dDate = datetime.date.today()   
+        else:
+            dDate = sdate
+            
+        return self.getLastOfMonth(dDate)
+        
+        
+    def getSeconds(self, dt):
+        eSeconds = time.mktime( dt.timetuple())
+        return eSeconds
+
+    
+    def getFirstDayOfMonthAsSeconds(self,sdate=None):
+        return self.getSeconds(self.getFirstDayOfMonth(sdate))
+        
+    def getLastDayOfMonthAsSeconds(self,sdate=None):
+        return self.getSeconds(self.getLastDayOfMonth(sdate))
+        
+        
+    def getFirstLastDayOfLastMonthAsSeconds(self,sdate=None):
+        currentFirstDay = self.getFirstDayOfMonth(sdate)
+        secs = self.getSeconds(currentFirstDay) - 10
+        print 'secs' , secs
+        ddate = datetime.datetime.fromtimestamp(secs)
+        
+        dBegin = self.getFirstDayOfMonthAsSeconds(ddate)
+        dEnd = self.getLastDayOfMonthAsSeconds(ddate)
+        print dBegin,dEnd
+        return dBegin,dEnd
+        
+        

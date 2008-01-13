@@ -2,8 +2,8 @@
     <table>
       <table_name>staff_disease</table_name>
   <entry>
-	<name>eDiseaseName</name>
-	<type>textline</type>
+    <name>eDiseaseName</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -13,8 +13,8 @@
 
       </entry>
        <entry>
-	<name>eDiseaseDesignation</name>
-	<type>textline</type>
+    <name>eDiseaseDesignation</name>
+    <type>textline</type>
                <size>250</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -25,8 +25,8 @@
       </entry>
       
        <entry>
-	<name>eDiseaseFrom</name>
-	<type>textline</type>
+    <name>eDiseaseFrom</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
@@ -36,8 +36,8 @@
 
       </entry>
          <entry>
-	<name>eDiseaseTo</name>
-	<type>textline</type>
+    <name>eDiseaseTo</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
@@ -48,8 +48,8 @@
       </entry>
       
          <entry>
-	<name>eDiseaseDays</name>
-	<type>textline</type>
+    <name>eDiseaseDays</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>float</verify_type>
                 <create_sql>1</create_sql>
