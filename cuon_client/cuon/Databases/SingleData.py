@@ -80,6 +80,10 @@ class SingleData(gladeXml, logs):
         self.bDistinct = False
         self.xml = None
         self.win1 = None
+        self.TreePos = 0
+        self.TREEFIRST=-100
+        self.TREELAST = -1000
+        
         
     def load(self, record, dicDetail = None):
         '''
@@ -343,7 +347,7 @@ class SingleData(gladeXml, logs):
            self.row = listStore[0]
         else:
             self.row = -1
-   
+        
         if self.iter != None:
             # self.fillEntries(listStore[0].get_value(listStore[1], self.listboxId) )
             self.path = listStore.get_path(self.iter)
@@ -370,12 +374,38 @@ class SingleData(gladeXml, logs):
         # self.out( 'tree selected', self.INFO)
         # self.out( str(self.tree1.get_selection()), self.INFO )
         # self.out( str(self.path) , self.INFO)
-        if not self.iter:
-            self.iter = self.tree1.get_model().get_iter_root()
+       
+        if self.TreePos == self.TREEFIRST:
+            try:
+                self.iter = self.tree1.get_model().get_iter_root()
+                self.path = self.tree1.get_model().get_path(self.iter)
+            except:
+                pass
+                
+            self.TreePos = 0
+            
+        elif self.TreePos == self.TREELAST:
+            treeModel = self.tree1.get_model()
+            try:
+                self.iter = treeModel.get_iter_root()
+                nextIter = True
+                while nextIter:
+                    print 'goto next Iter '
+                    nextIter = treeModel.iter_next(self.iter)
+                    if nextIter:
+                        self.iter = nextIter
+                self.path = self.tree1.get_model().get_path(self.iter)        
+            except Exception, param:
+                print Exception, param
+                
+            self.TreePos = 0
+        else:
+            if not self.iter:
+                self.iter = self.tree1.get_model().get_iter_root()
         
-        if not self.path:                
-            self.path = self.tree1.get_model().get_path(self.iter)
-        
+            if not self.path:                
+                self.path = self.tree1.get_model().get_path(self.iter)
+            
         if self.iter and self.path:
             self.tree1.scroll_to_cell(self.path)
             self.tree1.get_selection().select_path(self.path)

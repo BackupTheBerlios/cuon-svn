@@ -378,6 +378,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         return total_sum
         
+    
           
     def xmlrpc_getTotalSumString(self, OrderID, dicUser):
         retValue = '0'  
@@ -391,6 +392,21 @@ class Order(xmlrpc.XMLRPC, basics):
             pass
             
         return retValue  
+        
+    def xmlrpc_getPaidAt(self,OrderID, dicUser):
+        paidAt = ' '
+        sSql = "select  to_char(date_of_paid, \'" + dicUser['SQLDateFormat'] + "\')  as paid_at from  in_payment where order_id = " + `OrderID` 
+        sSql += self.getWhere(None,dicUser,2)
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if liResult and liResult not in ['NONE','ERROR']:
+            try:
+                paidAt = liResult[0]['paid_at']
+            except:
+                pass
+        
+        return paidAt
+        
+        
     def xmlrpc_getNextPosition(self, orderid, dicUser):
         pos = 0
         sSql = " select max(position) as max_position from orderposition where orderid = " +  `orderid`

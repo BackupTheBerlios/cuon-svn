@@ -67,6 +67,10 @@ class SingleOrder(SingleData):
         except Exception, params:
             print Exception, params
             
+        try:
+            self.getWidget('ePaidAt').set_text( self.rpc.callRP('Order.getPaidAt', self.ID, self.dicUser))
+        except Exception, params:
+            print Exception, params    
         
         
     def setOtherEmptyEntries(self):
