@@ -839,13 +839,16 @@ class addresswindow(chooseWindows):
                     firstRecord['notes_' + key] = dicNotes[key]
                     
             dicMisc = self.rpc.callRP('Address.getMisc',self.singleAddress.ID, self.dicUser)
+            #print "dicMisc = ",  dicMisc
+            
             if dicMisc and dicMisc not in ['NONE','ERROR']:
                 for key in dicMisc:
                     firstRecord['misc_' + key] = dicMisc[key]
                     
             firstRecord = self.addDateTime(firstRecord)
             dicExtInfo ={'sep_info':{'1':self.singleAddress.ID},'Modul':self.ModulNumber}
-        
+            print firstRecord
+            
         return firstRecord, dicExtInfo
     
     def getSchedulInfos(self):

@@ -189,7 +189,7 @@ class SingleDMS(SingleData):
             
     def setWriteWidgetsVisible(self, visible):
         # Buttons and menu-items
-        for x in ['bView']:
+        for x in ['bView', 'edit1']:
             if self.xml:
                 self.getWidget(x).set_sensitive(visible)
     
@@ -203,13 +203,13 @@ class SingleDMS(SingleData):
         # sel all items invisible
         self.setAllWidgetsVisible(False)
         # read 
-        if Permission['Read']:
+        if Permission['Read'] and not Permission['Write']:
             self.setReadWidgetsVisible(True)
-                
+            print "Read,  not Write visible"    
         else:
             
             self.setAllWidgetsVisible(True)
-        
+            print "all to visible "
 
 ##        s = oneRecord['document_image']
 ##        print len(s)

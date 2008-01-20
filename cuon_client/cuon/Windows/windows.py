@@ -82,6 +82,11 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Staff'] = 6000
         self.MN['StaffFee'] = 6100
         self.MN['Order_stat_misc1'] = 4001
+        self.MN['Order_stat_global1'] = 4002
+        self.MN['Order_stat_caller1'] = 4003
+        self.MN['Order_stat_rep1'] = 4004
+        self.MN['Order_stat_salesman1'] = 4005
+        
         self.MN['Invoice'] = 7000
         self.MN['Invoice_info'] = 7001
         

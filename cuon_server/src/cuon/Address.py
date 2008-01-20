@@ -268,10 +268,19 @@ class Address(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getMisc(self, addressid, dicUser):
         dicReturn = 'NONE'
-        sSql = 'select * from address_misc where address_id = ' +  `addressid`
+        sSql = 'select * from addresses_misc where address_id = ' +  `addressid`
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         if liResult not in ['NONE','ERROR']:
             dicReturn = liResult[0]
+            liFashion, liTrade,liTurnover,liLegalform = self.xmlrpc_getComboBoxEntries(dicUser)
+            try:
+                dicReturn['cb_fashion'] = liFashion[dicReturn['cb_fashion']]
+                dicReturn['turnover'] = liTurnover[dicReturn['turnover']]
+                dicReturn['trade'] = liTrade[dicReturn['trade']]
+                dicReturn['legal_form'] = liLegalform[dicReturn['legal_form']]
+            except:
+                pass
+                    
         return dicReturn
             
     def sentChangesPerMail(self, sModul, addressID, dicUser):
@@ -600,7 +609,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                 sSql += "(select  count(ps.id)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
                                 #sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`
                                 sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+" " + self.getNow(vSql, z1)
-                                sSql += " and date_part('year', ps.insert_time) = date_part('year', now()) -  " + `self.getBeforeYears(vSql['id'],z1)`
+                                sSql += " and date_part('year', ps.insert_time) =  " + `self.getBeforeYears(vSql['id'],z1)`
                                 if WITHOUT_ID:
                                     liWithoutId = WITHOUT_ID.split(',')
                                     for no_id in liWithoutId:
@@ -614,7 +623,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                     for sps in liSchedulProcessStatus:
                                         sSql += "(select  count(process_status)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
                                         sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
-                                        sSql += " and date_part('year', ps.insert_time) = date_part('year', now()) -  "  + `self.getBeforeYears(vSql['id'],z1)`
+                                        sSql += " and date_part('year', ps.insert_time) = "  + `self.getBeforeYears(vSql['id'],z1)`
                                         if WITHOUT_ID:
                                             liWithoutId = WITHOUT_ID.split(',')
                                             for no_id in liWithoutId:
@@ -668,6 +677,50 @@ class Address(xmlrpc.XMLRPC, basics):
         
         except:
             pass
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            SCHEDUL_PROCESS_STATUS = self.getConfigOption('CLIENT_' + `dicUser['client']`,'SchedulProcessStatus', cpServer)
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerCentury', cpServer)
+            if iValue:
+                iCentury = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerDecade', cpServer)
+            if iValue:
+                iDecade = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerYear', cpServer)
+            if iValue:
+                iYear = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerQuarter', cpServer)
+            if iValue:
+                iQuarter = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerMonth', cpServer)
+            if iValue:
+                iMonth = int(iValue)
+                
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerWeek', cpServer)
+            if iValue:
+                iWeek = int(iValue)
+                
+                    
+                
+        except:
+            pass    
+        print "SCHEDUL_PROCESS_STATUS",   SCHEDUL_PROCESS_STATUS
+        
+        if SCHEDUL_PROCESS_STATUS:
+            liSPS = SCHEDUL_PROCESS_STATUS.split(',')
+            print "liSPS",  liSPS
+            liSchedulProcessStatus = []
+            for st in liSPS:
+                print st
+                liSchedulProcessStatus.append(int(st.strip()))
             
 
         if REP_ID:
@@ -691,22 +744,23 @@ class Address(xmlrpc.XMLRPC, basics):
                     sSql = "select '" + rep_name + "' as rep_name_" + rep + " ,"
                     for vSql in liSql:
                         for z1 in range(-5,20):
-                            if vSql['id'] == 'decade' and z1 > 4:
+                            if vSql['id'] == 'decade' and z1 > iDecade:
                                 pass
-                            elif vSql['id'] == 'century' and z1 > 1:
+                            elif vSql['id'] == 'century' and z1 > iCentury:
                                 pass 
-                            elif vSql['id'] == 'year' and z1 > 5:
+                            elif vSql['id'] == 'year' and z1 > iYear:
                                 pass 
-                            elif vSql['id'] == 'quarter' and z1 > 9:
+                            elif vSql['id'] == 'quarter' and z1 > iQuarter:
                                 pass 
-                            elif vSql['id'] == 'month' and z1 > 14:
+                            elif vSql['id'] == 'month' and z1 > iMonth:
                                 pass     
-                            elif vSql['id'] == 'week' and z1 > 9:
+                            elif vSql['id'] == 'week' and z1 > iWeek:
                                 pass     
                             
                             else:
                                 sSql += "(select  count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.schedul_staff_id = '" + rep + "' and ps.partnerid = p.id and  ps.process_status != 999 "
-                                sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`
+                                sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)
+                                sSql += " and date_part('year', to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) = "  + `self.getBeforeYears(vSql['id'],z1)`
                                 if WITHOUT_ID:
                                     liWithoutId = WITHOUT_ID.split(',')
                                     for no_id in liWithoutId:
@@ -714,7 +768,23 @@ class Address(xmlrpc.XMLRPC, basics):
                                 sSql += " and date_part('year',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"')) >= " + MIN_SCHEDUL_YEAR
                                 sSql += self.getWhere('',dicUser,2,'ps.')
                                 sSql += ") as " + 'rep_' + rep +'_'+ vSql['id'] + '_count_' + `z1`.replace('-','M') + " , "
-                                
+                                if liSchedulProcessStatus:
+                                    for sps in liSchedulProcessStatus:
+                                        sSql += "(select  count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.schedul_staff_id = '" + rep + "' and ps.partnerid = p.id and  ps.process_status != 999 "
+                                        sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)
+                                        sSql += " and date_part('year', to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) = "  + `self.getBeforeYears(vSql['id'],z1)`
+                                         
+                                        if WITHOUT_ID:
+                                            liWithoutId = WITHOUT_ID.split(',')
+                                            for no_id in liWithoutId:
+                                                sSql += ' and a.id != ' + no_id
+                                        sSql += " and date_part('year',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"')) >= " + MIN_SCHEDUL_YEAR
+                                        sSql += "and process_status = " + `sps` + " " 
+                                        sSql += self.getWhere('',dicUser,2,'ps.')
+                                        sSql += ") as " + 'rep_' + rep +'_'+ vSql['id'] + '_count_' + `z1`.replace('-','M') + "_status_" + `sps` + " , "       
+                                                
+                                        
+                                        
                                 #sSql += " group by a.rep_id "
 
 

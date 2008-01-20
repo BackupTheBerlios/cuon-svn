@@ -325,26 +325,27 @@ class documentTools(dumps):
     def replaceValues(self, dicVars, s, dicUser):
         for key in dicVars.keys():
             try:
-                if isinstance(dicVars[key], types.UnicodeType) :
+                if isinstance(dicVars[key], types.UnicodeType): 
                     if dicUser['Locales'] == 'de':
                         dicVars[key] = dicVars[key].encode('utf-8')
                         #print 'de and unicode'
                         #print dicVars[key]
                     
-                        
-                dicVars[key]  = dicVars[key].replace('&','&amp;' )
+                if self.checkType( dicVars[key], 'string'):
+                    dicVars[key]  = dicVars[key].replace('&','&amp;' )
                 
-                print key, dicVars[key]
-                print '\n'
+                #print key, dicVars[key]
+                #print '\n'
                 
             except Exception, params:
                 print Exception, params
                     
             try:
-                if dicVars[key] == None or dicVars[key] == 'NONE':
-                    dicVars[key] = ''
-                if isinstance(dicVars[key], types.StringType) or dicVars[key] == '' :
+                if dicVars[key] == 'NONE' or dicVars[key] ==None:
+                    s = s.replace('##'+ key + ';;','')
+                elif self.checkType(dicVars[key], 'string') :
                     s = s.replace('##'+ key + ';;',dicVars[key] )
+                
                 else:
                     s = s.replace('##'+ key + ';;',`dicVars[key]` )
             except:

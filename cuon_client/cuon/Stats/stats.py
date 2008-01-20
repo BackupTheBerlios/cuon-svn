@@ -83,12 +83,37 @@ class statswindow(windows):
         dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Address_stat_salesman']}
         dicSales = self.rpc.callRP('Address.getStatSalesman',self.oUser.getSqlDicUser())
         Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_stat_salesman'], {'1':-105}, dicSales, dicExtInfo)
+    
+    def on_order_global1_activate(self, event):
         
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Order_stat_global1']}
+        dicOrder = self.rpc.callRP('Order.getStatsGlobal',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_global1'], {'1':-112}, dicOrder, dicExtInfo)
+                
+    def on_order_caller1_activate(self, event):
+        
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Order_stat_misc1']}
+        dicOrder = self.rpc.callRP('Order.getStatsCaller',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_misc1'], {'1':-111}, dicOrder, dicExtInfo)
+               
+    def on_order_representant1_activate(self, event):
+        
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Order_stat_rep1']}
+        dicOrder = self.rpc.callRP('Order.getStatsRep',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_rep1'], {'1':-113}, dicOrder, dicExtInfo)
+               
+               
+    def on_order_salesman1_activate(self, event):
+        
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Order_stat_salesman1']}
+        dicOrder = self.rpc.callRP('Order.getStatsSalesman',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_salesman11'], {'1':-114}, dicOrder, dicExtInfo)
+               
     def on_order_misc1_activate(self, event):
         
         dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Order_stat_misc1']}
         dicOrder = self.rpc.callRP('Order.getStatsMisc',self.oUser.getSqlDicUser())
-        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_misc1'], {'1':-111}, dicOrder, dicExtInfo)
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Order_stat_misc1'], {'1':-115}, dicOrder, dicExtInfo)
                
                
     def on_project_misc1_activate(self, event):

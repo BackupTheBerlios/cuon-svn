@@ -547,7 +547,7 @@ class basics(xmlrpc.XMLRPC):
                 if (newTime.tm_mon - z1)*3 <= 0:
                     beforeYears = 1
                 
-            return beforeYears       
+            return newTime.tm_year - beforeYears       
             
     def getNow(self, vSql, z1):
         newTime = time.localtime()
@@ -735,3 +735,18 @@ class basics(xmlrpc.XMLRPC):
         return dBegin,dEnd
         
         
+    def checkType(self, oType, sType):
+        bRet = False
+        if sType == 'string':
+            if isinstance(oType, types.StringType):
+                bRet = True
+        elif sType == 'int':
+            if isinstance(oType, types.IntType):
+                bRet = True
+        elif sType == 'float':
+            if isinstance(oType, types.FloatType):
+                bRet = True
+                                              
+        return bRet
+        
+                

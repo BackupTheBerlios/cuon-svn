@@ -378,7 +378,8 @@ class Misc(xmlrpc.XMLRPC, basics):
                 dicRights['Execute'] = True
 
 
-             
+        #Workaround
+        #dicRights['Read'] = False
                 
         
         return dicRights

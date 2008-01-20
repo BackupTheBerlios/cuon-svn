@@ -14,6 +14,12 @@
         <index_table>address</index_table>
         <index_column>firstname</index_column>
     </index>
+     <index>
+        <index_name> address_idx_phone</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>phone</index_column>
+    </index>
     <index>
         <index_name> address_idx_lastname_firstname</index_name>
         <index_special> </index_special>
@@ -82,7 +88,36 @@
         <index_table>partner_schedul</index_table>
         <index_column>schedul_date</index_column>
     </index>
-    
+    <index>
+        <index_name>partner_schedul_idx_schedul_insert_time_day</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>date_part('day',insert_time)</index_column>
+    </index>
+    <index>
+        <index_name>partner_schedul_idx_schedul_insert_time_week</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>date_part('week',insert_time)</index_column>
+    </index>
+    <index>
+        <index_name>partner_schedul_idx_schedul_insert_time_month</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>date_part('month',insert_time)</index_column>
+    </index>
+    <index>
+        <index_name>partner_schedul_idx_schedul_insert_time_quarter</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>date_part('quarter',insert_time)</index_column>
+    </index>
+    <index>
+        <index_name>partner_schedul_idx_schedul_insert_time_year</index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>date_part('year',insert_time)</index_column>
+    </index>
     <index>
         <index_name>partner_schedul_idx_schedul_staff_id</index_name>
         <index_special> </index_special>

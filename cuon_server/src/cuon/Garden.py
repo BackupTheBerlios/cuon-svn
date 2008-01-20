@@ -39,11 +39,12 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = sSql + self.getWhere("",dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult == 'NONE':
+        if dicResult in [ 'NONE', 'ERROR']:
             nr = 0
         else:
             nr = dicResult[0]['nr']
-        
+        if not self.checkType(nr, 'int'):
+            nr = 0
         return nr
             
 

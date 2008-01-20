@@ -653,4 +653,17 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getStatsMisc(self, dicUser):
         
         return ['NONE']
+    
+    def xmlrpc_getStatsGlobal(self, dicUser):
+        
+        return ['NONE']
+    def xmlrpc_getStatsCaller(self, dicUser):
+        
+        return ['NONE']
+    def xmlrpc_getStatsReps(self, dicUser):
+        
+        return ['NONE']
+    def xmlrpc_getStatsSalesman(self, dicUser):
+        
+        return ['NONE']
          

@@ -481,7 +481,21 @@ class dumps:
             f.close()  
         except:
             pass
-    
+            
+    def checkType(self, oType, sType):
+        bRet = False
+        if sType == 'string':
+            if isinstance(oType, types.StringType):
+                bRet = True
+        elif sType == 'int':
+            if isinstance(oType, types.IntType):
+                bRet = True
+        elif sType == 'float':
+            if isinstance(oType, types.FloatType):
+                bRet = True
+                                              
+        return bRet
+        
      
             
 ##    if __name__=="__main__":
