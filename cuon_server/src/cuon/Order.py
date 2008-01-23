@@ -655,8 +655,58 @@ class Order(xmlrpc.XMLRPC, basics):
         return ['NONE']
     
     def xmlrpc_getStatsGlobal(self, dicUser):
-        
-        return ['NONE']
+        result = {}
+        iCentury = 2
+        iDecade = 5
+        iYear = 3
+        iQuarter = 6
+        iMonth = 14
+        iWeek = 5
+        liSql = []
+        liSql.append({'id':'day','sql':'doy','logic':'='})
+        liSql.append({'id':'week','sql':'week','logic':'='})
+        liSql.append({'id':'month','sql':'month','logic':'='})
+        liSql.append({'id':'quarter','sql':'quarter','logic':'='})
+        liSql.append({'id':'year','sql':'year','logic':'='})
+        liSql.append({'id':'decade','sql':'decade','logic':'='})
+        liSql.append({'id':'century','sql':'century','logic':'='})
+        sSql = "select now(), "
+        for vSql in liSql:
+            for z1 in range(0,30):
+                if vSql['id'] == 'decade' and z1 > iDecade:
+                    pass
+                elif vSql['id'] == 'century' and z1 > iCentury:
+                    pass 
+                elif vSql['id'] == 'year' and z1 > iYear:
+                    pass 
+                elif vSql['id'] == 'quarter' and z1 > iQuarter:
+                    pass 
+                elif vSql['id'] == 'month' and z1 > iMonth:
+                    pass     
+                elif vSql['id'] == 'week' and z1 > iWeek:
+                    pass     
+                
+                else:
+                    print "z1 = ",  z1
+                    sSql += " (select sum(po.amount * po.price)   from list_of_invoices as li, orderposition as po, orderbook as ob "
+                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
+                    sSql += " and li.order_number = ob.id and po.orderid = li.order_number "
+                    sSql += self.getWhere('', dicUser, 2,'li.')
+                    sSql += " ) as " + 'order_global_' + vSql['id'] + '_count_' + `z1` +", "   
+
+                    sSql += "( select sum(inpayment) from in_payment "
+                    sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)          
+                    sSql += self.getWhere('', dicUser, 2)         
+                    sSql += " ) as " + 'order_global_incoming_' + vSql['id'] + '_count_' + `z1` +", " 
+        sSql = sSql[0:len(sSql)-2]
+        self.writeLog(sSql)
+        tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if tmpResult and tmpResult not in ['NONE','ERROR']:
+#            oneResult = tmpResult[0]
+#            for key in oneResult.keys():
+#                result[key] = oneResult[key]
+            result = tmpResult[0]
+        return result
     def xmlrpc_getStatsCaller(self, dicUser):
         
         return ['NONE']

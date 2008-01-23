@@ -240,27 +240,27 @@ class setup:
         for aim in ai_module:
             self.executeSCP(" cuon/AI/AIML/" + self.Locale + '_' + aim, self.SERVERDIRSHARE + "/cuon_server/AI/AIML/" + aim)
         # create web and iCal
-        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")   
         
         
         # create and copy reports and doc
-        self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ADDRESSES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ADDRESSES + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ARTICLES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ARTICLES + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_STOCK  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_STOCK + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS + " ; fi ")    
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ADDRESSES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ADDRESSES + " ; fi ")    
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ARTICLES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ARTICLES + " ; fi ")  
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_STOCK  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_STOCK + " ; fi ")    
 
 
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ; fi ") 
 
 
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ; fi ")	
-        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ; fi ")	
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INCOMING + " ; fi ")   
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_PICKUP + " ; fi ")   
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ; fi ") 
 
         
        
@@ -367,7 +367,7 @@ class setup:
 ##        chmod a+x self.INSTALLDIR + "/createUserDirs.sh
 ##        if  [ ! -d self.INSTALLDIR + "/icons ] ; then mkdir self.INSTALLDIR + "/icons ; fi 
 ##    
-##        if  [ ! -d self.ICONDIR + "/ ] ; then mkdir self.ICONDIR) ; fi 	
+##        if  [ ! -d self.ICONDIR + "/ ] ; then mkdir self.ICONDIR) ; fi    
 ##    
 ##        find ./GUI/pixmaps  -name "*.xpm" -exec cp {} self.ICONDIR) \; 
 

@@ -666,6 +666,13 @@ class Address(xmlrpc.XMLRPC, basics):
         REP_ID = None
         WITHOUT_ID = None
         MIN_SCHEDUL_YEAR = '2003'
+        iCentury = 2
+        iDecade = 5
+        iYear = 3
+        iQuarter = 6
+        iMonth = 14
+        iWeek = 5
+        
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
