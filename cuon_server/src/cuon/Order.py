@@ -687,7 +687,7 @@ class Order(xmlrpc.XMLRPC, basics):
                     pass     
                 
                 else:
-                    print "z1 = ",  z1
+                    #print "z1 = ",  z1
                     sSql += " (select sum(po.amount * po.price)   from list_of_invoices as li, orderposition as po, orderbook as ob "
                     sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
                     sSql += " and li.order_number = ob.id and po.orderid = li.order_number "
@@ -708,8 +708,142 @@ class Order(xmlrpc.XMLRPC, basics):
             result = tmpResult[0]
         return result
     def xmlrpc_getStatsCaller(self, dicUser):
+        result = {}
+        CALLER_ID = None
+        WITHOUT_ID = None
+        MIN_SCHEDUL_YEAR = '2003'
+        SCHEDUL_PROCESS_STATUS = None
+        liCaller = None
+        liSchedulProcessStatus = None
+        iCentury = 2
+        iDecade = 5
+        iYear = 3
+        iQuarter = 6
+        iMonth = 14
+        iWeek = 5
         
-        return ['NONE']
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
+            #print cpServer
+            #print cpServer.sections()
+            
+            CALLER_ID = self.getConfigOption('STATS','CALLER_ID', cpServer)
+            WITHOUT_ID = self.getConfigOption('STATS','WITHOUT_ID', cpServer)
+        
+        except:
+            pass
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            SCHEDUL_PROCESS_STATUS = self.getConfigOption('CLIENT_' + `dicUser['client']`,'SchedulProcessStatus', cpServer)
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerCentury', cpServer)
+            if iValue:
+                iCentury = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerDecade', cpServer)
+            if iValue:
+                iDecade = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerYear', cpServer)
+            if iValue:
+                iYear = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerQuarter', cpServer)
+            if iValue:
+                iQuarter = int(iValue)
+            
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerMonth', cpServer)
+            if iValue:
+                iMonth = int(iValue)
+                
+            iValue = self.getConfigOption('CLIENT_' + `dicUser['client']`,'StatsCallerWeek', cpServer)
+            if iValue:
+                iWeek = int(iValue)
+                
+                    
+                
+        except:
+            pass    
+        print "SCHEDUL_PROCESS_STATUS",   SCHEDUL_PROCESS_STATUS
+        
+        if SCHEDUL_PROCESS_STATUS:
+            liSPS = SCHEDUL_PROCESS_STATUS.split(',')
+            print "liSPS",  liSPS
+            liSchedulProcessStatus = []
+            for st in liSPS:
+                print st
+                liSchedulProcessStatus.append(int(st.strip()))
+            
+       
+            
+        if CALLER_ID:
+            liCaller = CALLER_ID.split(',')
+            print 'liCaller = ',  liCaller
+            liSql = []
+            liSql.append({'id':'day','sql':'doy','logic':'='})
+            liSql.append({'id':'week','sql':'week','logic':'='})
+            liSql.append({'id':'month','sql':'month','logic':'='})
+            liSql.append({'id':'quarter','sql':'quarter','logic':'='})
+            liSql.append({'id':'year','sql':'year','logic':'='})
+            liSql.append({'id':'decade','sql':'decade','logic':'='})
+            liSql.append({'id':'century','sql':'century','logic':'='})
+        
+            for caller in liCaller:
+                caller_name = None
+                sSql = 'select cuon_username from staff where staff.id = ' + caller
+                res1 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                print 'dicUser' , dicUser
+                if res1 and res1 not in ['NONE','ERROR']:
+                    caller_name = res1[0]['cuon_username']
+                if caller_name:    
+                    sSql = "select '" + caller_name + "' as caller_name_" + caller + " ,"
+                    print sSql
+                    for vSql in liSql:
+                        for z1 in range(0,30):
+                            if vSql['id'] == 'decade' and z1 > iDecade:
+                                pass
+                            elif vSql['id'] == 'century' and z1 > iCentury:
+                                pass 
+                            elif vSql['id'] == 'year' and z1 > iYear:
+                                pass 
+                            elif vSql['id'] == 'quarter' and z1 > iQuarter:
+                                pass 
+                            elif vSql['id'] == 'month' and z1 > iMonth:
+                                pass     
+                            elif vSql['id'] == 'week' and z1 > iWeek:
+                                pass     
+                            
+                            else:
+                                sSql += " (select sum(po.amount * po.price)   from list_of_invoices as li, orderposition as po, orderbook as ob, address as ad  "
+                                sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
+                                sSql += " and li.order_number = ob.id and po.orderid = li.order_number "
+                                sSql += " and ad.id = ob.addressnumber and ad.caller_id = " + `caller` + " "
+                                sSql += self.getWhere('', dicUser, 2,'li.')
+                                sSql += " ) as " + 'order_caller_'+caller +'_' + vSql['id'] + '_count_' + `z1` +", "   
+            
+                                sSql += "( select sum(inpayment) from in_payment , orderbook as ob, address as ad "
+                                sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)          
+                                sSql += " and in_payment.order_id = ob.id  "
+                                sSql += " and ad.id = ob.addressnumber and ad.caller_id = " + `caller` + " "
+                                
+                                sSql += self.getWhere('', dicUser, 2, 'in_payment.')         
+                                sSql += " ) as " + 'order_incoming_caller_' + caller +'_' + vSql['id'] + '_count_' + `z1` +", " 
+                                print "sSql 2 = ",  sSql
+                                
+                sSql = sSql[0:len(sSql)-2]
+                #print "len sql = ",  len(sSql)
+                self.writeLog(sSql)
+                tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                if tmpResult and tmpResult not in ['NONE','ERROR']:
+                    oneResult = tmpResult[0]
+                    for key in oneResult.keys():
+                        result[key] = oneResult[key]
+        return result
+        
     def xmlrpc_getStatsReps(self, dicUser):
         
         return ['NONE']
