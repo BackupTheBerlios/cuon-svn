@@ -5,8 +5,8 @@ import gtk
 import types
 
 class rawWindow( gladeXml):
-    def __init__(self):
-        gladeXml.__init__(self)
+    def __init__(self,  servermod = False):
+        gladeXml.__init__(self, servermod)
         
         self.oUser = None
         self.dicUser = None

@@ -364,9 +364,16 @@ class invoicebookwindow(windows):
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Invoice_info'], {'1':-161}, firstRecord,dicExtInfo)
             #Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleListOfInvoice.ID})
           
-        
+    def on_eSearch_key_press_event(self, entry, event):
+        print 'eSearch_key_press_event'
+        if self.checkKey(event,'NONE','Return'):
+            self.findInvoice()
+      
     # search button
     def on_bSearch_clicked(self, event, data=None):
+        self.findInvoice()
+        
+    def findInvoice(self):
         self.out( 'Searching ....', self.ERROR)
         sInvoiceNumber = self.getWidget('eFindInvoiceNumber').get_text()
         

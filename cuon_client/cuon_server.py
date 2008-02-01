@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-##		    GNU GENERAL PUBLIC LICENSE
-##		       Version 2, June 1991
+##          GNU GENERAL PUBLIC LICENSE
+##             Version 2, June 1991
 
 ## Copyright (C) 1989, 1991 Free Software Foundation, Inc.
 ##                       59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ## Everyone is permitted to copy and distribute verbatim copies
 ## of this license document, but changing it is not allowed.
 
-##			    Preamble
+##              Preamble
 
 ##  The licenses for most software are designed to take away your
 ##freedom to share and change it.  By contrast, the GNU General Public
@@ -59,7 +59,7 @@
 ##  The precise terms and conditions for copying, distribution and
 ##modification follow.
 
-##		    GNU GENERAL PUBLIC LICENSE
+##          GNU GENERAL PUBLIC LICENSE
 ##   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
 ##  0. This License applies to any program or other work which contains
@@ -258,7 +258,7 @@
 ##of preserving the free status of all derivatives of our free software and
 ##of promoting the sharing and reuse of software generally.
 
-##			    NO WARRANTY
+##              NO WARRANTY
 
 ##  11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
 ##FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
@@ -280,7 +280,7 @@
 ##PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
 ##POSSIBILITY OF SUCH DAMAGES.
 
-##		     END OF TERMS AND CONDITIONS
+##           END OF TERMS AND CONDITIONS
 
 
 
@@ -341,7 +341,7 @@ class MainWindow(windows):
         # first check table cuon
         ok =  self.rpc.callRP('Database.createCuon', {'Name':'zope'})
 
-        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')])
+        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')],  '../usr/share/cuon/glade/login.glade2')
         
         #lgi = cuon.Login.login.loginwindow()
   #      lgi.setUser( self.oUser)
@@ -604,6 +604,14 @@ class MainWindow(windows):
         os.system('rm users.cfg')
         
         gtk.main_quit()
+        
+        
+
+
+sStartType = 'client'
+sDebug = 'NO'
+sLocal = 'NO'
+
 
 td = cuon.TypeDefs.typedefs_server.typedefs_server() 
 if len(sys.argv) > 1:
@@ -620,9 +628,29 @@ if len(sys.argv) > 3:
     print "sPrefix = ", td.sPrefix
     print "-------------####################--------------"
     
-
-
-
+    
+if len(sys.argv) > 4: 
+    if len(sys.argv[4]) > 1:
+        sLocal =  sys.argv[4]    
+if len(sys.argv) > 6:
+    if len(sys.argv[6]) > 1:
+        if sys.argv[6] != 'NO':
+            td.SystemName =  sys.argv[6]
+            print 'td.System =', td.SystemName   
+        else:
+            td.SystemName = 'LINUX-Standard'
+if len(sys.argv) > 5:
+    if len(sys.argv[5]) > 1:
+        if sys.argv[5] != 'NO':
+            td.cuon_path =  sys.argv[5]
+            print 'td.cuon_path =', td.cuon_path   
+        else:
+            td.cuon_path = 'NO'
+            
+if sLocal == 'NO':
+    DIR = '/usr/share/locale'
+else:
+    DIR = sLocal
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

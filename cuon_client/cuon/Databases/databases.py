@@ -43,7 +43,7 @@ class databaseswindow(windows):
     """
     
     def __init__(self, servermod = False):
-        windows.__init__(self)
+        windows.__init__(self,servermod )
         
         self.iPB = 0
         self.gladeName = self.td.databases_glade_name

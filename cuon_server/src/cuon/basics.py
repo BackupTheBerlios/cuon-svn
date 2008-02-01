@@ -633,11 +633,17 @@ class basics(xmlrpc.XMLRPC):
         
         
     def getActualDateTime(self):
-        newTime = time.localtime()
-        tDate =  time.strftime(self.dicUser['DateformatString'], newTime)
-        tTime =  time.strftime(self.dicUser['TimeformatString'], newTime)
-        tStamp = time.strftime(self.dicUser['DateTimeformatString'], newTime)
-        dicTime = {'date':tDate, 'time':tTime, 'timestamp':tStamp }
+        dicTime = {}
+        try:
+            newTime = time.localtime()
+            tDate =  time.strftime(self.DIC_USER['DateformatString'], newTime)
+            tTime =  time.strftime(self.DIC_USER['TimeformatString'], newTime)
+            tStamp = time.strftime(self.DIC_USER['DateTimeFormatstring'], newTime)
+            dicTime = {'date':tDate, 'time':tTime, 'timestamp':tStamp }
+        except Exception,  params:
+            print Exception, params
+            dicTime = {'date':' ', 'time':' ', 'timestamp':' ' }
+            
         
         return dicTime
         

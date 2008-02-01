@@ -604,7 +604,8 @@ class Address(xmlrpc.XMLRPC, basics):
                                 pass     
                             elif vSql['id'] == 'week' and z1 > iWeek:
                                 pass     
-                            
+                            elif vSql['id'] == 'day' and z1 > 8:
+                                pass   
                             else:
                                 sSql += "(select  count(ps.id)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
                                 #sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`

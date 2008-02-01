@@ -2,7 +2,6 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
 
 <widget class="GtkWindow" id="InvoiceMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
@@ -711,7 +710,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
-	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Mon, 30 Jul 2007 16:07:06 GMT"/>
+	      <signal name="key_press_event" handler="on_eSearch_key_press_event" last_modification_time="Mon, 28 Jan 2008 12:28:32 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
@@ -757,7 +756,7 @@
 	      <property name="has_frame">True</property>
 	      <property name="invisible_char">*</property>
 	      <property name="activates_default">False</property>
-	      <signal name="key_press_event" handler="on_bSearch_clicked" last_modification_time="Mon, 30 Jul 2007 16:06:55 GMT"/>
+	      <signal name="key_press_event" handler="on_eSearch_key_press_event" last_modification_time="Mon, 28 Jan 2008 12:29:15 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>

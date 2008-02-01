@@ -34,13 +34,13 @@ import cuon.User.user
 class loginwindow(windows):
 
     
-    def __init__(self, eFields):
+    def __init__(self, eFields, gladePath=None):
 
         windows.__init__(self)
         self.eUserName = eFields[0]
         self.oUser = cuon.User.user.User()
         
-        self.loadGlade('login.xml')
+        self.loadGlade('login.xml', None, gladePath)
    
         self.win1 = self.getWidget('UserID_Dialog')
         #self.win1.hide()
@@ -70,7 +70,7 @@ class loginwindow(windows):
         ##elif response == gtk.RESPONSE_HELP:
         ##    print "Hilfe"
             
-		##elif response == gtk.RESPONSE_DELETE_EVENT:
+        ##elif response == gtk.RESPONSE_DELETE_EVENT:
         ##else:
         ##print "else"
             

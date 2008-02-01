@@ -42,9 +42,10 @@ import commands
 
 class windows(rawWindow, MyXML, messages):
 
-    def __init__(self):
+    def __init__(self, servermod=False):
         #gladeXml.__init__(self)
-        rawWindow.__init__(self)
+        rawWindow.__init__(self, servermod)
+        self.servermod = servermod
         MyXML.__init__(self)
         messages.__init__(self)
         self.Search = False
@@ -314,18 +315,26 @@ class windows(rawWindow, MyXML, messages):
             
             
     def startProgressBar(self, Pulse = False, Title=None):
-        fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_sqlprogressbar.xml')  
-        self.progressbarWindowXML = gtk.glade.XML(fname)
-        self.PBW = self.progressbarWindowXML.get_widget('SqlProgressBar')
-        if Title:
-            self.PBW.set_title(Title)
-        self.PBW.show()
-        self.progressbar = self.progressbarWindowXML.get_widget('progressbar1')
-        if Pulse:
-            self.progressbar.pulse()
-        
-        self.progressbar.show()
-        
+        if self.servermod:
+            self.progressbarWindowXML = gtk.glade.XML('../usr/share/cuon/glade/sqlprogressbar.glade2')
+            
+        else:
+            fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_sqlprogressbar.xml')  
+            self.progressbarWindowXML = gtk.glade.XML(fname)
+        try:
+                
+            self.PBW = self.progressbarWindowXML.get_widget('SqlProgressBar')
+            if Title:
+                self.PBW.set_title(Title)
+            self.PBW.show()
+            self.progressbar = self.progressbarWindowXML.get_widget('progressbar1')
+            if Pulse:
+                self.progressbar.pulse()
+            
+            self.progressbar.show()
+        except:
+            pass
+            
         #print 'progressbar = ', self.progressbar
         return True
         

@@ -88,7 +88,7 @@ class editorwindow(windows):
     def open_selected_file(self, data=None):
         "Opens the selected file and reads it in"
         self.open_file(self.filesel.get_filename())
-        self.filesel.destroy()	
+        self.filesel.destroy()  
     
     def open_file(self, dicFilename):
         "Opens the file given in filename and reads it in"
@@ -136,7 +136,7 @@ class editorwindow(windows):
         outfile = open(sFile, "w")
         if outfile:
             outfile.write(data)
-            outfile.close()	
+            outfile.close() 
             #mark as unmodified since last save
             self.textbuffer.set_modified(False)
             
@@ -168,7 +168,7 @@ class editorwindow(windows):
     def open_selected_plugin(self, data=None):
         "Opens the selected plugin file and reads it in"
         self.open_plugin(self.filesel.get_filename())
-        self.filesel.destroy()	
+        self.filesel.destroy()  
     
     def open_plugin(self, filename):
         "Opens the file given in filename and reads it in"
@@ -196,7 +196,7 @@ class editorwindow(windows):
         self.word_wrap_item.destroy()
         self.word_wrap_item=gtk.MenuItem("Disable _Word Wrap")
         self.word_wrap_item.connect_object("activate",self.disable_wrap,None)
-        self.edit_menu.append(self.word_wrap_item)	
+        self.edit_menu.append(self.word_wrap_item)  
         self.word_wrap_item.show()
     
     def disable_wrap(self,data=None):
@@ -205,6 +205,6 @@ class editorwindow(windows):
         self.word_wrap_item.destroy()
         self.word_wrap_item=gtk.MenuItem("Enable _Word Wrap")
         self.word_wrap_item.connect_object("activate",self.enable_wrap,None)
-        self.edit_menu.append(self.word_wrap_item)	
+        self.edit_menu.append(self.word_wrap_item)  
         self.word_wrap_item.show()
 

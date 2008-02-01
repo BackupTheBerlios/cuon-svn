@@ -3719,6 +3719,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>defaults</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment />
+    </field>
   </table>
  <!--account sentence -->
   <table>
@@ -3996,7 +4006,36 @@
       <default />
       <comment> key to account_account_info </comment>
      </field>
-     
+     <field>
+      <name>address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment> address id for accout-infos </comment>
+     </field>
+     <field>
+      <name>debitnr</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment>debit_nr </comment>
+     </field>
+     <field>
+      <name>kreditnr</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>20</size>
+      <default />
+      <comment>kredit_nr </comment>
+     </field>
    </table>
   <!--table: staff-->
   <table>

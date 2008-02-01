@@ -1,5 +1,5 @@
 #!/usr/bin/python 
-import os
+import os, sys
 import pygtk
 import gtk
 import gtk.glade
@@ -698,7 +698,8 @@ class setup:
         
         
     def on_database_tools1_activate(self, event):
-        s1 = "cd " + self.dest_main + " ; python  cuon_server.py " + self.Protocol + '://' +  self.IP +':' + self.XmlrpcPort + ' ' + self.sshPort + " " + self.IP
+        s1 = "cd " + self.dest_main + " ; python  cuon_server.py " + self.Protocol + '://' +  self.IP +':' + self.XmlrpcPort + ' ' + self.sshPort + " " + self.IP + " NO  " + self.dest_main + "/cuon"
+        
         print 's1 = ', s1
         os.system(s1)
         print os.system('pwd')
@@ -749,5 +750,6 @@ class setup:
         self.setXmlAutoconnect()
         self.setDefaultServer()
         gtk.main()
+
 stu = setup()
 stu.main(None)

@@ -208,7 +208,13 @@ class dmswindow(windows):
     def on_quit1_activate(self, event):
         self.closeWindow() 
 
+    def on_eDMSSearch_key_press_event(self, event):
+        self.findDMS()
+        
     def on_bSearch_clicked(self, event):
+        self.findDMS()
+        
+    def findDMS(self):
         print 'Search'
         dicSearchfields = self.readSearchDatafields(  {'title':'eSearchTitle', 'category':'eSearchCategory',  'sub1':'eSearchSub1',  'sub2':'eSearchSub2',  'sub3': 'eSearchSub3',  'sub4':'eSearchSub4',  'sub5':'eSearchSub5',  'search1':'eSearchSearch1',  'search2': 'eSearchSearch2',   'search3':'eSearchSearch3',  'search4': 'eSearchSearch4'})
 

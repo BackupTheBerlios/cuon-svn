@@ -29,9 +29,10 @@ import types
 
 class gladeXml(defaultValues):
 
-    def __init__(self):
+    def __init__(self, servermod = False):
 
         defaultValues.__init__(self)
+        self.servermod = servermod
         self.xml = None
         self.win1 = None
         self.liAllMenuItems = []
@@ -122,22 +123,27 @@ class gladeXml(defaultValues):
     def setXml(self, xml):
         self.xml = xml
         
-    def loadGlade(self, gladeName,sMainWindow=None):
-        
-        if self.td.SystemName:
-            if self.td.SystemName == 'LINUX-Standard':
-                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
-            else:
-                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + '_' + gladeName)  
-            #else:
-            #    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
-
-        
+    def loadGlade(self, gladeName,sMainWindow=None, gladePath = None):
+        if gladePath:
+                fname = os.path.normpath(gladePath )  
         else:
-            fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+            if self.td.SystemName:
+                
+                if self.td.SystemName == 'LINUX-Standard':
+                    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+                else:
+                    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + '_' + gladeName)  
+                #else:
+                #    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
+        
+            
+            else:
+                fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
         fnameAlternate = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
 
-        #print fname
+        print fname
+        print fnameAlternate
+        
         try:
             self.xml = gtk.glade.XML(fname)
         except:
