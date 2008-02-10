@@ -33,8 +33,10 @@ reactor.listenTCP(baseSettings.XMLRPC_PORT + port, server.Site(r))
 if openssl:
     """Create an SSL context."""
     
-    
-    reactor.listenSSL(baseSettings.XMLRPC_PORT + baseSettings.SSL_OFFSET + port,  server.Site(r), maintwxmlrpc.ServerContextFactory())
-    print 'HTTPS activated'
+    try:
+        reactor.listenSSL(baseSettings.XMLRPC_PORT + baseSettings.SSL_OFFSET + port,  server.Site(r), maintwxmlrpc.ServerContextFactory())
+        print 'HTTPS activated'
+    except:
+        print 'Error by activating HTTPS. Please check /etc/cuon/serverkey.pem and /etc/cuon/servercert.pem.'
 
 reactor.run()
