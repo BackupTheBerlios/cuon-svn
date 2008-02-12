@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>orderbook</table_name>
+
+    <entry>
+      <name>eNumber</name>
+
+      <type>textline</type>
+
+      <size>30</size>
+
+      <verify_type>string</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>number</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eDesignation</name>
+
+      <type>textline</type>
+
+      <size>50</size>
+
+      <verify_type>string</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>designation</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eOrderedAt</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>date</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>orderedat</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eDeliveredAt</name>
+
+      <type>textline</type>
+
+      <size>10</size>
+
+      <verify_type>date</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>deliveredat</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eAddressNumber</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>int</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>addressnumber</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePacking</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>packing_cost</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>ePostage</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>postage_cost</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+
+    <entry>
+      <name>eMiscCost</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>misc_cost</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eDiscount</name>
+
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>float</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>discount</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
+    
+    
+  </table>
+</entries_for_table>
