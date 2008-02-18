@@ -257,6 +257,8 @@ class Finances(xmlrpc.XMLRPC, basics):
         
         
         sSql += self.getWhere('', dicUser, 2, 'inv.')
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
         
         
         return ret    

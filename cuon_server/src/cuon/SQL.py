@@ -258,6 +258,7 @@ class SQL(xmlrpc.XMLRPC, basics):
     def xmlrpc_saveRecord(self, sNameOfTable='EMPTY', id=0, dicValues ={}, dicUser={}, liBigEntries='NO'):       
         import string
         import types
+        dicValues['client'] = [dicUser['client'], 'int']
 ##        if liBigEntries != 'NO':
 ##            for lb in liBigEntries:
 ##                sKey = dicUser['Name'] + '_' + lb

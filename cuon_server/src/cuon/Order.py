@@ -108,6 +108,8 @@ class Order(xmlrpc.XMLRPC, basics):
         return date
         
     def xmlrpc_getOrderValues(self, orderid, dicUser):
+        
+        
         sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
         sSql += " orderbook.designation as order_designation , orderbook.number as order_number, "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
@@ -116,23 +118,25 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " from orderbook where id = " + `orderid`
         sSql += self.getWhere(None, dicUser,2)
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        top_id = self .getToPID({'orderid':orderid},  dicUser)
         
-        sSql2 = 'select order_top as top_id from orderinvoice where orderid = ' +  `orderid`
-        sSql2 += self.getWhere(None, dicUser,2)
-        liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
-        if not liResultTop or liResultTop in ['NONE','ERROR']:
-            '''No term of payment found, try default from customer '''
-            sSql2 = 'select addresses_misc.top_id as top_id from addresses_misc, orderbook '
-            sSql2 += ' where addresses_misc.address_id = orderbook.addressnumber '
-            sSql2 += self.getWhere(None, dicUser,2,'orderbook.')
-            liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
-        if liResultTop and liResultTop not in ['NONE','ERROR']:
-            top_id = liResultTop[0]['top_id']
-            if top_id > 0:
-                sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
-                liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
-                if liResultTop2 and liResultTop2 not in ['NONE','ERROR']:
-                    liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
+#        sSql2 = 'select order_top as top_id from orderinvoice where orderid = ' +  `orderid`
+#        sSql2 += self.getWhere(None, dicUser,2)
+#        liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
+#        if not liResultTop or liResultTop in ['NONE','ERROR']:
+#            '''No term of payment found, try default from customer '''
+#            sSql2 = 'select addresses_misc.top_id as top_id from addresses_misc, orderbook '
+#            sSql2 += ' where addresses_misc.address_id = orderbook.addressnumber '
+#            sSql2 += self.getWhere(None, dicUser,2,'orderbook.')
+#            liResultTop = self.oDatabase.xmlrpc_executeNormalQuery(sSql2, dicUser )
+#            if liResultTop and liResultTop not in ['NONE','ERROR']:
+#                top_id = liResultTop[0]['top_id']
+#            
+                
+        sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
+        liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
+        if liResultTop2 and liResultTop2 not in ['NONE','ERROR']:
+            liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
         return liResult
         
         
@@ -707,11 +711,12 @@ class Order(xmlrpc.XMLRPC, basics):
 #                result[key] = oneResult[key]
             result = tmpResult[0]
         return result
+        
     def xmlrpc_getStatsCaller(self, dicUser):
         result = {}
         CALLER_ID = None
         WITHOUT_ID = None
-        MIN_SCHEDUL_YEAR = '2003'
+        MIN_SCHEDUL_YEAR = '2005'
         SCHEDUL_PROCESS_STATUS = None
         liCaller = None
         liSchedulProcessStatus = None
@@ -841,7 +846,11 @@ class Order(xmlrpc.XMLRPC, basics):
                 if tmpResult and tmpResult not in ['NONE','ERROR']:
                     oneResult = tmpResult[0]
                     for key in oneResult.keys():
-                        result[key] = oneResult[key]
+                        if oneResult[key] and  oneResult[key] not in ['NONE','ERROR']:
+                            result[key] = oneResult[key]
+                        else:
+                            result[key] =0
+                        #result[key] = oneResult[key]
         return result
         
     def xmlrpc_getStatsReps(self, dicUser):

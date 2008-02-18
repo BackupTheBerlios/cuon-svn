@@ -501,7 +501,7 @@ class Address(xmlrpc.XMLRPC, basics):
         result = {}
         CALLER_ID = None
         WITHOUT_ID = None
-        MIN_SCHEDUL_YEAR = '2003'
+        MIN_SCHEDUL_YEAR = '2005'
         SCHEDUL_PROCESS_STATUS = None
         liCaller = None
         liSchedulProcessStatus = None
@@ -604,7 +604,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                 pass     
                             elif vSql['id'] == 'week' and z1 > iWeek:
                                 pass     
-                            elif vSql['id'] == 'day' and z1 > 8:
+                            elif vSql['id'] == 'day' and z1 > 10:
                                 pass   
                             else:
                                 sSql += "(select  count(ps.id)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
@@ -640,7 +640,11 @@ class Address(xmlrpc.XMLRPC, basics):
                     if tmpResult and tmpResult not in ['NONE','ERROR']:
                         oneResult = tmpResult[0]
                         for key in oneResult.keys():
-                            result[key] = oneResult[key]
+                            if oneResult[key]:
+                                result[key] = oneResult[key]
+                            else:
+                                result[key] =0
+                            #result[key] = oneResult[key]
                                       
                  
 
@@ -802,7 +806,11 @@ class Address(xmlrpc.XMLRPC, basics):
                     if tmpResult and tmpResult not in ['NONE','ERROR']:
                         oneResult = tmpResult[0]
                         for key in oneResult.keys():
-                            result[key] = oneResult[key]
+                            if oneResult[key]:
+                                result[key] = oneResult[key]
+                            else:
+                                result[key] =0
+                                
                                       
                  
 
@@ -828,7 +836,7 @@ class Address(xmlrpc.XMLRPC, basics):
         result = {}
         SALESMAN_ID = None
         WITHOUT_ID = None
-        MIN_SCHEDUL_YEAR = '2003'
+        MIN_SCHEDUL_YEAR = '2005'
         try:
                        
             cpServer, f = self.getParser(self.CUON_FS + '/user.cfg')
