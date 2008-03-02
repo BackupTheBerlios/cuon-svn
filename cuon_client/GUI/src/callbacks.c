@@ -469,3 +469,11 @@ on_logs_mail1_activate                 (GtkMenuItem     *menuitem,
 
 }
 
+
+void
+on_proposal1_activate                  (GtkMenuItem     *menuitem,
+                                        gpointer         user_data)
+{
+
+}
+

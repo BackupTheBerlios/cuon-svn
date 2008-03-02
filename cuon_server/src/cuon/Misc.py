@@ -289,7 +289,67 @@ class Misc(xmlrpc.XMLRPC, basics):
             liAddresses = 'NONE'
                 
         return liAddresses
-
+        
+    
+    def xmlrpc_getEmailAddresses(self, sType, dicUser):
+        value = None
+        liAddresses = []
+        
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('CLIENT_' + `dicUser['client']`,sType, cpServer)
+            if value:
+                liAddresses = value.split(',')
+                
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+        
+        
+        # configOption sendMailsNotes0: caller,rep,salesman
+        value = None
+        try:
+                       
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            #print cpServer
+            #print cpServer.sections()
+            
+            value = self.getConfigOption('CLIENT_' + `dicUser['client']`,'sendMailsNotes0', cpServer)
+            if value:
+                liValues = value.split(',')
+                if liValues:
+                    for i in liValues:
+                        result = None
+                        if i.strip() == 'caller':
+                            sSql = 'select staff.email as email from staff, address where  address.caller_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        elif i.strip() == 'rep':
+                            sSql = 'select staff.email  as email from staff, address where  address.rep_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        elif i.strip() == 'salesman':
+                            sSql = 'select staff.email  as email from staff, address where  address.salesman_id  = staff.id' 
+                            sSql += ' and address.id = ' + `addressid`
+                            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                        if result and result not in ['NONE','ERROR']:
+                            liAddresses.append(result[0]['email'].strip())
+            
+        except Exception, params:
+            print 'Error by Schedul Read user.cfg'
+            print Exception, params
+        print 'notes_0_addEmailAddresses', value
+        if not liAddresses:
+            liAddresses = 'NONE'
+                
+        return liAddresses
+        
+        
+        
     def xmlrpc_dmsCheckPermissions(self,id,dicUser):
         bUser = False
         bGroup = False

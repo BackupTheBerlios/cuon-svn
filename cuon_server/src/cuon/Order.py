@@ -545,7 +545,8 @@ class Order(xmlrpc.XMLRPC, basics):
             liOrder = 'NONE'
             
         #print liOrder
-        
+        self.writeLog('liOrder all invoices')
+        self.writeLog(liOrder)
         return liOrder
     def checkMaturityDay(self, dicUser):
         sSql = 'select id, order_number from list_of_invoices where maturity is null '

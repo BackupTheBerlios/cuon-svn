@@ -231,6 +231,7 @@ except Exception, params:
     print Exception, params
 
 import cuon.Order.order
+import cuon.Proposal.proposal
 import cuon.User
 import cuon.Preferences.preferences
 import cuon.PrefsFinance.prefsFinance
@@ -287,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 43, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 43, 'Rev': 11, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -637,6 +638,10 @@ class MainWindow(windows):
         
     # Action-Menu
     
+    
+    def on_proposal1_activate(self,event):
+        ord = cuon.Proposal.proposal.proposalwindow(self.allTables)
+
     def on_order1_activate(self,event):
         ord = cuon.Order.order.orderwindow(self.allTables)
 

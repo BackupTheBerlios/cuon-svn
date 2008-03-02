@@ -58,6 +58,7 @@ create_window1 (void)
   GtkWidget *mi_clients1;
   GtkWidget *action1;
   GtkWidget *action1_menu;
+  GtkWidget *proposal1;
   GtkWidget *mi_order1;
   GtkWidget *mi_stock1;
   GtkWidget *mi_dms1;
@@ -144,9 +145,12 @@ create_window1 (void)
   GtkWidget *scrolledwindow4;
   GtkWidget *tvEvent;
   GtkWidget *calendar1;
+  GtkAccelGroup *accel_group;
   GtkTooltips *tooltips;
 
   tooltips = gtk_tooltips_new ();
+
+  accel_group = gtk_accel_group_new ();
 
   window1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (window1, 1024, 720);
@@ -268,9 +272,16 @@ create_window1 (void)
   action1_menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (action1), action1_menu);
 
+  proposal1 = gtk_menu_item_new_with_mnemonic (_("Proposal"));
+  gtk_widget_show (proposal1);
+  gtk_container_add (GTK_CONTAINER (action1_menu), proposal1);
+
   mi_order1 = gtk_menu_item_new_with_mnemonic (_("_Order"));
   gtk_widget_show (mi_order1);
   gtk_container_add (GTK_CONTAINER (action1_menu), mi_order1);
+  gtk_widget_add_accelerator (mi_order1, "activate", accel_group,
+                              GDK_O, (GdkModifierType) GDK_CONTROL_MASK,
+                              GTK_ACCEL_VISIBLE);
 
   mi_stock1 = gtk_menu_item_new_with_mnemonic (_("Stock"));
   gtk_widget_show (mi_stock1);
@@ -699,6 +710,9 @@ create_window1 (void)
   g_signal_connect ((gpointer) mi_clients1, "activate",
                     G_CALLBACK (on_clients1_activate),
                     NULL);
+  g_signal_connect ((gpointer) proposal1, "activate",
+                    G_CALLBACK (on_proposal1_activate),
+                    NULL);
   g_signal_connect ((gpointer) mi_order1, "activate",
                     G_CALLBACK (on_order1_activate),
                     NULL);
@@ -849,6 +863,7 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, mi_clients1, "mi_clients1");
   GLADE_HOOKUP_OBJECT (window1, action1, "action1");
   GLADE_HOOKUP_OBJECT (window1, action1_menu, "action1_menu");
+  GLADE_HOOKUP_OBJECT (window1, proposal1, "proposal1");
   GLADE_HOOKUP_OBJECT (window1, mi_order1, "mi_order1");
   GLADE_HOOKUP_OBJECT (window1, mi_stock1, "mi_stock1");
   GLADE_HOOKUP_OBJECT (window1, mi_dms1, "mi_dms1");
@@ -935,6 +950,8 @@ create_window1 (void)
   GLADE_HOOKUP_OBJECT (window1, tvEvent, "tvEvent");
   GLADE_HOOKUP_OBJECT (window1, calendar1, "calendar1");
   GLADE_HOOKUP_OBJECT_NO_REF (window1, tooltips, "tooltips");
+
+  gtk_window_add_accel_group (GTK_WINDOW (window1), accel_group);
 
   return window1;
 }

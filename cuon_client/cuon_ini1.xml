@@ -93,6 +93,36 @@
       <Entry-FileValue>../usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
     </Entries>
     
+    
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>proposal.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_proposal.xml</Entry-FileValue>
+    </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>proposal_supply.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_proposalsupply.xml</Entry-FileValue>
+    </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>proposal_get.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_proposalget.xml</Entry-FileValue>
+    </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>proposal_position.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_proposalposition.xml</Entry-FileValue>
+    </Entries>
+     <Entries>      
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>proposal_invoice.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_proposalinvoice.xml</Entry-FileValue>
+    </Entries>
+   
+    
+    
+    
     <Entries>       
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>order.xml</Entry-File>
@@ -453,6 +483,13 @@
       <Glade-File>articles_search1.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/articles_search1.glade2</Glade-FileValue>
     </GladeEntries>
+    
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>proposal.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/proposal.glade2</Glade-FileValue>
+    </GladeEntries>
+    
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>order.xml</Glade-File>

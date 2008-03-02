@@ -22,12 +22,11 @@ from gtk import TRUE, FALSE
 import string
 
 from cuon.Databases.SingleData import SingleData
-import SingleOrder
-import SingleOrderSupply
-import SingleOrderGet
-import SingleOrderPosition
-import SingleOrderPayment
-
+import cuon.Order.SingleOrder
+import cuon.Order.SingleOrderSupply
+import cuon.Order.SingleOrderGet
+import cuon.Order.SingleOrderPosition
+import cuon.Order.SingleOrderPayment
 
 
 import logging
@@ -51,7 +50,7 @@ import cuon.DMS.SingleDMS
 import cuon.DMS.documentTools
 
 
-class orderwindow(chooseWindows):
+class proposalwindow(chooseWindows):
     """
     @author: Juergen Hamel
     @organization: Cyrus-Computer GmbH, D-32584 Loehne
@@ -61,22 +60,22 @@ class orderwindow(chooseWindows):
     """
     
     
-    def __init__(self, allTables, dicOrder=None,  newOrder = False, orderid = 0,Ordertype='Order'):
+    def __init__(self, allTables, dicOrder=None,  newOrder = False, orderid = 0,Ordertype='Proposal'):
 
         chooseWindows.__init__(self)
         self.dicOrder = dicOrder
         self.fillArticlesNewID = 0
-        self.loadGlade('order.xml','OrderMainwindow')
+        self.loadGlade('proposal.xml','ProposalMainwindow')
         #self.win1 = self.getWidget('OrderMainwindow')
         
         self.allTables = allTables
-        self.singleOrder = SingleOrder.SingleOrder(allTables)
-        self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)
-        self.singleOrderGet = SingleOrderGet.SingleOrderGet(allTables)
-        self.singleOrderPosition = SingleOrderPosition.SingleOrderPosition(allTables)
+        self.singleOrder = cuon.Order.SingleOrder.SingleOrder(allTables)
+        self.singleOrderSupply = cuon.Order.SingleOrderSupply.SingleOrderSupply(allTables)
+        self.singleOrderGet = cuon.Order.SingleOrderGet.SingleOrderGet(allTables)
+        self.singleOrderPosition = cuon.Order.SingleOrderPosition.SingleOrderPosition(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
-        self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
+        self.singleOrderPayment = cuon.Order.SingleOrderPayment.SingleOrderPayment(allTables)
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
@@ -88,21 +87,21 @@ class orderwindow(chooseWindows):
        
         # self.singleOrder.loadTable()
               
-        self.EntriesOrder = 'order.xml'
-        self.EntriesOrderSupply = 'order_supply.xml'
-        self.EntriesOrderGet = 'order_get.xml'
-        self.EntriesOrderPosition = 'order_position.xml'
-        self.EntriesOrderMisc = 'order_misc.xml'
-        self.EntriesOrderInvoice = 'order_invoice.xml'
-        self.EntriesOrderPayment = 'order_inpayment.xml'
+        self.EntriesProposal = 'proposal.xml'
+        self.EntriesProposalSupply = 'proposal_supply.xml'
+        self.EntriesProposalGet = 'proposal_get.xml'
+        self.EntriesProposalPosition = 'proposal_position.xml'
+        #self.EntriesproposalMisc = 'proposal_misc.xml'
+        self.EntriesProposalInvoice = 'proposal_invoice.xml'
+        #self.EntriesproposalPayment = 'proposal_inpayment.xml'
         
         
         
         
-        #singleOrder
+        #singleProposal
         
-        self.loadEntries(self.EntriesOrder)
-        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+        self.loadEntries(self.EntriesProposal)
+        self.singleProposal.setEntries(self.getDataEntries(self.EntriesProposal) )
         self.singleOrder.setGladeXml(self.xml)
         self.singleOrder.setTreeFields( ['number', 'designation'] )
         self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
@@ -112,7 +111,7 @@ class orderwindow(chooseWindows):
         
          #singleOrderSupply
         
-        self.loadEntries(self.EntriesOrderSupply)
+        self.loadEntries(self.EntriesProposalSupply)
         self.singleOrderSupply.setEntries(self.getDataEntries('order_supply.xml') )
         self.singleOrderSupply.setGladeXml(self.xml)
         self.singleOrderSupply.setTreeFields( ['designation' ] )
@@ -125,7 +124,7 @@ class orderwindow(chooseWindows):
   
         #singleOrderGet
         
-        self.loadEntries(self.EntriesOrderGet)
+        self.loadEntries(self.EntriesProposalGet)
         self.singleOrderGet.setEntries(self.getDataEntries('order_get.xml') )
         self.singleOrderGet.setGladeXml(self.xml)
         self.singleOrderGet.setTreeFields( ['designation'] )
@@ -138,8 +137,8 @@ class orderwindow(chooseWindows):
 
         # singlePositions
         
-        self.loadEntries(self.EntriesOrderPosition)
-        self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
+        self.loadEntries(self.EntriesProposalPosition)
+        self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesProposalPosition) )
         self.singleOrderPosition.setGladeXml(self.xml)
         self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'orderposition.designation as designation2'] )
         self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_UINT ,gobject.TYPE_STRING , gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
