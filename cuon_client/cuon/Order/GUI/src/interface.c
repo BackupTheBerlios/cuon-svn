@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <bonobo.h>
-#include <gnome.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
 
 #include "callbacks.h"
 #include "interface.h"
@@ -26,353 +26,72 @@
 #define GLADE_HOOKUP_OBJECT_NO_REF(component,widget,name) \
   g_object_set_data (G_OBJECT (component), name, widget)
 
-static GnomeUIInfo file1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Print S_etup"),
-    NULL,
-    (gpointer) on_print_setup1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Close"),
-    NULL,
-    (gpointer) on_quit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo print1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("single Invoice"),
-    NULL,
-    (gpointer) on_print_invoice1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("all open invoice"),
-    NULL,
-    (gpointer) on_all_open_invoice1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Delivery Note"),
-    NULL,
-    (gpointer) on_print_delivery_note1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Pickup Note"),
-    NULL,
-    (gpointer) on_print_pickup_note1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo order1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_New"),
-    N_("New Order"),
-    (gpointer) on_new1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_edit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_save1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_SUBTREE, N_("_Print"),
-    NULL,
-    print1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("c_lear"),
-    NULL,
-    (gpointer) on_delete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo supply1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_SupplyNew1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Edit"),
-    NULL,
-    (gpointer) on_SupplyEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_SupplySave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Clear"),
-    NULL,
-    (gpointer) on_SupplyDelete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo gets1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("New"),
-    NULL,
-    (gpointer) on_GetsNew1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Edit"),
-    NULL,
-    (gpointer) on_GetsEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_GetsSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("Clear"),
-    NULL,
-    (gpointer) on_GetsDelete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo position1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_New"),
-    NULL,
-    (gpointer) on_PositionNew1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_PositionEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_PositionSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("_Print"),
-    NULL,
-    (gpointer) on_PositionPrint1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_SEPARATOR,
-  {
-    GNOME_APP_UI_ITEM, N_("c_lear"),
-    NULL,
-    (gpointer) on_PositionDelete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo invoice1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_InvoiceEdit1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_InvoiceSave1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo misc1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("Edit"),
-    NULL,
-    (gpointer) on_MiscEdit_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("Save"),
-    NULL,
-    (gpointer) on_MiscSave_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("clear"),
-    NULL,
-    (gpointer) on_Misc_delete1_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo payments1_menu_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_ITEM, N_("_New"),
-    NULL,
-    (gpointer) on_payment_new_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Edit"),
-    NULL,
-    (gpointer) on_payment_edit_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_ITEM, N_("_Save"),
-    NULL,
-    (gpointer) on_payment_save_activate, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
-static GnomeUIInfo menubar1_uiinfo[] =
-{
-  {
-    GNOME_APP_UI_SUBTREE, N_("_File"),
-    NULL,
-    file1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Order"),
-    N_("Manage Order"),
-    order1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Supply"),
-    NULL,
-    supply1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Gets"),
-    NULL,
-    gets1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Position"),
-    NULL,
-    position1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Invoice"),
-    NULL,
-    invoice1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Misc"),
-    NULL,
-    misc1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  {
-    GNOME_APP_UI_SUBTREE, N_("Payments"),
-    NULL,
-    payments1_menu_uiinfo, NULL, NULL,
-    GNOME_APP_PIXMAP_NONE, NULL,
-    0, (GdkModifierType) 0, NULL
-  },
-  GNOMEUIINFO_END
-};
-
 GtkWidget*
 create_OrderMainwindow (void)
 {
   GtkWidget *OrderMainwindow;
   GtkWidget *vbox1;
   GtkWidget *menubar1;
+  GtkWidget *file1;
+  GtkWidget *file1_menu;
+  GtkWidget *print_setup1;
+  GtkWidget *separator13;
+  GtkWidget *quit1;
+  GtkWidget *order1;
+  GtkWidget *order1_menu;
+  GtkWidget *new1;
+  GtkWidget *edit1;
+  GtkWidget *separator7;
+  GtkWidget *save1;
+  GtkWidget *separator1;
+  GtkWidget *print1;
+  GtkWidget *print1_menu;
+  GtkWidget *invoice1;
+  GtkWidget *all_open_invoice1;
+  GtkWidget *delivery_note1;
+  GtkWidget *pickup_note1;
+  GtkWidget *separator14;
+  GtkWidget *delete1;
+  GtkWidget *supply1;
+  GtkWidget *supply1_menu;
+  GtkWidget *SupplyNew1;
+  GtkWidget *SupplyEdit1;
+  GtkWidget *separator9;
+  GtkWidget *SupplySave1;
+  GtkWidget *separator10;
+  GtkWidget *SupplyDelete1;
+  GtkWidget *gets1;
+  GtkWidget *gets1_menu;
+  GtkWidget *GetsNew1;
+  GtkWidget *GetsEdit1;
+  GtkWidget *separator11;
+  GtkWidget *GetsSave1;
+  GtkWidget *separator12;
+  GtkWidget *GetsDelete1;
+  GtkWidget *position1;
+  GtkWidget *position1_menu;
+  GtkWidget *PositionNew1;
+  GtkWidget *PositionEdit1;
+  GtkWidget *separator8;
+  GtkWidget *PositionSave1;
+  GtkWidget *separator5;
+  GtkWidget *PositionPrint1;
+  GtkWidget *separator6;
+  GtkWidget *PositionDelete1;
+  GtkWidget *invoice1;
+  GtkWidget *invoice1_menu;
+  GtkWidget *InvoiceEdit1;
+  GtkWidget *InvoiceSave1;
+  GtkWidget *misc1;
+  GtkWidget *misc1_menu;
+  GtkWidget *MiscEdit;
+  GtkWidget *MiscSave;
+  GtkWidget *clear1;
+  GtkWidget *payments1;
+  GtkWidget *payments1_menu;
+  GtkWidget *payment_new;
+  GtkWidget *payment_edit;
+  GtkWidget *payment_save;
   GtkWidget *toolbar1;
   GtkIconSize tmp_toolbar_icon_size;
   GtkWidget *toolitem2;
@@ -452,6 +171,7 @@ create_OrderMainwindow (void)
   GtkWidget *eDiscount;
   GtkWidget *hbox33;
   GtkWidget *bShowExtInfo;
+  GtkWidget *cbInvoiceReady;
   GtkWidget *label2;
   GtkWidget *fixed2;
   GtkWidget *eSupplyNumber;
@@ -625,9 +345,9 @@ create_OrderMainwindow (void)
   GtkWidget *label52;
   GtkWidget *eAccountDesignation;
   GtkWidget *label42;
-  GtkAccelGroup *accel_group;
+  GtkTooltips *tooltips;
 
-  accel_group = gtk_accel_group_new ();
+  tooltips = gtk_tooltips_new ();
 
   OrderMainwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (OrderMainwindow, 1024, 748);
@@ -640,8 +360,250 @@ create_OrderMainwindow (void)
   menubar1 = gtk_menu_bar_new ();
   gtk_widget_show (menubar1);
   gtk_box_pack_start (GTK_BOX (vbox1), menubar1, FALSE, FALSE, 0);
-  gnome_app_fill_menu (GTK_MENU_SHELL (menubar1), menubar1_uiinfo,
-                       accel_group, FALSE, 0);
+
+  file1 = gtk_menu_item_new_with_mnemonic (_("_File"));
+  gtk_widget_show (file1);
+  gtk_container_add (GTK_CONTAINER (menubar1), file1);
+
+  file1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
+
+  print_setup1 = gtk_menu_item_new_with_mnemonic (_("Print S_etup"));
+  gtk_widget_show (print_setup1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), print_setup1);
+
+  separator13 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator13);
+  gtk_container_add (GTK_CONTAINER (file1_menu), separator13);
+  gtk_widget_set_sensitive (separator13, FALSE);
+
+  quit1 = gtk_menu_item_new_with_mnemonic (_("_Close"));
+  gtk_widget_show (quit1);
+  gtk_container_add (GTK_CONTAINER (file1_menu), quit1);
+
+  order1 = gtk_menu_item_new_with_mnemonic (_("Order"));
+  gtk_widget_show (order1);
+  gtk_container_add (GTK_CONTAINER (menubar1), order1);
+  gtk_tooltips_set_tip (tooltips, order1, _("Manage Order"), NULL);
+
+  order1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (order1), order1_menu);
+
+  new1 = gtk_menu_item_new_with_mnemonic (_("_New"));
+  gtk_widget_show (new1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), new1);
+  gtk_tooltips_set_tip (tooltips, new1, _("New Order"), NULL);
+
+  edit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
+  gtk_widget_show (edit1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), edit1);
+
+  separator7 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator7);
+  gtk_container_add (GTK_CONTAINER (order1_menu), separator7);
+  gtk_widget_set_sensitive (separator7, FALSE);
+
+  save1 = gtk_menu_item_new_with_mnemonic (_("_Save"));
+  gtk_widget_show (save1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), save1);
+
+  separator1 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), separator1);
+  gtk_widget_set_sensitive (separator1, FALSE);
+
+  print1 = gtk_menu_item_new_with_mnemonic (_("_Print"));
+  gtk_widget_show (print1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), print1);
+
+  print1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (print1), print1_menu);
+
+  invoice1 = gtk_menu_item_new_with_mnemonic (_("single Invoice"));
+  gtk_widget_show (invoice1);
+  gtk_container_add (GTK_CONTAINER (print1_menu), invoice1);
+
+  all_open_invoice1 = gtk_menu_item_new_with_mnemonic (_("all open invoice"));
+  gtk_widget_show (all_open_invoice1);
+  gtk_container_add (GTK_CONTAINER (print1_menu), all_open_invoice1);
+
+  delivery_note1 = gtk_menu_item_new_with_mnemonic (_("Delivery Note"));
+  gtk_widget_show (delivery_note1);
+  gtk_container_add (GTK_CONTAINER (print1_menu), delivery_note1);
+
+  pickup_note1 = gtk_menu_item_new_with_mnemonic (_("Pickup Note"));
+  gtk_widget_show (pickup_note1);
+  gtk_container_add (GTK_CONTAINER (print1_menu), pickup_note1);
+
+  separator14 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator14);
+  gtk_container_add (GTK_CONTAINER (order1_menu), separator14);
+  gtk_widget_set_sensitive (separator14, FALSE);
+
+  delete1 = gtk_menu_item_new_with_mnemonic (_("c_lear"));
+  gtk_widget_show (delete1);
+  gtk_container_add (GTK_CONTAINER (order1_menu), delete1);
+
+  supply1 = gtk_menu_item_new_with_mnemonic (_("Supply"));
+  gtk_widget_show (supply1);
+  gtk_container_add (GTK_CONTAINER (menubar1), supply1);
+
+  supply1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (supply1), supply1_menu);
+
+  SupplyNew1 = gtk_menu_item_new_with_mnemonic (_("New"));
+  gtk_widget_show (SupplyNew1);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), SupplyNew1);
+
+  SupplyEdit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
+  gtk_widget_show (SupplyEdit1);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), SupplyEdit1);
+
+  separator9 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator9);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), separator9);
+  gtk_widget_set_sensitive (separator9, FALSE);
+
+  SupplySave1 = gtk_menu_item_new_with_mnemonic (_("Save"));
+  gtk_widget_show (SupplySave1);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), SupplySave1);
+
+  separator10 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator10);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), separator10);
+  gtk_widget_set_sensitive (separator10, FALSE);
+
+  SupplyDelete1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
+  gtk_widget_show (SupplyDelete1);
+  gtk_container_add (GTK_CONTAINER (supply1_menu), SupplyDelete1);
+
+  gets1 = gtk_menu_item_new_with_mnemonic (_("Gets"));
+  gtk_widget_show (gets1);
+  gtk_container_add (GTK_CONTAINER (menubar1), gets1);
+
+  gets1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (gets1), gets1_menu);
+
+  GetsNew1 = gtk_menu_item_new_with_mnemonic (_("New"));
+  gtk_widget_show (GetsNew1);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), GetsNew1);
+
+  GetsEdit1 = gtk_menu_item_new_with_mnemonic (_("Edit"));
+  gtk_widget_show (GetsEdit1);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), GetsEdit1);
+
+  separator11 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator11);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), separator11);
+  gtk_widget_set_sensitive (separator11, FALSE);
+
+  GetsSave1 = gtk_menu_item_new_with_mnemonic (_("Save"));
+  gtk_widget_show (GetsSave1);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), GetsSave1);
+
+  separator12 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator12);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), separator12);
+  gtk_widget_set_sensitive (separator12, FALSE);
+
+  GetsDelete1 = gtk_menu_item_new_with_mnemonic (_("Clear"));
+  gtk_widget_show (GetsDelete1);
+  gtk_container_add (GTK_CONTAINER (gets1_menu), GetsDelete1);
+
+  position1 = gtk_menu_item_new_with_mnemonic (_("Position"));
+  gtk_widget_show (position1);
+  gtk_container_add (GTK_CONTAINER (menubar1), position1);
+
+  position1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (position1), position1_menu);
+
+  PositionNew1 = gtk_menu_item_new_with_mnemonic (_("_New"));
+  gtk_widget_show (PositionNew1);
+  gtk_container_add (GTK_CONTAINER (position1_menu), PositionNew1);
+
+  PositionEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
+  gtk_widget_show (PositionEdit1);
+  gtk_container_add (GTK_CONTAINER (position1_menu), PositionEdit1);
+
+  separator8 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator8);
+  gtk_container_add (GTK_CONTAINER (position1_menu), separator8);
+  gtk_widget_set_sensitive (separator8, FALSE);
+
+  PositionSave1 = gtk_menu_item_new_with_mnemonic (_("_Save"));
+  gtk_widget_show (PositionSave1);
+  gtk_container_add (GTK_CONTAINER (position1_menu), PositionSave1);
+
+  separator5 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator5);
+  gtk_container_add (GTK_CONTAINER (position1_menu), separator5);
+  gtk_widget_set_sensitive (separator5, FALSE);
+
+  PositionPrint1 = gtk_menu_item_new_with_mnemonic (_("_Print"));
+  gtk_widget_show (PositionPrint1);
+  gtk_container_add (GTK_CONTAINER (position1_menu), PositionPrint1);
+
+  separator6 = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator6);
+  gtk_container_add (GTK_CONTAINER (position1_menu), separator6);
+  gtk_widget_set_sensitive (separator6, FALSE);
+
+  PositionDelete1 = gtk_menu_item_new_with_mnemonic (_("c_lear"));
+  gtk_widget_show (PositionDelete1);
+  gtk_container_add (GTK_CONTAINER (position1_menu), PositionDelete1);
+
+  invoice1 = gtk_menu_item_new_with_mnemonic (_("Invoice"));
+  gtk_widget_show (invoice1);
+  gtk_container_add (GTK_CONTAINER (menubar1), invoice1);
+
+  invoice1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (invoice1), invoice1_menu);
+
+  InvoiceEdit1 = gtk_menu_item_new_with_mnemonic (_("_Edit"));
+  gtk_widget_show (InvoiceEdit1);
+  gtk_container_add (GTK_CONTAINER (invoice1_menu), InvoiceEdit1);
+
+  InvoiceSave1 = gtk_menu_item_new_with_mnemonic (_("_Save"));
+  gtk_widget_show (InvoiceSave1);
+  gtk_container_add (GTK_CONTAINER (invoice1_menu), InvoiceSave1);
+
+  misc1 = gtk_menu_item_new_with_mnemonic (_("Misc"));
+  gtk_widget_show (misc1);
+  gtk_container_add (GTK_CONTAINER (menubar1), misc1);
+
+  misc1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (misc1), misc1_menu);
+
+  MiscEdit = gtk_menu_item_new_with_mnemonic (_("Edit"));
+  gtk_widget_show (MiscEdit);
+  gtk_container_add (GTK_CONTAINER (misc1_menu), MiscEdit);
+
+  MiscSave = gtk_menu_item_new_with_mnemonic (_("Save"));
+  gtk_widget_show (MiscSave);
+  gtk_container_add (GTK_CONTAINER (misc1_menu), MiscSave);
+
+  clear1 = gtk_menu_item_new_with_mnemonic (_("clear"));
+  gtk_widget_show (clear1);
+  gtk_container_add (GTK_CONTAINER (misc1_menu), clear1);
+
+  payments1 = gtk_menu_item_new_with_mnemonic (_("Payments"));
+  gtk_widget_show (payments1);
+  gtk_container_add (GTK_CONTAINER (menubar1), payments1);
+
+  payments1_menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (payments1), payments1_menu);
+
+  payment_new = gtk_menu_item_new_with_mnemonic (_("_New"));
+  gtk_widget_show (payment_new);
+  gtk_container_add (GTK_CONTAINER (payments1_menu), payment_new);
+
+  payment_edit = gtk_menu_item_new_with_mnemonic (_("_Edit"));
+  gtk_widget_show (payment_edit);
+  gtk_container_add (GTK_CONTAINER (payments1_menu), payment_edit);
+
+  payment_save = gtk_menu_item_new_with_mnemonic (_("_Save"));
+  gtk_widget_show (payment_save);
+  gtk_container_add (GTK_CONTAINER (payments1_menu), payment_save);
 
   toolbar1 = gtk_toolbar_new ();
   gtk_widget_show (toolbar1);
@@ -1092,6 +1054,12 @@ create_OrderMainwindow (void)
   bShowExtInfo = gtk_button_new_with_mnemonic (_("show Ext. Info"));
   gtk_widget_show (bShowExtInfo);
   gtk_box_pack_start (GTK_BOX (hbox33), bShowExtInfo, FALSE, FALSE, 0);
+
+  cbInvoiceReady = gtk_check_button_new_with_mnemonic (_("ready for invoice"));
+  gtk_widget_show (cbInvoiceReady);
+  gtk_table_attach (GTK_TABLE (table7), cbInvoiceReady, 2, 3, 1, 2,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
 
   label2 = gtk_label_new (_("Order"));
   gtk_widget_show (label2);
@@ -1997,6 +1965,99 @@ create_OrderMainwindow (void)
   g_signal_connect ((gpointer) OrderMainwindow, "key_press_event",
                     G_CALLBACK (on_Mainwindow_key_press_event),
                     NULL);
+  g_signal_connect ((gpointer) print_setup1, "activate",
+                    G_CALLBACK (on_print_setup1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) quit1, "activate",
+                    G_CALLBACK (on_quit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) new1, "activate",
+                    G_CALLBACK (on_new1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) edit1, "activate",
+                    G_CALLBACK (on_edit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) save1, "activate",
+                    G_CALLBACK (on_save1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) invoice1, "activate",
+                    G_CALLBACK (on_print_invoice1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) all_open_invoice1, "activate",
+                    G_CALLBACK (on_all_open_invoice1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) delivery_note1, "activate",
+                    G_CALLBACK (on_print_delivery_note1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) pickup_note1, "activate",
+                    G_CALLBACK (on_print_pickup_note1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) delete1, "activate",
+                    G_CALLBACK (on_delete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) SupplyNew1, "activate",
+                    G_CALLBACK (on_SupplyNew1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) SupplyEdit1, "activate",
+                    G_CALLBACK (on_SupplyEdit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) SupplySave1, "activate",
+                    G_CALLBACK (on_SupplySave1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) SupplyDelete1, "activate",
+                    G_CALLBACK (on_SupplyDelete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) GetsNew1, "activate",
+                    G_CALLBACK (on_GetsNew1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) GetsEdit1, "activate",
+                    G_CALLBACK (on_GetsEdit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) GetsSave1, "activate",
+                    G_CALLBACK (on_GetsSave1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) GetsDelete1, "activate",
+                    G_CALLBACK (on_GetsDelete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) PositionNew1, "activate",
+                    G_CALLBACK (on_PositionNew1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) PositionEdit1, "activate",
+                    G_CALLBACK (on_PositionEdit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) PositionSave1, "activate",
+                    G_CALLBACK (on_PositionSave1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) PositionPrint1, "activate",
+                    G_CALLBACK (on_PositionPrint1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) PositionDelete1, "activate",
+                    G_CALLBACK (on_PositionDelete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) InvoiceEdit1, "activate",
+                    G_CALLBACK (on_InvoiceEdit1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) InvoiceSave1, "activate",
+                    G_CALLBACK (on_InvoiceSave1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) MiscEdit, "activate",
+                    G_CALLBACK (on_MiscEdit_activate),
+                    NULL);
+  g_signal_connect ((gpointer) MiscSave, "activate",
+                    G_CALLBACK (on_MiscSave_activate),
+                    NULL);
+  g_signal_connect ((gpointer) clear1, "activate",
+                    G_CALLBACK (on_Misc_delete1_activate),
+                    NULL);
+  g_signal_connect ((gpointer) payment_new, "activate",
+                    G_CALLBACK (on_payment_new_activate),
+                    NULL);
+  g_signal_connect ((gpointer) payment_edit, "activate",
+                    G_CALLBACK (on_payment_edit_activate),
+                    NULL);
+  g_signal_connect ((gpointer) payment_save, "activate",
+                    G_CALLBACK (on_payment_save_activate),
+                    NULL);
   g_signal_connect ((gpointer) tbNew, "clicked",
                     G_CALLBACK (on_tbNew_clicked),
                     NULL);
@@ -2140,57 +2201,66 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT_NO_REF (OrderMainwindow, OrderMainwindow, "OrderMainwindow");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, vbox1, "vbox1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1, "menubar1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[0].widget, "file1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[0].widget, "print_setup1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[1].widget, "separator13");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu_uiinfo[2].widget, "quit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[1].widget, "order1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[0].widget, "new1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[1].widget, "edit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[2].widget, "separator7");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[3].widget, "save1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[4].widget, "separator1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[5].widget, "print1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[0].widget, "invoice1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[1].widget, "all_open_invoice1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[2].widget, "delivery_note1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu_uiinfo[3].widget, "pickup_note1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[6].widget, "separator14");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu_uiinfo[7].widget, "delete1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[2].widget, "supply1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[0].widget, "SupplyNew1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[1].widget, "SupplyEdit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[2].widget, "separator9");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[3].widget, "SupplySave1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[4].widget, "separator10");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu_uiinfo[5].widget, "SupplyDelete1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[3].widget, "gets1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[0].widget, "GetsNew1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[1].widget, "GetsEdit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[2].widget, "separator11");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[3].widget, "GetsSave1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[4].widget, "separator12");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu_uiinfo[5].widget, "GetsDelete1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[4].widget, "position1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[0].widget, "PositionNew1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[1].widget, "PositionEdit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[2].widget, "separator8");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[3].widget, "PositionSave1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[4].widget, "separator5");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[5].widget, "PositionPrint1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[6].widget, "separator6");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu_uiinfo[7].widget, "PositionDelete1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[5].widget, "invoice1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1_menu_uiinfo[0].widget, "InvoiceEdit1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1_menu_uiinfo[1].widget, "InvoiceSave1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[6].widget, "misc1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[0].widget, "MiscEdit");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[1].widget, "MiscSave");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu_uiinfo[2].widget, "clear1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, menubar1_uiinfo[7].widget, "payments1");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[0].widget, "payment_new");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[1].widget, "payment_edit");
-  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu_uiinfo[2].widget, "payment_save");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1, "file1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, file1_menu, "file1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print_setup1, "print_setup1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator13, "separator13");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, quit1, "quit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1, "order1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, order1_menu, "order1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, new1, "new1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, edit1, "edit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator7, "separator7");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, save1, "save1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator1, "separator1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1, "print1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, print1_menu, "print1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1, "invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, all_open_invoice1, "all_open_invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, delivery_note1, "delivery_note1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, pickup_note1, "pickup_note1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator14, "separator14");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, delete1, "delete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1, "supply1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, supply1_menu, "supply1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, SupplyNew1, "SupplyNew1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, SupplyEdit1, "SupplyEdit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator9, "separator9");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, SupplySave1, "SupplySave1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator10, "separator10");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, SupplyDelete1, "SupplyDelete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1, "gets1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, gets1_menu, "gets1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, GetsNew1, "GetsNew1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, GetsEdit1, "GetsEdit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator11, "separator11");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, GetsSave1, "GetsSave1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator12, "separator12");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, GetsDelete1, "GetsDelete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1, "position1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, position1_menu, "position1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, PositionNew1, "PositionNew1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, PositionEdit1, "PositionEdit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator8, "separator8");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, PositionSave1, "PositionSave1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator5, "separator5");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, PositionPrint1, "PositionPrint1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, separator6, "separator6");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, PositionDelete1, "PositionDelete1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1, "invoice1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, invoice1_menu, "invoice1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, InvoiceEdit1, "InvoiceEdit1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, InvoiceSave1, "InvoiceSave1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1, "misc1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, misc1_menu, "misc1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, MiscEdit, "MiscEdit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, MiscSave, "MiscSave");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, clear1, "clear1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1, "payments1");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payments1_menu, "payments1_menu");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payment_new, "payment_new");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payment_edit, "payment_edit");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, payment_save, "payment_save");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolbar1, "toolbar1");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, toolitem2, "toolitem2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, tbNew, "tbNew");
@@ -2268,6 +2338,7 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eDiscount, "eDiscount");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, hbox33, "hbox33");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, bShowExtInfo, "bShowExtInfo");
+  GLADE_HOOKUP_OBJECT (OrderMainwindow, cbInvoiceReady, "cbInvoiceReady");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label2, "label2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eSupplyNumber, "eSupplyNumber");
@@ -2438,8 +2509,7 @@ create_OrderMainwindow (void)
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label52, "label52");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, eAccountDesignation, "eAccountDesignation");
   GLADE_HOOKUP_OBJECT (OrderMainwindow, label42, "label42");
-
-  gtk_window_add_accel_group (GTK_WINDOW (OrderMainwindow), accel_group);
+  GLADE_HOOKUP_OBJECT_NO_REF (OrderMainwindow, tooltips, "tooltips");
 
   return OrderMainwindow;
 }

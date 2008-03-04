@@ -2082,8 +2082,26 @@
       <default>0</default>
       <comment />
     </field>
-    
-    
+     <field>
+            <name>ready_for_invoice</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
+    <field>
+      <name>process_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>500</default>
+      <comment />
+    </field>
   </table>
   <!--table: ordersupply-->
   <table>

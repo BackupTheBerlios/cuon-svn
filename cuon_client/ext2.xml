@@ -1,24 +1,24 @@
 <database>
 
-	<nameOfDatabase>cuon</nameOfDatabase>
-	<author>J. Hamel</author>
-	<plugin>Standard</plugin>
-	<table>
-		<nameOfTable>ext_two</nameOfTable>
-		<x>52</x>
-		<y>15</y>
-		<specials>inherits (t_standard);</specials>
+    <nameOfDatabase>cuon</nameOfDatabase>
+    <author>J. Hamel</author>
+    <plugin>Standard</plugin>
+    <table>
+        <nameOfTable>ext_two</nameOfTable>
+        <x>52</x>
+        <y>15</y>
+        <specials>inherits (t_standard);</specials>
 
-		<field>
-			<name>d1</name>
-			<type>varchar</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>30</size>
-			<default></default>
-			<comment></comment>
-		</field>
+        <field>
+            <name>d1</name>
+            <type>varchar</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>30</size>
+            <default></default>
+            <comment></comment>
+        </field>
 </table>
 
  <!-- GPL Modul Garden -->
@@ -172,88 +172,88 @@
       <comment />
     </field>
     
-    	<field>
-			<name>begin_date</name>
-			<type>date</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>
-      	<field>
-			<name>end_date</name>
-			<type>date</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>
+        <field>
+            <name>begin_date</name>
+            <type>date</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>
+        <field>
+            <name>end_date</name>
+            <type>date</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>
         
         <field>
-			<name>check_begin_delivered</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>check_begin_delivered</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
         <field>
-			<name>check_ends_fetched</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>check_ends_fetched</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
     
      <field>
-			<name>check_begin_fetched</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>check_begin_fetched</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
         <field>
-			<name>check_ends_delivered</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>check_ends_delivered</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
         <field>
-			<name>status_ready</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>status_ready</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
       <field>
-			<name>status_invoice_printed</name>
-			<type>bool</type>
-			<pkey>0</pkey>
-			<unique>0</unique>
-			<notnull>0</notnull>
-			<size>0</size>
-			<default></default>
-			<comment></comment>
-		</field>  
+            <name>status_invoice_printed</name>
+            <type>bool</type>
+            <pkey>0</pkey>
+            <unique>0</unique>
+            <notnull>0</notnull>
+            <size>0</size>
+            <default></default>
+            <comment></comment>
+        </field>  
     <field>
       <name>sequence_of_stock</name>
 
@@ -952,8 +952,8 @@
 
   </table>
   <foreign_key>
-		<foreign_key_name>HibernationAddressID</foreign_key_name> 
-		<foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
+        <foreign_key_name>HibernationAddressID</foreign_key_name> 
+        <foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
     <foreign_table>hibernation</foreign_table>        
-	</foreign_key>
+    </foreign_key>
 </database>

@@ -16,7 +16,7 @@ class setup:
         self.XmlrpcPort = None
         self.Locale = None
         self.Protocol = None
-        
+        self.CuonAdmin = None
         self.store = []
         self.liLocale = ['de','pt','pt_BR']
 
@@ -348,7 +348,9 @@ class setup:
         
         #self.src_aiml = "./cuon/AI/AIML"
         #self.dest_aiml = self.SERVERDIRSHARE + "/AI/AIML"
-
+        
+        
+        
         self.restartServer()
         
     def restartServer(self):
@@ -358,7 +360,21 @@ class setup:
         self.executeSSH(" /etc/init.d/cuonweb restart")
         self.executeSSH(" /etc/init.d/cuonweb2 restart")
         self.executeSSH(" /etc/init.d/cuonai restart")
-
+        
+        # start some sql-things
+        try:
+            fsql = open('./sql_orders.sql', 'w')
+            
+            s =  "update orderbook set process_status = 500 where process_status is null  ; \n"
+            
+            fsql.write(s)
+            fsql.close()
+            
+        except:
+            print 'error in sql orders'
+           
+        self.executeSCP("./sql_orders.sql", "/root")
+        self.executeSSH('psql -U' + self.CuonAdmin + ' cuon < /root/sql_orders.sql ')
         
     def install_client(self):
         print 'client'
@@ -480,6 +496,8 @@ class setup:
         if self.cpParser.has_option(section,option):
             value = self.cpParser.get(section, option)
             print 'getConfigOption', section + ', ' + option + ' = ' + value
+        if not value:
+            value = " "
         return value   
      
     def setDefaultServer(self,sNewSect = None):
@@ -542,6 +560,7 @@ class setup:
         self.getWidget('ePortSSH').set_text(self.getConfigOption(sSect,'SSH_PORT'))
         self.getWidget('ePortXmlrpc').set_text(self.getConfigOption(sSect,'XMLRPC_PORT'))
         self.getWidget('eDescription').set_text(self.getConfigOption(sSect,'Description'))
+        self.getWidget('eCuonadmin').set_text(self.getConfigOption(sSect,'Cuonadmin'))
         if self.getConfigOption(sSect,'Default') == 'True':
             self.getWidget('rbTrue').set_active(True)
         else:
@@ -584,7 +603,7 @@ class setup:
         self.XmlrpcPort = self.getConfigOption(sSect,'XMLRPC_PORT')
         self.Locale = self.getConfigOption(sSect,'Locale')
         self.Protocol = self.getConfigOption(sSect,'Protocol')
-        
+        self.CuonAdmin = self.getConfigOption(sSect,'Cuonadmin')
         print 'install sPrefix = ', self.sPrefix
         print 'install sshPort = ', self.sshPort
         print 'install XmlrpcPort = ', self.XmlrpcPort
@@ -681,6 +700,7 @@ class setup:
         self.cpParser.set(sSect,'SSH_PORT', self.getWidget('ePortSSH').get_text())
         self.cpParser.set(sSect,'XMLRPC_PORT', self.getWidget('ePortXmlrpc').get_text())
         self.cpParser.set(sSect,'Description', self.getWidget('eDescription').get_text())
+        self.cpParser.set(sSect,'Cuonadmin', self.getWidget('eCuonadmin').get_text())
         if self.getWidget('rbTrue').get_active():
             self.cpParser.set(sSect,'Default','True')
         else:

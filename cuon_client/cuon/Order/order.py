@@ -109,7 +109,7 @@ class orderwindow(chooseWindows):
         self.singleOrder.setTreeOrder('number')
         self.singleOrder.setTree(self.xml.get_widget('tree1') )
         self.singleOrder.setListHeader([_('number'), _('designation') ])
-        
+        self.singleOrder.sWhere  ='where process_status between 500 and 599'
          #singleOrderSupply
         
         self.loadEntries(self.EntriesOrderSupply)
@@ -991,8 +991,10 @@ class orderwindow(chooseWindows):
         if self.tabOption == self.tabOrder:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
             if self.OrderID > 0:
-                self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
-            
+                self.singleOrder.sWhere = ' where id = ' + `self.OrderID` + ' and process_status between 500  and 599'
+            else:
+                self.singleOrder.sWhere = ' where process_status between 500 and 599'
+                
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
 

@@ -522,8 +522,8 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getAllOrderWithoutInvoice(self, dicUser):
         liOrder = []
-        sSql = " select id from orderbook "
-        sSql += self.getWhere(None,dicUser,1)
+        sSql = " select id from orderbook  where process_status = 500 and ready_for invoice = true "
+        sSql += self.getWhere(None,dicUser,2)
         sSql += ' order by id '
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         if result and result not in ['NONE','ERROR']:
