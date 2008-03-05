@@ -574,10 +574,11 @@ class orderwindow(chooseWindows):
             liSearch.append('###id = (select order_number from list_of_invoices where invoice_number = ' + sInvoiceNumber +')')
             liSearch.append(sInvoiceNumber)    
        
-             
-        self.singleOrder.sWhere = self.getWhere(liSearch) 
-        
-        
+        if liSearch:     
+            self.singleOrder.sWhere = self.getWhere(liSearch) 
+            self.singleOrder.sWhere += " and process_status between 500 and 599 "
+        else:
+            self.singleOrder.sWhere = " where process_status between 500 and 599 "
         self.oldTab = -1
         self.refreshTree()
 
@@ -992,8 +993,8 @@ class orderwindow(chooseWindows):
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
             if self.OrderID > 0:
                 self.singleOrder.sWhere = ' where id = ' + `self.OrderID` + ' and process_status between 500  and 599'
-            else:
-                self.singleOrder.sWhere = ' where process_status between 500 and 599'
+            
+                
                 
             self.singleOrder.connectTree()
             self.singleOrder.refreshTree()
@@ -1039,6 +1040,8 @@ class orderwindow(chooseWindows):
             print 'Seite 0'
             self.editAction = 'editOrder'
             self.setTreeVisible(True)
+            #self.singleOrder.sWhere = ' where process_status between 500 and 599'
+            
         elif self.tabOption == self.tabSupply:
             #Partner
             self.disableMenuItem('tabs')

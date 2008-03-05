@@ -42,7 +42,7 @@ class SingleOrder(SingleData):
         print len(self.table.Columns)
         #
         self.invoiceNumber = 0
-       
+        self.processStatus = 500
       
 
     def getInvoiceNumber(self):
@@ -75,3 +75,9 @@ class SingleOrder(SingleData):
         
     def setOtherEmptyEntries(self):
         self.getWidget('eInvoiceNumber').set_text('')
+    
+    def readNonWidgetEntries(self, dicValues):
+        dicValues['process_status'] = [self.processStatus, 'int']
+        return dicValues
+  
+    
