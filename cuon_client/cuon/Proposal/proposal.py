@@ -101,18 +101,20 @@ class proposalwindow(chooseWindows):
         #singleProposal
         
         self.loadEntries(self.EntriesProposal)
-        self.singleProposal.setEntries(self.getDataEntries(self.EntriesProposal) )
+        self.singleOrder.setEntries(self.getDataEntries(self.EntriesProposal) )
         self.singleOrder.setGladeXml(self.xml)
         self.singleOrder.setTreeFields( ['number', 'designation'] )
         self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleOrder.setTreeOrder('number')
         self.singleOrder.setTree(self.xml.get_widget('tree1') )
         self.singleOrder.setListHeader([_('number'), _('designation') ])
+        self.singleOrder.processStatus = 300
+        self.singleOrder.sWhere  ='where process_status between 300 and 399'
         
          #singleOrderSupply
         
         self.loadEntries(self.EntriesProposalSupply)
-        self.singleOrderSupply.setEntries(self.getDataEntries('order_supply.xml') )
+        self.singleOrderSupply.setEntries(self.getDataEntries(self.EntriesProposalSupply) )
         self.singleOrderSupply.setGladeXml(self.xml)
         self.singleOrderSupply.setTreeFields( ['designation' ] )
         self.singleOrderSupply.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
@@ -125,7 +127,7 @@ class proposalwindow(chooseWindows):
         #singleOrderGet
         
         self.loadEntries(self.EntriesProposalGet)
-        self.singleOrderGet.setEntries(self.getDataEntries('order_get.xml') )
+        self.singleOrderGet.setEntries(self.getDataEntries(self.EntriesProposalGet) )
         self.singleOrderGet.setGladeXml(self.xml)
         self.singleOrderGet.setTreeFields( ['designation'] )
         self.singleOrderGet.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
@@ -149,29 +151,29 @@ class proposalwindow(chooseWindows):
         self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
   
         
-        self.loadEntries(self.EntriesOrderMisc)
+  #      self.loadEntries(self.EntriesOrderMisc)
         
-        # singleOrderInvoice
-        self.loadEntries(self.EntriesOrderInvoice)
-        self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
-        self.singleOrderInvoice.setEntries(self.getDataEntries(self.EntriesOrderInvoice) )
-        self.singleOrderInvoice.setGladeXml(self.xml)
-        self.singleOrderInvoice.setTreeFields([])
-        self.singleOrderInvoice.setTreeOrder('id')
-        self.singleOrderInvoice.setTree(self.xml.get_widget('tree1') )
-        # singleOrderPayment
-        
-        self.loadEntries(self.EntriesOrderPayment)
-        self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )
-        self.singleOrderPayment.setGladeXml(self.xml)
-        self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
-        self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleOrderPayment.setTreeOrder('date_of_paid desc,id desc')
-        self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
-
-        self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
-        self.singleOrderPayment.setTree(self.xml.get_widget('tree1') )
-  
+#        # singleOrderInvoice
+#        self.loadEntries(self.EntriesOrderInvoice)
+#        self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+#        self.singleOrderInvoice.setEntries(self.getDataEntries(self.EntriesOrderInvoice) )
+#        self.singleOrderInvoice.setGladeXml(self.xml)
+#        self.singleOrderInvoice.setTreeFields([])
+#        self.singleOrderInvoice.setTreeOrder('id')
+#        self.singleOrderInvoice.setTree(self.xml.get_widget('tree1') )
+#        # singleOrderPayment
+#        
+#        self.loadEntries(self.EntriesOrderPayment)
+#        self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )
+#        self.singleOrderPayment.setGladeXml(self.xml)
+#        self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
+#        self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+#        self.singleOrderPayment.setTreeOrder('date_of_paid desc,id desc')
+#        self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
+#
+#        self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
+#        self.singleOrderPayment.setTree(self.xml.get_widget('tree1') )
+#  
         # Menu-items
         self.initMenuItems()
 
@@ -181,27 +183,27 @@ class proposalwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','supply1')
         self.addEnabledMenuItems('tabs','gets1')
         self.addEnabledMenuItems('tabs','position1')
-        self.addEnabledMenuItems('tabs','invoice1')
+        #self.addEnabledMenuItems('tabs','invoice1')
         self.addEnabledMenuItems('tabs','misc1')
-        self.addEnabledMenuItems('tabs','payments1')
+        #self.addEnabledMenuItems('tabs','payments1')
 
 
         # seperate Menus
-        self.addEnabledMenuItems('order','order1')
+        self.addEnabledMenuItems('proposal','proposal1')
         self.addEnabledMenuItems('supply','supply1')
         self.addEnabledMenuItems('gets','gets1')
         self.addEnabledMenuItems('positions','position1')
-        self.addEnabledMenuItems('payment','payments1')
-        self.addEnabledMenuItems('invoice','invoice1')
+        #self.addEnabledMenuItems('payment','payments1')
+        #self.addEnabledMenuItems('invoice','invoice1')
         self.addEnabledMenuItems('misc','misc1')
         
 
         
         # enabledMenues for Order
-        self.addEnabledMenuItems('editOrder','new1', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editOrder','edit1', self.dicUserKeys['edit'])
-        self.addEnabledMenuItems('editOrder','delete1', self.dicUserKeys['delete'])
-        self.addEnabledMenuItems('editOrder','print1', self.dicUserKeys['print'])
+        self.addEnabledMenuItems('editProposal','new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editProposal','edit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editProposal','delete1', self.dicUserKeys['delete'])
+        self.addEnabledMenuItems('editProposal','print1', self.dicUserKeys['print'])
 
         # enabledMenues for Supply
         self.addEnabledMenuItems('editSupply','SupplyNew1', self.dicUserKeys['new'])
@@ -217,12 +219,12 @@ class proposalwindow(chooseWindows):
         self.addEnabledMenuItems('editPositions','PositionNew1', self.dicUserKeys['new'])
         self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
         self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
-        # enabledMenues for Invoice
-        self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
-
-        # enabledMenues for Payment
-        self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
+#        # enabledMenues for Invoice
+#        self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
+#
+#        # enabledMenues for Payment
+#        self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
+#        self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
 
         # to misc menu
         
@@ -231,13 +233,13 @@ class proposalwindow(chooseWindows):
         self.addEnabledMenuItems('editSave','SupplySave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','InvoiceSave1', self.dicUserKeys['save'])
+        #self.addEnabledMenuItems('editSave','InvoiceSave1', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
+        #self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
 
 
         # tabs from notebook
-        self.tabOrder = 0
+        self.tabProposal = 0
         self.tabSupply = 1
         self.tabGet = 2
         self.tabPosition = 3
@@ -987,8 +989,8 @@ class proposalwindow(chooseWindows):
         self.singleOrderPosition.disconnectTree()
         #self.singleOrderInvoice.disconnectTree()
         
-        if self.tabOption == self.tabOrder:
-            self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+        if self.tabOption == self.tabProposal:
+            self.singleOrder.setEntries(self.getDataEntries(self.EntriesProposal) )
             if self.OrderID > 0:
                 self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
             
@@ -1029,12 +1031,12 @@ class proposalwindow(chooseWindows):
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
-        if self.tabOption == self.tabOrder:
-            #Address
+        if self.tabOption == self.tabProposal:
+            #Proposal
             self.disableMenuItem('tabs')
-            self.enableMenuItem('order')
+            self.enableMenuItem('proposal')
             print 'Seite 0'
-            self.editAction = 'editOrder'
+            self.editAction = 'editProposal'
             self.setTreeVisible(True)
         elif self.tabOption == self.tabSupply:
             #Partner
