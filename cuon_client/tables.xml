@@ -2102,7 +2102,19 @@
       <default>500</default>
       <comment />
     </field>
+    <field>
+      <name>proposal_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    
   </table>
+  
   <!--table: ordersupply-->
   <table>
     <nameOfTable>ordersupply</nameOfTable>

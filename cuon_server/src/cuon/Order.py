@@ -87,6 +87,34 @@ class Order(xmlrpc.XMLRPC, basics):
         else:
             nr = 0
         return nr
+        
+        
+    def xmlrpc_getProposalNumber(self, orderNumber, dicUser):
+        
+        nr = 0
+        try:
+            orderNumber = int(orderNumber)
+        except:
+            orderNumber = 0
+            
+        sc = '_client_' + `dicUser['client']`
+        
+        sSql = 'select proposal_number from orderbook  where order_number = ' + `orderNumber`
+        sSql += self.getWhere(None, dicUser,2)
+        
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
+        if dicResult not in ['NONE','ERROR']:
+            nr = dicResult[0]['proposal_number']
+        else:
+            sSql = 'select max(proposal_number) from orderbook  '
+            sSql += self.getWhere(None, dicUser,1)
+        
+            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
+            if dicResult not in ['NONE','ERROR']:
+                nr = dicResult[0]['proposal_number']
+        nr = nr + 1
+        return nr    
+        
     def xmlrpc_getInvoiceDate(self, orderNumber, dicUser):
         
         date = ' '
@@ -174,6 +202,8 @@ class Order(xmlrpc.XMLRPC, basics):
             nr = 0
         
         return nr
+        
+    
 
     def xmlrpc_getPickupAddress(self, dicOrder, dicUser):
 

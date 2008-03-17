@@ -42,6 +42,7 @@ class SingleOrder(SingleData):
         print len(self.table.Columns)
         #
         self.invoiceNumber = 0
+        self.proposalNumber = 0 
         self.processStatus = 500
       
 
@@ -49,6 +50,11 @@ class SingleOrder(SingleData):
         self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
         print 'Invoice-Number' + `self.invoiceNumber`
         return self.invoiceNumber
+
+    def getProposalNumber(self):
+        self.proposalNumber =  self.rpc.callRP('Order.getProposalNumber', self.ID, self.dicUser)
+        print 'proposal-Number' + `self.proposalNumber`
+        return self.proposalNumber
 
 
 

@@ -73,14 +73,14 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="order1">
+	    <widget class="GtkMenuItem" id="proposal1">
 	      <property name="visible">True</property>
 	      <property name="tooltip" translatable="yes">Manage Order</property>
 	      <property name="label" translatable="yes">Proposal</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="order1_menu">
+		<widget class="GtkMenu" id="proposal1_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="new1">
@@ -134,7 +134,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="Proposal">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Pickup Note</property>
+			      <property name="label" translatable="yes">Proposal</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_print_proposal1_activate" last_modification_time="Sun, 02 Mar 2008 11:22:25 GMT"/>
 			    </widget>

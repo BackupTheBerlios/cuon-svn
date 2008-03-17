@@ -309,46 +309,47 @@ class proposalwindow(chooseWindows):
   
     def on_save1_activate(self, event):
         print "save order v2"
+        self.singleOrder.processStatus = 300
         self.singleOrder.save()
-        self.setEntriesEditable(self.EntriesOrder, FALSE)   
+        self.setEntriesEditable(self.EntriesProposal, FALSE)   
         self.tabChanged()
          
         
     def on_new1_activate(self, event):
-        print "new order v2"
+        print "new proposal v2"
         self.singleOrder.newRecord()
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.setEntriesEditable(self.EntriesProposal, TRUE)
 
     def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.setEntriesEditable(self.EntriesProposal, TRUE)
 
 
-    def on_print_invoice1_activate(self, event):
+    def on_print_proposal1_activate(self, event):
         dicOrder = {}
-        print ' start Invoice printing'
+        print ' start proposal printing'
         dicOrder['orderid'] = self.singleOrder.ID
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
-        dicOrder['invoiceNumber'] = self.rpc.callRP('Order.setInvoiceNumber', dicOrder['orderid'], self.dicUser)
-        print ' start Invoice printing 2'
-        invoiceNumber = self.singleOrder.getInvoiceNumber() 
-        dicOrder['invoiceNumber'] =  invoiceNumber        
-        print ' start Invoice printing 3'
+        #dicOrder['proposalNumber'] = self.rpc.callRP('Order.setProposalNumber', dicOrder['orderid'], self.dicUser)
+        print ' start proposal printing 2'
+        proposalNumber = self.singleOrder.getProposalNumber() 
+        dicOrder['proposalNumber'] =  proposalNumber        
+        print ' start Proposal printing 3'
         
         print dicOrder
         
-        Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
-        fname = self.showPdf(Pdf, self.dicUser,'INVOICE')
-        ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
+        Pdf = self.rpc.callRP('Report.server_proposal_document', dicOrder, self.dicUser)
+        fname = self.showPdf(Pdf, self.dicUser,'PROPOSAL')
+        #ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
         # insert invoice into dms 
         self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
-        self.singleDMS.ModulNumber = self.MN['Order']
+        self.singleDMS.ModulNumber = self.MN['PROPOSAL']
         self.singleDMS.sep_info_1 = self.singleOrder.ID    
         self.singleDMS.newRecord()
         self.singleDMS.newDate = self.getActualDateTime()['date']
-        self.singleDMS.newTitle = _('invoice') + ' ' + `invoiceNumber`
+        self.singleDMS.newTitle = _('proposal') + ' ' + `proposalNumber`
         print self.singleDMS.newDate
-        self.singleDMS.newCategory = _('payments')
-        self.singleDMS.Rights = 'INVOICE'
+        self.singleDMS.newCategory = _('proposal')
+        self.singleDMS.Rights = 'PROPOSAL'
         
         self.singleDMS.save(['document_image'])
         
