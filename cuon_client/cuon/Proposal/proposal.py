@@ -465,19 +465,19 @@ class proposalwindow(chooseWindows):
         if self.singleOrderPosition.ID == -1:
             self.singleOrderPosition.TreePos = self.singleOrderPosition.TREELAST
         self.singleOrderPosition.save()
-        self.setEntriesEditable(self.EntriesOrderPosition, FALSE)
+        self.setEntriesEditable(self.EntriesProposalPosition, FALSE)
         
         self.tabChanged()
            
 
     def on_PositionEdit1_activate(self, event):
         print 'PositionEdit1'
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
+        self.setEntriesEditable(self.EntriesProposalPosition, TRUE)
     
     def on_PositionNew1_activate(self, event):
         print "new Partner articles v2"
         self.singleOrderPosition.newRecord()
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
+        self.setEntriesEditable(self.EntriesProposalPosition, TRUE)
 
     def on_PositionDelete1_activate(self, event):
         print "delete Partner articles v2"

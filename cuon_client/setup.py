@@ -107,6 +107,7 @@ class setup:
         
         self.CUON_DOCUMENTS_ORDER = self.CUON_DOCUMENTS + "/Order"
         self.CUON_DOCUMENTS_ORDER_INVOICE = self.CUON_DOCUMENTS_ORDER + "/Invoice"
+        self.CUON_DOCUMENTS_ORDER_PROPOSAL = self.CUON_DOCUMENTS_ORDER + "/Proposal"
         
         
         self.CUON_DOCUMENTS_HIBERNATION = self.CUON_DOCUMENTS + "/Hibernation"
@@ -259,6 +260,7 @@ class setup:
 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER + " ; fi ") 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER_INVOICE + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_ORDER_PROPOSAL + " ] ; then mkdir " + self.CUON_DOCUMENTS_ORDER_PROPOSAL + " ; fi ") 
 
 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION + " ; fi ") 

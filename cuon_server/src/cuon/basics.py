@@ -52,6 +52,7 @@ class basics(xmlrpc.XMLRPC):
         self.REPORTPATH = "/usr/share/cuon/cuon_server/src/cuon/Reports/XML"
 
         self.DocumentPathOrderInvoice = '/var/cuon/Documents/Order/Invoice'
+        self.DocumentPathOrderProposal = '/var/cuon/Documents/Order/Proposal'
 
 
         self.DocumentPathHibernationIncoming = '/var/cuon/Documents/Hibernation/Incoming'

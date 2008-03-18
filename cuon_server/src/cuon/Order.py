@@ -99,18 +99,18 @@ class Order(xmlrpc.XMLRPC, basics):
             
         sc = '_client_' + `dicUser['client']`
         
-        sSql = 'select proposal_number from orderbook  where order_number = ' + `orderNumber`
+        sSql = 'select proposal_number from orderbook  where id = ' + `orderNumber`
         sSql += self.getWhere(None, dicUser,2)
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
-        if dicResult not in ['NONE','ERROR']:
+        if dicResult and dicResult not in ['NONE','ERROR']:
             nr = dicResult[0]['proposal_number']
         else:
             sSql = 'select max(proposal_number) from orderbook  '
             sSql += self.getWhere(None, dicUser,1)
         
             dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
-            if dicResult not in ['NONE','ERROR']:
+            if dicResult and dicResult not in ['NONE','ERROR']:
                 nr = dicResult[0]['proposal_number']
         nr = nr + 1
         return nr    
