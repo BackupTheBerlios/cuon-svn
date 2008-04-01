@@ -461,6 +461,32 @@ class articleswindow(chooseWindows):
             self.getWidget('eCategory').set_text(sGroupName)
         else:
             self.getWidget('eCategory').set_text('')
+            
+            
+            
+            
+    def on_bSearchAssociated_clicked(self, event):
+        print 'search associated'
+        articleAssociated = self.getWidget('cbAssociatedWith').get_active()
+        if articleAssociated == 1:
+            #botany
+            bot = cuon.Garden.botany.botanywindow(self.allTables)
+            bot.setChooseEntry('chooseBotany',  self.getWidget('eAssociatedNr'))
+        
+                             
+    def on_eAssociatedNr_changed(self, event):
+        print 'eAssocsiatedNr changed'
+        
+        iMaterialGroup = self.getChangedValue('eCategoryNr')
+        sGroupName = self.singleMaterialGroup.getNameAndDesignation(iMaterialGroup)
+        if len(sGroupName) > 0:
+            self.getWidget('eCategory').set_text(sGroupName)
+        else:
+            self.getWidget('eCategory').set_text('')        
+            
+            
+            
+            
     def on_bGotoAssociated_clicked(self, event):
         if self.getWidget('cbAssociatedWith').get_active() == 1:
             # Botany
@@ -473,11 +499,19 @@ class articleswindow(chooseWindows):
         articleAssociated = self.getWidget('cbAssociatedWith').get_active()
         if articleAssociated == 1:
             print 'cbAssociatedID read'
-            iBotID = self.singleBotany.getAssociatedID(self.singleArticle.ID)
+            #iBotID = self.singleBotany.getAssociatedID(self.singleArticle.ID)
+            #print 'Botany ID = ', iBotID
+            #sBotany = self.singleBotany.getBotanyName(iBotID)
+            iBotID = self.singleArticle.firstRecord['associated_id']
             print 'Botany ID = ', iBotID
             sBotany = self.singleBotany.getBotanyName(iBotID)
-            
-            self.setText2Widget(sBotany,'eAssocsiatedText')
+            if sBotany:
+                sBotany = self.singleBotany.getBotanyName(iBotID)
+                self.setText2Widget(sBotany,'eAssocsiatedText')
+            else:
+                self.setText2Widget('','eAssocsiatedText')
+                
+                
         else:
             self.setText2Widget('','eAssocsiatedText')
         
