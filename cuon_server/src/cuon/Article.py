@@ -92,7 +92,7 @@ class Article(xmlrpc.XMLRPC, basics):
         
         
         
-        sSql = 'select number, designation,sellingprice1, sellingprice2, sellingprice3, sellingprice4, wrapping, unit,quantumperwrap, manufactor_id, material_group, sep_info_1,id from articles'
+        sSql = 'select number, designation,sellingprice1, sellingprice2, sellingprice3, sellingprice4, wrapping, unit,quantumperwrap, manufactor_id, material_group, sep_info_1,id,  associated_with, associated_id  from articles'
         sSql3 = ''
         sSql4 = ''
         sSql5 = ''
@@ -146,12 +146,30 @@ class Article(xmlrpc.XMLRPC, basics):
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         result2 = None
+            
         if result and result not in ['NONE', 'ERROR']:
                 result2 = []
                 z1 = 0
                 dicValues2 = {}
 
                 for dicValues in result:
+                    # look at associated pictures
+                    sAssociatedTable, iDMS = self.getAssociatedTable(dicValues['associated_with'])
+                    if sAssociatedTable and iDMS:
+                        
+                        sSql = "select document_image from dms where insert_from_module = iDMS and title = 'print001' and sep_info_1 = "
+                        sSql += dicValues['associated_id ']
+                        sSql += self.getWhere("",dicUser,2)
+                        result7 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+                        if result7 and result7 not in ['NONE', 'ERROR']:
+                            sFilename, iT  = self.createNewSessionID()
+                            try:
+                                f = open(self.DocumentPathTmp + '/' + sFilename, 'w')
+                                f.write(result7[0]['document_image'])
+                                f.close()
+                            except:
+                                print 'file error'
+                                dicValues['dms_print001'] = self.DocumentPathTmp + '/' + sFilename
                     if z1 >= nRows:
                         z1 = 0
                         result2.append(dicValues2)

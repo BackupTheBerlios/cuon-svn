@@ -98,7 +98,7 @@ class setup:
         
         
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
-        
+        self.CUON_TMP = self.CUON_VAR + "/tmp"
         self.CUON_DOCUMENTS_LISTS = self.CUON_DOCUMENTS + "/Lists"
         
         self.CUON_DOCUMENTS_LISTS_ADDRESSES = self.CUON_DOCUMENTS_LISTS+ "/Addresses"
@@ -251,6 +251,8 @@ class setup:
         
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_TMP + " ] ; then mkdir " + self.CUON_TMP + " ; fi ") 
+        
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS + " ] ; then mkdir " + self.CUON_DOCUMENTS + " ; fi ") 
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS + " ; fi ")    
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_LISTS_ADDRESSES  + " ] ; then mkdir " + self.CUON_DOCUMENTS_LISTS_ADDRESSES + " ; fi ")    

@@ -766,7 +766,13 @@ class report(MyXML):
                 eValue =  self.dicReportData[dicEntry['eName']]
             else:
                 eValue =  dicEntry['value']
-                #print eValue
+            eValue = eValue.strip()
+            if eValue[0:9] == 'dms_print':
+                sNewImage = eValue
+                if self.dicReportData.has_key(sNewImage):
+                    eValue =  self.dicReportData[sNewImage]
+                else:
+                    eValue = ''
                 
         elif dicEntry['class'] == 'Field':
             if self.dicReportData.has_key(dicEntry['eName']):
@@ -1031,6 +1037,8 @@ class report(MyXML):
 
         elif dicField['class'] == 'ImageURL'  :
             sImage = str(dicField['text'])
+            
+            
             #print 'ImageURL = ', sImage
             nWidth = dicField['width'] 
             nHeight =dicField['height'] 

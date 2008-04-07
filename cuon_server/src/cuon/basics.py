@@ -61,6 +61,8 @@ class basics(xmlrpc.XMLRPC):
         
         self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
         self.DocumentPathListsArticles = '/var/cuon/Documents/Lists/Articles'
+        self.DocumentPathTmp =  '/var/cuon/tmp'
+        
         
         self.WIKI_PORT = 7084
         self.ONLINE_BOOK = 'http://84.244.7.139:7084/?action=xmlrpc2'
@@ -755,5 +757,18 @@ class basics(xmlrpc.XMLRPC):
                 bRet = True
                                               
         return bRet
+        
+    def getAssociatedTable(self, iNumber):
+        sTable = None
+        iDMS = 0
+        
+        if iNumber:
+            if iNumber == 1:
+                sTable = 'botany'
+                iDMS = 110500
+                
+        return sTable, iDMS
+        
+        
         
                 
