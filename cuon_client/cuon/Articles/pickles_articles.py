@@ -16,9 +16,11 @@ from cuon.Windows.rawWindow import rawWindow
 class pickles_articles(rawWindow):
 
     
-    def __init__(self, nRows):
+    def __init__(self, nRows, sName = 'standard'):
         rawWindow.__init__(self)
         self.nRows = nRows
+        self.sName = sName
+        
         self.loadGlade('articles_search1.xml')
         self.win1 = self.getWidget('dialog1')
         
@@ -28,7 +30,7 @@ class pickles_articles(rawWindow):
     def on_okbutton1_clicked(self,event):
         print 'ok'
         dicSearchfields = self.readSearchDatafields()
-        Pdf = self.rpc.callRP('Report.server_articles_pickles_standard', dicSearchfields, self.dicUser,  self.nRows)
+        Pdf = self.rpc.callRP('Report.server_articles_pickles_standard', dicSearchfields, self.dicUser,  self.nRows, self.sName)
         self.showPdf(Pdf, self.dicUser)
         di1 = self.getWidget('dialog1')
         di1.hide()

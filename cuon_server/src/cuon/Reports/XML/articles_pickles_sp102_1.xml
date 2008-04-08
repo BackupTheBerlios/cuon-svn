@@ -1,0 +1,134 @@
+<report>
+  <orientation>Portrait</orientation>
+  <topMargin>20</topMargin>
+  <bottomMargin>20</bottomMargin>
+  <rightMargin>40</rightMargin>
+  <leftMargin>40</leftMargin>
+  <papersizeX>595</papersizeX>
+  <papersizeY>842</papersizeY>
+
+  <reportHeader>
+    <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>0</posX2>
+    <posY2>0</posY2>
+    
+   
+    </reportHeader>
+
+
+<pageHeader>
+    <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>000</posX2>
+    <posY2>00</posY2>
+   
+  </pageHeader>
+
+
+<groups>
+    <count>1</count>
+    <groupEntry>
+      <number>1</number>
+      <resultSet>articles</resultSet>
+      <pageDetails>
+	<posX1>0</posX1>
+	<posY1>0</posY1>
+	<posX2>400</posX2>
+	<posY2>60</posY2>
+	<lineY>25</lineY>
+
+	<entry>
+	  <name>Rectangle1</name>
+	  <class>Rectangle</class>
+	  <value>1</value>
+	  <type>full</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>0</posY1>
+	  <posX2>495</posX2>
+	  <posY2>13</posY2>
+	  
+	  <font>0</font>
+	  <fontsize>1</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0.1,0.2,0.4</foregroundColor>
+	  <backgroundColor>0.2,0.2,0.9</backgroundColor>
+	  <grayScale>0.8</grayScale>
+	</entry>
+	<entry>
+
+	  <name>number_0</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>10</posY1>
+	  <posX2>60</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+    
+    
+     <entry>
+	  <name>number_0</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>30</posY1>
+	  <posX2>60</posX2>
+	  <posY2>50</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
+	<entry>
+	  <name>designation_0</name>
+	  <class>DatabaseField</class>
+	  <resultSet>articles</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>180</posX1>
+	  <posY1>10</posY1>
+	  <posX2>180</posX2>
+	  <posY2>10</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+	
+	
+
+      </pageDetails>
+      </groupEntry>
+    </groups>
+
+<pageFooter>
+   <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>0</posX2>
+    <posY2>0</posY2>
+      
+  </pageFooter>
+
+<reportFooter>
+   <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>0</posX2>
+    <posY2>0</posY2>
+       
+  </reportFooter>
+
+</report>

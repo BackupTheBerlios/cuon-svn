@@ -15,12 +15,12 @@ import os
 import types
 
 class report_articles_pickles_standard:
-    def __init__(self,  nRows = 0):
+    def __init__(self,  nRows = 0,  sName = 'standard'):
         self.nRows = nRows
-        
+        self.sName = sName
         self.dicReportData = {}
         
-        self.dicReportData['Title'] = _('articles_pickles_standard generatet by CUON')
+        self.dicReportData['Title'] = _('articles_pickles_' + sName + ' generatet by CUON')
 
         self.dicReportData['lPageNumber'] = _('Pagenumber:')
         self.dicReportData['fPageNumber'] = 1
@@ -29,7 +29,11 @@ class report_articles_pickles_standard:
     
     def getReportData(self, dicSearchfields, dicUser, oArticle, reportDefs):
         self.dicResults = {}
-        self.fileName = reportDefs['DocumentPathListsArticles'] + '/' +_('PicklesStandard-') + `dicUser['Name']` +`self.nRows` + '.pdf' 
+        sReportfile = reportDefs['ReportPath'] + '/articles_pickles_' + self.sName + '_' + `self.nRows` + '.xml'
+        # to do
+        # check, if to load pictures
+        
+        self.fileName = reportDefs['DocumentPathListsArticles'] + '/' +_('Pickles_' + self.sName + '-') + `dicUser['Name']` +`self.nRows` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
         
         dicResult =  oArticle.getPickleListStandard( dicSearchfields, dicUser,  self.nRows)
@@ -47,7 +51,7 @@ class report_articles_pickles_standard:
         # 3 dicResults
         # 4 dicReportData
         # 5 reportDefs
-        return reportDefs['ReportPath'] + '/articles_pickles_standard_' + `self.nRows` + '.xml', dicUser, self.dicResults, self.dicReportData, reportDefs
+        return sReportfile, dicUser, self.dicResults, self.dicReportData, reportDefs
                 
         
         

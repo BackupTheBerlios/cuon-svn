@@ -76,15 +76,17 @@ class Report(xmlrpc.XMLRPC, basics):
         return self.report_server.ReportServer.createReport(repData)
         
         
-    def xmlrpc_server_articles_pickles_standard(self, dicSearchlist, dicUser,  nRows):
+    def xmlrpc_server_articles_pickles_standard(self, dicSearchlist, dicUser,  nRows=0, sName ='standard'):
         import Reports.report_articles_pickles_standard
         import Article
         
         print "startReport"
         oArticles = Article.Article()
-        oReports = Reports.report_articles_pickles_standard.report_articles_pickles_standard(nRows)
+        oReports = Reports.report_articles_pickles_standard.report_articles_pickles_standard(nRows, sName)
+        print 'new report 001'
         repData = oReports.getReportData(dicSearchlist, dicUser, oArticles, self.ReportDefs)
-        print repData
+        print 'get ReportData 002'
+        #print repData
         
         
         return self.report_server.ReportServer.createReport(repData)

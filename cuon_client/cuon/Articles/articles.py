@@ -368,16 +368,32 @@ class articleswindow(chooseWindows):
     
     def on_one_standard1_activate(self, event):
         pdf = cuon.Articles.pickles_articles.pickles_articles(1)
-    
+    def on_sp101_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(1, 'sp101')
+    def on_sp102_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(1, 'sp102')
+        
     def on_two_standard1_activate(self, event):
         pdf = cuon.Articles.pickles_articles.pickles_articles(2)
-    
+    def on_sp201_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(2, 'sp201')
+    def on_sp202_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(2, 'sp202')
+        
     def on_three_standard1_activate(self, event):
         pdf = cuon.Articles.pickles_articles.pickles_articles(3)
-    
+    def on_sp301_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(3, 'sp301')
+    def on_sp302_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(3, 'sp302')
+        
     def on_four_standard1_activate(self, event):
         pdf = cuon.Articles.pickles_articles.pickles_articles(4)
-    
+    def on_sp401_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(4, 'sp401')
+    def on_sp402_activate(self, event):
+        pdf = cuon.Articles.pickles_articles.pickles_articles(4, 'sp402')
+        
 
 
 

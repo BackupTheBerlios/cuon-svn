@@ -4,7 +4,8 @@ from datetime import datetime
 import random
 import xmlrpclib
 from twisted.web import xmlrpc
- 
+import base64
+import bz2
 from basics import basics
 import Database
 
@@ -119,7 +120,7 @@ class Article(xmlrpc.XMLRPC, basics):
             if dicSearchlist['eMGFrom'] and dicSearchlist['eMGTo'] :
                 eMGFrom = dicSearchlist['eMGFrom']
                 eMGTo = dicSearchlist['eMGTo']
-                sSql += " materialgroup  between  " +  eMGFrom + " and " + eMGTo + ' and' 
+                sSql += " material_group  between  " +  eMGFrom + " and " + eMGTo + ' and' 
                 
        
         
@@ -157,15 +158,18 @@ class Article(xmlrpc.XMLRPC, basics):
                     sAssociatedTable, iDMS = self.getAssociatedTable(dicValues['associated_with'])
                     if sAssociatedTable and iDMS:
                         
-                        sSql = "select document_image from dms where insert_from_module = iDMS and title = 'print001' and sep_info_1 = "
-                        sSql += dicValues['associated_id ']
+                        sSql = "select document_image from dms where insert_from_module = " + `iDMS` + " and title = 'print001' and sep_info_1 = "
+                        sSql += `dicValues['associated_id']`
                         sSql += self.getWhere("",dicUser,2)
                         result7 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
                         if result7 and result7 not in ['NONE', 'ERROR']:
-                            sFilename, iT  = self.createNewSessionID()
+                            aFilename = self.createNewSessionID()
+                            sFilename = aFilename['SessionID']
                             try:
                                 f = open(self.DocumentPathTmp + '/' + sFilename, 'w')
-                                f.write(result7[0]['document_image'])
+                                s = base64.decodestring(result7[0]['document_image'])
+                                s = bz2.decompress(s)
+                                f.write(s)
                                 f.close()
                             except:
                                 print 'file error'
