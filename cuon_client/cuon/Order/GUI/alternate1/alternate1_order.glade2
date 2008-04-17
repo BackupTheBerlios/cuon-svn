@@ -572,7 +572,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
-	      <signal name="clicked" handler="on_tbSave_clicked"/>
+	      <signal name="clicked" handler="on_save1_activate" last_modification_time="Sat, 12 Apr 2008 06:12:01 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>
@@ -5607,6 +5607,51 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
 	      </child>
 
 	      <child>
+		<widget class="GtkRadioButton" id="rPaymentCash">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">Cash</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">2</property>
+		  <property name="bottom_attach">3</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkRadioButton" id="rPaymentTransfer">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">Transfer</property>
+		  <property name="use_underline">True</property>
+		  <property name="relief">GTK_RELIEF_NORMAL</property>
+		  <property name="focus_on_click">True</property>
+		  <property name="active">False</property>
+		  <property name="inconsistent">False</property>
+		  <property name="draw_indicator">True</property>
+		  <property name="group">rPaymentCash</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">2</property>
+		  <property name="right_attach">3</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
 		<widget class="GtkRadioButton" id="rPaymentCreditCard">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
@@ -5617,6 +5662,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
 		  <property name="active">False</property>
 		  <property name="inconsistent">False</property>
 		  <property name="draw_indicator">True</property>
+		  <property name="group">rPaymentCash</property>
 		</widget>
 		<packing>
 		  <property name="left_attach">2</property>
@@ -5639,56 +5685,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
 		  <property name="active">False</property>
 		  <property name="inconsistent">False</property>
 		  <property name="draw_indicator">True</property>
+		  <property name="group">rPaymentCash</property>
 		</widget>
 		<packing>
 		  <property name="left_attach">2</property>
 		  <property name="right_attach">3</property>
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
-		  <property name="x_options"></property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkRadioButton" id="rPaymentTransfer">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">Transfer</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <property name="active">False</property>
-		  <property name="inconsistent">False</property>
-		  <property name="draw_indicator">True</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
-		  <property name="x_options"></property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkRadioButton" id="rPaymentCash">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">Cash</property>
-		  <property name="use_underline">True</property>
-		  <property name="relief">GTK_RELIEF_NORMAL</property>
-		  <property name="focus_on_click">True</property>
-		  <property name="active">False</property>
-		  <property name="inconsistent">False</property>
-		  <property name="draw_indicator">True</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">2</property>
-		  <property name="right_attach">3</property>
-		  <property name="top_attach">2</property>
-		  <property name="bottom_attach">3</property>
 		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
