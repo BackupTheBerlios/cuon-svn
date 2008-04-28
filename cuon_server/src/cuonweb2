@@ -1,16 +1,16 @@
 #! /bin/sh
 #
-# skeleton	Example initscript
-#		This file should be used to construct scripts to be
-#		placed in /etc/init.d.
+# skeleton  Example initscript
+#       This file should be used to construct scripts to be
+#       placed in /etc/init.d.
 #
-# Author:	Miquel van Smoorenburg <miquels@cistron.nl>.
-#		Ian Murdock <imurdock@gnu.ai.mit.edu>.
+# Author:   Miquel van Smoorenburg <miquels@cistron.nl>.
+#       Ian Murdock <imurdock@gnu.ai.mit.edu>.
 #
-#		Please remove the "Author" lines above and replace them
-#		with your own name if you copy and modify this script.
+#       Please remove the "Author" lines above and replace them
+#       with your own name if you copy and modify this script.
 #
-# Version:	@(#)skeleton  2.85-23  28-Jul-2004  miquels@cistron.nl
+# Version:  @(#)skeleton  2.85-23  28-Jul-2004  miquels@cistron.nl
 #
 
 set -e
@@ -29,20 +29,20 @@ test -x $DAEMON || exit 0
 # Read config file if it is present.
 #if [ -r /etc/default/$NAME ]
 #then
-#	. /etc/default/$NAME
+#   . /etc/default/$NAME
 #fi
 
 #
-#	Function that starts the daemon/service.
+#   Function that starts the daemon/service.
 #
 d_start() {
 
-nohup start-stop-daemon --start python --exec $DAEMON 1>>/var/log/cuonweb2.log 2>>/var/log/cuonweb2_err.log &
+nohup start-stop-daemon --start --exec /usr/bin/python $DAEMON 1>>/var/log/cuonweb2.log 2>>/var/log/cuonweb2_err.log &
   
 }
 
 #
-#	Function that stops the daemon/service.
+#   Function that stops the daemon/service.
 #
 d_stop() {
     OLDPID=`ps ax | grep $NAME | grep -v grep | sed  -e "s/^[[:space:]]*//g" | cut -d" " -f 1 `
@@ -53,55 +53,55 @@ d_stop() {
 }
 
 #
-#	Function that sends a SIGHUP to the daemon/service.
+#   Function that sends a SIGHUP to the daemon/service.
 #
 d_reload() {
-	start-stop-daemon --stop --quiet --pidfile $PIDFILE \
-		--name $NAME --signal 1
+    start-stop-daemon --stop --quiet --pidfile $PIDFILE \
+        --name $NAME --signal 1
 }
 
 case "$1" in
   start)
-	echo -n "Starting $DESC: $NAME"
-	d_start
-	echo "."
-	;;
+    echo -n "Starting $DESC: $NAME"
+    d_start
+    echo "."
+    ;;
   stop)
-	echo -n "Stopping $DESC: $NAME"
-	d_stop
+    echo -n "Stopping $DESC: $NAME"
+    d_stop
     
-	echo "."
-	;;
+    echo "."
+    ;;
   #reload)
-	#
-	#	If the daemon can reload its configuration without
-	#	restarting (for example, when it is sent a SIGHUP),
-	#	then implement that here.
-	#
-	#	If the daemon responds to changes in its config file
-	#	directly anyway, make this an "exit 0".
-	#
-	# echo -n "Reloading $DESC configuration..."
-	# d_reload
-	# echo "done."
+    #
+    #   If the daemon can reload its configuration without
+    #   restarting (for example, when it is sent a SIGHUP),
+    #   then implement that here.
+    #
+    #   If the daemon responds to changes in its config file
+    #   directly anyway, make this an "exit 0".
+    #
+    # echo -n "Reloading $DESC configuration..."
+    # d_reload
+    # echo "done."
   #;;
   restart|force-reload)
-	#
-	#	If the "reload" option is implemented, move the "force-reload"
-	#	option to the "reload" entry above. If not, "force-reload" is
-	#	just the same as "restart".
-	#
-	echo -n "Restarting $DESC: $NAME"
-	d_stop
-	sleep 1
-	d_start
-	echo "."
-	;;
+    #
+    #   If the "reload" option is implemented, move the "force-reload"
+    #   option to the "reload" entry above. If not, "force-reload" is
+    #   just the same as "restart".
+    #
+    echo -n "Restarting $DESC: $NAME"
+    d_stop
+    sleep 1
+    d_start
+    echo "."
+    ;;
   *)
-	# echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
-	echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
-	exit 1
-	;;
+    # echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
+    echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
+    exit 1
+    ;;
 esac
 
 exit 0

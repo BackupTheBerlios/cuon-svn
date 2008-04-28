@@ -194,8 +194,20 @@ class report(MyXML):
         self.dicPage['bottomMargin'] =  int(self.getEntrySpecification(cyRootNode[0],'bottomMargin'))
         self.dicPage['leftMargin'] =  int(self.getEntrySpecification(cyRootNode[0],'leftMargin'))
         self.dicPage['rightMargin'] =  int(self.getEntrySpecification(cyRootNode[0],'rightMargin'))
-
-        
+    
+        sPapersize = 'A4'
+        try:
+            sPapersize =  self.getEntrySpecification(cyRootNode[0],'paperSize')
+        except:
+            sPapersize = 'A4'
+        if sPapersize == 'A5':
+            self.dicText['Papersize'] = pagesizes.A5
+        elif sPapersize == 'A6':
+            self.dicText['Papersize'] = pagesizes.A6
+        else:
+            self.dicText['Papersize'] = pagesizes.A4
+            
+            
         self.dicPage['orientation'] =  self.getEntrySpecification(cyRootNode[0],'papersizeX').encode('ascii')
         if self.dicPage['orientation'] =='Portrait':
             self.dicPage['papersizeX'] =  int(self.getEntrySpecification(cyRootNode[0],'papersizeX'))
@@ -767,13 +779,19 @@ class report(MyXML):
             else:
                 eValue =  dicEntry['value']
             eValue = eValue.strip()
+            #print "pictureDMS 001", eValue
             if eValue[0:9] == 'dms_print':
                 sNewImage = eValue
-                if self.dicReportData.has_key(sNewImage):
-                    eValue =  self.dicReportData[sNewImage]
+                #print "pictureDMS 002", eValue
+                #print self.dicResult
+                    
+                if self.dicResult.has_key(sNewImage):
+                    eValue =  self.dicResult[sNewImage]
+                    #print "pictureDMS 003", eValue
                 else:
                     eValue = ''
-                
+            #print "pictureDMS 004", eValue       
+            
         elif dicEntry['class'] == 'Field':
             if self.dicReportData.has_key(dicEntry['eName']):
                 eValue =  self.dicReportData[dicEntry['eName']]
@@ -1047,11 +1065,14 @@ class report(MyXML):
             #print 'x2', dicField['x2']
             #print 'y1', dicField['y1']
             #print 'y2', dicField['y2']
-            
-            if nWidth > 0 and nHeight > 0:
-                c.drawImage(sImage, dicField['x1'] ,dicField['y1'], width = nWidth, height = nHeight)
-            else:
-                c.drawImage(sImage, dicField['x1'] ,dicField['y1'])
+            try:
+                if nWidth > 0 and nHeight > 0:
+                    c.drawImage(sImage, dicField['x1'] ,dicField['y1'], width = nWidth, height = nHeight)
+                else:
+                    c.drawImage(sImage, dicField['x1'] ,dicField['y1'])
+            except:
+                print 'no image found'
+                
         else:
                 
             #            if dicField['eType'] == 'int':
@@ -1072,28 +1093,57 @@ class report(MyXML):
             
             if dicField['text'] and dicField['fontsize']:
                 try:
-
-                    sq = s % dicField['text']                
+                    sq = s % dicField['text'] 
+                    try:
+                        sq = sq.encode('utf-8')
+                    except:
+                        sq = s % dicField['text']                
                     #to.textOut(sq)
                     #c.drawText(to)
                     #print 'SQ = ', sq
                 except Exception, params:
                     print 'Exception utf-8, latin'
                     print Exception, params
+                    sq = ' '
                 
                     
                 try:
+                   
+                    
                     if dicField['fontjustification']:
                         #print 'Justification' + dicField['fontjustification']
-                        if dicField['fontjustification'] == 'left':
-                            c.drawString(x1,y1,sq)
-                        elif dicField['fontjustification'] == 'right':
-                            c.drawRightString(x1,y1,sq)
-                        elif dicField['fontjustification'] == 'center':
-                            c.drawCenteredString(x1,y1,sq)
-                            
+                        try:
+                            if dicField['fontjustification'] == 'left':
+                                c.drawString(x1,y1,sq)
+                            elif dicField['fontjustification'] == 'right':
+                                c.drawRightString(x1,y1,sq)
+                            elif dicField['fontjustification'] == 'center':
+                                c.drawCenteredString(x1,y1,sq)
+                            elif dicField['fontjustification'] == 'text':
+                                textobject = c.beginText()
+                                textobject.setTextOrigin(x1, y1)
+                                textobject.setFont(dicField['font'].encode('ascii'), dicField['fontsize'])
+                                textobject.textLines(sq)
+                                c.drawText(textobject)
+                        except:
+                            print 'error draw string'
                     else:
-                        c.drawString(x1,y1,sq)
+                        try:
+                            c.drawString(x1,y1,sq)
+                        except:
+                            print 'error draw string 2'
+                    
+#                    if dicField['fontjustification']:
+#                        #print 'Justification' + dicField['fontjustification']
+#                        if dicField['fontjustification'] == 'left':
+#                            c.drawString(x1,y1,sq)
+#                        elif dicField['fontjustification'] == 'right':
+#                            c.drawRightString(x1,y1,sq)
+#                        elif dicField['fontjustification'] == 'center':
+#                            c.drawCenteredString(x1,y1,sq)
+#                            
+#                    else:
+#                        c.drawString(x1,y1,sq)
                 except Exception, params:
                     print 'Exception utf-8, latin 2'
     

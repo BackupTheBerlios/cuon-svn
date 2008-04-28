@@ -351,6 +351,8 @@ class User(defaultValues):
         self.dicUser['client'] = self.client
         self.dicUser['Email'] = self.Email
         self.dicUser['prefFinances'] = self.prefFinances
+        self.dicUser['prefLocale'] = self.prefLocale
+        
         self.refreshSqlDicUser()
         
     def refreshSqlDicUser(self):

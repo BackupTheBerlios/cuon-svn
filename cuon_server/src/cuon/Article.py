@@ -156,8 +156,16 @@ class Article(xmlrpc.XMLRPC, basics):
                 for dicValues in result:
                     # look at associated pictures
                     sAssociatedTable, iDMS = self.getAssociatedTable(dicValues['associated_with'])
-                    if sAssociatedTable and iDMS:
-                        
+                    
+                    if sAssociatedTable == 'botany' and iDMS:
+                        sSql = 'select botany_name, local_name,  description as botany_description , habitat, tips as botany_tips '
+                        sSql += ' from botany where id = ' + `dicValues['associated_id']`
+                        result6 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+                        if result6 and result6 not in ['NONE', 'ERROR']:
+                            for keyV in result6[0].keys():
+                                dicValues[keyV] = result6[0][keyV]
+                                self.writeLog(keyV,  dicValues[keyV])
+                                
                         sSql = "select document_image from dms where insert_from_module = " + `iDMS` + " and title = 'print001' and sep_info_1 = "
                         sSql += `dicValues['associated_id']`
                         sSql += self.getWhere("",dicUser,2)
@@ -173,7 +181,10 @@ class Article(xmlrpc.XMLRPC, basics):
                                 f.close()
                             except:
                                 print 'file error'
-                                dicValues['dms_print001'] = self.DocumentPathTmp + '/' + sFilename
+                                sFilename = 'ERROR'
+                            dicValues['dms_print001'] = self.DocumentPathTmp + '/' + sFilename
+                        else:
+                            dicValues['dms_print001'] = 'NOFILE'
                     if z1 >= nRows:
                         z1 = 0
                         result2.append(dicValues2)
@@ -188,8 +199,8 @@ class Article(xmlrpc.XMLRPC, basics):
 
         else:
             result2 = 'NONE'
-        #print '...................................................................................................................................................................'
-        #print 'Result2',  result2
+        print '...................................................................................................................................................................'
+        print 'Result2',  result2
         return result2
 
     
