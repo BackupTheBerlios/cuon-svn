@@ -35,7 +35,7 @@ test -x $DAEMON || exit 0
 #   Function that starts the daemon/service.
 #
 d_start() {
-nohup start-stop-daemon --start  --exec /usr/bin/python $DAEMON 1>>/var/log/cuonai.log 2>>/var/log/cuonai_err.log &
+nohup start-stop-daemon --start  --exec $DAEMON 1>>/var/log/cuonai.log 2>>/var/log/cuonai_err.log &
   
 }
 

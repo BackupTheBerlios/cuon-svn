@@ -37,7 +37,7 @@ test -x $DAEMON || exit 0
 #
 d_start() {
 
-nohup start-stop-daemon --start  --exec /usr/bin/python $DAEMON 1>>/var/log/cuonweb.log 2>>/var/log/cuonweb_err.log &
+nohup start-stop-daemon --start  --exec $DAEMON 1>>/var/log/cuonweb.log 2>>/var/log/cuonweb_err.log &
   
 }
 

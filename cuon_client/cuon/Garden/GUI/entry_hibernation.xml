@@ -270,17 +270,6 @@
      <next_widget>LAST</next_widget>
 
     </entry>
-    <entry>
-      <name>cbRepeat</name>
-      <type>checkbox</type>
-      <size>20</size>
-      <verify_type>bool</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>invoice_repeat</sql_field>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-        <next_widget>eBeginStaffNumber</next_widget>
-
-    </entry>
+    
   </table>
 </entries_for_table>

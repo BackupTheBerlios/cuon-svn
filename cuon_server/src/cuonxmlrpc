@@ -36,7 +36,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 d_start() {
     #nohup start-stop-daemon --start  --quiet  --exec $DAEMON   >/var/log/cuonxmlrpc.log 2>/var/log/cuonxmlrpc_err.log   &
     #nohup  $DAEMON   1>/var/log/cuonxmlrpc.log 2>/var/log/cuonxmlrpc_err.log   &
-  nohup start-stop-daemon  --start --exec /usr/bin/python $DAEMON 1>>/var/log/cuonxmlrpc.log 2>>/var/log/cuonxmlrpc_err.log &
+  nohup start-stop-daemon  --start --exec  $DAEMON 1>>/var/log/cuonxmlrpc.log 2>>/var/log/cuonxmlrpc_err.log &
       
                    
 }
