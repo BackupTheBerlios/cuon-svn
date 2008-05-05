@@ -538,7 +538,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
-	      <signal name="clicked" handler="on_tbNew_clicked"/>
+	      <signal name="clicked" handler="on_tbNew_clicked" last_modification_time="Fri, 02 May 2008 16:26:58 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>
@@ -555,7 +555,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
-	      <signal name="clicked" handler="on_tbEdit_clicked"/>
+	      <signal name="clicked" handler="on_tbEdit_clicked" last_modification_time="Fri, 02 May 2008 16:27:20 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>
@@ -572,7 +572,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
-	      <signal name="clicked" handler="on_tbSave_clicked"/>
+	      <signal name="clicked" handler="on_tbSave_clicked" last_modification_time="Fri, 02 May 2008 16:28:12 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>
