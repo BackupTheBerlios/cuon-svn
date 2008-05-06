@@ -372,7 +372,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="einspaltig1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Preisschilder Din A5</property>
+		      <property name="label" translatable="yes">Preisschilder und Listen</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
@@ -381,7 +381,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="standard1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">ohne Photos, kurzform</property>
+			      <property name="label" translatable="yes">Preisliste</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_one_standard1_activate" last_modification_time="Thu, 29 Nov 2007 14:45:43 GMT"/>
 			    </widget>
@@ -390,7 +390,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="druck_mit_photos1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Druck mit Photos</property>
+			      <property name="label" translatable="yes">Preisschild DinA5</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_sp101_activate" last_modification_time="Wed, 09 Apr 2008 08:10:18 GMT"/>
 			    </widget>
@@ -399,7 +399,7 @@
 			  <child>
 			    <widget class="GtkMenuItem" id="druck_mit_photos_ii1">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Druck mit Photos II</property>
+			      <property name="label" translatable="yes">Preisschild DinA4</property>
 			      <property name="use_underline">True</property>
 			      <signal name="activate" handler="on_sp102_activate" last_modification_time="Wed, 09 Apr 2008 08:10:18 GMT"/>
 			    </widget>
@@ -412,7 +412,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="zweispaltig1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Preisliste Din A 4</property>
+		      <property name="label" translatable="yes">nicht belegt</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
@@ -452,7 +452,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="dreispaltig1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Stecketiketten</property>
+		      <property name="label" translatable="yes">nicht belegt</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
