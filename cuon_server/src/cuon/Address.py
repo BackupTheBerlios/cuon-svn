@@ -324,6 +324,8 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql4 = ''
         sSql5 = ''
         sSql6 = ''
+        sSql7 = ''
+        sSql8 = ''
         
         if dicSearchlist:
             sSql2 = sSql + ' where '
@@ -368,7 +370,8 @@ class Address(xmlrpc.XMLRPC, basics):
                countryFrom =  string.upper(dicSearchlist['eCountryFrom']) 
                countryTo = string.lower(dicSearchlist['eCountryTo']) 
                 
-               
+           
+                
                sSql6 = " country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
                if sSql3 and not sSql4 and not sSql5:
                    sSql6 = sSql3 + ' and ' + sSql6
@@ -380,7 +383,20 @@ class Address(xmlrpc.XMLRPC, basics):
                    sSql6 = sSql2 + sSql6
         
                sSql = sSql6
-        
+            if dicSearchlist['eInfoContains'] :
+                sSql7 = " info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6:
+                    sSql = sSql + " and " + sSql7
+                else:
+                    sSql = sSql2 + sSql7
+                    
+            if dicSearchlist['eNewsletterContains'] :
+                sSql8 = " newsletter ~*'" + dicSearchlist['eNewsletterContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6 or sSql7:
+                    sSql = sSql + " and " + sSql8
+                else:
+                    sSql = sSql2 + sSql8
+                    
         if dicSearchlist:
             sSql = sSql + self.getWhere("",dicUser,2)
         else:

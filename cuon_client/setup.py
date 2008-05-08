@@ -645,10 +645,11 @@ class setup:
         else:
             nameFuncMap = {}
             for key in dir(self.__class__):
+                print key
                 nameFuncMap[key] = getattr(self, key)
                 
             if  nameFuncMap:
-                               
+                print  "Funcmap = ",  nameFuncMap              
                 self.xml.signal_autoconnect(nameFuncMap)
 
             self.xmlAutoconnect = True
@@ -749,11 +750,14 @@ class setup:
     
     # save Data
     def on_bSaveData_clicked(self, event):
-        self.saveData2File()
-    def on_bRestartServer_clicked(self, event):
-        # restart cuon server 
-        self.restartServer()
         
+        self.saveData2File()
+        
+    def on_bRestart_clicked(self, event):
+        # restart cuon server 
+        print "restart Server"
+        self.restartServer()
+    
     # Install 
     def on_bOK_clicked(self, event):
         # save ini
@@ -766,6 +770,9 @@ class setup:
         
         self.setTv1('###################### END SETUP #################')
         
+    def on_bTest_clicked(self,  event):
+        print "test"
+        
 
     def gtk_main_quit(self):
         #os.system('rm users.cfg')
@@ -774,10 +781,14 @@ class setup:
 
     def main(self, args):
         self.setVars()
+        print "start_glade"
         self.xml = gtk.glade.XML('GUI/setup.glade2')
         self.setXmlAutoconnect()
+        print "end_glade"
         self.setDefaultServer()
         gtk.main()
 
+print "starting"
 stu = setup()
+print "main starting"
 stu.main(None)

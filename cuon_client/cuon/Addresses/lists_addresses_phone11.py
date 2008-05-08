@@ -15,8 +15,9 @@
 ##
 ##import copy
 from cuon.Windows.rawWindow import rawWindow
+from lists_addresses import  lists_addresses
 
-class lists_addresses_phone11(rawWindow):
+class lists_addresses_phone11(rawWindow, lists_addresses):
     
     def __init__(self):
         rawWindow.__init__(self)
@@ -61,22 +62,7 @@ class lists_addresses_phone11(rawWindow):
 
    
     
-    def readSearchDatafields(self):
-        dicSearchfields = {}
-        dicSearchfields['eLastnameFrom'] = self.getWidget('eLastnameFrom').get_text()
-        dicSearchfields['eLastnameTo'] = self.getWidget('eLastnameTo').get_text()
-
-        dicSearchfields['eFirstnameFrom'] = self.getWidget('eFirstnameFrom').get_text()
-        dicSearchfields['eFirstnameTo'] = self.getWidget('eFirstnameTo').get_text()
-        
-        dicSearchfields['eCityFrom'] = self.getWidget('eCityFrom').get_text()
-        dicSearchfields['eCityTo'] = self.getWidget('eCityTo').get_text()
-
-        dicSearchfields['eCountryFrom'] = self.getWidget('eCountryFrom').get_text()
-        dicSearchfields['eCountryTo'] = self.getWidget('eCountryTo').get_text()
-
-
-        return dicSearchfields
+    
     
         
     def on_cancelbutton_clicked(self,event):

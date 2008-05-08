@@ -42,6 +42,8 @@ class SingleStaff(SingleData):
         self.statusfields = ['lastname', 'city']
 
     def getAddress(self, id):
+        liAddress = []
+
         try:
             id = long(id)
             
@@ -50,7 +52,6 @@ class SingleStaff(SingleData):
             id = 0
             dicRecords = {}
         
-        liAddress = []
         if dicRecords:
             dicRecord = dicRecords[0]
             liAddress.append(dicRecord['lastname'])
@@ -79,7 +80,13 @@ class SingleStaff(SingleData):
         cAdr = ''
         if dicRecords:
             dicRecord = dicRecords[0]
-            cAdr = dicRecord['lastname'] + ', ' + dicRecord['firstname']
+            try:
+                
+                cAdr = dicRecord['lastname'] 
+                cAdr += ', ' + dicRecord['firstname']
+            except:
+                print ' wrong staff lastname or firstname'
+                
             
             
         return cAdr
@@ -95,7 +102,14 @@ class SingleStaff(SingleData):
         
         cAddress = None
         if dicRecords:
-            dicRecord = dicRecords[0]
-            cAddress = dicRecord['lastname'] + ', ' + dicRecord['firstname']
+            try:
+                dicRecord = dicRecords[0]
+                cAddress = dicRecord['lastname'] 
+                cAddress += ', ' + dicRecord['firstname']
+            except:
+                print 'wrong -  check firstname,  lastname of staff'
+                print dicRecord
+                
+                
         return cAddress
         

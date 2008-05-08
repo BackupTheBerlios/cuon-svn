@@ -255,7 +255,7 @@ class orderwindow(chooseWindows):
                 print self.dicOrder
                 existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
                 print 'existOrder = ', existOrder
-                if not existOrder or existOrder == 'NONE':
+                if not existOrder or existOrder in ['NONE', 'ERROR']:
                     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
                     self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
                 self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`

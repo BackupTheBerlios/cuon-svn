@@ -64,6 +64,8 @@ class SingleAddress(SingleData):
         
         
     def getAddress(self, id):
+          
+        liAddress = []
         if id > 0:
             try:
                 id = long(id)
@@ -72,8 +74,7 @@ class SingleAddress(SingleData):
             except:
                 id = 0
                 dicRecords = {}
-            
-            liAddress = []
+          
             if dicRecords and dicRecords not in ['ERROR', 'NONE']:
                 dicRecord = dicRecords[0]
                 try:

@@ -195,7 +195,8 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(["hibernation_plant.plant_notice","plantnotice"])
         liFields.append(["hibernation_plant.vermin","vermin"])
         liFields.append(["hibernation_plant.diameter","diameter"])
-        
+        liFields.append(["hibernation_plant.hibernation_number", "hibernation_number"])
+        liFields.append(["hibernation_plant.price_last_year", "price_last_year"])
 
         liFields.append(["botany.botany_name","botany_name"])
         liFields.append(["botany.local_name","local_name"])
@@ -209,10 +210,15 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = sSql + "and hibernation_plant.hibernation_number = hibernation.id "
         sSql = sSql + "and hibernation_plant.botany_number = botany.id and "
         sSql = sSql + " hibernation.client = " + `dicUser['client']` 
+        sSql = sSql + " and hibernation.status != 'delete' "
+        sSql = sSql + " and  hibernation_plant.status != 'delete' "
         sSql = sSql + " order by hibernation_plant.plant_number "
         dicUser['noWhereClient'] = 'Yes'
         print sSql
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        
+        
+        
     def xmlrpc_getHibernationPickup(self, dicOrder , dicUser):
         
         liFields = []
@@ -229,7 +235,8 @@ class Garden(xmlrpc.XMLRPC, basics):
         liFields.append(["hibernation_plant.plant_notice","plantnotice"])
         liFields.append(["hibernation_plant.vermin","vermin"])
         liFields.append(["hibernation_plant.diameter","diameter"])
-
+        liFields.append(["hibernation_plant.hibernation_number", "hibernation_number"])
+        liFields.append(["hibernation_plant.price_last_year", "price_last_year"])
         liFields.append(["botany.botany_name","botany_name"])
         liFields.append(["botany.local_name","local_name"])
         
@@ -242,6 +249,8 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = sSql + "and hibernation_plant.hibernation_number = hibernation.id "
         sSql = sSql + "and hibernation_plant.botany_number = botany.id and "
         sSql = sSql + " hibernation.client = " + `dicUser['client']` 
+        sSql = sSql + " and hibernation.status != 'delete' "
+        sSql = sSql + " and  hibernation_plant.status != 'delete' "
         sSql = sSql + " order by hibernation_plant.plant_number "
         dicUser['noWhereClient'] = 'Yes'
         print sSql
@@ -308,7 +317,7 @@ class Garden(xmlrpc.XMLRPC, basics):
             sSql += self.getWhere("",dicUser,2)
             print sSql
             result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-
+            
             if result not in ['NONE','ERROR']:
                 row = result[0]
                 print 'row=', row
