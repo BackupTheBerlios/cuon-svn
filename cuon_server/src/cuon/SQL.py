@@ -374,16 +374,10 @@ class SQL(xmlrpc.XMLRPC, basics):
                 id = result[0]['last_value']
             except:
                 id = 0
-                
-        try:
-            if result == 'ERROR':
-                id = 0
         
-        except:
-            pass
-            # sSql = sSql[0:string.rfind(sSql,',')]
+        # sSql = sSql[0:string.rfind(sSql,',')]
              
-                   
+        print "id by save record = ",  id 
         return id
     
     def xmlrpc_createBigRow(self, sFile, data, j, dicUser=None):

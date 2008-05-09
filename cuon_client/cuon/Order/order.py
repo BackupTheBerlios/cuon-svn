@@ -261,13 +261,12 @@ class orderwindow(chooseWindows):
                 self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
             elif self.dicOrder and newOrder and self.OrderID == 0:
                 try:
-                    dicResult = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-                    print dicResult
-                    if dicResult and dicResult not in ['NONE','ERROR'] and int(dicResult) > 0:
-                        self.OrderID = dicResult
+                    newID = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+                    print newID
+                    if newID > 0:
+                        self.OrderID = newID
                         print 'Order-Id = ',  self.OrderID
-                        if self.OrderID > 0:
-                            self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
+                        self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
                 except:
                     pass
             elif self.OrderID > 0:

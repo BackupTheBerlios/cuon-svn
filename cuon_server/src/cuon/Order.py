@@ -309,7 +309,7 @@ class Order(xmlrpc.XMLRPC, basics):
         self.writeLog(dicValues)
         newID =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
         
-        if dicOrder.has_key('Positions'):
+        if dicOrder.has_key('Positions') and newID > 0:
             for position in dicOrder['Positions']:
                 position['orderid'] = [newID,'int']
                 print '-----------------------------------------------'
@@ -317,18 +317,17 @@ class Order(xmlrpc.XMLRPC, basics):
                 print ':::::::::::::::::::::::::::::::::::::::::::::::'
                 dicResult2 =  self.oDatabase.xmlrpc_saveRecord('orderposition', -1, position, dicUser, 'NO')
         try:
-            lastID = int(dicResult)
-            if lastID > 0:
-                dicValues,  sSave  = self.checkDefaultOrder(dicUser,  lastID)
+            if newID > 0:
+                dicValues,  sSave  = self.checkDefaultOrder(dicUser,  newID)
                 if sSave:
-                    dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', lastID, dicValues, dicUser, 'NO')
+                    dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newID, dicValues, dicUser, 'NO')
         except:
             pass
             
     
         
         
-        return dicResult
+        return newID
         
     def checkDefaultOrder(self,  dicUser,  id) :
         print 101
