@@ -301,7 +301,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             
             sSql = sSql[0:string.rfind(sSql,',')]
         
-            sSql = sSql + ' where id = ' + `id`
+            sSql = sSql + ' where id = ' + self.convertTo(id, 'String')
             self.writeLog('Update SQL = ' + sSql)
             
         else:
@@ -378,8 +378,9 @@ class SQL(xmlrpc.XMLRPC, basics):
         # sSql = sSql[0:string.rfind(sSql,',')]
              
         print "id by save record = ",  id 
-        return id
-    
+        return  id 
+        
+        
     def xmlrpc_createBigRow(self, sFile, data, j, dicUser=None):
         debug = 1
         ok = 1

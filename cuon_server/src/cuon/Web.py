@@ -87,5 +87,5 @@ class Web(xmlrpc.XMLRPC, basics):
             for i in dicResult:
                 self.iCal.addEvent(i['user_id'],i,dicUser)
                 sSql = 'update partner_schedul set sep_info_3 = 2 where id = ' + `i['id'] `
-                dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+                dicResult2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         return ok

@@ -758,6 +758,20 @@ class basics(xmlrpc.XMLRPC):
                                               
         return bRet
         
+    def convertTo(self, value, sType):
+        s = None
+        if sType == "String":
+            s = `value`
+            s = s.strip()
+            sL = len(s)
+            if s[0] == 'L':
+                s = s[1:]
+            if s[sL-1]=='L':
+                s = s[:sL-1]
+        
+        return s
+                
+        
     def getAssociatedTable(self, iNumber):
         sTable = None
         iDMS = 0

@@ -638,6 +638,11 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate4_address.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate4_address.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>alternate1_articles.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/alternate1_articles.glade2</Glade-FileValue>
     </GladeEntries>

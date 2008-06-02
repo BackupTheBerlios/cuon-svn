@@ -38,14 +38,16 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getInvoiceAddress(self, dicOrder, dicUser):
         
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
-        sSql = sSql + " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
-        sSql = sSql + " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+        sSql +=  " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
+        sSql +=  " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql += " address.address as address , address.firstname as firstname, "
-        sSql = sSql + " address.lastname as lastname, address.lastname2 as lastname2, "
+        sSql +=  " address.lastname as lastname, address.lastname2 as lastname2, "
         
-        sSql = sSql + " address.street as street, (address.zip || ' ' ||  address.city)  as city "
-        sSql = sSql + " from orderbook, address where orderbook.id = " + `dicOrder['orderid']`  
-        sSql = sSql + " and address.id = orderbook.addressnumber " 
+        sSql  += " address.street as street, (address.zip || ' ' ||  address.city)  as city , "
+        sSql += " (address.country || '-' ||  (address.zip || ' ' ||  address.city)  as city_country , "
+        sSql  += "address.zip as zip,  address.country as country,  address.city as city_alone "
+        sSql +=  " from orderbook, address where orderbook.id = " + `dicOrder['orderid']`  
+        sSql +=  " and address.id = orderbook.addressnumber " 
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         try:
             if liResult :
@@ -351,7 +353,7 @@ class Order(xmlrpc.XMLRPC, basics):
                     print 2, i
                     if i == '!id':
                         
-                        sON += `id`
+                        sON += self.convertTo(id, 'String')
                     elif i=='!year':
                         sON += `t1.tm_year`
                     elif i=='!month':
@@ -368,7 +370,7 @@ class Order(xmlrpc.XMLRPC, basics):
                 sSave = True
                 liValues = defaultOrderDesignation.split(',')
                 sOD = ''
-                sSql = ' select * from address where id = ( select addressnumber from orderbook where id = ' +  `id` + ')'
+                sSql = ' select * from address where id = ( select addressnumber from orderbook where id = ' +  self.convertTo(id, 'String') + ')'
                 #print sSql
                 dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
                 #print dicResult

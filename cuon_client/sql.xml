@@ -101,6 +101,12 @@
         <index_column>date_part('week',insert_time)</index_column>
     </index>
     <index>
+        <index_name>partner_schedul_idx_sep_info_3 </index_name>
+        <index_special> </index_special>
+        <index_table>partner_schedul</index_table>
+        <index_column>sep_info_3</index_column>
+    </index>
+    <index>
         <index_name>partner_schedul_idx_schedul_insert_time_month</index_name>
         <index_special> </index_special>
         <index_table>partner_schedul</index_table>

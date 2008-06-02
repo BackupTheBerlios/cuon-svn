@@ -485,21 +485,26 @@ class MainWindow(windows):
         f_grants.write('   <plugin>Standard</plugin>\n')
         self.cpParser = ConfigParser.ConfigParser()
         self.cpParser.readfp(f_UserGroups)
+        liUser = []
+        liGroupSections = self.getListOfParserSections()
+        print liGroupSections
+        for sSection in liGroupSections:
+            print sSection,  self.getListOfParserItems(sSection)
+            liUser += self.getListOfParserItems(sSection)
         
-        liUser = self.getListOfParserItems('USER')
         
         # create User 
         print liUser
         f_grants.write('   <users>\n')
         for User in liUser:
-            self.createGrantsUser(f_grants, User[0])
+            self.createGrantsUser(f_grants, User[0].strip())
         f_grants.write('   </users>\n')
         
         # create Groups
         f_grants.write('   <groups>\n')
 
         for Group in liUser:
-            self.createGrantsGroup(f_grants, Group[1])
+            self.createGrantsGroup(f_grants, Group[1].strip())
         f_grants.write('   </groups>\n')
         f_grants.write('   <addgroups>\n')
         #set user to Group
