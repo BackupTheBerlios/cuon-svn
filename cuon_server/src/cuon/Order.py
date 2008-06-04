@@ -44,7 +44,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql +=  " address.lastname as lastname, address.lastname2 as lastname2, "
         
         sSql  += " address.street as street, (address.zip || ' ' ||  address.city)  as city , "
-        sSql += " (address.country || '-' ||  (address.zip || ' ' ||  address.city)  as city_country , "
+        sSql += " (address.country || '-' ||  address.zip || ' ' ||  address.city)  as city_country , "
         sSql  += "address.zip as zip,  address.country as country,  address.city as city_alone "
         sSql +=  " from orderbook, address where orderbook.id = " + `dicOrder['orderid']`  
         sSql +=  " and address.id = orderbook.addressnumber " 
@@ -497,6 +497,8 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = ' select id, number,designation, orderedat from orderbook '
         sSql += " where addressnumber = " + `address_id` + " "
         sSql += self.getWhere(None,dicUser,2)
+        sSql += " order by id desc "
+        
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
     
