@@ -278,9 +278,11 @@ class basics(xmlrpc.XMLRPC):
         
         self.dicLimitTables['PROJECTS'] = {'list':['projects', 'project_phases'], 'limit':self.LIMITPROJECT}
         self.liModules.append('PROJECTS')
-        
-        
-        
+        self.OrderStatus  = {}
+        self.OrderStatus['OrderStart'] = 0
+        self.OrderStatus['OrderEnd'] = 299
+        self.OrderStatus['ProposalStart'] = 300
+        self.OrderStatus['ProposalEnd'] = 399
             
     
     def getConfigOption(self, section, option, configParser = None):

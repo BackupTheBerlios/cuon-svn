@@ -70,11 +70,14 @@ class addresswindow(chooseWindows):
         self.InitForms = True
         self.connectSchedulTreeId = None
         self.connectOrderTreeId = None
+        self.connectProposalTreeId = None
+        
         self.connectInvoicesTreeId = None
         self.connectOfferTreeId = None
         self.connectProjectTreeId = None
         
         self.OrderID = 0
+        self.ProposalID = 0
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Address']
@@ -106,11 +109,13 @@ class addresswindow(chooseWindows):
         self.setStatusBar()
         #print 'time 3 = ', time.localtime()
  
-        # Trees for Order and Invoice
+        # Trees for Proposal,  Order and Invoice
+        self.treeProposal = cuon.Misc.misc.Treeview()
         self.treeOrder = cuon.Misc.misc.Treeview()
         self.treeInvoice = cuon.Misc.misc.Treeview()
         self.treeProjects = cuon.Misc.misc.Treeview()
        
+        self.treeProposal.start(self.getWidget('tvAddressProposal'),'Text','Proposal')
         self.treeOrder.start(self.getWidget('tvAddressOrder'),'Text','Order')
         self.treeInvoice.start(self.getWidget('tvAddressInvoices'),'Text','Invoices')
         self.treeProjects.start(self.getWidget('tvAddressProject'),'Text','Projects')
@@ -1385,6 +1390,52 @@ class addresswindow(chooseWindows):
         con1 = contact.contactwindow(self.allTables, 0,0)
     def on_tbContact_clicked(self, event):        
         self.on_bContact_clicked(None)
+     # view Proposal
+    def disconnectProposalTree(self):
+        try:
+            
+            self.getWidget('tvAddressProposal').get_selection().disconnect(self.connectProposalTreeId)
+        except:
+            pass
+
+    def connectProposalTree(self):
+        try:
+            self.connectProposalTreeId = self.getWidget('tvAddressProposal').get_selection().connect("changed", self.ProposalTree_select_callback)
+        except:
+            pass
+   
+    def ProposalTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        self.ProposalID = 0
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.ProposalID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                
+    def on_tvAddressProposal_row_activated(self,event,data1, data2):
+        if self.ProposalID:
+            proposalwindow = cuon.Proposal.proposal.proposalwindow(self.allTables,None,False,self.ProposalID)
+        
+    def setProposalValues(self):
+        liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser, self.OrderStatus['ProposalStart'] , self.OrderStatus['ProposalEnd']  )
+        if liGroup and liGroup not in ['NONE','ERROR']:
+            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),liGroup,['number','designation', 'orderedat'],'self.connectProposalTree()')
+            self.connectProposalTree()
+        else:
+            self.treeProposal.fillTree(self.getWidget('tvAddressProposal'),[],['number','designation', 'orderedat'],'self.connectProposalTree()')
+            self.connectProposalTree()
     
     # view Order 
     def disconnectOrderTree(self):
