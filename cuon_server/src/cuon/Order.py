@@ -493,10 +493,10 @@ class Order(xmlrpc.XMLRPC, basics):
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
         
-    def xmlrpc_getOrderForAddress(self, address_id, dicUser,  iBegin = 0,  iEnd = 299):
+    def xmlrpc_getOrderForAddress(self, address_id, dicUser,  iBegin = 500,  iEnd = 799):
         sSql = ' select id, number,designation, orderedat from orderbook '
         sSql += " where addressnumber = " + `address_id` + " "
-        sSql += " and  process_status between iBegin and iEnd "
+        sSql += " and  process_status between " + `iBegin` + " and " + `iEnd` + " "
         sSql += self.getWhere(None,dicUser,2)
         sSql += " order by id desc "
         

@@ -526,7 +526,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkToolButton" id="toolbutton1">
+	    <widget class="GtkToolButton" id="tbCreateOrder">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">create Order</property>
 	      <property name="use_underline">True</property>
@@ -534,6 +534,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tbCreateOrder_clicked" last_modification_time="Sun, 29 Jun 2008 18:08:10 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>

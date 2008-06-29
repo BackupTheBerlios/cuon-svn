@@ -1,4 +1,5 @@
 import time
+import time
 from datetime import datetime
 import random
 import xmlrpclib
@@ -489,6 +490,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getNewsletterAddresses(self, NewsletterShortcut, dicUser):
         print NewsletterShortcut
+        result = []
         sSql = "select address,lastname,lastname2,firstname,street,country,zip,city,letter_address from address where newsletter ~'.*" + NewsletterShortcut +".*'"
         sSql += self.getWhere("",dicUser,2)
         #print sSql
@@ -496,7 +498,8 @@ class Address(xmlrpc.XMLRPC, basics):
         if result in [ 'NONE','ERROR']:
             result = []
         #print 'result 1 ', result
-        sSql = "select partner.address as address,partner.lastname as lastname, partner.lastname2 as lastname, partner.firstname as firstname, partner.street as street, partner.country as country, partner.zip as zip , partner.city as city, partner.letter_address as letter_address, address.address as address_address, address.lastname as address_lastname, address.lastname2 as address_lastname2, address.firstname as address_firstname, address.zip as address_zip, address.city as address_city,address.street as address_street,address.country as address_country,address.letter_address as address_letter_address"
+        sSql = "select partner.address as address,partner.lastname as lastname, partner.lastname2 as lastname2, partner.firstname as firstname, partner.street as street, partner.country as country, partner.zip as zip , partner.city as city, partner.letter_address as letter_address, "
+        sSql += " address.id as address_id, address.address as address_address, address.lastname as address_lastname, address.lastname2 as address_lastname2, address.firstname as address_firstname, address.zip as address_zip, address.city as address_city,address.street as address_street,address.country as address_country,address.letter_address as address_letter_address"
        
         sSql += " from partner, address where addressid = address.id and " 
         sSql += " partner.newsletter ~'.*" + NewsletterShortcut +".*' "
@@ -511,7 +514,8 @@ class Address(xmlrpc.XMLRPC, basics):
         result4 = []
         for record in result:
             result4.append(self.addDateTime(record))
-        return result  
+          
+        return result4  
         
         
     def xmlrpc_getStatCaller(self, dicUser):
