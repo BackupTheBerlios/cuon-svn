@@ -2845,7 +2845,7 @@
 			      </child>
 
 			      <child>
-				<widget class="GtkEntry" id="eLetteraddress2">
+				<widget class="GtkEntry" id="eLetterAddress2">
 				  <property name="width_request">60</property>
 				  <property name="visible">True</property>
 				  <property name="can_focus">True</property>

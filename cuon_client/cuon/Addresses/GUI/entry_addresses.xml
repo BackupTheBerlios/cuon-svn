@@ -61,8 +61,8 @@
       <fg_color>0</fg_color>
       </entry>
     <entry>
-	<name>eCountry</name>
-	<type>textline</type>
+    <name>eCountry</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -72,8 +72,8 @@
 
       </entry>
   <entry>
-	<name>eState</name>
-	<type>textline</type>
+    <name>eState</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -84,8 +84,8 @@
       </entry>
 
   <entry>
-	<name>eZip</name>
-	<type>textline</type>
+    <name>eZip</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -107,8 +107,8 @@
 
       </entry>
  <entry>
-	<name>ePhone</name>
-	<type>textline</type>
+    <name>ePhone</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -118,8 +118,8 @@
 
       </entry>
       <entry>
-	<name>eHandy</name>
-	<type>textline</type>
+    <name>eHandy</name>
+    <type>textline</type>
                <size>120</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -129,8 +129,8 @@
 
       </entry>
  <entry>
-	<name>eEmail</name>
-	<type>textline</type>
+    <name>eEmail</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -141,8 +141,8 @@
       </entry>
 
  <entry>
-	<name>eFax</name>
-	<type>textline</type>
+    <name>eFax</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -163,8 +163,8 @@
     </entry>
 
   <entry>
-	<name>ePostbox</name>
-	<type>textline</type>
+    <name>ePostbox</name>
+    <type>textline</type>
                <size>20</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -175,8 +175,8 @@
       </entry>
       
       <entry>
-	<name>eLetterAddress</name>
-	<type>textline</type>
+    <name>eLetterAddress</name>
+    <type>textline</type>
                <size>20</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -185,7 +185,51 @@
                 <fg_color>0</fg_color>
 
       </entry>
+ <entry>
+    <name>eLetterAddress2</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address2</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
 
+      </entry>
+      
+       <entry>
+    <name>eLetterAddress3</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address3</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+         <entry>
+    <name>eLetterAddress4</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address4</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+         <entry>
+    <name>eLetterAddress5</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address5</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
     <entry>
         <name>eAddressCallerID</name>
         <type>textline</type>
@@ -229,8 +273,8 @@
         <fg_color>0</fg_color>
     </entry>    
      <entry>
-	<name>eHomepage</name>
-	<type>textline</type>
+    <name>eHomepage</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
