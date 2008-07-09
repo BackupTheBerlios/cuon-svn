@@ -339,7 +339,7 @@ class addresswindow(chooseWindows):
         self.tabPartner = 3
         self.tabSchedul = 4
         self.tabNotes = 5
-        self.tabOffer = 6
+        self.tabProposal = 6
         self.tabOrder = 7
         self.tabInvoice = 8
         self.tabProject = 9 
@@ -1484,6 +1484,16 @@ class addresswindow(chooseWindows):
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
     
+    def setProposalValues(self):
+        liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser,  self.OrderStatus['ProposalStart'] ,  self.OrderStatus['ProposalEnd'] )
+        if liGroup and liGroup not in ['NONE','ERROR']:
+            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),liGroup,['number','designation', 'orderedat'],'self.connectProposalTree()')
+            self.connectProposalTree()
+        else:
+            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),[],['number','designation', 'orderedat'],'self.connectProposalTree()')
+            self.connectProposalTree()
+    
+    
     # view Invoices
     def disconnectInvoiceTree(self):
         try:
@@ -1724,6 +1734,17 @@ class addresswindow(chooseWindows):
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setOrderValues()
+            
+        elif self.tabOption == self.tabProposal:
+            self.out( 'Seite 7')
+            print 'site 7'
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('order')
+            self.editAction = 'editOrder'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
+            self.setProposalValues()
+            
             
         elif self.tabOption == self.tabInvoice:
             self.out( 'Seite 8')
