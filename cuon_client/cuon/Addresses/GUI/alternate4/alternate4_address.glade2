@@ -3101,17 +3101,111 @@
 			      <property name="spacing">0</property>
 
 			      <child>
-				<widget class="GtkEntry" id="eLetterAddress">
+				<widget class="GtkHBox" id="hbox181">
 				  <property name="visible">True</property>
-				  <property name="can_focus">True</property>
-				  <property name="editable">True</property>
-				  <property name="visibility">True</property>
-				  <property name="max_length">0</property>
-				  <property name="text" translatable="yes"></property>
-				  <property name="has_frame">True</property>
-				  <property name="invisible_char">*</property>
-				  <property name="activates_default">False</property>
-				  <property name="width_chars">30</property>
+				  <property name="homogeneous">False</property>
+				  <property name="spacing">0</property>
+
+				  <child>
+				    <widget class="GtkEntry" id="eLetterAddress">
+				      <property name="width_request">60</property>
+				      <property name="visible">True</property>
+				      <property name="can_focus">True</property>
+				      <property name="editable">True</property>
+				      <property name="visibility">True</property>
+				      <property name="max_length">0</property>
+				      <property name="text" translatable="yes"></property>
+				      <property name="has_frame">True</property>
+				      <property name="invisible_char">*</property>
+				      <property name="activates_default">False</property>
+				      <property name="width_chars">30</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">True</property>
+				      <property name="fill">True</property>
+				    </packing>
+				  </child>
+
+				  <child>
+				    <widget class="GtkEntry" id="eLetterAddress2">
+				      <property name="width_request">60</property>
+				      <property name="visible">True</property>
+				      <property name="can_focus">True</property>
+				      <property name="editable">True</property>
+				      <property name="visibility">True</property>
+				      <property name="max_length">0</property>
+				      <property name="text" translatable="yes"></property>
+				      <property name="has_frame">True</property>
+				      <property name="invisible_char">●</property>
+				      <property name="activates_default">False</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">True</property>
+				      <property name="fill">True</property>
+				    </packing>
+				  </child>
+
+				  <child>
+				    <widget class="GtkEntry" id="eLetterAddress3">
+				      <property name="width_request">60</property>
+				      <property name="visible">True</property>
+				      <property name="can_focus">True</property>
+				      <property name="editable">True</property>
+				      <property name="visibility">True</property>
+				      <property name="max_length">0</property>
+				      <property name="text" translatable="yes"></property>
+				      <property name="has_frame">True</property>
+				      <property name="invisible_char">●</property>
+				      <property name="activates_default">False</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">True</property>
+				      <property name="fill">True</property>
+				    </packing>
+				  </child>
+
+				  <child>
+				    <widget class="GtkEntry" id="eLetterAddress4">
+				      <property name="width_request">60</property>
+				      <property name="visible">True</property>
+				      <property name="can_focus">True</property>
+				      <property name="editable">True</property>
+				      <property name="visibility">True</property>
+				      <property name="max_length">0</property>
+				      <property name="text" translatable="yes"></property>
+				      <property name="has_frame">True</property>
+				      <property name="invisible_char">●</property>
+				      <property name="activates_default">False</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">True</property>
+				      <property name="fill">True</property>
+				    </packing>
+				  </child>
+
+				  <child>
+				    <widget class="GtkEntry" id="eLetterAddress5">
+				      <property name="width_request">60</property>
+				      <property name="visible">True</property>
+				      <property name="can_focus">True</property>
+				      <property name="editable">True</property>
+				      <property name="visibility">True</property>
+				      <property name="max_length">0</property>
+				      <property name="text" translatable="yes"></property>
+				      <property name="has_frame">True</property>
+				      <property name="invisible_char">●</property>
+				      <property name="activates_default">False</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">True</property>
+				      <property name="fill">True</property>
+				    </packing>
+				  </child>
 				</widget>
 				<packing>
 				  <property name="padding">0</property>
