@@ -1047,7 +1047,7 @@ class addresswindow(chooseWindows):
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressCallerID').get_text()))
             eAdrField.set_text(cAdr)
         except Exception, params:
-            print Exception, params
+            #print Exception, params
             eAdrField.set_text('')
     def on_eAddressRepID_changed(self, event):
         print 'eRepID changed'
@@ -1057,7 +1057,7 @@ class addresswindow(chooseWindows):
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressRepID').get_text()))
             eAdrField.set_text(cAdr)
         except Exception, params:
-            print Exception, params
+            #print Exception, params
             eAdrField.set_text('')
             
     def on_eAddressSalesmanID_changed(self, event):
@@ -1068,7 +1068,7 @@ class addresswindow(chooseWindows):
             cAdr = self.singleStaff.getAddressEntry(long(self.getWidget( 'eAddressSalesmanID').get_text()))
             eAdrField.set_text(cAdr)
         except Exception, params:
-            print Exception, params
+            #print Exception, params
             eAdrField.set_text('')
             
     def on_bSchedulFor_clicked(self, event):
@@ -1103,7 +1103,7 @@ class addresswindow(chooseWindows):
     
     def disconnectSchedulTree(self):
         try:
-            
+             
             self.getWidget('treeScheduls').get_selection().disconnect(self.connectSchedulTreeId)
         except:
             pass

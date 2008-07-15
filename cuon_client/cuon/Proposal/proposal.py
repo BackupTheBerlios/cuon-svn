@@ -305,7 +305,7 @@ class proposalwindow(chooseWindows):
         self.closeWindow()
 
 
-    #Menu Order
+    #Menu Propsal
   
     def on_save1_activate(self, event):
         print "save order v2"
@@ -537,7 +537,11 @@ class proposalwindow(chooseWindows):
         
         self.setEntriesEditable(self.EntriesOrderPayment, TRUE)
 
-
+    # create a order of this proposal
+    def  on_create_order1_activate(self, event):
+        ok = self.rpc.callRP('Order.changeProposal2Order',self.singleOrder.ID,  self.dicUser)
+        self.on_quit1_activate(event)
+        
     # search button
     def on_bSearch_clicked(self, event, data=None):
         self.findOrder()
@@ -983,6 +987,21 @@ class proposalwindow(chooseWindows):
     def on_treeArticles_row_activated(self, event, data1, data2):
         self.on_bQuickAppend_clicked(event)
 
+    def  on_tbCreateOrder_clicked (self, event):
+        self.on_create_order1_activate(event)
+        
+    def on_tbNew_clicked(selfself,  event):
+        if self.tabOption == self.tabProposal:
+            self.on_new1_activate(event)
+            
+    def on_tbEdit_clicked(selfself,  event):
+        if self.tabOption == self.tabProposal:
+            self.on_edit1_activate(event)
+            
+    def on_tbSave_clicked(selfself,  event):
+        if self.tabOption == self.tabProposal:
+            self.on_save1_activate(event)    
+            
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()

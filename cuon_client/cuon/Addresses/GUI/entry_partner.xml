@@ -2,8 +2,8 @@
     <table>
       <table_name>partner</table_name>
   <entry>
-	<name>ePartnerAddress</name>
-	<type>textline</type>
+    <name>ePartnerAddress</name>
+    <type>textline</type>
                <size>30</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -13,8 +13,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerTitular</name>
-	<type>textline</type>
+    <name>ePartnerTitular</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -24,8 +24,8 @@
 
       </entry> 
      <entry>
-	<name>ePartnerLastname</name>
-	<type>textline</type>
+    <name>ePartnerLastname</name>
+    <type>textline</type>
                 <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -36,8 +36,8 @@
       </entry>
  
       <entry>
-	<name>ePartnerFirstname</name>
-	<type>textline</type>
+    <name>ePartnerFirstname</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -49,8 +49,8 @@
 
 
     <entry>
-	<name>ePartnerStreet</name>
-	<type>textline</type>
+    <name>ePartnerStreet</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -60,8 +60,8 @@
 
       </entry>
     <entry>
-	<name>ePartnerCountry</name>
-	<type>textline</type>
+    <name>ePartnerCountry</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -71,8 +71,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerState</name>
-	<type>textline</type>
+    <name>ePartnerState</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -83,8 +83,8 @@
       </entry>
 
   <entry>
-	<name>ePartnerZip</name>
-	<type>textline</type>
+    <name>ePartnerZip</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -94,8 +94,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerCity</name>
-	<type>textline</type>
+    <name>ePartnerCity</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -105,8 +105,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerPhone</name>
-	<type>textline</type>
+    <name>ePartnerPhone</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -116,8 +116,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerFax</name>
-	<type>textline</type>
+    <name>ePartnerFax</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -127,8 +127,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerPhone1</name>
-	<type>textline</type>
+    <name>ePartnerPhone1</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -138,8 +138,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerPhone2</name>
-	<type>textline</type>
+    <name>ePartnerPhone2</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -150,8 +150,8 @@
       </entry>
 
   <entry>
-	<name>ePartnerEmail</name>
-	<type>textline</type>
+    <name>ePartnerEmail</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -161,8 +161,8 @@
 
       </entry>
         <entry>
-	<name>ePartnerHandy</name>
-	<type>textline</type>
+    <name>ePartnerHandy</name>
+    <type>textline</type>
                <size>120</size>
                 <verify_type>string</verify_type>
                 <sql_field>phone_handy</sql_field>
@@ -172,8 +172,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerFaxPrivate</name>
-	<type>textline</type>
+    <name>ePartnerFaxPrivate</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -183,8 +183,8 @@
 
       </entry>
   <entry>
-	<name>ePartnerHomepage</name>
-	<type>textline</type>
+    <name>ePartnerHomepage</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -194,8 +194,8 @@
 
       </entry>
     <entry>
-	<name>eBirthday</name>
-	<type>textline</type>
+    <name>eBirthday</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
@@ -205,12 +205,56 @@
 
       </entry>
  <entry>
-	<name>ePartnerLetterAddress</name>
-	<type>textline</type>
+    <name>ePartnerLetterAddress</name>
+    <type>textline</type>
                <size>20</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
                 <sql_field>letter_address</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+    <name>ePartnerLetterAddress2</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address2</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+    <name>ePartnerLetterAddress3</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address3</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+    <name>ePartnerLetterAddress4</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address4</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+      <entry>
+    <name>ePartnerLetterAddress5</name>
+    <type>textline</type>
+               <size>20</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>letter_address5</sql_field>
                 <bg_color>0</bg_color>
                 <fg_color>0</fg_color>
 
@@ -246,8 +290,8 @@
         <fg_color>0</fg_color>
     </entry>   
     <entry>
-	<name>ePartnerSIP</name>
-	<type>textline</type>
+    <name>ePartnerSIP</name>
+    <type>textline</type>
                <size>225</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -257,8 +301,8 @@
 
           </entry>
 <entry>
-	<name>ePartnerSkype</name>
-	<type>textline</type>
+    <name>ePartnerSkype</name>
+    <type>textline</type>
                <size>225</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>

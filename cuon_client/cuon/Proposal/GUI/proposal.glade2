@@ -117,6 +117,21 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator15">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="create_order1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">create Order</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_create_order1_activate" last_modification_time="Sat, 12 Jul 2008 15:34:29 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separator1">
 		      <property name="visible">True</property>
 		    </widget>
