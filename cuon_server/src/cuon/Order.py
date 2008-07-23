@@ -67,6 +67,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getOrderPositions(self, dicOrder, dicUser):
         sSql = 'select * from orderposition where orderid = ' + `dicOrder['orderid']`
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        
         return dicResult
     
     
@@ -256,10 +257,13 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
-        sSql += " orderposition.tax_vat as order_tax_vat, "
-        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
-        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
-        sSql += " articles.number as article_id, articles.designation as article_designation,  "
+        sSql += " orderposition.tax_vat as order_tax_vat_order_position, "
+       # sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+        #sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
+        sSql += " (select  material_group.tax_vat from material_group,articles  where "
+        sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
+        sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group.price_type_net,  "
+        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article, "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "
         sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
@@ -268,8 +272,11 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
         sSql += " order by orderposition.position "
         dicUser['noWhereClient'] = 'Yes'
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
 
+
+        return result
+        
 
     def xmlrpc_checkExistModulOrder(self, dicUser, dicOrder):
         print 'check Exist Modul Order '
