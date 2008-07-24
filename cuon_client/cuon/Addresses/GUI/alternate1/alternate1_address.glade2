@@ -11428,6 +11428,7 @@
 				  <property name="fixed_height_mode">False</property>
 				  <property name="hover_selection">False</property>
 				  <property name="hover_expand">False</property>
+				  <signal name="row_activated" handler="on_tvAddressProposal_row_activated" last_modification_time="Tue, 15 Jul 2008 15:21:05 GMT"/>
 				</widget>
 			      </child>
 			    </widget>
