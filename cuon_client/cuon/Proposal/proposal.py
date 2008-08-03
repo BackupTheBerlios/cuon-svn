@@ -49,6 +49,9 @@ import cuon.DMS.dms
 import cuon.DMS.SingleDMS
 import cuon.DMS.documentTools
 
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceVat
+
 
 class proposalwindow(chooseWindows):
     """
@@ -539,6 +542,7 @@ class proposalwindow(chooseWindows):
 
     # create a order of this proposal
     def  on_create_order1_activate(self, event):
+        print "start to change to Order"
         ok = self.rpc.callRP('Order.changeProposal2Order',self.singleOrder.ID,  self.dicUser)
         self.on_quit1_activate(event)
         
@@ -1001,7 +1005,26 @@ class proposalwindow(chooseWindows):
     def on_tbSave_clicked(selfself,  event):
         if self.tabOption == self.tabProposal:
             self.on_save1_activate(event)    
-            
+    
+    
+    # Tax Vat choose
+    def  on_bTaxVatForAllPositions_clicked(self, event):
+        print 'cbVat search'
+        print event
+        
+        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
+        
+    def on_eTaxVatForAllPositionsID_changed(self, event):
+        print 'eCategory changed'
+        iTaxVat = self.getChangedValue('eTaxVatID')
+        sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
+        if sTaxVat:
+            self.getWidget('eTaxVat').set_text(sTaxVat)
+        else:
+            self.getWidget('eTaxVat').set_text('')
+ 
+ 
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()

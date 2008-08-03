@@ -49,6 +49,8 @@ import cuon.Order.SingleOrderInvoice
 import cuon.DMS.dms
 import cuon.DMS.SingleDMS
 import cuon.DMS.documentTools
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceVat
 
 
 class orderwindow(chooseWindows):
@@ -655,7 +657,23 @@ class orderwindow(chooseWindows):
         liAdr = self.singlePartner.getAddress(iAdrNumber)
         self.setTextbuffer(eAdrField,liAdr)
 
+    # Tax Vat choose
+    def on_bTaxVatForAllPositions_clicked(self, event):
+        print 'cbVat search'
+        print event
         
+        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
+        
+    def on_eTaxVatForAllPositionsID_changed(self, event):
+        print 'eCategory changed'
+        iTaxVat = self.getChangedValue('eTaxVatID')
+        sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
+        if sTaxVat:
+            self.getWidget('eTaxVat').set_text(sTaxVat)
+        else:
+            self.getWidget('eTaxVat').set_text('')
+ 
         # Tab Positions choose article 
     def on_bArticleSearch_clicked(self, event):
         ar = cuon.Articles.articles.articleswindow(self.allTables)

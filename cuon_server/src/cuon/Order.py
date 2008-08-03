@@ -92,6 +92,7 @@ class Order(xmlrpc.XMLRPC, basics):
         return nr
         
     def xmlrpc_changeProposal2Order(self, ProposalID, dicUser):
+        ok = True 
         sSql = "update orderbook set process_status = 500 where id = " + `ProposalID`
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )  
         return ok
@@ -257,13 +258,16 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
-        sSql += " orderposition.tax_vat as order_tax_vat_order_position, "
-       # sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
-        #sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
+        sSql += "orderbook.tax_vat_for_all_positions as tax_vat_for_all_positions,  "
+        sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
+        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
+        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
         sSql += " (select  material_group.tax_vat from material_group,articles  where "
-        sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
-        sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group.price_type_net,  "
-        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article, "
+        sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
+        sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
+        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id, "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "
         sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
@@ -273,9 +277,37 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " order by orderposition.position "
         dicUser['noWhereClient'] = 'Yes'
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-
-
-        return result
+        result2 = []
+        for oneResult in result:
+            oneResult['MWST_ID'] =   0
+            oneResult['MWST_VALUE']
+            if oneResult not in self.liSQL_ERRORS :
+                if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
+                    if oneResult['tax_vat_for_all_positions']  > 0:
+                        oneResult['MWST_ID'] = oneResult['tax_vat_for_all_positions'] 
+                if oneResult['MWST_ID'] ==   0:
+                    if oneResult['order_tax_vat_order_position_id'] not in self.liSQL_ERRORS:
+                        if oneResult['order_tax_vat_order_position_id'] > 0:
+                            oneResult['MWST_ID'] = oneResult['order_tax_vat_order_position_id']
+                    
+                if oneResult['MWST_ID'] ==   0:
+                    if oneResult['tax_vat_article_id'] not in self.liSQL_ERRORS:
+                        if oneResult['tax_vat_article_id'] > 0:
+                            oneResult['MWST_ID'] = oneResult['tax_vat_article_id']
+                        
+                if oneResult['MWST_ID'] ==   0:
+                    if oneResult['tax_vat_material_group_id'] not in self.liSQL_ERRORS:
+                        if oneResult['tax_vat_material_group_id'] > 0:
+                            oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
+                if oneResult['MWST_ID'] > 0:
+                    sSql = "select  tax_vat.vat_value as vat_value from tax_vat where tax_vat.id = `oneResult['MWST_ID']`"
+                    mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+                    try:
+                        oneResult['MWST_VALUE'] = mwstResult[0]['vat_value']
+                    except:
+                        pass
+                result2.add(oneResult)
+        return result2
         
 
     def xmlrpc_checkExistModulOrder(self, dicUser, dicOrder):

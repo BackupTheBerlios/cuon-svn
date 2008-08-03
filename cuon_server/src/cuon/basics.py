@@ -77,7 +77,7 @@ class basics(xmlrpc.XMLRPC):
         self.OSC_PORT = 5432
         self.OSC_DB = 'cuon'
         self.OSC_USER = 'Test'
-        
+        self.liSQL_ERRORS =  ['NONE','ERROR']
         
         self.PdfEncoding = 'latin-2'
         
