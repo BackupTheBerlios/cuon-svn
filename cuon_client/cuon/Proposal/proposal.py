@@ -1013,16 +1013,16 @@ class proposalwindow(chooseWindows):
         print event
         
         pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
-        pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
+        pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatForAllPositionsID'))
         
     def on_eTaxVatForAllPositionsID_changed(self, event):
         print 'eCategory changed'
-        iTaxVat = self.getChangedValue('eTaxVatID')
+        iTaxVat = self.getChangedValue('eTaxVatForAllPositionsID')
         sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
         if sTaxVat:
-            self.getWidget('eTaxVat').set_text(sTaxVat)
+            self.getWidget('eTaxVatForAllPositionsID').set_text(sTaxVat)
         else:
-            self.getWidget('eTaxVat').set_text('')
+            self.getWidget('eTaxVatForAllPositionsID').set_text('')
  
  
     def refreshTree(self):

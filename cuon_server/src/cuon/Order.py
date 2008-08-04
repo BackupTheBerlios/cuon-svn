@@ -280,7 +280,9 @@ class Order(xmlrpc.XMLRPC, basics):
         result2 = []
         for oneResult in result:
             oneResult['MWST_ID'] =   0
-            oneResult['MWST_VALUE']
+            oneResult['MWST_VALUE'] = 0
+            
+            
             if oneResult not in self.liSQL_ERRORS :
                 if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
                     if oneResult['tax_vat_for_all_positions']  > 0:
@@ -299,14 +301,15 @@ class Order(xmlrpc.XMLRPC, basics):
                     if oneResult['tax_vat_material_group_id'] not in self.liSQL_ERRORS:
                         if oneResult['tax_vat_material_group_id'] > 0:
                             oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
+                            
                 if oneResult['MWST_ID'] > 0:
-                    sSql = "select  tax_vat.vat_value as vat_value from tax_vat where tax_vat.id = `oneResult['MWST_ID']`"
+                    sSql = "select  tax_vat.vat_value as vat_value from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
                     mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
                     try:
                         oneResult['MWST_VALUE'] = mwstResult[0]['vat_value']
                     except:
                         pass
-                result2.add(oneResult)
+                result2.append(oneResult)
         return result2
         
 
