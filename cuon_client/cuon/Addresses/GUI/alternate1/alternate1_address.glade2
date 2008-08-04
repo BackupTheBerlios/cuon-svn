@@ -11788,8 +11788,8 @@
 
 			  <child>
 			    <widget class="GtkScrolledWindow" id="scrolledwindow13">
-			      <property name="width_request">500</property>
-			      <property name="height_request">273</property>
+			      <property name="width_request">760</property>
+			      <property name="height_request">288</property>
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
@@ -11826,6 +11826,10 @@
 			  <property name="expand">False</property>
 			  <property name="fill">False</property>
 			</packing>
+		      </child>
+
+		      <child>
+			<placeholder/>
 		      </child>
 
 		      <child>
