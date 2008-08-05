@@ -2160,16 +2160,7 @@
       <default>0</default>
       <comment />
     </field>
-    <field>
-      <name>tax_vat_for_all_positions</name>
-      <type>int</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>0</size>
-      <default>0</default>
-      <comment />
-    </field>
+    
   </table>
   
   <!--table: ordersupply-->
@@ -2464,6 +2455,16 @@
       <notnull>0</notnull>
       <size>0</size>
       <default />
+      <comment />
+    </field>
+    <field>
+      <name>tax_vat_for_all_positions</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
       <comment />
     </field>
     

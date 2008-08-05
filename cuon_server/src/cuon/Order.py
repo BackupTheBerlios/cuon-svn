@@ -258,6 +258,8 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+        sSql += "(select  tax_vat_for_all_positions from orderinvoice  where orderinvoice.orderid = " + `dicOrder['orderid']`  
+        sSql += " ) as tax_vat_for_all_positions, "
         sSql += "orderbook.tax_vat_for_all_positions as tax_vat_for_all_positions,  "
         sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
         sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
@@ -281,7 +283,7 @@ class Order(xmlrpc.XMLRPC, basics):
         for oneResult in result:
             oneResult['MWST_ID'] =   0
             oneResult['MWST_VALUE'] = 0
-            
+            oneResult['MWST_NAME'] = ''
             
             if oneResult not in self.liSQL_ERRORS :
                 if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
@@ -303,10 +305,12 @@ class Order(xmlrpc.XMLRPC, basics):
                             oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
                             
                 if oneResult['MWST_ID'] > 0:
-                    sSql = "select  tax_vat.vat_value as vat_value from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
+                    sSql = "select  vat_value, vat_name, vat_designation from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
                     mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
                     try:
                         oneResult['MWST_VALUE'] = mwstResult[0]['vat_value']
+                        oneResult['MWST_NAME'] = mwstResult[0]['vat_name']
+                        oneResult['MWST_DESIGNATION'] = mwstResult[0]['vat_designation']
                     except:
                         pass
                 result2.append(oneResult)
