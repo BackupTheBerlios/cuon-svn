@@ -212,8 +212,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         return nr
         
-    
-
+   
     def xmlrpc_getPickupAddress(self, dicOrder, dicUser):
 
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
@@ -260,7 +259,6 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql += "(select  tax_vat_for_all_positions from orderinvoice  where orderinvoice.orderid = " + `dicOrder['orderid']`  
         sSql += " ) as tax_vat_for_all_positions, "
-        sSql += "orderbook.tax_vat_for_all_positions as tax_vat_for_all_positions,  "
         sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
         sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
         sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
@@ -289,21 +287,25 @@ class Order(xmlrpc.XMLRPC, basics):
                 if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
                     if oneResult['tax_vat_for_all_positions']  > 0:
                         oneResult['MWST_ID'] = oneResult['tax_vat_for_all_positions'] 
+                        self.writeLog( 'TAXVATNEW1 '+ `oneResult['MWST_ID']`)
                 if oneResult['MWST_ID'] ==   0:
                     if oneResult['order_tax_vat_order_position_id'] not in self.liSQL_ERRORS:
                         if oneResult['order_tax_vat_order_position_id'] > 0:
                             oneResult['MWST_ID'] = oneResult['order_tax_vat_order_position_id']
+                            self.writeLog( 'TAXVATNEW2 '+ `oneResult['MWST_ID']`)
                     
-                if oneResult['MWST_ID'] ==   0:
-                    if oneResult['tax_vat_article_id'] not in self.liSQL_ERRORS:
-                        if oneResult['tax_vat_article_id'] > 0:
-                            oneResult['MWST_ID'] = oneResult['tax_vat_article_id']
-                        
+                
+                if oneResult['tax_vat_article_id'] not in self.liSQL_ERRORS:
+                    if oneResult['tax_vat_article_id'] > 0:
+                        oneResult['MWST_ID'] = oneResult['tax_vat_article_id']
+                        self.writeLog( 'TAXVATNEW3 '+ `oneResult['MWST_ID']`)
+
                 if oneResult['MWST_ID'] ==   0:
                     if oneResult['tax_vat_material_group_id'] not in self.liSQL_ERRORS:
                         if oneResult['tax_vat_material_group_id'] > 0:
                             oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
-                            
+                            self.writeLog( 'TAXVATNEW4 '+ `oneResult['MWST_ID']`)
+
                 if oneResult['MWST_ID'] > 0:
                     sSql = "select  vat_value, vat_name, vat_designation from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
                     mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
@@ -313,7 +315,10 @@ class Order(xmlrpc.XMLRPC, basics):
                         oneResult['MWST_DESIGNATION'] = mwstResult[0]['vat_designation']
                     except:
                         pass
+                    self.writeLog( 'TAXVATNEWValue '+ `oneResult['MWST_VALUE']`)
+
                 result2.append(oneResult)
+                self.writeLog( 'TAXVATRESULT ' + `result2`)
         return result2
         
 
@@ -945,4 +950,10 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getStatsSalesman(self, dicUser):
         
         return ['NONE']
-         
+
+    def xmlrpc_getStatTaxVat1(self, dicUser):
+        result = ['NONE']
+        
+        return result
+        
+

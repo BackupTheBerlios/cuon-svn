@@ -130,6 +130,11 @@ class statswindow(windows):
         Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Articles_stat_misc1'], {'1':-131}, dicArticle, dicExtInfo)
             
                        
+    def on_invoice_taxvat1_activate(self, event):
         
+        dicExtInfo = {'sep_info':{'1':0},'Modul':self.MN['Invoice_stat_taxvat1']}
+        dicOrder = self.rpc.callRP('Order.getStatTaxVat1',self.oUser.getSqlDicUser())
+        Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Invoice_stat_taxvat1'], {'1':-701}, dicOrder, dicExtInfo)
+               
         
                         

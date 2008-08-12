@@ -93,6 +93,8 @@ class windows(rawWindow, MyXML, messages):
         
         self.MN['Invoice'] = 7000
         self.MN['Invoice_info'] = 7001
+        self.MN['Invoice_stat_taxvat1'] = 7101
+        
         
         self.MN['DMS'] = 11000
         self.MN['Forms_Address_Notes_Misc'] = 11010
@@ -112,6 +114,7 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Stats'] = 22000
         self.MN['Calendar'] = 28000
         self.MN['Think'] = 29000
+        
         
         self.OrderStatus = {}
         self.OrderStatus['ProposalStart'] = 300

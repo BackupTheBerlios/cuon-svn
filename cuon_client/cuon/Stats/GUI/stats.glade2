@@ -222,6 +222,28 @@
 	      </child>
 	    </widget>
 	  </child>
+
+	  <child>
+	    <widget class="GtkMenuItem" id="invoices1">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">Invoices</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="invoices1_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="invoice_taxvat1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Tax Vat</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_invoice_taxvat1_activate" last_modification_time="Tue, 12 Aug 2008 08:57:22 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
 	</widget>
 	<packing>
 	  <property name="padding">0</property>
