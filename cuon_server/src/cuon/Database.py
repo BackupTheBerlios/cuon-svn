@@ -228,7 +228,10 @@ class Database(xmlrpc.XMLRPC, SQL):
         ok = 0
 
         if dicName not in ['NONE','ERROR']:
-            ok = len(dicName)
+            try:
+                ok = len(dicName)
+            except:
+                ok = 0
 
         return  ok
         

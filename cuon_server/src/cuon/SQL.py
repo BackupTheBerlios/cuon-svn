@@ -14,11 +14,15 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
+        #print "Start ExecuteQuere"
         t1 = time.mktime(time.localtime())
         self.writeLog('------->SQL starts at : ' + `t1`)
         conn = None
         dicResult = None
         rows = None
+        #print dicUser
+        #print cSql
+        
         try:
             self.writeLog('execute SQL = ' + `cSql`)
             if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
@@ -46,6 +50,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 #conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, user = sUser)
                 #curs.execute(cSql.decode('utf-8'))
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
+                print "conn = ",  conn
                 try:
                     rows = conn.query(cSql.encode('utf-8'))
                     self.writeLog('return from database = ' + `rows`)
@@ -73,7 +78,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                     self.writeLog('----------------------------- dicResult should be None --------------')
                     
                     dicResult = None
-            elif not rows and rows != 'ERROR':
+            else :
                 dicResult = 'NONE'
             
             

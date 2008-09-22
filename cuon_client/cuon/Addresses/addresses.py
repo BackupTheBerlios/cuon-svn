@@ -1425,7 +1425,7 @@ class addresswindow(chooseWindows):
                 pass
                 
     def on_tvAddressProposal_row_activated(self,event,data1, data2):
-        if self.ProposalID:
+        if self.ProposalID: 
             proposalwindow = cuon.Proposal.proposal.proposalwindow(self.allTables,None,False,self.ProposalID)
         
     def setProposalValues(self):

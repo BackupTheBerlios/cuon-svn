@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 44, 'Rev': 18, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 1, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -332,18 +332,18 @@ class MainWindow(windows):
         try:
             os.system( 'rm ' + os.path.normpath(self.td.cuon_path + '/cuon__*' ))
         except Exception, params:
-            #print Exception, params
-            pass
+            print 'prm1',  Exception, params
+            #pass
         try:
             os.system( 'rm ' + os.path.normpath(self.dicUser['prefPath']['tmp'] + '/*__dms*' ))
         except Exception, params:
-            #print Exception, params
-            pass
+            print 'prm2',Exception, params
+            #pass
         try:
             os.system( 'rm ' + os.path.normpath( self.td.cuon_path + '/*__dms*' ))
         except Exception, params:
-            #print Exception, params
-            pass
+            print 'prm3',Exception, params
+            #pass
             
         self.on_logout1_activate(None)
             

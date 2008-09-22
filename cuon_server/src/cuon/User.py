@@ -4,7 +4,7 @@ import os
 import sys
 import time
 from datetime import datetime
-import random	
+import random   
 import xmlrpclib
 from basics import basics
 import Database
@@ -18,6 +18,8 @@ class User(xmlrpc.XMLRPC, basics):
         sSql = 'select profile_name from preferences where username = \'' + dicUser['Name'] +'\' and is_standard_profile = TRUE'
         
         result = self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
+        #print "Profile = ",  result
+        
         if result not in ['NONE','ERROR']:
            return result[0]['profile_name']
         else:
