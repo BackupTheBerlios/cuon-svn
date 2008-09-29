@@ -35,7 +35,7 @@ class myXmlRpc(dumps, logs):
         logs.__init__(self)
         
         #self.zope_server = self.getZopeServer()
-        self.MyServer = self.getMyServer()
+        #self.MyServer = self.getMyServer()
         
         
     def getMyServer(self):
@@ -89,7 +89,8 @@ class myXmlRpc(dumps, logs):
         return sv
 
     def getServer(self):
-        return self.MyServer
+        #return self.MyServer
+        return ServerProxy(self.td.server,allow_none = 1)
         
     def getServer2(self):
         return self.MyServer
