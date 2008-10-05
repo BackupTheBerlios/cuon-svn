@@ -1085,6 +1085,7 @@ class addresswindow(chooseWindows):
         dicOrder['deliveredat'] = dicDate['date']
         
         orderwindow = cuon.Order.order.orderwindow(self.allTables,dicOrder,True)
+        
     def on_new_project_activate(self, event):
         print 'new project'
         dicProject = {}
@@ -1092,6 +1093,22 @@ class addresswindow(chooseWindows):
         dicProject['ModulNumber'] = self.ModulNumber
         projectwindow = cuon.Project.project.projectwindow(self.allTables,dicProject,True)
             
+    def on_new_proposal_activate(self, event):
+        print 'new proposal'
+        dicOrder = {}
+        dicOrder['addressnumber'] = self.singleAddress.ID
+        dicOrder['ModulNumber'] = self.ModulNumber
+        dicDate = self.getActualDateTime()
+        dicOrder['orderedat'] = dicDate['date']
+        dicOrder['deliveredat'] = dicDate['date']
+        dicOrder['process_status'] = self.OrderStatus['ProposalStart']
+        proposalwindow = cuon.Proposal.proposal.proposalwindow(self.allTables,dicOrder,True)
+        
+    def on_tbNewProposal_clicked(self, event):
+        print 'new TB proposal'
+        self.activateClick('new_proposal')
+        
+        
     def on_tbNewOrder_clicked(self, event):
         print 'new order toolbar '
         self.activateClick('new_order')

@@ -338,6 +338,14 @@ class Order(xmlrpc.XMLRPC, basics):
         self.writeLog( 'Order99 = ' + `dicResult`) 
         return dicResult
         
+    def xmlrpc_checkExistModulProposal(self, dicUser, dicOrder):
+        print 'check Exist Modul Proposal '
+        sSql = 'select * from orderbook where modul_order_number = ' + `dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `dicOrder['ModulNumber']`
+        sSql += self.getWhere(None,dicUser,2)
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        self.writeLog( 'Order99 = ' + `dicResult`) 
+        return dicResult
+        
         
     def xmlrpc_createNewOrder(self,dicUser,dicOrder):
         print 'create new Order'
@@ -374,7 +382,9 @@ class Order(xmlrpc.XMLRPC, basics):
             
         self.writeLog(dicValues)
         newID =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
-        
+        if dicOrder.has_key('process_status'):
+            dicValues['process_status'] = dicOrder['process_status']
+            
         if dicOrder.has_key('Positions') and newID > 0:
             for position in dicOrder['Positions']:
                 position['orderid'] = [newID,'int']

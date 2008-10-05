@@ -253,11 +253,11 @@ class proposalwindow(chooseWindows):
 
         # start
         self.OrderID = orderid
-        if Ordertype == 'Order':
+        if Ordertype == 'Proposal':
             
             if self.dicOrder and not newOrder and self.OrderID == 0:
                 print self.dicOrder
-                existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
+                existOrder = self.rpc.callRP('Order.checkExistModulProposal', self.dicUser,self.dicOrder)
                 print 'existOrder = ', existOrder
                 if not existOrder or existOrder == 'NONE':
                     print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
@@ -306,7 +306,6 @@ class proposalwindow(chooseWindows):
     def on_quit1_activate(self, event):
         print "exit order v2"
         self.closeWindow()
-
 
     #Menu Propsal
   
