@@ -381,10 +381,11 @@ class Order(xmlrpc.XMLRPC, basics):
                 print Exception, params
             
         self.writeLog(dicValues)
-        newID =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
+        
         if dicOrder.has_key('process_status'):
-            dicValues['process_status'] = dicOrder['process_status']
-            
+            dicValues['process_status'] = [dicOrder['process_status'], 'int'] 
+        newID =  self.oDatabase.xmlrpc_saveRecord('orderbook', -1, dicValues, dicUser, 'NO')
+        
         if dicOrder.has_key('Positions') and newID > 0:
             for position in dicOrder['Positions']:
                 position['orderid'] = [newID,'int']

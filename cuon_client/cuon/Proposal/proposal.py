@@ -182,7 +182,7 @@ class proposalwindow(chooseWindows):
 
         # Close Menus for Tab
 
-        self.addEnabledMenuItems('tabs','order1')
+        self.addEnabledMenuItems('tabs','proposal1')
         self.addEnabledMenuItems('tabs','supply1')
         self.addEnabledMenuItems('tabs','gets1')
         self.addEnabledMenuItems('tabs','position1')
@@ -280,7 +280,8 @@ class proposalwindow(chooseWindows):
                     
         ts = self.getWidget('treeMaterialgroup')
         #treeview.set_model(liststore)
- 
+        self.win1.add_accel_group(self.accel_group)
+        print "Proposal-Windows = ",  self.win1
         renderer = gtk.CellRendererText()
         column = gtk.TreeViewColumn("Materialgroups", renderer, text=0)
         ts.append_column(column)
@@ -297,7 +298,7 @@ class proposalwindow(chooseWindows):
             
         self.tabChanged()
 
-        self.win1.add_accel_group(self.accel_group)
+        
          
          
     #Menu File
@@ -464,6 +465,7 @@ class proposalwindow(chooseWindows):
         print "save Positions v2"
         EndPosition = False
         self.singleOrderPosition.orderID = self.singleOrder.ID
+        print "Proposal ID by position",  self.singleOrderPosition.orderID
         if self.singleOrderPosition.ID == -1:
             self.singleOrderPosition.TreePos = self.singleOrderPosition.TREELAST
         self.singleOrderPosition.save()
@@ -993,18 +995,25 @@ class proposalwindow(chooseWindows):
     def  on_tbCreateOrder_clicked (self, event):
         self.on_create_order1_activate(event)
         
-    def on_tbNew_clicked(selfself,  event):
+    def on_tbNew_clicked(self,  event):
         if self.tabOption == self.tabProposal:
             self.on_new1_activate(event)
+        elif self.tabOption == self.tabPosition:
+            self.on_PositionNew1_activate(event)
             
-    def on_tbEdit_clicked(selfself,  event):
+            
+    def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabProposal:
             self.on_edit1_activate(event)
+        elif self.tabOption == self.tabPosition:
+            self.on_PositionEdit1_activate(event)
             
-    def on_tbSave_clicked(selfself,  event):
-        if self.tabOption == self.tabProposal:
+    def on_tbSave_clicked(self,  event):
+        if self.tabOption == self.tabProposal: 
             self.on_save1_activate(event)    
-    
+        elif self.tabOption == self.tabPosition:
+            self.on_PositionSave1_activate(event)
+            
     
     # Tax Vat choose
     def  on_bTaxVatForAllPositions_clicked(self, event):

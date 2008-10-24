@@ -999,6 +999,22 @@ class orderwindow(chooseWindows):
     def on_treeArticles_row_activated(self, event, data1, data2):
         self.on_bQuickAppend_clicked(event)
 
+    
+    #def  on_tbCreateOrder_clicked (self, event):
+     #   self.on_create_order1_activate(event)
+        
+    def on_tbNew_clicked(selfself,  event):
+        if self.tabOption == self.tabOrder:
+            self.on_new1_activate(event)
+            
+    def on_tbEdit_clicked(selfself,  event):
+        if self.tabOption == self.tabOrder:
+            self.on_edit1_activate(event)
+            
+    def on_tbSave_clicked(selfself,  event):
+        if self.tabOption == self.tabOrder:
+            self.on_save1_activate(event)    
+    
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()
