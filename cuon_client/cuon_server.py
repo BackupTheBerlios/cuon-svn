@@ -330,7 +330,7 @@ class MainWindow(windows):
         
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.rpc.td = self.td
-
+        self.DialogWindow = None
     def on_end1_activate(self,event):
         print "exit cuon"
         self.gtk_main_quit()
@@ -463,7 +463,38 @@ class MainWindow(windows):
 ##        os.system(s)
 ##        
         
+    def  editReportFile(self, sName, sFolder):
         
+        self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName) 
+    def readDDialogData(self):
+        sFolder = self.getWidget('eDFolder').get_text()
+        sList = self.getWidget('cbDLists').get_active_text()
+        return sFolder, sList
+        
+    
+    def on_edit_reports2_activate(self, event):
+        self.DialogWindow.show()
+    
+    def on_bDSystem_clicked(self, event):
+        sFolder, sList = self.readDDialogData()
+        print sFolder,  sList
+        self.DialogWindow.hide()
+        self.editReportFile(sList.strip(),"XML")
+        
+    def on_bDClient_clicked(self, event):
+        sFolder, sList = self.readDDialogData()
+        print sFolder,  sList
+        self.DialogWindow.hide()
+        self.editReportFile(sList.strip(),"client_" + sFolder.strip())
+        
+    def on_bDUser_clicked(self, event):
+        sFolder, sList = self.readDDialogData()
+        print sFolder,  sList
+        self.DialogWindow.hide()
+        self.editReportFile(sList.strip(),sFolder_strip())
+        
+         
+    
     def on_create_grants_file1_activate(self, event):
         #self.activateClick('save_configfiles1')
         print 'create grants.xml'
@@ -604,6 +635,8 @@ class MainWindow(windows):
        
         self.gladeName = '../usr/share/cuon/glade/cuon_server.glade2'
         self.loadGladeFile(self.gladeName)
+        self.DialogWindow = self.getWidget('dialog1')
+        self.DialogWindow.hide()
 
     def gtk_main_quit(self):
         os.system('rm users.cfg')

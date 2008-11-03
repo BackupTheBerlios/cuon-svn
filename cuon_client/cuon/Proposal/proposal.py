@@ -164,7 +164,7 @@ class proposalwindow(chooseWindows):
 #        self.singleOrderInvoice.setTreeFields([])
 #        self.singleOrderInvoice.setTreeOrder('id')
 #        self.singleOrderInvoice.setTree(self.xml.get_widget('tree1') )
-#        # singleOrderPayment
+#        # singleOrderPayment   
 #        
 #        self.loadEntries(self.EntriesOrderPayment)
 #        self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )

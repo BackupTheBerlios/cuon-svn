@@ -48,7 +48,7 @@ class SingleClient(SingleData):
         liClientIds = dicClients['clientsID']
         s = ''
         for iZ in range(len(liClientIds)-1):
-            s += `iZ` 
+            s += liClientIds[iZ]
             s += ' or id = '
         s += `liClientIds[len(liClientIds)-1]`
         

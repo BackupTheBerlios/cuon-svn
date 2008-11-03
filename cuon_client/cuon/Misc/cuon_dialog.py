@@ -35,7 +35,7 @@ class cuon_dialog:
         print 'Response', response
         if response == gtk.RESPONSE_ACCEPT:
             ok = True
-	    res = eLine.get_text()
+        res = eLine.get_text()
         return ok, res
         
-        return ok, res 
+       
