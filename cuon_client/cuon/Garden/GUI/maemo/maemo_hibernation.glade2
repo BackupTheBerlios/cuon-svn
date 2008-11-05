@@ -2712,7 +2712,8 @@
 		      <child>
 			<widget class="GtkComboBoxEntry" id="cbeStatus">
 			  <property name="visible">True</property>
-			  <property name="items" translatable="yes">1 ohne Fehler
+			  <property name="items" translatable="yes">0 nicht festgelegt
+1 ohne Fehler
 2 gut
 3 keine starken Schäden
 4 Schäden sichtbar
@@ -3634,4 +3635,3 @@
 </widget>
 
 </glade-interface>
-
