@@ -583,6 +583,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " where orderbook.addressnumber = " + `address_id` + " " 
         sSql += ' and li.order_number = orderbook.id '
         sSql += self.getWhere(None,dicUser,2,'li.')
+        sSql += " order by li.id desc "
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
        
     
