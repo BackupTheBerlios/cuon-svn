@@ -960,6 +960,112 @@
     </field>
 
   </table>
+  
+  <table>
+    <nameOfTable>graveyard</nameOfTable>
+    <specials>inherits (t_address);</specials>
+    <x>152</x>
+    <y>115</y>
+
+    <field>
+      <name>shortname</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    
+    <table>
+    <nameOfTable>grave</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+
+    <field>
+      <name>lastname</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    <field>
+      <name>firstname</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>addressid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+    <name>graveyardid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+    <name>pos_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <name>contract_begins_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     </field>
+     <name>contract_ends_at</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>detachment</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+    </table>
   <foreign_key>
         <foreign_key_name>HibernationAddressID</foreign_key_name> 
         <foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 

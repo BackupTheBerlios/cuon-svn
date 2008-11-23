@@ -3,7 +3,7 @@
 
 <glade-interface>
 
-<widget class="GtkWindow" id="GrabpflegeHauptfenster">
+<widget class="GtkWindow" id="GraveMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
   <property name="visible">True</property>
   <property name="title" translatable="yes">Grave Maintenance</property>
@@ -84,13 +84,13 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="hibernation1">
+	    <widget class="GtkMenuItem" id="grave1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Grab</property>
+	      <property name="label" translatable="yes">Grave</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="hibernation1_menu">
+		<widget class="GtkMenu" id="grave1_menu">
 
 		  <child>
 		    <widget class="GtkMenuItem" id="new1">
@@ -919,7 +919,7 @@ Dauergrabpflege</property>
 			      <child>
 				<widget class="GtkLabel" id="label65">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">Adresse suchen</property>
+				  <property name="label" translatable="yes">search Address</property>
 				  <property name="use_underline">True</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1018,7 +1018,7 @@ Dauergrabpflege</property>
 			      <child>
 				<widget class="GtkLabel" id="label64">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">Adresse ansehen</property>
+				  <property name="label" translatable="yes">goto Address</property>
 				  <property name="use_underline">True</property>
 				  <property name="use_markup">False</property>
 				  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1070,7 +1070,7 @@ Dauergrabpflege</property>
 		  <child>
 		    <widget class="GtkLabel" id="label88">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Grabvorname</property>
+		      <property name="label" translatable="yes">Firstname</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1117,7 +1117,7 @@ Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label91">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Laufnummer</property>
+			  <property name="label" translatable="yes">pos. number</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1237,7 +1237,7 @@ Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label81">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Vertragsbeginn</property>
+			  <property name="label" translatable="yes">contract begins at</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1260,7 +1260,7 @@ Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry4">
+			<widget class="GtkEntry" id="eContractBegin">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1294,7 +1294,7 @@ Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label82">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Vertragsende</property>
+			  <property name="label" translatable="yes">contract ends at</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1317,7 +1317,7 @@ Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry5">
+			<widget class="GtkEntry" id="eContractEnd">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -1401,7 +1401,7 @@ Dauergrabpflege</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry1">
+		    <widget class="GtkEntry" id="eLastname">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -1450,7 +1450,7 @@ Dauergrabpflege</property>
 	      <child>
 		<widget class="GtkLabel" id="label78">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Grabname</property>
+		  <property name="label" translatable="yes">Lastame</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1979,7 +1979,7 @@ TBF Dauergrabpflege</property>
 		  <child>
 		    <widget class="GtkLabel" id="label79">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Abteilung</property>
+		      <property name="label" translatable="yes">Detachment</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2002,7 +2002,7 @@ TBF Dauergrabpflege</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry3">
+		    <widget class="GtkEntry" id="eDetachment">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -2031,7 +2031,7 @@ TBF Dauergrabpflege</property>
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="entry6">
+		<widget class="GtkEntry" id="eFirstname">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
