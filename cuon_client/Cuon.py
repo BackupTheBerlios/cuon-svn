@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 22 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 23 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -491,7 +491,10 @@ class MainWindow(windows):
                             mi1.connect("activate", self.on_ext2_activate)
                         elif newProgram['MenuItem']['ExternalNumber'] == 'ext3':
                             mi1.connect("activate", self.on_ext3_activate)
-                        
+                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext4':
+                            mi1.connect("activate", self.on_ext4_activate)
+                            
+                            
                         if newProgram.has_key('Imports'):
                             newImports = newProgram['Imports']
                             for nI in newImports:
@@ -792,7 +795,14 @@ class MainWindow(windows):
             ext3.start()
         except:
             print 'No StartModule'
-
+            
+    def on_ext4_activate(self, event):
+        print 'ext4 menu activated !!!!!'
+        ext4 = eval(self.extMenucommand['ext4']) 
+        try:
+            ext4.start()
+        except:
+            print 'No StartModule ext4'
     def getNewClientSoftware(self, id):
         cuonpath = '..'
         self.infoMsg('C.U.O.N. will now try to load the new Clientversion. ')
