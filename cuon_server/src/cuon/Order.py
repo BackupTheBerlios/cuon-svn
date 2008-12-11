@@ -1034,14 +1034,20 @@ class Order(xmlrpc.XMLRPC, basics):
                 dicTaxVat[key]['tax_vatSum'] = 0
             for keyOrder in dicMonth.keys():
                 self.writeLog('orderstat3 (keyOrder) = ' + `keyOrder`)
-                for oneOrder in dicMonth[keyOrder]:
-                    dicOrder['orderid'] = oneOrder['li_orderid']
-                    liPositions = self.xmlrpc_getStandardInvoice(dicOrder, dicUser)
-                    for position in liPositions:
-                        if dicTaxVat.has_key(position['MWST_ID']):
-                            dicTaxVat[position['MWST_ID']]['sum_price_netto'] += position['end_price_netto'] * position['amount']
-                            dicTaxVat[position['MWST_ID']]['tax_vatSum'] += position['end_price_netto'] * position['amount'] * position['MWST_VALUE'] /100
-                            dicTaxVat[position['MWST_ID']]['z1'] = oneOrder['z1']
+                if dicMonth[keyOrder] not in ['ERROR']:
+                    for oneOrder in dicMonth[keyOrder]:
+                        if oneOrder not in ['ERROR'] :
+                            print dicMonth
+                            print dicOrder
+                            print oneOrder
+                            
+                            dicOrder['orderid'] = oneOrder['li_orderid']
+                            liPositions = self.xmlrpc_getStandardInvoice(dicOrder, dicUser)
+                            for position in liPositions:
+                                if dicTaxVat.has_key(position['MWST_ID']):
+                                    dicTaxVat[position['MWST_ID']]['sum_price_netto'] += position['end_price_netto'] * position['amount']
+                                    dicTaxVat[position['MWST_ID']]['tax_vatSum'] += position['end_price_netto'] * position['amount'] * position['MWST_VALUE'] /100
+                                    dicTaxVat[position['MWST_ID']]['z1'] = oneOrder['z1']
             self.writeLog('dicTaxVat = ' + `dicTaxVat`) 
             print 'complete = ',  `dicTaxVat`
             for key in dicTaxVat.keys():

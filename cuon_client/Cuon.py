@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 23 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 24 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -482,6 +482,7 @@ class MainWindow(windows):
                 print 'Ext.GPL =', liExtGpl
                 
                 for newProgram in liExtGpl:
+                    print newProgram
                     mi1 = self.addMenuItem(self.getWidget(newProgram['MenuItem']['Main']),newProgram['MenuItem']['Sub'])
                     try:
                         print 'new Item = ', `mi1`
@@ -798,6 +799,7 @@ class MainWindow(windows):
             
     def on_ext4_activate(self, event):
         print 'ext4 menu activated !!!!!'
+        print self.extMenucommand['ext4']
         ext4 = eval(self.extMenucommand['ext4']) 
         try:
             ext4.start()
