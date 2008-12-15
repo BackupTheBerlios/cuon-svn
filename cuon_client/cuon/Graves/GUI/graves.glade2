@@ -272,7 +272,7 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="herbst_(f5)1">
+	    <widget class="GtkMenuItem" id="herbst_f51">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Herbst</property>
 	      <property name="use_underline">True</property>
@@ -284,7 +284,7 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Gedenktage</property>
 	      <property name="use_underline">True</property>
-	      <signal name="activate" handler="on_gedenktage_(f6)2_activate" last_modification_time="Tue, 11 Dec 2007 08:43:10 GMT"/>
+	      <signal name="activate" handler="on_gedenktage_f62_activate" last_modification_time="Mon, 15 Dec 2008 18:03:10 GMT"/>
 	    </widget>
 	  </child>
 
@@ -293,7 +293,7 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Winter</property>
 	      <property name="use_underline">True</property>
-	      <signal name="activate" handler="on_winter_(f7)2_activate" last_modification_time="Tue, 11 Dec 2007 08:41:32 GMT"/>
+	      <signal name="activate" handler="on_winter_f72_activate" last_modification_time="Mon, 15 Dec 2008 18:03:10 GMT"/>
 	    </widget>
 	  </child>
 
@@ -1163,7 +1163,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="entry9">
+			    <widget class="GtkEntry" id="ePosNumber">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>

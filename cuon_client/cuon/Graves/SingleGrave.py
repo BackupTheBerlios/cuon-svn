@@ -40,24 +40,6 @@ class SingleGrave(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
-    def getAddress(self, id):
-        dicRecords = self.load(id)
-        liAddress = []
-        if dicRecords:
-            dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
-            liAddress.append(dicRecord['firstname'])
-            liAddress.append(dicRecord['street'])
-            liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
-        if not liAddress:
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            liAddress.append(' ')
-            
-        return liAddress
-
+    
         
         

@@ -4221,7 +4221,66 @@
       <default />
       <comment />
     </field>
-    
+    <field>
+      <name>letter_phrase_2</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>155</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>my_sign_1</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>155</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>signature_1</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>5000</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>signature_2</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>5000</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>signature_graphic_1</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>signature_graphic_2</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: staff_fee-->
   <table>

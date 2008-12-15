@@ -45,19 +45,19 @@ class graveswindow(chooseWindows):
         self.singleGrave = SingleGrave.SingleGrave(allTables)
 
     
-        self.loadGlade('graves.xml')
-        self.win1 = self.getWidget('GravesMainwindow')
+        self.loadGlade('graves.xml', 'GraveMainwindow')
+
         self.setStatusBar()
 
 
-        self.EntriesAddresses = 'addresses.xml'
+        self.EntriesGraves = 'graves.xml'
         
-        self.loadEntries(self.EntriesAddresses)
+        self.loadEntries(self.EntriesGraves)
         
-        self.singleGrave.setEntries(self.getDataEntries('addresses.xml') )
+        self.singleGrave.setEntries(self.getDataEntries(self.EntriesGraves) )
         self.singleGrave.setGladeXml(self.xml)
-        self.singleGrave.setTreeFields( ['lastname', 'firstname','city'] )
-        self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleGrave.setTreeFields( ['lastname', 'firstname'] )
+        self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleGrave.setTreeOrder('lastname, firstname')
         self.singleGrave.setListHeader([_('Lastname'), _('Firstname'), _('City')])
         self.singleGrave.setTree(self.xml.get_widget('tree1') )
@@ -73,29 +73,36 @@ class graveswindow(chooseWindows):
         self.initMenuItems()
 
         # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','mi_address1')
+        self.addEnabledMenuItems('tabs','grave1')
   
 
                
         # seperate Menus
-        self.addEnabledMenuItems('address','mi_address1')
+        self.addEnabledMenuItems('grave','grave1')
           
 
-        # enabledMenues for Address
-        self.addEnabledMenuItems('editAddress','mi_new1')
-        self.addEnabledMenuItems('editAddress','mi_clear1')
-        self.addEnabledMenuItems('editAddress','mi_print1')
-        self.addEnabledMenuItems('editAddress','mi_edit1')
+        # enabledMenues for grave
+        self.addEnabledMenuItems('editGrave','new1')
+        self.addEnabledMenuItems('editGrave','clear1')
+        self.addEnabledMenuItems('editGrave','print1')
+        self.addEnabledMenuItems('editGrave','edit1')
 
 
     
         
+       
 
         # tabs from notebook
-        self.tabClients = 0
-    
         
+        self.tabGrave = 0
+        print self.tabGrave
         
+        try:
+            self.win1.add_accel_group(self.accel_group)
+        except Exception,  params:
+            print Exception,  params
+            
+
 
         self.tabChanged()
         
@@ -112,23 +119,25 @@ class graveswindow(chooseWindows):
     #Menu Addressimport cuon.Login.User
   
     def on_save1_activate(self, event):
-        self.out( "save addresses v2")
+        self.out( "save grave v2")
         self.singleGrave.save()
-        self.setEntriesEditable(self.EntriesAddresses, FALSE)
+        self.setEntriesEditable(self.EntriesGraves, FALSE)
         self.tabChanged()
         
     def on_new1_activate(self, event):
-        self.out( "new addresses v2")
+        self.out( "new grave v2")
         self.singleGrave.newRecord()
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        print self.singleGrave.ID
+        
+        self.setEntriesEditable(self.EntriesGraves, TRUE)
 
     def on_edit1_activate(self, event):
-        self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.out( "edit grave v2")
+        self.setEntriesEditable(self.EntriesGraves, TRUE)
 
 
     def on_delete1_activate(self, event):
-        self.out( "delete addresses v2")
+        self.out( "delete grave v2")
         self.singleGrave.deleteRecord()
 
     # Menu misc
@@ -138,12 +147,12 @@ class graveswindow(chooseWindows):
         self.singleMisc.addressId = self.singleGrave.ID
         
         self.singleMisc.save()
-        self.setEntriesEditable(self.EntriesAddressesMisc, FALSE)
+        self.setEntriesEditable(self.EntriesGravesMisc, FALSE)
         self.tabChanged()
 
     def on_MiscEdit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesAddressesMisc, TRUE)
+        self.setEntriesEditable(self.EntriesGravesMisc, TRUE)
 
   #Menu Partner
         
@@ -288,7 +297,7 @@ class graveswindow(chooseWindows):
         
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGrave:
             print '############### Address choose ID ###################'
             self.setChooseValue(self.singleGrave.ID)
             self.closeWindow()
@@ -317,9 +326,9 @@ class graveswindow(chooseWindows):
 
     def refreshTree(self):
         self.singleGrave.disconnectTree()
-        self.singlePartner.disconnectTree()
+        #self.singlePartner.disconnectTree()
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
         elif self.tabOption == self.tabMisc:
@@ -342,13 +351,13 @@ class graveswindow(chooseWindows):
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
-        if self.tabOption == self.tabAddress:
+        if self.tabOption == self.tabGrave:
             #Address
             self.disableMenuItem('tabs')
-            self.enableMenuItem('address')
+            self.enableMenuItem('grave')
 
             self.actualEntries = self.singleGrave.getEntries()
-            self.editAction = 'editAddress'
+            self.editAction = 'editGrave'
             self.setStatusbarText([''])
           
             self.setTreeVisible(TRUE)
