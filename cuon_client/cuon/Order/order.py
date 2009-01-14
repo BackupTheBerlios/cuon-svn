@@ -376,8 +376,35 @@ class orderwindow(chooseWindows):
         dicOrder = {}
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
         dicOrder['deliveryNumber'] =  self.singleOrderSupply.getDeliveryNumber(self.singleOrder.ID)        
-        invoice = cuon.Order.standard_delivery_note.standard_delivery_note(dicOrder)
-               
+        #invoice = cuon.Order.standard_delivery_note.standard_delivery_note(dicOrder)
+              
+             
+        
+        dicOrder['orderid'] = self.singleOrder.ID
+        
+        print ' start delivery printing 2'
+        deliveryNumber = self.singleOrder.getSupplyNumber() 
+        dicOrder['invoiceNumber'] =  invoiceNumber        
+        print ' start delievery printing 3'
+        
+        print dicOrder
+        
+        Pdf = self.rpc.callRP('Report.server_order_supply_document', dicOrder, self.dicUser)
+        fname = self.showPdf(Pdf, self.dicUser,'SUPPLY')
+#        ok = self.rpc.callRP('Finances.createTicketFromInvoice',invoiceNumber,self.dicUser)
+#        # insert invoice into dms 
+#        self.documentTools.importDocument(self.singleDMS,self.dicUser,fname)
+#        self.singleDMS.ModulNumber = self.MN['Order']
+#        self.singleDMS.sep_info_1 = self.singleOrder.ID    
+#        self.singleDMS.newRecord()
+#        self.singleDMS.newDate = self.getActualDateTime()['date']
+#        self.singleDMS.newTitle = _('invoice') + ' ' + `invoiceNumber`
+#        print self.singleDMS.newDate
+#        self.singleDMS.newCategory = _('payments')
+#        self.singleDMS.Rights = 'INVOICE'
+#        
+#        self.singleDMS.save(['document_image'])
+             
     def on_print_pickup_note1_activate(self, event):
         print 'pickup note'
         

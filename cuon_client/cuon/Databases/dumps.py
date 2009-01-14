@@ -142,16 +142,19 @@ class dumps:
         
         s = self.doDecode(Pdf)
         fname = self.saveTmpData(s, 'pdf')
+        print "fname = ",  fname
         #print 'PDF-App = ', dicUser['prefApps']['PDF']
         if cDoc == 'PDF':
             sOutput = os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
         elif cDoc == 'SUPPLY':
+            print "Supply using",  dicUser['prefApps']['printSupply'] 
             sOutput = os.system(dicUser['prefApps']['printSupply'] + ' ' + fname + ' &')
         elif cDoc == 'PICKUP':
             sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')
         elif cDoc == 'INCOMING':
             sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')    
         elif cDoc == 'INVOICE':
+            print "Invoice using",  dicUser['prefApps']['printInvoice'] 
             sOutput = os.system(dicUser['prefApps']['printInvoice'] + ' ' + fname + ' &')
         elif cDoc == 'PRINTNEWSLETTER':
             sOutput = os.system(dicUser['prefApps']['printNewsletter'] + ' ' + fname + ' &')

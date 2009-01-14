@@ -22,7 +22,7 @@ class standard_invoice:
     def __init__(self, dicOrder):
         
         
-        rep = cuon.PDF.report_order_standard_invoice.report_order_standard_invoice()
+        #rep = cuon.PDF.report_order_standard_invoice.report_order_standard_invoice()
         self.dicReportData =  rep.dicReportData
         self.dicOrder = dicOrder
         self.openDB()

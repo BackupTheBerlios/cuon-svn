@@ -57,6 +57,17 @@ class SingleOrder(SingleData):
         return self.proposalNumber
 
 
+    # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    def getSupplyNumber(self):
+        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
+        print 'Invoice-Number' + `self.invoiceNumber`
+        return self.invoiceNumber
+        
+    def getPickupNumber(self):
+        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
+        print 'Invoice-Number' + `self.invoiceNumber`
+        return self.invoiceNumber
+
 
     def getOrderNumber(self, id):
         ordernr = 'NULL'

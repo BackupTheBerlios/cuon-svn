@@ -409,6 +409,11 @@
       <Entry-File>graves.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_graves.xml</Entry-FileValue>
     </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>graveyard.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_graveyard.xml</Entry-FileValue>
+    </Entries>
 </Entry_Init_Files>
   
   <Glade_Init_Files>
@@ -618,6 +623,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>graves.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/graves.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>graveyard.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/graveyard.glade2</Glade-FileValue>
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
