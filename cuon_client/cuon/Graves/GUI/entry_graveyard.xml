@@ -4,70 +4,38 @@
     <table_name>grave</table_name>
 
     <entry>
-      <name>eLastname</name>
+      <name>eName</name>
       <type>textline</type>
-      <size>150</size>
+      <size>50</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>lastname</sql_field>
+      <sql_field>shortname</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>eFirstname</name>
+      <name>eDesignation</name>
       <type>textline</type>
       <size>150</size>
       <verify_type>string</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>firstname</sql_field>
+      <sql_field>designation</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>ePosNumber</name>
+      <name>eAddressID</name>
       <type>textline</type>
       <size>20</size>
       <verify_type>int</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>pos_number</sql_field>
+      <sql_field>addressid</sql_field>
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-    <entry>
-      <name>eDetachment</name>
-      <type>textline</type>
-      <size>150</size>
-      <verify_type>string</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>detachment</sql_field>
-      <duty>YES</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-    <entry>
-      <name>eContractBegin</name>
-      <type>textline</type>
-      <size>150</size>
-      <verify_type>date</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>contract_begins_at</sql_field>
-      <duty>YES</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-     <entry>
-      <name>eContractEnd</name>
-      <type>textline</type>
-      <size>150</size>
-      <verify_type>date</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>contract_ends_at</sql_field>
-      <duty>YES</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
+    
       </table>
 </entries_for_table>

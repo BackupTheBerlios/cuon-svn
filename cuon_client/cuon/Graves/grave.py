@@ -33,7 +33,7 @@ import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import mx.DateTime
-
+import graveyard
 
 class graveswindow(chooseWindows):
 
@@ -41,7 +41,7 @@ class graveswindow(chooseWindows):
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
-       
+        self.allTables = allTables
         self.singleGrave = SingleGrave.SingleGrave(allTables)
 
     
@@ -312,7 +312,18 @@ class graveswindow(chooseWindows):
             self.closeWindow()
  
               
+    def on_bSearchGraveyard_clicked(self,  event):
+        adr = graveyard.graveyardMainwindow(self.allTables)
+        adr.setChooseEntry('chooseGraveyard', self.getWidget( 'eGraveyardID'))
 
+    # signals from entry eAddressNumber
+    
+    def on_eGraveyardID_changed(self, event):
+        print 'eAdrnbr changed'
+        iAdrNumber = self.getChangedValue('eGraveyardID')
+        eAdrField = self.getWidget('eGraveyardShortname')
+        #iAdr = self.singleAddress.getAddress(iAdrNumber)
+        #self.setTextbuffer(eAdrField,liAdr) 
         
     # search button
     def on_bSearch_clicked(self, event):

@@ -115,6 +115,10 @@ class windows(rawWindow, MyXML, messages):
         self.MN['Calendar'] = 28000
         self.MN['Think'] = 29000
         
+        self.MN['Grave'] = 40000
+        self.MN['Graveyard'] = 41000
+        
+        
         
         self.OrderStatus = {}
         self.OrderStatus['ProposalStart'] = 300

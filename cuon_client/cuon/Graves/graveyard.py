@@ -33,12 +33,12 @@ from cuon.Windows.chooseWindows  import chooseWindows
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
 
-import SingleMaterialgroups
-import SingleMaterialgroupsAccount
+import SingleGraveyard
+
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceVat
 
-class graveyardwindow(chooseWindows):
+class graveyardMainwindow(chooseWindows):
 
     
     def __init__(self, allTables, addrid=0, partnerid=0):
@@ -48,19 +48,19 @@ class graveyardwindow(chooseWindows):
         self.connectSchedulTreeId = None
         
         #print 'time 1 = ', time.localtime()
-        self.ModulNumber = self.MN['MaterialGroups']
-        self.singleGroup = SingleMaterialgroups.SingleMaterialgroups(allTables)
-        self.singleGroupAccounts = SingleMaterialgroupsAccount.SingleMaterialgroupsAccount(allTables)
+        self.ModulNumber = self.MN['Graveyard']
+        self.singleGraveyard = SingleGraveyard.SingleGraveyard(allTables)
+        #self.singleGraveyardAccounts = SingleMaterialgroupsAccount.SingleMaterialgroupsAccount(allTables)
         self.singlePrefsFinanceVat = cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
         
         
-        # self.singleGroup.loadTable()
+        # self.singleGraveyard.loadTable()
 
         # self.xml = gtk.glade.XML()
     
-        self.loadGlade('materialGroup.xml', 'MaterialGroupMainwindow')
+        self.loadGlade('graveyard.xml', 'graveyardMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
         #self.win1.maximize()
         
@@ -68,37 +68,24 @@ class graveyardwindow(chooseWindows):
         #print 'time 3 = ', time.localtime()
 
 
-        self.EntriesGroups = 'material.xml'
-        self.EntriesAccounts = 'material_group_accounts.xml'
+        self.EntriesGraveyard = 'graveyard.xml'
         
         #print 'time 4 = ', time.localtime()
         
-        self.loadEntries(self.EntriesGroups)
+        self.loadEntries(self.EntriesGraveyard)
         
-        self.singleGroup.setEntries(self.getDataEntries(self.EntriesGroups) )
-        self.singleGroup.setGladeXml(self.xml)
-        self.singleGroup.setTreeFields( ['name', 'designation'] )
-        self.singleGroup.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleGroup.setTreeOrder('name, designation')
-        self.singleGroup.setListHeader([_('Name'), _('Designation')])
+        self.singleGraveyard.setEntries(self.getDataEntries(self.EntriesGraveyard) )
+        self.singleGraveyard.setGladeXml(self.xml)
+        self.singleGraveyard.setTreeFields( ['shortname', 'designation'] )
+        self.singleGraveyard.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleGraveyard.setTreeOrder('sortname, designation')
+        self.singleGraveyard.setListHeader([_('Name'), _('Designation')])
             
-        self.singleGroup.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveyard.setTree(self.xml.get_widget('tree1') )
         #print 'time 5 = ', time.localtime()
         
       
-        #Groupaccounts
         
-        self.loadEntries(self.EntriesAccounts )
-        self.singleGroupAccounts.setEntries(self.getDataEntries(self.EntriesAccounts) )
-        self.singleGroupAccounts.setGladeXml(self.xml)
-        self.singleGroupAccounts.setTreeFields([])
-        self.singleGroupAccounts.setTreeOrder('id')
-        
-        self.singleGroupAccounts.sWhere  ='where material_group_id = ' + `self.singleGroup.ID`
-        self.singleGroupAccounts.setTree(self.xml.get_widget('tree1') )
-        # self.singleMisc.setStore(gtk.ListStore())
-        # set values for comboBox
-
         
         
 
@@ -112,8 +99,7 @@ class graveyardwindow(chooseWindows):
         self.initMenuItems()
 
         # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','mi_address1')
-        self.addEnabledMenuItems('tabs','mi_notes1')
+        self.addEnabledMenuItems('tabs','graveyard1')
                
         # seperate Menus
         self.addEnabledMenuItems('address','mi_address1')
@@ -158,8 +144,8 @@ class graveyardwindow(chooseWindows):
     def on_save1_activate(self, event):
         self.out( "save material_group v2")
         self.doEdit = self.noEdit
-        self.singleGroup.save()
-        self.setEntriesEditable(self.EntriesGroups, FALSE)
+        self.singleGraveyard.save()
+        self.setEntriesEditable(self.EntriesGraveyard, FALSE)
         self.endEdit()
         self.tabChanged()
         
@@ -167,8 +153,8 @@ class graveyardwindow(chooseWindows):
         self.out( "new materialgroup v2")
         self.doEdit = self.tabGroup
 
-        self.singleGroup.newRecord()
-        self.setEntriesEditable(self.EntriesGroups, TRUE)
+        self.singleGraveyard.newRecord()
+        self.setEntriesEditable(self.EntriesGraveyard, TRUE)
         
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
@@ -177,26 +163,26 @@ class graveyardwindow(chooseWindows):
         self.out( "edit material_group v2")
         self.doEdit = self.tabGroup
         
-        self.setEntriesEditable(self.EntriesGroups, TRUE)
+        self.setEntriesEditable(self.EntriesGraveyard, TRUE)
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
     def on_print1_activate(self, event):
         self.out( "print material_group v2")
-        p = printAddress.printAddress(self.singleGroup.getFirstRecord() )
+        p = printAddress.printAddress(self.singleGraveyard.getFirstRecord() )
         
     def on_delete1_activate(self, event):
         self.out( "delete material_group v2")
-        self.singleGroup.deleteRecord()
+        self.singleGraveyard.deleteRecord()
 
     # Menu Notes
     def on_NotesSave_activate(self, event):
         
         self.out( "save Notes addresses v2")
         self.doEdit = self.noEdit
-        self.singleGroupAccounts.addressId = self.singleGroup.ID
+        self.singleGraveyardAccounts.addressId = self.singleGraveyard.ID
         
-        self.singleGroupAccounts.save()
+        self.singleGraveyardAccounts.save()
         self.setEntriesEditable(self.EntriesNotes, FALSE)
         self.tabChanged()
 
@@ -236,8 +222,8 @@ class graveyardwindow(chooseWindows):
  
     def on_chooseMaterialgroup_activate(self, event):
         # choose Article from other Modul
-        self.setChooseValue(self.singleGroup.ID)
-        print 'Group-ID = ' + `self.singleGroup.ID`
+        self.setChooseValue(self.singleGraveyard.ID)
+        print 'Group-ID = ' + `self.singleGraveyard.ID`
         self.closeWindow()
   
     def on_tree1_row_activated(self, event, data1, data2):
@@ -245,17 +231,17 @@ class graveyardwindow(chooseWindows):
         self.activateClick('chooseMaterialgroup', event)
     
     def refreshTree(self):
-        self.singleGroup.disconnectTree()
-        self.singleGroupAccounts.disconnectTree()
+        self.singleGraveyard.disconnectTree()
+        self.singleGraveyardAccounts.disconnectTree()
         
         if self.tabOption == self.tabGroup:
-            self.singleGroup.connectTree()
-            self.singleGroup.refreshTree()
+            self.singleGraveyard.connectTree()
+            self.singleGraveyard.refreshTree()
             
         
         elif self.tabOption == self.tabAccount:
-            self.singleGroupAccounts.sWhere  ='where address_id = ' + `int(self.singleGroup.ID)`
-            self.singleGroupAccounts.fillEntries(self.singleGroupAccounts.findSingleId())
+            self.singleGraveyardAccounts.sWhere  ='where address_id = ' + `int(self.singleGraveyard.ID)`
+            self.singleGraveyardAccounts.fillEntries(self.singleGraveyardAccounts.findSingleId())
 
             if self.InitForms:
                 # set popdown for forms
@@ -283,7 +269,7 @@ class graveyardwindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('address')
 
-            self.actualEntries = self.singleGroup.getEntries()
+            self.actualEntries = self.singleGraveyard.getEntries()
             self.editAction = 'editMaterialGroup'
             self.setStatusbarText([''])
           
@@ -300,7 +286,7 @@ class graveyardwindow(chooseWindows):
            
             self.editAction = 'editBank'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleGroup.sStatus])
+            self.setStatusbarText([self.singleGraveyard.sStatus])
 
 
         elif self.tabOption == self.tabMisc:
@@ -310,7 +296,7 @@ class graveyardwindow(chooseWindows):
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleGroup.sStatus])
+            self.setStatusbarText([self.singleGraveyard.sStatus])
 
 
 
@@ -323,7 +309,7 @@ class graveyardwindow(chooseWindows):
             self.out( 'Seite 1')
             self.editAction = 'editPartner'
             self.setTreeVisible(True)
-            self.setStatusbarText([self.singleGroup.sStatus])
+            self.setStatusbarText([self.singleGraveyard.sStatus])
 
             
         elif self.tabOption == self.tabSchedul:
@@ -344,7 +330,7 @@ class graveyardwindow(chooseWindows):
             self.enableMenuItem('notes')
             self.editAction = 'editNotes'
             self.setTreeVisible(False)
-            self.setStatusbarText([self.singleGroup.sStatus])
+            self.setStatusbarText([self.singleGraveyard.sStatus])
 
         # refresh the Tree
         self.refreshTree()

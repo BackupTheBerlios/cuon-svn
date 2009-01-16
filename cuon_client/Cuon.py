@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 28 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 45, 'Rev': 29 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -500,10 +500,11 @@ class MainWindow(windows):
                             newImports = newProgram['Imports']
                             for nI in newImports:
                                 try:
+                                    print 'import ext Module 1', nI
                                     exec('import ' + nI)
-                                    print 'import', nI
-                                except:
-                                    pass
+                                    print 'import extendet module 2', nI
+                                except Exception, params:
+                                    print Exception, params
     
                             if newProgram.has_key('MenuStart'):
                                 print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
