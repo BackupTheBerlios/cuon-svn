@@ -963,7 +963,7 @@
   
   <table>
     <nameOfTable>graveyard</nameOfTable>
-    <specials>inherits (t_address);</specials>
+    <specials>inherits (t_standard);</specials>
     <x>152</x>
     <y>115</y>
 

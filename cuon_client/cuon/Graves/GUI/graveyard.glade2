@@ -3,7 +3,7 @@
 
 <glade-interface>
 
-<widget class="GtkWindow" id="GraveyardMainwindow">
+<widget class="GtkWindow" id="graveyardMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
   <property name="visible">True</property>
   <property name="title" translatable="yes">Graveyards</property>
@@ -81,11 +81,11 @@
 		<widget class="GtkMenu" id="edit_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="chooseMaterialgroup">
+		    <widget class="GtkMenuItem" id="chooseGraveyard">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">choose</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_chooseMaterialgroup_activate" last_modification_time="Tue, 17 Apr 2007 13:07:24 GMT"/>
+		      <signal name="activate" handler="on_chooseGraveyard_activate" last_modification_time="Thu, 22 Jan 2009 18:18:43 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -607,7 +607,7 @@
 		      <property name="has_frame">True</property>
 		      <property name="invisible_char">*</property>
 		      <property name="activates_default">False</property>
-		      <signal name="changed" handler="on_eTaxVatID_changed" last_modification_time="Tue, 17 Apr 2007 13:21:07 GMT"/>
+		      <signal name="changed" handler="on_eAddressID_changed" last_modification_time="Thu, 22 Jan 2009 18:19:44 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -622,6 +622,7 @@
 		      <property name="can_focus">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bSearchAddress_clicked" last_modification_time="Thu, 22 Jan 2009 18:02:35 GMT"/>
 
 		      <child>
 			<widget class="GtkAlignment" id="alignment3">
