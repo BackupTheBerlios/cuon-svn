@@ -804,13 +804,15 @@ class Order(xmlrpc.XMLRPC, basics):
                 else:
                     #print "z1 = ",  z1
                     sSql += " (select sum(po.amount * po.price)   from list_of_invoices as li, orderposition as po, orderbook as ob "
-                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
+                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]
+                    sSql += "  and  date_part('year', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]
                     sSql += " and li.order_number = ob.id and po.orderid = li.order_number "
                     sSql += self.getWhere('', dicUser, 2,'li.')
                     sSql += " ) as " + 'order_global_' + vSql['id'] + '_count_' + `z1` +", "   
 
                     sSql += "( select sum(inpayment) from in_payment "
-                    sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)          
+                    sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]  
+                    sSql += " and date_part('year',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]  
                     sSql += self.getWhere('', dicUser, 2)         
                     sSql += " ) as " + 'order_global_incoming_' + vSql['id'] + '_count_' + `z1` +", " 
         sSql = sSql[0:len(sSql)-2]
@@ -935,14 +937,16 @@ class Order(xmlrpc.XMLRPC, basics):
                             
                             else:
                                 sSql += " (select sum(po.amount * po.price)   from list_of_invoices as li, orderposition as po, orderbook as ob, address as ad  "
-                                sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
+                                sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]
+                                sSql += "  and  date_part('year', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]
                                 sSql += " and li.order_number = ob.id and po.orderid = li.order_number "
                                 sSql += " and ad.id = ob.addressnumber and ad.caller_id = " + `caller` + " "
                                 sSql += self.getWhere('', dicUser, 2,'li.')
                                 sSql += " ) as " + 'order_caller_'+caller +'_' + vSql['id'] + '_count_' + `z1` +", "   
             
                                 sSql += "( select sum(inpayment) from in_payment , orderbook as ob, address as ad "
-                                sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)          
+                                sSql += " where date_part('" + vSql['sql'] +"',  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)  [0]
+                                sSql += " and date_part('year' ,  date_of_paid) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]
                                 sSql += " and in_payment.order_id = ob.id  "
                                 sSql += " and ad.id = ob.addressnumber and ad.caller_id = " + `caller` + " "
                                 
@@ -951,6 +955,10 @@ class Order(xmlrpc.XMLRPC, basics):
                                 print "sSql 2 = ",  sSql
                                 
                 sSql = sSql[0:len(sSql)-2]
+                print "Caller = ",  caller
+                if caller == 4:
+                    print sSql
+                    
                 #print "len sql = ",  len(sSql)
                 self.writeLog(sSql)
                 tmpResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
@@ -1014,8 +1022,8 @@ class Order(xmlrpc.XMLRPC, basics):
                     tmpResult = {}
                     sSql = "select li.date_of_invoice as li_date,  " + `z1` + " as z1,  "
                     sSql += "li.order_number  as li_orderid from list_of_invoices  as li "
-                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)   
-                    sSql += " and date_part('year', li.date_of_invoice) = 2008 "
+                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]  
+                    sSql += " and date_part('year', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]
                     sSql += self.getWhere('', dicUser, 2,'li.')
                     
                     self.writeLog('start tax vat stats inner cycle ' + `z1`)

@@ -554,7 +554,7 @@ class basics(xmlrpc.XMLRPC):
                 
             return newTime.tm_year - beforeYears       
             
-    def getNow(self, vSql, z1):
+    def getNow(self, vSql, z1,  year=2009):
         newTime = time.localtime()
         datepart = vSql['id']
         now = 0
@@ -563,6 +563,8 @@ class basics(xmlrpc.XMLRPC):
             now = newTime.tm_mon - z1
             if now < 1:
                 now += 12
+                year -= 1
+                
         elif datepart == 'quarter' :
             if newTime.tm_mon in [1, 2, 3]:
                 now = 1
@@ -576,6 +578,7 @@ class basics(xmlrpc.XMLRPC):
             
             if now < 1:
                 now += 4
+                year -= 1
                 
         elif datepart == 'week' :
            now =  "  date_part('" + vSql['sql'] + "', now()) - " + `z1`
@@ -587,7 +590,7 @@ class basics(xmlrpc.XMLRPC):
         if isinstance(now, types.IntType):
             now = `now`
             
-        return now
+        return now,  `year`
         
         
     def getActualDateTime(self):

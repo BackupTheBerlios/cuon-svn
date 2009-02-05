@@ -630,7 +630,8 @@ class Address(xmlrpc.XMLRPC, basics):
                             else:
                                 sSql += "(select  count(ps.id)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
                                 #sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+"  date_part('" + vSql['sql'] + "', now()) - " + `z1`
-                                sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+" " + self.getNow(vSql, z1)
+                                sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic']+" " + self.getNow(vSql, z1)[0]
+                                                                
                                 sSql += " and date_part('year', ps.insert_time) =  " + `self.getBeforeYears(vSql['id'],z1)`
                                 if WITHOUT_ID:
                                     liWithoutId = WITHOUT_ID.split(',')
@@ -644,7 +645,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                 if liSchedulProcessStatus:
                                     for sps in liSchedulProcessStatus:
                                         sSql += "(select  count(process_status)  from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.user_id = '" + caller_name + "' and ps.partnerid = p.id and  ps.process_status != 999 "
-                                        sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic'] + " " + self.getNow(vSql,  z1)
+                                        sSql +=  " and  date_part('" + vSql['sql'] +"', ps.insert_time) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]
                                         sSql += " and date_part('year', ps.insert_time) = "  + `self.getBeforeYears(vSql['id'],z1)`
                                         if WITHOUT_ID:
                                             liWithoutId = WITHOUT_ID.split(',')
@@ -792,7 +793,7 @@ class Address(xmlrpc.XMLRPC, basics):
                             
                             else:
                                 sSql += "(select  count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.schedul_staff_id = '" + rep + "' and ps.partnerid = p.id and  ps.process_status != 999 "
-                                sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)
+                                sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)[0]
                                 sSql += " and date_part('year', to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) = "  + `self.getBeforeYears(vSql['id'],z1)`
                                 if WITHOUT_ID:
                                     liWithoutId = WITHOUT_ID.split(',')
@@ -804,7 +805,7 @@ class Address(xmlrpc.XMLRPC, basics):
                                 if liSchedulProcessStatus:
                                     for sps in liSchedulProcessStatus:
                                         sSql += "(select  count(ps.id) from partner_schedul as ps, address as a, partner as p where a.id = p.addressid and ps.schedul_staff_id = '" + rep + "' and ps.partnerid = p.id and  ps.process_status != 999 "
-                                        sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)
+                                        sSql +=  " and  date_part('" + vSql['sql'] +"',to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) " + vSql['logic'] +" " + self.getNow(vSql, z1)[0]
                                         sSql += " and date_part('year', to_date(ps.schedul_date , '" + dicUser['SQLDateFormat'] +"') ) = "  + `self.getBeforeYears(vSql['id'],z1)`
                                          
                                         if WITHOUT_ID:

@@ -1086,8 +1086,158 @@
       <default />
       <comment />
     </field>
-    
     </table>
+      <table>
+    <nameOfTable>t_grave_work</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+
+    <field>
+      <name>grave_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>service_count</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>service_designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>service_price</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>service_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>service_notes</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>60000</size>
+      <default />
+      <comment />
+    </field>
+    </table>
+    
+     <table>
+    <nameOfTable>grave_work_spring</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_summer</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_autumn</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_winter</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_holiday</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_year</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+        <table>
+    <nameOfTable>grave_work_single</nameOfTable>
+    <specials>inherits (t_grave_work);</specials>
+    <x>152</x>
+    <y>115</y>
+      </table>
+
+      <table>
+    <nameOfTable>grave_work_maintenance</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    
+      
+  <field>
+      <name>grave_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+          </field>
+          
+          <field>
+      <name>grave_service_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+          </field>
+          <field>
+      <name>service_price</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+          </field>
+          
+     </table>
   <foreign_key>
         <foreign_key_name>HibernationAddressID</foreign_key_name> 
         <foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 

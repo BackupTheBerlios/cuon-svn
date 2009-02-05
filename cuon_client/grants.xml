@@ -198,6 +198,14 @@
       <this_group>cuon_all</this_group>
       <comment></comment>
     </grant>
+     <grant>
+      <nameOfGrant>cuon_all_rights_of_graves </nameOfGrant>
+      <this_grants>select, insert,  update, delete</this_grants>
+      <this_tables>graves, graves_id,graveyard,graveyard_id</this_tables>
+      <this_group>cuon_all</this_group>
+      <comment></comment>
+    </grant>
+     
   </setGrants>  
     
   </grants>
