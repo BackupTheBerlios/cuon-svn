@@ -2,8 +2,8 @@
     <table>
       <table_name>staff</table_name>
   <entry>
-	<name>eStaffAddress</name>
-	<type>textline</type>
+    <name>eStaffAddress</name>
+    <type>textline</type>
                <size>30</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -13,8 +13,8 @@
 
       </entry>
   <entry>
-	<name>eStaffTitular</name>
-	<type>textline</type>
+    <name>eStaffTitular</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -24,8 +24,8 @@
 
       </entry> 
      <entry>
-	<name>eStaffLastname</name>
-	<type>textline</type>
+    <name>eStaffLastname</name>
+    <type>textline</type>
                 <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -36,8 +36,8 @@
       </entry>
  
       <entry>
-	<name>eStaffFirstname</name>
-	<type>textline</type>
+    <name>eStaffFirstname</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -49,8 +49,8 @@
 
 
     <entry>
-	<name>eStaffStreet</name>
-	<type>textline</type>
+    <name>eStaffStreet</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -60,8 +60,8 @@
 
       </entry>
     <entry>
-	<name>eStaffCountry</name>
-	<type>textline</type>
+    <name>eStaffCountry</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -71,8 +71,8 @@
 
       </entry>
   <entry>
-	<name>eStaffState</name>
-	<type>textline</type>
+    <name>eStaffState</name>
+    <type>textline</type>
                <size>6</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -83,8 +83,8 @@
       </entry>
 
   <entry>
-	<name>eStaffZip</name>
-	<type>textline</type>
+    <name>eStaffZip</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -94,8 +94,8 @@
 
       </entry>
   <entry>
-	<name>eStaffCity</name>
-	<type>textline</type>
+    <name>eStaffCity</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -105,8 +105,8 @@
 
       </entry>
   <entry>
-	<name>eStaffPhone</name>
-	<type>textline</type>
+    <name>eStaffPhone</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -116,8 +116,8 @@
 
       </entry>
   <entry>
-	<name>eStaffFax</name>
-	<type>textline</type>
+    <name>eStaffFax</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -127,8 +127,8 @@
 
       </entry>
   <entry>
-	<name>eStaffPhone1</name>
-	<type>textline</type>
+    <name>eStaffPhone1</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -138,8 +138,8 @@
 
       </entry>
   <entry>
-	<name>eStaffPhone2</name>
-	<type>textline</type>
+    <name>eStaffPhone2</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -150,8 +150,8 @@
       </entry>
 
   <entry>
-	<name>eStaffEmail</name>
-	<type>textline</type>
+    <name>eStaffEmail</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -161,8 +161,8 @@
 
       </entry>
   <entry>
-	<name>eStaffFaxPrivate</name>
-	<type>textline</type>
+    <name>eStaffFaxPrivate</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -172,8 +172,8 @@
 
       </entry>
   <entry>
-	<name>eStaffHomepage</name>
-	<type>textline</type>
+    <name>eStaffHomepage</name>
+    <type>textline</type>
                <size>50</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -183,8 +183,8 @@
 
       </entry>
     <entry>
-	<name>eBirthday</name>
-	<type>textline</type>
+    <name>eBirthday</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>date</verify_type>
                 <create_sql>1</create_sql>
@@ -194,8 +194,8 @@
 
       </entry>
 <entry>
-	<name>eStaffNumber</name>
-	<type>textline</type>
+    <name>eStaffNumber</name>
+    <type>textline</type>
                <size>55</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -206,8 +206,8 @@
       </entry>
 
       <entry>
-	<name>eCuonUsername</name>
-	<type>textline</type>
+    <name>eCuonUsername</name>
+    <type>textline</type>
                <size>10</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -217,8 +217,8 @@
 
       </entry>
 <entry>
-	<name>eLetterPhrase1</name>
-	<type>textline</type>
+    <name>eLetterPhrase1</name>
+    <type>textline</type>
                <size>155</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -227,6 +227,18 @@
                 <fg_color>0</fg_color>
 
       </entry>
+      <entry>
+    <name>eLetterSign1</name>
+    <type>textline</type>
+               <size>155</size>
+                <verify_type>string</verify_type>
+                <create_sql>1</create_sql>
+                <sql_field>my_sign_1</sql_field>
+                <bg_color>0</bg_color>
+                <fg_color>0</fg_color>
+
+      </entry>
+
 
     </table>
 

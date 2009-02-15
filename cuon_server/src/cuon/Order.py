@@ -169,11 +169,11 @@ class Order(xmlrpc.XMLRPC, basics):
 #            if liResultTop and liResultTop not in ['NONE','ERROR']:
 #                top_id = liResultTop[0]['top_id']
 #            
-                
-        sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
-        liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
-        if liResultTop2 and liResultTop2 not in ['NONE','ERROR']:
-            liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
+        if liResult not in self.liSQL_ERRORS:
+            sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
+            liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
+            if liResultTop2 and liResultTop2 not in self.liSQL_ERRORS:
+                liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
         return liResult
         
         

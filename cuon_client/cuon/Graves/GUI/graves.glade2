@@ -2159,7 +2159,7 @@ TBF Dauergrabpflege</property>
 	  <child>
 	    <widget class="GtkLabel" id="label17">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Grab (F1)</property>
+	      <property name="label" translatable="yes">Grave (F1)</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2203,7 +2203,7 @@ TBF Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label95">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Pflegeart</property>
+			  <property name="label" translatable="yes">Type</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2243,11 +2243,9 @@ TBF Dauergrabpflege</property>
 		      <property name="spacing">0</property>
 
 		      <child>
-			<widget class="GtkComboBoxEntry" id="comboboxentry9">
+			<widget class="GtkComboBoxEntry" id="cbServiceType">
 			  <property name="visible">True</property>
-			  <property name="items" translatable="yes">keine Pflege (nur Pflanzung)
-Standardpflege
-Premiumpflege</property>
+			  <property name="items" translatable="yes"></property>
 			  <property name="add_tearoffs">False</property>
 			  <property name="has_frame">True</property>
 			  <property name="focus_on_click">True</property>
@@ -2316,13 +2314,13 @@ Premiumpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry10">
+			<widget class="GtkEntry" id="eArticleID">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes">Artikelname</property>
+			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">●</property>
 			  <property name="activates_default">False</property>
@@ -2336,7 +2334,7 @@ Premiumpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry11">
+			<widget class="GtkEntry" id="eArticleName">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2356,13 +2354,76 @@ Premiumpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkButton" id="button2">
+			<widget class="GtkButton" id="bChooseServiceArticle">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">auswählen</property>
-			  <property name="use_underline">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_bChooseServiceArticle_clicked" last_modification_time="Sun, 15 Feb 2009 19:06:11 GMT"/>
+
+			  <child>
+			    <widget class="GtkAlignment" id="alignment5">
+			      <property name="visible">True</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xscale">0</property>
+			      <property name="yscale">0</property>
+			      <property name="top_padding">0</property>
+			      <property name="bottom_padding">0</property>
+			      <property name="left_padding">0</property>
+			      <property name="right_padding">0</property>
+
+			      <child>
+				<widget class="GtkHBox" id="hbox61">
+				  <property name="visible">True</property>
+				  <property name="homogeneous">False</property>
+				  <property name="spacing">2</property>
+
+				  <child>
+				    <widget class="GtkImage" id="image9">
+				      <property name="visible">True</property>
+				      <property name="stock">gtk-find</property>
+				      <property name="icon_size">4</property>
+				      <property name="xalign">0.5</property>
+				      <property name="yalign">0.5</property>
+				      <property name="xpad">0</property>
+				      <property name="ypad">0</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">False</property>
+				      <property name="fill">False</property>
+				    </packing>
+				  </child>
+
+				  <child>
+				    <widget class="GtkLabel" id="label102">
+				      <property name="visible">True</property>
+				      <property name="label" translatable="yes">Choose</property>
+				      <property name="use_underline">True</property>
+				      <property name="use_markup">False</property>
+				      <property name="justify">GTK_JUSTIFY_LEFT</property>
+				      <property name="wrap">False</property>
+				      <property name="selectable">False</property>
+				      <property name="xalign">0.5</property>
+				      <property name="yalign">0.5</property>
+				      <property name="xpad">0</property>
+				      <property name="ypad">0</property>
+				      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				      <property name="width_chars">-1</property>
+				      <property name="single_line_mode">False</property>
+				      <property name="angle">0</property>
+				    </widget>
+				    <packing>
+				      <property name="padding">0</property>
+				      <property name="expand">False</property>
+				      <property name="fill">False</property>
+				    </packing>
+				  </child>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="padding">2</property>
@@ -2387,7 +2448,7 @@ Premiumpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label99">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Pflegepreis wird auf </property>
+			  <property name="label" translatable="yes">Serviceprice for</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2410,7 +2471,7 @@ Premiumpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry12">
+			<widget class="GtkEntry" id="eServicePriceMonth">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2432,7 +2493,7 @@ Premiumpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label100">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Monate gerechnet.</property>
+			  <property name="label" translatable="yes">months</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2515,7 +2576,7 @@ Premiumpflege</property>
 	      <child>
 		<widget class="GtkLabel" id="label97">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Hinweise zur Pflege</property>
+		  <property name="label" translatable="yes">Hints for Service</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2543,7 +2604,7 @@ Premiumpflege</property>
 	      <child>
 		<widget class="GtkLabel" id="label98">
 		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">zusätzliche Pflegemaßnamen:</property>
+		  <property name="label" translatable="yes">addional services</property>
 		  <property name="use_underline">False</property>
 		  <property name="use_markup">False</property>
 		  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2609,13 +2670,76 @@ Premiumpflege</property>
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkButton" id="button4">
+		    <widget class="GtkButton" id="bChooseServices">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
-		      <property name="label" translatable="yes">Pflegemaßnahmen auswählen</property>
-		      <property name="use_underline">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_bChooseServices_clicked" last_modification_time="Sun, 15 Feb 2009 19:06:34 GMT"/>
+
+		      <child>
+			<widget class="GtkAlignment" id="alignment6">
+			  <property name="visible">True</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0</property>
+			  <property name="yscale">0</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkHBox" id="hbox62">
+			      <property name="visible">True</property>
+			      <property name="homogeneous">False</property>
+			      <property name="spacing">2</property>
+
+			      <child>
+				<widget class="GtkImage" id="image10">
+				  <property name="visible">True</property>
+				  <property name="stock">gtk-find</property>
+				  <property name="icon_size">4</property>
+				  <property name="xalign">0.5</property>
+				  <property name="yalign">0.5</property>
+				  <property name="xpad">0</property>
+				  <property name="ypad">0</property>
+				</widget>
+				<packing>
+				  <property name="padding">0</property>
+				  <property name="expand">False</property>
+				  <property name="fill">False</property>
+				</packing>
+			      </child>
+
+			      <child>
+				<widget class="GtkLabel" id="label103">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">choose Service</property>
+				  <property name="use_underline">True</property>
+				  <property name="use_markup">False</property>
+				  <property name="justify">GTK_JUSTIFY_LEFT</property>
+				  <property name="wrap">False</property>
+				  <property name="selectable">False</property>
+				  <property name="xalign">0.5</property>
+				  <property name="yalign">0.5</property>
+				  <property name="xpad">0</property>
+				  <property name="ypad">0</property>
+				  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+				  <property name="width_chars">-1</property>
+				  <property name="single_line_mode">False</property>
+				  <property name="angle">0</property>
+				</widget>
+				<packing>
+				  <property name="padding">0</property>
+				  <property name="expand">False</property>
+				  <property name="fill">False</property>
+				</packing>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -2654,7 +2778,7 @@ Premiumpflege</property>
 	  <child>
 	    <widget class="GtkLabel" id="label18">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Pflege (F2)</property>
+	      <property name="label" translatable="yes">Service  (F2)</property>
 	      <property name="use_underline">True</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>
