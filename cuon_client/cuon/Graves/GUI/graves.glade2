@@ -194,38 +194,38 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkMenuItem" id="plant1">
+	    <widget class="GtkMenuItem" id="maintenance1">
 	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">Pflege</property>
+	      <property name="label" translatable="yes">Service</property>
 	      <property name="use_underline">True</property>
 
 	      <child>
-		<widget class="GtkMenu" id="plant1_menu">
+		<widget class="GtkMenu" id="maintenance1_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="PlantNew1">
+		    <widget class="GtkMenuItem" id="MaintenanceNew1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">New</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PlantNew1_activate" last_modification_time="Sun, 23 Apr 2006 12:11:06 GMT"/>
+		      <signal name="activate" handler="on_MaintenanceNew1_activate" last_modification_time="Wed, 18 Feb 2009 13:41:20 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="PlantEdit1">
+		    <widget class="GtkMenuItem" id="MaintenanceEdit1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PlantEdit1_activate" last_modification_time="Sun, 23 Apr 2006 12:11:06 GMT"/>
+		      <signal name="activate" handler="on_MaintenanceEdit1_activate" last_modification_time="Wed, 18 Feb 2009 13:41:20 GMT"/>
 		    </widget>
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="PlantSave1">
+		    <widget class="GtkMenuItem" id="MaitenanceSave1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PlantSave1_activate" last_modification_time="Sun, 23 Apr 2006 12:11:06 GMT"/>
+		      <signal name="activate" handler="on_MaintenanceSave1_activate" last_modification_time="Wed, 18 Feb 2009 13:41:20 GMT"/>
 		    </widget>
 		  </child>
 
@@ -236,11 +236,11 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="PlantClear1">
+		    <widget class="GtkMenuItem" id="MaintenanceClear1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Clear</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PlantClear1_activate" last_modification_time="Sun, 23 Apr 2006 12:11:06 GMT"/>
+		      <signal name="activate" handler="on_MaintenanceClear1_activate" last_modification_time="Wed, 18 Feb 2009 13:41:20 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -2314,7 +2314,7 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="eArticleID">
+			<widget class="GtkEntry" id="eArticlePrice">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2334,17 +2334,18 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="eArticleName">
+			<widget class="GtkEntry" id="eArticleID">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes">Artikelid</property>
+			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">●</property>
 			  <property name="activates_default">False</property>
 			  <property name="width_chars">6</property>
+			  <signal name="changed" handler="on_eArticleID_changed" last_modification_time="Wed, 18 Feb 2009 12:04:41 GMT"/>
 			</widget>
 			<packing>
 			  <property name="padding">2</property>
@@ -2516,7 +2517,39 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<placeholder/>
+			<widget class="GtkScrolledWindow" id="scrolledwindow6">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
+			  <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
+			  <property name="shadow_type">GTK_SHADOW_IN</property>
+			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+			  <child>
+			    <widget class="GtkTextView" id="textview3">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="editable">True</property>
+			      <property name="overwrite">False</property>
+			      <property name="accepts_tab">True</property>
+			      <property name="justification">GTK_JUSTIFY_LEFT</property>
+			      <property name="wrap_mode">GTK_WRAP_NONE</property>
+			      <property name="cursor_visible">True</property>
+			      <property name="pixels_above_lines">0</property>
+			      <property name="pixels_below_lines">0</property>
+			      <property name="pixels_inside_wrap">0</property>
+			      <property name="left_margin">0</property>
+			      <property name="right_margin">0</property>
+			      <property name="indent">0</property>
+			      <property name="text" translatable="yes"></property>
+			    </widget>
+			  </child>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
 		      </child>
 		    </widget>
 		    <packing>
