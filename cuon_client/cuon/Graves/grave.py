@@ -26,6 +26,7 @@ import string
 import logging
 import SingleGrave
 import SingleGraveMaintenance
+import SingleGraveSpring
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
 #import cuon.OpenOffice.letter
@@ -45,6 +46,7 @@ class graveswindow(chooseWindows):
         self.allTables = allTables
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
+        self.singleGraveSpring = SingleGraveSpring.SingleGraveSpring(allTables)
 
     
         self.loadGlade('graves.xml', 'GraveMainwindow')
@@ -77,6 +79,19 @@ class graveswindow(chooseWindows):
         self.singleGraveMaintenance.setTree(self.xml.get_widget('tree1') )
         self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   
+        self.EntriesGravesSpring = 'graves_spring.xml'
+        
+        self.loadEntries(self.EntriesGravesSpring)
+        
+        self.singleGraveSpring.setEntries(self.getDataEntries(self.EntriesGravesSpring) )
+        self.singleGraveSpring.setGladeXml(self.xml)
+        self.singleGraveSpring.setTreeFields( ['article_id' ] )
+        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSpring.setTreeOrder('article_id')
+        self.singleGraveSpring.setListHeader([_('Service-ID')])
+        self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
 
         # set values for comboBox
 
@@ -88,12 +103,12 @@ class graveswindow(chooseWindows):
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','grave1')
         self.addEnabledMenuItems('tabs','maintenance1')
-
+        self.addEnabledMenuItems('tabs','spring1')
                
         # seperate Menus
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
-
+        self.addEnabledMenuItems('graveSpring','spring1')
         # enabledMenues for grave
         self.addEnabledMenuItems('editGrave','new1')
         self.addEnabledMenuItems('editGrave','clear1')
@@ -105,7 +120,12 @@ class graveswindow(chooseWindows):
         self.addEnabledMenuItems('editGraveMaintenance','MaintenancePrint1')
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceEdit1')
 
-    
+    # enabledMenues for graveSpring
+        self.addEnabledMenuItems('editGraveSpring','SpringNew1')
+        self.addEnabledMenuItems('editGraveSpring','SpringClear1')
+        self.addEnabledMenuItems('editGraveSpring','SpringPrint1')
+        self.addEnabledMenuItems('editGraveSpring','SpringEdit1')
+
         
        
 
@@ -113,7 +133,7 @@ class graveswindow(chooseWindows):
         
         self.tabGrave = 0
         self.tabGraveMaintenance = 1
-        
+        self.tabGraveSpring = 2
         try:
             self.win1.add_accel_group(self.accel_group)
         except Exception,  params:
@@ -182,35 +202,32 @@ class graveswindow(chooseWindows):
         self.out( "delete GraveMaintenance addresses v2")
         self.singleGraveMaintenance.deleteRecord()
 
-
-#Menu Schedul
+#Menu Spring
         
    
-    def on_SchedulSave_activate(self, event):
-        self.out( "save Schedul addresses v2")
-        self.singleSchedul.partnerId = self.singlePartner.ID
-        self.singleSchedul.save()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
+    def on_SpringSave1_activate(self, event):
+        self.out( "save GraveSpring addresses v2")
+        self.singleGraveSpring.graveID = self.singleGrave.ID
+        self.singleGraveSpring.save()
+        self.setEntriesEditable(self.EntriesGravesSpring, FALSE)
         self.tabChanged()
-
-    def on_SchedulEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
-   
-    def on_SchedulNew_activate(self, event):
-        self.out( "new Schedul for partner v2")
-        self.singleSchedul.newRecord()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
-
-    def on_SchedulDelete_activate(self, event):
-        self.out( "delete Schedul addresses v2")
-        self.singleSchedul.deleteRecord()
-
-    def on_gdeDate_date_changed(self, event ):
-        print str(event)
-        gdeSchedul = self.getWidget('gdeDate')
-        newDate = gdeSchedul.get_time()
-        print newDate
         
+    def on_SpringNew1_activate(self, event):
+        self.out( "new GraveSpring addresses v2")
+        self.singleGraveSpring.newRecord()
+        self.setEntriesEditable(self.EntriesGravesSpring, TRUE)
+
+        
+    def on_SpringEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesSpring, TRUE)
+
+
+    def on_SpringDelete1_activate(self, event):
+        self.out( "delete GraveSpring addresses v2")
+        self.singleGraveSpring.deleteRecord()
+
+
+
         
         
         
@@ -342,7 +359,7 @@ class graveswindow(chooseWindows):
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()
-        
+        self.singleGraveSpring.disconnectTree()
         if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
@@ -353,7 +370,12 @@ class graveswindow(chooseWindows):
             self.singleGraveMaintenance.connectTree()
             self.singleGraveMaintenance.refreshTree()
         
-     
+        elif self.tabOption == self.tabGraveSpring:
+            print "1 tree "
+            self.singleGraveSpring.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveSpring.connectTree()
+            self.singleGraveSpring.refreshTree()
+        
 
 
          
@@ -384,7 +406,14 @@ class graveswindow(chooseWindows):
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
 
-
+        elif self.tabOption == self.tabGraveSpring:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveSpring')
+           
+            self.editAction = 'editGraveSpring'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

@@ -260,6 +260,53 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Spring</property>
 	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="spring_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="SpringNew1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">new</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_SpringNew1_activate" last_modification_time="Fri, 27 Feb 2009 11:28:33 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="SpringEdit1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Edit</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_SpringEdit1_activate" last_modification_time="Fri, 27 Feb 2009 11:28:33 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="SpringSave1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Save</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_SpringSave1_activate" last_modification_time="Fri, 27 Feb 2009 11:28:33 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separator1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="SpringClear1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Delete</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_SpringClear1_activate" last_modification_time="Fri, 27 Feb 2009 11:28:33 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
 	    </widget>
 	  </child>
 
@@ -2871,16 +2918,46 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="eSpringArticleID">
+			<widget class="GtkHBox" id="hbox70">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">●</property>
-			  <property name="activates_default">False</property>
+			  <property name="homogeneous">False</property>
+			  <property name="spacing">0</property>
+
+			  <child>
+			    <widget class="GtkEntry" id="eSpringArticleID">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="editable">True</property>
+			      <property name="visibility">True</property>
+			      <property name="max_length">0</property>
+			      <property name="text" translatable="yes"></property>
+			      <property name="has_frame">True</property>
+			      <property name="invisible_char">●</property>
+			      <property name="activates_default">False</property>
+			    </widget>
+			    <packing>
+			      <property name="padding">0</property>
+			      <property name="expand">True</property>
+			      <property name="fill">True</property>
+			    </packing>
+			  </child>
+
+			  <child>
+			    <widget class="GtkButton" id="bSpringChooseArticle">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label">gtk-find</property>
+			      <property name="use_stock">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_bSpringChooseArticle_clicked" last_modification_time="Fri, 27 Feb 2009 09:55:34 GMT"/>
+			    </widget>
+			    <packing>
+			      <property name="padding">0</property>
+			      <property name="expand">False</property>
+			      <property name="fill">False</property>
+			    </packing>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -2905,7 +2982,7 @@ TBF Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label104">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Counts</property>
+			  <property name="label" translatable="yes">Count</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
