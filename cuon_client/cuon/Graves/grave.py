@@ -27,6 +27,10 @@ import logging
 import SingleGrave
 import SingleGraveMaintenance
 import SingleGraveSpring
+import SingleGraveSummer
+import SingleGraveAutumn
+import SingleGraveWinter
+
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
 #import cuon.OpenOffice.letter
@@ -63,7 +67,7 @@ class graveswindow(chooseWindows):
         self.singleGrave.setTreeFields( ['lastname', 'firstname'] )
         self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleGrave.setTreeOrder('lastname, firstname')
-        self.singleGrave.setListHeader([_('Lastname'), _('Firstname'), _('City')])
+        self.singleGrave.setListHeader([_('Lastname'), _('Firstname')])
         self.singleGrave.setTree(self.xml.get_widget('tree1') )
 
         self.EntriesGravesMaintenance = 'graves_maintenance.xml'
@@ -88,14 +92,23 @@ class graveswindow(chooseWindows):
         self.singleGraveSpring.setTreeFields( ['article_id' ] )
         self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
         self.singleGraveSpring.setTreeOrder('article_id')
-        self.singleGraveSpring.setListHeader([_('Service-ID')])
+        self.singleGraveSpring.setListHeader([_('article-ID')])
         self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   
 
         # set values for comboBox
 
-          
+        liService = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        print liService        
+        cbService = self.getWidget('cbServiceType')
+        if cbService:
+            liststore = gtk.ListStore(str)
+            for service in liService:
+                liststore.append([service])
+            cbService.set_model(liststore)
+            cbService.set_text_column(0)
+            cbService.show()
 
         # Menu-items
         self.initMenuItems()

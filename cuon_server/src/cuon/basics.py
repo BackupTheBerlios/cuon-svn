@@ -789,5 +789,12 @@ class basics(xmlrpc.XMLRPC):
         return sTable, iDMS
         
         
+    def  getNormalSqlData(dicUser):
+        sFields = ', '
+        sValues = ', '
+        sFields += 'client ) '
+        sValues += dicUser['Name'] + ' )'
+        return sFields,  sValues
         
-                
+        
+        

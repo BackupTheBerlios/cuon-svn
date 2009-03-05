@@ -22,9 +22,12 @@ class Order(xmlrpc.XMLRPC, basics):
         
         dicResult =  oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
         if dicResult == 'NONE':
-            sSql1 = 'insert into list_of_deliveries ( id, delivery_number, order_number) '
+            sFields, sValues = self.getNormalSqlData
+            
+            sSql1 = 'insert into list_of_deliveries ( id, delivery_number, order_number '
+            sSql1 += sFields
             sSql1 = sSql1 + ' values (nextval(\'list_of_deliveries_id+ sc +\'),nextval(\'numerical_misc_standard_delivery +sc +\'), ' 
-            sSql1 = sSql1 + `orderNumber` + ' )'
+            sSql1 = sSql1 + `orderNumber` + sValues
         
             oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
@@ -189,12 +192,14 @@ class Order(xmlrpc.XMLRPC, basics):
         print 'InvoiceNumber dicResult = ', dicResult
         
         if dicResult in ['NONE','ERROR'] or dicResult[0]['invoice_number'] == 0:
-            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice, total_amount) '
+            sFields, sValues = self.getNormalSqlData
             
+            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice, total_amount'
+            sSql1 += sFields
             sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
         
 
-            sSql1 +=  `orderNumber` + ",'today', " + `self.getTotalSum(orderNumber, dicUser)` +" )"
+            sSql1 +=  `orderNumber` + ",'today', " + `self.getTotalSum(orderNumber, dicUser)` +sValues
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
@@ -240,10 +245,14 @@ class Order(xmlrpc.XMLRPC, basics):
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         if dicResult not in ['NONE','ERROR']:
-           sSql1 = 'insert into list_of_pickups ( id, pickup_number, order_number) '
-           sSql1 = sSql1 + ' values (nextval(\'list_of_pickups_id\'),nextval(\'numerical_misc_standard_pickup\'), ' 
-           sSql1 = sSql1 + `orderNumber` + ' )'
-        
+           sFields, sValues = self.getNormalSqlData(dicUser)
+           
+           sSql1 = 'insert into list_of_pickups ( id, pickup_number, order_number '
+           sSql1 += sFields 
+           sSql1 +=  ' values (nextval(\'list_of_pickups_id\'),nextval(\'numerical_misc_standard_pickup\'), ' 
+           sSql1 +=  `orderNumber` + sValues  
+           
+           
            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )

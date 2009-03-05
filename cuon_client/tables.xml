@@ -83,7 +83,7 @@
       <notnull>1</notnull>
       <size>0</size>
       <default>1</default>
-      <comment>set by trigger</comment>
+      <comment>must manuall insert</comment>
     </field>
    <!--separate Informations ID 1-->
     <field>

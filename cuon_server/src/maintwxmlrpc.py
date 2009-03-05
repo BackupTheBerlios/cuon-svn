@@ -25,7 +25,7 @@ import cuon.Garden
 import cuon.Report
 import cuon.WebShop
 import cuon.Email
-
+import cuon.Grave
 
 openssl = False
 try:
@@ -94,7 +94,7 @@ class ServerData:
         oReport = cuon.Report.Report()
         oWebShop = cuon.WebShop.WebShop()
         oEmail = cuon.Email.cuonemail()
-        
+        oGrave = cuon.Grave.Grave()
         
         r.putSubHandler('Web', oWeb)
         r.putSubHandler('Database', oDatabase)
@@ -111,6 +111,7 @@ class ServerData:
         r.putSubHandler('Report', oReport)
         r.putSubHandler('WebShop', oWebShop)
         r.putSubHandler('Email', oEmail)
+        r.putSubHandler('Grave', oGrave)
 
         return r 
 
