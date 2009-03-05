@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entries_for_table>
   <table>
-    <table_name>grave_work_spring</table_name>
+    <table_name>grave_work_summer</table_name>
 
     <entry>
-      <name>eSpringArticleID</name>
+      <name>esummerArticleID</name>
       <type>checkbox</type>
       <size>10</size>
       <verify_type>int</verify_type>
@@ -16,7 +16,7 @@
     </entry>
     
      <entry>
-      <name>eSpringPrice</name>
+      <name>esummerPrice</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>float</verify_type>
