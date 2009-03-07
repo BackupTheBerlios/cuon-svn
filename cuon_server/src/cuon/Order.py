@@ -22,7 +22,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         dicResult =  oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
         if dicResult == 'NONE':
-            sFields, sValues = self.getNormalSqlData
+            sFields, sValues = self.getNormalSqlData(dicUser)
             
             sSql1 = 'insert into list_of_deliveries ( id, delivery_number, order_number '
             sSql1 += sFields
@@ -191,9 +191,10 @@ class Order(xmlrpc.XMLRPC, basics):
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         print 'InvoiceNumber dicResult = ', dicResult
         
+        
         if dicResult in ['NONE','ERROR'] or dicResult[0]['invoice_number'] == 0:
-            sFields, sValues = self.getNormalSqlData
             
+            sFields, sValues = self.getNormalSqlData(dicUser)
             sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number, date_of_invoice, total_amount'
             sSql1 += sFields
             sSql1 += " values (nextval('list_of_invoices_id'),nextval('numerical_misc_standard_invoice" + sc + "'), " 
@@ -205,7 +206,13 @@ class Order(xmlrpc.XMLRPC, basics):
         
             dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         else:
-            sSql1 = "update list_of_invoices set total_amount = " +  `self.getTotalSum(orderNumber, dicUser)` + " where order_number = " + `orderNumber` 
+            sFields, sValues = self.getNormalSqlData(dicUser, False, False)
+            sSql1 = "update list_of_invoices set total_amount = " +  `self.getTotalSum(orderNumber, dicUser)` 
+            liFields = sFields.split(', ')
+            for counter in range(liFields):
+                sSql1 += ",  " + sFields[counter] + "=" + sValues[counter]
+            
+            sSql += " where order_number = " + `orderNumber` 
             sSql1 += self.getWhere(None,dicUser,2)
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )

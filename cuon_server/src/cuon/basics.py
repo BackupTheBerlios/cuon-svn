@@ -789,11 +789,19 @@ class basics(xmlrpc.XMLRPC):
         return sTable, iDMS
         
         
-    def  getNormalSqlData(dicUser):
-        sFields = ', '
-        sValues = ', '
-        sFields += 'client ) '
-        sValues += dicUser['Name'] + ' )'
+    def  getNormalSqlData(self,  dicUser, braces=True,  coma=True):
+        print `dicUser`
+        sFields = ' '
+        sValues = ' '
+        if coma:
+            sFields = ', '
+            sValues = ', '
+        sFields += 'client  '
+        sValues += `dicUser['client']` + ' '
+        if braces:
+            sFields += ' )'
+            sValues += ')'
+        
         return sFields,  sValues
         
         
