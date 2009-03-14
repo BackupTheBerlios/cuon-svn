@@ -265,6 +265,16 @@ class Address(xmlrpc.XMLRPC, basics):
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         if liResult not in ['NONE','ERROR']:
             dicReturn = liResult[0]
+            #print dicReturn
+            for key in dicReturn.keys():
+                #print "key = ",  key
+                #rint key[0:5]
+                if key[0:6] == 'notes_':
+                   #print 'found notes'
+                    #or i in range(len(dicReturn[key])):
+                    #  print ord(dicReturn[key][i])
+                    dicReturn[key] = dicReturn[key].replace(chr(10), '</text:p><text:p text:style-name="Standard">')
+                    #print dicReturn[key]
         return dicReturn
         
     def xmlrpc_getMisc(self, addressid, dicUser):

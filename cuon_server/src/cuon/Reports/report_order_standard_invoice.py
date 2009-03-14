@@ -98,8 +98,8 @@ class report_order_standard_invoice(report_basics):
             print  dicResult 
             self.dicResults['terms_of_payment'] = dicResult
             
-            
-            
+            dicResult =  oOrder.xmlrpc_getUserInfoInvoice( dicOrder, dicUser )
+            self.dicResults['user_info'] = dicResult
             # values in this order:
             # 1 reportname
             # 2 dicUser

@@ -548,7 +548,13 @@ class Order(xmlrpc.XMLRPC, basics):
         pos += 1
         return pos
         
-
+    def xmlrpc_getUserInfoOrder(self, dicOrder, dicUser):
+        return None
+    def xmlrpc_getUserInfoInvoce(self, dicOrder, dicUser):
+        sSql = 'select * from staff, list_of_invoices as lii where cuon_username =  lii.user_id and lii.invoice_number = ' + `dicOrder['invoiceNumber'] ` 
+        Sql += self.getWhere(None,dicUser,2,'list_of_invoices.')
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+    
     def getListOfInvoices( self, dicOrder, dicUser ):
         dBegin = datetime.fromtimestamp(dicOrder['dBegin'])
         dEnd = datetime.fromtimestamp(dicOrder['dEnd'])

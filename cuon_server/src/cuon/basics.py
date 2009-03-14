@@ -100,6 +100,10 @@ class basics(xmlrpc.XMLRPC):
         self.DIC_USER['DateformatString'] = '%d.%m.%Y '
         self.DIC_USER['TimeformatString'] = '%H:%M'
         
+        self.JABBERSERVER=None
+        self.JABBERUSERNAME=None
+        self.JABBERPASSWORD=None
+        
         self.AUTOMATIC_SCHEDUL = False
         try:
             self.cpServer = ConfigParser.ConfigParser()
@@ -213,8 +217,19 @@ class basics(xmlrpc.XMLRPC):
             if value:
                 self.CURRENCY_ROUND = int(value)
                
-              
-                
+            # jABBER
+            value = self.getConfigOption('JABBER','SERVER')
+            if value:
+                self.JABBERSERVER = value
+            
+            value = self.getConfigOption('JABBER','USERNAME')
+            if value:
+                self.JABBERUSERNAME = value
+            
+            value = self.getConfigOption('JABBER','PASSWORD')
+            if value:
+                self.JABBERPASSWORD = value
+            
         except Exception, params:
             print "Error read ini-File"
             print Exception

@@ -307,6 +307,9 @@ class setup:
         self.executeSSH("if  [ ! -f /etc/init.d/cuonweb2 ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/cuonweb2 /etc/init.d  ; fi ")
         
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonjabber ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonjabber /etc/init.d  ; fi ")
+        
         # make executable
         self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
         self.executeSSH(" chmod u+x /etc/init.d/cuon*")
@@ -316,7 +319,7 @@ class setup:
         self.executeSSH(" update-rc.d cuonreport defaults")
         self.executeSSH(" update-rc.d cuonai defaults")
         self.executeSSH(" update-rc.d cuonweb2 defaults")
-        
+        self.executeSSH(" update-rc.d cuonjabber defaults")
          
         # Then check the files 
         #server.ini
