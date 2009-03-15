@@ -33,52 +33,55 @@ class AI(xmlrpc.XMLRPC, basics):
    
     def xmlrpc_getAI(self, question, dicUser):
         import string
+        answer = 'Something wrong,  perhaps your Session at the C.U.O.N. Server is expired. Try to login again.'
         self.writeLog('py_getAI question = ' + `question`,1)
         goDecode = False
-        #answer = context.ex_getAI(question)
-        answer = self.sendQuestion(question.encode('utf-7'))
-        
-        self.writeLog('py_getAI answer = ' + `answer`,1)
-        print 'py_getAI answer = ' + `answer`
-        
-##        try:
-##           answer = answer.decode('utf-7').encode('utf-8')
-##        except:
-##           pass
-##        
-        answer = answer.strip()
-        liAnswer = answer.split()
-        try:
-            assert liAnswer
-            if liAnswer[0] == "ENDPROGRAM":
-                answer = sendQuestion('ENDPROGRAM')
-            elif liAnswer[0] == 'CUON':
-                goDecode = True
-                if liAnswer[1] == 'ARTICLES':
-                    answer = self.articles(liAnswer, dicUser)
-                elif liAnswer[1] == 'ADDRESS':
-                    answer = self.addresses(liAnswer, dicUser)
-                elif liAnswer[1] == 'PHONE':
-                    answer = self.addresses_phone(liAnswer, dicUser)
-                    
-                elif liAnswer[1] == 'MISC':
-                    print 'MISC'
-                    if liAnswer[2] == 'DATA':
-                        print 'DATA'
-                        if liAnswer[3] == 'INSERT':
-                            print 'INSERT'
-                            goDecode = False
-                            answer = self.insert_data(liAnswer, dicUser, 'Misc_Data')
-                    
-                    
-            if goDecode:
-                answer = answer.encode('utf-7')
+        sUser = self.oDatabase.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
+        if sUser:
+            #answer = context.ex_getAI(question)
+            answer = self.sendQuestion(question.encode('utf-7'))
             
-        except:
-            self.out('No correct answer from AI = ' + `answer`)
+            self.writeLog('py_getAI answer = ' + `answer`,1)
+            print 'py_getAI answer = ' + `answer`
             
-        
-        print "answer by AI ", answer
+    ##        try:
+    ##           answer = answer.decode('utf-7').encode('utf-8')
+    ##        except:
+    ##           pass
+    ##        
+            answer = answer.strip()
+            liAnswer = answer.split()
+            try:
+                assert liAnswer
+                if liAnswer[0] == "ENDPROGRAM":
+                    answer = sendQuestion('ENDPROGRAM')
+                elif liAnswer[0] == 'CUON':
+                    goDecode = True
+                    if liAnswer[1] == 'ARTICLES':
+                        answer = self.articles(liAnswer, dicUser)
+                    elif liAnswer[1] == 'ADDRESS':
+                        answer = self.addresses(liAnswer, dicUser)
+                    elif liAnswer[1] == 'PHONE':
+                        answer = self.addresses_phone(liAnswer, dicUser)
+                        
+                    elif liAnswer[1] == 'MISC':
+                        print 'MISC'
+                        if liAnswer[2] == 'DATA':
+                            print 'DATA'
+                            if liAnswer[3] == 'INSERT':
+                                print 'INSERT'
+                                goDecode = False
+                                answer = self.insert_data(liAnswer, dicUser, 'Misc_Data')
+                        
+                        
+                if goDecode:
+                    answer = answer.encode('utf-7')
+                
+            except:
+                self.out('No correct answer from AI = ' + `answer`)
+                
+            
+        self.writeLog( "answer by AI " + answer)
         
         return answer
         
@@ -157,7 +160,7 @@ class AI(xmlrpc.XMLRPC, basics):
               if resultnot in ['NONE','ERROR']:
                  answer = ''
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n%s %s\n\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
+                    answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
               else:
                  answer = answer = self.sendQuestion('NO ADDRESS FOUND')
         return answer
@@ -167,34 +170,42 @@ class AI(xmlrpc.XMLRPC, basics):
         import string
         ok = False
         answer = ''
+        print 'aphone1',  `liAnswer`
         self.writeLog('address_phone_ai1 lianswer[4] = ' + `liAnswer[4]`,1)
         #liAnswer[4] = liAnswer[4].decode('latin-1').decode('utf-7')
         self.writeLog('address_phone_ai1 lianswer[4](2) = ' + `liAnswer[4]`)
         if liAnswer[2] == 'SEARCH':
-            if liAnswer[3] == 'ALL':
+             print 'aphone2'
+             if liAnswer[3] == 'ALL':
+              print 'aphone3'
               liAnswer, Firstname = self.checkAnswer(liAnswer,'Address')
-              
+              print 'aphone4'
                 
                
               sSql = "select lastname, lastname2, firstname, phone from address "
               sSql = sSql +  "where (lastname ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\' )'
+              print 'dicUser1', `dicUser`
+              print 'sSql1',  sSql
+              print 'Firstname',  Firstname
+              
               if Firstname:
                   
                   sSql = sSql + " and firstname ~* \'.*" + liAnswer[5] + '.*\''
               else:
                   sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
-                  
+              print 'sSql2',  sSql
               sSql = sSql + self.getWhere('',dicUser,2)
-              
-              self.writeLog('address_phone_ai1 ' + `sSql`)
-        
+              print 'sSql3',  sSql
+              self.writeLog('address_phone_ai1 SQL ' + `sSql`)
+              print `dicUser`
+              print sSql
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
               if result not in ['NONE','ERROR']:
                  ok = True
         
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
+                    answer = answer + "%s\n%s\n%s\n%s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
         
               sSql = "select lastname, lastname2, firstname, phone1, phone2 from partner "
               sSql = sSql +  "where (lastname ~* \'.*" + liAnswer[4] + '.*\''
@@ -212,7 +223,7 @@ class AI(xmlrpc.XMLRPC, basics):
                  ok = True
                  
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n%s\n\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone1'], r1['phone2'] )
+                    answer = answer + "%s\n%s\n%s\n%s\n%s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone1'], r1['phone2'] )
         if not ok:
                  answer = self.sendQuestion('NO PHONE FOUND')
         return answer

@@ -371,6 +371,9 @@ class setup:
         self.executeSSH(" /etc/init.d/cuonweb restart")
         self.executeSSH(" /etc/init.d/cuonweb2 restart")
         self.executeSSH(" /etc/init.d/cuonai restart")
+        self.executeSSH(" /etc/init.d/cuonjabber restart")
+        
+        
         
         # start some sql-things
         try:

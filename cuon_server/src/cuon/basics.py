@@ -32,7 +32,7 @@ class basics(xmlrpc.XMLRPC):
        
         self.XMLRPC_PORT = 7080
         self.XMLRPC_HOST = 'localhost'
-        
+        self.XMLRPC_PROTO = "http"
         
         self.WEBPATH = '/var/cuon_www/'
         self.WEB_HOST = 'localhost'

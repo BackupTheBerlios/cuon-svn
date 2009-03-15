@@ -96,7 +96,17 @@ class graveswindow(chooseWindows):
         self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   
-
+        self.loadEntries(self.EntriesGravesSommer)
+        
+        self.singleGraveSummer.setEntries(self.getDataEntries(self.EntriesGravesSummer) )
+        self.singleGraveSummer.setGladeXml(self.xml)
+        self.singleGraveSummer.setTreeFields( ['article_id' ] )
+        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSummer.setTreeOrder('article_id')
+        self.singleGraveSummer.setListHeader([_('article-ID')])
+        self.singleGraveSummer.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
         # set values for comboBox
 
         liService = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
@@ -122,6 +132,7 @@ class graveswindow(chooseWindows):
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
         self.addEnabledMenuItems('graveSpring','spring1')
+        self.addEnabledMenuItems('graveSpring','summer1')
         # enabledMenues for grave
         self.addEnabledMenuItems('editGrave','new1')
         self.addEnabledMenuItems('editGrave','clear1')
@@ -140,6 +151,12 @@ class graveswindow(chooseWindows):
         self.addEnabledMenuItems('editGraveSpring','SpringEdit1')
 
         
+    # enabledMenues for graveSummer
+        self.addEnabledMenuItems('editGraveSummer','SummerNew1')
+        self.addEnabledMenuItems('editGraveSummer','SummerClear1')
+        self.addEnabledMenuItems('editGraveSummer','SummerPrint1')
+        self.addEnabledMenuItems('editGraveSummer','SummerEdit1')
+
        
 
         # tabs from notebook
@@ -147,6 +164,7 @@ class graveswindow(chooseWindows):
         self.tabGrave = 0
         self.tabGraveMaintenance = 1
         self.tabGraveSpring = 2
+        self.tabGraveSummer= 3
         try:
             self.win1.add_accel_group(self.accel_group)
         except Exception,  params:
@@ -241,6 +259,33 @@ class graveswindow(chooseWindows):
 
 
 
+        #Menu Summer
+        
+   
+    def on_SummerSave1_activate(self, event):
+        self.out( "save GraveSummer addresses v2")
+        self.singleGraveSummer.graveID = self.singleGrave.ID
+        self.singleGraveSummer.save()
+        self.setEntriesEditable(self.EntriesGravesSummer, FALSE)
+        self.tabChanged()
+        
+    def on_SummerNew1_activate(self, event):
+        self.out( "new GraveSummer addresses v2")
+        self.singleGraveSummer.newRecord()
+        self.setEntriesEditable(self.EntriesGravesSummer, TRUE)
+
+        
+    def on_SummerEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesSummer, TRUE)
+
+
+    def on_SummerDelete1_activate(self, event):
+        self.out( "delete GraveSummer addresses v2")
+        self.singleGraveSummer.deleteRecord()
+
+
+
+        
         
         
         
@@ -373,6 +418,7 @@ class graveswindow(chooseWindows):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()
         self.singleGraveSpring.disconnectTree()
+        self.singleGraveSummer.disconnectTree()
         if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
@@ -388,6 +434,12 @@ class graveswindow(chooseWindows):
             self.singleGraveSpring.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
             self.singleGraveSpring.connectTree()
             self.singleGraveSpring.refreshTree()
+            
+        elif self.tabOption == self.tabGraveSummer:
+            print "1 tree "
+            self.singleGraveSummer.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveSummer.connectTree()
+            self.singleGraveSummer.refreshTree()
         
 
 
@@ -427,6 +479,15 @@ class graveswindow(chooseWindows):
             self.editAction = 'editGraveSpring'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
+            
+        elif self.tabOption == self.tabGraveSummer:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveSummer')
+           
+            self.editAction = 'editGraveSummer'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])   
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
