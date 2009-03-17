@@ -39,7 +39,9 @@ class AI(xmlrpc.XMLRPC, basics):
         sUser = self.oDatabase.checkUser(dicUser['Name'], dicUser['SessionID'], dicUser['userType'])
         if sUser:
             #answer = context.ex_getAI(question)
+            question = question.replace('.*', 'dot_star')
             answer = self.sendQuestion(question.encode('utf-7'))
+            answer = answer.replace('dot_star', '.*')
             
             self.writeLog('py_getAI answer = ' + `answer`,1)
             print 'py_getAI answer = ' + `answer`
@@ -120,7 +122,7 @@ class AI(xmlrpc.XMLRPC, basics):
         answer = 'No Data Found'
         if liAnswer[2] == 'SEARCH':
            if liAnswer[3] == 'ALL':
-              sSql = "select number, designation from articles "
+              sSql = "select id, number, designation from articles "
               sSql = sSql + "where number ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + " or designation ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + self.getWhere('',dicUser,2)
@@ -132,7 +134,7 @@ class AI(xmlrpc.XMLRPC, basics):
               if resultnot in ['NONE','ERROR']:
                  answer = ''
                  for r1 in result:
-                    answer = answer + "%s \t\t %s \n" %(r1['number'],r1['designation'] )
+                    answer = answer + "%s \t\t %s \n" %(`r1['id']` + ' -- ' + r1['number'],r1['designation'] )
               else:
                  answer = self.sendQuestion('NO ARTICLES FOUND')
         return answer      
@@ -143,8 +145,8 @@ class AI(xmlrpc.XMLRPC, basics):
         if liAnswer[2] == 'SEARCH':
            if liAnswer[3] == 'ALL':
               liAnswer, Firstname = self.checkAnswer(liAnswer,'Address') 
-              sSql = "select lastname, lastname2, firstname, street, zip, city from address "
-              sSql = sSql +  "where ( lastname ~* \'.*" + liAnswer[4] + '.*\''
+              sSql = "select id, lastname, lastname2, firstname, street, zip, city from address "
+              sSql = sSql +  "where ( (lastname ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\') '
               if Firstname:
                   
@@ -152,17 +154,17 @@ class AI(xmlrpc.XMLRPC, basics):
               else:
                   sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
                   
-              sSql = sSql + self.getWhere('',dicUser,2)
+              sSql +=  ') ' +  self.getWhere('',dicUser,2)
               
               self.writeLog('address_ai1' + `sSql`)
         
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if resultnot in ['NONE','ERROR']:
+              if result not in ['NONE','ERROR']:
                  answer = ''
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
+                    answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(`r1['id']` + ' -- ' + r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
               else:
-                 answer = answer = self.sendQuestion('NO ADDRESS FOUND')
+                 answer = self.sendQuestion('NO ADDRESS FOUND')
         return answer
         
     def addresses_phone(self, liAnswer, dicUser):
@@ -182,48 +184,53 @@ class AI(xmlrpc.XMLRPC, basics):
               print 'aphone4'
                 
                
-              sSql = "select lastname, lastname2, firstname, phone from address "
+              sSql = "select id, lastname, lastname2, firstname, phone from address "
               sSql = sSql +  "where (lastname ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\' )'
-              print 'dicUser1', `dicUser`
-              print 'sSql1',  sSql
-              print 'Firstname',  Firstname
+              #print 'dicUser1', `dicUser`
+              #print 'sSql1',  sSql
+              #print 'Firstname',  Firstname
               
               if Firstname:
                   
                   sSql = sSql + " and firstname ~* \'.*" + liAnswer[5] + '.*\''
               else:
                   sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
-              print 'sSql2',  sSql
+              #print 'sSql2',  sSql
               sSql = sSql + self.getWhere('',dicUser,2)
-              print 'sSql3',  sSql
+              #print 'sSql3',  sSql
               self.writeLog('address_phone_ai1 SQL ' + `sSql`)
-              print `dicUser`
-              print sSql
+              #print `dicUser`
+              #print sSql
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
               if result not in ['NONE','ERROR']:
                  ok = True
         
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
+                    answer = answer + "%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['id']` + ' -- ' +r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
         
-              sSql = "select lastname, lastname2, firstname, phone1, phone2 from partner "
-              sSql = sSql +  "where (lastname ~* \'.*" + liAnswer[4] + '.*\''
-              sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\')'
+              sSql = "select ad.id as ad_id, ad.lastname as ad_lastname, ad.city as ad_city, pa.lastname as pa_lastname, pa.lastname2 as pa_lastname2, pa.firstname as pa_firstname, pa.phone1 as pa_phone1, pa.phone2 as pa_phone2 from partner as pa, address as ad "
+              sSql = sSql +  "where ((pa.lastname ~* \'.*" + liAnswer[4] + '.*\''
+              sSql = sSql + " or pa.lastname2 ~* \'.*" + liAnswer[4] + '.*\')'
               if Firstname:
-                sSql = sSql + " and firstname ~* \'.*" + liAnswer[5] + '.*\''
+                sSql = sSql + " and pa.firstname ~* \'.*" + liAnswer[5] + '.*\''
               else:
-                sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
+                sSql = sSql + " or pa.firstname ~* \'.*" + liAnswer[4] + '.*\''
+                
+              sSql += ' )and pa.addressid = ad.id  '
                   
-              sSql = sSql + self.getWhere('',dicUser,2)
+              sSql = sSql + self.getWhere('',dicUser,2, 'pa.')
               self.writeLog('address_phone_ai1_2 ' + `sSql`)
-        
+                
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
               if result not in ['NONE','ERROR']:
                  ok = True
                  
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n%s\n------------------------------------\n" %(r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone1'], r1['phone2'] )
+                    #print r1
+                    answer = answer + "%s%s\n%s\n%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['ad_id']`+ ' -- ' +r1['ad_lastname'] + ', ' +r1['ad_city'], r1['pa_lastname'],r1['pa_lastname2'],r1['pa_firstname'],r1['pa_phone1'], r1['pa_phone2'] )
+
+                    #print answer
         if not ok:
                  answer = self.sendQuestion('NO PHONE FOUND')
         return answer

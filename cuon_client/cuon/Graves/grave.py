@@ -51,6 +51,9 @@ class graveswindow(chooseWindows):
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
         self.singleGraveSpring = SingleGraveSpring.SingleGraveSpring(allTables)
+        self.singleGraveSummer = SingleGraveSummer.SingleGraveSummer(allTables)
+        self.singleGraveAutumn = SingleGraveAutumn.SingleGraveAutumn(allTables)
+        self.singleGraveWinter = SingleGraveWinter.SingleGraveWinter(allTables)
 
     
         self.loadGlade('graves.xml', 'GraveMainwindow')
@@ -77,7 +80,7 @@ class graveswindow(chooseWindows):
         self.singleGraveMaintenance.setEntries(self.getDataEntries(self.EntriesGravesMaintenance) )
         self.singleGraveMaintenance.setGladeXml(self.xml)
         self.singleGraveMaintenance.setTreeFields( ['grave_service_id' ] )
-        self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
+        self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
         self.singleGraveMaintenance.setTreeOrder('grave_service_id')
         self.singleGraveMaintenance.setListHeader([_('Service-ID')])
         self.singleGraveMaintenance.setTree(self.xml.get_widget('tree1') )
@@ -90,22 +93,51 @@ class graveswindow(chooseWindows):
         self.singleGraveSpring.setEntries(self.getDataEntries(self.EntriesGravesSpring) )
         self.singleGraveSpring.setGladeXml(self.xml)
         self.singleGraveSpring.setTreeFields( ['article_id' ] )
-        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
         self.singleGraveSpring.setTreeOrder('article_id')
         self.singleGraveSpring.setListHeader([_('article-ID')])
         self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   
-        self.loadEntries(self.EntriesGravesSommer)
+        self.EntriesGravesSummer = 'graves_summer.xml'
+        self.loadEntries(self.EntriesGravesSummer)
         
         self.singleGraveSummer.setEntries(self.getDataEntries(self.EntriesGravesSummer) )
         self.singleGraveSummer.setGladeXml(self.xml)
         self.singleGraveSummer.setTreeFields( ['article_id' ] )
-        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_UINT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
         self.singleGraveSummer.setTreeOrder('article_id')
         self.singleGraveSummer.setListHeader([_('article-ID')])
         self.singleGraveSummer.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
+  
+        self.EntriesGravesAutumn = 'graves_autumn.xml'
+        
+        self.loadEntries(self.EntriesGravesAutumn)
+        
+        self.singleGraveAutumn.setEntries(self.getDataEntries(self.EntriesGravesAutumn) )
+        self.singleGraveAutumn.setGladeXml(self.xml)
+        self.singleGraveAutumn.setTreeFields( ['article_id' ] )
+        self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveAutumn.setTreeOrder('article_id')
+        self.singleGraveAutumn.setListHeader([_('article-ID')])
+        self.singleGraveAutumn.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveAutumn.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
+        self.EntriesGravesWinter = 'graves_winter.xml'
+        
+        self.loadEntries(self.EntriesGravesWinter)
+        
+        self.singleGraveWinter.setEntries(self.getDataEntries(self.EntriesGravesWinter) )
+        self.singleGraveWinter.setGladeXml(self.xml)
+        self.singleGraveWinter.setTreeFields( ['article_id' ] )
+        self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveWinter.setTreeOrder('article_id')
+        self.singleGraveWinter.setListHeader([_('article-ID')])
+        self.singleGraveWinter.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
   
         # set values for comboBox
 
@@ -127,7 +159,8 @@ class graveswindow(chooseWindows):
         self.addEnabledMenuItems('tabs','grave1')
         self.addEnabledMenuItems('tabs','maintenance1')
         self.addEnabledMenuItems('tabs','spring1')
-               
+        self.addEnabledMenuItems('tabs','autumn1')
+        self.addEnabledMenuItems('tabs','autumn1')
         # seperate Menus
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
@@ -157,7 +190,18 @@ class graveswindow(chooseWindows):
         self.addEnabledMenuItems('editGraveSummer','SummerPrint1')
         self.addEnabledMenuItems('editGraveSummer','SummerEdit1')
 
-       
+    # enabledMenues for graveAutumn
+        self.addEnabledMenuItems('editGraveAutumn','AutumnNew1')
+        self.addEnabledMenuItems('editGraveAutumn','AutumnClear1')
+        self.addEnabledMenuItems('editGraveAutumn','AutumnPrint1')
+        self.addEnabledMenuItems('editGraveAutumn','AutumnEdit1')
+        
+    # enabledMenues for graveWinter
+        self.addEnabledMenuItems('editGraveWinter','WinterNew1')
+        self.addEnabledMenuItems('editGraveWinter','WinterClear1')
+        self.addEnabledMenuItems('editGraveWinter','WinterPrint1')
+        self.addEnabledMenuItems('editGraveWinter','WinterEdit1')
+
 
         # tabs from notebook
         
@@ -165,6 +209,8 @@ class graveswindow(chooseWindows):
         self.tabGraveMaintenance = 1
         self.tabGraveSpring = 2
         self.tabGraveSummer= 3
+        self.tabGraveAutumn = 4
+        self.tabGraveWinter = 5
         try:
             self.win1.add_accel_group(self.accel_group)
         except Exception,  params:
@@ -286,8 +332,54 @@ class graveswindow(chooseWindows):
 
 
         
+        #Menu Autumn
         
+   
+    def on_AutumnSave1_activate(self, event):
+        self.out( "save GraveAutumn addresses v2")
+        self.singleGraveAutumn.graveID = self.singleGrave.ID
+        self.singleGraveAutumn.save()
+        self.setEntriesEditable(self.EntriesGravesAutumn, FALSE)
+        self.tabChanged()
         
+    def on_AutumnNew1_activate(self, event):
+        self.out( "new GraveAutumn addresses v2")
+        self.singleGraveAutumn.newRecord()
+        self.setEntriesEditable(self.EntriesGravesAutumn, TRUE)
+
+        
+    def on_AutumnEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesAutumn, TRUE)
+
+
+    def on_AutumnDelete1_activate(self, event):
+        self.out( "delete GraveAutumn addresses v2")
+        self.singleGraveAutumn.deleteRecord()
+
+        #Menu Winter
+        
+   
+    def on_WinterSave1_activate(self, event):
+        self.out( "save GraveWinter addresses v2")
+        self.singleGraveWinter.graveID = self.singleGrave.ID
+        self.singleGraveWinter.save()
+        self.setEntriesEditable(self.EntriesGravesWinter, FALSE)
+        self.tabChanged()
+        
+    def on_WinterNew1_activate(self, event):
+        self.out( "new GraveWinter addresses v2")
+        self.singleGraveWinter.newRecord()
+        self.setEntriesEditable(self.EntriesGravesWinter, TRUE)
+
+        
+    def on_WinterEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesWinter, TRUE)
+
+
+    def on_WinterDelete1_activate(self, event):
+        self.out( "delete GraveWinter addresses v2")
+        self.singleGraveWinter.deleteRecord()
+
         
 
 ##    def on_calendar1_day_selected(self, cal):
@@ -419,6 +511,9 @@ class graveswindow(chooseWindows):
         self.singleGraveMaintenance.disconnectTree()
         self.singleGraveSpring.disconnectTree()
         self.singleGraveSummer.disconnectTree()
+        self.singleGraveAutumn.disconnectTree()
+        self.singleGraveWinter.disconnectTree()
+        
         if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
@@ -435,13 +530,25 @@ class graveswindow(chooseWindows):
             self.singleGraveSpring.connectTree()
             self.singleGraveSpring.refreshTree()
             
+        
         elif self.tabOption == self.tabGraveSummer:
             print "1 tree "
             self.singleGraveSummer.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
             self.singleGraveSummer.connectTree()
             self.singleGraveSummer.refreshTree()
         
-
+        elif self.tabOption == self.tabGraveAutumn:
+            print "1 tree "
+            self.singleGraveAutumn.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveAutumn.connectTree()
+            self.singleGraveAutumn.refreshTree()
+            
+        elif self.tabOption == self.tabGraveWinter:
+            print "1 tree "
+            self.singleGraveWinter.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveWinter.connectTree()
+            self.singleGraveWinter.refreshTree()
+            
 
          
     def tabChanged(self):
@@ -488,6 +595,29 @@ class graveswindow(chooseWindows):
             self.editAction = 'editGraveSummer'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])   
+            
+            
+            
+        elif self.tabOption == self.tabGraveAutumn:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveAutumn')
+           
+            self.editAction = 'editGraveAutumn'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
+        
+        
+        elif self.tabOption == self.tabGrave:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('grave')
+           
+            self.editAction = 'editGrave'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
+    
+    
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)

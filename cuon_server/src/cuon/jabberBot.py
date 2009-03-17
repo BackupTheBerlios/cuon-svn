@@ -84,10 +84,10 @@ class jabberBot(xmlrpc.XMLRPC, basics):
         print u"from1: %s" % message["from"]
         send_from = message["from"].strip()
         
-        print unicode(message.__str__())
+        #print unicode(message.__str__())
         for e in message.elements():
             if e.name == "body":
-                print unicode(e.__str__())
+                #print unicode(e.__str__())
                 msg_body = unicode(e.__str__())
                 if msg_body.strip().lower()[0:5]  == 'login':
                     print 'login found'
