@@ -232,7 +232,7 @@ except Exception, params:
 
 import cuon.Order.order
 import cuon.Proposal.proposal
-import cuon.User
+import cuon.User.user
 import cuon.Preferences.preferences
 import cuon.PrefsFinance.prefsFinance
 
@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 46, 'Rev': 8 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 46, 'Rev': 11 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1177,6 +1177,15 @@ class MainWindow(windows):
             print self.Version['Rev'], version['Rev']
             print self.Version, version
             
+            self.openDB()
+            oUser = self.loadObject('User')
+            if not oUser:
+                oUser = cuon.User.user.User()
+            
+            oUser.client = 0
+            self.saveObject('User',oUser)
+            self.closeDB()
+                
             if not version:
                 print 'no Version, please inform Cuon-Administrator'
 
@@ -1195,6 +1204,7 @@ class MainWindow(windows):
             newClientExist = self.loadObject('newClientVersion')
             self.closeDB()
             if newClientExist:
+                
                 self.updateVersion()
                 self.openDB()
                 self.saveObject('ProgramVersion', self.Version)
@@ -1249,6 +1259,7 @@ class MainWindow(windows):
         oUser = self.loadObject('User')
         if not oUser:
             oUser = cuon.User.user.User()
+            
         oUser.client = 0
         self.saveObject('User',oUser)
         self.saveObject('Scheduling', [])

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>grave_work_spring</table_name>
+
+    <entry>
+      <name>eSingleArticleID</name>
+      <type>checkbox</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>article_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+     <entry>
+      <name>eSinglePrice</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_price</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+       </table>
+</entries_for_table>

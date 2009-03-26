@@ -436,6 +436,22 @@
     </Entries>
     <Entries>       
       <Entry-Name>cuon</Entry-Name>
+      <Entry-File>graves_year.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_graves_year.xml</Entry-FileValue>
+    </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>graves_holiday.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_graves_holiday.xml</Entry-FileValue>
+    </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>graves_single.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_graves_single.xml</Entry-FileValue>
+    </Entries>
+    
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
       <Entry-File>graveyard.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_graveyard.xml</Entry-FileValue>
     </Entries>

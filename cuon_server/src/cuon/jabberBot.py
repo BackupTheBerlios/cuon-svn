@@ -36,6 +36,8 @@ class jabberBot(xmlrpc.XMLRPC, basics):
         self.factory = client.basicClientFactory(self.me, self.JABBERPASSWORD)
         self.Server = xmlrpclib.ServerProxy(self.XMLRPC_PROTO + '://' + self.XMLRPC_HOST + ':' + `self.XMLRPC_PORT`)
         self.theXmlstream = None
+        self.dicUsers = {}
+        
         # Authorized
     def authd(self,  xmlstream):
         # need to send presence so clients know we're
@@ -45,7 +47,7 @@ class jabberBot(xmlrpc.XMLRPC, basics):
         self.theXmlstream = xmlstream
         self.theXmlstream.send(presence)
         self.theXmlstream.addObserver('/message', self.gotMessage)
-        self.dicUsers = {}
+        
     
     def create_reply(self,  elem):
         """ switch the 'to' and 'from' attributes to reply to this element """

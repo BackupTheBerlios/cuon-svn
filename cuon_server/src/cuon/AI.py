@@ -25,7 +25,7 @@ class AI(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
-        
+        print "AI now starting 1"
 
 
     def sendQuestion(self, question):
@@ -202,13 +202,18 @@ class AI(xmlrpc.XMLRPC, basics):
               self.writeLog('address_phone_ai1 SQL ' + `sSql`)
               #print `dicUser`
               #print sSql
+              print"o-1"
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+              print "o1"
               if result not in ['NONE','ERROR']:
                  ok = True
-        
+                 print "o2"
                  for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['id']` + ' -- ' +r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
-        
+                     try:
+                        answer = answer + "%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['id']` + ' -- ' +r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'] )
+                     except Exception,  params:
+                         print Exception,  params
+                     print "o3"
               sSql = "select ad.id as ad_id, ad.lastname as ad_lastname, ad.city as ad_city, pa.lastname as pa_lastname, pa.lastname2 as pa_lastname2, pa.firstname as pa_firstname, pa.phone1 as pa_phone1, pa.phone2 as pa_phone2 from partner as pa, address as ad "
               sSql = sSql +  "where ((pa.lastname ~* \'.*" + liAnswer[4] + '.*\''
               sSql = sSql + " or pa.lastname2 ~* \'.*" + liAnswer[4] + '.*\')'
@@ -221,17 +226,22 @@ class AI(xmlrpc.XMLRPC, basics):
                   
               sSql = sSql + self.getWhere('',dicUser,2, 'pa.')
               self.writeLog('address_phone_ai1_2 ' + `sSql`)
-                
+              print "r-1"  
               result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+              print "r0"
               if result not in ['NONE','ERROR']:
                  ok = True
-                 
+                 print "rstart"
                  for r1 in result:
-                    #print r1
-                    answer = answer + "%s%s\n%s\n%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['ad_id']`+ ' -- ' +r1['ad_lastname'] + ', ' +r1['ad_city'], r1['pa_lastname'],r1['pa_lastname2'],r1['pa_firstname'],r1['pa_phone1'], r1['pa_phone2'] )
+                    print "r1"
+                    try:
+                        answer = answer + "%s\n%s\n%s\n%s\n%s\n%s\n------------------------------------\n" %(`r1['ad_id']`+ ' -- ' +r1['ad_lastname'] + ', ' +r1['ad_city'], r1['pa_lastname'],r1['pa_lastname2'],r1['pa_firstname'],r1['pa_phone1'], r1['pa_phone2'] )
+                    except Exception,  param:
+                        print Exception,  param
+                        answer = "error in sql decoding"
 
-                    #print answer
-        if not ok:
+                    print "r2"
+        if not ok: 
                  answer = self.sendQuestion('NO PHONE FOUND')
         return answer
 
