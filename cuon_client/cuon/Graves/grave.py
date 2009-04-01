@@ -141,8 +141,8 @@ class graveswindow(chooseWindows):
   
         # set values for comboBox
 
-        liService = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
-        print liService        
+        liService,  liTypeOfGrave, liTypeOfPaid, liPercent = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        print liService   ,  liTypeOfGrave, liTypeOfPaid, liPercent
         cbService = self.getWidget('cbServiceType')
         if cbService:
             liststore = gtk.ListStore(str)
@@ -151,6 +151,33 @@ class graveswindow(chooseWindows):
             cbService.set_model(liststore)
             cbService.set_text_column(0)
             cbService.show()
+        
+        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
+        if cbTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbTypeOfGrave.set_model(liststore)
+            cbTypeOfGrave.set_text_column(0)
+            cbTypeOfGrave.show()
+
+        cbTypeOfPaid = self.getWidget('cbTypeOfPaid')
+        if cbTypeOfPaid:
+            liststore = gtk.ListStore(str)
+            for TypeOfPaid in liTypeOfPaid:
+                liststore.append([TypeOfPaid])
+            cbTypeOfPaid.set_model(liststore)
+            cbTypeOfPaid.set_text_column(0)
+            cbTypeOfPaid.show()
+
+        cbPercent = self.getWidget('cbPercent')
+        if cbPercent:
+            liststore = gtk.ListStore(str)
+            for Percent in liPercent:
+                liststore.append([Percent])
+            cbPercent.set_model(liststore)
+            cbPercent.set_text_column(0)
+            cbPercent.show()
 
         # Menu-items
         self.initMenuItems()

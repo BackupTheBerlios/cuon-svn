@@ -17,6 +17,26 @@ class Grave(xmlrpc.XMLRPC, basics):
         liService = ['NONE']
         if liService0:
             liService = liService0.split(',')
+        
+        liTypeOfGrave0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTypeOfGrave', cpServer)
+        liTypeOfGrave = ['NONE']
+        if liTypeOfGrave0:
+            liTypeOfGrave = liTypeOfGrave0.split(',')
+        
+        liTypeOfPaying0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTypeOfPaying', cpServer)
+        liTypeOfPaying = ['NONE']
+        if liTypeOfPaying0:
+            liTypeOfPaying = liTypeOfPaying0.split(',')
             
-        return liService
+        liPercents0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbPercentsGrave', cpServer)
+        liPercents = ['NONE']
+        if liPercents0:
+            liPercents = liPercents0.split(',')
+            
+        
+        
+        
+        
+        
+        return liService, liTypeOfGrave, liTypeOfPaying, liPercents
         

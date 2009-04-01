@@ -1725,11 +1725,9 @@ Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkComboBoxEntry" id="comboboxentry3">
+			<widget class="GtkComboBoxEntry" id="cbTypeOfPaid">
 			  <property name="visible">True</property>
-			  <property name="items" translatable="yes">2 Rechnungen
-jährliche Rechnung
-TBF Dauergrabpflege</property>
+			  <property name="items" translatable="yes"></property>
 			  <property name="add_tearoffs">False</property>
 			  <property name="has_frame">True</property>
 			  <property name="focus_on_click">True</property>
@@ -1756,22 +1754,11 @@ TBF Dauergrabpflege</property>
 		      <property name="spacing">0</property>
 
 		      <child>
-			<widget class="GtkLabel" id="label86">
+			<widget class="GtkComboBoxEntry" id="cbTypeOfGrave">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Grabart</property>
-			  <property name="use_underline">False</property>
-			  <property name="use_markup">False</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">2</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
+			  <property name="add_tearoffs">False</property>
+			  <property name="has_frame">True</property>
+			  <property name="focus_on_click">True</property>
 			</widget>
 			<packing>
 			  <property name="padding">0</property>
@@ -1781,16 +1768,7 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkComboBox" id="combobox1">
-			  <property name="visible">True</property>
-			  <property name="add_tearoffs">False</property>
-			  <property name="focus_on_click">True</property>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
-			</packing>
+			<placeholder/>
 		      </child>
 		    </widget>
 		    <packing>
@@ -1848,18 +1826,9 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkComboBoxEntry" id="comboboxentry5">
+			<widget class="GtkComboBoxEntry" id="cbPercent">
 			  <property name="visible">True</property>
-			  <property name="items" translatable="yes">100%
-90%
-80%
-70%
-60%
-50%
-40%
-30%
-20%
-10%</property>
+			  <property name="items" translatable="yes"></property>
 			  <property name="add_tearoffs">False</property>
 			  <property name="has_frame">True</property>
 			  <property name="focus_on_click">True</property>
@@ -1910,7 +1879,7 @@ TBF Dauergrabpflege</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entry7">
+			<widget class="GtkEntry" id="eContractID">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2083,7 +2052,7 @@ TBF Dauergrabpflege</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry2">
+		    <widget class="GtkEntry" id="eGraveNumber">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>

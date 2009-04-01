@@ -1086,7 +1086,61 @@
       <default />
       <comment />
     </field>
-    </table>
+    
+    <field>
+      <name>grave_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>150</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>type_of_grave</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>type_of_paid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>percents</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+   
+    
+     <field>
+      <name>contract_id</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default />
+      <comment />
+    </field>
+     </table>
       <table>
     <nameOfTable>t_grave_work</nameOfTable>
     <specials>inherits (t_standard);</specials>
