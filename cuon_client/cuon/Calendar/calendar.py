@@ -28,7 +28,43 @@ class calendarwindow(windows):
         #self.win1 = self.getWidget('AddressMainwindow')
         self.win1.maximize()
         
+        # Set Values for SchedulTree
+        tCal = self.getWidget('tCalendars')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn(_("Calendar"), renderer, text=0)
+        tCal.append_column(column)
+        
+        # Set Values for AllSchedulTree
+        tAll = self.getWidget('tAllScheduls')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn(_("Calendar"), renderer, text=0)
+        tAll.append_column(column)
         
         
+        # Set Values for SchedulTree
+        tCustom = self.getWidget('tCustom')
+        #treeview.set_model(liststore)
+ 
+        renderer = gtk.CellRendererText()
+        column = gtk.TreeViewColumn(_("Calendar"), renderer, text=0)
+        tCustom.append_column(column)
+
+        self.CalendarChanged()
+        
+
+
+    def on_calendar1_day_selected(self, event):
+            
+        self.CalendarChanged()
+        
+        
+    def CalendarChanged(self):
+        oCal = self.getWidget('calendar1')
+        oDate = oCal.get_date()
+        print oDate
         
         

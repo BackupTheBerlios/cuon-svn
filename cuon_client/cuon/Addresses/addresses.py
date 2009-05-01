@@ -1190,7 +1190,7 @@ class addresswindow(chooseWindows):
             ts.show()
             #self.getWidget('scrolledwindow10').show()
             self.connectSchedulTree()
-            print 'ts', ts
+            #print 'ts', ts
             
         except Exception, params:
             print Exception, params    

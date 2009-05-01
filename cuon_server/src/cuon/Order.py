@@ -209,7 +209,7 @@ class Order(xmlrpc.XMLRPC, basics):
             sFields, sValues = self.getNormalSqlData(dicUser, False, False)
             sSql1 = "update list_of_invoices set total_amount = " +  `self.getTotalSum(orderNumber, dicUser)` 
             liFields = sFields.split(', ')
-            for counter in range(liFields):
+            for counter in range(len(liFields)):
                 sSql1 += ",  " + sFields[counter] + "=" + sValues[counter]
             
             sSql += " where order_number = " + `orderNumber` 
@@ -550,9 +550,10 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getUserInfoOrder(self, dicOrder, dicUser):
         return None
-    def xmlrpc_getUserInfoInvoce(self, dicOrder, dicUser):
+        
+    def xmlrpc_getUserInfoInvoice(self, dicOrder, dicUser):
         sSql = 'select * from staff, list_of_invoices as lii where cuon_username =  lii.user_id and lii.invoice_number = ' + `dicOrder['invoiceNumber'] ` 
-        Sql += self.getWhere(None,dicUser,2,'list_of_invoices.')
+        sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
     
     def getListOfInvoices( self, dicOrder, dicUser ):

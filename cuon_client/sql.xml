@@ -335,6 +335,37 @@
         <index_table>list_of_invoices</index_table>
         <index_column>total_amount</index_column>
     </index>
+    
+    <index>
+        <index_name> in_payment_idx_inpayment</index_name>
+        <index_special> </index_special>
+        <index_table>in_payment</index_table>
+        <index_column>inpayment</index_column>
+    </index>
+    
+    <index>
+        <index_name> in_payment_idx_date_of_paid</index_name>
+        <index_special> </index_special>
+        <index_table>in_payment</index_table>
+        <index_column>date_of_paid</index_column>
+    </index>
+    
+    
+      <index>
+        <index_name> in_payment_idx_account_id</index_name>
+        <index_special> </index_special>
+        <index_table>in_payment</index_table>
+        <index_column>account_id</index_column>
+    </index>
+    
+      <index>
+        <index_name> in_payment_idx_order_id</index_name>
+        <index_special> </index_special>
+        <index_table>in_payment</index_table>
+        <index_column>order_id</index_column>
+    </index>
+    
+    
     <index>
         <index_name> staff_idx_cuon_username</index_name>
         <index_special> </index_special>

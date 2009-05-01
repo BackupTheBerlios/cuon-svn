@@ -307,7 +307,20 @@
 	  </child>
 
 	  <child>
-	    <placeholder/>
+	    <widget class="GtkToolItem" id="toolitem1">
+	      <property name="visible">True</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+
+	      <child>
+		<placeholder/>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">False</property>
+	    </packing>
 	  </child>
 
 	  <child>
@@ -328,33 +341,13 @@
 	  <property name="spacing">0</property>
 
 	  <child>
-	    <widget class="GtkVBox" id="vbox2">
+	    <widget class="GtkHBox" id="hbox2">
 	      <property name="visible">True</property>
 	      <property name="homogeneous">False</property>
 	      <property name="spacing">0</property>
 
 	      <child>
-		<widget class="GtkCalendar" id="calendar1">
-		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
-		  <signal name="day_selected" handler="on_calendar1_day_selected" last_modification_time="Wed, 31 Oct 2007 14:16:38 GMT"/>
-		  <signal name="day_selected_double_click" handler="on_calendar1_day_selected_double_click" last_modification_time="Wed, 31 Oct 2007 14:16:43 GMT"/>
-		  <signal name="month_changed" handler="on_calendar1_month_changed" last_modification_time="Wed, 31 Oct 2007 14:16:49 GMT"/>
-		  <signal name="next_month" handler="on_calendar1_next_month" last_modification_time="Wed, 31 Oct 2007 14:17:04 GMT"/>
-		  <signal name="next_year" handler="on_calendar1_next_year" last_modification_time="Wed, 31 Oct 2007 14:17:10 GMT"/>
-		  <signal name="prev_month" handler="on_calendar1_prev_month" last_modification_time="Wed, 31 Oct 2007 14:17:16 GMT"/>
-		  <signal name="prev_year" handler="on_calendar1_prev_year" last_modification_time="Wed, 31 Oct 2007 14:17:20 GMT"/>
-		</widget>
-		<packing>
-		  <property name="padding">0</property>
-		  <property name="expand">True</property>
-		  <property name="fill">True</property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkScrolledWindow" id="scrolledwindow1">
+		<widget class="GtkScrolledWindow" id="scrolledwindow2">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
@@ -363,7 +356,7 @@
 		  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 		  <child>
-		    <widget class="GtkTreeView" id="treeview1">
+		    <widget class="GtkTreeView" id="tCalendars">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="headers_visible">True</property>
@@ -384,7 +377,70 @@
 	      </child>
 
 	      <child>
-		<placeholder/>
+		<widget class="GtkVBox" id="vbox4">
+		  <property name="visible">True</property>
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkCalendar" id="calendar1">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="display_options">GTK_CALENDAR_SHOW_HEADING|GTK_CALENDAR_SHOW_DAY_NAMES</property>
+		      <signal name="day_selected" handler="on_calendar1_day_selected" last_modification_time="Wed, 31 Oct 2007 14:16:38 GMT"/>
+		      <signal name="day_selected_double_click" handler="on_calendar1_day_selected_double_click" last_modification_time="Wed, 31 Oct 2007 14:16:43 GMT"/>
+		      <signal name="month_changed" handler="on_calendar1_month_changed" last_modification_time="Wed, 31 Oct 2007 14:16:49 GMT"/>
+		      <signal name="next_month" handler="on_calendar1_next_month" last_modification_time="Wed, 31 Oct 2007 14:17:04 GMT"/>
+		      <signal name="next_year" handler="on_calendar1_next_year" last_modification_time="Wed, 31 Oct 2007 14:17:10 GMT"/>
+		      <signal name="prev_month" handler="on_calendar1_prev_month" last_modification_time="Wed, 31 Oct 2007 14:17:16 GMT"/>
+		      <signal name="prev_year" handler="on_calendar1_prev_year" last_modification_time="Wed, 31 Oct 2007 14:17:20 GMT"/>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkScrolledWindow" id="scrolledwindow3">
+		      <property name="visible">True</property>
+		      <property name="can_focus">True</property>
+		      <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		      <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
+		      <property name="shadow_type">GTK_SHADOW_IN</property>
+		      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+		      <child>
+			<widget class="GtkTreeView" id="tAllScheduls">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="headers_visible">True</property>
+			  <property name="rules_hint">False</property>
+			  <property name="reorderable">False</property>
+			  <property name="enable_search">True</property>
+			  <property name="fixed_height_mode">False</property>
+			  <property name="hover_selection">False</property>
+			  <property name="hover_expand">True</property>
+			</widget>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
 	      </child>
 	    </widget>
 	    <packing>
@@ -395,9 +451,27 @@
 	  </child>
 
 	  <child>
-	    <widget class="GtkFixed" id="containerSchedules">
-	      <property name="width_request">820</property>
+	    <widget class="GtkScrolledWindow" id="scrolledwindow1">
 	      <property name="visible">True</property>
+	      <property name="can_focus">True</property>
+	      <property name="hscrollbar_policy">GTK_POLICY_ALWAYS</property>
+	      <property name="vscrollbar_policy">GTK_POLICY_ALWAYS</property>
+	      <property name="shadow_type">GTK_SHADOW_IN</property>
+	      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
+
+	      <child>
+		<widget class="GtkTreeView" id="tCustom">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="headers_visible">True</property>
+		  <property name="rules_hint">False</property>
+		  <property name="reorderable">False</property>
+		  <property name="enable_search">True</property>
+		  <property name="fixed_height_mode">False</property>
+		  <property name="hover_selection">False</property>
+		  <property name="hover_expand">False</property>
+		</widget>
+	      </child>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>

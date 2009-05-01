@@ -350,11 +350,11 @@ def drawGrid(c, year, month, width, height):
                 y = 0 - pos / 7 * grid_h
 
                 # paint a rounded rectangle
-		c.saveState()
+                c.saveState()
                 c.setStrokeColor(dayboxfgcolor)
                 c.setFillColor(dayboxbgcolor)
                 c.roundRect(x, y, grid_w - gridspace, grid_h - gridspace, gridspace, fill=1)
-		c.restoreState()
+                c.restoreState()
 
                 # handle special days
                 items = []
