@@ -65,7 +65,7 @@ class invoicebookwindow(windows):
         self.singleListOfInvoice.setGladeXml(self.xml)
         self.singleListOfInvoice.setTreeFields( ['invoice_number', 'order_number','date_of_invoice','total_amount'] )
         self.singleListOfInvoice.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleListOfInvoice.setTreeOrder('invoice_number,order_number')
+        self.singleListOfInvoice.setTreeOrder('invoice_number desc,order_number desc')
         self.singleListOfInvoice.setListHeader([_('Invoice-Nr.'), _('Order-Nr.'), _('Date'),_('Amount')])
         self.singleListOfInvoice.setTree(self.xml.get_widget('tree1') )
 

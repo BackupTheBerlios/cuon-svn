@@ -74,6 +74,23 @@
 
       <fg_color>0</fg_color>
     </entry>
+<entry>
+      <name>eOrderNumber</name>
+
+      <type>textline</type>
+
+      <size>120</size>
+
+      <verify_type>string</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>customers_ordernumber</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
 
     <entry>
       <name>eAddressNumber</name>
@@ -92,7 +109,23 @@
 
       <fg_color>0</fg_color>
     </entry>
+<entry>
+      <name>ePartnerID</name>
 
+      <type>textline</type>
+
+      <size>20</size>
+
+      <verify_type>int</verify_type>
+
+      <create_sql>1</create_sql>
+
+      <sql_field>customers_partner_id</sql_field>
+
+      <bg_color>0</bg_color>
+
+      <fg_color>0</fg_color>
+    </entry>
     <entry>
       <name>ePacking</name>
 
