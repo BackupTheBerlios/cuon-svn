@@ -97,7 +97,7 @@
                         <child>
                           <widget class="GtkMenu" id="print1_menu">
                             <child>
-                              <widget class="GtkMenuItem" id="invoice1">
+ i                             <widget class="GtkMenuItem" id="print_invoice1">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">aktuelle Rechnung</property>
                                 <property name="use_underline">True</property>
@@ -1709,6 +1709,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                             <property name="receives_default">True</property>
                             <property name="label" translatable="yes">Gesprächspartnersuche</property>
                             <property name="response_id">0</property>
+                            <signal name="clicked" handler="on_bSearchPartnerID_clicked"/>
                           </widget>
                           <packing>
                             <property name="position">1</property>
@@ -1720,6 +1721,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                             <property name="receives_default">True</property>
                             <property name="label" translatable="yes">Gehe zu Gesprächspartner</property>
                             <property name="response_id">0</property>
+                            <signal name="clicked" handler="on_bSearchPartner_clicked"/>
                           </widget>
                           <packing>
                             <property name="position">2</property>
