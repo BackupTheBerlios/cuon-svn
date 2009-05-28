@@ -18,7 +18,7 @@ class setup:
         self.Protocol = None
         self.CuonAdmin = None
         self.store = []
-        self.liLocale = ['de','pt','pt_BR']
+        self.liLocale = ['de','pt','pt_BR', 'nl', 'it', 'lv']
 
         self.xml = None
         self.xmlAutoconnect = False

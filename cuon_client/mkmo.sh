@@ -19,6 +19,12 @@ echo "creating portuguese"
 msgmerge -U pt.po messages.pot
 echo "creating portuguese_brasilian"
 msgmerge -U pt_BR.po messages.pot
+echo "creating latvian"
+msgmerge -U lv.po messages.pot
+echo "creating italian"
+msgmerge -U it.po messages.pot
+echo "creating dutch"
+msgmerge -U nl.po messages.pot
 
 echo "finish"
 

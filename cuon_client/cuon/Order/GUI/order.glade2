@@ -132,7 +132,7 @@
 			<widget class="GtkMenu" id="print1_menu">
 
 			  <child>
-			    <widget class="GtkMenuItem" id="invoice1">
+			    <widget class="GtkMenuItem" id="print_invoice1">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">single Invoice</property>
 			      <property name="use_underline">True</property>

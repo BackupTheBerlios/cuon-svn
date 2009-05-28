@@ -60,7 +60,15 @@ import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
 import cuon.Project.project
 import cuon.Finances.invoicebook
-
+bHtml = False
+try:
+    import gtkhtml2
+    import gtkmozembed as moz
+    bHtml = True
+except:
+    print 'gtkhtml not found'
+   
+    
 class addresswindow(chooseWindows):
 
     
@@ -75,7 +83,7 @@ class addresswindow(chooseWindows):
         self.connectInvoicesTreeId = None
         self.connectOfferTreeId = None
         self.connectProjectTreeId = None
-        
+        self.bHtml = bHtml
         self.OrderID = 0
         self.ProposalID = 0
         #print 'time 1 = ', time.localtime()
@@ -343,6 +351,7 @@ class addresswindow(chooseWindows):
         self.tabOrder = 7
         self.tabInvoice = 8
         self.tabProject = 9 
+        self.tabHtml = 10
         
         
         # Set Values for SchedulTree
@@ -381,12 +390,21 @@ class addresswindow(chooseWindows):
 
         # some Variables
         self.notebook2 = self.getWidget('notebook2')
-        self.tabChanged()
+        
+        print "bHtml = ", self.bHtml
+        if self.bHtml:
+            self.mapmoz = moz.MozEmbed()
+            self.swMap = self.getWidget('swMap')
+            self.swMap.add(self.mapmoz)
+            
+        else:
+            self.mapmoz = None
+            
         
         self.win1.add_accel_group(self.accel_group)
         #print 'time 21 = ', time.localtime()
         
-        
+        self.tabChanged()
     
     #Menu File
               
@@ -1783,6 +1801,18 @@ class addresswindow(chooseWindows):
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setProjectValues()
+        elif self.tabOption == self.tabHtml:
+            #http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q=schulstr.14,32584&ie=UTF8&t=m
+            if self.mapmoz:
+                sUrl1 = 'http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q='
+                sUrl2= '&ie=UTF8&t=m'
+                sUrl = sUrl1 + self.singleAddress.getStreet()+',' + self.singleAddress.getZip() + sUrl2
+                print self.singleAddress.getStreet(), self.singleAddress.getZip()
+                print sUrl
+                self.mapmoz.load_url(sUrl)
+                #self.mapmoz.set_size_request(816,600)
+                self.mapmoz.show()
+            
 
         # refresh the Tree
         self.refreshTree()
