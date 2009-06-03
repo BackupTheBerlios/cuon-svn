@@ -157,6 +157,8 @@ class windows(rawWindow, MyXML, messages):
         # entry.add_accelerator("grab_focus", accel_group, 'e', 
         # gtk.GDK.CONTROL_MASK, 0)
 
+        self.NameOfTree = 'tree1'
+        self.sb_id = None
         
     def closeWindow(self):
         self.saveDataQuestion()
@@ -303,11 +305,11 @@ class windows(rawWindow, MyXML, messages):
 
         
         
-    def setStatusBar(self):
+    def setStatusBar(self, sVbox = 'vbox1'):
         self.printOut( '###----> Statusbar <----###')
 
         self.statusbar = gtk.Statusbar()
-        vbox = self.getWidget('vbox1')
+        vbox = self.getWidget(sVbox)
         if vbox:
             self.printOut( '###----> vbox exist')
             vbox.pack_end(self.statusbar,expand=False)
@@ -323,9 +325,9 @@ class windows(rawWindow, MyXML, messages):
 
     def setTreeVisible(self, ok):
         if ok:
-            self.getWidget('tree1').set_sensitive(True)
+            self.getWidget(self.NameOfTree).set_sensitive(True)
         else:
-            self.getWidget('tree1').set_sensitive(False)
+            self.getWidget(self.NameOfTree).set_sensitive(False)
             
             
     def startProgressBar(self, Pulse = False, Title=None):

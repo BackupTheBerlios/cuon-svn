@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-20 20:16+0200\n"
-"PO-Revision-Date: 2009-05-21 14:09+0100\n"
+"PO-Revision-Date: 2009-05-29 13:41+0100\n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
-"Language-Team: <de@li.org>\n"
+"Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2072,13 +2072,15 @@ msgstr "Zugestellt: "
 #: cuon/Garden/GUI/src/interface.c:584
 #, fuzzy
 msgid "fetched"
-msgstr "Eins geholt\n"
+msgstr ""
+"Eins geholt\n"
 "%n geholt"
 
 #: cuon/Garden/GUI/src/interface.c:596
 #, fuzzy
 msgid "Fetched"
-msgstr "Eins geholt\n"
+msgstr ""
+"Eins geholt\n"
 "%n geholt"
 
 #: cuon/Garden/GUI/src/interface.c:602
@@ -3528,7 +3530,7 @@ msgstr "Letzte mahnung"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:378
 msgid "Summons"
-msgstr ""
+msgstr "Vorladung"
 
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:389
 #, fuzzy
@@ -4045,7 +4047,7 @@ msgstr "Gehört zur Kategorie"
 
 #: cuon/User/GUI/src/interface.c:382
 msgid "avaible\n"
-msgstr ""
+msgstr "verfügbar\n"
 
 #: cuon/User/GUI/src/interface.c:410
 #: cuon/Clients/GUI/src/interface.c:90

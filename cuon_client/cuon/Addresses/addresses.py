@@ -114,7 +114,7 @@ class addresswindow(chooseWindows):
         #self.win1 = self.getWidget('AddressMainwindow')
         self.win1.maximize()
         
-        self.setStatusBar()
+        self.setStatusBar('vb_main')
         #print 'time 3 = ', time.localtime()
  
         # Trees for Proposal,  Order and Invoice
@@ -149,7 +149,7 @@ class addresswindow(chooseWindows):
         if addrid > 0:
             self.singleAddress.sWhere = ' where id = ' + `addrid`
             
-        self.singleAddress.setTree(self.xml.get_widget('tree1') )
+        self.singleAddress.setTree(self.xml.get_widget('tv_address') )
         #print 'time 5 = ', time.localtime()
         
         #singleAddressBank
@@ -164,7 +164,7 @@ class addresswindow(chooseWindows):
         self.singleAddressBank.setListHeader([_('Depositor'), _('Account'), _('Bank')])
 
         self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleAddressBank.setTree(self.xml.get_widget('tree1') )
+        self.singleAddressBank.setTree(self.xml.get_widget('tv_bank') )
         #print 'time 6 = ', time.localtime()
 
 
@@ -178,7 +178,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.setTreeOrder('id')
         
         self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleMisc.setTree(self.xml.get_widget('tree1') )
+        #self.singleMisc.setTree(self.xml.get_widget('tv_misc') )
         # self.singleMisc.setStore(gtk.ListStore())
         #singlePartner
         #print 'time 7 = ', time.localtime()
@@ -196,7 +196,7 @@ class addresswindow(chooseWindows):
         if partnerid > 0:
             pass
             #self.singlePartner.sWhere  += ' and id = ' + `partnerid`
-        self.singlePartner.setTree(self.xml.get_widget('tree1') )
+        self.singlePartner.setTree(self.xml.get_widget('tv_partner') )
         #print 'time 8 = ', time.localtime()
 
 
@@ -215,7 +215,7 @@ class addresswindow(chooseWindows):
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
-        self.singleSchedul.setTree(self.xml.get_widget('tree1') )
+        self.singleSchedul.setTree(self.xml.get_widget('tv_scheduls') )
   
         #print 'time 9 = ', time.localtime()
 
@@ -228,7 +228,7 @@ class addresswindow(chooseWindows):
         self.singleAddressNotes.setTreeOrder('id')
         
         self.singleAddressNotes.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleAddressNotes.setTree(self.xml.get_widget('tree1') )
+        #self.singleAddressNotes.setTree(self.xml.get_widget('tv_address') )
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
@@ -903,7 +903,7 @@ class addresswindow(chooseWindows):
     # choose Address
         
     def on_tree1_row_activated(self, event, data1, data2):
-        print 'DoubleClick tree1'
+        print 'DoubleClick tv_address'
         self.activateClick('chooseAddress', event)
 
 
@@ -1697,7 +1697,7 @@ class addresswindow(chooseWindows):
             self.actualEntries = self.singleAddress.getEntries()
             self.editAction = 'editAddress'
             self.setStatusbarText([''])
-          
+            self.NameOfTree = 'tv_address'
             self.setTreeVisible(True)
             
 
@@ -1710,6 +1710,7 @@ class addresswindow(chooseWindows):
             self.enableMenuItem('bank')
            
             self.editAction = 'editBank'
+            self.NameOfTree = 'tv_bank'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
@@ -1720,7 +1721,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
-            self.setTreeVisible(False)
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -1734,6 +1735,7 @@ class addresswindow(chooseWindows):
             
             self.out( 'Seite 1')
             self.editAction = 'editPartner'
+            self.NameOfTree = 'tv_partner'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
@@ -1746,6 +1748,7 @@ class addresswindow(chooseWindows):
             
             self.out( 'Seite 4')
             self.editAction = 'editSchedul'
+            self.NameOfTree = 'tv_scheduls'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singlePartner.sStatus])
             self.getWidget('rbBeginDate').set_active(True)
@@ -1757,7 +1760,8 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('notes')
             self.editAction = 'editNotes'
-            self.setTreeVisible(False)
+            #self.NameOfTree = 'tv_scheduls'
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
         elif self.tabOption == self.tabOrder:
@@ -1766,7 +1770,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('order')
             self.editAction = 'editOrder'
-            self.setTreeVisible(False)
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setOrderValues()
             
@@ -1776,7 +1780,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('order')
             self.editAction = 'editOrder'
-            self.setTreeVisible(False)
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setProposalValues()
             
@@ -1787,7 +1791,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             #self.enableMenuItem('Invoice')
             self.editAction = 'editInvoice'
-            self.setTreeVisible(False)
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setInvoiceValues()
         
@@ -1798,7 +1802,7 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('project')
             self.editAction = 'editProject'
-            self.setTreeVisible(False)
+            #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setProjectValues()
         elif self.tabOption == self.tabHtml:
@@ -1812,7 +1816,7 @@ class addresswindow(chooseWindows):
                 self.mapmoz.load_url(sUrl)
                 #self.mapmoz.set_size_request(816,600)
                 self.mapmoz.show()
-            
+        
 
         # refresh the Tree
         self.refreshTree()

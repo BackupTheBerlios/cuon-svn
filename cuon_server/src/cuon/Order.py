@@ -216,7 +216,7 @@ class Order(xmlrpc.XMLRPC, basics):
             sSql1 += self.getWhere(None,dicUser,2)
             print sSql1
             self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
-            
+        
         if dicResult not in ['NONE','ERROR']:
             nr = dicResult[0]['invoice_number']
         else:
