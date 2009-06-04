@@ -100,7 +100,7 @@ class addresswindow(chooseWindows):
         self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         
-       
+        
         
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()

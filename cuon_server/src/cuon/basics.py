@@ -806,18 +806,26 @@ class basics(xmlrpc.XMLRPC):
         
     def  getNormalSqlData(self,  dicUser, braces=True,  coma=True):
         print `dicUser`
-        sFields = ' '
-        sValues = ' '
-        if coma:
-            sFields = ', '
-            sValues = ', '
-        sFields += 'client  '
-        sValues += `dicUser['client']` + ' '
-        if braces:
-            sFields += ' )'
-            sValues += ')'
+        liFields = []
+        liValues = []
         
-        return sFields,  sValues
+        sF = 'client '
+        sV = `dicUser['client']` + ' '
+        
+        #set to every sf,sv the coma
+        if coma:
+            sF =  ', ' + sF
+            sV =  ', ' + sV
+            
+        # set at last sf, sv the braces
+        if braces:
+            sF +=  ' )'
+            sV +=  ')'
+        
+        liFields.append( sF)
+        liValues.append( sV)
+        
+        return liFields,  liValues
         
         
         
