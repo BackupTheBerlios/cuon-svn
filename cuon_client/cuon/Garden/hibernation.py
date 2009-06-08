@@ -333,7 +333,20 @@ class hibernationwindow(chooseWindows):
         #Pdf = hibernation_outgoing_document.hibernation_outgoing_document(dicOrder)
 
 
-
+    def on_all_invoices1_activate(self, event):
+         notWrittenIDs = self.rpc.callRP('Garden.getHibsWithoutInvoices', self.dicUser)
+         oldId = self.singleHibernation.ID
+         for dirSingleID in notWrittenIDs:
+             singleID = dirSingleID['id']
+             if singleID > 0:
+                 self.singleHibernation.load(singleID)
+                 self.on_print_pickup_document1_activate(event)
+            
+        # turn to old id  back
+         self.singleHibernation.load(oldId)
+                                         
+        
+        
     def on_chooseHibernation_activate(self, event):
         # choose Hibernation from other Modul
         self.setChooseValue(self.singleHibernation.ID)

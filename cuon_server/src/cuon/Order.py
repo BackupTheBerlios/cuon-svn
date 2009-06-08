@@ -35,7 +35,7 @@ class Order(xmlrpc.XMLRPC, basics):
             oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
             dicResult =  oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        
+    
         if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['delivery_number']
         return nr

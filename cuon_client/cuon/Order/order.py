@@ -1030,15 +1030,15 @@ class orderwindow(chooseWindows):
     #def  on_tbCreateOrder_clicked (self, event):
      #   self.on_create_order1_activate(event)
         
-    def on_tbNew_clicked(selfself,  event):
+    def on_tbNew_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_new1_activate(event)
             
-    def on_tbEdit_clicked(selfself,  event):
+    def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_edit1_activate(event)
             
-    def on_tbSave_clicked(selfself,  event):
+    def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_save1_activate(event)    
     

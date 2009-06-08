@@ -484,4 +484,16 @@ class Garden(xmlrpc.XMLRPC, basics):
         if liResult and liResult not in ['NONE','ERROR']:
             id = liResult[0]['id']
         return id 
+    def xmlrpc_getHibsWithoutInvoices(self, dicUser):
+        sSql = "select id from hibernation where  status_invoice_printed = false "
+        sSql += self.getWhere("",dicUser,2)
         
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if liResult and liResult not in ['NONE','ERROR']:
+            # all ok
+            print "ok"
+            
+        else:
+            liResult = [{'id':0}]
+            print liResult 
+        return liResult
