@@ -339,11 +339,13 @@ class hibernationwindow(chooseWindows):
          for dirSingleID in notWrittenIDs:
              singleID = dirSingleID['id']
              if singleID > 0:
-                 self.singleHibernation.load(singleID)
+                 print "singleID",  singleID
+                 self.singleHibernation.fillEntries(singleID)
+                 
                  self.on_print_pickup_document1_activate(event)
             
         # turn to old id  back
-         self.singleHibernation.load(oldId)
+         self.singleHibernation.fillEntries(oldId)
                                          
         
         
