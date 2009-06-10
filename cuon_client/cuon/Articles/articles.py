@@ -89,7 +89,7 @@ class articleswindow(chooseWindows):
         self.singleArticle.setTreeFields( ['number', 'designation'] )
 #        self.singleArticle.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleArticle.setTreeOrder('number, designation')
-        self.singleArticle.setTree(self.xml.get_widget('tree1') )
+        self.singleArticle.setTree(self.xml.get_widget('tv_article') )
         self.singleArticle.setListHeader(['number', 'designation', ])
         
          #singleArticlePurchase
@@ -103,7 +103,7 @@ class articleswindow(chooseWindows):
 #        self.singleArticlePurchase.setListHeader([''])
 
         self.singleArticlePurchase.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
-        self.singleArticlePurchase.setTree(self.xml.get_widget('tree1') )
+        self.singleArticlePurchase.setTree(self.xml.get_widget('tv_purchase') )
   
      #singleArticleSales
         
@@ -116,7 +116,7 @@ class articleswindow(chooseWindows):
         self.singleArticleSales.setListHeader([_('Designation')])
 
         self.singleArticleSales.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
-        self.singleArticleSales.setTree(self.xml.get_widget('tree1') )
+        self.singleArticleSales.setTree(self.xml.get_widget('tv_sale') )
 
   
   #singleArticleWebshop
@@ -130,7 +130,7 @@ class articleswindow(chooseWindows):
    ##     self.singleArticleWebshop.setListHeader([_('article')])
 
         self.singleArticleWebshop.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
-        self.singleArticleWebshop.setTree(self.xml.get_widget('tree1') )
+        #self.singleArticleWebshop.setTree(self.xml.get_widget('tree1') )
 
     #singleArticleStock
         
@@ -143,7 +143,7 @@ class articleswindow(chooseWindows):
 ##        self.singleArticleStock.setListHeader([_('Designation')])
 
         self.singleArticleStock.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
-        self.singleArticleStock.setTree(self.xml.get_widget('tree1') )
+        #self.singleArticleStock.setTree(self.xml.get_widget('tree1') )
   
         
 
@@ -536,15 +536,17 @@ class articleswindow(chooseWindows):
         self.singleArticlePurchase.disconnectTree()
         
         if self.tabOption == self.tabArticle:
+            self.singleArticle.setTreeSensitive(True)
             self.singleArticle.connectTree()
             self.singleArticle.refreshTree()
             self.on_cbAssociatedWith_changed(None)
-
+            self.singleArticle.connectTree()
+            self.singleArticle.refreshTree()
         elif self.tabOption == self.tabPurchase:
             self.singleArticlePurchase.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
             self.singleArticlePurchase.connectTree()
             self.singleArticlePurchase.refreshTree()
-
+            self.singleArticlePurchase.setTreeSensitive(True)
         elif self.tabOption == self.tabSales:
             self.singleArticleSales.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
             self.singleArticleSales.connectTree()
@@ -578,7 +580,7 @@ class articleswindow(chooseWindows):
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
-        self.setTreeVisible(True)
+        
         if self.tabOption == self.tabArticle:
             #Address
             self.disableMenuItem('tabs')
@@ -602,14 +604,14 @@ class articleswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleWebshop'
-            self.setTreeVisible(False)
+            self.singleArticleWebshop.setTreeSensitive(False)
             print 'Seite 3'
 
         elif self.tabOption == self.tabStock:
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleStock'
-            self.setTreeVisible(False)
+            
             print 'Seite 4'
             
         # refresh the Tree

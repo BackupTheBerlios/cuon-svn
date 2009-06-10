@@ -302,7 +302,13 @@ class SingleData(gladeXml, logs):
 
     def connectTree(self):
         self.connectTreeId = self.tree1.get_selection().connect("changed", self.tree_select_callback)
-        
+    
+    def setTreeSensitive(self, ok):
+        if ok:
+            self.tree1.set_sensitive(True)
+        else:
+            self.tree1.set_sensitive(False)
+            
     def refreshTree(self, Full=True):
         if Full:
             self.setEmptyEntries()

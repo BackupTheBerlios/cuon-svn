@@ -64,7 +64,7 @@ bHtml = False
 try:
     import gtkhtml2
     import gtkmozembed as moz
-    bHtml = True
+   
 except:
     print 'gtkhtml not found'
    
@@ -79,7 +79,7 @@ class addresswindow(chooseWindows):
         self.connectSchedulTreeId = None
         self.connectOrderTreeId = None
         self.connectProposalTreeId = None
-        
+        self.firstGtkMozStart = True 
         self.connectInvoicesTreeId = None
         self.connectOfferTreeId = None
         self.connectProjectTreeId = None
@@ -390,26 +390,37 @@ class addresswindow(chooseWindows):
 
         # some Variables
         self.notebook2 = self.getWidget('notebook2')
-        
-        print "bHtml = ", self.bHtml
-        if self.bHtml:
-            self.mapmoz = moz.MozEmbed()
-            self.swMap = self.getWidget('swMap')
-            self.swMap.add(self.mapmoz)
-            
-        else:
-            self.mapmoz = None
-            
+        self.swMap = self.getWidget('swMap')
+        self.mapmoz = None
+#        self.mapmoz = None
+#        try:
+#            self.mapmoz = moz.MozEmbed()
+#            self.swMap = self.getWidget('swMap')
+#        except:
+#            print "gtkmoz error"
+#            self.mapmoz = None
+#            
         
         self.win1.add_accel_group(self.accel_group)
         #print 'time 21 = ', time.localtime()
         
         self.tabChanged()
-    
+        
+        
+    def CleanUp(self):
+        print "cleanUp"
+        try:
+            if self.mapmoz:
+                self.swMap.remove(self.mapmoz)
+        except  Exception, param:
+            print Exception, param
+            
+            
     #Menu File
               
     def on_quit1_activate(self, event):
         self.out( "exit addresses v2")
+        
         self.closeWindow() 
         
         
@@ -1688,7 +1699,7 @@ class addresswindow(chooseWindows):
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         print 'tab changed to :'  + str(self.tabOption)
-        
+       
         if self.tabOption == self.tabAddress:
             #Address
             self.disableMenuItem('tabs')
@@ -1698,8 +1709,7 @@ class addresswindow(chooseWindows):
             self.editAction = 'editAddress'
             self.setStatusbarText([''])
             self.NameOfTree = 'tv_address'
-            self.setTreeVisible(True)
-            
+            self.singleAddress.setTreeSensitive(True)          
 
             self.out( 'Seite 0')
 
@@ -1711,7 +1721,7 @@ class addresswindow(chooseWindows):
            
             self.editAction = 'editBank'
             self.NameOfTree = 'tv_bank'
-            self.setTreeVisible(True)
+            self.singleBank.setTreeSensitive(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -1806,8 +1816,21 @@ class addresswindow(chooseWindows):
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setProjectValues()
         elif self.tabOption == self.tabHtml:
+            print self.mapmoz,  self.firstGtkMozStart
             #http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q=schulstr.14,32584&ie=UTF8&t=m
+           
+            if self.firstGtkMozStart:
+                self.firstGtkMozStart = False 
+            else:
+                try:
+                    if self.mapmoz:
+                        self.swMap.remove(self.mapmoz)
+                except  Exception, param:
+                    print Exception, param
+            self.mapmoz = moz.MozEmbed()
             if self.mapmoz:
+                self.swMap.add(self.mapmoz)
+                
                 sUrl1 = 'http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q='
                 sUrl2= '&ie=UTF8&t=m'
                 sUrl = sUrl1 + self.singleAddress.getStreet()+',' + self.singleAddress.getZip() + sUrl2
@@ -1816,7 +1839,7 @@ class addresswindow(chooseWindows):
                 self.mapmoz.load_url(sUrl)
                 #self.mapmoz.set_size_request(816,600)
                 self.mapmoz.show()
-        
+            
 
         # refresh the Tree
         self.refreshTree()

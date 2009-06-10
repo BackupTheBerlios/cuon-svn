@@ -162,7 +162,11 @@ class windows(rawWindow, MyXML, messages):
         
     def closeWindow(self):
         self.saveDataQuestion()
+        self.CleanUp()
         self.win1.hide()
+
+    def CleanUp(self):
+        print "CleanUp"
         
     
     def delete_event(self, widget, event, data=None):
@@ -324,10 +328,15 @@ class windows(rawWindow, MyXML, messages):
         self.statusbar.push(self.sb_id, liText[0])
 
     def setTreeVisible(self, ok):
-        if ok:
-            self.getWidget(self.NameOfTree).set_sensitive(True)
-        else:
-            self.getWidget(self.NameOfTree).set_sensitive(False)
+        #print "Tree = ",  self.NameOfTree
+        try:
+            if ok:
+                self.getWidget(self.NameOfTree).set_sensitive(True)
+            else:
+                self.getWidget(self.NameOfTree).set_sensitive(False)
+        except:
+            pass
+            
             
             
     def startProgressBar(self, Pulse = False, Title=None):

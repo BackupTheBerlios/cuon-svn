@@ -154,6 +154,7 @@ class gladeXml(defaultValues):
             self.win1 = self.getWidget(sMainWindow)
             if self.win1 and sMainWindow.find('Mainwindow') > 0:
                 self.win1.maximize()
+                self.win1.connect("delete-event",self.delete_event)
                 
         self.setXmlAutoconnect()
 

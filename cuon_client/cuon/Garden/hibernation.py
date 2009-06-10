@@ -342,7 +342,7 @@ class hibernationwindow(chooseWindows):
                  print "singleID",  singleID
                  self.singleHibernation.fillEntries(singleID)
                  
-                 self.on_print_pickup_document1_activate(event)
+                 self.on_single_invoice1_activate(event)
             
         # turn to old id  back
          self.singleHibernation.fillEntries(oldId)

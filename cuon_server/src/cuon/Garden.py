@@ -485,7 +485,7 @@ class Garden(xmlrpc.XMLRPC, basics):
             id = liResult[0]['id']
         return id 
     def xmlrpc_getHibsWithoutInvoices(self, dicUser):
-        sSql = "select id from hibernation where  status_invoice_printed = false "
+        sSql = "select id from hibernation where  status_invoice_printed = false  and status_ready = true  "
         sSql += self.getWhere("",dicUser,2)
         
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
