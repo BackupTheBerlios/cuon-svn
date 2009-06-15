@@ -395,8 +395,42 @@ class articleswindow(chooseWindows):
         pdf = cuon.Articles.pickles_articles.pickles_articles(4, 'sp402')
         
 
-
-
+    def on_tbNew_clicked(self, event):
+        if self.tabOption == self.tabArticle:
+            self.on_new1_activate(event)
+        elif self.tabOption == self.tabPurchase:
+            self.on_PurchaseNew1_activate(event)
+        elif self.tabOption == self.tabSales:
+            self.on_SalesNew1_activate(event)
+        elif self.tabOption == self.tabWebshop:
+            self.on_WebshopNew1_activate(event)
+        elif self.tabOption == self.tabStock:
+            self.on_StockNew1_activate(event)   
+            
+    def on_tbEdit_clicked(self, event):
+        if self.tabOption == self.tabArticle:
+            self.on_edit1_activate(event)
+        elif self.tabOption == self.tabPurchase:
+            self.on_PurchaseEdit1_activate(event)
+        elif self.tabOption == self.tabSales:
+            self.on_SalesEdit1_activate(event)
+        elif self.tabOption == self.tabWebshop:
+            self.on_WebshopEdit1_activate(event)
+        elif self.tabOption == self.tabStock:
+            self.on_StockEdit1_activate(event)   
+            
+    def on_tbSave_clicked(self, event):
+        if self.tabOption == self.tabArticle:
+            self.on_save1_activate(event)
+        elif self.tabOption == self.tabPurchase:
+            self.on_PurchaseSave1_activate(event)
+        elif self.tabOption == self.tabSales:
+            self.on_SalesSave1_activate(event)
+        elif self.tabOption == self.tabWebshop:
+            self.on_WebshopSave1_activate(event)
+        elif self.tabOption == self.tabStock:
+            self.on_StockSave1_activate(event)   
+            
     def on_chooseArticle_activate(self, event):
         # choose Article from other Modul
         self.setChooseValue(self.singleArticle.ID)

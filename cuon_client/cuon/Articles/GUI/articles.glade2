@@ -4,12 +4,15 @@
 <glade-interface>
 
 <widget class="GtkWindow" id="ArticlesMainwindow">
-  <property agent="glademm" name="cxx_visibility">protected</property>
+  <property name="width_request">1024</property>
+  <property name="height_request">768</property>
   <property name="visible">True</property>
   <property name="title" translatable="yes">Articles</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
+  <property name="default_width">1024</property>
+  <property name="default_height">768</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="icon">layout_content.xpm</property>
@@ -20,7 +23,7 @@
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
   <property name="urgency_hint">False</property>
-  <signal name="key_press_event" handler="on_Mainwindow_key_press_event" last_modification_time="Fri, 04 May 2007 13:02:39 GMT"/>
+  <signal name="key_press_event" handler="on_Mainwindow_key_press_event"/>
 
   <child>
     <widget class="GtkVBox" id="vbox6">
@@ -30,7 +33,6 @@
 
       <child>
 	<widget class="GtkMenuBar" id="menubar1">
-	  <property agent="glademm" name="cxx_visibility">protected</property>
 	  <property name="visible">True</property>
 	  <property name="pack_direction">GTK_PACK_DIRECTION_LTR</property>
 	  <property name="child_pack_direction">GTK_PACK_DIRECTION_LTR</property>
@@ -61,7 +63,6 @@
 
 		  <child>
 		    <widget class="GtkMenuItem" id="quit1">
-		      <property agent="glademm" name="cxx_visibility">public</property>
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">close</property>
 		      <property name="use_underline">True</property>
@@ -88,7 +89,7 @@
 		      <property name="sensitive">False</property>
 		      <property name="label" translatable="yes">choose</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_chooseArticle_activate" last_modification_time="Fri, 13 Feb 2004 12:27:11 GMT"/>
+		      <signal name="activate" handler="on_chooseArticle_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -107,7 +108,6 @@
 
 		  <child>
 		    <widget class="GtkMenuItem" id="new1">
-		      <property agent="glademm" name="cxx_visibility">public</property>
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">New</property>
 		      <property name="use_underline">True</property>
@@ -120,13 +120,12 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_edit1_activate" last_modification_time="Fri, 05 Dec 2003 11:06:24 GMT"/>
+		      <signal name="activate" handler="on_edit1_activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkMenuItem" id="save1">
-		      <property agent="glademm" name="cxx_visibility">public</property>
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
@@ -142,7 +141,6 @@
 
 		  <child>
 		    <widget class="GtkMenuItem" id="print1">
-		      <property agent="glademm" name="cxx_visibility">public</property>
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Print</property>
 		      <property name="use_underline">True</property>
@@ -183,7 +181,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">New</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PurchaseNew1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_PurchaseNew1_activate"/>
 		    </widget>
 		  </child>
 
@@ -192,7 +190,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PurchaseEdit1_activate" last_modification_time="Fri, 05 Dec 2003 11:06:24 GMT"/>
+		      <signal name="activate" handler="on_PurchaseEdit1_activate"/>
 		    </widget>
 		  </child>
 
@@ -201,7 +199,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PurchaseSave1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_PurchaseSave1_activate"/>
 		    </widget>
 		  </child>
 
@@ -216,7 +214,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Clear</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_PurchaseClear1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_PurchaseClear1_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -238,7 +236,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">New</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_SalesNew1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_SalesNew1_activate"/>
 		    </widget>
 		  </child>
 
@@ -247,7 +245,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_SalesEdit1_activate" last_modification_time="Fri, 05 Dec 2003 11:06:24 GMT"/>
+		      <signal name="activate" handler="on_SalesEdit1_activate"/>
 		    </widget>
 		  </child>
 
@@ -256,7 +254,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_SalesSave1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_SalesSave1_activate"/>
 		    </widget>
 		  </child>
 
@@ -271,7 +269,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Clear</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_SalesClear1_activate" last_modification_time="Fri, 20 Dec 2002 09:32:25 GMT"/>
+		      <signal name="activate" handler="on_SalesClear1_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -293,7 +291,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_WebshopEdit1_activate" last_modification_time="Mon, 04 Apr 2005 21:18:16 GMT"/>
+		      <signal name="activate" handler="on_WebshopEdit1_activate"/>
 		    </widget>
 		  </child>
 
@@ -302,7 +300,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_WebshopSave1_activate" last_modification_time="Mon, 04 Apr 2005 21:18:16 GMT"/>
+		      <signal name="activate" handler="on_WebshopSave1_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -324,7 +322,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Edit</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_StockEdit1_activate" last_modification_time="Sun, 19 Feb 2006 13:17:30 GMT"/>
+		      <signal name="activate" handler="on_StockEdit1_activate"/>
 		    </widget>
 		  </child>
 
@@ -333,7 +331,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_StockSave1_activate" last_modification_time="Sun, 19 Feb 2006 13:17:30 GMT"/>
+		      <signal name="activate" handler="on_StockSave1_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -355,7 +353,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Articlenumber</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_liArticlesNumber1_activate" last_modification_time="Sun, 04 Sep 2005 10:43:06 GMT"/>
+		      <signal name="activate" handler="on_liArticlesNumber1_activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -386,7 +384,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">standard</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_one_standard1_activate" last_modification_time="Mon, 08 Oct 2007 12:04:30 GMT"/>
+			      <signal name="activate" handler="on_one_standard1_activate"/>
 			    </widget>
 			  </child>
 
@@ -395,7 +393,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp101</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp101_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp101_activate"/>
 			    </widget>
 			  </child>
 
@@ -404,7 +402,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp102</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp102_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp102_activate"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -426,7 +424,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">standard</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_two_standard1_activate" last_modification_time="Mon, 08 Oct 2007 12:04:30 GMT"/>
+			      <signal name="activate" handler="on_two_standard1_activate"/>
 			    </widget>
 			  </child>
 
@@ -435,7 +433,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp201</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp201_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp201_activate"/>
 			    </widget>
 			  </child>
 
@@ -444,7 +442,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp202</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp202_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp202_activate"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -466,7 +464,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">standard</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_three_standard1_activate" last_modification_time="Mon, 08 Oct 2007 14:33:25 GMT"/>
+			      <signal name="activate" handler="on_three_standard1_activate"/>
 			    </widget>
 			  </child>
 
@@ -475,7 +473,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp301</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp301_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp301_activate"/>
 			    </widget>
 			  </child>
 
@@ -484,7 +482,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp302</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp302_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp302_activate"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -506,7 +504,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">standard</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_four_standard1_activate" last_modification_time="Mon, 08 Oct 2007 14:33:25 GMT"/>
+			      <signal name="activate" handler="on_four_standard1_activate"/>
 			    </widget>
 			  </child>
 
@@ -515,7 +513,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp401</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp401_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp401_activate"/>
 			    </widget>
 			  </child>
 
@@ -524,7 +522,7 @@
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">sp402</property>
 			      <property name="use_underline">True</property>
-			      <signal name="activate" handler="on_sp402_activate" last_modification_time="Tue, 08 Apr 2008 13:15:00 GMT"/>
+			      <signal name="activate" handler="on_sp402_activate"/>
 			    </widget>
 			  </child>
 			</widget>
@@ -552,7 +550,67 @@
 	  <property name="show_arrow">True</property>
 
 	  <child>
-	    <placeholder/>
+	    <widget class="GtkToolButton" id="tbNew">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes"></property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-new</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tbNew_clicked" last_modification_time="Mon, 15 Jun 2009 13:40:12 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkToolButton" id="tbEdit">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes"></property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-edit</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tbEdit_clicked" last_modification_time="Mon, 15 Jun 2009 13:40:54 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkToolButton" id="tbSave">
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes"></property>
+	      <property name="use_underline">True</property>
+	      <property name="stock_id">gtk-save</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tbSave_clicked" last_modification_time="Mon, 15 Jun 2009 13:41:28 GMT"/>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">True</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkSeparatorToolItem" id="separatortoolitem1">
+	      <property name="visible">True</property>
+	      <property name="draw">True</property>
+	      <property name="visible_horizontal">True</property>
+	      <property name="visible_vertical">True</property>
+	    </widget>
+	    <packing>
+	      <property name="expand">False</property>
+	      <property name="homogeneous">False</property>
+	    </packing>
 	  </child>
 
 	  <child>
@@ -619,7 +677,6 @@
 
 		  <child>
 		    <widget class="GtkEntry" id="eFindNumber">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -627,10 +684,10 @@
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
-		      <signal name="editing_done" handler="on_eFindNumber_editing_done" last_modification_time="Tue, 13 Sep 2005 14:03:22 GMT"/>
-		      <signal name="key_press_event" handler="on_eFindNumber_key_press_event" last_modification_time="Tue, 13 Sep 2005 14:10:01 GMT"/>
+		      <signal name="editing_done" handler="on_eFindNumber_editing_done"/>
+		      <signal name="key_press_event" handler="on_eFindNumber_key_press_event"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -666,7 +723,6 @@
 
 		  <child>
 		    <widget class="GtkEntry" id="eFindDesignation">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -674,10 +730,10 @@
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
-		      <signal name="editing_done" handler="on_eFindDesignation_editing_done" last_modification_time="Tue, 13 Sep 2005 14:03:54 GMT"/>
-		      <signal name="key_press_event" handler="on_eFindDesignation_key_press_event" last_modification_time="Tue, 13 Sep 2005 14:10:41 GMT"/>
+		      <signal name="editing_done" handler="on_eFindDesignation_editing_done"/>
+		      <signal name="key_press_event" handler="on_eFindDesignation_key_press_event"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -688,7 +744,6 @@
 
 		  <child>
 		    <widget class="GtkButton" id="bSearch">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Search</property>
@@ -722,7 +777,6 @@
 		  <child>
 		    <widget class="GtkTreeView" id="tv_article">
 		      <property name="height_request">60</property>
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="headers_visible">True</property>
 		      <property name="rules_hint">False</property>
@@ -731,7 +785,7 @@
 		      <property name="fixed_height_mode">False</property>
 		      <property name="hover_selection">False</property>
 		      <property name="hover_expand">False</property>
-		      <signal name="row_activated" handler="on_tree1_row_activated" last_modification_time="Mon, 14 Aug 2006 17:27:12 GMT"/>
+		      <signal name="row_activated" handler="on_tree1_row_activated"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -763,7 +817,6 @@
 			<widget class="GtkEntry" id="eDesignation">
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
-			  <property agent="glademm" name="cxx_visibility">protected</property>
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -771,7 +824,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -787,7 +840,6 @@
 			<widget class="GtkLabel" id="lNumber">
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
-			  <property agent="glademm" name="cxx_visibility">protected</property>
 			  <property name="visible">True</property>
 			  <property name="label" translatable="yes">Number</property>
 			  <property name="use_underline">False</property>
@@ -809,7 +861,7 @@
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">0</property>
 			  <property name="bottom_attach">1</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -839,7 +891,7 @@
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">1</property>
 			  <property name="bottom_attach">2</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -869,7 +921,7 @@
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">2</property>
 			  <property name="bottom_attach">3</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -878,7 +930,6 @@
 			<widget class="GtkEntry" id="eUnit">
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
-			  <property agent="glademm" name="cxx_visibility">protected</property>
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -886,7 +937,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -923,7 +974,7 @@
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">3</property>
 			  <property name="bottom_attach">4</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -932,7 +983,6 @@
 			<widget class="GtkEntry" id="eWrapping">
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
-			  <property agent="glademm" name="cxx_visibility">protected</property>
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -940,7 +990,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -977,7 +1027,7 @@
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">4</property>
 			  <property name="bottom_attach">5</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -986,7 +1036,6 @@
 			<widget class="GtkEntry" id="eQuantumPerWrap">
 			  <property name="width_request">0</property>
 			  <property name="height_request">0</property>
-			  <property agent="glademm" name="cxx_visibility">protected</property>
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -994,7 +1043,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1029,7 +1078,7 @@
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">2</property>
 			  <property name="bottom_attach">3</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1043,7 +1092,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1064,9 +1113,9 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
-			  <signal name="changed" handler="on_eManufactorNumber_changed" last_modification_time="Tue, 05 Apr 2005 08:37:11 GMT"/>
+			  <signal name="changed" handler="on_eManufactorNumber_changed"/>
 			</widget>
 			<packing>
 			  <property name="left_attach">3</property>
@@ -1086,7 +1135,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1121,7 +1170,7 @@
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">5</property>
 			  <property name="bottom_attach">6</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1136,7 +1185,6 @@
 			    <widget class="GtkEntry" id="eNumber">
 			      <property name="width_request">0</property>
 			      <property name="height_request">0</property>
-			      <property agent="glademm" name="cxx_visibility">protected</property>
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -1144,7 +1192,7 @@
 			      <property name="max_length">0</property>
 			      <property name="text" translatable="yes"></property>
 			      <property name="has_frame">True</property>
-			      <property name="invisible_char">*</property>
+			      <property name="invisible_char">•</property>
 			      <property name="activates_default">False</property>
 			    </widget>
 			    <packing>
@@ -1160,7 +1208,7 @@
 			      <property name="can_focus">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bChooseManufactor_clicked" last_modification_time="Tue, 05 Apr 2005 08:29:31 GMT"/>
+			      <signal name="clicked" handler="on_bChooseManufactor_clicked"/>
 
 			      <child>
 				<widget class="GtkAlignment" id="alignment1">
@@ -1238,8 +1286,8 @@
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">0</property>
 			  <property name="bottom_attach">1</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="x_options"></property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
@@ -1258,9 +1306,9 @@
 			      <property name="max_length">0</property>
 			      <property name="text" translatable="yes"></property>
 			      <property name="has_frame">True</property>
-			      <property name="invisible_char">*</property>
+			      <property name="invisible_char">•</property>
 			      <property name="activates_default">False</property>
-			      <signal name="changed" handler="on_eCategoryNr_changed" last_modification_time="Sun, 11 Feb 2007 11:58:33 GMT"/>
+			      <signal name="changed" handler="on_eCategoryNr_changed"/>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
@@ -1275,7 +1323,7 @@
 			      <property name="can_focus">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bChooseMaterialGroup_clicked" last_modification_time="Tue, 13 Feb 2007 09:57:33 GMT"/>
+			      <signal name="clicked" handler="on_bChooseMaterialGroup_clicked"/>
 
 			      <child>
 				<widget class="GtkAlignment" id="alignment2">
@@ -1353,8 +1401,8 @@
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">2</property>
 			  <property name="bottom_attach">3</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="x_options"></property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
@@ -1367,7 +1415,7 @@
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1402,7 +1450,7 @@
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">4</property>
 			  <property name="bottom_attach">5</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1422,7 +1470,19 @@ Botany</property>
 			      <property name="add_tearoffs">False</property>
 			      <property name="has_frame">True</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="changed" handler="on_cbAssociatedWith_changed" last_modification_time="Tue, 12 Jun 2007 12:24:18 GMT"/>
+			      <signal name="changed" handler="on_cbAssociatedWith_changed"/>
+
+			      <child internal-child="entry">
+				<widget class="GtkEntry" id="comboboxentry-entry1">
+				  <property name="editable">True</property>
+				  <property name="visibility">True</property>
+				  <property name="max_length">0</property>
+				  <property name="text" translatable="yes"></property>
+				  <property name="has_frame">True</property>
+				  <property name="invisible_char">•</property>
+				  <property name="activates_default">False</property>
+				</widget>
+			      </child>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
@@ -1437,7 +1497,7 @@ Botany</property>
 			      <property name="can_focus">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bGotoAssociated_clicked" last_modification_time="Tue, 12 Jun 2007 12:29:34 GMT"/>
+			      <signal name="clicked" handler="on_bGotoAssociated_clicked"/>
 
 			      <child>
 				<widget class="GtkAlignment" id="alignment3">
@@ -1516,7 +1576,7 @@ Botany</property>
 			      <property name="can_focus">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bSearchAssociated_clicked" last_modification_time="Tue, 01 Apr 2008 12:24:28 GMT"/>
+			      <signal name="clicked" handler="on_bSearchAssociated_clicked"/>
 
 			      <child>
 				<widget class="GtkAlignment" id="alignment4">
@@ -1594,8 +1654,8 @@ Botany</property>
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">4</property>
 			  <property name="bottom_attach">5</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="x_options"></property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
@@ -1608,7 +1668,7 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1629,9 +1689,9 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
-			  <signal name="changed" handler="on_eAssociatedNr_changed" last_modification_time="Tue, 01 Apr 2008 12:46:39 GMT"/>
+			  <signal name="changed" handler="on_eAssociatedNr_changed"/>
 			</widget>
 			<packing>
 			  <property name="left_attach">0</property>
@@ -1681,7 +1741,7 @@ Botany</property>
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">0</property>
 			  <property name="bottom_attach">1</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1709,7 +1769,7 @@ Botany</property>
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">1</property>
 			  <property name="bottom_attach">2</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1737,7 +1797,7 @@ Botany</property>
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">2</property>
 			  <property name="bottom_attach">3</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1765,7 +1825,7 @@ Botany</property>
 			  <property name="right_attach">1</property>
 			  <property name="top_attach">3</property>
 			  <property name="bottom_attach">4</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -1779,7 +1839,7 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1800,7 +1860,7 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1821,7 +1881,7 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1842,7 +1902,7 @@ Botany</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
 			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
+			  <property name="invisible_char">•</property>
 			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
@@ -1876,7 +1936,7 @@ Botany</property>
 			      <property name="use_underline">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bShowDMS_clicked" last_modification_time="Fri, 02 Sep 2005 13:33:52 GMT"/>
+			      <signal name="clicked" handler="on_bShowDMS_clicked"/>
 			    </widget>
 			    <packing>
 			      <property name="padding">0</property>
@@ -1890,8 +1950,8 @@ Botany</property>
 			  <property name="right_attach">4</property>
 			  <property name="top_attach">3</property>
 			  <property name="bottom_attach">4</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="x_options"></property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
@@ -1926,7 +1986,7 @@ Botany</property>
 			      <property name="can_focus">True</property>
 			      <property name="relief">GTK_RELIEF_NORMAL</property>
 			      <property name="focus_on_click">True</property>
-			      <signal name="clicked" handler="on_bChooseTaxVat_clicked" last_modification_time="Tue, 22 Jul 2008 12:27:54 GMT"/>
+			      <signal name="clicked" handler="on_bChooseTaxVat_clicked"/>
 
 			      <child>
 				<widget class="GtkAlignment" id="alignment5">
@@ -2004,8 +2064,8 @@ Botany</property>
 			  <property name="right_attach">4</property>
 			  <property name="top_attach">0</property>
 			  <property name="bottom_attach">1</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="x_options"></property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
@@ -2032,7 +2092,7 @@ Botany</property>
 			  <property name="right_attach">3</property>
 			  <property name="top_attach">0</property>
 			  <property name="bottom_attach">1</property>
-			  <property name="x_options">fill</property>
+			  <property name="x_options"></property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -2126,7 +2186,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2205,7 +2265,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2233,7 +2293,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">1</property>
 		      <property name="bottom_attach">2</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2261,7 +2321,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">2</property>
 		      <property name="bottom_attach">3</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2289,7 +2349,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">3</property>
 		      <property name="bottom_attach">4</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2317,14 +2377,13 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">4</property>
 		      <property name="bottom_attach">5</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
 		    <widget class="GtkEntry" id="eAddressField1">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">False</property>
@@ -2332,7 +2391,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2346,7 +2405,6 @@ Botany</property>
 
 		  <child>
 		    <widget class="GtkEntry" id="eMinQuantum">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -2354,7 +2412,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2381,14 +2439,13 @@ Botany</property>
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 
 		  <child>
 		    <widget class="GtkEntry" id="eAddressNumber">
-		      <property agent="glademm" name="cxx_visibility">protected</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -2396,7 +2453,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		      <signal name="changed" handler="on_eAddressNumber_changed"/>
 		    </widget>
@@ -2411,7 +2468,6 @@ Botany</property>
 
 		  <child>
 		    <widget class="GtkEntry" id="eUnitPrice">
-		      <property agent="glademm" name="cxx_visibility">public</property>
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -2419,7 +2475,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2440,7 +2496,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2461,7 +2517,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2496,7 +2552,7 @@ Botany</property>
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">1</property>
 		      <property name="bottom_attach">2</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2524,7 +2580,7 @@ Botany</property>
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">2</property>
 		      <property name="bottom_attach">3</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2538,7 +2594,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2559,7 +2615,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2687,7 +2743,7 @@ Botany</property>
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2777,7 +2833,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2799,7 +2855,7 @@ Botany</property>
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">1</property>
 		      <property name="bottom_attach">2</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2827,7 +2883,7 @@ Botany</property>
 		      <property name="right_attach">2</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2843,13 +2899,25 @@ Price IV
 		      <property name="add_tearoffs">False</property>
 		      <property name="has_frame">True</property>
 		      <property name="focus_on_click">True</property>
+
+		      <child internal-child="entry">
+			<widget class="GtkEntry" id="comboboxentry-entry2">
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">•</property>
+			  <property name="activates_default">False</property>
+			</widget>
+		      </child>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">2</property>
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="y_options">fill</property>
+		      <property name="y_options"></property>
 		    </packing>
 		  </child>
 		</widget>
@@ -2931,7 +2999,7 @@ Price IV
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2945,7 +3013,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -2980,7 +3048,7 @@ Price IV
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">1</property>
 		      <property name="bottom_attach">2</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -2994,7 +3062,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3023,7 +3091,7 @@ Price IV
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -3067,7 +3135,7 @@ Price IV
 		      <property name="right_attach">1</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -3095,7 +3163,7 @@ Price IV
 		      <property name="right_attach">2</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -3123,7 +3191,7 @@ Price IV
 		      <property name="right_attach">3</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -3151,7 +3219,7 @@ Price IV
 		      <property name="right_attach">4</property>
 		      <property name="top_attach">0</property>
 		      <property name="bottom_attach">1</property>
-		      <property name="x_options">fill</property>
+		      <property name="x_options"></property>
 		      <property name="y_options"></property>
 		    </packing>
 		  </child>
@@ -3165,7 +3233,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3186,7 +3254,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3207,7 +3275,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3228,7 +3296,7 @@ Price IV
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3312,7 +3380,7 @@ Price IV
 		  <property name="right_attach">3</property>
 		  <property name="top_attach">0</property>
 		  <property name="bottom_attach">1</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3340,7 +3408,7 @@ Price IV
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">1</property>
 		  <property name="bottom_attach">2</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3354,7 +3422,7 @@ Price IV
 		  <property name="max_length">0</property>
 		  <property name="text" translatable="yes"></property>
 		  <property name="has_frame">True</property>
-		  <property name="invisible_char">*</property>
+		  <property name="invisible_char">•</property>
 		  <property name="activates_default">False</property>
 		</widget>
 		<packing>
@@ -3416,8 +3484,8 @@ Price IV
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">0</property>
 		  <property name="bottom_attach">1</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options">fill</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -3443,13 +3511,25 @@ code 93
 		  <property name="add_tearoffs">False</property>
 		  <property name="has_frame">True</property>
 		  <property name="focus_on_click">True</property>
+
+		  <child internal-child="entry">
+		    <widget class="GtkEntry" id="comboboxentry-entry3">
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">•</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">3</property>
 		  <property name="right_attach">4</property>
 		  <property name="top_attach">0</property>
 		  <property name="bottom_attach">1</property>
-		  <property name="y_options">fill</property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -3476,7 +3556,7 @@ code 93
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">3</property>
 		  <property name="bottom_attach">4</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3504,7 +3584,7 @@ code 93
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3521,14 +3601,26 @@ point
 		  <property name="add_tearoffs">False</property>
 		  <property name="has_frame">True</property>
 		  <property name="focus_on_click">True</property>
+
+		  <child internal-child="entry">
+		    <widget class="GtkEntry" id="comboboxentry-entry4">
+		      <property name="editable">True</property>
+		      <property name="visibility">True</property>
+		      <property name="max_length">0</property>
+		      <property name="text" translatable="yes"></property>
+		      <property name="has_frame">True</property>
+		      <property name="invisible_char">•</property>
+		      <property name="activates_default">False</property>
+		    </widget>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">2</property>
 		  <property name="bottom_attach">3</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options">fill</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -3547,7 +3639,7 @@ point
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3591,7 +3683,7 @@ point
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3606,8 +3698,8 @@ point
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">3</property>
 		  <property name="bottom_attach">4</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options">fill</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
@@ -3634,7 +3726,7 @@ point
 		  <property name="right_attach">3</property>
 		  <property name="top_attach">1</property>
 		  <property name="bottom_attach">2</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3662,7 +3754,7 @@ point
 		  <property name="right_attach">1</property>
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		  <property name="y_options"></property>
 		</packing>
 	      </child>
@@ -3682,7 +3774,7 @@ point
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3726,7 +3818,7 @@ point
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">*</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		    </widget>
 		    <packing>
@@ -3741,14 +3833,16 @@ point
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options">fill</property>
+		  <property name="x_options"></property>
+		  <property name="y_options"></property>
 		</packing>
 	      </child>
 
 	      <child>
 		<widget class="GtkImage" id="iBarcode">
 		  <property name="visible">True</property>
+		  <property name="stock">gtk-missing-image</property>
+		  <property name="icon_size">4</property>
 		  <property name="xalign">0.5</property>
 		  <property name="yalign">0.5</property>
 		  <property name="xpad">0</property>
@@ -3759,7 +3853,7 @@ point
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">5</property>
 		  <property name="bottom_attach">6</property>
-		  <property name="x_options">fill</property>
+		  <property name="x_options"></property>
 		</packing>
 	      </child>
 	    </widget>
@@ -3773,114 +3867,6 @@ point
 	    <widget class="GtkLabel" id="label45">
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">barcode</property>
-	      <property name="use_underline">False</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="type">tab</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <placeholder/>
-	  </child>
-
-	  <child>
-	    <widget class="GtkLabel" id="label62">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">label62</property>
-	      <property name="use_underline">False</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="type">tab</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <placeholder/>
-	  </child>
-
-	  <child>
-	    <widget class="GtkLabel" id="label63">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">label63</property>
-	      <property name="use_underline">False</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="type">tab</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <placeholder/>
-	  </child>
-
-	  <child>
-	    <widget class="GtkLabel" id="label64">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">label64</property>
-	      <property name="use_underline">False</property>
-	      <property name="use_markup">False</property>
-	      <property name="justify">GTK_JUSTIFY_LEFT</property>
-	      <property name="wrap">False</property>
-	      <property name="selectable">False</property>
-	      <property name="xalign">0.5</property>
-	      <property name="yalign">0.5</property>
-	      <property name="xpad">0</property>
-	      <property name="ypad">0</property>
-	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	      <property name="width_chars">-1</property>
-	      <property name="single_line_mode">False</property>
-	      <property name="angle">0</property>
-	    </widget>
-	    <packing>
-	      <property name="type">tab</property>
-	    </packing>
-	  </child>
-
-	  <child>
-	    <placeholder/>
-	  </child>
-
-	  <child>
-	    <widget class="GtkLabel" id="label65">
-	      <property name="visible">True</property>
-	      <property name="label" translatable="yes">label65</property>
 	      <property name="use_underline">False</property>
 	      <property name="use_markup">False</property>
 	      <property name="justify">GTK_JUSTIFY_LEFT</property>

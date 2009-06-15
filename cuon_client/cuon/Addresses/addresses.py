@@ -1720,7 +1720,6 @@ class addresswindow(chooseWindows):
             self.enableMenuItem('bank')
            
             self.editAction = 'editBank'
-            self.NameOfTree = 'tv_bank'
             self.singleBank.setTreeSensitive(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
@@ -1818,7 +1817,7 @@ class addresswindow(chooseWindows):
         elif self.tabOption == self.tabHtml:
             print self.mapmoz,  self.firstGtkMozStart
             #http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q=schulstr.14,32584&ie=UTF8&t=m
-           
+           # http://maps.google.de/maps?f=d&source=s_d&saddr=Bismarckstra%C3%9Fe,+32049+Herford,+Herford,+Nordrhein-Westfalen,+Deutschland&daddr=32584+L%C3%B6hne,+schuberstr.+12&hl=en&geocode=&mra=ls&sll=52.121132,8.693361&sspn=0.019762,0.036607&ie=UTF8&z=10
             if self.firstGtkMozStart:
                 self.firstGtkMozStart = False 
             else:
@@ -1831,7 +1830,7 @@ class addresswindow(chooseWindows):
             if self.mapmoz:
                 self.swMap.add(self.mapmoz)
                 
-                sUrl1 = 'http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q='
+                sUrl1 = 'http://maps.google.de/maps?f=q&hl=de&geocode=&time=&date=&ttype=&q='
                 sUrl2= '&ie=UTF8&t=m'
                 sUrl = sUrl1 + self.singleAddress.getStreet()+',' + self.singleAddress.getZip() + sUrl2
                 print self.singleAddress.getStreet(), self.singleAddress.getZip()

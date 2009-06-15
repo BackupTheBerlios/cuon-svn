@@ -366,12 +366,12 @@ class setup:
         
     def restartServer(self):
         # restart the server
-        self.executeSSH(" /etc/init.d/cuonxmlrpc restart")
-        self.executeSSH(" /etc/init.d/cuonreport restart")
-        self.executeSSH(" /etc/init.d/cuonweb restart")
-        self.executeSSH(" /etc/init.d/cuonweb2 restart")
-        self.executeSSH(" /etc/init.d/cuonai restart")
-        self.executeSSH(" /etc/init.d/cuonjabber restart")
+        self.executeSSH(" nohup /etc/init.d/cuonxmlrpc restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonai restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
         
         
         
