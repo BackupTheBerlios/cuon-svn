@@ -350,6 +350,22 @@ class basics(xmlrpc.XMLRPC):
         #writeLog(s)
         return {'SessionID':s, 'endTime': time.time() + secValue}
 
+    def getUserInfo(self, dicUser):
+        liUser = []
+        liUser.append(dicUser['Name'])
+        liUser.append(`dicUser['client']`)
+        if  dicUser.has_key('noWhereClient') and dicUser['noWhereClient'].upper() == 'YES':
+            liUser.append('1')
+        elif dicUser.has_key('noWhereClient') and dicUser['noWhereClient'].upper() == 'NO':
+             liUser.append('0')
+        else:
+            liUser.append('1')
+        
+             
+        
+        
+        return liUser
+        
     def getWhere(self, sWhere, dicUser, Single = 0, Prefix=""):
         #self.writeLog('Start getWhere Single = ' +`Single`)
         
@@ -368,7 +384,7 @@ class basics(xmlrpc.XMLRPC):
             else:
                sWhere = " where "+ Prefix + "client = " + `dicUser['client']` + " and "+ Prefix + "status != 'delete' "
         
-        self.writeLog('getWhere = ' + `sWhere`)
+        #self.writeLog('getWhere = ' + `sWhere`)
         if not sWhere:
             sWhere = ' '
         return sWhere       

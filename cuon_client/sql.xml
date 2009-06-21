@@ -1,6 +1,12 @@
 <sql>
   <postgre_sql>
     <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
+      <index>
+        <index_name> cuon_user_idx_name</index_name>
+        <index_special> </index_special>
+        <index_table>cuon_user</index_table>
+        <index_column>name</index_column>
+    </index>
     
     <index>
         <index_name> address_idx_lastname</index_name>
@@ -39,8 +45,24 @@
         <index_table>address</index_table>
         <index_column>status,client</index_column>
     </index>
-    
-    
+     <index>
+        <index_name> address_idx_caller_id</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>caller_id</index_column>
+    </index>
+      <index>
+        <index_name> address_idx_rep_id</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>rep_id</index_column>
+    </index>
+      <index>
+        <index_name> address_idx_salesman_id</index_name>
+        <index_special> </index_special>
+        <index_table>address</index_table>
+        <index_column>salesman_id</index_column>
+    </index>
     <index>
         <index_name>partner_idx_addressid</index_name>
         <index_special> </index_special>
@@ -464,10 +486,13 @@
         <foreign_key_sql>foreign key (addressnumber) references address (id) on delete restrict on update restrict </foreign_key_sql> 
     <foreign_table>hibernation</foreign_table>        
     </foreign_key>
- 
+    
+    
+    
+    
  
    <function>
-      <old_name>fct_delete() </old_name>
+      
       <nameOfFunction>fct_delete( ) returns OPAQUE</nameOfFunction>
       <language>plpgsql</language>
     <textOfFunction>
@@ -489,7 +514,7 @@
     </function>
 
 <function>
-      <old_name>fct_update() </old_name>
+      
       <nameOfFunction>fct_update( ) returns OPAQUE</nameOfFunction>
       <language>plpgsql</language>
     <textOfFunction>
@@ -511,7 +536,7 @@
 
     </function>
 <function>
-      <old_name>fct_insert() </old_name>
+      
       <nameOfFunction>fct_insert( ) returns OPAQUE</nameOfFunction>
       <language>plpgsql</language>
     <textOfFunction>

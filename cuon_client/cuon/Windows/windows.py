@@ -384,7 +384,7 @@ class windows(rawWindow, MyXML, messages):
                     #print 'fPercent/100 = ', fPercent/100.0
                     self.progressbar.set_fraction(fPercent/100.0)
                     while gtk.events_pending():
-                        gtk.main_iteration(gtk.FALSE)
+                        gtk.main_iteration(False)
                 
             else:
                 self.printOut( 'no progressbar')

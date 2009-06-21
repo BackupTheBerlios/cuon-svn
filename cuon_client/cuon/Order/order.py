@@ -1033,15 +1033,27 @@ class orderwindow(chooseWindows):
     def on_tbNew_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_new1_activate(event)
+        if self.tabOption == self.tabPosition:
+            self.on_PositionNew1_activate(event)
+        if self.tabOption == self.tabPayment:
+            self.on_payment_new_activate(event)
             
     def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_edit1_activate(event)
-            
+        if self.tabOption == self.tabPosition:
+            self.on_PositionEdit1_activate(event)
+        if self.tabOption == self.tabPayment:
+            self.on_payment_edit_activate(event)
     def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_save1_activate(event)    
-    
+        if self.tabOption == self.tabPosition:
+            self.on_PositionSave1_activate(event)
+        if self.tabOption == self.tabPayment:
+            self.on_payment_save_activate(event)
+            
+            
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()

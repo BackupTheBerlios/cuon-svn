@@ -99,7 +99,8 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_changeProposal2Order(self, ProposalID, dicUser):
         ok = True 
-        sSql = "update orderbook set process_status = 500 where id = " + `ProposalID`
+        #sSql = "update orderbook set process_status = 500 where id = " + `ProposalID`
+        sSql = "select * from fct_changeProposal2Order(ProposalID )"
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )  
         return ok
         
@@ -302,6 +303,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id, "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "
+        sSql += " orderposition.discount as discount,  "
         sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
         sSql += " case articles.associated_with when 1 then (select botany.description from botany, articles where botany.article_id = articles.id and articles.id = orderposition.articleid and orderbook.id = " + `dicOrder['orderid']` + ") when 0 then articles.designation end as pos_designation "
         sSql += " from orderposition, articles, orderbook  where orderbook.id = " + `dicOrder['orderid']` 
@@ -510,14 +512,20 @@ class Order(xmlrpc.XMLRPC, basics):
         
         
     def getTotalSum(self,OrderID, dicUser):
+        
         total_sum = 0
-        sSql = 'select sum(amount * price) as total_sum from orderposition where orderid = '
-        sSql += `OrderID`
-        sSql += self.getWhere(None,dicUser,2)
+#        sSql = 'select sum(amount * price) as total_sum from orderposition where orderid = '
+#        sSql += `OrderID`
+#        sSql += self.getWhere(None,dicUser,2)
+#        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+#        if dicResult and dicResult not in ['NONE','ERROR']:
+#        total_sum = dicResult[0]['total_sum']
+
+        sSql = "select total_sum from fct_getOrderTotalSum(OrderID) as total_sum(float) "
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         if dicResult and dicResult not in ['NONE','ERROR']:
             total_sum = dicResult[0]['total_sum']
-        
+
         return total_sum
         
     

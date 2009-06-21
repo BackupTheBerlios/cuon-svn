@@ -44,13 +44,18 @@ class SingleArticle(SingleData):
     def getArticle(self, id):
         dicRecords = self.load(id)
         liArticle = []
+        print dicRecords
         if dicRecords:
-            dicRecord = dicRecords[0]
-            liArticle.append(dicRecord['number'])
-            liArticle.append(dicRecord['designation'])
-            liArticle.append (' ')
-            liArticle.append(' ')
-            liArticle.append(' ' )
+            try:
+                dicRecord = dicRecords[0]
+                liArticle.append(dicRecord['number'])
+                liArticle.append(dicRecord['designation'])
+                liArticle.append (' ')
+                liArticle.append(' ')
+                liArticle.append(' ' )
+            except:
+                pass
+                
         if not liArticle:
             liArticle.append(' ')
             liArticle.append(' ')

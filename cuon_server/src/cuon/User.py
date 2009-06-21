@@ -237,4 +237,8 @@ class User(xmlrpc.XMLRPC, basics):
         else:
             return result
             
-            
+    def xmlrpc_setUserData(self,  dicUser):        
+        sSql = "select * from fct_setUserData( array " +`self.getUserInfo(dicUser)` + " )"
+        print sSql
+        return self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
+        

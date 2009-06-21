@@ -58,7 +58,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                     sUser = 'zope'
                     dicUser['noWhereClient'] = 'YES'
             
-                self.writeLog('User = ' + sUser)
+                #self.writeLog('User = ' + sUser)
                 #DSN = 'dbname=cuon host=localhost user=' + sUser
                 conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, port = self.POSTGRES_PORT, user = sUser)
                 #conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, user = sUser)
@@ -66,8 +66,9 @@ class SQL(xmlrpc.XMLRPC, basics):
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
                 print "conn = ",  conn
                 try:
+                                           
                     rows = conn.query(cSql.encode('utf-8'))
-                    self.writeLog('return from database = ' + `rows`)
+                    #self.writeLog('return from database = ' + `rows`)
                 except:
                     rows = 'ERROR'
                     #rows = 'NONE'
@@ -79,7 +80,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             ##            rows = curs.dictfetchall()
             ##        except:
             ##            pass
-                self.writeLog('Rows = ' + `rows`)
+                #self.writeLog('Rows = ' + `rows`)
                 #conn.close()
             
             if rows and rows not in ['NONE','ERROR']:
@@ -116,7 +117,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                         sDecode = None
             
                    
-                    
+                
                     for i in range(len(dicResult)):
                         for j in dicResult[i].keys():
                     
@@ -144,14 +145,14 @@ class SQL(xmlrpc.XMLRPC, basics):
             self.writeLog( Exception)
             self.writeLog( param)
         try:
-            self.writeLog( '----------> SQL ')
-            self.writeLog(cSql)
-            #conn.close()
-            self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
+            #self.writeLog( '----------> SQL ')
+            #self.writeLog(cSql)
+            conn.close()
+            #self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
         except Exception, params:
             self.writeLog( 'executeQuery 3 ERROR = ' + `Exception` + ' ' + `params`)
 
-        self.writeLog('sql return = ' + `dicResult`)
+        #self.writeLog('sql return = ' + `dicResult`)
             
         return dicResult
      

@@ -729,196 +729,200 @@ class databaseswindow(windows):
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)
         self.out("set procedures and trigger")
-        os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/sql.xml inifiles')
+     
         os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/server.ini inifiles')
         
-        
-        doc = self.readDocument('inifiles/sql.xml')
-        # procedures
-        if doc:
-            cyRootNode = self.getRootNode(doc)
-            cyNode = self.getNode(cyRootNode,'postgre_sql')
-            cyNodes = self.getNodes(cyNode[0],'function')
-            f = file('inifiles/server.ini','r')
-            cpParser = ConfigParser.ConfigParser()
-            cpParser.readfp(f)
-            sFile = None
-            f.close()
-            
-            try:
-            
-                SQL_DB = cpParser.get('POSTGRES', 'POSTGRES_DB')
-                SQL_HOST = cpParser.get('POSTGRES', 'POSTGRES_HOST')
-                SQL_USER = cpParser.get('POSTGRES', 'POSTGRES_USER')
-                SQL_PORT = cpParser.get('POSTGRES', 'POSTGRES_PORT')
-            except Exception, param:
-                print Exception, param
+        for configfile in ['sql.xml', 'basics.xml', 'order.xml', 'address.xml', 'garden.xml']:
+            os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
+            doc = self.readDocument('inifiles/'+configfile)
+            # procedures
+            if doc:
+                cyRootNode = self.getRootNode(doc)
+                cyNode = self.getNode(cyRootNode,'postgre_sql')
+                cyNodes = self.getNodes(cyNode[0],'function')
+                f = file('inifiles/server.ini','r')
+                cpParser = ConfigParser.ConfigParser()
+                cpParser.readfp(f)
+                sFile = None
+                f.close()
                 
-            if cyNodes:
-                for i in cyNodes:
-                    self.out("Werte in xml")
-                                            
-                    funcNode = self.getNodes(i,'nameOfFunction')
-                    newName = self.getData(funcNode[0])
-                    self.out(newName)
-
-                    funcNode = self.getNodes(i,'old_name')
-                    oldName = self.getData(funcNode[0])
-                    self.out(oldName)
-
-                    funcNode = self.getNodes(i,'language')
-                    sql_lang = self.getData(funcNode[0])
-                    self.out(sql_lang)
-
-                    funcNode = self.getNodes(i,'textOfFunction')
-                    func = self.getData(funcNode[0])
-                    self.out(func)
-                    # first delete the function ( specified in Old_name )
-                    sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
-                    #ok = self.rpc.callRP('Database.createPsql', 'cuon','sat1','5432','jhamel', sSql)
+                try:
+                
+                    SQL_DB = cpParser.get('POSTGRES', 'POSTGRES_DB')
+                    SQL_HOST = cpParser.get('POSTGRES', 'POSTGRES_HOST')
+                    SQL_USER = cpParser.get('POSTGRES', 'POSTGRES_USER')
+                    SQL_PORT = cpParser.get('POSTGRES', 'POSTGRES_PORT')
+                except Exception, param:
+                    print Exception, param
                     
-                    
-                    ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)       
-                    self.out(ok)
-                    print sSql                       
-                    print ok
-
-                    
-                    sSql = 'CREATE FUNCTION ' + newName + ' AS \'  '  
-                    sSql = sSql + func
-                    sSql = sSql + ' \''
-                    sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
-                    self.out('sql = ' + sSql)
-                    sSql = string.replace(sSql,';', '\\;')
-                    ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
-                    self.out(ok)
-                    print sSql                       
-                    print ok
-
-            # Indexe 
-            cyNodes = self.getNodes(cyNode[0],'index')
-            if cyNodes:
-                for i in cyNodes:
-                    self.out("Werte in xml")
-                    dicIndex = {}                        
-                    indexNode = self.getNodes(i,'index_name')
-                    dicIndex['name'] = self.getData(indexNode[0])
-
-                    indexNode = self.getNodes(i,'index_special')
-                    dicIndex['special'] = self.getData(indexNode[0])
-                    
-                    indexNode = self.getNodes(i,'index_table')
-                    dicIndex['table'] = self.getData(indexNode[0])
-                    
-                    indexNode = self.getNodes(i,'index_column')
-                    dicIndex['column'] = self.getData(indexNode[0])
-                    try:
-                        ok = True
-                        while ok: 
-                            if dicIndex['column'] and dicIndex['column'].find('##')>=0:
-                                searchWord = dicIndex['column'][dicIndex['column'].find('##')+2:dicIndex['column'].find(';;')]
-                                dicIndex['column'] [dicIndex['column'].find('##'):dicIndex['column'].find(';;') +2] = self.DIC_USER[searchWord]
-                            else:
-                                ok = False
-                                
-                    except Exception,  param:
-                        print Exception, param
+                if cyNodes:
+                    for i in cyNodes:
+                        self.out("Werte in xml")
+                                                
+                        funcNode = self.getNodes(i,'nameOfFunction')
+                        newName = self.getData(funcNode[0])
+                        self.out(newName)
+    
+                        #funcNode = self.getNodes(i,'old_name')
+                        #oldName = self.getData(funcNode[0])
+                        #self.out(oldName)
+    
+                        funcNode = self.getNodes(i,'language')
+                        sql_lang = self.getData(funcNode[0])
+                        self.out(sql_lang)
+    
+                        funcNode = self.getNodes(i,'textOfFunction')
+                        func = self.getData(funcNode[0])
+                        self.out(func)
+                        # first delete the function ( specified in Old_name )
+                        #sSql = 'DROP FUNCTION ' + oldName + ' CASCADE'
+                        #ok = self.rpc.callRP('Database.createPsql', 'cuon','sat1','5432','jhamel', sSql)
                         
+                        
+                        #ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)       
+                        #self.out(ok)
+                        #print sSql                       
+                        #print ok
+    
+                        
+                        sSql = 'CREATE OR REPLACE FUNCTION ' + newName + ' AS \'  '  
+                        sSql = sSql + func
+                        sSql = sSql + ' \''
+                        sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
+                        self.out('sql = ' + sSql)
+                        #sSql = string.replace(sSql,';', '\\;')
+                        #sSql = string.replace(sSql,'$', '\\$')
+                        #sSql = string.replace(sSql,"'", "\'")
+                        ok = self.rpc.callRP('Database.createPsql', SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
+                        #ok = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                        self.out(ok)
+                        print sSql                       
+                        print ok
+    
+                # Indexe 
+                cyNodes = self.getNodes(cyNode[0],'index')
+                if cyNodes:
+                    for i in cyNodes:
+                        self.out("Werte in xml")
+                        dicIndex = {}                        
+                        indexNode = self.getNodes(i,'index_name')
+                        dicIndex['name'] = self.getData(indexNode[0])
+    
+                        indexNode = self.getNodes(i,'index_special')
+                        dicIndex['special'] = self.getData(indexNode[0])
+                        
+                        indexNode = self.getNodes(i,'index_table')
+                        dicIndex['table'] = self.getData(indexNode[0])
+                        
+                        indexNode = self.getNodes(i,'index_column')
+                        dicIndex['column'] = self.getData(indexNode[0])
+                        try:
+                            ok = True
+                            while ok: 
+                                if dicIndex['column'] and dicIndex['column'].find('##')>=0:
+                                    searchWord = dicIndex['column'][dicIndex['column'].find('##')+2:dicIndex['column'].find(';;')]
+                                    dicIndex['column'] [dicIndex['column'].find('##'):dicIndex['column'].find(';;') +2] = self.DIC_USER[searchWord]
+                                else:
+                                    ok = False
+                                    
+                        except Exception,  param:
+                            print Exception, param
+                            
+                        
+                        # first drop index
+                        
+                        sSql = "drop index " + dicIndex['name']
+                        print 'Sql INDEX = ', sSql
+                        result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                     
+                        # now set new index
+                        sSql = "create " 
+                        if len(dicIndex['special']) > 1:
+                            sSql += dicIndex['special']
+                        sSql += " index " + dicIndex['name']
+                        sSql += " on " + dicIndex['table']
+                        sSql += " (" + dicIndex['column'] + ")"
+                        
+                        
+                        
+                        print 'Sql INDEX = ', sSql
+                        result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                        print result
+    
+    
+                # Foreign keys
+                cyNodes = self.getNodes(cyNode[0],'foreign_key')
+                print 'cyNodes = ', cyNodes
+                if cyNodes:
+                    for i in cyNodes:
+                        print i.toxml()
+                        self.out("Werte in xml")
+                        dicForeign = {}                        
+                        foreignNode = self.getNodes(i,'foreign_key_name')
+                        dicForeign['name'] = self.getData(foreignNode[0])
+    
+                        foreignNode = self.getNodes(i,'foreign_table')
+                        dicForeign['table'] = self.getData(foreignNode[0])
+    
+                        foreignNode = self.getNodes(i,'foreign_key_sql')
+                        dicForeign['sql'] = self.getData(foreignNode[0])
+    
+                        sSql = 'alter table ' + dicForeign['table']
+                        sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
+                        sSql += dicForeign['sql']
+                        
+                        self.out( sSql)
+                        print '--------------------------------------------------------------'
+                        print 'Sql Foreign key = ', sSql
+                        print '--------------------------------------------------------------\n\n'
+    
+                        result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
                     
-                    # first drop index
-                    
-                    sSql = "drop index " + dicIndex['name']
-                    print 'Sql INDEX = ', sSql
-                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
-                 
-                    # now set new index
-                    sSql = "create " 
-                    if len(dicIndex['special']) > 1:
-                        sSql += dicIndex['special']
-                    sSql += " index " + dicIndex['name']
-                    sSql += " on " + dicIndex['table']
-                    sSql += " (" + dicIndex['column'] + ")"
-                    
-                    
-                    
-                    print 'Sql INDEX = ', sSql
-                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
-                    print result
-
-
-            # Foreign keys
-            cyNodes = self.getNodes(cyNode[0],'foreign_key')
-            print 'cyNodes = ', cyNodes
-            if cyNodes:
-                for i in cyNodes:
-                    print i.toxml()
-                    self.out("Werte in xml")
-                    dicForeign = {}                        
-                    foreignNode = self.getNodes(i,'foreign_key_name')
-                    dicForeign['name'] = self.getData(foreignNode[0])
-
-                    foreignNode = self.getNodes(i,'foreign_table')
-                    dicForeign['table'] = self.getData(foreignNode[0])
-
-                    foreignNode = self.getNodes(i,'foreign_key_sql')
-                    dicForeign['sql'] = self.getData(foreignNode[0])
-
-                    sSql = 'alter table ' + dicForeign['table']
-                    sSql += ' ADD CONSTRAINT "f_' + dicForeign['name'] +'" '
-                    sSql += dicForeign['sql']
-                    
-                    self.out( sSql)
-                    print '--------------------------------------------------------------'
-                    print 'Sql Foreign key = ', sSql
-                    print '--------------------------------------------------------------\n\n'
-
-                    result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+                        
                 
-                    
-            
-            
-            # Trigger
-            cyNodes = self.getNodes(cyNode[0],'trigger')
-            if cyNodes:
-                for i in cyNodes:
-                    self.out("Werte in xml")
-                                            
-                    triggerNode = self.getNodes(i,'nameOfTrigger')
-                    newName = self.getData(triggerNode[0])
-                    self.out(newName)
-
-                    triggerNode = self.getNodes(i,'table')
-                    table = self.getData(triggerNode[0])
-                    self.out(table)
-
-                    triggerNode = self.getNodes(i,'action')
-                    action = self.getData(triggerNode[0])
-                    self.out(action)
-
-                    triggerNode = self.getNodes(i,'cursor')
-                    cursor = self.getData(triggerNode[0])
-                    self.out(cursor)
-
-                    triggerNode = self.getNodes(i,'textOfTrigger')
-                    triggerText = self.getData(triggerNode[0])
-                    self.out(triggerText)
-
-                    
-                    # first delete the trigger called newName
-                    sSql = 'DROP TRIGGER ' + newName + ' on ' + table 
-                    
-                    ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
-                    self.out(ok) 
-                    print sSql                       
-                    print ok
-
-                    #then create the trigger called newName
-                    sSql = 'CREATE TRIGGER ' + newName + ' '
-                    sSql = sSql + action + ' ON ' + table
-                    sSql = sSql + ' ' + cursor + ' ' + triggerText 
-                    
-                    ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
-                    self.out(ok)
-                    print sSql                       
-                    print ok
+                
+                # Trigger
+                cyNodes = self.getNodes(cyNode[0],'trigger')
+                if cyNodes:
+                    for i in cyNodes:
+                        self.out("Werte in xml")
+                                                
+                        triggerNode = self.getNodes(i,'nameOfTrigger')
+                        newName = self.getData(triggerNode[0])
+                        self.out(newName)
+    
+                        triggerNode = self.getNodes(i,'table')
+                        table = self.getData(triggerNode[0])
+                        self.out(table)
+    
+                        triggerNode = self.getNodes(i,'action')
+                        action = self.getData(triggerNode[0])
+                        self.out(action)
+    
+                        triggerNode = self.getNodes(i,'cursor')
+                        cursor = self.getData(triggerNode[0])
+                        self.out(cursor)
+    
+                        triggerNode = self.getNodes(i,'textOfTrigger')
+                        triggerText = self.getData(triggerNode[0])
+                        self.out(triggerText)
+    
+                        
+                        # first delete the trigger called newName
+                        sSql = 'DROP TRIGGER ' + newName + ' on ' + table 
+                        
+                        ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
+                        self.out(ok) 
+                        print sSql                       
+                        print ok
+    
+                        #then create the trigger called newName
+                        sSql = 'CREATE TRIGGER ' + newName + ' '
+                        sSql = sSql + action + ' ON ' + table
+                        sSql = sSql + ' ' + cursor + ' ' + triggerText 
+                        
+                        ok = self.rpc.callRP('Database.createPsql', SQL_DB,SQL_HOST,SQL_PORT, SQL_USER, sSql)       
+                        self.out(ok)
+                        print sSql                       
+                        print ok
 

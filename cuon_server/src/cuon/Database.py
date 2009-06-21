@@ -51,10 +51,14 @@ class Database(xmlrpc.XMLRPC, SQL):
     def xmlrpc_createPsql(self, sDatabase, sHost, sPort, sUser,  sSql):
 
         # os.system('pysql ' + '-h ' + sHost + '-p ' + sPort + ' -U ' + sUser + ' ' + sDatabase + ' < ' + sSql) 
+        oFile = open('/etc/cuon/run.sql', 'w')
+        oFile.write(sSql)
+        oFile.close()
         
-        sysCommand = 'echo \"' + sSql + '\" | ' + 'psql  ' + '-h ' + sHost + ' -p ' + sPort + ' -U ' + sUser +   ' '  + sDatabase
+        sysCommand =  'psql  ' + '-h ' + sHost + ' -p ' + sPort + ' -U ' + sUser +   ' '  + sDatabase + ' < /etc/cuon/run.sql'
         
         os.system(sysCommand)
+        
         
         return sysCommand
 
@@ -98,7 +102,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         cParser = ConfigParser()
         cParser.read(self.CUON_FS + '/user.cfg')
         sP = cParser.get('password',name)
-        self.writeLog('Password = ' + sP )
+        #self.writeLog('Password = ' + sP )
         if sP == password:
             ok = True
             

@@ -123,6 +123,7 @@ class clientswindow(chooseWindows):
             self.oUser = self.saveObject('User', self.oUser)
             self.closeDB()
             self.closeWindow() 
+            self.rpc.callRP('User.setUserData',self.dicUser)
         else:
             print 'no client-ID'
     

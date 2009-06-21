@@ -176,7 +176,47 @@
       <comment />
     </field>
     </table>
-<!--table: cuon_clients-->
+
+    <!--table: cuon_user-->
+<table>
+    <nameOfTable>cuon_user</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+    <field>
+      <name>username</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>current_client</name>
+      <type>integer</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>no_where_client</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+ </table>
+
+  <!--table: cuon_clients-->
+
   <table>
     <nameOfTable>cuon_clients</nameOfTable>
     <specials>inherits (t_standard);</specials>

@@ -474,7 +474,10 @@ class articleswindow(chooseWindows):
     def on_eFindDesignation_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
-        
+    def on_eFindMaterialGroupID_key_press_event(self, entry,event):
+        if self.checkKey(event,'NONE','Return'):
+            self.searchArticle()
+            
         
     
 
@@ -482,6 +485,7 @@ class articleswindow(chooseWindows):
         self.out( 'Searching ....', self.ERROR)
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
+        sID = self.getWidget('eFindMaterialGroupID').get_text()
         self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
         liSearch = []
         if sNumber:
@@ -491,7 +495,11 @@ class articleswindow(chooseWindows):
         if sDesignation:
             liSearch.append('designation')
             liSearch.append(sDesignation)
-                
+        
+        if sID:
+            liSearch.append('material_group')
+            liSearch.append(sID)
+            
         self.singleArticle.sWhere = self.getWhere(liSearch)
         self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()

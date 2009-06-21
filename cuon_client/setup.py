@@ -350,7 +350,10 @@ class setup:
             + self.SERVERCONFIGDIR + "/examples/UserGroups.cfg " + self.SERVERCONFIGDIR + "/sql ;  fi ")
         # sql.xml
         # copy trigger to etc/cuon/sql
-        self.executeSCP('sql.xml', self.SERVERCONFIGDIR + "/sql")
+        liFunctions = ['sql.xml',  'basics.xml', 'order.xml', 'address.xml', 'garden.xml']
+        for oneFile in liFunctions:
+            self.executeSCP(oneFile, self.SERVERCONFIGDIR + "/sql")
+        
         
         # user.cfg
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/user.cfg ] ; then cp " 
@@ -669,7 +672,7 @@ class setup:
         tv1.set_buffer(buffer)
         tv1.show()
         while gtk.events_pending():
-            gtk.main_iteration(gtk.FALSE)
+            gtk.main_iteration(False)
     def setTv1(self, sText):
         sText += '\n'
         
@@ -684,7 +687,7 @@ class setup:
         tv1.scroll_to_iter(buffer.get_end_iter(),0.0,False,0.0,0.0)
         tv1.show()
         while gtk.events_pending():
-            gtk.main_iteration(gtk.FALSE)
+            gtk.main_iteration(False)
             
     def saveData2File(self):
         print 'save Data to config-File'
