@@ -319,7 +319,27 @@ class invoicebookwindow(windows):
         Pdf = self.rpc.callRP('Report.server_list_of_invoices_by_top', dicExtraData, self.dicUser)
         self.showPdf(Pdf, self.dicUser)
         
-        
+    def  on_tb_save_clicked(self, event ):
+        if self.tabOption == self.tabListOfInvoice:
+            self.on_save_activate(event)
+        if self.tabOption == self.tabInpayment:
+            self.on_inpayment_save1_activate(event)
+            
+            
+    def  on_tb_new_clicked(self, event ):
+        if self.tabOption == self.tabListOfInvoice:
+            self.on_new_activate(event)
+        if self.tabOption == self.tabInpayment:
+            self.on_inpayment_new1_activate(event)
+              
+    def  on_tb_edit_clicked(self, event ):
+        if self.tabOption == self.tabListOfInvoice:
+            self.on_edit_activate(event)
+        if self.tabOption == self.tabInpayment:
+            self.on_inpayment_edit1_activate(event)
+            
+
+
     def getInvoiceInfos(self):
     
         firstRecord = None

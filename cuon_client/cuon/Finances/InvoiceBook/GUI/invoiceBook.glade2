@@ -657,6 +657,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tb_new_clicked" last_modification_time="Wed, 24 Jun 2009 10:32:23 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>
@@ -689,6 +690,7 @@
 	      <property name="visible_horizontal">True</property>
 	      <property name="visible_vertical">True</property>
 	      <property name="is_important">False</property>
+	      <signal name="clicked" handler="on_tb_save_clicked" last_modification_time="Wed, 24 Jun 2009 10:32:41 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="expand">False</property>

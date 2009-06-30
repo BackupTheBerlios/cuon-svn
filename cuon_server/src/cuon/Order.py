@@ -521,11 +521,14 @@ class Order(xmlrpc.XMLRPC, basics):
 #        if dicResult and dicResult not in ['NONE','ERROR']:
 #        total_sum = dicResult[0]['total_sum']
 
-        sSql = "select total_sum from fct_getOrderTotalSum(OrderID) as total_sum(float) "
+        sSql = "select total_sum from fct_getOrderTotalSum(" + `OrderID` +") as total_sum(float) "
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        #print 'Total-sum = ', dicResult
+        
         if dicResult and dicResult not in ['NONE','ERROR']:
             total_sum = dicResult[0]['total_sum']
 
+        #print 'Total-sum 2= ', total_sum        
         return total_sum
         
     

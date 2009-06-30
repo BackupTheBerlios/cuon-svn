@@ -68,8 +68,8 @@ class Web(xmlrpc.XMLRPC, basics):
                     self.iCal.addEvent(i['user_id'],i,dicUser, True)
                 else:
                     self.iCal.addEvent(i['user_id'],i,dicUser, False)
-                z2 += 1
-                self.writeLog('new icals  ' + `z2` + ' from ' + `z1`,999)
+                #z2 += 1
+                #self.writeLog('new icals  ' + `z2` + ' from ' + `z1`,999)
                 
         return ok
     

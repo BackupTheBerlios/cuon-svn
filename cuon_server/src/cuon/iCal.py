@@ -193,7 +193,7 @@ class iCal(xmlrpc.XMLRPC, basics):
 ##                        print 'uid not found'
 ##                        Cal2.add_component(i)
 ##                    else:
-##                        print 'UID found'
+##                        print 'UID foiCal.pyund'
 ##                        print  i['UID'][0:len(sSearch)-1], sSearch
 ##                else:
 ##                    Cal2.add_component(i)

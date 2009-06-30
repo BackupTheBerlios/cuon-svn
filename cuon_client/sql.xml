@@ -63,6 +63,9 @@
         <index_table>address</index_table>
         <index_column>salesman_id</index_column>
     </index>
+    
+    
+    
     <index>
         <index_name>partner_idx_addressid</index_name>
         <index_special> </index_special>
@@ -76,9 +79,6 @@
         <index_table>partner</index_table>
         <index_column>status,client</index_column>
     </index>
-    
-    
-    
     <index>
         <index_name>partner_schedul_idx_partnerid</index_name>
         <index_special> </index_special>
