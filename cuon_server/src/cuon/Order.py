@@ -99,8 +99,9 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_changeProposal2Order(self, ProposalID, dicUser):
         ok = True 
+        print "proposalID = ",  ProposalID
         #sSql = "update orderbook set process_status = 500 where id = " + `ProposalID`
-        sSql = "select * from fct_changeProposal2Order(ProposalID )"
+        sSql = "select * from fct_changeProposal2Order(" + `ProposalID` + " )"
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )  
         return ok
         

@@ -267,7 +267,7 @@ class AI(xmlrpc.XMLRPC, basics):
             result = self.oDatabase.xmlrpc_saveRecord('misc_data',-1,dicValues,dicUser )
             print 'result by insertData', result
             if  result not in ['NONE','ERROR']:
-                answer = "INSERT DATA SUCCESSFULL AT ID " + `result[0]['last_value']`
+                answer = "INSERT DATA SUCCESSFUL AT ID " + `result[0]['last_value']`
                 print answer
                 answer = self.sendQuestion(answer.encode('utf-7'))
         return answer

@@ -313,7 +313,7 @@ class User(defaultValues):
         self.prefDMS['fileformat']['googleearth'] =  {'format':'KMZ', 'suffix':['kmz','kml','eta'], 'executable': self.prefDMS['exe']['googleearth']}
         self.prefDMS['fileformat']['html'] =  {'format':'HTML', 'suffix':['html','htm'], 'executable': self.prefDMS['exe']['html']}
         self.prefDMS['fileformat']['python'] =  {'format':'PYTHON', 'suffix':['py'], 'executable': self.prefDMS['exe']['python']}
-        self.prefDMS['fileformat']['mindmap'] =  {'format':'MINDMAP', 'suffix':['vym'], 'executable': self.prefDMS['exe']['mindmap']}
+        self.prefDMS['fileformat']['mindmap'] =  {'format':'MINDMAP', 'suffix':['vym', 'mm', 'mmp', 'emm', 'nmind', 'TWD'], 'executable': self.prefDMS['exe']['mindmap']}
         
 
         

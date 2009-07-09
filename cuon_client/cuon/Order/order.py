@@ -537,7 +537,7 @@ class orderwindow(chooseWindows):
   
     #Menu Payment
     def on_payment_save_activate(self, event):
-        print "save Positions v2"
+        print "save Payment v2"
        
         self.singleOrderPayment.orderID = self.singleOrder.ID
     

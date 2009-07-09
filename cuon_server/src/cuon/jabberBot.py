@@ -111,7 +111,7 @@ class jabberBot(xmlrpc.XMLRPC, basics):
                     self.dicUsers.close()
                     
                     if sid not in ['TEST']:
-                        return_msg = 'Authentication successfull'
+                        return_msg = 'Authentication successful'
                     else:
                         return_msg = 'Authentication failed'
                     self.send(message,  return_msg)

@@ -4,7 +4,7 @@
     
     <function>
      
-      <nameOfFunction>fct_changeProposal2Order(iProposalID int ) returns text</nameOfFunction>
+      <nameOfFunction>fct_changeProposal2Order(iProposalID int ) returns bool</nameOfFunction>
       <language>plpgsql</language>
     <textOfFunction>
  DECLARE
@@ -15,6 +15,7 @@
     BEGIN
         
         update orderbook set process_status = 500 where id =  iProposalID ;
+        
         if FOUND then
             return 1 ;
         else 

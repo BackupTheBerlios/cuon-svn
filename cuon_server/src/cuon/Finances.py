@@ -11,7 +11,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         self.oDatabase = Database.Database()
         self.debugFinances = 1
         
-
+    
 
     def getCashAccountBook(self, dicSearchfields, dicUser):
     
@@ -239,7 +239,20 @@ class Finances(xmlrpc.XMLRPC, basics):
             #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
         return total_amount
         
-        
+    def xmlrpc_getTotalAmountString(self, OrderID, dicUser):
+        retValue = '0'  
+
+        total_sum = self.getTotalAmount(OrderID,dicUser)
+        try:
+            #"%.2f"%y 
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            retValue = total_sum + ' ' + self.CURRENCY_SIGN
+        except:
+            pass
+            
+        return retValue  
+     
+     
     def xmlrpc_createTicketFromInpayment(self, inpayment_id, dicUser):
         ret = True
         

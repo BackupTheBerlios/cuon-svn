@@ -234,6 +234,8 @@ class addresswindow(chooseWindows):
 
         #print 'time 10 = ', time.localtime()
 
+        self.cbSearchPartner = self.getWidget('cbSearchPartner')
+        
         liFashion, liTrade,liTurnover,liLegalform = self.rpc.callRP('Address.getComboBoxEntries',self.dicUser)
         print liFashion, liTrade,liTurnover,liLegalform
         
@@ -1007,14 +1009,17 @@ class addresswindow(chooseWindows):
             liSearch.append(sInfo)
             
         if liSearch:
-            if self.tabOption == self.tabAddress:
-                self.singleAddress.sWhere = self.getWhere(liSearch) 
-                self.oldTab = -1
-            elif self.tabOption == self.tabPartner:
-                
+            if self.cbSearchPartner.get_active():
                 self.singleAddress.sWhere = self.rpc.callRP('Address.getAllAddressForThisPartner',self.getWhere(liSearch),self.dicUser)
-                self.oldTab = -1
-                self.setMainwindowNotebook('F1')
+            else:
+            #if self.tabOption == self.tabAddress:
+                self.singleAddress.sWhere = self.getWhere(liSearch) 
+        self.oldTab = -1
+#            elif self.tabOption == self.tabPartner:
+#                
+#                self.singleAddress.sWhere = self.rpc.callRP('Address.getAllAddressForThisPartner',self.getWhere(liSearch),self.dicUser)
+#                self.oldTab = -1
+#                self.setMainwindowNotebook('F1')
                 #print self.singleAddress.sWhere
         self.refreshTree()
 
@@ -1136,7 +1141,7 @@ class addresswindow(chooseWindows):
     def on_tbNewProposal_clicked(self, event):
         print 'new TB proposal'
         self.activateClick('new_proposal')
-        
+    
         
     def on_tbNewOrder_clicked(self, event):
         print 'new order toolbar '
@@ -1469,6 +1474,10 @@ class addresswindow(chooseWindows):
                 
             except:
                 pass
+                
+    def on_bShowProposal_clicked(self, event):
+        self.on_tvAddressProposal_row_activated(event, None, None)
+        
                 
     def on_tvAddressProposal_row_activated(self,event,data1, data2):
         if self.ProposalID: 
