@@ -36,7 +36,7 @@ class Web2(xmlrpc.XMLRPC, basics):
         self.DMS_MODULNUMBER = 20000
 
     
-    def getRootElement(self):
+    def getRootElement(self,  iWebType = 0):
         tData = 'NONE'
         sSql = "select web2.root_keys as root_keys, web2.type as type, web2.linked_keys as linked_keys,dms.document_image as data, dms.file_format as file_format,dms.file_suffix as file_suffix  from web2, dms  where type = 0 and dms.sep_info_1 = web2.id and dms. insert_from_module = " + `self.DMS_MODULNUMBER` 
         sSql += " and dms.status != 'delete' "

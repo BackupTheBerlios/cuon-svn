@@ -242,7 +242,7 @@ class Finances(xmlrpc.XMLRPC, basics):
     def xmlrpc_getTotalAmountString(self, OrderID, dicUser):
         retValue = '0'  
 
-        total_sum = self.getTotalAmount(OrderID,dicUser)
+        total_sum = self.xmlrpc_getTotalAmount(OrderID,dicUser)
         try:
             #"%.2f"%y 
             total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)

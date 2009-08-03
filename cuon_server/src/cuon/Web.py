@@ -36,6 +36,10 @@ class Web(xmlrpc.XMLRPC, basics):
         shellcommand = '/etc/init.d/cuonweb2 restart'
         liStatus = commands.getstatusoutput(shellcommand)
         print liStatus
+        shellcommand = '/etc/init.d/cuonweb3 restart'
+        liStatus = commands.getstatusoutput(shellcommand)
+        print liStatus
+        
         return liStatus
           
     def xmlrpc_cron_create_iCal(self, sName, fromDate = None):

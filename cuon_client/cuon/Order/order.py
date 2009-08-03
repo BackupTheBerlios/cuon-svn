@@ -1091,6 +1091,8 @@ class orderwindow(chooseWindows):
             #self.singleOrder.refreshTree()
             self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
             print 'Singleid =',  self.singleOrderInvoice.findSingleId()
+            
+            self.singleOrderInvoice.refreshTree()
             self.singleOrderInvoice.fillEntries(self.singleOrderInvoice.findSingleId())
             
         elif self.tabOption == self.tabMisc:

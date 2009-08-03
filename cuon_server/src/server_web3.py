@@ -40,7 +40,8 @@ TypePython = 2
 TypeDir = 3
 TypeImage = 4
 TypeFile = 5
-        
+TypeWebinterface = 6
+
 class Image:
     """An image consisting of a filename and some comments.
     """
@@ -144,6 +145,10 @@ def getRootSite(iWebType = 0):
     
     return rootClass 
 
+
+        
+        
+        
 def getHtmlSite(dicHtmlSite):
     print 'dicHtmlSite', dicHtmlSite
     htmlClass = None
@@ -179,8 +184,12 @@ def getHtmlSite(dicHtmlSite):
         htmlClass +='\t\t\n'
         htmlClass +='\tdef renderHTTP(self, ctx):\n'
         htmlClass +='\t\tcounter(\'' + dicHtmlSite['name'].strip() +'\')\n'
-    
-        htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
+        if dicHtmlSite['name'].strip() == 'auth1':
+            #dicHtmlSite['data'] = "Hallo"
+            #htmlClass +='\t\treturn """' + dicHtmlSite['data']+ '""" \n'
+            print 'do authentication'
+        else:
+            htmlClass +='\t\treturn """' + baseSettings.rebuild(dicHtmlSite['data']) + '""" \n'
         #print '-------------------------------------------------------------------'
         #print htmlClass
         #print '-------------------------------------------------------------------'
@@ -240,7 +249,7 @@ def counter(sName):
     
     
     
-rootClass = getRootSite()
+rootClass = getRootSite(TypeWebinterface)
 
 exec (rootClass)
 exec('root = Root()') 
@@ -254,7 +263,7 @@ for sName in liSites:
         for id in IDs:
             dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypeLinkedSite)
             if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
-                #print 'dicHtmlSite = ', dicHtmlSite
+                print 'dicHtmlSite = ', dicHtmlSite
                 htmlClass = getHtmlSite(dicHtmlSite[0])
                 if htmlClass:
                     exec (htmlClass)
@@ -319,7 +328,7 @@ site = appserver.NevowSite(root)
 
 #webServer.setServiceParent(application)
 
-reactor.listenTCP(baseSettings.WEB_PORT2, site)
+reactor.listenTCP(baseSettings.WEB_PORT3, site)
 #webServer.startService()
 #webServer.run()
 reactor.run()

@@ -306,7 +306,10 @@ class setup:
         
         self.executeSSH("if  [ ! -f /etc/init.d/cuonweb2 ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/cuonweb2 /etc/init.d  ; fi ")
-        
+            
+        self.executeSSH("if  [ ! -f /etc/init.d/cuonweb3 ] ; then cp " 
+            + self.SERVERCONFIGDIR + "/examples/cuonweb3 /etc/init.d  ; fi ")
+            
         self.executeSSH("if  [ ! -f /etc/init.d/cuonjabber ] ; then cp " 
             + self.SERVERCONFIGDIR + "/examples/cuonjabber /etc/init.d  ; fi ")
         
@@ -319,6 +322,7 @@ class setup:
         self.executeSSH(" update-rc.d cuonreport defaults")
         self.executeSSH(" update-rc.d cuonai defaults")
         self.executeSSH(" update-rc.d cuonweb2 defaults")
+        self.executeSSH(" update-rc.d cuonweb3 defaults")
         self.executeSSH(" update-rc.d cuonjabber defaults")
          
         # Then check the files 
@@ -373,6 +377,7 @@ class setup:
         self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
         self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
         self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
+        self.executeSSH(" nohup /etc/init.d/cuonweb3 restart &")
         self.executeSSH(" nohup /etc/init.d/cuonai restart &")
         self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
         

@@ -269,10 +269,10 @@ import time
  
 #http connections
 import httplib, urllib
-try:
-    import profile
-except:
-    print "no Profile"
+#try:
+#    import profile
+#except:
+#    print "no Profile"
 
 class MainWindow(windows):
     """
@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 46, 'Rev': 33  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 46, 'Rev': 36  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -384,8 +384,9 @@ class MainWindow(windows):
         print liModullist
         for iL in  liModullist:
             #print iL
-            if iL.has_key('all'):
-                #print 'key all found'
+            if 'all' in iL:
+                
+            #print 'key all found'
                 #data
                 self.addEnabledMenuItems('work','mi_addresses1')
                 self.addEnabledMenuItems('work','mi_articles1')
