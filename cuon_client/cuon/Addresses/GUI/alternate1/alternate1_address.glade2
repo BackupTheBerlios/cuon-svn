@@ -554,6 +554,7 @@
                 <child>
                   <widget class="GtkToolbar" id="toolbar1">
                     <property name="visible">True</property>
+                    <property name="toolbar_style">both</property>
                     <child>
                       <widget class="GtkToolButton" id="tbNew">
                         <property name="visible">True</property>
