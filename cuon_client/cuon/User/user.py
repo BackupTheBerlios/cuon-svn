@@ -65,6 +65,7 @@ class User(defaultValues):
         self.prefPath = {}
         self.prefApps = {}
         self.prefLocale = {}
+        self.Twitter = {}
         
         self.serverSqlDateFormat = '%Y-%m-%d'
         self.client = 0
@@ -131,6 +132,7 @@ class User(defaultValues):
         self.prefApps['SIP'] = 'ekiga'
         self.prefApps['SIP_PARAMS'] = '-c'
         
+        # Email 
         
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
@@ -143,6 +145,12 @@ class User(defaultValues):
         self.Email['Signatur']='NONE'
         self.Email['extPrg'] = 'evolution'
 
+        #Twitter
+        self.Twitter = {}
+        self.Twitter['TwitterName'] = 'cuonOne'
+        self.Twitter['TwitterPassword'] = 'barner'
+        
+        
         self.prefFinances = {}
         self.prefFinances['cash1'] = '16000'
         self.prefFinances['cash2'] = '16100'
@@ -350,6 +358,7 @@ class User(defaultValues):
         
         self.dicUser['client'] = self.client
         self.dicUser['Email'] = self.Email
+        self.dicUser['Twitter'] = self.Twitter
         self.dicUser['prefFinances'] = self.prefFinances
         self.dicUser['prefLocale'] = self.prefLocale
         
@@ -366,7 +375,7 @@ class User(defaultValues):
         self.sqlDicUser['Encode'] = self.Encode
         self.sqlDicUser['DateTimeformatString'] = self.userDateTimeFormatString
         self.sqlDicUser['DateformatString'] = self.userDateFormatString
-        
+        self.sqlDicUser['Twitter'] = self.Twitter
         self.sqlDicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         self.sqlDicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.sqlDicUser['SQLTimeFormat'] = self.userSQLTimeFormat

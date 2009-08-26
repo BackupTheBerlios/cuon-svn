@@ -249,7 +249,7 @@ class Finances(xmlrpc.XMLRPC, basics):
             retValue = total_sum + ' ' + self.CURRENCY_SIGN
         except:
             pass
-            
+        #print "Amount of invoice = ", retValue    
         return retValue  
      
      

@@ -26,6 +26,7 @@ import cuon.Report
 import cuon.WebShop
 import cuon.Email
 import cuon.Grave
+import cuon.Tweet
 
 openssl = False
 try:
@@ -95,6 +96,7 @@ class ServerData:
         oWebShop = cuon.WebShop.WebShop()
         oEmail = cuon.Email.cuonemail()
         oGrave = cuon.Grave.Grave()
+        oTweet = cuon.Tweet.Tweet()
         
         r.putSubHandler('Web', oWeb)
         r.putSubHandler('Database', oDatabase)
@@ -112,7 +114,7 @@ class ServerData:
         r.putSubHandler('WebShop', oWebShop)
         r.putSubHandler('Email', oEmail)
         r.putSubHandler('Grave', oGrave)
-
+        r.putSubHandler('Tweet', oTweet)
         return r 
 
 ##reactor.listenTCP(baseSettings.XMLRPC_PORT, server.Site(r))

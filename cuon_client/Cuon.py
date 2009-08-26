@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 46, 'Rev': 36  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 1  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -771,6 +771,54 @@ class MainWindow(windows):
     def on_okAbout1_clicked(self, event):
         about1 = self.getWidget('aCuon')
         about1.hide()
+
+
+    # Twitter
+    def on_bSendTwitter_clicked(self, event):
+        widget =  self.getWidget('eTwitterMessage')
+        sMessage =widget.get_text()
+        print sMessage
+        if sMessage:
+            self.rpc.callRP('Tweet.sendTwitterMessage', self.oUser.getDicUser(), sMessage)
+            widget.set_text(" ")
+    def on_tbTwitterRefresh_clicked(self, event):
+        liText = self.rpc.callRP('Tweet.refreshUser', self.oUser.getDicUser())
+        print liText
+        widget = self.getWidget('tvTwitterMessages')
+        self.clearTextBuffer(widget)
+        
+        for sText in liText:
+            self.add2Textbuffer(widget, sText, direction = 'Head')
+            
+    def on_tbTwitterRefreshAll_clicked(self, event):
+        liText = self.rpc.callRP('Tweet.refreshAll', self.oUser.getDicUser())
+        print liText
+        widget = self.getWidget('tvTwitterMessages')
+        self.clearTextBuffer(widget)
+        if liText != ['NONE']:
+            for sText in liText:
+                self.add2Textbuffer(widget, sText, direction = 'Head')
+            
+    def on_tbTwitterFollowers_clicked(self, event):
+        liFollower, numberOfFollowers = self.rpc.callRP('Tweet.getListOfFollowers', self.oUser.getDicUser())
+        print liFollower
+        print numberOfFollowers
+        widget = self.getWidget('tvTwitterMessages')
+        self.clearTextBuffer(widget)
+        if liFollower != ['NONE']:
+            for follower in liFollower:
+                
+                self.add2Textbuffer(widget, follower['name'] +" " + follower['screen_name']+" " + follower['location' ]+ '\n', direction = 'Head')
+                
+            self.getWidget('eTwitterFollower').set_text(`numberOfFollowers`)    
+                
+            
+    def on_eTwitterMessage_changed(self, event):
+        self.getWidget('eTwitterLetters').set_text(`len(self.getWidget('eTwitterMessage').get_text())`)
+    
+    def on_eTwitterMessage_key_press_event(self, entry, event):
+        if self.checkKey(event,'NONE','Return'):
+            self.activateClick('bSendTwitter')
 
     # extendet Menu
     

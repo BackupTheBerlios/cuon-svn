@@ -76,6 +76,12 @@ class gladeXml(defaultValues):
         buffer.set_text(text)
         widget.set_buffer(buffer)
         
+    def clearTextBuffer(self, widget):
+        bText = ''
+        buffer = widget.get_buffer()
+        buffer.set_text(bText)
+        widget.set_buffer(buffer)
+        
     def readTextBuffer(self, widget):
         bText = ''
         buffer = widget.get_buffer()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2005]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2005 - 2009]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -40,13 +40,19 @@ locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import mx.DateTime
 import graveyard
+from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
+import cuon.Articles.SingleArticle
 
-class graveswindow(chooseWindows):
+
+
+class graveswindow(chooseWindows, ArticlesFastSelection):
 
     
     def __init__(self, allTables):
 
         chooseWindows.__init__(self)
+        ArticlesFastSelection.__init__(self)
+          
         self.allTables = allTables
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
@@ -55,9 +61,11 @@ class graveswindow(chooseWindows):
         self.singleGraveAutumn = SingleGraveAutumn.SingleGraveAutumn(allTables)
         self.singleGraveWinter = SingleGraveWinter.SingleGraveWinter(allTables)
 
-    
+        self.fillArticlesNewID = 0
+        self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
+        
         self.loadGlade('graves.xml', 'GraveMainwindow')
-
+        self.FastSelectionStart()
         self.setStatusBar()
 
 
@@ -101,6 +109,7 @@ class graveswindow(chooseWindows):
   
         self.EntriesGravesSummer = 'graves_summer.xml'
         self.loadEntries(self.EntriesGravesSummer)
+        
         
         self.singleGraveSummer.setEntries(self.getDataEntries(self.EntriesGravesSummer) )
         self.singleGraveSummer.setGladeXml(self.xml)
@@ -533,6 +542,16 @@ class graveswindow(chooseWindows):
         self.out(self.singleGrave.sWhere, self.ERROR)
         self.refreshTree()
 
+    def on_bQuickAppend_clicked(self, event):
+        if self.tabOption == self.tabGraveSpring:
+            self.getWidget('eSpringArticleID').set_text(`self.fillArticlesNewID`)
+            
+           #self.getWidget('ePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+    def on_eSpringArticleID_changed(self, event):
+        print "eSpringArticleID changed"
+        #self.singleArticle.load(self.fillArticlesNewID)
+        self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(self.fillArticlesNewID) )
+            
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()

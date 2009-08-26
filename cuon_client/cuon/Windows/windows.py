@@ -873,7 +873,11 @@ class windows(rawWindow, MyXML, messages):
             page_num = 7 
         elif sKey == 'F9':
             page_num = 8 
-        
+        elif sKey == 'F11':
+            page_num = 9 
+        elif sKey == 'F12':
+            page_num = 10 
+            
         if page_num >= 0:
             
             notebook = self.getWidget('notebook1')   

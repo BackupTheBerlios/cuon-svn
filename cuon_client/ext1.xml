@@ -693,7 +693,26 @@
       <default></default>
       <comment>ext. Email prg with parameter </comment>
     </field>
-    
+      <field>
+      <name>twitter_user_name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>twitter connect for user</comment>
+    </field>
+     <field>
+      <name>twitter_user_password</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>twitter connect for user , password</comment>
+    </field>
   </table>
   <table>
     <nameOfTable>web2</nameOfTable>
