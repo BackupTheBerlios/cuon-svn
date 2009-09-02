@@ -159,7 +159,7 @@
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Clear</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_clear1_activate"/>
+		      <signal name="activate" handler="on_delete1_activate" last_modification_time="Mon, 31 Aug 2009 11:10:38 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -2403,7 +2403,7 @@ Botany</property>
 		  <child>
 		    <widget class="GtkLabel" id="label16">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">label16</property>
+		      <property name="label" translatable="yes">Last Date</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -2555,7 +2555,7 @@ Botany</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eMinquantum">
+		    <widget class="GtkEntry" id="eLastDate">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>

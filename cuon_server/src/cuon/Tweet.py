@@ -113,3 +113,62 @@ class Tweet(xmlrpc.XMLRPC, basics):
             numberOfFollowers = 0
         #print liReturn
         return liReturn,  numberOfFollowers
+        
+    def xmlrpc_getRepliesForUser(self, dicUser):
+        self.username = dicUser['Twitter']['TwitterName'] 
+        self.password = dicUser['Twitter']['TwitterPassword']
+        liReturn = []
+        try:
+            api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
+            liStatus = api.GetReplies()        # print [s.text for s in status]
+            
+            for status in liStatus:
+                liReturn.append(status.created_at[0:16] + ": " + status.text + '\n')
+            liReturn.reverse()
+        except Exception,  params:
+            print Exception, params
+            print 'Error in getting Tweet'
+            liReturn = ['NONE']   
+        #print liReturn
+        return liReturn
+    
+    def xmlrpc_getUserMessages(self, dicUser):
+        self.username = dicUser['Twitter']['TwitterName'] 
+        self.password = dicUser['Twitter']['TwitterPassword']
+        liReturn = []
+        try:
+            api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
+            #liStatus = api.GetFriends()        
+            # print [s.text for s in status]
+            liMessages = []
+            #for user in liStatus:
+                #liMessages += api.GetUserTimeline(user.name)        # print [s.text for s in status]
+            liMessages += api.GetFriendsTimeline(self.username)
+            for msg in liMessages:
+                
+                    liReturn.append(msg.GetUser().name + " " + msg.created_at[0:16] + ": " + msg.text + '\n')
+            
+            liReturn.reverse()
+        except Exception,  params:
+            print Exception, params
+            print 'Error in getting Tweet'
+            liReturn = ['NONE']   
+        #print liReturn
+        return liReturn
+    def xmlrpc_getDirectMessagesForUser(self, dicUser):
+        self.username = dicUser['Twitter']['TwitterName'] 
+        self.password = dicUser['Twitter']['TwitterPassword']
+        liReturn = []
+        try:
+            api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
+            liStatus = api.GetDirectMessages(self.username)        # print [s.text for s in status]
+            
+            for status in liStatus:
+                liReturn.append(status.created_at[0:16] + ": " + status.text + '\n')
+            liReturn.reverse()
+        except:
+            print 'Error in getting Tweet'
+            liReturn = ['NONE']   
+        #print liReturn
+        return liReturn
+

@@ -1395,6 +1395,24 @@
 		      <property name="show_arrow">True</property>
 
 		      <child>
+			<widget class="GtkToolButton" id="tbTwitterGetMessages">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Get new messages</property>
+			  <property name="label" translatable="yes">Get Messages</property>
+			  <property name="use_underline">True</property>
+			  <property name="stock_id">gtk-home</property>
+			  <property name="visible_horizontal">True</property>
+			  <property name="visible_vertical">True</property>
+			  <property name="is_important">False</property>
+			  <signal name="clicked" handler="on_tbTwitterGetMessages_clicked" last_modification_time="Mon, 31 Aug 2009 12:30:34 GMT"/>
+			</widget>
+			<packing>
+			  <property name="expand">False</property>
+			  <property name="homogeneous">True</property>
+			</packing>
+		      </child>
+
+		      <child>
 			<widget class="GtkToolButton" id="tbTwitterRefresh">
 			  <property name="visible">True</property>
 			  <property name="tooltip" translatable="yes">Refresh the user timeline</property>
@@ -1418,7 +1436,7 @@
 			  <property name="tooltip" translatable="yes">Refresh the public timeline</property>
 			  <property name="label" translatable="yes">Refresh all</property>
 			  <property name="use_underline">True</property>
-			  <property name="stock_id">gtk-goto-last</property>
+			  <property name="stock_id">gtk-info</property>
 			  <property name="visible_horizontal">True</property>
 			  <property name="visible_vertical">True</property>
 			  <property name="is_important">False</property>
@@ -1436,7 +1454,7 @@
 			  <property name="tooltip" translatable="yes">List of your followers</property>
 			  <property name="label" translatable="yes">Follower</property>
 			  <property name="use_underline">True</property>
-			  <property name="stock_id">gtk-go-down</property>
+			  <property name="stock_id">gtk-about</property>
 			  <property name="visible_horizontal">True</property>
 			  <property name="visible_vertical">True</property>
 			  <property name="is_important">False</property>
@@ -1449,11 +1467,21 @@
 		      </child>
 
 		      <child>
-			<placeholder/>
-		      </child>
-
-		      <child>
-			<placeholder/>
+			<widget class="GtkToolButton" id="tbTwitterGetReplies">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Get replies to you</property>
+			  <property name="label" translatable="yes">Replies</property>
+			  <property name="use_underline">True</property>
+			  <property name="stock_id">gtk-orientation-portrait</property>
+			  <property name="visible_horizontal">True</property>
+			  <property name="visible_vertical">True</property>
+			  <property name="is_important">False</property>
+			  <signal name="clicked" handler="on_tbTwitterGetReplies_clicked" last_modification_time="Fri, 28 Aug 2009 15:06:41 GMT"/>
+			</widget>
+			<packing>
+			  <property name="expand">False</property>
+			  <property name="homogeneous">True</property>
+			</packing>
 		      </child>
 		    </widget>
 		    <packing>

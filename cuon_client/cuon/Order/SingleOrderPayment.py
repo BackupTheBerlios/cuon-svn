@@ -50,13 +50,16 @@ class SingleOrderPayment(SingleData):
         eTotalSum = self.getWidget('ePaymentInvoiceAmount')
         # all inpayments of this Order
         eTotalPayment = self.getWidget('ePaymentPayments')
+        
         try:
             
             eTotalSum.set_text( self.rpc.callRP('Order.getTotalSumString', self.orderID, self.dicUser))
-            eTotalPayment.set_text( self.rpc.callRP('Finances.getTotalAmountString', self.orderID, self.dicUser))
+            self.loading = False
+            eTotalPayment.set_text( self.rpc.callRP('Finances.getTotalInpaymentString', self.orderID, self.dicUser))
             
         except Exception, params:
             print Exception, params
+        self.loading = False 
         
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePayment'

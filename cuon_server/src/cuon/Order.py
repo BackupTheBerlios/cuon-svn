@@ -578,7 +578,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getUserInfoOrder(self, dicOrder, dicUser):
         return None
-        
+    
     def xmlrpc_getUserInfoInvoice(self, dicOrder, dicUser):
         sSql = 'select * from staff, list_of_invoices as lii where cuon_username =  lii.user_id and lii.invoice_number = ' + `dicOrder['invoiceNumber'] ` 
         sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')

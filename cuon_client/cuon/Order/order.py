@@ -73,6 +73,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         #self.win1 = self.getWidget('OrderMainwindow')
         self.FastSelectionStart()
         self.allTables = allTables
+        self.eResidue= self.getWidget("ePaymentResidue")
         self.singleOrder = SingleOrder.SingleOrder(allTables)
         self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)
         self.singleOrderGet = SingleOrderGet.SingleOrderGet(allTables)
@@ -742,6 +743,23 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         if id > 0:
             self.getWidget('ePaymentAccountID').set_text(`id`)
             
+    def on_ePaymentInpayment_changed(self, event):
+        self.calcNew()
+    def on_ePaymentPayments_changed(self, event):
+        self.calcNew()
+    def ePaymentInvoiceAmount_changed(self, event):
+        self.calcNew()
+    def on_ePaymentCashDiscount_changed(self, event):
+        self.calcNew()
+    def on_ePaymentInvoiceAmount_changed(self, event):
+        self.calcNew()
+        
+    def calcNew(self):
+        
+        #self.singleOrderPayment.fillOtherEntries()
+        if not self.singleOrderPayment.loading:
+            self.eResidue.set_text( self.rpc.callRP('Finances.getResidueSumString', self.singleOrder.ID, self.dicUser))
+        
     def createSimplePayment(self, sType):
         
         self.setMainwindowNotebook('F7')

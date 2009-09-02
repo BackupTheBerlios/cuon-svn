@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 4  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 7  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -781,6 +781,19 @@ class MainWindow(windows):
         if sMessage:
             self.rpc.callRP('Tweet.sendTwitterMessage', self.oUser.getDicUser(), sMessage)
             widget.set_text(" ")
+            
+    
+    def on_tbTwitterGetMessages_clicked(self, event):
+        print "get friends and messages"
+        liText = self.rpc.callRP('Tweet.getUserMessages', self.oUser.getDicUser())
+        print liText
+        widget = self.getWidget('tvTwitterMessages')
+        self.clearTextBuffer(widget)
+        if liText != ['NONE']:
+            for sText in liText:
+                self.add2Textbuffer(widget, sText, direction = 'Head')
+            
+            
     def on_tbTwitterRefresh_clicked(self, event):
         liText = self.rpc.callRP('Tweet.refreshUser', self.oUser.getDicUser())
         print liText
@@ -812,6 +825,14 @@ class MainWindow(windows):
                 
             self.getWidget('eTwitterFollower').set_text(`numberOfFollowers`)    
                 
+    def on_tbTwitterGetReplies_clicked(self, event):
+        liText = self.rpc.callRP('Tweet.getRepliesForUser', self.oUser.getDicUser())
+        print liText
+        widget = self.getWidget('tvTwitterMessages')
+        self.clearTextBuffer(widget)
+        
+        for sText in liText:
+            self.add2Textbuffer(widget, sText, direction = 'Head')
             
     def on_eTwitterMessage_changed(self, event):
         self.getWidget('eTwitterLetters').set_text(`len(self.getWidget('eTwitterMessage').get_text())`)

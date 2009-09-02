@@ -523,8 +523,9 @@
             NEW.update_user_id = current_user   ;
             NEW.update_time = (select  now()) ;
             NEW.user_id = OLD.user_id;
-                          NEW.insert_time = OLD.insert_time ;
-                          NEW.status = ''update'' ;
+            
+            NEW.insert_time = OLD.insert_time ;
+            NEW.status = ''update'' ;
             RAISE NOTICE ''Name =  % '', TG_NAME ;
             RETURN NEW; 
       else 
@@ -743,7 +744,7 @@
   <trigger>
       <nameOfTrigger>trg_deleteArticle</nameOfTrigger>
       <table>articles</table>
-      <action>before delete</action>
+      <action>after delete</action>
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
       <description>if delete a article, check for use in order, then delete all CUON_CLIENTS </description>

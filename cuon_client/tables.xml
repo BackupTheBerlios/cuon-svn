@@ -1726,6 +1726,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>last_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: articles_sales-->
   <table>

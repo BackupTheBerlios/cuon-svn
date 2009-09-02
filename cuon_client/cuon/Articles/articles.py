@@ -165,18 +165,18 @@ class articleswindow(chooseWindows):
         
         # enabledMenues for Article
         self.addEnabledMenuItems('editArticle','new1', self.dicUserKeys['articles_new'])
-        self.addEnabledMenuItems('editArticle','clear1', self.dicUserKeys['articles_delete'])
+        self.addEnabledMenuItems('editArticle','delete1', self.dicUserKeys['articles_delete'])
         self.addEnabledMenuItems('editArticle','print1', self.dicUserKeys['articles_print'])
         self.addEnabledMenuItems('editArticle','edit1',self.dicUserKeys['articles_edit'])
 
         # enabledMenues for ArticlePurchase
         self.addEnabledMenuItems('editPurchase','PurchaseNew1', self.dicUserKeys['articles_purchase_new'])
-        self.addEnabledMenuItems('editPurchase','PurchaseClear1')
+        self.addEnabledMenuItems('editPurchase','PurchaseDelete1')
         self.addEnabledMenuItems('editPurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
     
        # enabledMenues for ArticleSales
         self.addEnabledMenuItems('editSales','SalesNew1')
-        self.addEnabledMenuItems('editSales','SalesClear1')
+        self.addEnabledMenuItems('editSales','SalesDelete1')
         self.addEnabledMenuItems('editSales','SalesEdit1')
 
        # enabledMenues for ArticleWebshop
@@ -275,20 +275,20 @@ class articleswindow(chooseWindows):
         self.tabChanged()
         
     def on_PurchaseNew1_activate(self, event):
-        print "new Partner articles v2"
+        print "new Purchase articles v2"
         self.singleArticlePurchase.newRecord()
         self.setEntriesEditable(self.EntriesArticlesPurchase, True)
 
     def on_PurchaseEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesArticlesPurchase, True)
 
-    def on_PurchaseClear1_activate(self, event):
-        print "delete Partner articles v2"
+    def on_PurchaseDelete1_activate(self, event):
+        print "delete Purchase articles v2"
         self.singleArticlePurchase.deleteRecord()
 
     #Articles Sales
     def on_SalesSave1_activate(self, event):
-        print "save Partner articles v2"
+        print "save Sales articles v2"
         
         self.singleArticleSales.articlesNumber = self.singleArticle.ID
         self.singleArticleSales.save()
@@ -304,8 +304,8 @@ class articleswindow(chooseWindows):
     def on_SalesEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesArticlesSales, True)
 
-    def on_SalesClear1_activate(self, event):
-        print "delete Partner articles v2"
+    def on_SalesDelete1_activate(self, event):
+        print "delete Sales articles v2"
         self.singleArticleSales.deleteRecord()
 
 

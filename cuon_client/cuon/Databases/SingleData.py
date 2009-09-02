@@ -83,7 +83,7 @@ class SingleData(gladeXml, logs):
         self.TreePos = 0
         self.TREEFIRST=-100
         self.TREELAST = -1000
-        
+        self.loading = False 
         
     def load(self, record, dicDetail = None):
         '''
@@ -91,6 +91,7 @@ class SingleData(gladeXml, logs):
         @param dicDetail: details for statusbar
         @return: list of records
         '''
+        self.loading = True 
         self.setWaitCursor()
         self.ID = -1
         liRecords = []

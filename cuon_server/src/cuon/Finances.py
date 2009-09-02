@@ -235,7 +235,8 @@ class Finances(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None,dicUser,2)
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         if result and result not in ['NONE','ERROR']:
-            total_amount = result[0]['total_amount']
+            for i in result:
+                total_amount += i['total_amount']
             #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
         return total_amount
         
@@ -251,8 +252,76 @@ class Finances(xmlrpc.XMLRPC, basics):
             pass
         #print "Amount of invoice = ", retValue    
         return retValue  
-     
-     
+        
+    def xmlrpc_getTotalInpayment(self, order_id, dicUser):            
+        total_amount = 0
+        sSql = " select sum(inpayment) as sum_inpayment from in_payment where order_id = " + `order_id` 
+        sSql += self.getWhere(None,dicUser,2)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['NONE','ERROR']:
+            print "result inpayment",  result
+            total_amount = result[0]['sum_inpayment']
+            #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
+        return total_amount
+        
+    def xmlrpc_getTotalInpaymentString(self, OrderID, dicUser):
+        retValue = '0'  
+
+        total_sum = self.xmlrpc_getTotalInpayment(OrderID,dicUser)
+        try:
+            #"%.2f"%y 
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            retValue = total_sum + ' ' + self.CURRENCY_SIGN
+        except:
+            pass
+        #print "Amount of invoice = ", retValue    
+        return retValue  
+        
+    def xmlrpc_getTotalDiscount(self, order_id,  dicUser): 
+        total_amount = 0
+        sSql = " select cash_discount from in_payment where order_id = " + `order_id` 
+        sSql += self.getWhere(None,dicUser,2)
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        if result and result not in ['NONE','ERROR']:
+            for i in result:
+                total_amount += i['cash_discount']
+            #total_amount = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_amount,self.CURRENCY_ROUND)  
+        return total_amount
+        
+    def  getDiscountSumString(self):
+        retValue =  '0'
+        
+        try:
+            total_sum = self.xmlrpc_getTotalDiscount(OrderID,dicUser)
+
+            #"%.2f"%y 
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            retValue = total_sum + ' ' + self.CURRENCY_SIGN
+        except:
+            pass
+        
+        return retValue
+        
+        
+    def xmlrpc_getResidueSumString(self, OrderID, dicUser):
+        retValue =  '0'
+        print "getResidueSumString startet"
+        try:
+            inpayment = self.xmlrpc_getTotalInpayment(OrderID, dicUser)
+            print "inp",  inpayment
+            total_amount = self.xmlrpc_getTotalAmount(OrderID,dicUser)
+            print "ta", total_amount
+            discount = self.xmlrpc_getTotalDiscount(OrderID,dicUser)
+            print "dis",  discount
+            #print inpayment, total_amount, discount
+            #"%.2f"%y 
+            total_sum = total_amount - inpayment - discount
+            total_sum = ("%." + `self.CURRENCY_ROUND` + "f") % round(total_sum,self.CURRENCY_ROUND)
+            retValue = total_sum + ' ' + self.CURRENCY_SIGN
+        except Exception,  params:
+            print Exception,  params
+        print "Residue",  retValue
+        return retValue
     def xmlrpc_createTicketFromInpayment(self, inpayment_id, dicUser):
         ret = True
         

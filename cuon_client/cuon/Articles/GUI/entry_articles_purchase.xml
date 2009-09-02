@@ -78,7 +78,17 @@
       <fg_color>0</fg_color>
       
     </entry>
-    
+      <entry>
+      <name>eLastDate</name>
+      <type>textline</type>
+      <size>55</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>last_date</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
 
   
   
