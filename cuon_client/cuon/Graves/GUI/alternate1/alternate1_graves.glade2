@@ -646,7 +646,7 @@ Dauergrabpflege</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkEntry" id="entry2">
+                      <widget class="GtkEntry" id="eGraveNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </widget>
@@ -746,7 +746,7 @@ Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkComboBoxEntry" id="comboboxentry5">
+                          <widget class="GtkComboBoxEntry" id="cbPercent">
                             <property name="visible">True</property>
                             <property name="items" translatable="yes">100%
 90%
@@ -790,7 +790,7 @@ Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry7">
+                          <widget class="GtkEntry" id="eContractID">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -836,22 +836,39 @@ Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkComboBoxEntry" id="comboboxentry2">
+                          <widget class="GtkEntry" id="eGraveyardID">
                             <property name="visible">True</property>
-                            <property name="items" translatable="yes">Waldfriedhof
-Friedhof Wolkersdorf
-ref. Friedhof
-Friedhof Rednitzhembach
-Friedhof Worzeldorf</property>
-                            <child internal-child="entry">
-                              <widget class="GtkEntry" id="comboboxentry-entry4">
-                              </widget>
-                            </child>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">1</property>
+                            <property name="width_chars">1</property>
+                            <signal name="changed" handler="on_eGraveyardID_changed"/>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="eGraveyardShortname">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="bSearchGraveyard">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="label" translatable="yes">Friedhof suchen</property>
+                            <property name="response_id">0</property>
+                            <signal name="clicked" handler="on_bSearchGraveyard_clicked"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                       </widget>
@@ -875,7 +892,7 @@ Friedhof Worzeldorf</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkComboBoxEntry" id="comboboxentry4">
+                          <widget class="GtkComboBoxEntry" id="cbTypeOfGrave">
                             <property name="visible">True</property>
                             <property name="items" translatable="yes">Urnengrab
 Einzelgrab
@@ -923,7 +940,7 @@ sonstiges</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkComboBoxEntry" id="comboboxentry3">
+                          <widget class="GtkComboBoxEntry" id="cbTypeOfPaid">
                             <property name="visible">True</property>
                             <property name="items" translatable="yes">2 Rechnungen
 jährliche Rechnung
@@ -1245,7 +1262,7 @@ TBF Dauergrabpflege</property>
                         <property name="response_id">0</property>
                         <signal name="clicked" handler="on_bGotoAddress_clicked"/>
                         <child>
-                          <widget class="GtkAlignment" id="alignment2">
+                          <widget class="GtkAlignment" id="">
                             <property name="visible">True</property>
                             <property name="xscale">0</property>
                             <property name="yscale">0</property>
@@ -1353,13 +1370,55 @@ TBF Dauergrabpflege</property>
                 <property name="n_rows">5</property>
                 <property name="n_columns">4</property>
                 <child>
-                  <placeholder/>
+                  <widget class="GtkButton" id="bQuickAppend">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">add Article</property>
+                    <property name="use_underline">True</property>
+                    <property name="response_id">0</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="right_attach">3</property>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow22">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="shadow_type">GTK_SHADOW_IN</property>
+                    <child>
+                      <widget class="GtkTreeView" id="treeArticles">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow21">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="shadow_type">GTK_SHADOW_IN</property>
+                    <child>
+                      <widget class="GtkTreeView" id="treeMaterialgroup">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -1511,7 +1570,7 @@ TBF Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry10">
+                          <widget class="GtkEntry" id="eArticlePrice">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="width_chars">9</property>
@@ -1525,11 +1584,12 @@ TBF Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry11">
+                          <widget class="GtkEntry" id="eArticleID">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="width_chars">6</property>
                             <property name="text" translatable="yes">Artikelid</property>
+                            <signal name="changed" handler="on_eArticleID_changed"/>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
@@ -1539,12 +1599,13 @@ TBF Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkButton" id="button2">
+                          <widget class="GtkButton" id="bChooseServiceArticle">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="label" translatable="yes">auswählen</property>
                             <property name="use_underline">True</property>
                             <property name="response_id">0</property>
+                            <signal name="clicked" handler="on_bChooseServiceArticle_clicked"/>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
@@ -1573,7 +1634,7 @@ TBF Dauergrabpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry12">
+                          <widget class="GtkEntry" id="eServicePriceMonth">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="width_chars">2</property>
@@ -1704,7 +1765,7 @@ Premiumpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry14">
+                          <widget class="GtkEntry" id="eSpringCounts">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1728,7 +1789,7 @@ Premiumpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry15">
+                          <widget class="GtkEntry" id="eSpringDesignation">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1755,7 +1816,7 @@ Premiumpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry16">
+                          <widget class="GtkEntry" id="eSpringArticleDesignation">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1782,7 +1843,7 @@ Premiumpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkEntry" id="entry13">
+                          <widget class="GtkEntry" id="eSpringPrice">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1809,7 +1870,7 @@ Premiumpflege</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkComboBoxEntry" id="comboboxentry10">
+                          <widget class="GtkComboBoxEntry" id="cbPeriod">
                             <property name="visible">True</property>
                             <property name="items" translatable="yes">Frühling
 Vor-frühling
@@ -1838,6 +1899,9 @@ Ostern</property>
                               <widget class="GtkHSeparator" id="hseparator1">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label107">
@@ -1873,6 +1937,35 @@ Ostern</property>
                         <property name="position">5</property>
                       </packing>
                     </child>
+                    <child>
+                      <widget class="GtkHBox" id="hbox3">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkEntry" id="eSpringArticleID">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <signal name="changed" handler="on_eSpringArticleID_changed"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="bSpringChooseArticle">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="label">gtk-find</property>
+                            <property name="use_stock">True</property>
+                            <property name="response_id">0</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">6</property>
+                      </packing>
+                    </child>
                   </widget>
                 </child>
                 <child>
@@ -1901,7 +1994,7 @@ Ostern</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">GTK_SHADOW_IN</property>
                         <child>
-                          <widget class="GtkTreeView" id="treeview3">
+                          <widget class="GtkTreeView" id="t">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1942,7 +2035,7 @@ Ostern</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">GTK_SHADOW_IN</property>
                         <child>
-                          <widget class="GtkTreeView" id="treeview2">
+                          <widget class="GtkTreeView" id="tr">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </widget>
@@ -1950,7 +2043,7 @@ Ostern</property>
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkButton" id="button5">
+                      <widget class="GtkButton" id="5">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="label" translatable="yes">Artikel hinzufügen</property>
@@ -2147,6 +2240,9 @@ Pfingsten</property>
                               <widget class="GtkHSeparator" id="hseparator2">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label113">
@@ -2454,6 +2550,9 @@ Spätsommer</property>
                               <widget class="GtkHSeparator" id="hseparator3">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label120">
@@ -2761,6 +2860,9 @@ Totensonntag</property>
                               <widget class="GtkHSeparator" id="hseparator4">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label127">
@@ -3071,6 +3173,9 @@ Valentinstag
                               <widget class="GtkHSeparator" id="hseparator5">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label134">
@@ -3373,6 +3478,9 @@ Valentinstag
                               <widget class="GtkHSeparator" id="hseparator7">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label155">
@@ -3675,6 +3783,9 @@ Valentinstag
                               <widget class="GtkHSeparator" id="hseparator6">
                                 <property name="visible">True</property>
                               </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                              </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label148">
