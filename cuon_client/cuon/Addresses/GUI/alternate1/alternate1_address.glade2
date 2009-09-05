@@ -6193,6 +6193,16 @@ auf die Adressen unter Gesprächspartner</property>
                                       <widget class="GtkCombo" id="cProcess">
                                         <property name="visible">True</property>
                                         <property name="enable_arrows_always">False</property>
+					  <child internal-child="entry">
+                                          <widget class="GtkEntry" id="eSchedulProcess"/>
+                                          <packing>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child internal-child="list">
+                                          <widget class="GtkList" id="combo-list2"/>
+                                        </child>
+
                                       </widget>
                                       <packing>
                                         <property name="expand">False</property>
