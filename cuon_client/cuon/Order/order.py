@@ -297,6 +297,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
   
     def on_save1_activate(self, event):
         print "save order v2"
+        
         self.singleOrder.save()
         self.setEntriesEditable(self.EntriesOrder, FALSE)   
         self.tabChanged()

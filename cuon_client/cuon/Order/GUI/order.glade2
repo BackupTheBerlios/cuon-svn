@@ -5857,7 +5857,7 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkRadioButton" id="rOffset">
+		    <widget class="GtkRadioButton" id="rPaymentOffset">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label" translatable="yes">Offset</property>
@@ -5933,7 +5933,7 @@
 			<widget class="GtkEntry" id="eAccountNumber">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
+			  <property name="editable">False</property>
 			  <property name="visibility">True</property>
 			  <property name="max_length">0</property>
 			  <property name="text" translatable="yes"></property>
@@ -6201,7 +6201,7 @@
 		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
-		      <property name="group">rOffset</property>
+		      <property name="group">rPaymentOffset</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -6221,7 +6221,7 @@
 		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
-		      <property name="group">rOffset</property>
+		      <property name="group">rPaymentOffset</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -6241,7 +6241,7 @@
 		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
-		      <property name="group">rOffset</property>
+		      <property name="group">rPaymentOffset</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -6281,7 +6281,7 @@
 		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
-		      <property name="group">rOffset</property>
+		      <property name="group">rPaymentOffset</property>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>

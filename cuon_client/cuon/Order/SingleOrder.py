@@ -95,6 +95,7 @@ class SingleOrder(SingleData):
     
     def readNonWidgetEntries(self, dicValues):
         dicValues['process_status'] = [self.processStatus, 'int']
+        
         return dicValues
   
     

@@ -94,6 +94,62 @@
     </entry>
 
     <entry>
+      <name>rPaymentCash</name>
+      <type>radiobutton</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>money_cash</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>rPaymentCreditCard</name>
+      <type>radiobutton</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>money_credit_card</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>rPaymentOffset</name>
+      <type>radiobutton</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>money_offset</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>rPaymentTransfer</name>
+      <type>radiobutton</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>money_transfer</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>rPaymentDirectDebit</name>
+      <type>radiobutton</type>
+      <size>20</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>money_direct_debit</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+    
       <name>ePaymentCreditCardNumber</name>
 
       <type>textline</type>
@@ -128,7 +184,6 @@
 
       <fg_color>0</fg_color>
     </entry>
-
 
   </table>
 </entries_for_table>
