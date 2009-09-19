@@ -13,8 +13,8 @@
       
     </entry> 
     <entry>
-	<name>eToEmbed</name>
-	<type>float</type>
+    <name>eToEmbed</name>
+    <type>float</type>
                 <size>10</size>
                 <verify_type>float</verify_type>
                 <create_sql>1</create_sql>
@@ -25,8 +25,8 @@
       </entry>
  
     <entry>
-	<name>eRollOut</name>
-	<type>float</type>
+    <name>eRollOut</name>
+    <type>float</type>
                 <size>10</size>
                 <verify_type>float</verify_type>
                 <create_sql>1</create_sql>
@@ -37,8 +37,8 @@
       </entry>
 
       <entry>
-	<name>eGoodsDesignation</name>
-	<type>textline</type>
+    <name>eGoodsDesignation</name>
+    <type>textline</type>
                 <size>30</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -48,8 +48,8 @@
 
       </entry>
      <entry>
-	<name>eGoodsDate</name>
-	<type>gnomedate</type>
+    <name>eGoodsDate</name>
+    <type>gnomedate</type>
                 <size>30</size>
                 <verify_type>datetime</verify_type>
                 <create_sql>1</create_sql>
@@ -59,8 +59,8 @@
 
       </entry>
      <entry>
-	<name>eGoodsReferenceNumber</name>
-	<type>textline</type>
+    <name>eGoodsReferenceNumber</name>
+    <type>textline</type>
                 <size>30</size>
                 <verify_type>string</verify_type>
                 <create_sql>1</create_sql>
@@ -70,8 +70,8 @@
 
       </entry>
     <entry>
-	<name>eGoodsActualStock</name>
-	<type>textline</type>
+    <name>eGoodsActualStock</name>
+    <type>textline</type>
                 <size>30</size>
                 <verify_type>float</verify_type>
                 <create_sql>0</create_sql>

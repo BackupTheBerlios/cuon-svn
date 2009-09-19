@@ -1884,6 +1884,7 @@
 			  <property name="fixed_height_mode">False</property>
 			  <property name="hover_selection">False</property>
 			  <property name="hover_expand">False</property>
+			  <signal name="row_activated" handler="on_tree1_row_activated" last_modification_time="Wed, 16 Sep 2009 12:00:47 GMT"/>
 			</widget>
 		      </child>
 		    </widget>

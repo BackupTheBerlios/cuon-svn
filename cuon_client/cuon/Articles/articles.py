@@ -97,12 +97,13 @@ class articleswindow(chooseWindows):
         self.loadEntries(self.EntriesArticlesPurchase)
         self.singleArticlePurchase.setEntries(self.getDataEntries( self.EntriesArticlesPurchase) )
         self.singleArticlePurchase.setGladeXml(self.xml)
-        self.singleArticlePurchase.setTreeFields( ['designation' ] )
-        self.singleArticlePurchase.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleArticlePurchase.setTreeOrder('designation')
+        self.singleArticlePurchase.setTreeFields( ['articles_id','vendorsnumber', 'unitprice', 'last_date'] )
+        self.singleArticlePurchase.setListHeader(['Article', 'Vendor ID','Price', 'Last Date' ])
+        self.singleArticlePurchase.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleArticlePurchase.setTreeOrder('unitprice asc,vendorsnumber')
 #        self.singleArticlePurchase.setListHeader([''])
 
-        self.singleArticlePurchase.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
+        self.singleArticlePurchase.sWhere  ='where articles_id = ' + `self.singleArticle.ID`
         self.singleArticlePurchase.setTree(self.xml.get_widget('tv_purchase') )
   
      #singleArticleSales
@@ -142,7 +143,7 @@ class articleswindow(chooseWindows):
 ##        self.singleArticleStock.setTreeOrder('designation')
 ##        self.singleArticleStock.setListHeader([_('Designation')])
 
-        self.singleArticleStock.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
+        self.singleArticleStock.sWhere  ='where articles_id = ' + `self.singleArticle.ID`
         #self.singleArticleStock.setTree(self.xml.get_widget('tree1') )
   
         
@@ -268,7 +269,7 @@ class articleswindow(chooseWindows):
    
     def on_PurchaseSave1_activate(self, event):
         print "save Partner articles v2"
-        self.singleArticlePurchase.articlesNumber = self.singleArticle.ID
+        self.singleArticlePurchase.articlesID = self.singleArticle.ID
         self.singleArticlePurchase.save()
         self.setEntriesEditable(self.EntriesArticlesPurchase, False)
 
@@ -338,7 +339,7 @@ class articleswindow(chooseWindows):
     def on_StockSave1_activate(self, event):
         print "save Partner articles v2"
         
-        self.singleArticleStock.articlesNumber = self.singleArticle.ID
+        self.singleArticleStock.articlesID = self.singleArticle.ID
         self.singleArticleStock.save()
         self.setEntriesEditable(self.EntriesArticlesStock, False)
 
@@ -585,7 +586,7 @@ class articleswindow(chooseWindows):
             self.singleArticle.connectTree()
             self.singleArticle.refreshTree()
         elif self.tabOption == self.tabPurchase:
-            self.singleArticlePurchase.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
+            self.singleArticlePurchase.sWhere  ='where articles_id = ' + `int(self.singleArticle.ID)`
             self.singleArticlePurchase.connectTree()
             self.singleArticlePurchase.refreshTree()
             self.singleArticlePurchase.setTreeSensitive(True)
@@ -608,7 +609,7 @@ class articleswindow(chooseWindows):
 
         elif self.tabOption == self.tabStock:
             print "-----------> begin tab Stock"
-            self.singleArticleStock.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
+            self.singleArticleStock.sWhere  ='where articles_id = ' + `int(self.singleArticle.ID)`
             self.singleArticleWebshop.setEmptyEntries()
             self.singleArticleStock.getFirstRecord()
             if self.singleArticleStock.ID > 0:

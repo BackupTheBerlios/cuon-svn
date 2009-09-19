@@ -166,13 +166,14 @@ class Article(xmlrpc.XMLRPC, basics):
                                 dicValues[keyV] = result6[0][keyV]
                                 self.writeLog(keyV,  dicValues[keyV])
                                 
-                        sSql = "select document_image from dms where insert_from_module = " + `iDMS` + " and title = 'print001' and sep_info_1 = "
+                        sSql = "select document_image, file_suffix from dms where insert_from_module = " + `iDMS` + " and title = 'print001' and sep_info_1 = "
                         sSql += `dicValues['associated_id']`
                         sSql += self.getWhere("",dicUser,2)
                         result7 = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
                         if result7 and result7 not in ['NONE', 'ERROR']:
                             aFilename = self.createNewSessionID()
-                            sFilename = aFilename['SessionID']
+                            sFilename = aFilename['SessionID'] + '.' + result7[0]['file_suffix']
+                            
                             try:
                                 f = open(self.DocumentPathTmp + '/' + sFilename, 'w')
                                 s = base64.decodestring(result7[0]['document_image'])

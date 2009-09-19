@@ -40,7 +40,7 @@ class SingleArticleStock(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
-        self.articlesNumber = 9
+        self.articlesID = 0
         self.liOtherEntries = []
 
         
@@ -48,7 +48,7 @@ class SingleArticleStock(SingleData):
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePurchase'
         print 'self.articlesNumber = ' + `self.articlesNumber`
-        dicValues['articles_number'] = [self.articlesNumber, 'int']
+        dicValues['articles_id'] = [self.articlesNumber, 'int']
         return dicValues
        
     def fillOtherEntries(self, oneRecord):
@@ -58,7 +58,7 @@ class SingleArticleStock(SingleData):
         """
         print "fillOtherentries",  oneRecord
         try:
-            dicStock = self.rpc.callRP('Stock.getArticleStockInfo', oneRecord['articles_number'], self.sqlDicUser)
+            dicStock = self.rpc.callRP('Stock.getArticleStockInfo', oneRecord['articles_id'], self.sqlDicUser)
             print dicStock
             eActual =  self.getWidget('eArticleStockActual')
             eReserved =  self.getWidget('eArticleStockReserved')

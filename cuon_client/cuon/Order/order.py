@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 
 from cuon.Databases.SingleData import SingleData
@@ -299,17 +299,17 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         print "save order v2"
         
         self.singleOrder.save()
-        self.setEntriesEditable(self.EntriesOrder, FALSE)   
+        self.setEntriesEditable(self.EntriesOrder, False)   
         self.tabChanged()
          
         
     def on_new1_activate(self, event):
         print "new order v2"
         self.singleOrder.newRecord()
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.setEntriesEditable(self.EntriesOrder, True)
 
     def on_edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrder, TRUE)
+        self.setEntriesEditable(self.EntriesOrder, True)
 
 
     def on_print_invoice1_activate(self, event):
@@ -433,17 +433,17 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         print "save order v2"
         self.singleOrderGet.ordernumber = self.singleOrder.ID
         self.singleOrderGet.save()
-        self.setEntriesEditable(self.EntriesOrderGet, FALSE)   
+        self.setEntriesEditable(self.EntriesOrderGet, False)   
         self.tabChanged()
          
         
     def on_GetsNew1_activate(self, event):
         print "new order v2"
         self.singleOrderGet.newRecord()
-        self.setEntriesEditable(self.EntriesOrderGet, TRUE)
+        self.setEntriesEditable(self.EntriesOrderGet, True)
 
     def on_GetsEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrderGet, TRUE)
+        self.setEntriesEditable(self.EntriesOrderGet, True)
 
     def on_GetsDelete1_activate(self, event):
         print "delete order v2"
@@ -455,16 +455,16 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
 
     def on_SupplyNew1_activate(self, event):
         self.singleOrderSupply.newRecord()
-        self.setEntriesEditable(self.EntriesOrderSupply, TRUE)
+        self.setEntriesEditable(self.EntriesOrderSupply, True)
 
     def on_SupplyEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesOrderSupply, TRUE)
+        self.setEntriesEditable(self.EntriesOrderSupply, True)
 
     def on_SupplySave1_activate(self, event):
         print "save Supply v2"
         self.singleOrderSupply.ordernumber = self.singleOrder.ID
         self.singleOrderSupply.save()
-        self.setEntriesEditable(self.EntriesOrderSupply, FALSE)
+        self.setEntriesEditable(self.EntriesOrderSupply, False)
         self.tabChanged()
         
 
@@ -480,19 +480,19 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         if self.singleOrderPosition.ID == -1:
             self.singleOrderPosition.TreePos = self.singleOrderPosition.TREELAST
         self.singleOrderPosition.save()
-        self.setEntriesEditable(self.EntriesOrderPosition, FALSE)
+        self.setEntriesEditable(self.EntriesOrderPosition, False)
         
         self.tabChanged()
            
 
     def on_PositionEdit1_activate(self, event):
         print 'PositionEdit1'
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
+        self.setEntriesEditable(self.EntriesOrderPosition, True)
     
     def on_PositionNew1_activate(self, event):
         print "new Partner articles v2"
         self.singleOrderPosition.newRecord()
-        self.setEntriesEditable(self.EntriesOrderPosition, TRUE)
+        self.setEntriesEditable(self.EntriesOrderPosition, True)
 
     def on_PositionDelete1_activate(self, event):
         print "delete Partner articles v2"
@@ -503,24 +503,24 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
         self.singleOrderInvoice.orderId = self.singleOrder.ID
         self.singleOrderInvoice.save()
-        self.setEntriesEditable(self.EntriesOrderInvoice, FALSE)
+        self.setEntriesEditable(self.EntriesOrderInvoice, False)
         
         #self.tabChanged()
             
 
     def on_InvoiceEdit1_activate(self, event):
         print 'invoiceEdit1'
-        self.setEntriesEditable(self.EntriesOrderInvoice, TRUE)
+        self.setEntriesEditable(self.EntriesOrderInvoice, True)
     # Menu Misc
     def on_MiscEdit_activate(self, event):
         print 'MiscEdit1'
-        self.setEntriesEditable(self.EntriesOrderMisc, TRUE)
+        self.setEntriesEditable(self.EntriesOrderMisc, True)
     
     def on_MiscSave_activate(self, event):
         print "save misc v2"
         self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
         self.singleOrder.save()
-        self.setEntriesEditable(self.EntriesOrderMisc, FALSE)
+        self.setEntriesEditable(self.EntriesOrderMisc, False)
         self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
         self.tabChanged()
   
@@ -537,20 +537,20 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         print 'newid = ', newid
         ok = self.rpc.callRP('Finances.createTicketFromInpayment',newid,self.dicUser)
 
-        self.setEntriesEditable(self.EntriesOrderPayment, FALSE)
+        self.setEntriesEditable(self.EntriesOrderPayment, False)
         
         self.tabChanged()
 
     def on_payment_edit_activate(self, event):
         print 'PositionEdit1'
-        self.setEntriesEditable(self.EntriesOrderPayment, TRUE)
+        self.setEntriesEditable(self.EntriesOrderPayment, True)
     
     def on_payment_new_activate(self, event):
         print "new Ppayment v2"
         self.singleOrderPayment.newRecord()
         self.getWidget('ePaymentInvoiceNumber').set_text(`self.singleOrder.getInvoiceNumber()`)
         
-        self.setEntriesEditable(self.EntriesOrderPayment, TRUE)
+        self.setEntriesEditable(self.EntriesOrderPayment, True)
 
 
     # search button
@@ -1030,4 +1030,4 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False

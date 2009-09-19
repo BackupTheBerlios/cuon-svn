@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -33,9 +33,9 @@ import cuon.Stock.lists_stockgoods_number1
 
 class stockwindow(chooseWindows):
     """
-    @author: Jürgen Hamel
-    @organization: Cyrus-Computer GmbH, D-32584 Löhne
-    @copyright: by Jürgen Hamel
+    @author: JÃ¼rgen Hamel
+    @organization: Cyrus-Computer GmbH, D-32584 LÃ¶hne
+    @copyright: by JÃ¼rgen Hamel
     @license: GPL ( GNU GENERAL PUBLIC LICENSE )
     @contact: jh@cyrus.de
     """
@@ -70,7 +70,7 @@ class stockwindow(chooseWindows):
         self.singleStock.setTreeFields( ['name', 'designation'] )
         self.singleStock.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleStock.setTreeOrder('name')
-        self.singleStock.setTree(self.xml.get_widget('tree1') )
+        self.singleStock.setTree(self.xml.get_widget('tv_stock') )
         self.singleStock.setListHeader([_('name'), _('designation') ])
         
          #singleStockGoods
@@ -84,7 +84,7 @@ class stockwindow(chooseWindows):
         self.singleStockGoods.setListHeader([_('Designation')])
 
         self.singleStockGoods.sWhere  ='where stock_id = ' + `self.singleStock.ID`
-        self.singleStockGoods.setTree(self.xml.get_widget('tree1') )
+        self.singleStockGoods.setTree(self.xml.get_widget('tv_goods') )
 
         
 
@@ -244,7 +244,23 @@ class stockwindow(chooseWindows):
             self.singleStockGoods.connectTree()
             self.singleStockGoods.refreshTree()
 
-  
+    def on_tbNew_clicked(selfself,  event):
+        if self.tabOption == self.tabStock:
+             self.activateClick('new1')
+        elif self.tabOption == self.tabGoods:
+             self.activateClick('goodsnew1')
+    def on_tbEdit_clicked(selfself,  event):
+        if self.tabOption == self.tabStock:
+             self.activateClick('edit1')
+        elif self.tabOption == self.tabGoods:
+             self.activateClick('goodsedit1')
+           
+    def on_tbSave_clicked(selfself,  event):
+        if self.tabOption == self.tabStock:
+             self.activateClick('save1')
+        elif self.tabOption == self.tabGoods:
+             self.activateClick('goodssave1')
+            
          
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+##Copyright (C) [2003]  [JÃ¼rgen Hamel, D-32584 LÃ¶hne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
@@ -40,15 +40,15 @@ class SingleArticlePurchase(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
-        self.articlesNumber = 9
+        self.articlesID = 0
         self.liOtherEntries = []
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
 
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SinglePurchase'
-        print 'self.articlesNumber = ' + `self.articlesNumber`
-        dicValues['articles_number'] = [self.articlesNumber, 'int']
+        print 'self.articles_id= ' + `self.articlesID`
+        dicValues['articles_id'] = [self.articlesID, 'int']
         return dicValues
        
     def fillOtherEntries(self, oneRecord):
