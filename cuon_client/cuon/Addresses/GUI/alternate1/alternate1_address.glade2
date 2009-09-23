@@ -6546,6 +6546,29 @@ auf die Adressen unter Gesprächspartner</property>
                                       <widget class="GtkCombo" id="cProcess">
                                         <property name="visible">True</property>
                                         <property name="enable_arrows_always">False</property>
+					 <child internal-child="entry">
+				<widget class="GtkEntry" id="eSchedulProcess">
+				  <property name="visible">True</property>
+				  <property name="can_focus">True</property>
+				  <property name="editable">True</property>
+				  <property name="visibility">True</property>
+				  <property name="max_length">5</property>
+				  <property name="text" translatable="yes"></property>
+				  <property name="has_frame">True</property>
+				  <property name="invisible_char">*</property>
+				  <property name="activates_default">False</property>
+				</widget>
+			      </child>
+
+			      <child internal-child="list">
+				<widget class="GtkList" id="combo-list1">
+				  <property name="visible">True</property>
+				  <property name="selection_mode">GTK_SELECTION_BROWSE</property>
+				</widget>
+			      </child>
+
+
+
                                       </widget>
                                       <packing>
                                         <property name="expand">False</property>
