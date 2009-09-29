@@ -3210,7 +3210,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkComboBoxEntry" id="cbPeriod">
+			    <widget class="GtkComboBoxEntry" id="cbSpringPeriod">
 			      <property name="visible">True</property>
 			      <property name="add_tearoffs">False</property>
 			      <property name="has_frame">True</property>
@@ -3265,7 +3265,7 @@ Dauergrabpflege</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview4">
+			    <widget class="GtkTextView" id="tvSpringHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>

@@ -40,6 +40,7 @@ class SingleArticle(SingleData):
         print "number of Columns "
         print len(self.table.Columns)
         #
+        self.statusfields = ['number', 'designation']
         
     def getArticle(self, id):
         dicRecords = self.load(id)

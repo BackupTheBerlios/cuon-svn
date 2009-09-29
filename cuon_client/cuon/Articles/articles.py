@@ -55,7 +55,7 @@ class articleswindow(chooseWindows):
         self.loadGlade('articles.xml', 'ArticlesMainwindow')
         #self.win1 = self.getWidget('ArticlesMainwindow')
         self.win1.maximize()
-        
+        self.setStatusBar('vb_main')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Articles']        
         self.allTables = allTables
@@ -97,9 +97,9 @@ class articleswindow(chooseWindows):
         self.loadEntries(self.EntriesArticlesPurchase)
         self.singleArticlePurchase.setEntries(self.getDataEntries( self.EntriesArticlesPurchase) )
         self.singleArticlePurchase.setGladeXml(self.xml)
-        self.singleArticlePurchase.setTreeFields( ['articles_id','vendorsnumber', 'unitprice', 'last_date'] )
-        self.singleArticlePurchase.setListHeader(['Article', 'Vendor ID','Price', 'Last Date' ])
-        self.singleArticlePurchase.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleArticlePurchase.setTreeFields( ['articles_id','vendorsnumber', 'vendorsdesignation',  'unitprice', 'last_date'] )
+        self.singleArticlePurchase.setListHeader(['Article', 'Vendor ID','Designation','Price', 'Last Date' ])
+        self.singleArticlePurchase.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleArticlePurchase.setTreeOrder('unitprice asc,vendorsnumber')
 #        self.singleArticlePurchase.setListHeader([''])
 
@@ -625,36 +625,38 @@ class articleswindow(chooseWindows):
         print 'tab changed to :'  + str(self.tabOption)
         
         if self.tabOption == self.tabArticle:
-            #Address
+            #Article
             self.disableMenuItem('tabs')
             self.enableMenuItem('article')
             print 'Seite 0'
             self.editAction = 'editArticle'
+            self.setStatusbarText([''])
+            
         elif self.tabOption == self.tabPurchase:
-            #Partner
+            #Purchase
             self.disableMenuItem('tabs')
             self.enableMenuItem('purchase')
             self.editAction = 'editArticlePurchase'
             print 'Seite 1'
-            
+            self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabSales:
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleSales'
             print 'Seite 2'
-
+            self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabWebshop:
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleWebshop'
             self.singleArticleWebshop.setTreeSensitive(False)
             print 'Seite 3'
-
+            self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabStock:
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleStock'
-            
+            self.setStatusbarText([self.singleArticle.sStatus])
             print 'Seite 4'
             
         # refresh the Tree
