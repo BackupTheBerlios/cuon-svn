@@ -29,7 +29,7 @@
       <name>eSpringDesignation</name>
       <type>textline</type>
       <size>10</size>
-      <verify_type>float</verify_type>
+      <verify_type>string</verify_type>
       <create_sql>1</create_sql>
       <sql_field>service_designation</sql_field>
       <duty>NO</duty>
@@ -40,7 +40,7 @@
       <name>cbSpringPeriod</name>
       <type>combobox</type>
       <size>10</size>
-      <verify_type>integer</verify_type>
+      <verify_type>int</verify_type>
       <create_sql>1</create_sql>
       <sql_field>period_id</sql_field>
       <duty>YES</duty>

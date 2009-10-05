@@ -103,7 +103,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         cParser.read(self.CUON_FS + '/user.cfg')
         sP = cParser.get('password',name)
         #self.writeLog('Password = ' + sP )
-        if sP == password:
+        if sP.strip() == password.strip():
             ok = True
             
         return ok
@@ -625,7 +625,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         #print 'Pers1 = ', Pers1
         
         dicRet = {}
-        sSql = "select address, lastname, firstname, phone, phone1, letter_phrase_1, my_sign_1, signature_1, signature_2  from staff where id = " + self.getStaffID(dicUser)
+        sSql = "select address, lastname, firstname, phone, phone1, email, letter_phrase_1, my_sign_1, signature_1, signature_2  from staff where id = " + self.getStaffID(dicUser)
         liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         if liResult and liResult not in ['NONE','ERROR']:
             dicPers = liResult[0]

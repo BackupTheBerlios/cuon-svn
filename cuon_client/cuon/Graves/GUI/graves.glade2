@@ -221,7 +221,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkMenuItem" id="MaitenanceSave1">
+		    <widget class="GtkMenuItem" id="MaintenanceSave1">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">Save</property>
 		      <property name="use_underline">True</property>
@@ -315,6 +315,20 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Summer</property>
 	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="summer_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="SummerSave1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">SummerSave</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_SummerSave1_activate" last_modification_time="Sun, 04 Oct 2009 17:05:16 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
 	    </widget>
 	  </child>
 
@@ -323,6 +337,20 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Autumn</property>
 	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="autumn_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="AutumnSave1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">item1</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_AutumnSave1_activate" last_modification_time="Sun, 04 Oct 2009 17:05:16 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
 	    </widget>
 	  </child>
 
@@ -339,6 +367,20 @@
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">Winter</property>
 	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="winter_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="WinterSave1">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">item2</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_WinterSave1_activate" last_modification_time="Sun, 04 Oct 2009 17:05:16 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
 	    </widget>
 	  </child>
 

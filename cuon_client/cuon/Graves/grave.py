@@ -194,14 +194,19 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','grave1')
         self.addEnabledMenuItems('tabs','maintenance1')
-        self.addEnabledMenuItems('tabs','spring1')
-        self.addEnabledMenuItems('tabs','autumn1')
-        self.addEnabledMenuItems('tabs','autumn1')
+        self.addEnabledMenuItems('tabs','spring')
+        self.addEnabledMenuItems('tabs','summer')
+        self.addEnabledMenuItems('tabs','autumn')
+        self.addEnabledMenuItems('tabs','winter')
+        
         # seperate Menus
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
-        self.addEnabledMenuItems('graveSpring','spring1')
-        self.addEnabledMenuItems('graveSpring','summer1')
+        self.addEnabledMenuItems('graveSpring','spring')
+        self.addEnabledMenuItems('graveSummer','summer')
+        self.addEnabledMenuItems('graveAutumn','autumn')
+        self.addEnabledMenuItems('graveWinter','winter')
+        
         # enabledMenues for grave
         self.addEnabledMenuItems('editGrave','new1')
         self.addEnabledMenuItems('editGrave','clear1')
@@ -238,7 +243,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editGraveWinter','WinterPrint1')
         self.addEnabledMenuItems('editGraveWinter','WinterEdit1')
 
-
+    # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','MaintenanceSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','SpringSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','SummerSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','AutumnSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','WinterSave1', self.dicUserKeys['address_save'])
         # tabs from notebook
         
         self.tabGrave = 0

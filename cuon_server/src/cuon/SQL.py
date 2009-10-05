@@ -334,6 +334,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 self.writeLog('REC2-1.1 ' + `sSql`)
                 liValue = dicValues[i]
                 #self.writeLog('REC2-1.2 ' + `liValue`)
+                #print "recValue = " ,  liValue
                 if liValue == None :
                     sSql2 = sSql2 + "\'\', " 
                 else:
