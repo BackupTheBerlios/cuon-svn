@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import TRUE, FALSE
 import string
 import logging
 import SingleGrave
@@ -37,7 +37,7 @@ import cPickle
 # localisation
 import locale, gettext
 locale.setlocale (locale.LC_NUMERIC, '')
-import threading
+#import threading
 import mx.DateTime
 import graveyard
 from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
@@ -63,8 +63,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
 
         self.fillArticlesNewID = 0
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
-        
+        print "load glade"
         self.loadGlade('graves.xml', 'GraveMainwindow')
+        print "start fast selection"
         self.FastSelectionStart()
         self.setStatusBar()
 

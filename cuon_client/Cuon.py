@@ -1439,14 +1439,15 @@ m.startMain(sStartType, sDebug,sLocal)
 
 #profile.run('m.startMain(sStartType, sDebug,sLocal)','cuonprofile')
 # Import Psyco if available
-try:
-    import psyco
-    psyco.full()
-    print ' start psyco'
-except ImportError:
-    print 'no psyco found'
+#try:
+#    import psyco
+#    psyco.full()
+#    print ' start psyco'
+#except ImportError:
+#    print 'no psyco found'
 
 #gtk.gdk.threads_enter()
+
 gtk.main()
 #gtk.gdk.threads_leave()
 

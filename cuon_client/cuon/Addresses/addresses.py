@@ -1436,11 +1436,14 @@ class addresswindow(chooseWindows):
             self.on_bLetter_clicked(None)
         elif self.tabOption  == self.tabPartner:
             self.on_bPartnerLetter_clicked(None)
-                  
+        elif self.tabOption  == self.tabSchedul:
+            self.on_bSchedulLetter_clicked(None)          
+            
     def on_tbAllContact_clicked(self, event):
         con1 = contact.contactwindow(self.allTables, 0,0)
     def on_tbContact_clicked(self, event):        
         self.on_bContact_clicked(None)
+        
      # view Proposal
     def disconnectProposalTree(self):
         try:
