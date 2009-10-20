@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-#from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 import logging
 import SingleGrave
@@ -64,7 +64,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.fillArticlesNewID = 0
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
         print "load glade"
-        self.loadGlade('graves.xml', 'GraveMainwindow')
+        self.loadGlade('graves.xml', 'GravesMainwindow')
         print "start fast selection"
         self.FastSelectionStart()
         self.setStatusBar()
@@ -283,7 +283,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_save1_activate(self, event):
         self.out( "save grave v2")
         self.singleGrave.save()
-        self.setEntriesEditable(self.EntriesGraves, FALSE)
+        self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
@@ -291,11 +291,11 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGrave.newRecord()
         print self.singleGrave.ID
         
-        self.setEntriesEditable(self.EntriesGraves, TRUE)
+        self.setEntriesEditable(self.EntriesGraves, True)
 
     def on_edit1_activate(self, event):
         self.out( "edit grave v2")
-        self.setEntriesEditable(self.EntriesGraves, TRUE)
+        self.setEntriesEditable(self.EntriesGraves, True)
 
 
     def on_delete1_activate(self, event):
@@ -310,17 +310,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveMaintenance addresses v2")
         self.singleGraveMaintenance.graveID = self.singleGrave.ID
         self.singleGraveMaintenance.save()
-        self.setEntriesEditable(self.EntriesGravesMaintenance, FALSE)
+        self.setEntriesEditable(self.EntriesGravesMaintenance, False)
         self.tabChanged()
         
     def on_MaintenanceNew1_activate(self, event):
         self.out( "new GraveMaintenance addresses v2")
         self.singleGraveMaintenance.newRecord()
-        self.setEntriesEditable(self.EntriesGravesMaintenance, TRUE)
+        self.setEntriesEditable(self.EntriesGravesMaintenance, True)
 
         
     def on_MaintenanceEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesGravesMaintenance, TRUE)
+        self.setEntriesEditable(self.EntriesGravesMaintenance, True)
 
 
     def on_MaintenanceDelete1_activate(self, event):
@@ -334,17 +334,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveSpring addresses v2")
         self.singleGraveSpring.graveID = self.singleGrave.ID
         self.singleGraveSpring.save()
-        self.setEntriesEditable(self.EntriesGravesSpring, FALSE)
+        self.setEntriesEditable(self.EntriesGravesSpring, False)
         self.tabChanged()
         
     def on_SpringNew1_activate(self, event):
         self.out( "new GraveSpring addresses v2")
         self.singleGraveSpring.newRecord()
-        self.setEntriesEditable(self.EntriesGravesSpring, TRUE)
+        self.setEntriesEditable(self.EntriesGravesSpring, True)
 
         
     def on_SpringEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesGravesSpring, TRUE)
+        self.setEntriesEditable(self.EntriesGravesSpring, True)
 
 
     def on_SpringDelete1_activate(self, event):
@@ -360,17 +360,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveSummer addresses v2")
         self.singleGraveSummer.graveID = self.singleGrave.ID
         self.singleGraveSummer.save()
-        self.setEntriesEditable(self.EntriesGravesSummer, FALSE)
+        self.setEntriesEditable(self.EntriesGravesSummer, False)
         self.tabChanged()
         
     def on_SummerNew1_activate(self, event):
         self.out( "new GraveSummer addresses v2")
         self.singleGraveSummer.newRecord()
-        self.setEntriesEditable(self.EntriesGravesSummer, TRUE)
+        self.setEntriesEditable(self.EntriesGravesSummer, True)
 
         
     def on_SummerEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesGravesSummer, TRUE)
+        self.setEntriesEditable(self.EntriesGravesSummer, True)
 
 
     def on_SummerDelete1_activate(self, event):
@@ -387,17 +387,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveAutumn addresses v2")
         self.singleGraveAutumn.graveID = self.singleGrave.ID
         self.singleGraveAutumn.save()
-        self.setEntriesEditable(self.EntriesGravesAutumn, FALSE)
+        self.setEntriesEditable(self.EntriesGravesAutumn, False)
         self.tabChanged()
         
     def on_AutumnNew1_activate(self, event):
         self.out( "new GraveAutumn addresses v2")
         self.singleGraveAutumn.newRecord()
-        self.setEntriesEditable(self.EntriesGravesAutumn, TRUE)
+        self.setEntriesEditable(self.EntriesGravesAutumn, True)
 
         
     def on_AutumnEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesGravesAutumn, TRUE)
+        self.setEntriesEditable(self.EntriesGravesAutumn, True)
 
 
     def on_AutumnDelete1_activate(self, event):
@@ -411,17 +411,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveWinter addresses v2")
         self.singleGraveWinter.graveID = self.singleGrave.ID
         self.singleGraveWinter.save()
-        self.setEntriesEditable(self.EntriesGravesWinter, FALSE)
+        self.setEntriesEditable(self.EntriesGravesWinter, False)
         self.tabChanged()
         
     def on_WinterNew1_activate(self, event):
         self.out( "new GraveWinter addresses v2")
         self.singleGraveWinter.newRecord()
-        self.setEntriesEditable(self.EntriesGravesWinter, TRUE)
+        self.setEntriesEditable(self.EntriesGravesWinter, True)
 
         
     def on_WinterEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesGravesWinter, TRUE)
+        self.setEntriesEditable(self.EntriesGravesWinter, True)
 
 
     def on_WinterDelete1_activate(self, event):
@@ -553,17 +553,33 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGrave.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
         self.out(self.singleGrave.sWhere, self.ERROR)
         self.refreshTree()
-
+        
+    
+        
     def on_bQuickAppend_clicked(self, event):
+        print "bQuickappend activated"
+        self.AutoInsert = False
         if self.tabOption == self.tabGraveSpring:
+            self.activateClick('SpringNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eSpringArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eSpringCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eSpringPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSpringArticleID').set_text(`self.fillArticlesNewID`)
-            
-           #self.getWidget('ePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+
+
+            #
     def on_eSpringArticleID_changed(self, event):
         print "eSpringArticleID changed"
         #self.singleArticle.load(self.fillArticlesNewID)
         self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(self.fillArticlesNewID) )
-            
+        
+        if self.AutoInsert:
+            self.AutoInsert = False
+            self.activateClick('SpringSave1')
+        
+        
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()
@@ -679,5 +695,5 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         

@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import cuon.XMLRPC.xmlrpc
 
 from cuon.Databases.SingleData import SingleData
@@ -181,17 +181,17 @@ class prefsFinancewindow(chooseWindows):
     def on_VatSave1_activate(self, event):
         print "save VAT  v2"
         self.singlePrefsFinanceVat.save()
-        self.setEntriesEditable(self.EntriesPrefsFinanceVat, FALSE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceVat, False)
 
         self.tabChanged()
         
     def on_VatNew1_activate(self, event):
         print "new VAT  v2"
         self.singlePrefsFinanceVat.newRecord()
-        self.setEntriesEditable(self.EntriesPrefsFinanceVat, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceVat, True)
 
     def on_VatEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPrefsFinanceVat, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceVat, True)
 
     def on_VatClear1_activate(self, event):
         print "delete VAT  v2"
@@ -211,17 +211,17 @@ class prefsFinancewindow(chooseWindows):
     def on_TopSave1_activate(self, event):
         print "save TOP  v2"
         self.singlePrefsFinanceTop.save()
-        self.setEntriesEditable(self.EntriesPrefsFinanceTop, FALSE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceTop, False)
 
         self.tabChanged()
         
     def on_TopNew1_activate(self, event):
         print "new TOP  v2"
         self.singlePrefsFinanceTop.newRecord()
-        self.setEntriesEditable(self.EntriesPrefsFinanceTop, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceTop, True)
 
     def on_TopEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPrefsFinanceTop, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceTop, True)
 
     def on_TopClear1_activate(self, event):
         print "delete TOP  v2"
@@ -240,17 +240,17 @@ class prefsFinancewindow(chooseWindows):
     def on_AcctInfoSave1_activate(self, event):
         print "save Info  v2"
         self.singleFinanceAccountInfo.save()
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, FALSE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, False)
 
         self.tabChanged()
         
     def on_AcctInfoNew1_activate(self, event):
         print "new Info  v2"
         self.singleFinanceAccountInfo.newRecord()
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, True)
 
     def on_AcctInfoEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctInfo, True)
 
     def on_AcctInfoClear1_activate(self, event):
         print "delete Info  v2"
@@ -264,17 +264,17 @@ class prefsFinancewindow(chooseWindows):
     def on_AcctPlanSave1_activate(self, event):
         print "save Plan  v2"
         self.singleFinanceAccountPlan.save()
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, FALSE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, False)
 
         self.tabChanged()
         
     def on_AcctPlanNew1_activate(self, event):
         print "new Plan  v2"
         self.singleFinanceAccountPlan.newRecord()
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, True)
 
     def on_AcctPlanEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, TRUE)
+        self.setEntriesEditable(self.EntriesPrefsFinanceAcctPlan, True)
 
     def on_AcctPlanClear1_activate(self, event):
         print "delete Plan  v2"
@@ -448,6 +448,6 @@ class prefsFinancewindow(chooseWindows):
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         self.Search = False
         

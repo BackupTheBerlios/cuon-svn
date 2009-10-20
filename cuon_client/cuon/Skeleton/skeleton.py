@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
@@ -113,17 +113,17 @@ class clientswindow(chooseWindows):
     def on_save1_activate(self, event):
         self.out( "save addresses v2")
         self.singleAddress.save()
-        self.setEntriesEditable(self.EntriesAddresses, FALSE)
+        self.setEntriesEditable(self.EntriesAddresses, False)
         self.tabChanged()
         
     def on_new1_activate(self, event):
         self.out( "new addresses v2")
         self.singleAddress.newRecord()
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesAddresses, True)
 
     def on_edit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesAddresses, True)
 
 
     def on_delete1_activate(self, event):
@@ -137,12 +137,12 @@ class clientswindow(chooseWindows):
         self.singleMisc.addressId = self.singleAddress.ID
         
         self.singleMisc.save()
-        self.setEntriesEditable(self.EntriesAddressesMisc, FALSE)
+        self.setEntriesEditable(self.EntriesAddressesMisc, False)
         self.tabChanged()
 
     def on_MiscEdit1_activate(self, event):
         self.out( "edit addresses v2")
-        self.setEntriesEditable(self.EntriesAddressesMisc, TRUE)
+        self.setEntriesEditable(self.EntriesAddressesMisc, True)
 
   #Menu Partner
         
@@ -151,17 +151,17 @@ class clientswindow(chooseWindows):
         self.out( "save Partner addresses v2")
         self.singlePartner.addressId = self.singleAddress.ID
         self.singlePartner.save()
-        self.setEntriesEditable(self.EntriesPartner, FALSE)
+        self.setEntriesEditable(self.EntriesPartner, False)
         self.tabChanged()
         
     def on_PartnerNew1_activate(self, event):
         self.out( "new Partner addresses v2")
         self.singlePartner.newRecord()
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.setEntriesEditable(self.EntriesPartner, True)
 
         
     def on_PartnerEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.setEntriesEditable(self.EntriesPartner, True)
 
 
     def on_PartnerDelete1_activate(self, event):
@@ -176,16 +176,16 @@ class clientswindow(chooseWindows):
         self.out( "save Schedul addresses v2")
         self.singleSchedul.partnerId = self.singlePartner.ID
         self.singleSchedul.save()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
+        self.setEntriesEditable(self.EntriesPartnerSchedul, False)
         self.tabChanged()
 
     def on_SchedulEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
+        self.setEntriesEditable(self.EntriesPartnerSchedul, True)
    
     def on_SchedulNew_activate(self, event):
         self.out( "new Schedul for partner v2")
         self.singleSchedul.newRecord()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
+        self.setEntriesEditable(self.EntriesPartnerSchedul, True)
 
     def on_SchedulDelete_activate(self, event):
         self.out( "delete Schedul addresses v2")
@@ -350,7 +350,7 @@ class clientswindow(chooseWindows):
             self.editAction = 'editAddress'
             self.setStatusbarText([''])
           
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             
 
             self.out( 'Seite 0')
@@ -362,7 +362,7 @@ class clientswindow(chooseWindows):
             self.enableMenuItem('bank')
            
             self.editAction = 'editBank'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -372,7 +372,7 @@ class clientswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'
-            self.setTreeVisible(FALSE)
+            self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
 
 
@@ -385,7 +385,7 @@ class clientswindow(chooseWindows):
             
             self.out( 'Seite 1')
             self.editAction = 'editPartner'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singleAddress.sStatus])
 
             
@@ -396,11 +396,11 @@ class clientswindow(chooseWindows):
             
             self.out( 'Seite 4')
             self.editAction = 'editSchedul'
-            self.setTreeVisible(TRUE)
+            self.setTreeVisible(True)
             self.setStatusbarText([self.singlePartner.sStatus])
 
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False
         

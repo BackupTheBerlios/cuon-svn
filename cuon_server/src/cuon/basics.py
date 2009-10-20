@@ -107,6 +107,12 @@ class basics(xmlrpc.XMLRPC):
         self.JABBERPASSWORD=None
         
         self.AUTOMATIC_SCHEDUL = False
+        
+        self.IMAP_HOST = 'localhost'
+        self.IMAP_PORT = 143
+        self.IMAP_USERNAME = 'test'
+        self.IMAP_PASSWORD = 'test'
+        
         try:
             self.cpServer = ConfigParser.ConfigParser()
             
@@ -241,6 +247,25 @@ class basics(xmlrpc.XMLRPC):
             if value:
                 self.JABBERPASSWORD = value
             
+            # IMAP
+            
+            value = self.getConfigOption('IMAP','SERVER')
+            if value:
+                self.IMAP_HOST = value
+                
+            value = self.getConfigOption('IMAP','PORT')
+            if value:
+                self.IMAP_PORT = int(value)
+                
+            value = self.getConfigOption('IMAP','USERNAME')
+            if value:
+                self.IMAP_USERNAME = value
+            
+            value = self.getConfigOption('IMAP','PASSWORD')
+            if value:
+                self.IMAP_PASSWORD = value
+                
+                    
         except Exception, params:
             print "Error read ini-File"
             print Exception

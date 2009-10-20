@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 
 
@@ -146,7 +146,7 @@ class graveyardMainwindow(chooseWindows):
         self.out( "save graveyard v2")
         self.doEdit = self.noEdit
         self.singleGraveyard.save()
-        self.setEntriesEditable(self.EntriesGraveyard, FALSE)
+        self.setEntriesEditable(self.EntriesGraveyard, False)
         self.endEdit()
         self.tabChanged()
         
@@ -155,7 +155,7 @@ class graveyardMainwindow(chooseWindows):
         self.doEdit = self.tabGraveyard
 
         self.singleGraveyard.newRecord()
-        self.setEntriesEditable(self.EntriesGraveyard, TRUE)
+        self.setEntriesEditable(self.EntriesGraveyard, True)
         
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
@@ -164,7 +164,7 @@ class graveyardMainwindow(chooseWindows):
         self.out( "edit graveyard v2")
         self.doEdit = self.tabGraveyard
         
-        self.setEntriesEditable(self.EntriesGraveyard, TRUE)
+        self.setEntriesEditable(self.EntriesGraveyard, True)
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
@@ -184,14 +184,14 @@ class graveyardMainwindow(chooseWindows):
         self.singleGraveyardAccounts.addressId = self.singleGraveyard.ID
         
         self.singleGraveyardAccounts.save()
-        self.setEntriesEditable(self.EntriesNotes, FALSE)
+        self.setEntriesEditable(self.EntriesNotes, False)
         self.tabChanged()
 
     def on_NotesEdit1_activate(self, event):
         self.out( "edit notes v2")
         self.doEdit = self.tabAccount
         
-        self.setEntriesEditable(self.EntriesNotes, TRUE)
+        self.setEntriesEditable(self.EntriesNotes, True)
 
    
     

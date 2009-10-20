@@ -15,7 +15,7 @@ import os.path
 import cuon.TypeDefs
 #from cuon.Windows.windows import windows
 from cuon.Databases.dumps import dumps
-from gtk import TRUE, FALSE
+#from gtk import True, False
 from cuon.TypeDefs.defaultValues import defaultValues
 class User(defaultValues):
     """
@@ -532,8 +532,8 @@ class User(defaultValues):
     
     def getDebug(self):
         if self.sDebug == 'YES':
-            return TRUE
+            return True
         else:
-            return FALSE
+            return False
         
           

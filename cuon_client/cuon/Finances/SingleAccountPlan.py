@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import TRUE, False
 
 
 class SingleAccountPlan(SingleData):

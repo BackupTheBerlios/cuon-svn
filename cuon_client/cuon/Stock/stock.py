@@ -19,7 +19,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import SingleStock
 import SingleStockGoods
 
@@ -136,17 +136,17 @@ class stockwindow(chooseWindows):
     def on_Save1_activate(self, event):
         print "save stock v2"
         self.singleStock.save()
-        self.setEntriesEditable(self.EntriesStock, FALSE)   
+        self.setEntriesEditable(self.EntriesStock, False)   
         self.tabChanged()
          
         
     def on_New1_activate(self, event):
         print "new stock v2"
         self.singleStock.newRecord()
-        self.setEntriesEditable(self.EntriesStock, TRUE)
+        self.setEntriesEditable(self.EntriesStock, True)
 
     def on_Edit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesStock, TRUE)
+        self.setEntriesEditable(self.EntriesStock, True)
 
     def on_Delete1_activate(self, event):
         print "delete stock v2"
@@ -158,17 +158,17 @@ class stockwindow(chooseWindows):
 
     def on_GoodsNew1_activate(self, event):
         self.singleStockGoods.newRecord()
-        self.setEntriesEditable(self.EntriesStockGoods, TRUE)
+        self.setEntriesEditable(self.EntriesStockGoods, True)
 
     def on_GoodsEdit1_activate(self, event):
-        self.setEntriesEditable(self.EntriesStockGoods, TRUE)
+        self.setEntriesEditable(self.EntriesStockGoods, True)
 
     def on_GoodsSave1_activate(self, event):
         print "save Goods v2"
         self.singleStockGoods.stock_id = self.singleStock.ID
         self.singleStockGoods.article_id = self.singleArticle.ID        
         self.singleStockGoods.save()
-        self.setEntriesEditable(self.EntriesStockGoods, FALSE)
+        self.setEntriesEditable(self.EntriesStockGoods, False)
         self.tabChanged()
         
 
@@ -281,4 +281,4 @@ class stockwindow(chooseWindows):
         # refresh the Tree
         self.refreshTree()
         self.enableMenuItem(self.editAction)
-        self.editEntries = FALSE
+        self.editEntries = False

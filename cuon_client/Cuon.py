@@ -195,9 +195,9 @@ import os
 import sys
 
         
-sys.path.append('/usr/lib/python/')
-sys.path.append('/usr/lib64/python2.4/site-packages')
-sys.path.append('/usr/lib64/python2.4/site-packages/gtk-2.0')  
+#sys.path.append('/usr/lib/python/')
+#sys.path.append('/usr/lib64/python2.4/site-packages')
+#sys.path.append('/usr/lib64/python2.4/site-packages/gtk-2.0')  
 #sys.path.append(os.environ['CUON_PATH'])
 
 #try:
@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 13  , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 14 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None

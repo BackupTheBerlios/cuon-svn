@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 
 
@@ -159,7 +159,7 @@ class materialgroupwindow(chooseWindows):
         self.out( "save material_group v2")
         self.doEdit = self.noEdit
         self.singleGroup.save()
-        self.setEntriesEditable(self.EntriesGroups, FALSE)
+        self.setEntriesEditable(self.EntriesGroups, False)
         self.endEdit()
         self.tabChanged()
         
@@ -168,7 +168,7 @@ class materialgroupwindow(chooseWindows):
         self.doEdit = self.tabGroup
 
         self.singleGroup.newRecord()
-        self.setEntriesEditable(self.EntriesGroups, TRUE)
+        self.setEntriesEditable(self.EntriesGroups, True)
         
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
@@ -177,7 +177,7 @@ class materialgroupwindow(chooseWindows):
         self.out( "edit material_group v2")
         self.doEdit = self.tabGroup
         
-        self.setEntriesEditable(self.EntriesGroups, TRUE)
+        self.setEntriesEditable(self.EntriesGroups, True)
         #self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
@@ -197,14 +197,14 @@ class materialgroupwindow(chooseWindows):
         self.singleGroupAccounts.addressId = self.singleGroup.ID
         
         self.singleGroupAccounts.save()
-        self.setEntriesEditable(self.EntriesNotes, FALSE)
+        self.setEntriesEditable(self.EntriesNotes, False)
         self.tabChanged()
 
     def on_NotesEdit1_activate(self, event):
         self.out( "edit notes v2")
         self.doEdit = self.tabAccount
         
-        self.setEntriesEditable(self.EntriesNotes, TRUE)
+        self.setEntriesEditable(self.EntriesNotes, True)
 
    
     

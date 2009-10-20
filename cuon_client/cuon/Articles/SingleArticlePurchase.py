@@ -18,7 +18,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import TRUE, FALSE
 import cuon.Addresses.SingleAddress
 
 class SingleArticlePurchase(SingleData):

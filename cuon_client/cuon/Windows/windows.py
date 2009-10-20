@@ -54,7 +54,7 @@ class windows(rawWindow, MyXML, messages):
         self.FirstInit = True
         self.ModulNumber = 1
         self.MN = {}
-
+        self.AutoInsert = False
         self.MN['Mainwindow'] = 10
         self.MN['Client'] = 1000
         

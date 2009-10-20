@@ -113,7 +113,11 @@ class ArticlesFastSelection(gladeXml):
                 pass
 
     def on_treeArticles_row_activated(self, event, data1, data2):
+        print "treeArticles row activated"
         self.on_bQuickAppend_clicked(event)
+
+    def on_bQuickAppend_clicked(self, event):
+        pass
 
     def fillArticles(self, mid):
         print 'fill Articles'

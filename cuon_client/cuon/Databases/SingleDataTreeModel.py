@@ -18,7 +18,7 @@ import pygtk
 pygtk.require('2.0')
 import gtk
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, FALSE
 
 
 COLUMN_NAME       = 0
@@ -56,7 +56,7 @@ class SingleDataTreeModel:
             column = gtk.TreeViewColumn(i, gtk.CellRendererText(), text=t1)
 #            column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
 #            column.set_fixed_width(30)
-            column.set_clickable(TRUE)
+            column.set_clickable(True)
         
             tree1.append_column(column)
             t1 = t1 +1

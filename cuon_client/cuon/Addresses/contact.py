@@ -46,6 +46,7 @@ class contactwindow(chooseWindows):
     
     def __init__(self, allTables, address_nr=0, partner_nr=0, autoNew = False):
         print 'time 01 = ', time.localtime()
+        print "address_nr = " ,  address_nr
         chooseWindows.__init__(self)
         #print 'time 02 = ', time.localtime()
 
@@ -92,7 +93,8 @@ class contactwindow(chooseWindows):
             #self.singleContact.setTreeOrder('schedul_date')
             
         
-        self.singleContact.setTreeOrder("to_date('schedul_date', '" + self.dicUser['DateformatString'] +"')" )
+        #self.singleContact.setTreeOrder("to_date('schedul_date', '" + self.dicUser['DateformatString'] +"')" )
+        self.singleContact.setTreeOrder("schedul_date" )
 
 
         # set values for comboBox
@@ -198,10 +200,14 @@ class contactwindow(chooseWindows):
     
     def on_eAddressID_changed(self, event):
         print 'eAdrnbr changed'
+        #s = self.getWidget( 'eAddressID').get_text()
+        #print s
         try:
             iAdrNumber = self.getChangedValue('eAddressID')
+            print "iAdrNumber",  iAdrNumber
             eAdrField = self.getWidget('tvAddress')
             liAdr = self.singleAddress.getAddress(iAdrNumber)
+            print "liAdr",  liAdr
             self.setTextbuffer(eAdrField,liAdr)
         except:
             pass
@@ -320,10 +326,12 @@ class contactwindow(chooseWindows):
         
     def refreshTree(self):
         self.singleContact.disconnectTree()
-        
+        print "refresh tree at contact"
+        print "sWhere = ",  self.singleContact.sWhere
         if self.tabOption == self.tabContact:
             self.singleContact.connectTree()
             self.singleContact.refreshTree()
+            
             try:
                 print 'read buffer'
                 self.on_eAddressID_changed('NONE')
@@ -346,7 +354,8 @@ class contactwindow(chooseWindows):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
         if self.tabOption == self.tabContact:
-            #Address
+            #contact
+            print "tab changed at contact"
             self.disableMenuItem('tabs')
             self.enableMenuItem('contact')
 

@@ -21,7 +21,7 @@ pygtk.require('2.0')
 import gtk
 import gtk.glade
 import gobject
-from gtk import TRUE, FALSE
+#from gtk import True, False
 import string
 from cuon.Databases.SingleData import SingleData
 import SingleAddress
@@ -455,7 +455,7 @@ class addresswindow(chooseWindows):
             self.errorMsg( _('saving this Address failed. Please check'))
         else:
             self.doEdit = self.noEdit
-            self.setEntriesEditable(self.EntriesAddresses, FALSE)
+            self.setEntriesEditable(self.EntriesAddresses, False)
             self.endEdit()
             self.tabChanged()
         
@@ -464,7 +464,7 @@ class addresswindow(chooseWindows):
         self.doEdit = self.tabAddress
 
         self.singleAddress.newRecord()
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesAddresses, True)
         
         self.getWidget('eAddress').grab_focus()
         self.startEdit()
@@ -473,7 +473,7 @@ class addresswindow(chooseWindows):
         self.out( "edit addresses v2")
         self.doEdit = self.tabAddress
         
-        self.setEntriesEditable(self.EntriesAddresses, TRUE)
+        self.setEntriesEditable(self.EntriesAddresses, True)
         self.getWidget('eAddress').grab_focus()
         self.startEdit()
         
@@ -496,7 +496,7 @@ class addresswindow(chooseWindows):
         
             self.doEdit = self.noEdit
             self.singleAddressBank.addressId = self.singleAddress.ID
-            self.setEntriesEditable(self.EntriesAddressesBank, FALSE)
+            self.setEntriesEditable(self.EntriesAddressesBank, False)
             self.endEdit()
             self.tabChanged()
         
@@ -514,7 +514,7 @@ class addresswindow(chooseWindows):
         self.out( "edit addresses v2")
         self.doEdit = self.tabBank
         
-        self.setEntriesEditable(self.EntriesAddressesBank, TRUE)
+        self.setEntriesEditable(self.EntriesAddressesBank, True)
         self.startEdit()
         
     def on_bank_delete1_activate(self, event):
@@ -531,7 +531,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.addressId = self.singleAddress.ID
         
         self.singleMisc.save()
-        self.setEntriesEditable(self.EntriesAddressesMisc, FALSE)
+        self.setEntriesEditable(self.EntriesAddressesMisc, False)
         self.tabChanged()
         
 
@@ -539,7 +539,7 @@ class addresswindow(chooseWindows):
         self.out( "edit addresses v2")
         self.doEdit = self.tabMisc
         
-        self.setEntriesEditable(self.EntriesAddressesMisc, TRUE)
+        self.setEntriesEditable(self.EntriesAddressesMisc, True)
 
   #Menu Partner
         
@@ -552,7 +552,7 @@ class addresswindow(chooseWindows):
             self.errorMsg( _('saving this partner failed. Please check'))
         else:
             self.doEdit = self.noEdit
-            self.setEntriesEditable(self.EntriesPartner, FALSE)
+            self.setEntriesEditable(self.EntriesPartner, False)
             self.endEdit()
             self.tabChanged()
         
@@ -561,14 +561,14 @@ class addresswindow(chooseWindows):
         self.doEdit = self.tabPartner
         
         self.singlePartner.newRecord()
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.setEntriesEditable(self.EntriesPartner, True)
         self.startEdit()
 
         
     def on_PartnerEdit1_activate(self, event):
         self.doEdit = self.tabPartner
 
-        self.setEntriesEditable(self.EntriesPartner, TRUE)
+        self.setEntriesEditable(self.EntriesPartner, True)
         self.startEdit()
 
 
@@ -596,14 +596,14 @@ class addresswindow(chooseWindows):
             self.singleSchedul.load(id)
             sCalendar = 'iCal_'+ self.dicUser['Name']
             self.rpc.callRP('Web.addCalendarEvent', sCalendar,self.singleSchedul.firstRecord,  self.dicUser)
-            self.setEntriesEditable(self.EntriesPartnerSchedul, FALSE)
+            self.setEntriesEditable(self.EntriesPartnerSchedul, False)
             self.endEdit()
             self.tabChanged()
 
     def on_SchedulEdit1_activate(self, event):
         self.doEdit = self.tabSchedul
 
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
+        self.setEntriesEditable(self.EntriesPartnerSchedul, True)
         self.startEdit()
 
     def on_SchedulNew_activate(self, event):
@@ -611,7 +611,7 @@ class addresswindow(chooseWindows):
         self.doEdit = self.tabSchedul
 
         self.singleSchedul.newRecord()
-        self.setEntriesEditable(self.EntriesPartnerSchedul, TRUE)
+        self.setEntriesEditable(self.EntriesPartnerSchedul, True)
         self.startEdit()
 
     def on_SchedulDelete_activate(self, event):
@@ -632,7 +632,7 @@ class addresswindow(chooseWindows):
     
             self.doEdit = self.noEdit
     
-            self.setEntriesEditable(self.EntriesNotes, FALSE)
+            self.setEntriesEditable(self.EntriesNotes, False)
             if self.rpc.callRP('Misc.sendNotes0', self.dicUser, self.notebook2.get_current_page() ):
             
                 liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
@@ -655,7 +655,7 @@ class addresswindow(chooseWindows):
         self.out( "edit notes v2")
         self.doEdit = self.tabNotes
         
-        self.setEntriesEditable(self.EntriesNotes, TRUE)
+        self.setEntriesEditable(self.EntriesNotes, True)
 
     # several functions
         
