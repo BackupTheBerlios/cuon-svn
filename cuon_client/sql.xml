@@ -277,6 +277,13 @@
     </index>
     
     <index>
+        <index_name> article_parts_idx_part_id</index_name>
+        <index_special> </index_special>
+        <index_table>article_parts_list</index_table>
+        <index_column> part_id</index_column>
+    </index>
+    
+    <index>
         <index_name> material_group_idx_name</index_name>
         <index_special> </index_special>
         <index_table>material_group</index_table>

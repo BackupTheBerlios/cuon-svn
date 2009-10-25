@@ -288,7 +288,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 14 , 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 15, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1439,12 +1439,12 @@ m.startMain(sStartType, sDebug,sLocal)
 
 #profile.run('m.startMain(sStartType, sDebug,sLocal)','cuonprofile')
 # Import Psyco if available
-#try:
-#    import psyco
-#    psyco.full()
-#    print ' start psyco'
-#except ImportError:
-#    print 'no psyco found'
+try:
+    import psyco
+    psyco.full()
+    print ' start psyco'
+except ImportError:
+    print 'no psyco found'
 
 #gtk.gdk.threads_enter()
 

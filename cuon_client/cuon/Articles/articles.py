@@ -25,6 +25,8 @@ import SingleArticlePurchase
 import SingleArticleSale
 import SingleArticleWebshop
 import SingleArticleStock
+import SingleArticleParts
+
 
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
@@ -36,6 +38,7 @@ import cuon.Articles.lists_articles_number1
 import cuon.Articles.pickles_articles
 import cuon.Articles.materialgroup
 import cuon.Articles.SingleMaterialgroups
+
 # Assosiated
 try:
     import cuon.Garden.botany
@@ -61,6 +64,7 @@ class articleswindow(chooseWindows):
         self.allTables = allTables
         self.singleArticle = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)
+        self.singleArticleParts = SingleArticleParts.SingleArticleParts(allTables)
         self.singleArticleSales = SingleArticleSale.SingleArticleSale(allTables)
         self.singleArticleWebshop = SingleArticleWebshop.SingleArticleWebshop(allTables)
         self.singleArticleStock = SingleArticleStock.SingleArticleStock(allTables)
@@ -75,6 +79,7 @@ class articleswindow(chooseWindows):
               
         self.EntriesArticles = 'articles.xml'
         self.EntriesArticlesPurchase = 'articles_purchase.xml'
+        self.EntriesArticlesParts = 'articles_parts.xml'
         self.EntriesArticlesSales = 'articles_sales.xml'
         self.EntriesArticlesWebshop = 'articles_webshop.xml'
         self.EntriesArticlesStock = 'articles_stock.xml'
@@ -92,6 +97,21 @@ class articleswindow(chooseWindows):
         self.singleArticle.setTree(self.xml.get_widget('tv_article') )
         self.singleArticle.setListHeader(['number', 'designation', ])
         
+        
+        #singleArticleParts
+        
+        self.loadEntries(self.EntriesArticlesParts)
+        self.singleArticleParts.setEntries(self.getDataEntries( self.EntriesArticlesParts) )
+        self.singleArticleParts.setGladeXml(self.xml)
+        self.singleArticleParts.setTreeFields( ['part_id','designation', 'quantities'] )
+        self.singleArticleParts.setListHeader(['Article', 'Designation','Quantities' ])
+        self.singleArticleParts.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        self.singleArticleParts.setTreeOrder('part_id')
+#        self.singleArticleParts.setListHeader([''])
+
+        self.singleArticleParts.sWhere  ='where article_id = ' + `self.singleArticle.ID`
+        self.singleArticleParts.setTree(self.xml.get_widget('tv_parts') )
+  
          #singleArticlePurchase
         
         self.loadEntries(self.EntriesArticlesPurchase)
@@ -162,40 +182,53 @@ class articleswindow(chooseWindows):
         self.addEnabledMenuItems('article','mi_article1')
         self.addEnabledMenuItems('purchase','mi_purchase1')
         self.addEnabledMenuItems('sales','mi_sales1')
-
+        self.addEnabledMenuItems('sales','parts_list1')
         
         # enabledMenues for Article
         self.addEnabledMenuItems('editArticle','new1', self.dicUserKeys['articles_new'])
         self.addEnabledMenuItems('editArticle','delete1', self.dicUserKeys['articles_delete'])
         self.addEnabledMenuItems('editArticle','print1', self.dicUserKeys['articles_print'])
         self.addEnabledMenuItems('editArticle','edit1',self.dicUserKeys['articles_edit'])
+        
+        # enabledMenues for ArticleParts
+        self.addEnabledMenuItems('editArticleParts','PartsListNew', self.dicUserKeys['articles_new'])
+        self.addEnabledMenuItems('editPArticlearts','PartsListDelete')
+        self.addEnabledMenuItems('editArticleParts','PartsListEdit', self.dicUserKeys['articles_edit'])
+    
 
         # enabledMenues for ArticlePurchase
-        self.addEnabledMenuItems('editPurchase','PurchaseNew1', self.dicUserKeys['articles_purchase_new'])
-        self.addEnabledMenuItems('editPurchase','PurchaseDelete1')
-        self.addEnabledMenuItems('editPurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
+        self.addEnabledMenuItems('editArticlePurchase','PurchaseNew1', self.dicUserKeys['articles_purchase_new'])
+        self.addEnabledMenuItems('editArticlePurchase','PurchaseDelete1')
+        self.addEnabledMenuItems('editArticlePurchase','PurchaseEdit1', self.dicUserKeys['articles_purchase_edit'])
     
        # enabledMenues for ArticleSales
-        self.addEnabledMenuItems('editSales','SalesNew1')
-        self.addEnabledMenuItems('editSales','SalesDelete1')
-        self.addEnabledMenuItems('editSales','SalesEdit1')
+        self.addEnabledMenuItems('editArticleSales','SalesNew1')
+        self.addEnabledMenuItems('editArticleSales','SalesDelete1')
+        self.addEnabledMenuItems('editArticleSales','SalesEdit1')
 
        # enabledMenues for ArticleWebshop
-        self.addEnabledMenuItems('editWebshop','WebshopClear1')
-        self.addEnabledMenuItems('editWebshop','WebshopEdit1')
+        self.addEnabledMenuItems('editArticleWebshop','WebshopClear1')
+        self.addEnabledMenuItems('editArticleWebshop','WebshopEdit1')
 
        # enabledMenues for ArticleStock
-        self.addEnabledMenuItems('editStock','StockClear1')
-        self.addEnabledMenuItems('editStock','StockEdit1')
+        self.addEnabledMenuItems('editArticleStock','StockClear1')
+        self.addEnabledMenuItems('editArticleStock','StockEdit1')
 
-
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','PartsListSave', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','PurchaseSave1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','SalesSave1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','WebshopSave1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','StockSave1', self.dicUserKeys['articles_save'])
 
         # tabs from notebook
         self.tabArticle = 0
-        self.tabPurchase = 1
-        self.tabSales = 2
-        self.tabWebshop = 3
-        self.tabStock = 4
+        self.tabParts = 1
+        self.tabPurchase = 2
+        self.tabSales = 3
+        self.tabWebshop = 4
+        self.tabStock = 5
         
 
         # start
@@ -243,26 +276,29 @@ class articleswindow(chooseWindows):
         self.singleArticle.deleteRecord()
 
 
-    #choose Manufactor button
-    def on_bChooseManufactor_clicked(self, event):
-        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
-        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))
+  #Menu Parts
         
-    # signals from entry eManufactorNumber
-    
-    def on_eManufactorNumber_changed(self, event):
-        print 'eManufactor changed'
-        eAdrField = self.getWidget('eManufactorField1')
-        liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
-        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
+   
+    def on_parts_list_save_activate(self, event):
+        print "save Parts articles v2"
+        self.singleArticleParts.articlesID = self.singleArticle.ID
+        self.singleArticleParts.save()
+        self.setEntriesEditable(self.EntriesArticlesParts, False)
 
-
-    def on_bShowDMS_clicked(self, event):
-        print 'dms clicked'
-        if self.singleArticle.ID > 0:
-            print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+        self.tabChanged()
         
+    def on_parts_list_new_activate(self, event):
+        print "new Parts articles v2"
+        self.singleArticleParts.newRecord()
+        self.setEntriesEditable(self.EntriesArticlesParts, True)
+
+    def on_parts_list_edit_activate(self, event):
+        self.setEntriesEditable(self.EntriesArticlesParts, True)
+
+    def on_parts_list_delete_activate(self, event):
+        print "delete Parts articles v2"
+        self.singleArticleParts.deleteRecord()
+
 
   #Menu Purchase
         
@@ -573,6 +609,31 @@ class articleswindow(chooseWindows):
                 
         else:
             self.setText2Widget('','eAssocsiatedText')
+    def on_bQuickAppend_clicked(self, event):
+        pass
+        
+        
+    
+    #choose Manufactor button
+    def on_bChooseManufactor_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry(_('chooseAddress'), self.getWidget( 'eManufactorNumber'))
+        
+    # signals from entry eManufactorNumber
+    
+    def on_eManufactorNumber_changed(self, event):
+        print 'eManufactor changed'
+        eAdrField = self.getWidget('eManufactorField1')
+        liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
+        eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
+
+
+    def on_bShowDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleArticle.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+        
         
     def refreshTree(self):
         self.singleArticle.disconnectTree()
@@ -585,6 +646,11 @@ class articleswindow(chooseWindows):
             self.on_cbAssociatedWith_changed(None)
             self.singleArticle.connectTree()
             self.singleArticle.refreshTree()
+        elif self.tabOption == self.tabParts:
+            self.singleArticleParts.sWhere  ='where article_id = ' + `int(self.singleArticle.ID)`
+            self.singleArticleParts.connectTree()
+            self.singleArticleParts.refreshTree()
+            self.singleArticleParts.setTreeSensitive(True)   
         elif self.tabOption == self.tabPurchase:
             self.singleArticlePurchase.sWhere  ='where articles_id = ' + `int(self.singleArticle.ID)`
             self.singleArticlePurchase.connectTree()
@@ -631,6 +697,15 @@ class articleswindow(chooseWindows):
             print 'Seite 0'
             self.editAction = 'editArticle'
             self.setStatusbarText([''])
+            
+       
+        elif self.tabOption == self.tabParts:
+            #Parts
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('Parts')
+            self.editAction = 'editArticleParts'
+            print 'Seite 1'
+            self.setStatusbarText([self.singleArticle.sStatus])
             
         elif self.tabOption == self.tabPurchase:
             #Purchase

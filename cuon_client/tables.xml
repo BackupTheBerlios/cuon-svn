@@ -1640,6 +1640,55 @@
       <comment />
     </field>
     </table>
+    
+    <!--table: articles_parts_list-->
+      <table>
+    <nameOfTable>articles_parts_list</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>52</x>
+    <y>15</y>
+    <field>
+      <name>article_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>part_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    <field>
+      <name>quantities</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>60</size>
+      <default />
+      <comment />
+    </field>
+     </table>
+    
   <!--table: articles_purchase-->
   <table>
     <nameOfTable>articles_purchase</nameOfTable>

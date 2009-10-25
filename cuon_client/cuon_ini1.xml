@@ -60,7 +60,12 @@
       <Entry-File>articles.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_articles.xml</Entry-FileValue>
     </Entries>
- 
+  <Entries>   
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>articles_parts.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_articles_parts.xml</Entry-FileValue>
+    </Entries>
+    
     <Entries>   
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>articles_purchase.xml</Entry-File>
