@@ -675,13 +675,17 @@ class articleswindow(chooseWindows):
 
         elif self.tabOption == self.tabStock:
             print "-----------> begin tab Stock"
+            
             self.singleArticleStock.sWhere  ='where articles_id = ' + `int(self.singleArticle.ID)`
             self.singleArticleWebshop.setEmptyEntries()
             self.singleArticleStock.getFirstRecord()
+            self.singleArticleStock.articlesID = self.singleArticle.ID
             if self.singleArticleStock.ID > 0:
                 self.singleArticleStock.fillEntries(self.singleArticleStock.ID)
             else:
-                dicAr = {'articles_number':self.singleArticle.getArticleNumber(self.singleArticle.ID)}
+                #dicAr = {'articles_number':self.singleArticle.getArticleNumber(self.singleArticle.ID)}
+                dicAr = {'articles_id':self.singleArticle.ID}
+                
                 self.singleArticleStock.fillOtherEntries(dicAr)
 
             print "-----------> end tab Stock"

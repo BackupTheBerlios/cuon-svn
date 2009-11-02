@@ -46,9 +46,9 @@ class SingleArticleStock(SingleData):
         
 
     def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SinglePurchase'
-        print 'self.articlesNumber = ' + `self.articlesNumber`
-        dicValues['articles_id'] = [self.articlesNumber, 'int']
+        print 'readNonWidgetEntries(self) by SingleStock'
+        print 'self.articlesID = ' + `self.articlesID`
+        dicValues['articles_id'] = [self.articlesID, 'int']
         return dicValues
        
     def fillOtherEntries(self, oneRecord):
@@ -58,7 +58,7 @@ class SingleArticleStock(SingleData):
         """
         print "fillOtherentries",  oneRecord
         try:
-            dicStock = self.rpc.callRP('Stock.getArticleStockInfo', oneRecord['articles_id'], self.sqlDicUser)
+            dicStock = self.rpc.callRP('Stock.getArticleStockInfo', self.articlesID,  self.sqlDicUser)
             print dicStock
             eActual =  self.getWidget('eArticleStockActual')
             eReserved =  self.getWidget('eArticleStockReserved')
@@ -71,7 +71,7 @@ class SingleArticleStock(SingleData):
             eFree.set_text(`dicStock['free']`)
         except  Exception, param:
             print 'Error - fillOtherentries Article'
-            print param
+            print Exception,  param
 
 
     def setOtherEmptyEntries(self):

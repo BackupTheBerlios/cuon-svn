@@ -29,13 +29,7 @@ class Stock(xmlrpc.XMLRPC, basics):
         self.writeLog('start stock amount')
         act = 0
         client = dicUser['client']
-        sSql = "select id from articles where number = '" + ar_id + "'"
-        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        if result not in ['NONE','ERROR']:
-           try:
-              id1 = result[0]['id']
-           except:
-              id1 = 0
+        id1 = ar_id
         
         sSql =  "select  b.number as article_number, "
         sSql = sSql + " sum(a.to_embed) as amount " 
