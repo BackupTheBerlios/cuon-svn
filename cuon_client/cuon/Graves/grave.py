@@ -278,7 +278,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
 
 
-    #Menu Addressimport cuon.Login.User
+    #Menu Grave
   
     def on_save1_activate(self, event):
         self.out( "save grave v2")
@@ -333,6 +333,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_SpringSave1_activate(self, event):
         self.out( "save GraveSpring addresses v2")
         self.singleGraveSpring.graveID = self.singleGrave.ID
+        self.singleGraveSpring.singleGrave = self.singleGrave
         self.singleGraveSpring.save()
         self.setEntriesEditable(self.EntriesGravesSpring, False)
         self.tabChanged()

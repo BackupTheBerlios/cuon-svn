@@ -41,5 +41,4 @@ class SingleGrave(SingleData):
         self.statusfields = ['lastname', 'city']
 
     
-        
-        
+    

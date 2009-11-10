@@ -636,7 +636,7 @@ class addresswindow(chooseWindows):
             if self.rpc.callRP('Misc.sendNotes0', self.dicUser, self.notebook2.get_current_page() ):
             
                 liEmailAddresses  = self.rpc.callRP('Misc.getAdditionalEmailAddressesNotes0',self.singleAddress.ID, self.dicUser)
-                print 'liEmailAddresses = ', liEmailAddresses
+                #print 'liEmailAddresses = ', liEmailAddresses
                 if liEmailAddresses and liEmailAddresses not in ['NONE','ERROR']:
                     self.singleDMS.loadNotes0SaveDocument()
                     dicVars, dicExtInfo = self.getAddressInfos()

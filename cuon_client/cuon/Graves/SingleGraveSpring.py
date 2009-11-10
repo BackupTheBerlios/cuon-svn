@@ -17,6 +17,9 @@ import os
 from cuon.Databases.SingleData import SingleData
 import logging
 import threading
+import SingleGrave
+
+
 
 class SingleGraveSpring(SingleData):
 
@@ -41,10 +44,19 @@ class SingleGraveSpring(SingleData):
         self.statusfields = ['lastname', 'city']
         self.graveID = 0
         
+        self.singleGrave = None
+        
+        
     def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SinglePartner'
+        print 'readNonWidgetEntries(self) by SingleGraveSpring'
         dicValues['grave_id'] = [self.graveID, 'int']
         return dicValues
-
+        
+    def saveOtherDatatable(self, id):
+        text = self.readTextBuffer(self.getWidget('tvDescriptionSpring'))
+        self.singleGrave.save()
+        
+    def loadOtherDatatable(self, id):
+        pass
         
         

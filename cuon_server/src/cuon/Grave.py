@@ -40,3 +40,5 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         return liService, liTypeOfGrave, liTypeOfPaying, liPercents
         
+
+        

@@ -164,6 +164,7 @@ class SingleData(gladeXml, logs):
             self.printOut( param)
             
         #self.printOut( liRecords    )
+        self.loadOtherDatatable(self.ID)
         self.setNormalCursor()
         return liRecords
 
@@ -250,13 +251,18 @@ class SingleData(gladeXml, logs):
         if liResult == 0:
             id = 0
         print 'id by save = ', id    
+        self.saveOtherDatatable(id)
         return id
                 
                 
         
         #self.refreshTree()
 
- 
+    def saveOtherDatatable(self, id):
+        pass
+    def loadOtherDatatable(self, id):
+        pass
+        
     def deleteRecord(self):
         self.rpc.callRP('Database.deleteRecord',self.sNameOfTable, self.ID, self.sqlDicUser )
         self.refreshTree()
