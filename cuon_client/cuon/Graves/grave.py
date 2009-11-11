@@ -336,17 +336,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSpring.singleGrave = self.singleGrave
         self.singleGraveSpring.save()
         self.setEntriesEditable(self.EntriesGravesSpring, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
         
     def on_SpringNew1_activate(self, event):
         self.out( "new GraveSpring addresses v2")
         self.singleGraveSpring.newRecord()
         self.setEntriesEditable(self.EntriesGravesSpring, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
         
     def on_SpringEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesGravesSpring, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
 
     def on_SpringDelete1_activate(self, event):
         self.out( "delete GraveSpring addresses v2")
