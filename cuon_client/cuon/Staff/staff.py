@@ -220,7 +220,7 @@ class staffwindow(chooseWindows):
     def on_edit1_activate(self, event):
         self.setEntriesEditable(self.entriesStaffs, True)
 
-    def on_delete1_activate(self, event):
+    def on_clear1_activate(self, event):
         print "delete staffs v2"
         self.singleStaff.deleteRecord()
 

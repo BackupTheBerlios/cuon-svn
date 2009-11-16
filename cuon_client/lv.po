@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-21 14:30+0200\n"
+"POT-Creation-Date: 2009-11-14 17:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team: \n"
@@ -12,8 +12,8 @@ msgstr ""
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
 #: cuon/Bank/bank.py:67 cuon/Garden/SingleHibernation.py:41
-#: cuon/Addresses/addresses.py:140 cuon/Clients/clients.py:64
-#: cuon/Graves/grave.py:73 cuon/Login/GUI/user.c:14
+#: cuon/Addresses/addresses.py:148 cuon/Clients/clients.py:64
+#: cuon/Graves/grave.py:82 cuon/Login/GUI/user.c:14
 #: cuon/Staff/GUI/src/interface.c:678 cuon/Garden/GUI/src/interface.c:485
 #: cuon/Addresses/GUI/addresses.c:88 cuon/Addresses/GUI/src/interface.c:2115
 #, fuzzy
@@ -21,8 +21,8 @@ msgid "Lastname"
 msgstr "Vārds Uzvārds"
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
-#: cuon/Garden/SingleHibernation.py:41 cuon/Addresses/addresses.py:140
-#: cuon/Clients/clients.py:64 cuon/Graves/grave.py:73 cuon/Login/GUI/user.c:15
+#: cuon/Garden/SingleHibernation.py:41 cuon/Addresses/addresses.py:148
+#: cuon/Clients/clients.py:64 cuon/Graves/grave.py:82 cuon/Login/GUI/user.c:15
 #: cuon/Staff/GUI/src/interface.c:670 cuon/Addresses/GUI/addresses.c:51
 #: cuon/Addresses/GUI/addresses.c:89 cuon/Addresses/GUI/src/interface.c:1075
 #: cuon/Addresses/GUI/src/interface.c:1265
@@ -32,8 +32,8 @@ msgid "Firstname"
 msgstr "Vārds"
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
-#: cuon/Bank/bank.py:67 cuon/Addresses/addresses.py:140
-#: cuon/Addresses/addresses.py:185 cuon/Clients/clients.py:64
+#: cuon/Bank/bank.py:67 cuon/Addresses/addresses.py:148
+#: cuon/Addresses/addresses.py:193 cuon/Clients/clients.py:64
 #: cuon/Staff/GUI/src/interface.c:510 cuon/Addresses/GUI/addresses.c:40
 #: cuon/Addresses/GUI/addresses.c:60 cuon/Addresses/GUI/addresses.c:112
 #: cuon/Addresses/GUI/src/interface.c:1062
@@ -66,16 +66,16 @@ msgstr "Tests"
 msgid "name"
 msgstr "vārds"
 
-#: cuon/Stock/stock.py:74 cuon/Order/order.py:113
+#: cuon/Stock/stock.py:74 cuon/Order/order.py:115
 #: cuon/Proposal/proposal.py:113
 #, fuzzy
 msgid "designation"
 msgstr "Rakstzīmes iestatīts apzīmējums"
 
 #: cuon/Stock/stock.py:84 cuon/Biblio/biblio.py:63 cuon/Web2/web2.py:68
-#: cuon/Garden/garden.py:94 cuon/Order/order.py:123 cuon/Order/order.py:136
-#: cuon/Order/order.py:149 cuon/PrefsFinance/prefsFinance.py:96
-#: cuon/PrefsFinance/prefsFinance.py:110 cuon/Articles/articles.py:116
+#: cuon/Garden/garden.py:94 cuon/Order/order.py:125 cuon/Order/order.py:138
+#: cuon/Order/order.py:151 cuon/PrefsFinance/prefsFinance.py:96
+#: cuon/PrefsFinance/prefsFinance.py:110 cuon/Articles/articles.py:137
 #: cuon/Articles/materialgroup.py:83 cuon/Proposal/proposal.py:125
 #: cuon/Proposal/proposal.py:138 cuon/Proposal/proposal.py:151
 #: cuon/Project/project.py:102 cuon/Project/project.py:111
@@ -179,7 +179,7 @@ msgstr "apraksts"
 msgid "Stocknr"
 msgstr ""
 
-#: cuon/Garden/SingleHibernation.py:41 cuon/Order/order.py:149
+#: cuon/Garden/SingleHibernation.py:41 cuon/Order/order.py:151
 #: cuon/Proposal/proposal.py:151 cuon/Analysis/GUI/src/interface.c:215
 #: cuon/Analysis/GUI/src/interface.c:260 cuon/Stock/GUI/src/interface.c:219
 #: cuon/Staff/GUI/src/interface.c:378 cuon/Garden/GUI/src/interface.c:476
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Number"
 msgstr "Numurs"
 
-#: cuon/Garden/SingleHibernationPlant.py:41 cuon/Order/order.py:113
+#: cuon/Garden/SingleHibernationPlant.py:41 cuon/Order/order.py:115
 #: cuon/Proposal/proposal.py:113
 #, fuzzy
 msgid "number"
@@ -209,7 +209,7 @@ msgid "diameter"
 msgstr ""
 
 #: cuon/Garden/garden.py:234 cuon/Garden/hibernation.py:208
-#: cuon/Articles/articles.py:248
+#: cuon/Articles/articles.py:623
 #: cuon/Finances/CashAccountBook/cashAccountBook.py:185
 #: cuon/Finances/Bookkeeping/bookkeeping.py:185
 #: cuon/Garden/GUI/src/interface.c:867
@@ -237,13 +237,13 @@ msgstr "Sesijas izmaksas:"
 msgid "pickup-"
 msgstr ""
 
-#: cuon/Order/order.py:149 cuon/Proposal/proposal.py:151
+#: cuon/Order/order.py:151 cuon/Proposal/proposal.py:151
 #: cuon/Order/GUI/src/interface.c:1401 cuon/Proposal/GUI/src/interface.c:1222
 #, fuzzy
 msgid "Pos."
 msgstr "Loga poz:"
 
-#: cuon/Order/order.py:149 cuon/Finances/InvoiceBook/invoicebook.py:69
+#: cuon/Order/order.py:151 cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Proposal/proposal.py:151
 #: cuon/Garden/GUI/src/interface.c:656 cuon/Garden/GUI/src/interface.c:747
 #: cuon/Project/GUI/src/interface.c:1190
@@ -251,16 +251,16 @@ msgstr "Loga poz:"
 msgid "Amount"
 msgstr "Apjoms"
 
-#: cuon/Order/order.py:149 cuon/Proposal/proposal.py:151
+#: cuon/Order/order.py:151 cuon/Proposal/proposal.py:151
 #, fuzzy
 msgid "Article-ID"
 msgstr "Diska ID"
 
-#: cuon/Order/order.py:149 cuon/Proposal/proposal.py:151
+#: cuon/Order/order.py:151 cuon/Proposal/proposal.py:151
 msgid "Designation2"
 msgstr ""
 
-#: cuon/Order/order.py:173 cuon/Finances/InvoiceBook/invoicebook.py:69
+#: cuon/Order/order.py:175 cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
 #: cuon/Finances/InvoiceBook/invoicebook.py:96
 #: cuon/Stock/GUI/src/interface.c:386 cuon/Order/GUI/src/interface.c:1353
@@ -274,14 +274,14 @@ msgstr ""
 msgid "Date"
 msgstr "Datums"
 
-#: cuon/Order/order.py:173 cuon/Staff/GUI/src/interface.c:760
+#: cuon/Order/order.py:175 cuon/Staff/GUI/src/interface.c:760
 #: cuon/Garden/GUI/src/interface.c:279 cuon/Order/GUI/src/interface.c:555
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:635
 #, fuzzy
 msgid "Invoice"
 msgstr "Pavadzīme"
 
-#: cuon/Order/order.py:173 cuon/Finances/InvoiceBook/invoicebook.py:82
+#: cuon/Order/order.py:175 cuon/Finances/InvoiceBook/invoicebook.py:82
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:266
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:445
 #: cuon/Finances/InvoiceBook/GUI/src/interface.c:685
@@ -289,17 +289,17 @@ msgstr "Pavadzīme"
 msgid "Inpayment"
 msgstr ""
 
-#: cuon/Order/order.py:173 cuon/Finances/Bookkeeping/GUI/src/interface.c:355
+#: cuon/Order/order.py:175 cuon/Finances/Bookkeeping/GUI/src/interface.c:355
 #, fuzzy
 msgid "account"
 msgstr "konts"
 
-#: cuon/Order/order.py:348
+#: cuon/Order/order.py:337
 #, fuzzy
 msgid "invoice"
 msgstr "Pavadzīme"
 
-#: cuon/Order/order.py:350
+#: cuon/Order/order.py:339
 msgid "payments"
 msgstr ""
 
@@ -389,7 +389,7 @@ msgid "article"
 msgstr "_Raksts"
 
 #: cuon/Project/SingleProjectMaterialResources.py:45
-#: cuon/Addresses/contact.py:83
+#: cuon/Addresses/contact.py:84
 #: cuon/Finances/Bookkeeping/GUI/src/interface.c:286
 #, fuzzy
 msgid "date"
@@ -419,12 +419,12 @@ msgstr ""
 msgid "real"
 msgstr "Real&ms:"
 
-#: cuon/Addresses/contact.py:83
+#: cuon/Addresses/contact.py:84
 #, fuzzy
 msgid "time"
 msgstr "laiks"
 
-#: cuon/Addresses/contact.py:83 cuon/Addresses/printAddress.py:45
+#: cuon/Addresses/contact.py:84 cuon/Addresses/printAddress.py:45
 #: cuon/Stock/GUI/src/interface.c:287 cuon/Bank/GUI/src/interface.c:243
 #: cuon/Staff/GUI/src/interface.c:694 cuon/Addresses/GUI/addresses.c:48
 #: cuon/Addresses/GUI/addresses.c:86 cuon/Addresses/GUI/src/interface.c:1291
@@ -433,7 +433,7 @@ msgstr "laiks"
 msgid "Address"
 msgstr "Adrese"
 
-#: cuon/Addresses/addresses.py:140 cuon/Stock/GUI/src/interface.c:300
+#: cuon/Addresses/addresses.py:148 cuon/Stock/GUI/src/interface.c:300
 #: cuon/Addresses/GUI/addresses.c:33 cuon/Addresses/GUI/addresses.c:35
 #: cuon/Addresses/GUI/addresses.c:65 cuon/Addresses/GUI/src/interface.c:932
 #: cuon/Addresses/GUI/src/interface.c:943
@@ -443,7 +443,7 @@ msgstr "Adrese"
 msgid "Phone"
 msgstr "Telefons"
 
-#: cuon/Addresses/addresses.py:140 cuon/Order/GUI/src/interface.c:645
+#: cuon/Addresses/addresses.py:148 cuon/Order/GUI/src/interface.c:645
 #: cuon/Proposal/GUI/src/interface.c:523
 #: cuon/Addresses/GUI/src/interface.c:1175
 #: cuon/Addresses/GUI/src/interface.c:1675
@@ -451,16 +451,16 @@ msgstr "Telefons"
 msgid "Info"
 msgstr "Informācija"
 
-#: cuon/Addresses/addresses.py:156
+#: cuon/Addresses/addresses.py:164
 msgid "Depositor"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:156 cuon/Addresses/GUI/addresses.c:73
+#: cuon/Addresses/addresses.py:164 cuon/Addresses/GUI/addresses.c:73
 #, fuzzy
 msgid "Account"
 msgstr "Konts"
 
-#: cuon/Addresses/addresses.py:156 cuon/Bank/GUI/src/interface.c:92
+#: cuon/Addresses/addresses.py:164 cuon/Bank/GUI/src/interface.c:92
 #: cuon/Bank/GUI/src/interface.c:123 cuon/Bank/GUI/src/interface.c:287
 #: cuon/Bank/GUI/src/interface.c:341 cuon/Addresses/GUI/addresses.c:19
 #: cuon/Addresses/GUI/addresses.c:77 cuon/Addresses/GUI/src/interface.c:728
@@ -468,93 +468,93 @@ msgstr "Konts"
 msgid "Bank"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:185
+#: cuon/Addresses/addresses.py:193
 #, fuzzy
 msgid "Name of partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/addresses.py:185
+#: cuon/Addresses/addresses.py:193
 #, fuzzy
 msgid "Firstname of partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/addresses.py:206
+#: cuon/Addresses/addresses.py:214
 #, fuzzy
 msgid "Date "
 msgstr "Datums"
 
-#: cuon/Addresses/addresses.py:206
+#: cuon/Addresses/addresses.py:214
 #, fuzzy
 msgid "Begin"
 msgstr "Sākums"
 
-#: cuon/Addresses/addresses.py:206
+#: cuon/Addresses/addresses.py:214
 #, fuzzy
 msgid "End"
 msgstr "Beigas"
 
-#: cuon/Addresses/addresses.py:206
+#: cuon/Addresses/addresses.py:214
 msgid "shortRemark"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:206 cuon/Addresses/GUI/addresses.c:123
+#: cuon/Addresses/addresses.py:214 cuon/Addresses/GUI/addresses.c:123
 #: cuon/Addresses/GUI/src/interface.c:2778
 #, fuzzy
 msgid "Priority"
 msgstr "Prioritāte"
 
-#: cuon/Addresses/addresses.py:206 cuon/Think/GUI/src/interface.c:240
+#: cuon/Addresses/addresses.py:214 cuon/Think/GUI/src/interface.c:240
 #: cuon/Garden/GUI/src/interface.c:786 cuon/Order/GUI/src/interface.c:1369
 #: cuon/Proposal/GUI/src/interface.c:1190 cuon/Project/GUI/src/interface.c:670
 #, fuzzy
 msgid "Status"
 msgstr "Status"
 
-#: cuon/Addresses/addresses.py:353
+#: cuon/Addresses/addresses.py:364
 msgid "Scheduls"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:424
+#: cuon/Addresses/addresses.py:455
 msgid "saving this Address failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:463
+#: cuon/Addresses/addresses.py:494
 msgid "saving this bank failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:521
+#: cuon/Addresses/addresses.py:552
 msgid "saving this partner failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:561
+#: cuon/Addresses/addresses.py:592
 msgid "saving this schedul failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:598
+#: cuon/Addresses/addresses.py:629
 msgid "save this notes failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:612
+#: cuon/Addresses/addresses.py:643
 msgid "CUON-ID NOTES-01"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:613
+#: cuon/Addresses/addresses.py:644
 #, fuzzy
 msgid "Notes are changed !"
 msgstr "Datne ir mainījusies"
 
-#: cuon/Addresses/addresses.py:616
+#: cuon/Addresses/addresses.py:647
 #, fuzzy
 msgid "Infos are generated by C.U.O.N."
 msgstr "Heksadecimālās atmiņas izmetni radījis"
 
-#: cuon/Graves/grave.py:85
+#: cuon/Graves/grave.py:94
 #, fuzzy
 msgid "Service-ID"
 msgstr "Diska ID"
 
-#: cuon/Graves/grave.py:98 cuon/Graves/grave.py:110 cuon/Graves/grave.py:124
-#: cuon/Graves/grave.py:137
+#: cuon/Graves/grave.py:107 cuon/Graves/grave.py:120 cuon/Graves/grave.py:134
+#: cuon/Graves/grave.py:147
 #, fuzzy
 msgid "article-ID"
 msgstr "Diska ID"
@@ -2018,7 +2018,7 @@ msgid "Representant"
 msgstr ""
 
 #: cuon/Stats/GUI/src/interface.c:103 cuon/Stats/GUI/src/interface.c:126
-#: cuon/Stats/GUI/src/interface.c:153 Cuon.py:1068
+#: cuon/Stats/GUI/src/interface.c:153 Cuon.py:1138
 msgid "Salesman"
 msgstr ""
 
@@ -3802,7 +3802,7 @@ msgstr "Partnera vārds"
 
 #: cuon/Addresses/GUI/addresses.c:29 cuon/Addresses/GUI/addresses.c:132
 #: cuon/Addresses/GUI/src/interface.c:839
-#: cuon/Addresses/GUI/src/interface.c:3040 Cuon.py:1046
+#: cuon/Addresses/GUI/src/interface.c:3040 Cuon.py:1116
 msgid "Schedul"
 msgstr ""
 
@@ -4869,12 +4869,12 @@ msgstr "Izvēlēties"
 msgid "Address-ID"
 msgstr "Sistēmas adrešu grāmatas ID"
 
-#: Cuon.py:1014
+#: Cuon.py:1084
 #, fuzzy
 msgid "Names"
 msgstr "Vārdi:"
 
-#: Cuon.py:1365
+#: Cuon.py:1435
 #, fuzzy
 msgid "Debug by C.U.O.N. = "
 msgstr "Kompilējis %s@%s.%s\n"

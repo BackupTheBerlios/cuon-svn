@@ -75,8 +75,16 @@ class SingleArticle(SingleData):
         return dicRecords[0]['number']
     
     def getArticleDesignation(self, id):
-        dicRecords = self.load(id)
-        return dicRecords[0]['designation']
+        print "id = ",  id
+        sDesignation = ' '
+        try:
+            dicRecords = self.load(id)
+            print dicRecords
+            sDesignation = dicRecords[0]['designation']
+        except:
+            pass
+        return sDesignation
+            
     def getArticleShort(self, id):
         dicRecords = self.load(id)
         return dicRecords[0]['number'] + ',' + dicRecords[0]['designation']

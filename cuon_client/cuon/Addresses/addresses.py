@@ -237,7 +237,7 @@ class addresswindow(chooseWindows):
         self.cbSearchPartner = self.getWidget('cbSearchPartner')
         
         liFashion, liTrade,liTurnover,liLegalform = self.rpc.callRP('Address.getComboBoxEntries',self.dicUser)
-        print liFashion, liTrade,liTurnover,liLegalform
+        #print liFashion, liTrade,liTurnover,liLegalform
         
         cbFashion = self.getWidget('cbFashion')
         if cbFashion:

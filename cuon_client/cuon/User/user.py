@@ -291,7 +291,21 @@ class User(defaultValues):
         self.setDicUserKeys('hibernation_plant_save','a')
         self.setDicUserKeys('hibernation_plant_print','t')
         
+         # grave
         
+        self.setDicUserKeys('grave_edit','e')
+        self.setDicUserKeys('grave_delete','d')
+        self.setDicUserKeys('grave_new','n')
+        self.setDicUserKeys('grave_save','s')
+        self.setDicUserKeys('grave_print','p')
+        
+        # grave Spring
+        
+        self.setDicUserKeys('gravespring_edit','e')
+        self.setDicUserKeys('gravespring_delete','d')
+        self.setDicUserKeys('gravespring_new','n')
+        self.setDicUserKeys('gravespring_save','s')
+        self.setDicUserKeys('gravespring_print','p')
         
         
         self.refreshDicUser()

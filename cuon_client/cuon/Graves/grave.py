@@ -42,7 +42,7 @@ import mx.DateTime
 import graveyard
 from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
 import cuon.Articles.SingleArticle
-
+import cuon.Articles.articles
 
 
 class graveswindow(chooseWindows, ArticlesFastSelection):
@@ -189,6 +189,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPercent.set_text_column(0)
             cbPercent.show()
 
+        liSpringPeriod = self.rpc.callRP('Grave.getComboBoxEntriesPeriod',self.dicUser)
+        print liSpringPeriod
+        cbSpringPeriod = self.getWidget('cbSpringPeriod')
+        if cbSpringPeriod:
+            liststore = gtk.ListStore(str)
+            for period in liSpringPeriod:
+                liststore.append([period])
+            cbSpringPeriod.set_model(liststore)
+            cbSpringPeriod.set_text_column(0)
+            cbSpringPeriod.show()
+            
+            
         # Menu-items
         self.initMenuItems()
 
@@ -209,10 +221,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('graveWinter','winter')
         
         # enabledMenues for grave
-        self.addEnabledMenuItems('editGrave','new1')
-        self.addEnabledMenuItems('editGrave','clear1')
-        self.addEnabledMenuItems('editGrave','print1')
-        self.addEnabledMenuItems('editGrave','edit1')
+        self.addEnabledMenuItems('editGrave','new1', self.dicUserKeys['grave_new'])
+        self.addEnabledMenuItems('editGrave','clear1', self.dicUserKeys['grave_delete'])
+        self.addEnabledMenuItems('editGrave','print1', self.dicUserKeys['grave_print'])
+        self.addEnabledMenuItems('editGrave','edit1', self.dicUserKeys['grave_edit'])
  # enabledMenues for graveMaintenance
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceNew1')
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceClear1')
@@ -220,28 +232,28 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceEdit1')
 
     # enabledMenues for graveSpring
-        self.addEnabledMenuItems('editGraveSpring','SpringNew1')
-        self.addEnabledMenuItems('editGraveSpring','SpringClear1')
-        self.addEnabledMenuItems('editGraveSpring','SpringPrint1')
-        self.addEnabledMenuItems('editGraveSpring','SpringEdit1')
+        self.addEnabledMenuItems('editGraveSpring','SpringNew1', self.dicUserKeys['gravespring_new'])
+        self.addEnabledMenuItems('editGraveSpring','SpringClear1', self.dicUserKeys['gravespring_delete'])
+        #self.addEnabledMenuItems('editGraveSpring','SpringPrint1', self.dicUserKeys['gravespring_print'])
+        self.addEnabledMenuItems('editGraveSpring','SpringEdit1', self.dicUserKeys['gravespring_edit'])
 
         
     # enabledMenues for graveSummer
         self.addEnabledMenuItems('editGraveSummer','SummerNew1')
         self.addEnabledMenuItems('editGraveSummer','SummerClear1')
-        self.addEnabledMenuItems('editGraveSummer','SummerPrint1')
+        #self.addEnabledMenuItems('editGraveSummer','SummerPrint1')
         self.addEnabledMenuItems('editGraveSummer','SummerEdit1')
 
     # enabledMenues for graveAutumn
         self.addEnabledMenuItems('editGraveAutumn','AutumnNew1')
         self.addEnabledMenuItems('editGraveAutumn','AutumnClear1')
-        self.addEnabledMenuItems('editGraveAutumn','AutumnPrint1')
+        #self.addEnabledMenuItems('editGraveAutumn','AutumnPrint1')
         self.addEnabledMenuItems('editGraveAutumn','AutumnEdit1')
         
     # enabledMenues for graveWinter
         self.addEnabledMenuItems('editGraveWinter','WinterNew1')
         self.addEnabledMenuItems('editGraveWinter','WinterClear1')
-        self.addEnabledMenuItems('editGraveWinter','WinterPrint1')
+        #self.addEnabledMenuItems('editGraveWinter','WinterPrint1')
         self.addEnabledMenuItems('editGraveWinter','WinterEdit1')
 
     # enabledMenues for Save 
@@ -349,7 +361,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGravesSpring, True)
         self.setEntriesEditable(self.EntriesGraves, True)
 
-    def on_SpringDelete1_activate(self, event):
+    def on_SpringClear1_activate(self, event):
         self.out( "delete GraveSpring addresses v2")
         self.singleGraveSpring.deleteRecord()
 
@@ -515,7 +527,32 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         #letter1.createAddress(singleGrave.ID)
 
 
+    def on_tbNew_clicked(self,  event):
+        if self.tabOption == self.tabGrave:
+            self.activateClick('new1')
+        elif self.tabOption == self.tabGraveSpring:
+            self.activateClick('SpringNew1')
+            
+            
+    def on_tbEdit_clicked(self,  event):
+        if self.tabOption == self.tabGrave:
+            self.activateClick('edit1')
+        elif self.tabOption == self.tabGraveSpring:
+            self.activateClick('SpringEdit1')
+            
+    def on_tbSave_clicked(self,  event):
+        if self.tabOption == self.tabGrave:
+            self.activateClick('save1')
+        elif self.tabOption == self.tabGraveSpring:
+            self.activateClick('SpringSave1')
         
+    def on_tbDelete_clicked(self,  event):
+        if self.tabOption == self.tabGrave:
+            self.activateClick('clear1')
+        elif self.tabOption == self.tabGraveSpring:
+            self.activateClick('SpringClear1')
+             
+                    
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabGrave:
@@ -532,7 +569,14 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.setChooseValue('-1')
             self.closeWindow()
  
-              
+    def on_bChooseArticle_clicked(self,  event):
+        art =  cuon.Articles.articles.articleswindow(self.allTables)
+        if self.tabOption == self.tabGraveSpring:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eSpringArticleID'))
+
+    
+    
+    
     def on_bSearchGraveyard_clicked(self,  event):
         adr = graveyard.graveyardMainwindow(self.allTables)
         adr.setChooseEntry('chooseGraveyard', self.getWidget( 'eGraveyardID'))
@@ -575,8 +619,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_eSpringArticleID_changed(self, event):
         print "eSpringArticleID changed"
         #self.singleArticle.load(self.fillArticlesNewID)
-        self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(self.fillArticlesNewID) )
-        
+        try:
+            self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eSpringArticleID').get_text())) )
+        except:
+            self.getWidget('eSpringArticleDesignation').set_text(' ') 
         if self.AutoInsert:
             self.AutoInsert = False
             self.activateClick('SpringSave1')

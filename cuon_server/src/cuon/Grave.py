@@ -41,4 +41,13 @@ class Grave(xmlrpc.XMLRPC, basics):
         return liService, liTypeOfGrave, liTypeOfPaying, liPercents
         
 
-        
+    def xmlrpc_getComboBoxEntriesPeriod(self, dicUser):
+        cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+        liSpringPeriod0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveSpringPeriod', cpServer)
+        liSpringPeriod = ['NONE']
+        if liSpringPeriod0:
+            liSpringPeriod = liSpringPeriod0.split(',')  
+            
+            
+            
+        return liSpringPeriod

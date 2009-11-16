@@ -111,9 +111,11 @@ cuon/Articles/SingleArticlePurchase.py
 cuon/Articles/articles.py
 cuon/Articles/materialgroup.py
 cuon/Articles/pickles_articles.py
+cuon/Articles/SingleArticleParts.py
 cuon/Articles/lists_articles_number1.py
 cuon/Articles/SingleMaterialgroups.py
 cuon/Articles/SingleArticleStock.py
+cuon/Articles/ArticlesFastSelection.py
 cuon/Articles/SingleArticleSale.py
 cuon/Help/help.py
 cuon/Help/__init__.py
@@ -282,9 +284,11 @@ cuon/bin/cuon/Articles/SingleArticlePurchase.py
 cuon/bin/cuon/Articles/articles.py
 cuon/bin/cuon/Articles/materialgroup.py
 cuon/bin/cuon/Articles/pickles_articles.py
+cuon/bin/cuon/Articles/SingleArticleParts.py
 cuon/bin/cuon/Articles/lists_articles_number1.py
 cuon/bin/cuon/Articles/SingleMaterialgroups.py
 cuon/bin/cuon/Articles/SingleArticleStock.py
+cuon/bin/cuon/Articles/ArticlesFastSelection.py
 cuon/bin/cuon/Articles/SingleArticleSale.py
 cuon/bin/cuon/Help/help.py
 cuon/bin/cuon/Help/__init__.py
@@ -339,6 +343,7 @@ cuon/bin/cuon/bin/untar.py
 cuon/bin/cuon/bin/testXmlrpc.py
 cuon/bin/cuon/bin/cuon_client.py
 cuon/bin/cuon/bin/cuon_server.py
+cuon/bin/cuon/bin/Adressenconv.py
 cuon/bin/cuon/bin/convertMultilines.py
 cuon/bin/cuon/User/__init__.py
 cuon/bin/cuon/User/user.py
@@ -386,6 +391,7 @@ cuon/bin/untar.py
 cuon/bin/testXmlrpc.py
 cuon/bin/cuon_client.py
 cuon/bin/cuon_server.py
+cuon/bin/Adressenconv.py
 cuon/bin/convertMultilines.py
 cuon/User/__init__.py
 cuon/User/user.py

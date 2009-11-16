@@ -523,6 +523,8 @@ class articleswindow(chooseWindows):
         sNumber = self.getWidget('eFindNumber').get_text()
         sDesignation = self.getWidget('eFindDesignation').get_text()
         sID = self.getWidget('eFindMaterialGroupID').get_text()
+        print "sID  = ",  sID
+        
         self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
         liSearch = []
         if sNumber:
@@ -534,8 +536,9 @@ class articleswindow(chooseWindows):
             liSearch.append(sDesignation)
         
         if sID:
+            print "material group search"
             liSearch.append('material_group')
-            liSearch.append(sID)
+            liSearch.append(int(sID))
             
         self.singleArticle.sWhere = self.getWhere(liSearch)
         self.out(self.singleArticle.sWhere, self.ERROR)

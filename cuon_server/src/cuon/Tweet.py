@@ -35,7 +35,7 @@ class Tweet(xmlrpc.XMLRPC, basics):
         s = "Error in sending twitter"
         self.message = sMessage
         print 'start twitter message'
-        #print "dicuser = ",  dicUser
+        #print "dicuser = ",  dicUser 
         #rc = TweetRc()
         self.username = dicUser['Twitter']['TwitterName'] 
         self.password = dicUser['Twitter']['TwitterPassword']
@@ -63,7 +63,8 @@ class Tweet(xmlrpc.XMLRPC, basics):
         liReturn = []
         try:
             api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
-            liStatus = api.GetUserTimeline(self.username)        # print [s.text for s in status]
+            liStatus = api.GetUserTimeline(self.username)        
+            # print [s.text for s in status]
             
             for status in liStatus:
                 liReturn.append(status.created_at[0:16] + ": " + status.text + '\n')
