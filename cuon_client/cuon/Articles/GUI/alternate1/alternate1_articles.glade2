@@ -53,7 +53,6 @@
             </child>
             <child>
               <widget class="GtkMenuItem" id="edit">
-                <property name="visible">True</property>
                 <property name="label" translatable="yes">Edit</property>
                 <property name="use_underline">True</property>
                 <child>
@@ -545,6 +544,27 @@
                 <property name="visible">True</property>
               </widget>
             </child>
+            <child>
+              <widget class="GtkToolButton" id="tbPrint">
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-print</property>
+              </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkToolButton" id="tbDMS">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">weitere Daten</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-info</property>
+                <signal name="clicked" handler="on_bShowDMS_clicked"/>
+              </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
           </widget>
           <packing>
             <property name="expand">False</property>
@@ -554,6 +574,7 @@
         </child>
         <child>
           <widget class="GtkNotebook" id="notebook1">
+            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <signal name="switch_page" handler="on_notebook1_switch_page"/>
             <child>
@@ -1639,7 +1660,6 @@ Botany</property>
             </child>
             <child>
               <widget class="GtkVBox" id="vbox10">
-                <property name="visible">True</property>
                 <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
                 <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
                 <child>
