@@ -30,6 +30,10 @@ import SingleGraveSpring
 import SingleGraveSummer
 import SingleGraveAutumn
 import SingleGraveWinter
+import SingleGraveHoliday
+import SingleGraveYear
+import SingleGraveSingleevent
+
 
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
@@ -101,12 +105,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveSpring.setEntries(self.getDataEntries(self.EntriesGravesSpring) )
         self.singleGraveSpring.setGladeXml(self.xml)
-        self.singleGraveSpring.setTreeFields( ['article_id' ] )
-        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSpring.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation'   ] )
+        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveSpring.setTreeOrder('article_id')
-        self.singleGraveSpring.setListHeader([_('article-ID')])
+        self.singleGraveSpring.setListHeader([_('article-ID'), _('number'), _('Designation')])
         self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
-        self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+        self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
         self.EntriesGravesSummer = 'graves_summer.xml'
         self.loadEntries(self.EntriesGravesSummer)
@@ -114,12 +118,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveSummer.setEntries(self.getDataEntries(self.EntriesGravesSummer) )
         self.singleGraveSummer.setGladeXml(self.xml)
-        self.singleGraveSummer.setTreeFields( ['article_id' ] )
-        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveSummer.setTreeFields( ['article_id' , 'articles.number as number', 'articles.designation as designation'] )
+        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING ,  gobject.TYPE_UINT) ) 
         self.singleGraveSummer.setTreeOrder('article_id')
-        self.singleGraveSummer.setListHeader([_('article-ID')])
+        self.singleGraveSummer.setListHeader([_('article-ID'), _('number'), _('Designation')])
         self.singleGraveSummer.setTree(self.xml.get_widget('tree1') )
-        self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+        self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
   
         self.EntriesGravesAutumn = 'graves_autumn.xml'
@@ -141,12 +145,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveWinter.setEntries(self.getDataEntries(self.EntriesGravesWinter) )
         self.singleGraveWinter.setGladeXml(self.xml)
-        self.singleGraveWinter.setTreeFields( ['article_id' ] )
-        self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveWinter.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation' ] )
+        self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleGraveWinter.setTreeOrder('article_id')
-        self.singleGraveWinter.setListHeader([_('article-ID')])
+        self.singleGraveWinter.setListHeader([_('article-ID'), _('number'), _('Designation')])
         self.singleGraveWinter.setTree(self.xml.get_widget('tree1') )
-        self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+        self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID` + ' and article_id = articles.id '
   
   
         # set values for comboBox
@@ -270,7 +274,14 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.tabGraveSpring = 2
         self.tabGraveSummer= 3
         self.tabGraveAutumn = 4
-        self.tabGraveWinter = 5
+        self.tabGraveHollidays = 5
+        self.tabGraveWinter = 6
+        self.tabGraveAnnual = 7
+        self.tabGraveUnique = 8
+        
+
+
+
         try:
             self.win1.add_accel_group(self.accel_group)
         except Exception,  params:
@@ -613,20 +624,72 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eSpringCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
             self.getWidget('eSpringPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSpringArticleID').set_text(`self.fillArticlesNewID`)
+        if self.tabOption == self.tabGraveSummer:
+            self.activateClick('SummerNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eSummerArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eSummerCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eSummerPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eSummerArticleID').set_text(`self.fillArticlesNewID`)
 
+        if self.tabOption == self.tabGraveAutumn:
+            self.activateClick('AutumnNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eAutumnArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eAutumnCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eAutumnArticleID').set_text(`self.fillArticlesNewID`)
+
+        if self.tabOption == self.tabGraveWinter:
+            self.activateClick('WinterNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eWinterArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eWinterCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eWinterPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eWinterArticleID').set_text(`self.fillArticlesNewID`)
 
             #
-    def on_eSpringArticleID_changed(self, event):
-        print "eSpringArticleID changed"
+    def on_eArticleID_changed(self, event):
+        print "eArticleID changed"
         #self.singleArticle.load(self.fillArticlesNewID)
-        try:
-            self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eSpringArticleID').get_text())) )
-        except:
-            self.getWidget('eSpringArticleDesignation').set_text(' ') 
-        if self.AutoInsert:
-            self.AutoInsert = False
-            self.activateClick('SpringSave1')
-        
+        if self.tabOption == self.tabGraveSpring:
+            try:
+                self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eSpringArticleID').get_text())) )
+            except:
+                self.getWidget('eSpringArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('SpringSave1')
+            
+        elif self.tabOption == self.tabGraveSummer:
+            try:
+                self.getWidget('eSummerArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eSummerArticleID').get_text())) )
+            except:
+                self.getWidget('eSummerArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('SummerSave1')
+            
+        elif self.tabOption == self.tabGraveAutumn:
+            try:
+                self.getWidget('eAutumnArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eAutumnArticleID').get_text())) )
+            except:
+                self.getWidget('eAutumnArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('AutumnSave1')
+        elif self.tabOption == self.tabGraveWinter:
+            try:
+                self.getWidget('eWinterArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eWinterArticleID').get_text())) )
+            except:
+                self.getWidget('eWinterArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('WinterSave1')
+              
         
     def refreshTree(self):
         self.singleGrave.disconnectTree()
@@ -648,30 +711,35 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         elif self.tabOption == self.tabGraveSpring:
             print "1 tree "
-            self.singleGraveSpring.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveSpring.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
             self.singleGraveSpring.connectTree()
             self.singleGraveSpring.refreshTree()
             
         
         elif self.tabOption == self.tabGraveSummer:
             print "1 tree "
-            self.singleGraveSummer.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveSummer.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
             self.singleGraveSummer.connectTree()
             self.singleGraveSummer.refreshTree()
         
         elif self.tabOption == self.tabGraveAutumn:
             print "1 tree "
-            self.singleGraveAutumn.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveAutumn.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
             self.singleGraveAutumn.connectTree()
             self.singleGraveAutumn.refreshTree()
             
         elif self.tabOption == self.tabGraveWinter:
             print "1 tree "
-            self.singleGraveWinter.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
+            self.singleGraveWinter.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
             self.singleGraveWinter.connectTree()
             self.singleGraveWinter.refreshTree()
             
-
+        elif self.tabOption == self.tabGraveHollidays:
+            print "1 tree "
+            self.singleGraveH.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
+            self.singleGraveWinter.connectTree()
+            self.singleGraveWinter.refreshTree()
+            
          
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))

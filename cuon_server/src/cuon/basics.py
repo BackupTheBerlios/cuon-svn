@@ -348,6 +348,8 @@ class basics(xmlrpc.XMLRPC):
             #print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value
     
+      
+        
     def getParser(self, sFile):
         cpParser = ConfigParser.ConfigParser()
         f = open(sFile)

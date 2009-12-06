@@ -546,7 +546,7 @@ class projectwindow(chooseWindows):
         print 'dms clicked'
         if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
         
     def on_eMRArticleNumber_changed(self, event):
         print 'eMRArticleNumber changed'

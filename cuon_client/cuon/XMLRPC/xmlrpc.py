@@ -21,6 +21,7 @@ from cuon.Logging.logs import logs
 
 import time
 from xmlrpclib import ServerProxy
+#import bzip2
 
 class myXmlRpc(dumps, logs):
     """
@@ -132,9 +133,12 @@ class myXmlRpc(dumps, logs):
         rp_tries = 0
         #print 'Server by connection: ', self.getServer()
         #print 'Servercall by Connection: ', s
+        #s = bz2.compress(s)
+        #s = base64.encodestring(s)
         while startRP:
             try:
                 exec s
+                
                 startRP = False
 
             except IOError, param:

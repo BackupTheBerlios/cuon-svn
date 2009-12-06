@@ -168,12 +168,12 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         return result
         
 ##        Email(
-##557 	        from_address = "server@gp-server.gp",
-##558 	        smtp_server = "gp-server.gp",
-##559 	        to_address = "gerold@gp-server.gp",
-##560 	        subject = "Einfaches Beispiel (öäüß)",
-##561 	        message = "Das ist der Nachrichtentext mit Umlauten (öäüß)"
-##562 	    ).send()
+##557           from_address = "server@gp-server.gp",
+##558           smtp_server = "gp-server.gp",
+##559           to_address = "gerold@gp-server.gp",
+##560           subject = "Einfaches Beispiel (öäüß)",
+##561           message = "Das ist der Nachrichtentext mit Umlauten (öäüß)"
+##562       ).send()
 
 
         

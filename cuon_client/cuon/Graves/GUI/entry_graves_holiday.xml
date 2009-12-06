@@ -4,8 +4,8 @@
     <table_name>grave_work_holiday</table_name>
 
     <entry>
-      <name>eHolidayArticleID</name>
-      <type>checkbox</type>
+      <name>eHollidayArticleID</name>
+      <type>textline</type>
       <size>10</size>
       <verify_type>int</verify_type>
       <create_sql>1</create_sql>
@@ -14,18 +14,60 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-    
+    <entry>
+      <name>eHollidayCounts</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_count</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eHollidayDesignation</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_designation</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>cbHollidayPeriod</name>
+      <type>combobox</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>period_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
      <entry>
-      <name>eHolidayPrice</name>
+      <name>eHollidayPrice</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>float</verify_type>
       <create_sql>1</create_sql>
       <sql_field>service_price</sql_field>
-      <duty>YES</duty>
+      <duty>NO</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-    
+     <entry>
+      <name>tvHollidayHints</name>
+      <type>text</type>
+      <size>30000</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_notes</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
        </table>
 </entries_for_table>

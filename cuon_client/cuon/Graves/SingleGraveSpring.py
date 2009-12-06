@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-##Copyright (C) [2005]  [Juergen Hamel, D-32584 Loehne]
+##Copyright (C) [2009]  [Juergen Hamel, D-32584 Loehne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
