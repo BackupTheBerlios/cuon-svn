@@ -12,54 +12,64 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import sys
-import os
-import os.path
-from types import *
-import pygtk
-pygtk.require('2.0')
-import gtk
-import gtk.glade
-import gobject
-#from gtk import True, False
-import string
-from cuon.Databases.SingleData import SingleData
-import SingleAddress
-import SingleAddressBank
-import SingleMisc
-import SinglePartner
-import SingleScheduling
-import SingleNotes
-import cuon.Bank.SingleBank
-import lists_addresses_phone1
-import lists_addresses_phone11
-import commands
-import logging
-from cuon.Windows.chooseWindows  import chooseWindows
-import cPickle
-#import cuon.OpenOffice.letter
-# localisation
-import locale, gettext
-locale.setlocale (locale.LC_NUMERIC, '')
-import threading
-import time
-import datetime as DateTime
-import cuon.DMS.documentTools
-import cuon.DMS.SingleDMS
+try:
+        
+    import sys
+    import os
+    import os.path
+    from types import *
+    import pygtk
+    pygtk.require('2.0')
+    import gtk
+    import gtk.glade
+    import gobject
+    #from gtk import True, False
+    import string
+    from cuon.Databases.SingleData import SingleData
+    import SingleAddress
+    import SingleAddressBank
+    import SingleMisc
+    import SinglePartner
+    import SingleScheduling
+    import SingleNotes
+    import cuon.Bank.SingleBank
+    import lists_addresses_phone1
+    import lists_addresses_phone11
+    import commands
+    import logging
+    from cuon.Windows.chooseWindows  import chooseWindows
+    import cPickle
+    #import cuon.OpenOffice.letter
+    # localisation
+    import locale, gettext
+    locale.setlocale (locale.LC_NUMERIC, '')
+    import threading
+    import time
+    import datetime as DateTime
+    import cuon.DMS.documentTools
+    import cuon.DMS.SingleDMS
+    
+    import cuon.DMS.dms
+    import cuon.Graves.grave
+    import printAddress
+    import cuon.Staff.staff
+    import cuon.Staff.SingleStaff
+    import contact
+    import cuon.E_Mail.sendEmail
+    import cuon.Misc.cuon_dialog
+    import cuon.Misc.misc
+    import cuon.Order.order
+    import cuon.PrefsFinance.prefsFinance
+    import cuon.PrefsFinance.SinglePrefsFinanceTop
+    import cuon.Project.project
+    import cuon.Finances.invoicebook
+except Exception, param:
+    print Exception, param
+    print '......................................................................... Address import false ........'
 
-import cuon.DMS.dms
-import printAddress
-import cuon.Staff.staff
-import cuon.Staff.SingleStaff
-import contact
-import cuon.E_Mail.sendEmail
-import cuon.Misc.cuon_dialog
-import cuon.Misc.misc
-import cuon.Order.order
-import cuon.PrefsFinance.prefsFinance
-import cuon.PrefsFinance.SinglePrefsFinanceTop
-import cuon.Project.project
-import cuon.Finances.invoicebook
+print 'import graves'
+import cuon.Graves.address_graves
+
 bHtml = False
 try:
     import gtkhtml2
@@ -86,6 +96,7 @@ class addresswindow(chooseWindows):
         self.bHtml = bHtml
         self.OrderID = 0
         self.ProposalID = 0
+        print '1',  bHtml
         #print 'time 1 = ', time.localtime()
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Address']
@@ -282,7 +293,38 @@ class addresswindow(chooseWindows):
             cbLegalform.show()
         
         
-        
+        # buttons from other gpl module
+        setGraveButton,  setGraveButtonPosition = self.rpc.callRP('Address.getButtonGrave',self.dicUser)
+        print "gravebutton =",   setGraveButton,  setGraveButtonPosition
+        if setGraveButton == 'YES':
+            # import grave things
+            
+            self.graves = cuon.Graves.address_graves.address_graves()
+            print self.graves 
+            
+            # buttons 
+            print 'grave button found'
+            tb1 = self.getWidget('toolbar1')
+            print 'toolbar =',  tb1
+            button1 = gtk.ToolButton(icon_widget=None, label=_('Graves') )
+            print 'button1',  button1
+            tb1.insert(button1, -1)
+            button1.connect("clicked", self.on_tbGrave_clicked)
+            print 'button added'
+            button1.show()
+            # notebook tab
+            nb1 = self.getWidget('notebook1')
+            scGrave = gtk.ScrolledWindow()
+            self.tvGrave = gtk.TreeView(model=None)
+            print 'tvGrave',  self.tvGrave
+            scGrave.add(self.tvGrave)
+            vbGrave = gtk.VBox(homogeneous=False, spacing=0)
+            vbGrave.add(scGrave)
+            lb=gtk.Label(_('Graves'))
+            iNr = nb1.insert_page(vbGrave, tab_label=lb, position=-1)
+            
+            print 'page = ',  iNr
+            vbGrave.show_all()
             
         #print 'time 11 = ', time.localtime()
         
@@ -357,7 +399,8 @@ class addresswindow(chooseWindows):
         self.tabInvoice = 8
         self.tabProject = 9 
         self.tabHtml = 10
-        
+      
+        self.tabGraves = 11
         
         # Set Values for SchedulTree
         ts = self.getWidget('treeScheduls')
@@ -1654,7 +1697,8 @@ class addresswindow(chooseWindows):
             self.treeProjects.fillTree(self.getWidget('tvAddressProject'),[],['name','designation', 'date'],'self.connectProjectTree()')
             self.connectProjectTree()
     # stats 
-  
+    def on_tbGrave_clicked(self, event):
+        print 'tbGrave clicked'
     
     def refreshTree(self):
         self.singleAddress.disconnectTree()
@@ -1714,7 +1758,7 @@ class addresswindow(chooseWindows):
 
         self.oldTab = self.tabOption
         
- 
+    
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         print 'tab changed to :'  + str(self.tabOption)
@@ -1833,6 +1877,8 @@ class addresswindow(chooseWindows):
             #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
             self.setProjectValues()
+            
+            
         elif self.tabOption == self.tabHtml:
             print self.mapmoz,  self.firstGtkMozStart
             #http://maps.google.de/maps?f=q&hl=en&geocode=&time=&date=&ttype=&q=schulstr.14,32584&ie=UTF8&t=m
@@ -1857,8 +1903,23 @@ class addresswindow(chooseWindows):
                 self.mapmoz.load_url(sUrl)
                 #self.mapmoz.set_size_request(816,600)
                 self.mapmoz.show()
-            
+        
+        # gpl modules
+        
+        elif self.tabOption == self.tabGraves:
+            self.out( 'Site graves')
 
+            self.disableMenuItem('tabs')
+            #self.enableMenuItem('Graves')
+            #self.editAction = 'editProject'
+            self.setTreeVisible(False)
+            self.setStatusbarText([self.singleAddress.sStatus])
+            self.graves.setTree(self.tvGrave)
+            
+            self.graves.fillAddressGraves()
+            print 'tabOptions graves end'
+            
+            
         # refresh the Tree
         self.refreshTree()
 

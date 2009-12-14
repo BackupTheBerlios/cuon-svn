@@ -51,3 +51,9 @@ class Grave(xmlrpc.XMLRPC, basics):
             
             
         return liSpringPeriod
+
+    def xmlrpc_getGravesForAddress(self, addressid, dicUser):
+        sSql = "select * from fct_getGravesForAddressID(" + `addressid` +") as (gravesAddress TEXT ) "
+        dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        
+        return dicResult

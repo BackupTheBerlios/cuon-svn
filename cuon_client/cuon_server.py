@@ -369,6 +369,7 @@ class MainWindow(windows):
         
             
         ed = cuon.Editor.editor.editorwindow(dicFilename, True)
+        ed.setLanguage('text/x-text')
     #edit local config-files
     def on_versioncfg1_activate(self, event):
         ed = cuon.Editor.editor.editorwindow({'TYPE':'FILE','NAME':'version.cfg'}, True)

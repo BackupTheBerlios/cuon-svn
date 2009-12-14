@@ -732,7 +732,7 @@ class databaseswindow(windows):
      
         os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/server.ini inifiles')
         
-        for configfile in ['sql.xml', 'basics.xml', 'order.xml', 'address.xml', 'garden.xml']:
+        for configfile in ['sql.xml', 'basics.xml', 'order.xml', 'address.xml', 'garden.xml', 'graves.xml']:
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             doc = self.readDocument('inifiles/'+configfile)
             # procedures
@@ -785,9 +785,9 @@ class databaseswindow(windows):
                         #print ok
     
                         
-                        sSql = 'CREATE OR REPLACE FUNCTION ' + newName + ' AS \'  '  
+                        sSql = 'CREATE OR REPLACE FUNCTION ' + newName + ' AS \$\$  '  
                         sSql = sSql + func
-                        sSql = sSql + ' \''
+                        sSql = sSql + ' \$\$'
                         sSql = sSql + ' LANGUAGE \'' + sql_lang + '\'; '
                         self.out('sql = ' + sSql)
                         #sSql = string.replace(sSql,';', '\\;')

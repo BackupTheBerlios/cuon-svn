@@ -939,8 +939,8 @@ class SingleData(gladeXml, logs):
             dicLists = {}
             
         # self.out( dicLists)
-        self.printOut( 'dicLists =',  dicLists)
-        print 'dicLists =',  dicLists
+        #self.printOut( 'dicLists =',  dicLists)
+        #print 'dicLists =',  dicLists
         
         try:
             for i in dicLists:
@@ -989,8 +989,8 @@ class SingleData(gladeXml, logs):
         # self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
         # self.out( liItems)
         # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        self.printOut( 'liItems ---', `liItems`)
-        print  'liItems ---', `liItems`
+        #self.printOut( 'liItems ---', `liItems`)
+        #print  'liItems ---', `liItems`
         self.liItems = liItems
         return liItems
     

@@ -6,6 +6,9 @@ import xmlrpclib
 from twisted.web import xmlrpc
 from basics import basics
 import Database
+import hashlib
+
+
 
 class Address(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -62,7 +65,7 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_getAllActiveSchedulByNames(self, dicUser, OrderType='Name', SelectStaff='All'):
         self.xmlrpc_getAllActiveSchedul(dicUser)
         
-    def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All', sChoice = 'New'):
+    def xmlrpc_getAllActiveSchedul(self, dicUser, OrderType='Name', SelectStaff='All', sChoice = 'New', sHash = 'NONE'):
         value = None
         rep_salesman = None
         result = 'NONE'
@@ -95,7 +98,7 @@ class Address(xmlrpc.XMLRPC, basics):
         elif value:
                 
                 
-            sSql = "select partner_schedul.schedul_date as date, "
+            sSql = "select partner_schedul.schedul_date as date, partner_schedul.dschedul_date as date_norm, "
             sSql += "partner_schedul.id as id,  "
             sSql +=  "partner_schedul.schedul_time_begin as time_begin,partner_schedul.schedul_time_end as time_end, "
             sSql += " address.zip as a_zip, "
@@ -107,8 +110,8 @@ class Address(xmlrpc.XMLRPC, basics):
             sSql += " when 0 then  'NONE' else ( select staff.lastname || ', ' || staff.firstname from staff where staff.id = schedul_staff_id) END as schedul_name,  "
             
     
-            #sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
-            #sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
+            sSql += "( select staff.lastname from staff where staff.id = (select rep_id from address where address.id = partner.addressid)) as rep_lastname, " 
+            sSql += "( select staff.lastname from staff where staff.id = (select salesman_id from address where address.id = partner.addressid)) as salesman_lastname, " 
             sSql +=  "address.lastname2 as a_lastname2, partner.firstname as p_firstname "
             # from 
             sSql += " from partner, address, partner_schedul "
@@ -134,13 +137,13 @@ class Address(xmlrpc.XMLRPC, basics):
                 sW += ' and partner_schedul.process_status between 801 and 998 '
             elif sChoice == 'All':
                 pass
-            if OrderType == 'rep_salesman':
-                if rep_salesman == 'ALL':
-                    #print 'dicUser = ',  dicUser['Name']
-                    sW += " and address.rep_id = (select id from staff where cuon_username = '" + dicUser['Name'] + "') "
-                    sW += ' and address.salesman_id > 0'
+#            if OrderType == 'rep_salesman':
+#                if rep_salesman == 'ALL':
+#                    #print 'dicUser = ',  dicUser['Name']
+#                    sW += " and address.rep_id = (select id from staff where cuon_username = '" + dicUser['Name'] + "') "
+#                    sW += ' and address.salesman_id > 0'
                 
-            elif value != 'ALL':
+            if value != 'ALL':
                 liValue = value.split(',')
                 sW += ' and ( '
                 for sOptValue in liValue:
@@ -168,7 +171,17 @@ class Address(xmlrpc.XMLRPC, basics):
         if OrderType == 'rep_salesman':
                 if not rep_salesman or rep_salesman == 'NO':
                     result = 'NONE'
-        return result
+                    
+        m = hashlib.md5()
+        m.update(`result`)
+        sNewHash =  m.hexdigest()
+        print sHash
+        print sNewHash
+        if sNewHash == sHash:
+            result = ['NO_NEW_DATA']
+            
+         
+        return result,  sNewHash
         
         
     def xmlrpc_getAllActiveContacts(self, dicUser):
@@ -972,4 +985,15 @@ class Address(xmlrpc.XMLRPC, basics):
             
         return sAddressWhere
         
-        
+    def xmlrpc_getButtonGrave(self, dicUser):
+        print 'button grave'
+        cpServer, f = self.getParser(self.CUON_FS + '/menus.cfg')
+        setButton = self.getConfigOption(dicUser['Name'],'address_button_grave', cpServer)
+        print 'setButton = ',  setButton
+        buttonPosition = self.getConfigOption(dicUser['Name'],'address_button_grave_position', cpServer)
+        if setButton and buttonPosition:
+            return setButton.upper() ,  buttonPosition
+        else:
+            return 'NO',  '-1'
+            
+                

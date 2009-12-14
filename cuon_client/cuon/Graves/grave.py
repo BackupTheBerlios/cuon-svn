@@ -105,10 +105,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveSpring.setEntries(self.getDataEntries(self.EntriesGravesSpring) )
         self.singleGraveSpring.setGladeXml(self.xml)
-        self.singleGraveSpring.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation'   ] )
-        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleGraveSpring.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveSpring.setTreeOrder('article_id')
-        self.singleGraveSpring.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveSpring.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   

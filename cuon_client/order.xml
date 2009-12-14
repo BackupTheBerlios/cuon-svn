@@ -36,7 +36,7 @@
     DECLARE
     fSum     float ;
     sClient char ;
-    cur1 CURSOR FOR SELECT amount, price, discount FROM orderposition WHERE  orderid = iOrderid;
+    cur1 CURSOR FOR SELECT amount, price, discount FROM orderposition WHERE  orderid = iOrderid || '' '' || fct_getWhere(2,'' '');
     fAmount     float;
     fPrice  float;
     fDiscount   float ;
@@ -60,7 +60,7 @@
     close cur1 ;
     
     /* now get the whole discount */
-    select into fDiscount discount from orderbook where id = iOrderid ;
+    select into fDiscount discount from orderbook where id = iOrderid || '' '' || fct_getWhere(2,'' '');
     if fDiscount IS NULL then
             fDiscount := 0.0 ;
         end if ;

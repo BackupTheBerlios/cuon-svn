@@ -83,12 +83,12 @@ class sendEmail(editorwindow):
         vbox.pack_start(table)
         vbox.pack_start(tree1)
 
-        tv1 = self.getWidget('tv1')
+        #tv1 = self.getWidget('tv1')
     
         
         vbox.reorder_child(tree1,0)
         vbox.reorder_child(table,1)
-        vbox.reorder_child(tv1,2)
+        #vbox.reorder_child(tv1,2)
         vbox.show_all()
         #label.show()
         

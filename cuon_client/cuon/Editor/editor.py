@@ -3,7 +3,13 @@ import sys, os
 import os.path
 
 import string
-
+try:
+    import gtksourceview
+    GtkSV = True 
+except:
+    print 'No gtksourceview import possible. Please install gtksourceview for python!!'
+    GtkSV = False
+    
 
 from cuon.Windows.windows  import windows 
 
@@ -12,7 +18,7 @@ class editorwindow(windows):
         windows.__init__(self)
         
         self.close_dialog = None
-    
+        self.clipboard = gtk.clipboard_get()
         self.ModulNumber = 0
         print dicFilename, servermod
         self.openDB()
@@ -24,7 +30,30 @@ class editorwindow(windows):
         else:
             self.loadGlade('editor.xml')
         self.win1 = self.getWidget('EditorMainwindow')
-        self.textbuffer = self.getWidget('tv1').get_buffer()
+        
+        if GtkSV:
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbuffer = gtksourceview.SourceBuffer()
+            self.textbuffer.set_data('languages-manager', lm)
+            manager = self.textbuffer.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbuffer.set_highlight(True)
+            self.textbuffer.set_language(language)
+            self.view = gtksourceview.SourceView(self.textbuffer)
+            self.view.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox1')
+            oldScrolledwindow = self.getWidget('scrolledwindow1')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.view)
+            Vbox.show_all()
+            
+            
+            
+        else:
+            
+
+            self.textbuffer = self.getWidget('tv1').get_buffer()
         
         
         self.actualTab = 0
@@ -157,6 +186,40 @@ class editorwindow(windows):
         else:
             self.save_as_item_clicked()
     
+    # edit menu
+    def on_undo1_activate(self,  event):
+        self.textbuffer.undo ()
+        
+    def on_redo1_activate(self,  event):
+        self.textbuffer.redo ()
+            
+    def on_cut1_activate(self, event):
+        self.textbuffer.cut_clipboard(self.clipboard, self.view.get_editable())
+
+    def on_copy1_activate(self, event):
+        self.textbuffer.copy_clipboard(self.clipboard)
+        
+    def on_paste1_activate(self, event):
+        self.textbuffer.paste_clipboard(self.clipboard,None,  self.view.get_editable())
+
+        
+    # toolbar buttons
+    def on_tbUndo_clicked(self, event):
+        self.activateClick('undo1')
+        
+    def on_tbRedo_clicked(self, event):
+        self.activateClick('redo1')
+        
+    def on_tbCut_clicked(self, event):
+        self.activateClick('cut1')
+    
+    def on_tbCopy_clicked(self, event):
+        self.activateClick('copy1')
+    
+    def on_tbPaste_clicked(self, event):
+        self.activateClick('paste1')
+           
+        
     def plugin_item_clicked(self, data=None):
         "Creates a file chooser and allows user to open a file with it"
         self.filesel = gtk.FileSelection("Select plugin to open...")
@@ -165,6 +228,14 @@ class editorwindow(windows):
         self.filesel.show()
     
     
+    def setLanguage(self,  mType):
+        manager = self.textbuffer.get_data('languages-manager')
+        #print manager.get_available_languages()
+        mime_type = mType
+        language = manager.get_language_from_mime_type(mime_type)
+        self.textbuffer.set_highlight(True)
+        self.textbuffer.set_language(language)
+
     def open_selected_plugin(self, data=None):
         "Opens the selected plugin file and reads it in"
         self.open_plugin(self.filesel.get_filename())
@@ -180,7 +251,7 @@ class editorwindow(windows):
     
     def cut_item_clicked(self, data=None):
         "Deletes current selection and copies contents to clipboard"
-        self.textview.get_buffer().cut_clipboard(gtk.clipboard_get(),self.textview.get_editable())
+        self.textview.get_buffer().cut_clipboard(gtk.clipboard_get())
     
     def copy_item_clicked(self, data=None):
         "Copies current selection to clipboard"

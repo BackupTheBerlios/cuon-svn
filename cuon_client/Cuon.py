@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
 '''
 GNU GENERAL PUBLIC LICENSE
 
@@ -220,6 +222,7 @@ import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.Addresses.SinglePartner
 import cuon.Addresses.SingleScheduling
+print 'import Address'
 
 import cuon.Articles.articles
 import cuon.Bank.bank
@@ -304,7 +307,9 @@ class MainWindow(windows):
         self.singleAddress = None
         self.singlePartner = None
         self.singleSchedul = None
-        
+        self.schedulHash1 = None
+        self.schedulHash2 = None
+        self.schedulHash3 = None
         
         
         #self.extMenucommand['ext1'] = 'Test'
@@ -949,7 +954,7 @@ class MainWindow(windows):
                 self.setSchedulTree()
                 self.t2 = gobject.timeout_add(time_schedul,self.setSchedulTree)
         except Exception, params:
-            print Exception, params
+                print Exception, params
             
             
     def startChecking(self):
@@ -1045,7 +1050,29 @@ class MainWindow(windows):
         self.openDB()
         oUser = self.loadObject('User')
         self.closeDB()
-        #liststore = gtk.ListStore(str)
+        
+     
+
+        # Data
+        sChoice = 'All'
+        if self.getWidget('rbSchedulsNew').get_active():
+            sChoice = 'New'
+        elif self.getWidget('rbSchedulsCancel').get_active():
+            sChoice = 'Cancel'
+        elif self.getWidget('rbSchedulsActualWeek').get_active():
+            sChoice = 'actualWeek'    
+        print 'sChoice = ', sChoice
+        
+        liDates, newHash = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice, self.schedulHash1)
+        print 'lidates = ',  liDates
+        print 'newHash = ',  newHash
+        if liDates == ['NO_NEW_DATA']:
+            print 'liDates = no Data'
+            return True
+            
+        # new data arrived, go on    
+           #liststore = gtk.ListStore(str)
+        self.schedulHash1 = newHash
         self.disconnectTree()
         treeview = self.getWidget('treeSchedul')
         #treeview.set_model(liststore)
@@ -1062,19 +1089,7 @@ class MainWindow(windows):
 ##        column = gtk.TreeViewColumn("Zweite Spalte", renderer, text=0)
 ##        treeview.append_column(column)
         treeview.set_model(treestore)
-
-        # Data
-        sChoice = 'All'
-        if self.getWidget('rbSchedulsNew').get_active():
-            sChoice = 'New'
-        elif self.getWidget('rbSchedulsCancel').get_active():
-            sChoice = 'Cancel'
-        elif self.getWidget('rbSchedulsActualWeek').get_active():
-            sChoice = 'actualWeek'    
-        print 'sChoice = ', sChoice
-        
-        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice)
-        #print 'Schedul by names: ', liDates
+        print 'Schedul by names: ', liDates
         if liDates:
             lastRep = None
             lastSalesman = None
@@ -1105,8 +1120,11 @@ class MainWindow(windows):
 ##            print Exception,params
 ##            
         
-        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All',sChoice)
-        #print 'Schedul by schedul_date: ', liDates
+        #liDates,  self.schedulHash2 = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All',sChoice)
+        #liTest.sort(key=(lambda x: (x['test1'], lambda x: x['testA']) ))
+        
+        liDates.sort(key=(lambda x: (x['date_norm'], lambda x: x['schedul_name'], lambda x: x['date_norm'] )),   reverse = True)
+        print 'Schedul by schedul_date 2 : ', liDates
         if liDates:
             lastRep = None
             lastSalesman = None
@@ -1127,9 +1145,11 @@ class MainWindow(windows):
                 iter3 = treestore.insert_after(iter2,None,[oneDate['schedul_name'] +'--' + sTime + '-' +sTime2  +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] +' ###' +  `oneDate['id']`])   
                 
         # reps and Saleman
-        liDates = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'rep_salesman','All', sChoice)
-        #print 'Schedul by names: ', liDates
-        if liDates:
+        
+#        #liDates,  self.schedulHash3 = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'rep_salesman','All', sChoice)
+        liDates.sort(key=(lambda x: (x['date_norm'], lambda x: x['rep_lastname'],  lambda x: x['salesman_lastname'], lambda x: x['date_norm'])),   reverse = True)
+        print 'Schedul by names: 3', liDates
+        if liDates and liDates not in ['NONE']:
             lastRep = None
             lastSalesman = None
             Schedulname = None
@@ -1439,12 +1459,12 @@ m.startMain(sStartType, sDebug,sLocal)
 
 #profile.run('m.startMain(sStartType, sDebug,sLocal)','cuonprofile')
 # Import Psyco if available
-try:
-    import psyco
-    psyco.full()
-    print ' start psyco'
-except ImportError:
-    print 'no psyco found'
+#try:
+  #  import psyco
+    #psyco.full()
+    #print ' start psyco'
+#except ImportError:
+  #  print 'no psyco found'
 
 #gtk.gdk.threads_enter()
 

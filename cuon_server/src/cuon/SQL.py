@@ -148,7 +148,7 @@ class SQL(xmlrpc.XMLRPC, basics):
             #self.writeLog( '----------> SQL ')
             #self.writeLog(cSql)
             conn.close()
-            #self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
+            self.writeLog( '<-------SQL need : ' + ` time.mktime(time.localtime()) -t1` )
         except Exception, params:
             self.writeLog( 'executeQuery 3 ERROR = ' + `Exception` + ' ' + `params`)
 
