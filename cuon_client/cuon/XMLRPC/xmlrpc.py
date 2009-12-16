@@ -115,8 +115,8 @@ class myXmlRpc(dumps, logs):
     
 
     def callRP(self, rp, *c):
-        t1 = time.mktime(time.localtime()) 
-        print  '<-------xmlrpc start : ' + ` t1` 
+        #t1 = time.mktime(time.localtime()) 
+        #print  '<-------xmlrpc start : ' + ` t1` 
         r = None
         #print 'rp',rp
         #print rp[0:3]
@@ -169,7 +169,7 @@ class myXmlRpc(dumps, logs):
                     time.sleep(2)
         if r and r == 'NONE':
             r = None
-        print  '<-------xmlrpc need: ' + ` time.mktime(time.localtime()) -t1` 
+        #print  '<-------xmlrpc need: ' + ` time.mktime(time.localtime()) -t1` 
         return    r
 
     

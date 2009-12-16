@@ -249,17 +249,6 @@ class editorwindow(windows):
             infile.close()
             exec(command)
     
-    def cut_item_clicked(self, data=None):
-        "Deletes current selection and copies contents to clipboard"
-        self.textview.get_buffer().cut_clipboard(gtk.clipboard_get())
-    
-    def copy_item_clicked(self, data=None):
-        "Copies current selection to clipboard"
-        self.textview.get_buffer().copy_clipboard(gtk.clipboard_get())
-    
-    def paste_item_clicked(self, data=None):
-        "Pastes text from clipboard to location of cursor, replacing any selected text"
-        self.textview.get_buffer().paste_clipboard(gtk.clipboard_get(),None,self.textview.get_editable())
     
     def enable_wrap(self,data=None):
         "Enables word wrap and changes menu item appropriately"

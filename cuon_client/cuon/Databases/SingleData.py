@@ -535,7 +535,10 @@ class SingleData(gladeXml, logs):
                 self.printOut( widget.get_name())
                 
                 widget.set_active(0)
-    
+        self.clearAllOtherFields()
+        
+    def clearAllOtherFields(self):
+        pass
     def fillEntries(self, id):
         self.printOut( 'id by fillentries: ',  id)
         self.ID = id

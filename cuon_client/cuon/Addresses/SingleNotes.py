@@ -35,10 +35,32 @@ class SingleNotes(SingleData):
         self.out( len(self.table.Columns))
         #
         self.addressId = 0
+        self.NotesMisc = None
+        self.NotesContact = None
+        self.NotesRep = None
+        self.NotesSalesman= None
+        self.NotesOrganisation = None
+        
         
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SingleMisc'
         dicValues['address_id'] = [self.addressId, 'int']
+        dicValues['notes_misc'] = [self.NotesMisc.get_text(self.NotesMisc.get_start_iter(), self.NotesMisc.get_end_iter(), 1), 'text']
+        dicValues['notes_contacter'] = [self.NotesContact.get_text(self.NotesContact.get_start_iter(), self.NotesContact.get_end_iter(), 1), 'text']
+        dicValues['notes_representant'] = [self.NotesRep.get_text(self.NotesRep.get_start_iter(), self.NotesRep.get_end_iter(), 1), 'text']
+        dicValues['notes_salesman'] = [self.NotesSalesman.get_text(self.NotesSalesman.get_start_iter(), self.NotesSalesman.get_end_iter(), 1), 'text']
+        dicValues['notes_organisation'] = [self.NotesOrganisation.get_text(self.NotesOrganisation.get_start_iter(), self.NotesOrganisation.get_end_iter(), 1), 'text']
+
         return dicValues
 
-    
+    def fillOtherEntries(self, oneRecord):
+        #print "oneRecord = ",  oneRecord['notes_misc']
+        self.NotesMisc.set_text(oneRecord['notes_misc'])
+        self.NotesContact.set_text(oneRecord['notes_contacter'])
+        self.NotesRep.set_text(oneRecord['notes_representant'])
+        self.NotesSalesman.set_text(oneRecord['notes_salesman'])
+        self.NotesOrganisation.set_text(oneRecord['notes_organisation'])
+        
+        
+    def clearAllOtherFields(self):
+        self.NotesMisc.set_text('')

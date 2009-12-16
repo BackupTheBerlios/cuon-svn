@@ -78,6 +78,12 @@ try:
 except:
     print 'gtkhtml not found'
    
+try:
+    import gtksourceview
+    GtkSV = True 
+except:
+    print 'No gtksourceview import possible. Please install gtksourceview for python!!'
+    GtkSV = False
     
 class addresswindow(chooseWindows):
 
@@ -327,8 +333,95 @@ class addresswindow(chooseWindows):
             vbGrave.show_all()
             
         #print 'time 11 = ', time.localtime()
-        
+        if GtkSV:
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbufferMisc = gtksourceview.SourceBuffer()
+            self.textbufferMisc.set_data('languages-manager', lm)
+            manager = self.textbufferMisc.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbufferMisc.set_highlight(True)
+            self.textbufferMisc.set_language(language)
+            self.viewMisc = gtksourceview.SourceView(self.textbufferMisc)
+            self.viewMisc.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox10')
+            oldScrolledwindow = self.getWidget('scrolledwindow6')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.viewMisc)
+            Vbox.show_all()
+            self.singleAddressNotes.NotesMisc = self.textbufferMisc
 
+            #Contact
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbufferContact = gtksourceview.SourceBuffer()
+            self.textbufferContact.set_data('languages-manager', lm)
+            manager = self.textbufferContact.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbufferContact.set_highlight(True)
+            self.textbufferContact.set_language(language)
+            self.viewContact = gtksourceview.SourceView(self.textbufferContact)
+            self.viewContact.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox11')
+            oldScrolledwindow = self.getWidget('scrolledwindow7')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.viewContact)
+            Vbox.show_all()
+            self.singleAddressNotes.NotesContact = self.textbufferContact
+            
+            #Rep
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbufferRep = gtksourceview.SourceBuffer()
+            self.textbufferRep.set_data('languages-manager', lm)
+            manager = self.textbufferRep.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbufferRep.set_highlight(True)
+            self.textbufferRep.set_language(language)
+            self.viewRep = gtksourceview.SourceView(self.textbufferRep)
+            self.viewRep.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox12')
+            oldScrolledwindow = self.getWidget('scrolledwindow8')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.viewRep)
+            Vbox.show_all()
+            self.singleAddressNotes.NotesRep = self.textbufferRep
+            
+            #Salesman
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbufferSalesman = gtksourceview.SourceBuffer()
+            self.textbufferSalesman.set_data('languages-manager', lm)
+            manager = self.textbufferSalesman.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbufferSalesman.set_highlight(True)
+            self.textbufferSalesman.set_language(language)
+            self.viewSalesman = gtksourceview.SourceView(self.textbufferSalesman)
+            self.viewSalesman.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox13')
+            oldScrolledwindow = self.getWidget('scrolledwindow9')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.viewSalesman)
+            Vbox.show_all()
+            self.singleAddressNotes.NotesSalesman = self.textbufferSalesman
+            
+            #Organisation
+            lm = gtksourceview.SourceLanguagesManager()
+            self.textbufferOrganisation = gtksourceview.SourceBuffer()
+            self.textbufferOrganisation.set_data('languages-manager', lm)
+            manager = self.textbufferOrganisation.get_data('languages-manager')
+            mime_type = 'text/x-tex'
+            language = manager.get_language_from_mime_type(mime_type)
+            self.textbufferOrganisation.set_highlight(True)
+            self.textbufferOrganisation.set_language(language)
+            self.viewOrganisation = gtksourceview.SourceView(self.textbufferOrganisation)
+            self.viewOrganisation.set_show_line_numbers(True)
+            Vbox = self.getWidget('vbox17')
+            oldScrolledwindow = self.getWidget('scrolledwindow15')
+            Vbox.remove(oldScrolledwindow)
+            Vbox.add(self.viewOrganisation)
+            Vbox.show_all()
+            self.singleAddressNotes.NotesOrganisation = self.textbufferOrganisation
         # Menu-items
         self.initMenuItems()
 
@@ -669,6 +762,7 @@ class addresswindow(chooseWindows):
         
         self.out( "save Notes addresses v2")
         self.singleAddressNotes.addressId = self.singleAddress.ID
+        #self.singleAddressNotes.NotesMisc = self.textbufferMisc
         
         if self.singleAddressNotes.save() == 0:
          
@@ -677,7 +771,12 @@ class addresswindow(chooseWindows):
             
     
             self.doEdit = self.noEdit
-    
+            self.viewMisc.set_editable(False)
+            self.viewContact.set_editable(False)
+            self.viewRep.set_editable(False)
+            self.viewSalesman.set_editable(False)
+            self.viewOrganisation.set_editable(False)
+            
             self.setEntriesEditable(self.EntriesNotes, False)
             if self.rpc.callRP('Misc.sendNotes0', self.dicUser, self.notebook2.get_current_page() ):
                 # set the email addresses 
@@ -704,7 +803,12 @@ class addresswindow(chooseWindows):
         self.doEdit = self.tabNotes
         
         self.setEntriesEditable(self.EntriesNotes, True)
-
+        self.viewMisc.set_editable(True)
+        self.viewContact.set_editable(True)
+        self.viewRep.set_editable(True)
+        self.viewSalesman.set_editable(True)
+        self.viewOrganisation.set_editable(True)
+        
     # several functions
         
     def on_calendar1_day_selected_double_click(self, event):
@@ -1280,35 +1384,35 @@ class addresswindow(chooseWindows):
     # add date and name to notes
             
     def on_bAddNameMisc_clicked(self, event):
-        self.addName2Note('tvNotesMisc')
+        self.addName2Note(self.textbufferMisc)
 
     def on_bAddNameContacter_clicked(self, event):
-        self.addName2Note('tvNotesContacter')
+        self.addName2Note(self.textbufferContact)
     def on_bAddNameRep_clicked(self, event):
-        self.addName2Note('tvNotesRep')
+        self.addName2Note(self.textbufferRep)
     def on_bAddNameSalesman_clicked(self, event):
-        self.addName2Note('tvNotesSalesman')
+        self.addName2Note(self.textbufferSalesman)
     def on_bAddNameOrganisation_clicked(self, event):
-        self.addName2Note('tvNotesSalesman')
+        self.addName2Note(self.textbufferOrganisation)
     # add formular to notes
     def on_bAddFormular2NotesMisc_clicked(self, event):
         print 'AddFormular2NoticesMisc clicked'
-        self.addForm2Note('cbeNotesMisc','tvNotesMisc')
+        self.addForm2Note('cbeNotesMisc',self.textbufferMisc)
         
     def on_bAddFormular2NotesContacter_clicked(self, event):
         print 'AddFormular2NoticesContacter clicked'
-        self.addForm2Note('cbeNotesContacter','tvNotesContacter')
+        self.addForm2Note('cbeNotesContacter',self.textbufferContact)
     
     def on_bAddFormular2NotesRep_clicked(self, event):
         print 'AddFormular2NoticesRep clicked'
-        self.addForm2Note('cbeNotesRep','tvNotesRep')
+        self.addForm2Note('cbeNotesRep',self.textbufferRep)
        
     def on_bAddFormular2NotesSalesman_clicked(self, event):
         print 'AddFormular2NoticesSalesman clicked'
-        self.addForm2Note('cbeNotesSalesman','tvNotesSalesman')
+        self.addForm2Note('cbeNotesSalesman',self.textbufferSalesman)
     def on_bAddFormular2NotesOrganisation_clicked(self, event):
         print 'AddFormular2NoticesSalesman clicked'
-        self.addForm2Note('cbeNotesOrganisation','tvNotesOrganisation')
+        self.addForm2Note('cbeNotesOrganisation',self.textbufferOrganisation)
 
     def on_bViewHomepage_clicked(self, event):
         sUrl = self.singleAddress.firstRecord['homepage_url']
@@ -1338,6 +1442,8 @@ class addresswindow(chooseWindows):
                     s += "'" + liEmail[i] +"', "  
                 print s
         s += "'" + self.singleAddress.getEmail() + "')"
+        print s
+        
         exec(s)
             
         
@@ -1372,7 +1478,7 @@ class addresswindow(chooseWindows):
                 if Formular  and Formular not in ['NONE','ERROR']:
                     newForm = self.doUncompress(self.doDecode(Formular[0]['document_image']))
                     print 'newForm', newForm
-                    self.add2Textbuffer(self.getWidget(sOutput),newForm,'Head')
+                    self.add2Textbuffer(sOutput,newForm,'Head')
 
 
     def addName2Note(self, sWidget):
@@ -1380,7 +1486,8 @@ class addresswindow(chooseWindows):
         t2 = self.rpc.callRP('User.getStaffAddressString', self.dicUser)
         text = t1 + ' : ' + t2 + '\n\n'
         #print text
-        self.add2Textbuffer(self.getWidget(sWidget),text,'Head')
+        
+        self.add2Textbuffer(sWidget,text,'Head')
         
     
     def saveData(self):
@@ -1735,8 +1842,10 @@ class addresswindow(chooseWindows):
             
         elif self.tabOption == self.tabNotes:
             self.singleAddressNotes.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
+            
             self.singleAddressNotes.fillEntries(self.singleAddressNotes.findSingleId())
-
+            print 'filled single Address Notes id = ',  self.singleAddressNotes.findSingleId()
+            
             if self.InitForms:
                 # set popdown for forms
                 try:
@@ -1832,6 +1941,12 @@ class addresswindow(chooseWindows):
             self.disableMenuItem('tabs')
             self.enableMenuItem('notes')
             self.editAction = 'editNotes'
+            self.viewMisc.set_editable(False)
+            self.viewContact.set_editable(False)
+            self.viewRep.set_editable(False)
+            self.viewSalesman.set_editable(False)
+            self.viewOrganisation.set_editable(False)
+            
             #self.NameOfTree = 'tv_scheduls'
             #self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
