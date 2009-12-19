@@ -7001,7 +7001,156 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkHBox" id="hbox75">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <widget class="GtkButton" id="button15">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment25">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox76">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1701">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-cut</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label131">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Cut</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button16">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment26">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox95">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1702">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-copy</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label132">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Copy</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button17">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment27">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox125">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1703">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-paste</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label133">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">paste</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <placeholder/>
@@ -7099,7 +7248,156 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkHBox" id="hbox133">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <widget class="GtkButton" id="bNotesContactCut">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment22">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox152">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1692">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-cut</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label3">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Cut</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="bNotesContactCopy">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment23">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox180">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1693">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-copy</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label4">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Copy</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="bNotesContactCut1">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment24">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox181">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1694">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-paste</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label5">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">paste</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <placeholder/>
@@ -7197,7 +7495,156 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkHBox" id="hbox182">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <widget class="GtkButton" id="button9">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment28">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox183">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1695">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-cut</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label7">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Cut</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button10">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment29">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox184">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1696">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-copy</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label9">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Copy</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button11">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment30">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox185">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1697">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-paste</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label11">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">paste</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <placeholder/>
@@ -7295,7 +7742,156 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkHBox" id="hbox186">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <widget class="GtkButton" id="button12">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment31">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox187">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1698">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-cut</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label128">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Cut</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button13">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment32">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox188">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1699">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-copy</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label129">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Copy</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button14">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment33">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox189">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1700">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-paste</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label130">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">paste</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <placeholder/>
@@ -7393,7 +7989,156 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <widget class="GtkHBox" id="hbox190">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <widget class="GtkButton" id="button4">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment34">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox191">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image1">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-cut</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label13">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Cut</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button6">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment35">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox192">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image2">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-copy</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label19">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">Copy</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkButton" id="button7">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <widget class="GtkAlignment" id="alignment36">
+                                            <property name="visible">True</property>
+                                            <property name="xscale">0</property>
+                                            <property name="yscale">0</property>
+                                            <child>
+                                              <widget class="GtkHBox" id="hbox193">
+                                                <property name="visible">True</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                  <widget class="GtkImage" id="image3">
+                                                    <property name="visible">True</property>
+                                                    <property name="stock">gtk-paste</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <widget class="GtkLabel" id="label21">
+                                                    <property name="visible">True</property>
+                                                    <property name="label" translatable="yes">paste</property>
+                                                    <property name="use_underline">True</property>
+                                                  </widget>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">False</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                              </widget>
+                                            </child>
+                                          </widget>
+                                        </child>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <placeholder/>
