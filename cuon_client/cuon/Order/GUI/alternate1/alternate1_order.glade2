@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--*- mode: xml -*-->
+<?xml version="1.0"?>
 <glade-interface>
+  <!-- interface-requires gtk+ 2.12 -->
+  <!-- interface-naming-policy toplevel-contextual -->
   <widget class="GtkWindow" id="OrderMainwindow">
     <property name="visible">True</property>
-    <property name="title" translatable="yes">Rechnungen / Aufträge</property>
+    <property name="title" translatable="yes">Rechnungen / Auftr&#xE4;ge</property>
     <property name="icon">order.svg</property>
     <signal name="key_press_event" handler="on_Mainwindow_key_press_event"/>
     <child>
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">17</property>
-        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
         <child>
           <widget class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
@@ -104,7 +103,7 @@
                                 <property name="label" translatable="yes">aktuelle Rechnung</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="on_print_invoice1_activate"/>
-                                <accelerator key="p" modifiers="GDK_MOD1_MASK" signal="activate"/>
+                                <accelerator key="p" signal="activate" modifiers="GDK_MOD1_MASK"/>
                               </widget>
                             </child>
                             <child>
@@ -113,7 +112,7 @@
                                 <property name="label" translatable="yes">Sammelrechnung (alle offenen Posten werden berechnet)</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="on_all_open_invoice1_activate"/>
-                                <accelerator key="p" modifiers="GDK_SHIFT_MASK | GDK_MOD1_MASK" signal="activate"/>
+                                <accelerator key="p" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_MOD1_MASK"/>
                               </widget>
                             </child>
                             <child>
@@ -426,18 +425,22 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
           <widget class="GtkToolbar" id="toolbar1">
             <property name="visible">True</property>
             <property name="border_width">3</property>
-            <property name="toolbar_style">GTK_TOOLBAR_BOTH</property>
+            <property name="toolbar_style">both</property>
             <child>
               <widget class="GtkToolItem" id="toolitem2">
                 <property name="visible">True</property>
                 <property name="border_width">1</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="tbNew">
@@ -448,6 +451,7 @@
                 <signal name="clicked" handler="on_tbNew_clicked"/>
               </widget>
               <packing>
+                <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
@@ -460,6 +464,7 @@
                 <signal name="clicked" handler="on_tbEdit_clicked"/>
               </widget>
               <packing>
+                <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
@@ -472,6 +477,7 @@
                 <signal name="clicked" handler="on_tbSave_clicked"/>
               </widget>
               <packing>
+                <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
@@ -479,6 +485,9 @@
               <widget class="GtkSeparatorToolItem" id="separatortoolitem1">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="tbInfo">
@@ -489,6 +498,7 @@
                 <signal name="clicked" handler="on_tbInfo_clicked"/>
               </widget>
               <packing>
+                <property name="expand">False</property>
                 <property name="homogeneous">True</property>
               </packing>
             </child>
@@ -512,13 +522,10 @@
                     <property name="n_rows">2</property>
                     <property name="n_columns">6</property>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
                       <widget class="GtkLabel" id="lFindNumber">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Order-Number</property>
-                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="justify">center</property>
                       </widget>
                       <packing>
                         <property name="x_options">GTK_FILL</property>
@@ -540,7 +547,7 @@
                       <widget class="GtkLabel" id="lFindDesignation">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Designation</property>
-                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="justify">center</property>
                       </widget>
                       <packing>
                         <property name="left_attach">2</property>
@@ -551,14 +558,13 @@
                     </child>
                     <child>
                       <widget class="GtkButton" id="bSearch">
+                        <property name="label" translatable="yes">Search</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip_text">Strg-Enter</property>
-                        <property name="label" translatable="yes">Search</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <signal name="clicked" handler="on_bSearch_clicked"/>
-                        <accelerator key="Return" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+                        <accelerator key="Return" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                       <packing>
                         <property name="left_attach">5</property>
@@ -609,8 +615,8 @@
                       <widget class="GtkEntry" id="eFindOrderInvoiceNumber">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip_text">Strg-2</property>
-                        <accelerator key="2" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                        <property name="tooltip" translatable="yes">Alt-2</property>
+                        <accelerator key="2" signal="grab-focus" modifiers="GDK_MOD1_MASK"/>
                       </widget>
                       <packing>
                         <property name="left_attach">3</property>
@@ -650,8 +656,8 @@
                       <widget class="GtkEntry" id="eFindOrderDesignation">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="tooltip_text">Strg-1</property>
-                        <accelerator key="1" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                        <property name="tooltip" translatable="yes">Alt-1</property>
+                        <accelerator key="1" signal="grab-focus" modifiers="GDK_MOD1_MASK"/>
                       </widget>
                       <packing>
                         <property name="left_attach">3</property>
@@ -659,16 +665,21 @@
                         <property name="y_options"></property>
                       </packing>
                     </child>
+                    <child>
+                      <placeholder/>
+                    </child>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
               </widget>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
+                <property name="position">0</property>
               </packing>
             </child>
           </widget>
@@ -683,7 +694,7 @@
             <property name="height_request">116</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
+            <property name="hscrollbar_policy">never</property>
             <child>
               <widget class="GtkTreeView" id="tree1">
                 <property name="height_request">106</property>
@@ -704,8 +715,7 @@
             <child>
               <widget class="GtkVBox" id="vbox10">
                 <property name="visible">True</property>
-                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <widget class="GtkHBox" id="hbox22">
                     <property name="visible">True</property>
@@ -714,24 +724,6 @@
                         <property name="visible">True</property>
                         <property name="n_rows">6</property>
                         <property name="n_columns">4</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
                         <child>
                           <widget class="GtkLabel" id="label40">
                             <property name="visible">True</property>
@@ -836,7 +828,7 @@
                             <property name="height_request">0</property>
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">Desig.</property>
-                            <property name="justify">GTK_JUSTIFY_CENTER</property>
+                            <property name="justify">center</property>
                           </widget>
                           <packing>
                             <property name="top_attach">1</property>
@@ -851,7 +843,7 @@
                             <property name="height_request">0</property>
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">ordered at</property>
-                            <property name="justify">GTK_JUSTIFY_CENTER</property>
+                            <property name="justify">center</property>
                           </widget>
                           <packing>
                             <property name="top_attach">2</property>
@@ -866,7 +858,7 @@
                             <property name="height_request">0</property>
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">delivered at</property>
-                            <property name="justify">GTK_JUSTIFY_CENTER</property>
+                            <property name="justify">center</property>
                           </widget>
                           <packing>
                             <property name="top_attach">3</property>
@@ -901,6 +893,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -924,6 +917,7 @@
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">False</property>
+                                    <property name="position">0</property>
                                   </packing>
                                 </child>
                                 <child>
@@ -931,17 +925,17 @@
                                     <property name="visible">True</property>
                                     <child>
                                       <widget class="GtkCheckButton" id="cbInvoiceReady">
+                                        <property name="label" translatable="yes">Druck mit Sammelrechnung</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="tooltip_text">erlaubt automatischen Rechnungsdruck</property>
-                                        <property name="label" translatable="yes">Druck mit Sammelrechnung</property>
+                                        <property name="receives_default">False</property>
                                         <property name="use_underline">True</property>
-                                        <property name="response_id">0</property>
                                         <property name="draw_indicator">True</property>
                                       </widget>
                                       <packing>
                                         <property name="expand">False</property>
                                         <property name="fill">False</property>
+                                        <property name="position">0</property>
                                       </packing>
                                     </child>
                                   </widget>
@@ -991,14 +985,16 @@
                                 <property name="height_request">0</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip_text">Strg-4</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Strg-4</property>
                                 <property name="max_length">10</property>
                                 <property name="width_chars">10</property>
-                                <accelerator key="4" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                <accelerator key="3" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
@@ -1020,14 +1016,15 @@
                                 <property name="height_request">0</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip_text">Strg-3</property>
+                                <property name="tooltip" translatable="yes">unsichtbar auf Rechnung</property>
                                 <property name="max_length">10</property>
                                 <property name="width_chars">10</property>
-                                <accelerator key="3" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                <accelerator key="3" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
@@ -1047,12 +1044,16 @@
                               <widget class="GtkEntry" id="eDiscount">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Strg-4</property>
                                 <property name="max_length">5</property>
                                 <property name="width_chars">5</property>
+                                <accelerator key="4" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
@@ -1074,11 +1075,14 @@
                                 <property name="height_request">0</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="tooltip" translatable="yes">Strg-1</property>
                                 <property name="width_chars">25</property>
+                                <accelerator key="1" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
@@ -1098,11 +1102,14 @@
                                 <property name="height_request">0</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="tooltip" translatable="yes">Strg-2</property>
                                 <property name="width_chars">35</property>
+                                <accelerator key="2" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
@@ -1130,16 +1137,36 @@
                             <property name="y_options"></property>
                           </packing>
                         </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -1151,14 +1178,11 @@
                         <property name="n_rows">2</property>
                         <property name="n_columns">4</property>
                         <child>
-                          <placeholder/>
-                        </child>
-                        <child>
                           <widget class="GtkScrolledWindow" id="scrolledwindow9">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
-                            <property name="vscrollbar_policy">GTK_POLICY_NEVER</property>
+                            <property name="hscrollbar_policy">never</property>
+                            <property name="vscrollbar_policy">never</property>
                             <child>
                               <widget class="GtkTextView" id="tvAddress">
                                 <property name="width_request">344</property>
@@ -1185,24 +1209,15 @@
                             <property name="n_rows">3</property>
                             <property name="n_columns">3</property>
                             <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
                               <widget class="GtkButton" id="bSimpleBank1">
+                                <property name="label" translatable="yes">Bank 1</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+3</property>
-                                <property name="label" translatable="yes">Bank 1</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+3</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bSimpleBank1_clicked"/>
-                                <accelerator key="3" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="3" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="x_options">GTK_SHRINK | GTK_FILL</property>
@@ -1211,14 +1226,15 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bSimpleBank2">
+                                <property name="label" translatable="yes">Bank 2</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+4</property>
-                                <property name="label" translatable="yes">Bank 2</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win
++4</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bSimpleBank2_clicked"/>
-                                <accelerator key="4" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="4" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -1229,14 +1245,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bSimpleBank3">
+                                <property name="label" translatable="yes">Bank 3</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+5</property>
-                                <property name="label" translatable="yes">Bank 3</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+5</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bSimpleBank3_clicked"/>
-                                <accelerator key="5" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="5" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1247,14 +1263,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bDirectDebit3">
+                                <property name="label" translatable="yes">direct Debit 3</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+9</property>
-                                <property name="label" translatable="yes">direct Debit 3</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+9</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bDirectDebit3_clicked"/>
-                                <accelerator key="9" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="9" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1267,14 +1283,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bDirectDebit2">
+                                <property name="label" translatable="yes">direct Debit 1</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+8</property>
-                                <property name="label" translatable="yes">direct Debit 1</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+8</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bDirectDebit2_clicked"/>
-                                <accelerator key="8" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="8" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -1287,14 +1303,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bDirectDebit1">
+                                <property name="label" translatable="yes">direct Debit 1</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+7</property>
-                                <property name="label" translatable="yes">direct Debit 1</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+7</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bDirectDebit1_clicked"/>
-                                <accelerator key="7" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="7" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -1302,6 +1318,15 @@
                                 <property name="x_options">GTK_SHRINK | GTK_FILL</property>
                                 <property name="y_options"></property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </widget>
                           <packing>
@@ -1318,21 +1343,6 @@
                             <property name="n_rows">3</property>
                             <property name="n_columns">3</property>
                             <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
                               <widget class="GtkHBox" id="hbox3">
                                 <property name="visible">True</property>
                                 <child>
@@ -1346,14 +1356,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bCreditCard1">
+                                <property name="label" translatable="yes">Credit Card 1</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+6</property>
-                                <property name="label" translatable="yes">Credit Card 1</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+6</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bCreditCard1_clicked"/>
-                                <accelerator key="6" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="6" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -1364,14 +1374,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bSimpleCash1">
+                                <property name="label" translatable="yes">Kasse 1</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+1</property>
-                                <property name="label" translatable="yes">Kasse 1</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+1</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bSimpleCash1_clicked"/>
-                                <accelerator key="1" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="1" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -1380,14 +1390,14 @@
                             </child>
                             <child>
                               <widget class="GtkButton" id="bSimpleCash2">
+                                <property name="label" translatable="yes">Kasse 2</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip" translatable="yes">Alt+2</property>
-                                <property name="label" translatable="yes">Kasse 2</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip" translatable="yes">Win+2</property>
                                 <property name="use_underline">True</property>
-                                <property name="response_id">0</property>
                                 <signal name="clicked" handler="on_bSimpleCash2_clicked"/>
-                                <accelerator key="2" modifiers="GDK_MOD1_MASK" signal="clicked"/>
+                                <accelerator key="2" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -1395,6 +1405,21 @@
                                 <property name="x_options">GTK_FILL</property>
                                 <property name="y_options"></property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </widget>
                           <packing>
@@ -1444,6 +1469,9 @@
                                     <property name="visible">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                                   </widget>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
                                 </child>
                                 <child>
                                   <widget class="GtkImage" id="image3">
@@ -1456,15 +1484,15 @@
                                 </child>
                                 <child>
                                   <widget class="GtkButton" id="bShowExtInfo">
+                                    <property name="label" translatable="yes">gedruckte Rechnung ansehen	</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
                                     <property name="tooltip" translatable="yes">Strg+g
 zeigt die Kopie des Rechnungsdruckes an.</property>
-                                    <property name="label" translatable="yes">gedruckte Rechnung ansehen	</property>
                                     <property name="use_underline">True</property>
-                                    <property name="response_id">0</property>
                                     <signal name="clicked" handler="on_bShowExtInfo_clicked"/>
-                                    <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+                                    <accelerator key="G" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1475,6 +1503,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               </widget>
                               <packing>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -1495,14 +1524,14 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         </child>
                         <child>
                           <widget class="GtkButton" id="bSearchCustom">
+                            <property name="label" translatable="yes">Adresse &#xE4;ndern</property>
                             <property name="width_request">0</property>
                             <property name="height_request">0</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip" translatable="yes">Vorsicht! Weißt der Rechnung neuen Empfänger zu!</property>
-                            <property name="label" translatable="yes">Adresse ändern</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip" translatable="yes">Vorsicht! Wei&#xDF;t der Rechnung neuen Empf&#xE4;nger zu!</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <signal name="clicked" handler="on_bSearchCustom_clicked"/>
                           </widget>
                           <packing>
@@ -1510,9 +1539,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                   </widget>
@@ -1685,15 +1718,17 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <child>
                           <widget class="GtkEntry" id="ePartnerID">
                             <property name="can_focus">True</property>
-                            <property name="text" translatable="yes">ID Gesprächspartner</property>
+                            <property name="text" translatable="yes">ID Gespr&#xE4;chspartner</property>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkButton" id="bSearchPartnerID">
+                            <property name="label" translatable="yes">Gespr&#xE4;chspartnersuche</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="label" translatable="yes">Gesprächspartnersuche</property>
-                            <property name="response_id">0</property>
                             <signal name="clicked" handler="on_bSearchPartnerID_clicked"/>
                           </widget>
                           <packing>
@@ -1702,10 +1737,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         </child>
                         <child>
                           <widget class="GtkButton" id="bSearchPartner">
+                            <property name="label" translatable="yes">Gehe zu Gespr&#xE4;chspartner</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="label" translatable="yes">Gehe zu Gesprächspartner</property>
-                            <property name="response_id">0</property>
                             <signal name="clicked" handler="on_bSearchPartner_clicked"/>
                           </widget>
                           <packing>
@@ -1715,7 +1749,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <child>
                           <widget class="GtkEntry" id="ePartnerInfo">
                             <property name="can_focus">True</property>
-                            <property name="text" translatable="yes">Gesprächspartner</property>
+                            <property name="text" translatable="yes">Gespr&#xE4;chspartner</property>
                           </widget>
                           <packing>
                             <property name="position">3</property>
@@ -1759,6 +1793,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -1774,8 +1809,8 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 </child>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
@@ -1844,13 +1879,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 </child>
                 <child>
                   <widget class="GtkButton" id="bSearchSupply">
+                    <property name="label" translatable="yes">search address</property>
                     <property name="width_request">0</property>
                     <property name="height_request">0</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">search address</property>
+                    <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
-                    <property name="response_id">0</property>
                     <signal name="clicked" handler="on_bSearchSupply_clicked"/>
                   </widget>
                   <packing>
@@ -1869,9 +1904,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="label" translatable="yes">Supply</property>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">1</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
@@ -1884,21 +1919,6 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="column_spacing">1</property>
                 <property name="row_spacing">1</property>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <widget class="GtkHBox" id="hbox17">
                     <property name="visible">True</property>
                     <child>
@@ -1909,12 +1929,22 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkCombo" id="combo1">
                         <property name="visible">True</property>
                         <property name="enable_arrows_always">False</property>
+                        <child internal-child="entry">
+                          <widget class="GtkEntry" id="combo-entry1"/>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child internal-child="list">
+                          <widget class="GtkList" id="combo-list1"/>
+                        </child>
                       </widget>
                       <packing>
                         <property name="position">1</property>
@@ -1939,11 +1969,12 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Pickup-Note</property>
-                        <property name="justify">GTK_JUSTIFY_CENTER</property>
+                        <property name="justify">center</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -1957,6 +1988,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -1986,6 +2018,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -2067,15 +2100,16 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkButton" id="bContactPerson">
+                            <property name="label" translatable="yes">search</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">search</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <signal name="clicked" handler="on_bContactPerson_clicked"/>
                           </widget>
                           <packing>
@@ -2098,6 +2132,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -2142,15 +2177,16 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkButton" id="bSearchForwardingAgency">
+                            <property name="label" translatable="yes">search</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">search</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <signal name="clicked" handler="on_bSearchForwardingAgency_clicked"/>
                           </widget>
                           <packing>
@@ -2173,6 +2209,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -2217,6 +2254,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -2232,6 +2270,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           </packing>
                         </child>
                       </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
                     <child>
                       <widget class="GtkHBox" id="hbox12">
@@ -2245,6 +2286,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -2285,17 +2327,18 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkButton" id="bSearchGetsPartner">
+                        <property name="label" translatable="yes">search Partner</property>
                         <property name="width_request">0</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">search Partner</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <signal name="clicked" handler="on_bSearchGetsPartner_clicked"/>
                       </widget>
                       <packing>
@@ -2339,6 +2382,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">Load reference</property>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkEntry" id="eLoadReference">
@@ -2353,6 +2399,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -2367,6 +2414,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -2397,6 +2445,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
@@ -2436,17 +2485,18 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkButton" id="bSearchGets">
+                        <property name="label" translatable="yes">search address ...</property>
                         <property name="width_request">0</property>
                         <property name="height_request">0</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">search address ...</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <signal name="clicked" handler="on_bSearchGet_clicked"/>
                       </widget>
                       <packing>
@@ -2476,6 +2526,21 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </widget>
               <packing>
                 <property name="position">2</property>
@@ -2487,16 +2552,15 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="label" translatable="yes">Gets</property>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">2</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
               <widget class="GtkVBox" id="vbox12">
                 <property name="visible">True</property>
-                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-                <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <widget class="GtkHBox" id="hbox34">
                     <property name="visible">True</property>
@@ -2504,8 +2568,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <child>
                       <widget class="GtkVBox" id="vbox16">
                         <property name="visible">True</property>
-                        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-                        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox46">
                             <property name="visible">True</property>
@@ -2515,8 +2578,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                 <child>
                                   <widget class="GtkVBox" id="vbox17">
                                     <property name="visible">True</property>
-                                    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-                                    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                                    <property name="orientation">vertical</property>
                                     <child>
                                       <widget class="GtkHBox" id="hbox52">
                                         <property name="visible">True</property>
@@ -2529,6 +2591,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -2560,9 +2623,10 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <widget class="GtkEntry" id="eAmount">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="tooltip_text">Strg-1</property>
+                                            <property name="has_tooltip">True</property>
+                                            <property name="tooltip" translatable="yes">Strg-1</property>
                                             <property name="width_chars">4</property>
-                                            <accelerator key="1" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                            <accelerator key="1" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                           </widget>
                                           <packing>
                                             <property name="expand">False</property>
@@ -2571,6 +2635,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           </packing>
                                         </child>
                                       </widget>
+                                      <packing>
+                                        <property name="position">0</property>
+                                      </packing>
                                     </child>
                                     <child>
                                       <widget class="GtkHBox" id="hbox53">
@@ -2584,6 +2651,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -2601,11 +2669,11 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                         </child>
                                         <child>
                                           <widget class="GtkButton" id="bArticleSearch">
+                                            <property name="label" translatable="yes">search article</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="label" translatable="yes">search article</property>
+                                            <property name="receives_default">False</property>
                                             <property name="use_underline">True</property>
-                                            <property name="response_id">0</property>
                                             <signal name="clicked" handler="on_bArticleSearch_clicked"/>
                                           </widget>
                                           <packing>
@@ -2631,14 +2699,15 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <widget class="GtkScrolledWindow" id="scrolledwindow11">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                                            <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                                            <property name="hscrollbar_policy">automatic</property>
+                                            <property name="vscrollbar_policy">automatic</property>
                                             <child>
                                               <widget class="GtkViewport" id="viewport1">
                                                 <property name="visible">True</property>
@@ -2647,8 +2716,8 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="border_width">1</property>
-                                                    <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
-                                                    <property name="vscrollbar_policy">GTK_POLICY_NEVER</property>
+                                                    <property name="hscrollbar_policy">never</property>
+                                                    <property name="vscrollbar_policy">never</property>
                                                     <child>
                                                       <widget class="GtkTextView" id="tvArticle">
                                                         <property name="visible">True</property>
@@ -2683,15 +2752,17 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <widget class="GtkEntry" id="ePositionDesignation">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="tooltip_text">Strg-2</property>
+                                            <property name="has_tooltip">True</property>
+                                            <property name="tooltip" translatable="yes">Strg-2</property>
                                             <property name="width_chars">35</property>
-                                            <accelerator key="2" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                            <accelerator key="2" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                           </widget>
                                           <packing>
                                             <property name="padding">1</property>
@@ -2716,16 +2787,17 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
                                             <property name="padding">1</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <widget class="GtkEntry" id="eArticleDiscount">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="tooltip_text">Strg-3</property>
+                                            <property name="tooltip" translatable="yes">Strg-3</property>
                                             <property name="max_length">5</property>
                                             <property name="width_chars">5</property>
-                                            <accelerator key="3" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                            <accelerator key="3" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                           </widget>
                                           <packing>
                                             <property name="padding">1</property>
@@ -2749,10 +2821,10 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <widget class="GtkEntry" id="ePrice">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="tooltip_text">Strg-4</property>
+                                            <property name="tooltip" translatable="yes">Strg-4</property>
                                             <property name="max_length">12</property>
                                             <property name="width_chars">12</property>
-                                            <accelerator key="4" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                            <accelerator key="4" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                           </widget>
                                           <packing>
                                             <property name="padding">1</property>
@@ -2775,16 +2847,16 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
                                           <widget class="GtkEntry" id="eOrderPositionsTaxVat">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="tooltip_text">Mehrwertsteuergruppe angeben (Strg-5)</property>
                                             <property name="max_length">5</property>
                                             <property name="width_chars">5</property>
-                                            <accelerator key="5" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                            <accelerator key="5" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                           </widget>
                                           <packing>
                                             <property name="expand">False</property>
@@ -2795,7 +2867,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <widget class="GtkButton" id="bChooseTaxVat">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="response_id">0</property>
+                                            <property name="receives_default">False</property>
                                             <signal name="clicked" handler="on_bChooseTaxVat_clicked"/>
                                             <child>
                                               <widget class="GtkAlignment" id="alignment3">
@@ -2814,12 +2886,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                                       <packing>
                                                         <property name="expand">False</property>
                                                         <property name="fill">False</property>
+                                                        <property name="position">0</property>
                                                       </packing>
                                                     </child>
                                                     <child>
                                                       <widget class="GtkLabel" id="label68">
                                                         <property name="visible">True</property>
-                                                        <property name="label" translatable="yes">Mwst. ändern</property>
+                                                        <property name="label" translatable="yes">Mwst. &#xE4;ndern</property>
                                                         <property name="use_underline">True</property>
                                                       </widget>
                                                       <packing>
@@ -2854,19 +2927,21 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                             <property name="height_request">160</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
-                                            <property name="shadow_type">GTK_SHADOW_IN</property>
+                                            <property name="shadow_type">in</property>
                                             <child>
                                               <widget class="GtkTreeView" id="treeMaterialgroup">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
-                                                <property name="tooltip_text">Strg-6</property>
+                                                <property name="has_tooltip">True</property>
+                                                <property name="tooltip" translatable="yes">Strg-6</property>
                                                 <signal name="row_activated" handler="on_treeMaterialgroup_row_activated"/>
-                                                <accelerator key="6" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                                                <accelerator key="6" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                                               </widget>
                                             </child>
                                           </widget>
                                           <packing>
                                             <property name="padding">1</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                       </widget>
@@ -2876,21 +2951,27 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                       </packing>
                                     </child>
                                   </widget>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
                                 </child>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
                             <property name="expand">False</property>
+                            <property name="position">0</property>
                           </packing>
                         </child>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -2898,14 +2979,14 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <property name="width_request">480</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="shadow_type">GTK_SHADOW_IN</property>
+                        <property name="shadow_type">in</property>
                         <child>
                           <widget class="GtkTreeView" id="treeArticles">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_text">Strg-7</property>
+                            <property name="tooltip" translatable="yes">Strg-7</property>
                             <signal name="row_activated" handler="on_treeArticles_row_activated"/>
-                            <accelerator key="7" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                            <accelerator key="7" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                           </widget>
                         </child>
                       </widget>
@@ -2917,6 +2998,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   </widget>
                   <packing>
                     <property name="expand">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -2925,8 +3007,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <child>
                       <widget class="GtkVBox" id="vbox18">
                         <property name="visible">True</property>
-                        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
-                        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox61">
                             <property name="visible">True</property>
@@ -2937,6 +3018,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -2952,7 +3034,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <widget class="GtkButton" id="bQuickAppend">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="response_id">0</property>
+                                <property name="receives_default">False</property>
                                 <signal name="clicked" handler="on_bQuickAppend_clicked"/>
                                 <child>
                                   <widget class="GtkAlignment" id="alignment1">
@@ -2971,6 +3053,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                           <packing>
                                             <property name="expand">False</property>
                                             <property name="fill">False</property>
+                                            <property name="position">0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -2997,6 +3080,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               </packing>
                             </child>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox62">
@@ -3008,6 +3094,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -3038,6 +3125,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -3066,6 +3154,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
@@ -3092,6 +3181,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -3135,6 +3225,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -3150,9 +3241,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 </child>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">3</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
@@ -3161,32 +3252,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="n_rows">3</property>
                 <property name="n_columns">4</property>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <widget class="GtkEntry" id="eTaxVatForAllPositionsID">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text">Mehrwertsteuergruppe angeben (Strg-1)</property>
                     <property name="max_length">5</property>
                     <property name="width_chars">5</property>
                     <signal name="changed" handler="on_eTaxVatForAllPositionsID_changed"/>
-                    <accelerator key="1" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                    <accelerator key="1" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
@@ -3199,7 +3271,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <widget class="GtkButton" id="bInvoiceTOP">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="response_id">0</property>
+                    <property name="receives_default">False</property>
                     <signal name="clicked" handler="on_bInvoiceTOP_clicked"/>
                     <child>
                       <widget class="GtkAlignment" id="alignment5">
@@ -3218,12 +3290,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label70">
                                 <property name="visible">True</property>
-                                <property name="label" translatable="yes">Zahlungsbedingung ändern</property>
+                                <property name="label" translatable="yes">Zahlungsbedingung &#xE4;ndern</property>
                                 <property name="use_underline">True</property>
                               </widget>
                               <packing>
@@ -3249,7 +3322,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="width_request">300</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="shadow_type">GTK_SHADOW_IN</property>
+                    <property name="shadow_type">in</property>
                     <child>
                       <widget class="GtkTextView" id="tvInvoiceTOP">
                         <property name="visible">True</property>
@@ -3270,11 +3343,10 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <widget class="GtkEntry" id="eInvoiceTOPID">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="tooltip_text">Strg-2</property>
                     <property name="max_length">5</property>
                     <property name="width_chars">5</property>
                     <signal name="changed" handler="on_eInvoiceTOPID_changed"/>
-                    <accelerator key="2" modifiers="GDK_CONTROL_MASK" signal="grab-focus"/>
+                    <accelerator key="2" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
@@ -3301,7 +3373,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <widget class="GtkButton" id="bTaxVatForAllPositions">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="response_id">0</property>
+                    <property name="receives_default">False</property>
                     <signal name="clicked" handler="on_bTaxVatForAllPositions_clicked"/>
                     <child>
                       <widget class="GtkAlignment" id="alignment4">
@@ -3320,12 +3392,13 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
                               <widget class="GtkLabel" id="label69">
                                 <property name="visible">True</property>
-                                <property name="label" translatable="yes">Mehrwertsteuer ändern             </property>
+                                <property name="label" translatable="yes">Mehrwertsteuer &#xE4;ndern             </property>
                                 <property name="use_underline">True</property>
                               </widget>
                               <packing>
@@ -3344,6 +3417,24 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </widget>
               <packing>
                 <property name="position">4</property>
@@ -3355,9 +3446,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="label" translatable="yes">Optionen (Mwst. etc.) (F5)</property>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">4</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
@@ -3365,65 +3456,30 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="n_rows">4</property>
                 <property name="n_columns">4</property>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <widget class="GtkHBox" id="hbox20">
                     <property name="visible">True</property>
                     <child>
                       <widget class="GtkRadioButton" id="rbDaily">
+                        <property name="label" translatable="yes">daily</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">daily</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkRadioButton" id="rbWeekly">
+                        <property name="label" translatable="yes">Weekly</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">Weekly</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -3434,11 +3490,11 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     </child>
                     <child>
                       <widget class="GtkRadioButton" id="rbCustom">
+                        <property name="label" translatable="yes">custom</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">custom</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -3472,25 +3528,26 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="visible">True</property>
                     <child>
                       <widget class="GtkCheckButton" id="cbSupply">
+                        <property name="label" translatable="yes">create supply</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">create supply</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkCheckButton" id="cbGets">
+                        <property name="label" translatable="yes">create get</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">create get</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -3501,11 +3558,11 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     </child>
                     <child>
                       <widget class="GtkCheckButton" id="cbInvoice">
+                        <property name="label" translatable="yes">create invoice</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">create invoice</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
@@ -3527,25 +3584,26 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="homogeneous">True</property>
                     <child>
                       <widget class="GtkRadioButton" id="rbMonthly">
+                        <property name="label" translatable="yes">monthly</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">monthly</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
                       <widget class="GtkRadioButton" id="rbQuarterly">
+                        <property name="label" translatable="yes">quarterly</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">quarterly</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">rbMonthly</property>
                         <signal name="toggled" handler="on_rbQuarterly_toggled"/>
@@ -3558,11 +3616,11 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     </child>
                     <child>
                       <widget class="GtkRadioButton" id="rbSemestral">
+                        <property name="label" translatable="yes">semestral</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">semestral</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">rbMonthly</property>
                         <signal name="toggled" handler="on_rbSemestral_toggled"/>
@@ -3575,11 +3633,11 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     </child>
                     <child>
                       <widget class="GtkRadioButton" id="rbYearly">
+                        <property name="label" translatable="yes">yearly</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">yearly</property>
+                        <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="response_id">0</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">rbMonthly</property>
                         <signal name="toggled" handler="on_rbYearly_toggled"/>
@@ -3600,17 +3658,53 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 </child>
                 <child>
                   <widget class="GtkCheckButton" id="cbRetry">
+                    <property name="label" translatable="yes">retry</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">retry</property>
+                    <property name="receives_default">False</property>
                     <property name="use_underline">True</property>
-                    <property name="response_id">0</property>
                     <property name="draw_indicator">True</property>
                   </widget>
                   <packing>
                     <property name="x_options"></property>
                     <property name="y_options"></property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </widget>
               <packing>
@@ -3623,9 +3717,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="label" translatable="yes">Misc</property>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">5</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
             <child>
@@ -3633,39 +3727,6 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 <property name="visible">True</property>
                 <property name="n_rows">8</property>
                 <property name="n_columns">4</property>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
                 <child>
                   <widget class="GtkEntry" id="eAccountDesignation">
                     <property name="visible">True</property>
@@ -3692,6 +3753,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                             <property name="can_focus">True</property>
                             <signal name="changed" handler="on_eAccountNumber_changed"/>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkEntry" id="ePaymentAccountID">
@@ -3704,12 +3768,15 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                           </packing>
                         </child>
                       </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
                     <child>
                       <widget class="GtkButton" id="bPaymentSearchAccount">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="response_id">0</property>
+                        <property name="receives_default">False</property>
                         <signal name="clicked" handler="on_bPaymentSearchAccount_clicked"/>
                         <child>
                           <widget class="GtkAlignment" id="alignment2">
@@ -3728,6 +3795,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">False</property>
+                                    <property name="position">0</property>
                                   </packing>
                                 </child>
                                 <child>
@@ -3813,6 +3881,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -4027,21 +4096,24 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <property name="visible">True</property>
                         <child>
                           <widget class="GtkRadioButton" id="rPaymentCash">
+                            <property name="label" translatable="yes">Cash</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">Cash</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkRadioButton" id="rPaymentTransfer">
+                            <property name="label" translatable="yes">Transfer</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">Transfer</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                             <property name="group">rPaymentCash</property>
                           </widget>
@@ -4055,6 +4127,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
@@ -4062,22 +4135,25 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <property name="visible">True</property>
                         <child>
                           <widget class="GtkRadioButton" id="rPaymentDirectDebit">
+                            <property name="label" translatable="yes">direct debit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">direct debit</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                             <property name="group">rPaymentCash</property>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <widget class="GtkRadioButton" id="rPaymentCreditCard">
+                            <property name="label" translatable="yes">credit card</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="label" translatable="yes">credit card</property>
+                            <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
-                            <property name="response_id">0</property>
                             <property name="draw_indicator">True</property>
                             <property name="group">rPaymentCash</property>
                           </widget>
@@ -4099,15 +4175,17 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                         <property name="visible">True</property>
                         <child>
                           <widget class="GtkRadioButton" id="rPaymentOffset">
+                            <property name="label" translatable="yes">ausgebucht</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="tooltip_text">uneinbringbar - Rechungsempfänger Pleite o.ä.</property>
-                            <property name="label" translatable="yes">ausgebucht</property>
-                            <property name="response_id">0</property>
+                            <property name="receives_default">False</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                             <property name="group">rPaymentCash</property>
                           </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <placeholder/>
@@ -4131,6 +4209,39 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </widget>
               <packing>
                 <property name="position">6</property>
@@ -4147,6 +4258,7 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -4162,9 +4274,9 @@ zeigt die Kopie des Rechnungsdruckes an.</property>
                 </child>
               </widget>
               <packing>
-                <property name="type">tab</property>
                 <property name="position">6</property>
                 <property name="tab_fill">False</property>
+                <property name="type">tab</property>
               </packing>
             </child>
           </widget>
