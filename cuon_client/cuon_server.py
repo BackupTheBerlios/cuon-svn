@@ -353,7 +353,7 @@ class MainWindow(windows):
     
 
     
-    def startSSHEdit(self, infile):
+    def startSSHEdit(self, infile, sType = 'text/x-text' ):
         self.openDB()
         td = self.loadObject('td')
         self.closeDB()
@@ -369,7 +369,7 @@ class MainWindow(windows):
         
             
         ed = cuon.Editor.editor.editorwindow(dicFilename, True)
-        ed.setLanguage('text/x-text')
+        ed.setLanguage(sType)
     #edit local config-files
     def on_versioncfg1_activate(self, event):
         ed = cuon.Editor.editor.editorwindow({'TYPE':'FILE','NAME':'version.cfg'}, True)
@@ -381,26 +381,26 @@ class MainWindow(windows):
     
     
     def on_menuscfg1_activate(self, event):
-        self.startSSHEdit('etc/cuon/menus.cfg')
+        self.startSSHEdit('etc/cuon/menus.cfg', 'text/x-ini-file')
         
     def on_serverini1_activate(self, event):
-        self.startSSHEdit('etc/cuon/server.ini')
+        self.startSSHEdit('etc/cuon/server.ini', 'text/x-ini-file')
         
     # SQL Rights and Groups
     
     def on_user_and_groups1_activate(self, event):
-        self.startSSHEdit('etc/cuon/sql/UserGroups.cfg')
+        self.startSSHEdit('etc/cuon/sql/UserGroups.cfg', 'text/x-ini-file')
         
        
     def on_group_and_tabular1_activate(self, event):
-        self.startSSHEdit('etc/cuon/sql/GroupRightsOther.cfg')
+        self.startSSHEdit('etc/cuon/sql/GroupRightsOther.cfg', 'text/x-ini-file')
         
         
     def on_clients1_activate(self, event):
-        self.startSSHEdit('etc/cuon/clients.ini')
+        self.startSSHEdit('etc/cuon/clients.ini', 'text/x-ini-file')
     
     def on_sqlini1_activate(self, event):
-        self.startSSHEdit('etc/cuon/sql.ini')
+        self.startSSHEdit('etc/cuon/sql.ini', 'text/x-ini-file')
         
         
     #Buttons in notebook
@@ -425,7 +425,7 @@ class MainWindow(windows):
     # Postfix
     
     def on_etc_postfix_main_clicked(self, event):
-       self.startSSHEdit('etc/postfix/main.cfg') 
+       self.startSSHEdit('etc/postfix/main.cfg', 'text/x-ini-file') 
        
     def on_etc_postfix_master_clicked(self, event):
        self.startSSHEdit('etc/postfix/master.cfg') 
@@ -466,7 +466,7 @@ class MainWindow(windows):
         
     def  editReportFile(self, sName, sFolder):
         
-        self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName) 
+        self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName, 'application/xml' ) 
     def readDDialogData(self):
         sFolder = self.getWidget('eDFolder').get_text()
         sList = self.getWidget('cbDLists').get_active_text()

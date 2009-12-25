@@ -337,7 +337,7 @@ class User(defaultValues):
         self.prefDMS['fileformat']['python'] =  {'format':'PYTHON', 'suffix':['py'], 'executable': self.prefDMS['exe']['python']}
         self.prefDMS['fileformat']['mindmap'] =  {'format':'MINDMAP', 'suffix':['vym', 'mm', 'mmp', 'emm', 'nmind', 'TWD'], 'executable': self.prefDMS['exe']['mindmap']}
         
-
+        self.prefDMS['fileformat']['bin'] =  {'format':'BINARY', 'suffix':['bin'], 'executable': self.prefDMS['exe']['txt']}
         
         
         

@@ -3,7 +3,7 @@
 import os
 import sys
 import time
-import random	
+import random   
 import pygtk
 pygtk.require('2.0')
 import gtk

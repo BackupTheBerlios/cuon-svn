@@ -96,7 +96,11 @@ class gladeXml(defaultValues):
 
     def add2Textbuffer(self, widget, text, direction = None):
         if text:
-            buffer = widget.get_buffer()
+            try:
+                buffer = widget.get_buffer()
+            except:
+                buffer = widget
+                
             bText = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
             #print '**********************'
             #print bText
@@ -120,8 +124,10 @@ class gladeXml(defaultValues):
             else:
                 bText += text
                 buffer.set_text(bText)
-                
-            widget.set_buffer(buffer)
+            try:
+                widget.set_buffer(buffer)
+            except:
+                pass
             
             
 

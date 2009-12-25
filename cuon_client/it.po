@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-14 17:15+0100\n"
+"POT-Creation-Date: 2009-12-23 18:24+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team: \n"
@@ -12,16 +12,16 @@ msgstr ""
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
 #: cuon/Bank/bank.py:67 cuon/Garden/SingleHibernation.py:41
-#: cuon/Addresses/addresses.py:148 cuon/Clients/clients.py:64
-#: cuon/Graves/grave.py:82 cuon/Login/GUI/user.c:14
+#: cuon/Addresses/addresses.py:165 cuon/Clients/clients.py:64
+#: cuon/Graves/grave.py:86 cuon/Login/GUI/user.c:14
 #: cuon/Staff/GUI/src/interface.c:678 cuon/Garden/GUI/src/interface.c:485
 #: cuon/Addresses/GUI/addresses.c:88 cuon/Addresses/GUI/src/interface.c:2115
 msgid "Lastname"
 msgstr ""
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
-#: cuon/Garden/SingleHibernation.py:41 cuon/Addresses/addresses.py:148
-#: cuon/Clients/clients.py:64 cuon/Graves/grave.py:82 cuon/Login/GUI/user.c:15
+#: cuon/Garden/SingleHibernation.py:41 cuon/Addresses/addresses.py:165
+#: cuon/Clients/clients.py:64 cuon/Graves/grave.py:86 cuon/Login/GUI/user.c:15
 #: cuon/Staff/GUI/src/interface.c:670 cuon/Addresses/GUI/addresses.c:51
 #: cuon/Addresses/GUI/addresses.c:89 cuon/Addresses/GUI/src/interface.c:1075
 #: cuon/Addresses/GUI/src/interface.c:1265
@@ -31,8 +31,8 @@ msgid "Firstname"
 msgstr "Nome COGNOME"
 
 #: cuon/Skeleton/skeleton.py:61 cuon/Analysis/analyse_costs.py:61
-#: cuon/Bank/bank.py:67 cuon/Addresses/addresses.py:148
-#: cuon/Addresses/addresses.py:193 cuon/Clients/clients.py:64
+#: cuon/Bank/bank.py:67 cuon/Addresses/addresses.py:165
+#: cuon/Addresses/addresses.py:210 cuon/Clients/clients.py:64
 #: cuon/Staff/GUI/src/interface.c:510 cuon/Addresses/GUI/addresses.c:40
 #: cuon/Addresses/GUI/addresses.c:60 cuon/Addresses/GUI/addresses.c:112
 #: cuon/Addresses/GUI/src/interface.c:1062
@@ -40,6 +40,35 @@ msgstr "Nome COGNOME"
 #, fuzzy
 msgid "City"
 msgstr "Città"
+
+#: cuon/E_Mail/imap_dms.py:287
+#, fuzzy
+msgid "email"
+msgstr "Reale"
+
+#: cuon/E_Mail/imap_dms.py:289
+#, fuzzy
+msgid "From: "
+msgstr "Da"
+
+#: cuon/E_Mail/imap_dms.py:290
+#, fuzzy
+msgid "To: "
+msgstr "A"
+
+#: cuon/E_Mail/imap_dms.py:292
+msgid "Plain Text"
+msgstr ""
+
+#: cuon/E_Mail/imap_dms.py:294
+#, fuzzy
+msgid "Attachment Type: "
+msgstr "Allegato"
+
+#: cuon/E_Mail/imap_dms.py:297
+#, fuzzy
+msgid "Email Date: "
+msgstr "Indirizzo di posta elettronica"
 
 #: cuon/E_Mail/sendEmail.py:63
 #, fuzzy
@@ -77,16 +106,17 @@ msgstr ""
 #: cuon/Articles/materialgroup.py:83 cuon/Proposal/proposal.py:125
 #: cuon/Proposal/proposal.py:138 cuon/Proposal/proposal.py:151
 #: cuon/Project/project.py:102 cuon/Project/project.py:111
-#: cuon/Project/project.py:119 cuon/Graves/graveyard.py:83
-#: cuon/Think/GUI/src/interface.c:264 cuon/Analysis/GUI/src/interface.c:224
-#: cuon/Analysis/GUI/src/interface.c:286 cuon/Stock/GUI/src/interface.c:228
-#: cuon/Stock/GUI/src/interface.c:268 cuon/Stock/GUI/src/interface.c:373
-#: cuon/Biblio/GUI/src/interface.c:193 cuon/Biblio/GUI/src/interface.c:255
-#: cuon/Web2/GUI/src/interface.c:181 cuon/Web2/GUI/src/interface.c:274
-#: cuon/Staff/GUI/src/interface.c:387 cuon/Staff/GUI/src/interface.c:846
-#: cuon/Staff/GUI/src/interface.c:939 cuon/Order/GUI/src/interface.c:666
-#: cuon/Order/GUI/src/interface.c:1088 cuon/Order/GUI/src/interface.c:1213
-#: cuon/Order/GUI/src/interface.c:1524
+#: cuon/Project/project.py:119 cuon/Graves/grave.py:111
+#: cuon/Graves/grave.py:124 cuon/Graves/grave.py:151
+#: cuon/Graves/graveyard.py:83 cuon/Think/GUI/src/interface.c:264
+#: cuon/Analysis/GUI/src/interface.c:224 cuon/Analysis/GUI/src/interface.c:286
+#: cuon/Stock/GUI/src/interface.c:228 cuon/Stock/GUI/src/interface.c:268
+#: cuon/Stock/GUI/src/interface.c:373 cuon/Biblio/GUI/src/interface.c:193
+#: cuon/Biblio/GUI/src/interface.c:255 cuon/Web2/GUI/src/interface.c:181
+#: cuon/Web2/GUI/src/interface.c:274 cuon/Staff/GUI/src/interface.c:387
+#: cuon/Staff/GUI/src/interface.c:846 cuon/Staff/GUI/src/interface.c:939
+#: cuon/Order/GUI/src/interface.c:666 cuon/Order/GUI/src/interface.c:1088
+#: cuon/Order/GUI/src/interface.c:1213 cuon/Order/GUI/src/interface.c:1524
 #: cuon/PrefsFinance/GUI/src/interface.c:548
 #: cuon/PrefsFinance/GUI/src/interface.c:905
 #: cuon/Articles/GUI/src/interface.c:530 cuon/Articles/GUI/src/interface.c:888
@@ -191,7 +221,8 @@ msgid "Number"
 msgstr "Numero"
 
 #: cuon/Garden/SingleHibernationPlant.py:41 cuon/Order/order.py:115
-#: cuon/Proposal/proposal.py:113
+#: cuon/Proposal/proposal.py:113 cuon/Graves/grave.py:111
+#: cuon/Graves/grave.py:124 cuon/Graves/grave.py:151
 #, fuzzy
 msgid "number"
 msgstr "Numero:"
@@ -431,7 +462,7 @@ msgstr "Tempo"
 msgid "Address"
 msgstr "Indirizzo"
 
-#: cuon/Addresses/addresses.py:148 cuon/Stock/GUI/src/interface.c:300
+#: cuon/Addresses/addresses.py:165 cuon/Stock/GUI/src/interface.c:300
 #: cuon/Addresses/GUI/addresses.c:33 cuon/Addresses/GUI/addresses.c:35
 #: cuon/Addresses/GUI/addresses.c:65 cuon/Addresses/GUI/src/interface.c:932
 #: cuon/Addresses/GUI/src/interface.c:943
@@ -441,7 +472,7 @@ msgstr "Indirizzo"
 msgid "Phone"
 msgstr "Telefono"
 
-#: cuon/Addresses/addresses.py:148 cuon/Order/GUI/src/interface.c:645
+#: cuon/Addresses/addresses.py:165 cuon/Order/GUI/src/interface.c:645
 #: cuon/Proposal/GUI/src/interface.c:523
 #: cuon/Addresses/GUI/src/interface.c:1175
 #: cuon/Addresses/GUI/src/interface.c:1675
@@ -449,16 +480,16 @@ msgstr "Telefono"
 msgid "Info"
 msgstr "Informazioni"
 
-#: cuon/Addresses/addresses.py:164
+#: cuon/Addresses/addresses.py:181
 msgid "Depositor"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:164 cuon/Addresses/GUI/addresses.c:73
+#: cuon/Addresses/addresses.py:181 cuon/Addresses/GUI/addresses.c:73
 #, fuzzy
 msgid "Account"
 msgstr "Account"
 
-#: cuon/Addresses/addresses.py:164 cuon/Bank/GUI/src/interface.c:92
+#: cuon/Addresses/addresses.py:181 cuon/Bank/GUI/src/interface.c:92
 #: cuon/Bank/GUI/src/interface.c:123 cuon/Bank/GUI/src/interface.c:287
 #: cuon/Bank/GUI/src/interface.c:341 cuon/Addresses/GUI/addresses.c:19
 #: cuon/Addresses/GUI/addresses.c:77 cuon/Addresses/GUI/src/interface.c:728
@@ -467,96 +498,111 @@ msgstr "Account"
 msgid "Bank"
 msgstr "Banca"
 
-#: cuon/Addresses/addresses.py:193
+#: cuon/Addresses/addresses.py:210
 #, fuzzy
 msgid "Name of partner"
 msgstr "_Modifica nome"
 
-#: cuon/Addresses/addresses.py:193
+#: cuon/Addresses/addresses.py:210
 #, fuzzy
 msgid "Firstname of partner"
 msgstr "Nome COGNOME"
 
-#: cuon/Addresses/addresses.py:214
+#: cuon/Addresses/addresses.py:231
 #, fuzzy
 msgid "Date "
 msgstr "Data"
 
-#: cuon/Addresses/addresses.py:214
+#: cuon/Addresses/addresses.py:231
 #, fuzzy
 msgid "Begin"
 msgstr "Inizio TaglioPassante"
 
-#: cuon/Addresses/addresses.py:214
+#: cuon/Addresses/addresses.py:231
 #, fuzzy
 msgid "End"
 msgstr "Fine"
 
-#: cuon/Addresses/addresses.py:214
+#: cuon/Addresses/addresses.py:231
 msgid "shortRemark"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:214 cuon/Addresses/GUI/addresses.c:123
+#: cuon/Addresses/addresses.py:231 cuon/Addresses/GUI/addresses.c:123
 #: cuon/Addresses/GUI/src/interface.c:2778
 #, fuzzy
 msgid "Priority"
 msgstr "Priorità"
 
-#: cuon/Addresses/addresses.py:214 cuon/Think/GUI/src/interface.c:240
+#: cuon/Addresses/addresses.py:231 cuon/Think/GUI/src/interface.c:240
 #: cuon/Garden/GUI/src/interface.c:786 cuon/Order/GUI/src/interface.c:1369
 #: cuon/Proposal/GUI/src/interface.c:1190 cuon/Project/GUI/src/interface.c:670
 #, fuzzy
 msgid "Status"
 msgstr "Stato"
 
-#: cuon/Addresses/addresses.py:364
+#: cuon/Addresses/addresses.py:315 cuon/Addresses/addresses.py:329
+#, fuzzy
+msgid "Graves"
+msgstr "salva"
+
+#: cuon/Addresses/addresses.py:517
 msgid "Scheduls"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:455
+#: cuon/Addresses/addresses.py:608
 msgid "saving this Address failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:494
+#: cuon/Addresses/addresses.py:647
 msgid "saving this bank failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:552
+#: cuon/Addresses/addresses.py:705
 msgid "saving this partner failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:592
+#: cuon/Addresses/addresses.py:745
 msgid "saving this schedul failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:629
+#: cuon/Addresses/addresses.py:783
 msgid "save this notes failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:643
+#: cuon/Addresses/addresses.py:804
 msgid "CUON-ID NOTES-01"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:644
+#: cuon/Addresses/addresses.py:805
 #, fuzzy
 msgid "Notes are changed !"
 msgstr "%(nick)s ha cambiato stato"
 
-#: cuon/Addresses/addresses.py:647
+#: cuon/Addresses/addresses.py:808
 #, fuzzy
 msgid "Infos are generated by C.U.O.N."
 msgstr "Dump esadecimale generato da"
 
-#: cuon/Graves/grave.py:94
+#: cuon/Graves/grave.py:98
 #, fuzzy
 msgid "Service-ID"
 msgstr "ID Applicazione:"
 
-#: cuon/Graves/grave.py:107 cuon/Graves/grave.py:120 cuon/Graves/grave.py:134
-#: cuon/Graves/grave.py:147
+#: cuon/Graves/grave.py:111
+#, fuzzy
+msgid "count"
+msgstr "account"
+
+#: cuon/Graves/grave.py:111 cuon/Graves/grave.py:124 cuon/Graves/grave.py:138
+#: cuon/Graves/grave.py:151
 #, fuzzy
 msgid "article-ID"
 msgstr "ID Applicazione:"
+
+#: cuon/Graves/address_graves.py:100 Cuon.py:1119
+#, fuzzy
+msgid "Names"
+msgstr "Nomi"
 
 #: cuon/Think/GUI/src/support.c:90 cuon/Think/GUI/src/support.c:114
 #: cuon/Analysis/GUI/src/support.c:60 cuon/Analysis/GUI/src/support.c:85
@@ -2015,7 +2061,7 @@ msgid "Representant"
 msgstr ""
 
 #: cuon/Stats/GUI/src/interface.c:103 cuon/Stats/GUI/src/interface.c:126
-#: cuon/Stats/GUI/src/interface.c:153 Cuon.py:1138
+#: cuon/Stats/GUI/src/interface.c:153 Cuon.py:1179
 msgid "Salesman"
 msgstr ""
 
@@ -3811,7 +3857,7 @@ msgstr "Scelta coniuge/partner"
 
 #: cuon/Addresses/GUI/addresses.c:29 cuon/Addresses/GUI/addresses.c:132
 #: cuon/Addresses/GUI/src/interface.c:839
-#: cuon/Addresses/GUI/src/interface.c:3040 Cuon.py:1116
+#: cuon/Addresses/GUI/src/interface.c:3040 Cuon.py:1154
 msgid "Schedul"
 msgstr ""
 
@@ -4866,12 +4912,7 @@ msgstr "Scegli"
 msgid "Address-ID"
 msgstr "ID Applicazione:"
 
-#: Cuon.py:1084
-#, fuzzy
-msgid "Names"
-msgstr "Nomi"
-
-#: Cuon.py:1435
+#: Cuon.py:1480
 #, fuzzy
 msgid "Debug by C.U.O.N. = "
 msgstr "<b>Creato da</b>"
@@ -5108,3 +5149,7 @@ msgstr ""
 #: GUI/cuon.c:7
 msgid "C U O N"
 msgstr ""
+
+#, fuzzy
+#~ msgid "email "
+#~ msgstr "Invia email a %s"

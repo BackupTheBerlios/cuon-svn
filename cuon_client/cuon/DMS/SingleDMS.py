@@ -66,7 +66,10 @@ class SingleDMS(SingleData):
         self.newTitle = None 
         self.newCategory = None
         self.newDate = None
-       
+        self.sub1 = None
+        self.sub2 = None
+        self.sub3 = None
+        self.sub4 = None
 
     def createTmpFile(self, sEXT):
         print '#############################################################'
@@ -77,6 +80,7 @@ class SingleDMS(SingleData):
         mi = cuon.Misc.misc.misc()
         #print self.dicUser  
         sFile =self.dicUser['prefPath']['tmp'] +  mi.getRandomFilename('__dms.' + sEXT)
+        
         if b:
             f = open(sFile, 'wb')
             if f:
@@ -101,7 +105,17 @@ class SingleDMS(SingleData):
         dicValues['file_suffix'] = [self.fileSuffix, 'string']
         dicValues['insert_from_module'] = [self.ModulNumber, 'int']
         dicValues['sep_info_1'] = [self.sep_info_1, 'int']
-        print dicValues
+        if self.sub1:
+            dicValues['sub1'] = [self.sub1, 'string']
+        if self.sub2:
+            dicValues['sub2'] = [self.sub2, 'string']
+        if self.sub3:
+            dicValues['sub3'] = [self.sub3, 'string']
+        if self.sub4:
+            dicValues['sub4'] = [self.sub4, 'string']
+               
+            
+        #print dicValues
         if self.newTitle:
             
             dicValues['title'] = [self.newTitle, 'string']
@@ -141,7 +155,11 @@ class SingleDMS(SingleData):
         # set to empty values
         self.newDate = None
         self.newTitle = None
-        
+        self.newCategory = None 
+        self.sub1 = None
+        self.sub2 = None
+        self.sub3 = None
+        self.sub4 = None
             
         return dicValues
     def loadDocument(self):

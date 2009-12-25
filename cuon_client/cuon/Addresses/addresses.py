@@ -333,6 +333,7 @@ class addresswindow(chooseWindows):
             vbGrave.show_all()
             
         #print 'time 11 = ', time.localtime()
+        self.clipboard = gtk.clipboard_get()
         if GtkSV:
             lm = gtksourceview.SourceLanguagesManager()
             self.textbufferMisc = gtksourceview.SourceBuffer()
@@ -346,9 +347,16 @@ class addresswindow(chooseWindows):
             self.viewMisc.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox10')
             oldScrolledwindow = self.getWidget('scrolledwindow6')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.viewMisc)
-            Vbox.show_all()
+            oldScrolledwindow.remove(self.getWidget('tvNotesMisc'))
+            oldScrolledwindow.add(self.viewMisc)
+            self.viewMisc.show_all()
+            oldScrolledwindow.show_all()
+            
+            
+            
+            #Vbox.remove(oldScrolledwindow)
+            #Vbox.add(self.viewMisc)
+            #Vbox.show_all()
             self.singleAddressNotes.NotesMisc = self.textbufferMisc
 
             #Contact
@@ -364,9 +372,11 @@ class addresswindow(chooseWindows):
             self.viewContact.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox11')
             oldScrolledwindow = self.getWidget('scrolledwindow7')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.viewContact)
-            Vbox.show_all()
+            oldScrolledwindow.remove(self.getWidget('tvNotesContacter'))
+            oldScrolledwindow.add(self.viewContact)
+            self.viewContact.show_all()
+            oldScrolledwindow.show_all()
+            
             self.singleAddressNotes.NotesContact = self.textbufferContact
             
             #Rep
@@ -382,9 +392,10 @@ class addresswindow(chooseWindows):
             self.viewRep.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox12')
             oldScrolledwindow = self.getWidget('scrolledwindow8')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.viewRep)
-            Vbox.show_all()
+            oldScrolledwindow.remove(self.getWidget('tvNotesRep'))
+            oldScrolledwindow.add(self.viewRep)
+            self.viewRep.show_all()
+            oldScrolledwindow.show_all()
             self.singleAddressNotes.NotesRep = self.textbufferRep
             
             #Salesman
@@ -400,9 +411,10 @@ class addresswindow(chooseWindows):
             self.viewSalesman.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox13')
             oldScrolledwindow = self.getWidget('scrolledwindow9')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.viewSalesman)
-            Vbox.show_all()
+            oldScrolledwindow.remove(self.getWidget('tvNotesSalesman'))
+            oldScrolledwindow.add(self.viewSalesman)
+            self.viewSalesman.show_all()
+            oldScrolledwindow.show_all()
             self.singleAddressNotes.NotesSalesman = self.textbufferSalesman
             
             #Organisation
@@ -418,13 +430,15 @@ class addresswindow(chooseWindows):
             self.viewOrganisation.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox17')
             oldScrolledwindow = self.getWidget('scrolledwindow15')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.viewOrganisation)
-            Vbox.show_all()
+            oldScrolledwindow.remove(self.getWidget('tvNotesOrganisation'))
+            oldScrolledwindow.add(self.viewOrganisation)
+            self.viewOrganisation.show_all()
+            oldScrolledwindow.show_all()
             self.singleAddressNotes.NotesOrganisation = self.textbufferOrganisation
         # Menu-items
         self.initMenuItems()
-
+        self.notebook2 = self.getWidget('notebook2')
+        
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','mi_address1')
         self.addEnabledMenuItems('tabs','mi_bank1')
@@ -809,6 +823,80 @@ class addresswindow(chooseWindows):
         self.viewSalesman.set_editable(True)
         self.viewOrganisation.set_editable(True)
         
+    
+    def on_notes_undo1_activate(self,  event):
+        
+        iPage = self.notebook2.current_page()
+        print iPage
+        if iPage == 0:
+            self.textbufferMisc.undo()
+        elif iPage == 1:
+            self.textbufferContact.undo()
+        elif iPage == 2:
+            self.textbufferRep.undo()
+        elif iPage == 3:
+            self.textbufferSalesman.undo()
+        elif iPage == 4:
+            self.textbufferOrganisation.undo()
+
+    def on_notes_redo1_activate(self,  event):
+        iPage = self.notebook2.current_page()
+        print iPage
+        if iPage == 0:
+            self.textbufferMisc.redo()
+        elif iPage == 1:
+            self.textbufferContact.redo()
+        elif iPage == 2:
+            self.textbufferRep.redo()
+        elif iPage == 3:
+            self.textbufferSalesman.redo()
+        elif iPage == 4:
+            self.textbufferOrganisation.redo()
+
+            
+    def on_notes_cut1_activate(self, event):
+        iPage = self.notebook2.current_page()
+        print iPage
+        if iPage == 0:
+            self.textbufferMisc.cut_clipboard(self.clipboard, self.viewMisc.get_editable())
+        elif iPage == 1:
+            self.textbufferContact.cut_clipboard(self.clipboard, self.viewContact.get_editable())
+        elif iPage == 2:
+            self.textbufferRep.cut_clipboard(self.clipboard, self.viewRep.get_editable())
+        elif iPage == 3:
+            self.textbufferSalesman.cut_clipboard(self.clipboard, self.viewSalesman.get_editable())
+        elif iPage == 4:
+            self.textbufferOrganisation.cut_clipboard(self.clipboard, self.viewOrganisation.get_editable())
+
+    def on_notes_copy1_activate(self, event):
+        
+        iPage = self.notebook2.current_page()
+        print iPage
+        if iPage == 0:
+            self.textbufferMisc.copy_clipboard(self.clipboard)
+        elif iPage == 1:
+            self.textbufferContact.copy_clipboard(self.clipboard)
+        elif iPage == 2:
+            self.textbufferRep.copy_clipboard(self.clipboard)
+        elif iPage == 3:
+            self.textbufferSalesman.copy_clipboard(self.clipboard)
+        elif iPage == 4:
+            self.textbufferOrganisation.copy_clipboard(self.clipboard)
+
+    def on_notes_paste1_activate(self, event):
+        iPage = self.notebook2.current_page()
+        print iPage
+        if iPage == 0:
+            self.textbufferMisc.paste_clipboard(self.clipboard,None, self.viewMisc.get_editable())
+        elif iPage == 1:
+            self.textbufferContact.paste_clipboard(self.clipboard, None,self.viewContact.get_editable())
+        elif iPage == 2:
+            self.textbufferRep.paste_clipboard(self.clipboard,None, self.viewRep.get_editable())
+        elif iPage == 3:
+            self.textbufferSalesman.paste_clipboard(self.clipboard, None,self.viewSalesman.get_editable())
+        elif iPage == 4:
+            self.textbufferOrganisation.paste_clipboard(self.clipboard, None, self.viewOrganisation.get_editable())
+
     # several functions
         
     def on_calendar1_day_selected_double_click(self, event):
@@ -1303,7 +1391,19 @@ class addresswindow(chooseWindows):
     def on_tbNewProject_clicked(self, event):
         print 'new order toolbar '
         self.activateClick('new_project')
-    
+    # button at the notes tab
+    def on_bNotesCut_clicked(self, event):
+        self.activateClick('notes_cut1')
+    def on_bNotesCopy_clicked(self, event):
+        self.activateClick('notes_copy1')
+    def on_bNotesPaste_clicked(self, event):
+        self.activateClick('notes_paste1')
+        
+    def on_bNotesUndo_clicked(self, event):
+        self.activateClick('notes_undo1')
+    def on_bNotesRedo_clicked(self, event):
+        self.activateClick('notes_redo1')
+        
     def disconnectSchedulTree(self):
         try:
              

@@ -268,6 +268,7 @@ except:
 # localisation
 import locale, gettext
 import time
+import cuon.E_Mail.imap_dms
 
  
 #http connections
@@ -291,12 +292,13 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 47, 'Rev': 25, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
         self.t1 = None
         self.t2 = None
+        self.t3 = None
         
         self.allTables = {}
         self.sDebug = 'NO'
@@ -936,7 +938,7 @@ class MainWindow(windows):
         # 60*1000 = 1 minute
         time_contact = 2*60*1000
         time_schedul = 15*60*1000
-        
+        time_imap_dms = 1*60*1000
         if self.t0:
             gobject.source_remove(self.t0)
           
@@ -944,19 +946,37 @@ class MainWindow(windows):
             gobject.source_remove(self.t1)
         if self.t2:
             gobject.source_remove(self.t2)
-                
+        if self.t3:
+            gobject.source_remove(self.t3)       
         try:
             if not self.t1:
                 self.startChecking()
                 self.t1 = gobject.timeout_add(time_contact, self.startChecking)
-         
+        except Exception, params:
+                print Exception, params
+        try:
             if not self.t2:
                 self.setSchedulTree()
                 self.t2 = gobject.timeout_add(time_schedul,self.setSchedulTree)
         except Exception, params:
                 print Exception, params
+        try:
+            if not self.t3:
+                self.checkImapDMS()
+                self.t3 = gobject.timeout_add(time_imap_dms,self.checkImapDMS)
+                    
+        except Exception, params:
+                print Exception, params
             
-            
+    def checkImapDMS(self):    
+        print '######################################### EMail #########################'
+        self.openDB()
+        oUser = self.loadObject('User')
+        self.closeDB()
+        imapD = cuon.E_Mail.imap_dms.imap_dms(self.allTables,  oUser.getDicUser())
+        imapD.checkMail()
+        print '######################################### EMail END #########################'
+        
     def startChecking(self):
         #gtk.gdk.threads_enter()
         try:
@@ -1064,8 +1084,8 @@ class MainWindow(windows):
         print 'sChoice = ', sChoice
         
         liDates, newHash = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Name','All', sChoice, self.schedulHash1)
-        print 'lidates = ',  liDates
-        print 'newHash = ',  newHash
+        #print 'lidates = ',  liDates
+        #print 'newHash = ',  newHash
         if liDates == ['NO_NEW_DATA']:
             print 'liDates = no Data'
             return True
@@ -1123,8 +1143,8 @@ class MainWindow(windows):
         #liDates,  self.schedulHash2 = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'Schedul','All',sChoice)
         #liTest.sort(key=(lambda x: (x['test1'], lambda x: x['testA']) ))
         
-        liDates.sort(key=(lambda x: (x['date_norm'], lambda x: x['schedul_name'], lambda x: x['date_norm'] )),   reverse = True)
-        print 'Schedul by schedul_date 2 : ', liDates
+        liDates.sort(key=(lambda x: (x['date_norm'],  x['schedul_name'], x['time_begin'] )),   reverse = True)
+        #print 'Schedul by schedul_date 2 : ', liDates
         if liDates:
             lastRep = None
             lastSalesman = None
@@ -1147,8 +1167,9 @@ class MainWindow(windows):
         # reps and Saleman
         
 #        #liDates,  self.schedulHash3 = self.rpc.callRP('Address.getAllActiveSchedul', oUser.getSqlDicUser(),'rep_salesman','All', sChoice)
-        liDates.sort(key=(lambda x: (x['date_norm'], lambda x: x['rep_lastname'],  lambda x: x['salesman_lastname'], lambda x: x['date_norm'])),   reverse = True)
-        print 'Schedul by names: 3', liDates
+        #liDates.sort(key=(lambda x: (x['date_norm'], lambda x: x['rep_lastname'],  lambda x: x['salesman_lastname'], lambda x: x['date_norm'])),   reverse = True)
+        liDates.sort(key=(lambda x:  (x['salesman_lastname'], x['rep_lastname'], x['date_norm']) ),   reverse = True)
+        #print 'Schedul by names: 3', liDates
         if liDates and liDates not in ['NONE']:
             lastRep = None
             lastSalesman = None
@@ -1285,6 +1306,10 @@ class MainWindow(windows):
                 print ' ungleiche Versionen'
                 print 'load new version of pyCuon'
                 self.getNewClientSoftware(id)
+                cuonpath = '..'
+                shellcommand = 'rm  ' + cuonpath + '/cuonObjects'
+                liStatus = commands.getstatusoutput(shellcommand)
+                print shellcommand, liStatus
                 self.openDB()
                 version = self.saveObject('newClientVersion',True)
                 self.closeDB()

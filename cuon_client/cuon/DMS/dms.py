@@ -208,8 +208,10 @@ class dmswindow(windows):
     def on_quit1_activate(self, event):
         self.closeWindow() 
 
-    def on_eDMSSearch_key_press_event(self, event):
-        self.findDMS()
+    def on_eDMSSearch_key_press_event(self, entry, event):
+        print 'eSearch_key_press_event'
+        if self.checkKey(event,'NONE','Return'):
+            self.findDMS()
         
     def on_bSearch_clicked(self, event):
         self.findDMS()
@@ -228,7 +230,7 @@ class dmswindow(windows):
                         sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
                     else:
                         sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
-            sWhere = sWhere + self.sWhereStandard
+            sWhere += ' and insert_from_module = ' + `self.ModulNumber` 
             
         else:
             sWhere = self.sWhereStandard

@@ -298,21 +298,23 @@ class documentTools(dumps):
         
 
     def importDocument(self, singleDMS, dicUser, sFile):
-        
-                
-        
+       
         if sFile:
-            print sFile
-            f = file(sFile,'rb')
+            #print sFile
+            f = open(sFile,'rb')
+            #print f
+            #f.seek(0)
+            #b = f.readline()
             b = f.read()
             #print 'len of b', len(b)
+            #print b
             
             singleDMS.imageData = bz2.compress(b)
             suffix =  string.lower(sFile[string.rfind(sFile,'.')+1:len(sFile)])
             for key in  dicUser['prefDMS']['fileformat'].keys():
                 for i in dicUser['prefDMS']['fileformat'][key]['suffix']:
-                    print i
-                    print suffix
+                    #print i
+                    #print suffix
                     if i == suffix:
                         print 'suffix found'
                         singleDMS.fileFormat = singleDMS.fileFormat = dicUser['prefDMS']['fileformat'][key]['format']

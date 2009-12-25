@@ -40,11 +40,16 @@ import os.path
 import re
 import commands
 
-class windows(rawWindow, MyXML, messages):
+from cuon.TypeDefs.constants import constants
+
+class windows(rawWindow, MyXML, messages,  constants):
 
     def __init__(self, servermod=False):
         #gladeXml.__init__(self)
+        constants.__init__(self)
         rawWindow.__init__(self, servermod)
+        
+        
         self.servermod = servermod
         MyXML.__init__(self)
         messages.__init__(self)
@@ -53,71 +58,8 @@ class windows(rawWindow, MyXML, messages):
         #xmlrpc.__init__(self)
         self.FirstInit = True
         self.ModulNumber = 1
-        self.MN = {}
+       
         self.AutoInsert = False
-        self.MN['Mainwindow'] = 10
-        self.MN['Client'] = 1000
-        
-        self.MN['Address'] = 2000
-        self.MN['Address_info'] = 2001
-        self.MN['Address_stat_caller'] = 2002
-        self.MN['Address_stat_rep'] = 2003
-        self.MN['Address_stat_salesman'] = 2004
-        self.MN['Address_stat_schedul'] = 2005
-        
-        self.MN['Partner'] = 2100
-        self.MN['Partner_info'] = 2101
-        
-        self.MN['Partner_Schedul'] = 2200
-        self.MN['Partner_Schedul_info'] = 2201
-
-        self.MN['Articles'] = 3000
-        self.MN['Articles_stat_misc1'] = 3001
-        
-        self.MN['MaterialGroups'] = 23000
-
-
-
-        self.MN['Order'] = 4000
-        
-        self.MN['Order_stat_misc1'] = 4001
-        self.MN['Order_stat_global1'] = 4002
-        self.MN['Order_stat_caller1'] = 4003
-        self.MN['Order_stat_rep1'] = 4004
-        self.MN['Order_stat_salesman1'] = 4005
-        self.MN['PROPOSAL'] = 4500
-         
-        self.MN['Stock'] = 5000
-        self.MN['Staff'] = 6000
-        self.MN['StaffFee'] = 6100
-        
-        self.MN['Invoice'] = 7000
-        self.MN['Invoice_info'] = 7001
-        self.MN['Invoice_stat_taxvat1'] = 7101
-        
-        
-        self.MN['DMS'] = 11000
-        self.MN['Forms_Address_Notes_Misc'] = 11010
-        self.MN['Forms_Address_Notes_Contacter'] = 11011
-        self.MN['Forms_Address_Notes_Rep'] = 11012
-        self.MN['Forms_Address_Notes_Salesman'] = 11013
-        self.MN['Newsletter'] = 11100
-        
-        self.MN['Biblio'] = 12000
-        self.MN['AI'] = 13000
-        
-        self.MN['Project'] = 14000
-        self.MN['Project_info'] = 14001
-        self.MN['Project_stat_misc1'] = 14011
-        
-        self.MN['Web2'] = 20000
-        self.MN['Stats'] = 22000
-        self.MN['Calendar'] = 28000
-        self.MN['Think'] = 29000
-        
-        self.MN['Grave'] = 40000
-        self.MN['Graveyard'] = 41000
-        
         
         
         self.OrderStatus = {}

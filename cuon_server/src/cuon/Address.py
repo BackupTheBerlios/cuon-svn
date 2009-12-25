@@ -997,3 +997,28 @@ class Address(xmlrpc.XMLRPC, basics):
             return 'NO',  '-1'
             
                 
+    def xmlrpc_getAddressEmailID(self, sTable, liEmail, dicUser):
+        liID = [0]
+        sSql = 'select id from ' + sTable + ' where ' 
+        for email in liEmail:
+            liSingleEmail = email.split(' ')
+            sSql += '( '
+            for sEmail in liSingleEmail:
+                if sEmail.find('@') > 0:
+                    sEmail = sEmail.strip('<')
+                    sEmail = sEmail.strip('>')
+                    
+                    sSql += "email =  '" + sEmail+ "' or "
+        sSql = sSql[0:len(sSql) -3]
+        sSql += ' ) '
+        sSql += self.getWhere("",dicUser,2)
+        print sSql 
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print result
+        if result and result not in ['NONE', 'ERROR']:
+            liID = []
+            for oneRow in result:
+                liID.append(oneRow['id'])
+            print liID    
+        return liID
+        

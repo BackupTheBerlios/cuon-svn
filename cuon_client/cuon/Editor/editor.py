@@ -43,11 +43,14 @@ class editorwindow(windows):
             self.view = gtksourceview.SourceView(self.textbuffer)
             self.view.set_show_line_numbers(True)
             Vbox = self.getWidget('vbox1')
-            oldScrolledwindow = self.getWidget('scrolledwindow1')
-            Vbox.remove(oldScrolledwindow)
-            Vbox.add(self.view)
-            Vbox.show_all()
-            
+            Scrolledwindow = self.getWidget('scrolledwindow1')
+            Scrolledwindow.remove(self.getWidget('viewport1'))
+            #Vbox.remove(oldScrolledwindow)
+            #Vbox.add(self.view)
+            #Vbox.show_all()
+            Scrolledwindow.add(self.view)
+            self.view.show_all()
+            Scrolledwindow.show_all()
             
             
         else:

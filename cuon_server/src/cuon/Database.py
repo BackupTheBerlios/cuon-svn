@@ -680,7 +680,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         return True
 
     def xmlrpc_getDMSRights(self,sName):
-        Value = None
+        value = None
         rights = 'NONE'
         groups = 'NONE'
         try:
@@ -690,6 +690,8 @@ class Database(xmlrpc.XMLRPC, SQL):
             #print cpServer.sections()
             if sName == 'INVOICE':
                 value = self.getConfigOption('DEFAULT_MODUL_RIGHTS_DMS','INVOICE', cpServer)
+            elif sName == 'EMAIL':
+                value = self.getConfigOption('DEFAULT_MODUL_RIGHTS_DMS','EMAIL', cpServer)
         
         except:
             pass
