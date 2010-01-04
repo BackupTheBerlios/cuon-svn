@@ -64,3 +64,7 @@ class SingleNotes(SingleData):
         
     def clearAllOtherFields(self):
         self.NotesMisc.set_text('')
+        self.NotesContact.set_text('')
+        self.NotesRep.set_text('')
+        self.NotesSalesman.set_text('')
+        self.NotesOrganisation.set_text('')

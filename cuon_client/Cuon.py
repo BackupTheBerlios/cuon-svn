@@ -292,7 +292,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -938,7 +938,7 @@ class MainWindow(windows):
         # 60*1000 = 1 minute
         time_contact = 2*60*1000
         time_schedul = 15*60*1000
-        time_imap_dms = 1*60*1000
+        time_imap_dms = 30*60*1000
         if self.t0:
             gobject.source_remove(self.t0)
           

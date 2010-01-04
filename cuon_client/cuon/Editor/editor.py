@@ -3,12 +3,16 @@ import sys, os
 import os.path
 
 import string
+GtkSV = True
 try:
     import gtksourceview
-    GtkSV = True 
+    
 except:
-    print 'No gtksourceview import possible. Please install gtksourceview for python!!'
-    GtkSV = False
+    try:
+        import gtksourceview2 as gtksourceview
+    except:
+        print 'No gtksourceview import possible. Please install gtksourceview2 for python!!'
+        GtkSV = False
     
 
 from cuon.Windows.windows  import windows 
@@ -32,16 +36,7 @@ class editorwindow(windows):
         self.win1 = self.getWidget('EditorMainwindow')
         
         if GtkSV:
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbuffer = gtksourceview.SourceBuffer()
-            self.textbuffer.set_data('languages-manager', lm)
-            manager = self.textbuffer.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbuffer.set_highlight(True)
-            self.textbuffer.set_language(language)
-            self.view = gtksourceview.SourceView(self.textbuffer)
-            self.view.set_show_line_numbers(True)
+            self.textbuffer,  self.view = self.getNotesEditor()
             Vbox = self.getWidget('vbox1')
             Scrolledwindow = self.getWidget('scrolledwindow1')
             Scrolledwindow.remove(self.getWidget('viewport1'))

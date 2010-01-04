@@ -25,7 +25,15 @@ import os
 import os.path
 import types
 
-
+try:
+    import gtksourceview
+    
+except:
+    try:
+        import gtksourceview2 as gtksourceview
+    except:
+        print 'No gtksourceview import possible. Please install gtksourceview for python!!'
+      
 class gladeXml(defaultValues):
 
     def __init__(self, servermod = False):
@@ -49,6 +57,39 @@ class gladeXml(defaultValues):
         self.dicAccelKeys['new'] = 'n'
         self.dicAccelKeys['print'] = 'p'
 
+
+    def getNotesEditor(self):
+        try:
+            lm = gtksourceview.SourceLanguagesManager()
+            textbufferMisc = gtksourceview.SourceBuffer()
+        except:
+            textbufferMisc = gtksourceview.Buffer()
+            lm = gtksourceview.language_manager_get_default()
+
+        
+        
+        textbufferMisc.set_data('languages-manager', lm)
+        manager = textbufferMisc.get_data('languages-manager')
+        mime_type = 'text/x-tex'
+        
+        try:
+            language = manager.get_language_from_mime_type(mime_type)
+            textbufferMisc.set_highlight(True)
+        except:
+            language = manager.guess_language(content_type=mime_type)
+            textbufferMisc.set_highlight_syntax(True)
+        
+        textbufferMisc.set_language(language)
+        try:
+            viewMisc = gtksourceview.SourceView(textbufferMisc)
+        except:
+            viewMisc = gtksourceview.View(textbufferMisc)
+            
+        viewMisc.set_show_line_numbers(True)
+        
+        return textbufferMisc,  viewMisc
+        
+        
     def setTextbuffer(self, widget, liField):
         buffer = gtk.TextBuffer(None)
         text = ''

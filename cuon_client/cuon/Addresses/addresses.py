@@ -77,13 +77,16 @@ try:
    
 except:
     print 'gtkhtml not found'
-   
+GtkSV = True 
 try:
     import gtksourceview
-    GtkSV = True 
+    
 except:
-    print 'No gtksourceview import possible. Please install gtksourceview for python!!'
-    GtkSV = False
+    try:
+        import gtksourceview2 as gtksourceview
+    except:
+        print 'No gtksourceview import possible. Please install gtksourceview for python!!'
+        GtkSV = False
     
 class addresswindow(chooseWindows):
 
@@ -335,16 +338,8 @@ class addresswindow(chooseWindows):
         #print 'time 11 = ', time.localtime()
         self.clipboard = gtk.clipboard_get()
         if GtkSV:
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbufferMisc = gtksourceview.SourceBuffer()
-            self.textbufferMisc.set_data('languages-manager', lm)
-            manager = self.textbufferMisc.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbufferMisc.set_highlight(True)
-            self.textbufferMisc.set_language(language)
-            self.viewMisc = gtksourceview.SourceView(self.textbufferMisc)
-            self.viewMisc.set_show_line_numbers(True)
+            
+            self.textbufferMisc,  self.viewMisc = self.getNotesEditor()
             Vbox = self.getWidget('vbox10')
             oldScrolledwindow = self.getWidget('scrolledwindow6')
             oldScrolledwindow.remove(self.getWidget('tvNotesMisc'))
@@ -360,16 +355,7 @@ class addresswindow(chooseWindows):
             self.singleAddressNotes.NotesMisc = self.textbufferMisc
 
             #Contact
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbufferContact = gtksourceview.SourceBuffer()
-            self.textbufferContact.set_data('languages-manager', lm)
-            manager = self.textbufferContact.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbufferContact.set_highlight(True)
-            self.textbufferContact.set_language(language)
-            self.viewContact = gtksourceview.SourceView(self.textbufferContact)
-            self.viewContact.set_show_line_numbers(True)
+            self.textbufferContact,  self.viewContact = self.getNotesEditor()
             Vbox = self.getWidget('vbox11')
             oldScrolledwindow = self.getWidget('scrolledwindow7')
             oldScrolledwindow.remove(self.getWidget('tvNotesContacter'))
@@ -380,16 +366,7 @@ class addresswindow(chooseWindows):
             self.singleAddressNotes.NotesContact = self.textbufferContact
             
             #Rep
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbufferRep = gtksourceview.SourceBuffer()
-            self.textbufferRep.set_data('languages-manager', lm)
-            manager = self.textbufferRep.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbufferRep.set_highlight(True)
-            self.textbufferRep.set_language(language)
-            self.viewRep = gtksourceview.SourceView(self.textbufferRep)
-            self.viewRep.set_show_line_numbers(True)
+            self.textbufferRep,  self.viewRep = self.getNotesEditor()
             Vbox = self.getWidget('vbox12')
             oldScrolledwindow = self.getWidget('scrolledwindow8')
             oldScrolledwindow.remove(self.getWidget('tvNotesRep'))
@@ -399,16 +376,7 @@ class addresswindow(chooseWindows):
             self.singleAddressNotes.NotesRep = self.textbufferRep
             
             #Salesman
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbufferSalesman = gtksourceview.SourceBuffer()
-            self.textbufferSalesman.set_data('languages-manager', lm)
-            manager = self.textbufferSalesman.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbufferSalesman.set_highlight(True)
-            self.textbufferSalesman.set_language(language)
-            self.viewSalesman = gtksourceview.SourceView(self.textbufferSalesman)
-            self.viewSalesman.set_show_line_numbers(True)
+            self.textbufferSalesman,  self.viewSalesman = self.getNotesEditor()
             Vbox = self.getWidget('vbox13')
             oldScrolledwindow = self.getWidget('scrolledwindow9')
             oldScrolledwindow.remove(self.getWidget('tvNotesSalesman'))
@@ -418,16 +386,7 @@ class addresswindow(chooseWindows):
             self.singleAddressNotes.NotesSalesman = self.textbufferSalesman
             
             #Organisation
-            lm = gtksourceview.SourceLanguagesManager()
-            self.textbufferOrganisation = gtksourceview.SourceBuffer()
-            self.textbufferOrganisation.set_data('languages-manager', lm)
-            manager = self.textbufferOrganisation.get_data('languages-manager')
-            mime_type = 'text/x-tex'
-            language = manager.get_language_from_mime_type(mime_type)
-            self.textbufferOrganisation.set_highlight(True)
-            self.textbufferOrganisation.set_language(language)
-            self.viewOrganisation = gtksourceview.SourceView(self.textbufferOrganisation)
-            self.viewOrganisation.set_show_line_numbers(True)
+            self.textbufferOrganisation,  self.viewOrganisation = self.getNotesEditor()
             Vbox = self.getWidget('vbox17')
             oldScrolledwindow = self.getWidget('scrolledwindow15')
             oldScrolledwindow.remove(self.getWidget('tvNotesOrganisation'))
@@ -1906,7 +1865,10 @@ class addresswindow(chooseWindows):
     # stats 
     def on_tbGrave_clicked(self, event):
         print 'tbGrave clicked'
+
     
+        
+            
     def refreshTree(self):
         self.singleAddress.disconnectTree()
         self.singlePartner.disconnectTree()
