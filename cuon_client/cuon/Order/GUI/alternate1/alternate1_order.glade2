@@ -562,6 +562,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
+                        <property name="tooltip" translatable="yes">Strg+Return</property>
                         <property name="use_underline">True</property>
                         <signal name="clicked" handler="on_bSearch_clicked"/>
                         <accelerator key="Return" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
@@ -1214,10 +1215,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+3</property>
+                                <property name="tooltip" translatable="yes">AltGr+3</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSimpleBank1_clicked"/>
-                                <accelerator key="3" signal="clicked"/>
+                                <accelerator key="threesuperior" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="x_options">GTK_SHRINK | GTK_FILL</property>
@@ -1230,11 +1231,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win
-+4</property>
+                                <property name="tooltip" translatable="yes">AltGr+4</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSimpleBank2_clicked"/>
-                                <accelerator key="4" signal="clicked"/>
+                                <accelerator key="onequarter" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -1249,10 +1249,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+5</property>
+                                <property name="tooltip" translatable="yes">AltGr+5</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSimpleBank3_clicked"/>
-                                <accelerator key="5" signal="clicked"/>
+                                <accelerator key="onehalf" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1267,10 +1267,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+9</property>
+                                <property name="tooltip" translatable="yes">AltGr+9</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bDirectDebit3_clicked"/>
-                                <accelerator key="9" signal="clicked"/>
+                                <accelerator key="bracketright" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1287,10 +1287,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+8</property>
+                                <property name="tooltip" translatable="yes">AltGr+8</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bDirectDebit2_clicked"/>
-                                <accelerator key="8" signal="clicked"/>
+                                <accelerator key="bracketleft" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
@@ -1307,10 +1307,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+7</property>
+                                <property name="tooltip" translatable="yes">AltGr+7</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bDirectDebit1_clicked"/>
-                                <accelerator key="7" signal="clicked"/>
+                                <accelerator key="braceleft" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -1360,10 +1360,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+6</property>
+                                <property name="tooltip" translatable="yes">AltGr+6</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bCreditCard1_clicked"/>
-                                <accelerator key="6" signal="clicked"/>
+                                <accelerator key="notsign" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -1378,10 +1378,11 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+1</property>
+                                <property name="extension_events">cursor</property>
+                                <property name="tooltip" translatable="yes">AltGr+1</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSimpleCash1_clicked"/>
-                                <accelerator key="1" signal="clicked"/>
+                                <accelerator key="onesuperior" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -1394,10 +1395,10 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="tooltip" translatable="yes">Win+2</property>
+                                <property name="tooltip" translatable="yes">AltGR+2</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSimpleCash2_clicked"/>
-                                <accelerator key="2" signal="clicked"/>
+                                <accelerator key="twosuperior" signal="clicked"/>
                               </widget>
                               <packing>
                                 <property name="left_attach">1</property>
