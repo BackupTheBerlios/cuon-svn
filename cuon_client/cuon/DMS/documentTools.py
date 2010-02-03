@@ -96,19 +96,21 @@ class documentTools(dumps):
         if exe or Action != None:
             singleDMS.createTmpFile(sEXT)
             if dicVars:
-                print ' '
-                print 'dicVars = ', dicVars
+                #print ' '
+                #print 'dicVars = ', dicVars
                 try:
                     if zipfile.is_zipfile(singleDMS.tmpFile):
                         print 'zipfile found'
                         z1 = zipfile.ZipFile(singleDMS.tmpFile,'a')
                         print z1.namelist()
-                        f_in = str(z1.read('content.xml'))
-                        #print 'content.xml', f_in
-                        
-                        f_in = self.replaceValues(dicVars,f_in, dicUser)
-                        #print 'replaced Content', f_in
-                        z1.writestr('content.xml',f_in)
+                        for f1 in ['content.xml', 'styles.xml']:
+                            f_in = str(z1.read(f1))
+                            #print 'content.xml', f_in
+                            
+                            f_in = self.replaceValues(dicVars,f_in, dicUser)
+                            #print 'replaced Content', f_in
+                            z1.writestr(f1,f_in)
+                            
                         z1.close()
 
                     else:
@@ -325,6 +327,7 @@ class documentTools(dumps):
             f.close()
             
     def replaceValues(self, dicVars, s, dicUser):
+        #print 'replace this in document: ',  dicVars
         for key in dicVars.keys():
             try:
                 if isinstance(dicVars[key], types.UnicodeType): 
@@ -343,6 +346,7 @@ class documentTools(dumps):
                 print Exception, params
                     
             try:
+                #print 'try to replace this ', key,  dicVars[key]
                 if dicVars[key] == 'NONE' or dicVars[key] ==None:
                     s = s.replace('##'+ key + ';;','')
                 elif self.checkType(dicVars[key], 'string') :

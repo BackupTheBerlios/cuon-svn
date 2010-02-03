@@ -71,7 +71,7 @@ class address_graves(gladeXml):
         self.on_bGotoAddress_clicked(event)
         
         
-    def fillAddressGraves(self):
+    def fillAddressGraves(self,  liDates):
         treeview = self.tree
         #treeview.set_model(liststore)
  
@@ -88,8 +88,6 @@ class address_graves(gladeXml):
         treeview.append_column(column)
         treeview.set_model(treestore)
         
-        
-        liDates = [{'schedul_name':'test', 'time_begin':12, 'time_end':15, 'date':'11.12.2009', 'a_lastname':'test1', 'a_city':'tt', 'id':4}]
         print 'Schedul by names: ', liDates
         if liDates:
             lastRep = None

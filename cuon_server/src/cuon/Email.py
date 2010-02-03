@@ -17,6 +17,8 @@
 #import smtplib, sys
 import xmlrpclib
 from twisted.web import xmlrpc
+from twisted.internet.threads import deferToThread
+
 ### Here are the email pacakge modules we'll need
 ##from email.MIMEImage import MIMEImage
 ##from email.MIMEMultipart import MIMEMultipart
@@ -51,12 +53,12 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                         for sm in result:
                             if sm['email']:
                                 dicValues['To'] = sm['email']
-                                ok = self.sendEmail(dicValues, liAttachments,dicUser)
+                                ok = deferToThread(self.sendEmail, dicValues, liAttachments,dicUser)
                                 
                         
                         
             else:
-                ok = self.sendEmail(dicValues, liAttachments,dicUser)
+                ok = deferToThread(self.sendEmail, dicValues, liAttachments,dicUser)
             
         return ok
                 

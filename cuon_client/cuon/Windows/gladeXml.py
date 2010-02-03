@@ -58,7 +58,7 @@ class gladeXml(defaultValues):
         self.dicAccelKeys['print'] = 'p'
 
 
-    def getNotesEditor(self):
+    def getNotesEditor(self,  mime_type =  'text/x-tex',  highlight = True):
         try:
             lm = gtksourceview.SourceLanguagesManager()
             textbufferMisc = gtksourceview.SourceBuffer()
@@ -70,14 +70,14 @@ class gladeXml(defaultValues):
         
         textbufferMisc.set_data('languages-manager', lm)
         manager = textbufferMisc.get_data('languages-manager')
-        mime_type = 'text/x-tex'
+        
         
         try:
             language = manager.get_language_from_mime_type(mime_type)
-            textbufferMisc.set_highlight(True)
+            textbufferMisc.set_highlight(highlight)
         except:
             language = manager.guess_language(content_type=mime_type)
-            textbufferMisc.set_highlight_syntax(True)
+            textbufferMisc.set_highlight_syntax(highlight)
         
         textbufferMisc.set_language(language)
         try:

@@ -736,7 +736,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sDeleteResidue = "drop view " + sNameOfView
         result = self.oDatabase.xmlrpc_executeNormalQuery(sDeleteResidue,dicUser)
         sResidue = "create view " + sNameOfView + " as "
-        sResidue += " select list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end)  as  residue, list_of_invoices.total_amount as total_amount, "
+        sResidue += " select list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment)  + sum(in_payment.cash_discount) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end)  as  residue, list_of_invoices.total_amount as total_amount, "
         sResidue += " list_of_invoices.maturity as maturity,  list_of_invoices.order_number as order_number,  list_of_invoices.id as id ,  list_of_invoices.invoice_number as invoice_number, list_of_invoices.date_of_invoice as date_of_invoice from list_of_invoices "
         sResidue += self.getWhere('',dicUser,'1','list_of_invoices.')
         
@@ -749,7 +749,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " v_residue.residue as residue, "
         sSql += ' v_residue.order_number as order_number, v_residue.id, v_residue.invoice_number as invoice_number, v_residue.date_of_invoice as date_of_invoice '
         sSql += " from list_of_invoices , orderbook, address,  " + sNameOfView + " as v_residue "
-        sSql += " where  v_residue.residue  > 0.01 and v_residue.order_number = orderbook.id"
+        sSql += " where  v_residue.residue   > 0.01 and v_residue.order_number = orderbook.id"
         sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
         sSql += " order by lastname, v_residue.date_of_invoice "
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
@@ -758,7 +758,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def getReminder(self, dicUser):
         self.checkMaturityDay(dicUser)
         iReminder = 10
-        sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
+        sResidue = "list_of_invoices.total_amount -  (case when (select sum(in_payment.inpayment) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ")  != 0 then (select sum(in_payment.inpayment) + sum(in_payment.cash_discount) from in_payment where   to_number(in_payment.invoice_number,'999999999') = list_of_invoices.invoice_number and status != 'delete' and client = " + `dicUser['client']` + ") else 0 end) "
         
         
         sSql = 'select distinct '

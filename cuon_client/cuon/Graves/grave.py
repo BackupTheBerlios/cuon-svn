@@ -33,7 +33,8 @@ import SingleGraveWinter
 import SingleGraveHoliday
 import SingleGraveYear
 import SingleGraveSingleevent
-
+import cuon.Addresses.addresses
+import cuon.Addresses.SingleAddress
 
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
@@ -64,7 +65,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSummer = SingleGraveSummer.SingleGraveSummer(allTables)
         self.singleGraveAutumn = SingleGraveAutumn.SingleGraveAutumn(allTables)
         self.singleGraveWinter = SingleGraveWinter.SingleGraveWinter(allTables)
-
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.fillArticlesNewID = 0
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
         print "load glade"
@@ -563,7 +564,22 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringClear1')
              
-                    
+                 
+              
+    def on_bChooseAddress_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
+
+    def on_eAddressNumber_changed(self, event):
+        print 'eAddressNumber changed'
+        iAdrNumber = self.getChangedValue('eAddressNumber')
+        eAdrField = self.getWidget('tvAddress')
+        liAdr = self.singleAddress.getAddress(iAdrNumber)
+        self.setTextbuffer(eAdrField,liAdr)
+
+
+    def on_bGotoAddress_clicked(self,  event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables, self.singleAddress.ID)
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabGrave:

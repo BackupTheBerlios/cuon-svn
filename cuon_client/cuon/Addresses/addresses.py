@@ -2091,9 +2091,10 @@ class addresswindow(chooseWindows):
             #self.editAction = 'editProject'
             self.setTreeVisible(False)
             self.setStatusbarText([self.singleAddress.sStatus])
+            liData = self.rpc.callRP('Grave.getGravesForAddress',self.singleAddress.ID,  self.dicUser)
             self.graves.setTree(self.tvGrave)
             
-            self.graves.fillAddressGraves()
+            self.graves.fillAddressGraves(liData)
             print 'tabOptions graves end'
             
             

@@ -354,7 +354,7 @@ class setup:
             + self.SERVERCONFIGDIR + "/examples/UserGroups.cfg " + self.SERVERCONFIGDIR + "/sql ;  fi ")
         # sql.xml
         # copy trigger to etc/cuon/sql
-        liFunctions = ['sql.xml',  'basics.xml', 'order.xml', 'address.xml', 'garden.xml', 'graves.xml']
+        liFunctions = ['sql.xml',  'basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql']
         for oneFile in liFunctions:
             self.executeSCP(oneFile, self.SERVERCONFIGDIR + "/sql")
         

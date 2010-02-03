@@ -36,7 +36,8 @@ class editorwindow(windows):
         self.win1 = self.getWidget('EditorMainwindow')
         
         if GtkSV:
-            self.textbuffer,  self.view = self.getNotesEditor()
+            self.textbuffer,  self.view = self.getNotesEditor(mime_type = 'text/x-ini-file')
+            
             Vbox = self.getWidget('vbox1')
             Scrolledwindow = self.getWidget('scrolledwindow1')
             Scrolledwindow.remove(self.getWidget('viewport1'))

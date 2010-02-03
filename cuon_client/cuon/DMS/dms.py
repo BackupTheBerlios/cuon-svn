@@ -230,7 +230,8 @@ class dmswindow(windows):
                         sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
                     else:
                         sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
-            sWhere += ' and insert_from_module = ' + `self.ModulNumber` 
+            if self.ModulNumber != self.MN['DMS']:
+                sWhere += ' and insert_from_module = ' + `self.ModulNumber` 
             
         else:
             sWhere = self.sWhereStandard
