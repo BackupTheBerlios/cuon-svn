@@ -1,11 +1,5 @@
-<sql>
-  <postgre_sql>
-    <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-      <function>
-     
-      <nameOfFunction>  fct_getAddress(  iAddressID int) returns  record</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
+ CREATE OR REPLACE FUNCTION fct_getAddress(  iAddressID int) returns  record AS '
+ 
      DECLARE
     sSql    text ;
     recAddress  record;
@@ -33,12 +27,7 @@
        
     END LOOP ;
     return recAddress  ;
-        
-    END ;
-     </textOfFunction>
-    <description>get the caddress of an id </description>
-
-    </function>
-  </postgre_sql>
-  
-</sql>
+       END ;
+    ' LANGUAGE 'plpgsql'; 
+ 
+   

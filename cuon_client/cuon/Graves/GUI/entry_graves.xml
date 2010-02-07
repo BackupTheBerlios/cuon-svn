@@ -36,6 +36,17 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+     <entry>
+      <name>eAddressNumber</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>addressid</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
     <entry>
       <name>eDetachment</name>
       <type>textline</type>

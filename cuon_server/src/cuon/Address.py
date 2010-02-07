@@ -514,8 +514,9 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_getNewsletterAddresses(self, NewsletterShortcut, dicUser):
         print NewsletterShortcut
         result = []
-        sSql = "select address,lastname,lastname2,firstname,street,country,zip,city,letter_address from address where newsletter ~'.*" + NewsletterShortcut +".*'"
+        sSql = "select address,lastname,lastname2,firstname,street,country,zip,city,letter_address from address where newsletter ~'.*" + NewsletterShortcut +".*' "
         sSql += self.getWhere("",dicUser,2)
+        sSql += " order by zip "
         #print sSql
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         if result in [ 'NONE','ERROR']:
@@ -527,6 +528,7 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql += " from partner, address where addressid = address.id and " 
         sSql += " partner.newsletter ~'.*" + NewsletterShortcut +".*' "
         sSql += self.getWhere("",dicUser,2,'partner.')
+        sSql += " order by address.zip"
         #print sSql
         result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         #print 'result2 = ', result2
@@ -537,7 +539,7 @@ class Address(xmlrpc.XMLRPC, basics):
         result4 = []
         for record in result:
             result4.append(self.addDateTime(record))
-          
+        
         return result4  
         
         

@@ -1,14 +1,6 @@
-<sql>
-  <postgre_sql>
-    <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-    
-    
-    
-    <function>
+  CREATE OR REPLACE FUNCTION fct_setUserData( dicUser char  [] ) returns bool AS '
+    -- set the userdata for the current work
      
-      <nameOfFunction>    fct_setUserData( dicUser char  [] ) returns bool </nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
     DECLARE
     sName char(50) ;    
     sClient char ;
@@ -29,15 +21,14 @@
         
         return 1 ;
     END ;
-     </textOfFunction>
-    <description>set the userdata for the current work</description>
-
-    </function>
-     <function>
+    
+     ' LANGUAGE 'plpgsql'; 
      
-      <nameOfFunction>    fct_getUserDataClient(  ) returns int </nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction> DECLARE
+     
+     
+   CREATE OR REPLACE FUNCTION  fct_getUserDataClient(  ) returns int AS '
+   -- get the client id
+    DECLARE
     iClient    int ;
     sClient char ;
     BEGIN
@@ -46,16 +37,14 @@
         raise notice ''Client id = %'', iClient ;
         return iClient ;
     END ;
-     </textOfFunction>
-    <description>get the client id </description>
-
-    </function>
     
-    <function>
-    
-      <nameOfFunction>    fct_getUserDataNoWhereClient(  ) returns int </nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction> DECLARE
+     ' LANGUAGE 'plpgsql'; 
+     
+     
+     
+   CREATE OR REPLACE FUNCTION  fct_getUserDataNoWhereClient(  ) returns int  AS '
+       -- get the nowhereclient id
+     DECLARE
     iClient    int ;
     sClient char ;
     BEGIN
@@ -64,18 +53,12 @@
         raise notice ''NoWhereClient id = %'', iClient ;
         return iClient ;
     END ;
-     </textOfFunction>
-    <description>get the nowhereclient id </description>
-
-    </function>
     
-    
-    
-  <function>
+     ' LANGUAGE 'plpgsql'; 
      
-      <nameOfFunction>fct_getWhere(iSingle int,  sPrefix char ) returns text</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
+     
+   CREATE OR REPLACE FUNCTION  fct_getWhere(iSingle int,  sPrefix char ) returns text  AS '
+    -- retuns the sWhere value
      DECLARE
     sWhere  text ;
     iClient int ;
@@ -104,11 +87,6 @@
 
     RETURN sWhere ;
     END ;
-      </textOfFunction>
-    <description>retuns the sWhere value</description>
-
-    </function>
-
-  </postgre_sql>
-  
-</sql>
+     ' LANGUAGE 'plpgsql'; 
+    
+      
