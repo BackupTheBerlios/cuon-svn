@@ -1423,14 +1423,22 @@ class addresswindow(chooseWindows):
                 iter2 = None
                 iter3 = None
                 liDates.reverse()
-                for oneDate in liDates:
-                    Schedulname = oneDate['date']
-                    if lastSchedulname != Schedulname:
-                        lastSchedulname = Schedulname
-                        iter = treestore.append(None,[lastSchedulname])   
-                    sTime  = self.getTimeString(oneDate['time_begin'] )
-                    sTimeEnd =     self.getTimeString(oneDate['time_end'] )
-                    iter2 = treestore.insert_before(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + oneDate['a_lastname'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])           
+                for oneDate1 in liDates:
+                    try:
+                        oneDate = oneDate1[0]
+                        print 'oneDate',  oneDate
+                        Schedulname = oneDate['date']
+                        print 'Schedulname =',  Schedulname
+                        if lastSchedulname != Schedulname:
+                            lastSchedulname = Schedulname
+                            iter = treestore.append(None,[lastSchedulname])   
+                        print 'before time'
+                        sTime  = self.getTimeString(oneDate['time_begin'] )
+                        sTimeEnd =     self.getTimeString(oneDate['time_end'] )
+                        print 'times = ',  sTime,  sTimeEnd
+                        iter2 = treestore.insert_before(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + oneDate['a_lastname'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])          
+                    except Exception,  params:
+                        print Exception,  params
                 print 'End liDates'
             ts.show()
             #self.getWidget('scrolledwindow10').show()
