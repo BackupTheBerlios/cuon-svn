@@ -1165,6 +1165,7 @@ class addresswindow(chooseWindows):
         sFax = self.getWidget('eFindFax').get_text()
         sNewsletter =  self.getWidget('eFindNewsletter').get_text()
         sInfo =  self.getWidget('eFindInfo').get_text()
+        sEmail =  self.getWidget('eFindEmail').get_text()
         liSearch = []
         if sName:
             liSearch.append('lastname')
@@ -1206,7 +1207,10 @@ class addresswindow(chooseWindows):
         if sInfo:
             liSearch.append('status_info')
             liSearch.append(sInfo)
-            
+        if sEmail:
+            liSearch.append('email')
+            liSearch.append(sEmail)
+                
         if liSearch:
             if self.cbSearchPartner.get_active():
                 self.singleAddress.sWhere = self.rpc.callRP('Address.getAllAddressForThisPartner',self.getWhere(liSearch),self.dicUser)
@@ -1410,8 +1414,8 @@ class addresswindow(chooseWindows):
             treestore = gtk.TreeStore(str)
             ts.set_model(treestore)
                 
-            liDates = self.rpc.callRP('Address.getAllActiveSchedul',self.dicUser,'Schedul',self.getWidget( 'eSchedulFor').get_text() )
-            print 'Schedul by schedul_date: ', liDates
+            liDates,  newHash = self.rpc.callRP('Address.getAllActiveSchedul',self.dicUser,'Schedul',self.getWidget( 'eSchedulFor').get_text() )
+            print 'Schedul by schedul_date: ', liDates,  newHash
             if liDates and liDates not in ['NONE','ERROR']:
                 lastRep = None
                 lastSalesman = None
@@ -1423,23 +1427,23 @@ class addresswindow(chooseWindows):
                 iter2 = None
                 iter3 = None
                 liDates.reverse()
-                for oneDate1 in liDates:
+                for oneDate in liDates:
                     try:
-                        oneDate = oneDate1[0]
-                        print 'oneDate',  oneDate
+                        
+                        #print 'oneDate',  oneDate
                         Schedulname = oneDate['date']
-                        print 'Schedulname =',  Schedulname
+                        #print 'Schedulname =',  Schedulname
                         if lastSchedulname != Schedulname:
                             lastSchedulname = Schedulname
                             iter = treestore.append(None,[lastSchedulname])   
-                        print 'before time'
+                        #print 'before time'
                         sTime  = self.getTimeString(oneDate['time_begin'] )
                         sTimeEnd =     self.getTimeString(oneDate['time_end'] )
-                        print 'times = ',  sTime,  sTimeEnd
+                        #print 'times = ',  sTime,  sTimeEnd
                         iter2 = treestore.insert_before(iter,None,[oneDate['a_zip'] + ' ' + oneDate['a_city'] +', ' + oneDate['a_lastname'] +', ' + sTime + ' - ' + sTimeEnd + ' ###' +  `oneDate['id']`])          
                     except Exception,  params:
                         print Exception,  params
-                print 'End liDates'
+                #print 'End liDates'
             ts.show()
             #self.getWidget('scrolledwindow10').show()
             self.connectSchedulTree()
