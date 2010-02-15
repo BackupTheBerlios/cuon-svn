@@ -1138,17 +1138,36 @@
                                   </packing>
                                 </child>
                                 <child>
+                                  <widget class="GtkCheckButton" id="cbSearchPartner">
+                                    <property name="label" translatable="yes">inkl. Gespr&#xE4;chspartner</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="has_tooltip">True</property>
+                                    <property name="tooltip" translatable="yes">Diese Option erweitert die Suche auch 
+auf die Adressen unter Gespr&#xE4;chspartner</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="draw_indicator">True</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="left_attach">9</property>
+                                    <property name="right_attach">10</property>
+                                    <property name="x_options">GTK_FILL</property>
+                                    <property name="y_options"></property>
+                                  </packing>
+                                </child>
+                                <child>
                                   <widget class="GtkButton" id="bSearch">
                                     <property name="label" translatable="yes">Search</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
+                                    <property name="receives_default">True</property>
                                     <property name="use_underline">True</property>
                                     <signal name="clicked" handler="on_bSearch_clicked"/>
                                   </widget>
                                   <packing>
-                                    <property name="left_attach">7</property>
-                                    <property name="right_attach">8</property>
+                                    <property name="left_attach">9</property>
+                                    <property name="right_attach">10</property>
                                     <property name="top_attach">2</property>
                                     <property name="bottom_attach">3</property>
                                     <property name="x_options"></property>
@@ -1156,23 +1175,15 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <widget class="GtkCheckButton" id="cbSearchPartner">
-                                    <property name="label" translatable="yes">inkl. Gespr&#xE4;chspartner</property>
+                                  <widget class="GtkLabel" id="label30">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="tooltip" translatable="yes">Diese Option erweitert die Suche auch 
-auf die Adressen unter Gespr&#xE4;chspartner</property>
-                                    <property name="use_underline">True</property>
-                                    <property name="draw_indicator">True</property>
+                                    <property name="label" translatable="yes">Email</property>
                                   </widget>
                                   <packing>
                                     <property name="left_attach">6</property>
                                     <property name="right_attach">7</property>
                                     <property name="top_attach">2</property>
                                     <property name="bottom_attach">3</property>
-                                    <property name="x_options">GTK_FILL</property>
-                                    <property name="y_options"></property>
                                   </packing>
                                 </child>
                                 <child>
@@ -1188,10 +1199,17 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                   <placeholder/>
                                 </child>
                                 <child>
-                                  <placeholder/>
-                                </child>
-                                <child>
-                                  <placeholder/>
+                                  <widget class="GtkEntry" id="eFindEmail">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="invisible_char">&#x25CF;</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="left_attach">7</property>
+                                    <property name="right_attach">8</property>
+                                    <property name="top_attach">2</property>
+                                    <property name="bottom_attach">3</property>
+                                  </packing>
                                 </child>
                               </widget>
                               <packing>
@@ -7001,23 +7019,6 @@ Liste der vorhanden Termine</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <widget class="GtkHBox" id="hbox75">
-                                    <property name="visible">True</property>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                  </widget>
-                                  <packing>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                                <child>
                                   <widget class="GtkHBox" id="hbox26">
                                     <property name="visible">True</property>
                                     <child>
@@ -7264,6 +7265,23 @@ Liste der vorhanden Termine</property>
                                         <property name="fill">False</property>
                                         <property name="position">4</property>
                                       </packing>
+                                    </child>
+                                  </widget>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="GtkHBox" id="hbox75">
+                                    <property name="visible">True</property>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
                                     </child>
                                   </widget>
                                   <packing>
