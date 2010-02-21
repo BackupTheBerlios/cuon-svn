@@ -1,12 +1,4 @@
-<sql>
-  <postgre_sql>
-    <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-    
-    <function>
-     
-      <nameOfFunction>fct_changeProposal2Order(iProposalID int ) returns bool</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
+ CREATE OR REPLACE FUNCTION fct_changeProposal2Order(iProposalID int ) returns bool AS '
  DECLARE
     
     iClient int ;
@@ -23,16 +15,10 @@
         end if ;
         
     END ;
-     </textOfFunction>
-    <description>change a proposal to an order</description>
-
-    </function>
     
-        <function>
-     
-      <nameOfFunction>fct_getOrderTotalSum(  iOrderid int) returns float </nameOfFunction>
-      <language>plpgsql</language>
-       <textOfFunction>
+     ' LANGUAGE 'plpgsql'; 
+    
+CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS '
     DECLARE
     fSum     float ;
     sClient char ;
@@ -68,10 +54,4 @@
     
     return fSum ;
     END ;
-    </textOfFunction>
-    <description>get the total sum</description>
-
-    </function>
-  </postgre_sql>
-  
-</sql>
+    ' LANGUAGE 'plpgsql'; 

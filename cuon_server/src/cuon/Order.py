@@ -749,7 +749,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " v_residue.residue as residue, "
         sSql += ' v_residue.order_number as order_number, v_residue.id, v_residue.invoice_number as invoice_number, v_residue.date_of_invoice as date_of_invoice '
         sSql += " from list_of_invoices , orderbook, address,  " + sNameOfView + " as v_residue "
-        sSql += " where  v_residue.residue   > 0.01 and v_residue.order_number = orderbook.id"
+        sSql += " where  v_residue.residue -(case when orderbook.discount is not Null then orderbook.discount else 0.00 end)  > 0.01 and v_residue.order_number = orderbook.id"
         sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
         sSql += " order by lastname, v_residue.date_of_invoice "
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)

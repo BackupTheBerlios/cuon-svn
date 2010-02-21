@@ -729,10 +729,30 @@ class databaseswindow(windows):
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)
         self.out("set procedures and trigger")
-     
         os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/server.ini inifiles')
-        
-        for configfile in ['sql.xml', 'basics.xml', 'order.xml', 'address.xml', 'garden.xml', 'graves.xml']:
+        f = file('inifiles/server.ini','r')
+        cpParser = ConfigParser.ConfigParser()
+        cpParser.readfp(f)
+        sFile = None
+        f.close()
+        try:
+                
+            SQL_DB = cpParser.get('POSTGRES', 'POSTGRES_DB')
+            SQL_HOST = cpParser.get('POSTGRES', 'POSTGRES_HOST')
+            SQL_USER = cpParser.get('POSTGRES', 'POSTGRES_USER')
+            SQL_PORT = cpParser.get('POSTGRES', 'POSTGRES_PORT')
+        except Exception, param:
+            print Exception, param
+            
+       
+        for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql']:
+            os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
+            f = open('inifiles/' + configfile, 'r')
+            sSql = f.read()
+            f.close()
+            ok = self.rpc.callRP('Database.createPsql',  SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
+            
+        for configfile in ['sql.xml']:
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             doc = self.readDocument('inifiles/'+configfile)
             # procedures
@@ -740,20 +760,9 @@ class databaseswindow(windows):
                 cyRootNode = self.getRootNode(doc)
                 cyNode = self.getNode(cyRootNode,'postgre_sql')
                 cyNodes = self.getNodes(cyNode[0],'function')
-                f = file('inifiles/server.ini','r')
-                cpParser = ConfigParser.ConfigParser()
-                cpParser.readfp(f)
-                sFile = None
-                f.close()
+               
                 
-                try:
                 
-                    SQL_DB = cpParser.get('POSTGRES', 'POSTGRES_DB')
-                    SQL_HOST = cpParser.get('POSTGRES', 'POSTGRES_HOST')
-                    SQL_USER = cpParser.get('POSTGRES', 'POSTGRES_USER')
-                    SQL_PORT = cpParser.get('POSTGRES', 'POSTGRES_PORT')
-                except Exception, param:
-                    print Exception, param
                     
                 if cyNodes:
                     for i in cyNodes:

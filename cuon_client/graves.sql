@@ -1,12 +1,5 @@
-<sql>
-  <postgre_sql>
-    <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-    
-     <function>
-     
-     <nameOfFunction>fct_getGravesForAddressID(iAddressID int ) returns setof record </nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
+
+ CREATE OR REPLACE FUNCTION fct_getGravesForAddressID(iAddressID int ) returns setof record AS '
  DECLARE
      iClient int ;
     r record;
@@ -25,13 +18,7 @@
         END LOOP ;
         
     END ;
-     </textOfFunction>
-    <description>select a list of graves for an addressid </description>
+    
 
-    </function>
     
-    
-    
-  </postgre_sql>
-  
-</sql>
+     ' LANGUAGE 'plpgsql'; 
