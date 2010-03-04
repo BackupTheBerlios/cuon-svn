@@ -40,11 +40,22 @@ class SingleGraveWinter(SingleData):
         #
         self.statusfields = ['lastname', 'city']
         self.graveID = 0
-        
+     
+
+    
+           
     def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SinglePartner'
+        
         dicValues['grave_id'] = [self.graveID, 'int']
         return dicValues
+        
+    def saveOtherDatatable(self, id):
+        text = self.readTextBuffer(self.getWidget('tvDescriptionWinter'))
+        self.singleGrave.save()
+        
+    def loadOtherDatatable(self, id):
+        pass   
+
 
         
         

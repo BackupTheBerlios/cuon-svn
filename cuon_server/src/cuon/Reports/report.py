@@ -600,7 +600,7 @@ class report(MyXML):
 
 
                             liRecord.append(dicRow)
-                        if self.testEndOfPage(dicRow['y2'] ,self.dicPage['reportDetailsY'] , lineOffset ):
+                        if self.testEndOfPage(dicRow['y1'] ,self.dicPage['reportDetailsY'] , lineOffset ):
                             self.dicReportValues['pageDetails'] = liRecord
                             self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode)
                             self.printPageDetails(c)
@@ -1223,7 +1223,7 @@ class report(MyXML):
         #print 'papersizeHeight',  papersizeHeight
         #print 'sum', yRow + offSet
         
-        if  offSet > papersizeHeight:
+        if  offSet > papersizeHeight or yRow < 0:
             #liRecord, yRow  = self.newPage(liRecord)
             ok = True
            

@@ -298,14 +298,61 @@ class User(defaultValues):
         self.setDicUserKeys('grave_new','n')
         self.setDicUserKeys('grave_save','s')
         self.setDicUserKeys('grave_print','p')
+         # grave Spring
         
-        # grave Spring
+        self.setDicUserKeys('graveSpring_edit','e')
+        self.setDicUserKeys('graveSpring_delete','d')
+        self.setDicUserKeys('graveSpring_new','n')
+        self.setDicUserKeys('graveSpring_save','s')
+        self.setDicUserKeys('graveSpring_print','p')
         
-        self.setDicUserKeys('gravespring_edit','e')
-        self.setDicUserKeys('gravespring_delete','d')
-        self.setDicUserKeys('gravespring_new','n')
-        self.setDicUserKeys('gravespring_save','s')
-        self.setDicUserKeys('gravespring_print','p')
+        # grave Summer
+        
+        self.setDicUserKeys('graveSummer_edit','e')
+        self.setDicUserKeys('graveSummer_delete','d')
+        self.setDicUserKeys('graveSummer_new','n')
+        self.setDicUserKeys('graveSummer_save','s')
+        self.setDicUserKeys('graveSummer_print','p')
+        
+         # grave Autumn
+        
+        self.setDicUserKeys('graveAutumn_edit','e')
+        self.setDicUserKeys('graveAutumn_delete','d')
+        self.setDicUserKeys('graveAutumn_new','n')
+        self.setDicUserKeys('graveAutumn_save','s')
+        self.setDicUserKeys('graveAutumn_print','p')
+        
+         # grave Winter
+        
+        self.setDicUserKeys('graveWinter_edit','e')
+        self.setDicUserKeys('graveWinter_delete','d')
+        self.setDicUserKeys('graveWinter_new','n')
+        self.setDicUserKeys('graveWinter_save','s')
+        self.setDicUserKeys('graveWinter_print','p')
+        
+        
+         # grave Holidays
+        
+        self.setDicUserKeys('graveHolidays_edit','e')
+        self.setDicUserKeys('graveHolidays_delete','d')
+        self.setDicUserKeys('graveHolidays_new','n')
+        self.setDicUserKeys('graveHolidays_save','s')
+        self.setDicUserKeys('graveHolidays_print','p')
+        
+         # grave Annual
+        
+        self.setDicUserKeys('graveAnnual_edit','e')
+        self.setDicUserKeys('graveAnnual_delete','d')
+        self.setDicUserKeys('graveAnnual_new','n')
+        self.setDicUserKeys('graveAnnual_save','s')
+        self.setDicUserKeys('graveAnnual_print','p')
+         # grave Unique
+        
+        self.setDicUserKeys('graveUnique_edit','e')
+        self.setDicUserKeys('graveUnique_delete','d')
+        self.setDicUserKeys('graveUnique_new','n')
+        self.setDicUserKeys('graveUnique_save','s')
+        self.setDicUserKeys('graveUnique_print','p')
         
         
         self.refreshDicUser()

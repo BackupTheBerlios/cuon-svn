@@ -292,7 +292,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 19, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 20, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -969,13 +969,13 @@ class MainWindow(windows):
                 print Exception, params
             
     def checkImapDMS(self):    
-        print '######################################### EMail #########################'
+        #print '######################################### EMail #########################'
         self.openDB()
         oUser = self.loadObject('User')
         self.closeDB()
         imapD = cuon.E_Mail.imap_dms.imap_dms(self.allTables,  oUser.getDicUser())
         imapD.checkMail()
-        print '######################################### EMail END #########################'
+        #print '######################################### EMail END #########################'
         
     def startChecking(self):
         #gtk.gdk.threads_enter()

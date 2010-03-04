@@ -291,6 +291,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+        sSql += " orderbook.discount as total_discount,  "
         sSql += "(select  tax_vat_for_all_positions from orderinvoice  where orderinvoice.orderid = " + `dicOrder['orderid']`  
         sSql += " ) as tax_vat_for_all_positions, "
         sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
@@ -302,6 +303,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
         sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
         sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id, "
+        
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "
         sSql += " orderposition.discount as discount,  "

@@ -62,13 +62,13 @@ class databaseswindow(windows):
 
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.rpc.td = self.td
-        
-        self.ta = self.xml.get_widget('tableImportSQLStructure')
-        self.ta.hide()
-
-        self.fd = self.xml.get_widget('zip_fileselection1')
-        self.fd.hide()
-        
+#        
+#        self.ta = self.xml.get_widget('tableImportSQLStructure')
+#        self.ta.hide()
+#
+#        self.fd = self.xml.get_widget('zip_fileselection1')
+#        self.fd.hide()
+#        
         # User auf zope setzen
         #self.oUser.setUserName('zope')
         #self.oUser.setUserPassword('test')

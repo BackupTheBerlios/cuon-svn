@@ -48,7 +48,7 @@ class SingleGraveSpring(SingleData):
         
         
     def readNonWidgetEntries(self, dicValues):
-        print 'readNonWidgetEntries(self) by SingleGraveSpring'
+        
         dicValues['grave_id'] = [self.graveID, 'int']
         return dicValues
         

@@ -22,14 +22,17 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
     DECLARE
     fSum     float ;
     sClient char ;
-    cur1 CURSOR FOR SELECT amount, price, discount FROM orderposition WHERE  orderid = iOrderid || '' '' || fct_getWhere(2,'' '');
+    cur1 refcursor ;
+    sCursor text ;
+    sSql text ; 
     fAmount     float;
     fPrice  float;
     fDiscount   float ;
     count   integer ;
     BEGIN
+        sCursor := ''CURSOR FOR SELECT amount, price, discount FROM orderposition WHERE  orderid = '' || iOrderid || '' '' || fct_getWhere(2,'' '');
         fSum := 0.0 ;
-        open cur1 ;
+        OPEN cur1 FOR EXECUTE sCursor;;
         FETCH cur1 INTO fAmount, fPrice, fDiscount ;
 
         count := 0;
@@ -46,7 +49,8 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
     close cur1 ;
     
     /* now get the whole discount */
-    select into fDiscount discount from orderbook where id = iOrderid || '' '' || fct_getWhere(2,'' '');
+    sSql := ''select discount from orderbook where id = '' || iOrderid || '' '' || fct_getWhere(2,'' '');
+    execute sSql into fDiscount ;
     if fDiscount IS NULL then
             fDiscount := 0.0 ;
         end if ;

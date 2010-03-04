@@ -65,6 +65,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSummer = SingleGraveSummer.SingleGraveSummer(allTables)
         self.singleGraveAutumn = SingleGraveAutumn.SingleGraveAutumn(allTables)
         self.singleGraveWinter = SingleGraveWinter.SingleGraveWinter(allTables)
+        self.singleGraveHolidays = SingleGraveHoliday.SingleGraveHoliday(allTables)
+        self.singleGraveAnnual = SingleGraveYear.SingleGraveYear(allTables)
+        self.singleGraveUnique = SingleGraveSingleevent.SingleGraveSingleevent(allTables)
+
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.fillArticlesNewID = 0
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
@@ -133,12 +137,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveAutumn.setEntries(self.getDataEntries(self.EntriesGravesAutumn) )
         self.singleGraveAutumn.setGladeXml(self.xml)
-        self.singleGraveAutumn.setTreeFields( ['article_id' ] )
-        self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveAutumn.setTreeFields(  ['article_id' , 'articles.number as number', 'articles.designation as designation'] )
+        self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING ,  gobject.TYPE_UINT) ) 
         self.singleGraveAutumn.setTreeOrder('article_id')
-        self.singleGraveAutumn.setListHeader([_('article-ID')])
+        self.singleGraveAutumn.setListHeader([_('article-ID'), _('number'), _('Designation')])
         self.singleGraveAutumn.setTree(self.xml.get_widget('tree1') )
-        self.singleGraveAutumn.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+        self.singleGraveAutumn.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
         self.EntriesGravesWinter = 'graves_winter.xml'
         
@@ -154,6 +158,57 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID` + ' and article_id = articles.id '
   
   
+        self.EntriesGravesHolidays = 'graves_holiday.xml'
+        
+        self.loadEntries(self.EntriesGravesHolidays)
+       
+        self.singleGraveHolidays.setEntries(self.getDataEntries(self.EntriesGravesHolidays) )
+        self.singleGraveHolidays.setGladeXml(self.xml)
+        self.singleGraveHolidays.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveHolidays.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleGraveHolidays.setTreeOrder('article_id')
+        self.singleGraveHolidays.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
+        self.singleGraveHolidays.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveHolidays.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
+  
+        self.EntriesGravesSummer = 'graves_summer.xml'
+        self.loadEntries(self.EntriesGravesSummer)
+        
+        
+        
+        self.EntriesGravesAnnual = 'graves_year.xml'
+        
+        self.loadEntries(self.EntriesGravesAnnual)     
+        self.singleGraveAnnual.setEntries(self.getDataEntries(self.EntriesGravesAnnual) )
+        self.singleGraveAnnual.setGladeXml(self.xml)
+        self.singleGraveAnnual.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveAnnual.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleGraveAnnual.setTreeOrder('article_id')
+        self.singleGraveAnnual.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
+        self.singleGraveAnnual.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveAnnual.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
+  
+        self.EntriesGravesSummer = 'graves_summer.xml'
+        self.loadEntries(self.EntriesGravesSummer)
+        
+        
+        
+        self.EntriesGravesUnique = 'graves_single.xml'
+        
+        self.loadEntries(self.EntriesGravesUnique)
+            
+        self.singleGraveUnique.setEntries(self.getDataEntries(self.EntriesGravesUnique) )
+        self.singleGraveUnique.setGladeXml(self.xml)
+        self.singleGraveUnique.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveUnique.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleGraveUnique.setTreeOrder('article_id')
+        self.singleGraveUnique.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
+        self.singleGraveUnique.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveUnique.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
+  
+        self.EntriesGravesSummer = 'graves_summer.xml'
+        self.loadEntries(self.EntriesGravesSummer)
+         
         # set values for comboBox
 
         liService,  liTypeOfGrave, liTypeOfPaid, liPercent = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
@@ -216,7 +271,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('tabs','summer')
         self.addEnabledMenuItems('tabs','autumn')
         self.addEnabledMenuItems('tabs','winter')
-        
+        self.addEnabledMenuItems('tabs','holidays')
+        self.addEnabledMenuItems('tabs','unique')
+        self.addEnabledMenuItems('tabs','annual')
+           
         # seperate Menus
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
@@ -224,6 +282,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('graveSummer','summer')
         self.addEnabledMenuItems('graveAutumn','autumn')
         self.addEnabledMenuItems('graveWinter','winter')
+        self.addEnabledMenuItems('graveHolidays','holidays')
+        self.addEnabledMenuItems('graveUnique','unique')
+        self.addEnabledMenuItems('graveAnnual','annual')
         
         # enabledMenues for grave
         self.addEnabledMenuItems('editGrave','new1', self.dicUserKeys['grave_new'])
@@ -237,29 +298,44 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceEdit1')
 
     # enabledMenues for graveSpring
-        self.addEnabledMenuItems('editGraveSpring','SpringNew1', self.dicUserKeys['gravespring_new'])
-        self.addEnabledMenuItems('editGraveSpring','SpringClear1', self.dicUserKeys['gravespring_delete'])
-        #self.addEnabledMenuItems('editGraveSpring','SpringPrint1', self.dicUserKeys['gravespring_print'])
-        self.addEnabledMenuItems('editGraveSpring','SpringEdit1', self.dicUserKeys['gravespring_edit'])
+        self.addEnabledMenuItems('editGraveSpring','SpringNew1', self.dicUserKeys['graveSpring_new'])
+        self.addEnabledMenuItems('editGraveSpring','SpringClear1', self.dicUserKeys['graveSpring_delete'])
+        #self.addEnabledMenuItems('editGraveSpring','SpringPrint1', self.dicUserKeys['graveSpring_print'])
+        self.addEnabledMenuItems('editGraveSpring','SpringEdit1', self.dicUserKeys['graveSpring_edit'])
 
-        
     # enabledMenues for graveSummer
-        self.addEnabledMenuItems('editGraveSummer','SummerNew1')
-        self.addEnabledMenuItems('editGraveSummer','SummerClear1')
-        #self.addEnabledMenuItems('editGraveSummer','SummerPrint1')
-        self.addEnabledMenuItems('editGraveSummer','SummerEdit1')
+        self.addEnabledMenuItems('editGraveSummer','SummerNew1', self.dicUserKeys['graveSummer_new'])
+        self.addEnabledMenuItems('editGraveSummer','SummerClear1', self.dicUserKeys['graveSummer_delete'])
+        #self.addEnabledMenuItems('editGraveSummer','SummerPrint1', self.dicUserKeys['graveSummer_print'])
+        self.addEnabledMenuItems('editGraveSummer','SummerEdit1', self.dicUserKeys['graveSummer_edit'])
+# enabledMenues for graveAutumn
+        self.addEnabledMenuItems('editGraveAutumn','AutumnNew1', self.dicUserKeys['graveAutumn_new'])
+        self.addEnabledMenuItems('editGraveAutumn','AutumnClear1', self.dicUserKeys['graveAutumn_delete'])
+        #self.addEnabledMenuItems('editGraveAutumn','AutumnPrint1', self.dicUserKeys['graveAutumn_print'])
+        self.addEnabledMenuItems('editGraveAutumn','AutumnEdit1', self.dicUserKeys['graveAutumn_edit'])
+# enabledMenues for graveWinter
+        self.addEnabledMenuItems('editGraveWinter','WinterNew1', self.dicUserKeys['graveWinter_new'])
+        self.addEnabledMenuItems('editGraveWinter','WinterClear1', self.dicUserKeys['graveWinter_delete'])
+        #self.addEnabledMenuItems('editGraveWinter','WinterPrint1', self.dicUserKeys['graveWinter_print'])
+        self.addEnabledMenuItems('editGraveWinter','WinterEdit1', self.dicUserKeys['graveWinter_edit'])
 
-    # enabledMenues for graveAutumn
-        self.addEnabledMenuItems('editGraveAutumn','AutumnNew1')
-        self.addEnabledMenuItems('editGraveAutumn','AutumnClear1')
-        #self.addEnabledMenuItems('editGraveAutumn','AutumnPrint1')
-        self.addEnabledMenuItems('editGraveAutumn','AutumnEdit1')
-        
-    # enabledMenues for graveWinter
-        self.addEnabledMenuItems('editGraveWinter','WinterNew1')
-        self.addEnabledMenuItems('editGraveWinter','WinterClear1')
-        #self.addEnabledMenuItems('editGraveWinter','WinterPrint1')
-        self.addEnabledMenuItems('editGraveWinter','WinterEdit1')
+       # enabledMenues for graveHolidays
+        self.addEnabledMenuItems('editGraveHolidays','HolidaysNew1', self.dicUserKeys['graveHolidays_new'])
+        self.addEnabledMenuItems('editGraveHolidays','HolidaysClear1', self.dicUserKeys['graveHolidays_delete'])
+        #self.addEnabledMenuItems('editGraveHolidays','HolidaysPrint1', self.dicUserKeys['graveHolidays_print'])
+        self.addEnabledMenuItems('editGraveHolidays','HolidaysEdit1', self.dicUserKeys['graveHolidays_edit'])
+ # enabledMenues for graveUnique
+        self.addEnabledMenuItems('editGraveUnique','UniqueNew1', self.dicUserKeys['graveUnique_new'])
+        self.addEnabledMenuItems('editGraveUnique','UniqueClear1', self.dicUserKeys['graveUnique_delete'])
+        #self.addEnabledMenuItems('editGraveUnique','UniquePrint1', self.dicUserKeys['graveUnique_print'])
+        self.addEnabledMenuItems('editGraveUnique','UniqueEdit1', self.dicUserKeys['graveUnique_edit'])
+# enabledMenues for graveAnnual
+        self.addEnabledMenuItems('editGraveAnnual','AnnualNew1', self.dicUserKeys['graveAnnual_new'])
+        self.addEnabledMenuItems('editGraveAnnual','AnnualClear1', self.dicUserKeys['graveAnnual_delete'])
+        #self.addEnabledMenuItems('editGraveAnnual','AnnualPrint1', self.dicUserKeys['graveAnnual_print'])
+        self.addEnabledMenuItems('editGraveAnnual','AnnualEdit1', self.dicUserKeys['graveAnnual_edit'])
+
+ 
 
     # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['address_save'])
@@ -268,6 +344,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editSave','SummerSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','AutumnSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','WinterSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','HolidaysSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','UniqueSave1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','AnnualSave1', self.dicUserKeys['address_save'])
         # tabs from notebook
         
         self.tabGrave = 0
@@ -280,7 +359,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.tabGraveAnnual = 7
         self.tabGraveUnique = 8
         
-
+        
 
 
         try:
@@ -385,19 +464,22 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_SummerSave1_activate(self, event):
         self.out( "save GraveSummer addresses v2")
         self.singleGraveSummer.graveID = self.singleGrave.ID
+        self.singleGraveSummer.singleGrave = self.singleGrave
         self.singleGraveSummer.save()
         self.setEntriesEditable(self.EntriesGravesSummer, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
+        
         
     def on_SummerNew1_activate(self, event):
         self.out( "new GraveSummer addresses v2")
         self.singleGraveSummer.newRecord()
         self.setEntriesEditable(self.EntriesGravesSummer, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
         
     def on_SummerEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesGravesSummer, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
 
     def on_SummerDelete1_activate(self, event):
         self.out( "delete GraveSummer addresses v2")
@@ -410,21 +492,22 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
    
     def on_AutumnSave1_activate(self, event):
-        self.out( "save GraveAutumn addresses v2")
         self.singleGraveAutumn.graveID = self.singleGrave.ID
+        self.singleGraveAutumn.singleGrave = self.singleGrave
         self.singleGraveAutumn.save()
         self.setEntriesEditable(self.EntriesGravesAutumn, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
         
     def on_AutumnNew1_activate(self, event):
-        self.out( "new GraveAutumn addresses v2")
+        print  "new GraveAutumn addresses v2"
         self.singleGraveAutumn.newRecord()
         self.setEntriesEditable(self.EntriesGravesAutumn, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
         
     def on_AutumnEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesGravesAutumn, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
 
     def on_AutumnDelete1_activate(self, event):
         self.out( "delete GraveAutumn addresses v2")
@@ -436,25 +519,107 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_WinterSave1_activate(self, event):
         self.out( "save GraveWinter addresses v2")
         self.singleGraveWinter.graveID = self.singleGrave.ID
+        self.singleGraveWinter.singleGrave = self.singleGrave
         self.singleGraveWinter.save()
         self.setEntriesEditable(self.EntriesGravesWinter, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
         
     def on_WinterNew1_activate(self, event):
         self.out( "new GraveWinter addresses v2")
         self.singleGraveWinter.newRecord()
         self.setEntriesEditable(self.EntriesGravesWinter, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
         
     def on_WinterEdit1_activate(self, event):
         self.setEntriesEditable(self.EntriesGravesWinter, True)
-
+        self.setEntriesEditable(self.EntriesGraves, True)
 
     def on_WinterDelete1_activate(self, event):
         self.out( "delete GraveWinter addresses v2")
         self.singleGraveWinter.deleteRecord()
 
         
+        
+    #Menu Holidays
+        
+   
+    def on_HolidaysSave1_activate(self, event):
+        self.out( "save GraveHolidays addresses v2")
+        self.singleGraveHolidays.graveID = self.singleGrave.ID
+        self.singleGraveHolidays.singleGrave = self.singleGrave
+        self.singleGraveHolidays.save()
+        self.setEntriesEditable(self.EntriesGravesHolidays, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
+        self.tabChanged()
+        
+    def on_HolidaysNew1_activate(self, event):
+        self.out( "new GraveHolidays addresses v2")
+        self.singleGraveHolidays.newRecord()
+        self.setEntriesEditable(self.EntriesGravesHolidays, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+        
+    def on_HolidaysEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesHolidays, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+
+    def on_HolidaysClear1_activate(self, event):
+        self.out( "delete GraveHolidays addresses v2")
+        self.singleGraveHolidays.deleteRecord()
+
+#Menu Annual
+        
+   
+    def on_AnnualSave1_activate(self, event):
+        self.out( "save GraveAnnual addresses v2")
+        self.singleGraveAnnual.graveID = self.singleGrave.ID
+        self.singleGraveAnnual.singleGrave = self.singleGrave
+        self.singleGraveAnnual.save()
+        self.setEntriesEditable(self.EntriesGravesAnnual, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
+        self.tabChanged()
+        
+    def on_AnnualNew1_activate(self, event):
+        self.out( "new GraveAnnual addresses v2")
+        self.singleGraveAnnual.newRecord()
+        self.setEntriesEditable(self.EntriesGravesAnnual, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+        
+    def on_AnnualEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesAnnual, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+
+    def on_AnnualClear1_activate(self, event):
+        self.out( "delete GraveAnnual addresses v2")
+        self.singleGraveAnnual.deleteRecord()
+
+#Menu Unique
+        
+   
+    def on_UniqueSave1_activate(self, event):
+        self.out( "save GraveUnique addresses v2")
+        self.singleGraveUnique.graveID = self.singleGrave.ID
+        self.singleGraveUnique.singleGrave = self.singleGrave
+        self.singleGraveUnique.save()
+        self.setEntriesEditable(self.EntriesGravesUnique, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
+        self.tabChanged()
+        
+    def on_UniqueNew1_activate(self, event):
+        self.out( "new GraveUnique addresses v2")
+        self.singleGraveUnique.newRecord()
+        self.setEntriesEditable(self.EntriesGravesUnique, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+        
+    def on_UniqueEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesUnique, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+
+    def on_UniqueClear1_activate(self, event):
+        self.out( "delete GraveUnique addresses v2")
+        self.singleGraveUnique.deleteRecord()
+
+
 
 ##    def on_calendar1_day_selected(self, cal):
 ##        print cal
@@ -714,7 +879,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSummer.disconnectTree()
         self.singleGraveAutumn.disconnectTree()
         self.singleGraveWinter.disconnectTree()
-        
+        self.singleGraveHolidays.disconnectTree()
+        self.singleGraveAnnual.disconnectTree()
+        self.singleGraveUnique.disconnectTree()
         if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
@@ -752,11 +919,21 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
         elif self.tabOption == self.tabGraveHollidays:
             print "1 tree "
-            self.singleGraveH.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
-            self.singleGraveWinter.connectTree()
-            self.singleGraveWinter.refreshTree()
+            self.singleGraveHolidays.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
+            self.singleGraveHolidays.connectTree()
+            self.singleGraveHolidays.refreshTree()
             
-         
+        elif self.tabOption == self.tabGraveAnnual:
+            print "1 tree "
+            self.singleGraveAnnual.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
+            self.singleGraveAnnual.connectTree()
+            self.singleGraveAnnual.refreshTree()
+            
+        elif self.tabOption == self.tabGraveUnique:
+            print "1 tree "
+            self.singleGraveUnique.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and article_id = articles.id '
+            self.singleGraveUnique.connectTree()
+            self.singleGraveUnique.refreshTree()
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
         
@@ -813,16 +990,45 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
         
-        
-        elif self.tabOption == self.tabGrave:
+        elif self.tabOption == self.tabGraveWinter:
             self.out( 'Seite 2')
             self.disableMenuItem('tabs')
-            self.enableMenuItem('grave')
+            self.enableMenuItem('graveWinter')
            
-            self.editAction = 'editGrave'
+            self.editAction = 'editGraveWinter'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
-    
+        
+        elif self.tabOption == self.tabGraveHollidays:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveHolidays')
+           
+            self.editAction = 'editGraveHolidays'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus]) 
+            
+            
+        elif self.tabOption == self.tabGraveAnnual:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveAnnual')
+           
+            self.editAction = 'editGraveAnnual'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
+         
+        elif self.tabOption == self.tabGraveUnique:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveUnique')
+           
+            self.editAction = 'editGraveUnique'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
+            
+            
+        
     
         # refresh the Tree
         self.refreshTree()

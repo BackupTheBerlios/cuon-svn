@@ -511,6 +511,8 @@ class articleswindow(chooseWindows):
     def on_eFindDesignation_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
+            
+            
     def on_eFindMaterialGroupID_key_press_event(self, entry,event):
         if self.checkKey(event,'NONE','Return'):
             self.searchArticle()
@@ -525,7 +527,7 @@ class articleswindow(chooseWindows):
         sID = self.getWidget('eFindMaterialGroupID').get_text()
         print "sID  = ",  sID
         
-        self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
+        #self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
         liSearch = []
         if sNumber:
             liSearch.append('number')
@@ -541,7 +543,7 @@ class articleswindow(chooseWindows):
             liSearch.append(int(sID))
             
         self.singleArticle.sWhere = self.getWhere(liSearch)
-        self.out(self.singleArticle.sWhere, self.ERROR)
+        #self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()
 
 
@@ -574,15 +576,15 @@ class articleswindow(chooseWindows):
                              
     def on_eAssociatedNr_changed(self, event):
         print 'eAssocsiatedNr changed'
-        
-        iMaterialGroup = self.getChangedValue('eCategoryNr')
-        sGroupName = self.singleMaterialGroup.getNameAndDesignation(iMaterialGroup)
-        if len(sGroupName) > 0:
-            self.getWidget('eCategory').set_text(sGroupName)
-        else:
-            self.getWidget('eCategory').set_text('')        
-            
-            
+#        
+#        iMaterialGroup = self.getChangedValue('eCategoryNr')
+#        sGroupName = self.singleMaterialGroup.getNameAndDesignation(iMaterialGroup)
+#        if len(sGroupName) > 0:
+#            self.getWidget('eAssocsiatedText').set_text(sGroupName)
+#        else:
+#            self.getWidget('eAssocsiatedText').set_text('')        
+#            
+        self.on_cbAssociatedWith_changed(event)
             
             
     def on_bGotoAssociated_clicked(self, event):
@@ -612,6 +614,9 @@ class articleswindow(chooseWindows):
                 
         else:
             self.setText2Widget('','eAssocsiatedText')
+            
+            
+            
     def on_bQuickAppend_clicked(self, event):
         pass
         
