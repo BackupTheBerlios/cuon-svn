@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entries_for_table>
   <table>
-    <table_name>grave_work_year</table_name>
+    <table_name>grave_work_Annual</table_name>
 
     <entry>
-      <name>eYearArticleID</name>
+      <name>eAnnualArticleID</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>int</verify_type>
       <create_sql>1</create_sql>
       <sql_field>article_id</sql_field>
-      <duty>YES</duty>Year
+      <duty>YES</duty>Annual
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>eYearCounts</name>
+      <name>eAnnualCounts</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>float</verify_type>
@@ -26,7 +26,7 @@
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>eYearDesignation</name>
+      <name>eAnnualDesignation</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>string</verify_type>
@@ -37,7 +37,7 @@
       <fg_color>0</fg_color>
     </entry>
     <entry>
-      <name>cbYearPeriod</name>
+      <name>cbAnnualPeriod</name>
       <type>combobox</type>
       <size>10</size>
       <verify_type>int</verify_type>
@@ -48,7 +48,7 @@
       <fg_color>0</fg_color>
     </entry>
      <entry>
-      <name>eYearPrice</name>
+      <name>eAnnualPrice</name>
       <type>textline</type>
       <size>10</size>
       <verify_type>float</verify_type>
@@ -59,7 +59,7 @@
       <fg_color>0</fg_color>
     </entry>
      <entry>
-      <name>tvYearHints</name>
+      <name>tvAnnualHints</name>
       <type>text</type>
       <size>30000</size>
       <verify_type>text</verify_type>

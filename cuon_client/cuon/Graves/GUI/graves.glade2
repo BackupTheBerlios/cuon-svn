@@ -5001,7 +5001,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="eHolidayCounts">
+			    <widget class="GtkEntry" id="eHolidaysCounts">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -5058,7 +5058,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="eHolidayDesignation">
+			    <widget class="GtkEntry" id="eHolidaysDesignation">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -5115,7 +5115,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="eHolidayArticleDesignation">
+			    <widget class="GtkEntry" id="eHolidaysArticleDesignation">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">False</property>
@@ -5172,7 +5172,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkEntry" id="eHolidayPrice">
+			    <widget class="GtkEntry" id="eHolidaysPrice">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -5230,7 +5230,7 @@ Dauergrabpflege</property>
 			  </child>
 
 			  <child>
-			    <widget class="GtkComboBoxEntry" id="comboboxentry13">
+			    <widget class="GtkComboBoxEntry" id="cbHolidaysPeriod">
 			      <property name="visible">True</property>
 			      <property name="add_tearoffs">False</property>
 			      <property name="has_frame">True</property>
@@ -5341,7 +5341,7 @@ Dauergrabpflege</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="tvDescriptionHoliday">
+			    <widget class="GtkTextView" id="tvDescriptionHolidays">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>

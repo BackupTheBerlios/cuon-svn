@@ -164,24 +164,20 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
         self.singleGraveHolidays.setEntries(self.getDataEntries(self.EntriesGravesHolidays) )
         self.singleGraveHolidays.setGladeXml(self.xml)
-        self.singleGraveHolidays.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveHolidays.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveHolidays.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveHolidays.setTreeOrder('article_id')
         self.singleGraveHolidays.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveHolidays.setTree(self.xml.get_widget('tree1') )
         self.singleGraveHolidays.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
-        self.EntriesGravesSummer = 'graves_summer.xml'
-        self.loadEntries(self.EntriesGravesSummer)
-        
-        
         
         self.EntriesGravesAnnual = 'graves_year.xml'
         
         self.loadEntries(self.EntriesGravesAnnual)     
         self.singleGraveAnnual.setEntries(self.getDataEntries(self.EntriesGravesAnnual) )
         self.singleGraveAnnual.setGladeXml(self.xml)
-        self.singleGraveAnnual.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveAnnual.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveAnnual.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveAnnual.setTreeOrder('article_id')
         self.singleGraveAnnual.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
@@ -199,16 +195,14 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
         self.singleGraveUnique.setEntries(self.getDataEntries(self.EntriesGravesUnique) )
         self.singleGraveUnique.setGladeXml(self.xml)
-        self.singleGraveUnique.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveUnique.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveUnique.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveUnique.setTreeOrder('article_id')
         self.singleGraveUnique.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveUnique.setTree(self.xml.get_widget('tree1') )
         self.singleGraveUnique.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
-        self.EntriesGravesSummer = 'graves_summer.xml'
-        self.loadEntries(self.EntriesGravesSummer)
-         
+       
         # set values for comboBox
 
         liService,  liTypeOfGrave, liTypeOfPaid, liPercent = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
@@ -545,7 +539,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
    
     def on_HolidaysSave1_activate(self, event):
-        self.out( "save GraveHolidays addresses v2")
+        print "save GraveHolidays addresses v2"
         self.singleGraveHolidays.graveID = self.singleGrave.ID
         self.singleGraveHolidays.singleGrave = self.singleGrave
         self.singleGraveHolidays.save()
@@ -554,12 +548,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.tabChanged()
         
     def on_HolidaysNew1_activate(self, event):
-        self.out( "new GraveHolidays addresses v2")
+        print "new GraveHolidays addresses v2"
         self.singleGraveHolidays.newRecord()
         self.setEntriesEditable(self.EntriesGravesHolidays, True)
         self.setEntriesEditable(self.EntriesGraves, True)
         
     def on_HolidaysEdit1_activate(self, event):
+        print "print GraveHolidays addresses v2"
         self.setEntriesEditable(self.EntriesGravesHolidays, True)
         self.setEntriesEditable(self.EntriesGraves, True)
 
@@ -870,7 +865,32 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             if self.AutoInsert:
                 self.AutoInsert = False
                 self.activateClick('WinterSave1')
-              
+        elif self.tabOption == self.tabGraveHollidays:
+            try:
+                self.getWidget('eHolidaysArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eHolidaysArticleID').get_text())) )
+            except:
+                self.getWidget('eHolidaysArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('HolidaysSave1')
+        elif self.tabOption == self.tabGraveAnnual:
+            try:
+                self.getWidget('eAnnualArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eAnnualArticleID').get_text())) )
+            except:
+                self.getWidget('eAnnualArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('AnnualSave1')
+                
+        elif self.tabOption == self.tabGraveUnique:
+            try:
+                self.getWidget('eUniqueArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eUniqueArticleID').get_text())) )
+            except:
+                self.getWidget('eUniqueArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('UniqueSave1')
+                         
         
     def refreshTree(self):
         self.singleGrave.disconnectTree()
