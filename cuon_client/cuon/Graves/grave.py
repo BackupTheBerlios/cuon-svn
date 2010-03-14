@@ -759,7 +759,19 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.activateClick('clear1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringClear1')
-             
+        elif self.tabOption == self.tabGraveSummer:
+            self.activateClick('SummerClear1')
+        elif self.tabOption == self.tabGraveAutumn:
+            self.activateClick('AutumnClear1')
+        elif self.tabOption == self.tabGraveWinter:
+            self.activateClick('WinterClear1')
+        elif self.tabOption == self.tabGraveHollidays:
+            self.activateClick('HolidaysClear1')
+        elif self.tabOption == self.tabGraveAnnual:
+            self.activateClick('AnnualClear1')
+        elif self.tabOption == self.tabGraveUnique:
+            self.activateClick('UniqueClear1')
+                  
                  
               
     def on_bChooseAddress_clicked(self, event):
