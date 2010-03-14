@@ -226,6 +226,13 @@ class User(defaultValues):
         self.setDicUserKeys('articles_purchase_print','p')
         self.setDicUserKeys('articles_purchase_save','s')
 
+        # Leasing
+        self.setDicUserKeys('leasing_edit','e')
+        self.setDicUserKeys('leasing_delete','d')
+        self.setDicUserKeys('leasing_new','n')
+        self.setDicUserKeys('leasing_print','p')
+        self.setDicUserKeys('leasing_save','s')
+
         # staff
         self.setDicUserKeys('staff_edit','e')
         self.setDicUserKeys('staff_delete','d')

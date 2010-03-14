@@ -431,10 +431,103 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql = sSql + ' order by lastname, lastname2, firstname, city'
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        
     def getPhonelist11(self, dicSearchlist, dicUser):
         import string 
         
+        sSql = 'select lastname, lastname2, firstname, street, zip, city, phone, id from address'
+        sSql3 = ''
+        sSql4 = ''
+        sSql5 = ''
+        sSql6 = ''
+        sSql7 = ''
+        sSql8 = ''
+        
+        if dicSearchlist:
+            sSql2 = sSql + ' where '
+            if dicSearchlist['eLastnameFrom'] and dicSearchlist['eLastnameTo'] :
+               lastnameFrom =  string.upper(dicSearchlist['eLastnameFrom']) 
+               lastnameTo = string.lower(dicSearchlist['eLastnameTo']) 
+                
+               sSql3 = sSql2 + " lastname  between  '" +  lastnameFrom + "' and '" + lastnameTo +"'"  
+               sSql = sSql3
+        
+            if dicSearchlist['eFirstnameFrom'] and dicSearchlist['eFirstnameTo'] :
+               firstnameFrom =  string.upper(dicSearchlist['eFirstnameFrom']) 
+               firstnameTo = string.lower(dicSearchlist['eFirstnameTo']) 
+                
+               
+               sSql4 = " firstname  between  '" +  firstnameFrom + "' and '" + firstnameTo +"'"  
+               if sSql3:
+                   sSql4 = sSql3 + ' and ' + sSql4
+               else:
+                   sSql4 = sSql2 + sSql4
+        
+               sSql = sSql4
+        
+        
+            if dicSearchlist['eCityFrom'] and dicSearchlist['eCityTo'] :
+               cityFrom =  string.upper(dicSearchlist['eCityFrom']) 
+               cityTo = string.lower(dicSearchlist['eCityTo']) 
+                
+               
+               sSql5 = " city  between  '" +  cityFrom + "' and '" + cityTo +"'"  
+               if sSql3 and not sSql4:
+                   sSql5 = sSql3 + ' and ' + sSql5
+               elif sSql3 and sSql4:
+                   sSql5 = sSql4 + ' and ' + sSql5
+               else:
+                   sSql5 = sSql2 + sSql5
+        
+               sSql = sSql5
+        
+        
+            if dicSearchlist['eCountryFrom'] and dicSearchlist['eCountryTo'] :
+               countryFrom =  string.upper(dicSearchlist['eCountryFrom']) 
+               countryTo = string.lower(dicSearchlist['eCountryTo']) 
+                
+           
+                
+               sSql6 = " country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
+               if sSql3 and not sSql4 and not sSql5:
+                   sSql6 = sSql3 + ' and ' + sSql6
+               elif sSql4 and not sSql5:
+                   sSql6 = sSql4 + ' and ' + sSql6
+               elif sSql5:
+                   sSql6 = sSql5 + ' and ' + sSql6
+               else:
+                   sSql6 = sSql2 + sSql6
+        
+               sSql = sSql6
+            if dicSearchlist['eInfoContains'] :
+                sSql7 = " info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6:
+                    sSql = sSql + " and " + sSql7
+                else:
+                    sSql = sSql2 + sSql7
+                    
+            if dicSearchlist['eNewsletterContains'] :
+                sSql8 = " newsletter ~*'" + dicSearchlist['eNewsletterContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6 or sSql7:
+                    sSql = sSql + " and " + sSql8
+                else:
+                    sSql = sSql2 + sSql8
+                    
+        if dicSearchlist:
+            sSql = sSql + self.getWhere("",dicUser,2)
+        else:
+            sSql = sSql + self.getWhere("",dicUser,1)
+            
+        
+        
+        sSql = sSql + ' order by lastname, lastname2, firstname, city'
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+    
+
+
+
+    def getPhonelist12(self, dicSearchlist, dicUser):
+        import string 
         sSql = 'select address.id as address_id, address.lastname as address_lastname, address.lastname2 as ddress_lastname2, address.firstname as address_firstname, address.street as address_street, address.zip as ddress_zip, address.city as address_city, address.phone as address_phone, '
         sSql = sSql + ' partner.lastname as partner_lastname, partner.lastname2 as partner_lastname2, partner.firstname as partner_firstname, partner.street as partner_street, partner.zip as partner_zip, partner.city as partner_city, partner.phone as partner_phone '
         sSql = sSql + ' from address, partner '
@@ -443,6 +536,8 @@ class Address(xmlrpc.XMLRPC, basics):
         sSql4 = ''
         sSql5 = ''
         sSql6 = ''
+        sSql7 = ''
+        sSql8 = ''
         
         if dicSearchlist:
             sSql2 = sSql + sSqlWhere + ' and '
@@ -487,7 +582,8 @@ class Address(xmlrpc.XMLRPC, basics):
                countryFrom =  string.upper(dicSearchlist['eCountryFrom']) 
                countryTo = string.lower(dicSearchlist['eCountryTo']) 
                 
-               
+           
+                
                sSql6 = " address.country  between  '" +  countryFrom + "' and '" + countryTo +"'"  
                if sSql3 and not sSql4 and not sSql5:
                    sSql6 = sSql3 + ' and ' + sSql6
@@ -499,15 +595,31 @@ class Address(xmlrpc.XMLRPC, basics):
                    sSql6 = sSql2 + sSql6
         
                sSql = sSql6
+            if dicSearchlist['eInfoContains'] :
+                sSql7 = " address.info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6:
+                    sSql = sSql + " and " + sSql7
+                else:
+                    sSql = sSql2 + sSql7
+                    
+            if dicSearchlist['eNewsletterContains'] :
+                sSql8 = " address.newsletter ~*'" + dicSearchlist['eNewsletterContains'] +"' " 
+                if sSql3 or sSql4 or sSql5 or sSql6 or sSql7:
+                    sSql = sSql + " and " + sSql8
+                else:
+                    sSql = sSql2 + sSql8
+                    
         if dicSearchlist:
-            sSql = sSql + self.getWhere("",dicUser,2,'partner.')
+            sSql = sSql + self.getWhere("",dicUser,2, 'address.')
         else:
-            sSql = sSql + self.getWhere("",dicUser,1,'partner.')
+            sSql = sSql + self.getWhere("",dicUser,1, 'address.')
             
-        #sSql = sSql + self.getWhere(sSqlWhere,dicUser,0,'partner.')
-        sSql = sSql + ' order by address.lastname, address.lastname2, address.firstname, address.city, partner.lastname, partner.lastname2, partner.firstname, partner.city'
-        print sSql
+        
+        
+        sSql = sSql + ' order by address.lastname, address.lastname2, address.firstname, address.city,partner.lastname, partner.lastname2, partner.firstname, partner.city '
+        
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+  
     def xmlrpc_sendEmail2Address(self, dicEmail, liAttach, dicUser):
         print 'read Email-config'
         
@@ -1024,3 +1136,5 @@ class Address(xmlrpc.XMLRPC, basics):
             print liID    
         return liID
         
+
+

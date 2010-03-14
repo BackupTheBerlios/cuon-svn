@@ -232,6 +232,8 @@ try:
 except Exception, params:
     print 'import failed'
     print Exception, params
+    
+import cuon.Leasing.leasing
 
 import cuon.Order.order
 import cuon.Proposal.proposal
@@ -292,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 21, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 0, 'Minor': 48, 'Rev': 22, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -399,6 +401,9 @@ class MainWindow(windows):
                 self.addEnabledMenuItems('work','mi_articles1')
                 self.addEnabledMenuItems('work','mi_bibliographic')
                 self.addEnabledMenuItems('work','mi_clients1')
+                self.addEnabledMenuItems('work','contracts1')
+                self.addEnabledMenuItems('work','mi_leasing1')
+
                 print 'enableMenuItem staff'
                 self.addEnabledMenuItems('work','mi_staff1')
                 print 'enableMenuItem staff end'
@@ -639,7 +644,7 @@ class MainWindow(windows):
         bank = cuon.Bank.bank.bankwindow(self.allTables)
 
 
-    #-->
+    
     def on_bibliographic_activate(self, event):
         import cuon.Biblio.biblio
         bib = cuon.Biblio.biblio.bibliowindow(self.allTables)
@@ -649,6 +654,11 @@ class MainWindow(windows):
     def on_staff1_activate(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables) 
         
+        
+    # submenu contracts1
+    def on_leasing1_activate(self, event):
+        leasing = cuon.Leasing.leasing.leasingwindow(self.allTables) 
+    
     # Action-Menu
     
     

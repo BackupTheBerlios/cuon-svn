@@ -704,20 +704,56 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.activateClick('new1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringNew1')
-            
+        elif self.tabOption == self.tabGraveSummer:
+            self.activateClick('SummerNew1')
+        elif self.tabOption == self.tabGraveAutumn:
+            self.activateClick('AutumnNew1')
+        elif self.tabOption == self.tabGraveWinter:
+            self.activateClick('WinterNew1')
+        elif self.tabOption == self.tabGraveHollidays:
+            self.activateClick('HolidaysNew1')
+        elif self.tabOption == self.tabGraveAnnual:
+            self.activateClick('AnnualNew1')
+        elif self.tabOption == self.tabGraveUnique:
+            self.activateClick('UniqueNew1')            
             
     def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('edit1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringEdit1')
+        elif self.tabOption == self.tabGraveSummer:
+            self.activateClick('SummerEdit1')
+        elif self.tabOption == self.tabGraveAutumn:
+            self.activateClick('AutumnEdit1')
+        elif self.tabOption == self.tabGraveWinter:
+            self.activateClick('WinterEdit1')
+        elif self.tabOption == self.tabGraveHollidays:
+            self.activateClick('HolidaysEdit1')
+        elif self.tabOption == self.tabGraveAnnual:
+            self.activateClick('AnnualEdit1')
+        elif self.tabOption == self.tabGraveUnique:
+            self.activateClick('UniqueEdit1')
+            
             
     def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('save1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringSave1')
-        
+        elif self.tabOption == self.tabGraveSummer:
+            self.activateClick('SummerSave1')
+        elif self.tabOption == self.tabGraveAutumn:
+            self.activateClick('AutumnSave1')
+        elif self.tabOption == self.tabGraveWinter:
+            self.activateClick('WinterSave1')
+        elif self.tabOption == self.tabGraveHollidays:
+            self.activateClick('HolidaysSave1')
+        elif self.tabOption == self.tabGraveAnnual:
+            self.activateClick('AnnualSave1')
+        elif self.tabOption == self.tabGraveUnique:
+            self.activateClick('UniqueSave1')
+                
     def on_tbDelete_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('clear1')
@@ -761,7 +797,23 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         if self.tabOption == self.tabGraveSpring:
             art.setChooseEntry('chooseArticle', self.getWidget( 'eSpringArticleID'))
 
-    
+        elif self.tabOption == self.tabGraveSummer:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eSummerArticleID'))
+            
+        elif self.tabOption == self.tabGraveAutumn:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eAutumnArticleID'))
+            
+        elif self.tabOption == self.tabGraveWinter:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eWinterArticleID'))
+            
+        elif self.tabOption == self.tabGraveHollidays:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eHolidaysArticleID'))
+            
+        elif self.tabOption == self.tabGraveUnique:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eUniqueArticleID'))
+            
+        elif self.tabOption == self.tabGraveAnnual:
+            art.setChooseEntry('chooseArticle', self.getWidget( 'eAnnualArticleID'))
     
     
     def on_bSearchGraveyard_clicked(self,  event):
@@ -818,6 +870,15 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eAutumnArticleID').set_text(`self.fillArticlesNewID`)
 
+        if self.tabOption == self.tabGraveHollidays:
+            self.activateClick('HolidaysNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eWinterArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eHolidaysCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eHolidaysArticleID').set_text(`self.fillArticlesNewID`)
+
         if self.tabOption == self.tabGraveWinter:
             self.activateClick('WinterNew1')
             self.AutoInsert = True 
@@ -826,6 +887,24 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eWinterCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
             self.getWidget('eWinterPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eWinterArticleID').set_text(`self.fillArticlesNewID`)
+
+        if self.tabOption == self.tabGraveUnique:
+            self.activateClick('UniqueNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eWinterArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eUniqueCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eUniquePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eUniqueArticleID').set_text(`self.fillArticlesNewID`)
+
+        if self.tabOption == self.tabGraveAnnual:
+            self.activateClick('AnnualNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eWinterArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eAnnualCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eAnnualPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eAnnualArticleID').set_text(`self.fillArticlesNewID`)
 
             #
     def on_eArticleID_changed(self, event):

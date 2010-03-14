@@ -1354,6 +1354,17 @@
     <specials>inherits (t_grave_work);</specials>
     <x>152</x>
     <y>115</y>
+      <field>
+      <name>unique_date</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
       </table>
 
       <table>

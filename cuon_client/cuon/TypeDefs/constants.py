@@ -61,6 +61,8 @@ class constants:
         self.MN['Calendar'] = 28000
         self.MN['Think'] = 29000
         
+        self.MN['Leasing'] = 30001
+        
         self.MN['Grave'] = 40000
         self.MN['Graveyard'] = 41000
         

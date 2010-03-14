@@ -49,8 +49,8 @@ class MyXML:
         for n in node.childNodes:
             if n.nodeType == n.TEXT_NODE:
                 t += n.nodeValue
-	else:
-	    raise NotTextNodeError
+            else:
+                raise NotTextNodeError
         return t
     
     
@@ -83,7 +83,7 @@ class MyXML:
                     l.append(nodeToDic(c))
                     dic.update({n.nodeName:l })
                     continue
-		
+        
                 try:
                     text = getTextFromNode(n)
                 except NotTextNodeError:

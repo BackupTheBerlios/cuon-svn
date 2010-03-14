@@ -132,6 +132,7 @@ class setup:
             self.liLocaldirs.append(["./cuon/" + sDir + "/*.py",self.dest_cuon + "/" + sDir])
         
 
+        
 ##        
 ##        self.src_finances_misc = "./cuon/Finances/*.py"
         self.liLocaldirs.append(["./cuon/Finances/CashAccountBook/*.py", self.dest_cuon + "/Finances"])

@@ -60,8 +60,21 @@ class Report(xmlrpc.XMLRPC, basics):
         #print repData
         
         
-        return self.report_server.ReportServer.createReport(repData)        
-    
+        return self.report_server.ReportServer.createReport(repData)    
+      
+      
+    def xmlrpc_server_address_phonelist12(self, dicSearchlist, dicUser):
+        import Reports.report_addresses_phone12
+        import Address
+        
+        print "startReport"
+        oAddress=Address.Address()
+        oReports = Reports.report_addresses_phone12.report_addresses_phone12()
+        repData = oReports.getReportData(dicSearchlist, dicUser, oAddress, self.ReportDefs)
+        #print repData
+        
+        
+        return self.report_server.ReportServer.createReport2(repData)    
     def xmlrpc_server_articles_number1(self, dicSearchlist, dicUser):
         import Reports.report_articles_number1
         import Article

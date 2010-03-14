@@ -1,0 +1,170 @@
+<entries_for_table>
+  <table>
+    <table_name>articles</table_name>
+    <entry>
+      <name>eNumber</name>
+      <type>textline</type>
+      <size>30</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>number</sql_field>
+      <duty>YES</duty>
+      
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry> 
+    <entry>
+      <name>eDesignation</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>designation</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eUnit</name>
+      <type>textline</type>
+      <size>15</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>unit</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eWrapping</name>
+      <type>textline</type>
+      <size>15</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>wrapping</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    
+    
+    <entry>
+      <name>eQuantumPerWrap</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>quantumperwrap</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    
+     <entry>
+      <name>eManufactorNumber</name>
+      <type>textline</type>
+      <size>0</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>manufactor_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eWeight</name>
+      <type>textline</type>
+      <size>50</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>weight</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eSellingPrice1</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice1</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice2</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice2</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice3</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice3</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+
+    <entry>
+      <name>eSellingPrice4</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>sellingprice4</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>eCategoryNr</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>material_group</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>cbAssociatedWith</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>associated_with</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    <entry>
+      <name>eAssociatedNr</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>associated_id</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+      
+    </entry>
+    
+  </table>
+  
+  </entries_for_table>

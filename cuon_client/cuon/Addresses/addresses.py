@@ -35,6 +35,7 @@ try:
     import cuon.Bank.SingleBank
     import lists_addresses_phone1
     import lists_addresses_phone11
+    import lists_addresses_phone12
     import commands
     import logging
     from cuon.Windows.chooseWindows  import chooseWindows
@@ -970,7 +971,9 @@ class addresswindow(chooseWindows):
         self.out( "lists startet")
         Pdf = lists_addresses_phone11.lists_addresses_phone11()
 
-
+    def on_liAddressesPhone12_activate(self, event):
+        print  "lists 12 startet"
+        Pdf = lists_addresses_phone12.lists_addresses_phone12()
 
     #Menu Writer
     def on_newletter1_activate(self, event):

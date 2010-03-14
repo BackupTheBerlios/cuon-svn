@@ -98,6 +98,11 @@
       <Entry-FileValue>../usr/share/cuon/entry_articles_stock.xml</Entry-FileValue>
     </Entries>
     
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>leasing.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_leasing.xml</Entry-FileValue>
+    </Entries>
     
     <Entries>       
       <Entry-Name>cuon</Entry-Name>
@@ -537,6 +542,12 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>articles_search1.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/articles_search1.glade2</Glade-FileValue>
+    </GladeEntries>
+     <GladeEntries>
+     
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>leasing.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/leasing.glade2</Glade-FileValue>
     </GladeEntries>
     
     <GladeEntries>
