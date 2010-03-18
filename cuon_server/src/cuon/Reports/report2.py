@@ -25,19 +25,19 @@ from reportlab.pdfbase.ttfonts import TTFont
 from MyXML import MyXML
 import copy
 import cPickle
-import os,  os.path,  shutil
+import os
+import os.path
 import string
-import math,  random
-from cuon.basics import basics
+import math
 
 
 
 
-class report2(basics,  MyXML):
+
+class report(MyXML):
     def __init__(self):
-        basics.__init__(self)
         MyXML.__init__(self)
-        
+
      
         self.pdfDoc = None
         self.pdfStory = None
@@ -96,8 +96,6 @@ class report2(basics,  MyXML):
 
         self.numberOfPage = 1
         self.pdfFile = 'noname.pdf'
-        self.sLtxFile = None
-        self.f = None
         self.dicResults = {}
         self.dicVariable = {}
         self.dicResult = {}
@@ -146,8 +144,6 @@ class report2(basics,  MyXML):
         if sFile:
             dirNorm = os.path.dirname(sFile)
             sDirFile = os.path.basename(sFile)
-            self.sLtxFile = sDirFile[:len(sDirFile) -4] + `int(13444555*random.random() )` +'.ltx'
-            print 'sLtxFile = ',self.sLtxFile
             dirClient = dirNorm[0:len(dirNorm) -4] + '/client_' + `self.dicUser['client']` + '/' + sDirFile
             dirUser = dirNorm[0:len(dirNorm) -4] + '/user_' + self.dicUser['Name'] + '/' + sDirFile
                 
@@ -544,8 +540,6 @@ class report2(basics,  MyXML):
                 
                 if sChangeGroupBy:
                     changeGroupBy = sChangeGroupBy.encode('ascii')
-                    print 'self.dicResult = ',  self.dicResult
-                    
                     dicGroup['newValue'] = self.dicResult[changeGroupBy]
                     
                     
@@ -939,14 +933,7 @@ class report2(basics,  MyXML):
      
         
     def createPdf(self, cyRootNode):
-        #create latex
-        print 'start this file --> ',  self.sLtxFile
-        self.f = open(self.DocumentPathTmp +'/' + self.sLtxFile, 'w')
-        
-        
-       
-       # end latex 
-       
+        #self.out( 'createPdf')
        
         self.pdfDoc = SimpleDocTemplate(self.pdfFile)
         self.pdfStory = [Spacer(1, 1 * inch)]
@@ -992,65 +979,11 @@ class report2(basics,  MyXML):
         
         
     def printReportHeader(self, c) :
-        #latex
-        # first document begin
-#        \documentclass[pdftex,a4paper,12pt]{article}
-#        \usepackage[dvips]{graphicx,color}
-#        \usepackage[pdftex,colorlinks]{hyperref}
-#        
-#        \usepackage[utf8]{inputenc} 
-#        \usepackage[absolute]{textpos}
-#        
-#        \setlength{\topmargin}{20pt}
-#        \setlength{\oddsidemargin}{20pt}
-#        \setlength{\headheight}{0pt}
-#        \setlength{\headsep}{0pt}
-#        \setlength{\topskip}{0pt}
-#        
-#        \setlength{\textwidth}{510pt}
-#        \setlength{\textheight}{620pt}
-#        
-#        \setlength{\TPHorizModule}{1pt}
-#        \setlength{\TPVertModule}{\TPHorizModule}
-#        \textblockorigin{0pt}{0pt} % start everything near the top-left corner
-#        \setlength{\parindent}{0pt}
-#        
-#        \begin{document}
-        s = r'\documentclass[pdftex,a4paper,12pt]{article}' + '\n'
-        s += r'\usepackage[dvips]{graphicx,color}' + '\n'
-        s += r'\usepackage[pdftex,colorlinks]{hyperref}' + '\n'
-        s += r'\usepackage[utf8]{inputenc}' +  '\n\n'
-        s += r'\setlength{\topmargin}{20pt}' + '\n'
-        s += r'\setlength{\oddsidemargin}{20pt}' + '\n\n'
-        s += r'\setlength{\headheight}{0pt}' + '\n'
-        s += r'\setlength{\headsep}{0pt}' + '\n'
-        s += r'\setlength{\topskip}{0pt}' + '\n\n'
-        
-        s += r'\setlength{\textwidth}{510pt}' + '\n'
-        s += r'\setlength{\textheight}{620pt}' + '\n\n'
-        
-        s += r'\setlength{\TPHorizModule}{1pt}' + '\n'
-        s += r'\setlength{\TPVertModule}{\TPHorizModule}' + '\n'
-        s += r'\textblockorigin{0pt}{0pt} % start everything near the top-left corner' + '\n'
-        s += r'\setlength{\parindent}{0pt}' + '\n\n'
-        
-        s += r'\usepackage[absolute]{textpos}' + '\n'
-        
-        s+= r'\begin{document}' + '\n'
-        s+= 'Test\n'
 
-        self.f.write(s)
-        
         if self.dicReportValues.has_key('reportHeader'):
-           
             liRecord = self.dicReportValues['reportHeader']
 
             for dicField in liRecord:
-                # latex
-                self.printLatexField(dicField)
-                #for key in dicField.keys():
-                    #self.f.write(key + ' ,  ' + `dicField[key]` + '\n')
-                self.printLatexField(dicField)   
                 self.printPdfField(c, dicField)
                 
     def printPageHeader(self, c) :
@@ -1081,15 +1014,7 @@ class report2(basics,  MyXML):
 
     def printReportFooter(self, c) :
         print 'ReportFooter startet'
-        #latex 
-        self.f.write(r'\ end{document}')
-        self.f.close()
-        
-        # do some latex stuff
-        
-        # now remove this file ( do it later)
-        
-        
+                   
         if self.dicReportValues.has_key('reportFooter'):
             liRecord = self.dicReportValues['reportFooter']
             #rint 'liRecord by ReportFooter = '
@@ -1101,31 +1026,8 @@ class report2(basics,  MyXML):
 
                 
         
-    def printLatexField(self,  dicField):
-        print 'print the field'
-        if dicField['class'] == 'Line'  :
-             pass
-        elif dicField['text'] :
-#            try:
-#                sq = s % dicField['text'] 
-#                try:
-#                    sq = sq.encode('utf-8')
-#                except:
-#                    sq = s % dicField['text']                
-#                #to.textOut(sq)
-#                #c.drawText(to)
-#                #print 'SQ = ', sq
-#            except Exception, params:
-#                print 'Exception utf-8, latin'
-#                print Exception, params
-#                sq = ' '
-#            
-            if dicField['fontsize'] :
-                pass
-     
 
-            
-            
+
     def printPdfField(self, c, dicField):
         #print dicField
         #print '::::::::::::::::::::::::::::::::::::::::::::::::::::::'
@@ -1376,31 +1278,4 @@ class report2(basics,  MyXML):
             print Exception, params
                  
         
-    def italic(self,text):
-        self.primative(2,('\\','textit{',text ,'}', '\n'))
-    def bold(self,text):
-        self.primative(2,('\\','textbd{',text ,'}', '\n'))
-    def section(self,text):
-        self.primative(2,('\\','section{',text ,'}', '\n'))
-    def subsection(self,text):
-        self.primative(2,('\\','subsection{',text ,'}', '\n'))
-    def subsubsection(self,text):
-        self.primative(2,('\\','subsubsection{',text ,'}', '\n'))
-    def chapter(self,text):
-        self.primative(2,('\\','chapter{',text ,'}', '\n'))
-    def title(self,text):
-        self.primative(1,('\\','title{',text ,'}', '\n'))
-    def date(self):
-        self.primative(1,('\\','date{}', '\n'))
-    def toc(self):
-        self.primative(1,('\\','tableofcontents', '\n'))
-    def paragraph(self,text):
-        self.primative(2,('\\','section{',text ,'}', '\n'))
-    def subparagraph(self,text):
-        self.primative(2,('\\','subparagraph{',text ,'}', '\n'))
-    def documentclass(self,textone,texttwo):
-        self.primative(1,('\\','documentclass[',textone ,']','{', texttwo ,'}', '\n'))
-    def package(self,text):
-        self.primative(1,('\\','usepackage{',text ,'}','\n'))
-    def author(self,text):
-        self.primative(1,('\\','author{',text ,'}','\n'))
+        

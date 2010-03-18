@@ -45,7 +45,14 @@ class SingleGraveYear(SingleData):
     def readNonWidgetEntries(self, dicValues):
         
         dicValues['grave_id'] = [self.graveID, 'int']
+        day = self.getWidget('eAnnualDay').get_text()
+        month = self.getWidget('eAnnualMonth').get_text()
+        dicValues['year_date'] = '2010/'+month.trim() +'/' + day.trim()
+        
         return dicValues
+    def fillOtherEntries(self,  oneRecord):
+        print oneRecord['year_date']
+        year_date = oneRecord['year_date']
         
     def saveOtherDatatable(self, id):
         text = self.readTextBuffer(self.getWidget('tvDescriptionAnnual'))

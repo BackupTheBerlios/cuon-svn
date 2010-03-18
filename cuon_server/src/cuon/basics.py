@@ -41,7 +41,8 @@ class basics(xmlrpc.XMLRPC):
         
         self.WEB_HOST2 = 'localhost'
         self.WEB_PORT2 = 7084
-    
+        self.WEB_START2 = False
+        
         self.WEB_HOST3 = 'localhost'
         self.WEB_PORT3 = 7085
         
@@ -164,7 +165,10 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('WEB2','PORT')
             if value:
                 self.WEB_PORT2 = int(value)
-                    
+            value = self.getConfigOption('WEB2','START')
+            if value:
+            
+                self.WEB_START2 = self.checkBool(value)        
             # Web3
             value = self.getConfigOption('WEB3','HOST')
             if value:
@@ -881,5 +885,10 @@ class basics(xmlrpc.XMLRPC):
         
         return liFields,  liValues
         
-        
+    def checkBool(self,  value) :
+        if value.upper() in ['YES', 'Y', 'JA', 'J', 'SI']:
+            return True
+        else:
+            return False
+            
         

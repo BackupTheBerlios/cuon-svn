@@ -212,11 +212,7 @@ class ImagePage(rend.Page):
         return tag
         
     docFactory = loaders.stan( T.html[T.body[T.directive('images')]] )
-        
-# init server data
-start()
-
-# begin consdtruct websites    
+      
     
 def counter(sName):
     print 'sName =',sName
@@ -238,141 +234,147 @@ def counter(sName):
     f.write(`z1`)
     f.close()
     
-    
-    
-rootClass = getRootSite()
+     
+# init server data
+start()
 
-exec (rootClass)
-exec('root = Root()') 
+# begin consdtruct websites     
 
-#liSites = ['root','MainLeft']
-liSites = oWeb2.getLinkedStructure()
-print 'lisites = ', liSites
-for sName in liSites:
-    IDs = oWeb2.getAllSiteElementIDs(sName)
-    if IDs and IDs not in ['NONE','ERROR']:
-        for id in IDs:
-            dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypeLinkedSite)
-            if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
-                #print 'dicHtmlSite = ', dicHtmlSite
-                htmlClass = getHtmlSite(dicHtmlSite[0])
-                if htmlClass:
-                    exec (htmlClass)
-                    liRootKeys = dicHtmlSite[0]['root_keys'].split(',')
-                    if liRootKeys:
-                        for key in liRootKeys:
-                            s =  key.strip() +"." + dicHtmlSite[0]['name'].strip() + " = " + dicHtmlSite[0]['name'].strip() + "()"
-                            print 's-root = ', s
-                            try:
-                                exec (s)
-                            except Exception, params:
-                                print Exception,params
-                                
-            dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypePython)
-            if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
-                #print 'dicHtmlSite = ', dicHtmlSite
-                dicPython = dicHtmlSite[0]
-                pythonClass = dicPython['data']
-                if pythonClass:
-                    exec (pythonClass)
-                    liRootKeys = dicPython['root_keys'].split(',')
-                    if liRootKeys:
-                        for key in liRootKeys:
-                            s =  key.strip() +"." + dicPython['name'].strip() + " = " + dicPython[0]['name'].strip() + "()"
-                            print 's-root = ', s
-                            try:
-                                exec (s)
-                            except Exception, params:
-                                print Exception,params
-                                
+if self.WEB_START2:
+        
+    rootClass = getRootSite()
+    
+    exec (rootClass)
+    exec('root = Root()') 
+    
+    #liSites = ['root','MainLeft']
+    liSites = oWeb2.getLinkedStructure()
+    print 'lisites = ', liSites
+    for sName in liSites:
+        IDs = oWeb2.getAllSiteElementIDs(sName)
+        if IDs and IDs not in ['NONE','ERROR']:
+            for id in IDs:
+                dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypeLinkedSite)
+                if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
+                    #print 'dicHtmlSite = ', dicHtmlSite
+                    htmlClass = getHtmlSite(dicHtmlSite[0])
+                    if htmlClass:
+                        exec (htmlClass)
+                        liRootKeys = dicHtmlSite[0]['root_keys'].split(',')
+                        if liRootKeys:
+                            for key in liRootKeys:
+                                s =  key.strip() +"." + dicHtmlSite[0]['name'].strip() + " = " + dicHtmlSite[0]['name'].strip() + "()"
+                                print 's-root = ', s
+                                try:
+                                    exec (s)
+                                except Exception, params:
+                                    print Exception,params
                                     
-
-# We are adding children to the pages.
-# This could also happen inside the class.
-##class ADir(rend.Page):
-##    def locateChild(self, request, segments):
-##        path = '/'.join(segments)
-##        return static.File(path), ()
-##
-#root.images = static.File('/var/cuon_www/images')
-print 'oDirs = ', oDirs
-for newDir in oDirs.keys():
-    s = 'root.'+ newDir +' = static.File("' + oDirs[newDir] +'")'
-    print s
-    exec(s)
+                dicHtmlSite = oWeb2.getSiteElementByID(id['id'],  TypePython)
+                if dicHtmlSite and dicHtmlSite not in ['NONE','ERROR']:
+                    #print 'dicHtmlSite = ', dicHtmlSite
+                    dicPython = dicHtmlSite[0]
+                    pythonClass = dicPython['data']
+                    if pythonClass:
+                        exec (pythonClass)
+                        liRootKeys = dicPython['root_keys'].split(',')
+                        if liRootKeys:
+                            for key in liRootKeys:
+                                s =  key.strip() +"." + dicPython['name'].strip() + " = " + dicPython[0]['name'].strip() + "()"
+                                print 's-root = ', s
+                                try:
+                                    exec (s)
+                                except Exception, params:
+                                    print Exception,params
+                                    
+                                        
+    
+    # We are adding children to the pages.
+    # This could also happen inside the class.
+    ##class ADir(rend.Page):
+    ##    def locateChild(self, request, segments):
+    ##        path = '/'.join(segments)
+    ##        return static.File(path), ()
+    ##
+    #root.images = static.File('/var/cuon_www/images')
+    print 'oDirs = ', oDirs
+    for newDir in oDirs.keys():
+        s = 'root.'+ newDir +' = static.File("' + oDirs[newDir] +'")'
+        print s
+        exec(s)
+        
+        
+    static_site = appserver.NevowSite(static.File("/var/cuon_www/images"))
+    
+    #sites = appserver.NevowSite(root)
+    
+    #root.foo = Foo()
+    #root.foo.baz = Baz()
+    #internet.TCPServer(baseSettings.WEB_PORT2, appserver.NevowSite(RootPage())).setServiceParent(application)
+    #application = service.Application('static')
+    #site2 = server.Site(static.File(baseSettings.WEBPATH))
+    site = appserver.NevowSite(root)
     
     
-static_site = appserver.NevowSite(static.File("/var/cuon_www/images"))
-
-#sites = appserver.NevowSite(root)
-
-#root.foo = Foo()
-#root.foo.baz = Baz()
-#internet.TCPServer(baseSettings.WEB_PORT2, appserver.NevowSite(RootPage())).setServiceParent(application)
-#application = service.Application('static')
-#site2 = server.Site(static.File(baseSettings.WEBPATH))
-site = appserver.NevowSite(root)
-
-
-#webServer = internet.TCPServer(baseSettings.WEB_PORT2,appserver.NevowSite(root))
-#webServer = internet.TCPServer(baseSettings.WEB_PORT2,sites)
-
-#webServer.setServiceParent(application)
-
-reactor.listenTCP(baseSettings.WEB_PORT2, site)
-#webServer.startService()
-#webServer.run()
-reactor.run()
-
-#<html><body>Hello world!<br />\n'
-#rootClass +='\t\t<a href="./foo" id="foo">foo</a></body></html>
-
-##class TabbedPage(rend.Page):
-##    addSlash = True
-##    docFactory = loaders.stan(
-##        t.html[
-##            t.head[
-##                t.title["Tabbed Page Example"],
-##                tabbedPane.tabbedPaneGlue.inlineGlue
-##            ],
-##            t.body[
-##                t.invisible(data=t.directive("pages"),
-##                            render=tabbedPane.tabbedPane)
-##            ]
-##        ]
-##    )
-##    
-##    def data_pages(self, ctx, data):
-##        return {"name": "outer",
-##                "selected": 1,
-##                "pages": (("One", t.p["First One"]),
-##                          ("Two", t.p["Second One"]),
-##                          ("Three", t.p[t.invisible(
-##                            render = tabbedPane.tabbedPane,
-##                            data = {"name":  "inner",
-##                                    "pages": (("Four", t.p["Fourth One"]),
-##                                              ("Five", t.p["Fifth One"])) })]
-##                           ))}
-##
-##class Foo(object):
-##    implements(inevow.IResource)
-##    
-##    def locateChild(self, ctx, segments):
-##        # segments is the remaining segments returned by the root locateChild
-##        # see segments[1:]
-##        if segments[0] == 'baz':
-##            return self.baz, segments[1:]
-##        else:
-##            return None, ()
-##    
-##    def renderHTTP(self, ctx):
-##        return """<html><body><h1 id="heading">You are in Foo</h1>
-##        <a href="./foo/baz" id="baz">baz</a></body></html>
-##"""
-##
-##class Baz(object):
-##    implements(inevow.IResource)
-##    def locateChild(self, ctx, segments):
-##        return None, ()
-##    def renderHTTP(self, ctx):
-##        return '<html><body><h1 id="heading">You are in Baz</h1></body></html>'
+    #webServer = internet.TCPServer(baseSettings.WEB_PORT2,appserver.NevowSite(root))
+    #webServer = internet.TCPServer(baseSettings.WEB_PORT2,sites)
+    
+    #webServer.setServiceParent(application)
+    
+    reactor.listenTCP(baseSettings.WEB_PORT2, site)
+    #webServer.startService()
+    #webServer.run()
+    reactor.run()
+    
+    #<html><body>Hello world!<br />\n'
+    #rootClass +='\t\t<a href="./foo" id="foo">foo</a></body></html>
+    
+    ##class TabbedPage(rend.Page):
+    ##    addSlash = True
+    ##    docFactory = loaders.stan(
+    ##        t.html[
+    ##            t.head[
+    ##                t.title["Tabbed Page Example"],
+    ##                tabbedPane.tabbedPaneGlue.inlineGlue
+    ##            ],
+    ##            t.body[
+    ##                t.invisible(data=t.directive("pages"),
+    ##                            render=tabbedPane.tabbedPane)
+    ##            ]
+    ##        ]
+    ##    )
+    ##    
+    ##    def data_pages(self, ctx, data):
+    ##        return {"name": "outer",
+    ##                "selected": 1,
+    ##                "pages": (("One", t.p["First One"]),
+    ##                          ("Two", t.p["Second One"]),
+    ##                          ("Three", t.p[t.invisible(
+    ##                            render = tabbedPane.tabbedPane,
+    ##                            data = {"name":  "inner",
+    ##                                    "pages": (("Four", t.p["Fourth One"]),
+    ##                                              ("Five", t.p["Fifth One"])) })]
+    ##                           ))}
+    ##
+    ##class Foo(object):
+    ##    implements(inevow.IResource)
+    ##    
+    ##    def locateChild(self, ctx, segments):
+    ##        # segments is the remaining segments returned by the root locateChild
+    ##        # see segments[1:]
+    ##        if segments[0] == 'baz':
+    ##            return self.baz, segments[1:]
+    ##        else:
+    ##            return None, ()
+    ##    
+    ##    def renderHTTP(self, ctx):
+    ##        return """<html><body><h1 id="heading">You are in Foo</h1>
+    ##        <a href="./foo/baz" id="baz">baz</a></body></html>
+    ##"""
+    ##
+    ##class Baz(object):
+    ##    implements(inevow.IResource)
+    ##    def locateChild(self, ctx, segments):
+    ##        return None, ()
+    ##    def renderHTTP(self, ctx):
+    ##        return '<html><body><h1 id="heading">You are in Baz</h1></body></html>'

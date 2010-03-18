@@ -251,6 +251,7 @@ class SingleData(gladeXml, logs):
         if liResult == 0:
             id = 0
         print 'id by save = ', id    
+    
         self.saveOtherDatatable(id)
         return id
                 
