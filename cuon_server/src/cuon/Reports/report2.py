@@ -34,7 +34,7 @@ import math
 
 
 
-class report(MyXML):
+class report2(MyXML):
     def __init__(self):
         MyXML.__init__(self)
 
