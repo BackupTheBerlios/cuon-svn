@@ -12,6 +12,7 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 import sys
 import os
+import datetime
 #sys.path.append(os.environ['CUON_PATH'])
 
 from cuon.Databases.SingleData import SingleData
@@ -45,15 +46,21 @@ class SingleGraveYear(SingleData):
     def readNonWidgetEntries(self, dicValues):
         
         dicValues['grave_id'] = [self.graveID, 'int']
-        day = self.getWidget('eAnnualDay').get_text()
-        month = self.getWidget('eAnnualMonth').get_text()
-        dicValues['year_date'] = '2010/'+month.trim() +'/' + day.trim()
-        
+#        day = self.getWidget('eAnnualDay').get_text()
+#        month = self.getWidget('eAnnualMonth').get_text()
+#        newDate = '2010/'+month.strip() +'/' + day.strip()
+#        dt = datetime.strptime(newDate, "%Y/%m/%d")
+#        print self.dicUser['DateformatString']
+#    
+#
+#        dicValues['year_date'] =dt.strftime(self.dicUser['DateformatString'])
+#
+#        print "year,date = ",  dicValues['year_date']
         return dicValues
-    def fillOtherEntries(self,  oneRecord):
-        print oneRecord['year_date']
-        year_date = oneRecord['year_date']
-        
+#    def fillOtherEntries(self,  oneRecord):
+#        print oneRecord['year_date']
+#        year_date = oneRecord['year_date']
+#        
     def saveOtherDatatable(self, id):
         text = self.readTextBuffer(self.getWidget('tvDescriptionAnnual'))
         self.singleGrave.save()

@@ -29,7 +29,7 @@
       <name>eUniqueDate</name>
       <type>textline</type>
       <size>10</size>
-      <verify_type>float</verify_type>
+      <verify_type>date</verify_type>
       <create_sql>1</create_sql>
       <sql_field>unique_date</sql_field>
       <duty>YES</duty>
