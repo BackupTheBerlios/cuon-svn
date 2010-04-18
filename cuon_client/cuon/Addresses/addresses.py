@@ -51,7 +51,7 @@ try:
     import cuon.DMS.SingleDMS
     
     import cuon.DMS.dms
-    import cuon.Graves.grave
+    
     import printAddress
     import cuon.Staff.staff
     import cuon.Staff.SingleStaff
@@ -67,9 +67,15 @@ try:
 except Exception, param:
     print Exception, param
     print '......................................................................... Address import false ........'
-
-print 'import graves'
-import cuon.Graves.address_graves
+# import grave things
+try:
+    print 'import graves'
+    import cuon.Graves.address_graves
+    import cuon.Graves.grave
+    #import cuon.Graves.graveyard
+    
+except:
+    print "graves import not possible"
 
 bHtml = False
 try:
@@ -307,7 +313,6 @@ class addresswindow(chooseWindows):
         setGraveButton,  setGraveButtonPosition = self.rpc.callRP('Address.getButtonGrave',self.dicUser)
         print "gravebutton =",   setGraveButton,  setGraveButtonPosition
         if setGraveButton == 'YES':
-            # import grave things
             
             self.graves = cuon.Graves.address_graves.address_graves()
             print self.graves 
@@ -1880,7 +1885,8 @@ class addresswindow(chooseWindows):
     # stats 
     def on_tbGrave_clicked(self, event):
         print 'tbGrave clicked'
-
+        gaves = cuon.Graves.grave.graveswindow(self.allTables,  addressid = self.singleAddress.ID,  newGrave = True)
+        
     
         
             

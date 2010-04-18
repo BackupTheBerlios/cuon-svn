@@ -57,3 +57,18 @@ class Grave(xmlrpc.XMLRPC, basics):
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
         return dicResult
+    def xmlrpc_createNewGrave(self,  dicUser, dicGrave):
+        print 'create new Order'
+        
+        dicValues = {}
+        
+        if dicGrave.has_key( 'addressid'):   
+            dicValues['addressid'] = [dicGrave['addressid'],'int']
+        if dicGrave.has_key( 'graveyardid'):   
+            dicValues['graveyardid'] = [dicGrave['graveyardid'],'int']
+            
+        newID =  self.oDatabase.xmlrpc_saveRecord('grave', -1, dicValues, dicUser, 'NO')
+        
+        return newID
+        
+        

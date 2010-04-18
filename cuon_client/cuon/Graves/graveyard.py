@@ -41,12 +41,15 @@ import cuon.PrefsFinance.SinglePrefsFinanceVat
 class graveyardMainwindow(chooseWindows):
 
     
-    def __init__(self, allTables, addrid=0, partnerid=0):
+    def __init__(self, allTables, graveyardid=0, graveid=0,  addressid= 0):
 
         chooseWindows.__init__(self)
         self.InitForms = True
         self.connectSchedulTreeId = None
         
+        self.graveyardID = graveyardid
+        self.graveID = graveid
+        self.addressID = addressid
         #print 'time 1 = ', time.localtime()
         self.ModulNumber = self.MN['Graveyard']
         self.singleGraveyard = SingleGraveyard.SingleGraveyard(allTables)

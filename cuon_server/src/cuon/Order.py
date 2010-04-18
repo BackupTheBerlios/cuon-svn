@@ -743,7 +743,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sResidue += self.getWhere('',dicUser,'1','list_of_invoices.')
         
         result = self.oDatabase.xmlrpc_executeNormalQuery(sResidue,dicUser)
-        
+        print "result at create residue view",  result
         sSql = 'select distinct '
         sSql += 'v_residue.total_amount as total_amount, '
         sSql += 'address.lastname as lastname, address.city as city, '
@@ -755,6 +755,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " and orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber"
         sSql += " order by lastname, v_residue.date_of_invoice "
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        print "result at list residue from view",  result
         return result   
         
     def getReminder(self, dicUser):

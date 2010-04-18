@@ -44,7 +44,7 @@ class report_list_of_residue(report_basics):
         print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         self.dicResults['Info'] = dicExtraData
         dicResult =  oOrder.getResidue(  dicUser )
-        print "result by OrderListInvoices: ", dicResult
+        #print "result by OrderListInvoices: ", dicResult
         if dicResult not in ['NONE','ERROR']:
 ##            for i in dicResult:
 ##                for j in i.keys():
@@ -54,9 +54,9 @@ class report_list_of_residue(report_basics):
                                     
                             
                             
-
+            print "len of resultset list of residue",  len(dicResult)
             self.dicResults['listOfResidue'] = dicResult   
-            print self.dicResults
+            #print self.dicResults
             
             print 'ReportPath = ', reportDefs['ReportPath'] + '/list_list_of_invoices.xml'
             

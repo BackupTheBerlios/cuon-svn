@@ -53,12 +53,17 @@ import cuon.Articles.articles
 class graveswindow(chooseWindows, ArticlesFastSelection):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables,  graveyardid=0, graveid=0,  addressid= 0, newGrave = False):
 
         chooseWindows.__init__(self)
         ArticlesFastSelection.__init__(self)
           
         self.allTables = allTables
+        self.graveyardID = graveyardid
+        self.graveID = graveid
+        self.addressID = addressid
+        
+        
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
         self.singleGraveSpring = SingleGraveSpring.SingleGraveSpring(allTables)
@@ -362,7 +367,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             print Exception,  params
             
 
-
+        if newGrave:
+            # create a new grave
+            self.dicGrave = {'addressid':self.addressID}
+            newID = self.rpc.callRP('Grave.createNewGrave', self.dicUser,self.dicGrave)
+            
+            
         self.tabChanged()
         
 

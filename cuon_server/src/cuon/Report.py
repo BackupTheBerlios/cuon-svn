@@ -243,7 +243,7 @@ class Report(xmlrpc.XMLRPC, basics):
         import Order
         oOrder = Order.Order()
         
-        print "startReport"
+        print "startReport residue"
         oReports = Reports.report_list_of_residue.report_list_of_residue()
         repData = oReports.getReportData(dicExtraData, dicUser, oOrder, self.ReportDefs)
         #print '\n\n'
