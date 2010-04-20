@@ -19,18 +19,20 @@ import gtk
 import pygtk
 import gobject
 import gtk.glade 
+import grave
 
 class address_graves(gladeXml):
     
     def __init__(self):
         gladeXml.__init__(self, False)
         self.tree = None
-
+        self.addresses = None
 
 
     def setTree(self,  tree1):
         self.tree = tree1
-
+        self.tree.connect("row_activated", self.on_tree_row_activated);
+        
     def disconnectTree(self):
         try:
             
@@ -60,19 +62,21 @@ class address_graves(gladeXml):
             try:
                 newID = int(sNewId[sNewId.find('###')+ 3:])
                 #self.setDateValues(newID)
-            
+                print 'newID = ',   newID
             except Exception,  params:
                 pass
              #   print Exception,  params
                 
             #self.fillEntries(newId)
-    def on_treeSchedul_row_activated(self, event):
+    def on_tree_row_activated(self, event, data1, data2):
         print 'event'
-        self.on_bGotoAddress_clicked(event)
+        print "grave_address",   self.addresses.singleAddress.ID,   self.addresses.allTables
+        grv = grave.graveswindow( self.addresses.allTables,  addressid = self.addresses.singleAddress.ID)
         
         
-    def fillAddressGraves(self,  liDates):
+    def fillAddressGraves(self,  liDates ,  addresses):
         treeview = self.tree
+        self.addresses = addresses
         #treeview.set_model(liststore)
  
         #renderer = gtk.CellRendererText()
@@ -95,22 +99,14 @@ class address_graves(gladeXml):
             Schedulname = None
             lastSchedulname = None
             
-            iter = treestore.append(None,[_('Names')])
+            iter = treestore.append(None,[_('Graveyard lastname firstname')])
             iter2 = None
             iter3 = None
             for oneDate in liDates:
-                Schedulname = oneDate['schedul_name']
-                print 'oneDate = ',  oneDate
+                Schedulname = oneDate['graves']
                 print Schedulname
-                if lastSchedulname != Schedulname:
-                    lastSchedulname = Schedulname
-                    iter2 = treestore.insert_after(iter,None,[lastSchedulname])   
-                    print 'iter2 = ',  iter2
-                sTime  = self.getTimeString(oneDate['time_begin'] )
-                sTime2  = self.getTimeString(oneDate['time_end'] )
-                print sTime,  sTime2    
-                iter3 = treestore.insert_after(iter2,None,[oneDate['date'] +'--' + sTime + '-' +sTime2 +', ' + oneDate['a_lastname'] + ', ' + oneDate['a_city'] + ' ###' +  `oneDate['id']`])   
-                print 'iter3',  iter3
+                iter2 = treestore.insert_after(iter,None,[Schedulname])   
+                 
         treeview.show_all()
         
         self.connectTree()

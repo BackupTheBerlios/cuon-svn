@@ -371,6 +371,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             # create a new grave
             self.dicGrave = {'addressid':self.addressID}
             newID = self.rpc.callRP('Grave.createNewGrave', self.dicUser,self.dicGrave)
+        elif self.addressID > 0:
+            self.singleGrave.sWhere = " where addressid = " + `self.addressID`
             
             
         self.tabChanged()
