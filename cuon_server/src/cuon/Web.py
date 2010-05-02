@@ -90,6 +90,6 @@ class Web(xmlrpc.XMLRPC, basics):
         if dicResult and dicResult not in ['NONE','ERROR']:
             for i in dicResult:
                 self.iCal.addEvent(i['user_id'],i,dicUser)
-                sSql = 'update partner_schedul set sep_info_3 = 2 where id = ' + `i['id'] `
+                sSql = 'update partner_schedul set sep_info_3 = 2 where id = ' + `i['id']`
                 dicResult2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         return ok

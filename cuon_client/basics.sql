@@ -1,3 +1,24 @@
+  
+     CREATE OR REPLACE FUNCTION fct_orderposition_insert( ) returns OPAQUE AS '
+    --  set default values to orderposition 
+     
+    
+    BEGIN
+               IF NEW.tax_vat is NULL THEN
+                    NEW.tax_vat = 0.00 ;
+               end if ;
+               IF NEW.discount is NULL THEN
+                    NEW.discount = 0.00 ;
+               end if ;
+               RETURN NEW; 
+    END;
+  
+     ' LANGUAGE 'plpgsql'; 
+     
+  
+  
+  
+  
   CREATE OR REPLACE FUNCTION fct_setUserData( dicUser char  [] ) returns bool AS '
     -- set the userdata for the current work
      

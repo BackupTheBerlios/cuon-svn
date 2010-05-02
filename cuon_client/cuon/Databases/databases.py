@@ -766,7 +766,7 @@ class databaseswindow(windows):
                     
                 if cyNodes:
                     for i in cyNodes:
-                        self.out("Werte in xml")
+                        self.out("Values in xml")
                                                 
                         funcNode = self.getNodes(i,'nameOfFunction')
                         newName = self.getData(funcNode[0])

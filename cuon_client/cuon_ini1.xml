@@ -419,6 +419,11 @@
       <Entry-File>graves.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_graves.xml</Entry-FileValue>
     </Entries>
+  <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>graves_invoice_info.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_graves_invoice_info.xml</Entry-FileValue>
+    </Entries>  
     <Entries>       
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>graves_maintenance.xml</Entry-File>

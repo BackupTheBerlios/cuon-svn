@@ -407,7 +407,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGraves, True)
 
 
-    def on_delete1_activate(self, event):
+    def on_clear1_activate(self, event):
         self.out( "delete grave v2")
         self.singleGrave.deleteRecord()
 
@@ -432,7 +432,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGravesMaintenance, True)
 
 
-    def on_MaintenanceDelete1_activate(self, event):
+    def on_MaintenanceClear1_activate(self, event):
         self.out( "delete GraveMaintenance addresses v2")
         self.singleGraveMaintenance.deleteRecord()
 
@@ -487,7 +487,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGravesSummer, True)
         self.setEntriesEditable(self.EntriesGraves, True)
 
-    def on_SummerDelete1_activate(self, event):
+    def on_SummerClear1_activate(self, event):
         self.out( "delete GraveSummer addresses v2")
         self.singleGraveSummer.deleteRecord()
 
@@ -515,7 +515,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGravesAutumn, True)
         self.setEntriesEditable(self.EntriesGraves, True)
 
-    def on_AutumnDelete1_activate(self, event):
+    def on_AutumnClear1_activate(self, event):
         self.out( "delete GraveAutumn addresses v2")
         self.singleGraveAutumn.deleteRecord()
 
@@ -541,7 +541,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.setEntriesEditable(self.EntriesGravesWinter, True)
         self.setEntriesEditable(self.EntriesGraves, True)
 
-    def on_WinterDelete1_activate(self, event):
+    def on_WinterClear1_activate(self, event):
         self.out( "delete GraveWinter addresses v2")
         self.singleGraveWinter.deleteRecord()
 

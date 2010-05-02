@@ -57,7 +57,10 @@ class Database(xmlrpc.XMLRPC, SQL):
         
         sysCommand =  'psql  ' + '-h ' + sHost + ' -p ' + sPort + ' -U ' + sUser +   ' '  + sDatabase + ' < /etc/cuon/run.sql'
         
-        os.system(sysCommand)
+        print sysCommand
+        print ""
+        
+        print os.system(sysCommand)
         
         
         return sysCommand

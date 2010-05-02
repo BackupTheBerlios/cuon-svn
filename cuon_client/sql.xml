@@ -643,7 +643,7 @@
     <description>set the user_id to current_user </description>
 
     </function>
-    
+   
 <function>
       <old_name>fct_update_t_schedul_date() </old_name>
       <nameOfFunction>fct_update_t_schedul_date( ) returns OPAQUE</nameOfFunction>
@@ -785,6 +785,16 @@
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update article </description>
+      
+    </trigger>
+    
+     <trigger>
+      <nameOfTrigger>trg_insertOrderposition</nameOfTrigger>
+      <table>orderposition</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_orderposition_insert () ;  </textOfTrigger>
+      <description>new orderposition </description>
       
     </trigger>
    <trigger>
