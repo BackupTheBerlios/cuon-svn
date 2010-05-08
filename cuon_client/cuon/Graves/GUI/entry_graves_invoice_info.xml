@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries_for_table>
+  <table>
+    <table_name>grave_invoice_info</table_name>
+   <entry>
+      <name>eInvoiceAddressID</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>address_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+       <entry>
+      <name>eInvoiceTOPID</name>
+      <type>textline</type>
+      <size>20</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>top_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     
+        <entry>
+      <name>eInvoicePart</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>part</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     
+     <entry>
+      
+      <name>eInvoiceBegin</name>
+      <type>textline</type>
+      <size>150</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>invoice_begin</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    
+    <entry>
+      <name>eInvoiceEnd</name>
+      <type>textline</type>
+      <size>150</size>
+      <verify_type>date</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>invoice_end</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+        </table>
+</entries_for_table>

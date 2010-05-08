@@ -33,9 +33,11 @@ import SingleGraveWinter
 import SingleGraveHoliday
 import SingleGraveYear
 import SingleGraveSingleevent
+import SingleGraveInvoices
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
-
+import cuon.PrefsFinance.prefsFinance
+import cuon.PrefsFinance.SinglePrefsFinanceTop
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
 #import cuon.OpenOffice.letter
@@ -73,8 +75,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveHolidays = SingleGraveHoliday.SingleGraveHoliday(allTables)
         self.singleGraveAnnual = SingleGraveYear.SingleGraveYear(allTables)
         self.singleGraveUnique = SingleGraveSingleevent.SingleGraveSingleevent(allTables)
-
+        self.singleGraveInvoices = SingleGraveInvoices.SingleGraveInvoices(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.fillArticlesNewID = 0
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
         print "load glade"
@@ -96,6 +99,21 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGrave.setListHeader([_('Lastname'), _('Firstname')])
         self.singleGrave.setTree(self.xml.get_widget('tree1') )
 
+        self.EntriesGravesInvoices = 'graves_invoice_info.xml'
+        
+        self.loadEntries(self.EntriesGravesInvoices)
+        
+        self.singleGraveInvoices.setEntries(self.getDataEntries(self.EntriesGravesInvoices) )
+        self.singleGraveInvoices.setGladeXml(self.xml)
+        self.singleGraveInvoices.setTreeFields( ['address.lastname as lastname', 'address.firstname as firstname'  ] )
+        self.singleGraveInvoices.setStore( gtk.ListStore( gobject.TYPE_STRING,  gobject.TYPE_STRING ,   gobject.TYPE_UINT)  )
+        self.singleGraveInvoices.setTreeOrder('lastname')
+        self.singleGraveInvoices.setListHeader([_('Lastname'), _('Firstname') ])
+        self.singleGraveInvoices.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveInvoices.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and address_id = address.id '
+  
+
+
         self.EntriesGravesMaintenance = 'graves_maintenance.xml'
         
         self.loadEntries(self.EntriesGravesMaintenance)
@@ -108,6 +126,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveMaintenance.setListHeader([_('Service-ID')])
         self.singleGraveMaintenance.setTree(self.xml.get_widget('tree1') )
         self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
+  
+  
+  
+  
   
         self.EntriesGravesSpring = 'graves_spring.xml'
         
@@ -266,6 +288,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','grave1')
         self.addEnabledMenuItems('tabs','maintenance1')
+        self.addEnabledMenuItems('tabs','invoices')
         self.addEnabledMenuItems('tabs','spring')
         self.addEnabledMenuItems('tabs','summer')
         self.addEnabledMenuItems('tabs','autumn')
@@ -277,6 +300,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         # seperate Menus
         self.addEnabledMenuItems('grave','grave1')
         self.addEnabledMenuItems('graveMaintenance','maintenance1')
+        self.addEnabledMenuItems('graveInvoice','invoices')
         self.addEnabledMenuItems('graveSpring','spring')
         self.addEnabledMenuItems('graveSummer','summer')
         self.addEnabledMenuItems('graveAutumn','autumn')
@@ -295,6 +319,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceClear1')
         self.addEnabledMenuItems('editGraveMaintenance','MaintenancePrint1')
         self.addEnabledMenuItems('editGraveMaintenance','MaintenanceEdit1')
+
+    # enabledMenues for graveInvoice
+        self.addEnabledMenuItems('editGraveInvoice','InvoicesNew1', self.dicUserKeys['graveSpring_new'])
+        self.addEnabledMenuItems('editGraveInvoice','InvoicesClear1', self.dicUserKeys['graveSpring_delete'])
+        #self.addEnabledMenuItems('editGraveSpring','SpringPrint1', self.dicUserKeys['graveSpring_print'])
+        self.addEnabledMenuItems('editGraveInvoice','InvoicesEdit1', self.dicUserKeys['graveSpring_edit'])
 
     # enabledMenues for graveSpring
         self.addEnabledMenuItems('editGraveSpring','SpringNew1', self.dicUserKeys['graveSpring_new'])
@@ -338,6 +368,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
 
     # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['address_save'])
+        self.addEnabledMenuItems('editSave','InvoicesSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','MaintenanceSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','SpringSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','SummerSave1', self.dicUserKeys['address_save'])
@@ -349,14 +380,15 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         # tabs from notebook
         
         self.tabGrave = 0
-        self.tabGraveMaintenance = 1
-        self.tabGraveSpring = 2
-        self.tabGraveSummer= 3
-        self.tabGraveAutumn = 4
-        self.tabGraveHollidays = 5
-        self.tabGraveWinter = 6
-        self.tabGraveAnnual = 7
-        self.tabGraveUnique = 8
+        self.tabGraveInvoice = 1
+        self.tabGraveMaintenance = 2
+        self.tabGraveSpring = 3
+        self.tabGraveSummer= 4
+        self.tabGraveAutumn = 5
+        self.tabGraveHollidays = 6
+        self.tabGraveWinter = 7
+        self.tabGraveAnnual = 8
+        self.tabGraveUnique = 9
         
         
 
@@ -411,7 +443,34 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "delete grave v2")
         self.singleGrave.deleteRecord()
 
+   #Menu Invoice Info
+        
    
+    def on_InvoicesSave1_activate(self, event):
+        self.out( "save GraveInvoices addresses v2")
+        print "Grave invoices save"
+        self.singleGraveInvoices.graveID = self.singleGrave.ID
+        self.singleGraveInvoices.singleGrave = self.singleGrave
+        self.singleGraveInvoices.save()
+        self.setEntriesEditable(self.EntriesGravesInvoices, False)
+        self.setEntriesEditable(self.EntriesGraves, False)
+        self.tabChanged()
+        
+    def on_InvoicesNew1_activate(self, event):
+        self.out( "new GraveInvoices addresses v2")
+        self.singleGraveInvoices.newRecord()
+        self.setEntriesEditable(self.EntriesGravesInvoices, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+        
+    def on_InvoicesEdit1_activate(self, event):
+        self.setEntriesEditable(self.EntriesGravesInvoices, True)
+        self.setEntriesEditable(self.EntriesGraves, True)
+
+    def on_InvoicesClear1_activate(self, event):
+        self.out( "delete GraveInvoices addresses v2")
+        self.singleGraveInvoices.deleteRecord()
+
+
   #Menu maintenance
         
    
@@ -714,6 +773,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbNew_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('new1')
+        elif self.tabOption == self.tabGraveInvoice:
+            self.activateClick('InvoicesNew1')            
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringNew1')
         elif self.tabOption == self.tabGraveSummer:
@@ -732,6 +793,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('edit1')
+        elif self.tabOption == self.tabGraveInvoice:
+            self.activateClick('InvoicesEdit1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringEdit1')
         elif self.tabOption == self.tabGraveSummer:
@@ -751,6 +814,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('save1')
+        elif self.tabOption == self.tabGraveInvoice:
+            self.activateClick('InvoicesSave1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringSave1')
         elif self.tabOption == self.tabGraveSummer:
@@ -769,6 +834,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbDelete_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('clear1')
+        elif self.tabOption == self.tabGraveInvoice:
+            self.activateClick('InvoicesClear1')
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringClear1')
         elif self.tabOption == self.tabGraveSummer:
@@ -800,6 +867,37 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
 
     def on_bGotoAddress_clicked(self,  event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables, self.singleAddress.ID)
+        
+    def on_bInvoiceChooseAddress_clicked(self, event):
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'eInvoiceAddressID'))
+
+    def on_eInvoiceAddressID_changed(self, event):
+        print 'eAddressNumber changed'
+        iAdrNumber = self.getChangedValue('eInvoiceAddressID')
+        eAdrField = self.getWidget('tvInvoicesAddress')
+        liAdr = self.singleAddress.getAddress(iAdrNumber)
+        self.setTextbuffer(eAdrField,liAdr)
+
+        
+       
+    def on_bInvoiceChooseTOP_clicked(self, event):
+        print 'choose TOP'
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top.setChooseEntry('chooseTOP', self.getWidget( 'eInvoiceTOPID'))
+        
+    def on_eInvoiceTOPID_changed(self, event):
+        print 'eTOPID changed'
+        eTopField = self.getWidget('tvInvoicesTOP')
+        try:
+            liTop = self.singlePrefsFinanceTop.getTOP(long(self.getWidget( 'eInvoiceTOPID').get_text()))
+            self.setTextbuffer(eTopField, liTop)
+            
+        except Exception,param:
+            self.setTextbuffer(eTopField, ' ')
+            print Exception,param
+
+        
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabGrave:
@@ -998,6 +1096,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()
+        self.singleGraveInvoices.disconnectTree()
         self.singleGraveSpring.disconnectTree()
         self.singleGraveSummer.disconnectTree()
         self.singleGraveAutumn.disconnectTree()
@@ -1008,7 +1107,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         if self.tabOption == self.tabGrave:
             self.singleGrave.connectTree()
             self.singleGrave.refreshTree()
-       
+            
+        elif self.tabOption == self.tabGraveInvoice:
+            print "1 tree "
+            self.singleGraveInvoices.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`+ ' and address_id = address.id '
+            self.singleGraveInvoices.connectTree()
+            self.singleGraveInvoices.refreshTree()
+            
         elif self.tabOption == self.tabGraveMaintenance:
             print "1 tree "
             self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `int(self.singleGrave.ID)`
@@ -1083,7 +1188,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.editAction = 'editGraveMaintenance'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
-
+            
+            
+        elif self.tabOption == self.tabGraveInvoice:
+            self.out( 'Seite 2')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('graveInvoice')
+           
+            self.editAction = 'editGraveInvoice'
+            self.setTreeVisible(True)
+            self.setStatusbarText([self.singleGrave.sStatus])
+            
         elif self.tabOption == self.tabGraveSpring:
             self.out( 'Seite 2')
             self.disableMenuItem('tabs')

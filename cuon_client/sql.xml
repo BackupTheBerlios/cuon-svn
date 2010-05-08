@@ -511,67 +511,6 @@
     
  
    <function>
-      
-      <nameOfFunction>fct_delete( ) returns OPAQUE</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
-    DECLARE
-    f_upd     varchar(400);
-    v_delete varchar(20) ;
-    BEGIN
-        v_delete   := ''delete'' ;
-        f_upd := '' update '' || TG_RELNAME  || '' set status =  ''|| quote_literal(v_delete) || ''  where id = '' || OLD.id   ;
-        RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
-        RAISE NOTICE '' sql =  % '',f_upd  ;
-        execute f_upd ;
-        RAISE NOTICE '' Name =  % '', TG_NAME ;
-        RETURN NULL ;
-    END;
-      </textOfFunction>
-    <description>if delete a record, dont realy delete, set status to delete </description>
-
-    </function>
-
-<function>
-      
-      <nameOfFunction>fct_update( ) returns OPAQUE</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
-    BEGIN
-      if not OLD.status = ''delete'' then 
-            NEW.update_user_id = current_user   ;
-            NEW.update_time = (select  now()) ;
-            NEW.user_id = OLD.user_id;
-            
-            NEW.insert_time = OLD.insert_time ;
-            NEW.status = ''update'' ;
-            RAISE NOTICE ''Name =  % '', TG_NAME ;
-            RETURN NEW; 
-      else 
-            RETURN OLD;
-      end if \;
-    END;
-      </textOfFunction>
-    <description>set the user_id to current_user </description>
-
-    </function>
-<function>
-      
-      <nameOfFunction>fct_insert( ) returns OPAQUE</nameOfFunction>
-      <language>plpgsql</language>
-    <textOfFunction>
-    BEGIN
-        NEW.user_id = current_user   ;
-        NEW.insert_time = (select  now()) ;
-                      NEW.status = ''insert'' ;
-        RAISE NOTICE ''Name =  % '', TG_NAME ;
-        RETURN NEW; 
-    END;
-      </textOfFunction>
-    <description>set the user_id to current_user </description>
-
-    </function>
-   <function>
       <old_name>fct_stock_goods_insert() </old_name>
       <nameOfFunction>fct_stock_goods_insert( ) returns OPAQUE</nameOfFunction>
       <language>plpgsql</language>

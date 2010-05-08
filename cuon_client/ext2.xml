@@ -1497,7 +1497,7 @@
           
            
   <field>
-      <name>begin</name>
+      <name>invoice_begin</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -1508,7 +1508,7 @@
           </field>
                     
   <field>
-      <name>end</name>
+      <name>invoice_end</name>
       <type>date</type>
       <pkey>0</pkey>
       <unique>0</unique>

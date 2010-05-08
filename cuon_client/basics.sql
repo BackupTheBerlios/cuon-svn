@@ -1,4 +1,64 @@
+ 
+ -- All this here are for trigger or very basic funtions
+ 
+ 
+ 
+ CREATE OR REPLACE FUNCTION fct_insert( ) returns OPAQUE AS '
+    --  set default values at an insert operation 
+     
+    BEGIN
+        NEW.user_id = current_user   ;
+        NEW.insert_time = (select  now()) ;
+        NEW.status = ''insert'' ;
+        --RAISE NOTICE ''Name =  % '', TG_NAME ;
+        RETURN NEW; 
+    END;
+     
+    ' LANGUAGE 'plpgsql'; 
+
+ 
+ CREATE OR REPLACE FUNCTION fct_update( ) returns OPAQUE AS '
+    --  set default values at an update operation 
+     
+    
+    BEGIN
+      if not OLD.status = ''delete'' then 
+            NEW.update_user_id = current_user   ;
+            NEW.update_time = (select  now()) ;
+            NEW.user_id = OLD.user_id;
+            
+            NEW.insert_time = OLD.insert_time ;
+            NEW.status = ''update'' ;
+            RAISE NOTICE ''Name =  % '', TG_NAME ;
+            RETURN NEW; 
+      else 
+            RETURN OLD;
+      end if ;
+    END;
+    
   
+    ' LANGUAGE 'plpgsql'; 
+
+CREATE OR REPLACE FUNCTION fct_delete( ) returns OPAQUE AS '
+    --  set default values at a delete 
+    -- if delete a record, dont realy delete, set status to delete 
+     
+    DECLARE
+    f_upd     varchar(400);
+    v_delete varchar(20) ;
+    BEGIN
+        v_delete   := ''delete'' ;
+        f_upd := '' update '' || TG_RELNAME  || '' set status =  ''|| quote_literal(v_delete) || ''  where id = '' || OLD.id   ;
+        -- RAISE NOTICE '' table-name =  % '', TG_RELNAME ;
+        -- RAISE NOTICE '' sql =  % '',f_upd  ;
+        execute f_upd ;
+        -- RAISE NOTICE '' Name =  % '', TG_NAME ;
+        RETURN NULL ;
+    END;
+     
+     ' LANGUAGE 'plpgsql'; 
+     
+ 
      CREATE OR REPLACE FUNCTION fct_orderposition_insert( ) returns OPAQUE AS '
     --  set default values to orderposition 
      
