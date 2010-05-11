@@ -1,0 +1,23 @@
+filename = /home/jhamel/cuon/blz.csv
+table = bank
+header = yes
+splitvalue = ;
+from_changed_value = "
+decode_data = 'utf-8'
+update_data = yes
+check_update_field = bcn
+extra_function = updateBank
+
+column = bcn,string
+column = a1,none
+column = a1,none
+column = a1,none
+column = a1,none
+column = short_designation,string
+column = pan,string
+column = bic,string
+column = s6,none
+column = s7,none
+column = s8,none
+column = s8,none
+column = s8,none

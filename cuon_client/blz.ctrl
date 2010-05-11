@@ -1,0 +1,25 @@
+filename = /home/jhamel/cuon/blz.csv
+table = address
+header = yes
+splitvalue = ;
+from_changed_value = "
+decode_data = 'utf-8'
+update_data = yes
+check_update_field = status_info
+
+
+column = a1,none
+column = a1,none
+column = lastname,string
+column = zip,string
+
+column = city,string
+column = status_info,string
+column = s4,none
+column = s5,none
+column = s6,none
+
+column = s7,none
+column = s8,none
+column = s8,none
+column = s8,none
