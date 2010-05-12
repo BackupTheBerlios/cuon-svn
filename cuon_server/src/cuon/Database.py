@@ -676,7 +676,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         
     def xmlrpc_updateBank(self, dicUser):
         updateID = 0    
-        sSql = "update bank set address_id = (select address.id from address, bank where bank.shortDesignation = address.status_info "
+        sSql = "update bank set address_id = (select address.id from address where bank.bcn = address.status_info "
         sSql += self.getWhere('',dicUser,2,'bank.') + ')'
         liResult = self.xmlrpc_executeNormalQuery(sSql, dicUser)
         print liResult

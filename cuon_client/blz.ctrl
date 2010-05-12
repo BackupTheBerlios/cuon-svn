@@ -8,13 +8,13 @@ update_data = yes
 check_update_field = status_info
 
 
-column = a1,none
+column = status_info,string
 column = a1,none
 column = lastname,string
 column = zip,string
 
 column = city,string
-column = status_info,string
+column = a2, none
 column = s4,none
 column = s5,none
 column = s6,none

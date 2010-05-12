@@ -264,7 +264,7 @@ class import_generic1(fileSelection):
             liExtraFunction =  self.dicFileAttributes['extraFunction'].split(',')
             
             for eF in liExtraFunction:
-                if eF.strip() == 'UPDATEBANK':
+                if eF.strip().upper() == 'UPDATEBANK':
                     ok = self.rpc.callRP('Database.updateBank',self.dicUser) 
                 
         except Exception, param:
