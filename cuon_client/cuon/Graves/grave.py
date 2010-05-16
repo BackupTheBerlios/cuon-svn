@@ -773,6 +773,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbNew_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('new1')
+        elif self.tabOption == self.tabGraveMaintenance:
+            self.activateClick('MaintenanceNew1')           
         elif self.tabOption == self.tabGraveInvoice:
             self.activateClick('InvoicesNew1')            
         elif self.tabOption == self.tabGraveSpring:
@@ -793,6 +795,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbEdit_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('edit1')
+        if self.tabOption == self.tabGraveMaintenance:
+            self.activateClick('MaintenanceEdit1')    
         elif self.tabOption == self.tabGraveInvoice:
             self.activateClick('InvoicesEdit1')
         elif self.tabOption == self.tabGraveSpring:
@@ -814,6 +818,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('save1')
+        if self.tabOption == self.tabGraveMaintenance:
+            self.activateClick('MaintenanceSave1')    
         elif self.tabOption == self.tabGraveInvoice:
             self.activateClick('InvoicesSave1')
         elif self.tabOption == self.tabGraveSpring:
@@ -834,6 +840,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_tbDelete_clicked(self,  event):
         if self.tabOption == self.tabGrave:
             self.activateClick('clear1')
+        if self.tabOption == self.tabGraveMaintenance:
+            self.activateClick('MaintenanceClear1')    
         elif self.tabOption == self.tabGraveInvoice:
             self.activateClick('InvoicesClear1')
         elif self.tabOption == self.tabGraveSpring:
@@ -953,16 +961,42 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
     # search button
     def on_bSearch_clicked(self, event):
-        self.out( 'Searching ....', self.ERROR)
-        sName = self.getWidget('eFindName').get_text()
-        sCity = self.getWidget('eFindCity').get_text()
-        self.out('Name and City = ' + sName + ', ' + sCity, self.ERROR)
-        self.singleGrave.sWhere = 'where lastname ~* \'.*' + sName + '.*\' and city ~* \'.*' + sCity + '.*\''
-        self.out(self.singleGrave.sWhere, self.ERROR)
+       self.findGrave()
+        
+    def on_eFindButton_key_press_event(self,entry,  event):
+        print 'eSearch_key_press_event'
+        if self.checkKey(event,'NONE','Return'):
+            self.findGrave()
+            
+    def findGrave(self):
+        print 'findGrave'
+        
+        sName = self.getWidget('eFindNameOfGrave').get_text()
+        sFirstname = self.getWidget('eFindFirstname').get_text()
+        sSerialNumber = self.getWidget('eFindSerialNumber').get_text()
+        
+        liSearch = []
+        if sName:
+            liSearch.append('lastname')
+            liSearch.append(sName)
+      
+        if sSerialNumber:
+            liSearch.append('pos_number')
+            try:
+                liSearch.append(int(sSerialNumber))
+            except:
+                liSearch.append(0)
+            
+        if sFirstname:
+            liSearch.append('firstname')
+            liSearch.append(sFirstname)
+       
+        if liSearch:
+            self.singleGrave.sWhere = self.getWhere(liSearch) 
+        
         self.refreshTree()
-        
-    
-        
+
+                
     def on_bQuickAppend_clicked(self, event):
         print "bQuickappend activated"
         self.AutoInsert = False

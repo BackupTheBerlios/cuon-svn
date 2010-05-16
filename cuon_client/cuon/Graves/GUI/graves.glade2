@@ -809,7 +809,8 @@
 		  <child>
 		    <widget class="GtkLabel" id="lFindDesignation">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Grabname</property>
+		      <property name="label" translatable="yes">Name of Grave
+</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_CENTER</property>
@@ -832,7 +833,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eFindDesignation">
+		    <widget class="GtkEntry" id="eFindNameOfGrave">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -843,7 +844,6 @@
 		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
 		      <property name="width_chars">20</property>
-		      <signal name="editing_done" handler="on_eFindDesignation_editing_done"/>
 		      <signal name="key_press_event" handler="on_eFindButton_key_press_event"/>
 		    </widget>
 		    <packing>
@@ -869,7 +869,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label63">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Grabvorname</property>
+		      <property name="label" translatable="yes">Firstname</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -892,7 +892,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="eFindSequence">
+		    <widget class="GtkEntry" id="eFindFirstname">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -928,7 +928,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label90">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Laufnummer</property>
+		      <property name="label" translatable="yes">serial number</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -951,7 +951,7 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry8">
+		    <widget class="GtkEntry" id="eFindSerialNumber">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -959,9 +959,10 @@
 		      <property name="max_length">0</property>
 		      <property name="text" translatable="yes"></property>
 		      <property name="has_frame">True</property>
-		      <property name="invisible_char">●</property>
+		      <property name="invisible_char">•</property>
 		      <property name="activates_default">False</property>
-		      <property name="width_chars">4</property>
+		      <property name="width_chars">8</property>
+		      <signal name="key_press_event" handler="on_eFindButton_key_press_event"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -1016,7 +1017,7 @@
 		  <child>
 		    <widget class="GtkLabel" id="label92">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Friedhof</property>
+		      <property name="label" translatable="yes">Graveyard</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1041,11 +1042,7 @@
 		  <child>
 		    <widget class="GtkComboBoxEntry" id="comboboxentry6">
 		      <property name="visible">True</property>
-		      <property name="items" translatable="yes">Waldfriedhof
-Friedhof Wolkersdorf
-ref. Friedhof
-Friedhof Rednitzhembach
-Friedhof Worzeldorf</property>
+		      <property name="items" translatable="yes"></property>
 		      <property name="add_tearoffs">False</property>
 		      <property name="has_frame">True</property>
 		      <property name="focus_on_click">True</property>
@@ -1085,7 +1082,7 @@ Friedhof Worzeldorf</property>
 		  <child>
 		    <widget class="GtkLabel" id="label93">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Grabart</property>
+		      <property name="label" translatable="yes">Type</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1162,7 +1159,7 @@ sonstiges</property>
 		  <child>
 		    <widget class="GtkLabel" id="label94">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Zahlungsart</property>
+		      <property name="label" translatable="yes">payment Type</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1187,9 +1184,7 @@ sonstiges</property>
 		  <child>
 		    <widget class="GtkComboBoxEntry" id="comboboxentry8">
 		      <property name="visible">True</property>
-		      <property name="items" translatable="yes">2 Rechnungen
-jährliche Rechnung
-Dauergrabpflege</property>
+		      <property name="items" translatable="yes"></property>
 		      <property name="add_tearoffs">False</property>
 		      <property name="has_frame">True</property>
 		      <property name="focus_on_click">True</property>
@@ -1595,7 +1590,7 @@ Dauergrabpflege</property>
 			  <child>
 			    <widget class="GtkLabel" id="label91">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">pos. number</property>
+			      <property name="label" translatable="yes">serial number</property>
 			      <property name="use_underline">False</property>
 			      <property name="use_markup">False</property>
 			      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1823,7 +1818,7 @@ Dauergrabpflege</property>
 		      <child>
 			<widget class="GtkLabel" id="label83">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Allgemeine Infos / Hinweise:</property>
+			  <property name="label" translatable="yes">common Hints</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1928,7 +1923,7 @@ Dauergrabpflege</property>
 		  <child>
 		    <widget class="GtkLabel" id="label78">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Lastame</property>
+		      <property name="label" translatable="yes">Name of Grave</property>
 		      <property name="use_underline">False</property>
 		      <property name="use_markup">False</property>
 		      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -1968,7 +1963,7 @@ Dauergrabpflege</property>
 			  <child>
 			    <widget class="GtkLabel" id="label84">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Friedhof</property>
+			      <property name="label" translatable="yes">Graveyard</property>
 			      <property name="use_underline">False</property>
 			      <property name="use_markup">False</property>
 			      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2137,7 +2132,7 @@ Dauergrabpflege</property>
 			  <child>
 			    <widget class="GtkLabel" id="label85">
 			      <property name="visible">True</property>
-			      <property name="label" translatable="yes">Zahlungsart</property>
+			      <property name="label" translatable="yes">Payment Type</property>
 			      <property name="use_underline">False</property>
 			      <property name="use_markup">False</property>
 			      <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -3502,7 +3497,7 @@ Dauergrabpflege</property>
 			      <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			      <child>
-				<widget class="GtkTextView" id="textview3">
+				<widget class="GtkTextView" id="tvServices">
 				  <property name="visible">True</property>
 				  <property name="can_focus">True</property>
 				  <property name="editable">True</property>
