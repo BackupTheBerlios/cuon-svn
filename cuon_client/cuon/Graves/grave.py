@@ -813,7 +813,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.activateClick('AnnualEdit1')
         elif self.tabOption == self.tabGraveUnique:
             self.activateClick('UniqueEdit1')
-            
+         
+         
             
     def on_tbSave_clicked(self,  event):
         if self.tabOption == self.tabGrave:
