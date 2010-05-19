@@ -9,7 +9,7 @@
     <property name="title" translatable="yes">Artikel</property>
     <property name="default_width">1024</property>
     <property name="default_height">768</property>
-    <property name="icon">layout_content.xpm</property>
+    <property name="icon">article.svg</property>
     <signal name="key_press_event" handler="on_Mainwindow_key_press_event"/>
     <child>
       <widget class="GtkVBox" id="vb_main">

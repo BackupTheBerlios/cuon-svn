@@ -5,9 +5,11 @@
   <widget class="GtkWindow" id="InvoiceMainwindow">
     <property name="visible">True</property>
     <property name="title" translatable="yes">List of Invoices</property>
+    <property name="icon">orderbook.svg</property>
     <child>
       <widget class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">17</property>
         <child>
           <widget class="GtkMenuBar" id="menubar1">
