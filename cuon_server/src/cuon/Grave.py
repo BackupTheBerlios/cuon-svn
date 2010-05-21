@@ -33,24 +33,47 @@ class Grave(xmlrpc.XMLRPC, basics):
         if liPercents0:
             liPercents = liPercents0.split(',')
             
-        
-        
-        
-        
-        
-        return liService, liTypeOfGrave, liTypeOfPaying, liPercents
-        
-
-    def xmlrpc_getComboBoxEntriesPeriod(self, dicUser):
-        cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
-        liSpringPeriod0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveSpringPeriod', cpServer)
-        liSpringPeriod = ['NONE']
-        if liSpringPeriod0:
-            liSpringPeriod = liSpringPeriod0.split(',')  
+        liPeriodSpring0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveSpringPeriod', cpServer)
+        liPeriodSpring = ['NONE']
+        if liPeriodSpring0:
+            liPeriodSpring = liPeriodSpring0.split(',')
             
+        liPeriodSummer0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveSummerPeriod', cpServer)
+        liPeriodSummer = ['NONE']
+        if liPeriodSummer0:
+            liPeriodSummer = liPeriodSummer0.split(',')
             
+        liPeriodAutumn0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveAutumnPeriod', cpServer)
+        liPeriodAutumn = ['NONE']
+        if liPeriodAutumn0:
+            liPeriodAutumn = liPeriodAutumn0.split(',')
             
-        return liSpringPeriod
+        liPeriodWinter0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveWinterPeriod', cpServer)
+        liPeriodWinter = ['NONE']
+        if liPeriodWinter0:
+            liPeriodWinter = liPeriodWinter0.split(',')
+        
+        liPeriodHolliday0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveHollidayPeriod', cpServer)
+        liPeriodHolliday = ['NONE']
+        if liPeriodHolliday0:
+            liPeriodHolliday = liPeriodHolliday0.split(',')
+            
+        liPeriodUnique0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveUniquePeriod', cpServer)
+        liPeriodUnique = ['NONE']
+        if liPeriodUnique0:
+            liPeriodUnique = liPeriodUnique0.split(',')
+            
+        liPeriodYearly0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveYearlyPeriod', cpServer)
+        liPeriodYearly = ['NONE']
+        if liPeriodYearly0:
+            liPeriodYearly = liPeriodYearly0.split(',')
+            
+  
+        
+        
+        
+        return liService, liTypeOfGrave, liTypeOfPaying, liPercents, liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday,  liPeriodUnique, liPeriodYearly
+        
 
     def xmlrpc_getGravesForAddress(self, addressid, dicUser):
         sSql = "select * from fct_getGravesForAddressID(" + `addressid` +")  as Graves "

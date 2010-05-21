@@ -232,7 +232,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
         # set values for comboBox
 
-        liService,  liTypeOfGrave, liTypeOfPaid, liPercent = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         print liService   ,  liTypeOfGrave, liTypeOfPaid, liPercent
         cbService = self.getWidget('cbServiceType')
         if cbService:
@@ -270,17 +270,72 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPercent.set_text_column(0)
             cbPercent.show()
 
-        liSpringPeriod = self.rpc.callRP('Grave.getComboBoxEntriesPeriod',self.dicUser)
-        print liSpringPeriod
-        cbSpringPeriod = self.getWidget('cbSpringPeriod')
-        if cbSpringPeriod:
+        cbPeriodSpring = self.getWidget('cbSpringPeriod')
+        if cbPeriodSpring:
             liststore = gtk.ListStore(str)
-            for period in liSpringPeriod:
-                liststore.append([period])
-            cbSpringPeriod.set_model(liststore)
-            cbSpringPeriod.set_text_column(0)
-            cbSpringPeriod.show()
+            for PeriodSpring in liPeriodSpring:
+                liststore.append([PeriodSpring])
+            cbPeriodSpring.set_model(liststore)
+            cbPeriodSpring.set_text_column(0)
+            cbPeriodSpring.show()
+
+        cbPeriodSummer = self.getWidget('cbSummerPeriod')
+        if cbPeriodSummer:
+            liststore = gtk.ListStore(str)
+            for PeriodSummer in liPeriodSummer:
+                liststore.append([PeriodSummer])
+            cbPeriodSummer.set_model(liststore)
+            cbPeriodSummer.set_text_column(0)
+            cbPeriodSummer.show()
+
+        cbPeriodAutumn = self.getWidget('cbAutumnPeriod')
+        print 'Autumn',  cbPeriodAutumn
+        if cbPeriodAutumn:
+            print 'liPeriodAutumn',  liPeriodAutumn
+            liststore = gtk.ListStore(str)
+            for PeriodAutumn in liPeriodAutumn:
+                liststore.append([PeriodAutumn])
+            cbPeriodAutumn.set_model(liststore)
+            cbPeriodAutumn.set_text_column(0)
+            cbPeriodAutumn.show()
+
+        cbPeriodWinter = self.getWidget('cbWinterPeriod')
+        if cbPeriodWinter:
+            liststore = gtk.ListStore(str)
+            for PeriodWinter in liPeriodWinter:
+                liststore.append([PeriodWinter])
+            cbPeriodWinter.set_model(liststore)
+            cbPeriodWinter.set_text_column(0)
+            cbPeriodWinter.show()
             
+        cbPeriodHolliday = self.getWidget('cbHolidaysPeriod')
+        if cbPeriodHolliday:
+            liststore = gtk.ListStore(str)
+            for PeriodHolliday in liPeriodHolliday:
+                liststore.append([PeriodHolliday])
+            cbPeriodHolliday.set_model(liststore)
+            cbPeriodHolliday.set_text_column(0)
+            cbPeriodHolliday.show()
+            
+        cbPeriodUnique = self.getWidget('cbUniquePeriod')
+        if cbPeriodUnique:
+            liststore = gtk.ListStore(str)
+            for PeriodUnique in liPeriodUnique:
+                liststore.append([PeriodUnique])
+            cbPeriodUnique.set_model(liststore)
+            cbPeriodUnique.set_text_column(0)
+            cbPeriodUnique.show()
+
+        cbPeriodYearly = self.getWidget('cbYearlyPeriod')
+        if cbPeriodYearly:
+            liststore = gtk.ListStore(str)
+            for PeriodYearly in liPeriodYearly:
+                liststore.append([PeriodYearly])
+            cbPeriodYearly.set_model(liststore)
+            cbPeriodYearly.set_text_column(0)
+            cbPeriodYearly.show()
+
+
             
         # Menu-items
         self.initMenuItems()

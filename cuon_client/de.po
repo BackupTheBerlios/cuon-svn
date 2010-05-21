@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-16 17:51+0200\n"
-"PO-Revision-Date: 2010-05-16 17:58+0100\n"
+"PO-Revision-Date: 2010-05-17 10:31+0100\n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4343,21 +4343,18 @@ msgstr "Gräber"
 
 #: cuon/Graves/GUI/src/interface.c:647
 #: cuon/Graves/GUI/src/interface.c:1724
-#, fuzzy
 msgid "Service"
-msgstr "Dienst-ID"
+msgstr "Service"
 
 #: cuon/Graves/GUI/src/interface.c:675
 #: cuon/Graves/GUI/src/interface.c:1849
-#, fuzzy
 msgid "Spring"
-msgstr "Dr_ucken"
+msgstr "Frühling"
 
 #: cuon/Graves/GUI/src/interface.c:703
 #: cuon/Graves/GUI/src/interface.c:1975
-#, fuzzy
 msgid "Summer"
-msgstr "Nummer"
+msgstr "Sommer"
 
 #: cuon/Graves/GUI/src/interface.c:731
 #: cuon/Graves/GUI/src/interface.c:2100
@@ -4366,15 +4363,13 @@ msgstr "Herbst"
 
 #: cuon/Graves/GUI/src/interface.c:759
 #: cuon/Graves/GUI/src/interface.c:2225
-#, fuzzy
 msgid "Holidays"
-msgstr "Feiertag"
+msgstr "Feiertage"
 
 #: cuon/Graves/GUI/src/interface.c:787
 #: cuon/Graves/GUI/src/interface.c:2350
-#, fuzzy
 msgid "Winter"
-msgstr "Textverarbeitung"
+msgstr "Winter"
 
 #: cuon/Graves/GUI/src/interface.c:815
 #: cuon/Graves/GUI/src/interface.c:2497
@@ -4383,23 +4378,20 @@ msgstr "Jährlich"
 
 #: cuon/Graves/GUI/src/interface.c:843
 #: cuon/Graves/GUI/src/interface.c:2635
-#, fuzzy
 msgid "unique"
-msgstr "Einheit"
+msgstr "Einzeln"
 
 #: cuon/Graves/GUI/src/interface.c:882
-#, fuzzy
 msgid "create a new entry"
-msgstr "Erstelle ein neues Daten-Projekt"
+msgstr "Erstelle eine neuen eintrag"
 
 #: cuon/Graves/GUI/src/interface.c:889
 msgid "Edit this entry"
 msgstr "Bearbeite diesen Eintrag"
 
 #: cuon/Graves/GUI/src/interface.c:896
-#, fuzzy
 msgid "save this entry"
-msgstr "speichere in Verzeichnis"
+msgstr "speichere diesen Eintrag"
 
 #: cuon/Graves/GUI/src/interface.c:907
 msgid "Be carefully, this delete the entry"
@@ -4484,7 +4476,6 @@ msgid "address-dms"
 msgstr "Adress-DMS"
 
 #: cuon/Graves/GUI/src/interface.c:1096
-#, fuzzy
 msgid "search Address"
 msgstr "suche Adresse"
 
@@ -4517,12 +4508,10 @@ msgid "Grabnr."
 msgstr ""
 
 #: cuon/Graves/GUI/src/interface.c:1385
-#, fuzzy
 msgid "Detachment"
-msgstr "Anhang"
+msgstr "Abteilung"
 
 #: cuon/Graves/GUI/src/interface.c:1411
-#, fuzzy
 msgid "address"
 msgstr "Anrede"
 
@@ -4552,27 +4541,24 @@ msgid "8"
 msgstr ""
 
 #: cuon/Graves/GUI/src/interface.c:1648
-#, fuzzy
 msgid "months"
-msgstr "Monatlich"
+msgstr "Monate"
 
 #: cuon/Graves/GUI/src/interface.c:1672
 msgid "Hints for Service"
 msgstr "Tips zur Pflege"
 
 #: cuon/Graves/GUI/src/interface.c:1679
-#, fuzzy
 msgid "addional services"
-msgstr "zusaetzliches Material"
+msgstr "zusaetzliche Services"
 
 #: cuon/Graves/GUI/src/interface.c:1696
 msgid "Artikelbesch., Preis UND Datum"
 msgstr ""
 
 #: cuon/Graves/GUI/src/interface.c:1720
-#, fuzzy
 msgid "choose Service"
-msgstr "waehle Artikel"
+msgstr "waehle Service"
 
 #: cuon/Graves/GUI/src/interface.c:1761
 #: cuon/Graves/GUI/src/interface.c:1887
@@ -4581,9 +4567,8 @@ msgstr "waehle Artikel"
 #: cuon/Graves/GUI/src/interface.c:2262
 #: cuon/Graves/GUI/src/interface.c:2387
 #: cuon/Graves/GUI/src/interface.c:2534
-#, fuzzy
 msgid "Count"
-msgstr "Staat"
+msgstr "Anzahl"
 
 #: cuon/Graves/GUI/src/interface.c:1787
 #: cuon/Graves/GUI/src/interface.c:1913
@@ -4592,9 +4577,8 @@ msgstr "Staat"
 #: cuon/Graves/GUI/src/interface.c:2288
 #: cuon/Graves/GUI/src/interface.c:2435
 #: cuon/Graves/GUI/src/interface.c:2573
-#, fuzzy
 msgid "ArticleDesignation"
-msgstr "Beschreibung"
+msgstr "Artikel Beschreibung"
 
 #: cuon/Graves/GUI/src/interface.c:1814
 #: cuon/Graves/GUI/src/interface.c:1940
@@ -4607,32 +4591,28 @@ msgid "Period\n"
 msgstr "Zeiteinheit"
 
 #: cuon/Graves/GUI/src/interface.c:1827
-#, fuzzy
 msgid "Hints"
-msgstr "Mandanten"
+msgstr "Tips"
 
 #: cuon/Graves/GUI/src/interface.c:1953
-#, fuzzy
 msgid "Hints Summer"
-msgstr "Int.-Nummer"
+msgstr "Tips Sommer"
 
 #: cuon/Graves/GUI/src/interface.c:2078
 msgid "Hints Autumn"
 msgstr "Tips herbst"
 
 #: cuon/Graves/GUI/src/interface.c:2203
-#, fuzzy
 msgid "Hints Holiday"
-msgstr "Feiertag"
+msgstr "Tips Feiertag"
 
 #: cuon/Graves/GUI/src/interface.c:2328
 msgid "Hints Spring"
 msgstr "Tips Frühling"
 
 #: cuon/Graves/GUI/src/interface.c:2400
-#, fuzzy
 msgid "Day/Month"
-msgstr "Monat"
+msgstr "Tag/Monat"
 
 #: cuon/Graves/GUI/src/interface.c:2475
 msgid "Hints Annual"
@@ -4643,9 +4623,8 @@ msgid "Hints Unique"
 msgstr "Tips Einzel"
 
 #: cuon/Graves/GUI/src/interface.c:2665
-#, fuzzy
 msgid "add Article"
-msgstr "Artikel"
+msgstr "füge Artikel hinzu"
 
 #: cuon/Clients/GUI/src/interface.c:90
 #: cuon/Clients/GUI/src/interface.c:120
@@ -4668,7 +4647,6 @@ msgid "Address-ID"
 msgstr "Adress-ID"
 
 #: cuon/Think/GUI/src/interface.c:83
-#, fuzzy
 msgid "Thinking"
 msgstr "Nachdenken"
 

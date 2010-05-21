@@ -113,6 +113,7 @@ class import_generic1(fileSelection):
                                
     def standardImport(self):
         #print 'dicfileAttributes', self.dicFileAttributes
+        print 'input-file = ', self.dicFileAttributes['inputFile']
         importFile = open(self.dicFileAttributes['inputFile'])
         # generate UpdateField
 ##        if self.dicFileAttributes['updateData'] == 'YES':
