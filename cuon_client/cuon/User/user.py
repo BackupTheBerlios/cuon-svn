@@ -105,10 +105,10 @@ class User(defaultValues):
         
         # Executables
         self.prefDMS['exe'] = {}
-        self.prefDMS['exe']['writer'] = '/usr/bin/oowriter2'
-        self.prefDMS['exe']['calc'] = '/usr/bin/oocalc2'
-        self.prefDMS['exe']['draw'] = '/usr/bin/oodraw2'
-        self.prefDMS['exe']['impress'] = '/usr/bin/ooimpress2'
+        self.prefDMS['exe']['writer'] = '/usr/bin/oowriter'
+        self.prefDMS['exe']['calc'] = '/usr/bin/oocalc'
+        self.prefDMS['exe']['draw'] = '/usr/bin/oodraw'
+        self.prefDMS['exe']['impress'] = '/usr/bin/ooimpress'
         self.prefDMS['exe']['image'] = '/usr/bin/gimp'
         self.prefDMS['exe']['music'] = '/usr/bin/xmms'
         self.prefDMS['exe']['ogg'] = '/usr/bin/xmms'

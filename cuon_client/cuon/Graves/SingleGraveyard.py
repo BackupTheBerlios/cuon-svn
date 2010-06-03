@@ -41,7 +41,33 @@ class SingleGraveyard(SingleData):
         #
         self.statusfields = ['lastname', 'city']
         
+    def getAddress(self, id):
+          
+        liAddress = []
+        adrNumber = 0
         
+        if id > 0:
+            
+            try:
+                id = long(id)
+                
+                dicRecords = self.load(id)
+            except:
+                id = 0
+                dicRecords = {}
+          
+            if dicRecords and dicRecords not in ['ERROR', 'NONE']:
+                dicRecord = dicRecords[0]
+                adrNumber = dicRecord['addressid']
+                try:
+                    liAddress.append(dicRecord['shortname'])
+                    liAddress.append(dicRecord['designation'])
+                except:
+                    pass
+                    
+            
+        return liAddress,  adrNumber
+   
         
     def getNameAndDesignation(self,id):
         sName = ''

@@ -34,10 +34,12 @@ import SingleGraveHoliday
 import SingleGraveYear
 import SingleGraveSingleevent
 import SingleGraveInvoices
+import SingleGraveyard
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
+
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
 #import cuon.OpenOffice.letter
@@ -65,7 +67,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.graveID = graveid
         self.addressID = addressid
         
-        
+        self.ModulNumber = self.MN['Grave']
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
         self.singleGraveSpring = SingleGraveSpring.SingleGraveSpring(allTables)
@@ -76,6 +78,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveAnnual = SingleGraveYear.SingleGraveYear(allTables)
         self.singleGraveUnique = SingleGraveSingleevent.SingleGraveSingleevent(allTables)
         self.singleGraveInvoices = SingleGraveInvoices.SingleGraveInvoices(allTables)
+        self.singleGraveyard = SingleGraveyard.SingleGraveyard(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.fillArticlesNewID = 0
@@ -1011,9 +1014,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_eGraveyardID_changed(self, event):
         print 'eAdrnbr changed'
         iAdrNumber = self.getChangedValue('eGraveyardID')
-        eAdrField = self.getWidget('eGraveyardShortname')
-        #iAdr = self.singleAddress.getAddress(iAdrNumber)
-        #self.setTextbuffer(eAdrField,liAdr) 
+        eAdrField = self.getWidget('tvGraveyard')
+        
+        liAdr,  addressid = self.singleGraveyard.getAddress(iAdrNumber)
+        liAdr2 = self.singleAddress.getAddress(addressid)
+        
+        self.setTextbuffer(eAdrField,liAdr + liAdr2) 
         
     # search button
     def on_bSearch_clicked(self, event):
@@ -1182,7 +1188,24 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
                 self.AutoInsert = False
                 self.activateClick('UniqueSave1')
                          
-        
+    def on_bDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleGrave.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleGrave.ID})
+       
+       
+    def on_bAddressDMS_clicked(self, event):
+        print 'Addressdms clicked'
+        if self.singleGrave.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            iGraveyardId = self.singleGrave.getGraveyardID(self.singleGrave.ID)
+            print 'GraveyardID = ',  iGraveyardId
+            liAdr,  addressid = self.singleGraveyard.getAddress(iGraveyardId)
+            print liAdr,  addressid
+            if addressid > 0:
+                Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address'], {'1':addressid})
+       
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()

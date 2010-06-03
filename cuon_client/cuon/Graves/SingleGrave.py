@@ -41,4 +41,22 @@ class SingleGrave(SingleData):
         self.statusfields = ['lastname', 'city']
 
     
-    
+    def getGraveyardID(self,  id):
+        graveyardid = 0
+        try:
+            id = long(id)
+            
+            dicRecords = self.load(id)
+        except:
+            print 'Exception by SingleGrave'
+            id = 0
+            dicRecords = {}
+        
+        try:
+            if dicRecords:
+                #print dicRecords
+                graveyardid = dicRecords[0]['graveyardid']
+        except:
+            pass
+            
+        return graveyardid
