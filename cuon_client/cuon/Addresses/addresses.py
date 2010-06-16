@@ -995,6 +995,8 @@ class addresswindow(chooseWindows):
         #letter1.createAddress(singleAddress.ID)
         
 
+   
+        
     def on_bShowDMS_clicked(self, event):
         print 'dms clicked'
         if self.singleAddress.ID > 0:
@@ -1019,7 +1021,10 @@ class addresswindow(chooseWindows):
         
     def on_bContact_clicked(self, event):
         print 'Contact pressed'
-        con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,0)
+        if self.tabOption ==self.tabAddress:
+            con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,0)
+        elif self.tabOption == self.tabPartner:
+            self.on_bPartnerContact_clicked(event)
         
     def on_bPartnerContact_clicked(self, event):
         con1 = contact.contactwindow(self.allTables, self.singleAddress.ID,self.singlePartner.ID)
@@ -1362,6 +1367,8 @@ class addresswindow(chooseWindows):
     def on_tbNewProject_clicked(self, event):
         print 'new order toolbar '
         self.activateClick('new_project')
+        
+        
     # button at the notes tab
     def on_bNotesCut_clicked(self, event):
         self.activateClick('notes_cut1')
@@ -1499,7 +1506,17 @@ class addresswindow(chooseWindows):
             sUrl = 'http://' + sUrl
         self.startExternalPrg(self.dicUser['prefDMS']['exe']['internet'],sUrl)
 
-    
+    def on_bWebSearch_clicked(self, event):
+        # search?q=email+huellhorst&ie=utf-8&oe=utf-8
+        sSearch = '/search?q=' + self.singleAddress.firstRecord['lastname']
+        sSearch += '+' + self.singleAddress.firstRecord['city']
+        
+        sSearch += '&ie=utf-8&oe=utf-8'
+        sUrl = "http://google.de"
+        if sUrl[0:3] not in ['htt','HTT','FTP','ftp']:
+            sUrl = 'http://' + sUrl 
+        sUrl += sSearch
+        self.startExternalPrg(self.dicUser['prefDMS']['exe']['internet'],sUrl)
     # send E-mail 
     def on_bSendMail_clicked(self, event):
         dicV = {}
@@ -1675,7 +1692,9 @@ class addresswindow(chooseWindows):
             
     def on_tbAllContact_clicked(self, event):
         con1 = contact.contactwindow(self.allTables, 0,0)
+        
     def on_tbContact_clicked(self, event):        
+        
         self.on_bContact_clicked(None)
         
      # view Proposal

@@ -339,7 +339,15 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodYearly.show()
 
 
-            
+        liGraveYard = self.rpc.callRP('Grave.getComboGraveyards',self.dicUser)
+        cbGraveYard = self.getWidget('cbFindGraveyard')
+        if cbGraveYard:
+            liststore = gtk.ListStore(str)
+            for GraveYard in liGraveYard:
+                liststore.append([GraveYard])
+            cbGraveYard.set_model(liststore)
+            cbGraveYard.set_text_column(0)
+            cbGraveYard.show()
         # Menu-items
         self.initMenuItems()
 
@@ -1029,14 +1037,24 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         print 'eSearch_key_press_event'
         if self.checkKey(event,'NONE','Return'):
             self.findGrave()
-            
+    def on_cbFindGraveyard_changed(self,  event):
+        self.findGrave()
+        
+        
     def findGrave(self):
         print 'findGrave'
         
         sName = self.getWidget('eFindNameOfGrave').get_text()
         sFirstname = self.getWidget('eFindFirstname').get_text()
         sSerialNumber = self.getWidget('eFindSerialNumber').get_text()
-        
+        try:
+            sGY = self.getWidget('cbFindGraveyard').get_active_text()
+            print 'Graveyard = ',  sGY
+            iGraveyardId = int( sGY[sGY.find('###')+3:])
+            print 'graveyardID = ',  iGraveyardId
+        except:
+            pass
+            
         liSearch = []
         if sName:
             liSearch.append('lastname')
@@ -1052,7 +1070,11 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         if sFirstname:
             liSearch.append('firstname')
             liSearch.append(sFirstname)
-       
+        if iGraveyardId > 0:
+            liSearch.append('graveyardid')
+            liSearch.append(iGraveyardId)
+            
+            
         if liSearch:
             self.singleGrave.sWhere = self.getWhere(liSearch) 
         
@@ -1199,10 +1221,11 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         print 'Addressdms clicked'
         if self.singleGrave.ID > 0:
             print 'ModulNumber', self.ModulNumber
-            iGraveyardId = self.singleGrave.getGraveyardID(self.singleGrave.ID)
-            print 'GraveyardID = ',  iGraveyardId
-            liAdr,  addressid = self.singleGraveyard.getAddress(iGraveyardId)
-            print liAdr,  addressid
+#            iGraveyardId = self.singleGrave.getGraveyardID(self.singleGrave.ID)
+#            print 'GraveyardID = ',  iGraveyardId
+#            liAdr,  addressid = self.singleGraveyard.getAddress(iGraveyardId)
+#            print liAdr,  addressid
+            addressid = self.singleGrave.getAddressID(self.singleGrave.ID)
             if addressid > 0:
                 Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address'], {'1':addressid})
        

@@ -1,0 +1,8 @@
+#!/bin/sh 
+CUONHOME=/home/username/cuon
+SERVER=localhost
+PORT=7080
+PROTO=http
+cd $CUONHOME/bin
+
+python Cuon.py $PROTO://$SERVER:$PORT client NO $CUONHOME/locale $CUONHOME 

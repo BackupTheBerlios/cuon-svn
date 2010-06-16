@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cuon Client
+Comment= Start the Client for the Cuon System
+Exec=/usr/bin/cuon_client_install
+Terminal=true
+Type=Application
+Categories=Gnome;GTK;Application;Office;
+Icon=/usr/share/pixmaps/cuon-logo.png

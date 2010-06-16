@@ -5,7 +5,7 @@ import gtk
 import gtk.glade
 import gobject
 import ConfigParser
-
+import commands
 
 class setup:
     def __init__(self):
@@ -19,6 +19,7 @@ class setup:
         self.CuonAdmin = None
         self.store = []
         self.liLocale = ['de','pt','pt_BR', 'nl', 'it', 'lv']
+        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" , "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids"]
 
         self.xml = None
         self.xmlAutoconnect = False
@@ -62,7 +63,7 @@ class setup:
         self.src_ini = "./cuon_ini1.xml"
         
         self.destClient = './Client'
-        self.src_main = "./cuon/*.py cuon.sh Cuon.py"
+        self.src_main = "./cuon/*.py cuon.sh Cuon.py CuonConfigWizard.py"
         self.dest_main = self.destClient + "/CUON"
         self.dest_cuon = self.dest_main + "/cuon"
         self.ClientDirLocale = self.destClient + "/locale"
@@ -125,10 +126,10 @@ class setup:
 ##        zope_import2 =  root@cuweb://var/lib/zope2.8/instance/default/import
         
         
+        
         self.liLocaldirs = []
-        liDirs = os.listdir('./cuon')
-        print liDirs
-        for sDir in  liDirs:
+        for sDir in  self.LocalDirs:
+            print 'sDir = ',  sDir
             self.liLocaldirs.append(["./cuon/" + sDir + "/*.py",self.dest_cuon + "/" + sDir])
         
 
@@ -202,13 +203,13 @@ class setup:
         
         self.copyLocalValues(self.src_xmlDefaults, self.ClientDirUsrShareCuon)
         self.copyLocalValues(self.src_ini, self.ClientDirUsrShareCuon)
+        
         self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
-        self.copyLocalValues('./GUI/*.glade2', self.dest_glade)
+        
         self.copyLocalValues('./GUI/maemo/*.glade2', self.dest_glade)
         self.copyLocalValues('./GUI/800/*.glade2', self.dest_glade)
-        self.copyLocalValues('./GUI/alternate1/*.glade2', self.dest_glade)
-        self.copyLocalValues('./GUI/alternate2/*.glade2', self.dest_glade)
-        self.copyLocalValues('./GUI/alternate3/*.glade2', self.dest_glade)
+        self.copyLocalValues('./GUI/alternate*/*.glade2', self.dest_glade)
+        
         
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
@@ -441,8 +442,11 @@ class setup:
         
         self.testDir(self.ClientDirLocale)
         self.testDir(self.dest_cuon)
+        
         for key in self.liLocaldirs:
+            print 'Key = ',  key
             self.copyLocalValues(key[0], key[1])
+        
         self.copyLocalValues(self.VERSION_CFG, self.dest_main)
         self.touchFile(self.dest_cuon, '__init__.py')
         self.copyLocalValues('cuonObjects',self.dest_main)

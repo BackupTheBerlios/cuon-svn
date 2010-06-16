@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#cuon_client_install
+# check, if the client exist, start it or if not exist, download it
+
+CuonDir=~/cuon
+
+
+
+if [ -d $CuonDir ]; then
+    echo "Cuon Client Directory exist . We start it now"
+    cd $CuonDir/bin
+    python Cuon.py
+    
+else
+   cd ~/
+    rm CuonClient.tar.bz2
+    wget  http://cuon.org://downloads/CuonClient.tar.bz2
+    tar -xvjf CuonClient.tar.bz2
+    
+    
+    cd $CuonDir
+
+    #change to working directory
+
+    # call config wizard later  
+    cd bin
+
+    echo "edit the file ~/cuon/bin/cuon.ini"
+    python CuonConfigWizard.py
+
+fi
+exit
+
+

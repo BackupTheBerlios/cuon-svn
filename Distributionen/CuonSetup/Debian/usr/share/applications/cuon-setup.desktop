@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cuon Setup
+Comment=Setup Program for the Cuon Systems
+Exec=/usr/bin/cuon_setup
+Terminal=true
+Type=Application
+Categories=GNOME;GTK;Settings
+Icon=/usr/share/pixmaps/computer_key.png

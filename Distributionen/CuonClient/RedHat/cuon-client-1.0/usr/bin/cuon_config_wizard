@@ -1,0 +1,21 @@
+#!/bin/sh
+
+
+#cuon_client_install
+# check, if the client exist, start it or if not exist, download it
+
+CuonDir=~/cuon
+
+
+
+if [ -d $CuonDir ]; then
+    echo "Cuon Client Directory exist . We start it now"
+    cd $CuonDir/bin
+    python CuonConfigWizard.py
+    
+else
+    echo "We install the cuon client"
+    /usr/bin/cuon_client_install
+
+fi
+    

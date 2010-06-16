@@ -60,6 +60,7 @@ for i in liGlade:
     print s
     shutil.copyfile(dirGlade + '/' + i,cuon_home + '/' + s)
     
+        
 # copy locale
 os.system('cp -R Client/locale ' +  cuon_home)
 

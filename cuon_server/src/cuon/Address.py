@@ -408,7 +408,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
                sSql = sSql6
             if dicSearchlist['eInfoContains'] :
-                sSql7 = " info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                sSql7 = " status_info ~*'" + dicSearchlist['eInfoContains'] +"' " 
                 if sSql3 or sSql4 or sSql5 or sSql6:
                     sSql = sSql + " and " + sSql7
                 else:
@@ -499,7 +499,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
                sSql = sSql6
             if dicSearchlist['eInfoContains'] :
-                sSql7 = " info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                sSql7 = " status_info ~*'" + dicSearchlist['eInfoContains'] +"' " 
                 if sSql3 or sSql4 or sSql5 or sSql6:
                     sSql = sSql + " and " + sSql7
                 else:
@@ -596,7 +596,7 @@ class Address(xmlrpc.XMLRPC, basics):
         
                sSql = sSql6
             if dicSearchlist['eInfoContains'] :
-                sSql7 = " address.info ~*'" + dicSearchlist['eInfoContains'] +"' " 
+                sSql7 = " address.status_info ~*'" + dicSearchlist['eInfoContains'] +"' " 
                 if sSql3 or sSql4 or sSql5 or sSql6:
                     sSql = sSql + " and " + sSql7
                 else:

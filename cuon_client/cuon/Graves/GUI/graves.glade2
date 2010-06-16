@@ -1040,12 +1040,13 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkComboBoxEntry" id="comboboxentry6">
+		    <widget class="GtkComboBoxEntry" id="cbFindGraveyard">
 		      <property name="visible">True</property>
 		      <property name="items" translatable="yes"></property>
 		      <property name="add_tearoffs">False</property>
 		      <property name="has_frame">True</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="changed" handler="on_cbFindGraveyard_changed" last_modification_time="Wed, 16 Jun 2010 12:31:27 GMT"/>
 
 		      <child internal-child="entry">
 			<widget class="GtkEntry" id="comboboxentry-entry1">

@@ -114,6 +114,7 @@ class basics(xmlrpc.XMLRPC):
         self.IMAP_USERNAME = 'test'
         self.IMAP_PASSWORD = 'test'
         
+        self.SEND_VERSION_INFO = 'YES'
         try:
             self.cpServer = ConfigParser.ConfigParser()
             
@@ -269,7 +270,13 @@ class basics(xmlrpc.XMLRPC):
             if value:
                 self.IMAP_PASSWORD = value
                 
-                    
+            # VERSION_INFO
+            value = self.getConfigOption('VERSION','SEND_VERSION_INFO')
+            if value:
+                self.SEND_VERSION_INFO = value.upper()
+                
+                
+            
         except Exception, params:
             print "Error read ini-File"
             print Exception
@@ -627,7 +634,7 @@ class basics(xmlrpc.XMLRPC):
                 
             return newTime.tm_year - beforeYears       
             
-    def getNow(self, vSql, z1,  year=2009):
+    def getNow(self, vSql, z1,  year=2010):
         newTime = time.localtime()
         datepart = vSql['id']
         now = 0

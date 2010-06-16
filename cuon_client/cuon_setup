@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# cuon_setup
+CuonDir=~/cuon_project
+
+if [ -d $CuonDir ]; then
+    echo "Project dir ok"
+else
+    echo "create Project dir "
+    #create it first
+    mkdir $CuonDir
+    
+  
+fi
+
+cd $CuonDir
+
+# do an svn update
+svn checkout svn://svn.berlios.de/cuon
+
+#change to working directory
+ 
+cd cuon/cuon_client
+
+#start the python setup
+python setup.py
+

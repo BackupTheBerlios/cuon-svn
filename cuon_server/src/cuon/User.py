@@ -8,12 +8,19 @@ import random
 import xmlrpclib
 from basics import basics
 import Database
+import uuid
+import urllib
+import httplib
+import md5
+
 
 class User(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.Database = Database.Database()
-        
+        self.home_url = 'www.cuon.org'
+        self.headers = {'Content-type': 'application/x-www-form-urlencoded'}
+
     def xmlrpc_getNameOfStandardProfile(self, dicUser):
         sSql = 'select profile_name from preferences where username = \'' + dicUser['Name'] +'\' and is_standard_profile = TRUE'
         
@@ -236,8 +243,34 @@ class User(xmlrpc.XMLRPC, basics):
             return result[0]['address_string']
         else:
             return result
+        
+    def xmlrpc_setUserData(self,  dicUser): 
+        # first check uuid 
+        try:
+            if self.SEND_VERSION_INFO == 'YES':
+                sSql = "select client_uuid from clients where id = " + `dicUser['client']`
+                clientUUID =  self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['client_uuid']
+                id, dicVersion = self.Database.xmlrpc_getLastVersion()
+                print 'db client UUID ',  clientUUID,  len(clientUUID)
+                if clientUUID and clientUUID not in self.liSQL_ERRORS and len(clientUUID) == 36:
+                    pass
+                else:
+                    clientUUID = str(uuid.uuid4())
+                    sSql = "update clients set client_uuid = '" + clientUUID +"' where  id = " + `dicUser['client']`
+                    self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )
+                #response, content = http.request(self.home_url + clientUUID, 'GET', headers=headers)   
+                sInfo = clientUUID +'###' +  md5.new(dicUser['Name']).hexdigest() + '###' + `dicVersion['Major']` +'.' + `dicVersion['Minor']` + '-' + `dicVersion['Rev']` + '###' + `dicUser['client']`
+                
+                try:
+                    conn = httplib.HTTPConnection(self.home_url, 6080)
+                    conn.request("GET", '/sayVersion/' +sInfo)
+                    r2 = conn.getresponse()
+                    conn.close()
+                except:
+                    pass
+        except:
+            pass
             
-    def xmlrpc_setUserData(self,  dicUser):        
         sSql = "select * from fct_setUserData( array " +`self.getUserInfo(dicUser)` + " )"
         print sSql
         return self.Database.xmlrpc_executeNormalQuery(sSql, dicUser )

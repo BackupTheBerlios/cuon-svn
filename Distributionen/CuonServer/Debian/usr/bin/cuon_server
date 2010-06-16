@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# cuon_server install
+CalendarDir=/usr/local/iCal
+
+if [ -d $CalendarDir ]; then
+   echo "dir iCal ok"
+    cd $CalendarDir/iCalendar
+    sudo python ./setup.py install 
+    
+    ## create database
+    #sudo su postgres
+    #createdb -E utf-8 cuon 
+    #createlang -d cuon plpgsql
+    #echo "now creating the user "zope" with no Rights"
+    #createuser zope
+    #echo "and this is your cuonadmin user with superrights"
+    #createuser cuonadmin
+    
+else
+    echo " No Calendar found, something wrong! We stop it."
+fi
+

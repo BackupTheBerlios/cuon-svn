@@ -195,7 +195,7 @@ END OF TERMS AND CONDITIONS
 
 import os
 import sys
-
+import ConfigParser
         
 #sys.path.append('/usr/lib/python/')
 #sys.path.append('/usr/lib64/python2.4/site-packages')
@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 6, 'Rev': 3, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 6, 'Rev': 16, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -353,6 +353,10 @@ class MainWindow(windows):
         except Exception, params:
             print 'prm3',Exception, params
             #pass
+        try:
+            os.system( 'rm ' + os.path.normpath( './*__dms*' ))
+        except Exception, params:
+            print 'prm3',Exception, params
             
         self.on_logout1_activate(None)
             
@@ -1413,6 +1417,17 @@ class MainWindow(windows):
                 
 #gtk.gdk.threads_init()
 
+
+def getConfigOption(cpParser,  section, option):
+    value = None
+    if cpParser.has_option(section,option):
+        value = cpParser.get(section, option)
+        print 'getConfigOption', section + ', ' + option + ' = ' + value
+    if not value:
+        value = " "
+    return value   
+    
+
 sStartType = 'client'
 sDebug = 'NO'
 sLocal = 'NO'
@@ -1424,7 +1439,39 @@ print sys.argv
 # 3 Debug = ON/OFF
 # 4 Path to Locale/ default
 # 5 cuon_path
+try:
+    cpParser = ConfigParser.ConfigParser()
+    sFile = 'cuon.ini'
+    f = open(sFile)
+    cpParser.readfp(f)
+    f.close()
+except:
+    pass
 
+Description = None
+WorkingDir= 'NO'
+Host = None
+Port = None 
+Proto = None
+sStartType = 'client'
+sLocal = 'NO'
+sDebug = 'NO'
+AlternateGui = 'LINUX-Standard'
+
+sSect = 'Client'
+    
+Description = getConfigOption(cpParser,  sSect,'DESCRIPTION')
+WorkingDir = getConfigOption(cpParser, sSect,'WORKINGDIR')
+Host =  getConfigOption(cpParser, sSect,'HOST')
+Port =  getConfigOption(cpParser, sSect,'PORT')
+Proto =  getConfigOption(cpParser, sSect,'PROTOCOL')
+sStartType =  getConfigOption(cpParser, sSect,'TYPE')
+sLocal =  WorkingDir + getConfigOption(cpParser, sSect,'LOCALE')
+sDebug =  getConfigOption(cpParser, sSect,'DEBUG')
+AlternateGui =  getConfigOption(cpParser, sSect,'ALTERNATEGUI')      
+if not AlternateGui or AlternateGui == 'NO' :
+    AlternateGui = 'LINUX-Standard'
+    
 
 if len(sys.argv) > 4: 
     if len(sys.argv[4]) > 1:
@@ -1443,29 +1490,31 @@ if sStartType == 'server':
 else:
     td = cuon.TypeDefs.typedefs.typedefs()
 
+td.SystemName = AlternateGui
+td.cuon_path = WorkingDir
+td.server = Proto.strip() +'://' + Host.strip() +':' + Port.strip()
 
 if len(sys.argv) > 1:
     if len(sys.argv[1]) > 1:
         if sys.argv[1] != 'NO':
             td.server =  sys.argv[1]
             print 'td-server =', td.server   
-        else:
-            td.server = 'NO'
+        
 
 if len(sys.argv) > 5:
     if len(sys.argv[5]) > 1:
         if sys.argv[5] != 'NO':
             td.cuon_path =  sys.argv[5]
             print 'td.cuon_path =', td.cuon_path   
-        else:
-            td.cuon_path = 'NO'
+
 if len(sys.argv) > 6:
     if len(sys.argv[6]) > 1:
         if sys.argv[6] != 'NO':
             td.SystemName =  sys.argv[6]
             print 'td.System =', td.SystemName   
-        else:
-            td.SystemName = 'LINUX-Standard'
+
+      
+        
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

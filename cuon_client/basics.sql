@@ -89,7 +89,7 @@ CREATE OR REPLACE FUNCTION fct_delete( ) returns OPAQUE AS '
     iNextID     int ;
 
     BEGIN
-    
+        
         sName := dicUser[1];
         sClient := dicUser[2];
         sNoWhereClient := dicUser[3];
@@ -170,4 +170,19 @@ CREATE OR REPLACE FUNCTION fct_delete( ) returns OPAQUE AS '
     END ;
      ' LANGUAGE 'plpgsql'; 
     
-      
+    CREATE OR REPLACE FUNCTION fct_new_uuid()   RETURNS char(36) AS '
+    DECLARE
+    
+    this_uuid char(36) ;
+    new_md5 char(32) ;
+    BEGIN
+        SELECT into new_md5 md5(current_database()|| user ||current_timestamp ||random() ) ;
+        -- 8 4 4 4 12
+        this_uuid = substring(new_md5 from 1 for 8) || ''-'' || substring(new_md5 from 9 for 4) || ''-'' || substring(new_md5 from 13 for 4) || ''-'' || substring(new_md5 from 17 for 4) || ''-'' || substring(new_md5 from 21 for 12)  ;
+        --raise notice ''new uuid '', this_uuid ;
+        --raise notice ''new uuid '', this_uuid ;
+        
+        RETURN this_uuid ;
+        
+    END ;
+    ' LANGUAGE 'plpgsql'; 

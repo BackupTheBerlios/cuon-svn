@@ -1,0 +1,18 @@
+Package: cuon-server
+Version: 1.0
+Section: python
+Priority: optional
+Architecture: all
+Essential: no
+Depends: bash, python-reportlab,  python-reportlab, postgresql,  python-pygresql, python-twisted-web, python-twisted-mail, python-twisted-words
+Pre-Depends: 
+Recommends: 
+Suggests: 
+Installed-Size: 412
+Maintainer: Jürgen Hamel <jhamel@cuon.org>
+Homepage: www.cuon.org
+Conflicts: 
+Replaces: cuon-server
+Provides: cuon-server
+Description: Installs the neccessary programs to run a cuon-server, 
+                        setup database, database connection and python modules

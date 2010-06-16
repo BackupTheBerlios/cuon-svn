@@ -1,0 +1,19 @@
+Package: cuon-setup
+Version: 1.0
+Section: python
+Priority: optional
+Architecture: all
+Essential: no
+Depends: bash, subversion,  python-gtk2,  python-glade2,   python-gnome2,  python-gtkmozembed,   python-gtksourceview2 
+Pre-Depends: 
+Recommends: 
+Suggests: 
+Installed-Size: 1
+Maintainer: Jürgen Hamel <jhamel@cuon.org>
+Homepage: www.cuon.org
+Conflicts: 
+Replaces: 
+Provides: cuon-setup
+Description: Installs the cuonserver control program, 
+                        to setup user, rights, reports, configuration and more 
+                       for the cuon server 

@@ -133,7 +133,8 @@ class sendEmail(editorwindow):
         self.dicValues['From'] = self.eFrom.get_text()
         self.dicValues['Subject'] = self.eSubject.get_text()
         
-        self.dicValues['Body'] = self.readTextBuffer(self.getWidget('tv1'))
+        #self.dicValues['Body'] = self.readTextBuffer(self.getWidget('tv1'))
+        self.dicValues['Body'] = self.get_text()
         
         em = self.rpc.callRP('Email.sendTheEmail', self.dicValues, self.liAttachments, self.dicUser)
         self.writeEmailLog(em)

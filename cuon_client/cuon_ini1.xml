@@ -520,6 +520,11 @@
     </GladeEntries>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
+      <Glade-File>cuon_config_wizard.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/cuon_config_wizard.glade2</Glade-FileValue>
+    </GladeEntries>
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
       <Glade-File>email.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/e_mail.glade2</Glade-FileValue>
     </GladeEntries>

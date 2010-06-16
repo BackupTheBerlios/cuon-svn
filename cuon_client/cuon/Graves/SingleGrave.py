@@ -40,7 +40,25 @@ class SingleGrave(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
-    
+    def getAddressID(self,  id ):
+        adrNumber = 0
+         
+        if id > 0:
+            
+            try:
+                id = long(id)
+                
+                dicRecords = self.load(id)
+            except:
+                id = 0
+                dicRecords = {}
+          
+            if dicRecords and dicRecords not in ['ERROR', 'NONE']:
+                dicRecord = dicRecords[0]
+                adrNumber = dicRecord['addressid']
+        return adrNumber
+        
+        
     def getGraveyardID(self,  id):
         graveyardid = 0
         try:

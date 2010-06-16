@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cuon Client Configuration Wizard
+Name[de]=Cuon Client Konfiguration
+Comment=Configure the Client for the Cuon System
+Comment[de]=Konfiguration de Cuon Clients
+Exec="/usr/bin/cuon_config_wizard"
+Terminal=false
+Type=Application
+Categories=Gnome;GTK;Settings;
+Icon=/usr/share/pixmaps/cuon-logo.png

@@ -94,4 +94,18 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         return newID
         
+    def xmlrpc_getGraveyards(self, dicUser):
+        sSql = "select id,  shortname from graveyard "
+        sSql += self.getWhere("", dicUser, 1)
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+    
+
+
+    def xmlrpc_getComboGraveyards(self, dicUser):
+        liGraveyards = self.xmlrpc_getGraveyards(dicUser)
         
+        liReturn = []
+        for graveyard in liGraveyards:
+            liReturn.append(graveyard['shortname'] + '###' + `graveyard['id']`)
+                                                                       
+        return liReturn

@@ -1,0 +1,18 @@
+Package: cuon-client
+Version: 1.0
+Section: python
+Priority: optional
+Architecture: all
+Essential: no
+Depends: bash, wget,  python-gtk2,  python-glade2,  python-imaging,   python-gtkmozembed ,  python-gnome2,   python-gtksourceview2 
+Pre-Depends: 
+Recommends: 
+Suggests: 
+Installed-Size: 1
+Maintainer: Jürgen Hamel <jhamel@cuon.org>
+Homepage: www.cuon.org
+Conflicts: 
+Replaces: 
+Provides: cuon-client
+Description: Installs the cuon client,  
+                        using to connect to the cuon server 

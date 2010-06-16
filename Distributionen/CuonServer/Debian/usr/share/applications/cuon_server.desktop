@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cuon Server Install
+Comment=Server Install of the Cuon System
+Exec=/usr/bin/cuon_server
+Terminal=true
+Type=Application
+Categories=GNOME;GTK;Settings
+Icon=/usr/share/pixmaps/database_gear.png
