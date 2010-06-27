@@ -1697,6 +1697,7 @@
       <default />
       <comment />
     </field>
+     
      </table>
     
   <!--table: articles_purchase-->
@@ -5167,6 +5168,183 @@
       <comment />
     </field>   
 </table>
+
+<!--Projects Programming -->
+  <table>
+    <nameOfTable>project_programming</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+<field>
+      <name>project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>project id  </comment>
+    </field>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>name  </comment>
+    </field>
+   <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>source_suffix</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>glade_suffix</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>other_suffix</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>homepage_url</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>projectpage_url</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>vcs</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment>vcs type </comment>
+    </field>
+    <field>
+        <name>external_editor</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    </table>
+
+    <!--Projects Programming -->
+  <table>
+    <nameOfTable>t_project_programming_files</nameOfTable>
+    <specials>inherits (t_standard);</specials>
+    <x>152</x>
+    <y>115</y>
+<field>
+      <name>programming_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment>project programming id  </comment>
+    </field>
+    <field>
+      <name>name</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>140</size>
+      <default />
+      <comment>name  </comment>
+    </field>
+   <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    <field>
+      <name>folder</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>240</size>
+      <default />
+      <comment>short designation  </comment>
+    </field>
+    
+     <field>
+      <name>notes</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50000</size>
+      <default />
+      <comment>notes  </comment>
+    </field>
+  </table>
+
+
+    <!--Projects Programming source files -->
+  <table>
+    <nameOfTable>source_files</nameOfTable>
+    <specials>inherits (t_project_programming_files);</specials>
+    <x>152</x>
+    <y>115</y>
+ </table>
+
 <!--in payment -->
   <table>
     <nameOfTable>in_payment</nameOfTable>

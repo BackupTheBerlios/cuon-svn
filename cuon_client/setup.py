@@ -225,6 +225,7 @@ class setup:
         self.executeString("scp " + scp1 + ' ' + "./cuon.sh " + scp2 + self.EXECDIR )
         
         
+        
         # create server dirs in share
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE)
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server')
@@ -235,7 +236,9 @@ class setup:
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI/AIML')
         
-        
+        # copy version.cfg
+        self.executeSCP(" " + self.VERSION_CFG , self.SERVERDIRSHARE + "/cuon_server/")
+        # copy other
         self.executeSCP(" ../cuon_server/src/*.py", self.SERVERDIRSHARE + "/cuon_server/src")
         self.executeSCP(" ../cuon_server/src/cuon/*.py", self.SERVERDIRSHARE + "/cuon_server/src/cuon")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/*",  self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports")
@@ -417,7 +420,7 @@ class setup:
         s1 = "ssh " +  ssh + ' "'+  s +'"'
         print s1
         self.setTv1(s1)
-        self.executeString( s1  )
+        return self.executeString( s1  )
         
     def executeSCP(self, src, dest):
         scp1 = " -P " + self.sshPort + " "
@@ -426,7 +429,7 @@ class setup:
         print s1
         self.setTv1(s1)
 
-        self.executeString(s1 )
+        return self.executeString(s1 )
     
   
     def copyFiles(self):
@@ -448,6 +451,7 @@ class setup:
             self.copyLocalValues(key[0], key[1])
         
         self.copyLocalValues(self.VERSION_CFG, self.dest_main)
+        
         self.touchFile(self.dest_cuon, '__init__.py')
         self.copyLocalValues('cuonObjects',self.dest_main)
         
@@ -493,9 +497,11 @@ class setup:
     def executeString(self, s):
         print s
         self.setTv1(s)
-        liResult = os.system(s)
+        #liResult = os.system(s)
+        liResult = commands.getstatusoutput(s)
+        print 'execute String',  liResult
         self.setTv1(`liResult`)
-        
+        return liResult
         
     def testDir(self, destdir):
         s = "if [ ! -d " +  destdir  + " ] ; then mkdir " +  destdir  + " ; fi "
@@ -601,9 +607,10 @@ class setup:
         except:
             pass
             
-            
+        
             
         self.setOptions2Data(sSect)
+        self.on_bCheckVersion_clicked(None)
         
     def setActiveRadiobutton(self, sSect):
         for i in range(len(self.store)):
@@ -635,8 +642,25 @@ class setup:
         print 'install sshPort = ', self.sshPort
         print 'install XmlrpcPort = ', self.XmlrpcPort
         
-        
-        
+    def on_bCheckVersion_clicked(self,  event):
+        liResult1 = self.executeSSH("grep ^Major " + self.SERVERDIRSHARE + "/cuon_server/version.cfg" )
+        liResult2 = self.executeSSH("grep ^Minor " + self.SERVERDIRSHARE + "/cuon_server/version.cfg" )
+        liResult3 = self.executeSSH("grep ^Rev " + self.SERVERDIRSHARE + "/cuon_server/version.cfg" )
+        sVersion = liResult1[1][7:].strip()  + '.'  + liResult2[1][7:].strip()  + '-' +  liResult3[1][5:].strip() 
+        print sVersion
+        liResult1 = commands.getstatusoutput("grep ^Major " + self.dest_main + "/version.cfg")
+        #print "this Major ",  liResult1
+        liResult2 = commands.getstatusoutput("grep ^Minor " + self.dest_main + "/version.cfg")
+        liResult3 = commands.getstatusoutput("grep ^Rev " + self.dest_main + "/version.cfg")
+        sThisVersion = liResult1[1][7:].strip()  + '.'  + liResult2[1][7:].strip()  + '-' +  liResult3[1][5:].strip() 
+        try:
+            if not sVersion[0].isdigit():
+                sVersion = ' '
+            self.getWidget("eThisVersion").set_text(sThisVersion)
+            self.getWidget("eServerVersion").set_text(sVersion)
+        except Exceptions,  params:
+            print Exceptions,  params
+
     def on_cbeName_editing_done(self, event):
         print event
         print 'line = ', event.get_model()[nSect][0]

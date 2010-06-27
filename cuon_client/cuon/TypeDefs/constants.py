@@ -94,6 +94,44 @@ class constants:
         self.MimeType['image/bmp'] = 'bmp'
         self.MimeType['image/x-windows-bmp'] = 'bmp'
         self.MimeType['text/x-python'] = 'py'
+        self.MimeType['application/x-php'] = 'php'
+                
+#Perl	application/x-perl
+#Ada	text/x-ada
+#C	text/x-csrc;text/x-chdr
+#ChangeLog	text/x-changelog
+#C++	text/x-c++src;text/x-c++hdr
+#C#	text/x-csharp
+#CSS	text/css
+#.desktop	application/x-desktop
+#Diff	text/x-patch
+#Fortran 95	text/x-fortran
+#GtkRC	text/x-gtkrc
+#Haskell	text/x-haskell
+#IDL	text/x-idl
+#.ini	text/x-ini-file
+#Java	text/x-java
+#JavaScript	application/x-javascript
+#LaTeX	text/x-tex
+#Lua	text/x-lua
+#Makefile	text/x-makefile
+#MSIL	text/x-msil
+#Nemerle	text/x-nemerle
+#Octave	text/x-octave;text/x-matlab
+#Pascal	text/x-pascal
+#gettext translation	text/x-gettext-translation
+#Python	text/x-python
+#R	text/x-R
+#Ruby	application/x-ruby
+#Scheme	text/x-scheme
+#sh	application/x-shellscript
+#SQL	text/x-sql
+#Tcl	text/x-tcl
+#Texinfo	text/x-texinfo
+#VB.NET	text/x-vbnet;text/x-vb
+#Verilog	text/x-verilog-src
+#VHDL	text/x-vhdl
+#XML	application/xml
  #      self.MimeType['multipart/signed'] = 'txt'
 #        self.MimeType[''] = ''
 #        self.MimeType[''] = ''

@@ -79,6 +79,7 @@ class gladeXml(defaultValues):
             language = manager.guess_language(content_type=mime_type)
             textbufferMisc.set_highlight_syntax(highlight)
         
+        
         textbufferMisc.set_language(language)
         try:
             viewMisc = gtksourceview.SourceView(textbufferMisc)

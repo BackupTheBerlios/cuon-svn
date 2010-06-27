@@ -49,7 +49,8 @@ class windows(rawWindow, MyXML, messages,  constants):
         constants.__init__(self)
         rawWindow.__init__(self, servermod)
         
-        
+        self.Find = False
+        self.lastTab = -1
         self.servermod = servermod
         MyXML.__init__(self)
         messages.__init__(self)
@@ -239,6 +240,24 @@ class windows(rawWindow, MyXML, messages,  constants):
         self.tabOption = page_num
         
         self.tabChanged()
+        
+            
+    def on_notebook2_switch_page(self, notebook2, page, page_num ):
+        #self.out( "Notebook switch to page " + `page`)
+        #self.out( "Notebook switch to page_num" + `page_num`)
+        #self.out( "Notebook switch to notebook " + `notebook1`)
+        if self.doEdit > self.noEdit:
+            if self.QuestionMsg('Unsaved Data ! Wish you save them ?'):
+                self.saveData()
+                self.doEdit = self.noEdit
+            else:
+                self.doEdit = self.noEdit
+                self.endEdit()
+            
+        self.tabOption2 = page_num +100
+        
+        self.tabChanged()
+        
     def saveData(self):
         pass
         

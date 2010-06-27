@@ -46,6 +46,7 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 
 
     def getListOfTableNames(self, sFile):
+        print "load xml = ",  sFile
         doc = self.getDatabaseDescription(sFile)
         
         #        cyRootNode = self.getRootNode(doc)
@@ -270,7 +271,7 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 
 ##/** gets the definition of the table */
 ##cyr_table* cyr_load_table::getTableDefinition(std::string *nameOfTable, int nFile){
-	
+    
 ##  // std::cout << "read XML-File " << std::endl ;
 
 ##  MyXML myxml;
@@ -299,43 +300,43 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 ##      table->setSpecials(myxml.find(xmlFields,"specials") ) ;
 ##      std::cout << "Specials = " << table->getSpecials() << std::endl ;
 
-	
+    
 ##      for(xmlpp::Node::NodeList ::iterator iX = xmlFields.begin();iX != xmlFields.end();iX++){
-##	xmlpp::Node::Node &Field = **iX;
-##	if(Field.get_name() == "field"){
-##	    std::cout << "fields erreicht " << std::endl ;
-##	  xmlpp::Node::NodeList  FieldsNL = Field.get_children();
-	  
-##	  cyr_column colX2 ; // = new cyr myXml.getNumberOfFields(xmlTable_column() ;
-	  
-##	  std::string PrimaryKeyField = myxml.find(FieldsNL,"name");
-##	   std::cout << "Name in XML = " <<  PrimaryKeyField << std::endl ;
-	  
-##	  colX2.setName( myxml.find(FieldsNL,"name"));
-	  
-##	  colX2.setType(myxml.find(FieldsNL,"type"));
-##	  colX2.setAllowNull(new bool((myxml.find(FieldsNL,"notnull"))=="0" ? false : true) );
-##	  if(myxml.find(FieldsNL,"pkey") == "1"){
-##	    colX2.setPrimaryKey(PrimaryKeyField );
-##	  }
-	  
-##	  int sot;
-##	  sot = atoi((myxml.find(FieldsNL,"size").c_str())) ; 
-##	  colX2.setSizeOfDatafield(sot);
-	  
-##	  sot = atoi((myxml.find(FieldsNL,"column_id").c_str())) ; 
-##	  colX2.setColumnID(sot);
+##  xmlpp::Node::Node &Field = **iX;
+##  if(Field.get_name() == "field"){
+##      std::cout << "fields erreicht " << std::endl ;
+##    xmlpp::Node::NodeList  FieldsNL = Field.get_children();
+      
+##    cyr_column colX2 ; // = new cyr myXml.getNumberOfFields(xmlTable_column() ;
+      
+##    std::string PrimaryKeyField = myxml.find(FieldsNL,"name");
+##     std::cout << "Name in XML = " <<  PrimaryKeyField << std::endl ;
+      
+##    colX2.setName( myxml.find(FieldsNL,"name"));
+      
+##    colX2.setType(myxml.find(FieldsNL,"type"));
+##    colX2.setAllowNull(new bool((myxml.find(FieldsNL,"notnull"))=="0" ? false : true) );
+##    if(myxml.find(FieldsNL,"pkey") == "1"){
+##      colX2.setPrimaryKey(PrimaryKeyField );
+##    }
+      
+##    int sot;
+##    sot = atoi((myxml.find(FieldsNL,"size").c_str())) ; 
+##    colX2.setSizeOfDatafield(sot);
+      
+##    sot = atoi((myxml.find(FieldsNL,"column_id").c_str())) ; 
+##    colX2.setColumnID(sot);
 
-	  
-##	  colX2.setNameOfVariable(myxml.find(FieldsNL,"var_name"));
-##	  colX2.setTypeOfVariable(myxml.find(FieldsNL,"var_type"));
-	
-##	  sot = atoi((myxml.find(FieldsNL,"var_length").c_str())) ; 
-##	  colX2.setMaxLengthOfVariable(sot);
-	
-##	  table->addColumn(colX2);
+      
+##    colX2.setNameOfVariable(myxml.find(FieldsNL,"var_name"));
+##    colX2.setTypeOfVariable(myxml.find(FieldsNL,"var_type"));
+    
+##    sot = atoi((myxml.find(FieldsNL,"var_length").c_str())) ; 
+##    colX2.setMaxLengthOfVariable(sot);
+    
+##    table->addColumn(colX2);
 
-##	}
+##  }
 ##      }
 ##    }
 ##  }
@@ -378,7 +379,7 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 ##    s = myxml.find(xmlFields,"name");
 ##    if(s.size() > 0){
 ##      // std::cout << "tables in nameOfTables = " << s << std::endl ;
-##	NameOfTables.push_back(s);
+##  NameOfTables.push_back(s);
 ##    }
     
 ## }
@@ -413,30 +414,30 @@ class cyr_load_table(defaultValues, MyXML, dumps):
 ##  //     TiXmlNode *child = 0;
 ##  //     while( child = node->IterateChildren( child ) ){
 ##  //         if(child != 0){
-##  // 	    std::cout << "child = " << child->Value() << std::endl ;
-##  // 	    if(child->Value() == "table"){
-##  // 		std::cout << "table gefunden"  << std::endl ;
-		
-##  // 		TiXmlNode *child1 = child->FirstChild() ;
-		
-##  // 		tableElement = child1->ToElement();
-##  // 		assert( tableElement  );
-##  // 		std::cout << "Element-Value = " << tableElement->Value() << std::endl;
-	
+##  //      std::cout << "child = " << child->Value() << std::endl ;
+##  //      if(child->Value() == "table"){
+##  //      std::cout << "table gefunden"  << std::endl ;
+        
+##  //      TiXmlNode *child1 = child->FirstChild() ;
+        
+##  //      tableElement = child1->ToElement();
+##  //      assert( tableElement  );
+##  //      std::cout << "Element-Value = " << tableElement->Value() << std::endl;
+    
 
 
-##  // 		if(tableElement->Value() == "name"){ 
-##  // 		    TiXmlNode * child2 = child1->FirstChild();
-##  // 		    TiXmlText *text = child2->ToText();
-##  // 		    std::cout << "Test = " << text->Value() <<  std::endl ;
-##  // 		    std::string *s = new std::string();
-##  // 		    s->assign(text->Value());
-##  // 		    NameOfTables.push_back(*s);
-##  // 		}
+##  //      if(tableElement->Value() == "name"){ 
+##  //          TiXmlNode * child2 = child1->FirstChild();
+##  //          TiXmlText *text = child2->ToText();
+##  //          std::cout << "Test = " << text->Value() <<  std::endl ;
+##  //          std::string *s = new std::string();
+##  //          s->assign(text->Value());
+##  //          NameOfTables.push_back(*s);
+##  //      }
 
 
-##  // 	    }
-##  // 	}
+##  //      }
+##  //  }
 ##  //     }
 
 

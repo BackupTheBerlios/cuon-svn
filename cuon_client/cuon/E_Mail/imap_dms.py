@@ -82,22 +82,22 @@ class imap_dms(constants,  dumps):
     def checkMail(self):
         M = None
 
-
-        try:
-                
-            M = imaplib.IMAP4(self.imap_server)
-            
-        except:
+        if self.dicUser.has_key('check_imap') and self.dicUser['check_imap'] == True:
             try:
-                M = imaplib.IMAP4_SSL(self.imap_server)
+                    
+                M = imaplib.IMAP4(self.imap_server)
                 
-            except Exception, e:
-                #print sys.exc_info()[0]
-                print('IMAP login error: ', e)
-                M = None
-                
-                
-        
+            except:
+                try:
+                    M = imaplib.IMAP4_SSL(self.imap_server)
+                    
+                except Exception, e:
+                    #print sys.exc_info()[0]
+                    print('IMAP login error: ', e)
+                    M = None
+                    
+                    
+            
         try:
             if M:
                 res = M.login(self.imap_user, self.imap_password)

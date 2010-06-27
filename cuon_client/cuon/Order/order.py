@@ -67,6 +67,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
 
         chooseWindows.__init__(self)
         ArticlesFastSelection.__init__(self)
+        
         self.dicOrder = dicOrder
         self.fillArticlesNewID = 0
         self.loadGlade('order.xml','OrderMainwindow')

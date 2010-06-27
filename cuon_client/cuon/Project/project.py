@@ -22,7 +22,7 @@ import gtk
 import gtk.glade
 import gobject
 import string
-
+import commands
 
 import logging
 from cuon.Windows.chooseWindows  import chooseWindows
@@ -40,6 +40,7 @@ import SingleProjectPhases
 import SingleProjectTasks
 import SingleProjectStaffResources
 import SingleProjectMaterialResources
+import SingleProjectProgramming
 import cuon.Staff.staff
 import cuon.Staff.SingleStaff
 import cuon.Addresses.addresses
@@ -47,6 +48,7 @@ import cuon.Addresses.SingleAddress
 
 import cuon.Articles.articles
 import cuon.Articles.SingleArticle
+import cuon.Editor.programmersEditor
 
 
 
@@ -64,7 +66,7 @@ class projectwindow(chooseWindows):
         self.singleProjectTasks = SingleProjectTasks.SingleProjectTasks(allTables)
         self.singleProjectTaskStaff = SingleProjectStaffResources.SingleProjectStaffResources(allTables)
         self.singleProjectTaskMaterial = SingleProjectMaterialResources.SingleProjectMaterialResources(allTables)
-
+        self.singleProjectProgramming = SingleProjectProgramming.SingleProjectProgramming(allTables)
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singleArticles = cuon.Articles.SingleArticle.SingleArticle(allTables)
@@ -84,6 +86,7 @@ class projectwindow(chooseWindows):
         self.EntriesProject = 'project.xml'
         self.EntriesPhase = 'project_phases.xml'
         self.EntriesTask = 'project_tasks.xml'
+        self.EntriesProgramming = 'project_programming.xml'
         self.EntriesTaskStaff = 'project_staff_resources.xml'
         self.EntriesTaskMaterial = 'project_material_resources.xml'
         
@@ -91,6 +94,7 @@ class projectwindow(chooseWindows):
         self.loadEntries(self.EntriesProject)
         self.loadEntries(self.EntriesPhase)
         self.loadEntries(self.EntriesTask)
+        self.loadEntries(self.EntriesProgramming)
         self.loadEntries(self.EntriesTaskStaff)
         self.loadEntries(self.EntriesTaskMaterial)
         
@@ -118,6 +122,14 @@ class projectwindow(chooseWindows):
         self.singleProjectTasks.setTreeOrder('name')
         self.singleProjectTasks.setListHeader([_('Name'), _('Designation')])
         self.singleProjectTasks.setTree(self.xml.get_widget('tree1') )
+
+        self.singleProjectProgramming.setEntries(self.getDataEntries(self.EntriesProgramming) )
+        self.singleProjectProgramming.setGladeXml(self.xml)
+        self.singleProjectProgramming.setTreeFields( ['name', 'designation'] )
+        self.singleProjectProgramming.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleProjectProgramming.setTreeOrder('name')
+        self.singleProjectProgramming.setListHeader([_('Name'), _('Designation')])
+        self.singleProjectProgramming.setTree(self.xml.get_widget('tree1') )
 
         self.singleProjectTaskStaff.setEntries(self.getDataEntries(self.EntriesTaskStaff) )
         self.singleProjectTaskStaff.setGladeXml(self.xml)
@@ -158,7 +170,13 @@ class projectwindow(chooseWindows):
             cbProjectStatus.set_model(liststore)
             cbProjectStatus.set_text_column(0)
             cbProjectStatus.show()
-
+            
+        # Notes
+        self.textbufferSources,  self.viewSources = self.getNotesEditor()
+        Scrolledwindow = self.getWidget('scSourceNotes')
+        Scrolledwindow.add(self.viewSources)
+        self.viewSources.show_all()
+        Scrolledwindow.show_all()
         # Menu-items
         self.initMenuItems()
 
@@ -168,7 +186,7 @@ class projectwindow(chooseWindows):
         self.addEnabledMenuItems('tabs','mi_task1')
         self.addEnabledMenuItems('tabs','mi_staff_resources1')
         self.addEnabledMenuItems('tabs','mi_material_resources1')
-
+        self.addEnabledMenuItems('tabs','programming1')
                
         # seperate Menus
         self.addEnabledMenuItems('project','mi_project1')
@@ -176,6 +194,8 @@ class projectwindow(chooseWindows):
         self.addEnabledMenuItems('tasks','mi_task1')
         self.addEnabledMenuItems('staff_resources','mi_staff_resources1')
         self.addEnabledMenuItems('material_resources','mi_material_resources1')
+        self.addEnabledMenuItems('programming','programming1')
+        
         
         # enabledMenues for Project
         self.addEnabledMenuItems('editProject','mi_new1' , self.dicUserKeys['project_new'])
@@ -192,6 +212,11 @@ class projectwindow(chooseWindows):
         self.addEnabledMenuItems('editTasks','task_delete1', self.dicUserKeys['project_delete'])
         self.addEnabledMenuItems('editTasks','task_edit', self.dicUserKeys['project_edit'])
 
+
+        self.addEnabledMenuItems('editProgramming','programming_main_new' , self.dicUserKeys['project_new'])
+        self.addEnabledMenuItems('editProgramming','programming_main_delete', self.dicUserKeys['project_delete'])
+        self.addEnabledMenuItems('editProgramming','programming_main_edit', self.dicUserKeys['project_edit'])
+
         self.addEnabledMenuItems('editStaffRes','staff_resources_new1' , self.dicUserKeys['project_new'])
         self.addEnabledMenuItems('editStaffRes','staff_resources_delete1', self.dicUserKeys['project_delete'])
         self.addEnabledMenuItems('editStaffRes','staff_resources_edit1', self.dicUserKeys['project_edit'])
@@ -206,14 +231,20 @@ class projectwindow(chooseWindows):
         self.addEnabledMenuItems('editSave','task_save1', self.dicUserKeys['project_save'])
         self.addEnabledMenuItems('editSave','staff_resources_save1', self.dicUserKeys['project_save'])
         self.addEnabledMenuItems('editSave','material_resources_save1', self.dicUserKeys['project_save'])
-
+        self.addEnabledMenuItems('editSave','programming_main_save', self.dicUserKeys['project_save'])
+        
         # tabs from notebook
         self.tabProject = 0
         self.tabPhases = 1
         self.tabTasks = 2
         self.tabStaffResources = 3
         self.tabMaterialResources = 4
+        self.tabOrder = 5
+        self.tabProgramming = 6
         
+        self.tabProgrammingMain = 100
+        
+        print 'tab endet'
         self.win1.add_accel_group(self.accel_group)
 
         self.tabChanged()
@@ -363,7 +394,29 @@ class projectwindow(chooseWindows):
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
             
    
-    
+    #Menu  Programming
+  
+    def on_programming_main_save_activate(self, event):
+        self.out( "save projectphases v2")
+        self.singleProjectProgramming.projectId = self.singleProject.ID
+        self.singleProjectProgramming.save()
+        self.setEntriesEditable(self.EntriesProgramming, False)
+        self.tabChanged()
+        
+    def on_programming_main_new_activate(self, event):
+        print  "new projectprogramming v2"
+        self.singleProjectProgramming.newRecord()
+        self.setEntriesEditable(self.EntriesProgramming, True)
+
+    def on_programming_main_edit_activate(self, event):
+        print "edit projectprogramming v2"
+        self.setEntriesEditable(self.EntriesProgramming, True)
+        
+        
+    def on_programming_main_delete_activate(self, event):
+        self.out( "delete projectphases v2")
+        self.singleProjectProgramming.deleteRecord()
+              
     
 ##    def on_chooseAddress_activate(self, event):
 ##        # choose Address from other Modul
@@ -597,6 +650,18 @@ class projectwindow(chooseWindows):
             firstRecord, dicExtInfo = self.getProjectInfos()
             print 'firstRecord = ', firstRecord
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, firstRecord,dicExtInfo)
+    
+    
+    # 
+    # Programming
+    #
+    def on_bProgrammingEdit_clicked(self, event):
+        print "programming edit clicked"
+        exEditor = self.getWidget('eExternalEditor').get_text()
+        if exEditor:
+            commands.getstatusoutput(edEditor)
+        else:
+            pe = cuon.Editor.programmersEditor.programmerseditor()
         
     def refreshTree(self):
         self.singleProject.disconnectTree()
@@ -604,7 +669,7 @@ class projectwindow(chooseWindows):
         self.singleProjectTasks.disconnectTree()
         self.singleProjectTaskStaff.disconnectTree()
         self.singleProjectTaskMaterial.disconnectTree()
-
+        self.singleProjectProgramming.disconnectTree()
 
         if self.tabOption == self.tabProject:
             self.singleProject.connectTree()
@@ -631,12 +696,16 @@ class projectwindow(chooseWindows):
             self.singleProjectTaskMaterial.refreshTree()
             
      
-
+        elif self.tabOption == self.tabProgramming:
+            self.singleProjectProgramming.sWhere  ='where project_id = ' + `int(self.singleProject.ID)`
+            self.singleProjectProgramming.connectTree()
+            self.singleProjectProgramming.refreshTree()
+            
 
          
     def tabChanged(self):
         self.out( 'tab changed to :'  + str(self.tabOption))
-        print self.tabProject
+        print self.tabOption
         
         if self.tabOption == self.tabProject :
             #Project
@@ -666,7 +735,7 @@ class projectwindow(chooseWindows):
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleProject.sStatus])
 
-
+       
 
 
         elif self.tabOption == self.tabStaffResources:
@@ -688,6 +757,17 @@ class projectwindow(chooseWindows):
             self.editAction = 'editMaterialRes'
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleProjectTaskMaterial.sStatus])
+
+        elif self.tabOption == self.tabProgramming:
+            if self.tabOption2 == self.tabProgrammingMain:
+                print 'tabchanged Programming'
+                
+                self.disableMenuItem('tabs')
+                self.enableMenuItem('programming')
+                
+                self.editAction = 'editProgramming'
+                self.setTreeVisible(True)
+                self.setStatusbarText([self.singleProjectTaskMaterial.sStatus])
 
         # refresh the Tree
         print "refresh Tree 1"

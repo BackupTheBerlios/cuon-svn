@@ -60,7 +60,7 @@
     </entry>
      <entry>
       <name>tvSpringHints</name>
-      <type>text</type>
+      <type>textline</type>
       <size>30000</size>
       <verify_type>text</verify_type>
       <create_sql>1</create_sql>

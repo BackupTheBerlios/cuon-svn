@@ -18,8 +18,9 @@ except:
 from cuon.Windows.windows  import windows 
 
 class editorwindow(windows):
-    def __init__(self, dicFilename=None, servermod=False):
+    def __init__(self, dicFilename=None, servermod=False, prgmode = False):
         windows.__init__(self)
+        
         
         self.close_dialog = None
         self.clipboard = gtk.clipboard_get()
@@ -32,28 +33,34 @@ class editorwindow(windows):
             self.xml = gtk.glade.XML('../usr/share/cuon/glade/editor.glade2')
             self.setXmlAutoconnect()
         else:
-            self.loadGlade('editor.xml')
+            if prgmode:
+                self.loadGlade('prgeditor.xml')
+            else:
+                self.loadGlade('editor.xml')
         self.win1 = self.getWidget('EditorMainwindow')
-        
-        if GtkSV:
-            self.textbuffer,  self.view = self.getNotesEditor(mime_type = 'text/x-ini-file')
-            
-            Vbox = self.getWidget('vbox1')
-            Scrolledwindow = self.getWidget('scrolledwindow1')
-            Scrolledwindow.remove(self.getWidget('viewport1'))
-            #Vbox.remove(oldScrolledwindow)
-            #Vbox.add(self.view)
-            #Vbox.show_all()
-            Scrolledwindow.add(self.view)
-            self.view.show_all()
-            Scrolledwindow.show_all()
-            
-            
+        if prgmode:
+            pass
         else:
-            
+                
+            if GtkSV:
+                self.textbuffer,  self.view = self.getNotesEditor(mime_type = 'text/x-ini-file')
+                
+                Vbox = self.getWidget('vbox1')
+                Scrolledwindow = self.getWidget('scrolledwindow1')
+                Scrolledwindow.remove(self.getWidget('viewport1'))
+                #Vbox.remove(oldScrolledwindow)
+                #Vbox.add(self.view)
+                #Vbox.show_all()
+                Scrolledwindow.add(self.view)
+                self.view.show_all()
+                Scrolledwindow.show_all()
+                
+                
+            else:
+                
 
-            self.textbuffer = self.getWidget('tv1').get_buffer()
-        
+                self.textbuffer = self.getWidget('tv1').get_buffer()
+            
         
         self.actualTab = 0
         
@@ -116,7 +123,7 @@ class editorwindow(windows):
     def open_selected_file(self, data=None):
         "Opens the selected file and reads it in"
         self.open_file(self.filesel.get_filename())
-        self.filesel.destroy()  
+        #self.filesel.destroy()  
     
     def open_file(self, dicFilename):
         "Opens the file given in filename and reads it in"

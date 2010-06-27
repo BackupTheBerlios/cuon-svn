@@ -339,6 +339,11 @@
       <Entry-File>project_material_resources.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_project_material_resources.xml</Entry-FileValue>
     </Entries> 
+     <Entries>     
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>project_programming.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_project_programming.xml</Entry-FileValue>
+    </Entries> 
 <Entries>       
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>web2.xml</Entry-File>
@@ -645,7 +650,11 @@
       <Glade-File>editor.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/editor.glade2</Glade-FileValue>
     </GladeEntries>
-    
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>prgeditor.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/prgeditor.glade2</Glade-FileValue>
+    </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>ai.xml</Glade-File>

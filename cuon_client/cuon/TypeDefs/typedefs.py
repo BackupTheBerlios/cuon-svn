@@ -110,7 +110,7 @@ class typedefs:
                     try:
                         
                         # start read /etc/cuon/.cuon.ini
-                        self.getConfigParser(os.path.normpath(os.environ['HOME'] + '/.cuon.ini'))
+                        self.getConfigParser(os.path.normpath(os.environ['HOME'] + '/bin/cuon.ini'))
                         if self.cpParser:
                             value = self.getConfigOption('PATH','CUON_PATH')
                             if value:
@@ -152,8 +152,8 @@ class typedefs:
                             print ' no environ found'
                         if not self.cuon_path or not self.server:     
                             try:
-                                # normaly ini-file ist jaust found here
-                                self.getConfigParser(os.path.normpath('../../.cuon.ini'))
+                                # normaly ini-file ist just found here
+                                self.getConfigParser(os.path.normpath('../cuon.ini'))
                                 if self.cpParser:
                                     value = self.getConfigOption('PATH','CUON_PATH')
                                     if value:

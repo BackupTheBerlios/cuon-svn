@@ -62,7 +62,9 @@ class articleswindow(chooseWindows):
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Articles']        
         self.allTables = allTables
+        self.singleArticleID = -1
         self.singleArticle = SingleArticle.SingleArticle(allTables)
+        self.singleArticleForParts = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)
         self.singleArticleParts = SingleArticleParts.SingleArticleParts(allTables)
         self.singleArticleSales = SingleArticleSale.SingleArticleSale(allTables)
@@ -103,13 +105,17 @@ class articleswindow(chooseWindows):
         self.loadEntries(self.EntriesArticlesParts)
         self.singleArticleParts.setEntries(self.getDataEntries( self.EntriesArticlesParts) )
         self.singleArticleParts.setGladeXml(self.xml)
-        self.singleArticleParts.setTreeFields( ['part_id','designation', 'quantities'] )
-        self.singleArticleParts.setListHeader(['Article', 'Designation','Quantities' ])
-        self.singleArticleParts.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING, gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+        #self.singleArticleParts.setTreeFields( ['part_id','number','articles.designation', 'quantities'] )
+        #self.singleArticleParts.setListHeader(['Article ID', 'Article Number',  'Article Designation', 'Quantities' ])
+        #self.singleArticleParts.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_STRING,   gobject.TYPE_STRING, gobject.TYPE_FLOAT,  gobject.TYPE_UINT) ) 
+        self.singleArticleParts.setTreeFields( ['part_id','quantities','articles.number as number' ,'articles.designation as ardesignation', 'articles_parts_list.designation as padesignation'] )
+        self.singleArticleParts.setListHeader(['Article ID',   'Quantities' , 'Article Number' ,    'Article Designation',  'Part Designation'])
+        self.singleArticleParts.setStore( gtk.ListStore(gobject.TYPE_UINT,gobject.TYPE_FLOAT, gobject.TYPE_STRING,  gobject.TYPE_STRING ,  gobject.TYPE_STRING ,  gobject.TYPE_UINT) ) 
+        
         self.singleArticleParts.setTreeOrder('part_id')
 #        self.singleArticleParts.setListHeader([''])
 
-        self.singleArticleParts.sWhere  ='where article_id = ' + `self.singleArticle.ID`
+        self.singleArticleParts.sWhere  ='where article_id = ' + `self.singleArticle.ID` + ' and part_id = articles.id '
         self.singleArticleParts.setTree(self.xml.get_widget('tv_parts') )
   
          #singleArticlePurchase
@@ -435,6 +441,8 @@ class articleswindow(chooseWindows):
     def on_tbNew_clicked(self, event):
         if self.tabOption == self.tabArticle:
             self.on_new1_activate(event)
+        if self.tabOption == self.tabParts:
+            self.on_parts_list_new_activate(event)
         elif self.tabOption == self.tabPurchase:
             self.on_PurchaseNew1_activate(event)
         elif self.tabOption == self.tabSales:
@@ -447,6 +455,8 @@ class articleswindow(chooseWindows):
     def on_tbEdit_clicked(self, event):
         if self.tabOption == self.tabArticle:
             self.on_edit1_activate(event)
+        if self.tabOption == self.tabParts:
+            self.on_parts_list_edit_activate(event)
         elif self.tabOption == self.tabPurchase:
             self.on_PurchaseEdit1_activate(event)
         elif self.tabOption == self.tabSales:
@@ -459,6 +469,8 @@ class articleswindow(chooseWindows):
     def on_tbSave_clicked(self, event):
         if self.tabOption == self.tabArticle:
             self.on_save1_activate(event)
+        if self.tabOption == self.tabParts:
+            self.on_parts_list_save_activate(event)
         elif self.tabOption == self.tabPurchase:
             self.on_PurchaseSave1_activate(event)
         elif self.tabOption == self.tabSales:
@@ -491,7 +503,7 @@ class articleswindow(chooseWindows):
         eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
 
 
-    # search button
+    # search button Article
     def on_bSearch_clicked(self, event):
         self.searchArticle()
 
@@ -546,8 +558,81 @@ class articleswindow(chooseWindows):
         #self.out(self.singleArticle.sWhere, self.ERROR)
         self.refreshTree()
 
-
+    # button search article at partslist
     
+    def on_bPartsFindArticle_clicked(self, event):
+        
+        ar = cuon.Articles.articles.articleswindow(self.allTables)
+        ar.setChooseEntry('chooseArticle', self.getWidget( 'ePartsArticleID'))
+        
+                           
+
+    def on_ePartsArticleID_changed(self, event):
+        print 'eArticle changed'
+       
+        iArtNumber = self.getChangedValue('ePartsArticleID')
+        
+        eArtField = self.getWidget('ePartsArticleDesignation')
+        eArtNumber = self.getWidget('ePartsArticleNumber')
+        #liArt = self.singleArticleForParts.getArticle(iArtNumber)
+        #self.setTextbuffer(eArtField,liArt)
+        if iArtNumber and iArtNumber > 0:
+            eArtField.set_text(self.singleArticleForParts.getArticleDesignation(iArtNumber))
+            eArtNumber.set_text(self.singleArticleForParts.getArticleNumber(iArtNumber))
+        else:
+            eArtField.set_text('')
+            eArtNumber.set_text('')
+        
+    # search button Parts List
+    def on_bPLSearch_clicked(self, event):
+        self.searchParts()
+
+
+    def on_ePLFind_key_press_event(self, entry,  event):
+        print 'Find Parts'
+        if self.checkKey(event,'NONE','Return'):
+            print 'find parts return event'
+            self.searchParts()
+    
+    
+    def searchParts(self):
+        sNumber = self.getWidget('ePLFindNumber').get_text()
+        sDesignation = self.getWidget('ePLFindDesignation').get_text()
+        sID = self.getWidget('ePLFindID').get_text()
+        sDescription =  self.getWidget('ePLFindDescription').get_text()
+        sMaterialGroup =  self.getWidget('ePLFindMaterialGroup').get_text()
+        print "sID  = ",  sID
+        
+        #self.out('Name and City = ' + sNumber + ', ' + sDesignation, self.ERROR)
+        liSearch = []
+        if sNumber:
+            liSearch.append('articles.number')
+            liSearch.append(sNumber)
+            
+        if sDescription:
+            liSearch.append('articles_parts_list.designation')
+            liSearch.append(sDescription)
+
+        if sDesignation:
+            liSearch.append('articles.designation')
+            liSearch.append(sDesignation)
+
+        if sMaterialGroup:
+            liSearch.append('material_group')
+            liSearch.append(sMaterialGroup)
+            
+        if sID:
+            liSearch.append('part_id')
+            liSearch.append(sID)
+        
+        print 'liSearch = ',  liSearch
+        self.singleArticleParts.sWhere = self.getWhere(liSearch) + ' and articles_parts_list.article_id = ' + `self.singleArticleID` + ' and articles_parts_list.part_id = articles.id '
+        print self.singleArticleParts.sWhere
+        #self.out(self.singleArticle.sWhere, self.ERROR)
+        self.Find = True 
+        self.refreshTree()
+
+
     def on_bChooseMaterialGroup_clicked(self, event):
         print 'materialgroup'
         mag = cuon.Articles.materialgroup.materialgroupwindow(self.allTables)
@@ -655,7 +740,11 @@ class articleswindow(chooseWindows):
             self.singleArticle.connectTree()
             self.singleArticle.refreshTree()
         elif self.tabOption == self.tabParts:
-            self.singleArticleParts.sWhere  ='where article_id = ' + `int(self.singleArticle.ID)`
+            print 'refresh tree at parts'
+            if self.Find:
+                self.Find = False
+            else:
+                self.singleArticleParts.sWhere  ='where article_id = ' + `int(self.singleArticle.ID)`  + ' and part_id = articles.id '
             self.singleArticleParts.connectTree()
             self.singleArticleParts.refreshTree()
             self.singleArticleParts.setTreeSensitive(True)   
@@ -709,10 +798,12 @@ class articleswindow(chooseWindows):
             print 'Seite 0'
             self.editAction = 'editArticle'
             self.setStatusbarText([''])
-            
+            self.lastTab = self.tabArticle
        
         elif self.tabOption == self.tabParts:
             #Parts
+            if self.lastTab == self.tabArticle:
+                self.singleArticleID = self.singleArticle.ID
             self.disableMenuItem('tabs')
             self.enableMenuItem('Parts')
             self.editAction = 'editArticleParts'
@@ -721,18 +812,21 @@ class articleswindow(chooseWindows):
             
         elif self.tabOption == self.tabPurchase:
             #Purchase
+            self.lastTab = self.tabPurchase
             self.disableMenuItem('tabs')
             self.enableMenuItem('purchase')
             self.editAction = 'editArticlePurchase'
             print 'Seite 1'
             self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabSales:
+            self.lastTab = self.tabSales
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleSales'
             print 'Seite 2'
             self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabWebshop:
+            self.lastTab = self.tabWebshop
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleWebshop'
@@ -740,6 +834,7 @@ class articleswindow(chooseWindows):
             print 'Seite 3'
             self.setStatusbarText([self.singleArticle.sStatus])
         elif self.tabOption == self.tabStock:
+            self.lastTab = self.tabStock
             self.disableMenuItem('tabs')
             self.enableMenuItem('sales')
             self.editAction = 'editArticleStock'

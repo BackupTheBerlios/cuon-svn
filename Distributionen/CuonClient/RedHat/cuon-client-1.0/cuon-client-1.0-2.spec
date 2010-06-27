@@ -6,7 +6,7 @@ Summary: Installs the cuon client,
 License: see /usr/share/doc/cuon-client/copyright
 Distribution: Fedora
 Group: python
-Requires: python, bash, wget,  python-gtk2,  python-glade2,  python-imaging,   python-gtkmozembed ,  python-gnome2,   python-gtksourceview2 
+Requires: python, bash, wget,  pygtk2,  pygtk2-libglade,  python-imaging,  gnome-python2-gtkmozembed ,  gnome-python2,  gnome-python2-gtksourceview
 
 Packager: Jürgen Hamel <jhamel@cuon.org>
 %define _rpmdir ../

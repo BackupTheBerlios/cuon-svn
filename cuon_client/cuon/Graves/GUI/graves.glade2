@@ -4676,7 +4676,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview5">
+			    <widget class="GtkTextView" id="tvSummerHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -5210,7 +5210,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview6">
+			    <widget class="GtkTextView" id="tvAutumnHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -5744,7 +5744,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview13">
+			    <widget class="GtkTextView" id="tvHolidaysHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -6278,7 +6278,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview7">
+			    <widget class="GtkTextView" id="tvWinterHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -6901,7 +6901,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview17">
+			    <widget class="GtkTextView" id="tvAnnualHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>
@@ -7492,7 +7492,7 @@ sonstiges</property>
 			  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 			  <child>
-			    <widget class="GtkTextView" id="textview15">
+			    <widget class="GtkTextView" id="tvUniqueHints">
 			      <property name="visible">True</property>
 			      <property name="can_focus">True</property>
 			      <property name="editable">True</property>

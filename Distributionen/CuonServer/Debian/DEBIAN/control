@@ -4,7 +4,7 @@ Section: python
 Priority: optional
 Architecture: all
 Essential: no
-Depends: bash, python-reportlab,  python-reportlab, postgresql,  python-pygresql, python-twisted-web, python-twisted-mail, python-twisted-words
+Depends: bash, python-reportlab,   postgresql,  python-pygresql, python-twisted-web, python-twisted-mail, python-twisted-words
 Pre-Depends: 
 Recommends: 
 Suggests: 
