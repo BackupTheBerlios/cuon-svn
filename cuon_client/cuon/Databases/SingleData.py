@@ -721,13 +721,15 @@ class SingleData(gladeXml, logs):
             # self.out("Count of Entries: " + `self.dicEntries.getCountOfEntries()`)
             for i in range(self.dicEntries.getCountOfEntries() ):
                 entry =  self.dicEntries.getEntryAtIndex(i)
+                #print 'Entry = ',  entry
                 try:
                     
                     # self.out('Name of entry: ' + ` entry.getName()`,  self.DEBUG)
-                    self.printOut( entry.getName())
+                    print "Entry2 = ",  entry.getName()
                     widget = self.getWidget(entry.getName())
                     if string.count(str(widget), "GtkEntry") > 0:
                         sValue = widget.get_text()
+                        #print "sValue at ", widget, sValue
                     elif string.count(str(widget), "GtkTextView") > 0:
                         buffer = widget.get_buffer()
                         sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
@@ -772,7 +774,7 @@ class SingleData(gladeXml, logs):
                 # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
 
             # self.out( 'dicValue by readEntries = ')
-            # self.out(  dicValues)
+            #print 'dicValues read entries',   dicValues
             #self.printOut(  'read-Entries' , dicValues )
             dicValues = self.readNonWidgetEntries(dicValues)
         except AssertionError:
