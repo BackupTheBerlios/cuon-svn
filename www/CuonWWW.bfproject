@@ -1,4 +1,6 @@
 name: CuonWWW
+files: /opt/Projekte/cuon/www/en_Cuon/en_Main.html
+files: /opt/Projekte/cuon/www/menu_navigation.js
 files: /opt/Projekte/cuon/www/Downloads/en_Download.html
 files: /opt/Projekte/cuon/www/index.html
 files: /opt/Projekte/cuon/www/Extensions/Extensions.html
@@ -10,6 +12,9 @@ basedir: /opt/Projekte/cuon/www/
 webdir: 
 template: 
 word_wrap: 1
+recent_files: /opt/Projekte/cuon/www/en_Cuon/en_Main.html
+recent_files: /opt/Projekte/cuon/www/menu_navigation.js
+recent_files: /opt/Projekte/cuon/www/Screenshots/SC_Adressen.html
 recent_files: /opt/Projekte/cuon/www/Downloads/en_Download.html
 recent_files: /opt/Projekte/cuon/www/index.html
 recent_files: /opt/Projekte/cuon/www/Extensions/Extensions.html
@@ -22,9 +27,8 @@ recent_files: /opt/Projekte/cuon/www/Cuon/MainLeft/index.html
 recent_files: /home/jhamel/Projekte/cuon/www/Extensions/Extensions.html
 recent_files: /home/jhamel/cuon_cyrus/PHCTiFXbaafdm891709544__dms.html
 recent_files: /home/jhamel/Projekte/cuon/www/Downloads/Download.html
-recent_files: /home/jhamel/cuon_cyrus/XpLOZaMJKdqst371484514__dms.html
-opendir: /opt/Projekte/cuon/www/Downloads
-savedir: /opt/Projekte/cuon/www/Downloads
+opendir: /opt/Projekte/cuon/www/en_Cuon
+savedir: /opt/Projekte/cuon/www
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

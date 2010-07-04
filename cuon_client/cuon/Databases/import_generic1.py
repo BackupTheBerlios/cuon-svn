@@ -109,7 +109,7 @@ class import_generic1(fileSelection):
             #print 'licolumns', `self.dicFileAttributes['liColumns']`
                         
             ctrlFile.close()
-
+            print 'file attribs = ',  self.dicFileAttributes
                                
     def standardImport(self):
         #print 'dicfileAttributes', self.dicFileAttributes
@@ -215,6 +215,7 @@ class import_generic1(fileSelection):
                 dicValues = oSingleImport.verifyValues(dicValues)
                 # save to Database
                 if self.dicFileAttributes['updateData'] == 'YES':
+                    
                     updateID = self.rpc.callRP('Database.checkUpdateID',self.dicFileAttributes['importTable'], self.dicFileAttributes['checkUpdateField'], dicValues[self.dicFileAttributes['checkUpdateField']], self.dicUser)
                     print 'update-id = ', updateID
                     if updateID > 0:

@@ -662,7 +662,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         updateID = 0
         sSql = 'select id from ' + sTable + ' where ' + sField + ' = '
         if  liValue[1] == 'string':
-            sSql += "'" + liValue[0] + "'"
+            sSql += "'" + liValue[0].strip() + "'"
         else:
             sSql += `liValue[0]` 
         

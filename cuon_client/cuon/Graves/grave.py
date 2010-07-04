@@ -1063,7 +1063,11 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         if sSerialNumber:
             liSearch.append('pos_number')
             try:
-                liSearch.append(int(sSerialNumber))
+                if sSerialNumber.find('-'):
+                    liPos = sSerialNumber.split('-')
+                    liSearch.append('# between ' + liPos[0] + ' and ' + liPos[1] )
+                else:
+                    liSearch.append(int(sSerialNumber))
             except:
                 liSearch.append(0)
             
