@@ -96,10 +96,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGrave.setEntries(self.getDataEntries(self.EntriesGraves) )
         self.singleGrave.setGladeXml(self.xml)
-        self.singleGrave.setTreeFields( ['lastname', 'firstname'] )
-        self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleGrave.setTreeFields( ['lastname', 'firstname', 'pos_number'] )
+        self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         self.singleGrave.setTreeOrder('lastname, firstname')
-        self.singleGrave.setListHeader([_('Lastname'), _('Firstname')])
+        self.singleGrave.setListHeader([_('Lastname'), _('Firstname'), _('Serial Number')])
         self.singleGrave.setTree(self.xml.get_widget('tree1') )
 
         self.EntriesGravesInvoices = 'graves_invoice_info.xml'
@@ -1043,7 +1043,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
     def findGrave(self):
         print 'findGrave'
-        
+        iGraveyardId = 0
+        self.singleGrave.setTreeOrder('lastname, firstname')
         sName = self.getWidget('eFindNameOfGrave').get_text()
         sFirstname = self.getWidget('eFindFirstname').get_text()
         sSerialNumber = self.getWidget('eFindSerialNumber').get_text()
@@ -1066,6 +1067,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
                 if sSerialNumber.find('-'):
                     liPos = sSerialNumber.split('-')
                     liSearch.append('# between ' + liPos[0] + ' and ' + liPos[1] )
+                    self.singleGrave.setTreeOrder('pos_number, lastname')
                 else:
                     liSearch.append(int(sSerialNumber))
             except:
@@ -1081,7 +1083,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
         if liSearch:
             self.singleGrave.sWhere = self.getWhere(liSearch) 
-        
+        print 'liSearch = ',  liSearch
+        print  self.singleGrave.sWhere
         self.refreshTree()
 
                 

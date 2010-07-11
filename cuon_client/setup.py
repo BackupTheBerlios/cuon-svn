@@ -96,6 +96,7 @@ class setup:
         self.CUON_VAR =  "/var/cuon"
         self.CUON_VAR_WWW =  "/var/cuon_www"
         self.CUON_VAR_WWW_ICAL =  "/var/cuon_www/iCal"
+        self.CUON_VAR_WWW_AI = self.CUON_VAR_WWW + '/AI'
         
         
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
@@ -252,7 +253,8 @@ class setup:
         # create web and iCal
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ") 
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")   
-        
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_AI + " ] ; then mkdir " + self.CUON_VAR_WWW_AI + " ; fi ")   
+        self.executeSCP(" -r ../cuon_server/AI/*",  self.CUON_VAR_WWW_AI  )
         
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ") 
@@ -329,7 +331,8 @@ class setup:
         self.executeSSH(" update-rc.d cuonweb2 defaults")
         self.executeSSH(" update-rc.d cuonweb3 defaults")
         self.executeSSH(" update-rc.d cuonjabber defaults")
-         
+       
+        
         # Then check the files 
         #server.ini
         self.executeSSH("if  [ ! -f " + self.SERVERCONFIGDIR + "/server.ini ] ; then cp " 

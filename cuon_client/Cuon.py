@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 4, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 8, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -314,6 +314,7 @@ class MainWindow(windows):
         self.schedulHash1 = None
         self.schedulHash2 = None
         self.schedulHash3 = None
+        
         
         
         #self.extMenucommand['ext1'] = 'Test'
@@ -1368,7 +1369,7 @@ class MainWindow(windows):
         self.addEnabledMenuItems('login','extras')        
         self.addEnabledMenuItems('login','tools')
 
-        
+       
 
         self.addEnabledMenuItems('serverMode','databases1')
         

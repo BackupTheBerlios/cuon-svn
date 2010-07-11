@@ -71,7 +71,7 @@
 		      <signal name="activate" handler="on_quit1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image707">
+			<widget class="GtkImage" id="image725">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-quit</property>
 			  <property name="icon_size">1</property>
@@ -129,7 +129,7 @@
 		      <signal name="activate" handler="on_new1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image708">
+			<widget class="GtkImage" id="image726">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-new</property>
 			  <property name="icon_size">1</property>
@@ -160,7 +160,7 @@
 		      <signal name="activate" handler="on_save1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image709">
+			<widget class="GtkImage" id="image727">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -188,7 +188,7 @@
 		      <signal name="activate" handler="on_print1_activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image710">
+			<widget class="GtkImage" id="image728">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-print</property>
 			  <property name="icon_size">1</property>
@@ -215,7 +215,7 @@
 		      <signal name="activate" handler="on_delete1_activate" last_modification_time="Wed, 23 Jul 2003 13:41:41 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image711">
+			<widget class="GtkImage" id="image729">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-delete</property>
 			  <property name="icon_size">1</property>
@@ -306,7 +306,7 @@
 		      <signal name="activate" handler="on_tasknew1_activate" last_modification_time="Fri, 21 Apr 2006 14:45:22 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image712">
+			<widget class="GtkImage" id="image730">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-save</property>
 			  <property name="icon_size">1</property>
@@ -4732,6 +4732,7 @@
 		      <property name="fixed_height_mode">False</property>
 		      <property name="hover_selection">False</property>
 		      <property name="hover_expand">False</property>
+		      <signal name="row_activated" handler="on_tvProjectOrder_row_activated" last_modification_time="Sat, 10 Jul 2010 08:04:06 GMT"/>
 		    </widget>
 		  </child>
 		</widget>

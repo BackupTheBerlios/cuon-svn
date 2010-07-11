@@ -629,6 +629,15 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " order by id desc "
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+    
+    def xmlrpc_getOrderForProject(self, project_id, dicUser):
+        sSql = ' select id, number,designation, orderedat from orderbook '
+        sSql += " where project_id= " + `project_id` + " "
+        
+        sSql += self.getWhere(None,dicUser,2)
+        sSql += " order by id desc "
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         
     
     def xmlrpc_getInvoicesForAddress(self, address_id, dicUser):

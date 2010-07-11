@@ -55,6 +55,7 @@
 		      <property name="use_underline">True</property>
 		      <signal name="activate_item" handler="on_login1_activate"/>
 		      <signal name="activate" handler="on_login1_activate"/>
+		      <accelerator key="l" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -80,6 +81,7 @@
 		      <property name="label" translatable="yes">quit</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_end1_activate"/>
+		      <accelerator key="q" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
 			<widget class="GtkImage" id="image8">
@@ -114,15 +116,17 @@
 		      <property name="label" translatable="yes">_Addresses</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_addresses1_activate"/>
+		      <accelerator key="a" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
 		  <child>
 		    <widget class="GtkMenuItem" id="mi_articles1">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Arti_cles</property>
+		      <property name="label" translatable="yes">Art_icles</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_articles1_activate"/>
+		      <accelerator key="i" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -132,6 +136,7 @@
 		      <property name="label" translatable="yes">Bank</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_bank1_activate" last_modification_time="Wed, 20 Sep 2006 21:09:29 GMT"/>
+		      <accelerator key="x" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -147,6 +152,7 @@
 		      <property name="label" translatable="yes">Bibliographic</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_bibliographic_activate" last_modification_time="Fri, 19 Aug 2005 11:36:47 GMT"/>
+		      <accelerator key="v" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -156,6 +162,7 @@
 		      <property name="label" translatable="yes">Staff</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_staff1_activate" last_modification_time="Thu, 29 Apr 2004 18:47:43 GMT"/>
+		      <accelerator key="s" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -239,6 +246,7 @@
 		      <property name="label" translatable="yes">Proposal</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_proposal1_activate" last_modification_time="Sun, 02 Mar 2008 13:37:39 GMT"/>
+		      <accelerator key="p" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -248,7 +256,7 @@
 		      <property name="label" translatable="yes">_Order</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_order1_activate"/>
-		      <accelerator key="O" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+		      <accelerator key="o" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -258,6 +266,7 @@
 		      <property name="label" translatable="yes">Stock</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_stock1_activate" last_modification_time="Mon, 12 Apr 2004 11:54:38 GMT"/>
+		      <accelerator key="k" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -267,6 +276,7 @@
 		      <property name="label" translatable="yes">DMS</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_dms1_activate" last_modification_time="Sat, 08 May 2004 11:45:38 GMT"/>
+		      <accelerator key="d" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -289,6 +299,7 @@
 		      <property name="label" translatable="yes">Bookkeeping</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_bookkeeping1_activate" last_modification_time="Mon, 29 Oct 2007 13:18:34 GMT"/>
+		      <accelerator key="w" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -298,6 +309,7 @@
 		      <property name="label" translatable="yes">cash account book</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_cash_account_book1_activate" last_modification_time="Fri, 14 Jan 2005 17:05:40 GMT"/>
+		      <accelerator key="c" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -313,6 +325,7 @@
 		      <property name="label" translatable="yes">list_of_invoices</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_listOfInvoices1_activate" last_modification_time="Thu, 31 May 2007 10:25:34 GMT"/>
+		      <accelerator key="l" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -381,6 +394,7 @@
 		      <property name="label" translatable="yes">Project</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_project1_activate" last_modification_time="Fri, 21 Apr 2006 16:32:46 GMT"/>
+		      <accelerator key="j" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -399,6 +413,7 @@
 		      <property name="label" translatable="yes">Stats</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_stats1_activate" last_modification_time="Wed, 29 Aug 2007 20:24:07 GMT"/>
+		      <accelerator key="u" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 
@@ -417,6 +432,7 @@
 		      <property name="label" translatable="yes">Mindmap</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_mindmap1_activate" last_modification_time="Wed, 17 Oct 2007 20:22:25 GMT"/>
+		      <accelerator key="m" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -641,6 +657,7 @@
 		      <property name="label" translatable="yes">Online-Help</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_onlinehelp_activate" last_modification_time="Sat, 01 Jul 2006 16:35:26 GMT"/>
+		      <accelerator key="h" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>

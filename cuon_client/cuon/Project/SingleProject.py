@@ -41,5 +41,36 @@ class SingleProject(SingleData):
         #
         self.statusfields = ['lastname', 'city']
 
- 
+    def getInfoForID(self,  projectID):
+        liProject = []
         
+        if projectID > 0:
+            try:
+                projectID = long(projectID)
+                
+                dicRecords = self.load(projectID)
+        
+            except:
+                id = 0
+                dicRecords = {}
+          
+            if dicRecords and dicRecords not in ['ERROR', 'NONE']:
+                dicRecord = dicRecords[0]
+                try:
+                    liProject.append(dicRecord['name'])
+                    liProject.append(dicRecord['designation'])
+                    liProject.append(_('starts at: ') + `dicRecord['project_starts_at']`)
+                    liProject.append(_('ends at: ') + `dicRecord['project_ends_at']`)
+                    liProject.append(_('Time in days: ') + `dicRecord['time_in_days']`)
+                  
+                except:
+                    pass
+                    
+            if not liProject:
+                liProject.append(' ')
+                liProject.append(' ')
+                liProject.append(' ')
+                liProject.append(' ')
+                liProject.append(' ')
+            
+        return liProject

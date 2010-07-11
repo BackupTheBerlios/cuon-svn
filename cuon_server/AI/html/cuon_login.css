@@ -1,0 +1,39 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    
+    margin: 0 0 0 0;
+    color: #000000;
+}
+
+div#page {
+
+   margin-top:10px;
+   margin-left:10px;
+   
+}
+
+div#welcome {
+    margin-left:55px;
+    margin-top:0px;
+    font-size:56px;
+   
+    
+}
+
+div#introtext {
+    margin-left:55px;
+    font-size:40px;
+    
+    
+}
+div#login-block {
+	 margin-top:60px;
+    margin-left:5px;
+    font-size:20px;
+}
+
+
+input.txtInput {
+	margin-top:10px;
+    margin-left: 5px;
+}

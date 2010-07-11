@@ -788,7 +788,7 @@
       
     </field>
      <field>
-      <name>cType</name>
+      <name>c_Type_Value</name>
       <type>varchar</type>
       <pkey>0</pkey>
       <unique>0</unique>

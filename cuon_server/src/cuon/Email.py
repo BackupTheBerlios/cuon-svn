@@ -38,7 +38,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         
         
     def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
-        ok = True
+        ok = ''
             
         if dicValues.has_key('To'):
             if dicValues['To'][0:11] == 'Newsletter:':
@@ -51,14 +51,16 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                         result = self.getNewsletterEmail(oneNL,dicUser)
                         print 'result = ', result 
                         for sm in result:
+                            print 'sm = ',  sm
                             if sm['email']:
+                                print 'sm[email] = ',  sm['email']
                                 dicValues['To'] = sm['email']
-                                ok = deferToThread(self.sendEmail, dicValues, liAttachments,dicUser)
+                                ok += self.sendEmail(dicValues, liAttachments,dicUser) + '\n'
                                 
                         
                         
             else:
-                ok = deferToThread(self.sendEmail, dicValues, liAttachments,dicUser)
+                ok += deferToThread(self.sendEmail, dicValues, liAttachments,dicUser) +'\n'
             
         return ok
                 
@@ -71,7 +73,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             cuonmail.attachments = []
             
 
-        ok = False
+        ok = ''
         try:
                 
             if dicUser.has_key('Email'):
@@ -98,6 +100,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                 cuonmail.from_address = dicValues['From']
              
             if dicValues.has_key('To'):
+                print 'send mail to ',  dicValues['To']
                 cuonmail.recipients.add(dicValues['To']) 
                 
                

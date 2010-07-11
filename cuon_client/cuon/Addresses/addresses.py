@@ -131,8 +131,7 @@ class addresswindow(chooseWindows):
         
         self.allTables = allTables
         #print 'time 2 = ', time.localtime()
-        
-        
+               
         # self.singleAddress.loadTable()
 
         # self.xml = gtk.glade.XML()
@@ -404,6 +403,8 @@ class addresswindow(chooseWindows):
         self.initMenuItems()
         self.notebook2 = self.getWidget('notebook2')
         
+        # All window items
+        self.addEnabledMenuItems('window','mi_quit1', 'z')
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','mi_address1')
         self.addEnabledMenuItems('tabs','mi_bank1')
@@ -423,6 +424,7 @@ class addresswindow(chooseWindows):
         self.addEnabledMenuItems('notes','mi_notes1')
         self.addEnabledMenuItems('order','mi_order1')
         self.addEnabledMenuItems('project','mi_projects1')
+        
         
         # enabledMenues for Address
         self.addEnabledMenuItems('editAddress','mi_new1' , self.dicUserKeys['address_new'])
@@ -1795,15 +1797,15 @@ class addresswindow(chooseWindows):
             self.treeOrder.fillTree(self.getWidget('tvAddressOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
             self.connectOrderTree()
     
-    def setProposalValues(self):
-        liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser,  self.OrderStatus['ProposalStart'] ,  self.OrderStatus['ProposalEnd'] )
-        if liGroup and liGroup not in ['NONE','ERROR']:
-            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),liGroup,['number','designation', 'orderedat'],'self.connectProposalTree()')
-            self.connectProposalTree()
-        else:
-            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),[],['number','designation', 'orderedat'],'self.connectProposalTree()')
-            self.connectProposalTree()
-    
+#    def setProposalValues(self):
+#        liGroup = self.rpc.callRP('Order.getOrderForAddress',self.singleAddress.ID, self.dicUser,  self.OrderStatus['ProposalStart'] ,  self.OrderStatus['ProposalEnd'] )
+#        if liGroup and liGroup not in ['NONE','ERROR']:
+#            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),liGroup,['number','designation', 'orderedat'],'self.connectProposalTree()')
+#            self.connectProposalTree()
+#        else:
+#            self.treeOrder.fillTree(self.getWidget('tvAddressProposal'),[],['number','designation', 'orderedat'],'self.connectProposalTree()')
+#            self.connectProposalTree()
+#    
     
     # view Invoices
     def disconnectInvoiceTree(self):

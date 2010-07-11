@@ -171,6 +171,12 @@ class projectwindow(chooseWindows):
             cbProjectStatus.set_text_column(0)
             cbProjectStatus.show()
             
+        # Trees for Proposal,  Order and Invoice 
+        self.treeOrder = cuon.Misc.misc.Treeview()
+        
+        self.treeOrder.start(self.getWidget('tvProjectOrder'),'Text','Order')
+         
+         
         # Notes
         self.textbufferSources,  self.viewSources = self.getNotesEditor()
         Scrolledwindow = self.getWidget('scSourceNotes')
@@ -180,6 +186,10 @@ class projectwindow(chooseWindows):
         # Menu-items
         self.initMenuItems()
 
+        # All window items
+        self.addEnabledMenuItems('window','mi_quit1', 'z')
+        
+        
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','mi_project1')
         self.addEnabledMenuItems('tabs','mi_phase1')
@@ -418,12 +428,12 @@ class projectwindow(chooseWindows):
         self.singleProjectProgramming.deleteRecord()
               
     
-##    def on_chooseAddress_activate(self, event):
-##        # choose Address from other Modul
-##        if self.tabOption == self.tabProject:
-##            print '############### Address choose ID ###################'
-##            self.setChooseValue(self.singleProject.ID)
-##            self.closeWindow()
+    def on_chooseAddress_activate(self, event):
+        # choose Address from other Modul
+        if self.tabOption == self.tabProject:
+            print '############### Address choose ID ###################'
+            self.setChooseValue(self.singleProject.ID)
+            self.closeWindow()
 ##        elif self.tabOption == self.tabStaffResources:
 ##            print '############### Address choose ID ###################'
 ##            self.setChooseValue(self.singlePartner.ID)
@@ -651,6 +661,59 @@ class projectwindow(chooseWindows):
             print 'firstRecord = ', firstRecord
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, firstRecord,dicExtInfo)
     
+    # Order for this Project
+     # view Order 
+    def disconnectOrderTree(self):
+        try:
+            
+            self.getWidget('tvProjectOrder').get_selection().disconnect(self.connectOrderTreeId)
+        except:
+            pass
+
+    def connectOrderTree(self):
+        try:
+            self.connectOrderTreeId = self.getWidget('tvProjectOrder').get_selection().connect("changed", self.OrderTree_select_callback)
+        except:
+            pass
+   
+    def OrderTree_select_callback(self, treeSelection):
+        listStore, iter = treeSelection.get_selected()
+        self.OrderID = 0
+        print listStore,iter
+        
+        if listStore and len(listStore) > 0:
+           row = listStore[0]
+        else:
+           row = -1
+   
+        if iter != None:
+            sNewId = listStore.get_value(iter, 0)
+            print sNewId
+            try:
+                self.OrderID = int(sNewId[sNewId.find('###')+ 3:])
+                #self.setDateValues(newID)
+                
+            except:
+                pass
+                
+    def on_tvProjectOrder_row_activated(self,event,data1, data2):
+        
+        self.on_bOrderJumpTo_clicked(event)
+        
+    def on_bOrderJumpTo_clicked(self,  event):
+        
+        if self.OrderID:
+            orderwindow = cuon.Order.order.orderwindow(self.allTables,None,False,self.OrderID)
+        
+    def setOrderValues(self):
+        liGroup = self.rpc.callRP('Order.getOrderForProject',self.singleProject.ID, self.dicUser)
+        print liGroup
+        if liGroup and liGroup not in ['NONE','ERROR']:
+            self.treeOrder.fillTree(self.getWidget('tvProjectOrder'),liGroup,['number','designation', 'orderedat'],'self.connectOrderTree()')
+            self.connectOrderTree()
+        else:
+            self.treeOrder.fillTree(self.getWidget('tvProjectOrder'),[],['number','designation', 'orderedat'],'self.connectOrderTree()')
+            self.connectOrderTree()
     
     # 
     # Programming
@@ -695,7 +758,8 @@ class projectwindow(chooseWindows):
             self.singleProjectTaskMaterial.connectTree()
             self.singleProjectTaskMaterial.refreshTree()
             
-     
+       
+            
         elif self.tabOption == self.tabProgramming:
             self.singleProjectProgramming.sWhere  ='where project_id = ' + `int(self.singleProject.ID)`
             self.singleProjectProgramming.connectTree()
@@ -758,6 +822,11 @@ class projectwindow(chooseWindows):
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleProjectTaskMaterial.sStatus])
 
+        elif self.tabOption == self.tabOrder:
+            print 'tabchanged Order'
+            
+            self.setOrderValues()
+            
         elif self.tabOption == self.tabProgramming:
             if self.tabOption2 == self.tabProgrammingMain:
                 print 'tabchanged Programming'

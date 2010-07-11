@@ -17,8 +17,10 @@
 
 <!-- search address -->
 <category><pattern>SEARCH ADDRESS *</pattern><template>CUON ADDRESS SEARCH ALL <star/></template></category>
+<category><pattern>A1 *</pattern><template>CUON ADDRESS SEARCH ALL <star/></template></category>
 
 <category><pattern>SEARCH PHONE *</pattern><template>CUON PHONE SEARCH ALL <star/></template></category>
+<category><pattern>A2 *</pattern><template>CUON PHONE SEARCH ALL <star/></template></category>
 
 
 

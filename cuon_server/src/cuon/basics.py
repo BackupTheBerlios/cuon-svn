@@ -45,6 +45,8 @@ class basics(xmlrpc.XMLRPC):
         
         self.WEB_HOST3 = 'localhost'
         self.WEB_PORT3 = 7085
+        self.WEB_HOST4 = 'localhost'
+        self.WEB_PORT4 = 7086
         
         self.AI_PORT = 7082
         self.AI_HOST = '84.244.7.139'
@@ -177,7 +179,15 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('WEB3','PORT')
             if value:
                 self.WEB_PORT3 = int(value)
-                
+            
+            # Web4
+            value = self.getConfigOption('WEB4','HOST')
+            if value:
+                self.WEB_HOST4 = value
+            value = self.getConfigOption('WEB4','PORT')
+            if value:
+                self.WEB_PORT4 = int(value)
+                    
                 
             # OSCOMMERCE
             value = self.getConfigOption('OSCOMMERCE','OSC_HOST')

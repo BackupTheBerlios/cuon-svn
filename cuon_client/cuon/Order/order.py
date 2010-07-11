@@ -52,6 +52,8 @@ import cuon.DMS.documentTools
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceVat
 from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
+import cuon.Project.project
+import cuon.Project.SingleProject
 
 class orderwindow(chooseWindows,  ArticlesFastSelection):
     """
@@ -85,7 +87,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
-        
+        self.singleProject = cuon.Project.SingleProject.SingleProject(allTables)
         self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
         self.documentTools = cuon.DMS.documentTools.documentTools()
         
@@ -180,7 +182,8 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
   
         # Menu-items
         self.initMenuItems()
-
+        # All window items
+        self.addEnabledMenuItems('window','quit1', 'z')
         # Close Menus for Tab
 
         self.addEnabledMenuItems('tabs','order1')
@@ -226,6 +229,11 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         # enabledMenues for Invoice
         self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
 
+        # enabledMenues for Misc
+        self.addEnabledMenuItems('editMisc','MiscEdit', self.dicUserKeys['edit'])
+        
+        
+        
         # enabledMenues for Payment
         self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
         self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
@@ -892,8 +900,26 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         else:
             self.MainwindowEventHandling(oEntry, data)
       
+    # Project for this Order
+    
+    def on_bMiscSearchProject_clicked(self, event):
+        proj = cuon.Project.project.projectwindow(self.allTables)
+        proj.setChooseEntry('chooseAddress', self.getWidget( 'eMiscProjectID'))
+
+                           
+
+    def on_eMiscProjectID_changed(self, event):
+        print ' eMiscProjectID changed'
+        iProjectNumber = self.getChangedValue('eMiscProjectID')
+        eProjectField = self.getWidget('tvOrderMiscProject')
+        sProject = self.singleProject.getInfoForID(iProjectNumber)
+        if sProject :
+            self.setTextbuffer(eProjectField,  sProject)
     
     
+    def on_bMiscJumpToProject_clicked(self, event):
+        iProjectNumber = self.getChangedValue('eMiscProjectID')
+        proj = cuon.Project.project.projectwindow(self.allTables, project_id = iProjectNumber)
     #def  on_tbCreateOrder_clicked (self, event):
      #   self.on_create_order1_activate(event)
         
