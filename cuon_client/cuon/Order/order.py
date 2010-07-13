@@ -182,8 +182,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
   
         # Menu-items
         self.initMenuItems()
-        # All window items
-        self.addEnabledMenuItems('window','quit1', 'z')
+        
         # Close Menus for Tab
 
         self.addEnabledMenuItems('tabs','order1')

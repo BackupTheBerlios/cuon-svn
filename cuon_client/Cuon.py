@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 8, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 13, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1360,7 +1360,7 @@ class MainWindow(windows):
  
         # Menu-items
        
-        self.initMenuItems()
+        self.initMenuItemsMain()
         self.disableAllMenuItems()
         self.addEnabledMenuItems('login','logout1')
         self.addEnabledMenuItems('login','data')

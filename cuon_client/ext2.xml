@@ -1034,7 +1034,7 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
-      <default />
+      <default>0</default>
       <comment />
     </field>
     <field>
@@ -1044,7 +1044,7 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
-      <default />
+      <default>0</default>
       <comment />
     </field>
       <field>
@@ -1054,7 +1054,7 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
-      <default />
+      <default>0</default>
       <comment />
     </field>
     <field>

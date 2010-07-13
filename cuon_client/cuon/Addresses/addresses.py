@@ -401,6 +401,8 @@ class addresswindow(chooseWindows):
             self.singleAddressNotes.NotesOrganisation = self.textbufferOrganisation
         # Menu-items
         self.initMenuItems()
+        self.addEnabledMenuItems('window','quit1', 'z')
+        
         self.notebook2 = self.getWidget('notebook2')
         
         # All window items

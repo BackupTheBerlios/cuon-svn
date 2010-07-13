@@ -272,7 +272,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPercent.set_model(liststore)
             cbPercent.set_text_column(0)
             cbPercent.show()
-
+        print 'percent'
         cbPeriodSpring = self.getWidget('cbSpringPeriod')
         if cbPeriodSpring:
             liststore = gtk.ListStore(str)
@@ -281,7 +281,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodSpring.set_model(liststore)
             cbPeriodSpring.set_text_column(0)
             cbPeriodSpring.show()
-
+        print 'Spring'
+        
         cbPeriodSummer = self.getWidget('cbSummerPeriod')
         if cbPeriodSummer:
             liststore = gtk.ListStore(str)
@@ -290,7 +291,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodSummer.set_model(liststore)
             cbPeriodSummer.set_text_column(0)
             cbPeriodSummer.show()
-
+        print 'Summer'
+        
         cbPeriodAutumn = self.getWidget('cbAutumnPeriod')
         print 'Autumn',  cbPeriodAutumn
         if cbPeriodAutumn:
@@ -301,7 +303,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodAutumn.set_model(liststore)
             cbPeriodAutumn.set_text_column(0)
             cbPeriodAutumn.show()
-
+        print 'Autumn'
+        
         cbPeriodWinter = self.getWidget('cbWinterPeriod')
         if cbPeriodWinter:
             liststore = gtk.ListStore(str)
@@ -310,7 +313,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodWinter.set_model(liststore)
             cbPeriodWinter.set_text_column(0)
             cbPeriodWinter.show()
-            
+        print 'Winter'
         cbPeriodHolliday = self.getWidget('cbHolidaysPeriod')
         if cbPeriodHolliday:
             liststore = gtk.ListStore(str)
@@ -319,7 +322,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodHolliday.set_model(liststore)
             cbPeriodHolliday.set_text_column(0)
             cbPeriodHolliday.show()
-            
+        print 'Holliday'
+        
         cbPeriodUnique = self.getWidget('cbUniquePeriod')
         if cbPeriodUnique:
             liststore = gtk.ListStore(str)
@@ -328,7 +332,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodUnique.set_model(liststore)
             cbPeriodUnique.set_text_column(0)
             cbPeriodUnique.show()
-
+        print 'Unique'
         cbPeriodYearly = self.getWidget('cbYearlyPeriod')
         if cbPeriodYearly:
             liststore = gtk.ListStore(str)
@@ -338,7 +342,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbPeriodYearly.set_text_column(0)
             cbPeriodYearly.show()
 
-
+        print 'Yearly'
+        
         liGraveYard = self.rpc.callRP('Grave.getComboGraveyards',self.dicUser)
         cbGraveYard = self.getWidget('cbFindGraveyard')
         if cbGraveYard:
@@ -348,6 +353,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbGraveYard.set_model(liststore)
             cbGraveYard.set_text_column(0)
             cbGraveYard.show()
+            
+        print 'Graveyard'
         # Menu-items
         self.initMenuItems()
 
@@ -444,7 +451,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.addEnabledMenuItems('editSave','UniqueSave1', self.dicUserKeys['address_save'])
         self.addEnabledMenuItems('editSave','AnnualSave1', self.dicUserKeys['address_save'])
         # tabs from notebook
-        
+        print 'Menus enabled'
         self.tabGrave = 0
         self.tabGraveInvoice = 1
         self.tabGraveMaintenance = 2
@@ -472,7 +479,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         elif self.addressID > 0:
             self.singleGrave.sWhere = " where addressid = " + `self.addressID`
             
-            
+        
+        print 'now tab changed'
         self.tabChanged()
         
 
@@ -1320,8 +1328,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.setTreeVisible(True)
             
 
-            self.out( 'Seite 0')
-
+            print  'Seite 0' 
 
         elif self.tabOption == self.tabGraveMaintenance:
             self.out( 'Seite 2')

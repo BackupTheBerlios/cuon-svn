@@ -281,11 +281,16 @@ class gladeXml(defaultValues):
     def setTitle(self, sName, sTitle):
         self.getWidget(sName).set_title(sTitle)
     
-    
+    def initMenuItemsMain(self):
+        self.liAllMenuItems =  self.getWidgets('mi_')
+        #self.printOut( 'MenuItems by Init = ', self.liAllMenuItems )
+        
     def initMenuItems(self):
         self.liAllMenuItems =  self.getWidgets('mi_')
-        self.printOut( 'MenuItems by Init = ', self.liAllMenuItems )
-
+        #self.printOut( 'MenuItems by Init = ', self.liAllMenuItems )
+        # All window items
+        self.addEnabledMenuItems('window','quit1', 'z')
+        self.addEnabledMenuItems('window','mi_quit1', 'z')
     def enableAllMenuItems(self):
         for i in self.liAllMenuItems:
             if i != None:
@@ -307,7 +312,7 @@ class gladeXml(defaultValues):
         self.printOut( 'item by Enable Menu', `item`)
         if cKey:
             item = self.addKeyToItem(sName, item,cKey)
-            
+           
         liMenuItems.append(item)
 
         self.dictEnabledMenuItems[sName] = liMenuItems
@@ -325,8 +330,12 @@ class gladeXml(defaultValues):
         # gtk.GDK.CONTROL_MASK, 0)
 
 
+        try:
             
-        item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+            item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        except Exception,  params:
+            print Exception,  params
+            
         ##self.accel_groups[sName] = accel
         
         return item

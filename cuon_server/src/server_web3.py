@@ -12,76 +12,79 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-
-import bottle
-from bottle import route, run,  request,  response,  send_file
+from twisted.web import server, resource,  static
+from twisted.internet import reactor
 from cuon.basics import basics
-from cuon.WebAI import WebAI
+import cuon.WebAI
+
+openssl = False
+try:
+    from OpenSSL import SSL
+    openssl = True
+
+except:
+    pass
+    
+    
+class ServerContextFactory:
+
+    def getContext(self):
+        """Create an SSL context.
+
+        Similar to twisted's echoserv_ssl example, except the private key
+        and certificate are in separate files."""
+        ctx = SSL.Context(SSL.SSLv23_METHOD)
+        ctx.use_privatekey_file('/etc/cuon/serverkey.pem')
+        ctx.use_certificate_file('/etc/cuon/servercert.pem')
+        return ctx
+
+class TopLevel(resource.Resource,  basics):
+    isLeaf = True
+    
+    def __init__(self):
+        basics.__init__(self)
+        self.WebAI = cuon.WebAI.WebAI()
+        
+    def getChild(self, name, request):
+        print 'getChild',  name,  request
+        if name == '':
+            return self
+        return Resource.getChild(self, name, request)
 
 
-basic = basics()
-webai = WebAI()
+    def render_GET(self, request):
+        print 'render',  request
+        print request.prepath
+        return "<html>Test</html>"
+        
+    def render_POST(self, request):
+        print 'render',  request
+        print request.prepath
+        return "<html>Test</html>"
+        
+top = TopLevel()   
+try:    
+    port = int(sys.argv[1])
+except:
+    port = 0
+print port
+r = static.File("/var/cuon_www/AI/html")
+r.putChild("index", static.File("index.html"))
+r.putChild('newlogin',  top)
+reactor.listenTCP(top.WEB_PORT4+ port, server.Site(r))
+if openssl:
+    """Create an SSL context."""
+    
+    try:
+        reactor.listenSSL(top.WEB_PORT4 + top.SSL_OFFSET + port,  server.Site(r), ServerContextFactory())
+        print 'HTTPS activated'
+    except:
+        print 'Error by activating HTTPS. Please check /etc/cuon/serverkey.pem and /etc/cuon/servercert.pem.'
 
-
+reactor.run()
 #
-#
-##PUT /inventory/fb65174f-2dde-4c1e-ba13-1a776d6864fd
-#@route('/inventory/:ID', method='PUT')
-#def insertIntoInventory(ID):
-#    # perhaps update ?, no answer ?
-#    print 'Put Inventory,  hat to program soon',  ID
-#    
-#    return '<?xml version="1.0" encoding="utf-8"?><boolean>false</boolean>'
-#    
+#top = TopLevel()
 
-rootsite = '/var/cuon_www/AI'
-roothtml = rootsite + '/html/'
-
-@route('/hello/', method = 'GET')
-def hello():
-    return "Hello World!"
-   
-@route('/')
-def setRootSite():
-    print 'Get cookies= ',  request.COOKIES
-    return send_file('index.html', root=roothtml)
- 
-
-@route('/menu_navigation.js')
-def setJSSite():
-    return send_file('/menu_navigation.js', root=roothtml)
- 
-@route('/Login.html')
-def setLoginSite():
-    return send_file('Login.html', root=roothtml)
- 
-@route('/newlogin/' , method='POST')
-def setCookie():
-    
-    env22  = request.environ['wsgi.input'].read(int(request.environ['CONTENT_LENGTH']))
-    #xml_dict = dicxml.xml_to_dict(env22)[1]
-    print 'Data = ',  env22
-    dicAddress = {}
-    if env22:
-        print env22
-        liValue = env22.split('&')
-        for value in liValue:
-            liAddress = value.split('=')
-            if liAddress:
-                dicAddress[liAddress[0].strip()] = liAddress[1].strip()
-    for key in dicAddress.keys():
-        print key,dicAddress[key]
-        response.set_cookie(key,dicAddress[key], path='/', domain='localhost',  secure=False )
-
-    #print response.COOKIES
-    return '''<html><body>User login ok:  </br>'''+ dicAddress['Username'] +  '''</body></html>'''
-    
-    
-
-@route('/:file')
-def setSite(file):
-    return send_file(file, root=roothtml)
- 
- 
-
-run(  port=basic.WEB_PORT4, host=basic.WEB_HOST4) # This starts the HTTP server
+#site = server.Site(top)
+#reactor.listenTCP(top.WEB_PORT4, site)
+#reactor.run()
