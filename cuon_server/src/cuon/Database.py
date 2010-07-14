@@ -104,15 +104,17 @@ class Database(xmlrpc.XMLRPC, SQL):
         ok = False
         cParser = ConfigParser()
         cParser.read(self.CUON_FS + '/user.cfg')
-        sP = cParser.get('password',name)
-        #self.writeLog('Password = ' + sP )
-        if sP.strip() == password.strip():
-            ok = True
-            
+        try:
+            sP = cParser.get('password',name)
+            #self.writeLog('Password = ' + sP )
+            if sP.strip() == password.strip():
+                ok = True
+        except:
+            pass
         return ok
         
     def xmlrpc_createSessionID(self, sUser, sPassword):
-        #self.out('1 -- createSessionID start')
+        print '1 -- createSessionID start'
         s = ''
         
         
@@ -127,10 +129,10 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.saveObject('user_'+ sUser + '_dicUserACL' , dicUserACL)
             try:
                 f = open('/var/log/cuonlogin.log','a')
-                f.writeline ( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGIN: ' + sUser +'\n')
+                f.write( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGIN: ' + sUser +'\n')
                 f.close()
-            except:
-                pass
+            except Exception,  params:
+                print Exception,  params
                 
             #--self.saveValue('user_'+ sUser + '_Session_ID' , s['SessionID'])
             #--self.saveValue('user_'+ sUser + '_Session_endTime' , `s['endTime']`)

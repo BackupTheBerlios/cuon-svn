@@ -25,7 +25,48 @@ try:
 except:
     pass
     
+dicSession = {}
+
+def setAISite(request):
+    s = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+    <html> <head> <title>Cyrus-Computer GmbH freie Software, Warenwirtschaft unter LINUX</title> <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"> <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> 
+    <meta http-equiv="content-style-type" content="text/css"> 
+    <meta http-equiv="expires" content="0"> 
+    <link rel="stylesheet" type="text/css" href="cuon_ai.css" />  
+    </head> 
+    <body> 
+    <div id="page"> 
+    <div id="welcome">C.U.O.N. AI Connection</div> 
+    <div id="introtext"> """ 
     
+    s += dicSession[request.getSession().uid ]['AI_Session'] 
+        
+    s += """ <br /> <br /></div>  + <div id="introtext">Please enter  your Question below :</div> 
+    <div id="login-block">      
+    <FORM ACTION="/aiquestion/" METHOD=POST> 
+    <p class="label">Question &nbsp;:<input class="txtInput" name="Question" type="text" size="60" maxlength="532"></p> 
+    <INPUT type="submit" value="Send"> 
+    </FORM> 
+    </div> 
+    </div> 
+    </body> 
+    </html> """
+    return s
+    
+def htmlConvert(sValue):
+    if sValue:
+        sValue = sValue.encode('utf-8')
+        sValue = sValue.replace('&', '&amp;')
+  
+        sValue = sValue.replace('\'', '&apos;')
+        sValue = sValue.replace('\"', '&quot; ')
+        sValue = sValue.replace('<', '&lt;')
+        sValue = sValue.replace('>', '&gt;')
+        
+        # for testing:
+        #sValue = sValue.replace('/', '')
+    return sValue
 class ServerContextFactory:
 
     def getContext(self):
@@ -43,7 +84,45 @@ class TopLevel(resource.Resource,  basics):
     
     def __init__(self):
         basics.__init__(self)
-        self.WebAI = cuon.WebAI.WebAI()
+        self.webAI = cuon.WebAI.WebAI()
+        
+    def getChild(self, name, request):
+        print 'getChild',  name,  request
+        if name == '':
+            return self
+        return Resource.getChild(self, name, request)
+    
+        
+    def render_GET(self, request):
+        print 'render',  request
+        print request.prepath
+        return "<html>Test</html>"
+        
+    def render_POST(self, request):
+        print 'render',  request
+        for field in request.args.keys():
+            print field,  request.args[field]
+        print 'Session',  request.getSession()
+        
+        print 'ID = ',  request.getSession().uid
+        print 'Path',  request.prepath
+        
+        Params = request.args
+        if request.prepath == ['newlogin']:
+            dicUser = self.webAI.getAuthorization(Params['Username'][0],  Params['Password'][0],  Params['ClientID'][0])
+            dicSession[request.getSession().uid ] = {}
+            dicSession[request.getSession().uid ]['CuonUser'] = dicUser
+            dicSession[request.getSession().uid ]['AI_Session'] = 'Begin Session'
+            return setAISite(request)
+            
+class AILevel(resource.Resource,  basics):
+    isLeaf = True
+    
+    def __init__(self):
+        basics.__init__(self)
+        self.webAI = cuon.WebAI.WebAI()
+        
+    
         
     def getChild(self, name, request):
         print 'getChild',  name,  request
@@ -59,18 +138,43 @@ class TopLevel(resource.Resource,  basics):
         
     def render_POST(self, request):
         print 'render',  request
-        print request.prepath
-        return "<html>Test</html>"
+        for field in request.args.keys():
+            print field,  request.args[field]
+        print 'Session',  request.getSession()
+        print 'ID = ',  request.getSession().uid
+        print 'Path',  request.prepath
         
+        
+        if request.prepath == ['aiquestion']:
+            print 'AI = ',  request.args
+            
+            aiAnswer =  self.webAI.getAnswer(request.args['Question'][0], dicSession[request.getSession().uid ]['CuonUser']  )
+            print 'AI answer total = ',  aiAnswer
+            aiAnswer = htmlConvert(aiAnswer)
+            aiAnswer = aiAnswer.replace('\n', '<br />')
+            print aiAnswer
+            dicSession[request.getSession().uid ]['AI_Session']  += '<br /><br />' + aiAnswer
+            
+            
+            return setAISite(request)
+            
+
+    
 top = TopLevel()   
+ai = AILevel()
+
 try:    
     port = int(sys.argv[1])
 except:
     port = 0
 print port
+
 r = static.File("/var/cuon_www/AI/html")
-r.putChild("index", static.File("index.html"))
-r.putChild('newlogin',  top)
+#r.putChild("index", static.File("index.html"))
+r.putChild("newlogin", top)
+r.putChild("aiquestion", ai)
+
+
 reactor.listenTCP(top.WEB_PORT4+ port, server.Site(r))
 if openssl:
     """Create an SSL context."""
