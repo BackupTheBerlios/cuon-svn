@@ -38,22 +38,39 @@ def setAISite(request):
     <body> 
     <div id="page"> 
     <div id="welcome">C.U.O.N. AI Connection</div> 
-    <div id="introtext"> """ 
-    
-    s += dicSession[request.getSession().uid ]['AI_Session'] 
-        
-    s += """ <br /> <br /></div>  + <div id="introtext">Please enter  your Question below :</div> 
+    <div id="introtext">Please enter  your Question below :</div> 
     <div id="login-block">      
     <FORM ACTION="/aiquestion/" METHOD=POST> 
     <p class="label">Question &nbsp;:<input class="txtInput" name="Question" type="text" size="60" maxlength="532"></p> 
     <INPUT type="submit" value="Send"> 
-    </FORM> 
+    </FORM> """ 
+    
+    s += dicSession[request.getSession().uid ]['AI_Session'] 
+        
+    s += """ <br /> <br />
     </div> 
     </div> 
     </body> 
     </html> """
     return s
-    
+
+def errorSite():
+    s = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+    <html> <head> <title>Cyrus-Computer GmbH freie Software, Warenwirtschaft unter LINUX</title> <meta name="ROBOTS" content="NOINDEX, NOFOLLOW"> <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> 
+    <meta http-equiv="content-style-type" content="text/css"> 
+    <meta http-equiv="expires" content="0"> 
+    <link rel="stylesheet" type="text/css" href="cuon_ai.css" />  
+    </head> 
+    <body> 
+    <div id="page"> 
+    <div id="welcome">Connection error</div> 
+    <div id="introtext">Please go back to the <a href="/">main site</a> and login again</div> 
+      </div> 
+    </div> 
+    </body> 
+    </html> """
+    return s
 def htmlConvert(sValue):
     if sValue:
         sValue = sValue.encode('utf-8')
@@ -147,17 +164,16 @@ class AILevel(resource.Resource,  basics):
         
         if request.prepath == ['aiquestion']:
             print 'AI = ',  request.args
-            
-            aiAnswer =  self.webAI.getAnswer(request.args['Question'][0], dicSession[request.getSession().uid ]['CuonUser']  )
-            print 'AI answer total = ',  aiAnswer
-            aiAnswer = htmlConvert(aiAnswer)
-            aiAnswer = aiAnswer.replace('\n', '<br />')
-            print aiAnswer
-            dicSession[request.getSession().uid ]['AI_Session']  += '<br /><br />' + aiAnswer
-            
-            
-            return setAISite(request)
-            
+            if dicSession.has_key(request.getSession().uid ):
+                aiAnswer =  self.webAI.getAnswer(request.args['Question'][0], dicSession[request.getSession().uid ]['CuonUser']  )
+                print 'AI answer total = ',  aiAnswer
+                aiAnswer = htmlConvert(aiAnswer)
+                aiAnswer = aiAnswer.replace('\n', '<br />')
+                print aiAnswer
+                dicSession[request.getSession().uid ]['AI_Session']  = aiAnswer + '<br /><br />' +  dicSession[request.getSession().uid ]['AI_Session'] 
+                return setAISite(request)
+            else:
+                return errorSite()
 
     
 top = TopLevel()   
