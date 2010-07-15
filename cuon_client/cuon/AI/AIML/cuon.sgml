@@ -15,6 +15,10 @@
 
 <category><pattern>ENDPROGRAM</pattern><template>Bis zum nächsten Mal</template></category>
 
+<!-- For all modules -->
+<category><pattern>SQL *</pattern><template>CUON SQL EXECUTE <star/></template></category>
+
+
 <!-- search address -->
 <category><pattern>SEARCH ADDRESS *</pattern><template>CUON ADDRESS SEARCH ALL <star/></template></category>
 <category><pattern>A1 *</pattern><template>CUON ADDRESS SEARCH ALL <star/></template></category>
@@ -29,8 +33,10 @@
 <!-- Articles: simple Search -->
 
 <category><pattern>SEARCH ARTICLES *</pattern><template>CUON ARTICLES SEARCH ALL <star/></template></category>
+<category><pattern>I1 *</pattern><template>CUON ARTICLES SEARCH ALL <star/></template></category>
 
 <category><pattern>SEARCH ARTICLES PRICE LESS THAN *</pattern><template>CUON ARTICLES SEARCH PRICE LESS THAN <star/></template></category>
+<category><pattern>I2 *</pattern><template>CUON ARTICLES SEARCH PRICE LESS THAN <star/></template></category>
 
 
 <!-- Articles:  Search with : and or  -->

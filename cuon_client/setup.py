@@ -247,6 +247,7 @@ class setup:
         # AI 
         ai_module = ['main.sgml','cuon.sgml','cuon_article.sgml','cuon_address.sgml','cuon_misc.sgml']
         self.executeSCP(" cuon/AI/AIML/*.sgml", self.SERVERDIRSHARE + "/cuon_server/AI/AIML")
+        self.executeSCP(" cuon/AI/AIML/" + self.Locale + "_startup.aiml", self.SERVERDIRSHARE + "/cuon_server/AI/AIML/startup.aiml")
         self.executeSCP(" cuon/AI/AIML/" + self.Locale + "_startup.ini", self.SERVERDIRSHARE + "/cuon_server/AI/AIML/startup.ini")
         for aim in ai_module:
             self.executeSCP(" cuon/AI/AIML/" + self.Locale + '_' + aim, self.SERVERDIRSHARE + "/cuon_server/AI/AIML/" + aim)

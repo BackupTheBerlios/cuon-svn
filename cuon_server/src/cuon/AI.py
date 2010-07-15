@@ -40,26 +40,34 @@ class AI(xmlrpc.XMLRPC, basics):
         if sUser:
             #answer = context.ex_getAI(question)
             question = question.replace('.*', 'dot_star')
-            answer = self.sendQuestion(question.encode('utf-7'))
-            answer = answer.replace('dot_star', '.*')
+            AI_Answer = self.sendQuestion(question.encode('utf-7'))
+            AI_Answer = AI_Answer.replace('dot_star', '.*')
             
-            self.writeLog('py_getAI answer = ' + `answer`,1)
-            print 'py_getAI answer = ' + `answer`
+            self.writeLog('py_getAI answer = ' + `AI_Answer`,1)
+            #print 'py_getAI answer = ' + `AI_Answer`
             
     ##        try:
     ##           answer = answer.decode('utf-7').encode('utf-8')
     ##        except:
     ##           pass
     ##        
-            answer = answer.strip()
-            liAnswer = answer.split()
+            AI_Answer = AI_Answer.strip()
+            
+            liAnswer = AI_Answer.split()
+            
             try:
                 assert liAnswer
                 if liAnswer[0] == "ENDPROGRAM":
                     answer = sendQuestion('ENDPROGRAM')
                 elif liAnswer[0] == 'CUON':
                     goDecode = True
-                    if liAnswer[1] == 'ARTICLES':
+                    if liAnswer[1] == 'SQL':
+                        self.writeLog( "sql found")
+                        if liAnswer[2] == 'EXECUTE':
+                            self.writeLog( 'SQL EXECUTE')
+                            answer = self.executeSQL(AI_Answer,  dicUser)
+                            self.writeLog('answer2 from sql = ' + `answer`)
+                    elif liAnswer[1] == 'ARTICLES':
                         answer = self.articles(liAnswer, dicUser)
                     elif liAnswer[1] == 'ADDRESS':
                         answer = self.addresses(liAnswer, dicUser)
@@ -75,11 +83,14 @@ class AI(xmlrpc.XMLRPC, basics):
                                 goDecode = False
                                 answer = self.insert_data(liAnswer, dicUser, 'Misc_Data')
                         
-                        
+                else:
+                    self.writeLog('set normal answer from AI')
+                    answer = AI_Answer
                 if goDecode:
                     answer = answer.encode('utf-7')
                 
-            except:
+            except Exception,  params:
+                self.writeLog(`Exception` +' ,  ' +  `params`)
                 self.out('No correct answer from AI = ' + `answer`)
                 
             
@@ -115,6 +126,40 @@ class AI(xmlrpc.XMLRPC, basics):
         return liAnswer,bKey
         
         
+    def executeSQL(self, AI_Answer, dicUser):
+        answer = 'Nothing found'
+        self.writeLog('start AI execute SQL')
+        sSql = AI_Answer[17:].strip()
+        self.writeLog(sSql)
+        iIndex =  sSql.upper().find(' WHERE ')
+        table = None
+        liSql = sSql.split()
+        for value in range(len(liSql)):
+            if liSql[value].upper().strip() == 'FROM':
+                table = liSql[value + 1].upper().strip() +'.'
+                break
+        self.writeLog('table = ' + `table`  )
+        if iIndex > 0:
+            
+            self.writeLog( 'table2 = ' + table)       
+            
+            if table:
+                sSql = sSql[:iIndex+7] + table + 'client = ' + `dicUser['client'] ` + ' and '  + sSql[iIndex +7:]
+                
+        self.writeLog('ai sql before execute = ' + sSql)        
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql ,  dicUser)
+        self.writeLog('ai execute = ' +  AI_Answer[17:].strip() , 1)
+        self.writeLog('ai 1 result = ' + `result`, 1)
+        if result not in ['NONE','ERROR']:
+                 answer = ''
+                 for r1 in result:
+                     for key in r1.keys():
+                        answer +=  key + ': ' + r1[key] + '\n'
+        else:
+            answer = self.sendQuestion('NO DATA FOUND')
+            
+        self.writeLog('answer 1 = ' + answer)
+        return answer      
         
     def articles(self, liAnswer, dicUser):
         import string

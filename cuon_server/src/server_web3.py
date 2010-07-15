@@ -33,7 +33,7 @@ def setAISite(request):
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> 
     <meta http-equiv="content-style-type" content="text/css"> 
     <meta http-equiv="expires" content="0"> 
-    <link rel="stylesheet" type="text/css" href="cuon_ai.css" />  
+    <link rel="stylesheet" type="text/css" href="/cuon_ai.css" />  
     </head> 
     <body> 
     <div id="page"> 
@@ -41,7 +41,7 @@ def setAISite(request):
     <div id="introtext">Please enter  your Question below :</div> 
     <div id="login-block">      
     <FORM ACTION="/aiquestion/" METHOD=POST> 
-    <p class="label">Question &nbsp;:<input class="txtInput" name="Question" type="text" size="60" maxlength="532"></p> 
+    <div id="introtext"><p class="label">Question &nbsp;:<input class="txtInput" name="Question" type="text" size="60" maxlength="532"></p> </div>
     <INPUT type="submit" value="Send"> 
     </FORM> """ 
     
@@ -60,7 +60,7 @@ def errorSite():
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"> 
     <meta http-equiv="content-style-type" content="text/css"> 
     <meta http-equiv="expires" content="0"> 
-    <link rel="stylesheet" type="text/css" href="cuon_ai.css" />  
+    <link rel="stylesheet" type="text/css" href="/var/cuon_www/AI/html/cuon_ai.css" />  
     </head> 
     <body> 
     <div id="page"> 
@@ -167,10 +167,15 @@ class AILevel(resource.Resource,  basics):
             if dicSession.has_key(request.getSession().uid ):
                 aiAnswer =  self.webAI.getAnswer(request.args['Question'][0], dicSession[request.getSession().uid ]['CuonUser']  )
                 #print 'AI answer total = ',  aiAnswer
+                
+                
                 aiAnswer = htmlConvert(aiAnswer)
+                print aiAnswer
+                aiAnswer = """<div id="question">""" + request.args['Question'][0] + """</div> \n  <div id="answer">""" + aiAnswer + """</div> \n\n"""
+                print aiAnswer
                 aiAnswer = aiAnswer.replace('\n', '<br />')
-                #print aiAnswer
-                dicSession[request.getSession().uid ]['AI_Session']  = aiAnswer + '<br /><br />' +  dicSession[request.getSession().uid ]['AI_Session'] 
+                print aiAnswer
+                dicSession[request.getSession().uid ]['AI_Session']  = aiAnswer +  dicSession[request.getSession().uid ]['AI_Session'] 
                 return setAISite(request)
             else:
                 return errorSite()
