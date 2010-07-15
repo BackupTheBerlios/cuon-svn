@@ -12,7 +12,7 @@
 ##You should have received a copy of the GNU General Public License along with this program; if not, write to the
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
-import sys
+import sys,  time
 from types import *
 import pygtk
 pygtk.require('2.0')
@@ -62,11 +62,14 @@ class loginwindow(windows):
                 break ;
             
             
-            response = win1.run()
+            
                 
-        if response == gtk.RESPONSE_OK:
-            print 'ok pressed 0'
-            self.okButtonPressed()
+            if response == gtk.RESPONSE_OK:
+                print 'ok pressed 0'
+                self.okButtonPressed()
+                
+            
+            response = win1.run()
         ##elif response == gtk.RESPONSE_HELP:
         ##    print "Hilfe"
             
@@ -99,6 +102,7 @@ class loginwindow(windows):
         
         
     def okButtonPressed(self):
+        self.quitLogin()
         print 'ok pressed 1'
         #obj = AES.new('Th77777777key456', AES.MODE_ECB)
         username = self.getWidget('TUserID').get_text()
@@ -126,10 +130,10 @@ class loginwindow(windows):
             self.oUser.setSessionID(sid)
             
             self.loadProfile()
-            print 'writer'
-            print '---------------------------------------------------'
-            print self.oUser.prefDMS['exe']['writer']
-            print '---------------------------------------------------'
+            #print 'writer'
+            #print '---------------------------------------------------'
+            #print self.oUser.prefDMS['exe']['writer']
+            #print '---------------------------------------------------'
             
             #sys.exit(0)
             self.openDB()
@@ -154,7 +158,7 @@ class loginwindow(windows):
                 self.openDB()
                 self.saveObject('User', self.oUser)
                 self.closeDB()
-        self.quitLogin()
+        
        
     def on_cancelbutton1_clicked(self, event):
         self.oUser.setUserName('EMPTY')
@@ -163,3 +167,4 @@ class loginwindow(windows):
     
     def quitLogin(self):
         self.win1.hide()
+        #time.sleep(1)

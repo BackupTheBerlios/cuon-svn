@@ -41,11 +41,11 @@ class dumps:
         else:
             #print 'set td new'
             self.td = cuon.TypeDefs.typedefs.typedefs()
-        try:
-            print 'td', self.td.server
-            print self.td.cuon_path
-        except:
-            pass
+        #try:
+         #   print 'td', self.td.server
+           # print self.td.cuon_path
+        #except:
+          #  pass
         #print '------------------------------------------------'
         
     def openDB(self):

@@ -380,11 +380,13 @@ class MainWindow(windows):
         else:
             self.getWidget('eServer').set_text(self.td.server)
             #choose the client 
+            sys.exit()
             self.on_clients1_activate(None)
             print 'Hallo - client'
             self.checkMenus()
             
-
+        
+        
     def checkMenus(self):
         liModullist = self.rpc.callRP('User.getModulList', self.oUser.getSqlDicUser())
         #print liModullist
@@ -606,13 +608,13 @@ class MainWindow(windows):
 
     def generateLocalSqlObjects(self):
         at = self.rpc.callRP('Database.getInfo', 'allTables')
-        print 'at24 = ', `at`
+        #print 'at24 = ', `at`
         liAllTables = cPickle.loads(eval(self.doDecode(at)))
         #liAllTables = cPickle.loads(self.rpc.callRP('src.Databases.py_getInfoOfTable', 'allTables'))
-        print 'liAllTables = ', liAllTables
+        #print 'liAllTables = ', liAllTables
         #print liAllTables
         iCount = len(liAllTables)
-        print 'iCount = ', iCount
+        #print 'iCount = ', iCount
         for i in range(iCount):
             self.loadLocalSqlDefs(liAllTables, i)
             #self.setProgressBar(float(i) * 1.0/float(iCount) * 100.0)
@@ -1315,7 +1317,7 @@ class MainWindow(windows):
             if not version:
                 print 'no Version, please inform Cuon-Administrator'
 
-                sys.exit(0)
+                #sys.exit(0)
             
             if self.rpc.callRP('Database.checkVersion', self.Version, version) == 'Wrong':
                 print ' ungleiche Versionen'

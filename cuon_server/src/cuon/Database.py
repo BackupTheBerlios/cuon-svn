@@ -129,7 +129,7 @@ class Database(xmlrpc.XMLRPC, SQL):
             self.saveObject('user_'+ sUser + '_dicUserACL' , dicUserACL)
             try:
                 f = open('/var/log/cuonlogin.log','a')
-                f.write( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGIN: ' + sUser +'\n')
+                f.write( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGIN: ' + sUser +' Sessionid = ' + s['SessionID']  + '\n')
                 f.close()
             except Exception,  params:
                 print Exception,  params
@@ -301,7 +301,7 @@ class Database(xmlrpc.XMLRPC, SQL):
         #self.saveValue('user_' + sUser,{'SessionID':'0', 'endTime': 0})
         try:
             f = open('/var/log/cuonlogin.log','a')
-            f.writeline ( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGOUT: ' + sUser +'\n')
+            f.write ( `time.strftime('%Y-%m-%d %H:%M:%s')` +' LOGOUT: ' + sUser +'\n')
             f.close()
         except:
             pass

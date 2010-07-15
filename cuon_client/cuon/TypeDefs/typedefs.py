@@ -146,7 +146,7 @@ class typedefs:
                             #self.server = os.environ['CUON_SERVER']
                             #self.homePath = os.environ['CUON_HOME']        
                             if not self.help_server:
-                                self.help_server = 'http://84.244.7.139:7084/?action=xmlrpc2'
+                                self.help_server = 'http://85.214.52.49:7084/?action=xmlrpc2'
                                 
                         except:
                             print ' no environ found'

@@ -118,7 +118,7 @@ class myXmlRpc(dumps, logs):
         #t1 = time.mktime(time.localtime()) 
         #print  '<-------xmlrpc start : ' + ` t1` 
         r = None
-        #print 'rp',rp
+        print 'rp',rp
         #print rp[0:3]
         s = 'r = self.getServer().' + rp + '('
         for i in c:
@@ -140,7 +140,7 @@ class myXmlRpc(dumps, logs):
         while startRP:
             try:
                 exec s
-                
+                #print 'start this: ',  s
                 startRP = False
 
             except IOError, param:

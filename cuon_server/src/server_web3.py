@@ -166,10 +166,10 @@ class AILevel(resource.Resource,  basics):
             print 'AI = ',  request.args
             if dicSession.has_key(request.getSession().uid ):
                 aiAnswer =  self.webAI.getAnswer(request.args['Question'][0], dicSession[request.getSession().uid ]['CuonUser']  )
-                print 'AI answer total = ',  aiAnswer
+                #print 'AI answer total = ',  aiAnswer
                 aiAnswer = htmlConvert(aiAnswer)
                 aiAnswer = aiAnswer.replace('\n', '<br />')
-                print aiAnswer
+                #print aiAnswer
                 dicSession[request.getSession().uid ]['AI_Session']  = aiAnswer + '<br /><br />' +  dicSession[request.getSession().uid ]['AI_Session'] 
                 return setAISite(request)
             else:

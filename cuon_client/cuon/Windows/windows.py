@@ -770,8 +770,8 @@ class windows(rawWindow, MyXML, messages,  constants):
         
     def loadUserFromPreferences(self, result):
         self.oUser = self.oUser.getUser(result)
-        print 'user by windows = ', self.oUser
-        print 'dicUser = ', self.oUser.getDicUser()
+        #print 'user by windows = ', self.oUser
+        #print 'dicUser = ', self.oUser.getDicUser()
         self.openDB()
         self.saveObject('User', self.oUser)
         self.closeDB()
