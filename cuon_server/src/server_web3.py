@@ -171,7 +171,7 @@ class AILevel(resource.Resource,  basics):
                 
                 aiAnswer = htmlConvert(aiAnswer)
                 print aiAnswer
-                aiAnswer = """<div id="question">""" + request.args['Question'][0] + """</div> \n  <div id="answer">""" + aiAnswer + """</div> \n\n"""
+                aiAnswer = """<div id="answer">""" + aiAnswer + """</div> \n  <div id="question">"""  + request.args['Question'][0] + """</div> \n\n"""
                 print aiAnswer
                 aiAnswer = aiAnswer.replace('\n', '<br />')
                 print aiAnswer

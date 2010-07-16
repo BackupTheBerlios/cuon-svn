@@ -16,24 +16,26 @@ div#welcome {
     margin-left:55px;
     margin-top:0px;
     font-size:56px;
-   
+   color: #EE7600;
     
 }
 
 div#introtext {
     margin-left:55px;
     font-size:40px;
-    
+    color: #551A8B;
     
 }
 div#login-block {
 	 margin-top:60px;
     margin-left:5px;
     font-size:20px;
+    color: #0000CD;
 }
 
 
 input.txtInput {
 	margin-top:10px;
     margin-left: 5px;
+    color: #191970;
 }

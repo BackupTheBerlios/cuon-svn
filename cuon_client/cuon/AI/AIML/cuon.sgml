@@ -26,6 +26,9 @@
 <category><pattern>SEARCH PHONE *</pattern><template>CUON PHONE SEARCH ALL <star/></template></category>
 <category><pattern>A2 *</pattern><template>CUON PHONE SEARCH ALL <star/></template></category>
 
+<category><pattern>SEARCH PARTNER FOR ADDRESS *</pattern><template>CUON ADDRESS SEARCH PARTNER ALL <star/></template></category>
+<category><pattern>A3 *</pattern><template>CUON ADDRESS SEARCH PARTNER ALL <star/></template></category>
+
 
 
 <!-- search articles -->

@@ -71,6 +71,9 @@ class AI(xmlrpc.XMLRPC, basics):
                         answer = self.articles(liAnswer, dicUser)
                     elif liAnswer[1] == 'ADDRESS':
                         answer = self.addresses(liAnswer, dicUser)
+                    elif liAnswer[1] == 'PARTNER':
+                        answer = self.addresses(liAnswer, dicUser)
+                        
                     elif liAnswer[1] == 'PHONE':
                         answer = self.addresses_phone(liAnswer, dicUser)
                         
@@ -116,6 +119,16 @@ class AI(xmlrpc.XMLRPC, basics):
                 for i in liSearchkeys[1:]:
                     liAnswer[5] +=  i.strip()
                     bKey = True
+        elif key == 'AllPartner':
+            if len(liAnswer)  == 6:
+                liSearchkeys = liAnswer[5].split(',')
+                self.writeLog('liSearchkeys' + `liSearchkeys`)
+                liAnswer[5] = liSearchkeys[0]
+                liAnswer.append(liSearchkeys[1])
+            else:
+                self.writeLog(' set better ' + `len(liAnswer)`)
+                liAnswer[6] = liAnswer[6][:liAnswer[6].find(',')]
+            bKey = True
         elif key == 'Misc_Data':
             liSearchkeys = liAnswer[4].split(';')
             if len(liSearchkeys) > 0:
@@ -145,7 +158,7 @@ class AI(xmlrpc.XMLRPC, basics):
             
             if table:
                 sSql = sSql[:iIndex+7] + table + 'client = ' + `dicUser['client'] ` + ' and '  + sSql[iIndex +7:]
-                
+        sSql += " LIMIT 10 "
         self.writeLog('ai sql before execute = ' + sSql)        
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql ,  dicUser)
         self.writeLog('ai execute = ' +  AI_Answer[17:].strip() , 1)
@@ -184,32 +197,53 @@ class AI(xmlrpc.XMLRPC, basics):
                  answer = self.sendQuestion('NO ARTICLES FOUND')
         return answer      
 
-    def addresses(self, liAnswer, dicUser):
+    def addresses(self, liAnswer, dicUser ):
     
         answer = 'No Data Found'
         if liAnswer[2] == 'SEARCH':
-           if liAnswer[3] == 'ALL':
-              liAnswer, Firstname = self.checkAnswer(liAnswer,'Address') 
-              sSql = "select id, lastname, lastname2, firstname, street, zip, city from address "
-              sSql = sSql +  "where ( (lastname ~* \'.*" + liAnswer[4] + '.*\''
-              sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\') '
-              if Firstname:
+            if liAnswer[3] == 'ALL':
+                liAnswer, Firstname = self.checkAnswer(liAnswer,'Address') 
+                sSql = "select id, lastname, lastname2, firstname, street, zip, city from address "
+                sSql = sSql +  "where ( (lastname ~* \'.*" + liAnswer[4] + '.*\''
+                sSql = sSql + " or lastname2 ~* \'.*" + liAnswer[4] + '.*\') '
+                if Firstname:
                   
-                  sSql = sSql + " and firstname ~* \'.*" + liAnswer[5] + '.*\''
-              else:
-                  sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
+                    sSql = sSql + " and firstname ~* \'.*" + liAnswer[5] + '.*\''
+                else:
+                    sSql = sSql + " or firstname ~* \'.*" + liAnswer[4] + '.*\''
                   
-              sSql +=  ') ' +  self.getWhere('',dicUser,2)
+                sSql +=  ') ' +  self.getWhere('',dicUser,2)
               
-              self.writeLog('address_ai1' + `sSql`)
+                self.writeLog('address_ai1' + `sSql`)
         
-              result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-              if result not in ['NONE','ERROR']:
-                 answer = ''
-                 for r1 in result:
-                    answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(`r1['id']` + ' -- ' + r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
-              else:
-                 answer = self.sendQuestion('NO ADDRESS FOUND')
+                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+                if result not in ['NONE','ERROR']:
+                    answer = ''
+                    for r1 in result:
+                        answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(`r1['id']` + ' -- ' + r1['lastname'],r1['lastname2'],r1['firstname'],r1['street'],r1['zip'],r1['city'] )
+                else:
+                    answer = self.sendQuestion('NO ADDRESS FOUND')
+                    
+                    
+            if liAnswer[3] == 'PARTNER':
+                if liAnswer[4] == 'ALL':
+                    self.writeLog('search partner for address')
+                    liAnswer,  bKey = self.checkAnswer(liAnswer,'AllPartner') 
+                    self.writeLog(`liAnswer`)
+                    lastname = liAnswer[5]
+                    city = liAnswer[6]
+                    sSql = "select address.lastname || ', ' || address.city || ' : ' as name,  partner.lastname as lastname, partner.lastname2 as lastname2,partner. firstname as firstname,partner.phone as phone ,partner.phone1 as phone1, partner.phone_handy as handy  from partner, address "
+                    sSql += " where address.lastname ~*'" + lastname + "' and address.city ~*'" + city + "' and address.id = partner.addressid"
+                    self.writeLog('SQL = ' + sSql)
+                    result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+                    if result not in ['NONE','ERROR']:
+                        answer = ''
+                        
+                        for r1 in result:
+                            answer = answer + "%s\n%s\n%s\n%s\n%s %s\n------------------------------------\n" %(r1['name'] + ' -- ' + r1['lastname'],r1['lastname2'],r1['firstname'],r1['phone'],r1['phone1'],r1['handy'] )
+                    else:
+                        answer = self.sendQuestion('NO ADDRESS FOUND')
+                    
         return answer
         
     def addresses_phone(self, liAnswer, dicUser):

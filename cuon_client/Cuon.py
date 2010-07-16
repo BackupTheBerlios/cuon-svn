@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 13, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 7, 'Rev': 16, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -380,7 +380,7 @@ class MainWindow(windows):
         else:
             self.getWidget('eServer').set_text(self.td.server)
             #choose the client 
-            sys.exit()
+            #sys.exit()
             self.on_clients1_activate(None)
             print 'Hallo - client'
             self.checkMenus()
@@ -1317,7 +1317,7 @@ class MainWindow(windows):
             if not version:
                 print 'no Version, please inform Cuon-Administrator'
 
-                #sys.exit(0)
+                sys.exit(0)
             
             if self.rpc.callRP('Database.checkVersion', self.Version, version) == 'Wrong':
                 print ' ungleiche Versionen'

@@ -35,5 +35,17 @@
 <category><pattern>SUCH * TELEFON VON *</pattern><template><srai>SEARCH PHONE <star index = "2"/></srai></template></category>
 <category><pattern>SUCH * TELEFON * VON *</pattern><template><srai>SEARCH PHONE <star index = "3"/></srai></template></category>
 
+<!-- Gespraechspartner -->
+<category><pattern>SUCH  GESPRÄCHSPARTNER FÜR ADRESSE *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "1"/></srai></template></category>
+<category><pattern>SUCH  GESPRÄCHSPARTNER FÜR *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "1"/></srai></template></category>
+<category><pattern>SUCH  GP FÜR *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "1"/></srai></template></category>
+<category><pattern>SUCH  * GESPRÄCHSPARTNER FÜR  *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "2"/></srai></template></category>
+<category><pattern>SUCH  * GESPRÄCHSPARTNER FÜR ADRESSE *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "2"/></srai></template></category>
+
+<category><pattern>SUCH  * GP FÜR  *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "2"/></srai></template></category>
+<category><pattern>SUCH  * GP FÜR ADRESSE *</pattern><template><srai>SEARCH PARTNER FOR ADDRESS <star index = "2"/></srai></template></category>
+
+
+
 
 </aiml>
