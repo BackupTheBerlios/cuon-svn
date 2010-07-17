@@ -4404,7 +4404,7 @@ msgstr "Grabname"
 #: cuon/Graves/GUI/src/interface.c:951
 #: cuon/Graves/GUI/src/interface.c:1146
 msgid "serial number"
-msgstr "Laufende Nummer"
+msgstr "Laufnummer"
 
 #: cuon/Graves/GUI/src/interface.c:973
 #: cuon/Graves/GUI/src/interface.c:1244
