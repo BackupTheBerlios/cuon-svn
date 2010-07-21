@@ -56,8 +56,19 @@ class gladeXml(defaultValues):
         self.dicAccelKeys['save'] = 's'
         self.dicAccelKeys['new'] = 'n'
         self.dicAccelKeys['print'] = 'p'
+        
 
 
+        self.clipboard = gtk.clipboard_get()
+        
+    def setClipboard(self,  text):
+        self.clipboard.set_text(text)
+        self.clipboard.store()
+        
+    def getClipboard(self,  iNumber = 0):
+        return self.clipboard.wait_for_text()
+        
+        
     def getNotesEditor(self,  mime_type =  'text/x-tex',  highlight = True):
         try:
             lm = gtksourceview.SourceLanguagesManager()

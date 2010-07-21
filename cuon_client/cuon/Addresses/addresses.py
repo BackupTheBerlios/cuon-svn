@@ -1037,6 +1037,7 @@ class addresswindow(chooseWindows):
         print 'bLetter clicked'
         if self.singleAddress.ID > 0:
             firstRecord, dicExtInfo = self.getAddressInfos()
+            self.setClipboard(self.singleAddress.getEmail())
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address_info'], {'1':-101}, firstRecord,dicExtInfo)
         
 
@@ -1044,6 +1045,7 @@ class addresswindow(chooseWindows):
         print 'dms Partner clicked'
         if self.singlePartner.ID > 0:
             print 'ModulNumber', self.MN['Partner']
+            
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner'], {'1':self.singlePartner.ID})
         
     def on_bPartnerLetter_clicked(self, event):
@@ -1069,6 +1071,7 @@ class addresswindow(chooseWindows):
                     dicPartner['notes_' + key] = dicNotes[key]    
             dicPartner = self.addDateTime(dicPartner)
             print dicPartner
+            self.setClipboard(self.singlePartner.getEmail())
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_info'], {'1':-102}, dicPartner, dicExtInfo)
             
     def on_bSchedulLetter_clicked(self, event):
@@ -1526,6 +1529,8 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singleAddress.getEmail()
+        self.setClipboard(dicV['To'])
+
         dicV['Signatur'] = self.dicUser['Email']['Signatur']
         
         print dicV
@@ -1533,6 +1538,7 @@ class addresswindow(chooseWindows):
         
     def on_bSendExternEmail_clicked(self, event):
         Emailprg = self.dicUser['Email']['extPrg']
+        self.setClipboard(self.singleAddress.getEmail())
         liEmail = Emailprg.split(' ')
         s = "self.startExternalPrg(liEmail[0],"
 
@@ -1554,6 +1560,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singlePartner.getEmail()
+        self.setClipboard(self.singlePartner.getEmail())
         dicV['Signatur'] = self.dicUser['Email']['Signatur']
         print dicV
         em = cuon.E_Mail.sendEmail.sendEmail(dicV)

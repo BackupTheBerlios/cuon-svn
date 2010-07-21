@@ -7,7 +7,6 @@ function Go(){return}
 
 Menu1=new Array("C.U.O.N.","","",1,25,210);
   Menu1_1=new Array("Login to C.U.O.N.","Login.html","",0,25,210);
-  
 Menu2=new Array("Impressum","Impressum.html","",0,25,210);
 
 var NoOffFirstLineMenus=2;	// Number of first level items

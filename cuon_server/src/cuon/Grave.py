@@ -22,12 +22,17 @@ class Grave(xmlrpc.XMLRPC, basics):
         liTypeOfGrave = ['NONE']
         if liTypeOfGrave0:
             liTypeOfGrave = liTypeOfGrave0.split(',')
+            for i in range(len(liTypeOfGrave)):
+                liTypeOfGrave[i] = liTypeOfGrave[i] + '###'+`i`
         
         liTypeOfPaying0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTypeOfPaying', cpServer)
         liTypeOfPaying = ['NONE']
         if liTypeOfPaying0:
             liTypeOfPaying = liTypeOfPaying0.split(',')
-            
+            for i in range(len(liTypeOfPaying)):
+                liTypeOfPaying[i] = liTypeOfPaying[i] + '###'+`i`
+                
+                
         liPercents0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbPercentsGrave', cpServer)
         liPercents = ['NONE']
         if liPercents0:

@@ -124,7 +124,17 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-   
+    <entry>
+      <name>cbTypeOfPaid</name>
+      <type>checkbox</type>
+      <size>150</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>type_of_paid</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
      <entry>
       <name>eContractID</name>
       <type>textline</type>

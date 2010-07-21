@@ -255,6 +255,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbTypeOfGrave.set_text_column(0)
             cbTypeOfGrave.show()
 
+        #same for the find field 
+        cbFindTypeOfGrave = self.getWidget('cbFindTypeOfGrave')
+        if cbFindTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbFindTypeOfGrave.set_model(liststore)
+            cbFindTypeOfGrave.set_text_column(0)
+            cbFindTypeOfGrave.show()
+            
+            
+            
         cbTypeOfPaid = self.getWidget('cbTypeOfPaid')
         if cbTypeOfPaid:
             liststore = gtk.ListStore(str)
@@ -263,7 +275,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbTypeOfPaid.set_model(liststore)
             cbTypeOfPaid.set_text_column(0)
             cbTypeOfPaid.show()
-
+        
+        #same for the find field
+        cbFindTypeOfPaid = self.getWidget('cbFindTypeOfPaid')
+        if cbFindTypeOfPaid:
+            liststore = gtk.ListStore(str)
+            for TypeOfPaid in liTypeOfPaid:
+                liststore.append([TypeOfPaid])
+            cbFindTypeOfPaid.set_model(liststore)
+            cbFindTypeOfPaid.set_text_column(0)
+            cbFindTypeOfPaid.show()
+            
         cbPercent = self.getWidget('cbPercent')
         if cbPercent:
             liststore = gtk.ListStore(str)
@@ -1052,10 +1074,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def findGrave(self):
         print 'findGrave'
         iGraveyardId = 0
+        iTypeOfPaid = -1
+        iTypeOfGrave = -1
         self.singleGrave.setTreeOrder('lastname, firstname')
         sName = self.getWidget('eFindNameOfGrave').get_text()
         sFirstname = self.getWidget('eFindFirstname').get_text()
         sSerialNumber = self.getWidget('eFindSerialNumber').get_text()
+        
         try:
             sGY = self.getWidget('cbFindGraveyard').get_active_text()
             print 'Graveyard = ',  sGY
@@ -1064,6 +1089,23 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         except:
             pass
             
+            
+        try:
+            sGP = self.getWidget('cbFindTypeOfPaid').get_active_text()
+            print 'Grave paid = ',  sGP
+            iTypeOfPaid = int( sGP[sGP.find('###')+3:])
+            print 'graveyardID = ',  iTypeOfPaid
+        except:
+            pass
+            
+            
+        try:
+            sGT = self.getWidget('cbFindTypeOfGrave').get_active_text()
+            print 'Grave Type = ',  sGT
+            iTypeOfGrave = int( sGT[sGT.find('###')+3:])
+            print 'iTypeOfGrave = ',  iTypeOfGrave
+        except:
+            pass    
         liSearch = []
         if sName:
             liSearch.append('lastname')
@@ -1071,27 +1113,41 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
       
         if sSerialNumber:
             liSearch.append('pos_number')
+            print 'liSearch 01 = ',  liSearch
             try:
-                if sSerialNumber.find('-'):
+                if sSerialNumber.find('-') > 0:
                     liPos = sSerialNumber.split('-')
-                    liSearch.append('# between ' + liPos[0] + ' and ' + liPos[1] )
+                    liSearch.append('# between ' + liPos[0].strip() + ' and ' + liPos[1].strip() )
                     self.singleGrave.setTreeOrder('pos_number, lastname')
                 else:
-                    liSearch.append(int(sSerialNumber))
-            except:
+                    print 'else ',  liSearch
+                    liSearch.append(int(sSerialNumber.strip()))
+            except Exception,  params:
+                print Exception,  params
+                print 'error in find'
                 liSearch.append(0)
-            
+        print 'liSearch 02 = ',  liSearch    
         if sFirstname:
             liSearch.append('firstname')
             liSearch.append(sFirstname)
+        print 'liSearch 04 = ',  liSearch
+        
         if iGraveyardId > 0:
             liSearch.append('graveyardid')
             liSearch.append(iGraveyardId)
             
+        if iTypeOfPaid > -1:
+            liSearch.append('type_of_paid')
+            liSearch.append(iTypeOfPaid)
+        
+        if iTypeOfGrave > -1:
+            liSearch.append('type_of_grave')
+            liSearch.append(iTypeOfGrave)
             
+        print 'liSearch 05 = ',  liSearch   
         if liSearch:
             self.singleGrave.sWhere = self.getWhere(liSearch) 
-        print 'liSearch = ',  liSearch
+        print 'liSearch 10= ',  liSearch
         print  self.singleGrave.sWhere
         self.refreshTree()
 
