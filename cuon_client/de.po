@@ -654,7 +654,10 @@ msgstr "Friedhof Nachname Vorname"
 
 #: cuon/Graves/grave.py:126
 msgid "Service-ID"
-msgstr "Dienst-ID"
+msgstr "Pflege-ID"
+
+msgid "Grave"
+msgstr "Grab"
 
 #: cuon/Graves/grave.py:143
 msgid "count"
@@ -4344,7 +4347,7 @@ msgstr "Gräber"
 #: cuon/Graves/GUI/src/interface.c:647
 #: cuon/Graves/GUI/src/interface.c:1724
 msgid "Service"
-msgstr "Service"
+msgstr "Pflege"
 
 #: cuon/Graves/GUI/src/interface.c:675
 #: cuon/Graves/GUI/src/interface.c:1849
@@ -4379,7 +4382,7 @@ msgstr "Jährlich"
 #: cuon/Graves/GUI/src/interface.c:843
 #: cuon/Graves/GUI/src/interface.c:2635
 msgid "unique"
-msgstr "Einzeln"
+msgstr "Einmalig"
 
 #: cuon/Graves/GUI/src/interface.c:882
 msgid "create a new entry"
@@ -4403,8 +4406,11 @@ msgstr "Grabname"
 
 #: cuon/Graves/GUI/src/interface.c:951
 #: cuon/Graves/GUI/src/interface.c:1146
-msgid "serial number"
+msgid "sequential number"
 msgstr "Laufnummer"
+
+msgid "Gravenumber"
+msgstr "Grabnummer"
 
 #: cuon/Graves/GUI/src/interface.c:973
 #: cuon/Graves/GUI/src/interface.c:1244
@@ -4489,7 +4495,7 @@ msgstr "Vertrag endet am"
 
 #: cuon/Graves/GUI/src/interface.c:1201
 msgid "common Hints"
-msgstr "Gemeinsame Tips"
+msgstr "Genereller Hinweis"
 
 #: cuon/Graves/GUI/src/interface.c:1227
 msgid "Name of Grave"
@@ -4534,11 +4540,11 @@ msgstr "waehlen"
 
 #: cuon/Graves/GUI/src/interface.c:1637
 msgid "Serviceprice for"
-msgstr ""
+msgstr "Pflegepreis für"
 
 #: cuon/Graves/GUI/src/interface.c:1644
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: cuon/Graves/GUI/src/interface.c:1648
 msgid "months"
@@ -4546,7 +4552,7 @@ msgstr "Monate"
 
 #: cuon/Graves/GUI/src/interface.c:1672
 msgid "Hints for Service"
-msgstr "Tips zur Pflege"
+msgstr "Hinweis zur Pflege"
 
 #: cuon/Graves/GUI/src/interface.c:1679
 msgid "addional services"
@@ -4558,7 +4564,7 @@ msgstr ""
 
 #: cuon/Graves/GUI/src/interface.c:1720
 msgid "choose Service"
-msgstr "waehle Service"
+msgstr "wähle Pflege"
 
 #: cuon/Graves/GUI/src/interface.c:1761
 #: cuon/Graves/GUI/src/interface.c:1887
@@ -4592,23 +4598,23 @@ msgstr "Zeiteinheit"
 
 #: cuon/Graves/GUI/src/interface.c:1827
 msgid "Hints"
-msgstr "Tips"
+msgstr "Hinweis"
 
 #: cuon/Graves/GUI/src/interface.c:1953
 msgid "Hints Summer"
-msgstr "Tips Sommer"
+msgstr "Hinweis Sommer"
 
 #: cuon/Graves/GUI/src/interface.c:2078
 msgid "Hints Autumn"
-msgstr "Tips herbst"
+msgstr "Hinweis Herbst"
 
 #: cuon/Graves/GUI/src/interface.c:2203
 msgid "Hints Holiday"
-msgstr "Tips Feiertag"
+msgstr "Hinweis Feiertag"
 
 #: cuon/Graves/GUI/src/interface.c:2328
 msgid "Hints Spring"
-msgstr "Tips Frühling"
+msgstr "Hinweis Frühling"
 
 #: cuon/Graves/GUI/src/interface.c:2400
 msgid "Day/Month"
@@ -4616,11 +4622,11 @@ msgstr "Tag/Monat"
 
 #: cuon/Graves/GUI/src/interface.c:2475
 msgid "Hints Annual"
-msgstr "Tips Jährlich"
+msgstr "Heinweis Jährlich"
 
 #: cuon/Graves/GUI/src/interface.c:2613
 msgid "Hints Unique"
-msgstr "Tips Einzel"
+msgstr "Heinweis Einmalig"
 
 #: cuon/Graves/GUI/src/interface.c:2665
 msgid "add Article"
