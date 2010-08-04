@@ -97,7 +97,7 @@ class setup:
         self.CUON_VAR_WWW =  "/var/cuon_www"
         self.CUON_VAR_WWW_ICAL =  "/var/cuon_www/iCal"
         self.CUON_VAR_WWW_AI = self.CUON_VAR_WWW + '/AI'
-        
+        self.CUON_VAR_WWW_GLADE = self.CUON_VAR_WWW + '/Glade'
         
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
         self.CUON_TMP = self.CUON_VAR + "/tmp"
@@ -210,9 +210,10 @@ class setup:
         self.copyLocalValues('./GUI/maemo/*.glade2', self.dest_glade)
         self.copyLocalValues('./GUI/800/*.glade2', self.dest_glade)
         self.copyLocalValues('./GUI/alternate*/*.glade2', self.dest_glade)
-        
+        self.copyLocalValues('./GUI/web/web_*.glade', self.dest_glade)
         
         self.executeString('find ./cuon  -name "*.glade2" -exec cp  {} ' +  self.dest_glade + ' \;' )
+        self.executeString('find ./cuon  -name "web_*.glade" -exec cp  {} ' +  self.dest_glade + ' \;' )
         self.executeString('find ./cuon  -name "entry_*" -exec cp {} ' + self.ClientDirUsrShareCuon + ' \;' )
         self.executeString('find ./GUI/pixmaps  -name "*.svg" -exec cp {} '  + self.ClientDirIcon + ' \;' )
 
@@ -255,6 +256,9 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ") 
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_AI + " ] ; then mkdir " + self.CUON_VAR_WWW_AI + " ; fi ")   
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_GLADE + " ] ; then mkdir " + self.CUON_VAR_WWW_GLADE + " ; fi ")   
+        self.executeSCP(" -r ../cuon_server/WEB/html/*",  self.CUON_VAR_WWW  )
+        self.executeSCP(" -r " +self.dest_glade + "/*",  self.CUON_VAR_WWW_GLADE  )
         self.executeSCP(" -r ../cuon_server/AI/*",  self.CUON_VAR_WWW_AI  )
         
         # create and copy reports and doc

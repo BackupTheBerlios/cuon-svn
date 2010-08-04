@@ -1,0 +1,48 @@
+function main() {
+  loadXml
+  ('Glade/web_cuon.glade',
+   function (glade) {
+     var widgets = parseGlade(glade);
+     wbuild(document.documentElement, [ widgets['window1'] ]);
+   });
+};
+
+
+WHANDLER['on_login1_activate'] =
+function (e) {
+    var win_login = window.open('',width=100,height=100) ;
+    
+    
+    with (win_login.document){
+        loadXml  ('Glade/web_login.glade',   function (glade) {
+   
+            var widgets = parseGlade(glade);
+            wbuild(win_login.document.documentElement, [ widgets['UserID_Dialog'] ]);
+            
+        }  );
+        
+        
+        WHANDLER['on_okbutton1_clicked'] =
+            function () {
+                
+           
+             /* var userID = win_login.document.getElementById('TUserID').value ;  */
+            var rpc = new XmlRpcRequest("http://cuonsim1.de:7080","Database.is_running");
+                response = rpc.send();
+                
+                
+            
+       };
+   };
+   };
+
+WHANDLER['delete_event'] =
+function () {
+    alert('delete_event');
+};
+
+WHANDLER['destroy'] =
+function () {
+    alert('destroy');
+    gtkMainQuit();
+};

@@ -1,0 +1,126 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?> 
+<!-- Extremely recommended to keep this css include!! --> 
+<window id="window1" title="cuon1" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <vbox >
+ <menubar  id="menubar1">
+ <menu  id="connect1" label="Connect">
+ <menupopup id="connect1_99">
+<menuitem  id="login1" label="Login" oncommand="loadURI(this.value)"  
+ value="http://mozilla.org/" />
+<menuitem  id="logout1" label="Logout" />
+</menupopup>  
+</menu>
+<menu  id="data" label="Data">
+ <menupopup id="data_99">
+<menuitem  id="mi_addresses1" label="_Addresses" />
+<menuitem  id="mi_articles1" label="Art_icles" />
+<menuitem  id="bank1" label="Bank" />
+</menupopup>  
+</menu>
+<menuitem  id="mi_bibliographic" label="Bibliographic" />
+<menuitem  id="mi_staff1" label="Staff" />
+<menu  id="contracts1" label="Contracts">
+ <menupopup id="contracts1_99">
+<menuitem  id="mi_insurances1" label="Insurances" />
+<menuitem  id="mi_rent1" label="Rent" />
+<menuitem  id="mi_leasing1" label="Leasing" />
+</menupopup>  
+</menu>
+<menuitem  id="mi_clients1" label="Clients" />
+<menu  id="action1" label="Action">
+ <menupopup id="action1_99">
+<menuitem  id="proposal1" label="Proposal" />
+<menuitem  id="mi_order1" label="_Order" />
+<menuitem  id="mi_stock1" label="Stock" />
+<menuitem  id="mi_dms1" label="DMS" />
+</menupopup>  
+</menu>
+<menu  id="accounting1" label="Accounting">
+ <menupopup id="accounting1_99">
+<menuitem  id="bookkeeping1" label="Bookkeeping" />
+<menuitem  id="mi_cash_account_book1" label="cash account book" />
+</menupopup>  
+</menu>
+<menuitem  id="listofinvoices1" label="list_of_invoices" />
+<menuitem  id="analyse_costs1" label="analyse costs" />
+<menu  id="extras" label="Extras">
+ <menupopup id="extras_99">
+</menupopup>  
+</menu>
+<menu  id="mayavi1" label="Mayavi">
+ <menupopup id="mayavi1_99">
+<menuitem  id="mi_test1" label="Test" />
+<menuitem  id="mi_expert_system1" label="Expert System" />
+<menuitem  id="mi_project1" label="Project" />
+<menuitem  id="web2" label="Web" />
+<menuitem  id="stats1" label="Stats" />
+<menuitem  id="calendar" label="Calendar" />
+<menuitem  id="mindmap1" label="Mindmap" />
+</menupopup>  
+</menu>
+<menu  id="tools" label="Tools">
+ <menupopup id="tools_99">
+</menupopup>  
+</menu>
+<menu  id="preferences1" label="Preferences">
+ <menupopup id="preferences1_99">
+<menuitem  id="mi_user1" label="User" />
+<menuitem  id="mi_finances1" label="Finances" />
+<menuitem  id="update1" label="Update" />
+<menuitem  id="mi_report-generator1" label="Report-Generator" />
+<menuitem  id="mi_webshop1" label="WebShop" />
+</menupopup>  
+</menu>
+<menuitem  id="databases1" label="Databases" />
+<menuitem  id="mi_import_data1" label="Import Data" />
+<menu  id="forms1" label="Forms">
+ <menupopup id="forms1_99">
+</menupopup>  
+</menu>
+<menu  id="forms_addresses1" label="Addresses">
+ <menupopup id="forms_addresses1_99">
+<menuitem  id="mi_addresses_notes_misc1" label="Notes Misc" />
+<menuitem  id="mi_addresses_notes_contacter1" label="Notes contacter" />
+<menuitem  id="mi_addresses_notes_representant1" label="Notes Representant" />
+<menuitem  id="mi_addresses_notes_salesman1" label="Notes Salesman" />
+</menupopup>  
+</menu>
+<menu  id="logs1" label="Logs">
+ <menupopup id="logs1_99">
+<menuitem  id="mail1" label="Mail" />
+</menupopup>  
+</menu>
+<menu  id="help1" label="Help">
+ <menupopup id="help1_99">
+<menuitem  id="about1" label="About" />
+<menuitem  id="onlinehelp" label="Online-Help" />
+</menupopup>  
+</menu>
+<vbox >
+ <vbox >
+ <vbox >
+ <vbox >
+ <vbox >
+ <vbox >
+ <vbox >
+ 
+</vbox>
+
+</vbox>
+
+</vbox>
+
+</vbox>
+
+</vbox>
+
+</vbox>
+
+</vbox>
+
+</menubar>
+
+</vbox>
+
+</window>

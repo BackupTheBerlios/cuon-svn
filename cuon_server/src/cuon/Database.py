@@ -18,7 +18,8 @@ class Database(xmlrpc.XMLRPC, SQL):
         SQL.__init__(self)
         
     def xmlrpc_is_running(self):
-        return 12
+        print 'is running 42'
+        return 42
         
     def getValue(self, sKey):
         v = 'NONE'

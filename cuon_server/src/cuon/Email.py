@@ -60,7 +60,8 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                         
                         
             else:
-                ok += deferToThread(self.sendEmail, dicValues, liAttachments,dicUser) +'\n'
+                #ok += deferToThread(self.sendEmail, dicValues, liAttachments,dicUser) +'\n'
+                ok += self.sendEmail(dicValues, liAttachments,dicUser) +'\n'
             
         return ok
                 

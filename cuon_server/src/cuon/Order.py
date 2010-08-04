@@ -653,7 +653,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
         topID = 0
         sSql = "select addresses_misc.top_id as topid from addresses_misc,orderbook where addresses_misc.address_id = orderbook.addressnumber and orderbook.id = " + `dicOrder['orderid']`
-        sSql += self.getWhere(None,dicUser,2)
+        sSql += self.getWhere(None,dicUser,2, "addresses_misc.")
         #print 'Before ', sSql
         #print dicUser['Name']
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)

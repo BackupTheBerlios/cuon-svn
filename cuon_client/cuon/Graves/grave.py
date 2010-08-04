@@ -153,10 +153,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveSummer.setEntries(self.getDataEntries(self.EntriesGravesSummer) )
         self.singleGraveSummer.setGladeXml(self.xml)
-        self.singleGraveSummer.setTreeFields( ['article_id' , 'articles.number as number', 'articles.designation as designation'] )
-        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING ,  gobject.TYPE_UINT) ) 
+        self.singleGraveSummer.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveSummer.setTreeOrder('article_id')
-        self.singleGraveSummer.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveSummer.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveSummer.setTree(self.xml.get_widget('tree1') )
         self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
@@ -167,10 +167,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveAutumn.setEntries(self.getDataEntries(self.EntriesGravesAutumn) )
         self.singleGraveAutumn.setGladeXml(self.xml)
-        self.singleGraveAutumn.setTreeFields(  ['article_id' , 'articles.number as number', 'articles.designation as designation'] )
-        self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING ,  gobject.TYPE_UINT) ) 
+        self.singleGraveAutumn.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveAutumn.setTreeOrder('article_id')
-        self.singleGraveAutumn.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveSpring.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveAutumn.setTree(self.xml.get_widget('tree1') )
         self.singleGraveAutumn.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
@@ -180,10 +180,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveWinter.setEntries(self.getDataEntries(self.EntriesGravesWinter) )
         self.singleGraveWinter.setGladeXml(self.xml)
-        self.singleGraveWinter.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation' ] )
-        self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+        self.singleGraveWinter.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveWinter.setTreeOrder('article_id')
-        self.singleGraveWinter.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveWinter.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveWinter.setTree(self.xml.get_widget('tree1') )
         self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID` + ' and article_id = articles.id '
   
@@ -194,10 +194,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
         self.singleGraveHolidays.setEntries(self.getDataEntries(self.EntriesGravesHolidays) )
         self.singleGraveHolidays.setGladeXml(self.xml)
-        self.singleGraveHolidays.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveHolidays.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveHolidays.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveHolidays.setTreeOrder('article_id')
-        self.singleGraveHolidays.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveHolidays.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveHolidays.setTree(self.xml.get_widget('tree1') )
         self.singleGraveHolidays.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
@@ -207,17 +207,14 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.loadEntries(self.EntriesGravesAnnual)     
         self.singleGraveAnnual.setEntries(self.getDataEntries(self.EntriesGravesAnnual) )
         self.singleGraveAnnual.setGladeXml(self.xml)
-        self.singleGraveAnnual.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveAnnual.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveAnnual.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveAnnual.setTreeOrder('article_id')
-        self.singleGraveAnnual.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveAnnual.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveAnnual.setTree(self.xml.get_widget('tree1') )
         self.singleGraveAnnual.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
-        self.EntriesGravesSummer = 'graves_summer.xml'
-        self.loadEntries(self.EntriesGravesSummer)
-        
-        
+                
         
         self.EntriesGravesUnique = 'graves_single.xml'
         
@@ -225,10 +222,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
         self.singleGraveUnique.setEntries(self.getDataEntries(self.EntriesGravesUnique) )
         self.singleGraveUnique.setGladeXml(self.xml)
-        self.singleGraveUnique.setTreeFields( ['article_id', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
+        self.singleGraveUnique.setTreeFields( ['service_count', 'articles.number as number', 'articles.designation as designation',  'article_id'   ] )
         self.singleGraveUnique.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveUnique.setTreeOrder('article_id')
-        self.singleGraveUnique.setListHeader([_('article-ID'), _('number'), _('Designation')])
+        self.singleGraveUnique.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
         self.singleGraveUnique.setTree(self.xml.get_widget('tree1') )
         self.singleGraveUnique.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   

@@ -397,12 +397,7 @@ class projectwindow(chooseWindows):
         self.out( "delete projectphases v2")
         self.singleProjectTaskMaterial.deleteRecord()
                 
-    def on_bShowDMS_clicked(self, event):
-        print 'dms clicked'
-        if self.singleProject.ID > 0:
-            print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
-            
+      
    
     #Menu  Programming
   
@@ -427,6 +422,16 @@ class projectwindow(chooseWindows):
         self.out( "delete projectphases v2")
         self.singleProjectProgramming.deleteRecord()
               
+    
+    # Buttons
+    
+    def on_bShowDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleProject.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
+          
+          
     
     def on_chooseAddress_activate(self, event):
         # choose Address from other Modul
@@ -607,10 +612,31 @@ class projectwindow(chooseWindows):
     # DMS
     def on_bProjectDMS_clicked(self, event):
         print 'dms clicked'
-        if self.singleAddress.ID > 0:
+        if self.singleProject.ID > 0:
             print 'ModulNumber', self.ModulNumber
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleProject.ID})
         
+    def on_bPhaseDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleProjectPhases.ID > 0:
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_phase'], {'1':self.singleProjectPhases.ID})
+    
+    def on_bTaskDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleProjectTasks.ID > 0:
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_task'], {'1':self.singleProjectTasks.ID})
+        
+    def on_bStaffDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleProjectTaskStaff.ID > 0:
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_staff_resources'], {'1':self.singleProjectTaskStaff.ID})
+    
+    def on_bMaterialDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleProjectTaskMaterial.ID > 0:
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_material_resources'], {'1':self.singleProjectTaskMaterial.ID})
+    
+    
     def on_eMRArticleNumber_changed(self, event):
         print 'eMRArticleNumber changed'
         eArticleDes  = self.getWidget('eArticleDesignation')
@@ -625,6 +651,9 @@ class projectwindow(chooseWindows):
         if self.singleProject.firstRecord['customer_id'] > 0:
             print 'start address'
             adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.singleProject.firstRecord['customer_id'])
+    
+    
+    # Toolbar
     
 
     def getProjectInfos(self):

@@ -28,8 +28,8 @@ recent_files: /opt/Projekte/cuon/www/Cuon/index.html
 recent_files: /opt/Projekte/cuon/www/Cuon/MainLeft/index.html
 recent_files: /home/jhamel/Projekte/cuon/www/Extensions/Extensions.html
 recent_files: /home/jhamel/cuon_cyrus/PHCTiFXbaafdm891709544__dms.html
-opendir: /opt/Projekte/cuon/www
-savedir: /opt/Projekte/cuon/www
+opendir: /opt/Projekte/cuon/www/Downloads
+savedir: /opt/Projekte/cuon/www/Downloads
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

@@ -1,0 +1,753 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" >
+<?xml version="1.0" encoding="utf-8" ?>
+<book>
+  <bookinfo>
+    <title>
+       C.U.O.N. 
+    </title>
+    <subtitle>
+       Installation and Usage 
+    </subtitle>
+    <author>
+      <firstname>
+         J&uuml;rgen 
+      </firstname>
+      <surname>
+         Hamel 
+      </surname>
+    </author>
+    <copyright>
+      <year>
+         2010 
+      </year>
+      <holder>
+         J&uuml;rgen Hamel 
+      </holder>
+    </copyright>
+  </bookinfo>
+  <preface>
+    <title>
+       Foreword 
+    </title>
+    <para>
+       C.U.O.N. is the acronym for 
+      <emphasis>
+         Common Universally Organized Network 
+      </emphasis>
+    </para>
+    <para>
+       In the Year 2001 I thought about an ERP-Program for LINUX. First tries with c++ and postgres are to conventional and I thought about ERP and Network. So the design of C.U.O.N. ist this: On a host ( or different hosts ) runs the python twisted-Server ( earlier versions are work with ZOPE ). The clients ( at this time only my python client ) communicate with xmlrpc, so many different languages are supported ( java, c++, ruby, etc. ). Some example: The client will look at a document ( a invoice ). It send the data via xmlrpc to the communication-server. This server takes several sql-queries and send them to the report-server. This server generates the report, convert it to a pdf-file and send this file back. Now the communication-server sends this to the client. The client open a pdf-viewer and have a look at the document. 
+    </para>
+    <para>
+       At this time, cuon has the standard modules like addresses, articles, stock, order and some specials like a 
+    </para>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+             DMS - ( Document management System ) which can scan documents, save OpenOffice? docs, Images, speech and so on 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             AI - an expert system with several bot funktions 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             Project - a project management system with project, phases and task, personal resources and material-resources. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             iCalendar - the date and times are send to an iCal-File and so you can use them with evolution or kontact. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             The GUI and logic are strictly separately, the GUI are build with glade. 
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <para>
+       The servers are: cuon_xmlrpc - communication with the clients, Postgres and other server cuon_web - iCalendar and web cuon_report - reportserver, pdf-creator cuon_ai - parse normal sentences and translate it to keywords for sql-queries 
+    </para>
+  </preface>
+  <chapter>
+    <title>
+       Installation 
+    </title>
+    <para>
+       This side describes the general installation of cuon. Please see also 
+    </para>
+    <sect1 id="Requirements">
+      <title>
+         Requirements 
+      </title>
+      <para>
+         The server needs some resources. So it should look approximately in such a way 
+        <itemizedlist>
+          <listitem>
+            <para>
+               servers and 1 Client on the same computer starting from 3GHz, 1GB RAM, 10 GB HD 
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+               servers without GUI and 10 Clients starting from 2.5 GHz, 1 GB RAM, 100 GB HD 
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+               servers without GUI and 50 Clients starting from 3 GHz, 4 GB RAM, 500 GB HD 
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+         Client computer must have a GUI like Gnome, KDE, XFCE That Install client must be a Linux computer . X must run and a surface such as XFCE, Gnomes, KDE, black box, more windowmaker or another surface must be present. 
+      </para>
+    </sect1>
+    <sect1 id="Download">
+      <title>
+         Download and execute install routines
+      </title>
+      <para>
+         First of all: Look at our Download site at the <ulink url="http://cuon.org/Downloads/en_Download.html"> Cuon download side</ulink> and download the installer packets for your Linux Distribution. You can also download from 
+        <ulink url="http://sourceforge.net/projects/cuon/">
+           Sourceforge.net 
+        </ulink>
+         and view at all files. There are several installer for different Linux distributions 
+      </para>
+      <sect2 id="Download_Debian">
+        <title>
+           Debian, Ubuntu 
+        </title>
+        <sect3 id="Download_Debian_client">
+          <title>
+             Cuon Client 
+          </title>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-client-1.0-all.deb"> cuon-client-1.0-all.deb </ulink></para>
+          <para>
+             Click here to download the Cuon Client for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it and everything will be fine! Otherwise: Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) sudo apt-get install wget bash python-gtk2 python-glade2 python-imaging python-gnome2 python-python-gtkmozembed gtksourceview2 Then in the download directory run this: sudo dpkg-i cuon-client-1.0-all.deb Now any user can start the Cuon Client from the menu. 
+          </para>
+        </sect3>
+        <sect3 id="Download_Debian_setup">
+          <title>
+             Cuon Setup 
+          </title>
+          
+	<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-setup-1.0-all.deb"> cuon-setup-1.0-all.deb </ulink></para>
+<para>
+             This program is used to setup and configure the server Cuon. It can be installed on any client. Please, it is necessarily to read here in the Wiki (documentation) the installation documentation. This graphical front end they can start managing Cuon server, User Setup, Reports and 100 things more! Click here to download the Cuon Setup for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it and everything will be fine! Otherwise: Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) sudo apt-get install wget bash subversion python-gtk2 python-gnome2 python-python-glade2 gtkmozembed python-gtksourceview2 Then in the download directory run this: sudo dpkg-i cuon-setup-1.0-all.deb Now the administrator Cuon setup and configuration program start from the menu. 
+          </para>
+        </sect3>
+        <sect3 id="Download_Debian_server">
+          <title>
+             Cuon Server 
+          </title>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-server-1.0-all.deb"> cuon-server-1.0-all.deb </ulink></para>
+          <para>
+             This program is used to install the server Cuon. It can ONLY be installed on the server. Please, it is necessarilyto read here in the Wiki (documentation) the installation documentation. With this front end all needet modules are installed, to run the Cuon server . Click here to download the Cuon Server for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it and everything will be fine! 
+          </para>
+          <para>
+             Otherwise: 
+          </para>
+          <para>
+             Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) 
+          </para>
+          <para>
+             sudo apt-get install bash, python-reportlab, python-pygre, python-reportlab, postgres, python-pygresql, python-twisted-web python-twisted-mail, python-twisted-words 
+          </para>
+          <para>
+             Then in the download directory run this: 
+          </para>
+          <para>
+             sudo dpkg-i cuon-server-1.0-all.deb 
+          </para>
+          <para>
+             Now the administrator can configure the Postgres SQL server and restart, then run the setup in the configuration client. 
+          </para>
+        </sect3>
+      </sect2>
+      <sect2 id="Download_Fedora">
+        <title>
+           RPM`s for Fedora, Suse and so on 
+        </title>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-client-1.0-2.i386.rpm"> Cuon Client RPM package</ulink></para>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-setup-1.0-2.i386.rpm"> Cuon Setup RPM package</ulink></para>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-server-1.0-2.i386.rpm"> Cuon Server RPM package</ulink></para>
+        <para>
+           To install this is also the same like the Debian Packages above, please look above at the Debian Section for Information. 
+        </para>
+      </sect2>
+      <sect2 id="Download_Other">
+        <title>
+           For all other Linux, BSD 
+        </title>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-client-1.0.tgz"> Cuon Client TGZ package</ulink></para>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-setup-1.0.tgz"> Cuon Setup TGZ package</ulink></para>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon-server-1.0.tgz"> Cuon Setup TGZ package</ulink></para>
+        <para>
+           To install this is also the same like the Debian Packages above, please simple unpack it and read the README file. 
+        </para>
+      </sect2>
+      <sect2 id="Download_Source">
+        <title>
+           downloads of source packages 
+        </title>
+        <para>
+           Download here the last version  
+        </para>
+<para>Directly donload from here <ulink url="http://cuon.org/downloads/cuon_currentVersion.tar.bz2"> Cuon latest source package</ulink></para>
+        <para>
+           06/09/2010 The new version Odessa . For gardeners, there is the GPL modules winter, cemetery and botany. The address has now a fast and effective web search. The remaining changes can you read at the notes 
+        </para>
+      </sect2>
+    </sect1>
+    <sect1 id="Preparation">
+      <title>
+         Preparation 
+      </title>
+      <sect2 id="Preparation_ssh">
+        <title>
+          Generate SSH Key 
+        </title>
+        <para>
+           SSH to the server/local host As a user you implement please the following, if still none exists ssh to pair of keys.</para><para> $ssh keygen - t rsa</para> <para>That should look approximately in such a way: </para><para>Generating public/private rsa keys pair.</para> <para>Enter file in which to save the keys (/home/huette/.ssh/id_rsa): Created directory 
+          <filename>
+             /home/huette/.ssh 
+          </filename> </para>
+           <para> Enter passport  (empty for NO passport ): enter (nothing else)</para> <para>Enter same passport again: (also only enter)</para> <para>Your identification has been saved in /home/huette/.ssh/id_rsa. </para><para>Your public keys has been saved in 
+          <filename>
+             /home/huette/.ssh/id_rsa.pub 
+          </filename></para>
+           <para>The key finger print is: 48:4 f: 7d: d8: ba: a4: 6a: 4c: 8b: 8c: 05: b6: 3b: 4d: 26: 40 huette@localhost </para><para>The public key in id_rsa.pub can confidently to all will pass on. If one deposits now the public key on the target computer in the file root/.ssh/authorized_keys, then it is possible to insert in place of the inquiry of the system password the identity defined by a pair of keys to the Authentifizierung. </para><para>The following procedure is perhaps simplest:</para> <para>Client: scp id_rsa.pub root@IP://root then ssh - lroot IP and  now man/woman is on the server and can with cd /root change to the Homedir of root. No do change this: </para><para>If no directory .ssh exists, create it with <emphasis> mkdir .ssh</emphasis> now and go to this directory </para> <para> then do a <emphasis>cat ../id_rsa.pub >> authorized_keys</emphasis> and everything will be good.</para> <para>Tap: Test if you can login to the server now with</para> <para>ssh - lroot IP without password</para>
+        
+      </sect2>
+      <sect2 id="Preparation_postgres">
+        <title>
+           Postgres 
+        </title>
+        
+        <para>
+           The Installer Program has install Postgres, so you have now to do a little preparation. Create the cuon Database. Be the user postgres with 
+          <example role="codelisting" id="shell_postgres">
+            <title>
+               shell 
+            </title>
+            <programlisting>
+              <![CDATA[
+
+su postgres
+createdb - E utf-8 cuon
+]]>
+              
+            </programlisting>
+          </example>
+           Then create a user with superuser-rights, perhaps so: 
+          <example role="codelisting" id="shell_postgres_superuser">
+            <title>
+            </title>
+            <programlisting>
+              <![CDATA[
+createuser admin
+and type Yes on the question if this role should be a superuser ]]>
+            </programlisting>
+
+          </example>
+           as well as a user zope without rights. This user are a pure database user with gets later only some right to special tables.</para>
+<para> Now do check the plpgsql language.  The creation of Proceduren and triggers happens with plpgsql, so this language must be installed. The following call as the postgres user create this:</para>
+<example role="codelisting" id="shel_postgres_pgsql">
+<title></title>
+<programlisting><![CDATA[
+createlang - D cuon plpgsql
+]]></programlisting>
+</example> 
+<para>And now edit the postgres configuration file pg_hba.conf (located at /etc/postgres-dir).Set the local connections and local IP connections to trust</para>
+        <example role="codelisting" id="pg_hba">
+<title>pg_hba.conf</title>
+<programlisting><![CDATA[
+
+# "local" is for Unix domain socket connections only
+local   all         all                               trust
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          trust
+# IPv6 local connections:
+host    all         all         ::1/128               trust
+]]></programlisting>
+</example>
+      </sect2>
+      <sect2 id="Preparation_ssl">
+        <title>
+           SSL Certificate 
+        </title>
+        <para>
+           If you will connect to the Cuon Server over Internet, it is recommended  to activate a security connection. Otherwise all data, passwords etc. are theoretically readable by each other! The standard server listen on  7580 for security connection (https) and 7080 stands for unencrypted connection (should become equivalent by Firewall closed). The own certificates can provide you as follows:</para>
+
+<example role="codelisting" id="create_ssl_certificate">
+<title></title>
+<programlisting><![CDATA[
+openssl genrsa -out serverkey.pem 2048
+openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095 
+
+]]></programlisting>
+</example>
+ 
+<para>Copy they then the beiten certificates from /etc/cuon. Then you start the cuonxmlrpc server. You can make a first test as follows: </para>
+<para>openssl s_client -connect xxx.xxx.xxx.xxx:7580 -ssl3 </para> 
+<para> Please set for xxx.xxx.xxx.xxx  your server IP.  </para>
+      </sect2>
+      <sect2 id="Preparation_Test">
+        <title>
+           Testing the Server 
+        </title>
+        <para>
+           To do a first tests of the installation the current postgresql server and cuonxmlrpc  are enough. In order to have a better overview of the activities it is advisable to start the cuonxmlrpc server by hand :</para> 
+<para> python /usr/share/cuon/cuon_server/src/server_xmlrpc </para>
+<para>Then open an other shell window and view the log files of the SQL database :</para><para> tail - f /var/log/postgresql/main.log </para> 
+<para>if all is ok, you can use the  Linux startscripts  now. These start please in such a way: </para><para> <itemizedlist><listitem><para>/etc/init.d/cuonxmlrpc start </para></listitem> <listitem><para>/etc/init.d/cuonweb start</para></listitem> <listitem><para> /etc/init.d/cuonreport start</para></listitem></itemizedlist> 
+        </para>
+      </sect2>
+<sect2 id="thatsAll">
+<title>That's all</title>
+<para>Yes, now you can go on with the Setup-Tool, you may now do the same steps as they are describe at the chapters <emphasis>Configuration</emphasis> and <emphasis>Update</emphasis>. </para>
+</sect2>
+    </sect1>
+  </chapter>
+<chapter>
+<title>Configuration</title>
+<para>Certainly you can edit all config files with your favourite editor, but it is highly recommendet to use the build-in Editor of the <emphasis>Setup Tool</emphasis>. The config files must be encoded as UTF-8, the build in Editor do this automatically </para>
+<sect1 id="server_ini">
+<title>server.ini</title>
+<para>
+<example role="codelisting" id="config_server_ai">
+<title></title>
+<programlisting><![CDATA[
+[AI]
+AI_HOST: cuon.biz
+AI_PORT: 7082
+]]></programlisting>
+</example>
+</para>
+<para>
+Der Ai-Server wird für schnelle Erweiterungen (z.B. abgespeckte Funktionen etc.) genutzt. Momentaner Stand: Unfertiges Modul, dass noch nicht in Produktionseinsatz ist. Man erreicht eine Testoberfläche für den AI-Server über die Menüpunkte: Sonstiges Expertensystem.
+
+Bitte die hier gezeigten Standardwerte übernehmen. Ein eigener AI Server ist momentan noch nicht schnell und sauber zu installieren'''
+</para>
+<para>
+<example role="codelisting" id="config_server_pg">
+<title></title>
+<programlisting><![CDATA[
+[POSTGRES]
+POSTGRES_DB: cuon
+POSTGRES_HOST: localhost
+POSTGRES_PORT: 5432
+POSTGRES_USER: cuon_admin
+
+
+[PDF]
+ENCODING: latin-1
+]]></programlisting>
+</example>
+</para>
+<para>Die Postgresql Daten enthalten die Einstellungen zu der Datenbank. Im Normalfall können diese Werte hier auch unverändert übernommen werden.
+</para>
+
+
+<para>
+<example role="codelisting" id="config_server_email">
+<title></title>
+<programlisting><![CDATA[
+
+[EMAIL]
+DEFAULTSERVER: oneInTheWorld
+DEFAULTPORT: 25
+DEFAULTUSER: set_username
+DEFAULTPASSWORD: set_secret
+EMAILENCODING: utf-8
+CRYPT: TLS 
+]]></programlisting>
+</example>
+</para>
+<para>Die Emaileinstellungen dienen zum als Standardwerte zum Versenden von Emails. Username und Passwort sind für solche Server gedacht, die SMTP Authentifizierung erlauben. Crypt steht dabei dann für das Versenden über das verschlüsselte TLS Protokoll.
+</para>
+<para>Der Port kann im Normalfall unverändert gelassen werden.
+</para>
+<para>Jabber Server zur Kommunikation mit der AI</para>
+<para><example role="codelisting" id="config_server_jabber">
+<title></title>
+<programlisting><![CDATA[
+[JABBER]
+SERVER:cuonsim2.de
+USERNAME:cuon_test
+PASSWORD:secret 
+]]></programlisting>
+</example></para>
+<para>Diese Einstellungen definieren eine Schnittstelle, um diesen user, im beispiel oben cuon_test, eine Nachricht zu schicken. diese Nachricht wird zu der AI weitergeleitet und entsprechend ausgewertet. Dann erfolgt von der AI die Anwort</para>
+
+<para>Mail Client zum Archivieren der mails</para>
+<para><example role="codelisting" id="config_server_imap">
+<title></title>
+<programlisting><![CDATA[
+[IMAP]
+SERVER: mailxxx.com
+USERNAME: MyName?
+PASSWORD: secret
+PORT: 143
+]]></programlisting>
+</example></para>
+<para>
+Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer übertragen wird, das hilft mir bei der Entscheidung über die Entwicklung von mandantenbezogenen Modulen.
+</para>
+<example role="codelisting" id="config_server_version">
+<title></title>
+<programlisting><![CDATA[
+
+[VERSION]
+SEND_VERSION_INFO: YES
+
+
+]]></programlisting>
+</example>
+<para>
+</para>
+
+</sect1>
+
+<sect1 id="user_cfg">
+<title>user.cfg </title>
+<para><example role="codelisting" id="config_user_password">
+<title>User Password</title>
+<programlisting><![CDATA[
+[password]
+username: password
+
+
+]]></programlisting>
+</example></para>
+
+<para>set for username your cuon username and then the choosen password
+</para>
+<para><emphasis>Important: After each change of user.cfg you need to run the the setup program and write the new database rights (Database Tools - Grants).</emphasis>
+</para>
+<para>Siehe auch die Seite Anlegen und Pflegen:"User pflegen und anlegen".
+</para>
+<para>Für die Rechtevergabe im DMS können hier Gruppenrechte vergeben werden. Die Gruppen selber werden in der sql.ini definiert</para>
+<para>
+<example role="codelisting" id="config_user_group">
+<title>Groups for DMS rights</title>
+<programlisting><![CDATA[
+[GROUPS]
+jhamel: buero,rechnung
+
+]]></programlisting>
+</example>
+
+</para>
+
+<para>Für die Auswertungen werden in der Sektion STATS folgende Daten benötigt.</para>
+<para><example role="codelisting" id="config_user_stats">
+<title></title>
+<programlisting><![CDATA[
+[STATS]
+CALLER_ID: 1,2,3,5,8
+]]></programlisting>
+</example></para>
+</sect1>
+
+<sect1 id="menu_cfg">
+<title>menu.cfg </title>
+<para>
+<example role="codelisting" id="config_menu_privs">
+<title></title>
+<programlisting><![CDATA[
+[gewoehnlicherAllUser]
+all: Priv;all  
+experimental: Priv;all 
+
+[AdminUser] 
+all: Priv;all 
+experimental: Priv;all 
+staff: Priv;all 
+extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
+forms: Priv;all 
+forms_addresses: Priv;all
+
+# This is only important for market-garden
+address_button_grave: Yes
+address_button_grave_position: 14
+
+]]></programlisting>
+</example></para>
+
+<para>
+
+Für jeden User muss ein Eintrag existieren. Der Eintrag für die Adminuser ist etwas komplexer. Eine genaue Erklärung erfolgt hier, wenn das Modul noch weiter fortgeschritten ist. Für den Anfang können diese Werte übernommen werden.</para>
+</sect1>
+
+
+<sect1 id="clients_ini">
+<title>clients.ini </title>
+<sect2 id="userrights_clients">
+<title>userrights for different clients</title>
+<para>Berechtigungen für die Mandanten </para>
+<example role="codelisting" id="config_clients_clients">
+<title>clients.ini</title>
+<programlisting><![CDATA[
+[username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+
+#You set here the rights of the different user for the clients, Each client ID is one client, for example:
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
+]]></programlisting>
+</example>
+
+<para>
+Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 und darf KEINE neuen Mandanten anlegen.</para>
+</sect2>
+<sect2 id="clients">
+<title>Der Abschnitt CLIENT_ </title>
+<para> 
+Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen.
+</para>
+<para>CLIENT_xxx ist die Mandanten ID</para>
+<para><example role="codelisting" id="config_clients">
+<title></title>
+<programlisting><![CDATA[
+[CLIENT_1]
+#Einstellungen für den automatischen Mailversand 
+#Veränderungen in den Notizen 
+
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes0: <email>user@web.com</email>
+sendMailsNotes0: caller,rep,salesman
+
+sendNotes0: YES # or NO to decide if you wish send automatic mails or not
+Notes0_ID: 17 # ID of the docucument from the DMS that shall be send
+AdditinalEmailAddressesNotes0: <email>jh@web.com</email> # additional email addresses, separate by comma
+sendMailsNotes0: caller,rep,salesman # internal notes for caller, reps or salesman
+
+#Default term of payment
+
+modul_order_default_top: 1 # ID of the term of payment
+
+
+#Erinnerungen und Mahnungen im Rechnungswesen 
+
+# Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhängigkeit ist bei den Zahlungsbedingungen vermerkt. 
+# Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen würde diese Rechnung bei u.g. Einstellungen
+# nach 18 Tagen das erste mal auf der Liste erscheinen.
+
+reminder_all_days_after: 10
+reminder_first_days_after: 14
+reminder_second_days_after: 25
+reminder_last_days_after: 32
+reminder_summons_days_after: 40
+
+
+# Liste nach Zahlungserinnerungen.
+
+list_of_invoices_directDebit: 3
+
+orderbook_number: !id,-,!year
+orderbook_designation: !lastname,_,!city,_,!id
+
+list_of_invoices_directDebit: 3
+
+articles_sort1_number: b
+articles_sort1_sellingprice: c
+articles_sort1_designation: a
+
+# Checkboxes 
+# Addresses 
+
+# Here are the entries for the selection boxes at the address, the tab Miscellaneous.
+
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, über 5 millionen
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
+
+#Projektverwaltung 
+
+cbProjectStatus: neu angelegt,laufend,fertig
+
+#Gräber 
+
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
+cbTypeOfPaying: jährlich,halbjährlich
+cbPercentsGrave: 100%,90%,80%,75%,50%,
+cbTypeOfPaying: jährlich,halbjährlich,quartal
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+
+#Statistik 
+
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
+
+StatsCallerCentury: 0
+StatsCallerDecade: 0
+StatsCallerYear: 1
+StatsCallerQuarter: 2
+StatsCallerMonth: 2
+StatsCallerWeek: 2
+
+]]></programlisting>
+</example></para>
+</sect2>
+</sect1>
+<sect1 id="sql_ini">
+<title>sql.ini </title>
+<para>
+<example role="codelisting" id="config_sql">
+<title>Configuration sql.ini</title>
+
+<programlisting><![CDATA[
+
+# Hier bitte alle Gruppen durch Kommata getrennt eintragen
+[GROUPS]
+NAMES: buero,rechnung
+
+
+# set here the rights for some automatical actions
+# rwxrwxrwx
+# r = read, also lesen
+# w = write, also schreiben
+# x = eXecute, also ausführen
+# settings for  User, Group, All
+# a underline is the meaning of <emphasis>no right</emphasis>
+# Then, with comma separated a list of groups
+
+
+[DEFAULT_MODUL_RIGHTS_DMS] 
+INVOICE: rw_r__r__,rechnung 
+
+[LIMIT]
+Address: 30
+Garden: 217
+Project: 50
+Articles: 80
+Order: 50
+
+# Her wird die Anzahl der Listeneinträge, die beim Modulstart angezeigt werden Modul eingetragen. 
+# Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseinträge
+
+#Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Einträge auf 500 stellen.
+
+#Diese Einträge gelten für die Auftragsbearbeitung
+[modul_order]
+default_top: 1
+die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird
+
+The following entries are required for the hibernation module (horticulture):
+
+[modul_hibernation]
+replace_staff_pickup: 1
+replace_staff_supply: 2
+replace_plant_hibertion:3
+replace_plant_add_pot:4
+replace_plant_add_material:5
+replace_plant_add_earth:6
+replace_plant_add_misc:7
+
+#These settings have the hibernation services (winter, delivery, etc. Umtopfarbeiten) solid articles (the number is the Item ID). Using this product after the tax, gross / #Nettorprice is set.
+#The following are the text messages for billing:
+
+translate_price_hibernation_for: Preis der Ueberwinterung für
+translate_price_add_pot_for: Preis für groesseren Topf
+translate_price_add_material_for: Preis für zus. Material
+translate_price_add_earth_for: Preis für zus. Erde
+translate_price_add_misc_for: Preis für Sonstiges
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+
+]]></programlisting>
+</example>
+
+</para>
+</sect1>
+
+<sect1 id="usergroups_cfg">
+<title>UserGroups.cfg </title>
+<para>
+Diese Datei sollte so aussehen:
+[USER]
+zope: zope_rights
+heino: cuon_all
+jhamel: cuon_all
+
+</para>
+</sect1>
+
+<sect1 id="grouprights_other">
+
+
+<title>GroupRightsOther.cfg </title>
+<para>
+[cuon_other]
+cuon_clients: select </para>
+</sect1>
+
+</chapter>
+<chapter>
+<title>Setup Tool</title>
+
+
+<sect1 id="setup_tool">
+<title>The Setup tool</title>
+<figure id="pic_setuptool">
+<title>Mainscreen Setup Tool</title>
+<graphic fileref="images/Screenshot_SetupTool.png"/>
+</figure>
+</sect1>
+<sect1 id="setup_update">
+<title>Updaten von C.U.O.N. </title>
+
+<para>
+1st Step
+
+necessarily use it to update the user and the computer is installed on the Cuon setup configuration tool. Start the Cuon setup tool from the Settings menu. Or from the terminal: To change cuon_client in the directory and start with "python setup.py" the graphical installation routine.
+
+
+2nd real update
+
+Press the "Start Install". As with the installation, it must be in place a functioning SSH access! So it should in any case the o.g. be Cuon-admin area.
+
+Here in the example is cuon as SSL (https Protocoll) Server installed. This version is recommended umbedingt if clients are to access from the Internet to the server.
+3rd Client build '
+
+Services -> Create Client
+4th Prepare database
+
+The importance of this step:
+
+    * Using the "Connect" with admin user (!) And password.
+    * "Edit config files -> Server Customize the [Configuration Files: Configuration Files].
+
+Then on to the next step: Tools -> Database
+5th Database
+
+With a new installation or if user data has been changed, added new users, or the like, then please run in any case in SQL create Grants Rights to the point file.
+
+Then just run "SQL server -> start complete update."
+
+Done </para>
+</sect1>
+</chapter>
+  <toc>
+    <title>
+       Table of Contents 
+    </title>
+  </toc>
+</book>

@@ -1,5 +1,11 @@
 #!/bin/sh
 
+cd en_Cuon
+
+docbook2html en_cuon.docbook && docbook2pdf en_cuon.docbook
+
+cd ..
+
 
 rsync  -avz --numeric-ids -e 'ssh -p 22'  *.html root@cuon.org://var/www
 
@@ -24,3 +30,5 @@ rsync -r -avz --numeric-ids -e 'ssh -p 22' images root@cuon.org://var/www
 
 # English
 rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.html root@cuon.org://var/www/en_Cuon
+rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.pdf root@cuon.org://var/www/en_Cuon
+rsync -r -avz --numeric-ids -e 'ssh -p 22' en_Cuon/images root@cuon.org://var/www/en_Cuon/
