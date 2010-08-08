@@ -31,11 +31,13 @@ class cuon_dialog:
         
         response = dialog.run ();
         
-        dialog.destroy ();
+        
         print 'Response', response
         if response == gtk.RESPONSE_ACCEPT:
             ok = True
-        res = eLine.get_text()
+            res = eLine.get_text()
+            print 'res at dialog',  res
+        dialog.destroy ();
         return ok, res
         
        

@@ -111,9 +111,10 @@ class dmswindow(windows):
         if self.ModulNumber == self.MN['Newsletter']:
             cd = cuon.Misc.cuon_dialog.cuon_dialog()
             ok, res = cd.inputLine( _('Print Newsletter'), _('insert label(s) for newsletter'))
-            print ok, res
+            print 'ok = ',  ok, 'Res = ',  res
             if ok and res:
                 self.liPrintNewsletter = self.rpc.callRP('Address.getNewsletterAddresses', res, self.dicUser)
+                print 'self.liPrintNewsletter = ',  self.liPrintNewsletter
                 if self.liPrintNewsletter and self.liPrintNewsletter not in ['NONE','ERROR']:
                     self.getWidget('bFaxNewsletter').set_sensitive(True)
                     self.getWidget('bPrintNewsletter').set_sensitive(True)
@@ -135,22 +136,24 @@ class dmswindow(windows):
         self.singleDMS.setTree(self.xml.get_widget('tree1') )
         print '7 --'
         self.singleDMS.imageWidget = self.getWidget('iThumbnail')
-        
+        print '7 -0'
         # Menu-items
         self.initMenuItems()
 
-  
+        print '7 05'
         
         # Close Menus for Tab
         self.addEnabledMenuItems('tabs','')
-         
+        print '7 -1'
         # enabledMenues for Preferences
         #self.addEnabledMenuItems('editProfile','profile1')
         self.addEnabledMenuItems('editDMS','clear1',self.dicUserKeys['delete'])
+        print '7 -2'
         #self.addEnabledMenuItems('editProfile','save1')
         self.addEnabledMenuItems('editDMS','new1',self.dicUserKeys['new'])
+        print '7 -3'
         self.addEnabledMenuItems('editDMS','edit1',self.dicUserKeys['edit'])
-        
+        print '7 -4'
         # enabledMenues for Save 
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
         # tabs from notebook
