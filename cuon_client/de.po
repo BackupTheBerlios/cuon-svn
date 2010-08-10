@@ -4406,10 +4406,10 @@ msgstr "Grabname"
 
 #: cuon/Graves/GUI/src/interface.c:951
 #: cuon/Graves/GUI/src/interface.c:1146
-msgid "sequential number"
+msgid "sequential number\n"
 msgstr "Laufnummer"
 
-msgid "Gravenumber"
+msgid "Gravenumber\n"
 msgstr "Grabnummer"
 
 #: cuon/Graves/GUI/src/interface.c:973

@@ -22,7 +22,6 @@
             <child>
               <widget class="GtkVBox" id="vb_main">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <child>
                   <widget class="GtkMenuBar" id="menubar1">
                     <property name="visible">True</property>
@@ -720,7 +719,6 @@
                     <child>
                       <widget class="GtkVBox" id="vbox4">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox1">
                             <property name="visible">True</property>
@@ -2612,7 +2610,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                 <child>
                                   <widget class="GtkVBox" id="vbox25">
                                     <property name="visible">True</property>
-                                    <property name="orientation">vertical</property>
                                     <child>
                                       <widget class="GtkHBox" id="hbox5">
                                         <property name="visible">True</property>
@@ -2985,7 +2982,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox7">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkScrolledWindow" id="scrolledwindow18">
                             <property name="height_request">150</property>
@@ -3358,7 +3354,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                             <child>
                               <widget class="GtkVBox" id="vbox22">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <child>
                                   <widget class="GtkImage" id="image1841">
                                     <property name="width_request">21</property>
@@ -3443,7 +3438,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox6">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox126">
                                 <property name="visible">True</property>
@@ -3910,7 +3904,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox23">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox45">
                                 <property name="visible">True</property>
@@ -4071,7 +4064,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox21">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox162">
                                 <property name="visible">True</property>
@@ -4356,7 +4348,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                       <widget class="GtkVBox" id="vbox19">
                         <property name="width_request">1024</property>
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkScrolledWindow" id="scrolledwindow19">
                             <property name="height_request">150</property>
@@ -5889,7 +5880,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox2">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkScrolledWindow" id="scrolledwindow20">
                             <property name="height_request">150</property>
@@ -6229,7 +6219,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                             <child>
                               <widget class="GtkVBox" id="vbox5">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <child>
                                   <widget class="GtkScrolledWindow" id="scrolledwindow1">
                                     <property name="can_focus">True</property>
@@ -6257,7 +6246,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                             <child>
                               <widget class="GtkVBox" id="vbox14">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <child>
                                   <widget class="GtkHBox" id="hbox6">
                                     <property name="visible">True</property>
@@ -6349,7 +6337,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                             <child>
                               <widget class="GtkVBox" id="vbox9">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <child>
                                   <widget class="GtkCalendar" id="calSchedulStaff">
                                     <property name="can_focus">True</property>
@@ -6469,7 +6456,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                             <child>
                               <widget class="GtkVBox" id="vbox27">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <child>
                                   <widget class="GtkLabel" id="label45">
                                     <property name="visible">True</property>
@@ -7103,7 +7089,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox10">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox25">
                                 <property name="visible">True</property>
@@ -7468,7 +7453,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox11">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox60">
                                 <property name="visible">True</property>
@@ -7717,7 +7701,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox12">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox61">
                                 <property name="visible">True</property>
@@ -7966,7 +7949,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox13">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox62">
                                 <property name="visible">True</property>
@@ -8217,7 +8199,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                         <child>
                           <widget class="GtkVBox" id="vbox17">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkHBox" id="hbox72">
                                 <property name="visible">True</property>
@@ -8503,7 +8484,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox1">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox74">
                             <property name="visible">True</property>
@@ -8620,7 +8600,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox16">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox167">
                             <property name="visible">True</property>
@@ -8736,7 +8715,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox18">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <widget class="GtkHBox" id="hbox196">
                             <property name="visible">True</property>
@@ -9030,7 +9008,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                     <child>
                       <widget class="GtkVBox" id="vbox28">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <placeholder/>
                         </child>
@@ -9076,7 +9053,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                 <child>
                   <widget class="GtkVBox" id="vbox24">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
                       <placeholder/>
                     </child>
