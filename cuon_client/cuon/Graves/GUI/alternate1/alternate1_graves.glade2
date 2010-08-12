@@ -4334,7 +4334,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkLabel" id="label11">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">F(8)</property>
+                        <property name="label" translatable="yes">(F8)</property>
                       </widget>
                       <packing>
                         <property name="position">1</property>
@@ -4692,7 +4692,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkLabel" id="label12">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">F(9)</property>
+                        <property name="label" translatable="yes">(F9)</property>
                       </widget>
                       <packing>
                         <property name="position">1</property>
