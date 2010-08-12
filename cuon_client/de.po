@@ -1696,7 +1696,7 @@ msgstr "Von"
 
 #: cuon/Staff/GUI/src/interface.c:991
 msgid "Total this Year\n"
-msgstr "Gesamt dieses Jahr"
+msgstr "Gesamt dieses Jahr\n"
 
 #: cuon/Addresses/GUI/src/interface.c:617
 msgid "Undo"
@@ -3214,6 +3214,8 @@ msgstr "endet an"
 msgid "goto Address"
 msgstr "gehe zu Adresse"
 
+msgid "goto Addr."
+msgstr "Adrese ansehen"
 #: cuon/Project/GUI/src/interface.c:677
 #: cuon/Stats/GUI/src/interface.c:134
 #: GUI/src/interface.c:349
@@ -4183,7 +4185,7 @@ msgstr "Kunden-Nummer"
 #: cuon/Proposal/GUI/src/interface.c:820
 #: cuon/Order/GUI/src/interface.c:993
 msgid "Packing\n"
-msgstr "Packen"
+msgstr "Packen\n"
 
 #: cuon/Proposal/GUI/src/interface.c:827
 #: cuon/Order/GUI/src/interface.c:1000
@@ -4340,9 +4342,9 @@ msgstr "Positionen"
 
 #: cuon/Graves/GUI/src/interface.c:562
 #: cuon/Graves/GUI/src/interface.c:1403
-#, fuzzy
-msgid "Grave"
-msgstr "Gräber"
+#: fuzzy
+#: msgid "Grave"
+#: msgstr "Gräber"
 
 #: cuon/Graves/GUI/src/interface.c:647
 #: cuon/Graves/GUI/src/interface.c:1724
@@ -4401,15 +4403,15 @@ msgid "Be carefully, this delete the entry"
 msgstr "Sei Vorsichtigt, dies löscht den Eintrag"
 
 #: cuon/Graves/GUI/src/interface.c:921
-msgid "Name of Grave\n"
-msgstr "Grabname"
+#: msgid "Name of Grave"
+#: msgstr "Grabname"
 
 #: cuon/Graves/GUI/src/interface.c:951
 #: cuon/Graves/GUI/src/interface.c:1146
-msgid "sequential number\n"
+msgid "sequential number"
 msgstr "Laufnummer"
 
-msgid "Gravenumber\n"
+msgid "Gravenumber"
 msgstr "Grabnummer"
 
 #: cuon/Graves/GUI/src/interface.c:973
@@ -4593,7 +4595,7 @@ msgstr "Artikel Beschreibung"
 #: cuon/Graves/GUI/src/interface.c:2315
 #: cuon/Graves/GUI/src/interface.c:2462
 #: cuon/Graves/GUI/src/interface.c:2600
-msgid "Period\n"
+msgid "Period"
 msgstr "Zeiteinheit"
 
 #: cuon/Graves/GUI/src/interface.c:1827
