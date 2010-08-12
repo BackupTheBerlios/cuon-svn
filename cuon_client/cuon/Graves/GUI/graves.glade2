@@ -2828,6 +2828,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox14">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
                         <child>
                           <widget class="GtkHBox" id="hbox64">
                             <property name="visible">True</property>
@@ -2905,8 +2906,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">4</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -2999,8 +3002,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -3135,6 +3140,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox18">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
                         <child>
                           <widget class="GtkHBox" id="hbox72">
                             <property name="visible">True</property>
@@ -3212,8 +3218,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">4</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -3306,8 +3314,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -3518,8 +3528,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">4</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -3612,8 +3624,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -3755,10 +3769,11 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox22">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
                         <child>
                           <widget class="GtkHBox" id="hbox106">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">5</property>
                             <child>
                               <widget class="GtkLabel" id="label139">
                                 <property name="visible">True</property>
@@ -3773,6 +3788,7 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox107">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eHolidaysArticleID">
                                     <property name="visible">True</property>
@@ -3801,18 +3817,20 @@ z.B. 1-5000)</property>
                                 </child>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox108">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label140">
                                 <property name="visible">True</property>
@@ -3829,20 +3847,23 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">4</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox109">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label141">
                                 <property name="visible">True</property>
@@ -3866,13 +3887,14 @@ z.B. 1-5000)</property>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox110">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label142">
                                 <property name="visible">True</property>
@@ -3897,13 +3919,14 @@ z.B. 1-5000)</property>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">3</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox111">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">5</property>
                             <child>
                               <widget class="GtkLabel" id="label143">
                                 <property name="visible">True</property>
@@ -3920,19 +3943,23 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">4</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox112">
                             <property name="visible">True</property>
+                            <property name="spacing">5</property>
                             <child>
                               <widget class="GtkLabel" id="label144">
                                 <property name="visible">True</property>
@@ -4054,10 +4081,11 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox20">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
                         <child>
                           <widget class="GtkHBox" id="hbox88">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">5</property>
                             <child>
                               <widget class="GtkLabel" id="label125">
                                 <property name="visible">True</property>
@@ -4072,6 +4100,7 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox89">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eWinterArticleID">
                                     <property name="visible">True</property>
@@ -4100,18 +4129,20 @@ z.B. 1-5000)</property>
                                 </child>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox90">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label126">
                                 <property name="visible">True</property>
@@ -4128,20 +4159,23 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">4</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox91">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label127">
                                 <property name="visible">True</property>
@@ -4165,13 +4199,14 @@ z.B. 1-5000)</property>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox92">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label128">
                                 <property name="visible">True</property>
@@ -4196,13 +4231,14 @@ z.B. 1-5000)</property>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">3</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox93">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label129">
                                 <property name="visible">True</property>
@@ -4219,19 +4255,23 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">4</property>
                           </packing>
                         </child>
                         <child>
                           <widget class="GtkHBox" id="hbox94">
                             <property name="visible">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label130">
                                 <property name="visible">True</property>
@@ -4334,7 +4374,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkLabel" id="label11">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">F(8)</property>
+                        <property name="label" translatable="yes">(F8)</property>
                       </widget>
                       <packing>
                         <property name="position">1</property>
@@ -4353,9 +4393,11 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox24">
                         <property name="visible">True</property>
+                        <property name="spacing">3</property>
                         <child>
                           <widget class="GtkHBox" id="hbox122">
                             <property name="visible">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label153">
                                 <property name="visible">True</property>
@@ -4370,6 +4412,7 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox123">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eAnnualArticleID">
                                     <property name="visible">True</property>
@@ -4411,6 +4454,7 @@ z.B. 1-5000)</property>
                         <child>
                           <widget class="GtkHBox" id="hbox124">
                             <property name="visible">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label154">
                                 <property name="visible">True</property>
@@ -4425,11 +4469,13 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox131">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eAnnualCounts">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="invisible_char">&#x2022;</property>
+                                    <property name="width_chars">4</property>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>
@@ -4455,20 +4501,35 @@ z.B. 1-5000)</property>
                                       <widget class="GtkEntry" id="eAnnualDay">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
+                                        <property name="max_length">2</property>
                                         <property name="invisible_char">&#x2022;</property>
+                                        <property name="width_chars">2</property>
                                       </widget>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkLabel" id="label14">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">/</property>
+                                      </widget>
+                                      <packing>
+                                        <property name="position">1</property>
                                       </packing>
                                     </child>
                                     <child>
                                       <widget class="GtkEntry" id="eAnnualMonth">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="invisible_char">&#x2022;</property>
+                                        <property name="max_length">2</property>
+                                        <property name="invisible_char">&#x25CF;</property>
+                                        <property name="width_chars">2</property>
                                       </widget>
                                       <packing>
-                                        <property name="position">1</property>
+                                        <property name="expand">False</property>
+                                        <property name="position">2</property>
                                       </packing>
                                     </child>
                                   </widget>
@@ -4508,8 +4569,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -4692,7 +4755,7 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkLabel" id="label12">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">F(9)</property>
+                        <property name="label" translatable="yes">(F9)</property>
                       </widget>
                       <packing>
                         <property name="position">1</property>
@@ -4711,10 +4774,11 @@ z.B. 1-5000)</property>
                     <child>
                       <widget class="GtkVBox" id="vbox23">
                         <property name="visible">True</property>
+                        <property name="spacing">4</property>
                         <child>
                           <widget class="GtkHBox" id="hbox114">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label146">
                                 <property name="visible">True</property>
@@ -4729,6 +4793,7 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox115">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eUniqueArticleID">
                                     <property name="visible">True</property>
@@ -4770,7 +4835,7 @@ z.B. 1-5000)</property>
                         <child>
                           <widget class="GtkHBox" id="hbox116">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label147">
                                 <property name="visible">True</property>
@@ -4785,11 +4850,14 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkHBox" id="hbox129">
                                 <property name="visible">True</property>
+                                <property name="spacing">4</property>
                                 <child>
                                   <widget class="GtkEntry" id="eUniqueCounts">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">4</property>
                                     <property name="invisible_char">&#x25CF;</property>
+                                    <property name="width_chars">4</property>
                                   </widget>
                                   <packing>
                                     <property name="position">0</property>
@@ -4810,7 +4878,9 @@ z.B. 1-5000)</property>
                                   <widget class="GtkEntry" id="eUniqueDate">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
+                                    <property name="max_length">10</property>
                                     <property name="invisible_char">&#x2022;</property>
+                                    <property name="width_chars">10</property>
                                   </widget>
                                   <packing>
                                     <property name="position">2</property>
@@ -4831,7 +4901,7 @@ z.B. 1-5000)</property>
                         <child>
                           <widget class="GtkHBox" id="hbox117">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label148">
                                 <property name="visible">True</property>
@@ -4862,7 +4932,7 @@ z.B. 1-5000)</property>
                         <child>
                           <widget class="GtkHBox" id="hbox118">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label149">
                                 <property name="visible">True</property>
@@ -4894,7 +4964,7 @@ z.B. 1-5000)</property>
                         <child>
                           <widget class="GtkHBox" id="hbox119">
                             <property name="visible">True</property>
-                            <property name="homogeneous">True</property>
+                            <property name="spacing">4</property>
                             <child>
                               <widget class="GtkLabel" id="label150">
                                 <property name="visible">True</property>
@@ -4911,8 +4981,10 @@ z.B. 1-5000)</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">8</property>
                               </widget>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -4928,12 +5000,10 @@ z.B. 1-5000)</property>
                             <child>
                               <widget class="GtkLabel" id="label151">
                                 <property name="visible">True</property>
-                                <property name="label" translatable="yes">Period
-</property>
+                                <property name="label" translatable="yes">Period</property>
                               </widget>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="fill">False</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
