@@ -4529,7 +4529,7 @@ msgstr "Zahlungsbedingung"
 
 #: cuon/Graves/GUI/src/interface.c:1509
 msgid "Part"
-msgstr "Teil"
+msgstr "Anteil"
 
 #: cuon/Graves/GUI/src/interface.c:1596
 msgid "Pflegepreis"
