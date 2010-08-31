@@ -118,6 +118,28 @@
       <default>0</default>
       <comment>set by cuon-prg-modules</comment>
     </field>  
+         <!--Versions number -->
+    <field>
+      <name>versions_number</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment>set by cuon-prg-modules</comment>
+    </field>  
+    
+     <field>
+      <name>versions_uuid</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>36</size>
+      <default>'0'</default>
+      <comment>set by cuon-prg-modules</comment>
+    </field>  
   </table>
   <!--table: cuon_values-->
   <table>
@@ -4819,6 +4841,7 @@
       <default />
       <comment>short designation  </comment>
     </field>
+    
    <field>
       <name>customer_id</name>
       <type>int</type>
@@ -4889,6 +4912,16 @@
       <default />
       <comment />
     </field>  
+     <field>
+      <name>internal_project_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>140</size>
+      <default />
+      <comment>internal number </comment>
+    </field>
 </table>
 <!--Projects Phase -->
   <table>

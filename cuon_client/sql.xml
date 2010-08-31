@@ -486,7 +486,24 @@
         <index_column>plant_number,diameter,client,status</index_column>
     </index>
     
-    
+     <index>
+        <index_name>address_history_idx_version</index_name>
+        <index_special> </index_special>
+        <index_table>address_history</index_table>
+        <index_column>versions_uuid</index_column>
+    </index>
+     <index>
+        <index_name>dms_history_idx_version</index_name>
+        <index_special> </index_special>
+        <index_table>dms_history</index_table>
+        <index_column>versions_uuid</index_column>
+    </index>
+     <index>
+        <index_name>articles_history_idx_version</index_name>
+        <index_special> </index_special>
+        <index_table>articles_history</index_table>
+        <index_column>versions_uuid</index_column>
+    </index>
     <foreign_key>
             <foreign_key_name>PartnerAddress</foreign_key_name> 
             <foreign_key_sql>foreign key (addressid) references address (id) on delete restrict on update restrict </foreign_key_sql> 

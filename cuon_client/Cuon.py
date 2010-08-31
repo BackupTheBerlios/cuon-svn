@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 8, 'Rev': 8, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 8, 'Rev': 29, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -624,9 +624,15 @@ class MainWindow(windows):
     def loadSqlDefs(self, liAllTables, i ):
         try:
             clt = cuon.Databases.cyr_load_table.cyr_load_table()
-            self.allTables[liAllTables[i]] =  clt.loadTable(liAllTables[i])
-        except:
-            print 'ERROR'
+            print 'Table0 = ',  liAllTables[i]
+            if liAllTables[i].find('_history') < 0:
+                print 'Table = ',  liAllTables[i]
+                self.allTables[liAllTables[i]] =  clt.loadTable(liAllTables[i])
+        except Exception,  param:
+            print 'ERROR SQL Defs'
+            print Exception
+            print param
+            print liAllTables[i]
             
     def loadLocalSqlDefs(self, liAllTables, i ):
         #print 'loadLocalSQL1 ', liAllTables
@@ -656,6 +662,8 @@ class MainWindow(windows):
         import cuon.Biblio.biblio
         bib = cuon.Biblio.biblio.bibliowindow(self.allTables)
     def on_clients1_activate(self, event):
+        print self.allTables
+        
         cli = cuon.Clients.clients.clientswindow(self.allTables)
         
     def on_staff1_activate(self, event):
@@ -1515,7 +1523,8 @@ if len(sys.argv) > 6:
         if sys.argv[6] != 'NO':
             td.SystemName =  sys.argv[6]
             print 'td.System =', td.SystemName   
-
+else:
+    td.SystemName = 'LINUX-Standard'
       
         
 d = cuon.Databases.dumps.dumps(td)

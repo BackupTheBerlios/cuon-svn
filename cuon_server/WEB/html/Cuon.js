@@ -9,7 +9,25 @@ function main() {
    });
 };
 
-
+function chooseClient(){
+    
+     var win_chooseClient = window.open('',width=90,height=60) ;
+    
+    
+    with (win_chooseClient.document){
+        loadXml  ('Glade/web_clients.glade',   function (glade) {
+   
+            var widgets = parseGlade(glade);
+            wbuild(win_chooseClient.document.documentElement, [ widgets['ClientMainwindow'] ]);
+            
+        }  );
+        
+    };
+    
+};
+        
+        
+        
 WHANDLER['on_login1_activate'] =
 function (e) {
     var win_login = window.open('',width=50,height=40) ;
@@ -35,8 +53,8 @@ function (e) {
              rpc.addParam(userID);
              rpc.addParam(password);   
                var response = rpc.send();
-               /*alert(response);
-               alert(response.parseXML()); */
+               alert(response);
+               alert(response.parseXML()); 
                 
                 
                 var sid = response.parseXML();
@@ -45,7 +63,7 @@ function (e) {
                 
                 win_login.close();
                 
-                /*chooseClient();*/
+                chooseClient();
             
        };
    };

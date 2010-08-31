@@ -138,7 +138,7 @@ class addresswindow(chooseWindows):
     
         self.loadGlade('address.xml', 'AddressMainwindow')
         #self.win1 = self.getWidget('AddressMainwindow')
-        self.win1.maximize()
+        #self.win1.maximize()
         
         self.setStatusBar('vb_main')
         #print 'time 3 = ', time.localtime()
@@ -175,7 +175,7 @@ class addresswindow(chooseWindows):
         if addrid > 0:
             self.singleAddress.sWhere = ' where id = ' + `addrid`
             
-        self.singleAddress.setTree(self.xml.get_widget('tv_address') )
+        self.singleAddress.setTree(self.getWidget('tv_address') )
         #print 'time 5 = ', time.localtime()
         
         #singleAddressBank
@@ -190,7 +190,7 @@ class addresswindow(chooseWindows):
         self.singleAddressBank.setListHeader([_('Depositor'), _('Account'), _('Bank')])
 
         self.singleAddressBank.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        self.singleAddressBank.setTree(self.xml.get_widget('tv_bank') )
+        self.singleAddressBank.setTree(self.getWidget('tv_bank') )
         #print 'time 6 = ', time.localtime()
 
 
@@ -204,7 +204,7 @@ class addresswindow(chooseWindows):
         self.singleMisc.setTreeOrder('id')
         
         self.singleMisc.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        #self.singleMisc.setTree(self.xml.get_widget('tv_misc') )
+        #self.singleMisc.setTree(self.getWidget('tv_misc') )
         # self.singleMisc.setStore(gtk.ListStore())
         #singlePartner
         #print 'time 7 = ', time.localtime()
@@ -222,7 +222,7 @@ class addresswindow(chooseWindows):
         if partnerid > 0:
             pass
             #self.singlePartner.sWhere  += ' and id = ' + `partnerid`
-        self.singlePartner.setTree(self.xml.get_widget('tv_partner') )
+        self.singlePartner.setTree(self.getWidget('tv_partner') )
         #print 'time 8 = ', time.localtime()
 
 
@@ -241,7 +241,7 @@ class addresswindow(chooseWindows):
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
-        self.singleSchedul.setTree(self.xml.get_widget('tv_scheduls') )
+        self.singleSchedul.setTree(self.getWidget('tv_scheduls') )
   
         #print 'time 9 = ', time.localtime()
 
@@ -254,7 +254,7 @@ class addresswindow(chooseWindows):
         self.singleAddressNotes.setTreeOrder('id')
         
         self.singleAddressNotes.sWhere  ='where address_id = ' + `self.singleAddress.ID`
-        #self.singleAddressNotes.setTree(self.xml.get_widget('tv_address') )
+        #self.singleAddressNotes.setTree(self.getWidget('tv_address') )
         # self.singleMisc.setStore(gtk.ListStore())
         # set values for comboBox
 
@@ -1170,7 +1170,11 @@ class addresswindow(chooseWindows):
         print 'eSearch_key_press_event'
         if self.checkKey(event,'NONE','Return'):
             self.findAddress()
-    
+    def on_bClearSearch_clicked(self, event):
+        liWidgets = ['eFindName', 'eFindName2', 'eFindCity','eFindZipcode', 'eFindFirstname', 'eFindID', 'eFindStreet', 'eFindPhone',  'eFindFax', 'eFindNewsletter', 'eFindInfo','eFindEmail' ]
+        for sName in liWidgets:
+            self.getWidget(sName).set_text('')
+            
     def findAddress(self):
         print 'findAddress'
         self.out( 'Searching ....', self.ERROR)

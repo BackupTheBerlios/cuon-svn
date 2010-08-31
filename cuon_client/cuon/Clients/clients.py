@@ -62,7 +62,7 @@ class clientswindow(chooseWindows):
         self.singleClients.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleClients.setTreeOrder('name, designation')
         self.singleClients.setListHeader([_('Lastname'), _('Firstname'), _('City')])
-        self.singleClients.setTree(self.xml.get_widget('tree1') )
+        self.singleClients.setTree(self.getWidget('tree1') )
 
   
   

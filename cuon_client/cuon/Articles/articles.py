@@ -96,7 +96,7 @@ class articleswindow(chooseWindows):
         self.singleArticle.setTreeFields( ['number', 'designation'] )
 #        self.singleArticle.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleArticle.setTreeOrder('number, designation')
-        self.singleArticle.setTree(self.xml.get_widget('tv_article') )
+        self.singleArticle.setTree(self.getWidget('tv_article') )
         self.singleArticle.setListHeader(['number', 'designation', ])
         
         
@@ -116,7 +116,7 @@ class articleswindow(chooseWindows):
 #        self.singleArticleParts.setListHeader([''])
 
         self.singleArticleParts.sWhere  ='where article_id = ' + `self.singleArticle.ID` + ' and part_id = articles.id '
-        self.singleArticleParts.setTree(self.xml.get_widget('tv_parts') )
+        self.singleArticleParts.setTree(self.getWidget('tv_parts') )
   
          #singleArticlePurchase
         
@@ -130,7 +130,7 @@ class articleswindow(chooseWindows):
 #        self.singleArticlePurchase.setListHeader([''])
 
         self.singleArticlePurchase.sWhere  ='where articles_id = ' + `self.singleArticle.ID`
-        self.singleArticlePurchase.setTree(self.xml.get_widget('tv_purchase') )
+        self.singleArticlePurchase.setTree(self.getWidget('tv_purchase') )
   
      #singleArticleSales
         
@@ -143,7 +143,7 @@ class articleswindow(chooseWindows):
         self.singleArticleSales.setListHeader([_('Designation')])
 
         self.singleArticleSales.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
-        self.singleArticleSales.setTree(self.xml.get_widget('tv_sale') )
+        self.singleArticleSales.setTree(self.getWidget('tv_sale') )
 
   
   #singleArticleWebshop

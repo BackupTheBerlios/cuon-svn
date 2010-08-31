@@ -104,7 +104,7 @@ class projectwindow(chooseWindows):
         self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleProject.setTreeOrder('name')
         self.singleProject.setListHeader([_('Name'), _('Designation')])
-        self.singleProject.setTree(self.xml.get_widget('tree1') )
+        self.singleProject.setTree(self.getWidget('tree1') )
 
   
         self.singleProjectPhases.setEntries(self.getDataEntries(self.EntriesPhase) )
@@ -113,7 +113,7 @@ class projectwindow(chooseWindows):
         self.singleProjectPhases.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleProjectPhases.setTreeOrder('name')
         self.singleProjectPhases.setListHeader([_('Name'), _('Designation')])
-        self.singleProjectPhases.setTree(self.xml.get_widget('tree1') )
+        self.singleProjectPhases.setTree(self.getWidget('tree1') )
 
         self.singleProjectTasks.setEntries(self.getDataEntries(self.EntriesTask) )
         self.singleProjectTasks.setGladeXml(self.xml)
@@ -121,7 +121,7 @@ class projectwindow(chooseWindows):
         self.singleProjectTasks.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleProjectTasks.setTreeOrder('name')
         self.singleProjectTasks.setListHeader([_('Name'), _('Designation')])
-        self.singleProjectTasks.setTree(self.xml.get_widget('tree1') )
+        self.singleProjectTasks.setTree(self.getWidget('tree1') )
 
         self.singleProjectProgramming.setEntries(self.getDataEntries(self.EntriesProgramming) )
         self.singleProjectProgramming.setGladeXml(self.xml)
@@ -129,15 +129,15 @@ class projectwindow(chooseWindows):
         self.singleProjectProgramming.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleProjectProgramming.setTreeOrder('name')
         self.singleProjectProgramming.setListHeader([_('Name'), _('Designation')])
-        self.singleProjectProgramming.setTree(self.xml.get_widget('tree1') )
+        self.singleProjectProgramming.setTree(self.getWidget('tree1') )
 
         self.singleProjectTaskStaff.setEntries(self.getDataEntries(self.EntriesTaskStaff) )
         self.singleProjectTaskStaff.setGladeXml(self.xml)
-        self.singleProjectTaskStaff.setTree(self.xml.get_widget('tree1') )
+        self.singleProjectTaskStaff.setTree(self.getWidget('tree1') )
         self.singleProjectTaskStaff.sWhere = 'where staff.id = staff_id '
         self.singleProjectTaskMaterial.setEntries(self.getDataEntries(self.EntriesTaskMaterial) )
         self.singleProjectTaskMaterial.setGladeXml(self.xml)
-        self.singleProjectTaskMaterial.setTree(self.xml.get_widget('tree1') )
+        self.singleProjectTaskMaterial.setTree(self.getWidget('tree1') )
         
         self.ProjectID = project_id
         
@@ -655,7 +655,34 @@ class projectwindow(chooseWindows):
     
     # Toolbar
     
+    def on_tbNew_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_new1_activate(event)
 
+
+    def on_tbEdit_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_edit1_activate(event)
+
+
+    def on_tbSave_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_save1_activate(event)
+
+    def on_tbDelete_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_delete1_activate(event)
+            
+    def on_tbDMS_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_bProjectDMS_clicked(event)
+            
+    def on_tbLetter_clicked(self, event):
+        if self.tabOption == self.tabProject:
+            self.on_bLetter_clicked(event)
+         
+    
+    
     def getProjectInfos(self):
     
         firstRecord = None
@@ -754,7 +781,10 @@ class projectwindow(chooseWindows):
             commands.getstatusoutput(edEditor)
         else:
             pe = cuon.Editor.programmersEditor.programmerseditor()
-        
+
+
+   
+
     def refreshTree(self):
         self.singleProject.disconnectTree()
         self.singleProjectPhases.disconnectTree()

@@ -205,14 +205,21 @@ class gladeXml(defaultValues):
                 fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
         fnameAlternate = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
 
-        print fname
-        print fnameAlternate
+        print 'fname ',  fname
+        print 'fname_Alternate ',  fnameAlternate
         
         try:
-            self.xml = gtk.glade.XML(fname)
-        except:
-            self.xml = gtk.glade.XML(fnameAlternate)
+            self.xml = gtk.Builder()
+            self.xml.add_from_file(fname)
+        except Exception, params:
+            print Exception, params
+            
+            try:
+                self.xml = gtk.glade.XML(fname)
+            except:
+                self.xml = gtk.glade.XML(fnameAlternate)
         print 'glade loaded'
+        
 
         if sMainWindow:
             self.win1 = self.getWidget(sMainWindow)
@@ -258,13 +265,17 @@ class gladeXml(defaultValues):
         if self.xmlAutoconnect:
             pass
         else:
-            nameFuncMap = {}
-            for key in dir(self.__class__):
-                nameFuncMap[key] = getattr(self, key)
-                
-            if  nameFuncMap:
-                               
-                self.xml.signal_autoconnect(nameFuncMap)
+            try:
+                self.xml.connect_signals(self)
+            except Exception, params:
+                print Exception, params
+                nameFuncMap = {}
+                for key in dir(self.__class__):
+                    nameFuncMap[key] = getattr(self, key)
+                    
+                if  nameFuncMap:
+                                   
+                    self.xml.signal_autoconnect(nameFuncMap)
 
             self.xmlAutoconnect = True
             self.setWinAccelGroup()
@@ -273,17 +284,30 @@ class gladeXml(defaultValues):
         pass
         
     def getWidget(self, sName):
-        return self.xml.get_widget(sName )
+        try:
+            return self.xml.get_object(sName)
+        except Exception, params:
+            print Exception, params
+            return self.xml.get_widget(sName )
 
     def getWidgets(self,sPrefix):
         # bad function in gtk2.8
         #liW = self.xml.get_widget_prefix(sPrefix)
-        liW = self.xml.get_widget_prefix('')
+        liW = []
+        try:
+            liW = self.xml.get_objects()
+        except Exception, params:
+            print Exception, params
+            
+            liW = self.xml.get_widget_prefix('')
+            
         liW2 = []
         for i in liW:
-            self.printOut(  i.get_name()[0:3])
-            if i.get_name()[0:3] == 'mi_':
-                liW2.append(i)
+            try:
+                if i.get_name()[0:3] == 'mi_':
+                    liW2.append(i)
+            except:
+                pass
         
         self.printOut( 'Widgets = ', `liW2`)
         return liW2

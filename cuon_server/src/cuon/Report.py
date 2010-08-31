@@ -74,7 +74,7 @@ class Report(xmlrpc.XMLRPC, basics):
         #print repData
         
         
-        return self.report_server.ReportServer.createReport2(repData)    
+        return self.report_server.ReportServer.createReport(repData)    
     def xmlrpc_server_articles_number1(self, dicSearchlist, dicUser):
         import Reports.report_articles_number1
         import Article

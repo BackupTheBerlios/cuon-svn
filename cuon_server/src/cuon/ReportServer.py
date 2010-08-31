@@ -6,7 +6,7 @@ from basics import basics
 import Database
 import base64
 import Reports.report
-import Reports.report2
+#import Reports.report2
 
 class ReportServer(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -16,7 +16,7 @@ class ReportServer(xmlrpc.XMLRPC, basics):
         self.ReportDefs = {}
         
         self.report = Reports.report.report()
-        self.report2 = Reports.report2.report2()
+        #self.report2 = Reports.report2.report2()
 ##    def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
 ##        import Reports.report_hibernation_incoming_document
 ##        import Garden
@@ -40,12 +40,12 @@ class ReportServer(xmlrpc.XMLRPC, basics):
         en =  base64.encodestring(rep)
         return en
 
-    def xmlrpc_createReport2(self, *reportdata):
-        print 'start ReportServer --> createReport : reportdata', reportdata
-        
-        rep = self.report2.start(reportdata)
-        #rep = oReports.ServerStartReport(dicOrder, dicUser, oGarden, self.ReportDefs)
-        print "ok Report"
-        print len(rep)
-        en =  base64.encodestring(rep)
-        return en
+#    def xmlrpc_createReport2(self, *reportdata):
+#        print 'start ReportServer --> createReport : reportdata', reportdata
+#        
+#        rep = self.report2.start(reportdata)
+#        #rep = oReports.ServerStartReport(dicOrder, dicUser, oGarden, self.ReportDefs)
+#        print "ok Report"
+#        print len(rep)
+#        en =  base64.encodestring(rep)
+#        return en

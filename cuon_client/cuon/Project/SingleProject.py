@@ -74,3 +74,14 @@ class SingleProject(SingleData):
                 liProject.append(' ')
             
         return liProject
+        
+    def fillOtherEntries(self, oneRecord):
+        try:
+            self.getWidget('eCreatedBy').set_text(oneRecord['user_id'])
+            self.getWidget('eCreatedAt').set_text(oneRecord['insert_time'])
+            self.getWidget('eLastModifyBy').set_text(oneRecord['update_user_id'])
+            self.getWidget('eLastModifyAt').set_text(oneRecord['update_time'])
+        except Exception, params:
+            print Exception, params
+         
+        

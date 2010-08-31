@@ -282,14 +282,14 @@ class databaseswindow(windows):
             print '1---clt.savetable', table.getName()
             clt.saveTable(i,table )
             print '1+++++++++++++++++++++++++++++++++++++++++++++++++++'
-            
-            print '2---dbcheck', table.getName()
-            self.dbcheck(table)
-            print '2+++++++++++++++++++++++++++++++++++++++++++++++++++'
-            
-            print '3---List of tables', `tableList`
+             
+            print '2---List of tables', `tableList`
             tableList.append(table.getName())
-            print '3--------------------------------------------------------------------------------------'
+            print '2--------------------------------------------------------------------------------------'
+            print '3---dbcheck', table.getName()
+            self.dbcheck(table)
+            print '3+++++++++++++++++++++++++++++++++++++++++++++++++++'
+           
         return tableList
 
     def startCheckSequences(self, key, lSequences):
@@ -361,9 +361,23 @@ class databaseswindow(windows):
         if ok == 0:
             # create table
             self.createTable(table)
-        
         self.checkColumn(table)
+         
+        # Same with History table
+        history_table = table 
+        history_table.setName(table.getName() + "_history")
+        print table.getName(),  history_table.getName()
+        ok = self.rpc.callRP('Database.checkExistTable',history_table.getName(), self.dicUser)
+        self.out("ok = " + `ok`,1)
         
+        if ok == 0:
+            # create table
+            self.createTable(history_table)
+            
+            
+        self.checkColumn(history_table)
+    
+   
 
     def createTable(self, table):
         self.out( table.getName())
@@ -378,13 +392,14 @@ class databaseswindow(windows):
         self.out( sSql1)
         
         self.rpc.callRP('Database.executeNormalQuery',sSql1, self.dicUser)
-
-        # create the sequence
+       
         
-        sSql1 = "create sequence " + str(table.getName()) +"_id " 
-        self.out( sSql1)
+        # create the sequence, but not for history table 
+        if table.getName().find("_history") < 0:
+            sSql1 = "create sequence " + str(table.getName()) +"_id " 
+            self.out( sSql1)
    
-        self.rpc.callRP('Database.executeNormalQuery',sSql1, self.dicUser)
+            self.rpc.callRP('Database.executeNormalQuery',sSql1, self.dicUser)
 
  
 
@@ -417,10 +432,12 @@ class databaseswindow(windows):
                 self.modifyColumn(table, co)
             
             if co.getName() == 'id':
-                print 'create unique index', table.getName()
-                sSql =  'create unique index index_' + table.getName() + '_id on ' + table.getName() + " (id)"
-                ok = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
+                if table.getName().find("_history") < 0:
+                    print 'create unique index', table.getName()
+                    sSql =  'create unique index index_' + table.getName() + '_id on ' + table.getName() + " (id)"
+                    ok = self.rpc.callRP('Database.executeNormalQuery',sSql, self.dicUser)
                 
+                    
     def getSqlField(self,sSql, co):
         if (string.find(co.getType(), 'char' )>= 0 ) :
             # find char, so take size to it

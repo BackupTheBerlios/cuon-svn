@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
     BEGIN
         sCursor := ''CURSOR FOR SELECT amount, price, discount FROM orderposition WHERE  orderid = '' || iOrderid || '' '' || fct_getWhere(2,'' '');
         fSum := 0.0 ;
-        OPEN cur1 FOR EXECUTE sCursor;;
+        OPEN cur1 FOR EXECUTE sCursor;
         FETCH cur1 INTO fAmount, fPrice, fDiscount ;
 
         count := 0;

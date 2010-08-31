@@ -22,6 +22,17 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry> 
+     <entry>
+      <name>eInternalProjectNumber</name>
+      <type>textline</type>
+      <size>140</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>internal_project_number</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
+    
  <entry>
       <name>eProjectTime</name>
       <type>textline</type>
