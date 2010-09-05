@@ -1,350 +1,353 @@
 <?xml version="1.0"?>
-<glade-interface>
+<interface>
   <!-- interface-requires gtk+ 2.6 -->
   <!-- interface-naming-policy toplevel-contextual -->
-  <widget class="GtkWindow" id="window1">
+  <object class="GtkWindow" id="window1">
     <property name="width_request">1024</property>
     <property name="height_request">720</property>
     <property name="visible">True</property>
     <property name="title" translatable="yes">Cuon Hauptfenster </property>
     <property name="icon">cuon_button_alternate1.svg</property>
+    <accel-groups>
+      <group name="accelgroup1"/>
+    </accel-groups>
     <child>
-      <widget class="GtkVBox" id="vbox1">
+      <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
-          <widget class="GtkMenuBar" id="menubar1">
+          <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkMenuItem" id="connect1">
+              <object class="GtkMenuItem" id="connect1">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Connect</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="connect1_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="connect1_menu">
                     <child>
-                      <widget class="GtkMenuItem" id="login1">
+                      <object class="GtkMenuItem" id="login1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Start</property>
                         <property name="use_underline">True</property>
+                        <accelerator key="s" signal="activate" modifiers="GDK_MOD1_MASK"/>
                         <signal name="activate_item" handler="on_login1_activate"/>
                         <signal name="activate" handler="on_login1_activate"/>
-                        <accelerator key="s" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="logout1">
+                      <object class="GtkMenuItem" id="logout1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Logout</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_logout1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="trennlinie1">
+                      <object class="GtkSeparatorMenuItem" id="trennlinie1">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkImageMenuItem" id="end1">
+                      <object class="GtkImageMenuItem" id="end1">
                         <property name="label">quit</property>
                         <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Close the Application</property>
+                        <property name="tooltip_text" translatable="yes">Close the Application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <property name="accel_group">accelgroup1</property>
                         <signal name="activate" handler="on_end1_activate"/>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="data">
+              <object class="GtkMenuItem" id="data">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Data</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="data_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="data_menu">
                     <child>
-                      <widget class="GtkMenuItem" id="mi_addresses1">
+                      <object class="GtkMenuItem" id="mi_addresses1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Adressen</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_addresses1_activate"/>
                         <accelerator key="a" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_addresses1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_articles1">
+                      <object class="GtkMenuItem" id="mi_articles1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Artikel </property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_articles1_activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_articles1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="bank1">
+                      <object class="GtkMenuItem" id="bank1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Bank</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_bank1_activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_bank1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="trennlinie3">
+                      <object class="GtkSeparatorMenuItem" id="trennlinie3">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="mi_bibliographic">
+                      <object class="GtkSeparatorMenuItem" id="mi_bibliographic">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_bibliographic_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_staff1">
+                      <object class="GtkMenuItem" id="mi_staff1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Staff</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_staff1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="trennlinie4">
+                      <object class="GtkSeparatorMenuItem" id="trennlinie4">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="contracts1">
+                      <object class="GtkSeparatorMenuItem" id="contracts1">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator3">
+                      <object class="GtkSeparatorMenuItem" id="separator3">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_clients1">
+                      <object class="GtkMenuItem" id="mi_clients1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Clients</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_clients1_activate"/>
                         <accelerator key="m" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_clients1_activate"/>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="action1">
+              <object class="GtkMenuItem" id="action1">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Action</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="action1_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="action1_menu">
                     <child>
-                      <widget class="GtkMenuItem" id="mi_order1">
+                      <object class="GtkMenuItem" id="mi_order1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Rechnungen / Auftr&#xE4;ge</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_order1_activate"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_order1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="proposal1">
+                      <object class="GtkMenuItem" id="proposal1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Angebote</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_proposal1_activate"/>
                         <accelerator key="b" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_proposal1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_stock1">
+                      <object class="GtkMenuItem" id="mi_stock1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Stock</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_stock1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_dms1">
+                      <object class="GtkMenuItem" id="mi_dms1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">DMS</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_dms1_activate"/>
                         <accelerator key="d" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_dms1_activate"/>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="accounting1">
+              <object class="GtkMenuItem" id="accounting1">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Accounting</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="accounting1_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="accounting1_menu">
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="bookkeeping1">
+                      <object class="GtkSeparatorMenuItem" id="bookkeeping1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_bookkeeping1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="mi_cash_account_book1">
+                      <object class="GtkSeparatorMenuItem" id="mi_cash_account_book1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_cash_account_book1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="listofinvoices1">
+                      <object class="GtkMenuItem" id="listofinvoices1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">offene Posten / Zahlungseing&#xE4;nge</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_listOfInvoices1_activate"/>
                         <accelerator key="o" signal="activate" modifiers="GDK_MOD1_MASK"/>
-                      </widget>
+                        <signal name="activate" handler="on_listOfInvoices1_activate"/>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="analyse_costs1">
+                      <object class="GtkSeparatorMenuItem" id="analyse_costs1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_analyse_costs1_activate"/>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkSeparatorMenuItem" id="extras">
+              <object class="GtkSeparatorMenuItem" id="extras">
                 <property name="visible">True</property>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="tools">
+              <object class="GtkMenuItem" id="tools">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Tools</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="tools_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="tools_menu">
                     <child>
-                      <widget class="GtkMenuItem" id="preferences1">
+                      <object class="GtkMenuItem" id="preferences1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Preferences</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_preferences1_activate"/>
-                        <child>
-                          <widget class="GtkMenu" id="preferences1_menu">
+                        <child type="submenu">
+                          <object class="GtkMenu" id="preferences1_menu">
                             <child>
-                              <widget class="GtkMenuItem" id="mi_user1">
+                              <object class="GtkMenuItem" id="mi_user1">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">User</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="on_pref_user1_activate"/>
-                              </widget>
+                              </object>
                             </child>
                             <child>
-                              <widget class="GtkMenuItem" id="mi_finances1">
+                              <object class="GtkMenuItem" id="mi_finances1">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Finances</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="on_prefs_finances_activate"/>
-                              </widget>
+                              </object>
                             </child>
-                          </widget>
+                          </object>
                         </child>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="update1">
+                      <object class="GtkMenuItem" id="update1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Update</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_update1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="mi_report-generator1">
+                      <object class="GtkSeparatorMenuItem" id="mi_report-generator1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_report_generator1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="mi_webshop1">
+                      <object class="GtkSeparatorMenuItem" id="mi_webshop1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_webshop1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="separator1">
+                      <object class="GtkSeparatorMenuItem" id="separator1">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="databases1">
+                      <object class="GtkSeparatorMenuItem" id="databases1">
                         <property name="visible">True</property>
                         <signal name="activate" handler="on_databases1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="trennlinie2">
+                      <object class="GtkSeparatorMenuItem" id="trennlinie2">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_import_data1">
+                      <object class="GtkMenuItem" id="mi_import_data1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Import Data</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_import_data1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="forms1">
+                      <object class="GtkSeparatorMenuItem" id="forms1">
                         <property name="visible">True</property>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
             <child>
-              <widget class="GtkMenuItem" id="help1">
+              <object class="GtkMenuItem" id="help1">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Help</property>
                 <property name="use_underline">True</property>
-                <child>
-                  <widget class="GtkMenu" id="help1_menu">
+                <child type="submenu">
+                  <object class="GtkMenu" id="help1_menu">
                     <child>
-                      <widget class="GtkMenuItem" id="about1">
+                      <object class="GtkMenuItem" id="about1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">About</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_about1_activate"/>
-                      </widget>
+                      </object>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="onlinehelp">
+                      <object class="GtkMenuItem" id="onlinehelp">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Online-Help</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_onlinehelp_activate"/>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
@@ -352,31 +355,31 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox4">
+          <object class="GtkHBox" id="hbox4">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkTable" id="table1">
+              <object class="GtkTable" id="table1">
                 <property name="visible">True</property>
                 <property name="n_rows">3</property>
                 <property name="n_columns">4</property>
                 <child>
-                  <widget class="GtkHBox" id="hbox6">
+                  <object class="GtkHBox" id="hbox6">
                     <property name="visible">True</property>
                     <child>
-                      <widget class="GtkEntry" id="eServer">
+                      <object class="GtkEntry" id="eServer">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="editable">False</property>
                         <property name="width_chars">15</property>
                         <signal name="changed" handler="on_eUserName_changed"/>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -387,23 +390,23 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkHBox" id="hbox5">
+                  <object class="GtkHBox" id="hbox5">
                     <property name="visible">True</property>
                     <child>
-                      <widget class="GtkEntry" id="eUserName">
+                      <object class="GtkEntry" id="eUserName">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="editable">False</property>
                         <property name="width_chars">15</property>
                         <signal name="changed" handler="on_eUserName_changed"/>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -412,14 +415,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkVBox" id="vbox5">
+                  <object class="GtkVBox" id="vbox5">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
-                      <widget class="GtkHBox" id="hbox1">
+                      <object class="GtkHBox" id="hbox1">
                         <property name="visible">True</property>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsNew">
+                          <object class="GtkRadioButton" id="rbSchedulsNew">
                             <property name="label" translatable="yes">nur neue</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -427,7 +429,7 @@
                             <property name="use_underline">True</property>
                             <property name="draw_indicator">True</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -435,7 +437,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsAll">
+                          <object class="GtkRadioButton" id="rbSchedulsAll">
                             <property name="label" translatable="yes">alle</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -444,7 +446,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -452,7 +454,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsCancel">
+                          <object class="GtkRadioButton" id="rbSchedulsCancel">
                             <property name="label" translatable="yes">canceld</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -460,7 +462,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -468,7 +470,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsActualWeek">
+                          <object class="GtkRadioButton" id="rbSchedulsActualWeek">
                             <property name="label" translatable="yes">aktuelle Woche</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -477,7 +479,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -487,16 +489,16 @@
                         <child>
                           <placeholder/>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkHBox" id="hbox9">
+                      <object class="GtkHBox" id="hbox9">
                         <property name="visible">True</property>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsActualMonth">
+                          <object class="GtkRadioButton" id="rbSchedulsActualMonth">
                             <property name="label" translatable="yes">actual Month</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -504,7 +506,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -512,7 +514,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulsThisYear">
+                          <object class="GtkRadioButton" id="rbSchedulsThisYear">
                             <property name="label" translatable="yes">this Year</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -520,7 +522,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -528,7 +530,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkRadioButton" id="rbSchedulslastYear">
+                          <object class="GtkRadioButton" id="rbSchedulslastYear">
                             <property name="label" translatable="yes">last Year</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -536,7 +538,7 @@
                             <property name="draw_indicator">True</property>
                             <property name="group">rbSchedulsNew</property>
                             <signal name="clicked" handler="on_rbScheduls_activate"/>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -549,12 +551,12 @@
                         <child>
                           <placeholder/>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="position">1</property>
                       </packing>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
@@ -565,11 +567,11 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label8">
+                  <object class="GtkLabel" id="label8">
                     <property name="visible">True</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Kalender:</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">2</property>
                     <property name="bottom_attach">3</property>
@@ -578,10 +580,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="eWebshop">
+                  <object class="GtkEntry" id="eWebshop">
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">3</property>
                     <property name="right_attach">4</property>
@@ -591,10 +593,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label5">
+                  <object class="GtkLabel" id="label5">
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Web-Shop</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
@@ -605,10 +607,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="eDatabase">
+                  <object class="GtkEntry" id="eDatabase">
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">3</property>
                     <property name="right_attach">4</property>
@@ -618,10 +620,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label4">
+                  <object class="GtkLabel" id="label4">
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Database</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
@@ -632,10 +634,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="eAppServer">
+                  <object class="GtkEntry" id="eAppServer">
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">3</property>
                     <property name="right_attach">4</property>
@@ -643,10 +645,10 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label3">
+                  <object class="GtkLabel" id="label3">
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">Application-Server</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
@@ -655,11 +657,11 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label2">
+                  <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">angemeldet an</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
@@ -668,17 +670,17 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label1">
+                  <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">connected user</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">0</property>
               </packing>
@@ -687,16 +689,16 @@
               <placeholder/>
             </child>
             <child>
-              <widget class="GtkImage" id="image9">
+              <object class="GtkImage" id="image9">
                 <property name="visible">True</property>
                 <property name="pixbuf">cuon-alternate1.svg</property>
-              </widget>
+              </object>
               <packing>
                 <property name="pack_type">end</property>
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
@@ -704,49 +706,47 @@
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox2">
+          <object class="GtkHBox" id="hbox2">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkScrolledWindow" id="scrolledwindow3">
+              <object class="GtkScrolledWindow" id="scrolledwindow3">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <widget class="GtkTreeView" id="treeSchedul">
+                  <object class="GtkTreeView" id="treeSchedul">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <signal name="select_cursor_row" handler="on_treeSchedul_select_cursor_row"/>
                     <signal name="row_activated" handler="on_treeSchedul_row_activated"/>
                     <signal name="columns_changed" handler="on_treeSchedul_columns_changed"/>
-                  </widget>
+                  </object>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkVBox" id="vbox3">
+              <object class="GtkVBox" id="vbox3">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <child>
-                  <widget class="GtkVBox" id="vbox4">
+                  <object class="GtkVBox" id="vbox4">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
-                      <widget class="GtkHBox" id="hbox3">
+                      <object class="GtkHBox" id="hbox3">
                         <property name="visible">True</property>
                         <child>
-                          <widget class="GtkButton" id="bGotoAddress">
+                          <object class="GtkButton" id="bGotoAddress">
                             <property name="label" translatable="yes">Anschrift aufrufen (F4)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="tooltip" translatable="yes">startet die Adressverwaltung zum hier markierten Termin</property>
+                            <property name="tooltip_text" translatable="yes">startet die Adressverwaltung zum hier markierten Termin</property>
                             <property name="use_underline">True</property>
-                            <signal name="clicked" handler="on_bGotoAddress_clicked"/>
                             <accelerator key="F4" signal="clicked"/>
-                          </widget>
+                            <signal name="clicked" handler="on_bGotoAddress_clicked"/>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -757,9 +757,9 @@
                           <placeholder/>
                         </child>
                         <child>
-                          <widget class="GtkDrawingArea" id="drawingarea2">
+                          <object class="GtkDrawingArea" id="drawingarea2">
                             <property name="visible">True</property>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -769,28 +769,27 @@
                         <child>
                           <placeholder/>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkHBox" id="hbox7">
+                      <object class="GtkHBox" id="hbox7">
                         <property name="height_request">240</property>
                         <property name="visible">True</property>
                         <child>
-                          <widget class="GtkVBox" id="vbox6">
+                          <object class="GtkVBox" id="vbox6">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
-                              <widget class="GtkHBox" id="hbox8">
+                              <object class="GtkHBox" id="hbox8">
                                 <property name="visible">True</property>
                                 <child>
-                                  <widget class="GtkLabel" id="label9">
+                                  <object class="GtkLabel" id="label9">
                                     <property name="visible">True</property>
                                     <property name="label" translatable="yes">Anschrift:</property>
-                                  </widget>
+                                  </object>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">False</property>
@@ -800,45 +799,44 @@
                                 <child>
                                   <placeholder/>
                                 </child>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkScrolledWindow" id="scrolledwindow6">
+                              <object class="GtkScrolledWindow" id="scrolledwindow6">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="shadow_type">in</property>
                                 <child>
-                                  <widget class="GtkTextView" id="tvAddress">
+                                  <object class="GtkTextView" id="tvAddress">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                  </widget>
+                                  </object>
                                 </child>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">1</property>
                               </packing>
                             </child>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="position">0</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkVBox" id="vbox7">
+                          <object class="GtkVBox" id="vbox7">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
-                              <widget class="GtkHBox" id="hbox10">
+                              <object class="GtkHBox" id="hbox10">
                                 <property name="visible">True</property>
                                 <child>
-                                  <widget class="GtkLabel" id="label10">
+                                  <object class="GtkLabel" id="label10">
                                     <property name="visible">True</property>
                                     <property name="label" translatable="yes">Gespr&#xE4;chspartner:</property>
-                                  </widget>
+                                  </object>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">False</property>
@@ -848,133 +846,132 @@
                                 <child>
                                   <placeholder/>
                                 </child>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkScrolledWindow" id="scrolledwindow7">
+                              <object class="GtkScrolledWindow" id="scrolledwindow7">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="shadow_type">in</property>
                                 <child>
-                                  <widget class="GtkTextView" id="tvPartner">
+                                  <object class="GtkTextView" id="tvPartner">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                  </widget>
+                                  </object>
                                 </child>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">1</property>
                               </packing>
                             </child>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="position">1</property>
                           </packing>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkEntry" id="eShortRemark">
+                      <object class="GtkEntry" id="eShortRemark">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkScrolledWindow" id="scrolledwindow4">
+                  <object class="GtkScrolledWindow" id="scrolledwindow4">
                     <property name="height_request">150</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <widget class="GtkTextView" id="tvEvent">
+                      <object class="GtkTextView" id="tvEvent">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="editable">False</property>
-                      </widget>
+                      </object>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkCalendar" id="calendar1">
+                  <object class="GtkCalendar" id="calendar1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkVBox" id="vbox8">
-                    <property name="orientation">vertical</property>
+                  <object class="GtkVBox" id="vbox8">
                     <child>
-                      <widget class="GtkToolbar" id="toolbar1">
+                      <object class="GtkToolbar" id="toolbar1">
                         <property name="visible">True</property>
                         <property name="toolbar_style">icons</property>
                         <child>
-                          <widget class="GtkToolButton" id="tbTwitterRefresh">
+                          <object class="GtkToolButton" id="tbTwitterRefresh">
                             <property name="visible">True</property>
-                            <property name="tooltip" translatable="yes">Refresh the user timeline</property>
+                            <property name="tooltip_text" translatable="yes">Refresh the user timeline</property>
                             <property name="label" translatable="yes">Refresh</property>
                             <property name="use_underline">True</property>
                             <property name="stock_id">gtk-refresh</property>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="homogeneous">True</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkToolButton" id="tbTwitterRefreshAll">
+                          <object class="GtkToolButton" id="tbTwitterRefreshAll">
                             <property name="visible">True</property>
-                            <property name="tooltip" translatable="yes">Refresh the public timeline</property>
+                            <property name="tooltip_text" translatable="yes">Refresh the public timeline</property>
                             <property name="label" translatable="yes">Refresh all</property>
                             <property name="use_underline">True</property>
                             <property name="stock_id">gtk-goto-last</property>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="homogeneous">True</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkToolButton" id="tbTwitterFollowers">
+                          <object class="GtkToolButton" id="tbTwitterFollowers">
                             <property name="visible">True</property>
-                            <property name="tooltip" translatable="yes">List of your followers</property>
+                            <property name="tooltip_text" translatable="yes">List of your followers</property>
                             <property name="label" translatable="yes">Follower</property>
                             <property name="use_underline">True</property>
                             <property name="stock_id">gtk-go-down</property>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="homogeneous">True</property>
                           </packing>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
@@ -982,16 +979,16 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkScrolledWindow" id="scrolledwindow8">
+                      <object class="GtkScrolledWindow" id="scrolledwindow8">
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <widget class="GtkTextView" id="tvTwitterMessages">
+                          <object class="GtkTextView" id="tvTwitterMessages">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                          </widget>
+                          </object>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">False</property>
@@ -999,17 +996,16 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkVBox" id="vbox9">
+                      <object class="GtkVBox" id="vbox9">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
-                          <widget class="GtkHBox" id="hbox11">
+                          <object class="GtkHBox" id="hbox11">
                             <property name="visible">True</property>
                             <child>
-                              <widget class="GtkLabel" id="label6">
+                              <object class="GtkLabel" id="label6">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Twitter</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1017,22 +1013,22 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterMessage">
+                              <object class="GtkEntry" id="eTwitterMessage">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x2022;</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">1</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterLetters">
+                              <object class="GtkEntry" id="eTwitterLetters">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x2022;</property>
                                 <property name="width_chars">3</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1040,21 +1036,21 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkButton" id="bSendTwitter">
+                              <object class="GtkButton" id="bSendTwitter">
                                 <property name="label" translatable="yes">send</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
                                 <signal name="clicked" handler="on_bSendTwitter_clicked"/>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="position">3</property>
                               </packing>
                             </child>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -1062,12 +1058,12 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkHBox" id="hbox12">
+                          <object class="GtkHBox" id="hbox12">
                             <property name="visible">True</property>
                             <child>
-                              <widget class="GtkLabel" id="label7">
+                              <object class="GtkLabel" id="label7">
                                 <property name="visible">True</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1075,10 +1071,10 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkLabel" id="label11">
+                              <object class="GtkLabel" id="label11">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Follower</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1086,21 +1082,21 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterFollower">
+                              <object class="GtkEntry" id="eTwitterFollower">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="invisible_char">&#x2022;</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">2</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkLabel" id="label12">
+                              <object class="GtkLabel" id="label12">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Friends</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1108,21 +1104,21 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterFriends">
+                              <object class="GtkEntry" id="eTwitterFriends">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="invisible_char">&#x2022;</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">4</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkLabel" id="label13">
+                              <object class="GtkLabel" id="label13">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Follow</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1130,21 +1126,21 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterFollow">
+                              <object class="GtkEntry" id="eTwitterFollow">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="invisible_char">&#x2022;</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">6</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkLabel" id="label14">
+                              <object class="GtkLabel" id="label14">
                                 <property name="visible">True</property>
                                 <property name="label" translatable="yes">Tweets</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
@@ -1152,17 +1148,17 @@
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkEntry" id="eTwitterTweets">
+                              <object class="GtkEntry" id="eTwitterTweets">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="editable">False</property>
                                 <property name="invisible_char">&#x2022;</property>
-                              </widget>
+                              </object>
                               <packing>
                                 <property name="position">8</property>
                               </packing>
                             </child>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">False</property>
@@ -1170,54 +1166,54 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkDrawingArea" id="drawingarea1">
+                          <object class="GtkDrawingArea" id="drawingarea1">
                             <property name="visible">True</property>
-                          </widget>
+                          </object>
                           <packing>
                             <property name="position">2</property>
                           </packing>
                         </child>
-                      </widget>
+                      </object>
                       <packing>
                         <property name="position">2</property>
                       </packing>
                     </child>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="position">2</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-  <widget class="GtkDialog" id="aCuon">
+  </object>
+  <object class="GtkDialog" id="aCuon">
     <property name="title" translatable="yes">About CUON</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <widget class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkVBox" id="dialog-vbox1">
         <property name="width_request">297</property>
         <property name="height_request">253</property>
         <property name="visible">True</property>
         <child>
-          <widget class="GtkVBox" id="vbox2">
+          <object class="GtkVBox" id="vbox2">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkLabel" id="label15">
+              <object class="GtkLabel" id="label15">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">C.U.O.N.</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -1225,10 +1221,10 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkLabel" id="label16">
+              <object class="GtkLabel" id="label16">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">An Internet Business-Software</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -1236,46 +1232,42 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkImage" id="image11">
+              <object class="GtkImage" id="image11">
                 <property name="width_request">384</property>
                 <property name="height_request">176</property>
                 <property name="visible">True</property>
                 <property name="pixbuf">cuon-alternate1.svg</property>
-              </widget>
+              </object>
               <packing>
                 <property name="position">2</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkScrolledWindow" id="scrolledwindow2">
+          <object class="GtkScrolledWindow" id="scrolledwindow2">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="shadow_type">in</property>
             <child>
-              <widget class="GtkTextView" id="textview2">
+              <object class="GtkTextView" id="textview2">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="text" translatable="yes">Authors:
-Juergen Hamel, 32584 Loehne, Germany
-
-GUI auf Tastatursteuerung, Einfachheit und gartenbauliche Belange
-optimiert von Heino Schwarz h.schwarz@blumen-schwarz.de</property>
-              </widget>
+                <property name="buffer">textbuffer1</property>
+              </object>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="position">3</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkLabel" id="About_Version">
+          <object class="GtkLabel" id="About_Version">
             <property name="visible">True</property>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
@@ -1283,13 +1275,12 @@ optimiert von Heino Schwarz h.schwarz@blumen-schwarz.de</property>
           </packing>
         </child>
         <child internal-child="action_area">
-          <widget class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="layout_style">spread</property>
             <child>
-              <widget class="GtkButton" id="okAbout1">
+              <object class="GtkButton" id="okAbout1">
                 <property name="label">gtk-ok</property>
-                <property name="response_id">-5</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
@@ -1297,21 +1288,32 @@ optimiert von Heino Schwarz h.schwarz@blumen-schwarz.de</property>
                 <property name="border_width">2</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_okAbout1_clicked"/>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">0</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-</glade-interface>
+    <action-widgets>
+      <action-widget response="-5">okAbout1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkTextBuffer" id="textbuffer1">
+    <property name="text" translatable="yes">Authors:
+Juergen Hamel, 32584 Loehne, Germany
+
+GUI auf Tastatursteuerung, Einfachheit und gartenbauliche Belange
+optimiert von Heino Schwarz h.schwarz@blumen-schwarz.de</property>
+  </object>
+  <object class="GtkAccelGroup" id="accelgroup1"/>
+</interface>

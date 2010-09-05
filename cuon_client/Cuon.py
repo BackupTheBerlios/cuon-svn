@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 8, 'Rev': 29, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 9, 'Rev': 4, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1480,6 +1480,8 @@ sStartType =  getConfigOption(cpParser, sSect,'TYPE')
 sLocal =  WorkingDir + getConfigOption(cpParser, sSect,'LOCALE')
 sDebug =  getConfigOption(cpParser, sSect,'DEBUG')
 AlternateGui =  getConfigOption(cpParser, sSect,'ALTERNATEGUI')      
+
+
 if not AlternateGui or AlternateGui == 'NO' :
     AlternateGui = 'LINUX-Standard'
     
@@ -1523,6 +1525,10 @@ if len(sys.argv) > 6:
         if sys.argv[6] != 'NO':
             td.SystemName =  sys.argv[6]
             print 'td.System =', td.SystemName   
+        else:
+            td.SystemName = 'LINUX-Standard'
+    else:
+        td.SystemName = 'LINUX-Standard'
 else:
     td.SystemName = 'LINUX-Standard'
       
