@@ -47,12 +47,35 @@ class databaseswindow(windows):
         
         self.iPB = 0
         self.gladeName = self.td.databases_glade_name
-
+        fname = '../usr/share/cuon/glade/databases.glade2'
+        
         # self.setLogLevel(self.INFO)
         self.allTables = {}
         if servermod:
-            self.xml = gtk.glade.XML('../usr/share/cuon/glade/databases.glade2')
-            self.setXmlAutoconnect()
+            try:
+                self.xml = gtk.Builder()
+                self.xml.add_from_file(fname)
+            except Exception, params:
+                print Exception, params
+                
+                try:
+                    self.xml = gtk.glade.XML(fname)
+                except:
+                    self.xml = gtk.glade.XML(fnameAlternate)
+            print 'glade loaded'
+                
+            try:
+                self.xml.connect_signals(self)
+            except Exception, params:
+                print Exception, params
+                nameFuncMap = {}
+                for key in dir(self.__class__):
+                    nameFuncMap[key] = getattr(self, key)
+                    
+                if  nameFuncMap:
+                                   
+                    self.xml.signal_autoconnect(nameFuncMap)   
+            
         else:
             self.loadGlade('databases.xml')          
 

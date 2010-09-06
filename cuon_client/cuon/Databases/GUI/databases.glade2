@@ -2,7 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "http://glade.gnome.org/glade-2.0.dtd">
 
 <glade-interface>
-<requires lib="gnome"/>
+
 
 <widget class="GtkWindow" id="DatabasesMainwindow">
   <property agent="glademm" name="cxx_visibility">protected</property>
