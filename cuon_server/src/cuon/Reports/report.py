@@ -1217,11 +1217,11 @@ class report(MyXML):
     
     def testEndOfPage(self, yRow, papersizeHeight, offSet ):
         ok = False
-        #print "report17 test end of page"
-        #print 'yRow', yRow
-        #print 'offSet', offSet
-        #print 'papersizeHeight',  papersizeHeight
-        #print 'sum', yRow + offSet
+        print "report17 test end of page"
+        print 'yRow', yRow
+        print 'offSet', offSet
+        print 'papersizeHeight',  papersizeHeight
+        print 'sum', yRow + offSet
         
         if  offSet > papersizeHeight or yRow < 0:
             #liRecord, yRow  = self.newPage(liRecord)

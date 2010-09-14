@@ -52,7 +52,7 @@ import graveyard
 from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
 import cuon.Articles.SingleArticle
 import cuon.Articles.articles
-
+import plant_lists
 
 class graveswindow(chooseWindows, ArticlesFastSelection):
 
@@ -531,6 +531,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "edit grave v2")
         self.setEntriesEditable(self.EntriesGraves, True)
 
+        # sub menu lists
+    def on_plant_lists_activate(self, event):
+        pl = plant_lists.plantlists()
 
     def on_clear1_activate(self, event):
         self.out( "delete grave v2")

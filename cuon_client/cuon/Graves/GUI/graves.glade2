@@ -91,40 +91,18 @@
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkMenuItem" id="mi_print">
+                      <widget class="GtkMenuItem" id="mi_lists">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Print</property>
+                        <property name="label" translatable="yes">Lists</property>
                         <property name="use_underline">True</property>
                         <child>
                           <widget class="GtkMenu" id="mi_print_menu">
                             <child>
-                              <widget class="GtkSeparatorMenuItem" id="print1">
+                              <widget class="GtkMenuItem" id="plant_lists">
                                 <property name="visible">True</property>
-                                <signal name="activate" handler="on_print1_activate"/>
-                              </widget>
-                            </child>
-                            <child>
-                              <widget class="GtkMenuItem" id="icoming_document">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Incoming document</property>
+                                <property name="label" translatable="yes">Plant Lists</property>
                                 <property name="use_underline">True</property>
-                                <signal name="activate" handler="on_print_icoming_document1_activate"/>
-                              </widget>
-                            </child>
-                            <child>
-                              <widget class="GtkMenuItem" id="pickup_document1">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Pickup document</property>
-                                <property name="use_underline">True</property>
-                                <signal name="activate" handler="on_print_pickup_document1_activate"/>
-                              </widget>
-                            </child>
-                            <child>
-                              <widget class="GtkMenuItem" id="outgoing_document1">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Outgoing document</property>
-                                <property name="use_underline">True</property>
-                                <signal name="activate" handler="on_print_outgoing_document1_activate"/>
+                                <signal name="activate" handler="on_plant_lists_activate"/>
                               </widget>
                             </child>
                           </widget>

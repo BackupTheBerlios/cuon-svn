@@ -753,8 +753,15 @@ class databaseswindow(windows):
                     groupNode = self.getNodes(i,'this_group')
                     group = self.getData(groupNode[0])
                     print'Grants = ' + `grants` + ' , Group = ' + group + ', Tables = ' + tables
-                    ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, tables, self.dicUser)       
-                    self.out(ok)
+                    
+                    liTables = tables.split(',')
+                    for sTable in liTables:
+                    
+                        ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, sTable, self.dicUser)  
+                        if sTable[len(sTable)-3:] != "_id":
+                            print 'new gants to ' + sTable +'_history'
+                            ok = self.rpc.callRP('Database.addGrantToGroup', grants, group, sTable +'_history', self.dicUser)    
+                    
                                                                 
         # now set public-right to the numerical seqeunces
         sSql = "SELECT relname FROM PG_CLASS WHERE RELKIND = 'S' and relname ~* 'numerical.*' "

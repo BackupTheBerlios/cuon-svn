@@ -469,6 +469,11 @@
       <Entry-File>graves_single.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_graves_single.xml</Entry-FileValue>
     </Entries>
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>plantlists.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_plantlists.xml</Entry-FileValue>
+    </Entries>
     
     <Entries>       
       <Entry-Name>cuon</Entry-Name>
@@ -710,6 +715,18 @@
       <Glade-File>project.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/project.glade2</Glade-FileValue>
     </GladeEntries>
+    
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>plantlists.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/plantlists.glade2</Glade-FileValue>
+    </GladeEntries>
+     <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>goods_demand_lists.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/goods_demand_lists.glade2</Glade-FileValue>
+    </GladeEntries>
+    
  <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>botany.xml</Glade-File>
