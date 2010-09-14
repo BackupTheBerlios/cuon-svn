@@ -197,6 +197,7 @@ class gladeXml(defaultValues):
                     fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
                 else:
                     fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_'+ self.td.SystemName + '_' + gladeName)  
+                  
                 #else:
                 #    fname = os.path.normpath(self.td.cuon_path + '/' +  'glade_' + gladeName)  
         
@@ -213,6 +214,7 @@ class gladeXml(defaultValues):
             self.xml.add_from_file(fname)
         except Exception, params:
             print Exception, params
+            print fname,  fnameAlternate
             
             try:
                 self.xml = gtk.glade.XML(fname)

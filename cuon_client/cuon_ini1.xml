@@ -481,14 +481,22 @@
       <Entry-FileValue>../usr/share/cuon/entry_graveyard.xml</Entry-FileValue>
     </Entries>
 </Entry_Init_Files>
-  
-  <Glade_Init_Files>
+
+ 
+ <Glade_Init_Files>
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>login.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/login.glade2</Glade-FileValue>
     </GladeEntries>
+    
 
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate1_login.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate1_login.glade2</Glade-FileValue>
+    </GladeEntries>
+    
   <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>user.xml</Glade-File>
@@ -620,6 +628,13 @@
       <Glade-File>clients.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/clients.glade2</Glade-FileValue>
     </GladeEntries>
+    
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate1_clients.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate1_clients.glade2</Glade-FileValue>
+    </GladeEntries>
+    
     <GladeEntries>
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>webshop.xml</Glade-File>
