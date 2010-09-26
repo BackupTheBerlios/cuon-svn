@@ -212,14 +212,25 @@ class gladeXml(defaultValues):
         try:
             self.xml = gtk.Builder()
             self.xml.add_from_file(fname)
-        except Exception, params:
-            print Exception, params
-            print fname,  fnameAlternate
-            
+            print "loaded Builder ",  fname
+        except:
             try:
                 self.xml = gtk.glade.XML(fname)
+                print "loaded Glade ",  fname
+                
+
             except:
-                self.xml = gtk.glade.XML(fnameAlternate)
+                try:
+                    self.xml = gtk.Builder()
+                    self.xml.add_from_file(fnameAlternate)
+                    print "loaded Builder ",  fnameAlternate
+                   
+
+                except:
+                    self.xml = gtk.glade.XML(fnameAlternate)
+                    print "loaded Glade ",  fnameAlternate
+                    
+                        
         print 'glade loaded'
         
 

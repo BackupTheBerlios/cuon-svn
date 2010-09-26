@@ -60,7 +60,7 @@
     BEGIN
     
         select into iClient current_client from cuon_user where username = CURRENT_USER ;
-        raise notice ''Client id = %'', iClient ;
+        -- raise notice ''Client id = %'', iClient ;
         return iClient ;
     END ;
     
@@ -76,7 +76,7 @@
     BEGIN
     
         select into iClient no_where_client from cuon_user where username = CURRENT_USER ;
-        raise notice ''NoWhereClient id = %'', iClient ;
+        -- raise notice ''NoWhereClient id = %'', iClient ;
         return iClient ;
     END ;
     
@@ -95,7 +95,7 @@
         iNoWhereClient := fct_getUserDataNoWhereClient();
         
     sWhere := '' '' ;
-    if iNoWhereClient = ''0''
+    if iNoWhereClient = ''1''
     then
         if iSingle = 1
         then
@@ -110,6 +110,8 @@
         
     END IF ;
 
+  
+    -- RAISE NOTICE '' sWhere  = %'', sWhere ;
     RETURN sWhere ;
     END ;
      ' LANGUAGE 'plpgsql'; 
@@ -161,78 +163,65 @@
     DECLARE
         history_table   varchar(400) ;
         cName           varchar(300) ;
-       
+       sText text ;
          ri RECORD;
+         q record ;
     t TEXT;
+    sSql text ;
+    sSql2 text ;
         sExe text ;
         sExe2 text ;
         len integer ;
         
     BEGIN
-        history_table = TG_TABLE_NAME || ''_history'' ;
+        history_table := TG_TABLE_NAME || ''_history'' ;
         
         
         if OLD.versions_uuid is NULL OR char_length(OLD.versions_uuid ) <36 then 
-                OLD.versions_uuid = fct_new_uuid()   ;
+                OLD.versions_uuid := fct_new_uuid()   ;
         end if ;  
         if OLD.versions_number is NULL OR OLD.versions_number  < 1 then 
-                OLD.versions_number = 1 ;
+                OLD.versions_number := 1 ;
         end if ;  
         if not OLD.status = ''delete'' then 
         
-            sExe = '' insert into '' || history_table || '' ( '' ;
-            sExe2 = '' values ( '' ;
+            sExe := '' insert into '' || history_table || '' ( '' ;
+            sExe2 := '' select  '' ;
+            sSql := '' SELECT ordinal_position, column_name, data_type  FROM information_schema.columns   WHERE    table_schema = '' || quote_literal(TG_TABLE_SCHEMA) || ''  AND table_name = '' || quote_literal(TG_TABLE_NAME) || '' ORDER BY ordinal_position '' ;
             
-            FOR ri IN
-                SELECT ordinal_position, column_name, data_type
-                FROM information_schema.columns
-                WHERE
-                table_schema = quote_ident(TG_TABLE_SCHEMA)
-                AND table_name = quote_ident(TG_TABLE_NAME)
-                ORDER BY ordinal_position
+            
+            FOR ri in execute(sSql)  
+               
                 LOOP
-                    EXECUTE ''SELECT ($1).'' || ri.column_name || ''::text'' INTO t USING OLD;
+                    
                    
-                    sExe = sExe || ri.column_name || '', '' ;
+                    sExe := sExe || ri.column_name || '', '' ;
+                    sExe2 := sExe2 || ri.column_name || '', '' ;
                   
-                    if ri.data_type = ''integer'' OR  ri.data_type = ''float'' then 
-                        if not t  is NULL then 
-                            sExe2 = sExe2 || t || '', '';
-                        else 
-                          sExe2 = sExe2 || ''NULL'' || '', '';
-                        end if ;
-                        
-                    else 
-                        if not t  is NULL then 
-                                sExe2 = sExe2 || '''''''' || t || '''''''' || '', '';
-                        else 
-                           sExe2 = sExe2 || ''NULL'' || '', '';
-                            end if ;
-                    end if ;
                     
                 END LOOP;
             len := length(sExe);    
-            sExe = substring(sExe from 1 for (len-2) ) ;
-            sExe = sExe || '' ) '' ;
+            sExe := substring(sExe from 1 for (len-2) ) ;
+            sExe := sExe || '' ) '' ;
             
             len := length(sExe2);    
-            sExe2 = substring(sExe2 from 1 for (len-2) ) ;
-            sExe2 = sExe2 || '' ) '' ;
+            sExe2 := substring(sExe2 from 1 for (len-2) ) ;
             
             
-            sExe = sExe || sExe2 ;
-           
+            
+            sExe := sExe || sExe2 || '' from '' || quote_ident(TG_TABLE_NAME) || '' where id = '' || OLD.id ;
+            raise notice '' sExe = %'', sExe ;
             execute sExe ;
             
-            NEW.update_user_id = current_user   ;
-            NEW.update_time = (select  now()) ;
-            NEW.user_id = OLD.user_id;
+            NEW.update_user_id := current_user   ;
+            NEW.update_time := (select  now()) ;
+            NEW.user_id := OLD.user_id;
             
-            NEW.insert_time = OLD.insert_time ;
-            NEW.status = ''update'' ;
+            NEW.insert_time := OLD.insert_time ;
+            NEW.status := ''update'' ;
            
-            NEW.versions_number = OLD.versions_number+1 ;
-            NEW.versions_uuid =OLD.versions_uuid ;
+            NEW.versions_number := OLD.versions_number+1 ;
+            NEW.versions_uuid :=OLD.versions_uuid ;
       
            
             

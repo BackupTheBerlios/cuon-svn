@@ -59,12 +59,12 @@ class Database(xmlrpc.XMLRPC, SQL):
         sysCommand =  'psql  ' + '-h ' + sHost + ' -p ' + sPort + ' -U ' + sUser +   ' '  + sDatabase + ' < /etc/cuon/run.sql'
         
         print sysCommand
-        print ""
+        self.writeLog(sysCommand)
         
-        print os.system(sysCommand)
+        sReturn = os.system(sysCommand)
+        self.writeLog('return from sysCommand ' + `sReturn`)
         
-        
-        return sysCommand
+        return sReturn
 
 #context.exSaveInfoOfTable(sKey, oKey )
     

@@ -1221,7 +1221,7 @@ class report(MyXML):
         print 'yRow', yRow
         print 'offSet', offSet
         print 'papersizeHeight',  papersizeHeight
-        print 'sum', yRow + offSet
+        print 'sum yRow + offset', yRow + offSet
         
         if  offSet > papersizeHeight or yRow < 0:
             #liRecord, yRow  = self.newPage(liRecord)

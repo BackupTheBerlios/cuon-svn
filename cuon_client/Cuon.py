@@ -294,7 +294,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 9, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 9, 'Rev': 26, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1364,6 +1364,7 @@ class MainWindow(windows):
             # self.gladeName = td.main_glade_name
 
             self.loadGlade('cuon.xml','window1')
+            self.win1 = self.getWidget("window1")
             self.win1.connect("delete_event", self.delete_event)
             self.win1.connect("destroy", self.destroy)
 
@@ -1481,6 +1482,8 @@ sLocal =  WorkingDir + getConfigOption(cpParser, sSect,'LOCALE')
 sDebug =  getConfigOption(cpParser, sSect,'DEBUG')
 AlternateGui =  getConfigOption(cpParser, sSect,'ALTERNATEGUI')      
 
+print "AlternateGui = ",  AlternateGui
+
 
 if not AlternateGui or AlternateGui == 'NO' :
     AlternateGui = 'LINUX-Standard'
@@ -1530,9 +1533,10 @@ if len(sys.argv) > 6:
     else:
         td.SystemName = 'LINUX-Standard'
 else:
-    td.SystemName = 'LINUX-Standard'
+    td.SystemName = AlternateGui
       
-        
+print 'now -> ',  td.SystemName
+
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)

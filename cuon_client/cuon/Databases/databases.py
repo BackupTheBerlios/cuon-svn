@@ -775,7 +775,7 @@ class databaseswindow(windows):
         
     def createProcedureAndTrigger(self):
         self.setLogLevel(0)
-        self.out("set procedures and trigger")
+        print "set procedures and trigger"
         os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/server.ini inifiles')
         f = file('inifiles/server.ini','r')
         cpParser = ConfigParser.ConfigParser()
@@ -793,10 +793,14 @@ class databaseswindow(windows):
             
        
         for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql']:
+            print 'configfile = ',  configfile
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             f = open('inifiles/' + configfile, 'r')
             sSql = f.read()
             f.close()
+            print sSql
+            print 'DatabaseValues = ',  SQL_DB, SQL_HOST, SQL_PORT, SQL_USER
+            
             ok = self.rpc.callRP('Database.createPsql',  SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
             
         for configfile in ['sql.xml']:
