@@ -636,6 +636,14 @@ class projectwindow(chooseWindows):
         if self.singleProjectTaskMaterial.ID > 0:
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_material_resources'], {'1':self.singleProjectTaskMaterial.ID})
     
+    def on_bProgrammingDMS_clicked(self, event):
+         
+        print 'dms clicked'
+        if self.singleProjectProgramming.ID > 0:
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_programming'], {'1':self.singleProjectProgramming.ID})
+    
+    
+    # other buttons
     
     def on_eMRArticleNumber_changed(self, event):
         print 'eMRArticleNumber changed'
@@ -652,35 +660,123 @@ class projectwindow(chooseWindows):
             print 'start address'
             adr = cuon.Addresses.addresses.addresswindow(self.allTables,addrid=self.singleProject.firstRecord['customer_id'])
     
-    
+    # letter buttons
+    def on_bLetter_clicked(self, event):
+        print 'bLetter clicked'
+        if self.singleProject.ID > 0:
+            #self.singleAddress.load(self.singleAddress.ID)
+            #print 'firstRecord = ', self.singleProject.firstRecord
+            print 'ModulNumber', self.ModulNumber
+            firstRecord, dicExtInfo = self.getProjectInfos()
+            print 'firstRecord = ', firstRecord
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, firstRecord,dicExtInfo)
+            
+    def on_bLetterPhase_clicked(self, event):
+        print 'bLetter clicked'
+
+    def on_bLetterTask_clicked(self, event):
+        print 'bLetter clicked'
+
+    def on_bLetterMaterial_clicked(self, event):
+        print 'bLetter clicked'
+
+    def on_bLetterStaff_clicked(self, event):
+        print 'bLetter clicked'
+
+    def on_bLetterProgramming_clicked(self, event):
+        print 'bLetter clicked'
+
+
+
+            
     # Toolbar
     
     def on_tbNew_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_new1_activate(event)
-
-
+        elif self.tabOption == self.tabPhases:
+            self.on_phasenew1_activate(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_tasksnew1_activate(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_material_resources_new1_activate(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_staff_resources_new1_activate(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_programming_main_new1_activate(event)     
+            
+            
     def on_tbEdit_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_edit1_activate(event)
-
+        elif self.tabOption == self.tabPhases:
+            self.on_phaseedit1_activate(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_tasksedit1_activate(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_material_resources_edit1_activate(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_staff_resources_edit1_activate(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_programming_main_edit1_activate(event)     
 
     def on_tbSave_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_save1_activate(event)
+        elif self.tabOption == self.tabPhases:
+            self.on_phasesave1_activate(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_taskssave1_activate(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_material_resources_save1_activate(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_staff_resources_save1_activate(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_programming_main_save1_activate(event)     
 
     def on_tbDelete_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_delete1_activate(event)
+        elif self.tabOption == self.tabPhases:
+            self.on_phasedelete1_activate(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_tasksdelete1_activate(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_material_resources_delete1_activate(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_staff_resources_delete1_activate(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_programming_main_delete1_activate(event)         
             
     def on_tbDMS_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_bProjectDMS_clicked(event)
-            
+        elif self.tabOption == self.tabPhases:
+            self.on_bPhaseDMS_clicked(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_bTaskDMS_clicked(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_bMaterialDMS_clicked(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_bStaffDMS_clicked(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_ProgrammingDMS_clicked(event) 
+    
+    
     def on_tbLetter_clicked(self, event):
         if self.tabOption == self.tabProject:
             self.on_bLetter_clicked(event)
-         
+        elif self.tabOption == self.tabPhases:
+            self.on_bLetterPhase_clicked(event)
+        elif self.tabOption == self.tabTasks:
+            self.on_bLetterTask_clicked(event)
+        elif self.tabOption == self.tabMaterialResources:
+            self.on_bLetterMaterial_clicked(event)    
+        elif self.tabOption == self.tabStaffResources:
+            self.on_bLetterStaff_clicked(event)     
+        elif self.tabOption == self.tabProgrammingMain:
+            self.on_bLetterProgramming_clicked(event) 
+    
     
     
     def getProjectInfos(self):
@@ -707,15 +803,7 @@ class projectwindow(chooseWindows):
         
         return firstRecord, dicExtInfo
         
-    def on_bLetter_clicked(self, event):
-        print 'bLetter clicked'
-        if self.singleProject.ID > 0:
-            #self.singleAddress.load(self.singleAddress.ID)
-            #print 'firstRecord = ', self.singleProject.firstRecord
-            print 'ModulNumber', self.ModulNumber
-            firstRecord, dicExtInfo = self.getProjectInfos()
-            print 'firstRecord = ', firstRecord
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Project_info'], {'1':-141}, firstRecord,dicExtInfo)
+    
     
     # Order for this Project
      # view Order 

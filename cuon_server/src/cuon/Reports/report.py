@@ -346,7 +346,8 @@ class report(MyXML):
         # calculate Sides
         #
 
-        self.dicPage['reportDetailsY'] = self.dicPage['papersizeY'] - self.dicPage['endPageFooterY'] 
+        print "Side Values = ",  self.dicPage['papersizeY'] , self.dicPage['topMargin'] ,  self.dicPage['headerY2'] ,  self.dicPage['endPageFooterY'] ,  self.dicPage['bottomMargin']  , self.dicPage['pageFooterY1']
+        self.dicPage['reportDetailsY'] = self.dicPage['papersizeY'] - self.dicPage['topMargin'] - self.dicPage['headerY2'] - self.dicPage['bottomMargin']  - self.dicPage['pageFooterY2']
         
     def getReportHeader(self, cyRootNode):
 

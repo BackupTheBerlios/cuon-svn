@@ -210,7 +210,7 @@
             
             
             sExe := sExe || sExe2 || '' from '' || quote_ident(TG_TABLE_NAME) || '' where id = '' || OLD.id ;
-            raise notice '' sExe = %'', sExe ;
+            -- raise notice '' sExe = %'', sExe ;
             execute sExe ;
             
             NEW.update_user_id := current_user   ;
@@ -218,8 +218,11 @@
             NEW.user_id := OLD.user_id;
             
             NEW.insert_time := OLD.insert_time ;
-            NEW.status := ''update'' ;
-           
+            
+            if NEW.status != ''delete'' then
+                NEW.status := ''update'' ;
+            END IF ;
+            
             NEW.versions_number := OLD.versions_number+1 ;
             NEW.versions_uuid :=OLD.versions_uuid ;
       
