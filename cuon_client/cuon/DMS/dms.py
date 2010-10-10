@@ -164,7 +164,13 @@ class dmswindow(windows):
         self.tabChanged()
         
         # add keys
-        self.win1.add_accel_group(self.accel_group)
+        print "accelgroup = ",  self.accel_group
+        try:
+            self.win1.add_accel_group(self.accel_group)
+        except:
+            pass
+            
+            
         #Now check for automatic-Actions
         self.LastDoc = None
         #print '9 --'
@@ -175,6 +181,7 @@ class dmswindow(windows):
             self.activateClick('bImport',None,'clicked')
             
 
+    # Menu items
         
 
     def on_save1_activate(self, event):
@@ -346,8 +353,30 @@ class dmswindow(windows):
     def on_tree1_columns_changed(self, event=None, data=None):
         print event, data
         
-       
+    # toolbar buttons
     
+    def on_tbNew_clicked(self, event):
+        print "tbnew"
+        if self.tabOption == self.tabDocument:
+            self.on_new1_activate(event)
+    
+    def on_tbEdit_clicked(self, event):
+        if self.tabOption == self.tabDocument:
+            self.on_edit1_activate(event)
+            
+    def on_tbSave_clicked(self, event):
+        if self.tabOption == self.tabDocument:
+            self.on_save1_activate(event)
+            
+            
+    def on_tbDelete_clicked(self, event):
+        if self.tabOption == self.tabDocument:
+            self.on_clear1_activate(event)
+            
+    def on_tbExit_clicked(self, event):
+        if self.tabOption == self.tabDocument:
+            self.on_quit1_activated(event)
+            
     def refreshTree(self):
         self.singleDMS.disconnectTree()
     

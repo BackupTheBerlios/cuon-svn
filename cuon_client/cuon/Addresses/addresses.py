@@ -79,7 +79,7 @@ except:
 
 bHtml = False
 try:
-    import gtkhtml2
+    #import gtkhtml2
     import gtkmozembed as moz
    
 except:

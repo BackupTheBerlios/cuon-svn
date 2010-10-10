@@ -697,7 +697,7 @@ class projectwindow(chooseWindows):
         elif self.tabOption == self.tabPhases:
             self.on_phasenew1_activate(event)
         elif self.tabOption == self.tabTasks:
-            self.on_tasksnew1_activate(event)
+            self.on_tasknew1_activate(event)
         elif self.tabOption == self.tabMaterialResources:
             self.on_material_resources_new1_activate(event)    
         elif self.tabOption == self.tabStaffResources:
@@ -712,7 +712,7 @@ class projectwindow(chooseWindows):
         elif self.tabOption == self.tabPhases:
             self.on_phaseedit1_activate(event)
         elif self.tabOption == self.tabTasks:
-            self.on_tasksedit1_activate(event)
+            self.on_taskedit1_activate(event)
         elif self.tabOption == self.tabMaterialResources:
             self.on_material_resources_edit1_activate(event)    
         elif self.tabOption == self.tabStaffResources:
@@ -726,7 +726,7 @@ class projectwindow(chooseWindows):
         elif self.tabOption == self.tabPhases:
             self.on_phasesave1_activate(event)
         elif self.tabOption == self.tabTasks:
-            self.on_taskssave1_activate(event)
+            self.on_task_save1_activate(event)
         elif self.tabOption == self.tabMaterialResources:
             self.on_material_resources_save1_activate(event)    
         elif self.tabOption == self.tabStaffResources:
@@ -740,7 +740,7 @@ class projectwindow(chooseWindows):
         elif self.tabOption == self.tabPhases:
             self.on_phasedelete1_activate(event)
         elif self.tabOption == self.tabTasks:
-            self.on_tasksdelete1_activate(event)
+            self.on_task_delete1_activate(event)
         elif self.tabOption == self.tabMaterialResources:
             self.on_material_resources_delete1_activate(event)    
         elif self.tabOption == self.tabStaffResources:

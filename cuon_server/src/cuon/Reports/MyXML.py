@@ -289,17 +289,20 @@ class MyXML:
 
 
     def getEntrySpecification(self, cyEntry, sValue):
-        nameTag = cyEntry.getElementsByTagName(sValue)
-        for oneName in nameTag:
-            rc = oneName.firstChild
-            if rc:
-                if rc.nodeType == Node.TEXT_NODE:
-                    return rc.data
+        try:
+            nameTag = cyEntry.getElementsByTagName(sValue)
+            for oneName in nameTag:
+                rc = oneName.firstChild
+                if rc:
+                    if rc.nodeType == Node.TEXT_NODE:
+                        return rc.data
+                    else:
+                        return "EMPTY"
                 else:
                     return "EMPTY"
-            else:
-                return "EMPTY"
-            
+                
+        except:
+            return "EMPTY"
 
     def getNode(self, cyNode, cyValue):
         #print cyNode[0].toxml()

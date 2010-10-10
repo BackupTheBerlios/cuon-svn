@@ -4989,6 +4989,16 @@
       <default />
       <comment />
     </field>  
+    <field>
+      <name>phase_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>  
 </table>
 <!--Projects Task -->
   <table>
@@ -5054,6 +5064,16 @@
       <notnull>0</notnull>
       <size>0</size>
       <default />
+      <comment />
+    </field>  
+    <field>
+      <name>task_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
       <comment />
     </field>  
 </table>
@@ -5143,6 +5163,16 @@
       <default />
       <comment />
     </field>  
+    <field>
+      <name>staff_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>  
 </table>
 <!--Projects Tasks Material Resources -->
   <table>
@@ -5208,6 +5238,16 @@
       <notnull>0</notnull>
       <size>0</size>
       <default />
+      <comment />
+    </field> 
+   <field>
+      <name>material_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
       <comment />
     </field>   
 </table>
@@ -5318,6 +5358,16 @@
       <default />
       <comment>short designation  </comment>
     </field>
+    <field>
+      <name>programming_status</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>  
     </table>
 
     <!--Projects Programming -->

@@ -399,6 +399,26 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="GtkMenuItem" id="Lists">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Lists</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkMenuItem" id="CompleteProjects">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Complete Projects</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_CompleteProjects_activate"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -1332,9 +1352,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkHBox" id="hbox23">
                     <property name="visible">True</property>
                     <child>
@@ -1411,6 +1428,9 @@
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
             </child>
@@ -1735,7 +1755,35 @@
                   <placeholder/>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkHBox" id="hbox26">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label6">
+                        <property name="visible">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Status</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="ePhaseStatus">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="right_attach">3</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -2064,7 +2112,35 @@
                   <placeholder/>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkHBox" id="hbox27">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label7">
+                        <property name="visible">True</property>
+                        <property name="xalign">0</property>
+                        <property name="label" translatable="yes">Status</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="eTaskStatus">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="right_attach">3</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -2429,6 +2505,35 @@
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="position">10</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkHBox" id="hbox32">
+                                <property name="visible">True</property>
+                                <child>
+                                  <object class="GtkLabel" id="label9">
+                                    <property name="visible">True</property>
+                                    <property name="xalign">0</property>
+                                    <property name="label" translatable="yes">Status</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkEntry" id="eStaffStatus">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="invisible_char">&#x25CF;</property>
+                                    <property name="xalign">0.05000000074505806</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">11</property>
                               </packing>
                             </child>
                           </object>
@@ -2985,7 +3090,32 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkHBox" id="hbox33">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="label10">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Status</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="eMaterialStatus">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
                     <child>
                       <placeholder/>
@@ -3404,7 +3534,6 @@
                     <property name="visible">True</property>
                     <property name="n_rows">7</property>
                     <property name="n_columns">4</property>
-                    <property name="homogeneous">True</property>
                     <child>
                       <object class="GtkLabel" id="label189">
                         <property name="visible">True</property>
@@ -3893,7 +4022,35 @@
                       <placeholder/>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkHBox" id="hbox31">
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="label8">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Status</property>
+                          </object>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="eProgrammingStatus">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                          </object>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="right_attach">3</property>
+                        <property name="top_attach">3</property>
+                        <property name="bottom_attach">4</property>
+                      </packing>
                     </child>
                   </object>
                 </child>

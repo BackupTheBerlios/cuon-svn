@@ -53,6 +53,16 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry> 
+    <entry>
+      <name>ePhaseStatus</name>
+      <type>textline</type>
+      <size>5</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>phase_status</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry> 
     </table>
     
   </entries_for_table>
