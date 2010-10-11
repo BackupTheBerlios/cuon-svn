@@ -305,12 +305,20 @@ class report(MyXML):
         #print '+++++++'
         #print cyReportFooterEntries
         liRecord = []
-        self.dicPage['PageFootAppendToGroup']  = int(self.getEntrySpecification(cyReportFooterNode[0],'appendtogroup'))
+        try:
+            self.dicPage['PageFootAppendToGroup']  = int(self.getEntrySpecification(cyReportFooterNode[0],'appendtogroup'))
+        except:
+            self.dicPage['PageFootAppendToGroup']  = 0
+            
         self.dicPage['footerX1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX1'))
         self.dicPage['footerX2'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX2'))
         self.dicPage['footerY1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posY1'))
         self.dicPage['footerY2'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posY2'))
-        self.dicPage['ReportFootAppendToGroup'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'appendtogroup'))
+        try:
+            self.dicPage['ReportFootAppendToGroup'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'appendtogroup'))
+        except:
+            self.dicPage['ReportFootAppendToGroup'] = 0
+            
         self.dicPage['beginReportFooterX'] = self.dicPage['leftMargin'] + self.dicPage['footerX1']
         self.dicPage['endReportFooterX'] =  self.dicPage['footerX2']
         
