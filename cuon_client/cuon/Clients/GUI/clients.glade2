@@ -401,7 +401,7 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="bChooseAddress">
-                        <property name="label" translatable="yes">choose ...</property>
+                        <property name="label" translatable="yes">search ...</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>

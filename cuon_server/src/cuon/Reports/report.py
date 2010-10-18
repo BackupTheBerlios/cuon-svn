@@ -2,6 +2,7 @@
 ##Copyright (C) [2003-2004]  [Jürgen Hamel, D-32584 Löhne]
 
 ##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
+##published by the Free Software Foundation; either verion 3 of the License, or (at your option) any later version.
 ##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
 ##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
@@ -49,6 +50,7 @@ class report(MyXML):
         
         self.dicReportValues = {}
         self.dicReportFields = {}
+        self.firstPage = True ;
         
         self.beginPageX = 50
         self.beginPageY = 800
@@ -289,8 +291,8 @@ class report(MyXML):
         self.dicPage['endPageHeaderX'] =   self.dicPage['pageX2']
         self.dicPage['beginPageHeaderY'] =  self.dicPage['endReportHeaderY'] - self.dicPage['pageY1']
         self.dicPage['endPageHeaderY'] =  self.dicPage['endReportHeaderY'] - self.dicPage['pageY2']
-
-
+        
+       
         #
         # Report-footer
         #
@@ -305,11 +307,7 @@ class report(MyXML):
         #print '+++++++'
         #print cyReportFooterEntries
         liRecord = []
-        try:
-            self.dicPage['PageFootAppendToGroup']  = int(self.getEntrySpecification(cyReportFooterNode[0],'appendtogroup'))
-        except:
-            self.dicPage['PageFootAppendToGroup']  = 0
-            
+       
         self.dicPage['footerX1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX1'))
         self.dicPage['footerX2'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX2'))
         self.dicPage['footerY1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posY1'))
@@ -325,6 +323,7 @@ class report(MyXML):
         self.dicPage['beginReportFooterY'] =  self.dicPage['bottomMargin'] + self.dicPage['footerY1']
         self.dicPage['endReportFooterY'] = self.dicPage['bottomMargin'] + self.dicPage['footerY2']
         
+
 
         #
         # Page -footer
@@ -345,12 +344,23 @@ class report(MyXML):
         self.dicPage['pageFooterY1'] =  int(self.getEntrySpecification(cyReportPageNode[0],'posY1'))
         self.dicPage['pageFooterY2'] =  int(self.getEntrySpecification(cyReportPageNode[0],'posY2'))
 
-
+        try:
+            self.dicPage['PageFootAppendToGroup']  = int(self.getEntrySpecification(cyReportPageNode[0],'appendtogroup'))
+        except:
+            self.dicPage['PageFootAppendToGroup']  = 0
+            
         self.dicPage['beginPageFooterX'] =  self.dicPage['leftMargin'] +  self.dicPage['pageFooterX1']
         self.dicPage['endPageFooterX'] =   self.dicPage['pageFooterX2']
         self.dicPage['beginPageFooterY'] =  self.dicPage['endReportFooterY'] + self.dicPage['pageFooterY2']
         self.dicPage['beginPageFooterY_LastPage'] =  self.dicPage['endReportFooterY'] + self.dicPage['pageFooterY2']
         self.dicPage['endPageFooterY'] = self.dicPage['bottomMargin']  + self.dicPage['pageFooterY1']
+
+        self.dicPage['PrintRangeFirstSite'] = self.dicPage['papersizeY'] -self.dicPage['headerY2'] - self.dicPage['topMargin'] - self.dicPage['headerY2']  - self.dicPage['bottomMargin']  -  self.dicPage['pageFooterY2'] 
+        self.dicPage['PrintRangeNextSites'] = self.dicPage['papersizeY'] - self.dicPage['topMargin'] - self.dicPage['headerY2']  - self.dicPage['bottomMargin']  -  self.dicPage['pageFooterY2'] 
+        
+
+        self.dicPage['beginPageHeaderOtherSitesY'] = self.dicPage['papersizeY'] - self.dicPage['topMargin']  - self.dicPage['pageY1'] 
+        self.dicPage['endPageHeaderOtherSitesY'] =   self.dicPage['papersizeY'] - self.dicPage['topMargin']  - self.dicPage['pageY2']
 
 
         #
@@ -359,6 +369,10 @@ class report(MyXML):
 
         print "Side Values = ",  self.dicPage['papersizeY'] , self.dicPage['topMargin'] ,  self.dicPage['headerY2'] ,  self.dicPage['endPageFooterY'] ,  self.dicPage['bottomMargin']  , self.dicPage['pageFooterY1']
         self.dicPage['reportDetailsY'] = self.dicPage['papersizeY'] - self.dicPage['topMargin'] - self.dicPage['headerY2'] - self.dicPage['bottomMargin']  - self.dicPage['pageFooterY2']
+        
+        print "appendtogroup page,  report = ",  self.dicPage['PageFootAppendToGroup']  ,  self.dicPage['ReportFootAppendToGroup'] 
+        
+        
         
     def getReportHeader(self, cyRootNode):
 
@@ -427,18 +441,23 @@ class report(MyXML):
      
             #dicRow['text'] = dicEntry['text']
   
-            
-            dicRow['x1'] = self.dicPage['beginPageHeaderX']  + dicRow['x1']
-            dicRow['y1'] = self.dicPage['beginPageHeaderY']  - dicRow['y1']
-            dicRow['x2'] = self.dicPage['beginPageHeaderX']  + dicRow['x2']
-            dicRow['y2'] = self.dicPage['beginPageHeaderY']  - dicRow['y2']
+            if self.firstPage:
+                dicRow['x1'] = self.dicPage['beginPageHeaderX']  + dicRow['x1']
+                dicRow['y1'] = self.dicPage['beginPageHeaderY']  - dicRow['y1']
+                dicRow['x2'] = self.dicPage['beginPageHeaderX']  + dicRow['x2']
+                dicRow['y2'] = self.dicPage['beginPageHeaderY']  - dicRow['y2']
 
+            else:
+                dicRow['x1'] = self.dicPage['beginPageHeaderX']  + dicRow['x1']
+                dicRow['y1'] = self.dicPage['beginPageHeaderOtherSitesY']  - dicRow['y1']
+                dicRow['x2'] = self.dicPage['beginPageHeaderX']  + dicRow['x2']
+                dicRow['y2'] = self.dicPage['beginPageHeaderOtherSitesY']  - dicRow['y2']
             liRecord.append(dicRow)
 
         return liRecord
 
 
-    def getPageFooter(self, cyRootNode):
+    def getPageFooter(self, cyRootNode,  x1,  y1,  x2,  y2):
 
         cyReportPageNode = self.getNode(cyRootNode, 'pageFooter')
         #print '------------------'
@@ -474,12 +493,17 @@ class report(MyXML):
                     dicRow['y2'] = self.dicPage['beginPageFooterY']  - dicRow['y2']
 
             elif self.dicPage['PageFootAppendToGroup'] == 1:
-                dicRow['x1'] =  dicRow['x1']
-                dicRow['y1'] =  dicRow['y1']
-                dicRow['x2'] = dicRow['x2']
-                dicRow['y2'] =  dicRow['y2']
+                print "appendtogroup is 1,  y1,  y2 = ", y1, y2,   dicRow['y1'] ,  dicRow['y2']
+                print "this are x values",  x1,  x2,  dicRow['x1'],  dicRow['x2']
+                footerhigh = self.dicPage['pageFooterY2']  - self.dicPage['pageFooterY1'] 
+                dicRow['x1'] =  self.dicPage['beginPageFooterX'] 
+                dicRow['y1'] =  y1 - dicRow['y1']
+                dicRow['x2'] =  self.dicPage['endPageFooterX'] 
+                dicRow['y2'] =  y2 -  dicRow['y2']
                 
-                
+                print "this are the footer  y1,  y2 = ",  dicRow['y1'] ,  dicRow['y2']
+                print "this are the footer x1, x2 =   ",  x1,  x2,  dicRow['x1'],  dicRow['x2']
+
             else: 
                 dicRow['x1'] = self.dicPage['beginPageFooterX']  + dicRow['x1']
                 dicRow['y1'] = self.dicPage['beginPageFooterY']  - dicRow['y1']
@@ -526,7 +550,9 @@ class report(MyXML):
 
     
     def startReport(self,c,  cyRootNode):
+        self.firstPage = True
         self.setBackground(c)
+        
         self.dicReportValues['reportHeader'] = self.getReportHeader(cyRootNode)
         self.printReportHeader(c)
         self.dicReportValues['pageHeader'] = self.getPageHeader(cyRootNode)
@@ -606,9 +632,12 @@ class report(MyXML):
 
                         self.dicPage['beginPageDetailsX'] = self.dicPage['leftMargin'] + self.dicPage['detailsX1']
                         self.dicPage['endPageDetailsX'] =   self.dicPage['detailsX2']
-                        self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY1']
-                        self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY2']
-
+                        if self.firstPage:
+                            self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY1']
+                            self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY2']
+                        else:
+                            self.dicPage['beginPageDetailsY'] =  self.dicPage['beginPageHeaderOtherSitesY'] - self.dicPage['detailsY1']
+                            self.dicPage['endPageDetailsY'] =  self.dicPage['beginPageHeaderOtherSitesY'] - self.dicPage['detailsY2']
 
 
 
@@ -635,15 +664,22 @@ class report(MyXML):
 
                             liRecord.append(dicRow)
                         if self.testEndOfPage(dicRow['y1'] ,self.dicPage['reportDetailsY'] , lineOffset ):
+                            
                             self.dicReportValues['pageDetails'] = liRecord
-                            self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode)
+                            self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2'] )
                             self.printPageDetails(c)
-
+                            self.printPageFooter(c)
+                            # begin new page
                             liRecord = []
                             #self.numberOfPage = self.numberOfPage + 1
                             lineOffset = 0
+                            self.firstPage = False
+                           
                             self.printNewPage(c)
-                            self.setBackground(c)
+                            try:
+                                self.setBackground(c)
+                            except:
+                                pass
                             self.dicReportValues['pageHeader'] = self.getPageHeader(cyRootNode)
                             self.printPageHeader(c)
 
@@ -657,7 +693,7 @@ class report(MyXML):
 #        else:     
         self.printPageDetails(c)
         self.lastSite = True 
-        self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode)
+        self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2']  )
         self.printPageFooter(c)
         self.dicReportValues['reportFooter']  = self.getReportFooter(cyRootNode)
         self.printReportFooter(c)
@@ -838,7 +874,7 @@ class report(MyXML):
                 liFormula = string.split(dicEntry['formula'],' ')
                 formula = 'a = '
                 checkTrigger = True
-                print liFormula
+                #print liFormula
                 if liFormula:
                     z = 0
                     ok = True
@@ -854,16 +890,16 @@ class report(MyXML):
                                 if  liFormula[fw] == '!IF':
                                      #print self.dicMemory
                                      if self.dicMemory.has_key(liFormula[fw + 1]):
-                                          print 'Value by key'
+                                          #print 'Value by key'
                                           
-                                          print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
+                                          #print liFormula[fw + 1], self.dicMemory[liFormula[fw + 1]]
                                           if self.dicMemory[liFormula[fw + 1]] not in ['NONE','ERROR'] and self.dicMemory[liFormula[fw + 1]][0]:
                                             ''' !THEN sequence'''
 
                                             print "Value bei !IF", self.dicMemory[liFormula[fw + 1]][0]
                                             if self.dicMemory.has_key(liFormula[fw + 3]):
-                                                print 'fw +3 '    
-                                                print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
+                                                #print 'fw +3 '    
+                                                #print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
                                                  
                                                 formula += `self.dicMemory[liFormula[fw + 3]][0]`
                                             else:
@@ -875,8 +911,8 @@ class report(MyXML):
                                                 formula += `self.dicMemory[liFormula[fw + 5]][0]`
                                             else:
                                                 formula +=  liFormula[fw + 5]
-                                     print 'FW =',  liFormula[fw]    
-                                     print ok , formula
+                                     #print 'FW =',  liFormula[fw]    
+                                     #print ok , formula
                                      checkTrigger = False
                                      ok = False
                                 elif  liFormula[fw] == '!SUM':
@@ -911,9 +947,9 @@ class report(MyXML):
                             
                 if formula:
                     try:
-                        print 'Formula1 = ', formula
+                        #print 'Formula1 = ', formula
                         exec formula
-                        print 'Result of the formula = ', a
+                        #print 'Result of the formula = ', a
                         eValue = a
                     except:
                         eValue = None
@@ -1256,11 +1292,18 @@ class report(MyXML):
         print 'offSet', offSet
         print 'papersizeHeight',  papersizeHeight
         print 'sum yRow + offset', yRow + offSet
+#        
+#        if  offSet > papersizeHeight or yRow < 0:
+#            #liRecord, yRow  = self.newPage(liRecord)
+#            ok = True
+#           
+        if self.firstPage:
+            if offSet > self.dicPage['PrintRangeFirstSite']:
+                ok = True
+        else:
+             if offSet > self.dicPage['PrintRangeNextSites']:
+                ok = True
         
-        if  offSet > papersizeHeight or yRow < 0:
-            #liRecord, yRow  = self.newPage(liRecord)
-            ok = True
-           
         return ok
     
         #return liRecord, yRow

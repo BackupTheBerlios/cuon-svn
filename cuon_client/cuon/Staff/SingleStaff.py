@@ -92,6 +92,7 @@ class SingleStaff(SingleData):
         return cAdr
         
     def getFullName(self, id):
+        cAddress = ' '
         try:
             id = long(id)
             

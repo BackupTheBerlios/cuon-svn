@@ -54,6 +54,8 @@ import cuon.PrefsFinance.SinglePrefsFinanceVat
 from cuon.Articles.ArticlesFastSelection import  ArticlesFastSelection
 import cuon.Project.project
 import cuon.Project.SingleProject
+import cuon.Staff.staff 
+import cuon.Staff.SingleStaff
 
 class orderwindow(chooseWindows,  ArticlesFastSelection):
     """
@@ -88,6 +90,8 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
         self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
         self.singleProject = cuon.Project.SingleProject.SingleProject(allTables)
+        self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
+        
         self.singleDMS = cuon.DMS.SingleDMS.SingleDMS(allTables)
         self.documentTools = cuon.DMS.documentTools.documentTools()
         
@@ -114,7 +118,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrder.setTreeFields( ['number', 'designation'] )
         self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleOrder.setTreeOrder('number')
-        self.singleOrder.setTree(self.xml.get_widget('tree1') )
+        self.singleOrder.setTree(self.getWidget('tree1') )
         self.singleOrder.setListHeader([_('number'), _('designation') ])
         self.singleOrder.sWhere  ='where process_status between 500 and 599'
          #singleOrderSupply
@@ -128,7 +132,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderSupply.setListHeader([_('Designation')])
 
         self.singleOrderSupply.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderSupply.setTree(self.xml.get_widget('tree1') )
+        self.singleOrderSupply.setTree(self.getWidget('tree1') )
   
         #singleOrderGet
         
@@ -141,7 +145,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderGet.setListHeader([_('Designation')])
 
         self.singleOrderGet.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderGet.setTree(self.xml.get_widget('tree1') )
+        self.singleOrderGet.setTree(self.getWidget('tree1') )
 
         # singlePositions
         
@@ -154,7 +158,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article-ID'),_('Number'),_('Designation'),_('Designation2')])
 
         self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID` + ' and articleid = articles.id '
-        self.singleOrderPosition.setTree(self.xml.get_widget('tree1') )
+        self.singleOrderPosition.setTree(self.getWidget('tree1') )
   
         
         self.loadEntries(self.EntriesOrderMisc)
@@ -166,7 +170,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderInvoice.setGladeXml(self.xml)
         self.singleOrderInvoice.setTreeFields([])
         self.singleOrderInvoice.setTreeOrder('id')
-        self.singleOrderInvoice.setTree(self.xml.get_widget('tree1') )
+        self.singleOrderInvoice.setTree(self.getWidget('tree1') )
         # singleOrderPayment
         
         self.loadEntries(self.EntriesOrderPayment)
@@ -178,7 +182,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
 
         self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
-        self.singleOrderPayment.setTree(self.xml.get_widget('tree1') )
+        self.singleOrderPayment.setTree(self.getWidget('tree1') )
   
         # Menu-items
         self.initMenuItems()
@@ -435,6 +439,10 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrder.deleteRecord()
 
  
+    def on_DMS_activate(self, event):
+        print 'show ext. Infos '
+        dms = cuon.DMS.dms.dmswindow(self.allTables,self.MN['Order'], {'1':self.singleOrder.ID})
+        
     #Menu Gets
   
     def on_GetsSave1_activate(self, event):
@@ -656,6 +664,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         liAdr = self.singlePartner.getAddress(iAdrNumber)
         self.setTextbuffer(eAdrField,liAdr)
 
+  
 
 
     def on_bSearchForwardingAgency_clicked(self, event):
@@ -698,6 +707,21 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         else:
             self.getWidget('eTaxVatForAllPositionsID').set_text('')
  
+ 
+ 
+
+        # staff search
+    def on_bSearchStaff_clicked(self, event):
+        staffw = cuon.Staff.staff.staffwindow(self.allTables)
+        staffw.setChooseEntry('chooseStaff', self.getWidget( 'eStaffNumber'))
+
+    def on_eStaffNumber_changed(self, event):
+        print 'eStaffNumber changed'
+        iStaffNumber = self.getChangedValue('eStaffNumber')
+        eStaffField = self.getWidget('eStaffName')
+        eStaffField.set_text(self.singleStaff.getFullName(iStaffNumber) )
+    
+
         # Tab Positions choose article 
     def on_bArticleSearch_clicked(self, event):
         ar = cuon.Articles.articles.articleswindow(self.allTables)
@@ -837,8 +861,8 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.createSimplePayment('creditCard1')
       
     def on_bShowExtInfo_clicked(self, event ):
-        print 'show ext. Infos '
-        dms = cuon.DMS.dms.dmswindow(self.allTables,self.MN['Order'], {'1':self.singleOrder.ID})
+        self.on_DMS_activate(event)
+        
         
     def on_bQuickAppend_clicked(self, event):
         # Qick append a positions
@@ -945,6 +969,10 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         if self.tabOption == self.tabPayment:
             self.on_payment_save_activate(event)
             
+    def on_tbInfo_clicked(self,  event):
+        if self.tabOption == self.tabOrder:
+            self.on_DMS_activate(event)    
+        
             
     def refreshTree(self):
         self.singleOrder.disconnectTree()

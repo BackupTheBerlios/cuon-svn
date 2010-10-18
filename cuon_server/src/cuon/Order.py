@@ -163,6 +163,10 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " from orderbook where id = " + `orderid`
         sSql += self.getWhere(None, dicUser,2)
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        for row in liResult:
+            if row['discount'] == None or row['discount'] in self.liSQL_ERRORS:
+                row['discount'] = 0.0
+                
         top_id = self .getToPID({'orderid':orderid},  dicUser)
         
 #        sSql2 = 'select order_top as top_id from orderinvoice where orderid = ' +  `orderid`
