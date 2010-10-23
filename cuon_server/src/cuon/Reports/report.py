@@ -636,8 +636,8 @@ class report(MyXML):
                             self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY1']
                             self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderY'] - self.dicPage['detailsY2']
                         else:
-                            self.dicPage['beginPageDetailsY'] =  self.dicPage['beginPageHeaderOtherSitesY'] - self.dicPage['detailsY1']
-                            self.dicPage['endPageDetailsY'] =  self.dicPage['beginPageHeaderOtherSitesY'] - self.dicPage['detailsY2']
+                            self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] - self.dicPage['detailsY1']
+                            self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] - self.dicPage['detailsY2']
 
 
 
