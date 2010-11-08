@@ -192,8 +192,8 @@
 
  <Entries>      
       <Entry-Name>cuon</Entry-Name>
-      <Entry-File>preferences_printing.xml</Entry-File>
-      <Entry-FileValue>../usr/share/cuon/entry_preferences_printing.xml</Entry-FileValue>
+      <Entry-File>preferences_com.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_preferences_com.xml</Entry-FileValue>
     </Entries>
 <Entries>       
       <Entry-Name>cuon</Entry-Name>

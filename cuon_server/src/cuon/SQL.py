@@ -157,7 +157,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         return dicResult
      
         
-    def xmlrpc_getListEntries(self, dicEntries, sTable, sSort, sWhere="", dicUser={}, bDistinct=False):
+    def xmlrpc_getListEntries(self, dicEntries, sTable, sSort, sWhere="", dicUser={}, bDistinct=False,  liFields=None):
         #print 'start xmlrpc_getListEntries'
         
         import string
@@ -165,16 +165,21 @@ class SQL(xmlrpc.XMLRPC, basics):
         
         if sWhere == None:
             sWhere = ''
-        print 'table = ', sTable
-        ok = False
+        #print 'table = ', sTable
         
-        for cModul in self.liModules:
-            if not ok:
-                for li in self.dicLimitTables[cModul]['list']:
-                    if li == sTable:
-                        ok = True
-                        self.LIMITSQL = self.dicLimitTables[cModul]['limit']
-                        
+        
+#        for cModul in self.liModules:
+#            if not ok:
+#                for li in self.dicLimitTables[cModul]['list']:
+#                    if li == sTable:
+#                        
+#                        self.LIMITSQL = self.dicLimitTables[cModul]['limit']
+        
+        try:
+            self.LIMITSQL = self.dicLimitTables[sTable]
+        except:
+            self.LIMITSQL = 100000
+            
         
         #dicEntries['status'] = 'string'
         if bDistinct:
@@ -189,7 +194,10 @@ class SQL(xmlrpc.XMLRPC, basics):
         except Exception, params:
             #print Exception, params
             pass
-        for i in dicEntries.keys():
+        for i in liFields:
+            if i == 'id':
+                i = sTable + '.id'
+                
             if dicEntries[i] == 'date':
                 sSql = sSql + "to_char(" + i + ",  \'" + self.DIC_USER['SQLDateFormat'] + "\') as " + i  + ', '
             elif dicEntries[i] == 'time':
@@ -248,7 +256,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                 
         
         #self.writeLog(repr(result))
-        
+        print result
         return result
         
     def xmlrpc_loadRecord(self, nameOfTable, record, dicUser , dicColumns):

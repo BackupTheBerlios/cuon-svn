@@ -30,4 +30,16 @@
        END ;
     ' LANGUAGE 'plpgsql'; 
  
-   
+            # first set new li scheduls
+
+CREATE OR REPLACE FUNCTION fct_getSchedulTime(  iTimeBegin int, iTimeEnd int , aTimes char[] ,recId int) returns  varchar AS '
+ 
+     DECLARE
+    sSql    text ;
+    sTime varchar;
+    BEGIN 
+        sTime := aTimes[iTimeBegin] || '' - '' ||  aTimes[iTimeEnd]  ;
+        
+    return sTime ;
+       END ;
+    ' LANGUAGE 'plpgsql'; 

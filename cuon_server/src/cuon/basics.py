@@ -303,12 +303,12 @@ class basics(xmlrpc.XMLRPC):
         WEB_SERVER = "http://" + self.WEB_HOST + ":" + `self.WEB_PORT`
         self.web_server = xmlrpclib.ServerProxy(WEB_SERVER)
         # Limits
-        self.LIMITSQL = 2000
-        self.LIMITGARDEN = 100
-        self.LIMITADDRESS = 100
-        self.LIMITARTICLES = 100
-        self.LIMITPROJECT = 50
-        self.LIMITORDER = 100
+        self.LIMITSQL = 400000
+        self.LIMITGARDEN = 400000
+        self.LIMITADDRESS = 400000
+        self.LIMITARTICLES = 400000
+        self.LIMITPROJECT = 400000
+        self.LIMITORDER = 400000
         
         
         try:
@@ -344,21 +344,142 @@ class basics(xmlrpc.XMLRPC):
     
         self.liModules = []
         self.dicLimitTables = {}
-        self.dicLimitTables['GARDEN'] = {'list':['hibernation', 'hibernation_plant', 'botany'],'limit':self.LIMITGARDEN}
-        self.liModules.append('GARDEN')
         
-        self.dicLimitTables['ADDRESS'] = {'list':['address'], 'limit':self.LIMITADDRESS}
-        self.liModules.append('ADDRESS')
+        # Garden
+        for i in ['hibernation', 'hibernation_plant', 'botany']:
+            
+            self.dicLimitTables[i] = self.LIMITGARDEN
+            
+        for i in ['address', 'parner', 'partner_schedul']:
+            
+            self.dicLimitTables[i] = self.LIMITADDRESS
+            
+        for i in ['articles']:
+            
+            self.dicLimitTables[i] = self.LIMITARTICLES
         
-        self.dicLimitTables['PROJECTS'] = {'list':['projects', 'project_phases'], 'limit':self.LIMITPROJECT}
-        self.liModules.append('PROJECTS')
+        for i in ['projects', 'project_phases']:
+            
+            self.dicLimitTables[i] = self.LIMITPROJECT
+        
+#        self.dicLimitTables['GARDEN'] = {'list':['hibernation', 'hibernation_plant', 'botany'],'limit':self.LIMITGARDEN}
+#        self.liModules.append('GARDEN')
+#        
+#        self.dicLimitTables['ADDRESS'] = {'list':['address'], 'limit':self.LIMITADDRESS}
+#        self.liModules.append('ADDRESS')
+#        
+#        self.dicLimitTables['PROJECTS'] = {'list':['projects', 'project_phases'], 'limit':self.LIMITPROJECT}
+#        self.liModules.append('PROJECTS')
+#        
+        
+        
+        
         self.OrderStatus  = {}
         self.OrderStatus['OrderStart'] = 0
         self.OrderStatus['OrderEnd'] = 299
         self.OrderStatus['ProposalStart'] = 300
         self.OrderStatus['ProposalEnd'] = 399
             
-    
+        self.liTime = []
+        
+        self.liTime.append('0:00')
+        self.liTime.append('0:15')
+        self.liTime.append('0:30')
+        self.liTime.append('0:45')
+        self.liTime.append('1:00')
+        self.liTime.append('1:15')
+        self.liTime.append('1:30')
+        self.liTime.append('1:45')
+        self.liTime.append('2:00')
+        self.liTime.append('2:15')
+        self.liTime.append('2:30')
+        self.liTime.append('2:45')
+        self.liTime.append('3:00')
+        self.liTime.append('3:15')
+        self.liTime.append('3:30')
+        self.liTime.append('3:45')
+        self.liTime.append('4:00')
+        self.liTime.append('4:15')
+        self.liTime.append('4:30')
+        self.liTime.append('4:45')
+        self.liTime.append('5:00')
+        self.liTime.append('5:15')
+        self.liTime.append('5:30')
+        self.liTime.append('5:45')
+        self.liTime.append('6:00')
+        self.liTime.append('6:15')
+        self.liTime.append('6:30')
+        self.liTime.append('6:45')
+        self.liTime.append('7:00')
+        self.liTime.append('7:15')
+        self.liTime.append('7:30')
+        self.liTime.append('7:45')
+        self.liTime.append('8:00')
+        self.liTime.append('8:15')
+        self.liTime.append('8:30')
+        self.liTime.append('8:45')
+        self.liTime.append('9:00')
+        self.liTime.append('9:15')
+        self.liTime.append('9:30')
+        self.liTime.append('9:45')
+        self.liTime.append('10:00')
+        self.liTime.append('10:15')
+        self.liTime.append('10:30')
+        self.liTime.append('10:45')
+        self.liTime.append('11:00')
+        self.liTime.append('11:15')
+        self.liTime.append('11:30')
+        self.liTime.append('11:45')
+        self.liTime.append('12:00')
+        self.liTime.append('12:15')
+        self.liTime.append('12:30')
+        self.liTime.append('12:45')
+        self.liTime.append('13:00')
+        self.liTime.append('13:15')
+        self.liTime.append('13:30')
+        self.liTime.append('13:45')
+        self.liTime.append('14:00')
+        self.liTime.append('14:15')
+        self.liTime.append('14:30')
+        self.liTime.append('14:45')
+        self.liTime.append('15:00')
+        self.liTime.append('15:15')
+        self.liTime.append('15:30')
+        self.liTime.append('15:45')
+        self.liTime.append('16:00')
+        self.liTime.append('16:15')
+        self.liTime.append('16:30')
+        self.liTime.append('16:45')
+        self.liTime.append('17:00')
+        self.liTime.append('17:15')
+        self.liTime.append('17:30')
+        self.liTime.append('17:45')
+        self.liTime.append('18:00')
+        self.liTime.append('18:15')
+        self.liTime.append('18:30')
+        self.liTime.append('18:45')
+        self.liTime.append('19:00')
+        self.liTime.append('19:15')
+        self.liTime.append('19:30')
+        self.liTime.append('19:45')
+        self.liTime.append('20:00')
+        self.liTime.append('20:15')
+        self.liTime.append('20:30')
+        self.liTime.append('20:45')
+        self.liTime.append('21:00')
+        self.liTime.append('21:15')
+        self.liTime.append('21:30')
+        self.liTime.append('21:45')
+        self.liTime.append('22:00')
+        self.liTime.append('22:15')
+        self.liTime.append('22:30')
+        self.liTime.append('22:45')
+        self.liTime.append('23:00')
+        self.liTime.append('23:15')
+        self.liTime.append('23:30')
+        self.liTime.append('23:45')
+        
+        
     def getConfigOption(self, section, option, configParser = None):
         value = None
         if configParser:
@@ -490,105 +611,8 @@ class basics(xmlrpc.XMLRPC):
     
     
     def getTimeString(self, time_id):
-        dicTime = []
         
-        dicTime.append('0:00')
-        dicTime.append('0:15')
-        dicTime.append('0:30')
-        dicTime.append('0:45')
-        dicTime.append('1:00')
-        dicTime.append('1:15')
-        dicTime.append('1:30')
-        dicTime.append('1:45')
-        dicTime.append('2:00')
-        dicTime.append('2:15')
-        dicTime.append('2:30')
-        dicTime.append('2:45')
-        dicTime.append('3:00')
-        dicTime.append('3:15')
-        dicTime.append('3:30')
-        dicTime.append('3:45')
-        dicTime.append('4:00')
-        dicTime.append('4:15')
-        dicTime.append('4:30')
-        dicTime.append('4:45')
-        dicTime.append('5:00')
-        dicTime.append('5:15')
-        dicTime.append('5:30')
-        dicTime.append('5:45')
-        dicTime.append('6:00')
-        dicTime.append('6:15')
-        dicTime.append('6:30')
-        dicTime.append('6:45')
-        dicTime.append('7:00')
-        dicTime.append('7:15')
-        dicTime.append('7:30')
-        dicTime.append('7:45')
-        dicTime.append('8:00')
-        dicTime.append('8:15')
-        dicTime.append('8:30')
-        dicTime.append('8:45')
-        dicTime.append('9:00')
-        dicTime.append('9:15')
-        dicTime.append('9:30')
-        dicTime.append('9:45')
-        dicTime.append('10:00')
-        dicTime.append('10:15')
-        dicTime.append('10:30')
-        dicTime.append('10:45')
-        dicTime.append('11:00')
-        dicTime.append('11:15')
-        dicTime.append('11:30')
-        dicTime.append('11:45')
-        dicTime.append('12:00')
-        dicTime.append('12:15')
-        dicTime.append('12:30')
-        dicTime.append('12:45')
-        dicTime.append('13:00')
-        dicTime.append('13:15')
-        dicTime.append('13:30')
-        dicTime.append('13:45')
-        dicTime.append('14:00')
-        dicTime.append('14:15')
-        dicTime.append('14:30')
-        dicTime.append('14:45')
-        dicTime.append('15:00')
-        dicTime.append('15:15')
-        dicTime.append('15:30')
-        dicTime.append('15:45')
-        dicTime.append('16:00')
-        dicTime.append('16:15')
-        dicTime.append('16:30')
-        dicTime.append('16:45')
-        dicTime.append('17:00')
-        dicTime.append('17:15')
-        dicTime.append('17:30')
-        dicTime.append('17:45')
-        dicTime.append('18:00')
-        dicTime.append('18:15')
-        dicTime.append('18:30')
-        dicTime.append('18:45')
-        dicTime.append('19:00')
-        dicTime.append('19:15')
-        dicTime.append('19:30')
-        dicTime.append('19:45')
-        dicTime.append('20:00')
-        dicTime.append('20:15')
-        dicTime.append('20:30')
-        dicTime.append('20:45')
-        dicTime.append('21:00')
-        dicTime.append('21:15')
-        dicTime.append('21:30')
-        dicTime.append('21:45')
-        dicTime.append('22:00')
-        dicTime.append('22:15')
-        dicTime.append('22:30')
-        dicTime.append('22:45')
-        dicTime.append('23:00')
-        dicTime.append('23:15')
-        dicTime.append('23:30')
-        dicTime.append('23:45')
-        return dicTime[time_id]
+        return self.liTime[time_id]
                 
               
     def getTime(self,s ):

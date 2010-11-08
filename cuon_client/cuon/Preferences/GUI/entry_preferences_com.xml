@@ -1,77 +1,58 @@
-<entries_for_table>
+  <entries_for_table>
     <table>
         <table_name>preferences</table_name>
         <entry>
-            <name>eUserEmailAddress</name>
+            <name>eTwitterName</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>email_user_address</sql_field>
+            <sql_field>twitter_user_name</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
-        </entry>
-            <entry>
-            <name>eUserEmailName</name>
+        </entry><entry>
+            <name>eTwitterPassword</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>email_user_loginname</sql_field>
+            <sql_field>twitter_user_password</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>
-            <entry>
-            <name>eUserEmailPassword</name>
+        
+         <entry>
+            <name>eTextChat</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>email_user_password</sql_field>
+            <sql_field>std_text_chat</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>
-            <entry>
-            <name>eUserEmailHost</name>
+        
+       <entry>
+            <name>e3dChat</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>email_user_host</sql_field>
+            <sql_field>std_3d_chat</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>
-            <entry>
-            <name>eUserEmailPort</name>
-            <type>textline</type>
-            <size>255</size>
-            <verify_type>int</verify_type>
-            <create_sql>1</create_sql>
-            <sql_field>email_user_port</sql_field>
-            <bg_color>0</bg_color>
-            <fg_color>0</fg_color>
-        </entry>
-            <entry>
-            <name>tvSignatur</name>
-            <type>textline</type>
-            <size>6000</size>
-            <verify_type>string</verify_type>
-            <create_sql>1</create_sql>
-            <sql_field>email_user_signatur</sql_field>
-            <bg_color>0</bg_color>
-            <fg_color>0</fg_color>
-        </entry>
-        <entry>
-            <name>eExtEmailPrg</name>
+        
+       <entry>
+            <name>eEmailPrg</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>email_ext_prg</sql_field>
+            <sql_field>std_email_prg</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>
-       
         
         </table>
          </entries_for_table>

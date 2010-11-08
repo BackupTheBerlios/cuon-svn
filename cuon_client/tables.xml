@@ -368,6 +368,16 @@
       <default />
       <comment />
     </field>
+    <field>
+      <name>client_schedul_time</name>
+      <type>text[]</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     </table>
   <!--table: tax_vat-->
   <table>
@@ -1467,7 +1477,36 @@
       <comment />
     </field>
     
-    
+     <field>
+      <name>begin_end_text</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>begin_text</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>5</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>end_text</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>5</size>
+      <default />
+      <comment />
+    </field>
   </table>
   <!--table: partner_schedul-->
   <table>

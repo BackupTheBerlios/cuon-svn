@@ -150,6 +150,11 @@ class User(defaultValues):
         self.Twitter['TwitterName'] = 'cuonOne'
         self.Twitter['TwitterPassword'] = 'barner'
         
+        self.Communications = {}
+        self.Communications['textChat'] = '/usr/bin/slitechat'
+        self.Communications['3DChat'] = '/usr/bin/phoenix'
+        self.Communications['emailPrg'] = '/usr/bin/claws-mail'
+        
         
         self.prefFinances = {}
         self.prefFinances['cash1'] = '16000'
@@ -429,6 +434,7 @@ class User(defaultValues):
         self.dicUser['Twitter'] = self.Twitter
         self.dicUser['prefFinances'] = self.prefFinances
         self.dicUser['prefLocale'] = self.prefLocale
+        self.dicUser['Communications'] = self.Communications
         
         self.refreshSqlDicUser()
         

@@ -176,7 +176,8 @@
     BEGIN
         history_table := TG_TABLE_NAME || ''_history'' ;
         
-        
+        IF TG_TABLE_NAME = ''partner_schedul'' then
+            
         if OLD.versions_uuid is NULL OR char_length(OLD.versions_uuid ) <36 then 
                 OLD.versions_uuid := fct_new_uuid()   ;
         end if ;  
@@ -260,4 +261,4 @@ CREATE OR REPLACE FUNCTION fct_delete( ) returns OPAQUE AS '
      
      ' LANGUAGE 'plpgsql'; 
  
-      
+ 

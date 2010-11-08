@@ -209,6 +209,7 @@ import pygtk
 #    sys.exit(0)
     
 import os.path
+import shlex, subprocess
 
 pygtk.require('2.0')
 
@@ -294,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 10, 'Rev': 23, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 11, 'Rev': 7, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -663,7 +664,7 @@ class MainWindow(windows):
         bib = cuon.Biblio.biblio.bibliowindow(self.allTables)
     def on_clients1_activate(self, event):
         print self.allTables
-        
+        self.dicUser = self.oUser.getDicUser()
         cli = cuon.Clients.clients.clientswindow(self.allTables)
         
     def on_staff1_activate(self, event):
@@ -811,13 +812,13 @@ class MainWindow(windows):
         sMessage =widget.get_text()
         print sMessage
         if sMessage:
-            self.rpc.callRP('Tweet.sendTwitterMessage', self.oUser.getDicUser(), sMessage)
+            self.rpc.callRP('Tweet.sendTwitterMessage', self.dicUser, sMessage)
             widget.set_text(" ")
             
     
     def on_tbTwitterGetMessages_clicked(self, event):
         print "get friends and messages"
-        liText = self.rpc.callRP('Tweet.getUserMessages', self.oUser.getDicUser())
+        liText = self.rpc.callRP('Tweet.getUserMessages', self.dicUser)
         print liText
         widget = self.getWidget('tvTwitterMessages')
         self.clearTextBuffer(widget)
@@ -827,7 +828,7 @@ class MainWindow(windows):
             
             
     def on_tbTwitterRefresh_clicked(self, event):
-        liText = self.rpc.callRP('Tweet.refreshUser', self.oUser.getDicUser())
+        liText = self.rpc.callRP('Tweet.refreshUser', self.dicUser)
         print liText
         widget = self.getWidget('tvTwitterMessages')
         self.clearTextBuffer(widget)
@@ -836,7 +837,7 @@ class MainWindow(windows):
             self.add2Textbuffer(widget, sText, direction = 'Head')
             
     def on_tbTwitterRefreshAll_clicked(self, event):
-        liText = self.rpc.callRP('Tweet.refreshAll', self.oUser.getDicUser())
+        liText = self.rpc.callRP('Tweet.refreshAll', self.dicUser)
         print liText
         widget = self.getWidget('tvTwitterMessages')
         self.clearTextBuffer(widget)
@@ -845,7 +846,7 @@ class MainWindow(windows):
                 self.add2Textbuffer(widget, sText, direction = 'Head')
             
     def on_tbTwitterFollowers_clicked(self, event):
-        liFollower, numberOfFollowers = self.rpc.callRP('Tweet.getListOfFollowers', self.oUser.getDicUser())
+        liFollower, numberOfFollowers = self.rpc.callRP('Tweet.getListOfFollowers', self.dicUser)
         print liFollower
         print numberOfFollowers
         widget = self.getWidget('tvTwitterMessages')
@@ -858,7 +859,7 @@ class MainWindow(windows):
             self.getWidget('eTwitterFollower').set_text(`numberOfFollowers`)    
                 
     def on_tbTwitterGetReplies_clicked(self, event):
-        liText = self.rpc.callRP('Tweet.getRepliesForUser', self.oUser.getDicUser())
+        liText = self.rpc.callRP('Tweet.getRepliesForUser', self.dicUser)
         print liText
         widget = self.getWidget('tvTwitterMessages')
         self.clearTextBuffer(widget)
@@ -1272,7 +1273,22 @@ class MainWindow(windows):
             adr = cuon.Addresses.addresses.addresswindow(self.allTables, addrid = self.singleAddress.ID)
 
 
-    
+    def on_bChat_clicked(self, event):
+        print self.dicUser
+        shellcommand = shlex.split(self.dicUser['Communications']['textChat'] )
+        liStatus = subprocess.Popen(shellcommand)
+        #liStatus = commands.getstatusoutput(shellcommand)
+        print shellcommand, liStatus
+    def on_b3DChat_clicked(self, event):
+        shellcommand = shlex.split(self.dicUser['Communications']['3DChat'])
+        liStatus = subprocess.Popen(shellcommand)
+        #liStatus = commands.getstatusoutput(shellcommand)
+        print shellcommand, liStatus
+    def on_bEmail_clicked(self, event):
+        shellcommand = shlex.split(self.dicUser['Communications']['emailPrg'])
+        liStatus = subprocess.Popen(shellcommand)
+        #liStatus = commands.getstatusoutput(shellcommand)
+        print shellcommand, liStatus
 
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)

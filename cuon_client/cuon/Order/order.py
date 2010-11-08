@@ -718,8 +718,9 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     def on_eStaffNumber_changed(self, event):
         print 'eStaffNumber changed'
         iStaffNumber = self.getChangedValue('eStaffNumber')
-        eStaffField = self.getWidget('eStaffName')
-        eStaffField.set_text(self.singleStaff.getFullName(iStaffNumber) )
+        if iStaffNumber > 0:
+            eStaffField = self.getWidget('eStaffName')
+            eStaffField.set_text(self.singleStaff.getFullName(iStaffNumber) )
     
 
         # Tab Positions choose article 
@@ -837,7 +838,30 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         except Exception,param:
             self.setTextbuffer(eTopField, ' ')
             print Exception,param
-
+            
+    def on_bSearchPartnerID_clicked(self, event):
+        print 'choose partner'
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'ePartnerID'))
+        
+    def on_ePartnerID_changed(self, event):
+        print 'ePartner changed'
+        iAdrNumber = self.getChangedValue('ePartnerID')
+        eAdrField = self.getWidget('ePartnerInfo')
+        sAdr = self.singlePartner.getAddressFirstlast(iAdrNumber)
+        eAdrField.set_text(sAdr)
+            
+    def on_bShowPartner_clicked(self, event):
+        print 'bshowPartner'
+        iPID = int(self.getWidget('ePartnerID').get_text())
+        print 'pid = ',  iPID
+        if iPID > 0:
+        
+            self.singlePartner.load(iPID)
+            print 'addressid = ',  self.singlePartner.getAddressID()
+            
+            adr = cuon.Addresses.addresses.addresswindow(self.allTables, self.singlePartner.getAddressID(), iPID)
+        
     def on_bSimpleCash1_clicked(self, event):
         self.createSimplePayment('cash1')
     def on_bSimpleCash2_clicked(self, event):

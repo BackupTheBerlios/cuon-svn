@@ -37,11 +37,17 @@ class SingleScheduling(SingleData):
         self.out( len(self.table.Columns))
         #
         self.partnerId = 0
+        self.liSchedulTime = None
         
-	
 
     def readNonWidgetEntries(self, dicValues):
         dicValues['partnerid'] = [self.partnerId, 'int']
+#        print 'dicValues Schedul = ',  dicValues['schedul_time_begin'],  dicValues['schedul_time_end']
+#        print '2-->',  self.liSchedulTime
+#        sSql = "select fct_getSchedulTime(" + `dicValues['schedul_time_begin'][0]` + ", " + `dicValues['schedul_time_end'][0]`+ ",  array "+`self.liSchedulTime`+" )"
+#        result = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
+       
+       
         return dicValues
     def getPartnerID(self):
         id = 0

@@ -39,6 +39,45 @@ class plantlists(windows):
         print 'started the plants list'
         self.getWidget('dialog1').show()
         
+        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        
+        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
+        if cbTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbTypeOfGrave.set_model(liststore)
+            cbTypeOfGrave.set_text_column(0)
+            cbTypeOfGrave.show()
+        
+        
+        cbService = self.getWidget('cbService')
+        if cbService:
+            liststore = gtk.ListStore(str)
+            for service in liService:
+                liststore.append([service])
+            cbService.set_model(liststore)
+            cbService.set_text_column(0)
+            cbService.show()
+        cbTypeOfPaid = self.getWidget('cbTypeOfPaid')
+        if cbTypeOfPaid:
+            liststore = gtk.ListStore(str)
+            for TypeOfPaid in liTypeOfPaid:
+                liststore.append([TypeOfPaid])
+            cbTypeOfPaid.set_model(liststore)
+            cbTypeOfPaid.set_text_column(0)
+            cbTypeOfPaid.show()
+        
+        
+        liGraveYard = self.rpc.callRP('Grave.getComboGraveyards',self.dicUser)
+        cbGraveYard = self.getWidget('cbGraveyard')
+        if cbGraveYard:
+            liststore = gtk.ListStore(str)
+            for GraveYard in liGraveYard:
+                liststore.append([GraveYard])
+            cbGraveYard.set_model(liststore)
+            cbGraveYard.set_text_column(0)
+            cbGraveYard.show()
         
     def on_bOK_clicked(self, event):
         print 'ok clicked'

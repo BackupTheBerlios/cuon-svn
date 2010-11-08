@@ -656,8 +656,7 @@
     </data>
   </object>
   <object class="GtkWindow" id="AddressMainwindow">
-    <property name="width_request">1024</property>
-    <property name="height_request">768</property>
+    <property name="width_request">1220</property>
     <property name="visible">True</property>
     <property name="title">Adresses</property>
     <property name="resizable">False</property>
@@ -805,33 +804,24 @@
                     <child type="submenu">
                       <object class="GtkMenu" id="mi_address1_menu">
                         <child>
-                          <object class="GtkImageMenuItem" id="mi_new1">
-                            <property name="label">_New</property>
+                          <object class="GtkMenuItem" id="mi_new1">
                             <property name="visible">True</property>
+                            <property name="label" translatable="yes">_New</property>
                             <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <property name="accel_group">accelgroup1</property>
-                            <signal name="activate" handler="on_new1_activate"/>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="mi_edit1">
-                            <property name="label">_Edit</property>
+                          <object class="GtkMenuItem" id="mi_edit1">
                             <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Edit</property>
                             <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <property name="accel_group">accelgroup1</property>
-                            <signal name="activate" handler="on_edit1_activate"/>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="mi_save1">
-                            <property name="label">_Save</property>
+                          <object class="GtkMenuItem" id="mi_save1">
                             <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Save</property>
                             <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <property name="accel_group">accelgroup1</property>
-                            <signal name="activate" handler="on_save1_activate"/>
                           </object>
                         </child>
                         <child>
@@ -840,13 +830,10 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="mi_print1">
-                            <property name="label">_Print</property>
+                          <object class="GtkMenuItem" id="mi_print1">
                             <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Print</property>
                             <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <property name="accel_group">accelgroup1</property>
-                            <signal name="activate" handler="on_print1_activate"/>
                           </object>
                         </child>
                         <child>
@@ -855,13 +842,10 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkImageMenuItem" id="mi_clear1">
-                            <property name="label">_Delete</property>
+                          <object class="GtkMenuItem" id="mi_clear1">
                             <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Delete</property>
                             <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <property name="accel_group">accelgroup1</property>
-                            <signal name="activate" handler="on_delete1_activate"/>
                           </object>
                         </child>
                       </object>
@@ -2016,6 +2000,7 @@
                                 <signal name="key_press_event" handler="on_key_press_event"/>
                               </object>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
@@ -2471,26 +2456,6 @@
                                 <property name="position">2</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkEntry" id="eLetterAddress4">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">&#x25CF;</property>
-                              </object>
-                              <packing>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eLetterAddress5">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">&#x25CF;</property>
-                              </object>
-                              <packing>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -2514,6 +2479,8 @@
                                 <signal name="key_press_event" handler="on_key_press_event"/>
                               </object>
                               <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
@@ -2523,6 +2490,7 @@
                                 <property name="label" translatable="yes">Postbox</property>
                               </object>
                               <packing>
+                                <property name="fill">False</property>
                                 <property name="position">2</property>
                               </packing>
                             </child>
@@ -2535,6 +2503,8 @@
                                 <signal name="key_press_event" handler="on_key_press_event"/>
                               </object>
                               <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
                                 <property name="pack_type">end</property>
                                 <property name="position">1</property>
                               </packing>
@@ -2545,16 +2515,9 @@
                             <property name="right_attach">2</property>
                             <property name="top_attach">6</property>
                             <property name="bottom_attach">7</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
                           </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                         <child>
                           <object class="GtkLabel" id="label1">
@@ -2567,6 +2530,48 @@
                             <property name="top_attach">6</property>
                             <property name="bottom_attach">7</property>
                           </packing>
+                        </child>
+                        <child>
+                          <object class="GtkHBox" id="hbox4">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkEntry" id="eLetterAddress4">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eLetterAddress5">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">10</property>
+                            <property name="bottom_attach">11</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -4988,36 +4993,6 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
                       <object class="GtkHBox" id="hbox1">
                         <property name="visible">True</property>
                         <child>
@@ -5093,6 +5068,36 @@
                         <property name="bottom_attach">13</property>
                         <property name="y_options"></property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
@@ -5691,17 +5696,8 @@
                         <child>
                           <object class="GtkComboBoxEntry" id="cbeSchedulTimeBegin">
                             <property name="visible">True</property>
-                            <property name="model">liststore7</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext7"/>
-                              <attributes>
-                                <attribute name="text">0</attribute>
-                              </attributes>
-                            </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -5721,17 +5717,8 @@
                         <child>
                           <object class="GtkComboBoxEntry" id="cbeSchedulTimeEnd">
                             <property name="visible">True</property>
-                            <property name="model">liststore6</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="cellrenderertext6"/>
-                              <attributes>
-                                <attribute name="text">0</attribute>
-                              </attributes>
-                            </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">3</property>
                           </packing>
                         </child>

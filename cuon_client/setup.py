@@ -397,19 +397,19 @@ class setup:
         
         
         # start some sql-things
-        try:
-            fsql = open('./sql_orders.sql', 'w')
-            
-            s =  "update orderbook set process_status = 500 where process_status is null  ; \n"
-            
-            fsql.write(s)
-            fsql.close()
-            
-        except:
-            print 'error in sql orders'
-           
-        self.executeSCP("./sql_orders.sql", "/root")
-        self.executeSSH('psql -U' + self.CuonAdmin + ' cuon < /root/sql_orders.sql ')
+#        try:
+#            fsql = open('./sql_orders.sql', 'w')
+#            
+#            s =  "update orderbook set process_status = 500 where process_status is null  ; \n"
+#            
+#            fsql.write(s)
+#            fsql.close()
+#            
+#        except:
+#            print 'error in sql orders'
+#           
+#        self.executeSCP("./sql_orders.sql", "/root")
+#        self.executeSSH('psql -U' + self.CuonAdmin + ' cuon < /root/sql_orders.sql ')
         
     def install_client(self):
         print 'client'

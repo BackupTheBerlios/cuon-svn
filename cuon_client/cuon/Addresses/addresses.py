@@ -162,8 +162,64 @@ class addresswindow(chooseWindows):
         self.EntriesPartnerSchedul = 'partner_schedul.xml'
         self.EntriesNotes = 'address_notes.xml'
         
-        #print 'time 4 = ', time.localtime()
+        #print 'time 4 = '
+        liFashion, liTrade,liTurnover,liLegalform, self.liSchedulTime = self.rpc.callRP('Address.getComboBoxEntries',self.dicUser)
+        #print liFashion, liTrade,liTurnover,liLegalform, self.liSchedulTime
         
+        cbFashion = self.getWidget('cbFashion')
+        if cbFashion:
+            liststore = gtk.ListStore(str)
+            for fashion in liFashion:
+                liststore.append([fashion])
+            cbFashion.set_model(liststore)
+            cbFashion.set_text_column(0)
+            cbFashion.show()
+        
+        cbTrade = self.getWidget('cbTrade')
+        if cbTrade:
+            liststore = gtk.ListStore(str)
+            for trade in liTrade:
+                liststore.append([trade])
+            cbTrade.set_model(liststore)
+            cbTrade.set_text_column(0)
+            cbTrade.show()
+                
+            
+        cbTurnover = self.getWidget('cbTurnover')
+        if cbTurnover:
+            liststore = gtk.ListStore(str)
+            for turnover in liTurnover:
+                liststore.append([turnover])
+            cbTurnover.set_model(liststore)
+            cbTurnover.set_text_column(0)
+            cbTurnover.show()
+        
+        
+        
+        cbLegalform = self.getWidget('cbLegalForm')
+        if cbLegalform:
+            liststore = gtk.ListStore(str)
+            for legalform in liLegalform:
+                liststore.append([legalform])
+            cbLegalform.set_model(liststore)
+            cbLegalform.set_text_column(0)
+            cbLegalform.show()
+        
+        cbSchedultime = self.getWidget('cbeSchedulTimeBegin')
+        cbSchedultime2 = self.getWidget('cbeSchedulTimeEnd')
+        if cbSchedultime and cbSchedultime2:
+            liststore = gtk.ListStore(str)
+            if self.liSchedulTime != ['NONE'] :
+                for timeBegin in self.liSchedulTime:
+                    liststore.append([timeBegin])
+                cbSchedultime.set_model(liststore)
+                cbSchedultime.set_text_column(0)
+                cbSchedultime.show()
+                cbSchedultime2.set_model(liststore)
+                cbSchedultime2.set_text_column(0)
+                cbSchedultime2.show()
+                
+        # load entries
         self.loadEntries(self.EntriesAddresses)
         
         self.singleAddress.setEntries(self.getDataEntries('addresses.xml') )
@@ -219,25 +275,31 @@ class addresswindow(chooseWindows):
         self.singlePartner.setListHeader([_('Name of partner'), _('Firstname of partner'), _('City')])
 
         self.singlePartner.sWhere  ='where addressid = ' + `self.singleAddress.ID`
-        if partnerid > 0:
-            pass
-            #self.singlePartner.sWhere  += ' and id = ' + `partnerid`
+      
         self.singlePartner.setTree(self.getWidget('tv_partner') )
         #print 'time 8 = ', time.localtime()
 
 
 
         #singleScheduling
-        
+       
+         
         self.loadEntries(self.EntriesPartnerSchedul )
         self.singleSchedul.setEntries(self.getDataEntries('partner_schedul.xml') )
         self.singleSchedul.setGladeXml(self.xml)
+       
         self.singleSchedul.setTreeFields( ['schedul_date',"to_char(round(schedul_time_begin/4),'99') || ':' || to_char(round(mod(schedul_time_begin,4)*15,0),'09MI') as begindate ","to_char(round(schedul_time_end/4),'99') || ':' || to_char(round(mod(schedul_time_end,4)*15,0),'09MI') as enddate ",'short_remark','priority','process_status'] )
-        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+
+        #liPartnerSchedul =["schedul_date", "fct_getSchedulTime(schedul_time_begin,schedul_time_end,  array "+`liSchedulTime`+" )","short_remark","priority","process_status" ]       
+        #liPartnerSchedul =["schedul_date", "short_remark","priority","process_status" ]       
+
+        #self.singleSchedul.setTreeFields( liPartnerSchedul)
+
+        self.singleSchedul.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_STRING,  gobject.TYPE_STRING,  gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         #self.singleSchedul.setTreeFields( [ 'short_remark','priority','process_status'] )
         #self.singleSchedul.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT, gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         self.singleSchedul.setTreeOrder("to_date(schedul_date," + "'" + self.dicUser['SQLDateFormat'] + "')" + ',schedul_time_begin')
-        self.singleSchedul.setListHeader([_('Date '),_('Begin'), _('End'), _('shortRemark'), _('Priority'), _('Status')])
+        self.singleSchedul.setListHeader([_('Date '), _("begin"),  _("end"),   _('short Remark'), _('Priority'), _('Status')])
  
 
         self.singleSchedul.sWhere  ='where partnerid = ' + `self.singlePartner.ID` + ' and process_status != 999 '
@@ -265,49 +327,7 @@ class addresswindow(chooseWindows):
         
         self.cbSearchPartner = self.getWidget('cbSearchPartner')
         
-        liFashion, liTrade,liTurnover,liLegalform = self.rpc.callRP('Address.getComboBoxEntries',self.dicUser)
-        #print liFashion, liTrade,liTurnover,liLegalform
-        
-        cbFashion = self.getWidget('cbFashion')
-        if cbFashion:
-            liststore = gtk.ListStore(str)
-            for fashion in liFashion:
-                liststore.append([fashion])
-            cbFashion.set_model(liststore)
-            cbFashion.set_text_column(0)
-            cbFashion.show()
-        
-        cbTrade = self.getWidget('cbTrade')
-        if cbTrade:
-            liststore = gtk.ListStore(str)
-            for trade in liTrade:
-                liststore.append([trade])
-            cbTrade.set_model(liststore)
-            cbTrade.set_text_column(0)
-            cbTrade.show()
-                
-            
-        cbTurnover = self.getWidget('cbTurnover')
-        if cbTurnover:
-            liststore = gtk.ListStore(str)
-            for turnover in liTurnover:
-                liststore.append([turnover])
-            cbTurnover.set_model(liststore)
-            cbTurnover.set_text_column(0)
-            cbTurnover.show()
-        
-        
-        
-        cbLegalform = self.getWidget('cbLegalForm')
-        if cbLegalform:
-            liststore = gtk.ListStore(str)
-            for legalform in liLegalform:
-                liststore.append([legalform])
-            cbLegalform.set_model(liststore)
-            cbLegalform.set_text_column(0)
-            cbLegalform.show()
-        
-        
+       
         # buttons from other gpl module
         setGraveButton,  setGraveButtonPosition = self.rpc.callRP('Address.getButtonGrave',self.dicUser)
         print "gravebutton =",   setGraveButton,  setGraveButtonPosition
@@ -527,8 +547,15 @@ class addresswindow(chooseWindows):
         
         self.win1.add_accel_group(self.accel_group)
         #print 'time 21 = ', time.localtime()
-        
-        self.tabChanged()
+        if partnerid > 0:
+            self.tabChanged()
+            self.singlePartner.sWhere  += ' and id = ' + `partnerid`
+            self.setMainwindowNotebook('F4')
+          #
+
+        else:
+            
+            self.tabChanged()
         
         
     def CleanUp(self):
@@ -1922,6 +1949,8 @@ class addresswindow(chooseWindows):
         gaves = cuon.Graves.grave.graveswindow(self.allTables,  addressid = self.singleAddress.ID,  newGrave = True)
         
     
+    
+        
         
             
     def refreshTree(self):

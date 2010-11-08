@@ -14,16 +14,23 @@ class Address(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
+        
     def xmlrpc_getComboBoxEntries(self, dicUser):
+        print 'get comboBox Entries'
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
         liTrade0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTrade', cpServer)
         liTurnover0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTurnover', cpServer)
         liLegalform0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbLegalform', cpServer)
         liFashion0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbFashion', cpServer)
+        liSchedulTime0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbSchedulTime', cpServer)
         liTrade = ['NONE']
         liTurnover = ['NONE']
         liLegalform = ['NONE']
         liFashion = ['NONE']
+        print self.liTime
+        
+        liSchedulTime = self.liTime
+        
         if liTrade0:
             liTrade = liTrade0.split(',')
         if liTurnover0:
@@ -32,10 +39,14 @@ class Address(xmlrpc.XMLRPC, basics):
             liLegalform = liLegalform0.split(',')
         if liFashion0:
             liFashion = liFashion0.split(',')
-            
-        return liFashion, liTrade,liTurnover,liLegalform
+        if liSchedulTime0:
+            print liSchedulTime0
+            liSchedulTime.extend(liSchedulTime0.split(',') )
+        print 'short before return = ',  liSchedulTime
         
+        return liFashion, liTrade,liTurnover,liLegalform,  liSchedulTime
         
+    
     def xmlrpc_getAddress(self,id, dicUser ):
     
         sSql = 'select address, lastname, lastname2,firstname, street, zip, city, ' 

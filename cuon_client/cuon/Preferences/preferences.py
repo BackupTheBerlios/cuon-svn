@@ -55,7 +55,7 @@ class preferenceswindow(windows):
         print 'set Entries'
 
         self.EntriesPreferences = 'preferences.xml'
-        self.EntriesPreferencesPrinting = 'preferences_printing.xml'
+        self.EntriesPreferencesCommunication = 'preferences_com.xml'
         self.EntriesPreferencesExecutables = 'preferencesExecutables.xml'
         #self.EntriesPreferencesPathToDocs = 'preferences_path_to_docs.xml'
         self.EntriesPreferencesScanner = 'preferences_scanner.xml'
@@ -64,7 +64,7 @@ class preferenceswindow(windows):
 
         print 'load entries'
         self.loadEntries(self.EntriesPreferences)
-        self.loadEntries(self.EntriesPreferencesPrinting)
+        self.loadEntries(self.EntriesPreferencesCommunication)
         self.loadEntries(self.EntriesPreferencesExecutables)
         #self.loadEntries(self.EntriesPreferencesPathToDocs)
         self.loadEntries(self.EntriesPreferencesScanner)
@@ -80,7 +80,7 @@ class preferenceswindow(windows):
         self.singlePreferences.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singlePreferences.setTreeOrder('profile_name')
         self.singlePreferences.setListHeader([_('Profile'), _('Description') ])
-        self.singlePreferences.setTree(self.xml.get_widget('tree1') )
+        self.singlePreferences.setTree(self.getWidget('tree1') )
 
 
         # Menu-items
@@ -101,7 +101,7 @@ class preferenceswindow(windows):
 
         # tabs from notebook
         self.tabProfile = 0
-        self.tabPrinting = 1
+        self.tabCommunication = 1
         self.tabPathToExecutables = 2
         self.tabEmail = 3
         self.tabScanner = 4
@@ -132,10 +132,11 @@ class preferenceswindow(windows):
 
         
     def on_edit1_activate(self, event):
+        print "tabOption = ",  self.tabOption
         if self.tabOption == self.tabProfile:
             self.setEntriesEditable(self.EntriesPreferences, True)
-        elif self.tabOption == self.tabPrinting:
-            self.setEntriesEditable(self.EntriesPreferencesPrinting, True)
+        elif self.tabOption == self.tabCommunication:
+            self.setEntriesEditable(self.EntriesPreferencesCommunication, True)
         elif self.tabOption == self.tabPathToExecutables:
             self.setEntriesEditable(self.EntriesPreferencesExecutables, True)
         elif self.tabOption == self.tabEmail:
@@ -199,10 +200,10 @@ class preferenceswindow(windows):
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
 
-        elif self.tabOption == self.tabPrinting:
+        elif self.tabOption == self.tabCommunication:
             self.editAction = 'editProfile'
             self.setTreeVisible(False)
-            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesPrinting) )
+            self.singlePreferences.setEntries(self.getDataEntries(self.EntriesPreferencesCommunication) )
             # set the Entries manually, because there is no tree event
             self.singlePreferences.fillEntries(self.singlePreferences.ID)
             

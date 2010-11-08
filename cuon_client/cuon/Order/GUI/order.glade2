@@ -1771,11 +1771,11 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton" id="bSearchPartner">
+                          <object class="GtkButton" id="bShowPartner">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <signal name="clicked" handler="on_bSearchPartner_clicked"/>
+                            <signal name="clicked" handler="on_bShowPartner_clicked"/>
                             <child>
                               <object class="GtkAlignment" id="alignment6">
                                 <property name="visible">True</property>
@@ -1897,15 +1897,6 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
                       <object class="GtkHSeparator" id="hseparator1">
                         <property name="visible">True</property>
                       </object>
@@ -1913,6 +1904,15 @@
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>

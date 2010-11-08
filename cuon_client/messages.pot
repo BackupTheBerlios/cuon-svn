@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-12 15:55+0200\n"
+"POT-Creation-Date: 2010-10-26 19:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 #: cuon/Garden/SingleHibernationPlant.py:41 cuon/Graves/grave.py:146
 #: cuon/Graves/grave.py:159 cuon/Graves/grave.py:173 cuon/Graves/grave.py:186
 #: cuon/Graves/grave.py:200 cuon/Graves/grave.py:213 cuon/Graves/grave.py:228
-#: cuon/Order/order.py:118 cuon/Proposal/proposal.py:113
+#: cuon/Order/order.py:122 cuon/Proposal/proposal.py:113
 msgid "number"
 msgstr ""
 
@@ -114,20 +114,20 @@ msgstr ""
 msgid "article-ID"
 msgstr ""
 
-#: cuon/Order/order.py:118 cuon/Proposal/proposal.py:113
+#: cuon/Order/order.py:122 cuon/Proposal/proposal.py:113
 #: cuon/Stock/stock.py:74
 msgid "designation"
 msgstr ""
 
-#: cuon/Order/order.py:154 cuon/Proposal/proposal.py:151
+#: cuon/Order/order.py:158 cuon/Proposal/proposal.py:151
 msgid "Designation2"
 msgstr ""
 
-#: cuon/Order/order.py:345
+#: cuon/Order/order.py:349
 msgid "invoice"
 msgstr ""
 
-#: cuon/Order/order.py:347
+#: cuon/Order/order.py:351
 msgid "payments"
 msgstr ""
 
@@ -255,11 +255,11 @@ msgstr ""
 msgid "Doc.-Date"
 msgstr ""
 
-#: Cuon.py:1136
+#: Cuon.py:1144
 msgid "Names"
 msgstr ""
 
-#: Cuon.py:1542
+#: Cuon.py:1561
 msgid "Debug by C.U.O.N. = "
 msgstr ""
 
@@ -279,16 +279,16 @@ msgstr ""
 #: cuon/XmlValues/xmlvalues.glade2:29 cuon/Editor/GUI/editor.glade2:41
 #: cuon/Editor/GUI/prgeditor.glade2:41 cuon/Biblio/GUI/biblio.glade2:41
 #: cuon/Graves/GUI/graves.glade2:25 cuon/Graves/GUI/graveyard.glade2:39
-#: cuon/Order/GUI/order.glade2:41 cuon/Bank/GUI/bank.glade2:38
-#: cuon/Proposal/GUI/proposal.glade2:41 cuon/AI/GUI/ai.glade2:40
-#: cuon/Web2/GUI/web2.glade2:38 cuon/Stock/GUI/stock.glade2:40
-#: cuon/Preferences/GUI/preferences.glade2:38 cuon/Staff/GUI/staff.glade2:20
-#: cuon/User/GUI/user.glade2:40 cuon/Project/GUI/project.glade2:44
-#: cuon/Addresses/GUI/addresses.glade2:49 cuon/Addresses/GUI/contact.glade2:41
-#: cuon/Clients/GUI/clients.glade2:38 cuon/Skeleton/GUI/skeleton.glade2:32
-#: cuon/DMS/GUI/dms.glade2:24 cuon/Think/GUI/think.glade2:40
-#: cuon/Articles/GUI/materialGroup.glade2:40
-#: cuon/Articles/GUI/articles.glade2:43
+#: cuon/Graves/GUI/graves_list.glade2:19 cuon/Order/GUI/order.glade2:21
+#: cuon/Bank/GUI/bank.glade2:38 cuon/Proposal/GUI/proposal.glade2:41
+#: cuon/AI/GUI/ai.glade2:40 cuon/Web2/GUI/web2.glade2:38
+#: cuon/Stock/GUI/stock.glade2:40 cuon/Preferences/GUI/preferences.glade2:38
+#: cuon/Staff/GUI/staff.glade2:20 cuon/User/GUI/user.glade2:40
+#: cuon/Project/GUI/project.glade2:26 cuon/Addresses/GUI/addresses.glade2:685
+#: cuon/Addresses/GUI/contact.glade2:41 cuon/Clients/GUI/clients.glade2:21
+#: cuon/Skeleton/GUI/skeleton.glade2:32 cuon/DMS/GUI/dms.glade2:25
+#: cuon/Think/GUI/think.glade2:40 cuon/Articles/GUI/materialGroup.glade2:40
+#: cuon/Articles/GUI/articles.glade2:136
 msgid "_File"
 msgstr ""
 
@@ -302,11 +302,10 @@ msgstr ""
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:47
 #: cuon/XmlValues/xmlvalues.glade2:39 cuon/Graves/GUI/graveyard.glade2:48
 #: cuon/Preferences/GUI/preferences.glade2:47 cuon/Staff/GUI/staff.glade2:27
-#: cuon/Project/GUI/project.glade2:53 cuon/Addresses/GUI/addresses.glade2:58
-#: cuon/Addresses/GUI/contact.glade2:50 cuon/Clients/GUI/clients.glade2:47
-#: cuon/Skeleton/GUI/skeleton.glade2:43 cuon/DMS/GUI/dms.glade2:31
-#: cuon/Articles/GUI/materialGroup.glade2:49
-#: cuon/Articles/GUI/articles.glade2:52
+#: cuon/Project/GUI/project.glade2:33 cuon/Addresses/GUI/contact.glade2:50
+#: cuon/Clients/GUI/clients.glade2:28 cuon/Skeleton/GUI/skeleton.glade2:43
+#: cuon/DMS/GUI/dms.glade2:32 cuon/Articles/GUI/materialGroup.glade2:49
+#: cuon/Articles/GUI/articles.glade2:143
 msgid "Print S_etup..."
 msgstr ""
 
@@ -318,10 +317,10 @@ msgstr ""
 #: cuon/Garden/GUI/hibernation.glade2:69 cuon/Garden/GUI/botany.glade2:91
 #: cuon/Garden/GUI/botany.glade2:2051 cuon/Garden/GUI/garden.glade2:87
 #: cuon/Leasing/GUI/leasing.glade2:90 cuon/Graves/GUI/graveyard.glade2:86
-#: cuon/Staff/GUI/staff.glade2:60 cuon/Project/GUI/project.glade2:104
-#: cuon/Addresses/GUI/addresses.glade2:217
+#: cuon/Graves/GUI/plantlists.glade2:377 cuon/Staff/GUI/staff.glade2:60
+#: cuon/Project/GUI/project.glade2:68
 #: cuon/Articles/GUI/materialGroup.glade2:87
-#: cuon/Articles/GUI/articles.glade2:90
+#: cuon/Articles/GUI/articles.glade2:176
 msgid "choose"
 msgstr ""
 
@@ -330,7 +329,7 @@ msgid "Terms Of Payment"
 msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:232
-#: cuon/Graves/GUI/graves.glade2:2165 cuon/Order/GUI/order.glade2:5074
+#: cuon/Graves/GUI/graves.glade2:2143 cuon/Order/GUI/order.glade2:3317
 #: cuon/Proposal/GUI/proposal.glade2:4161
 msgid "choose TOP"
 msgstr ""
@@ -344,7 +343,7 @@ msgid "choose Acct"
 msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:324
-#: cuon/Clients/GUI/clients.glade2:532
+#: cuon/Clients/GUI/clients.glade2:340
 msgid "Account-Plan"
 msgstr ""
 
@@ -363,20 +362,20 @@ msgstr ""
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:305
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:314
 #: cuon/XmlValues/xmlvalues.glade2:252 cuon/Biblio/GUI/biblio.glade2:391
-#: cuon/Graves/GUI/graves.glade2:788 cuon/Graves/GUI/graves.glade2:1245
-#: cuon/Graves/GUI/graveyard.glade2:308 cuon/Order/GUI/order.glade2:734
-#: cuon/Order/GUI/order.glade2:2561 cuon/Bank/GUI/bank.glade2:328
+#: cuon/Graves/GUI/graves.glade2:766 cuon/Graves/GUI/graves.glade2:1223
+#: cuon/Graves/GUI/graveyard.glade2:308 cuon/Order/GUI/order.glade2:590
+#: cuon/Order/GUI/order.glade2:1753 cuon/Bank/GUI/bank.glade2:328
 #: cuon/Proposal/GUI/proposal.glade2:676 cuon/Web2/GUI/web2.glade2:282
 #: cuon/Stock/GUI/stock.glade2:421 cuon/Stock/GUI/stock.glade2:820
 #: cuon/Preferences/GUI/preferences.glade2:292 cuon/Staff/GUI/staff.glade2:375
-#: cuon/User/GUI/user.glade2:284 cuon/Project/GUI/project.glade2:863
-#: cuon/Addresses/GUI/addresses.glade2:1395
-#: cuon/Addresses/GUI/contact.glade2:532 cuon/Clients/GUI/clients.glade2:361
-#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:311
+#: cuon/User/GUI/user.glade2:284 cuon/Project/GUI/project.glade2:609
+#: cuon/Addresses/GUI/addresses.glade2:1546
+#: cuon/Addresses/GUI/contact.glade2:532 cuon/Clients/GUI/clients.glade2:246
+#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:406
 #: cuon/Articles/GUI/materialGroup.glade2:340
-#: cuon/Articles/GUI/articles.glade2:904
-#: cuon/Articles/GUI/articles.glade2:2461
-#: cuon/Articles/GUI/articles.glade2:2755
+#: cuon/Articles/GUI/articles.glade2:812
+#: cuon/Articles/GUI/articles.glade2:1762
+#: cuon/Articles/GUI/articles.glade2:1931
 msgid "Search"
 msgstr ""
 
@@ -391,16 +390,16 @@ msgstr ""
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:885
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2076
 #: cuon/Analysis/GUI/analysis_cost.glade2:455
-#: cuon/Graves/GUI/graves.glade2:844 cuon/Graves/GUI/graves.glade2:1772
-#: cuon/Graves/GUI/graves.glade2:2398 cuon/Order/GUI/order.glade2:6660
+#: cuon/Graves/GUI/graves.glade2:822 cuon/Graves/GUI/graves.glade2:1750
+#: cuon/Graves/GUI/graves.glade2:2376 cuon/Order/GUI/order.glade2:4379
 #: cuon/Web2/GUI/web2.glade2:512 cuon/Articles/GUI/materialGroup.glade2:618
 #: GUI/cuon_config_wizard.glade2:442
 msgid "Type"
 msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:911
-#: cuon/Staff/GUI/staff.glade2:786 cuon/Addresses/GUI/addresses.glade2:2541
-#: cuon/Addresses/GUI/addresses.glade2:7232
+#: cuon/Staff/GUI/staff.glade2:786 cuon/Addresses/GUI/addresses.glade2:2243
+#: cuon/Addresses/GUI/addresses.glade2:4869
 #: cuon/Addresses/GUI/addresses_search1.glade2:393
 msgid "Country"
 msgstr ""
@@ -428,8 +427,8 @@ msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:1245
 #: cuon/Staff/GUI/staff.glade2:1697 cuon/Staff/GUI/staff.glade2:1923
-#: cuon/Project/GUI/project.glade2:1047 cuon/Project/GUI/project.glade2:1915
-#: cuon/Project/GUI/project.glade2:2438 cuon/Addresses/GUI/contact.glade2:1812
+#: cuon/Project/GUI/project.glade2:1383 cuon/Project/GUI/project.glade2:1503
+#: cuon/Project/GUI/project.glade2:1860 cuon/Addresses/GUI/contact.glade2:1812
 msgid "Days"
 msgstr ""
 
@@ -479,7 +478,7 @@ msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2016
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:528
-#: cuon/Order/GUI/order.glade2:5019 cuon/Proposal/GUI/proposal.glade2:4106
+#: cuon/Order/GUI/order.glade2:3294 cuon/Proposal/GUI/proposal.glade2:4106
 msgid "Terms of Payment"
 msgstr ""
 
@@ -515,8 +514,8 @@ msgstr ""
 
 #: cuon/E_Mail/GUI/e_mail.glade2:38
 #: cuon/Preferences/GUI/preferences.glade2:1940
-#: cuon/Staff/GUI/staff.glade2:936 cuon/Addresses/GUI/addresses.glade2:3556
-#: cuon/Addresses/GUI/addresses.glade2:5935
+#: cuon/Staff/GUI/staff.glade2:936 cuon/Addresses/GUI/addresses.glade2:2885
+#: cuon/Addresses/GUI/addresses.glade2:4230
 msgid "E-Mail"
 msgstr ""
 
@@ -535,17 +534,11 @@ msgstr ""
 
 #: cuon/Calendar/GUI/calendar.glade2:103 cuon/Login/GUI/user.glade2:92
 #: cuon/Editor/GUI/editor.glade2:105 cuon/Editor/GUI/prgeditor.glade2:105
-#: cuon/Order/GUI/order.glade2:98 cuon/Order/GUI/order.glade2:336
-#: cuon/Order/GUI/order.glade2:403 cuon/Order/GUI/order.glade2:480
+#: cuon/Order/GUI/order.glade2:70 cuon/Order/GUI/order.glade2:290
+#: cuon/Order/GUI/order.glade2:348 cuon/Order/GUI/order.glade2:415
 #: cuon/Proposal/GUI/proposal.glade2:98 cuon/Proposal/GUI/proposal.glade2:324
-#: cuon/Project/GUI/project.glade2:94 cuon/Project/GUI/project.glade2:148
-#: cuon/Project/GUI/project.glade2:325 cuon/Project/GUI/project.glade2:381
-#: cuon/Addresses/GUI/addresses.glade2:272
-#: cuon/Addresses/GUI/addresses.glade2:403
-#: cuon/Addresses/GUI/addresses.glade2:459
-#: cuon/Addresses/GUI/addresses.glade2:535
-#: cuon/Addresses/GUI/addresses.glade2:666
-#: cuon/Addresses/GUI/addresses.glade2:749
+#: cuon/Project/GUI/project.glade2:60 cuon/Project/GUI/project.glade2:97
+#: cuon/Project/GUI/project.glade2:216 cuon/Project/GUI/project.glade2:265
 msgid "_Edit"
 msgstr ""
 
@@ -580,27 +573,27 @@ msgstr ""
 #: cuon/Analysis/GUI/analysis_cost.glade2:77
 #: cuon/Leasing/GUI/leasing.glade2:10 cuon/WebShop/GUI/webshop.glade2:99
 #: cuon/Stats/GUI/stats.glade2:207 cuon/Skeleton/GUI/skeleton.glade2:9
-#: cuon/Skeleton/GUI/skeleton.glade2:74 cuon/Articles/GUI/articles.glade2:10
+#: cuon/Skeleton/GUI/skeleton.glade2:74 cuon/Articles/GUI/articles.glade2:122
 msgid "Articles"
 msgstr ""
 
 #: cuon/Analysis/GUI/analysis_cost.glade2:139
 #: cuon/Leasing/GUI/leasing.glade2:256 cuon/Leasing/GUI/leasing.glade2:3522
 #: cuon/Skeleton/GUI/skeleton.glade2:143 cuon/Skeleton/GUI/skeleton.glade2:872
-#: cuon/Articles/GUI/articles.glade2:256
-#: cuon/Articles/GUI/articles.glade2:3648
+#: cuon/Articles/GUI/articles.glade2:321
+#: cuon/Articles/GUI/articles.glade2:2481
 msgid "Purchase"
 msgstr ""
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:6758
+#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:4478
 msgid "Payment"
 msgstr ""
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:5308
+#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:3481
 msgid "monthly"
 msgstr ""
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:5327
+#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:3497
 msgid "quarterly"
 msgstr ""
 
@@ -612,7 +605,7 @@ msgstr ""
 msgid "custom period"
 msgstr ""
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:5518
+#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:3646
 msgid "custom"
 msgstr ""
 
@@ -628,7 +621,7 @@ msgstr ""
 msgid "last of period"
 msgstr ""
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:886 GUI/cuon.glade2:107
+#: cuon/Analysis/GUI/analysis_cost.glade2:886 GUI/cuon.glade2:66
 #: GUI/cuon_gtk.glade2:92
 msgid "Data"
 msgstr ""
@@ -646,8 +639,8 @@ msgstr ""
 
 #: cuon/Login/GUI/user.glade2:370 cuon/Preferences/GUI/preferences.glade2:1504
 #: cuon/User/GUI/user.glade2:11 cuon/User/GUI/user.glade2:77
-#: cuon/User/GUI/user.glade2:886 cuon/DMS/GUI/dms.glade2:891
-#: cuon/DMS/GUI/dms.glade2:1098 GUI/cuon.glade2:465 GUI/cuon_server.glade2:832
+#: cuon/User/GUI/user.glade2:886 cuon/DMS/GUI/dms.glade2:943
+#: cuon/DMS/GUI/dms.glade2:1153 GUI/cuon.glade2:379 GUI/cuon_server.glade2:832
 msgid "User"
 msgstr ""
 
@@ -668,10 +661,9 @@ msgstr ""
 #: cuon/Garden/GUI/hibernation.glade2:49 cuon/Garden/GUI/botany.glade2:68
 #: cuon/Garden/GUI/garden.glade2:64 cuon/Leasing/GUI/leasing.glade2:67
 #: cuon/Graves/GUI/graves.glade2:48 cuon/Graves/GUI/graveyard.glade2:64
-#: cuon/Staff/GUI/staff.glade2:40 cuon/Project/GUI/project.glade2:69
-#: cuon/Addresses/GUI/addresses.glade2:85
+#: cuon/Graves/GUI/graves_list.glade2:42 cuon/Staff/GUI/staff.glade2:40
 #: cuon/Articles/GUI/materialGroup.glade2:65
-#: cuon/Articles/GUI/articles.glade2:67
+#: cuon/Articles/GUI/articles.glade2:156
 msgid "close"
 msgstr ""
 
@@ -687,33 +679,33 @@ msgstr ""
 #: cuon/Leasing/GUI/leasing.glade2:375 cuon/Leasing/GUI/leasing.glade2:406
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:117
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:214
-#: cuon/Graves/GUI/graves.glade2:75 cuon/Graves/GUI/graves.glade2:169
-#: cuon/Graves/GUI/graves.glade2:217 cuon/Graves/GUI/graves.glade2:265
-#: cuon/Graves/GUI/graves.glade2:313 cuon/Graves/GUI/graves.glade2:361
-#: cuon/Graves/GUI/graves.glade2:409 cuon/Graves/GUI/graves.glade2:457
-#: cuon/Graves/GUI/graves.glade2:505 cuon/Graves/GUI/graves.glade2:553
-#: cuon/Graves/GUI/graves.glade2:612 cuon/Graves/GUI/graveyard.glade2:77
-#: cuon/Graves/GUI/graveyard.glade2:118 cuon/Order/GUI/order.glade2:214
-#: cuon/Order/GUI/order.glade2:275 cuon/Order/GUI/order.glade2:434
-#: cuon/Order/GUI/order.glade2:549 cuon/Proposal/GUI/proposal.glade2:202
+#: cuon/Graves/GUI/graves.glade2:75 cuon/Graves/GUI/graves.glade2:147
+#: cuon/Graves/GUI/graves.glade2:195 cuon/Graves/GUI/graves.glade2:243
+#: cuon/Graves/GUI/graves.glade2:291 cuon/Graves/GUI/graves.glade2:339
+#: cuon/Graves/GUI/graves.glade2:387 cuon/Graves/GUI/graves.glade2:435
+#: cuon/Graves/GUI/graves.glade2:483 cuon/Graves/GUI/graves.glade2:531
+#: cuon/Graves/GUI/graves.glade2:590 cuon/Graves/GUI/graveyard.glade2:77
+#: cuon/Graves/GUI/graveyard.glade2:118 cuon/Order/GUI/order.glade2:184
+#: cuon/Order/GUI/order.glade2:237 cuon/Order/GUI/order.glade2:375
+#: cuon/Order/GUI/order.glade2:460 cuon/Proposal/GUI/proposal.glade2:202
 #: cuon/Proposal/GUI/proposal.glade2:263 cuon/Proposal/GUI/proposal.glade2:391
 #: cuon/Proposal/GUI/proposal.glade2:469 cuon/Stock/GUI/stock.glade2:95
 #: cuon/Stock/GUI/stock.glade2:156 cuon/Stock/GUI/stock.glade2:253
 #: cuon/Staff/GUI/staff.glade2:52 cuon/Staff/GUI/staff.glade2:87
 #: cuon/Staff/GUI/staff.glade2:148 cuon/Staff/GUI/staff.glade2:188
 #: cuon/Staff/GUI/staff.glade2:223 cuon/Staff/GUI/staff.glade2:271
-#: cuon/User/GUI/user.glade2:95 cuon/Project/GUI/project.glade2:500
-#: cuon/Project/GUI/project.glade2:573 cuon/Project/GUI/project.glade2:5541
-#: cuon/Project/GUI/project.glade2:6137
-#: cuon/Addresses/GUI/addresses.glade2:110
-#: cuon/Addresses/GUI/addresses.glade2:1138
-#: cuon/Addresses/GUI/contact.glade2:209 cuon/Think/GUI/think.glade2:191
-#: cuon/Articles/GUI/materialGroup.glade2:78
+#: cuon/User/GUI/user.glade2:95 cuon/Project/GUI/project.glade2:368
+#: cuon/Project/GUI/project.glade2:449 cuon/Project/GUI/project.glade2:3894
+#: cuon/Project/GUI/project.glade2:4283
+#: cuon/Addresses/GUI/addresses.glade2:721
+#: cuon/Addresses/GUI/addresses.glade2:1360
+#: cuon/Addresses/GUI/contact.glade2:209 cuon/DMS/GUI/dms.glade2:291
+#: cuon/Think/GUI/think.glade2:191 cuon/Articles/GUI/materialGroup.glade2:78
 #: cuon/Articles/GUI/materialGroup.glade2:119
-#: cuon/Articles/GUI/articles.glade2:80 cuon/Articles/GUI/articles.glade2:121
-#: cuon/Articles/GUI/articles.glade2:191 cuon/Articles/GUI/articles.glade2:274
-#: cuon/Articles/GUI/articles.glade2:329 cuon/Articles/GUI/articles.glade2:375
-#: cuon/Articles/GUI/articles.glade2:406
+#: cuon/Articles/GUI/articles.glade2:168 cuon/Articles/GUI/articles.glade2:203
+#: cuon/Articles/GUI/articles.glade2:264 cuon/Articles/GUI/articles.glade2:336
+#: cuon/Articles/GUI/articles.glade2:384 cuon/Articles/GUI/articles.glade2:424
+#: cuon/Articles/GUI/articles.glade2:451
 msgid "Edit"
 msgstr ""
 
@@ -725,25 +717,24 @@ msgstr ""
 #: cuon/Leasing/GUI/leasing.glade2:182 cuon/Leasing/GUI/leasing.glade2:265
 #: cuon/Leasing/GUI/leasing.glade2:320 cuon/Editor/GUI/editor.glade2:270
 #: cuon/Editor/GUI/prgeditor.glade2:270 cuon/Graves/GUI/graves.glade2:67
-#: cuon/Graves/GUI/graves.glade2:161 cuon/Graves/GUI/graves.glade2:209
-#: cuon/Graves/GUI/graves.glade2:257 cuon/Graves/GUI/graves.glade2:305
-#: cuon/Graves/GUI/graves.glade2:353 cuon/Graves/GUI/graves.glade2:401
-#: cuon/Graves/GUI/graves.glade2:449 cuon/Graves/GUI/graves.glade2:497
-#: cuon/Graves/GUI/graves.glade2:545 cuon/Graves/GUI/graves.glade2:598
-#: cuon/Graves/GUI/graveyard.glade2:109 cuon/Order/GUI/order.glade2:205
-#: cuon/Order/GUI/order.glade2:266 cuon/Proposal/GUI/proposal.glade2:193
+#: cuon/Graves/GUI/graves.glade2:139 cuon/Graves/GUI/graves.glade2:187
+#: cuon/Graves/GUI/graves.glade2:235 cuon/Graves/GUI/graves.glade2:283
+#: cuon/Graves/GUI/graves.glade2:331 cuon/Graves/GUI/graves.glade2:379
+#: cuon/Graves/GUI/graves.glade2:427 cuon/Graves/GUI/graves.glade2:475
+#: cuon/Graves/GUI/graves.glade2:523 cuon/Graves/GUI/graves.glade2:576
+#: cuon/Graves/GUI/graveyard.glade2:109 cuon/Order/GUI/order.glade2:176
+#: cuon/Order/GUI/order.glade2:229 cuon/Proposal/GUI/proposal.glade2:193
 #: cuon/Proposal/GUI/proposal.glade2:254 cuon/Stock/GUI/stock.glade2:86
 #: cuon/Stock/GUI/stock.glade2:147 cuon/Stock/GUI/stock.glade2:236
 #: cuon/Staff/GUI/staff.glade2:79 cuon/Staff/GUI/staff.glade2:140
 #: cuon/Staff/GUI/staff.glade2:215 cuon/Staff/GUI/staff.glade2:263
-#: cuon/User/GUI/user.glade2:86 cuon/Project/GUI/project.glade2:427
-#: cuon/Project/GUI/project.glade2:556 cuon/Addresses/GUI/addresses.glade2:382
-#: cuon/Addresses/GUI/addresses.glade2:645
-#: cuon/Addresses/GUI/addresses.glade2:1120
-#: cuon/Addresses/GUI/contact.glade2:191 cuon/Think/GUI/think.glade2:174
-#: cuon/Articles/GUI/materialGroup.glade2:110
-#: cuon/Articles/GUI/articles.glade2:112 cuon/Articles/GUI/articles.glade2:182
-#: cuon/Articles/GUI/articles.glade2:265 cuon/Articles/GUI/articles.glade2:320
+#: cuon/User/GUI/user.glade2:86 cuon/Project/GUI/project.glade2:305
+#: cuon/Project/GUI/project.glade2:436
+#: cuon/Addresses/GUI/addresses.glade2:1346
+#: cuon/Addresses/GUI/contact.glade2:191 cuon/DMS/GUI/dms.glade2:278
+#: cuon/Think/GUI/think.glade2:174 cuon/Articles/GUI/materialGroup.glade2:110
+#: cuon/Articles/GUI/articles.glade2:195 cuon/Articles/GUI/articles.glade2:256
+#: cuon/Articles/GUI/articles.glade2:328 cuon/Articles/GUI/articles.glade2:376
 msgid "New"
 msgstr ""
 
@@ -759,31 +750,28 @@ msgstr ""
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:138
 #: cuon/Editor/GUI/editor.glade2:305 cuon/Editor/GUI/editor.glade2:306
 #: cuon/Editor/GUI/prgeditor.glade2:306 cuon/Editor/GUI/prgeditor.glade2:307
-#: cuon/Graves/GUI/graves.glade2:83 cuon/Graves/GUI/graves.glade2:177
-#: cuon/Graves/GUI/graves.glade2:225 cuon/Graves/GUI/graves.glade2:273
-#: cuon/Graves/GUI/graves.glade2:321 cuon/Graves/GUI/graves.glade2:369
-#: cuon/Graves/GUI/graves.glade2:417 cuon/Graves/GUI/graves.glade2:465
-#: cuon/Graves/GUI/graves.glade2:513 cuon/Graves/GUI/graves.glade2:561
-#: cuon/Graves/GUI/graves.glade2:626 cuon/Graves/GUI/graveyard.glade2:128
-#: cuon/Order/GUI/order.glade2:229 cuon/Order/GUI/order.glade2:290
-#: cuon/Order/GUI/order.glade2:449 cuon/Order/GUI/order.glade2:566
+#: cuon/Graves/GUI/graves.glade2:83 cuon/Graves/GUI/graves.glade2:155
+#: cuon/Graves/GUI/graves.glade2:203 cuon/Graves/GUI/graves.glade2:251
+#: cuon/Graves/GUI/graves.glade2:299 cuon/Graves/GUI/graves.glade2:347
+#: cuon/Graves/GUI/graves.glade2:395 cuon/Graves/GUI/graves.glade2:443
+#: cuon/Graves/GUI/graves.glade2:491 cuon/Graves/GUI/graves.glade2:539
+#: cuon/Graves/GUI/graves.glade2:604 cuon/Graves/GUI/graveyard.glade2:128
+#: cuon/Order/GUI/order.glade2:197 cuon/Order/GUI/order.glade2:250
+#: cuon/Order/GUI/order.glade2:388 cuon/Order/GUI/order.glade2:473
 #: cuon/Proposal/GUI/proposal.glade2:217 cuon/Proposal/GUI/proposal.glade2:278
 #: cuon/Proposal/GUI/proposal.glade2:400 cuon/Proposal/GUI/proposal.glade2:486
 #: cuon/Stock/GUI/stock.glade2:110 cuon/Stock/GUI/stock.glade2:171
 #: cuon/Stock/GUI/stock.glade2:270 cuon/Staff/GUI/staff.glade2:95
 #: cuon/Staff/GUI/staff.glade2:156 cuon/Staff/GUI/staff.glade2:196
 #: cuon/Staff/GUI/staff.glade2:231 cuon/Staff/GUI/staff.glade2:279
-#: cuon/User/GUI/user.glade2:110 cuon/Project/GUI/project.glade2:445
-#: cuon/Project/GUI/project.glade2:509 cuon/Project/GUI/project.glade2:590
-#: cuon/Addresses/GUI/addresses.glade2:480
-#: cuon/Addresses/GUI/addresses.glade2:556
-#: cuon/Addresses/GUI/addresses.glade2:687
-#: cuon/Addresses/GUI/addresses.glade2:1156
-#: cuon/Addresses/GUI/contact.glade2:227 cuon/Think/GUI/think.glade2:208
-#: cuon/Articles/GUI/materialGroup.glade2:129
-#: cuon/Articles/GUI/articles.glade2:130 cuon/Articles/GUI/articles.glade2:200
-#: cuon/Articles/GUI/articles.glade2:283 cuon/Articles/GUI/articles.glade2:338
-#: cuon/Articles/GUI/articles.glade2:384 cuon/Articles/GUI/articles.glade2:415
+#: cuon/User/GUI/user.glade2:110 cuon/Project/GUI/project.glade2:321
+#: cuon/Project/GUI/project.glade2:376 cuon/Project/GUI/project.glade2:462
+#: cuon/Addresses/GUI/addresses.glade2:1374
+#: cuon/Addresses/GUI/contact.glade2:227 cuon/DMS/GUI/dms.glade2:304
+#: cuon/Think/GUI/think.glade2:208 cuon/Articles/GUI/materialGroup.glade2:129
+#: cuon/Articles/GUI/articles.glade2:211 cuon/Articles/GUI/articles.glade2:272
+#: cuon/Articles/GUI/articles.glade2:344 cuon/Articles/GUI/articles.glade2:392
+#: cuon/Articles/GUI/articles.glade2:432 cuon/Articles/GUI/articles.glade2:459
 #: GUI/cuon_config_wizard.glade2:68
 msgid "Save"
 msgstr ""
@@ -793,22 +781,21 @@ msgstr ""
 #: cuon/Garden/GUI/garden.glade2:145 cuon/Leasing/GUI/leasing.glade2:145
 #: cuon/Leasing/GUI/leasing.glade2:215
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:266
-#: cuon/Graves/GUI/graves.glade2:96 cuon/Graves/GUI/graveyard.glade2:144
-#: cuon/Staff/GUI/staff.glade2:108 cuon/Addresses/GUI/addresses.glade2:583
-#: cuon/Articles/GUI/materialGroup.glade2:145
-#: cuon/Articles/GUI/articles.glade2:145 cuon/Articles/GUI/articles.glade2:215
+#: cuon/Graves/GUI/graveyard.glade2:144 cuon/Order/GUI/order.glade2:516
+#: cuon/Staff/GUI/staff.glade2:108 cuon/Articles/GUI/materialGroup.glade2:145
+#: cuon/Articles/GUI/articles.glade2:224 cuon/Articles/GUI/articles.glade2:285
 msgid "Print"
 msgstr ""
 
-#: cuon/Garden/GUI/hibernation.glade2:132 cuon/Graves/GUI/graves.glade2:109
+#: cuon/Garden/GUI/hibernation.glade2:132
 msgid "Incoming document"
 msgstr ""
 
-#: cuon/Garden/GUI/hibernation.glade2:140 cuon/Graves/GUI/graves.glade2:117
+#: cuon/Garden/GUI/hibernation.glade2:140
 msgid "Pickup document"
 msgstr ""
 
-#: cuon/Garden/GUI/hibernation.glade2:148 cuon/Graves/GUI/graves.glade2:125
+#: cuon/Garden/GUI/hibernation.glade2:148
 msgid "Outgoing document"
 msgstr ""
 
@@ -820,13 +807,13 @@ msgstr ""
 #: cuon/Garden/GUI/garden.glade2:215 cuon/Leasing/GUI/leasing.glade2:160
 #: cuon/Leasing/GUI/leasing.glade2:243 cuon/Leasing/GUI/leasing.glade2:298
 #: cuon/Leasing/GUI/leasing.glade2:353 cuon/Graves/GUI/graveyard.glade2:159
-#: cuon/Order/GUI/order.glade2:244 cuon/Order/GUI/order.glade2:305
+#: cuon/Order/GUI/order.glade2:210 cuon/Order/GUI/order.glade2:263
 #: cuon/Proposal/GUI/proposal.glade2:232 cuon/Proposal/GUI/proposal.glade2:293
 #: cuon/Stock/GUI/stock.glade2:125 cuon/Stock/GUI/stock.glade2:186
 #: cuon/Staff/GUI/staff.glade2:121 cuon/Staff/GUI/staff.glade2:169
 #: cuon/User/GUI/user.glade2:125 cuon/Articles/GUI/materialGroup.glade2:160
-#: cuon/Articles/GUI/articles.glade2:160 cuon/Articles/GUI/articles.glade2:243
-#: cuon/Articles/GUI/articles.glade2:298 cuon/Articles/GUI/articles.glade2:353
+#: cuon/Articles/GUI/articles.glade2:237 cuon/Articles/GUI/articles.glade2:309
+#: cuon/Articles/GUI/articles.glade2:357 cuon/Articles/GUI/articles.glade2:405
 msgid "Clear"
 msgstr ""
 
@@ -838,13 +825,15 @@ msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:225 cuon/Leasing/GUI/leasing.glade2:428
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:430
-#: cuon/Stock/GUI/stock.glade2:199 cuon/Addresses/GUI/addresses.glade2:968
-#: cuon/Articles/GUI/articles.glade2:428
+#: cuon/Graves/GUI/graves.glade2:96 cuon/Stock/GUI/stock.glade2:199
+#: cuon/Project/GUI/project.glade2:405
+#: cuon/Addresses/GUI/addresses.glade2:1224
+#: cuon/Articles/GUI/articles.glade2:471
 msgid "Lists"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:233 cuon/Leasing/GUI/leasing.glade2:450
-#: cuon/Articles/GUI/articles.glade2:450
+#: cuon/Articles/GUI/articles.glade2:490
 msgid "Pickerl"
 msgstr ""
 
@@ -855,9 +844,9 @@ msgstr ""
 #: cuon/Garden/GUI/hibernation.glade2:247
 #: cuon/Garden/GUI/hibernation.glade2:266 cuon/Leasing/GUI/leasing.glade2:468
 #: cuon/Leasing/GUI/leasing.glade2:508 cuon/Leasing/GUI/leasing.glade2:548
-#: cuon/Leasing/GUI/leasing.glade2:588 cuon/Articles/GUI/articles.glade2:468
-#: cuon/Articles/GUI/articles.glade2:508 cuon/Articles/GUI/articles.glade2:548
-#: cuon/Articles/GUI/articles.glade2:588
+#: cuon/Leasing/GUI/leasing.glade2:588 cuon/Articles/GUI/articles.glade2:504
+#: cuon/Articles/GUI/articles.glade2:539 cuon/Articles/GUI/articles.glade2:574
+#: cuon/Articles/GUI/articles.glade2:609
 msgid "standard"
 msgstr ""
 
@@ -898,12 +887,12 @@ msgid "Sequence"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:631 cuon/Garden/GUI/garden.glade2:555
-#: cuon/Order/GUI/order.glade2:1853 cuon/Proposal/GUI/proposal.glade2:1504
+#: cuon/Order/GUI/order.glade2:1288 cuon/Proposal/GUI/proposal.glade2:1504
 msgid "Customer"
 msgstr ""
 
-#: cuon/Garden/GUI/hibernation.glade2:727 cuon/Project/GUI/project.glade2:1603
-#: GUI/cuon.glade2:1249
+#: cuon/Garden/GUI/hibernation.glade2:727 cuon/Project/GUI/project.glade2:1218
+#: GUI/cuon.glade2:892
 msgid "goto Address"
 msgstr ""
 
@@ -931,20 +920,20 @@ msgstr ""
 #: cuon/Garden/GUI/hibernation.glade2:1656 cuon/Garden/GUI/botany.glade2:1736
 #: cuon/Garden/GUI/garden.glade2:1402 cuon/Garden/GUI/garden.glade2:2090
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1151
-#: cuon/Graves/GUI/graves.glade2:988
+#: cuon/Graves/GUI/graves.glade2:966 cuon/Order/GUI/order.glade2:144
 #: cuon/Preferences/GUI/preferences.glade2:3357
-#: cuon/Project/GUI/project.glade2:649 cuon/Project/GUI/project.glade2:1524
-#: cuon/Project/GUI/project.glade2:2221 cuon/Project/GUI/project.glade2:2744
-#: cuon/Project/GUI/project.glade2:3861 cuon/Project/GUI/project.glade2:4613
-#: cuon/Think/GUI/think.glade2:268 GUI/cuon.glade2:276
+#: cuon/Project/GUI/project.glade2:504 cuon/Project/GUI/project.glade2:1169
+#: cuon/Project/GUI/project.glade2:1693 cuon/Project/GUI/project.glade2:2050
+#: cuon/Project/GUI/project.glade2:2834 cuon/Project/GUI/project.glade2:3330
+#: cuon/Think/GUI/think.glade2:268 GUI/cuon.glade2:214
 msgid "DMS"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:947
 #: cuon/Garden/GUI/hibernation.glade2:1134 cuon/Garden/GUI/garden.glade2:990
-#: cuon/Garden/GUI/garden.glade2:1342 cuon/Staff/GUI/staff.glade2:7
-#: cuon/Staff/GUI/staff.glade2:72 cuon/Staff/GUI/staff.glade2:1114
-#: GUI/cuon.glade2:162
+#: cuon/Garden/GUI/garden.glade2:1342 cuon/Order/GUI/order.glade2:1850
+#: cuon/Staff/GUI/staff.glade2:7 cuon/Staff/GUI/staff.glade2:72
+#: cuon/Staff/GUI/staff.glade2:1114 GUI/cuon.glade2:114
 msgid "Staff"
 msgstr ""
 
@@ -956,7 +945,7 @@ msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:1064
 #: cuon/Garden/GUI/hibernation.glade2:1251 cuon/Garden/GUI/garden.glade2:791
-#: cuon/Garden/GUI/garden.glade2:1144 cuon/Project/GUI/project.glade2:2852
+#: cuon/Garden/GUI/garden.glade2:1144 cuon/Project/GUI/project.glade2:2169
 msgid "Staff-Nr."
 msgstr ""
 
@@ -981,14 +970,14 @@ msgid "ends"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:1394 cuon/Garden/GUI/garden.glade2:473
-#: cuon/Project/GUI/project.glade2:3159 cuon/Project/GUI/project.glade2:3443
+#: cuon/Project/GUI/project.glade2:2401 cuon/Project/GUI/project.glade2:2592
 msgid "begin"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:1422 cuon/WebShop/GUI/webshop.glade2:108
-#: cuon/Order/GUI/order.glade2:11 cuon/Order/GUI/order.glade2:79
-#: cuon/Order/GUI/order.glade2:2719 cuon/Project/GUI/project.glade2:4875
-#: cuon/Addresses/GUI/addresses.glade2:922 cuon/Stats/GUI/stats.glade2:100
+#: cuon/Order/GUI/order.glade2:9 cuon/Order/GUI/order.glade2:54
+#: cuon/Order/GUI/order.glade2:1927 cuon/Project/GUI/project.glade2:3518
+#: cuon/Addresses/GUI/addresses.glade2:1184 cuon/Stats/GUI/stats.glade2:100
 msgid "Order"
 msgstr ""
 
@@ -1000,9 +989,9 @@ msgstr ""
 msgid "choose Botany"
 msgstr ""
 
-#: cuon/Garden/GUI/hibernation.glade2:1611 cuon/Order/GUI/order.glade2:425
-#: cuon/Order/GUI/order.glade2:5872 cuon/Staff/GUI/staff.glade2:181
-#: cuon/Staff/GUI/staff.glade2:1580 cuon/Addresses/GUI/addresses.glade2:449
+#: cuon/Garden/GUI/hibernation.glade2:1611 cuon/Order/GUI/order.glade2:368
+#: cuon/Order/GUI/order.glade2:3897 cuon/Staff/GUI/staff.glade2:181
+#: cuon/Staff/GUI/staff.glade2:1580 cuon/Addresses/GUI/addresses.glade2:915
 #: cuon/Stats/GUI/stats.glade2:145 cuon/Stats/GUI/stats.glade2:167
 #: cuon/Stats/GUI/stats.glade2:216
 msgid "Misc"
@@ -1032,7 +1021,7 @@ msgid "bot. Name"
 msgstr ""
 
 #: cuon/Garden/GUI/hibernation.glade2:1761 cuon/Garden/GUI/garden.glade2:1880
-#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:1820
+#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:1923
 msgid "status"
 msgstr ""
 
@@ -1075,8 +1064,8 @@ msgstr ""
 #: cuon/Garden/GUI/botany.glade2:113 cuon/Garden/GUI/botany.glade2:168
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:96
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:205
-#: cuon/Order/GUI/order.glade2:532 cuon/Proposal/GUI/proposal.glade2:452
-#: cuon/Project/GUI/project.glade2:248 cuon/Project/GUI/project.glade2:491
+#: cuon/Order/GUI/order.glade2:447 cuon/Proposal/GUI/proposal.glade2:452
+#: cuon/Project/GUI/project.glade2:157 cuon/Project/GUI/project.glade2:360
 #: cuon/Think/GUI/think.glade2:83
 msgid "new"
 msgstr ""
@@ -1146,29 +1135,29 @@ msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:103 cuon/Leasing/GUI/leasing.glade2:2278
 #: cuon/Stock/GUI/stock.glade2:889 cuon/Skeleton/GUI/skeleton.glade2:565
-#: cuon/Skeleton/GUI/skeleton.glade2:590 cuon/Articles/GUI/articles.glade2:103
-#: cuon/Articles/GUI/articles.glade2:2278
+#: cuon/Skeleton/GUI/skeleton.glade2:590 cuon/Articles/GUI/articles.glade2:188
+#: cuon/Articles/GUI/articles.glade2:1669
 msgid "Article"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:173 cuon/Leasing/GUI/leasing.glade2:2999
-#: cuon/Articles/GUI/articles.glade2:173
-#: cuon/Articles/GUI/articles.glade2:3125
+#: cuon/Articles/GUI/articles.glade2:249
+#: cuon/Articles/GUI/articles.glade2:2172
 msgid "Parts list"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:224 cuon/Articles/GUI/articles.glade2:224
+#: cuon/Leasing/GUI/leasing.glade2:224 cuon/Articles/GUI/articles.glade2:292
 msgid "parts list"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:311 cuon/Skeleton/GUI/skeleton.glade2:1069
-#: cuon/Articles/GUI/articles.glade2:311
+#: cuon/Articles/GUI/articles.glade2:369
 msgid "Sales"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:366 cuon/Leasing/GUI/leasing.glade2:3820
-#: cuon/Articles/GUI/articles.glade2:366
-#: cuon/Articles/GUI/articles.glade2:3946 GUI/cuon.glade2:891
+#: cuon/Articles/GUI/articles.glade2:417
+#: cuon/Articles/GUI/articles.glade2:2683
 msgid "Web-Shop"
 msgstr ""
 
@@ -1176,247 +1165,244 @@ msgstr ""
 #: cuon/Stock/GUI/stock.glade2:11 cuon/Stock/GUI/stock.glade2:77
 #: cuon/Stock/GUI/stock.glade2:693
 #: cuon/Stock/GUI/stockgoods_search1.glade2:335
-#: cuon/Articles/GUI/articles.glade2:397
-#: cuon/Articles/GUI/articles.glade2:4333 GUI/cuon.glade2:266
+#: cuon/Articles/GUI/articles.glade2:444
+#: cuon/Articles/GUI/articles.glade2:2933 GUI/cuon.glade2:205
 msgid "Stock"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:437 cuon/Articles/GUI/articles.glade2:437
+#: cuon/Leasing/GUI/leasing.glade2:437 cuon/Articles/GUI/articles.glade2:478
 msgid "Articlenumber"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:459 cuon/Articles/GUI/articles.glade2:459
+#: cuon/Leasing/GUI/leasing.glade2:459 cuon/Articles/GUI/articles.glade2:497
 msgid "one row"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:477 cuon/Articles/GUI/articles.glade2:477
+#: cuon/Leasing/GUI/leasing.glade2:477 cuon/Articles/GUI/articles.glade2:512
 msgid "sp101"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:486 cuon/Articles/GUI/articles.glade2:486
+#: cuon/Leasing/GUI/leasing.glade2:486 cuon/Articles/GUI/articles.glade2:520
 msgid "sp102"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:499 cuon/Articles/GUI/articles.glade2:499
+#: cuon/Leasing/GUI/leasing.glade2:499 cuon/Articles/GUI/articles.glade2:532
 msgid "two row"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:517 cuon/Articles/GUI/articles.glade2:517
+#: cuon/Leasing/GUI/leasing.glade2:517 cuon/Articles/GUI/articles.glade2:547
 msgid "sp201"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:526 cuon/Articles/GUI/articles.glade2:526
+#: cuon/Leasing/GUI/leasing.glade2:526 cuon/Articles/GUI/articles.glade2:555
 msgid "sp202"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:539 cuon/Articles/GUI/articles.glade2:539
+#: cuon/Leasing/GUI/leasing.glade2:539 cuon/Articles/GUI/articles.glade2:567
 msgid "three row"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:557 cuon/Articles/GUI/articles.glade2:557
+#: cuon/Leasing/GUI/leasing.glade2:557 cuon/Articles/GUI/articles.glade2:582
 msgid "sp301"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:566 cuon/Articles/GUI/articles.glade2:566
+#: cuon/Leasing/GUI/leasing.glade2:566 cuon/Articles/GUI/articles.glade2:590
 msgid "sp302"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:579 cuon/Articles/GUI/articles.glade2:579
+#: cuon/Leasing/GUI/leasing.glade2:579 cuon/Articles/GUI/articles.glade2:602
 msgid "four row"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:597 cuon/Articles/GUI/articles.glade2:597
+#: cuon/Leasing/GUI/leasing.glade2:597 cuon/Articles/GUI/articles.glade2:617
 msgid "sp401"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:606 cuon/Articles/GUI/articles.glade2:606
+#: cuon/Leasing/GUI/leasing.glade2:606 cuon/Articles/GUI/articles.glade2:625
 msgid "sp402"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:858 cuon/Leasing/GUI/leasing.glade2:2411
-#: cuon/Articles/GUI/articles.glade2:858
-#: cuon/Articles/GUI/articles.glade2:2415
+#: cuon/Articles/GUI/articles.glade2:791
+#: cuon/Articles/GUI/articles.glade2:1741
 #: cuon/Articles/GUI/articles_search1.glade2:365
 msgid "Materialgroup"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:1488
+#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:1068
 #: cuon/Proposal/GUI/proposal.glade2:1088
-#: cuon/Skeleton/GUI/skeleton.glade2:480
-#: cuon/Articles/GUI/articles.glade2:1029
+#: cuon/Skeleton/GUI/skeleton.glade2:480 cuon/Articles/GUI/articles.glade2:891
 msgid "Desig."
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:4195
-#: cuon/Proposal/GUI/proposal.glade2:3374 cuon/Project/GUI/project.glade2:4105
-#: cuon/Skeleton/GUI/skeleton.glade2:513
-#: cuon/Articles/GUI/articles.glade2:1059
+#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:2755
+#: cuon/Proposal/GUI/proposal.glade2:3374 cuon/Project/GUI/project.glade2:2997
+#: cuon/Skeleton/GUI/skeleton.glade2:513 cuon/Articles/GUI/articles.glade2:905
 msgid "Unit"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:4223
+#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:2767
 #: cuon/Proposal/GUI/proposal.glade2:3402
-#: cuon/Skeleton/GUI/skeleton.glade2:530
-#: cuon/Articles/GUI/articles.glade2:1112
+#: cuon/Skeleton/GUI/skeleton.glade2:530 cuon/Articles/GUI/articles.glade2:938
 msgid "Wrapping"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:1165 cuon/Skeleton/GUI/skeleton.glade2:547
-#: cuon/Articles/GUI/articles.glade2:1165
+#: cuon/Articles/GUI/articles.glade2:971
 msgid "Qu. per Wrap."
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1216 cuon/Articles/GUI/articles.glade2:1216
+#: cuon/Leasing/GUI/leasing.glade2:1216 cuon/Articles/GUI/articles.glade2:1002
 msgid "category "
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1308 cuon/Articles/GUI/articles.glade2:1308
+#: cuon/Leasing/GUI/leasing.glade2:1308 cuon/Articles/GUI/articles.glade2:1055
 msgid "Weight"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1406 cuon/Articles/GUI/articles.glade2:1406
+#: cuon/Leasing/GUI/leasing.glade2:1406 cuon/Articles/GUI/articles.glade2:1110
 msgid "choose Manufactor"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1521 cuon/Articles/GUI/articles.glade2:1521
+#: cuon/Leasing/GUI/leasing.glade2:1521 cuon/Articles/GUI/articles.glade2:1181
 msgid "choose Material Group"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1588 cuon/Articles/GUI/articles.glade2:1588
+#: cuon/Leasing/GUI/leasing.glade2:1588 cuon/Articles/GUI/articles.glade2:1230
 msgid "Associated with"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1623 cuon/Articles/GUI/articles.glade2:1623
+#: cuon/Leasing/GUI/leasing.glade2:1623
 msgid ""
 "None\n"
 "Botany"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1695 cuon/Articles/GUI/articles.glade2:1695
+#: cuon/Leasing/GUI/leasing.glade2:1695 cuon/Articles/GUI/articles.glade2:1288
 msgid "Goto"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:1774 cuon/Graves/GUI/graves.glade2:1567
-#: cuon/Order/GUI/order.glade2:3463 cuon/Order/GUI/order.glade2:3591
+#: cuon/Leasing/GUI/leasing.glade2:1774 cuon/Graves/GUI/graves.glade2:1545
+#: cuon/Order/GUI/order.glade2:2356 cuon/Order/GUI/order.glade2:2431
 #: cuon/Proposal/GUI/proposal.glade2:2642
 #: cuon/Proposal/GUI/proposal.glade2:2770
-#: cuon/Addresses/GUI/addresses.glade2:2697
-#: cuon/Addresses/GUI/addresses.glade2:2832
-#: cuon/Articles/GUI/articles.glade2:1774
+#: cuon/Addresses/GUI/addresses.glade2:2314
+#: cuon/Addresses/GUI/addresses.glade2:2399
+#: cuon/Articles/GUI/articles.glade2:1337
 msgid "search"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:1879 cuon/Skeleton/GUI/skeleton.glade2:963
-#: cuon/Articles/GUI/articles.glade2:1879
+#: cuon/Articles/GUI/articles.glade2:1418
 msgid "Selling-Price I"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:1907 cuon/Skeleton/GUI/skeleton.glade2:986
-#: cuon/Articles/GUI/articles.glade2:1907
+#: cuon/Articles/GUI/articles.glade2:1430
 msgid "Selling-Price II"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:1935 cuon/Skeleton/GUI/skeleton.glade2:1009
-#: cuon/Articles/GUI/articles.glade2:1935
+#: cuon/Articles/GUI/articles.glade2:1444
 msgid "Selling-Price III"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:1963 cuon/Skeleton/GUI/skeleton.glade2:1032
-#: cuon/Articles/GUI/articles.glade2:1963
+#: cuon/Articles/GUI/articles.glade2:1458
 msgid "Selling-Price IV"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2090 cuon/Articles/GUI/articles.glade2:2090
+#: cuon/Leasing/GUI/leasing.glade2:2090 cuon/Articles/GUI/articles.glade2:1533
 msgid "show extendet info"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:4734
-#: cuon/Order/GUI/order.glade2:5202 cuon/Proposal/GUI/proposal.glade2:4289
-#: cuon/Articles/GUI/articles.glade2:2184
+#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:3072
+#: cuon/Order/GUI/order.glade2:3399 cuon/Proposal/GUI/proposal.glade2:4289
+#: cuon/Articles/GUI/articles.glade2:1598
 msgid "choose Tax Vat"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:2230 cuon/Stats/GUI/stats.glade2:238
 #: cuon/Articles/GUI/materialGroup.glade2:511
-#: cuon/Articles/GUI/articles.glade2:2230
+#: cuon/Articles/GUI/articles.glade2:1630
 msgid "Tax Vat"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2674 cuon/Articles/GUI/articles.glade2:2800
+#: cuon/Leasing/GUI/leasing.glade2:2674 cuon/Articles/GUI/articles.glade2:1962
 msgid "Article Des."
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2838
-#: cuon/Graves/GUI/graves.glade2:3145 cuon/Graves/GUI/graves.glade2:3452
-#: cuon/Graves/GUI/graves.glade2:3765 cuon/Graves/GUI/graves.glade2:4064
-#: cuon/Graves/GUI/graves.glade2:4362 cuon/Graves/GUI/graves.glade2:4721
-#: cuon/Project/GUI/project.glade2:3965 cuon/Articles/GUI/articles.glade2:2849
+#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2817
+#: cuon/Graves/GUI/graves.glade2:3129 cuon/Graves/GUI/graves.glade2:3440
+#: cuon/Graves/GUI/graves.glade2:3758 cuon/Graves/GUI/graves.glade2:4070
+#: cuon/Graves/GUI/graves.glade2:4382 cuon/Graves/GUI/graves.glade2:4763
+#: cuon/Project/GUI/project.glade2:2907 cuon/Articles/GUI/articles.glade2:1990
 msgid "Article-Number"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2772 cuon/Articles/GUI/articles.glade2:2898
+#: cuon/Leasing/GUI/leasing.glade2:2772 cuon/Articles/GUI/articles.glade2:2018
 msgid "Quantities"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5107
-#: cuon/Articles/GUI/articles.glade2:3089
+#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5155
+#: cuon/Articles/GUI/articles.glade2:2141
 msgid "add Article"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:3124 cuon/Skeleton/GUI/skeleton.glade2:656
-#: cuon/Articles/GUI/articles.glade2:3250
+#: cuon/Articles/GUI/articles.glade2:2236
 msgid "Vendor "
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:3152 cuon/Skeleton/GUI/skeleton.glade2:679
-#: cuon/Articles/GUI/articles.glade2:3278
+#: cuon/Articles/GUI/articles.glade2:2248
 msgid "unit price "
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:3180 cuon/Skeleton/GUI/skeleton.glade2:702
-#: cuon/Articles/GUI/articles.glade2:3306
+#: cuon/Articles/GUI/articles.glade2:2262
 msgid "Discount "
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:3208 cuon/Skeleton/GUI/skeleton.glade2:725
-#: cuon/Articles/GUI/articles.glade2:3334
+#: cuon/Articles/GUI/articles.glade2:2276
 msgid "min. Quant."
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3236 cuon/Articles/GUI/articles.glade2:3362
+#: cuon/Leasing/GUI/leasing.glade2:3236 cuon/Articles/GUI/articles.glade2:2290
 msgid "Last Date"
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:3307 cuon/Skeleton/GUI/skeleton.glade2:818
-#: cuon/Articles/GUI/articles.glade2:3433
+#: cuon/Articles/GUI/articles.glade2:2329
 msgid "choose Vendor"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3411 cuon/Articles/GUI/articles.glade2:3537
+#: cuon/Leasing/GUI/leasing.glade2:3411 cuon/Articles/GUI/articles.glade2:2402
 msgid "Nr. by Vendor"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3439 cuon/Articles/GUI/articles.glade2:3565
+#: cuon/Leasing/GUI/leasing.glade2:3439 cuon/Articles/GUI/articles.glade2:2417
 msgid "Des. by Vendor"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3656 cuon/Articles/GUI/articles.glade2:3782
+#: cuon/Leasing/GUI/leasing.glade2:3656 cuon/Articles/GUI/articles.glade2:2553
 msgid "Sale"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3699 cuon/Articles/GUI/articles.glade2:3825
+#: cuon/Leasing/GUI/leasing.glade2:3699 cuon/Articles/GUI/articles.glade2:2573
 msgid "Webshop-Article"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3721 cuon/Articles/GUI/articles.glade2:3847
+#: cuon/Leasing/GUI/leasing.glade2:3721 cuon/Articles/GUI/articles.glade2:2587
 msgid "sync. Stock"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3742 cuon/Articles/GUI/articles.glade2:3868
+#: cuon/Leasing/GUI/leasing.glade2:3742 cuon/Articles/GUI/articles.glade2:2605
 msgid "Shop-Price"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3770 cuon/Articles/GUI/articles.glade2:3896
+#: cuon/Leasing/GUI/leasing.glade2:3770
 msgid ""
 "Price I\n"
 "Price II\n"
@@ -1424,52 +1410,52 @@ msgid ""
 "Price IV\n"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3858 cuon/Articles/GUI/articles.glade2:3984
+#: cuon/Leasing/GUI/leasing.glade2:3858 cuon/Articles/GUI/articles.glade2:2702
 msgid "min. Amount"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3907 cuon/Articles/GUI/articles.glade2:4033
+#: cuon/Leasing/GUI/leasing.glade2:3907 cuon/Articles/GUI/articles.glade2:2725
 msgid "max.Amount"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3957 cuon/Articles/GUI/articles.glade2:4083
+#: cuon/Leasing/GUI/leasing.glade2:3957 cuon/Articles/GUI/articles.glade2:2750
 msgid "verify Stock"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3994 cuon/Articles/GUI/articles.glade2:4120
+#: cuon/Leasing/GUI/leasing.glade2:3994 cuon/Articles/GUI/articles.glade2:2813
 msgid "actual Stock"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4022 cuon/Articles/GUI/articles.glade2:4148
+#: cuon/Leasing/GUI/leasing.glade2:4022 cuon/Articles/GUI/articles.glade2:2824
 msgid "reserved"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4050 cuon/Articles/GUI/articles.glade2:4176
+#: cuon/Leasing/GUI/leasing.glade2:4050 cuon/Articles/GUI/articles.glade2:2837
 msgid "offer"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4078 cuon/Articles/GUI/articles.glade2:4204
+#: cuon/Leasing/GUI/leasing.glade2:4078 cuon/Articles/GUI/articles.glade2:2850
 msgid "Free"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4239 cuon/Articles/GUI/articles.glade2:4365
+#: cuon/Leasing/GUI/leasing.glade2:4239 cuon/Articles/GUI/articles.glade2:2949
 msgid "Barcode Types"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4267 cuon/Articles/GUI/articles.glade2:4393
+#: cuon/Leasing/GUI/leasing.glade2:4267 cuon/Articles/GUI/articles.glade2:2962
 msgid "Barcode"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4323 cuon/Articles/GUI/articles.glade2:4449
+#: cuon/Leasing/GUI/leasing.glade2:4323 cuon/Articles/GUI/articles.glade2:2990
 #: GUI/setup.glade2:1407
 msgid "Default"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4342 cuon/Articles/GUI/articles.glade2:4468
+#: cuon/Leasing/GUI/leasing.glade2:4342 cuon/Articles/GUI/articles.glade2:3005
 msgid "Custom"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4372 cuon/Articles/GUI/articles.glade2:4498
+#: cuon/Leasing/GUI/leasing.glade2:4372
 msgid ""
 "EAN\n"
 "UPC\n"
@@ -1487,11 +1473,11 @@ msgid ""
 "\n"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4415 cuon/Articles/GUI/articles.glade2:4541
+#: cuon/Leasing/GUI/leasing.glade2:4415 cuon/Articles/GUI/articles.glade2:3049
 msgid "geometry W x H"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4472 cuon/Articles/GUI/articles.glade2:4598
+#: cuon/Leasing/GUI/leasing.glade2:4472
 msgid ""
 "mm\n"
 "cm\n"
@@ -1500,21 +1486,21 @@ msgid ""
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:4531 cuon/Leasing/GUI/leasing.glade2:4666
-#: cuon/Articles/GUI/articles.glade2:4657
-#: cuon/Articles/GUI/articles.glade2:4792
+#: cuon/Articles/GUI/articles.glade2:3108
+#: cuon/Articles/GUI/articles.glade2:3179
 msgid " x "
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4613 cuon/Articles/GUI/articles.glade2:4739
+#: cuon/Leasing/GUI/leasing.glade2:4613 cuon/Articles/GUI/articles.glade2:3154
 msgid "Page W x H"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4745 cuon/Articles/GUI/articles.glade2:4871
+#: cuon/Leasing/GUI/leasing.glade2:4745 cuon/Articles/GUI/articles.glade2:3261
 msgid "barcode"
 msgstr ""
 
 #: cuon/WebShop/GUI/webshop.glade2:10 cuon/WebShop/GUI/webshop.glade2:316
-#: cuon/Addresses/GUI/addresses.glade2:4857
+#: cuon/Addresses/GUI/addresses.glade2:3637
 msgid "Webshop"
 msgstr ""
 
@@ -1522,7 +1508,7 @@ msgstr ""
 msgid "gtk-close"
 msgstr ""
 
-#: cuon/WebShop/GUI/webshop.glade2:72 GUI/cuon.glade2:487
+#: cuon/WebShop/GUI/webshop.glade2:72 GUI/cuon.glade2:399
 #: GUI/cuon_gtk.glade2:150
 msgid "Update"
 msgstr ""
@@ -1531,9 +1517,8 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-#: cuon/WebShop/GUI/webshop.glade2:90 cuon/Addresses/GUI/addresses.glade2:977
-#: cuon/Addresses/GUI/addresses.glade2:4040 cuon/Stats/GUI/stats.glade2:60
-#: GUI/cuon.glade2:553
+#: cuon/WebShop/GUI/webshop.glade2:90 cuon/Addresses/GUI/addresses.glade2:3193
+#: cuon/Stats/GUI/stats.glade2:60 GUI/cuon.glade2:456
 msgid "Addresses"
 msgstr ""
 
@@ -1550,26 +1535,25 @@ msgid "Quit"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:165
-#: cuon/Graves/GUI/graves.glade2:142 cuon/Graves/GUI/graves.glade2:190
-#: cuon/Graves/GUI/graves.glade2:238 cuon/Graves/GUI/graves.glade2:286
-#: cuon/Graves/GUI/graves.glade2:334 cuon/Graves/GUI/graves.glade2:382
-#: cuon/Graves/GUI/graves.glade2:430 cuon/Graves/GUI/graves.glade2:478
-#: cuon/Graves/GUI/graves.glade2:526 cuon/Graves/GUI/graves.glade2:574
-#: cuon/Graves/GUI/graves.glade2:648 cuon/Staff/GUI/staff.glade2:244
-#: cuon/Project/GUI/project.glade2:349 cuon/Project/GUI/project.glade2:405
-#: cuon/Project/GUI/project.glade2:460 cuon/Project/GUI/project.glade2:524
-#: cuon/Project/GUI/project.glade2:619
+#: cuon/Graves/GUI/graves.glade2:120 cuon/Graves/GUI/graves.glade2:168
+#: cuon/Graves/GUI/graves.glade2:216 cuon/Graves/GUI/graves.glade2:264
+#: cuon/Graves/GUI/graves.glade2:312 cuon/Graves/GUI/graves.glade2:360
+#: cuon/Graves/GUI/graves.glade2:408 cuon/Graves/GUI/graves.glade2:456
+#: cuon/Graves/GUI/graves.glade2:504 cuon/Graves/GUI/graves.glade2:552
+#: cuon/Graves/GUI/graves.glade2:626 cuon/Staff/GUI/staff.glade2:244
+#: cuon/Project/GUI/project.glade2:237 cuon/Project/GUI/project.glade2:286
+#: cuon/Project/GUI/project.glade2:334 cuon/Project/GUI/project.glade2:389
+#: cuon/Project/GUI/project.glade2:483 cuon/DMS/GUI/dms.glade2:326
 msgid "Delete"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:223
-#: cuon/Project/GUI/project.glade2:266 cuon/Addresses/GUI/addresses.glade2:424
-#: cuon/Think/GUI/think.glade2:101
+#: cuon/Project/GUI/project.glade2:173 cuon/Think/GUI/think.glade2:101
 msgid "save"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:238
-#: cuon/Staff/GUI/staff.glade2:292 cuon/Project/GUI/project.glade2:281
+#: cuon/Staff/GUI/staff.glade2:292 cuon/Project/GUI/project.glade2:186
 #: cuon/Think/GUI/think.glade2:116
 msgid "delete"
 msgstr ""
@@ -1643,7 +1627,7 @@ msgid "Custom Month"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:519
-#: cuon/Graves/GUI/graves.glade2:154 cuon/Addresses/GUI/addresses.glade2:11978
+#: cuon/Graves/GUI/graves.glade2:132 cuon/Addresses/GUI/addresses.glade2:7971
 #: cuon/Stats/GUI/stats.glade2:229
 msgid "Invoices"
 msgstr ""
@@ -1662,7 +1646,7 @@ msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:776
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:933
-#: cuon/Order/GUI/order.glade2:640 cuon/Proposal/GUI/proposal.glade2:582
+#: cuon/Order/GUI/order.glade2:543 cuon/Proposal/GUI/proposal.glade2:582
 msgid "Order-Number"
 msgstr ""
 
@@ -1691,15 +1675,14 @@ msgid "Order ID"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1226
-#: cuon/Project/GUI/project.glade2:666 cuon/Project/GUI/project.glade2:1682
-#: cuon/Addresses/GUI/addresses.glade2:1203
-#: cuon/Addresses/GUI/addresses.glade2:6803
-#: cuon/Addresses/GUI/addresses.glade2:7763
+#: cuon/Project/GUI/project.glade2:517 cuon/Project/GUI/project.glade2:1267
+#: cuon/Addresses/GUI/addresses.glade2:1408
+#: cuon/Addresses/GUI/addresses.glade2:5378
 msgid "Letter"
 msgstr ""
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1243
-#: cuon/Addresses/GUI/addresses.glade2:4990
+#: cuon/Addresses/GUI/addresses.glade2:3715
 msgid "button3"
 msgstr ""
 
@@ -1787,6 +1770,8 @@ msgstr ""
 #: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:539
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:515
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:539
+#: cuon/Graves/GUI/plantlists.glade2:47 cuon/Graves/GUI/plantlists.glade2:106
+#: cuon/Graves/GUI/plantlists.glade2:426 cuon/Graves/GUI/plantlists.glade2:484
 #: cuon/Stock/GUI/stockgoods_search1.glade2:131
 #: cuon/Stock/GUI/stockgoods_search1.glade2:227
 #: cuon/Stock/GUI/stockgoods_search1.glade2:515
@@ -1821,7 +1806,7 @@ msgstr ""
 
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:75
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:1388
-#: cuon/Order/GUI/order.glade2:6494
+#: cuon/Order/GUI/order.glade2:4258
 msgid "Cash"
 msgstr ""
 
@@ -1872,12 +1857,12 @@ msgstr ""
 
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:9
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:75
-#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:1633 GUI/cuon.glade2:299
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:1633 GUI/cuon.glade2:234
 msgid "Bookkeeping"
 msgstr ""
 
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:169
-#: cuon/DMS/GUI/dms.glade2:1029
+#: cuon/DMS/GUI/dms.glade2:1083
 msgid "All"
 msgstr ""
 
@@ -1916,23 +1901,23 @@ msgstr ""
 #: cuon/Editor/GUI/editor.glade2:115 cuon/Editor/GUI/editor.glade2:403
 #: cuon/Editor/GUI/editor.glade2:404 cuon/Editor/GUI/prgeditor.glade2:115
 #: cuon/Editor/GUI/prgeditor.glade2:404 cuon/Editor/GUI/prgeditor.glade2:405
-#: cuon/Addresses/GUI/addresses.glade2:119
-#: cuon/Addresses/GUI/addresses.glade2:9118
-#: cuon/Addresses/GUI/addresses.glade2:9675
-#: cuon/Addresses/GUI/addresses.glade2:10232
-#: cuon/Addresses/GUI/addresses.glade2:10789
-#: cuon/Addresses/GUI/addresses.glade2:11346
+#: cuon/Addresses/GUI/addresses.glade2:728
+#: cuon/Addresses/GUI/addresses.glade2:6123
+#: cuon/Addresses/GUI/addresses.glade2:6477
+#: cuon/Addresses/GUI/addresses.glade2:6832
+#: cuon/Addresses/GUI/addresses.glade2:7187
+#: cuon/Addresses/GUI/addresses.glade2:7542
 msgid "Undo"
 msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:136 cuon/Editor/GUI/editor.glade2:421
 #: cuon/Editor/GUI/editor.glade2:422 cuon/Editor/GUI/prgeditor.glade2:136
 #: cuon/Editor/GUI/prgeditor.glade2:422 cuon/Editor/GUI/prgeditor.glade2:423
-#: cuon/Addresses/GUI/addresses.glade2:9197
-#: cuon/Addresses/GUI/addresses.glade2:9754
-#: cuon/Addresses/GUI/addresses.glade2:10311
-#: cuon/Addresses/GUI/addresses.glade2:10868
-#: cuon/Addresses/GUI/addresses.glade2:11425
+#: cuon/Addresses/GUI/addresses.glade2:6172
+#: cuon/Addresses/GUI/addresses.glade2:6526
+#: cuon/Addresses/GUI/addresses.glade2:6881
+#: cuon/Addresses/GUI/addresses.glade2:7236
+#: cuon/Addresses/GUI/addresses.glade2:7591
 msgid "Redo"
 msgstr ""
 
@@ -1943,29 +1928,27 @@ msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:336 cuon/Editor/GUI/editor.glade2:337
 #: cuon/Editor/GUI/prgeditor.glade2:337 cuon/Editor/GUI/prgeditor.glade2:338
-#: cuon/Addresses/GUI/addresses.glade2:797
-#: cuon/Addresses/GUI/addresses.glade2:8881
-#: cuon/Addresses/GUI/addresses.glade2:9438
-#: cuon/Addresses/GUI/addresses.glade2:9995
-#: cuon/Addresses/GUI/addresses.glade2:10552
-#: cuon/Addresses/GUI/addresses.glade2:11109
+#: cuon/Addresses/GUI/addresses.glade2:5976
+#: cuon/Addresses/GUI/addresses.glade2:6330
+#: cuon/Addresses/GUI/addresses.glade2:6685
+#: cuon/Addresses/GUI/addresses.glade2:7040
+#: cuon/Addresses/GUI/addresses.glade2:7395
 msgid "Cut"
 msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:354 cuon/Editor/GUI/editor.glade2:355
 #: cuon/Editor/GUI/prgeditor.glade2:355 cuon/Editor/GUI/prgeditor.glade2:356
-#: cuon/Addresses/GUI/addresses.glade2:818
-#: cuon/Addresses/GUI/addresses.glade2:8960
-#: cuon/Addresses/GUI/addresses.glade2:9517
-#: cuon/Addresses/GUI/addresses.glade2:10074
-#: cuon/Addresses/GUI/addresses.glade2:10631
-#: cuon/Addresses/GUI/addresses.glade2:11188
+#: cuon/Addresses/GUI/addresses.glade2:6025
+#: cuon/Addresses/GUI/addresses.glade2:6379
+#: cuon/Addresses/GUI/addresses.glade2:6734
+#: cuon/Addresses/GUI/addresses.glade2:7089
+#: cuon/Addresses/GUI/addresses.glade2:7444
 msgid "Copy"
 msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:372 cuon/Editor/GUI/editor.glade2:373
 #: cuon/Editor/GUI/prgeditor.glade2:373 cuon/Editor/GUI/prgeditor.glade2:374
-#: cuon/Addresses/GUI/addresses.glade2:839
+#: cuon/Addresses/GUI/addresses.glade2:1128
 msgid "Paste"
 msgstr ""
 
@@ -2020,299 +2003,314 @@ msgstr ""
 msgid "Extend. Info"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:60 cuon/Graves/GUI/graves.glade2:1852
+#: cuon/Graves/GUI/graves.glade2:60 cuon/Graves/GUI/graves.glade2:1830
 msgid "Grave"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:202 cuon/Graves/GUI/graves.glade2:2802
+#: cuon/Graves/GUI/graves.glade2:103
+msgid "Plant Lists"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:180 cuon/Graves/GUI/graves.glade2:2780
+#: cuon/Graves/GUI/plantlists.glade2:136
 msgid "Service"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:250 cuon/Graves/GUI/graves.glade2:3109
+#: cuon/Graves/GUI/graves.glade2:228 cuon/Graves/GUI/graves.glade2:3092
 msgid "Spring"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:298 cuon/Graves/GUI/graves.glade2:3416
+#: cuon/Graves/GUI/graves.glade2:276 cuon/Graves/GUI/graves.glade2:3404
 msgid "Summer"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:346 cuon/Graves/GUI/graves.glade2:3730
+#: cuon/Graves/GUI/graves.glade2:324 cuon/Graves/GUI/graves.glade2:3722
 msgid "Autumn"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:394 cuon/Graves/GUI/graves.glade2:4029
+#: cuon/Graves/GUI/graves.glade2:372 cuon/Graves/GUI/graves.glade2:4034
 msgid "Holidays"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:442 cuon/Graves/GUI/graves.glade2:4328
+#: cuon/Graves/GUI/graves.glade2:420 cuon/Graves/GUI/graves.glade2:4346
+#: cuon/Graves/GUI/graves_list.glade2:489
 msgid "Winter"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:490 cuon/Graves/GUI/graves.glade2:4686
+#: cuon/Graves/GUI/graves.glade2:468 cuon/Graves/GUI/graves.glade2:4727
 msgid "annual"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:538 cuon/Graves/GUI/graves.glade2:5029
+#: cuon/Graves/GUI/graves.glade2:516 cuon/Graves/GUI/graves.glade2:5077
 msgid "unique"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:597
+#: cuon/Graves/GUI/graves.glade2:575
 msgid "create a new entry"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:611
+#: cuon/Graves/GUI/graves.glade2:589
 msgid "Edit this entry"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:625
+#: cuon/Graves/GUI/graves.glade2:603
 msgid "save this entry"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:647
+#: cuon/Graves/GUI/graves.glade2:625
 msgid "Be carefully, this delete the entry"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:677 cuon/Graves/GUI/graves.glade2:1362
+#: cuon/Graves/GUI/graves.glade2:655 cuon/Graves/GUI/graves.glade2:1340
 msgid "Name of Grave"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:690
+#: cuon/Graves/GUI/graves.glade2:668
 msgid "Alt-1"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:728
+#: cuon/Graves/GUI/graves.glade2:706
 msgid "Alt-2"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:753 cuon/Graves/GUI/graves.glade2:1278
+#: cuon/Graves/GUI/graves.glade2:731 cuon/Graves/GUI/graves.glade2:1256
+#: cuon/Graves/GUI/plantlists.glade2:77
 msgid "sequential number"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:766
+#: cuon/Graves/GUI/graves.glade2:744
 msgid ""
 "Alt-3 (auch Bereich möglich\n"
 "z.B. 1-5000)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:818 cuon/Graves/GUI/graves.glade2:1156
+#: cuon/Graves/GUI/graves.glade2:796 cuon/Graves/GUI/graves.glade2:1134
 #: cuon/Graves/GUI/graveyard.glade2:99 cuon/Graves/GUI/graveyard.glade2:717
+#: cuon/Graves/GUI/plantlists.glade2:322
 msgid "Graveyard"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:829
+#: cuon/Graves/GUI/graves.glade2:807
 msgid "Alt -4"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:855
+#: cuon/Graves/GUI/graves.glade2:833
 msgid "Alt-5"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:869
+#: cuon/Graves/GUI/graves.glade2:847
 msgid "payment Type"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:880
+#: cuon/Graves/GUI/graves.glade2:858
 msgid "Alt-6"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1003
+#: cuon/Graves/GUI/graves.glade2:981
 msgid "address-dms"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1030
+#: cuon/Graves/GUI/graves.glade2:1008
 msgid "common Hints"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1085
+#: cuon/Graves/GUI/graves.glade2:1063
 msgid "Gravenumber"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1121
+#: cuon/Graves/GUI/graves.glade2:1099
 msgid "Detachment"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1390
+#: cuon/Graves/GUI/graves.glade2:1368
 msgid "Strg-1"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1503
+#: cuon/Graves/GUI/graves.glade2:1481
 msgid "goto Addr."
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1643
+#: cuon/Graves/GUI/graves.glade2:1621
 msgid "contract begins at"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1676
+#: cuon/Graves/GUI/graves.glade2:1654
 msgid "contract ends at"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1710
+#: cuon/Graves/GUI/graves.glade2:1688
 msgid "Payment Type"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1741
+#: cuon/Graves/GUI/graves.glade2:1719
 msgid "TBF Vertragsnr."
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1861
+#: cuon/Graves/GUI/graves.glade2:1839
 msgid "(F1)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1880
+#: cuon/Graves/GUI/graves.glade2:1858
 msgid "zusätzliche Rechnungsempfänger angeben:\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1898
+#: cuon/Graves/GUI/graves.glade2:1876
 msgid "address"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1948 cuon/Bank/GUI/bank.glade2:542
+#: cuon/Graves/GUI/graves.glade2:1926 cuon/Bank/GUI/bank.glade2:542
 msgid "choose Address"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2022
+#: cuon/Graves/GUI/graves.glade2:2000
 msgid "Part"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2115
+#: cuon/Graves/GUI/graves.glade2:2093
 msgid "Term of payment"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2371
+#: cuon/Graves/GUI/graves.glade2:2349
 msgid "(F2)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2452
+#: cuon/Graves/GUI/graves.glade2:2430
 msgid "Pflegepreis"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2518 cuon/Clients/GUI/clients.glade2:211
+#: cuon/Graves/GUI/graves.glade2:2496 cuon/Clients/GUI/clients.glade2:167
 msgid "Choose"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2552
+#: cuon/Graves/GUI/graves.glade2:2530
 msgid "Serviceprice for"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2566
+#: cuon/Graves/GUI/graves.glade2:2544
 msgid "8"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2577
+#: cuon/Graves/GUI/graves.glade2:2555
 msgid "months"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2635
+#: cuon/Graves/GUI/graves.glade2:2613
 msgid "Hints for Service"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2648
+#: cuon/Graves/GUI/graves.glade2:2626
 msgid "addional services"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2668
+#: cuon/Graves/GUI/graves.glade2:2646
 msgid "Artikelbesch., Preis UND Datum"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2713
+#: cuon/Graves/GUI/graves.glade2:2691
 msgid "choose Service"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2812
+#: cuon/Graves/GUI/graves.glade2:2790
 msgid "(F3)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2895 cuon/Graves/GUI/graves.glade2:3202
-#: cuon/Graves/GUI/graves.glade2:3508 cuon/Graves/GUI/graves.glade2:3819
-#: cuon/Graves/GUI/graves.glade2:4118 cuon/Graves/GUI/graves.glade2:4417
-#: cuon/Graves/GUI/graves.glade2:4777
+#: cuon/Graves/GUI/graves.glade2:2874 cuon/Graves/GUI/graves.glade2:3186
+#: cuon/Graves/GUI/graves.glade2:3496 cuon/Graves/GUI/graves.glade2:3815
+#: cuon/Graves/GUI/graves.glade2:4127 cuon/Graves/GUI/graves.glade2:4439
+#: cuon/Graves/GUI/graves.glade2:4820
 msgid "Count"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2957 cuon/Graves/GUI/graves.glade2:3264
-#: cuon/Graves/GUI/graves.glade2:3570 cuon/Graves/GUI/graves.glade2:3879
-#: cuon/Graves/GUI/graves.glade2:4178 cuon/Graves/GUI/graves.glade2:4558
-#: cuon/Graves/GUI/graves.glade2:4869
+#: cuon/Graves/GUI/graves.glade2:2938 cuon/Graves/GUI/graves.glade2:3250
+#: cuon/Graves/GUI/graves.glade2:3560 cuon/Graves/GUI/graves.glade2:3879
+#: cuon/Graves/GUI/graves.glade2:4191 cuon/Graves/GUI/graves.glade2:4599
+#: cuon/Graves/GUI/graves.glade2:4917
 msgid "ArticleDesignation"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2989 cuon/Graves/GUI/graves.glade2:3296
-#: cuon/Graves/GUI/graves.glade2:3602 cuon/Graves/GUI/graves.glade2:3910
-#: cuon/Graves/GUI/graves.glade2:4209 cuon/Graves/GUI/graves.glade2:4498
-#: cuon/Graves/GUI/graves.glade2:4901 cuon/Order/GUI/order.glade2:4537
+#: cuon/Graves/GUI/graves.glade2:2970 cuon/Graves/GUI/graves.glade2:3282
+#: cuon/Graves/GUI/graves.glade2:3592 cuon/Graves/GUI/graves.glade2:3911
+#: cuon/Graves/GUI/graves.glade2:4223 cuon/Graves/GUI/graves.glade2:4537
+#: cuon/Graves/GUI/graves.glade2:4949 cuon/Order/GUI/order.glade2:2960
 #: cuon/Proposal/GUI/proposal.glade2:3716
 msgid "Price"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3020 cuon/Graves/GUI/graves.glade2:3327
-#: cuon/Graves/GUI/graves.glade2:3633 cuon/Graves/GUI/graves.glade2:3939
-#: cuon/Graves/GUI/graves.glade2:4238 cuon/Graves/GUI/graves.glade2:4589
-#: cuon/Graves/GUI/graves.glade2:4931
+#: cuon/Graves/GUI/graves.glade2:3003 cuon/Graves/GUI/graves.glade2:3315
+#: cuon/Graves/GUI/graves.glade2:3625 cuon/Graves/GUI/graves.glade2:3944
+#: cuon/Graves/GUI/graves.glade2:4256 cuon/Graves/GUI/graves.glade2:4630
 msgid "Period\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3046
+#: cuon/Graves/GUI/graves.glade2:3029
 msgid "Hints"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3119
+#: cuon/Graves/GUI/graves.glade2:3102
 msgid "(F4)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3353
+#: cuon/Graves/GUI/graves.glade2:3341
 msgid "Hints Summer"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3425
+#: cuon/Graves/GUI/graves.glade2:3413
 msgid "(F5)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3660
+#: cuon/Graves/GUI/graves.glade2:3652
 msgid "Hints Autumn"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3739
+#: cuon/Graves/GUI/graves.glade2:3731
 msgid "(F6)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3966
+#: cuon/Graves/GUI/graves.glade2:3971
 msgid "Hints Holiday"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4038
+#: cuon/Graves/GUI/graves.glade2:4043
 msgid "(F7)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4265
+#: cuon/Graves/GUI/graves.glade2:4283
 msgid "Hints Spring"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4337
-msgid "F(8)"
+#: cuon/Graves/GUI/graves.glade2:4355
+msgid "(F8)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4443
+#: cuon/Graves/GUI/graves.glade2:4467
 msgid "Day/Month"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4616
+#: cuon/Graves/GUI/graves.glade2:4494
+msgid "/"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:4657
 msgid "Hints Annual"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4695
-msgid "F(9)"
+#: cuon/Graves/GUI/graves.glade2:4736
+msgid "(F9)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4957
+#: cuon/Graves/GUI/graves.glade2:4981
+msgid "Period"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:5005
 msgid "Hints Unique"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5038
+#: cuon/Graves/GUI/graves.glade2:5086
 msgid "(F11)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5062
+#: cuon/Graves/GUI/graves.glade2:5110
 msgid "\t"
 msgstr ""
 
@@ -2324,401 +2322,595 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:50 cuon/Proposal/GUI/proposal.glade2:50
+#: cuon/Graves/GUI/goods_demand_lists.glade2:26
+msgid "Artikel"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:47
+#: cuon/Graves/GUI/graves_list.glade2:262
+msgid "bis"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:76
+msgid "Materialgruppe"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:112
+msgid "Pflanzung"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:148
+msgid "nur Artikel"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:168
+msgid "auswählen"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:213
+msgid "Preise anzeigen"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:249
+msgid "sortiert nach"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:285
+msgid "Friedhof"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:321
+msgid "Datei"
+msgstr ""
+
+#: cuon/Graves/GUI/goods_demand_lists.glade2:420
+#: cuon/Graves/GUI/graves_list.glade2:667
+msgid "los geht's"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:7
+msgid "Grabpflege - Listen und Rechnungen"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:65
+msgid "Plant/Service Lists"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:72
+msgid "good_demand_lists"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:79
+msgid "Rechnungen erzeugen"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:86
+msgid "Preise ändern"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:120
+msgid "Pflanz- und Pflegelisten (F1)"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:132
+msgid "Warenbedarfslisten (F2)"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:155
+msgid "Grabname"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:178
+msgid "(leeres Feld = alle)"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:199
+msgid "Rechnungsart"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:237
+msgid "von Leistungsdatum"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:251
+#: cuon/Graves/GUI/graves_list.glade2:276
+msgid "dd.mm."
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:295
+msgid "Leistungen:"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:323
+msgid "Pflege"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:337
+msgid "zusätzl. Pflege"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:353
+msgid "Frühling"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:369
+msgid "Frühling-extra"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:385
+msgid "Sommer"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:401
+msgid "Sommer-extra"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:417
+msgid "Herbst"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:435
+msgid "Herbst-extra"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:453
+msgid "Gedenktage"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:471
+msgid "Gedenktage-extra"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:505
+msgid "Winter-extra"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:523
+msgid "jährlich"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:541
+msgid "einmalig"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:624
+msgid "zusätlicher Text f. Rechnung:"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:637
+msgid "Frohe Weihnachten"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:720
+msgid "Rechnungen erzeugen (F3)"
+msgstr ""
+
+#: cuon/Graves/GUI/graves_list.glade2:733
+msgid "Preise ändern (F4)"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:26
+msgid "Gravename from"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:171
+msgid "Plantation"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:206
+msgid "show hints"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:252
+msgid "Prices"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:287
+msgid "sort of"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:357
+msgid "only articles"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:402
+msgid "Contract begins from "
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:460
+msgid "Contract ends from "
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:527
+msgid "Format"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:561 cuon/Stats/GUI/stats.glade2:38
+#: GUI/setup.glade2:37 GUI/cuon_config_wizard.glade2:37
+msgid "File"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:625
+msgid "start"
+msgstr ""
+
+#: cuon/Order/GUI/order.glade2:28 cuon/Proposal/GUI/proposal.glade2:50
 #: cuon/AI/GUI/ai.glade2:49 cuon/Stock/GUI/stock.glade2:49
 #: cuon/User/GUI/user.glade2:49
 msgid "Print S_etup"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:65 cuon/Proposal/GUI/proposal.glade2:65
+#: cuon/Order/GUI/order.glade2:41 cuon/Proposal/GUI/proposal.glade2:65
 msgid "_Close"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:78 cuon/Proposal/GUI/proposal.glade2:78
+#: cuon/Order/GUI/order.glade2:53 cuon/Proposal/GUI/proposal.glade2:78
 msgid "Manage Order"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:88 cuon/Proposal/GUI/proposal.glade2:88
+#: cuon/Order/GUI/order.glade2:61 cuon/Proposal/GUI/proposal.glade2:88
 msgid "New Order"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:89 cuon/Order/GUI/order.glade2:327
-#: cuon/Order/GUI/order.glade2:471 cuon/Proposal/GUI/proposal.glade2:89
-#: cuon/Proposal/GUI/proposal.glade2:315 cuon/Project/GUI/project.glade2:127
-#: cuon/Project/GUI/project.glade2:304 cuon/Project/GUI/project.glade2:372
-#: cuon/Addresses/GUI/addresses.glade2:251
-#: cuon/Addresses/GUI/addresses.glade2:514
-#: cuon/Addresses/GUI/addresses.glade2:909
-#: cuon/Addresses/GUI/addresses.glade2:932
-#: cuon/Addresses/GUI/addresses.glade2:955
+#: cuon/Order/GUI/order.glade2:62 cuon/Order/GUI/order.glade2:282
+#: cuon/Order/GUI/order.glade2:407 cuon/Proposal/GUI/proposal.glade2:89
+#: cuon/Proposal/GUI/proposal.glade2:315 cuon/Project/GUI/project.glade2:257
+#: cuon/Addresses/GUI/addresses.glade2:1172
+#: cuon/Addresses/GUI/addresses.glade2:1192
+#: cuon/Addresses/GUI/addresses.glade2:1212
 msgid "_New"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:113 cuon/Order/GUI/order.glade2:351
-#: cuon/Order/GUI/order.glade2:412 cuon/Order/GUI/order.glade2:489
+#: cuon/Order/GUI/order.glade2:83 cuon/Order/GUI/order.glade2:303
+#: cuon/Order/GUI/order.glade2:356 cuon/Order/GUI/order.glade2:423
 #: cuon/Proposal/GUI/proposal.glade2:113 cuon/Proposal/GUI/proposal.glade2:339
-#: cuon/Project/GUI/project.glade2:158 cuon/Project/GUI/project.glade2:334
-#: cuon/Project/GUI/project.glade2:390 cuon/Addresses/GUI/addresses.glade2:293
-#: cuon/Addresses/GUI/addresses.glade2:770
+#: cuon/Project/GUI/project.glade2:224 cuon/Project/GUI/project.glade2:273
 msgid "_Save"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:128 cuon/Order/GUI/order.glade2:366
+#: cuon/Order/GUI/order.glade2:96 cuon/Order/GUI/order.glade2:316
 #: cuon/Proposal/GUI/proposal.glade2:143 cuon/Proposal/GUI/proposal.glade2:354
-#: cuon/Project/GUI/project.glade2:186 cuon/Addresses/GUI/addresses.glade2:320
 msgid "_Print"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:137
+#: cuon/Order/GUI/order.glade2:103
 msgid "single Invoice"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:146
+#: cuon/Order/GUI/order.glade2:111
 msgid "all open invoice"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:155
+#: cuon/Order/GUI/order.glade2:119
 msgid "Delivery Note"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:164
+#: cuon/Order/GUI/order.glade2:127
 msgid "Pickup Note"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:183 cuon/Order/GUI/order.glade2:381
+#: cuon/Order/GUI/order.glade2:157 cuon/Order/GUI/order.glade2:329
 #: cuon/Proposal/GUI/proposal.glade2:171 cuon/Proposal/GUI/proposal.glade2:369
 msgid "c_lear"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:196 cuon/Order/GUI/order.glade2:2890
+#: cuon/Order/GUI/order.glade2:169 cuon/Order/GUI/order.glade2:2024
 #: cuon/Proposal/GUI/proposal.glade2:184
 #: cuon/Proposal/GUI/proposal.glade2:2069
 msgid "Supply"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:257 cuon/Order/GUI/order.glade2:4030
+#: cuon/Order/GUI/order.glade2:222 cuon/Order/GUI/order.glade2:2673
 #: cuon/Proposal/GUI/proposal.glade2:245
 #: cuon/Proposal/GUI/proposal.glade2:3209
 msgid "Gets"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:318 cuon/Proposal/GUI/proposal.glade2:306
+#: cuon/Order/GUI/order.glade2:275 cuon/Proposal/GUI/proposal.glade2:306
 msgid "Position"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:462
+#: cuon/Order/GUI/order.glade2:400
 msgid "Payments"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:763 cuon/Proposal/GUI/proposal.glade2:705
-#: cuon/Addresses/GUI/addresses.glade2:1687
+#: cuon/Order/GUI/order.glade2:615 cuon/Proposal/GUI/proposal.glade2:705
+#: cuon/Addresses/GUI/addresses.glade2:1722
 msgid "ID"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:979 cuon/Proposal/GUI/proposal.glade2:1141
+#: cuon/Order/GUI/order.glade2:732 cuon/Proposal/GUI/proposal.glade2:1141
 msgid "Supply-Nr."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1007 cuon/Proposal/GUI/proposal.glade2:1169
+#: cuon/Order/GUI/order.glade2:745 cuon/Proposal/GUI/proposal.glade2:1169
 msgid "Gets-Nr."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1126 cuon/Proposal/GUI/proposal.glade2:1337
+#: cuon/Order/GUI/order.glade2:817 cuon/Proposal/GUI/proposal.glade2:1337
 msgid "total sum"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1175 cuon/Proposal/GUI/proposal.glade2:1795
+#: cuon/Order/GUI/order.glade2:846 cuon/Proposal/GUI/proposal.glade2:1795
 msgid "total discount %"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1225
+#: cuon/Order/GUI/order.glade2:873
 msgid "ready for invoice"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1553 cuon/Proposal/GUI/proposal.glade2:1034
+#: cuon/Order/GUI/order.glade2:1106 cuon/Proposal/GUI/proposal.glade2:1034
 msgid "ordered at"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1618 cuon/Proposal/GUI/proposal.glade2:980
+#: cuon/Order/GUI/order.glade2:1144 cuon/Proposal/GUI/proposal.glade2:980
 msgid "delivered at"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1681
+#: cuon/Order/GUI/order.glade2:1180
 msgid "Order Number"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1767 cuon/Order/GUI/order.glade2:2963
+#: cuon/Order/GUI/order.glade2:1233 cuon/Order/GUI/order.glade2:2061
 #: cuon/Proposal/GUI/proposal.glade2:1418
 #: cuon/Proposal/GUI/proposal.glade2:2142
 msgid "search address ..."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1794 cuon/Proposal/GUI/proposal.glade2:1445
+#: cuon/Order/GUI/order.glade2:1255 cuon/Proposal/GUI/proposal.glade2:1445
 msgid "Custom-Number"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1924
+#: cuon/Order/GUI/order.glade2:1326
 msgid "simple Account"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1962
+#: cuon/Order/GUI/order.glade2:1342
 msgid "Cash 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1982
+#: cuon/Order/GUI/order.glade2:1356
 msgid "Cash 2"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2002
+#: cuon/Order/GUI/order.glade2:1372
 msgid "Credit Card 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2041
+#: cuon/Order/GUI/order.glade2:1421
 msgid "Bank 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2061
+#: cuon/Order/GUI/order.glade2:1435
 msgid "Bank 2"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2081
+#: cuon/Order/GUI/order.glade2:1451
 msgid "Bank 3"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2101 cuon/Order/GUI/order.glade2:2121
+#: cuon/Order/GUI/order.glade2:1467 cuon/Order/GUI/order.glade2:1483
 msgid "direct Debit 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2141
+#: cuon/Order/GUI/order.glade2:1501
 msgid "direct Debit 3"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2175 cuon/Proposal/GUI/proposal.glade2:1288
+#: cuon/Order/GUI/order.glade2:1542 cuon/Proposal/GUI/proposal.glade2:1288
 msgid "paid at "
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2253 cuon/Proposal/GUI/proposal.glade2:1859
-msgid "show Ext. Info"
-msgstr ""
-
-#: cuon/Order/GUI/order.glade2:2280 cuon/Proposal/GUI/proposal.glade2:1637
+#: cuon/Order/GUI/order.glade2:1593 cuon/Proposal/GUI/proposal.glade2:1637
 msgid "Packing\n"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2344 cuon/Proposal/GUI/proposal.glade2:1668
+#: cuon/Order/GUI/order.glade2:1630 cuon/Proposal/GUI/proposal.glade2:1668
 msgid "Truckage/Postage"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2408 cuon/Proposal/GUI/proposal.glade2:1698
+#: cuon/Order/GUI/order.glade2:1669 cuon/Proposal/GUI/proposal.glade2:1698
 msgid "Misc. cost"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2464 cuon/Order/GUI/order.glade2:3209
+#: cuon/Order/GUI/order.glade2:1703 cuon/Order/GUI/order.glade2:2211
 #: cuon/Proposal/GUI/proposal.glade2:2388
-#: cuon/Addresses/GUI/addresses.glade2:1011
-#: cuon/Addresses/GUI/addresses.glade2:7386
+#: cuon/Addresses/GUI/addresses.glade2:1252
+#: cuon/Addresses/GUI/addresses.glade2:5135
 msgid "Partner"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2640
+#: cuon/Order/GUI/order.glade2:1802
 msgid "Goto..."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2842 cuon/Proposal/GUI/proposal.glade2:2021
+#: cuon/Order/GUI/order.glade2:1869
+msgid "Search ..."
+msgstr ""
+
+#: cuon/Order/GUI/order.glade2:1993 cuon/Proposal/GUI/proposal.glade2:2021
 msgid "Supply to"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2869 cuon/Proposal/GUI/proposal.glade2:2048
+#: cuon/Order/GUI/order.glade2:2002 cuon/Proposal/GUI/proposal.glade2:2048
 msgid "search address"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:2935 cuon/Proposal/GUI/proposal.glade2:2114
+#: cuon/Order/GUI/order.glade2:2051 cuon/Proposal/GUI/proposal.glade2:2114
 msgid "gets from"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3024 cuon/Proposal/GUI/proposal.glade2:2203
+#: cuon/Order/GUI/order.glade2:2108 cuon/Proposal/GUI/proposal.glade2:2203
 msgid "Load reference"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3081 cuon/Proposal/GUI/proposal.glade2:2260
+#: cuon/Order/GUI/order.glade2:2138 cuon/Proposal/GUI/proposal.glade2:2260
 msgid "Pick up at"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3138 cuon/Proposal/GUI/proposal.glade2:2317
+#: cuon/Order/GUI/order.glade2:2170 cuon/Proposal/GUI/proposal.glade2:2317
 msgid "Remark"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3237 cuon/Proposal/GUI/proposal.glade2:2416
+#: cuon/Order/GUI/order.glade2:2221 cuon/Proposal/GUI/proposal.glade2:2416
 msgid "search Partner"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3437 cuon/Proposal/GUI/proposal.glade2:2616
+#: cuon/Order/GUI/order.glade2:2346 cuon/Proposal/GUI/proposal.glade2:2616
 msgid "Forwarding Agency"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3565 cuon/Proposal/GUI/proposal.glade2:2744
+#: cuon/Order/GUI/order.glade2:2421 cuon/Proposal/GUI/proposal.glade2:2744
 msgid "Contact Person"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3771 cuon/Proposal/GUI/proposal.glade2:2950
+#: cuon/Order/GUI/order.glade2:2540 cuon/Proposal/GUI/proposal.glade2:2950
 msgid "Pickup-Note"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3802 cuon/Proposal/GUI/proposal.glade2:2981
+#: cuon/Order/GUI/order.glade2:2555 cuon/Proposal/GUI/proposal.glade2:2981
 msgid "Pickup-Nr.:"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3982 cuon/Proposal/GUI/proposal.glade2:3161
-msgid "in progress"
-msgstr ""
-
-#: cuon/Order/GUI/order.glade2:3990 cuon/Proposal/GUI/proposal.glade2:3169
-msgid "already done"
-msgstr ""
-
-#: cuon/Order/GUI/order.glade2:3998 cuon/Proposal/GUI/proposal.glade2:3177
-msgid "problems"
-msgstr ""
-
-#: cuon/Order/GUI/order.glade2:4096 cuon/Proposal/GUI/proposal.glade2:3275
+#: cuon/Order/GUI/order.glade2:2703 cuon/Proposal/GUI/proposal.glade2:3275
 msgid "articles-Number"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4124 cuon/Proposal/GUI/proposal.glade2:3303
+#: cuon/Order/GUI/order.glade2:2716 cuon/Proposal/GUI/proposal.glade2:3303
 msgid "amount"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4293 cuon/Proposal/GUI/proposal.glade2:3472
+#: cuon/Order/GUI/order.glade2:2809 cuon/Proposal/GUI/proposal.glade2:3472
 msgid "Quant. per Wrap."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4370 cuon/Proposal/GUI/proposal.glade2:3549
+#: cuon/Order/GUI/order.glade2:2853 cuon/Proposal/GUI/proposal.glade2:3549
 msgid "search article"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4396 cuon/Proposal/GUI/proposal.glade2:3575
+#: cuon/Order/GUI/order.glade2:2880 cuon/Proposal/GUI/proposal.glade2:3575
 msgid "Article Des. "
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4562 cuon/Proposal/GUI/proposal.glade2:3741
+#: cuon/Order/GUI/order.glade2:2972 cuon/Proposal/GUI/proposal.glade2:3741
 msgid "Articlediscount"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4587 cuon/Proposal/GUI/proposal.glade2:3766
+#: cuon/Order/GUI/order.glade2:2984 cuon/Proposal/GUI/proposal.glade2:3766
 msgid "Tax-Vat"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4911 cuon/Proposal/GUI/proposal.glade2:3998
+#: cuon/Order/GUI/order.glade2:3225 cuon/Proposal/GUI/proposal.glade2:3998
 msgid "Quick Append"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4987 cuon/Proposal/GUI/proposal.glade2:4074
+#: cuon/Order/GUI/order.glade2:3278 cuon/Proposal/GUI/proposal.glade2:4074
 msgid "Postions"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5247 cuon/Proposal/GUI/proposal.glade2:382
+#: cuon/Order/GUI/order.glade2:3449 cuon/Proposal/GUI/proposal.glade2:382
 #: cuon/Proposal/GUI/proposal.glade2:4334
 msgid "Specs. invoice"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5280
+#: cuon/Order/GUI/order.glade2:3463
 msgid "retry"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5348
+#: cuon/Order/GUI/order.glade2:3514
 msgid "semestral"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5369
+#: cuon/Order/GUI/order.glade2:3531
 msgid "yearly"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5406
+#: cuon/Order/GUI/order.glade2:3559
 msgid "create supply"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5425
+#: cuon/Order/GUI/order.glade2:3574
 msgid "create get"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5444
+#: cuon/Order/GUI/order.glade2:3589
 msgid "create invoice"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5478
+#: cuon/Order/GUI/order.glade2:3614
 msgid "daily"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5498
+#: cuon/Order/GUI/order.glade2:3630
 msgid "Weekly"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5541
+#: cuon/Order/GUI/order.glade2:3665
 msgid "0"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5566 cuon/Project/GUI/project.glade2:1774
-#: cuon/Stats/GUI/stats.glade2:158 GUI/cuon.glade2:394
+#: cuon/Order/GUI/order.glade2:3685 cuon/Project/GUI/project.glade2:1440
+#: cuon/Stats/GUI/stats.glade2:158 GUI/cuon.glade2:317
 msgid "Project"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5663
+#: cuon/Order/GUI/order.glade2:3737
 msgid "search project"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5758 cuon/Project/GUI/project.glade2:4531
+#: cuon/Order/GUI/order.glade2:3799 cuon/Project/GUI/project.glade2:3280
 msgid "jump to"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:5953
+#: cuon/Order/GUI/order.glade2:3937
 msgid "Invoice amount"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6003
+#: cuon/Order/GUI/order.glade2:3966
 msgid "in-payment"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6053
+#: cuon/Order/GUI/order.glade2:3994
 msgid "./. cash discount"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6103
+#: cuon/Order/GUI/order.glade2:4022
 msgid "./. payments"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6160
+#: cuon/Order/GUI/order.glade2:4052
 msgid "Offset"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6192
+#: cuon/Order/GUI/order.glade2:4083
 msgid "pay with/acct."
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6322
+#: cuon/Order/GUI/order.glade2:4155
 msgid "search account"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6438
+#: cuon/Order/GUI/order.glade2:4229
 msgid "residue"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6514
+#: cuon/Order/GUI/order.glade2:4274
 msgid "Transfer"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6534
+#: cuon/Order/GUI/order.glade2:4290
 msgid "direct debit"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6574
+#: cuon/Order/GUI/order.glade2:4322
 msgid "credit card"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:6694
+#: cuon/Order/GUI/order.glade2:4397
 msgid "Typ"
 msgstr ""
 
-#: cuon/Bank/GUI/bank.glade2:145 cuon/Addresses/GUI/addresses.glade2:4262
+#: cuon/Bank/GUI/bank.glade2:145 cuon/Addresses/GUI/addresses.glade2:3311
 msgid "choose Bank"
 msgstr ""
 
@@ -2741,8 +2933,8 @@ msgstr ""
 #: cuon/Proposal/GUI/proposal.glade2:11 cuon/Proposal/GUI/proposal.glade2:79
 #: cuon/Proposal/GUI/proposal.glade2:152
 #: cuon/Proposal/GUI/proposal.glade2:1898
-#: cuon/Addresses/GUI/addresses.glade2:900
-#: cuon/Addresses/GUI/addresses.glade2:11765 GUI/cuon.glade2:246
+#: cuon/Addresses/GUI/addresses.glade2:1165
+#: cuon/Addresses/GUI/addresses.glade2:7849 GUI/cuon.glade2:187
 msgid "Proposal"
 msgstr ""
 
@@ -2752,6 +2944,22 @@ msgstr ""
 
 #: cuon/Proposal/GUI/proposal.glade2:409
 msgid "clear"
+msgstr ""
+
+#: cuon/Proposal/GUI/proposal.glade2:1859
+msgid "show Ext. Info"
+msgstr ""
+
+#: cuon/Proposal/GUI/proposal.glade2:3161
+msgid "in progress"
+msgstr ""
+
+#: cuon/Proposal/GUI/proposal.glade2:3169
+msgid "already done"
+msgstr ""
+
+#: cuon/Proposal/GUI/proposal.glade2:3177
+msgid "problems"
 msgstr ""
 
 #: cuon/AI/GUI/ai.glade2:11
@@ -2838,7 +3046,7 @@ msgstr ""
 msgid "actual stock"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:9 GUI/cuon.glade2:455
+#: cuon/Preferences/GUI/preferences.glade2:9 GUI/cuon.glade2:371
 #: GUI/cuon_gtk.glade2:141 GUI/cuon_server.glade2:132
 msgid "Preferences"
 msgstr ""
@@ -3069,7 +3277,7 @@ msgid "Python"
 msgstr ""
 
 #: cuon/Preferences/GUI/preferences.glade2:3302 cuon/Think/GUI/think.glade2:74
-#: GUI/cuon.glade2:432
+#: GUI/cuon.glade2:351
 msgid "Mindmap"
 msgstr ""
 
@@ -3105,57 +3313,57 @@ msgstr ""
 msgid "Staff-Number"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:595 cuon/Addresses/GUI/addresses.glade2:6777
+#: cuon/Staff/GUI/staff.glade2:595
 msgid "show extendet infos"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:6110
+#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:4338
 msgid "Birthday"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:654 cuon/Addresses/GUI/addresses.glade2:2601
-#: cuon/Addresses/GUI/addresses.glade2:6614
+#: cuon/Staff/GUI/staff.glade2:654 cuon/Addresses/GUI/addresses.glade2:2260
+#: cuon/Addresses/GUI/addresses.glade2:4622
 msgid "State"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:682 cuon/Addresses/GUI/addresses.glade2:1737
-#: cuon/Addresses/GUI/addresses.glade2:2481
-#: cuon/Addresses/GUI/addresses.glade2:7320
+#: cuon/Staff/GUI/staff.glade2:682 cuon/Addresses/GUI/addresses.glade2:1751
+#: cuon/Addresses/GUI/addresses.glade2:2209
+#: cuon/Addresses/GUI/addresses.glade2:4883
 msgid "Street"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:757 cuon/Addresses/GUI/addresses.glade2:2511
-#: cuon/Addresses/GUI/addresses.glade2:7266
+#: cuon/Staff/GUI/staff.glade2:757 cuon/Addresses/GUI/addresses.glade2:2226
+#: cuon/Addresses/GUI/addresses.glade2:4912
 msgid "Zip"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:6257
+#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:4424
 msgid "Phone in Company"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:6285
+#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:4438
 msgid "Fax in company"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:904 cuon/Addresses/GUI/addresses.glade2:3586
-#: cuon/Addresses/GUI/addresses.glade2:6012
+#: cuon/Staff/GUI/staff.glade2:904 cuon/Addresses/GUI/addresses.glade2:2902
+#: cuon/Addresses/GUI/addresses.glade2:4278
 msgid "Fax"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:920 cuon/Addresses/GUI/addresses.glade2:3166
-#: cuon/Addresses/GUI/addresses.glade2:5963
+#: cuon/Staff/GUI/staff.glade2:920 cuon/Addresses/GUI/addresses.glade2:2634
+#: cuon/Addresses/GUI/addresses.glade2:4247
 msgid "Homepage"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:7204
+#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:4852
 msgid "Phone 2"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:7176
+#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:4837
 msgid "Phone 1"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:7008
+#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:4738
 msgid "titular"
 msgstr ""
 
@@ -3163,8 +3371,8 @@ msgstr ""
 msgid "Letter Sign"
 msgstr ""
 
-#: cuon/Staff/GUI/staff.glade2:1284 cuon/Project/GUI/project.glade2:3698
-#: cuon/Project/GUI/project.glade2:4200
+#: cuon/Staff/GUI/staff.glade2:1284 cuon/Project/GUI/project.glade2:2737
+#: cuon/Project/GUI/project.glade2:3053
 msgid "Real"
 msgstr ""
 
@@ -3216,17 +3424,17 @@ msgstr ""
 msgid "avaible\n"
 msgstr ""
 
-#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1131
+#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1187
 msgid "Groups"
 msgstr ""
 
-#: cuon/User/GUI/user.glade2:1086 cuon/Clients/GUI/clients.glade2:9
-#: cuon/Clients/GUI/clients.glade2:75 cuon/Clients/GUI/clients.glade2:797
-#: GUI/cuon.glade2:224
+#: cuon/User/GUI/user.glade2:1086 cuon/Clients/GUI/clients.glade2:7
+#: cuon/Clients/GUI/clients.glade2:55 cuon/Clients/GUI/clients.glade2:504
+#: GUI/cuon.glade2:168
 msgid "Clients"
 msgstr ""
 
-#: cuon/Project/GUI/dRange.glade2:8 cuon/Project/GUI/project.glade2:3342
+#: cuon/Project/GUI/dRange.glade2:8 cuon/Project/GUI/project.glade2:2496
 msgid "Range"
 msgstr ""
 
@@ -3274,542 +3482,645 @@ msgstr ""
 msgid "Ends at"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:11 cuon/Addresses/GUI/addresses.glade2:945
-#: cuon/Addresses/GUI/addresses.glade2:12178
+#: cuon/Project/GUI/project.glade2:9 cuon/Addresses/GUI/addresses.glade2:1204
+#: cuon/Addresses/GUI/addresses.glade2:8154
 msgid "Projects"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:117
+#: cuon/Project/GUI/project.glade2:80
 msgid "_Project"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:213 cuon/Addresses/GUI/addresses.glade2:347
-#: cuon/Addresses/GUI/addresses.glade2:610
-msgid "_Delete"
-msgstr ""
-
-#: cuon/Project/GUI/project.glade2:238 cuon/Project/GUI/project.glade2:2297
+#: cuon/Project/GUI/project.glade2:149 cuon/Project/GUI/project.glade2:1796
 msgid "Phase"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:257 cuon/Project/GUI/project.glade2:436
+#: cuon/Project/GUI/project.glade2:165 cuon/Project/GUI/project.glade2:313
 #: cuon/Think/GUI/think.glade2:92
 msgid "edit"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:294 cuon/Project/GUI/project.glade2:2820
+#: cuon/Project/GUI/project.glade2:198 cuon/Project/GUI/project.glade2:2153
 msgid "Task"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:362 cuon/Project/GUI/project.glade2:3933
+#: cuon/Project/GUI/project.glade2:249 cuon/Project/GUI/project.glade2:2891
 msgid "Staff-Resources"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:418 cuon/Project/GUI/project.glade2:4658
+#: cuon/Project/GUI/project.glade2:298 cuon/Project/GUI/project.glade2:3371
 msgid "Material-Resources"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:473 cuon/Project/GUI/project.glade2:6265
+#: cuon/Project/GUI/project.glade2:346 cuon/Project/GUI/project.glade2:4405
 msgid "Programming"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:482
+#: cuon/Project/GUI/project.glade2:353
 msgid "Main"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:816
+#: cuon/Project/GUI/project.glade2:413
+msgid "Complete Projects"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:589
 msgid "id"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:994
-msgid "Project Time"
-msgstr ""
-
-#: cuon/Project/GUI/project.glade2:1081
+#: cuon/Project/GUI/project.glade2:682
 msgid "Orderer"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:1136
+#: cuon/Project/GUI/project.glade2:706
 msgid "Choose Address"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:1239 cuon/Project/GUI/project.glade2:1997
-#: cuon/Project/GUI/project.glade2:2520
+#: cuon/Project/GUI/project.glade2:780 cuon/Project/GUI/project.glade2:1550
+#: cuon/Project/GUI/project.glade2:1907
 msgid "start at"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:1300 cuon/Project/GUI/project.glade2:2058
-#: cuon/Project/GUI/project.glade2:2581
+#: cuon/Project/GUI/project.glade2:880 cuon/Project/GUI/project.glade2:1586
+#: cuon/Project/GUI/project.glade2:1943
 msgid "ends at"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:1862
+#: cuon/Project/GUI/project.glade2:946
+msgid "created by"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:976
+msgid "created at"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:1006
+msgid "last modify by"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:1036
+msgid "last modify at"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:1361
+msgid "Project Time"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:1410
+msgid "internal Number"
+msgstr ""
+
+#: cuon/Project/GUI/project.glade2:1479
 msgid "Phase Time"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:2385
+#: cuon/Project/GUI/project.glade2:1836
 msgid "Task Time"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:2907
+#: cuon/Project/GUI/project.glade2:2191
 msgid "choose Staff"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:3205 cuon/Project/GUI/project.glade2:3489
+#: cuon/Project/GUI/project.glade2:2426 cuon/Project/GUI/project.glade2:2617
 msgid "end time"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:3251 cuon/Project/GUI/project.glade2:3535
+#: cuon/Project/GUI/project.glade2:2451 cuon/Project/GUI/project.glade2:2642
 #: cuon/Addresses/GUI/contact.glade2:2034
 msgid "Hours"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:3296 cuon/Project/GUI/project.glade2:3580
+#: cuon/Project/GUI/project.glade2:2475 cuon/Project/GUI/project.glade2:2666
 msgid "Pause"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:3673 cuon/Project/GUI/project.glade2:4175
+#: cuon/Project/GUI/project.glade2:2726 cuon/Project/GUI/project.glade2:3041
 msgid "Planed"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:3782
+#: cuon/Project/GUI/project.glade2:2785
 msgid "goto Staff"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:4020
+#: cuon/Project/GUI/project.glade2:2929
 msgid "choose Article"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:4690
+#: cuon/Project/GUI/project.glade2:3387
 msgid "Actions"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:4803
+#: cuon/Project/GUI/project.glade2:3449
 msgid "Jump To"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:4969
+#: cuon/Project/GUI/project.glade2:3564
 msgid "Home Page"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:4997
+#: cuon/Project/GUI/project.glade2:3577
 msgid "Project Page"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5025
+#: cuon/Project/GUI/project.glade2:3592
 msgid "Other Suffix"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5053
+#: cuon/Project/GUI/project.glade2:3605
 msgid "Glade suffix"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5081
+#: cuon/Project/GUI/project.glade2:3618
 msgid "Source Suffix"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5109
+#: cuon/Project/GUI/project.glade2:3631
 msgid "Project Dir"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5338 cuon/Project/GUI/project.glade2:5452
-#: cuon/Addresses/GUI/addresses.glade2:3708
-#: cuon/Addresses/GUI/addresses.glade2:5853 cuon/DMS/GUI/dms.glade2:1748
+#: cuon/Project/GUI/project.glade2:3765 cuon/Project/GUI/project.glade2:3835
+#: cuon/Addresses/GUI/addresses.glade2:2971
+#: cuon/Addresses/GUI/addresses.glade2:4172 cuon/DMS/GUI/dms.glade2:1849
 msgid "View"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5580
+#: cuon/Project/GUI/project.glade2:3921
 msgid "VCS"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5615
+#: cuon/Project/GUI/project.glade2:3937
 msgid "SVN"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5634
+#: cuon/Project/GUI/project.glade2:3952
 msgid "GIT"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5667
+#: cuon/Project/GUI/project.glade2:3983
 msgid "external Editor"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5722
+#: cuon/Project/GUI/project.glade2:4060
 msgid "Main Info"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5760
+#: cuon/Project/GUI/project.glade2:4078
 msgid "label205"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5788
+#: cuon/Project/GUI/project.glade2:4091
 msgid "label206"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5816
+#: cuon/Project/GUI/project.glade2:4104
 msgid "Filename"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5844
+#: cuon/Project/GUI/project.glade2:4115
 msgid "Folder"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5957
+#: cuon/Project/GUI/project.glade2:4179
 msgid "Import from VCS"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:5996
+#: cuon/Project/GUI/project.glade2:4204
 msgid "Creation Date"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:6209
+#: cuon/Project/GUI/project.glade2:4377
 msgid "Source Files"
 msgstr ""
 
-#: cuon/Project/GUI/project.glade2:6236
+#: cuon/Project/GUI/project.glade2:4390
 msgid "label188"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:128
-msgid "Find"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:155
-#: cuon/Addresses/GUI/addresses.glade2:1486
-#: cuon/Addresses/GUI/addresses.glade2:3215
-#: cuon/Addresses/GUI/addresses.glade2:6061
+#: cuon/Addresses/GUI/addresses.glade2:751
+#: cuon/Addresses/GUI/addresses.glade2:1611
+#: cuon/Addresses/GUI/addresses.glade2:2661
+#: cuon/Addresses/GUI/addresses.glade2:4308
 msgid "Newsletter"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:164
-msgid "Newsletter Email"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:185
-msgid "Newsletter Print"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:242 GUI/cuon.glade2:116
+#: cuon/Addresses/GUI/addresses.glade2:802 GUI/cuon.glade2:73
 #: GUI/cuon_gtk.glade2:101
 msgid "_Addresses"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:505
+#: cuon/Addresses/GUI/addresses.glade2:947
 msgid "_Partner"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:714
-msgid "Set ready"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:739
-#: cuon/Addresses/GUI/addresses.glade2:11594
+#: cuon/Addresses/GUI/addresses.glade2:1075
+#: cuon/Addresses/GUI/addresses.glade2:7705
 msgid "Notes"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:854
-msgid "undo"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:875
-msgid "redo"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:1029
+#: cuon/Addresses/GUI/addresses.glade2:1267
 msgid "Phone2"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1046 cuon/Think/GUI/think.glade2:129
-#: GUI/cuon.glade2:446 GUI/cuon_gtk.glade2:132 GUI/cuon_server.glade2:104
+#: cuon/Addresses/GUI/addresses.glade2:1283 cuon/Think/GUI/think.glade2:129
+#: GUI/cuon.glade2:364 GUI/cuon_gtk.glade2:132 GUI/cuon_server.glade2:104
 msgid "Tools"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1055
+#: cuon/Addresses/GUI/addresses.glade2:1290
 msgid "Contact window"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1064
+#: cuon/Addresses/GUI/addresses.glade2:1298
 msgid "new Proposal"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1073
-#: cuon/Addresses/GUI/addresses.glade2:1290
+#: cuon/Addresses/GUI/addresses.glade2:1306
+#: cuon/Addresses/GUI/addresses.glade2:1473
 msgid "new Order"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1082
+#: cuon/Addresses/GUI/addresses.glade2:1314
 msgid "show Order"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1091
-#: cuon/Addresses/GUI/addresses.glade2:1307
+#: cuon/Addresses/GUI/addresses.glade2:1322
+#: cuon/Addresses/GUI/addresses.glade2:1486
 msgid "new Project"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1119
+#: cuon/Addresses/GUI/addresses.glade2:1345
 msgid "create new Data "
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1137
+#: cuon/Addresses/GUI/addresses.glade2:1359
 msgid "edit current data"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1155
+#: cuon/Addresses/GUI/addresses.glade2:1373
 msgid "save current data"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1186
+#: cuon/Addresses/GUI/addresses.glade2:1395
 msgid "ext. Info"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1220
-#: cuon/Addresses/GUI/addresses.glade2:6828
+#: cuon/Addresses/GUI/addresses.glade2:1421
 #: cuon/Addresses/GUI/contact.glade2:11 cuon/Addresses/GUI/contact.glade2:78
 #: cuon/Addresses/GUI/contact.glade2:1621
 msgid "Contact"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1237
+#: cuon/Addresses/GUI/addresses.glade2:1434
 msgid "All Contact"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1273
+#: cuon/Addresses/GUI/addresses.glade2:1460
 msgid "New Proposal"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1373
+#: cuon/Addresses/GUI/addresses.glade2:1530
 msgid "search partner"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1536
+#: cuon/Addresses/GUI/addresses.glade2:1639
 msgid "FAX"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1586
-#: cuon/Addresses/GUI/addresses.glade2:2421
+#: cuon/Addresses/GUI/addresses.glade2:1669
+#: cuon/Addresses/GUI/addresses.glade2:2175
 msgid "Name2"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1659
+#: cuon/Addresses/GUI/addresses.glade2:1710
 #: cuon/Addresses/GUI/contact.glade2:395
 #: cuon/Databases/GUI/databases.glade2:197
 msgid "Zipcode"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1937
-#: cuon/Addresses/GUI/addresses.glade2:2391
+#: cuon/Addresses/GUI/addresses.glade2:1863
+#: cuon/Addresses/GUI/addresses.glade2:2158
 msgid "Name1"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:1965
+#: cuon/Addresses/GUI/addresses.glade2:1874 GUI/cuon.glade2:825
 msgid "Email"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:2079
-#: cuon/Addresses/GUI/addresses.glade2:6313
+#: cuon/Addresses/GUI/addresses.glade2:1902
+msgid "Clear Search"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:1964
+#: cuon/Addresses/GUI/addresses.glade2:4451
 msgid "letter-address"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:2571
-msgid "Zip for PB"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:3065
+#: cuon/Addresses/GUI/addresses.glade2:2505
 msgid "Postbox"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3264
-#: cuon/Addresses/GUI/addresses.glade2:6748
+#: cuon/Addresses/GUI/addresses.glade2:2541
+msgid "Zip for Postbox"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:2688
+#: cuon/Addresses/GUI/addresses.glade2:4710
 msgid "Handy"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3323
+#: cuon/Addresses/GUI/addresses.glade2:2717
 msgid "Choose Caller"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3390
+#: cuon/Addresses/GUI/addresses.glade2:2764
 msgid "Choose Rep."
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3457
+#: cuon/Addresses/GUI/addresses.glade2:2811
 msgid "Choose Salesman"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3787
+#: cuon/Addresses/GUI/addresses.glade2:3020
 msgid "WebSearch"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3905
+#: cuon/Addresses/GUI/addresses.glade2:3094
 msgid "dial"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3979
+#: cuon/Addresses/GUI/addresses.glade2:3137
 msgid "Send Email"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3996
+#: cuon/Addresses/GUI/addresses.glade2:3152
 msgid "ext. Email"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4129
+#: cuon/Addresses/GUI/addresses.glade2:3241
 msgid "IBAN"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4178
+#: cuon/Addresses/GUI/addresses.glade2:3269
 msgid "depositor"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4206
+#: cuon/Addresses/GUI/addresses.glade2:3283
 msgid "Account-Nr."
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4478
+#: cuon/Addresses/GUI/addresses.glade2:3437
 msgid "date of launch"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4647
+#: cuon/Addresses/GUI/addresses.glade2:3519
 msgid "Is Webshop Address"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4666
+#: cuon/Addresses/GUI/addresses.glade2:3534
 msgid "update from Web"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4707
+#: cuon/Addresses/GUI/addresses.glade2:3569
 msgid "Number of Employees"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4732
+#: cuon/Addresses/GUI/addresses.glade2:3580
 msgid "Turnover"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4757
+#: cuon/Addresses/GUI/addresses.glade2:3591
 msgid "Trade"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4782
+#: cuon/Addresses/GUI/addresses.glade2:3602
 msgid "label113"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4807
+#: cuon/Addresses/GUI/addresses.glade2:3613
 msgid "label115"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4832
+#: cuon/Addresses/GUI/addresses.glade2:3624
 msgid "label116"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:4966
+#: cuon/Addresses/GUI/addresses.glade2:3695
 msgid "search ToP"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5015
+#: cuon/Addresses/GUI/addresses.glade2:3741
 msgid "Term of Payment"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5071
+#: cuon/Addresses/GUI/addresses.glade2:3779
 msgid "Line"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5120
+#: cuon/Addresses/GUI/addresses.glade2:3803
 msgid "fashion"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5148
+#: cuon/Addresses/GUI/addresses.glade2:3817
 msgid "Tax-Nr."
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5198
+#: cuon/Addresses/GUI/addresses.glade2:3842
 msgid "to calc Tax"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5219
+#: cuon/Addresses/GUI/addresses.glade2:3862
 msgid "Price-Group"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5286
+#: cuon/Addresses/GUI/addresses.glade2:3878
 msgid "address-Number"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5335
+#: cuon/Addresses/GUI/addresses.glade2:3906
 msgid "legal form"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5369
+#: cuon/Addresses/GUI/addresses.glade2:3949
 msgid "Misc."
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5615
-#: cuon/Addresses/GUI/addresses.glade2:5729
-#: cuon/Addresses/GUI/addresses.glade2:6409
-#: cuon/Addresses/GUI/addresses.glade2:6523
-#: cuon/Addresses/GUI/addresses.glade2:6927 GUI/cuon.glade2:45
+#: cuon/Addresses/GUI/addresses.glade2:4021
+#: cuon/Addresses/GUI/addresses.glade2:4091
+#: cuon/Addresses/GUI/addresses.glade2:4502
+#: cuon/Addresses/GUI/addresses.glade2:4574
+#: cuon/Addresses/GUI/addresses.glade2:4981 GUI/cuon.glade2:22
 #: GUI/cuon_gtk.glade2:33 GUI/cuon_server.glade2:42
 msgid "Connect"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5801
+#: cuon/Addresses/GUI/addresses.glade2:4134
 msgid "send Email"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5879
+#: cuon/Addresses/GUI/addresses.glade2:4199
 msgid "Skype"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:5907
+#: cuon/Addresses/GUI/addresses.glade2:4214
 msgid "SIP"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:6180
+#: cuon/Addresses/GUI/addresses.glade2:4383
 msgid "Job"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:6208
+#: cuon/Addresses/GUI/addresses.glade2:4396
 msgid "Department"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:6570
-msgid "Generate Partner"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:6674
+#: cuon/Addresses/GUI/addresses.glade2:4666
 msgid "City  "
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7461 cuon/Think/GUI/think.glade2:564
+#: cuon/Addresses/GUI/addresses.glade2:4923
+msgid "Generate Partner"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:5171 cuon/Think/GUI/think.glade2:564
 msgid "end at"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7574 cuon/Think/GUI/think.glade2:536
+#: cuon/Addresses/GUI/addresses.glade2:5260 cuon/Think/GUI/think.glade2:536
 msgid "Begin at"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7784
+#: cuon/Addresses/GUI/addresses.glade2:5396
 msgid "D M S"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7893
+#: cuon/Addresses/GUI/addresses.glade2:5478
 msgid "Goto Address"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7939
+#: cuon/Addresses/GUI/addresses.glade2:5513
 msgid "short Remark"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:8029
+#: cuon/Addresses/GUI/addresses.glade2:5561
 msgid "Note"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:8133
+#: cuon/Addresses/GUI/addresses.glade2:5617
 msgid "search Staff"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:8249
+#: cuon/Addresses/GUI/addresses.glade2:5703
 msgid "Schedul  begins at time"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:8274
-#: cuon/Addresses/GUI/addresses.glade2:8424
+#: cuon/Addresses/GUI/addresses.glade2:5733
+msgid "Schedul ends at time"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:5763
+#: cuon/Addresses/GUI/contact.glade2:2520
+msgid "Alarm"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:5779
+msgid " min. before"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:5842
+msgid "Process"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:5931
+#: cuon/Addresses/GUI/addresses.glade2:6285
+#: cuon/Addresses/GUI/addresses.glade2:6640
+#: cuon/Addresses/GUI/addresses.glade2:6995
+#: cuon/Addresses/GUI/addresses.glade2:7350
+msgid "add Date/Name"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:6074
+#: cuon/Addresses/GUI/addresses.glade2:6428
+#: cuon/Addresses/GUI/addresses.glade2:6783
+#: cuon/Addresses/GUI/addresses.glade2:7138
+#: cuon/Addresses/GUI/addresses.glade2:7493
+msgid "paste"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:6226
+#: cuon/Addresses/GUI/addresses.glade2:6580
+#: cuon/Addresses/GUI/addresses.glade2:6935
+#: cuon/Addresses/GUI/addresses.glade2:7290
+#: cuon/Addresses/GUI/addresses.glade2:7645
+msgid "add Formular"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:6271
+msgid "Notes misc"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:6625 GUI/cuon.glade2:472
+msgid "Notes contacter"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:6980
+msgid "notes representant"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7335
+msgid "notes salesman"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7690
+msgid "notes organisation"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7721
+msgid "Proposal for this address"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7779
+msgid "Show"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7905
+msgid ""
+"Order\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:7922
+msgid "Invoices fpr this address"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:8017
+msgid "goto Project"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:8112
+msgid "Projects for this Address"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:8190
+msgid "Map"
+msgstr ""
+
+#: cuon/Addresses/GUI/contact.glade2:126 cuon/Addresses/GUI/contact.glade2:263
+msgid "set ready"
+msgstr ""
+
+#: cuon/Addresses/GUI/contact.glade2:190
+msgid "create new contact"
+msgstr ""
+
+#: cuon/Addresses/GUI/contact.glade2:208
+msgid "edit current contact"
+msgstr ""
+
+#: cuon/Addresses/GUI/contact.glade2:226
+msgid "save current contact"
+msgstr ""
+
 #: cuon/Addresses/GUI/contact.glade2:653
 msgid ""
 "0:00\n"
@@ -3910,121 +4221,6 @@ msgid ""
 "23:45\n"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:8399
-msgid "Schedul ends at time"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:8556
-#: cuon/Addresses/GUI/contact.glade2:2520
-msgid "Alarm"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:8574
-msgid " min. before"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:8688
-msgid "Process"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:8816
-#: cuon/Addresses/GUI/addresses.glade2:9373
-#: cuon/Addresses/GUI/addresses.glade2:9930
-#: cuon/Addresses/GUI/addresses.glade2:10487
-#: cuon/Addresses/GUI/addresses.glade2:11044
-msgid "add Date/Name"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:9039
-#: cuon/Addresses/GUI/addresses.glade2:9596
-#: cuon/Addresses/GUI/addresses.glade2:10153
-#: cuon/Addresses/GUI/addresses.glade2:10710
-#: cuon/Addresses/GUI/addresses.glade2:11267
-msgid "paste"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:9256
-#: cuon/Addresses/GUI/addresses.glade2:9813
-#: cuon/Addresses/GUI/addresses.glade2:10370
-#: cuon/Addresses/GUI/addresses.glade2:10927
-#: cuon/Addresses/GUI/addresses.glade2:11484
-msgid "No Entry"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:9271
-#: cuon/Addresses/GUI/addresses.glade2:9828
-#: cuon/Addresses/GUI/addresses.glade2:10385
-#: cuon/Addresses/GUI/addresses.glade2:10942
-#: cuon/Addresses/GUI/addresses.glade2:11499
-msgid "add Formular"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:9337
-msgid "Notes misc"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:9894 GUI/cuon.glade2:572
-msgid "Notes contacter"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:10451
-msgid "notes representant"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11008
-msgid "notes salesman"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11565
-msgid "notes organisation"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11629
-msgid "Proposal for this address"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11733
-msgid "Show"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11860
-msgid ""
-"Order\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:11895
-msgid "Invoices fpr this address"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:12062
-msgid "goto Project"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:12144
-msgid "Projects for this Address"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:12241
-msgid "Map"
-msgstr ""
-
-#: cuon/Addresses/GUI/contact.glade2:126 cuon/Addresses/GUI/contact.glade2:263
-msgid "set ready"
-msgstr ""
-
-#: cuon/Addresses/GUI/contact.glade2:190
-msgid "create new contact"
-msgstr ""
-
-#: cuon/Addresses/GUI/contact.glade2:208
-msgid "edit current contact"
-msgstr ""
-
-#: cuon/Addresses/GUI/contact.glade2:226
-msgid "save current contact"
-msgstr ""
-
 #: cuon/Addresses/GUI/contact.glade2:815
 msgid "Time"
 msgstr ""
@@ -4078,7 +4274,7 @@ msgstr ""
 msgid "sleeps for Minutes"
 msgstr ""
 
-#: cuon/Addresses/GUI/contact.glade2:1572
+#: cuon/Addresses/GUI/contact.glade2:1572 cuon/DMS/GUI/dms.glade2:256
 msgid "Exit"
 msgstr ""
 
@@ -4211,13 +4407,8 @@ msgstr ""
 msgid "newsletter"
 msgstr ""
 
-#: cuon/Stats/GUI/stats.glade2:9 GUI/cuon.glade2:413
+#: cuon/Stats/GUI/stats.glade2:9 GUI/cuon.glade2:334
 msgid "Stats"
-msgstr ""
-
-#: cuon/Stats/GUI/stats.glade2:38 GUI/setup.glade2:37
-#: GUI/cuon_config_wizard.glade2:37
-msgid "File"
 msgstr ""
 
 #: cuon/Stats/GUI/stats.glade2:69 cuon/Stats/GUI/stats.glade2:118
@@ -4234,15 +4425,15 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: cuon/Clients/GUI/clients.glade2:504
+#: cuon/Clients/GUI/clients.glade2:327
 msgid "Client-Nr."
 msgstr ""
 
-#: cuon/Clients/GUI/clients.glade2:648
-msgid "choose ..."
+#: cuon/Clients/GUI/clients.glade2:404
+msgid "search ..."
 msgstr ""
 
-#: cuon/Clients/GUI/clients.glade2:673
+#: cuon/Clients/GUI/clients.glade2:424
 msgid "Address-ID"
 msgstr ""
 
@@ -4258,191 +4449,183 @@ msgstr ""
 msgid "Document Management System"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:57 cuon/DMS/GUI/dms.glade2:1778
+#: cuon/DMS/GUI/dms.glade2:59 cuon/DMS/GUI/dms.glade2:1894
 msgid "Documents"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:96
+#: cuon/DMS/GUI/dms.glade2:101
 msgid "print"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:122 cuon/DMS/GUI/dms.glade2:1915
+#: cuon/DMS/GUI/dms.glade2:128 cuon/DMS/GUI/dms.glade2:2030
 msgid "Related"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:174 cuon/DMS/GUI/dms.glade2:2007
+#: cuon/DMS/GUI/dms.glade2:184 cuon/DMS/GUI/dms.glade2:2099
 msgid "Associated"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:329
+#: cuon/DMS/GUI/dms.glade2:426
 msgid "Search4"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:344
+#: cuon/DMS/GUI/dms.glade2:441
 msgid "Search3"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:357
+#: cuon/DMS/GUI/dms.glade2:454
 msgid "Search2"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:372
+#: cuon/DMS/GUI/dms.glade2:469
 msgid "Search1"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:401
+#: cuon/DMS/GUI/dms.glade2:498
 msgid "Sub5"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:492
+#: cuon/DMS/GUI/dms.glade2:589
 msgid "Sub4"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:507
+#: cuon/DMS/GUI/dms.glade2:604
 msgid "Sub1"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:520
+#: cuon/DMS/GUI/dms.glade2:617
 msgid "Sub3"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:548
+#: cuon/DMS/GUI/dms.glade2:645
 msgid "Sub2"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:645
+#: cuon/DMS/GUI/dms.glade2:745
 msgid "Sub 1"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:672
+#: cuon/DMS/GUI/dms.glade2:773
 msgid "Sub 2"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:699
+#: cuon/DMS/GUI/dms.glade2:801
 msgid "Sub 3"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:726
+#: cuon/DMS/GUI/dms.glade2:829
 msgid "Sub 4"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:753
+#: cuon/DMS/GUI/dms.glade2:857
 msgid "Sub 5"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:841
+#: cuon/DMS/GUI/dms.glade2:890
 msgid "activate Rights"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:861
+#: cuon/DMS/GUI/dms.glade2:912
 msgid "Document-Date"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:902 cuon/DMS/GUI/dms.glade2:971
-#: cuon/DMS/GUI/dms.glade2:1040
+#: cuon/DMS/GUI/dms.glade2:953 cuon/DMS/GUI/dms.glade2:1023
+#: cuon/DMS/GUI/dms.glade2:1093
 msgid "read"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:917 cuon/DMS/GUI/dms.glade2:986
-#: cuon/DMS/GUI/dms.glade2:1055
+#: cuon/DMS/GUI/dms.glade2:968 cuon/DMS/GUI/dms.glade2:1038
+#: cuon/DMS/GUI/dms.glade2:1108
 msgid "write"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:932 cuon/DMS/GUI/dms.glade2:1001
-#: cuon/DMS/GUI/dms.glade2:1070
+#: cuon/DMS/GUI/dms.glade2:983 cuon/DMS/GUI/dms.glade2:1053
+#: cuon/DMS/GUI/dms.glade2:1123
 msgid "execute"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:960
+#: cuon/DMS/GUI/dms.glade2:1013
 msgid "Group"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1183
+#: cuon/DMS/GUI/dms.glade2:1240
 msgid "Search 1"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1196
+#: cuon/DMS/GUI/dms.glade2:1253
 msgid "Search 2"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1209
+#: cuon/DMS/GUI/dms.glade2:1266
 msgid "Search 3"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1222
+#: cuon/DMS/GUI/dms.glade2:1279
 msgid "Search 4"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1326
+#: cuon/DMS/GUI/dms.glade2:1442
 msgid "Single Scan"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1373
+#: cuon/DMS/GUI/dms.glade2:1491
 msgid "Multi Scan"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1427
+#: cuon/DMS/GUI/dms.glade2:1547
 msgid "OCR"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1450
+#: cuon/DMS/GUI/dms.glade2:1570
 msgid "choose file"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1460 cuon/Databases/GUI/databases.glade2:179
+#: cuon/DMS/GUI/dms.glade2:1578 cuon/Databases/GUI/databases.glade2:179
 #: cuon/Databases/GUI/databases.glade2:306
 msgid "Import"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1475
+#: cuon/DMS/GUI/dms.glade2:1593
 msgid "LINK"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1506
+#: cuon/DMS/GUI/dms.glade2:1608
 msgid "Fax Newsletter"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1594
+#: cuon/DMS/GUI/dms.glade2:1693
 msgid "Fax Last Document"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1646
+#: cuon/DMS/GUI/dms.glade2:1746
 msgid "Save Last Document"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1693
+#: cuon/DMS/GUI/dms.glade2:1795
 msgid "Save Last Document As ..."
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1833 cuon/DMS/GUI/dms.glade2:1848
+#: cuon/DMS/GUI/dms.glade2:1936 cuon/DMS/GUI/dms.glade2:1951
 msgid "from user"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1875
+#: cuon/DMS/GUI/dms.glade2:1978
 msgid "last change"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1900
+#: cuon/DMS/GUI/dms.glade2:2003
 msgid "Document insert at"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:1971
-msgid "search Address ..."
-msgstr ""
-
-#: cuon/DMS/GUI/dms.glade2:1992
-msgid "with Address"
-msgstr ""
-
-#: cuon/DMS/GUI/dms.glade2:2024
+#: cuon/DMS/GUI/dms.glade2:2115
 msgid "Link eingeben"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:2035
+#: cuon/DMS/GUI/dms.glade2:2126
 msgid "Link"
 msgstr ""
 
-#: cuon/DMS/GUI/dms.glade2:2046
+#: cuon/DMS/GUI/dms.glade2:2138
 msgid "http://"
 msgstr ""
 
@@ -4512,15 +4695,15 @@ msgstr ""
 msgid "choose contra account"
 msgstr ""
 
-#: cuon/Articles/GUI/articles.glade2:2370
+#: cuon/Articles/GUI/articles.glade2:1716
 msgid "Article Designation"
 msgstr ""
 
-#: cuon/Articles/GUI/articles.glade2:2490
+#: cuon/Articles/GUI/articles.glade2:1787
 msgid "Article ID"
 msgstr ""
 
-#: cuon/Articles/GUI/articles.glade2:2535
+#: cuon/Articles/GUI/articles.glade2:1809
 msgid "Part Description"
 msgstr ""
 
@@ -4536,7 +4719,7 @@ msgstr ""
 msgid "Materialgroup contains"
 msgstr ""
 
-#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:639
+#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:532
 #: GUI/cuon_config_wizard.glade2:81 GUI/cuon_gtk.glade2:172
 #: GUI/cuon_server.glade2:324
 msgid "Help"
@@ -4701,263 +4884,263 @@ msgstr ""
 msgid "Start Install"
 msgstr ""
 
-#: GUI/cuon.glade2:11
+#: GUI/cuon.glade2:9
 msgid "Client PyCuon"
 msgstr ""
 
-#: GUI/cuon.glade2:54 GUI/cuon_gtk.glade2:42 GUI/cuon_server.glade2:51
+#: GUI/cuon.glade2:29 GUI/cuon_gtk.glade2:42 GUI/cuon_server.glade2:51
 msgid "Login"
 msgstr ""
 
-#: GUI/cuon.glade2:65 GUI/cuon_gtk.glade2:52 GUI/cuon_server.glade2:62
+#: GUI/cuon.glade2:39 GUI/cuon_gtk.glade2:52 GUI/cuon_server.glade2:62
 msgid "Logout"
 msgstr ""
 
-#: GUI/cuon.glade2:80 GUI/cuon_gtk.glade2:66 GUI/cuon_server.glade2:76
+#: GUI/cuon.glade2:52 GUI/cuon_gtk.glade2:66 GUI/cuon_server.glade2:76
 msgid "Close the Application"
 msgstr ""
 
-#: GUI/cuon.glade2:81 GUI/cuon_gtk.glade2:67 GUI/cuon_server.glade2:77
+#: GUI/cuon.glade2:53 GUI/cuon_gtk.glade2:67 GUI/cuon_server.glade2:77
 msgid "quit"
 msgstr ""
 
-#: GUI/cuon.glade2:126
+#: GUI/cuon.glade2:82
 msgid "Art_icles"
 msgstr ""
 
-#: GUI/cuon.glade2:152
+#: GUI/cuon.glade2:105
 msgid "Bibliographic"
 msgstr ""
 
-#: GUI/cuon.glade2:178
+#: GUI/cuon.glade2:128
 msgid "Contracts"
 msgstr ""
 
-#: GUI/cuon.glade2:187
+#: GUI/cuon.glade2:135
 msgid "Insurances"
 msgstr ""
 
-#: GUI/cuon.glade2:196
+#: GUI/cuon.glade2:143
 msgid "Rent"
 msgstr ""
 
-#: GUI/cuon.glade2:205
+#: GUI/cuon.glade2:151
 msgid "Leasing"
 msgstr ""
 
-#: GUI/cuon.glade2:237
+#: GUI/cuon.glade2:180
 msgid "Action"
 msgstr ""
 
-#: GUI/cuon.glade2:256 GUI/cuon_gtk.glade2:119
+#: GUI/cuon.glade2:196 GUI/cuon_gtk.glade2:119
 msgid "_Order"
 msgstr ""
 
-#: GUI/cuon.glade2:290
+#: GUI/cuon.glade2:227
 msgid "Accounting"
 msgstr ""
 
-#: GUI/cuon.glade2:309
+#: GUI/cuon.glade2:243
 msgid "cash account book"
 msgstr ""
 
-#: GUI/cuon.glade2:325
+#: GUI/cuon.glade2:257
 msgid "list_of_invoices"
 msgstr ""
 
-#: GUI/cuon.glade2:341
+#: GUI/cuon.glade2:271
 msgid "analyse costs"
 msgstr ""
 
-#: GUI/cuon.glade2:354
+#: GUI/cuon.glade2:283
 msgid "Extras"
 msgstr ""
 
-#: GUI/cuon.glade2:363
+#: GUI/cuon.glade2:290
 msgid "Mayavi"
 msgstr ""
 
-#: GUI/cuon.glade2:385
+#: GUI/cuon.glade2:309
 msgid "Expert System"
 msgstr ""
 
-#: GUI/cuon.glade2:404
+#: GUI/cuon.glade2:326
 msgid "Web"
 msgstr ""
 
-#: GUI/cuon.glade2:474
+#: GUI/cuon.glade2:387
 msgid "Finances"
 msgstr ""
 
-#: GUI/cuon.glade2:496 GUI/cuon_gtk.glade2:159
+#: GUI/cuon.glade2:407 GUI/cuon_gtk.glade2:159
 msgid "Report-Generator"
 msgstr ""
 
-#: GUI/cuon.glade2:505
+#: GUI/cuon.glade2:415
 msgid "WebShop"
 msgstr ""
 
-#: GUI/cuon.glade2:520
+#: GUI/cuon.glade2:428
 msgid "Databases"
 msgstr ""
 
-#: GUI/cuon.glade2:535
+#: GUI/cuon.glade2:441
 msgid "Import Data"
 msgstr ""
 
-#: GUI/cuon.glade2:544
+#: GUI/cuon.glade2:449
 msgid "Forms"
 msgstr ""
 
-#: GUI/cuon.glade2:563
+#: GUI/cuon.glade2:464
 msgid "Notes Misc"
 msgstr ""
 
-#: GUI/cuon.glade2:581
+#: GUI/cuon.glade2:480
 msgid "Notes Representant"
 msgstr ""
 
-#: GUI/cuon.glade2:590
+#: GUI/cuon.glade2:488
 msgid "Notes Salesman"
 msgstr ""
 
-#: GUI/cuon.glade2:617
+#: GUI/cuon.glade2:513
 msgid "Logs"
 msgstr ""
 
-#: GUI/cuon.glade2:626
+#: GUI/cuon.glade2:520
 msgid "Mail"
 msgstr ""
 
-#: GUI/cuon.glade2:648 GUI/cuon_gtk.glade2:181 GUI/cuon_server.glade2:333
+#: GUI/cuon.glade2:539 GUI/cuon_gtk.glade2:181 GUI/cuon_server.glade2:333
 msgid "About"
 msgstr ""
 
-#: GUI/cuon.glade2:657
+#: GUI/cuon.glade2:547
 msgid "Online-Help"
 msgstr ""
 
-#: GUI/cuon.glade2:693
+#: GUI/cuon.glade2:576
 msgid "connected user"
 msgstr ""
 
-#: GUI/cuon.glade2:743
+#: GUI/cuon.glade2:600
 msgid "connected server"
 msgstr ""
 
-#: GUI/cuon.glade2:793
-msgid "Application-Server"
-msgstr ""
-
-#: GUI/cuon.glade2:842 GUI/cuon_server.glade2:113
-msgid "Database"
-msgstr ""
-
-#: GUI/cuon.glade2:940
+#: GUI/cuon.glade2:628
 msgid "show Scheduls"
 msgstr ""
 
-#: GUI/cuon.glade2:981
+#: GUI/cuon.glade2:645
 msgid "only new"
 msgstr ""
 
-#: GUI/cuon.glade2:1001
+#: GUI/cuon.glade2:661
 msgid "all"
 msgstr ""
 
-#: GUI/cuon.glade2:1022
+#: GUI/cuon.glade2:678
 msgid "canceld"
 msgstr ""
 
-#: GUI/cuon.glade2:1043
+#: GUI/cuon.glade2:695
 msgid "actual week"
 msgstr ""
 
-#: GUI/cuon.glade2:1064
+#: GUI/cuon.glade2:712
 msgid "actual Month"
 msgstr ""
 
-#: GUI/cuon.glade2:1097
+#: GUI/cuon.glade2:736
 msgid "this Year"
 msgstr ""
 
-#: GUI/cuon.glade2:1117
+#: GUI/cuon.glade2:752
 msgid "last Year"
 msgstr ""
 
-#: GUI/cuon.glade2:1445
+#: GUI/cuon.glade2:798
+msgid "Chat"
+msgstr ""
+
+#: GUI/cuon.glade2:812
+msgid "3D Chat"
+msgstr ""
+
+#: GUI/cuon.glade2:1006
 msgid "Get new messages"
 msgstr ""
 
-#: GUI/cuon.glade2:1446
+#: GUI/cuon.glade2:1007
 msgid "Get Messages"
 msgstr ""
 
-#: GUI/cuon.glade2:1463
+#: GUI/cuon.glade2:1020
 msgid "Refresh the user timeline"
 msgstr ""
 
-#: GUI/cuon.glade2:1464
+#: GUI/cuon.glade2:1021
 msgid "Refresh"
 msgstr ""
 
-#: GUI/cuon.glade2:1481
+#: GUI/cuon.glade2:1034
 msgid "Refresh the public timeline"
 msgstr ""
 
-#: GUI/cuon.glade2:1482
+#: GUI/cuon.glade2:1035
 msgid "Refresh all"
 msgstr ""
 
-#: GUI/cuon.glade2:1499
+#: GUI/cuon.glade2:1048
 msgid "List of your followers"
 msgstr ""
 
-#: GUI/cuon.glade2:1500 GUI/cuon.glade2:1711
+#: GUI/cuon.glade2:1049 GUI/cuon.glade2:1175
 msgid "Follower"
 msgstr ""
 
-#: GUI/cuon.glade2:1517
+#: GUI/cuon.glade2:1062
 msgid "Get replies to you"
 msgstr ""
 
-#: GUI/cuon.glade2:1518
+#: GUI/cuon.glade2:1063
 msgid "Replies"
 msgstr ""
 
-#: GUI/cuon.glade2:1590
+#: GUI/cuon.glade2:1106
 msgid "Twitter"
 msgstr ""
 
-#: GUI/cuon.glade2:1657
+#: GUI/cuon.glade2:1141
 msgid "send"
 msgstr ""
 
-#: GUI/cuon.glade2:1755
+#: GUI/cuon.glade2:1197
 msgid "Friends"
 msgstr ""
 
-#: GUI/cuon.glade2:1799
+#: GUI/cuon.glade2:1219
 msgid "Follow"
 msgstr ""
 
-#: GUI/cuon.glade2:1843
+#: GUI/cuon.glade2:1241
 msgid "Tweets"
 msgstr ""
 
-#: GUI/cuon.glade2:1927
+#: GUI/cuon.glade2:1292
 msgid "About CUON"
 msgstr ""
 
-#: GUI/cuon.glade2:1987
+#: GUI/cuon.glade2:1305
 msgid "C.U.O.N."
 msgstr ""
 
-#: GUI/cuon.glade2:2012
+#: GUI/cuon.glade2:1316
 msgid "An Internet Business-Software"
 msgstr ""
 
-#: GUI/cuon.glade2:2102
+#: GUI/cuon.glade2:1408
 msgid ""
 "Authors:\n"
 "Juergen Hamel, 32584 Loehne, Germany"
@@ -5009,6 +5192,10 @@ msgstr ""
 
 #: GUI/cuon_gtk.glade2:110
 msgid "Arti_cles"
+msgstr ""
+
+#: GUI/cuon_server.glade2:113
+msgid "Database"
 msgstr ""
 
 #: GUI/cuon_server.glade2:123

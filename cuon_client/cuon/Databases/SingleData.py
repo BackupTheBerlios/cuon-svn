@@ -488,7 +488,7 @@ class SingleData(gladeXml, logs):
 
     def getFirstListRecord(self):
         
-        liEntries = self.rpc.callRP('Database.getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser, self.bDistinct)
+        liEntries = self.rpc.callRP('Database.getListEntries',{'id': 'int'}, self.table.getName() , "id" , self.sWhere, self.sqlDicUser, self.bDistinct,  ['id'])
         try:
             dicEntry = liEntries[0]
             id  = dicEntry['id']
@@ -908,7 +908,8 @@ class SingleData(gladeXml, logs):
         self.liFields = liFields01
         self.listboxId = len(liFields01)
         self.liFields.append('id')
-        # self.out( 'lifield = ' + `self.liFields`)
+        
+        #print 'lifield = ' + `self.liFields`
 
     def setTreeOrder(self, sSort01):
         self.sSort = sSort01
@@ -937,10 +938,9 @@ class SingleData(gladeXml, logs):
         self.out(dicFields)
         
         if dicFields:
-            self.printOut( 'SingleData - dicFields = ', `dicFields`)
             
             
-            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicInternetUser, self.bDistinct)
+            dicLists = self.rpc.callRP('Database.getListEntries',dicFields, self.table.getName() , self.sSort, self.sWhere, self.dicInternetUser, self.bDistinct,  self.liFields)
         else:
             dicLists = {}
             

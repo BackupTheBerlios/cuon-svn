@@ -592,6 +592,7 @@
       <comment></comment>
    
      </field>
+     
     <field>
       <name>color_duty_bg</name>
       <type>varchar</type>
@@ -712,6 +713,36 @@
       <size>255</size>
       <default></default>
       <comment>twitter connect for user , password</comment>
+    </field>
+     <field>
+      <name>std_text_chat</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>text chat client, pidgin, slitechat or so</comment>
+    </field>
+     <field>
+      <name>std_3d_chat</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>3d chat client</comment>
+    </field>
+     <field>
+      <name>std_email_prg</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>email client like claws, evolution, kmail</comment>
     </field>
   </table>
   <table>

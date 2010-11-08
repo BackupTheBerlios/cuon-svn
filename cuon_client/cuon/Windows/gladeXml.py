@@ -212,6 +212,8 @@ class gladeXml(defaultValues):
         try:
             self.xml = gtk.Builder()
             self.xml.add_from_file(fname)
+            self.xml.set_translation_domain('cuon')
+
             print "loaded Builder ",  fname
         except:
             try:
@@ -223,6 +225,8 @@ class gladeXml(defaultValues):
                 try:
                     self.xml = gtk.Builder()
                     self.xml.add_from_file(fnameAlternate)
+                    self.xml.set_translation_domain('cuon')
+
                     print "loaded Builder ",  fnameAlternate
                    
 

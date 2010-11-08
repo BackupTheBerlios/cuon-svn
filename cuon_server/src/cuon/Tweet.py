@@ -60,17 +60,20 @@ class Tweet(xmlrpc.XMLRPC, basics):
     def xmlrpc_refreshUser(self, dicUser):
         self.username = dicUser['Twitter']['TwitterName'] 
         self.password = dicUser['Twitter']['TwitterPassword']
+        print "username + password = ", self.username, self.password
         liReturn = []
         try:
             api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
+            print api
             liStatus = api.GetUserTimeline(self.username)        
             # print [s.text for s in status]
             
             for status in liStatus:
                 liReturn.append(status.created_at[0:16] + ": " + status.text + '\n')
             liReturn.reverse()
-        except:
+        except Exception, params:
             print 'Error in getting Tweet'
+            print Exception, params
             liReturn = ['NONE']   
         #print liReturn
         return liReturn
@@ -78,17 +81,20 @@ class Tweet(xmlrpc.XMLRPC, basics):
     def xmlrpc_refreshAll(self, dicUser):
         self.username = dicUser['Twitter']['TwitterName'] 
         self.password = dicUser['Twitter']['TwitterPassword']
+        print "username + password = ", self.username, self.password
         liReturn = []
         try:
             api = twitter.Api(username=self.username, password=self.password, input_encoding=self.encoding)
+            print api
             liStatus = api.GetPublicTimeline()        
             # print [s.text for s in status]
            
             for status in liStatus:
                 liReturn.append(status.created_at[0:16]  + "-" + status.user.GetScreenName()+ ": " + status.text + '\n')
             liReturn.reverse()
-        except:
+        except Exception, params:
             print 'Error in getting Tweet'
+            print Exception, params
             liReturn = ['NONE']
             
         #print liReturn

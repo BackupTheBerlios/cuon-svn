@@ -444,7 +444,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         
         return dicRights
         
-        
+    
 
     def xmlrpc_saveDia(self, sType, dicData):
         print sType

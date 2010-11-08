@@ -85,7 +85,16 @@ class SinglePartner(SingleData):
             
         return liAddress
         
+    def getAddressFirstlast(self, id):
+        dicRecords = self.load(id)
+        sAdr = ' '
+        if dicRecords:
+            dicRecord = dicRecords[0]
+            sAdr = dicRecord['firstname']+' ' + dicRecord['lastname']
+            
+        return sAdr
         
+            
     def getAddressID(self):
         id = 0
         if self.firstRecord.has_key('addressid'):

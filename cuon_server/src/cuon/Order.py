@@ -135,6 +135,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def xmlrpc_getInvoiceDate(self, orderNumber, dicUser):
         
         date = ' '
+        
         try:
             orderNumber = int(orderNumber)
         except:
@@ -153,20 +154,44 @@ class Order(xmlrpc.XMLRPC, basics):
         return date
         
     def xmlrpc_getOrderValues(self, orderid, dicUser):
-        
-        
+        liResultStaff = None
+        print '############ get order values ####################'
         sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
-        sSql += " orderbook.designation as order_designation , orderbook.number as order_number, "
+        sSql += " orderbook.designation as order_designation , orderbook.number as order_number, staff_id as order_staff_id, "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
         
         sSql += " from orderbook where id = " + `orderid`
         sSql += self.getWhere(None, dicUser,2)
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+        
+        
+        
         for row in liResult:
-            if row['discount'] == None or row['discount'] in self.liSQL_ERRORS:
-                row['discount'] = 0.0
+            try:
+                if row['discount'] == None or row['discount'] in self.liSQL_ERRORS:
+                    row['discount'] = 0.0
+            except:
+                pass
+            try:
+                if row['order_staff_id'] > 0:
+                    sSql = "select * from staff where id = " + `row['order_staff_id']` 
+                    liResultStaff = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+            except:
+                pass
                 
+        print 'liResultStaff = ',  liResultStaff
+        if liResultStaff:
+            try:
+                row = liResultStaff[0]
+                print 'row_keys = ' ,  row.keys() 
+                for key in row.keys():
+                    print 'key = ',  key
+                    liResult[0]['staff_' + key] = row[key]
+            except Exception, params:
+                print Exception, params
+                
+        print 'liResult = ',  liResult
         top_id = self .getToPID({'orderid':orderid},  dicUser)
         
 #        sSql2 = 'select order_top as top_id from orderinvoice where orderid = ' +  `orderid`
@@ -181,11 +206,15 @@ class Order(xmlrpc.XMLRPC, basics):
 #            if liResultTop and liResultTop not in ['NONE','ERROR']:
 #                top_id = liResultTop[0]['top_id']
 #            
+        
         if liResult not in self.liSQL_ERRORS:
             sSql3 = ' select term_of_payment from terms_of_payment where id = ' + `top_id`
             liResultTop2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql3, dicUser )
             if liResultTop2 and liResultTop2 not in self.liSQL_ERRORS:
                 liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
+            else :
+                liResult[0]['term_of_payment'] = ''
+        
         return liResult
         
         
@@ -583,8 +612,10 @@ class Order(xmlrpc.XMLRPC, basics):
         return pos
         
     def xmlrpc_getUserInfoOrder(self, dicOrder, dicUser):
+        
         return None
     
+        
     def xmlrpc_getUserInfoInvoice(self, dicOrder, dicUser):
         sSql = 'select * from staff, list_of_invoices as lii where cuon_username =  lii.user_id and lii.invoice_number = ' + `dicOrder['invoiceNumber'] ` 
         sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')

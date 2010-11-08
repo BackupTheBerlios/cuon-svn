@@ -40,7 +40,7 @@ class helpwindow(windows):
         #sw1 = self.getWidget('swHelp')
         self.vbox = self.getWidget('vbox2')
         self.vbox.add(self.helpmoz)
-        self.helpmoz.load_url("http://cuon.org:8000/cuontrac/wiki/Documentation")
+        self.helpmoz.load_url("http://cuon.org")
         self.helpmoz.set_size_request(816,600)
         self.helpmoz.show()
         self.win1.show_all()
