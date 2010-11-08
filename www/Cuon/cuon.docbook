@@ -1,0 +1,1232 @@
+<?xml version="1.0" encoding="utf-8" ?> <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" >
+
+<book>
+  <bookinfo>
+    <title> C.U.O.N. </title>
+    <subtitle> Installation and Benutzung </subtitle>
+    <author>
+      <firstname> Jürgen </firstname>
+      <surname> Hamel </surname>
+    </author>
+    <copyright>
+      <year> 2010 </year>
+      <holder> Jürgen Hamel </holder>
+    </copyright>
+  </bookinfo>
+  <preface>
+    <title> Vorwort </title>
+    <para> C.U.O.N. ist ein Akronym für <emphasis> Common Universally Organized Network </emphasis>
+    </para>
+    <para> Im Jahr 2001 dachte ich mal über ein ERP System für Linux nach. Es sollte aber nicht nur eine simple Warenwirtschaft sein, sondern mehr. Als erstes probierte ich es mit c++, aber das war von der Produktivität nicht ausreichend, ich war alleiniger Programmier, Designer, Distributor und so mußte alles produktiver sein. Dann entdeckte ich PYthon und es ist traumhaft!!. Nun konnte ich folgendes Design verwirklichen: Auf dem Server laufen verschiedene Twisted-Python server, die mit der Database verbunden sind. Die Clients kommunizieren über <emphasis>XMLRPC</emphasis> mit dem Server, so das der Client in verschiedenen Sprachen realisiert werden kann. Selbstverständlich steht C.U.O.N. unter der GPL v3 .
+
+
+ </para>
+    <para> C.U.O.N. hat verschiedene Module wir Stammdatenverwaltung, Dokument Management System (DMS), Projek- und Auftragsverwaltung </para>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para> DMS - Dokumente einscannen, PDF, LibreOffice, Openoffice,Musik, Video, Sprachnotizen, Flowcharts und vieles mehr   </para>
+        </listitem>
+        <listitem>
+          <para> AI - Ein Expertensystem mit vielen Spezialfunktionen</para>
+        </listitem>
+        <listitem>
+          <para> Projekte - Projektverwaltung mit Phasen und Tasks, Material- und personalresourcen, Programmierung  </para>
+        </listitem>
+        <listitem>
+          <para> iCalendar - iCal Funktion für Kalender und Mailprogramme </para>
+        </listitem>
+        <listitem>
+          <para> GUI und Programmlogik sind strikt getrennt, so kann die GUI leich angepaßt werden</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+ 
+<para>   
+CUON ist eine äusserst anpassungsfähige Software. Im Gegensatz zu vielen anderen Programmen in diesem Genre wurde auf äusserste Flexibilität Wert gelegt. Das möchte ich hier anhand der GUI. also des Ausehens und Erscheinungsbildes, erklären.
+Ich werde mehrmals im Jahr auf dieses Thema angesprochen und will hier neben den Erklärungen im Wiki das Konzept von CUON verdeutlichen.
+Das Program ist von Anfang an in Programmcode und grafische Benutzerschnittstelle (GUI) getrennt worden. Viele sagen dem Aussehen eine gewisse Einfachheit nach und das stimmt auch! Ich bin eben Programmierer und kein Designer. Aber man kann CUON sehr schnell und effektiv anpassen und das machen auch einige Firmen. Also:
+
+    * In CUON kann jede Maske beliebig verändert werden mit den Designtool GLADE. Diese veränderten Masken können, müssen aber nicht, von den Clients genutzt werden. Also kann ein Mischbetrieb genutzt werden, in dem z.B. der Chef einen Nokia N800 mit einer kleinen Oberfläche nutzt, während die Kontakter an hochauflösenden 19" Bildschirmen die komplette Adressmaske sehen. Einige mögens bunt, andere nicht. Wer das Menü lieber an der Seite oder unten hat, bitte sehr, kein Problem.
+    * Aber es geht noch viel komplexer !! Wenn z.B. in einer Fa. ein spezielles Datenfeld gebraucht wird, das nicht in CUON vorhanden ist, kann dies innerhalb weniger Minuten hinzugefügt werden:
+          o GLADE starten und Eingabefeld einfügen
+          o Mit XML-Editor oder Texteditor die entry_ Definition anpassen
+          o Mit XML-Editor oder Texteditor die table Definition anpassen
+          o Update starten - fertig 
+
+    * Ihnen passt die Reihenfolge der Eingabefelder nicht - einfach abändern
+    * sie brauchen noch Tastenkürzel für bestimmte GUI-Funktionen oder Buttons ? Tragt Sie ein ! 
+
+Natürlich würde ich mich freuen, wenn Ihr eure geänderten GUI's mir zur Verfügung stellt, damit ich sie in die Standard-Version einbauen kann. Dann haben alle etwas davon.
+
+</para>
+</preface>
+
+<chapter><title>C.U.O.N. Installation</title>
+<sect1 id="t1"><title>Wichtig !!!</title>
+<para>C.U.O.N. ist für den Professionellen Einsatz gedacht und erfordert für die Installation einiges an Kenntnissen. Umfangreiches Linux, XML und Postgres Wissen sind wirklich die Voraussetzung der Server-Installation und der späteren Pflege. Falls Sie professionelle Hilfe benötigen, stehen ihnen diese Servicepartner zur Verfügung</para>
+
+
+ <para><emphasis>Servermiete und Grundinstalltion: Fa. Cyrus-Computer GmbH, 32584 Löhne, email cuon@cyrus.de </emphasis></para>
+<para><emphasis>Komplettservice für C.U.O.N.: Fa. Softconcept GmbH, Borriesstr. 35, 32257 Bünde, Tel. 05223 / 4970-0, email info@softconcept.net </emphasis> </para>
+</sect1>
+<sect1 id="t1_1"><title>Vorraussetzungen</title>
+<para>
+Diese Seite beschreibt die allgemeine Installation von cuon. Bitte unbedingt auch die betriebssystem-spezifischen Tipps lesen.
+Hardware 
+</para>
+<para>Der Server benötigt einiges an Resourcen. So sollte es ungefähr so aussehen:
+<itemizedlist><listitem><para>Server und 1 Client auf dem selben Rechner 	ab 3GHz, 1GB RAM, 10 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 10 Clients 	ab 2.5 GHz, 1 GB RAM, 100 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 50 Clients 	ab 3 GHz, 4 GB RAM, 500 GB HD</para></listitem></itemizedlist>
+Der Client-Rechner muß eine grafische Oberfläche haben </para>
+<para>
+Der Install-client muß ein Linux-Rechner sein. X muß laufen und eine Oberfläche wie XFCE, Gnome, KDE, Blackbox, windowmaker oder eine andere Oberfläche muß vorhanden sein.
+SSH zum Server/Localhost 
+</para>
+<sect2 id="t2"><title>SSH key</title>
+<para>Als User führen Sie bitte folgendes aus, falls noch kein ssh Schlüsselpaar existiert.</para>
+
+
+
+<example role="codelisting" id="c1">
+<title>SSH Key</title>
+<programlisting><![CDATA[
+
+$ssh-keygen -t rsa
+
+Das sollte ungefähr so aussehen:
+
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/home/huette/.ssh/id_rsa):
+
+Created directory '/home/huette/.ssh'.
+
+Enter passphrase (empty for no passphrase): (nichts eingeben)
+
+Enter same passphrase again:
+
+Your identification has been saved in /home/huette/.ssh/id_rsa.
+
+Your public key has been saved in /home/huette/.ssh/id_rsa.pub.
+
+The key fingerprint is:
+
+48:4f:7d:d8:ba:a4:6a:4c:8b:8c:05:b6:3b:4d:26:40 huette@localhost
+
+Der öffentliche Schlüssel in id_rsa.pub kann getrost an alle weitergeben werden.
+
+Hinterlegt man nun den öffentlichen Schlüssel auf dem Zielrechner in der Datei root/.ssh/authorized_keys, so ist es möglich, anstelle der Abfrage des Systempaßworts die durch ein Schlüsselpaar definierte Identität zur Authentifizierung einzusetzen.
+
+Folgendes Vorgehen ist vielleicht am einfachsten: Client: scp id_rsa.pub root@ IP://root Dann ein ssh -lroot IP Jetzt ist man/frau auf dem Server und kann dort mit cd /root ins das Homeverzeichnis von root wechseln. Falls kein Verzeichnis .ssh existiert, mkdir .ssh
+
+jetzt ein cat ../id_rsa.pub >> authorized_keys
+
+und alles wird gut.
+
+]]></programlisting>
+</example>
+<para>
+Tipp: Testen Sie, ob Sie sich jetzt mit ssh -lroot IP ohne Passworteingabe auf den Server einloggen können</para>
+
+</sect2>
+</sect1>
+<sect1 id="t3"><title>Postgres-Datenbank auf dem Server</title>
+<sect2 id="t4"><title>Basis Installation</title>
+<itemizedlist>
+    <listitem><para>* Postgres installieren</para></listitem>
+    <listitem><para>* Database anlegen ( im Zweifelsfall cuon nennen ). z.B. als user postgres:</para></listitem>
+     <listitem><para> createdb -E utf-8 cuon</para></listitem>
+    <listitem><para>* 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen createuser admin Superuser -- Ja</para></listitem>
+    <listitem><para>* sowie einen user zope ohne rechte </para></listitem>
+</itemizedlist>
+<para><emphasis>Diese user sind reine Datenbankuser ohne loginshell</emphasis></para></sect2>
+<sect2 id="t5"><title>plpgsql check</title>
+<para>
+Das Anlegen von Proceduren und Triggern geschieht mit plpgsql Dies Sprache muß installiert sein. Folgender Aufruf prüft dies :
+</para>
+<example role="codelisting" id="c2">
+<title></title>
+<programlisting><![CDATA[
+
+/usr/lib/postgresql/bin/createlang -dcuon -l
+
+Procedural languages
+
+    . Name | Trusted?
+
+    . +
+
+    . plpgsql | t
+
+]]></programlisting>
+</example>
+<para>Ist das Ergebnis ähnlich wie oben und wird plpgsql angezeigt, ist alles in Ordnung. Andernfalls führen Sie folgendes aus. ( Am besten als user postgres ) :
+</para>
+<para>sh-2.05b$ /usr/lib/postgresql/bin/createlang -d cuon plpgsql</para>
+</sect2>
+<sect2 id="t5_1"><title>Postgres konfigurieren</title>
+<para>Bitte in der /etc/postgres/..../pg_hba.conf die Benutzer auf trusted setzen, im einfachsten Fall: </para>
+<example role="codelisting" id="c2_1">
+<title>pg_hba.conf</title>
+<programlisting><![CDATA[
+# "local" is for Unix domain socket connections only
+local   all         all                               trust
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          trust
+# IPv6 local connections:
+host    all         all         ::1/128               trust
+
+]]></programlisting>
+</example>
+<para>Um dies richtig zu konfigurieren, sollte auf jeden Fall Postgres und Linux Kenntnisse vorhanden sein.  </para>
+</sect2>
+<sect2 id="t6"><title>Vorbereiten der Installation</title>
+<sect3 id="t7"><title>Verschlüsselung einrichten</title> 
+<para>
+Wenn über das Internet auf den cuon Server zugegriffen wird, ist es unbedingt zu empfehlen, eine verschlüsselte Verbindung zu aktivieren. Ansonsten sind alle Daten, Passwörter etc. theoretisch von jedem Teenager lesbar!
+</para>
+<para>Als Standardserverport steht 7580 für verschlüsselte Verbindung (https) und 7080 für unverschlüsselte Verbindung (sollte gleich per Firewall gesperrt werden).
+</para>
+<para>Die eigenen zertifikate können Sie wie folgt erstellen:
+</para>
+<example role="codelisting" id="c3">
+<title></title>
+<programlisting><![CDATA[
+
+openssl genrsa -out serverkey.pem 2048
+
+openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
+
+Kopieren sie dann die beiten Zertifikate nach /etc/cuon .
+
+Dann starten Sie den xmlrpc server. einen ersten Test können Sie wie folgt machen:
+
+openssl s_client -connect xxx.xxx.xxx.xxx:7580 -ssl3
+
+Für xxx.xxx.xxx.xxx bitte Ihre Server-IP einsetzen.
+
+]]></programlisting>
+</example>
+</sect3>
+</sect2> 
+<sect2 id="t13"><title>Server testen und Datenbank einrichten</title>
+<para>
+Zum ersten Testen der Installation langt ein laufender postgresql Server und der cuonxmlrpc Server. Um eine bessere Übersicht über das Geschehen zu haben empfiehlt es sich, den cuonxmlrpc Server per Hand zu starten um die Debug-Ausgabe im Terminal verfolgen zu können: python /usr/share/cuon/cuon_server/src/server_xmlrpc
+</para>
+<para>
+Dann in einem Fenster Logfile der SQL Datenbank öffnen:
+tail -f /var/log/postgresql/postg*main*.log
+cuon starten </para>
+<para>
+Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Diese bitte so starten:
+</para><itemizedlist>
+   <listitem><para> * /etc/init.d/cuonxmlrpc start</para></listitem>
+    <listitem><para>* /etc/init.d/cuonweb start</para></listitem>
+    <listitem><para>* /etc/init.d/cuonreport start </para></listitem>
+</itemizedlist>
+<para>Um bei einem Neustart ein automatisches Hochfahren aller benötigten Programme zu gewährleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</para>
+ </sect2>
+
+<sect2 id="t8"><title>Haupt Installation  </title>
+<para>
+
+Jetzt geht es mit den selben Schritten wie bei einem Update weiter.</para>
+</sect2>
+ 
+
+<sect2 id="t9"><title>Client starten </title>
+
+<para>Jetzt kann schon mit den client gearbeitet werden , dazu bei cuon.org --> Downloads -->Deutsch die Datei  Cuon-Client downloaden. Bitte den Anweisungen zur Installation und Konfiguration folgen:</para>
+</sect2>
+</sect1>
+<sect1 id="t10"><title>Für Fortgeschrittene</title>
+<sect2 id="t11"><title>Die Webserver und die AI Seite </title>
+<para>
+Auf dem Server ist ein Verzeichnis /var/cuon_www/AI/html
+Bei der Erstinstallation bitte alle Dateien nach dem Motto
+</para>
+<para>xxxxx_example.yyyy nach xxxxx.yyyy umkopieren, also z.B.</para>
+
+<para>p index_example.html index.html</para>
+
+<para>Bitte ebenfalls die Variablen für WEB_xxxx4 in der Server.ini überprüfen, dann mit dem Konfigurationsprogramm die Server neustarten.
+</para>
+<para>Jetzt kann mit einem Webbrowser auf die url</para>
+
+<para>http://serverhost:serverport/ auf die AI zugegriffen werden.</para>
+</sect2>
+</sect1>
+<sect1 id="t12"><title>Hilfe</title>
+<para>Wenn Sie Hilfe benötigen, senden Sie eine Email an mich  cuon@cuon.org 
+</para>
+<para>Jügen Hamel </para>
+</sect1>
+<sect1 id="t12_1"><title>Update</title>
+<para>Benutzen sie zum Update unbedingt den user und Rechner auf dem das Cuon Setup Konfigurationstool installiert ist. Starten Sie das Cuon Setup tool aus dem Menü 'Einstellungen'. Oder vom Terminal aus: Dazu in das Verzeichnis cuon_client wechseln und mit "python setup.py" die graphische Installationsroutine starten.
+<figure id="t12_1_s1">
+<title>Setup tool</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Screenshot_SetupTool.png"/>
+</figure>
+
+</para>
+<sect2 id="t12_2"><title>Eigentliches Update </title>
+<para>
+"Start Install" drücken. Genauso wie bei der Installation, muss dazu ein funktionierender SSH Zugang eingerichtet sein!! Es sollte also auf jeden Fall der o.g. Cuon-Admin-Bereich sein.
+</para>
+<para>Hier im Beispiel ist cuon als SSL (Protocoll https) Server installiert. Diese Version ist umbedingt zu empfehlen, wenn Clients aus dem Internet auf den Server zugreifen sollen.</para></sect2>
+<sect2 id="t12_3"><title>Client "bauen" </title>
+<para>
+Services -> Create Client</para></sect2>
+<sect2 id="t12_4"><title>Datenbank vorbereiten </title>
+<para>
+Wichtig an diesem Schritt:</para>
+<itemizedlist>
+     <listitem><para>mittels "Connect" mit Admin User (!!) und Passwort anmelden.</para></listitem>
+     <listitem><para>unter "Edit Configfiles -> Server" die [:Konfigurationsdateien:Konfigurationsdateien ]anpassen.</para></listitem> 
+</itemizedlist>
+<para>Danach weiter zum nächsten Schritt: Tools -> Database</para></sect2>
+<sect2 id="t12_5"><title> Datenbank </title>
+<para>
+<figure id="t12_5_s1">
+<title>Setup Tool Database</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Screenshot_SetupTool_Databases1.png"/>
+</figure>
+
+Bei einer Neuinstallation oder wenn Userdaten geändert wurden, neue User hinzugefügt oder ähnliches, dann bitte auf jeden Fall im Bereich SQL-Rights den Punkt create Grants file ausführen.</para>
+<para>
+Dann nur noch "SQL-Server -> start complete update" ausführen.
+</para>
+
+<para>Fertig!</para></sect2>
+
+
+</sect1>
+<sect1 id="PartielleUpdates"><title>Partielle Updates</title>
+<sect2 id="PartielleUpdatesUser"><title>User</title>
+<para>Du kannst einen Benutzer ändern oder neuanlegen in den verschiedenen  <link linkend='ConfigFilesServer'><emphasis>Konfigurationsdateien auf dem Server</emphasis></link>, aber du mußt im nach dem Erzeugen der Grant Datei im Database Konfigurationstool auf "SQL Server"-->"grants" klicken </para>
+</sect2>
+</sect1>
+<sect1 id="ks1"><title>Konfiguration </title>
+<sect2 id="ConfigFilesServer"><title>Konfigurationsdateien auf dem Server </title>
+
+<para>Die Konfigurationsdateien liegen bei normaler Installation im Verzeichnis &#047;etc&#047;cuon </para>
+
+<para>Für alle Konfigurationsdateien gilt:</para>
+
+<para><emphasis>Klein- und Großschrift wird nicht unterschieden!!</emphasis></para>
+<para>Kursive Bemerkungen bitte NICHT in die Konfigurdationsdatei übernehmen[[BR]] Zum Editieren umbedingt das setup Programm verwenden. Damit wird Sichergestellt, dass die Dateien in utf-8 Kodierung geschrieben werden!
+</para>
+<para>Nach dem Ändern von Usereinstellung immer "Edit-Configfiles->Server->SQL-Rights-->Create Grantfiles" ausführen und danach die "Grants" neu einspielen <link linkend='PartielleUpdatesUser'><emphasis>siehe User Updates</emphasis></link>
+</para>
+<example role="codelisting" id="server_ini">
+<title>server.ini </title>
+<programlisting><![CDATA[
+
+[AI]
+AI_HOST: cuon.org
+AI_PORT: 7082
+
+Der Ai-Server wird für schnelle Erweiterungen (z.B. abgespeckte Funktionen etc.) genutzt. Momentaner Stand: Unfertiges Modul, dass noch nicht in Produktionseinsatz ist. Man erreicht eine Testoberfläche für den AI-Server über die Menüpunkte: Sonstiges->Expertensystem.
+
+Bitte die hier gezeigten Standardwerte übernehmen. Ein eigener AI Server ist momentan noch nicht schnell und sauber zu installieren'''
+
+[POSTGRES]
+POSTGRES_DB: cuon
+POSTGRES_HOST: localhost
+POSTGRES_PORT: 5432
+POSTGRES_USER: cuon_admin
+
+
+[PDF]
+ENCODING: latin-1
+
+Die Postgresql Daten enthalten die Einstellungen zu der Datenbank. Im Normalfall können diese Werte hier auch unverändert übernommen werden.
+
+
+[EMAIL]
+DEFAULTSERVER: oneInTheWorld
+DEFAULTPORT: 25
+DEFAULTUSER: set_username
+DEFAULTPASSWORD: set_secret
+EMAILENCODING: utf-8
+CRYPT: TLS
+
+Die Emaileinstellungen dienen zum als Standardwerte zum Versenden von Emails. Username und Passwort sind für solche Server gedacht, die SMTP Authentifizierung erlauben. Crypt steht dabei dann für das Versenden über das verschlüsselte TLS Protokoll.
+
+Der Port kann im Normalfall unverändert gelassen werden.
+
+Jabber Server zur Kommunikation mit der AI
+[JABBER]
+SERVER:cuonsim2.de
+USERNAME:cuon_test
+PASSWORD:secret
+
+Diese Einstellungen definieren eine Schnittstelle, um diesen user, im beispiel oben cuon_test, eine Nachricht zu schicken. diese Nachricht wird zu der AI weitergeleitet und entsprechend ausgewertet. Dann erfolgt von der AI die Anwort
+
+Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer übertragen wird, das hilft mir bei der Entscheidung über die Entwicklung von mandantenbezogenen Modulen.
+
+[VERSION]
+SEND_VERSION_INFO = YES
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="user_cfg">
+<title>user.cfg </title>
+<programlisting><![CDATA[
+
+
+[password]
+
+set_username: set_password
+
+jeweils bei set_username und set_password die entsprechenden Werte einsetzen.
+
+Wichtig: Nach jeder Änderungen der user.cfg muss das Installationsprogramm laufen und die Datenbankrechte neu schreiben (Databasetools->Grants).
+
+Siehe auch die Seite Anlegen und Pflegen:"User pflegen und anlegen".
+
+Für die Rechtevergabe im DMS können hier Gruppenrechte vergeben werden. Die Gruppen selber werden in der sql.ini definiert
+[GROUPS]
+jhamel: buero,rechnung
+
+
+
+Für die Auswertungen werden in der Sektion STATS folgende Daten benötigt.
+[STATS]
+CALLER_ID: 1,2,3,5,8
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="menus_cfg">
+<title>menus.cfg </title>
+<programlisting><![CDATA[
+
+
+[gewoehnlicherAllUser]
+all: Priv;all  
+experimental: Priv;all 
+
+[AdminUser] 
+all: Priv;all 
+experimental: Priv;all 
+staff: Priv;all 
+extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
+forms: Priv;all 
+forms_addresses: Priv;all
+
+# Dies ist nur für Gärtnereien interessant
+address_button_grave: Yes
+address_button_grave_position: 14
+
+
+
+Für jeden User muss ein Eintrag existieren. Der Eintrag für die Adminuser ist etwas komplexer. Eine genaue Erklärung erfolgt hier, wenn das Modul noch weiter fortgeschritten ist. Für den Anfang können diese Werte übernommen werden.
+clients.ini 
+Berechtigungen für die Mandanten 
+
+[set_username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+
+Hier werden die Berechtigungen der verschiedenen Benutzer auf die verschiedenen Mmandanten verteilt. Jede client-ID bedeutet einen Mandanten. Beispiel:
+
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
+
+Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 und darf KEINE neuen Mandanten anlegen.
+Der Abschnitt CLIENT_ 
+
+Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen.
+
+CLIENT_xxx ist die Mandanten ID
+
+[CLIENT_1]
+Einstellungen für den automatischen Mailversand 
+Veränderungen in den Notizen 
+
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes?0: jh@…
+sendMailsNotes0: caller,rep,salesman
+
+sendNotes0: YES odeer NO zum Senden der Mails
+Notes0_ID: 17 ID des Dokuments aus dem DMS
+AdditinalEmailAddressesNotes?0: jh@… zusätzliche Empfänger, mit , getrennt
+sendMailsNotes0: caller,rep,salesman interne Benachrichtigung für Kontakter, Repräsentanten und Beratern
+Default Zahlungsbedingung 
+
+modul_order_default_top:ID
+
+ID ist die id der default zahlungsbedingung
+
+Erinnerungen und Mahnungen im Rechnungswesen 
+
+Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhängigkeit ist bei den Zahlungsbedingungen vermerkt. Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen würde diese Rechnung bei u.g. Einstellungen nach 18 Tagen das erste mal auf der Liste erscheinen.
+
+reminder_all_days_after: 10
+reminder_first_days_after: 14
+reminder_second_days_after: 25
+reminder_last_days_after: 32
+reminder_summons_days_after: 40
+
+
+Liste nach Zahlungserinnerungen.
+
+list_of_invoices_directDebit: 3
+
+orderbook_number: !id,-,!year
+orderbook_designation: !lastname,_,!city,_,!id
+
+list_of_invoices_directDebit: 3
+
+articles_sort1_number: b
+articles_sort1_sellingprice: c
+articles_sort1_designation: a
+
+Auswahlboxen 
+Adressverwaltung 
+
+Hier sind die Einträge für die Auswahlboxen bei der Adressverwaltung, das Tab Verschiedenes.
+
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, über 5 millionen
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
+
+Projektverwaltung 
+
+cbProjectStatus: neu angelegt,laufend,fertig
+
+Gräber 
+
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
+cbTypeOfPaying: jährlich,halbjährlich
+cbPercentsGrave: 100%,90%,80%,75%,50%,
+cbTypeOfPaying: jährlich,halbjährlich,quartal
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+
+Statistik 
+
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
+
+StatsCallerCentury: 0
+StatsCallerDecade: 0
+StatsCallerYear: 1
+StatsCallerQuarter: 2
+StatsCallerMonth: 2
+StatsCallerWeek: 2
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="sql_ini">
+<title>sql.ini</title>
+<programlisting><![CDATA[
+
+Hier bitte alle Gruppen durch Kommata getrennt eintragen
+[GROUPS]
+NAMES: buero,rechnung
+
+
+Hier die Vorgaberechte für div. automatische Operationen eingeben. Dabei wird als ersten die Rechte eingetragen, nach dem Schema:
+rwxrwxrwx
+r = read, also lesen
+w = write, also schreiben
+x = eXecute, also ausführen
+jeweils für User, Gruppe, Alle
+ein Unterstrich bedeutet, kein Recht
+Danach, mit Kommata getrennt, die Gruppen, die eingetragen werden sollen.
+
+[DEFAULT_MODUL_RIGHTS_DMS] 
+INVOICE: rw_r__r__,rechnung 
+
+[LIMIT]
+Address: 30
+Garden: 217
+Project: 50
+Articles: 80
+Order: 50
+
+Her wird die Anzahl der Listeneinträge, die beim Modulstart angezeigt werden Modul eingetragen. Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseinträge
+
+Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Einträge auf 500 stellen.
+
+Diese Einträge gelten für die Auftragsbearbeitung
+[modul_order]
+default_top: 1
+die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird
+
+Folgende Einträge werden für das Überwinterungsmodul (Gartenbaubetriebe) benötigt:
+
+[modul_hibernation]
+replace_staff_pickup: 1
+replace_staff_supply: 2
+replace_plant_hibertion:3
+replace_plant_add_pot:4
+replace_plant_add_material:5
+replace_plant_add_earth:6
+replace_plant_add_misc:7
+
+Diese Einstellungen weisen den Überwinterungsdienstleistungen (Überwintern, Liefern, Umtopfarbeiten etc.) feste Artikel (die Nummer ist die Artikel-ID) zu. Anhand von diesen Artikel wird danach die Mehrwertsteuer, Brutto / Nettorpreis eingestellt.
+Die nachfolgende Einträge sind der Text für die Rechnungsstellung:
+
+translate_price_hibernation_for: Preis der Überwinterung für
+translate_price_add_pot_for: Preis für größeren Topf
+translate_price_add_material_for: Preis für zus. Material
+translate_price_add_earth_for: Preis für zus. Erde
+translate_price_add_misc_for: Preis für Sonstiges
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+
+]]></programlisting>
+</example>
+ 
+<example role="codelisting" id="UserGroups.cfg">
+<title>UserGroups.cfg</title>
+<programlisting><![CDATA[
+Diese Datei liegt im Verzeichnis /etc/cuon/sql/ 
+
+Sie sollte so aussehen:
+[USER]
+zope: zope_rights
+heino: cuon_all
+jhamel: cuon_all
+GroupRightsOther.cfg 
+
+[cuon_other]
+cuon_clients: select 
+]]></programlisting>
+</example>
+ 
+</sect2>
+<sect2 id="ConfigClients"><title>Einstellen der Clients</title>
+<sect3 id="ks1_a1"><title>Installieren eines Client</title> 
+<para>
+Downloaden des Clients, dazu bei cuon.org --> Downloads -->die Datei Cuon-Client downloaden.Je nach Typ ( Debian/Ubuntu-Paket, Red Hat, SuSE oder tgz) den entsprechenden Anleitungen folgen. In der Regel wird es einfach über den paketmanager der Distributuion installiert</para></sect3>
+<sect3 id="ks1_a2"><title>Startvorbereitungen</title> 
+<para>Normalerweise startet nach der client Installation der Cuon Konfiguration Wizard automatisch, ggf. kann man ihn im Menü System --> Einstellungen finden und starten. 
+Dort dann einfach die Werte einstellen, also das user Home-Verzeichnis, Server usw. 
+<figure id="CCK">
+<title>Cuon Client Konfiguration</title>
+<graphic align="center" scale="35"  fileref="images/screenshots/Screenshot_CuonClientConfiguration.png"/>
+</figure>
+
+</para>
+
+
+
+<para>
+Notfalls kann man auch so vorgehen, um individuelle Startparameter festzulegen:
+</para>
+
+  <para>  ggf. die Datei$HOME/cuon/bin/cuon.ini</para>
+
+<para>und im Verzeichnis $HOME/cuon/bin die Datei sc erstellen.</para>
+
+<para>Für die Datei sc gibts eine Beispieldatei startcuon ( unter Microsoft Windows die Datei startcuon.bat_example ). einfach anpassen mit deinen Netzwerkeinstellungen.
+</para>
+<para>Hier eine kurze Beschreibung der Parameter und eine sinnvolle Konfiguration für Linux: Die Datei sc sollte als erstes in das cuon/bin -Verzeichnis wechseln. Dann wird Cuon.py aufgerufen, und zwar mit den passenden python-Interpreter, im Regelfall ist dies python. Danach können folgende Parameter übergeben werden:
+</para>
+<itemizedlist>
+   <listitem><para>1. Server-Adresse oder NO</para></listitem>
+  <listitem><para> 2. Startart, normalerweise client</para></listitem>
+   <listitem><para>3. Debug-Modus, normalerweise NO</para></listitem>
+   <listitem><para>4. Weg zur Localen, normalerweise ../locale</para></listitem>
+   <listitem><para>5. Homeverzeichnis von cuon, also i.d.R. /home/username/cuon </para></listitem>
+</itemizedlist>
+
+
+<example role="codelisting" id="start_sc">
+<title>Datei sc</title>
+<programlisting><![CDATA[
+#!/bin/sh
+cd /home/jhamel/cuon/bin
+python Cuon.py NO client NO ../locale
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="cuon_ini">
+<title>cuon.ini</title>
+<programlisting><![CDATA[
+[Client]
+protocol = http
+description = Cuon Client Configuration
+alternategui = alternate1
+locale = /locale
+workingdir = /home/jhamel/cuon
+host = 192.168.17.2
+debug = NO
+type = client
+port = 7080
+
+]]></programlisting>
+</example>
+<para>
+Diese Reihenfolge der Einstellungen wir von CUON verarbeitet: Die cuonObjects wird gelesen, diese wird durch die Parameter-Übergabe in sc gesteuert. ( dies ist die beste Methode ), danach Betriebssystem-Einstellungen ( also Environment-Variablen ), dann die /etc/cuon/</para>
+ </sect3>
+</sect2></sect1>
+</chapter>
+<chapter><title>Druckvorlagen</title>
+<sect1 id="DMS_Vorlagen"><title>Briefe mit einem Office-Programm erzeugen </title>
+<sect2 id="br1"><title>
+Allgemeine Bemerkungen </title>
+<para>
+Das DMS wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterstützt:</para>
+<itemizedlist>
+    <listitem><para>* Einfache Textdokumente</para></listitem>
+	<listitem><para>* LibreOffice</para></listitem>
+   <listitem><para> * OpenOffice</para></listitem> </itemizedlist>
+<para>
+Falls ein von Ihnen gewünschtes Format nicht vorhanden ist, schreiben sie mir bitte eine E-Mail. Das folgende Vorgehen ist grundsätzlich bei allen Formaten gleich.
+ </para>
+<para>
+Es sollen 2 Vorlagen für den Schriftverkehr erstellt werden, ein Briefvordruck für ein direktes Anschreiben der Fa, ein Briefvordruck für ein Anschreiben an einen Gesrächspartner.</para>
+<para>
+Dazu erstellen Sie jeweils einen beliebigen Briefvordruck und setzen an die entsprechenden Stellen die Platzhalter, die mit ## beginnen und mit ;; enden. Für den Nachnahmen wäre das also:</para>
+<example role="codelisting" id="brpm">
+<title>Platzhlter Markierung</title>
+<programlisting><![CDATA[
+  ##lastname;;
+    (im odt Format,  kein rtf nehmen)
+
+]]></programlisting>
+</example>
+   
+<para>
+Dann speichern Sie das Dokument ab. Anschließend benutzen Sie die Addressverwaltung, selektieren eine Adresse und klicken auf den Brief-Button ( im engl. letter ). Jetzt öffnet sich das DMS und sie legen ein neues Dokument an. Als Titel geben Sie z.B. Briefkopf an.Suchen Sie dann Ihr Briefkopf-Dokument und importieren Sie es.
+</para>
+<para>Jetzt haben Sie in allen Adressen die Möglichkeit, diesen Briefkopf zu benutzen. Dies geschieht folgendermaßen: Gehen sie in die Addressverwaltung und suchen sie eine Adresse. Dann drücken sie den Brief-Button. Die DMS öffnet sich und Sie wählen die gewünschte Vorlage (z.B. Briefkopf oder Info-Anschreiben oder Urlaubsmitteilung oder ... was auch immer ). Drücken sie auf View und OpenOffice? öffnet sich und an Stelle der Platzhalter stehen die entsprechenden Feldinhalte, z.B. die Adresse. Jetzt können Sie den Brief schreiben und verändern, und dann eben Drucken, Faxen oder per E-Mail versenden.</para>
+</sect2>
+<sect2 id="tab1"><title>Platzhalter</title>
+<para>
+<table id="tab1_grund">
+  <title>Grundsätzliche Platzhalter </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+        
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Datum</entry>
+         <entry>date_date</entry>
+         
+      </row>
+      <row>
+         <entry>Uhrzeit</entry>
+         <entry>date_time</entry>
+        
+      </row>
+      <row>
+         <entry>Zeitstempel	</entry>
+         <entry>date_timestamp</entry>
+        
+      </row>
+     
+     
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+	
+	<para>
+	
+<table id="tab2_benutzerinfo">
+  <title>Benutzerinfo</title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Benutzerinfo</entry>
+		<entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+		 <entry>userinfo_address</entry>
+      </row>
+		<row>
+         <entry>Nachname</entry>
+		 <entry>userinfo_lastname</entry>
+      </row>
+		<row>
+         <entry>Vorname</entry>
+		 <entry>userinfo_firstname</entry>
+      </row>
+		<row>
+         <entry>Telefon</entry>
+		 <entry>userinfo_phone</entry>
+      </row>
+		<row>
+         <entry>Telefon 2</entry>
+		 <entry>userinfo_phone1</entry>
+      </row>
+		<row>
+         <entry>Briefanrede1</entry>
+		 <entry>userinfo_letter_phrase_1</entry>
+      </row>
+		<row>
+         <entry>Mein zeichen</entry>
+		 <entry>userinfo_ my_sign_1</entry>
+      </row>
+		<row>
+         <entry>Längere Signatur 1 </entry>
+		 <entry>userinfo_signature_1</entry>
+      </row>
+		<row>
+         <entry>Längere Signature 2</entry>
+		 <entry>userinfo_signature_2</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+
+<para>
+Dieselben Benutzerinfos gibte es für person1_ oder person2_ anstelle von userinfo_
+</para>
+
+<para>
+<table id="tab2_adressverwaltung">
+  <title>Platzhalter Adressverwaltung </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>firstname</entry>
+      </row>
+      <row>
+         <entry>Handynummer</entry>
+         <entry>phone_handy</entry>
+      </row>
+	  <row>
+		<entry>Straße</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Stadt</entry>
+		<entry>city</entry>
+	  </row>
+	  <row>
+		<entry>Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+	  <row>
+		<entry>Branche</entry>
+		<entry>misc_line</entry>
+	  </row>
+	  <row>
+		<entry>Mwst-ID</entry>
+		<entry>misc_taxnumber</entry>
+	  </row>
+	  <row>
+		<entry>Mwst berechnen</entry>
+		<entry>misc_to_calc_tax</entry>
+	  </row>
+	  <row>
+		<entry>Preisgruppe</entry>
+		<entry>misc_price_group</entry>
+	  </row>
+	  <row>
+		<entry>Adressnummer</entry>
+		<entry>misc_address_number</entry>
+	  </row>
+	  <row>
+		<entry>Adresse ist im Webshop</entry>
+		<entry>misc_is_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Adresse mit Webshop abgleichen</entry>
+		<entry>misc_update_from_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Zahlungsbedinguen-ID</entry>
+		<entry>misc_top_id</entry>
+	  </row>
+	  <row>
+		<entry>Gründungsdatum</entry>
+		<entry>misc_date_of_launch</entry>
+	  </row>
+	  <row>
+		<entry>Rechtsform</entry>
+		<entry>misc_legal_form</entry>
+	  </row>
+	  <row>
+		<entry>Umsatz</entry>
+		<entry>misc_turnover</entry>
+	  </row>
+	  <row>
+		<entry>Mitarbeiteranzahl</entry>
+		<entry>misc_count_of_employees</entry>
+	  </row>
+	  <row>
+		<entry>Handel</entry>
+		<entry>misc_trade</entry>
+	  </row>
+	  <row>
+		<entry>Typ</entry>
+		<entry>misc_cb_fashion</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+
+
+</para>
+<para>
+<table id="tab2_gesraechspartner">
+  <title>Platzhalter Gesprächspartner </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address_address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>address_lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>address_lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>address_firstname</entry>
+      </row>
+      <row>
+         <entry>Straße</entry>
+         <entry>address_street</entry>
+      </row>
+      <row>
+         <entry>Postleitzahl</entry>
+         <entry>address_zip</entry>
+      </row>
+      <row>
+         <entry>Stadt</entry>
+         <entry>address_city</entry>
+      </row>
+      <row>
+         <entry>Briefanrede</entry>
+         <entry>address_letter_address</entry>
+      </row>
+      <row>
+         <entry>Gesprächspartner-Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Gesprächspartner-Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+	  <row>
+		<entry>Gesprächspartner-Vorname</entry>
+		<entry>firstname</entry>
+	  </row>
+	  <row>
+		<entry>Gesprächspartner-Straße</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Gesprächspartner-Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Gesprächspartner-Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+
+P<para>latzhalter Termin 
+Beschreibung 	Platzhalter
+Adress-Anrede 	address_address
+Adress-Nachname 	address_lastname
+Adress-Nachname 2 	address_lastname2
+Adress-Vorname 	address_firstname
+Adress-Straße 	address_street
+Adress-Postleitzahl 	address_zip
+Adress-Stadt 	address_city
+Gesprächspartner-Anrede 	partner_address
+Gesprächspartner-Nachname 	lpartner_astname
+Gesprächspartner-Nachname 2 	partner_lastname2
+Gesprächspartner-Vorname 	partner_firstname
+Gesprächspartner-Straße 	partner_street
+Gesprächspartner-Postleitzahl 	partner_zip
+Gesprächspartner-Stadt 	partner_city
+Gesprächspartner-Briefanrede 	partner_letter_address
+Datum Termin 	schedul_date
+Beginn 	schedul_time_begin
+Ende 	schedul_time_end
+Kurze bemerkung 	short_remark
+Notiz 	notes</para>
+</sect2>
+
+
+<sect2 id="Anmerkungen"><title>Anmerkungen</title>
+<para>Mit den Button save last document wird ein neues DMS geöffnet, passend zur Adresse und sie können jetzt einfach einen Titel für das Dokument eingeben und auf sichern gehen.
+</para>
+<para>Damit wird der Schriftverkehr automatisch den entsprechenden Adressen und Gesprächspartnern zugeordnet.</para>
+</sect2>
+</sect1>
+</chapter>
+
+<chapter>
+<title>Erste Schritte</title>
+<sect1 id="tb1"><title>Allgemeines</title>
+<para>Das C.U.O.N.-System sowie der Client pyCuon ist eine Auftragsbearbeitung, Warenwirtschaft und allgemeine Datenverwaltung. Der Name steht für:
+<emphasis>Common Universally Organized Network</emphasis>
+</para>
+
+<para>Hauptsächlich ist es ein kaufmännisches System. Außer den üblichen Bereichen wie Adressen, Artikel, Rechnungen, Literatur, etc. sind auch Spezialmodule wie z.B. Überwinterungen (für Gärtnereien, die Kübelpflanzen überwintern) schon im produktiven Einsatz. Daneben schreitet die Entwicklung und Erweiterung der Module schnell voran, so dass C.U.O.N. in immer mehr Unternehmensbereichen eingesetzt werden kann .
+</para>
+<para>C.U.O.N. ist stark netzwerkorientiert, d.h. dass gleichzeitig mehrere Mitarbeiter im Intra- wie auch im Internet daran arbeiten können. Getestet ist C.U.O.N. im Einsatz von ca. 100 Mitarbeitern gleichzeitig. Allerdings läuft C.U.O.N. aber auch auf einem Einzelplatzrechner in kleineren Firmen.
+</para>
+<para>Parallel wird momentan ein Client entwickelt, der die mobile Datenerfassung schnell ermöglich soll (siehe [:Admin:Adminhandbuch -]>N800)
+Wer steckt hinter cuon? 
+</para>
+<para>Als Gründer und Hauptprogrammierer steht Jürgen Hamel von Cyrus Computer GmbH hinter cuon. Obwohl C.U.O.N. kostenlos ist (GPL v3 Lizenzierung) empfiehlt es sich sehr einen produktiven Einsatz nur in Verbindung mit kommerziellen Support von der <emphasis>Fa. Softconcept, Bünde, Tel. 05223 49700</emphasis> zu machen. Das hängt u.a. auch mit den sehr schnellen Sprüngen in der Entwicklung des Programmes zusammen. Zudem steht damit ein schneller, kompetenter Telefonsupport zur Verfügung, der Änderungen oder auftretenden Fehler flott bereinigt.</para></sect1>
+<sect1 id="tb2"><title>Erster Kontakt </title>
+
+<sect2 id="tb3"><title>Starten von C.U.O.N.</title> 
+<sect3 id="tb4"><title>Vom Menü aus </title>
+<para>
+Das einfachste ist die entsprechenden Einträge im Menü zu benutzen, z.B. unter Ubuntu im Ordner "Büro" den Cuon client starten. Bei der Erst-Installation wird auch der Konfigurations-Wizard aufgerufen, dort einfach nur das User Verzeichnis ändern und den cuon-Server eintragen. Den Eintrag für die deutsche Übersetzung im Idealfall einfach mit "/locale" belassen. Der Konfigurations-Wizard ist ebenfalls einfach vom Menü "System"-->"Einstellungen"-_>"Cuon client Konfiguration" aufzurufen, wenn sie Änderungen vornehmen wollen.</para>
+</sect3>
+<sect3 id="tb5"><title>Von der Kommandozeile aus</title> 
+<para>
+Der Aufruf des Clients erfolgt folgendermaßen: /usr/bin/python Cuon.py [Server] [Type] [Debug] [Locale] [Cuonverzeichnis] [GUI] Also wird im Normalfall einfach nur /usr/bin/python Cuon.py aufgerufen, da die Vorgaben durch die Umgebungsvariablen bzw. durch das Programm gesetzt wurden. Die Parameter haben folgendes Format: 
+</para>
+<itemizedlist>
+	 <listitem><para>Server  Protokoll://host:Port/Pfad z.B.  http://84.244.7.139:7080</para></listitem>
+
+    <listitem><para> Type client server</para></listitem>
+     <listitem><para>Debug NO YES</para></listitem>
+     <listitem><para>Locale NO "Path to locale"</para></listitem>
+    <listitem><para> Cuonverzeichnis c:\cuon oder /home/userx/cuon</para></listitem>
+     <listitem><para>GUI maemo oder standard1 oder eigener Name</para></listitem> </itemizedlist>
+</sect3>
+</sect2>
+
+<sect2 id="tb6"><title>
+Anmelden </title>
+<para>
+Nachdem Start führt Mann/Frau die Anmeldeprozedur aus: »Verbinden/Anmelden» und das Login-Fenster öffnet sich. Nach einem erfolgreichen Anmelden ist der Username und der aktuelle Server im Hauptfenster zu sehen. Jetzt stehen diverse Menüpunkte zur Verfügung. Außerdem öffnet sich das Mandantenfenster. Hier ist es zwingend erforderlich, einen Mandanten auszuwählen. Ist noch keiner vorhanden, MUSS hier ein Mandant angelegt werden. Siehe auch bei Mandanten.
+wichtige Einstellungen </para></sect2>
+<sect2 id="tb7">
+<title>Tastenkürzel </title>
+<para>
+In der Regel sind folgende Tastenkürzel aktiv:</para>
+<sect3 id="tb8"><title>Hauptfenster 
+</title>
+<para>Im Hauptfenster steht hinter vielen Menü-Einträgen eine Steuerung-Buchstaben Kombination, z.B. Strg-l für Login, das heißt also, das mit drücken der Tasten Strg und l sich das Login-Fenster sich öffnet.</para>
+<itemizedlist><listitem><para>Strg + l	Login</para></listitem>
+<listitem><para>Strg + q	Beenden des Programmes	</para></listitem>
+
+
+<listitem><para>Strg + a	Öffnen des Adressfensters</para></listitem>
+<listitem><para>Strg + i	Öffnen des Artikelfensters</para></listitem>
+<listitem><para>Strg + x	Öffnen des Bankfensters</para></listitem>
+<listitem><para>Strg + s	Öffnen des Personalfensters</para></listitem>
+<listitem><para>Strg + v	Öffnen des Literaturfensters	</para></listitem>
+
+
+<listitem><para>Strg + p	Öffnen des Angebotsfensters</para></listitem>
+<listitem><para>Strg + o	Öffnen des Auftragsfensters</para></listitem>
+<listitem><para>Strg + k	Öffnen des Lagerfensters</para></listitem>
+<listitem><para>Strg + d	Öffnen des DMS-Fensters</para></listitem></itemizedlist>
+</sect3>
+<sect3 id="tb9">
+<title>Andere Fenster </title>
+<para>
+Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
+<itemizedlist><listitem><para>Strg + z	Schließen des aktuellen Fensters</para></listitem></itemizedlist>
+<para>Bedienung der Tabs </para>
+<itemizedlist><listitem><para>Strg + F1	öffne erstes Tab</para></listitem>
+<listitem><para>Strg + F2	öffne zweites Tab</para></listitem>
+<listitem><para>Strg + Fxx	öffne xxx Tab</para></listitem>
+
+</itemizedlist>
+<para>Aktionen für den Datensatz </para>
+<itemizedlist><listitem><para>Strg + e	Bearbeite den Datensatz</para></listitem>
+<listitem><para>Strg + s	Sichere den Datensatz</para></listitem>
+<listitem><para>Strg + n	Neuer Datensatz</para></listitem>
+<listitem><para>Strg + d	Lösche den Datensatz ohne Rückfrage</para></listitem>
+</itemizedlist>
+
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+<chapter><title>Konfiguration 
+</title>
+<sect1 id="k1"><title>Benutzer</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Weitere Informationen zur Konfiguration. </para>
+</sect1>
+
+
+
+</chapter>
+<chapter>
+<title>Stammdaten</title>
+<sect1 id="s1"><title>Mandanten</title>
+<para>Hier werden die Mandanten in C.U.O.N. gepflegt. Mindestens ein Mandant muß vorhanden sein. Ist beim ersten Start kein Mandant vorhanden, muß ein Mandant angelegt werden und dieser ausgewählt werden, bevor Mann/Frau weiterkommt . Jeder Mandant hat seinen eigenen Bereich(Eigene Rechnungsnummern, Kunden, etc.) und ist von den anderen Mandanten isoliert.
+</para>
+<figure id="si1">
+<title>Mandantenfenster</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Mandanten.png"/>
+</figure>
+
+<para>Man kann damit sehr schön mehrere Firmen auf einem Server verwalten.</para>
+
+<para>In der Datei /etc/cuon/clients.ini wird festgelegt, welcher User, welchen Mandant sehen und auswählen kann.</para>
+
+<para><emphasis>Achtung: Momentan lassen sich angelegte Mandanten nicht mehr löschen (das muss per Hand auf Datenbankebene gemacht werden).</emphasis></para>
+
+
+</sect1>
+<sect1><title>Adressverwaltung</title>
+<para>
+Die Adressmaske enthält die üblichen Angaben wie PLZ, Ort, Telefon-Nummern, etc. Hinzu kommen Kennfelder für Branche, Bankverbindung, Debitoren/Kreditoren-Nummern, Webshop-Abgleich, Steuernummern und Preisgruppen. Zu jeder Adresse können beliebig viele Gesprächspartner und evtl. Termine mit den jew. Gesprächspartnern hinterlegt werden. Auch dort können die üblichen Werte erfaßt werden. Der Listendruck wird, wie jeder Druck in pyCuon, über das PDF-Format realisiert. Eine Schnittstelle zum DMS ermöglicht es, umfassende, unterschiedlichste Information zu jeder Adresse zu hinterlegen.</para>
+<sect2 id="s2"><title>Reiter Adressen</title>
+<para>Der Button "Brief" ist für die Erzeugung eines Briefes zuständig. (siehe auch Briefe mit Office Programmen ) Über den Button Kontakt erreichen Sie die Kontaktverwaltung
+</para>
+<figure id="si2">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress01.png"/>
+</figure>
+
+<para>
+Die meisten Funktionen lassen sich über den Reiter "Adressen" nutzen, lediglich für Termine ist der Eintrag eines Gesprächpartners nötig. Dieser lässt sich schnell mit dem Button "erzeuge Gesprächspartner" im Reiter "Gesprächspartner" erzeugen.
+</para>
+<itemizedlist>
+     <listitem><para>Button Zusatzinformationen: Damit lassen sich Schriftstücke, Bilder oder eingescannte Dokumente einer Adresse zuordnen. Er führt direkt zum [:Dokument Management System: Dokument-Mangement-System (DMS)].</para></listitem>
+     <listitem><para>Button Brief: Auch hier geht der Link direkt in das DMS. Allerdings werden alle Briefvorlagen ([:Briefe mit Office Programmen:Bitte im Benutzerhandbuch] nachlesen, wie diese angelegt werden) geöffnet. Der dortige Button "View" startet Openoffice (oder auch Koffice) mit den Adressdaten und der gewählten Vorlage. Im Officeprogramm das Dokument einfach speichern und dann "Letztes Dokument sichern" drücken und schon ist der geschriebene Brief auch wieder als Dokument in cuon hinterlegt (wird dann unter dem Button Zusatzinformationen (s.o.) angezeigt).</para></listitem>
+     <listitem><para>Button Kontak: Das ist eine wichtige Funktion für z.B. Telefonmarketing. Hiermit lassen sich schnell Terminerinnerungen für jede Adresse einstellen (die dann als Pop-up Fenster auf dem Bildschirm erscheinen). Z.B. Rückruf in 5 Minuten, Telefonat heute um 15 Uhr o.ä. ( siehe unter Kontaktmanagement ?)</para></listitem>
+     <listitem><para>Buttons "wähle Kontakter", "wähle Representant", "wähle Berater" greifen auf die Mitarbeiterdatenbank zu und weisen der jeweiligen Funktion einen Mitarbeiter zu.</para></listitem>
+     <listitem><para>Button Send Email: Schnell und einfach eine Email an die Adresse verschicken.</para></listitem>
+
+     <listitem><para>Feld Newsletter: Hier kann man beliebig viele Newsletterverteilerzugehörigkeiten eintragen. Wir verwenden bei uns immer 3 verschiedene Vorsätze (m=Newsletter per Mail, b=Newsletter per Brief, f=Newsletter per Fax). Die verschiedenen Newsletter müssen per Komma getrennt werden, also z.B. "b-allgemeineInfos,m-spontaneAktionen".</para></listitem>
+     <listitem><para>Feld info: Hier können allgemeine Infos eingegeben werden, die oben in der Listenansicht erscheinen. Dadurch hat man eine schnelle Übersicht. </para></listitem>
+</itemizedlist>
+</sect2>
+
+ <sect2 id="s4"> <title>Reiter Bank </title>
+<para>
+Hier kann man eine Kontoverbindung für die Adresse angeben. Wichtig: Damit das gelingt muss für die Bank ein Adressdatensatz erstellt werden. Im Prinzip langt ein einfacher Datensatz mit dem Banknamen (mehr ist nicht nötig).</para><figure id="si3">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress02.png"/>
+</figure>
+</sect2>
+<sect2 id="s5">
+<title> Reiter Verschiedenes </title>
+<para>
+Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde fällt und ob er Mwst. pflichtig ist.</para>
+<figure id="si4">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress03.png"/>
+</figure>
+
+</sect2>
+
+<sect2 id="s6"><title> Reiter Gesprächspartner </title>
+<para>
+Zu jeden Kunden können beliebig viele Gesprächspartner hinterlegt werden. Die Buttons Brief und ext. Info gelten hier ebenso wie bei der Adresse. Über den Button E-Mail kann dem Adressaten schnell eine mail über das interne mailprogramm zugeschickt werden.</para>
+<figure id="si5">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress04.png"/>
+</figure>
+
+
+
+</sect2>
+
+
+<sect2 id="s7"><title>Reiter Termine</title> 
+<para>
+<emphasis>Wichtig: Damit ein Termin eingetragen werden kann, muss ein dazugehöriger Gesprächpartner markiert sein.</emphasis></para>
+<figure id="si6">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress05.png"/>
+</figure>
+
+<para>
+Die meisten anderen Felder sind wieder selbsterklärend. Mit "search Staff" lässt sich ein Mitarbeiter dem Termin zuweisen. Die Termine erscheinen alle im Startfenster (Einstellung in der user.cfg beachten!!) von cuon (kann ein paar Sekunden dauern).
+</para>
+
+
+<itemizedlist>
+<title>Das Statusfeld:</title>
+
+    <listitem><para>* 0-99 unbestätigter Termin</para></listitem>
+    <listitem><para>* 100-800 bestätigter Termin</para></listitem>
+    <listitem><para>* 801-998 Abgebrochene Termine</para></listitem>
+    <listitem><para>* 999 gelöschter Termin (geht auch im Menü mit "set ready") </para></listitem>
+</itemizedlist>
+<para>Die Nummer hängen vom jeweiligen Client ab, mit dem man den, über iCal exportierten, Termin ansehen will.Man kann die Termine mit jedem x-beliebigen Kalenderprogramm (Kontact, Evolution, Palm etc.) ansehen (nur lesen, kein schreiben!). Dazu ist eine Webschnittstelle eingerichtet mit der man einfach über die URL:
+</para>
+   <para>  http://servername:7081/iCal/iCal_cuonbenutzername</para>
+
+<para>
+die Daten als iCal Daten importieren kann.
+</para>
+<para>Das rechte Kalenderfeld dient dem Ansehen / Checken der vorhandenen Termine:
+</para>
+<para>-> search Staff (Mitarbeiter auswählen) ->im rechten Kalenderfeld Termin anwählen -> links davon werden im weißen Eingabefeld die Termine des gewählten Mitarbeiters für diesen Tag angezeigt
+</para>
+<para>Anmerkung: Bei alten cuon_Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</para>
+</sect2>
+</sect1>
+</chapter>
+</book>
