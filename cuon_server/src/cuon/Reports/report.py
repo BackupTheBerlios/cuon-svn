@@ -1373,7 +1373,7 @@ class report(MyXML):
     def checkProperty(self,  liRecord, dicRow) :
         
         doPrint = False
-        if dicRow['property']:
+        if dicRow.has_key('property') and dicRow['property']:
             sProperty = dicRow['property']
             printSite = sProperty[0]
             if printSite == 'A':

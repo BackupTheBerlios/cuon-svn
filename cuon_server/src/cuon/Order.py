@@ -155,6 +155,7 @@ class Order(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getOrderValues(self, orderid, dicUser):
         liResultStaff = None
+        liResultPartner = None
         print '############ get order values ####################'
         sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
         sSql += " orderbook.designation as order_designation , orderbook.number as order_number, staff_id as order_staff_id, "
@@ -175,12 +176,18 @@ class Order(xmlrpc.XMLRPC, basics):
                 pass
             try:
                 if row['order_staff_id'] > 0:
-                    sSql = "select * from staff where id = " + `row['order_staff_id']` 
+                    sSql = "select *, lastname || ', ' || firstname as last_first, firstname || ' ' || lastname as first_last from staff where id = " + `row['order_staff_id']` 
                     liResultStaff = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
             except:
                 pass
-                
-        print 'liResultStaff = ',  liResultStaff
+            
+            try:
+                if row['order_customers_partner_id'] > 0:
+                    sSql = "select *, lastname || ', ' || firstname as last_first, firstname || ' ' || lastname as first_last from partner where id = " + `row['customers_partner_id']` 
+                    liResultPartner = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
+            except:
+                pass           
+        #print 'liResultStaff = ',  liResultStaff
         if liResultStaff:
             try:
                 row = liResultStaff[0]
@@ -190,6 +197,17 @@ class Order(xmlrpc.XMLRPC, basics):
                     liResult[0]['staff_' + key] = row[key]
             except Exception, params:
                 print Exception, params
+              
+        if liResultPartner:
+            try:
+                row = liResultPartner[0]
+                print 'row_keys = ' ,  row.keys() 
+                for key in row.keys():
+                    print 'key = ',  key
+                    liResult[0]['partner_' + key] = row[key]
+            except Exception, params:
+                print Exception, params
+                 
                 
         print 'liResult = ',  liResult
         top_id = self .getToPID({'orderid':orderid},  dicUser)
