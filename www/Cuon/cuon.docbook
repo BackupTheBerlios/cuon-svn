@@ -187,7 +187,7 @@ host    all         all         ::1/128               trust
 <para>
 Wenn über das Internet auf den cuon Server zugegriffen wird, ist es unbedingt zu empfehlen, eine verschlüsselte Verbindung zu aktivieren. Ansonsten sind alle Daten, Passwörter etc. theoretisch von jedem Teenager lesbar!
 </para>
-<para>Als Standardserverport steht 7580 für verschlüsselte Verbindung (https) und 7080 für unverschlüsselte Verbindung (sollte gleich per Firewall gesperrt werden).
+<para>Für ein erstes Antesten kann die Standard Konfiguration genommen werden, dort ist der Standardserverport  7580 für verschlüsselte Verbindung (https) und 7080 für unverschlüsselte Verbindung vorgesehen. Für den Produktiven Einsatzt sollte HTTPS genommen werden und der 7080 gleich per Firewall gesperrt werden.
 </para>
 <para>Die eigenen zertifikate können Sie wie folgt erstellen:
 </para>
@@ -1790,7 +1790,7 @@ die Daten als iCal Daten importieren kann.
 </para>
 <para>-> search Staff (Mitarbeiter auswählen) ->im rechten Kalenderfeld Termin anwählen -> links davon werden im weißen Eingabefeld die Termine des gewählten Mitarbeiters für diesen Tag angezeigt
 </para>
-<para>Anmerkung: Bei alten cuon_Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</para>
+<para><emphasis>Anmerkung: Bei alten C.U.O.N Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</emphasis></para>
 </sect2>
 </sect1>
 </chapter>
