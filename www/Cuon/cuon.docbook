@@ -1220,7 +1220,8 @@ In den nächsten entrys brauchst man dann nur noch Muriel schreiben
 
 <sect3 id="rep2_1_3"><title>Auftragsbearbeitung</title>
 <para>Variablen für die Rechnung</para>
-<para>
+<sect4 id="mod_s1"><title>Abholung, Lieferschein, Rechnung</title>
+
 <table id="rep_ta1">
   <title> ResultSet address </title>
   <tgroup cols="2">
@@ -1296,26 +1297,7 @@ In den nächsten entrys brauchst man dann nur noch Muriel schreiben
          <entry>order_designation</entry>
          <entry>Auftragsbeschreibung</entry>
       </row>
-      <row>
-         <entry>staff_lastname</entry>
-         <entry>Mitarbeiter Nachname</entry>
-      </row>
-      <row>
-         <entry>staff_firstname</entry>
-         <entry>Mitarbeiter vorname</entry>
-      </row>
-      <row>
-         <entry></entry>
-         <entry></entry>
-      </row>
-      <row>
-         <entry></entry>
-         <entry></entry>
-      </row>
-      <row>
-         <entry></entry>
-         <entry></entry>
-      </row>
+    
 
 
      
@@ -1323,107 +1305,210 @@ In den nächsten entrys brauchst man dann nur noch Muriel schreiben
   </tgroup>
 </table>
 
+<table id="rep_ta2">
+  <title>ResultSet Order </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable </entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>orderid</entry>
+         <entry>Id des Auftrags</entry>
+      </row>
+      <row>
+         <entry>orderNumber</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>invoiceNumber</entry>
+         <entry>Rechnungsnummer</entry>
+      </row>
 
-ResultSet? Order 
-Variable 	Beschreibung
-orderid	Id des Auftrags
-orderNumber	Auftragsnummer
-invoiceNumber	Rechnungsnummer
-invoiceDate 	Rechnungsdatum
-discount 	Rabatt
-misc_cost 	div. Kosten
-postage_cost 	Porto o. Fracht
-packing_cost 	Verpackungskosten
-term_of_payment 	Zahlungsbedingung Text
-staff_address 	Anrede Mitarbeiter
-staff_phone_handy 	Handy Mitarbeiter
-staff_lastname 	Nachname Mitarbeiter
-staff_firstname 	Vorname Mitarbeiter
-staff_email 	Email des Mitarbeiter
-staff_phone 	Telefon Mitarbeiter
-staff_fax 	FAX Mitarbeiter
-ResultSet? positions 
-Variable 	Beschreibung
-order_number 	Auftragsnummer
-order_orderedat 	Auftragsdatum
-order_deliverdat 	Lieferdatum
-order_tax_vat 	Auftragsgebundene Mwst. in Prozent
-tax_vat 	Artikelbezogene Mwst. in Prozent
-order_designation 	Auftragsbeschreibung
-pos_designation 	Positionsbeschreibung
-price 	Preis
-end_price_gross 	Preis incl. Mwst.
-end_price_netto 	Preis ohne Mwst.
-position 	Position
-amount 	Menge
-article_designation 	Artikel beschreibung
-article_id 	Artikelnummer
-ResultSet? listOfInvoices 
-Variable 	Beschreibung
-order_number 	Auftragsnummer
-invoice_number 	Rechnungsnummer
-date_of_invoice 	Rechnungsdatum
-total_amount 	Gesamtsumme
-maturity 	Fälligkeit
-lastname 	Nachname
-city 	Stadt
-adressid 	Adress ID 
-firstname, Vorname
-city 	PLZ Stadt
-city_alone 	Stadt
-city_country 	Staat-PLZ Stadt
-street 	Straße
-zip 	Postleitzahl
-country 	Staat
-order_orderedat 	Auftragsdatum
-order_deliverdat 	Lieferdatum
-order_number 	Auftragsnummer
-order_designation 	Auftragsbeschreibung
-ResultSet? Order 
-Variable 	Beschreibung
-orderid	Id des Auftrags
-orderNumber	Auftragsnummer
-invoiceNumber	Rechnungsnummer
-invoiceDate 	Rechnungsdatum
-discount 	Rabatt
-misc_cost 	div. Kosten
-postage_cost 	Porto o. Fracht
-packing_cost 	Verpackungskosten
-term_of_payment 	Zahlungsbedingung Text
-staff_address 	Anrede Mitarbeiter
-staff_phone_handy 	Handy Mitarbeiter
-staff_lastname 	Nachname Mitarbeiter
-staff_firstname 	Vorname Mitarbeiter
-staff_email 	Email des Mitarbeiter
-staff_phone 	Telefon Mitarbeiter
-staff_fax 	FAX Mitarbeiter
-ResultSet? positions 
-Variable 	Beschreibung
-order_number 	Auftragsnummer
-order_orderedat 	Auftragsdatum
-order_deliverdat 	Lieferdatum
-order_tax_vat 	Auftragsgebundene Mwst. in Prozent
-tax_vat 	Artikelbezogene Mwst. in Prozent
-order_designation 	Auftragsbeschreibung
-pos_designation 	Positionsbeschreibung
-price 	Preis
-end_price_gross 	Preis incl. Mwst.
-end_price_netto 	Preis ohne Mwst.
-position 	Position
-amount 	Menge
-article_designation 	Artikel beschreibung
-article_id 	Artikelnummer
-ResultSet? listOfInvoices 
-Variable 	Beschreibung
-order_number 	Auftragsnummer
-invoice_number 	Rechnungsnummer
-date_of_invoice 	Rechnungsdatum
-total_amount 	Gesamtsumme
-maturity 	Fälligkeit
-lastname 	Nachname
-city 	Stadt
-adressid 	Adress ID 
-</para>
+      <row>
+         <entry>invoiceDate</entry>
+         <entry>Rechnungsdatum</entry>
+      </row>
+      <row>
+         <entry>discount</entry>
+         <entry>Rabatt</entry>
+      </row>
+      <row>
+         <entry>misc_cost</entry>
+         <entry>div. Kosten</entry>
+      </row>
+      <row>
+         <entry>postage_cost</entry>
+         <entry>Porto o. Fracht</entry>
+      </row>
+      <row>
+         <entry>packing_cost</entry>
+         <entry>Verpackungskosten</entry>
+      </row>
+      <row>
+         <entry>term_of_payment</entry>
+         <entry>Zahlungsbedingung Tex</entry>
+      </row>
+ 	 <row>
+         <entry>staff_lastname</entry>
+         <entry>Sachbearbeiter Nachname</entry>
+      </row>
+      <row>
+         <entry>staff_firstname</entry>
+         <entry>Sachbearbeiter vorname</entry>
+      </row>
+      <row>
+         <entry>staff_first_last</entry>
+         <entry>Sachbearbeiter Nachname, Vorname</entry>
+      </row>
+      <row>
+         <entry>staff_last_first</entry>
+         <entry>Sachbearbeiter Vorname Nachname</entry>
+      </row>
+      <row>
+         <entry>staff_phone_handy</entry>
+         <entry>Handy Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_email</entry>
+         <entry>Email des Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_phone</entry>
+         <entry>Telefon Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_fax</entry>
+         <entry>FAX Sachbearbeiter</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+<table id="rep_ta4">
+  <title>ResultSet positions </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>order_number</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>order_orderedat</entry>
+         <entry>Auftragsdatum</entry>
+      </row>
+      <row>
+         <entry>order_deliverdat</entry>
+         <entry>Auftragsdatum</entry>
+      </row>
+      <row>
+         <entry>order_tax_va</entry>
+         <entry>Auftragsgebundene Mwst. in Prozent</entry>
+      </row>
+      <row>
+         <entry>order_designation</entry>
+         <entry>Auftragsbeschreibung</entry>
+      </row>
+      <row>
+         <entry>pos_designation</entry>
+         <entry>Positionsbeschreibung</entry>
+      </row>
+      <row>
+         <entry>price</entry>
+         <entry>Preis</entry>
+      </row>
+      <row>
+         <entry>end_price_gross</entry>
+         <entry>Preis incl. Mwst.</entry>
+      </row>
+      <row>
+         <entry>end_price_netto</entry>
+         <entry>Preis ohne Mwst.</entry>
+      </row>
+      <row>
+         <entry>position</entry>
+         <entry>Position</entry>
+      </row>
+      <row>
+         <entry>amount</entry>
+         <entry>Menge</entry>
+      </row>
+      <row>
+         <entry>article_designation</entry>
+         <entry>Artikel Beschreibung</entry>
+      </row>
+      <row>
+         <entry>article_id</entry>
+         <entry>Artikelnummer</entry>
+      </row>
+    
+
+
+    </tbody>
+  </tgroup>
+</table>
+
+</sect4>
+<sect4 id="mod_s2"><title>Rechnungsliste</title>
+<table id="rep_ta5">
+  <title>ResultSet listOfInvoices </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>order_number</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>invoice_number</entry>
+         <entry>Rechnungsnummer</entry>
+      </row>
+      <row>
+         <entry>date_of_invoice</entry>
+         <entry>Rechnungsdatum</entry>
+      </row>
+      <row>
+         <entry>total_amount</entry>
+         <entry>Gesamtsumme</entry>
+      </row>
+      <row>
+         <entry>maturity</entry>
+         <entry>Fälligkeit</entry>
+      </row>
+      <row>
+         <entry>lastname</entry>
+         <entry>Nachname</entry>
+      </row>
+      <row>
+         <entry>city</entry>
+         <entry>Stadt</entry>
+      </row>
+      <row>
+         <entry>adressid</entry>
+         <entry>Adress ID</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</sect4>
+
 
 </sect3>
 
