@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?> <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" >
-
 <book>
+
   <bookinfo>
     <title> C.U.O.N. </title>
     <subtitle> Installation and Benutzung </subtitle>
@@ -61,7 +61,7 @@ Natürlich würde ich mich freuen, wenn Ihr eure geänderten GUI's mir zur Verf�
 </para>
 
 </preface>
-
+<part><title>C.U.O.N. Administration</title>
 <chapter><title>C.U.O.N. Installation und Wartung</title>
 <sect1 id="t1"><title>Wichtig !!!</title>
 <para>C.U.O.N. ist für den Professionellen Einsatz gedacht und erfordert für die Installation einiges an Kenntnissen. Umfangreiches Linux, XML und Postgres Wissen sind wirklich die Voraussetzung der Server-Installation und der späteren Pflege. Falls Sie professionelle Hilfe benötigen, stehen ihnen diese Servicepartner zur Verfügung</para>
@@ -1585,6 +1585,9 @@ Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
 
 
 </chapter>
+</part>
+
+<part><title>Benutzerhandbuch</title>
 <chapter>
 <title>Erste Schritte</title>
 <sect1 id="tb1"><title>Allgemeines</title>
@@ -1791,4 +1794,5 @@ die Daten als iCal Daten importieren kann.
 </sect2>
 </sect1>
 </chapter>
+</part>
 </book>
