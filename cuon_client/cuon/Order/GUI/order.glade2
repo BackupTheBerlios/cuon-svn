@@ -152,6 +152,19 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="order_dup">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Duplicate</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_order_dup_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem2">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="delete1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">c_lear</property>
@@ -517,6 +530,28 @@
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-print</property>
                 <signal name="clicked" handler="on_tbPrintInvoice_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="toolbutton2">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="tbDup">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Duplicating</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-copy</property>
+                <signal name="clicked" handler="on_tbDup_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>

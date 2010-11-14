@@ -744,7 +744,18 @@
       <default></default>
       <comment>email client like claws, evolution, kmail</comment>
     </field>
+    <field>
+      <name>user_win_max</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>False</default>
+      <comment>open main windows maximize</comment>
+    </field>
   </table>
+    
   <table>
     <nameOfTable>web2</nameOfTable>
     <x>22</x>

@@ -241,12 +241,15 @@ class gladeXml(defaultValues):
         if sMainWindow:
             self.win1 = self.getWidget(sMainWindow)
             if self.win1 and sMainWindow.find('Mainwindow') > 0:
-                #self.win1.maximize()
+                self.setWinProperty(Main=True)
+                
                 self.win1.connect("delete-event",self.delete_event)
         print "connect"        
-        
         self.setXmlAutoconnect()
 
+    def setWinProperty(self, Main=False):
+        pass
+        
     def writeGlade(self, fname):
         xml1  = eval(self.doDecode(self.rpc.callRP('Database.getInfo', fname)))
         #        print xml1

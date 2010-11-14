@@ -1,5 +1,4 @@
-import time
-import time
+import time,  glob
 from datetime import datetime
 import random
 import xmlrpclib
@@ -114,3 +113,26 @@ class Grave(xmlrpc.XMLRPC, basics):
             liReturn.append(graveyard['shortname'] + '###' + `graveyard['id']`)
                                                                        
         return liReturn
+        
+    def xmlrpc_getComboReportLists(self, dicUser,  sPattern):
+       
+        
+        liReport = []
+        repPath = "/usr/share/cuon/cuon_server/src/cuon/Reports/"
+        # check user
+        
+        if os.path.isdir(repPath + 'user_' + dicUser['Name']):
+            liReport = glob.glob(repPath + 'user_' + dicUser['Name'] + "/" + sPattern)
+                                                                       
+        if not liReport:
+            # check to client id 
+            if os.path.isdir(repPath + 'client_' + `dicUser['id']`):
+                liReport = glob.glob(repPath + 'client_' + `dicUser['id']` + "/" + sPattern)
+                
+        if not liReport:
+            #check last the XML
+             liReport = glob.glob(repPath + 'XML' + "/" + sPattern)
+            
+                    
+                
+        return liReport

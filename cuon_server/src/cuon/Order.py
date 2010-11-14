@@ -410,7 +410,7 @@ class Order(xmlrpc.XMLRPC, basics):
                 result2.append(oneResult)
             except:
                 oneResult = {}
-                print 'oneResult = ',  oneResult
+                #print 'oneResult = ',  oneResult
                 oneResult['MWST_ID'] =   0
                 oneResult['MWST_VALUE'] = 0
                 oneResult['MWST_NAME'] = ''
@@ -1215,3 +1215,8 @@ class Order(xmlrpc.XMLRPC, basics):
         return result
         
 
+    def xmlrpc_dup_order(self, iOrderID, dicUser):
+        sSql = "select * from  fct_duplicateOrder(" + `iOrderID` + ")" 
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
+        return result

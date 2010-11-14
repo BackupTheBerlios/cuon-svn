@@ -170,6 +170,8 @@ class User(defaultValues):
         self.prefFinances['debits1'] = '12210'
         self.prefFinances['payable1'] = '33000'
         
+        self.prefWindow = {}
+        self.prefWindow ['MainMaximize'] = True
         
         self.prefLocale['TimeOffset'] = '+0'
 
@@ -435,6 +437,7 @@ class User(defaultValues):
         self.dicUser['prefFinances'] = self.prefFinances
         self.dicUser['prefLocale'] = self.prefLocale
         self.dicUser['Communications'] = self.Communications
+        self.dicUser['prefWindow'] = self.prefWindow
         
         self.refreshSqlDicUser()
         

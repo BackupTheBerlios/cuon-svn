@@ -211,7 +211,14 @@ Für xxx.xxx.xxx.xxx bitte Ihre Server-IP einsetzen.
 </example>
 </sect3>
 </sect2> 
+
+<sect2 id="t8"><title>Haupt Installation  </title>
+<para>
+
+Jetzt geht es mit den selben Schritten wie bei einem <link linkend='Update'><emphasis>Update</emphasis></link> weiter. </para>
+</sect2>
 <sect2 id="t13"><title>Server testen und Datenbank einrichten</title>
+
 <para>
 Zum ersten Testen der Installation langt ein laufender postgresql Server und der cuonxmlrpc Server. Um eine bessere Übersicht über das Geschehen zu haben empfiehlt es sich, den cuonxmlrpc Server per Hand zu starten um die Debug-Ausgabe im Terminal verfolgen zu können: python /usr/share/cuon/cuon_server/src/server_xmlrpc
 </para>
@@ -229,11 +236,6 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <para>Um bei einem Neustart ein automatisches Hochfahren aller benötigten Programme zu gewährleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</para>
  </sect2>
 
-<sect2 id="t8"><title>Haupt Installation  </title>
-<para>
-
-Jetzt geht es mit den selben Schritten wie bei einem Update weiter.</para>
-</sect2>
  
 
 <sect2 id="t9"><title>Client starten </title>
@@ -263,7 +265,7 @@ Bei der Erstinstallation bitte alle Dateien nach dem Motto
 </para>
 <para>Jügen Hamel </para>
 </sect1>
-<sect1 id="t12_1"><title>Update</title>
+<sect1 id="Update"><title>Update</title>
 <para>Benutzen sie zum Update unbedingt den user und Rechner auf dem das Cuon Setup Konfigurationstool installiert ist. Starten Sie das Cuon Setup tool aus dem Menü 'Einstellungen'. Oder vom Terminal aus: Dazu in das Verzeichnis cuon_client wechseln und mit "python setup.py" die graphische Installationsroutine starten.
 <figure id="t12_1_s1">
 <title>Setup tool</title>

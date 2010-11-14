@@ -71,7 +71,10 @@ class setup:
         self.ClientDirUsrShare = self.ClientDirUsr + '/share'
         self.ClientDirUsrShareCuon = self.ClientDirUsrShare + '/cuon'
         self.ClientDirIcon =  self.ClientDirUsrShareCuon
-
+        self.DocDir =  "/usr/share/doc"
+        self.CuonDocDir = self.DocDir + "/cuon"
+        self.CuonDocDir_DE = self.CuonDocDir + "/DE"
+        self.CuonDocDir_EN = self.CuonDocDir + "/EN"
         
         self.src_server = "./cuon_server.py ./cuon_client.py"
         self.dest_server =self.dest_main
@@ -238,6 +241,13 @@ class setup:
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/AI/AIML')
         
+        # create Doc dirs
+        self.executeSSH("if  [ ! -d "  + self.DocDir  + " ] ; then mkdir " + self.DocDir + " ; fi ")
+        self.executeSSH("if  [ ! -d "  + self.CuonDocDir  + " ] ; then mkdir " + self.CuonDocDir + " ; fi " )
+        
+        self.executeSSH("if  [ ! -d "  + self.CuonDocDir_DE  + " ] ; then mkdir " + self.CuonDocDir_DE + " ; fi ")
+        self.executeSSH("if  [ ! -d "  + self.CuonDocDir_EN  + " ] ; then mkdir " + self.CuonDocDir_EN + " ; fi " )
+         
         # copy version.cfg
         self.executeSCP(" " + self.VERSION_CFG , self.SERVERDIRSHARE + "/cuon_server/")
         # copy other
@@ -245,6 +255,23 @@ class setup:
         self.executeSCP(" ../cuon_server/src/cuon/*.py", self.SERVERDIRSHARE + "/cuon_server/src/cuon")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/*",  self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/XML/*", self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports/XML")
+        
+        # cp Docs
+        self.executeSCP(" ../www/Cuon/cuon.docbook", self.CuonDocDir_DE)
+        self.executeSCP(" -r ../www/Cuon/images",  self.CuonDocDir_DE)
+        
+        
+        self.executeSCP(" ../www/en_Cuon/en_cuon.docbook", self.CuonDocDir_EN)
+        self.executeSCP(" -r ../www/en_Cuon/images",  self.CuonDocDir_EN)
+        
+        
+        #create the documents from dockbook docbook
+        self.executeSSH(" cd " + self.CuonDocDir_DE + " ;  recode -d utf-8..h4  cuon.docbook ; docbook2html cuon.docbook && docbook2pdf cuon.docbook ;")
+
+        self.executeSSH(" cd " + self.CuonDocDir_EN + " ;   docbook2html en_cuon.docbook && docbook2pdf en_cuon.docbook ;")
+
+        # cp cuon.docbook de_cuon.docbook ; recode -d utf-8..h4 de_cuon.docbook ; docbook2html de_cuon.docbook && docbook2pdf de_cuon.docbook
+
         # AI 
         ai_module = ['main.sgml','cuon.sgml','cuon_article.sgml','cuon_address.sgml','cuon_misc.sgml']
         self.executeSCP(" cuon/AI/AIML/*.sgml", self.SERVERDIRSHARE + "/cuon_server/AI/AIML")

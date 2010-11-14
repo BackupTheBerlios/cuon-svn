@@ -79,6 +79,17 @@ class plantlists(windows):
             cbGraveYard.set_text_column(0)
             cbGraveYard.show()
         
+        liGravePlantList = self.rpc.callRP('Grave.getComboReportLists',self.dicUser, "grave_plant*")
+        cbPlantLists = self.getWidget('cbListOfReport')
+        if cbPlantLists:
+            liststore = gtk.ListStore(str)
+            for plantReport  in liGravePlantList:
+                liststore.append([plantReport])
+            cbPlantLists.set_model(liststore)
+            cbPlantLists.set_text_column(0)
+            cbPlantLists.show()
+        
+        
     def on_bOK_clicked(self, event):
         print 'ok clicked'
        

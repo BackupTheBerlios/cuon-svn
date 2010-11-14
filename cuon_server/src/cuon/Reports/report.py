@@ -664,7 +664,7 @@ class report(MyXML):
 
 
                             liRecord = self.checkProperty(liRecord, dicRow)
-                        if self.testEndOfPage(dicRow['y1'] ,self.dicPage['reportDetailsY'] , lineOffset ):
+                        if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , lineOffset ):
                             
                             self.dicReportValues['pageDetails'] = liRecord
                             self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2'] )
@@ -735,7 +735,9 @@ class report(MyXML):
     def getXmlEntry(self, cyNode):
         
         dicEntry = {}
-       
+        # set some defaults
+        dicEntry['Property'] = 0
+        
         dicEntry['eName']  =  self.getEntrySpecification(cyNode,'name').encode('ascii')
         try:
             dicEntry['width'] =  int(self.getEntrySpecification(cyNode,'width'))
@@ -1301,8 +1303,13 @@ class report(MyXML):
         pass
 
     
-    def testEndOfPage(self, yRow, papersizeHeight, offSet ):
+    def testEndOfPage(self, dicRow, papersizeHeight, offSet ):
         ok = False
+        yRow = dicRow['y1']
+        if dicRow.has_key('pagebreak'):
+            return True
+            
+            
         print "report17 test end of page"
         print 'yRow', yRow
         print 'offSet', offSet
@@ -1373,7 +1380,7 @@ class report(MyXML):
     def checkProperty(self,  liRecord, dicRow) :
         
         doPrint = False
-        if dicRow.has_key('property') and dicRow['property']:
+        if dicRow.has_key('Property') and dicRow['Property']:
             sProperty = dicRow['property']
             printSite = sProperty[0]
             if printSite == 'A':

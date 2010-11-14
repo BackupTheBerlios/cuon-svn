@@ -89,9 +89,11 @@ class SinglePartner(SingleData):
         dicRecords = self.load(id)
         sAdr = ' '
         if dicRecords:
-            dicRecord = dicRecords[0]
-            sAdr = dicRecord['firstname']+' ' + dicRecord['lastname']
-            
+            try:
+                dicRecord = dicRecords[0]
+                sAdr = dicRecord['firstname']+' ' + dicRecord['lastname']
+            except:
+                pass
         return sAdr
         
             

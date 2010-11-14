@@ -111,7 +111,16 @@ class windows(rawWindow, MyXML, messages,  constants):
     def CleanUp(self):
         print "CleanUp"
         
-    
+    def setWinProperty(self, Main=False):
+        if Main:
+            if self.dicUser['prefWindow']['MainMaximize'] :
+                try:
+                    
+                    self.win1.maximize()
+                except:
+                    pass
+                    
+        
     def delete_event(self, widget, event, data=None):
         # If you return FALSE in the "delete_event" signal handler,
         # GTK will emit the "destroy" signal. Returning TRUE means

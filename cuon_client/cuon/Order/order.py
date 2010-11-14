@@ -443,6 +443,11 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         print 'show ext. Infos '
         dms = cuon.DMS.dms.dmswindow(self.allTables,self.MN['Order'], {'1':self.singleOrder.ID})
         
+    def on_order_dup_activate(self, event):
+        print "order dup"
+        newID = self.rpc.callRP('Order.dup_order',self.singleOrder.ID, self.dicUser)
+        self.tabChanged()
+        
     #Menu Gets
   
     def on_GetsSave1_activate(self, event):
@@ -996,6 +1001,9 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     def on_tbInfo_clicked(self,  event):
         if self.tabOption == self.tabOrder:
             self.on_DMS_activate(event)    
+    def on_tbDup_clicked(self,  event):
+        if self.tabOption == self.tabOrder:
+            self.on_order_dup_activate(event)
         
             
     def refreshTree(self):

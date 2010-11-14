@@ -187,4 +187,63 @@ CREATE OR REPLACE FUNCTION fct_getReminder( iDays integer) returns setof  record
 
     
      ' LANGUAGE 'plpgsql'; 
+       
+CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS '
+ DECLARE
+     
+    newOrderID int ;
+     new_table   varchar(400) ;
+     
+      sSql text ;
+    sSql2 text ;
+        sExe text ;
+        sExe2 text ;
+        sTable  text;
+        rData  record ;
+        sCursor text ;
+        iPosID int ;
+        cur1 refcursor ;
+    BEGIN
+    select nextval(''orderbook_id'') into newOrderID ;
+    
+       select into rData user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number ,  versions_uuid   , staff_id  from orderbook where id =  iOrderID    ;
+    
+        
+        RAISE NOTICE ''status by rdata = %'', rData.status;
+        
+        
+    insert into orderbook (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number  ,versions_uuid   , staff_id  ) values ( newOrderID, rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 ,  rData.number ,  rData.designation ,         rData.orderedat , rData.deliveredat , rData.packing_cost , rData.postage_cost , rData.misc_cost ,rData.build_retry , rData.type_retry  , rData.supply_retry, rData.gets_retry , rData.invoice_retry , rData.custom_retry_days , rData.modul_number  , rData.modul_order_number, rData.discount  , rData.ready_for_invoice , rData.process_status   , rData.proposal_number , rData.customers_ordernumber , rData.customers_partner_id , rData.project_id , 0,   fct_new_uuid()  , rData.staff_id) ;
+            
+       
+     
+        sCursor := ''SELECT id from orderposition WHERE  orderid = ''|| iOrderID || '' '' || fct_getWhere(2,'' '')  ;
+       
+        OPEN cur1 FOR EXECUTE sCursor ;
+        FETCH cur1 INTO iPosID ;
 
+     
+
+        WHILE FOUND LOOP
+        RAISE NOTICE ''iPosID % '', iPosID ;
+        select into rData user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,orderid,   articleid, designation, amount,  position,   price , tax_vat,  discount,  versions_number  ,versions_uuid  from orderposition where id = iPosID ;
+        
+        insert into orderposition (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,orderid,   articleid, designation, amount,  position,   price , tax_vat,  discount,  versions_number  ,versions_uuid ) values ( nextval(''orderposition_id''), rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 , newOrderID,   rData.articleid, rData.designation, rData.amount,  rData.position,   rData.price , rData.tax_vat,  rData.discount,    0,   fct_new_uuid()  )  ; 
+           
+        FETCH cur1 INTO iPosID ;
+    END LOOP ;
+       
+    close cur1 ;
+    
+      
+       
+       
+     --  RAISE NOTICE ''sql = %'', sSql ; 
+      --  execute(sSql) ;
+    return newOrderID ;    
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 
+
+     
