@@ -1,4 +1,4 @@
-import time,  glob
+import time,  glob,  os
 from datetime import datetime
 import random
 import xmlrpclib
@@ -126,8 +126,8 @@ class Grave(xmlrpc.XMLRPC, basics):
                                                                        
         if not liReport:
             # check to client id 
-            if os.path.isdir(repPath + 'client_' + `dicUser['id']`):
-                liReport = glob.glob(repPath + 'client_' + `dicUser['id']` + "/" + sPattern)
+            if os.path.isdir(repPath + 'client_' + `dicUser['client']`):
+                liReport = glob.glob(repPath + 'client_' + `dicUser['client']` + "/" + sPattern)
                 
         if not liReport:
             #check last the XML
