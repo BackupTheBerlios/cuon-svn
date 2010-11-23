@@ -917,6 +917,209 @@
     
     </table>
      
+    <table>
+    <nameOfTable>support_project</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_standard);</specials>
+    
+    
+    
+     <field>
+      <name>designation</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>250</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    <field>
+      <name>support_project_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>100</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+   
+    <field>
+      <name>project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    
+    </table>
+    
+    
+      <table>
+    <nameOfTable>support_ticket</nameOfTable>
+    <x>22</x>
+    <y>35</y>
+    <specials>inherits (t_standard);</specials>
+    
+    
+    
+     <field>
+      <name>ticket_number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>36</size>
+      <default></default>
+      <comment>uuid</comment>
+    </field>
+     
+     <field>
+      <name>designation</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>10000</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    <field>
+      <name>support_project_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+     <field>
+      <name>status_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+       <field>
+      <name>severity_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+       <field>
+      <name>priority_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+       <field>
+      <name>reproduce_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+      <field>
+      <name>reported_by_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+      <field>
+      <name>reported_day</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+      <field>
+      <name>reported_time</name>
+      <type>time</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>solved_day</name>
+      <type>date</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+      <field>
+      <name>solved_time</name>
+      <type>time</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+      <field>
+      <name>platform_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+      <field>
+      <name>note</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>50000</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    
+    </table>
    
    
 </database>

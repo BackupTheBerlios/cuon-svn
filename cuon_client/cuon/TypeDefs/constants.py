@@ -61,7 +61,7 @@ class constants:
         self.MN['Project_material_resources'] = 14400
         self.MN['Project_programming'] = 14500
         
-
+        self.MN['SupportTicket']  = 17000
 
 
         self.MN['Web2'] = 20000

@@ -104,6 +104,21 @@ class Report(xmlrpc.XMLRPC, basics):
         
         return self.report_server.ReportServer.createReport(repData)
         
+        
+    def xmlrpc_server_graves_plant_standard(self, dicSearchlist, dicUser,  nRows=0, sName ='standard'):
+        import Reports.report_articles_pickles_standard
+        import Grave
+        
+        print "startReport"
+        oGrave= Grave.Grave()
+        oReports = Reports.report_grave_plant_lists.report_grave_plant_lists(nRows, sName)
+        print 'new report 041'
+        repData = oReports.getReportData(dicSearchlist, dicUser, oArticles, self.ReportDefs)
+        print 'get ReportData 042'
+        #print repData
+        
+        
+        return self.report_server.ReportServer.createReport(repData)
     def xmlrpc_server_hibernation_incoming_document(self, dicOrder, dicUser):
         print `self.report_server`
         import Reports.report_hibernation_incoming_document

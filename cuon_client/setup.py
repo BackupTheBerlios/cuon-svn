@@ -19,7 +19,7 @@ class setup:
         self.CuonAdmin = None
         self.store = []
         self.liLocale = ['de','pt','pt_BR', 'nl', 'it', 'lv']
-        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" , "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids"]
+        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" , "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids",  "SupportTicket"]
 
         self.xml = None
         self.xmlAutoconnect = False
@@ -119,7 +119,10 @@ class setup:
         self.CUON_DOCUMENTS_HIBERNATION_INCOMING = self.CUON_DOCUMENTS_HIBERNATION + "/Incoming"
         self.CUON_DOCUMENTS_HIBERNATION_PICKUP = self.CUON_DOCUMENTS_HIBERNATION + "/Pickup"
         self.CUON_DOCUMENTS_HIBERNATION_INVOICE = self.CUON_DOCUMENTS_HIBERNATION + "/Invoice"
-        
+        self.CUON_DOCUMENTS_GRAVES = self.CUON_DOCUMENTS + "/Graves"
+        self.CUON_DOCUMENTS_GRAVES_INVOICE = self.CUON_DOCUMENTS_GRAVES + "/Invoice"
+        self.CUON_DOCUMENTS_GRAVES_PLANT = self.CUON_DOCUMENTS_GRAVES + "/Plants"
+
         
         
 ##        # Please set here your values

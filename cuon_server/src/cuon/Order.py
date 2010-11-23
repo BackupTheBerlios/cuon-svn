@@ -43,7 +43,7 @@ class Order(xmlrpc.XMLRPC, basics):
 
     def xmlrpc_getInvoiceAddress(self, dicOrder, dicUser):
         
-        sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
+        sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , orderbook.customers_ordernumber as customers_ordernumber, "
         sSql +=  " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql +=  " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
         sSql += " address.address as address , address.firstname as firstname, "
@@ -157,7 +157,7 @@ class Order(xmlrpc.XMLRPC, basics):
         liResultStaff = None
         liResultPartner = None
         print '############ get order values ####################'
-        sSql = "select discount, misc_cost,  postage_cost, packing_cost, "
+        sSql = "select discount, misc_cost,  postage_cost, packing_cost, orderbook.customers_ordernumber as customers_ordernumber, "
         sSql += " orderbook.designation as order_designation , orderbook.number as order_number, staff_id as order_staff_id, "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
@@ -354,7 +354,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
         sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
         sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id, "
-        
+        sSql += "articles.wrapping as article_wrapping, articles.quantumperwrap as article_quantumperwrap,  articles.unit as article_unit,  "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "
         sSql += " orderposition.discount as discount,  "

@@ -136,3 +136,16 @@ class Grave(xmlrpc.XMLRPC, basics):
                     
                 
         return liReport
+        
+    def xmlrpc_getGravePlantListValues(self,  dicSearchfields, dicUser, nRows):
+        
+        sSql = "select * from fct_getGravePlantListValues( array "  + `self.getListOfSearchFields(dicSearchfields)` +",  " + `nRows` + ")"
+        
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        
+    def getlistOfSearchFields(self, dicSearchfields):
+        liReturn = []
+        liReturn.append('test')
+        
+        return liReturn

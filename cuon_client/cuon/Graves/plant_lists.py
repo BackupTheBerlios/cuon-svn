@@ -92,7 +92,11 @@ class plantlists(windows):
         
     def on_bOK_clicked(self, event):
         print 'ok clicked'
-       
+        dicSearchfields,  nRow,  sName = self.readSearchDatafields()
+        Pdf = self.rpc.callRP('Report.server_graves_plant_standard', dicSearchfields, self.dicUser, nRow, sName)
+        self.showPdf(Pdf, self.dicUser)
+        di1 = self.getWidget('dialog1')
+        di1.hide()
         self.quitFinddialog()
 
     def on_cancel_button1_clicked(self, event):
@@ -108,3 +112,11 @@ class plantlists(windows):
         
     def getFilenames(self):
         return self.fileName
+
+    def readSearchDatafields(self):
+        liReturn = []
+        nRow = 0
+        sName = "grave_plant_list_standard.xml"
+        
+        return liReturn,  nRow,  sName
+        

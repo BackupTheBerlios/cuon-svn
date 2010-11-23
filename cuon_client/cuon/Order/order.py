@@ -252,7 +252,18 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
         self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
 
-
+        #Comboboxes
+        
+        liOrderType = [_('All'), _('Unreckoned')]
+        cbTypeOfOrder = self.getWidget('cbFindOrderTypes')
+        if cbTypeOfOrder:
+            liststore = gtk.ListStore(str)
+            for TypeOfOrder in liOrderType:
+                liststore.append([TypeOfOrder])
+            cbTypeOfOrder.set_model(liststore)
+            cbTypeOfOrder.set_text_column(0)
+            cbTypeOfOrder.show()
+            
         # tabs from notebook
         self.tabOrder = 0
         self.tabSupply = 1
@@ -376,16 +387,15 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         print 'delivery note'
         dicOrder = {}
         dicOrder['orderNumber'] = self.singleOrder.getOrderNumber(self.singleOrder.ID)
-        dicOrder['deliveryNumber'] =  self.singleOrderSupply.getDeliveryNumber(self.singleOrder.ID)        
+        #dicOrder['deliveryNumber'] =  self.singleOrderSupply.getDeliveryNumber(self.singleOrder.ID)        
         #invoice = cuon.Order.standard_delivery_note.standard_delivery_note(dicOrder)
               
              
         
         dicOrder['orderid'] = self.singleOrder.ID
         
-        print ' start delivery printing 2'
         deliveryNumber = self.singleOrder.getSupplyNumber() 
-        dicOrder['invoiceNumber'] =  invoiceNumber        
+        dicOrder['deliveryNumber'] =  deliveryNumber              
         print ' start delievery printing 3'
         
         print dicOrder
@@ -578,6 +588,11 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     def on_bSearch_clicked(self, event, data=None):
         self.findOrder()
         
+    def on_cbFindOrderTypes_changed(self, event):
+        print "OrderType",  event
+        iOrderType = self.getWidget("cbFindOrderTypes").get_active()
+        self.findOrder()
+        
         
     def findOrder(self):
         print 'findAddress'
@@ -587,7 +602,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         sID = self.getWidget('eFindOrderID').get_text()
         sInvoiceNumber = self.getWidget('eFindOrderInvoiceNumber').get_text()
         sYear = self.getWidget('eFindOrderYear').get_text()
-        
+        iOrderType = self.getWidget("cbFindOrderTypes").get_active()
         liSearch = []
         if sNumber:
             liSearch.append('number')
@@ -612,12 +627,16 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
             liSearch.append('###id = (select order_number from list_of_invoices where invoice_number = ' + sInvoiceNumber +')')
             liSearch.append(sInvoiceNumber)    
        
+        if iOrderType == 1:
+            liSearch.append('###id = (select * from fct_getUnreckonedOrder())' )
+            liSearch.append(0)    
         if liSearch:     
             self.singleOrder.sWhere = self.getWhere(liSearch) 
             self.singleOrder.sWhere += " and process_status between 500 and 599 "
         else:
             self.singleOrder.sWhere = " where process_status between 500 and 599 "
         self.oldTab = -1
+        
         self.refreshTree()
 
     # Tab Custom choose address 

@@ -1381,7 +1381,7 @@ class report(MyXML):
         
         doPrint = False
         if dicRow.has_key('Property') and dicRow['Property']:
-            sProperty = dicRow['property']
+            sProperty = dicRow['Property']
             printSite = sProperty[0]
             if printSite == 'A':
                 # all sites

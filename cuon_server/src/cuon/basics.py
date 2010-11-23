@@ -64,12 +64,15 @@ class basics(xmlrpc.XMLRPC):
 
         self.DocumentPathHibernationIncoming = '/var/cuon/Documents/Hibernation/Incoming'
         self.DocumentPathHibernationPickup = '/var/cuon/Documents/Hibernation/Pickup'
-        self.DocumentPathHibernationInvoice = '/var/cuon/Documents/Hibernation/Invoice'
+        
         
         self.DocumentPathListsAddresses = '/var/cuon/Documents/Lists/Addresses'
         self.DocumentPathListsArticles = '/var/cuon/Documents/Lists/Articles'
         self.DocumentPathTmp =  '/var/cuon/tmp'
         
+        self.DocumentPathHibernationInvoice = '/var/cuon/Documents/Hibernation/Invoice'
+        self.DocumentPathGravesInvoice = '/var/cuon/Documents/Graves/Invoice'
+        self.DocumentPathGravesPlants = '/var/cuon/Documents/Graves/Plants'
         
         self.WIKI_PORT = 7084
         self.ONLINE_BOOK = 'http://84.244.7.139:7084/?action=xmlrpc2'

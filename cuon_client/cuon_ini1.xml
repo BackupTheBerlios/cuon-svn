@@ -344,6 +344,18 @@
       <Entry-File>project_programming.xml</Entry-File>
       <Entry-FileValue>../usr/share/cuon/entry_project_programming.xml</Entry-FileValue>
     </Entries> 
+    
+    <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>support_project.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_support_project.xml</Entry-FileValue>
+    </Entries>
+     <Entries>       
+      <Entry-Name>cuon</Entry-Name>
+      <Entry-File>support_ticket.xml</Entry-File>
+      <Entry-FileValue>../usr/share/cuon/entry_support_ticket.xml</Entry-FileValue>
+    </Entries>
+    
 <Entries>       
       <Entry-Name>cuon</Entry-Name>
       <Entry-File>web2.xml</Entry-File>
@@ -694,6 +706,11 @@
       <Glade-Name>cuon</Glade-Name>
       <Glade-File>web2.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/web2.glade2</Glade-FileValue>
+    </GladeEntries>
+     <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>support_ticket.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/support_ticket.glade2</Glade-FileValue>
     </GladeEntries>
 <GladeEntries>
       <Glade-Name>cuon</Glade-Name>

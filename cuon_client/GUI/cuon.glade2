@@ -209,6 +209,14 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="mi_supportticket1">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Support Ticket</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_mi_supportticket1_activate"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="mi_dms1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">DMS</property>
@@ -785,15 +793,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkButton" id="bChat">
                     <property name="label" translatable="yes">Chat</property>
                     <property name="visible">True</property>
@@ -834,6 +833,15 @@
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>

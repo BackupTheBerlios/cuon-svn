@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 11, 'Rev': 14, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 11, 'Rev': 23, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -419,6 +419,7 @@ class MainWindow(windows):
                 self.addEnabledMenuItems('work','mi_order1')
                 self.addEnabledMenuItems('work','mi_stock1')
                 self.addEnabledMenuItems('work','mi_dms1')
+                self.addEnabledMenuItems('work','mi_supportticket1')
                 #accounting
                 self.addEnabledMenuItems('work','mi_cash_account_book1')
                 # extras
@@ -689,8 +690,11 @@ class MainWindow(windows):
         ord = cuon.Stock.stock.stockwindow(self.allTables)
   
         
-       
- 
+    def on_mi_supportticket1_activate(self, event):
+        import cuon.SupportTicket.supportTicket
+        supt = cuon.SupportTicket.supportTicket.supportticketwindow(self.allTables)
+        
+        
     def on_dms1_activate(self,event):
         import cuon.DMS.dms
         dms = cuon.DMS.dms.dmswindow(self.allTables)

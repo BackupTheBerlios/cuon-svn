@@ -247,3 +247,29 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
      ' LANGUAGE 'plpgsql'; 
 
      
+   
+        
+CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns setof  record AS '
+ DECLARE
+     iClient int ;
+    sSql text := '''';
+    r  record;
+    r2 record ;
+    
+    BEGIN
+       sSql := '' select id from orderbook '' || '' '' ||  fct_getWhere(2,'' '') ;
+       
+        FOR r in execute(sSql)  LOOP
+        
+        IF r.this_date - r.maturity > iDays   THEN
+            return next r;
+        END IF ;
+        
+        END LOOP ;
+        
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 
+     

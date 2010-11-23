@@ -621,18 +621,24 @@
                   </packing>
                 </child>
                 <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
                   <object class="GtkButton" id="bSearch">
                     <property name="label" translatable="yes">Search</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
+                    <property name="receives_default">True</property>
                     <property name="use_underline">True</property>
                     <signal name="clicked" handler="on_bSearch_clicked"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">4</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
               </object>
@@ -662,6 +668,8 @@
                     <property name="width_chars">10</property>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -713,6 +721,20 @@
                 </child>
                 <child>
                   <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <object class="GtkComboBoxEntry" id="cbFindOrderTypes">
+                    <property name="visible">True</property>
+                    <signal name="changed" handler="on_cbFindOrderTypes_changed"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">8</property>
+                  </packing>
                 </child>
               </object>
               <packing>

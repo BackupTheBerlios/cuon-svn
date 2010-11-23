@@ -389,8 +389,10 @@ class gladeXml(defaultValues):
         try:
             
             item.add_accelerator("activate", self.accel_group, ord(cKey), gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+            #print "add Acc ",  sName,  item,  cKey
         except Exception,  params:
             print Exception,  params
+            print sName,  item,  cKey
             
         ##self.accel_groups[sName] = accel
         
@@ -402,7 +404,8 @@ class gladeXml(defaultValues):
 ##        print 'accel by set = ', accel
 ##        item.set_accel_group(accel)
 ##        
-##        
+##    
+
     def removeEnabledMenuItems(self, sName):
         if self.dictEnabledMenuItems.has_key(sName):
                  del self.dictEnabledMenuItems[sName]
@@ -418,7 +421,7 @@ class gladeXml(defaultValues):
                     i.set_sensitive(True)
                     
                     
-                    self.printOut( 'GladeXML-Widget-Name = ', i.get_name())
+                    #self.printOut( 'GladeXML-Widget-Name = ', i.get_name())
                     
                 else:
                     self.printOut( 'No Menuitem')

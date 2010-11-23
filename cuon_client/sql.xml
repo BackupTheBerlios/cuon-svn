@@ -465,6 +465,42 @@
         <index_table> project_task_material_res</index_table>
         <index_column>task_id</index_column>
     </index>
+    
+      <index>
+        <index_name>  support_ticket_number</index_name>
+        <index_special> </index_special>
+        <index_table> support_ticket</index_table>
+        <index_column>ticket_number</index_column>
+    </index>
+    
+      <index>
+        <index_name>  support_ticket_project_id</index_name>
+        <index_special> </index_special>
+        <index_table> support_ticket</index_table>
+        <index_column>support_project_id</index_column>
+    </index>
+    
+       <index>
+        <index_name>  support_ticket_status_id</index_name>
+        <index_special> </index_special>
+        <index_table> support_ticket</index_table>
+        <index_column>status_id</index_column>
+    </index>
+    
+      <index>
+        <index_special> </index_special>
+        <index_name>  support_ticket_priority_id</index_name>
+        <index_table> support_ticket</index_table>
+        <index_column>priority_id</index_column>
+    </index>
+    
+      <index>
+        <index_name>  support_ticket_platform_id</index_name>
+        <index_special> </index_special>
+        <index_table> support_ticket</index_table>
+        <index_column>platform_id</index_column>
+    </index>
+    
     <index>
         <index_name>botany_idx_all1</index_name>
         <index_special> </index_special>
