@@ -50,13 +50,39 @@ class supportticketwindow(windows):
         self.singleSupportTicket.setTreeFields( ['header'])
         self.singleSupportTicket.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleSupportTicket.setTreeOrder('header')
-        self.singleSupportTicket.setTree(self.xml.get_widget('tree1') )
+        self.singleSupportTicket.setTree(self.getWidget('tree1') )
         self.singleSupportTicket.setListHeader(['Header'])
         #print 'Widgets - win = ', `self.win1`
         #print 'Widgets - tree1 = ', `self.xml.get_widget('tree1')`
         
-        self.tabSupportTicket = 0
-        self.tabThinking = 1
+        # Menu-items
+        self.initMenuItems()
+
+        # Close Menus for Tab
+
+        self.addEnabledMenuItems('Support','Projects')
+        self.addEnabledMenuItems('Support','Ticket')
+
+
+        # seperate Menus
+        self.addEnabledMenuItems('Projects','Projects')
+        self.addEnabledMenuItems('Ticket','Ticket')
+        
+        # enabledMenues for  Project
+        self.addEnabledMenuItems('editProject','new1')
+        self.addEnabledMenuItems('editProject','edit1')
+        self.addEnabledMenuItems('editProject','delete1')
+
+        # enabledMenues for  Ticket
+        self.addEnabledMenuItems('editTicket','Ticket_new1')
+        self.addEnabledMenuItems('editTicket','Ticket_edit1')
+        self.addEnabledMenuItems('editTicket','Ticket_delete1')
+        # enabledMenues for Save 
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','Ticket_Save1', self.dicUserKeys['articles_save'])
+        
+        self.tabSupportProject = 0
+        self.tabSupportTicket = 1
         # start
         
         self.tabChanged()
@@ -148,14 +174,14 @@ class supportticketwindow(windows):
     def tabChanged(self):
         print 'tab changed to :'  + str(self.tabOption)
         self.setTreeVisible(True)
-        if self.tabOption == self.tabSupportTicket:
-            #Staff
-            #self.disableMenuItem('tabs')
-            #self.enableMenuItem('staff')
+        if self.tabOption == self.tabSupportProject:
+            #Project
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('Project')
             print 'Seite 0'
             #self.editAction = 'editStaff'
             
-        elif self.tabOption == self.tabThinking:
+        elif self.tabOption == self.tabSupportTicket:
             #Fee
             #self.disableMenuItem('tabs')
             #self.enableMenuItem('fee')

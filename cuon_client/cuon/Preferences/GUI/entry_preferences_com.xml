@@ -2,7 +2,7 @@
     <table>
         <table_name>preferences</table_name>
         <entry>
-            <name>eTwitterName</name>
+            <name>eTwitter</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
@@ -11,12 +11,12 @@
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry><entry>
-            <name>eTwitterPassword</name>
+            <name>eFacebook</name>
             <type>textline</type>
             <size>255</size>
             <verify_type>string</verify_type>
             <create_sql>1</create_sql>
-            <sql_field>twitter_user_password</sql_field>
+            <sql_field>facebook</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>

@@ -90,7 +90,7 @@
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Bank</property>
                         <property name="use_underline">True</property>
-                        <accelerator key="x" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="b" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_bank1_activate"/>
                       </object>
                     </child>
@@ -104,7 +104,7 @@
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Bibliographic</property>
                         <property name="use_underline">True</property>
-                        <accelerator key="v" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="i" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_bibliographic_activate"/>
                       </object>
                     </child>
@@ -213,6 +213,7 @@
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Support Ticket</property>
                         <property name="use_underline">True</property>
+                        <accelerator key="t" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_mi_supportticket1_activate"/>
                       </object>
                     </child>
@@ -250,7 +251,7 @@
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">cash account book</property>
                         <property name="use_underline">True</property>
-                        <accelerator key="c" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="u" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_cash_account_book1_activate"/>
                       </object>
                     </child>
@@ -835,7 +836,20 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkButton" id="bTwitter">
+                    <property name="label" translatable="yes">Twitter</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <signal name="clicked" handler="on_bTwitter_clicked"/>
+                    <signal name="activate" handler="on_bTwitter_activate"/>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="right_attach">4</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -1002,286 +1016,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkVBox" id="vbox6">
-                    <property name="visible">True</property>
-                    <child>
-                      <object class="GtkToolbar" id="toolbar1">
-                        <property name="visible">True</property>
-                        <property name="toolbar_style">icons</property>
-                        <child>
-                          <object class="GtkToolButton" id="tbTwitterGetMessages">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">Get new messages</property>
-                            <property name="label" translatable="yes">Get Messages</property>
-                            <property name="use_underline">True</property>
-                            <property name="stock_id">gtk-home</property>
-                            <signal name="clicked" handler="on_tbTwitterGetMessages_clicked"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="homogeneous">True</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkToolButton" id="tbTwitterRefresh">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">Refresh the user timeline</property>
-                            <property name="label" translatable="yes">Refresh</property>
-                            <property name="use_underline">True</property>
-                            <property name="stock_id">gtk-refresh</property>
-                            <signal name="clicked" handler="on_tbTwitterRefresh_clicked"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="homogeneous">True</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkToolButton" id="tbTwitterRefreshAll">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">Refresh the public timeline</property>
-                            <property name="label" translatable="yes">Refresh all</property>
-                            <property name="use_underline">True</property>
-                            <property name="stock_id">gtk-info</property>
-                            <signal name="clicked" handler="on_tbTwitterRefreshAll_clicked"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="homogeneous">True</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkToolButton" id="tbTwitterFollowers">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">List of your followers</property>
-                            <property name="label" translatable="yes">Follower</property>
-                            <property name="use_underline">True</property>
-                            <property name="stock_id">gtk-about</property>
-                            <signal name="clicked" handler="on_tbTwitterFollowers_clicked"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="homogeneous">True</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkToolButton" id="tbTwitterGetReplies">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">Get replies to you</property>
-                            <property name="label" translatable="yes">Replies</property>
-                            <property name="use_underline">True</property>
-                            <property name="stock_id">gtk-orientation-portrait</property>
-                            <signal name="clicked" handler="on_tbTwitterGetReplies_clicked"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="homogeneous">True</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">False</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scrolledwindow8">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="shadow_type">in</property>
-                        <child>
-                          <object class="GtkTextView" id="tvTwitterMessages">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="buffer">textbuffer3</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkVBox" id="vbox7">
-                        <property name="visible">True</property>
-                        <child>
-                          <object class="GtkHBox" id="hbox6">
-                            <property name="visible">True</property>
-                            <child>
-                              <object class="GtkLabel" id="label9">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Twitter</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterMessage">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">&#x2022;</property>
-                                <signal name="changed" handler="on_eTwitterMessage_changed"/>
-                                <signal name="key_press_event" handler="on_eTwitterMessage_key_press_event"/>
-                              </object>
-                              <packing>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterLetters">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">&#x2022;</property>
-                                <property name="width_chars">3</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkButton" id="bSendTwitter">
-                                <property name="label" translatable="yes">send</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="use_underline">True</property>
-                                <signal name="clicked" handler="on_bSendTwitter_clicked"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkHBox" id="hbox7">
-                            <property name="visible">True</property>
-                            <child>
-                              <object class="GtkLabel" id="label10">
-                                <property name="visible">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label11">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Follower</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterFollower">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="editable">False</property>
-                                <property name="invisible_char">&#x2022;</property>
-                              </object>
-                              <packing>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label12">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Friends</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterFriends">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="editable">False</property>
-                                <property name="invisible_char">&#x2022;</property>
-                              </object>
-                              <packing>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label13">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Follow</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterFollow">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="editable">False</property>
-                                <property name="invisible_char">&#x2022;</property>
-                              </object>
-                              <packing>
-                                <property name="position">6</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label14">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Tweets</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">7</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="eTwitterTweets">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="editable">False</property>
-                                <property name="invisible_char">&#x2022;</property>
-                              </object>
-                              <packing>
-                                <property name="position">8</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">2</property>
-                  </packing>
+                  <placeholder/>
                 </child>
               </object>
               <packing>

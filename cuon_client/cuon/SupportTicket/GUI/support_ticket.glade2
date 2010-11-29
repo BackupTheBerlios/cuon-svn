@@ -47,7 +47,7 @@
                   <object class="GtkMenu" id="menu1">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkMenuItem" id="new">
+                      <object class="GtkMenuItem" id="new1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">New</property>
                         <property name="use_underline">True</property>
@@ -55,7 +55,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="Edit">
+                      <object class="GtkMenuItem" id="edit1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Edit</property>
                         <property name="use_underline">True</property>
@@ -63,7 +63,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="save">
+                      <object class="GtkMenuItem" id="save1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Save</property>
                         <property name="use_underline">True</property>
@@ -76,7 +76,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="delete">
+                      <object class="GtkMenuItem" id="delete1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Delete</property>
                         <property name="use_underline">True</property>
@@ -95,7 +95,7 @@
                 <child type="submenu">
                   <object class="GtkMenu" id="mindmap1_menu">
                     <child>
-                      <object class="GtkMenuItem" id="Ticket_new">
+                      <object class="GtkMenuItem" id="Ticket_new1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">new</property>
                         <property name="use_underline">True</property>

@@ -754,6 +754,16 @@
       <default>False</default>
       <comment>open main windows maximize</comment>
     </field>
+     <field>
+      <name>facebook</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>twitter connect for user</comment>
+    </field>
   </table>
     
   <table>

@@ -74,11 +74,13 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
         self.dicOrder = dicOrder
         self.fillArticlesNewID = 0
-        self.loadGlade('order.xml','OrderMainwindow')
-        #self.win1 = self.getWidget('OrderMainwindow')
-        self.FastSelectionStart()
-        self.allTables = allTables
-        self.eResidue= self.getWidget("ePaymentResidue")
+        if orderid != -555:
+            self.loadGlade('order.xml','OrderMainwindow')
+            #self.win1 = self.getWidget('OrderMainwindow')
+            self.FastSelectionStart()
+            self.allTables = allTables
+            self.eResidue= self.getWidget("ePaymentResidue")
+        
         self.singleOrder = SingleOrder.SingleOrder(allTables)
         self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)
         self.singleOrderGet = SingleOrderGet.SingleOrderGet(allTables)
@@ -97,172 +99,173 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
         self.singleArticle = cuon.Articles.SingleArticle.SingleArticle(allTables)
        
-        # self.singleOrder.loadTable()
-              
-        self.EntriesOrder = 'order.xml'
-        self.EntriesOrderSupply = 'order_supply.xml'
-        self.EntriesOrderGet = 'order_get.xml'
-        self.EntriesOrderPosition = 'order_position.xml'
-        self.EntriesOrderMisc = 'order_misc.xml'
-        self.EntriesOrderInvoice = 'order_invoice.xml'
-        self.EntriesOrderPayment = 'order_inpayment.xml'
-        
-        
-        
-        
-        #singleOrder
-        
-        self.loadEntries(self.EntriesOrder)
-        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
-        self.singleOrder.setGladeXml(self.xml)
-        self.singleOrder.setTreeFields( ['number', 'designation'] )
-        self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleOrder.setTreeOrder('number')
-        self.singleOrder.setTree(self.getWidget('tree1') )
-        self.singleOrder.setListHeader([_('number'), _('designation') ])
-        self.singleOrder.sWhere  ='where process_status between 500 and 599'
-         #singleOrderSupply
-        
-        self.loadEntries(self.EntriesOrderSupply)
-        self.singleOrderSupply.setEntries(self.getDataEntries('order_supply.xml') )
-        self.singleOrderSupply.setGladeXml(self.xml)
-        self.singleOrderSupply.setTreeFields( ['designation' ] )
-        self.singleOrderSupply.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderSupply.setTreeOrder('designation')
-        self.singleOrderSupply.setListHeader([_('Designation')])
-
-        self.singleOrderSupply.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderSupply.setTree(self.getWidget('tree1') )
-  
-        #singleOrderGet
-        
-        self.loadEntries(self.EntriesOrderGet)
-        self.singleOrderGet.setEntries(self.getDataEntries('order_get.xml') )
-        self.singleOrderGet.setGladeXml(self.xml)
-        self.singleOrderGet.setTreeFields( ['designation'] )
-        self.singleOrderGet.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
-        self.singleOrderGet.setTreeOrder('designation')
-        self.singleOrderGet.setListHeader([_('Designation')])
-
-        self.singleOrderGet.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
-        self.singleOrderGet.setTree(self.getWidget('tree1') )
-
-        # singlePositions
-        
-        self.loadEntries(self.EntriesOrderPosition)
-        self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
-        self.singleOrderPosition.setGladeXml(self.xml)
-        self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'orderposition.designation as designation2'] )
-        self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_UINT ,gobject.TYPE_STRING , gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleOrderPosition.setTreeOrder('position,articleid')
-        self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article-ID'),_('Number'),_('Designation'),_('Designation2')])
-
-        self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID` + ' and articleid = articles.id '
-        self.singleOrderPosition.setTree(self.getWidget('tree1') )
-  
-        
-        self.loadEntries(self.EntriesOrderMisc)
-        
-        # singleOrderInvoice
-        self.loadEntries(self.EntriesOrderInvoice)
-        self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
-        self.singleOrderInvoice.setEntries(self.getDataEntries(self.EntriesOrderInvoice) )
-        self.singleOrderInvoice.setGladeXml(self.xml)
-        self.singleOrderInvoice.setTreeFields([])
-        self.singleOrderInvoice.setTreeOrder('id')
-        self.singleOrderInvoice.setTree(self.getWidget('tree1') )
-        # singleOrderPayment
-        
-        self.loadEntries(self.EntriesOrderPayment)
-        self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )
-        self.singleOrderPayment.setGladeXml(self.xml)
-        self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
-        self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleOrderPayment.setTreeOrder('date_of_paid desc,id desc')
-        self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
-
-        self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
-        self.singleOrderPayment.setTree(self.getWidget('tree1') )
-  
-        # Menu-items
-        self.initMenuItems()
-        
-        # Close Menus for Tab
-
-        self.addEnabledMenuItems('tabs','order1')
-        self.addEnabledMenuItems('tabs','supply1')
-        self.addEnabledMenuItems('tabs','gets1')
-        self.addEnabledMenuItems('tabs','position1')
-        self.addEnabledMenuItems('tabs','invoice1')
-        self.addEnabledMenuItems('tabs','misc1')
-        self.addEnabledMenuItems('tabs','payments1')
-
-
-        # seperate Menus
-        self.addEnabledMenuItems('order','order1')
-        self.addEnabledMenuItems('supply','supply1')
-        self.addEnabledMenuItems('gets','gets1')
-        self.addEnabledMenuItems('positions','position1')
-        self.addEnabledMenuItems('payment','payments1')
-        self.addEnabledMenuItems('invoice','invoice1')
-        self.addEnabledMenuItems('misc','misc1')
-        
-
-        
-        # enabledMenues for Order
-        self.addEnabledMenuItems('editOrder','new1', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editOrder','edit1', self.dicUserKeys['edit'])
-        self.addEnabledMenuItems('editOrder','delete1', self.dicUserKeys['delete'])
-        self.addEnabledMenuItems('editOrder','print1', self.dicUserKeys['print'])
-
-        # enabledMenues for Supply
-        self.addEnabledMenuItems('editSupply','SupplyNew1', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editSupply','SupplyEdit1', self.dicUserKeys['edit'])
-        self.addEnabledMenuItems('editSuppy','SupplyDelete1', self.dicUserKeys['delete'])
+        if orderid != -555:
+            # self.singleOrder.loadTable()
+                  
+            self.EntriesOrder = 'order.xml'
+            self.EntriesOrderSupply = 'order_supply.xml'
+            self.EntriesOrderGet = 'order_get.xml'
+            self.EntriesOrderPosition = 'order_position.xml'
+            self.EntriesOrderMisc = 'order_misc.xml'
+            self.EntriesOrderInvoice = 'order_invoice.xml'
+            self.EntriesOrderPayment = 'order_inpayment.xml'
+            
+            
+            
+            
+            #singleOrder
+            
+            self.loadEntries(self.EntriesOrder)
+            self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+            self.singleOrder.setGladeXml(self.xml)
+            self.singleOrder.setTreeFields( ['number', 'designation'] )
+            self.singleOrder.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+            self.singleOrder.setTreeOrder('number')
+            self.singleOrder.setTree(self.getWidget('tree1') )
+            self.singleOrder.setListHeader([_('number'), _('designation') ])
+            self.singleOrder.sWhere  ='where process_status between 500 and 599'
+             #singleOrderSupply
+            
+            self.loadEntries(self.EntriesOrderSupply)
+            self.singleOrderSupply.setEntries(self.getDataEntries('order_supply.xml') )
+            self.singleOrderSupply.setGladeXml(self.xml)
+            self.singleOrderSupply.setTreeFields( ['designation' ] )
+            self.singleOrderSupply.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+            self.singleOrderSupply.setTreeOrder('designation')
+            self.singleOrderSupply.setListHeader([_('Designation')])
     
-       # enabledMenues for Gets
-        self.addEnabledMenuItems('editGets','GetsNew1', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editGets','GetsEdit1', self.dicUserKeys['edit'])
-        self.addEnabledMenuItems('editGets','GetsDelete1', self.dicUserKeys['delete'])
-
-        # enabledMenues for Positions
-        self.addEnabledMenuItems('editPositions','PositionNew1', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
-        self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
-        # enabledMenues for Invoice
-        self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
-
-        # enabledMenues for Misc
-        self.addEnabledMenuItems('editMisc','MiscEdit', self.dicUserKeys['edit'])
+            self.singleOrderSupply.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
+            self.singleOrderSupply.setTree(self.getWidget('tree1') )
+      
+            #singleOrderGet
+            
+            self.loadEntries(self.EntriesOrderGet)
+            self.singleOrderGet.setEntries(self.getDataEntries('order_get.xml') )
+            self.singleOrderGet.setGladeXml(self.xml)
+            self.singleOrderGet.setTreeFields( ['designation'] )
+            self.singleOrderGet.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+            self.singleOrderGet.setTreeOrder('designation')
+            self.singleOrderGet.setListHeader([_('Designation')])
+    
+            self.singleOrderGet.sWhere  ='where ordernumber = ' + `self.singleOrder.ID`
+            self.singleOrderGet.setTree(self.getWidget('tree1') )
+    
+            # singlePositions
+            
+            self.loadEntries(self.EntriesOrderPosition)
+            self.singleOrderPosition.setEntries(self.getDataEntries(self.EntriesOrderPosition) )
+            self.singleOrderPosition.setGladeXml(self.xml)
+            self.singleOrderPosition.setTreeFields( ['position','amount','articleid','articles.number as arnumber','articles.designation as ardsesignation', 'orderposition.designation as designation2'] )
+            self.singleOrderPosition.setStore( gtk.ListStore(gobject.TYPE_UINT, gobject.TYPE_FLOAT, gobject.TYPE_UINT ,gobject.TYPE_STRING , gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+            self.singleOrderPosition.setTreeOrder('position,articleid')
+            self.singleOrderPosition.setListHeader([_('Pos.'),_('Amount'),_('Article-ID'),_('Number'),_('Designation'),_('Designation2')])
+    
+            self.singleOrderPosition.sWhere  ='where orderid = ' + `self.singleOrder.ID` + ' and articleid = articles.id '
+            self.singleOrderPosition.setTree(self.getWidget('tree1') )
+      
+            
+            self.loadEntries(self.EntriesOrderMisc)
+            
+            # singleOrderInvoice
+            self.loadEntries(self.EntriesOrderInvoice)
+            self.singleOrderInvoice.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+            self.singleOrderInvoice.setEntries(self.getDataEntries(self.EntriesOrderInvoice) )
+            self.singleOrderInvoice.setGladeXml(self.xml)
+            self.singleOrderInvoice.setTreeFields([])
+            self.singleOrderInvoice.setTreeOrder('id')
+            self.singleOrderInvoice.setTree(self.getWidget('tree1') )
+            # singleOrderPayment
+            
+            self.loadEntries(self.EntriesOrderPayment)
+            self.singleOrderPayment.setEntries(self.getDataEntries(self.EntriesOrderPayment) )
+            self.singleOrderPayment.setGladeXml(self.xml)
+            self.singleOrderPayment.setTreeFields( ['date_of_paid','invoice_number','inpayment','account_id'] )
+            self.singleOrderPayment.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_FLOAT, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+            self.singleOrderPayment.setTreeOrder('date_of_paid desc,id desc')
+            self.singleOrderPayment.setListHeader([_('Date'),_('Invoice'),_('Inpayment'),_('account')])
+    
+            self.singleOrderPayment.sWhere  ='where order_id = ' + `self.singleOrder.ID`
+            self.singleOrderPayment.setTree(self.getWidget('tree1') )
+      
+            # Menu-items
+            self.initMenuItems()
+            
+            # Close Menus for Tab
+    
+            self.addEnabledMenuItems('tabs','order1')
+            self.addEnabledMenuItems('tabs','supply1')
+            self.addEnabledMenuItems('tabs','gets1')
+            self.addEnabledMenuItems('tabs','position1')
+            self.addEnabledMenuItems('tabs','invoice1')
+            self.addEnabledMenuItems('tabs','misc1')
+            self.addEnabledMenuItems('tabs','payments1')
+    
+    
+            # seperate Menus
+            self.addEnabledMenuItems('order','order1')
+            self.addEnabledMenuItems('supply','supply1')
+            self.addEnabledMenuItems('gets','gets1')
+            self.addEnabledMenuItems('positions','position1')
+            self.addEnabledMenuItems('payment','payments1')
+            self.addEnabledMenuItems('invoice','invoice1')
+            self.addEnabledMenuItems('misc','misc1')
+            
+    
+            
+            # enabledMenues for Order
+            self.addEnabledMenuItems('editOrder','new1', self.dicUserKeys['new'])
+            self.addEnabledMenuItems('editOrder','edit1', self.dicUserKeys['edit'])
+            self.addEnabledMenuItems('editOrder','delete1', self.dicUserKeys['delete'])
+            self.addEnabledMenuItems('editOrder','print1', self.dicUserKeys['print'])
+    
+            # enabledMenues for Supply
+            self.addEnabledMenuItems('editSupply','SupplyNew1', self.dicUserKeys['new'])
+            self.addEnabledMenuItems('editSupply','SupplyEdit1', self.dicUserKeys['edit'])
+            self.addEnabledMenuItems('editSuppy','SupplyDelete1', self.dicUserKeys['delete'])
         
-        
-        
-        # enabledMenues for Payment
-        self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
-        self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
-
-        # to misc menu
-        
-        # enabledMenues for Save 
-        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','SupplySave1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','InvoiceSave1', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
-        self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
-
-        #Comboboxes
-        
-        liOrderType = [_('All'), _('Unreckoned')]
-        cbTypeOfOrder = self.getWidget('cbFindOrderTypes')
-        if cbTypeOfOrder:
-            liststore = gtk.ListStore(str)
-            for TypeOfOrder in liOrderType:
-                liststore.append([TypeOfOrder])
-            cbTypeOfOrder.set_model(liststore)
-            cbTypeOfOrder.set_text_column(0)
-            cbTypeOfOrder.show()
+           # enabledMenues for Gets
+            self.addEnabledMenuItems('editGets','GetsNew1', self.dicUserKeys['new'])
+            self.addEnabledMenuItems('editGets','GetsEdit1', self.dicUserKeys['edit'])
+            self.addEnabledMenuItems('editGets','GetsDelete1', self.dicUserKeys['delete'])
+    
+            # enabledMenues for Positions
+            self.addEnabledMenuItems('editPositions','PositionNew1', self.dicUserKeys['new'])
+            self.addEnabledMenuItems('editPositions','PositionEdit1', self.dicUserKeys['edit'])
+            self.addEnabledMenuItems('editPositions','PositionDelete1', self.dicUserKeys['delete'])
+            # enabledMenues for Invoice
+            self.addEnabledMenuItems('editInvoice','InvoiceEdit1', self.dicUserKeys['edit'])
+    
+            # enabledMenues for Misc
+            self.addEnabledMenuItems('editMisc','MiscEdit', self.dicUserKeys['edit'])
+            
+            
+            
+            # enabledMenues for Payment
+            self.addEnabledMenuItems('editPayment','payment_new', self.dicUserKeys['new'])
+            self.addEnabledMenuItems('editPayment','payment_edit', self.dicUserKeys['edit'])
+    
+            # to misc menu
+            
+            # enabledMenues for Save 
+            self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','SupplySave1', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','GetsSave1', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','PositionSave1', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','InvoiceSave1', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','MiscSave', self.dicUserKeys['save'])
+            self.addEnabledMenuItems('editSave','payment_save', self.dicUserKeys['save'])
+    
+            #Comboboxes
+            
+            liOrderType = [_('All'), _('Unreckoned')]
+            cbTypeOfOrder = self.getWidget('cbFindOrderTypes')
+            if cbTypeOfOrder:
+                liststore = gtk.ListStore(str)
+                for TypeOfOrder in liOrderType:
+                    liststore.append([TypeOfOrder])
+                cbTypeOfOrder.set_model(liststore)
+                cbTypeOfOrder.set_text_column(0)
+                cbTypeOfOrder.show()
             
         # tabs from notebook
         self.tabOrder = 0
@@ -272,41 +275,43 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.tabInvoice = 4
         self.tabMisc = 5
         self.tabPayment = 6
-        self.OrderID = 0
-
-        # start
-        self.OrderID = orderid
-        if Ordertype == 'Order':
-            
-            if self.dicOrder and not newOrder and self.OrderID == 0:
-                print self.dicOrder
-                existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
-                print 'existOrder = ', existOrder
-                if not existOrder or existOrder in ['NONE', 'ERROR']:
-                    print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
-                    self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-                self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
-            elif self.dicOrder and newOrder and self.OrderID == 0:
-                try:
-                    newID = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
-                    print newID
-                    if newID > 0:
-                        self.OrderID = newID
-                        print 'Order-Id = ',  self.OrderID
-                        self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
-                except:
-                    pass
-            elif self.OrderID > 0:
-                self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
+        
+        if orderid != -555:
+            self.OrderID = 0
+    
+            # start
+            self.OrderID = orderid
+            if Ordertype == 'Order':
                 
+                if self.dicOrder and not newOrder and self.OrderID == 0:
+                    print self.dicOrder
+                    existOrder = self.rpc.callRP('Order.checkExistModulOrder', self.dicUser,self.dicOrder)
+                    print 'existOrder = ', existOrder
+                    if not existOrder or existOrder in ['NONE', 'ERROR']:
+                        print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~ create new'
+                        self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+                    self.singleOrder.sWhere = ' where modul_order_number = ' + `self.dicOrder['ModulOrderNumber']` + ' and modul_number = ' + `self.dicOrder['ModulNumber']`
+                elif self.dicOrder and newOrder and self.OrderID == 0:
+                    try:
+                        newID = self.rpc.callRP('Order.createNewOrder', self.dicUser,self.dicOrder)
+                        print newID
+                        if newID > 0:
+                            self.OrderID = newID
+                            print 'Order-Id = ',  self.OrderID
+                            self.singleOrder.sWhere = ' where id = ' + `self.OrderID` 
+                    except:
+                        pass
+                elif self.OrderID > 0:
+                    self.singleOrder.sWhere = ' where id = ' + `self.OrderID`
                     
-        
-        
+                        
             
-        self.tabChanged()
-
-        self.win1.add_accel_group(self.accel_group)
-         
+            
+                
+            self.tabChanged()
+    
+            self.win1.add_accel_group(self.accel_group)
+             
          
     #Menu File
 

@@ -108,6 +108,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         return liValues
     def xmlrpc_faxData(self, dicUser, faxdata, phone_number):
         ok = False
+        sFaxPath = "/var/spool/cuon-fax"
         Faxserver = None
         Faxport = None
         Faxuser = None
@@ -132,7 +133,7 @@ class Misc(xmlrpc.XMLRPC, basics):
             
         self.writeLog( 'send Fax')
         
-        filename = '/fax/fax___' + self.createNewSessionID()['SessionID'] 
+        filename = sFaxPath + '/fax___' + self.createNewSessionID()['SessionID'] 
         if filename:
             faxdata = base64.decodestring(faxdata)
             faxdata = bz2.decompress(faxdata)
@@ -140,11 +141,17 @@ class Misc(xmlrpc.XMLRPC, basics):
             f = open(filename,'wb')
             f.write(faxdata)
             f.close()
-            
+            sSql = "select email from staff where cuon_username = '" +  dicUser['Name'] + "' "
+            sSql += self.getWhere("",dicUser,2)
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+            sEmail = None
+            if result and result not in ['NONE','ERROR']:
+                sEmail = result[0]['email']
+                
         if Faxserver and Faxport and Faxuser:
             self.writeLog( 'Faxserver found')
             if filename:
-                shellcommand = 'scp -P ' + Faxport.strip() +' '  + filename + ' ' + Faxuser.strip() + '@' + Faxserver.strip() + '://fax'
+                shellcommand = 'scp -P ' + Faxport.strip() +' '  + filename + ' ' + Faxuser.strip() + '@' + Faxserver.strip() + ':/' +sFaxPath
                 self.writeLog( shellcommand)
                 liStatus = commands.getstatusoutput(shellcommand)
                 self.writeLog( `liStatus`)
@@ -152,17 +159,12 @@ class Misc(xmlrpc.XMLRPC, basics):
                 # -D -R send email when all ok
                 # -f emailaddress
                 
-                sSql = "select email from staff where cuon_username = '" +  dicUser['Name'] + "' "
-                sSql += self.getWhere("",dicUser,2)
-                result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                sEmail = None
-                if result and result not in ['NONE','ERROR']:
-                    sEmail = result[0]['email']
+                
                     
                 shellcommand = 'ssh -p ' + Faxport.strip() +' ' + Faxuser.strip() + '@' + Faxserver.strip() +  ' "sendfax -n '
                 if sEmail:
                     shellcommand += ' -f ' + sEmail
-                shellcommand += '-D -R -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
+                shellcommand += ' -D -R -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename + '"'
                 self.writeLog(shellcommand)
 
                 liStatus = commands.getstatusoutput(shellcommand)
@@ -174,7 +176,10 @@ class Misc(xmlrpc.XMLRPC, basics):
                 ok = True
         else:
             if filename:
-                shellcommand = 'sendfax -n -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename
+                shellcommand = 'sendfax -n '
+                if sEmail:
+                    shellcommand += ' -f ' + sEmail
+                shellcommand += ' -o ' + dicUser['Name'] + ' -d "' + phone_number + '" ' + filename
                 liStatus = commands.getstatusoutput(shellcommand)
                 print shellcommand
                 print  liStatus

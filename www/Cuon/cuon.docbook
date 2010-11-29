@@ -375,6 +375,13 @@ Diese Einstellungen definieren eine Schnittstelle, um diesen user, im beispiel o
 eine Nachricht zu schicken. diese Nachricht wird zu der AI weitergeleitet und entsprechend 
 ausgewertet. Dann erfolgt von der AI die Anwort
 
+[FAX]
+HOST=Faxerver.com
+PORT=22 #SSH Port
+USER=Faxuser
+Diese Faxwerte nur eintragen, wenn der Faxserver auf einen anderen Host liegt, 
+ansonsten wird das lokale sendfax benutzt
+
 Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer 
 übertragen wird, das hilft mir bei der Entscheidung über die Entwicklung von 
 mandantenbezogenen Modulen.
@@ -1825,12 +1832,26 @@ Diese Statistiken beziehen sich auf Aufträge und Zahlungseingänge</para>
 </sect1>
 
 </chapter>
+<chapter>
+<title>Fax-Server</title>
+<sect1 id="fax_server"><title>Serverseitige Einstellungen</title>
+<para>Alle Benutzer von cuon können Faxe über den Faxserver versenden, das heißt, Sie brauchen kein Faxgerät oder Faxsoftware an Ihren Arbeitsplatz.</para>
+<para>Wenn der Faxserver sich auf einen separaten PC befindet, müssen sie dies in der <link linkend='server_ini'><emphasis> Server.ini </emphasis></link> eintragen. Ebenfalls muß dann ein Faxuser angelegt werden, der einen ssh Zugriff mit Key ( also ohne Passwort) gestattet
+</para>
+<para>Das Verzeichnis /var/spool/cuon-fax muß auf auf dem Cuon-Server angelegt sein,  und auf dem Faxserver ebenfalls, wenn der Faxserver separat ist</para>
+
+</sect1>
+<sect1 id="fax_client"><title>Faxen vom Client</title>
+<para>Siehe unter <link linkend='userfax'><emphasis> Faxen vom Cuon client aus </emphasis></link>
+</para>
+</sect1>
+</chapter>
 
 <chapter>
 <title>Betriebssytemspezifische Tipps und Hilfen </title>
 <sect1 id="bth1"><title>Allgemein </title>
 <para>
-cuon benötigt ein Officeprogramm. Das kann [:OpenOffice:Openoffice],[http://www.koffice.org koffice], abiword oder sogar MS Office (das Plugin, dass [:OpendocumentFormat:das OpendocumentFormat?] liest und schreibt, muss dazu installiert werden) sein. Die meisten User verwenden momentan Openoffice.</para>
+cuon benötigt ein Officeprogramm. Das kann LibreOffice, OpenOffice, abiword oder sogar MS Office (das Plugin, dass liest und schreibt, muss dazu installiert werden) sein. Die meisten User verwenden momentan LibreOffice.</para>
 <para>Ein PDF Viewer muss installiert sein. Dies kann der Adoce Acrobat Reader oder freie Programme, wie ghostview, xpdf, kdpf oder ähnliches sein.Die vorgabe ist der Evince, der im Gnome Destop vorinstalliert ist</para>
 <para>Ein Bildbetrachter muss installiert sein.</para>
 <para>Zudem kann das Document Management System alle weiteren Dateiformate verwalten, sofern ein dazu passender Betrachter installiert ist.</para>
@@ -2258,13 +2279,13 @@ Hinweis: Auf der Registerkarte Adressen ist in dem Feld zu Wähle Repräsentant 
           <listitem><para>o Mit dem Mauszeiger in die letzte Zeile wechseln und dann Füge Datum/Name an wählen.</para></listitem>
          <listitem><para> o Darunter werden die entsprechenden Informationen für den Rep notiert.</para></listitem>
          <listitem><para> o Danach wird die Eingabe über Notizen und Sichern abgeschlossen</para></listitem> </itemizedlist>
-<para>
+
     <para>* Registerkarte Gesprächspartner</para>
           <itemizedlist><listitem><para>o erzeuge Gesprächspartner klicken, so dass Straße, PLZ etc eingetragen werden.</para></listitem>
           <listitem><para>o Klicken auf Gesprächspartner und dann auf Bearbeiten</para></listitem>
           <listitem><para>o Daten wie gewünscht abändern. Beispielsweise muss i.d.R. eine Anrede (Herr oder Frau) eingetragen werden und im Feld Briefanrede ein r, sofern es sich um einen männlichen Ansprechpartner handelt. Außerdem muss im Feld Nachname der Firmenname in den Nachnamen des Ansprechpartners geändert werden.</para></listitem>
          <listitem><para> o Wenn alle Daten eingetragen/geändert sind, klickt man auf Gesprächspartner und dann Sichern.</para></listitem> </itemizedlist>
-
+<para>
     * Registerkarte Termine
           o Klicken auf Termine und Neu.
           o Auswahl des Datums durch Doppelklick in der Monatsübersicht
@@ -2408,7 +2429,24 @@ Adresse wird im Kontakt nicht angezeigt
 Wahrscheinlich haben Sie die Adresse gelöscht. Kontrollieren Sie das bitte.</para></sect2>
 </sect1>
 </chapter>
+<chapter>
+<title>Sonstiges</title>
+<sect1 id="userfax"><title>Faxe senden</title>
+<para>Jeder user kann über einen vorhanden Faxserver seine Faxe verschicken. Dazu sollte z.B. im Openoffice ein Faxdrucker angelegt werden.
+</para>
+<para>Starten sie dazu das Programm spadmin, um einen neue Drucker hinzuzufügen, es befindet sich normaler weise hier:</para>
+<para>/usr/lib/openoffice/program/spadmin</para>
+ <para>In der Druckerverwaltung wird 'Neuer Drucker' und dann 'eine Faxlösung anbinden' ausgewählt und bestätigt. Als Nächstes wird der Standardtreiber gewählt und als Kommando</para>
 
+<para>sendfax -n -d "(PHONE)" "(TMP)"</para>
+
+<para>eingeben. Zum Schluß erhält der Faxdrucker noch einen Namen. Damit ist der Faxdrucker eingerichtet und funktionsbereit.
+</para>
+<para>Jetzt können vom DMS aus z.B. Briefe oder Dokumente einfach per FAX verschickt werden</para>
+</sect1>
+
+
+</chapter>
 </part>
 
 </book>
