@@ -37,10 +37,13 @@ class proposalwindow(orderwindow):
 
         
         orderwindow.__init__(self, allTables,  orderid=-555)
+        
+        
         self.dicOrder = dicOrder
         self.fillArticlesNewID = 0
         self.loadGlade('proposal.xml','ProposalMainwindow')
         #self.win1 = self.getWidget('OrderMainwindow')
+        self.FastSelectionStart()
         self.EntriesOrder= 'proposal.xml'
         self.EntriesOrderSupply = 'proposal_supply.xml'
         self.EntriesOrderGet = 'proposal_get.xml'

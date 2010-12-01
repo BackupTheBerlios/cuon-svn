@@ -1109,6 +1109,74 @@
       
     </trigger>
     
+    
+    <trigger>
+      <nameOfTrigger>trg_insertsupport_project</nameOfTrigger>
+      <table>support_project</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert support_project </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletesupport_project</nameOfTrigger>
+      <table>support_project</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a support_project, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatesupport_project</nameOfTrigger>
+      <table>support_project</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update support_project </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertsupport_ticket_number_uuid</nameOfTrigger>
+      <table>support_ticket</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_new_uuid_for_ticket_number() ;  </textOfTrigger>
+      <description>create new uuid at support_ticket </description>
+      
+    </trigger>
+    
+     <trigger>
+      <nameOfTrigger>trg_insertsupport_ticket</nameOfTrigger>
+      <table>support_ticket</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert support_ticket </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletesupport_ticket</nameOfTrigger>
+      <table>support_ticket</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a support_ticket, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updatesupport_ticket</nameOfTrigger>
+      <table>support_ticket</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update support_ticket </description>
+      
+    </trigger>
+    
     <trigger>
       <nameOfTrigger>trg_insertListOfInvoices</nameOfTrigger>
       <table>list_of_invoices</table>
@@ -1218,6 +1286,295 @@
       <cursor>FOR EACH ROW</cursor>
       <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
       <description>update HIBERNATION </description>
+      
+    </trigger>
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgraveyard</nameOfTrigger>
+      <table>graveyard</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert graveyard </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegraveyard</nameOfTrigger>
+      <table>graveyard</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a graveyard, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategraveyard</nameOfTrigger>
+      <table>graveyard</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update graveyard </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave</nameOfTrigger>
+      <table>grave</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave</nameOfTrigger>
+      <table>grave</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave</nameOfTrigger>
+      <table>grave</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_autumn</nameOfTrigger>
+      <table>grave_work_autumn</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_autumn </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_autumn</nameOfTrigger>
+      <table>grave_work_autumn</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_autumn, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_autumn</nameOfTrigger>
+      <table>grave_work_autumn</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_autumn </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_summer</nameOfTrigger>
+      <table>grave_work_summer</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_summer </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_summer</nameOfTrigger>
+      <table>grave_work_summer</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_summer, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_summer</nameOfTrigger>
+      <table>grave_work_summer</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_summer </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_spring</nameOfTrigger>
+      <table>grave_work_spring</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_spring </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_spring</nameOfTrigger>
+      <table>grave_work_spring</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_spring, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_spring</nameOfTrigger>
+      <table>grave_work_spring</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_spring </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_winter</nameOfTrigger>
+      <table>grave_work_winter</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_winter </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_winter</nameOfTrigger>
+      <table>grave_work_winter</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_winter, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_winter</nameOfTrigger>
+      <table>grave_work_winter</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_winter </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_single</nameOfTrigger>
+      <table>grave_work_single</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_single </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_single</nameOfTrigger>
+      <table>grave_work_single</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_single, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_single</nameOfTrigger>
+      <table>grave_work_single</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_single </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_year</nameOfTrigger>
+      <table>grave_work_year</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_year </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_year</nameOfTrigger>
+      <table>grave_work_year</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_year, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_year</nameOfTrigger>
+      <table>grave_work_year</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_year </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_holiday</nameOfTrigger>
+      <table>grave_work_holiday</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_holiday </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_holiday</nameOfTrigger>
+      <table>grave_work_holiday</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_holiday, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_holiday</nameOfTrigger>
+      <table>grave_work_holiday</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_holiday </description>
+      
+    </trigger>
+    
+    
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_work_maintenance</nameOfTrigger>
+      <table>grave_work_maintenance</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_work_maintenance </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_work_maintenance</nameOfTrigger>
+      <table>grave_work_maintenance</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_work_maintenance, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_work_maintenance</nameOfTrigger>
+      <table>grave_work_maintenance</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_work_maintenance </description>
       
     </trigger>
     

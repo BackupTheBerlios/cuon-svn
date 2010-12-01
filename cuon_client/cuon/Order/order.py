@@ -77,9 +77,10 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         if orderid != -555:
             self.loadGlade('order.xml','OrderMainwindow')
             #self.win1 = self.getWidget('OrderMainwindow')
-            self.FastSelectionStart()
-            self.allTables = allTables
             self.eResidue= self.getWidget("ePaymentResidue")
+
+            self.FastSelectionStart()
+        self.allTables = allTables
         
         self.singleOrder = SingleOrder.SingleOrder(allTables)
         self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)

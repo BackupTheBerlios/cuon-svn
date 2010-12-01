@@ -980,7 +980,8 @@ class MainWindow(windows):
             self.closeDB()
             #cuon.Addresses.contact.contactwindow(self.allTables)
         finally:
-            print 'Ende'
+            # print  'Ende'
+            pass
         return True
         
             

@@ -41,17 +41,29 @@ class supportticketwindow(windows):
         self.entriesSupportProject = 'support_project.xml'
         self.entriesSupportTicket = 'support_ticket.xml'
     
+        print "single Project settings"
+      #singleSupportProject
+        print "tree1 = " ,  self.getWidget('ProjectTree')
+        self.loadEntries(self.entriesSupportProject)
+        self.singleSupportProject.setEntries(self.getDataEntries( self.entriesSupportProject) )
+        self.singleSupportProject.setGladeXml(self.xml)
+        self.singleSupportProject.setTreeFields( ['support_project_number', 'designation'])
+        self.singleSupportProject.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleSupportProject.setTreeOrder('support_project_number')
+        self.singleSupportProject.setTree(self.getWidget('ProjectTree') )
+        self.singleSupportProject.setListHeader([_('Number'),  _('Designation')])
+        #print 'Widgets - win = ', `self.win1`
     
         #singleSupportTicket
         
         self.loadEntries(self.entriesSupportTicket)
         self.singleSupportTicket.setEntries(self.getDataEntries( self.entriesSupportTicket) )
         self.singleSupportTicket.setGladeXml(self.xml)
-        self.singleSupportTicket.setTreeFields( ['header'])
-        self.singleSupportTicket.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
-        self.singleSupportTicket.setTreeOrder('header')
-        self.singleSupportTicket.setTree(self.getWidget('tree1') )
-        self.singleSupportTicket.setListHeader(['Header'])
+        self.singleSupportTicket.setTreeFields( ['ticket_number', 'designation'])
+        self.singleSupportTicket.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
+        self.singleSupportTicket.setTreeOrder('reported_day')
+        self.singleSupportTicket.setTree(self.getWidget('TicketTree') )
+        self.singleSupportTicket.setListHeader([_('Ticket'), _('Designation')])
         #print 'Widgets - win = ', `self.win1`
         #print 'Widgets - tree1 = ', `self.xml.get_widget('tree1')`
         
@@ -95,34 +107,66 @@ class supportticketwindow(windows):
         
     
     
-    # SupportTicket
+    # Support Project
 
     def on_new1_activate(self, event):
-        if self.tabOption == self.tabSupportTicket:
-            self.singleSupportTicket.newRecord()
-            self.setEntriesEditable(self.entriesSupportTicket, True)
-            
+        print "new support project"
+        self.singleSupportProject.newRecord()
+        
+        self.setEntriesEditable(self.entriesSupportProject, True)
+        
     
     def on_edit1_activate(self, event):        
-        if self.tabOption == self.tabSupportTicket:
-            self.setEntriesEditable(self.entriesSupportTicket, True)
+        
+        self.setEntriesEditable(self.entriesSupportProject, True)
   
         
     
     def on_save1_activate(self, event):
         
-        if self.tabOption == self.tabSupportTicket:
-            print "save SupportTicket v2"
-            self.singleSupportTicket.save()
-            self.setEntriesEditable(self.entriesSupportTicket, False)
-            
+        print "save SupportTicket v2"
+        self.singleSupportProject.save()
+        self.setEntriesEditable(self.entriesSupportProject, False)
+        
         self.tabChanged()
          
     
     def on_delete1_activate(self, event):    
         
-        if self.tabOption == self.tabSupportTicket:
-            self.singleSupportTicket.deleteRecord()
+       
+        self.singleSupportProject.deleteRecord()
+
+  # Support Ticket
+
+    def on_ticket_new1_activate(self, event):
+        print "new support ticket"
+        self.singleSupportTicket.newRecord()
+        
+        self.setEntriesEditable(self.entriesSupportTicket, True)
+        
+    
+    def on_ticket_edit1_activate(self, event):        
+        
+        self.setEntriesEditable(self.entriesSupportTicket, True)
+  
+        
+    
+    def on_ticket_save1_activate(self, event):
+        
+        print "save SupportTicket v2"
+        self.singleSupportTicket.save()
+        self.setEntriesEditable(self.entriesSupportTicket, False)
+        
+        self.tabChanged()
+         
+    
+    def on_ticket_delete1_activate(self, event):    
+        
+       
+        self.singleSupportTicket.deleteRecord()
+
+
+
 
     #Tools
     def on_dms1_activate(self, event):    
@@ -135,19 +179,34 @@ class supportticketwindow(windows):
    # Toolbar-Buttons 
     
     def on_tbNew_clicked(self, event):
-        self.activateClick('new1')
+        print "tabOption ",  self.tabOption
+        if self.tabOption == self.tabSupportProject:
+            self.activateClick('new1')
+        elif self.tabOption == self.tabSupportTicket:
+            self.activateClick('Ticket_new1')
           
     
     def on_tbEdit_clicked(self, event):
-        self.activateClick('edit1')
-        
+        if self.tabOption == self.tabSupportProject:
+            self.activateClick('edit1')
+        elif self.tabOption == self.tabSupportTicket:
+            self.activateClick('Ticket_edit1')
 
 
     def on_tbSave_clicked(self, event):
-        self.activateClick('save1')
-       
+        if self.tabOption == self.tabSupportProject:
+            self.activateClick('save1')
+        elif self.tabOption == self.tabSupportTicket:
+            self.activateClick('Ticket_save1')
+            
+            
     def on_tbRemove_clicked(self, event):
-        self.activateClick('delete1')
+        if self.tabOption == self.tabSupportProject:
+            self.activateClick('delete1')
+        elif self.tabOption == self.tabSupportTicket:
+            self.activateClick('Ticket_delete1')
+        
+        
         
     def on_tbDMS_clicked(self, event):
         self.activateClick('dms1')
@@ -156,17 +215,17 @@ class supportticketwindow(windows):
         self.singleSupportTicket.disconnectTree()
         #self.singleThink.disconnectTree()
         
-        if self.tabOption == self.tabSupportTicket:
+        if self.tabOption == self.tabSupportProject:
             print '-->Start SupportTicket refresh Tree'
-            self.singleSupportTicket.connectTree()
-            self.singleSupportTicket.refreshTree()
-            print '<--End SupportTicket refresh Tree'
+            self.singleSupportProject.connectTree()
+            self.singleSupportProject.refreshTree()
+            print '<--End SupportProject  refresh Tree'
 
-        elif self.tabOption == self.tabThinking:
-            print 'refresh Tree fpr Think-Fee'
-            self.singleThink.sWhere  ='where SupportTicket_id = ' + `int(self.singleSupportTicket.ID)`
-            self.singleThink.getFirstListRecord()
-            self.singleThink.fillEntries(self.singleThink.ID)
+        elif self.tabOption == self.tabSupportTicket:
+            print 'refresh Tree fpr Ticket'
+            self.singleSupportTicket.sWhere  ='where SupportTicket_id = ' + `int(self.singleSupportProject.ID)`
+            self.singleSupportTicket.getFirstListRecord()
+            #self.singleSupportTicket.fillEntries(self.singleSupportTicket.ID)
             
 
 
@@ -183,8 +242,9 @@ class supportticketwindow(windows):
             
         elif self.tabOption == self.tabSupportTicket:
             #Fee
-            #self.disableMenuItem('tabs')
-            #self.enableMenuItem('fee')
+            self.disableMenuItem('tabs')
+            self.enableMenuItem('Ticket')
+            self.singleSupportTicket.SupportProjectId = self.singleSupportProject.ID
             #self.editAction = 'editFee'
             print 'Seite 1'
   

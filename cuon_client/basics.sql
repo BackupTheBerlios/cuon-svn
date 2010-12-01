@@ -136,6 +136,19 @@
     ' LANGUAGE 'plpgsql'; 
 
     
+       
+    CREATE OR REPLACE FUNCTION fct_new_uuid_for_ticket_number()   RETURNS OPAQUE AS '
+    DECLARE
+    
+    this_uuid char(36) ;
+    
+    BEGIN
+       NEW.ticket_number = fct_new_uuid() ;
+       
+       RETURN NEW ;
+        
+    END ;
+    ' LANGUAGE 'plpgsql'; 
 
  DROP FUNCTION fct_insert() CASCADE ;
  

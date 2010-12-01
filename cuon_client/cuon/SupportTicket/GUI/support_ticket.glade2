@@ -264,6 +264,7 @@
           <object class="GtkNotebook" id="notebook1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <signal name="switch_page" handler="on_notebook1_switch_page"/>
             <child>
               <object class="GtkVBox" id="vbox2">
                 <property name="visible">True</property>
@@ -290,7 +291,7 @@
                     <property name="can_focus">True</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkTreeView" id="tree2">
+                      <object class="GtkTreeView" id="ProjectTree">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>
@@ -486,7 +487,7 @@
                     <property name="can_focus">True</property>
                     <property name="shadow_type">in</property>
                     <child>
-                      <object class="GtkTreeView" id="tree1">
+                      <object class="GtkTreeView" id="TicketTree">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>

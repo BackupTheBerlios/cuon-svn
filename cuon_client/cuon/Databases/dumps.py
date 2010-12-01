@@ -24,7 +24,7 @@ import random
 import types
 import cuon.TypeDefs.typedefs
 import bz2
-
+import uuid
 
 #import os.path
 
@@ -500,7 +500,9 @@ class dumps:
         return bRet
 
     
-    
+    def getNewUUID(self):
+        return str(uuid.uuid4())
+        
             
 ##    if __name__=="__main__":
 ##        for i in range(12):

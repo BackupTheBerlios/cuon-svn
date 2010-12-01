@@ -41,8 +41,16 @@ class SingleSupportTicket(SingleData):
         print len(self.table.Columns)
         #
         self.cType = 'html' 
-
+        self.SupportProjectId = 0 ;
+        
 #    def readNonWidgetEntries(self, dicValues):
 #       print 'readNonWidgetEntries(self) by SingleWeb2'
 #        dicValues['ctype'] = [self.cType, 'string']
 #        return dicValues  
+
+    def readNonWidgetEntries(self, dicValues):
+        print 'readNonWidgetEntries(self) by SingleSupportticket'
+        dicValues['support_project_id'] = [self.SupportProjectId, 'int']
+        
+        return dicValues
+
