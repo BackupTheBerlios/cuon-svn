@@ -295,7 +295,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 10, 'Minor': 11, 'Rev': 28, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 10, 'Minor': 12, 'Rev': 6, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -371,7 +371,9 @@ class MainWindow(windows):
     def on_login1_activate(self,event):
         import cuon.Login.login
 
-        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')])
+        print 'lgi client id = ',  ClientID
+    
+        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')], None, Username, PASSWORD, ClientID)
         
         self.openDB()
         self.oUser = self.loadObject('User')
@@ -666,7 +668,8 @@ class MainWindow(windows):
     def on_clients1_activate(self, event):
         print self.allTables
         self.dicUser = self.oUser.getDicUser()
-        cli = cuon.Clients.clients.clientswindow(self.allTables)
+        print 'cli = ',  ClientID
+        cli = cuon.Clients.clients.clientswindow(self.allTables, ClientID)
         
     def on_staff1_activate(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables) 
@@ -1231,7 +1234,7 @@ class MainWindow(windows):
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    
-    def startMain(self, sStartType, sDebug,sLocal='NO'):
+    def startMain(self, sStartType, sDebug,sLocal='NO', Username='EMPTY', PASSWORD='Test', ClientID=0):
         #ML = cuon.VTK.mainLogo.mainLogo()
         #ML.startLogo()
 
@@ -1372,6 +1375,9 @@ class MainWindow(windows):
         
         self.t0 = gobject.timeout_add(2000, self.startT0)
         
+        if Username != "empty":
+            print "Username = ",  Username
+            self.activateClick("login1")
         
     def gtk_main_quit(self):
         if self.t1:
@@ -1423,6 +1429,9 @@ sStartType = 'client'
 sLocal = 'NO'
 sDebug = 'NO'
 AlternateGui = 'LINUX-Standard'
+Username = "EMPTY"
+PASSWORD = "TEST"
+ClientID = 0
 
 sSect = 'Client'
     
@@ -1435,6 +1444,19 @@ sStartType =  getConfigOption(cpParser, sSect,'TYPE')
 sLocal =  WorkingDir + getConfigOption(cpParser, sSect,'LOCALE')
 sDebug =  getConfigOption(cpParser, sSect,'DEBUG')
 AlternateGui =  getConfigOption(cpParser, sSect,'ALTERNATEGUI')      
+Username = getConfigOption(cpParser, sSect, "USERNAME").strip()
+PASSWORD = getConfigOption(cpParser, sSect, "PASSWORD").strip()
+try:
+    ClientID = int(getConfigOption(cpParser, sSect, "CLIENT_ID"))
+except:
+    ClientID = 0
+    
+if not Username or not PASSWORD or not ClientID:
+    Username = "EMPTY"
+    PASSWORD = "TEST"
+    ClientID = 0
+
+                           
 
 print "AlternateGui = ",  AlternateGui
 
@@ -1491,6 +1513,26 @@ else:
       
 print 'now -> ',  td.SystemName
 
+if len(sys.argv) > 7:
+    if len(sys.argv[7]) > 1:
+        Username =  sys.argv[7]
+        print 'Username =', Username   
+
+print len(sys.argv)
+
+if len(sys.argv) > 8:
+    if len(sys.argv[8]) > 1:
+        PASSWORD =  sys.argv[8]
+        print 'password =', PASSWORD   
+
+
+
+if len(sys.argv) > 9:
+    if len(sys.argv[9]) > 0:
+        ClientID =  int(sys.argv[9].strip())
+        print 'clientID =', ClientID   
+
+
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()
 d.saveObject('td', td)
@@ -1515,7 +1557,7 @@ gtk.glade.textdomain(APP)
 print _('Debug by C.U.O.N. = ' ), sDebug
 
 m = MainWindow(sStartType)
-m.startMain(sStartType, sDebug,sLocal)
+m.startMain(sStartType, sDebug,sLocal, Username, PASSWORD, ClientID)
 
 #profile.run('m.startMain(sStartType, sDebug,sLocal)','cuonprofile')
 # Import Psyco if available

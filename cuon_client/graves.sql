@@ -23,8 +23,8 @@
     
      ' LANGUAGE 'plpgsql'; 
 
-   
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues( dicSearchfields char [] , iRows int) returns setof record AS '
+
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(IN dicSearchfields char [] , IN iRows int ) returns setof record AS '
  DECLARE
      iClient int ;
     r record;
@@ -32,7 +32,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues( dicSearchfields char [] 
 
     BEGIN
        
-         searchsql := ''select graveyard.shortname as graveyard ,grave.lastname as lastname ,grave.firstname as firstname, grave.id as gravevalue from graveyard, grave  where grave.addressid = '' || 1 ||  ''and graveyard.id = grave.graveyardid ''  || fct_getWhere(2,''graveyard.'') ;
+         searchsql := ''select graveyard.shortname , graveyard.designation , grave.firstname , grave.lastname  from  graveyard, grave, address where grave.addressid = address.id ''  || fct_getWhere(2,''graveyard.'') || '' order by graveyard.id '';
 
 
         FOR r in execute(searchsql)  LOOP

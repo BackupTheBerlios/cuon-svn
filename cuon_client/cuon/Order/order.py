@@ -981,7 +981,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     
     def on_bMiscSearchProject_clicked(self, event):
         proj = cuon.Project.project.projectwindow(self.allTables)
-        proj.setChooseEntry('chooseAddress', self.getWidget( 'eMiscProjectID'))
+        proj.setChooseEntry('chooseProject', self.getWidget( 'eMiscProjectID'))
 
                            
 

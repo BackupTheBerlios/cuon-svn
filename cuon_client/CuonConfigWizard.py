@@ -24,6 +24,9 @@ class CuonConfigWizard:
         self.Locale = None
         self.Debug = None
         self.AlternateGui = None
+        self.Username = 'Empty'
+        self.Password = 'Test'
+        self.ClientID = '0'
         try:
             f = open(self.sFile, 'rw')
         except:
@@ -39,8 +42,9 @@ class CuonConfigWizard:
             s += 'LOCALE: /locale\n'
             s += 'DEBUG: NO\n'
             s += 'ALTERNATEGUI:NO'
-            
-            
+            s += 'USERNAME:EMPTY'
+            s += 'PASSWORD:TEST'
+            s += 'CLIENT_ID:0'
             f.write(s)
             f.close()
             f = open(self.sFile,'rw')
@@ -110,7 +114,10 @@ class CuonConfigWizard:
         self.Locale =  self.getConfigOption(sSect,'LOCALE')
         self.Debug =  self.getConfigOption(sSect,'DEBUG')
         self.AlternateGui =  self.getConfigOption(sSect,'ALTERNATEGUI')
-        
+        self.Username =  self.getConfigOption(sSect,'USERNAME')
+        self.Password =  self.getConfigOption(sSect,'PASSWORD')
+        self.ClientID =  self.getConfigOption(sSect,'CLIENT_ID')
+      
         print 'Des = ',  self.Description
         self.getWidget('eDescription').set_text(self.Description)
         self.getWidget('eDir').set_text(self.WorkingDir)
@@ -121,7 +128,9 @@ class CuonConfigWizard:
         self.getWidget('eLocale').set_text(self.Locale)
         self.getWidget('eDebug').set_text(self.Debug)
         self.getWidget('eAlternateGUI').set_text(self.AlternateGui)
-        
+        self.getWidget('eUsername').set_text(self.Username)
+        self.getWidget('ePassword').set_text(self.Password)
+        self.getWidget('eClientID').set_text(self.ClientID)
         
     def readDataFromGUI(self):
         self.Description = self.getWidget('eDescription').get_text()
@@ -133,6 +142,10 @@ class CuonConfigWizard:
         self.Locale = self.getWidget('eLocale').get_text()
         self.Debug = self.getWidget('eDebug').get_text()
         self.AlternateGui = self.getWidget('eAlternateGUI').get_text()
+        self.Username = self.getWidget('eUsername').get_text()
+        self.Password = self.getWidget('ePassword').get_text()
+        self.ClientID = self.getWidget('eClientID').get_text()
+        
         
         
     def saveData(self):
@@ -146,8 +159,11 @@ class CuonConfigWizard:
         self.cpParser.set(sSect,'LOCALE',self.Locale)
         self.cpParser.set(sSect,'DEBUG',self.Debug.upper())
         self.cpParser.set(sSect,'AlternateGui',self.AlternateGui)
+        self.cpParser.set(sSect,'USERNAME',self.Username.upper())
+        self.cpParser.set(sSect,'PASSWORD',self.Password.upper())
+        self.cpParser.set(sSect,'CLIENT_ID',self.ClientID.upper())
         
-              
+        
         f = open(self.sFile,'w')
         self.cpParser.write(f)
         f.close()            

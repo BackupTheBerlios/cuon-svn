@@ -433,7 +433,7 @@ class projectwindow(chooseWindows):
           
           
     
-    def on_chooseAddress_activate(self, event):
+    def on_chooseProject_activate(self, event):
         # choose Address from other Modul
         if self.tabOption == self.tabProject:
             print '############### Address choose ID ###################'

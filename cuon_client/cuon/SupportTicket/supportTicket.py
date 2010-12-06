@@ -18,8 +18,8 @@ import SingleSupportTicket
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import os
-
-
+import cuon.Project.project
+import cuon.Project.SingleProject
 
 class supportticketwindow(windows):
 
@@ -37,6 +37,7 @@ class supportticketwindow(windows):
         self.singleSupportProject = SingleSupportProject.SingleSupportProject(allTables)
         self.singleSupportTicket = SingleSupportTicket.SingleSupportTicket(allTables)
         
+        self.singleProject = cuon.Project.SingleProject.SingleProject(allTables)
         
         self.entriesSupportProject = 'support_project.xml'
         self.entriesSupportTicket = 'support_ticket.xml'
@@ -206,7 +207,25 @@ class supportticketwindow(windows):
         elif self.tabOption == self.tabSupportTicket:
             self.activateClick('Ticket_delete1')
         
-        
+    def on_bSearchProject_clicked(self, event):
+        pr = cuon.Project.project.projectwindow(self.allTables)
+        pr.setChooseEntry('chooseProject', self.getWidget( 'eAccProjectID'))
+
+                           
+
+    def on_eAccProjectID_changed(self, event):
+        print 'eProject changed'
+        iPrNumber = self.getChangedValue('eAccProjectID')
+        ePrField = self.getWidget("eProjectDiscription")
+        liPr = self.singleProject.getInfoForID(iPrNumber)
+        sDesc = ' '
+        if liPr:
+            try:
+                sDesc = liPr[0] + ', '  + liPr[1]
+            except:
+                pass
+        ePrField.set_text(sDesc)
+     
         
     def on_tbDMS_clicked(self, event):
         self.activateClick('dms1')

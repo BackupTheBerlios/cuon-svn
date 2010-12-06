@@ -40,7 +40,7 @@ import cuon.Addresses.addresses
 class clientswindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, ClientID = 0):
 
         chooseWindows.__init__(self)
        
@@ -50,56 +50,60 @@ class clientswindow(chooseWindows):
         self.loadGlade('clients.xml')
         self.win1 = self.getWidget('ClientMainwindow')
         #self.setStatusBar()
+        if ClientID > 0:
+            self.singleClients.ID = ClientID
+            
+            self.activateClick("bChooseClient")
 
-
-        self.EntriesClients = 'clients.xml'
+        else:
+            self.EntriesClients = 'clients.xml'
+            
+            self.loadEntries(self.EntriesClients)
+            
+            self.singleClients.setEntries(self.getDataEntries('clients.xml') )
+            self.singleClients.setGladeXml(self.xml)
+            self.singleClients.setTreeFields( ['name', 'designation','client_number'] )
+            self.singleClients.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
+            self.singleClients.setTreeOrder('name, designation')
+            self.singleClients.setListHeader([_('Lastname'), _('Firstname'), _('City')])
+            self.singleClients.setTree(self.getWidget('tree1') )
         
-        self.loadEntries(self.EntriesClients)
-        
-        self.singleClients.setEntries(self.getDataEntries('clients.xml') )
-        self.singleClients.setGladeXml(self.xml)
-        self.singleClients.setTreeFields( ['name', 'designation','client_number'] )
-        self.singleClients.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
-        self.singleClients.setTreeOrder('name, designation')
-        self.singleClients.setListHeader([_('Lastname'), _('Firstname'), _('City')])
-        self.singleClients.setTree(self.getWidget('tree1') )
 
-  
-  
-
-        # set values for comboBox
-
-          
-
-        # Menu-items
-        self.initMenuItems()
-
-        # Close Menus for Tab
-        self.addEnabledMenuItems('tabs','mi_address1')
-  
-
-               
-        # seperate Menus
-        self.addEnabledMenuItems('address','mi_address1')
-          
-
-        # enabledMenues for Address
-        self.addEnabledMenuItems('editAddress','mi_new1')
-        self.addEnabledMenuItems('editAddress','mi_clear1')
-        self.addEnabledMenuItems('editAddress','mi_print1')
-        self.addEnabledMenuItems('editAddress','mi_edit1')
-
-
+      
+    
+            # set values for comboBox
+    
+              
+    
+            # Menu-items
+            self.initMenuItems()
+    
+            # Close Menus for Tab
+            self.addEnabledMenuItems('tabs','mi_address1')
+      
+    
+                   
+            # seperate Menus
+            self.addEnabledMenuItems('address','mi_address1')
+              
+    
+            # enabledMenues for Address
+            self.addEnabledMenuItems('editAddress','mi_new1')
+            self.addEnabledMenuItems('editAddress','mi_clear1')
+            self.addEnabledMenuItems('editAddress','mi_print1')
+            self.addEnabledMenuItems('editAddress','mi_edit1')
+    
     
         
-
-        # tabs from notebook
-        self.tabClients = 0
+            
     
+            # tabs from notebook
+            self.tabClients = 0
         
-        
-
-        self.tabChanged()
+            
+            
+    
+            self.tabChanged()
         
      
     def checkClient(self):

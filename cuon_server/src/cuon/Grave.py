@@ -101,17 +101,22 @@ class Grave(xmlrpc.XMLRPC, basics):
     def xmlrpc_getGraveyards(self, dicUser):
         sSql = "select id,  shortname from graveyard "
         sSql += self.getWhere("", dicUser, 1)
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        liGraveyards = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        print 'gr_list = ',  liGraveyards
     
+        return liGraveyards
 
 
     def xmlrpc_getComboGraveyards(self, dicUser):
         liGraveyards = self.xmlrpc_getGraveyards(dicUser)
-        
+        print 'liGraveyards = ',  liGraveyards
         liReturn = []
-        for graveyard in liGraveyards:
-            liReturn.append(graveyard['shortname'] + '###' + `graveyard['id']`)
-                                                                       
+        if liGraveyards and liGraveyards not in self.liSQL_ERRORS:
+            for graveyard in liGraveyards:
+                liReturn.append(graveyard['shortname'] + '###' + `graveyard['id']`)
+        
+        if not liReturn:
+            liReturn = ['NONE']
         return liReturn
         
     def xmlrpc_getComboReportLists(self, dicUser,  sPattern):
@@ -139,7 +144,7 @@ class Grave(xmlrpc.XMLRPC, basics):
         
     def xmlrpc_getGravePlantListValues(self,  dicSearchfields, dicUser, nRows):
         
-        sSql = "select * from fct_getGravePlantListValues( array "  + `self.getListOfSearchFields(dicSearchfields)` +",  " + `nRows` + ")"
+        sSql = "select * from fct_getGravePlantListValues( array "  + `self.getListOfSearchFields(dicSearchfields)` +":: char[] ,  " + `nRows` + ")  as (graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar ) "
         
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )

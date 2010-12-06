@@ -28,13 +28,13 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
-        #print "Start ExecuteQuere"
+        print "Start ExecuteQuere"
         t1 = time.mktime(time.localtime())
         self.writeLog('------->SQL starts at : ' + `t1`)
         conn = None
         dicResult = None
         rows = None
-        #print dicUser
+        print dicUser
         #print cSql
         
         try:

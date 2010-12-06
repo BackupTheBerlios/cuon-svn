@@ -34,21 +34,25 @@ import cuon.User.user
 class loginwindow(windows):
 
     
-    def __init__(self, eFields, gladePath=None):
+    def __init__(self, eFields, gladePath=None, Username='EMPTY', PASSWORD='Test',  ClientID = 0):
 
         windows.__init__(self)
         self.eUserName = eFields[0]
         self.oUser = cuon.User.user.User()
-        
+       
         self.loadGlade('login.xml', None, gladePath)
    
         self.win1 = self.getWidget('UserID_Dialog')
-        #self.win1.hide()
+        
+        if Username != "EMPTY":
+            self.getWidget('TUserID').set_text(Username)
+            self.getWidget('TPassword').set_text(PASSWORD)
+            self.activateClick("okbutton1")
+       
+            #while response == gtk.RESPONSE_DELETE_EVENT or response == gtk.RESPONSE_CANCEL:
+            #    response = win1.run()
         response = self.win1.run()
         
-        #while response == gtk.RESPONSE_DELETE_EVENT or response == gtk.RESPONSE_CANCEL:
-        #    response = win1.run()
-
         while response != gtk.RESPONSE_OK:
             if response == gtk.RESPONSE_HELP:
                 print "Hilfe"
@@ -70,19 +74,20 @@ class loginwindow(windows):
                 
             
             response = win1.run()
-        ##elif response == gtk.RESPONSE_HELP:
-        ##    print "Hilfe"
-            
-        ##elif response == gtk.RESPONSE_DELETE_EVENT:
-        ##else:
-        ##print "else"
-            
-    #set this Functions to None
-##    def start(self):
-##        self.loadGlade('login.xml')
-##   
-##        self.win1 = self.getWidget('UserID_Dialog')
-##        
+               
+            ##elif response == gtk.RESPONSE_HELP:
+            ##    print "Hilfe"
+                
+            ##elif response == gtk.RESPONSE_DELETE_EVENT:
+            ##else:
+            ##print "else"
+                
+        #set this Functions to None
+    ##    def start(self):
+    ##        self.loadGlade('login.xml')
+    ##   
+    ##        self.win1 = self.getWidget('UserID_Dialog')
+    ##        
     def loadUserInfo(self):
         pass
         

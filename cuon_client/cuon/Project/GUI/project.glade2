@@ -62,12 +62,12 @@
                 <child type="submenu">
                   <object class="GtkMenu" id="edit1_menu">
                     <child>
-                      <object class="GtkMenuItem" id="chooseAddress">
+                      <object class="GtkMenuItem" id="chooseProject">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="label" translatable="yes">choose</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_chooseAddress_activate"/>
+                        <signal name="activate" handler="on_chooseProject_activate"/>
                       </object>
                     </child>
                   </object>
@@ -1737,24 +1737,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkHBox" id="hbox26">
                     <property name="visible">True</property>
                     <child>
@@ -1784,6 +1766,24 @@
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -2094,24 +2094,6 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
                   <object class="GtkHBox" id="hbox27">
                     <property name="visible">True</property>
                     <child>
@@ -2141,6 +2123,24 @@
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -4004,24 +4004,6 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
                       <object class="GtkHBox" id="hbox31">
                         <property name="visible">True</property>
                         <child>
@@ -4051,6 +4033,24 @@
                         <property name="top_attach">3</property>
                         <property name="bottom_attach">4</property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                 </child>

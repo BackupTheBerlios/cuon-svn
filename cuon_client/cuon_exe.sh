@@ -7,6 +7,7 @@ DEBUG=NO
 CUON_LOCALE=/home/jhamel/cuon/locale
 CUON_PATH=/home/jhamel/cuon
 Typ=LINUX-Standard
+echo $1 $2 $3 $4
 if [ $1 ] ; then
     case $1 in
         qemu) Server=http://192.168.17.2:4080
@@ -30,6 +31,10 @@ if [ $1 ] ; then
         alternate4) Server=http://192.168.17.2:7080 
                 Typ=alternate4
         ;;
+		
+		p0) Server=http://192.168.17.2:7080
+                ;;
+
         p1) Server=http://192.168.17.2:7100
                 ;;
 
@@ -58,4 +63,4 @@ cd ~/cuon/bin
 echo "Cuon.py $Server $CLIENT $DEBUG $CUON_LOCALE $CUON_PATH $Typ"
 
 
-$EXEC  Cuon.py $Server $CLIENT $DEBUG $CUON_LOCALE $CUON_PATH $Typ
+$EXEC  Cuon.py $Server $CLIENT $DEBUG $CUON_LOCALE $CUON_PATH $Typ $2 $3 $4
