@@ -159,9 +159,9 @@ class CuonConfigWizard:
         self.cpParser.set(sSect,'LOCALE',self.Locale)
         self.cpParser.set(sSect,'DEBUG',self.Debug.upper())
         self.cpParser.set(sSect,'AlternateGui',self.AlternateGui)
-        self.cpParser.set(sSect,'USERNAME',self.Username.upper())
-        self.cpParser.set(sSect,'PASSWORD',self.Password.upper())
-        self.cpParser.set(sSect,'CLIENT_ID',self.ClientID.upper())
+        self.cpParser.set(sSect,'USERNAME',self.Username)
+        self.cpParser.set(sSect,'PASSWORD',self.Password)
+        self.cpParser.set(sSect,'CLIENT_ID',self.ClientID)
         
         
         f = open(self.sFile,'w')
