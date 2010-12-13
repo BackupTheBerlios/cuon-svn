@@ -159,6 +159,7 @@ class Order(xmlrpc.XMLRPC, basics):
         print '############ get order values ####################'
         sSql = "select discount, misc_cost,  postage_cost, packing_cost, orderbook.customers_ordernumber as customers_ordernumber, "
         sSql += " orderbook.designation as order_designation , orderbook.number as order_number, staff_id as order_staff_id, "
+        sSql += " orderbook.customers_partner_id as order_customers_partner_id ,  "
         sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
         sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat "
         
@@ -183,7 +184,7 @@ class Order(xmlrpc.XMLRPC, basics):
             
             try:
                 if row['order_customers_partner_id'] > 0:
-                    sSql = "select *, lastname || ', ' || firstname as last_first, firstname || ' ' || lastname as first_last from partner where id = " + `row['customers_partner_id']` 
+                    sSql = "select *, lastname || ', ' || firstname as last_first, firstname || ' ' || lastname as first_last from partner where id = " + `row['order_customers_partner_id']` 
                     liResultPartner = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
             except:
                 pass           
