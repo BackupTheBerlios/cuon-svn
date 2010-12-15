@@ -145,6 +145,7 @@ class report(MyXML):
 
         
     def loadXmlReportFile(self, sFile):
+        print 'load = ',  sFile
         if sFile:
             dirNorm = os.path.dirname(sFile)
             sDirFile = os.path.basename(sFile)
@@ -551,6 +552,11 @@ class report(MyXML):
 
     
     def startReport(self,c,  cyRootNode):
+        dicRow = {}
+        dicRow['x1'] = 0
+        dicRow['y1']  = 0 
+        dicRow['x2'] = 0
+        dicRow['y2']  = 0
         self.firstPage = True
         self.setBackground(c)
         

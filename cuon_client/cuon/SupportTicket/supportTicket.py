@@ -1,3 +1,16 @@
+# coding=utf-8
+##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+
+##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
+##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+##for more details.
+
+##You should have received a copy of the GNU General Public License along with this program; if not, write to the
+##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
+
 import sys
 sys.path.append('/usr/lib/python/')
 sys.path.append('/usr/lib/python/site-packages/PIL')
@@ -11,7 +24,7 @@ import gobject
 import string
 import commands
 import logging
-from cuon.Windows.windows  import windows
+from cuon.Windows.chooseWindows  import chooseWindows
 import SingleSupportProject
 import SingleSupportTicket
 
@@ -21,12 +34,12 @@ import os
 import cuon.Project.project
 import cuon.Project.SingleProject
 
-class supportticketwindow(windows):
+class supportticketwindow(chooseWindows):
 
     
     def __init__(self,   allTables ):
         
-        windows.__init__(self)
+        chooseWindows.__init__(self)
         
         
         self.loadGlade('support_ticket.xml','SupportTicketMainwindow' )
@@ -60,11 +73,11 @@ class supportticketwindow(windows):
         self.loadEntries(self.entriesSupportTicket)
         self.singleSupportTicket.setEntries(self.getDataEntries( self.entriesSupportTicket) )
         self.singleSupportTicket.setGladeXml(self.xml)
-        self.singleSupportTicket.setTreeFields( ['ticket_number', 'designation'])
+        self.singleSupportTicket.setTreeFields( ['ticket_number', 'short_designation'])
         self.singleSupportTicket.setStore( gtk.ListStore( gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleSupportTicket.setTreeOrder('reported_day')
         self.singleSupportTicket.setTree(self.getWidget('TicketTree') )
-        self.singleSupportTicket.setListHeader([_('Ticket'), _('Designation')])
+        self.singleSupportTicket.setListHeader([_('Ticket'), _('Short Designation')])
         #print 'Widgets - win = ', `self.win1`
         #print 'Widgets - tree1 = ', `self.xml.get_widget('tree1')`
         
@@ -232,6 +245,7 @@ class supportticketwindow(windows):
 
     def refreshTree(self):
         self.singleSupportTicket.disconnectTree()
+        self.singleSupportProject.disconnectTree()
         #self.singleThink.disconnectTree()
         
         if self.tabOption == self.tabSupportProject:
@@ -242,8 +256,10 @@ class supportticketwindow(windows):
 
         elif self.tabOption == self.tabSupportTicket:
             print 'refresh Tree fpr Ticket'
-            self.singleSupportTicket.sWhere  ='where SupportTicket_id = ' + `int(self.singleSupportProject.ID)`
-            self.singleSupportTicket.getFirstListRecord()
+            self.singleSupportTicket.sWhere  ='where support_project_id = ' + `int(self.singleSupportProject.ID)`
+            self.singleSupportTicket.connectTree()
+            self.singleSupportTicket.refreshTree()
+            #self.singleSupportTicket.getFirstListRecord()
             #self.singleSupportTicket.fillEntries(self.singleSupportTicket.ID)
             
 

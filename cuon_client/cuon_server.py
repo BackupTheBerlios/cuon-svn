@@ -331,6 +331,9 @@ class MainWindow(windows):
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.rpc.td = self.td
         self.DialogWindow = None
+        self.dicUser = None
+       
+            
     def on_end1_activate(self,event):
         print "exit cuon"
         self.gtk_main_quit()
@@ -369,7 +372,11 @@ class MainWindow(windows):
         
             
         ed = cuon.Editor.editor.editorwindow(dicFilename, True)
-        ed.setLanguage(sType)
+        try:
+            ed.setLanguage(sType)
+        except Exception, params:
+            print Exception, params
+            
     #edit local config-files
     def on_versioncfg1_activate(self, event):
         ed = cuon.Editor.editor.editorwindow({'TYPE':'FILE','NAME':'version.cfg'}, True)
@@ -467,6 +474,7 @@ class MainWindow(windows):
     def  editReportFile(self, sName, sFolder):
         
         self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName, 'application/xml' ) 
+        
     def readDDialogData(self):
         sFolder = self.getWidget('eDFolder').get_text()
         sList = self.getWidget('cbDLists').get_active_text()
@@ -475,6 +483,19 @@ class MainWindow(windows):
     
     def on_edit_reports2_activate(self, event):
         self.DialogWindow.show()
+        liLists = self.rpc.callRP('Database.getComboReportLists',{'Name':'zope','client':-7}, '*.xml')
+        print liLists
+        
+        cbDLists = self.getWidget('cbDLists')
+        if cbDLists:
+            liLists.sort()
+            liststore = gtk.ListStore(str)
+            for dList in liLists:
+                liststore.append([dList])
+            cbDLists.set_model(liststore)
+            cbDLists.set_text_column(0)
+            cbDLists.show()
+        
     
     def on_bDSystem_clicked(self, event):
         sFolder, sList = self.readDDialogData()
@@ -493,7 +514,9 @@ class MainWindow(windows):
         print sFolder,  sList
         self.DialogWindow.hide()
         self.editReportFile(sList.strip(),sFolder_strip())
-        
+    
+    def on_bDCancel_clicked(self, event):
+        self.DialogWindow.hide()
          
     
     def on_create_grants_file1_activate(self, event):

@@ -120,6 +120,7 @@ class setup:
         self.CUON_DOCUMENTS_HIBERNATION_PICKUP = self.CUON_DOCUMENTS_HIBERNATION + "/Pickup"
         self.CUON_DOCUMENTS_HIBERNATION_INVOICE = self.CUON_DOCUMENTS_HIBERNATION + "/Invoice"
         self.CUON_DOCUMENTS_GRAVES = self.CUON_DOCUMENTS + "/Graves"
+        
         self.CUON_DOCUMENTS_GRAVES_INVOICE = self.CUON_DOCUMENTS_GRAVES + "/Invoice"
         self.CUON_DOCUMENTS_GRAVES_PLANT = self.CUON_DOCUMENTS_GRAVES + "/Plants"
 
@@ -313,7 +314,9 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ] ; then mkdir " + self.CUON_DOCUMENTS_HIBERNATION_INVOICE + " ; fi ") 
 
         
-       
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_GRAVES+ " ] ; then mkdir " + self.CUON_DOCUMENTS_GRAVES + " ; fi ") 
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_GRAVES_INVOICE+ " ] ; then mkdir " + self.CUON_DOCUMENTS_GRAVES_INVOICE + " ; fi ")  
+        self.executeSSH(" if  [ ! -d " + self.CUON_DOCUMENTS_GRAVES_PLANT+ " ] ; then mkdir " + self.CUON_DOCUMENTS_GRAVES_PLANT + " ; fi ")  
         
         # copy config-files to configdir or configdir/examples
         self.executeSSH("if  [ ! -d " + self.SERVERCONFIGDIR + " ] ; then mkdir " + self.SERVERCONFIGDIR + " ; fi ")

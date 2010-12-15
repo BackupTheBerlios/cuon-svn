@@ -28,7 +28,9 @@ class Report(xmlrpc.XMLRPC, basics):
         
         self.ReportDefs['DocumentPathListsAddresses'] = self.DocumentPathListsAddresses
         self.ReportDefs['DocumentPathListsArticles'] = self.DocumentPathListsAddresses
-
+        self.ReportDefs['DocumentPathListsGraves'] =  self.DocumentPathGravesPlants 
+        self.ReportDefs['DocumentPathGravesInvoice'] =  self.DocumentPathGravesInvoice
+        
         self.ReportDefs['PdfEncoding'] = self.PdfEncoding
 
     
@@ -106,14 +108,14 @@ class Report(xmlrpc.XMLRPC, basics):
         
         
     def xmlrpc_server_graves_plant_standard(self, dicSearchlist, dicUser,  nRows=0, sName ='standard'):
-        import Reports.report_articles_pickles_standard
+        import Reports.report_grave_plant_lists
         import Grave
         
         print "startReport"
         oGrave= Grave.Grave()
         oReports = Reports.report_grave_plant_lists.report_grave_plant_lists(nRows, sName)
         print 'new report 041'
-        repData = oReports.getReportData(dicSearchlist, dicUser, oArticles, self.ReportDefs)
+        repData = oReports.getReportData(dicSearchlist, dicUser, oGrave, self.ReportDefs)
         print 'get ReportData 042'
         #print repData
         

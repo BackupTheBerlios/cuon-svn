@@ -363,7 +363,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="entry20">
+                      <object class="GtkEntry" id="eArticles">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="invisible_char">&#x25CF;</property>

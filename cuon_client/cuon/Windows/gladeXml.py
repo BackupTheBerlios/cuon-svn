@@ -275,12 +275,29 @@ class gladeXml(defaultValues):
         self.setXmlAutoconnect()
 
        
-    def loadGladeFile(self, gladeName,sMainWindow=None):
-         self.xml = gtk.glade.XML(gladeName)
-         if sMainWindow:
-            self.win1 = self.getWidget(sMainWindow)
-         self.setXmlAutoconnect()
+    def loadGladeFile(self, fname,sMainWindow=None):
+#         self.xml = gtk.glade.XML(gladeName)
+#         if sMainWindow:
+#            self.win1 = self.getWidget(sMainWindow)
+#         self.setXmlAutoconnect()
+#         
          
+         
+         
+        try:
+            self.xml = gtk.Builder()
+            self.xml.add_from_file(fname)
+            self.xml.set_translation_domain('cuon')
+
+            print "loaded Builder ",  fname
+        except:
+            try:
+                self.xml = gtk.glade.XML(fname)
+                print "loaded Glade ",  fname
+            except Exception, params:
+                print Exception, params
+                
+        self.setXmlAutoconnect()        
 
     def setXmlAutoconnect(self):
         if self.xmlAutoconnect:

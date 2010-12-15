@@ -1,4 +1,17 @@
 # coding=utf-8
+##Copyright (C) [2003]  [Jürgen Hamel, D-32584 Löhne]
+
+##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
+##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+
+##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+##for more details.
+
+##You should have received a copy of the GNU General Public License along with this program; if not, write to the
+##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
+
+import time,  glob,  os
 import xmlrpclib
 from twisted.web import xmlrpc
 from twisted.internet import defer
@@ -938,3 +951,47 @@ class basics(xmlrpc.XMLRPC):
             return False
             
         
+    def xmlrpc_getComboReportLists(self, dicUser,  sPattern):
+       
+        
+        liReport = []
+        liReport1 = []
+        liReport2 = []
+        liReport3 = []
+        liReportS = []
+        liReportS2 = []
+        
+        repPath = "/usr/share/cuon/cuon_server/src/cuon/Reports/"
+        # check user
+        
+        if os.path.isdir(repPath + 'user_' + dicUser['Name']):
+            liReport1 = glob.glob(repPath + 'user_' + dicUser['Name'] + "/" + sPattern)
+                                                                       
+        # check to client id 
+        if dicUser['client'] == -7:
+            for clientID in range(50):
+                if os.path.isdir(repPath + 'client_' + `clientID`):
+                    liReport2 += glob.glob(repPath + 'client_' + `clientID` + "/" + sPattern)
+        else:
+            if os.path.isdir(repPath + 'client_' + `dicUser['client']`):
+                liReport2 = glob.glob(repPath + 'client_' + `dicUser['client']` + "/" + sPattern)
+                    
+            #check last the XML
+        liReport3 = glob.glob(repPath + 'XML' + "/" + sPattern)
+        liReportS = liReport1 + liReport2 + liReport3
+        if liReportS:
+            liReportS2 = []
+            for sFile in liReportS:
+                print "sfile = ",  sFile
+                liFile = sFile.split('/')
+                liReportS2.append(liFile[len(liFile)-1])
+                #print 'liReport = ',  liReportS2
+                
+                        
+            for item in liReportS2:
+                if not item in liReport:
+                    liReport.append(item)
+                #liReport.append(sFile[1])
+                    
+                
+        return liReport

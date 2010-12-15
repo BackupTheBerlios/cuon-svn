@@ -18,7 +18,7 @@ class report_addresses_phone12:
     def __init__(self):
         self.dicReportData = {}
         
-        self.dicReportData['Title'] = _('Phonelist 011 generatet by CUON')
+        self.dicReportData['Title'] = _('Phonelist 012 generatet by CUON')
 
         self.dicReportData['lPageNumber'] = _('Pagenumber:')
         self.dicReportData['fPageNumber'] = 1

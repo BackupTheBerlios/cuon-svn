@@ -316,7 +316,12 @@ class SQL(xmlrpc.XMLRPC, basics):
                         sSql = sSql  + " = NULL, "
                     else:
                         sSql = sSql  + " = \'" + liValue[0]+ "\', "
-        
+                elif liValue[1] == 'time':
+                    if len(liValue[0]) < 5:
+                        sSql = sSql  + " = NULL, "
+                    else:
+                        sSql = sSql  + " = \'" + liValue[0]+ "\', "
+                        
                 elif liValue[1] ==  'bool':
                     self.writeLog('REC2-bool ')
                     if liValue[0] == 1:
@@ -364,6 +369,12 @@ class SQL(xmlrpc.XMLRPC, basics):
                         else:
                             sSql2 = sSql2  + " \'" + liValue[0] + "\', "
                             self.writeLog('REC2-5 ' + `sSql` + `sSql2`)
+                    elif liValue[1] == 'time':
+                        if len(liValue[0]) < 5:
+                            sSql2 = sSql2  +  " NULL, "
+                        else:
+                            sSql2 = sSql2  + " \'" + liValue[0] + "\', "
+                            self.writeLog('REC2-5 ' + `sSql` + `sSql2`)       
                     elif liValue[1] ==  'bool':
                         #self.writeLog('REC2-bool ')
                         if liValue[0] == 1:

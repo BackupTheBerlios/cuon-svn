@@ -80,6 +80,7 @@ class plantlists(windows):
             cbGraveYard.show()
         
         liGravePlantList = self.rpc.callRP('Grave.getComboReportLists',self.dicUser, "grave_plant*")
+        print 'lists = ',  liGravePlantList
         cbPlantLists = self.getWidget('cbListOfReport')
         if cbPlantLists:
             liststore = gtk.ListStore(str)
