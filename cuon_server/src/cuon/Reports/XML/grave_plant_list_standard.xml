@@ -1,0 +1,240 @@
+<report>
+
+  <orientation>Portrait</orientation>
+  <topMargin>20</topMargin>
+  <bottomMargin>20</bottomMargin>
+  <rightMargin>40</rightMargin>
+  <leftMargin>40</leftMargin>
+  <papersizeX>595</papersizeX>
+  <papersizeY>842</papersizeY>
+
+  <reportHeader>
+    <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+    
+    <entry>
+      <name>Title</name>
+      <class>Label</class>
+      <value>Print Grave List generatet by CUON</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>20</posY1>
+      <posX2>80</posX2>
+      <posY2>40</posY2>
+      <font>Helvetica</font>
+      <fontsize>16</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+
+
+    </reportHeader>
+
+
+<pageHeader>
+    <posX1>0</posX1>
+    <posY1>0</posY1>
+    <posX2>400</posX2>
+    <posY2>50</posY2>
+   <entry>
+      <name>lPageNumber</name>
+      <class>Label</class>
+      <value>Page:</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>390</posX1>
+      <posY1>0</posY1>
+      <posX2>419</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+     <entry>
+      <name>fPageNumber</name>
+      <class>Field</class>
+      <type>int</type>
+      <format>%i</format>
+      <posX1>460</posX1>
+      <posY1>0</posY1>
+      <posX2>470</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+<entry>
+      <name>lGraveName</name>
+      <class>Label</class>
+      <value>Grave name:</value>
+      <type>string</type>
+      <format>%s</format>
+
+      <posX1>0</posX1>
+      <posY1>70</posY1>
+      <posX2>60</posX2>
+      <posY2>70</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+ <entry>
+      <name>lGraveyard</name>
+      <class>Label</class>
+      <value>graveyard : </value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>0</posX1>
+      <posY1>40</posY1>
+      <posX2>60</posX2>
+      <posY2>40</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0.4,0.2,1</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+
+</pageHeader>
+
+
+<groups>
+    <count>1</count>
+ 
+    <groupEntry>
+      <number>1</number>
+      
+      <resultSet>grave</resultSet>
+
+      <pageDetails>
+	<posX1>0</posX1>
+	<posY1>0</posY1>
+	<posX2>400</posX2>
+	<posY2>30</posY2>
+	<lineY>25</lineY>
+
+	<entry>
+	  <name>Rectangle1</name>
+	  <class>Rectangle</class>
+	  <value>1</value>
+	  <type>full</type>
+	  <format>%s</format>
+	  <posX1>0</posX1>
+	  <posY1>0</posY1>
+	  <posX2>495</posX2>
+	  <posY2>13</posY2>
+	  
+	  <font>0</font>
+	  <fontsize>1</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0.8,0.2,0.1</foregroundColor>
+	  <backgroundColor>0.7,0.2,0.2</backgroundColor>
+	  <grayScale>0.8</grayScale>
+	</entry>
+	
+ <entry>
+	  <name>graveyard_shortname</name>
+	  <class>DatabaseField</class>
+	  <resultSet>grave</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>20</posX1>
+	  <posY1>10</posY1>
+	  <posX2>80</posX2>
+	  <posY2>20</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>12</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
+
+  
+
+	<entry>
+	  <name>grave_lastname</name>
+	  <class>DatabaseField</class>
+	  <resultSet>grave</resultSet>
+	  <type>string</type>
+	  <format>%s</format>
+	  <posX1>90</posX1>
+	  <posY1>10</posY1>
+	  <posX2>170</posX2>
+	  <posY2>20</posY2>
+	  <font>Helvetica</font>
+	  <fontsize>11</fontsize>
+	  <fontJustification>left</fontJustification>
+	  <foregroundColor>0,0,0</foregroundColor>
+	  <backgroundColor>0,0,0</backgroundColor>
+	</entry>
+
+      </pageDetails>
+      </groupEntry>
+
+
+   
+    </groups>
+
+<pageFooter>
+   <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+       <entry>
+      <name>lPageFooterTitle</name>
+      <class>Label</class>
+      <value>end Page</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>190</posX1>
+      <posY1>0</posY1>
+      <posX2>190</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+  </pageFooter>
+
+<reportFooter>
+   <posX1>40</posX1>
+    <posY1>20</posY1>
+    <posX2>400</posX2>
+    <posY2>60</posY2>
+       <entry>
+      <name>lReportFooter</name>
+      <class>Label</class>
+      <value>end Report:</value>
+      <type>string</type>
+      <format>%s</format>
+      <posX1>190</posX1>
+      <posY1>0</posY1>
+      <posX2>190</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+  </reportFooter>
+
+</report>
