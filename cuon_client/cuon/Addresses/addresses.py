@@ -1560,6 +1560,7 @@ class addresswindow(chooseWindows):
         dicV = {}
         dicV['From'] = self.dicUser['Email']['From']
         dicV['To'] = self.singleAddress.getEmail()
+        divV['sm'] = self.singleAddress.getFirstRecord()
         self.setClipboard(dicV['To'])
 
         dicV['Signatur'] = self.dicUser['Email']['Signatur']

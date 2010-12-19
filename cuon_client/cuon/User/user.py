@@ -57,6 +57,7 @@ class User(defaultValues):
         self.sDebug = 'NO'
         self.XMLRPC_TRY = 0
         
+        
         self.serverAddress = None
         self.userSQLDateFormat = 'DD.MM.YYYY'
         self.userSQLTimeFormat = 'HH24:MI'
@@ -144,7 +145,7 @@ class User(defaultValues):
         self.Email['Password']='secret'
         self.Email['Signatur']='NONE'
         self.Email['extPrg'] = 'evolution'
-
+        self.Email['check_imap'] = False
         #Twitter
         self.Twitter = {}
         self.Twitter['TwitterName'] = 'cuonOne'
@@ -415,6 +416,9 @@ class User(defaultValues):
         self.dicUser['DateTimeformatEncoding'] = self.userDateTimeFormatEncoding
         self.dicUser['TimeformatString'] = self.userTimeFormatString
         self.dicUser['TimeOffset'] = self.userTimeOffset
+       
+        
+        
         #self.dicUser['serverAddress'] = self.serverAddress
         self.dicUser['SQLDateFormat'] = self.userSQLDateFormat
         self.dicUser['SQLTimeFormat'] = self.userSQLTimeFormat
@@ -525,6 +529,13 @@ class User(defaultValues):
             self.Email['Password'] = result['email_user_password']
             self.Email['Signatur'] = result['email_user_signatur']
             self.Email['extPrg'] = result['email_ext_prg']
+            if result['user_check_imap'] =='t':
+                self.Email['check_imap'] = True
+            else:
+                self.Email['check_imap'] = False
+            
+            
+            
             
             self.prefApps['PDF'] = self.prefDMS['exe']['pdf']
             print "prefApps['PDF'] 0=",  self.prefDMS['exe']['pdf']
@@ -536,6 +547,7 @@ class User(defaultValues):
             self.prefApps['printNewsletter'] = result['exe_print_newsletter']
             
         except Exception, param:
+            print 'user.py,  getuser'
             print Exception
             print param
         self.setFileFormats()

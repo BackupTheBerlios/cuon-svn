@@ -52,12 +52,13 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                         print 'result = ', result 
                         for sm in result:
                             print 'sm = ',  sm
-                            if sm['email']:
-                                print 'sm[email] = ',  sm['email']
+                            if sm.has_key('email'):
+                                #print 'sm[email] = ',  sm['email']
                                 dicValues['To'] = sm['email']
+                                dicValues['sm'] = sm
                                 ok += self.sendEmail(dicValues, liAttachments,dicUser) + '\n'
-                                
-                        
+                            
+                       
                         
             else:
                 #ok += deferToThread(self.sendEmail, dicValues, liAttachments,dicUser) +'\n'
@@ -109,6 +110,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
                 cuonmail.subject = dicValues['Subject']
                 
             if dicValues.has_key('Body'):
+                dicValues = self.replaceValues(dicValues)
                 cuonmail.message = dicValues['Body']
                 
             cuonmail.smtp_server = self.EMAILSERVER
@@ -142,10 +144,16 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             else:
                 s = `s`
             ok = s
+            if  dicValues['sm'].has_key('addressid'):
+                ok += ';p='
+            else:
+                ok += ';a='
+            ok += `dicValues['sm']['id']`  
+            
             f = open('/var/log/cuonmail.log','a')
             f.write(time.ctime(time.time() ))
             f.write('     ')
-            f.write(s)
+            f.write(ok)
             f.write('\n')
             f.close()
         except:
@@ -155,14 +163,14 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         
     def getNewsletterEmail(self, NewsletterShortcut, dicUser):
         print NewsletterShortcut
-        sSql = "select email from address where newsletter ~'.*" + NewsletterShortcut +".*'"
+        sSql = "select * from address where newsletter ~'.*" + NewsletterShortcut +".*'"
         sSql += self.getWhere("",dicUser,2)
         print sSql
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
         if result in ['NONE','ERROR']:
             result = []
-        print 'result 1 ', result
-        sSql = "select email from partner where newsletter ~'.*" + NewsletterShortcut +".*'"
+        #print 'result 1 ', result
+        sSql = "select * from partner where newsletter ~'.*" + NewsletterShortcut +".*'"
         sSql += self.getWhere("",dicUser,2)
         print sSql
         result2 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
@@ -173,6 +181,27 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         print 'result3', result
         return result
         
+    def replaceValues(self, dicValues) :
+        dicVars = dicValues['sm']
+        s = dicValues['Body']
+        for key in dicVars.keys():
+            try:
+                #print 'try to replace this ', key,  dicVars[key]
+                if dicVars[key] == 'NONE' or dicVars[key] ==None:
+                    s = s.replace('##'+ key + ';;','')
+                elif self.checkType(dicVars[key], 'string') :
+                    s = s.replace('##'+ key + ';;',dicVars[key] )
+                
+                else:
+                    s = s.replace('##'+ key + ';;',`dicVars[key]` )
+            except Exception,  params:
+                print Exception, params
+                s = s = s.replace('##'+ '' + ';;','')
+        
+        
+        dicValues['Body'] = s
+        
+        return dicValues
 ##        Email(
 ##557           from_address = "server@gp-server.gp",
 ##558           smtp_server = "gp-server.gp",
@@ -256,7 +285,7 @@ class cuonemail(xmlrpc.XMLRPC, basics):
 ##            try:
 ##                
 ##                print ' start send email'
-##                server = smtplib.SMTP(self.EMAILSERVER)
+##         replaceValues(dicValues)       server = smtplib.SMTP(self.EMAILSERVER)
 ##                #print 'Email-Server = ', server
 ##                #print self.EMAILUSER, self.EMAILPASSWORD
 ##                

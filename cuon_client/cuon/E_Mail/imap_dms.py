@@ -12,7 +12,8 @@
 ##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. 
 
 import imaplib, string, email, getpass, sys, time
-import os
+import os,  time
+
 
 from email import message_from_string
 from email.header import decode_header
@@ -24,6 +25,7 @@ import cuon.Misc.misc
 import cuon.XMLRPC.xmlrpc
 from cuon.TypeDefs.constants import constants
 from cuon.Databases.dumps import dumps
+
 
 class imap_dms(constants,  dumps):
     def __init__(self, allTables,   dicUser):
@@ -81,8 +83,10 @@ class imap_dms(constants,  dumps):
     
     def checkMail(self):
         M = None
-
-        if self.dicUser.has_key('check_imap') and self.dicUser['check_imap'] == True:
+        ok = False
+        print 'check imap =',  time.asctime( time.localtime(time.time()) ),  self.dicUser['Email']['check_imap'] 
+        if self.dicUser['Email'].has_key('check_imap') and self.dicUser['Email']['check_imap'] == True:
+            print 'Imap check is True'
             try:
                     
                 M = imaplib.IMAP4(self.imap_server)
@@ -228,6 +232,9 @@ class imap_dms(constants,  dumps):
                 M.logout()
         except e,  params: 
             print e,  params
+        
+        
+        return ok
             
     def save(self, part , sType,  liAddressID,  liPartnerID, sSubject,   sFrom,  sTo,  sDate):
         print 'save it',  sType

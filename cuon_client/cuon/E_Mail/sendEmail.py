@@ -137,6 +137,7 @@ class sendEmail(editorwindow):
         self.dicValues['Body'] = self.get_text()
         
         em = self.rpc.callRP('Email.sendTheEmail', self.dicValues, self.liAttachments, self.dicUser)
+        
         self.writeEmailLog(em)
         
 

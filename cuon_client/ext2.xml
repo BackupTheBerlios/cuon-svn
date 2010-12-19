@@ -1142,7 +1142,7 @@
       <comment />
     </field>
      <field>
-      <name>spring_notes</name>
+      <name>common_notes</name>
       <type>text</type>
       <pkey>0</pkey>
       <unique>0</unique>
@@ -1151,76 +1151,7 @@
       <default />
       <comment />
     </field>
-     <field>
-      <name>summer_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>autumn_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>winter_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>holliday_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>single_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>year_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
-     <field>
-      <name>maintenance_notes</name>
-      <type>text</type>
-      <pkey>0</pkey>
-      <unique>0</unique>
-      <notnull>0</notnull>
-      <size>60000</size>
-      <default />
-      <comment />
-    </field>
+    
      </table>
       <table>
     <!-- t_grave_work template for the graves -->

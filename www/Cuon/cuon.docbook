@@ -729,7 +729,7 @@ Diese Reihenfolge der Einstellungen wir von CUON verarbeitet: Die cuonObjects wi
 <sect2 id="br1"><title>
 Allgemeine Bemerkungen </title>
 <para>
-Das DMS wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterstützt:</para>
+Das <link linkend='dms1'><emphasis>DMS</emphasis></link> wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterstützt:</para>
 <itemizedlist>
     <listitem><para> Einfache Textdokumente</para></listitem>
 	<listitem><para> LibreOffice</para></listitem>
@@ -751,7 +751,7 @@ Dazu erstellen Sie jeweils einen beliebigen Briefvordruck und setzen an die ents
 </example>
    
 <para>
-Dann speichern Sie das Dokument ab. Anschließend benutzen Sie die Addressverwaltung, selektieren eine Adresse und klicken auf den Brief-Button ( im engl. letter ). Jetzt öffnet sich das DMS und sie legen ein neues Dokument an. Als Titel geben Sie z.B. Briefkopf an.Suchen Sie dann Ihr Briefkopf-Dokument und importieren Sie es.
+Dann speichern Sie das Dokument ab. Anschließend benutzen Sie die Addressverwaltung, selektieren eine Adresse und klicken auf den Brief-Button ( im engl. letter ). Jetzt öffnet sich das <link linkend='dms1'><emphasis>DMS</emphasis></link> und sie legen ein neues Dokument an. Als Titel geben Sie z.B. Briefkopf an.Suchen Sie dann Ihr Briefkopf-Dokument und importieren Sie es.
 </para>
 <para>Jetzt haben Sie in allen Adressen die Möglichkeit, diesen Briefkopf zu benutzen. Dies geschieht folgendermaßen: Gehen sie in die Addressverwaltung und suchen sie eine Adresse. Dann drücken sie den Brief-Button. Die DMS öffnet sich und Sie wählen die gewünschte Vorlage (z.B. Briefkopf oder Info-Anschreiben oder Urlaubsmitteilung oder ... was auch immer ). Drücken sie auf View und OpenOffice? öffnet sich und an Stelle der Platzhalter stehen die entsprechenden Feldinhalte, z.B. die Adresse. Jetzt können Sie den Brief schreiben und verändern, und dann eben Drucken, Faxen oder per E-Mail versenden.</para>
 </sect2>
@@ -847,7 +847,7 @@ Dann speichern Sie das Dokument ab. Anschließend benutzen Sie die Addressverwal
 </para>
 
 <para>
-Dieselben Benutzerinfos gibte es für person1_ oder person2_ anstelle von userinfo_
+Dieselben Benutzerinfos gibt es für person1_ oder person2_ anstelle von userinfo_
 </para>
 
 <para>
@@ -2172,7 +2172,7 @@ Dies ist ein Kernstück des Systems. Neben den üblichen Einscannen von Dokument
    <listitem><para> * Internet-Links</para></listitem>
    <listitem><para> * Html-Dokumente </para></listitem>
 
-</itemizedlist>
+</itemizedlist> 
 </sect1>
 <sect1 id="dms2"><title>Handhabung des DMS </title>
 <sect2 id="dms2_1"><title>Neues dokument einscannen </title>
@@ -2215,7 +2215,144 @@ Tipps und Tricks </para>
    <listitem><para> * Über Menü->Arbeit->DMS kann man ALLE vorhandenen Dateien sehen. Wenn man diese aber an dieser Stelle verändert, verliert man momentan noch die Zuordnung z.B. zu einem Adressdatensatz!! Daher hier: Vorsichtig editieren! </para></listitem>
 </itemizedlist>
 </sect1>
+<sect1 id="dms_imap">
+<title>Email und DMS</title>
+<para>Empfangene und versendete Emails können automatisch den entsprechenden Adressen zugeordnet werden. Dies geschieht über die Einrichtung des OrdnerS "AUTOMATIC_CUON" in dem Imap Postfach des Users. Dann wird in den Benutzereinstellungen die Checkbox "Check Imap Folder" angekreuzt. Von nun an wird jede 1/2 Stunde dieser Ordner durchsucht und die Emails eingeordnet </para>
+<para>Jede Email wird anhand der <emphasis>Von</emphasis> bzw <emphasis>An</emphasis> Email Adresse der entsprechenden Adresse im <link linkend='dms1'><emphasis>DMS</emphasis></link> zugeordnet und dort importiert. Gleiches geschieht mit Anhängen, sofern Sie erkannt werden.</para>
+<sect2 id="dms_imap_normal"><title>Normale Emails</title>
+<para>Sie können einfach eine Email von einem Kunden in den AUTOMATIC_CUON order reinkopieren oder Sie stellen in Ihren Email-Program einen Filter ein, der bestimmete Emails dahin kopiert. Dann wird die Mail ins DMS einsortiert.</para>
+</sect2>
+<sect2 id="dms_imap_newsletter"> <title>Email Newsletter</title>
+<para>Hier kann z.B. einfach eine BCC Adresse und/oder ein Filter im Email Programm eingesetzt werden, der auf den Ordner <emphasis>AUTOMATIC_CUON</emphasis> zeigt und dann wird entsprechend die Newsletter bei den Kunden ins  <link linkend='dms1'><emphasis>DMS</emphasis></link> eingeordnet.</para>
+</sect2>
+</sect1>
+</chapter>
+<chapter>
+<title>Newsletter</title>
+<para>Mit cuon können diverse Arten von Newslettern automatisiert versendet werden</para>
+<sect1 id="news1"><title>Newsletter Benutzung</title>
+<para></para>
+</sect1>
 
+<sect1 id="new_print"><title>Newsletter drucken</title>
+<para></para>
+</sect1>
+
+<sect1 id="news_email"><title>Newsletter per Email</title>
+<para>Die Platzhalter für die personaliesierte Email werden ebenfalls einfach über <emphasis>##</emphasis> und <emphasis>;;</emphasis> eingeschlossen</para>
+<para>Platzhalter für Email</para>
+
+<para>
+<table id="tab2_email_news">
+  <title>Platzhalter personalisierte Email </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>firstname</entry>
+      </row>
+      <row>
+         <entry>Handynummer</entry>
+         <entry>phone_handy</entry>
+      </row>
+	  <row>
+		<entry>Straße</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Stadt</entry>
+		<entry>city</entry>
+	  </row>
+	  <row>
+		<entry>Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+	  <row>
+		<entry>Branche</entry>
+		<entry>misc_line</entry>
+	  </row>
+	  <row>
+		<entry>Mwst-ID</entry>
+		<entry>misc_taxnumber</entry>
+	  </row>
+	  <row>
+		<entry>Mwst berechnen</entry>
+		<entry>misc_to_calc_tax</entry>
+	  </row>
+	  <row>
+		<entry>Preisgruppe</entry>
+		<entry>misc_price_group</entry>
+	  </row>
+	  <row>
+		<entry>Adressnummer</entry>
+		<entry>misc_address_number</entry>
+	  </row>
+	  <row>
+		<entry>Adresse ist im Webshop</entry>
+		<entry>misc_is_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Adresse mit Webshop abgleichen</entry>
+		<entry>misc_update_from_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Zahlungsbedinguen-ID</entry>
+		<entry>misc_top_id</entry>
+	  </row>
+	  <row>
+		<entry>Gründungsdatum</entry>
+		<entry>misc_date_of_launch</entry>
+	  </row>
+	  <row>
+		<entry>Rechtsform</entry>
+		<entry>misc_legal_form</entry>
+	  </row>
+	  <row>
+		<entry>Umsatz</entry>
+		<entry>misc_turnover</entry>
+	  </row>
+	  <row>
+		<entry>Mitarbeiteranzahl</entry>
+		<entry>misc_count_of_employees</entry>
+	  </row>
+	  <row>
+		<entry>Handel</entry>
+		<entry>misc_trade</entry>
+	  </row>
+	  <row>
+		<entry>Typ</entry>
+		<entry>misc_cb_fashion</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+
+
+</para>
+</sect1>
 </chapter>
 </part>
 

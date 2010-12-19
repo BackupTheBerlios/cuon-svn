@@ -764,6 +764,16 @@
       <default></default>
       <comment>twitter connect for user</comment>
     </field>
+     <field>
+      <name>user_check_imap</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>False</default>
+      <comment>check folder AUTOMATIC_CUON</comment>
+    </field>
   </table>
     
   <table>

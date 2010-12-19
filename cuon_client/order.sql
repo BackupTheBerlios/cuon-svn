@@ -247,26 +247,30 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
      ' LANGUAGE 'plpgsql'; 
 
      
-   
+DROP function fct_getUnreckonedOrder() ;
         
-CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns setof  record AS '
+CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns text AS '
  DECLARE
      iClient int ;
     sSql text := '''';
-    r  record;
+    t1  text := ''  -1 '' ;
+    r record ;
     r2 record ;
     
     BEGIN
-       sSql := '' select id from orderbook '' || '' '' ||  fct_getWhere(2,'' '') ;
+       sSql := '' select id from orderbook '' || '' '' ||  fct_getWhere(1,'' '') ;
        
         FOR r in execute(sSql)  LOOP
         
-        IF r.this_date - r.maturity > iDays   THEN
-            return next r;
-        END IF ;
-        
+            sSql := ''select id from list_of_invoices where order_number =  '' || r.id ||  '' '' ||  fct_getWhere(2,'' '') ;
+            
+            FOR r2 in execute(sSql)  LOOP
+                IF r2.id > 0   THEN
+                    t1 := t1 || '' or id = '' || r2.id ;
+                END IF ;
+            END LOOP ;
         END LOOP ;
-        
+        return t1 ;
     END ;
     
 

@@ -82,7 +82,7 @@ class contactwindow(chooseWindows):
         #'select address.lastname where partner_schedul.address_id = address.id) as lastname'] )
         self.singleContact.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleContact.setListHeader([_('date'), _('time'), _('Address')])
-        self.singleContact.setTree(self.xml.get_widget('tree1') )
+        self.singleContact.setTree(self.getWidget('tree1') )
         self.singleContact.sWhere = ' where address.id = address_id and process_status = 0 and contacter_id = ' +  self.singleContact.getStaffID(self.dicUser) + ' ' 
         if address_nr > 0:
             self.singleContact.sWhere += 'and address_id = ' + `address_nr`

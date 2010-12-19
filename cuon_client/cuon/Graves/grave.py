@@ -100,7 +100,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGrave.setStore( gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         self.singleGrave.setTreeOrder('lastname, firstname')
         self.singleGrave.setListHeader([_('Lastname'), _('Firstname'), _('Serial Number')])
-        self.singleGrave.setTree(self.xml.get_widget('tree1') )
+        self.singleGrave.setTree(self.getWidget('tree1') )
 
         self.EntriesGravesInvoices = 'graves_invoice_info.xml'
         
@@ -112,7 +112,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveInvoices.setStore( gtk.ListStore( gobject.TYPE_STRING,  gobject.TYPE_STRING ,   gobject.TYPE_UINT)  )
         self.singleGraveInvoices.setTreeOrder('lastname')
         self.singleGraveInvoices.setListHeader([_('Lastname'), _('Firstname') ])
-        self.singleGraveInvoices.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveInvoices.setTree(self.getWidget('tree1') )
         self.singleGraveInvoices.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and address_id = address.id '
   
 
@@ -127,7 +127,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
         self.singleGraveMaintenance.setTreeOrder('grave_service_id')
         self.singleGraveMaintenance.setListHeader([_('Service-ID')])
-        self.singleGraveMaintenance.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveMaintenance.setTree(self.getWidget('tree1') )
         self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   
   
@@ -144,7 +144,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSpring.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveSpring.setTreeOrder('article_id')
         self.singleGraveSpring.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveSpring.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveSpring.setTree(self.getWidget('tree1') )
         self.singleGraveSpring.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
         self.EntriesGravesSummer = 'graves_summer.xml'
@@ -157,7 +157,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSummer.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveSummer.setTreeOrder('article_id')
         self.singleGraveSummer.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveSummer.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveSummer.setTree(self.getWidget('tree1') )
         self.singleGraveSummer.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
   
@@ -171,7 +171,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveAutumn.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveAutumn.setTreeOrder('article_id')
         self.singleGraveSpring.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveAutumn.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveAutumn.setTree(self.getWidget('tree1') )
         self.singleGraveAutumn.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
         self.EntriesGravesWinter = 'graves_winter.xml'
@@ -184,7 +184,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveWinter.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveWinter.setTreeOrder('article_id')
         self.singleGraveWinter.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveWinter.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveWinter.setTree(self.getWidget('tree1') )
         self.singleGraveWinter.sWhere  ='where grave_id = ' + `self.singleGrave.ID` + ' and article_id = articles.id '
   
   
@@ -198,7 +198,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveHolidays.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveHolidays.setTreeOrder('article_id')
         self.singleGraveHolidays.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveHolidays.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveHolidays.setTree(self.getWidget('tree1') )
         self.singleGraveHolidays.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
         
@@ -211,7 +211,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveAnnual.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveAnnual.setTreeOrder('article_id')
         self.singleGraveAnnual.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveAnnual.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveAnnual.setTree(self.getWidget('tree1') )
         self.singleGraveAnnual.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
                 
@@ -226,7 +226,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveUnique.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING,  gobject.TYPE_STRING,gobject.TYPE_STRING, gobject.TYPE_UINT) ) 
         self.singleGraveUnique.setTreeOrder('article_id')
         self.singleGraveUnique.setListHeader([_('count'), _('number'), _('Designation'), _('article-ID')])
-        self.singleGraveUnique.setTree(self.xml.get_widget('tree1') )
+        self.singleGraveUnique.setTree(self.getWidget('tree1') )
         self.singleGraveUnique.sWhere  ='where grave_id = ' + `self.singleGrave.ID`+ ' and article_id = articles.id '
   
        
