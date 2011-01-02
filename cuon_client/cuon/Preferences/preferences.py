@@ -98,6 +98,22 @@ class preferenceswindow(windows):
         self.addEnabledMenuItems('editProfile','new1')
         self.addEnabledMenuItems('editProfile','edit1')
         
+        liCrypt = self.rpc.callRP('Email.getCryptCombobox')
+        cbCrypt = self.getWidget('cbCrypt')
+        cbImapCrypt = self.getWidget('cbImapCrypt')
+        
+    
+        liststore = gtk.ListStore(str)
+        for crypt in liCrypt:
+            liststore.append([crypt])
+        if cbCrypt:
+            cbCrypt.set_model(liststore)
+            cbCrypt.set_text_column(0)
+            cbCrypt.show()
+        if cbImapCrypt:
+            cbImapCrypt.set_model(liststore)
+            cbImapCrypt.set_text_column(0)
+            cbImapCrypt.show()
 
         # tabs from notebook
         self.tabProfile = 0

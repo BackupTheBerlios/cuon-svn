@@ -234,10 +234,13 @@ class setup:
         self.executeString("scp " + scp1 + ' ' + "./cuon.sh " + scp2 + self.EXECDIR )
         
         
-        
+        # create tmp dir
+        self.executeSSH("if  [ ! -d "  + "/tmp"  + " ] ; then mkdir " + "/tmp" + " ; fi ")
+         
         # create server dirs in share
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE)
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server')
+        self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/bin')      
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src/cuon')
         self.executeSSH('mkdir ' + self.SERVERDIRSHARE + '/cuon_server/src/cuon/Reports')
@@ -256,6 +259,8 @@ class setup:
         self.executeSCP(" " + self.VERSION_CFG , self.SERVERDIRSHARE + "/cuon_server/")
         # copy other
         self.executeSCP(" ../cuon_server/src/*.py", self.SERVERDIRSHARE + "/cuon_server/src")
+        self.executeSCP(" ../cuon_server/bin/*", self.SERVERDIRSHARE + "/cuon_server/bin")
+        self.executeSSH("chmod u+x " + self.SERVERDIRSHARE + "/cuon_server/bin/*" )
         self.executeSCP(" ../cuon_server/src/cuon/*.py", self.SERVERDIRSHARE + "/cuon_server/src/cuon")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/*",  self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports")
         self.executeSCP(" ../cuon_server/src/cuon/Reports/XML/*", self.SERVERDIRSHARE + "/cuon_server/src/cuon/Reports/XML")

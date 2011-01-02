@@ -28,17 +28,17 @@ class SQL(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
  
     def xmlrpc_executeNormalQuery(self, cSql, dicUser={'Name':'zope', 'SessionID':'0'}):
-        print "Start ExecuteQuere"
+        print "Start ExecuteQuery"
         t1 = time.mktime(time.localtime())
         self.writeLog('------->SQL starts at : ' + `t1`)
         conn = None
         dicResult = None
         rows = None
-        print dicUser
+        #print dicUser
         #print cSql
         
         try:
-            self.writeLog('execute SQL = ' + `cSql`)
+            #self.writeLog('execute SQL = ' + `cSql`)
             if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
                 pass
             else:
@@ -293,10 +293,10 @@ class SQL(xmlrpc.XMLRPC, basics):
 ##                self.writeLog('sKey in Entries' + `sKey`)
 ##                dicValues[lb][0] = self.getValue(sKey)
 ##        
-        self.writeLog('begin RECORD2 id = ' + `id`)
+        #self.writeLog('begin RECORD2 id = ' + `id`)
         if id > 0:
             # update
-            self.writeLog('start Update')
+            #self.writeLog('start Update')
             sSql = 'update ' + sNameOfTable + ' set  '
             
             for i in dicValues.keys():
@@ -335,16 +335,16 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql[0:string.rfind(sSql,',')]
         
             sSql = sSql + ' where id = ' + self.convertTo(id, 'String')
-            self.writeLog('Update SQL = ' + sSql)
+            #self.writeLog('Update SQL = ' + sSql)
             
         else:
-            self.writeLog('new RECORD2')
+            #self.writeLog('new RECORD2')
             sSql = 'insert into  ' + sNameOfTable + ' (  '
             sSql2 = 'values ('
-            self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
+            #self.writeLog('REC2-1 ' + `sSql` + `sSql2`)
             for i in dicValues.keys():
                 sSql = sSql + i + ', '
-                self.writeLog('REC2-1.1 ' + `sSql`)
+                #self.writeLog('REC2-1.1 ' + `sSql`)
                 liValue = dicValues[i]
                 #self.writeLog('REC2-1.2 ' + `liValue`)
                 #print "recValue = " ,  liValue
@@ -356,25 +356,25 @@ class SQL(xmlrpc.XMLRPC, basics):
                             sSql2 = sSql2 + "\'\', " 
                         else:
                             sSql2 = sSql2  + "\'" + liValue[0] + "\', "
-                        self.writeLog('REC2-2 ' + `sSql` + `sSql2`)
+                        #self.writeLog('REC2-2 ' + `sSql` + `sSql2`)
                     elif liValue[1] == 'int':
                         sSql2 = sSql2  + `int(liValue[0])` + ", "
-                        self.writeLog('REC2-3 ' + `sSql` + `sSql2`)
+                        #self.writeLog('REC2-3 ' + `sSql` + `sSql2`)
                     elif liValue[1] == 'float':
                         sSql2 = sSql2  + `float(liValue[0])` + ", "
-                        self.writeLog('REC2-4 ' + `sSql` + `sSql2`)
+                        #self.writeLog('REC2-4 ' + `sSql` + `sSql2`)
                     elif liValue[1] == 'date':
                         if len(liValue[0]) < 6:
                             sSql2 = sSql2  +  " NULL, "
                         else:
                             sSql2 = sSql2  + " \'" + liValue[0] + "\', "
-                            self.writeLog('REC2-5 ' + `sSql` + `sSql2`)
+                            #self.writeLog('REC2-5 ' + `sSql` + `sSql2`)
                     elif liValue[1] == 'time':
                         if len(liValue[0]) < 5:
                             sSql2 = sSql2  +  " NULL, "
                         else:
                             sSql2 = sSql2  + " \'" + liValue[0] + "\', "
-                            self.writeLog('REC2-5 ' + `sSql` + `sSql2`)       
+                            #self.writeLog('REC2-5 ' + `sSql` + `sSql2`)       
                     elif liValue[1] ==  'bool':
                         #self.writeLog('REC2-bool ')
                         if liValue[0] == 1:
@@ -389,7 +389,7 @@ class SQL(xmlrpc.XMLRPC, basics):
                         #self.writeLog('REC2-6 ' + `sSql` + `sSql2`) 
              
                         
-            self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
+            #self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) 
             sSql = sSql + 'id, user_id, status'
             sSql2 = sSql2 + 'nextval(\'' + sNameOfTable + '_id\'), current_user, \'create\''  
             
@@ -397,10 +397,10 @@ class SQL(xmlrpc.XMLRPC, basics):
             sSql = sSql + ') ' + sSql2 + ')'
         
         # execute insert
-        self.writeLog('First SQL by RECORD2 = ' + `sSql`)
+        #self.writeLog('First SQL by RECORD2 = ' + `sSql`)
         #print sSql
         result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
-        self.writeLog(result)
+        #self.writeLog(result)
         
             
         

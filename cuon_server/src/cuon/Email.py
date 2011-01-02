@@ -36,6 +36,10 @@ class cuonemail(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
         self.oDatabase = Database.Database()
         
+    def xmlrpc_getCryptCombobox(self):
+        
+        return self.EMAILLOGINCRYPT
+      
         
     def xmlrpc_sendTheEmail(self, dicValues, liAttachments,dicUser ):
         ok = ''
@@ -116,7 +120,10 @@ class cuonemail(xmlrpc.XMLRPC, basics):
             cuonmail.smtp_server = self.EMAILSERVER
             cuonmail.smtp_user = self.EMAILUSER
             cuonmail.smtp_password = self.EMAILPASSWORD
-            cuonmail.smtp_crypt = self.EMAILCRYPT
+            cuonmail.smtp_crypt = dicEmail['Crypt'
+                                           
+                                           
+                                           ]
             
         except Exception, params:
             print 'Error in Email'

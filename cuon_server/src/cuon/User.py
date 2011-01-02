@@ -146,7 +146,7 @@ class User(xmlrpc.XMLRPC, basics):
         #dicExt1['extendet_gpl'][0]['MenuStart']='cuon.Ext1.ext1.ext1()'
         
         #dicUserModules['AllUser'].append(dicExt1)
-        print dicUserModules
+        #print dicUserModules
         
         # User jhamel
 ##        dicUserModules['jhamel'] = [{'all':{'Priv':'all'}},{'experimental':{'Priv':'all'}} ]

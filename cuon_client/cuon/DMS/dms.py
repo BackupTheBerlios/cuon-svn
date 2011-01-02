@@ -46,7 +46,16 @@ import binascii
 import cuon.DMS.documentTools
 import base64
 import cuon.Misc.cuon_dialog
-
+GtkSV = True 
+try:
+    import gtksourceview
+    
+except:
+    try:
+        import gtksourceview2 as gtksourceview
+    except:
+        print 'No gtksourceview import possible. Please install gtksourceview for python!!'
+        GtkSV = False
 
 
 class dmswindow(windows):
@@ -158,12 +167,10 @@ class dmswindow(windows):
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
         # tabs from notebook
         self.tabDocument = 0
+        self.tabAcc = 1
+        self.tabExtract = 2
         
-        #print '8 --'
-        self.tabOption = self.tabDocument
-        self.tabChanged()
-        
-        # add keys
+          # add keys
         print "accelgroup = ",  self.accel_group
         try:
             self.win1.add_accel_group(self.accel_group)
@@ -179,8 +186,34 @@ class dmswindow(windows):
             self.activateClick('new1')
             self.LastDoc =self.dicExtInfo['LastDoc']
             self.activateClick('bImport',None,'clicked')
+        
+        
+        # notes
+        print 'GTKSV = ',  GtkSV
+        if GtkSV:
             
+            self.textbufferMisc,  self.viewMisc = self.getNotesEditor()
+            Vbox = self.getWidget('vbExtract')
+            oldScrolledwindow = self.getWidget('scExtract')
+            #oldScrolledwindow.remove(self.getWidget('tvNotesMisc'))
+            oldScrolledwindow.add(self.viewMisc)
+            self.viewMisc.show_all()
+            oldScrolledwindow.show_all()
+            
+            
+            
+            #Vbox.remove(oldScrolledwindow)
+            #Vbox.add(self.viewMisc)
+            #Vbox.show_all()
+            self.singleDMS.Extract = self.textbufferMisc
+   
 
+
+        #print '8 --'
+        self.tabOption = self.tabDocument
+        self.tabChanged()
+        
+      
     # Menu items
         
 
@@ -228,18 +261,34 @@ class dmswindow(windows):
         
     def findDMS(self):
         print 'Search'
-        dicSearchfields = self.readSearchDatafields(  {'title':'eSearchTitle', 'category':'eSearchCategory',  'sub1':'eSearchSub1',  'sub2':'eSearchSub2',  'sub3': 'eSearchSub3',  'sub4':'eSearchSub4',  'sub5':'eSearchSub5',  'search1':'eSearchSearch1',  'search2': 'eSearchSearch2',   'search3':'eSearchSearch3',  'search4': 'eSearchSearch4'})
+        dicSearchfields = self.readSearchDatafields(  {'title':'eSearchTitle', 'category':'eSearchCategory',  'sub1':'eSearchSub1',  'sub2':'eSearchSub2',  'sub3': 'eSearchSub3',  'sub4':'eSearchSub4',  'sub5':'eSearchSub5',  'search1':'eSearchSearch1',  'search2': 'eSearchSearch2',   'search3':'eSearchSearch3',  'search4': 'eSearchSearch4', 'FullText':'eFindFullText'})
 
         print dicSearchfields
         
         sWhere = ''
         if dicSearchfields:
             for key in dicSearchfields.keys():
-                if dicSearchfields[key]:
-                    if sWhere:
-                        sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
-                    else:
-                        sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
+                if key == 'FullText':
+                    if dicSearchfields[key]:
+                        liFullText = dicSearchfields[key].split(' ')
+                        if liFullText:
+                            if sWhere:
+                                sWhere +=  "and  ( "
+                            else:
+                                sWhere = " where   ("
+                        
+                            for sSearch in liFullText:
+                                sWhere +=  " dms_extract  ~* \'"  + sSearch + "\'  and "
+                            
+                            sWhere = sWhere[:len(sWhere)-4] + " ) " 
+                        
+                else:
+                    if dicSearchfields[key]:
+                        if sWhere:
+                            sWhere = sWhere + ' and ' +  key+ " ~* \'"  + dicSearchfields[key] + "\' "
+                        else:
+                            sWhere = 'where  ' +  key + " ~* \'"  + dicSearchfields[key] + "\' "
+                            
             if self.ModulNumber != self.MN['DMS']:
                 sWhere += ' and insert_from_module = ' + `self.ModulNumber` 
             
@@ -357,25 +406,26 @@ class dmswindow(windows):
     
     def on_tbNew_clicked(self, event):
         print "tbnew"
-        if self.tabOption == self.tabDocument:
+        if self.tabOption >= self.tabDocument:
             self.on_new1_activate(event)
-    
+        
     def on_tbEdit_clicked(self, event):
-        if self.tabOption == self.tabDocument:
+        if self.tabOption >= self.tabDocument:
             self.on_edit1_activate(event)
             
     def on_tbSave_clicked(self, event):
-        if self.tabOption == self.tabDocument:
+        if self.tabOption >= self.tabDocument:
             self.on_save1_activate(event)
             
             
     def on_tbDelete_clicked(self, event):
-        if self.tabOption == self.tabDocument:
+        if self.tabOption >= self.tabDocument:
             self.on_clear1_activate(event)
             
     def on_tbExit_clicked(self, event):
-        if self.tabOption == self.tabDocument:
-            self.on_quit1_activated(event)
+        print 'close'
+        if self.tabOption >= self.tabDocument:
+            self.on_quit1_activate(event)
             
     def refreshTree(self):
         self.singleDMS.disconnectTree()

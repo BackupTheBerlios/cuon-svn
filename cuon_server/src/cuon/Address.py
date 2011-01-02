@@ -1125,9 +1125,10 @@ class Address(xmlrpc.XMLRPC, basics):
     def xmlrpc_getAddressEmailID(self, sTable, liEmail, dicUser):
         liID = [0]
         sSql = 'select id from ' + sTable + ' where ' 
+        sSql += '( '
         for email in liEmail:
             liSingleEmail = email.split(' ')
-            sSql += '( '
+            
             for sEmail in liSingleEmail:
                 if sEmail.find('@') > 0:
                     sEmail = sEmail.strip('<')

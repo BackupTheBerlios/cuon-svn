@@ -256,19 +256,24 @@ CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns text AS '
     t1  text := ''  -1 '' ;
     r record ;
     r2 record ;
+    bInsert bool ;
     
     BEGIN
        sSql := '' select id from orderbook '' || '' '' ||  fct_getWhere(1,'' '') ;
        
         FOR r in execute(sSql)  LOOP
-        
+            bInsert = False ;
             sSql := ''select id from list_of_invoices where order_number =  '' || r.id ||  '' '' ||  fct_getWhere(2,'' '') ;
-            
+            raise notice ''sql  = %'',sSql ;
             FOR r2 in execute(sSql)  LOOP
-                IF r2.id > 0   THEN
-                    t1 := t1 || '' or id = '' || r2.id ;
-                END IF ;
+                raise notice ''id = %'',r2.id ;
+                if r2.id > 0 then
+                    bInsert = True;
+                end if ;
             END LOOP ;
+             IF NOT bInsert  THEN
+                    t1 := t1 || '' or id = '' || r.id ;
+                END IF ;
         END LOOP ;
         return t1 ;
     END ;

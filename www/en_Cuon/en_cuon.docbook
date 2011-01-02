@@ -237,7 +237,7 @@ DEFAULTPORT: 25
 DEFAULTUSER: set_username
 DEFAULTPASSWORD: set_secret
 EMAILENCODING: utf-8
-CRYPT: TLS 
+CRYPT: TLS
 ]]></programlisting>
 </example>
 </para>

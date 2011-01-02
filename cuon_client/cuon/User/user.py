@@ -138,6 +138,8 @@ class User(defaultValues):
         self.prefDMS['fileformat'] = {}
         self.setFileFormats()
         self.Email = {}
+
+        self.Email['SSL']=False
         self.Email['From']='MyAddress@mail_anywhere.com'
         self.Email['Host']='mail_anywhere.com'
         self.Email['Port']='25'
@@ -146,6 +148,15 @@ class User(defaultValues):
         self.Email['Signatur']='NONE'
         self.Email['extPrg'] = 'evolution'
         self.Email['check_imap'] = False
+
+        self.Email['ImapSSL']=False
+        self.Email['ImapHost']='mail_anywhere.com'
+        self.Email['ImapPort']='25'
+        self.Email['ImapLoginUser']='login'
+        self.Email['ImapPassword']='secret'
+        self.Email['ImapCrypt']=0
+        self.Email['Crypt']=0
+        
         #Twitter
         self.Twitter = {}
         self.Twitter['TwitterName'] = 'cuonOne'
@@ -527,6 +538,25 @@ class User(defaultValues):
             self.Email['Port'] = result['email_user_port']
             self.Email['LoginUser'] = result['email_user_loginname']
             self.Email['Password'] = result['email_user_password']
+            
+            
+            self.Email['ImapHost'] = result['email_user_imap_host']
+            self.Email['ImapPort'] = result['email_user_imap_port']
+            self.Email['ImapLoginUser'] = result['email_user_imap_loginname']
+            self.Email['ImapPassword'] = result['email_user_imap_password']
+            
+            self.Email['Crypt'] = result['email_user_crypt']
+            self.Email['ImapCrypt'] = result['email_user_imap_crypt']
+            if result['user_imap_email_ssl'] =='t':
+                self.Email['ImapSSL'] = True
+            else:
+                self.Email['ImapSSL'] = False
+            if result['user_email_ssl'] =='t':
+                self.Email['SSL'] = True
+            else:
+                self.Email['SSL'] = False
+                
+                
             self.Email['Signatur'] = result['email_user_signatur']
             self.Email['extPrg'] = result['email_ext_prg']
             if result['user_check_imap'] =='t':

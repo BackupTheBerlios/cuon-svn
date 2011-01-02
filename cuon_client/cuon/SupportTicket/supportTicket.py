@@ -107,6 +107,31 @@ class supportticketwindow(chooseWindows):
         self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['articles_save'])
         self.addEnabledMenuItems('editSave','Ticket_Save1', self.dicUserKeys['articles_save'])
         
+        
+        # add comboboxes
+        liStatus,  liSeverity, liPriority, liReproduced, liPlatform= self.rpc.callRP('Support.getTicketComboBoxEntries',self.dicUser)
+        
+        
+        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
+        if cbTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbTypeOfGrave.set_model(liststore)
+            cbTypeOfGrave.set_text_column(0)
+            cbTypeOfGrave.show()
+
+        #same for the find field 
+        cbFindTypeOfGrave = self.getWidget('cbFindTypeOfGrave')
+        if cbFindTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbFindTypeOfGrave.set_model(liststore)
+            cbFindTypeOfGrave.set_text_column(0)
+            cbFindTypeOfGrave.show()
+        
+        
         self.tabSupportProject = 0
         self.tabSupportTicket = 1
         # start

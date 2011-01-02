@@ -24,7 +24,7 @@ import shelve
 import ConfigParser
 import bz2, base64
 import types
-
+import uuid
 
 class basics(xmlrpc.XMLRPC):
     def __init__(self):
@@ -109,7 +109,7 @@ class basics(xmlrpc.XMLRPC):
         self.EMAILUSER = 'jhamel'
         self.EMAILPASSWORD = None
         self.EMAILENCODING = 'utf-8'
-        self.EMAILCRYPT = None
+        self.EMAILLOGINCRYPT = ['No Encryption', 'Automaitic','Plain Text','Login', 'Cram-MD5','Digest-MD5'  ]
         
         self.CURRENCY_NAME = 'EUR'
         self.CURRENCY_SIGN = '€'
@@ -326,6 +326,7 @@ class basics(xmlrpc.XMLRPC):
         self.LIMITPROJECT = 400000
         self.LIMITORDER = 400000
         
+        # Crypt 
         
         try:
             self.cpServer = ConfigParser.ConfigParser()
@@ -995,3 +996,7 @@ class basics(xmlrpc.XMLRPC):
                     
                 
         return liReport
+ 
+    def getNewUUID(self):
+        return str(uuid.uuid4())
+        

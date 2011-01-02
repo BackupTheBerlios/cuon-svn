@@ -236,7 +236,17 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <para>Um bei einem Neustart ein automatisches Hochfahren aller benötigten Programme zu gewährleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</para>
  </sect2>
 
- 
+ <sect2 id="opt_files"><title>Optionale Programme</title>
+<para>Zusätzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para>
+<itemizedlist>
+   	<listitem><para> libots </para></listitem>
+	<listitem><para> pstotext  </para></listitem>
+
+<listitem><para> odt2txt  </para></listitem>
+<listitem><para> gocr  </para></listitem>
+</itemizedlist> 
+
+</sect2>
 
 <sect2 id="t9"><title>Client starten </title>
 
@@ -2039,7 +2049,69 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 </sect1>
 </chapter>
 <chapter><title>Benutzer Konfiguration </title>
-<sect1 id="k1"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Weitere Informationen zur Konfiguration. </para>
+<sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>
+<sect2 id="user_config_1"><title>Profile</title>
+<para>Hier werden die grundlegenden Einstellung für das Benutzer Profil eingestellt. Für Deutschland sollte als SQL-Encoding utf-8 und als sprache de eingestellt werden. </para>
+<figure id="up1">
+<title>Benutzer Einstellungen Profile</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences1.png"/>
+</figure>
+
+<para>Mit Zeitvorgabe kann man +/- Stunden eingeben, wenn der Cuon-Server in einer anderen Zeitzone ist. Evtl. auch Sommer/Winterzeit einstellen, wenn der Server dies nicht unterstützt oder anders schaltet.Als Beispiel steht der Server in den USA, muß ein deutscher Client diese Vorgaben anpassen. </para>
+<para>Der Schalter <emphasis>check imap Folder</emphasis> schaltet das automatische Übernehmen der Emails in das DMS ein.</para>
+<para>Mit dem Schalter <emphasis>maximize window</emphasis> werden die Hauptfenster im maximalen Modus gestartet, andernfalls in der Original Größe</para>
+</sect2>
+<sect2 id="user_config_2"><title>Communication</title>
+<para>Hier werden die zu benutzenden Programme für Email, Chat. Facebook usw.  festgelegt.</para>
+<figure id="up2">
+<title>Benutzer Einstellungen Communication</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences2.png"/>
+</figure>
+
+
+
+
+<sect2 id="user_config_3"><title>Ausführen</title>
+<para>Programme und Pfade für auszuführenden Programme, z.B. um Rechnungen direkt auf einen Drucker zu leiten</para>
+<figure id="up3">
+<title>Benutzer Einstellungen Ausführen</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences3.png"/>
+</figure>
+
+</sect2>
+</sect2>
+<sect2 id="user_config_4"><title>Email</title>
+<para>Bitte tragen Sie hier ihre email einstellungen ein, und zwar jeweils für den Imap-Server und dem SMTP-Server ( wichtig fürs DMS) </para>
+<figure id="up4">
+<title>Benutzer Einstellungen E-Mail</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences4.png"/>
+</figure>
+
+</sect2>
+
+
+
+
+
+</sect2>
+<sect2 id="user_config_5"><title>Scanner</title>
+<para>.</para>
+<figure id="up5">
+<title>Benutzer Einstellungen Scanner</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences5.png"/>
+</figure>
+
+</sect2>
+
+</sect2>
+<sect2 id="user_config_6"><title></title>
+<para>.</para>
+<figure id="up6">
+<title>Benutzer Einstellungen DMS</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences6.png"/>
+</figure>
+
+</sect2>
 </sect1>
 
 
@@ -2162,17 +2234,24 @@ die Daten als iCal Daten importieren kann.
 <para>
 Dies ist ein Kernstück des Systems. Neben den üblichen Einscannen von Dokumenten können auch OpenOffice?-Dokumente, PDF sowie Audio-Dateien, Bilder und Videodaten hinterlegt werden. Die anderen Module, z.B. Artikelverwaltung, lagern hier Ihre Daten in div. Formaten ab. Der Scanner wird über die Python-Image Libs eingebunden. Eine umfangreiche Suchfunktion ermöglicht das Finden in großen Datenbeständen. Diese Formate werden unterstützt:</para>
 <itemizedlist>
-   <listitem><para> * OpenOffice?-Dokumente (Textverarbeitung, Kalkulation, Zeichnung, Präsentation )</para></listitem>
-   <listitem><para> * Bilder in jpg, png, tiff und viele andere Formate</para></listitem>
-   <listitem><para> * Musik in mp3, ogg oder wav-Format</para></listitem>
-   <listitem><para> * Pdf-Dokumente</para></listitem>
-   <listitem><para> * Tex und LaTex? Dokumente</para></listitem>
-   <listitem><para> * Flowchart wie z.B. dia</para></listitem>
-   <listitem><para> * Googleearth</para></listitem>
-   <listitem><para> * Internet-Links</para></listitem>
-   <listitem><para> * Html-Dokumente </para></listitem>
+   <listitem><para>  OpenOffice?-Dokumente (Textverarbeitung, Kalkulation, Zeichnung, Präsentation )</para></listitem>
+   <listitem><para>  Bilder in jpg, png, tiff und viele andere Formate</para></listitem>
+   <listitem><para>  Musik in mp3, ogg oder wav-Format</para></listitem>
+   <listitem><para>  Pdf-Dokumente</para></listitem>
+   <listitem><para>  Tex und LaTex? Dokumente</para></listitem>
+   <listitem><para>  Flowchart wie z.B. dia</para></listitem>
+   <listitem><para>  Googleearth</para></listitem>
+   <listitem><para>  Internet-Links</para></listitem>
+   <listitem><para>  Html-Dokumente </para></listitem>
 
 </itemizedlist> 
+<para>Zur vollen Unterstützung der Textindizierung sollten auf dem Server diese Programme installiert sein:</para>
+<itemizedlist>
+   	<listitem><para> libots </para></listitem>
+	<listitem><para> pstotext  </para></listitem>
+
+</itemizedlist> 
+
 </sect1>
 <sect1 id="dms2"><title>Handhabung des DMS </title>
 <sect2 id="dms2_1"><title>Neues dokument einscannen </title>
@@ -2218,9 +2297,9 @@ Tipps und Tricks </para>
 <sect1 id="dms_imap">
 <title>Email und DMS</title>
 <para>Empfangene und versendete Emails können automatisch den entsprechenden Adressen zugeordnet werden. Dies geschieht über die Einrichtung des OrdnerS "AUTOMATIC_CUON" in dem Imap Postfach des Users. Dann wird in den Benutzereinstellungen die Checkbox "Check Imap Folder" angekreuzt. Von nun an wird jede 1/2 Stunde dieser Ordner durchsucht und die Emails eingeordnet </para>
-<para>Jede Email wird anhand der <emphasis>Von</emphasis> bzw <emphasis>An</emphasis> Email Adresse der entsprechenden Adresse im <link linkend='dms1'><emphasis>DMS</emphasis></link> zugeordnet und dort importiert. Gleiches geschieht mit Anhängen, sofern Sie erkannt werden.</para>
+<para>Jede Email wird anhand der <emphasis>Von</emphasis> bzw <emphasis>An</emphasis> Email Adresse der entsprechenden Adresse im <link linkend='dms1'><emphasis>DMS</emphasis></link> zugeordnet und dort importiert. Gleiches geschieht mit Anhängen, sofern Sie erkannt werden.Normalerweise werden Bilder, Office Dokumente, PDF usw. richtig erkannt.</para>
 <sect2 id="dms_imap_normal"><title>Normale Emails</title>
-<para>Sie können einfach eine Email von einem Kunden in den AUTOMATIC_CUON order reinkopieren oder Sie stellen in Ihren Email-Program einen Filter ein, der bestimmete Emails dahin kopiert. Dann wird die Mail ins DMS einsortiert.</para>
+<para>Sie können einfach eine Email von einer CUON Adresse ( oder an eine Adresse) in den AUTOMATIC_CUON Ordner reinkopieren oder Sie stellen in Ihren Email-Program einen Filter ein, der bestimmete Emails dahin kopiert. Dann wird die Mail ins DMS einsortiert. Ein weiterer Weg ist es, wenn die email-Adresse des Adressaten nicht in CUON gespeichert ist, dies über die Begriffe <emphasis>AUTOMATIC_CUON ADDRESS ID:</emphasis> bzw. <emphasis>AUTOMATIC_CUON PARTNER ID:</emphasis>, gefolgt von der entsprechenden ID,  zusätzlich in der Betreffzeile einzufügen, und dann in den Ordner AUTOMATIC_CUON reinkopieren</para>
 </sect2>
 <sect2 id="dms_imap_newsletter"> <title>Email Newsletter</title>
 <para>Hier kann z.B. einfach eine BCC Adresse und/oder ein Filter im Email Programm eingesetzt werden, der auf den Ordner <emphasis>AUTOMATIC_CUON</emphasis> zeigt und dann wird entsprechend die Newsletter bei den Kunden ins  <link linkend='dms1'><emphasis>DMS</emphasis></link> eingeordnet.</para>

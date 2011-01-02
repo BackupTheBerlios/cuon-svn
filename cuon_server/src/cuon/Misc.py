@@ -11,6 +11,12 @@ import commands
 import bz2
 import base64
 import types
+import bz2
+import zipfile
+   
+import os.path
+import shlex, subprocess
+
 
 
 class Misc(xmlrpc.XMLRPC, basics):
@@ -457,3 +463,79 @@ class Misc(xmlrpc.XMLRPC, basics):
 
         return 'Hallo'
 
+    def xmlrpc_getTextExtract(self, id, sFileSuffix,  dicUser):
+        s = None
+        sReturn = False
+        sText = None
+        imageData = None
+        if sFileSuffix in ['pdf', 'txt']:
+                
+            sSql = 'select document_image from dms where id = ' + `id`
+            liResult = self.oDatabase.xmlrpc_executeNormalQuery( sSql, dicUser )
+            if liResult:
+                s = liResult[0]['document_image']
+                try:
+                    b = base64.decodestring(s)
+                    imageData = bz2.decompress(b)
+                except Exception, param:
+                    print Exception, param
+                    imageData = None
+    
+            if imageData:
+                try: 
+                    ratio = "10"
+                    sOutFile = "/tmp/" + self.getNewUUID() 
+                    sInFile = "/tmp/" + self.getNewUUID() 
+                    f = open(sOutFile + '.' + sFileSuffix, "w")
+                    f.write(imageData)
+                    f.close()
+                    #print "files = ",  sOutFile,  sInFile
+                    shellcommand = shlex.split("/usr/share/cuon/cuon_server/bin/getOts.sh " +sFileSuffix+ " " +  ratio + " " + sInFile + " " + sOutFile)
+                    liStatus = subprocess.call(shellcommand)
+                    #print "ots command = ",  shellcommand, liStatus
+                    
+                    f = open(sInFile, "r")
+                    sText = f.read()
+                    f.close()
+                    #print "s = ",  sReturn
+                    #liStatus = commands.getstatusoutput(shellcommand)
+                    #print shellcommand, liStatus
+                except Exception,  param:
+                    print 'write files'
+                    print Exception,  param
+                
+            
+                if sText:
+                    try:
+                        sText = sText.decode('utf-8')
+                        #print 'utf-8'
+                    except Exception,  param:
+                        print 'try to decode'
+                        print Exception,  param
+                        
+                    sReturn = self.xmlrpc_updateDmsExtract(id, sText, dicUser)
+                
+        return sReturn
+
+
+    def xmlrpc_updateDmsExtract(self,  id, sExtract, dicUser):
+        #print 'update DMS = ',  id ,  sExtract
+       
+        liResult = False
+#        try:
+#            b = bz2.compress(sExtract)
+#
+#            imageData = base64.encodestring(b)
+#        except Exception, param:
+#            print Exception, param
+#            imageData = None
+            
+       # print 'base64 codiert',  imageData
+        if sExtract:
+            
+            sSql = "update dms set dms_extract = '" + sExtract + "' where id = " + `id`
+            liResult = self.oDatabase.xmlrpc_executeNormalQuery( sSql, dicUser )
+            
+        return liResult
+        
+        

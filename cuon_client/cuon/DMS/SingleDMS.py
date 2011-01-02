@@ -70,7 +70,8 @@ class SingleDMS(SingleData):
         self.sub2 = None
         self.sub3 = None
         self.sub4 = None
-
+        self.Extract = None
+        
     def createTmpFile(self, sEXT):
         print '#############################################################'
         print 'sExt = ', sEXT
@@ -160,6 +161,13 @@ class SingleDMS(SingleData):
         self.sub2 = None
         self.sub3 = None
         self.sub4 = None
+        try:
+            dicValues['dms_extract'] = [self.Extract.get_text(self.Extract.get_start_iter(), self.Extract.get_end_iter(), 1), 'text']   
+        except Exception,  param:
+            print Exception,  param
+            
+            
+            
             
         return dicValues
     def loadDocument(self):
@@ -182,7 +190,7 @@ class SingleDMS(SingleData):
             self.fillOtherEntries(self.firstRecord)
             
     def fillOtherEntries(self, oneRecord):
-        
+        self.Extract.set_text(oneRecord['dms_extract'])
         self.fileFormat = oneRecord['file_format']
         self.fileSuffix = oneRecord['file_suffix']
         self.ModulNumber = oneRecord['insert_from_module']

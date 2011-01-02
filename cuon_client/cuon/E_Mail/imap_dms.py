@@ -33,21 +33,20 @@ class imap_dms(constants,  dumps):
         dumps.__init__(self)
         
         self.dicUser = dicUser
-        self.imap_server = dicUser['Email']['Host']
-        self.imap_server = dicUser['Email']['Host']
-        self.imap_port = dicUser['Email']['Port']
+        self.imap_server = dicUser['Email']['ImapHost']
+        self.imap_port = dicUser['Email']['ImapPort']
         # imap username (if blank, you will be prompted at startup)
-        self.imap_user = dicUser['Email']['LoginUser']
+        self.imap_user = dicUser['Email']['ImapLoginUser']
         
         # imap password (if blank, you will be prompted at startup)
-        self.imap_password = dicUser['Email']['Password']
+        self.imap_password = dicUser['Email']['ImapPassword']
         
         #seconds to sleep between each check
         self.sleep_time = 60
         
         # if 1 use SSL, otherwise don't
-        self.use_ssl=False
-        
+        self.use_ssl=dicUser['Email']['ImapSSL']
+        self.use_crypt=dicUser['Email']['ImapCrypt']
         # number of seconds to display message
         self.display_timeout=5
         
@@ -88,23 +87,41 @@ class imap_dms(constants,  dumps):
         if self.dicUser['Email'].has_key('check_imap') and self.dicUser['Email']['check_imap'] == True:
             print 'Imap check is True'
             try:
-                    
-                M = imaplib.IMAP4(self.imap_server)
                 
-            except:
-                try:
-                    M = imaplib.IMAP4_SSL(self.imap_server)
+                if self.use_ssl:
+                    if  self.imap_port == 0:
+                        M = imaplib.IMAP4_SSL(self.imap_server, self.imap_port)
+                    else: 
+                        M = imaplib.IMAP4_SSL(self.imap_server)
+                        
+                else:
+                    if  self.imap_port == 0:
+                        M = imaplib.IMAP4(self.imap_server)
+                    else:
+                        M = imaplib.IMAP4(self.imap_server,  self.imap_port)
+
                     
-                except Exception, e:
-                    #print sys.exc_info()[0]
-                    print('IMAP login error: ', e)
-                    M = None
-                    
+            except Exception, e:
+                #print sys.exc_info()[0]
+                print('IMAP login error: ', e)
+                M = None
+                
                     
             
         try:
             if M:
-                res = M.login(self.imap_user, self.imap_password)
+                if  self.use_crypt < 1 or self.use_crypt == 2 or self.use_crypt == 3:
+                    res = M.login(self.imap_user, self.imap_password)
+                elif self.use_crypt == 4:
+                    res = M.login_cram_md5(self.imap_user, self.imap_password)
+                elif self.use_crypt == 1:   
+                    try:
+                        res = M.login(self.imap_user, self.imap_password)
+                    except:
+                        res = M.login_cram_md5(self.imap_user, self.imap_password)
+                else:
+                    res = M.login(self.imap_user, self.imap_password)
+                    
                 # Get inbox status
                 #mboxes = M.list()
                 #imap.SelectMailbox("Inbox")
@@ -244,7 +261,7 @@ class imap_dms(constants,  dumps):
             sFile = part.get_filename()
             print 'sFile = ',  sFile
             if sFile:
-                iFileExt = sFile.find('.')
+                iFileExt = sFile.rfind('.')
                 if iFileExt > -1:
                     sType = sFile[iFileExt +1:]
             else:
@@ -268,20 +285,29 @@ class imap_dms(constants,  dumps):
         #print 'sTo = ',  sTo
         #print 'sFrom = ',  sFrom
         #print 'sSubject = ',  sSubject
-        
+        dms_id = 0
         #print part.get_payload() # prints the raw text
         if liAddressID and liAddressID not in ['NONE', 'ERROR']:
             for id in liAddressID:
                 if id > 0:
                     print ' ID = ',  id
-                    self.save2DMS(fname, sType, 'Address',  id,  sSubject,  sFrom,  sTo,  sDate)    
+                    dms_id = self.save2DMS(fname, sType, 'Address',  id,  sSubject,  sFrom,  sTo,  sDate)    
         if liPartnerID and liPartnerID not in ['NONE', 'ERROR']:
             for id in liPartnerID:
                 if id > 0:
                     print ' ID Partner = ',  id
-                    self.save2DMS(fname, sType, 'Partner',  id,  sSubject,  sFrom,  sTo, sDate)         
-             
-             
+                    dms_id = self.save2DMS(fname, sType, 'Partner',  id,  sSubject,  sFrom,  sTo, sDate)         
+        print 'dms_id = ', dms_id
+            
+        if dms_id:
+            print 'dms stuff = ', dms_id,  sType
+            
+            s = self.rpc.callRP('Misc.getTextExtract',  dms_id, sType,  self.dicUser)
+            
+            print 'extract = ',  s
+            
+            
+            
     def save2DMS(self,  fname, sType, Modul , id,  sSubject,  sFrom,  sTo,  sDate):
         print'load = ',   fname
         
@@ -301,5 +327,8 @@ class imap_dms(constants,  dumps):
         else:
             self.singleDMS.sub3 = _('Attachment Type: ') + sType
         
-        self.singleDMS.save(['document_image'])
+        newID = self.singleDMS.save(['document_image'])
         self.singleDMS.sub4 = _('Email Date: ') + sDate
+
+        return newID
+        

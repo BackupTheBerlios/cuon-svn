@@ -1,6 +1,71 @@
 <entries_for_table>
     <table>
         <table_name>preferences</table_name>
+        
+        
+         <entry>
+            <name>cbImapSSL</name>
+            <type>checkbox</type>
+            <size>1</size>
+            <verify_type>bool</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>user_imap_email_ssl</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+        
+        
+             <entry>
+            <name>eImapUserEmailName</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_imap_loginname</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+            <entry>
+            <name>eImapUserEmailPassword</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_imap_password</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+            <entry>
+            <name>eImapUserEmailHost</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>string</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_imap_host</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+            <entry>
+            <name>eImapUserEmailPort</name>
+            <type>textline</type>
+            <size>255</size>
+            <verify_type>int</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_imap_port</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+          <entry>
+            <name>cbSSL</name>
+            <type>checkbox</type>
+            <size>1</size>
+            <verify_type>bool</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>user_email_ssl</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+        
         <entry>
             <name>eUserEmailAddress</name>
             <type>textline</type>
@@ -48,6 +113,26 @@
             <verify_type>int</verify_type>
             <create_sql>1</create_sql>
             <sql_field>email_user_port</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+           <entry>
+            <name>cbCrypt</name>
+            <type>checkbox</type>
+            <size>2</size>
+            <verify_type>int</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_crypt</sql_field>
+            <bg_color>0</bg_color>
+            <fg_color>0</fg_color>
+        </entry>
+           <entry>
+            <name>cbImapCrypt</name>
+            <type>checkbox</type>
+            <size>2</size>
+            <verify_type>int</verify_type>
+            <create_sql>1</create_sql>
+            <sql_field>email_user_imap_crypt</sql_field>
             <bg_color>0</bg_color>
             <fg_color>0</fg_color>
         </entry>

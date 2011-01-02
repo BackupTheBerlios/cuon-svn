@@ -774,6 +774,87 @@
       <default>False</default>
       <comment>check folder AUTOMATIC_CUON</comment>
     </field>
+      <field>
+      <name>user_email_ssl</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>False</default>
+      <comment>user email configuration</comment>
+    </field>
+      <field>
+      <name>user_imap_email_ssl</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>1</size>
+      <default>False</default>
+      <comment>user email configuration</comment>
+    </field>
+    
+     <field>
+      <name>email_user_imap_host</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_imap_port</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_imap_loginname</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+    <field>
+      <name>email_user_imap_password</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+     <field>
+      <name>email_user_imap_crypt</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
+     <field>
+      <name>email_user_crypt</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment></comment>
+    </field>
   </table>
     
   <table>
@@ -873,6 +954,8 @@
     </field>
     
     </table>
+    
+    
      <table>
     <nameOfTable>mindmap</nameOfTable>
     <x>22</x>

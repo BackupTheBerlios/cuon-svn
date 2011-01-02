@@ -3465,6 +3465,9 @@
       <comment />
     </field>
   </table>
+  
+  
+  <!--table: DMS-->
   <table>
     <nameOfTable>dms</nameOfTable>
     <specials>inherits (t_standard);</specials>
@@ -3812,7 +3815,16 @@
       <comment />
     </field>
     
-    
+      <field>
+      <name>dms_extract</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>30000</size>
+      <default />
+      <comment />
+    </field>
   </table>
   
   <!--terms of payment-->

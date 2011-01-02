@@ -117,7 +117,16 @@ class plantlists(windows):
     def readSearchDatafields(self):
         liReturn = []
         nRow = 0
-        sName = "grave_plant_list_standard.xml"
+        sGyID = self.getActiveText(self.getWidget('cbGraveyard'))
+        try:
+            gyID = sGyID[sGyID.find('###')+ 3:].strip()
+        except:
+            gyID = 0
+            
+        liReturn.append( gyID)
+        liReturn.append( self.getWidget('eGraveFrom').get_text() )
+        liReturn.append( self.getWidget('eGraveTo').get_text() )
         
+        sName = "grave_plant_list_standard.xml"
         return liReturn,  nRow,  sName
         
