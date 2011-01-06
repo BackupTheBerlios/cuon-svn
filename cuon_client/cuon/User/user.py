@@ -475,7 +475,12 @@ class User(defaultValues):
 
     def getUser(self, result):
         try:
-             
+            if result['user_win_max'] == 't':
+                self.prefWindow['MainMaximize'] = True
+            else:
+                self.prefWindow['MainMaximize'] = False
+                
+            
             self.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']
             self.prefPath['StandardSupply1'] =  result['path_to_docs_supply']
             self.prefPath['StandardPickup1'] =  result['path_to_docs_pickup']

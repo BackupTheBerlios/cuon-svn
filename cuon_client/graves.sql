@@ -24,12 +24,13 @@
      ' LANGUAGE 'plpgsql'; 
 
 DROP FUNCTION fct_getGravePlantListValues(IN dicSearchfields text [], IN iRows int ) CASCADE ;
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text,   iRows int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text,  iRows int ) returns setof record AS '
  DECLARE
      iClient int ;
     r record;
     searchsql text := '''';
-  
+   
+    
     
     BEGIN
         -- graveyard.lastname 
@@ -48,6 +49,14 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
             searchsql := searchsql  || '' and grave.lastname between '''' || grave_lastname_from || '''' and '''' || grave_lastname_to   || '''' '' ;
         
         END IF ;
+        
+        IF char_length(eSequentialNumberFrom) > 0 AND char_length(eSequentialNumberTo) > 0 THEN 
+           
+            searchsql := searchsql  || '' and pos_number between '' || eSequentialNumberFrom || '' and '' || eSequentialNumberTo || '' '' ;
+        END IF ;
+        
+        
+        
         
         searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.shortname, grave.pos_number, grave.lastname, grave.firstname '';
 

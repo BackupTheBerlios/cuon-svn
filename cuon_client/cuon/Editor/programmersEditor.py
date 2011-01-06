@@ -181,11 +181,4 @@ class programmerseditor(editorwindow):
         newPage = self.nbEditor.append_page(Scrolledwindow, label)
         self.textbuffers.append([textbuffer, view, title,newPage])
 
-    def checkMimeType(self, sFile):
-        sSuffix = sFile[sFile.rfind('.')+1:]
-        print 'sSuffix', sSuffix
-        for key in self.MimeType.keys():
-            if self.MimeType[key] == sSuffix:
-                print 'new MimeType = ', key
-                return key
-        return 'text/plain'
+    

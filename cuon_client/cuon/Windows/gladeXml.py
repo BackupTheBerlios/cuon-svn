@@ -56,7 +56,7 @@ class gladeXml(defaultValues):
         self.dicAccelKeys['save'] = 's'
         self.dicAccelKeys['new'] = 'n'
         self.dicAccelKeys['print'] = 'p'
-        
+        self.lm_manager = None
 
 
         self.clipboard = gtk.clipboard_get()
@@ -74,24 +74,17 @@ class gladeXml(defaultValues):
             lm = gtksourceview.SourceLanguagesManager()
             textbufferMisc = gtksourceview.SourceBuffer()
         except:
+            print 'no sourcebuffer found'
             textbufferMisc = gtksourceview.Buffer()
             lm = gtksourceview.language_manager_get_default()
 
         
         
         textbufferMisc.set_data('languages-manager', lm)
-        manager = textbufferMisc.get_data('languages-manager')
+        self.lm_manager = textbufferMisc.get_data('languages-manager')
         
+        textbufferMisc = self.setTextBufferLanguage(textbufferMisc,  mime_type,  highlight)
         
-        try:
-            language = manager.get_language_from_mime_type(mime_type)
-            textbufferMisc.set_highlight(highlight)
-        except:
-            language = manager.guess_language(content_type=mime_type)
-            textbufferMisc.set_highlight_syntax(highlight)
-        
-        
-        textbufferMisc.set_language(language)
         try:
             viewMisc = gtksourceview.SourceView(textbufferMisc)
         except:
@@ -101,6 +94,21 @@ class gladeXml(defaultValues):
         
         return textbufferMisc,  viewMisc
         
+    def setTextBufferLanguage(self, textbufferMisc,  mime_type = 'text/plain',  highlight=True):    
+
+        if mime_type == 'text/plain':
+            highlight = False
+            
+        try:
+            language = self.lm_manager.get_language_from_mime_type(mime_type)
+            textbufferMisc.set_highlight(highlight)
+        except:
+            language = self.lm_manager.guess_language(content_type=mime_type)
+            textbufferMisc.set_highlight_syntax(highlight)
+        
+        textbufferMisc.set_language(language)
+        
+        return textbufferMisc
         
     def setTextbuffer(self, widget, liField):
         buffer = gtk.TextBuffer(None)
@@ -128,6 +136,18 @@ class gladeXml(defaultValues):
         buffer.set_text(text)
         widget.set_buffer(buffer)
         
+    def checkMimeType(self, sFile):
+        sSuffix = sFile[sFile.rfind('.')+1:].lower()
+        print 'sSuffix', sSuffix
+        #print self.MimeType
+        for key in self.MimeType.keys():
+            print key,  self.MimeType[key] 
+            if sSuffix in self.MimeType[key] :
+                print 'new MimeType = ', key
+                return key
+           
+        return 'text/plain'
+
     def clearTextBuffer(self, widget):
         bText = ''
         buffer = widget.get_buffer()

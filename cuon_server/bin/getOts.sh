@@ -10,7 +10,7 @@ case $1 in
         ots -r $2 -o $3 $4.txt 
     ;;
     
-    odt) odt2text --output=$4.txt $4.$1
+    odt) odt2txt --output=$4.txt $4.$1
      ots -r $2 -o $3 $4.txt 
     ;;
     

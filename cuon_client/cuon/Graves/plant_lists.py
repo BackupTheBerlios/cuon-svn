@@ -126,6 +126,8 @@ class plantlists(windows):
         liReturn.append( gyID)
         liReturn.append( self.getWidget('eGraveFrom').get_text() )
         liReturn.append( self.getWidget('eGraveTo').get_text() )
+        liReturn.append( self.getWidget('eSequentialNumberFrom').get_text() )
+        liReturn.append( self.getWidget('eSequentialNumberTo').get_text() )
         
         sName = "grave_plant_list_standard.xml"
         return liReturn,  nRow,  sName

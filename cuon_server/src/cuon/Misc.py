@@ -468,7 +468,7 @@ class Misc(xmlrpc.XMLRPC, basics):
         sReturn = False
         sText = None
         imageData = None
-        if sFileSuffix in ['pdf', 'txt']:
+        if sFileSuffix in ['pdf', 'txt', 'odt']:
                 
             sSql = 'select document_image from dms where id = ' + `id`
             liResult = self.oDatabase.xmlrpc_executeNormalQuery( sSql, dicUser )

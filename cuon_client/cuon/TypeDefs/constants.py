@@ -76,34 +76,38 @@ class constants:
         
         self.MimeType = {}
         
-        self.MimeType['image/gif'] = 'gif'
-        self.MimeType['text/plain'] = 'txt'
-        self.MimeType['text/html'] = 'html'
-        self.MimeType['image/jpeg'] = 'jpg'
-        self.MimeType['application/pdf'] = 'pdf'
+        self.MimeType['image/gif'] =  ['gif']
+        self.MimeType['text/plain'] = [ 'txt']
+        self.MimeType['text/html'] =  ['html']
+        self.MimeType['image/jpeg'] =  ['jpg']
+        self.MimeType['application/pdf'] =  ['pdf']
         
-        self.MimeType['application/msword'] = 'doc'
-        self.MimeType['application/vnd.oasis.opendocument.text'] = 'odt'
-        self.MimeType['application/vnd.oasis.opendocument.spreadsheet'] = 'ods'
-        self.MimeType['application/vnd.oasis.opendocument.graphics'] = 'odg'
-        self.MimeType['application/vnd.oasis.opendocument.presentation'] = 'odp'
-        self.MimeType['application/x-bzip'] = 'bz'
-        self.MimeType['application/x-bzip2'] = 'bz2'
-        self.MimeType['application/x-compressed'] = 'zip'
-        self.MimeType['application/x-zip-compressed'] = 'zip'
-        self.MimeType['application/zip'] = 'zip'
-        self.MimeType['multipart/x-zip'] = 'zip'
-        self.MimeType['application/excel'] = 'xls'
-        self.MimeType['application/vnd.ms-excel'] = 'xls'
-        self.MimeType['application/x-excel'] = 'xls'
-        self.MimeType['application/x-msexcel'] = 'xls'
-        self.MimeType['image/png'] = 'png'
-        self.MimeType['image/tiff'] = 'tiff'
-        self.MimeType['image/bmp'] = 'bmp'
-        self.MimeType['image/x-windows-bmp'] = 'bmp'
-        self.MimeType['text/x-python'] = 'py'
-        self.MimeType['application/x-php'] = 'php'
-                
+        self.MimeType['application/msword'] =  ['doc']
+        self.MimeType['application/vnd.oasis.opendocument.text'] =  ['odt']
+        self.MimeType['application/vnd.oasis.opendocument.spreadsheet'] = [ 'ods']
+        self.MimeType['application/vnd.oasis.opendocument.graphics'] = [ 'odg']
+        self.MimeType['application/vnd.oasis.opendocument.presentation'] = [ 'odp']
+        self.MimeType['application/x-bzip'] =  ['bz']
+        self.MimeType['application/x-bzip2'] = [ 'bz2']
+        self.MimeType['application/x-compressed'] =  ['zip']
+        self.MimeType['application/x-zip-compressed'] =  ['zip']
+        self.MimeType['application/zip'] = [ 'zip']
+        self.MimeType['multipart/x-zip'] =  ['zip']
+        self.MimeType['application/excel'] =  ['xls']
+        self.MimeType['application/vnd.ms-excel'] =  ['xls']
+        self.MimeType['application/x-excel'] = [ 'xls']
+        self.MimeType['application/x-msexcel'] =  ['xls']
+        self.MimeType['image/png'] =  ['png']
+        self.MimeType['image/tiff'] =  ['tiff']
+        self.MimeType['image/bmp'] =  ['bmp']
+        self.MimeType['image/x-windows-bmp'] =  ['bmp']
+        self.MimeType['text/x-python'] =  ['py']
+        self.MimeType['application/x-php'] =  ['php']
+        self.MimeType['text/x-ini-file'] = ['ini', 'cfg']
+        self.MimeType['application/xml'] = ['xml']
+        
+        
+        
 #Perl   application/x-perl
 #Ada    text/x-ada
 #C  text/x-csrc;text/x-chdr

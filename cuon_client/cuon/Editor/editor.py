@@ -1,8 +1,13 @@
 import gtk.glade
 import sys, os
 import os.path
-
+import locale, gettext
+locale.setlocale (locale.LC_NUMERIC, '')
 import string
+
+import sys
+import re
+
 GtkSV = True
 try:
     import gtksourceview
@@ -16,6 +21,8 @@ except:
     
 
 from cuon.Windows.windows  import windows 
+import cuon.Misc.cuon_dialog
+
 
 class editorwindow(windows):
     def __init__(self, dicFilename=None, servermod=False, prgmode = False):
@@ -30,13 +37,19 @@ class editorwindow(windows):
         self.oUser = self.loadObject('User')
         self.closeDB()
         if servermod:
-            self.xml = gtk.glade.XML('../usr/share/cuon/glade/editor.glade2')
-            self.setXmlAutoconnect()
+            try:
+                self.xml = gtk.Builder()
+                self.xml.add_from_file('../usr/share/cuon/glade/editor.glade2')
+                self.xml.set_translation_domain('cuon')
+            except:
+                self.xml = gtk.glade.XML('../usr/share/cuon/glade/editor.glade2')
+                
         else:
             if prgmode:
                 self.loadGlade('prgeditor.xml')
             else:
                 self.loadGlade('editor.xml')
+        self.setXmlAutoconnect()
         self.win1 = self.getWidget('EditorMainwindow')
         if prgmode:
             pass
@@ -44,7 +57,8 @@ class editorwindow(windows):
                 
             if GtkSV:
                 self.textbuffer,  self.view = self.getNotesEditor(mime_type = 'text/x-ini-file')
-                
+                self.view.set_indent_on_tab(True)
+                self.view.set_auto_indent(True)
                 Vbox = self.getWidget('vbox1')
                 Scrolledwindow = self.getWidget('scrolledwindow1')
                 Scrolledwindow.remove(self.getWidget('viewport1'))
@@ -78,7 +92,7 @@ class editorwindow(windows):
         
     def on_save1_activate(self, event):
         self.save_current_file()
-        
+   
     def get_text(self):
         "Returns the current text in the text area"
         return self.textbuffer.get_text(self.textbuffer.get_start_iter(), self.textbuffer.get_end_iter())
@@ -145,7 +159,14 @@ class editorwindow(windows):
             infile.close()
             #self.dicCurrentFilename = filename
             self.win1.set_title(self.dicCurrentFilename['NAME'])
-    
+            #sSuffix = dicFilename['NAME'] [dicFilename['NAME'] .rfind('.')+1:len(dicFilename['NAME'] )]
+            #print 'SSuffix = ',  sSuffix.lower()
+            #dicSuffix = {'xml':'application/xml'}
+            
+                
+            self.textbuffer = self.setTextBufferLanguage(self.textbuffer,self.checkMimeType(dicFilename['NAME']) ,   True)
+               
+
     def save_as_item_clicked(self, data=None):
         "Creates a file chooser and allows the user to save to it"
         self.filesel = gtk.FileSelection("Save As...")
@@ -207,8 +228,23 @@ class editorwindow(windows):
         
     def on_paste1_activate(self, event):
         self.textbuffer.paste_clipboard(self.clipboard,None,  self.view.get_editable())
+ 
+    def on_quicksearch_activate(self, event):
+        print 'quicksearch'
+        cd = cuon.Misc.cuon_dialog.cuon_dialog()
+        ok, self.findValue = cd.inputLine( 'Quick Search', 'Search for this word')
+        print ok,  self.findValue
+        if self.findValue:
+           position = self.searchText(self.findValue, None)
+           
 
+    def on_search_again(self,  event):
+        position = self.searchText(self.findValue, self.match_end)
         
+    # Menu Tools
+    
+    def on_xml_beautifier_activate(self, event):
+        self.xmlBeautifier(self.get_text())
     # toolbar buttons
     def on_tbUndo_clicked(self, event):
         self.activateClick('undo1')
@@ -225,6 +261,37 @@ class editorwindow(windows):
     def on_tbPaste_clicked(self, event):
         self.activateClick('paste1')
            
+    def on_tbQuickSearch_clicked(self, event):
+        print 'tb search'
+        self.activateClick('QuickSearch')
+           
+    def on_tbFindNext_clicked(self, event):
+        print 'tb search again'
+        self.activateClick('FindNext')
+        
+        
+    def searchText(self, sFind,  iter = None):
+        if not iter:
+            start_iter = self.textbuffer.get_start_iter()
+        else:
+            start_iter = iter
+        
+        position = gtksourceview.iter_forward_search(start_iter, sFind, gtksourceview.SEARCH_CASE_INSENSITIVE)
+
+        try:
+            
+            
+            print position
+            self.match_start, self.match_end = position
+    
+            self.textbuffer.place_cursor(self.match_start)
+            self.textbuffer.select_range(self.match_start, self.match_end)
+            self.view.scroll_to_iter(self.match_start, 0.0)
+        except:
+            self.match_start = None
+            self.findValue = None
+            
+        return position
         
     def plugin_item_clicked(self, data=None):
         "Creates a file chooser and allows user to open a file with it"
@@ -274,3 +341,41 @@ class editorwindow(windows):
         self.edit_menu.append(self.word_wrap_item)  
         self.word_wrap_item.show()
 
+    
+
+    def xmlBeautifier(self,  data):
+        preserveCDATA = 1
+        intendCols = 4
+        
+        
+        
+        fields = re.split('(<.*?>)',data)
+        level = 0
+        cdataFlag=0
+        s = ''
+        if len(fields) > 2:
+            for f in fields:
+                if f.strip() == '': continue
+            
+                if preserveCDATA :
+                    # rejoin splitted CDATA-Tags which contains HTML-Tags
+                    if f[:8] == '' :
+                        cdataFlag=0
+                        s +=  ' '*(level*intendCols) + cdata + '\n'
+                        continue
+            
+                    if f[0]=='<' and f[1] != '/' and f[1] != '!' :
+                        s += ' '*(level*intendCols) + f + '\n'
+                        level = level + 1
+                        if f[-2:] == '/>':
+                            level = level - 1
+            
+                    elif f[:2]=='</':
+                        level = level - 1
+                        s += ' '*(level*intendCols) + f + '\n'
+            
+                    else:
+                        s +=  ' '*(level*intendCols) + f + '\n'
+    
+            self.textbuffer.set_text(s)
+        return True

@@ -225,7 +225,7 @@ class imap_dms(constants,  dumps):
                                     sType = 'Stream'    
                                 else:
                                     try:
-                                        sType = self.MimeType[part.get_content_type()]
+                                        sType = self.MimeType[part.get_content_type()][0]
                                     except:
                                         print 'error to find part type = ',  part.get_content_type()
                                         sType = None
@@ -304,7 +304,7 @@ class imap_dms(constants,  dumps):
             
             s = self.rpc.callRP('Misc.getTextExtract',  dms_id, sType,  self.dicUser)
             
-            print 'extract = ',  s
+            #print 'extract = ',  s
             
             
             

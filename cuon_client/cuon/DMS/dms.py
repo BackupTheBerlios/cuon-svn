@@ -45,7 +45,7 @@ import re
 import binascii
 import cuon.DMS.documentTools
 import base64
-import cuon.Misc.cuon_dialog
+
 GtkSV = True 
 try:
     import gtksourceview
