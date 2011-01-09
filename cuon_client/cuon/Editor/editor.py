@@ -246,6 +246,22 @@ class editorwindow(windows):
     def on_xml_beautifier_activate(self, event):
         self.xmlBeautifier(self.get_text())
     # toolbar buttons
+    
+    def on_tbQuit_clicked(self, event):
+        self.activateClick('quit1')
+        
+    
+    def on_tbNew_clicked(self, event):
+        self.activateClick('new1')
+        
+        
+    def on_tbOpen_clicked(self, event):
+        self.activateClick('open1')
+    
+    def on_tbSave_clicked(self, event):
+        self.activateClick('save1')
+        
+        
     def on_tbUndo_clicked(self, event):
         self.activateClick('undo1')
         

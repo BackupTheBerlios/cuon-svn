@@ -47,6 +47,7 @@ class User(defaultValues):
         # setting for locales
         self.userLocales ='de'
         self.userEncoding = 'utf-8'
+        self.userShowNews = True
         self.Encode = True
         self.userPdfEncoding = 'latin-1'
         self.userType = 'cuon'        
@@ -419,6 +420,7 @@ class User(defaultValues):
         set self.dicuser to actual values
         '''
         self.dicUser['Locales'] = self.userLocales
+        self.dicUser['showNews'] = self.userShowNews
         self.dicUser['Database'] = self.Database
         self.dicUser['Encoding'] = self.userEncoding
         self.dicUser['Encode'] = self.Encode
@@ -462,6 +464,7 @@ class User(defaultValues):
         self.sqlDicUser['userType'] = self.userType
         self.sqlDicUser['client'] = self.client
         self.sqlDicUser['Locales'] = self.userLocales
+        
         self.sqlDicUser['Database'] = self.Database
         self.sqlDicUser['Encoding'] = self.userEncoding
         self.sqlDicUser['Encode'] = self.Encode
@@ -475,10 +478,18 @@ class User(defaultValues):
 
     def getUser(self, result):
         try:
-            if result['user_win_max'] == 't':
-                self.prefWindow['MainMaximize'] = True
+            
+            
+            self.userLocales =  result['locales']
+            if result['user_show_news'] == 'f' :
+                self.userShowNews = False
             else:
+                self.userShowNews = True
+            
+            if result['user_win_max'] == 'f':
                 self.prefWindow['MainMaximize'] = False
+            else:
+                self.prefWindow['MainMaximize'] = True
                 
             
             self.prefPath['StandardInvoice1'] =  result['path_to_docs_invoices']

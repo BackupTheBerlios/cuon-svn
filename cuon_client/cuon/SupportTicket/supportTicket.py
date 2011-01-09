@@ -111,25 +111,26 @@ class supportticketwindow(chooseWindows):
         # add comboboxes
         liStatus,  liSeverity, liPriority, liReproduced, liPlatform= self.rpc.callRP('Support.getTicketComboBoxEntries',self.dicUser)
         
+        print liStatus,  '\n\n',  liSeverity,  '\n\n', liPriority,  '\n\n', liReproduced ,  '\n\n', liPlatform,  '\n\n'
         
-        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
-        if cbTypeOfGrave:
+        cbTypeOfStatus = self.getWidget('cbTicketStatus')
+        if cbTypeOfStatus:
             liststore = gtk.ListStore(str)
-            for TypeOfGrave in liTypeOfGrave:
-                liststore.append([TypeOfGrave])
-            cbTypeOfGrave.set_model(liststore)
-            cbTypeOfGrave.set_text_column(0)
-            cbTypeOfGrave.show()
+            for TypeOfStatus in liStatus:
+                liststore.append([TypeOfStatus])
+            cbTypeOfStatus.set_model(liststore)
+            cbTypeOfStatus.set_text_column(0)
+            cbTypeOfStatus.show()
 
         #same for the find field 
-        cbFindTypeOfGrave = self.getWidget('cbFindTypeOfGrave')
-        if cbFindTypeOfGrave:
+        cbFindTypeOfStatus = self.getWidget('cbFindStatus')
+        if cbFindTypeOfStatus:
             liststore = gtk.ListStore(str)
-            for TypeOfGrave in liTypeOfGrave:
-                liststore.append([TypeOfGrave])
-            cbFindTypeOfGrave.set_model(liststore)
-            cbFindTypeOfGrave.set_text_column(0)
-            cbFindTypeOfGrave.show()
+            for TypeOfStatus in liStatus:
+                liststore.append([TypeOfStatus])
+            cbFindTypeOfStatus.set_model(liststore)
+            cbFindTypeOfStatus.set_text_column(0)
+            cbFindTypeOfStatus.show()
         
         
         self.tabSupportProject = 0

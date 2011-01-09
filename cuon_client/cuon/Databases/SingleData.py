@@ -655,7 +655,7 @@ class SingleData(gladeXml, logs):
                             widget.set_active(int(sValue))
                         else:
                             # -1 don`t function -- proof later
-                            widget.set_active(0)
+                            widget.set_active(-1)
                     elif string.count(str(widget), "GtkCheckButton") > 0 :
                         self.printOut( 'Bool-Value from Database', sValue)
                         self.printOut( "GtkCheckButton ", entry.getName())

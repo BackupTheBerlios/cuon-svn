@@ -105,9 +105,15 @@ class constants:
         self.MimeType['application/x-php'] =  ['php']
         self.MimeType['text/x-ini-file'] = ['ini', 'cfg']
         self.MimeType['application/xml'] = ['xml']
-        
-        
-        
+        self.MimeType['text/css'] = ['css']
+        self.MimeType['C++    text/x-c++src;text/x-c++hdr'] = ['cpp', 'hpp']
+        self.MimeType['text/x-sql'] = ['sql']
+        self.MimeType['text/x-lua'] = ['lua']
+        self.MimeType['text/x-java'] = ['java']
+        self.MimeType['text/x-makefile'] = ['make']
+        self.MimeType['application/x-perl'] = ['pl']
+        self.MimeType['text/x-csrc;text/x-chdr'] = ['c', 'h']
+
 #Perl   application/x-perl
 #Ada    text/x-ada
 #C  text/x-csrc;text/x-chdr
@@ -145,56 +151,7 @@ class constants:
 #VHDL   text/x-vhdl
 #XML    application/xml
  #      self.MimeType['multipart/signed'] = 'txt'
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
-#        self.MimeType[''] = ''
+
         
 
 

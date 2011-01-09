@@ -258,11 +258,11 @@
             <property name="visible">True</property>
             <property name="toolbar_style">icons</property>
             <child>
-              <object class="GtkToolButton" id="toolbutton1">
+              <object class="GtkToolButton" id="tbQuit">
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">Quit</property>
                 <property name="stock_id">gtk-quit</property>
-                <signal name="clicked" handler="on_quit1_activate"/>
+                <signal name="clicked" handler="on_tbQuit_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -270,11 +270,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="toolbutton2">
+              <object class="GtkToolButton" id="tbNew">
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">New</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-new</property>
+                <signal name="clicked" handler="on_tbNew_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>

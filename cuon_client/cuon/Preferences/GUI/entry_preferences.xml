@@ -122,5 +122,15 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+     <entry>
+      <name>cbShowNews</name>
+      <type>checkbox</type>
+      <size>10</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>user_show_news</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
   </table>
 </entries_for_table>

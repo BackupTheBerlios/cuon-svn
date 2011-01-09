@@ -7,8 +7,8 @@
     <property name="height_request">720</property>
     <property name="visible">True</property>
     <property name="title" translatable="yes">Client PyCuon</property>
-    <property name="default_width">662</property>
-    <property name="default_height">142</property>
+    <property name="default_width">1024</property>
+    <property name="default_height">720</property>
     <property name="icon">cuon-logo.svg</property>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -557,6 +557,14 @@
                         <property name="use_underline">True</property>
                         <accelerator key="h" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_onlinehelp_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="onlineNews">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Online News</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_onlineNews_activate"/>
                       </object>
                     </child>
                   </object>
@@ -1156,4 +1164,18 @@ Juergen Hamel, 32584 Loehne, Germany</property>
   <object class="GtkTextBuffer" id="textbuffer4"/>
   <object class="GtkTextBuffer" id="textbuffer5"/>
   <object class="GtkTextBuffer" id="textbuffer6"/>
+  <object class="GtkWindow" id="OnlineNews">
+    <property name="window_position">center</property>
+    <property name="default_width">1010</property>
+    <property name="default_height">720</property>
+    <child>
+      <object class="GtkScrolledWindow" id="swOnlineNews">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

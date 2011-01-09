@@ -43,7 +43,8 @@ class SingleDataTreeModel:
             for i in range(iLen):
                 self.store.set(iter,i, item[i] )
                             
-        
+        self.store.connect("rows-reordered", self.store_reordered)
+
         return self.store
 
     def setColumns(self, tree1, listHeader):
@@ -51,13 +52,14 @@ class SingleDataTreeModel:
         columns = tree1.get_columns()
         for i in columns:
             tree1.remove_column(i)
-            
+        sortID = 0
         for i in listHeader['names']:
             column = gtk.TreeViewColumn(i, gtk.CellRendererText(), text=t1)
 #            column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
 #            column.set_fixed_width(30)
             column.set_clickable(True)
-        
+            column.set_sort_column_id(sortID)
+            sortID += 1
             tree1.append_column(column)
             t1 = t1 +1
             
@@ -65,3 +67,5 @@ class SingleDataTreeModel:
     def setStore(self, store):
         self.store = store
                 
+    def store_reordered(self):
+        print 'store reordered'

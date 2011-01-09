@@ -30,16 +30,19 @@ class Support(xmlrpc.XMLRPC, basics):
         liReproduced = ['NONE']
         liPlatform = ['NONE']
        
-        if liStatus0:
-            liStatus = liStatus0.split(',')
-        if liSeverity0:
-            liSeverity = liSeverity0.split(',')
-        if liPriority0:
-            liPriority = liPriority0.split(',')
-        if liReproduced0:
-            liReproduced = liReproduced0.split(',')    
-        if liPlatform0:
-            liPlatform = liPlatform.split(',')    
+        try:
+            if liStatus0:
+                liStatus = liStatus0.split(',')
+            if liSeverity0:
+                liSeverity = liSeverity0.split(',')
+            if liPriority0:
+                liPriority = liPriority0.split(',')
+            if liReproduced0:
+                liReproduced = liReproduced0.split(',')    
+            if liPlatform0:
+                liPlatform = liPlatform0.split(',')    
+        except:
+            pass
             
             
         return liStatus,  liSeverity, liPriority, liReproduced, liPlatform

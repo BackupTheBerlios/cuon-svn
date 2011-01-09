@@ -672,7 +672,7 @@ cuon_clients: select
 Downloaden des Clients, dazu bei cuon.org --> Downloads -->die Datei Cuon-Client downloaden.Je nach Typ ( Debian/Ubuntu-Paket, Red Hat, SuSE oder tgz) den entsprechenden Anleitungen folgen. In der Regel wird es einfach über den paketmanager der Distributuion installiert</para></sect3>
 <sect3 id="ks1_a2"><title>Startvorbereitungen</title> 
 <para>Normalerweise startet nach der client Installation der Cuon Konfiguration Wizard automatisch, ggf. kann man ihn im Menü System --> Einstellungen finden und starten. 
-Dort dann einfach die Werte einstellen, also das user Home-Verzeichnis, Server usw. 
+Dort dann einfach die Werte einstellen, also das user Home-Verzeichnis, Server usw. Für die automatische Anmeldung einfach den Benutzernamen, das Passwort und die ID des Mandanten angeben ( ID ist meistens 1).
 <figure id="CCK">
 <title>Cuon Client Konfiguration</title>
 <graphic align="center" scale="35"  fileref="images/screenshots/Screenshot_CuonClientConfiguration.png"/>
@@ -726,6 +726,9 @@ host = 192.168.17.2
 debug = NO
 type = client
 port = 7080
+username =  cuonusername
+password = very_secret
+client_id = 1
 
 ]]></programlisting>
 </example>
@@ -2045,11 +2048,16 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 </itemizedlist>
 
 </sect3>
+<sect3 id="tb10"><title>Fenster Operationen</title>
+<para>In den meisten Fenstern ist eine Liste der Datensätze zu sehen. Diese Liste besitzt oben sogenannte Kopfzeilen. Sie können die Kopfzeilen anklicken, um die Sortierreihenfolgen zu ändern. Also z.B. in der Adressverwaltung die Einträge nach der Straße zu sortieren anstatt nach dem Namen. In den Kopfzeilen sind kleine Pfleile, die hoch bzw. runter zeigen, damit ist die Sortierreihenfolge dargestellt.
+</para>
+</sect3>
 </sect2>
 </sect1>
 </chapter>
 <chapter><title>Benutzer Konfiguration </title>
 <sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>
+
 <sect2 id="user_config_1"><title>Profile</title>
 <para>Hier werden die grundlegenden Einstellung für das Benutzer Profil eingestellt. Für Deutschland sollte als SQL-Encoding utf-8 und als sprache de eingestellt werden. </para>
 <figure id="up1">
@@ -2068,7 +2076,7 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences2.png"/>
 </figure>
 
-
+</sect2>
 
 
 <sect2 id="user_config_3"><title>Ausführen</title>
@@ -2078,10 +2086,10 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences3.png"/>
 </figure>
 
-</sect2>
+
 </sect2>
 <sect2 id="user_config_4"><title>Email</title>
-<para>Bitte tragen Sie hier ihre email einstellungen ein, und zwar jeweils für den Imap-Server und dem SMTP-Server ( wichtig fürs DMS) </para>
+<para>Bitte tragen Sie hier ihre Email Einstellungen ein, und zwar jeweils für den Imap-Server und dem SMTP-Server ( wichtig fürs DMS) </para>
 <figure id="up4">
 <title>Benutzer Einstellungen E-Mail</title>
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences4.png"/>
@@ -2093,21 +2101,23 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 
 
 
-</sect2>
 <sect2 id="user_config_5"><title>Scanner</title>
-<para>.</para>
+<para>Tragen sie hier die Werte für Ihren Scanner ein, er sollte automatisch erkannt werden. </para>
+
 <figure id="up5">
 <title>Benutzer Einstellungen Scanner</title>
+
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences5.png"/>
 </figure>
 
 </sect2>
 
-</sect2>
 <sect2 id="user_config_6"><title></title>
-<para>.</para>
+<para>Dies ist eine der wichtigsten Einstellungen. Tragen sie bitte hier ( ggf. mit Pfad) die Programme ein, die für die entsprechende Datei genutzt werden soll</para>
+
 <figure id="up6">
 <title>Benutzer Einstellungen DMS</title>
+
 <graphic align="center" scale="50" fileref="images/screenshots/iPreferences6.png"/>
 </figure>
 

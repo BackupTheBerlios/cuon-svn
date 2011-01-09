@@ -346,7 +346,10 @@ class gladeXml(defaultValues):
             return self.xml.get_object(sName)
         except Exception, params:
             print Exception, params
-            return self.xml.get_widget(sName )
+            try:
+                return self.xml.get_widget(sName )
+            except:
+                return None
 
     def getWidgets(self,sPrefix):
         # bad function in gtk2.8

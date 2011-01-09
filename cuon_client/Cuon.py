@@ -272,7 +272,12 @@ except:
 import locale, gettext
 import time
 import cuon.E_Mail.imap_dms
-
+try:
+    #import gtkhtml2
+    import gtkmozembed as moz
+    
+except:
+    print 'gtkhtml not found'
  
 #http connections
 import httplib, urllib
@@ -280,6 +285,7 @@ import httplib, urllib
 #    import profile
 #except:
 #    print "no Profile"
+
 
 class MainWindow(windows):
     """
@@ -295,7 +301,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 1, 'Rev': 5, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 1, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -316,7 +322,9 @@ class MainWindow(windows):
         self.schedulHash2 = None
         self.schedulHash3 = None
         
-        
+        self.ClientID = 0
+        self.firstGtkMozStart = True
+        self.mapmoz = None
         
         #self.extMenucommand['ext1'] = 'Test'
     #set this Functions to None
@@ -371,9 +379,9 @@ class MainWindow(windows):
     def on_login1_activate(self,event):
         import cuon.Login.login
 
-        print 'lgi client id = ',  ClientID
+        print 'lgi client id = ',  self.ClientID
     
-        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')], None, Username, PASSWORD, ClientID)
+        lgi = cuon.Login.login.loginwindow( [self.getWidget('eUserName')], None, Username, PASSWORD, self.ClientID)
         
         self.openDB()
         self.oUser = self.loadObject('User')
@@ -387,7 +395,9 @@ class MainWindow(windows):
             self.on_clients1_activate(None)
             print 'Hallo - client'
             self.checkMenus()
-            
+            print 'ShowNews = ',  self.dicUser['showNews'] 
+            if self.dicUser['showNews'] :
+                self.activateClick('onlineNews')
         
         
     def checkMenus(self):
@@ -501,46 +511,47 @@ class MainWindow(windows):
                 self.enableMenuItem('experimental')
 
             if iL.has_key('extendet_gpl'):
-
-                liExtGpl = iL['extendet_gpl']
-                print 'Ext.GPL =', liExtGpl
-                
-                for newProgram in liExtGpl:
-                    print newProgram
-                    mi1 = self.addMenuItem(self.getWidget(newProgram['MenuItem']['Main']),newProgram['MenuItem']['Sub'])
-                    try:
-                        print 'new Item = ', `mi1`
-                        if newProgram['MenuItem']['ExternalNumber'] == 'ext1':
-                            mi1.connect("activate", self.on_ext1_activate)
-                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext2':
-                            mi1.connect("activate", self.on_ext2_activate)
-                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext3':
-                            mi1.connect("activate", self.on_ext3_activate)
-                        elif newProgram['MenuItem']['ExternalNumber'] == 'ext4':
-                            mi1.connect("activate", self.on_ext4_activate)
-                            
-                            
-                        if newProgram.has_key('Imports'):
-                            newImports = newProgram['Imports']
-                            for nI in newImports:
-                                try:
-                                    print 'import ext Module 1', nI
-                                    exec('import ' + nI)
-                                    print 'import extendet module 2', nI
-                                except Exception, params:
-                                    print Exception, params
-    
-                            if newProgram.has_key('MenuStart'):
-                                print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
-                                self.extMenucommand[newProgram['MenuItem']['ExternalNumber']] =  newProgram['MenuStart']
+                try:
+                    liExtGpl = iL['extendet_gpl']
+                    print 'Ext.GPL =', liExtGpl
+                    
+                    for newProgram in liExtGpl:
+                        print newProgram
+                        mi1 = self.addMenuItem(self.getWidget(newProgram['MenuItem']['Main']),newProgram['MenuItem']['Sub'])
+                        try:
+                            print 'new Item = ', `mi1`
+                            if newProgram['MenuItem']['ExternalNumber'] == 'ext1':
+                                mi1.connect("activate", self.on_ext1_activate)
+                            elif newProgram['MenuItem']['ExternalNumber'] == 'ext2':
+                                mi1.connect("activate", self.on_ext2_activate)
+                            elif newProgram['MenuItem']['ExternalNumber'] == 'ext3':
+                                mi1.connect("activate", self.on_ext3_activate)
+                            elif newProgram['MenuItem']['ExternalNumber'] == 'ext4':
+                                mi1.connect("activate", self.on_ext4_activate)
                                 
                                 
-                            if newProgram.has_key('Start'):
-                                 exec(newProgram['Start'])
-                                 print 'EXEC = ', newProgram['Start']
-                    except Exception,params:
-                        print Exception,params
-                        
+                            if newProgram.has_key('Imports'):
+                                newImports = newProgram['Imports']
+                                for nI in newImports:
+                                    try:
+                                        print 'import ext Module 1', nI
+                                        exec('import ' + nI)
+                                        print 'import extendet module 2', nI
+                                    except Exception, params:
+                                        print Exception, params
+        
+                                if newProgram.has_key('MenuStart'):
+                                    print 'MenuStart = ', newProgram['MenuItem']['ExternalNumber']
+                                    self.extMenucommand[newProgram['MenuItem']['ExternalNumber']] =  newProgram['MenuStart']
+                                    
+                                    
+                                if newProgram.has_key('Start'):
+                                     exec(newProgram['Start'])
+                                     print 'EXEC = ', newProgram['Start']
+                        except Exception,params:
+                            print Exception,params
+                except Exception,params:
+                            print Exception,params        
                              
         if misc_menu:
                 self.enableMenuItem('misc')
@@ -665,11 +676,15 @@ class MainWindow(windows):
     def on_bibliographic_activate(self, event):
         import cuon.Biblio.biblio
         bib = cuon.Biblio.biblio.bibliowindow(self.allTables)
+        
     def on_clients1_activate(self, event):
+        
         print self.allTables
         self.dicUser = self.oUser.getDicUser()
-        print 'cli = ',  ClientID
-        cli = cuon.Clients.clients.clientswindow(self.allTables, ClientID)
+        if event:
+            self.ClientID = 0
+        print 'cli = ',  self.ClientID
+        cli = cuon.Clients.clients.clientswindow(self.allTables, self.ClientID)
         
     def on_staff1_activate(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables) 
@@ -1235,11 +1250,45 @@ class MainWindow(windows):
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    
+    
+    def on_onlineNews_activate(self, event):
+       
+          
+        self.winNews.remove(self.swMap)
+        
+        self.mapmoz = None
+        self.mapmoz = moz.MozEmbed()
+        self.viewMap = gtk.Viewport()
+        self.swMap = gtk.ScrolledWindow()
+        self.viewMap.add(self.mapmoz)
+        self.swMap.add(self.viewMap)
+        self.winNews.add(self.swMap)
+        if self.mapmoz:
+            
+            
+            
+            if self.dicUser['Locales'].lower()  == 'de':
+                sUrl = 'http://cuon.org/Cuon/news.html'
+            else:
+                sUrl = 'http://cuon.org/en_Cuon/news.html'
+            
+           
+            print sUrl
+            self.mapmoz.load_url(sUrl)
+            #self.mapmoz.set_size_request(816,600)
+            self.viewMap.show()
+            self.swMap.show()
+            self.mapmoz.show()
+            self.winNews.show_all()
+            
+    def closeOnlineNews(self, event,  data=None):
+        self.winNews.hide()
+        
     def startMain(self, sStartType, sDebug,sLocal='NO', Username='EMPTY', PASSWORD='Test', ClientID=0):
         #ML = cuon.VTK.mainLogo.mainLogo()
         #ML.startLogo()
 
-        
+        self.ClientID = ClientID
         if sDebug:
             self.sDebug = sDebug
         else:
@@ -1264,6 +1313,8 @@ class MainWindow(windows):
 ##            version = self.loadObject('ProgramVersion')
 ##            self.closeDB()
 ##            
+
+            
             print 'Version:' + str(version)
 
             print self.Version['Major'], version['Major']
@@ -1326,7 +1377,11 @@ class MainWindow(windows):
             self.win1.connect("delete_event", self.delete_event)
             self.win1.connect("destroy", self.destroy)
 
- 
+            # Online news
+            self.winNews= self.getWidget('OnlineNews')
+            self.winNews.connect("delete_event", self.closeOnlineNews)
+            self.swMap = self.getWidget('swOnlineNews')
+            
         # Menu-items
        
         self.initMenuItemsMain()
@@ -1379,7 +1434,8 @@ class MainWindow(windows):
         if Username != "empty":
             print "Username = ",  Username
             self.activateClick("login1")
-        
+     
+     
     def gtk_main_quit(self):
         if self.t1:
             
