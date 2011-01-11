@@ -397,7 +397,7 @@ class MainWindow(windows):
             self.checkMenus()
             print 'ShowNews = ',  self.dicUser['showNews'] 
             if self.dicUser['showNews'] :
-                self.activateClick('onlineNews')
+                self.activateClick('onlineNews2') #macht User wahnsinnig!
         
         
     def checkMenus(self):
