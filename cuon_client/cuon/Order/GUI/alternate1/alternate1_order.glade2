@@ -520,7 +520,7 @@
                   <widget class="GtkTable" id="table11">
                     <property name="visible">True</property>
                     <property name="n_rows">2</property>
-                    <property name="n_columns">6</property>
+                    <property name="n_columns">8</property>
                     <child>
                       <widget class="GtkLabel" id="lFindNumber">
                         <property name="visible">True</property>
@@ -552,24 +552,6 @@
                       <packing>
                         <property name="left_attach">2</property>
                         <property name="right_attach">3</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"></property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkButton" id="bSearch">
-                        <property name="label" translatable="yes">Search</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip" translatable="yes">Strg+Return</property>
-                        <property name="use_underline">True</property>
-                        <signal name="clicked" handler="on_bSearch_clicked"/>
-                        <accelerator key="Return" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-                      </widget>
-                      <packing>
-                        <property name="left_attach">5</property>
-                        <property name="right_attach">6</property>
                         <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
@@ -667,7 +649,45 @@
                       </packing>
                     </child>
                     <child>
+                      <widget class="GtkButton" id="bSearch">
+                        <property name="label" translatable="yes">Search</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="has_tooltip">True</property>
+                        <property name="tooltip" translatable="yes">Strg+Return</property>
+                        <property name="use_underline">True</property>
+                        <signal name="clicked" handler="on_bSearch_clicked"/>
+                        <accelerator key="Return" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">7</property>
+                        <property name="right_attach">8</property>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
+                    <child>
                       <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <widget class="GtkComboBoxEntry" id="cbFindOrderTypes">
+                        <property name="visible">True</property>
+                        <signal name="changed" handler="on_cbFindOrderTypes_changed"/>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">5</property>
+                        <property name="right_attach">6</property>
+                      </packing>
                     </child>
                   </widget>
                   <packing>
