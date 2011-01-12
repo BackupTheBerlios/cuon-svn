@@ -1264,7 +1264,7 @@ class MainWindow(windows):
         self.viewMap.add(self.mapmoz)
         self.swMap.add(self.viewMap)
         self.winNews.add(self.swMap)
-        print 'mapmoz = ',  mapmoz
+        print 'mapmoz = ',  self.mapmoz
         if self.mapmoz:
             
             

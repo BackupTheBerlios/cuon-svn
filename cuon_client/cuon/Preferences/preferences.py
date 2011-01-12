@@ -127,7 +127,10 @@ class preferenceswindow(windows):
         self.tabOption = self.tabProfile
         self.tabChanged()
         print 'starting sane'
-        print 'SANE version:', sane.init()
+        try:
+            print 'SANE version:', sane.init()
+        except:
+            pass
  
 
 
@@ -171,12 +174,17 @@ class preferenceswindow(windows):
 
     # Buttons
     def on_bListScanDevices_clicked(self, event):
-        liDevs = sane.get_devices()
-        print 'Available devices=', liDevs
-        cb = self.getWidget('cbScanDevice')
-        for devs in liDevs:
-            listItem_a = gtk.ListItem(devs[0])
-            cb.list.append_items([listItem_a])
+        try:
+            
+            liDevs = sane.get_devices()
+            print 'Available devices=', liDevs
+            cb = self.getWidget('cbScanDevice')
+            for devs in liDevs:
+                listItem_a = gtk.ListItem(devs[0])
+                cb.list.append_items([listItem_a])
+        except:
+            pass
+            
             
     def on_colorBG_color_set(self, event):
         self.setColor2Text(event, 'eBG')
