@@ -1053,7 +1053,7 @@
       <name>support_project_number</name>
       <type>varchar</type>
       <pkey>0</pkey>
-      <unique>1</unique>
+      <unique>0</unique>
       <notnull>0</notnull>
       <size>100</size>
       <default></default>
@@ -1065,13 +1065,22 @@
       <name>project_id</name>
       <type>int</type>
       <pkey>0</pkey>
-      <unique>1</unique>
+      <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
       <default></default>
       <comment></comment>
     </field>
-    
+      <field>
+      <name>is_public</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment></comment>
+    </field>
     
     </table>
     

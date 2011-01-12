@@ -301,13 +301,14 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 1, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 1, 'Rev': 12, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
         self.t1 = None
         self.t2 = None
         self.t3 = None
+        
         
         self.allTables = {}
         self.sDebug = 'NO'
@@ -397,7 +398,7 @@ class MainWindow(windows):
             self.checkMenus()
             print 'ShowNews = ',  self.dicUser['showNews'] 
             if self.dicUser['showNews'] :
-                self.activateClick('onlineNews2') #macht User wahnsinnig!
+                self.activateClick('onlineNews')
         
         
     def checkMenus(self):
@@ -1263,6 +1264,7 @@ class MainWindow(windows):
         self.viewMap.add(self.mapmoz)
         self.swMap.add(self.viewMap)
         self.winNews.add(self.swMap)
+        print 'mapmoz = ',  mapmoz
         if self.mapmoz:
             
             

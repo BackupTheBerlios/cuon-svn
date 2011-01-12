@@ -13,13 +13,13 @@ grep -v cuon/bin po.files | grep -v alternate > po2.files
 grep -v cuon/bin po_glade.files | grep -v alternate | grep -v 800 | grep -v maemo  > po2_glade.files
 
 xgettext --language=Python -k_ -kN_ -o messages.pot_u1 -f po2.files 
-xgettext --language=Glade -k_ -kN_ -o messages_glade.pot -f po2_glade.files
+xgettext --omit-header -L Glade -k_ -kN_ -o messages_glade.pot -f po2_glade.files
 sed 's/'CHARSET'/'utf-8'/g' messages.pot_u1  > messages.pot_u
-tail -n +18  messages_glade.pot >> messages.pot_u
+cat messages_glade.pot >> messages.pot_u
 
 
 echo "messages.pot created"
-msguniq --unique messages.pot_u > messages.pot
+msguniq messages.pot_u > messages.pot
 #cp messages.pot_u  messages.pot
 
 echo "check out on duplicates"

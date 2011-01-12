@@ -46,3 +46,8 @@ rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.html root@cuon.org://var/www/
 rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.css root@cuon.org://var/www/en_Cuon
 rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.pdf root@cuon.org://var/www/en_Cuon
 rsync -r -avz --numeric-ids -e 'ssh -p 22' en_Cuon/images root@cuon.org://var/www/en_Cuon/
+
+
+# now set the rights
+ssh root@cuon.org "cd /var/www/ ; chown -R www-data:www-data *"
+

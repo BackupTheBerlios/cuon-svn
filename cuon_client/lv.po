@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-26 19:34+0200\n"
+"POT-Creation-Date: 2011-01-10 14:03+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team: \n"
@@ -16,32 +16,112 @@ msgstr ""
 msgid "Account-Number"
 msgstr "Konta _numurs:"
 
-#: cuon/E_Mail/imap_dms.py:288
+#: cuon/PrefsFinance/prefsFinance.py:96 cuon/PrefsFinance/prefsFinance.py:110
+#: cuon/SupportTicket/supportTicket.py:68 cuon/Garden/garden.py:94
+#: cuon/Biblio/biblio.py:63 cuon/Graves/grave.py:146 cuon/Graves/grave.py:159
+#: cuon/Graves/grave.py:173 cuon/Graves/grave.py:186 cuon/Graves/grave.py:200
+#: cuon/Graves/grave.py:213 cuon/Graves/grave.py:228
+#: cuon/Graves/graveyard.py:86 cuon/Order/order.py:136 cuon/Order/order.py:149
+#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:88
+#: cuon/Proposal/proposal.py:101 cuon/Proposal/proposal.py:114
+#: cuon/Web2/web2.py:68 cuon/Stock/stock.py:84 cuon/Project/project.py:106
+#: cuon/Project/project.py:115 cuon/Project/project.py:123
+#: cuon/Project/project.py:131 cuon/Articles/materialgroup.py:83
+#: cuon/Articles/articles.py:143
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:1091
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:2436
+#: cuon/SupportTicket/GUI/support_ticket.glade2:340
+#: cuon/Analysis/GUI/analysis_cost.glade2:280
+#: cuon/Analysis/GUI/analysis_cost.glade2:504
+#: cuon/Garden/GUI/garden.glade2:315 cuon/Leasing/GUI/leasing.glade2:812
+#: cuon/Leasing/GUI/leasing.glade2:2365 cuon/Leasing/GUI/leasing.glade2:3034
+#: cuon/Leasing/GUI/leasing.glade2:3591 cuon/WebShop/GUI/webshop.glade2:202
+#: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:258
+#: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:516
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:267
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:525
+#: cuon/Biblio/GUI/biblio.glade2:237 cuon/Biblio/GUI/biblio.glade2:500
+#: cuon/Graves/GUI/graves.glade2:2918 cuon/Graves/GUI/graves.glade2:3229
+#: cuon/Graves/GUI/graves.glade2:3538 cuon/Graves/GUI/graves.glade2:3856
+#: cuon/Graves/GUI/graves.glade2:4167 cuon/Graves/GUI/graves.glade2:4575
+#: cuon/Graves/GUI/graves.glade2:4891 cuon/Graves/GUI/graveyard.glade2:259
+#: cuon/Graves/GUI/graveyard.glade2:409 cuon/Order/GUI/order.glade2:602
+#: cuon/Order/GUI/order.glade2:1986 cuon/Order/GUI/order.glade2:2277
+#: cuon/Order/GUI/order.glade2:2948 cuon/Proposal/GUI/proposal.glade2:492
+#: cuon/Proposal/GUI/proposal.glade2:1674
+#: cuon/Proposal/GUI/proposal.glade2:2022
+#: cuon/Proposal/GUI/proposal.glade2:2584 cuon/Web2/GUI/web2.glade2:233
+#: cuon/Web2/GUI/web2.glade2:573 cuon/Stock/GUI/stock.glade2:374
+#: cuon/Stock/GUI/stock.glade2:512 cuon/Stock/GUI/stock.glade2:773
+#: cuon/Stock/GUI/stock.glade2:1079
+#: cuon/Stock/GUI/stockgoods_search1.glade2:155
+#: cuon/Staff/GUI/staff.glade2:349 cuon/Staff/GUI/staff.glade2:1645
+#: cuon/Staff/GUI/staff.glade2:1845 cuon/User/GUI/user.glade2:236
+#: cuon/User/GUI/user.glade2:368 cuon/Project/GUI/project.glade2:565
+#: cuon/Project/GUI/project.glade2:669 cuon/Project/GUI/project.glade2:1466
+#: cuon/Project/GUI/project.glade2:1823 cuon/Project/GUI/project.glade2:3700
+#: cuon/Project/GUI/project.glade2:4231 cuon/Addresses/GUI/contact.glade2:349
+#: cuon/Clients/GUI/clients.glade2:224 cuon/Skeleton/GUI/skeleton.glade2:279
+#: cuon/Think/GUI/think.glade2:508 cuon/Articles/GUI/materialGroup.glade2:291
+#: cuon/Articles/GUI/materialGroup.glade2:441
+#: cuon/Articles/GUI/articles.glade2:765
+#: cuon/Articles/GUI/articles.glade2:2188
+#: cuon/Articles/GUI/articles.glade2:2516
+#: cuon/Articles/GUI/articles_search1.glade2:169
+#, fuzzy
+msgid "Designation"
+msgstr "Rakstzīmes iestatīts apzīmējums"
+
+#: cuon/PrefsFinance/prefsFinance.py:110 cuon/Graves/graveyard.py:86
+#: cuon/Web2/web2.py:68 cuon/Project/project.py:106
+#: cuon/Project/project.py:115 cuon/Project/project.py:123
+#: cuon/Project/project.py:131 cuon/Articles/materialgroup.py:83
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:426
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:641
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:1063
+#: cuon/Garden/GUI/botany.glade2:492 cuon/Garden/GUI/botany.glade2:726
+#: cuon/Garden/GUI/botany.glade2:911 cuon/Garden/GUI/botany.glade2:1096
+#: cuon/Garden/GUI/botany.glade2:1281 cuon/Garden/GUI/botany.glade2:1466
+#: cuon/XmlValues/xmlvalues.glade2:168 cuon/XmlValues/xmlvalues.glade2:341
+#: cuon/Graves/GUI/graveyard.glade2:381 cuon/Web2/GUI/web2.glade2:394
+#: cuon/Stock/GUI/stock.glade2:484 cuon/Preferences/GUI/preferences.glade2:144
+#: cuon/Preferences/GUI/preferences.glade2:245
+#: cuon/Staff/GUI/staff.glade2:1658 cuon/Staff/GUI/staff.glade2:1823
+#: cuon/User/GUI/user.glade2:189 cuon/Project/GUI/project.glade2:541
+#: cuon/Project/GUI/project.glade2:658 cuon/Project/GUI/project.glade2:1455
+#: cuon/Project/GUI/project.glade2:1812 cuon/Project/GUI/project.glade2:3541
+#: cuon/Clients/GUI/clients.glade2:303
+#: cuon/Articles/GUI/materialGroup.glade2:413 GUI/setup.glade2:1303
+#, fuzzy
+msgid "Name"
+msgstr "Vārdi:"
+
+#: cuon/E_Mail/imap_dms.py:321
 #, fuzzy
 msgid "email"
 msgstr "Real&ms:"
 
-#: cuon/E_Mail/imap_dms.py:290
+#: cuon/E_Mail/imap_dms.py:323
 #, fuzzy
 msgid "From: "
 msgstr "No"
 
-#: cuon/E_Mail/imap_dms.py:291
+#: cuon/E_Mail/imap_dms.py:324
 #, fuzzy
 msgid "To: "
 msgstr "Kam"
 
-#: cuon/E_Mail/imap_dms.py:293
+#: cuon/E_Mail/imap_dms.py:326
 #, fuzzy
 msgid "Plain Text"
 msgstr "Maksājums"
 
-#: cuon/E_Mail/imap_dms.py:295
+#: cuon/E_Mail/imap_dms.py:328
 #, fuzzy
 msgid "Attachment Type: "
 msgstr "Pielikums"
 
-#: cuon/E_Mail/imap_dms.py:298
+#: cuon/E_Mail/imap_dms.py:331
 #, fuzzy
 msgid "Email Date: "
 msgstr "Epasta adrese"
@@ -50,6 +130,84 @@ msgstr "Epasta adrese"
 #, fuzzy
 msgid "Attachment"
 msgstr "Pielikums"
+
+#: cuon/SupportTicket/supportTicket.py:68 cuon/Garden/SingleHibernation.py:41
+#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:2387
+#: cuon/Analysis/GUI/analysis_cost.glade2:235
+#: cuon/Analysis/GUI/analysis_cost.glade2:406
+#: cuon/Garden/GUI/hibernation.glade2:341 cuon/Garden/GUI/garden.glade2:268
+#: cuon/Garden/GUI/garden.glade2:439 cuon/Leasing/GUI/leasing.glade2:766
+#: cuon/Leasing/GUI/leasing.glade2:999 cuon/Leasing/GUI/leasing.glade2:2319
+#: cuon/WebShop/GUI/webshop.glade2:161 cuon/Graves/GUI/graveyard.glade2:212
+#: cuon/Order/GUI/order.glade2:977 cuon/Order/GUI/order.glade2:2310
+#: cuon/Order/GUI/order.glade2:4347 cuon/Proposal/GUI/proposal.glade2:830
+#: cuon/Proposal/GUI/proposal.glade2:2054 cuon/Stock/GUI/stock.glade2:329
+#: cuon/Stock/GUI/stock.glade2:728
+#: cuon/Stock/GUI/stockgoods_search1.glade2:179
+#: cuon/Staff/GUI/staff.glade2:325 cuon/Clients/GUI/clients.glade2:201
+#: cuon/Skeleton/GUI/skeleton.glade2:244 cuon/Skeleton/GUI/skeleton.glade2:463
+#: cuon/Articles/GUI/materialGroup.glade2:244
+#: cuon/Articles/GUI/articles.glade2:739 cuon/Articles/GUI/articles.glade2:879
+#: cuon/Articles/GUI/articles.glade2:1691
+#: cuon/Articles/GUI/articles_search1.glade2:197
+#, fuzzy
+msgid "Number"
+msgstr "Numurs"
+
+#: cuon/SupportTicket/supportTicket.py:80
+#: cuon/SupportTicket/GUI/support_ticket.glade2:93
+#, fuzzy
+msgid "Ticket"
+msgstr "Seriālais numurs:"
+
+#: cuon/SupportTicket/supportTicket.py:80
+#, fuzzy
+msgid "Short Designation"
+msgstr "Īss nosaukums"
+
+#: cuon/Calendar/calendar.py:36 cuon/Calendar/calendar.py:44
+#: cuon/Calendar/calendar.py:53 cuon/Calendar/GUI/calendar.glade2:10
+#: GUI/cuon.glade2:352
+#, fuzzy
+msgid "Calendar"
+msgstr "Notīrīt"
+
+#: cuon/Analysis/analyse_costs.py:61 cuon/Garden/SingleHibernation.py:41
+#: cuon/Graves/grave.py:102 cuon/Graves/grave.py:114 cuon/Bank/bank.py:67
+#: cuon/Addresses/addresses.py:230 cuon/Clients/clients.py:68
+#: cuon/Skeleton/skeleton.py:61 cuon/Login/GUI/user.glade2:253
+#: cuon/Garden/GUI/hibernation.glade2:365 cuon/Staff/GUI/staff.glade2:1046
+#: cuon/Addresses/GUI/addresses.glade2:4756
+#: cuon/Addresses/GUI/contact.glade2:303
+#: cuon/Addresses/GUI/addresses_search1.glade2:197
+#, fuzzy
+msgid "Lastname"
+msgstr "Vārds Uzvārds"
+
+#: cuon/Analysis/analyse_costs.py:61 cuon/Garden/SingleHibernation.py:41
+#: cuon/Graves/grave.py:102 cuon/Graves/grave.py:114
+#: cuon/Addresses/addresses.py:230 cuon/Clients/clients.py:68
+#: cuon/Skeleton/skeleton.py:61 cuon/Login/GUI/user.glade2:277
+#: cuon/Graves/GUI/graves.glade2:724 cuon/Graves/GUI/graves.glade2:1412
+#: cuon/Staff/GUI/staff.glade2:1032 cuon/Addresses/GUI/addresses.glade2:1811
+#: cuon/Addresses/GUI/addresses.glade2:2196
+#: cuon/Addresses/GUI/addresses.glade2:4770
+#: cuon/Addresses/GUI/addresses_search1.glade2:169
+#, fuzzy
+msgid "Firstname"
+msgstr "Vārds"
+
+#: cuon/Analysis/analyse_costs.py:61 cuon/Bank/bank.py:67
+#: cuon/Addresses/addresses.py:230 cuon/Addresses/addresses.py:275
+#: cuon/Clients/clients.py:68 cuon/Skeleton/skeleton.py:61
+#: cuon/Staff/GUI/staff.glade2:698 cuon/Addresses/GUI/addresses.glade2:1840
+#: cuon/Addresses/GUI/addresses.glade2:2031
+#: cuon/Addresses/GUI/contact.glade2:440
+#: cuon/Addresses/GUI/addresses_search1.glade2:365
+#, fuzzy
+msgid "City"
+msgstr "Pilsēta"
 
 #: cuon/Garden/SingleBotanyClass.py:42 cuon/Garden/SingleBotanyFamily.py:43
 #: cuon/Garden/SingleBotanyDivisio.py:42 cuon/Garden/SingleBotanyOrdo.py:43
@@ -74,7 +232,7 @@ msgstr "Krājuma ID"
 #: cuon/Garden/SingleHibernationPlant.py:41 cuon/Graves/grave.py:146
 #: cuon/Graves/grave.py:159 cuon/Graves/grave.py:173 cuon/Graves/grave.py:186
 #: cuon/Graves/grave.py:200 cuon/Graves/grave.py:213 cuon/Graves/grave.py:228
-#: cuon/Order/order.py:122 cuon/Proposal/proposal.py:113
+#: cuon/Order/order.py:126 cuon/Proposal/proposal.py:76
 #, fuzzy
 msgid "number"
 msgstr "izlaide"
@@ -84,11 +242,92 @@ msgstr "izlaide"
 msgid "plant"
 msgstr "Maksājums"
 
+#: cuon/Garden/SingleHibernationPlant.py:41
+#: cuon/Garden/GUI/hibernation.glade2:1800 cuon/Garden/GUI/garden.glade2:1796
+#, fuzzy
+msgid "diameter"
+msgstr "Atjaunināt"
+
+#: cuon/Garden/hibernation.py:208 cuon/Garden/garden.py:234
+#: cuon/Leasing/leasing.py:617
+#: cuon/Finances/CashAccountBook/cashAccountBook.py:185
+#: cuon/Finances/Bookkeeping/bookkeeping.py:185 cuon/Articles/articles.py:715
+#: cuon/Garden/GUI/hibernation.glade2:666 cuon/Garden/GUI/garden.glade2:609
+#, fuzzy
+msgid "chooseAddress"
+msgstr "Nosaka %s IP adresi"
+
+#: cuon/Garden/SingleBotany.py:43 cuon/Garden/GUI/botany.glade2:824
+#: cuon/Garden/GUI/botany.glade2:1009 cuon/Garden/GUI/botany.glade2:1194
+#: cuon/Garden/GUI/botany.glade2:1379 cuon/Garden/GUI/botany.glade2:1564
+#: cuon/Garden/GUI/botany.glade2:1881
+#, fuzzy
+msgid "local name"
+msgstr "Lokālo nosaukumu kolīzija"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:69
+#: cuon/Finances/InvoiceBook/invoicebook.py:82
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/GUI/order.glade2:679
+#: cuon/Order/GUI/order.glade2:817 cuon/Order/GUI/order.glade2:3918
+#: cuon/Proposal/GUI/proposal.glade2:565 cuon/Proposal/GUI/proposal.glade2:726
+#, fuzzy
+msgid "Invoice-Nr."
+msgstr "Name=Rēķins"
+
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:96
 #, fuzzy
 msgid "Order-Nr."
 msgstr "Joslu secība"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:69
+#: cuon/Finances/InvoiceBook/invoicebook.py:82
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:186
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1418
+#: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:179
+#: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:213
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:222
+#: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:179
+#: cuon/Graves/GUI/graves.glade2:4852 cuon/Order/GUI/order.glade2:2591
+#: cuon/Order/GUI/order.glade2:4207 cuon/Proposal/GUI/proposal.glade2:1919
+#: cuon/Stock/GUI/stock.glade2:1128 cuon/Project/GUI/project.glade2:2377
+#: cuon/Project/GUI/project.glade2:2568 cuon/Project/GUI/project.glade2:3220
+#: cuon/Addresses/GUI/contact.glade2:787
+#, fuzzy
+msgid "Date"
+msgstr "Datums"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:69
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:162
+#: cuon/Proposal/proposal.py:114 cuon/Garden/GUI/hibernation.glade2:975
+#: cuon/Garden/GUI/hibernation.glade2:1162 cuon/Garden/GUI/garden.glade2:941
+#: cuon/Garden/GUI/garden.glade2:1293 cuon/Project/GUI/project.glade2:3180
+#, fuzzy
+msgid "Amount"
+msgstr "Apjoms"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:82 cuon/Order/order.py:186
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:196
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:555
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1467
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1775
+#, fuzzy
+msgid "Inpayment"
+msgstr "Nepieciešama apmaksa"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:82
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1982
+#, fuzzy
+msgid "Order-ID"
+msgstr "Diska ID"
+
+#: cuon/Finances/InvoiceBook/invoicebook.py:96
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:257
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:2122
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:2236
+#, fuzzy
+msgid "Residue"
+msgstr "Atgādinājums"
 
 #: cuon/Finances/CashAccountBook/standard_cab_monthly.py:37
 #: cuon/Stock/lists_stockgoods_number1.py:45
@@ -99,6 +338,35 @@ msgstr "Comment=PDF dokuments"
 #: cuon/Finances/CashAccountBook/standard_cab_monthly.py:38
 msgid "cabM-"
 msgstr ""
+
+#: cuon/Biblio/biblio.py:63 cuon/DMS/dms.py:144
+#: cuon/Biblio/GUI/biblio.glade2:190 cuon/Biblio/GUI/biblio.glade2:472
+#: cuon/Web2/GUI/web2.glade2:186 cuon/User/GUI/user.glade2:803
+#: cuon/DMS/GUI/dms.glade2:672 cuon/DMS/GUI/dms.glade2:768
+#, fuzzy
+msgid "Title"
+msgstr "Datne"
+
+#: cuon/Biblio/biblio.py:63
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:342
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:506
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:622
+#: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:131
+#: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:131
+#: cuon/Biblio/GUI/biblio.glade2:297 cuon/Biblio/GUI/biblio.glade2:570
+#: cuon/Order/GUI/order.glade2:702 cuon/Proposal/GUI/proposal.glade2:588
+#, fuzzy
+msgid "Year"
+msgstr "Gads"
+
+#: cuon/Biblio/biblio.py:63 cuon/Calendar/GUI/calendar.glade2:294
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:293
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:448
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:564
+#: cuon/Biblio/GUI/biblio.glade2:598
+#, fuzzy
+msgid "Month"
+msgstr "Mēn."
 
 #: cuon/Graves/address_graves.py:102
 msgid "Graveyard lastname firstname"
@@ -128,23 +396,60 @@ msgstr "konts"
 msgid "article-ID"
 msgstr "Diska ID"
 
-#: cuon/Order/order.py:122 cuon/Proposal/proposal.py:113
-#: cuon/Stock/stock.py:74
+#: cuon/Order/order.py:126 cuon/Proposal/proposal.py:76 cuon/Stock/stock.py:74
 #, fuzzy
 msgid "designation"
 msgstr "Rakstzīmes iestatīts apzīmējums"
 
-#: cuon/Order/order.py:158 cuon/Proposal/proposal.py:151
+#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
+#: cuon/Order/GUI/order.glade2:2697 cuon/Proposal/GUI/proposal.glade2:2362
+#, fuzzy
+msgid "Pos."
+msgstr "Loga poz:"
+
+#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
+#: cuon/Leasing/GUI/leasing.glade2:2532 cuon/Articles/GUI/articles.glade2:1881
+#, fuzzy
+msgid "Article-ID"
+msgstr "Diska ID"
+
+#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
 #, fuzzy
 msgid "Designation2"
 msgstr "Rakstzīmes iestatīts apzīmējums"
 
-#: cuon/Order/order.py:349
+#: cuon/Order/order.py:186 cuon/Garden/GUI/hibernation.glade2:282
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1278
+#: cuon/Graves/GUI/graves.glade2:2347 cuon/Order/GUI/order.glade2:354
+#: cuon/Staff/GUI/staff.glade2:1305
+#, fuzzy
+msgid "Invoice"
+msgstr "Pavadzīme"
+
+#: cuon/Order/order.py:186
+#: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:713
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:714
+#, fuzzy
+msgid "account"
+msgstr "konts"
+
+#: cuon/Order/order.py:261
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:169
+#: cuon/DMS/GUI/dms.glade2:1134
+#, fuzzy
+msgid "All"
+msgstr "Viss"
+
+#: cuon/Order/order.py:261
+msgid "Unreckoned"
+msgstr ""
+
+#: cuon/Order/order.py:366
 #, fuzzy
 msgid "invoice"
 msgstr "Pavadzīme"
 
-#: cuon/Order/order.py:351
+#: cuon/Order/order.py:368
 #, fuzzy
 msgid "payments"
 msgstr "Maksājums"
@@ -163,10 +468,42 @@ msgstr "Pārdēvēt piezīmi"
 msgid "delivery_note-"
 msgstr "Pārdēvēt piezīmi"
 
-#: cuon/Proposal/proposal.py:352 cuon/Proposal/proposal.py:354
+#: cuon/Bank/bank.py:67 cuon/Bank/GUI/bank.glade2:236
+msgid "BCN"
+msgstr ""
+
+#: cuon/Proposal/proposal.py:283 cuon/Proposal/proposal.py:285
 #, fuzzy
 msgid "proposal"
 msgstr "Sanāksmes iemesls"
+
+#: cuon/Stock/lists_stockgoods_number1.py:46 GUI/setup.glade2:1791
+#: GUI/cuon.glade2:306
+#, fuzzy
+msgid "Test"
+msgstr "Teksts"
+
+#: cuon/Preferences/preferences.py:82
+#: cuon/Preferences/GUI/preferences.glade2:49
+#: cuon/Preferences/GUI/preferences.glade2:678
+#, fuzzy
+msgid "Profile"
+msgstr "Cena"
+
+#: cuon/Preferences/preferences.py:82
+#: cuon/PrefsFinance/GUI/prefs_finance.glade2:687
+#: cuon/Garden/GUI/botany.glade2:586 cuon/Garden/GUI/botany.glade2:754
+#: cuon/Garden/GUI/botany.glade2:939 cuon/Garden/GUI/botany.glade2:1124
+#: cuon/Garden/GUI/botany.glade2:1309 cuon/Garden/GUI/botany.glade2:1494
+#: cuon/Garden/GUI/botany.glade2:1909 cuon/Leasing/GUI/leasing.glade2:2821
+#: cuon/XmlValues/xmlvalues.glade2:209 cuon/XmlValues/xmlvalues.glade2:409
+#: cuon/Biblio/GUI/biblio.glade2:856
+#: cuon/Preferences/GUI/preferences.glade2:270 cuon/User/GUI/user.glade2:556
+#: cuon/Clients/GUI/clients.glade2:314 cuon/Articles/GUI/articles.glade2:2045
+#: GUI/setup.glade2:1128 GUI/cuon_config_wizard.glade2:83
+#, fuzzy
+msgid "Description"
+msgstr "apraksts"
 
 #: cuon/Project/SingleProjectMaterialResources.py:45
 #, fuzzy
@@ -174,9 +511,41 @@ msgid "article"
 msgstr "_Raksts"
 
 #: cuon/Project/SingleProjectMaterialResources.py:45
+#: cuon/Addresses/contact.py:84
+#: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:387
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:396
+#, fuzzy
+msgid "date"
+msgstr "Atjaunināt"
+
+#: cuon/Project/SingleProjectMaterialResources.py:45
+#: cuon/Leasing/GUI/leasing.glade2:4443 cuon/Articles/GUI/articles.glade2:3062
+#, fuzzy
+msgid "unit"
+msgstr "Vienība:"
+
+#: cuon/Project/SingleProjectMaterialResources.py:45
 #, fuzzy
 msgid "real amount"
 msgstr "Enerģijas daudzums:"
+
+#: cuon/Project/project.py:106 cuon/Addresses/addresses.py:302
+#: cuon/SupportTicket/GUI/support_ticket.glade2:963
+#: cuon/Garden/GUI/hibernation.glade2:862 cuon/Order/GUI/order.glade2:2629
+#: cuon/Project/GUI/project.glade2:1332 cuon/Project/GUI/project.glade2:1746
+#: cuon/Project/GUI/project.glade2:2103 cuon/Project/GUI/project.glade2:2517
+#: cuon/Project/GUI/project.glade2:3099 cuon/Project/GUI/project.glade2:4013
+#: cuon/Think/GUI/think.glade2:421
+#, fuzzy
+msgid "Status"
+msgstr "Statistika"
+
+#: cuon/Project/project.py:590 cuon/Garden/GUI/hibernation.glade2:1042
+#: cuon/Garden/GUI/hibernation.glade2:1229 cuon/Garden/GUI/garden.glade2:846
+#: cuon/Garden/GUI/garden.glade2:1199
+#, fuzzy
+msgid "chooseStaff"
+msgstr "Norādiet faila nosaukumu"
 
 #: cuon/Project/project.py:605
 #, fuzzy
@@ -216,90 +585,177 @@ msgstr ""
 msgid "time"
 msgstr "Laiks"
 
-#: cuon/Addresses/addresses.py:190
+#: cuon/Addresses/contact.py:84 cuon/Addresses/printAddress.py:45
+#: cuon/Graves/GUI/graveyard.glade2:530 cuon/Bank/GUI/bank.glade2:415
+#: cuon/Stock/GUI/stock.glade2:582 cuon/Staff/GUI/staff.glade2:1074
+#: cuon/Addresses/GUI/addresses.glade2:2147
+#: cuon/Addresses/GUI/addresses.glade2:4730
+#: cuon/Addresses/GUI/contact.glade2:1127
+#, fuzzy
+msgid "Address"
+msgstr "adreses"
+
+#: cuon/Addresses/addresses.py:230 cuon/Stock/GUI/stock.glade2:631
+#: cuon/Addresses/GUI/addresses.glade2:1236
+#: cuon/Addresses/GUI/addresses.glade2:1263
+#: cuon/Addresses/GUI/addresses.glade2:1784
+#: cuon/Addresses/GUI/addresses.glade2:2874
+#, fuzzy
+msgid "Phone"
+msgstr "Telefons"
+
+#: cuon/Addresses/addresses.py:230 cuon/Order/GUI/order.glade2:507
+#: cuon/Proposal/GUI/proposal.glade2:421
+#: cuon/Addresses/GUI/addresses.glade2:1600
+#: cuon/Addresses/GUI/addresses.glade2:2625
+#, fuzzy
+msgid "Info"
+msgstr "Informācija"
+
+#: cuon/Addresses/addresses.py:246
 #, fuzzy
 msgid "Depositor"
 msgstr "Rakstzīmes iestatīts apzīmējums"
 
-#: cuon/Addresses/addresses.py:219
+#: cuon/Addresses/addresses.py:246
+#: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:155
+#: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:155
+#, fuzzy
+msgid "Account"
+msgstr "Konts"
+
+#: cuon/Addresses/addresses.py:246 cuon/Bank/GUI/bank.glade2:9
+#: cuon/Bank/GUI/bank.glade2:73 cuon/Bank/GUI/bank.glade2:578
+#: cuon/Bank/GUI/bank.glade2:812 cuon/Addresses/GUI/addresses.glade2:869
+#: cuon/Addresses/GUI/addresses.glade2:3385 GUI/cuon.glade2:91
+#, fuzzy
+msgid "Bank"
+msgstr "Iet uz baitu"
+
+#: cuon/Addresses/addresses.py:275
 #, fuzzy
 msgid "Name of partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/addresses.py:219
+#: cuon/Addresses/addresses.py:275
 #, fuzzy
 msgid "Firstname of partner"
 msgstr "<i>Perioda sākums:</i> %1"
 
-#: cuon/Addresses/addresses.py:240
+#: cuon/Addresses/addresses.py:302
 #, fuzzy
 msgid "Date "
 msgstr "Datums"
 
-#: cuon/Addresses/addresses.py:240
+#: cuon/Addresses/addresses.py:302 cuon/Garden/GUI/hibernation.glade2:1394
+#: cuon/Garden/GUI/garden.glade2:473 cuon/Project/GUI/project.glade2:2401
+#: cuon/Project/GUI/project.glade2:2592
 #, fuzzy
-msgid "shortRemark"
+msgid "begin"
+msgstr "Sākums"
+
+#: cuon/Addresses/addresses.py:302
+#, fuzzy
+msgid "end"
+msgstr "Beidzas"
+
+#: cuon/Addresses/addresses.py:302 cuon/Addresses/GUI/addresses.glade2:5517
+#, fuzzy
+msgid "short Remark"
 msgstr "&Piezīme:"
 
-#: cuon/Addresses/addresses.py:323 cuon/Addresses/addresses.py:337
+#: cuon/Addresses/addresses.py:302
+#: cuon/SupportTicket/GUI/support_ticket.glade2:941
+#: cuon/Addresses/GUI/addresses.glade2:5797
+#: cuon/Addresses/GUI/contact.glade2:485 cuon/Addresses/GUI/contact.glade2:843
+#, fuzzy
+msgid "Priority"
+msgstr "Ports"
+
+#: cuon/Addresses/addresses.py:343 cuon/Addresses/addresses.py:357
+#: cuon/Graves/GUI/plantlists.glade2:287
 #, fuzzy
 msgid "Graves"
 msgstr "&Saglabāt"
 
-#: cuon/Addresses/addresses.py:486
+#: cuon/Addresses/addresses.py:506
 #, fuzzy
 msgid "Scheduls"
 msgstr "&Rādīt ziņojumu"
 
-#: cuon/Addresses/addresses.py:577
+#: cuon/Addresses/addresses.py:604
 msgid "saving this Address failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:616
+#: cuon/Addresses/addresses.py:643
 msgid "saving this bank failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:674
+#: cuon/Addresses/addresses.py:701
 msgid "saving this partner failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:714
+#: cuon/Addresses/addresses.py:741
 msgid "saving this schedul failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:752
+#: cuon/Addresses/addresses.py:779
 msgid "save this notes failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:773
+#: cuon/Addresses/addresses.py:800
 msgid "CUON-ID NOTES-01"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:774
+#: cuon/Addresses/addresses.py:801
 #, fuzzy
 msgid "Notes are changed !"
 msgstr "Datne ir mainījusies"
 
-#: cuon/Addresses/addresses.py:777
+#: cuon/Addresses/addresses.py:804
 #, fuzzy
 msgid "Infos are generated by C.U.O.N."
 msgstr "Heksadecimālās atmiņas izmetni radījis"
 
-#: cuon/DMS/dms.py:113
+#: cuon/DMS/dms.py:122 cuon/Preferences/GUI/preferences.glade2:988
+#: cuon/DMS/GUI/dms.glade2:1695
+#, fuzzy
+msgid "Print Newsletter"
+msgstr "Drukas priekšska_ts..."
+
+#: cuon/DMS/dms.py:122
 msgid "insert label(s) for newsletter"
 msgstr ""
 
-#: cuon/DMS/dms.py:135
+#: cuon/DMS/dms.py:144 cuon/DMS/GUI/dms.glade2:646
+#: cuon/DMS/GUI/dms.glade2:1269
+#, fuzzy
+msgid "Category"
+msgstr "Kategorija"
+
+#: cuon/DMS/dms.py:144
 #, fuzzy
 msgid "Doc.-Date"
 msgstr "Būvējuma datums:"
 
-#: Cuon.py:1144
+#: Cuon.py:1102
 #, fuzzy
 msgid "Names"
 msgstr "Vārdi:"
 
-#: Cuon.py:1561
+#: Cuon.py:1137 cuon/Addresses/GUI/addresses.glade2:1014
+#: cuon/Addresses/GUI/addresses.glade2:5898
+#, fuzzy
+msgid "Schedul"
+msgstr "&Rādīt ziņojumu"
+
+#: Cuon.py:1162 cuon/Stats/GUI/stats.glade2:87 cuon/Stats/GUI/stats.glade2:136
+#: cuon/Stats/GUI/stats.glade2:194
+#, fuzzy
+msgid "Salesman"
+msgstr "Saglabāt"
+
+#: Cuon.py:1614
 #, fuzzy
 msgid "Debug by C.U.O.N. = "
 msgstr "Kompilējis %s@%s.%s\n"
@@ -310,6 +766,7 @@ msgid "Finances Preferences"
 msgstr "Termināļa Uzstādījumi"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:38
+#: cuon/SupportTicket/GUI/support_ticket.glade2:23
 #: cuon/Calendar/GUI/calendar.glade2:39
 #: cuon/Analysis/GUI/analysis_cost.glade2:39 cuon/Login/GUI/user.glade2:28
 #: cuon/Garden/GUI/hibernation.glade2:24 cuon/Garden/GUI/botany.glade2:43
@@ -318,15 +775,15 @@ msgstr "Termināļa Uzstādījumi"
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:38
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:38
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:38
-#: cuon/XmlValues/xmlvalues.glade2:29 cuon/Editor/GUI/editor.glade2:41
+#: cuon/XmlValues/xmlvalues.glade2:29 cuon/Editor/GUI/editor.glade2:25
 #: cuon/Editor/GUI/prgeditor.glade2:41 cuon/Biblio/GUI/biblio.glade2:41
-#: cuon/Graves/GUI/graves.glade2:25 cuon/Graves/GUI/graveyard.glade2:39
+#: cuon/Graves/GUI/graves.glade2:55 cuon/Graves/GUI/graveyard.glade2:39
 #: cuon/Graves/GUI/graves_list.glade2:19 cuon/Order/GUI/order.glade2:21
-#: cuon/Bank/GUI/bank.glade2:38 cuon/Proposal/GUI/proposal.glade2:41
+#: cuon/Bank/GUI/bank.glade2:38 cuon/Proposal/GUI/proposal.glade2:21
 #: cuon/AI/GUI/ai.glade2:40 cuon/Web2/GUI/web2.glade2:38
-#: cuon/Stock/GUI/stock.glade2:40 cuon/Preferences/GUI/preferences.glade2:38
+#: cuon/Stock/GUI/stock.glade2:40 cuon/Preferences/GUI/preferences.glade2:17
 #: cuon/Staff/GUI/staff.glade2:20 cuon/User/GUI/user.glade2:40
-#: cuon/Project/GUI/project.glade2:26 cuon/Addresses/GUI/addresses.glade2:685
+#: cuon/Project/GUI/project.glade2:26 cuon/Addresses/GUI/addresses.glade2:684
 #: cuon/Addresses/GUI/contact.glade2:41 cuon/Clients/GUI/clients.glade2:21
 #: cuon/Skeleton/GUI/skeleton.glade2:32 cuon/DMS/GUI/dms.glade2:25
 #: cuon/Think/GUI/think.glade2:40 cuon/Articles/GUI/materialGroup.glade2:40
@@ -344,7 +801,7 @@ msgstr "_Fails"
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:47
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:47
 #: cuon/XmlValues/xmlvalues.glade2:39 cuon/Graves/GUI/graveyard.glade2:48
-#: cuon/Preferences/GUI/preferences.glade2:47 cuon/Staff/GUI/staff.glade2:27
+#: cuon/Preferences/GUI/preferences.glade2:24 cuon/Staff/GUI/staff.glade2:27
 #: cuon/Project/GUI/project.glade2:33 cuon/Addresses/GUI/contact.glade2:50
 #: cuon/Clients/GUI/clients.glade2:28 cuon/Skeleton/GUI/skeleton.glade2:43
 #: cuon/DMS/GUI/dms.glade2:32 cuon/Articles/GUI/materialGroup.glade2:49
@@ -375,8 +832,8 @@ msgid "Terms Of Payment"
 msgstr "Nepieciešama apmaksa"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:232
-#: cuon/Graves/GUI/graves.glade2:2143 cuon/Order/GUI/order.glade2:3317
-#: cuon/Proposal/GUI/proposal.glade2:4161
+#: cuon/Graves/GUI/graves.glade2:2150 cuon/Order/GUI/order.glade2:3322
+#: cuon/Proposal/GUI/proposal.glade2:2942
 #, fuzzy
 msgid "choose TOP"
 msgstr "Augšpusē"
@@ -398,12 +855,13 @@ msgid "Account-Plan"
 msgstr "Project Plan"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:471
-#: cuon/Preferences/GUI/preferences.glade2:245
+#: cuon/Preferences/GUI/preferences.glade2:167
 #, fuzzy
 msgid "Descript."
 msgstr "Apraksts"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:518
+#: cuon/SupportTicket/GUI/support_ticket.glade2:717
 #: cuon/Analysis/GUI/analysis_cost.glade2:327
 #: cuon/Garden/GUI/hibernation.glade2:391 cuon/Garden/GUI/botany.glade2:634
 #: cuon/Garden/GUI/garden.glade2:364 cuon/Leasing/GUI/leasing.glade2:904
@@ -412,17 +870,18 @@ msgstr "Apraksts"
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:824
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:305
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:314
-#: cuon/XmlValues/xmlvalues.glade2:252 cuon/Biblio/GUI/biblio.glade2:391
-#: cuon/Graves/GUI/graves.glade2:766 cuon/Graves/GUI/graves.glade2:1223
-#: cuon/Graves/GUI/graveyard.glade2:308 cuon/Order/GUI/order.glade2:590
-#: cuon/Order/GUI/order.glade2:1753 cuon/Bank/GUI/bank.glade2:328
-#: cuon/Proposal/GUI/proposal.glade2:676 cuon/Web2/GUI/web2.glade2:282
+#: cuon/XmlValues/xmlvalues.glade2:252 cuon/Editor/GUI/editor.glade2:410
+#: cuon/Biblio/GUI/biblio.glade2:391 cuon/Graves/GUI/graves.glade2:796
+#: cuon/Graves/GUI/graves.glade2:1222 cuon/Graves/GUI/graveyard.glade2:308
+#: cuon/Order/GUI/order.glade2:631 cuon/Order/GUI/order.glade2:1758
+#: cuon/Bank/GUI/bank.glade2:328 cuon/Proposal/GUI/proposal.glade2:515
+#: cuon/Proposal/GUI/proposal.glade2:1404 cuon/Web2/GUI/web2.glade2:282
 #: cuon/Stock/GUI/stock.glade2:421 cuon/Stock/GUI/stock.glade2:820
-#: cuon/Preferences/GUI/preferences.glade2:292 cuon/Staff/GUI/staff.glade2:375
+#: cuon/Preferences/GUI/preferences.glade2:189 cuon/Staff/GUI/staff.glade2:375
 #: cuon/User/GUI/user.glade2:284 cuon/Project/GUI/project.glade2:609
-#: cuon/Addresses/GUI/addresses.glade2:1546
+#: cuon/Addresses/GUI/addresses.glade2:1550
 #: cuon/Addresses/GUI/contact.glade2:532 cuon/Clients/GUI/clients.glade2:246
-#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:406
+#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:413
 #: cuon/Articles/GUI/materialGroup.glade2:340
 #: cuon/Articles/GUI/articles.glade2:812
 #: cuon/Articles/GUI/articles.glade2:1762
@@ -444,17 +903,17 @@ msgstr "&Skaitliskā vērtība:"
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:885
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2076
 #: cuon/Analysis/GUI/analysis_cost.glade2:455
-#: cuon/Graves/GUI/graves.glade2:822 cuon/Graves/GUI/graves.glade2:1750
-#: cuon/Graves/GUI/graves.glade2:2376 cuon/Order/GUI/order.glade2:4379
+#: cuon/Graves/GUI/graves.glade2:858 cuon/Graves/GUI/graves.glade2:1755
+#: cuon/Graves/GUI/graves.glade2:2382 cuon/Order/GUI/order.glade2:4384
 #: cuon/Web2/GUI/web2.glade2:512 cuon/Articles/GUI/materialGroup.glade2:618
-#: GUI/cuon_config_wizard.glade2:442
+#: GUI/cuon_config_wizard.glade2:258
 #, fuzzy
 msgid "Type"
 msgstr "Tips"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:911
-#: cuon/Staff/GUI/staff.glade2:786 cuon/Addresses/GUI/addresses.glade2:2243
-#: cuon/Addresses/GUI/addresses.glade2:4869
+#: cuon/Staff/GUI/staff.glade2:786 cuon/Addresses/GUI/addresses.glade2:2247
+#: cuon/Addresses/GUI/addresses.glade2:4873
 #: cuon/Addresses/GUI/addresses_search1.glade2:393
 #, fuzzy
 msgid "Country"
@@ -479,7 +938,7 @@ msgid "VAT"
 msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:1119
-#: cuon/Preferences/GUI/preferences.glade2:3095
+#: cuon/Preferences/GUI/preferences.glade2:2211
 #, fuzzy
 msgid "Text"
 msgstr "Teksts"
@@ -539,7 +998,7 @@ msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2016
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:528
-#: cuon/Order/GUI/order.glade2:3294 cuon/Proposal/GUI/proposal.glade2:4106
+#: cuon/Order/GUI/order.glade2:3299 cuon/Proposal/GUI/proposal.glade2:2918
 #, fuzzy
 msgid "Terms of Payment"
 msgstr "Nepieciešama apmaksa"
@@ -580,9 +1039,9 @@ msgid "window1"
 msgstr ""
 
 #: cuon/E_Mail/GUI/e_mail.glade2:38
-#: cuon/Preferences/GUI/preferences.glade2:1940
-#: cuon/Staff/GUI/staff.glade2:936 cuon/Addresses/GUI/addresses.glade2:2885
-#: cuon/Addresses/GUI/addresses.glade2:4230
+#: cuon/Preferences/GUI/preferences.glade2:1528
+#: cuon/Staff/GUI/staff.glade2:936 cuon/Addresses/GUI/addresses.glade2:2889
+#: cuon/Addresses/GUI/addresses.glade2:4234
 #, fuzzy
 msgid "E-Mail"
 msgstr "E-pasts"
@@ -602,11 +1061,362 @@ msgstr ""
 msgid "To"
 msgstr "Kam"
 
+#: cuon/SupportTicket/GUI/support_ticket.glade2:7
+msgid "Support Tickets"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:44
+#: cuon/Order/GUI/order.glade2:3690 cuon/Project/GUI/project.glade2:1440
+#: cuon/Stats/GUI/stats.glade2:158 GUI/cuon.glade2:326
+#, fuzzy
+msgid "Project"
+msgstr "Projekts"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:52
+#: cuon/SupportTicket/GUI/support_ticket.glade2:178
+#: cuon/Garden/GUI/hibernation.glade2:88
+#: cuon/Garden/GUI/hibernation.glade2:184 cuon/Garden/GUI/botany.glade2:223
+#: cuon/Garden/GUI/botany.glade2:278 cuon/Garden/GUI/botany.glade2:333
+#: cuon/Garden/GUI/botany.glade2:389 cuon/Garden/GUI/garden.glade2:110
+#: cuon/Garden/GUI/garden.glade2:182 cuon/Leasing/GUI/leasing.glade2:112
+#: cuon/Leasing/GUI/leasing.glade2:182 cuon/Leasing/GUI/leasing.glade2:265
+#: cuon/Leasing/GUI/leasing.glade2:320 cuon/Editor/GUI/editor.glade2:275
+#: cuon/Editor/GUI/prgeditor.glade2:270 cuon/Graves/GUI/graves.glade2:97
+#: cuon/Graves/GUI/graves.glade2:169 cuon/Graves/GUI/graves.glade2:217
+#: cuon/Graves/GUI/graves.glade2:265 cuon/Graves/GUI/graves.glade2:313
+#: cuon/Graves/GUI/graves.glade2:361 cuon/Graves/GUI/graves.glade2:409
+#: cuon/Graves/GUI/graves.glade2:457 cuon/Graves/GUI/graves.glade2:505
+#: cuon/Graves/GUI/graves.glade2:553 cuon/Graves/GUI/graves.glade2:606
+#: cuon/Graves/GUI/graveyard.glade2:109 cuon/Order/GUI/order.glade2:189
+#: cuon/Order/GUI/order.glade2:242 cuon/Proposal/GUI/proposal.glade2:152
+#: cuon/Proposal/GUI/proposal.glade2:205 cuon/Stock/GUI/stock.glade2:86
+#: cuon/Stock/GUI/stock.glade2:147 cuon/Stock/GUI/stock.glade2:236
+#: cuon/Staff/GUI/staff.glade2:79 cuon/Staff/GUI/staff.glade2:140
+#: cuon/Staff/GUI/staff.glade2:215 cuon/Staff/GUI/staff.glade2:263
+#: cuon/User/GUI/user.glade2:86 cuon/Project/GUI/project.glade2:305
+#: cuon/Project/GUI/project.glade2:436
+#: cuon/Addresses/GUI/addresses.glade2:1350
+#: cuon/Addresses/GUI/contact.glade2:191 cuon/DMS/GUI/dms.glade2:278
+#: cuon/Think/GUI/think.glade2:174 cuon/Articles/GUI/materialGroup.glade2:110
+#: cuon/Articles/GUI/articles.glade2:195 cuon/Articles/GUI/articles.glade2:256
+#: cuon/Articles/GUI/articles.glade2:328 cuon/Articles/GUI/articles.glade2:376
+#, fuzzy
+msgid "New"
+msgstr "Jauns"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:60
+#: cuon/SupportTicket/GUI/support_ticket.glade2:191
+#: cuon/Garden/GUI/hibernation.glade2:61 cuon/Garden/GUI/hibernation.glade2:96
+#: cuon/Garden/GUI/hibernation.glade2:192 cuon/Garden/GUI/botany.glade2:81
+#: cuon/Garden/GUI/botany.glade2:122 cuon/Garden/GUI/botany.glade2:177
+#: cuon/Garden/GUI/botany.glade2:232 cuon/Garden/GUI/botany.glade2:287
+#: cuon/Garden/GUI/botany.glade2:342 cuon/Garden/GUI/botany.glade2:398
+#: cuon/Garden/GUI/garden.glade2:77 cuon/Garden/GUI/garden.glade2:119
+#: cuon/Garden/GUI/garden.glade2:191 cuon/Leasing/GUI/leasing.glade2:80
+#: cuon/Leasing/GUI/leasing.glade2:121 cuon/Leasing/GUI/leasing.glade2:191
+#: cuon/Leasing/GUI/leasing.glade2:274 cuon/Leasing/GUI/leasing.glade2:329
+#: cuon/Leasing/GUI/leasing.glade2:375 cuon/Leasing/GUI/leasing.glade2:406
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:117
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:214
+#: cuon/Graves/GUI/graves.glade2:105 cuon/Graves/GUI/graves.glade2:177
+#: cuon/Graves/GUI/graves.glade2:225 cuon/Graves/GUI/graves.glade2:273
+#: cuon/Graves/GUI/graves.glade2:321 cuon/Graves/GUI/graves.glade2:369
+#: cuon/Graves/GUI/graves.glade2:417 cuon/Graves/GUI/graves.glade2:465
+#: cuon/Graves/GUI/graves.glade2:513 cuon/Graves/GUI/graves.glade2:561
+#: cuon/Graves/GUI/graves.glade2:620 cuon/Graves/GUI/graveyard.glade2:77
+#: cuon/Graves/GUI/graveyard.glade2:118 cuon/Order/GUI/order.glade2:197
+#: cuon/Order/GUI/order.glade2:250 cuon/Order/GUI/order.glade2:388
+#: cuon/Order/GUI/order.glade2:473 cuon/Proposal/GUI/proposal.glade2:160
+#: cuon/Proposal/GUI/proposal.glade2:213 cuon/Proposal/GUI/proposal.glade2:324
+#: cuon/Proposal/GUI/proposal.glade2:387 cuon/Stock/GUI/stock.glade2:95
+#: cuon/Stock/GUI/stock.glade2:156 cuon/Stock/GUI/stock.glade2:253
+#: cuon/Staff/GUI/staff.glade2:52 cuon/Staff/GUI/staff.glade2:87
+#: cuon/Staff/GUI/staff.glade2:148 cuon/Staff/GUI/staff.glade2:188
+#: cuon/Staff/GUI/staff.glade2:223 cuon/Staff/GUI/staff.glade2:271
+#: cuon/User/GUI/user.glade2:95 cuon/Project/GUI/project.glade2:368
+#: cuon/Project/GUI/project.glade2:449 cuon/Project/GUI/project.glade2:3894
+#: cuon/Project/GUI/project.glade2:4283
+#: cuon/Addresses/GUI/addresses.glade2:720
+#: cuon/Addresses/GUI/addresses.glade2:1364
+#: cuon/Addresses/GUI/contact.glade2:209 cuon/DMS/GUI/dms.glade2:291
+#: cuon/Think/GUI/think.glade2:191 cuon/Articles/GUI/materialGroup.glade2:78
+#: cuon/Articles/GUI/materialGroup.glade2:119
+#: cuon/Articles/GUI/articles.glade2:168 cuon/Articles/GUI/articles.glade2:203
+#: cuon/Articles/GUI/articles.glade2:264 cuon/Articles/GUI/articles.glade2:336
+#: cuon/Articles/GUI/articles.glade2:384 cuon/Articles/GUI/articles.glade2:424
+#: cuon/Articles/GUI/articles.glade2:451
+#, fuzzy
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:68
+#: cuon/SupportTicket/GUI/support_ticket.glade2:204
+#: cuon/Garden/GUI/hibernation.glade2:104
+#: cuon/Garden/GUI/hibernation.glade2:200 cuon/Garden/GUI/botany.glade2:131
+#: cuon/Garden/GUI/botany.glade2:186 cuon/Garden/GUI/botany.glade2:241
+#: cuon/Garden/GUI/botany.glade2:296 cuon/Garden/GUI/botany.glade2:351
+#: cuon/Garden/GUI/botany.glade2:408 cuon/Garden/GUI/garden.glade2:129
+#: cuon/Garden/GUI/garden.glade2:200 cuon/Leasing/GUI/leasing.glade2:130
+#: cuon/Leasing/GUI/leasing.glade2:200 cuon/Leasing/GUI/leasing.glade2:283
+#: cuon/Leasing/GUI/leasing.glade2:338 cuon/Leasing/GUI/leasing.glade2:384
+#: cuon/Leasing/GUI/leasing.glade2:415
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:138
+#: cuon/Editor/GUI/editor.glade2:302 cuon/Editor/GUI/editor.glade2:303
+#: cuon/Editor/GUI/prgeditor.glade2:306 cuon/Editor/GUI/prgeditor.glade2:307
+#: cuon/Graves/GUI/graves.glade2:113 cuon/Graves/GUI/graves.glade2:185
+#: cuon/Graves/GUI/graves.glade2:233 cuon/Graves/GUI/graves.glade2:281
+#: cuon/Graves/GUI/graves.glade2:329 cuon/Graves/GUI/graves.glade2:377
+#: cuon/Graves/GUI/graves.glade2:425 cuon/Graves/GUI/graves.glade2:473
+#: cuon/Graves/GUI/graves.glade2:521 cuon/Graves/GUI/graves.glade2:569
+#: cuon/Graves/GUI/graves.glade2:634 cuon/Graves/GUI/graveyard.glade2:128
+#: cuon/Order/GUI/order.glade2:210 cuon/Order/GUI/order.glade2:263
+#: cuon/Order/GUI/order.glade2:401 cuon/Order/GUI/order.glade2:486
+#: cuon/Proposal/GUI/proposal.glade2:173 cuon/Proposal/GUI/proposal.glade2:226
+#: cuon/Proposal/GUI/proposal.glade2:332 cuon/Proposal/GUI/proposal.glade2:400
+#: cuon/Stock/GUI/stock.glade2:110 cuon/Stock/GUI/stock.glade2:171
+#: cuon/Stock/GUI/stock.glade2:270 cuon/Staff/GUI/staff.glade2:95
+#: cuon/Staff/GUI/staff.glade2:156 cuon/Staff/GUI/staff.glade2:196
+#: cuon/Staff/GUI/staff.glade2:231 cuon/Staff/GUI/staff.glade2:279
+#: cuon/User/GUI/user.glade2:110 cuon/Project/GUI/project.glade2:321
+#: cuon/Project/GUI/project.glade2:376 cuon/Project/GUI/project.glade2:462
+#: cuon/Addresses/GUI/addresses.glade2:1378
+#: cuon/Addresses/GUI/contact.glade2:227 cuon/DMS/GUI/dms.glade2:304
+#: cuon/Think/GUI/think.glade2:208 cuon/Articles/GUI/materialGroup.glade2:129
+#: cuon/Articles/GUI/articles.glade2:211 cuon/Articles/GUI/articles.glade2:272
+#: cuon/Articles/GUI/articles.glade2:344 cuon/Articles/GUI/articles.glade2:392
+#: cuon/Articles/GUI/articles.glade2:432 cuon/Articles/GUI/articles.glade2:459
+#: GUI/cuon_config_wizard.glade2:43
+#, fuzzy
+msgid "Save"
+msgstr "Saglabāt"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:81
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:165
+#: cuon/Graves/GUI/graves.glade2:150 cuon/Graves/GUI/graves.glade2:198
+#: cuon/Graves/GUI/graves.glade2:246 cuon/Graves/GUI/graves.glade2:294
+#: cuon/Graves/GUI/graves.glade2:342 cuon/Graves/GUI/graves.glade2:390
+#: cuon/Graves/GUI/graves.glade2:438 cuon/Graves/GUI/graves.glade2:486
+#: cuon/Graves/GUI/graves.glade2:534 cuon/Graves/GUI/graves.glade2:582
+#: cuon/Graves/GUI/graves.glade2:656 cuon/Staff/GUI/staff.glade2:244
+#: cuon/Project/GUI/project.glade2:237 cuon/Project/GUI/project.glade2:286
+#: cuon/Project/GUI/project.glade2:334 cuon/Project/GUI/project.glade2:389
+#: cuon/Project/GUI/project.glade2:483 cuon/DMS/GUI/dms.glade2:326
+#, fuzzy
+msgid "Delete"
+msgstr "Dzēst"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:100
+#: cuon/Garden/GUI/botany.glade2:113 cuon/Garden/GUI/botany.glade2:168
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:96
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:205
+#: cuon/Order/GUI/order.glade2:460 cuon/Proposal/GUI/proposal.glade2:374
+#: cuon/Preferences/GUI/preferences.glade2:56
+#: cuon/Project/GUI/project.glade2:157 cuon/Project/GUI/project.glade2:360
+#: cuon/Think/GUI/think.glade2:83
+#, fuzzy
+msgid "new"
+msgstr "jaunie"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:108
+#: cuon/Preferences/GUI/preferences.glade2:64
+#: cuon/Project/GUI/project.glade2:165 cuon/Project/GUI/project.glade2:313
+#: cuon/Think/GUI/think.glade2:92
+#, fuzzy
+msgid "edit"
+msgstr "rediģēt"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:116
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:223
+#: cuon/Preferences/GUI/preferences.glade2:72
+#: cuon/Project/GUI/project.glade2:173 cuon/Think/GUI/think.glade2:101
+#, fuzzy
+msgid "save"
+msgstr "&Saglabāt"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:129
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:238
+#: cuon/Preferences/GUI/preferences.glade2:110 cuon/Staff/GUI/staff.glade2:292
+#: cuon/Project/GUI/project.glade2:186 cuon/Think/GUI/think.glade2:116
+#, fuzzy
+msgid "delete"
+msgstr "dzēst"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:141
+#: cuon/Editor/GUI/editor.glade2:213 cuon/Addresses/GUI/addresses.glade2:1287
+#: cuon/Think/GUI/think.glade2:129 GUI/cuon.glade2:373 GUI/cuon_gtk.glade2:132
+#: GUI/cuon_server.glade2:67
+#, fuzzy
+msgid "Tools"
+msgstr "Rīki"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:148
+#: cuon/Think/GUI/think.glade2:138
+#, fuzzy
+msgid "dms"
+msgstr "Grādi (GMS)"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:160
+#: cuon/Calendar/GUI/calendar.glade2:165 cuon/Login/GUI/user.glade2:154
+#: cuon/Editor/GUI/editor.glade2:233 cuon/Editor/GUI/prgeditor.glade2:217
+#: cuon/Think/GUI/think.glade2:151
+#, fuzzy
+msgid "_Help"
+msgstr "_Palīdzība"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:225
+#: cuon/Think/GUI/think.glade2:238
+#, fuzzy
+msgid "Remove"
+msgstr "Noņemt"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:246
+#: cuon/Garden/GUI/hibernation.glade2:914
+#: cuon/Garden/GUI/hibernation.glade2:1656 cuon/Garden/GUI/botany.glade2:1736
+#: cuon/Garden/GUI/garden.glade2:1402 cuon/Garden/GUI/garden.glade2:2090
+#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1151
+#: cuon/Graves/GUI/graves.glade2:1014 cuon/Order/GUI/order.glade2:144
+#: cuon/Preferences/GUI/preferences.glade2:2424
+#: cuon/Project/GUI/project.glade2:504 cuon/Project/GUI/project.glade2:1169
+#: cuon/Project/GUI/project.glade2:1693 cuon/Project/GUI/project.glade2:2050
+#: cuon/Project/GUI/project.glade2:2834 cuon/Project/GUI/project.glade2:3330
+#: cuon/Think/GUI/think.glade2:268 GUI/cuon.glade2:223
+#, fuzzy
+msgid "DMS"
+msgstr "Grādi (GMS)"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:315
+#, fuzzy
+msgid "Project-Number"
+msgstr "Seriālais numurs:"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:397
+msgid "Accordingly project"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:420
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1055
+#, fuzzy
+msgid "search Project"
+msgstr "Augšpusē"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:432
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1067
+#: cuon/Order/GUI/order.glade2:1158 cuon/Proposal/GUI/proposal.glade2:1011
+#: cuon/Addresses/GUI/addresses.glade2:8003
+#, fuzzy
+msgid "goto Project"
+msgstr "Dzēst projektu"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:519
+#, fuzzy
+msgid "Project\n"
+msgstr "Projekts"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:538
+#, fuzzy
+msgid "Find Number"
+msgstr "Seriālais numurs:"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:588
+msgid "button"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:669
+#, fuzzy
+msgid "Ticket-Number"
+msgstr "Seriālais numurs:"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:692
+#, fuzzy
+msgid "Reported by"
+msgstr "Kļūsti sinhronizēts!"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:735
+#: cuon/Garden/GUI/hibernation.glade2:727 cuon/Project/GUI/project.glade2:1218
+#: GUI/cuon.glade2:922
+#, fuzzy
+msgid "goto Address"
+msgstr "Iet uz adresi"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:765
+msgid "Reported at Date/Time"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:808
+#, fuzzy
+msgid "Platform"
+msgstr "Formas ieeja"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:831
+#, fuzzy
+msgid "solved at"
+msgstr "Šodien %X"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:877
+#: cuon/Garden/GUI/hibernation.glade2:947
+#: cuon/Garden/GUI/hibernation.glade2:1134 cuon/Garden/GUI/garden.glade2:990
+#: cuon/Garden/GUI/garden.glade2:1342 cuon/Order/GUI/order.glade2:1855
+#: cuon/Proposal/GUI/proposal.glade2:1503 cuon/Staff/GUI/staff.glade2:7
+#: cuon/Staff/GUI/staff.glade2:72 cuon/Staff/GUI/staff.glade2:1114
+#: GUI/cuon.glade2:114
+#, fuzzy
+msgid "Staff"
+msgstr "r"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:896
+#: cuon/Editor/GUI/editor.glade2:159 cuon/Order/GUI/order.glade2:1874
+#: cuon/Proposal/GUI/proposal.glade2:1521
+#, fuzzy
+msgid "Search ..."
+msgstr "Meklēt..."
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:931
+msgid "Reproduced"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:951
+#, fuzzy
+msgid "Severity"
+msgstr "Diska ID"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1019
+#: cuon/Bank/GUI/bank.glade2:281 cuon/Bank/GUI/bank.glade2:627
+#, fuzzy
+msgid "short Designation"
+msgstr "Īss nosaukums"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1104
+#, fuzzy
+msgid "Designation:"
+msgstr "Rakstzīmes iestatīts apzīmējums"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1116
+#, fuzzy
+msgid "working data"
+msgstr "<b>Darba laiks</b>"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1191
+msgid "Ticket\n"
+msgstr ""
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1223
+#: cuon/Addresses/GUI/addresses.glade2:5565
+#, fuzzy
+msgid "Note"
+msgstr "Paziņojums"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1239
+#: cuon/Addresses/GUI/addresses.glade2:1071
+#: cuon/Addresses/GUI/addresses.glade2:7691
+#, fuzzy
+msgid "Notes"
+msgstr "Paziņojums"
+
 #: cuon/Calendar/GUI/calendar.glade2:103 cuon/Login/GUI/user.glade2:92
-#: cuon/Editor/GUI/editor.glade2:105 cuon/Editor/GUI/prgeditor.glade2:105
-#: cuon/Order/GUI/order.glade2:70 cuon/Order/GUI/order.glade2:290
-#: cuon/Order/GUI/order.glade2:348 cuon/Order/GUI/order.glade2:415
-#: cuon/Proposal/GUI/proposal.glade2:98 cuon/Proposal/GUI/proposal.glade2:324
+#: cuon/Editor/GUI/editor.glade2:91 cuon/Editor/GUI/prgeditor.glade2:105
+#: cuon/Order/GUI/order.glade2:70 cuon/Order/GUI/order.glade2:303
+#: cuon/Order/GUI/order.glade2:361 cuon/Order/GUI/order.glade2:428
+#: cuon/Proposal/GUI/proposal.glade2:70 cuon/Proposal/GUI/proposal.glade2:266
 #: cuon/Project/GUI/project.glade2:60 cuon/Project/GUI/project.glade2:97
 #: cuon/Project/GUI/project.glade2:216 cuon/Project/GUI/project.glade2:265
 #, fuzzy
@@ -614,20 +1424,13 @@ msgid "_Edit"
 msgstr "Rediģēt"
 
 #: cuon/Calendar/GUI/calendar.glade2:152 cuon/Login/GUI/user.glade2:141
-#: cuon/Editor/GUI/editor.glade2:209 cuon/Editor/GUI/prgeditor.glade2:209
+#: cuon/Editor/GUI/editor.glade2:206 cuon/Editor/GUI/prgeditor.glade2:209
 #, fuzzy
 msgid "_View"
 msgstr "_Skats"
 
-#: cuon/Calendar/GUI/calendar.glade2:165 cuon/Login/GUI/user.glade2:154
-#: cuon/Editor/GUI/editor.glade2:217 cuon/Editor/GUI/prgeditor.glade2:217
-#: cuon/Think/GUI/think.glade2:151
-#, fuzzy
-msgid "_Help"
-msgstr "_Palīdzība"
-
 #: cuon/Calendar/GUI/calendar.glade2:174 cuon/Login/GUI/user.glade2:163
-#: cuon/Editor/GUI/editor.glade2:226 cuon/Editor/GUI/prgeditor.glade2:226
+#: cuon/Editor/GUI/editor.glade2:240 cuon/Editor/GUI/prgeditor.glade2:226
 #, fuzzy
 msgid "_About"
 msgstr "_Par"
@@ -664,17 +1467,17 @@ msgstr "Lietvārdi"
 msgid "Purchase"
 msgstr "_Pirkt"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:4478
+#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:4483
 #, fuzzy
 msgid "Payment"
 msgstr "Maksājums"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:3481
+#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:3486
 #, fuzzy
 msgid "monthly"
 msgstr "Katru mēnesi"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:3497
+#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:3502
 #, fuzzy
 msgid "quarterly"
 msgstr "Pirmais ceturksnis"
@@ -689,7 +1492,7 @@ msgstr "Pirms %d gada"
 msgid "custom period"
 msgstr "<i>Perioda sākums:</i> %1"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:3646
+#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:3651
 #, fuzzy
 msgid "custom"
 msgstr "pašizvēlēts"
@@ -716,6 +1519,7 @@ msgid "Data"
 msgstr "Dati"
 
 #: cuon/Login/GUI/user.glade2:229 cuon/Login/GUI/login.glade2:24
+#: GUI/cuon_config_wizard.glade2:326
 #, fuzzy
 msgid "Username"
 msgstr "Lietotāja vārds"
@@ -728,10 +1532,11 @@ msgstr "Lietotāja vārds"
 msgid "*"
 msgstr "*"
 
-#: cuon/Login/GUI/user.glade2:370 cuon/Preferences/GUI/preferences.glade2:1504
-#: cuon/User/GUI/user.glade2:11 cuon/User/GUI/user.glade2:77
-#: cuon/User/GUI/user.glade2:886 cuon/DMS/GUI/dms.glade2:943
-#: cuon/DMS/GUI/dms.glade2:1153 GUI/cuon.glade2:379 GUI/cuon_server.glade2:832
+#: cuon/Login/GUI/user.glade2:370 cuon/Preferences/GUI/preferences.glade2:1146
+#: cuon/Preferences/GUI/preferences.glade2:1271 cuon/User/GUI/user.glade2:11
+#: cuon/User/GUI/user.glade2:77 cuon/User/GUI/user.glade2:886
+#: cuon/DMS/GUI/dms.glade2:994 cuon/DMS/GUI/dms.glade2:1204
+#: GUI/cuon.glade2:388 GUI/cuon_server.glade2:783
 #, fuzzy
 msgid "User"
 msgstr "Lietotājs"
@@ -741,7 +1546,9 @@ msgstr "Lietotājs"
 msgid "Login into Database"
 msgstr "Datubāzes ieejas dialogs"
 
-#: cuon/Login/GUI/login.glade2:35 cuon/Preferences/GUI/preferences.glade2:1532
+#: cuon/Login/GUI/login.glade2:35 cuon/Preferences/GUI/preferences.glade2:1161
+#: cuon/Preferences/GUI/preferences.glade2:1284
+#: GUI/cuon_config_wizard.glade2:339
 #, fuzzy
 msgid "Password"
 msgstr "Parole"
@@ -755,7 +1562,7 @@ msgstr "Rakstzīmes iestatīts apzīmējums"
 
 #: cuon/Garden/GUI/hibernation.glade2:49 cuon/Garden/GUI/botany.glade2:68
 #: cuon/Garden/GUI/garden.glade2:64 cuon/Leasing/GUI/leasing.glade2:67
-#: cuon/Graves/GUI/graves.glade2:48 cuon/Graves/GUI/graveyard.glade2:64
+#: cuon/Graves/GUI/graves.glade2:78 cuon/Graves/GUI/graveyard.glade2:64
 #: cuon/Graves/GUI/graves_list.glade2:42 cuon/Staff/GUI/staff.glade2:40
 #: cuon/Articles/GUI/materialGroup.glade2:65
 #: cuon/Articles/GUI/articles.glade2:156
@@ -763,124 +1570,12 @@ msgstr "Rakstzīmes iestatīts apzīmējums"
 msgid "close"
 msgstr "aizvērt"
 
-#: cuon/Garden/GUI/hibernation.glade2:61 cuon/Garden/GUI/hibernation.glade2:96
-#: cuon/Garden/GUI/hibernation.glade2:192 cuon/Garden/GUI/botany.glade2:81
-#: cuon/Garden/GUI/botany.glade2:122 cuon/Garden/GUI/botany.glade2:177
-#: cuon/Garden/GUI/botany.glade2:232 cuon/Garden/GUI/botany.glade2:287
-#: cuon/Garden/GUI/botany.glade2:342 cuon/Garden/GUI/botany.glade2:398
-#: cuon/Garden/GUI/garden.glade2:77 cuon/Garden/GUI/garden.glade2:119
-#: cuon/Garden/GUI/garden.glade2:191 cuon/Leasing/GUI/leasing.glade2:80
-#: cuon/Leasing/GUI/leasing.glade2:121 cuon/Leasing/GUI/leasing.glade2:191
-#: cuon/Leasing/GUI/leasing.glade2:274 cuon/Leasing/GUI/leasing.glade2:329
-#: cuon/Leasing/GUI/leasing.glade2:375 cuon/Leasing/GUI/leasing.glade2:406
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:117
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:214
-#: cuon/Graves/GUI/graves.glade2:75 cuon/Graves/GUI/graves.glade2:147
-#: cuon/Graves/GUI/graves.glade2:195 cuon/Graves/GUI/graves.glade2:243
-#: cuon/Graves/GUI/graves.glade2:291 cuon/Graves/GUI/graves.glade2:339
-#: cuon/Graves/GUI/graves.glade2:387 cuon/Graves/GUI/graves.glade2:435
-#: cuon/Graves/GUI/graves.glade2:483 cuon/Graves/GUI/graves.glade2:531
-#: cuon/Graves/GUI/graves.glade2:590 cuon/Graves/GUI/graveyard.glade2:77
-#: cuon/Graves/GUI/graveyard.glade2:118 cuon/Order/GUI/order.glade2:184
-#: cuon/Order/GUI/order.glade2:237 cuon/Order/GUI/order.glade2:375
-#: cuon/Order/GUI/order.glade2:460 cuon/Proposal/GUI/proposal.glade2:202
-#: cuon/Proposal/GUI/proposal.glade2:263 cuon/Proposal/GUI/proposal.glade2:391
-#: cuon/Proposal/GUI/proposal.glade2:469 cuon/Stock/GUI/stock.glade2:95
-#: cuon/Stock/GUI/stock.glade2:156 cuon/Stock/GUI/stock.glade2:253
-#: cuon/Staff/GUI/staff.glade2:52 cuon/Staff/GUI/staff.glade2:87
-#: cuon/Staff/GUI/staff.glade2:148 cuon/Staff/GUI/staff.glade2:188
-#: cuon/Staff/GUI/staff.glade2:223 cuon/Staff/GUI/staff.glade2:271
-#: cuon/User/GUI/user.glade2:95 cuon/Project/GUI/project.glade2:368
-#: cuon/Project/GUI/project.glade2:449 cuon/Project/GUI/project.glade2:3894
-#: cuon/Project/GUI/project.glade2:4283
-#: cuon/Addresses/GUI/addresses.glade2:721
-#: cuon/Addresses/GUI/addresses.glade2:1360
-#: cuon/Addresses/GUI/contact.glade2:209 cuon/DMS/GUI/dms.glade2:291
-#: cuon/Think/GUI/think.glade2:191 cuon/Articles/GUI/materialGroup.glade2:78
-#: cuon/Articles/GUI/materialGroup.glade2:119
-#: cuon/Articles/GUI/articles.glade2:168 cuon/Articles/GUI/articles.glade2:203
-#: cuon/Articles/GUI/articles.glade2:264 cuon/Articles/GUI/articles.glade2:336
-#: cuon/Articles/GUI/articles.glade2:384 cuon/Articles/GUI/articles.glade2:424
-#: cuon/Articles/GUI/articles.glade2:451
-#, fuzzy
-msgid "Edit"
-msgstr "Rediģēt"
-
-#: cuon/Garden/GUI/hibernation.glade2:88
-#: cuon/Garden/GUI/hibernation.glade2:184 cuon/Garden/GUI/botany.glade2:223
-#: cuon/Garden/GUI/botany.glade2:278 cuon/Garden/GUI/botany.glade2:333
-#: cuon/Garden/GUI/botany.glade2:389 cuon/Garden/GUI/garden.glade2:110
-#: cuon/Garden/GUI/garden.glade2:182 cuon/Leasing/GUI/leasing.glade2:112
-#: cuon/Leasing/GUI/leasing.glade2:182 cuon/Leasing/GUI/leasing.glade2:265
-#: cuon/Leasing/GUI/leasing.glade2:320 cuon/Editor/GUI/editor.glade2:270
-#: cuon/Editor/GUI/prgeditor.glade2:270 cuon/Graves/GUI/graves.glade2:67
-#: cuon/Graves/GUI/graves.glade2:139 cuon/Graves/GUI/graves.glade2:187
-#: cuon/Graves/GUI/graves.glade2:235 cuon/Graves/GUI/graves.glade2:283
-#: cuon/Graves/GUI/graves.glade2:331 cuon/Graves/GUI/graves.glade2:379
-#: cuon/Graves/GUI/graves.glade2:427 cuon/Graves/GUI/graves.glade2:475
-#: cuon/Graves/GUI/graves.glade2:523 cuon/Graves/GUI/graves.glade2:576
-#: cuon/Graves/GUI/graveyard.glade2:109 cuon/Order/GUI/order.glade2:176
-#: cuon/Order/GUI/order.glade2:229 cuon/Proposal/GUI/proposal.glade2:193
-#: cuon/Proposal/GUI/proposal.glade2:254 cuon/Stock/GUI/stock.glade2:86
-#: cuon/Stock/GUI/stock.glade2:147 cuon/Stock/GUI/stock.glade2:236
-#: cuon/Staff/GUI/staff.glade2:79 cuon/Staff/GUI/staff.glade2:140
-#: cuon/Staff/GUI/staff.glade2:215 cuon/Staff/GUI/staff.glade2:263
-#: cuon/User/GUI/user.glade2:86 cuon/Project/GUI/project.glade2:305
-#: cuon/Project/GUI/project.glade2:436
-#: cuon/Addresses/GUI/addresses.glade2:1346
-#: cuon/Addresses/GUI/contact.glade2:191 cuon/DMS/GUI/dms.glade2:278
-#: cuon/Think/GUI/think.glade2:174 cuon/Articles/GUI/materialGroup.glade2:110
-#: cuon/Articles/GUI/articles.glade2:195 cuon/Articles/GUI/articles.glade2:256
-#: cuon/Articles/GUI/articles.glade2:328 cuon/Articles/GUI/articles.glade2:376
-#, fuzzy
-msgid "New"
-msgstr "Jauns"
-
-#: cuon/Garden/GUI/hibernation.glade2:104
-#: cuon/Garden/GUI/hibernation.glade2:200 cuon/Garden/GUI/botany.glade2:131
-#: cuon/Garden/GUI/botany.glade2:186 cuon/Garden/GUI/botany.glade2:241
-#: cuon/Garden/GUI/botany.glade2:296 cuon/Garden/GUI/botany.glade2:351
-#: cuon/Garden/GUI/botany.glade2:408 cuon/Garden/GUI/garden.glade2:129
-#: cuon/Garden/GUI/garden.glade2:200 cuon/Leasing/GUI/leasing.glade2:130
-#: cuon/Leasing/GUI/leasing.glade2:200 cuon/Leasing/GUI/leasing.glade2:283
-#: cuon/Leasing/GUI/leasing.glade2:338 cuon/Leasing/GUI/leasing.glade2:384
-#: cuon/Leasing/GUI/leasing.glade2:415
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:138
-#: cuon/Editor/GUI/editor.glade2:305 cuon/Editor/GUI/editor.glade2:306
-#: cuon/Editor/GUI/prgeditor.glade2:306 cuon/Editor/GUI/prgeditor.glade2:307
-#: cuon/Graves/GUI/graves.glade2:83 cuon/Graves/GUI/graves.glade2:155
-#: cuon/Graves/GUI/graves.glade2:203 cuon/Graves/GUI/graves.glade2:251
-#: cuon/Graves/GUI/graves.glade2:299 cuon/Graves/GUI/graves.glade2:347
-#: cuon/Graves/GUI/graves.glade2:395 cuon/Graves/GUI/graves.glade2:443
-#: cuon/Graves/GUI/graves.glade2:491 cuon/Graves/GUI/graves.glade2:539
-#: cuon/Graves/GUI/graves.glade2:604 cuon/Graves/GUI/graveyard.glade2:128
-#: cuon/Order/GUI/order.glade2:197 cuon/Order/GUI/order.glade2:250
-#: cuon/Order/GUI/order.glade2:388 cuon/Order/GUI/order.glade2:473
-#: cuon/Proposal/GUI/proposal.glade2:217 cuon/Proposal/GUI/proposal.glade2:278
-#: cuon/Proposal/GUI/proposal.glade2:400 cuon/Proposal/GUI/proposal.glade2:486
-#: cuon/Stock/GUI/stock.glade2:110 cuon/Stock/GUI/stock.glade2:171
-#: cuon/Stock/GUI/stock.glade2:270 cuon/Staff/GUI/staff.glade2:95
-#: cuon/Staff/GUI/staff.glade2:156 cuon/Staff/GUI/staff.glade2:196
-#: cuon/Staff/GUI/staff.glade2:231 cuon/Staff/GUI/staff.glade2:279
-#: cuon/User/GUI/user.glade2:110 cuon/Project/GUI/project.glade2:321
-#: cuon/Project/GUI/project.glade2:376 cuon/Project/GUI/project.glade2:462
-#: cuon/Addresses/GUI/addresses.glade2:1374
-#: cuon/Addresses/GUI/contact.glade2:227 cuon/DMS/GUI/dms.glade2:304
-#: cuon/Think/GUI/think.glade2:208 cuon/Articles/GUI/materialGroup.glade2:129
-#: cuon/Articles/GUI/articles.glade2:211 cuon/Articles/GUI/articles.glade2:272
-#: cuon/Articles/GUI/articles.glade2:344 cuon/Articles/GUI/articles.glade2:392
-#: cuon/Articles/GUI/articles.glade2:432 cuon/Articles/GUI/articles.glade2:459
-#: GUI/cuon_config_wizard.glade2:68
-#, fuzzy
-msgid "Save"
-msgstr "Saglabāt"
-
 #: cuon/Garden/GUI/hibernation.glade2:117
 #: cuon/Garden/GUI/hibernation.glade2:124 cuon/Garden/GUI/botany.glade2:424
 #: cuon/Garden/GUI/garden.glade2:145 cuon/Leasing/GUI/leasing.glade2:145
 #: cuon/Leasing/GUI/leasing.glade2:215
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:266
-#: cuon/Graves/GUI/graveyard.glade2:144 cuon/Order/GUI/order.glade2:516
+#: cuon/Graves/GUI/graveyard.glade2:144 cuon/Order/GUI/order.glade2:529
 #: cuon/Staff/GUI/staff.glade2:108 cuon/Articles/GUI/materialGroup.glade2:145
 #: cuon/Articles/GUI/articles.glade2:224 cuon/Articles/GUI/articles.glade2:285
 #, fuzzy
@@ -910,8 +1605,8 @@ msgstr "Jauns dokuments"
 #: cuon/Garden/GUI/garden.glade2:215 cuon/Leasing/GUI/leasing.glade2:160
 #: cuon/Leasing/GUI/leasing.glade2:243 cuon/Leasing/GUI/leasing.glade2:298
 #: cuon/Leasing/GUI/leasing.glade2:353 cuon/Graves/GUI/graveyard.glade2:159
-#: cuon/Order/GUI/order.glade2:210 cuon/Order/GUI/order.glade2:263
-#: cuon/Proposal/GUI/proposal.glade2:232 cuon/Proposal/GUI/proposal.glade2:293
+#: cuon/Order/GUI/order.glade2:223 cuon/Order/GUI/order.glade2:276
+#: cuon/Proposal/GUI/proposal.glade2:186 cuon/Proposal/GUI/proposal.glade2:239
 #: cuon/Stock/GUI/stock.glade2:125 cuon/Stock/GUI/stock.glade2:186
 #: cuon/Staff/GUI/staff.glade2:121 cuon/Staff/GUI/staff.glade2:169
 #: cuon/User/GUI/user.glade2:125 cuon/Articles/GUI/materialGroup.glade2:160
@@ -930,9 +1625,9 @@ msgstr "Maksājums"
 
 #: cuon/Garden/GUI/hibernation.glade2:225 cuon/Leasing/GUI/leasing.glade2:428
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:430
-#: cuon/Graves/GUI/graves.glade2:96 cuon/Stock/GUI/stock.glade2:199
+#: cuon/Graves/GUI/graves.glade2:126 cuon/Stock/GUI/stock.glade2:199
 #: cuon/Project/GUI/project.glade2:405
-#: cuon/Addresses/GUI/addresses.glade2:1224
+#: cuon/Addresses/GUI/addresses.glade2:1220
 #: cuon/Articles/GUI/articles.glade2:471
 #, fuzzy
 msgid "Lists"
@@ -1005,16 +1700,10 @@ msgid "Sequence"
 msgstr "<b>Virkne</b>"
 
 #: cuon/Garden/GUI/hibernation.glade2:631 cuon/Garden/GUI/garden.glade2:555
-#: cuon/Order/GUI/order.glade2:1288 cuon/Proposal/GUI/proposal.glade2:1504
+#: cuon/Order/GUI/order.glade2:1293 cuon/Proposal/GUI/proposal.glade2:1198
 #, fuzzy
 msgid "Customer"
 msgstr "Klients"
-
-#: cuon/Garden/GUI/hibernation.glade2:727 cuon/Project/GUI/project.glade2:1218
-#: GUI/cuon.glade2:892
-#, fuzzy
-msgid "goto Address"
-msgstr "Iet uz adresi"
 
 #: cuon/Garden/GUI/hibernation.glade2:788
 #, fuzzy
@@ -1039,29 +1728,6 @@ msgstr ""
 #, fuzzy
 msgid "Dup Order"
 msgstr "Joslu secība"
-
-#: cuon/Garden/GUI/hibernation.glade2:914
-#: cuon/Garden/GUI/hibernation.glade2:1656 cuon/Garden/GUI/botany.glade2:1736
-#: cuon/Garden/GUI/garden.glade2:1402 cuon/Garden/GUI/garden.glade2:2090
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1151
-#: cuon/Graves/GUI/graves.glade2:966 cuon/Order/GUI/order.glade2:144
-#: cuon/Preferences/GUI/preferences.glade2:3357
-#: cuon/Project/GUI/project.glade2:504 cuon/Project/GUI/project.glade2:1169
-#: cuon/Project/GUI/project.glade2:1693 cuon/Project/GUI/project.glade2:2050
-#: cuon/Project/GUI/project.glade2:2834 cuon/Project/GUI/project.glade2:3330
-#: cuon/Think/GUI/think.glade2:268 GUI/cuon.glade2:214
-#, fuzzy
-msgid "DMS"
-msgstr "Grādi (GMS)"
-
-#: cuon/Garden/GUI/hibernation.glade2:947
-#: cuon/Garden/GUI/hibernation.glade2:1134 cuon/Garden/GUI/garden.glade2:990
-#: cuon/Garden/GUI/garden.glade2:1342 cuon/Order/GUI/order.glade2:1850
-#: cuon/Staff/GUI/staff.glade2:7 cuon/Staff/GUI/staff.glade2:72
-#: cuon/Staff/GUI/staff.glade2:1114 GUI/cuon.glade2:114
-#, fuzzy
-msgid "Staff"
-msgstr "r"
 
 #: cuon/Garden/GUI/hibernation.glade2:1002
 #: cuon/Garden/GUI/hibernation.glade2:1189 cuon/Garden/GUI/garden.glade2:892
@@ -1102,16 +1768,10 @@ msgstr " Saņemtas %1 definīcijas "
 msgid "ends"
 msgstr "Beidzas"
 
-#: cuon/Garden/GUI/hibernation.glade2:1394 cuon/Garden/GUI/garden.glade2:473
-#: cuon/Project/GUI/project.glade2:2401 cuon/Project/GUI/project.glade2:2592
-#, fuzzy
-msgid "begin"
-msgstr "Sākums"
-
 #: cuon/Garden/GUI/hibernation.glade2:1422 cuon/WebShop/GUI/webshop.glade2:108
 #: cuon/Order/GUI/order.glade2:9 cuon/Order/GUI/order.glade2:54
-#: cuon/Order/GUI/order.glade2:1927 cuon/Project/GUI/project.glade2:3518
-#: cuon/Addresses/GUI/addresses.glade2:1184 cuon/Stats/GUI/stats.glade2:100
+#: cuon/Order/GUI/order.glade2:1932 cuon/Project/GUI/project.glade2:3518
+#: cuon/Addresses/GUI/addresses.glade2:1180 cuon/Stats/GUI/stats.glade2:100
 #, fuzzy
 msgid "Order"
 msgstr "Kārtība:"
@@ -1126,9 +1786,9 @@ msgstr "Iet uz baitu"
 msgid "choose Botany"
 msgstr "Norādiet faila nosaukumu"
 
-#: cuon/Garden/GUI/hibernation.glade2:1611 cuon/Order/GUI/order.glade2:368
-#: cuon/Order/GUI/order.glade2:3897 cuon/Staff/GUI/staff.glade2:181
-#: cuon/Staff/GUI/staff.glade2:1580 cuon/Addresses/GUI/addresses.glade2:915
+#: cuon/Garden/GUI/hibernation.glade2:1611 cuon/Order/GUI/order.glade2:381
+#: cuon/Order/GUI/order.glade2:3902 cuon/Staff/GUI/staff.glade2:181
+#: cuon/Staff/GUI/staff.glade2:1580 cuon/Addresses/GUI/addresses.glade2:911
 #: cuon/Stats/GUI/stats.glade2:145 cuon/Stats/GUI/stats.glade2:167
 #: cuon/Stats/GUI/stats.glade2:216
 #, fuzzy
@@ -1162,7 +1822,7 @@ msgid "bot. Name"
 msgstr "Tukšs vārds"
 
 #: cuon/Garden/GUI/hibernation.glade2:1761 cuon/Garden/GUI/garden.glade2:1880
-#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:1923
+#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:1978
 #, fuzzy
 msgid "status"
 msgstr "statuss"
@@ -1210,16 +1870,6 @@ msgstr "Iet uz baitu"
 #: cuon/Garden/GUI/botany.glade2:104 cuon/Garden/GUI/botany.glade2:879
 msgid "Divisio"
 msgstr ""
-
-#: cuon/Garden/GUI/botany.glade2:113 cuon/Garden/GUI/botany.glade2:168
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:96
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:205
-#: cuon/Order/GUI/order.glade2:447 cuon/Proposal/GUI/proposal.glade2:452
-#: cuon/Project/GUI/project.glade2:157 cuon/Project/GUI/project.glade2:360
-#: cuon/Think/GUI/think.glade2:83
-#, fuzzy
-msgid "new"
-msgstr "jaunie"
 
 #: cuon/Garden/GUI/botany.glade2:159 cuon/Garden/GUI/botany.glade2:1064
 #, fuzzy
@@ -1411,22 +2061,22 @@ msgstr "15 minūtes"
 msgid "Materialgroup"
 msgstr "Lūdzu izvēlieties derīgu grupu."
 
-#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:1068
-#: cuon/Proposal/GUI/proposal.glade2:1088
-#: cuon/Skeleton/GUI/skeleton.glade2:480 cuon/Articles/GUI/articles.glade2:891
+#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:1013
+#: cuon/Proposal/GUI/proposal.glade2:866 cuon/Skeleton/GUI/skeleton.glade2:480
+#: cuon/Articles/GUI/articles.glade2:891
 #, fuzzy
 msgid "Desig."
 msgstr "Apraksts"
 
-#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:2755
-#: cuon/Proposal/GUI/proposal.glade2:3374 cuon/Project/GUI/project.glade2:2997
+#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:2760
+#: cuon/Proposal/GUI/proposal.glade2:2427 cuon/Project/GUI/project.glade2:2997
 #: cuon/Skeleton/GUI/skeleton.glade2:513 cuon/Articles/GUI/articles.glade2:905
 #, fuzzy
 msgid "Unit"
 msgstr "Vienība"
 
-#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:2767
-#: cuon/Proposal/GUI/proposal.glade2:3402
+#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:2772
+#: cuon/Proposal/GUI/proposal.glade2:2439
 #: cuon/Skeleton/GUI/skeleton.glade2:530 cuon/Articles/GUI/articles.glade2:938
 #, fuzzy
 msgid "Wrapping"
@@ -1475,12 +2125,12 @@ msgstr "Iet uz baitu"
 msgid "Goto"
 msgstr "Iet uz"
 
-#: cuon/Leasing/GUI/leasing.glade2:1774 cuon/Graves/GUI/graves.glade2:1545
-#: cuon/Order/GUI/order.glade2:2356 cuon/Order/GUI/order.glade2:2431
-#: cuon/Proposal/GUI/proposal.glade2:2642
-#: cuon/Proposal/GUI/proposal.glade2:2770
-#: cuon/Addresses/GUI/addresses.glade2:2314
-#: cuon/Addresses/GUI/addresses.glade2:2399
+#: cuon/Leasing/GUI/leasing.glade2:1774 cuon/Graves/GUI/graves.glade2:1544
+#: cuon/Order/GUI/order.glade2:2361 cuon/Order/GUI/order.glade2:2436
+#: cuon/Proposal/GUI/proposal.glade2:2104
+#: cuon/Proposal/GUI/proposal.glade2:2179
+#: cuon/Addresses/GUI/addresses.glade2:2318
+#: cuon/Addresses/GUI/addresses.glade2:2403
 #: cuon/Articles/GUI/articles.glade2:1337
 #, fuzzy
 msgid "search"
@@ -1515,8 +2165,8 @@ msgstr "FastTracker II audio"
 msgid "show extendet info"
 msgstr "&Parādīt paplašinātu onformāciju"
 
-#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:3072
-#: cuon/Order/GUI/order.glade2:3399 cuon/Proposal/GUI/proposal.glade2:4289
+#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:3077
+#: cuon/Order/GUI/order.glade2:3404 cuon/Proposal/GUI/proposal.glade2:3026
 #: cuon/Articles/GUI/articles.glade2:1598
 #, fuzzy
 msgid "choose Tax Vat"
@@ -1533,10 +2183,10 @@ msgstr ""
 msgid "Article Des."
 msgstr "Darba_virsma"
 
-#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2817
-#: cuon/Graves/GUI/graves.glade2:3129 cuon/Graves/GUI/graves.glade2:3440
-#: cuon/Graves/GUI/graves.glade2:3758 cuon/Graves/GUI/graves.glade2:4070
-#: cuon/Graves/GUI/graves.glade2:4382 cuon/Graves/GUI/graves.glade2:4763
+#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2828
+#: cuon/Graves/GUI/graves.glade2:3139 cuon/Graves/GUI/graves.glade2:3449
+#: cuon/Graves/GUI/graves.glade2:3766 cuon/Graves/GUI/graves.glade2:4077
+#: cuon/Graves/GUI/graves.glade2:4388 cuon/Graves/GUI/graves.glade2:4768
 #: cuon/Project/GUI/project.glade2:2907 cuon/Articles/GUI/articles.glade2:1990
 #, fuzzy
 msgid "Article-Number"
@@ -1546,7 +2196,7 @@ msgstr "Seriālais numurs:"
 msgid "Quantities"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5155
+#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5159
 #: cuon/Articles/GUI/articles.glade2:2141
 #, fuzzy
 msgid "add Article"
@@ -1728,7 +2378,7 @@ msgid "barcode"
 msgstr "Līniju kods"
 
 #: cuon/WebShop/GUI/webshop.glade2:10 cuon/WebShop/GUI/webshop.glade2:316
-#: cuon/Addresses/GUI/addresses.glade2:3637
+#: cuon/Addresses/GUI/addresses.glade2:3641
 #, fuzzy
 msgid "Webshop"
 msgstr "Tīmekļa pārlūks"
@@ -1738,7 +2388,7 @@ msgstr "Tīmekļa pārlūks"
 msgid "gtk-close"
 msgstr "&Aizvērt FileZilla"
 
-#: cuon/WebShop/GUI/webshop.glade2:72 GUI/cuon.glade2:399
+#: cuon/WebShop/GUI/webshop.glade2:72 GUI/cuon.glade2:408
 #: GUI/cuon_gtk.glade2:150
 #, fuzzy
 msgid "Update"
@@ -1748,8 +2398,8 @@ msgstr "Atjaunināt"
 msgid "Complete"
 msgstr ""
 
-#: cuon/WebShop/GUI/webshop.glade2:90 cuon/Addresses/GUI/addresses.glade2:3193
-#: cuon/Stats/GUI/stats.glade2:60 GUI/cuon.glade2:456
+#: cuon/WebShop/GUI/webshop.glade2:90 cuon/Addresses/GUI/addresses.glade2:3197
+#: cuon/Stats/GUI/stats.glade2:60 GUI/cuon.glade2:465
 #, fuzzy
 msgid "Addresses"
 msgstr "adreses"
@@ -1761,39 +2411,12 @@ msgid "List of Invoices"
 msgstr "Uzdevumu saraksts"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:62
-#: cuon/Editor/GUI/editor.glade2:254 cuon/Editor/GUI/prgeditor.glade2:254
+#: cuon/Editor/GUI/editor.glade2:263 cuon/Editor/GUI/prgeditor.glade2:254
 #: cuon/Stats/GUI/stats.glade2:47 cuon/Think/GUI/think.glade2:49
-#: GUI/setup.glade2:46 GUI/cuon_config_wizard.glade2:46
+#: GUI/setup.glade2:46 GUI/cuon_config_wizard.glade2:24
 #, fuzzy
 msgid "Quit"
 msgstr "Iziet"
-
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:165
-#: cuon/Graves/GUI/graves.glade2:120 cuon/Graves/GUI/graves.glade2:168
-#: cuon/Graves/GUI/graves.glade2:216 cuon/Graves/GUI/graves.glade2:264
-#: cuon/Graves/GUI/graves.glade2:312 cuon/Graves/GUI/graves.glade2:360
-#: cuon/Graves/GUI/graves.glade2:408 cuon/Graves/GUI/graves.glade2:456
-#: cuon/Graves/GUI/graves.glade2:504 cuon/Graves/GUI/graves.glade2:552
-#: cuon/Graves/GUI/graves.glade2:626 cuon/Staff/GUI/staff.glade2:244
-#: cuon/Project/GUI/project.glade2:237 cuon/Project/GUI/project.glade2:286
-#: cuon/Project/GUI/project.glade2:334 cuon/Project/GUI/project.glade2:389
-#: cuon/Project/GUI/project.glade2:483 cuon/DMS/GUI/dms.glade2:326
-#, fuzzy
-msgid "Delete"
-msgstr "Dzēst"
-
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:223
-#: cuon/Project/GUI/project.glade2:173 cuon/Think/GUI/think.glade2:101
-#, fuzzy
-msgid "save"
-msgstr "&Saglabāt"
-
-#: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:238
-#: cuon/Staff/GUI/staff.glade2:292 cuon/Project/GUI/project.glade2:186
-#: cuon/Think/GUI/think.glade2:116
-#, fuzzy
-msgid "delete"
-msgstr "dzēst"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:275
 #, fuzzy
@@ -1879,7 +2502,7 @@ msgid "Custom Month"
 msgstr "Pirms %d mēneša"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:519
-#: cuon/Graves/GUI/graves.glade2:132 cuon/Addresses/GUI/addresses.glade2:7971
+#: cuon/Graves/GUI/graves.glade2:162 cuon/Addresses/GUI/addresses.glade2:7957
 #: cuon/Stats/GUI/stats.glade2:229
 #, fuzzy
 msgid "Invoices"
@@ -1902,7 +2525,7 @@ msgstr "Seriālais numurs:"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:776
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:933
-#: cuon/Order/GUI/order.glade2:543 cuon/Proposal/GUI/proposal.glade2:582
+#: cuon/Order/GUI/order.glade2:578 cuon/Proposal/GUI/proposal.glade2:468
 #, fuzzy
 msgid "Order-Number"
 msgstr "Seriālais numurs:"
@@ -1937,14 +2560,14 @@ msgstr "Diska ID"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1226
 #: cuon/Project/GUI/project.glade2:517 cuon/Project/GUI/project.glade2:1267
-#: cuon/Addresses/GUI/addresses.glade2:1408
-#: cuon/Addresses/GUI/addresses.glade2:5378
+#: cuon/Addresses/GUI/addresses.glade2:1412
+#: cuon/Addresses/GUI/addresses.glade2:5382
 #, fuzzy
 msgid "Letter"
 msgstr "Burts "
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1243
-#: cuon/Addresses/GUI/addresses.glade2:3715
+#: cuon/Addresses/GUI/addresses.glade2:3719
 msgid "button3"
 msgstr ""
 
@@ -2084,7 +2707,7 @@ msgstr "Jauna grāmat&zīme"
 
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:75
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:1388
-#: cuon/Order/GUI/order.glade2:4258
+#: cuon/Order/GUI/order.glade2:4263
 msgid "Cash"
 msgstr ""
 
@@ -2144,15 +2767,9 @@ msgstr "&Konta menedžeris"
 
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:9
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:75
-#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:1633 GUI/cuon.glade2:234
+#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:1633 GUI/cuon.glade2:243
 msgid "Bookkeeping"
 msgstr ""
-
-#: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:169
-#: cuon/DMS/GUI/dms.glade2:1083
-#, fuzzy
-msgid "All"
-msgstr "Viss"
 
 #: cuon/XmlValues/xmlvalues.glade2:9
 msgid "XmlValues"
@@ -2183,71 +2800,90 @@ msgstr "Drukas priekšska_ts..."
 msgid "gtk-clear"
 msgstr "Attīrīt vēsturi"
 
-#: cuon/Editor/GUI/editor.glade2:10 cuon/Editor/GUI/prgeditor.glade2:10
+#: cuon/Editor/GUI/editor.glade2:9 cuon/Editor/GUI/prgeditor.glade2:10
 msgid "Cuon Editor"
 msgstr ""
 
-#: cuon/Editor/GUI/editor.glade2:114 cuon/Editor/GUI/prgeditor.glade2:114
+#: cuon/Editor/GUI/editor.glade2:99 cuon/Editor/GUI/prgeditor.glade2:114
 #, fuzzy
 msgid "Undo last changes"
 msgstr "Pēdējā paroles maiņa:"
 
-#: cuon/Editor/GUI/editor.glade2:115 cuon/Editor/GUI/editor.glade2:403
-#: cuon/Editor/GUI/editor.glade2:404 cuon/Editor/GUI/prgeditor.glade2:115
-#: cuon/Editor/GUI/prgeditor.glade2:404 cuon/Editor/GUI/prgeditor.glade2:405
-#: cuon/Addresses/GUI/addresses.glade2:728
-#: cuon/Addresses/GUI/addresses.glade2:6123
-#: cuon/Addresses/GUI/addresses.glade2:6477
-#: cuon/Addresses/GUI/addresses.glade2:6832
-#: cuon/Addresses/GUI/addresses.glade2:7187
-#: cuon/Addresses/GUI/addresses.glade2:7542
-msgid "Undo"
+#: cuon/Editor/GUI/editor.glade2:167
+#, fuzzy
+msgid "Quick Search"
+msgstr "Meklēt"
+
+#: cuon/Editor/GUI/editor.glade2:175
+#, fuzzy
+msgid "Find Next"
+msgstr "Maksājums"
+
+#: cuon/Editor/GUI/editor.glade2:221
+msgid "XML Beautifier"
 msgstr ""
 
-#: cuon/Editor/GUI/editor.glade2:136 cuon/Editor/GUI/editor.glade2:421
-#: cuon/Editor/GUI/editor.glade2:422 cuon/Editor/GUI/prgeditor.glade2:136
-#: cuon/Editor/GUI/prgeditor.glade2:422 cuon/Editor/GUI/prgeditor.glade2:423
-#: cuon/Addresses/GUI/addresses.glade2:6172
-#: cuon/Addresses/GUI/addresses.glade2:6526
-#: cuon/Addresses/GUI/addresses.glade2:6881
-#: cuon/Addresses/GUI/addresses.glade2:7236
-#: cuon/Addresses/GUI/addresses.glade2:7591
-#, fuzzy
-msgid "Redo"
-msgstr "Noņemt"
-
-#: cuon/Editor/GUI/editor.glade2:287 cuon/Editor/GUI/editor.glade2:288
+#: cuon/Editor/GUI/editor.glade2:288 cuon/Editor/GUI/editor.glade2:289
 #: cuon/Editor/GUI/prgeditor.glade2:288 cuon/Editor/GUI/prgeditor.glade2:289
 msgid "Open"
 msgstr ""
 
-#: cuon/Editor/GUI/editor.glade2:336 cuon/Editor/GUI/editor.glade2:337
+#: cuon/Editor/GUI/editor.glade2:324 cuon/Editor/GUI/editor.glade2:325
 #: cuon/Editor/GUI/prgeditor.glade2:337 cuon/Editor/GUI/prgeditor.glade2:338
-#: cuon/Addresses/GUI/addresses.glade2:5976
-#: cuon/Addresses/GUI/addresses.glade2:6330
-#: cuon/Addresses/GUI/addresses.glade2:6685
-#: cuon/Addresses/GUI/addresses.glade2:7040
-#: cuon/Addresses/GUI/addresses.glade2:7395
+#: cuon/Addresses/GUI/addresses.glade2:5962
+#: cuon/Addresses/GUI/addresses.glade2:6316
+#: cuon/Addresses/GUI/addresses.glade2:6671
+#: cuon/Addresses/GUI/addresses.glade2:7026
+#: cuon/Addresses/GUI/addresses.glade2:7381
 #, fuzzy
 msgid "Cut"
 msgstr "Kontrī"
 
-#: cuon/Editor/GUI/editor.glade2:354 cuon/Editor/GUI/editor.glade2:355
+#: cuon/Editor/GUI/editor.glade2:338 cuon/Editor/GUI/editor.glade2:339
 #: cuon/Editor/GUI/prgeditor.glade2:355 cuon/Editor/GUI/prgeditor.glade2:356
-#: cuon/Addresses/GUI/addresses.glade2:6025
-#: cuon/Addresses/GUI/addresses.glade2:6379
-#: cuon/Addresses/GUI/addresses.glade2:6734
-#: cuon/Addresses/GUI/addresses.glade2:7089
-#: cuon/Addresses/GUI/addresses.glade2:7444
+#: cuon/Addresses/GUI/addresses.glade2:6011
+#: cuon/Addresses/GUI/addresses.glade2:6365
+#: cuon/Addresses/GUI/addresses.glade2:6720
+#: cuon/Addresses/GUI/addresses.glade2:7075
+#: cuon/Addresses/GUI/addresses.glade2:7430
 msgid "Copy"
 msgstr ""
 
-#: cuon/Editor/GUI/editor.glade2:372 cuon/Editor/GUI/editor.glade2:373
+#: cuon/Editor/GUI/editor.glade2:352 cuon/Editor/GUI/editor.glade2:353
 #: cuon/Editor/GUI/prgeditor.glade2:373 cuon/Editor/GUI/prgeditor.glade2:374
-#: cuon/Addresses/GUI/addresses.glade2:1128
+#: cuon/Addresses/GUI/addresses.glade2:1124
 #, fuzzy
 msgid "Paste"
 msgstr "Fāze"
+
+#: cuon/Editor/GUI/editor.glade2:374 cuon/Editor/GUI/editor.glade2:375
+#: cuon/Editor/GUI/prgeditor.glade2:115 cuon/Editor/GUI/prgeditor.glade2:404
+#: cuon/Editor/GUI/prgeditor.glade2:405
+#: cuon/Addresses/GUI/addresses.glade2:727
+#: cuon/Addresses/GUI/addresses.glade2:6109
+#: cuon/Addresses/GUI/addresses.glade2:6463
+#: cuon/Addresses/GUI/addresses.glade2:6818
+#: cuon/Addresses/GUI/addresses.glade2:7173
+#: cuon/Addresses/GUI/addresses.glade2:7528
+msgid "Undo"
+msgstr ""
+
+#: cuon/Editor/GUI/editor.glade2:388 cuon/Editor/GUI/editor.glade2:389
+#: cuon/Editor/GUI/prgeditor.glade2:136 cuon/Editor/GUI/prgeditor.glade2:422
+#: cuon/Editor/GUI/prgeditor.glade2:423
+#: cuon/Addresses/GUI/addresses.glade2:6158
+#: cuon/Addresses/GUI/addresses.glade2:6512
+#: cuon/Addresses/GUI/addresses.glade2:6867
+#: cuon/Addresses/GUI/addresses.glade2:7222
+#: cuon/Addresses/GUI/addresses.glade2:7577
+#, fuzzy
+msgid "Redo"
+msgstr "Noņemt"
+
+#: cuon/Editor/GUI/editor.glade2:423
+#, fuzzy
+msgid "find next"
+msgstr "Maksājums"
 
 #: cuon/Editor/GUI/prgeditor.glade2:551
 #, fuzzy
@@ -2308,359 +2944,369 @@ msgstr ""
 msgid "Extend. Info"
 msgstr "nav informācijas"
 
-#: cuon/Graves/GUI/graves.glade2:60 cuon/Graves/GUI/graves.glade2:1830
+#: cuon/Graves/GUI/graves.glade2:90 cuon/Graves/GUI/graves.glade2:1838
 #, fuzzy
 msgid "Grave"
 msgstr "&Saglabāt"
 
-#: cuon/Graves/GUI/graves.glade2:103
+#: cuon/Graves/GUI/graves.glade2:133
 #, fuzzy
 msgid "Plant Lists"
 msgstr "Maksājums"
 
-#: cuon/Graves/GUI/graves.glade2:180 cuon/Graves/GUI/graves.glade2:2780
+#: cuon/Graves/GUI/graves.glade2:210 cuon/Graves/GUI/graves.glade2:2792
 #: cuon/Graves/GUI/plantlists.glade2:136
 #, fuzzy
 msgid "Service"
 msgstr "Diska ID"
 
-#: cuon/Graves/GUI/graves.glade2:228 cuon/Graves/GUI/graves.glade2:3092
+#: cuon/Graves/GUI/graves.glade2:258 cuon/Graves/GUI/graves.glade2:3103
 #, fuzzy
 msgid "Spring"
 msgstr "Drukāt"
 
-#: cuon/Graves/GUI/graves.glade2:276 cuon/Graves/GUI/graves.glade2:3404
+#: cuon/Graves/GUI/graves.glade2:306 cuon/Graves/GUI/graves.glade2:3414
 #, fuzzy
 msgid "Summer"
 msgstr "izlaide"
 
-#: cuon/Graves/GUI/graves.glade2:324 cuon/Graves/GUI/graves.glade2:3722
+#: cuon/Graves/GUI/graves.glade2:354 cuon/Graves/GUI/graves.glade2:3731
 #, fuzzy
 msgid "Autumn"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:372 cuon/Graves/GUI/graves.glade2:4034
+#: cuon/Graves/GUI/graves.glade2:402 cuon/Graves/GUI/graves.glade2:4042
 #, fuzzy
 msgid "Holidays"
 msgstr "dienas"
 
-#: cuon/Graves/GUI/graves.glade2:420 cuon/Graves/GUI/graves.glade2:4346
+#: cuon/Graves/GUI/graves.glade2:450 cuon/Graves/GUI/graves.glade2:4353
 #: cuon/Graves/GUI/graves_list.glade2:489
 #, fuzzy
 msgid "Winter"
 msgstr "Nederīga rakstītāja ierīce: %s"
 
-#: cuon/Graves/GUI/graves.glade2:468 cuon/Graves/GUI/graves.glade2:4727
+#: cuon/Graves/GUI/graves.glade2:498 cuon/Graves/GUI/graves.glade2:4733
 msgid "annual"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:516 cuon/Graves/GUI/graves.glade2:5077
+#: cuon/Graves/GUI/graves.glade2:546 cuon/Graves/GUI/graves.glade2:5082
 #, fuzzy
 msgid "unique"
 msgstr "Vienība:"
 
-#: cuon/Graves/GUI/graves.glade2:575
+#: cuon/Graves/GUI/graves.glade2:605
 #, fuzzy
 msgid "create a new entry"
 msgstr "Lejupielādēt jaunus datus..."
 
-#: cuon/Graves/GUI/graves.glade2:589
+#: cuon/Graves/GUI/graves.glade2:619
 #, fuzzy
 msgid "Edit this entry"
 msgstr "Neizdevās saglabāt \"%s\""
 
-#: cuon/Graves/GUI/graves.glade2:603
+#: cuon/Graves/GUI/graves.glade2:633
 #, fuzzy
 msgid "save this entry"
 msgstr "Neizdevās saglabāt \"%s\""
 
-#: cuon/Graves/GUI/graves.glade2:625
+#: cuon/Graves/GUI/graves.glade2:655
 msgid "Be carefully, this delete the entry"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:655 cuon/Graves/GUI/graves.glade2:1340
+#: cuon/Graves/GUI/graves.glade2:685 cuon/Graves/GUI/graves.glade2:1339
 #, fuzzy
 msgid "Name of Grave"
 msgstr "Partnera vārds"
 
-#: cuon/Graves/GUI/graves.glade2:668
+#: cuon/Graves/GUI/graves.glade2:698
 msgid "Alt-1"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:706
+#: cuon/Graves/GUI/graves.glade2:736
 msgid "Alt-2"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:731 cuon/Graves/GUI/graves.glade2:1256
+#: cuon/Graves/GUI/graves.glade2:761 cuon/Graves/GUI/graves.glade2:1255
 #: cuon/Graves/GUI/plantlists.glade2:77
 #, fuzzy
 msgid "sequential number"
 msgstr "izlaide"
 
-#: cuon/Graves/GUI/graves.glade2:744
+#: cuon/Graves/GUI/graves.glade2:774
 msgid ""
-"Alt-3 (auch Bereich möglich\n"
+"Alt-3 (auch Bereich mglich\n"
 "z.B. 1-5000)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:796 cuon/Graves/GUI/graves.glade2:1134
+#: cuon/Graves/GUI/graves.glade2:826 cuon/Graves/GUI/graves.glade2:1133
 #: cuon/Graves/GUI/graveyard.glade2:99 cuon/Graves/GUI/graveyard.glade2:717
 #: cuon/Graves/GUI/plantlists.glade2:322
 #, fuzzy
 msgid "Graveyard"
 msgstr "&Saglabāt"
 
-#: cuon/Graves/GUI/graves.glade2:807
+#: cuon/Graves/GUI/graves.glade2:837
 msgid "Alt -4"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:833
+#: cuon/Graves/GUI/graves.glade2:869
 msgid "Alt-5"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:847
+#: cuon/Graves/GUI/graves.glade2:889
 #, fuzzy
 msgid "payment Type"
 msgstr "Pielikums"
 
-#: cuon/Graves/GUI/graves.glade2:858
+#: cuon/Graves/GUI/graves.glade2:900
 msgid "Alt-6"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:981
+#: cuon/Graves/GUI/graves.glade2:1029
 #, fuzzy
 msgid "address-dms"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:1008
-msgid "common Hints"
-msgstr ""
-
-#: cuon/Graves/GUI/graves.glade2:1063
+#: cuon/Graves/GUI/graves.glade2:1062
 #, fuzzy
 msgid "Gravenumber"
 msgstr "izlaide"
 
-#: cuon/Graves/GUI/graves.glade2:1099
+#: cuon/Graves/GUI/graves.glade2:1098
 #, fuzzy
 msgid "Detachment"
 msgstr "Pielikums"
 
-#: cuon/Graves/GUI/graves.glade2:1368
+#: cuon/Graves/GUI/graves.glade2:1367
 msgid "Strg-1"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1481
+#: cuon/Graves/GUI/graves.glade2:1480
 #, fuzzy
 msgid "goto Addr."
 msgstr "Iet uz adresi"
 
-#: cuon/Graves/GUI/graves.glade2:1621
+#: cuon/Graves/GUI/graves.glade2:1620
 #, fuzzy
 msgid "contract begins at"
 msgstr "Šodien %X"
 
-#: cuon/Graves/GUI/graves.glade2:1654
+#: cuon/Graves/GUI/graves.glade2:1653
 #, fuzzy
 msgid "contract ends at"
 msgstr "Šodien %X"
 
-#: cuon/Graves/GUI/graves.glade2:1688
+#: cuon/Graves/GUI/graves.glade2:1687
 #, fuzzy
 msgid "Payment Type"
 msgstr "Maksājums"
 
-#: cuon/Graves/GUI/graves.glade2:1719
+#: cuon/Graves/GUI/graves.glade2:1724
 msgid "TBF Vertragsnr."
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1839
+#: cuon/Graves/GUI/graves.glade2:1847
 msgid "(F1)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1858
-msgid "zusätzliche Rechnungsempfänger angeben:\n"
+#: cuon/Graves/GUI/graves.glade2:1865
+msgid "zustzliche Rechnungsempfnger angeben:\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1876
+#: cuon/Graves/GUI/graves.glade2:1883
 #, fuzzy
 msgid "address"
 msgstr "Adrese"
 
-#: cuon/Graves/GUI/graves.glade2:1926 cuon/Bank/GUI/bank.glade2:542
+#: cuon/Graves/GUI/graves.glade2:1933 cuon/Bank/GUI/bank.glade2:542
 #, fuzzy
 msgid "choose Address"
 msgstr "Nosaka %s IP adresi"
 
-#: cuon/Graves/GUI/graves.glade2:2000
+#: cuon/Graves/GUI/graves.glade2:2007
 #, fuzzy
 msgid "Part"
 msgstr "Ports"
 
-#: cuon/Graves/GUI/graves.glade2:2093
+#: cuon/Graves/GUI/graves.glade2:2037
+#, fuzzy
+msgid "Begin"
+msgstr "Sākums"
+
+#: cuon/Graves/GUI/graves.glade2:2050
+#, fuzzy
+msgid "End"
+msgstr "Beigas"
+
+#: cuon/Graves/GUI/graves.glade2:2100
 #, fuzzy
 msgid "Term of payment"
 msgstr "Nepieciešama apmaksa"
 
-#: cuon/Graves/GUI/graves.glade2:2349
+#: cuon/Graves/GUI/graves.glade2:2356
 msgid "(F2)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2430
+#: cuon/Graves/GUI/graves.glade2:2442
 msgid "Pflegepreis"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2496 cuon/Clients/GUI/clients.glade2:167
+#: cuon/Graves/GUI/graves.glade2:2508 cuon/Clients/GUI/clients.glade2:167
 #, fuzzy
 msgid "Choose"
 msgstr "Izvēlēties"
 
-#: cuon/Graves/GUI/graves.glade2:2530
+#: cuon/Graves/GUI/graves.glade2:2542
 #, fuzzy
 msgid "Serviceprice for"
 msgstr "Diska ID"
 
-#: cuon/Graves/GUI/graves.glade2:2544
+#: cuon/Graves/GUI/graves.glade2:2556
 msgid "8"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2555
+#: cuon/Graves/GUI/graves.glade2:2567
 #, fuzzy
 msgid "months"
 msgstr "Katru mēnesi"
 
-#: cuon/Graves/GUI/graves.glade2:2613
+#: cuon/Graves/GUI/graves.glade2:2625
 #, fuzzy
 msgid "Hints for Service"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:2626
+#: cuon/Graves/GUI/graves.glade2:2638
 #, fuzzy
 msgid "addional services"
 msgstr "GTK+ P_apildus"
 
-#: cuon/Graves/GUI/graves.glade2:2646
+#: cuon/Graves/GUI/graves.glade2:2658
 msgid "Artikelbesch., Preis UND Datum"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2691
+#: cuon/Graves/GUI/graves.glade2:2703
 #, fuzzy
 msgid "choose Service"
 msgstr "Jauns raksts..."
 
-#: cuon/Graves/GUI/graves.glade2:2790
+#: cuon/Graves/GUI/graves.glade2:2802
 msgid "(F3)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2874 cuon/Graves/GUI/graves.glade2:3186
-#: cuon/Graves/GUI/graves.glade2:3496 cuon/Graves/GUI/graves.glade2:3815
-#: cuon/Graves/GUI/graves.glade2:4127 cuon/Graves/GUI/graves.glade2:4439
-#: cuon/Graves/GUI/graves.glade2:4820
+#: cuon/Graves/GUI/graves.glade2:2885 cuon/Graves/GUI/graves.glade2:3196
+#: cuon/Graves/GUI/graves.glade2:3505 cuon/Graves/GUI/graves.glade2:3823
+#: cuon/Graves/GUI/graves.glade2:4134 cuon/Graves/GUI/graves.glade2:4445
+#: cuon/Graves/GUI/graves.glade2:4825
 #, fuzzy
 msgid "Count"
 msgstr "Kontrī"
 
-#: cuon/Graves/GUI/graves.glade2:2938 cuon/Graves/GUI/graves.glade2:3250
-#: cuon/Graves/GUI/graves.glade2:3560 cuon/Graves/GUI/graves.glade2:3879
-#: cuon/Graves/GUI/graves.glade2:4191 cuon/Graves/GUI/graves.glade2:4599
-#: cuon/Graves/GUI/graves.glade2:4917
+#: cuon/Graves/GUI/graves.glade2:2949 cuon/Graves/GUI/graves.glade2:3260
+#: cuon/Graves/GUI/graves.glade2:3569 cuon/Graves/GUI/graves.glade2:3887
+#: cuon/Graves/GUI/graves.glade2:4198 cuon/Graves/GUI/graves.glade2:4605
+#: cuon/Graves/GUI/graves.glade2:4922
 #, fuzzy
 msgid "ArticleDesignation"
 msgstr "Rakstzīmes iestatīts apzīmējums"
 
-#: cuon/Graves/GUI/graves.glade2:2970 cuon/Graves/GUI/graves.glade2:3282
-#: cuon/Graves/GUI/graves.glade2:3592 cuon/Graves/GUI/graves.glade2:3911
-#: cuon/Graves/GUI/graves.glade2:4223 cuon/Graves/GUI/graves.glade2:4537
-#: cuon/Graves/GUI/graves.glade2:4949 cuon/Order/GUI/order.glade2:2960
-#: cuon/Proposal/GUI/proposal.glade2:3716
+#: cuon/Graves/GUI/graves.glade2:2981 cuon/Graves/GUI/graves.glade2:3292
+#: cuon/Graves/GUI/graves.glade2:3601 cuon/Graves/GUI/graves.glade2:3919
+#: cuon/Graves/GUI/graves.glade2:4230 cuon/Graves/GUI/graves.glade2:4543
+#: cuon/Graves/GUI/graves.glade2:4954 cuon/Order/GUI/order.glade2:2965
+#: cuon/Proposal/GUI/proposal.glade2:2601
 #, fuzzy
 msgid "Price"
 msgstr "Cena"
 
-#: cuon/Graves/GUI/graves.glade2:3003 cuon/Graves/GUI/graves.glade2:3315
-#: cuon/Graves/GUI/graves.glade2:3625 cuon/Graves/GUI/graves.glade2:3944
-#: cuon/Graves/GUI/graves.glade2:4256 cuon/Graves/GUI/graves.glade2:4630
+#: cuon/Graves/GUI/graves.glade2:3014 cuon/Graves/GUI/graves.glade2:3325
+#: cuon/Graves/GUI/graves.glade2:3634 cuon/Graves/GUI/graves.glade2:3952
+#: cuon/Graves/GUI/graves.glade2:4263 cuon/Graves/GUI/graves.glade2:4636
 msgid "Period\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3029
+#: cuon/Graves/GUI/graves.glade2:3040
 #, fuzzy
 msgid "Hints"
 msgstr "IRC klienti"
 
-#: cuon/Graves/GUI/graves.glade2:3102
+#: cuon/Graves/GUI/graves.glade2:3113
 msgid "(F4)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3341
+#: cuon/Graves/GUI/graves.glade2:3351
 #, fuzzy
 msgid "Hints Summer"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:3413
+#: cuon/Graves/GUI/graves.glade2:3423
 msgid "(F5)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3652
+#: cuon/Graves/GUI/graves.glade2:3661
 #, fuzzy
 msgid "Hints Autumn"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:3731
+#: cuon/Graves/GUI/graves.glade2:3740
 msgid "(F6)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3971
+#: cuon/Graves/GUI/graves.glade2:3979
 #, fuzzy
 msgid "Hints Holiday"
 msgstr "dienas"
 
-#: cuon/Graves/GUI/graves.glade2:4043
+#: cuon/Graves/GUI/graves.glade2:4051
 msgid "(F7)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4283
+#: cuon/Graves/GUI/graves.glade2:4290
 #, fuzzy
 msgid "Hints Spring"
 msgstr "Drukāt"
 
-#: cuon/Graves/GUI/graves.glade2:4355
+#: cuon/Graves/GUI/graves.glade2:4362
 msgid "(F8)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4467
+#: cuon/Graves/GUI/graves.glade2:4473
 #, fuzzy
 msgid "Day/Month"
 msgstr "Mēn."
 
-#: cuon/Graves/GUI/graves.glade2:4494
+#: cuon/Graves/GUI/graves.glade2:4500
 msgid "/"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4657
+#: cuon/Graves/GUI/graves.glade2:4663
 #, fuzzy
 msgid "Hints Annual"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:4736
+#: cuon/Graves/GUI/graves.glade2:4742
 msgid "(F9)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4981
+#: cuon/Graves/GUI/graves.glade2:4986
 msgid "Period"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5005
+#: cuon/Graves/GUI/graves.glade2:5010
 #, fuzzy
 msgid "Hints Unique"
 msgstr "Seriālais numurs:"
 
-#: cuon/Graves/GUI/graves.glade2:5086
+#: cuon/Graves/GUI/graves.glade2:5091
 msgid "(F11)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5110
+#: cuon/Graves/GUI/graves.glade2:5114
 msgid "\t"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:5202
+msgid "common Hints"
 msgstr ""
 
 #: cuon/Graves/GUI/graveyard.glade2:9
@@ -2698,8 +3344,9 @@ msgid "nur Artikel"
 msgstr "Lietvārds"
 
 #: cuon/Graves/GUI/goods_demand_lists.glade2:168
-msgid "auswählen"
-msgstr ""
+#, fuzzy
+msgid "auswhlen"
+msgstr "Iepauzēt"
 
 #: cuon/Graves/GUI/goods_demand_lists.glade2:213
 #, fuzzy
@@ -2742,8 +3389,9 @@ msgid "Rechnungen erzeugen"
 msgstr ""
 
 #: cuon/Graves/GUI/graves_list.glade2:86
-msgid "Preise ändern"
-msgstr ""
+#, fuzzy
+msgid "Preise ndern"
+msgstr "adreses"
 
 #: cuon/Graves/GUI/graves_list.glade2:120
 msgid "Pflanz- und Pflegelisten (F1)"
@@ -2785,16 +3433,19 @@ msgid "Pflege"
 msgstr "Lapa"
 
 #: cuon/Graves/GUI/graves_list.glade2:337
-msgid "zusätzl. Pflege"
-msgstr ""
+#, fuzzy
+msgid "zustzl. Pflege"
+msgstr "Lapa"
 
 #: cuon/Graves/GUI/graves_list.glade2:353
-msgid "Frühling"
-msgstr ""
+#, fuzzy
+msgid "Frhling"
+msgstr "Drukāt"
 
 #: cuon/Graves/GUI/graves_list.glade2:369
-msgid "Frühling-extra"
-msgstr ""
+#, fuzzy
+msgid "Frhling-extra"
+msgstr "Nederīga rakstītāja ierīce: %s"
 
 #: cuon/Graves/GUI/graves_list.glade2:385
 #, fuzzy
@@ -2828,7 +3479,7 @@ msgid "Winter-extra"
 msgstr "Nederīga rakstītāja ierīce: %s"
 
 #: cuon/Graves/GUI/graves_list.glade2:523
-msgid "jährlich"
+msgid "jhrlich"
 msgstr ""
 
 #: cuon/Graves/GUI/graves_list.glade2:541
@@ -2837,7 +3488,7 @@ msgid "einmalig"
 msgstr "Real&ms:"
 
 #: cuon/Graves/GUI/graves_list.glade2:624
-msgid "zusätlicher Text f. Rechnung:"
+msgid "zustlicher Text f. Rechnung:"
 msgstr ""
 
 #: cuon/Graves/GUI/graves_list.glade2:637
@@ -2849,8 +3500,9 @@ msgid "Rechnungen erzeugen (F3)"
 msgstr ""
 
 #: cuon/Graves/GUI/graves_list.glade2:733
-msgid "Preise ändern (F4)"
-msgstr ""
+#, fuzzy
+msgid "Preise ndern (F4)"
+msgstr "adreses"
 
 #: cuon/Graves/GUI/plantlists.glade2:26
 #, fuzzy
@@ -2871,11 +3523,6 @@ msgstr "&Rādīt ziņojumu"
 #, fuzzy
 msgid "Prices"
 msgstr "Cena"
-
-#: cuon/Graves/GUI/plantlists.glade2:287
-#, fuzzy
-msgid "sort of"
-msgstr "&Aizvākt atslēgu"
 
 #: cuon/Graves/GUI/plantlists.glade2:357
 #, fuzzy
@@ -2898,7 +3545,7 @@ msgid "Format"
 msgstr "Formas"
 
 #: cuon/Graves/GUI/plantlists.glade2:561 cuon/Stats/GUI/stats.glade2:38
-#: GUI/setup.glade2:37 GUI/cuon_config_wizard.glade2:37
+#: GUI/setup.glade2:37 GUI/cuon_config_wizard.glade2:17
 #, fuzzy
 msgid "File"
 msgstr "Datne"
@@ -2908,48 +3555,49 @@ msgstr "Datne"
 msgid "start"
 msgstr "Stāvoklis"
 
-#: cuon/Order/GUI/order.glade2:28 cuon/Proposal/GUI/proposal.glade2:50
+#: cuon/Order/GUI/order.glade2:28 cuon/Proposal/GUI/proposal.glade2:28
 #: cuon/AI/GUI/ai.glade2:49 cuon/Stock/GUI/stock.glade2:49
 #: cuon/User/GUI/user.glade2:49
 #, fuzzy
 msgid "Print S_etup"
 msgstr "Prinera _Uzstādījumi..."
 
-#: cuon/Order/GUI/order.glade2:41 cuon/Proposal/GUI/proposal.glade2:65
+#: cuon/Order/GUI/order.glade2:41 cuon/Proposal/GUI/proposal.glade2:41
 #, fuzzy
 msgid "_Close"
 msgstr "_Aizvērt"
 
-#: cuon/Order/GUI/order.glade2:53 cuon/Proposal/GUI/proposal.glade2:78
+#: cuon/Order/GUI/order.glade2:53 cuon/Proposal/GUI/proposal.glade2:53
 #, fuzzy
 msgid "Manage Order"
 msgstr "Joslu secība"
 
-#: cuon/Order/GUI/order.glade2:61 cuon/Proposal/GUI/proposal.glade2:88
+#: cuon/Order/GUI/order.glade2:61 cuon/Proposal/GUI/proposal.glade2:61
 #, fuzzy
 msgid "New Order"
 msgstr "Joslu secība"
 
-#: cuon/Order/GUI/order.glade2:62 cuon/Order/GUI/order.glade2:282
-#: cuon/Order/GUI/order.glade2:407 cuon/Proposal/GUI/proposal.glade2:89
-#: cuon/Proposal/GUI/proposal.glade2:315 cuon/Project/GUI/project.glade2:257
-#: cuon/Addresses/GUI/addresses.glade2:1172
-#: cuon/Addresses/GUI/addresses.glade2:1192
-#: cuon/Addresses/GUI/addresses.glade2:1212
+#: cuon/Order/GUI/order.glade2:62 cuon/Order/GUI/order.glade2:295
+#: cuon/Order/GUI/order.glade2:420 cuon/Proposal/GUI/proposal.glade2:62
+#: cuon/Proposal/GUI/proposal.glade2:258 cuon/Project/GUI/project.glade2:257
+#: cuon/Addresses/GUI/addresses.glade2:1168
+#: cuon/Addresses/GUI/addresses.glade2:1188
+#: cuon/Addresses/GUI/addresses.glade2:1208
 #, fuzzy
 msgid "_New"
 msgstr "Jauns"
 
-#: cuon/Order/GUI/order.glade2:83 cuon/Order/GUI/order.glade2:303
-#: cuon/Order/GUI/order.glade2:356 cuon/Order/GUI/order.glade2:423
-#: cuon/Proposal/GUI/proposal.glade2:113 cuon/Proposal/GUI/proposal.glade2:339
+#: cuon/Order/GUI/order.glade2:83 cuon/Order/GUI/order.glade2:316
+#: cuon/Order/GUI/order.glade2:369 cuon/Order/GUI/order.glade2:436
+#: cuon/Proposal/GUI/proposal.glade2:83 cuon/Proposal/GUI/proposal.glade2:279
 #: cuon/Project/GUI/project.glade2:224 cuon/Project/GUI/project.glade2:273
 #, fuzzy
 msgid "_Save"
 msgstr "Saglabāt"
 
-#: cuon/Order/GUI/order.glade2:96 cuon/Order/GUI/order.glade2:316
-#: cuon/Proposal/GUI/proposal.glade2:143 cuon/Proposal/GUI/proposal.glade2:354
+#: cuon/Order/GUI/order.glade2:96 cuon/Order/GUI/order.glade2:329
+#: cuon/Proposal/GUI/proposal.glade2:109 cuon/Proposal/GUI/proposal.glade2:292
+#: cuon/Addresses/GUI/addresses.glade2:843
 #, fuzzy
 msgid "_Print"
 msgstr "Drukāt"
@@ -2974,404 +3622,403 @@ msgstr "Pārdēvēt piezīmi"
 msgid "Pickup Note"
 msgstr "Pārdēvēt piezīmi"
 
-#: cuon/Order/GUI/order.glade2:157 cuon/Order/GUI/order.glade2:329
-#: cuon/Proposal/GUI/proposal.glade2:171 cuon/Proposal/GUI/proposal.glade2:369
+#: cuon/Order/GUI/order.glade2:157
+msgid "Duplicate"
+msgstr ""
+
+#: cuon/Order/GUI/order.glade2:170 cuon/Order/GUI/order.glade2:342
+#: cuon/Proposal/GUI/proposal.glade2:133 cuon/Proposal/GUI/proposal.glade2:305
 #, fuzzy
 msgid "c_lear"
 msgstr "N_otīrīt"
 
-#: cuon/Order/GUI/order.glade2:169 cuon/Order/GUI/order.glade2:2024
-#: cuon/Proposal/GUI/proposal.glade2:184
-#: cuon/Proposal/GUI/proposal.glade2:2069
+#: cuon/Order/GUI/order.glade2:182 cuon/Order/GUI/order.glade2:2029
+#: cuon/Proposal/GUI/proposal.glade2:145
+#: cuon/Proposal/GUI/proposal.glade2:1717
 #, fuzzy
 msgid "Supply"
 msgstr "Piegādāt"
 
-#: cuon/Order/GUI/order.glade2:222 cuon/Order/GUI/order.glade2:2673
-#: cuon/Proposal/GUI/proposal.glade2:245
-#: cuon/Proposal/GUI/proposal.glade2:3209
+#: cuon/Order/GUI/order.glade2:235 cuon/Order/GUI/order.glade2:2678
+#: cuon/Proposal/GUI/proposal.glade2:198
+#: cuon/Proposal/GUI/proposal.glade2:2343
 #, fuzzy
 msgid "Gets"
 msgstr "r"
 
-#: cuon/Order/GUI/order.glade2:275 cuon/Proposal/GUI/proposal.glade2:306
+#: cuon/Order/GUI/order.glade2:288 cuon/Proposal/GUI/proposal.glade2:251
 #, fuzzy
 msgid "Position"
 msgstr "Pozīcija"
 
-#: cuon/Order/GUI/order.glade2:400
+#: cuon/Order/GUI/order.glade2:413
 #, fuzzy
 msgid "Payments"
 msgstr "Maksājums"
 
-#: cuon/Order/GUI/order.glade2:615 cuon/Proposal/GUI/proposal.glade2:705
-#: cuon/Addresses/GUI/addresses.glade2:1722
+#: cuon/Order/GUI/order.glade2:551
+msgid "Duplicating"
+msgstr ""
+
+#: cuon/Order/GUI/order.glade2:656 cuon/Proposal/GUI/proposal.glade2:542
+#: cuon/Addresses/GUI/addresses.glade2:1726
 #, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: cuon/Order/GUI/order.glade2:732 cuon/Proposal/GUI/proposal.glade2:1141
+#: cuon/Order/GUI/order.glade2:789 cuon/Proposal/GUI/proposal.glade2:1061
 #, fuzzy
 msgid "Supply-Nr."
 msgstr "r"
 
-#: cuon/Order/GUI/order.glade2:745 cuon/Proposal/GUI/proposal.glade2:1169
+#: cuon/Order/GUI/order.glade2:802 cuon/Proposal/GUI/proposal.glade2:692
 #, fuzzy
 msgid "Gets-Nr."
 msgstr "r"
 
-#: cuon/Order/GUI/order.glade2:817 cuon/Proposal/GUI/proposal.glade2:1337
+#: cuon/Order/GUI/order.glade2:874 cuon/Proposal/GUI/proposal.glade2:795
 #, fuzzy
 msgid "total sum"
 msgstr "Pievienot Summu"
 
-#: cuon/Order/GUI/order.glade2:846 cuon/Proposal/GUI/proposal.glade2:1795
+#: cuon/Order/GUI/order.glade2:903 cuon/Proposal/GUI/proposal.glade2:761
 #, fuzzy
 msgid "total discount %"
 msgstr "Datora kopējie kredītpunkti"
 
-#: cuon/Order/GUI/order.glade2:873
+#: cuon/Order/GUI/order.glade2:930
 #, fuzzy
 msgid "ready for invoice"
 msgstr "'%s' ir gatavs drukāšanai."
 
-#: cuon/Order/GUI/order.glade2:1106 cuon/Proposal/GUI/proposal.glade2:1034
+#: cuon/Order/GUI/order.glade2:1051 cuon/Proposal/GUI/proposal.glade2:904
 #, fuzzy
 msgid "ordered at"
 msgstr "Šodien %X"
 
-#: cuon/Order/GUI/order.glade2:1144 cuon/Proposal/GUI/proposal.glade2:980
+#: cuon/Order/GUI/order.glade2:1089 cuon/Proposal/GUI/proposal.glade2:942
 #, fuzzy
 msgid "delivered at"
 msgstr "Šodien %X"
 
-#: cuon/Order/GUI/order.glade2:1180
+#: cuon/Order/GUI/order.glade2:1125 cuon/Proposal/GUI/proposal.glade2:978
 #, fuzzy
 msgid "Order Number"
 msgstr "Seriālais numurs:"
 
-#: cuon/Order/GUI/order.glade2:1233 cuon/Order/GUI/order.glade2:2061
-#: cuon/Proposal/GUI/proposal.glade2:1418
-#: cuon/Proposal/GUI/proposal.glade2:2142
+#: cuon/Order/GUI/order.glade2:1181 cuon/Proposal/GUI/proposal.glade2:1034
+#: cuon/Clients/GUI/clients.glade2:404
+#, fuzzy
+msgid "search ..."
+msgstr "Meklēt..."
+
+#: cuon/Order/GUI/order.glade2:1238 cuon/Order/GUI/order.glade2:2066
+#: cuon/Proposal/GUI/proposal.glade2:1144
+#: cuon/Proposal/GUI/proposal.glade2:1754
 #, fuzzy
 msgid "search address ..."
 msgstr "Nosaka %s IP adresi"
 
-#: cuon/Order/GUI/order.glade2:1255 cuon/Proposal/GUI/proposal.glade2:1445
+#: cuon/Order/GUI/order.glade2:1260 cuon/Proposal/GUI/proposal.glade2:1166
 #, fuzzy
 msgid "Custom-Number"
 msgstr "Seriālais numurs:"
 
-#: cuon/Order/GUI/order.glade2:1326
+#: cuon/Order/GUI/order.glade2:1331
 #, fuzzy
 msgid "simple Account"
 msgstr "&Konta menedžeris"
 
-#: cuon/Order/GUI/order.glade2:1342
+#: cuon/Order/GUI/order.glade2:1347
 msgid "Cash 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1356
+#: cuon/Order/GUI/order.glade2:1361
 msgid "Cash 2"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1372
+#: cuon/Order/GUI/order.glade2:1377
 #, fuzzy
 msgid "Credit Card 1"
 msgstr "K_redītkarte"
 
-#: cuon/Order/GUI/order.glade2:1421
+#: cuon/Order/GUI/order.glade2:1426
 msgid "Bank 1"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1435
+#: cuon/Order/GUI/order.glade2:1440
 msgid "Bank 2"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1451
+#: cuon/Order/GUI/order.glade2:1456
 msgid "Bank 3"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1467 cuon/Order/GUI/order.glade2:1483
+#: cuon/Order/GUI/order.glade2:1472 cuon/Order/GUI/order.glade2:1488
 #, fuzzy
 msgid "direct Debit 1"
 msgstr "Pāra_dresēt"
 
-#: cuon/Order/GUI/order.glade2:1501
+#: cuon/Order/GUI/order.glade2:1506
 #, fuzzy
 msgid "direct Debit 3"
 msgstr "Pāra_dresēt"
 
-#: cuon/Order/GUI/order.glade2:1542 cuon/Proposal/GUI/proposal.glade2:1288
+#: cuon/Order/GUI/order.glade2:1547
 #, fuzzy
 msgid "paid at "
 msgstr "Šodien %X"
 
-#: cuon/Order/GUI/order.glade2:1593 cuon/Proposal/GUI/proposal.glade2:1637
+#: cuon/Order/GUI/order.glade2:1598 cuon/Proposal/GUI/proposal.glade2:1281
 #, fuzzy
 msgid "Packing\n"
 msgstr "Pakošana"
 
-#: cuon/Order/GUI/order.glade2:1630 cuon/Proposal/GUI/proposal.glade2:1668
+#: cuon/Order/GUI/order.glade2:1635 cuon/Proposal/GUI/proposal.glade2:1320
 msgid "Truckage/Postage"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:1669 cuon/Proposal/GUI/proposal.glade2:1698
+#: cuon/Order/GUI/order.glade2:1674 cuon/Proposal/GUI/proposal.glade2:1572
 #, fuzzy
 msgid "Misc. cost"
 msgstr "Dažādi uzstādījumi"
 
-#: cuon/Order/GUI/order.glade2:1703 cuon/Order/GUI/order.glade2:2211
-#: cuon/Proposal/GUI/proposal.glade2:2388
-#: cuon/Addresses/GUI/addresses.glade2:1252
-#: cuon/Addresses/GUI/addresses.glade2:5135
+#: cuon/Order/GUI/order.glade2:1708 cuon/Order/GUI/order.glade2:2216
+#: cuon/Proposal/GUI/proposal.glade2:1355
+#: cuon/Proposal/GUI/proposal.glade2:1962
+#: cuon/Addresses/GUI/addresses.glade2:1256
+#: cuon/Addresses/GUI/addresses.glade2:5139
 #, fuzzy
 msgid "Partner"
 msgstr "Partnera vārds"
 
-#: cuon/Order/GUI/order.glade2:1802
+#: cuon/Order/GUI/order.glade2:1807 cuon/Proposal/GUI/proposal.glade2:1453
 #, fuzzy
 msgid "Goto..."
 msgstr "Iet uz"
 
-#: cuon/Order/GUI/order.glade2:1869
-#, fuzzy
-msgid "Search ..."
-msgstr "Meklēt..."
-
-#: cuon/Order/GUI/order.glade2:1993 cuon/Proposal/GUI/proposal.glade2:2021
+#: cuon/Order/GUI/order.glade2:1998 cuon/Proposal/GUI/proposal.glade2:1686
 #, fuzzy
 msgid "Supply to"
 msgstr "Savienojas ar %s"
 
-#: cuon/Order/GUI/order.glade2:2002 cuon/Proposal/GUI/proposal.glade2:2048
+#: cuon/Order/GUI/order.glade2:2007 cuon/Proposal/GUI/proposal.glade2:1695
 #, fuzzy
 msgid "search address"
 msgstr "Nosaka %s IP adresi"
 
-#: cuon/Order/GUI/order.glade2:2051 cuon/Proposal/GUI/proposal.glade2:2114
+#: cuon/Order/GUI/order.glade2:2056 cuon/Proposal/GUI/proposal.glade2:1744
 #, fuzzy
 msgid "gets from"
 msgstr "Derīgs no:"
 
-#: cuon/Order/GUI/order.glade2:2108 cuon/Proposal/GUI/proposal.glade2:2203
+#: cuon/Order/GUI/order.glade2:2113 cuon/Proposal/GUI/proposal.glade2:1800
 #, fuzzy
 msgid "Load reference"
 msgstr "_Ātrā atsauce"
 
-#: cuon/Order/GUI/order.glade2:2138 cuon/Proposal/GUI/proposal.glade2:2260
+#: cuon/Order/GUI/order.glade2:2143 cuon/Proposal/GUI/proposal.glade2:1829
 #, fuzzy
 msgid "Pick up at"
 msgstr "Debess laiks sākumā: "
 
-#: cuon/Order/GUI/order.glade2:2170 cuon/Proposal/GUI/proposal.glade2:2317
+#: cuon/Order/GUI/order.glade2:2175 cuon/Proposal/GUI/proposal.glade2:1860
 #, fuzzy
 msgid "Remark"
 msgstr "&Piezīme:"
 
-#: cuon/Order/GUI/order.glade2:2221 cuon/Proposal/GUI/proposal.glade2:2416
+#: cuon/Order/GUI/order.glade2:2226 cuon/Proposal/GUI/proposal.glade2:1972
 #, fuzzy
 msgid "search Partner"
 msgstr "Partnera vārds"
 
-#: cuon/Order/GUI/order.glade2:2346 cuon/Proposal/GUI/proposal.glade2:2616
+#: cuon/Order/GUI/order.glade2:2351 cuon/Proposal/GUI/proposal.glade2:2094
 #, fuzzy
 msgid "Forwarding Agency"
 msgstr "Zvanu pārsūtīšana"
 
-#: cuon/Order/GUI/order.glade2:2421 cuon/Proposal/GUI/proposal.glade2:2744
+#: cuon/Order/GUI/order.glade2:2426 cuon/Proposal/GUI/proposal.glade2:2169
 #, fuzzy
 msgid "Contact Person"
 msgstr "Nezināma persona"
 
-#: cuon/Order/GUI/order.glade2:2540 cuon/Proposal/GUI/proposal.glade2:2950
+#: cuon/Order/GUI/order.glade2:2545
 #, fuzzy
 msgid "Pickup-Note"
 msgstr "Pārdēvēt piezīmi"
 
-#: cuon/Order/GUI/order.glade2:2555 cuon/Proposal/GUI/proposal.glade2:2981
+#: cuon/Order/GUI/order.glade2:2560 cuon/Proposal/GUI/proposal.glade2:1888
 #, fuzzy
 msgid "Pickup-Nr.:"
 msgstr "r"
 
-#: cuon/Order/GUI/order.glade2:2703 cuon/Proposal/GUI/proposal.glade2:3275
+#: cuon/Order/GUI/order.glade2:2708 cuon/Proposal/GUI/proposal.glade2:2373
 #, fuzzy
 msgid "articles-Number"
 msgstr "Seriālais numurs:"
 
-#: cuon/Order/GUI/order.glade2:2716 cuon/Proposal/GUI/proposal.glade2:3303
+#: cuon/Order/GUI/order.glade2:2721 cuon/Proposal/GUI/proposal.glade2:2386
 #, fuzzy
 msgid "amount"
 msgstr "Daudzums:"
 
-#: cuon/Order/GUI/order.glade2:2809 cuon/Proposal/GUI/proposal.glade2:3472
+#: cuon/Order/GUI/order.glade2:2814 cuon/Proposal/GUI/proposal.glade2:2483
 #, fuzzy
 msgid "Quant. per Wrap."
 msgstr "/Uzstādījumi/_Vārdu aplaušana"
 
-#: cuon/Order/GUI/order.glade2:2853 cuon/Proposal/GUI/proposal.glade2:3549
+#: cuon/Order/GUI/order.glade2:2858 cuon/Proposal/GUI/proposal.glade2:2528
 #, fuzzy
 msgid "search article"
 msgstr "Jauns raksts..."
 
-#: cuon/Order/GUI/order.glade2:2880 cuon/Proposal/GUI/proposal.glade2:3575
+#: cuon/Order/GUI/order.glade2:2885 cuon/Proposal/GUI/proposal.glade2:2555
 #, fuzzy
 msgid "Article Des. "
 msgstr "Darba_virsma"
 
-#: cuon/Order/GUI/order.glade2:2972 cuon/Proposal/GUI/proposal.glade2:3741
+#: cuon/Order/GUI/order.glade2:2977 cuon/Proposal/GUI/proposal.glade2:2613
 #, fuzzy
 msgid "Articlediscount"
 msgstr "Jauns raksts..."
 
-#: cuon/Order/GUI/order.glade2:2984 cuon/Proposal/GUI/proposal.glade2:3766
+#: cuon/Order/GUI/order.glade2:2989 cuon/Proposal/GUI/proposal.glade2:2625
 msgid "Tax-Vat"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3225 cuon/Proposal/GUI/proposal.glade2:3998
+#: cuon/Order/GUI/order.glade2:3230 cuon/Proposal/GUI/proposal.glade2:2722
 #, fuzzy
 msgid "Quick Append"
 msgstr "Pievienot Kolonnu"
 
-#: cuon/Order/GUI/order.glade2:3278 cuon/Proposal/GUI/proposal.glade2:4074
+#: cuon/Order/GUI/order.glade2:3283 cuon/Proposal/GUI/proposal.glade2:2902
 #, fuzzy
 msgid "Postions"
 msgstr "Pozīcija"
 
-#: cuon/Order/GUI/order.glade2:3449 cuon/Proposal/GUI/proposal.glade2:382
-#: cuon/Proposal/GUI/proposal.glade2:4334
+#: cuon/Order/GUI/order.glade2:3454 cuon/Proposal/GUI/proposal.glade2:317
+#: cuon/Proposal/GUI/proposal.glade2:3060
 #, fuzzy
 msgid "Specs. invoice"
 msgstr "Name=Rēķins"
 
-#: cuon/Order/GUI/order.glade2:3463
+#: cuon/Order/GUI/order.glade2:3468
 #, fuzzy
 msgid "retry"
 msgstr "_Atkārtot"
 
-#: cuon/Order/GUI/order.glade2:3514
+#: cuon/Order/GUI/order.glade2:3519
 msgid "semestral"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3531
+#: cuon/Order/GUI/order.glade2:3536
 #, fuzzy
 msgid "yearly"
 msgstr "Katru gadu"
 
-#: cuon/Order/GUI/order.glade2:3559
+#: cuon/Order/GUI/order.glade2:3564
 #, fuzzy
 msgid "create supply"
 msgstr "&Izveidot direktoriju"
 
-#: cuon/Order/GUI/order.glade2:3574
+#: cuon/Order/GUI/order.glade2:3579
 #, fuzzy
 msgid "create get"
 msgstr "Kļūsti sinhronizēts!"
 
-#: cuon/Order/GUI/order.glade2:3589
+#: cuon/Order/GUI/order.glade2:3594
 #, fuzzy
 msgid "create invoice"
 msgstr "Name=Rēķins"
 
-#: cuon/Order/GUI/order.glade2:3614
+#: cuon/Order/GUI/order.glade2:3619
 #, fuzzy
 msgid "daily"
 msgstr "Katru dienu"
 
-#: cuon/Order/GUI/order.glade2:3630
+#: cuon/Order/GUI/order.glade2:3635
 #, fuzzy
 msgid "Weekly"
 msgstr "Katru nedēļu"
 
-#: cuon/Order/GUI/order.glade2:3665
+#: cuon/Order/GUI/order.glade2:3670
 #, fuzzy
 msgid "0"
 msgstr "0"
 
-#: cuon/Order/GUI/order.glade2:3685 cuon/Project/GUI/project.glade2:1440
-#: cuon/Stats/GUI/stats.glade2:158 GUI/cuon.glade2:317
-#, fuzzy
-msgid "Project"
-msgstr "Projekts"
-
-#: cuon/Order/GUI/order.glade2:3737
+#: cuon/Order/GUI/order.glade2:3742
 #, fuzzy
 msgid "search project"
 msgstr "Augšpusē"
 
-#: cuon/Order/GUI/order.glade2:3799 cuon/Project/GUI/project.glade2:3280
+#: cuon/Order/GUI/order.glade2:3804 cuon/Project/GUI/project.glade2:3280
 #, fuzzy
 msgid "jump to"
 msgstr "Savienojas ar %s"
 
-#: cuon/Order/GUI/order.glade2:3937
+#: cuon/Order/GUI/order.glade2:3942
 #, fuzzy
 msgid "Invoice amount"
 msgstr "Enerģijas daudzums:"
 
-#: cuon/Order/GUI/order.glade2:3966
+#: cuon/Order/GUI/order.glade2:3971
 #, fuzzy
 msgid "in-payment"
 msgstr "Nepieciešama apmaksa"
 
-#: cuon/Order/GUI/order.glade2:3994
+#: cuon/Order/GUI/order.glade2:3999
 #, fuzzy
 msgid "./. cash discount"
 msgstr "Datora kopējie kredītpunkti"
 
-#: cuon/Order/GUI/order.glade2:4022
+#: cuon/Order/GUI/order.glade2:4027
 #, fuzzy
 msgid "./. payments"
 msgstr "Nepieciešama apmaksa"
 
-#: cuon/Order/GUI/order.glade2:4052
+#: cuon/Order/GUI/order.glade2:4057
 #, fuzzy
 msgid "Offset"
 msgstr "Laika n&obīde:"
 
-#: cuon/Order/GUI/order.glade2:4083
+#: cuon/Order/GUI/order.glade2:4088
 #, fuzzy
 msgid "pay with/acct."
 msgstr "Ai_zstāt ar: "
 
-#: cuon/Order/GUI/order.glade2:4155
+#: cuon/Order/GUI/order.glade2:4160
 #, fuzzy
 msgid "search account"
 msgstr "Kontu meklēšana"
 
-#: cuon/Order/GUI/order.glade2:4229
+#: cuon/Order/GUI/order.glade2:4234
 msgid "residue"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:4274
+#: cuon/Order/GUI/order.glade2:4279
 #, fuzzy
 msgid "Transfer"
 msgstr "Pārsūtīt"
 
-#: cuon/Order/GUI/order.glade2:4290
+#: cuon/Order/GUI/order.glade2:4295
 #, fuzzy
 msgid "direct debit"
 msgstr "Pāra_dresēt"
 
-#: cuon/Order/GUI/order.glade2:4322
+#: cuon/Order/GUI/order.glade2:4327
 #, fuzzy
 msgid "credit card"
 msgstr "K_redītkarte"
 
-#: cuon/Order/GUI/order.glade2:4397
+#: cuon/Order/GUI/order.glade2:4402
 #, fuzzy
 msgid "Typ"
 msgstr "tip."
 
-#: cuon/Bank/GUI/bank.glade2:145 cuon/Addresses/GUI/addresses.glade2:3311
+#: cuon/Bank/GUI/bank.glade2:145 cuon/Addresses/GUI/addresses.glade2:3315
 #, fuzzy
 msgid "choose Bank"
 msgstr "Norādiet faila nosaukumu"
-
-#: cuon/Bank/GUI/bank.glade2:281 cuon/Bank/GUI/bank.glade2:627
-#, fuzzy
-msgid "short Designation"
-msgstr "Īss nosaukums"
 
 #: cuon/Bank/GUI/bank.glade2:443
 #, fuzzy
@@ -3387,44 +4034,24 @@ msgstr "Pan %s Sāknēts"
 msgid "BIC"
 msgstr ""
 
-#: cuon/Proposal/GUI/proposal.glade2:11 cuon/Proposal/GUI/proposal.glade2:79
-#: cuon/Proposal/GUI/proposal.glade2:152
-#: cuon/Proposal/GUI/proposal.glade2:1898
-#: cuon/Addresses/GUI/addresses.glade2:1165
-#: cuon/Addresses/GUI/addresses.glade2:7849 GUI/cuon.glade2:187
+#: cuon/Proposal/GUI/proposal.glade2:9 cuon/Proposal/GUI/proposal.glade2:54
+#: cuon/Proposal/GUI/proposal.glade2:116
+#: cuon/Proposal/GUI/proposal.glade2:1621
+#: cuon/Addresses/GUI/addresses.glade2:1161
+#: cuon/Addresses/GUI/addresses.glade2:7835 GUI/cuon.glade2:187
 #, fuzzy
 msgid "Proposal"
 msgstr "Sanāksmes iemesls"
 
-#: cuon/Proposal/GUI/proposal.glade2:128 cuon/Proposal/GUI/proposal.glade2:546
+#: cuon/Proposal/GUI/proposal.glade2:96 cuon/Proposal/GUI/proposal.glade2:442
 #, fuzzy
 msgid "create Order"
 msgstr "Joslu secība"
 
-#: cuon/Proposal/GUI/proposal.glade2:409
+#: cuon/Proposal/GUI/proposal.glade2:340
 #, fuzzy
 msgid "clear"
 msgstr "tīrs"
-
-#: cuon/Proposal/GUI/proposal.glade2:1859
-#, fuzzy
-msgid "show Ext. Info"
-msgstr "&Parādīt paplašinātu onformāciju"
-
-#: cuon/Proposal/GUI/proposal.glade2:3161
-#, fuzzy
-msgid "in progress"
-msgstr "tiek darīti"
-
-#: cuon/Proposal/GUI/proposal.glade2:3169
-#, fuzzy
-msgid "already done"
-msgstr "Pieslēgšanās pabeigta"
-
-#: cuon/Proposal/GUI/proposal.glade2:3177
-#, fuzzy
-msgid "problems"
-msgstr "Ziņot par problēmām"
 
 #: cuon/AI/GUI/ai.glade2:11
 #, fuzzy
@@ -3527,285 +4154,335 @@ msgstr "no"
 msgid "actual stock"
 msgstr "Krājuma ID"
 
-#: cuon/Preferences/GUI/preferences.glade2:9 GUI/cuon.glade2:371
-#: GUI/cuon_gtk.glade2:141 GUI/cuon_server.glade2:132
+#: cuon/Preferences/GUI/preferences.glade2:7 GUI/cuon.glade2:380
+#: GUI/cuon_gtk.glade2:141 GUI/cuon_server.glade2:91
 #, fuzzy
 msgid "Preferences"
 msgstr "Uzstādījumi"
 
-#: cuon/Preferences/GUI/preferences.glade2:117
+#: cuon/Preferences/GUI/preferences.glade2:37 GUI/cuon.glade2:53
+#: GUI/cuon_gtk.glade2:67
+#, fuzzy
+msgid "quit"
+msgstr "iziet"
+
+#: cuon/Preferences/GUI/preferences.glade2:85
 #, fuzzy
 msgid "choose Profile"
 msgstr "Izvēlieties pamata profilu"
 
-#: cuon/Preferences/GUI/preferences.glade2:489
+#: cuon/Preferences/GUI/preferences.glade2:98 cuon/DMS/GUI/dms.glade2:101
+#, fuzzy
+msgid "print"
+msgstr "Drukāt"
+
+#: cuon/Preferences/GUI/preferences.glade2:300
 #, fuzzy
 msgid "SQL-Encoding"
 msgstr "[Kļūdains Kodējums]"
 
-#: cuon/Preferences/GUI/preferences.glade2:543
+#: cuon/Preferences/GUI/preferences.glade2:330
 #, fuzzy
 msgid "Locales"
 msgstr "Saglabāt"
 
-#: cuon/Preferences/GUI/preferences.glade2:596
+#: cuon/Preferences/GUI/preferences.glade2:360
 #, fuzzy
 msgid "Time-Offset"
 msgstr "Laika n&obīde:"
 
-#: cuon/Preferences/GUI/preferences.glade2:650
+#: cuon/Preferences/GUI/preferences.glade2:386
 #, fuzzy
 msgid "standard Profile"
 msgstr "Standarta profils"
 
-#: cuon/Preferences/GUI/preferences.glade2:673
+#: cuon/Preferences/GUI/preferences.glade2:409
 #, fuzzy
 msgid "Color Background"
 msgstr "_Fona krāsa:"
 
-#: cuon/Preferences/GUI/preferences.glade2:703
+#: cuon/Preferences/GUI/preferences.glade2:423
 #, fuzzy
 msgid "Color Foreground"
 msgstr "Priekšplāna krāsa:"
 
-#: cuon/Preferences/GUI/preferences.glade2:733
+#: cuon/Preferences/GUI/preferences.glade2:439
 #, fuzzy
 msgid "Duty Background"
 msgstr "Fona attēls"
 
-#: cuon/Preferences/GUI/preferences.glade2:763
+#: cuon/Preferences/GUI/preferences.glade2:455
 #, fuzzy
 msgid "Duty Foreground"
 msgstr "Priekšplāna krāsa:"
 
-#: cuon/Preferences/GUI/preferences.glade2:1041
-#, fuzzy
-msgid "Print-System"
-msgstr "Drukas Sistēma"
-
-#: cuon/Preferences/GUI/preferences.glade2:1096
-msgid "GTKLP"
+#: cuon/Preferences/GUI/preferences.glade2:621
+msgid "Window Max"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1104
-#, fuzzy
-msgid "CUPS"
-msgstr "glāzes"
+#: cuon/Preferences/GUI/preferences.glade2:638
+msgid "check Imap Folder"
+msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1112
+#: cuon/Preferences/GUI/preferences.glade2:659
 #, fuzzy
-msgid "LPR"
-msgstr "%s (pa lpr)"
+msgid "show news"
+msgstr "&Rādīt ziņojumu"
 
-#: cuon/Preferences/GUI/preferences.glade2:1133
+#: cuon/Preferences/GUI/preferences.glade2:720
 #, fuzzy
-msgid "Printing-System"
-msgstr "Drukas sistēma"
+msgid "Text chat"
+msgstr "Teksts"
 
-#: cuon/Preferences/GUI/preferences.glade2:1165
+#: cuon/Preferences/GUI/preferences.glade2:747 GUI/cuon.glade2:820
+msgid "3D Chat"
+msgstr ""
+
+#: cuon/Preferences/GUI/preferences.glade2:760
+#, fuzzy
+msgid "E-Mail Prg."
+msgstr "E-pasts"
+
+#: cuon/Preferences/GUI/preferences.glade2:801
+#, fuzzy
+msgid "Twitter Program"
+msgstr "Parole"
+
+#: cuon/Preferences/GUI/preferences.glade2:813
+#, fuzzy
+msgid "Facebook"
+msgstr "Pavadzīme"
+
+#: cuon/Preferences/GUI/preferences.glade2:872
+msgid "Communication"
+msgstr ""
+
+#: cuon/Preferences/GUI/preferences.glade2:888
 #, fuzzy
 msgid "viev/print Pickups"
 msgstr "GHex (%s): drukas priekšskatījums"
 
-#: cuon/Preferences/GUI/preferences.glade2:1277
+#: cuon/Preferences/GUI/preferences.glade2:949
 #, fuzzy
 msgid "view/print Supply"
 msgstr "Drukāšanas Priekš_apskats"
 
-#: cuon/Preferences/GUI/preferences.glade2:1305
+#: cuon/Preferences/GUI/preferences.glade2:962
 #, fuzzy
 msgid "view/print Invoice"
 msgstr "Drukāšanas Priekš_apskats"
 
-#: cuon/Preferences/GUI/preferences.glade2:1333
+#: cuon/Preferences/GUI/preferences.glade2:975
 msgid "label34"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1410
+#: cuon/Preferences/GUI/preferences.glade2:1012
 msgid "label45"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1444
+#: cuon/Preferences/GUI/preferences.glade2:1070
 #, fuzzy
 msgid "Executables"
 msgstr "izpildīt"
 
-#: cuon/Preferences/GUI/preferences.glade2:1476
+#: cuon/Preferences/GUI/preferences.glade2:1086
 #, fuzzy
 msgid "Email address"
 msgstr "Epasta adrese"
 
-#: cuon/Preferences/GUI/preferences.glade2:1560
-msgid "Signatur"
-msgstr ""
-
-#: cuon/Preferences/GUI/preferences.glade2:1626
-#, fuzzy
-msgid "Host"
-msgstr "Resursdators"
-
-#: cuon/Preferences/GUI/preferences.glade2:1654
-#: GUI/cuon_config_wizard.glade2:211
-#, fuzzy
-msgid "Port"
-msgstr "Ports"
-
-#: cuon/Preferences/GUI/preferences.glade2:1787
+#: cuon/Preferences/GUI/preferences.glade2:1108
 #, fuzzy
 msgid "Ext. Emailprg."
 msgstr "Ext skaits"
 
-#: cuon/Preferences/GUI/preferences.glade2:1836
-msgid "Twitter Name"
+#: cuon/Preferences/GUI/preferences.glade2:1219
+#: cuon/Preferences/GUI/preferences.glade2:1297
+#, fuzzy
+msgid "Host"
+msgstr "Resursdators"
+
+#: cuon/Preferences/GUI/preferences.glade2:1234
+#: cuon/Preferences/GUI/preferences.glade2:1310
+#: GUI/cuon_config_wizard.glade2:137
+#, fuzzy
+msgid "Port"
+msgstr "Ports"
+
+#: cuon/Preferences/GUI/preferences.glade2:1248
+#, fuzzy
+msgid "Imap Server"
+msgstr "Diska ID"
+
+#: cuon/Preferences/GUI/preferences.glade2:1258
+#, fuzzy
+msgid "SMTP Server"
+msgstr "Diska ID"
+
+#: cuon/Preferences/GUI/preferences.glade2:1323
+msgid "Signatur"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1864
-#, fuzzy
-msgid "Twitter Password"
-msgstr "Parole"
+#: cuon/Preferences/GUI/preferences.glade2:1359
+#: cuon/Preferences/GUI/preferences.glade2:1373
+msgid "Crypto"
+msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:1972
+#: cuon/Preferences/GUI/preferences.glade2:1457
+#: cuon/Preferences/GUI/preferences.glade2:1472
+msgid "use SSL"
+msgstr ""
+
+#: cuon/Preferences/GUI/preferences.glade2:1489
+msgid "Incomming Mail"
+msgstr ""
+
+#: cuon/Preferences/GUI/preferences.glade2:1499
+#, fuzzy
+msgid "Outgoing Mail"
+msgstr "Jauns dokuments"
+
+#: cuon/Preferences/GUI/preferences.glade2:1544
 #, fuzzy
 msgid "Scan Device"
 msgstr "Dedzinātāj ierīce"
 
-#: cuon/Preferences/GUI/preferences.glade2:2000
+#: cuon/Preferences/GUI/preferences.glade2:1555
 #, fuzzy
 msgid "Mode"
 msgstr "Režīms"
 
-#: cuon/Preferences/GUI/preferences.glade2:2028
+#: cuon/Preferences/GUI/preferences.glade2:1568
 #, fuzzy
 msgid "Resolution"
 msgstr "Izšķirtspēja"
 
-#: cuon/Preferences/GUI/preferences.glade2:2056
+#: cuon/Preferences/GUI/preferences.glade2:1581
 #, fuzzy
 msgid "Depth"
 msgstr "Dziļums"
 
-#: cuon/Preferences/GUI/preferences.glade2:2084
+#: cuon/Preferences/GUI/preferences.glade2:1594
 #, fuzzy
 msgid "BR_x"
 msgstr "Komentārs:<br/>%1"
 
-#: cuon/Preferences/GUI/preferences.glade2:2112
+#: cuon/Preferences/GUI/preferences.glade2:1607
 #, fuzzy
 msgid "Contrast"
 msgstr "Kontrasts"
 
-#: cuon/Preferences/GUI/preferences.glade2:2140
+#: cuon/Preferences/GUI/preferences.glade2:1620
 #, fuzzy
 msgid "Brightness"
 msgstr "Spilgtums"
 
-#: cuon/Preferences/GUI/preferences.glade2:2168
+#: cuon/Preferences/GUI/preferences.glade2:1635
 #, fuzzy
 msgid "White Level"
 msgstr "Iekrāsošanas līmenis:"
 
-#: cuon/Preferences/GUI/preferences.glade2:2196
+#: cuon/Preferences/GUI/preferences.glade2:1650
 msgid "label27"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:2224
+#: cuon/Preferences/GUI/preferences.glade2:1665
 msgid "label28"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:2441
+#: cuon/Preferences/GUI/preferences.glade2:1795
 #, fuzzy
 msgid "BR_Y"
 msgstr "Komentārs:<br/>%1"
 
-#: cuon/Preferences/GUI/preferences.glade2:2534
+#: cuon/Preferences/GUI/preferences.glade2:1832
 #, fuzzy
 msgid "Show Devices"
 msgstr "Parādīt paplašinātas ierīces"
 
-#: cuon/Preferences/GUI/preferences.glade2:2566
+#: cuon/Preferences/GUI/preferences.glade2:1867
 #, fuzzy
 msgid "Scanner"
 msgstr "Skeneris"
 
-#: cuon/Preferences/GUI/preferences.glade2:2935
+#: cuon/Preferences/GUI/preferences.glade2:2085
 #, fuzzy
 msgid "OO-Writer"
 msgstr "Nederīga rakstītāja ierīce: %s"
 
-#: cuon/Preferences/GUI/preferences.glade2:2955
+#: cuon/Preferences/GUI/preferences.glade2:2099
 #, fuzzy
 msgid "OO-Calc"
 msgstr "Rēķināšanas &metode:"
 
-#: cuon/Preferences/GUI/preferences.glade2:2975
+#: cuon/Preferences/GUI/preferences.glade2:2115
 #, fuzzy
 msgid "OO-Draw"
 msgstr "_Zīmēt rāmi"
 
-#: cuon/Preferences/GUI/preferences.glade2:2995
+#: cuon/Preferences/GUI/preferences.glade2:2131
 #, fuzzy
 msgid "OO-Impress"
 msgstr "Impress slaidi"
 
-#: cuon/Preferences/GUI/preferences.glade2:3015
+#: cuon/Preferences/GUI/preferences.glade2:2147
 #, fuzzy
 msgid "Image"
 msgstr "Attēls"
 
-#: cuon/Preferences/GUI/preferences.glade2:3035
+#: cuon/Preferences/GUI/preferences.glade2:2163
 #, fuzzy
 msgid "Music"
 msgstr "Mūzika"
 
-#: cuon/Preferences/GUI/preferences.glade2:3055
+#: cuon/Preferences/GUI/preferences.glade2:2179
 #, fuzzy
 msgid "OGG"
 msgstr "ogg audio"
 
-#: cuon/Preferences/GUI/preferences.glade2:3075
+#: cuon/Preferences/GUI/preferences.glade2:2195
 #, fuzzy
 msgid "WAV"
 msgstr "wav"
 
-#: cuon/Preferences/GUI/preferences.glade2:3115
+#: cuon/Preferences/GUI/preferences.glade2:2227
 #, fuzzy
 msgid "Tex"
 msgstr "Dokumenti/TeX"
 
-#: cuon/Preferences/GUI/preferences.glade2:3135
+#: cuon/Preferences/GUI/preferences.glade2:2245
 #, fuzzy
 msgid "Latex"
 msgstr "Latex - Birkas"
 
-#: cuon/Preferences/GUI/preferences.glade2:3155
+#: cuon/Preferences/GUI/preferences.glade2:2263
 msgid "Flowchart"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:3175
+#: cuon/Preferences/GUI/preferences.glade2:2281
 msgid "HTM*"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:3195
+#: cuon/Preferences/GUI/preferences.glade2:2299
 #, fuzzy
 msgid "Internet"
 msgstr "Internets"
 
-#: cuon/Preferences/GUI/preferences.glade2:3215
+#: cuon/Preferences/GUI/preferences.glade2:2317
 msgid "Googleearth"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:3235
+#: cuon/Preferences/GUI/preferences.glade2:2335
 #, fuzzy
 msgid "PDF"
 msgstr "PDF dokuments"
 
-#: cuon/Preferences/GUI/preferences.glade2:3253
+#: cuon/Preferences/GUI/preferences.glade2:2354
 #, fuzzy
 msgid "Python"
 msgstr "Python skripti"
 
-#: cuon/Preferences/GUI/preferences.glade2:3302 cuon/Think/GUI/think.glade2:74
-#: GUI/cuon.glade2:351
+#: cuon/Preferences/GUI/preferences.glade2:2380 cuon/Think/GUI/think.glade2:74
+#: GUI/cuon.glade2:360
 msgid "Mindmap"
 msgstr ""
 
@@ -3851,63 +4528,63 @@ msgstr "Seriālais numurs:"
 msgid "show extendet infos"
 msgstr "Vispārēja lapas informācija"
 
-#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:4338
+#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:4342
 #, fuzzy
 msgid "Birthday"
 msgstr "Dzimšanas diena"
 
-#: cuon/Staff/GUI/staff.glade2:654 cuon/Addresses/GUI/addresses.glade2:2260
-#: cuon/Addresses/GUI/addresses.glade2:4622
+#: cuon/Staff/GUI/staff.glade2:654 cuon/Addresses/GUI/addresses.glade2:2264
+#: cuon/Addresses/GUI/addresses.glade2:4626
 #, fuzzy
 msgid "State"
 msgstr "Stāvoklis"
 
-#: cuon/Staff/GUI/staff.glade2:682 cuon/Addresses/GUI/addresses.glade2:1751
-#: cuon/Addresses/GUI/addresses.glade2:2209
-#: cuon/Addresses/GUI/addresses.glade2:4883
+#: cuon/Staff/GUI/staff.glade2:682 cuon/Addresses/GUI/addresses.glade2:1755
+#: cuon/Addresses/GUI/addresses.glade2:2213
+#: cuon/Addresses/GUI/addresses.glade2:4887
 #, fuzzy
 msgid "Street"
 msgstr "Iela"
 
-#: cuon/Staff/GUI/staff.glade2:757 cuon/Addresses/GUI/addresses.glade2:2226
-#: cuon/Addresses/GUI/addresses.glade2:4912
+#: cuon/Staff/GUI/staff.glade2:757 cuon/Addresses/GUI/addresses.glade2:2230
+#: cuon/Addresses/GUI/addresses.glade2:4916
 #, fuzzy
 msgid "Zip"
 msgstr "Zip diskdzinis"
 
-#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:4424
+#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:4428
 #, fuzzy
 msgid "Phone in Company"
 msgstr "Platums (rakstzīmēs)"
 
-#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:4438
+#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:4442
 #, fuzzy
 msgid "Fax in company"
 msgstr "Platums (rakstzīmēs)"
 
-#: cuon/Staff/GUI/staff.glade2:904 cuon/Addresses/GUI/addresses.glade2:2902
-#: cuon/Addresses/GUI/addresses.glade2:4278
+#: cuon/Staff/GUI/staff.glade2:904 cuon/Addresses/GUI/addresses.glade2:2906
+#: cuon/Addresses/GUI/addresses.glade2:4282
 #, fuzzy
 msgid "Fax"
 msgstr "Fakss"
 
-#: cuon/Staff/GUI/staff.glade2:920 cuon/Addresses/GUI/addresses.glade2:2634
-#: cuon/Addresses/GUI/addresses.glade2:4247
+#: cuon/Staff/GUI/staff.glade2:920 cuon/Addresses/GUI/addresses.glade2:2638
+#: cuon/Addresses/GUI/addresses.glade2:4251
 #, fuzzy
 msgid "Homepage"
 msgstr "Mājas lapa"
 
-#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:4852
+#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:4856
 #, fuzzy
 msgid "Phone 2"
 msgstr "Telefons"
 
-#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:4837
+#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:4841
 #, fuzzy
 msgid "Phone 1"
 msgstr "Telefons"
 
-#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:4738
+#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:4742
 msgid "titular"
 msgstr ""
 
@@ -3981,7 +4658,7 @@ msgstr "Pieder kategorijai"
 msgid "avaible\n"
 msgstr ""
 
-#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1187
+#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1238
 #, fuzzy
 msgid "Groups"
 msgstr "Grupas"
@@ -4049,8 +4726,8 @@ msgstr "Šodien %X"
 msgid "Ends at"
 msgstr "Šodien %X"
 
-#: cuon/Project/GUI/project.glade2:9 cuon/Addresses/GUI/addresses.glade2:1204
-#: cuon/Addresses/GUI/addresses.glade2:8154
+#: cuon/Project/GUI/project.glade2:9 cuon/Addresses/GUI/addresses.glade2:1200
+#: cuon/Addresses/GUI/addresses.glade2:8140
 #, fuzzy
 msgid "Projects"
 msgstr "Projekti"
@@ -4064,12 +4741,6 @@ msgstr "_Projekts"
 #, fuzzy
 msgid "Phase"
 msgstr "Fāze"
-
-#: cuon/Project/GUI/project.glade2:165 cuon/Project/GUI/project.glade2:313
-#: cuon/Think/GUI/think.glade2:92
-#, fuzzy
-msgid "edit"
-msgstr "rediģēt"
 
 #: cuon/Project/GUI/project.glade2:198 cuon/Project/GUI/project.glade2:2153
 #, fuzzy
@@ -4238,8 +4909,8 @@ msgid "Project Dir"
 msgstr "Laika formatēšana"
 
 #: cuon/Project/GUI/project.glade2:3765 cuon/Project/GUI/project.glade2:3835
-#: cuon/Addresses/GUI/addresses.glade2:2971
-#: cuon/Addresses/GUI/addresses.glade2:4172 cuon/DMS/GUI/dms.glade2:1849
+#: cuon/Addresses/GUI/addresses.glade2:2975
+#: cuon/Addresses/GUI/addresses.glade2:4176 cuon/DMS/GUI/dms.glade2:1900
 #, fuzzy
 msgid "View"
 msgstr "Skats"
@@ -4300,496 +4971,474 @@ msgstr ""
 msgid "label188"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:751
-#: cuon/Addresses/GUI/addresses.glade2:1611
-#: cuon/Addresses/GUI/addresses.glade2:2661
-#: cuon/Addresses/GUI/addresses.glade2:4308
+#: cuon/Addresses/GUI/addresses.glade2:750
+#: cuon/Addresses/GUI/addresses.glade2:1615
+#: cuon/Addresses/GUI/addresses.glade2:2665
+#: cuon/Addresses/GUI/addresses.glade2:4312
 #, fuzzy
 msgid "Newsletter"
 msgstr "Fakss darījumiem"
 
-#: cuon/Addresses/GUI/addresses.glade2:802 GUI/cuon.glade2:73
+#: cuon/Addresses/GUI/addresses.glade2:801 GUI/cuon.glade2:73
 #: GUI/cuon_gtk.glade2:101
 #, fuzzy
 msgid "_Addresses"
 msgstr "adreses"
 
-#: cuon/Addresses/GUI/addresses.glade2:947
+#: cuon/Addresses/GUI/addresses.glade2:943
 #, fuzzy
 msgid "_Partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/GUI/addresses.glade2:1075
-#: cuon/Addresses/GUI/addresses.glade2:7705
+#: cuon/Addresses/GUI/addresses.glade2:1244
 #, fuzzy
-msgid "Notes"
-msgstr "Paziņojums"
+msgid "with Partner"
+msgstr "Partnera vārds"
 
-#: cuon/Addresses/GUI/addresses.glade2:1267
+#: cuon/Addresses/GUI/addresses.glade2:1271
 #, fuzzy
 msgid "Phone2"
 msgstr "Telefons"
 
-#: cuon/Addresses/GUI/addresses.glade2:1283 cuon/Think/GUI/think.glade2:129
-#: GUI/cuon.glade2:364 GUI/cuon_gtk.glade2:132 GUI/cuon_server.glade2:104
-#, fuzzy
-msgid "Tools"
-msgstr "Rīki"
-
-#: cuon/Addresses/GUI/addresses.glade2:1290
+#: cuon/Addresses/GUI/addresses.glade2:1294
 #, fuzzy
 msgid "Contact window"
 msgstr "Parādīt kontakta pirmsapskates logu"
 
-#: cuon/Addresses/GUI/addresses.glade2:1298
+#: cuon/Addresses/GUI/addresses.glade2:1302
 #, fuzzy
 msgid "new Proposal"
 msgstr "Sanāksmes iemesls"
 
-#: cuon/Addresses/GUI/addresses.glade2:1306
-#: cuon/Addresses/GUI/addresses.glade2:1473
+#: cuon/Addresses/GUI/addresses.glade2:1310
+#: cuon/Addresses/GUI/addresses.glade2:1477
 #, fuzzy
 msgid "new Order"
 msgstr "Joslu secība"
 
-#: cuon/Addresses/GUI/addresses.glade2:1314
+#: cuon/Addresses/GUI/addresses.glade2:1318
 #, fuzzy
 msgid "show Order"
 msgstr "Joslu secība"
 
-#: cuon/Addresses/GUI/addresses.glade2:1322
-#: cuon/Addresses/GUI/addresses.glade2:1486
+#: cuon/Addresses/GUI/addresses.glade2:1326
+#: cuon/Addresses/GUI/addresses.glade2:1490
 #, fuzzy
 msgid "new Project"
 msgstr "Jauns Projekts"
 
-#: cuon/Addresses/GUI/addresses.glade2:1345
+#: cuon/Addresses/GUI/addresses.glade2:1349
 #, fuzzy
 msgid "create new Data "
 msgstr "Lejupielādēt jaunus datus..."
 
-#: cuon/Addresses/GUI/addresses.glade2:1359
+#: cuon/Addresses/GUI/addresses.glade2:1363
 #, fuzzy
 msgid "edit current data"
 msgstr "Rediģēt ģeo datus..."
 
-#: cuon/Addresses/GUI/addresses.glade2:1373
+#: cuon/Addresses/GUI/addresses.glade2:1377
 #, fuzzy
 msgid "save current data"
 msgstr "Saglabāt datus ik:"
 
-#: cuon/Addresses/GUI/addresses.glade2:1395
+#: cuon/Addresses/GUI/addresses.glade2:1399
 #, fuzzy
 msgid "ext. Info"
 msgstr "nav informācijas"
 
-#: cuon/Addresses/GUI/addresses.glade2:1421
+#: cuon/Addresses/GUI/addresses.glade2:1425
 #: cuon/Addresses/GUI/contact.glade2:11 cuon/Addresses/GUI/contact.glade2:78
 #: cuon/Addresses/GUI/contact.glade2:1621
 #, fuzzy
 msgid "Contact"
 msgstr "Kontakts"
 
-#: cuon/Addresses/GUI/addresses.glade2:1434
+#: cuon/Addresses/GUI/addresses.glade2:1438
 #, fuzzy
 msgid "All Contact"
 msgstr "_Zvanīt kontaktam"
 
-#: cuon/Addresses/GUI/addresses.glade2:1460
+#: cuon/Addresses/GUI/addresses.glade2:1464
 #, fuzzy
 msgid "New Proposal"
 msgstr "Sanāksmes iemesls"
 
-#: cuon/Addresses/GUI/addresses.glade2:1530
+#: cuon/Addresses/GUI/addresses.glade2:1534
 #, fuzzy
 msgid "search partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/GUI/addresses.glade2:1639
+#: cuon/Addresses/GUI/addresses.glade2:1643
 #, fuzzy
 msgid "FAX"
 msgstr "Fakss"
 
-#: cuon/Addresses/GUI/addresses.glade2:1669
-#: cuon/Addresses/GUI/addresses.glade2:2175
+#: cuon/Addresses/GUI/addresses.glade2:1673
+#: cuon/Addresses/GUI/addresses.glade2:2179
 #, fuzzy
 msgid "Name2"
 msgstr "Vārdi:"
 
-#: cuon/Addresses/GUI/addresses.glade2:1710
+#: cuon/Addresses/GUI/addresses.glade2:1714
 #: cuon/Addresses/GUI/contact.glade2:395
 #: cuon/Databases/GUI/databases.glade2:197
 #, fuzzy
 msgid "Zipcode"
 msgstr "Pasta indekss"
 
-#: cuon/Addresses/GUI/addresses.glade2:1863
-#: cuon/Addresses/GUI/addresses.glade2:2158
+#: cuon/Addresses/GUI/addresses.glade2:1867
+#: cuon/Addresses/GUI/addresses.glade2:2162
 #, fuzzy
 msgid "Name1"
 msgstr "Vārdi:"
 
-#: cuon/Addresses/GUI/addresses.glade2:1874 GUI/cuon.glade2:825
+#: cuon/Addresses/GUI/addresses.glade2:1878 GUI/cuon.glade2:833
 #, fuzzy
 msgid "Email"
 msgstr "Real&ms:"
 
-#: cuon/Addresses/GUI/addresses.glade2:1902
+#: cuon/Addresses/GUI/addresses.glade2:1906
 #, fuzzy
 msgid "Clear Search"
 msgstr "Meklēt"
 
-#: cuon/Addresses/GUI/addresses.glade2:1964
-#: cuon/Addresses/GUI/addresses.glade2:4451
+#: cuon/Addresses/GUI/addresses.glade2:1968
+#: cuon/Addresses/GUI/addresses.glade2:4455
 #, fuzzy
 msgid "letter-address"
 msgstr "Vēstules darījumu/darba adrese"
 
-#: cuon/Addresses/GUI/addresses.glade2:2505
+#: cuon/Addresses/GUI/addresses.glade2:2509
 #, fuzzy
 msgid "Postbox"
 msgstr "Pozīcija"
 
-#: cuon/Addresses/GUI/addresses.glade2:2541
+#: cuon/Addresses/GUI/addresses.glade2:2545
 #, fuzzy
 msgid "Zip for Postbox"
 msgstr "&Jautāt pēc darbības"
 
-#: cuon/Addresses/GUI/addresses.glade2:2688
-#: cuon/Addresses/GUI/addresses.glade2:4710
+#: cuon/Addresses/GUI/addresses.glade2:2692
+#: cuon/Addresses/GUI/addresses.glade2:4714
 msgid "Handy"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:2717
+#: cuon/Addresses/GUI/addresses.glade2:2721
 #, fuzzy
 msgid "Choose Caller"
 msgstr "Zvanītāja identifikācija"
 
-#: cuon/Addresses/GUI/addresses.glade2:2764
+#: cuon/Addresses/GUI/addresses.glade2:2768
 #, fuzzy
 msgid "Choose Rep."
 msgstr "Aiz&vietot:"
 
-#: cuon/Addresses/GUI/addresses.glade2:2811
+#: cuon/Addresses/GUI/addresses.glade2:2815
 #, fuzzy
 msgid "Choose Salesman"
 msgstr "Norādiet faila nosaukumu"
 
-#: cuon/Addresses/GUI/addresses.glade2:3020
+#: cuon/Addresses/GUI/addresses.glade2:3024
 #, fuzzy
 msgid "WebSearch"
 msgstr "Meklēt"
 
-#: cuon/Addresses/GUI/addresses.glade2:3094
+#: cuon/Addresses/GUI/addresses.glade2:3098
 #, fuzzy
 msgid "dial"
 msgstr "ciparnīca"
 
-#: cuon/Addresses/GUI/addresses.glade2:3137
+#: cuon/Addresses/GUI/addresses.glade2:3141
 #, fuzzy
 msgid "Send Email"
 msgstr "Sūtīt e-pastu"
 
-#: cuon/Addresses/GUI/addresses.glade2:3152
+#: cuon/Addresses/GUI/addresses.glade2:3156
 #, fuzzy
 msgid "ext. Email"
 msgstr "Rakstīt E-pastu"
 
-#: cuon/Addresses/GUI/addresses.glade2:3241
+#: cuon/Addresses/GUI/addresses.glade2:3245
 #, fuzzy
 msgid "IBAN"
 msgstr "Iban"
 
-#: cuon/Addresses/GUI/addresses.glade2:3269
+#: cuon/Addresses/GUI/addresses.glade2:3273
 #, fuzzy
 msgid "depositor"
 msgstr "apraksts"
 
-#: cuon/Addresses/GUI/addresses.glade2:3283
+#: cuon/Addresses/GUI/addresses.glade2:3287
 #, fuzzy
 msgid "Account-Nr."
 msgstr "&Konta menedžeris"
 
-#: cuon/Addresses/GUI/addresses.glade2:3437
+#: cuon/Addresses/GUI/addresses.glade2:3441
 #, fuzzy
 msgid "date of launch"
 msgstr "Palaišanas Kļūda"
 
-#: cuon/Addresses/GUI/addresses.glade2:3519
+#: cuon/Addresses/GUI/addresses.glade2:3523
 #, fuzzy
 msgid "Is Webshop Address"
 msgstr "Trūkst sūtītāja adreses."
 
-#: cuon/Addresses/GUI/addresses.glade2:3534
+#: cuon/Addresses/GUI/addresses.glade2:3538
 #, fuzzy
 msgid "update from Web"
 msgstr "A&tjaunot no pirmkoda"
 
-#: cuon/Addresses/GUI/addresses.glade2:3569
+#: cuon/Addresses/GUI/addresses.glade2:3573
 #, fuzzy
 msgid "Number of Employees"
 msgstr "Seriālais numurs:"
 
-#: cuon/Addresses/GUI/addresses.glade2:3580
+#: cuon/Addresses/GUI/addresses.glade2:3584
 #, fuzzy
 msgid "Turnover"
 msgstr "Pārsūtīt"
 
-#: cuon/Addresses/GUI/addresses.glade2:3591
+#: cuon/Addresses/GUI/addresses.glade2:3595
 #, fuzzy
 msgid "Trade"
 msgstr "lasīt"
 
-#: cuon/Addresses/GUI/addresses.glade2:3602
+#: cuon/Addresses/GUI/addresses.glade2:3606
 msgid "label113"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3613
+#: cuon/Addresses/GUI/addresses.glade2:3617
 msgid "label115"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3624
+#: cuon/Addresses/GUI/addresses.glade2:3628
 msgid "label116"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3695
+#: cuon/Addresses/GUI/addresses.glade2:3699
 #, fuzzy
 msgid "search ToP"
 msgstr "Augšpusē"
 
-#: cuon/Addresses/GUI/addresses.glade2:3741
+#: cuon/Addresses/GUI/addresses.glade2:3745
 #, fuzzy
 msgid "Term of Payment"
 msgstr "Nepieciešama apmaksa"
 
-#: cuon/Addresses/GUI/addresses.glade2:3779
+#: cuon/Addresses/GUI/addresses.glade2:3783
 #, fuzzy
 msgid "Line"
 msgstr "Saite"
 
-#: cuon/Addresses/GUI/addresses.glade2:3803
+#: cuon/Addresses/GUI/addresses.glade2:3807
 #, fuzzy
 msgid "fashion"
 msgstr "Datora kopējie kredītpunkti"
 
-#: cuon/Addresses/GUI/addresses.glade2:3817
+#: cuon/Addresses/GUI/addresses.glade2:3821
 #, fuzzy
 msgid "Tax-Nr."
 msgstr "r"
 
-#: cuon/Addresses/GUI/addresses.glade2:3842
+#: cuon/Addresses/GUI/addresses.glade2:3846
 msgid "to calc Tax"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:3862
+#: cuon/Addresses/GUI/addresses.glade2:3866
 #, fuzzy
 msgid "Price-Group"
 msgstr "Grupas atļaujas"
 
-#: cuon/Addresses/GUI/addresses.glade2:3878
+#: cuon/Addresses/GUI/addresses.glade2:3882
 #, fuzzy
 msgid "address-Number"
 msgstr "Seriālais numurs:"
 
-#: cuon/Addresses/GUI/addresses.glade2:3906
+#: cuon/Addresses/GUI/addresses.glade2:3910
 #, fuzzy
 msgid "legal form"
 msgstr "Formas ieeja"
 
-#: cuon/Addresses/GUI/addresses.glade2:3949
+#: cuon/Addresses/GUI/addresses.glade2:3953
 #, fuzzy
 msgid "Misc."
 msgstr "Dažādi"
 
-#: cuon/Addresses/GUI/addresses.glade2:4021
-#: cuon/Addresses/GUI/addresses.glade2:4091
-#: cuon/Addresses/GUI/addresses.glade2:4502
-#: cuon/Addresses/GUI/addresses.glade2:4574
-#: cuon/Addresses/GUI/addresses.glade2:4981 GUI/cuon.glade2:22
-#: GUI/cuon_gtk.glade2:33 GUI/cuon_server.glade2:42
+#: cuon/Addresses/GUI/addresses.glade2:4025
+#: cuon/Addresses/GUI/addresses.glade2:4095
+#: cuon/Addresses/GUI/addresses.glade2:4506
+#: cuon/Addresses/GUI/addresses.glade2:4578
+#: cuon/Addresses/GUI/addresses.glade2:4985 GUI/cuon.glade2:22
+#: GUI/cuon_gtk.glade2:33 GUI/cuon_server.glade2:22
 #, fuzzy
 msgid "Connect"
 msgstr "Pieslēgties"
 
-#: cuon/Addresses/GUI/addresses.glade2:4134
+#: cuon/Addresses/GUI/addresses.glade2:4138
 #, fuzzy
 msgid "send Email"
 msgstr "Sūtīt epastu"
 
-#: cuon/Addresses/GUI/addresses.glade2:4199
+#: cuon/Addresses/GUI/addresses.glade2:4203
 #, fuzzy
 msgid "Skype"
 msgstr "Skype Interneta telefonsakari"
 
-#: cuon/Addresses/GUI/addresses.glade2:4214
+#: cuon/Addresses/GUI/addresses.glade2:4218
 #, fuzzy
 msgid "SIP"
 msgstr "SIP uzstādījumi"
 
-#: cuon/Addresses/GUI/addresses.glade2:4383
+#: cuon/Addresses/GUI/addresses.glade2:4387
 #, fuzzy
 msgid "Job"
 msgstr "Darbs"
 
-#: cuon/Addresses/GUI/addresses.glade2:4396
+#: cuon/Addresses/GUI/addresses.glade2:4400
 #, fuzzy
 msgid "Department"
 msgstr "Nodaļa"
 
-#: cuon/Addresses/GUI/addresses.glade2:4666
+#: cuon/Addresses/GUI/addresses.glade2:4670
 #, fuzzy
 msgid "City  "
 msgstr "_Pilsēta:"
 
-#: cuon/Addresses/GUI/addresses.glade2:4923
+#: cuon/Addresses/GUI/addresses.glade2:4927
 #, fuzzy
 msgid "Generate Partner"
 msgstr "Partnera vārds"
 
-#: cuon/Addresses/GUI/addresses.glade2:5171 cuon/Think/GUI/think.glade2:564
+#: cuon/Addresses/GUI/addresses.glade2:5175 cuon/Think/GUI/think.glade2:564
 #, fuzzy
 msgid "end at"
 msgstr "%s tikšanās beigās"
 
-#: cuon/Addresses/GUI/addresses.glade2:5260 cuon/Think/GUI/think.glade2:536
+#: cuon/Addresses/GUI/addresses.glade2:5264 cuon/Think/GUI/think.glade2:536
 #, fuzzy
 msgid "Begin at"
 msgstr "Šodien %X"
 
-#: cuon/Addresses/GUI/addresses.glade2:5396
+#: cuon/Addresses/GUI/addresses.glade2:5400
 #, fuzzy
 msgid "D M S"
 msgstr "Grādi (GMS)"
 
-#: cuon/Addresses/GUI/addresses.glade2:5478
+#: cuon/Addresses/GUI/addresses.glade2:5482
 #, fuzzy
 msgid "Goto Address"
 msgstr "Iet uz adresi"
 
-#: cuon/Addresses/GUI/addresses.glade2:5513
-#, fuzzy
-msgid "short Remark"
-msgstr "&Piezīme:"
-
-#: cuon/Addresses/GUI/addresses.glade2:5561
-#, fuzzy
-msgid "Note"
-msgstr "Paziņojums"
-
-#: cuon/Addresses/GUI/addresses.glade2:5617
+#: cuon/Addresses/GUI/addresses.glade2:5621
 #, fuzzy
 msgid "search Staff"
 msgstr "Izvēlieties ceļus"
 
-#: cuon/Addresses/GUI/addresses.glade2:5703
+#: cuon/Addresses/GUI/addresses.glade2:5707
 #, fuzzy
 msgid "Schedul  begins at time"
 msgstr "Debess laiks sākumā: "
 
-#: cuon/Addresses/GUI/addresses.glade2:5733
+#: cuon/Addresses/GUI/addresses.glade2:5728
 #, fuzzy
 msgid "Schedul ends at time"
 msgstr "Debess laiks sākumā: "
 
-#: cuon/Addresses/GUI/addresses.glade2:5763
+#: cuon/Addresses/GUI/addresses.glade2:5749
 #: cuon/Addresses/GUI/contact.glade2:2520
 #, fuzzy
 msgid "Alarm"
 msgstr "Trauksme"
 
-#: cuon/Addresses/GUI/addresses.glade2:5779
+#: cuon/Addresses/GUI/addresses.glade2:5765
 #, fuzzy
 msgid " min. before"
 msgstr "Pirms beigām"
 
-#: cuon/Addresses/GUI/addresses.glade2:5842
+#: cuon/Addresses/GUI/addresses.glade2:5828
 #, fuzzy
 msgid "Process"
 msgstr "Projekti"
 
-#: cuon/Addresses/GUI/addresses.glade2:5931
-#: cuon/Addresses/GUI/addresses.glade2:6285
-#: cuon/Addresses/GUI/addresses.glade2:6640
-#: cuon/Addresses/GUI/addresses.glade2:6995
-#: cuon/Addresses/GUI/addresses.glade2:7350
+#: cuon/Addresses/GUI/addresses.glade2:5917
+#: cuon/Addresses/GUI/addresses.glade2:6271
+#: cuon/Addresses/GUI/addresses.glade2:6626
+#: cuon/Addresses/GUI/addresses.glade2:6981
+#: cuon/Addresses/GUI/addresses.glade2:7336
 #, fuzzy
 msgid "add Date/Name"
 msgstr "Pievienot Autora Vārdu"
 
-#: cuon/Addresses/GUI/addresses.glade2:6074
-#: cuon/Addresses/GUI/addresses.glade2:6428
-#: cuon/Addresses/GUI/addresses.glade2:6783
-#: cuon/Addresses/GUI/addresses.glade2:7138
-#: cuon/Addresses/GUI/addresses.glade2:7493
+#: cuon/Addresses/GUI/addresses.glade2:6060
+#: cuon/Addresses/GUI/addresses.glade2:6414
+#: cuon/Addresses/GUI/addresses.glade2:6769
+#: cuon/Addresses/GUI/addresses.glade2:7124
+#: cuon/Addresses/GUI/addresses.glade2:7479
 #, fuzzy
 msgid "paste"
 msgstr "Atjaunināt"
 
-#: cuon/Addresses/GUI/addresses.glade2:6226
-#: cuon/Addresses/GUI/addresses.glade2:6580
-#: cuon/Addresses/GUI/addresses.glade2:6935
-#: cuon/Addresses/GUI/addresses.glade2:7290
-#: cuon/Addresses/GUI/addresses.glade2:7645
+#: cuon/Addresses/GUI/addresses.glade2:6212
+#: cuon/Addresses/GUI/addresses.glade2:6566
+#: cuon/Addresses/GUI/addresses.glade2:6921
+#: cuon/Addresses/GUI/addresses.glade2:7276
+#: cuon/Addresses/GUI/addresses.glade2:7631
 #, fuzzy
 msgid "add Formular"
 msgstr "&Pievieot grāmatzīmi..."
 
-#: cuon/Addresses/GUI/addresses.glade2:6271
+#: cuon/Addresses/GUI/addresses.glade2:6257
 #, fuzzy
 msgid "Notes misc"
 msgstr "Dažādi uzstādījumi"
 
-#: cuon/Addresses/GUI/addresses.glade2:6625 GUI/cuon.glade2:472
+#: cuon/Addresses/GUI/addresses.glade2:6611 GUI/cuon.glade2:481
 #, fuzzy
 msgid "Notes contacter"
 msgstr "Atgādinājuma piezīmes"
 
-#: cuon/Addresses/GUI/addresses.glade2:6980
+#: cuon/Addresses/GUI/addresses.glade2:6966
 #, fuzzy
 msgid "notes representant"
 msgstr "Atgādinājuma piezīmes"
 
-#: cuon/Addresses/GUI/addresses.glade2:7335
+#: cuon/Addresses/GUI/addresses.glade2:7321
 #, fuzzy
 msgid "notes salesman"
 msgstr "Atgādinājuma piezīmes"
 
-#: cuon/Addresses/GUI/addresses.glade2:7690
+#: cuon/Addresses/GUI/addresses.glade2:7676
 #, fuzzy
 msgid "notes organisation"
 msgstr "Atgādinājuma piezīmes"
 
-#: cuon/Addresses/GUI/addresses.glade2:7721
+#: cuon/Addresses/GUI/addresses.glade2:7707
 #, fuzzy
 msgid "Proposal for this address"
 msgstr "Šī ir vēlamā adrese"
 
-#: cuon/Addresses/GUI/addresses.glade2:7779
+#: cuon/Addresses/GUI/addresses.glade2:7765
 msgid "Show"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7905
+#: cuon/Addresses/GUI/addresses.glade2:7891
 msgid ""
 "Order\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7922
+#: cuon/Addresses/GUI/addresses.glade2:7908
 #, fuzzy
 msgid "Invoices fpr this address"
 msgstr "Šī ir vēlamā adrese"
 
-#: cuon/Addresses/GUI/addresses.glade2:8017
-#, fuzzy
-msgid "goto Project"
-msgstr "Dzēst projektu"
-
-#: cuon/Addresses/GUI/addresses.glade2:8112
+#: cuon/Addresses/GUI/addresses.glade2:8098
 #, fuzzy
 msgid "Projects for this Address"
 msgstr "Šī ir vēlamā adrese"
 
-#: cuon/Addresses/GUI/addresses.glade2:8190
+#: cuon/Addresses/GUI/addresses.glade2:8176
 msgid "Map"
 msgstr ""
 
@@ -5128,7 +5777,7 @@ msgstr "Uzskaite"
 msgid "newsletter"
 msgstr "Fakss darījumiem"
 
-#: cuon/Stats/GUI/stats.glade2:9 GUI/cuon.glade2:334
+#: cuon/Stats/GUI/stats.glade2:9 GUI/cuon.glade2:343
 #, fuzzy
 msgid "Stats"
 msgstr "Statistika"
@@ -5155,11 +5804,6 @@ msgstr "Globāls"
 msgid "Client-Nr."
 msgstr "DHCP klients"
 
-#: cuon/Clients/GUI/clients.glade2:404
-#, fuzzy
-msgid "search ..."
-msgstr "Meklēt..."
-
 #: cuon/Clients/GUI/clients.glade2:424
 #, fuzzy
 msgid "Address-ID"
@@ -5178,226 +5822,231 @@ msgstr ""
 msgid "Document Management System"
 msgstr "Comment=KPlato projekta menedžementa dokuments"
 
-#: cuon/DMS/GUI/dms.glade2:59 cuon/DMS/GUI/dms.glade2:1894
+#: cuon/DMS/GUI/dms.glade2:59 cuon/DMS/GUI/dms.glade2:1945
 #, fuzzy
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: cuon/DMS/GUI/dms.glade2:101
-#, fuzzy
-msgid "print"
-msgstr "Drukāt"
-
-#: cuon/DMS/GUI/dms.glade2:128 cuon/DMS/GUI/dms.glade2:2030
+#: cuon/DMS/GUI/dms.glade2:128 cuon/DMS/GUI/dms.glade2:2098
 #, fuzzy
 msgid "Related"
 msgstr "Saistīts"
 
-#: cuon/DMS/GUI/dms.glade2:184 cuon/DMS/GUI/dms.glade2:2099
+#: cuon/DMS/GUI/dms.glade2:184
 #, fuzzy
 msgid "Associated"
 msgstr "Piekārtots la&iks"
 
-#: cuon/DMS/GUI/dms.glade2:426
+#: cuon/DMS/GUI/dms.glade2:433
 #, fuzzy
 msgid "Search4"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:441
+#: cuon/DMS/GUI/dms.glade2:448
 #, fuzzy
 msgid "Search3"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:454
+#: cuon/DMS/GUI/dms.glade2:461
 #, fuzzy
 msgid "Search2"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:469
+#: cuon/DMS/GUI/dms.glade2:476
 #, fuzzy
 msgid "Search1"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:498
+#: cuon/DMS/GUI/dms.glade2:506
 #, fuzzy
 msgid "Sub5"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:589
+#: cuon/DMS/GUI/dms.glade2:603
 #, fuzzy
 msgid "Sub4"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:604
+#: cuon/DMS/GUI/dms.glade2:618
 #, fuzzy
 msgid "Sub1"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:617
+#: cuon/DMS/GUI/dms.glade2:631
 #, fuzzy
 msgid "Sub3"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:645
+#: cuon/DMS/GUI/dms.glade2:659
 #, fuzzy
 msgid "Sub2"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:745
+#: cuon/DMS/GUI/dms.glade2:696
+#, fuzzy
+msgid "Full Text"
+msgstr "Maksājums"
+
+#: cuon/DMS/GUI/dms.glade2:796
 #, fuzzy
 msgid "Sub 1"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:773
+#: cuon/DMS/GUI/dms.glade2:824
 #, fuzzy
 msgid "Sub 2"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:801
+#: cuon/DMS/GUI/dms.glade2:852
 #, fuzzy
 msgid "Sub 3"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:829
+#: cuon/DMS/GUI/dms.glade2:880
 #, fuzzy
 msgid "Sub 4"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:857
+#: cuon/DMS/GUI/dms.glade2:908
 #, fuzzy
 msgid "Sub 5"
 msgstr "Zem"
 
-#: cuon/DMS/GUI/dms.glade2:890
+#: cuon/DMS/GUI/dms.glade2:941
 #, fuzzy
 msgid "activate Rights"
 msgstr "Piekļūšanas tiesības"
 
-#: cuon/DMS/GUI/dms.glade2:912
+#: cuon/DMS/GUI/dms.glade2:963
 #, fuzzy
 msgid "Document-Date"
 msgstr "Būvējuma datums:"
 
-#: cuon/DMS/GUI/dms.glade2:953 cuon/DMS/GUI/dms.glade2:1023
-#: cuon/DMS/GUI/dms.glade2:1093
+#: cuon/DMS/GUI/dms.glade2:1004 cuon/DMS/GUI/dms.glade2:1074
+#: cuon/DMS/GUI/dms.glade2:1144
 #, fuzzy
 msgid "read"
 msgstr "lasīt"
 
-#: cuon/DMS/GUI/dms.glade2:968 cuon/DMS/GUI/dms.glade2:1038
-#: cuon/DMS/GUI/dms.glade2:1108
+#: cuon/DMS/GUI/dms.glade2:1019 cuon/DMS/GUI/dms.glade2:1089
+#: cuon/DMS/GUI/dms.glade2:1159
 #, fuzzy
 msgid "write"
 msgstr "rakstīt"
 
-#: cuon/DMS/GUI/dms.glade2:983 cuon/DMS/GUI/dms.glade2:1053
-#: cuon/DMS/GUI/dms.glade2:1123
+#: cuon/DMS/GUI/dms.glade2:1034 cuon/DMS/GUI/dms.glade2:1104
+#: cuon/DMS/GUI/dms.glade2:1174
 #, fuzzy
 msgid "execute"
 msgstr "izpildīt"
 
-#: cuon/DMS/GUI/dms.glade2:1013
+#: cuon/DMS/GUI/dms.glade2:1064
 #, fuzzy
 msgid "Group"
 msgstr "Grupa"
 
-#: cuon/DMS/GUI/dms.glade2:1240
+#: cuon/DMS/GUI/dms.glade2:1291
 #, fuzzy
 msgid "Search 1"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:1253
+#: cuon/DMS/GUI/dms.glade2:1304
 #, fuzzy
 msgid "Search 2"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:1266
+#: cuon/DMS/GUI/dms.glade2:1317
 #, fuzzy
 msgid "Search 3"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:1279
+#: cuon/DMS/GUI/dms.glade2:1330
 #, fuzzy
 msgid "Search 4"
 msgstr "Meklēt"
 
-#: cuon/DMS/GUI/dms.glade2:1442
+#: cuon/DMS/GUI/dms.glade2:1493
 #, fuzzy
 msgid "Single Scan"
 msgstr "A&pskates Skanēšana"
 
-#: cuon/DMS/GUI/dms.glade2:1491
+#: cuon/DMS/GUI/dms.glade2:1542
 #, fuzzy
 msgid "Multi Scan"
 msgstr "A&pskates Skanēšana"
 
-#: cuon/DMS/GUI/dms.glade2:1547
+#: cuon/DMS/GUI/dms.glade2:1598
 #, fuzzy
 msgid "OCR"
 msgstr "Nolasīt tekstu no attēla"
 
-#: cuon/DMS/GUI/dms.glade2:1570
+#: cuon/DMS/GUI/dms.glade2:1621
 #, fuzzy
 msgid "choose file"
 msgstr "Izvēlies failu..."
 
-#: cuon/DMS/GUI/dms.glade2:1578 cuon/Databases/GUI/databases.glade2:179
+#: cuon/DMS/GUI/dms.glade2:1629 cuon/Databases/GUI/databases.glade2:179
 #: cuon/Databases/GUI/databases.glade2:306
 #, fuzzy
 msgid "Import"
 msgstr "Imports"
 
-#: cuon/DMS/GUI/dms.glade2:1593
+#: cuon/DMS/GUI/dms.glade2:1644
 #, fuzzy
 msgid "LINK"
 msgstr "Saite"
 
-#: cuon/DMS/GUI/dms.glade2:1608
+#: cuon/DMS/GUI/dms.glade2:1659
 #, fuzzy
 msgid "Fax Newsletter"
 msgstr "Fakss darījumiem"
 
-#: cuon/DMS/GUI/dms.glade2:1693
+#: cuon/DMS/GUI/dms.glade2:1744
 #, fuzzy
 msgid "Fax Last Document"
 msgstr "Pārvieto uz pēdējo dokumenta lapu"
 
-#: cuon/DMS/GUI/dms.glade2:1746
+#: cuon/DMS/GUI/dms.glade2:1797
 #, fuzzy
 msgid "Save Last Document"
 msgstr "Saglabāt aktīvo dokumentu"
 
-#: cuon/DMS/GUI/dms.glade2:1795
+#: cuon/DMS/GUI/dms.glade2:1846
 #, fuzzy
 msgid "Save Last Document As ..."
 msgstr "Saglabāt dokumentu kā paraugu"
 
-#: cuon/DMS/GUI/dms.glade2:1936 cuon/DMS/GUI/dms.glade2:1951
+#: cuon/DMS/GUI/dms.glade2:1991 cuon/DMS/GUI/dms.glade2:2006
 #, fuzzy
 msgid "from user"
 msgstr "Starpniekservera &lietotājs:"
 
-#: cuon/DMS/GUI/dms.glade2:1978
+#: cuon/DMS/GUI/dms.glade2:2034
 #, fuzzy
 msgid "last change"
 msgstr "Pēdējā paroles maiņa:"
 
-#: cuon/DMS/GUI/dms.glade2:2003
+#: cuon/DMS/GUI/dms.glade2:2060
 #, fuzzy
 msgid "Document insert at"
 msgstr "Ievietot kursora pozīcijā"
 
-#: cuon/DMS/GUI/dms.glade2:2115
+#: cuon/DMS/GUI/dms.glade2:2133
+#, fuzzy
+msgid "Extract"
+msgstr "<b>Ekstras</b>"
+
+#: cuon/DMS/GUI/dms.glade2:2149
 #, fuzzy
 msgid "Link eingeben"
 msgstr "Atvērt Saiti"
 
-#: cuon/DMS/GUI/dms.glade2:2126
+#: cuon/DMS/GUI/dms.glade2:2160
 #, fuzzy
 msgid "Link"
 msgstr "Saite"
 
-#: cuon/DMS/GUI/dms.glade2:2138
+#: cuon/DMS/GUI/dms.glade2:2172
 #, fuzzy
 msgid "http://"
 msgstr "HTTP proxy"
@@ -5406,16 +6055,6 @@ msgstr "HTTP proxy"
 #, fuzzy
 msgid "Thinking"
 msgstr "Domā..."
-
-#: cuon/Think/GUI/think.glade2:138
-#, fuzzy
-msgid "dms"
-msgstr "Grādi (GMS)"
-
-#: cuon/Think/GUI/think.glade2:238
-#, fuzzy
-msgid "Remove"
-msgstr "Noņemt"
 
 #: cuon/Think/GUI/think.glade2:372
 #, fuzzy
@@ -5511,9 +6150,9 @@ msgstr "Rakstzīmes iestatīts apzīmējums"
 msgid "Materialgroup contains"
 msgstr "/Piesaistīt _resursus..."
 
-#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:532
-#: GUI/cuon_config_wizard.glade2:81 GUI/cuon_gtk.glade2:172
-#: GUI/cuon_server.glade2:324
+#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:541
+#: GUI/cuon_config_wizard.glade2:55 GUI/cuon_gtk.glade2:172
+#: GUI/cuon_server.glade2:260
 #, fuzzy
 msgid "Help"
 msgstr "Palīdzība"
@@ -5656,12 +6295,12 @@ msgstr "Datne"
 msgid "True"
 msgstr ""
 
-#: GUI/setup.glade2:1456 GUI/cuon_config_wizard.glade2:393
+#: GUI/setup.glade2:1456 GUI/cuon_config_wizard.glade2:230
 #, fuzzy
 msgid "locale"
 msgstr "Lokālo nosaukumu kolīzija"
 
-#: GUI/setup.glade2:1505 GUI/cuon_config_wizard.glade2:239
+#: GUI/setup.glade2:1505 GUI/cuon_config_wizard.glade2:150
 #, fuzzy
 msgid "Protocol"
 msgstr "Sanāksmes iemesls"
@@ -5678,13 +6317,13 @@ msgstr ""
 msgid "check Server Version"
 msgstr ""
 
-#: GUI/setup.glade2:1699 GUI/cuon_server.glade2:176
+#: GUI/setup.glade2:1699 GUI/cuon_server.glade2:129
 #, fuzzy
 msgid "Server"
 msgstr "Diska ID"
 
-#: GUI/setup.glade2:1774 GUI/cuon_config_wizard.glade2:658
-#: GUI/cuon_server.glade2:846
+#: GUI/setup.glade2:1774 GUI/cuon_config_wizard.glade2:481
+#: GUI/cuon_server.glade2:799
 #, fuzzy
 msgid "Cancel"
 msgstr "Aprēķināt"
@@ -5708,25 +6347,20 @@ msgstr ""
 msgid "Client PyCuon"
 msgstr "DHCP klients"
 
-#: GUI/cuon.glade2:29 GUI/cuon_gtk.glade2:42 GUI/cuon_server.glade2:51
+#: GUI/cuon.glade2:29 GUI/cuon_gtk.glade2:42 GUI/cuon_server.glade2:29
 #, fuzzy
 msgid "Login"
 msgstr "Pieteikties"
 
-#: GUI/cuon.glade2:39 GUI/cuon_gtk.glade2:52 GUI/cuon_server.glade2:62
+#: GUI/cuon.glade2:39 GUI/cuon_gtk.glade2:52 GUI/cuon_server.glade2:39
 #, fuzzy
 msgid "Logout"
 msgstr "Atteikties"
 
-#: GUI/cuon.glade2:52 GUI/cuon_gtk.glade2:66 GUI/cuon_server.glade2:76
+#: GUI/cuon.glade2:52 GUI/cuon_gtk.glade2:66 GUI/cuon_server.glade2:52
 #, fuzzy
 msgid "Close the Application"
 msgstr "Norādiet lietotni"
-
-#: GUI/cuon.glade2:53 GUI/cuon_gtk.glade2:67 GUI/cuon_server.glade2:77
-#, fuzzy
-msgid "quit"
-msgstr "iziet"
 
 #: GUI/cuon.glade2:82
 #, fuzzy
@@ -5767,248 +6401,192 @@ msgstr "Darbība"
 msgid "_Order"
 msgstr "Kārtība:"
 
-#: GUI/cuon.glade2:227
+#: GUI/cuon.glade2:214
+msgid "Support Ticket"
+msgstr ""
+
+#: GUI/cuon.glade2:236
 #, fuzzy
 msgid "Accounting"
 msgstr "Uzskaite"
 
-#: GUI/cuon.glade2:243
+#: GUI/cuon.glade2:252
 #, fuzzy
 msgid "cash account book"
 msgstr "Jauna grāmat&zīme"
 
-#: GUI/cuon.glade2:257
+#: GUI/cuon.glade2:266
 #, fuzzy
 msgid "list_of_invoices"
 msgstr "Uzdevumu saraksts"
 
-#: GUI/cuon.glade2:271
+#: GUI/cuon.glade2:280
 #, fuzzy
 msgid "analyse costs"
 msgstr "Telefona izmaksas:"
 
-#: GUI/cuon.glade2:283
+#: GUI/cuon.glade2:292
 #, fuzzy
 msgid "Extras"
 msgstr "<b>Ekstras</b>"
 
-#: GUI/cuon.glade2:290
+#: GUI/cuon.glade2:299
 #, fuzzy
 msgid "Mayavi"
 msgstr "Pasts"
 
-#: GUI/cuon.glade2:309
+#: GUI/cuon.glade2:318
 #, fuzzy
 msgid "Expert System"
 msgstr "R&estartēt sistēmu"
 
-#: GUI/cuon.glade2:326
+#: GUI/cuon.glade2:335
 #, fuzzy
 msgid "Web"
 msgstr "Tīmeklis"
 
-#: GUI/cuon.glade2:387
+#: GUI/cuon.glade2:396
 msgid "Finances"
 msgstr ""
 
-#: GUI/cuon.glade2:407 GUI/cuon_gtk.glade2:159
+#: GUI/cuon.glade2:416 GUI/cuon_gtk.glade2:159
 #, fuzzy
 msgid "Report-Generator"
 msgstr "GenericName=Raportu Ģenerators"
 
-#: GUI/cuon.glade2:415
+#: GUI/cuon.glade2:424
 #, fuzzy
 msgid "WebShop"
 msgstr "Tīmekļa pārlūks"
 
-#: GUI/cuon.glade2:428
+#: GUI/cuon.glade2:437
 #, fuzzy
 msgid "Databases"
 msgstr "Datubāzes"
 
-#: GUI/cuon.glade2:441
+#: GUI/cuon.glade2:450
 #, fuzzy
 msgid "Import Data"
 msgstr "&Importēt kartes datus..."
 
-#: GUI/cuon.glade2:449
+#: GUI/cuon.glade2:458
 #, fuzzy
 msgid "Forms"
 msgstr "Formas"
 
-#: GUI/cuon.glade2:464
+#: GUI/cuon.glade2:473
 #, fuzzy
 msgid "Notes Misc"
 msgstr "Dažādi uzstādījumi"
 
-#: GUI/cuon.glade2:480
+#: GUI/cuon.glade2:489
 #, fuzzy
 msgid "Notes Representant"
 msgstr "Atgādinājuma piezīmes"
 
-#: GUI/cuon.glade2:488
+#: GUI/cuon.glade2:497
 #, fuzzy
 msgid "Notes Salesman"
 msgstr "Atgādinājuma piezīmes"
 
-#: GUI/cuon.glade2:513
+#: GUI/cuon.glade2:522
 #, fuzzy
 msgid "Logs"
 msgstr "Žurnāli"
 
-#: GUI/cuon.glade2:520
+#: GUI/cuon.glade2:529
 #, fuzzy
 msgid "Mail"
 msgstr "Pasts"
 
-#: GUI/cuon.glade2:539 GUI/cuon_gtk.glade2:181 GUI/cuon_server.glade2:333
+#: GUI/cuon.glade2:548 GUI/cuon_gtk.glade2:181
 #, fuzzy
 msgid "About"
 msgstr "Par"
 
-#: GUI/cuon.glade2:547
+#: GUI/cuon.glade2:556
 #, fuzzy
 msgid "Online-Help"
 msgstr "/Palīdzība/Tiešsaistes _Palīdzība"
 
-#: GUI/cuon.glade2:576
+#: GUI/cuon.glade2:565
+#, fuzzy
+msgid "Online News"
+msgstr "/Palīdzība/Tiešsaistes _Palīdzība"
+
+#: GUI/cuon.glade2:593
 #, fuzzy
 msgid "connected user"
 msgstr "Starpniekservera &lietotājs:"
 
-#: GUI/cuon.glade2:600
+#: GUI/cuon.glade2:617
 #, fuzzy
 msgid "connected server"
 msgstr "Pielāgots serveris"
 
-#: GUI/cuon.glade2:628
+#: GUI/cuon.glade2:645
 #, fuzzy
 msgid "show Scheduls"
 msgstr "&Rādīt ziņojumu"
 
-#: GUI/cuon.glade2:645
+#: GUI/cuon.glade2:662
 #, fuzzy
 msgid "only new"
 msgstr "Tikai &jaunās"
 
-#: GUI/cuon.glade2:661
+#: GUI/cuon.glade2:678
 #, fuzzy
 msgid "all"
 msgstr "viss"
 
-#: GUI/cuon.glade2:678
+#: GUI/cuon.glade2:695
 msgid "canceld"
 msgstr ""
 
-#: GUI/cuon.glade2:695
+#: GUI/cuon.glade2:712
 #, fuzzy
 msgid "actual week"
 msgstr "Nedēļa pēc noklusējuma"
 
-#: GUI/cuon.glade2:712
+#: GUI/cuon.glade2:729
 #, fuzzy
 msgid "actual Month"
 msgstr "Pēdējā mēnesī"
 
-#: GUI/cuon.glade2:736
+#: GUI/cuon.glade2:753
 #, fuzzy
 msgid "this Year"
 msgstr "pēc %d gada"
 
-#: GUI/cuon.glade2:752
+#: GUI/cuon.glade2:769
 #, fuzzy
 msgid "last Year"
 msgstr "_Termiņa izbeigšanās gads (pēdējie divi cipari):"
 
-#: GUI/cuon.glade2:798
+#: GUI/cuon.glade2:806
 msgid "Chat"
 msgstr ""
 
-#: GUI/cuon.glade2:812
-msgid "3D Chat"
-msgstr ""
-
-#: GUI/cuon.glade2:1006
-msgid "Get new messages"
-msgstr ""
-
-#: GUI/cuon.glade2:1007
-msgid "Get Messages"
-msgstr ""
-
-#: GUI/cuon.glade2:1020
-msgid "Refresh the user timeline"
-msgstr ""
-
-#: GUI/cuon.glade2:1021
-#, fuzzy
-msgid "Refresh"
-msgstr "Sērijas"
-
-#: GUI/cuon.glade2:1034
-msgid "Refresh the public timeline"
-msgstr ""
-
-#: GUI/cuon.glade2:1035
-msgid "Refresh all"
-msgstr ""
-
-#: GUI/cuon.glade2:1048
-msgid "List of your followers"
-msgstr ""
-
-#: GUI/cuon.glade2:1049 GUI/cuon.glade2:1175
-msgid "Follower"
-msgstr ""
-
-#: GUI/cuon.glade2:1062
-msgid "Get replies to you"
-msgstr ""
-
-#: GUI/cuon.glade2:1063
-#, fuzzy
-msgid "Replies"
-msgstr "Sērijas"
-
-#: GUI/cuon.glade2:1106
+#: GUI/cuon.glade2:848
 #, fuzzy
 msgid "Twitter"
 msgstr "Virsraksts"
 
-#: GUI/cuon.glade2:1141
-#, fuzzy
-msgid "send"
-msgstr "Beidzas"
-
-#: GUI/cuon.glade2:1197
-#, fuzzy
-msgid "Friends"
-msgstr "Beidzas"
-
-#: GUI/cuon.glade2:1219
-msgid "Follow"
-msgstr ""
-
-#: GUI/cuon.glade2:1241
-#, fuzzy
-msgid "Tweets"
-msgstr "Tests"
-
-#: GUI/cuon.glade2:1292
+#: GUI/cuon.glade2:1043
 #, fuzzy
 msgid "About CUON"
 msgstr "Par FileZilla"
 
-#: GUI/cuon.glade2:1305
+#: GUI/cuon.glade2:1056
 msgid "C.U.O.N."
 msgstr ""
 
-#: GUI/cuon.glade2:1316
+#: GUI/cuon.glade2:1067
 #, fuzzy
 msgid "An Internet Business-Software"
 msgstr "Programmatūras izstrādes rīki"
 
-#: GUI/cuon.glade2:1408
+#: GUI/cuon.glade2:1159
 msgid ""
 "Authors:\n"
 "Juergen Hamel, 32584 Loehne, Germany"
@@ -6026,37 +6604,42 @@ msgstr ""
 msgid "load SQL-Definition"
 msgstr ""
 
-#: GUI/cuon_config_wizard.glade2:8
+#: GUI/cuon_config_wizard.glade2:7
 msgid "CUON Configuration Wizard"
 msgstr ""
 
-#: GUI/cuon_config_wizard.glade2:59 GUI/cuon_config_wizard.glade2:567
+#: GUI/cuon_config_wizard.glade2:36 GUI/cuon_config_wizard.glade2:432
 #, fuzzy
 msgid "Client"
 msgstr "IRC klienti"
 
-#: GUI/cuon_config_wizard.glade2:267
+#: GUI/cuon_config_wizard.glade2:163
 msgid "Host-IP/Name"
 msgstr ""
 
-#: GUI/cuon_config_wizard.glade2:295
+#: GUI/cuon_config_wizard.glade2:176
 #, fuzzy
 msgid "Working Dir."
 msgstr "<b>Darba laiks</b>"
 
-#: GUI/cuon_config_wizard.glade2:344
+#: GUI/cuon_config_wizard.glade2:202
 msgid "Debug"
 msgstr ""
 
-#: GUI/cuon_config_wizard.glade2:491
+#: GUI/cuon_config_wizard.glade2:284
 msgid "Alternate GUI"
 msgstr ""
 
-#: GUI/cuon_config_wizard.glade2:675
+#: GUI/cuon_config_wizard.glade2:352
+#, fuzzy
+msgid "Client ID"
+msgstr "IRC klienti"
+
+#: GUI/cuon_config_wizard.glade2:496
 msgid "Save And Close"
 msgstr ""
 
-#: GUI/cuon_gtk.glade2:9 GUI/cuon_server.glade2:9
+#: GUI/cuon_gtk.glade2:9 GUI/cuon_server.glade2:7
 msgid "C U O N"
 msgstr ""
 
@@ -6065,187 +6648,210 @@ msgstr ""
 msgid "Arti_cles"
 msgstr "Lietvārdi"
 
-#: GUI/cuon_server.glade2:113
+#: GUI/cuon_server.glade2:74
 #, fuzzy
 msgid "Database"
 msgstr "Datu bāze"
 
-#: GUI/cuon_server.glade2:123
+#: GUI/cuon_server.glade2:83
 #, fuzzy
 msgid "XML Values"
 msgstr "&Skaitliskā vērtība:"
 
-#: GUI/cuon_server.glade2:145
+#: GUI/cuon_server.glade2:103
 msgid "Edit Configfiles"
 msgstr ""
 
-#: GUI/cuon_server.glade2:154
+#: GUI/cuon_server.glade2:110
 msgid "Local"
 msgstr ""
 
-#: GUI/cuon_server.glade2:163
+#: GUI/cuon_server.glade2:117
 msgid "version.cfg"
 msgstr ""
 
-#: GUI/cuon_server.glade2:185
+#: GUI/cuon_server.glade2:136
 msgid "user.cfg"
 msgstr ""
 
-#: GUI/cuon_server.glade2:195
+#: GUI/cuon_server.glade2:145
 msgid "menus.cfg"
 msgstr ""
 
-#: GUI/cuon_server.glade2:205
+#: GUI/cuon_server.glade2:154
 msgid "server.ini"
 msgstr ""
 
-#: GUI/cuon_server.glade2:215
+#: GUI/cuon_server.glade2:163
 #, fuzzy
 msgid "clients"
 msgstr "IRC klienti"
 
-#: GUI/cuon_server.glade2:225
+#: GUI/cuon_server.glade2:172
 msgid "sql.ini"
 msgstr ""
 
-#: GUI/cuon_server.glade2:241
+#: GUI/cuon_server.glade2:186
 msgid "SQL Rights"
 msgstr ""
 
-#: GUI/cuon_server.glade2:251
+#: GUI/cuon_server.glade2:194
 msgid "User and Groups"
 msgstr ""
 
-#: GUI/cuon_server.glade2:261
+#: GUI/cuon_server.glade2:203
 msgid "Group and tabular"
 msgstr ""
 
-#: GUI/cuon_server.glade2:270
+#: GUI/cuon_server.glade2:211
 msgid "Create Grants File"
 msgstr ""
 
-#: GUI/cuon_server.glade2:290
+#: GUI/cuon_server.glade2:229
 msgid "Save Configfiles"
 msgstr ""
 
-#: GUI/cuon_server.glade2:304
+#: GUI/cuon_server.glade2:242
 msgid "Edit Reports"
 msgstr ""
 
-#: GUI/cuon_server.glade2:395
+#: GUI/cuon_server.glade2:300
 #, fuzzy
 msgid "hosts"
 msgstr "Resursdators"
 
-#: GUI/cuon_server.glade2:415
+#: GUI/cuon_server.glade2:314
 msgid "resolv.conf"
 msgstr ""
 
-#: GUI/cuon_server.glade2:440
+#: GUI/cuon_server.glade2:375
 msgid "/etc"
 msgstr ""
 
-#: GUI/cuon_server.glade2:473
+#: GUI/cuon_server.glade2:388
 msgid "pg_hba.conf"
 msgstr ""
 
-#: GUI/cuon_server.glade2:493
+#: GUI/cuon_server.glade2:402
 msgid "postgresql.conf"
 msgstr ""
 
-#: GUI/cuon_server.glade2:518
+#: GUI/cuon_server.glade2:466
 #, fuzzy
 msgid "postgres"
 msgstr "tiek darīti"
 
-#: GUI/cuon_server.glade2:551
+#: GUI/cuon_server.glade2:480
 #, fuzzy
 msgid "main.cf"
 msgstr "Real&ms:"
 
-#: GUI/cuon_server.glade2:571
+#: GUI/cuon_server.glade2:494
 msgid "master.cf"
 msgstr ""
 
-#: GUI/cuon_server.glade2:596
+#: GUI/cuon_server.glade2:558
 msgid "postfix"
 msgstr ""
 
-#: GUI/cuon_server.glade2:629
+#: GUI/cuon_server.glade2:572
 msgid "hosts.hfaxd"
 msgstr ""
 
-#: GUI/cuon_server.glade2:654
+#: GUI/cuon_server.glade2:637
 msgid "hylafax"
 msgstr ""
 
-#: GUI/cuon_server.glade2:683
+#: GUI/cuon_server.glade2:649
 msgid "Edit Server files"
 msgstr ""
 
-#: GUI/cuon_server.glade2:710
+#: GUI/cuon_server.glade2:661
 msgid "label14"
 msgstr ""
 
-#: GUI/cuon_server.glade2:737
+#: GUI/cuon_server.glade2:674
 msgid "label15"
 msgstr ""
 
-#: GUI/cuon_server.glade2:773
+#: GUI/cuon_server.glade2:694
 #, fuzzy
 msgid "dialog1"
 msgstr "ciparnīca"
 
-#: GUI/cuon_server.glade2:804
+#: GUI/cuon_server.glade2:705
+msgid "Please enter the Value, for example 2 (client 2) or a username"
+msgstr ""
+
+#: GUI/cuon_server.glade2:751
 #, fuzzy
 msgid "System"
 msgstr "Drukas Sistēma"
 
-#: GUI/cuon_server.glade2:818
+#: GUI/cuon_server.glade2:767
 #, fuzzy
 msgid "client"
 msgstr "IRC klienti"
 
-#: GUI/cuon_server.glade2:872
-msgid "Please enter the Value, for example 2 (client 2) or a username"
-msgstr ""
+#, fuzzy
+#~ msgid "shortRemark"
+#~ msgstr "&Piezīme:"
 
-#: GUI/cuon_server.glade2:916
-msgid ""
-"addresses_phonelist11.xml\n"
-"addresses_phonelist1.xml\n"
-"articles_number1.xml\n"
-"articles_pickles_sp101_1.xml\n"
-"articles_pickles_sp102_1.xml\n"
-"articles_pickles_sp201_2.xml\n"
-"articles_pickles_sp202_2.xml\n"
-"articles_pickles_sp301_3.xml\n"
-"articles_pickles_sp302_3.xml\n"
-"articles_pickles_sp401_4.xml\n"
-"articles_pickles_sp402_4.xml\n"
-"articles_pickles_standard_1.xml\n"
-"articles_pickles_standard_2.xml\n"
-"articles_pickles_standard_3.xml\n"
-"articles_pickles_standard_4.xml\n"
-"finances_cab_monthly1.xml\n"
-"hibernation_incoming_document.xml\n"
-"hibernation_invoice_document.xml\n"
-"hibernation_outgoing_document.xml\n"
-"hibernation_pickup_document.xml\n"
-"list_list_of_invoices_this_month.xml\n"
-"list_list_of_invoices.xml\n"
-"list_of_inpayment.xml\n"
-"list_of_invoices_by_top.xml\n"
-"list_of_reminder.xml\n"
-"list_of_residue.xml\n"
-"order_list_of_invoices.xml\n"
-"order_standarddelivery.xml\n"
-"order_standardinvoice.xml\n"
-"order_standardpickup.xml\n"
-"order_standardproposal.xml\n"
-"printAddress.xml\n"
-"stockgoods_number1.xml\n"
-msgstr ""
+#, fuzzy
+#~ msgid "sort of"
+#~ msgstr "&Aizvākt atslēgu"
+
+#, fuzzy
+#~ msgid "show Ext. Info"
+#~ msgstr "&Parādīt paplašinātu onformāciju"
+
+#, fuzzy
+#~ msgid "in progress"
+#~ msgstr "tiek darīti"
+
+#, fuzzy
+#~ msgid "already done"
+#~ msgstr "Pieslēgšanās pabeigta"
+
+#, fuzzy
+#~ msgid "problems"
+#~ msgstr "Ziņot par problēmām"
+
+#, fuzzy
+#~ msgid "Print-System"
+#~ msgstr "Drukas Sistēma"
+
+#, fuzzy
+#~ msgid "CUPS"
+#~ msgstr "glāzes"
+
+#, fuzzy
+#~ msgid "LPR"
+#~ msgstr "%s (pa lpr)"
+
+#, fuzzy
+#~ msgid "Printing-System"
+#~ msgstr "Drukas sistēma"
+
+#, fuzzy
+#~ msgid "Refresh"
+#~ msgstr "Sērijas"
+
+#, fuzzy
+#~ msgid "Replies"
+#~ msgstr "Sērijas"
+
+#, fuzzy
+#~ msgid "send"
+#~ msgstr "Beidzas"
+
+#, fuzzy
+#~ msgid "Friends"
+#~ msgstr "Beidzas"
+
+#, fuzzy
+#~ msgid "Tweets"
+#~ msgstr "Tests"
 
 #, fuzzy
 #~ msgid "_Delete"
@@ -6376,10 +6982,6 @@ msgstr ""
 #~ msgstr "15 minūtes"
 
 #, fuzzy
-#~ msgid "Ende"
-#~ msgstr "Beigas"
-
-#, fuzzy
 #~ msgid "0:15"
 #~ msgstr "15 minūtes"
 
@@ -6418,70 +7020,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Kalender:"
 #~ msgstr "Kalendārs"
-
-#, fuzzy
-#~ msgid "City"
-#~ msgstr "Pilsēta"
-
-#, fuzzy
-#~ msgid "Invoice-Nr."
-#~ msgstr "Name=Rēķins"
-
-#, fuzzy
-#~ msgid "Amount"
-#~ msgstr "Apjoms"
-
-#, fuzzy
-#~ msgid "Order-ID"
-#~ msgstr "Diska ID"
-
-#, fuzzy
-#~ msgid "Year"
-#~ msgstr "Gads"
-
-#, fuzzy
-#~ msgid "Pos."
-#~ msgstr "Loga poz:"
-
-#, fuzzy
-#~ msgid "account"
-#~ msgstr "konts"
-
-#, fuzzy
-#~ msgid "date"
-#~ msgstr "Atjaunināt"
-
-#, fuzzy
-#~ msgid "unit"
-#~ msgstr "Vienība:"
-
-#, fuzzy
-#~ msgid "Address"
-#~ msgstr "adreses"
-
-#, fuzzy
-#~ msgid "Phone"
-#~ msgstr "Telefons"
-
-#, fuzzy
-#~ msgid "Begin"
-#~ msgstr "Sākums"
-
-#, fuzzy
-#~ msgid "Priority"
-#~ msgstr "Ports"
-
-#, fuzzy
-#~ msgid "Status"
-#~ msgstr "Statistika"
-
-#, fuzzy
-#~ msgid "Print Newsletter"
-#~ msgstr "Drukas priekšska_ts..."
-
-#, fuzzy
-#~ msgid "Category"
-#~ msgstr "Kategorija"
 
 #, fuzzy
 #~ msgid "Couldn't find pixmap file: %s"

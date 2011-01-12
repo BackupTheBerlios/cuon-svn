@@ -219,11 +219,17 @@ class dmswindow(windows):
 
     def on_save1_activate(self, event):
         print 'save1'
+        oldID = self.singleDMS.ID
         self.singleDMS.sep_info_1 = self.sepInfo['1']
         self.singleDMS.ModulNumber = self.ModulNumber
-        self.singleDMS.save(['document_image'])
+        newID = self.singleDMS.save(['document_image'])
         
         self.setEntriesEditable(self.EntriesPreferences, False)
+        print 'oldID + and new = ',  oldID, newID
+        if oldID == -1 and newID > 0:
+            # is a new entry
+            print 'file suffix = ',  self.singleDMS.fileSuffix
+            s = self.rpc.callRP('Misc.getTextExtract', newID , self.singleDMS.fileSuffix, self.dicUser)
         self.tabChanged()
         
     def on_new1_activate(self, event):

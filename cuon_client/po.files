@@ -6,6 +6,10 @@ cuon/E_Mail/__init__.py
 cuon/E_Mail/incoming_mail.py
 cuon/E_Mail/imap_dms.py
 cuon/E_Mail/sendEmail.py
+cuon/SupportTicket/SingleSupportTicket.py
+cuon/SupportTicket/supportTicket.py
+cuon/SupportTicket/__init__.py
+cuon/SupportTicket/SingleSupportProject.py
 cuon/Calendar/__init__.py
 cuon/Calendar/calendar.py
 cuon/Analysis/SingleAnalysis_cost.py
@@ -105,6 +109,10 @@ cuon/bin/cuon/E_Mail/__init__.py
 cuon/bin/cuon/E_Mail/incoming_mail.py
 cuon/bin/cuon/E_Mail/imap_dms.py
 cuon/bin/cuon/E_Mail/sendEmail.py
+cuon/bin/cuon/SupportTicket/SingleSupportTicket.py
+cuon/bin/cuon/SupportTicket/supportTicket.py
+cuon/bin/cuon/SupportTicket/__init__.py
+cuon/bin/cuon/SupportTicket/SingleSupportProject.py
 cuon/bin/cuon/Calendar/__init__.py
 cuon/bin/cuon/Calendar/calendar.py
 cuon/bin/cuon/Analysis/SingleAnalysis_cost.py
