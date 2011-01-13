@@ -1,5 +1,4 @@
 import time
-import time
 from datetime import datetime
 import random
 import xmlrpclib
@@ -307,7 +306,7 @@ class Address(xmlrpc.XMLRPC, basics):
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         if liResult not in ['NONE','ERROR']:
             dicReturn = liResult[0]
-            liFashion, liTrade,liTurnover,liLegalform = self.xmlrpc_getComboBoxEntries(dicUser)
+            liFashion, liTrade,liTurnover,liLegalform,  liSchedulTime = self.xmlrpc_getComboBoxEntries(dicUser)
             try:
                 dicReturn['cb_fashion'] = liFashion[dicReturn['cb_fashion']]
                 dicReturn['turnover'] = liTurnover[dicReturn['turnover']]
