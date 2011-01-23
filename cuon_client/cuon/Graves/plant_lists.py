@@ -20,24 +20,19 @@ import gtk
 import gtk.glade
 import gobject
 #from gtk import TRUE, FALSE
+from cuon.Misc.cuonlists import cuonlists
 
-import logging
-from cuon.Windows.windows  import windows
-
-
-class plantlists(windows):
+class plantlists(cuonlists):
 
     
     def __init__(self, initialWidget = None, initialFilename = None):
 
-        windows.__init__(self)
+        cuonlists.__init__(self, initialWidget,  initialFilename)
        
         self.loadGlade('plantlists.xml')
-        self.fileWidget = None
-        self.fileName = None
-        self.filedata = []
+       
         print 'started the plants list'
-        self.getWidget('dialog1').show()
+        self.getWidget('listdialog1').show()
         
         liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         
@@ -96,23 +91,9 @@ class plantlists(windows):
         dicSearchfields,  nRow,  sName = self.readSearchDatafields()
         Pdf = self.rpc.callRP('Report.server_graves_plant_standard', dicSearchfields, self.dicUser, nRow, sName)
         self.showPdf(Pdf, self.dicUser)
-        di1 = self.getWidget('dialog1')
+        di1 = self.getWidget('listdialog1')
         di1.hide()
         self.quitFinddialog()
-
-    def on_cancel_button1_clicked(self, event):
-        print 'Cancel clicked'
-        self.quitFinddialog()
-
-    def showFinddialog(self):
-        self.getWidget('dialog1').show()
- 
-
-    def quitFinddialog(self):
-        self.getWidget('dialog1').destroy()
-        
-    def getFilenames(self):
-        return self.fileName
 
     def readSearchDatafields(self):
         liReturn = []

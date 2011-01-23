@@ -90,9 +90,9 @@ class imap_dms(constants,  dumps):
                 
                 if self.use_ssl:
                     if  self.imap_port == 0:
-                        M = imaplib.IMAP4_SSL(self.imap_server, self.imap_port)
-                    else: 
                         M = imaplib.IMAP4_SSL(self.imap_server)
+                    else: 
+                        M = imaplib.IMAP4_SSL(self.imap_server, self.imap_port)
                         
                 else:
                     if  self.imap_port == 0:
