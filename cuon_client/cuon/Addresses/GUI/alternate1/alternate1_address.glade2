@@ -6279,18 +6279,7 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                                   <widget class="GtkHBox" id="hbox20">
                                     <property name="visible">True</property>
                                     <child>
-                                      <widget class="GtkButton" id="bSchedulLetter">
-                                        <property name="label" translatable="yes">Letter</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="use_underline">True</property>
-                                        <signal name="clicked" handler="on_bSchedulLetter_clicked"/>
-                                      </widget>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">False</property>
-                                        <property name="position">0</property>
-                                      </packing>
+                                      <placeholder/>
                                     </child>
                                     <child>
                                       <placeholder/>
@@ -7034,7 +7023,21 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                               <placeholder/>
                             </child>
                             <child>
-                              <placeholder/>
+                              <widget class="GtkButton" id="bSchedulLetter">
+                                <property name="label" translatable="yes">Termin drucken</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Strg-b</property>
+                                <property name="use_underline">True</property>
+                                <signal name="clicked" handler="on_bSchedulLetter_clicked"/>
+                              </widget>
+                              <packing>
+                                <property name="left_attach">2</property>
+                                <property name="right_attach">3</property>
+                                <property name="top_attach">2</property>
+                                <property name="bottom_attach">3</property>
+                              </packing>
                             </child>
                           </widget>
                           <packing>

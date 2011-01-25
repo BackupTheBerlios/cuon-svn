@@ -900,14 +900,11 @@
                             <property name="n_rows">2</property>
                             <property name="n_columns">2</property>
                             <child>
-                              <placeholder/>
-                            </child>
-                            <child>
                               <object class="GtkHBox" id="hbox6">
                                 <property name="visible">True</property>
                                 <child>
                                   <object class="GtkButton" id="bGotoAddress">
-                                    <property name="label" translatable="yes">goto Address</property>
+                                    <property name="label" translatable="yes">gehe zu Adresse (F4)</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -979,6 +976,9 @@
                                 <property name="top_attach">1</property>
                                 <property name="bottom_attach">2</property>
                               </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                           <packing>
