@@ -1133,7 +1133,7 @@ class Address(xmlrpc.XMLRPC, basics):
                     sEmail = sEmail.strip('<')
                     sEmail = sEmail.strip('>')
                     
-                    sSql += "email  ~*  '" + sEmail+ "' or "
+                    sSql += "email  ~*  '" + sEmail+ "' or  additional_emails ~* '" + sEmail+ "' or "
         sSql = sSql[0:len(sSql) -3]
         sSql += ' ) '
         sSql += self.getWhere("",dicUser,2)

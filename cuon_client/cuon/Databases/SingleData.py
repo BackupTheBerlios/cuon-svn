@@ -637,7 +637,9 @@ class SingleData(gladeXml, logs):
                         sValue = str(sValue)
 
                     widget = self.getWidget(entry.getName())
-                    # self.out( "widget: " + str(widget))
+                    print  "widget: " , entry.getName() ,  str(widget) 
+                    
+                    
                     if string.count(str(widget), "GtkEntry") > 0:
                         # self.out( "GtkEntry:")
                         # self.out( "Name: " + str(widget.get_name()))
@@ -647,6 +649,7 @@ class SingleData(gladeXml, logs):
                             pass
                             
                     elif string.count(str(widget), "GtkTextView") > 0:
+                        print 'GtkTextView = ',  sValue
                         buffer = gtk.TextBuffer(None)
                         buffer.set_text(sValue)
                         widget.set_buffer(buffer)

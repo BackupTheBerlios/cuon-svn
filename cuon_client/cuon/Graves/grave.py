@@ -234,6 +234,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
 
         liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         print liService   ,  liTypeOfGrave, liTypeOfPaid, liPercent
+        print liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly
+        
         cbService = self.getWidget('cbServiceType')
         if cbService:
             liststore = gtk.ListStore(str)

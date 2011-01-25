@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <database>
 
     <nameOfDatabase>cuon</nameOfDatabase>
@@ -1347,9 +1348,9 @@
       <size>0</size>
       <default />
       <comment />
-          </field>
+    </field>
           
-          <field>
+    <field>
       <name>grave_service_id</name>
       <type>int</type>
       <pkey>0</pkey>
@@ -1358,8 +1359,8 @@
       <size>0</size>
       <default />
       <comment />
-          </field>
-          <field>
+    </field>
+    <field>
       <name>service_price</name>
       <type>float</type>
       <pkey>0</pkey>
@@ -1368,8 +1369,38 @@
       <size>0</size>
       <default />
       <comment />
-          </field>
-          
+    </field>
+    <field>
+      <name>hints_for_service</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20000</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>additional_services</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20000</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>services</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20000</size>
+      <default />
+      <comment />
+    </field>
+    
      </table>
      
       <table>

@@ -4,37 +4,37 @@
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore2">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore3">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore4">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkListStore" id="liststore5">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>
   <object class="GtkWindow" id="GravesMainwindow">
     <property name="width_request">1024</property>
-    <property name="height_request">768</property>
+    <property name="height_request">855</property>
     <property name="visible">True</property>
     <property name="title">Graves</property>
     <property name="window_position">center</property>
@@ -2606,7 +2606,7 @@ z.B. 1-5000)</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkTextView" id="textview2">
+                          <object class="GtkTextView" id="tvHintsForService">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                           </object>
@@ -2615,7 +2615,7 @@ z.B. 1-5000)</property>
                       <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options"></property>
+                        <property name="x_options">GTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -2652,7 +2652,7 @@ z.B. 1-5000)</property>
                         <property name="can_focus">True</property>
                         <property name="shadow_type">in</property>
                         <child>
-                          <object class="GtkTreeView" id="treeview1">
+                          <object class="GtkTreeView" id="tvAdditionalServices">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="tooltip_text" translatable="yes">Artikelbesch., Preis UND Datum</property>
@@ -2664,7 +2664,7 @@ z.B. 1-5000)</property>
                         <property name="right_attach">2</property>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options"></property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
@@ -3085,7 +3085,6 @@ z.B. 1-5000)</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -3396,7 +3395,6 @@ z.B. 1-5000)</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -3706,7 +3704,6 @@ z.B. 1-5000)</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -4024,7 +4021,6 @@ z.B. 1-5000)</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -4335,7 +4331,6 @@ z.B. 1-5000)</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>

@@ -103,7 +103,7 @@ class imap_dms(constants,  dumps):
                     
             except Exception, e:
                 #print sys.exc_info()[0]
-                print('IMAP login error: ', e)
+                print 'IMAP Server error: ', Exception, e
                 M = None
                 
                     
@@ -111,16 +111,28 @@ class imap_dms(constants,  dumps):
         try:
             if M:
                 if  self.use_crypt < 1 or self.use_crypt == 2 or self.use_crypt == 3:
-                    res = M.login(self.imap_user, self.imap_password)
+                    try:
+                        res = M.login(self.imap_user, self.imap_password)
+                    except Exception, e:
+                        print 'IMAP login error 0: ', Exception, e   
                 elif self.use_crypt == 4:
-                    res = M.login_cram_md5(self.imap_user, self.imap_password)
+                    try:
+                        res = M.login_cram_md5(self.imap_user, self.imap_password)
+                    except Exception, e:
+                        print 'IMAP login error 1: ', Exception, e   
                 elif self.use_crypt == 1:   
                     try:
                         res = M.login(self.imap_user, self.imap_password)
                     except:
-                        res = M.login_cram_md5(self.imap_user, self.imap_password)
+                        try:
+                            res = M.login_cram_md5(self.imap_user, self.imap_password)
+                        except Exception, e:
+                            print 'IMAP login error 2: ', Exception, e   
                 else:
-                    res = M.login(self.imap_user, self.imap_password)
+                    try:
+                        res = M.login(self.imap_user, self.imap_password)
+                    except Exception, e:
+                            print 'IMAP login error 2: ', Exception, e 
                     
                 # Get inbox status
                 #mboxes = M.list()

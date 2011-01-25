@@ -920,6 +920,8 @@
       <default />
       <comment />
     </field>
+  
+    
   </table>
   <!--table: address-->
   <table>
@@ -1296,6 +1298,16 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>225</size>
+      <default />
+      <comment />
+    </field>
+       <field>
+      <name>additional_emails</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20000</size>
       <default />
       <comment />
     </field>
@@ -3037,6 +3049,7 @@
       <comment />
     </field>
     </table>
+    
   <table>
     <nameOfTable>addresses_misc</nameOfTable>
     <specials>inherits (t_standard);</specials>
@@ -3201,6 +3214,16 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
+      <default />
+      <comment />
+    </field>
+       <field>
+      <name>additional_emails</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>20000</size>
       <default />
       <comment />
     </field>
