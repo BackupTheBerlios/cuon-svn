@@ -190,6 +190,19 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 <title>That's all</title>
 <para>Yes, now you can go on with the Setup-Tool, you may now do the same steps as they are describe at the chapters <emphasis>Configuration</emphasis> and <emphasis>Update</emphasis>. </para>
 </sect2>
+
+ <sect2 id="opt_files"><title>Optional Programs</title>
+<para>It is a good idea to install this additional programs, they are working with the email program and the DMS to extract data and save them into the DMS for the FULL TEXT SEARCH:</para>
+<itemizedlist>
+   	<listitem><para> libots </para></listitem>
+	<listitem><para> pstotext  </para></listitem>
+
+<listitem><para> odt2txt  </para></listitem>
+<listitem><para> gocr  </para></listitem>
+<listitem><para> html2text  </para></listitem>
+</itemizedlist> 
+
+</sect2>
     </sect1>
   </chapter>
 <chapter>

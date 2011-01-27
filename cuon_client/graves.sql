@@ -36,8 +36,8 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
         -- graveyard.lastname 
         -- grab laufnummer
         
-
-        searchsql := ''select graveyard.shortname , graveyard.designation , grave.firstname , grave.lastname  from  graveyard, grave, address where grave.addressid = address.id and grave.graveyardid = grave.id ''  ;
+        -- raise notice '' sql = %'', searchsql ;
+        searchsql := ''select graveyard.shortname , graveyard.designation , grave.firstname , grave.lastname  from  graveyard, grave, address where grave.addressid = address.id and grave.graveyardid = graveyard.id ''  ;
         
         IF graveyard_id > 0 THEN
         
@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
             
         IF char_length(grave_lastname_from) > 0 AND char_length(grave_lastname_to) > 0 THEN 
             
-            searchsql := searchsql  || '' and grave.lastname between '''' || grave_lastname_from || '''' and '''' || grave_lastname_to   || '''' '' ;
+            searchsql := searchsql  || '' and grave.lastname between '' || quote_literal(grave_lastname_from) || '' and '' || quote_literal(grave_lastname_to)   || '' '' ;
         
         END IF ;
         

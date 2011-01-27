@@ -467,8 +467,11 @@ class Misc(xmlrpc.XMLRPC, basics):
         s = None
         sReturn = False
         sText = None
+        sInFile=None
+        sOutFile = None
+        
         imageData = None
-        if sFileSuffix in ['pdf', 'txt', 'odt']:
+        if sFileSuffix in ['pdf', 'txt', 'odt', 'html']:
                 
             sSql = 'select document_image from dms where id = ' + `id`
             liResult = self.oDatabase.xmlrpc_executeNormalQuery( sSql, dicUser )
@@ -515,6 +518,13 @@ class Misc(xmlrpc.XMLRPC, basics):
                         
                     sReturn = self.xmlrpc_updateDmsExtract(id, sText, dicUser)
                 
+                # clean it
+                if sOutFile:
+                    os.remove(sOutFile)
+                    os.remove(sOutFile + 'txt')
+                if sInFile:
+                    os.remove(sInFile)
+                    
         return sReturn
 
 

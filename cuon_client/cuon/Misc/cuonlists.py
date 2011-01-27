@@ -16,6 +16,7 @@ class cuonlists(windows):
 
     
     def __init__(self, initialWidget = None, initialFilename = None):
+        windows.__init__(self)
         self.fileWidget = None
         self.fileName = None
         self.filedata = []

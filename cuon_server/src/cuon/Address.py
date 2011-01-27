@@ -1123,28 +1123,64 @@ class Address(xmlrpc.XMLRPC, basics):
                 
     def xmlrpc_getAddressEmailID(self, sTable, liEmail, dicUser):
         liID = [0]
-        sSql = 'select id from ' + sTable + ' where ' 
-        sSql += '( '
+        sSql = 'select ' +sTable + '.id from ' + sTable
+        
+        sSql +=  ' where ( '
         for email in liEmail:
             liSingleEmail = email.split(' ')
             
             for sEmail in liSingleEmail:
                 if sEmail.find('@') > 0:
-                    sEmail = sEmail.strip('<')
-                    sEmail = sEmail.strip('>')
+                    for sSt in ['<', '>', '"']:
+                        sEmail = sEmail.strip(sSt)
                     
-                    sSql += "email  ~*  '" + sEmail+ "' or  additional_emails ~* '" + sEmail+ "' or "
+                    sSql += "email  ~*  '" + sEmail+ "' or "
+                    
+                    
+                  
         sSql = sSql[0:len(sSql) -3]
         sSql += ' ) '
-        sSql += self.getWhere("",dicUser,2)
+        sSql += self.getWhere("",dicUser,2, sTable+'.')
         print sSql 
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+        
+        
         print result
         if result and result not in ['NONE', 'ERROR']:
             liID = []
             for oneRow in result:
                 liID.append(oneRow['id'])
             print liID    
+            
+        if sTable == "address":
+            sSql ='select address_id as id from addresses_misc where ('
+            
+            for email in liEmail:
+                liSingleEmail = email.split(' ')
+                
+                for sEmail in liSingleEmail:
+                    if sEmail.find('@') > 0:
+                        for sSt in ['<', '>', '"']:
+                            sEmail = sEmail.strip(sSt)
+                        
+                       
+                        sSql += " addresses_misc.additional_emails ~* '" + sEmail+ "' or "        
+                        
+                            
+            sSql = sSql[0:len(sSql) -3]
+            sSql += ' ) '
+            sSql += self.getWhere("",dicUser,2)
+            print sSql 
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
+            
+            
+            print result
+            if result and result not in ['NONE', 'ERROR']:
+               
+                for oneRow in result:
+                    liID.append(oneRow['id'])
+                print liID               
+                        
         return liID
         
 

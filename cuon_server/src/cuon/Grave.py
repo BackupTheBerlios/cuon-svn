@@ -140,12 +140,15 @@ class Grave(xmlrpc.XMLRPC, basics):
         sSql = "select * from fct_getGravePlantListValues( "  
         
         for sSearch in liSearchfields:
-            
-            sSql += sSearch + ",  " 
+            if sSearch:
+                sSql += sSearch + ",  " 
+            else:
+                sSql += "''" + ",  " 
         
         
         sSql +=  `nRows` + ")  as (graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar ) "
         
+        print 'grave list sql = ',  sSql
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
