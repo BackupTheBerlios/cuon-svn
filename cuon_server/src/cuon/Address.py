@@ -1133,7 +1133,7 @@ class Address(xmlrpc.XMLRPC, basics):
                 if sEmail.find('@') > 0:
                     for sSt in ['<', '>', '"']:
                         sEmail = sEmail.strip(sSt)
-                    
+                        sEmail = sEmail.strip(sSt)
                     sSql += "email  ~*  '" + sEmail+ "' or "
                     
                     
@@ -1162,7 +1162,7 @@ class Address(xmlrpc.XMLRPC, basics):
                     if sEmail.find('@') > 0:
                         for sSt in ['<', '>', '"']:
                             sEmail = sEmail.strip(sSt)
-                        
+                            sEmail = sEmail.strip(sSt)
                        
                         sSql += " addresses_misc.additional_emails ~* '" + sEmail+ "' or "        
                         

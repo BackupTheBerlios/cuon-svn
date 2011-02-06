@@ -520,10 +520,19 @@ class Misc(xmlrpc.XMLRPC, basics):
                 
                 # clean it
                 if sOutFile:
-                    os.remove(sOutFile)
-                    os.remove(sOutFile + 'txt')
+                    try:
+                        os.remove(sOutFile)
+                    except:
+                        pass
+                    try:
+                        os.remove(sOutFile + 'txt')
+                    except:
+                        pass
                 if sInFile:
-                    os.remove(sInFile)
+                    try:
+                        os.remove(sInFile)
+                    except:
+                        pass
                     
         return sReturn
 

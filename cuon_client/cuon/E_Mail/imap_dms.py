@@ -25,10 +25,11 @@ import cuon.Misc.misc
 import cuon.XMLRPC.xmlrpc
 from cuon.TypeDefs.constants import constants
 from cuon.Databases.dumps import dumps
+from threading import Thread
 
-
-class imap_dms(constants,  dumps):
+class imap_dms(Thread,  constants,  dumps):
     def __init__(self, allTables,   dicUser):
+        Thread.__init__(self)
         constants.__init__(self)
         dumps.__init__(self)
         
@@ -80,7 +81,7 @@ class imap_dms(constants,  dumps):
         return sSubject
         
     
-    def checkMail(self):
+    def run(self):
         M = None
         ok = False
         print 'check imap =',  time.asctime( time.localtime(time.time()) ),  self.dicUser['Email']['check_imap'] 

@@ -301,7 +301,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 1, 'Rev': 27, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 2, 'Rev': 5, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -717,8 +717,7 @@ class MainWindow(windows):
     def on_dms1_activate(self,event):
         import cuon.DMS.dms
         dms = cuon.DMS.dms.dmswindow(self.allTables)
-   
-   
+  
     # Finances
     
     # Cash Account Book
@@ -799,7 +798,11 @@ class MainWindow(windows):
         import cuon.Databases.import_generic1
         imp1 =  cuon.Databases.import_generic1.import_generic1(self.allTables)
 
-        
+     
+    def on_ExportData_activate(self, event):
+        print 'export Data'
+        import cuon.Databases.export_generic1
+        exp1 =  cuon.Databases.export_generic1.export_generic1(self.allTables)
     def on_test1_activate(self, event):
         import cuon.VTK.mainLogo
         import cuon.VTK.test
@@ -956,7 +959,7 @@ class MainWindow(windows):
         oUser = self.loadObject('User')
         self.closeDB()
         imapD = cuon.E_Mail.imap_dms.imap_dms(self.allTables,  oUser.getDicUser())
-        imapD.checkMail()
+        imapD.run()
         #print '######################################### EMail END #########################'
         return True
         
@@ -1543,6 +1546,32 @@ else:
 
 td.SystemName = AlternateGui
 td.cuon_path = WorkingDir
+# set some pathes
+try:
+    print 'WorkingDir', WorkingDir
+    if not os.path.exists(WorkingDir + '/cuon_data'):
+        print 'make dir cuon_data'
+        os.mkdir(WorkingDir +'/cuon_data')
+        
+    if not os.path.exists(WorkingDir +'/cuon_data/dms'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/dms')
+
+    if not os.path.exists(WorkingDir +'/cuon_data/import'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/import')
+        
+        
+    if not os.path.exists(WorkingDir +'/cuon_data/export'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/export')
+            
+        
+except Exception, params:
+    print Exception,  params
+
+
+
 td.server = Proto.strip() +'://' + Host.strip() +':' + Port.strip()
 
 if len(sys.argv) > 1:

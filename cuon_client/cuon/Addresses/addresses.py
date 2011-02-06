@@ -84,17 +84,12 @@ try:
     
 except:
     print 'gtkhtml not found'
-GtkSV = True 
+  
 try:
-    import gtksourceview
-    
+    import gtksourceview2 as gtksourceview
 except:
-    try:
-        import gtksourceview2 as gtksourceview
-    except:
-        print 'No gtksourceview import possible. Please install gtksourceview for python!!'
-        GtkSV = False
-    
+    print 'No gtksourceview2 import possible. Please install gtksourceview2 for python!!'
+
 class addresswindow(chooseWindows):
 
     
@@ -362,63 +357,66 @@ class addresswindow(chooseWindows):
             
         #print 'time 11 = ', time.localtime()
         self.clipboard = gtk.clipboard_get()
-        if GtkSV:
-            
-            self.textbufferMisc,  self.viewMisc = self.getNotesEditor()
-            Vbox = self.getWidget('vbox10')
-            oldScrolledwindow = self.getWidget('scrolledwindow6')
-            oldScrolledwindow.remove(self.getWidget('tvNotesMisc'))
-            oldScrolledwindow.add(self.viewMisc)
-            self.viewMisc.show_all()
-            oldScrolledwindow.show_all()
-            
-            
-            
-            #Vbox.remove(oldScrolledwindow)
-            #Vbox.add(self.viewMisc)
-            #Vbox.show_all()
-            self.singleAddressNotes.NotesMisc = self.textbufferMisc
+        
+    
+   
+        self.textbufferMisc,  self.viewMisc = self.getNotesEditor()
+        
+        
+        Vbox = self.getWidget('vbox10')
+        oldScrolledwindow = self.getWidget('scrolledwindow6')
+        oldScrolledwindow.remove(self.getWidget('tvNotesMisc'))
+        oldScrolledwindow.add(self.viewMisc)
+        self.viewMisc.show_all()
+        oldScrolledwindow.show_all()
+        
+        
+        
+        #Vbox.remove(oldScrolledwindow)
+        #Vbox.add(self.viewMisc)
+        #Vbox.show_all()
+        self.singleAddressNotes.NotesMisc = self.textbufferMisc
 
-            #Contact
-            self.textbufferContact,  self.viewContact = self.getNotesEditor()
-            Vbox = self.getWidget('vbox11')
-            oldScrolledwindow = self.getWidget('scrolledwindow7')
-            oldScrolledwindow.remove(self.getWidget('tvNotesContacter'))
-            oldScrolledwindow.add(self.viewContact)
-            self.viewContact.show_all()
-            oldScrolledwindow.show_all()
-            
-            self.singleAddressNotes.NotesContact = self.textbufferContact
-            
-            #Rep
-            self.textbufferRep,  self.viewRep = self.getNotesEditor()
-            Vbox = self.getWidget('vbox12')
-            oldScrolledwindow = self.getWidget('scrolledwindow8')
-            oldScrolledwindow.remove(self.getWidget('tvNotesRep'))
-            oldScrolledwindow.add(self.viewRep)
-            self.viewRep.show_all()
-            oldScrolledwindow.show_all()
-            self.singleAddressNotes.NotesRep = self.textbufferRep
-            
-            #Salesman
-            self.textbufferSalesman,  self.viewSalesman = self.getNotesEditor()
-            Vbox = self.getWidget('vbox13')
-            oldScrolledwindow = self.getWidget('scrolledwindow9')
-            oldScrolledwindow.remove(self.getWidget('tvNotesSalesman'))
-            oldScrolledwindow.add(self.viewSalesman)
-            self.viewSalesman.show_all()
-            oldScrolledwindow.show_all()
-            self.singleAddressNotes.NotesSalesman = self.textbufferSalesman
-            
-            #Organisation
-            self.textbufferOrganisation,  self.viewOrganisation = self.getNotesEditor()
-            Vbox = self.getWidget('vbox17')
-            oldScrolledwindow = self.getWidget('scrolledwindow15')
-            oldScrolledwindow.remove(self.getWidget('tvNotesOrganisation'))
-            oldScrolledwindow.add(self.viewOrganisation)
-            self.viewOrganisation.show_all()
-            oldScrolledwindow.show_all()
-            self.singleAddressNotes.NotesOrganisation = self.textbufferOrganisation
+        #Contact
+        self.textbufferContact,  self.viewContact = self.getNotesEditor()
+        Vbox = self.getWidget('vbox11')
+        oldScrolledwindow = self.getWidget('scrolledwindow7')
+        oldScrolledwindow.remove(self.getWidget('tvNotesContacter'))
+        oldScrolledwindow.add(self.viewContact)
+        self.viewContact.show_all()
+        oldScrolledwindow.show_all()
+        
+        self.singleAddressNotes.NotesContact = self.textbufferContact
+        
+        #Rep
+        self.textbufferRep,  self.viewRep = self.getNotesEditor()
+        Vbox = self.getWidget('vbox12')
+        oldScrolledwindow = self.getWidget('scrolledwindow8')
+        oldScrolledwindow.remove(self.getWidget('tvNotesRep'))
+        oldScrolledwindow.add(self.viewRep)
+        self.viewRep.show_all()
+        oldScrolledwindow.show_all()
+        self.singleAddressNotes.NotesRep = self.textbufferRep
+        
+        #Salesman
+        self.textbufferSalesman,  self.viewSalesman = self.getNotesEditor()
+        Vbox = self.getWidget('vbox13')
+        oldScrolledwindow = self.getWidget('scrolledwindow9')
+        oldScrolledwindow.remove(self.getWidget('tvNotesSalesman'))
+        oldScrolledwindow.add(self.viewSalesman)
+        self.viewSalesman.show_all()
+        oldScrolledwindow.show_all()
+        self.singleAddressNotes.NotesSalesman = self.textbufferSalesman
+        
+        #Organisation
+        self.textbufferOrganisation,  self.viewOrganisation = self.getNotesEditor()
+        Vbox = self.getWidget('vbox17')
+        oldScrolledwindow = self.getWidget('scrolledwindow15')
+        oldScrolledwindow.remove(self.getWidget('tvNotesOrganisation'))
+        oldScrolledwindow.add(self.viewOrganisation)
+        self.viewOrganisation.show_all()
+        oldScrolledwindow.show_all()
+        self.singleAddressNotes.NotesOrganisation = self.textbufferOrganisation
         # Menu-items
         self.initMenuItems()
         self.addEnabledMenuItems('window','quit1', 'z')

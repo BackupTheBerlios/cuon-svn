@@ -1,0 +1,15 @@
+[Export]
+Filename=address
+Tables=address,partner
+Columns=lastname,firstname,street,zip
+Headers=Nachname, Vorname, Strasse, PLZ
+
+[SQL]
+Where=zip='32584'
+Order=
+Group=
+
+[Values]
+Split=;
+Encoding = utf-8
+

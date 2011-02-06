@@ -237,7 +237,7 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
  </sect2>
 
  <sect2 id="opt_files"><title>Optionale Programme</title>
-<para>Zusätzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para>
+<tip><para>Zusätzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para></tip>
 <itemizedlist>
    	<listitem><para> libots </para></listitem>
 	<listitem><para> pstotext  </para></listitem>

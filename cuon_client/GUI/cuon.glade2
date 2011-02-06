@@ -453,6 +453,14 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="ExportData">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Export Data</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_ExportData_activate"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="forms1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Forms</property>

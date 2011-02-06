@@ -37,7 +37,7 @@ class fileSelection(chooseWindows):
         self.fileWidget = None
         self.fileName = None
         self.filedata = []
-        
+        self.fileChooser = self.getWidget('fileselection1')
         if initialWidget:
             self.fileWidget = initalWidget
 
@@ -45,7 +45,7 @@ class fileSelection(chooseWindows):
             self.fileName = initialFilename
             self.getWidget('fileselection1').set_filename(self.fileName)
             
-
+    
         
     def on_ok_button_clicked(self, event):
         print 'ok clicked'
@@ -75,3 +75,20 @@ class fileSelection(chooseWindows):
         
     def getFilenames(self):
         return self.fileName
+        
+    
+    def add_filters(liFilter):
+        
+        for i in range(len(liFilter)):
+            oneFilter = liFilter[i]
+            filter = gtk.FileFilter()
+            filter.set_name(oneFilter[0])
+            if oneFilter[1]:
+          
+                filter.add_pattern(oneFilter[1])
+            else:
+                filter.add_mime_type(oneFilter[2])
+            
+            self.fileChooser.add_filter(filter)
+        
+

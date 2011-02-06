@@ -70,28 +70,39 @@ class gladeXml(defaultValues):
         
         
     def getNotesEditor(self,  mime_type =  'text/x-tex',  highlight = True):
+        textbufferMisc = None
+        lm = None
+        viewMisc = None
         try:
             lm = gtksourceview.SourceLanguagesManager()
             textbufferMisc = gtksourceview.SourceBuffer()
         except:
-            print 'no sourcebuffer found'
-            textbufferMisc = gtksourceview.Buffer()
-            lm = gtksourceview.language_manager_get_default()
+            print 'no sourcebuffer1 found'
+            try:
+                textbufferMisc = gtksourceview.Buffer()
+                lm = gtksourceview.language_manager_get_default()
+            except:
+                textbufferMisc = None
+                lm = None
+                
 
         
-        
-        textbufferMisc.set_data('languages-manager', lm)
-        self.lm_manager = textbufferMisc.get_data('languages-manager')
-        
-        textbufferMisc = self.setTextBufferLanguage(textbufferMisc,  mime_type,  highlight)
-        
         try:
-            viewMisc = gtksourceview.SourceView(textbufferMisc)
-        except:
-            viewMisc = gtksourceview.View(textbufferMisc)
-            
-        viewMisc.set_show_line_numbers(True)
+            textbufferMisc.set_data('languages-manager', lm)
+            self.lm_manager = textbufferMisc.get_data('languages-manager')
         
+            textbufferMisc = self.setTextBufferLanguage(textbufferMisc,  mime_type,  highlight)
+        
+            try:
+                viewMisc = gtksourceview.SourceView(textbufferMisc)
+            except:
+                viewMisc = gtksourceview.View(textbufferMisc)
+                
+            viewMisc.set_show_line_numbers(True)
+        except:
+            pass
+            
+            
         return textbufferMisc,  viewMisc
         
     def setTextBufferLanguage(self, textbufferMisc,  mime_type = 'text/plain',  highlight=True):    

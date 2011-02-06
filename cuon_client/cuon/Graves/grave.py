@@ -1157,7 +1157,15 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_bQuickAppend_clicked(self, event):
         print "bQuickappend activated"
         self.AutoInsert = False
-        if self.tabOption == self.tabGraveSpring:
+        if self.tabOption == self.tabGraveMaintenance:
+            self.activateClick('MaintenanceNew1')
+            self.AutoInsert = True 
+            #self.getWidget('eSpringArticleID').set_text(' ')
+            print "article ID = " ,  self.fillArticlesNewID
+            self.getWidget('eServiceCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
+            self.getWidget('eServicePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eServiceArticleID').set_text(`self.fillArticlesNewID`)
+        elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringNew1')
             self.AutoInsert = True 
             #self.getWidget('eSpringArticleID').set_text(' ')
@@ -1165,7 +1173,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eSpringCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
             self.getWidget('eSpringPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSpringArticleID').set_text(`self.fillArticlesNewID`)
-        if self.tabOption == self.tabGraveSummer:
+        elif self.tabOption == self.tabGraveSummer:
             self.activateClick('SummerNew1')
             self.AutoInsert = True 
             #self.getWidget('eSummerArticleID').set_text(' ')
@@ -1174,7 +1182,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eSummerPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSummerArticleID').set_text(`self.fillArticlesNewID`)
 
-        if self.tabOption == self.tabGraveAutumn:
+        elif self.tabOption == self.tabGraveAutumn:
             self.activateClick('AutumnNew1')
             self.AutoInsert = True 
             #self.getWidget('eAutumnArticleID').set_text(' ')
@@ -1183,7 +1191,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eAutumnArticleID').set_text(`self.fillArticlesNewID`)
 
-        if self.tabOption == self.tabGraveHollidays:
+        elif self.tabOption == self.tabGraveHollidays:
             self.activateClick('HolidaysNew1')
             self.AutoInsert = True 
             #self.getWidget('eWinterArticleID').set_text(' ')
@@ -1192,7 +1200,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eHolidaysArticleID').set_text(`self.fillArticlesNewID`)
 
-        if self.tabOption == self.tabGraveWinter:
+        elif self.tabOption == self.tabGraveWinter:
             self.activateClick('WinterNew1')
             self.AutoInsert = True 
             #self.getWidget('eWinterArticleID').set_text(' ')
@@ -1201,7 +1209,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eWinterPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eWinterArticleID').set_text(`self.fillArticlesNewID`)
 
-        if self.tabOption == self.tabGraveUnique:
+        elif self.tabOption == self.tabGraveUnique:
             self.activateClick('UniqueNew1')
             self.AutoInsert = True 
             #self.getWidget('eWinterArticleID').set_text(' ')
@@ -1210,7 +1218,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.getWidget('eUniquePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eUniqueArticleID').set_text(`self.fillArticlesNewID`)
 
-        if self.tabOption == self.tabGraveAnnual:
+        elif self.tabOption == self.tabGraveAnnual:
             self.activateClick('AnnualNew1')
             self.AutoInsert = True 
             #self.getWidget('eWinterArticleID').set_text(' ')
@@ -1223,7 +1231,16 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_eArticleID_changed(self, event):
         print "eArticleID changed"
         #self.singleArticle.load(self.fillArticlesNewID)
-        if self.tabOption == self.tabGraveSpring:
+        if self.tabOption == self.tabGraveMaintenance:
+            try:
+                self.getWidget('eServiceArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eServiceArticleID').get_text())) )
+            except:
+                self.getWidget('eServicegArticleDesignation').set_text(' ') 
+            if self.AutoInsert:
+                self.AutoInsert = False
+                self.activateClick('ServiceSave1')
+            
+        elif self.tabOption == self.tabGraveSpring:
             try:
                 self.getWidget('eSpringArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eSpringArticleID').get_text())) )
             except:

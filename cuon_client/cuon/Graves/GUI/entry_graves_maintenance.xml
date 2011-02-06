@@ -15,7 +15,69 @@
       <fg_color>0</fg_color>
     </entry>
     
+    
+    
+      <entry>
+      <name>eServiceArticleID</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>article_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eServiceCounts</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_count</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>eServiceDesignation</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>string</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_designation</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+    <entry>
+      <name>cbServicePeriod</name>
+      <type>combobox</type>
+      <size>10</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>period_id</sql_field>
+      <duty>YES</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
      <entry>
+      <name>eServicePrice</name>
+      <type>textline</type>
+      <size>10</size>
+      <verify_type>float</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>service_price</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>tvServiceHints</name>
+      <type>textline</type>
+      <size>30000</size>
+      <verify_type>text</verify_type>
+      <create_sql>1</create_ <entry>
       <name>eArticlePrice</name>
       <type>textline</type>
       <size>10</size>
@@ -25,25 +87,8 @@
       <duty>YES</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-    </entry>
-      <entry>
-      <name>tvHintsForService</name>
-      <type>textline</type>
-      <size>20000</size>
-      <verify_type>text</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>hints_for_service</sql_field>
-      <duty>NO</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>
-     <entry>
-      <name>tvServices</name>
-      <type>textline</type>
-      <size>20000</size>
-      <verify_type>text</verify_type>
-      <create_sql>1</create_sql>
-      <sql_field>services</sql_field>
+    </entry>sql>
+      <sql_field>service_notes</sql_field>
       <duty>NO</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>

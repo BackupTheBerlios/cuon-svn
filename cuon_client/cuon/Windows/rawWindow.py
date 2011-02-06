@@ -38,8 +38,8 @@ class rawWindow( gladeXml):
             self.dicUserKeys = self.oUser.getDicUserKeys()
         except Exception, params:
             print Exception, params
-           
-    
+     
+
     def getConfigOption(self, section, option):
         value = None
         if self.cpParser.has_option(section,option):
