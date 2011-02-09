@@ -15,8 +15,7 @@
       <fg_color>0</fg_color>
     </entry>
     
-    
-    
+      
       <entry>
       <name>eServiceArticleID</name>
       <type>textline</type>
@@ -77,7 +76,15 @@
       <type>textline</type>
       <size>30000</size>
       <verify_type>text</verify_type>
-      <create_sql>1</create_ <entry>
+      <create_sql>1</create_sql>
+      <sql_field>service_notes</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+      
+      
+      <entry>
       <name>eArticlePrice</name>
       <type>textline</type>
       <size>10</size>
@@ -85,11 +92,6 @@
       <create_sql>1</create_sql>
       <sql_field>service_price</sql_field>
       <duty>YES</duty>
-      <bg_color>0</bg_color>
-      <fg_color>0</fg_color>
-    </entry>sql>
-      <sql_field>service_notes</sql_field>
-      <duty>NO</duty>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>

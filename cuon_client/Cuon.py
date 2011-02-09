@@ -301,7 +301,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 2, 'Rev': 5, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 2, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1382,6 +1382,7 @@ class MainWindow(windows):
             self.win1.connect("delete_event", self.delete_event)
             self.win1.connect("destroy", self.destroy)
 
+            
             # Online news
             self.winNews= self.getWidget('OnlineNews')
             self.winNews.connect("delete_event", self.closeOnlineNews)

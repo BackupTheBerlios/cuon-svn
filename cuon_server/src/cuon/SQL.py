@@ -38,7 +38,7 @@ class SQL(xmlrpc.XMLRPC, basics):
         #print cSql
         
         try:
-            #self.writeLog('execute SQL = ' + `cSql`)
+            self.writeLog('execute SQL = ' + `cSql`)
             if dicUser.has_key('Database') and dicUser['Database'] == 'osCommerce':
                 pass
             else:

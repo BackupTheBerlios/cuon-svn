@@ -123,10 +123,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         self.singleGraveMaintenance.setEntries(self.getDataEntries(self.EntriesGravesMaintenance) )
         self.singleGraveMaintenance.setGladeXml(self.xml)
-        self.singleGraveMaintenance.setTreeFields( ['grave_service_id' ] )
-        self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
-        self.singleGraveMaintenance.setTreeOrder('grave_service_id')
-        self.singleGraveMaintenance.setListHeader([_('Service-ID')])
+        self.singleGraveMaintenance.setTreeFields( ['article_id', 'grave_service_id' ] )
+        self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
+        self.singleGraveMaintenance.setTreeOrder('article_id')
+        self.singleGraveMaintenance.setListHeader([_('Article-ID'),  _('Service-ID')])
         self.singleGraveMaintenance.setTree(self.getWidget('tree1') )
         self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
   

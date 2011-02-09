@@ -996,7 +996,31 @@ class basics(xmlrpc.XMLRPC):
                     
                 
         return liReport
+         
+    def getNullUUID(self):
+        return '00000000-0000-0000-0000-000000000000'
+           
+    def make64BitInt(self, x, y):
+        return   (long(x) << 32) + long(y)
+
+
+    def getIRandom(self, iValue):
+        
+        return  int(random.random()*iValue)
+     
+     
  
+    def  normalizeXML(self,  sValue):
+        if sValue:
+            sValue = sValue.replace('&', '&amp;')
+      
+            sValue = sValue.replace('\'', '&apos;')
+            sValue = sValue.replace('\"', '&quot; ')
+            sValue = sValue.replace('<', '&lt;')
+            sValue = sValue.replace('>', '&gt;')
+            # for testing:
+            #sValue = sValue.replace('/', '')
+        return sValue
     def getNewUUID(self):
         return str(uuid.uuid4())
         

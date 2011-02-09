@@ -113,6 +113,11 @@ class Database(xmlrpc.XMLRPC, SQL):
         except:
             pass
         return ok
+    def xmlrpc_getLogo(self):
+        dicUser['Name'] == 'zope'
+        sSql = "select logo from clients"
+        return 'Hallo'
+        
         
     def xmlrpc_createSessionID(self, sUser, sPassword):
         print '1 -- createSessionID start'

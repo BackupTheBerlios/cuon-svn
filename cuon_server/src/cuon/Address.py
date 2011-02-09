@@ -1131,9 +1131,10 @@ class Address(xmlrpc.XMLRPC, basics):
             
             for sEmail in liSingleEmail:
                 if sEmail.find('@') > 0:
-                    for sSt in ['<', '>', '"']:
+                    for sSt in ['<', '>', '"', "'"]:
                         sEmail = sEmail.strip(sSt)
                         sEmail = sEmail.strip(sSt)
+                    sEmail=self.normalizeXML(sEmail)
                     sSql += "email  ~*  '" + sEmail+ "' or "
                     
                     
