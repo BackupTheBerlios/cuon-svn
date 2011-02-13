@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Help.help.helpwindow</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Help-module.html">Package&nbsp;Help</a> ::
+        <a href="cuon.Help.help-module.html">Module&nbsp;help</a> ::
+        Class&nbsp;helpwindow
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<a href="../private/cuon.Help.help.helpwindow-class.html">show&nbsp;private</a>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="cuon.Help.help.helpwindow-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class helpwindow</h2>
+
+<pre class="base-tree">
+             <a href="cuon.Misc.messages.messages-class.html"><code>messages</code></a> --+    
+                        |    
+             <a href="cuon.Logging.logs.logs-class.html"><code>logs</code></a> --+   |    
+                    |   |    
+                <a href="cuon.XML.MyXML.MyXML-class.html"><code>MyXML</code></a> --+    
+                        |    
+    <a href="../private/cuon.Databases.dumps.dumps-class.html"><code>dumps</code></a> --+           |    
+            |           |    
+<a href="../private/cuon.TypeDefs.defaultValues.defaultValues-class.html"><code>defaultValues</code></a> --+       |    
+                |       |    
+         <a href="../private/cuon.Windows.gladeXml.gladeXml-class.html"><code>gladeXml</code></a> --+   |    
+                    |   |    
+            <a href="../private/cuon.Windows.rawWindow.rawWindow-class.html"><code>rawWindow</code></a> --+    
+                        |    
+                  <a href="cuon.Windows.windows.windows-class.html"><code>windows</code></a> --+
+                            |
+                           <b>helpwindow</b>
+</pre><br />
+
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__init__"></a><span class="summary-sig"><span class="summary-sig-name">__init__</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_quit1_activate"></a><span class="summary-sig"><span class="summary-sig-name">on_quit1_activate</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_tBack_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_tBack_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_tForward_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_tForward_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_tQuit_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_tQuit_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="on_tRelaod_clicked"></a><span class="summary-sig"><span class="summary-sig-name">on_tRelaod_clicked</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from windows</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#activateClick" class="summary-sig-name"><code>activateClick</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sItem</span>,
+          <span class=summary-sig-arg>event</span>,
+          <span class=summary-sig-arg>sAction</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#addOneDay" class="summary-sig-name"><code>addOneDay</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>entry</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#checkClient" class="summary-sig-name"><code>checkClient</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#checkKey" class="summary-sig-name"><code>checkKey</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>,
+          <span class=summary-sig-arg>sState</span>,
+          <span class=summary-sig-arg>cKey</span>,
+          <span class=summary-sig-arg>cKey2</span>,
+          <span class=summary-sig-arg>cKey3</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#clearSearch" class="summary-sig-name"><code>clearSearch</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#closeMenuEntries" class="summary-sig-name"><code>closeMenuEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sendEntry</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#closeWindow" class="summary-sig-name"><code>closeWindow</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#delete_event" class="summary-sig-name"><code>delete_event</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>event</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#endEdit" class="summary-sig-name"><code>endEdit</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#getDataEntries" class="summary-sig-name"><code>getDataEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#getDate" class="summary-sig-name"><code>getDate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>entry</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#getStyle" class="summary-sig-name"><code>getStyle</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cType</span>,
+          <span class=summary-sig-arg>cWidget</span>,
+          <span class=summary-sig-arg>numberFG</span>,
+          <span class=summary-sig-arg>numberBG</span>)</span></code>
+<br />
+define an new Style for gtk-widgets thanks to 
+/----------------------------------------------------------------------- 
+| Tony Denault | Email: denault&#64;irtf.ifa.hawaii.edu | | Institute for 
+Astronomy | Phone: (808) 932-2378 | | 640 North Aohoku Place | Fax: (808) 
+933-0737 | | Hilo, Hawaii 96720 | | 
+\-----------------------------------------------------------------------/</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#getWhere" class="summary-sig-name"><code>getWhere</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#HTMLColorToRGB" class="summary-sig-name"><code>HTMLColorToRGB</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>colorstring</span>)</span></code>
+<br />
+convert #RRGGBB to an (R, G, B) tuple</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#loadEntries" class="summary-sig-name"><code>loadEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#loadProfile" class="summary-sig-name"><code>loadProfile</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sProfile</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#loadUserFromPreferences" class="summary-sig-name"><code>loadUserFromPreferences</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>result</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#MainwindowEventHandling" class="summary-sig-name"><code>MainwindowEventHandling</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>oEntry</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#on_key_press_event" class="summary-sig-name"><code>on_key_press_event</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>oEntry</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#on_Mainwindow_key_press_event" class="summary-sig-name"><code>on_Mainwindow_key_press_event</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>oEntry</span>,
+          <span class=summary-sig-arg>data</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#on_notebook1_switch_page" class="summary-sig-name"><code>on_notebook1_switch_page</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>notebook1</span>,
+          <span class=summary-sig-arg>page</span>,
+          <span class=summary-sig-arg>page_num</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#openWindow" class="summary-sig-name"><code>openWindow</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#readSearchDatafields" class="summary-sig-name"><code>readSearchDatafields</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicWidgets</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#removeOneDay" class="summary-sig-name"><code>removeOneDay</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>entry</span>,
+          <span class=summary-sig-arg>event</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#restoreCursor" class="summary-sig-name"><code>restoreCursor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#RGBToHTMLColor" class="summary-sig-name"><code>RGBToHTMLColor</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>rgb_tuple</span>)</span></code>
+<br />
+convert an (R, G, B) tuple to #RRGGBB</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#saveCursor" class="summary-sig-name"><code>saveCursor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#saveData" class="summary-sig-name"><code>saveData</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#saveDataQuestion" class="summary-sig-name"><code>saveDataQuestion</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setColor2Text" class="summary-sig-name"><code>setColor2Text</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>,
+          <span class=summary-sig-arg>sEntry</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setDataEntries" class="summary-sig-name"><code>setDataEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>dicDE</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setDate" class="summary-sig-name"><code>setDate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>entry</span>,
+          <span class=summary-sig-arg>newTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setDateToCalendar" class="summary-sig-name"><code>setDateToCalendar</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sDate</span>,
+          <span class=summary-sig-arg>entryName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setDateToEntry" class="summary-sig-name"><code>setDateToEntry</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>event</span>,
+          <span class=summary-sig-arg>entryName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setEditCursor" class="summary-sig-name"><code>setEditCursor</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setEntriesEditable" class="summary-sig-name"><code>setEntriesEditable</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>ok</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setMainwindowNotebook" class="summary-sig-name"><code>setMainwindowNotebook</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sKey</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setPageVisible" class="summary-sig-name"><code>setPageVisible</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sNotebook</span>,
+          <span class=summary-sig-arg>page_num</span>,
+          <span class=summary-sig-arg>visible</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setProgressBar" class="summary-sig-name"><code>setProgressBar</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>fPercent</span>,
+          <span class=summary-sig-arg>Pulse</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setProperties" class="summary-sig-name"><code>setProperties</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+<br />
+sets the property (colors,etc.) of an gtk-widget</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setStatusBar" class="summary-sig-name"><code>setStatusBar</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setStatusbarText" class="summary-sig-name"><code>setStatusbarText</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>liText</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setTreeVisible" class="summary-sig-name"><code>setTreeVisible</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>ok</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#setWinAccelGroup" class="summary-sig-name"><code>setWinAccelGroup</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#startEdit" class="summary-sig-name"><code>startEdit</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#startFind" class="summary-sig-name"><code>startFind</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class="summary-sig-vararg">*args</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#startProgressBar" class="summary-sig-name"><code>startProgressBar</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>Pulse</span>,
+          <span class=summary-sig-arg>Title</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Windows.windows.windows-class.html#stopProgressBar" class="summary-sig-name"><code>stopProgressBar</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MyXML</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getAttributValue" class="summary-sig-name"><code>getAttributValue</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getColumnAt" class="summary-sig-name"><code>getColumnAt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>,
+          <span class=summary-sig-arg>iIndex</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getColumnSpecification" class="summary-sig-name"><code>getColumnSpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyColumn</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getData" class="summary-sig-name"><code>getData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntries" class="summary-sig-name"><code>getEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sFileName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntry" class="summary-sig-name"><code>getEntry</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntryAt" class="summary-sig-name"><code>getEntryAt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntries</span>,
+          <span class=summary-sig-arg>iIndex</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntrySpecification" class="summary-sig-name"><code>getEntrySpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntry</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getForeignKey" class="summary-sig-name"><code>getForeignKey</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfEntries" class="summary-sig-name"><code>getListOfEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfForeignKeys" class="summary-sig-name"><code>getListOfForeignKeys</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfSequences" class="summary-sig-name"><code>getListOfSequences</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfTables" class="summary-sig-name"><code>getListOfTables</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNode" class="summary-sig-name"><code>getNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNodeData" class="summary-sig-name"><code>getNodeData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNodes" class="summary-sig-name"><code>getNodes</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfEntries" class="summary-sig-name"><code>getNumberOfEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfFields" class="summary-sig-name"><code>getNumberOfFields</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getRootNode" class="summary-sig-name"><code>getRootNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getSequence" class="summary-sig-name"><code>getSequence</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTable" class="summary-sig-name"><code>getTable</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTableSpecification" class="summary-sig-name"><code>getTableSpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTextFromNode" class="summary-sig-name"><code>getTextFromNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>)</span></code>
+<br />
+scans through all children of node and gathers the text.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#nodeToDic" class="summary-sig-name"><code>nodeToDic</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>)</span></code>
+<br />
+nodeToDic() scans through the children of node and makes a dictionary 
+from the content.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#NotTextNodeError" class="summary-sig-name"><code>NotTextNodeError</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#readDocument" class="summary-sig-name"><code>readDocument</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>filename</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#test" class="summary-sig-name"><code>test</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from logs</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#out" class="summary-sig-name"><code>out</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sLog</span>,
+          <span class=summary-sig-arg>iLogLevel</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#printOut" class="summary-sig-name"><code>printOut</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s1</span>,
+          <span class=summary-sig-arg>s2</span>,
+          <span class=summary-sig-arg>ok</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#setLogLevel" class="summary-sig-name"><code>setLogLevel</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>iLevel</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from messages</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Misc.messages.messages-class.html#errorMsg" class="summary-sig-name"><code>errorMsg</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sText</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Misc.messages.messages-class.html#infoMsg" class="summary-sig-name"><code>infoMsg</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sText</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Misc.messages.messages-class.html#QuestionMsg" class="summary-sig-name"><code>QuestionMsg</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sText</span>)</span></code>
+</td></tr>
+</table><br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat Jul  7 09:54:35 2007</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Email2.Email</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Email2-module.html">Module&nbsp;Email2</a> ::
+        Class&nbsp;Email
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Email2.Email-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Email</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.Email2-pysrc.html#Email">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_ema_6" name="uml_class_diagram_for_cuon_ema_6">
+<area shape="rect" href="cuon.Email2.Email-class.html#attachments" title="cuon.Email2.Email.attachments" alt="" coords="17,28,1348,47"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#bcc_recipients" title="cuon.Email2.Email.bcc_recipients" alt="" coords="17,47,1348,65"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#cc_recipients" title="cuon.Email2.Email.cc_recipients" alt="" coords="17,65,1348,84"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#content_charset" title="cuon.Email2.Email.content_charset" alt="" coords="17,84,1348,103"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#content_subtype" title="cuon.Email2.Email.content_subtype" alt="" coords="17,103,1348,121"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#from_address" title="cuon.Email2.Email.from_address" alt="" coords="17,121,1348,140"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#from_caption" title="cuon.Email2.Email.from_caption" alt="" coords="17,140,1348,159"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#header_charset" title="cuon.Email2.Email.header_charset" alt="" coords="17,159,1348,177"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#message" title="cuon.Email2.Email.message" alt="" coords="17,177,1348,196"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#recipients" title="cuon.Email2.Email.recipients" alt="" coords="17,196,1348,215"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#reply_to_address" title="cuon.Email2.Email.reply_to_address" alt="" coords="17,215,1348,233"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#reply_to_caption" title="cuon.Email2.Email.reply_to_caption" alt="" coords="17,233,1348,252"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#smtp_crypt" title="cuon.Email2.Email.smtp_crypt" alt="" coords="17,252,1348,271"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#user_agent" title="cuon.Email2.Email.user_agent" alt="" coords="17,289,1348,308"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#__init__" title="en: Initialize the email object &#160;&#160;&#160;&#160;from_address &#160;&#160;&#160;&#160;= the email address of the sender &#160;&#160;&#160;&#160;from_caption &#160;&#160;&#160;&#160;= the caption (name) of the sender &#160;&#160;&#160;&#160;to_address &#160;&#160;&#160;&#160;&#160;&#160;= the email address of the recipient &#160;&#160;&#160;&#160;to_caption &#160;&#160;&#160;&#160;&#160;&#160;= the caption (name) of the recipient &#160;&#160;&#160;&#160;subject &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= the subject of the email message &#160;&#160;&#160;&#160;message &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;= the body text of the email message &#160;&#160;&#160;&#160;smtp_server &#160;&#160;&#160;&#160;&#160;= the ip&#45;address or the name of the SMTP&#45;server &#160;&#160;&#160;&#160;smtp_user &#160;&#160;&#160;&#160;&#160;&#160;&#160;= (optional) Login name for the SMTP&#45;Server &#160;&#160;&#160;&#160;smtp_passwort &#160;&#160;&#160;= (optional) Password for the SMTP&#45;Server &#160;&#160;&#160;&#160;user_agent &#160;&#160;&#160;&#160;&#160;&#160;= (optional) program identification &#160;&#160;&#160;&#160;reply_to_address = (optional) Reply&#45;to email address &#160;&#160;&#160;&#160;reply_to_caption = (optional) Reply&#45;to caption (name)" alt="" coords="17,311,1348,329"/>
+<area shape="rect" href="cuon.Email2.Email-class.html#send" title="de: Sendet die Email an den Empfaenger." alt="" coords="17,329,1348,348"/>
+<area shape="rect" href="cuon.Email2.Email-class.html" title="en: This Object stands for one email, which can sent with the method &#39;send&#39;." alt="" coords="16,11,1349,349"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_ema_6.gif" alt='' usemap="#uml_class_diagram_for_cuon_ema_6" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<pre class="literalblock">
+
+en: This Object stands for one email, which can sent with
+    the method 'send'.
+de: Dieses Objekt stellt eine Email dar, welche mit der
+    Methode 'send' verschickt werden kann.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Email2.Email-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">from_address</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">from_caption</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">to_address</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">to_caption</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">subject</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">smtp_server</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">localhost</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">smtp_user</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">smtp_password</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">attachment_file</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">user_agent</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">reply_to_address</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">reply_to_caption</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span><br />
+      en: Initialize the email object
+    from_address     = the email address of the sender
+    from_caption     = the caption (name) of the sender
+    to_address       = the email address of the recipient
+    to_caption       = the caption (name) of the recipient
+    subject          = the subject of the email message
+    message          = the body text of the email message
+    smtp_server      = the ip-address or the name of the SMTP-server
+    smtp_user        = (optional) Login name for the SMTP-Server
+    smtp_passwort    = (optional) Password for the SMTP-Server
+    user_agent       = (optional) program identification
+    reply_to_address = (optional) Reply-to email address
+    reply_to_caption = (optional) Reply-to caption (name)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Email2-pysrc.html#Email.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Email2.Email-class.html#send" class="summary-sig-name">send</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      de: Sendet die Email an den Empfaenger.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Email2-pysrc.html#Email.send">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="attachments"></a><span class="summary-name">attachments</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="bcc_recipients"></a><span class="summary-name">bcc_recipients</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="cc_recipients"></a><span class="summary-name">cc_recipients</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="content_charset"></a><span class="summary-name">content_charset</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="content_subtype"></a><span class="summary-name">content_subtype</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="from_address"></a><span class="summary-name">from_address</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="from_caption"></a><span class="summary-name">from_caption</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="header_charset"></a><span class="summary-name">header_charset</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="message"></a><span class="summary-name">message</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="recipients"></a><span class="summary-name">recipients</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="reply_to_address"></a><span class="summary-name">reply_to_address</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="reply_to_caption"></a><span class="summary-name">reply_to_caption</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="smtp_crypt"></a><span class="summary-name">smtp_crypt</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="smtp_password"></a><span class="summary-name">smtp_password</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="smtp_server"></a><span class="summary-name">smtp_server</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="smtp_user"></a><span class="summary-name">smtp_user</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="statusdict"></a><span class="summary-name">statusdict</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="subject"></a><span class="summary-name">subject</span>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="user_agent"></a><span class="summary-name">user_agent</span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">from_address</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">from_caption</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">to_address</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">to_caption</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">subject</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">message</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">smtp_server</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">localhost</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">smtp_user</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">smtp_password</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">attachment_file</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">user_agent</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">reply_to_address</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">reply_to_caption</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Email2-pysrc.html#Email.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+en: Initialize the email object
+    from_address     = the email address of the sender
+    from_caption     = the caption (name) of the sender
+    to_address       = the email address of the recipient
+    to_caption       = the caption (name) of the recipient
+    subject          = the subject of the email message
+    message          = the body text of the email message
+    smtp_server      = the ip-address or the name of the SMTP-server
+    smtp_user        = (optional) Login name for the SMTP-Server
+    smtp_passwort    = (optional) Password for the SMTP-Server
+    user_agent       = (optional) program identification
+    reply_to_address = (optional) Reply-to email address
+    reply_to_caption = (optional) Reply-to caption (name)
+
+de: Initialisiert das Email-Objekt
+    from_address     = die Emailadresse des Absenders
+    from_caption     = die Beschrifung (der Name) des Absenders
+    to_address       = die Emailadresse des Empfaengers
+    to_caption       = die Beschriftung (der Name) des Empfaengers
+    subject          = der Betreff der Emailnachricht
+    message          = der Nachrichtentext
+    smtp_server      = IP-Adresse oder Name des SMTP-Servers.
+                       Es kann auch der Port mit ``:`` vom Server getrennt 
+                       angehaengt werden. (z.B. ``localhost:25``)
+    smtp_user        = (optional) Benutzername zum Anmelden an den SMTP-Server
+    smtp_passwort    = (optional) das Passwort zum Anmelden an den SMTP-Server
+    user_agent       = (optional) Programm-Identifikation
+    reply_to_address = (optional) Antwort-an Emailadresse
+    reply_to_caption = (optional) Antwort-an Beschriftung (Name)
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="send"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">send</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Email2-pysrc.html#Email.send">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+de: Sendet die Email an den Empfaenger.
+    Wird das Email nur an einen Empfaenger gesendet, dann wird bei
+    Erfolg &lt;True&gt; zurueck gegeben. Wird das Email an mehrere Empfaenger
+    gesendet und wurde an mindestens einen der Empfaenger erfolgreich
+    ausgeliefert, dann wird ebenfalls &lt;True&gt; zurueck gegeben.
+    
+    Wird das Email nur an einen Empfaenger gesendet, dann wird bei
+    Misserfolg &lt;False&gt; zurueck gegeben. Wird das Email an mehrere 
+    Empfaenger gesendet und wurde an keinen der Empfaenger erfolgreich
+    ausgeliefert, dann wird &lt;False&gt; zurueck gegeben.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:17 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

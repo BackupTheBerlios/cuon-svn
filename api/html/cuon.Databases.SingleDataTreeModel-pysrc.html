@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Databases.SingleDataTreeModel</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Databases-module.html">Package&nbsp;Databases</a> ::
+        Module&nbsp;SingleDataTreeModel
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Databases.SingleDataTreeModel-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Databases.SingleDataTreeModel-module.html" onclick="show_private();">Module cuon.Databases.SingleDataTreeModel</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment">##Copyright (C) [2003]  [Juergen Hamel, D-32584 Loehne]</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment">##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment">##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment">##for more details.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment">##You should have received a copy of the GNU General Public License along with this program; if not, write to the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment">##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. </tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygtk</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-name">pygtk</tt><tt class="py-op">.</tt><tt class="py-name">require</tt><tt class="py-op">(</tt><tt class="py-string">'2.0'</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gobject</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment">#from gtk import True, FALSE</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable cuon.Databases.SingleDataTreeModel.COLUMN_NAME=cuon.Databases.SingleDataTreeModel-module.html#COLUMN_NAME"><a title="cuon.Databases.SingleDataTreeModel.COLUMN_NAME" class="py-name" href="#" onclick="return doclink('link-0', 'COLUMN_NAME', 'link-0');">COLUMN_NAME</a></tt>       <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable cuon.Databases.SingleDataTreeModel.COLUMN_ZIPCODE=cuon.Databases.SingleDataTreeModel-module.html#COLUMN_ZIPCODE"><a title="cuon.Databases.SingleDataTreeModel.COLUMN_ZIPCODE" class="py-name" href="#" onclick="return doclink('link-1', 'COLUMN_ZIPCODE', 'link-1');">COLUMN_ZIPCODE</a></tt>      <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable cuon.Databases.SingleDataTreeModel.COLUMN_CITY=cuon.Databases.SingleDataTreeModel-module.html#COLUMN_CITY"><a title="cuon.Databases.SingleDataTreeModel.COLUMN_CITY" class="py-name" href="#" onclick="return doclink('link-2', 'COLUMN_CITY', 'link-2');">COLUMN_CITY</a></tt>    <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable cuon.Databases.SingleDataTreeModel.COLUMN_STREET=cuon.Databases.SingleDataTreeModel-module.html#COLUMN_STREET"><a title="cuon.Databases.SingleDataTreeModel.COLUMN_STREET" class="py-name" href="#" onclick="return doclink('link-3', 'COLUMN_STREET', 'link-3');">COLUMN_STREET</a></tt><tt class="py-op">=</tt> <tt class="py-number">3</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable cuon.Databases.SingleDataTreeModel.COLUMN_ID=cuon.Databases.SingleDataTreeModel-module.html#COLUMN_ID"><a title="cuon.Databases.SingleDataTreeModel.COLUMN_ID" class="py-name" href="#" onclick="return doclink('link-4', 'COLUMN_ID', 'link-4');">COLUMN_ID</a></tt> <tt class="py-op">=</tt> <tt class="py-number">4</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="SingleDataTreeModel"></a><div id="SingleDataTreeModel-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel-toggle" onclick="return toggle('SingleDataTreeModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html">SingleDataTreeModel</a><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="SingleDataTreeModel-expanded"><a name="SingleDataTreeModel.__init__"></a><div id="SingleDataTreeModel.__init__-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel.__init__-toggle" onclick="return toggle('SingleDataTreeModel.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SingleDataTreeModel.__init__-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'new TreeModel'</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">         </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="SingleDataTreeModel.createModel"></a><div id="SingleDataTreeModel.createModel-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel.createModel-toggle" onclick="return toggle('SingleDataTreeModel.createModel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#createModel">createModel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel.createModel-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SingleDataTreeModel.createModel-expanded"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">         </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt><tt class="py-op">.</tt><tt class="py-name">clear</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>      </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">item</tt> <tt class="py-keyword">in</tt> <tt class="py-name">data</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">            <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-comment">#            store.set(iter, COLUMN_NAME, item[0], COLUMN_ZIPCODE, item[1], COLUMN_CITY, item[2], COLUMN_STREET, item[3], COLUMN_ID, item[4] )</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">            <tt class="py-name">iLen</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">iLen</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt><tt class="py-op">.</tt><tt class="py-name">set</tt><tt class="py-op">(</tt><tt class="py-name">iter</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">item</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                             </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"rows-reordered"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.store_reordered()=cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#store_reordered"><a title="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.store_reordered" class="py-name" href="#" onclick="return doclink('link-5', 'store_reordered', 'link-5');">store_reordered</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="SingleDataTreeModel.setColumns"></a><div id="SingleDataTreeModel.setColumns-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel.setColumns-toggle" onclick="return toggle('SingleDataTreeModel.setColumns');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#setColumns">setColumns</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tree1</tt><tt class="py-op">,</tt> <tt class="py-param">listHeader</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel.setColumns-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SingleDataTreeModel.setColumns-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">t1</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">columns</tt> <tt class="py-op">=</tt> <tt class="py-name">tree1</tt><tt class="py-op">.</tt><tt class="py-name">get_columns</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">columns</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">            <tt class="py-name">tree1</tt><tt class="py-op">.</tt><tt class="py-name">remove_column</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-name">sortID</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listHeader</tt><tt class="py-op">[</tt><tt class="py-string">'names'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">            <tt class="py-name">column</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeViewColumn</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">CellRendererText</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">text</tt><tt class="py-op">=</tt><tt class="py-name">t1</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-comment">#            column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-comment">#            column.set_fixed_width(30)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">            <tt class="py-name">column</tt><tt class="py-op">.</tt><tt class="py-name">set_clickable</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">            <tt class="py-name">column</tt><tt class="py-op">.</tt><tt class="py-name">set_sort_column_id</tt><tt class="py-op">(</tt><tt class="py-name">sortID</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">            <tt class="py-name">sortID</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">            <tt class="py-name">tree1</tt><tt class="py-op">.</tt><tt class="py-name">append_column</tt><tt class="py-op">(</tt><tt class="py-name">column</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">            <tt class="py-name">t1</tt> <tt class="py-op">=</tt> <tt class="py-name">t1</tt> <tt class="py-op">+</tt><tt class="py-number">1</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">             </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"> </tt>
+<a name="SingleDataTreeModel.setStore"></a><div id="SingleDataTreeModel.setStore-def"><a name="L67"></a><tt class="py-lineno">67</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel.setStore-toggle" onclick="return toggle('SingleDataTreeModel.setStore');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#setStore">setStore</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">store</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel.setStore-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SingleDataTreeModel.setStore-expanded"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">store</tt> <tt class="py-op">=</tt> <tt class="py-name">store</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                 </tt>
+<a name="SingleDataTreeModel.store_reordered"></a><div id="SingleDataTreeModel.store_reordered-def"><a name="L70"></a><tt class="py-lineno">70</tt> <a class="py-toggle" href="#" id="SingleDataTreeModel.store_reordered-toggle" onclick="return toggle('SingleDataTreeModel.store_reordered');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#store_reordered">store_reordered</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SingleDataTreeModel.store_reordered-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SingleDataTreeModel.store_reordered-expanded"><a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'store reordered'</tt> </tt>
+</div></div><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:41 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

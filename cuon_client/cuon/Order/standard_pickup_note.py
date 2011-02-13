@@ -105,4 +105,3 @@ class standard_pickup_note:
         
         self.loadXmlReport('order_standardpickup', 'ReportStandardPickup1')
         
-

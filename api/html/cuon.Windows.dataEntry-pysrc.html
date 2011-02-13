@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Windows.dataEntry</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Windows-module.html">Package&nbsp;Windows</a> ::
+        Module&nbsp;dataEntry
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Windows.dataEntry-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Windows.dataEntry-module.html" onclick="show_private();">Module cuon.Windows.dataEntry</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygtk</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-name">pygtk</tt><tt class="py-op">.</tt><tt class="py-name">require</tt><tt class="py-op">(</tt><tt class="py-string">'2.0'</tt><tt class="py-op">)</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">glade</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry"></a><div id="dataEntry-def"><a name="L10"></a><tt class="py-lineno"> 10</tt> <a class="py-toggle" href="#" id="dataEntry-toggle" onclick="return toggle('dataEntry');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html">dataEntry</a><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="dataEntry-expanded"><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.__init__"></a><div id="dataEntry.__init__-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="dataEntry.__init__-toggle" onclick="return toggle('dataEntry.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.__init__-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nameOfEntry</tt><tt class="py-op">=</tt><tt class="py-string">"EMPTY"</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">typeOfEntry</tt><tt class="py-op">=</tt><tt class="py-string">"EMPTY"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bDuty</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">iRound</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nextWidget</tt> <tt class="py-op">=</tt> <tt class="py-string">'EMPTY'</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setName"></a><div id="dataEntry.setName-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="dataEntry.setName-toggle" onclick="return toggle('dataEntry.setName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setName">setName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setName-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nameOfEntry</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getName"></a><div id="dataEntry.getName-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="dataEntry.getName-toggle" onclick="return toggle('dataEntry.getName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getName">getName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getName-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nameOfEntry</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setType"></a><div id="dataEntry.setType-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="dataEntry.setType-toggle" onclick="return toggle('dataEntry.setType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setType">setType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setType-expanded"><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">typeOfEntry</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getType"></a><div id="dataEntry.getType-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="dataEntry.getType-toggle" onclick="return toggle('dataEntry.getType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getType">getType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getType-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">typeOfEntry</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setSizeOfEntry"></a><div id="dataEntry.setSizeOfEntry-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="dataEntry.setSizeOfEntry-toggle" onclick="return toggle('dataEntry.setSizeOfEntry');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setSizeOfEntry">setSizeOfEntry</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setSizeOfEntry-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setSizeOfEntry-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sizeOfEntryOfEntry</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getSizeOfEntry"></a><div id="dataEntry.getSizeOfEntry-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="dataEntry.getSizeOfEntry-toggle" onclick="return toggle('dataEntry.getSizeOfEntry');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getSizeOfEntry">getSizeOfEntry</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getSizeOfEntry-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getSizeOfEntry-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sizeOfEntryOfEntry</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setVerifyType"></a><div id="dataEntry.setVerifyType-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="dataEntry.setVerifyType-toggle" onclick="return toggle('dataEntry.setVerifyType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setVerifyType">setVerifyType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setVerifyType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setVerifyType-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">verifyType</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getVerifyType"></a><div id="dataEntry.getVerifyType-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="dataEntry.getVerifyType-toggle" onclick="return toggle('dataEntry.getVerifyType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getVerifyType">getVerifyType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getVerifyType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getVerifyType-expanded"><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">verifyType</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setCreateSql"></a><div id="dataEntry.setCreateSql-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="dataEntry.setCreateSql-toggle" onclick="return toggle('dataEntry.setCreateSql');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setCreateSql">setCreateSql</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setCreateSql-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setCreateSql-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">createSql</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getCreateSql"></a><div id="dataEntry.getCreateSql-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="dataEntry.getCreateSql-toggle" onclick="return toggle('dataEntry.getCreateSql');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getCreateSql">getCreateSql</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getCreateSql-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getCreateSql-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">createSql</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setSqlField"></a><div id="dataEntry.setSqlField-def"><a name="L56"></a><tt class="py-lineno"> 56</tt> <a class="py-toggle" href="#" id="dataEntry.setSqlField-toggle" onclick="return toggle('dataEntry.setSqlField');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setSqlField">setSqlField</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setSqlField-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setSqlField-expanded"><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sqlFieldOfEntry</tt> <tt class="py-op">=</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getSqlField"></a><div id="dataEntry.getSqlField-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="dataEntry.getSqlField-toggle" onclick="return toggle('dataEntry.getSqlField');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getSqlField">getSqlField</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getSqlField-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getSqlField-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sqlFieldOfEntry</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setBgColor"></a><div id="dataEntry.setBgColor-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="dataEntry.setBgColor-toggle" onclick="return toggle('dataEntry.setBgColor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setBgColor">setBgColor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">sColor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setBgColor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setBgColor-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bgColor</tt> <tt class="py-op">=</tt> <tt class="py-name">sColor</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">       </tt>
+<a name="dataEntry.getBgColor"></a><div id="dataEntry.getBgColor-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="dataEntry.getBgColor-toggle" onclick="return toggle('dataEntry.getBgColor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getBgColor">getBgColor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getBgColor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getBgColor-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bgColor</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setFgColor"></a><div id="dataEntry.setFgColor-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="dataEntry.setFgColor-toggle" onclick="return toggle('dataEntry.setFgColor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setFgColor">setFgColor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">sColor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setFgColor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setFgColor-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fgColor</tt> <tt class="py-op">=</tt> <tt class="py-name">sColor</tt> </tt>
+</div><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">       </tt>
+<a name="dataEntry.getFgColor"></a><div id="dataEntry.getFgColor-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="dataEntry.getFgColor-toggle" onclick="return toggle('dataEntry.getFgColor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getFgColor">getFgColor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getFgColor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getFgColor-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fgColor</tt> </tt>
+</div><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setDuty"></a><div id="dataEntry.setDuty-def"><a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="dataEntry.setDuty-toggle" onclick="return toggle('dataEntry.setDuty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setDuty">setDuty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">bDuty</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setDuty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setDuty-expanded"><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">bDuty</tt> <tt class="py-op">==</tt> <tt class="py-string">'EMPTY'</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">bDuty</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">             </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bDuty</tt> <tt class="py-op">=</tt> <tt class="py-name">bDuty</tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.getDuty"></a><div id="dataEntry.getDuty-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="dataEntry.getDuty-toggle" onclick="return toggle('dataEntry.getDuty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getDuty">getDuty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getDuty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getDuty-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bDuty</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">     </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="dataEntry.setRound"></a><div id="dataEntry.setRound-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="dataEntry.setRound-toggle" onclick="return toggle('dataEntry.setRound');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setRound">setRound</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">sRound</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setRound-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setRound-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">iRound1</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">sRound</tt> <tt class="py-op">!=</tt> <tt class="py-string">'EMPTY'</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                <tt class="py-name">iRound1</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">sRound</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                <tt class="py-comment">#print 'ERROR - No Integer'</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                 </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">iRound</tt> <tt class="py-op">=</tt> <tt class="py-name">iRound1</tt> </tt>
+</div><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">         </tt>
+<a name="dataEntry.getRound"></a><div id="dataEntry.getRound-def"><a name="L97"></a><tt class="py-lineno"> 97</tt> <a class="py-toggle" href="#" id="dataEntry.getRound-toggle" onclick="return toggle('dataEntry.getRound');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getRound">getRound</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getRound-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getRound-expanded"><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">iRound</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">     </tt>
+<a name="dataEntry.setNextWidget"></a><div id="dataEntry.setNextWidget-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="dataEntry.setNextWidget-toggle" onclick="return toggle('dataEntry.setNextWidget');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#setNextWidget">setNextWidget</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.setNextWidget-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.setNextWidget-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nextWidget</tt> <tt class="py-op">=</tt> <tt class="py-name">sName</tt> </tt>
+</div><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         </tt>
+<a name="dataEntry.getNextWidget"></a><div id="dataEntry.getNextWidget-def"><a name="L103"></a><tt class="py-lineno">103</tt> <a class="py-toggle" href="#" id="dataEntry.getNextWidget-toggle" onclick="return toggle('dataEntry.getNextWidget');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Windows.dataEntry.dataEntry-class.html#getNextWidget">getNextWidget</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="dataEntry.getNextWidget-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="dataEntry.getNextWidget-expanded"><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nextWidget</tt> </tt>
+</div></div><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:38 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

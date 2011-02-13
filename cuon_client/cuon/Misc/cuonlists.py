@@ -37,3 +37,16 @@ class cuonlists(windows):
         
     def getFilenames(self):
         return self.fileName
+
+
+    def on_bNewPredefine_clicked(self, event):
+        pass
+        
+    def on_bEditPredefine_clicked(self, event):
+        pass
+        
+    def on_cbPredefined_changed(self, event):
+        pass
+        
+    def on_bDeletePredefine_clicked(self, event):
+        pass

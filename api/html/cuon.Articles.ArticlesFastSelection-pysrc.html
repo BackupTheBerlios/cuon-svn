@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Articles.ArticlesFastSelection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Articles-module.html">Package&nbsp;Articles</a> ::
+        Module&nbsp;ArticlesFastSelection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Articles.ArticlesFastSelection-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Articles.ArticlesFastSelection-module.html" onclick="show_private();">Module cuon.Articles.ArticlesFastSelection</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">##Copyright (C) [2009]  [J&#252;rgen Hamel, D-32584 L&#246;hne]</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">##for more details.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">##You should have received a copy of the GNU General Public License along with this program; if not, write to the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygtk</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-name">pygtk</tt><tt class="py-op">.</tt><tt class="py-name">require</tt><tt class="py-op">(</tt><tt class="py-string">'2.0'</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">glade</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt>  <tt id="link-0" class="py-name" targets="Package cuon=cuon-module.html"><a title="cuon" class="py-name" href="#" onclick="return doclink('link-0', 'cuon', 'link-0');">cuon</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package cuon.Windows=cuon.Windows-module.html"><a title="cuon.Windows" class="py-name" href="#" onclick="return doclink('link-1', 'Windows', 'link-1');">Windows</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module cuon.Windows.gladeXml=cuon.Windows.gladeXml-module.html,Class cuon.Windows.gladeXml.gladeXml=cuon.Windows.gladeXml.gladeXml-class.html"><a title="cuon.Windows.gladeXml
+cuon.Windows.gladeXml.gladeXml" class="py-name" href="#" onclick="return doclink('link-2', 'gladeXml', 'link-2');">gladeXml</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="cuon.Windows.gladeXml
+cuon.Windows.gladeXml.gladeXml" class="py-name" href="#" onclick="return doclink('link-3', 'gladeXml', 'link-2');">gladeXml</a></tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection"></a><div id="ArticlesFastSelection-def"><a name="L22"></a><tt class="py-lineno"> 22</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection-toggle" onclick="return toggle('ArticlesFastSelection');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html">ArticlesFastSelection</a><tt class="py-op">(</tt><tt class="py-base-class">gladeXml</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ArticlesFastSelection-expanded"><a name="ArticlesFastSelection.__init__"></a><div id="ArticlesFastSelection.__init__-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.__init__-toggle" onclick="return toggle('ArticlesFastSelection.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt> <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.__init__-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt id="link-4" class="py-name"><a title="cuon.Windows.gladeXml
+cuon.Windows.gladeXml.gladeXml" class="py-name" href="#" onclick="return doclink('link-4', 'gladeXml', 'link-2');">gladeXml</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method Cuon.MainWindow.__init__()=Cuon.MainWindow-class.html#__init__,Method cuon.AI.ai.aiwindow.__init__()=cuon.AI.ai.aiwindow-class.html#__init__,Method cuon.AI.ai_main.ai_main.__init__()=cuon.AI.ai_main.ai_main-class.html#__init__,Method cuon.AI.gtkMiniClient.gtkMiniClient.__init__()=cuon.AI.gtkMiniClient.gtkMiniClient-class.html#__init__,Method cuon.AI.gtkMiniClient.simpleGlade.__init__()=cuon.AI.gtkMiniClient.simpleGlade-class.html#__init__,Method cuon.AI.tki1.tki1.__init__()=cuon.AI.tki1.tki1-class.html#__init__,Method cuon.Addresses.SingleAddress.SingleAddress.__init__()=cuon.Addresses.SingleAddress.SingleAddress-class.html#__init__,Method cuon.Addresses.SingleAddressBank.SingleAddressBank.__init__()=cuon.Addresses.SingleAddressBank.SingleAddressBank-class.html#__init__,Method cuon.Addresses.SingleContact.SingleContact.__init__()=cuon.Addresses.SingleContact.SingleContact-class.html#__init__,Method cuon.Addresses.SingleCountry.SingleCountry.__init__()=cuon.Addresses.SingleCountry.SingleCountry-class.html#__init__,Method cuon.Addresses.SingleMisc.SingleMisc.__init__()=cuon.Addresses.SingleMisc.SingleMisc-class.html#__init__,Method cuon.Addresses.SingleNotes.SingleNotes.__init__()=cuon.Addresses.SingleNotes.SingleNotes-class.html#__init__,Method cuon.Addresses.SinglePartner.SinglePartner.__init__()=cuon.Addresses.SinglePartner.SinglePartner-class.html#__init__,Method cuon.Addresses.SingleScheduling.SingleScheduling.__init__()=cuon.Addresses.SingleScheduling.SingleScheduling-class.html#__init__,Method cuon.Addresses.addresses.addresswindow.__init__()=cuon.Addresses.addresses.addresswindow-class.html#__init__,Method cuon.Addresses.contact.contactwindow.__init__()=cuon.Addresses.contact.contactwindow-class.html#__init__,Method cuon.Addresses.lists_addresses.lists_addresses.__init__()=cuon.Addresses.lists_addresses.lists_addresses-class.html#__init__,Method cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1.__init__()=cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1-class.html#__init__,Method cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11.__init__()=cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11-class.html#__init__,Method cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12.__init__()=cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12-class.html#__init__,Method cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2.__init__()=cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2-class.html#__init__,Method cuon.Addresses.printAddress.printAddress.__init__()=cuon.Addresses.printAddress.printAddress-class.html#__init__,Method cuon.Addresses.selectionDialog.selectionDialog1.__init__()=cuon.Addresses.selectionDialog.selectionDialog1-class.html#__init__,Method cuon.Analysis.SingleAnalysis_cost.SingleClient.__init__()=cuon.Analysis.SingleAnalysis_cost.SingleClient-class.html#__init__,Method cuon.Analysis.analyse_costs.clientswindow.__init__()=cuon.Analysis.analyse_costs.clientswindow-class.html#__init__,Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.__init__()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#__init__,Method cuon.Articles.SingleArticle.SingleArticle.__init__()=cuon.Articles.SingleArticle.SingleArticle-class.html#__init__,Method cuon.Articles.SingleArticleParts.SingleArticleParts.__init__()=cuon.Articles.SingleArticleParts.SingleArticleParts-class.html#__init__,Method cuon.Articles.SingleArticlePurchase.SingleArticlePurchase.__init__()=cuon.Articles.SingleArticlePurchase.SingleArticlePurchase-class.html#__init__,Method cuon.Articles.SingleArticleSale.SingleArticleSale.__init__()=cuon.Articles.SingleArticleSale.SingleArticleSale-class.html#__init__,Method cuon.Articles.SingleArticleStock.SingleArticleStock.__init__()=cuon.Articles.SingleArticleStock.SingleArticleStock-class.html#__init__,Method cuon.Articles.SingleArticleWebshop.SingleArticleWebshop.__init__()=cuon.Articles.SingleArticleWebshop.SingleArticleWebshop-class.html#__init__,Method cuon.Articles.SingleMaterialgroups.SingleMaterialgroups.__init__()=cuon.Articles.SingleMaterialgroups.SingleMaterialgroups-class.html#__init__,Method cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount.__init__()=cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount-class.html#__init__,Method cuon.Articles.articles.articleswindow.__init__()=cuon.Articles.articles.articleswindow-class.html#__init__,Method cuon.Articles.lists_articles_number1.lists_articles_number1.__init__()=cuon.Articles.lists_articles_number1.lists_articles_number1-class.html#__init__,Method cuon.Articles.materialgroup.materialgroupwindow.__init__()=cuon.Articles.materialgroup.materialgroupwindow-class.html#__init__,Method cuon.Articles.pickles_articles.pickles_articles.__init__()=cuon.Articles.pickles_articles.pickles_articles-class.html#__init__,Method cuon.Bank.SingleBank.SingleBank.__init__()=cuon.Bank.SingleBank.SingleBank-class.html#__init__,Method cuon.Bank.bank.bankwindow.__init__()=cuon.Bank.bank.bankwindow-class.html#__init__,Method cuon.Biblio.SingleBiblio.SingleBiblio.__init__()=cuon.Biblio.SingleBiblio.SingleBiblio-class.html#__init__,Method cuon.Biblio.biblio.bibliowindow.__init__()=cuon.Biblio.biblio.bibliowindow-class.html#__init__,Method cuon.Calendar.calendar.calendarwindow.__init__()=cuon.Calendar.calendar.calendarwindow-class.html#__init__,Method cuon.Clients.SingleClient.SingleClient.__init__()=cuon.Clients.SingleClient.SingleClient-class.html#__init__,Method cuon.Clients.clients.clientswindow.__init__()=cuon.Clients.clients.clientswindow-class.html#__init__,Method cuon.DMS.SingleDMS.SingleDMS.__init__()=cuon.DMS.SingleDMS.SingleDMS-class.html#__init__,Method cuon.DMS.dms.dmswindow.__init__()=cuon.DMS.dms.dmswindow-class.html#__init__,Method cuon.DMS.documentTools.documentTools.__init__()=cuon.DMS.documentTools.documentTools-class.html#__init__,Method cuon.Databases.SingleCuon.SingleCuon.__init__()=cuon.Databases.SingleCuon.SingleCuon-class.html#__init__,Method cuon.Databases.SingleData.SingleData.__init__()=cuon.Databases.SingleData.SingleData-class.html#__init__,Method cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.__init__()=cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#__init__,Method cuon.Databases.SingleExport.SingleExport.__init__()=cuon.Databases.SingleExport.SingleExport-class.html#__init__,Method cuon.Databases.SingleImport.SingleImport.__init__()=cuon.Databases.SingleImport.SingleImport-class.html#__init__,Method cuon.Databases.SingleImportZip.SingleImportZip.__init__()=cuon.Databases.SingleImportZip.SingleImportZip-class.html#__init__,Method cuon.Databases.cyr_column.cyr_column.__init__()=cuon.Databases.cyr_column.cyr_column-class.html#__init__,Method cuon.Databases.cyr_load_table.cyr_load_table.__init__()=cuon.Databases.cyr_load_table.cyr_load_table-class.html#__init__,Method cuon.Databases.cyr_table.cyr_table.__init__()=cuon.Databases.cyr_table.cyr_table-class.html#__init__,Method cuon.Databases.databases.databaseswindow.__init__()=cuon.Databases.databases.databaseswindow-class.html#__init__,Method cuon.Databases.dumps.dumps.__init__()=cuon.Databases.dumps.dumps-class.html#__init__,Method cuon.Databases.export_generic1.export_generic1.__init__()=cuon.Databases.export_generic1.export_generic1-class.html#__init__,Method cuon.Databases.import_generic1.import_generic1.__init__()=cuon.Databases.import_generic1.import_generic1-class.html#__init__,Method cuon.Databases.import_generic2.import_generic2.__init__()=cuon.Databases.import_generic2.import_generic2-class.html#__init__,Method cuon.E_Mail.imap_dms.imap_dms.__init__()=cuon.E_Mail.imap_dms.imap_dms-class.html#__init__,Method cuon.E_Mail.incoming_mail.incoming_mail.__init__()=cuon.E_Mail.incoming_mail.incoming_mail-class.html#__init__,Method cuon.E_Mail.sendEmail.sendEmail.__init__()=cuon.E_Mail.sendEmail.sendEmail-class.html#__init__,Method cuon.Editor.editor.editorwindow.__init__()=cuon.Editor.editor.editorwindow-class.html#__init__,Method cuon.Editor.programmersEditor.programmerseditor.__init__()=cuon.Editor.programmersEditor.programmerseditor-class.html#__init__,Method cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.__init__()=cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow-class.html#__init__,Method cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.__init__()=cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow-class.html#__init__,Method cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly.__init__()=cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly-class.html#__init__,Method cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment.__init__()=cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment-class.html#__init__,Method cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice.__init__()=cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice-class.html#__init__,Method cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.__init__()=cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow-class.html#__init__,Method cuon.Finances.SingleAccountInfo.SingleAccountInfo.__init__()=cuon.Finances.SingleAccountInfo.SingleAccountInfo-class.html#__init__,Method cuon.Finances.SingleAccountPlan.SingleAccountPlan.__init__()=cuon.Finances.SingleAccountPlan.SingleAccountPlan-class.html#__init__,Method cuon.Finances.SingleAccountSentence.SingleAccountSentence.__init__()=cuon.Finances.SingleAccountSentence.SingleAccountSentence-class.html#__init__,Method cuon.Finances.SingleAccountValues.SingleAccountValues.__init__()=cuon.Finances.SingleAccountValues.SingleAccountValues-class.html#__init__,Method cuon.Garden.SingleBotany.SingleBotany.__init__()=cuon.Garden.SingleBotany.SingleBotany-class.html#__init__,Method cuon.Garden.SingleBotanyClass.SingleBotanyClass.__init__()=cuon.Garden.SingleBotanyClass.SingleBotanyClass-class.html#__init__,Method cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio.__init__()=cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio-class.html#__init__,Method cuon.Garden.SingleBotanyFamily.SingleBotanyFamily.__init__()=cuon.Garden.SingleBotanyFamily.SingleBotanyFamily-class.html#__init__,Method cuon.Garden.SingleBotanyGenus.SingleBotanyGenus.__init__()=cuon.Garden.SingleBotanyGenus.SingleBotanyGenus-class.html#__init__,Method cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo.__init__()=cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo-class.html#__init__,Method cuon.Garden.SingleHibernation.SingleHibernation.__init__()=cuon.Garden.SingleHibernation.SingleHibernation-class.html#__init__,Method cuon.Garden.SingleHibernationPlant.SingleHibernationPlant.__init__()=cuon.Garden.SingleHibernationPlant.SingleHibernationPlant-class.html#__init__,Method cuon.Garden.botany.botanywindow.__init__()=cuon.Garden.botany.botanywindow-class.html#__init__,Method cuon.Garden.garden.gardenwindow.__init__()=cuon.Garden.garden.gardenwindow-class.html#__init__,Method cuon.Garden.hibernation.hibernationwindow.__init__()=cuon.Garden.hibernation.hibernationwindow-class.html#__init__,Method cuon.Graves.SingleGrave.SingleGrave.__init__()=cuon.Graves.SingleGrave.SingleGrave-class.html#__init__,Method cuon.Graves.SingleGraveAutumn.SingleGraveAutumn.__init__()=cuon.Graves.SingleGraveAutumn.SingleGraveAutumn-class.html#__init__,Method cuon.Graves.SingleGraveHoliday.SingleGraveHoliday.__init__()=cuon.Graves.SingleGraveHoliday.SingleGraveHoliday-class.html#__init__,Method cuon.Graves.SingleGraveInvoices.SingleGraveInvoices.__init__()=cuon.Graves.SingleGraveInvoices.SingleGraveInvoices-class.html#__init__,Method cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance.__init__()=cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance-class.html#__init__,Method cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent.__init__()=cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent-class.html#__init__,Method cuon.Graves.SingleGraveSpring.SingleGraveSpring.__init__()=cuon.Graves.SingleGraveSpring.SingleGraveSpring-class.html#__init__,Method cuon.Graves.SingleGraveSummer.SingleGraveSummer.__init__()=cuon.Graves.SingleGraveSummer.SingleGraveSummer-class.html#__init__,Method cuon.Graves.SingleGraveWinter.SingleGraveWinter.__init__()=cuon.Graves.SingleGraveWinter.SingleGraveWinter-class.html#__init__,Method cuon.Graves.SingleGraveYear.SingleGraveYear.__init__()=cuon.Graves.SingleGraveYear.SingleGraveYear-class.html#__init__,Method cuon.Graves.SingleGraveyard.SingleGraveyard.__init__()=cuon.Graves.SingleGraveyard.SingleGraveyard-class.html#__init__,Method cuon.Graves.address_graves.address_graves.__init__()=cuon.Graves.address_graves.address_graves-class.html#__init__,Method cuon.Graves.grave.graveswindow.__init__()=cuon.Graves.grave.graveswindow-class.html#__init__,Method cuon.Graves.graveyard.graveyardMainwindow.__init__()=cuon.Graves.graveyard.graveyardMainwindow-class.html#__init__,Method cuon.Graves.plant_lists.plantlists.__init__()=cuon.Graves.plant_lists.plantlists-class.html#__init__,Method cuon.Help.help.helpwindow.__init__()=cuon.Help.help.helpwindow-class.html#__init__,Method cuon.Leasing.SingleLeasing.SingleLeasing.__init__()=cuon.Leasing.SingleLeasing.SingleLeasing-class.html#__init__,Method cuon.Leasing.leasing.leasingwindow.__init__()=cuon.Leasing.leasing.leasingwindow-class.html#__init__,Method cuon.Logging.logs.logs.__init__()=cuon.Logging.logs.logs-class.html#__init__,Method cuon.Login.login.loginwindow.__init__()=cuon.Login.login.loginwindow-class.html#__init__,Method cuon.Misc.cuon_dialog.cuon_dialog.__init__()=cuon.Misc.cuon_dialog.cuon_dialog-class.html#__init__,Method cuon.Misc.cuonlists.cuonlists.__init__()=cuon.Misc.cuonlists.cuonlists-class.html#__init__,Method cuon.Misc.fileSelection.fileSelection.__init__()=cuon.Misc.fileSelection.fileSelection-class.html#__init__,Method cuon.Misc.messages.messages.__init__()=cuon.Misc.messages.messages-class.html#__init__,Method cuon.Misc.misc.Treeview.__init__()=cuon.Misc.misc.Treeview-class.html#__init__,Method cuon.Misc.misc.misc.__init__()=cuon.Misc.misc.misc-class.html#__init__,Method cuon.OpenOffice.letter.letter.__init__()=cuon.OpenOffice.letter.letter-class.html#__init__,Method cuon.OpenOffice.ooconnect.ooconnect.__init__()=cuon.OpenOffice.ooconnect.ooconnect-class.html#__init__,Method cuon.Order.SingleOrder.SingleOrder.__init__()=cuon.Order.SingleOrder.SingleOrder-class.html#__init__,Method cuon.Order.SingleOrderGet.SingleOrderGet.__init__()=cuon.Order.SingleOrderGet.SingleOrderGet-class.html#__init__,Method cuon.Order.SingleOrderInvoice.SingleOrderInvoice.__init__()=cuon.Order.SingleOrderInvoice.SingleOrderInvoice-class.html#__init__,Method cuon.Order.SingleOrderPayment.SingleOrderPayment.__init__()=cuon.Order.SingleOrderPayment.SingleOrderPayment-class.html#__init__,Method cuon.Order.SingleOrderPosition.SingleOrderPosition.__init__()=cuon.Order.SingleOrderPosition.SingleOrderPosition-class.html#__init__,Method cuon.Order.SingleOrderSupply.SingleOrderSupply.__init__()=cuon.Order.SingleOrderSupply.SingleOrderSupply-class.html#__init__,Method cuon.Order.order.orderwindow.__init__()=cuon.Order.order.orderwindow-class.html#__init__,Method cuon.Order.standard_bill.standard_bill.__init__()=cuon.Order.standard_bill.standard_bill-class.html#__init__,Method cuon.Order.standard_delivery_note.standard_delivery_note.__init__()=cuon.Order.standard_delivery_note.standard_delivery_note-class.html#__init__,Method cuon.Order.standard_invoice.standard_invoice.__init__()=cuon.Order.standard_invoice.standard_invoice-class.html#__init__,Method cuon.Order.standard_pickup_note.standard_pickup_note.__init__()=cuon.Order.standard_pickup_note.standard_pickup_note-class.html#__init__,Method cuon.Preferences.SinglePreferences.SinglePreferences.__init__()=cuon.Preferences.SinglePreferences.SinglePreferences-class.html#__init__,Method cuon.Preferences.preferences.preferenceswindow.__init__()=cuon.Preferences.preferences.preferenceswindow-class.html#__init__,Method cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop.__init__()=cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop-class.html#__init__,Method cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat.__init__()=cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat-class.html#__init__,Method cuon.PrefsFinance.prefsFinance.prefsFinancewindow.__init__()=cuon.PrefsFinance.prefsFinance.prefsFinancewindow-class.html#__init__,Method cuon.Project.SingleProject.SingleProject.__init__()=cuon.Project.SingleProject.SingleProject-class.html#__init__,Method cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources.__init__()=cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources-class.html#__init__,Method cuon.Project.SingleProjectPhases.SingleProjectPhases.__init__()=cuon.Project.SingleProjectPhases.SingleProjectPhases-class.html#__init__,Method cuon.Project.SingleProjectProgramming.SingleProjectProgramming.__init__()=cuon.Project.SingleProjectProgramming.SingleProjectProgramming-class.html#__init__,Method cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources.__init__()=cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources-class.html#__init__,Method cuon.Project.SingleProjectTasks.SingleProjectTasks.__init__()=cuon.Project.SingleProjectTasks.SingleProjectTasks-class.html#__init__,Method cuon.Project.project.projectwindow.__init__()=cuon.Project.project.projectwindow-class.html#__init__,Method cuon.Proposal.proposal.proposalwindow.__init__()=cuon.Proposal.proposal.proposalwindow-class.html#__init__,Method cuon.Skeleton.SingleSkeleton.SingleClient.__init__()=cuon.Skeleton.SingleSkeleton.SingleClient-class.html#__init__,Method cuon.Skeleton.skeleton.clientswindow.__init__()=cuon.Skeleton.skeleton.clientswindow-class.html#__init__,Method cuon.Staff.SingleStaff.SingleStaff.__init__()=cuon.Staff.SingleStaff.SingleStaff-class.html#__init__,Method cuon.Staff.SingleStaffDisease.SingleStaffDisease.__init__()=cuon.Staff.SingleStaffDisease.SingleStaffDisease-class.html#__init__,Method cuon.Staff.SingleStaffFee.SingleStaffFee.__init__()=cuon.Staff.SingleStaffFee.SingleStaffFee-class.html#__init__,Method cuon.Staff.SingleStaffMisc.SingleStaffMisc.__init__()=cuon.Staff.SingleStaffMisc.SingleStaffMisc-class.html#__init__,Method cuon.Staff.SingleStaffVacation.SingleStaffVacation.__init__()=cuon.Staff.SingleStaffVacation.SingleStaffVacation-class.html#__init__,Method cuon.Staff.staff.staffwindow.__init__()=cuon.Staff.staff.staffwindow-class.html#__init__,Method cuon.Stats.stats.statswindow.__init__()=cuon.Stats.stats.statswindow-class.html#__init__,Method cuon.Stock.SingleStock.SingleStock.__init__()=cuon.Stock.SingleStock.SingleStock-class.html#__init__,Method cuon.Stock.SingleStockGoods.SingleStockGoods.__init__()=cuon.Stock.SingleStockGoods.SingleStockGoods-class.html#__init__,Method cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1.__init__()=cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1-class.html#__init__,Method cuon.Stock.stock.stockwindow.__init__()=cuon.Stock.stock.stockwindow-class.html#__init__,Method cuon.SupportTicket.SingleSupportProject.SingleSupportProject.__init__()=cuon.SupportTicket.SingleSupportProject.SingleSupportProject-class.html#__init__,Method cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket.__init__()=cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket-class.html#__init__,Method cuon.SupportTicket.supportTicket.supportticketwindow.__init__()=cuon.SupportTicket.supportTicket.supportticketwindow-class.html#__init__,Method cuon.Think.SingleMindmap.SingleMindmap.__init__()=cuon.Think.SingleMindmap.SingleMindmap-class.html#__init__,Method cuon.Think.SingleThink.SingleThink.__init__()=cuon.Think.SingleThink.SingleThink-class.html#__init__,Method cuon.Think.think.thinkwindow.__init__()=cuon.Think.think.thinkwindow-class.html#__init__,Method cuon.TypeDefs.constants.constants.__init__()=cuon.TypeDefs.constants.constants-class.html#__init__,Method cuon.TypeDefs.defaultValues.defaultValues.__init__()=cuon.TypeDefs.defaultValues.defaultValues-class.html#__init__,Method cuon.TypeDefs.typedefs.typedefs.__init__()=cuon.TypeDefs.typedefs.typedefs-class.html#__init__,Method cuon.TypeDefs.typedefs_server.typedefs_server.__init__()=cuon.TypeDefs.typedefs_server.typedefs_server-class.html#__init__,Method cuon.User.user.User.__init__()=cuon.User.user.User-class.html#__init__,Method cuon.VTK.test.test.__init__()=cuon.VTK.test.test-class.html#__init__,Method cuon.WebShop.SingleWebshop.SingleWebshop.__init__()=cuon.WebShop.SingleWebshop.SingleWebshop-class.html#__init__,Method cuon.WebShop.webshop.webshopwindow.__init__()=cuon.WebShop.webshop.webshopwindow-class.html#__init__,Method cuon.Windows.chooseWindows.chooseWindows.__init__()=cuon.Windows.chooseWindows.chooseWindows-class.html#__init__,Method cuon.Windows.cyr_load_entries.cyr_load_entries.__init__()=cuon.Windows.cyr_load_entries.cyr_load_entries-class.html#__init__,Method cuon.Windows.dataEntry.dataEntry.__init__()=cuon.Windows.dataEntry.dataEntry-class.html#__init__,Method cuon.Windows.gladeXml.gladeXml.__init__()=cuon.Windows.gladeXml.gladeXml-class.html#__init__,Method cuon.Windows.rawWindow.rawWindow.__init__()=cuon.Windows.rawWindow.rawWindow-class.html#__init__,Method cuon.Windows.setOfEntries.setOfEntries.__init__()=cuon.Windows.setOfEntries.setOfEntries-class.html#__init__,Method cuon.Windows.windows.windows.__init__()=cuon.Windows.windows.windows-class.html#__init__,Method cuon.XML.MyXML.MyXML.__init__()=cuon.XML.MyXML.MyXML-class.html#__init__,Method cuon.XMLRPC.xmlrpc.myXmlRpc.__init__()=cuon.XMLRPC.xmlrpc.myXmlRpc-class.html#__init__,Method cuon.cuon_dia.CuonDia.__init__()=cuon.cuon_dia.CuonDia-class.html#__init__,Method cuon.cuon_dia.MyXmlrpc.__init__()=cuon.cuon_dia.MyXmlrpc-class.html#__init__,Method cuon.cuon_dia.PropInfo.__init__()=cuon.cuon_dia.PropInfo-class.html#__init__"><a title="Cuon.MainWindow.__init__
+cuon.AI.ai.aiwindow.__init__
+cuon.AI.ai_main.ai_main.__init__
+cuon.AI.gtkMiniClient.gtkMiniClient.__init__
+cuon.AI.gtkMiniClient.simpleGlade.__init__
+cuon.AI.tki1.tki1.__init__
+cuon.Addresses.SingleAddress.SingleAddress.__init__
+cuon.Addresses.SingleAddressBank.SingleAddressBank.__init__
+cuon.Addresses.SingleContact.SingleContact.__init__
+cuon.Addresses.SingleCountry.SingleCountry.__init__
+cuon.Addresses.SingleMisc.SingleMisc.__init__
+cuon.Addresses.SingleNotes.SingleNotes.__init__
+cuon.Addresses.SinglePartner.SinglePartner.__init__
+cuon.Addresses.SingleScheduling.SingleScheduling.__init__
+cuon.Addresses.addresses.addresswindow.__init__
+cuon.Addresses.contact.contactwindow.__init__
+cuon.Addresses.lists_addresses.lists_addresses.__init__
+cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1.__init__
+cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11.__init__
+cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12.__init__
+cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2.__init__
+cuon.Addresses.printAddress.printAddress.__init__
+cuon.Addresses.selectionDialog.selectionDialog1.__init__
+cuon.Analysis.SingleAnalysis_cost.SingleClient.__init__
+cuon.Analysis.analyse_costs.clientswindow.__init__
+cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.__init__
+cuon.Articles.SingleArticle.SingleArticle.__init__
+cuon.Articles.SingleArticleParts.SingleArticleParts.__init__
+cuon.Articles.SingleArticlePurchase.SingleArticlePurchase.__init__
+cuon.Articles.SingleArticleSale.SingleArticleSale.__init__
+cuon.Articles.SingleArticleStock.SingleArticleStock.__init__
+cuon.Articles.SingleArticleWebshop.SingleArticleWebshop.__init__
+cuon.Articles.SingleMaterialgroups.SingleMaterialgroups.__init__
+cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount.__init__
+cuon.Articles.articles.articleswindow.__init__
+cuon.Articles.lists_articles_number1.lists_articles_number1.__init__
+cuon.Articles.materialgroup.materialgroupwindow.__init__
+cuon.Articles.pickles_articles.pickles_articles.__init__
+cuon.Bank.SingleBank.SingleBank.__init__
+cuon.Bank.bank.bankwindow.__init__
+cuon.Biblio.SingleBiblio.SingleBiblio.__init__
+cuon.Biblio.biblio.bibliowindow.__init__
+cuon.Calendar.calendar.calendarwindow.__init__
+cuon.Clients.SingleClient.SingleClient.__init__
+cuon.Clients.clients.clientswindow.__init__
+cuon.DMS.SingleDMS.SingleDMS.__init__
+cuon.DMS.dms.dmswindow.__init__
+cuon.DMS.documentTools.documentTools.__init__
+cuon.Databases.SingleCuon.SingleCuon.__init__
+cuon.Databases.SingleData.SingleData.__init__
+cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.__init__
+cuon.Databases.SingleExport.SingleExport.__init__
+cuon.Databases.SingleImport.SingleImport.__init__
+cuon.Databases.SingleImportZip.SingleImportZip.__init__
+cuon.Databases.cyr_column.cyr_column.__init__
+cuon.Databases.cyr_load_table.cyr_load_table.__init__
+cuon.Databases.cyr_table.cyr_table.__init__
+cuon.Databases.databases.databaseswindow.__init__
+cuon.Databases.dumps.dumps.__init__
+cuon.Databases.export_generic1.export_generic1.__init__
+cuon.Databases.import_generic1.import_generic1.__init__
+cuon.Databases.import_generic2.import_generic2.__init__
+cuon.E_Mail.imap_dms.imap_dms.__init__
+cuon.E_Mail.incoming_mail.incoming_mail.__init__
+cuon.E_Mail.sendEmail.sendEmail.__init__
+cuon.Editor.editor.editorwindow.__init__
+cuon.Editor.programmersEditor.programmerseditor.__init__
+cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.__init__
+cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.__init__
+cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly.__init__
+cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment.__init__
+cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice.__init__
+cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.__init__
+cuon.Finances.SingleAccountInfo.SingleAccountInfo.__init__
+cuon.Finances.SingleAccountPlan.SingleAccountPlan.__init__
+cuon.Finances.SingleAccountSentence.SingleAccountSentence.__init__
+cuon.Finances.SingleAccountValues.SingleAccountValues.__init__
+cuon.Garden.SingleBotany.SingleBotany.__init__
+cuon.Garden.SingleBotanyClass.SingleBotanyClass.__init__
+cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio.__init__
+cuon.Garden.SingleBotanyFamily.SingleBotanyFamily.__init__
+cuon.Garden.SingleBotanyGenus.SingleBotanyGenus.__init__
+cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo.__init__
+cuon.Garden.SingleHibernation.SingleHibernation.__init__
+cuon.Garden.SingleHibernationPlant.SingleHibernationPlant.__init__
+cuon.Garden.botany.botanywindow.__init__
+cuon.Garden.garden.gardenwindow.__init__
+cuon.Garden.hibernation.hibernationwindow.__init__
+cuon.Graves.SingleGrave.SingleGrave.__init__
+cuon.Graves.SingleGraveAutumn.SingleGraveAutumn.__init__
+cuon.Graves.SingleGraveHoliday.SingleGraveHoliday.__init__
+cuon.Graves.SingleGraveInvoices.SingleGraveInvoices.__init__
+cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance.__init__
+cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent.__init__
+cuon.Graves.SingleGraveSpring.SingleGraveSpring.__init__
+cuon.Graves.SingleGraveSummer.SingleGraveSummer.__init__
+cuon.Graves.SingleGraveWinter.SingleGraveWinter.__init__
+cuon.Graves.SingleGraveYear.SingleGraveYear.__init__
+cuon.Graves.SingleGraveyard.SingleGraveyard.__init__
+cuon.Graves.address_graves.address_graves.__init__
+cuon.Graves.grave.graveswindow.__init__
+cuon.Graves.graveyard.graveyardMainwindow.__init__
+cuon.Graves.plant_lists.plantlists.__init__
+cuon.Help.help.helpwindow.__init__
+cuon.Leasing.SingleLeasing.SingleLeasing.__init__
+cuon.Leasing.leasing.leasingwindow.__init__
+cuon.Logging.logs.logs.__init__
+cuon.Login.login.loginwindow.__init__
+cuon.Misc.cuon_dialog.cuon_dialog.__init__
+cuon.Misc.cuonlists.cuonlists.__init__
+cuon.Misc.fileSelection.fileSelection.__init__
+cuon.Misc.messages.messages.__init__
+cuon.Misc.misc.Treeview.__init__
+cuon.Misc.misc.misc.__init__
+cuon.OpenOffice.letter.letter.__init__
+cuon.OpenOffice.ooconnect.ooconnect.__init__
+cuon.Order.SingleOrder.SingleOrder.__init__
+cuon.Order.SingleOrderGet.SingleOrderGet.__init__
+cuon.Order.SingleOrderInvoice.SingleOrderInvoice.__init__
+cuon.Order.SingleOrderPayment.SingleOrderPayment.__init__
+cuon.Order.SingleOrderPosition.SingleOrderPosition.__init__
+cuon.Order.SingleOrderSupply.SingleOrderSupply.__init__
+cuon.Order.order.orderwindow.__init__
+cuon.Order.standard_bill.standard_bill.__init__
+cuon.Order.standard_delivery_note.standard_delivery_note.__init__
+cuon.Order.standard_invoice.standard_invoice.__init__
+cuon.Order.standard_pickup_note.standard_pickup_note.__init__
+cuon.Preferences.SinglePreferences.SinglePreferences.__init__
+cuon.Preferences.preferences.preferenceswindow.__init__
+cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop.__init__
+cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat.__init__
+cuon.PrefsFinance.prefsFinance.prefsFinancewindow.__init__
+cuon.Project.SingleProject.SingleProject.__init__
+cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources.__init__
+cuon.Project.SingleProjectPhases.SingleProjectPhases.__init__
+cuon.Project.SingleProjectProgramming.SingleProjectProgramming.__init__
+cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources.__init__
+cuon.Project.SingleProjectTasks.SingleProjectTasks.__init__
+cuon.Project.project.projectwindow.__init__
+cuon.Proposal.proposal.proposalwindow.__init__
+cuon.Skeleton.SingleSkeleton.SingleClient.__init__
+cuon.Skeleton.skeleton.clientswindow.__init__
+cuon.Staff.SingleStaff.SingleStaff.__init__
+cuon.Staff.SingleStaffDisease.SingleStaffDisease.__init__
+cuon.Staff.SingleStaffFee.SingleStaffFee.__init__
+cuon.Staff.SingleStaffMisc.SingleStaffMisc.__init__
+cuon.Staff.SingleStaffVacation.SingleStaffVacation.__init__
+cuon.Staff.staff.staffwindow.__init__
+cuon.Stats.stats.statswindow.__init__
+cuon.Stock.SingleStock.SingleStock.__init__
+cuon.Stock.SingleStockGoods.SingleStockGoods.__init__
+cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1.__init__
+cuon.Stock.stock.stockwindow.__init__
+cuon.SupportTicket.SingleSupportProject.SingleSupportProject.__init__
+cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket.__init__
+cuon.SupportTicket.supportTicket.supportticketwindow.__init__
+cuon.Think.SingleMindmap.SingleMindmap.__init__
+cuon.Think.SingleThink.SingleThink.__init__
+cuon.Think.think.thinkwindow.__init__
+cuon.TypeDefs.constants.constants.__init__
+cuon.TypeDefs.defaultValues.defaultValues.__init__
+cuon.TypeDefs.typedefs.typedefs.__init__
+cuon.TypeDefs.typedefs_server.typedefs_server.__init__
+cuon.User.user.User.__init__
+cuon.VTK.test.test.__init__
+cuon.WebShop.SingleWebshop.SingleWebshop.__init__
+cuon.WebShop.webshop.webshopwindow.__init__
+cuon.Windows.chooseWindows.chooseWindows.__init__
+cuon.Windows.cyr_load_entries.cyr_load_entries.__init__
+cuon.Windows.dataEntry.dataEntry.__init__
+cuon.Windows.gladeXml.gladeXml.__init__
+cuon.Windows.rawWindow.rawWindow.__init__
+cuon.Windows.setOfEntries.setOfEntries.__init__
+cuon.Windows.windows.windows.__init__
+cuon.XML.MyXML.MyXML.__init__
+cuon.XMLRPC.xmlrpc.myXmlRpc.__init__
+cuon.cuon_dia.CuonDia.__init__
+cuon.cuon_dia.MyXmlrpc.__init__
+cuon.cuon_dia.PropInfo.__init__" class="py-name" href="#" onclick="return doclink('link-5', '__init__', 'link-5');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">         </tt>
+<a name="ArticlesFastSelection.FastSelectionStart"></a><div id="ArticlesFastSelection.FastSelectionStart-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.FastSelectionStart-toggle" onclick="return toggle('ArticlesFastSelection.FastSelectionStart');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#FastSelectionStart">FastSelectionStart</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.FastSelectionStart-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.FastSelectionStart-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"start Fast Selection"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">ts</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method cuon.AI.gtkMiniClient.simpleGlade.getWidget()=cuon.AI.gtkMiniClient.simpleGlade-class.html#getWidget,Method cuon.Windows.gladeXml.gladeXml.getWidget()=cuon.Windows.gladeXml.gladeXml-class.html#getWidget"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-6', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeMaterialgroup'</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-comment">#treeview.set_model(liststore)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">  </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-name">renderer</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">CellRendererText</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-name">column</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeViewColumn</tt><tt class="py-op">(</tt><tt class="py-string">"Materialgroups"</tt><tt class="py-op">,</tt> <tt class="py-name">renderer</tt><tt class="py-op">,</tt> <tt class="py-name">text</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt class="py-name">append_column</tt><tt class="py-op">(</tt><tt class="py-name">column</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                     </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">tt</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-7', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeArticles'</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-comment">#treeview.set_model(liststore)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">  </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">renderer</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">CellRendererText</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">column</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeViewColumn</tt><tt class="py-op">(</tt><tt class="py-string">"Articles"</tt><tt class="py-op">,</tt> <tt class="py-name">renderer</tt><tt class="py-op">,</tt> <tt class="py-name">text</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">tt</tt><tt class="py-op">.</tt><tt class="py-name">append_column</tt><tt class="py-op">(</tt><tt class="py-name">column</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">                     </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillMaterialGroup()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillMaterialGroup"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillMaterialGroup" class="py-name" href="#" onclick="return doclink('link-8', 'fillMaterialGroup', 'link-8');">fillMaterialGroup</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">         </tt>
+<a name="ArticlesFastSelection.fillMaterialGroup"></a><div id="ArticlesFastSelection.fillMaterialGroup-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.fillMaterialGroup-toggle" onclick="return toggle('ArticlesFastSelection.fillMaterialGroup');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillMaterialGroup">fillMaterialGroup</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.fillMaterialGroup-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.fillMaterialGroup-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'eSchedulfor changed'</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">ts</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-9', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeMaterialgroup'</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'ts = '</tt><tt class="py-op">,</tt> <tt class="py-name">ts</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">object</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt class="py-name">set_model</tt><tt class="py-op">(</tt><tt class="py-name">treestore</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                 </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">            <tt class="py-name">liGroups</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rpc</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method cuon.XMLRPC.xmlrpc.myXmlRpc.callRP()=cuon.XMLRPC.xmlrpc.myXmlRpc-class.html#callRP"><a title="cuon.XMLRPC.xmlrpc.myXmlRpc.callRP" class="py-name" href="#" onclick="return doclink('link-10', 'callRP', 'link-10');">callRP</a></tt><tt class="py-op">(</tt><tt class="py-string">'Article.getMaterialGroups'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable cuon.AI.miniClient.dicUser=cuon.AI.miniClient-module.html#dicUser"><a title="cuon.AI.miniClient.dicUser" class="py-name" href="#" onclick="return doclink('link-11', 'dicUser', 'link-11');">dicUser</a></tt> <tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'liGroups '</tt><tt class="py-op">,</tt> <tt class="py-name">liGroups</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">liGroups</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                <tt class="py-name">lastGroup</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                 </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                <tt class="py-comment">#iter = treestore.append(None,[_('Schedul')])</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                <tt class="py-comment">#print 'iter = ', iter</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                <tt class="py-name">iter2</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                <tt class="py-name">iter3</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-comment">#liDates.reverse()</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">oneGroup</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liGroups</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                    <tt class="py-name">groupname</tt> <tt class="py-op">=</tt> <tt class="py-name">oneGroup</tt><tt class="py-op">[</tt><tt class="py-string">'name'</tt><tt class="py-op">]</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                     </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                    <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">treestore</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-name">groupname</tt> <tt class="py-op">+</tt> <tt class="py-string">'     ###'</tt> <tt class="py-op">+</tt><tt class="py-op">`</tt><tt class="py-name">oneGroup</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">`</tt> <tt class="py-op">]</tt><tt class="py-op">)</tt>  </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                    <tt class="py-comment">#print 'add iter', [groupname + '###' +`oneGroup['id']` ]</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                     </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                    <tt class="py-comment">#iter2 = treestore.insert_after(iter,None,['TESTEN'])           </tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                <tt class="py-comment">#print 'End liDates'</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method cuon.VTK.test.test.show()=cuon.VTK.test.test-class.html#show"><a title="cuon.VTK.test.test.show" class="py-name" href="#" onclick="return doclink('link-12', 'show', 'link-12');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-comment">#self.getWidget('scrolledwindow10').show()</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectMaterialGroupTree()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectMaterialGroupTree"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectMaterialGroupTree" class="py-name" href="#" onclick="return doclink('link-13', 'connectMaterialGroupTree', 'link-13');">connectMaterialGroupTree</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'ts'</tt><tt class="py-op">,</tt> <tt class="py-name">ts</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">             </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt>    </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">             </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">             </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">             </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">          </tt>
+<a name="ArticlesFastSelection.disconnectArticlesTree"></a><div id="ArticlesFastSelection.disconnectArticlesTree-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.disconnectArticlesTree-toggle" onclick="return toggle('ArticlesFastSelection.disconnectArticlesTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#disconnectArticlesTree">disconnectArticlesTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.disconnectArticlesTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.disconnectArticlesTree-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">             </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-14', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeArticles'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">disconnect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectArticlesTreeId</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.connectArticlesTree"></a><div id="ArticlesFastSelection.connectArticlesTree-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.connectArticlesTree-toggle" onclick="return toggle('ArticlesFastSelection.connectArticlesTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectArticlesTree">connectArticlesTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.connectArticlesTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.connectArticlesTree-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectArticlesTreeId</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-15', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeArticles'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"changed"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.ArticlesTree_select_callback()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#ArticlesTree_select_callback"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.ArticlesTree_select_callback" class="py-name" href="#" onclick="return doclink('link-16', 'ArticlesTree_select_callback', 'link-16');">ArticlesTree_select_callback</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    </tt>
+<a name="ArticlesFastSelection.ArticlesTree_select_callback"></a><div id="ArticlesFastSelection.ArticlesTree_select_callback-def"><a name="L95"></a><tt class="py-lineno"> 95</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.ArticlesTree_select_callback-toggle" onclick="return toggle('ArticlesFastSelection.ArticlesTree_select_callback');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#ArticlesTree_select_callback">ArticlesTree_select_callback</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">treeSelection</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.ArticlesTree_select_callback-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.ArticlesTree_select_callback-expanded"><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">listStore</tt><tt class="py-op">,</tt> <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">treeSelection</tt><tt class="py-op">.</tt><tt class="py-name">get_selected</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">         </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">listStore</tt><tt class="py-op">,</tt><tt class="py-name">iter</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">         </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">listStore</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">listStore</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">iter</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">sNewId</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">.</tt><tt class="py-name">get_value</tt><tt class="py-op">(</tt><tt class="py-name">iter</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">sNewId</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fillArticlesNewID</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">sNewId</tt><tt class="py-op">[</tt><tt class="py-name">sNewId</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-string">'###'</tt><tt class="py-op">)</tt><tt class="py-op">+</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-comment">#self.setDateValues(newID)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                 </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.on_treeArticles_row_activated"></a><div id="ArticlesFastSelection.on_treeArticles_row_activated-def"><a name="L115"></a><tt class="py-lineno">115</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.on_treeArticles_row_activated-toggle" onclick="return toggle('ArticlesFastSelection.on_treeArticles_row_activated');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#on_treeArticles_row_activated">on_treeArticles_row_activated</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">,</tt> <tt class="py-param">data1</tt><tt class="py-op">,</tt> <tt class="py-param">data2</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.on_treeArticles_row_activated-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.on_treeArticles_row_activated-expanded"><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"treeArticles row activated"</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.on_bQuickAppend_clicked()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#on_bQuickAppend_clicked,Method cuon.Articles.articles.articleswindow.on_bQuickAppend_clicked()=cuon.Articles.articles.articleswindow-class.html#on_bQuickAppend_clicked,Method cuon.Graves.grave.graveswindow.on_bQuickAppend_clicked()=cuon.Graves.grave.graveswindow-class.html#on_bQuickAppend_clicked,Method cuon.Leasing.leasing.leasingwindow.on_bQuickAppend_clicked()=cuon.Leasing.leasing.leasingwindow-class.html#on_bQuickAppend_clicked,Method cuon.Order.order.orderwindow.on_bQuickAppend_clicked()=cuon.Order.order.orderwindow-class.html#on_bQuickAppend_clicked"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.on_bQuickAppend_clicked
+cuon.Articles.articles.articleswindow.on_bQuickAppend_clicked
+cuon.Graves.grave.graveswindow.on_bQuickAppend_clicked
+cuon.Leasing.leasing.leasingwindow.on_bQuickAppend_clicked
+cuon.Order.order.orderwindow.on_bQuickAppend_clicked" class="py-name" href="#" onclick="return doclink('link-17', 'on_bQuickAppend_clicked', 'link-17');">on_bQuickAppend_clicked</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.on_bQuickAppend_clicked"></a><div id="ArticlesFastSelection.on_bQuickAppend_clicked-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.on_bQuickAppend_clicked-toggle" onclick="return toggle('ArticlesFastSelection.on_bQuickAppend_clicked');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#on_bQuickAppend_clicked">on_bQuickAppend_clicked</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.on_bQuickAppend_clicked-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.on_bQuickAppend_clicked-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.fillArticles"></a><div id="ArticlesFastSelection.fillArticles-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.fillArticles-toggle" onclick="return toggle('ArticlesFastSelection.fillArticles');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillArticles">fillArticles</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">mid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.fillArticles-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.fillArticles-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'fill Articles'</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-name">ts</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-18', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeArticles'</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'ts = '</tt><tt class="py-op">,</tt> <tt class="py-name">ts</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">object</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt class="py-name">set_model</tt><tt class="py-op">(</tt><tt class="py-name">treestore</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                 </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">liArticles</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rpc</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="cuon.XMLRPC.xmlrpc.myXmlRpc.callRP" class="py-name" href="#" onclick="return doclink('link-19', 'callRP', 'link-10');">callRP</a></tt><tt class="py-op">(</tt><tt class="py-string">'Article.getArticlesOfMaterialGroup'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="cuon.AI.miniClient.dicUser" class="py-name" href="#" onclick="return doclink('link-20', 'dicUser', 'link-11');">dicUser</a></tt><tt class="py-op">,</tt> <tt class="py-name">mid</tt> <tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'liArticles '</tt><tt class="py-op">,</tt> <tt class="py-name">liArticles</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">liArticles</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                <tt class="py-name">lastGroup</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                 </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-comment">#iter = treestore.append(None,[_('Schedul')])</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-comment">#print 'iter = ', iter</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                <tt class="py-name">iter2</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-name">iter3</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                <tt class="py-comment">#liDates.reverse()</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">oneArticle</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liArticles</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                    <tt class="py-name">sA</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method cuon.Databases.dumps.dumps.getCheckedValue()=cuon.Databases.dumps.dumps-class.html#getCheckedValue"><a title="cuon.Databases.dumps.dumps.getCheckedValue" class="py-name" href="#" onclick="return doclink('link-21', 'getCheckedValue', 'link-21');">getCheckedValue</a></tt><tt class="py-op">(</tt><tt class="py-name">oneArticle</tt><tt class="py-op">[</tt><tt class="py-string">'a'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt>  <tt class="py-string">'toLocaleString'</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                    <tt class="py-name">sB</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="cuon.Databases.dumps.dumps.getCheckedValue" class="py-name" href="#" onclick="return doclink('link-22', 'getCheckedValue', 'link-21');">getCheckedValue</a></tt><tt class="py-op">(</tt><tt class="py-name">oneArticle</tt><tt class="py-op">[</tt><tt class="py-string">'b'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt>  <tt class="py-string">'toLocaleString'</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                    <tt class="py-name">sC</tt> <tt class="py-op">=</tt> <tt class="py-name">articleprice</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="cuon.Databases.dumps.dumps.getCheckedValue" class="py-name" href="#" onclick="return doclink('link-23', 'getCheckedValue', 'link-21');">getCheckedValue</a></tt><tt class="py-op">(</tt> <tt class="py-name">oneArticle</tt><tt class="py-op">[</tt><tt class="py-string">'c'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt>  <tt class="py-string">'toLocaleString'</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                     </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                    <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">treestore</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-name">sA</tt> <tt class="py-op">+</tt>  <tt class="py-string">' - '</tt> <tt class="py-op">+</tt> <tt class="py-name">sB</tt> <tt class="py-op">+</tt> <tt class="py-string">'  '</tt> <tt class="py-op">+</tt> <tt class="py-name">sC</tt> <tt class="py-op">+</tt>  <tt class="py-string">'     ###'</tt> <tt class="py-op">+</tt><tt class="py-op">`</tt><tt class="py-name">oneArticle</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">`</tt> <tt class="py-op">]</tt><tt class="py-op">)</tt>  </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                    <tt class="py-comment">#print 'add iter', [groupname + '###' +`oneGroup['id']` ]</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                     </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                    <tt class="py-comment">#iter2 = treestore.insert_after(iter,None,['TESTEN'])           </tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                <tt class="py-comment">#print 'End liDates'</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="cuon.VTK.test.test.show" class="py-name" href="#" onclick="return doclink('link-24', 'show', 'link-12');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-comment">#self.getWidget('scrolledwindow10').show()</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectArticlesTree()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectArticlesTree"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectArticlesTree" class="py-name" href="#" onclick="return doclink('link-25', 'connectArticlesTree', 'link-25');">connectArticlesTree</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'ts'</tt><tt class="py-op">,</tt> <tt class="py-name">ts</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">             </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">:</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt>     </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">             </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.disconnectMaterialGroupTree"></a><div id="ArticlesFastSelection.disconnectMaterialGroupTree-def"><a name="L161"></a><tt class="py-lineno">161</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.disconnectMaterialGroupTree-toggle" onclick="return toggle('ArticlesFastSelection.disconnectMaterialGroupTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#disconnectMaterialGroupTree">disconnectMaterialGroupTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.disconnectMaterialGroupTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.disconnectMaterialGroupTree-expanded"><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">             </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-26', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeMaterialgroup'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">disconnect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectMaterialGroupTreeId</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="ArticlesFastSelection.connectMaterialGroupTree"></a><div id="ArticlesFastSelection.connectMaterialGroupTree-def"><a name="L168"></a><tt class="py-lineno">168</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.connectMaterialGroupTree-toggle" onclick="return toggle('ArticlesFastSelection.connectMaterialGroupTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectMaterialGroupTree">connectMaterialGroupTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.connectMaterialGroupTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.connectMaterialGroupTree-expanded"><a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectMaterialGroupTreeId</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-27', 'getWidget', 'link-6');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treeMaterialgroup'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"changed"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.MaterialGroupTree_select_callback()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#MaterialGroupTree_select_callback"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.MaterialGroupTree_select_callback" class="py-name" href="#" onclick="return doclink('link-28', 'MaterialGroupTree_select_callback', 'link-28');">MaterialGroupTree_select_callback</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    </tt>
+<a name="ArticlesFastSelection.MaterialGroupTree_select_callback"></a><div id="ArticlesFastSelection.MaterialGroupTree_select_callback-def"><a name="L174"></a><tt class="py-lineno">174</tt> <a class="py-toggle" href="#" id="ArticlesFastSelection.MaterialGroupTree_select_callback-toggle" onclick="return toggle('ArticlesFastSelection.MaterialGroupTree_select_callback');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#MaterialGroupTree_select_callback">MaterialGroupTree_select_callback</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">treeSelection</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ArticlesFastSelection.MaterialGroupTree_select_callback-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ArticlesFastSelection.MaterialGroupTree_select_callback-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-name">listStore</tt><tt class="py-op">,</tt> <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">treeSelection</tt><tt class="py-op">.</tt><tt class="py-name">get_selected</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">         </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">listStore</tt><tt class="py-op">,</tt><tt class="py-name">iter</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">         </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">listStore</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">listStore</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">    </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">iter</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">            <tt class="py-name">sNewId</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">.</tt><tt class="py-name">get_value</tt><tt class="py-op">(</tt><tt class="py-name">iter</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">sNewId</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">                <tt class="py-name">newID</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">sNewId</tt><tt class="py-op">[</tt><tt class="py-name">sNewId</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-string">'###'</tt><tt class="py-op">)</tt><tt class="py-op">+</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillArticles()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillArticles"><a title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillArticles" class="py-name" href="#" onclick="return doclink('link-29', 'fillArticles', 'link-29');">fillArticles</a></tt><tt class="py-op">(</tt><tt class="py-name">newID</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">                 </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:39 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

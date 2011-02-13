@@ -53,4 +53,3 @@ class SingleBotanyClass(SingleData):
         return dicValues    
         #
         #self.statusfields = ['lastname', 'city']
-

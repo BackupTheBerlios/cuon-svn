@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.SQL.SQL</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.SQL-module.html">Module&nbsp;SQL</a> ::
+        Class&nbsp;SQL
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.SQL.SQL-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SQL</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.SQL-pysrc.html#SQL">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_sql" name="uml_class_diagram_for_cuon_sql">
+<area shape="rect" href="cuon.basics.basics-class.html#addDateTime" title="cuon.basics.basics.addDateTime" alt="" coords="173,660,491,679"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkBool" title="cuon.basics.basics.checkBool" alt="" coords="173,679,491,697"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkEndTime" title="cuon.basics.basics.checkEndTime" alt="" coords="173,697,491,716"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkType" title="cuon.basics.basics.checkType" alt="" coords="173,716,491,735"/>
+<area shape="rect" href="cuon.basics.basics-class.html#closeDB" title="cuon.basics.basics.closeDB" alt="" coords="173,735,491,753"/>
+<area shape="rect" href="cuon.basics.basics-class.html#convertTo" title="cuon.basics.basics.convertTo" alt="" coords="173,753,491,772"/>
+<area shape="rect" href="cuon.basics.basics-class.html#createNewSessionID" title="cuon.basics.basics.createNewSessionID" alt="" coords="173,772,491,791"/>
+<area shape="rect" href="cuon.basics.basics-class.html#decompress" title="cuon.basics.basics.decompress" alt="" coords="173,791,491,809"/>
+<area shape="rect" href="cuon.basics.basics-class.html#doDecode64" title="cuon.basics.basics.doDecode64" alt="" coords="173,809,491,828"/>
+<area shape="rect" href="cuon.basics.basics-class.html#formatDate" title="cuon.basics.basics.formatDate" alt="" coords="173,828,491,847"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getActualDateTime" title="cuon.basics.basics.getActualDateTime" alt="" coords="173,847,491,865"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getAssociatedTable" title="cuon.basics.basics.getAssociatedTable" alt="" coords="173,865,491,884"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getBeforeYears" title="cuon.basics.basics.getBeforeYears" alt="" coords="173,884,491,903"/>
+<area shape="rect" href="cuon.basics.basics-class.html#xmlrpc_testXmlrpc" title="cuon.basics.basics.xmlrpc_testXmlrpc" alt="" coords="173,921,491,940"/>
+<area shape="rect" href="cuon.basics.basics-class.html" title="cuon.basics.basics" alt="" coords="172,635,492,941"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#__init__" title="Initialize." alt="" coords="17,996,647,1015"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_createBigRow" title="cuon.SQL.SQL.xmlrpc_createBigRow" alt="" coords="17,1015,647,1033"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_deleteRecord" title="cuon.SQL.SQL.xmlrpc_deleteRecord" alt="" coords="17,1033,647,1052"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_executeNormalQuery" title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" alt="" coords="17,1052,647,1071"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_getListEntries" title="cuon.SQL.SQL.xmlrpc_getListEntries" alt="" coords="17,1071,647,1089"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_loadCompeteTable" title="cuon.SQL.SQL.xmlrpc_loadCompeteTable" alt="" coords="17,1089,647,1108"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_loadRecord" title="cuon.SQL.SQL.xmlrpc_loadRecord" alt="" coords="17,1108,647,1127"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html#xmlrpc_saveRecord" title="cuon.SQL.SQL.xmlrpc_saveRecord" alt="" coords="17,1127,647,1145"/>
+<area shape="rect" href="cuon.SQL.SQL-class.html" title="cuon.SQL.SQL" alt="" coords="16,971,648,1147"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.NOT_FOUND" alt="" coords="444,433,652,452"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.FAILURE" alt="" coords="444,452,652,471"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.isLeaf" alt="" coords="444,471,652,489"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.separator" alt="" coords="444,489,652,508"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.allowedMethods" alt="" coords="444,508,652,527"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.putSubHandler" alt="" coords="444,529,652,548"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.getSubHandler" alt="" coords="444,548,652,567"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.getSubHandlerPrefixes" alt="" coords="444,567,652,585"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.render_POST" alt="" coords="444,585,652,604"/>
+<area shape="rect" href="javascript:void(0);" title="A resource that implements XML&#45;RPC." alt="" coords="443,416,653,605"/>
+<area shape="rect" href="cuon.Database.Database-class.html" title="cuon.Database.Database" alt="" coords="453,1176,581,1203"/>
+<area shape="rect" href="twisted.web.resource.IResource-class.html" title="A web resource." alt="" coords="431,28,665,47"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.server" alt="" coords="431,47,665,65"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.__implemented__" alt="" coords="431,65,665,84"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.__provides__" alt="" coords="431,84,665,103"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listStaticNames" alt="" coords="431,105,665,124"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listStaticEntities" alt="" coords="431,124,665,143"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listNames" alt="" coords="431,143,665,161"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listEntities" alt="" coords="431,161,665,180"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listDynamicNames" alt="" coords="431,180,665,199"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listDynamicEntities" alt="" coords="431,199,665,217"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getStaticEntity" alt="" coords="431,217,665,236"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getDynamicEntity" alt="" coords="431,236,665,255"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.delEntity" alt="" coords="431,255,665,273"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.reallyPutEntity" alt="" coords="431,273,665,292"/>
+<area shape="rect" href="javascript:void(0);" title="Retrieve a &#39;child&#39; resource from me." alt="" coords="431,292,665,311"/>
+<area shape="rect" href="javascript:void(0);" title="Retrieve a static or dynamically generated child resource from me." alt="" coords="431,311,665,329"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getChildForRequest" alt="" coords="431,329,665,348"/>
+<area shape="rect" href="javascript:void(0);" title="Object Specification Descriptor" alt="" coords="431,367,665,385"/>
+<area shape="rect" href="javascript:void(0);" title="I define a web&#45;accessible resource." alt="" coords="429,11,667,387"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_sql.gif" alt='' usemap="#uml_class_diagram_for_cuon_sql" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code><a href="twisted.web.resource.IResource-class.html">entityType</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.SQL.SQL-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Initialize.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_createBigRow"></a><span class="summary-sig-name">xmlrpc_createBigRow</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sFile</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">j</span>,
+        <span class="summary-sig-arg">dicUser</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_createBigRow">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_deleteRecord"></a><span class="summary-sig-name">xmlrpc_deleteRecord</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nameOfTable</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">EMPTY</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">record</span>=<span class="summary-sig-default">-1</span>,
+        <span class="summary-sig-arg">dicUser</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_deleteRecord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_executeNormalQuery"></a><span class="summary-sig-name">xmlrpc_executeNormalQuery</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cSql</span>,
+        <span class="summary-sig-arg">dicUser</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">Name</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">zope</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">SessionID</code><code class="variable-quote">'</code><code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">0</code><code class="variable-quote">'</code><code class="variable-group">}</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_executeNormalQuery">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getListEntries"></a><span class="summary-sig-name">xmlrpc_getListEntries</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicEntries</span>,
+        <span class="summary-sig-arg">sTable</span>,
+        <span class="summary-sig-arg">sSort</span>,
+        <span class="summary-sig-arg">sWhere</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">dicUser</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">bDistinct</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">liFields</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_getListEntries">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_loadCompeteTable"></a><span class="summary-sig-name">xmlrpc_loadCompeteTable</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nameOfTable</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_loadCompeteTable">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_loadRecord"></a><span class="summary-sig-name">xmlrpc_loadRecord</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nameOfTable</span>,
+        <span class="summary-sig-arg">record</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">dicColumns</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_loadRecord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_saveRecord"></a><span class="summary-sig-name">xmlrpc_saveRecord</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sNameOfTable</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">EMPTY</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">id</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">dicValues</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">dicUser</span>=<span class="summary-sig-default"><code class="variable-group">{</code><code class="variable-group">}</code></span>,
+        <span class="summary-sig-arg">liBigEntries</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">NO</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.xmlrpc_saveRecord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b>:
+      <code>getSubHandler</code>,
+      <code>getSubHandlerPrefixes</code>,
+      <code>putSubHandler</code>,
+      <code>render_POST</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b> (private):
+      <code>_cbRender</code>,
+      <code>_ebRender</code>,
+      <code>_getFunction</code>,
+      <code>_listFunctions</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code>__providedBy__</code>,
+      <code>delEntity</code>,
+      <code>getChild</code>,
+      <code>getChildForRequest</code>,
+      <code>getChildWithDefault</code>,
+      <code>getDynamicEntity</code>,
+      <code>getStaticEntity</code>,
+      <code>listDynamicEntities</code>,
+      <code>listDynamicNames</code>,
+      <code>listEntities</code>,
+      <code>listNames</code>,
+      <code>listStaticEntities</code>,
+      <code>listStaticNames</code>,
+      <code>putChild</code>,
+      <code>reallyPutEntity</code>,
+      <code>render</code>,
+      <code>render_HEAD</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.basics.basics-class.html">basics.basics</a></code></b>:
+      <code><a href="cuon.basics.basics-class.html#addDateTime">addDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkBool">checkBool</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkEndTime">checkEndTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkType">checkType</a></code>,
+      <code><a href="cuon.basics.basics-class.html#closeDB">closeDB</a></code>,
+      <code><a href="cuon.basics.basics-class.html#convertTo">convertTo</a></code>,
+      <code><a href="cuon.basics.basics-class.html#createNewSessionID">createNewSessionID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#decompress">decompress</a></code>,
+      <code><a href="cuon.basics.basics-class.html#doDecode64">doDecode64</a></code>,
+      <code><a href="cuon.basics.basics-class.html#formatDate">formatDate</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getActualDateTime">getActualDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getAssociatedTable">getAssociatedTable</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getBeforeYears">getBeforeYears</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getConfigOption">getConfigOption</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getDateTime">getDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstDayOfMonth">getFirstDayOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstDayOfMonthAsSeconds">getFirstDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstLastDayOfLastMonthAsSeconds">getFirstLastDayOfLastMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfMonth">getFirstOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfMonth2">getFirstOfMonth2</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfYear">getFirstOfYear</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getIRandom">getIRandom</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastDayOfMonth">getLastDayOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastDayOfMonthAsSeconds">getLastDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastOfMonth">getLastOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastOfYear">getLastOfYear</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNewUUID">getNewUUID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNormalSqlData">getNormalSqlData</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNow">getNow</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNullUUID">getNullUUID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getParser">getParser</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getSeconds">getSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getStaffID">getStaffID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getTime">getTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getTimeString">getTimeString</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getUserInfo">getUserInfo</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getWhere">getWhere</a></code>,
+      <code><a href="cuon.basics.basics-class.html#loadObject">loadObject</a></code>,
+      <code><a href="cuon.basics.basics-class.html#make64BitInt">make64BitInt</a></code>,
+      <code><a href="cuon.basics.basics-class.html#normalizeXML">normalizeXML</a></code>,
+      <code><a href="cuon.basics.basics-class.html#openDB">openDB</a></code>,
+      <code><a href="cuon.basics.basics-class.html#out">out</a></code>,
+      <code><a href="cuon.basics.basics-class.html#rebuild">rebuild</a></code>,
+      <code><a href="cuon.basics.basics-class.html#saveObject">saveObject</a></code>,
+      <code><a href="cuon.basics.basics-class.html#writeLog">writeLog</a></code>,
+      <code><a href="cuon.basics.basics-class.html#xmlrpc_getComboReportLists">xmlrpc_getComboReportLists</a></code>,
+      <code><a href="cuon.basics.basics-class.html#xmlrpc_testXmlrpc">xmlrpc_testXmlrpc</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b>:
+      <code>FAILURE</code>,
+      <code>NOT_FOUND</code>,
+      <code>allowedMethods</code>,
+      <code>isLeaf</code>,
+      <code>separator</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code>__implemented__</code>,
+      <code>__provides__</code>,
+      <code>server</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.SQL-pysrc.html#SQL.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.basics.basics-class.html#__init__">basics.basics.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:19 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

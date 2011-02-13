@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Databases.dumps.dumps</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Databases-module.html">Package&nbsp;Databases</a> ::
+        <a href="cuon.Databases.dumps-module.html" onclick="show_private();">Module&nbsp;dumps</a> ::
+        Class&nbsp;dumps
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Databases.dumps.dumps-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class dumps</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_dat_8" name="uml_class_diagram_for_cuon_dat_8">
+<area shape="rect" href="cuon.Addresses.SingleContact.SingleContact-class.html" title="cuon.Addresses.SingleContact.SingleContact" alt="" coords="23955,515,24200,541"/>
+<area shape="rect" href="cuon.Databases.databases.databaseswindow-class.html" title="cuon.Databases.databases.databaseswindow" alt="" coords="4092,571,4273,597"/>
+<area shape="rect" href="cuon.Articles.SingleArticleParts.SingleArticleParts-class.html" title="cuon.Articles.SingleArticleParts.SingleArticleParts" alt="" coords="24251,515,24525,541"/>
+<area shape="rect" href="cuon.Addresses.SingleCountry.SingleCountry-class.html" title="cuon.Addresses.SingleCountry.SingleCountry" alt="" coords="24576,515,24821,541"/>
+<area shape="rect" href="cuon.E_Mail.sendEmail.sendEmail-class.html" title="cuon.E_Mail.sendEmail.sendEmail" alt="" coords="240,627,424,653"/>
+<area shape="rect" href="cuon.Garden.SingleBotanyGenus.SingleBotanyGenus-class.html" title="cuon.Garden.SingleBotanyGenus.SingleBotanyGenus" alt="" coords="24872,515,25165,541"/>
+<area shape="rect" href="cuon.Preferences.SinglePreferences.SinglePreferences-class.html" title="cuon.Preferences.SinglePreferences.SinglePreferences" alt="" coords="25216,515,25517,541"/>
+<area shape="rect" href="cuon.Login.login.loginwindow-class.html" title="cuon.Login.login.loginwindow" alt="" coords="4324,571,4473,597"/>
+<area shape="rect" href="cuon.Graves.SingleGraveyard.SingleGraveyard-class.html" title="cuon.Graves.SingleGraveyard.SingleGraveyard" alt="" coords="25568,515,25819,541"/>
+<area shape="rect" href="cuon.DMS.documentTools.documentTools-class.html" title="cuon.DMS.documentTools.documentTools" alt="" coords="14760,347,14984,373"/>
+<area shape="rect" href="cuon.Order.order.orderwindow-class.html" title="cuon.Order.order.orderwindow" alt="" coords="6432,627,6584,653"/>
+<area shape="rect" href="cuon.Proposal.proposal.proposalwindow-class.html" title="cuon.Proposal.proposal.proposalwindow" alt="" coords="6401,683,6615,709"/>
+<area shape="rect" href="cuon.Misc.cuonlists.cuonlists-class.html" title="cuon.Misc.cuonlists.cuonlists" alt="" coords="239,571,393,597"/>
+<area shape="rect" href="cuon.Graves.plant_lists.plantlists-class.html" title="cuon.Graves.plant_lists.plantlists" alt="" coords="16,627,189,653"/>
+<area shape="rect" href="cuon.Order.SingleOrderPayment.SingleOrderPayment-class.html" title="cuon.Order.SingleOrderPayment.SingleOrderPayment" alt="" coords="25869,515,26163,541"/>
+<area shape="rect" href="cuon.Windows.rawWindow.rawWindow-class.html" title="cuon.Windows.rawWindow.rawWindow" alt="" coords="2224,459,2429,485"/>
+<area shape="rect" href="cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1-class.html" title="cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1" alt="" coords="1824,515,2189,541"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html" title="cuon.Windows.windows.windows" alt="" coords="2240,515,2413,541"/>
+<area shape="rect" href="cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12-class.html" title="cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12" alt="" coords="2464,515,2843,541"/>
+<area shape="rect" href="cuon.Articles.pickles_articles.pickles_articles-class.html" title="cuon.Articles.pickles_articles.pickles_articles" alt="" coords="2893,515,3139,541"/>
+<area shape="rect" href="cuon.Articles.lists_articles_number1.lists_articles_number1-class.html" title="cuon.Articles.lists_articles_number1.lists_articles_number1" alt="" coords="1021,515,1347,541"/>
+<area shape="rect" href="cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11-class.html" title="cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11" alt="" coords="1397,515,1773,541"/>
+<area shape="rect" href="cuon.Articles.SingleArticlePurchase.SingleArticlePurchase-class.html" title="cuon.Articles.SingleArticlePurchase.SingleArticlePurchase" alt="" coords="26213,515,26536,541"/>
+<area shape="rect" href="cuon.Graves.address_graves.address_graves-class.html" title="cuon.Graves.address_graves.address_graves" alt="" coords="15361,459,15604,485"/>
+<area shape="rect" href="cuon.Graves.SingleGraveSummer.SingleGraveSummer-class.html" title="cuon.Graves.SingleGraveSummer.SingleGraveSummer" alt="" coords="26587,515,26883,541"/>
+<area shape="rect" href="cuon.Graves.graveyard.graveyardMainwindow-class.html" title="cuon.Graves.graveyard.graveyardMainwindow" alt="" coords="4376,627,4619,653"/>
+<area shape="rect" href="cuon.Biblio.biblio.bibliowindow-class.html" title="cuon.Biblio.biblio.bibliowindow" alt="" coords="3720,627,3877,653"/>
+<area shape="rect" href="cuon.Garden.botany.botanywindow-class.html" title="cuon.Garden.botany.botanywindow" alt="" coords="3928,627,4112,653"/>
+<area shape="rect" href="cuon.Graves.SingleGraveHoliday.SingleGraveHoliday-class.html" title="cuon.Graves.SingleGraveHoliday.SingleGraveHoliday" alt="" coords="26933,515,27219,541"/>
+<area shape="rect" href="cuon.Databases.export_generic1.export_generic1-class.html" title="cuon.Databases.export_generic1.export_generic1" alt="" coords="4916,683,5119,709"/>
+<area shape="rect" href="cuon.Stock.stock.stockwindow-class.html" title="cuon.Stock.stock.stockwindow" alt="" coords="4163,627,4325,653"/>
+<area shape="rect" href="cuon.E_Mail.imap_dms.imap_dms-class.html" title="cuon.E_Mail.imap_dms.imap_dms" alt="" coords="15035,347,15216,373"/>
+<area shape="rect" href="cuon.OpenOffice.ooconnect.ooconnect-class.html" title="cuon.OpenOffice.ooconnect.ooconnect" alt="" coords="15267,347,15472,373"/>
+<area shape="rect" href="cuon.Staff.SingleStaffFee.SingleStaffFee-class.html" title="cuon.Staff.SingleStaffFee.SingleStaffFee" alt="" coords="27269,515,27485,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance-class.html" title="cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance" alt="" coords="27536,515,27885,541"/>
+<area shape="rect" href="cuon.Misc.fileSelection.fileSelection-class.html" title="cuon.Misc.fileSelection.fileSelection" alt="" coords="4669,627,4859,653"/>
+<area shape="rect" href="cuon.Databases.import_generic2.import_generic2-class.html" title="cuon.Databases.import_generic2.import_generic2" alt="" coords="4409,683,4612,709"/>
+<area shape="rect" href="cuon.Databases.import_generic1.import_generic1-class.html" title="cuon.Databases.import_generic1.import_generic1" alt="" coords="4663,683,4865,709"/>
+<area shape="rect" href="cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent-class.html" title="cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent" alt="" coords="27936,515,28269,541"/>
+<area shape="rect" href="cuon.Stats.stats.statswindow-class.html" title="cuon.Stats.stats.statswindow" alt="" coords="871,571,1023,597"/>
+<area shape="rect" href="cuon.Graves.grave.graveswindow-class.html" title="cuon.Graves.grave.graveswindow" alt="" coords="6635,627,6805,653"/>
+<area shape="rect" href="cuon.SupportTicket.supportTicket.supportticketwindow-class.html" title="cuon.SupportTicket.supportTicket.supportticketwindow" alt="" coords="4909,627,5205,653"/>
+<area shape="rect" href="cuon.Skeleton.SingleSkeleton.SingleClient-class.html" title="cuon.Skeleton.SingleSkeleton.SingleClient" alt="" coords="28320,515,28549,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveSpring.SingleGraveSpring-class.html" title="cuon.Graves.SingleGraveSpring.SingleGraveSpring" alt="" coords="3189,515,3464,541"/>
+<area shape="rect" href="cuon.SupportTicket.SingleSupportProject.SingleSupportProject-class.html" title="cuon.SupportTicket.SingleSupportProject.SingleSupportProject" alt="" coords="3515,515,3861,541"/>
+<area shape="rect" href="cuon.Staff.SingleStaffVacation.SingleStaffVacation-class.html" title="cuon.Staff.SingleStaffVacation.SingleStaffVacation" alt="" coords="3912,515,4184,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveInvoices.SingleGraveInvoices-class.html" title="cuon.Graves.SingleGraveInvoices.SingleGraveInvoices" alt="" coords="4235,515,4528,541"/>
+<area shape="rect" href="cuon.Analysis.analyse_costs.clientswindow-class.html" title="cuon.Analysis.analyse_costs.clientswindow" alt="" coords="5256,627,5493,653"/>
+<area shape="rect" href="cuon.Leasing.SingleLeasing.SingleLeasing-class.html" title="cuon.Leasing.SingleLeasing.SingleLeasing" alt="" coords="4579,515,4808,541"/>
+<area shape="rect" href="cuon.WebShop.SingleWebshop.SingleWebshop-class.html" title="cuon.WebShop.SingleWebshop.SingleWebshop" alt="" coords="4859,515,5120,541"/>
+<area shape="rect" href="cuon.Clients.SingleClient.SingleClient-class.html" title="cuon.Clients.SingleClient.SingleClient" alt="" coords="5171,515,5371,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveAutumn.SingleGraveAutumn-class.html" title="cuon.Graves.SingleGraveAutumn.SingleGraveAutumn" alt="" coords="5421,515,5712,541"/>
+<area shape="rect" href="cuon.Preferences.preferences.preferenceswindow-class.html" title="cuon.Preferences.preferences.preferenceswindow" alt="" coords="1073,571,1340,597"/>
+<area shape="rect" href="cuon.Calendar.calendar.calendarwindow-class.html" title="cuon.Calendar.calendar.calendarwindow" alt="" coords="1391,571,1601,597"/>
+<area shape="rect" href="cuon.Think.think.thinkwindow-class.html" title="cuon.Think.think.thinkwindow" alt="" coords="1652,571,1804,597"/>
+<area shape="rect" href="cuon.AI.ai.aiwindow-class.html" title="cuon.AI.ai.aiwindow" alt="" coords="1855,571,1951,597"/>
+<area shape="rect" href="cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow-class.html" title="cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow" alt="" coords="2001,571,2327,597"/>
+<area shape="rect" href="cuon.WebShop.webshop.webshopwindow-class.html" title="cuon.WebShop.webshop.webshopwindow" alt="" coords="2377,571,2601,597"/>
+<area shape="rect" href="cuon.Editor.editor.editorwindow-class.html" title="cuon.Editor.editor.editorwindow" alt="" coords="2652,571,2812,597"/>
+<area shape="rect" href="cuon.Addresses.selectionDialog.selectionDialog1-class.html" title="cuon.Addresses.selectionDialog.selectionDialog1" alt="" coords="2863,571,3129,597"/>
+<area shape="rect" href="cuon.Windows.chooseWindows.chooseWindows-class.html" title="cuon.Windows.chooseWindows.chooseWindows" alt="" coords="3393,571,3657,597"/>
+<area shape="rect" href="cuon.Help.help.helpwindow-class.html" title="cuon.Help.help.helpwindow" alt="" coords="3708,571,3847,597"/>
+<area shape="rect" href="cuon.DMS.dms.dmswindow-class.html" title="cuon.DMS.dms.dmswindow" alt="" coords="3897,571,4041,597"/>
+<area shape="rect" href="cuon.Garden.SingleBotanyClass.SingleBotanyClass-class.html" title="cuon.Garden.SingleBotanyClass.SingleBotanyClass" alt="" coords="5763,515,6048,541"/>
+<area shape="rect" href="cuon.Project.project.projectwindow-class.html" title="cuon.Project.project.projectwindow" alt="" coords="5544,627,5728,653"/>
+<area shape="rect" href="cuon.Project.SingleProjectTasks.SingleProjectTasks-class.html" title="cuon.Project.SingleProjectTasks.SingleProjectTasks" alt="" coords="6099,515,6384,541"/>
+<area shape="rect" href="cuon.Finances.SingleAccountInfo.SingleAccountInfo-class.html" title="cuon.Finances.SingleAccountInfo.SingleAccountInfo" alt="" coords="6435,515,6717,541"/>
+<area shape="rect" href="cuon.Finances.SingleAccountPlan.SingleAccountPlan-class.html" title="cuon.Finances.SingleAccountPlan.SingleAccountPlan" alt="" coords="6768,515,7064,541"/>
+<area shape="rect" href="cuon.Databases.SingleExport.SingleExport-class.html" title="cuon.Databases.SingleExport.SingleExport" alt="" coords="7115,515,7280,541"/>
+<area shape="rect" href="cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo-class.html" title="cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo" alt="" coords="7331,515,7605,541"/>
+<area shape="rect" href="cuon.Addresses.SingleMisc.SingleMisc-class.html" title="cuon.Addresses.SingleMisc.SingleMisc" alt="" coords="7656,515,7869,541"/>
+<area shape="rect" href="cuon.Staff.staff.staffwindow-class.html" title="cuon.Staff.staff.staffwindow" alt="" coords="5779,627,5917,653"/>
+<area shape="rect" href="cuon.Order.SingleOrderInvoice.SingleOrderInvoice-class.html" title="cuon.Order.SingleOrderInvoice.SingleOrderInvoice" alt="" coords="7920,515,8187,541"/>
+<area shape="rect" href="cuon.Bank.bank.bankwindow-class.html" title="cuon.Bank.bank.bankwindow" alt="" coords="5968,627,6117,653"/>
+<area shape="rect" href="cuon.Bank.SingleBank.SingleBank-class.html" title="cuon.Bank.SingleBank.SingleBank" alt="" coords="8237,515,8421,541"/>
+<area shape="rect" href="cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources-class.html" title="cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources" alt="" coords="8472,515,8864,541"/>
+<area shape="rect" href="cuon.Finances.SingleAccountSentence.SingleAccountSentence-class.html" title="cuon.Finances.SingleAccountSentence.SingleAccountSentence" alt="" coords="8915,515,9267,541"/>
+<area shape="rect" href="cuon.Project.SingleProjectProgramming.SingleProjectProgramming-class.html" title="cuon.Project.SingleProjectProgramming.SingleProjectProgramming" alt="" coords="9317,515,9688,541"/>
+<area shape="rect" href="cuon.Addresses.contact.contactwindow-class.html" title="cuon.Addresses.contact.contactwindow" alt="" coords="6168,627,6381,653"/>
+<area shape="rect" href="cuon.Databases.SingleImportZip.SingleImportZip-class.html" title="cuon.Databases.SingleImportZip.SingleImportZip" alt="" coords="9739,515,9936,541"/>
+<area shape="rect" href="cuon.Think.SingleThink.SingleThink-class.html" title="cuon.Think.SingleThink.SingleThink" alt="" coords="9987,515,10173,541"/>
+<area shape="rect" href="cuon.Articles.articles.articleswindow-class.html" title="cuon.Articles.articles.articleswindow" alt="" coords="1296,627,1488,653"/>
+<area shape="rect" href="cuon.Articles.SingleArticle.SingleArticle-class.html" title="cuon.Articles.SingleArticle.SingleArticle" alt="" coords="10224,515,10437,541"/>
+<area shape="rect" href="cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment-class.html" title="cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment" alt="" coords="10488,515,10829,541"/>
+<area shape="rect" href="cuon.Databases.cyr_load_table.cyr_load_table-class.html" title="cuon.Databases.cyr_load_table.cyr_load_table" alt="" coords="15277,403,15464,429"/>
+<area shape="rect" href="cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop-class.html" title="cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop" alt="" coords="10880,515,11243,541"/>
+<area shape="rect" href="cuon.DMS.SingleDMS.SingleDMS-class.html" title="cuon.DMS.SingleDMS.SingleDMS" alt="" coords="11293,515,11475,541"/>
+<area shape="rect" href="cuon.Garden.garden.gardenwindow-class.html" title="cuon.Garden.garden.gardenwindow" alt="" coords="1539,627,1723,653"/>
+<area shape="rect" href="cuon.TypeDefs.defaultValues.defaultValues-class.html" title="cuon.TypeDefs.defaultValues.defaultValues" alt="" coords="15584,347,15813,373"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html" title="cuon.Windows.gladeXml.gladeXml" alt="" coords="15515,403,15693,429"/>
+<area shape="rect" href="cuon.User.user.User-class.html" title="cuon.User.user.User" alt="" coords="15744,403,15843,429"/>
+<area shape="rect" href="cuon.Windows.cyr_load_entries.cyr_load_entries-class.html" title="cuon.Windows.cyr_load_entries.cyr_load_entries" alt="" coords="15893,403,16157,429"/>
+<area shape="rect" href="cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat-class.html" title="cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat" alt="" coords="11525,515,11885,541"/>
+<area shape="rect" href="cuon.Finances.SingleAccountValues.SingleAccountValues-class.html" title="cuon.Finances.SingleAccountValues.SingleAccountValues" alt="" coords="11936,515,12256,541"/>
+<area shape="rect" href="cuon.Staff.SingleStaffDisease.SingleStaffDisease-class.html" title="cuon.Staff.SingleStaffDisease.SingleStaffDisease" alt="" coords="12307,515,12573,541"/>
+<area shape="rect" href="cuon.Addresses.SingleNotes.SingleNotes-class.html" title="cuon.Addresses.SingleNotes.SingleNotes" alt="" coords="12624,515,12848,541"/>
+<area shape="rect" href="cuon.Leasing.leasing.leasingwindow-class.html" title="cuon.Leasing.leasing.leasingwindow" alt="" coords="1773,627,1965,653"/>
+<area shape="rect" href="cuon.Garden.SingleHibernationPlant.SingleHibernationPlant-class.html" title="cuon.Garden.SingleHibernationPlant.SingleHibernationPlant" alt="" coords="12899,515,13224,541"/>
+<area shape="rect" href="cuon.Stock.SingleStock.SingleStock-class.html" title="cuon.Stock.SingleStock.SingleStock" alt="" coords="13275,515,13472,541"/>
+<area shape="rect" href="cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly-class.html" title="cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly" alt="" coords="797,627,1245,653"/>
+<area shape="rect" href="cuon.Biblio.SingleBiblio.SingleBiblio-class.html" title="cuon.Biblio.SingleBiblio.SingleBiblio" alt="" coords="13523,515,13712,541"/>
+<area shape="rect" href="cuon.Databases.SingleData.SingleData-class.html" title="cuon.Databases.SingleData.SingleData" alt="" coords="15655,459,15799,485"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection" alt="" coords="6563,571,6877,597"/>
+<area shape="rect" href="cuon.Addresses.addresses.addresswindow-class.html" title="cuon.Addresses.addresses.addresswindow" alt="" coords="2016,627,2248,653"/>
+<area shape="rect" href="cuon.Articles.materialgroup.materialgroupwindow-class.html" title="cuon.Articles.materialgroup.materialgroupwindow" alt="" coords="2299,627,2563,653"/>
+<area shape="rect" href="cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket-class.html" title="cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket" alt="" coords="13763,515,14096,541"/>
+<area shape="rect" href="cuon.Analysis.SingleAnalysis_cost.SingleClient-class.html" title="cuon.Analysis.SingleAnalysis_cost.SingleClient" alt="" coords="14147,515,14405,541"/>
+<area shape="rect" href="cuon.Order.SingleOrderGet.SingleOrderGet-class.html" title="cuon.Order.SingleOrderGet.SingleOrderGet" alt="" coords="14456,515,14688,541"/>
+<area shape="rect" href="cuon.Databases.SingleCuon.SingleCuon-class.html" title="cuon.Databases.SingleCuon.SingleCuon" alt="" coords="14739,515,14888,541"/>
+<area shape="rect" href="cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice-class.html" title="cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice" alt="" coords="14939,515,15304,541"/>
+<area shape="rect" href="cuon.Order.SingleOrder.SingleOrder-class.html" title="cuon.Order.SingleOrder.SingleOrder" alt="" coords="15355,515,15544,541"/>
+<area shape="rect" href="cuon.Articles.SingleArticleSale.SingleArticleSale-class.html" title="cuon.Articles.SingleArticleSale.SingleArticleSale" alt="" coords="15595,515,15859,541"/>
+<area shape="rect" href="cuon.Project.SingleProjectPhases.SingleProjectPhases-class.html" title="cuon.Project.SingleProjectPhases.SingleProjectPhases" alt="" coords="15909,515,16213,541"/>
+<area shape="rect" href="cuon.Articles.SingleArticleWebshop.SingleArticleWebshop-class.html" title="cuon.Articles.SingleArticleWebshop.SingleArticleWebshop" alt="" coords="16264,515,16587,541"/>
+<area shape="rect" href="cuon.Graves.SingleGrave.SingleGrave-class.html" title="cuon.Graves.SingleGrave.SingleGrave" alt="" coords="16637,515,16837,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveWinter.SingleGraveWinter-class.html" title="cuon.Graves.SingleGraveWinter.SingleGraveWinter" alt="" coords="16888,515,17163,541"/>
+<area shape="rect" href="cuon.Graves.SingleGraveYear.SingleGraveYear-class.html" title="cuon.Graves.SingleGraveYear.SingleGraveYear" alt="" coords="17213,515,17464,541"/>
+<area shape="rect" href="cuon.Databases.SingleImport.SingleImport-class.html" title="cuon.Databases.SingleImport.SingleImport" alt="" coords="17515,515,17677,541"/>
+<area shape="rect" href="cuon.Staff.SingleStaff.SingleStaff-class.html" title="cuon.Staff.SingleStaff.SingleStaff" alt="" coords="17728,515,17901,541"/>
+<area shape="rect" href="cuon.Addresses.SinglePartner.SinglePartner-class.html" title="cuon.Addresses.SinglePartner.SinglePartner" alt="" coords="17952,515,18192,541"/>
+<area shape="rect" href="cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources-class.html" title="cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources" alt="" coords="18243,515,18675,541"/>
+<area shape="rect" href="cuon.Addresses.SingleScheduling.SingleScheduling-class.html" title="cuon.Addresses.SingleScheduling.SingleScheduling" alt="" coords="18725,515,19011,541"/>
+<area shape="rect" href="cuon.Addresses.SingleAddressBank.SingleAddressBank-class.html" title="cuon.Addresses.SingleAddressBank.SingleAddressBank" alt="" coords="19061,515,19373,541"/>
+<area shape="rect" href="cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio-class.html" title="cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio" alt="" coords="19424,515,19717,541"/>
+<area shape="rect" href="cuon.Addresses.SingleAddress.SingleAddress-class.html" title="cuon.Addresses.SingleAddress.SingleAddress" alt="" coords="19768,515,20021,541"/>
+<area shape="rect" href="cuon.Staff.SingleStaffMisc.SingleStaffMisc-class.html" title="cuon.Staff.SingleStaffMisc.SingleStaffMisc" alt="" coords="20072,515,20301,541"/>
+<area shape="rect" href="cuon.Articles.SingleArticleStock.SingleArticleStock-class.html" title="cuon.Articles.SingleArticleStock.SingleArticleStock" alt="" coords="20352,515,20632,541"/>
+<area shape="rect" href="cuon.Stock.SingleStockGoods.SingleStockGoods-class.html" title="cuon.Stock.SingleStockGoods.SingleStockGoods" alt="" coords="20683,515,20955,541"/>
+<area shape="rect" href="cuon.Order.SingleOrderPosition.SingleOrderPosition-class.html" title="cuon.Order.SingleOrderPosition.SingleOrderPosition" alt="" coords="21005,515,21288,541"/>
+<area shape="rect" href="cuon.Articles.SingleMaterialgroups.SingleMaterialgroups-class.html" title="cuon.Articles.SingleMaterialgroups.SingleMaterialgroups" alt="" coords="21339,515,21648,541"/>
+<area shape="rect" href="cuon.Garden.SingleBotanyFamily.SingleBotanyFamily-class.html" title="cuon.Garden.SingleBotanyFamily.SingleBotanyFamily" alt="" coords="21699,515,21995,541"/>
+<area shape="rect" href="cuon.Project.SingleProject.SingleProject-class.html" title="cuon.Project.SingleProject.SingleProject" alt="" coords="22045,515,22261,541"/>
+<area shape="rect" href="cuon.Garden.SingleHibernation.SingleHibernation-class.html" title="cuon.Garden.SingleHibernation.SingleHibernation" alt="" coords="22312,515,22579,541"/>
+<area shape="rect" href="cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount-class.html" title="cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount" alt="" coords="22629,515,23035,541"/>
+<area shape="rect" href="cuon.Order.SingleOrderSupply.SingleOrderSupply-class.html" title="cuon.Order.SingleOrderSupply.SingleOrderSupply" alt="" coords="23085,515,23355,541"/>
+<area shape="rect" href="cuon.Garden.SingleBotany.SingleBotany-class.html" title="cuon.Garden.SingleBotany.SingleBotany" alt="" coords="23405,515,23621,541"/>
+<area shape="rect" href="cuon.Think.SingleMindmap.SingleMindmap-class.html" title="cuon.Think.SingleMindmap.SingleMindmap" alt="" coords="23672,515,23904,541"/>
+<area shape="rect" href="cuon.Editor.programmersEditor.programmerseditor-class.html" title="cuon.Editor.programmersEditor.programmerseditor" alt="" coords="475,627,747,653"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#__init__" title="cuon.Databases.dumps.dumps.__init__" alt="" coords="15356,36,15700,55"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#checkType" title="cuon.Databases.dumps.dumps.checkType" alt="" coords="15356,55,15700,73"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#closeDB" title="cuon.Databases.dumps.dumps.closeDB" alt="" coords="15356,73,15700,92"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doCompress" title="cuon.Databases.dumps.dumps.doCompress" alt="" coords="15356,92,15700,111"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doDecode" title="cuon.Databases.dumps.dumps.doDecode" alt="" coords="15356,111,15700,129"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doEncode" title="cuon.Databases.dumps.dumps.doEncode" alt="" coords="15356,129,15700,148"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doUncompress" title="cuon.Databases.dumps.dumps.doUncompress" alt="" coords="15356,148,15700,167"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#formatDate" title="cuon.Databases.dumps.dumps.formatDate" alt="" coords="15356,167,15700,185"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getActualDateTime" title="cuon.Databases.dumps.dumps.getActualDateTime" alt="" coords="15356,185,15700,204"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getCheckedValue" title="cuon.Databases.dumps.dumps.getCheckedValue" alt="" coords="15356,204,15700,223"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getDateTime" title="cuon.Databases.dumps.dumps.getDateTime" alt="" coords="15356,223,15700,241"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" title="cuon.Databases.dumps.dumps.getFirstDayOfMonth" alt="" coords="15356,241,15700,260"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstDayOfMonthAsSeconds" alt="" coords="15356,260,15700,279"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#writeEmailLog" title="cuon.Databases.dumps.dumps.writeEmailLog" alt="" coords="15356,297,15700,316"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html" title="cuon.Databases.dumps.dumps" alt="" coords="15355,11,15701,317"/>
+<area shape="rect" href="cuon.XMLRPC.xmlrpc.myXmlRpc-class.html" title="cuon.XMLRPC.xmlrpc.myXmlRpc" alt="" coords="15925,347,16101,373"/>
+<area shape="rect" href="cuon.Clients.clients.clientswindow-class.html" title="cuon.Clients.clients.clientswindow" alt="" coords="2613,627,2795,653"/>
+<area shape="rect" href="cuon.Garden.hibernation.hibernationwindow-class.html" title="cuon.Garden.hibernation.hibernationwindow" alt="" coords="2845,627,3077,653"/>
+<area shape="rect" href="cuon.Skeleton.skeleton.clientswindow-class.html" title="cuon.Skeleton.skeleton.clientswindow" alt="" coords="3128,627,3331,653"/>
+<area shape="rect" href="cuon.PrefsFinance.prefsFinance.prefsFinancewindow-class.html" title="cuon.PrefsFinance.prefsFinance.prefsFinancewindow" alt="" coords="3381,627,3669,653"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_dat_8.gif" alt='' usemap="#uml_class_diagram_for_cuon_dat_8" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">td</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkType"></a><span class="summary-sig-name">checkType</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">oType</span>,
+        <span class="summary-sig-arg">sType</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.checkType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="closeDB"></a><span class="summary-sig-name">closeDB</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.closeDB">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="doCompress"></a><span class="summary-sig-name">doCompress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.doCompress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="doDecode"></a><span class="summary-sig-name">doDecode</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.doDecode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="doEncode"></a><span class="summary-sig-name">doEncode</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.doEncode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="doUncompress"></a><span class="summary-sig-name">doUncompress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.doUncompress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="formatDate"></a><span class="summary-sig-name">formatDate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>,
+        <span class="summary-sig-arg">strFormat</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">%Y-%m-%d</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.formatDate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getActualDateTime"></a><span class="summary-sig-name">getActualDateTime</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getActualDateTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getCheckedValue"></a><span class="summary-sig-name">getCheckedValue</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">type</span>,
+        <span class="summary-sig-arg">min</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">max</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getCheckedValue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDateTime"></a><span class="summary-sig-name">getDateTime</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dateString</span>,
+        <span class="summary-sig-arg">strFormat</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">%Y-%m-%d</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getDateTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstDayOfMonth"></a><span class="summary-sig-name">getFirstDayOfMonth</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sdate</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstDayOfMonth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstDayOfMonthAsSeconds"></a><span class="summary-sig-name">getFirstDayOfMonthAsSeconds</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sdate</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstDayOfMonthAsSeconds">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstLastDayOfLastMonthAsSeconds"></a><span class="summary-sig-name">getFirstLastDayOfLastMonthAsSeconds</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sdate</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstLastDayOfLastMonthAsSeconds">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstOfMonth"></a><span class="summary-sig-name">getFirstOfMonth</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstOfMonth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstOfMonth2"></a><span class="summary-sig-name">getFirstOfMonth2</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstOfMonth2">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFirstOfYear"></a><span class="summary-sig-name">getFirstOfYear</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getFirstOfYear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getLastDayOfMonth"></a><span class="summary-sig-name">getLastDayOfMonth</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sdate</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getLastDayOfMonth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getLastDayOfMonthAsSeconds"></a><span class="summary-sig-name">getLastDayOfMonthAsSeconds</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sdate</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getLastDayOfMonthAsSeconds">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getLastOfMonth"></a><span class="summary-sig-name">getLastOfMonth</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getLastOfMonth">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getLastOfYear"></a><span class="summary-sig-name">getLastOfYear</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dtDateTime</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getLastOfYear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNewUUID"></a><span class="summary-sig-name">getNewUUID</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getNewUUID">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSeconds"></a><span class="summary-sig-name">getSeconds</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dt</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getSeconds">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTime"></a><span class="summary-sig-name">getTime</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTimeString"></a><span class="summary-sig-name">getTimeString</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.getTimeString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadObject"></a><span class="summary-sig-name">loadObject</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.loadObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="openDB"></a><span class="summary-sig-name">openDB</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.openDB">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="pickleObject"></a><span class="summary-sig-name">pickleObject</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">obj</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.pickleObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="saveObject"></a><span class="summary-sig-name">saveObject</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">oValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.saveObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="saveTmpData"></a><span class="summary-sig-name">saveTmpData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">typ</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.saveTmpData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="showPdf"></a><span class="summary-sig-name">showPdf</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">Pdf</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">cDoc</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">PDF</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.showPdf">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="startExternalPrg"></a><span class="summary-sig-name">startExternalPrg</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sProgramName</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Start an external program and return immediately, returning proc id</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.startExternalPrg">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unpickleObject"></a><span class="summary-sig-name">unpickleObject</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.unpickleObject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="writeEmailLog"></a><span class="summary-sig-name">writeEmailLog</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sMessage</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Databases.dumps-pysrc.html#dumps.writeEmailLog">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:12 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

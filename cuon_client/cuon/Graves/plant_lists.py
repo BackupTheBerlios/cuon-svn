@@ -87,6 +87,8 @@ class plantlists(cuonlists):
         
         
     def on_bOK_clicked(self, event):
+        """ Starts to print the list of graves for plants. """
+        
         print 'ok clicked'
         dicSearchfields,  nRow,  sName = self.readSearchDatafields()
         Pdf = self.rpc.callRP('Report.server_graves_plant_standard', dicSearchfields, self.dicUser, nRow, sName)
@@ -96,6 +98,7 @@ class plantlists(cuonlists):
         self.quitFinddialog()
 
     def readSearchDatafields(self):
+        """ read the entries at the search mask and convert them to values for the SQL-Search """
         liReturn = []
         nRow = 0
         sGyID = self.getActiveText(self.getWidget('cbGraveyard'))

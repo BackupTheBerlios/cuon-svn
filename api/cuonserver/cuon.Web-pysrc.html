@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Web</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        Module&nbsp;Web
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Web-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Web-module.html">Module cuon.Web</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">datetime</tt> <tt class="py-keyword">import</tt> <tt class="py-name">datetime</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xmlrpclib</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">twisted</tt><tt class="py-op">.</tt><tt class="py-name">web</tt> <tt class="py-keyword">import</tt> <tt class="py-name">xmlrpc</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line">  </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module cuon.basics=cuon.basics-module.html,Class cuon.basics.basics=cuon.basics.basics-class.html"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-0', 'basics', 'link-0');">basics</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-1', 'basics', 'link-0');">basics</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module cuon.iCal=cuon.iCal-module.html,Class cuon.iCal.iCal=cuon.iCal.iCal-class.html"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-2', 'iCal', 'link-2');">iCal</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module cuon.Database=cuon.Database-module.html,Class cuon.Database.Database=cuon.Database.Database-class.html"><a title="cuon.Database
+cuon.Database.Database" class="py-name" href="#" onclick="return doclink('link-3', 'Database', 'link-3');">Database</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">commands</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">   </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">     </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="Web"></a><div id="Web-def"><a name="L17"></a><tt class="py-lineno"> 17</tt> <a class="py-toggle" href="#" id="Web-toggle" onclick="return toggle('Web');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Web.Web-class.html">Web</a><tt class="py-op">(</tt><tt class="py-base-class">xmlrpc</tt><tt class="py-op">.</tt><tt class="py-base-class">XMLRPC</tt><tt class="py-op">,</tt> <tt class="py-base-class">basics</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Web-expanded"><a name="Web.__init__"></a><div id="Web.__init__-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="Web.__init__-toggle" onclick="return toggle('Web.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.__init__-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt id="link-4" class="py-name"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-4', 'basics', 'link-0');">basics</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method cuon.AI.AI.__init__()=cuon.AI.AI-class.html#__init__,Method cuon.Address.Address.__init__()=cuon.Address.Address-class.html#__init__,Method cuon.Article.Article.__init__()=cuon.Article.Article-class.html#__init__,Method cuon.Database.Database.__init__()=cuon.Database.Database-class.html#__init__,Method cuon.Email.cuonemail.__init__()=cuon.Email.cuonemail-class.html#__init__,Method cuon.Email2.Attachments.__init__()=cuon.Email2.Attachments-class.html#__init__,Method cuon.Email2.BCCRecipients.__init__()=cuon.Email2.BCCRecipients-class.html#__init__,Method cuon.Email2.CCRecipients.__init__()=cuon.Email2.CCRecipients-class.html#__init__,Method cuon.Email2.Email.__init__()=cuon.Email2.Email-class.html#__init__,Method cuon.Email2.Recipients.__init__()=cuon.Email2.Recipients-class.html#__init__,Method cuon.Finances.Finances.__init__()=cuon.Finances.Finances-class.html#__init__,Method cuon.Garden.Garden.__init__()=cuon.Garden.Garden-class.html#__init__,Method cuon.Grave.Grave.__init__()=cuon.Grave.Grave-class.html#__init__,Method cuon.Misc.Misc.__init__()=cuon.Misc.Misc-class.html#__init__,Method cuon.Order.Order.__init__()=cuon.Order.Order-class.html#__init__,Method cuon.Projects.Projects.__init__()=cuon.Projects.Projects-class.html#__init__,Method cuon.Report.Report.__init__()=cuon.Report.Report-class.html#__init__,Method cuon.ReportServer.ReportServer.__init__()=cuon.ReportServer.ReportServer-class.html#__init__,Method cuon.Reports.MyXML.MyXML.__init__()=cuon.Reports.MyXML.MyXML-class.html#__init__,Method cuon.Reports.report.report.__init__()=cuon.Reports.report.report-class.html#__init__,Method cuon.Reports.report2_latex.report2.__init__()=cuon.Reports.report2_latex.report2-class.html#__init__,Method cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__()=cuon.Reports.report_addresses_phone1.report_addresses_phone1-class.html#__init__,Method cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__()=cuon.Reports.report_addresses_phone11.report_addresses_phone11-class.html#__init__,Method cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__()=cuon.Reports.report_addresses_phone12.report_addresses_phone12-class.html#__init__,Method cuon.Reports.report_articles_number1.report_articles_number1.__init__()=cuon.Reports.report_articles_number1.report_articles_number1-class.html#__init__,Method cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__()=cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard-class.html#__init__,Method cuon.Reports.report_basics.report_basics.__init__()=cuon.Reports.report_basics.report_basics-class.html#__init__,Method cuon.Reports.report_cab_monthly.report_cab_monthly.__init__()=cuon.Reports.report_cab_monthly.report_cab_monthly-class.html#__init__,Method cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__()=cuon.Reports.report_grave_plant_lists.report_grave_plant_lists-class.html#__init__,Method cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__()=cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document-class.html#__init__,Method cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__()=cuon.Reports.report_hibernation_invoice.report_hibernation_invoice-class.html#__init__,Method cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__()=cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document-class.html#__init__,Method cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__()=cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document-class.html#__init__,Method cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__()=cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices-class.html#__init__,Method cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__()=cuon.Reports.report_list_of_inpayment.report_list_of_inpayment-class.html#__init__,Method cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__()=cuon.Reports.report_list_of_reminder.report_list_of_reminder-class.html#__init__,Method cuon.Reports.report_list_of_residue.report_list_of_residue.__init__()=cuon.Reports.report_list_of_residue.report_list_of_residue-class.html#__init__,Method cuon.Reports.report_list_of_top.report_list_of_top.__init__()=cuon.Reports.report_list_of_top.report_list_of_top-class.html#__init__,Method cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__()=cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices-class.html#__init__,Method cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__()=cuon.Reports.report_order_standard_invoice.report_order_standard_invoice-class.html#__init__,Method cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__()=cuon.Reports.report_order_standard_supply.report_order_standard_supply-class.html#__init__,Method cuon.Reports.report_printAddress.report_printAddress.__init__()=cuon.Reports.report_printAddress.report_printAddress-class.html#__init__,Method cuon.Reports.report_proposal_standard.report_proposal_standard.__init__()=cuon.Reports.report_proposal_standard.report_proposal_standard-class.html#__init__,Method cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__()=cuon.Reports.report_stockgoods_number1.report_stockgoods_number1-class.html#__init__,Method cuon.Reports.standardlist.standardlist.__init__()=cuon.Reports.standardlist.standardlist-class.html#__init__,Method cuon.SQL.SQL.__init__()=cuon.SQL.SQL-class.html#__init__,Method cuon.SVG.Circle.__init__()=cuon.SVG.Circle-class.html#__init__,Method cuon.SVG.Line.__init__()=cuon.SVG.Line-class.html#__init__,Method cuon.SVG.Rectangle.__init__()=cuon.SVG.Rectangle-class.html#__init__,Method cuon.SVG.SVG.__init__()=cuon.SVG.SVG-class.html#__init__,Method cuon.SVG.Text.__init__()=cuon.SVG.Text-class.html#__init__,Method cuon.SVG.newSVG.__init__()=cuon.SVG.newSVG-class.html#__init__,Method cuon.Stock.Stock.__init__()=cuon.Stock.Stock-class.html#__init__,Method cuon.Support.Support.__init__()=cuon.Support.Support-class.html#__init__,Method cuon.Tweet.Tweet.__init__()=cuon.Tweet.Tweet-class.html#__init__,Method cuon.User.User.__init__()=cuon.User.User-class.html#__init__,Method cuon.Web.Web.__init__()=cuon.Web.Web-class.html#__init__,Method cuon.Web2.Web2.__init__()=cuon.Web2.Web2-class.html#__init__,Method cuon.WebAI.WebAI.__init__()=cuon.WebAI.WebAI-class.html#__init__,Method cuon.WebShop.WebShop.__init__()=cuon.WebShop.WebShop-class.html#__init__,Method cuon.ai.ai.__init__()=cuon.ai.ai-class.html#__init__,Method cuon.ai_main.ai_main.__init__()=cuon.ai_main.ai_main-class.html#__init__,Method cuon.basics.basics.__init__()=cuon.basics.basics-class.html#__init__,Method cuon.gridxml.gridxml.__init__()=cuon.gridxml.gridxml-class.html#__init__,Method cuon.iCal.iCal.__init__()=cuon.iCal.iCal-class.html#__init__,Method cuon.jabberBot.jabberBot.__init__()=cuon.jabberBot.jabberBot-class.html#__init__,Method cuon.simplemail.Attachments.__init__()=cuon.simplemail.Attachments-class.html#__init__,Method cuon.simplemail.Email.__init__()=cuon.simplemail.Email-class.html#__init__,Method cuon.simplemail.Recipients.__init__()=cuon.simplemail.Recipients-class.html#__init__,Method cuon.web_root.Image.__init__()=cuon.web_root.Image-class.html#__init__,Method cuon.web_root.WebRoots.__init__()=cuon.web_root.WebRoots-class.html#__init__"><a title="cuon.AI.AI.__init__
+cuon.Address.Address.__init__
+cuon.Article.Article.__init__
+cuon.Database.Database.__init__
+cuon.Email.cuonemail.__init__
+cuon.Email2.Attachments.__init__
+cuon.Email2.BCCRecipients.__init__
+cuon.Email2.CCRecipients.__init__
+cuon.Email2.Email.__init__
+cuon.Email2.Recipients.__init__
+cuon.Finances.Finances.__init__
+cuon.Garden.Garden.__init__
+cuon.Grave.Grave.__init__
+cuon.Misc.Misc.__init__
+cuon.Order.Order.__init__
+cuon.Projects.Projects.__init__
+cuon.Report.Report.__init__
+cuon.ReportServer.ReportServer.__init__
+cuon.Reports.MyXML.MyXML.__init__
+cuon.Reports.report.report.__init__
+cuon.Reports.report2_latex.report2.__init__
+cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__
+cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__
+cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__
+cuon.Reports.report_articles_number1.report_articles_number1.__init__
+cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__
+cuon.Reports.report_basics.report_basics.__init__
+cuon.Reports.report_cab_monthly.report_cab_monthly.__init__
+cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__
+cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__
+cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__
+cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__
+cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__
+cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__
+cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__
+cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__
+cuon.Reports.report_list_of_residue.report_list_of_residue.__init__
+cuon.Reports.report_list_of_top.report_list_of_top.__init__
+cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__
+cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__
+cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__
+cuon.Reports.report_printAddress.report_printAddress.__init__
+cuon.Reports.report_proposal_standard.report_proposal_standard.__init__
+cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__
+cuon.Reports.standardlist.standardlist.__init__
+cuon.SQL.SQL.__init__
+cuon.SVG.Circle.__init__
+cuon.SVG.Line.__init__
+cuon.SVG.Rectangle.__init__
+cuon.SVG.SVG.__init__
+cuon.SVG.Text.__init__
+cuon.SVG.newSVG.__init__
+cuon.Stock.Stock.__init__
+cuon.Support.Support.__init__
+cuon.Tweet.Tweet.__init__
+cuon.User.User.__init__
+cuon.Web.Web.__init__
+cuon.Web2.Web2.__init__
+cuon.WebAI.WebAI.__init__
+cuon.WebShop.WebShop.__init__
+cuon.ai.ai.__init__
+cuon.ai_main.ai_main.__init__
+cuon.basics.basics.__init__
+cuon.gridxml.gridxml.__init__
+cuon.iCal.iCal.__init__
+cuon.jabberBot.jabberBot.__init__
+cuon.simplemail.Attachments.__init__
+cuon.simplemail.Email.__init__
+cuon.simplemail.Recipients.__init__
+cuon.web_root.Image.__init__
+cuon.web_root.WebRoots.__init__" class="py-name" href="#" onclick="return doclink('link-5', '__init__', 'link-5');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-6', 'iCal', 'link-2');">iCal</a></tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-7', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-8', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oDatabase</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="cuon.Database
+cuon.Database.Database" class="py-name" href="#" onclick="return doclink('link-9', 'Database', 'link-3');">Database</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="cuon.Database
+cuon.Database.Database" class="py-name" href="#" onclick="return doclink('link-10', 'Database', 'link-3');">Database</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">         </tt>
+<a name="Web.xmlrpc_addCalendarEvent"></a><div id="Web.xmlrpc_addCalendarEvent-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="Web.xmlrpc_addCalendarEvent-toggle" onclick="return toggle('Web.xmlrpc_addCalendarEvent');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#xmlrpc_addCalendarEvent">xmlrpc_addCalendarEvent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sName</tt><tt class="py-op">,</tt> <tt class="py-param">firstRecord</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.xmlrpc_addCalendarEvent-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.xmlrpc_addCalendarEvent-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name">ok</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method cuon.basics.basics.writeLog()=cuon.basics.basics-class.html#writeLog"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-11', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'Automatic-Flag = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">AUTOMATIC_SCHEDUL</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">AUTOMATIC_SCHEDUL</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-12', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'create Schedul-iCal'</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            <tt class="py-name">ok</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-13', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method cuon.iCal.iCal.addEvent()=cuon.iCal.iCal-class.html#addEvent"><a title="cuon.iCal.iCal.addEvent" class="py-name" href="#" onclick="return doclink('link-14', 'addEvent', 'link-14');">addEvent</a></tt><tt class="py-op">(</tt> <tt class="py-name">sName</tt><tt class="py-op">,</tt> <tt class="py-name">firstRecord</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">         </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ok</tt>  </tt>
+</div><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">         </tt>
+<a name="Web.xmlrpc_updateCalendar"></a><div id="Web.xmlrpc_updateCalendar-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="Web.xmlrpc_updateCalendar-toggle" onclick="return toggle('Web.xmlrpc_updateCalendar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#xmlrpc_updateCalendar">xmlrpc_updateCalendar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">liNames</tt><tt class="py-op">,</tt> <tt class="py-param">dicData</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.xmlrpc_updateCalendar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.xmlrpc_updateCalendar-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select * from partner_schedul where partner_id = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">dicData</tt><tt class="py-op">[</tt><tt class="py-string">'partner_id'</tt><tt class="py-op">]</tt><tt class="py-op">`</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method cuon.basics.basics.getWhere()=cuon.basics.basics-class.html#getWhere"><a title="cuon.basics.basics.getWhere" class="py-name" href="#" onclick="return doclink('link-15', 'getWhere', 'link-15');">getWhere</a></tt><tt class="py-op">(</tt><tt class="py-string">""</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">         </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt>  <tt class="py-name">oDatabase</tt><tt class="py-op">.</tt><tt class="py-name">xmlrpc_py_executeNormalQuery</tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt> <tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">sName</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liNames</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method cuon.iCal.iCal.overwriteCal()=cuon.iCal.iCal-class.html#overwriteCal"><a title="cuon.iCal.iCal.overwriteCal" class="py-name" href="#" onclick="return doclink('link-16', 'overwriteCal', 'link-16');">overwriteCal</a></tt><tt class="py-op">(</tt><tt class="py-name">sName</tt><tt class="py-op">,</tt><tt class="py-name">dicResult</tt><tt class="py-op">,</tt><tt class="py-name">dicuser</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">             </tt>
+<a name="Web.xmlrpc_restartServerWeb2"></a><div id="Web.xmlrpc_restartServerWeb2-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="Web.xmlrpc_restartServerWeb2-toggle" onclick="return toggle('Web.xmlrpc_restartServerWeb2');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#xmlrpc_restartServerWeb2">xmlrpc_restartServerWeb2</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.xmlrpc_restartServerWeb2-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.xmlrpc_restartServerWeb2-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-name">shellcommand</tt> <tt class="py-op">=</tt> <tt class="py-string">'/etc/init.d/cuonweb2 restart'</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">liStatus</tt> <tt class="py-op">=</tt> <tt class="py-name">commands</tt><tt class="py-op">.</tt><tt class="py-name">getstatusoutput</tt><tt class="py-op">(</tt><tt class="py-name">shellcommand</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">liStatus</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">shellcommand</tt> <tt class="py-op">=</tt> <tt class="py-string">'/etc/init.d/cuonweb3 restart'</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">liStatus</tt> <tt class="py-op">=</tt> <tt class="py-name">commands</tt><tt class="py-op">.</tt><tt class="py-name">getstatusoutput</tt><tt class="py-op">(</tt><tt class="py-name">shellcommand</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">liStatus</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">liStatus</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">           </tt>
+<a name="Web.xmlrpc_cron_create_iCal"></a><div id="Web.xmlrpc_cron_create_iCal-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="Web.xmlrpc_cron_create_iCal-toggle" onclick="return toggle('Web.xmlrpc_cron_create_iCal');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#xmlrpc_cron_create_iCal">xmlrpc_cron_create_iCal</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sName</tt><tt class="py-op">,</tt> <tt class="py-param">fromDate</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.xmlrpc_cron_create_iCal-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.xmlrpc_cron_create_iCal-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">             </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-17', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-string">'cron_create_iCal, user = '</tt> <tt class="py-op">+</tt> <tt class="py-name">sName</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">ok</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">dicUser</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">sName</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select * from partner_schedul where schedul_time_begin &gt; 0 '</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">fromDate</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt> <tt class="py-string">" and date_part('doy', to_date(partner_schedul.schedul_date, '"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt><tt class="py-string">"'))  &gt;=  date_part('doy', now()) -2 "</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt> <tt class="py-string">" and date_part('year', to_date(partner_schedul.schedul_date, '"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt><tt class="py-string">"'))  &gt;=  date_part('year', now())"</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt> <tt class="py-string">'and process_status != 999 order by id desc '</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-18', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-number">999</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oDatabase</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method cuon.SQL.SQL.xmlrpc_executeNormalQuery()=cuon.SQL.SQL-class.html#xmlrpc_executeNormalQuery"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-19', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(dicResult)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fromDate</tt> <tt class="py-op">==</tt> <tt class="py-string">'All'</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-name">liStaff</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oDatabase</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-20', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-string">'select cuon_username from staff'</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">liStaff</tt> <tt class="py-keyword">and</tt> <tt class="py-name">liStaff</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liStaff</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-21', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method cuon.iCal.iCal.delCalendar()=cuon.iCal.iCal-class.html#delCalendar"><a title="cuon.iCal.iCal.delCalendar" class="py-name" href="#" onclick="return doclink('link-22', 'delCalendar', 'link-22');">delCalendar</a></tt><tt class="py-op">(</tt><tt class="py-string">'iCal_'</tt> <tt class="py-op">+</tt> <tt class="py-name">j</tt><tt class="py-op">[</tt><tt class="py-string">'cuon_username'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                     </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">dicResult</tt> <tt class="py-keyword">and</tt> <tt class="py-name">dicResult</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-name">z1</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">dicResult</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-name">z2</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-23', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'Len of new icals = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">z1</tt><tt class="py-op">`</tt><tt class="py-op">,</tt><tt class="py-number">999</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">             </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicResult</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">fromDate</tt> <tt class="py-op">==</tt> <tt class="py-string">'All'</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-24', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="cuon.iCal.iCal.addEvent" class="py-name" href="#" onclick="return doclink('link-25', 'addEvent', 'link-14');">addEvent</a></tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-string">'user_id'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-26', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="cuon.iCal.iCal.addEvent" class="py-name" href="#" onclick="return doclink('link-27', 'addEvent', 'link-14');">addEvent</a></tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-string">'user_id'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                <tt class="py-comment">#z2 += 1</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('new icals  ' + `z2` + ' from ' + `z1`,999)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                 </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ok</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">     </tt>
+<a name="Web.xmlrpc_cron_create_iCal2"></a><div id="Web.xmlrpc_cron_create_iCal2-def"><a name="L85"></a><tt class="py-lineno"> 85</tt> <a class="py-toggle" href="#" id="Web.xmlrpc_cron_create_iCal2-toggle" onclick="return toggle('Web.xmlrpc_cron_create_iCal2');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Web.Web-class.html#xmlrpc_cron_create_iCal2">xmlrpc_cron_create_iCal2</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Web.xmlrpc_cron_create_iCal2-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Web.xmlrpc_cron_create_iCal2-expanded"><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">             </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-28', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-string">'cron_create_iCal, user = '</tt> <tt class="py-op">+</tt> <tt class="py-name">sName</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">ok</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">dicUser</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">sName</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select * from partner_schedul where sep_info_3 = 5 '</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-29', 'writeLog', 'link-11');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oDatabase</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-30', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(dicResult)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">dicResult</tt> <tt class="py-keyword">and</tt> <tt class="py-name">dicResult</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicResult</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="cuon.iCal
+cuon.iCal.iCal" class="py-name" href="#" onclick="return doclink('link-31', 'iCal', 'link-2');">iCal</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="cuon.iCal.iCal.addEvent" class="py-name" href="#" onclick="return doclink('link-32', 'addEvent', 'link-14');">addEvent</a></tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-string">'user_id'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'update partner_schedul set sep_info_3 = 2 where id = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">`</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-name">dicResult2</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oDatabase</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-33', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ok</tt> </tt>
+</div></div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:22 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

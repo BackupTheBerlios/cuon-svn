@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Reports.MyXML.MyXML</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Reports-module.html">Package&nbsp;Reports</a> ::
+        <a href="cuon.Reports.MyXML-module.html">Module&nbsp;MyXML</a> ::
+        Class&nbsp;MyXML
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Reports.MyXML.MyXML-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class MyXML</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_rep_3" name="uml_class_diagram_for_cuon_rep_3">
+<area shape="rect" href="cuon.Reports.report.report-class.html" title="cuon.Reports.report.report" alt="" coords="49,347,135,373"/>
+<area shape="rect" href="cuon.Reports.standardlist.standardlist-class.html" title="cuon.Reports.standardlist.standardlist" alt="" coords="16,403,168,429"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#NotTextNodeError" title="cuon.Reports.MyXML.MyXML.NotTextNodeError" alt="" coords="31,36,313,55"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#__init__" title="cuon.Reports.MyXML.MyXML.__init__" alt="" coords="31,55,313,73"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getAttributValue" title="cuon.Reports.MyXML.MyXML.getAttributValue" alt="" coords="31,73,313,92"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getColumnAt" title="cuon.Reports.MyXML.MyXML.getColumnAt" alt="" coords="31,92,313,111"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getColumnSpecification" title="cuon.Reports.MyXML.MyXML.getColumnSpecification" alt="" coords="31,111,313,129"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getData" title="cuon.Reports.MyXML.MyXML.getData" alt="" coords="31,129,313,148"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getEntries" title="cuon.Reports.MyXML.MyXML.getEntries" alt="" coords="31,148,313,167"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getEntry" title="cuon.Reports.MyXML.MyXML.getEntry" alt="" coords="31,167,313,185"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getEntryAt" title="cuon.Reports.MyXML.MyXML.getEntryAt" alt="" coords="31,185,313,204"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getEntrySpecification" title="cuon.Reports.MyXML.MyXML.getEntrySpecification" alt="" coords="31,204,313,223"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getListOfEntries" title="cuon.Reports.MyXML.MyXML.getListOfEntries" alt="" coords="31,223,313,241"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getListOfSequences" title="cuon.Reports.MyXML.MyXML.getListOfSequences" alt="" coords="31,241,313,260"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#getListOfTables" title="cuon.Reports.MyXML.MyXML.getListOfTables" alt="" coords="31,260,313,279"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html#test" title="cuon.Reports.MyXML.MyXML.test" alt="" coords="31,297,313,316"/>
+<area shape="rect" href="cuon.Reports.MyXML.MyXML-class.html" title="cuon.Reports.MyXML.MyXML" alt="" coords="29,11,315,317"/>
+<area shape="rect" href="cuon.Reports.report2_latex.report2-class.html" title="cuon.Reports.report2_latex.report2" alt="" coords="185,347,319,373"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_rep_3.gif" alt='' usemap="#uml_class_diagram_for_cuon_rep_3" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Juergen Hamel
+      </p>
+      <p><strong>Organization:</strong>
+        Cyrus-Computer GmbH, D-32584 Loehne
+      </p>
+      <p><strong>Copyright:</strong>
+        by Juergen Hamel
+      </p>
+      <p><strong>License:</strong>
+        GPL ( GNU GENERAL PUBLIC LICENSE )
+      </p>
+      <p><strong>Contact:</strong>
+        jh@cyrus.de
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="NotTextNodeError"></a><span class="summary-sig-name">NotTextNodeError</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.NotTextNodeError">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getAttributValue"></a><span class="summary-sig-name">getAttributValue</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>,
+        <span class="summary-sig-arg">sName</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getAttributValue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getColumnAt"></a><span class="summary-sig-name">getColumnAt</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyTable</span>,
+        <span class="summary-sig-arg">iIndex</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getColumnAt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getColumnSpecification"></a><span class="summary-sig-name">getColumnSpecification</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyColumn</span>,
+        <span class="summary-sig-arg">sValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getColumnSpecification">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getData"></a><span class="summary-sig-name">getData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getEntries"></a><span class="summary-sig-name">getEntries</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sFileName</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getEntries">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getEntry"></a><span class="summary-sig-name">getEntry</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">cyName</span>,
+        <span class="summary-sig-arg">cyValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getEntry">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getEntryAt"></a><span class="summary-sig-name">getEntryAt</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyEntries</span>,
+        <span class="summary-sig-arg">iIndex</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getEntryAt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getEntrySpecification"></a><span class="summary-sig-name">getEntrySpecification</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyEntry</span>,
+        <span class="summary-sig-arg">sValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getEntrySpecification">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfEntries"></a><span class="summary-sig-name">getListOfEntries</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getListOfEntries">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfSequences"></a><span class="summary-sig-name">getListOfSequences</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getListOfSequences">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfTables"></a><span class="summary-sig-name">getListOfTables</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getListOfTables">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNode"></a><span class="summary-sig-name">getNode</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">cyValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getNode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNodeData"></a><span class="summary-sig-name">getNodeData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">sValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getNodeData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNodes"></a><span class="summary-sig-name">getNodes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">cyValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getNodes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNumberOfEntries"></a><span class="summary-sig-name">getNumberOfEntries</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyEntries</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getNumberOfEntries">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNumberOfFields"></a><span class="summary-sig-name">getNumberOfFields</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyTable</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getNumberOfFields">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getRootNode"></a><span class="summary-sig-name">getRootNode</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">doc</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getRootNode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSequence"></a><span class="summary-sig-name">getSequence</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">cyName</span>,
+        <span class="summary-sig-arg">cyValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getSequence">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTable"></a><span class="summary-sig-name">getTable</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyNode</span>,
+        <span class="summary-sig-arg">cyName</span>,
+        <span class="summary-sig-arg">cyValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getTable">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTableSpecification"></a><span class="summary-sig-name">getTableSpecification</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cyTable</span>,
+        <span class="summary-sig-arg">sValue</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getTableSpecification">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Reports.MyXML.MyXML-class.html#getTextFromNode" class="summary-sig-name">getTextFromNode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>)</span><br />
+      scans through all children of node and gathers the text.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getTextFromNode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Reports.MyXML.MyXML-class.html#nodeToDic" class="summary-sig-name">nodeToDic</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">node</span>)</span><br />
+      nodeToDic() scans through the children of node and makes a dictionary
+      from the content.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.nodeToDic">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="out"></a><span class="summary-sig-name">out</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.out">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="readDocument"></a><span class="summary-sig-name">readDocument</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.readDocument">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="test"></a><span class="summary-sig-name">test</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.test">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="getTextFromNode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTextFromNode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">node</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.getTextFromNode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>scans through all children of node and gathers the text. if node has 
+  non-text child-nodes, then NotTextNodeError is raised.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nodeToDic"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nodeToDic</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">node</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Reports.MyXML-pysrc.html#MyXML.nodeToDic">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>nodeToDic() scans through the children of node and makes a dictionary 
+  from the content.</p>
+  <ol start="1">
+    <li>
+      three cases are differentiated.
+      <ul>
+        <li>
+          if the node contains no other nodes, it is a text-node and 
+          {nodeName:text} is merged into the dictionary.
+        </li>
+        <li>
+          if the node has the attribute &quot;method&quot; set to 
+          &quot;true&quot;, then it's children will be appended to a list 
+          and this list is merged to the dictionary in the form: 
+          {nodeName:list}.
+        </li>
+        <li>
+          else, nodeToDic() will call itself recursively on the nodes 
+          children (merging {nodeName:nodeToDic()} to the dictionary).
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:18 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

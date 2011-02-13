@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+#-*- coding: iso-8859-1 -*-
 """
 ******************************************************************************
 * Description:  SimpleMail ist ein Modul zum Versenden von Emails 

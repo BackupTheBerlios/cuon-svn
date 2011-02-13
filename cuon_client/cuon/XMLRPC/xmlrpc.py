@@ -176,5 +176,3 @@ class myXmlRpc(dumps, logs):
         
         
         
-
-

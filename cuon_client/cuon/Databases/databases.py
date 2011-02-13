@@ -985,4 +985,3 @@ class databaseswindow(windows):
                         self.out(ok)
                         print sSql                       
                         print ok
-

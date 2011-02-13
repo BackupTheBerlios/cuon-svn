@@ -1,0 +1,348 @@
+\contentsline {section}{Contents}{1}{section*.2}
+\contentsline {section}{\numberline {1}Package cuon}{10}{section.1}
+\contentsline {subsection}{\numberline {1.1}Modules}{10}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Variables}{11}{subsection.1.2}
+\contentsline {section}{\numberline {2}Module cuon.AI}{12}{section.2}
+\contentsline {subsection}{\numberline {2.1}Variables}{12}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Class AI}{12}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Methods}{12}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Class Variables}{13}{subsubsection.2.2.2}
+\contentsline {section}{\numberline {3}Module cuon.Address}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}Variables}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Class Address}{14}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Methods}{14}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Class Variables}{16}{subsubsection.3.2.2}
+\contentsline {section}{\numberline {4}Module cuon.Article}{17}{section.4}
+\contentsline {subsection}{\numberline {4.1}Variables}{17}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Class Article}{17}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Methods}{17}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Class Variables}{18}{subsubsection.4.2.2}
+\contentsline {section}{\numberline {5}Module cuon.CalendarGen}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1}Functions}{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Variables}{19}{subsection.5.2}
+\contentsline {section}{\numberline {6}Module cuon.CuonFuncs}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}Variables}{21}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Class CuonFuncs}{21}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Methods}{21}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Class Variables}{21}{subsubsection.6.2.2}
+\contentsline {section}{\numberline {7}Module cuon.Database}{22}{section.7}
+\contentsline {subsection}{\numberline {7.1}Variables}{22}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Class Database}{22}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Methods}{22}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Class Variables}{25}{subsubsection.7.2.2}
+\contentsline {section}{\numberline {8}Module cuon.Email}{26}{section.8}
+\contentsline {subsection}{\numberline {8.1}Variables}{26}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Class cuonemail}{26}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Methods}{26}{subsubsection.8.2.1}
+\contentsline {subsubsection}{\numberline {8.2.2}Class Variables}{27}{subsubsection.8.2.2}
+\contentsline {section}{\numberline {9}Module cuon.Email2}{28}{section.9}
+\contentsline {subsection}{\numberline {9.1}Variables}{29}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Class SimpleMail\_Exception}{29}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Methods}{29}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Properties}{30}{subsubsection.9.2.2}
+\contentsline {subsection}{\numberline {9.3}Class NoFromAddress\_Exception}{30}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Methods}{30}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Properties}{30}{subsubsection.9.3.2}
+\contentsline {subsection}{\numberline {9.4}Class NoToAddress\_Exception}{31}{subsection.9.4}
+\contentsline {subsubsection}{\numberline {9.4.1}Methods}{31}{subsubsection.9.4.1}
+\contentsline {subsubsection}{\numberline {9.4.2}Properties}{31}{subsubsection.9.4.2}
+\contentsline {subsection}{\numberline {9.5}Class NoSubject\_Exception}{32}{subsection.9.5}
+\contentsline {subsubsection}{\numberline {9.5.1}Methods}{32}{subsubsection.9.5.1}
+\contentsline {subsubsection}{\numberline {9.5.2}Properties}{32}{subsubsection.9.5.2}
+\contentsline {subsection}{\numberline {9.6}Class AttachmentNotFound\_Exception}{33}{subsection.9.6}
+\contentsline {subsubsection}{\numberline {9.6.1}Methods}{33}{subsubsection.9.6.1}
+\contentsline {subsubsection}{\numberline {9.6.2}Properties}{33}{subsubsection.9.6.2}
+\contentsline {subsection}{\numberline {9.7}Class Attachments}{34}{subsection.9.7}
+\contentsline {subsubsection}{\numberline {9.7.1}Methods}{34}{subsubsection.9.7.1}
+\contentsline {subsubsection}{\numberline {9.7.2}Properties}{34}{subsubsection.9.7.2}
+\contentsline {subsection}{\numberline {9.8}Class Recipients}{35}{subsection.9.8}
+\contentsline {subsubsection}{\numberline {9.8.1}Methods}{35}{subsubsection.9.8.1}
+\contentsline {subsubsection}{\numberline {9.8.2}Properties}{36}{subsubsection.9.8.2}
+\contentsline {subsection}{\numberline {9.9}Class CCRecipients}{36}{subsection.9.9}
+\contentsline {subsubsection}{\numberline {9.9.1}Methods}{36}{subsubsection.9.9.1}
+\contentsline {subsubsection}{\numberline {9.9.2}Properties}{37}{subsubsection.9.9.2}
+\contentsline {subsection}{\numberline {9.10}Class BCCRecipients}{37}{subsection.9.10}
+\contentsline {subsubsection}{\numberline {9.10.1}Methods}{38}{subsubsection.9.10.1}
+\contentsline {subsubsection}{\numberline {9.10.2}Properties}{38}{subsubsection.9.10.2}
+\contentsline {subsection}{\numberline {9.11}Class Email}{39}{subsection.9.11}
+\contentsline {subsubsection}{\numberline {9.11.1}Methods}{40}{subsubsection.9.11.1}
+\contentsline {subsubsection}{\numberline {9.11.2}Properties}{41}{subsubsection.9.11.2}
+\contentsline {section}{\numberline {10}Module cuon.Finances}{42}{section.10}
+\contentsline {subsection}{\numberline {10.1}Variables}{42}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Class Finances}{42}{subsection.10.2}
+\contentsline {subsubsection}{\numberline {10.2.1}Methods}{42}{subsubsection.10.2.1}
+\contentsline {subsubsection}{\numberline {10.2.2}Class Variables}{44}{subsubsection.10.2.2}
+\contentsline {section}{\numberline {11}Module cuon.Garden}{45}{section.11}
+\contentsline {subsection}{\numberline {11.1}Variables}{45}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Class Garden}{45}{subsection.11.2}
+\contentsline {subsubsection}{\numberline {11.2.1}Methods}{45}{subsubsection.11.2.1}
+\contentsline {subsubsection}{\numberline {11.2.2}Class Variables}{47}{subsubsection.11.2.2}
+\contentsline {section}{\numberline {12}Module cuon.Grave}{48}{section.12}
+\contentsline {subsection}{\numberline {12.1}Variables}{48}{subsection.12.1}
+\contentsline {subsection}{\numberline {12.2}Class Grave}{48}{subsection.12.2}
+\contentsline {subsubsection}{\numberline {12.2.1}Methods}{48}{subsubsection.12.2.1}
+\contentsline {subsubsection}{\numberline {12.2.2}Class Variables}{49}{subsubsection.12.2.2}
+\contentsline {section}{\numberline {13}Module cuon.Misc}{50}{section.13}
+\contentsline {subsection}{\numberline {13.1}Variables}{50}{subsection.13.1}
+\contentsline {subsection}{\numberline {13.2}Class Misc}{50}{subsection.13.2}
+\contentsline {subsubsection}{\numberline {13.2.1}Methods}{50}{subsubsection.13.2.1}
+\contentsline {subsubsection}{\numberline {13.2.2}Class Variables}{52}{subsubsection.13.2.2}
+\contentsline {section}{\numberline {14}Module cuon.Order}{53}{section.14}
+\contentsline {subsection}{\numberline {14.1}Variables}{53}{subsection.14.1}
+\contentsline {subsection}{\numberline {14.2}Class Order}{53}{subsection.14.2}
+\contentsline {subsubsection}{\numberline {14.2.1}Methods}{53}{subsubsection.14.2.1}
+\contentsline {subsubsection}{\numberline {14.2.2}Class Variables}{56}{subsubsection.14.2.2}
+\contentsline {section}{\numberline {15}Module cuon.Projects}{57}{section.15}
+\contentsline {subsection}{\numberline {15.1}Variables}{57}{subsection.15.1}
+\contentsline {subsection}{\numberline {15.2}Class Projects}{57}{subsection.15.2}
+\contentsline {subsubsection}{\numberline {15.2.1}Methods}{57}{subsubsection.15.2.1}
+\contentsline {subsubsection}{\numberline {15.2.2}Class Variables}{58}{subsubsection.15.2.2}
+\contentsline {section}{\numberline {16}Module cuon.Report}{59}{section.16}
+\contentsline {subsection}{\numberline {16.1}Variables}{59}{subsection.16.1}
+\contentsline {subsection}{\numberline {16.2}Class Report}{59}{subsection.16.2}
+\contentsline {subsubsection}{\numberline {16.2.1}Methods}{59}{subsubsection.16.2.1}
+\contentsline {subsubsection}{\numberline {16.2.2}Class Variables}{61}{subsubsection.16.2.2}
+\contentsline {section}{\numberline {17}Module cuon.ReportServer}{62}{section.17}
+\contentsline {subsection}{\numberline {17.1}Variables}{62}{subsection.17.1}
+\contentsline {subsection}{\numberline {17.2}Class ReportServer}{62}{subsection.17.2}
+\contentsline {subsubsection}{\numberline {17.2.1}Methods}{62}{subsubsection.17.2.1}
+\contentsline {subsubsection}{\numberline {17.2.2}Class Variables}{63}{subsubsection.17.2.2}
+\contentsline {section}{\numberline {18}Package cuon.Reports}{64}{section.18}
+\contentsline {subsection}{\numberline {18.1}Modules}{64}{subsection.18.1}
+\contentsline {subsection}{\numberline {18.2}Variables}{64}{subsection.18.2}
+\contentsline {section}{\numberline {19}Module cuon.Reports.MyXML}{65}{section.19}
+\contentsline {subsection}{\numberline {19.1}Variables}{65}{subsection.19.1}
+\contentsline {subsection}{\numberline {19.2}Class MyXML}{65}{subsection.19.2}
+\contentsline {subsubsection}{\numberline {19.2.1}Methods}{65}{subsubsection.19.2.1}
+\contentsline {section}{\numberline {20}Module cuon.Reports.report}{68}{section.20}
+\contentsline {subsection}{\numberline {20.1}Variables}{68}{subsection.20.1}
+\contentsline {subsection}{\numberline {20.2}Class report}{68}{subsection.20.2}
+\contentsline {subsubsection}{\numberline {20.2.1}Methods}{68}{subsubsection.20.2.1}
+\contentsline {section}{\numberline {21}Module cuon.Reports.report2\_latex}{71}{section.21}
+\contentsline {subsection}{\numberline {21.1}Variables}{71}{subsection.21.1}
+\contentsline {subsection}{\numberline {21.2}Class report2}{71}{subsection.21.2}
+\contentsline {subsubsection}{\numberline {21.2.1}Methods}{71}{subsubsection.21.2.1}
+\contentsline {subsubsection}{\numberline {21.2.2}Class Variables}{74}{subsubsection.21.2.2}
+\contentsline {section}{\numberline {22}Module cuon.Reports.report\_addresses\_phone1}{75}{section.22}
+\contentsline {subsection}{\numberline {22.1}Variables}{75}{subsection.22.1}
+\contentsline {subsection}{\numberline {22.2}Class report\_addresses\_phone1}{75}{subsection.22.2}
+\contentsline {subsubsection}{\numberline {22.2.1}Methods}{75}{subsubsection.22.2.1}
+\contentsline {section}{\numberline {23}Module cuon.Reports.report\_addresses\_phone11}{76}{section.23}
+\contentsline {subsection}{\numberline {23.1}Variables}{76}{subsection.23.1}
+\contentsline {subsection}{\numberline {23.2}Class report\_addresses\_phone11}{76}{subsection.23.2}
+\contentsline {subsubsection}{\numberline {23.2.1}Methods}{76}{subsubsection.23.2.1}
+\contentsline {section}{\numberline {24}Module cuon.Reports.report\_addresses\_phone12}{77}{section.24}
+\contentsline {subsection}{\numberline {24.1}Variables}{77}{subsection.24.1}
+\contentsline {subsection}{\numberline {24.2}Class report\_addresses\_phone12}{77}{subsection.24.2}
+\contentsline {subsubsection}{\numberline {24.2.1}Methods}{77}{subsubsection.24.2.1}
+\contentsline {section}{\numberline {25}Module cuon.Reports.report\_articles\_number1}{78}{section.25}
+\contentsline {subsection}{\numberline {25.1}Variables}{78}{subsection.25.1}
+\contentsline {subsection}{\numberline {25.2}Class report\_articles\_number1}{78}{subsection.25.2}
+\contentsline {subsubsection}{\numberline {25.2.1}Methods}{78}{subsubsection.25.2.1}
+\contentsline {section}{\numberline {26}Module cuon.Reports.report\_articles\_pickles\_standard}{79}{section.26}
+\contentsline {subsection}{\numberline {26.1}Variables}{79}{subsection.26.1}
+\contentsline {subsection}{\numberline {26.2}Class report\_articles\_pickles\_standard}{79}{subsection.26.2}
+\contentsline {subsubsection}{\numberline {26.2.1}Methods}{79}{subsubsection.26.2.1}
+\contentsline {section}{\numberline {27}Module cuon.Reports.report\_basics}{80}{section.27}
+\contentsline {subsection}{\numberline {27.1}Variables}{80}{subsection.27.1}
+\contentsline {subsection}{\numberline {27.2}Class report\_basics}{80}{subsection.27.2}
+\contentsline {subsubsection}{\numberline {27.2.1}Methods}{80}{subsubsection.27.2.1}
+\contentsline {section}{\numberline {28}Module cuon.Reports.report\_cab\_monthly}{81}{section.28}
+\contentsline {subsection}{\numberline {28.1}Variables}{81}{subsection.28.1}
+\contentsline {subsection}{\numberline {28.2}Class report\_cab\_monthly}{81}{subsection.28.2}
+\contentsline {subsubsection}{\numberline {28.2.1}Methods}{81}{subsubsection.28.2.1}
+\contentsline {section}{\numberline {29}Module cuon.Reports.report\_grave\_plant\_lists}{82}{section.29}
+\contentsline {subsection}{\numberline {29.1}Variables}{82}{subsection.29.1}
+\contentsline {subsection}{\numberline {29.2}Class report\_grave\_plant\_lists}{82}{subsection.29.2}
+\contentsline {subsubsection}{\numberline {29.2.1}Methods}{82}{subsubsection.29.2.1}
+\contentsline {section}{\numberline {30}Module cuon.Reports.report\_hibernation\_incoming\_document}{83}{section.30}
+\contentsline {subsection}{\numberline {30.1}Variables}{83}{subsection.30.1}
+\contentsline {subsection}{\numberline {30.2}Class report\_hibernation\_incoming\_document}{83}{subsection.30.2}
+\contentsline {subsubsection}{\numberline {30.2.1}Methods}{83}{subsubsection.30.2.1}
+\contentsline {section}{\numberline {31}Module cuon.Reports.report\_hibernation\_invoice}{84}{section.31}
+\contentsline {subsection}{\numberline {31.1}Variables}{84}{subsection.31.1}
+\contentsline {subsection}{\numberline {31.2}Class report\_hibernation\_invoice}{84}{subsection.31.2}
+\contentsline {subsubsection}{\numberline {31.2.1}Methods}{84}{subsubsection.31.2.1}
+\contentsline {section}{\numberline {32}Module cuon.Reports.report\_hibernation\_outgoing\_document}{85}{section.32}
+\contentsline {subsection}{\numberline {32.1}Variables}{85}{subsection.32.1}
+\contentsline {subsection}{\numberline {32.2}Class report\_hibernation\_outgoing\_document}{85}{subsection.32.2}
+\contentsline {subsubsection}{\numberline {32.2.1}Methods}{85}{subsubsection.32.2.1}
+\contentsline {section}{\numberline {33}Module cuon.Reports.report\_hibernation\_pickup\_document}{86}{section.33}
+\contentsline {subsection}{\numberline {33.1}Variables}{86}{subsection.33.1}
+\contentsline {subsection}{\numberline {33.2}Class report\_hibernation\_pickup\_document}{86}{subsection.33.2}
+\contentsline {subsubsection}{\numberline {33.2.1}Methods}{86}{subsubsection.33.2.1}
+\contentsline {section}{\numberline {34}Module cuon.Reports.report\_list\_list\_of\_invoices}{87}{section.34}
+\contentsline {subsection}{\numberline {34.1}Variables}{87}{subsection.34.1}
+\contentsline {subsection}{\numberline {34.2}Class report\_list\_list\_of\_invoices}{87}{subsection.34.2}
+\contentsline {subsubsection}{\numberline {34.2.1}Methods}{87}{subsubsection.34.2.1}
+\contentsline {section}{\numberline {35}Module cuon.Reports.report\_list\_of\_inpayment}{88}{section.35}
+\contentsline {subsection}{\numberline {35.1}Variables}{88}{subsection.35.1}
+\contentsline {subsection}{\numberline {35.2}Class report\_list\_of\_inpayment}{88}{subsection.35.2}
+\contentsline {subsubsection}{\numberline {35.2.1}Methods}{88}{subsubsection.35.2.1}
+\contentsline {section}{\numberline {36}Module cuon.Reports.report\_list\_of\_reminder}{89}{section.36}
+\contentsline {subsection}{\numberline {36.1}Variables}{89}{subsection.36.1}
+\contentsline {subsection}{\numberline {36.2}Class report\_list\_of\_reminder}{89}{subsection.36.2}
+\contentsline {subsubsection}{\numberline {36.2.1}Methods}{89}{subsubsection.36.2.1}
+\contentsline {section}{\numberline {37}Module cuon.Reports.report\_list\_of\_residue}{90}{section.37}
+\contentsline {subsection}{\numberline {37.1}Variables}{90}{subsection.37.1}
+\contentsline {subsection}{\numberline {37.2}Class report\_list\_of\_residue}{90}{subsection.37.2}
+\contentsline {subsubsection}{\numberline {37.2.1}Methods}{90}{subsubsection.37.2.1}
+\contentsline {section}{\numberline {38}Module cuon.Reports.report\_list\_of\_top}{91}{section.38}
+\contentsline {subsection}{\numberline {38.1}Variables}{91}{subsection.38.1}
+\contentsline {subsection}{\numberline {38.2}Class report\_list\_of\_top}{91}{subsection.38.2}
+\contentsline {subsubsection}{\numberline {38.2.1}Methods}{91}{subsubsection.38.2.1}
+\contentsline {section}{\numberline {39}Module cuon.Reports.report\_order\_list\_of\_invoices}{92}{section.39}
+\contentsline {subsection}{\numberline {39.1}Variables}{92}{subsection.39.1}
+\contentsline {subsection}{\numberline {39.2}Class report\_order\_list\_of\_invoices}{92}{subsection.39.2}
+\contentsline {subsubsection}{\numberline {39.2.1}Methods}{92}{subsubsection.39.2.1}
+\contentsline {section}{\numberline {40}Module cuon.Reports.report\_order\_standard\_invoice}{93}{section.40}
+\contentsline {subsection}{\numberline {40.1}Variables}{93}{subsection.40.1}
+\contentsline {subsection}{\numberline {40.2}Class report\_order\_standard\_invoice}{93}{subsection.40.2}
+\contentsline {subsubsection}{\numberline {40.2.1}Methods}{93}{subsubsection.40.2.1}
+\contentsline {section}{\numberline {41}Module cuon.Reports.report\_order\_standard\_supply}{94}{section.41}
+\contentsline {subsection}{\numberline {41.1}Variables}{94}{subsection.41.1}
+\contentsline {subsection}{\numberline {41.2}Class report\_order\_standard\_supply}{94}{subsection.41.2}
+\contentsline {subsubsection}{\numberline {41.2.1}Methods}{94}{subsubsection.41.2.1}
+\contentsline {section}{\numberline {42}Module cuon.Reports.report\_printAddress}{95}{section.42}
+\contentsline {subsection}{\numberline {42.1}Variables}{95}{subsection.42.1}
+\contentsline {subsection}{\numberline {42.2}Class report\_printAddress}{95}{subsection.42.2}
+\contentsline {subsubsection}{\numberline {42.2.1}Methods}{95}{subsubsection.42.2.1}
+\contentsline {section}{\numberline {43}Module cuon.Reports.report\_proposal\_standard}{96}{section.43}
+\contentsline {subsection}{\numberline {43.1}Variables}{96}{subsection.43.1}
+\contentsline {subsection}{\numberline {43.2}Class report\_proposal\_standard}{96}{subsection.43.2}
+\contentsline {subsubsection}{\numberline {43.2.1}Methods}{96}{subsubsection.43.2.1}
+\contentsline {section}{\numberline {44}Module cuon.Reports.report\_stockgoods\_number1}{97}{section.44}
+\contentsline {subsection}{\numberline {44.1}Variables}{97}{subsection.44.1}
+\contentsline {subsection}{\numberline {44.2}Class report\_stockgoods\_number1}{97}{subsection.44.2}
+\contentsline {subsubsection}{\numberline {44.2.1}Methods}{97}{subsubsection.44.2.1}
+\contentsline {section}{\numberline {45}Module cuon.Reports.standardlist}{98}{section.45}
+\contentsline {subsection}{\numberline {45.1}Variables}{98}{subsection.45.1}
+\contentsline {subsection}{\numberline {45.2}Class standardlist}{98}{subsection.45.2}
+\contentsline {subsubsection}{\numberline {45.2.1}Methods}{98}{subsubsection.45.2.1}
+\contentsline {section}{\numberline {46}Module cuon.SQL}{99}{section.46}
+\contentsline {subsection}{\numberline {46.1}Variables}{99}{subsection.46.1}
+\contentsline {subsection}{\numberline {46.2}Class SQL}{99}{subsection.46.2}
+\contentsline {subsubsection}{\numberline {46.2.1}Methods}{99}{subsubsection.46.2.1}
+\contentsline {subsubsection}{\numberline {46.2.2}Class Variables}{100}{subsubsection.46.2.2}
+\contentsline {section}{\numberline {47}Module cuon.SVG}{101}{section.47}
+\contentsline {subsection}{\numberline {47.1}Functions}{101}{subsection.47.1}
+\contentsline {subsection}{\numberline {47.2}Variables}{101}{subsection.47.2}
+\contentsline {subsection}{\numberline {47.3}Class SVG}{101}{subsection.47.3}
+\contentsline {subsubsection}{\numberline {47.3.1}Methods}{101}{subsubsection.47.3.1}
+\contentsline {subsection}{\numberline {47.4}Class newSVG}{101}{subsection.47.4}
+\contentsline {subsubsection}{\numberline {47.4.1}Methods}{101}{subsubsection.47.4.1}
+\contentsline {subsection}{\numberline {47.5}Class Line}{102}{subsection.47.5}
+\contentsline {subsubsection}{\numberline {47.5.1}Methods}{102}{subsubsection.47.5.1}
+\contentsline {subsection}{\numberline {47.6}Class Circle}{102}{subsection.47.6}
+\contentsline {subsubsection}{\numberline {47.6.1}Methods}{102}{subsubsection.47.6.1}
+\contentsline {subsection}{\numberline {47.7}Class Rectangle}{102}{subsection.47.7}
+\contentsline {subsubsection}{\numberline {47.7.1}Methods}{102}{subsubsection.47.7.1}
+\contentsline {subsection}{\numberline {47.8}Class Text}{102}{subsection.47.8}
+\contentsline {subsubsection}{\numberline {47.8.1}Methods}{102}{subsubsection.47.8.1}
+\contentsline {section}{\numberline {48}Module cuon.Stock}{103}{section.48}
+\contentsline {subsection}{\numberline {48.1}Variables}{103}{subsection.48.1}
+\contentsline {subsection}{\numberline {48.2}Class Stock}{103}{subsection.48.2}
+\contentsline {subsubsection}{\numberline {48.2.1}Methods}{103}{subsubsection.48.2.1}
+\contentsline {subsubsection}{\numberline {48.2.2}Class Variables}{104}{subsubsection.48.2.2}
+\contentsline {section}{\numberline {49}Module cuon.Support}{105}{section.49}
+\contentsline {subsection}{\numberline {49.1}Variables}{105}{subsection.49.1}
+\contentsline {subsection}{\numberline {49.2}Class Support}{105}{subsection.49.2}
+\contentsline {subsubsection}{\numberline {49.2.1}Methods}{105}{subsubsection.49.2.1}
+\contentsline {subsubsection}{\numberline {49.2.2}Class Variables}{106}{subsubsection.49.2.2}
+\contentsline {section}{\numberline {50}Module cuon.Tweet}{107}{section.50}
+\contentsline {subsection}{\numberline {50.1}Variables}{107}{subsection.50.1}
+\contentsline {subsection}{\numberline {50.2}Class Tweet}{107}{subsection.50.2}
+\contentsline {subsubsection}{\numberline {50.2.1}Methods}{107}{subsubsection.50.2.1}
+\contentsline {subsubsection}{\numberline {50.2.2}Class Variables}{108}{subsubsection.50.2.2}
+\contentsline {section}{\numberline {51}Module cuon.User}{109}{section.51}
+\contentsline {subsection}{\numberline {51.1}Variables}{109}{subsection.51.1}
+\contentsline {subsection}{\numberline {51.2}Class User}{109}{subsection.51.2}
+\contentsline {subsubsection}{\numberline {51.2.1}Methods}{109}{subsubsection.51.2.1}
+\contentsline {subsubsection}{\numberline {51.2.2}Class Variables}{110}{subsubsection.51.2.2}
+\contentsline {section}{\numberline {52}Module cuon.Web}{111}{section.52}
+\contentsline {subsection}{\numberline {52.1}Variables}{111}{subsection.52.1}
+\contentsline {subsection}{\numberline {52.2}Class Web}{111}{subsection.52.2}
+\contentsline {subsubsection}{\numberline {52.2.1}Methods}{111}{subsubsection.52.2.1}
+\contentsline {subsubsection}{\numberline {52.2.2}Class Variables}{112}{subsubsection.52.2.2}
+\contentsline {section}{\numberline {53}Module cuon.Web2}{113}{section.53}
+\contentsline {subsection}{\numberline {53.1}Variables}{113}{subsection.53.1}
+\contentsline {subsection}{\numberline {53.2}Class Web2}{113}{subsection.53.2}
+\contentsline {subsubsection}{\numberline {53.2.1}Methods}{113}{subsubsection.53.2.1}
+\contentsline {subsubsection}{\numberline {53.2.2}Class Variables}{114}{subsubsection.53.2.2}
+\contentsline {section}{\numberline {54}Module cuon.WebAI}{115}{section.54}
+\contentsline {subsection}{\numberline {54.1}Variables}{115}{subsection.54.1}
+\contentsline {subsection}{\numberline {54.2}Class WebAI}{115}{subsection.54.2}
+\contentsline {subsubsection}{\numberline {54.2.1}Methods}{115}{subsubsection.54.2.1}
+\contentsline {subsubsection}{\numberline {54.2.2}Class Variables}{116}{subsubsection.54.2.2}
+\contentsline {section}{\numberline {55}Module cuon.WebShop}{117}{section.55}
+\contentsline {subsection}{\numberline {55.1}Variables}{117}{subsection.55.1}
+\contentsline {subsection}{\numberline {55.2}Class WebShop}{117}{subsection.55.2}
+\contentsline {subsubsection}{\numberline {55.2.1}Methods}{117}{subsubsection.55.2.1}
+\contentsline {subsubsection}{\numberline {55.2.2}Class Variables}{118}{subsubsection.55.2.2}
+\contentsline {section}{\numberline {56}Module cuon.ai}{119}{section.56}
+\contentsline {subsection}{\numberline {56.1}Variables}{119}{subsection.56.1}
+\contentsline {subsection}{\numberline {56.2}Class ai}{119}{subsection.56.2}
+\contentsline {subsubsection}{\numberline {56.2.1}Methods}{119}{subsubsection.56.2.1}
+\contentsline {subsubsection}{\numberline {56.2.2}Class Variables}{119}{subsubsection.56.2.2}
+\contentsline {section}{\numberline {57}Module cuon.ai\_main}{121}{section.57}
+\contentsline {subsection}{\numberline {57.1}Variables}{121}{subsection.57.1}
+\contentsline {subsection}{\numberline {57.2}Class ai\_main}{121}{subsection.57.2}
+\contentsline {subsubsection}{\numberline {57.2.1}Methods}{121}{subsubsection.57.2.1}
+\contentsline {section}{\numberline {58}Module cuon.basics}{122}{section.58}
+\contentsline {subsection}{\numberline {58.1}Variables}{122}{subsection.58.1}
+\contentsline {subsection}{\numberline {58.2}Class basics}{122}{subsection.58.2}
+\contentsline {subsubsection}{\numberline {58.2.1}Methods}{122}{subsubsection.58.2.1}
+\contentsline {subsubsection}{\numberline {58.2.2}Class Variables}{125}{subsubsection.58.2.2}
+\contentsline {section}{\numberline {59}Module cuon.createWebAnalysis}{126}{section.59}
+\contentsline {subsection}{\numberline {59.1}Variables}{126}{subsection.59.1}
+\contentsline {section}{\numberline {60}Module cuon.gridxml}{127}{section.60}
+\contentsline {subsection}{\numberline {60.1}Variables}{127}{subsection.60.1}
+\contentsline {subsection}{\numberline {60.2}Class gridxml}{127}{subsection.60.2}
+\contentsline {subsubsection}{\numberline {60.2.1}Methods}{127}{subsubsection.60.2.1}
+\contentsline {section}{\numberline {61}Module cuon.iCal}{128}{section.61}
+\contentsline {subsection}{\numberline {61.1}Variables}{128}{subsection.61.1}
+\contentsline {subsection}{\numberline {61.2}Class iCal}{128}{subsection.61.2}
+\contentsline {subsubsection}{\numberline {61.2.1}Methods}{128}{subsubsection.61.2.1}
+\contentsline {subsubsection}{\numberline {61.2.2}Class Variables}{129}{subsubsection.61.2.2}
+\contentsline {section}{\numberline {62}Module cuon.jabberBot}{131}{section.62}
+\contentsline {subsection}{\numberline {62.1}Class jabberBot}{131}{subsection.62.1}
+\contentsline {subsubsection}{\numberline {62.1.1}Methods}{131}{subsubsection.62.1.1}
+\contentsline {subsubsection}{\numberline {62.1.2}Class Variables}{132}{subsubsection.62.1.2}
+\contentsline {section}{\numberline {63}Module cuon.simplemail}{133}{section.63}
+\contentsline {subsection}{\numberline {63.1}Variables}{134}{subsection.63.1}
+\contentsline {subsection}{\numberline {63.2}Class SimpleMail\_Exception}{134}{subsection.63.2}
+\contentsline {subsubsection}{\numberline {63.2.1}Methods}{134}{subsubsection.63.2.1}
+\contentsline {subsubsection}{\numberline {63.2.2}Properties}{135}{subsubsection.63.2.2}
+\contentsline {subsection}{\numberline {63.3}Class NoFromAddress\_Exception}{135}{subsection.63.3}
+\contentsline {subsubsection}{\numberline {63.3.1}Methods}{135}{subsubsection.63.3.1}
+\contentsline {subsubsection}{\numberline {63.3.2}Properties}{135}{subsubsection.63.3.2}
+\contentsline {subsection}{\numberline {63.4}Class NoToAddress\_Exception}{136}{subsection.63.4}
+\contentsline {subsubsection}{\numberline {63.4.1}Methods}{136}{subsubsection.63.4.1}
+\contentsline {subsubsection}{\numberline {63.4.2}Properties}{136}{subsubsection.63.4.2}
+\contentsline {subsection}{\numberline {63.5}Class NoSubject\_Exception}{137}{subsection.63.5}
+\contentsline {subsubsection}{\numberline {63.5.1}Methods}{137}{subsubsection.63.5.1}
+\contentsline {subsubsection}{\numberline {63.5.2}Properties}{137}{subsubsection.63.5.2}
+\contentsline {subsection}{\numberline {63.6}Class AttachmentNotFound\_Exception}{138}{subsection.63.6}
+\contentsline {subsubsection}{\numberline {63.6.1}Methods}{138}{subsubsection.63.6.1}
+\contentsline {subsubsection}{\numberline {63.6.2}Properties}{138}{subsubsection.63.6.2}
+\contentsline {subsection}{\numberline {63.7}Class Attachments}{139}{subsection.63.7}
+\contentsline {subsubsection}{\numberline {63.7.1}Methods}{139}{subsubsection.63.7.1}
+\contentsline {subsubsection}{\numberline {63.7.2}Properties}{139}{subsubsection.63.7.2}
+\contentsline {subsection}{\numberline {63.8}Class Recipients}{140}{subsection.63.8}
+\contentsline {subsubsection}{\numberline {63.8.1}Methods}{140}{subsubsection.63.8.1}
+\contentsline {subsubsection}{\numberline {63.8.2}Properties}{141}{subsubsection.63.8.2}
+\contentsline {subsection}{\numberline {63.9}Class CCRecipients}{141}{subsection.63.9}
+\contentsline {subsubsection}{\numberline {63.9.1}Methods}{141}{subsubsection.63.9.1}
+\contentsline {subsubsection}{\numberline {63.9.2}Properties}{141}{subsubsection.63.9.2}
+\contentsline {subsection}{\numberline {63.10}Class BCCRecipients}{142}{subsection.63.10}
+\contentsline {subsubsection}{\numberline {63.10.1}Methods}{142}{subsubsection.63.10.1}
+\contentsline {subsubsection}{\numberline {63.10.2}Properties}{142}{subsubsection.63.10.2}
+\contentsline {subsection}{\numberline {63.11}Class Email}{142}{subsection.63.11}
+\contentsline {subsubsection}{\numberline {63.11.1}Methods}{143}{subsubsection.63.11.1}
+\contentsline {subsubsection}{\numberline {63.11.2}Properties}{144}{subsubsection.63.11.2}
+\contentsline {section}{\numberline {64}Module cuon.web\_root}{145}{section.64}
+\contentsline {subsection}{\numberline {64.1}Class Image}{145}{subsection.64.1}
+\contentsline {subsubsection}{\numberline {64.1.1}Methods}{145}{subsubsection.64.1.1}
+\contentsline {subsection}{\numberline {64.2}Class WebRoots}{145}{subsection.64.2}
+\contentsline {subsubsection}{\numberline {64.2.1}Methods}{145}{subsubsection.64.2.1}
+\contentsline {section}{Index}{146}{section*.4}

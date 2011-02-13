@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Editor.programmersEditor</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Editor-module.html">Package&nbsp;Editor</a> ::
+        Module&nbsp;programmersEditor
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Editor.programmersEditor-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Editor.programmersEditor-module.html">Module cuon.Editor.programmersEditor</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module cuon.Editor.editor=cuon.Editor.editor-module.html"><a title="cuon.Editor.editor" class="py-name" href="#" onclick="return doclink('link-0', 'editor', 'link-0');">editor</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class cuon.Editor.editor.editorwindow=cuon.Editor.editor.editorwindow-class.html"><a title="cuon.Editor.editor.editorwindow" class="py-name" href="#" onclick="return doclink('link-1', 'editorwindow', 'link-1');">editorwindow</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="programmerseditor"></a><div id="programmerseditor-def"><a name="L4"></a><tt class="py-lineno">  4</tt> <a class="py-toggle" href="#" id="programmerseditor-toggle" onclick="return toggle('programmerseditor');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html">programmerseditor</a><tt class="py-op">(</tt><tt class="py-base-class">editorwindow</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="programmerseditor-expanded"><a name="programmerseditor.__init__"></a><div id="programmerseditor.__init__-def"><a name="L5"></a><tt class="py-lineno">  5</tt> <a class="py-toggle" href="#" id="programmerseditor.__init__-toggle" onclick="return toggle('programmerseditor.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.__init__-expanded"><a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line">        <tt id="link-2" class="py-name"><a title="cuon.Editor.editor.editorwindow" class="py-name" href="#" onclick="return doclink('link-2', 'editorwindow', 'link-1');">editorwindow</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Cuon.MainWindow.__init__()=Cuon.MainWindow-class.html#__init__,Method cuon.AI.ai.aiwindow.__init__()=cuon.AI.ai.aiwindow-class.html#__init__,Method cuon.AI.ai_main.ai_main.__init__()=cuon.AI.ai_main.ai_main-class.html#__init__,Method cuon.AI.gtkMiniClient.gtkMiniClient.__init__()=cuon.AI.gtkMiniClient.gtkMiniClient-class.html#__init__,Method cuon.AI.gtkMiniClient.simpleGlade.__init__()=cuon.AI.gtkMiniClient.simpleGlade-class.html#__init__,Method cuon.AI.tki1.tki1.__init__()=cuon.AI.tki1.tki1-class.html#__init__,Method cuon.Addresses.SingleAddress.SingleAddress.__init__()=cuon.Addresses.SingleAddress.SingleAddress-class.html#__init__,Method cuon.Addresses.SingleAddressBank.SingleAddressBank.__init__()=cuon.Addresses.SingleAddressBank.SingleAddressBank-class.html#__init__,Method cuon.Addresses.SingleContact.SingleContact.__init__()=cuon.Addresses.SingleContact.SingleContact-class.html#__init__,Method cuon.Addresses.SingleCountry.SingleCountry.__init__()=cuon.Addresses.SingleCountry.SingleCountry-class.html#__init__,Method cuon.Addresses.SingleMisc.SingleMisc.__init__()=cuon.Addresses.SingleMisc.SingleMisc-class.html#__init__,Method cuon.Addresses.SingleNotes.SingleNotes.__init__()=cuon.Addresses.SingleNotes.SingleNotes-class.html#__init__,Method cuon.Addresses.SinglePartner.SinglePartner.__init__()=cuon.Addresses.SinglePartner.SinglePartner-class.html#__init__,Method cuon.Addresses.SingleScheduling.SingleScheduling.__init__()=cuon.Addresses.SingleScheduling.SingleScheduling-class.html#__init__,Method cuon.Addresses.addresses.addresswindow.__init__()=cuon.Addresses.addresses.addresswindow-class.html#__init__,Method cuon.Addresses.contact.contactwindow.__init__()=cuon.Addresses.contact.contactwindow-class.html#__init__,Method cuon.Addresses.lists_addresses.lists_addresses.__init__()=cuon.Addresses.lists_addresses.lists_addresses-class.html#__init__,Method cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1.__init__()=cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1-class.html#__init__,Method cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11.__init__()=cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11-class.html#__init__,Method cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12.__init__()=cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12-class.html#__init__,Method cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2.__init__()=cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2-class.html#__init__,Method cuon.Addresses.printAddress.printAddress.__init__()=cuon.Addresses.printAddress.printAddress-class.html#__init__,Method cuon.Addresses.selectionDialog.selectionDialog1.__init__()=cuon.Addresses.selectionDialog.selectionDialog1-class.html#__init__,Method cuon.Analysis.SingleAnalysis_cost.SingleClient.__init__()=cuon.Analysis.SingleAnalysis_cost.SingleClient-class.html#__init__,Method cuon.Analysis.analyse_costs.clientswindow.__init__()=cuon.Analysis.analyse_costs.clientswindow-class.html#__init__,Method cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.__init__()=cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#__init__,Method cuon.Articles.SingleArticle.SingleArticle.__init__()=cuon.Articles.SingleArticle.SingleArticle-class.html#__init__,Method cuon.Articles.SingleArticleParts.SingleArticleParts.__init__()=cuon.Articles.SingleArticleParts.SingleArticleParts-class.html#__init__,Method cuon.Articles.SingleArticlePurchase.SingleArticlePurchase.__init__()=cuon.Articles.SingleArticlePurchase.SingleArticlePurchase-class.html#__init__,Method cuon.Articles.SingleArticleSale.SingleArticleSale.__init__()=cuon.Articles.SingleArticleSale.SingleArticleSale-class.html#__init__,Method cuon.Articles.SingleArticleStock.SingleArticleStock.__init__()=cuon.Articles.SingleArticleStock.SingleArticleStock-class.html#__init__,Method cuon.Articles.SingleArticleWebshop.SingleArticleWebshop.__init__()=cuon.Articles.SingleArticleWebshop.SingleArticleWebshop-class.html#__init__,Method cuon.Articles.SingleMaterialgroups.SingleMaterialgroups.__init__()=cuon.Articles.SingleMaterialgroups.SingleMaterialgroups-class.html#__init__,Method cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount.__init__()=cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount-class.html#__init__,Method cuon.Articles.articles.articleswindow.__init__()=cuon.Articles.articles.articleswindow-class.html#__init__,Method cuon.Articles.lists_articles_number1.lists_articles_number1.__init__()=cuon.Articles.lists_articles_number1.lists_articles_number1-class.html#__init__,Method cuon.Articles.materialgroup.materialgroupwindow.__init__()=cuon.Articles.materialgroup.materialgroupwindow-class.html#__init__,Method cuon.Articles.pickles_articles.pickles_articles.__init__()=cuon.Articles.pickles_articles.pickles_articles-class.html#__init__,Method cuon.Bank.SingleBank.SingleBank.__init__()=cuon.Bank.SingleBank.SingleBank-class.html#__init__,Method cuon.Bank.bank.bankwindow.__init__()=cuon.Bank.bank.bankwindow-class.html#__init__,Method cuon.Biblio.SingleBiblio.SingleBiblio.__init__()=cuon.Biblio.SingleBiblio.SingleBiblio-class.html#__init__,Method cuon.Biblio.biblio.bibliowindow.__init__()=cuon.Biblio.biblio.bibliowindow-class.html#__init__,Method cuon.Calendar.calendar.calendarwindow.__init__()=cuon.Calendar.calendar.calendarwindow-class.html#__init__,Method cuon.Clients.SingleClient.SingleClient.__init__()=cuon.Clients.SingleClient.SingleClient-class.html#__init__,Method cuon.Clients.clients.clientswindow.__init__()=cuon.Clients.clients.clientswindow-class.html#__init__,Method cuon.DMS.SingleDMS.SingleDMS.__init__()=cuon.DMS.SingleDMS.SingleDMS-class.html#__init__,Method cuon.DMS.dms.dmswindow.__init__()=cuon.DMS.dms.dmswindow-class.html#__init__,Method cuon.DMS.documentTools.documentTools.__init__()=cuon.DMS.documentTools.documentTools-class.html#__init__,Method cuon.Databases.SingleCuon.SingleCuon.__init__()=cuon.Databases.SingleCuon.SingleCuon-class.html#__init__,Method cuon.Databases.SingleData.SingleData.__init__()=cuon.Databases.SingleData.SingleData-class.html#__init__,Method cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.__init__()=cuon.Databases.SingleDataTreeModel.SingleDataTreeModel-class.html#__init__,Method cuon.Databases.SingleExport.SingleExport.__init__()=cuon.Databases.SingleExport.SingleExport-class.html#__init__,Method cuon.Databases.SingleImport.SingleImport.__init__()=cuon.Databases.SingleImport.SingleImport-class.html#__init__,Method cuon.Databases.SingleImportZip.SingleImportZip.__init__()=cuon.Databases.SingleImportZip.SingleImportZip-class.html#__init__,Method cuon.Databases.cyr_column.cyr_column.__init__()=cuon.Databases.cyr_column.cyr_column-class.html#__init__,Method cuon.Databases.cyr_load_table.cyr_load_table.__init__()=cuon.Databases.cyr_load_table.cyr_load_table-class.html#__init__,Method cuon.Databases.cyr_table.cyr_table.__init__()=cuon.Databases.cyr_table.cyr_table-class.html#__init__,Method cuon.Databases.databases.databaseswindow.__init__()=cuon.Databases.databases.databaseswindow-class.html#__init__,Method cuon.Databases.dumps.dumps.__init__()=cuon.Databases.dumps.dumps-class.html#__init__,Method cuon.Databases.export_generic1.export_generic1.__init__()=cuon.Databases.export_generic1.export_generic1-class.html#__init__,Method cuon.Databases.import_generic1.import_generic1.__init__()=cuon.Databases.import_generic1.import_generic1-class.html#__init__,Method cuon.Databases.import_generic2.import_generic2.__init__()=cuon.Databases.import_generic2.import_generic2-class.html#__init__,Method cuon.E_Mail.imap_dms.imap_dms.__init__()=cuon.E_Mail.imap_dms.imap_dms-class.html#__init__,Method cuon.E_Mail.incoming_mail.incoming_mail.__init__()=cuon.E_Mail.incoming_mail.incoming_mail-class.html#__init__,Method cuon.E_Mail.sendEmail.sendEmail.__init__()=cuon.E_Mail.sendEmail.sendEmail-class.html#__init__,Method cuon.Editor.editor.editorwindow.__init__()=cuon.Editor.editor.editorwindow-class.html#__init__,Method cuon.Editor.programmersEditor.programmerseditor.__init__()=cuon.Editor.programmersEditor.programmerseditor-class.html#__init__,Method cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.__init__()=cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow-class.html#__init__,Method cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.__init__()=cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow-class.html#__init__,Method cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly.__init__()=cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly-class.html#__init__,Method cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment.__init__()=cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment-class.html#__init__,Method cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice.__init__()=cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice-class.html#__init__,Method cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.__init__()=cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow-class.html#__init__,Method cuon.Finances.SingleAccountInfo.SingleAccountInfo.__init__()=cuon.Finances.SingleAccountInfo.SingleAccountInfo-class.html#__init__,Method cuon.Finances.SingleAccountPlan.SingleAccountPlan.__init__()=cuon.Finances.SingleAccountPlan.SingleAccountPlan-class.html#__init__,Method cuon.Finances.SingleAccountSentence.SingleAccountSentence.__init__()=cuon.Finances.SingleAccountSentence.SingleAccountSentence-class.html#__init__,Method cuon.Finances.SingleAccountValues.SingleAccountValues.__init__()=cuon.Finances.SingleAccountValues.SingleAccountValues-class.html#__init__,Method cuon.Garden.SingleBotany.SingleBotany.__init__()=cuon.Garden.SingleBotany.SingleBotany-class.html#__init__,Method cuon.Garden.SingleBotanyClass.SingleBotanyClass.__init__()=cuon.Garden.SingleBotanyClass.SingleBotanyClass-class.html#__init__,Method cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio.__init__()=cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio-class.html#__init__,Method cuon.Garden.SingleBotanyFamily.SingleBotanyFamily.__init__()=cuon.Garden.SingleBotanyFamily.SingleBotanyFamily-class.html#__init__,Method cuon.Garden.SingleBotanyGenus.SingleBotanyGenus.__init__()=cuon.Garden.SingleBotanyGenus.SingleBotanyGenus-class.html#__init__,Method cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo.__init__()=cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo-class.html#__init__,Method cuon.Garden.SingleHibernation.SingleHibernation.__init__()=cuon.Garden.SingleHibernation.SingleHibernation-class.html#__init__,Method cuon.Garden.SingleHibernationPlant.SingleHibernationPlant.__init__()=cuon.Garden.SingleHibernationPlant.SingleHibernationPlant-class.html#__init__,Method cuon.Garden.botany.botanywindow.__init__()=cuon.Garden.botany.botanywindow-class.html#__init__,Method cuon.Garden.garden.gardenwindow.__init__()=cuon.Garden.garden.gardenwindow-class.html#__init__,Method cuon.Garden.hibernation.hibernationwindow.__init__()=cuon.Garden.hibernation.hibernationwindow-class.html#__init__,Method cuon.Graves.SingleGrave.SingleGrave.__init__()=cuon.Graves.SingleGrave.SingleGrave-class.html#__init__,Method cuon.Graves.SingleGraveAutumn.SingleGraveAutumn.__init__()=cuon.Graves.SingleGraveAutumn.SingleGraveAutumn-class.html#__init__,Method cuon.Graves.SingleGraveHoliday.SingleGraveHoliday.__init__()=cuon.Graves.SingleGraveHoliday.SingleGraveHoliday-class.html#__init__,Method cuon.Graves.SingleGraveInvoices.SingleGraveInvoices.__init__()=cuon.Graves.SingleGraveInvoices.SingleGraveInvoices-class.html#__init__,Method cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance.__init__()=cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance-class.html#__init__,Method cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent.__init__()=cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent-class.html#__init__,Method cuon.Graves.SingleGraveSpring.SingleGraveSpring.__init__()=cuon.Graves.SingleGraveSpring.SingleGraveSpring-class.html#__init__,Method cuon.Graves.SingleGraveSummer.SingleGraveSummer.__init__()=cuon.Graves.SingleGraveSummer.SingleGraveSummer-class.html#__init__,Method cuon.Graves.SingleGraveWinter.SingleGraveWinter.__init__()=cuon.Graves.SingleGraveWinter.SingleGraveWinter-class.html#__init__,Method cuon.Graves.SingleGraveYear.SingleGraveYear.__init__()=cuon.Graves.SingleGraveYear.SingleGraveYear-class.html#__init__,Method cuon.Graves.SingleGraveyard.SingleGraveyard.__init__()=cuon.Graves.SingleGraveyard.SingleGraveyard-class.html#__init__,Method cuon.Graves.address_graves.address_graves.__init__()=cuon.Graves.address_graves.address_graves-class.html#__init__,Method cuon.Graves.grave.graveswindow.__init__()=cuon.Graves.grave.graveswindow-class.html#__init__,Method cuon.Graves.graveyard.graveyardMainwindow.__init__()=cuon.Graves.graveyard.graveyardMainwindow-class.html#__init__,Method cuon.Graves.plant_lists.plantlists.__init__()=cuon.Graves.plant_lists.plantlists-class.html#__init__,Method cuon.Help.help.helpwindow.__init__()=cuon.Help.help.helpwindow-class.html#__init__,Method cuon.Leasing.SingleLeasing.SingleLeasing.__init__()=cuon.Leasing.SingleLeasing.SingleLeasing-class.html#__init__,Method cuon.Leasing.leasing.leasingwindow.__init__()=cuon.Leasing.leasing.leasingwindow-class.html#__init__,Method cuon.Logging.logs.logs.__init__()=cuon.Logging.logs.logs-class.html#__init__,Method cuon.Login.login.loginwindow.__init__()=cuon.Login.login.loginwindow-class.html#__init__,Method cuon.Misc.cuon_dialog.cuon_dialog.__init__()=cuon.Misc.cuon_dialog.cuon_dialog-class.html#__init__,Method cuon.Misc.cuonlists.cuonlists.__init__()=cuon.Misc.cuonlists.cuonlists-class.html#__init__,Method cuon.Misc.fileSelection.fileSelection.__init__()=cuon.Misc.fileSelection.fileSelection-class.html#__init__,Method cuon.Misc.messages.messages.__init__()=cuon.Misc.messages.messages-class.html#__init__,Method cuon.Misc.misc.Treeview.__init__()=cuon.Misc.misc.Treeview-class.html#__init__,Method cuon.Misc.misc.misc.__init__()=cuon.Misc.misc.misc-class.html#__init__,Method cuon.OpenOffice.letter.letter.__init__()=cuon.OpenOffice.letter.letter-class.html#__init__,Method cuon.OpenOffice.ooconnect.ooconnect.__init__()=cuon.OpenOffice.ooconnect.ooconnect-class.html#__init__,Method cuon.Order.SingleOrder.SingleOrder.__init__()=cuon.Order.SingleOrder.SingleOrder-class.html#__init__,Method cuon.Order.SingleOrderGet.SingleOrderGet.__init__()=cuon.Order.SingleOrderGet.SingleOrderGet-class.html#__init__,Method cuon.Order.SingleOrderInvoice.SingleOrderInvoice.__init__()=cuon.Order.SingleOrderInvoice.SingleOrderInvoice-class.html#__init__,Method cuon.Order.SingleOrderPayment.SingleOrderPayment.__init__()=cuon.Order.SingleOrderPayment.SingleOrderPayment-class.html#__init__,Method cuon.Order.SingleOrderPosition.SingleOrderPosition.__init__()=cuon.Order.SingleOrderPosition.SingleOrderPosition-class.html#__init__,Method cuon.Order.SingleOrderSupply.SingleOrderSupply.__init__()=cuon.Order.SingleOrderSupply.SingleOrderSupply-class.html#__init__,Method cuon.Order.order.orderwindow.__init__()=cuon.Order.order.orderwindow-class.html#__init__,Method cuon.Order.standard_bill.standard_bill.__init__()=cuon.Order.standard_bill.standard_bill-class.html#__init__,Method cuon.Order.standard_delivery_note.standard_delivery_note.__init__()=cuon.Order.standard_delivery_note.standard_delivery_note-class.html#__init__,Method cuon.Order.standard_invoice.standard_invoice.__init__()=cuon.Order.standard_invoice.standard_invoice-class.html#__init__,Method cuon.Order.standard_pickup_note.standard_pickup_note.__init__()=cuon.Order.standard_pickup_note.standard_pickup_note-class.html#__init__,Method cuon.Preferences.SinglePreferences.SinglePreferences.__init__()=cuon.Preferences.SinglePreferences.SinglePreferences-class.html#__init__,Method cuon.Preferences.preferences.preferenceswindow.__init__()=cuon.Preferences.preferences.preferenceswindow-class.html#__init__,Method cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop.__init__()=cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop-class.html#__init__,Method cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat.__init__()=cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat-class.html#__init__,Method cuon.PrefsFinance.prefsFinance.prefsFinancewindow.__init__()=cuon.PrefsFinance.prefsFinance.prefsFinancewindow-class.html#__init__,Method cuon.Project.SingleProject.SingleProject.__init__()=cuon.Project.SingleProject.SingleProject-class.html#__init__,Method cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources.__init__()=cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources-class.html#__init__,Method cuon.Project.SingleProjectPhases.SingleProjectPhases.__init__()=cuon.Project.SingleProjectPhases.SingleProjectPhases-class.html#__init__,Method cuon.Project.SingleProjectProgramming.SingleProjectProgramming.__init__()=cuon.Project.SingleProjectProgramming.SingleProjectProgramming-class.html#__init__,Method cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources.__init__()=cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources-class.html#__init__,Method cuon.Project.SingleProjectTasks.SingleProjectTasks.__init__()=cuon.Project.SingleProjectTasks.SingleProjectTasks-class.html#__init__,Method cuon.Project.project.projectwindow.__init__()=cuon.Project.project.projectwindow-class.html#__init__,Method cuon.Proposal.proposal.proposalwindow.__init__()=cuon.Proposal.proposal.proposalwindow-class.html#__init__,Method cuon.Skeleton.SingleSkeleton.SingleClient.__init__()=cuon.Skeleton.SingleSkeleton.SingleClient-class.html#__init__,Method cuon.Skeleton.skeleton.clientswindow.__init__()=cuon.Skeleton.skeleton.clientswindow-class.html#__init__,Method cuon.Staff.SingleStaff.SingleStaff.__init__()=cuon.Staff.SingleStaff.SingleStaff-class.html#__init__,Method cuon.Staff.SingleStaffDisease.SingleStaffDisease.__init__()=cuon.Staff.SingleStaffDisease.SingleStaffDisease-class.html#__init__,Method cuon.Staff.SingleStaffFee.SingleStaffFee.__init__()=cuon.Staff.SingleStaffFee.SingleStaffFee-class.html#__init__,Method cuon.Staff.SingleStaffMisc.SingleStaffMisc.__init__()=cuon.Staff.SingleStaffMisc.SingleStaffMisc-class.html#__init__,Method cuon.Staff.SingleStaffVacation.SingleStaffVacation.__init__()=cuon.Staff.SingleStaffVacation.SingleStaffVacation-class.html#__init__,Method cuon.Staff.staff.staffwindow.__init__()=cuon.Staff.staff.staffwindow-class.html#__init__,Method cuon.Stats.stats.statswindow.__init__()=cuon.Stats.stats.statswindow-class.html#__init__,Method cuon.Stock.SingleStock.SingleStock.__init__()=cuon.Stock.SingleStock.SingleStock-class.html#__init__,Method cuon.Stock.SingleStockGoods.SingleStockGoods.__init__()=cuon.Stock.SingleStockGoods.SingleStockGoods-class.html#__init__,Method cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1.__init__()=cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1-class.html#__init__,Method cuon.Stock.stock.stockwindow.__init__()=cuon.Stock.stock.stockwindow-class.html#__init__,Method cuon.SupportTicket.SingleSupportProject.SingleSupportProject.__init__()=cuon.SupportTicket.SingleSupportProject.SingleSupportProject-class.html#__init__,Method cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket.__init__()=cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket-class.html#__init__,Method cuon.SupportTicket.supportTicket.supportticketwindow.__init__()=cuon.SupportTicket.supportTicket.supportticketwindow-class.html#__init__,Method cuon.Think.SingleMindmap.SingleMindmap.__init__()=cuon.Think.SingleMindmap.SingleMindmap-class.html#__init__,Method cuon.Think.SingleThink.SingleThink.__init__()=cuon.Think.SingleThink.SingleThink-class.html#__init__,Method cuon.Think.think.thinkwindow.__init__()=cuon.Think.think.thinkwindow-class.html#__init__,Method cuon.TypeDefs.constants.constants.__init__()=cuon.TypeDefs.constants.constants-class.html#__init__,Method cuon.TypeDefs.defaultValues.defaultValues.__init__()=cuon.TypeDefs.defaultValues.defaultValues-class.html#__init__,Method cuon.TypeDefs.typedefs.typedefs.__init__()=cuon.TypeDefs.typedefs.typedefs-class.html#__init__,Method cuon.TypeDefs.typedefs_server.typedefs_server.__init__()=cuon.TypeDefs.typedefs_server.typedefs_server-class.html#__init__,Method cuon.User.user.User.__init__()=cuon.User.user.User-class.html#__init__,Method cuon.VTK.test.test.__init__()=cuon.VTK.test.test-class.html#__init__,Method cuon.WebShop.SingleWebshop.SingleWebshop.__init__()=cuon.WebShop.SingleWebshop.SingleWebshop-class.html#__init__,Method cuon.WebShop.webshop.webshopwindow.__init__()=cuon.WebShop.webshop.webshopwindow-class.html#__init__,Method cuon.Windows.chooseWindows.chooseWindows.__init__()=cuon.Windows.chooseWindows.chooseWindows-class.html#__init__,Method cuon.Windows.cyr_load_entries.cyr_load_entries.__init__()=cuon.Windows.cyr_load_entries.cyr_load_entries-class.html#__init__,Method cuon.Windows.dataEntry.dataEntry.__init__()=cuon.Windows.dataEntry.dataEntry-class.html#__init__,Method cuon.Windows.gladeXml.gladeXml.__init__()=cuon.Windows.gladeXml.gladeXml-class.html#__init__,Method cuon.Windows.rawWindow.rawWindow.__init__()=cuon.Windows.rawWindow.rawWindow-class.html#__init__,Method cuon.Windows.setOfEntries.setOfEntries.__init__()=cuon.Windows.setOfEntries.setOfEntries-class.html#__init__,Method cuon.Windows.windows.windows.__init__()=cuon.Windows.windows.windows-class.html#__init__,Method cuon.XML.MyXML.MyXML.__init__()=cuon.XML.MyXML.MyXML-class.html#__init__,Method cuon.XMLRPC.xmlrpc.myXmlRpc.__init__()=cuon.XMLRPC.xmlrpc.myXmlRpc-class.html#__init__,Method cuon.cuon_dia.CuonDia.__init__()=cuon.cuon_dia.CuonDia-class.html#__init__,Method cuon.cuon_dia.MyXmlrpc.__init__()=cuon.cuon_dia.MyXmlrpc-class.html#__init__,Method cuon.cuon_dia.PropInfo.__init__()=cuon.cuon_dia.PropInfo-class.html#__init__"><a title="Cuon.MainWindow.__init__
+cuon.AI.ai.aiwindow.__init__
+cuon.AI.ai_main.ai_main.__init__
+cuon.AI.gtkMiniClient.gtkMiniClient.__init__
+cuon.AI.gtkMiniClient.simpleGlade.__init__
+cuon.AI.tki1.tki1.__init__
+cuon.Addresses.SingleAddress.SingleAddress.__init__
+cuon.Addresses.SingleAddressBank.SingleAddressBank.__init__
+cuon.Addresses.SingleContact.SingleContact.__init__
+cuon.Addresses.SingleCountry.SingleCountry.__init__
+cuon.Addresses.SingleMisc.SingleMisc.__init__
+cuon.Addresses.SingleNotes.SingleNotes.__init__
+cuon.Addresses.SinglePartner.SinglePartner.__init__
+cuon.Addresses.SingleScheduling.SingleScheduling.__init__
+cuon.Addresses.addresses.addresswindow.__init__
+cuon.Addresses.contact.contactwindow.__init__
+cuon.Addresses.lists_addresses.lists_addresses.__init__
+cuon.Addresses.lists_addresses_phone1.lists_addresses_phone1.__init__
+cuon.Addresses.lists_addresses_phone11.lists_addresses_phone11.__init__
+cuon.Addresses.lists_addresses_phone12.lists_addresses_phone12.__init__
+cuon.Addresses.lists_addresses_phone2.lists_addresses_phone2.__init__
+cuon.Addresses.printAddress.printAddress.__init__
+cuon.Addresses.selectionDialog.selectionDialog1.__init__
+cuon.Analysis.SingleAnalysis_cost.SingleClient.__init__
+cuon.Analysis.analyse_costs.clientswindow.__init__
+cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.__init__
+cuon.Articles.SingleArticle.SingleArticle.__init__
+cuon.Articles.SingleArticleParts.SingleArticleParts.__init__
+cuon.Articles.SingleArticlePurchase.SingleArticlePurchase.__init__
+cuon.Articles.SingleArticleSale.SingleArticleSale.__init__
+cuon.Articles.SingleArticleStock.SingleArticleStock.__init__
+cuon.Articles.SingleArticleWebshop.SingleArticleWebshop.__init__
+cuon.Articles.SingleMaterialgroups.SingleMaterialgroups.__init__
+cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount.__init__
+cuon.Articles.articles.articleswindow.__init__
+cuon.Articles.lists_articles_number1.lists_articles_number1.__init__
+cuon.Articles.materialgroup.materialgroupwindow.__init__
+cuon.Articles.pickles_articles.pickles_articles.__init__
+cuon.Bank.SingleBank.SingleBank.__init__
+cuon.Bank.bank.bankwindow.__init__
+cuon.Biblio.SingleBiblio.SingleBiblio.__init__
+cuon.Biblio.biblio.bibliowindow.__init__
+cuon.Calendar.calendar.calendarwindow.__init__
+cuon.Clients.SingleClient.SingleClient.__init__
+cuon.Clients.clients.clientswindow.__init__
+cuon.DMS.SingleDMS.SingleDMS.__init__
+cuon.DMS.dms.dmswindow.__init__
+cuon.DMS.documentTools.documentTools.__init__
+cuon.Databases.SingleCuon.SingleCuon.__init__
+cuon.Databases.SingleData.SingleData.__init__
+cuon.Databases.SingleDataTreeModel.SingleDataTreeModel.__init__
+cuon.Databases.SingleExport.SingleExport.__init__
+cuon.Databases.SingleImport.SingleImport.__init__
+cuon.Databases.SingleImportZip.SingleImportZip.__init__
+cuon.Databases.cyr_column.cyr_column.__init__
+cuon.Databases.cyr_load_table.cyr_load_table.__init__
+cuon.Databases.cyr_table.cyr_table.__init__
+cuon.Databases.databases.databaseswindow.__init__
+cuon.Databases.dumps.dumps.__init__
+cuon.Databases.export_generic1.export_generic1.__init__
+cuon.Databases.import_generic1.import_generic1.__init__
+cuon.Databases.import_generic2.import_generic2.__init__
+cuon.E_Mail.imap_dms.imap_dms.__init__
+cuon.E_Mail.incoming_mail.incoming_mail.__init__
+cuon.E_Mail.sendEmail.sendEmail.__init__
+cuon.Editor.editor.editorwindow.__init__
+cuon.Editor.programmersEditor.programmerseditor.__init__
+cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.__init__
+cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.__init__
+cuon.Finances.CashAccountBook.standard_cab_monthly.standard_cab_monthly.__init__
+cuon.Finances.InvoiceBook.SingleInpayment.SingleInpayment.__init__
+cuon.Finances.InvoiceBook.SingleListOfInvoice.SingleListOfInvoice.__init__
+cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.__init__
+cuon.Finances.SingleAccountInfo.SingleAccountInfo.__init__
+cuon.Finances.SingleAccountPlan.SingleAccountPlan.__init__
+cuon.Finances.SingleAccountSentence.SingleAccountSentence.__init__
+cuon.Finances.SingleAccountValues.SingleAccountValues.__init__
+cuon.Garden.SingleBotany.SingleBotany.__init__
+cuon.Garden.SingleBotanyClass.SingleBotanyClass.__init__
+cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio.__init__
+cuon.Garden.SingleBotanyFamily.SingleBotanyFamily.__init__
+cuon.Garden.SingleBotanyGenus.SingleBotanyGenus.__init__
+cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo.__init__
+cuon.Garden.SingleHibernation.SingleHibernation.__init__
+cuon.Garden.SingleHibernationPlant.SingleHibernationPlant.__init__
+cuon.Garden.botany.botanywindow.__init__
+cuon.Garden.garden.gardenwindow.__init__
+cuon.Garden.hibernation.hibernationwindow.__init__
+cuon.Graves.SingleGrave.SingleGrave.__init__
+cuon.Graves.SingleGraveAutumn.SingleGraveAutumn.__init__
+cuon.Graves.SingleGraveHoliday.SingleGraveHoliday.__init__
+cuon.Graves.SingleGraveInvoices.SingleGraveInvoices.__init__
+cuon.Graves.SingleGraveMaintenance.SingleGraveMaintenance.__init__
+cuon.Graves.SingleGraveSingleevent.SingleGraveSingleevent.__init__
+cuon.Graves.SingleGraveSpring.SingleGraveSpring.__init__
+cuon.Graves.SingleGraveSummer.SingleGraveSummer.__init__
+cuon.Graves.SingleGraveWinter.SingleGraveWinter.__init__
+cuon.Graves.SingleGraveYear.SingleGraveYear.__init__
+cuon.Graves.SingleGraveyard.SingleGraveyard.__init__
+cuon.Graves.address_graves.address_graves.__init__
+cuon.Graves.grave.graveswindow.__init__
+cuon.Graves.graveyard.graveyardMainwindow.__init__
+cuon.Graves.plant_lists.plantlists.__init__
+cuon.Help.help.helpwindow.__init__
+cuon.Leasing.SingleLeasing.SingleLeasing.__init__
+cuon.Leasing.leasing.leasingwindow.__init__
+cuon.Logging.logs.logs.__init__
+cuon.Login.login.loginwindow.__init__
+cuon.Misc.cuon_dialog.cuon_dialog.__init__
+cuon.Misc.cuonlists.cuonlists.__init__
+cuon.Misc.fileSelection.fileSelection.__init__
+cuon.Misc.messages.messages.__init__
+cuon.Misc.misc.Treeview.__init__
+cuon.Misc.misc.misc.__init__
+cuon.OpenOffice.letter.letter.__init__
+cuon.OpenOffice.ooconnect.ooconnect.__init__
+cuon.Order.SingleOrder.SingleOrder.__init__
+cuon.Order.SingleOrderGet.SingleOrderGet.__init__
+cuon.Order.SingleOrderInvoice.SingleOrderInvoice.__init__
+cuon.Order.SingleOrderPayment.SingleOrderPayment.__init__
+cuon.Order.SingleOrderPosition.SingleOrderPosition.__init__
+cuon.Order.SingleOrderSupply.SingleOrderSupply.__init__
+cuon.Order.order.orderwindow.__init__
+cuon.Order.standard_bill.standard_bill.__init__
+cuon.Order.standard_delivery_note.standard_delivery_note.__init__
+cuon.Order.standard_invoice.standard_invoice.__init__
+cuon.Order.standard_pickup_note.standard_pickup_note.__init__
+cuon.Preferences.SinglePreferences.SinglePreferences.__init__
+cuon.Preferences.preferences.preferenceswindow.__init__
+cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop.__init__
+cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat.__init__
+cuon.PrefsFinance.prefsFinance.prefsFinancewindow.__init__
+cuon.Project.SingleProject.SingleProject.__init__
+cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources.__init__
+cuon.Project.SingleProjectPhases.SingleProjectPhases.__init__
+cuon.Project.SingleProjectProgramming.SingleProjectProgramming.__init__
+cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources.__init__
+cuon.Project.SingleProjectTasks.SingleProjectTasks.__init__
+cuon.Project.project.projectwindow.__init__
+cuon.Proposal.proposal.proposalwindow.__init__
+cuon.Skeleton.SingleSkeleton.SingleClient.__init__
+cuon.Skeleton.skeleton.clientswindow.__init__
+cuon.Staff.SingleStaff.SingleStaff.__init__
+cuon.Staff.SingleStaffDisease.SingleStaffDisease.__init__
+cuon.Staff.SingleStaffFee.SingleStaffFee.__init__
+cuon.Staff.SingleStaffMisc.SingleStaffMisc.__init__
+cuon.Staff.SingleStaffVacation.SingleStaffVacation.__init__
+cuon.Staff.staff.staffwindow.__init__
+cuon.Stats.stats.statswindow.__init__
+cuon.Stock.SingleStock.SingleStock.__init__
+cuon.Stock.SingleStockGoods.SingleStockGoods.__init__
+cuon.Stock.lists_stockgoods_number1.lists_stockgoods_number1.__init__
+cuon.Stock.stock.stockwindow.__init__
+cuon.SupportTicket.SingleSupportProject.SingleSupportProject.__init__
+cuon.SupportTicket.SingleSupportTicket.SingleSupportTicket.__init__
+cuon.SupportTicket.supportTicket.supportticketwindow.__init__
+cuon.Think.SingleMindmap.SingleMindmap.__init__
+cuon.Think.SingleThink.SingleThink.__init__
+cuon.Think.think.thinkwindow.__init__
+cuon.TypeDefs.constants.constants.__init__
+cuon.TypeDefs.defaultValues.defaultValues.__init__
+cuon.TypeDefs.typedefs.typedefs.__init__
+cuon.TypeDefs.typedefs_server.typedefs_server.__init__
+cuon.User.user.User.__init__
+cuon.VTK.test.test.__init__
+cuon.WebShop.SingleWebshop.SingleWebshop.__init__
+cuon.WebShop.webshop.webshopwindow.__init__
+cuon.Windows.chooseWindows.chooseWindows.__init__
+cuon.Windows.cyr_load_entries.cyr_load_entries.__init__
+cuon.Windows.dataEntry.dataEntry.__init__
+cuon.Windows.gladeXml.gladeXml.__init__
+cuon.Windows.rawWindow.rawWindow.__init__
+cuon.Windows.setOfEntries.setOfEntries.__init__
+cuon.Windows.windows.windows.__init__
+cuon.XML.MyXML.MyXML.__init__
+cuon.XMLRPC.xmlrpc.myXmlRpc.__init__
+cuon.cuon_dia.CuonDia.__init__
+cuon.cuon_dia.MyXmlrpc.__init__
+cuon.cuon_dia.PropInfo.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">prgmode</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">win1</tt><tt class="py-op">.</tt><tt class="py-name">maximize</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nbEditor</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method cuon.AI.gtkMiniClient.simpleGlade.getWidget()=cuon.AI.gtkMiniClient.simpleGlade-class.html#getWidget,Method cuon.Windows.gladeXml.gladeXml.getWidget()=cuon.Windows.gladeXml.gladeXml-class.html#getWidget"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-4', 'getWidget', 'link-4');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'nbEditor'</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">projectFolder</tt> <tt class="py-op">=</tt> <tt class="py-string">"/"</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">textbuffers</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#        Vbox = self.getWidget('vbox1')</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#        Scrolledwindow = self.getWidget('scrolledwindow1')</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#        Vbox.remove(Scrolledwindow)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">         </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">             </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">##        if GtkSV:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">##            self.textbuffer,  self.view = self.getNotesEditor(mime_type = 'text/x-ini-file')</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">             </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">##            Vbox = self.getWidget('vbox1')</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">##            Scrolledwindow = self.getWidget('scrolledwindow1')</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">##            Scrolledwindow.remove(self.getWidget('viewport1'))</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">##            #Vbox.remove(oldScrolledwindow)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment">##            #Vbox.add(self.view)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-comment">##            #Vbox.show_all()</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment">##            Scrolledwindow.add(self.view)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment">##            self.view.show_all()</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-comment">##            Scrolledwindow.show_all()</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">             </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">             </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment">##        else:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">             </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-comment">##            self.textbuffer = self.getWidget('tv1').get_buffer()</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">         </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">         </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook= gtk.Notebook()</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook.set_tab_pos(gtk.POS_TOP)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">          </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook2= gtk.Notebook()</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook2.set_tab_pos(gtk.POS_TOP)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment">#        label = gtk.Label('Prg-Files')</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-comment">#        label.show()</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-comment">#        label2 = gtk.Label('Glade Files')</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-comment">#        label2.show()</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-comment">#        label3 = gtk.Label('Other Files')</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-comment">#        label3.show()</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-comment">#        vbox2 = self.getWidget('vbox2')</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook.show()</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-comment">#        sc2 = gtk.ScrolledWindow()</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-comment">#        tree1 = gtk.TreeView()</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-comment">#        tree2 = gtk.TreeView()</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-comment">#        tree3 = gtk.TreeView()</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-comment">#        renderer = gtk.CellRendererText()</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-comment">#        column = gtk.TreeViewColumn(_("Files"), renderer, text=0)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-comment">#        tree1.append_column(column)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook2.append_page( tree1,label) </tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook2.append_page( tree2,label2)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-comment">#        self.notebook2.append_page( tree3,label3)  </tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment">#        sc2.add(self.notebook2)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-comment">#        hbox = gtk.HBox()</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-comment">#        hbox.add(sc2)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-comment">#        hbox.add(self.notebook)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-comment">#        Vbox.add(hbox)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-comment">#        Vbox.show_all()</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-comment">#self.setNewTextbuffer('untitled')</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">projectfiles</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'*.py'</tt><tt class="py-op">,</tt><tt class="py-string">'*.xml'</tt><tt class="py-op">,</tt><tt class="py-string">'*.glade*'</tt><tt class="py-op">,</tt><tt class="py-string">'*.html'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">         </tt>
+<a name="programmerseditor.on_tbOpen_clicked"></a><div id="programmerseditor.on_tbOpen_clicked-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="programmerseditor.on_tbOpen_clicked-toggle" onclick="return toggle('programmerseditor.on_tbOpen_clicked');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#on_tbOpen_clicked">on_tbOpen_clicked</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.on_tbOpen_clicked-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.on_tbOpen_clicked-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method cuon.Editor.programmersEditor.programmerseditor.on_open1_activate()=cuon.Editor.programmersEditor.programmerseditor-class.html#on_open1_activate"><a title="cuon.Editor.programmersEditor.programmerseditor.on_open1_activate" class="py-name" href="#" onclick="return doclink('link-5', 'on_open1_activate', 'link-5');">on_open1_activate</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">         </tt>
+<a name="programmerseditor.on_open1_activate"></a><div id="programmerseditor.on_open1_activate-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="programmerseditor.on_open1_activate-toggle" onclick="return toggle('programmerseditor.on_open1_activate');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#on_open1_activate">on_open1_activate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.on_open1_activate-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.on_open1_activate-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'open1'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method cuon.Editor.programmersEditor.programmerseditor.selectFile()=cuon.Editor.programmersEditor.programmerseditor-class.html#selectFile"><a title="cuon.Editor.programmersEditor.programmerseditor.selectFile" class="py-name" href="#" onclick="return doclink('link-6', 'selectFile', 'link-6');">selectFile</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">projectfiles</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">       </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">         </tt>
+<a name="programmerseditor.on_tbQuit_clicked"></a><div id="programmerseditor.on_tbQuit_clicked-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="programmerseditor.on_tbQuit_clicked-toggle" onclick="return toggle('programmerseditor.on_tbQuit_clicked');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#on_tbQuit_clicked">on_tbQuit_clicked</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.on_tbQuit_clicked-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.on_tbQuit_clicked-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method cuon.AI.ai.aiwindow.on_quit1_activate()=cuon.AI.ai.aiwindow-class.html#on_quit1_activate,Method cuon.AI.gtkMiniClient.gtkMiniClient.on_quit1_activate()=cuon.AI.gtkMiniClient.gtkMiniClient-class.html#on_quit1_activate,Method cuon.Addresses.addresses.addresswindow.on_quit1_activate()=cuon.Addresses.addresses.addresswindow-class.html#on_quit1_activate,Method cuon.Addresses.contact.contactwindow.on_quit1_activate()=cuon.Addresses.contact.contactwindow-class.html#on_quit1_activate,Method cuon.Analysis.analyse_costs.clientswindow.on_quit1_activate()=cuon.Analysis.analyse_costs.clientswindow-class.html#on_quit1_activate,Method cuon.Articles.articles.articleswindow.on_quit1_activate()=cuon.Articles.articles.articleswindow-class.html#on_quit1_activate,Method cuon.Articles.materialgroup.materialgroupwindow.on_quit1_activate()=cuon.Articles.materialgroup.materialgroupwindow-class.html#on_quit1_activate,Method cuon.Bank.bank.bankwindow.on_quit1_activate()=cuon.Bank.bank.bankwindow-class.html#on_quit1_activate,Method cuon.Biblio.biblio.bibliowindow.on_quit1_activate()=cuon.Biblio.biblio.bibliowindow-class.html#on_quit1_activate,Method cuon.Clients.clients.clientswindow.on_quit1_activate()=cuon.Clients.clients.clientswindow-class.html#on_quit1_activate,Method cuon.DMS.dms.dmswindow.on_quit1_activate()=cuon.DMS.dms.dmswindow-class.html#on_quit1_activate,Method cuon.Editor.editor.editorwindow.on_quit1_activate()=cuon.Editor.editor.editorwindow-class.html#on_quit1_activate,Method cuon.Editor.programmersEditor.programmerseditor.on_quit1_activate()=cuon.Editor.programmersEditor.programmerseditor-class.html#on_quit1_activate,Method cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.on_quit1_activate()=cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow-class.html#on_quit1_activate,Method cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.on_quit1_activate()=cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow-class.html#on_quit1_activate,Method cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.on_quit1_activate()=cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow-class.html#on_quit1_activate,Method cuon.Garden.botany.botanywindow.on_quit1_activate()=cuon.Garden.botany.botanywindow-class.html#on_quit1_activate,Method cuon.Garden.garden.gardenwindow.on_quit1_activate()=cuon.Garden.garden.gardenwindow-class.html#on_quit1_activate,Method cuon.Garden.hibernation.hibernationwindow.on_quit1_activate()=cuon.Garden.hibernation.hibernationwindow-class.html#on_quit1_activate,Method cuon.Graves.grave.graveswindow.on_quit1_activate()=cuon.Graves.grave.graveswindow-class.html#on_quit1_activate,Method cuon.Graves.graveyard.graveyardMainwindow.on_quit1_activate()=cuon.Graves.graveyard.graveyardMainwindow-class.html#on_quit1_activate,Method cuon.Help.help.helpwindow.on_quit1_activate()=cuon.Help.help.helpwindow-class.html#on_quit1_activate,Method cuon.Leasing.leasing.leasingwindow.on_quit1_activate()=cuon.Leasing.leasing.leasingwindow-class.html#on_quit1_activate,Method cuon.Order.order.orderwindow.on_quit1_activate()=cuon.Order.order.orderwindow-class.html#on_quit1_activate,Method cuon.Preferences.preferences.preferenceswindow.on_quit1_activate()=cuon.Preferences.preferences.preferenceswindow-class.html#on_quit1_activate,Method cuon.PrefsFinance.prefsFinance.prefsFinancewindow.on_quit1_activate()=cuon.PrefsFinance.prefsFinance.prefsFinancewindow-class.html#on_quit1_activate,Method cuon.Project.project.projectwindow.on_quit1_activate()=cuon.Project.project.projectwindow-class.html#on_quit1_activate,Method cuon.Skeleton.skeleton.clientswindow.on_quit1_activate()=cuon.Skeleton.skeleton.clientswindow-class.html#on_quit1_activate,Method cuon.Staff.staff.staffwindow.on_quit1_activate()=cuon.Staff.staff.staffwindow-class.html#on_quit1_activate,Method cuon.Stats.stats.statswindow.on_quit1_activate()=cuon.Stats.stats.statswindow-class.html#on_quit1_activate,Method cuon.Stock.stock.stockwindow.on_quit1_activate()=cuon.Stock.stock.stockwindow-class.html#on_quit1_activate,Method cuon.SupportTicket.supportTicket.supportticketwindow.on_quit1_activate()=cuon.SupportTicket.supportTicket.supportticketwindow-class.html#on_quit1_activate,Method cuon.Think.think.thinkwindow.on_quit1_activate()=cuon.Think.think.thinkwindow-class.html#on_quit1_activate"><a title="cuon.AI.ai.aiwindow.on_quit1_activate
+cuon.AI.gtkMiniClient.gtkMiniClient.on_quit1_activate
+cuon.Addresses.addresses.addresswindow.on_quit1_activate
+cuon.Addresses.contact.contactwindow.on_quit1_activate
+cuon.Analysis.analyse_costs.clientswindow.on_quit1_activate
+cuon.Articles.articles.articleswindow.on_quit1_activate
+cuon.Articles.materialgroup.materialgroupwindow.on_quit1_activate
+cuon.Bank.bank.bankwindow.on_quit1_activate
+cuon.Biblio.biblio.bibliowindow.on_quit1_activate
+cuon.Clients.clients.clientswindow.on_quit1_activate
+cuon.DMS.dms.dmswindow.on_quit1_activate
+cuon.Editor.editor.editorwindow.on_quit1_activate
+cuon.Editor.programmersEditor.programmerseditor.on_quit1_activate
+cuon.Finances.Bookkeeping.bookkeeping.bookkeepingwindow.on_quit1_activate
+cuon.Finances.CashAccountBook.cashAccountBook.cashAccountBookwindow.on_quit1_activate
+cuon.Finances.InvoiceBook.invoicebook.invoicebookwindow.on_quit1_activate
+cuon.Garden.botany.botanywindow.on_quit1_activate
+cuon.Garden.garden.gardenwindow.on_quit1_activate
+cuon.Garden.hibernation.hibernationwindow.on_quit1_activate
+cuon.Graves.grave.graveswindow.on_quit1_activate
+cuon.Graves.graveyard.graveyardMainwindow.on_quit1_activate
+cuon.Help.help.helpwindow.on_quit1_activate
+cuon.Leasing.leasing.leasingwindow.on_quit1_activate
+cuon.Order.order.orderwindow.on_quit1_activate
+cuon.Preferences.preferences.preferenceswindow.on_quit1_activate
+cuon.PrefsFinance.prefsFinance.prefsFinancewindow.on_quit1_activate
+cuon.Project.project.projectwindow.on_quit1_activate
+cuon.Skeleton.skeleton.clientswindow.on_quit1_activate
+cuon.Staff.staff.staffwindow.on_quit1_activate
+cuon.Stats.stats.statswindow.on_quit1_activate
+cuon.Stock.stock.stockwindow.on_quit1_activate
+cuon.SupportTicket.supportTicket.supportticketwindow.on_quit1_activate
+cuon.Think.think.thinkwindow.on_quit1_activate" class="py-name" href="#" onclick="return doclink('link-7', 'on_quit1_activate', 'link-7');">on_quit1_activate</a></tt><tt class="py-op">(</tt><tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">         </tt>
+<a name="programmerseditor.on_quit1_activate"></a><div id="programmerseditor.on_quit1_activate-def"><a name="L81"></a><tt class="py-lineno"> 81</tt> <a class="py-toggle" href="#" id="programmerseditor.on_quit1_activate-toggle" onclick="return toggle('programmerseditor.on_quit1_activate');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#on_quit1_activate">on_quit1_activate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.on_quit1_activate-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.on_quit1_activate-expanded"><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">         <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method cuon.Windows.windows.windows.closeWindow()=cuon.Windows.windows.windows-class.html#closeWindow"><a title="cuon.Windows.windows.windows.closeWindow" class="py-name" href="#" onclick="return doclink('link-8', 'closeWindow', 'link-8');">closeWindow</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">          </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">          </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">     </tt>
+<a name="programmerseditor.disconnectPrgFilesTree"></a><div id="programmerseditor.disconnectPrgFilesTree-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="programmerseditor.disconnectPrgFilesTree-toggle" onclick="return toggle('programmerseditor.disconnectPrgFilesTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#disconnectPrgFilesTree">disconnectPrgFilesTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.disconnectPrgFilesTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.disconnectPrgFilesTree-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">              </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-9', 'getWidget', 'link-4');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treePrgFiles'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">disconnect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectPrgFilesTreeId</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="programmerseditor.connectPrgFilesTree"></a><div id="programmerseditor.connectPrgFilesTree-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="programmerseditor.connectPrgFilesTree-toggle" onclick="return toggle('programmerseditor.connectPrgFilesTree');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#connectPrgFilesTree">connectPrgFilesTree</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.connectPrgFilesTree-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.connectPrgFilesTree-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">connectPrgFilesTreeId</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="cuon.AI.gtkMiniClient.simpleGlade.getWidget
+cuon.Windows.gladeXml.gladeXml.getWidget" class="py-name" href="#" onclick="return doclink('link-10', 'getWidget', 'link-4');">getWidget</a></tt><tt class="py-op">(</tt><tt class="py-string">'treePrgFiles'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_selection</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-string">"changed"</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method cuon.Editor.programmersEditor.programmerseditor.PrgFilesTree_select_callback()=cuon.Editor.programmersEditor.programmerseditor-class.html#PrgFilesTree_select_callback"><a title="cuon.Editor.programmersEditor.programmerseditor.PrgFilesTree_select_callback" class="py-name" href="#" onclick="return doclink('link-11', 'PrgFilesTree_select_callback', 'link-11');">PrgFilesTree_select_callback</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    </tt>
+<a name="programmerseditor.PrgFilesTree_select_callback"></a><div id="programmerseditor.PrgFilesTree_select_callback-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="programmerseditor.PrgFilesTree_select_callback-toggle" onclick="return toggle('programmerseditor.PrgFilesTree_select_callback');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#PrgFilesTree_select_callback">PrgFilesTree_select_callback</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">treeSelection</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.PrgFilesTree_select_callback-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.PrgFilesTree_select_callback-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">listStore</tt><tt class="py-op">,</tt> <tt class="py-name">iter</tt> <tt class="py-op">=</tt> <tt class="py-name">treeSelection</tt><tt class="py-op">.</tt><tt class="py-name">get_selected</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">         </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">listStore</tt><tt class="py-op">,</tt><tt class="py-name">iter</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">         </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">listStore</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">listStore</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">           <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">iter</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-name">sNewId</tt> <tt class="py-op">=</tt> <tt class="py-name">listStore</tt><tt class="py-op">.</tt><tt class="py-name">get_value</tt><tt class="py-op">(</tt><tt class="py-name">iter</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">sNewId</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                <tt class="py-name">newID</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">sNewId</tt><tt class="py-op">[</tt><tt class="py-name">sNewId</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-string">'###'</tt><tt class="py-op">)</tt><tt class="py-op">+</tt> <tt class="py-number">3</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                <tt class="py-comment">#self.setDateValues(newID)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                 </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+</div><a name="programmerseditor.setPrgFiles"></a><div id="programmerseditor.setPrgFiles-def"><a name="L118"></a><tt class="py-lineno">118</tt> <a class="py-toggle" href="#" id="programmerseditor.setPrgFiles-toggle" onclick="return toggle('programmerseditor.setPrgFiles');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#setPrgFiles">setPrgFiles</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.setPrgFiles-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.setPrgFiles-expanded"><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">object</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">treestore</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">TreeStore</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">ts</tt><tt class="py-op">.</tt><tt class="py-name">set_model</tt><tt class="py-op">(</tt><tt class="py-name">treestore</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">     </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">     </tt>
+<a name="programmerseditor.selectFile"></a><div id="programmerseditor.selectFile-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="programmerseditor.selectFile-toggle" onclick="return toggle('programmerseditor.selectFile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#selectFile">selectFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">liPattern</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.selectFile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.selectFile-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">fc</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">FileChooserDialog</tt><tt class="py-op">(</tt><tt class="py-name">title</tt><tt class="py-op">=</tt><tt class="py-string">'Open File...'</tt><tt class="py-op">,</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                                   <tt class="py-name">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                                   <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">FILE_CHOOSER_ACTION_OPEN</tt><tt class="py-op">,</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                                   <tt class="py-name">buttons</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_CANCEL</tt><tt class="py-op">,</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">RESPONSE_CANCEL</tt><tt class="py-op">,</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">STOCK_OPEN</tt><tt class="py-op">,</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">RESPONSE_OK</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">set_current_folder</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">projectFolder</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">set_default_response</tt><tt class="py-op">(</tt><tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">RESPONSE_OK</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-name">filter</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">FileFilter</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name">filter</tt><tt class="py-op">.</tt><tt class="py-name">set_name</tt><tt class="py-op">(</tt><tt class="py-string">'Project Files'</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liPattern</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">i</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-name">filter</tt><tt class="py-op">.</tt><tt class="py-name">add_pattern</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">add_filter</tt><tt class="py-op">(</tt><tt class="py-name">filter</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method cuon.E_Mail.imap_dms.imap_dms.run()=cuon.E_Mail.imap_dms.imap_dms-class.html#run"><a title="cuon.E_Mail.imap_dms.imap_dms.run" class="py-name" href="#" onclick="return doclink('link-12', 'run', 'link-12');">run</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">response</tt> <tt class="py-op">==</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">RESPONSE_OK</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'ok'</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">get_filename</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method cuon.Editor.editor.editorwindow.open_file()=cuon.Editor.editor.editorwindow-class.html#open_file,Method cuon.Editor.programmersEditor.programmerseditor.open_file()=cuon.Editor.programmersEditor.programmerseditor-class.html#open_file"><a title="cuon.Editor.editor.editorwindow.open_file
+cuon.Editor.programmersEditor.programmerseditor.open_file" class="py-name" href="#" onclick="return doclink('link-13', 'open_file', 'link-13');">open_file</a></tt><tt class="py-op">(</tt> <tt class="py-op">{</tt><tt class="py-string">'NAME'</tt><tt class="py-op">:</tt><tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">get_filename</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'TYPE'</tt><tt class="py-op">:</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method cuon.Windows.gladeXml.gladeXml.checkMimeType()=cuon.Windows.gladeXml.gladeXml-class.html#checkMimeType"><a title="cuon.Windows.gladeXml.gladeXml.checkMimeType" class="py-name" href="#" onclick="return doclink('link-14', 'checkMimeType', 'link-14');">checkMimeType</a></tt><tt class="py-op">(</tt><tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">get_filename</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">projectFolder</tt> <tt class="py-op">=</tt> <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt class="py-name">get_current_folder</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">'not ok'</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-name">fc</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method Cuon.MainWindow.destroy()=Cuon.MainWindow-class.html#destroy"><a title="Cuon.MainWindow.destroy" class="py-name" href="#" onclick="return doclink('link-15', 'destroy', 'link-15');">destroy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="programmerseditor.open_file"></a><div id="programmerseditor.open_file-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="programmerseditor.open_file-toggle" onclick="return toggle('programmerseditor.open_file');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#open_file">open_file</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dicFilename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.open_file-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.open_file-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">         </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">dicFilename</tt><tt class="py-op">[</tt><tt class="py-string">'NAME'</tt><tt class="py-op">]</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-name">infile</tt> <tt class="py-op">=</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">"r"</tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">         </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">infile</tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">             </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"filename = "</tt><tt class="py-op">,</tt> <tt class="py-name">filename</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method cuon.Editor.programmersEditor.programmerseditor.setNewTextbuffer()=cuon.Editor.programmersEditor.programmerseditor-class.html#setNewTextbuffer"><a title="cuon.Editor.programmersEditor.programmerseditor.setNewTextbuffer" class="py-name" href="#" onclick="return doclink('link-16', 'setNewTextbuffer', 'link-16');">setNewTextbuffer</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="cuon.Windows.gladeXml.gladeXml.checkMimeType" class="py-name" href="#" onclick="return doclink('link-17', 'checkMimeType', 'link-14');">checkMimeType</a></tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">textbuffers</tt><tt class="py-op">[</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">textbuffers</tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-name">infile</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt class="py-comment">#self.win1.set_title(self.dicCurrentFilename['NAME'])</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">            <tt class="py-name">infile</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">             </tt>
+<a name="programmerseditor.setNewTextbuffer"></a><div id="programmerseditor.setNewTextbuffer-def"><a name="L163"></a><tt class="py-lineno">163</tt> <a class="py-toggle" href="#" id="programmerseditor.setNewTextbuffer-toggle" onclick="return toggle('programmerseditor.setNewTextbuffer');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Editor.programmersEditor.programmerseditor-class.html#setNewTextbuffer">setNewTextbuffer</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">title</tt><tt class="py-op">,</tt><tt class="py-param">mime_type</tt><tt class="py-op">=</tt> <tt class="py-string">'text/x-ini-file'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="programmerseditor.setNewTextbuffer-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="programmerseditor.setNewTextbuffer-expanded"><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-name">label</tt> <tt class="py-op">=</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">Label</tt><tt class="py-op">(</tt><tt class="py-name">title</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-name">label</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method cuon.VTK.test.test.show()=cuon.VTK.test.test-class.html#show"><a title="cuon.VTK.test.test.show" class="py-name" href="#" onclick="return doclink('link-18', 'show', 'link-18');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">textbuffer</tt><tt class="py-op">,</tt>  <tt class="py-name">view</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method cuon.Windows.gladeXml.gladeXml.getNotesEditor()=cuon.Windows.gladeXml.gladeXml-class.html#getNotesEditor"><a title="cuon.Windows.gladeXml.gladeXml.getNotesEditor" class="py-name" href="#" onclick="return doclink('link-19', 'getNotesEditor', 'link-19');">getNotesEditor</a></tt><tt class="py-op">(</tt><tt class="py-name">mime_type</tt> <tt class="py-op">=</tt> <tt class="py-name">mime_type</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-name">view</tt><tt class="py-op">.</tt><tt class="py-name">set_auto_indent</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'styles:'</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'indent = '</tt><tt class="py-op">,</tt> <tt class="py-name">view</tt><tt class="py-op">.</tt><tt class="py-name">get_auto_indent</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'buffer = '</tt><tt class="py-op">,</tt> <tt class="py-name">textbuffer</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'language - style = '</tt><tt class="py-op">,</tt> <tt class="py-name">textbuffer</tt><tt class="py-op">.</tt><tt class="py-name">get_language</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'language - style-ids = '</tt><tt class="py-op">,</tt> <tt class="py-name">textbuffer</tt><tt class="py-op">.</tt><tt class="py-name">get_language</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">get_style_ids</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">         </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-name">Scrolledwindow</tt> <tt class="py-op">=</tt>  <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">ScrolledWindow</tt><tt class="py-op">(</tt><tt class="py-name">hadjustment</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">vadjustment</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-name">Scrolledwindow</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">view</tt><tt class="py-op">)</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-name">view</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-name">Scrolledwindow</tt><tt class="py-op">.</tt><tt class="py-name">show_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">newPage</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nbEditor</tt><tt class="py-op">.</tt><tt class="py-name">append_page</tt><tt class="py-op">(</tt><tt class="py-name">Scrolledwindow</tt><tt class="py-op">,</tt> <tt class="py-name">label</tt><tt class="py-op">)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">textbuffers</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">textbuffer</tt><tt class="py-op">,</tt> <tt class="py-name">view</tt><tt class="py-op">,</tt> <tt class="py-name">title</tt><tt class="py-op">,</tt><tt class="py-name">newPage</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:38 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -35,4 +35,3 @@ class SingleCountry(SingleData):
         self.out( len(self.table.Columns))
         #
         
-

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.User.user.User</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.User-module.html">Package&nbsp;User</a> ::
+        <a href="cuon.User.user-module.html">Module&nbsp;user</a> ::
+        Class&nbsp;User
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.User.user.User-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class User</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.User.user-pysrc.html#User">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_use" name="uml_class_diagram_for_cuon_use">
+<area shape="rect" href="cuon.TypeDefs.defaultValues.defaultValues-class.html" title="cuon.TypeDefs.defaultValues.defaultValues" alt="" coords="80,347,299,379"/>
+<area shape="rect" href="cuon.User.user.User-class.html#__init__" title="Variables:" alt="" coords="88,433,291,452"/>
+<area shape="rect" href="cuon.User.user.User-class.html#setFileFormats" title="cuon.User.user.User.setFileFormats" alt="" coords="88,452,291,471"/>
+<area shape="rect" href="cuon.User.user.User-class.html#refreshDicUser" title="set self.dicuser to actual values" alt="" coords="88,471,291,489"/>
+<area shape="rect" href="cuon.User.user.User-class.html#refreshSqlDicUser" title="cuon.User.user.User.refreshSqlDicUser" alt="" coords="88,489,291,508"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getUser" title="cuon.User.user.User.getUser" alt="" coords="88,508,291,527"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getDicUser" title="Returns: &#160;Dictionary with user&#45;infos" alt="" coords="88,527,291,545"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getSqlDicUser" title="cuon.User.user.User.getSqlDicUser" alt="" coords="88,545,291,564"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getDicUserKeys" title="cuon.User.user.User.getDicUserKeys" alt="" coords="88,564,291,583"/>
+<area shape="rect" href="cuon.User.user.User-class.html#setDicUserKeys" title="cuon.User.user.User.setDicUserKeys" alt="" coords="88,583,291,601"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getInternetUser" title="cuon.User.user.User.getInternetUser" alt="" coords="88,601,291,620"/>
+<area shape="rect" href="cuon.User.user.User-class.html#setUserName" title="cuon.User.user.User.setUserName" alt="" coords="88,620,291,639"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getUserName" title="Returns: &#160;Name of the user" alt="" coords="88,639,291,657"/>
+<area shape="rect" href="cuon.User.user.User-class.html#setSessionID" title="set the sessionID" alt="" coords="88,657,291,676"/>
+<area shape="rect" href="cuon.User.user.User-class.html#getDebug" title="cuon.User.user.User.getDebug" alt="" coords="88,695,291,713"/>
+<area shape="rect" href="cuon.User.user.User-class.html" title="cuon.User.user.User" alt="" coords="87,408,292,715"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#checkType" title="cuon.Databases.dumps.dumps.checkType" alt="" coords="17,36,361,55"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#closeDB" title="cuon.Databases.dumps.dumps.closeDB" alt="" coords="17,55,361,73"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doCompress" title="cuon.Databases.dumps.dumps.doCompress" alt="" coords="17,73,361,92"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doDecode" title="cuon.Databases.dumps.dumps.doDecode" alt="" coords="17,92,361,111"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doEncode" title="cuon.Databases.dumps.dumps.doEncode" alt="" coords="17,111,361,129"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doUncompress" title="cuon.Databases.dumps.dumps.doUncompress" alt="" coords="17,129,361,148"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#formatDate" title="cuon.Databases.dumps.dumps.formatDate" alt="" coords="17,148,361,167"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getActualDateTime" title="cuon.Databases.dumps.dumps.getActualDateTime" alt="" coords="17,167,361,185"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getCheckedValue" title="cuon.Databases.dumps.dumps.getCheckedValue" alt="" coords="17,185,361,204"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getDateTime" title="cuon.Databases.dumps.dumps.getDateTime" alt="" coords="17,204,361,223"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" title="cuon.Databases.dumps.dumps.getFirstDayOfMonth" alt="" coords="17,223,361,241"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstDayOfMonthAsSeconds" alt="" coords="17,241,361,260"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstLastDayOfLastMonthAsSeconds" alt="" coords="17,260,361,279"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#writeEmailLog" title="cuon.Databases.dumps.dumps.writeEmailLog" alt="" coords="17,297,361,316"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html" title="cuon.Databases.dumps.dumps" alt="" coords="16,11,363,317"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_use.gif" alt='' usemap="#uml_class_diagram_for_cuon_use" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        J&#252;rgen Hamel
+      </p>
+      <p><strong>Organization:</strong>
+        Cyrus-Computer GmbH, D-32584 L&#246;hne
+      </p>
+      <p><strong>Copyright:</strong>
+        by J&#252;rgen Hamel
+      </p>
+      <p><strong>License:</strong>
+        GPL ( GNU GENERAL PUBLIC LICENSE )
+      </p>
+      <p><strong>Contact:</strong>
+        jh@cyrus.de
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.User.user.User-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Variables:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setFileFormats"></a><span class="summary-sig-name">setFileFormats</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.setFileFormats">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="refreshDicUser"></a><span class="summary-sig-name">refreshDicUser</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      set self.dicuser to actual values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.refreshDicUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="refreshSqlDicUser"></a><span class="summary-sig-name">refreshSqlDicUser</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.refreshSqlDicUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getUser"></a><span class="summary-sig-name">getUser</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">result</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.User.user.User-class.html#getDicUser" class="summary-sig-name">getDicUser</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      Dictionary with user-infos</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getDicUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSqlDicUser"></a><span class="summary-sig-name">getSqlDicUser</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getSqlDicUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDicUserKeys"></a><span class="summary-sig-name">getDicUserKeys</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getDicUserKeys">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setDicUserKeys"></a><span class="summary-sig-name">setDicUserKeys</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dKey</span>,
+        <span class="summary-sig-arg">sKey</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.setDicUserKeys">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getInternetUser"></a><span class="summary-sig-name">getInternetUser</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getInternetUser">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.User.user.User-class.html#setUserName" class="summary-sig-name">setUserName</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.setUserName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.User.user.User-class.html#getUserName" class="summary-sig-name">getUserName</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      Name of the user</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getUserName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.User.user.User-class.html#setSessionID" class="summary-sig-name">setSessionID</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sid</span>)</span><br />
+      set the sessionID</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.setSessionID">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSessionID"></a><span class="summary-sig-name">getSessionID</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getSessionID">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setDebug"></a><span class="summary-sig-name">setDebug</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sDebug</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">NO</code><code class="variable-quote">'</code></span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.setDebug">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDebug"></a><span class="summary-sig-name">getDebug</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.User.user-pysrc.html#User.getDebug">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Databases.dumps.dumps-class.html">Databases.dumps.dumps</a></code></b>:
+      <code><a href="cuon.Databases.dumps.dumps-class.html#checkType">checkType</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#closeDB">closeDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doCompress">doCompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doDecode">doDecode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doEncode">doEncode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doUncompress">doUncompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#formatDate">formatDate</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getActualDateTime">getActualDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getCheckedValue">getCheckedValue</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getDateTime">getDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth">getFirstDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds">getFirstDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds">getFirstLastDayOfLastMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth">getFirstOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth2">getFirstOfMonth2</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfYear">getFirstOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonth">getLastDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonthAsSeconds">getLastDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfMonth">getLastOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfYear">getLastOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getNewUUID">getNewUUID</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getSeconds">getSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTime">getTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTimeString">getTimeString</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#loadObject">loadObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#openDB">openDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#pickleObject">pickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveObject">saveObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveTmpData">saveTmpData</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#showPdf">showPdf</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#startExternalPrg">startExternalPrg</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#unpickleObject">unpickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#writeEmailLog">writeEmailLog</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.User.user-pysrc.html#User.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Variables:</p>
+  <ol start="1">
+    <li>
+      self.userName: Name of the User
+    </li>
+  </ol>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.Databases.dumps.dumps-class.html#__init__">Databases.dumps.dumps.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getDicUser"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getDicUser</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.User.user-pysrc.html#User.getDicUser">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>Dictionary with user-infos</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setUserName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setUserName</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.User.user-pysrc.html#User.setUserName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>s</code></strong> - Name of the User</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getUserName"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getUserName</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.User.user-pysrc.html#User.getUserName">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>Name of the user</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setSessionID"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setSessionID</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sid</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.User.user-pysrc.html#User.setSessionID">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>set the sessionID</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sid</code></strong> - session-id</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:28 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

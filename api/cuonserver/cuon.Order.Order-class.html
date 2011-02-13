@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Order.Order</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Order-module.html">Module&nbsp;Order</a> ::
+        Class&nbsp;Order
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Order.Order-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Order</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.Order-pysrc.html#Order">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_ord" name="uml_class_diagram_for_cuon_ord">
+<area shape="rect" href="cuon.basics.basics-class.html#addDateTime" title="cuon.basics.basics.addDateTime" alt="" coords="17,660,335,679"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkBool" title="cuon.basics.basics.checkBool" alt="" coords="17,679,335,697"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkEndTime" title="cuon.basics.basics.checkEndTime" alt="" coords="17,697,335,716"/>
+<area shape="rect" href="cuon.basics.basics-class.html#checkType" title="cuon.basics.basics.checkType" alt="" coords="17,716,335,735"/>
+<area shape="rect" href="cuon.basics.basics-class.html#closeDB" title="cuon.basics.basics.closeDB" alt="" coords="17,735,335,753"/>
+<area shape="rect" href="cuon.basics.basics-class.html#convertTo" title="cuon.basics.basics.convertTo" alt="" coords="17,753,335,772"/>
+<area shape="rect" href="cuon.basics.basics-class.html#createNewSessionID" title="cuon.basics.basics.createNewSessionID" alt="" coords="17,772,335,791"/>
+<area shape="rect" href="cuon.basics.basics-class.html#decompress" title="cuon.basics.basics.decompress" alt="" coords="17,791,335,809"/>
+<area shape="rect" href="cuon.basics.basics-class.html#doDecode64" title="cuon.basics.basics.doDecode64" alt="" coords="17,809,335,828"/>
+<area shape="rect" href="cuon.basics.basics-class.html#formatDate" title="cuon.basics.basics.formatDate" alt="" coords="17,828,335,847"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getActualDateTime" title="cuon.basics.basics.getActualDateTime" alt="" coords="17,847,335,865"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getAssociatedTable" title="cuon.basics.basics.getAssociatedTable" alt="" coords="17,865,335,884"/>
+<area shape="rect" href="cuon.basics.basics-class.html#getBeforeYears" title="cuon.basics.basics.getBeforeYears" alt="" coords="17,884,335,903"/>
+<area shape="rect" href="cuon.basics.basics-class.html#xmlrpc_testXmlrpc" title="cuon.basics.basics.xmlrpc_testXmlrpc" alt="" coords="17,921,335,940"/>
+<area shape="rect" href="cuon.basics.basics-class.html" title="cuon.basics.basics" alt="" coords="16,635,336,941"/>
+<area shape="rect" href="cuon.Order.Order-class.html#__init__" title="Initialize." alt="" coords="116,996,452,1015"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getDeliveryNumber" title="cuon.Order.Order.xmlrpc_getDeliveryNumber" alt="" coords="116,1015,452,1033"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getInvoiceAddress" title="cuon.Order.Order.xmlrpc_getInvoiceAddress" alt="" coords="116,1033,452,1052"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getOrderPositions" title="cuon.Order.Order.xmlrpc_getOrderPositions" alt="" coords="116,1052,452,1071"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getInvoiceNumber" title="cuon.Order.Order.xmlrpc_getInvoiceNumber" alt="" coords="116,1071,452,1089"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_changeProposal2Order" title="cuon.Order.Order.xmlrpc_changeProposal2Order" alt="" coords="116,1089,452,1108"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getProposalNumber" title="cuon.Order.Order.xmlrpc_getProposalNumber" alt="" coords="116,1108,452,1127"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getInvoiceDate" title="cuon.Order.Order.xmlrpc_getInvoiceDate" alt="" coords="116,1127,452,1145"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getOrderValues" title="cuon.Order.Order.xmlrpc_getOrderValues" alt="" coords="116,1145,452,1164"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_setInvoiceNumber" title="cuon.Order.Order.xmlrpc_setInvoiceNumber" alt="" coords="116,1164,452,1183"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getPickupAddress" title="cuon.Order.Order.xmlrpc_getPickupAddress" alt="" coords="116,1183,452,1201"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getPickupData" title="cuon.Order.Order.xmlrpc_getPickupData" alt="" coords="116,1201,452,1220"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_getPickupNumber" title="cuon.Order.Order.xmlrpc_getPickupNumber" alt="" coords="116,1220,452,1239"/>
+<area shape="rect" href="cuon.Order.Order-class.html#xmlrpc_dup_order" title="cuon.Order.Order.xmlrpc_dup_order" alt="" coords="116,1257,452,1276"/>
+<area shape="rect" href="cuon.Order.Order-class.html" title="cuon.Order.Order" alt="" coords="115,971,453,1277"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.NOT_FOUND" alt="" coords="180,433,388,452"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.FAILURE" alt="" coords="180,452,388,471"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.isLeaf" alt="" coords="180,471,388,489"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.separator" alt="" coords="180,489,388,508"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.allowedMethods" alt="" coords="180,508,388,527"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.putSubHandler" alt="" coords="180,529,388,548"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.getSubHandler" alt="" coords="180,548,388,567"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.getSubHandlerPrefixes" alt="" coords="180,567,388,585"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.xmlrpc.XMLRPC.render_POST" alt="" coords="180,585,388,604"/>
+<area shape="rect" href="javascript:void(0);" title="A resource that implements XML&#45;RPC." alt="" coords="179,416,389,605"/>
+<area shape="rect" href="twisted.web.resource.IResource-class.html" title="A web resource." alt="" coords="167,28,401,47"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.server" alt="" coords="167,47,401,65"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.__implemented__" alt="" coords="167,65,401,84"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.__provides__" alt="" coords="167,84,401,103"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listStaticNames" alt="" coords="167,105,401,124"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listStaticEntities" alt="" coords="167,124,401,143"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listNames" alt="" coords="167,143,401,161"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listEntities" alt="" coords="167,161,401,180"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listDynamicNames" alt="" coords="167,180,401,199"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.listDynamicEntities" alt="" coords="167,199,401,217"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getStaticEntity" alt="" coords="167,217,401,236"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getDynamicEntity" alt="" coords="167,236,401,255"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.delEntity" alt="" coords="167,255,401,273"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.reallyPutEntity" alt="" coords="167,273,401,292"/>
+<area shape="rect" href="javascript:void(0);" title="Retrieve a &#39;child&#39; resource from me." alt="" coords="167,292,401,311"/>
+<area shape="rect" href="javascript:void(0);" title="Retrieve a static or dynamically generated child resource from me." alt="" coords="167,311,401,329"/>
+<area shape="rect" href="javascript:void(0);" title="twisted.web.resource.Resource.getChildForRequest" alt="" coords="167,329,401,348"/>
+<area shape="rect" href="javascript:void(0);" title="Object Specification Descriptor" alt="" coords="167,367,401,385"/>
+<area shape="rect" href="javascript:void(0);" title="I define a web&#45;accessible resource." alt="" coords="165,11,403,387"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_ord.gif" alt='' usemap="#uml_class_diagram_for_cuon_ord" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code><a href="twisted.web.resource.IResource-class.html">entityType</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Order.Order-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Initialize.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getDeliveryNumber"></a><span class="summary-sig-name">xmlrpc_getDeliveryNumber</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getDeliveryNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getInvoiceAddress"></a><span class="summary-sig-name">xmlrpc_getInvoiceAddress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getInvoiceAddress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getOrderPositions"></a><span class="summary-sig-name">xmlrpc_getOrderPositions</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getOrderPositions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getInvoiceNumber"></a><span class="summary-sig-name">xmlrpc_getInvoiceNumber</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getInvoiceNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_changeProposal2Order"></a><span class="summary-sig-name">xmlrpc_changeProposal2Order</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ProposalID</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_changeProposal2Order">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getProposalNumber"></a><span class="summary-sig-name">xmlrpc_getProposalNumber</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getProposalNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getInvoiceDate"></a><span class="summary-sig-name">xmlrpc_getInvoiceDate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getInvoiceDate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getOrderValues"></a><span class="summary-sig-name">xmlrpc_getOrderValues</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderid</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getOrderValues">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_setInvoiceNumber"></a><span class="summary-sig-name">xmlrpc_setInvoiceNumber</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_setInvoiceNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getPickupAddress"></a><span class="summary-sig-name">xmlrpc_getPickupAddress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getPickupAddress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getPickupData"></a><span class="summary-sig-name">xmlrpc_getPickupData</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getPickupData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getPickupNumber"></a><span class="summary-sig-name">xmlrpc_getPickupNumber</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderNumber</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getPickupNumber">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStandardInvoice"></a><span class="summary-sig-name">xmlrpc_getStandardInvoice</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStandardInvoice">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_checkExistModulOrder"></a><span class="summary-sig-name">xmlrpc_checkExistModulOrder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">dicOrder</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_checkExistModulOrder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_checkExistModulProposal"></a><span class="summary-sig-name">xmlrpc_checkExistModulProposal</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">dicOrder</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_checkExistModulProposal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_createNewOrder"></a><span class="summary-sig-name">xmlrpc_createNewOrder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">dicOrder</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_createNewOrder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkDefaultOrder"></a><span class="summary-sig-name">checkDefaultOrder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">id</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.checkDefaultOrder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getTotalSum"></a><span class="summary-sig-name">getTotalSum</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">OrderID</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getTotalSum">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getTotalSumString"></a><span class="summary-sig-name">xmlrpc_getTotalSumString</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">OrderID</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getTotalSumString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getPaidAt"></a><span class="summary-sig-name">xmlrpc_getPaidAt</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">OrderID</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getPaidAt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getNextPosition"></a><span class="summary-sig-name">xmlrpc_getNextPosition</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orderid</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getNextPosition">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getUserInfoOrder"></a><span class="summary-sig-name">xmlrpc_getUserInfoOrder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getUserInfoOrder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getUserInfoInvoice"></a><span class="summary-sig-name">xmlrpc_getUserInfoInvoice</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getUserInfoInvoice">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfInvoices"></a><span class="summary-sig-name">getListOfInvoices</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getListOfInvoices">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfInpayment"></a><span class="summary-sig-name">getListOfInpayment</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getListOfInpayment">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getOrderForAddress"></a><span class="summary-sig-name">xmlrpc_getOrderForAddress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">address_id</span>,
+        <span class="summary-sig-arg">dicUser</span>,
+        <span class="summary-sig-arg">iBegin</span>=<span class="summary-sig-default">500</span>,
+        <span class="summary-sig-arg">iEnd</span>=<span class="summary-sig-default">799</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getOrderForAddress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getOrderForProject"></a><span class="summary-sig-name">xmlrpc_getOrderForProject</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">project_id</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getOrderForProject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getInvoicesForAddress"></a><span class="summary-sig-name">xmlrpc_getInvoicesForAddress</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">address_id</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getInvoicesForAddress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getToPID"></a><span class="summary-sig-name">getToPID</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getToPID">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getToP"></a><span class="summary-sig-name">xmlrpc_getToP</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicOrder</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getToP">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getAllOrderWithoutInvoice"></a><span class="summary-sig-name">xmlrpc_getAllOrderWithoutInvoice</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getAllOrderWithoutInvoice">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkMaturityDay"></a><span class="summary-sig-name">checkMaturityDay</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.checkMaturityDay">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getResidue"></a><span class="summary-sig-name">getResidue</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getResidue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getReminder"></a><span class="summary-sig-name">getReminder</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getReminder">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getListOfInvoicesByTop"></a><span class="summary-sig-name">getListOfInvoicesByTop</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicExtraData</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.getListOfInvoicesByTop">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatsMisc"></a><span class="summary-sig-name">xmlrpc_getStatsMisc</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatsMisc">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatsGlobal"></a><span class="summary-sig-name">xmlrpc_getStatsGlobal</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatsGlobal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatsCaller"></a><span class="summary-sig-name">xmlrpc_getStatsCaller</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatsCaller">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatsReps"></a><span class="summary-sig-name">xmlrpc_getStatsReps</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatsReps">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatsSalesman"></a><span class="summary-sig-name">xmlrpc_getStatsSalesman</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatsSalesman">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_getStatTaxVat1"></a><span class="summary-sig-name">xmlrpc_getStatTaxVat1</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_getStatTaxVat1">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xmlrpc_dup_order"></a><span class="summary-sig-name">xmlrpc_dup_order</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">iOrderID</span>,
+        <span class="summary-sig-arg">dicUser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Order-pysrc.html#Order.xmlrpc_dup_order">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b>:
+      <code>getSubHandler</code>,
+      <code>getSubHandlerPrefixes</code>,
+      <code>putSubHandler</code>,
+      <code>render_POST</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b> (private):
+      <code>_cbRender</code>,
+      <code>_ebRender</code>,
+      <code>_getFunction</code>,
+      <code>_listFunctions</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code>__providedBy__</code>,
+      <code>delEntity</code>,
+      <code>getChild</code>,
+      <code>getChildForRequest</code>,
+      <code>getChildWithDefault</code>,
+      <code>getDynamicEntity</code>,
+      <code>getStaticEntity</code>,
+      <code>listDynamicEntities</code>,
+      <code>listDynamicNames</code>,
+      <code>listEntities</code>,
+      <code>listNames</code>,
+      <code>listStaticEntities</code>,
+      <code>listStaticNames</code>,
+      <code>putChild</code>,
+      <code>reallyPutEntity</code>,
+      <code>render</code>,
+      <code>render_HEAD</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.basics.basics-class.html">basics.basics</a></code></b>:
+      <code><a href="cuon.basics.basics-class.html#addDateTime">addDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkBool">checkBool</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkEndTime">checkEndTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#checkType">checkType</a></code>,
+      <code><a href="cuon.basics.basics-class.html#closeDB">closeDB</a></code>,
+      <code><a href="cuon.basics.basics-class.html#convertTo">convertTo</a></code>,
+      <code><a href="cuon.basics.basics-class.html#createNewSessionID">createNewSessionID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#decompress">decompress</a></code>,
+      <code><a href="cuon.basics.basics-class.html#doDecode64">doDecode64</a></code>,
+      <code><a href="cuon.basics.basics-class.html#formatDate">formatDate</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getActualDateTime">getActualDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getAssociatedTable">getAssociatedTable</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getBeforeYears">getBeforeYears</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getConfigOption">getConfigOption</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getDateTime">getDateTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstDayOfMonth">getFirstDayOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstDayOfMonthAsSeconds">getFirstDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstLastDayOfLastMonthAsSeconds">getFirstLastDayOfLastMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfMonth">getFirstOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfMonth2">getFirstOfMonth2</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getFirstOfYear">getFirstOfYear</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getIRandom">getIRandom</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastDayOfMonth">getLastDayOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastDayOfMonthAsSeconds">getLastDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastOfMonth">getLastOfMonth</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getLastOfYear">getLastOfYear</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNewUUID">getNewUUID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNormalSqlData">getNormalSqlData</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNow">getNow</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getNullUUID">getNullUUID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getParser">getParser</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getSeconds">getSeconds</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getStaffID">getStaffID</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getTime">getTime</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getTimeString">getTimeString</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getUserInfo">getUserInfo</a></code>,
+      <code><a href="cuon.basics.basics-class.html#getWhere">getWhere</a></code>,
+      <code><a href="cuon.basics.basics-class.html#loadObject">loadObject</a></code>,
+      <code><a href="cuon.basics.basics-class.html#make64BitInt">make64BitInt</a></code>,
+      <code><a href="cuon.basics.basics-class.html#normalizeXML">normalizeXML</a></code>,
+      <code><a href="cuon.basics.basics-class.html#openDB">openDB</a></code>,
+      <code><a href="cuon.basics.basics-class.html#out">out</a></code>,
+      <code><a href="cuon.basics.basics-class.html#rebuild">rebuild</a></code>,
+      <code><a href="cuon.basics.basics-class.html#saveObject">saveObject</a></code>,
+      <code><a href="cuon.basics.basics-class.html#writeLog">writeLog</a></code>,
+      <code><a href="cuon.basics.basics-class.html#xmlrpc_getComboReportLists">xmlrpc_getComboReportLists</a></code>,
+      <code><a href="cuon.basics.basics-class.html#xmlrpc_testXmlrpc">xmlrpc_testXmlrpc</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.xmlrpc.XMLRPC</code></b>:
+      <code>FAILURE</code>,
+      <code>NOT_FOUND</code>,
+      <code>allowedMethods</code>,
+      <code>isLeaf</code>,
+      <code>separator</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.web.resource.Resource</code></b>:
+      <code>__implemented__</code>,
+      <code>__provides__</code>,
+      <code>server</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Order-pysrc.html#Order.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.basics.basics-class.html#__init__">basics.basics.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:17 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

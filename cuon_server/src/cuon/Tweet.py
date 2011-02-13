@@ -178,4 +178,3 @@ class Tweet(xmlrpc.XMLRPC, basics):
             liReturn = ['NONE']   
         #print liReturn
         return liReturn
-

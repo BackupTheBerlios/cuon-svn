@@ -71,4 +71,3 @@ class standard_invoice:
         
         self.loadXmlReport('order_standardinvoice', 'ReportStandardInvoice1')
         
-

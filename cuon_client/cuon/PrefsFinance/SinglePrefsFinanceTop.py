@@ -66,4 +66,3 @@ class SinglePrefsFinanceTop(SingleData):
             liTOP.append(' ')
             
         return liTOP
-

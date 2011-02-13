@@ -519,6 +519,33 @@
               <object class="GtkVBox" id="vbox20">
                 <property name="visible">True</property>
                 <child>
+                  <object class="GtkHBox" id="hbox1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label2">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Predefined</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxEntry" id="cbPredefined">
+                        <property name="visible">True</property>
+                        <signal name="changed" handler="on_cbPredefined_changed"/>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkHBox" id="hbox72">
                     <property name="visible">True</property>
                     <child>
@@ -549,7 +576,7 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">0</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
@@ -583,25 +610,11 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkDrawingArea" id="drawingarea15">
-                    <property name="visible">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkDrawingArea" id="drawingarea16">
-                    <property name="visible">True</property>
-                  </object>
-                  <packing>
-                    <property name="position">3</property>
-                  </packing>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>
@@ -621,6 +634,51 @@
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
+              <object class="GtkButton" id="bNewPredefine">
+                <property name="label" translatable="yes">New Predefine</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bNewPredefine_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="bEditPredefine">
+                <property name="label" translatable="yes">Edit Predefine</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bEditPredefine_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="bDeletePredefine">
+                <property name="label" translatable="yes">Delete Predefine</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bDeletePredefine_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
               <object class="GtkButton" id="bOK">
                 <property name="label" translatable="yes">start</property>
                 <property name="visible">True</property>
@@ -632,11 +690,8 @@
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
-                <property name="position">0</property>
+                <property name="position">4</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
             </child>
           </object>
           <packing>
@@ -648,6 +703,9 @@
       </object>
     </child>
     <action-widgets>
+      <action-widget response="0">bNewPredefine</action-widget>
+      <action-widget response="0">bEditPredefine</action-widget>
+      <action-widget response="0">bDeletePredefine</action-widget>
       <action-widget response="0">bOK</action-widget>
     </action-widgets>
   </object>

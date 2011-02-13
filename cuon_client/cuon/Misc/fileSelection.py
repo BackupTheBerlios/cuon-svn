@@ -91,4 +91,3 @@ class fileSelection(chooseWindows):
             
             self.fileChooser.add_filter(filter)
         
-

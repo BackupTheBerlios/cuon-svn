@@ -53,4 +53,3 @@ class SingleSupportTicket(SingleData):
         dicValues['support_project_id'] = [self.SupportProjectId, 'int']
         
         return dicValues
-

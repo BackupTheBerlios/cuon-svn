@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Reports.standardlist</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Reports-module.html">Package&nbsp;Reports</a> ::
+        Module&nbsp;standardlist
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Reports.standardlist-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.Reports.standardlist-module.html">Module cuon.Reports.standardlist</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment">##Copyright (C) [2003-2004]  [J&#252;rgen Hamel, D-32584 L&#246;hne]</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment">##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment">##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment">##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment">##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">##for more details.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment">##You should have received a copy of the GNU General Public License along with this program; if not, write to the</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment">##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. </tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">reportlab</tt><tt class="py-op">.</tt><tt class="py-name">lib</tt> <tt class="py-keyword">import</tt> <tt class="py-name">pagesizes</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module cuon.Reports.report=cuon.Reports.report-module.html,Class cuon.Reports.report.report=cuon.Reports.report.report-class.html"><a title="cuon.Reports.report
+cuon.Reports.report.report" class="py-name" href="#" onclick="return doclink('link-0', 'report', 'link-0');">report</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="cuon.Reports.report
+cuon.Reports.report.report" class="py-name" href="#" onclick="return doclink('link-1', 'report', 'link-0');">report</a></tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">copy</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="standardlist"></a><div id="standardlist-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="standardlist-toggle" onclick="return toggle('standardlist');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.Reports.standardlist.standardlist-class.html">standardlist</a><tt class="py-op">(</tt><tt class="py-base-class">report</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="standardlist-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="standardlist-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="standardlist.__init__"></a><div id="standardlist.__init__-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="standardlist.__init__-toggle" onclick="return toggle('standardlist.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Reports.standardlist.standardlist-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="standardlist.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="standardlist.__init__-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt id="link-2" class="py-name"><a title="cuon.Reports.report
+cuon.Reports.report.report" class="py-name" href="#" onclick="return doclink('link-2', 'report', 'link-0');">report</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method cuon.AI.AI.__init__()=cuon.AI.AI-class.html#__init__,Method cuon.Address.Address.__init__()=cuon.Address.Address-class.html#__init__,Method cuon.Article.Article.__init__()=cuon.Article.Article-class.html#__init__,Method cuon.Database.Database.__init__()=cuon.Database.Database-class.html#__init__,Method cuon.Email.cuonemail.__init__()=cuon.Email.cuonemail-class.html#__init__,Method cuon.Email2.Attachments.__init__()=cuon.Email2.Attachments-class.html#__init__,Method cuon.Email2.BCCRecipients.__init__()=cuon.Email2.BCCRecipients-class.html#__init__,Method cuon.Email2.CCRecipients.__init__()=cuon.Email2.CCRecipients-class.html#__init__,Method cuon.Email2.Email.__init__()=cuon.Email2.Email-class.html#__init__,Method cuon.Email2.Recipients.__init__()=cuon.Email2.Recipients-class.html#__init__,Method cuon.Finances.Finances.__init__()=cuon.Finances.Finances-class.html#__init__,Method cuon.Garden.Garden.__init__()=cuon.Garden.Garden-class.html#__init__,Method cuon.Grave.Grave.__init__()=cuon.Grave.Grave-class.html#__init__,Method cuon.Misc.Misc.__init__()=cuon.Misc.Misc-class.html#__init__,Method cuon.Order.Order.__init__()=cuon.Order.Order-class.html#__init__,Method cuon.Projects.Projects.__init__()=cuon.Projects.Projects-class.html#__init__,Method cuon.Report.Report.__init__()=cuon.Report.Report-class.html#__init__,Method cuon.ReportServer.ReportServer.__init__()=cuon.ReportServer.ReportServer-class.html#__init__,Method cuon.Reports.MyXML.MyXML.__init__()=cuon.Reports.MyXML.MyXML-class.html#__init__,Method cuon.Reports.report.report.__init__()=cuon.Reports.report.report-class.html#__init__,Method cuon.Reports.report2_latex.report2.__init__()=cuon.Reports.report2_latex.report2-class.html#__init__,Method cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__()=cuon.Reports.report_addresses_phone1.report_addresses_phone1-class.html#__init__,Method cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__()=cuon.Reports.report_addresses_phone11.report_addresses_phone11-class.html#__init__,Method cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__()=cuon.Reports.report_addresses_phone12.report_addresses_phone12-class.html#__init__,Method cuon.Reports.report_articles_number1.report_articles_number1.__init__()=cuon.Reports.report_articles_number1.report_articles_number1-class.html#__init__,Method cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__()=cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard-class.html#__init__,Method cuon.Reports.report_basics.report_basics.__init__()=cuon.Reports.report_basics.report_basics-class.html#__init__,Method cuon.Reports.report_cab_monthly.report_cab_monthly.__init__()=cuon.Reports.report_cab_monthly.report_cab_monthly-class.html#__init__,Method cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__()=cuon.Reports.report_grave_plant_lists.report_grave_plant_lists-class.html#__init__,Method cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__()=cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document-class.html#__init__,Method cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__()=cuon.Reports.report_hibernation_invoice.report_hibernation_invoice-class.html#__init__,Method cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__()=cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document-class.html#__init__,Method cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__()=cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document-class.html#__init__,Method cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__()=cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices-class.html#__init__,Method cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__()=cuon.Reports.report_list_of_inpayment.report_list_of_inpayment-class.html#__init__,Method cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__()=cuon.Reports.report_list_of_reminder.report_list_of_reminder-class.html#__init__,Method cuon.Reports.report_list_of_residue.report_list_of_residue.__init__()=cuon.Reports.report_list_of_residue.report_list_of_residue-class.html#__init__,Method cuon.Reports.report_list_of_top.report_list_of_top.__init__()=cuon.Reports.report_list_of_top.report_list_of_top-class.html#__init__,Method cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__()=cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices-class.html#__init__,Method cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__()=cuon.Reports.report_order_standard_invoice.report_order_standard_invoice-class.html#__init__,Method cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__()=cuon.Reports.report_order_standard_supply.report_order_standard_supply-class.html#__init__,Method cuon.Reports.report_printAddress.report_printAddress.__init__()=cuon.Reports.report_printAddress.report_printAddress-class.html#__init__,Method cuon.Reports.report_proposal_standard.report_proposal_standard.__init__()=cuon.Reports.report_proposal_standard.report_proposal_standard-class.html#__init__,Method cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__()=cuon.Reports.report_stockgoods_number1.report_stockgoods_number1-class.html#__init__,Method cuon.Reports.standardlist.standardlist.__init__()=cuon.Reports.standardlist.standardlist-class.html#__init__,Method cuon.SQL.SQL.__init__()=cuon.SQL.SQL-class.html#__init__,Method cuon.SVG.Circle.__init__()=cuon.SVG.Circle-class.html#__init__,Method cuon.SVG.Line.__init__()=cuon.SVG.Line-class.html#__init__,Method cuon.SVG.Rectangle.__init__()=cuon.SVG.Rectangle-class.html#__init__,Method cuon.SVG.SVG.__init__()=cuon.SVG.SVG-class.html#__init__,Method cuon.SVG.Text.__init__()=cuon.SVG.Text-class.html#__init__,Method cuon.SVG.newSVG.__init__()=cuon.SVG.newSVG-class.html#__init__,Method cuon.Stock.Stock.__init__()=cuon.Stock.Stock-class.html#__init__,Method cuon.Support.Support.__init__()=cuon.Support.Support-class.html#__init__,Method cuon.Tweet.Tweet.__init__()=cuon.Tweet.Tweet-class.html#__init__,Method cuon.User.User.__init__()=cuon.User.User-class.html#__init__,Method cuon.Web.Web.__init__()=cuon.Web.Web-class.html#__init__,Method cuon.Web2.Web2.__init__()=cuon.Web2.Web2-class.html#__init__,Method cuon.WebAI.WebAI.__init__()=cuon.WebAI.WebAI-class.html#__init__,Method cuon.WebShop.WebShop.__init__()=cuon.WebShop.WebShop-class.html#__init__,Method cuon.ai.ai.__init__()=cuon.ai.ai-class.html#__init__,Method cuon.ai_main.ai_main.__init__()=cuon.ai_main.ai_main-class.html#__init__,Method cuon.basics.basics.__init__()=cuon.basics.basics-class.html#__init__,Method cuon.gridxml.gridxml.__init__()=cuon.gridxml.gridxml-class.html#__init__,Method cuon.iCal.iCal.__init__()=cuon.iCal.iCal-class.html#__init__,Method cuon.jabberBot.jabberBot.__init__()=cuon.jabberBot.jabberBot-class.html#__init__,Method cuon.simplemail.Attachments.__init__()=cuon.simplemail.Attachments-class.html#__init__,Method cuon.simplemail.Email.__init__()=cuon.simplemail.Email-class.html#__init__,Method cuon.simplemail.Recipients.__init__()=cuon.simplemail.Recipients-class.html#__init__,Method cuon.web_root.Image.__init__()=cuon.web_root.Image-class.html#__init__,Method cuon.web_root.WebRoots.__init__()=cuon.web_root.WebRoots-class.html#__init__"><a title="cuon.AI.AI.__init__
+cuon.Address.Address.__init__
+cuon.Article.Article.__init__
+cuon.Database.Database.__init__
+cuon.Email.cuonemail.__init__
+cuon.Email2.Attachments.__init__
+cuon.Email2.BCCRecipients.__init__
+cuon.Email2.CCRecipients.__init__
+cuon.Email2.Email.__init__
+cuon.Email2.Recipients.__init__
+cuon.Finances.Finances.__init__
+cuon.Garden.Garden.__init__
+cuon.Grave.Grave.__init__
+cuon.Misc.Misc.__init__
+cuon.Order.Order.__init__
+cuon.Projects.Projects.__init__
+cuon.Report.Report.__init__
+cuon.ReportServer.ReportServer.__init__
+cuon.Reports.MyXML.MyXML.__init__
+cuon.Reports.report.report.__init__
+cuon.Reports.report2_latex.report2.__init__
+cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__
+cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__
+cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__
+cuon.Reports.report_articles_number1.report_articles_number1.__init__
+cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__
+cuon.Reports.report_basics.report_basics.__init__
+cuon.Reports.report_cab_monthly.report_cab_monthly.__init__
+cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__
+cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__
+cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__
+cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__
+cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__
+cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__
+cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__
+cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__
+cuon.Reports.report_list_of_residue.report_list_of_residue.__init__
+cuon.Reports.report_list_of_top.report_list_of_top.__init__
+cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__
+cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__
+cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__
+cuon.Reports.report_printAddress.report_printAddress.__init__
+cuon.Reports.report_proposal_standard.report_proposal_standard.__init__
+cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__
+cuon.Reports.standardlist.standardlist.__init__
+cuon.SQL.SQL.__init__
+cuon.SVG.Circle.__init__
+cuon.SVG.Line.__init__
+cuon.SVG.Rectangle.__init__
+cuon.SVG.SVG.__init__
+cuon.SVG.Text.__init__
+cuon.SVG.newSVG.__init__
+cuon.Stock.Stock.__init__
+cuon.Support.Support.__init__
+cuon.Tweet.Tweet.__init__
+cuon.User.User.__init__
+cuon.Web.Web.__init__
+cuon.Web2.Web2.__init__
+cuon.WebAI.WebAI.__init__
+cuon.WebShop.WebShop.__init__
+cuon.ai.ai.__init__
+cuon.ai_main.ai_main.__init__
+cuon.basics.basics.__init__
+cuon.gridxml.gridxml.__init__
+cuon.iCal.iCal.__init__
+cuon.jabberBot.jabberBot.__init__
+cuon.simplemail.Attachments.__init__
+cuon.simplemail.Email.__init__
+cuon.simplemail.Recipients.__init__
+cuon.web_root.Image.__init__
+cuon.web_root.WebRoots.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">'ini Standardlist'</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">         </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xmlFile</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">         </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">filedata</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">         </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">         </tt>
+<a name="standardlist.setFileName"></a><div id="standardlist.setFileName-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="standardlist.setFileName-toggle" onclick="return toggle('standardlist.setFileName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.Reports.standardlist.standardlist-class.html#setFileName">setFileName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="standardlist.setFileName-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="standardlist.setFileName-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">         </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">sFile</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">normpath</tt><tt class="py-op">(</tt> <tt class="py-name">sName</tt> <tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">filedata</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">sFile</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">sFile</tt> </tt>
+</div></div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:21 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

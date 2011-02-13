@@ -482,9 +482,9 @@ class report(MyXML):
             # page footer to the end of the site
             if self.dicPage['PageFootAppendToGroup'] == 0:
                 if self.lastPage:
-                    dicRow['x1'] = self.dicPage['beginPageFooterX']  
+                    dicRow['x1'] = self.dicPage['beginPageFooterX']  + dicRow['x1']
                     dicRow['y1'] = self.dicPage['beginPageFooterY']  - dicRow['y1']
-                    dicRow['x2'] = self.dicPage['endPageFooterX']  
+                    dicRow['x2'] = self.dicPage['beginPageFooterX']  + dicRow['x2']
                     dicRow['y2'] = self.dicPage['beginPageFooterY']  - dicRow['y2']
     
                 else:
@@ -498,9 +498,9 @@ class report(MyXML):
                 print "appendtogroup is 1,  y1,  y2 = ", y1, y2,   dicRow['y1'] ,  dicRow['y2']
                 print "this are x values",  x1,  x2,  dicRow['x1'],  dicRow['x2']
                 footerhigh = self.dicPage['pageFooterY2']  - self.dicPage['pageFooterY1'] 
-                dicRow['x1'] =  self.dicPage['beginPageFooterX'] 
+                dicRow['x1'] =  self.dicPage['beginPageFooterX'] + dicRow['x1']
                 dicRow['y1'] =  y1 - dicRow['y1']
-                dicRow['x2'] =  self.dicPage['endPageFooterX'] 
+                dicRow['x2'] =  self.dicPage['beginPageFooterX'] + dicRow['x2']
                 dicRow['y2'] =  y2 -  dicRow['y2']
                 
                 print "this are the footer  y1,  y2 = ",  dicRow['y1'] ,  dicRow['y2']
@@ -517,15 +517,16 @@ class report(MyXML):
             print 'PageFootAppend2Group= ', self.dicPage['PageFootAppendToGroup'] 
             print 'y1, y2',  y1, y2
             
+            
             print 'PageFooterY1 = ',  self.dicPage['beginPageFooterY'] 
             print 'PageFooterY2 = ',  self.dicPage['endPageFooterY'] 
             
             
         #sys.exit(0)    
             
-        return liRecord
+        return liRecord,  dicRow
 
-    def getReportFooter(self, cyRootNode):
+    def getReportFooter(self, cyRootNode,  x1,  y1,  x2,  y2):
 
         cyReportFooterNode = self.getNode(cyRootNode, 'reportFooter')
         #print '------------------'
@@ -549,11 +550,23 @@ class report(MyXML):
 
             dicRow = self.getReportEntry(cyReportFooterEntries[i])
             #dicRow = self. getReportRow(dicEntry) 
-     
+            if self.dicPage['ReportFootAppendToGroup'] == 0:
             #dicRow['text'] = dicEntry['text']
-            dicRow['x1'] = self.dicPage['beginReportFooterX'] + dicRow['x1']
-            dicRow['y1'] = self.dicPage['endReportFooterY']  +  dicRow['y1']
-
+                dicRow['x1'] = self.dicPage['beginReportFooterX'] + dicRow['x1']
+                dicRow['x2'] =  self.dicPage['beginReportFooterX'] + dicRow['x2']
+                dicRow['y1'] = self.dicPage['beginReportFooterY']  -  dicRow['y1']
+                dicRow['y2'] = self.dicPage['beginReportFooterY']  -  dicRow['y2']
+            elif self.dicPage['ReportFootAppendToGroup'] == 1:
+                dicRow['x1'] = self.dicPage['beginReportFooterX'] + dicRow['x1']
+                dicRow['x2'] = self.dicPage['beginReportFooterX'] + dicRow['x2']
+                dicRow['y1'] = y1 - dicRow['y1']
+                dicRow['y2'] = y2 - dicRow['y2']
+            else:
+                dicRow['x1'] = self.dicPage['beginReportFooterX'] + dicRow['x1']
+                dicRow['x2'] =  self.dicPage['beginReportFooterX'] + dicRow['x2']
+                dicRow['y1'] = self.dicPage['beginReportFooterY']  -  dicRow['y1']
+                dicRow['y2'] = self.dicPage['beginReportFooterY']  -  dicRow['y2']
+                
             liRecord = self.checkProperty(liRecord, dicRow)
 
         return liRecord
@@ -680,7 +693,7 @@ class report(MyXML):
                         if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , lineOffset ):
                             
                             self.dicReportValues['pageDetails'] = liRecord
-                            self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2'] )
+                            self.dicReportValues['pageFooter'],  dicRow = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2'] )
                             self.printPageDetails(c)
                             self.printPageFooter(c)
                             # begin new page
@@ -711,9 +724,9 @@ class report(MyXML):
         self.printPageDetails(c)
         self.lastPage = True 
         
-        self.dicReportValues['pageFooter'] = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2']  )
+        self.dicReportValues['pageFooter'],  dicRow = self.getPageFooter(cyRootNode, dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2']  )
         self.printPageFooter(c)
-        self.dicReportValues['reportFooter']  = self.getReportFooter(cyRootNode)
+        self.dicReportValues['reportFooter']  = self.getReportFooter(cyRootNode,dicRow['x1'] , dicRow['y1'] ,dicRow['x2'] ,dicRow['y2'] )
         self.printReportFooter(c)
         self.closePDF(c)
         #self.pdfStory.append(c)

@@ -1,0 +1,1817 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Cuon.MainWindow</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="Cuon-module.html">Module&nbsp;Cuon</a> ::
+        Class&nbsp;MainWindow
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Cuon.MainWindow-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class MainWindow</h1><p class="nomargin-top"><span class="codelink"><a href="Cuon-pysrc.html#MainWindow">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_mai" name="uml_class_diagram_for_cuon_mai">
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#NotTextNodeError" title="cuon.XML.MyXML.MyXML.NotTextNodeError" alt="" coords="809,769,1092,788"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getAttributValue" title="cuon.XML.MyXML.MyXML.getAttributValue" alt="" coords="809,788,1092,807"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getColumnAt" title="cuon.XML.MyXML.MyXML.getColumnAt" alt="" coords="809,807,1092,825"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getColumnSpecification" title="cuon.XML.MyXML.MyXML.getColumnSpecification" alt="" coords="809,825,1092,844"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getData" title="cuon.XML.MyXML.MyXML.getData" alt="" coords="809,844,1092,863"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getEntries" title="cuon.XML.MyXML.MyXML.getEntries" alt="" coords="809,863,1092,881"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getEntry" title="cuon.XML.MyXML.MyXML.getEntry" alt="" coords="809,881,1092,900"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getEntryAt" title="cuon.XML.MyXML.MyXML.getEntryAt" alt="" coords="809,900,1092,919"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getEntrySpecification" title="cuon.XML.MyXML.MyXML.getEntrySpecification" alt="" coords="809,919,1092,937"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getForeignKey" title="cuon.XML.MyXML.MyXML.getForeignKey" alt="" coords="809,937,1092,956"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getListOfEntries" title="cuon.XML.MyXML.MyXML.getListOfEntries" alt="" coords="809,956,1092,975"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getListOfForeignKeys" title="cuon.XML.MyXML.MyXML.getListOfForeignKeys" alt="" coords="809,975,1092,993"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#getListOfSequences" title="cuon.XML.MyXML.MyXML.getListOfSequences" alt="" coords="809,993,1092,1012"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html#test" title="cuon.XML.MyXML.MyXML.test" alt="" coords="809,1031,1092,1049"/>
+<area shape="rect" href="cuon.XML.MyXML.MyXML-class.html" title="cuon.XML.MyXML.MyXML" alt="" coords="808,744,1093,1051"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#CleanUp" title="cuon.Windows.windows.windows.CleanUp" alt="" coords="313,1105,692,1124"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#HTMLColorToRGB" title="convert #RRGGBB to an (R, G, B) tuple" alt="" coords="313,1124,692,1143"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#MainwindowEventHandling" title="cuon.Windows.windows.windows.MainwindowEventHandling" alt="" coords="313,1143,692,1161"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#RGBToHTMLColor" title="convert an (R, G, B) tuple to #RRGGBB" alt="" coords="313,1161,692,1180"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#activateClick" title="cuon.Windows.windows.windows.activateClick" alt="" coords="313,1180,692,1199"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#addDateTime" title="cuon.Windows.windows.windows.addDateTime" alt="" coords="313,1199,692,1217"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#addOneDay" title="cuon.Windows.windows.windows.addOneDay" alt="" coords="313,1217,692,1236"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#checkKey" title="cuon.Windows.windows.windows.checkKey" alt="" coords="313,1236,692,1255"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#clearSearch" title="cuon.Windows.windows.windows.clearSearch" alt="" coords="313,1255,692,1273"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#closeMenuEntries" title="cuon.Windows.windows.windows.closeMenuEntries" alt="" coords="313,1273,692,1292"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#closeWindow" title="cuon.Windows.windows.windows.closeWindow" alt="" coords="313,1292,692,1311"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#endEdit" title="cuon.Windows.windows.windows.endEdit" alt="" coords="313,1311,692,1329"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#getDataEntries" title="cuon.Windows.windows.windows.getDataEntries" alt="" coords="313,1329,692,1348"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html#stopProgressBar" title="cuon.Windows.windows.windows.stopProgressBar" alt="" coords="313,1367,692,1385"/>
+<area shape="rect" href="cuon.Windows.windows.windows-class.html" title="cuon.Windows.windows.windows" alt="" coords="312,1080,693,1387"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#checkType" title="cuon.Databases.dumps.dumps.checkType" alt="" coords="449,36,793,55"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#closeDB" title="cuon.Databases.dumps.dumps.closeDB" alt="" coords="449,55,793,73"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doCompress" title="cuon.Databases.dumps.dumps.doCompress" alt="" coords="449,73,793,92"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doDecode" title="cuon.Databases.dumps.dumps.doDecode" alt="" coords="449,92,793,111"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doEncode" title="cuon.Databases.dumps.dumps.doEncode" alt="" coords="449,111,793,129"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doUncompress" title="cuon.Databases.dumps.dumps.doUncompress" alt="" coords="449,129,793,148"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#formatDate" title="cuon.Databases.dumps.dumps.formatDate" alt="" coords="449,148,793,167"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getActualDateTime" title="cuon.Databases.dumps.dumps.getActualDateTime" alt="" coords="449,167,793,185"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getCheckedValue" title="cuon.Databases.dumps.dumps.getCheckedValue" alt="" coords="449,185,793,204"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getDateTime" title="cuon.Databases.dumps.dumps.getDateTime" alt="" coords="449,204,793,223"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" title="cuon.Databases.dumps.dumps.getFirstDayOfMonth" alt="" coords="449,223,793,241"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstDayOfMonthAsSeconds" alt="" coords="449,241,793,260"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstLastDayOfLastMonthAsSeconds" alt="" coords="449,260,793,279"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#writeEmailLog" title="cuon.Databases.dumps.dumps.writeEmailLog" alt="" coords="449,297,793,316"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html" title="cuon.Databases.dumps.dumps" alt="" coords="448,11,795,317"/>
+<area shape="rect" href="cuon.TypeDefs.defaultValues.defaultValues-class.html" title="cuon.TypeDefs.defaultValues.defaultValues" alt="" coords="496,347,747,379"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#__init__" title="Cuon.MainWindow.__init__" alt="" coords="372,1441,633,1460"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#loadUserInfo" title="Cuon.MainWindow.loadUserInfo" alt="" coords="372,1460,633,1479"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#checkClient" title="Cuon.MainWindow.checkClient" alt="" coords="372,1479,633,1497"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#delete_event" title="Cuon.MainWindow.delete_event" alt="" coords="372,1497,633,1516"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#destroy" title="Cuon.MainWindow.destroy" alt="" coords="372,1516,633,1535"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#on_end1_activate" title="Cuon.MainWindow.on_end1_activate" alt="" coords="372,1535,633,1553"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#on_databases1_activate" title="Cuon.MainWindow.on_databases1_activate" alt="" coords="372,1553,633,1572"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#on_login1_activate" title="Cuon.MainWindow.on_login1_activate" alt="" coords="372,1572,633,1591"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#checkMenus" title="Cuon.MainWindow.checkMenus" alt="" coords="372,1591,633,1609"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#on_logout1_activate" title="Cuon.MainWindow.on_logout1_activate" alt="" coords="372,1609,633,1628"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#on_eUserName_changed" title="Cuon.MainWindow.on_eUserName_changed" alt="" coords="372,1628,633,1647"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#generateSqlObjects" title="Cuon.MainWindow.generateSqlObjects" alt="" coords="372,1647,633,1665"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#generateLocalSqlObjects" title="Cuon.MainWindow.generateLocalSqlObjects" alt="" coords="372,1665,633,1684"/>
+<area shape="rect" href="Cuon.MainWindow-class.html#gtk_main_quit" title="Cuon.MainWindow.gtk_main_quit" alt="" coords="372,1703,633,1721"/>
+<area shape="rect" href="Cuon.MainWindow-class.html" title="Cuon.MainWindow" alt="" coords="371,1416,635,1723"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#add2Textbuffer" title="cuon.Windows.gladeXml.gladeXml.add2Textbuffer" alt="" coords="435,433,808,452"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addEnabledMenuItems" title="cuon.Windows.gladeXml.gladeXml.addEnabledMenuItems" alt="" coords="435,452,808,471"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addKeyToItem" title="cuon.Windows.gladeXml.gladeXml.addKeyToItem" alt="" coords="435,471,808,489"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addMenuItem" title="cuon.Windows.gladeXml.gladeXml.addMenuItem" alt="" coords="435,489,808,508"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#checkMimeType" title="cuon.Windows.gladeXml.gladeXml.checkMimeType" alt="" coords="435,508,808,527"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#clearTextBuffer" title="cuon.Windows.gladeXml.gladeXml.clearTextBuffer" alt="" coords="435,527,808,545"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#disableAllMenuItems" title="cuon.Windows.gladeXml.gladeXml.disableAllMenuItems" alt="" coords="435,545,808,564"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#disableMenuItem" title="cuon.Windows.gladeXml.gladeXml.disableMenuItem" alt="" coords="435,564,808,583"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#enableAllMenuItems" title="cuon.Windows.gladeXml.gladeXml.enableAllMenuItems" alt="" coords="435,583,808,601"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#enableMenuItem" title="cuon.Windows.gladeXml.gladeXml.enableMenuItem" alt="" coords="435,601,808,620"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getActiveText" title="cuon.Windows.gladeXml.gladeXml.getActiveText" alt="" coords="435,620,808,639"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getClipboard" title="cuon.Windows.gladeXml.gladeXml.getClipboard" alt="" coords="435,639,808,657"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getNotesEditor" title="cuon.Windows.gladeXml.gladeXml.getNotesEditor" alt="" coords="435,657,808,676"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#writeGlade" title="cuon.Windows.gladeXml.gladeXml.writeGlade" alt="" coords="435,695,808,713"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html" title="cuon.Windows.gladeXml.gladeXml" alt="" coords="433,408,809,715"/>
+<area shape="rect" href="cuon.TypeDefs.constants.constants-class.html" title="cuon.TypeDefs.constants.constants" alt="" coords="16,881,227,913"/>
+<area shape="rect" href="cuon.Misc.messages.messages-class.html#errorMsg" title="cuon.Misc.messages.messages.errorMsg" alt="" coords="279,881,468,900"/>
+<area shape="rect" href="cuon.Misc.messages.messages-class.html#infoMsg" title="cuon.Misc.messages.messages.infoMsg" alt="" coords="279,900,468,919"/>
+<area shape="rect" href="cuon.Misc.messages.messages-class.html#QuestionMsg" title="cuon.Misc.messages.messages.QuestionMsg" alt="" coords="279,919,468,937"/>
+<area shape="rect" href="cuon.Misc.messages.messages-class.html" title="cuon.Misc.messages.messages" alt="" coords="277,856,469,939"/>
+<area shape="rect" href="cuon.Logging.logs.logs-class.html#out" title="cuon.Logging.logs.logs.out" alt="" coords="861,545,1085,564"/>
+<area shape="rect" href="cuon.Logging.logs.logs-class.html#printOut" title="cuon.Logging.logs.logs.printOut" alt="" coords="861,564,1085,583"/>
+<area shape="rect" href="cuon.Logging.logs.logs-class.html#setLogLevel" title="cuon.Logging.logs.logs.setLogLevel" alt="" coords="861,583,1085,601"/>
+<area shape="rect" href="cuon.Logging.logs.logs-class.html" title="cuon.Logging.logs.logs" alt="" coords="860,520,1087,603"/>
+<area shape="rect" href="cuon.Windows.rawWindow.rawWindow-class.html#getConfigOption" title="cuon.Windows.rawWindow.rawWindow.getConfigOption" alt="" coords="521,881,745,900"/>
+<area shape="rect" href="cuon.Windows.rawWindow.rawWindow-class.html#getListOfParserItems" title="cuon.Windows.rawWindow.rawWindow.getListOfParserItems" alt="" coords="521,900,745,919"/>
+<area shape="rect" href="cuon.Windows.rawWindow.rawWindow-class.html#getListOfParserSections" title="cuon.Windows.rawWindow.rawWindow.getListOfParserSections" alt="" coords="521,919,745,937"/>
+<area shape="rect" href="cuon.Windows.rawWindow.rawWindow-class.html" title="cuon.Windows.rawWindow.rawWindow" alt="" coords="520,856,747,939"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_mai.gif" alt='' usemap="#uml_class_diagram_for_cuon_mai" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        Juergen Hamel
+      </p>
+      <p><strong>Organization:</strong>
+        Cyrus-Computer GmbH, D-32584 Loehne
+      </p>
+      <p><strong>Copyright:</strong>
+        by Juergen Hamel
+      </p>
+      <p><strong>License:</strong>
+        GPL ( GNU GENERAL PUBLIC LICENSE )
+      </p>
+      <p><strong>Contact:</strong>
+        jh@cyrus.de
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Cuon.MainWindow-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sT</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Cuon.MainWindow-class.html#loadUserInfo" class="summary-sig-name">loadUserInfo</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.loadUserInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Cuon.MainWindow-class.html#checkClient" class="summary-sig-name">checkClient</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.checkClient">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="Cuon.MainWindow-class.html#delete_event" class="summary-sig-name">delete_event</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">event</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.delete_event">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="destroy"></a><span class="summary-sig-name">destroy</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">widget</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.destroy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_end1_activate"></a><span class="summary-sig-name">on_end1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_end1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_databases1_activate"></a><span class="summary-sig-name">on_databases1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_databases1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_login1_activate"></a><span class="summary-sig-name">on_login1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_login1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkMenus"></a><span class="summary-sig-name">checkMenus</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.checkMenus">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_logout1_activate"></a><span class="summary-sig-name">on_logout1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_logout1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_eUserName_changed"></a><span class="summary-sig-name">on_eUserName_changed</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_eUserName_changed">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="generateSqlObjects"></a><span class="summary-sig-name">generateSqlObjects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.generateSqlObjects">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="generateLocalSqlObjects"></a><span class="summary-sig-name">generateLocalSqlObjects</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.generateLocalSqlObjects">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadSqlDefs"></a><span class="summary-sig-name">loadSqlDefs</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">liAllTables</span>,
+        <span class="summary-sig-arg">i</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.loadSqlDefs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadLocalSqlDefs"></a><span class="summary-sig-name">loadLocalSqlDefs</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">liAllTables</span>,
+        <span class="summary-sig-arg">i</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.loadLocalSqlDefs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_addresses1_activate"></a><span class="summary-sig-name">on_addresses1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_addresses1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_articles1_activate"></a><span class="summary-sig-name">on_articles1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_articles1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bank1_activate"></a><span class="summary-sig-name">on_bank1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bank1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bibliographic_activate"></a><span class="summary-sig-name">on_bibliographic_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bibliographic_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_clients1_activate"></a><span class="summary-sig-name">on_clients1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_clients1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_staff1_activate"></a><span class="summary-sig-name">on_staff1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_staff1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_leasing1_activate"></a><span class="summary-sig-name">on_leasing1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_leasing1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_proposal1_activate"></a><span class="summary-sig-name">on_proposal1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_proposal1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_order1_activate"></a><span class="summary-sig-name">on_order1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_order1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_stock1_activate"></a><span class="summary-sig-name">on_stock1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_stock1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_mi_supportticket1_activate"></a><span class="summary-sig-name">on_mi_supportticket1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_mi_supportticket1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_dms1_activate"></a><span class="summary-sig-name">on_dms1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_dms1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_cash_account_book1_activate"></a><span class="summary-sig-name">on_cash_account_book1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_cash_account_book1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bookkeeping1_activate"></a><span class="summary-sig-name">on_bookkeeping1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bookkeeping1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_listOfInvoices1_activate"></a><span class="summary-sig-name">on_listOfInvoices1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_listOfInvoices1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_analyse_costs1_activate"></a><span class="summary-sig-name">on_analyse_costs1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_analyse_costs1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_expert_system1_activate"></a><span class="summary-sig-name">on_expert_system1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_expert_system1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_project1_activate"></a><span class="summary-sig-name">on_project1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_project1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_web2_activate"></a><span class="summary-sig-name">on_web2_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_web2_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_stats1_activate"></a><span class="summary-sig-name">on_stats1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_stats1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_calendar_activate"></a><span class="summary-sig-name">on_calendar_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_calendar_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_mindmap1_activate"></a><span class="summary-sig-name">on_mindmap1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_mindmap1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_addresses_notes_misc1_activate"></a><span class="summary-sig-name">on_addresses_notes_misc1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_addresses_notes_misc1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_addresses_notes_contacter1_activate"></a><span class="summary-sig-name">on_addresses_notes_contacter1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_addresses_notes_contacter1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_addresses_notes_representant1_activate"></a><span class="summary-sig-name">on_addresses_notes_representant1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_addresses_notes_representant1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_addresses_notes_salesman1_activate"></a><span class="summary-sig-name">on_addresses_notes_salesman1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_addresses_notes_salesman1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_update1_activate"></a><span class="summary-sig-name">on_update1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_update1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_pref_user1_activate"></a><span class="summary-sig-name">on_pref_user1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_pref_user1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_prefs_finances_activate"></a><span class="summary-sig-name">on_prefs_finances_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_prefs_finances_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_webshop1_activate"></a><span class="summary-sig-name">on_webshop1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_webshop1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="updateVersion"></a><span class="summary-sig-name">updateVersion</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.updateVersion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_import_data1_activate"></a><span class="summary-sig-name">on_import_data1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_import_data1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_ExportData_activate"></a><span class="summary-sig-name">on_ExportData_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_ExportData_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_test1_activate"></a><span class="summary-sig-name">on_test1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_test1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_logs_mail1_activate"></a><span class="summary-sig-name">on_logs_mail1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_logs_mail1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_about1_activate"></a><span class="summary-sig-name">on_about1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_about1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_onlinehelp_activate"></a><span class="summary-sig-name">on_onlinehelp_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_onlinehelp_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_okAbout1_clicked"></a><span class="summary-sig-name">on_okAbout1_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_okAbout1_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_ext1_activate"></a><span class="summary-sig-name">on_ext1_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_ext1_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_ext2_activate"></a><span class="summary-sig-name">on_ext2_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_ext2_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_ext3_activate"></a><span class="summary-sig-name">on_ext3_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_ext3_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_ext4_activate"></a><span class="summary-sig-name">on_ext4_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_ext4_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getNewClientSoftware"></a><span class="summary-sig-name">getNewClientSoftware</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">id</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.getNewClientSoftware">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="startT0"></a><span class="summary-sig-name">startT0</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.startT0">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="startTiming"></a><span class="summary-sig-name">startTiming</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.startTiming">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkImapDMS"></a><span class="summary-sig-name">checkImapDMS</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.checkImapDMS">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="startChecking"></a><span class="summary-sig-name">startChecking</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.startChecking">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_rbScheduls_activate"></a><span class="summary-sig-name">on_rbScheduls_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_rbScheduls_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="disconnectTree"></a><span class="summary-sig-name">disconnectTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.disconnectTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="connectTree"></a><span class="summary-sig-name">connectTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.connectTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="tree_select_callback"></a><span class="summary-sig-name">tree_select_callback</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">treeSelection</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.tree_select_callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_treeSchedul_row_activated"></a><span class="summary-sig-name">on_treeSchedul_row_activated</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_treeSchedul_row_activated">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setSchedulTree"></a><span class="summary-sig-name">setSchedulTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.setSchedulTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setDateValues"></a><span class="summary-sig-name">setDateValues</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">id</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.setDateValues">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bGotoAddress_clicked"></a><span class="summary-sig-name">on_bGotoAddress_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bGotoAddress_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bChat_clicked"></a><span class="summary-sig-name">on_bChat_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bChat_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_b3DChat_clicked"></a><span class="summary-sig-name">on_b3DChat_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_b3DChat_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bEmail_clicked"></a><span class="summary-sig-name">on_bEmail_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_bEmail_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_onlineNews_activate"></a><span class="summary-sig-name">on_onlineNews_activate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.on_onlineNews_activate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="closeOnlineNews"></a><span class="summary-sig-name">closeOnlineNews</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.closeOnlineNews">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="startMain"></a><span class="summary-sig-name">startMain</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sStartType</span>,
+        <span class="summary-sig-arg">sDebug</span>,
+        <span class="summary-sig-arg">sLocal</span>=<span class="summary-sig-default">'NO'</span>,
+        <span class="summary-sig-arg">Username</span>=<span class="summary-sig-default">'EMPTY'</span>,
+        <span class="summary-sig-arg">PASSWORD</span>=<span class="summary-sig-default">'Test'</span>,
+        <span class="summary-sig-arg">ClientID</span>=<span class="summary-sig-default">0</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.startMain">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="gtk_main_quit"></a><span class="summary-sig-name">gtk_main_quit</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="Cuon-pysrc.html#MainWindow.gtk_main_quit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Windows.windows.windows-class.html">cuon.Windows.windows.windows</a></code></b>:
+      <code><a href="cuon.Windows.windows.windows-class.html#CleanUp">CleanUp</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#HTMLColorToRGB">HTMLColorToRGB</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#MainwindowEventHandling">MainwindowEventHandling</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#RGBToHTMLColor">RGBToHTMLColor</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#activateClick">activateClick</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#addDateTime">addDateTime</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#addOneDay">addOneDay</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#checkKey">checkKey</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#clearSearch">clearSearch</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#closeMenuEntries">closeMenuEntries</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#closeWindow">closeWindow</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#endEdit">endEdit</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#getDataEntries">getDataEntries</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#getDate">getDate</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#getStyle">getStyle</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#getWhere">getWhere</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#loadEntries">loadEntries</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#loadProfile">loadProfile</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#loadUserFromPreferences">loadUserFromPreferences</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#on_Mainwindow_key_press_event">on_Mainwindow_key_press_event</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#on_key_press_event">on_key_press_event</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#on_notebook1_switch_page">on_notebook1_switch_page</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#on_notebook2_switch_page">on_notebook2_switch_page</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#openWindow">openWindow</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#readSearchDatafields">readSearchDatafields</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#removeOneDay">removeOneDay</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#restoreCursor">restoreCursor</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#saveCursor">saveCursor</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#saveData">saveData</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#saveDataQuestion">saveDataQuestion</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setColor2Text">setColor2Text</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setDataEntries">setDataEntries</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setDate">setDate</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setDateToCalendar">setDateToCalendar</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setDateToEntry">setDateToEntry</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setEditCursor">setEditCursor</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setEntriesEditable">setEntriesEditable</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setMainwindowNotebook">setMainwindowNotebook</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setPageVisible">setPageVisible</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setProgressBar">setProgressBar</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setProperties">setProperties</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setStatusBar">setStatusBar</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setStatusbarText">setStatusbarText</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setTreeVisible">setTreeVisible</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setWinAccelGroup">setWinAccelGroup</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#setWinProperty">setWinProperty</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#startEdit">startEdit</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#startFind">startFind</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#startProgressBar">startProgressBar</a></code>,
+      <code><a href="cuon.Windows.windows.windows-class.html#stopProgressBar">stopProgressBar</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Windows.rawWindow.rawWindow-class.html">cuon.Windows.rawWindow.rawWindow</a></code></b>:
+      <code><a href="cuon.Windows.rawWindow.rawWindow-class.html#getConfigOption">getConfigOption</a></code>,
+      <code><a href="cuon.Windows.rawWindow.rawWindow-class.html#getListOfParserItems">getListOfParserItems</a></code>,
+      <code><a href="cuon.Windows.rawWindow.rawWindow-class.html#getListOfParserSections">getListOfParserSections</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Windows.gladeXml.gladeXml-class.html">cuon.Windows.gladeXml.gladeXml</a></code></b>:
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#add2Textbuffer">add2Textbuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addEnabledMenuItems">addEnabledMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addKeyToItem">addKeyToItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addMenuItem">addMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#checkMimeType">checkMimeType</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#clearTextBuffer">clearTextBuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#disableAllMenuItems">disableAllMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#disableMenuItem">disableMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#enableAllMenuItems">enableAllMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#enableMenuItem">enableMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getActiveText">getActiveText</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getClipboard">getClipboard</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getNotesEditor">getNotesEditor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getWidget">getWidget</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getWidgets">getWidgets</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#gotoTreeItem">gotoTreeItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#initMenuItems">initMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#initMenuItemsMain">initMenuItemsMain</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGlade">loadGlade</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGladeComplete">loadGladeComplete</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGladeFile">loadGladeFile</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#readTextBuffer">readTextBuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#removeEnabledMenuItems">removeEnabledMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setClipboard">setClipboard</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setNormalCursor">setNormalCursor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setText2Widget">setText2Widget</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTextBufferLanguage">setTextBufferLanguage</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTextbuffer">setTextbuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTitle">setTitle</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setWaitCursor">setWaitCursor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setXml">setXml</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setXmlAutoconnect">setXmlAutoconnect</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#writeAllGladeFiles">writeAllGladeFiles</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#writeGlade">writeGlade</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Databases.dumps.dumps-class.html">cuon.Databases.dumps.dumps</a></code></b>:
+      <code><a href="cuon.Databases.dumps.dumps-class.html#checkType">checkType</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#closeDB">closeDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doCompress">doCompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doDecode">doDecode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doEncode">doEncode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doUncompress">doUncompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#formatDate">formatDate</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getActualDateTime">getActualDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getCheckedValue">getCheckedValue</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getDateTime">getDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth">getFirstDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds">getFirstDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds">getFirstLastDayOfLastMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth">getFirstOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth2">getFirstOfMonth2</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfYear">getFirstOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonth">getLastDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonthAsSeconds">getLastDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfMonth">getLastOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfYear">getLastOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getNewUUID">getNewUUID</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getSeconds">getSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTime">getTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTimeString">getTimeString</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#loadObject">loadObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#openDB">openDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#pickleObject">pickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveObject">saveObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveTmpData">saveTmpData</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#showPdf">showPdf</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#startExternalPrg">startExternalPrg</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#unpickleObject">unpickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#writeEmailLog">writeEmailLog</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.XML.MyXML.MyXML-class.html">cuon.XML.MyXML.MyXML</a></code></b>:
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#NotTextNodeError">NotTextNodeError</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getAttributValue">getAttributValue</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getColumnAt">getColumnAt</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getColumnSpecification">getColumnSpecification</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getData">getData</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getEntries">getEntries</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getEntry">getEntry</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getEntryAt">getEntryAt</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getEntrySpecification">getEntrySpecification</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getForeignKey">getForeignKey</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getListOfEntries">getListOfEntries</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getListOfForeignKeys">getListOfForeignKeys</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getListOfSequences">getListOfSequences</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getListOfTables">getListOfTables</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getNode">getNode</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getNodeData">getNodeData</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getNodes">getNodes</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfEntries">getNumberOfEntries</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfFields">getNumberOfFields</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getRootNode">getRootNode</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getSequence">getSequence</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getTable">getTable</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getTableSpecification">getTableSpecification</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#getTextFromNode">getTextFromNode</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#nodeToDic">nodeToDic</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#readDocument">readDocument</a></code>,
+      <code><a href="cuon.XML.MyXML.MyXML-class.html#test">test</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Logging.logs.logs-class.html">cuon.Logging.logs.logs</a></code></b>:
+      <code><a href="cuon.Logging.logs.logs-class.html#out">out</a></code>,
+      <code><a href="cuon.Logging.logs.logs-class.html#printOut">printOut</a></code>,
+      <code><a href="cuon.Logging.logs.logs-class.html#setLogLevel">setLogLevel</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Misc.messages.messages-class.html">cuon.Misc.messages.messages</a></code></b>:
+      <code><a href="cuon.Misc.messages.messages-class.html#QuestionMsg">QuestionMsg</a></code>,
+      <code><a href="cuon.Misc.messages.messages-class.html#errorMsg">errorMsg</a></code>,
+      <code><a href="cuon.Misc.messages.messages-class.html#infoMsg">infoMsg</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sT</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Cuon-pysrc.html#MainWindow.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.TypeDefs.constants.constants-class.html#__init__">cuon.TypeDefs.constants.constants.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="loadUserInfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">loadUserInfo</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Cuon-pysrc.html#MainWindow.loadUserInfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.Windows.rawWindow.rawWindow-class.html#loadUserInfo">cuon.Windows.rawWindow.rawWindow.loadUserInfo</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="checkClient"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">checkClient</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Cuon-pysrc.html#MainWindow.checkClient">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.Windows.windows.windows-class.html#checkClient">cuon.Windows.windows.windows.checkClient</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="delete_event"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">delete_event</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">widget</span>,
+        <span class="sig-arg">event</span>,
+        <span class="sig-arg">data</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="Cuon-pysrc.html#MainWindow.delete_event">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.Windows.windows.windows-class.html#delete_event">cuon.Windows.windows.windows.delete_event</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:02 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

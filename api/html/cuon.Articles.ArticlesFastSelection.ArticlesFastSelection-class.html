@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Articles.ArticlesFastSelection.ArticlesFastSelection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Articles-module.html">Package&nbsp;Articles</a> ::
+        <a href="cuon.Articles.ArticlesFastSelection-module.html" onclick="show_private();">Module&nbsp;ArticlesFastSelection</a> ::
+        Class&nbsp;ArticlesFastSelection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ArticlesFastSelection</h1><p class="nomargin-top"><span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_cuon_art" name="uml_class_diagram_for_cuon_art">
+<area shape="rect" href="cuon.Order.order.orderwindow-class.html" title="cuon.Order.order.orderwindow" alt="" coords="47,1024,199,1051"/>
+<area shape="rect" href="cuon.Proposal.proposal.proposalwindow-class.html" title="cuon.Proposal.proposal.proposalwindow" alt="" coords="16,1080,229,1107"/>
+<area shape="rect" href="cuon.Graves.grave.graveswindow-class.html" title="cuon.Graves.grave.graveswindow" alt="" coords="249,1024,420,1051"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#__init__" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.__init__" alt="" coords="65,769,391,788"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#FastSelectionStart" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.FastSelectionStart" alt="" coords="65,788,391,807"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillMaterialGroup" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillMaterialGroup" alt="" coords="65,807,391,825"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#disconnectArticlesTree" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.disconnectArticlesTree" alt="" coords="65,825,391,844"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectArticlesTree" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectArticlesTree" alt="" coords="65,844,391,863"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#ArticlesTree_select_callback" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.ArticlesTree_select_callback" alt="" coords="65,863,391,881"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#on_treeArticles_row_activated" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.on_treeArticles_row_activated" alt="" coords="65,881,391,900"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#on_bQuickAppend_clicked" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.on_bQuickAppend_clicked" alt="" coords="65,900,391,919"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#fillArticles" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.fillArticles" alt="" coords="65,919,391,937"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#disconnectMaterialGroupTree" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.disconnectMaterialGroupTree" alt="" coords="65,937,391,956"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#connectMaterialGroupTree" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.connectMaterialGroupTree" alt="" coords="65,956,391,975"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#MaterialGroupTree_select_callback" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection.MaterialGroupTree_select_callback" alt="" coords="65,975,391,993"/>
+<area shape="rect" href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html" title="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection" alt="" coords="64,744,392,995"/>
+<area shape="rect" href="cuon.TypeDefs.defaultValues.defaultValues-class.html" title="cuon.TypeDefs.defaultValues.defaultValues" alt="" coords="119,347,337,379"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#add2Textbuffer" title="cuon.Windows.gladeXml.gladeXml.add2Textbuffer" alt="" coords="41,433,415,452"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addEnabledMenuItems" title="cuon.Windows.gladeXml.gladeXml.addEnabledMenuItems" alt="" coords="41,452,415,471"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addKeyToItem" title="cuon.Windows.gladeXml.gladeXml.addKeyToItem" alt="" coords="41,471,415,489"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#addMenuItem" title="cuon.Windows.gladeXml.gladeXml.addMenuItem" alt="" coords="41,489,415,508"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#checkMimeType" title="cuon.Windows.gladeXml.gladeXml.checkMimeType" alt="" coords="41,508,415,527"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#clearTextBuffer" title="cuon.Windows.gladeXml.gladeXml.clearTextBuffer" alt="" coords="41,527,415,545"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#disableAllMenuItems" title="cuon.Windows.gladeXml.gladeXml.disableAllMenuItems" alt="" coords="41,545,415,564"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#disableMenuItem" title="cuon.Windows.gladeXml.gladeXml.disableMenuItem" alt="" coords="41,564,415,583"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#enableAllMenuItems" title="cuon.Windows.gladeXml.gladeXml.enableAllMenuItems" alt="" coords="41,583,415,601"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#enableMenuItem" title="cuon.Windows.gladeXml.gladeXml.enableMenuItem" alt="" coords="41,601,415,620"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getActiveText" title="cuon.Windows.gladeXml.gladeXml.getActiveText" alt="" coords="41,620,415,639"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getClipboard" title="cuon.Windows.gladeXml.gladeXml.getClipboard" alt="" coords="41,639,415,657"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#getNotesEditor" title="cuon.Windows.gladeXml.gladeXml.getNotesEditor" alt="" coords="41,657,415,676"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html#writeGlade" title="cuon.Windows.gladeXml.gladeXml.writeGlade" alt="" coords="41,695,415,713"/>
+<area shape="rect" href="cuon.Windows.gladeXml.gladeXml-class.html" title="cuon.Windows.gladeXml.gladeXml" alt="" coords="40,408,416,715"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#checkType" title="cuon.Databases.dumps.dumps.checkType" alt="" coords="56,36,400,55"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#closeDB" title="cuon.Databases.dumps.dumps.closeDB" alt="" coords="56,55,400,73"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doCompress" title="cuon.Databases.dumps.dumps.doCompress" alt="" coords="56,73,400,92"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doDecode" title="cuon.Databases.dumps.dumps.doDecode" alt="" coords="56,92,400,111"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doEncode" title="cuon.Databases.dumps.dumps.doEncode" alt="" coords="56,111,400,129"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#doUncompress" title="cuon.Databases.dumps.dumps.doUncompress" alt="" coords="56,129,400,148"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#formatDate" title="cuon.Databases.dumps.dumps.formatDate" alt="" coords="56,148,400,167"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getActualDateTime" title="cuon.Databases.dumps.dumps.getActualDateTime" alt="" coords="56,167,400,185"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getCheckedValue" title="cuon.Databases.dumps.dumps.getCheckedValue" alt="" coords="56,185,400,204"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getDateTime" title="cuon.Databases.dumps.dumps.getDateTime" alt="" coords="56,204,400,223"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" title="cuon.Databases.dumps.dumps.getFirstDayOfMonth" alt="" coords="56,223,400,241"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstDayOfMonthAsSeconds" alt="" coords="56,241,400,260"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds" title="cuon.Databases.dumps.dumps.getFirstLastDayOfLastMonthAsSeconds" alt="" coords="56,260,400,279"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html#writeEmailLog" title="cuon.Databases.dumps.dumps.writeEmailLog" alt="" coords="56,297,400,316"/>
+<area shape="rect" href="cuon.Databases.dumps.dumps-class.html" title="cuon.Databases.dumps.dumps" alt="" coords="55,11,401,317"/>
+</map>
+  <img src="uml_class_diagram_for_cuon_art.gif" alt='' usemap="#uml_class_diagram_for_cuon_art" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="cuon.Articles.ArticlesFastSelection.ArticlesFastSelection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="FastSelectionStart"></a><span class="summary-sig-name">FastSelectionStart</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.FastSelectionStart">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fillMaterialGroup"></a><span class="summary-sig-name">fillMaterialGroup</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.fillMaterialGroup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="disconnectArticlesTree"></a><span class="summary-sig-name">disconnectArticlesTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.disconnectArticlesTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="connectArticlesTree"></a><span class="summary-sig-name">connectArticlesTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.connectArticlesTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="ArticlesTree_select_callback"></a><span class="summary-sig-name">ArticlesTree_select_callback</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">treeSelection</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.ArticlesTree_select_callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_treeArticles_row_activated"></a><span class="summary-sig-name">on_treeArticles_row_activated</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>,
+        <span class="summary-sig-arg">data1</span>,
+        <span class="summary-sig-arg">data2</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.on_treeArticles_row_activated">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="on_bQuickAppend_clicked"></a><span class="summary-sig-name">on_bQuickAppend_clicked</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">event</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.on_bQuickAppend_clicked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fillArticles"></a><span class="summary-sig-name">fillArticles</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mid</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.fillArticles">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="disconnectMaterialGroupTree"></a><span class="summary-sig-name">disconnectMaterialGroupTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.disconnectMaterialGroupTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="connectMaterialGroupTree"></a><span class="summary-sig-name">connectMaterialGroupTree</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.connectMaterialGroupTree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="MaterialGroupTree_select_callback"></a><span class="summary-sig-name">MaterialGroupTree_select_callback</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">treeSelection</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.MaterialGroupTree_select_callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Windows.gladeXml.gladeXml-class.html">Windows.gladeXml.gladeXml</a></code></b>:
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#add2Textbuffer">add2Textbuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addEnabledMenuItems">addEnabledMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addKeyToItem">addKeyToItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#addMenuItem">addMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#checkMimeType">checkMimeType</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#clearTextBuffer">clearTextBuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#disableAllMenuItems">disableAllMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#disableMenuItem">disableMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#enableAllMenuItems">enableAllMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#enableMenuItem">enableMenuItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getActiveText">getActiveText</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getClipboard">getClipboard</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getNotesEditor">getNotesEditor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getWidget">getWidget</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#getWidgets">getWidgets</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#gotoTreeItem">gotoTreeItem</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#initMenuItems">initMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#initMenuItemsMain">initMenuItemsMain</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGlade">loadGlade</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGladeComplete">loadGladeComplete</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#loadGladeFile">loadGladeFile</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#readTextBuffer">readTextBuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#removeEnabledMenuItems">removeEnabledMenuItems</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setClipboard">setClipboard</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setNormalCursor">setNormalCursor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setText2Widget">setText2Widget</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTextBufferLanguage">setTextBufferLanguage</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTextbuffer">setTextbuffer</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setTitle">setTitle</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setWaitCursor">setWaitCursor</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setWinAccelGroup">setWinAccelGroup</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setWinProperty">setWinProperty</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setXml">setXml</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#setXmlAutoconnect">setXmlAutoconnect</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#writeAllGladeFiles">writeAllGladeFiles</a></code>,
+      <code><a href="cuon.Windows.gladeXml.gladeXml-class.html#writeGlade">writeGlade</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="cuon.Databases.dumps.dumps-class.html">Databases.dumps.dumps</a></code></b>:
+      <code><a href="cuon.Databases.dumps.dumps-class.html#checkType">checkType</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#closeDB">closeDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doCompress">doCompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doDecode">doDecode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doEncode">doEncode</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#doUncompress">doUncompress</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#formatDate">formatDate</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getActualDateTime">getActualDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getCheckedValue">getCheckedValue</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getDateTime">getDateTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth">getFirstDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds">getFirstDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds">getFirstLastDayOfLastMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth">getFirstOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfMonth2">getFirstOfMonth2</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getFirstOfYear">getFirstOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonth">getLastDayOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastDayOfMonthAsSeconds">getLastDayOfMonthAsSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfMonth">getLastOfMonth</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getLastOfYear">getLastOfYear</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getNewUUID">getNewUUID</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getSeconds">getSeconds</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTime">getTime</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#getTimeString">getTimeString</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#loadObject">loadObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#openDB">openDB</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#pickleObject">pickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveObject">saveObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#saveTmpData">saveTmpData</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#showPdf">showPdf</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#startExternalPrg">startExternalPrg</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#unpickleObject">unpickleObject</a></code>,
+      <code><a href="cuon.Databases.dumps.dumps-class.html#writeEmailLog">writeEmailLog</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="cuon.Articles.ArticlesFastSelection-pysrc.html#ArticlesFastSelection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="cuon.Databases.dumps.dumps-class.html#__init__">Databases.dumps.dumps.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:17:05 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

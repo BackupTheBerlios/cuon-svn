@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.SQL</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        Module&nbsp;SQL
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.SQL-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.SQL-module.html">Module cuon.SQL</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">##Copyright (C) [2002]  [J&#252;rgen Hamel, D-32584 L&#246;hne]</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">##This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">##published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">##This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">##warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">##for more details.</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">##You should have received a copy of the GNU General Public License along with this program; if not, write to the</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">##Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA. </tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">twisted</tt><tt class="py-op">.</tt><tt class="py-name">web</tt> <tt class="py-keyword">import</tt> <tt class="py-name">xmlrpc</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt>    </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xmlrpclib</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pg</tt>  </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module cuon.basics=cuon.basics-module.html,Class cuon.basics.basics=cuon.basics.basics-class.html"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-0', 'basics', 'link-0');">basics</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-1', 'basics', 'link-0');">basics</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="SQL"></a><div id="SQL-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="SQL-toggle" onclick="return toggle('SQL');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html">SQL</a><tt class="py-op">(</tt><tt class="py-base-class">xmlrpc</tt><tt class="py-op">.</tt><tt class="py-base-class">XMLRPC</tt><tt class="py-op">,</tt> <tt class="py-base-class">basics</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SQL-expanded"><a name="SQL.__init__"></a><div id="SQL.__init__-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="SQL.__init__-toggle" onclick="return toggle('SQL.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.__init__-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt id="link-2" class="py-name"><a title="cuon.basics
+cuon.basics.basics" class="py-name" href="#" onclick="return doclink('link-2', 'basics', 'link-0');">basics</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method cuon.AI.AI.__init__()=cuon.AI.AI-class.html#__init__,Method cuon.Address.Address.__init__()=cuon.Address.Address-class.html#__init__,Method cuon.Article.Article.__init__()=cuon.Article.Article-class.html#__init__,Method cuon.Database.Database.__init__()=cuon.Database.Database-class.html#__init__,Method cuon.Email.cuonemail.__init__()=cuon.Email.cuonemail-class.html#__init__,Method cuon.Email2.Attachments.__init__()=cuon.Email2.Attachments-class.html#__init__,Method cuon.Email2.BCCRecipients.__init__()=cuon.Email2.BCCRecipients-class.html#__init__,Method cuon.Email2.CCRecipients.__init__()=cuon.Email2.CCRecipients-class.html#__init__,Method cuon.Email2.Email.__init__()=cuon.Email2.Email-class.html#__init__,Method cuon.Email2.Recipients.__init__()=cuon.Email2.Recipients-class.html#__init__,Method cuon.Finances.Finances.__init__()=cuon.Finances.Finances-class.html#__init__,Method cuon.Garden.Garden.__init__()=cuon.Garden.Garden-class.html#__init__,Method cuon.Grave.Grave.__init__()=cuon.Grave.Grave-class.html#__init__,Method cuon.Misc.Misc.__init__()=cuon.Misc.Misc-class.html#__init__,Method cuon.Order.Order.__init__()=cuon.Order.Order-class.html#__init__,Method cuon.Projects.Projects.__init__()=cuon.Projects.Projects-class.html#__init__,Method cuon.Report.Report.__init__()=cuon.Report.Report-class.html#__init__,Method cuon.ReportServer.ReportServer.__init__()=cuon.ReportServer.ReportServer-class.html#__init__,Method cuon.Reports.MyXML.MyXML.__init__()=cuon.Reports.MyXML.MyXML-class.html#__init__,Method cuon.Reports.report.report.__init__()=cuon.Reports.report.report-class.html#__init__,Method cuon.Reports.report2_latex.report2.__init__()=cuon.Reports.report2_latex.report2-class.html#__init__,Method cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__()=cuon.Reports.report_addresses_phone1.report_addresses_phone1-class.html#__init__,Method cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__()=cuon.Reports.report_addresses_phone11.report_addresses_phone11-class.html#__init__,Method cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__()=cuon.Reports.report_addresses_phone12.report_addresses_phone12-class.html#__init__,Method cuon.Reports.report_articles_number1.report_articles_number1.__init__()=cuon.Reports.report_articles_number1.report_articles_number1-class.html#__init__,Method cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__()=cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard-class.html#__init__,Method cuon.Reports.report_basics.report_basics.__init__()=cuon.Reports.report_basics.report_basics-class.html#__init__,Method cuon.Reports.report_cab_monthly.report_cab_monthly.__init__()=cuon.Reports.report_cab_monthly.report_cab_monthly-class.html#__init__,Method cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__()=cuon.Reports.report_grave_plant_lists.report_grave_plant_lists-class.html#__init__,Method cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__()=cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document-class.html#__init__,Method cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__()=cuon.Reports.report_hibernation_invoice.report_hibernation_invoice-class.html#__init__,Method cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__()=cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document-class.html#__init__,Method cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__()=cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document-class.html#__init__,Method cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__()=cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices-class.html#__init__,Method cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__()=cuon.Reports.report_list_of_inpayment.report_list_of_inpayment-class.html#__init__,Method cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__()=cuon.Reports.report_list_of_reminder.report_list_of_reminder-class.html#__init__,Method cuon.Reports.report_list_of_residue.report_list_of_residue.__init__()=cuon.Reports.report_list_of_residue.report_list_of_residue-class.html#__init__,Method cuon.Reports.report_list_of_top.report_list_of_top.__init__()=cuon.Reports.report_list_of_top.report_list_of_top-class.html#__init__,Method cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__()=cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices-class.html#__init__,Method cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__()=cuon.Reports.report_order_standard_invoice.report_order_standard_invoice-class.html#__init__,Method cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__()=cuon.Reports.report_order_standard_supply.report_order_standard_supply-class.html#__init__,Method cuon.Reports.report_printAddress.report_printAddress.__init__()=cuon.Reports.report_printAddress.report_printAddress-class.html#__init__,Method cuon.Reports.report_proposal_standard.report_proposal_standard.__init__()=cuon.Reports.report_proposal_standard.report_proposal_standard-class.html#__init__,Method cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__()=cuon.Reports.report_stockgoods_number1.report_stockgoods_number1-class.html#__init__,Method cuon.Reports.standardlist.standardlist.__init__()=cuon.Reports.standardlist.standardlist-class.html#__init__,Method cuon.SQL.SQL.__init__()=cuon.SQL.SQL-class.html#__init__,Method cuon.SVG.Circle.__init__()=cuon.SVG.Circle-class.html#__init__,Method cuon.SVG.Line.__init__()=cuon.SVG.Line-class.html#__init__,Method cuon.SVG.Rectangle.__init__()=cuon.SVG.Rectangle-class.html#__init__,Method cuon.SVG.SVG.__init__()=cuon.SVG.SVG-class.html#__init__,Method cuon.SVG.Text.__init__()=cuon.SVG.Text-class.html#__init__,Method cuon.SVG.newSVG.__init__()=cuon.SVG.newSVG-class.html#__init__,Method cuon.Stock.Stock.__init__()=cuon.Stock.Stock-class.html#__init__,Method cuon.Support.Support.__init__()=cuon.Support.Support-class.html#__init__,Method cuon.Tweet.Tweet.__init__()=cuon.Tweet.Tweet-class.html#__init__,Method cuon.User.User.__init__()=cuon.User.User-class.html#__init__,Method cuon.Web.Web.__init__()=cuon.Web.Web-class.html#__init__,Method cuon.Web2.Web2.__init__()=cuon.Web2.Web2-class.html#__init__,Method cuon.WebAI.WebAI.__init__()=cuon.WebAI.WebAI-class.html#__init__,Method cuon.WebShop.WebShop.__init__()=cuon.WebShop.WebShop-class.html#__init__,Method cuon.ai.ai.__init__()=cuon.ai.ai-class.html#__init__,Method cuon.ai_main.ai_main.__init__()=cuon.ai_main.ai_main-class.html#__init__,Method cuon.basics.basics.__init__()=cuon.basics.basics-class.html#__init__,Method cuon.gridxml.gridxml.__init__()=cuon.gridxml.gridxml-class.html#__init__,Method cuon.iCal.iCal.__init__()=cuon.iCal.iCal-class.html#__init__,Method cuon.jabberBot.jabberBot.__init__()=cuon.jabberBot.jabberBot-class.html#__init__,Method cuon.simplemail.Attachments.__init__()=cuon.simplemail.Attachments-class.html#__init__,Method cuon.simplemail.Email.__init__()=cuon.simplemail.Email-class.html#__init__,Method cuon.simplemail.Recipients.__init__()=cuon.simplemail.Recipients-class.html#__init__,Method cuon.web_root.Image.__init__()=cuon.web_root.Image-class.html#__init__,Method cuon.web_root.WebRoots.__init__()=cuon.web_root.WebRoots-class.html#__init__"><a title="cuon.AI.AI.__init__
+cuon.Address.Address.__init__
+cuon.Article.Article.__init__
+cuon.Database.Database.__init__
+cuon.Email.cuonemail.__init__
+cuon.Email2.Attachments.__init__
+cuon.Email2.BCCRecipients.__init__
+cuon.Email2.CCRecipients.__init__
+cuon.Email2.Email.__init__
+cuon.Email2.Recipients.__init__
+cuon.Finances.Finances.__init__
+cuon.Garden.Garden.__init__
+cuon.Grave.Grave.__init__
+cuon.Misc.Misc.__init__
+cuon.Order.Order.__init__
+cuon.Projects.Projects.__init__
+cuon.Report.Report.__init__
+cuon.ReportServer.ReportServer.__init__
+cuon.Reports.MyXML.MyXML.__init__
+cuon.Reports.report.report.__init__
+cuon.Reports.report2_latex.report2.__init__
+cuon.Reports.report_addresses_phone1.report_addresses_phone1.__init__
+cuon.Reports.report_addresses_phone11.report_addresses_phone11.__init__
+cuon.Reports.report_addresses_phone12.report_addresses_phone12.__init__
+cuon.Reports.report_articles_number1.report_articles_number1.__init__
+cuon.Reports.report_articles_pickles_standard.report_articles_pickles_standard.__init__
+cuon.Reports.report_basics.report_basics.__init__
+cuon.Reports.report_cab_monthly.report_cab_monthly.__init__
+cuon.Reports.report_grave_plant_lists.report_grave_plant_lists.__init__
+cuon.Reports.report_hibernation_incoming_document.report_hibernation_incoming_document.__init__
+cuon.Reports.report_hibernation_invoice.report_hibernation_invoice.__init__
+cuon.Reports.report_hibernation_outgoing_document.report_hibernation_outgoing_document.__init__
+cuon.Reports.report_hibernation_pickup_document.report_hibernation_pickup_document.__init__
+cuon.Reports.report_list_list_of_invoices.report_list_list_of_invoices.__init__
+cuon.Reports.report_list_of_inpayment.report_list_of_inpayment.__init__
+cuon.Reports.report_list_of_reminder.report_list_of_reminder.__init__
+cuon.Reports.report_list_of_residue.report_list_of_residue.__init__
+cuon.Reports.report_list_of_top.report_list_of_top.__init__
+cuon.Reports.report_order_list_of_invoices.report_order_list_of_invoices.__init__
+cuon.Reports.report_order_standard_invoice.report_order_standard_invoice.__init__
+cuon.Reports.report_order_standard_supply.report_order_standard_supply.__init__
+cuon.Reports.report_printAddress.report_printAddress.__init__
+cuon.Reports.report_proposal_standard.report_proposal_standard.__init__
+cuon.Reports.report_stockgoods_number1.report_stockgoods_number1.__init__
+cuon.Reports.standardlist.standardlist.__init__
+cuon.SQL.SQL.__init__
+cuon.SVG.Circle.__init__
+cuon.SVG.Line.__init__
+cuon.SVG.Rectangle.__init__
+cuon.SVG.SVG.__init__
+cuon.SVG.Text.__init__
+cuon.SVG.newSVG.__init__
+cuon.Stock.Stock.__init__
+cuon.Support.Support.__init__
+cuon.Tweet.Tweet.__init__
+cuon.User.User.__init__
+cuon.Web.Web.__init__
+cuon.Web2.Web2.__init__
+cuon.WebAI.WebAI.__init__
+cuon.WebShop.WebShop.__init__
+cuon.ai.ai.__init__
+cuon.ai_main.ai_main.__init__
+cuon.basics.basics.__init__
+cuon.gridxml.gridxml.__init__
+cuon.iCal.iCal.__init__
+cuon.jabberBot.jabberBot.__init__
+cuon.simplemail.Attachments.__init__
+cuon.simplemail.Email.__init__
+cuon.simplemail.Recipients.__init__
+cuon.web_root.Image.__init__
+cuon.web_root.WebRoots.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">  </tt>
+<a name="SQL.xmlrpc_executeNormalQuery"></a><div id="SQL.xmlrpc_executeNormalQuery-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_executeNormalQuery-toggle" onclick="return toggle('SQL.xmlrpc_executeNormalQuery');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_executeNormalQuery">xmlrpc_executeNormalQuery</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">cSql</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'Name'</tt><tt class="py-op">:</tt><tt class="py-string">'zope'</tt><tt class="py-op">,</tt> <tt class="py-string">'SessionID'</tt><tt class="py-op">:</tt><tt class="py-string">'0'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_executeNormalQuery-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_executeNormalQuery-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Start ExecuteQuery"</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-name">t1</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">mktime</tt><tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">localtime</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method cuon.basics.basics.writeLog()=cuon.basics.basics-class.html#writeLog"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-4', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'-------&gt;SQL starts at : '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">t1</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">conn</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-comment">#print dicUser</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-comment">#print cSql</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">         </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-5', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'execute SQL = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">cSql</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">dicUser</tt><tt class="py-op">.</tt><tt class="py-name">has_key</tt><tt class="py-op">(</tt><tt class="py-string">'Database'</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Database'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'osCommerce'</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-keyword">pass</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt> <tt class="py-keyword">or</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'zope'</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                    <tt class="py-name">sUser</tt> <tt class="py-op">=</tt> <tt class="py-string">'zope'</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                    <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'noWhereClient'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'YES'</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">             </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">dicUser</tt><tt class="py-op">.</tt><tt class="py-name">has_key</tt><tt class="py-op">(</tt><tt class="py-string">'userType'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                    <tt class="py-name">sUser</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method cuon.Database.Database.checkUser()=cuon.Database.Database-class.html#checkUser"><a title="cuon.Database.Database.checkUser" class="py-name" href="#" onclick="return doclink('link-6', 'checkUser', 'link-6');">checkUser</a></tt><tt class="py-op">(</tt><tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'SessionID'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'userType'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">                    <tt class="py-name">sUser</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="cuon.Database.Database.checkUser" class="py-name" href="#" onclick="return doclink('link-7', 'checkUser', 'link-6');">checkUser</a></tt><tt class="py-op">(</tt><tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'SessionID'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">               </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                <tt class="py-comment"># put here sUser</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                <tt class="py-comment">#print 'sUser=', sUser</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">sUser</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                    <tt class="py-name">sUser</tt> <tt class="py-op">=</tt> <tt class="py-string">'zope'</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                    <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'noWhereClient'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'YES'</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">             </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('User = ' + sUser)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-comment">#DSN = 'dbname=cuon host=localhost user=' + sUser</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-name">conn</tt> <tt class="py-op">=</tt> <tt class="py-name">pg</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">dbname</tt> <tt class="py-op">=</tt> <tt class="py-string">'cuon'</tt><tt class="py-op">,</tt><tt class="py-name">host</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">POSTGRES_HOST</tt><tt class="py-op">,</tt> <tt class="py-name">port</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">POSTGRES_PORT</tt><tt class="py-op">,</tt> <tt class="py-name">user</tt> <tt class="py-op">=</tt> <tt class="py-name">sUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                <tt class="py-comment">#conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, user = sUser)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                <tt class="py-comment">#curs.execute(cSql.decode('utf-8'))</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-comment">#conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"conn = "</tt><tt class="py-op">,</tt>  <tt class="py-name">conn</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                                            </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                    <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-name">conn</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">(</tt><tt class="py-name">cSql</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                    <tt class="py-comment">#self.writeLog('return from database = ' + `rows`)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                    <tt class="py-name">rows</tt> <tt class="py-op">=</tt> <tt class="py-string">'ERROR'</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                    <tt class="py-comment">#rows = 'NONE'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                     </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-comment">#print 'rows = ', rows</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-comment">#print 'Sql-Execute = ', ok</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                <tt class="py-comment">#conn.commit()</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">            <tt class="py-comment">##        try:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-comment">##            rows = curs.dictfetchall()</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-comment">##        except:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-comment">##            pass</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('Rows = ' + `rows`)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                <tt class="py-comment">#conn.close()</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">             </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">rows</tt> <tt class="py-keyword">and</tt> <tt class="py-name">rows</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                    <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-name">rows</tt><tt class="py-op">.</tt><tt class="py-name">dictresult</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-8', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'try dic-Result'</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-9', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-op">`</tt><tt class="py-name">Exception</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-10', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-op">`</tt><tt class="py-name">params</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-11', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'----------------------------- dicResult should be None --------------'</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                     </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                    <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt> <tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-string">'NONE'</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">             </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">             </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                <tt class="py-keyword">assert</tt> <tt class="py-name">dicResult</tt>  </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">dicResult</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                    <tt class="py-keyword">pass</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">                    <tt class="py-comment">#print 'dicResult', dicResult</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                    <tt class="py-name">sDecode</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                    <tt class="py-name">sEncode</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">dicUser</tt><tt class="py-op">.</tt><tt class="py-name">has_key</tt><tt class="py-op">(</tt><tt class="py-string">'Database'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Database'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'osCommerce'</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                             </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                            <tt class="py-name">sEncode</tt> <tt class="py-op">=</tt> <tt class="py-string">'latin-1'</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                        <tt class="py-keyword">elif</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Database'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'cuon'</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                            <tt class="py-name">sEncode</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                            <tt class="py-name">sDecode</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">                             </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                        <tt class="py-name">sDecode</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">             </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                    </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">                 </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">dicResult</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                        <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                     </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                                <tt class="py-keyword">if</tt> <tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                                    <tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'NONE'</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                                <tt class="py-keyword">if</tt> <tt class="py-name">sDecode</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                                    <tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-name">sDecode</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                                <tt class="py-keyword">if</tt> <tt class="py-name">sEncode</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                                    <tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">dicResult</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-name">sEncode</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                     </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                                <tt class="py-keyword">pass</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">param</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-12', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'Except-Error'</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-13', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-op">`</tt><tt class="py-name">Exception</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt><tt class="py-string">', \n'</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">param</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt> <tt class="py-string">'ERROR'</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-comment">#dicResult = 'NONE'</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                 </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">dicResult</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-name">dicResult</tt> <tt class="py-op">=</tt><tt class="py-string">'NONE'</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('sql return 2 = ' + `dicResult`)</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">param</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-14', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-name">Exception</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-15', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-name">param</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog( '----------&gt; SQL ')</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog(cSql)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-name">conn</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-16', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-string">'&lt;-------SQL need : '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">mktime</tt><tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">localtime</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">-</tt><tt class="py-name">t1</tt><tt class="py-op">`</tt> <tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">:</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-17', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt> <tt class="py-string">'executeQuery 3 ERROR = '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">Exception</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">params</tt><tt class="py-op">`</tt><tt class="py-op">)</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('sql return = ' + `dicResult`)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">             </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">dicResult</tt> </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">      </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">         </tt>
+<a name="SQL.xmlrpc_getListEntries"></a><div id="SQL.xmlrpc_getListEntries-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_getListEntries-toggle" onclick="return toggle('SQL.xmlrpc_getListEntries');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_getListEntries">xmlrpc_getListEntries</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dicEntries</tt><tt class="py-op">,</tt> <tt class="py-param">sTable</tt><tt class="py-op">,</tt> <tt class="py-param">sSort</tt><tt class="py-op">,</tt> <tt class="py-param">sWhere</tt><tt class="py-op">=</tt><tt class="py-string">""</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> <tt class="py-param">bDistinct</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt>  <tt class="py-param">liFields</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_getListEntries-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_getListEntries-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-comment">#print 'start xmlrpc_getListEntries'</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">         </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">         </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">sWhere</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">            <tt class="py-name">sWhere</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-comment">#print 'table = ', sTable</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">         </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">         </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-comment">#        for cModul in self.liModules:</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-comment">#            if not ok:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-comment">#                for li in self.dicLimitTables[cModul]['list']:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-comment">#                    if li == sTable:</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-comment">#                        </tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-comment">#                        self.LIMITSQL = self.dicLimitTables[cModul]['limit']</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">         </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">LIMITSQL</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dicLimitTables</tt><tt class="py-op">[</tt><tt class="py-name">sTable</tt><tt class="py-op">]</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">LIMITSQL</tt> <tt class="py-op">=</tt> <tt class="py-number">100000</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">             </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">         </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-comment">#dicEntries['status'] = 'string'</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">bDistinct</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select distinct '</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select '</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-name">liTable</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt>     </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">            <tt class="py-comment">#print 'replace id with table.id'</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">dicEntries</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">            <tt class="py-name">dicEntries</tt><tt class="py-op">[</tt><tt class="py-name">sTable</tt> <tt class="py-op">+</tt> <tt class="py-string">'.id'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'int'</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">params</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-comment">#print Exception, params</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liFields</tt><tt class="py-op">:</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">i</tt> <tt class="py-op">==</tt> <tt class="py-string">'id'</tt><tt class="py-op">:</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">                <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-name">sTable</tt> <tt class="py-op">+</tt> <tt class="py-string">'.id'</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">                 </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">dicEntries</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'date'</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-string">",  \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">dicEntries</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'time'</tt><tt class="py-op">:</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-string">",  \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLTimeFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">dicEntries</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'datetime'</tt><tt class="py-op">:</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt><tt class="py-string">", \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateTimeFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">             </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">              <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-string">'.'</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">                <tt class="py-name">liTable</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-string">'.'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">             </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                 </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">        <tt class="py-comment">#print liTable</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-string">','</tt><tt class="py-op">)</tt> <tt class="py-op">]</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('sWhere =' + `sWhere`)</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">         </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-name">sWhere</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method cuon.basics.basics.getWhere()=cuon.basics.basics-class.html#getWhere"><a title="cuon.basics.basics.getWhere" class="py-name" href="#" onclick="return doclink('link-18', 'getWhere', 'link-18');">getWhere</a></tt><tt class="py-op">(</tt><tt class="py-name">sWhere</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">,</tt> <tt class="py-name">Prefix</tt><tt class="py-op">=</tt><tt class="py-name">sTable</tt> <tt class="py-op">+</tt> <tt class="py-string">'.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">         </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">         </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">            </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt> <tt class="py-string">' from '</tt> <tt class="py-op">+</tt> <tt class="py-name">sTable</tt>  </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-comment">#zComa = 0</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-name">liTableNames</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">sTable</tt><tt class="py-op">]</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liTable</tt><tt class="py-op">:</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">            <tt class="py-name">appendTablename</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">liTableNames</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">i</tt> <tt class="py-op">==</tt> <tt class="py-name">name</tt><tt class="py-op">:</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">                   <tt class="py-name">appendTablename</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt>  </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">appendTablename</tt><tt class="py-op">:</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt> <tt class="py-string">','</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">                <tt class="py-name">liTableNames</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">            <tt class="py-comment">#zComa += 1</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-comment">#if zComa &gt; 0:</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-comment">#    sSql = sSql[0: string.rfind(sSql,',') ]</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">                 </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">+=</tt>  <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">sWhere</tt> <tt class="py-op">+</tt> <tt class="py-string">' order by '</tt> <tt class="py-op">+</tt> <tt class="py-name">sSort</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">         </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">         </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(`sSql`)</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">' LIMIT '</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">LIMITSQL</tt><tt class="py-op">`</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-comment">#print 'self.LIMITSQL', self.LIMITSQL</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'specialsql1'</tt><tt class="py-op">,</tt><tt class="py-string">'where'</tt><tt class="py-op">)</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">        <tt class="py-comment">#print sSql</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">         </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method cuon.SQL.SQL.xmlrpc_executeNormalQuery()=cuon.SQL.SQL-class.html#xmlrpc_executeNormalQuery"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-19', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">        <tt class="py-comment">#result2 = []</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">        <tt class="py-comment">#for li in result:</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-comment">#    if string.strip(unicode(li['status'])) != unicode('delete'):</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-comment">#        result2.append(li)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-comment">#        self.writeLog(string.strip(`li['status']`))</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">          </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">             </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">                 </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">         </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(repr(result))</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">result</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">         </tt>
+<a name="SQL.xmlrpc_loadRecord"></a><div id="SQL.xmlrpc_loadRecord-def"><a name="L262"></a><tt class="py-lineno">262</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_loadRecord-toggle" onclick="return toggle('SQL.xmlrpc_loadRecord');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_loadRecord">xmlrpc_loadRecord</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nameOfTable</tt><tt class="py-op">,</tt> <tt class="py-param">record</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt> <tt class="py-op">,</tt> <tt class="py-param">dicColumns</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_loadRecord-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_loadRecord-expanded"><a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">string</tt>  </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select '</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">         </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicColumns</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">           <tt class="py-keyword">if</tt> <tt class="py-name">dicColumns</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'date'</tt><tt class="py-op">:</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">              <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt><tt class="py-string">", \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt><tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">           <tt class="py-keyword">elif</tt> <tt class="py-name">dicColumns</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'time'</tt><tt class="py-op">:</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">              <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt><tt class="py-string">", \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLTimeFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">           <tt class="py-keyword">elif</tt> <tt class="py-name">dicColumns</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'timestamp'</tt><tt class="py-op">:</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">              <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">"to_char("</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt><tt class="py-string">", \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">DIC_USER</tt><tt class="py-op">[</tt><tt class="py-string">'SQLDateTimeFormat'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\') as "</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt>  <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">          </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">           <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">              <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-string">', '</tt>  </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">         </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-string">','</tt><tt class="py-op">)</tt> <tt class="py-op">]</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">" from "</tt> <tt class="py-op">+</tt> <tt class="py-name">nameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">" where id = "</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">record</tt><tt class="py-op">`</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">         </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-20', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line">         </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">        </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">            </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">            </tt>
+<a name="SQL.xmlrpc_saveRecord"></a><div id="SQL.xmlrpc_saveRecord-def"><a name="L286"></a><tt class="py-lineno">286</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_saveRecord-toggle" onclick="return toggle('SQL.xmlrpc_saveRecord');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_saveRecord">xmlrpc_saveRecord</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sNameOfTable</tt><tt class="py-op">=</tt><tt class="py-string">'EMPTY'</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-param">dicValues</tt> <tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> <tt class="py-param">liBigEntries</tt><tt class="py-op">=</tt><tt class="py-string">'NO'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>        </tt>
+</div><a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">types</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">        <tt class="py-name">dicValues</tt><tt class="py-op">[</tt><tt class="py-string">'client'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'client'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-string">'int'</tt><tt class="py-op">]</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-comment">##        if liBigEntries != 'NO':</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-comment">##            for lb in liBigEntries:</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"><tt class="py-comment">##                sKey = dicUser['Name'] + '_' + lb</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-comment">##                self.writeLog('sKey in Entries' + `sKey`)</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-comment">##                dicValues[lb][0] = self.getValue(sKey)</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-comment">##        </tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('begin RECORD2 id = ' + `id`)</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">id</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">            <tt class="py-comment"># update</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('start Update')</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'update '</tt> <tt class="py-op">+</tt> <tt class="py-name">sNameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">' set  '</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">             </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicValues</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">                <tt class="py-name">liValue</tt> <tt class="py-op">=</tt> <tt class="py-name">dicValues</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'string'</tt> <tt class="py-keyword">or</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'varchar'</tt><tt class="py-op">:</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">                    <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line">         </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'int'</tt><tt class="py-op">:</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">                    <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" =  "</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt> <tt class="py-string">", "</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">         </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'float'</tt><tt class="py-op">:</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">                    <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = "</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt> <tt class="py-string">", "</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">         </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'date'</tt><tt class="py-op">:</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">6</tt><tt class="py-op">:</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">                        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = NULL, "</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">                        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'time'</tt><tt class="py-op">:</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">5</tt><tt class="py-op">:</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line">                        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = NULL, "</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">                        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">                         </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt>  <tt class="py-string">'bool'</tt><tt class="py-op">:</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="cuon.basics.basics.writeLog" class="py-name" href="#" onclick="return doclink('link-21', 'writeLog', 'link-4');">writeLog</a></tt><tt class="py-op">(</tt><tt class="py-string">'REC2-bool '</tt><tt class="py-op">)</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">                        <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'True'</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">                        <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'False'</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">                    <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">" = "</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">", "</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">                    <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt>  <tt class="py-op">+</tt> <tt class="py-string">" = \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line">             </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">rfind</tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-string">','</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">         </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">' where id = '</tt> <tt class="py-op">+</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method cuon.basics.basics.convertTo()=cuon.basics.basics-class.html#convertTo"><a title="cuon.basics.basics.convertTo" class="py-name" href="#" onclick="return doclink('link-22', 'convertTo', 'link-22');">convertTo</a></tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">,</tt> <tt class="py-string">'String'</tt><tt class="py-op">)</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('Update SQL = ' + sSql)</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line">             </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('new RECORD2')</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'insert into  '</tt> <tt class="py-op">+</tt> <tt class="py-name">sNameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">' (  '</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-string">'values ('</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('REC2-1 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">dicValues</tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-name">i</tt> <tt class="py-op">+</tt> <tt class="py-string">', '</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('REC2-1.1 ' + `sSql`)</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">                <tt class="py-name">liValue</tt> <tt class="py-op">=</tt> <tt class="py-name">dicValues</tt><tt class="py-op">[</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('REC2-1.2 ' + `liValue`)</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line">                <tt class="py-comment">#print "recValue = " ,  liValue</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt> <tt class="py-op">:</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">                    <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt> <tt class="py-op">+</tt> <tt class="py-string">"\'\', "</tt>  </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt>  <tt class="py-string">'string'</tt> <tt class="py-keyword">or</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'varchar'</tt><tt class="py-op">:</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt> <tt class="py-op">+</tt> <tt class="py-string">"\'\', "</tt>  </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt> <tt class="py-string">"\'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-2 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">                    <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'int'</tt><tt class="py-op">:</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line">                        <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt> <tt class="py-string">", "</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-3 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line">                    <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'float'</tt><tt class="py-op">:</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line">                        <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">`</tt> <tt class="py-op">+</tt> <tt class="py-string">", "</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-4 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line">                    <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'date'</tt><tt class="py-op">:</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">6</tt><tt class="py-op">:</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt>  <tt class="py-string">" NULL, "</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt> <tt class="py-string">" \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">                            <tt class="py-comment">#self.writeLog('REC2-5 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">                    <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'time'</tt><tt class="py-op">:</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">5</tt><tt class="py-op">:</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt>  <tt class="py-string">" NULL, "</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">                        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">                            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt> <tt class="py-string">" \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">                            <tt class="py-comment">#self.writeLog('REC2-5 ' + `sSql` + `sSql2`)       </tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line">                    <tt class="py-keyword">elif</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt>  <tt class="py-string">'bool'</tt><tt class="py-op">:</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-bool ')</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">                           <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'True'</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">                           <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'False'</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">         </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">                        <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt><tt class="py-string">"\'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-6 ' + `sSql` + `sSql2`)</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">                        <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt>  <tt class="py-op">+</tt>  <tt class="py-string">" \'"</tt> <tt class="py-op">+</tt> <tt class="py-name">liValue</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">"\', "</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line">                        <tt class="py-comment">#self.writeLog('REC2-6 ' + `sSql` + `sSql2`) </tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line">              </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line">                         </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('REC2-10 ' + `sSql` + '__' + `sSql2`) </tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">'id, user_id, status'</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">            <tt class="py-name">sSql2</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql2</tt> <tt class="py-op">+</tt> <tt class="py-string">'nextval(\''</tt> <tt class="py-op">+</tt> <tt class="py-name">sNameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">'_id\'), current_user, \'create\''</tt>   </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line">             </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">            <tt class="py-comment"># set brackets and add</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line">            <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-name">sSql</tt> <tt class="py-op">+</tt> <tt class="py-string">') '</tt> <tt class="py-op">+</tt> <tt class="py-name">sSql2</tt> <tt class="py-op">+</tt> <tt class="py-string">')'</tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">         </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line">        <tt class="py-comment"># execute insert</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('First SQL by RECORD2 = ' + `sSql`)</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">        <tt class="py-comment">#print sSql</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-23', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(result)</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">         </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">             </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">         </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">         </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">        <tt class="py-comment"># find last id </tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">id</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line">        <tt class="py-comment"># insert</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line">                <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">'select last_value from '</tt> <tt class="py-op">+</tt> <tt class="py-name">sNameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">'_id'</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line">                <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-24', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt><tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line">                <tt class="py-name">id</tt> <tt class="py-op">=</tt> <tt class="py-name">result</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'last_value'</tt><tt class="py-op">]</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line">                <tt class="py-name">id</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">         </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">        <tt class="py-comment"># sSql = sSql[0:string.rfind(sSql,',')]</tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line">              </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"id by save record = "</tt><tt class="py-op">,</tt>  <tt class="py-name">id</tt>  </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt>  <tt class="py-name">id</tt>  </tt>
+</div><a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line">         </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line">         </tt>
+<a name="SQL.xmlrpc_createBigRow"></a><div id="SQL.xmlrpc_createBigRow-def"><a name="L424"></a><tt class="py-lineno">424</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_createBigRow-toggle" onclick="return toggle('SQL.xmlrpc_createBigRow');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_createBigRow">xmlrpc_createBigRow</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">sFile</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">,</tt> <tt class="py-param">j</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_createBigRow-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_createBigRow-expanded"><a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line">        <tt class="py-name">debug</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line">        <tt class="py-name">ok</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('createBigRow reached', debug)</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog('first j = ' + `j`,debug)</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">         </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line">        <tt class="py-name">sKey</tt> <tt class="py-op">=</tt> <tt class="py-name">dicUser</tt><tt class="py-op">[</tt><tt class="py-string">'Name'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt><tt class="py-string">'_'</tt> <tt class="py-op">+</tt><tt class="py-name">sFile</tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">         </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">        <tt class="py-comment">#self.writeLog(sKey, debug)</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">j</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('j = ' + `j`, debug)</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method cuon.Database.Database.saveValue()=cuon.Database.Database-class.html#saveValue"><a title="cuon.Database.Database.saveValue" class="py-name" href="#" onclick="return doclink('link-25', 'saveValue', 'link-25');">saveValue</a></tt><tt class="py-op">(</tt><tt class="py-name">sKey</tt><tt class="py-op">,</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">            <tt class="py-comment">#self.writeLog('j = ' + `j`, debug)</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">            <tt class="py-name">sData</tt> <tt class="py-op">=</tt>  <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method cuon.Database.Database.getValue()=cuon.Database.Database-class.html#getValue"><a title="cuon.Database.Database.getValue" class="py-name" href="#" onclick="return doclink('link-26', 'getValue', 'link-26');">getValue</a></tt><tt class="py-op">(</tt><tt class="py-name">sKey</tt><tt class="py-op">)</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">sData</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'NONE'</tt><tt class="py-op">,</tt><tt class="py-string">'ERROR'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">                <tt class="py-comment">#self.writeLog('len sData = ' + `len(sData)`, debug)</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">                <tt class="py-name">sData</tt> <tt class="py-op">=</tt> <tt class="py-name">sData</tt> <tt class="py-op">+</tt> <tt class="py-name">data</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line">                <tt class="py-name">sData</tt> <tt class="py-op">=</tt> <tt class="py-name">data</tt> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">                 </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line">             </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="cuon.Database.Database.saveValue" class="py-name" href="#" onclick="return doclink('link-27', 'saveValue', 'link-25');">saveValue</a></tt><tt class="py-op">(</tt><tt class="py-name">sKey</tt><tt class="py-op">,</tt><tt class="py-name">sData</tt><tt class="py-op">)</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line">         </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ok</tt> </tt>
+</div><a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">         </tt>
+<a name="SQL.xmlrpc_deleteRecord"></a><div id="SQL.xmlrpc_deleteRecord-def"><a name="L450"></a><tt class="py-lineno">450</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_deleteRecord-toggle" onclick="return toggle('SQL.xmlrpc_deleteRecord');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_deleteRecord">xmlrpc_deleteRecord</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">nameOfTable</tt> <tt class="py-op">=</tt> <tt class="py-string">'EMPTY'</tt><tt class="py-op">,</tt> <tt class="py-param">record</tt> <tt class="py-op">=</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_deleteRecord-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_deleteRecord-expanded"><a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">"delete from "</tt> <tt class="py-op">+</tt> <tt class="py-name">nameOfTable</tt> <tt class="py-op">+</tt> <tt class="py-string">" where id = "</tt> <tt class="py-op">+</tt> <tt class="py-op">`</tt><tt class="py-name">record</tt><tt class="py-op">`</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-28', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQL.xmlrpc_loadCompeteTable"></a><div id="SQL.xmlrpc_loadCompeteTable-def"><a name="L453"></a><tt class="py-lineno">453</tt> <a class="py-toggle" href="#" id="SQL.xmlrpc_loadCompeteTable-toggle" onclick="return toggle('SQL.xmlrpc_loadCompeteTable');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.SQL.SQL-class.html#xmlrpc_loadCompeteTable">xmlrpc_loadCompeteTable</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nameOfTable</tt><tt class="py-op">,</tt> <tt class="py-param">dicUser</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQL.xmlrpc_loadCompeteTable-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQL.xmlrpc_loadCompeteTable-expanded"><a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line">        <tt class="py-name">sSql</tt> <tt class="py-op">=</tt> <tt class="py-string">"select * from "</tt> <tt class="py-op">+</tt> <tt class="py-name">nameOfTable</tt> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-29" class="py-name"><a title="cuon.SQL.SQL.xmlrpc_executeNormalQuery" class="py-name" href="#" onclick="return doclink('link-29', 'xmlrpc_executeNormalQuery', 'link-19');">xmlrpc_executeNormalQuery</a></tt><tt class="py-op">(</tt><tt class="py-name">sSql</tt><tt class="py-op">,</tt> <tt class="py-name">dicUser</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:22 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

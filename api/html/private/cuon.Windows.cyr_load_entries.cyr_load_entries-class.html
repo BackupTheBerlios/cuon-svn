@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Windows.cyr_load_entries.cyr_load_entries</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Windows-module.html">Package&nbsp;Windows</a> ::
+        <a href="../private/cuon.Windows.cyr_load_entries-module.html">Module&nbsp;cyr_load_entries</a> ::
+        Class&nbsp;cyr_load_entries
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/cuon.Windows.cyr_load_entries.cyr_load_entries-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class cyr_load_entries</h2>
+
+<pre class="base-tree">
+     <a href="cuon.Logging.logs.logs-class.html"><code>logs</code></a> --+    
+            |    
+        <a href="cuon.XML.MyXML.MyXML-class.html"><code>MyXML</code></a> --+
+                |
+    <a href="../private/cuon.Databases.dumps.dumps-class.html"><code>dumps</code></a> --+   |
+            |   |
+<a href="../private/cuon.TypeDefs.defaultValues.defaultValues-class.html"><code>defaultValues</code></a> --+
+                |
+        <a href="../private/cuon.Databases.dumps.dumps-class.html"><code>dumps</code></a> --+
+                |
+               <b>cyr_load_entries</b>
+</pre><br />
+
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__init__"></a><span class="summary-sig"><span class="summary-sig-name">__init__</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getEntriesDefinition"></a><span class="summary-sig"><span class="summary-sig-name">getEntriesDefinition</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sFile</span>,
+          <span class=summary-sig-arg>sNameOfTable</span>,
+          <span class=summary-sig-arg>sNameOfEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getEntriesDescription"></a><span class="summary-sig"><span class="summary-sig-name">getEntriesDescription</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sFile</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getListOfEntriesNames"></a><span class="summary-sig"><span class="summary-sig-name">getListOfEntriesNames</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sFile</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="loadEntries"></a><span class="summary-sig"><span class="summary-sig-name">loadEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sNameOfEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="saveEntries"></a><span class="summary-sig"><span class="summary-sig-name">saveEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sNameOfEntries</span>,
+          <span class=summary-sig-arg>entries</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from MyXML</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getAttributValue" class="summary-sig-name"><code>getAttributValue</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getColumnAt" class="summary-sig-name"><code>getColumnAt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>,
+          <span class=summary-sig-arg>iIndex</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getColumnSpecification" class="summary-sig-name"><code>getColumnSpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyColumn</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getData" class="summary-sig-name"><code>getData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntries" class="summary-sig-name"><code>getEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sFileName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntry" class="summary-sig-name"><code>getEntry</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntryAt" class="summary-sig-name"><code>getEntryAt</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntries</span>,
+          <span class=summary-sig-arg>iIndex</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getEntrySpecification" class="summary-sig-name"><code>getEntrySpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntry</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getForeignKey" class="summary-sig-name"><code>getForeignKey</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfEntries" class="summary-sig-name"><code>getListOfEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfForeignKeys" class="summary-sig-name"><code>getListOfForeignKeys</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfSequences" class="summary-sig-name"><code>getListOfSequences</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getListOfTables" class="summary-sig-name"><code>getListOfTables</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNode" class="summary-sig-name"><code>getNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNodeData" class="summary-sig-name"><code>getNodeData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNodes" class="summary-sig-name"><code>getNodes</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfEntries" class="summary-sig-name"><code>getNumberOfEntries</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getNumberOfFields" class="summary-sig-name"><code>getNumberOfFields</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getRootNode" class="summary-sig-name"><code>getRootNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>doc</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getSequence" class="summary-sig-name"><code>getSequence</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTable" class="summary-sig-name"><code>getTable</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyNode</span>,
+          <span class=summary-sig-arg>cyName</span>,
+          <span class=summary-sig-arg>cyValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTableSpecification" class="summary-sig-name"><code>getTableSpecification</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>cyTable</span>,
+          <span class=summary-sig-arg>sValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#getTextFromNode" class="summary-sig-name"><code>getTextFromNode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>)</span></code>
+<br />
+scans through all children of node and gathers the text.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#nodeToDic" class="summary-sig-name"><code>nodeToDic</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>node</span>)</span></code>
+<br />
+nodeToDic() scans through the children of node and makes a dictionary 
+from the content.</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#NotTextNodeError" class="summary-sig-name"><code>NotTextNodeError</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#readDocument" class="summary-sig-name"><code>readDocument</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>filename</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.XML.MyXML.MyXML-class.html#test" class="summary-sig-name"><code>test</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from logs</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#out" class="summary-sig-name"><code>out</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sLog</span>,
+          <span class=summary-sig-arg>iLogLevel</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#printOut" class="summary-sig-name"><code>printOut</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s1</span>,
+          <span class=summary-sig-arg>s2</span>,
+          <span class=summary-sig-arg>ok</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#setLogLevel" class="summary-sig-name"><code>setLogLevel</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>iLevel</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from dumps</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#closeDB" class="summary-sig-name"><code>closeDB</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doCompress" class="summary-sig-name"><code>doCompress</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doDecode" class="summary-sig-name"><code>doDecode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doEncode" class="summary-sig-name"><code>doEncode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doUncompress" class="summary-sig-name"><code>doUncompress</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#formatDate" class="summary-sig-name"><code>formatDate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>,
+          <span class=summary-sig-arg>strFormat</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getActualDateTime" class="summary-sig-name"><code>getActualDateTime</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getCheckedValue" class="summary-sig-name"><code>getCheckedValue</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>value</span>,
+          <span class=summary-sig-arg>type</span>,
+          <span class=summary-sig-arg>min</span>,
+          <span class=summary-sig-arg>max</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getDateTime" class="summary-sig-name"><code>getDateTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dateString</span>,
+          <span class=summary-sig-arg>strFormat</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" class="summary-sig-name"><code>getFirstDayOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" class="summary-sig-name"><code>getFirstDayOfMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds" class="summary-sig-name"><code>getFirstLastDayOfLastMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfMonth" class="summary-sig-name"><code>getFirstOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfMonth2" class="summary-sig-name"><code>getFirstOfMonth2</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfYear" class="summary-sig-name"><code>getFirstOfYear</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastDayOfMonth" class="summary-sig-name"><code>getLastDayOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastDayOfMonthAsSeconds" class="summary-sig-name"><code>getLastDayOfMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastOfMonth" class="summary-sig-name"><code>getLastOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastOfYear" class="summary-sig-name"><code>getLastOfYear</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getSeconds" class="summary-sig-name"><code>getSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dt</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getTime" class="summary-sig-name"><code>getTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getTimeString" class="summary-sig-name"><code>getTimeString</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#loadObject" class="summary-sig-name"><code>loadObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#openDB" class="summary-sig-name"><code>openDB</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#pickleObject" class="summary-sig-name"><code>pickleObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>obj</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#saveObject" class="summary-sig-name"><code>saveObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>oValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#saveTmpData" class="summary-sig-name"><code>saveTmpData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>data</span>,
+          <span class=summary-sig-arg>typ</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#showPdf" class="summary-sig-name"><code>showPdf</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>Pdf</span>,
+          <span class=summary-sig-arg>dicUser</span>,
+          <span class=summary-sig-arg>cDoc</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#unpickleObject" class="summary-sig-name"><code>unpickleObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+</td></tr>
+</table><br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat Jul  7 09:54:35 2007</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

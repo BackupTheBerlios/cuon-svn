@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.Databases.SingleData.SingleData</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css"></link>
+</head>
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <font size="-1"><b class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        <a href="cuon.Databases-module.html">Package&nbsp;Databases</a> ::
+        <a href="../private/cuon.Databases.SingleData-module.html">Module&nbsp;SingleData</a> ::
+        Class&nbsp;SingleData
+      </b></font></br>
+    </td>
+    <td><table cellpadding="0" cellspacing="0">
+      <tr><td align="right"><font size="-2">[<b>show&nbsp;private</b>&nbsp;|&nbsp;hide&nbsp;private]</font></td></tr>
+      <tr><td align="right"><font size="-2">[<a href="frames.html"target="_top">frames</a>&nbsp;|&nbsp;<a href="../private/cuon.Databases.SingleData.SingleData-class.html" target="_top">no&nbsp;frames</a>]</font></td></tr>
+    </table></td>
+</tr></table>
+
+<!-- =========== START OF CLASS DESCRIPTION =========== -->
+<h2 class="class">Class SingleData</h2>
+
+<pre class="base-tree">
+             <a href="cuon.Logging.logs.logs-class.html"><code>logs</code></a> --+
+                    |
+    <a href="../private/cuon.Databases.dumps.dumps-class.html"><code>dumps</code></a> --+       |
+            |       |
+<a href="../private/cuon.TypeDefs.defaultValues.defaultValues-class.html"><code>defaultValues</code></a> --+   |
+                |   |
+         <a href="../private/cuon.Windows.gladeXml.gladeXml-class.html"><code>gladeXml</code></a> --+
+                    |
+                   <b>SingleData</b>
+</pre><br />
+
+<dl><dt><b>Known Subclasses:</b></dt>
+<dd>
+    <a href="cuon.Bank.SingleBank.SingleBank-class.html"><code>SingleBank</code></a>,
+    <a href="cuon.Biblio.SingleBiblio.SingleBiblio-class.html"><code>SingleBiblio</code></a>,
+    <a href="cuon.Garden.SingleBotany.SingleBotany-class.html"><code>SingleBotany</code></a>,
+    <a href="cuon.Garden.SingleBotanyClass.SingleBotanyClass-class.html"><code>SingleBotanyClass</code></a>,
+    <a href="cuon.Garden.SingleBotanyDivisio.SingleBotanyDivisio-class.html"><code>SingleBotanyDivisio</code></a>,
+    <a href="cuon.Garden.SingleBotanyFamily.SingleBotanyFamily-class.html"><code>SingleBotanyFamily</code></a>,
+    <a href="cuon.Garden.SingleBotanyGenus.SingleBotanyGenus-class.html"><code>SingleBotanyGenus</code></a>,
+    <a href="cuon.Garden.SingleBotanyOrdo.SingleBotanyOrdo-class.html"><code>SingleBotanyOrdo</code></a>,
+    <a href="cuon.Clients.SingleClient.SingleClient-class.html"><code>SingleClient</code></a>,
+    <a href="cuon.Skeleton.SingleClient.SingleClient-class.html"><code>SingleClient</code></a>,
+    <a href="cuon.DMS.SingleDMS.SingleDMS-class.html"><code>SingleDMS</code></a>,
+    <a href="cuon.Garden.SingleHibernation.SingleHibernation-class.html"><code>SingleHibernation</code></a>,
+    <a href="cuon.Garden.SingleHibernationPlant.SingleHibernationPlant-class.html"><code>SingleHibernationPlant</code></a>,
+    <a href="cuon.Order.SingleOrder.SingleOrder-class.html"><code>SingleOrder</code></a>,
+    <a href="cuon.Order.SingleOrderGet.SingleOrderGet-class.html"><code>SingleOrderGet</code></a>,
+    <a href="cuon.Order.SingleOrderPayment.SingleOrderPayment-class.html"><code>SingleOrderPayment</code></a>,
+    <a href="cuon.Order.SingleOrderPosition.SingleOrderPosition-class.html"><code>SingleOrderPosition</code></a>,
+    <a href="cuon.Order.SingleOrderSupply.SingleOrderSupply-class.html"><code>SingleOrderSupply</code></a>,
+    <a href="cuon.Preferences.SinglePreferences.SinglePreferences-class.html"><code>SinglePreferences</code></a>,
+    <a href="cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop-class.html"><code>SinglePrefsFinanceTop</code></a>,
+    <a href="cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat-class.html"><code>SinglePrefsFinanceVat</code></a>,
+    <a href="cuon.Project.SingleProject.SingleProject-class.html"><code>SingleProject</code></a>,
+    <a href="cuon.Project.SingleProjectMaterialResources.SingleProjectMaterialResources-class.html"><code>SingleProjectMaterialResources</code></a>,
+    <a href="cuon.Project.SingleProjectPhases.SingleProjectPhases-class.html"><code>SingleProjectPhases</code></a>,
+    <a href="cuon.Project.SingleProjectStaffResources.SingleProjectStaffResources-class.html"><code>SingleProjectStaffResources</code></a>,
+    <a href="cuon.Project.SingleProjectTasks.SingleProjectTasks-class.html"><code>SingleProjectTasks</code></a>,
+    <a href="cuon.Staff.SingleStaff.SingleStaff-class.html"><code>SingleStaff</code></a>,
+    <a href="cuon.Staff.SingleStaffFee.SingleStaffFee-class.html"><code>SingleStaffFee</code></a>,
+    <a href="cuon.Stock.SingleStock.SingleStock-class.html"><code>SingleStock</code></a>,
+    <a href="cuon.Stock.SingleStockGoods.SingleStockGoods-class.html"><code>SingleStockGoods</code></a>,
+    <a href="cuon.Web2.SingleWeb2.SingleWeb2-class.html"><code>SingleWeb2</code></a>,
+    <a href="cuon.Skeleton.SingleWebshop.SingleWebshop-class.html"><code>SingleWebshop</code></a>,
+    <a href="cuon.WebShop.SingleWebshop.SingleWebshop-class.html"><code>SingleWebshop</code></a>,
+    <a href="../private/cuon.Addresses.SingleAddress.SingleAddress-class.html"><code>SingleAddress</code></a>,
+    <a href="../private/cuon.Addresses.SingleAddressBank.SingleAddressBank-class.html"><code>SingleAddressBank</code></a>,
+    <a href="../private/cuon.Articles.SingleArticle.SingleArticle-class.html"><code>SingleArticle</code></a>,
+    <a href="../private/cuon.Articles.SingleArticlePurchase.SingleArticlePurchase-class.html"><code>SingleArticlePurchase</code></a>,
+    <a href="../private/cuon.Articles.SingleArticleSale.SingleArticleSale-class.html"><code>SingleArticleSale</code></a>,
+    <a href="../private/cuon.Articles.SingleArticleStock.SingleArticleStock-class.html"><code>SingleArticleStock</code></a>,
+    <a href="../private/cuon.Articles.SingleArticleWebshop.SingleArticleWebshop-class.html"><code>SingleArticleWebshop</code></a>,
+    <a href="../private/cuon.Addresses.SingleContact.SingleContact-class.html"><code>SingleContact</code></a>,
+    <a href="../private/cuon.Addresses.SingleCountry.SingleCountry-class.html"><code>SingleCountry</code></a>,
+    <a href="../private/cuon.Databases.SingleCuon.SingleCuon-class.html"><code>SingleCuon</code></a>,
+    <a href="../private/cuon.Databases.SingleImport.SingleImport-class.html"><code>SingleImport</code></a>,
+    <a href="../private/cuon.Databases.SingleImportZip.SingleImportZip-class.html"><code>SingleImportZip</code></a>,
+    <a href="../private/cuon.Articles.SingleMaterialgroups.SingleMaterialgroups-class.html"><code>SingleMaterialgroups</code></a>,
+    <a href="../private/cuon.Articles.SingleMaterialgroupsAccount.SingleMaterialgroupsAccount-class.html"><code>SingleMaterialgroupsAccount</code></a>,
+    <a href="../private/cuon.Addresses.SingleMisc.SingleMisc-class.html"><code>SingleMisc</code></a>,
+    <a href="../private/cuon.Addresses.SingleNotes.SingleNotes-class.html"><code>SingleNotes</code></a>,
+    <a href="../private/cuon.Addresses.SinglePartner.SinglePartner-class.html"><code>SinglePartner</code></a>,
+    <a href="../private/cuon.Addresses.SingleScheduling.SingleScheduling-class.html"><code>SingleScheduling</code></a></dd></dl>
+
+<hr/>
+
+
+<!-- =========== START OF METHOD SUMMARY =========== -->
+<table class="summary" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="summary">
+  <th colspan="2">Method Summary</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="__init__"></a><span class="summary-sig"><span class="summary-sig-name">__init__</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="clearAllFields"></a><span class="summary-sig"><span class="summary-sig-name">clearAllFields</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="connectTree"></a><span class="summary-sig"><span class="summary-sig-name">connectTree</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="deleteRecord"></a><span class="summary-sig"><span class="summary-sig-name">deleteRecord</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="disconnectTree"></a><span class="summary-sig"><span class="summary-sig-name">disconnectTree</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="fillEntries"></a><span class="summary-sig"><span class="summary-sig-name">fillEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>id</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="fillExternalWidget"></a><span class="summary-sig"><span class="summary-sig-name">fillExternalWidget</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>value</span>,
+          <span class=summary-sig-arg>id</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="fillExtraEntries"></a><span class="summary-sig"><span class="summary-sig-name">fillExtraEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>oneRecord</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="fillOtherEntries"></a><span class="summary-sig"><span class="summary-sig-name">fillOtherEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>oneRecord</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="fillTree"></a><span class="summary-sig"><span class="summary-sig-name">fillTree</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>tree1</span>,
+          <span class=summary-sig-arg>listEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="findSingleId"></a><span class="summary-sig"><span class="summary-sig-name">findSingleId</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getEntries"></a><span class="summary-sig"><span class="summary-sig-name">getEntries</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getFirstListRecord"></a><span class="summary-sig"><span class="summary-sig-name">getFirstListRecord</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getFirstRecord"></a><span class="summary-sig"><span class="summary-sig-name">getFirstRecord</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getListEntries"></a><span class="summary-sig"><span class="summary-sig-name">getListEntries</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getStaffID"></a><span class="summary-sig"><span class="summary-sig-name">getStaffID</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicUser</span>,
+          <span class=summary-sig-arg>setBraces</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="getTreeModel"></a><span class="summary-sig"><span class="summary-sig-name">getTreeModel</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>listEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="isNewRecord"></a><span class="summary-sig"><span class="summary-sig-name">isNewRecord</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.SingleData.SingleData-class.html#load" class="summary-sig-name"><code>load</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>record</span>,
+          <span class=summary-sig-arg>dicDetail</span>)</span></code>
+<br />
+Return list of records</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="loadCompleteTable"></a><span class="summary-sig"><span class="summary-sig-name">loadCompleteTable</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="loadTable"></a><span class="summary-sig"><span class="summary-sig-name">loadTable</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>allTables</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="newRecord"></a><span class="summary-sig"><span class="summary-sig-name">newRecord</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="readEntries"></a><span class="summary-sig"><span class="summary-sig-name">readEntries</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="readExtraEntries"></a><span class="summary-sig"><span class="summary-sig-name">readExtraEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicValues</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="readNonWidgetEntries"></a><span class="summary-sig"><span class="summary-sig-name">readNonWidgetEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicValues</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="refreshTree"></a><span class="summary-sig"><span class="summary-sig-name">refreshTree</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>Full</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="refreshTreeWithoutNewItems"></a><span class="summary-sig"><span class="summary-sig-name">refreshTreeWithoutNewItems</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="save"></a><span class="summary-sig"><span class="summary-sig-name">save</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>liBigEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="saveExternalData"></a><span class="summary-sig"><span class="summary-sig-name">saveExternalData</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicValues</span>,
+          <span class=summary-sig-arg>liBigEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="saveTable"></a><span class="summary-sig"><span class="summary-sig-name">saveTable</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="saveValues"></a><span class="summary-sig"><span class="summary-sig-name">saveValues</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicValues</span>,
+          <span class=summary-sig-arg>liBigEntries</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setEmptyEntries"></a><span class="summary-sig"><span class="summary-sig-name">setEmptyEntries</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setEntries"></a><span class="summary-sig"><span class="summary-sig-name">setEntries</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicEntries01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setGladeXml"></a><span class="summary-sig"><span class="summary-sig-name">setGladeXml</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>xml01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setListHeader"></a><span class="summary-sig"><span class="summary-sig-name">setListHeader</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>liNames01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setOtherEmptyEntries"></a><span class="summary-sig"><span class="summary-sig-name">setOtherEmptyEntries</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setStore"></a><span class="summary-sig"><span class="summary-sig-name">setStore</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>store01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setTree"></a><span class="summary-sig"><span class="summary-sig-name">setTree</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>tree01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setTreeFields"></a><span class="summary-sig"><span class="summary-sig-name">setTreeFields</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>liFields01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="setTreeOrder"></a><span class="summary-sig"><span class="summary-sig-name">setTreeOrder</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sSort01</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="tree_select_callback"></a><span class="summary-sig"><span class="summary-sig-name">tree_select_callback</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>treeSelection</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="treeSelectRow"></a><span class="summary-sig"><span class="summary-sig-name">treeSelectRow</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="treeSelectRowById"></a><span class="summary-sig"><span class="summary-sig-name">treeSelectRowById</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="treeSelectRowByIter"></a><span class="summary-sig"><span class="summary-sig-name">treeSelectRowByIter</span>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><a name="verifyValues"></a><span class="summary-sig"><span class="summary-sig-name">verifyValues</span>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dicValues</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from gladeXml</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#add2Textbuffer" class="summary-sig-name"><code>add2Textbuffer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>text</span>,
+          <span class=summary-sig-arg>direction</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#addEnabledMenuItems" class="summary-sig-name"><code>addEnabledMenuItems</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>sMenuItem</span>,
+          <span class=summary-sig-arg>cKey</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#addKeyToItem" class="summary-sig-name"><code>addKeyToItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>item</span>,
+          <span class=summary-sig-arg>cKey</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#addMenuItem" class="summary-sig-name"><code>addMenuItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>item</span>,
+          <span class=summary-sig-arg>sMenue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#disableAllMenuItems" class="summary-sig-name"><code>disableAllMenuItems</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#disableMenuItem" class="summary-sig-name"><code>disableMenuItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#enableAllMenuItems" class="summary-sig-name"><code>enableAllMenuItems</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#enableMenuItem" class="summary-sig-name"><code>enableMenuItem</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>sAccel</span>,
+          <span class=summary-sig-arg>sMenuItem</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#getActiveText" class="summary-sig-name"><code>getActiveText</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>combobox</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#getWidget" class="summary-sig-name"><code>getWidget</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#getWidgets" class="summary-sig-name"><code>getWidgets</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sPrefix</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#initMenuItems" class="summary-sig-name"><code>initMenuItems</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#loadGlade" class="summary-sig-name"><code>loadGlade</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>gladeName</span>,
+          <span class=summary-sig-arg>sMainWindow</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#loadGladeComplete" class="summary-sig-name"><code>loadGladeComplete</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>gladeName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#loadGladeFile" class="summary-sig-name"><code>loadGladeFile</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>gladeName</span>,
+          <span class=summary-sig-arg>sMainWindow</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#readTextBuffer" class="summary-sig-name"><code>readTextBuffer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#removeEnabledMenuItems" class="summary-sig-name"><code>removeEnabledMenuItems</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setText2Widget" class="summary-sig-name"><code>setText2Widget</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sText</span>,
+          <span class=summary-sig-arg>sWidget</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setTextbuffer" class="summary-sig-name"><code>setTextbuffer</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>widget</span>,
+          <span class=summary-sig-arg>liField</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setTitle" class="summary-sig-name"><code>setTitle</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sName</span>,
+          <span class=summary-sig-arg>sTitle</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setWinAccelGroup" class="summary-sig-name"><code>setWinAccelGroup</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setXml" class="summary-sig-name"><code>setXml</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>xml</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#setXmlAutoconnect" class="summary-sig-name"><code>setXmlAutoconnect</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#writeAllGladeFiles" class="summary-sig-name"><code>writeAllGladeFiles</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Windows.gladeXml.gladeXml-class.html#writeGlade" class="summary-sig-name"><code>writeGlade</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>fname</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from dumps</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#closeDB" class="summary-sig-name"><code>closeDB</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doCompress" class="summary-sig-name"><code>doCompress</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doDecode" class="summary-sig-name"><code>doDecode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doEncode" class="summary-sig-name"><code>doEncode</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#doUncompress" class="summary-sig-name"><code>doUncompress</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#formatDate" class="summary-sig-name"><code>formatDate</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>,
+          <span class=summary-sig-arg>strFormat</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getActualDateTime" class="summary-sig-name"><code>getActualDateTime</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getCheckedValue" class="summary-sig-name"><code>getCheckedValue</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>value</span>,
+          <span class=summary-sig-arg>type</span>,
+          <span class=summary-sig-arg>min</span>,
+          <span class=summary-sig-arg>max</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getDateTime" class="summary-sig-name"><code>getDateTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dateString</span>,
+          <span class=summary-sig-arg>strFormat</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonth" class="summary-sig-name"><code>getFirstDayOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstDayOfMonthAsSeconds" class="summary-sig-name"><code>getFirstDayOfMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstLastDayOfLastMonthAsSeconds" class="summary-sig-name"><code>getFirstLastDayOfLastMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfMonth" class="summary-sig-name"><code>getFirstOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfMonth2" class="summary-sig-name"><code>getFirstOfMonth2</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getFirstOfYear" class="summary-sig-name"><code>getFirstOfYear</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastDayOfMonth" class="summary-sig-name"><code>getLastDayOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastDayOfMonthAsSeconds" class="summary-sig-name"><code>getLastDayOfMonthAsSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sdate</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastOfMonth" class="summary-sig-name"><code>getLastOfMonth</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getLastOfYear" class="summary-sig-name"><code>getLastOfYear</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dtDateTime</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getSeconds" class="summary-sig-name"><code>getSeconds</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>dt</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getTime" class="summary-sig-name"><code>getTime</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#getTimeString" class="summary-sig-name"><code>getTimeString</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#loadObject" class="summary-sig-name"><code>loadObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#openDB" class="summary-sig-name"><code>openDB</code></a>(<span class=summary-sig-arg>self</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#pickleObject" class="summary-sig-name"><code>pickleObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>obj</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#saveObject" class="summary-sig-name"><code>saveObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>,
+          <span class=summary-sig-arg>oValue</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#saveTmpData" class="summary-sig-name"><code>saveTmpData</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>data</span>,
+          <span class=summary-sig-arg>typ</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#showPdf" class="summary-sig-name"><code>showPdf</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>Pdf</span>,
+          <span class=summary-sig-arg>dicUser</span>,
+          <span class=summary-sig-arg>cDoc</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="../private/cuon.Databases.dumps.dumps-class.html#unpickleObject" class="summary-sig-name"><code>unpickleObject</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>key</span>)</span></code>
+</td></tr>
+<tr bgcolor="#e8f0f8" class="group">
+  <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;Inherited from logs</th></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#out" class="summary-sig-name"><code>out</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>sLog</span>,
+          <span class=summary-sig-arg>iLogLevel</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#printOut" class="summary-sig-name"><code>printOut</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>s1</span>,
+          <span class=summary-sig-arg>s2</span>,
+          <span class=summary-sig-arg>ok</span>)</span></code>
+</td></tr>
+<tr><td align="right" valign="top" width="15%"><font size="-1">&nbsp;</font></td>
+  <td><code><span class="summary-sig"><a href="cuon.Logging.logs.logs-class.html#setLogLevel" class="summary-sig-name"><code>setLogLevel</code></a>(<span class=summary-sig-arg>self</span>,
+          <span class=summary-sig-arg>iLevel</span>)</span></code>
+</td></tr>
+</table><br />
+
+
+<!-- =========== START OF METHOD DETAILS =========== -->
+<table class="details" border="1" cellpadding="3" cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="details">
+  <th colspan="2">Method Details</th></tr>
+</table>
+
+<a name="load"></a>
+<table width="100%" class="func-details" bgcolor="#e0e0e0"><tr><td>
+  <h3><span class="sig"><span class="sig-name">load</span>(<span class=sig-arg>self</span>,
+          <span class=sig-arg>record</span>,
+          <span class=sig-arg>dicDetail</span>=<span class=sig-default>None</span>)</span>
+  </h3>
+  <dl><dt></dt><dd>
+    <dl><dt><b>Parameters:</b></dt>
+      <dd><code><b>record</b></code> -
+         id of the record
+      <dd><code><b>dicDetail</b></code> -
+         details for statusbar
+      </dd>
+    </dl>
+    <dl><dt><b>Returns:</b></dt>
+      <dd>
+        list of records
+      </dd>
+    </dl>
+  </dd></dl>
+</td></tr></table>
+<br />
+
+
+<!-- =========== START OF NAVBAR =========== -->
+<table class="navbar" border="0" width="100%" cellpadding="0" bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="center">
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="trees.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="indices.html">Index</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar">&nbsp;&nbsp;&nbsp;<a class="navbar" href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+    <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="left"><font size="-2">Generated by Epydoc 2.1 on Sat Jul  7 09:54:35 2007</font></td>
+    <td align="right"><a href="http://epydoc.sourceforge.net"
+                      ><font size="-2">http://epydoc.sf.net</font></a></td>
+  </tr>
+</table>
+</body>
+</html>

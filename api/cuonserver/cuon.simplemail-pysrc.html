@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>cuon.simplemail</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="cuon-module.html">Package&nbsp;cuon</a> ::
+        Module&nbsp;simplemail
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="cuon.simplemail-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="cuon.simplemail-module.html">Module cuon.simplemail</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#-*- coding: iso-8859-1 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">******************************************************************************</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">* Description:  SimpleMail ist ein Modul zum Versenden von Emails </tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">*               mit und ohne Anhaengen.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">* Filename:     simplemail.py</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">* Created:      2004-10-06 Gerold</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">* License:      LGPL: http://www.opensource.org/licenses/lgpl-license.php</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">* Requirements: Python 2.3:  http://www.python.org</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">* Einfaches Beispiel:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">*   from simplemail import Email</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">*   Email(</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">*       from_address = "absender@domain.at",</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">*       to_address = "empfaenger@domain.at",</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">*       subject = "Betreff",</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">*       message = "Das ist der Nachrichtentext"</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">*   ).send()</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">* 2004-03-13 Gerold</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">*   - Umlaute in den Beschreibungen ausgebessert</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">*   - Schreibweise der Kommentare wurde so umgesetzt dass auf einfache</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">*     Art und Weise eine Uebersetzung stattfinden kann.</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">*     Erklaerung: "de" steht fuer "deutsch"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">*                 "en" steht fuer "englisch"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">* 2004-04-25 Gerold</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">*   - Kleine Ausbesserungen in den Beschreibungen vorgenommen</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">*   - Einfaches Beispiel in den Beschreibungstext integriert</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-08-20 Gerold</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">*   - Das Versenden von Anhaengen ermoeglicht</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-09-28 Gerold</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">*   - Die R&#252;ckgabe des Befehls "sendmail()" wird in das Attribut "statusdict"</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">*     der Instanz der Klasse "Email" geschrieben. So ist es jetzt auch moeglich,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">*     beim Versenden an mehrere Emailadressen, eine exakte Rueckmeldung ueber</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">*     den Versandstatus zu erhalten. Das Format der Rueckgabe wird unter</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">*     der Url http://www.python.org/doc/current/lib/SMTP-objects.html#l2h-3493</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">*     genau erklaert.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">*     Hier ein Auszug aus dieser Erklaerung:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">*     This method will return normally if the mail is accepted for at least </tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">*     one recipient. Otherwise it will throw an exception. That is, if this </tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">*     method does not throw an exception, then someone should get your mail. </tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">*     If this method does not throw an exception, it returns a dictionary, </tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">*     with one entry for each recipient that was refused. Each entry contains </tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">*     a tuple of the SMTP error code and the accompanying error message sent </tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">*     by the server.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-09-29 Gerold</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">*   - Das Format der Hilfe geaendert.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">*   - Ab jetzt wird auch der "User-Agent" im Header mitgesendet.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">*     Jens, danke f&#252;r die Idee.</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-11-11 Gerold</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">*   - Fixed: Das Versenden von Emails funktioniert jetzt auch wenn man</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">*     sich am SMTP-Server mit Benutzername und Passwort anmelden muss.</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">*     ChrisSek, danke f&#252;r den Hinweis.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">*   - Es war, glaube ich, recht l&#228;stig, dass Testemails gesendet wurden, </tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">*     wenn man dieses Modul ausf&#252;hrte. Ich habe es so ge&#228;ndert, dass die</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">*     Testemails nur mehr dann gesendet werden, wenn man dieses Modul mit</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">*     dem Parameter "test" aufruft. Z.B. ``python simplemail.py test``</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-12-10 Gerold</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">*   - Schlampigkeitsfehler ausgebessert. Es wurde ein Fehler gemeldet, wenn</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">*     man beim Initialisieren der Klasse Email auch den Dateinamen eines</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">*     Attachments &#252;bergeben hatte. Es war ein Unterstrich zu viel, der </tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">*     Entfernt wurde.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">* 2006-03-22 Gerold</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">*   - Klassen fuer CC-Empfaenger und BCC-Empfaenger hinzugefuegt.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">*     Ab jetzt k&#246;nnen Emails auch an CC und BCC gesendet werden.</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">*     Wie das funktioniert sieht man in der Funktion ``testen()``</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">* 2006-03-30 Gerold</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">*   - Reply-to (Antwort an) kann jetzt auch angegeben werden.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">* 2006-05-28 Gerold</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">*   - Wortlaut des Headers "User-Agent" ge&#228;ndert.</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">*   - Da nicht jeder SMTP-Server das Datum automatisch zum Header hinzuf&#252;gt, </tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">*     wird ab jetzt das Datum beim Senden hinzugef&#252;gt. </tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">*     (Karl, danke f&#252;r den wichtigen Hinweis.)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">* 2005-06-08 Gerold</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">*   - Fehlerklassen von **SimpleMail_Exception** abgeleitet. Damit wird</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">*     bei einem Fehler jetzt auch eine aussagekr&#228;ftigere Fehlermeldung </tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">*     ausgegeben. Dabei habe ich auch die vertauschten Fehlermeldungen</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">*     ausgetauscht. (Rebecca, danke f&#252;r die Meldung.)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">*   - Da die Klassen **CCRecipients** und **BCCRecipients** sowiso von</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">*     **Recipients** abgeleitet wurden, kann ich mir das &#220;berschreiben</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">*     der Initialisierung (__init__) und die Angabe der Slots sparen.</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">*</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">******************************************************************************</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">smtplib</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">mimetypes</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Encoders</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">Header</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Header</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">MIMEText</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MIMEText</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">MIMEMultipart</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MIMEMultipart</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">Utils</tt> <tt class="py-keyword">import</tt> <tt class="py-name">formataddr</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">Utils</tt> <tt class="py-keyword">import</tt> <tt class="py-name">formatdate</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">Message</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Message</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">MIMEAudio</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MIMEAudio</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">MIMEBase</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MIMEBase</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">email</tt><tt class="py-op">.</tt><tt class="py-name">MIMEImage</tt> <tt class="py-keyword">import</tt> <tt class="py-name">MIMEImage</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-comment"># Exceptions</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="SimpleMail_Exception"></a><div id="SimpleMail_Exception-def"><a name="L118"></a><tt class="py-lineno">118</tt> <a class="py-toggle" href="#" id="SimpleMail_Exception-toggle" onclick="return toggle('SimpleMail_Exception');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.SimpleMail_Exception-class.html">SimpleMail_Exception</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleMail_Exception-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SimpleMail_Exception-expanded"><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">    SimpleMail Base-Exception</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="SimpleMail_Exception.__str__"></a><div id="SimpleMail_Exception.__str__-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="SimpleMail_Exception.__str__-toggle" onclick="return toggle('SimpleMail_Exception.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.SimpleMail_Exception-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SimpleMail_Exception.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SimpleMail_Exception.__str__-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__doc__</tt> </tt>
+</div></div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="NoFromAddress_Exception"></a><div id="NoFromAddress_Exception-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="NoFromAddress_Exception-toggle" onclick="return toggle('NoFromAddress_Exception');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.NoFromAddress_Exception-class.html">NoFromAddress_Exception</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleMail_Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoFromAddress_Exception-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoFromAddress_Exception-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">    en: No sender address</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">    de: Es wurde keine Absenderadresse angegeben</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="NoToAddress_Exception"></a><div id="NoToAddress_Exception-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="NoToAddress_Exception-toggle" onclick="return toggle('NoToAddress_Exception');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.NoToAddress_Exception-class.html">NoToAddress_Exception</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleMail_Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoToAddress_Exception-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoToAddress_Exception-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring">    en: No recipient address</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">    de: Es wurde keine Empfaengeradresse angegeben</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="NoSubject_Exception"></a><div id="NoSubject_Exception-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="NoSubject_Exception-toggle" onclick="return toggle('NoSubject_Exception');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.NoSubject_Exception-class.html">NoSubject_Exception</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleMail_Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoSubject_Exception-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoSubject_Exception-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">    en: No subject</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">    de: Es wurde kein Betreff angegeben</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="AttachmentNotFound_Exception"></a><div id="AttachmentNotFound_Exception-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="AttachmentNotFound_Exception-toggle" onclick="return toggle('AttachmentNotFound_Exception');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.AttachmentNotFound_Exception-class.html">AttachmentNotFound_Exception</a><tt class="py-op">(</tt><tt class="py-base-class">SimpleMail_Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AttachmentNotFound_Exception-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AttachmentNotFound_Exception-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">    en: Attachment not found</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">    de: Das uebergebene Attachment wurde nicht gefunden</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-comment"># Email-Anhaenge</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Attachments"></a><div id="Attachments-def"><a name="L157"></a><tt class="py-lineno">157</tt> <a class="py-toggle" href="#" id="Attachments-toggle" onclick="return toggle('Attachments');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.Attachments-class.html">Attachments</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Attachments-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Attachments-expanded"><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring">    de: Dieses Objekt stellt die Anhaenge einer Email dar</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-name">__slots__</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'_attachments'</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Attachments.__init__"></a><div id="Attachments.__init__-def"><a name="L166"></a><tt class="py-lineno">166</tt> <a class="py-toggle" href="#" id="Attachments.__init__-toggle" onclick="return toggle('Attachments.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Attachments-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Attachments.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Attachments.__init__-expanded"><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">        de: Initialisiert die Anhaenge</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">         </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Variable cuon.Email2.Attachments._attachments=cuon.Email2.Attachments-class.html#_attachments,Variable cuon.simplemail.Attachments._attachments=cuon.simplemail.Attachments-class.html#_attachments"><a title="cuon.Email2.Attachments._attachments
+cuon.simplemail.Attachments._attachments" class="py-name" href="#" onclick="return doclink('link-0', '_attachments', 'link-0');">_attachments</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Attachments.add_filename"></a><div id="Attachments.add_filename-def"><a name="L175"></a><tt class="py-lineno">175</tt> <a class="py-toggle" href="#" id="Attachments.add_filename-toggle" onclick="return toggle('Attachments.add_filename');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Attachments-class.html#add_filename">add_filename</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Attachments.add_filename-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Attachments.add_filename-expanded"><a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-docstring">        en: Adds an attachment</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-docstring">        de: Fuegt einen neuen Anhang hinzu</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">         </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name"><a title="cuon.Email2.Attachments._attachments
+cuon.simplemail.Attachments._attachments" class="py-name" href="#" onclick="return doclink('link-1', '_attachments', 'link-0');">_attachments</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Attachments.count"></a><div id="Attachments.count-def"><a name="L185"></a><tt class="py-lineno">185</tt> <a class="py-toggle" href="#" id="Attachments.count-toggle" onclick="return toggle('Attachments.count');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Attachments-class.html#count">count</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Attachments.count-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Attachments.count-expanded"><a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-docstring">        en: Returns the number of attachments</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring">        de: Gibt die Anzahl der Anhaenge zurueck</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="cuon.Email2.Attachments._attachments
+cuon.simplemail.Attachments._attachments" class="py-name" href="#" onclick="return doclink('link-2', '_attachments', 'link-0');">_attachments</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Attachments.get_list"></a><div id="Attachments.get_list-def"><a name="L195"></a><tt class="py-lineno">195</tt> <a class="py-toggle" href="#" id="Attachments.get_list-toggle" onclick="return toggle('Attachments.get_list');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Attachments-class.html#get_list">get_list</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Attachments.get_list-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Attachments.get_list-expanded"><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-docstring">        en: Returns the attachments, as list</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-docstring">        de: Gibt die Anhaenge als Liste zurueck</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="cuon.Email2.Attachments._attachments
+cuon.simplemail.Attachments._attachments" class="py-name" href="#" onclick="return doclink('link-3', '_attachments', 'link-0');">_attachments</a></tt> </tt>
+</div></div><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-comment"># Empfaenger-Klasse</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients"></a><div id="Recipients-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="Recipients-toggle" onclick="return toggle('Recipients');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html">Recipients</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Recipients-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"><tt class="py-docstring">    en: This object stands for all recipients from the email</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"><tt class="py-docstring">    de: Dieses Objekt stellt die Empfaenger einer Email dar</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">    <tt class="py-name">__slots__</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'_recipients'</tt><tt class="py-op">)</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients.__init__"></a><div id="Recipients.__init__-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="Recipients.__init__-toggle" onclick="return toggle('Recipients.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Recipients.__init__-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">        en: Initializes the recipients</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring">        de: Initialisiert die Empfaenger</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Variable cuon.Email2.Recipients._recipients=cuon.Email2.Recipients-class.html#_recipients,Variable cuon.simplemail.Recipients._recipients=cuon.simplemail.Recipients-class.html#_recipients"><a title="cuon.Email2.Recipients._recipients
+cuon.simplemail.Recipients._recipients" class="py-name" href="#" onclick="return doclink('link-4', '_recipients', 'link-4');">_recipients</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients.add"></a><div id="Recipients.add-def"><a name="L227"></a><tt class="py-lineno">227</tt> <a class="py-toggle" href="#" id="Recipients.add-toggle" onclick="return toggle('Recipients.add');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html#add">add</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">address</tt><tt class="py-op">,</tt> <tt class="py-param">caption</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients.add-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Recipients.add-expanded"><a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-docstring">        en: Adds a new address to the list of recipients</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-docstring">            address = email address of the recipient</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-docstring">            caption = caption (name) of the recipient</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"><tt class="py-docstring">        de: Fuegt der Empfaengerliste eine neue Adresse hinzu.</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"><tt class="py-docstring">            address = Emailadresse des Empfaengrs</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"><tt class="py-docstring">            caption = Bezeichnung (Name) des Empfaengers</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="cuon.Email2.Recipients._recipients
+cuon.simplemail.Recipients._recipients" class="py-name" href="#" onclick="return doclink('link-5', '_recipients', 'link-4');">_recipients</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">formataddr</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">caption</tt><tt class="py-op">,</tt> <tt class="py-name">address</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients.count"></a><div id="Recipients.count-def"><a name="L241"></a><tt class="py-lineno">241</tt> <a class="py-toggle" href="#" id="Recipients.count-toggle" onclick="return toggle('Recipients.count');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html#count">count</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients.count-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Recipients.count-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-docstring">        en: Returns the number of recipients</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"><tt class="py-docstring">        de: Gibt die Anzahl der Empfaenger zurueck</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="cuon.Email2.Recipients._recipients
+cuon.simplemail.Recipients._recipients" class="py-name" href="#" onclick="return doclink('link-6', '_recipients', 'link-4');">_recipients</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients.__repr__"></a><div id="Recipients.__repr__-def"><a name="L251"></a><tt class="py-lineno">251</tt> <a class="py-toggle" href="#" id="Recipients.__repr__-toggle" onclick="return toggle('Recipients.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients.__repr__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Recipients.__repr__-expanded"><a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line"><tt class="py-docstring">        en: Returns the list of recipients, as string</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"><tt class="py-docstring">        de: Gibt die Empfengerliste als String zurueck</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="cuon.Email2.Recipients._recipients
+cuon.simplemail.Recipients._recipients" class="py-name" href="#" onclick="return doclink('link-7', '_recipients', 'link-4');">_recipients</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Recipients.get_list"></a><div id="Recipients.get_list-def"><a name="L261"></a><tt class="py-lineno">261</tt> <a class="py-toggle" href="#" id="Recipients.get_list-toggle" onclick="return toggle('Recipients.get_list');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Recipients-class.html#get_list">get_list</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Recipients.get_list-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Recipients.get_list-expanded"><a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-docstring">        en: Returns the list of recipients, as list</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"><tt class="py-docstring">        de: Gibt die Empfaengerliste als Liste zurueck</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line"> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="cuon.Email2.Recipients._recipients
+cuon.simplemail.Recipients._recipients" class="py-name" href="#" onclick="return doclink('link-8', '_recipients', 'link-4');">_recipients</a></tt> </tt>
+</div></div><a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line"> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line"><tt class="py-comment"># Empfaenger-Klasse fuer CC-Empfaenger (Carbon Copy)</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="CCRecipients"></a><div id="CCRecipients-def"><a name="L273"></a><tt class="py-lineno">273</tt> <a class="py-toggle" href="#" id="CCRecipients-toggle" onclick="return toggle('CCRecipients');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.CCRecipients-class.html">CCRecipients</a><tt class="py-op">(</tt><tt class="py-base-class">Recipients</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CCRecipients-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CCRecipients-expanded"><a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">    en: This object stands for all CC-recipients from the email</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"><tt class="py-docstring">    de: Dieses Objekt stellt die CC-Empfaenger einer Email dar</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line"> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-comment"># Empfaenger-Klasse fuer BCC-Empfaenger (Blind Carbon Copy)</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="BCCRecipients"></a><div id="BCCRecipients-def"><a name="L284"></a><tt class="py-lineno">284</tt> <a class="py-toggle" href="#" id="BCCRecipients-toggle" onclick="return toggle('BCCRecipients');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.BCCRecipients-class.html">BCCRecipients</a><tt class="py-op">(</tt><tt class="py-base-class">Recipients</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BCCRecipients-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BCCRecipients-expanded"><a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line"><tt class="py-docstring">    en: This object stands for all BCC-recipients from the email</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line"><tt class="py-docstring">    de: Dieses Objekt stellt die BCC-Empfaenger einer Email dar</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-comment"># Email-Klasse</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Email"></a><div id="Email-def"><a name="L295"></a><tt class="py-lineno">295</tt> <a class="py-toggle" href="#" id="Email-toggle" onclick="return toggle('Email');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="cuon.simplemail.Email-class.html">Email</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Email-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Email-expanded"><a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"><tt class="py-docstring">    en: This Object stands for one email, which can sent with</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line"><tt class="py-docstring">        the method 'send'.</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line"><tt class="py-docstring">    de: Dieses Objekt stellt eine Email dar, welche mit der</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring">        Methode 'send' verschickt werden kann.</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">    <tt class="py-name">__slots__</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">        <tt class="py-string">'from_address'</tt><tt class="py-op">,</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">        <tt class="py-string">'from_caption'</tt><tt class="py-op">,</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">        <tt class="py-string">'recipients'</tt><tt class="py-op">,</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line">        <tt class="py-string">'cc_recipients'</tt><tt class="py-op">,</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">        <tt class="py-string">'bcc_recipients'</tt><tt class="py-op">,</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">        <tt class="py-string">'subject'</tt><tt class="py-op">,</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">        <tt class="py-string">'message'</tt><tt class="py-op">,</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">        <tt class="py-string">'smtp_server'</tt><tt class="py-op">,</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">        <tt class="py-string">'smtp_user'</tt><tt class="py-op">,</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">        <tt class="py-string">'smtp_password'</tt><tt class="py-op">,</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-string">'attachments'</tt><tt class="py-op">,</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">        <tt class="py-string">'content_subtype'</tt><tt class="py-op">,</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">        <tt class="py-string">'content_charset'</tt><tt class="py-op">,</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">        <tt class="py-string">'header_charset'</tt><tt class="py-op">,</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">        <tt class="py-string">'statusdict'</tt><tt class="py-op">,</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line">        <tt class="py-string">'user_agent'</tt><tt class="py-op">,</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">        <tt class="py-string">'reply_to_address'</tt><tt class="py-op">,</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line">        <tt class="py-string">'reply_to_caption'</tt><tt class="py-op">,</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line"> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Email.__init__"></a><div id="Email.__init__-def"><a name="L326"></a><tt class="py-lineno">326</tt> <a class="py-toggle" href="#" id="Email.__init__-toggle" onclick="return toggle('Email.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Email-class.html#__init__">__init__</a><tt class="py-op">(</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">        <tt class="py-param">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">        <tt class="py-param">from_address</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">        <tt class="py-param">from_caption</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">        <tt class="py-param">to_address</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">        <tt class="py-param">to_caption</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-param">subject</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">        <tt class="py-param">message</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line">        <tt class="py-param">smtp_server</tt> <tt class="py-op">=</tt> <tt class="py-string">"localhost"</tt><tt class="py-op">,</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">        <tt class="py-param">smtp_user</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">        <tt class="py-param">smtp_password</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line">        <tt class="py-param">attachment_file</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">        <tt class="py-param">user_agent</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line">        <tt class="py-param">reply_to_address</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-param">reply_to_caption</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt><tt class="py-op">,</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">    <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Email.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Email.__init__-expanded"><a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line"><tt class="py-docstring">        en: Initialize the email object</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line"><tt class="py-docstring">            from_address     = the email address of the sender</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"><tt class="py-docstring">            from_caption     = the caption (name) of the sender</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line"><tt class="py-docstring">            to_address       = the email address of the recipient</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"><tt class="py-docstring">            to_caption       = the caption (name) of the recipient</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-docstring">            subject          = the subject of the email message</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring">            message          = the body text of the email message</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_server      = the ip-address or the name of the SMTP-server</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_user        = (optional) Login name for the SMTP-Server</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_passwort    = (optional) Password for the SMTP-Server</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line"><tt class="py-docstring">            user_agent       = (optional) program identification</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line"><tt class="py-docstring">            reply_to_address = (optional) Reply-to email address</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">            reply_to_caption = (optional) Reply-to caption (name)</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"><tt class="py-docstring">        de: Initialisiert das Email-Objekt</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-docstring">            from_address     = die Emailadresse des Absenders</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"><tt class="py-docstring">            from_caption     = die Beschrifung (der Name) des Absenders</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"><tt class="py-docstring">            to_address       = die Emailadresse des Empfaengers</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"><tt class="py-docstring">            to_caption       = die Beschriftung (der Name) des Empfaengers</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line"><tt class="py-docstring">            subject          = der Betreff der Emailnachricht</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"><tt class="py-docstring">            message          = der Nachrichtentext</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_server      = IP-Adresse oder Name des SMTP-Servers.</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-docstring">                               Es kann auch der Port mit ``:`` vom Server getrennt </tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"><tt class="py-docstring">                               angehaengt werden. (z.B. ``localhost:25``)</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_user        = (optional) Benutzername zum Anmelden an den SMTP-Server</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-docstring">            smtp_passwort    = (optional) das Passwort zum Anmelden an den SMTP-Server</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"><tt class="py-docstring">            user_agent       = (optional) Programm-Identifikation</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"><tt class="py-docstring">            reply_to_address = (optional) Antwort-an Emailadresse</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line"><tt class="py-docstring">            reply_to_caption = (optional) Antwort-an Beschriftung (Name)</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Variable cuon.Email2.Email.from_address=cuon.Email2.Email-class.html#from_address,Variable cuon.simplemail.Email.from_address=cuon.simplemail.Email-class.html#from_address"><a title="cuon.Email2.Email.from_address
+cuon.simplemail.Email.from_address" class="py-name" href="#" onclick="return doclink('link-9', 'from_address', 'link-9');">from_address</a></tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="cuon.Email2.Email.from_address
+cuon.simplemail.Email.from_address" class="py-name" href="#" onclick="return doclink('link-10', 'from_address', 'link-9');">from_address</a></tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable cuon.Email2.Email.from_caption=cuon.Email2.Email-class.html#from_caption,Variable cuon.simplemail.Email.from_caption=cuon.simplemail.Email-class.html#from_caption"><a title="cuon.Email2.Email.from_caption
+cuon.simplemail.Email.from_caption" class="py-name" href="#" onclick="return doclink('link-11', 'from_caption', 'link-11');">from_caption</a></tt> <tt class="py-op">=</tt> <tt id="link-12" class="py-name"><a title="cuon.Email2.Email.from_caption
+cuon.simplemail.Email.from_caption" class="py-name" href="#" onclick="return doclink('link-12', 'from_caption', 'link-11');">from_caption</a></tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Variable cuon.Email2.Email.recipients=cuon.Email2.Email-class.html#recipients,Variable cuon.simplemail.Email.recipients=cuon.simplemail.Email-class.html#recipients"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-13', 'recipients', 'link-13');">recipients</a></tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name" targets="Class cuon.Email2.Recipients=cuon.Email2.Recipients-class.html,Class cuon.simplemail.Recipients=cuon.simplemail.Recipients-class.html"><a title="cuon.Email2.Recipients
+cuon.simplemail.Recipients" class="py-name" href="#" onclick="return doclink('link-14', 'Recipients', 'link-14');">Recipients</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable cuon.Email2.CCRecipients.cc_recipients=cuon.Email2.CCRecipients-class.html#cc_recipients,Variable cuon.Email2.Email.cc_recipients=cuon.Email2.Email-class.html#cc_recipients,Variable cuon.simplemail.Email.cc_recipients=cuon.simplemail.Email-class.html#cc_recipients"><a title="cuon.Email2.CCRecipients.cc_recipients
+cuon.Email2.Email.cc_recipients
+cuon.simplemail.Email.cc_recipients" class="py-name" href="#" onclick="return doclink('link-15', 'cc_recipients', 'link-15');">cc_recipients</a></tt> <tt class="py-op">=</tt> <tt id="link-16" class="py-name" targets="Class cuon.Email2.CCRecipients=cuon.Email2.CCRecipients-class.html,Class cuon.simplemail.CCRecipients=cuon.simplemail.CCRecipients-class.html"><a title="cuon.Email2.CCRecipients
+cuon.simplemail.CCRecipients" class="py-name" href="#" onclick="return doclink('link-16', 'CCRecipients', 'link-16');">CCRecipients</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Variable cuon.Email2.BCCRecipients.bcc_recipients=cuon.Email2.BCCRecipients-class.html#bcc_recipients,Variable cuon.Email2.Email.bcc_recipients=cuon.Email2.Email-class.html#bcc_recipients,Variable cuon.simplemail.Email.bcc_recipients=cuon.simplemail.Email-class.html#bcc_recipients"><a title="cuon.Email2.BCCRecipients.bcc_recipients
+cuon.Email2.Email.bcc_recipients
+cuon.simplemail.Email.bcc_recipients" class="py-name" href="#" onclick="return doclink('link-17', 'bcc_recipients', 'link-17');">bcc_recipients</a></tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name" targets="Class cuon.Email2.BCCRecipients=cuon.Email2.BCCRecipients-class.html,Class cuon.simplemail.BCCRecipients=cuon.simplemail.BCCRecipients-class.html"><a title="cuon.Email2.BCCRecipients
+cuon.simplemail.BCCRecipients" class="py-name" href="#" onclick="return doclink('link-18', 'BCCRecipients', 'link-18');">BCCRecipients</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">to_address</tt><tt class="py-op">:</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-19', 'recipients', 'link-13');">recipients</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method cuon.Email2.BCCRecipients.add()=cuon.Email2.BCCRecipients-class.html#add,Method cuon.Email2.CCRecipients.add()=cuon.Email2.CCRecipients-class.html#add,Method cuon.Email2.Recipients.add()=cuon.Email2.Recipients-class.html#add,Method cuon.SVG.newSVG.add()=cuon.SVG.newSVG-class.html#add,Method cuon.simplemail.Recipients.add()=cuon.simplemail.Recipients-class.html#add"><a title="cuon.Email2.BCCRecipients.add
+cuon.Email2.CCRecipients.add
+cuon.Email2.Recipients.add
+cuon.SVG.newSVG.add
+cuon.simplemail.Recipients.add" class="py-name" href="#" onclick="return doclink('link-20', 'add', 'link-20');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">to_address</tt><tt class="py-op">,</tt> <tt class="py-name">to_caption</tt><tt class="py-op">)</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Variable cuon.Email2.Email.subject=cuon.Email2.Email-class.html#subject,Variable cuon.simplemail.Email.subject=cuon.simplemail.Email-class.html#subject"><a title="cuon.Email2.Email.subject
+cuon.simplemail.Email.subject" class="py-name" href="#" onclick="return doclink('link-21', 'subject', 'link-21');">subject</a></tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="cuon.Email2.Email.subject
+cuon.simplemail.Email.subject" class="py-name" href="#" onclick="return doclink('link-22', 'subject', 'link-21');">subject</a></tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Variable cuon.Email2.Email.message=cuon.Email2.Email-class.html#message,Variable cuon.simplemail.Email.message=cuon.simplemail.Email-class.html#message"><a title="cuon.Email2.Email.message
+cuon.simplemail.Email.message" class="py-name" href="#" onclick="return doclink('link-23', 'message', 'link-23');">message</a></tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="cuon.Email2.Email.message
+cuon.simplemail.Email.message" class="py-name" href="#" onclick="return doclink('link-24', 'message', 'link-23');">message</a></tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable cuon.Email2.Email.smtp_server=cuon.Email2.Email-class.html#smtp_server,Variable cuon.simplemail.Email.smtp_server=cuon.simplemail.Email-class.html#smtp_server"><a title="cuon.Email2.Email.smtp_server
+cuon.simplemail.Email.smtp_server" class="py-name" href="#" onclick="return doclink('link-25', 'smtp_server', 'link-25');">smtp_server</a></tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name"><a title="cuon.Email2.Email.smtp_server
+cuon.simplemail.Email.smtp_server" class="py-name" href="#" onclick="return doclink('link-26', 'smtp_server', 'link-25');">smtp_server</a></tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Variable cuon.Email2.Email.smtp_user=cuon.Email2.Email-class.html#smtp_user,Variable cuon.simplemail.Email.smtp_user=cuon.simplemail.Email-class.html#smtp_user"><a title="cuon.Email2.Email.smtp_user
+cuon.simplemail.Email.smtp_user" class="py-name" href="#" onclick="return doclink('link-27', 'smtp_user', 'link-27');">smtp_user</a></tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="cuon.Email2.Email.smtp_user
+cuon.simplemail.Email.smtp_user" class="py-name" href="#" onclick="return doclink('link-28', 'smtp_user', 'link-27');">smtp_user</a></tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Variable cuon.Email2.Email.smtp_password=cuon.Email2.Email-class.html#smtp_password,Variable cuon.simplemail.Email.smtp_password=cuon.simplemail.Email-class.html#smtp_password"><a title="cuon.Email2.Email.smtp_password
+cuon.simplemail.Email.smtp_password" class="py-name" href="#" onclick="return doclink('link-29', 'smtp_password', 'link-29');">smtp_password</a></tt> <tt class="py-op">=</tt> <tt id="link-30" class="py-name"><a title="cuon.Email2.Email.smtp_password
+cuon.simplemail.Email.smtp_password" class="py-name" href="#" onclick="return doclink('link-30', 'smtp_password', 'link-29');">smtp_password</a></tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable cuon.Email2.Email.attachments=cuon.Email2.Email-class.html#attachments,Variable cuon.simplemail.Email.attachments=cuon.simplemail.Email-class.html#attachments"><a title="cuon.Email2.Email.attachments
+cuon.simplemail.Email.attachments" class="py-name" href="#" onclick="return doclink('link-31', 'attachments', 'link-31');">attachments</a></tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name" targets="Class cuon.Email2.Attachments=cuon.Email2.Attachments-class.html,Class cuon.simplemail.Attachments=cuon.simplemail.Attachments-class.html"><a title="cuon.Email2.Attachments
+cuon.simplemail.Attachments" class="py-name" href="#" onclick="return doclink('link-32', 'Attachments', 'link-32');">Attachments</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">attachment_file</tt><tt class="py-op">:</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="cuon.Email2.Email.attachments
+cuon.simplemail.Email.attachments" class="py-name" href="#" onclick="return doclink('link-33', 'attachments', 'link-31');">attachments</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method cuon.Email2.Attachments.add_filename()=cuon.Email2.Attachments-class.html#add_filename,Method cuon.simplemail.Attachments.add_filename()=cuon.simplemail.Attachments-class.html#add_filename"><a title="cuon.Email2.Attachments.add_filename
+cuon.simplemail.Attachments.add_filename" class="py-name" href="#" onclick="return doclink('link-34', 'add_filename', 'link-34');">add_filename</a></tt><tt class="py-op">(</tt><tt class="py-name">attachment_file</tt><tt class="py-op">)</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Variable cuon.Email2.Email.content_subtype=cuon.Email2.Email-class.html#content_subtype,Variable cuon.simplemail.Email.content_subtype=cuon.simplemail.Email-class.html#content_subtype"><a title="cuon.Email2.Email.content_subtype
+cuon.simplemail.Email.content_subtype" class="py-name" href="#" onclick="return doclink('link-35', 'content_subtype', 'link-35');">content_subtype</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"plain"</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Variable cuon.Email2.Email.content_charset=cuon.Email2.Email-class.html#content_charset,Variable cuon.simplemail.Email.content_charset=cuon.simplemail.Email-class.html#content_charset"><a title="cuon.Email2.Email.content_charset
+cuon.simplemail.Email.content_charset" class="py-name" href="#" onclick="return doclink('link-36', 'content_charset', 'link-36');">content_charset</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"iso-8859-1"</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Variable cuon.Email2.Email.header_charset=cuon.Email2.Email-class.html#header_charset,Variable cuon.simplemail.Email.header_charset=cuon.simplemail.Email-class.html#header_charset"><a title="cuon.Email2.Email.header_charset
+cuon.simplemail.Email.header_charset" class="py-name" href="#" onclick="return doclink('link-37', 'header_charset', 'link-37');">header_charset</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"us-ascii"</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Variable cuon.Email2.Email.statusdict=cuon.Email2.Email-class.html#statusdict,Variable cuon.simplemail.Email.statusdict=cuon.simplemail.Email-class.html#statusdict"><a title="cuon.Email2.Email.statusdict
+cuon.simplemail.Email.statusdict" class="py-name" href="#" onclick="return doclink('link-38', 'statusdict', 'link-38');">statusdict</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-39" class="py-name" targets="Variable cuon.Email2.Email.user_agent=cuon.Email2.Email-class.html#user_agent,Variable cuon.simplemail.Email.user_agent=cuon.simplemail.Email-class.html#user_agent"><a title="cuon.Email2.Email.user_agent
+cuon.simplemail.Email.user_agent" class="py-name" href="#" onclick="return doclink('link-39', 'user_agent', 'link-39');">user_agent</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="cuon.Email2.Email.user_agent
+cuon.simplemail.Email.user_agent" class="py-name" href="#" onclick="return doclink('link-40', 'user_agent', 'link-39');">user_agent</a></tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="cuon.Email2.Email.user_agent
+cuon.simplemail.Email.user_agent" class="py-name" href="#" onclick="return doclink('link-41', 'user_agent', 'link-39');">user_agent</a></tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="cuon.Email2.Email.user_agent
+cuon.simplemail.Email.user_agent" class="py-name" href="#" onclick="return doclink('link-42', 'user_agent', 'link-39');">user_agent</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line">                <tt class="py-string">"SimpleMail (http://www.python-forum.de/post-18144.html) "</tt>  </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">                <tt class="py-string">"Python v%s"</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line">            <tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">version</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Variable cuon.Email2.Email.reply_to_address=cuon.Email2.Email-class.html#reply_to_address,Variable cuon.simplemail.Email.reply_to_address=cuon.simplemail.Email-class.html#reply_to_address"><a title="cuon.Email2.Email.reply_to_address
+cuon.simplemail.Email.reply_to_address" class="py-name" href="#" onclick="return doclink('link-43', 'reply_to_address', 'link-43');">reply_to_address</a></tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name"><a title="cuon.Email2.Email.reply_to_address
+cuon.simplemail.Email.reply_to_address" class="py-name" href="#" onclick="return doclink('link-44', 'reply_to_address', 'link-43');">reply_to_address</a></tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Variable cuon.Email2.Email.reply_to_caption=cuon.Email2.Email-class.html#reply_to_caption,Variable cuon.simplemail.Email.reply_to_caption=cuon.simplemail.Email-class.html#reply_to_caption"><a title="cuon.Email2.Email.reply_to_caption
+cuon.simplemail.Email.reply_to_caption" class="py-name" href="#" onclick="return doclink('link-45', 'reply_to_caption', 'link-45');">reply_to_caption</a></tt> <tt class="py-op">=</tt> <tt id="link-46" class="py-name"><a title="cuon.Email2.Email.reply_to_caption
+cuon.simplemail.Email.reply_to_caption" class="py-name" href="#" onclick="return doclink('link-46', 'reply_to_caption', 'link-45');">reply_to_caption</a></tt> </tt>
+</div><a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line"> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">    <tt class="py-comment">#----------------------------------------------------------------------</tt> </tt>
+<a name="Email.send"></a><div id="Email.send-def"><a name="L405"></a><tt class="py-lineno">405</tt> <a class="py-toggle" href="#" id="Email.send-toggle" onclick="return toggle('Email.send');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="cuon.simplemail.Email-class.html#send">send</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Email.send-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Email.send-expanded"><a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line"><tt class="py-docstring">        de: Sendet die Email an den Empfaenger.</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line"><tt class="py-docstring">            Wird das Email nur an einen Empfaenger gesendet, dann wird bei</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"><tt class="py-docstring">            Erfolg &lt;True&gt; zurueck gegeben. Wird das Email an mehrere Empfaenger</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"><tt class="py-docstring">            gesendet und wurde an mindestens einen der Empfaenger erfolgreich</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"><tt class="py-docstring">            ausgeliefert, dann wird ebenfalls &lt;True&gt; zurueck gegeben.</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"><tt class="py-docstring">            </tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"><tt class="py-docstring">            Wird das Email nur an einen Empfaenger gesendet, dann wird bei</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line"><tt class="py-docstring">            Misserfolg &lt;False&gt; zurueck gegeben. Wird das Email an mehrere </tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"><tt class="py-docstring">            Empfaenger gesendet und wurde an keinen der Empfaenger erfolgreich</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line"><tt class="py-docstring">            ausgeliefert, dann wird &lt;False&gt; zurueck gegeben.</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line"> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line">        <tt class="py-comment"># pruefen ob alle notwendigen Informationen angegeben wurden</tt> </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="cuon.Email2.Email.from_address
+cuon.simplemail.Email.from_address" class="py-name" href="#" onclick="return doclink('link-47', 'from_address', 'link-9');">from_address</a></tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-48" class="py-name" targets="Class cuon.Email2.NoFromAddress_Exception=cuon.Email2.NoFromAddress_Exception-class.html,Class cuon.simplemail.NoFromAddress_Exception=cuon.simplemail.NoFromAddress_Exception-class.html"><a title="cuon.Email2.NoFromAddress_Exception
+cuon.simplemail.NoFromAddress_Exception" class="py-name" href="#" onclick="return doclink('link-48', 'NoFromAddress_Exception', 'link-48');">NoFromAddress_Exception</a></tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-49', 'recipients', 'link-13');">recipients</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Method cuon.Email2.Attachments.count()=cuon.Email2.Attachments-class.html#count,Method cuon.Email2.BCCRecipients.count()=cuon.Email2.BCCRecipients-class.html#count,Method cuon.Email2.CCRecipients.count()=cuon.Email2.CCRecipients-class.html#count,Method cuon.Email2.Recipients.count()=cuon.Email2.Recipients-class.html#count,Method cuon.simplemail.Attachments.count()=cuon.simplemail.Attachments-class.html#count,Method cuon.simplemail.Recipients.count()=cuon.simplemail.Recipients-class.html#count"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-50', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-op">(</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="cuon.Email2.CCRecipients.cc_recipients
+cuon.Email2.Email.cc_recipients
+cuon.simplemail.Email.cc_recipients" class="py-name" href="#" onclick="return doclink('link-51', 'cc_recipients', 'link-15');">cc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-52', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt>  </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="cuon.Email2.BCCRecipients.bcc_recipients
+cuon.Email2.Email.bcc_recipients
+cuon.simplemail.Email.bcc_recipients" class="py-name" href="#" onclick="return doclink('link-53', 'bcc_recipients', 'link-17');">bcc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-54', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line">            <tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-55" class="py-name" targets="Class cuon.Email2.NoToAddress_Exception=cuon.Email2.NoToAddress_Exception-class.html,Class cuon.simplemail.NoToAddress_Exception=cuon.simplemail.NoToAddress_Exception-class.html"><a title="cuon.Email2.NoToAddress_Exception
+cuon.simplemail.NoToAddress_Exception" class="py-name" href="#" onclick="return doclink('link-55', 'NoToAddress_Exception', 'link-55');">NoToAddress_Exception</a></tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="cuon.Email2.Email.subject
+cuon.simplemail.Email.subject" class="py-name" href="#" onclick="return doclink('link-56', 'subject', 'link-21');">subject</a></tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-57" class="py-name" targets="Class cuon.Email2.NoSubject_Exception=cuon.Email2.NoSubject_Exception-class.html,Class cuon.simplemail.NoSubject_Exception=cuon.simplemail.NoSubject_Exception-class.html"><a title="cuon.Email2.NoSubject_Exception
+cuon.simplemail.NoSubject_Exception" class="py-name" href="#" onclick="return doclink('link-57', 'NoSubject_Exception', 'link-57');">NoSubject_Exception</a></tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line"> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">        <tt class="py-comment"># Email zusammensetzen</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="cuon.Email2.Email.attachments
+cuon.simplemail.Email.attachments" class="py-name" href="#" onclick="return doclink('link-58', 'attachments', 'link-31');">attachments</a></tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-59', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">            <tt class="py-comment"># Nur Text</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">            <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEText</tt><tt class="py-op">(</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">                <tt class="py-name">_text</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="cuon.Email2.Email.message
+cuon.simplemail.Email.message" class="py-name" href="#" onclick="return doclink('link-60', 'message', 'link-23');">message</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">                <tt class="py-name">_subtype</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="cuon.Email2.Email.content_subtype
+cuon.simplemail.Email.content_subtype" class="py-name" href="#" onclick="return doclink('link-61', 'content_subtype', 'link-35');">content_subtype</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">                <tt class="py-name">_charset</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="cuon.Email2.Email.content_charset
+cuon.simplemail.Email.content_charset" class="py-name" href="#" onclick="return doclink('link-62', 'content_charset', 'link-36');">content_charset</a></tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">            <tt class="py-op">)</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">            <tt class="py-comment"># Multipart</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line">            <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEMultipart</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="cuon.Email2.Email.message
+cuon.simplemail.Email.message" class="py-name" href="#" onclick="return doclink('link-63', 'message', 'link-23');">message</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line">                <tt class="py-name">att</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEText</tt><tt class="py-op">(</tt> </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line">                    <tt class="py-name">_text</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="cuon.Email2.Email.message
+cuon.simplemail.Email.message" class="py-name" href="#" onclick="return doclink('link-64', 'message', 'link-23');">message</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">                    <tt class="py-name">_subtype</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="cuon.Email2.Email.content_subtype
+cuon.simplemail.Email.content_subtype" class="py-name" href="#" onclick="return doclink('link-65', 'content_subtype', 'link-35');">content_subtype</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line">                    <tt class="py-name">_charset</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="cuon.Email2.Email.content_charset
+cuon.simplemail.Email.content_charset" class="py-name" href="#" onclick="return doclink('link-66', 'content_charset', 'link-36');">content_charset</a></tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">                <tt class="py-op">)</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">                <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">attach</tt><tt class="py-op">(</tt><tt class="py-name">att</tt><tt class="py-op">)</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line"> </tt>
+<a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line">        <tt class="py-comment"># Empf&#228;nger, CC, BCC, Absender, User-Agent, Antwort-an </tt> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">        <tt class="py-comment"># und Betreff hinzuf&#252;gen</tt> </tt>
+<a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line">        <tt class="py-name">from_str</tt> <tt class="py-op">=</tt> <tt class="py-name">formataddr</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="cuon.Email2.Email.from_caption
+cuon.simplemail.Email.from_caption" class="py-name" href="#" onclick="return doclink('link-67', 'from_caption', 'link-11');">from_caption</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="cuon.Email2.Email.from_address
+cuon.simplemail.Email.from_address" class="py-name" href="#" onclick="return doclink('link-68', 'from_address', 'link-9');">from_address</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"From"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">from_str</tt> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-69" class="py-name"><a title="cuon.Email2.Email.reply_to_address
+cuon.simplemail.Email.reply_to_address" class="py-name" href="#" onclick="return doclink('link-69', 'reply_to_address', 'link-43');">reply_to_address</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line">            <tt class="py-name">reply_to_str</tt> <tt class="py-op">=</tt> <tt class="py-name">formataddr</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-70" class="py-name"><a title="cuon.Email2.Email.reply_to_caption
+cuon.simplemail.Email.reply_to_caption" class="py-name" href="#" onclick="return doclink('link-70', 'reply_to_caption', 'link-45');">reply_to_caption</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-71" class="py-name"><a title="cuon.Email2.Email.reply_to_address
+cuon.simplemail.Email.reply_to_address" class="py-name" href="#" onclick="return doclink('link-71', 'reply_to_address', 'link-43');">reply_to_address</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"Reply-To"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">reply_to_str</tt> </tt>
+<a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-72', 'recipients', 'link-13');">recipients</a></tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-73', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"To"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-74', 'recipients', 'link-13');">recipients</a></tt><tt class="py-op">.</tt><tt id="link-75" class="py-name" targets="Method cuon.Email2.Attachments.get_list()=cuon.Email2.Attachments-class.html#get_list,Method cuon.Email2.BCCRecipients.get_list()=cuon.Email2.BCCRecipients-class.html#get_list,Method cuon.Email2.CCRecipients.get_list()=cuon.Email2.CCRecipients-class.html#get_list,Method cuon.Email2.Recipients.get_list()=cuon.Email2.Recipients-class.html#get_list,Method cuon.simplemail.Attachments.get_list()=cuon.simplemail.Attachments-class.html#get_list,Method cuon.simplemail.Recipients.get_list()=cuon.simplemail.Recipients-class.html#get_list"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-75', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="cuon.Email2.CCRecipients.cc_recipients
+cuon.Email2.Email.cc_recipients
+cuon.simplemail.Email.cc_recipients" class="py-name" href="#" onclick="return doclink('link-76', 'cc_recipients', 'link-15');">cc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-77" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-77', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"Cc"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-78" class="py-name"><a title="cuon.Email2.CCRecipients.cc_recipients
+cuon.Email2.Email.cc_recipients
+cuon.simplemail.Email.cc_recipients" class="py-name" href="#" onclick="return doclink('link-78', 'cc_recipients', 'link-15');">cc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-79" class="py-name"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-79', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L465"></a><tt class="py-lineno">465</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"Date"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">formatdate</tt><tt class="py-op">(</tt><tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L466"></a><tt class="py-lineno">466</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"User-Agent"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-80" class="py-name"><a title="cuon.Email2.Email.user_agent
+cuon.simplemail.Email.user_agent" class="py-name" href="#" onclick="return doclink('link-80', 'user_agent', 'link-39');">user_agent</a></tt> </tt>
+<a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"Subject"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">Header</tt><tt class="py-op">(</tt> </tt>
+<a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name"><a title="cuon.Email2.Email.subject
+cuon.simplemail.Email.subject" class="py-name" href="#" onclick="return doclink('link-81', 'subject', 'link-21');">subject</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-82" class="py-name"><a title="cuon.Email2.Email.header_charset
+cuon.simplemail.Email.header_charset" class="py-name" href="#" onclick="return doclink('link-82', 'header_charset', 'link-37');">header_charset</a></tt> </tt>
+<a name="L470"></a><tt class="py-lineno">470</tt>  <tt class="py-line">            <tt class="py-op">)</tt> </tt>
+<a name="L471"></a><tt class="py-lineno">471</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">(</tt><tt class="py-name">UnicodeDecodeError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L472"></a><tt class="py-lineno">472</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">[</tt><tt class="py-string">"Subject"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">Header</tt><tt class="py-op">(</tt> </tt>
+<a name="L473"></a><tt class="py-lineno">473</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-83" class="py-name"><a title="cuon.Email2.Email.subject
+cuon.simplemail.Email.subject" class="py-name" href="#" onclick="return doclink('link-83', 'subject', 'link-21');">subject</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-84" class="py-name"><a title="cuon.Email2.Email.content_charset
+cuon.simplemail.Email.content_charset" class="py-name" href="#" onclick="return doclink('link-84', 'content_charset', 'link-36');">content_charset</a></tt> </tt>
+<a name="L474"></a><tt class="py-lineno">474</tt>  <tt class="py-line">            <tt class="py-op">)</tt> </tt>
+<a name="L475"></a><tt class="py-lineno">475</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">preamble</tt> <tt class="py-op">=</tt> <tt class="py-string">"You will not see this in a MIME-aware mail reader.\n"</tt> </tt>
+<a name="L476"></a><tt class="py-lineno">476</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">epilogue</tt> <tt class="py-op">=</tt> <tt class="py-string">""</tt> </tt>
+<a name="L477"></a><tt class="py-lineno">477</tt>  <tt class="py-line"> </tt>
+<a name="L478"></a><tt class="py-lineno">478</tt>  <tt class="py-line">        <tt class="py-comment"># Falls MULTIPART --&gt; zusammensetzen</tt> </tt>
+<a name="L479"></a><tt class="py-lineno">479</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-85" class="py-name"><a title="cuon.Email2.Email.attachments
+cuon.simplemail.Email.attachments" class="py-name" href="#" onclick="return doclink('link-85', 'attachments', 'link-31');">attachments</a></tt><tt class="py-op">.</tt><tt id="link-86" class="py-name"><a title="cuon.Email2.Attachments.count
+cuon.Email2.BCCRecipients.count
+cuon.Email2.CCRecipients.count
+cuon.Email2.Recipients.count
+cuon.simplemail.Attachments.count
+cuon.simplemail.Recipients.count" class="py-name" href="#" onclick="return doclink('link-86', 'count', 'link-50');">count</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L480"></a><tt class="py-lineno">480</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">filename</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="cuon.Email2.Email.attachments
+cuon.simplemail.Email.attachments" class="py-name" href="#" onclick="return doclink('link-87', 'attachments', 'link-31');">attachments</a></tt><tt class="py-op">.</tt><tt id="link-88" class="py-name"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-88', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L481"></a><tt class="py-lineno">481</tt>  <tt class="py-line">                <tt class="py-comment"># Pruefen ob Datei existiert</tt> </tt>
+<a name="L482"></a><tt class="py-lineno">482</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isfile</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L483"></a><tt class="py-lineno">483</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> <tt id="link-89" class="py-name" targets="Class cuon.Email2.AttachmentNotFound_Exception=cuon.Email2.AttachmentNotFound_Exception-class.html,Class cuon.simplemail.AttachmentNotFound_Exception=cuon.simplemail.AttachmentNotFound_Exception-class.html"><a title="cuon.Email2.AttachmentNotFound_Exception
+cuon.simplemail.AttachmentNotFound_Exception" class="py-name" href="#" onclick="return doclink('link-89', 'AttachmentNotFound_Exception', 'link-89');">AttachmentNotFound_Exception</a></tt><tt class="py-op">,</tt> <tt class="py-name">filename</tt> </tt>
+<a name="L484"></a><tt class="py-lineno">484</tt>  <tt class="py-line">                <tt class="py-comment"># Datentyp herausfinden</tt> </tt>
+<a name="L485"></a><tt class="py-lineno">485</tt>  <tt class="py-line">                <tt class="py-name">ctype</tt><tt class="py-op">,</tt> <tt class="py-name">encoding</tt> <tt class="py-op">=</tt> <tt class="py-name">mimetypes</tt><tt class="py-op">.</tt><tt class="py-name">guess_type</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L486"></a><tt class="py-lineno">486</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">ctype</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-name">encoding</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L487"></a><tt class="py-lineno">487</tt>  <tt class="py-line">                    <tt class="py-name">ctype</tt> <tt class="py-op">=</tt> <tt class="py-string">'application/octet-stream'</tt> </tt>
+<a name="L488"></a><tt class="py-lineno">488</tt>  <tt class="py-line">                <tt class="py-name">maintype</tt><tt class="py-op">,</tt> <tt class="py-name">subtype</tt> <tt class="py-op">=</tt> <tt class="py-name">ctype</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">,</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L489"></a><tt class="py-lineno">489</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">maintype</tt> <tt class="py-op">==</tt> <tt class="py-string">'text'</tt><tt class="py-op">:</tt> </tt>
+<a name="L490"></a><tt class="py-lineno">490</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt> </tt>
+<a name="L491"></a><tt class="py-lineno">491</tt>  <tt class="py-line">                    <tt class="py-comment"># Note: we should handle calculating the charset</tt> </tt>
+<a name="L492"></a><tt class="py-lineno">492</tt>  <tt class="py-line">                    <tt class="py-name">att</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEText</tt><tt class="py-op">(</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">_subtype</tt><tt class="py-op">=</tt><tt class="py-name">subtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L493"></a><tt class="py-lineno">493</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L494"></a><tt class="py-lineno">494</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">maintype</tt> <tt class="py-op">==</tt> <tt class="py-string">'image'</tt><tt class="py-op">:</tt> </tt>
+<a name="L495"></a><tt class="py-lineno">495</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">'rb'</tt><tt class="py-op">)</tt> </tt>
+<a name="L496"></a><tt class="py-lineno">496</tt>  <tt class="py-line">                    <tt class="py-name">att</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEImage</tt><tt class="py-op">(</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">_subtype</tt><tt class="py-op">=</tt><tt class="py-name">subtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L497"></a><tt class="py-lineno">497</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L498"></a><tt class="py-lineno">498</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">maintype</tt> <tt class="py-op">==</tt> <tt class="py-string">'audio'</tt><tt class="py-op">:</tt> </tt>
+<a name="L499"></a><tt class="py-lineno">499</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">'rb'</tt><tt class="py-op">)</tt> </tt>
+<a name="L500"></a><tt class="py-lineno">500</tt>  <tt class="py-line">                    <tt class="py-name">att</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEAudio</tt><tt class="py-op">(</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">_subtype</tt><tt class="py-op">=</tt><tt class="py-name">subtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L501"></a><tt class="py-lineno">501</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L502"></a><tt class="py-lineno">502</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L503"></a><tt class="py-lineno">503</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt> <tt class="py-op">=</tt> <tt class="py-name">file</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">,</tt> <tt class="py-string">'rb'</tt><tt class="py-op">)</tt> </tt>
+<a name="L504"></a><tt class="py-lineno">504</tt>  <tt class="py-line">                    <tt class="py-name">att</tt> <tt class="py-op">=</tt> <tt class="py-name">MIMEBase</tt><tt class="py-op">(</tt><tt class="py-name">maintype</tt><tt class="py-op">,</tt> <tt class="py-name">subtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L505"></a><tt class="py-lineno">505</tt>  <tt class="py-line">                    <tt class="py-name">att</tt><tt class="py-op">.</tt><tt class="py-name">set_payload</tt><tt class="py-op">(</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L506"></a><tt class="py-lineno">506</tt>  <tt class="py-line">                    <tt class="py-name">fp</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L507"></a><tt class="py-lineno">507</tt>  <tt class="py-line">                    <tt class="py-comment"># Encode the payload using Base64</tt> </tt>
+<a name="L508"></a><tt class="py-lineno">508</tt>  <tt class="py-line">                    <tt class="py-name">Encoders</tt><tt class="py-op">.</tt><tt class="py-name">encode_base64</tt><tt class="py-op">(</tt><tt class="py-name">att</tt><tt class="py-op">)</tt> </tt>
+<a name="L509"></a><tt class="py-lineno">509</tt>  <tt class="py-line">                <tt class="py-comment"># Set the filename parameter</tt> </tt>
+<a name="L510"></a><tt class="py-lineno">510</tt>  <tt class="py-line">                <tt class="py-name">att</tt><tt class="py-op">.</tt><tt class="py-name">add_header</tt><tt class="py-op">(</tt> </tt>
+<a name="L511"></a><tt class="py-lineno">511</tt>  <tt class="py-line">                    <tt class="py-string">'Content-Disposition'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L512"></a><tt class="py-lineno">512</tt>  <tt class="py-line">                    <tt class="py-string">'attachment'</tt><tt class="py-op">,</tt>  </tt>
+<a name="L513"></a><tt class="py-lineno">513</tt>  <tt class="py-line">                    <tt class="py-name">filename</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">filename</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L514"></a><tt class="py-lineno">514</tt>  <tt class="py-line">                <tt class="py-op">)</tt> </tt>
+<a name="L515"></a><tt class="py-lineno">515</tt>  <tt class="py-line">                <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">attach</tt><tt class="py-op">(</tt><tt class="py-name">att</tt><tt class="py-op">)</tt> </tt>
+<a name="L516"></a><tt class="py-lineno">516</tt>  <tt class="py-line"> </tt>
+<a name="L517"></a><tt class="py-lineno">517</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L518"></a><tt class="py-lineno">518</tt>  <tt class="py-line">        <tt class="py-comment"># Am SMTP-Server anmelden und evt. authentifizieren</tt> </tt>
+<a name="L519"></a><tt class="py-lineno">519</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L520"></a><tt class="py-lineno">520</tt>  <tt class="py-line">        <tt class="py-name">smtp</tt> <tt class="py-op">=</tt> <tt class="py-name">smtplib</tt><tt class="py-op">.</tt><tt class="py-name">SMTP</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L521"></a><tt class="py-lineno">521</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name"><a title="cuon.Email2.Email.smtp_server
+cuon.simplemail.Email.smtp_server" class="py-name" href="#" onclick="return doclink('link-90', 'smtp_server', 'link-25');">smtp_server</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L522"></a><tt class="py-lineno">522</tt>  <tt class="py-line">            <tt class="py-name">smtp</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-91" class="py-name"><a title="cuon.Email2.Email.smtp_server
+cuon.simplemail.Email.smtp_server" class="py-name" href="#" onclick="return doclink('link-91', 'smtp_server', 'link-25');">smtp_server</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L523"></a><tt class="py-lineno">523</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L524"></a><tt class="py-lineno">524</tt>  <tt class="py-line">            <tt class="py-name">smtp</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L525"></a><tt class="py-lineno">525</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-92" class="py-name"><a title="cuon.Email2.Email.smtp_user
+cuon.simplemail.Email.smtp_user" class="py-name" href="#" onclick="return doclink('link-92', 'smtp_user', 'link-27');">smtp_user</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L526"></a><tt class="py-lineno">526</tt>  <tt class="py-line">            <tt class="py-name">smtp</tt><tt class="py-op">.</tt><tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">user</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="cuon.Email2.Email.smtp_user
+cuon.simplemail.Email.smtp_user" class="py-name" href="#" onclick="return doclink('link-93', 'smtp_user', 'link-27');">smtp_user</a></tt><tt class="py-op">,</tt> <tt class="py-name">password</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-94" class="py-name"><a title="cuon.Email2.Email.smtp_password
+cuon.simplemail.Email.smtp_password" class="py-name" href="#" onclick="return doclink('link-94', 'smtp_password', 'link-29');">smtp_password</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L527"></a><tt class="py-lineno">527</tt>  <tt class="py-line"> </tt>
+<a name="L528"></a><tt class="py-lineno">528</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L529"></a><tt class="py-lineno">529</tt>  <tt class="py-line">        <tt class="py-comment"># Email versenden</tt> </tt>
+<a name="L530"></a><tt class="py-lineno">530</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L531"></a><tt class="py-lineno">531</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-95" class="py-name"><a title="cuon.Email2.Email.statusdict
+cuon.simplemail.Email.statusdict" class="py-name" href="#" onclick="return doclink('link-95', 'statusdict', 'link-38');">statusdict</a></tt> <tt class="py-op">=</tt> <tt class="py-name">smtp</tt><tt class="py-op">.</tt><tt class="py-name">sendmail</tt><tt class="py-op">(</tt> </tt>
+<a name="L532"></a><tt class="py-lineno">532</tt>  <tt class="py-line">            <tt class="py-name">from_str</tt><tt class="py-op">,</tt>  </tt>
+<a name="L533"></a><tt class="py-lineno">533</tt>  <tt class="py-line">            <tt class="py-op">(</tt> </tt>
+<a name="L534"></a><tt class="py-lineno">534</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-96" class="py-name"><a title="cuon.Email2.Email.recipients
+cuon.simplemail.Email.recipients" class="py-name" href="#" onclick="return doclink('link-96', 'recipients', 'link-13');">recipients</a></tt><tt class="py-op">.</tt><tt id="link-97" class="py-name"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-97', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt>  </tt>
+<a name="L535"></a><tt class="py-lineno">535</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-98" class="py-name"><a title="cuon.Email2.CCRecipients.cc_recipients
+cuon.Email2.Email.cc_recipients
+cuon.simplemail.Email.cc_recipients" class="py-name" href="#" onclick="return doclink('link-98', 'cc_recipients', 'link-15');">cc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-99" class="py-name"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-99', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt>  </tt>
+<a name="L536"></a><tt class="py-lineno">536</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="cuon.Email2.BCCRecipients.bcc_recipients
+cuon.Email2.Email.bcc_recipients
+cuon.simplemail.Email.bcc_recipients" class="py-name" href="#" onclick="return doclink('link-100', 'bcc_recipients', 'link-17');">bcc_recipients</a></tt><tt class="py-op">.</tt><tt id="link-101" class="py-name"><a title="cuon.Email2.Attachments.get_list
+cuon.Email2.BCCRecipients.get_list
+cuon.Email2.CCRecipients.get_list
+cuon.Email2.Recipients.get_list
+cuon.simplemail.Attachments.get_list
+cuon.simplemail.Recipients.get_list" class="py-name" href="#" onclick="return doclink('link-101', 'get_list', 'link-75');">get_list</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L537"></a><tt class="py-lineno">537</tt>  <tt class="py-line">            <tt class="py-op">)</tt><tt class="py-op">,</tt>  </tt>
+<a name="L538"></a><tt class="py-lineno">538</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">as_string</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L539"></a><tt class="py-lineno">539</tt>  <tt class="py-line">        <tt class="py-op">)</tt> </tt>
+<a name="L540"></a><tt class="py-lineno">540</tt>  <tt class="py-line">        <tt class="py-name">smtp</tt><tt class="py-op">.</tt><tt class="py-name">close</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L541"></a><tt class="py-lineno">541</tt>  <tt class="py-line"> </tt>
+<a name="L542"></a><tt class="py-lineno">542</tt>  <tt class="py-line">        <tt class="py-comment"># Rueckmeldung</tt> </tt>
+<a name="L543"></a><tt class="py-lineno">543</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div></div><a name="L544"></a><tt class="py-lineno">544</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="cuon-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Feb 11 22:18:21 2011
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

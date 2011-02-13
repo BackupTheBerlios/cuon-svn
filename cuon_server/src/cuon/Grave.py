@@ -146,7 +146,7 @@ class Grave(xmlrpc.XMLRPC, basics):
                 sSql += "''" + ",  " 
         
         
-        sSql +=  `nRows` + ")  as (graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar ) "
+        sSql +=  `nRows` + ")  as (graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar) "
         
         print 'grave list sql = ',  sSql
         

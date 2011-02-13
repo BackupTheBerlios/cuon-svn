@@ -70,4 +70,3 @@ class standard_delivery_note:
         
         self.loadXmlReport('order_standarddelivery', 'ReportStandardDelivery1')
         
-
