@@ -14,38 +14,48 @@ docbook2html de_cuon.docbook && docbook2pdf de_cuon.docbook
 
 cd ..
 
-rsync  -avz --numeric-ids -e 'ssh -p 22'  *.html root@cuon.org://var/www
+rsync  -avz --numeric-ids -e 'ssh -p 22'  *.html root@cuon.org://var/www/cuon_web
 
-rsync  -avz --numeric-ids -e 'ssh -p 22'  *.js root@cuon.org://var/www
+rsync  -avz --numeric-ids -e 'ssh -p 22'  *.js root@cuon.org://var/www/cuon_web
 
-rsync  -avz --numeric-ids -e 'ssh -p 22'  *.css root@cuon.org://var/www
-
-
+rsync  -avz --numeric-ids -e 'ssh -p 22'  *.css root@cuon.org://var/www/cuon_web
 
 
 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.html root@cuon.org://var/www/Cuon 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.css root@cuon.org://var/www/Cuon 
 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.pdf root@cuon.org://var/www/Cuon 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/images/screenshots/*.png root@cuon.org://var/www/Cuon/images/screenshots
-rsync  -avz --numeric-ids -e 'ssh -p 22'  Cyrus/*.html root@cuon.org://var/www/Cyrus
-rsync  -avz --numeric-ids -e 'ssh -p 22'  Downloads/*.html root@cuon.org://var/www/Downloads 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Extensions/*.html root@cuon.org://var/www/Extensions 
-rsync  -avz --numeric-ids -e 'ssh -p 22' Screenshots/*.html root@cuon.org://var/www/Screenshots
-rsync  -avz --numeric-ids -e 'ssh -p 22' CuonDia/*.html root@cuon.org://var/www/CuonDia
+
+rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.html root@cuon.org://var/www/cuon_web/Cuon 
+rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.css root@cuon.org://var/www/cuon_web/Cuon 
+
+rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.pdf root@cuon.org://var/www/cuon_web/Cuon 
+rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/images/screenshots/*.png root@cuon.org://var/www/cuon_web/Cuon/images/screenshots
+rsync  -avz --numeric-ids -e 'ssh -p 22'  Cyrus/*.html root@cuon.org://var/www/cuon_web/Cyrus
+rsync  -avz --numeric-ids -e 'ssh -p 22'  Downloads/*.html root@cuon.org://var/www/cuon_web/Downloads 
+rsync  -avz --numeric-ids -e 'ssh -p 22' Extensions/*.html root@cuon.org://var/www/cuon_web/Extensions 
+rsync  -avz --numeric-ids -e 'ssh -p 22' Screenshots/*.html root@cuon.org://var/www/cuon_web/Screenshots
+rsync  -avz --numeric-ids -e 'ssh -p 22' CuonDia/*.html root@cuon.org://var/www/cuon_web/CuonDia
 
 # Images
-rsync -r -avz --numeric-ids -e 'ssh -p 22' images root@cuon.org://var/www
+rsync -r -avz --numeric-ids -e 'ssh -p 22' images root@cuon.org://var/www/cuon_web
+
+# Api
+
+#client api
+cp -R ../api/html/* api
+cp  ../api/pdf/*.pdf  api
+# server api
+cp -R ../api/cuonserver api
+
+rsync -r -avz --numeric-ids -e 'ssh -p 22' api root@cuon.org://var/www/cuon_web
 
 # public
-rsync -r -avz --numeric-ids -e 'ssh -p 22' public_html root@cuon.org://var/www
+rsync -r -avz --numeric-ids -e 'ssh -p 22' public_html root@cuon.org://var/www/cuon_web
 
 # English
-rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.html root@cuon.org://var/www/en_Cuon
-rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.css root@cuon.org://var/www/en_Cuon
-rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.pdf root@cuon.org://var/www/en_Cuon
-rsync -r -avz --numeric-ids -e 'ssh -p 22' en_Cuon/images root@cuon.org://var/www/en_Cuon/
+rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.html root@cuon.org://var/www/cuon_web/en_Cuon
+rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.css root@cuon.org://var/www/cuon_web/en_Cuon
+rsync  -avz --numeric-ids -e 'ssh -p 22' en_Cuon/*.pdf root@cuon.org://var/www/cuon_web/en_Cuon
+rsync -r -avz --numeric-ids -e 'ssh -p 22' en_Cuon/images root@cuon.org://var/www/cuon_web/en_Cuon/
 
 
 # now set the rights
