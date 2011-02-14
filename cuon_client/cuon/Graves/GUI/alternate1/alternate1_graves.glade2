@@ -2458,6 +2458,7 @@ sind f&#xFC;r die Men&#xFC;punkte "Grab" und  "Rechnung" inaktiv.</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <signal name="changed" handler="on_eArticleID_changed"/>
                               </object>
                               <packing>
                                 <property name="position">0</property>
