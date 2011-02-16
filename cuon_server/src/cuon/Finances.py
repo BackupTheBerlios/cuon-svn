@@ -276,7 +276,9 @@ class Finances(xmlrpc.XMLRPC, basics):
             pass
         #print "Amount of invoice = ", retValue    
         return retValue  
-        
+    
+    
+    
     def xmlrpc_getTotalDiscount(self, order_id,  dicUser): 
         total_amount = 0
         sSql = " select cash_discount from in_payment where order_id = " + `order_id` 

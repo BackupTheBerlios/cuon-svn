@@ -1186,3 +1186,17 @@ class Address(xmlrpc.XMLRPC, basics):
         
 
 
+    def xmlrpc_createMiscEntry(self, address_id, dicUser):
+        dicEntries = {}
+        dicEntries['address_id'] = [address_id, 'int']
+        dicEntries['pricegroup1'] = [True, 'bool']
+        dicEntries['pricegroup2'] = [False, 'bool']
+        dicEntries['pricegroup3'] = [False, 'bool']
+        dicEntries['pricegroup4'] = [False, 'bool']
+        dicEntries['pricegroup_none'] = [False, 'bool']
+        
+        
+        newID = self.oDatabase.xmlrpc_saveRecord('addresses_misc', -1, dicEntries, dicUser, 'NO')
+        
+        return newID
+        

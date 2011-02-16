@@ -78,3 +78,11 @@ class SingleGrave(SingleData):
             pass
             
         return graveyardid
+        
+    def fillOtherEntries(self, oneRecord):
+        
+        if  (oneRecord['pricegroup1'] == 'NONE' ):
+            self.getWidget('rbPricegroupNone').set_active(True)
+            
+        
+        

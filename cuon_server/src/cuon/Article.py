@@ -424,3 +424,16 @@ class Article(xmlrpc.XMLRPC, basics):
         return ['NONE']
         
         
+
+    def xmlrpc_getPrice(self, Modul,iModulID,   iArticleID,  dicUser):
+        retValue = 0.00
+        sSql = "select * from fct_get_price_for_pricegroup('" + Modul+ "' , " + `iModulID`+ ", " + `iArticleID` + " )  as  price  "
+        liPrice = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser) 
+        print 'liPrice = ',  liPrice
+        try:
+            print 'price from database',  liPrice[0]['price']
+            retValue=float(liPrice[0]['price']) 
+        except:
+            print 'not correct float format'
+            retValue = 0.00
+        return self.getCurrency(retValue)

@@ -668,8 +668,7 @@
       <textOfTrigger>EXECUTE PROCEDURE fct_partner_schedul_change() ;  </textOfTrigger>
       <description>update or insert set sep_info_3 to 5 </description>
       
-    </trigger>
-    
+   
      <trigger>
       <nameOfTrigger>trg_insertPartnerSchedul</nameOfTrigger>
       <table>PARTNER_SCHEDUL</table>

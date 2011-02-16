@@ -1024,3 +1024,9 @@ class basics(xmlrpc.XMLRPC):
     def getNewUUID(self):
         return str(uuid.uuid4())
         
+
+    def getCurrency(self, fValue):
+        rValue = ("%." + `self.CURRENCY_ROUND` + "f") % round(fValue, self.CURRENCY_ROUND)
+        
+        print 'Currency = ',  rValue
+        return rValue

@@ -1152,7 +1152,56 @@
       <default />
       <comment />
     </field>
-    
+       <field>
+      <name>pricegroup1</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup2</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup3</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup4</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>f</default>
+      <comment />
+    </field>
+      <field>
+      <name>pricegroup_none</name>
+      <type>bool</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>t</default>
+      <comment />
+    </field>
      </table>
       <table>
     <!-- t_grave_work template for the graves -->

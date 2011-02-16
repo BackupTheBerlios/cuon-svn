@@ -159,9 +159,9 @@ class SingleData(gladeXml, logs):
             self.printOut( 'assert error')
             liRecords = None
         except Exception, param:
-            self.printOut( 'Error by load Data')
-            self.printOut( Exception)
-            self.printOut( param)
+            print 'Error by load Data'
+            printException,  param
+            
             
         #self.printOut( liRecords    )
         self.loadOtherDatatable(self.ID)
@@ -520,6 +520,7 @@ class SingleData(gladeXml, logs):
             elif string.count(str(widget), "GtkCheckButton") > 0:
                 widget.set_active(False)
             elif string.count(str(widget), "GtkRadioButton") > 0:
+                print 'RadioButton set to false'
                 widget.set_active(False)
                   
             elif string.count(str(widget), "GnomeDateEdit") > 0:
@@ -541,14 +542,14 @@ class SingleData(gladeXml, logs):
     def clearAllOtherFields(self):
         pass
     def fillEntries(self, id):
-        self.printOut( 'id by fillentries: ',  id)
+        print 'id by fillentries: ',  id
         self.ID = id
         if id < 1:
             self.clearAllFields()
         else:
             oneRecord = []
             dicRecord = self.load(id)
-            self.printOut(  'Record by fillEntries: ', dicRecord)
+            print  'Record by fillEntries: ', dicRecord
             if dicRecord:
                 oneRecord = dicRecord[0]
             if not oneRecord:
@@ -680,8 +681,8 @@ class SingleData(gladeXml, logs):
                         self.printOut( widget, widget.get_active())
                             
                     elif string.count(str(widget), "GtkRadioButton") > 0:
-                        self.printOut( 'Bool-Value from Database', sValue)
-                        self.printOut( "GtkCheckButton ", entry.getName())
+                        print 'Bool-Value from Database', sValue
+                        print "GtkCheckButton ", entry.getName()
                         
                         
                         if sValue == 1 or sValue == 't' or sValue == 'True': 

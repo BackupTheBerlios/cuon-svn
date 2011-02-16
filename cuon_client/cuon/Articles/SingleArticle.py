@@ -94,8 +94,11 @@ class SingleArticle(SingleData):
             sReturn = ' '
             
         return sReturn
-            
-
+        
+    def getPrice(self, Modul, iModulID, ArticleID):
+        return self.rpc.callRP('Article.getPrice', Modul,iModulID, ArticleID,  self.dicUser)
+        
+        
     def getArticleAssociatedWith(self):
         return self.firstRecord['associated_with']
         

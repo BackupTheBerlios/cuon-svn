@@ -43,3 +43,7 @@ CREATE OR REPLACE FUNCTION fct_getSchedulTime(  iTimeBegin int, iTimeEnd int , a
     return sTime ;
        END ;
     ' LANGUAGE 'plpgsql'; 
+
+
+
+ 

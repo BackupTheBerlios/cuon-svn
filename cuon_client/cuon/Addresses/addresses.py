@@ -1972,8 +1972,17 @@ class addresswindow(chooseWindows):
             self.singleAddressBank.refreshTree()    
             
         elif self.tabOption == self.tabMisc:
+            
             self.singleMisc.sWhere  ='where address_id = ' + `int(self.singleAddress.ID)`
-            self.singleMisc.fillEntries(self.singleMisc.findSingleId())
+            misc_id = self.singleMisc.findSingleId()
+            if misc_id < 0:
+                misc_id = self.rpc.callRP('Address.createMiscEntry', self.singleAddress.ID, self.dicUser)
+                print 'new misc_id = ',  misc_id
+                self.singleMisc.load(misc_id)            
+            
+            
+            self.singleMisc.fillEntries(misc_id)
+            
 
         elif self.tabOption == self.tabPartner:
             self.singlePartner.sWhere  ='where addressid = ' + `int(self.singleAddress.ID)`
@@ -2043,7 +2052,7 @@ class addresswindow(chooseWindows):
 
         elif self.tabOption == self.tabMisc:
             self.out( 'Seite 3')
-
+            
             self.disableMenuItem('tabs')
             self.enableMenuItem('misc')
             self.editAction = 'editMisc'

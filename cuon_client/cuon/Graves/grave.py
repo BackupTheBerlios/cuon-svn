@@ -574,6 +574,21 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_MaintenanceSave1_activate(self, event):
         self.out( "save GraveMaintenance addresses v2")
+        
+       
+        # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eServicePrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eServiceArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eServicePrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+        
+        
         self.singleGraveMaintenance.graveID = self.singleGrave.ID
         self.singleGraveMaintenance.save()
         self.setEntriesEditable(self.EntriesGravesMaintenance, False)
@@ -598,6 +613,19 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_SpringSave1_activate(self, event):
         self.out( "save GraveSpring addresses v2")
+        
+         # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eSpringPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eSpringArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eSpringPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+
         self.singleGraveSpring.graveID = self.singleGrave.ID
         self.singleGraveSpring.singleGrave = self.singleGrave
         self.singleGraveSpring.save()
@@ -626,6 +654,19 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_SummerSave1_activate(self, event):
         self.out( "save GraveSummer addresses v2")
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eSummerPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eSummerArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eSummerPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+        
         self.singleGraveSummer.graveID = self.singleGrave.ID
         self.singleGraveSummer.singleGrave = self.singleGrave
         self.singleGraveSummer.save()
@@ -655,6 +696,21 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
    
     def on_AutumnSave1_activate(self, event):
+        
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eAutumnPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eAutumnArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+
+
         self.singleGraveAutumn.graveID = self.singleGrave.ID
         self.singleGraveAutumn.singleGrave = self.singleGrave
         self.singleGraveAutumn.save()
@@ -681,6 +737,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_WinterSave1_activate(self, event):
         self.out( "save GraveWinter addresses v2")
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eWinterPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eWinterArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eWinterPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
         self.singleGraveWinter.graveID = self.singleGrave.ID
         self.singleGraveWinter.singleGrave = self.singleGrave
         self.singleGraveWinter.save()
@@ -709,6 +777,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_HolidaysSave1_activate(self, event):
         print "save GraveHolidays addresses v2"
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eHolidaysPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eHolidaysArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
         self.singleGraveHolidays.graveID = self.singleGrave.ID
         self.singleGraveHolidays.singleGrave = self.singleGrave
         self.singleGraveHolidays.save()
@@ -736,6 +816,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_AnnualSave1_activate(self, event):
         self.out( "save GraveAnnual addresses v2")
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eAnnualPrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eAnnualArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eAnnualPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
         self.singleGraveAnnual.graveID = self.singleGrave.ID
         self.singleGraveAnnual.singleGrave = self.singleGrave
         self.singleGraveAnnual.save()
@@ -762,6 +854,20 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
    
     def on_UniqueSave1_activate(self, event):
         self.out( "save GraveUnique addresses v2")
+        
+          # set the price from a pricegroup if no price is setting
+        try:
+            fPrice = float(self.getWidget('eUniquePrice').get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eUniqueArticleID').get_text() ) )
+            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget('eUniquePrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+
+
         self.singleGraveUnique.graveID = self.singleGrave.ID
         self.singleGraveUnique.singleGrave = self.singleGrave
         self.singleGraveUnique.save()
@@ -1234,11 +1340,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         if self.tabOption == self.tabGraveMaintenance:
             try:
                 self.getWidget('eServiceArticleDesignation').set_text(self.singleArticle.getArticleDesignation(int(self.getWidget('eServiceArticleID').get_text())) )
+                
             except:
-                self.getWidget('eServicegArticleDesignation').set_text(' ') 
+                self.getWidget('eServiceArticleDesignation').set_text(' ') 
             if self.AutoInsert:
+               
                 self.AutoInsert = False
-                self.activateClick('ServiceSave1')
+                self.activateClick('MaintenanceSave1')
             
         elif self.tabOption == self.tabGraveSpring:
             try:

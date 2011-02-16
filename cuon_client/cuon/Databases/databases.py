@@ -792,7 +792,7 @@ class databaseswindow(windows):
             print Exception, param
             
        
-        for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql']:
+        for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql', 'articles.sql']:
             print 'configfile = ',  configfile
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             f = open('inifiles/' + configfile, 'r')

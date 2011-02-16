@@ -168,5 +168,55 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
+     <entry>
+      <name>rbPricegroupI</name>
+      <type>radiobutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>pricegroup1</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+       <entry>
+      <name>rbPricegroupII</name>
+      <type>radiobutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>pricegroup2</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>rbPricegroupIII</name>
+      <type>radiobutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>pricegroup3</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>rbPricegroupIV</name>
+      <type>radiobutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>pricegroup4</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
+     <entry>
+      <name>rbPricegroupNone</name>
+      <type>radiobutton</type>
+      <size>1</size>
+      <verify_type>bool</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>pricegroup_none</sql_field>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>
       </table>
 </entries_for_table>

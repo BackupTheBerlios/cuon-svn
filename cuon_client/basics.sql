@@ -150,6 +150,9 @@
     END ;
     ' LANGUAGE 'plpgsql'; 
 
+    
+
+    
  DROP FUNCTION fct_insert() CASCADE ;
  
  CREATE OR REPLACE FUNCTION fct_insert( ) returns OPAQUE AS '

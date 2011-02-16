@@ -2182,6 +2182,7 @@ Hier kann man eine Kontoverbindung für die Adresse angeben. Wichtig: Damit das 
 <title> Reiter Verschiedenes </title>
 <para>
 Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde fällt und ob er Mwst. pflichtig ist.</para>
+<para>Wichtig sind hier vor allen dingen die Preisgruppen, die mit den 4 Preisen der Artikleverwaltung korespondieren. Wenn in den jeweiligen Modulen ( Auftrag, Gräber, usw. ) keine andere Preisgruppe gewählt wird, wird diese Preisgruppe hier genommen.</para>
 <figure id="si4">
 <title></title>
 <graphic align="center" scale="35" fileref="images/screenshots/iAddress03.png"/>
