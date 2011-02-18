@@ -208,6 +208,7 @@
                                 <property name="use_underline">True</property>
                                 <property name="use_stock">True</property>
                                 <signal name="activate" handler="on_bank_new1_activate"/>
+                                <accelerator key="n" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                             </child>
                             <child>
@@ -217,6 +218,7 @@
                                 <property name="use_underline">True</property>
                                 <property name="use_stock">True</property>
                                 <signal name="activate" handler="on_bank_edit1_activate"/>
+                                <accelerator key="e" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                             </child>
                             <child>
@@ -226,6 +228,7 @@
                                 <property name="use_underline">True</property>
                                 <property name="use_stock">True</property>
                                 <signal name="activate" handler="on_bank_save1_activate"/>
+                                <accelerator key="s" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                             </child>
                           </widget>
@@ -247,6 +250,7 @@
                                 <property name="use_underline">True</property>
                                 <property name="use_stock">True</property>
                                 <signal name="activate" handler="on_MiscEdit1_activate"/>
+                                <accelerator key="e" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                               </widget>
                             </child>
                             <child>
@@ -3709,30 +3713,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkHBox" id="hbox158">
-                            <property name="visible">True</property>
-                            <child>
-                              <widget class="GtkLabel" id="label35">
-                                <property name="visible">True</property>
-                                <property name="xalign">0</property>
-                                <property name="yalign">0</property>
-                                <property name="label" translatable="yes">Line</property>
-                              </widget>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options"></property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
                           <widget class="GtkHBox" id="hbox94">
                             <property name="visible">True</property>
                             <child>
@@ -3999,32 +3979,6 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkHBox" id="hbox159">
-                            <property name="visible">True</property>
-                            <child>
-                              <widget class="GtkEntry" id="eLine">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">&#x2022;</property>
-                                <property name="width_chars">20</property>
-                              </widget>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options"></property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
                           <widget class="GtkHBox" id="hbox3">
                             <property name="visible">True</property>
                             <child>
@@ -4166,26 +4120,7 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                           <widget class="GtkHBox" id="hbox146">
                             <property name="visible">True</property>
                             <child>
-                              <widget class="GtkCombo" id="combo2">
-                                <property name="visible">True</property>
-                                <property name="enable_arrows_always">False</property>
-                                <child internal-child="entry">
-                                  <widget class="GtkEntry" id="combo-entry1">
-                                    <property name="invisible_char">&#x25CF;</property>
-                                  </widget>
-                                  <packing>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child internal-child="list">
-                                  <widget class="GtkList" id="combo-list1">
-                                    <property name="selection_mode">browse</property>
-                                  </widget>
-                                </child>
-                              </widget>
-                              <packing>
-                                <property name="position">0</property>
-                              </packing>
+                              <placeholder/>
                             </child>
                           </widget>
                           <packing>
@@ -4198,25 +4133,14 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="label40">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">0</property>
-                            <property name="label" translatable="yes">Price-Group</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options"></property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
                           <widget class="GtkLabel" id="label49">
                             <property name="visible">True</property>
-                            <property name="label" translatable="yes">Additional Emails</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Bitte hier Emailadressen (eine pro Zeile)
+eintragen, die der Mailimport zus&#xE4;tzlich
+der Adresse im DMS zuf&#xFC;gen soll.
+Nur f&#xFC;r den IMAP Mailimport!</property>
+                            <property name="label" translatable="yes">zus&#xE4;tzliche Mailadressen</property>
                           </widget>
                           <packing>
                             <property name="left_attach">2</property>
@@ -4245,7 +4169,139 @@ auf die Adressen unter Gespr&#xE4;chspartner</property>
                           </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <widget class="GtkEntry" id="eLine">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="width_chars">20</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="right_attach">4</property>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkHBox" id="hbox158">
+                            <property name="visible">True</property>
+                            <child>
+                              <widget class="GtkLabel" id="label35">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="yalign">0</property>
+                                <property name="label" translatable="yes">Line</property>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="right_attach">3</property>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                            <property name="x_options"></property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkHBox" id="hbox76">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Diese Option legt fest, welcher Artikel-Preis
+in den Rechnungen u.&#xE4;. verwendet wird.</property>
+                            <child>
+                              <widget class="GtkRadioButton" id="rbPricegroupI">
+                                <property name="label" translatable="yes">I</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </widget>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="rbPricegroupII">
+                                <property name="label" translatable="yes">II</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">rbPricegroupI</property>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="rbPricegroupIII">
+                                <property name="label" translatable="yes">III</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">rbPricegroupI</property>
+                              </widget>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="rbPricegroupIV">
+                                <property name="label" translatable="yes">IV</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">rbPricegroupI</property>
+                              </widget>
+                              <packing>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="rbPricegroupNone">
+                                <property name="label" translatable="yes">None</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">rbPricegroupI</property>
+                              </widget>
+                              <packing>
+                                <property name="position">4</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label40">
+                            <property name="visible">True</property>
+                            <property name="has_tooltip">True</property>
+                            <property name="tooltip" translatable="yes">Diese Option legt fest, welcher Artikel-Preis
+in den Rechnungen u.&#xE4;. verwendet wird.</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Preisgruppe</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options"></property>
+                            <property name="y_options">GTK_FILL</property>
+                          </packing>
                         </child>
                         <child>
                           <placeholder/>
