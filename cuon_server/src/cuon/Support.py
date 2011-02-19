@@ -14,7 +14,26 @@ class Support(xmlrpc.XMLRPC, basics):
     def __init__(self):
         basics.__init__(self)
         self.oDatabase = Database.Database()
+    
+    
+    def getAuthorization(self,  Username,  Password,  ClientID):
+        ''' Web Authentication'''
+        ok = True
+        #self.XMLRPC_PORT = 7080
+        #self.XMLRPC_HOST = 'localhost'
+        #self.XMLRPC_PROTO = "http"
+        # Authorized
+        print 'Server',  self.sv
+        print Username,  Password
         
+        sid = self.sv.Database.createSessionID( Username, Password)
+        
+        
+        print sid
+        # Set Information for cuon
+        self.dicUser={'Name':Username,'SessionID':sid,'userType':'cuon',  'client':int(ClientID)}
+
+        return self.dicUser   
     def xmlrpc_getTicketComboBoxEntries(self, dicUser):
         print 'get comboBox Entries'
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')

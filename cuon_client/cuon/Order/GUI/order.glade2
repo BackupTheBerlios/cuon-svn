@@ -3,8 +3,8 @@
   <!-- interface-requires gtk+ 2.6 -->
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkWindow" id="OrderMainwindow">
-    <property name="width_request">1024</property>
-    <property name="height_request">748</property>
+    <property name="width_request">1023</property>
+    <property name="height_request">785</property>
     <property name="visible">True</property>
     <property name="title" translatable="yes">Order</property>
     <signal name="key_press_event" handler="on_Mainwindow_key_press_event"/>
@@ -571,7 +571,6 @@
             <child>
               <object class="GtkHBox" id="hbox1">
                 <property name="visible">True</property>
-                <property name="homogeneous">True</property>
                 <child>
                   <object class="GtkLabel" id="lFindNumber">
                     <property name="visible">True</property>
@@ -761,6 +760,7 @@
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">3</property>
           </packing>
         </child>
@@ -780,191 +780,7 @@
                       <object class="GtkTable" id="table5">
                         <property name="visible">True</property>
                         <property name="n_rows">6</property>
-                        <property name="n_columns">4</property>
-                        <property name="homogeneous">True</property>
-                        <child>
-                          <object class="GtkLabel" id="label34">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">Supply-Nr.</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label35">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">Gets-Nr.</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label36">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">Invoice-Nr.</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eSupplyNumber">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eGetsNumber">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eInvoiceNumber">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label39">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">total sum</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eTotalSum">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label40">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes">total discount %</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="eDiscount">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x25CF;</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="cbInvoiceReady">
-                            <property name="label" translatable="yes">ready for invoice</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="use_underline">True</property>
-                            <property name="draw_indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="right_attach">3</property>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkHBox" id="hbox39">
-                            <property name="visible">True</property>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="right_attach">4</property>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options">GTK_FILL</property>
-                          </packing>
-                        </child>
+                        <property name="n_columns">2</property>
                         <child>
                           <object class="GtkHBox" id="hbox54">
                             <property name="visible">True</property>
@@ -1035,7 +851,6 @@
                           <packing>
                             <property name="top_attach">1</property>
                             <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1073,7 +888,6 @@
                           <packing>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1111,7 +925,6 @@
                           <packing>
                             <property name="top_attach">3</property>
                             <property name="bottom_attach">4</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1145,7 +958,6 @@
                           <packing>
                             <property name="top_attach">4</property>
                             <property name="bottom_attach">5</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1193,27 +1005,282 @@
                           <packing>
                             <property name="top_attach">5</property>
                             <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox4">
+                            <property name="visible">True</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="label34">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Supply-Nr.</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eSupplyNumber">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="editable">False</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                          </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox6">
+                            <property name="visible">True</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="label35">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Gets-Nr.</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eGetsNumber">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                          </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox7">
+                            <property name="visible">True</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="label36">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Invoice-Nr.</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eInvoiceNumber">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="editable">False</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                          </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox23">
+                            <property name="visible">True</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="label39">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">total sum</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eTotalSum">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                          </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox26">
+                            <property name="visible">True</property>
+                            <property name="homogeneous">True</property>
+                            <child>
+                              <object class="GtkLabel" id="label40">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">total discount %</property>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="eDiscount">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                          </packing>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkHBox" id="hbox33">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkHBox" id="hbox41">
+                                <property name="visible">True</property>
+                                <child>
+                                  <object class="GtkCheckButton" id="cbInvoiceReady">
+                                    <property name="label" translatable="yes">ready for invoice</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="draw_indicator">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label32">
+                                    <property name="visible">True</property>
+                                    <property name="label" translatable="yes">Pricegroup</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkHBox" id="hbox40">
+                                <property name="visible">True</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rbPricegroupI">
+                                    <property name="label" translatable="yes">I</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="active">True</property>
+                                    <property name="draw_indicator">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="rbPricegroupII">
+                                    <property name="label" translatable="yes">II</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rbPricegroupI</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="rbPricegroupIII">
+                                    <property name="label" translatable="yes">III</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rbPricegroupI</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="rbPricegroupIV">
+                                    <property name="label" translatable="yes">IV</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rbPricegroupI</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">3</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkRadioButton" id="rbPricegroupNone">
+                                    <property name="label" translatable="yes">None</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rbPricegroupI</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">4</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                          </packing>
                         </child>
                       </object>
                       <packing>
@@ -1222,6 +1289,7 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
@@ -1282,6 +1350,7 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1534,6 +1603,7 @@
                             <property name="right_attach">4</property>
                             <property name="top_attach">1</property>
                             <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
@@ -1560,6 +1630,7 @@
                                 <property name="invisible_char">&#x25CF;</property>
                               </object>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -1578,6 +1649,7 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -1599,8 +1671,6 @@
 </property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -1613,6 +1683,7 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -1620,6 +1691,7 @@
                       <packing>
                         <property name="left_attach">2</property>
                         <property name="right_attach">3</property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options">GTK_FILL</property>
                       </packing>
                     </child>
@@ -1635,8 +1707,6 @@
                             <property name="label" translatable="yes">Truckage/Postage</property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -1649,6 +1719,7 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -1674,8 +1745,6 @@
                             <property name="label" translatable="yes">Misc. cost</property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -1688,6 +1757,7 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -1723,6 +1793,7 @@
                             <signal name="changed" handler="on_ePartnerID_changed"/>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -1828,6 +1899,7 @@
                       <packing>
                         <property name="left_attach">1</property>
                         <property name="right_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options">GTK_FILL</property>
                       </packing>
                     </child>
@@ -1843,6 +1915,7 @@
                         <property name="right_attach">2</property>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
@@ -1855,6 +1928,7 @@
                             <property name="label" translatable="yes">Staff</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -1866,6 +1940,7 @@
                             <signal name="changed" handler="on_eStaffNumber_changed"/>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -1878,6 +1953,7 @@
                             <signal name="clicked" handler="on_bSearchStaff_clicked"/>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">2</property>
                           </packing>
                         </child>
@@ -1885,6 +1961,7 @@
                       <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
+                        <property name="x_options">GTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -1899,6 +1976,7 @@
                         <property name="right_attach">2</property>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
+                        <property name="x_options">GTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -1908,6 +1986,7 @@
                       <packing>
                         <property name="top_attach">1</property>
                         <property name="bottom_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
                       </packing>
                     </child>
                     <child>
@@ -1921,6 +2000,7 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
@@ -2113,6 +2193,7 @@
                             <property name="label" translatable="yes">Load reference</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -2123,6 +2204,7 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -2155,6 +2237,7 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
@@ -2187,11 +2270,13 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -2249,6 +2334,7 @@
                         <signal name="changed" handler="on_eGetsPartner_changed"/>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -2292,11 +2378,13 @@
                             <property name="width_chars">20</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -2322,11 +2410,13 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -2404,6 +2494,7 @@
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -2479,6 +2570,7 @@
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -2561,7 +2653,6 @@
                           </object>
                           <packing>
                             <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -2574,11 +2665,13 @@
                             <property name="width_chars">10</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -2592,7 +2685,6 @@
                           </object>
                           <packing>
                             <property name="expand">False</property>
-                            <property name="fill">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -2605,11 +2697,13 @@
                             <property name="width_chars">10</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -2630,7 +2724,6 @@
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -3155,6 +3248,7 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
@@ -3266,6 +3360,7 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -3290,8 +3385,8 @@
             <child>
               <object class="GtkTable" id="table3">
                 <property name="visible">True</property>
-                <property name="n_rows">3</property>
-                <property name="n_columns">4</property>
+                <property name="n_rows">4</property>
+                <property name="n_columns">2</property>
                 <child>
                   <object class="GtkLabel" id="label30">
                     <property name="visible">True</property>
@@ -3300,7 +3395,7 @@
                   </object>
                   <packing>
                     <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
+                    <property name="y_options">GTK_FILL</property>
                   </packing>
                 </child>
                 <child>
@@ -3314,6 +3409,7 @@
                         <signal name="changed" handler="on_eInvoiceTOPID_changed"/>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -3336,6 +3432,7 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
                     <property name="y_options">GTK_FILL</property>
                   </packing>
                 </child>
@@ -3367,8 +3464,9 @@
                     <signal name="changed" handler="on_eTaxVatForAllPositionsID_changed"/>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="right_attach">3</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
@@ -3416,8 +3514,10 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="right_attach">4</property>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"></property>
                   </packing>
@@ -3429,19 +3529,19 @@
                   <placeholder/>
                 </child>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
+                  <object class="GtkEntry" id="eTaxVatForAllPositionsText">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="invisible_char">&#x25CF;</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                    <property name="y_options">GTK_FILL</property>
+                  </packing>
                 </child>
               </object>
               <packing>
@@ -3608,6 +3708,7 @@
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="right_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
                     <property name="y_options">GTK_FILL</property>
                   </packing>
                 </child>
@@ -4109,6 +4210,7 @@
                             <signal name="changed" handler="on_eAccountNumber_changed"/>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">0</property>
                           </packing>
                         </child>
@@ -4125,6 +4227,7 @@
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
@@ -4197,6 +4300,7 @@
                     <property name="right_attach">4</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
@@ -4359,11 +4463,13 @@
                             <property name="invisible_char">&#x25CF;</property>
                           </object>
                           <packing>
+                            <property name="expand">False</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -4414,6 +4520,7 @@
                         <property name="invisible_char">&#x25CF;</property>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>

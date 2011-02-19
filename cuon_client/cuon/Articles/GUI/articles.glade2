@@ -4,7 +4,7 @@
   <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -27,7 +27,7 @@
   </object>
   <object class="GtkListStore" id="liststore2">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -80,7 +80,7 @@
   </object>
   <object class="GtkListStore" id="liststore3">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -103,7 +103,7 @@
   </object>
   <object class="GtkListStore" id="liststore4">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -1561,6 +1561,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">&#x25CF;</property>
+                                <signal name="changed" handler="on_eTaxVat_changed"/>
                               </object>
                               <packing>
                                 <property name="position">0</property>
@@ -1649,7 +1650,18 @@
                           <placeholder/>
                         </child>
                         <child>
-                          <placeholder/>
+                          <object class="GtkEntry" id="eTaxVatText">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="editable">False</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="right_attach">4</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                          </packing>
                         </child>
                       </object>
                       <packing>

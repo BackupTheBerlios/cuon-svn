@@ -38,6 +38,7 @@ import cuon.Articles.lists_articles_number1
 import cuon.Articles.pickles_articles
 import cuon.Articles.materialgroup
 import cuon.Articles.SingleMaterialgroups
+import cuon.PrefsFinance.SinglePrefsFinanceVat
 
 # Assosiated
 try:
@@ -75,7 +76,7 @@ class articleswindow(chooseWindows):
             self.singleBotany = cuon.Garden.SingleBotany.SingleBotany(allTables)
         except:
             pass
-            
+        self.singlePrefsFinanceVat = cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)    
         self.singleMaterialGroup = cuon.Articles.SingleMaterialgroups.SingleMaterialgroups(allTables)
         # self.singleArticle.loadTable()
               
@@ -708,7 +709,15 @@ class articleswindow(chooseWindows):
         pass
         
         
-    
+
+    def on_eTaxVat_changed(self, event):
+        TaxVat = self.getChangedValue('eTaxVta')
+        sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
+        if sTaxVat:
+            self.getWidget('eTaxVatTex').set_text(sTaxVat)
+        else:
+            self.getWidget('eTaxVatText').set_text('')
+ 
     #choose Manufactor button
     def on_bChooseManufactor_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)

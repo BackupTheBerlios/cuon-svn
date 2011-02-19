@@ -866,4 +866,16 @@ class windows(rawWindow, MyXML, messages,  constants):
               
         
         
-       
+    def setArticlePrice(self, sModul, sArtikelwidget,sPricewidget, singleID ):
+        # modul,artikelwidget,pricewidget,singleID
+        try:
+            fPrice = float(self.getWidget(sPricewidget).get_text().replace(',', '.'))
+        except:
+            print 'no correct price'
+            fPrice = 0.00
+        if not fPrice :
+            fPrice = self.singleArticle.getPrice(sModul, singleID, int(self.getWidget(sArtikelwidget).get_text() ) )
+            #print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
+        self.getWidget(sPricewidget).set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+
+        

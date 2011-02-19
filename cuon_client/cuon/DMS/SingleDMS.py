@@ -200,7 +200,9 @@ class SingleDMS(SingleData):
         self.size_y =  oneRecord['size_y']
         self.checkPermissions()
     
-    
+    def getOrigin(self):
+        return self.firstRecord['insert_from_module'],  self.firstRecord['sep_info_1']
+        
     def setAllWidgetsVisible(self, visible):
         # Buttons and menu-items
         for x in ['bView','edit1']:

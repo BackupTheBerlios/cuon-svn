@@ -100,10 +100,10 @@ class projectwindow(chooseWindows):
         
         self.singleProject.setEntries(self.getDataEntries(self.EntriesProject) )
         self.singleProject.setGladeXml(self.xml)
-        self.singleProject.setTreeFields( ['name', 'designation', 'project_status'] )
-        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,   gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+        self.singleProject.setTreeFields( ['name', 'designation', "project_starts_at", "project_ends_at", 'project_status'] )
+        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING,gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
         self.singleProject.setTreeOrder('name')
-        self.singleProject.setListHeader([_('Name'), _('Designation'), _('Status')])
+        self.singleProject.setListHeader([_('Name'), _('Designation'),_('Start at'),_('End at'),  _('Status')])
         self.singleProject.setTree(self.getWidget('tree1') )
 
   

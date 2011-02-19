@@ -577,16 +577,9 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
        
         # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eServicePrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eServiceArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eServicePrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        # modul,artikelwidget,pricewidget,singleID
+        self.setArticlePrice('grave','eServiceArticleID', 'eServicePrice',  self.singleGrave.ID)
+        
         
         
         self.singleGraveMaintenance.graveID = self.singleGrave.ID
@@ -615,16 +608,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveSpring addresses v2")
         
          # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eSpringPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eSpringArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eSpringPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        self.setArticlePrice('grave','eSpringArticleID', 'eSpringPrice',  self.singleGrave.ID)
+       
 
         self.singleGraveSpring.graveID = self.singleGrave.ID
         self.singleGraveSpring.singleGrave = self.singleGrave
@@ -656,16 +641,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveSummer addresses v2")
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eSummerPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eSummerArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eSummerPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        self.setArticlePrice('grave','eSummerArticleID', 'eSummerPrice',  self.singleGrave.ID)
         
         self.singleGraveSummer.graveID = self.singleGrave.ID
         self.singleGraveSummer.singleGrave = self.singleGrave
@@ -699,16 +675,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eAutumnPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eAutumnArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        self.setArticlePrice('grave','eAutumnArticleID', 'eAutumnPrice',  self.singleGrave.ID)
 
 
         self.singleGraveAutumn.graveID = self.singleGrave.ID
@@ -739,15 +706,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveWinter addresses v2")
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eWinterPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eWinterArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eWinterPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+        self.setArticlePrice('grave','eWinterArticleID', 'eWinterPrice',  self.singleGrave.ID)
+    
 
         self.singleGraveWinter.graveID = self.singleGrave.ID
         self.singleGraveWinter.singleGrave = self.singleGrave
@@ -779,15 +739,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         print "save GraveHolidays addresses v2"
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eHolidaysPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eHolidaysArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
+        self.setArticlePrice('grave','eHolidaysArticleID', 'eHolidaysPrice',  self.singleGrave.ID)
+       
 
         self.singleGraveHolidays.graveID = self.singleGrave.ID
         self.singleGraveHolidays.singleGrave = self.singleGrave
@@ -818,16 +771,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveAnnual addresses v2")
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eAnnualPrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eAnnualArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eAnnualPrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        self.setArticlePrice('grave','eAnnualArticleID', 'eAnnualPrice',  self.singleGrave.ID)
+       
         self.singleGraveAnnual.graveID = self.singleGrave.ID
         self.singleGraveAnnual.singleGrave = self.singleGrave
         self.singleGraveAnnual.save()
@@ -856,16 +801,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "save GraveUnique addresses v2")
         
           # set the price from a pricegroup if no price is setting
-        try:
-            fPrice = float(self.getWidget('eUniquePrice').get_text().replace(',', '.'))
-        except:
-            print 'no correct price'
-            fPrice = 0.00
-        if not fPrice :
-            fPrice = self.singleArticle.getPrice('grave', self.singleGrave.ID, int(self.getWidget('eUniqueArticleID').get_text() ) )
-            print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget('eUniquePrice').set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        self.setArticlePrice('grave','eUniqueArticleID', 'eUniquePrice',  self.singleGrave.ID)
+      
 
 
         self.singleGraveUnique.graveID = self.singleGrave.ID

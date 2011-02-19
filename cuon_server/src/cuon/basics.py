@@ -58,10 +58,15 @@ class basics(xmlrpc.XMLRPC):
         
         self.WEB_HOST3 = 'localhost'
         self.WEB_PORT3 = 7085
-        
+        self.WEB_START3 = False
+        self.WEB_USER3 = 'Test'
+        self.WEB_PASSWORD3 = 'Test'
+        self.WEB_CLIENT_ID3 = 1
         
         self.WEB_HOST4 = 'localhost'
         self.WEB_PORT4 = 7086
+        self.WEB_START4 = False
+        
         
         self.AI_PORT = 7082
         self.AI_HOST = '84.244.7.139'
@@ -197,7 +202,24 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('WEB3','PORT')
             if value:
                 self.WEB_PORT3 = int(value)
+            value = self.getConfigOption('WEB3','START')
+            if value:
             
+                self.WEB_START3 = self.checkBool(value)   
+            value = self.getConfigOption('WEB3','USER')   
+            if value:
+                self.WEB_USER3 = value
+                
+            value = self.getConfigOption('WEB3','PASSWORD')   
+            if value:
+                self.WEB_PASSWORD33 = value
+                    
+            value = self.getConfigOption('WEB3','CLIENT_ID')   
+            if value:
+                self.WEB_CLIENT_ID3 = int(value)
+                    
+                
+                
             # Web4
             value = self.getConfigOption('WEB4','HOST')
             if value:
@@ -206,7 +228,10 @@ class basics(xmlrpc.XMLRPC):
             if value:
                 self.WEB_PORT4 = int(value)
                     
-                
+            value = self.getConfigOption('WEB4','START')
+            if value:
+            
+                self.WEB_START4 = self.checkBool(value)      
             # OSCOMMERCE
             value = self.getConfigOption('OSCOMMERCE','OSC_HOST')
             if value:
@@ -505,7 +530,7 @@ class basics(xmlrpc.XMLRPC):
            cps = self.cpServer
            
         if cps.has_option(section,option):
-            value = cps.get(section, option)
+            value = cps.get(section, option).strip()
             #print 'getConfigOption', section + ', ' + option + ' = ' + value
         return value
     
@@ -946,7 +971,7 @@ class basics(xmlrpc.XMLRPC):
         return liFields,  liValues
         
     def checkBool(self,  value) :
-        if value.upper() in ['YES', 'Y', 'JA', 'J', 'SI']:
+        if value.strip().upper() in ['YES', 'Y', 'JA', 'J', 'SI', 'TRUE']:
             return True
         else:
             return False

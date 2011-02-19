@@ -45,6 +45,10 @@ import re
 import binascii
 import cuon.DMS.documentTools
 import base64
+import cuon.Project.project
+import cuon.Order.order
+import cuon.Addresses.addresses
+
 
 GtkSV = True 
 try:
@@ -408,6 +412,22 @@ class dmswindow(windows):
     def on_tree1_columns_changed(self, event=None, data=None):
         print event, data
         
+    def on_bJumpToOrigin_clicked(self, event):
+        print 'jump to Origin'
+        if self.singleDMS.ID > 0:
+            OriginModulNumber,  OriginID = self.singleDMS.getOrigin()
+            print OriginModulNumber, OriginID
+            if OriginModulNumber == self.MN['Project']:
+                proj = cuon.Project.project.projectwindow(self.allTables,  project_id = OriginID)
+            elif OriginModulNumber == self.MN['Order'] :
+                ord = cuon.Order.order.orderwindow(self.allTables,  orderid = OriginID)
+            elif OriginModulNumber == self.MN['Address'] :
+                adr = cuon.Addresses.addresses.addresswindow(self.allTables,  addrid = OriginID)
+                    
+        
+    def on_tbJumpToOrigin_clicked(self, event):
+        self.on_bJumpToOrigin_clicked(event)
+        
     # toolbar buttons
     
     def on_tbNew_clicked(self, event):
@@ -432,7 +452,9 @@ class dmswindow(windows):
         print 'close'
         if self.tabOption >= self.tabDocument:
             self.on_quit1_activate(event)
-            
+       
+  
+    
     def refreshTree(self):
         self.singleDMS.disconnectTree()
     

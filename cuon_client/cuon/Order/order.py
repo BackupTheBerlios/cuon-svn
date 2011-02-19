@@ -91,6 +91,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
         self.singleAccountInfo =cuon.Finances.SingleAccountInfo.SingleAccountInfo(allTables)
         self.singlePrefsFinanceTop = cuon.PrefsFinance.SinglePrefsFinanceTop.SinglePrefsFinanceTop(allTables)
+        self.singlePrefsFinanceVat = cuon.PrefsFinance.SinglePrefsFinanceVat.SinglePrefsFinanceVat(allTables)
         self.singleOrderInvoice = cuon.Order.SingleOrderInvoice.SingleOrderInvoice(allTables)
         self.singleProject = cuon.Project.SingleProject.SingleProject(allTables)
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
@@ -512,6 +513,8 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     #Menu Positions
     def on_PositionSave1_activate(self, event):
         print "save Positions v2"
+        #self.getWidget('ePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+        self.setArticlePrice('orderposition','eArticleID', 'ePrice',  self.singleOrder.ID)
         EndPosition = False
         self.singleOrderPosition.orderID = self.singleOrder.ID
         if self.singleOrderPosition.ID == -1:
@@ -733,9 +736,9 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         iTaxVat = self.getChangedValue('eTaxVatForAllPositionsID')
         sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
         if sTaxVat:
-            self.getWidget('eTaxVatForAllPositionsID').set_text(sTaxVat)
+            self.getWidget('eTaxVatForAllPositiosText').set_text(sTaxVat)
         else:
-            self.getWidget('eTaxVatForAllPositionsID').set_text('')
+            self.getWidget('eTaxVatForAllPositionsText').set_text('')
  
  
  
@@ -926,7 +929,6 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
             print 'get_text none'
             self.getWidget('eAmount').set_text('1')
         self.getWidget('eArticleID').set_text(`self.fillArticlesNewID`)
-        self.getWidget('ePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
         self.getWidget('ePosition').set_text(`self.rpc.callRP('Order.getNextPosition', self.singleOrder.ID,self.dicUser)`)
         
         self.on_PositionSave1_activate(event)

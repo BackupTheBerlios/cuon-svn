@@ -27,33 +27,30 @@ import types
 basic = basics()
 
 sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_PORT`,  allow_none = 1)
+web3user = basic.WEB_USER3
 
+dicUser = {}
 
+def getAuth():
+    dicUser=sv.Support.getAuthorization(basic.WEB_USER3 ,  basic.WEB_PASSWORD3,  basic.WEB_CLIENT_ID3 )
+        
+    return dicUser
+    
+    
+    
 @route('/hello/', method = 'GET')
 def hello():
-    return "Hello World!"
-    
-
-@route('/cuon/Glade/:name', method = 'GET')
-def AllGlades(name):
-    
-    return send_file(name,  root='/var/www/cuon/Glade')
-    
-
-@route('/cuon/mimic/:name', method = 'GET')
-def MimicLibs(name):
-    
-    return send_file(name,  root='/var/www/cuon/mimic')
-    
-
-@route('/cuon/:name', method = 'GET')
-def AllSites(name):
-    
-    return send_file(name,  root='/var/www/cuon/')
-    
-
-    
-basic.WEB_HOST4 = "cuonsim1.de"
+    print self.sv.Database.is_running()
+    return "Hello World! " + `self.sv.Database.is_running()`
 
 
-run(  port=basic.WEB_PORT4, host=basic.WEB_HOST4) # This starts the HTTP server
+@route('/:name',  method = 'GET')
+def sendFile(name):
+    dicUser = getAuth()
+    return send_file(name, root='/var/www/cuon/Support')
+    
+    
+ 
+    
+
+run(  port=basic.WEB_PORT3, host=basic.WEB_HOST3) # This starts the HTTP server

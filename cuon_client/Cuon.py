@@ -355,6 +355,16 @@ class MainWindow(windows):
             print 'prm1',  Exception, params
             #pass
         try:
+            os.system( 'rm ' + os.path.normpath(self.td.cuon_path + '/cuon_data/dms/cuon__*' ))
+        except Exception, params:
+            print 'prm1',  Exception, params
+            #pass
+        try:
+            os.system( 'rm ' + os.path.normpath(self.td.cuon_path + '/cuon_data/dms/*__dms*' ))
+        except Exception, params:
+            print 'prm1',  Exception, params
+            #pass
+        try:
             os.system( 'rm ' + os.path.normpath(self.dicUser['prefPath']['tmp'] + '/*__dms*' ))
         except Exception, params:
             print 'prm2',Exception, params

@@ -10,8 +10,11 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
         pricegroupID integer ;
         
     BEGIN 
-           
-            select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from grave where id = iModulID ;
+           IF sModul = ''grave'' THEN
+                select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from grave where grave.id = iModulID ;
+            ELSEIF sModul = ''orderposition'' THEN
+                select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from orderbook where id = iModulID ;
+            END IF ;
            
             if recData.pricegroup1 IS NULL then
                 pricegroupID :=4 ;
@@ -35,8 +38,14 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
             
             IF pricegroupID = 5 then
                 
-            
+            IF sModul = ''grave'' THEN
                 select into recData addressid from grave where id = iModulID ;
+            ELSEIF sModul = ''orderposition'' THEN
+                select into recData addressnumber from orderbook  where orderbook.id = iModulID ;
+            END IF ;
+            
+            
+                
                 raise notice '' address id = % '',recData.addressid ;
                 iAddressID = recData.addressid ;
                 select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from addresses_misc where id = iAddressID ;
