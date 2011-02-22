@@ -865,6 +865,18 @@
       <default>true</default>
       <comment>show online news at start</comment>
     </field>
+    
+      <field>
+      <name>exe_cad</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>255</size>
+      <default></default>
+      <comment>CAD program</comment>
+    </field>
+    
   </table>
     
   <table>

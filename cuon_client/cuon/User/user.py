@@ -125,6 +125,7 @@ class User(defaultValues):
         self.prefDMS['exe']['html'] = '/usr/bin/bluefish'
         self.prefDMS['exe']['python'] = '/usr/bin/gedit'
         self.prefDMS['exe']['mindmap'] = '/usr/bin/vym'
+        self.prefDMS['exe']['CAD'] = '/usr/bin/qcad'
 
         self.prefApps['PDF']=self.prefDMS['exe']['pdf']
         self.prefApps['printPickup'] = 'lpr'
@@ -410,6 +411,7 @@ class User(defaultValues):
         self.prefDMS['fileformat']['html'] =  {'format':'HTML', 'suffix':['html','htm'], 'executable': self.prefDMS['exe']['html']}
         self.prefDMS['fileformat']['python'] =  {'format':'PYTHON', 'suffix':['py'], 'executable': self.prefDMS['exe']['python']}
         self.prefDMS['fileformat']['mindmap'] =  {'format':'MINDMAP', 'suffix':['vym', 'mm', 'mmp', 'emm', 'nmind', 'TWD'], 'executable': self.prefDMS['exe']['mindmap']}
+        self.prefDMS['fileformat']['cad'] =  {'format':'CAD', 'suffix':['dwb', 'stp', 'step', 'dwg', 'dxf', 'igs', 'iges'], 'executable': self.prefDMS['exe']['CAD']}
         
         self.prefDMS['fileformat']['bin'] =  {'format':'BINARY', 'suffix':['bin'], 'executable': self.prefDMS['exe']['txt']}
         
@@ -531,7 +533,7 @@ class User(defaultValues):
             self.prefDMS['exe']['html'] = result['exe_html']
             self.prefDMS['exe']['python'] = result['exe_python']
             self.prefDMS['exe']['mindmap'] = result['exe_mindmap']
-            
+            self.prefDMS['exe']['CAD'] = result['exe_cad']
            
             self.prefColor['BG'] = result['color_bg']
             self.prefColor['FG'] = result['color_fg']

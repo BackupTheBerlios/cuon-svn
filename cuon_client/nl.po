@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-10 14:03+0100\n"
+"POT-Creation-Date: 2011-02-21 21:49+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Juergen Hamel <jh@cyrus.de>\n"
 "Language-Team: \n"
@@ -21,13 +21,13 @@ msgstr "Abonnements_nummer:"
 #: cuon/Biblio/biblio.py:63 cuon/Graves/grave.py:146 cuon/Graves/grave.py:159
 #: cuon/Graves/grave.py:173 cuon/Graves/grave.py:186 cuon/Graves/grave.py:200
 #: cuon/Graves/grave.py:213 cuon/Graves/grave.py:228
-#: cuon/Graves/graveyard.py:86 cuon/Order/order.py:136 cuon/Order/order.py:149
-#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:88
+#: cuon/Graves/graveyard.py:86 cuon/Order/order.py:137 cuon/Order/order.py:150
+#: cuon/Order/order.py:163 cuon/Proposal/proposal.py:88
 #: cuon/Proposal/proposal.py:101 cuon/Proposal/proposal.py:114
 #: cuon/Web2/web2.py:68 cuon/Stock/stock.py:84 cuon/Project/project.py:106
 #: cuon/Project/project.py:115 cuon/Project/project.py:123
 #: cuon/Project/project.py:131 cuon/Articles/materialgroup.py:83
-#: cuon/Articles/articles.py:143
+#: cuon/Articles/articles.py:144
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:1091
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2436
 #: cuon/SupportTicket/GUI/support_ticket.glade2:340
@@ -41,16 +41,17 @@ msgstr "Abonnements_nummer:"
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:267
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:525
 #: cuon/Biblio/GUI/biblio.glade2:237 cuon/Biblio/GUI/biblio.glade2:500
-#: cuon/Graves/GUI/graves.glade2:2918 cuon/Graves/GUI/graves.glade2:3229
-#: cuon/Graves/GUI/graves.glade2:3538 cuon/Graves/GUI/graves.glade2:3856
-#: cuon/Graves/GUI/graves.glade2:4167 cuon/Graves/GUI/graves.glade2:4575
-#: cuon/Graves/GUI/graves.glade2:4891 cuon/Graves/GUI/graveyard.glade2:259
-#: cuon/Graves/GUI/graveyard.glade2:409 cuon/Order/GUI/order.glade2:602
-#: cuon/Order/GUI/order.glade2:1986 cuon/Order/GUI/order.glade2:2277
-#: cuon/Order/GUI/order.glade2:2948 cuon/Proposal/GUI/proposal.glade2:492
-#: cuon/Proposal/GUI/proposal.glade2:1674
-#: cuon/Proposal/GUI/proposal.glade2:2022
-#: cuon/Proposal/GUI/proposal.glade2:2584 cuon/Web2/GUI/web2.glade2:233
+#: cuon/Graves/GUI/graves.glade2:2571 cuon/Graves/GUI/graves.glade2:2881
+#: cuon/Graves/GUI/graves.glade2:3191 cuon/Graves/GUI/graves.glade2:3499
+#: cuon/Graves/GUI/graves.glade2:3816 cuon/Graves/GUI/graves.glade2:4126
+#: cuon/Graves/GUI/graves.glade2:4533 cuon/Graves/GUI/graves.glade2:4849
+#: cuon/Graves/GUI/graveyard.glade2:259 cuon/Graves/GUI/graveyard.glade2:409
+#: cuon/Order/GUI/order.glade2:601 cuon/Order/GUI/order.glade2:2066
+#: cuon/Order/GUI/order.glade2:2363 cuon/Order/GUI/order.glade2:3041
+#: cuon/Proposal/GUI/proposal.glade2:492
+#: cuon/Proposal/GUI/proposal.glade2:1669
+#: cuon/Proposal/GUI/proposal.glade2:2017
+#: cuon/Proposal/GUI/proposal.glade2:2580 cuon/Web2/GUI/web2.glade2:233
 #: cuon/Web2/GUI/web2.glade2:573 cuon/Stock/GUI/stock.glade2:374
 #: cuon/Stock/GUI/stock.glade2:512 cuon/Stock/GUI/stock.glade2:773
 #: cuon/Stock/GUI/stock.glade2:1079
@@ -65,8 +66,8 @@ msgstr "Abonnements_nummer:"
 #: cuon/Think/GUI/think.glade2:508 cuon/Articles/GUI/materialGroup.glade2:291
 #: cuon/Articles/GUI/materialGroup.glade2:441
 #: cuon/Articles/GUI/articles.glade2:765
-#: cuon/Articles/GUI/articles.glade2:2188
-#: cuon/Articles/GUI/articles.glade2:2516
+#: cuon/Articles/GUI/articles.glade2:2200
+#: cuon/Articles/GUI/articles.glade2:2528
 #: cuon/Articles/GUI/articles_search1.glade2:169
 #, fuzzy
 msgid "Designation"
@@ -96,32 +97,32 @@ msgstr "Beschreibung2"
 msgid "Name"
 msgstr "Namen"
 
-#: cuon/E_Mail/imap_dms.py:321
+#: cuon/E_Mail/imap_dms.py:334
 #, fuzzy
 msgid "email"
 msgstr "Configuratiebestanden Blijven"
 
-#: cuon/E_Mail/imap_dms.py:323
+#: cuon/E_Mail/imap_dms.py:336
 #, fuzzy
 msgid "From: "
 msgstr "Van"
 
-#: cuon/E_Mail/imap_dms.py:324
+#: cuon/E_Mail/imap_dms.py:337
 #, fuzzy
 msgid "To: "
 msgstr "Naar"
 
-#: cuon/E_Mail/imap_dms.py:326
+#: cuon/E_Mail/imap_dms.py:339
 #, fuzzy
 msgid "Plain Text"
 msgstr "Betaling"
 
-#: cuon/E_Mail/imap_dms.py:328
+#: cuon/E_Mail/imap_dms.py:341
 #, fuzzy
 msgid "Attachment Type: "
 msgstr "Bijvoegsel"
 
-#: cuon/E_Mail/imap_dms.py:331
+#: cuon/E_Mail/imap_dms.py:344
 #, fuzzy
 msgid "Email Date: "
 msgstr "Email adres"
@@ -132,7 +133,7 @@ msgid "Attachment"
 msgstr "Bijvoegsel"
 
 #: cuon/SupportTicket/supportTicket.py:68 cuon/Garden/SingleHibernation.py:41
-#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
+#: cuon/Order/order.py:163 cuon/Proposal/proposal.py:114
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2387
 #: cuon/Analysis/GUI/analysis_cost.glade2:235
 #: cuon/Analysis/GUI/analysis_cost.glade2:406
@@ -140,16 +141,16 @@ msgstr "Bijvoegsel"
 #: cuon/Garden/GUI/garden.glade2:439 cuon/Leasing/GUI/leasing.glade2:766
 #: cuon/Leasing/GUI/leasing.glade2:999 cuon/Leasing/GUI/leasing.glade2:2319
 #: cuon/WebShop/GUI/webshop.glade2:161 cuon/Graves/GUI/graveyard.glade2:212
-#: cuon/Order/GUI/order.glade2:977 cuon/Order/GUI/order.glade2:2310
-#: cuon/Order/GUI/order.glade2:4347 cuon/Proposal/GUI/proposal.glade2:830
-#: cuon/Proposal/GUI/proposal.glade2:2054 cuon/Stock/GUI/stock.glade2:329
+#: cuon/Order/GUI/order.glade2:793 cuon/Order/GUI/order.glade2:2398
+#: cuon/Order/GUI/order.glade2:4451 cuon/Proposal/GUI/proposal.glade2:825
+#: cuon/Proposal/GUI/proposal.glade2:2049 cuon/Stock/GUI/stock.glade2:329
 #: cuon/Stock/GUI/stock.glade2:728
 #: cuon/Stock/GUI/stockgoods_search1.glade2:179
 #: cuon/Staff/GUI/staff.glade2:325 cuon/Clients/GUI/clients.glade2:201
 #: cuon/Skeleton/GUI/skeleton.glade2:244 cuon/Skeleton/GUI/skeleton.glade2:463
 #: cuon/Articles/GUI/materialGroup.glade2:244
 #: cuon/Articles/GUI/articles.glade2:739 cuon/Articles/GUI/articles.glade2:879
-#: cuon/Articles/GUI/articles.glade2:1691
+#: cuon/Articles/GUI/articles.glade2:1703
 #: cuon/Articles/GUI/articles_search1.glade2:197
 #, fuzzy
 msgid "Number"
@@ -175,10 +176,10 @@ msgstr "Leegmaken"
 
 #: cuon/Analysis/analyse_costs.py:61 cuon/Garden/SingleHibernation.py:41
 #: cuon/Graves/grave.py:102 cuon/Graves/grave.py:114 cuon/Bank/bank.py:67
-#: cuon/Addresses/addresses.py:230 cuon/Clients/clients.py:68
+#: cuon/Addresses/addresses.py:225 cuon/Clients/clients.py:68
 #: cuon/Skeleton/skeleton.py:61 cuon/Login/GUI/user.glade2:253
 #: cuon/Garden/GUI/hibernation.glade2:365 cuon/Staff/GUI/staff.glade2:1046
-#: cuon/Addresses/GUI/addresses.glade2:4756
+#: cuon/Addresses/GUI/addresses.glade2:4847
 #: cuon/Addresses/GUI/contact.glade2:303
 #: cuon/Addresses/GUI/addresses_search1.glade2:197
 #, fuzzy
@@ -187,19 +188,19 @@ msgstr "Voornaam Achternaam"
 
 #: cuon/Analysis/analyse_costs.py:61 cuon/Garden/SingleHibernation.py:41
 #: cuon/Graves/grave.py:102 cuon/Graves/grave.py:114
-#: cuon/Addresses/addresses.py:230 cuon/Clients/clients.py:68
+#: cuon/Addresses/addresses.py:225 cuon/Clients/clients.py:68
 #: cuon/Skeleton/skeleton.py:61 cuon/Login/GUI/user.glade2:277
 #: cuon/Graves/GUI/graves.glade2:724 cuon/Graves/GUI/graves.glade2:1412
 #: cuon/Staff/GUI/staff.glade2:1032 cuon/Addresses/GUI/addresses.glade2:1811
 #: cuon/Addresses/GUI/addresses.glade2:2196
-#: cuon/Addresses/GUI/addresses.glade2:4770
+#: cuon/Addresses/GUI/addresses.glade2:4861
 #: cuon/Addresses/GUI/addresses_search1.glade2:169
 #, fuzzy
 msgid "Firstname"
 msgstr "Voornaam"
 
 #: cuon/Analysis/analyse_costs.py:61 cuon/Bank/bank.py:67
-#: cuon/Addresses/addresses.py:230 cuon/Addresses/addresses.py:275
+#: cuon/Addresses/addresses.py:225 cuon/Addresses/addresses.py:270
 #: cuon/Clients/clients.py:68 cuon/Skeleton/skeleton.py:61
 #: cuon/Staff/GUI/staff.glade2:698 cuon/Addresses/GUI/addresses.glade2:1840
 #: cuon/Addresses/GUI/addresses.glade2:2031
@@ -232,7 +233,7 @@ msgstr "Aandelen"
 #: cuon/Garden/SingleHibernationPlant.py:41 cuon/Graves/grave.py:146
 #: cuon/Graves/grave.py:159 cuon/Graves/grave.py:173 cuon/Graves/grave.py:186
 #: cuon/Graves/grave.py:200 cuon/Graves/grave.py:213 cuon/Graves/grave.py:228
-#: cuon/Order/order.py:126 cuon/Proposal/proposal.py:76
+#: cuon/Order/order.py:127 cuon/Proposal/proposal.py:76
 #, fuzzy
 msgid "number"
 msgstr "getal"
@@ -251,7 +252,7 @@ msgstr "Diameter radiotelescoop:"
 #: cuon/Garden/hibernation.py:208 cuon/Garden/garden.py:234
 #: cuon/Leasing/leasing.py:617
 #: cuon/Finances/CashAccountBook/cashAccountBook.py:185
-#: cuon/Finances/Bookkeeping/bookkeeping.py:185 cuon/Articles/articles.py:715
+#: cuon/Finances/Bookkeeping/bookkeeping.py:185 cuon/Articles/articles.py:724
 #: cuon/Garden/GUI/hibernation.glade2:666 cuon/Garden/GUI/garden.glade2:609
 #, fuzzy
 msgid "chooseAddress"
@@ -267,9 +268,9 @@ msgstr "Lokale naam"
 
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
-#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/GUI/order.glade2:679
-#: cuon/Order/GUI/order.glade2:817 cuon/Order/GUI/order.glade2:3918
-#: cuon/Proposal/GUI/proposal.glade2:565 cuon/Proposal/GUI/proposal.glade2:726
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/GUI/order.glade2:678
+#: cuon/Order/GUI/order.glade2:1082 cuon/Order/GUI/order.glade2:4019
+#: cuon/Proposal/GUI/proposal.glade2:565 cuon/Proposal/GUI/proposal.glade2:721
 #, fuzzy
 msgid "Invoice-Nr."
 msgstr "Eenvoudige factuur"
@@ -282,14 +283,14 @@ msgstr "Element-volgorde"
 
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
 #: cuon/Finances/InvoiceBook/invoicebook.py:82
-#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:186
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:187
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1418
 #: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:179
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:213
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:222
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:179
-#: cuon/Graves/GUI/graves.glade2:4852 cuon/Order/GUI/order.glade2:2591
-#: cuon/Order/GUI/order.glade2:4207 cuon/Proposal/GUI/proposal.glade2:1919
+#: cuon/Graves/GUI/graves.glade2:4810 cuon/Order/GUI/order.glade2:2684
+#: cuon/Order/GUI/order.glade2:4311 cuon/Proposal/GUI/proposal.glade2:1914
 #: cuon/Stock/GUI/stock.glade2:1128 cuon/Project/GUI/project.glade2:2377
 #: cuon/Project/GUI/project.glade2:2568 cuon/Project/GUI/project.glade2:3220
 #: cuon/Addresses/GUI/contact.glade2:787
@@ -298,7 +299,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: cuon/Finances/InvoiceBook/invoicebook.py:69
-#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:162
+#: cuon/Finances/InvoiceBook/invoicebook.py:96 cuon/Order/order.py:163
 #: cuon/Proposal/proposal.py:114 cuon/Garden/GUI/hibernation.glade2:975
 #: cuon/Garden/GUI/hibernation.glade2:1162 cuon/Garden/GUI/garden.glade2:941
 #: cuon/Garden/GUI/garden.glade2:1293 cuon/Project/GUI/project.glade2:3180
@@ -306,7 +307,7 @@ msgstr "Datum"
 msgid "Amount"
 msgstr "Bedrag"
 
-#: cuon/Finances/InvoiceBook/invoicebook.py:82 cuon/Order/order.py:186
+#: cuon/Finances/InvoiceBook/invoicebook.py:82 cuon/Order/order.py:187
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:196
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:555
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1467
@@ -339,10 +340,10 @@ msgstr "PDF-document aan het exporteren"
 msgid "cabM-"
 msgstr ""
 
-#: cuon/Biblio/biblio.py:63 cuon/DMS/dms.py:144
+#: cuon/Biblio/biblio.py:63 cuon/DMS/dms.py:148
 #: cuon/Biblio/GUI/biblio.glade2:190 cuon/Biblio/GUI/biblio.glade2:472
 #: cuon/Web2/GUI/web2.glade2:186 cuon/User/GUI/user.glade2:803
-#: cuon/DMS/GUI/dms.glade2:672 cuon/DMS/GUI/dms.glade2:768
+#: cuon/DMS/GUI/dms.glade2:694 cuon/DMS/GUI/dms.glade2:790
 #, fuzzy
 msgid "Title"
 msgstr "Bestand"
@@ -354,7 +355,7 @@ msgstr "Bestand"
 #: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:131
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:131
 #: cuon/Biblio/GUI/biblio.glade2:297 cuon/Biblio/GUI/biblio.glade2:570
-#: cuon/Order/GUI/order.glade2:702 cuon/Proposal/GUI/proposal.glade2:588
+#: cuon/Order/GUI/order.glade2:701 cuon/Proposal/GUI/proposal.glade2:588
 #, fuzzy
 msgid "Year"
 msgstr "Jaar"
@@ -377,6 +378,13 @@ msgstr ""
 msgid "Serial Number"
 msgstr "getal"
 
+#: cuon/Graves/grave.py:129 cuon/Order/order.py:163
+#: cuon/Proposal/proposal.py:114 cuon/Leasing/GUI/leasing.glade2:2532
+#: cuon/Articles/GUI/articles.glade2:1893
+#, fuzzy
+msgid "Article-ID"
+msgstr "Artikel met ID op&halen..."
+
 #: cuon/Graves/grave.py:129
 #, fuzzy
 msgid "Service-ID"
@@ -396,59 +404,53 @@ msgstr "Account"
 msgid "article-ID"
 msgstr "Artikel met ID op&halen..."
 
-#: cuon/Order/order.py:126 cuon/Proposal/proposal.py:76 cuon/Stock/stock.py:74
+#: cuon/Order/order.py:127 cuon/Proposal/proposal.py:76 cuon/Stock/stock.py:74
 #, fuzzy
 msgid "designation"
 msgstr "Aanduiding:"
 
-#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
-#: cuon/Order/GUI/order.glade2:2697 cuon/Proposal/GUI/proposal.glade2:2362
+#: cuon/Order/order.py:163 cuon/Proposal/proposal.py:114
+#: cuon/Order/GUI/order.glade2:2790 cuon/Proposal/GUI/proposal.glade2:2357
 #, fuzzy
 msgid "Pos."
 msgstr "KassaNr"
 
-#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
-#: cuon/Leasing/GUI/leasing.glade2:2532 cuon/Articles/GUI/articles.glade2:1881
-#, fuzzy
-msgid "Article-ID"
-msgstr "Artikel met ID op&halen..."
-
-#: cuon/Order/order.py:162 cuon/Proposal/proposal.py:114
+#: cuon/Order/order.py:163 cuon/Proposal/proposal.py:114
 msgid "Designation2"
 msgstr "Beschreibung2"
 
-#: cuon/Order/order.py:186 cuon/Garden/GUI/hibernation.glade2:282
+#: cuon/Order/order.py:187 cuon/Garden/GUI/hibernation.glade2:282
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1278
-#: cuon/Graves/GUI/graves.glade2:2347 cuon/Order/GUI/order.glade2:354
+#: cuon/Graves/GUI/graves.glade2:2430 cuon/Order/GUI/order.glade2:354
 #: cuon/Staff/GUI/staff.glade2:1305
 #, fuzzy
 msgid "Invoice"
 msgstr "Factuur"
 
-#: cuon/Order/order.py:186
+#: cuon/Order/order.py:187
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:713
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:714
 #, fuzzy
 msgid "account"
 msgstr "Account"
 
-#: cuon/Order/order.py:261
+#: cuon/Order/order.py:262
 #: cuon/Finances/Bookkeeping/GUI/bookkeeping.glade2:169
-#: cuon/DMS/GUI/dms.glade2:1134
+#: cuon/DMS/GUI/dms.glade2:1156
 #, fuzzy
 msgid "All"
 msgstr "Alles"
 
-#: cuon/Order/order.py:261
+#: cuon/Order/order.py:262
 msgid "Unreckoned"
 msgstr ""
 
-#: cuon/Order/order.py:366
+#: cuon/Order/order.py:367
 #, fuzzy
 msgid "invoice"
 msgstr "Factuur"
 
-#: cuon/Order/order.py:368
+#: cuon/Order/order.py:369
 #, fuzzy
 msgid "payments"
 msgstr "Betalingen"
@@ -500,7 +502,7 @@ msgstr "Prijs"
 #: cuon/XmlValues/xmlvalues.glade2:209 cuon/XmlValues/xmlvalues.glade2:409
 #: cuon/Biblio/GUI/biblio.glade2:856
 #: cuon/Preferences/GUI/preferences.glade2:270 cuon/User/GUI/user.glade2:556
-#: cuon/Clients/GUI/clients.glade2:314 cuon/Articles/GUI/articles.glade2:2045
+#: cuon/Clients/GUI/clients.glade2:314 cuon/Articles/GUI/articles.glade2:2057
 #: GUI/setup.glade2:1128 GUI/cuon_config_wizard.glade2:83
 #, fuzzy
 msgid "Description"
@@ -520,7 +522,7 @@ msgid "date"
 msgstr "Bijwerken"
 
 #: cuon/Project/SingleProjectMaterialResources.py:45
-#: cuon/Leasing/GUI/leasing.glade2:4443 cuon/Articles/GUI/articles.glade2:3062
+#: cuon/Leasing/GUI/leasing.glade2:4443 cuon/Articles/GUI/articles.glade2:3074
 #, fuzzy
 msgid "unit"
 msgstr "eenheid"
@@ -530,9 +532,19 @@ msgstr "eenheid"
 msgid "real amount"
 msgstr "Hoeveelheid (_aantallen):"
 
-#: cuon/Project/project.py:106 cuon/Addresses/addresses.py:302
-#: cuon/SupportTicket/GUI/support_ticket.glade2:963
-#: cuon/Garden/GUI/hibernation.glade2:862 cuon/Order/GUI/order.glade2:2629
+#: cuon/Project/project.py:106
+#, fuzzy
+msgid "Start at"
+msgstr "_Beginnen bij:"
+
+#: cuon/Project/project.py:106
+#, fuzzy
+msgid "End at"
+msgstr "  %s superblok op "
+
+#: cuon/Project/project.py:106 cuon/Addresses/addresses.py:297
+#: cuon/SupportTicket/GUI/support_ticket.glade2:973
+#: cuon/Garden/GUI/hibernation.glade2:862 cuon/Order/GUI/order.glade2:2723
 #: cuon/Project/GUI/project.glade2:1332 cuon/Project/GUI/project.glade2:1746
 #: cuon/Project/GUI/project.glade2:2103 cuon/Project/GUI/project.glade2:2517
 #: cuon/Project/GUI/project.glade2:3099 cuon/Project/GUI/project.glade2:4013
@@ -590,13 +602,13 @@ msgstr "Tijd"
 #: cuon/Graves/GUI/graveyard.glade2:530 cuon/Bank/GUI/bank.glade2:415
 #: cuon/Stock/GUI/stock.glade2:582 cuon/Staff/GUI/staff.glade2:1074
 #: cuon/Addresses/GUI/addresses.glade2:2147
-#: cuon/Addresses/GUI/addresses.glade2:4730
+#: cuon/Addresses/GUI/addresses.glade2:4821
 #: cuon/Addresses/GUI/contact.glade2:1127
 #, fuzzy
 msgid "Address"
 msgstr "Adres"
 
-#: cuon/Addresses/addresses.py:230 cuon/Stock/GUI/stock.glade2:631
+#: cuon/Addresses/addresses.py:225 cuon/Stock/GUI/stock.glade2:631
 #: cuon/Addresses/GUI/addresses.glade2:1236
 #: cuon/Addresses/GUI/addresses.glade2:1263
 #: cuon/Addresses/GUI/addresses.glade2:1784
@@ -605,7 +617,7 @@ msgstr "Adres"
 msgid "Phone"
 msgstr "Telefoon"
 
-#: cuon/Addresses/addresses.py:230 cuon/Order/GUI/order.glade2:507
+#: cuon/Addresses/addresses.py:225 cuon/Order/GUI/order.glade2:507
 #: cuon/Proposal/GUI/proposal.glade2:421
 #: cuon/Addresses/GUI/addresses.glade2:1600
 #: cuon/Addresses/GUI/addresses.glade2:2625
@@ -613,19 +625,19 @@ msgstr "Telefoon"
 msgid "Info"
 msgstr "Informatie"
 
-#: cuon/Addresses/addresses.py:246
+#: cuon/Addresses/addresses.py:241
 #, fuzzy
 msgid "Depositor"
 msgstr "Beschreibung2"
 
-#: cuon/Addresses/addresses.py:246
+#: cuon/Addresses/addresses.py:241
 #: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:155
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:155
 #, fuzzy
 msgid "Account"
 msgstr "Account"
 
-#: cuon/Addresses/addresses.py:246 cuon/Bank/GUI/bank.glade2:9
+#: cuon/Addresses/addresses.py:241 cuon/Bank/GUI/bank.glade2:9
 #: cuon/Bank/GUI/bank.glade2:73 cuon/Bank/GUI/bank.glade2:578
 #: cuon/Bank/GUI/bank.glade2:812 cuon/Addresses/GUI/addresses.glade2:869
 #: cuon/Addresses/GUI/addresses.glade2:3385 GUI/cuon.glade2:91
@@ -633,131 +645,131 @@ msgstr "Account"
 msgid "Bank"
 msgstr "Bank"
 
-#: cuon/Addresses/addresses.py:275
+#: cuon/Addresses/addresses.py:270
 #, fuzzy
 msgid "Name of partner"
 msgstr "Naam van partner"
 
-#: cuon/Addresses/addresses.py:275
+#: cuon/Addresses/addresses.py:270
 #, fuzzy
 msgid "Firstname of partner"
 msgstr "Naam van partner"
 
-#: cuon/Addresses/addresses.py:302
+#: cuon/Addresses/addresses.py:297
 #, fuzzy
 msgid "Date "
 msgstr "Datum"
 
-#: cuon/Addresses/addresses.py:302 cuon/Garden/GUI/hibernation.glade2:1394
+#: cuon/Addresses/addresses.py:297 cuon/Garden/GUI/hibernation.glade2:1394
 #: cuon/Garden/GUI/garden.glade2:473 cuon/Project/GUI/project.glade2:2401
 #: cuon/Project/GUI/project.glade2:2592
 #, fuzzy
 msgid "begin"
 msgstr "Begin-Einde (=begin  =einde)"
 
-#: cuon/Addresses/addresses.py:302
+#: cuon/Addresses/addresses.py:297
 #, fuzzy
 msgid "end"
 msgstr "Eindigt"
 
-#: cuon/Addresses/addresses.py:302 cuon/Addresses/GUI/addresses.glade2:5517
+#: cuon/Addresses/addresses.py:297 cuon/Addresses/GUI/addresses.glade2:5631
 #, fuzzy
 msgid "short Remark"
 msgstr "Bewe&rking:"
 
-#: cuon/Addresses/addresses.py:302
-#: cuon/SupportTicket/GUI/support_ticket.glade2:941
-#: cuon/Addresses/GUI/addresses.glade2:5797
+#: cuon/Addresses/addresses.py:297
+#: cuon/SupportTicket/GUI/support_ticket.glade2:951
+#: cuon/Addresses/GUI/addresses.glade2:5911
 #: cuon/Addresses/GUI/contact.glade2:485 cuon/Addresses/GUI/contact.glade2:843
 #, fuzzy
 msgid "Priority"
 msgstr "Poort"
 
-#: cuon/Addresses/addresses.py:343 cuon/Addresses/addresses.py:357
+#: cuon/Addresses/addresses.py:338 cuon/Addresses/addresses.py:352
 #: cuon/Graves/GUI/plantlists.glade2:287
 #, fuzzy
 msgid "Graves"
 msgstr "opslaan"
 
-#: cuon/Addresses/addresses.py:506
+#: cuon/Addresses/addresses.py:504
 #, fuzzy
 msgid "Scheduls"
 msgstr "Bureaublad tonen"
 
-#: cuon/Addresses/addresses.py:604
+#: cuon/Addresses/addresses.py:602
 msgid "saving this Address failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:643
+#: cuon/Addresses/addresses.py:641
 msgid "saving this bank failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:701
+#: cuon/Addresses/addresses.py:699
 msgid "saving this partner failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:741
+#: cuon/Addresses/addresses.py:739
 msgid "saving this schedul failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:779
+#: cuon/Addresses/addresses.py:777
 msgid "save this notes failed. Please check"
 msgstr ""
 
-#: cuon/Addresses/addresses.py:800
+#: cuon/Addresses/addresses.py:798
 #, fuzzy
 msgid "CUON-ID NOTES-01"
 msgstr "<b>Notes groeps-ID:</b> %s<br>"
 
-#: cuon/Addresses/addresses.py:801
+#: cuon/Addresses/addresses.py:799
 #, fuzzy
 msgid "Notes are changed !"
 msgstr "Invoer is veranderd"
 
-#: cuon/Addresses/addresses.py:804
+#: cuon/Addresses/addresses.py:802
 #, fuzzy
 msgid "Infos are generated by C.U.O.N."
 msgstr "Hex dump gegenereerd door"
 
-#: cuon/DMS/dms.py:122 cuon/Preferences/GUI/preferences.glade2:988
-#: cuon/DMS/GUI/dms.glade2:1695
+#: cuon/DMS/dms.py:126 cuon/Preferences/GUI/preferences.glade2:988
+#: cuon/DMS/GUI/dms.glade2:1729
 #, fuzzy
 msgid "Print Newsletter"
 msgstr "Telefoon/Fax"
 
-#: cuon/DMS/dms.py:122
+#: cuon/DMS/dms.py:126
 msgid "insert label(s) for newsletter"
 msgstr ""
 
-#: cuon/DMS/dms.py:144 cuon/DMS/GUI/dms.glade2:646
-#: cuon/DMS/GUI/dms.glade2:1269
+#: cuon/DMS/dms.py:148 cuon/DMS/GUI/dms.glade2:668
+#: cuon/DMS/GUI/dms.glade2:1291
 #, fuzzy
 msgid "Category"
 msgstr "Categorie"
 
-#: cuon/DMS/dms.py:144
+#: cuon/DMS/dms.py:148
 #, fuzzy
 msgid "Doc.-Date"
 msgstr "Datum metagegeven"
 
-#: Cuon.py:1102
+#: Cuon.py:1116
 #, fuzzy
 msgid "Names"
 msgstr "Namen"
 
-#: Cuon.py:1137 cuon/Addresses/GUI/addresses.glade2:1014
-#: cuon/Addresses/GUI/addresses.glade2:5898
+#: Cuon.py:1151 cuon/Addresses/GUI/addresses.glade2:1014
+#: cuon/Addresses/GUI/addresses.glade2:6012
 #, fuzzy
 msgid "Schedul"
 msgstr "Bureaublad tonen"
 
-#: Cuon.py:1162 cuon/Stats/GUI/stats.glade2:87 cuon/Stats/GUI/stats.glade2:136
+#: Cuon.py:1176 cuon/Stats/GUI/stats.glade2:87 cuon/Stats/GUI/stats.glade2:136
 #: cuon/Stats/GUI/stats.glade2:194
 #, fuzzy
 msgid "Salesman"
 msgstr "Verkoop"
 
-#: Cuon.py:1614
+#: Cuon.py:1656
 #, fuzzy
 msgid "Debug by C.U.O.N. = "
 msgstr "Gecompileerd door "
@@ -835,8 +847,8 @@ msgid "Terms Of Payment"
 msgstr "<b>Betalingsmogelijkheden</b>"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:232
-#: cuon/Graves/GUI/graves.glade2:2150 cuon/Order/GUI/order.glade2:3322
-#: cuon/Proposal/GUI/proposal.glade2:2942
+#: cuon/Graves/GUI/graves.glade2:2233 cuon/Order/GUI/order.glade2:3418
+#: cuon/Proposal/GUI/proposal.glade2:2939
 #, fuzzy
 msgid "choose TOP"
 msgstr "Kanaal boven"
@@ -864,7 +876,7 @@ msgid "Descript."
 msgstr "Omschrijving"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:518
-#: cuon/SupportTicket/GUI/support_ticket.glade2:717
+#: cuon/SupportTicket/GUI/support_ticket.glade2:727
 #: cuon/Analysis/GUI/analysis_cost.glade2:327
 #: cuon/Garden/GUI/hibernation.glade2:391 cuon/Garden/GUI/botany.glade2:634
 #: cuon/Garden/GUI/garden.glade2:364 cuon/Leasing/GUI/leasing.glade2:904
@@ -876,19 +888,19 @@ msgstr "Omschrijving"
 #: cuon/XmlValues/xmlvalues.glade2:252 cuon/Editor/GUI/editor.glade2:410
 #: cuon/Biblio/GUI/biblio.glade2:391 cuon/Graves/GUI/graves.glade2:796
 #: cuon/Graves/GUI/graves.glade2:1222 cuon/Graves/GUI/graveyard.glade2:308
-#: cuon/Order/GUI/order.glade2:631 cuon/Order/GUI/order.glade2:1758
+#: cuon/Order/GUI/order.glade2:630 cuon/Order/GUI/order.glade2:1829
 #: cuon/Bank/GUI/bank.glade2:328 cuon/Proposal/GUI/proposal.glade2:515
-#: cuon/Proposal/GUI/proposal.glade2:1404 cuon/Web2/GUI/web2.glade2:282
+#: cuon/Proposal/GUI/proposal.glade2:1399 cuon/Web2/GUI/web2.glade2:282
 #: cuon/Stock/GUI/stock.glade2:421 cuon/Stock/GUI/stock.glade2:820
 #: cuon/Preferences/GUI/preferences.glade2:189 cuon/Staff/GUI/staff.glade2:375
 #: cuon/User/GUI/user.glade2:284 cuon/Project/GUI/project.glade2:609
 #: cuon/Addresses/GUI/addresses.glade2:1550
 #: cuon/Addresses/GUI/contact.glade2:532 cuon/Clients/GUI/clients.glade2:246
-#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:413
+#: cuon/Skeleton/GUI/skeleton.glade2:316 cuon/DMS/GUI/dms.glade2:435
 #: cuon/Articles/GUI/materialGroup.glade2:340
 #: cuon/Articles/GUI/articles.glade2:812
-#: cuon/Articles/GUI/articles.glade2:1762
-#: cuon/Articles/GUI/articles.glade2:1931
+#: cuon/Articles/GUI/articles.glade2:1774
+#: cuon/Articles/GUI/articles.glade2:1943
 #, fuzzy
 msgid "Search"
 msgstr "Zoeken"
@@ -907,8 +919,8 @@ msgstr "Blauwscherm U waarde"
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2076
 #: cuon/Analysis/GUI/analysis_cost.glade2:455
 #: cuon/Graves/GUI/graves.glade2:858 cuon/Graves/GUI/graves.glade2:1755
-#: cuon/Graves/GUI/graves.glade2:2382 cuon/Order/GUI/order.glade2:4384
-#: cuon/Web2/GUI/web2.glade2:512 cuon/Articles/GUI/materialGroup.glade2:618
+#: cuon/Order/GUI/order.glade2:4490 cuon/Web2/GUI/web2.glade2:512
+#: cuon/Articles/GUI/materialGroup.glade2:618
 #: GUI/cuon_config_wizard.glade2:258
 #, fuzzy
 msgid "Type"
@@ -916,7 +928,7 @@ msgstr "Type"
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:911
 #: cuon/Staff/GUI/staff.glade2:786 cuon/Addresses/GUI/addresses.glade2:2247
-#: cuon/Addresses/GUI/addresses.glade2:4873
+#: cuon/Addresses/GUI/addresses.glade2:4964
 #: cuon/Addresses/GUI/addresses_search1.glade2:393
 #, fuzzy
 msgid "Country"
@@ -1002,7 +1014,7 @@ msgstr ""
 
 #: cuon/PrefsFinance/GUI/prefs_finance.glade2:2016
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:528
-#: cuon/Order/GUI/order.glade2:3299 cuon/Proposal/GUI/proposal.glade2:2918
+#: cuon/Order/GUI/order.glade2:3394 cuon/Proposal/GUI/proposal.glade2:2915
 #, fuzzy
 msgid "Terms of Payment"
 msgstr "<b>Betalingsmogelijkheden</b>"
@@ -1046,7 +1058,7 @@ msgstr ""
 #: cuon/E_Mail/GUI/e_mail.glade2:38
 #: cuon/Preferences/GUI/preferences.glade2:1528
 #: cuon/Staff/GUI/staff.glade2:936 cuon/Addresses/GUI/addresses.glade2:2889
-#: cuon/Addresses/GUI/addresses.glade2:4234
+#: cuon/Addresses/GUI/addresses.glade2:4325
 #, fuzzy
 msgid "E-Mail"
 msgstr "E-mail"
@@ -1071,7 +1083,7 @@ msgid "Support Tickets"
 msgstr ""
 
 #: cuon/SupportTicket/GUI/support_ticket.glade2:44
-#: cuon/Order/GUI/order.glade2:3690 cuon/Project/GUI/project.glade2:1440
+#: cuon/Order/GUI/order.glade2:3791 cuon/Project/GUI/project.glade2:1440
 #: cuon/Stats/GUI/stats.glade2:158 GUI/cuon.glade2:326
 #, fuzzy
 msgid "Project"
@@ -1280,7 +1292,7 @@ msgstr "Verwijderen"
 #: cuon/Garden/GUI/garden.glade2:1402 cuon/Garden/GUI/garden.glade2:2090
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1151
 #: cuon/Graves/GUI/graves.glade2:1014 cuon/Order/GUI/order.glade2:144
-#: cuon/Preferences/GUI/preferences.glade2:2424
+#: cuon/Preferences/GUI/preferences.glade2:2441
 #: cuon/Project/GUI/project.glade2:504 cuon/Project/GUI/project.glade2:1169
 #: cuon/Project/GUI/project.glade2:1693 cuon/Project/GUI/project.glade2:2050
 #: cuon/Project/GUI/project.glade2:2834 cuon/Project/GUI/project.glade2:3330
@@ -1299,120 +1311,125 @@ msgid "Accordingly project"
 msgstr ""
 
 #: cuon/SupportTicket/GUI/support_ticket.glade2:420
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1055
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1065
 #, fuzzy
 msgid "search Project"
 msgstr "Zoekopdracht is bovenaan herbegonnen."
 
 #: cuon/SupportTicket/GUI/support_ticket.glade2:432
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1067
-#: cuon/Order/GUI/order.glade2:1158 cuon/Proposal/GUI/proposal.glade2:1011
-#: cuon/Addresses/GUI/addresses.glade2:8003
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1077
+#: cuon/Order/GUI/order.glade2:970 cuon/Proposal/GUI/proposal.glade2:1006
+#: cuon/Addresses/GUI/addresses.glade2:8117
 #, fuzzy
 msgid "goto Project"
 msgstr "Project verwijderen"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:519
+#: cuon/SupportTicket/GUI/support_ticket.glade2:508
+#, fuzzy
+msgid "Public"
+msgstr "Uitgever"
+
+#: cuon/SupportTicket/GUI/support_ticket.glade2:529
 #, fuzzy
 msgid "Project\n"
 msgstr "Project"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:538
+#: cuon/SupportTicket/GUI/support_ticket.glade2:548
 #, fuzzy
 msgid "Find Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:588
+#: cuon/SupportTicket/GUI/support_ticket.glade2:598
 msgid "button"
 msgstr ""
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:669
+#: cuon/SupportTicket/GUI/support_ticket.glade2:679
 #, fuzzy
 msgid "Ticket-Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:692
+#: cuon/SupportTicket/GUI/support_ticket.glade2:702
 #, fuzzy
 msgid "Reported by"
 msgstr "Haal koersen"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:735
+#: cuon/SupportTicket/GUI/support_ticket.glade2:745
 #: cuon/Garden/GUI/hibernation.glade2:727 cuon/Project/GUI/project.glade2:1218
-#: GUI/cuon.glade2:922
+#: GUI/cuon.glade2:930
 #, fuzzy
 msgid "goto Address"
 msgstr "Ga naar adres"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:765
+#: cuon/SupportTicket/GUI/support_ticket.glade2:775
 msgid "Reported at Date/Time"
 msgstr ""
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:808
+#: cuon/SupportTicket/GUI/support_ticket.glade2:818
 #, fuzzy
 msgid "Platform"
 msgstr "Formulier ingang"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:831
+#: cuon/SupportTicket/GUI/support_ticket.glade2:841
 #, fuzzy
 msgid "solved at"
 msgstr "  %s superblok op "
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:877
+#: cuon/SupportTicket/GUI/support_ticket.glade2:887
 #: cuon/Garden/GUI/hibernation.glade2:947
 #: cuon/Garden/GUI/hibernation.glade2:1134 cuon/Garden/GUI/garden.glade2:990
-#: cuon/Garden/GUI/garden.glade2:1342 cuon/Order/GUI/order.glade2:1855
-#: cuon/Proposal/GUI/proposal.glade2:1503 cuon/Staff/GUI/staff.glade2:7
+#: cuon/Garden/GUI/garden.glade2:1342 cuon/Order/GUI/order.glade2:1928
+#: cuon/Proposal/GUI/proposal.glade2:1498 cuon/Staff/GUI/staff.glade2:7
 #: cuon/Staff/GUI/staff.glade2:72 cuon/Staff/GUI/staff.glade2:1114
 #: GUI/cuon.glade2:114
 #, fuzzy
 msgid "Staff"
 msgstr "r"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:896
-#: cuon/Editor/GUI/editor.glade2:159 cuon/Order/GUI/order.glade2:1874
-#: cuon/Proposal/GUI/proposal.glade2:1521
+#: cuon/SupportTicket/GUI/support_ticket.glade2:906
+#: cuon/Editor/GUI/editor.glade2:159 cuon/Order/GUI/order.glade2:1949
+#: cuon/Proposal/GUI/proposal.glade2:1516
 #, fuzzy
 msgid "Search ..."
 msgstr "Zoek ..."
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:931
+#: cuon/SupportTicket/GUI/support_ticket.glade2:941
 msgid "Reproduced"
 msgstr ""
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:951
+#: cuon/SupportTicket/GUI/support_ticket.glade2:961
 #, fuzzy
 msgid "Severity"
 msgstr "ID van service:"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1019
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1029
 #: cuon/Bank/GUI/bank.glade2:281 cuon/Bank/GUI/bank.glade2:627
 #, fuzzy
 msgid "short Designation"
 msgstr "Aanduiding:"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1104
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1114
 #, fuzzy
 msgid "Designation:"
 msgstr "Beschreibung2"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1116
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1126
 #, fuzzy
 msgid "working data"
 msgstr "<b>Werktijden</b>"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1191
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1201
 msgid "Ticket\n"
 msgstr ""
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1223
-#: cuon/Addresses/GUI/addresses.glade2:5565
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1233
+#: cuon/Addresses/GUI/addresses.glade2:5679
 #, fuzzy
 msgid "Note"
 msgstr "Bericht"
 
-#: cuon/SupportTicket/GUI/support_ticket.glade2:1239
+#: cuon/SupportTicket/GUI/support_ticket.glade2:1249
 #: cuon/Addresses/GUI/addresses.glade2:1071
-#: cuon/Addresses/GUI/addresses.glade2:7691
+#: cuon/Addresses/GUI/addresses.glade2:7805
 #, fuzzy
 msgid "Notes"
 msgstr "Bericht"
@@ -1467,22 +1484,22 @@ msgstr "Lidwoorden"
 #: cuon/Leasing/GUI/leasing.glade2:256 cuon/Leasing/GUI/leasing.glade2:3522
 #: cuon/Skeleton/GUI/skeleton.glade2:143 cuon/Skeleton/GUI/skeleton.glade2:872
 #: cuon/Articles/GUI/articles.glade2:321
-#: cuon/Articles/GUI/articles.glade2:2481
+#: cuon/Articles/GUI/articles.glade2:2493
 #, fuzzy
 msgid "Purchase"
 msgstr "_Kopen"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:4483
+#: cuon/Analysis/GUI/analysis_cost.glade2:553 cuon/Order/GUI/order.glade2:4590
 #, fuzzy
 msgid "Payment"
 msgstr "Betaling"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:3486
+#: cuon/Analysis/GUI/analysis_cost.glade2:603 cuon/Order/GUI/order.glade2:3586
 #, fuzzy
 msgid "monthly"
 msgstr "Maandelijks"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:3502
+#: cuon/Analysis/GUI/analysis_cost.glade2:625 cuon/Order/GUI/order.glade2:3602
 #, fuzzy
 msgid "quarterly"
 msgstr "Ieder kwartaal"
@@ -1497,7 +1514,7 @@ msgstr "Half jaar"
 msgid "custom period"
 msgstr "Boekhoudperiode"
 
-#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:3651
+#: cuon/Analysis/GUI/analysis_cost.glade2:725 cuon/Order/GUI/order.glade2:3752
 #, fuzzy
 msgid "custom"
 msgstr "aangepast"
@@ -1540,7 +1557,7 @@ msgstr "*"
 #: cuon/Login/GUI/user.glade2:370 cuon/Preferences/GUI/preferences.glade2:1146
 #: cuon/Preferences/GUI/preferences.glade2:1271 cuon/User/GUI/user.glade2:11
 #: cuon/User/GUI/user.glade2:77 cuon/User/GUI/user.glade2:886
-#: cuon/DMS/GUI/dms.glade2:994 cuon/DMS/GUI/dms.glade2:1204
+#: cuon/DMS/GUI/dms.glade2:1016 cuon/DMS/GUI/dms.glade2:1226
 #: GUI/cuon.glade2:388 GUI/cuon_server.glade2:783
 #, fuzzy
 msgid "User"
@@ -1705,7 +1722,7 @@ msgid "Sequence"
 msgstr "Rij"
 
 #: cuon/Garden/GUI/hibernation.glade2:631 cuon/Garden/GUI/garden.glade2:555
-#: cuon/Order/GUI/order.glade2:1293 cuon/Proposal/GUI/proposal.glade2:1198
+#: cuon/Order/GUI/order.glade2:1362 cuon/Proposal/GUI/proposal.glade2:1193
 #, fuzzy
 msgid "Customer"
 msgstr "Klant"
@@ -1779,7 +1796,7 @@ msgstr "Eindigt"
 
 #: cuon/Garden/GUI/hibernation.glade2:1422 cuon/WebShop/GUI/webshop.glade2:108
 #: cuon/Order/GUI/order.glade2:9 cuon/Order/GUI/order.glade2:54
-#: cuon/Order/GUI/order.glade2:1932 cuon/Project/GUI/project.glade2:3518
+#: cuon/Order/GUI/order.glade2:2012 cuon/Project/GUI/project.glade2:3518
 #: cuon/Addresses/GUI/addresses.glade2:1180 cuon/Stats/GUI/stats.glade2:100
 #, fuzzy
 msgid "Order"
@@ -1796,7 +1813,7 @@ msgid "choose Botany"
 msgstr "Kies directory"
 
 #: cuon/Garden/GUI/hibernation.glade2:1611 cuon/Order/GUI/order.glade2:381
-#: cuon/Order/GUI/order.glade2:3902 cuon/Staff/GUI/staff.glade2:181
+#: cuon/Order/GUI/order.glade2:4003 cuon/Staff/GUI/staff.glade2:181
 #: cuon/Staff/GUI/staff.glade2:1580 cuon/Addresses/GUI/addresses.glade2:911
 #: cuon/Stats/GUI/stats.glade2:145 cuon/Stats/GUI/stats.glade2:167
 #: cuon/Stats/GUI/stats.glade2:216
@@ -1831,7 +1848,7 @@ msgid "bot. Name"
 msgstr "@E heeft een naam met lengte nul.\n"
 
 #: cuon/Garden/GUI/hibernation.glade2:1761 cuon/Garden/GUI/garden.glade2:1880
-#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:1978
+#: cuon/Addresses/GUI/contact.glade2:895 cuon/DMS/GUI/dms.glade2:2012
 #, fuzzy
 msgid "status"
 msgstr "Status"
@@ -1959,14 +1976,14 @@ msgstr "Zeer goed"
 #: cuon/Leasing/GUI/leasing.glade2:103 cuon/Leasing/GUI/leasing.glade2:2278
 #: cuon/Stock/GUI/stock.glade2:889 cuon/Skeleton/GUI/skeleton.glade2:565
 #: cuon/Skeleton/GUI/skeleton.glade2:590 cuon/Articles/GUI/articles.glade2:188
-#: cuon/Articles/GUI/articles.glade2:1669
+#: cuon/Articles/GUI/articles.glade2:1681
 #, fuzzy
 msgid "Article"
 msgstr "Artikel"
 
 #: cuon/Leasing/GUI/leasing.glade2:173 cuon/Leasing/GUI/leasing.glade2:2999
 #: cuon/Articles/GUI/articles.glade2:249
-#: cuon/Articles/GUI/articles.glade2:2172
+#: cuon/Articles/GUI/articles.glade2:2184
 msgid "Parts list"
 msgstr ""
 
@@ -1982,7 +1999,7 @@ msgstr "Verkoop"
 
 #: cuon/Leasing/GUI/leasing.glade2:366 cuon/Leasing/GUI/leasing.glade2:3820
 #: cuon/Articles/GUI/articles.glade2:417
-#: cuon/Articles/GUI/articles.glade2:2683
+#: cuon/Articles/GUI/articles.glade2:2695
 #, fuzzy
 msgid "Web-Shop"
 msgstr "<b>Web camera</b>"
@@ -1992,7 +2009,7 @@ msgstr "<b>Web camera</b>"
 #: cuon/Stock/GUI/stock.glade2:693
 #: cuon/Stock/GUI/stockgoods_search1.glade2:335
 #: cuon/Articles/GUI/articles.glade2:444
-#: cuon/Articles/GUI/articles.glade2:2933 GUI/cuon.glade2:205
+#: cuon/Articles/GUI/articles.glade2:2945 GUI/cuon.glade2:205
 #, fuzzy
 msgid "Stock"
 msgstr "Aandelen"
@@ -2064,28 +2081,28 @@ msgstr "Praag 15"
 
 #: cuon/Leasing/GUI/leasing.glade2:858 cuon/Leasing/GUI/leasing.glade2:2411
 #: cuon/Articles/GUI/articles.glade2:791
-#: cuon/Articles/GUI/articles.glade2:1741
+#: cuon/Articles/GUI/articles.glade2:1753
 #: cuon/Articles/GUI/articles_search1.glade2:365
 #, fuzzy
 msgid "Materialgroup"
 msgstr "Gelieve een geldige groep te kiezen."
 
-#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:1013
-#: cuon/Proposal/GUI/proposal.glade2:866 cuon/Skeleton/GUI/skeleton.glade2:480
+#: cuon/Leasing/GUI/leasing.glade2:1029 cuon/Order/GUI/order.glade2:829
+#: cuon/Proposal/GUI/proposal.glade2:861 cuon/Skeleton/GUI/skeleton.glade2:480
 #: cuon/Articles/GUI/articles.glade2:891
 #, fuzzy
 msgid "Desig."
 msgstr "Omschrijving"
 
-#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:2760
-#: cuon/Proposal/GUI/proposal.glade2:2427 cuon/Project/GUI/project.glade2:2997
+#: cuon/Leasing/GUI/leasing.glade2:1059 cuon/Order/GUI/order.glade2:2853
+#: cuon/Proposal/GUI/proposal.glade2:2422 cuon/Project/GUI/project.glade2:2997
 #: cuon/Skeleton/GUI/skeleton.glade2:513 cuon/Articles/GUI/articles.glade2:905
 #, fuzzy
 msgid "Unit"
 msgstr "Afdeling"
 
-#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:2772
-#: cuon/Proposal/GUI/proposal.glade2:2439
+#: cuon/Leasing/GUI/leasing.glade2:1112 cuon/Order/GUI/order.glade2:2865
+#: cuon/Proposal/GUI/proposal.glade2:2434
 #: cuon/Skeleton/GUI/skeleton.glade2:530 cuon/Articles/GUI/articles.glade2:938
 #, fuzzy
 msgid "Wrapping"
@@ -2135,9 +2152,9 @@ msgid "Goto"
 msgstr "Ga naar"
 
 #: cuon/Leasing/GUI/leasing.glade2:1774 cuon/Graves/GUI/graves.glade2:1544
-#: cuon/Order/GUI/order.glade2:2361 cuon/Order/GUI/order.glade2:2436
-#: cuon/Proposal/GUI/proposal.glade2:2104
-#: cuon/Proposal/GUI/proposal.glade2:2179
+#: cuon/Order/GUI/order.glade2:2451 cuon/Order/GUI/order.glade2:2527
+#: cuon/Proposal/GUI/proposal.glade2:2099
+#: cuon/Proposal/GUI/proposal.glade2:2174
 #: cuon/Addresses/GUI/addresses.glade2:2318
 #: cuon/Addresses/GUI/addresses.glade2:2403
 #: cuon/Articles/GUI/articles.glade2:1337
@@ -2174,105 +2191,106 @@ msgstr "ARABIC(\"IV\") geeft 4"
 msgid "show extendet info"
 msgstr "Toon gegevens voorbereider"
 
-#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:3077
-#: cuon/Order/GUI/order.glade2:3404 cuon/Proposal/GUI/proposal.glade2:3026
-#: cuon/Articles/GUI/articles.glade2:1598
+#: cuon/Leasing/GUI/leasing.glade2:2184 cuon/Order/GUI/order.glade2:3170
+#: cuon/Order/GUI/order.glade2:3502 cuon/Proposal/GUI/proposal.glade2:3023
+#: cuon/Articles/GUI/articles.glade2:1599
 #, fuzzy
 msgid "choose Tax Vat"
 msgstr "Kanaal boven"
 
 #: cuon/Leasing/GUI/leasing.glade2:2230 cuon/Stats/GUI/stats.glade2:238
 #: cuon/Articles/GUI/materialGroup.glade2:511
-#: cuon/Articles/GUI/articles.glade2:1630
+#: cuon/Articles/GUI/articles.glade2:1631
 #, fuzzy
 msgid "Tax Vat"
 msgstr "<b>Belasting informatie</b>"
 
-#: cuon/Leasing/GUI/leasing.glade2:2674 cuon/Articles/GUI/articles.glade2:1962
+#: cuon/Leasing/GUI/leasing.glade2:2674 cuon/Articles/GUI/articles.glade2:1974
 #, fuzzy
 msgid "Article Des."
 msgstr "Bureau_blad"
 
-#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2828
-#: cuon/Graves/GUI/graves.glade2:3139 cuon/Graves/GUI/graves.glade2:3449
-#: cuon/Graves/GUI/graves.glade2:3766 cuon/Graves/GUI/graves.glade2:4077
-#: cuon/Graves/GUI/graves.glade2:4388 cuon/Graves/GUI/graves.glade2:4768
-#: cuon/Project/GUI/project.glade2:2907 cuon/Articles/GUI/articles.glade2:1990
+#: cuon/Leasing/GUI/leasing.glade2:2723 cuon/Graves/GUI/graves.glade2:2465
+#: cuon/Graves/GUI/graves.glade2:2791 cuon/Graves/GUI/graves.glade2:3101
+#: cuon/Graves/GUI/graves.glade2:3410 cuon/Graves/GUI/graves.glade2:3726
+#: cuon/Graves/GUI/graves.glade2:4036 cuon/Graves/GUI/graves.glade2:4346
+#: cuon/Graves/GUI/graves.glade2:4726 cuon/Project/GUI/project.glade2:2907
+#: cuon/Articles/GUI/articles.glade2:2002
 #, fuzzy
 msgid "Article-Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Leasing/GUI/leasing.glade2:2772 cuon/Articles/GUI/articles.glade2:2018
+#: cuon/Leasing/GUI/leasing.glade2:2772 cuon/Articles/GUI/articles.glade2:2030
 msgid "Quantities"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5159
-#: cuon/Articles/GUI/articles.glade2:2141
+#: cuon/Leasing/GUI/leasing.glade2:2963 cuon/Graves/GUI/graves.glade2:5117
+#: cuon/Articles/GUI/articles.glade2:2153
 #, fuzzy
 msgid "add Article"
 msgstr "Artikel"
 
 #: cuon/Leasing/GUI/leasing.glade2:3124 cuon/Skeleton/GUI/skeleton.glade2:656
-#: cuon/Articles/GUI/articles.glade2:2236
+#: cuon/Articles/GUI/articles.glade2:2248
 #, fuzzy
 msgid "Vendor "
 msgstr "_Maker"
 
 #: cuon/Leasing/GUI/leasing.glade2:3152 cuon/Skeleton/GUI/skeleton.glade2:679
-#: cuon/Articles/GUI/articles.glade2:2248
+#: cuon/Articles/GUI/articles.glade2:2260
 #, fuzzy
 msgid "unit price "
 msgstr "Eenheidsprijs"
 
 #: cuon/Leasing/GUI/leasing.glade2:3180 cuon/Skeleton/GUI/skeleton.glade2:702
-#: cuon/Articles/GUI/articles.glade2:2262
+#: cuon/Articles/GUI/articles.glade2:2274
 #, fuzzy
 msgid "Discount "
 msgstr "Korting"
 
 #: cuon/Leasing/GUI/leasing.glade2:3208 cuon/Skeleton/GUI/skeleton.glade2:725
-#: cuon/Articles/GUI/articles.glade2:2276
+#: cuon/Articles/GUI/articles.glade2:2288
 #, fuzzy
 msgid "min. Quant."
 msgstr "Minimale QP"
 
-#: cuon/Leasing/GUI/leasing.glade2:3236 cuon/Articles/GUI/articles.glade2:2290
+#: cuon/Leasing/GUI/leasing.glade2:3236 cuon/Articles/GUI/articles.glade2:2302
 #, fuzzy
 msgid "Last Date"
 msgstr "Voornaam Achternaam"
 
 #: cuon/Leasing/GUI/leasing.glade2:3307 cuon/Skeleton/GUI/skeleton.glade2:818
-#: cuon/Articles/GUI/articles.glade2:2329
+#: cuon/Articles/GUI/articles.glade2:2341
 #, fuzzy
 msgid "choose Vendor"
 msgstr "Bewerk leverancier"
 
-#: cuon/Leasing/GUI/leasing.glade2:3411 cuon/Articles/GUI/articles.glade2:2402
+#: cuon/Leasing/GUI/leasing.glade2:3411 cuon/Articles/GUI/articles.glade2:2414
 #, fuzzy
 msgid "Nr. by Vendor"
 msgstr "Standaard belastingschaal voor leverancier"
 
-#: cuon/Leasing/GUI/leasing.glade2:3439 cuon/Articles/GUI/articles.glade2:2417
+#: cuon/Leasing/GUI/leasing.glade2:3439 cuon/Articles/GUI/articles.glade2:2429
 #, fuzzy
 msgid "Des. by Vendor"
 msgstr "Standaard belastingschaal voor leverancier"
 
-#: cuon/Leasing/GUI/leasing.glade2:3656 cuon/Articles/GUI/articles.glade2:2553
+#: cuon/Leasing/GUI/leasing.glade2:3656 cuon/Articles/GUI/articles.glade2:2565
 #, fuzzy
 msgid "Sale"
 msgstr "Verkoop"
 
-#: cuon/Leasing/GUI/leasing.glade2:3699 cuon/Articles/GUI/articles.glade2:2573
+#: cuon/Leasing/GUI/leasing.glade2:3699 cuon/Articles/GUI/articles.glade2:2585
 #, fuzzy
 msgid "Webshop-Article"
 msgstr "Artikel kop"
 
-#: cuon/Leasing/GUI/leasing.glade2:3721 cuon/Articles/GUI/articles.glade2:2587
+#: cuon/Leasing/GUI/leasing.glade2:3721 cuon/Articles/GUI/articles.glade2:2599
 #, fuzzy
 msgid "sync. Stock"
 msgstr "Aandelen rekening"
 
-#: cuon/Leasing/GUI/leasing.glade2:3742 cuon/Articles/GUI/articles.glade2:2605
+#: cuon/Leasing/GUI/leasing.glade2:3742 cuon/Articles/GUI/articles.glade2:2617
 #, fuzzy
 msgid "Shop-Price"
 msgstr "Nieuwe _prijs:"
@@ -2285,58 +2303,58 @@ msgid ""
 "Price IV\n"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:3858 cuon/Articles/GUI/articles.glade2:2702
+#: cuon/Leasing/GUI/leasing.glade2:3858 cuon/Articles/GUI/articles.glade2:2714
 #, fuzzy
 msgid "min. Amount"
 msgstr "Hoeveelheid (_aantallen):"
 
-#: cuon/Leasing/GUI/leasing.glade2:3907 cuon/Articles/GUI/articles.glade2:2725
+#: cuon/Leasing/GUI/leasing.glade2:3907 cuon/Articles/GUI/articles.glade2:2737
 #, fuzzy
 msgid "max.Amount"
 msgstr "Hoeveelheid (_aantallen):"
 
-#: cuon/Leasing/GUI/leasing.glade2:3957 cuon/Articles/GUI/articles.glade2:2750
+#: cuon/Leasing/GUI/leasing.glade2:3957 cuon/Articles/GUI/articles.glade2:2762
 #, fuzzy
 msgid "verify Stock"
 msgstr "Aandelen rekening"
 
-#: cuon/Leasing/GUI/leasing.glade2:3994 cuon/Articles/GUI/articles.glade2:2813
+#: cuon/Leasing/GUI/leasing.glade2:3994 cuon/Articles/GUI/articles.glade2:2825
 #, fuzzy
 msgid "actual Stock"
 msgstr "Aandelen rekening"
 
-#: cuon/Leasing/GUI/leasing.glade2:4022 cuon/Articles/GUI/articles.glade2:2824
+#: cuon/Leasing/GUI/leasing.glade2:4022 cuon/Articles/GUI/articles.glade2:2836
 #, fuzzy
 msgid "reserved"
 msgstr "Gereserveerd"
 
-#: cuon/Leasing/GUI/leasing.glade2:4050 cuon/Articles/GUI/articles.glade2:2837
+#: cuon/Leasing/GUI/leasing.glade2:4050 cuon/Articles/GUI/articles.glade2:2849
 #, fuzzy
 msgid "offer"
 msgstr "Aanbod ontvangen"
 
-#: cuon/Leasing/GUI/leasing.glade2:4078 cuon/Articles/GUI/articles.glade2:2850
+#: cuon/Leasing/GUI/leasing.glade2:4078 cuon/Articles/GUI/articles.glade2:2862
 #, fuzzy
 msgid "Free"
 msgstr "Vrij"
 
-#: cuon/Leasing/GUI/leasing.glade2:4239 cuon/Articles/GUI/articles.glade2:2949
+#: cuon/Leasing/GUI/leasing.glade2:4239 cuon/Articles/GUI/articles.glade2:2961
 #, fuzzy
 msgid "Barcode Types"
 msgstr "Documentsoorten"
 
-#: cuon/Leasing/GUI/leasing.glade2:4267 cuon/Articles/GUI/articles.glade2:2962
+#: cuon/Leasing/GUI/leasing.glade2:4267 cuon/Articles/GUI/articles.glade2:2974
 #, fuzzy
 msgid "Barcode"
 msgstr "Streepjescode"
 
-#: cuon/Leasing/GUI/leasing.glade2:4323 cuon/Articles/GUI/articles.glade2:2990
+#: cuon/Leasing/GUI/leasing.glade2:4323 cuon/Articles/GUI/articles.glade2:3002
 #: GUI/setup.glade2:1407
 #, fuzzy
 msgid "Default"
 msgstr "Standaard"
 
-#: cuon/Leasing/GUI/leasing.glade2:4342 cuon/Articles/GUI/articles.glade2:3005
+#: cuon/Leasing/GUI/leasing.glade2:4342 cuon/Articles/GUI/articles.glade2:3017
 #, fuzzy
 msgid "Custom"
 msgstr "Aangepast"
@@ -2359,7 +2377,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4415 cuon/Articles/GUI/articles.glade2:3049
+#: cuon/Leasing/GUI/leasing.glade2:4415 cuon/Articles/GUI/articles.glade2:3061
 #, fuzzy
 msgid "geometry W x H"
 msgstr "Geometrie"
@@ -2373,23 +2391,23 @@ msgid ""
 msgstr ""
 
 #: cuon/Leasing/GUI/leasing.glade2:4531 cuon/Leasing/GUI/leasing.glade2:4666
-#: cuon/Articles/GUI/articles.glade2:3108
-#: cuon/Articles/GUI/articles.glade2:3179
+#: cuon/Articles/GUI/articles.glade2:3120
+#: cuon/Articles/GUI/articles.glade2:3191
 msgid " x "
 msgstr ""
 
-#: cuon/Leasing/GUI/leasing.glade2:4613 cuon/Articles/GUI/articles.glade2:3154
+#: cuon/Leasing/GUI/leasing.glade2:4613 cuon/Articles/GUI/articles.glade2:3166
 #, fuzzy
 msgid "Page W x H"
 msgstr "Pagina"
 
-#: cuon/Leasing/GUI/leasing.glade2:4745 cuon/Articles/GUI/articles.glade2:3261
+#: cuon/Leasing/GUI/leasing.glade2:4745 cuon/Articles/GUI/articles.glade2:3273
 #, fuzzy
 msgid "barcode"
 msgstr "Streepjescode"
 
 #: cuon/WebShop/GUI/webshop.glade2:10 cuon/WebShop/GUI/webshop.glade2:316
-#: cuon/Addresses/GUI/addresses.glade2:3641
+#: cuon/Addresses/GUI/addresses.glade2:3660
 #, fuzzy
 msgid "Webshop"
 msgstr "<b>Web camera</b>"
@@ -2410,7 +2428,7 @@ msgid "Complete"
 msgstr ""
 
 #: cuon/WebShop/GUI/webshop.glade2:90 cuon/Addresses/GUI/addresses.glade2:3197
-#: cuon/Stats/GUI/stats.glade2:60 GUI/cuon.glade2:465
+#: cuon/Stats/GUI/stats.glade2:60 GUI/cuon.glade2:473
 #, fuzzy
 msgid "Addresses"
 msgstr "Adres"
@@ -2513,7 +2531,7 @@ msgid "Custom Month"
 msgstr "laatste van de maand"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:519
-#: cuon/Graves/GUI/graves.glade2:162 cuon/Addresses/GUI/addresses.glade2:7957
+#: cuon/Graves/GUI/graves.glade2:162 cuon/Addresses/GUI/addresses.glade2:8071
 #: cuon/Stats/GUI/stats.glade2:229
 #, fuzzy
 msgid "Invoices"
@@ -2536,7 +2554,7 @@ msgstr "Factuur nummer"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:776
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:933
-#: cuon/Order/GUI/order.glade2:578 cuon/Proposal/GUI/proposal.glade2:468
+#: cuon/Order/GUI/order.glade2:577 cuon/Proposal/GUI/proposal.glade2:468
 #, fuzzy
 msgid "Order-Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
@@ -2573,13 +2591,13 @@ msgstr "Ordernummer"
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1226
 #: cuon/Project/GUI/project.glade2:517 cuon/Project/GUI/project.glade2:1267
 #: cuon/Addresses/GUI/addresses.glade2:1412
-#: cuon/Addresses/GUI/addresses.glade2:5382
+#: cuon/Addresses/GUI/addresses.glade2:5496
 #, fuzzy
 msgid "Letter"
 msgstr "Letter"
 
 #: cuon/Finances/InvoiceBook/GUI/invoiceBook.glade2:1243
-#: cuon/Addresses/GUI/addresses.glade2:3719
+#: cuon/Addresses/GUI/addresses.glade2:3511
 msgid "button3"
 msgstr ""
 
@@ -2708,7 +2726,7 @@ msgstr ""
 
 #: cuon/Finances/CashAccountBook/GUI/cab_search1.glade2:629
 #: cuon/Finances/Bookkeeping/GUI/book_search1.glade2:629
-#: cuon/Stock/GUI/stockgoods_search1.glade2:629 GUI/fileselection.glade2:10
+#: cuon/Stock/GUI/stockgoods_search1.glade2:629 GUI/fileselection.glade2:9
 msgid "Select File"
 msgstr ""
 
@@ -2719,7 +2737,7 @@ msgstr "Sluitingsdatum boek"
 
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:75
 #: cuon/Finances/CashAccountBook/GUI/cashAccountBook.glade2:1388
-#: cuon/Order/GUI/order.glade2:4263
+#: cuon/Order/GUI/order.glade2:4367
 #, fuzzy
 msgid "Cash"
 msgstr "Contant"
@@ -2843,22 +2861,22 @@ msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:324 cuon/Editor/GUI/editor.glade2:325
 #: cuon/Editor/GUI/prgeditor.glade2:337 cuon/Editor/GUI/prgeditor.glade2:338
-#: cuon/Addresses/GUI/addresses.glade2:5962
-#: cuon/Addresses/GUI/addresses.glade2:6316
-#: cuon/Addresses/GUI/addresses.glade2:6671
-#: cuon/Addresses/GUI/addresses.glade2:7026
-#: cuon/Addresses/GUI/addresses.glade2:7381
+#: cuon/Addresses/GUI/addresses.glade2:6076
+#: cuon/Addresses/GUI/addresses.glade2:6430
+#: cuon/Addresses/GUI/addresses.glade2:6785
+#: cuon/Addresses/GUI/addresses.glade2:7140
+#: cuon/Addresses/GUI/addresses.glade2:7495
 #, fuzzy
 msgid "Cut"
 msgstr "Country"
 
 #: cuon/Editor/GUI/editor.glade2:338 cuon/Editor/GUI/editor.glade2:339
 #: cuon/Editor/GUI/prgeditor.glade2:355 cuon/Editor/GUI/prgeditor.glade2:356
-#: cuon/Addresses/GUI/addresses.glade2:6011
-#: cuon/Addresses/GUI/addresses.glade2:6365
-#: cuon/Addresses/GUI/addresses.glade2:6720
-#: cuon/Addresses/GUI/addresses.glade2:7075
-#: cuon/Addresses/GUI/addresses.glade2:7430
+#: cuon/Addresses/GUI/addresses.glade2:6125
+#: cuon/Addresses/GUI/addresses.glade2:6479
+#: cuon/Addresses/GUI/addresses.glade2:6834
+#: cuon/Addresses/GUI/addresses.glade2:7189
+#: cuon/Addresses/GUI/addresses.glade2:7544
 msgid "Copy"
 msgstr ""
 
@@ -2873,22 +2891,22 @@ msgstr "Fase"
 #: cuon/Editor/GUI/prgeditor.glade2:115 cuon/Editor/GUI/prgeditor.glade2:404
 #: cuon/Editor/GUI/prgeditor.glade2:405
 #: cuon/Addresses/GUI/addresses.glade2:727
-#: cuon/Addresses/GUI/addresses.glade2:6109
-#: cuon/Addresses/GUI/addresses.glade2:6463
-#: cuon/Addresses/GUI/addresses.glade2:6818
-#: cuon/Addresses/GUI/addresses.glade2:7173
-#: cuon/Addresses/GUI/addresses.glade2:7528
+#: cuon/Addresses/GUI/addresses.glade2:6223
+#: cuon/Addresses/GUI/addresses.glade2:6577
+#: cuon/Addresses/GUI/addresses.glade2:6932
+#: cuon/Addresses/GUI/addresses.glade2:7287
+#: cuon/Addresses/GUI/addresses.glade2:7642
 msgid "Undo"
 msgstr ""
 
 #: cuon/Editor/GUI/editor.glade2:388 cuon/Editor/GUI/editor.glade2:389
 #: cuon/Editor/GUI/prgeditor.glade2:136 cuon/Editor/GUI/prgeditor.glade2:422
 #: cuon/Editor/GUI/prgeditor.glade2:423
-#: cuon/Addresses/GUI/addresses.glade2:6158
-#: cuon/Addresses/GUI/addresses.glade2:6512
-#: cuon/Addresses/GUI/addresses.glade2:6867
-#: cuon/Addresses/GUI/addresses.glade2:7222
-#: cuon/Addresses/GUI/addresses.glade2:7577
+#: cuon/Addresses/GUI/addresses.glade2:6272
+#: cuon/Addresses/GUI/addresses.glade2:6626
+#: cuon/Addresses/GUI/addresses.glade2:6981
+#: cuon/Addresses/GUI/addresses.glade2:7336
+#: cuon/Addresses/GUI/addresses.glade2:7691
 #, fuzzy
 msgid "Redo"
 msgstr "Verwijderen"
@@ -2957,7 +2975,7 @@ msgstr ""
 msgid "Extend. Info"
 msgstr "Meer informatie"
 
-#: cuon/Graves/GUI/graves.glade2:90 cuon/Graves/GUI/graves.glade2:1838
+#: cuon/Graves/GUI/graves.glade2:90 cuon/Graves/GUI/graves.glade2:1921
 #, fuzzy
 msgid "Grave"
 msgstr "opslaan"
@@ -2967,43 +2985,43 @@ msgstr "opslaan"
 msgid "Plant Lists"
 msgstr "Betaling"
 
-#: cuon/Graves/GUI/graves.glade2:210 cuon/Graves/GUI/graves.glade2:2792
+#: cuon/Graves/GUI/graves.glade2:210 cuon/Graves/GUI/graves.glade2:2755
 #: cuon/Graves/GUI/plantlists.glade2:136
 #, fuzzy
 msgid "Service"
 msgstr "ID van service:"
 
-#: cuon/Graves/GUI/graves.glade2:258 cuon/Graves/GUI/graves.glade2:3103
+#: cuon/Graves/GUI/graves.glade2:258 cuon/Graves/GUI/graves.glade2:3065
 #, fuzzy
 msgid "Spring"
 msgstr "toon"
 
-#: cuon/Graves/GUI/graves.glade2:306 cuon/Graves/GUI/graves.glade2:3414
+#: cuon/Graves/GUI/graves.glade2:306 cuon/Graves/GUI/graves.glade2:3375
 #, fuzzy
 msgid "Summer"
 msgstr "getal"
 
-#: cuon/Graves/GUI/graves.glade2:354 cuon/Graves/GUI/graves.glade2:3731
+#: cuon/Graves/GUI/graves.glade2:354 cuon/Graves/GUI/graves.glade2:3691
 #, fuzzy
 msgid "Autumn"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Graves/GUI/graves.glade2:402 cuon/Graves/GUI/graves.glade2:4042
+#: cuon/Graves/GUI/graves.glade2:402 cuon/Graves/GUI/graves.glade2:4001
 #, fuzzy
 msgid "Holidays"
 msgstr "dagen"
 
-#: cuon/Graves/GUI/graves.glade2:450 cuon/Graves/GUI/graves.glade2:4353
+#: cuon/Graves/GUI/graves.glade2:450 cuon/Graves/GUI/graves.glade2:4311
 #: cuon/Graves/GUI/graves_list.glade2:489
 #, fuzzy
 msgid "Winter"
 msgstr "Schrijver: %1 %2"
 
-#: cuon/Graves/GUI/graves.glade2:498 cuon/Graves/GUI/graves.glade2:4733
+#: cuon/Graves/GUI/graves.glade2:498 cuon/Graves/GUI/graves.glade2:4691
 msgid "annual"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:546 cuon/Graves/GUI/graves.glade2:5082
+#: cuon/Graves/GUI/graves.glade2:546 cuon/Graves/GUI/graves.glade2:5040
 #, fuzzy
 msgid "unique"
 msgstr "eenheid"
@@ -3119,206 +3137,205 @@ msgstr "Betaling"
 msgid "TBF Vertragsnr."
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1847
+#: cuon/Graves/GUI/graves.glade2:1790 cuon/Order/GUI/order.glade2:1209
+#: cuon/Addresses/GUI/addresses.glade2:3949
+#, fuzzy
+msgid "I"
+msgstr "ID"
+
+#: cuon/Graves/GUI/graves.glade2:1803 cuon/Order/GUI/order.glade2:1222
+#: cuon/Addresses/GUI/addresses.glade2:3962
+#, fuzzy
+msgid "II"
+msgstr "ID"
+
+#: cuon/Graves/GUI/graves.glade2:1816 cuon/Order/GUI/order.glade2:1235
+#: cuon/Addresses/GUI/addresses.glade2:3975
+msgid "III"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:1829 cuon/Order/GUI/order.glade2:1248
+#: cuon/Addresses/GUI/addresses.glade2:3988
+#, fuzzy
+msgid "IV"
+msgstr "ID"
+
+#: cuon/Graves/GUI/graves.glade2:1842 cuon/Order/GUI/order.glade2:1261
+#: cuon/Addresses/GUI/addresses.glade2:4001
+#, fuzzy
+msgid "None"
+msgstr "Geen"
+
+#: cuon/Graves/GUI/graves.glade2:1865 cuon/Order/GUI/order.glade2:1193
+#: cuon/Addresses/GUI/addresses.glade2:4024
+#, fuzzy
+msgid "Pricegroup"
+msgstr "%u blokgroep\n"
+
+#: cuon/Graves/GUI/graves.glade2:1930
 msgid "(F1)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1865
+#: cuon/Graves/GUI/graves.glade2:1948
 msgid "zustzliche Rechnungsempfnger angeben:\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:1883
+#: cuon/Graves/GUI/graves.glade2:1966
 #, fuzzy
 msgid "address"
 msgstr "Adres"
 
-#: cuon/Graves/GUI/graves.glade2:1933 cuon/Bank/GUI/bank.glade2:542
+#: cuon/Graves/GUI/graves.glade2:2016 cuon/Bank/GUI/bank.glade2:542
 #, fuzzy
 msgid "choose Address"
 msgstr "Server adres"
 
-#: cuon/Graves/GUI/graves.glade2:2007
+#: cuon/Graves/GUI/graves.glade2:2090
 #, fuzzy
 msgid "Part"
 msgstr "Poort"
 
-#: cuon/Graves/GUI/graves.glade2:2037
+#: cuon/Graves/GUI/graves.glade2:2120
 #, fuzzy
 msgid "Begin"
 msgstr "Begin-Einde (=begin  =einde)"
 
-#: cuon/Graves/GUI/graves.glade2:2050
+#: cuon/Graves/GUI/graves.glade2:2133
 #, fuzzy
 msgid "End"
 msgstr "  %s superblok op "
 
-#: cuon/Graves/GUI/graves.glade2:2100
+#: cuon/Graves/GUI/graves.glade2:2183
 #, fuzzy
 msgid "Term of payment"
 msgstr "<b>Betalingsmogelijkheden</b>"
 
-#: cuon/Graves/GUI/graves.glade2:2356
+#: cuon/Graves/GUI/graves.glade2:2439
 msgid "(F2)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:2442
-msgid "Pflegepreis"
-msgstr ""
-
-#: cuon/Graves/GUI/graves.glade2:2508 cuon/Clients/GUI/clients.glade2:167
-#, fuzzy
-msgid "Choose"
-msgstr "Kiezen"
-
-#: cuon/Graves/GUI/graves.glade2:2542
-#, fuzzy
-msgid "Serviceprice for"
-msgstr "ID van service:"
-
-#: cuon/Graves/GUI/graves.glade2:2556
-msgid "8"
-msgstr ""
-
-#: cuon/Graves/GUI/graves.glade2:2567
-#, fuzzy
-msgid "months"
-msgstr "Maandelijks"
-
-#: cuon/Graves/GUI/graves.glade2:2625
-#, fuzzy
-msgid "Hints for Service"
-msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
-
-#: cuon/Graves/GUI/graves.glade2:2638
-#, fuzzy
-msgid "addional services"
-msgstr "Sleutelmateriaal"
-
-#: cuon/Graves/GUI/graves.glade2:2658
-msgid "Artikelbesch., Preis UND Datum"
-msgstr ""
-
-#: cuon/Graves/GUI/graves.glade2:2703
-#, fuzzy
-msgid "choose Service"
-msgstr "Artikel kop"
-
-#: cuon/Graves/GUI/graves.glade2:2802
-msgid "(F3)"
-msgstr ""
-
-#: cuon/Graves/GUI/graves.glade2:2885 cuon/Graves/GUI/graves.glade2:3196
-#: cuon/Graves/GUI/graves.glade2:3505 cuon/Graves/GUI/graves.glade2:3823
-#: cuon/Graves/GUI/graves.glade2:4134 cuon/Graves/GUI/graves.glade2:4445
-#: cuon/Graves/GUI/graves.glade2:4825
+#: cuon/Graves/GUI/graves.glade2:2521 cuon/Graves/GUI/graves.glade2:2848
+#: cuon/Graves/GUI/graves.glade2:3158 cuon/Graves/GUI/graves.glade2:3466
+#: cuon/Graves/GUI/graves.glade2:3783 cuon/Graves/GUI/graves.glade2:4093
+#: cuon/Graves/GUI/graves.glade2:4403 cuon/Graves/GUI/graves.glade2:4783
 #, fuzzy
 msgid "Count"
 msgstr "Country"
 
-#: cuon/Graves/GUI/graves.glade2:2949 cuon/Graves/GUI/graves.glade2:3260
-#: cuon/Graves/GUI/graves.glade2:3569 cuon/Graves/GUI/graves.glade2:3887
-#: cuon/Graves/GUI/graves.glade2:4198 cuon/Graves/GUI/graves.glade2:4605
-#: cuon/Graves/GUI/graves.glade2:4922
+#: cuon/Graves/GUI/graves.glade2:2544
+#, fuzzy
+msgid "Service Type"
+msgstr "ID van service:"
+
+#: cuon/Graves/GUI/graves.glade2:2602 cuon/Graves/GUI/graves.glade2:2912
+#: cuon/Graves/GUI/graves.glade2:3222 cuon/Graves/GUI/graves.glade2:3530
+#: cuon/Graves/GUI/graves.glade2:3847 cuon/Graves/GUI/graves.glade2:4157
+#: cuon/Graves/GUI/graves.glade2:4563 cuon/Graves/GUI/graves.glade2:4880
 #, fuzzy
 msgid "ArticleDesignation"
 msgstr "Aanduiding:"
 
-#: cuon/Graves/GUI/graves.glade2:2981 cuon/Graves/GUI/graves.glade2:3292
-#: cuon/Graves/GUI/graves.glade2:3601 cuon/Graves/GUI/graves.glade2:3919
-#: cuon/Graves/GUI/graves.glade2:4230 cuon/Graves/GUI/graves.glade2:4543
-#: cuon/Graves/GUI/graves.glade2:4954 cuon/Order/GUI/order.glade2:2965
-#: cuon/Proposal/GUI/proposal.glade2:2601
+#: cuon/Graves/GUI/graves.glade2:2634 cuon/Graves/GUI/graves.glade2:2944
+#: cuon/Graves/GUI/graves.glade2:3254 cuon/Graves/GUI/graves.glade2:3562
+#: cuon/Graves/GUI/graves.glade2:3879 cuon/Graves/GUI/graves.glade2:4189
+#: cuon/Graves/GUI/graves.glade2:4501 cuon/Graves/GUI/graves.glade2:4912
+#: cuon/Order/GUI/order.glade2:3058 cuon/Proposal/GUI/proposal.glade2:2597
 #, fuzzy
 msgid "Price"
 msgstr "Prijs"
 
-#: cuon/Graves/GUI/graves.glade2:3014 cuon/Graves/GUI/graves.glade2:3325
-#: cuon/Graves/GUI/graves.glade2:3634 cuon/Graves/GUI/graves.glade2:3952
-#: cuon/Graves/GUI/graves.glade2:4263 cuon/Graves/GUI/graves.glade2:4636
+#: cuon/Graves/GUI/graves.glade2:2667 cuon/Graves/GUI/graves.glade2:2977
+#: cuon/Graves/GUI/graves.glade2:3287 cuon/Graves/GUI/graves.glade2:3595
+#: cuon/Graves/GUI/graves.glade2:3912 cuon/Graves/GUI/graves.glade2:4222
+#: cuon/Graves/GUI/graves.glade2:4594
 msgid "Period\n"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3040
+#: cuon/Graves/GUI/graves.glade2:2693 cuon/Graves/GUI/graves.glade2:3003
 #, fuzzy
 msgid "Hints"
 msgstr "IRC-programma's"
 
-#: cuon/Graves/GUI/graves.glade2:3113
+#: cuon/Graves/GUI/graves.glade2:2765
+msgid "(F3)"
+msgstr ""
+
+#: cuon/Graves/GUI/graves.glade2:3075
 msgid "(F4)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3351
+#: cuon/Graves/GUI/graves.glade2:3313
 #, fuzzy
 msgid "Hints Summer"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Graves/GUI/graves.glade2:3423
+#: cuon/Graves/GUI/graves.glade2:3384
 msgid "(F5)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3661
+#: cuon/Graves/GUI/graves.glade2:3622
 #, fuzzy
 msgid "Hints Autumn"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Graves/GUI/graves.glade2:3740
+#: cuon/Graves/GUI/graves.glade2:3700
 msgid "(F6)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:3979
+#: cuon/Graves/GUI/graves.glade2:3939
 #, fuzzy
 msgid "Hints Holiday"
 msgstr "dagen"
 
-#: cuon/Graves/GUI/graves.glade2:4051
+#: cuon/Graves/GUI/graves.glade2:4010
 msgid "(F7)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4290
+#: cuon/Graves/GUI/graves.glade2:4249
 #, fuzzy
 msgid "Hints Spring"
 msgstr "toon"
 
-#: cuon/Graves/GUI/graves.glade2:4362
+#: cuon/Graves/GUI/graves.glade2:4320
 msgid "(F8)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4473
+#: cuon/Graves/GUI/graves.glade2:4431
 #, fuzzy
 msgid "Day/Month"
 msgstr "Maand"
 
-#: cuon/Graves/GUI/graves.glade2:4500
+#: cuon/Graves/GUI/graves.glade2:4458
 msgid "/"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4663
+#: cuon/Graves/GUI/graves.glade2:4621
 #, fuzzy
 msgid "Hints Annual"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Graves/GUI/graves.glade2:4742
+#: cuon/Graves/GUI/graves.glade2:4700
 msgid "(F9)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:4986
+#: cuon/Graves/GUI/graves.glade2:4944
 msgid "Period"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5010
+#: cuon/Graves/GUI/graves.glade2:4968
 #, fuzzy
 msgid "Hints Unique"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Graves/GUI/graves.glade2:5091
+#: cuon/Graves/GUI/graves.glade2:5049
 msgid "(F11)"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5114
+#: cuon/Graves/GUI/graves.glade2:5072
 msgid "\t"
 msgstr ""
 
-#: cuon/Graves/GUI/graves.glade2:5202
+#: cuon/Graves/GUI/graves.glade2:5160
 msgid "common Hints"
 msgstr ""
 
@@ -3553,17 +3570,35 @@ msgid "Contract ends from "
 msgstr "  %s superblok op "
 
 #: cuon/Graves/GUI/plantlists.glade2:527
+msgid "Predefined"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:554
 #, fuzzy
 msgid "Format"
 msgstr "Formulieren"
 
-#: cuon/Graves/GUI/plantlists.glade2:561 cuon/Stats/GUI/stats.glade2:38
+#: cuon/Graves/GUI/plantlists.glade2:588 cuon/Stats/GUI/stats.glade2:38
 #: GUI/setup.glade2:37 GUI/cuon_config_wizard.glade2:17
 #, fuzzy
 msgid "File"
 msgstr "Bestand"
 
-#: cuon/Graves/GUI/plantlists.glade2:625
+#: cuon/Graves/GUI/plantlists.glade2:638
+#, fuzzy
+msgid "New Predefine"
+msgstr "Nieuwe order"
+
+#: cuon/Graves/GUI/plantlists.glade2:652
+msgid "Edit Predefine"
+msgstr ""
+
+#: cuon/Graves/GUI/plantlists.glade2:666
+#, fuzzy
+msgid "Delete Predefine"
+msgstr "Telefoon/Fax"
+
+#: cuon/Graves/GUI/plantlists.glade2:683
 #, fuzzy
 msgid "start"
 msgstr "Tendens"
@@ -3645,16 +3680,16 @@ msgstr ""
 msgid "c_lear"
 msgstr "_Wissen"
 
-#: cuon/Order/GUI/order.glade2:182 cuon/Order/GUI/order.glade2:2029
+#: cuon/Order/GUI/order.glade2:182 cuon/Order/GUI/order.glade2:2109
 #: cuon/Proposal/GUI/proposal.glade2:145
-#: cuon/Proposal/GUI/proposal.glade2:1717
+#: cuon/Proposal/GUI/proposal.glade2:1712
 #, fuzzy
 msgid "Supply"
 msgstr "Aanvoeren"
 
-#: cuon/Order/GUI/order.glade2:235 cuon/Order/GUI/order.glade2:2678
+#: cuon/Order/GUI/order.glade2:235 cuon/Order/GUI/order.glade2:2771
 #: cuon/Proposal/GUI/proposal.glade2:198
-#: cuon/Proposal/GUI/proposal.glade2:2343
+#: cuon/Proposal/GUI/proposal.glade2:2338
 #, fuzzy
 msgid "Gets"
 msgstr "r"
@@ -3673,365 +3708,365 @@ msgstr "Betalingen"
 msgid "Duplicating"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:656 cuon/Proposal/GUI/proposal.glade2:542
+#: cuon/Order/GUI/order.glade2:655 cuon/Proposal/GUI/proposal.glade2:542
 #: cuon/Addresses/GUI/addresses.glade2:1726
 #, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: cuon/Order/GUI/order.glade2:789 cuon/Proposal/GUI/proposal.glade2:1061
-#, fuzzy
-msgid "Supply-Nr."
-msgstr "r"
-
-#: cuon/Order/GUI/order.glade2:802 cuon/Proposal/GUI/proposal.glade2:692
-#, fuzzy
-msgid "Gets-Nr."
-msgstr "r"
-
-#: cuon/Order/GUI/order.glade2:874 cuon/Proposal/GUI/proposal.glade2:795
-#, fuzzy
-msgid "total sum"
-msgstr "Totale tijd"
-
-#: cuon/Order/GUI/order.glade2:903 cuon/Proposal/GUI/proposal.glade2:761
-#, fuzzy
-msgid "total discount %"
-msgstr "Kortingsdag:"
-
-#: cuon/Order/GUI/order.glade2:930
-#, fuzzy
-msgid "ready for invoice"
-msgstr "‘%s’ is klaar om afgedrukt te worden."
-
-#: cuon/Order/GUI/order.glade2:1051 cuon/Proposal/GUI/proposal.glade2:904
+#: cuon/Order/GUI/order.glade2:866 cuon/Proposal/GUI/proposal.glade2:899
 #, fuzzy
 msgid "ordered at"
 msgstr "  %s superblok op "
 
-#: cuon/Order/GUI/order.glade2:1089 cuon/Proposal/GUI/proposal.glade2:942
+#: cuon/Order/GUI/order.glade2:903 cuon/Proposal/GUI/proposal.glade2:937
 #, fuzzy
 msgid "delivered at"
 msgstr "  %s superblok op "
 
-#: cuon/Order/GUI/order.glade2:1125 cuon/Proposal/GUI/proposal.glade2:978
+#: cuon/Order/GUI/order.glade2:938 cuon/Proposal/GUI/proposal.glade2:973
 #, fuzzy
 msgid "Order Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Order/GUI/order.glade2:1181 cuon/Proposal/GUI/proposal.glade2:1034
+#: cuon/Order/GUI/order.glade2:993 cuon/Proposal/GUI/proposal.glade2:1029
 #: cuon/Clients/GUI/clients.glade2:404
 #, fuzzy
 msgid "search ..."
 msgstr "Zoek ..."
 
-#: cuon/Order/GUI/order.glade2:1238 cuon/Order/GUI/order.glade2:2066
-#: cuon/Proposal/GUI/proposal.glade2:1144
-#: cuon/Proposal/GUI/proposal.glade2:1754
+#: cuon/Order/GUI/order.glade2:1019 cuon/Proposal/GUI/proposal.glade2:1056
+#, fuzzy
+msgid "Supply-Nr."
+msgstr "r"
+
+#: cuon/Order/GUI/order.glade2:1050 cuon/Proposal/GUI/proposal.glade2:687
+#, fuzzy
+msgid "Gets-Nr."
+msgstr "r"
+
+#: cuon/Order/GUI/order.glade2:1115 cuon/Proposal/GUI/proposal.glade2:790
+#, fuzzy
+msgid "total sum"
+msgstr "Totale tijd"
+
+#: cuon/Order/GUI/order.glade2:1147 cuon/Proposal/GUI/proposal.glade2:756
+#, fuzzy
+msgid "total discount %"
+msgstr "Kortingsdag:"
+
+#: cuon/Order/GUI/order.glade2:1179
+#, fuzzy
+msgid "ready for invoice"
+msgstr "‘%s’ is klaar om afgedrukt te worden."
+
+#: cuon/Order/GUI/order.glade2:1306 cuon/Order/GUI/order.glade2:2146
+#: cuon/Proposal/GUI/proposal.glade2:1139
+#: cuon/Proposal/GUI/proposal.glade2:1749
 #, fuzzy
 msgid "search address ..."
 msgstr "Zoeken in adresboek"
 
-#: cuon/Order/GUI/order.glade2:1260 cuon/Proposal/GUI/proposal.glade2:1166
+#: cuon/Order/GUI/order.glade2:1328 cuon/Proposal/GUI/proposal.glade2:1161
 #, fuzzy
 msgid "Custom-Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Order/GUI/order.glade2:1331
+#: cuon/Order/GUI/order.glade2:1400
 #, fuzzy
 msgid "simple Account"
 msgstr "FTP account"
 
-#: cuon/Order/GUI/order.glade2:1347
+#: cuon/Order/GUI/order.glade2:1416
 #, fuzzy
 msgid "Cash 1"
 msgstr "Contant"
 
-#: cuon/Order/GUI/order.glade2:1361
+#: cuon/Order/GUI/order.glade2:1430
 #, fuzzy
 msgid "Cash 2"
 msgstr "Contant"
 
-#: cuon/Order/GUI/order.glade2:1377
+#: cuon/Order/GUI/order.glade2:1446
 #, fuzzy
 msgid "Credit Card 1"
 msgstr "Credit card"
 
-#: cuon/Order/GUI/order.glade2:1426
+#: cuon/Order/GUI/order.glade2:1495
 #, fuzzy
 msgid "Bank 1"
 msgstr "Bank"
 
-#: cuon/Order/GUI/order.glade2:1440
+#: cuon/Order/GUI/order.glade2:1509
 #, fuzzy
 msgid "Bank 2"
 msgstr "Bank"
 
-#: cuon/Order/GUI/order.glade2:1456
+#: cuon/Order/GUI/order.glade2:1525
 #, fuzzy
 msgid "Bank 3"
 msgstr "Bank"
 
-#: cuon/Order/GUI/order.glade2:1472 cuon/Order/GUI/order.glade2:1488
+#: cuon/Order/GUI/order.glade2:1541 cuon/Order/GUI/order.glade2:1557
 #, fuzzy
 msgid "direct Debit 1"
 msgstr "Direct betalen"
 
-#: cuon/Order/GUI/order.glade2:1506
+#: cuon/Order/GUI/order.glade2:1575
 #, fuzzy
 msgid "direct Debit 3"
 msgstr "Direct betalen"
 
-#: cuon/Order/GUI/order.glade2:1547
+#: cuon/Order/GUI/order.glade2:1617
 #, fuzzy
 msgid "paid at "
 msgstr "  %s superblok op "
 
-#: cuon/Order/GUI/order.glade2:1598 cuon/Proposal/GUI/proposal.glade2:1281
+#: cuon/Order/GUI/order.glade2:1670 cuon/Proposal/GUI/proposal.glade2:1276
 #, fuzzy
 msgid "Packing\n"
 msgstr "Inpakken"
 
-#: cuon/Order/GUI/order.glade2:1635 cuon/Proposal/GUI/proposal.glade2:1320
+#: cuon/Order/GUI/order.glade2:1707 cuon/Proposal/GUI/proposal.glade2:1315
 #, fuzzy
 msgid "Truckage/Postage"
 msgstr "Internetzending 2-delig - 2 1/4 x 7 1/2\""
 
-#: cuon/Order/GUI/order.glade2:1674 cuon/Proposal/GUI/proposal.glade2:1572
+#: cuon/Order/GUI/order.glade2:1745 cuon/Proposal/GUI/proposal.glade2:1567
 #, fuzzy
 msgid "Misc. cost"
 msgstr "Kostenelement"
 
-#: cuon/Order/GUI/order.glade2:1708 cuon/Order/GUI/order.glade2:2216
-#: cuon/Proposal/GUI/proposal.glade2:1355
-#: cuon/Proposal/GUI/proposal.glade2:1962
+#: cuon/Order/GUI/order.glade2:1778 cuon/Order/GUI/order.glade2:2301
+#: cuon/Proposal/GUI/proposal.glade2:1350
+#: cuon/Proposal/GUI/proposal.glade2:1957
 #: cuon/Addresses/GUI/addresses.glade2:1256
-#: cuon/Addresses/GUI/addresses.glade2:5139
+#: cuon/Addresses/GUI/addresses.glade2:5253
 #, fuzzy
 msgid "Partner"
 msgstr "Naam van partner"
 
-#: cuon/Order/GUI/order.glade2:1807 cuon/Proposal/GUI/proposal.glade2:1453
+#: cuon/Order/GUI/order.glade2:1878 cuon/Proposal/GUI/proposal.glade2:1448
 #, fuzzy
 msgid "Goto..."
 msgstr "Ga naar"
 
-#: cuon/Order/GUI/order.glade2:1998 cuon/Proposal/GUI/proposal.glade2:1686
+#: cuon/Order/GUI/order.glade2:2078 cuon/Proposal/GUI/proposal.glade2:1681
 #, fuzzy
 msgid "Supply to"
 msgstr "Er wordt verbinding gemaakt met %s"
 
-#: cuon/Order/GUI/order.glade2:2007 cuon/Proposal/GUI/proposal.glade2:1695
+#: cuon/Order/GUI/order.glade2:2087 cuon/Proposal/GUI/proposal.glade2:1690
 #, fuzzy
 msgid "search address"
 msgstr "Zoeken in adresboek"
 
-#: cuon/Order/GUI/order.glade2:2056 cuon/Proposal/GUI/proposal.glade2:1744
+#: cuon/Order/GUI/order.glade2:2136 cuon/Proposal/GUI/proposal.glade2:1739
 #, fuzzy
 msgid "gets from"
 msgstr "Conversies van "
 
-#: cuon/Order/GUI/order.glade2:2113 cuon/Proposal/GUI/proposal.glade2:1800
+#: cuon/Order/GUI/order.glade2:2193 cuon/Proposal/GUI/proposal.glade2:1795
 #, fuzzy
 msgid "Load reference"
 msgstr "Kruisverwijzing"
 
-#: cuon/Order/GUI/order.glade2:2143 cuon/Proposal/GUI/proposal.glade2:1829
+#: cuon/Order/GUI/order.glade2:2225 cuon/Proposal/GUI/proposal.glade2:1824
 #, fuzzy
 msgid "Pick up at"
 msgstr "Verberg bij opstarten"
 
-#: cuon/Order/GUI/order.glade2:2175 cuon/Proposal/GUI/proposal.glade2:1860
+#: cuon/Order/GUI/order.glade2:2258 cuon/Proposal/GUI/proposal.glade2:1855
 #, fuzzy
 msgid "Remark"
 msgstr "Bewe&rking:"
 
-#: cuon/Order/GUI/order.glade2:2226 cuon/Proposal/GUI/proposal.glade2:1972
+#: cuon/Order/GUI/order.glade2:2311 cuon/Proposal/GUI/proposal.glade2:1967
 #, fuzzy
 msgid "search Partner"
 msgstr "Naam van partner"
 
-#: cuon/Order/GUI/order.glade2:2351 cuon/Proposal/GUI/proposal.glade2:2094
+#: cuon/Order/GUI/order.glade2:2441 cuon/Proposal/GUI/proposal.glade2:2089
 #, fuzzy
 msgid "Forwarding Agency"
 msgstr "bij doorsturen"
 
-#: cuon/Order/GUI/order.glade2:2426 cuon/Proposal/GUI/proposal.glade2:2169
+#: cuon/Order/GUI/order.glade2:2517 cuon/Proposal/GUI/proposal.glade2:2164
 #, fuzzy
 msgid "Contact Person"
 msgstr "Bedrijf contactpersoon"
 
-#: cuon/Order/GUI/order.glade2:2545
+#: cuon/Order/GUI/order.glade2:2637
 #, fuzzy
 msgid "Pickup-Note"
 msgstr "Notitienaam wijzigen"
 
-#: cuon/Order/GUI/order.glade2:2560 cuon/Proposal/GUI/proposal.glade2:1888
+#: cuon/Order/GUI/order.glade2:2652 cuon/Proposal/GUI/proposal.glade2:1883
 #, fuzzy
 msgid "Pickup-Nr.:"
 msgstr "r"
 
-#: cuon/Order/GUI/order.glade2:2708 cuon/Proposal/GUI/proposal.glade2:2373
+#: cuon/Order/GUI/order.glade2:2801 cuon/Proposal/GUI/proposal.glade2:2368
 #, fuzzy
 msgid "articles-Number"
 msgstr "Aantal artikelen beperken"
 
-#: cuon/Order/GUI/order.glade2:2721 cuon/Proposal/GUI/proposal.glade2:2386
+#: cuon/Order/GUI/order.glade2:2814 cuon/Proposal/GUI/proposal.glade2:2381
 #, fuzzy
 msgid "amount"
 msgstr "Bedrag"
 
-#: cuon/Order/GUI/order.glade2:2814 cuon/Proposal/GUI/proposal.glade2:2483
+#: cuon/Order/GUI/order.glade2:2907 cuon/Proposal/GUI/proposal.glade2:2478
 #, fuzzy
 msgid "Quant. per Wrap."
 msgstr "/Opties/_Regelafbreking"
 
-#: cuon/Order/GUI/order.glade2:2858 cuon/Proposal/GUI/proposal.glade2:2528
+#: cuon/Order/GUI/order.glade2:2951 cuon/Proposal/GUI/proposal.glade2:2524
 #, fuzzy
 msgid "search article"
 msgstr "Artikel kop"
 
-#: cuon/Order/GUI/order.glade2:2885 cuon/Proposal/GUI/proposal.glade2:2555
+#: cuon/Order/GUI/order.glade2:2978 cuon/Proposal/GUI/proposal.glade2:2551
 #, fuzzy
 msgid "Article Des. "
 msgstr "Bureau_blad"
 
-#: cuon/Order/GUI/order.glade2:2977 cuon/Proposal/GUI/proposal.glade2:2613
+#: cuon/Order/GUI/order.glade2:3070 cuon/Proposal/GUI/proposal.glade2:2609
 #, fuzzy
 msgid "Articlediscount"
 msgstr "Artikel kop"
 
-#: cuon/Order/GUI/order.glade2:2989 cuon/Proposal/GUI/proposal.glade2:2625
+#: cuon/Order/GUI/order.glade2:3082 cuon/Proposal/GUI/proposal.glade2:2621
 #, fuzzy
 msgid "Tax-Vat"
 msgstr "<b>Belasting informatie</b>"
 
-#: cuon/Order/GUI/order.glade2:3230 cuon/Proposal/GUI/proposal.glade2:2722
+#: cuon/Order/GUI/order.glade2:3324 cuon/Proposal/GUI/proposal.glade2:2718
 #, fuzzy
 msgid "Quick Append"
 msgstr "Kolom bijvoegen"
 
-#: cuon/Order/GUI/order.glade2:3283 cuon/Proposal/GUI/proposal.glade2:2902
+#: cuon/Order/GUI/order.glade2:3378 cuon/Proposal/GUI/proposal.glade2:2899
 #, fuzzy
 msgid "Postions"
 msgstr "Positie"
 
-#: cuon/Order/GUI/order.glade2:3454 cuon/Proposal/GUI/proposal.glade2:317
-#: cuon/Proposal/GUI/proposal.glade2:3060
+#: cuon/Order/GUI/order.glade2:3554 cuon/Proposal/GUI/proposal.glade2:317
+#: cuon/Proposal/GUI/proposal.glade2:3057
 #, fuzzy
 msgid "Specs. invoice"
 msgstr "Eenvoudige factuur"
 
-#: cuon/Order/GUI/order.glade2:3468
+#: cuon/Order/GUI/order.glade2:3568
 #, fuzzy
 msgid "retry"
 msgstr "_Klaar"
 
-#: cuon/Order/GUI/order.glade2:3519
+#: cuon/Order/GUI/order.glade2:3619
 msgid "semestral"
 msgstr ""
 
-#: cuon/Order/GUI/order.glade2:3536
+#: cuon/Order/GUI/order.glade2:3636
 #, fuzzy
 msgid "yearly"
 msgstr "Jaarlijks"
 
-#: cuon/Order/GUI/order.glade2:3564
+#: cuon/Order/GUI/order.glade2:3664
 #, fuzzy
 msgid "create supply"
 msgstr "Maak map"
 
-#: cuon/Order/GUI/order.glade2:3579
+#: cuon/Order/GUI/order.glade2:3679
 #, fuzzy
 msgid "create get"
 msgstr "Haal koersen"
 
-#: cuon/Order/GUI/order.glade2:3594
+#: cuon/Order/GUI/order.glade2:3694
 #, fuzzy
 msgid "create invoice"
 msgstr "Creëer nieuwe factuur"
 
-#: cuon/Order/GUI/order.glade2:3619
+#: cuon/Order/GUI/order.glade2:3720
 #, fuzzy
 msgid "daily"
 msgstr "Dagelijks"
 
-#: cuon/Order/GUI/order.glade2:3635
+#: cuon/Order/GUI/order.glade2:3736
 #, fuzzy
 msgid "Weekly"
 msgstr "Wekelijks"
 
-#: cuon/Order/GUI/order.glade2:3670
+#: cuon/Order/GUI/order.glade2:3771
 #, fuzzy
 msgid "0"
 msgstr "0"
 
-#: cuon/Order/GUI/order.glade2:3742
+#: cuon/Order/GUI/order.glade2:3843
 #, fuzzy
 msgid "search project"
 msgstr "Zoekopdracht is bovenaan herbegonnen."
 
-#: cuon/Order/GUI/order.glade2:3804 cuon/Project/GUI/project.glade2:3280
+#: cuon/Order/GUI/order.glade2:3905 cuon/Project/GUI/project.glade2:3280
 #, fuzzy
 msgid "jump to"
 msgstr "Er wordt verbinding gemaakt met %s"
 
-#: cuon/Order/GUI/order.glade2:3942
+#: cuon/Order/GUI/order.glade2:4043
 #, fuzzy
 msgid "Invoice amount"
 msgstr "Hoeveelheid (_aantallen):"
 
-#: cuon/Order/GUI/order.glade2:3971
+#: cuon/Order/GUI/order.glade2:4072
 #, fuzzy
 msgid "in-payment"
 msgstr "<b>Betalingsmogelijkheden</b>"
 
-#: cuon/Order/GUI/order.glade2:3999
+#: cuon/Order/GUI/order.glade2:4100
 #, fuzzy
 msgid "./. cash discount"
 msgstr "Kortingsdag:"
 
-#: cuon/Order/GUI/order.glade2:4027
+#: cuon/Order/GUI/order.glade2:4128
 #, fuzzy
 msgid "./. payments"
 msgstr "Betalingen"
 
-#: cuon/Order/GUI/order.glade2:4057
+#: cuon/Order/GUI/order.glade2:4158
 #, fuzzy
 msgid "Offset"
 msgstr "Aanbod ontvangen"
 
-#: cuon/Order/GUI/order.glade2:4088
+#: cuon/Order/GUI/order.glade2:4189
 #, fuzzy
 msgid "pay with/acct."
 msgstr "Adverteren met Bonjour"
 
-#: cuon/Order/GUI/order.glade2:4160
+#: cuon/Order/GUI/order.glade2:4263
 #, fuzzy
 msgid "search account"
 msgstr "Zoekopdracht in account"
 
-#: cuon/Order/GUI/order.glade2:4234
+#: cuon/Order/GUI/order.glade2:4338
 #, fuzzy
 msgid "residue"
 msgstr "Residunaam"
 
-#: cuon/Order/GUI/order.glade2:4279
+#: cuon/Order/GUI/order.glade2:4383
 #, fuzzy
 msgid "Transfer"
 msgstr "Overboeking"
 
-#: cuon/Order/GUI/order.glade2:4295
+#: cuon/Order/GUI/order.glade2:4399
 #, fuzzy
 msgid "direct debit"
 msgstr "Direct betalen"
 
-#: cuon/Order/GUI/order.glade2:4327
+#: cuon/Order/GUI/order.glade2:4431
 #, fuzzy
 msgid "credit card"
 msgstr "Credit card"
 
-#: cuon/Order/GUI/order.glade2:4402
+#: cuon/Order/GUI/order.glade2:4508
 #, fuzzy
 msgid "Typ"
 msgstr "Type"
@@ -4058,9 +4093,9 @@ msgstr "BIC"
 
 #: cuon/Proposal/GUI/proposal.glade2:9 cuon/Proposal/GUI/proposal.glade2:54
 #: cuon/Proposal/GUI/proposal.glade2:116
-#: cuon/Proposal/GUI/proposal.glade2:1621
+#: cuon/Proposal/GUI/proposal.glade2:1616
 #: cuon/Addresses/GUI/addresses.glade2:1161
-#: cuon/Addresses/GUI/addresses.glade2:7835 GUI/cuon.glade2:187
+#: cuon/Addresses/GUI/addresses.glade2:7949 GUI/cuon.glade2:187
 #, fuzzy
 msgid "Proposal"
 msgstr "Tegenvoorstel"
@@ -4246,7 +4281,7 @@ msgstr ""
 msgid "check Imap Folder"
 msgstr ""
 
-#: cuon/Preferences/GUI/preferences.glade2:659
+#: cuon/Preferences/GUI/preferences.glade2:653
 #, fuzzy
 msgid "show news"
 msgstr "Bureaublad tonen"
@@ -4256,7 +4291,7 @@ msgstr "Bureaublad tonen"
 msgid "Text chat"
 msgstr "<b>Belasting informatie</b>"
 
-#: cuon/Preferences/GUI/preferences.glade2:747 GUI/cuon.glade2:820
+#: cuon/Preferences/GUI/preferences.glade2:747 GUI/cuon.glade2:828
 msgid "3D Chat"
 msgstr ""
 
@@ -4509,6 +4544,10 @@ msgstr "Python Scripts"
 msgid "Mindmap"
 msgstr ""
 
+#: cuon/Preferences/GUI/preferences.glade2:2413
+msgid "CAD"
+msgstr ""
+
 #: cuon/Staff/GUI/staff.glade2:133 cuon/Staff/GUI/staff.glade2:1420
 #, fuzzy
 msgid "Fee"
@@ -4551,63 +4590,63 @@ msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 msgid "show extendet infos"
 msgstr "Algemene pagina-informatie"
 
-#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:4342
+#: cuon/Staff/GUI/staff.glade2:626 cuon/Addresses/GUI/addresses.glade2:4433
 #, fuzzy
 msgid "Birthday"
 msgstr "Verjaardag"
 
 #: cuon/Staff/GUI/staff.glade2:654 cuon/Addresses/GUI/addresses.glade2:2264
-#: cuon/Addresses/GUI/addresses.glade2:4626
+#: cuon/Addresses/GUI/addresses.glade2:4717
 #, fuzzy
 msgid "State"
 msgstr "Tendens"
 
 #: cuon/Staff/GUI/staff.glade2:682 cuon/Addresses/GUI/addresses.glade2:1755
 #: cuon/Addresses/GUI/addresses.glade2:2213
-#: cuon/Addresses/GUI/addresses.glade2:4887
+#: cuon/Addresses/GUI/addresses.glade2:4978
 #, fuzzy
 msgid "Street"
 msgstr "Adres"
 
 #: cuon/Staff/GUI/staff.glade2:757 cuon/Addresses/GUI/addresses.glade2:2230
-#: cuon/Addresses/GUI/addresses.glade2:4916
+#: cuon/Addresses/GUI/addresses.glade2:5007
 #, fuzzy
 msgid "Zip"
 msgstr "ZIP"
 
-#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:4428
+#: cuon/Staff/GUI/staff.glade2:800 cuon/Addresses/GUI/addresses.glade2:4519
 #, fuzzy
 msgid "Phone in Company"
 msgstr "Bedrijf Telefoonnummer"
 
-#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:4442
+#: cuon/Staff/GUI/staff.glade2:827 cuon/Addresses/GUI/addresses.glade2:4533
 #, fuzzy
 msgid "Fax in company"
 msgstr "Bedrijf Faxnummer"
 
 #: cuon/Staff/GUI/staff.glade2:904 cuon/Addresses/GUI/addresses.glade2:2906
-#: cuon/Addresses/GUI/addresses.glade2:4282
+#: cuon/Addresses/GUI/addresses.glade2:4373
 #, fuzzy
 msgid "Fax"
 msgstr "Fax"
 
 #: cuon/Staff/GUI/staff.glade2:920 cuon/Addresses/GUI/addresses.glade2:2638
-#: cuon/Addresses/GUI/addresses.glade2:4251
+#: cuon/Addresses/GUI/addresses.glade2:4342
 #, fuzzy
 msgid "Homepage"
 msgstr "Thuispagina"
 
-#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:4856
+#: cuon/Staff/GUI/staff.glade2:952 cuon/Addresses/GUI/addresses.glade2:4947
 #, fuzzy
 msgid "Phone 2"
 msgstr "Telefoon"
 
-#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:4841
+#: cuon/Staff/GUI/staff.glade2:968 cuon/Addresses/GUI/addresses.glade2:4932
 #, fuzzy
 msgid "Phone 1"
 msgstr "Telefoon"
 
-#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:4742
+#: cuon/Staff/GUI/staff.glade2:1060 cuon/Addresses/GUI/addresses.glade2:4833
 msgid "titular"
 msgstr ""
 
@@ -4681,7 +4720,7 @@ msgstr "Hoort thuis bij categorie"
 msgid "avaible\n"
 msgstr ""
 
-#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1238
+#: cuon/User/GUI/user.glade2:1059 cuon/DMS/GUI/dms.glade2:1260
 #, fuzzy
 msgid "Groups"
 msgstr "Groepen"
@@ -4751,7 +4790,7 @@ msgid "Ends at"
 msgstr "  %s superblok op "
 
 #: cuon/Project/GUI/project.glade2:9 cuon/Addresses/GUI/addresses.glade2:1200
-#: cuon/Addresses/GUI/addresses.glade2:8140
+#: cuon/Addresses/GUI/addresses.glade2:8254
 #, fuzzy
 msgid "Projects"
 msgstr "Projecten"
@@ -4934,7 +4973,7 @@ msgstr "tijd: %5.2f/%5.2f/%5.2f\n"
 
 #: cuon/Project/GUI/project.glade2:3765 cuon/Project/GUI/project.glade2:3835
 #: cuon/Addresses/GUI/addresses.glade2:2975
-#: cuon/Addresses/GUI/addresses.glade2:4176 cuon/DMS/GUI/dms.glade2:1900
+#: cuon/Addresses/GUI/addresses.glade2:4267 cuon/DMS/GUI/dms.glade2:1934
 #, fuzzy
 msgid "View"
 msgstr "Beeld"
@@ -4998,7 +5037,7 @@ msgstr ""
 #: cuon/Addresses/GUI/addresses.glade2:750
 #: cuon/Addresses/GUI/addresses.glade2:1615
 #: cuon/Addresses/GUI/addresses.glade2:2665
-#: cuon/Addresses/GUI/addresses.glade2:4312
+#: cuon/Addresses/GUI/addresses.glade2:4403
 #, fuzzy
 msgid "Newsletter"
 msgstr "Telefoon/Fax"
@@ -5117,7 +5156,7 @@ msgstr "Postcode"
 msgid "Name1"
 msgstr "Namen"
 
-#: cuon/Addresses/GUI/addresses.glade2:1878 GUI/cuon.glade2:833
+#: cuon/Addresses/GUI/addresses.glade2:1878 GUI/cuon.glade2:841
 #, fuzzy
 msgid "Email"
 msgstr "Configuratiebestanden Blijven"
@@ -5128,7 +5167,7 @@ msgid "Clear Search"
 msgstr "Zoeken"
 
 #: cuon/Addresses/GUI/addresses.glade2:1968
-#: cuon/Addresses/GUI/addresses.glade2:4455
+#: cuon/Addresses/GUI/addresses.glade2:4546
 #, fuzzy
 msgid "letter-address"
 msgstr "Postadres werk"
@@ -5144,7 +5183,7 @@ msgid "Zip for Postbox"
 msgstr "Verwijdering van %s wordt voorbereid"
 
 #: cuon/Addresses/GUI/addresses.glade2:2692
-#: cuon/Addresses/GUI/addresses.glade2:4714
+#: cuon/Addresses/GUI/addresses.glade2:4805
 msgid "Handy"
 msgstr ""
 
@@ -5198,271 +5237,260 @@ msgstr "beschrijving"
 msgid "Account-Nr."
 msgstr "FTP account"
 
-#: cuon/Addresses/GUI/addresses.glade2:3441
+#: cuon/Addresses/GUI/addresses.glade2:3439
 #, fuzzy
 msgid "date of launch"
 msgstr "Uitvoer Fout"
 
-#: cuon/Addresses/GUI/addresses.glade2:3523
-#, fuzzy
-msgid "Is Webshop Address"
-msgstr "Lokaal adres is ‘%s’"
-
-#: cuon/Addresses/GUI/addresses.glade2:3538
-#, fuzzy
-msgid "update from Web"
-msgstr "Bij&werken vanuit de bronteksten"
-
-#: cuon/Addresses/GUI/addresses.glade2:3573
-#, fuzzy
-msgid "Number of Employees"
-msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
-
-#: cuon/Addresses/GUI/addresses.glade2:3584
-#, fuzzy
-msgid "Turnover"
-msgstr "Overboeking"
-
-#: cuon/Addresses/GUI/addresses.glade2:3595
-#, fuzzy
-msgid "Trade"
-msgstr "%1 ruilen"
-
-#: cuon/Addresses/GUI/addresses.glade2:3606
-msgid "label113"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:3617
-msgid "label115"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:3628
-msgid "label116"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:3699
+#: cuon/Addresses/GUI/addresses.glade2:3491
 #, fuzzy
 msgid "search ToP"
 msgstr "Zoekopdracht is bovenaan herbegonnen."
 
-#: cuon/Addresses/GUI/addresses.glade2:3745
+#: cuon/Addresses/GUI/addresses.glade2:3537
 #, fuzzy
 msgid "Term of Payment"
 msgstr "<b>Betalingsmogelijkheden</b>"
 
-#: cuon/Addresses/GUI/addresses.glade2:3783
+#: cuon/Addresses/GUI/addresses.glade2:3553
 #, fuzzy
 msgid "Line"
 msgstr "Koppeling"
 
-#: cuon/Addresses/GUI/addresses.glade2:3807
+#: cuon/Addresses/GUI/addresses.glade2:3577
 #, fuzzy
 msgid "fashion"
 msgstr "Kortingsdag:"
 
-#: cuon/Addresses/GUI/addresses.glade2:3821
+#: cuon/Addresses/GUI/addresses.glade2:3591
 #, fuzzy
 msgid "Tax-Nr."
 msgstr "r"
 
-#: cuon/Addresses/GUI/addresses.glade2:3846
-msgid "to calc Tax"
-msgstr ""
-
-#: cuon/Addresses/GUI/addresses.glade2:3866
-#, fuzzy
-msgid "Price-Group"
-msgstr "%u blokgroep\n"
-
-#: cuon/Addresses/GUI/addresses.glade2:3882
+#: cuon/Addresses/GUI/addresses.glade2:3619
 #, fuzzy
 msgid "address-Number"
 msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
 
-#: cuon/Addresses/GUI/addresses.glade2:3910
+#: cuon/Addresses/GUI/addresses.glade2:3647
 #, fuzzy
 msgid "legal form"
 msgstr "Formulier ingang"
 
-#: cuon/Addresses/GUI/addresses.glade2:3953
+#: cuon/Addresses/GUI/addresses.glade2:3675
+#, fuzzy
+msgid "Is Webshop Address"
+msgstr "Lokaal adres is ‘%s’"
+
+#: cuon/Addresses/GUI/addresses.glade2:3690
+#, fuzzy
+msgid "update from Web"
+msgstr "Bij&werken vanuit de bronteksten"
+
+#: cuon/Addresses/GUI/addresses.glade2:3716
+#, fuzzy
+msgid "Number of Employees"
+msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
+
+#: cuon/Addresses/GUI/addresses.glade2:3740
+#, fuzzy
+msgid "Turnover"
+msgstr "Overboeking"
+
+#: cuon/Addresses/GUI/addresses.glade2:3754
+#, fuzzy
+msgid "Trade"
+msgstr "%1 ruilen"
+
+#: cuon/Addresses/GUI/addresses.glade2:3790
+msgid "to calc Tax"
+msgstr ""
+
+#: cuon/Addresses/GUI/addresses.glade2:3810
+#: cuon/Addresses/GUI/addresses.glade2:5203
+#, fuzzy
+msgid "Additional Emails"
+msgstr "Sleutelmateriaal"
+
+#: cuon/Addresses/GUI/addresses.glade2:4044
 #, fuzzy
 msgid "Misc."
 msgstr "Overige"
 
-#: cuon/Addresses/GUI/addresses.glade2:4025
-#: cuon/Addresses/GUI/addresses.glade2:4095
-#: cuon/Addresses/GUI/addresses.glade2:4506
-#: cuon/Addresses/GUI/addresses.glade2:4578
-#: cuon/Addresses/GUI/addresses.glade2:4985 GUI/cuon.glade2:22
+#: cuon/Addresses/GUI/addresses.glade2:4116
+#: cuon/Addresses/GUI/addresses.glade2:4186
+#: cuon/Addresses/GUI/addresses.glade2:4597
+#: cuon/Addresses/GUI/addresses.glade2:4669
+#: cuon/Addresses/GUI/addresses.glade2:5076 GUI/cuon.glade2:22
 #: GUI/cuon_gtk.glade2:33 GUI/cuon_server.glade2:22
 #, fuzzy
 msgid "Connect"
 msgstr "Verbinden"
 
-#: cuon/Addresses/GUI/addresses.glade2:4138
+#: cuon/Addresses/GUI/addresses.glade2:4229
 #, fuzzy
 msgid "send Email"
 msgstr "_E-mail sturen…"
 
-#: cuon/Addresses/GUI/addresses.glade2:4203
+#: cuon/Addresses/GUI/addresses.glade2:4294
 #, fuzzy
 msgid "Skype"
 msgstr "Skype-schermnaam thuis 1"
 
-#: cuon/Addresses/GUI/addresses.glade2:4218
+#: cuon/Addresses/GUI/addresses.glade2:4309
 #, fuzzy
 msgid "SIP"
 msgstr "SIP-instellingen"
 
-#: cuon/Addresses/GUI/addresses.glade2:4387
+#: cuon/Addresses/GUI/addresses.glade2:4478
 #, fuzzy
 msgid "Job"
 msgstr "Taak"
 
-#: cuon/Addresses/GUI/addresses.glade2:4400
+#: cuon/Addresses/GUI/addresses.glade2:4491
 #, fuzzy
 msgid "Department"
 msgstr "Afdeling"
 
-#: cuon/Addresses/GUI/addresses.glade2:4670
+#: cuon/Addresses/GUI/addresses.glade2:4761
 #, fuzzy
 msgid "City  "
 msgstr "Plaats"
 
-#: cuon/Addresses/GUI/addresses.glade2:4927
+#: cuon/Addresses/GUI/addresses.glade2:5018
 #, fuzzy
 msgid "Generate Partner"
 msgstr "Naam van partner"
 
-#: cuon/Addresses/GUI/addresses.glade2:5175 cuon/Think/GUI/think.glade2:564
+#: cuon/Addresses/GUI/addresses.glade2:5289 cuon/Think/GUI/think.glade2:564
 #, fuzzy
 msgid "end at"
 msgstr "%s bij het einde van de afspraak"
 
-#: cuon/Addresses/GUI/addresses.glade2:5264 cuon/Think/GUI/think.glade2:536
+#: cuon/Addresses/GUI/addresses.glade2:5378 cuon/Think/GUI/think.glade2:536
 #, fuzzy
 msgid "Begin at"
 msgstr "**** LOGGEN GESTART OP %s\n"
 
-#: cuon/Addresses/GUI/addresses.glade2:5400
+#: cuon/Addresses/GUI/addresses.glade2:5514
 #, fuzzy
 msgid "D M S"
 msgstr "Graden (G-M-S)"
 
-#: cuon/Addresses/GUI/addresses.glade2:5482
+#: cuon/Addresses/GUI/addresses.glade2:5596
 #, fuzzy
 msgid "Goto Address"
 msgstr "Ga naar adres"
 
-#: cuon/Addresses/GUI/addresses.glade2:5621
+#: cuon/Addresses/GUI/addresses.glade2:5735
 #, fuzzy
 msgid "search Staff"
 msgstr "Zoekfilter"
 
-#: cuon/Addresses/GUI/addresses.glade2:5707
+#: cuon/Addresses/GUI/addresses.glade2:5821
 #, fuzzy
 msgid "Schedul  begins at time"
 msgstr "Tenminste 1 keer herhaald"
 
-#: cuon/Addresses/GUI/addresses.glade2:5728
+#: cuon/Addresses/GUI/addresses.glade2:5842
 #, fuzzy
 msgid "Schedul ends at time"
 msgstr "Tenminste 1 keer herhaald"
 
-#: cuon/Addresses/GUI/addresses.glade2:5749
+#: cuon/Addresses/GUI/addresses.glade2:5863
 #: cuon/Addresses/GUI/contact.glade2:2520
 #, fuzzy
 msgid "Alarm"
 msgstr "Alarm"
 
-#: cuon/Addresses/GUI/addresses.glade2:5765
+#: cuon/Addresses/GUI/addresses.glade2:5879
 #, fuzzy
 msgid " min. before"
 msgstr "Plakken voor"
 
-#: cuon/Addresses/GUI/addresses.glade2:5828
+#: cuon/Addresses/GUI/addresses.glade2:5942
 #, fuzzy
 msgid "Process"
 msgstr "Projecten"
 
-#: cuon/Addresses/GUI/addresses.glade2:5917
-#: cuon/Addresses/GUI/addresses.glade2:6271
-#: cuon/Addresses/GUI/addresses.glade2:6626
-#: cuon/Addresses/GUI/addresses.glade2:6981
-#: cuon/Addresses/GUI/addresses.glade2:7336
+#: cuon/Addresses/GUI/addresses.glade2:6031
+#: cuon/Addresses/GUI/addresses.glade2:6385
+#: cuon/Addresses/GUI/addresses.glade2:6740
+#: cuon/Addresses/GUI/addresses.glade2:7095
+#: cuon/Addresses/GUI/addresses.glade2:7450
 #, fuzzy
 msgid "add Date/Name"
 msgstr "Auteursnaam toevoegen"
 
-#: cuon/Addresses/GUI/addresses.glade2:6060
-#: cuon/Addresses/GUI/addresses.glade2:6414
-#: cuon/Addresses/GUI/addresses.glade2:6769
-#: cuon/Addresses/GUI/addresses.glade2:7124
-#: cuon/Addresses/GUI/addresses.glade2:7479
+#: cuon/Addresses/GUI/addresses.glade2:6174
+#: cuon/Addresses/GUI/addresses.glade2:6528
+#: cuon/Addresses/GUI/addresses.glade2:6883
+#: cuon/Addresses/GUI/addresses.glade2:7238
+#: cuon/Addresses/GUI/addresses.glade2:7593
 #, fuzzy
 msgid "paste"
 msgstr "Bijwerken"
 
-#: cuon/Addresses/GUI/addresses.glade2:6212
-#: cuon/Addresses/GUI/addresses.glade2:6566
-#: cuon/Addresses/GUI/addresses.glade2:6921
-#: cuon/Addresses/GUI/addresses.glade2:7276
-#: cuon/Addresses/GUI/addresses.glade2:7631
+#: cuon/Addresses/GUI/addresses.glade2:6326
+#: cuon/Addresses/GUI/addresses.glade2:6680
+#: cuon/Addresses/GUI/addresses.glade2:7035
+#: cuon/Addresses/GUI/addresses.glade2:7390
+#: cuon/Addresses/GUI/addresses.glade2:7745
 #, fuzzy
 msgid "add Formular"
 msgstr "Werkblad toevoegen"
 
-#: cuon/Addresses/GUI/addresses.glade2:6257
+#: cuon/Addresses/GUI/addresses.glade2:6371
 #, fuzzy
 msgid "Notes misc"
 msgstr "Cisco - Allerlei"
 
-#: cuon/Addresses/GUI/addresses.glade2:6611 GUI/cuon.glade2:481
+#: cuon/Addresses/GUI/addresses.glade2:6725 GUI/cuon.glade2:489
 #, fuzzy
 msgid "Notes contacter"
 msgstr "Rekening opmerkingen"
 
-#: cuon/Addresses/GUI/addresses.glade2:6966
+#: cuon/Addresses/GUI/addresses.glade2:7080
 #, fuzzy
 msgid "notes representant"
 msgstr "Rekening opmerkingen"
 
-#: cuon/Addresses/GUI/addresses.glade2:7321
+#: cuon/Addresses/GUI/addresses.glade2:7435
 #, fuzzy
 msgid "notes salesman"
 msgstr "Rekening opmerkingen"
 
-#: cuon/Addresses/GUI/addresses.glade2:7676
+#: cuon/Addresses/GUI/addresses.glade2:7790
 #, fuzzy
 msgid "notes organisation"
 msgstr "Rekening opmerkingen"
 
-#: cuon/Addresses/GUI/addresses.glade2:7707
+#: cuon/Addresses/GUI/addresses.glade2:7821
 #, fuzzy
 msgid "Proposal for this address"
 msgstr "Het e-mailadres van deze contactpersoon."
 
-#: cuon/Addresses/GUI/addresses.glade2:7765
+#: cuon/Addresses/GUI/addresses.glade2:7879
 msgid "Show"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7891
+#: cuon/Addresses/GUI/addresses.glade2:8005
 msgid ""
 "Order\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
 msgstr ""
 
-#: cuon/Addresses/GUI/addresses.glade2:7908
+#: cuon/Addresses/GUI/addresses.glade2:8022
 #, fuzzy
 msgid "Invoices fpr this address"
 msgstr "Dit is het gewenste adres"
 
-#: cuon/Addresses/GUI/addresses.glade2:8098
+#: cuon/Addresses/GUI/addresses.glade2:8212
 #, fuzzy
 msgid "Projects for this Address"
 msgstr "Het e-mailadres van deze contactpersoon."
 
-#: cuon/Addresses/GUI/addresses.glade2:8176
+#: cuon/Addresses/GUI/addresses.glade2:8290
 msgid "Map"
 msgstr ""
 
@@ -5823,6 +5851,11 @@ msgstr "Rekening opmerkingen"
 msgid "Global"
 msgstr "Globaal"
 
+#: cuon/Clients/GUI/clients.glade2:167
+#, fuzzy
+msgid "Choose"
+msgstr "Kiezen"
+
 #: cuon/Clients/GUI/clients.glade2:327
 #, fuzzy
 msgid "Client-Nr."
@@ -5846,12 +5879,12 @@ msgstr ""
 msgid "Document Management System"
 msgstr "Systeembrede _documentenlettertype gebruiken"
 
-#: cuon/DMS/GUI/dms.glade2:59 cuon/DMS/GUI/dms.glade2:1945
+#: cuon/DMS/GUI/dms.glade2:59 cuon/DMS/GUI/dms.glade2:1979
 #, fuzzy
 msgid "Documents"
 msgstr "Documenten"
 
-#: cuon/DMS/GUI/dms.glade2:128 cuon/DMS/GUI/dms.glade2:2098
+#: cuon/DMS/GUI/dms.glade2:128 cuon/DMS/GUI/dms.glade2:2132
 #, fuzzy
 msgid "Related"
 msgstr "Gerelateerd"
@@ -5861,216 +5894,220 @@ msgstr "Gerelateerd"
 msgid "Associated"
 msgstr "Geassocieerd schema"
 
-#: cuon/DMS/GUI/dms.glade2:433
+#: cuon/DMS/GUI/dms.glade2:348 cuon/DMS/GUI/dms.glade2:1469
+msgid "Jump To Origin"
+msgstr ""
+
+#: cuon/DMS/GUI/dms.glade2:455
 #, fuzzy
 msgid "Search4"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:448
+#: cuon/DMS/GUI/dms.glade2:470
 #, fuzzy
 msgid "Search3"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:461
+#: cuon/DMS/GUI/dms.glade2:483
 #, fuzzy
 msgid "Search2"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:476
+#: cuon/DMS/GUI/dms.glade2:498
 #, fuzzy
 msgid "Search1"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:506
+#: cuon/DMS/GUI/dms.glade2:528
 #, fuzzy
 msgid "Sub5"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:603
+#: cuon/DMS/GUI/dms.glade2:625
 #, fuzzy
 msgid "Sub4"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:618
+#: cuon/DMS/GUI/dms.glade2:640
 #, fuzzy
 msgid "Sub1"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:631
+#: cuon/DMS/GUI/dms.glade2:653
 #, fuzzy
 msgid "Sub3"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:659
+#: cuon/DMS/GUI/dms.glade2:681
 #, fuzzy
 msgid "Sub2"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:696
+#: cuon/DMS/GUI/dms.glade2:718
 #, fuzzy
 msgid "Full Text"
 msgstr "Betaling"
 
-#: cuon/DMS/GUI/dms.glade2:796
+#: cuon/DMS/GUI/dms.glade2:818
 #, fuzzy
 msgid "Sub 1"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:824
+#: cuon/DMS/GUI/dms.glade2:846
 #, fuzzy
 msgid "Sub 2"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:852
+#: cuon/DMS/GUI/dms.glade2:874
 #, fuzzy
 msgid "Sub 3"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:880
+#: cuon/DMS/GUI/dms.glade2:902
 #, fuzzy
 msgid "Sub 4"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:908
+#: cuon/DMS/GUI/dms.glade2:930
 #, fuzzy
 msgid "Sub 5"
 msgstr "<b>Subrekeningen</b>"
 
-#: cuon/DMS/GUI/dms.glade2:941
+#: cuon/DMS/GUI/dms.glade2:963
 #, fuzzy
 msgid "activate Rights"
 msgstr "Niet genoeg rechten"
 
-#: cuon/DMS/GUI/dms.glade2:963
+#: cuon/DMS/GUI/dms.glade2:985
 #, fuzzy
 msgid "Document-Date"
 msgstr "Datum metagegeven"
 
-#: cuon/DMS/GUI/dms.glade2:1004 cuon/DMS/GUI/dms.glade2:1074
-#: cuon/DMS/GUI/dms.glade2:1144
+#: cuon/DMS/GUI/dms.glade2:1026 cuon/DMS/GUI/dms.glade2:1096
+#: cuon/DMS/GUI/dms.glade2:1166
 #, fuzzy
 msgid "read"
 msgstr "lezen"
 
-#: cuon/DMS/GUI/dms.glade2:1019 cuon/DMS/GUI/dms.glade2:1089
-#: cuon/DMS/GUI/dms.glade2:1159
+#: cuon/DMS/GUI/dms.glade2:1041 cuon/DMS/GUI/dms.glade2:1111
+#: cuon/DMS/GUI/dms.glade2:1181
 #, fuzzy
 msgid "write"
 msgstr "schrijven"
 
-#: cuon/DMS/GUI/dms.glade2:1034 cuon/DMS/GUI/dms.glade2:1104
-#: cuon/DMS/GUI/dms.glade2:1174
+#: cuon/DMS/GUI/dms.glade2:1056 cuon/DMS/GUI/dms.glade2:1126
+#: cuon/DMS/GUI/dms.glade2:1196
 #, fuzzy
 msgid "execute"
 msgstr "uitvoeren"
 
-#: cuon/DMS/GUI/dms.glade2:1064
+#: cuon/DMS/GUI/dms.glade2:1086
 #, fuzzy
 msgid "Group"
 msgstr "Groep"
 
-#: cuon/DMS/GUI/dms.glade2:1291
+#: cuon/DMS/GUI/dms.glade2:1313
 #, fuzzy
 msgid "Search 1"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:1304
+#: cuon/DMS/GUI/dms.glade2:1326
 #, fuzzy
 msgid "Search 2"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:1317
+#: cuon/DMS/GUI/dms.glade2:1339
 #, fuzzy
 msgid "Search 3"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:1330
+#: cuon/DMS/GUI/dms.glade2:1352
 #, fuzzy
 msgid "Search 4"
 msgstr "Zoeken"
 
-#: cuon/DMS/GUI/dms.glade2:1493
+#: cuon/DMS/GUI/dms.glade2:1527
 #, fuzzy
 msgid "Single Scan"
 msgstr "Po-bestand doorzoeken"
 
-#: cuon/DMS/GUI/dms.glade2:1542
+#: cuon/DMS/GUI/dms.glade2:1576
 #, fuzzy
 msgid "Multi Scan"
 msgstr "DDJ Scan"
 
-#: cuon/DMS/GUI/dms.glade2:1598
+#: cuon/DMS/GUI/dms.glade2:1632
 #, fuzzy
 msgid "OCR"
 msgstr "OCR"
 
-#: cuon/DMS/GUI/dms.glade2:1621
+#: cuon/DMS/GUI/dms.glade2:1655
 #, fuzzy
 msgid "choose file"
 msgstr "Kies bestand"
 
-#: cuon/DMS/GUI/dms.glade2:1629 cuon/Databases/GUI/databases.glade2:179
+#: cuon/DMS/GUI/dms.glade2:1663 cuon/Databases/GUI/databases.glade2:179
 #: cuon/Databases/GUI/databases.glade2:306
 #, fuzzy
 msgid "Import"
 msgstr "Importeren"
 
-#: cuon/DMS/GUI/dms.glade2:1644
+#: cuon/DMS/GUI/dms.glade2:1678
 #, fuzzy
 msgid "LINK"
 msgstr "Koppeling"
 
-#: cuon/DMS/GUI/dms.glade2:1659
+#: cuon/DMS/GUI/dms.glade2:1693
 #, fuzzy
 msgid "Fax Newsletter"
 msgstr "Telefoon/Fax"
 
-#: cuon/DMS/GUI/dms.glade2:1744
+#: cuon/DMS/GUI/dms.glade2:1778
 #, fuzzy
 msgid "Fax Last Document"
 msgstr "Gaat naar de laatste pagina van het document"
 
-#: cuon/DMS/GUI/dms.glade2:1797
+#: cuon/DMS/GUI/dms.glade2:1831
 #, fuzzy
 msgid "Save Last Document"
 msgstr "Het XML-document opslaan"
 
-#: cuon/DMS/GUI/dms.glade2:1846
+#: cuon/DMS/GUI/dms.glade2:1880
 #, fuzzy
 msgid "Save Last Document As ..."
 msgstr "Bestand opslaan als"
 
-#: cuon/DMS/GUI/dms.glade2:1991 cuon/DMS/GUI/dms.glade2:2006
+#: cuon/DMS/GUI/dms.glade2:2025 cuon/DMS/GUI/dms.glade2:2040
 #, fuzzy
 msgid "from user"
 msgstr "berichten die komen van gebruiker S"
 
-#: cuon/DMS/GUI/dms.glade2:2034
+#: cuon/DMS/GUI/dms.glade2:2068
 #, fuzzy
 msgid "last change"
 msgstr "Laatste wijziging"
 
-#: cuon/DMS/GUI/dms.glade2:2060
+#: cuon/DMS/GUI/dms.glade2:2094
 #, fuzzy
 msgid "Document insert at"
 msgstr "Invoegen op cursorpositie"
 
-#: cuon/DMS/GUI/dms.glade2:2133
+#: cuon/DMS/GUI/dms.glade2:2167
 #, fuzzy
 msgid "Extract"
 msgstr "Extra's"
 
-#: cuon/DMS/GUI/dms.glade2:2149
+#: cuon/DMS/GUI/dms.glade2:2183
 #, fuzzy
 msgid "Link eingeben"
 msgstr "Koppeling openen"
 
-#: cuon/DMS/GUI/dms.glade2:2160
+#: cuon/DMS/GUI/dms.glade2:2194
 #, fuzzy
 msgid "Link"
 msgstr "Koppeling"
 
-#: cuon/DMS/GUI/dms.glade2:2172
+#: cuon/DMS/GUI/dms.glade2:2206
 #, fuzzy
 msgid "http://"
 msgstr "HTTP"
@@ -6145,17 +6182,17 @@ msgstr "FTP account"
 msgid "choose contra account"
 msgstr "FTP account"
 
-#: cuon/Articles/GUI/articles.glade2:1716
+#: cuon/Articles/GUI/articles.glade2:1728
 #, fuzzy
 msgid "Article Designation"
 msgstr "Aanduiding:"
 
-#: cuon/Articles/GUI/articles.glade2:1787
+#: cuon/Articles/GUI/articles.glade2:1799
 #, fuzzy
 msgid "Article ID"
 msgstr "Artikel met ID op&halen..."
 
-#: cuon/Articles/GUI/articles.glade2:1809
+#: cuon/Articles/GUI/articles.glade2:1821
 #, fuzzy
 msgid "Part Description"
 msgstr "Omschrijving"
@@ -6174,7 +6211,7 @@ msgstr "Beschreibung2"
 msgid "Materialgroup contains"
 msgstr "Computer resources"
 
-#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:541
+#: cuon/Help/GUI/help.glade2:12 GUI/setup.glade2:93 GUI/cuon.glade2:549
 #: GUI/cuon_config_wizard.glade2:55 GUI/cuon_gtk.glade2:172
 #: GUI/cuon_server.glade2:260
 #, fuzzy
@@ -6497,122 +6534,127 @@ msgstr "Gegevens importeren"
 
 #: GUI/cuon.glade2:458
 #, fuzzy
+msgid "Export Data"
+msgstr "Gegevens importeren"
+
+#: GUI/cuon.glade2:466
+#, fuzzy
 msgid "Forms"
 msgstr "Formulieren"
 
-#: GUI/cuon.glade2:473
+#: GUI/cuon.glade2:481
 #, fuzzy
 msgid "Notes Misc"
 msgstr "Cisco - Allerlei"
 
-#: GUI/cuon.glade2:489
+#: GUI/cuon.glade2:497
 #, fuzzy
 msgid "Notes Representant"
 msgstr "Rekening opmerkingen"
 
-#: GUI/cuon.glade2:497
+#: GUI/cuon.glade2:505
 #, fuzzy
 msgid "Notes Salesman"
 msgstr "Rekening opmerkingen"
 
-#: GUI/cuon.glade2:522
+#: GUI/cuon.glade2:530
 #, fuzzy
 msgid "Logs"
 msgstr "Logboeken"
 
-#: GUI/cuon.glade2:529
+#: GUI/cuon.glade2:537
 #, fuzzy
 msgid "Mail"
 msgstr "E-Mail"
 
-#: GUI/cuon.glade2:548 GUI/cuon_gtk.glade2:181
+#: GUI/cuon.glade2:556 GUI/cuon_gtk.glade2:181
 #, fuzzy
 msgid "About"
 msgstr "Info"
 
-#: GUI/cuon.glade2:556
+#: GUI/cuon.glade2:564
 #, fuzzy
 msgid "Online-Help"
 msgstr "/Hulp/On-line _hulp"
 
-#: GUI/cuon.glade2:565
+#: GUI/cuon.glade2:573
 #, fuzzy
 msgid "Online News"
 msgstr "/Hulp/On-line _hulp"
 
-#: GUI/cuon.glade2:593
+#: GUI/cuon.glade2:601
 #, fuzzy
 msgid "connected user"
 msgstr "Gebruikersnaam"
 
-#: GUI/cuon.glade2:617
+#: GUI/cuon.glade2:625
 #, fuzzy
 msgid "connected server"
 msgstr "Verbonden Server"
 
-#: GUI/cuon.glade2:645
+#: GUI/cuon.glade2:653
 #, fuzzy
 msgid "show Scheduls"
 msgstr "Bureaublad tonen"
 
-#: GUI/cuon.glade2:662
+#: GUI/cuon.glade2:670
 #, fuzzy
 msgid "only new"
 msgstr "Alleen &nieuwe"
 
-#: GUI/cuon.glade2:678
+#: GUI/cuon.glade2:686
 #, fuzzy
 msgid "all"
 msgstr "alles"
 
-#: GUI/cuon.glade2:695
+#: GUI/cuon.glade2:703
 msgid "canceld"
 msgstr ""
 
-#: GUI/cuon.glade2:712
+#: GUI/cuon.glade2:720
 #, fuzzy
 msgid "actual week"
 msgstr "Weeknummers:"
 
-#: GUI/cuon.glade2:729
+#: GUI/cuon.glade2:737
 #, fuzzy
 msgid "actual Month"
 msgstr "Vorige maand"
 
-#: GUI/cuon.glade2:753
+#: GUI/cuon.glade2:761
 #, fuzzy
 msgid "this Year"
 msgstr "Einde van dit jaar"
 
-#: GUI/cuon.glade2:769
+#: GUI/cuon.glade2:777
 #, fuzzy
 msgid "last Year"
 msgstr "Laatste twee decimalen van een jaar"
 
-#: GUI/cuon.glade2:806
+#: GUI/cuon.glade2:814
 msgid "Chat"
 msgstr ""
 
-#: GUI/cuon.glade2:848
+#: GUI/cuon.glade2:856
 #, fuzzy
 msgid "Twitter"
 msgstr "Titel"
 
-#: GUI/cuon.glade2:1043
+#: GUI/cuon.glade2:1051
 #, fuzzy
 msgid "About CUON"
 msgstr "Over Audacious"
 
-#: GUI/cuon.glade2:1056
+#: GUI/cuon.glade2:1064
 msgid "C.U.O.N."
 msgstr ""
 
-#: GUI/cuon.glade2:1067
+#: GUI/cuon.glade2:1075
 #, fuzzy
 msgid "An Internet Business-Software"
 msgstr "Software auteurs-eerbetuiging"
 
-#: GUI/cuon.glade2:1159
+#: GUI/cuon.glade2:1167
 msgid ""
 "Authors:\n"
 "Juergen Hamel, 32584 Loehne, Germany"
@@ -6821,6 +6863,26 @@ msgid "client"
 msgstr "IRC-programma's"
 
 #, fuzzy
+#~ msgid "Serviceprice for"
+#~ msgstr "ID van service:"
+
+#, fuzzy
+#~ msgid "months"
+#~ msgstr "Maandelijks"
+
+#, fuzzy
+#~ msgid "Hints for Service"
+#~ msgstr "Probleem in 'htree'-map-inode %d (%q): ongeldig bloknummer %b.\n"
+
+#, fuzzy
+#~ msgid "addional services"
+#~ msgstr "Sleutelmateriaal"
+
+#, fuzzy
+#~ msgid "choose Service"
+#~ msgstr "Artikel kop"
+
+#, fuzzy
 #~ msgid "shortRemark"
 #~ msgstr "Bewe&rking:"
 
@@ -6890,10 +6952,6 @@ msgstr "IRC-programma's"
 
 #, fuzzy
 #~ msgid "Newsletter Email"
-#~ msgstr "Telefoon/Fax"
-
-#, fuzzy
-#~ msgid "Newsletter Print"
 #~ msgstr "Telefoon/Fax"
 
 #, fuzzy
@@ -7007,10 +7065,6 @@ msgstr "IRC-programma's"
 #, fuzzy
 #~ msgid "b-allg"
 #~ msgstr "alles"
-
-#, fuzzy
-#~ msgid "I"
-#~ msgstr "ID"
 
 #, fuzzy
 #~ msgid "23:15"
@@ -7491,10 +7545,6 @@ msgstr "IRC-programma's"
 #, fuzzy
 #~ msgid "Order for this address"
 #~ msgstr "Het e-mailadres van deze contactpersoon."
-
-#, fuzzy
-#~ msgid "None"
-#~ msgstr "Geen"
 
 #, fuzzy
 #~ msgid "EAN"

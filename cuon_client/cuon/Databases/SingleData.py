@@ -160,7 +160,7 @@ class SingleData(gladeXml, logs):
             liRecords = None
         except Exception, param:
             print 'Error by load Data'
-            printException,  param
+            print Exception,  param
             
             
         #self.printOut( liRecords    )
