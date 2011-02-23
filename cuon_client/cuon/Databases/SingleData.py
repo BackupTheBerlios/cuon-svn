@@ -843,24 +843,24 @@ class SingleData(gladeXml, logs):
 ##                        oValue = 0
 
                 elif sVerify  == 'float':
-                    # self.out( oValue)
+                    print 'verify float = ',   oValue
                     oValue = self.getCheckedValue(oValue, 'float')
-##                    if oValue == '':
-##                        oValue = 0.0
-##                    # self.out( oValue)
-##                    # self.out( '++++++++++++++++++++++++++++++++++')
-##                    self.printOut( oValue)
-##                    if (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
-##                        oValue = string.replace(oValue,',','.')
-##                        oValue = float(oValue)
-##                    elif isinstance(oValue, types.FloatType):
-##                        pass
-##                    elif isinstance(oValue, types.IntType):
-##                        oValue = float(oValue)
-##
-##                    else:
-##                        oValue = 0.0
-
+                    if oValue == None:
+                        oValue = 0.0
+                    # self.out( oValue)
+                    # self.out( '++++++++++++++++++++++++++++++++++')
+                    #self.printOut( oValue)
+#                    elif (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
+#                        oValue = string.replace(oValue,',','.')
+#                        oValue = float(oValue)
+#                    elif isinstance(oValue, types.FloatType):
+#                        pass
+#                    elif isinstance(oValue, types.IntType):
+#                        oValue = float(oValue)
+#
+#                    else:
+#                        oValue = 0.0
+                    print 'verify float 2= ',   oValue
                 elif sVerify == 'date' :
                     if oValue == '':
                         oValue = '01.01.1900'

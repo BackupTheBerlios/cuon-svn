@@ -97,5 +97,18 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
 
     
     
+CREATE OR REPLACE FUNCTION fct_get_taxvat_for_article( iArticleID integer) returns  float AS '
+ 
+    DECLARE
+        sSql    text ;
+        fTaxVat float ;
+        
+    BEGIN 
+        fTaxVat := 0.00;
     
     
+        fTaxVat = 19.00 ;
+    
+        return fTaxVat ;
+    END ;
+    ' LANGUAGE 'plpgsql'; 

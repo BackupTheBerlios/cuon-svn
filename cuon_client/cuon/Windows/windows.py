@@ -873,9 +873,13 @@ class windows(rawWindow, MyXML, messages,  constants):
         except:
             print 'no correct price'
             fPrice = 0.00
+        print 'fPrice = ',  fPrice
         if not fPrice :
             fPrice = self.singleArticle.getPrice(sModul, singleID, int(self.getWidget(sArtikelwidget).get_text() ) )
-            #print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toStringFloat')
-        self.getWidget(sPricewidget).set_text(self.getCheckedValue(fPrice,'toStringFloat'))
-
+        print 'Price = ',  fPrice,  self.getCheckedValue(fPrice,'toLocaleString')
         
+        self.getWidget(sPricewidget).set_text(self.getCheckedValue(fPrice,'toLocaleString').replace("'", ""))
+
+        print 'widget = ',  self.getWidget(sPricewidget).get_text()
+        
+        return True

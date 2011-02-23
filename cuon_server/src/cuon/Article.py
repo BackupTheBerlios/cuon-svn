@@ -389,9 +389,14 @@ class Article(xmlrpc.XMLRPC, basics):
             #print cpServer.sections()
             
             cNumber = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_number', cpServer)
+            if cNumber == None:
+                cNumber = 'a'
             cSellingprice = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_sellingprice', cpServer)
+            if cSellingprice == None:
+                cSellingprice = 'b'
             cDesignation = self.getConfigOption('CLIENT_' + `dicUser['client']`,'articles_sort1_designation', cpServer)
-        
+            if cDesignation == None:
+                cDesignation = 'c'
         except:
             pass
             

@@ -29,13 +29,15 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
     fPrice  float;
     fDiscount   float ;
     count   integer ;
+    fTaxVat float ;
+    iArticleID integer ;
     BEGIN
        -- RAISE NOTICE ''begin total sum for id %'', iOrderid ;
-        sCursor := ''SELECT amount, price, discount FROM orderposition WHERE  orderid = ''|| iOrderid || '' '' || fct_getWhere(2,'' '')  ;
+        sCursor := ''SELECT amount, price, discount, articleid, tax_vat FROM orderposition WHERE  orderid = ''|| iOrderid || '' '' || fct_getWhere(2,'' '')  ;
         fSum := 0.0 ;
         -- RAISE NOTICE ''sCursor = %'', sCursor ;
         OPEN cur1 FOR EXECUTE sCursor ;
-        FETCH cur1 INTO fAmount, fPrice, fDiscount ;
+        FETCH cur1 INTO fAmount, fPrice, fDiscount,iArticleID, fTaxVat ;
 
         count := 0;
 
@@ -44,9 +46,20 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
         if fDiscount IS NULL then
             fDiscount := 0.0 ;
         end if ;
+        if fTaxVat IS NULL then 
+            fTaxVat:= 0.00;
+        END IF;
+
+        fTaxVat := fct_get_taxvat_for_article(iArticleID);
+        if fTaxVat > 0 THEN
         
-        fSum := fSum + ( fAmount * (fPrice * (100 - fDiscount)/100 ) ) ;
-        FETCH cur1 INTO fAmount, fPrice, fDiscount ;
+            fSum := fSum + ( fAmount * ( fPrice + (fPrice *fTaxVat/100) * (100 - fDiscount)/100 ) ) ;
+            
+        ELSE    
+            fSum := fSum + ( fAmount * (fPrice * (100 - fDiscount)/100 ) ) ;
+            
+        END IF ;
+        FETCH cur1 INTO fAmount, fPrice, fDiscount ,iArticleID, fTaxVat;
     END LOOP ;
     close cur1 ;
     

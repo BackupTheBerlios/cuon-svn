@@ -155,7 +155,11 @@ class dumps:
             sOutput = os.system(dicUser['prefApps']['printPickup'] + ' ' + fname + ' &')    
         elif cDoc == 'INVOICE':
             print "Invoice using",  dicUser['prefApps']['printInvoice'] 
-            sOutput = os.system(dicUser['prefApps']['printInvoice'] + ' ' + fname + ' &')
+            if dicUser['prefApps']['printInvoice'].find('%s') > 0:
+                sPrint = dicUser['prefApps']['printInvoice'].replace('%s', fname )
+                sOutput = os.system( sPrint + ' &')
+            else:
+                sOutput = os.system(dicUser['prefApps']['printInvoice'] + ' ' + fname + ' &')
         elif cDoc == 'PRINTNEWSLETTER':
             sOutput = os.system(dicUser['prefApps']['printNewsletter'] + ' ' + fname + ' &')
             
@@ -207,12 +211,13 @@ class dumps:
                                 #print sLocale
                                 if sLocale == self.dicUser['Locales']:
                                     convert = True
+                            print 'convert = ',  convert,  value
                             if convert:
                                 #print 'convert to normal float'
-                                value = value.replace('.','')
+                                #value = value.replace('.','')
                                 value = value.replace(',','.')
                                 
-                                    
+                                print 'convert2 = ',  convert,  value   
                             if value[0] == 'L'  or value[0] == 'l':
                                 value = value[1:]
                         retValue = float(value)
@@ -226,7 +231,7 @@ class dumps:
                         value = '0.00'
                     elif value == 'None':
                         value = '0.00'
-                        
+                    
                         
                     convert = False
                     print 'convert userlocales = ', self.dicUser['Locales']
@@ -241,7 +246,7 @@ class dumps:
                     retValue = value 
 
             elif type == 'toLocaleString':
-                retValue = value
+                retValue = `value`
                 try:
                     if isinstance(value, types.FloatType):
                         convert = False
@@ -249,11 +254,14 @@ class dumps:
                             #print sLocale
                             if sLocale == self.dicUser['Locales']:
                                 convert = True
+                        print 'convert = ',  convert
+                        print 'float = ',  value
+                        value = "%f" % value
                         if convert:
-                            value = `value`.replace('.',',') 
+                            value = value.replace('.',',') 
                         else:
-                            value = `value`
-                        
+                            value = value
+                        print 'after convert = ',  value
                         retValue = value
                 except:
                     retValue = '0'

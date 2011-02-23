@@ -223,12 +223,15 @@ class import_generic1(fileSelection):
                     else:
                         oSingleImport.newRecord()
                     
-
+                elif self.dicFileAttributes['updateData'] == 'IGNORE':
+                    oSingleImport.ID = -77
                     
                 else:
                     oSingleImport.newRecord()
-                print 'save Data'
-                oSingleImport.saveExternalData(dicValues)
+                    
+                if oSingleImport.ID != -77 :
+                    print 'save Data'
+                    oSingleImport.saveExternalData(dicValues)
 
             elif self.dicFileAttributes['inputType'] == 'stock_goods':
                     self.rpc.callRP('Article.insertGoods', 1,dicValues['article'][0],float(dicValues['st'][0]), self.dicUser)

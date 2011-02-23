@@ -1206,6 +1206,8 @@ class report(MyXML):
 ##            to.setTextOrigin(dicField['x1'],dicField['y1'])
             x1 = dicField['x1']
             y1 = dicField['y1']
+            x2 = dicField['x2']
+            y2 = dicField['y2']
             c.setFont(dicField['font'].encode('ascii'), dicField['fontsize'], 0)
             c.setFillColorRGB(dicField['foregroundColor']['rColor'], dicField['foregroundColor']['gColor'], dicField['foregroundColor']['bColor'] )
             
@@ -1234,9 +1236,9 @@ class report(MyXML):
                             if dicField['fontjustification'] == 'left':
                                 c.drawString(x1,y1,sq)
                             elif dicField['fontjustification'] == 'right':
-                                c.drawRightString(x1,y1,sq)
+                                c.drawRightString(x2,y1,sq)
                             elif dicField['fontjustification'] == 'center':
-                                c.drawCenteredString(x1,y1,sq)
+                                c.drawCenteredString( (int(x1+x2)/2),y1,sq)
                             elif dicField['fontjustification'] == 'text':
                                 textobject = c.beginText()
                                 textobject.setTextOrigin(x1, y1)
