@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+> Foreword </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE=" Installation "
+HREF="c30.html"></HEAD
+><BODY
+CLASS="preface"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Usage </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c30.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="preface"
+><H1
+><A
+NAME="AEN11"
+></A
+> Foreword </H1
+><P
+> C.U.O.N. is the acronym for <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+> Common Universally Organized Network </I
+></SPAN
+>
+    </P
+><P
+> In the Year 2001 I thought about an ERP-Program for LINUX. First tries with c++ and postgres are to conventional and I thought about ERP and Network. So the design of C.U.O.N. ist this: On a host ( or different hosts ) runs the python twisted-Server ( earlier versions are work with ZOPE ). The clients ( at this time only my python client ) communicate with xmlrpc, so many different languages are supported ( java, c++, ruby, etc. ). Some example: The client will look at a document ( a invoice ). It send the data via xmlrpc to the communication-server. This server takes several sql-queries and send them to the report-server. This server generates the report, convert it to a pdf-file and send this file back. Now the communication-server sends this to the client. The client open a pdf-viewer and have a look at the document. </P
+><P
+> At this time, cuon has the standard modules like addresses, articles, stock, order and some specials like a </P
+><P
+>&#13;      <P
+></P
+><UL
+><LI
+><P
+> DMS - ( Document management System ) which can scan documents, save OpenOffice? docs, Images, speech and so on </P
+></LI
+><LI
+><P
+> AI - an expert system with several bot funktions </P
+></LI
+><LI
+><P
+> Project - a project management system with project, phases and task, personal resources and material-resources. </P
+></LI
+><LI
+><P
+> iCalendar - the date and times are send to an iCal-File and so you can use them with evolution or kontact. </P
+></LI
+><LI
+><P
+> The GUI and logic are strictly separately, the GUI are build with glade. </P
+></LI
+></UL
+>
+    </P
+><P
+> The servers are: cuon_xmlrpc - communication with the clients, Postgres and other server cuon_web - iCalendar and web cuon_report - reportserver, pdf-creator cuon_ai - parse normal sentences and translate it to keywords for sql-queries </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c30.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>C.U.O.N.</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

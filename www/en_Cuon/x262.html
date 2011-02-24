@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>clients.ini </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="
+       C.U.O.N. 
+    "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Configuration"
+HREF="c167.html"><LINK
+REL="PREVIOUS"
+TITLE="menu.cfg "
+HREF="x228.html"><LINK
+REL="NEXT"
+TITLE="sql.ini "
+HREF="x267.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.: 
+       Installation and Usage 
+    </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x228.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x267.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="clients_ini"
+>2.4. clients.ini</A
+></H1
+><P
+>Berechtigungen für die Mandanten 
+
+[set_username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+
+Hier werden die Berechtigungen der verschiedenen Benutzer auf die verschiedenen Mmandanten verteilt. Jede client-ID bedeutet einen Mandanten. Beispiel:
+
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
+
+Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 und darf KEINE neuen Mandanten anlegen.
+Der Abschnitt CLIENT_ ¶
+
+Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen.
+
+CLIENT_xxx ist die Mandanten ID
+
+[CLIENT_1]
+Einstellungen für den automatischen Mailversand ¶
+Veränderungen in den Notizen ¶
+
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes0: <CODE
+CLASS="email"
+>&#60;<A
+HREF="mailto:user@web.com"
+>user@web.com</A
+>&#62;</CODE
+>
+sendMailsNotes0: caller,rep,salesman
+
+sendNotes0: YES odeer NO zum Senden der Mails
+Notes0_ID: 17 ID des Dokuments aus dem DMS
+AdditinalEmailAddressesNotes?0: <CODE
+CLASS="email"
+>&#60;<A
+HREF="mailto:jh@web.com"
+>jh@web.com</A
+>&#62;</CODE
+> zusätzliche Empfänger, mit , getrennt
+sendMailsNotes0: caller,rep,salesman interne Benachrichtigung für Kontakter, Repräsentanten und Beratern
+Default Zahlungsbedingung 
+
+modul_order_default_top:ID
+
+ID ist die id der default zahlungsbedingung
+
+Erinnerungen und Mahnungen im Rechnungswesen ¶
+
+Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhängigkeit ist bei den Zahlungsbedingungen vermerkt. Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen würde diese Rechnung bei u.g. Einstellungen nach 18 Tagen das erste mal auf der Liste erscheinen.
+
+reminder_all_days_after: 10
+reminder_first_days_after: 14
+reminder_second_days_after: 25
+reminder_last_days_after: 32
+reminder_summons_days_after: 40
+
+
+Liste nach Zahlungserinnerungen.
+
+list_of_invoices_directDebit: 3
+
+orderbook_number: !id,-,!year
+orderbook_designation: !lastname,_,!city,_,!id
+
+list_of_invoices_directDebit: 3
+
+articles_sort1_number: b
+articles_sort1_sellingprice: c
+articles_sort1_designation: a
+
+Auswahlboxen ¶
+Adressverwaltung ¶
+
+Hier sind die Einträge für die Auswahlboxen bei der Adressverwaltung, das Tab Verschiedenes.
+
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, über 5 millionen
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
+
+Projektverwaltung ¶
+
+cbProjectStatus: neu angelegt,laufend,fertig
+
+Gräber ¶
+
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
+cbTypeOfPaying: jährlich,halbjährlich
+cbPercentsGrave: 100%,90%,80%,75%,50%,
+cbTypeOfPaying: jährlich,halbjährlich,quartal
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+
+Statistik ¶
+
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
+
+StatsCallerCentury: 0
+StatsCallerDecade: 0
+StatsCallerYear: 1
+StatsCallerQuarter: 2
+StatsCallerMonth: 2
+StatsCallerWeek: 2</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x228.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x267.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>menu.cfg</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c167.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>sql.ini</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

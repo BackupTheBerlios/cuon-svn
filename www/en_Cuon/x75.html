@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>&#13;         Preparation 
+      </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="
+       C.U.O.N. 
+    "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="
+       Installation 
+    "
+HREF="c30.html"><LINK
+REL="PREVIOUS"
+TITLE="
+         Download 
+      "
+HREF="x44.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.: 
+       Installation and Usage 
+    </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x44.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="Preparation"
+>1.3. Preparation</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Preparation_ssh"
+>1.3.1. SSH Key</A
+></H2
+><P
+>&#13;           SSH to the server/local host As a user you implement please the following, if still none exists ssh to pair of keys. $ssh keygen - t rsa That should look approximately in such a way: Generating public/private rsa keys pair. Enter file in which ton save the keys (/home/huette/.ssh/id_rsa): Created directory 
+          <TT
+CLASS="filename"
+>&#13;             /home/huette/.ssh 
+          </TT
+>
+           . Enter passport cliche (empty for NO passport cliche): enter (nothing) Enter same passport cliche again: Your identification has been saved in /home/huette/.ssh/id_rsa. Your public keys has been saved in 
+          <TT
+CLASS="filename"
+>&#13;             /home/huette/.ssh/id_rsa.pub 
+          </TT
+>
+           . The key finger print is: 48:4 f: 7d: d8: ba: a4: 6a: 4c: 8b: 8c: 05: b6: 3b: 4d: 26: 40 huette@localhost The public key in id_rsa.pub can confidently to all will pass on. If one deposits now the public key on the target computer in the file root/.ssh/authorized_keys, then it is possible to insert in place of the inquiry of the system password the identity defined by a pair of keys to the Authentifizierung. The following procedure is perhaps simplest: Client: scp id_rsa.pub root@IP: //root then ssh - IP lroot is now one/woman on the server and can with CD /root in the Homeverzeichnis of roots change there. If no listing exists .ssh, mkdir .ssh now ../id_rsa.pub cat &#62;&#62; authorized_keys and everything becomes good. Tap: Test if you can login to the server now with ssh - lroot IP without password . 
+        </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Preparation_postgres"
+>1.3.2. Postgres</A
+></H2
+><FONT
+COLOR="RED"
+>&#13;           Postgres data base on the server basis installation 
+        </FONT
+><P
+>&#13;           The Installer Program has install Postgres, so you have now to do a little preparation. Be the user postgres with 
+          <DIV
+CLASS="example"
+><A
+NAME="shell_postgres"
+></A
+><P
+><B
+>Example 1-1. 
+               shell 
+            </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;              
+su postgres
+createdb - E utf-8 cuon
+
+              
+            </PRE
+></DIV
+>
+           Then create a user with superuser-rights, perhaps so: 
+          <DIV
+CLASS="example"
+><A
+NAME="shell_postgres_superuser"
+></A
+><P
+><B
+>Example 1-2. 
+            </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;              
+createuser admin
+and type Yes on the question if this role should be a superuser 
+            </PRE
+></DIV
+>
+           as well as a user zope without right This user are pure data base user without log in bright plpgsql checks The creation of Proceduren and triggers happens with plpgsql this language must be installed. The following call examines this: /usr/lib/postgresql/bin/createlang - dcuon - l Procedural LANGUAGEs . Name | Trusted? . + . plpgsql | t If the result is similar as above and one indicates plpgsql, everything is correct. Otherwise you implement the following. (Best as a user of postgres): sh-2.05b$ /usr/lib/postgresql/bin/createlang - D cuon plpgsql preparing the installation coding furnish 
+        </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Preparation_ssl"
+>1.3.3. SSL Certificate</A
+></H2
+><P
+>&#13;           If over Internet cuon the server one accesses, it is recommended umbedingt to activate a coded connection. Otherwise all data, passwords etc. are theoretically readable by each dte rodent! As standard server haven 7580 for coded connection (https) and 7080 stands for unencrypted connection (should become equivalent by Firewall closed). The own certificates can provide you as follows: open SSL genrsa - server key PEM out 2048 open SSL req - new - x509 - key server key PEM - out server CERT PEM - days 1095 Copy they then the beiten certificates from /etc/cuon. Then you start xmlrpc the server. you can make a first test as follows: open SSL s_client - connect xxx.xxx.xxx.xxx: 7580 - ssl3 Begin for xxx.xxx.xxx.xxx please your server IP. 
+        </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Preparation_Test"
+>1.3.4. Testing the Server</A
+></H2
+><P
+>&#13;           To first tests of the installation a current postgresql server and cuonxmlrpc the server are enough. In order to have a better overview of the happening is advisable it to start cuonxmlrpc the server by hand around the Debug expenditure in the terminal to pursue to be able: python /usr/share/cuon/cuon_server/src/server_xmlrpc Then in a window log files of the SQL data base open: tail - f /var/log/postgresql/postg *main*.log cuon start In the Linux for 3 important cuon Startscripte should be appropriate for starting listing now. These start please in such a way: * /etc/init.d/cuonxmlrpc start * /etc/init.d/cuonweb start * /etc/init.d/cuonreport start Over with a restart an automatic raising of all necessary programs to ensure one can furnish these program starts with the program rcconf also fast (please do not forget to start the data base postgresql). 
+        </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x44.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Download</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c30.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

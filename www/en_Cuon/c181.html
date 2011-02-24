@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Configuration</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE=" Preparation "
+HREF="x96.html"><LINK
+REL="NEXT"
+TITLE="user.cfg "
+HREF="x217.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Usage </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x96.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x217.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="AEN181"
+></A
+>Chapter 2. Configuration</H1
+><P
+>Certainly you can edit all config files with your favourite editor, but it is highly recommendet to use the build-in Editor of the <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Setup Tool</I
+></SPAN
+>. The config files must be encoded as UTF-8, the build in Editor do this automatically </P
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="server_ini"
+>2.1. server.ini</A
+></H1
+><P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_server_ai"
+></A
+><P
+><B
+>Example 2-1. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[AI]
+AI_HOST: cuon.biz
+AI_PORT: 7082
+</PRE
+></DIV
+>
+</P
+><DIV
+CLASS="example"
+><A
+NAME="config_server_pg"
+></A
+><P
+><B
+>Example 2-2. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[POSTGRES]
+POSTGRES_DB: cuon
+POSTGRES_HOST: localhost
+POSTGRES_PORT: 5432
+POSTGRES_USER: cuon_admin
+
+
+[PDF]
+ENCODING: latin-1
+</PRE
+></DIV
+><P
+>This are example data dor the postgres database, please set here your own values. </P
+><P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_server_email"
+></A
+><P
+><B
+>Example 2-3. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+[EMAIL]
+DEFAULTSERVER: oneInTheWorld
+DEFAULTPORT: 25
+DEFAULTUSER: set_username
+DEFAULTPASSWORD: set_secret
+EMAILENCODING: utf-8
+CRYPT: TLS
+</PRE
+></DIV
+>
+</P
+><P
+>This email values are for sending emails directly from the cuon systen, for example the newsletter. If you set the crypt value, cuon will choose the TLS protocol. </P
+><P
+>Normaly the port has standard values like 25 or so.</P
+><P
+>Jabber Server - Kommunikation with the AI</P
+><P
+><DIV
+CLASS="example"
+><A
+NAME="config_server_jabber"
+></A
+><P
+><B
+>Example 2-4. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[JABBER]
+SERVER:cuonsim2.de
+USERNAME:cuon_test
+PASSWORD:secret 
+</PRE
+></DIV
+></P
+><P
+>Communication with the AI using the jabber protocol</P
+><P
+>archiv automatically emails </P
+><P
+><DIV
+CLASS="example"
+><A
+NAME="config_server_imap"
+></A
+><P
+><B
+>Example 2-5. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[IMAP]
+SERVER: mailxxx.com
+USERNAME: MyName?
+PASSWORD: secret
+PORT: 143
+</PRE
+></DIV
+></P
+><P
+> send the version number for stats to program better client modules </P
+><DIV
+CLASS="example"
+><A
+NAME="config_server_version"
+></A
+><P
+><B
+>Example 2-6. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+[VERSION]
+SEND_VERSION_INFO: YES
+
+
+</PRE
+></DIV
+><P
+>&#13;</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x96.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x217.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Preparation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>user.cfg</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

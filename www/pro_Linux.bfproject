@@ -1,0 +1,25 @@
+name: pro_linux_artikel
+files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon5/cuon5.wml
+files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon4/cuon4.wml
+files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon3/cuon3.wml
+files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon2/cuon2.wml
+files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon1/cuon.wml
+basedir: 
+webdir: 
+template: 
+word_wrap: 1
+searchlist: list
+searchlist: List
+searchlist: ref
+recent_files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon5/cuon5.wml
+recent_files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon4/cuon4.wml
+recent_files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon3/cuon3.wml
+recent_files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon2/cuon2.wml
+recent_files: /misc/Projekte/cuon/Presse/Pro-Linux/cuon1/cuon.wml
+recent_files: /users2/cuonwin/LibreOfficePortable/help.html
+opendir: /misc/Projekte/cuon/Presse/Pro-Linux/cuon5
+savedir: /misc/Projekte/cuon/Presse/Pro-Linux/cuon5
+view_html_toolbar: 1
+view_custom_menu: 1
+view_main_toolbar: 1
+view_left_panel: 1

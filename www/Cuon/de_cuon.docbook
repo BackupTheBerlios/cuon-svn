@@ -1,0 +1,2679 @@
+<?xml version="1.0" encoding="utf-8" ?> <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" >
+<book>
+
+  <bookinfo>
+    <title> C.U.O.N. </title>
+    <subtitle> Installation und Benutzung </subtitle>
+    <author>
+      <firstname> J&uuml;rgen </firstname>
+      <surname> Hamel </surname>
+    </author>
+    <copyright>
+      <year> 2010 </year>
+      <holder> J&uuml;rgen Hamel </holder>
+    </copyright>
+  </bookinfo>
+  <preface>
+    <title> Vorwort </title>
+    <para> C.U.O.N. ist ein Akronym f&uuml;r <emphasis> Common Universally Organized Network </emphasis>
+    </para>
+    <para> Im Jahr 2001 dachte ich mal &uuml;ber ein ERP System f&uuml;r Linux nach. Es sollte aber nicht nur eine simple Warenwirtschaft sein, sondern mehr. Als erstes probierte ich es mit c++, aber das war von der Produktivit&auml;t nicht ausreichend, ich war alleiniger Programmierer, Designer, Distributor und so musste alles produktiver sein. Dann entdeckte ich Python und es ist traumhaft!!. Nun konnte ich folgendes Design verwirklichen: Auf dem Server laufen verschiedene Twisted-Python Server, die mit der Datenbank verbunden sind. Die Clients kommunizieren &uuml;ber <emphasis>XMLRPC</emphasis> mit dem Server, so das der Client in verschiedenen Sprachen realisiert werden kann. Selbstverst&auml;ndlich steht C.U.O.N. unter der GPL v3 .
+
+
+ </para>
+    <para> C.U.O.N. hat verschiedene Module wir Stammdatenverwaltung, Dokument Management System (DMS), Projekt- und Auftragsverwaltung </para>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para> DMS - Dokumente einscannen, PDF, LibreOffice, Openoffice,Musik, Video, Sprachnotizen, Flowcharts und vieles mehr   </para>
+        </listitem>
+        <listitem>
+          <para> AI - Ein Expertensystem mit vielen Spezialfunktionen</para>
+        </listitem>
+        <listitem>
+          <para> Projekte - Projektverwaltung mit Phasen und Tasks, Material- und Personalresourcen, Programmierung  </para>
+        </listitem>
+        <listitem>
+          <para> iCalendar - iCal Funktion f&uuml;r Kalender und Mailprogramme </para>
+        </listitem>
+        <listitem>
+          <para> GUI und Programmlogik sind strikt getrennt, so kann die GUI leich angepa&szlig;t werden</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+ 
+<para>
+CUON ist eine &auml;usserst anpassungsf&auml;hige Software. Im Gegensatz zu vielen anderen Programmen in diesem Genre wurde auf &auml;usserste Flexibilit&auml;t Wert gelegt. Das m&ouml;chte ich hier anhand der GUI. also des Ausehens und Erscheinungsbildes, erkl&auml;ren.</para>
+<para>Ich werde mehrmals im Jahr auf dieses Thema angesprochen und will hier neben den Erkl&auml;rungen im Wiki das Konzept von CUON verdeutlichen.
+Das Program ist von Anfang an in Programmcode und grafische Benutzerschnittstelle (GUI) getrennt worden. Viele sagen dem Aussehen eine gewisse Einfachheit nach und das stimmt auch! Ich bin eben Programmierer und kein Designer. Aber man kann CUON sehr schnell und effektiv anpassen und das machen auch einige Firmen. Also:
+</para>
+    <para> In CUON kann jede Maske beliebig ver&auml;ndert werden mit den Designtool GLADE. Diese ver&auml;nderten Masken k&ouml;nnen, m&uuml;ssen aber nicht, von den Clients genutzt werden. Also kann ein Mischbetrieb genutzt werden, in dem z.B. der Chef einen Nokia N800 mit einer kleinen Oberfl&auml;che nutzt, w&auml;hrend die Kontakter an hochaufl&ouml;senden 19" Bildschirmen die komplette Adressmaske sehen. Einige m&ouml;gens bunt, andere nicht. Wer das Men&uuml; lieber an der Seite oder unten hat, bitte sehr, kein Problem.
+     Aber es geht noch viel komplexer !! Wenn z.B. in einer Fa. ein spezielles Datenfeld gebraucht wird, das nicht in CUON vorhanden ist, kann dies innerhalb weniger Minuten hinzugef&uuml;gt werden:</para>
+        <itemizedlist> <listitem><para>  GLADE starten und Eingabefeld einf&uuml;gen</para></listitem>
+         <listitem><para>  Mit XML-Editor oder Texteditor die entry_ Definition anpassen</para></listitem>
+         <listitem><para>  Mit XML-Editor oder Texteditor die table Definition anpassen</para></listitem>
+         <listitem><para>  Update starten - fertig </para></listitem>
+</itemizedlist>
+     <para>Ihnen passt die Reihenfolge der Eingabefelder nicht - einfach ab&auml;ndern</para>
+     <para>sie brauchen noch Tastenk&uuml;rzel f&uuml;r bestimmte GUI-Funktionen oder Buttons ? Tragt Sie ein ! </para>
+<para>
+Nat&uuml;rlich w&uuml;rde ich mich freuen, wenn Ihr eure ge&auml;nderten GUI's mir zur Verf&uuml;gung stellt, damit ich sie in die Standard-Version einbauen kann. Dann haben alle etwas davon.
+</para>
+
+</preface>
+<part><title>C.U.O.N. Administration</title>
+<chapter><title>C.U.O.N. Installation und Wartung</title>
+<sect1 id="t1"><title>Wichtig !!!</title>
+<para>C.U.O.N. ist f&uuml;r den Professionellen Einsatz gedacht und erfordert f&uuml;r die Installation einiges an Kenntnissen. Umfangreiches Linux, XML und Postgres Wissen sind wirklich die Voraussetzung der Server-Installation und der sp&auml;teren Pflege. Falls Sie professionelle Hilfe ben&ouml;tigen, stehen ihnen diese Servicepartner zur Verf&uuml;gung</para>
+
+
+ <para><emphasis>Servermiete und Grundinstalltion: Fa. Cyrus-Computer GmbH, 32584 L&ouml;hne, email cuon@cyrus.de </emphasis></para>
+<para><emphasis>Komplettservice f&uuml;r C.U.O.N.: Fa. Softconcept GmbH, Borriesstr. 35, 32257 B&uuml;nde, Tel. 05223 / 4970-0, email info@softconcept.net </emphasis> </para>
+</sect1>
+<sect1 id="t1_1"><title>Vorraussetzungen</title>
+<para>
+Diese Seite beschreibt die allgemeine Installation von cuon. Bitte unbedingt auch die betriebssystem-spezifischen Tipps lesen.
+Hardware 
+</para>
+<para>Der Server ben&ouml;tigt einiges an Resourcen. So sollte es ungef&auml;hr so aussehen:
+<itemizedlist><listitem><para>Server und 1 Client auf dem selben Rechner 	ab 3GHz, 1GB RAM, 10 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 10 Clients 	ab 2.5 GHz, 1 GB RAM, 100 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 50 Clients 	ab 3 GHz, 4 GB RAM, 500 GB HD</para></listitem></itemizedlist>
+Der Client-Rechner mu&szlig; eine grafische Oberfl&auml;che haben </para>
+<para>
+Der Install-client mu&szlig; ein Linux-Rechner sein. X mu&szlig; laufen und eine Oberfl&auml;che wie XFCE, Gnome, KDE, Blackbox, windowmaker oder eine andere Oberfl&auml;che mu&szlig; vorhanden sein.
+SSH zum Server/Localhost 
+</para>
+<sect2 id="t2"><title>SSH key</title>
+<para>Als User f&uuml;hren Sie bitte folgendes aus, falls noch kein ssh Schl&uuml;sselpaar existiert.</para>
+
+
+
+<example role="codelisting" id="c1">
+<title>SSH Key</title>
+<programlisting><![CDATA[
+
+$ssh-keygen -t rsa
+
+Das sollte ungef&auml;hr so aussehen:
+
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/home/huette/.ssh/id_rsa):
+
+Created directory '/home/huette/.ssh'.
+
+Enter passphrase (empty for no passphrase): (nichts eingeben)
+
+Enter same passphrase again:
+
+Your identification has been saved in /home/huette/.ssh/id_rsa.
+
+Your public key has been saved in /home/huette/.ssh/id_rsa.pub.
+
+The key fingerprint is:
+
+48:4f:7d:d8:ba:a4:6a:4c:8b:8c:05:b6:3b:4d:26:40 huette@localhost
+
+Der &ouml;ffentliche Schl&uuml;ssel in id_rsa.pub kann getrost an alle weitergeben werden.
+
+Hinterlegt man nun den &ouml;ffentlichen Schl&uuml;ssel auf dem Zielrechner in der Datei root/.ssh/authorized_keys, so ist es m&ouml;glich, anstelle der Abfrage des Systempa&szlig;worts die durch ein Schl&uuml;sselpaar definierte Identit&auml;t zur Authentifizierung einzusetzen.
+
+Folgendes Vorgehen ist vielleicht am einfachsten: Client: scp id_rsa.pub root@ IP://root Dann ein ssh -lroot IP Jetzt ist man/frau auf dem Server und kann dort mit cd /root ins das Homeverzeichnis von root wechseln. Falls kein Verzeichnis .ssh existiert, mkdir .ssh
+
+jetzt ein cat ../id_rsa.pub >> authorized_keys
+
+und alles wird gut.
+
+]]></programlisting>
+</example>
+<para>
+Tipp: Testen Sie, ob Sie sich jetzt mit ssh -lroot IP ohne Passworteingabe auf den Server einloggen k&ouml;nnen</para>
+
+</sect2>
+</sect1>
+<sect1 id="t3"><title>Postgres-Datenbank auf dem Server</title>
+<sect2 id="t4"><title>Basis Installation</title>
+<itemizedlist>
+    <listitem><para> Postgres installieren</para></listitem>
+    <listitem><para> Database anlegen ( im Zweifelsfall cuon nennen ). z.B. als user postgres:</para></listitem>
+     <listitem><para> createdb -E utf-8 cuon</para></listitem>
+    <listitem><para> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen createuser admin Superuser -- Ja</para></listitem>
+    <listitem><para> sowie einen user zope ohne rechte </para></listitem>
+</itemizedlist>
+<para><emphasis>Diese user sind reine Datenbankuser ohne loginshell</emphasis></para></sect2>
+<sect2 id="t5"><title>plpgsql check</title>
+<para>
+Das Anlegen von Proceduren und Triggern geschieht mit plpgsql Dies Sprache mu&szlig; installiert sein. Folgender Aufruf pr&uuml;ft dies :
+</para>
+<example role="codelisting" id="c2">
+<title></title>
+<programlisting><![CDATA[
+
+/usr/lib/postgresql/bin/createlang -dcuon -l
+
+Procedural languages
+
+    . Name | Trusted?
+
+    . +
+
+    . plpgsql | t
+
+]]></programlisting>
+</example>
+<para>Ist das Ergebnis &auml;hnlich wie oben und wird plpgsql angezeigt, ist alles in Ordnung. Andernfalls f&uuml;hren Sie folgendes aus. ( Am besten als user postgres ) :
+</para>
+<para>sh-2.05b$ /usr/lib/postgresql/bin/createlang -d cuon plpgsql</para>
+</sect2>
+<sect2 id="t5_1"><title>Postgres konfigurieren</title>
+<para>Bitte in der /etc/postgres/..../pg_hba.conf die Benutzer auf trusted setzen, im einfachsten Fall: </para>
+<example role="codelisting" id="c2_1">
+<title>pg_hba.conf</title>
+<programlisting><![CDATA[
+# "local" is for Unix domain socket connections only
+local   all         all                               trust
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          trust
+# IPv6 local connections:
+host    all         all         ::1/128               trust
+
+]]></programlisting>
+</example>
+<para>Um dies richtig zu konfigurieren, sollte auf jeden Fall Postgres und Linux Kenntnisse vorhanden sein.  </para>
+</sect2>
+<sect2 id="t6"><title>Vorbereiten der Installation</title>
+<sect3 id="t7"><title>Verschl&uuml;sselung einrichten</title> 
+<para>
+Wenn &uuml;ber das Internet auf den cuon Server zugegriffen wird, ist es unbedingt zu empfehlen, eine verschl&uuml;sselte Verbindung zu aktivieren. Ansonsten sind alle Daten, Passw&ouml;rter etc. theoretisch von jedem Teenager lesbar!
+</para>
+<para>F&uuml;r ein erstes Antesten kann die Standard Konfiguration genommen werden, dort ist der Standardserverport  7580 f&uuml;r verschl&uuml;sselte Verbindung (https) und 7080 f&uuml;r unverschl&uuml;sselte Verbindung vorgesehen. F&uuml;r den Produktiven Einsatzt sollte HTTPS genommen werden und der 7080 gleich per Firewall gesperrt werden.
+</para>
+<para>Die eigenen zertifikate k&ouml;nnen Sie wie folgt erstellen:
+</para>
+<example role="codelisting" id="c3">
+<title></title>
+<programlisting><![CDATA[
+
+openssl genrsa -out serverkey.pem 2048
+
+openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
+
+Kopieren sie dann die beiten Zertifikate nach /etc/cuon .
+
+Dann starten Sie den xmlrpc server. einen ersten Test k&ouml;nnen Sie wie folgt machen:
+
+openssl s_client -connect xxx.xxx.xxx.xxx:7580 -ssl3
+
+F&uuml;r xxx.xxx.xxx.xxx bitte Ihre Server-IP einsetzen.
+
+]]></programlisting>
+</example>
+</sect3>
+</sect2> 
+
+<sect2 id="t8"><title>Haupt Installation  </title>
+<para>
+
+Jetzt geht es mit den selben Schritten wie bei einem <link linkend='Update'><emphasis>Update</emphasis></link> weiter. </para>
+</sect2>
+<sect2 id="t13"><title>Server testen und Datenbank einrichten</title>
+
+<para>
+Zum ersten Testen der Installation langt ein laufender postgresql Server und der cuonxmlrpc Server. Um eine bessere &Uuml;bersicht &uuml;ber das Geschehen zu haben empfiehlt es sich, den cuonxmlrpc Server per Hand zu starten um die Debug-Ausgabe im Terminal verfolgen zu k&ouml;nnen: python /usr/share/cuon/cuon_server/src/server_xmlrpc
+</para>
+<para>
+Dann in einem Fenster Logfile der SQL Datenbank &ouml;ffnen:
+tail -f /var/log/postgresql/postg*main*.log
+cuon starten </para>
+<para>
+Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Diese bitte so starten:
+</para><itemizedlist>
+   <listitem><para>  /etc/init.d/cuonxmlrpc start</para></listitem>
+    <listitem><para> /etc/init.d/cuonweb start</para></listitem>
+    <listitem><para> /etc/init.d/cuonreport start </para></listitem>
+</itemizedlist>
+<para>Um bei einem Neustart ein automatisches Hochfahren aller ben&ouml;tigten Programme zu gew&auml;hrleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</para>
+ </sect2>
+
+ <sect2 id="opt_files"><title>Optionale Programme</title>
+<tip><para>Zus&auml;tzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para></tip>
+<itemizedlist>
+   	<listitem><para> libots </para></listitem>
+	<listitem><para> pstotext  </para></listitem>
+
+<listitem><para> odt2txt  </para></listitem>
+<listitem><para> gocr  </para></listitem>
+</itemizedlist> 
+
+</sect2>
+
+<sect2 id="t9"><title>Client starten </title>
+
+<para>Jetzt kann schon mit den client gearbeitet werden , dazu bei cuon.org --> Downloads -->Deutsch die Datei  Cuon-Client downloaden. Bitte den Anweisungen zur Installation und Konfiguration folgen:</para>
+</sect2>
+</sect1>
+<sect1 id="t10"><title>F&uuml;r Fortgeschrittene</title>
+<sect2 id="t11"><title>Die Webserver und die AI Seite </title>
+<para>
+Auf dem Server ist ein Verzeichnis /var/cuon_www/AI/html
+Bei der Erstinstallation bitte alle Dateien nach dem Motto
+</para>
+<para>xxxxx_example.yyyy nach xxxxx.yyyy umkopieren, also z.B.</para>
+
+<para>p index_example.html index.html</para>
+
+<para>Bitte ebenfalls die Variablen f&uuml;r WEB_xxxx4 in der Server.ini &uuml;berpr&uuml;fen, dann mit dem Konfigurationsprogramm die Server neustarten.
+</para>
+<para>Jetzt kann mit einem Webbrowser auf die url</para>
+
+<para>http://serverhost:serverport/ auf die AI zugegriffen werden.</para>
+</sect2>
+</sect1>
+<sect1 id="t12"><title>Hilfe</title>
+<para>Wenn Sie Hilfe ben&ouml;tigen, senden Sie eine Email an mich  cuon@cuon.org 
+</para>
+<para>J&uuml;gen Hamel </para>
+</sect1>
+<sect1 id="Update"><title>Update</title>
+<para>Benutzen sie zum Update unbedingt den user und Rechner auf dem das Cuon Setup Konfigurationstool installiert ist. Starten Sie das Cuon Setup tool aus dem Men&uuml; 'Einstellungen'. Oder vom Terminal aus: Dazu in das Verzeichnis cuon_client wechseln und mit "python setup.py" die graphische Installationsroutine starten.
+<figure id="t12_1_s1">
+<title>Setup tool</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Screenshot_SetupTool.png"/>
+</figure>
+
+</para>
+<sect2 id="t12_2"><title>Eigentliches Update </title>
+<para>
+"Start Install" dr&uuml;cken. Genauso wie bei der Installation, muss dazu ein funktionierender SSH Zugang eingerichtet sein!! Es sollte also auf jeden Fall der o.g. Cuon-Admin-Bereich sein.
+</para>
+<para>Hier im Beispiel ist cuon als SSL (Protocoll https) Server installiert. Diese Version ist umbedingt zu empfehlen, wenn Clients aus dem Internet auf den Server zugreifen sollen.</para></sect2>
+<sect2 id="t12_3"><title>Client "bauen" </title>
+<para>
+Services -> Create Client</para></sect2>
+<sect2 id="t12_4"><title>Datenbank vorbereiten </title>
+<para>
+Wichtig an diesem Schritt:</para>
+<itemizedlist>
+     <listitem><para>mittels "Connect" mit Admin User (!!) und Passwort anmelden.</para></listitem>
+     <listitem><para>unter "Edit Configfiles -> Server" die [:Konfigurationsdateien:Konfigurationsdateien ]anpassen.</para></listitem> 
+</itemizedlist>
+<para>Danach weiter zum n&auml;chsten Schritt: Tools -> Database</para></sect2>
+<sect2 id="t12_5"><title> Datenbank </title>
+<para>
+<figure id="t12_5_s1">
+<title>Setup Tool Database</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Screenshot_SetupTool_Databases1.png"/>
+</figure>
+
+Bei einer Neuinstallation oder wenn Userdaten ge&auml;ndert wurden, neue User hinzugef&uuml;gt oder &auml;hnliches, dann bitte auf jeden Fall im Bereich SQL-Rights den Punkt create Grants file ausf&uuml;hren.</para>
+<para>
+Dann nur noch "SQL-Server -> start complete update" ausf&uuml;hren.
+</para>
+
+<para>Fertig!</para></sect2>
+
+
+</sect1>
+<sect1 id="PartielleUpdates"><title>Partielle Updates</title>
+<sect2 id="PartielleUpdatesUser"><title>User</title>
+<para>Du kannst einen Benutzer &auml;ndern oder neuanlegen in den verschiedenen  <link linkend='ConfigFilesServer'><emphasis>Konfigurationsdateien auf dem Server</emphasis></link>, aber du mu&szlig;t im nach dem Erzeugen der Grant Datei im Database Konfigurationstool auf "SQL Server"-->"grants" klicken </para>
+</sect2>
+</sect1>
+<sect1 id="ks1"><title>Konfiguration </title>
+<sect2 id="ConfigFilesServer"><title>Konfigurationsdateien auf dem Server </title>
+
+<para>Die Konfigurationsdateien liegen bei normaler Installation im Verzeichnis &#047;etc&#047;cuon </para>
+
+<para>F&uuml;r alle Konfigurationsdateien gilt:</para>
+
+<para><emphasis>Klein- und Gro&szlig;schrift wird nicht unterschieden!!</emphasis></para>
+<para>Kursive Bemerkungen bitte NICHT in die Konfigurdationsdatei &uuml;bernehmen[[BR]] Zum Editieren umbedingt das setup Programm verwenden. Damit wird Sichergestellt, dass die Dateien in utf-8 Kodierung geschrieben werden!
+</para>
+<para>Nach dem &Auml;ndern von Usereinstellung immer "Edit-Configfiles->Server->SQL-Rights-->Create Grantfiles" ausf&uuml;hren und danach die "Grants" neu einspielen <link linkend='PartielleUpdatesUser'><emphasis>siehe User Updates</emphasis></link>
+</para>
+<example role="codelisting" id="server_ini">
+<title>server.ini </title>
+<programlisting><![CDATA[
+
+[AI]
+AI_HOST: cuon.org
+AI_PORT: 7082
+
+Der Ai-Server wird f&uuml;r schnelle Erweiterungen (z.B. abgespeckte Funktionen etc.) genutzt.
+Momentaner Stand: Unfertiges Modul, dass noch nicht im Produktionseinsatz ist. 
+Man erreicht eine Testoberfl&auml;che f&uuml;r den AI-Server &uuml;ber die Men&uuml;punkte: Sonstiges->Expertensystem.
+
+Bitte die hier gezeigten Standardwerte &uuml;bernehmen. 
+Ein eigener AI Server ist momentan noch nicht so einfach zu installieren
+
+[POSTGRES]
+POSTGRES_DB: cuon
+POSTGRES_HOST: localhost
+POSTGRES_PORT: 5432
+POSTGRES_USER: cuon_admin
+
+
+[PDF]
+ENCODING: latin-1
+
+Die Postgresql Daten enthalten die Einstellungen zu der Datenbank. Im Normalfall k&ouml;nnen 
+diese Werte hier auch unver&auml;ndert &uuml;bernommen werden.
+
+
+[EMAIL]
+DEFAULTSERVER: oneInTheWorld
+DEFAULTPORT: 25
+DEFAULTUSER: set_username
+DEFAULTPASSWORD: set_secret
+EMAILENCODING: utf-8
+CRYPT: TLS
+
+Die Emaileinstellungen dienen zum als Standardwerte zum Versenden von Emails. 
+Username und Passwort sind f&uuml;r solche Server gedacht, die SMTP Authentifizierung erlauben. 
+Crypt steht dabei dann f&uuml;r das Versenden &uuml;ber das verschl&uuml;sselte TLS Protokoll.
+
+Der Port kann im Normalfall unver&auml;ndert gelassen werden.
+
+Jabber Server zur Kommunikation mit der AI
+[JABBER]
+SERVER:cuonsim2.de
+USERNAME:cuon_test
+PASSWORD:secret
+
+Diese Einstellungen definieren eine Schnittstelle, um diesen user, im beispiel oben cuon_test,
+eine Nachricht zu schicken. diese Nachricht wird zu der AI weitergeleitet und entsprechend 
+ausgewertet. Dann erfolgt von der AI die Anwort
+
+[FAX]
+HOST=Faxerver.com
+PORT=22 #SSH Port
+USER=Faxuser
+Diese Faxwerte nur eintragen, wenn der Faxserver auf einen anderen Host liegt, 
+ansonsten wird das lokale sendfax benutzt
+
+Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer 
+&uuml;bertragen wird, das hilft mir bei der Entscheidung &uuml;ber die Entwicklung von 
+mandantenbezogenen Modulen.
+
+[VERSION]
+SEND_VERSION_INFO = YES
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="user_cfg">
+<title>user.cfg </title>
+<programlisting><![CDATA[
+
+
+[password]
+
+set_username: set_password
+
+jeweils bei set_username und set_password die entsprechenden Werte einsetzen.
+
+Wichtig: Nach jeder &Auml;nderungen der user.cfg muss das Installationsprogramm 
+laufen und die Datenbankrechte neu schreiben (Databasetools->Grants).
+
+Siehe auch die Seite Anlegen und Pflegen:"User pflegen und anlegen".
+
+F&uuml;r die Rechtevergabe im DMS k&ouml;nnen hier Gruppenrechte vergeben werden. 
+Die Gruppen selber werden in der sql.ini definiert
+
+
+[GROUPS]
+jhamel: buero,rechnung
+
+
+
+F&uuml;r die Auswertungen werden in der Sektion STATS folgende Daten ben&ouml;tigt.
+[STATS]
+CALLER_ID: 1,2,3,5,8
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="menus_cfg">
+<title>menus.cfg </title>
+<programlisting><![CDATA[
+
+
+[gewoehnlicherAllUser]
+all: Priv;all  
+experimental: Priv;all 
+
+[AdminUser] 
+all: Priv;all 
+experimental: Priv;all 
+staff: Priv;all 
+extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports; \
+[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
+forms: Priv;all 
+forms_addresses: Priv;all
+
+# Dies ist nur f&uuml;r G&auml;rtnereien interessant
+address_button_grave: Yes
+address_button_grave_position: 14
+
+
+
+F&uuml;r jeden User muss ein Eintrag existieren. Der Eintrag f&uuml;r die Adminuser ist 
+etwas komplexer. Eine genaue Erkl&auml;rung erfolgt hier, wenn das Modul noch weiter 
+fortgeschritten ist. F&uuml;r den Anfang k&ouml;nnen diese Werte &uuml;bernommen werden.
+clients.ini 
+Berechtigungen f&uuml;r die Mandanten 
+
+[set_username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+
+Hier werden die Berechtigungen der verschiedenen Benutzer auf die verschiedenen 
+Mandanten verteilt. Jede client-ID bedeutet einen Mandanten. Beispiel:
+
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
+
+Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat 
+Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 
+und darf KEINE neuen Mandanten anlegen.
+Der Abschnitt CLIENT_ 
+
+Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die 
+mandantenspezifischen Einstellungen.
+
+CLIENT_xxx ist die Mandanten ID
+
+[CLIENT_1]
+Einstellungen f&uuml;r den automatischen Mailversand 
+Ver&auml;nderungen in den Notizen 
+
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes?0: jh@&hellip;
+sendMailsNotes0: caller,rep,salesman
+
+sendNotes0: YES odeer NO zum Senden der Mails
+Notes0_ID: 17 ID des Dokuments aus dem DMS
+AdditinalEmailAddressesNotes?0: jh@&hellip; zus&auml;tzliche Empf&auml;nger, mit , getrennt
+sendMailsNotes0: caller,rep,salesman interne Benachrichtigung f&uuml;r 
+Kontakter, Repr&auml;sentanten und Beratern
+Default Zahlungsbedingung 
+
+modul_order_default_top:ID
+
+ID ist die id der default zahlungsbedingung
+
+Erinnerungen und Mahnungen im Rechnungswesen 
+
+Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. 
+Eine zweite Abh&auml;ngigkeit ist bei den Zahlungsbedingungen vermerkt. Also, 
+bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer 
+Wartezeit von 8 Tagen w&uuml;rde diese Rechnung bei u.g. Einstellungen nach 
+18 Tagen das erste mal auf der Liste erscheinen.
+
+reminder_all_days_after: 10
+reminder_first_days_after: 14
+reminder_second_days_after: 25
+reminder_last_days_after: 32
+reminder_summons_days_after: 40
+
+
+Liste nach Zahlungserinnerungen.
+
+list_of_invoices_directDebit: 3
+
+orderbook_number: !id,-,!year
+orderbook_designation: !lastname,_,!city,_,!id
+
+list_of_invoices_directDebit: 3
+
+articles_sort1_number: b
+articles_sort1_sellingprice: c
+articles_sort1_designation: a
+
+Auswahlboxen 
+Adressverwaltung 
+
+Hier sind die Eintr&auml;ge f&uuml;r die Auswahlboxen bei der Adressverwaltung, 
+das Tab Verschiedenes.
+
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, &uuml;ber 5 millionen
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
+
+Projektverwaltung 
+
+cbProjectStatus: neu angelegt,laufend,fertig
+
+Gr&auml;ber 
+
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
+cbTypeOfPaying: j&auml;hrlich,halbj&auml;hrlich
+cbPercentsGrave: 100%,90%,80%,75%,50%,
+cbTypeOfPaying: j&auml;hrlich,halbj&auml;hrlich,quartal
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+
+Statistik 
+
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
+
+StatsCallerCentury: 0
+StatsCallerDecade: 0
+StatsCallerYear: 1
+StatsCallerQuarter: 2
+StatsCallerMonth: 2
+StatsCallerWeek: 2
+
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="sql_ini">
+<title>sql.ini</title>
+<programlisting><![CDATA[
+
+Hier bitte alle Gruppen durch Kommata getrennt eintragen
+[GROUPS]
+NAMES: buero,rechnung
+
+
+Hier die Vorgaberechte f&uuml;r div. automatische Operationen eingeben. 
+Dabei wird als ersten die Rechte eingetragen, nach dem Schema:
+rwxrwxrwx
+r = read, also lesen
+w = write, also schreiben
+x = eXecute, also ausf&uuml;hren
+jeweils f&uuml;r User, Gruppe, Alle
+ein Unterstrich bedeutet, kein Recht
+Danach, mit Kommata getrennt, die Gruppen, die eingetragen werden sollen.
+
+[DEFAULT_MODUL_RIGHTS_DMS] 
+INVOICE: rw_r__r__,rechnung 
+
+[LIMIT]
+Address: 30
+Garden: 217
+Project: 50
+Articles: 80
+Order: 50
+
+Her wird die Anzahl der Listeneintr&auml;ge, die beim Modulstart angezeigt werden 
+Modul eingetragen. Beispiel Adress:30 zeigt beim Laden des Adressmoduls die 
+ersten 30 Adresseintr&auml;ge
+
+Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost 
+die meisten Eintr&auml;ge auf 500 stellen.
+
+Diese Eintr&auml;ge gelten f&uuml;r die Auftragsbearbeitung
+[modul_order]
+default_top: 1
+die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird
+
+Folgende Eintr&auml;ge werden f&uuml;r das &Uuml;berwinterungsmodul (Gartenbaubetriebe) ben&ouml;tigt:
+
+[modul_hibernation]
+replace_staff_pickup: 1
+replace_staff_supply: 2
+replace_plant_hibertion:3
+replace_plant_add_pot:4
+replace_plant_add_material:5
+replace_plant_add_earth:6
+replace_plant_add_misc:7
+
+Diese Einstellungen weisen den &Uuml;berwinterungsdienstleistungen 
+(&Uuml;berwintern, Liefern, Umtopfarbeiten etc.) feste Artikel 
+(die Nummer ist die Artikel-ID) zu. Anhand von diesen Artikel 
+wird danach die Mehrwertsteuer, Brutto / Nettorpreis eingestellt.
+Die nachfolgende Eintr&auml;ge sind der Text f&uuml;r die Rechnungsstellung:
+
+translate_price_hibernation_for: Preis der &Uuml;berwinterung f&uuml;r
+translate_price_add_pot_for: Preis f&uuml;r gr&ouml;&szlig;eren Topf
+translate_price_add_material_for: Preis f&uuml;r zus. Material
+translate_price_add_earth_for: Preis f&uuml;r zus. Erde
+translate_price_add_misc_for: Preis f&uuml;r Sonstiges
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+translate_price_staff_pickup_for: Abholkosten
+translate_price_staff_supply_for: Anlieferkosten
+
+]]></programlisting>
+</example>
+ 
+<example role="codelisting" id="UserGroups.cfg">
+<title>UserGroups.cfg</title>
+<programlisting><![CDATA[
+Diese Datei liegt im Verzeichnis /etc/cuon/sql/ 
+
+Sie sollte so aussehen:
+[USER]
+zope: zope_rights
+heino: cuon_all
+jhamel: cuon_all
+GroupRightsOther.cfg 
+
+[cuon_other]
+cuon_clients: select 
+]]></programlisting>
+</example>
+ 
+</sect2>
+<sect2 id="ConfigClients"><title>Einstellen der Clients</title>
+<sect3 id="ks1_a1"><title>Installieren eines Client</title> 
+<para>
+Downloaden des Clients, dazu bei cuon.org --> Downloads -->die Datei Cuon-Client downloaden.Je nach Typ ( Debian/Ubuntu-Paket, Red Hat, SuSE oder tgz) den entsprechenden Anleitungen folgen. In der Regel wird es einfach &uuml;ber den paketmanager der Distributuion installiert</para></sect3>
+<sect3 id="ks1_a2"><title>Startvorbereitungen</title> 
+<para>Normalerweise startet nach der client Installation der Cuon Konfiguration Wizard automatisch, ggf. kann man ihn im Men&uuml; System --> Einstellungen finden und starten. 
+Dort dann einfach die Werte einstellen, also das user Home-Verzeichnis, Server usw. F&uuml;r die automatische Anmeldung einfach den Benutzernamen, das Passwort und die ID des Mandanten angeben ( ID ist meistens 1).
+<figure id="CCK">
+<title>Cuon Client Konfiguration</title>
+<graphic align="center" scale="35"  fileref="images/screenshots/Screenshot_CuonClientConfiguration.png"/>
+</figure>
+
+</para>
+
+
+
+<para>
+Notfalls kann man auch so vorgehen, um individuelle Startparameter festzulegen:
+</para>
+
+  <para>  ggf. die Datei$HOME/cuon/bin/cuon.ini</para>
+
+<para>und im Verzeichnis $HOME/cuon/bin die Datei sc erstellen.</para>
+
+<para>F&uuml;r die Datei sc gibts eine Beispieldatei startcuon ( unter Microsoft Windows die Datei startcuon.bat_example ). einfach anpassen mit deinen Netzwerkeinstellungen.
+</para>
+<para>Hier eine kurze Beschreibung der Parameter und eine sinnvolle Konfiguration f&uuml;r Linux: Die Datei sc sollte als erstes in das cuon/bin -Verzeichnis wechseln. Dann wird Cuon.py aufgerufen, und zwar mit den passenden python-Interpreter, im Regelfall ist dies python. Danach k&ouml;nnen folgende Parameter &uuml;bergeben werden:
+</para>
+<itemizedlist>
+   <listitem><para>1. Server-Adresse oder NO</para></listitem>
+  <listitem><para> 2. Startart, normalerweise client</para></listitem>
+   <listitem><para>3. Debug-Modus, normalerweise NO</para></listitem>
+   <listitem><para>4. Weg zur Localen, normalerweise ../locale</para></listitem>
+   <listitem><para>5. Homeverzeichnis von cuon, also i.d.R. /home/username/cuon </para></listitem>
+</itemizedlist>
+
+
+<example role="codelisting" id="start_sc">
+<title>Datei sc</title>
+<programlisting><![CDATA[
+#!/bin/sh
+cd /home/jhamel/cuon/bin
+python Cuon.py NO client NO ../locale
+
+]]></programlisting>
+</example>
+
+<example role="codelisting" id="cuon_ini">
+<title>cuon.ini</title>
+<programlisting><![CDATA[
+[Client]
+protocol = http
+description = Cuon Client Configuration
+alternategui = alternate1
+locale = /locale
+workingdir = /home/jhamel/cuon
+host = 192.168.17.2
+debug = NO
+type = client
+port = 7080
+username =  cuonusername
+password = very_secret
+client_id = 1
+
+]]></programlisting>
+</example>
+<para>
+Diese Reihenfolge der Einstellungen wir von CUON verarbeitet: Die cuonObjects wird gelesen, diese wird durch die Parameter-&Uuml;bergabe in sc gesteuert. ( dies ist die beste Methode ), danach Betriebssystem-Einstellungen ( also Environment-Variablen ), dann die /etc/cuon/</para>
+ </sect3>
+</sect2></sect1>
+</chapter>
+<chapter><title>Druckvorlagen</title>
+<sect1 id="DMS_Vorlagen"><title>Briefe mit einem Office-Programm erzeugen </title>
+<sect2 id="br1"><title>
+Allgemeine Bemerkungen </title>
+<para>
+Das <link linkend='dms1'><emphasis>DMS</emphasis></link> wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterst&uuml;tzt:</para>
+<itemizedlist>
+    <listitem><para> Einfache Textdokumente</para></listitem>
+	<listitem><para> LibreOffice</para></listitem>
+   <listitem><para>  OpenOffice</para></listitem> </itemizedlist>
+<para>
+Falls ein von Ihnen gew&uuml;nschtes Format nicht vorhanden ist, schreiben sie mir bitte eine E-Mail. Das folgende Vorgehen ist grunds&auml;tzlich bei allen Formaten gleich.
+ </para>
+<para>
+Es sollen 2 Vorlagen f&uuml;r den Schriftverkehr erstellt werden, ein Briefvordruck f&uuml;r ein direktes Anschreiben der Fa, ein Briefvordruck f&uuml;r ein Anschreiben an einen Gesr&auml;chspartner.</para>
+<para>
+Dazu erstellen Sie jeweils einen beliebigen Briefvordruck und setzen an die entsprechenden Stellen die Platzhalter, die mit ## beginnen und mit ;; enden. F&uuml;r den Nachnahmen w&auml;re das also:</para>
+<example role="codelisting" id="brpm">
+<title>Platzhlter Markierung</title>
+<programlisting><![CDATA[
+  ##lastname;;
+    (im odt Format,  kein rtf nehmen)
+
+]]></programlisting>
+</example>
+   
+<para>
+Dann speichern Sie das Dokument ab. Anschlie&szlig;end benutzen Sie die Addressverwaltung, selektieren eine Adresse und klicken auf den Brief-Button ( im engl. letter ). Jetzt &ouml;ffnet sich das <link linkend='dms1'><emphasis>DMS</emphasis></link> und sie legen ein neues Dokument an. Als Titel geben Sie z.B. Briefkopf an.Suchen Sie dann Ihr Briefkopf-Dokument und importieren Sie es.
+</para>
+<para>Jetzt haben Sie in allen Adressen die M&ouml;glichkeit, diesen Briefkopf zu benutzen. Dies geschieht folgenderma&szlig;en: Gehen sie in die Addressverwaltung und suchen sie eine Adresse. Dann dr&uuml;cken sie den Brief-Button. Die DMS &ouml;ffnet sich und Sie w&auml;hlen die gew&uuml;nschte Vorlage (z.B. Briefkopf oder Info-Anschreiben oder Urlaubsmitteilung oder ... was auch immer ). Dr&uuml;cken sie auf View und OpenOffice? &ouml;ffnet sich und an Stelle der Platzhalter stehen die entsprechenden Feldinhalte, z.B. die Adresse. Jetzt k&ouml;nnen Sie den Brief schreiben und ver&auml;ndern, und dann eben Drucken, Faxen oder per E-Mail versenden.</para>
+</sect2>
+<sect2 id="tab1"><title>Platzhalter</title>
+<para>
+<table id="tab1_grund">
+  <title>Grunds&auml;tzliche Platzhalter </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+        
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Datum</entry>
+         <entry>date_date</entry>
+         
+      </row>
+      <row>
+         <entry>Uhrzeit</entry>
+         <entry>date_time</entry>
+        
+      </row>
+      <row>
+         <entry>Zeitstempel	</entry>
+         <entry>date_timestamp</entry>
+        
+      </row>
+     
+     
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+	
+	<para>
+	
+<table id="tab2_benutzerinfo">
+  <title>Benutzerinfo</title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Benutzerinfo</entry>
+		<entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+		 <entry>userinfo_address</entry>
+      </row>
+		<row>
+         <entry>Nachname</entry>
+		 <entry>userinfo_lastname</entry>
+      </row>
+		<row>
+         <entry>Vorname</entry>
+		 <entry>userinfo_firstname</entry>
+      </row>
+		<row>
+         <entry>Telefon</entry>
+		 <entry>userinfo_phone</entry>
+      </row>
+		<row>
+         <entry>Telefon 2</entry>
+		 <entry>userinfo_phone1</entry>
+      </row>
+		<row>
+         <entry>Briefanrede1</entry>
+		 <entry>userinfo_letter_phrase_1</entry>
+      </row>
+		<row>
+         <entry>Mein zeichen</entry>
+		 <entry>userinfo_ my_sign_1</entry>
+      </row>
+		<row>
+         <entry>L&auml;ngere Signatur 1 </entry>
+		 <entry>userinfo_signature_1</entry>
+      </row>
+		<row>
+         <entry>L&auml;ngere Signature 2</entry>
+		 <entry>userinfo_signature_2</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+
+<para>
+Dieselben Benutzerinfos gibt es f&uuml;r person1_ oder person2_ anstelle von userinfo_
+</para>
+
+<para>
+<table id="tab2_adressverwaltung">
+  <title>Platzhalter Adressverwaltung </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>firstname</entry>
+      </row>
+      <row>
+         <entry>Handynummer</entry>
+         <entry>phone_handy</entry>
+      </row>
+	  <row>
+		<entry>Stra&szlig;e</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Stadt</entry>
+		<entry>city</entry>
+	  </row>
+	  <row>
+		<entry>Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+	  <row>
+		<entry>Branche</entry>
+		<entry>misc_line</entry>
+	  </row>
+	  <row>
+		<entry>Mwst-ID</entry>
+		<entry>misc_taxnumber</entry>
+	  </row>
+	  <row>
+		<entry>Mwst berechnen</entry>
+		<entry>misc_to_calc_tax</entry>
+	  </row>
+	  <row>
+		<entry>Preisgruppe</entry>
+		<entry>misc_price_group</entry>
+	  </row>
+	  <row>
+		<entry>Adressnummer</entry>
+		<entry>misc_address_number</entry>
+	  </row>
+	  <row>
+		<entry>Adresse ist im Webshop</entry>
+		<entry>misc_is_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Adresse mit Webshop abgleichen</entry>
+		<entry>misc_update_from_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Zahlungsbedinguen-ID</entry>
+		<entry>misc_top_id</entry>
+	  </row>
+	  <row>
+		<entry>Gr&uuml;ndungsdatum</entry>
+		<entry>misc_date_of_launch</entry>
+	  </row>
+	  <row>
+		<entry>Rechtsform</entry>
+		<entry>misc_legal_form</entry>
+	  </row>
+	  <row>
+		<entry>Umsatz</entry>
+		<entry>misc_turnover</entry>
+	  </row>
+	  <row>
+		<entry>Mitarbeiteranzahl</entry>
+		<entry>misc_count_of_employees</entry>
+	  </row>
+	  <row>
+		<entry>Handel</entry>
+		<entry>misc_trade</entry>
+	  </row>
+	  <row>
+		<entry>Typ</entry>
+		<entry>misc_cb_fashion</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+
+
+</para>
+<para>
+<table id="tab2_gesraechspartner">
+  <title>Platzhalter Gespr&auml;chspartner </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address_address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>address_lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>address_lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>address_firstname</entry>
+      </row>
+      <row>
+         <entry>Stra&szlig;e</entry>
+         <entry>address_street</entry>
+      </row>
+      <row>
+         <entry>Postleitzahl</entry>
+         <entry>address_zip</entry>
+      </row>
+      <row>
+         <entry>Stadt</entry>
+         <entry>address_city</entry>
+      </row>
+      <row>
+         <entry>Briefanrede</entry>
+         <entry>address_letter_address</entry>
+      </row>
+      <row>
+         <entry>Gespr&auml;chspartner-Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Gespr&auml;chspartner-Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+	  <row>
+		<entry>Gespr&auml;chspartner-Vorname</entry>
+		<entry>firstname</entry>
+	  </row>
+	  <row>
+		<entry>Gespr&auml;chspartner-Stra&szlig;e</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Gespr&auml;chspartner-Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Gespr&auml;chspartner-Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+</para>
+<para>Platzhalter Termin 
+Beschreibung 	Platzhalter
+Adress-Anrede 	address_address
+Adress-Nachname 	address_lastname
+Adress-Nachname 2 	address_lastname2
+Adress-Vorname 	address_firstname
+Adress-Stra&szlig;e 	address_street
+Adress-Postleitzahl 	address_zip
+Adress-Stadt 	address_city
+Gespr&auml;chspartner-Anrede 	partner_address
+Gespr&auml;chspartner-Nachname 	lpartner_astname
+Gespr&auml;chspartner-Nachname 2 	partner_lastname2
+Gespr&auml;chspartner-Vorname 	partner_firstname
+Gespr&auml;chspartner-Stra&szlig;e 	partner_street
+Gespr&auml;chspartner-Postleitzahl 	partner_zip
+Gespr&auml;chspartner-Stadt 	partner_city
+Gespr&auml;chspartner-Briefanrede 	partner_letter_address
+Datum Termin 	schedul_date
+Beginn 	schedul_time_begin
+Ende 	schedul_time_end
+Kurze bemerkung 	short_remark
+Notiz 	notes</para>
+</sect2>
+
+
+<sect2 id="Anmerkungen"><title>Anmerkungen</title>
+<para>Mit den Button save last document wird ein neues DMS ge&ouml;ffnet, passend zur Adresse und sie k&ouml;nnen jetzt einfach einen Titel f&uuml;r das Dokument eingeben und auf sichern gehen.
+</para>
+<para>Damit wird der Schriftverkehr automatisch den entsprechenden Adressen und Gespr&auml;chspartnern zugeordnet.</para>
+</sect2>
+</sect1>
+</chapter>
+<chapter>
+<title>Reports</title>
+
+<sect1 id="rep1"><title>Grundlagen </title>
+<sect2 id="rep1_1"><title>Vorbemerkungen</title>
+<sect3 id="rep1_1_1"><title>Verzeichnisse und Pfade</title>
+<para>wechseln sie auf den Server in das Verzeichnis
+/usr/share/cuon/cuon_server/src/cuon/Reports
+Dort sind die Reports im Verzeichnis XML.
+</para>
+<para>Legen Sie jetzt Mandantenbezogene Reports in das neue, anzulegene Verzeichnis
+client_ + ID des Mandanten, z.B. client_1
+</para>
+<para>Legen Sie Userbezogene Reports in das neue, anzulegene Verzeichnis
+user_ + Anmeldename des users, z.B. user_jhamel</para>
+
+</sect3>
+
+
+<sect3 id="rep1_1_2"><title>Aufbau des Reports</title>
+
+<para>Die Report-Definitionsdateien sind im xml-format und werden zur Zeit noch per Hand editiert. Ein Report ist grunds&auml;tzlich in 5 Bereiche unterteilt.
+reportHeader 
+</para>
+<para>Dies ist der Bereich, der nur am Anfang eines Reports steht, sinnvollerweise enth&auml;lt er den Absender und z.B. die Adresse des Empf&auml;ngers.
+pageHeader 
+</para>
+<para>Dieser Bereich wird auf jeder Seite ausgedruckt und enh&auml;lt z.B. Spalten&uuml;berschriften, Seitennummern, etc.
+groups 
+</para>
+<para>Dies ist ein m&auml;chtiges element und kann mehrere Gruppen enthalten. Dabei wird die Schachtelung von au&szlig;en nach innen durchlaufen. Dieser Teil des Reports kann entsprechend umfangreich sein und wird auf allen Seiten gedruckt.
+pageFooter 
+</para>
+<para>Dieser Teil wird auf jeder Seite unten gedruckt.
+reportFooter 
+</para>
+<para>Dies ist der Schlu&szlig; eines Reports und wird nur auf der letzten Seite gedruckt.</para>
+
+</sect3>
+</sect2>
+<sect2 id="rep1_2"><title>Report-Elemente </title>
+<para>
+Dies sind die Definitionen, die den Report beschreiben. Auch hier gelten f&uuml;r bestimmte Werte nur f&uuml;r bestimmte Regieonen.
+</para>
+<para>Direkt unterhalb des Report-Beginns sind diese Werte zu setzen:
+</para>
+<example role="codelisting" id="rep_e1">
+<title>allg. Report Definitionen</title>
+<programlisting><![CDATA[
+<orientation>Portrait</orientation> ( Werte sind Landscape, Portrait )
+<topMargin>20</topMargin> ( Oberer Rand )
+<bottomMargin>20</bottomMargin> ( Unterer Rand )
+<rightMargin>40</rightMargin> ( Rechter Rand )
+<leftMargin>40</leftMargin> ( Linker Rand )
+<papersizeX>595</papersizeX> ( Papierbreite )
+<papersizeY>842</papersizeY> ( Papierl&auml;nge )
+<sitebackground_url>/home/jhamel/frei08_12.jpg</sitebackground_url> (Pfad zum Hintergrundbild)
+<sitebackground_x>20</sitebackground_x></para>
+<sitebackground_y>0</sitebackground_y>( x,y linke, untere Ecke des Hintergrundbildes
+<sitebackground_width>720</sitebackground_width> ( Gr&ouml;&szlig;e nach rechts )
+<sitebackground_height>1020</sitebackground_height> ( H&ouml;he nach oben ) 
+
+]]></programlisting>
+</example>
+  
+
+<para>Diese Werte in der jeweiligen Region bestimmen die Gr&ouml;&szlig;e und Lage der Region:</para>
+<example role="codelisting" id="rep_e2">
+<title>Positionswerte</title>
+<programlisting><![CDATA[
+ <posX1>40</posX1>
+   <posY1>20</posY1>
+   <posX2>400</posX2>
+   <posY2>60</posY2>
+]]></programlisting>
+</example>
+
+<para>Dabei bestimmen die x1,y1 Werte die linke, obere Ecke, die x2,y2 Werte die rechte, untere Ecke.</para>
+
+<para>Ein Entry ( siehe Beispiel ) hat sehr detailierte Variablen.</para>
+<example role="codelisting" id="rep_e5">
+<title>Entry</title>
+<programlisting><![CDATA[
+<entry>
+           <name>Title</name>
+           <class>Label</class>
+           <value>Phonelist 011 generatet by CUON</value>
+           <type>string</type>
+           <format>%s</format>
+           <posX1>0</posX1>
+           <posY1>20</posY1>
+           <posX2>80</posX2>
+           <posY2>40</posY2>
+           <font>Helvetica</font>
+           <fontsize>16</fontsize>
+           <fontJustification>left</fontJustification>
+           <foregroundColor>0,0,0</foregroundColor>
+           <backgroundColor>0,0,0</backgroundColor> 
+		   <property>0</property>
+     </entry> 
+]]></programlisting>
+</example>
+     
+<para>
+Dabei sind folgende Werte zul&auml;ssig:</para>
+<para>
+<itemizedlist>
+     <listitem><para>name beliebige zeichen ( Buchstaben, Zahlen, erstes zeichen mu&szlig; ein Buchstabe sein, keine Umlaute)</para></listitem>
+    <listitem><para> class folgende Werte zul&auml;ssig<itemizedlist>
+          <listitem><para>o Label nachfolgender Wert ist eine Text, Bezeichner</para></listitem>
+          <listitem><para>o Field Feldbegriff ( z.B. Seitennummer )</para></listitem>
+         <listitem><para> o Line Linie wird gezeichnet</para></listitem>
+          <listitem><para>o Rectangle Rechteck wird gezeichnet</para></listitem>
+          <listitem><para>o DatabaseField? name ist dann das Feld im Resultset</para></listitem>
+         <listitem><para> o Function Eine Funktion mit database-fields und Report-Variablen</para></listitem>
+        <listitem><para>  o ImageURL Bild einf&uuml;gen</para></listitem> 
+		</itemizedlist></para></listitem>
+     <listitem><para>resultSet Name des zum databasefield zugeh&ouml;rigen Results</para></listitem>
+    <listitem><para> formula Eine Formel zur class Function<itemizedlist>
+          <listitem><para>o !SUM Summe wird gebildet</para></listitem>
+          <listitem><para>o !VAR Nachfolgende Variable</para></listitem>
+         <listitem><para> o Rechenzeichen + - * / , etc. </para></listitem></itemizedlist></para></listitem>
+     <listitem><para>type Kennzeichnung des Wertes. Folgende Werte werden unterst&uuml;tzt.<itemizedlist>
+         <listitem><para> o float Flie&szlig;kommazahl</para></listitem>
+         <listitem><para> o string Buchstaben und Zahlen</para></listitem>
+          <listitem><para>o int Zahl ohne Komma </para></listitem></itemizedlist></para></listitem>
+     <listitem><para>format Formatierungsanweisung<itemizedlist>
+          <listitem><para>o %s normaler String</para></listitem>
+          <listitem><para>o %-10.2f Flie&szlig;kommazahl Dezimalsystem, 2 Nachkommastellen</para></listitem></itemizedlist> </para></listitem>
+     <listitem><para>memory Variable wird im Speicher abgelegt</para></listitem>
+    <listitem><para> variable Name der Variablen</para></listitem>
+    <listitem><para> font Name der Schriftenfamilie</para></listitem>
+    <listitem><para> fontsize Gr&ouml;&szlig;e der Schrift</para></listitem>
+    <listitem><para> fontJustification Ausrichtung der Schrift</para></listitem>
+    <listitem><para> foregroundColor Vordergrundfarbe, RGB</para></listitem>
+   <listitem><para>  backgroundColor Hintergrundfarbe, RGB</para></listitem>
+   <listitem><para>  appendtogroup 1 = Seitenfu&szlig; bzw. Reportfu&szlig; wird direkt unter der group gedurckt, 0 = Seiten- bzw. Reportfu&szlig; wird unten gedruckt </para></listitem>
+	<listitem><para>property Druckstil, diese Werte sind zul&auml;ssig: <itemizedlist>
+<listitem><para>A  Druck auf alle Seiten</para></listitem>
+<listitem><para>F  Druck auf die erste Seite</para></listitem>
+<listitem><para>N  Alle Seiten au&szlig;er der ersten Seite</para></listitem>
+<listitem><para>L  Nur auf die letzte Seite</para></listitem>
+<listitem><para>B  Alle Seiten au&szlig;er der ersten und der letzten Seite</para></listitem>
+<listitem><para>C  Alle Seiten auper der letzten Seite</para></listitem>
+</itemizedlist> 
+    </para></listitem>
+</itemizedlist>
+</para>
+<sect3 id="rep1_2_1"><title>Hintergrundbilder </title>
+<para>
+Hintergrundbilder (z.B. ganze Seite mit Firmenlogo, Text etc.) bieten eine schnelle einfache Art die Reports auf die eigene Firma anzupassen. Lediglich die dynamischen Elemente brauchen dann noch einen Eintrag.</para>
+<para>Hintergrundbilder werden so eingef&uuml;gt:</para>
+<para>
+<example role="codelisting" id="rep_e3">
+<title>Hintergrundbild</title>
+<programlisting><![CDATA[
+<report>
+<orientation>Portrait</orientation>
+<topMargin>20</topMargin>
+<bottomMargin>20</bottomMargin>
+<rightMargin>40</rightMargin>
+<leftMargin>40</leftMargin>
+<papersizeX>595</papersizeX>
+<papersizeY>842</papersizeY>
+<sitebackground_url>/home/jhamel/frei08_12.jpg</sitebackground_url>
+<sitebackground_x>20</sitebackground_x>
+<sitebackground_y>0</sitebackground_y>
+<sitebackground_width>720</sitebackground_width>
+<sitebackground_height>1020</sitebackground_height>
+]]></programlisting>
+</example>
+
+</para>
+<para>
+Die wichtigen Zeilen sind nat&uuml;rlich die mit sitebackground und sind leicht verst&auml;ndlich:</para>
+<para>Das Bild mu&szlig; auf dem Server liegen, x,y sind die linke, untere Ecke, dann geht es width-Punkte nach rechts, height-punkte nach oben.
+Bitte nach dem install den cuon_xmlrpc und cuon_report neu starten.</para>
+</sect3>
+<sect3 id="rep1_2_2"><title>TrueType Schriftarten in den Reports</title> 
+<para>
+im Entry bei font folgendes eintragen:</para>
+<example role="codelisting" id="rep_e4">
+<title>fonts</title>
+<programlisting><![CDATA[
+<font>Muriel;TTF;/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf</font>
+]]></programlisting>
+</example>
+<para>
+Dabei ist Muriel ein frei w&auml;hlbarer Name f&uuml;r die Schrift, genauso kann man hier DejaVuCondens eingeben.
+TTF ist die Schriftart</para>
+<example role="codelisting" id="rep_e6">
+<title></title>
+<programlisting><![CDATA[
+/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf
+ist der Pfad zu der Schrift ( auf dem Server !!!!)
+( Semikolon ist das Trennzeichen )
+]]></programlisting>
+</example>
+<para>
+In den n&auml;chsten entrys brauchst man dann nur noch Muriel schreiben
+</para>
+</sect3>
+</sect2>
+</sect1>
+
+
+<sect1 id="rep2"><title>Moduldaten</title>
+<para>Die Kennzeichnung gilt immer nur f&uuml;r den jeweiligen Report.</para>
+<sect2 id="rep2_1"><title>Daten f&uuml;r die div. Module </title>
+
+<sect3 id="rep2_1_3"><title>Auftragsbearbeitung</title>
+<para>Variablen f&uuml;r die Rechnung</para>
+<sect4 id="mod_s1"><title>Abholung, Lieferschein, Rechnung</title>
+
+<table id="rep_ta1">
+  <title> ResultSet address </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>astname</entry>
+         <entry>Nachname</entry>
+      </row>
+      <row>
+         <entry>lastname2</entry>
+         <entry>Nachname Zusatz</entry>
+      </row>
+      <row>
+         <entry>firstname</entry>
+         <entry>Vorname</entry>
+      </row>
+      <row>
+         <entry>first_last</entry>
+         <entry>Vorname Nachname</entry>
+      </row>
+      <row>
+         <entry>last_first</entry>
+         <entry>Nachname, Vorname</entry>
+      </row>
+      <row>
+         <entry>city</entry>
+         <entry>PLZ Stadt</entry>
+      </row>
+      <row>
+         <entry>city_alone</entry>
+         <entry>Stadt</entry>
+      </row>
+      <row>
+         <entry>city_alone</entry>
+         <entry>Stadt</entry>
+      </row>
+     
+      <row>
+         <entry>zip</entry>
+         <entry>Postleitzahl</entry>
+      </row>
+      <row>
+         <entry>street</entry>
+         <entry>Stra&szlig;e</entry>
+      </row>
+      <row>
+         <entry>city_country</entry>
+         <entry>Staat-PLZ Stadt</entry>
+      </row>
+      <row>
+         <entry>country</entry>
+         <entry>Land</entry>
+      </row>
+      <row>
+         <entry>order_orderedat</entry>
+         <entry>Auftragsdatum</entry>
+      </row>
+      <row>
+         <entry>order_deliverdat</entry>
+         <entry>Lieferdatum</entry>
+      </row>
+      <row>
+         <entry>order_number</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>order_designation</entry>
+         <entry>Auftragsbeschreibung</entry>
+      </row>
+    
+		<row>
+         <entry>customers_ordernumber,</entry>
+         <entry>Auftragsnummer des Kunden</entry>
+      </row>
+
+     
+    </tbody>
+  </tgroup>
+</table>
+
+<table id="rep_ta2">
+  <title>ResultSet Order </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable </entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>orderid</entry>
+         <entry>Id des Auftrags</entry>
+      </row>
+      <row>
+         <entry>orderNumber</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>invoiceNumber</entry>
+         <entry>Rechnungsnummer</entry>
+      </row>
+
+      <row>
+         <entry>invoiceDate</entry>
+         <entry>Rechnungsdatum</entry>
+      </row>
+      <row>
+         <entry>discount</entry>
+         <entry>Rabatt</entry>
+      </row>
+      <row>
+         <entry>misc_cost</entry>
+         <entry>div. Kosten</entry>
+      </row>
+      <row>
+         <entry>postage_cost</entry>
+         <entry>Porto o. Fracht</entry>
+      </row>
+      <row>
+         <entry>packing_cost</entry>
+         <entry>Verpackungskosten</entry>
+      </row>
+      <row>
+         <entry>term_of_payment</entry>
+         <entry>Zahlungsbedingung Tex</entry>
+      </row>
+ 	 <row>
+         <entry>staff_lastname</entry>
+         <entry>Sachbearbeiter Nachname</entry>
+      </row>
+      <row>
+         <entry>staff_firstname</entry>
+         <entry>Sachbearbeiter vorname</entry>
+      </row>
+      <row>
+         <entry>staff_first_last</entry>
+         <entry>Sachbearbeiter Nachname, Vorname</entry>
+      </row>
+      <row>
+         <entry>staff_last_first</entry>
+         <entry>Sachbearbeiter Vorname Nachname</entry>
+      </row>
+      <row>
+         <entry>staff_phone_handy</entry>
+         <entry>Handy Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_email</entry>
+         <entry>Email des Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_phone</entry>
+         <entry>Telefon Sachbearbeiter</entry>
+      </row>
+      <row>
+         <entry>staff_fax</entry>
+         <entry>FAX Sachbearbeiter</entry>
+      </row>
+ <row>
+         <entry>partner_lastname</entry>
+         <entry>Gespr&auml;chspartner Nachname</entry>
+      </row>
+      <row>
+         <entry>partner_firstname</entry>
+         <entry>Gespr&auml;chspartner vorname</entry>
+      </row>
+      <row>
+         <entry>partner_first_last</entry>
+         <entry> Gespr&auml;chspartnerNachname, Vorname</entry>
+      </row>
+      <row>
+         <entry>partner_last_first</entry>
+         <entry> Gespr&auml;chspartnerVorname Nachname</entry>
+      </row>
+ 
+		<row>
+         <entry>customers_ordernumber,</entry>
+         <entry>Auftragsnummer des Kunden</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+<table id="rep_ta4">
+  <title>ResultSet positions </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>order_number</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>order_orderedat</entry>
+         <entry>Auftragsdatum</entry>
+      </row>
+      <row>
+         <entry>order_deliverdat</entry>
+         <entry>Auftragsdatum</entry>
+      </row>
+      <row>
+         <entry>order_tax_va</entry>
+         <entry>Auftragsgebundene Mwst. in Prozent</entry>
+      </row>
+      <row>
+         <entry>order_designation</entry>
+         <entry>Auftragsbeschreibung</entry>
+      </row>
+      <row>
+         <entry>pos_designation</entry>
+         <entry>Positionsbeschreibung</entry>
+      </row>
+      <row>
+         <entry>price</entry>
+         <entry>Preis</entry>
+      </row>
+      <row>
+         <entry>end_price_gross</entry>
+         <entry>Preis incl. Mwst.</entry>
+      </row>
+      <row>
+         <entry>end_price_netto</entry>
+         <entry>Preis ohne Mwst.</entry>
+      </row>
+      <row>
+         <entry>position</entry>
+         <entry>Position</entry>
+      </row>
+      <row>
+         <entry>amount</entry>
+         <entry>Menge</entry>
+      </row>
+      <row>
+         <entry>article_designation</entry>
+         <entry>Artikel Beschreibung</entry>
+      </row>
+      <row>
+         <entry>article_id</entry>
+         <entry>Artikelnummer</entry>
+      </row>
+      <row>
+         <entry>article_wrapping</entry>
+         <entry>Artikel Verpackung</entry>
+      </row>
+      <row>
+         <entry>article_quantumperwrap</entry>
+         <entry>Artikel Anzahl per Verpackungseinheit</entry>
+      </row>
+      <row>
+         <entry>article_unit</entry>
+         <entry>Artikel einheit</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</sect4>
+<sect4 id="mod_s2"><title>Rechnungsliste</title>
+<table id="rep_ta5">
+  <title>ResultSet listOfInvoices </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>order_number</entry>
+         <entry>Auftragsnummer</entry>
+      </row>
+      <row>
+         <entry>invoice_number</entry>
+         <entry>Rechnungsnummer</entry>
+      </row>
+      <row>
+         <entry>date_of_invoice</entry>
+         <entry>Rechnungsdatum</entry>
+      </row>
+      <row>
+         <entry>total_amount</entry>
+         <entry>Gesamtsumme</entry>
+      </row>
+      <row>
+         <entry>maturity</entry>
+         <entry>F&auml;lligkeit</entry>
+      </row>
+      <row>
+         <entry>lastname</entry>
+         <entry>Nachname</entry>
+      </row>
+      <row>
+         <entry>city</entry>
+         <entry>Stadt</entry>
+      </row>
+      <row>
+         <entry>adressid</entry>
+         <entry>Adress ID</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</sect4>
+
+
+</sect3>
+
+<sect3 id="rep2_1_1"><title>&Uuml;berwinterung </title>
+<example role="codelisting" id="rep_e7">
+<title></title>
+<programlisting><![CDATA[
+<resultSet>address</resultSet>
+(["hibernation.hibernation number","order number"])
+(["to char(hibernation.begin date, \'" + dicUser['SQLDateFormat'"] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUserSQLDateFormat? + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+(["hibernation.begin notes","begin notes"])
+(["hibernation.ends notes","ends notes"])
+(["address.lastname","lastname"])
+(["address.lastname2","lastname2"])
+(["address.firstname","firstname"]) (["address.street","street"])
+(["(address.zip ' ' address.city)","city "])
+]]></programlisting>
+</example>
+<para>
+Zusatzfelder in &Uuml;berwinterungsmodul
+und im 
+</para>
+<example role="codelisting" id="rep_e8">
+<title></title>
+<programlisting><![CDATA[
+
+<resultSet>positions</resultSet>
+(['hibernation.hibernation_number','order_number'])
+([:to char(hibernation.begin date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+([:hibernation plant.plant number","article id:hibernation_plant.plant_number","article _id])
+(["hibernation plant.price","price"])
+(["hibernation plant.status","status"])
+(["hibernation plant.plant notice","plantnotice"]) //Notiz
+([ "hibernation_plant.vermin","vermin"]) //Sch&auml;dlinge
+(["hibernation plant.diameter","diameter"])// Durchmesser
+([:botany.botany name","botany n ame:botany.botany_name","botany_n ame])
+(["botany.local name","local name"])
+]]></programlisting>
+</example>
+
+<para>
+Dabei ist folgendes zu beachten: Dies ist ein Teil aus dem Quellcode. Ich habe den SQL-Teil neugestaltet, um ihn besser pflegen zu k&ouml;nnen. F&uuml;r den Report gilt folgendes: Je nach ResultSet stehen die Variablen im zweiten Teil der durch Komma getrennten Liste, also (["hibernation plant.status","status"]) steht im Report das Feld "status" zur Verf&uuml;gung.</para>
+<para>
+Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
+</para>
+<para>Hier ein ausschnitt:</para>
+
+<example role="codelisting" id="rep_e9">
+<title></title>
+<programlisting><![CDATA[
+<entry>
+<name>eSequence</name>
+<type>textline</type>
+<size>30</size>
+<verify_type>int</verify_type>
+<create_sql>1</create_sql>
+<sql_field>sequence_of_stock</sql_field>
+<duty>YES</duty>
+<bg_color>0</bg_color>
+<fg_color>0</fg_color>
+<next_widget>eAddressNumber</next_widget>
+</entry>
+]]></programlisting>
+</example>
+
+
+
+</sect3>
+
+</sect2>
+</sect1>
+
+
+</chapter>
+<chapter>
+<title>Statistiken</title>
+<sect1 id="sta1">
+<title>Eigene Statistiken erstellen, anpassen </title>
+<sect2 id="sta1_2"><title>Vorbemerkungen </title>
+<para>
+Die Statistiken werden &uuml;ber das DMS zur Verf&uuml;gung gestellt. Das bedeutet, das dieselben Regeln wie in den Briefen gelten, also ##Variable;; Kurzbeschreibung von h&auml;ufig gebrauchten Werten:</para>
+<table id="sta_ta1">
+  <title>Varibalen</title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>ZEITART</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>day</entry>
+         <entry>Tag</entry>
+      </row>
+      <row>
+         <entry>week</entry>
+         <entry>Woche</entry>
+      </row>
+      <row>
+         <entry>month</entry>
+         <entry>Monat</entry>
+      </row>
+      <row>
+         <entry>quarter</entry>
+         <entry>Vierteljahr</entry>
+      </row>
+
+      <row>
+         <entry>year</entry>
+         <entry>Jahr</entry>
+      </row>
+
+      <row>
+         <entry>decade</entry>
+         <entry>Jahrzehnt</entry>
+      </row>
+      <row>
+         <entry>century</entry>
+         <entry>Jahrhundert</entry>
+      </row>
+
+
+    </tbody>
+  </tgroup>
+</table>
+
+<table id="sta2_ta2">
+  <title>Zeitraum</title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Zahl</entry>
+         <entry>Bedeutung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>0</entry>
+         <entry>Jetzt</entry>
+      </row>
+      <row>
+         <entry>1</entry>
+         <entry>vor 1 ( Tag, Monat, Jahr, etc. )</entry>
+      </row>
+      <row>
+         <entry>2</entry>
+         <entry>vor 2 ( Tag, Monat, Jahr, etc. )</entry>
+      </row>
+      <row>
+         <entry>M1</entry>
+         <entry>in 1 ( Tag, Monat, Jahr, etc. )</entry>
+      </row>
+      <row>
+         <entry>2</entry>
+         <entry>M2 = in 2 Tag, Monat, Jahr, etc. )</entry>
+      </row>
+
+
+    </tbody>
+  </tgroup>
+</table>
+
+
+
+</sect2>
+<sect2 id="sta1_3">
+<title>Adressen</title> 
+<para>
+Diese Statistiken beziehen sich auf Auswertungen direkt aus der Adressverwaltung</para>
+
+<table id="sta1_3_ta4">
+  <title>Kontakter </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Beschreibung</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>caller_name_ID</entry>
+         <entry>name des Kontakters	F&uuml;r ID die ID aus der Personalverwaltung einsetzen</entry>
+      </row>
+      <row>
+         <entry>caller_ID_ZEITART_count_ZEITRAUM</entry>
+         <entry>Wert	F&uuml;r ID die ID aus der Personalverwaltung einsetz</entry>
+      </row>
+
+      <row>
+         <entry>caller_ID_ZEITART_count_ZEITRAUM_status_STATUS</entry>
+         <entry>&uuml;r ID die ID aus der Personalverwaltung einsetzen, STATUS ist der gew&uuml;nschte Zahlenwert im Termin</entry>
+      </row>
+
+    </tbody>
+  </tgroup>
+</table>
+
+</sect2>
+<sect2 id="sta1_4">
+<title>Auftrag</title> 
+<para>
+Diese Statistiken beziehen sich auf Auftr&auml;ge und Zahlungseing&auml;nge</para>
+
+<table id="sta1_4_ta5">
+  <title>Global </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Variable</entry>
+         <entry>Wert</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>order_global_count_ZEITRAUM</entry>
+         <entry>Wert</entry>
+      </row>
+      <row>
+         <entry>order_global_incoming_count_ZEITRAUM</entry>
+         <entry>Wert</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</table>
+
+</sect2>
+</sect1>
+
+</chapter>
+<chapter>
+<title>Fax-Server</title>
+<sect1 id="fax_server"><title>Serverseitige Einstellungen</title>
+<para>Alle Benutzer von cuon k&ouml;nnen Faxe &uuml;ber den Faxserver versenden, das hei&szlig;t, Sie brauchen kein Faxger&auml;t oder Faxsoftware an Ihren Arbeitsplatz.</para>
+<para>Wenn der Faxserver sich auf einen separaten PC befindet, m&uuml;ssen sie dies in der <link linkend='server_ini'><emphasis> Server.ini </emphasis></link> eintragen. Ebenfalls mu&szlig; dann ein Faxuser angelegt werden, der einen ssh Zugriff mit Key ( also ohne Passwort) gestattet
+</para>
+<para>Das Verzeichnis /var/spool/cuon-fax mu&szlig; auf auf dem Cuon-Server angelegt sein,  und auf dem Faxserver ebenfalls, wenn der Faxserver separat ist</para>
+
+</sect1>
+<sect1 id="fax_client"><title>Faxen vom Client</title>
+<para>Siehe unter <link linkend='userfax'><emphasis> Faxen vom Cuon client aus </emphasis></link>
+</para>
+</sect1>
+</chapter>
+
+<chapter>
+<title>Betriebssytemspezifische Tipps und Hilfen </title>
+<sect1 id="bth1"><title>Allgemein </title>
+<para>
+cuon ben&ouml;tigt ein Officeprogramm. Das kann LibreOffice, OpenOffice, abiword oder sogar MS Office (das Plugin, dass liest und schreibt, muss dazu installiert werden) sein. Die meisten User verwenden momentan LibreOffice.</para>
+<para>Ein PDF Viewer muss installiert sein. Dies kann der Adoce Acrobat Reader oder freie Programme, wie ghostview, xpdf, kdpf oder &auml;hnliches sein.Die vorgabe ist der Evince, der im Gnome Destop vorinstalliert ist</para>
+<para>Ein Bildbetrachter muss installiert sein.</para>
+<para>Zudem kann das Document Management System alle weiteren Dateiformate verwalten, sofern ein dazu passender Betrachter installiert ist.</para>
+</sect1>
+<sect1 id="bth2"><title>Linux Distributionen</title> 
+ <sect2 id="linux_gentoo">
+<title>Gentoo</title>
+
+<para>Unter Gentoo braucht es folgende Pakete:</para>
+<itemizedlist>
+    <listitem><para>* dev-lang/python - Latest version available: 2.4.4</para></listitem>
+    <listitem><para>* dev-python/gnome-python - Latest version available: 2.16.2</para></listitem>
+   <listitem><para> * dev-python/gnome-python-desktop - Latest version available: 2.16.0</para></listitem>
+    <listitem><para>* dev-python/gnome-python-extras - Latest version available: 2.14.0-r1</para></listitem>
+    <listitem><para>* dev-python/mysql-python - Latest version available: 1.2.0-r1</para></listitem>
+    <listitem><para>* dev-python/pygtk - Latest version available: 2.10.3</para></listitem>
+    <listitem><para>* dev-python/pygtkglext - Latest version available: 1.1.0</para></listitem>
+   <listitem><para> * dev-python/imaging - Latest version available: 1.1.6</para></listitem>
+   <listitem><para> * gnome-base/libglade</para></listitem>
+   <listitem><para> * gtksourceview-python</para></listitem> </itemizedlist>
+
+<para>Speziell auf dem Server
+</para>
+   <itemizedlist> 
+<listitem><para>* dev-python/twisted - Latest version available: 2.5.0</para></listitem>
+    <listitem><para>* dev-python/twisted-mail - Latest version available: 0.4.0</para></listitem>
+   <listitem><para> * dev-python/twisted-web - Latest version available: 0.7.0</para></listitem>
+    <listitem><para>* dev-python/twisted-words - Latest version available: 0.5.0</para></listitem>
+    <listitem><para>* dev-python/twisted-mail - Latest version available: 0.4.0</para></listitem>
+    <listitem><para>* dev-python/python-pygresql</para></listitem>
+   <listitem><para> * Dazu kommt noch reportlab >= 2.0, iCalendar, pydns, python-xmpp</para></listitem>
+    <listitem><para>* python-JSON</para></listitem>
+    <listitem><para>* download and install python-twitter</para></listitem>
+    <listitem><para>* twisted-mail </para></listitem></itemizedlist>
+</sect2>
+<sect2 id="linux_debian">
+<title>Ubuntu und Debian (Sid / Stable) </title>
+<para>Alle n&ouml;tigen Pakete werden von den jeweiligen Installern ( deb Pakete ) bekanntgegeben und ggf. installiert.</para>
+</sect2>
+<sect2 id="gra_ob">
+<title>graphische Oberfl&auml;chen (Windowmanager) </title>
+<sect3 id="gra_ob_gnome"><title>Gnome </title>
+<para>
+Da cuon mit den Gnomebibliotheken (Python-GTK) programmiert wird, passt es sich ohne Probleme in Gnome ein</para>
+</sect3>
+<sect3 id="gra_ob_kde"><title>Kde </title>
+<para>
+cuon l&auml;uft im Prinzip problemlos unter allen aktuellen KDE Versionen. Lediglich ein paar Kleinigkeiten kann man f&uuml;r das bessere (=angepasstere) Aussehen &auml;ndern:
+</para><itemizedlist>
+    <listitem><para>* gtk2-engines-gtk-qt (Debianpackage, unter anderen Distributionen sollte es &auml;hnlich hei&szlig;en). Damit bekommt man im Kontrollzentrum die M&ouml;glichkeit, Schriften und Design von GTK Programmen unter KDE gesondert einzustellen.</para></listitem>
+    <listitem><para>* Rechte Maustaste auf das cuon Fenster -> Erweitert -> spezielle Einstellungen f&uuml;r dieses Programm->Geometrie ->Gr&ouml;&szlig;e: Hier kann man seine Bildschirmgr&ouml;&szlig;e eingeben. Sehr vorteilhaft, weil cuon manchmal unter KDE aus dem "Rahmen" l&auml;uft. Damit erzwingt man dann eine Maximalgr&ouml;&szlig;e und cuon wird dazu verkleinert.</para></listitem> </itemizedlist>
+</sect3></sect2>
+ </sect1>
+<sect1 id="windows"><title>Windows </title>
+<sect2 id="w1e"><title>Einschr&auml;nkungen</title> 
+<para>
+Unter Windows l&auml;uft nur der Client. Es ist nicht geplant auch den Server zu portieren. Zudem funktionieren einige Funktionen nur eingeschr&auml;nkt:</para>
+<itemizedlist>
+    <listitem><para>* keinen Scannen von Dokumenten m&ouml;glich (L&ouml;sung: Umweg &uuml;ber normale Scansoftware)</para></listitem>
+   <listitem><para> * momentan kein automatisches Update m&ouml;glich (L&ouml;sung: tar und bunzip2 installieren)</para></listitem> </itemizedlist>
+</sect2>
+<sect2 id="w1d"><title>Downloadhilfen </title>
+<para>
+Um CUON unter Windows zum laufen zu bekommen m&uuml;ssen folgende Programme installiert werden:</para>
+ <itemizedlist><listitem><para>python2.4.4</para></listitem>
+ <listitem><para>pycairo-1.2.6-1.win32-py2.4.exe</para></listitem>
+ <listitem><para>pygobject-2.12.3-1.win32-py2.4.exe</para></listitem>
+ <listitem><para>pygtk-2.10.4-1.win32-py2.4.exe</para></listitem>
+ <listitem><para>gtk-2.10.7-win32-1.exe</para></listitem>
+ <listitem><para>PIL-1.1.6.win32-py2.4.exe </para></listitem>
+</itemizedlist>
+<para>
+Wahrscheinlich l&auml;uft cuon auch mit neueren Programmversionen, momentan ist es aber mit diesen Versionen getestet.</para>
+<para>
+Jetzt bitte auf der cuon Seite den einfachen Client laden und hier ein einfaches  Startscript downloaden(bitte nach c:\cuon\bin kopieren und anpassen).</para>
+</sect2>
+<sect2 id="w1al">
+<title>Allgemeine Tipps </title>
+<para>
+Folgende Tips ( nach ca. 20 Windows-Installationen ):</para>
+<itemizedlist>
+    <listitem><para>* Packe das cuon-Verzeichnis direkt nach c:\ also c:\cuon</para></listitem>
+    <listitem><para>* nicht nach "eigene Dateien", Python kommt nur schwer mit den Leerzeichen klar.</para></listitem>
+    <listitem><para>* Packe OpenOffice? nach einen Pfad ohne Leerzeichen, ansonsten in den Einstellungen mit "c:\...\" den Pfad angeben. Auch OO ist kompliziert mit Leerzeichen im Pfad.</para></listitem>
+    <listitem><para>* Zur Vereinfachung f&uuml;r die User bitte nicht vergessen ein Startbutton anzulegen, der die Batchdatei startcuon.bat ausf&uuml;hrt.</para></listitem> </itemizedlist></sect2>
+</sect1>
+
+</chapter>
+<chapter>
+<title>Troubleshooter</title>
+<sect1 id="trouble1">
+<title>Client db error </title>
+<para>
+Es kann vorkommen, das die cuonObjects mit einer falschen Version des db-Treibers gestartet wird und dier Client dann nicht startet. Abhilfe ist sehr einfach: suchen sie die Datei CuonObjects und l&ouml;schen sie diese. Sie befindet sich in der Regel unter Linux in $HOME/cuon oder unter Windows in c:\cuon. Danach C.U.O.N. Client neu starten und auf Werkzeuge --> erneuern gehen.</para>
+</sect1>
+</chapter>
+</part>
+
+<part><title>Benutzerhandbuch</title>
+<chapter>
+<title>Erste Schritte</title>
+<sect1 id="tb1"><title>Allgemeines</title>
+<para>Das C.U.O.N.-System sowie der Client pyCuon ist eine Auftragsbearbeitung, Warenwirtschaft und allgemeine Datenverwaltung. Der Name steht f&uuml;r:
+<emphasis>Common Universally Organized Network</emphasis>
+</para>
+
+<para>Haupts&auml;chlich ist es ein kaufm&auml;nnisches System. Au&szlig;er den &uuml;blichen Bereichen wie Adressen, Artikel, Rechnungen, Literatur, etc. sind auch Spezialmodule wie z.B. &Uuml;berwinterungen (f&uuml;r G&auml;rtnereien, die K&uuml;belpflanzen &uuml;berwintern) schon im produktiven Einsatz. Daneben schreitet die Entwicklung und Erweiterung der Module schnell voran, so dass C.U.O.N. in immer mehr Unternehmensbereichen eingesetzt werden kann .
+</para>
+<para>C.U.O.N. ist stark netzwerkorientiert, d.h. dass gleichzeitig mehrere Mitarbeiter im Intra- wie auch im Internet daran arbeiten k&ouml;nnen. Getestet ist C.U.O.N. im Einsatz von ca. 100 Mitarbeitern gleichzeitig. Allerdings l&auml;uft C.U.O.N. aber auch auf einem Einzelplatzrechner in kleineren Firmen.
+</para>
+<para>Parallel wird momentan ein Client entwickelt, der die mobile Datenerfassung schnell erm&ouml;glich soll (siehe [:Admin:Adminhandbuch -]>N800)
+Wer steckt hinter cuon? 
+</para>
+<para>Als Gr&uuml;nder und Hauptprogrammierer steht J&uuml;rgen Hamel von Cyrus Computer GmbH hinter cuon. Obwohl C.U.O.N. kostenlos ist (GPL v3 Lizenzierung) empfiehlt es sich sehr einen produktiven Einsatz nur in Verbindung mit kommerziellen Support von der <emphasis>Fa. Softconcept, B&uuml;nde, Tel. 05223 49700</emphasis> zu machen. Das h&auml;ngt u.a. auch mit den sehr schnellen Spr&uuml;ngen in der Entwicklung des Programmes zusammen. Zudem steht damit ein schneller, kompetenter Telefonsupport zur Verf&uuml;gung, der &Auml;nderungen oder auftretenden Fehler flott bereinigt.</para></sect1>
+<sect1 id="tb2"><title>Erster Kontakt </title>
+
+<sect2 id="tb3"><title>Starten von C.U.O.N.</title> 
+<sect3 id="tb4"><title>Vom Men&uuml; aus </title>
+<para>
+Das einfachste ist die entsprechenden Eintr&auml;ge im Men&uuml; zu benutzen, z.B. unter Ubuntu im Ordner "B&uuml;ro" den Cuon client starten. Bei der Erst-Installation wird auch der Konfigurations-Wizard aufgerufen, dort einfach nur das User Verzeichnis &auml;ndern und den cuon-Server eintragen. Den Eintrag f&uuml;r die deutsche &Uuml;bersetzung im Idealfall einfach mit "/locale" belassen. Der Konfigurations-Wizard ist ebenfalls einfach vom Men&uuml; "System"-->"Einstellungen"-_>"Cuon client Konfiguration" aufzurufen, wenn sie &Auml;nderungen vornehmen wollen.</para>
+</sect3>
+<sect3 id="tb5"><title>Von der Kommandozeile aus</title> 
+<para>
+Der Aufruf des Clients erfolgt folgenderma&szlig;en: /usr/bin/python Cuon.py [Server] [Type] [Debug] [Locale] [Cuonverzeichnis] [GUI] Also wird im Normalfall einfach nur /usr/bin/python Cuon.py aufgerufen, da die Vorgaben durch die Umgebungsvariablen bzw. durch das Programm gesetzt wurden. Die Parameter haben folgendes Format: 
+</para>
+<itemizedlist>
+	 <listitem><para>Server  Protokoll://host:Port/Pfad z.B.  http://84.244.7.139:7080</para></listitem>
+
+    <listitem><para> Type client server</para></listitem>
+     <listitem><para>Debug NO YES</para></listitem>
+     <listitem><para>Locale NO "Path to locale"</para></listitem>
+    <listitem><para> Cuonverzeichnis c:\cuon oder /home/userx/cuon</para></listitem>
+     <listitem><para>GUI maemo oder standard1 oder eigener Name</para></listitem> </itemizedlist>
+</sect3>
+</sect2>
+
+<sect2 id="tb6"><title>
+Anmelden </title>
+<para>
+Nachdem Start f&uuml;hrt Mann/Frau die Anmeldeprozedur aus: &raquo;Verbinden/Anmelden&raquo; und das Login-Fenster &ouml;ffnet sich. Nach einem erfolgreichen Anmelden ist der Username und der aktuelle Server im Hauptfenster zu sehen. Jetzt stehen diverse Men&uuml;punkte zur Verf&uuml;gung. Au&szlig;erdem &ouml;ffnet sich das Mandantenfenster. Hier ist es zwingend erforderlich, einen Mandanten auszuw&auml;hlen. Ist noch keiner vorhanden, MUSS hier ein Mandant angelegt werden. Siehe auch bei Mandanten.
+wichtige Einstellungen </para></sect2>
+<sect2 id="tb7">
+<title>Tastenk&uuml;rzel </title>
+<para>
+In der Regel sind folgende Tastenk&uuml;rzel aktiv:</para>
+<sect3 id="tb8"><title>Hauptfenster 
+</title>
+<para>Im Hauptfenster steht hinter vielen Men&uuml;-Eintr&auml;gen eine Steuerung-Buchstaben Kombination, z.B. Strg-l f&uuml;r Login, das hei&szlig;t also, das mit dr&uuml;cken der Tasten Strg und l sich das Login-Fenster sich &ouml;ffnet.</para>
+<itemizedlist><listitem><para>Strg + l	Login</para></listitem>
+<listitem><para>Strg + q	Beenden des Programmes	</para></listitem>
+
+
+<listitem><para>Strg + a	&Ouml;ffnen des Adressfensters</para></listitem>
+<listitem><para>Strg + i	&Ouml;ffnen des Artikelfensters</para></listitem>
+<listitem><para>Strg + x	&Ouml;ffnen des Bankfensters</para></listitem>
+<listitem><para>Strg + s	&Ouml;ffnen des Personalfensters</para></listitem>
+<listitem><para>Strg + v	&Ouml;ffnen des Literaturfensters	</para></listitem>
+
+
+<listitem><para>Strg + p	&Ouml;ffnen des Angebotsfensters</para></listitem>
+<listitem><para>Strg + o	&Ouml;ffnen des Auftragsfensters</para></listitem>
+<listitem><para>Strg + k	&Ouml;ffnen des Lagerfensters</para></listitem>
+<listitem><para>Strg + d	&Ouml;ffnen des DMS-Fensters</para></listitem></itemizedlist>
+</sect3>
+<sect3 id="tb9">
+<title>Andere Fenster </title>
+<para>
+Dies gilt zum Schlie&szlig;en eines Fensters ( Nicht des Hauptfensters)</para>
+<itemizedlist><listitem><para>Strg + z	Schlie&szlig;en des aktuellen Fensters</para></listitem></itemizedlist>
+<para>Bedienung der Tabs </para>
+<itemizedlist><listitem><para>Strg + F1	&ouml;ffne erstes Tab</para></listitem>
+<listitem><para>Strg + F2	&ouml;ffne zweites Tab</para></listitem>
+<listitem><para>Strg + Fxx	&ouml;ffne xxx Tab</para></listitem>
+
+</itemizedlist>
+<para>Aktionen f&uuml;r den Datensatz </para>
+<itemizedlist><listitem><para>Strg + e	Bearbeite den Datensatz</para></listitem>
+<listitem><para>Strg + s	Sichere den Datensatz</para></listitem>
+<listitem><para>Strg + n	Neuer Datensatz</para></listitem>
+<listitem><para>Strg + d	L&ouml;sche den Datensatz ohne R&uuml;ckfrage</para></listitem>
+</itemizedlist>
+
+</sect3>
+<sect3 id="tb10"><title>Fenster Operationen</title>
+<para>In den meisten Fenstern ist eine Liste der Datens&auml;tze zu sehen. Diese Liste besitzt oben sogenannte Kopfzeilen. Sie k&ouml;nnen die Kopfzeilen anklicken, um die Sortierreihenfolgen zu &auml;ndern. Also z.B. in der Adressverwaltung die Eintr&auml;ge nach der Stra&szlig;e zu sortieren anstatt nach dem Namen. In den Kopfzeilen sind kleine Pfleile, die hoch bzw. runter zeigen, damit ist die Sortierreihenfolge dargestellt.
+</para>
+</sect3>
+</sect2>
+</sect1>
+</chapter>
+<chapter><title>Benutzer Konfiguration </title>
+<sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile f&uuml;r seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten f&uuml;r den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>
+
+<sect2 id="user_config_1"><title>Profile</title>
+<para>Hier werden die grundlegenden Einstellung f&uuml;r das Benutzer Profil eingestellt. F&uuml;r Deutschland sollte als SQL-Encoding utf-8 und als sprache de eingestellt werden. </para>
+<figure id="up1">
+<title>Benutzer Einstellungen Profile</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences1.png"/>
+</figure>
+
+<para>Mit Zeitvorgabe kann man +/- Stunden eingeben, wenn der Cuon-Server in einer anderen Zeitzone ist. Evtl. auch Sommer/Winterzeit einstellen, wenn der Server dies nicht unterst&uuml;tzt oder anders schaltet.Als Beispiel steht der Server in den USA, mu&szlig; ein deutscher Client diese Vorgaben anpassen. </para>
+<para>Der Schalter <emphasis>check imap Folder</emphasis> schaltet das automatische &Uuml;bernehmen der Emails in das DMS ein.</para>
+<para>Mit dem Schalter <emphasis>maximize window</emphasis> werden die Hauptfenster im maximalen Modus gestartet, andernfalls in der Original Gr&ouml;&szlig;e</para>
+</sect2>
+<sect2 id="user_config_2"><title>Communication</title>
+<para>Hier werden die zu benutzenden Programme f&uuml;r Email, Chat. Facebook usw.  festgelegt.</para>
+<figure id="up2">
+<title>Benutzer Einstellungen Communication</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences2.png"/>
+</figure>
+
+</sect2>
+
+
+<sect2 id="user_config_3"><title>Ausf&uuml;hren</title>
+<para>Programme und Pfade f&uuml;r auszuf&uuml;hrenden Programme, z.B. um Rechnungen direkt auf einen Drucker zu leiten</para>
+<figure id="up3">
+<title>Benutzer Einstellungen Ausf&uuml;hren</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences3.png"/>
+</figure>
+
+
+</sect2>
+<sect2 id="user_config_4"><title>Email</title>
+<para>Bitte tragen Sie hier ihre Email Einstellungen ein, und zwar jeweils f&uuml;r den Imap-Server und dem SMTP-Server ( wichtig f&uuml;rs DMS) </para>
+<figure id="up4">
+<title>Benutzer Einstellungen E-Mail</title>
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences4.png"/>
+</figure>
+
+</sect2>
+
+
+
+
+
+<sect2 id="user_config_5"><title>Scanner</title>
+<para>Tragen sie hier die Werte f&uuml;r Ihren Scanner ein, er sollte automatisch erkannt werden. </para>
+
+<figure id="up5">
+<title>Benutzer Einstellungen Scanner</title>
+
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences5.png"/>
+</figure>
+
+</sect2>
+
+<sect2 id="user_config_6"><title></title>
+<para>Dies ist eine der wichtigsten Einstellungen. Tragen sie bitte hier ( ggf. mit Pfad) die Programme ein, die f&uuml;r die entsprechende Datei genutzt werden soll</para>
+
+<figure id="up6">
+<title>Benutzer Einstellungen DMS</title>
+
+<graphic align="center" scale="50" fileref="images/screenshots/iPreferences6.png"/>
+</figure>
+
+</sect2>
+</sect1>
+
+
+
+</chapter>
+<chapter>
+<title>Stammdaten</title>
+<sect1 id="s1"><title>Mandanten</title>
+<para>Hier werden die Mandanten in C.U.O.N. gepflegt. Mindestens ein Mandant mu&szlig; vorhanden sein. Ist beim ersten Start kein Mandant vorhanden, mu&szlig; ein Mandant angelegt werden und dieser ausgew&auml;hlt werden, bevor Mann/Frau weiterkommt . Jeder Mandant hat seinen eigenen Bereich(Eigene Rechnungsnummern, Kunden, etc.) und ist von den anderen Mandanten isoliert.
+</para>
+<figure id="si1">
+<title>Mandantenfenster</title>
+<graphic align="center" scale="50" fileref="images/screenshots/Mandanten.png"/>
+</figure>
+
+<para>Man kann damit sehr sch&ouml;n mehrere Firmen auf einem Server verwalten.</para>
+
+<para>In der Datei /etc/cuon/clients.ini wird festgelegt, welcher User, welchen Mandant sehen und ausw&auml;hlen kann.</para>
+
+<para><emphasis>Achtung: Momentan lassen sich angelegte Mandanten nicht mehr l&ouml;schen (das muss per Hand auf Datenbankebene gemacht werden).</emphasis></para>
+
+
+</sect1>
+<sect1><title>Adressverwaltung</title>
+<para>
+Die Adressmaske enth&auml;lt die &uuml;blichen Angaben wie PLZ, Ort, Telefon-Nummern, etc. Hinzu kommen Kennfelder f&uuml;r Branche, Bankverbindung, Debitoren/Kreditoren-Nummern, Webshop-Abgleich, Steuernummern und Preisgruppen. Zu jeder Adresse k&ouml;nnen beliebig viele Gespr&auml;chspartner und evtl. Termine mit den jew. Gespr&auml;chspartnern hinterlegt werden. Auch dort k&ouml;nnen die &uuml;blichen Werte erfa&szlig;t werden. Der Listendruck wird, wie jeder Druck in pyCuon, &uuml;ber das PDF-Format realisiert. Eine Schnittstelle zum DMS erm&ouml;glicht es, umfassende, unterschiedlichste Information zu jeder Adresse zu hinterlegen.</para>
+<sect2 id="s2"><title>Reiter Adressen</title>
+<para>Der Button "Brief" ist f&uuml;r die Erzeugung eines Briefes zust&auml;ndig. (siehe auch Briefe mit Office Programmen ) &Uuml;ber den Button Kontakt erreichen Sie die Kontaktverwaltung
+</para>
+<figure id="si2">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress01.png"/>
+</figure>
+
+<para>
+Die meisten Funktionen lassen sich &uuml;ber den Reiter "Adressen" nutzen, lediglich f&uuml;r Termine ist der Eintrag eines Gespr&auml;chpartners n&ouml;tig. Dieser l&auml;sst sich schnell mit dem Button "erzeuge Gespr&auml;chspartner" im Reiter "Gespr&auml;chspartner" erzeugen.
+</para>
+<itemizedlist>
+     <listitem><para>Button Zusatzinformationen: Damit lassen sich Schriftst&uuml;cke, Bilder oder eingescannte Dokumente einer Adresse zuordnen. Er f&uuml;hrt direkt zum [:Dokument Management System: Dokument-Mangement-System (DMS)].</para></listitem>
+     <listitem><para>Button Brief: Auch hier geht der Link direkt in das DMS. Allerdings werden alle Briefvorlagen ([:Briefe mit Office Programmen:Bitte im Benutzerhandbuch] nachlesen, wie diese angelegt werden) ge&ouml;ffnet. Der dortige Button "View" startet Openoffice (oder auch Koffice) mit den Adressdaten und der gew&auml;hlten Vorlage. Im Officeprogramm das Dokument einfach speichern und dann "Letztes Dokument sichern" dr&uuml;cken und schon ist der geschriebene Brief auch wieder als Dokument in cuon hinterlegt (wird dann unter dem Button Zusatzinformationen (s.o.) angezeigt).</para></listitem>
+     <listitem><para>Button Kontak: Das ist eine wichtige Funktion f&uuml;r z.B. Telefonmarketing. Hiermit lassen sich schnell Terminerinnerungen f&uuml;r jede Adresse einstellen (die dann als Pop-up Fenster auf dem Bildschirm erscheinen). Z.B. R&uuml;ckruf in 5 Minuten, Telefonat heute um 15 Uhr o.&auml;. ( siehe unter Kontaktmanagement ?)</para></listitem>
+     <listitem><para>Buttons "w&auml;hle Kontakter", "w&auml;hle Representant", "w&auml;hle Berater" greifen auf die Mitarbeiterdatenbank zu und weisen der jeweiligen Funktion einen Mitarbeiter zu.</para></listitem>
+     <listitem><para>Button Send Email: Schnell und einfach eine Email an die Adresse verschicken.</para></listitem>
+
+     <listitem><para>Feld Newsletter: Hier kann man beliebig viele Newsletterverteilerzugeh&ouml;rigkeiten eintragen. Wir verwenden bei uns immer 3 verschiedene Vors&auml;tze (m=Newsletter per Mail, b=Newsletter per Brief, f=Newsletter per Fax). Die verschiedenen Newsletter m&uuml;ssen per Komma getrennt werden, also z.B. "b-allgemeineInfos,m-spontaneAktionen".</para></listitem>
+     <listitem><para>Feld info: Hier k&ouml;nnen allgemeine Infos eingegeben werden, die oben in der Listenansicht erscheinen. Dadurch hat man eine schnelle &Uuml;bersicht. </para></listitem>
+</itemizedlist>
+</sect2>
+
+ <sect2 id="s4"> <title>Reiter Bank </title>
+<para>
+Hier kann man eine Kontoverbindung f&uuml;r die Adresse angeben. Wichtig: Damit das gelingt muss f&uuml;r die Bank ein Adressdatensatz erstellt werden. Im Prinzip langt ein einfacher Datensatz mit dem Banknamen (mehr ist nicht n&ouml;tig).</para><figure id="si3">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress02.png"/>
+</figure>
+</sect2>
+<sect2 id="s5">
+<title> Reiter Verschiedenes </title>
+<para>
+Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde f&auml;llt und ob er Mwst. pflichtig ist.</para>
+<para>Wichtig sind hier vor allen dingen die Preisgruppen, die mit den 4 Preisen der Artikleverwaltung korespondieren. Wenn in den jeweiligen Modulen ( Auftrag, Gr&auml;ber, usw. ) keine andere Preisgruppe gew&auml;hlt wird, wird diese Preisgruppe hier genommen.</para>
+<figure id="si4">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress03.png"/>
+</figure>
+
+</sect2>
+
+<sect2 id="s6"><title> Reiter Gespr&auml;chspartner </title>
+<para>
+Zu jeden Kunden k&ouml;nnen beliebig viele Gespr&auml;chspartner hinterlegt werden. Die Buttons Brief und ext. Info gelten hier ebenso wie bei der Adresse. &Uuml;ber den Button E-Mail kann dem Adressaten schnell eine mail &uuml;ber das interne mailprogramm zugeschickt werden.</para>
+<figure id="si5">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress04.png"/>
+</figure>
+
+
+
+</sect2>
+
+
+<sect2 id="s7"><title>Reiter Termine</title> 
+<para>
+<emphasis>Wichtig: Damit ein Termin eingetragen werden kann, muss ein dazugeh&ouml;riger Gespr&auml;chpartner markiert sein.</emphasis></para>
+<figure id="si6">
+<title></title>
+<graphic align="center" scale="35" fileref="images/screenshots/iAddress05.png"/>
+</figure>
+
+<para>
+Die meisten anderen Felder sind wieder selbsterkl&auml;rend. Mit "search Staff" l&auml;sst sich ein Mitarbeiter dem Termin zuweisen. Die Termine erscheinen alle im Startfenster (Einstellung in der user.cfg beachten!!) von cuon (kann ein paar Sekunden dauern).
+</para>
+
+
+<itemizedlist>
+<title>Das Statusfeld:</title>
+
+    <listitem><para> 0-99 unbest&auml;tigter Termin</para></listitem>
+    <listitem><para> 100-800 best&auml;tigter Termin</para></listitem>
+    <listitem><para> 801-998 Abgebrochene Termine</para></listitem>
+    <listitem><para> 999 gel&ouml;schter Termin (geht auch im Men&uuml; mit "set ready") </para></listitem>
+</itemizedlist>
+<para>Die Nummer h&auml;ngen vom jeweiligen Client ab, mit dem man den, &uuml;ber iCal exportierten, Termin ansehen will.Man kann die Termine mit jedem x-beliebigen Kalenderprogramm (Kontact, Evolution, Palm etc.) ansehen (nur lesen, kein schreiben!). Dazu ist eine Webschnittstelle eingerichtet mit der man einfach &uuml;ber die URL:
+</para>
+   <para>  http://servername:7081/iCal/iCal_cuonbenutzername</para>
+
+<para>
+die Daten als iCal Daten importieren kann.
+</para>
+<para>Das rechte Kalenderfeld dient dem Ansehen / Checken der vorhandenen Termine:
+</para>
+<para>-> search Staff (Mitarbeiter ausw&auml;hlen) ->im rechten Kalenderfeld Termin anw&auml;hlen -> links davon werden im wei&szlig;en Eingabefeld die Termine des gew&auml;hlten Mitarbeiters f&uuml;r diesen Tag angezeigt
+</para>
+<para><emphasis>Anmerkung: Bei alten C.U.O.N Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</emphasis></para>
+</sect2>
+</sect1>
+</chapter>
+<chapter>
+<title>Document Management System ( DMS) </title>
+<sect1 id="dms1"><title>Einleitung</title> 
+<para>
+Dies ist ein Kernst&uuml;ck des Systems. Neben den &uuml;blichen Einscannen von Dokumenten k&ouml;nnen auch OpenOffice?-Dokumente, PDF sowie Audio-Dateien, Bilder und Videodaten hinterlegt werden. Die anderen Module, z.B. Artikelverwaltung, lagern hier Ihre Daten in div. Formaten ab. Der Scanner wird &uuml;ber die Python-Image Libs eingebunden. Eine umfangreiche Suchfunktion erm&ouml;glicht das Finden in gro&szlig;en Datenbest&auml;nden. Diese Formate werden unterst&uuml;tzt:</para>
+<itemizedlist>
+   <listitem><para>  OpenOffice?-Dokumente (Textverarbeitung, Kalkulation, Zeichnung, Pr&auml;sentation )</para></listitem>
+   <listitem><para>  Bilder in jpg, png, tiff und viele andere Formate</para></listitem>
+   <listitem><para>  Musik in mp3, ogg oder wav-Format</para></listitem>
+   <listitem><para>  Pdf-Dokumente</para></listitem>
+   <listitem><para>  Tex und LaTex? Dokumente</para></listitem>
+   <listitem><para>  Flowchart wie z.B. dia</para></listitem>
+   <listitem><para>  Googleearth</para></listitem>
+   <listitem><para>  Internet-Links</para></listitem>
+   <listitem><para>  Html-Dokumente </para></listitem>
+
+</itemizedlist> 
+<para>Zur vollen Unterst&uuml;tzung der Textindizierung sollten auf dem Server diese Programme installiert sein:</para>
+<itemizedlist>
+   	<listitem><para> libots </para></listitem>
+	<listitem><para> pstotext  </para></listitem>
+
+</itemizedlist> 
+
+</sect1>
+<sect1 id="dms2"><title>Handhabung des DMS </title>
+<sect2 id="dms2_1"><title>Neues dokument einscannen </title>
+<para>
+Men&uuml;--> Dokument --> Neu</para>
+<para>
+Title eingeben, sonstiges eingeben, Button scannen dr&uuml;cken, abwarten bis alles eingescannt ist, dann Men&uuml;-->Dokument --> sichern
+</para>
+<para>Wirklich einfach.</para>
+</sect2>
+<sect2 id="dms2_2"><title>Dokument importieren</title> 
+<para>
+Sie wollen ein OpenOffice? Dokument ( oder ein Bild, oder sonstiges) ins DMS bringen, simple:
+</para>
+<para>Men&uuml;--> Dokument --> Neu Title eingeben, sonstiges eingeben, Dateiauswahl-Button dr&uuml;cken, Datei ausw&auml;hlen, dann Button import dr&uuml;cken, dann Men&uuml;-->Dokument --> sichern</para></sect2>
+<sect2 id="dms3">
+<title>
+Beispiele </title>
+<para>
+Hier ein paar Beispiele aus der Vielzahl der Nutzungsm&ouml;glichkeiten:</para>
+<itemizedlist>
+    <listitem><para>* Sie sind au&szlig;erhalb Ihrer Fa. ( mit dem Laptop oder zu Hause ) und m&ouml;chten sich ein bestimmtes Dokument anschauen. Kein Problem - cuon &ouml;ffnet es automatisch in der Anwendung Ihrer Wahl.</para></listitem>
+    <listitem><para>* Zu einem Artikel hat ein Hersteller Ihnen eine PDF-Datei als Beschreibung zugesandt - in der Artikelverwaltung von cuon diese Datei ins DMS schicken - alle berechtigten Benutzer haben Einsicht.</para></listitem>
+   <listitem><para> * In der Personalverwaltung k&ouml;nnen Sie zu jeden Mitarbeiter Fotos, Kopien des F&uuml;hrerscheins, zus&auml;tzliche Briefe, Dokumente, etc. hinterlegen.</para></listitem>
+   <listitem><para> * In der Adressverwaltung hinterlegen Sie einfach Dokumente, Angebote oder z.B. eine Googleearth-Datei. Ein Klick und Sie haben den &Uuml;berblick.</para></listitem> </itemizedlist>
+</sect2>
+</sect1>
+<sect1 id="dms4">
+<title>Schriftverkehr </title>
+<para>
+Der gesamte Schriftverkehr kann &uuml;ber das DMS abgewickelt werden. Die passenden Vorlagen k&ouml;nnen nach dieser Beschreibung Openoffice / Koffice Vorlagen entsprechend erstellt werden[[BR] Beim Aufrufen der Brief-funktion in der Adressverwaltung wird ebenfalls die E-Mail-Adresse in die Zwischen-Ablage kopiert, so das dies Schreiben auch einfach per Email versendet werden kann ( ab Version 10.7-21).
+Statistik </para>
+<para>
+Auch die Statistiken k&ouml;nnen f&uuml;r jedes unternehmen separat erstellt werden. Hier die anleitung dazu Eigene Statistiken erstellen, anpassen .
+Tipps und Tricks </para>
+<itemizedlist>
+<listitem><para>
+    * Die verwendeten Pythonmodule laden bei Bildern (d.h. auch bei gescannten Seiten) leider immer den Bildbetrachter xv. Wenn dieser nicht installiert sein sollte (z.B. KDE System o.&auml;.) dann kann man als Benutzer root einfach einen Link auf den gew&uuml;nschten Bildbetrachter setzen. Wir haben das z.B. so umgesetzt: "ln -s /usr/bin/konqueror /usr/bin/xv".</para></listitem>
+    <listitem><para>* Anscheinend hat das Python-Scanner-Modul starke Probleme mit Epson Scannern. Es kann passieren, dass nach dem zweiten oder dritten Scanvorgang cuon komplett abst&uuml;rzt. Eine L&ouml;sung des Problems haben wir noch nicht gefunden. Einzige Abhilfe: Zwischen jedem Scannen das Programm "scanimage --resolution 50" starten (macht einen schnellen Vorschauscan und nachher tut cuon wieder).</para></listitem>
+   <listitem><para> * &Uuml;ber Men&uuml;->Arbeit->DMS kann man ALLE vorhandenen Dateien sehen. Wenn man diese aber an dieser Stelle ver&auml;ndert, verliert man momentan noch die Zuordnung z.B. zu einem Adressdatensatz!! Daher hier: Vorsichtig editieren! </para></listitem>
+</itemizedlist>
+</sect1>
+<sect1 id="dms_imap">
+<title>Email und DMS</title>
+<para>Empfangene und versendete Emails k&ouml;nnen automatisch den entsprechenden Adressen zugeordnet werden. Dies geschieht &uuml;ber die Einrichtung des OrdnerS "AUTOMATIC_CUON" in dem Imap Postfach des Users. Dann wird in den Benutzereinstellungen die Checkbox "Check Imap Folder" angekreuzt. Von nun an wird jede 1/2 Stunde dieser Ordner durchsucht und die Emails eingeordnet </para>
+<para>Jede Email wird anhand der <emphasis>Von</emphasis> bzw <emphasis>An</emphasis> Email Adresse der entsprechenden Adresse im <link linkend='dms1'><emphasis>DMS</emphasis></link> zugeordnet und dort importiert. Gleiches geschieht mit Anh&auml;ngen, sofern Sie erkannt werden.Normalerweise werden Bilder, Office Dokumente, PDF usw. richtig erkannt.</para>
+<sect2 id="dms_imap_normal"><title>Normale Emails</title>
+<para>Sie k&ouml;nnen einfach eine Email von einer CUON Adresse ( oder an eine Adresse) in den AUTOMATIC_CUON Ordner reinkopieren oder Sie stellen in Ihren Email-Program einen Filter ein, der bestimmete Emails dahin kopiert. Dann wird die Mail ins DMS einsortiert. Ein weiterer Weg ist es, wenn die email-Adresse des Adressaten nicht in CUON gespeichert ist, dies &uuml;ber die Begriffe <emphasis>AUTOMATIC_CUON ADDRESS ID:</emphasis> bzw. <emphasis>AUTOMATIC_CUON PARTNER ID:</emphasis>, gefolgt von der entsprechenden ID,  zus&auml;tzlich in der Betreffzeile einzuf&uuml;gen, und dann in den Ordner AUTOMATIC_CUON reinkopieren</para>
+</sect2>
+<sect2 id="dms_imap_newsletter"> <title>Email Newsletter</title>
+<para>Hier kann z.B. einfach eine BCC Adresse und/oder ein Filter im Email Programm eingesetzt werden, der auf den Ordner <emphasis>AUTOMATIC_CUON</emphasis> zeigt und dann wird entsprechend die Newsletter bei den Kunden ins  <link linkend='dms1'><emphasis>DMS</emphasis></link> eingeordnet.</para>
+</sect2>
+</sect1>
+</chapter>
+<chapter>
+<title>Newsletter</title>
+<para>Mit cuon k&ouml;nnen diverse Arten von Newslettern automatisiert versendet werden</para>
+<sect1 id="news1"><title>Newsletter Benutzung</title>
+<para></para>
+</sect1>
+
+<sect1 id="new_print"><title>Newsletter drucken</title>
+<para></para>
+</sect1>
+
+<sect1 id="news_email"><title>Newsletter per Email</title>
+<para>Die Platzhalter f&uuml;r die personaliesierte Email werden ebenfalls einfach &uuml;ber <emphasis>##</emphasis> und <emphasis>;;</emphasis> eingeschlossen</para>
+<para>Platzhalter f&uuml;r Email</para>
+
+<para>
+<table id="tab2_email_news">
+  <title>Platzhalter personalisierte Email </title>
+  <tgroup cols="2">
+   <thead>
+      <row>
+         <entry>Beschreibung</entry>
+         <entry>Platzhalter</entry>
+      </row>
+   </thead>
+    <tbody>
+      <row>
+         <entry>Anrede</entry>
+         <entry>address</entry>
+      </row>
+      <row>
+         <entry>Nachname</entry>
+         <entry>lastname</entry>
+      </row>
+      <row>
+         <entry>Nachname 2</entry>
+         <entry>lastname2</entry>
+      </row>
+      <row>
+         <entry>Vorname</entry>
+         <entry>firstname</entry>
+      </row>
+      <row>
+         <entry>Handynummer</entry>
+         <entry>phone_handy</entry>
+      </row>
+	  <row>
+		<entry>Stra&szlig;e</entry>
+		<entry>street</entry>
+	  </row>
+	  <row>
+		<entry>Postleitzahl</entry>
+		<entry>zip</entry>
+	  </row>
+	  <row>
+		<entry>Stadt</entry>
+		<entry>city</entry>
+	  </row>
+	  <row>
+		<entry>Briefanrede</entry>
+		<entry>letter_address</entry>
+	  </row>
+	  <row>
+		<entry>Branche</entry>
+		<entry>misc_line</entry>
+	  </row>
+	  <row>
+		<entry>Mwst-ID</entry>
+		<entry>misc_taxnumber</entry>
+	  </row>
+	  <row>
+		<entry>Mwst berechnen</entry>
+		<entry>misc_to_calc_tax</entry>
+	  </row>
+	  <row>
+		<entry>Preisgruppe</entry>
+		<entry>misc_price_group</entry>
+	  </row>
+	  <row>
+		<entry>Adressnummer</entry>
+		<entry>misc_address_number</entry>
+	  </row>
+	  <row>
+		<entry>Adresse ist im Webshop</entry>
+		<entry>misc_is_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Adresse mit Webshop abgleichen</entry>
+		<entry>misc_update_from_webshop</entry>
+	  </row>
+	  <row>
+		<entry>Zahlungsbedinguen-ID</entry>
+		<entry>misc_top_id</entry>
+	  </row>
+	  <row>
+		<entry>Gr&uuml;ndungsdatum</entry>
+		<entry>misc_date_of_launch</entry>
+	  </row>
+	  <row>
+		<entry>Rechtsform</entry>
+		<entry>misc_legal_form</entry>
+	  </row>
+	  <row>
+		<entry>Umsatz</entry>
+		<entry>misc_turnover</entry>
+	  </row>
+	  <row>
+		<entry>Mitarbeiteranzahl</entry>
+		<entry>misc_count_of_employees</entry>
+	  </row>
+	  <row>
+		<entry>Handel</entry>
+		<entry>misc_trade</entry>
+	  </row>
+	  <row>
+		<entry>Typ</entry>
+		<entry>misc_cb_fashion</entry>
+	  </row>
+    </tbody>
+  </tgroup>
+</table>
+
+
+
+</para>
+</sect1>
+</chapter>
+</part>
+
+<part><title>Umfangreiche Beispiele</title>
+<chapter> <title>Adressen- und Terminpflege </title>
+<sect1 id="ub1"><title>Voraussetzungen </title>
+<para>
+Nach dem Start von CUON und dem Anmelden sowie der Auswahl des Mandanten w&auml;hlen wir im Men&uuml; Stammdaten den Eintrag Adressverwaltung aus. Es &ouml;ffnet sich das Adressfenster mit den ersten Adressen. Nun k&ouml;nnen wir als erstes eine Auswahl treffen, also z.B. alle Adressen, die mit dem Buchstaben a beginnen und in dem Postleitzahlbereich 33445 sind.
+Dazu geben wir bei Nachname folgende Kombination ein:
+</para>
+   <example role="codelisting" id="regaus">
+<title>Regul&auml;rer ausdruck</title>
+<programlisting><![CDATA[
+ #~*'^a.*' (Lange Form) oder ^a ( Kurzform) und bei der Postleitzahl 33445.
+]]></programlisting>
+</example>
+
+
+<para>Dann einfach die Eingabetaste bet&auml;tigen oder den Button Suchen anklicken. ( N&auml;here Hinweise zu regul&auml;ren Suchbegriffen bitte [:regul&auml;ren_Ausdr&uuml;cken: hier nachschlagen]. Die gew&uuml;nschten Adressen erscheinen in der Listenauswahl. Die gew&uuml;nschte Adresse anklicken und alle relevanten Daten ( Adresse, Telefonnummer ) sind im unteren Detailbereich sichtbar. Jetzt kann der Teilnehmer angerufen werden.
+</para>
+<para>Es empfiehlt sich, die Adressverwaltung ein 2. mal zu &ouml;ffnen und auf eine andere Arbeitsfl&auml;che zu legen (LINUX, BSD only). Wenn ein Kunde anruft, kann man ihn dann schnell suchen. auch hierbei sind die regul&auml;ren Ausdr&uuml;cke von entscheidener Bedeutung. Als Beispiel:
+</para>
+<para>Der Kunde Bach+Kampert K&uuml;chen-Traum ruft an. Jetzt lange suchen, wie der Kunde geschrieben wird,also mit + oder mit und ist nicht nur ineffektiv, sondern ver&auml;rgert auch durch die lange Zeitdauer den Kunden. Also empfiehlt es sich, einfach bach.*k&uuml;chen( oder k&uuml;chen.*raum einzugeben und eine hohe Trefferquote wird erreicht. Der Punkt steht dabei f&uuml;r ein beliebiges Zeichen, der Stern f&uuml;r eine beliebige Menge, zusammen also <emphasis>irgendwas dazwischen</emphasis>.
+</para>
+<para>Benachrichtigung der Reps: Wenn der Rep keine PDF-Datei haben m&ouml;chte, k&ouml;nnen wir ihm auch die Email als Microsoft-Word Dokument schicken.</para></sect1>
+<sect1 id="ubk"><title>Anleitung f&uuml;r Kontakter </title>
+<sect2 id="ubk1"><title>Erstellen eines neuen Kontakts (Erinnerung) </title>
+
+<itemizedlist>
+    <listitem><para> In der oberen Symbolleiste das Symbol Kontakt w&auml;hlen, so dass sich eine entsprechendes Fenster &ouml;ffnet</para></listitem>
+          <listitem><para> Klicken auf Kontakt und Neu.</para></listitem>
+         <listitem><para>  Auswahl des Datums durch Doppelklick in der Monats&uuml;bersicht (nicht von Hand in das Feld eintragen!)</para></listitem>
+          <listitem><para> Uhrzeit aus dem Drop-Down-Men&uuml; ausw&auml;hlen</para></listitem>
+          <listitem><para> Klicken auf Kontakt und Sichern.</para></listitem>
+         <listitem><para>  Das Fenster durch Klicken des X oben rechts beenden </para></listitem></itemizedlist>
+</sect2>
+<sect2 id="ubk2"><title>
+Bearbeiten eines Kontakts / Erinnerung </title>
+<para>
+Wird das Datum und die Uhrzeit erreicht, die bei der Erstellung ausgew&auml;hlt wurde, so &ouml;ffnet sich der Kontakt / die Erinnerung in einem neuen Fenster. Je nach Ergebnis des erneuten Anrufs sind verschiedene weitere Aktionen m&ouml;glich:
+</para>
+<para>
+<itemizedlist>
+  <listitem><para>* Wenn am selben Tag noch mal angerufen werden soll, so wird eine entsprechende Eintragung hinter sleeps for Minutes gemacht. Beispielsweise 180, wenn in drei Stunden wieder angerufen wird. Oder aber einfach die gew&uuml;nschte Uhrzeit eintragen, also z.B. 14:40. Danach klickt man auf Sleeps, so dass sich das Fenster schlie&szlig;t.</para></listitem>
+   <listitem><para> * Wenn erst zu einem sp&auml;teren Zeitpunkt wieder angerufen werden soll, wird der Kontakt / die Erinnerung ge&auml;ndert:</para> <itemizedlist><listitem><para> o Klicken auf Kontakt und Bearbeiten.</para></listitem>
+         <listitem><para> o Auswahl des Datums durch Doppelklick in der Monats&uuml;bersicht (nicht von Hand in das Feld eintragen!)</para></listitem>
+         <listitem><para> o Uhrzeit aus dem Drop-Down-Men&uuml; ausw&auml;hlen</para></listitem>
+         <listitem><para> o Klicken auf Kontakt und Sichern.</para></listitem>
+         <listitem><para> o Das Fenster durch Klicken des X oben rechts beenden </para></listitem></itemizedlist></listitem>
+    <listitem><para>* Wenn gar nicht wieder angerufen werden muss (bspw. weil kein Bedarf vorhanden ist oder weil ein Termin vereinbart wurde), klickt man auf Ready </para></listitem></itemizedlist></para>
+</sect2>
+<sect2 id="ubk3"><title>Erstellen eines Termins</title>
+<para>
+Hinweis: Auf der Registerkarte Adressen ist in dem Feld zu W&auml;hle Repr&auml;sentant keine Eintragung zu machen. Unter W&auml;hle Kontakter ist die eigene Person zu w&auml;hlen.</para>
+
+    <para>* Registerkarte Notizen</para>
+          <itemizedlist><listitem><para>o Klick auf Neu w&auml;hlen</para></listitem>
+         <listitem><para> o Klicken auf Notiz und Bearbeiten</para></listitem>
+         <listitem><para> o Im Drop-Down-Men&uuml; Kein Eintrag den Punkt Basisinformationen ausw&auml;hlen und dann auf f&uuml;ge Formular an klicken.</para></listitem>
+         <listitem><para> o Basisinformationen entsprechend ausf&uuml;llen.</para></listitem>
+          <listitem><para>o Mit dem Mauszeiger in die letzte Zeile wechseln und dann F&uuml;ge Datum/Name an w&auml;hlen.</para></listitem>
+         <listitem><para> o Darunter werden die entsprechenden Informationen f&uuml;r den Rep notiert.</para></listitem>
+         <listitem><para> o Danach wird die Eingabe &uuml;ber Notizen und Sichern abgeschlossen</para></listitem> </itemizedlist>
+
+    <para>* Registerkarte Gespr&auml;chspartner</para>
+          <itemizedlist><listitem><para>o erzeuge Gespr&auml;chspartner klicken, so dass Stra&szlig;e, PLZ etc eingetragen werden.</para></listitem>
+          <listitem><para>o Klicken auf Gespr&auml;chspartner und dann auf Bearbeiten</para></listitem>
+          <listitem><para>o Daten wie gew&uuml;nscht ab&auml;ndern. Beispielsweise muss i.d.R. eine Anrede (Herr oder Frau) eingetragen werden und im Feld Briefanrede ein r, sofern es sich um einen m&auml;nnlichen Ansprechpartner handelt. Au&szlig;erdem muss im Feld Nachname der Firmenname in den Nachnamen des Ansprechpartners ge&auml;ndert werden.</para></listitem>
+         <listitem><para> o Wenn alle Daten eingetragen/ge&auml;ndert sind, klickt man auf Gespr&auml;chspartner und dann Sichern.</para></listitem> </itemizedlist>
+<para>
+    * Registerkarte Termine
+          o Klicken auf Termine und Neu.
+          o Auswahl des Datums durch Doppelklick in der Monats&uuml;bersicht
+          o Bei Termin beginnt um die entsprechende Uhrzeit ausw&auml;hlen.
+          o Standardm&auml;&szlig;ig wird eine Dauer von 1 Stunde angenommen, so dass bei Termin endet um die entsprechende Uhrzeit auszuw&auml;hlen ist.
+          o Klicken auf Search Staff, um im neu ge&ouml;ffneten Fenster Personal den Repr&auml;sentanten durch Doppelklick auszuw&auml;hlen. Alternativ kann auch die Nr. des Repr&auml;sentanten eingetragen werden.
+          o Im Feld kurze Bem. die eigene Personalnr. Eintragen (bspw. K02)
+          o Nun sind die Eingaben zum Termin vollst&auml;ndig, so dass sie &uuml;ber Termine und Sichern abgeschlossen werden k&ouml;nnen. </para>
+</sect2>
+<sect2 id="ubk4"><title>&Auml;ndern eines Termins</title> 
+
+    <para>* Registerkarte Gespr&auml;chspartner</para>
+        <itemizedlist>  <listitem><para>o In der oberen Liste den Gepr&auml;chspartner durch Klicken ausw&auml;hlen</para></listitem> </itemizedlist>
+
+    <para>* Registerkarte Termine</para>
+         <itemizedlist><listitem><para> o In der oberen Liste den Termin durch Klicken ausw&auml;hlen</para></listitem>
+         <listitem><para> o Klicken auf Termine und Bearbeiten.</para></listitem>
+         <listitem><para> o Auswahl des neuen Datums durch Doppelklick in der Monats&uuml;bersicht</para></listitem>
+         <listitem><para> o Bei Termin beginnt um die entsprechende Uhrzeit ausw&auml;hlen.Standardm&auml;&szlig;ig wird eine Dauer von 1 Stunde angenommen, so dass bei Termin endet um die entsprechende Uhrzeit auszuw&auml;hlen ist.</para></listitem>
+         <listitem><para> o Bei Status eine 1 eintragen.</para></listitem>
+         <listitem><para> o Eingabe &uuml;ber Termine und Sichern abschlie&szlig;en </para></listitem>
+</itemizedlist>
+<para>Hinweis: F&uuml;r einen Zweitbesuch eines Repr&auml;sentanten wird nicht der erste Termin ge&auml;ndert, sondern ein neuer Termin erstellt.</para>
+
+
+</sect2>
+
+<sect2 id="ubk5">
+<title>L&ouml;schen eines Termins </title>
+<para>
+    * Registerkarte Gespr&auml;chspartner
+          o In der oberen Liste den Gepr&auml;chspartner durch Klicken ausw&auml;hlen 
+
+    * Registerkarte Termine
+          o In der oberen Liste den Termin durch Klicken ausw&auml;hlen
+          o Klicken auf Termine und Bearbeiten.
+          o Auswahl des neuen Datums (im Jahr 19XX) durch Doppelklick in der Monats&uuml;bersicht
+          o Bei Status 999 eintragen.
+          o Eingabe &uuml;ber Termine und Sichern abschlie&szlig;en
+          o Anderen Repr&auml;sentant einsetzen 
+
+Representanten &auml;ndern 
+
+    * Registerkarte Gespr&auml;chspartner
+          o In der oberen Liste den Gepr&auml;chspartner durch Klicken ausw&auml;hlen 
+
+    * Registerkarte Termine *In der oberen Liste den Termin durch Klicken ausw&auml;hlen
+          o Klicken auf Termine und Bearbeiten.
+          o Auswahl des neuen Datums (im Jahr 19XX) durch Doppelklick in der Monats&uuml;bersicht
+          o Termine und Sichern , um die Werte zu sichern
+          o Dann den neuen Repr&auml;sentanten ausw&auml;hlen und das neue Datum einsetzen
+          o Eingabe &uuml;ber Termine und Sichern abschlie&szlig;en 
+
+Termin in Warteposition 
+
+    * Registerkarte Gespr&auml;chspartner
+          o In der oberen Liste den Gepr&auml;chspartner durch Klicken ausw&auml;hlen 
+
+    * Registerkarte Termine *In der oberen Liste den Termin durch Klicken ausw&auml;hlen
+          o Klicken auf Termine und Bearbeiten.
+          o Auswahl des neuen Datums (im Jahr 2000) durch Doppelklick in der Monats&uuml;bersicht, Tag ist Januar und ID des Representanten
+          o Termine und Sichern , um die Werte zu sichern 
+
+Termin aus Warteposition reaktivieren 
+
+    * Registerkarte Gespr&auml;chspartner
+          o In der oberen Liste den Gepr&auml;chspartner durch Klicken ausw&auml;hlen 
+
+    * Registerkarte Termine *In der oberen Liste den Termin durch Klicken ausw&auml;hlen
+          o Klicken auf Termine und Bearbeiten.
+          o Auswahl des neuen Datums durch Doppelklick in der Monats&uuml;bersicht
+          o Termine und Sichern , um die Werte zu sichern 
+
+Eingabe von Kurz-Infos 
+
+Es ist m&ouml;glich zu jedem Datensatz eine kurze Info (z.B. kein Bedarf, bereits VU, etc) einzutragen, die in der Tabellenansicht sofort ersichtlich ist.
+
+    * Registerkarte Adressen
+          o Klicken auf Adressverwaltung und Bearbeiten
+          o Gew&uuml;nschten Text im Feld Info eintragen.
+          o Klicken auf Adressverwaltung und Speichern 
+
+Hinweise zur regul&auml;ren Suche 
+
+Bei der Telefonakquise werden mit Hilfe eines sog. regul&auml;ren Suchausdrucks s&auml;mtliche Anfangsbuchstaben der Datens&auml;tze eines Postleitzahlbereichs durchsucht. Dabei sollten nicht nur die Buchstaben A-Z verwendet werden, sondern auch die Umlaute &Auml;, &Ouml;, &Uuml; und die Ziffern 1-9. Bei sehr gro&szlig;en Postleitzahlbereichen kann es sein, dass nicht alle Datens&auml;tze zu einem Anfangsbuchstaben angezeigt werden. Dann einfach als Suchbegriff einen Bereich mit [ ] ausw&auml;hlen, also z.B. d[a-f], hier werden also die Adressen mit Anfagsbuchstaben von da bis df rausgesucht.
+Eingabe von Notizen zur Terminbest&auml;tigung 
+
+    * Registerkarte Notizen
+          o Feld Notizen Kontakter w&auml;hlen
+          o Klicken auf Notiz und Bearbeiten
+          o Mit dem Mauszeiger in die letzte Zeile wechseln und dann F&uuml;ge Datum/Name an w&auml;hlen.
+          o Kurzen Text zur Terminbest&auml;tigung eingeben.
+          o Klicken auf Notizen und Sichern. 
+
+Eintragen von weiteren Kalender-Informationen 
+
+Hiermit sind Urlaubstage, Feiertage oder sonstige Informationen gemeint, die in den Kalender des Repr&auml;sentanten eingetragen werden.
+
+    * Registerkarte Adressen
+          o Datensatz mit dem Nachnamen Firmennamen in der Stadt STADT suchen und in der Liste durch Klicken markieren. 
+
+    * Registerkarte Gespr&auml;chspartner *In der oberen Liste den einzigen Gespr&auml;chspartner durch Klicken ausw&auml;hlen 
+
+    * Registerkarte Termine
+          o Klicken auf Termine und Neu.
+          o Auswahl des Datums durch Doppelklick in der Monats&uuml;bersicht
+          o Bei Termin beginnt um und bei Termin endet um die entsprechenden Uhrzeiten ausw&auml;hlen.
+          o Klicken auf Search Staff, um im neu ge&ouml;ffneten Fenster Personal den Repr&auml;sentanten durch Doppelklick auszuw&auml;hlen. Alternativ kann auch die Nr. des Repr&auml;sentanten eingetragen werden.
+          o F&uuml;r Feiertage oder Ferien oder &auml;hnliches bitte folgenden Kalender abonnieren: Feiertage_2006-2010_DE.ics, F&uuml;r Schulferien z.B. Schulferien_2006-2007_NW.ics.
+          o Bei kurze Bem. Einen Hinweis eintragen (bspw. Urlaub o.&auml;.)
+          o Nun sind die Eingaben zum Termin vollst&auml;ndig, so dass sie &uuml;ber Termine und Sichern abgeschlossen werden k&ouml;nnen. 
+
+Beenden des Programms 
+
+Zum Beenden bitte immer Verbinden und Ende w&auml;hlen, anstatt das X oben rechts zu w&auml;hlen.
+Troubleshooting 
+Icon weg 
+
+Wenn im Gnome-Panel das Icon zum Starten von CUON nicht mehr angezeigt wird, kann auch folgenderma&szlig;en gestartet werden:
+
+    * Klicken Sie im Hauptmen&uuml; auf Orte und dann auf Pers&ouml;nlicher Ordner
+    * Klicken Sie auf den Ordner cuon
+    * Klicken Sie auf den Ordner bin
+    * Klicken Sie die Datei sc an und w&auml;hlen sie "Ausf&uuml;hren"
+    * CUON startet 
+
+
+Computer defekt 
+
+Wenn ein Computer/Terminal defekt ist:
+
+    * Gehen Sie zu einem anderen, freien Computer und loggen Sie sich ein.
+    * Sie haben Ihre ganz normale Arbeitsoberfl&auml;che und k&ouml;nnen normal arbeiten 
+
+
+Alle Kontakte doppelt 
+
+Sie haben Cuon doppelt gestartet. beenden sie alle CUON Programme und starten Sie neu.
+Adresse wird im Kontakt nicht angezeigt 
+
+Wahrscheinlich haben Sie die Adresse gel&ouml;scht. Kontrollieren Sie das bitte.</para></sect2>
+</sect1>
+</chapter>
+<chapter>
+<title>Sonstiges</title>
+<sect1 id="userfax"><title>Faxe senden</title>
+<para>Jeder user kann &uuml;ber einen vorhanden Faxserver seine Faxe verschicken. Dazu sollte z.B. im Openoffice ein Faxdrucker angelegt werden.
+</para>
+<para>Starten sie dazu das Programm spadmin, um einen neue Drucker hinzuzuf&uuml;gen, es befindet sich normaler weise hier:</para>
+<para>/usr/lib/openoffice/program/spadmin</para>
+ <para>In der Druckerverwaltung wird 'Neuer Drucker' und dann 'eine Faxl&ouml;sung anbinden' ausgew&auml;hlt und best&auml;tigt. Als N&auml;chstes wird der Standardtreiber gew&auml;hlt und als Kommando</para>
+
+<para>sendfax -n -d "(PHONE)" "(TMP)"</para>
+
+<para>eingeben. Zum Schlu&szlig; erh&auml;lt der Faxdrucker noch einen Namen. Damit ist der Faxdrucker eingerichtet und funktionsbereit.
+</para>
+<para>Jetzt k&ouml;nnen vom DMS aus z.B. Briefe oder Dokumente einfach per FAX verschickt werden</para>
+</sect1>
+
+
+</chapter>
+</part>
+
+</book>

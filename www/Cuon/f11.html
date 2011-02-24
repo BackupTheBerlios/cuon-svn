@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+> Vorwort </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE="C.U.O.N. Administration"
+HREF="p45.html"></HEAD
+><BODY
+CLASS="preface"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation und Benutzung </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p45.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="preface"
+><H1
+><A
+NAME="AEN11"
+></A
+> Vorwort </H1
+><P
+> C.U.O.N. ist ein Akronym für <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+> Common Universally Organized Network </I
+></SPAN
+>
+    </P
+><P
+> Im Jahr 2001 dachte ich mal über ein ERP System für Linux nach. Es sollte aber nicht nur eine simple Warenwirtschaft sein, sondern mehr. Als erstes probierte ich es mit c++, aber das war von der Produktivität nicht ausreichend, ich war alleiniger Programmierer, Designer, Distributor und so musste alles produktiver sein. Dann entdeckte ich Python und es ist traumhaft!!. Nun konnte ich folgendes Design verwirklichen: Auf dem Server laufen verschiedene Twisted-Python Server, die mit der Datenbank verbunden sind. Die Clients kommunizieren über <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>XMLRPC</I
+></SPAN
+> mit dem Server, so das der Client in verschiedenen Sprachen realisiert werden kann. Selbstverständlich steht C.U.O.N. unter der GPL v3 .
+
+
+ </P
+><P
+> C.U.O.N. hat verschiedene Module wir Stammdatenverwaltung, Dokument Management System (DMS), Projekt- und Auftragsverwaltung </P
+><P
+>&#13;      <P
+></P
+><UL
+><LI
+><P
+> DMS - Dokumente einscannen, PDF, LibreOffice, Openoffice,Musik, Video, Sprachnotizen, Flowcharts und vieles mehr   </P
+></LI
+><LI
+><P
+> AI - Ein Expertensystem mit vielen Spezialfunktionen</P
+></LI
+><LI
+><P
+> Projekte - Projektverwaltung mit Phasen und Tasks, Material- und Personalresourcen, Programmierung  </P
+></LI
+><LI
+><P
+> iCalendar - iCal Funktion für Kalender und Mailprogramme </P
+></LI
+><LI
+><P
+> GUI und Programmlogik sind strikt getrennt, so kann die GUI leich angepaßt werden</P
+></LI
+></UL
+>
+    </P
+><P
+>&#13;CUON ist eine äusserst anpassungsfähige Software. Im Gegensatz zu vielen anderen Programmen in diesem Genre wurde auf äusserste Flexibilität Wert gelegt. Das möchte ich hier anhand der GUI. also des Ausehens und Erscheinungsbildes, erklären.</P
+><P
+>Ich werde mehrmals im Jahr auf dieses Thema angesprochen und will hier neben den Erklärungen im Wiki das Konzept von CUON verdeutlichen.
+Das Program ist von Anfang an in Programmcode und grafische Benutzerschnittstelle (GUI) getrennt worden. Viele sagen dem Aussehen eine gewisse Einfachheit nach und das stimmt auch! Ich bin eben Programmierer und kein Designer. Aber man kann CUON sehr schnell und effektiv anpassen und das machen auch einige Firmen. Also:
+</P
+><P
+> In CUON kann jede Maske beliebig verändert werden mit den Designtool GLADE. Diese veränderten Masken können, müssen aber nicht, von den Clients genutzt werden. Also kann ein Mischbetrieb genutzt werden, in dem z.B. der Chef einen Nokia N800 mit einer kleinen Oberfläche nutzt, während die Kontakter an hochauflösenden 19" Bildschirmen die komplette Adressmaske sehen. Einige mögens bunt, andere nicht. Wer das Menü lieber an der Seite oder unten hat, bitte sehr, kein Problem.
+     Aber es geht noch viel komplexer !! Wenn z.B. in einer Fa. ein spezielles Datenfeld gebraucht wird, das nicht in CUON vorhanden ist, kann dies innerhalb weniger Minuten hinzugefügt werden:</P
+><P
+></P
+><UL
+><LI
+><P
+>  GLADE starten und Eingabefeld einfügen</P
+></LI
+><LI
+><P
+>  Mit XML-Editor oder Texteditor die entry_ Definition anpassen</P
+></LI
+><LI
+><P
+>  Mit XML-Editor oder Texteditor die table Definition anpassen</P
+></LI
+><LI
+><P
+>  Update starten - fertig </P
+></LI
+></UL
+><P
+>Ihnen passt die Reihenfolge der Eingabefelder nicht - einfach abändern</P
+><P
+>sie brauchen noch Tastenkürzel für bestimmte GUI-Funktionen oder Buttons ? Tragt Sie ein ! </P
+><P
+>&#13;Natürlich würde ich mich freuen, wenn Ihr eure geänderten GUI's mir zur Verfügung stellt, damit ich sie in die Standard-Version einbauen kann. Dann haben alle etwas davon.
+</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p45.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>C.U.O.N.</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>C.U.O.N. Administration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

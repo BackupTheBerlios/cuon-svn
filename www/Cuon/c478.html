@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Reports</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="C.U.O.N. Administration"
+HREF="p45.html"><LINK
+REL="PREVIOUS"
+TITLE="Druckvorlagen"
+HREF="c261.html"><LINK
+REL="NEXT"
+TITLE="Moduldaten"
+HREF="x614.html"></HEAD
+><BODY
+CLASS="chapter"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation und Benutzung </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c261.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x614.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="AEN478"
+></A
+>Chapter 3. Reports</H1
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="rep1"
+>3.1. Grundlagen</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="rep1_1"
+>3.1.1. Vorbemerkungen</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="rep1_1_1"
+>3.1.1.1. Verzeichnisse und Pfade</A
+></H3
+><P
+>wechseln sie auf den Server in das Verzeichnis
+/usr/share/cuon/cuon_server/src/cuon/Reports
+Dort sind die Reports im Verzeichnis XML.
+</P
+><P
+>Legen Sie jetzt Mandantenbezogene Reports in das neue, anzulegene Verzeichnis
+client_ + ID des Mandanten, z.B. client_1
+</P
+><P
+>Legen Sie Userbezogene Reports in das neue, anzulegene Verzeichnis
+user_ + Anmeldename des users, z.B. user_jhamel</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="rep1_1_2"
+>3.1.1.2. Aufbau des Reports</A
+></H3
+><P
+>Die Report-Definitionsdateien sind im xml-format und werden zur Zeit noch per Hand editiert. Ein Report ist grundsätzlich in 5 Bereiche unterteilt.
+reportHeader 
+</P
+><P
+>Dies ist der Bereich, der nur am Anfang eines Reports steht, sinnvollerweise enthält er den Absender und z.B. die Adresse des Empfängers.
+pageHeader 
+</P
+><P
+>Dieser Bereich wird auf jeder Seite ausgedruckt und enhält z.B. Spaltenüberschriften, Seitennummern, etc.
+groups 
+</P
+><P
+>Dies ist ein mächtiges element und kann mehrere Gruppen enthalten. Dabei wird die Schachtelung von außen nach innen durchlaufen. Dieser Teil des Reports kann entsprechend umfangreich sein und wird auf allen Seiten gedruckt.
+pageFooter 
+</P
+><P
+>Dieser Teil wird auf jeder Seite unten gedruckt.
+reportFooter 
+</P
+><P
+>Dies ist der Schluß eines Reports und wird nur auf der letzten Seite gedruckt.</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="rep1_2"
+>3.1.2. Report-Elemente</A
+></H2
+><P
+>&#13;Dies sind die Definitionen, die den Report beschreiben. Auch hier gelten für bestimmte Werte nur für bestimmte Regieonen.
+</P
+><P
+>Direkt unterhalb des Report-Beginns sind diese Werte zu setzen:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e1"
+></A
+><P
+><B
+>Example 3-1. allg. Report Definitionen</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;orientation&#62;Portrait&#60;/orientation&#62; ( Werte sind Landscape, Portrait )
+&#60;topMargin&#62;20&#60;/topMargin&#62; ( Oberer Rand )
+&#60;bottomMargin&#62;20&#60;/bottomMargin&#62; ( Unterer Rand )
+&#60;rightMargin&#62;40&#60;/rightMargin&#62; ( Rechter Rand )
+&#60;leftMargin&#62;40&#60;/leftMargin&#62; ( Linker Rand )
+&#60;papersizeX&#62;595&#60;/papersizeX&#62; ( Papierbreite )
+&#60;papersizeY&#62;842&#60;/papersizeY&#62; ( Papierl&#38;auml;nge )
+&#60;sitebackground_url&#62;/home/jhamel/frei08_12.jpg&#60;/sitebackground_url&#62; (Pfad zum Hintergrundbild)
+&#60;sitebackground_x&#62;20&#60;/sitebackground_x&#62;&#60;/para&#62;
+&#60;sitebackground_y&#62;0&#60;/sitebackground_y&#62;( x,y linke, untere Ecke des Hintergrundbildes
+&#60;sitebackground_width&#62;720&#60;/sitebackground_width&#62; ( Gr&#38;ouml;&#38;szlig;e nach rechts )
+&#60;sitebackground_height&#62;1020&#60;/sitebackground_height&#62; ( H&#38;ouml;he nach oben ) 
+
+</PRE
+></DIV
+><P
+>Diese Werte in der jeweiligen Region bestimmen die Größe und Lage der Region:</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e2"
+></A
+><P
+><B
+>Example 3-2. Positionswerte</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13; &#60;posX1&#62;40&#60;/posX1&#62;
+   &#60;posY1&#62;20&#60;/posY1&#62;
+   &#60;posX2&#62;400&#60;/posX2&#62;
+   &#60;posY2&#62;60&#60;/posY2&#62;
+</PRE
+></DIV
+><P
+>Dabei bestimmen die x1,y1 Werte die linke, obere Ecke, die x2,y2 Werte die rechte, untere Ecke.</P
+><P
+>Ein Entry ( siehe Beispiel ) hat sehr detailierte Variablen.</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e5"
+></A
+><P
+><B
+>Example 3-3. Entry</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;entry&#62;
+           &#60;name&#62;Title&#60;/name&#62;
+           &#60;class&#62;Label&#60;/class&#62;
+           &#60;value&#62;Phonelist 011 generatet by CUON&#60;/value&#62;
+           &#60;type&#62;string&#60;/type&#62;
+           &#60;format&#62;%s&#60;/format&#62;
+           &#60;posX1&#62;0&#60;/posX1&#62;
+           &#60;posY1&#62;20&#60;/posY1&#62;
+           &#60;posX2&#62;80&#60;/posX2&#62;
+           &#60;posY2&#62;40&#60;/posY2&#62;
+           &#60;font&#62;Helvetica&#60;/font&#62;
+           &#60;fontsize&#62;16&#60;/fontsize&#62;
+           &#60;fontJustification&#62;left&#60;/fontJustification&#62;
+           &#60;foregroundColor&#62;0,0,0&#60;/foregroundColor&#62;
+           &#60;backgroundColor&#62;0,0,0&#60;/backgroundColor&#62; 
+		   &#60;property&#62;0&#60;/property&#62;
+     &#60;/entry&#62; 
+</PRE
+></DIV
+><P
+>&#13;Dabei sind folgende Werte zulässig:</P
+><P
+>&#13;<P
+></P
+><UL
+><LI
+><P
+>name beliebige zeichen ( Buchstaben, Zahlen, erstes zeichen muß ein Buchstabe sein, keine Umlaute)</P
+></LI
+><LI
+><P
+> class folgende Werte zulässig<P
+></P
+><UL
+><LI
+><P
+>o Label nachfolgender Wert ist eine Text, Bezeichner</P
+></LI
+><LI
+><P
+>o Field Feldbegriff ( z.B. Seitennummer )</P
+></LI
+><LI
+><P
+> o Line Linie wird gezeichnet</P
+></LI
+><LI
+><P
+>o Rectangle Rechteck wird gezeichnet</P
+></LI
+><LI
+><P
+>o DatabaseField? name ist dann das Feld im Resultset</P
+></LI
+><LI
+><P
+> o Function Eine Funktion mit database-fields und Report-Variablen</P
+></LI
+><LI
+><P
+>  o ImageURL Bild einfügen</P
+></LI
+></UL
+></P
+></LI
+><LI
+><P
+>resultSet Name des zum databasefield zugehörigen Results</P
+></LI
+><LI
+><P
+> formula Eine Formel zur class Function<P
+></P
+><UL
+><LI
+><P
+>o !SUM Summe wird gebildet</P
+></LI
+><LI
+><P
+>o !VAR Nachfolgende Variable</P
+></LI
+><LI
+><P
+> o Rechenzeichen + - * / , etc. </P
+></LI
+></UL
+></P
+></LI
+><LI
+><P
+>type Kennzeichnung des Wertes. Folgende Werte werden unterstützt.<P
+></P
+><UL
+><LI
+><P
+> o float Fließkommazahl</P
+></LI
+><LI
+><P
+> o string Buchstaben und Zahlen</P
+></LI
+><LI
+><P
+>o int Zahl ohne Komma </P
+></LI
+></UL
+></P
+></LI
+><LI
+><P
+>format Formatierungsanweisung<P
+></P
+><UL
+><LI
+><P
+>o %s normaler String</P
+></LI
+><LI
+><P
+>o %-10.2f Fließkommazahl Dezimalsystem, 2 Nachkommastellen</P
+></LI
+></UL
+> </P
+></LI
+><LI
+><P
+>memory Variable wird im Speicher abgelegt</P
+></LI
+><LI
+><P
+> variable Name der Variablen</P
+></LI
+><LI
+><P
+> font Name der Schriftenfamilie</P
+></LI
+><LI
+><P
+> fontsize Größe der Schrift</P
+></LI
+><LI
+><P
+> fontJustification Ausrichtung der Schrift</P
+></LI
+><LI
+><P
+> foregroundColor Vordergrundfarbe, RGB</P
+></LI
+><LI
+><P
+>  backgroundColor Hintergrundfarbe, RGB</P
+></LI
+><LI
+><P
+>  appendtogroup 1 = Seitenfuß bzw. Reportfuß wird direkt unter der group gedurckt, 0 = Seiten- bzw. Reportfuß wird unten gedruckt </P
+></LI
+><LI
+><P
+>property Druckstil, diese Werte sind zulässig: <P
+></P
+><UL
+><LI
+><P
+>A  Druck auf alle Seiten</P
+></LI
+><LI
+><P
+>F  Druck auf die erste Seite</P
+></LI
+><LI
+><P
+>N  Alle Seiten außer der ersten Seite</P
+></LI
+><LI
+><P
+>L  Nur auf die letzte Seite</P
+></LI
+><LI
+><P
+>B  Alle Seiten außer der ersten und der letzten Seite</P
+></LI
+><LI
+><P
+>C  Alle Seiten auper der letzten Seite</P
+></LI
+></UL
+> 
+    </P
+></LI
+></UL
+>
+</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="rep1_2_1"
+>3.1.2.1. Hintergrundbilder</A
+></H3
+><P
+>&#13;Hintergrundbilder (z.B. ganze Seite mit Firmenlogo, Text etc.) bieten eine schnelle einfache Art die Reports auf die eigene Firma anzupassen. Lediglich die dynamischen Elemente brauchen dann noch einen Eintrag.</P
+><P
+>Hintergrundbilder werden so eingefügt:</P
+><P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="rep_e3"
+></A
+><P
+><B
+>Example 3-4. Hintergrundbild</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;report&#62;
+&#60;orientation&#62;Portrait&#60;/orientation&#62;
+&#60;topMargin&#62;20&#60;/topMargin&#62;
+&#60;bottomMargin&#62;20&#60;/bottomMargin&#62;
+&#60;rightMargin&#62;40&#60;/rightMargin&#62;
+&#60;leftMargin&#62;40&#60;/leftMargin&#62;
+&#60;papersizeX&#62;595&#60;/papersizeX&#62;
+&#60;papersizeY&#62;842&#60;/papersizeY&#62;
+&#60;sitebackground_url&#62;/home/jhamel/frei08_12.jpg&#60;/sitebackground_url&#62;
+&#60;sitebackground_x&#62;20&#60;/sitebackground_x&#62;
+&#60;sitebackground_y&#62;0&#60;/sitebackground_y&#62;
+&#60;sitebackground_width&#62;720&#60;/sitebackground_width&#62;
+&#60;sitebackground_height&#62;1020&#60;/sitebackground_height&#62;
+</PRE
+></DIV
+>
+
+</P
+><P
+>&#13;Die wichtigen Zeilen sind natürlich die mit sitebackground und sind leicht verständlich:</P
+><P
+>Das Bild muß auf dem Server liegen, x,y sind die linke, untere Ecke, dann geht es width-Punkte nach rechts, height-punkte nach oben.
+Bitte nach dem install den cuon_xmlrpc und cuon_report neu starten.</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="rep1_2_2"
+>3.1.2.2. TrueType Schriftarten in den Reports</A
+></H3
+><P
+>&#13;im Entry bei font folgendes eintragen:</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e4"
+></A
+><P
+><B
+>Example 3-5. fonts</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;font&#62;Muriel;TTF;/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf&#60;/font&#62;
+</PRE
+></DIV
+><P
+>&#13;Dabei ist Muriel ein frei wählbarer Name für die Schrift, genauso kann man hier DejaVuCondens eingeben.
+TTF ist die Schriftart</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e6"
+></A
+><P
+><B
+>Example 3-6. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf
+ist der Pfad zu der Schrift ( auf dem Server !!!!)
+( Semikolon ist das Trennzeichen )
+</PRE
+></DIV
+><P
+>&#13;In den nächsten entrys brauchst man dann nur noch Muriel schreiben
+</P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c261.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x614.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Druckvorlagen</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p45.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Moduldaten</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

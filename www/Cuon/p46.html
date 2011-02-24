@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>C.U.O.N. Administration</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+HREF="index.html"><LINK
+REL="UP"
+HREF="p2.html"><LINK
+REL="PREVIOUS"
+TITLE=" Vorwort "
+HREF="f12.html"><LINK
+REL="NEXT"
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c48.html"></HEAD
+><BODY
+CLASS="part"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="f12.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c48.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="PART"
+><A
+NAME="AEN46"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+>I. C.U.O.N. Administration</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="c48.html"
+>C.U.O.N. Installation und Wartung</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="c48.html#t1"
+>Wichtig !!!</A
+></DT
+><DT
+>1.2. <A
+HREF="x57.html"
+>Vorraussetzungen</A
+></DT
+><DD
+><DL
+><DT
+>1.2.1. <A
+HREF="x57.html#t2"
+>SSH key</A
+></DT
+></DL
+></DD
+><DT
+>1.3. <A
+HREF="x76.html"
+>Postgres-Datenbank auf dem Server</A
+></DT
+><DD
+><DL
+><DT
+>1.3.1. <A
+HREF="x76.html#t4"
+>Basis Installation</A
+></DT
+><DT
+>1.3.2. <A
+HREF="x76.html#t5"
+>plpgsql check</A
+></DT
+><DT
+>1.3.3. <A
+HREF="x76.html#t5_1"
+>Postgres konfigurieren</A
+></DT
+><DT
+>1.3.4. <A
+HREF="x76.html#t6"
+>Vorbereiten der Installation</A
+></DT
+><DT
+>1.3.5. <A
+HREF="x76.html#t13"
+>Server testen und Datenbank einrichten</A
+></DT
+><DT
+>1.3.6. <A
+HREF="x76.html#t8"
+>Haupt Installation</A
+></DT
+><DT
+>1.3.7. <A
+HREF="x76.html#t9"
+>Client starten</A
+></DT
+></DL
+></DD
+><DT
+>1.4. <A
+HREF="x137.html"
+>Für Fortgeschrittene</A
+></DT
+><DD
+><DL
+><DT
+>1.4.1. <A
+HREF="x137.html#t11"
+>Die Webserver und die AI Seite</A
+></DT
+></DL
+></DD
+><DT
+>1.5. <A
+HREF="x147.html"
+>Hilfe</A
+></DT
+><DT
+>1.6. <A
+HREF="x151.html"
+>Update</A
+></DT
+><DD
+><DL
+><DT
+>1.6.1. <A
+HREF="x151.html#t12_2"
+>Eigentliches Update</A
+></DT
+><DT
+>1.6.2. <A
+HREF="x151.html#t12_3"
+>Client "bauen"</A
+></DT
+><DT
+>1.6.3. <A
+HREF="x151.html#t12_4"
+>Datenbank vorbereiten</A
+></DT
+><DT
+>1.6.4. <A
+HREF="x151.html#t12_5"
+>Datenbank</A
+></DT
+></DL
+></DD
+><DT
+>1.7. <A
+HREF="x181.html"
+>Partielle Updates</A
+></DT
+><DD
+><DL
+><DT
+>1.7.1. <A
+HREF="x181.html#PartielleUpdatesUser"
+>User</A
+></DT
+></DL
+></DD
+><DT
+>1.8. <A
+HREF="x188.html"
+>Konfiguration</A
+></DT
+><DD
+><DL
+><DT
+>1.8.1. <A
+HREF="x188.html#ConfigFilesServer"
+>Konfigurationsdateien auf dem Server</A
+></DT
+><DT
+>1.8.2. <A
+HREF="x188.html#ConfigClients"
+>Einstellen der Clients</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>1. <A
+HREF="c249.html"
+>Druckvorlagen</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="c249.html#DMS_Vorlagen"
+>Briefe mit einem Office-Programm erzeugen</A
+></DT
+><DD
+><DL
+><DT
+>1.1.1. <A
+HREF="c249.html#br1"
+>Allgemeine Bemerkungen</A
+></DT
+><DT
+>1.1.2. <A
+HREF="c249.html#tab1"
+>Platzhalter</A
+></DT
+><DT
+>1.1.3. <A
+HREF="c249.html#Anmerkungen"
+>Anmerkungen</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>1. <A
+HREF="c462.html"
+>Reports</A
+></DT
+><DD
+><DL
+><DT
+>1.1. <A
+HREF="c462.html#rep1"
+>Grundlagen</A
+></DT
+><DD
+><DL
+><DT
+>1.1.1. <A
+HREF="c462.html#rep1_1"
+>Vorbemerkungen</A
+></DT
+><DT
+>1.1.2. <A
+HREF="c462.html#rep1_2"
+>Report-Elemente</A
+></DT
+></DL
+></DD
+><DT
+>1.2. <A
+HREF="x520.html"
+>Moduldaten</A
+></DT
+><DD
+><DL
+><DT
+>1.2.1. <A
+HREF="x520.html#rep2_1"
+>Daten für die div. Module</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="f12.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c48.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Vorwort</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p2.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>C.U.O.N. Installation und Wartung</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

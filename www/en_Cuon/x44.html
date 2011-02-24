@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+> Download and execute install routines </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE=" Installation "
+HREF="c30.html"><LINK
+REL="PREVIOUS"
+TITLE=" Installation "
+HREF="c30.html"><LINK
+REL="NEXT"
+TITLE=" Preparation "
+HREF="x96.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Usage </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c30.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. Installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x96.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="Download"
+>1.2. Download and execute install routines</A
+></H1
+><P
+> First of all: Look at our Download site at the <A
+HREF="http://cuon.org/Downloads/en_Download.html"
+TARGET="_top"
+> Cuon download side</A
+> and download the installer packets for your Linux Distribution. You can also download from <A
+HREF="http://sourceforge.net/projects/cuon/"
+TARGET="_top"
+> Sourceforge.net </A
+> and view at all files. There are several installer for different Linux distributions </P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Download_Debian"
+>1.2.1. Debian, Ubuntu</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="Download_Debian_client"
+>1.2.1.1. Cuon Client</A
+></H3
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-client-1.0-all.deb"
+TARGET="_top"
+> cuon-client-1.0-all.deb </A
+></P
+><P
+> Click here to download the Cuon Client for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it and everything will be fine! Otherwise: Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) sudo apt-get install wget bash python-gtk2 python-glade2 python-imaging python-gnome2 python-python-gtkmozembed gtksourceview2 Then in the download directory run this: sudo dpkg-i cuon-client-1.0-all.deb Now any user can start the Cuon Client from the menu. </P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="Download_Debian_setup"
+>1.2.1.2. Cuon Setup</A
+></H3
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-setup-1.0-all.deb"
+TARGET="_top"
+> cuon-setup-1.0-all.deb </A
+></P
+><P
+> This program is used to setup and configure the server Cuon. It can be installed on any client. Please, it is necessarily to read here in the Wiki (documentation) the installation documentation. This graphical front end they can start managing Cuon server, User Setup, Reports and 100 things more! Click here to download the Cuon Setup for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it and everything will be fine! Otherwise: Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) sudo apt-get install wget bash subversion python-gtk2 python-gnome2 python-python-glade2 gtkmozembed python-gtksourceview2 Then in the download directory run this: sudo dpkg-i cuon-setup-1.0-all.deb Now the administrator Cuon setup and configuration program start from the menu. </P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="Download_Debian_server"
+>1.2.1.3. Cuon Server</A
+></H3
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-server-1.0-all.deb"
+TARGET="_top"
+> cuon-server-1.0-all.deb </A
+></P
+><P
+> This program is used to install the server Cuon. It can ONLY be installed on the server. Please, it is necessarilyto read here in the Wiki (documentation) the installation documentation. With this front end all needet modules are installed, to run the Cuon server . Click here to download the Cuon Server for Ubuntu / Debian. Normally you should now install an appropriate program to open by . Deb packages. Just install it, start it from menu or command shell (cuon_server) and everything will be fine! </P
+><P
+> Otherwise: </P
+><P
+> Save the file to disk, then install it manually. Please open a terminal and type the following (as root or as root) </P
+><P
+> sudo apt-get install bash, python-reportlab, python-pygre, python-reportlab, postgres, python-pygresql, python-twisted-web python-twisted-mail, python-twisted-words </P
+><P
+> Then in the download directory run this: </P
+><P
+> sudo dpkg-i cuon-server-1.0-all.deb </P
+><P
+> Now the administrator can configure the Postgres SQL server and restart, then run the setup in the configuration client. </P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Download_Fedora"
+>1.2.2. RPM`s for Fedora, Suse and so on</A
+></H2
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-client-1.0-2.i386.rpm"
+TARGET="_top"
+> Cuon Client RPM package</A
+></P
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-setup-1.0-2.i386.rpm"
+TARGET="_top"
+> Cuon Setup RPM package</A
+></P
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-server-1.0-2.i386.rpm"
+TARGET="_top"
+> Cuon Server RPM package</A
+></P
+><P
+> To install this is also the same like the Debian Packages above, please look above at the Debian Section for Information. </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Download_Other"
+>1.2.3. For all other Linux, BSD</A
+></H2
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-client-1.0.tgz"
+TARGET="_top"
+> Cuon Client TGZ package</A
+></P
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-setup-1.0.tgz"
+TARGET="_top"
+> Cuon Setup TGZ package</A
+></P
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon-server-1.0.tgz"
+TARGET="_top"
+> Cuon Setup TGZ package</A
+></P
+><P
+> To install this is also the same like the Debian Packages above, please simple unpack it and read the README file. </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="Download_Source"
+>1.2.4. downloads of source packages</A
+></H2
+><P
+> Download here the last version </P
+><P
+>Directly donload from here <A
+HREF="http://cuon.org/downloads/cuon_currentVersion.tar.bz2"
+TARGET="_top"
+> Cuon latest source package</A
+></P
+><P
+> 06/09/2010 The new version Odessa . For gardeners, there is the GPL modules winter, cemetery and botany. The address has now a fast and effective web search. The remaining changes can you read at the notes </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c30.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x96.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c30.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Preparation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

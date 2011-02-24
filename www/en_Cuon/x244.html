@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>clients.ini </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Configuration"
+HREF="c181.html"><LINK
+REL="PREVIOUS"
+TITLE="menu.cfg "
+HREF="x237.html"><LINK
+REL="NEXT"
+TITLE="sql.ini "
+HREF="x261.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Usage </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x237.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x261.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="clients_ini"
+>2.4. clients.ini</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="userrights_clients"
+>2.4.1. userrights for different clients</A
+></H2
+><P
+>Berechtigungen für die Mandanten </P
+><DIV
+CLASS="example"
+><A
+NAME="config_clients_clients"
+></A
+><P
+><B
+>Example 2-11. clients.ini</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+
+#You set here the rights of the different user for the clients, Each client ID is one client, for example:
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
+</PRE
+></DIV
+><P
+> The user with the name "admin" is allowed to create new clients and see after login the clients with the id's 1-6, the user with the name "jhamel" see only client 1 and has no right to create new clients.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="clients"
+>2.4.2. Der Abschnitt CLIENT_</A
+></H2
+><P
+> Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen. </P
+><P
+>CLIENT_xxx ist die Mandanten ID</P
+><P
+><DIV
+CLASS="example"
+><A
+NAME="config_clients"
+></A
+><P
+><B
+>Example 2-12. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[CLIENT_1]
+#Einstellungen für den automatischen Mailversand 
+#Veränderungen in den Notizen 
+
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes0: &#60;email&#62;user@web.com&#60;/email&#62; 
+sendMailsNotes0: caller,rep,salesman 
+sendNotes0: YES # or NO to decide if you wish send automatic mails or not 
+Notes0_ID: 17 # ID of the docucument from the DMS that shall be send 
+AdditinalEmailAddressesNotes0: &#60;email&#62;jh@web.com&#60;/email&#62; # additional email addresses, separate by comma 
+sendMailsNotes0: caller,rep,salesman # internal notes for caller, reps or salesman 
+#Default term of payment 
+modul_order_default_top: 1 # ID of the term of payment 
+
+#Erinnerungen und Mahnungen im Rechnungswesen # Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhängigkeit ist bei den Zahlungsbedingungen vermerkt. # Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen würde diese Rechnung bei u.g. Einstellungen # nach 18 Tagen das erste mal auf der Liste erscheinen. 
+reminder_all_days_after: 10 
+reminder_first_days_after: 14 
+reminder_second_days_after: 25 
+reminder_last_days_after: 32 
+reminder_summons_days_after: 40 
+
+# Liste nach Zahlungserinnerungen. 
+list_of_invoices_directDebit: 3 
+orderbook_number: !id,-,!year 
+orderbook_designation: !lastname,_,!city,_,!id 
+list_of_invoices_directDebit: 3 
+articles_sort1_number: b 
+articles_sort1_sellingprice: c 
+articles_sort1_designation: a 
+
+# Checkboxes 
+
+# Addresses # Here are the entries for the selection boxes at the address, the tab Miscellaneous. 
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige 
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG 
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, über 5 millionen 
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung 
+#Projektverwaltung 
+cbProjectStatus: neu angelegt,laufend,fertig 
+
+#Graves
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung 
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab 
+cbTypeOfPaying: jährlich,halbjährlich 
+cbPercentsGrave: 100%,90%,80%,75%,50%, 
+cbTypeOfPaying: jährlich,halbjährlich,quartal 
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag 
+
+#Stats
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820 
+StatsCallerCentury: 0 
+StatsCallerDecade: 0 
+StatsCallerYear: 1 
+StatsCallerQuarter: 2 
+StatsCallerMonth: 2 
+StatsCallerWeek: 2 
+
+</PRE
+></DIV
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x237.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x261.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>menu.cfg</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c181.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>sql.ini</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

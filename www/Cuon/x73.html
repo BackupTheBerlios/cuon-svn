@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Postgres-Datenbank auf dem Server</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c45.html"><LINK
+REL="PREVIOUS"
+TITLE="Vorraussetzungen"
+HREF="x54.html"><LINK
+REL="NEXT"
+TITLE="Für Fortgeschrittene"
+HREF="x134.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Benutzung </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x54.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. C.U.O.N. Installation und Wartung</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x134.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="t3"
+>1.3. Postgres-Datenbank auf dem Server</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t4"
+>1.3.1. Basis Installation</A
+></H2
+><P
+></P
+><UL
+><LI
+><P
+> Postgres installieren</P
+></LI
+><LI
+><P
+> Database anlegen ( im Zweifelsfall cuon nennen ). z.B. als user postgres:</P
+></LI
+><LI
+><P
+> createdb -E utf-8 cuon</P
+></LI
+><LI
+><P
+> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen createuser admin Superuser -- Ja</P
+></LI
+><LI
+><P
+> sowie einen user zope ohne rechte </P
+></LI
+></UL
+><P
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Diese user sind reine Datenbankuser ohne loginshell</I
+></SPAN
+></P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t5"
+>1.3.2. plpgsql check</A
+></H2
+><P
+>&#13;Das Anlegen von Proceduren und Triggern geschieht mit plpgsql Dies Sprache muß installiert sein. Folgender Aufruf prüft dies :
+</P
+><DIV
+CLASS="example"
+><A
+NAME="c2"
+></A
+><P
+><B
+>Example 1-2. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+/usr/lib/postgresql/bin/createlang -dcuon -l
+
+Procedural languages
+
+    . Name | Trusted?
+
+    . +
+
+    . plpgsql | t
+
+</PRE
+></DIV
+><P
+>Ist das Ergebnis ähnlich wie oben und wird plpgsql angezeigt, ist alles in Ordnung. Andernfalls führen Sie folgendes aus. ( Am besten als user postgres ) :
+</P
+><P
+>sh-2.05b$ /usr/lib/postgresql/bin/createlang -d cuon plpgsql</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t5_1"
+>1.3.3. Postgres konfigurieren</A
+></H2
+><P
+>Bitte in der /etc/postgres/..../pg_hba.conf die Benutzer auf trusted setzen, im einfachsten Fall: </P
+><DIV
+CLASS="example"
+><A
+NAME="c2_1"
+></A
+><P
+><B
+>Example 1-3. pg_hba.conf</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;# "local" is for Unix domain socket connections only
+local   all         all                               trust
+# IPv4 local connections:
+host    all         all         127.0.0.1/32          trust
+# IPv6 local connections:
+host    all         all         ::1/128               trust
+
+</PRE
+></DIV
+><P
+>Um dies richtig zu konfigurieren, sollte auf jeden Fall Postgres und Linux Kenntnisse vorhanden sein.  </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t6"
+>1.3.4. Vorbereiten der Installation</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="t7"
+>1.3.4.1. Verschlüsselung einrichten</A
+></H3
+><P
+>&#13;Wenn über das Internet auf den cuon Server zugegriffen wird, ist es unbedingt zu empfehlen, eine verschlüsselte Verbindung zu aktivieren. Ansonsten sind alle Daten, Passwörter etc. theoretisch von jedem Teenager lesbar!
+</P
+><P
+>Als Standardserverport steht 7580 für verschlüsselte Verbindung (https) und 7080 für unverschlüsselte Verbindung (sollte gleich per Firewall gesperrt werden).
+</P
+><P
+>Die eigenen zertifikate können Sie wie folgt erstellen:
+</P
+><DIV
+CLASS="example"
+><A
+NAME="c3"
+></A
+><P
+><B
+>Example 1-4. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+openssl genrsa -out serverkey.pem 2048
+
+openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
+
+Kopieren sie dann die beiten Zertifikate nach /etc/cuon .
+
+Dann starten Sie den xmlrpc server. einen ersten Test k&#38;ouml;nnen Sie wie folgt machen:
+
+openssl s_client -connect xxx.xxx.xxx.xxx:7580 -ssl3
+
+F&#38;uuml;r xxx.xxx.xxx.xxx bitte Ihre Server-IP einsetzen.
+
+</PRE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t13"
+>1.3.5. Server testen und Datenbank einrichten</A
+></H2
+><P
+>&#13;Zum ersten Testen der Installation langt ein laufender postgresql Server und der cuonxmlrpc Server. Um eine bessere Übersicht über das Geschehen zu haben empfiehlt es sich, den cuonxmlrpc Server per Hand zu starten um die Debug-Ausgabe im Terminal verfolgen zu können: python /usr/share/cuon/cuon_server/src/server_xmlrpc
+</P
+><P
+>&#13;Dann in einem Fenster Logfile der SQL Datenbank öffnen:
+tail -f /var/log/postgresql/postg*main*.log
+cuon starten </P
+><P
+>&#13;Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Diese bitte so starten:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>  /etc/init.d/cuonxmlrpc start</P
+></LI
+><LI
+><P
+> /etc/init.d/cuonweb start</P
+></LI
+><LI
+><P
+> /etc/init.d/cuonreport start </P
+></LI
+></UL
+><P
+>Um bei einem Neustart ein automatisches Hochfahren aller benötigten Programme zu gewährleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t8"
+>1.3.6. Haupt Installation</A
+></H2
+><P
+>&#13;
+Jetzt geht es mit den selben Schritten wie bei einem Update weiter.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t9"
+>1.3.7. Client starten</A
+></H2
+><P
+>Jetzt kann schon mit den client gearbeitet werden , dazu bei cuon.org --&#62; Downloads --&#62;Deutsch die Datei  Cuon-Client downloaden. Bitte den Anweisungen zur Installation und Konfiguration folgen:</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x54.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x134.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Vorraussetzungen</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c45.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Für Fortgeschrittene</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

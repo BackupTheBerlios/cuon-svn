@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>menu.cfg </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="
+       C.U.O.N. 
+    "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Configuration"
+HREF="c167.html"><LINK
+REL="PREVIOUS"
+TITLE="user.cfg "
+HREF="x205.html"><LINK
+REL="NEXT"
+TITLE="clients.ini "
+HREF="x233.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.: 
+       Installation and Usage 
+    </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x205.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x233.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="menu_cfg"
+>2.3. menu.cfg</A
+></H1
+><P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME=""
+></A
+><P
+><B
+>Example 2-9. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[gewoehnlicherAllUser]
+all: Priv;all  
+experimental: Priv;all 
+
+[AdminUser] 
+all: Priv;all 
+experimental: Priv;all 
+staff: Priv;all 
+extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
+forms: Priv;all 
+forms_addresses: Priv;all
+
+# Dies ist nur für Gärtnereien interessant
+address_button_grave: Yes
+address_button_grave_position: 14
+
+</PRE
+></DIV
+></P
+><P
+>&#13;
+Für jeden User muss ein Eintrag existieren. Der Eintrag für die Adminuser ist etwas komplexer. Eine genaue Erklärung erfolgt hier, wenn das Modul noch weiter fortgeschritten ist. Für den Anfang können diese Werte übernommen werden.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x205.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x233.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>user.cfg</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c167.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>clients.ini</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

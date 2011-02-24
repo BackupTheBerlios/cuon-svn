@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Reports"
+HREF="c445.html"><LINK
+REL="PREVIOUS"
+TITLE="Reports"
+HREF="c445.html"><LINK
+REL="NEXT"
+TITLE="Erste Schritte"
+HREF="c511.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation and Benutzung </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c445.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Reports</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c511.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME=""
+>3.2. </A
+></H1
+>Die Kennzeichnung gilt immer nur für den jeweiligen Report.
+Daten für die div. Module 
+Überwinterung 
+
+<FONT
+COLOR="RED"
+>address</FONT
+>(["hibernation.hibernation number","order number"])
+(["to char(hibernation.begin date, \'" + dicUser['SQLDateFormat'"] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUserSQLDateFormat? + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+(["hibernation.begin notes","begin notes"])
+(["hibernation.ends notes","ends notes"])
+(["address.lastname","lastname"])
+(["address.lastname2","lastname2"])
+(["address.firstname","firstname"]) (["address.street","street"])
+(["(address.zip ' ' address.city)","city "])
+Zusatzfelder in Überwinterungsmodul
+und im <FONT
+COLOR="RED"
+>positions</FONT
+>(['hibernation.hibernation_number','order_number'])
+([:to char(hibernation.begin date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+([:hibernation plant.plant number","article id:hibernation_plant.plant_number","article _id])
+(["hibernation plant.price","price"])
+(["hibernation plant.status","status"])
+(["hibernation plant.plant notice","plantnotice"]) //Notiz
+([ "hibernation_plant.vermin","vermin"]) //Schädlinge
+(["hibernation plant.diameter","diameter"])// Durchmesser
+([:botany.botany name","botany n ame:botany.botany_name","botany_n ame])
+(["botany.local name","local name"])
+Dabei ist folgendes zu beachten: Dies ist ein Teil aus dem Quellcode. Ich habe den SQL-Teil neugestaltet, um ihn besser pflegen zu können. Für den Report gilt folgendes: Je nach ResultSet? stehen die Variablen im zweiten Teil der durch Komma getrennten Liste, also (["hibernation plant.status","status"]) steht im Report das Feld "status" zur Verfügung.
+...
+Hackerwissen :-) 
+
+    Zudem habe ich in meinen Unterlagen den Variablennamen für die Laufnummer
+    (Lagernummer) nicht gefunden. Vielleicht kannst Du mir die noch kurz mailen.
+
+Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
+Hier noch kurz die Erklärung, falls du mich mal nicht erreichst.
+Wenn du die Glade-Datei mit glade öffnest, kannst du jeden Namen feststellen, den ein widget hat. Diesen namen kannst du in dem dazugehörigen entry_....xml finden. dort steht dann unter sql_field das zugehörige Datenbankfeld.
+
+Hier ein ausschnitt:
+Auftragsbearbeitung 
+Variablen für die Rechnung 
+ResultSet? address 
+Variable 	Beschreibung
+lastname 	Nachname
+lastname2 	Nachname Zusatz
+firstname 	Vorname
+first_last 	Vorname Nachname
+last_first 	Nachname, Vorname
+city 	PLZ Stadt
+city_alone 	Stadt
+city_country 	Staat-PLZ Stadt
+street 	Straße
+zip 	Postleitzahl
+country 	Staat
+order_orderedat 	Auftragsdatum
+order_deliverdat 	Lieferdatum
+order_number 	Auftragsnummer
+order_designation 	Auftragsbeschreibung
+ResultSet? Order 
+Variable 	Beschreibung
+orderid	Id des Auftrags
+orderNumber	Auftragsnummer
+invoiceNumber	Rechnungsnummer
+invoiceDate 	Rechnungsdatum
+discount 	Rabatt
+misc_cost 	div. Kosten
+postage_cost 	Porto o. Fracht
+packing_cost 	Verpackungskosten
+term_of_payment 	Zahlungsbedingung Text
+staff_address 	Anrede Mitarbeiter
+staff_phone_handy 	Handy Mitarbeiter
+staff_lastname 	Nachname Mitarbeiter
+staff_firstname 	Vorname Mitarbeiter
+staff_email 	Email des Mitarbeiter
+staff_phone 	Telefon Mitarbeiter
+staff_fax 	FAX Mitarbeiter
+ResultSet? positions 
+Variable 	Beschreibung
+order_number 	Auftragsnummer
+order_orderedat 	Auftragsdatum
+order_deliverdat 	Lieferdatum
+order_tax_vat 	Auftragsgebundene Mwst. in Prozent
+tax_vat 	Artikelbezogene Mwst. in Prozent
+order_designation 	Auftragsbeschreibung
+pos_designation 	Positionsbeschreibung
+price 	Preis
+end_price_gross 	Preis incl. Mwst.
+end_price_netto 	Preis ohne Mwst.
+position 	Position
+amount 	Menge
+article_designation 	Artikel beschreibung
+article_id 	Artikelnummer
+ResultSet? listOfInvoices 
+Variable 	Beschreibung
+order_number 	Auftragsnummer
+invoice_number 	Rechnungsnummer
+date_of_invoice 	Rechnungsdatum
+total_amount 	Gesamtsumme
+maturity 	Fälligkeit
+lastname 	Nachname
+city 	Stadt
+adressid 	Adress ID 
+
+
+</DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c445.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c511.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reports</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c445.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Erste Schritte</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

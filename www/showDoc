@@ -1,0 +1,8 @@
+cd Cuon
+
+cp cuon.docbook de_cuon.docbook
+recode -d utf-8..h4 de_cuon.docbook
+docbook2html de_cuon.docbook && docbook2pdf de_cuon.docbook
+evince de_cuon.pdf
+cd ..
+

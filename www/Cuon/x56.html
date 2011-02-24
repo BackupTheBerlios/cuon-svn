@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Vorraussetzungen</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE=" C.U.O.N. "
+HREF="index.html"><LINK
+REL="UP"
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c47.html"><LINK
+REL="PREVIOUS"
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c47.html"><LINK
+REL="NEXT"
+TITLE="Postgres-Datenbank auf dem Server"
+HREF="x75.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>C.U.O.N.:  Installation und Benutzung </TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c47.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. C.U.O.N. Installation und Wartung</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x75.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="t1_1"
+>1.2. Vorraussetzungen</A
+></H1
+><P
+>&#13;Diese Seite beschreibt die allgemeine Installation von cuon. Bitte unbedingt auch die betriebssystem-spezifischen Tipps lesen.
+Hardware 
+</P
+><P
+>Der Server benötigt einiges an Resourcen. So sollte es ungefähr so aussehen:
+<P
+></P
+><UL
+><LI
+><P
+>Server und 1 Client auf dem selben Rechner 	ab 3GHz, 1GB RAM, 10 GB HD</P
+></LI
+><LI
+><P
+>Server ohne GUI und 10 Clients 	ab 2.5 GHz, 1 GB RAM, 100 GB HD</P
+></LI
+><LI
+><P
+>Server ohne GUI und 50 Clients 	ab 3 GHz, 4 GB RAM, 500 GB HD</P
+></LI
+></UL
+>
+Der Client-Rechner muß eine grafische Oberfläche haben </P
+><P
+>&#13;Der Install-client muß ein Linux-Rechner sein. X muß laufen und eine Oberfläche wie XFCE, Gnome, KDE, Blackbox, windowmaker oder eine andere Oberfläche muß vorhanden sein.
+SSH zum Server/Localhost 
+</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t2"
+>1.2.1. SSH key</A
+></H2
+><P
+>Als User führen Sie bitte folgendes aus, falls noch kein ssh Schlüsselpaar existiert.</P
+><DIV
+CLASS="example"
+><A
+NAME="c1"
+></A
+><P
+><B
+>Example 1-1. SSH Key</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+$ssh-keygen -t rsa
+
+Das sollte ungef&#38;auml;hr so aussehen:
+
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/home/huette/.ssh/id_rsa):
+
+Created directory '/home/huette/.ssh'.
+
+Enter passphrase (empty for no passphrase): (nichts eingeben)
+
+Enter same passphrase again:
+
+Your identification has been saved in /home/huette/.ssh/id_rsa.
+
+Your public key has been saved in /home/huette/.ssh/id_rsa.pub.
+
+The key fingerprint is:
+
+48:4f:7d:d8:ba:a4:6a:4c:8b:8c:05:b6:3b:4d:26:40 huette@localhost
+
+Der &#38;ouml;ffentliche Schl&#38;uuml;ssel in id_rsa.pub kann getrost an alle weitergeben werden.
+
+Hinterlegt man nun den &#38;ouml;ffentlichen Schl&#38;uuml;ssel auf dem Zielrechner in der Datei root/.ssh/authorized_keys, so ist es m&#38;ouml;glich, anstelle der Abfrage des Systempa&#38;szlig;worts die durch ein Schl&#38;uuml;sselpaar definierte Identit&#38;auml;t zur Authentifizierung einzusetzen.
+
+Folgendes Vorgehen ist vielleicht am einfachsten: Client: scp id_rsa.pub root@ IP://root Dann ein ssh -lroot IP Jetzt ist man/frau auf dem Server und kann dort mit cd /root ins das Homeverzeichnis von root wechseln. Falls kein Verzeichnis .ssh existiert, mkdir .ssh
+
+jetzt ein cat ../id_rsa.pub &#62;&#62; authorized_keys
+
+und alles wird gut.
+
+</PRE
+></DIV
+><P
+>&#13;Tipp: Testen Sie, ob Sie sich jetzt mit ssh -lroot IP ohne Passworteingabe auf den Server einloggen können</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c47.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x75.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>C.U.O.N. Installation und Wartung</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c47.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Postgres-Datenbank auf dem Server</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
