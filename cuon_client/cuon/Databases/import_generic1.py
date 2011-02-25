@@ -214,7 +214,7 @@ class import_generic1(fileSelection):
                 # verify Fields
                 dicValues = oSingleImport.verifyValues(dicValues)
                 # save to Database
-                if self.dicFileAttributes['updateData'] == 'YES':
+                if self.dicFileAttributes['updateData'] in ['YES', 'IGNORE'] :
                     
                     updateID = self.rpc.callRP('Database.checkUpdateID',self.dicFileAttributes['importTable'], self.dicFileAttributes['checkUpdateField'], dicValues[self.dicFileAttributes['checkUpdateField']], self.dicUser)
                     print 'update-id = ', updateID
@@ -223,8 +223,8 @@ class import_generic1(fileSelection):
                     else:
                         oSingleImport.newRecord()
                     
-                elif self.dicFileAttributes['updateData'] == 'IGNORE':
-                    oSingleImport.ID = -77
+                    if self.dicFileAttributes['updateData'] == 'IGNORE':
+                        oSingleImport.ID = -77
                     
                 else:
                     oSingleImport.newRecord()
