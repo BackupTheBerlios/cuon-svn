@@ -1,12 +1,12 @@
 [Export]
-Filename=address
+Filename=address.txt
 Tables=address,partner
-Columns=lastname,firstname,street,zip
+Columns=address.lastname,address.firstname,address.street,address.zip
 Headers=Nachname, Vorname, Strasse, PLZ
 
 [SQL]
-Where=zip='32584'
-Order=
+Where=address.zip='32584' or address.zip between '20000' and '30000'
+Order= address.lastname
 Group=
 
 [Values]

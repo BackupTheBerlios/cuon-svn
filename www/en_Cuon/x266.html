@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Updaten von C.U.O.N. </TITLE
+>sql.ini </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,11 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Setup Tool"
-HREF="c259.html"><LINK
+TITLE="Configuration"
+HREF="c181.html"><LINK
 REL="PREVIOUS"
-TITLE="Setup Tool"
-HREF="c259.html"></HEAD
+TITLE="clients.ini "
+HREF="x249.html"><LINK
+REL="NEXT"
+TITLE="UserGroups.cfg "
+HREF="x272.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c259.html"
+HREF="x249.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -50,12 +53,16 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 3. Setup Tool</TD
+>Chapter 2. Configuration</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="x272.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -66,11 +73,77 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="setup_update"
->3.2. Updaten von C.U.O.N.</A
+NAME="sql_ini"
+>2.5. sql.ini</A
 ></H1
 ><P
-> 1st Step necessarily use it to update the user and the computer is installed on the Cuon setup configuration tool. Start the Cuon setup tool from the Settings menu. Or from the terminal: To change cuon_client in the directory and start with "python setup.py" the graphical installation routine. 2nd real update Press the "Start Install". As with the installation, it must be in place a functioning SSH access! So it should in any case the o.g. be Cuon-admin area. Here in the example is cuon as SSL (https Protocoll) Server installed. This version is recommended umbedingt if clients are to access from the Internet to the server. 3rd Client build ' Services -&#62; Create Client 4th Prepare database The importance of this step: * Using the "Connect" with admin user (!) And password. * "Edit config files -&#62; Server Customize the [Configuration Files: Configuration Files]. Then on to the next step: Tools -&#62; Database 5th Database With a new installation or if user data has been changed, added new users, or the like, then please run in any case in SQL create Grants Rights to the point file. Then just run "SQL server -&#62; start complete update." Done </P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_sql"
+></A
+><P
+><B
+>Example 2-14. Configuration sql.ini</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+# Hier bitte alle Gruppen durch Kommata getrennt eintragen
+[GROUPS]
+NAMES: office,invoice
+
+
+# set here the rights for some automatical actions
+# rwxrwxrwx
+# r = read, also lesen
+# w = write, also schreiben
+# x = eXecute, also ausführen
+# settings for  User, Group, All
+# a underline is the meaning of &#60;emphasis&#62;no right&#60;/emphasis&#62; 
+# Then, with comma separated a list of groups 
+[DEFAULT_MODUL_RIGHTS_DMS] INVOICE: rw_r__r__,rechnung 
+[LIMIT] Address: 30 
+Garden: 217 
+Project: 50 
+Articles: 80 
+Order: 50 
+# Her wird die Anzahl der Listeneinträge, die beim Modulstart angezeigt werden Modul eingetragen. 
+# Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseinträge 
+#Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Einträge auf 500 stellen. 
+
+#Diese Einträge gelten für die Auftragsbearbeitung 
+[modul_order] 
+default_top: 1 
+#die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird 
+
+#The following entries are required for the hibernation module (horticulture): 
+[modul_hibernation] 
+replace_staff_pickup: 1 
+replace_staff_supply: 2 
+replace_plant_hibertion:3 
+replace_plant_add_pot:4 
+replace_plant_add_material:5 
+replace_plant_add_earth:6 
+replace_plant_add_misc:7 
+#These settings have the hibernation services (winter, delivery, etc. Umtopfarbeiten) solid articles (the number is the Item ID). Using this product after the tax, gross / #Nettorprice is set. 
+#The following are the text messages for billing: 
+translate_price_hibernation_for: Preis der Ueberwinterung für 
+translate_price_add_pot_for: Preis für groesseren Topf 
+translate_price_add_material_for: 
+Preis für zus. Material 
+translate_price_add_earth_for: 
+Preis für zus. Erde 
+translate_price_add_misc_for: Preis für Sonstiges 
+translate_price_staff_pickup_for: Abholkosten 
+translate_price_staff_supply_for: Anlieferkosten 
+translate_price_staff_pickup_for: Abholkosten 
+translate_price_staff_supply_for: Anlieferkosten 
+</PRE
+></DIV
+>
+
+</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -88,7 +161,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c259.html"
+HREF="x249.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -105,20 +178,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="x272.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Setup Tool</TD
+>clients.ini</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c259.html"
+HREF="c181.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -126,7 +203,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>UserGroups.cfg</TD
 ></TR
 ></TABLE
 ></DIV

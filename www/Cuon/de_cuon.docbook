@@ -138,8 +138,15 @@ Tipp: Testen Sie, ob Sie sich jetzt mit ssh -lroot IP ohne Passworteingabe auf d
     <listitem><para> Postgres installieren</para></listitem>
     <listitem><para> Database anlegen ( im Zweifelsfall cuon nennen ). z.B. als user postgres:</para></listitem>
      <listitem><para> createdb -E utf-8 cuon</para></listitem>
-    <listitem><para> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen createuser admin Superuser -- Ja</para></listitem>
-    <listitem><para> sowie einen user zope ohne rechte </para></listitem>
+    <listitem><para> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen: <example role="codelisting" id="pg_superuser">
+<title>Beispiel User anlegen in Datenbank</title>
+<programlisting><![CDATA[
+als postgres user:
+createuser cuon_admin
+Es wird gefragt, ob die rolle ein superuser sein soll, bitte mit Ja beantworten
+]]></programlisting>
+</example></para></listitem>
+    <listitem><para> Nun noch einen weiteren user mit namen "zope" einrichten, diesem User keinerlei Rechte einr&auml;umen </para></listitem>
 </itemizedlist>
 <para><emphasis>Diese user sind reine Datenbankuser ohne loginshell</emphasis></para></sect2>
 <sect2 id="t5"><title>plpgsql check</title>

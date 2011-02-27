@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Adressverwaltung</TITLE
+>Moduldaten</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,11 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Stammdaten"
-HREF="c607.html"><LINK
+TITLE="Reports"
+HREF="c483.html"><LINK
 REL="PREVIOUS"
-TITLE="Stammdaten"
-HREF="c607.html"></HEAD
+TITLE="Reports"
+HREF="c483.html"><LINK
+REL="NEXT"
+TITLE="Statistiken"
+HREF="c867.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -34,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c607.html"
+HREF="c483.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -50,12 +53,16 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 6. Stammdaten</TD
+>Chapter 3. Reports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="c867.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -66,220 +73,616 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN619"
->6.2. Adressverwaltung</A
+NAME="rep2"
+>3.2. Moduldaten</A
 ></H1
 ><P
->&#13;Die Adressmaske enthält die üblichen Angaben wie PLZ, Ort, Telefon-Nummern, etc. Hinzu kommen Kennfelder für Branche, Bankverbindung, Debitoren/Kreditoren-Nummern, Webshop-Abgleich, Steuernummern und Preisgruppen. Zu jeder Adresse können beliebig viele Gesprächspartner und evtl. Termine mit den jew. Gesprächspartnern hinterlegt werden. Auch dort können die üblichen Werte erfaßt werden. Der Listendruck wird, wie jeder Druck in pyCuon, über das PDF-Format realisiert. Eine Schnittstelle zum DMS ermöglicht es, umfassende, unterschiedlichste Information zu jeder Adresse zu hinterlegen.</P
+>Die Kennzeichnung gilt immer nur für den jeweiligen Report.</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s2"
->6.2.1. Reiter Adressen</A
+NAME="rep2_1"
+>3.2.1. Daten für die div. Module</A
 ></H2
-><P
->Der Button "Brief" ist für die Erzeugung eines Briefes zuständig. (siehe auch Briefe mit Office Programmen ) Über den Button Kontakt erreichen Sie die Kontaktverwaltung
-</P
 ><DIV
-CLASS="figure"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="si2"
+NAME="rep2_1_3"
+>3.2.1.1. Auftragsbearbeitung</A
+></H3
+><P
+>Variablen für die Rechnung</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="mod_s1"
+>3.2.1.1.1. Abholung, Lieferschein, Rechnung</A
+></H4
+><DIV
+CLASS="table"
+><A
+NAME="rep_ta1"
 ></A
 ><P
 ><B
->Figure 6-2. </B
+>Table 3-1.  ResultSet address </B
 ></P
-><P
-><IMG
-SRC="images/screenshots/iAddress01.png"
-ALIGN="center"></P
-></DIV
-><P
->&#13;Die meisten Funktionen lassen sich über den Reiter "Adressen" nutzen, lediglich für Termine ist der Eintrag eines Gesprächpartners nötig. Dieser lässt sich schnell mit dem Button "erzeuge Gesprächspartner" im Reiter "Gesprächspartner" erzeugen.
-</P
-><P
-></P
-><UL
-><LI
-><P
->Button Zusatzinformationen: Damit lassen sich Schriftstücke, Bilder oder eingescannte Dokumente einer Adresse zuordnen. Er führt direkt zum [:Dokument Management System: Dokument-Mangement-System (DMS)].</P
-></LI
-><LI
-><P
->Button Brief: Auch hier geht der Link direkt in das DMS. Allerdings werden alle Briefvorlagen ([:Briefe mit Office Programmen:Bitte im Benutzerhandbuch] nachlesen, wie diese angelegt werden) geöffnet. Der dortige Button "View" startet Openoffice (oder auch Koffice) mit den Adressdaten und der gewählten Vorlage. Im Officeprogramm das Dokument einfach speichern und dann "Letztes Dokument sichern" drücken und schon ist der geschriebene Brief auch wieder als Dokument in cuon hinterlegt (wird dann unter dem Button Zusatzinformationen (s.o.) angezeigt).</P
-></LI
-><LI
-><P
->Button Kontak: Das ist eine wichtige Funktion für z.B. Telefonmarketing. Hiermit lassen sich schnell Terminerinnerungen für jede Adresse einstellen (die dann als Pop-up Fenster auf dem Bildschirm erscheinen). Z.B. Rückruf in 5 Minuten, Telefonat heute um 15 Uhr o.ä. ( siehe unter Kontaktmanagement ?)</P
-></LI
-><LI
-><P
->Buttons "wähle Kontakter", "wähle Representant", "wähle Berater" greifen auf die Mitarbeiterdatenbank zu und weisen der jeweiligen Funktion einen Mitarbeiter zu.</P
-></LI
-><LI
-><P
->Button Send Email: Schnell und einfach eine Email an die Adresse verschicken.</P
-></LI
-><LI
-><P
->Feld Newsletter: Hier kann man beliebig viele Newsletterverteilerzugehörigkeiten eintragen. Wir verwenden bei uns immer 3 verschiedene Vorsätze (m=Newsletter per Mail, b=Newsletter per Brief, f=Newsletter per Fax). Die verschiedenen Newsletter müssen per Komma getrennt werden, also z.B. "b-allgemeineInfos,m-spontaneAktionen".</P
-></LI
-><LI
-><P
->Feld info: Hier können allgemeine Infos eingegeben werden, die oben in der Listenansicht erscheinen. Dadurch hat man eine schnelle Übersicht. </P
-></LI
-></UL
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Variable</TH
+><TH
+>Beschreibung</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>astname</TD
+><TD
+>Nachname</TD
+></TR
+><TR
+><TD
+>lastname2</TD
+><TD
+>Nachname Zusatz</TD
+></TR
+><TR
+><TD
+>firstname</TD
+><TD
+>Vorname</TD
+></TR
+><TR
+><TD
+>first_last</TD
+><TD
+>Vorname Nachname</TD
+></TR
+><TR
+><TD
+>last_first</TD
+><TD
+>Nachname, Vorname</TD
+></TR
+><TR
+><TD
+>city</TD
+><TD
+>PLZ Stadt</TD
+></TR
+><TR
+><TD
+>city_alone</TD
+><TD
+>Stadt</TD
+></TR
+><TR
+><TD
+>city_alone</TD
+><TD
+>Stadt</TD
+></TR
+><TR
+><TD
+>zip</TD
+><TD
+>Postleitzahl</TD
+></TR
+><TR
+><TD
+>street</TD
+><TD
+>Straße</TD
+></TR
+><TR
+><TD
+>city_country</TD
+><TD
+>Staat-PLZ Stadt</TD
+></TR
+><TR
+><TD
+>country</TD
+><TD
+>Land</TD
+></TR
+><TR
+><TD
+>order_orderedat</TD
+><TD
+>Auftragsdatum</TD
+></TR
+><TR
+><TD
+>order_deliverdat</TD
+><TD
+>Lieferdatum</TD
+></TR
+><TR
+><TD
+>order_number</TD
+><TD
+>Auftragsnummer</TD
+></TR
+><TR
+><TD
+>order_designation</TD
+><TD
+>Auftragsbeschreibung</TD
+></TR
+><TR
+><TD
+>customers_ordernumber,</TD
+><TD
+>Auftragsnummer des Kunden</TD
+></TR
+></TBODY
+></TABLE
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="table"
 ><A
-NAME="s4"
->6.2.2. Reiter Bank</A
-></H2
-><P
->&#13;Hier kann man eine Kontoverbindung für die Adresse angeben. Wichtig: Damit das gelingt muss für die Bank ein Adressdatensatz erstellt werden. Im Prinzip langt ein einfacher Datensatz mit dem Banknamen (mehr ist nicht nötig).</P
-><DIV
-CLASS="figure"
-><A
-NAME="si3"
+NAME="rep_ta2"
 ></A
 ><P
 ><B
->Figure 6-3. </B
+>Table 3-2. ResultSet Order </B
 ></P
-><P
-><IMG
-SRC="images/screenshots/iAddress02.png"
-ALIGN="center"></P
-></DIV
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Variable </TH
+><TH
+>Beschreibung</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>orderid</TD
+><TD
+>Id des Auftrags</TD
+></TR
+><TR
+><TD
+>orderNumber</TD
+><TD
+>Auftragsnummer</TD
+></TR
+><TR
+><TD
+>invoiceNumber</TD
+><TD
+>Rechnungsnummer</TD
+></TR
+><TR
+><TD
+>invoiceDate</TD
+><TD
+>Rechnungsdatum</TD
+></TR
+><TR
+><TD
+>discount</TD
+><TD
+>Rabatt</TD
+></TR
+><TR
+><TD
+>misc_cost</TD
+><TD
+>div. Kosten</TD
+></TR
+><TR
+><TD
+>postage_cost</TD
+><TD
+>Porto o. Fracht</TD
+></TR
+><TR
+><TD
+>packing_cost</TD
+><TD
+>Verpackungskosten</TD
+></TR
+><TR
+><TD
+>term_of_payment</TD
+><TD
+>Zahlungsbedingung Tex</TD
+></TR
+><TR
+><TD
+>staff_lastname</TD
+><TD
+>Sachbearbeiter Nachname</TD
+></TR
+><TR
+><TD
+>staff_firstname</TD
+><TD
+>Sachbearbeiter vorname</TD
+></TR
+><TR
+><TD
+>staff_first_last</TD
+><TD
+>Sachbearbeiter Nachname, Vorname</TD
+></TR
+><TR
+><TD
+>staff_last_first</TD
+><TD
+>Sachbearbeiter Vorname Nachname</TD
+></TR
+><TR
+><TD
+>staff_phone_handy</TD
+><TD
+>Handy Sachbearbeiter</TD
+></TR
+><TR
+><TD
+>staff_email</TD
+><TD
+>Email des Sachbearbeiter</TD
+></TR
+><TR
+><TD
+>staff_phone</TD
+><TD
+>Telefon Sachbearbeiter</TD
+></TR
+><TR
+><TD
+>staff_fax</TD
+><TD
+>FAX Sachbearbeiter</TD
+></TR
+><TR
+><TD
+>partner_lastname</TD
+><TD
+>Gesprächspartner Nachname</TD
+></TR
+><TR
+><TD
+>partner_firstname</TD
+><TD
+>Gesprächspartner vorname</TD
+></TR
+><TR
+><TD
+>partner_first_last</TD
+><TD
+> GesprächspartnerNachname, Vorname</TD
+></TR
+><TR
+><TD
+>partner_last_first</TD
+><TD
+> GesprächspartnerVorname Nachname</TD
+></TR
+><TR
+><TD
+>customers_ordernumber,</TD
+><TD
+>Auftragsnummer des Kunden</TD
+></TR
+></TBODY
+></TABLE
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="table"
 ><A
-NAME="s5"
->6.2.3. Reiter Verschiedenes</A
-></H2
-><P
->&#13;Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde fällt und ob er Mwst. pflichtig ist.</P
-><DIV
-CLASS="figure"
-><A
-NAME="si4"
+NAME="rep_ta4"
 ></A
 ><P
 ><B
->Figure 6-4. </B
+>Table 3-3. ResultSet positions </B
 ></P
-><P
-><IMG
-SRC="images/screenshots/iAddress03.png"
-ALIGN="center"></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Variable</TH
+><TH
+>Beschreibung</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>order_number</TD
+><TD
+>Auftragsnummer</TD
+></TR
+><TR
+><TD
+>order_orderedat</TD
+><TD
+>Auftragsdatum</TD
+></TR
+><TR
+><TD
+>order_deliverdat</TD
+><TD
+>Auftragsdatum</TD
+></TR
+><TR
+><TD
+>order_tax_va</TD
+><TD
+>Auftragsgebundene Mwst. in Prozent</TD
+></TR
+><TR
+><TD
+>order_designation</TD
+><TD
+>Auftragsbeschreibung</TD
+></TR
+><TR
+><TD
+>pos_designation</TD
+><TD
+>Positionsbeschreibung</TD
+></TR
+><TR
+><TD
+>price</TD
+><TD
+>Preis</TD
+></TR
+><TR
+><TD
+>end_price_gross</TD
+><TD
+>Preis incl. Mwst.</TD
+></TR
+><TR
+><TD
+>end_price_netto</TD
+><TD
+>Preis ohne Mwst.</TD
+></TR
+><TR
+><TD
+>position</TD
+><TD
+>Position</TD
+></TR
+><TR
+><TD
+>amount</TD
+><TD
+>Menge</TD
+></TR
+><TR
+><TD
+>article_designation</TD
+><TD
+>Artikel Beschreibung</TD
+></TR
+><TR
+><TD
+>article_id</TD
+><TD
+>Artikelnummer</TD
+></TR
+><TR
+><TD
+>article_wrapping</TD
+><TD
+>Artikel Verpackung</TD
+></TR
+><TR
+><TD
+>article_quantumperwrap</TD
+><TD
+>Artikel Anzahl per Verpackungseinheit</TD
+></TR
+><TR
+><TD
+>article_unit</TD
+><TD
+>Artikel einheit</TD
+></TR
+></TBODY
+></TABLE
 ></DIV
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="sect4"
+><H4
+CLASS="sect4"
 ><A
-NAME="s6"
->6.2.4. Reiter Gesprächspartner</A
-></H2
-><P
->&#13;Zu jeden Kunden können beliebig viele Gesprächspartner hinterlegt werden. Die Buttons Brief und ext. Info gelten hier ebenso wie bei der Adresse. Über den Button E-Mail kann dem Adressaten schnell eine mail über das interne mailprogramm zugeschickt werden.</P
+NAME="mod_s2"
+>3.2.1.1.2. Rechnungsliste</A
+></H4
 ><DIV
-CLASS="figure"
+CLASS="table"
 ><A
-NAME="si5"
+NAME="rep_ta5"
 ></A
 ><P
 ><B
->Figure 6-5. </B
+>Table 3-4. ResultSet listOfInvoices </B
 ></P
-><P
-><IMG
-SRC="images/screenshots/iAddress04.png"
-ALIGN="center"></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><COL><COL><THEAD
+><TR
+><TH
+>Variable</TH
+><TH
+>Beschreibung</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>order_number</TD
+><TD
+>Auftragsnummer</TD
+></TR
+><TR
+><TD
+>invoice_number</TD
+><TD
+>Rechnungsnummer</TD
+></TR
+><TR
+><TD
+>date_of_invoice</TD
+><TD
+>Rechnungsdatum</TD
+></TR
+><TR
+><TD
+>total_amount</TD
+><TD
+>Gesamtsumme</TD
+></TR
+><TR
+><TD
+>maturity</TD
+><TD
+>Fälligkeit</TD
+></TR
+><TR
+><TD
+>lastname</TD
+><TD
+>Nachname</TD
+></TR
+><TR
+><TD
+>city</TD
+><TD
+>Stadt</TD
+></TR
+><TR
+><TD
+>adressid</TD
+><TD
+>Adress ID</TD
+></TR
+></TBODY
+></TABLE
+></DIV
 ></DIV
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="s7"
->6.2.5. Reiter Termine</A
-></H2
-><P
->&#13;<SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Wichtig: Damit ein Termin eingetragen werden kann, muss ein dazugehöriger Gesprächpartner markiert sein.</I
-></SPAN
-></P
+NAME="rep2_1_1"
+>3.2.1.2. Überwinterung</A
+></H3
 ><DIV
-CLASS="figure"
+CLASS="example"
 ><A
-NAME="si6"
+NAME="rep_e7"
 ></A
 ><P
 ><B
->Figure 6-6. </B
+>Example 3-7. </B
 ></P
-><P
-><IMG
-SRC="images/screenshots/iAddress05.png"
-ALIGN="center"></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;resultSet&#62;address&#60;/resultSet&#62;
+(["hibernation.hibernation number","order number"])
+(["to char(hibernation.begin date, \'" + dicUser['SQLDateFormat'"] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUserSQLDateFormat? + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+(["hibernation.begin notes","begin notes"])
+(["hibernation.ends notes","ends notes"])
+(["address.lastname","lastname"])
+(["address.lastname2","lastname2"])
+(["address.firstname","firstname"]) (["address.street","street"])
+(["(address.zip ' ' address.city)","city "])
+</PRE
 ></DIV
 ><P
->&#13;Die meisten anderen Felder sind wieder selbsterklärend. Mit "search Staff" lässt sich ein Mitarbeiter dem Termin zuweisen. Die Termine erscheinen alle im Startfenster (Einstellung in der user.cfg beachten!!) von cuon (kann ein paar Sekunden dauern).
+>&#13;Zusatzfelder in Überwinterungsmodul
+und im 
 </P
-><P
-></P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e8"
+></A
 ><P
 ><B
->Das Statusfeld:</B
+>Example 3-8. </B
 ></P
-><UL
-><LI
+><PRE
+CLASS="programlisting"
+>&#13;
+&#60;resultSet&#62;positions&#60;/resultSet&#62;
+(['hibernation.hibernation_number','order_number'])
+([:to char(hibernation.begin date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin date:to_char(hibernation.begin_date, \'" + dicUser[ 'SQLDateFormat'] + "\')","begin_date])
+(["hibernation.begin working time","begin working time"])
+([:hibernation plant.plant number","article id:hibernation_plant.plant_number","article _id])
+(["hibernation plant.price","price"])
+(["hibernation plant.status","status"])
+(["hibernation plant.plant notice","plantnotice"]) //Notiz
+([ "hibernation_plant.vermin","vermin"]) //Sch&#38;auml;dlinge
+(["hibernation plant.diameter","diameter"])// Durchmesser
+([:botany.botany name","botany n ame:botany.botany_name","botany_n ame])
+(["botany.local name","local name"])
+</PRE
+></DIV
 ><P
-> 0-99 unbestätigter Termin</P
-></LI
-><LI
+>&#13;Dabei ist folgendes zu beachten: Dies ist ein Teil aus dem Quellcode. Ich habe den SQL-Teil neugestaltet, um ihn besser pflegen zu können. Für den Report gilt folgendes: Je nach ResultSet stehen die Variablen im zweiten Teil der durch Komma getrennten Liste, also (["hibernation plant.status","status"]) steht im Report das Feld "status" zur Verfügung.</P
 ><P
-> 100-800 bestätigter Termin</P
-></LI
-><LI
-><P
-> 801-998 Abgebrochene Termine</P
-></LI
-><LI
-><P
-> 999 gelöschter Termin (geht auch im Menü mit "set ready") </P
-></LI
-></UL
-><P
->Die Nummer hängen vom jeweiligen Client ab, mit dem man den, über iCal exportierten, Termin ansehen will.Man kann die Termine mit jedem x-beliebigen Kalenderprogramm (Kontact, Evolution, Palm etc.) ansehen (nur lesen, kein schreiben!). Dazu ist eine Webschnittstelle eingerichtet mit der man einfach über die URL:
+>&#13;Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
 </P
 ><P
->  http://servername:7081/iCal/iCal_cuonbenutzername</P
+>Hier ein ausschnitt:</P
+><DIV
+CLASS="example"
+><A
+NAME="rep_e9"
+></A
 ><P
->&#13;die Daten als iCal Daten importieren kann.
-</P
-><P
->Das rechte Kalenderfeld dient dem Ansehen / Checken der vorhandenen Termine:
-</P
-><P
->-&#62; search Staff (Mitarbeiter auswählen) -&#62;im rechten Kalenderfeld Termin anwählen -&#62; links davon werden im weißen Eingabefeld die Termine des gewählten Mitarbeiters für diesen Tag angezeigt
-</P
-><P
->Anmerkung: Bei alten cuon_Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</P
+><B
+>Example 3-9. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;&#60;entry&#62;
+&#60;name&#62;eSequence&#60;/name&#62;
+&#60;type&#62;textline&#60;/type&#62;
+&#60;size&#62;30&#60;/size&#62;
+&#60;verify_type&#62;int&#60;/verify_type&#62;
+&#60;create_sql&#62;1&#60;/create_sql&#62;
+&#60;sql_field&#62;sequence_of_stock&#60;/sql_field&#62;
+&#60;duty&#62;YES&#60;/duty&#62;
+&#60;bg_color&#62;0&#60;/bg_color&#62;
+&#60;fg_color&#62;0&#60;/fg_color&#62;
+&#60;next_widget&#62;eAddressNumber&#60;/next_widget&#62;
+&#60;/entry&#62;
+</PRE
+></DIV
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -298,7 +701,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c607.html"
+HREF="c483.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -315,20 +718,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="c867.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Stammdaten</TD
+>Reports</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c607.html"
+HREF="c483.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -336,7 +743,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Statistiken</TD
 ></TR
 ></TABLE
 ></DIV

@@ -17,7 +17,7 @@ TITLE="Vorraussetzungen"
 HREF="x56.html"><LINK
 REL="NEXT"
 TITLE="Für Fortgeschrittene"
-HREF="x151.html"></HEAD
+HREF="x154.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x151.html"
+HREF="x154.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -101,11 +101,27 @@ NAME="t4"
 ></LI
 ><LI
 ><P
-> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen createuser admin Superuser -- Ja</P
+> 'Wichtig ! ' Bitte einen User mit superuserrechten anlegen: <DIV
+CLASS="example"
+><A
+NAME="pg_superuser"
+></A
+><P
+><B
+>Example 1-2. Beispiel User anlegen in Datenbank</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;als postgres user:
+createuser cuon_admin
+Es wird gefragt, ob die rolle ein superuser sein soll, bitte mit Ja beantworten
+</PRE
+></DIV
+></P
 ></LI
 ><LI
 ><P
-> sowie einen user zope ohne rechte </P
+> Nun noch einen weiteren user mit namen "zope" einrichten, diesem User keinerlei Rechte einräumen </P
 ></LI
 ></UL
 ><P
@@ -135,7 +151,7 @@ NAME="c2"
 ></A
 ><P
 ><B
->Example 1-2. </B
+>Example 1-3. </B
 ></P
 ><PRE
 CLASS="programlisting"
@@ -175,7 +191,7 @@ NAME="c2_1"
 ></A
 ><P
 ><B
->Example 1-3. pg_hba.conf</B
+>Example 1-4. pg_hba.conf</B
 ></P
 ><PRE
 CLASS="programlisting"
@@ -223,7 +239,7 @@ NAME="c3"
 ></A
 ><P
 ><B
->Example 1-4. </B
+>Example 1-5. </B
 ></P
 ><PRE
 CLASS="programlisting"
@@ -255,7 +271,7 @@ NAME="t8"
 ><P
 >&#13;
 Jetzt geht es mit den selben Schritten wie bei einem <A
-HREF="x165.html"
+HREF="x168.html"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -403,7 +419,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x151.html"
+HREF="x154.html"
 ACCESSKEY="N"
 >Next</A
 ></TD

@@ -135,11 +135,11 @@ createdb - E utf-8 cuon
             </title>
             <programlisting>
               <![CDATA[
-createuser admin
+createuser cuon_admin
 and type Yes on the question if this role should be a superuser ]]>
             </programlisting>
 
-          </example> as well as a user zope without rights. This user are a pure database user with gets later only some right to special tables.</para>
+          </example> as well as a user "zope" without rights. This user are a pure database user with gets later only some right to special tables.</para>
 <para> Now do check the plpgsql language. The creation of Proceduren and triggers happens with plpgsql, so this language must be installed. The following call as the postgres user create this:</para>
 <example role="codelisting" id="shel_postgres_pgsql">
 <title></title>
@@ -308,7 +308,22 @@ username: password
 </example></para>
 
 <para>set for username your cuon username and then the choosen password </para>
-<para><emphasis>Important: After each change of user.cfg you need to run the the setup program and write the new database rights (Database Tools - Grants).</emphasis>
+<para><emphasis>Important: At the first Installation of C.U.O.N. or after each change of user.cfg,  you need to run the the setup program and choose:</emphasis>
+</para>
+<example role="codelisting" id="menu_create_grants">
+<title>Create Grants File</title>
+<programlisting><![CDATA[
+Services --> Database Tools
+There Edit configfiles --> Server-->SQL-Rights-->Create Grant File
+]]></programlisting>
+</example> 
+
+<para><emphasis>
+and write the new database rights.</emphasis>
+</para>
+<para>after this you should do connect to the database and then choose:
+Tools-->Database-->Database-->SQL-Server-->grants
+
 </para>
 <para>Look also at "User create and attend". </para>
 <para>Set here some rights for the DMS, look also at the "sql.ini"</para>

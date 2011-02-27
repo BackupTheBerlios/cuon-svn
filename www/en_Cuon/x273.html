@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->GroupRightsOther.cfg </TITLE
+>UserGroups.cfg </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -13,11 +13,11 @@ REL="UP"
 TITLE="Configuration"
 HREF="c181.html"><LINK
 REL="PREVIOUS"
-TITLE="UserGroups.cfg "
+TITLE="sql.ini "
 HREF="x267.html"><LINK
 REL="NEXT"
-TITLE="Setup Tool"
-HREF="c276.html"></HEAD
+TITLE="GroupRightsOther.cfg "
+HREF="x279.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c276.html"
+HREF="x279.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,11 +73,29 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="grouprights_other"
->2.7. GroupRightsOther.cfg</A
+NAME="usergroups_cfg"
+>2.6. UserGroups.cfg</A
 ></H1
 ><P
-> [cuon_other] cuon_clients: select </P
+> This file contains the Database rights: <DIV
+CLASS="example"
+><A
+NAME="c_usergroups_cfg"
+></A
+><P
+><B
+>Example 2-15. usergroups.cfg</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[USER]
+zope: zope_rights 
+heino: cuon_all 
+jhamel: cuon_all
+</PRE
+></DIV
+>
+ </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -113,7 +131,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c276.html"
+HREF="x279.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -123,7 +141,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->UserGroups.cfg</TD
+>sql.ini</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -137,7 +155,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Setup Tool</TD
+>GroupRightsOther.cfg</TD
 ></TR
 ></TABLE
 ></DIV
