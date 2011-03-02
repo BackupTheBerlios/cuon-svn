@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Betriebssytemspezifische Tipps und Hilfen </TITLE
+>Fax-Server</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -13,11 +13,11 @@ REL="UP"
 TITLE="C.U.O.N. Administration"
 HREF="p45.html"><LINK
 REL="PREVIOUS"
-TITLE="Faxen vom Client"
-HREF="x968.html"><LINK
+TITLE="Statistiken"
+HREF="c877.html"><LINK
 REL="NEXT"
-TITLE="Linux Distributionen"
-HREF="x981.html"></HEAD
+TITLE="Faxen vom Client"
+HREF="x982.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x968.html"
+HREF="c877.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x981.html"
+HREF="x982.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -74,23 +74,31 @@ CLASS="chapter"
 ><A
 NAME="AEN973"
 ></A
->Chapter 6. Betriebssytemspezifische Tipps und Hilfen </H1
+>Chapter 5. Fax-Server</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="bth1"
->6.1. Allgemein</A
+NAME="fax_server"
+>5.1. Serverseitige Einstellungen</A
 ></H1
 ><P
->&#13;cuon benötigt ein Officeprogramm. Das kann LibreOffice, OpenOffice, abiword oder sogar MS Office (das Plugin, dass liest und schreibt, muss dazu installiert werden) sein. Die meisten User verwenden momentan LibreOffice.</P
+>Alle Benutzer von cuon können Faxe über den Faxserver versenden, das heißt, Sie brauchen kein Faxgerät oder Faxsoftware an Ihren Arbeitsplatz.</P
 ><P
->Ein PDF Viewer muss installiert sein. Dies kann der Adoce Acrobat Reader oder freie Programme, wie ghostview, xpdf, kdpf oder ähnliches sein.Die vorgabe ist der Evince, der im Gnome Destop vorinstalliert ist</P
+>Wenn der Faxserver sich auf einen separaten PC befindet, müssen sie dies in der <A
+HREF="x215.html#server_ini"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+> Server.ini </I
+></SPAN
+></A
+> eintragen. Ebenfalls muß dann ein Faxuser angelegt werden, der einen ssh Zugriff mit Key ( also ohne Passwort) gestattet
+</P
 ><P
->Ein Bildbetrachter muss installiert sein.</P
-><P
->Zudem kann das Document Management System alle weiteren Dateiformate verwalten, sofern ein dazu passender Betrachter installiert ist.</P
+>Das Verzeichnis /var/spool/cuon-fax muß auf auf dem Cuon-Server angelegt sein,  und auf dem Faxserver ebenfalls, wenn der Faxserver separat ist</P
 ></DIV
 ></DIV
 ><DIV
@@ -109,7 +117,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x968.html"
+HREF="c877.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -127,7 +135,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x981.html"
+HREF="x982.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -137,7 +145,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Faxen vom Client</TD
+>Statistiken</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -151,7 +159,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Linux Distributionen</TD
+>Faxen vom Client</TD
 ></TR
 ></TABLE
 ></DIV

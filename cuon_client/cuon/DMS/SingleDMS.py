@@ -190,7 +190,10 @@ class SingleDMS(SingleData):
             self.fillOtherEntries(self.firstRecord)
             
     def fillOtherEntries(self, oneRecord):
-        self.Extract.set_text(oneRecord['dms_extract'])
+        try:
+            self.Extract.set_text(oneRecord['dms_extract'])
+        except:
+            pass
         self.fileFormat = oneRecord['file_format']
         self.fileSuffix = oneRecord['file_suffix']
         self.ModulNumber = oneRecord['insert_from_module']

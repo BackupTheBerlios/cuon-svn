@@ -335,7 +335,7 @@ class Finances(xmlrpc.XMLRPC, basics):
         print 'new ticket'
         
         sSql = "select orb.id,  orb.discount,  orb.packing_cost,  orb.postage_cost,  orb.misc_cost,  "
-        sSql += "inv.id"
+        sSql += "inv.id "
         sSql += "from orderbook as orb, list_of_invoices as inv   "
         sSql += "where orb.id = inv.ordernumber "
         

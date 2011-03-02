@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Email und DMS</TITLE
+>Schriftverkehr </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -11,13 +11,13 @@ TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Document Management System ( DMS) "
-HREF="c1314.html"><LINK
+HREF="c1325.html"><LINK
 REL="PREVIOUS"
-TITLE="Schriftverkehr "
-HREF="x1367.html"><LINK
+TITLE="Handhabung des DMS "
+HREF="x1355.html"><LINK
 REL="NEXT"
-TITLE="Newsletter"
-HREF="c1397.html"></HEAD
+TITLE="Email und DMS"
+HREF="x1389.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x1367.html"
+HREF="x1355.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c1397.html"
+HREF="x1389.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,83 +73,31 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="dms_imap"
->11.4. Email und DMS</A
+NAME="dms4"
+>11.3. Schriftverkehr</A
 ></H1
 ><P
->Empfangene und versendete Emails können automatisch den entsprechenden Adressen zugeordnet werden. Dies geschieht über die Einrichtung des OrdnerS "AUTOMATIC_CUON" in dem Imap Postfach des Users. Dann wird in den Benutzereinstellungen die Checkbox "Check Imap Folder" angekreuzt. Von nun an wird jede 1/2 Stunde dieser Ordner durchsucht und die Emails eingeordnet </P
+>&#13;Der gesamte Schriftverkehr kann über das DMS abgewickelt werden. Die passenden Vorlagen können nach dieser Beschreibung Openoffice / Koffice Vorlagen entsprechend erstellt werden[[BR] Beim Aufrufen der Brief-funktion in der Adressverwaltung wird ebenfalls die E-Mail-Adresse in die Zwischen-Ablage kopiert, so das dies Schreiben auch einfach per Email versendet werden kann ( ab Version 10.7-21).
+Statistik </P
 ><P
->Jede Email wird anhand der <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Von</I
-></SPAN
-> bzw <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->An</I
-></SPAN
-> Email Adresse der entsprechenden Adresse im <A
-HREF="c1314.html#dms1"
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->DMS</I
-></SPAN
-></A
-> zugeordnet und dort importiert. Gleiches geschieht mit Anhängen, sofern Sie erkannt werden.Normalerweise werden Bilder, Office Dokumente, PDF usw. richtig erkannt.</P
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="dms_imap_normal"
->11.4.1. Normale Emails</A
-></H2
+>&#13;Auch die Statistiken können für jedes unternehmen separat erstellt werden. Hier die anleitung dazu Eigene Statistiken erstellen, anpassen .
+Tipps und Tricks </P
 ><P
->Sie können einfach eine Email von einer CUON Adresse ( oder an eine Adresse) in den AUTOMATIC_CUON Ordner reinkopieren oder Sie stellen in Ihren Email-Program einen Filter ein, der bestimmete Emails dahin kopiert. Dann wird die Mail ins DMS einsortiert. Ein weiterer Weg ist es, wenn die email-Adresse des Adressaten nicht in CUON gespeichert ist, dies über die Begriffe <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->AUTOMATIC_CUON ADDRESS ID:</I
-></SPAN
-> bzw. <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->AUTOMATIC_CUON PARTNER ID:</I
-></SPAN
->, gefolgt von der entsprechenden ID,  zusätzlich in der Betreffzeile einzufügen, und dann in den Ordner AUTOMATIC_CUON reinkopieren</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="dms_imap_newsletter"
->11.4.2. Email Newsletter</A
-></H2
+></P
+><UL
+><LI
 ><P
->Hier kann z.B. einfach eine BCC Adresse und/oder ein Filter im Email Programm eingesetzt werden, der auf den Ordner <SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->AUTOMATIC_CUON</I
-></SPAN
-> zeigt und dann wird entsprechend die Newsletter bei den Kunden ins  <A
-HREF="c1314.html#dms1"
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->DMS</I
-></SPAN
-></A
-> eingeordnet.</P
-></DIV
+>&#13;    * Die verwendeten Pythonmodule laden bei Bildern (d.h. auch bei gescannten Seiten) leider immer den Bildbetrachter xv. Wenn dieser nicht installiert sein sollte (z.B. KDE System o.ä.) dann kann man als Benutzer root einfach einen Link auf den gewünschten Bildbetrachter setzen. Wir haben das z.B. so umgesetzt: "ln -s /usr/bin/konqueror /usr/bin/xv".</P
+></LI
+><LI
+><P
+>* Anscheinend hat das Python-Scanner-Modul starke Probleme mit Epson Scannern. Es kann passieren, dass nach dem zweiten oder dritten Scanvorgang cuon komplett abstürzt. Eine Lösung des Problems haben wir noch nicht gefunden. Einzige Abhilfe: Zwischen jedem Scannen das Programm "scanimage --resolution 50" starten (macht einen schnellen Vorschauscan und nachher tut cuon wieder).</P
+></LI
+><LI
+><P
+> * Über Menü-&#62;Arbeit-&#62;DMS kann man ALLE vorhandenen Dateien sehen. Wenn man diese aber an dieser Stelle verändert, verliert man momentan noch die Zuordnung z.B. zu einem Adressdatensatz!! Daher hier: Vorsichtig editieren! </P
+></LI
+></UL
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -167,7 +115,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x1367.html"
+HREF="x1355.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -185,7 +133,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c1397.html"
+HREF="x1389.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -195,13 +143,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Schriftverkehr</TD
+>Handhabung des DMS</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1314.html"
+HREF="c1325.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -209,7 +157,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Newsletter</TD
+>Email und DMS</TD
 ></TR
 ></TABLE
 ></DIV

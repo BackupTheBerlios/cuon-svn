@@ -2,24 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->menus.cfg </TITLE
+>UserGroups.cfg </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="
-       C.U.O.N. 
-    "
+TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Configuration"
-HREF="c167.html"><LINK
+HREF="c183.html"><LINK
 REL="PREVIOUS"
-TITLE="user.cfg "
-HREF="x250.html"><LINK
+TITLE="sql.ini "
+HREF="x269.html"><LINK
 REL="NEXT"
-TITLE="clients.ini "
-HREF="x310.html"></HEAD
+TITLE="GroupRightsOther.cfg "
+HREF="x281.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -39,9 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.: 
-       Installation and Usage 
-    </TH
+>C.U.O.N.:  Installation and Usage </TH
 ></TR
 ><TR
 ><TD
@@ -49,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x250.html"
+HREF="x269.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -63,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x310.html"
+HREF="x281.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,85 +73,29 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="menu_cfg"
->2.3. menus.cfg</A
+NAME="usergroups_cfg"
+>2.6. UserGroups.cfg</A
 ></H1
 ><P
->&#13;<P
-></P
-><UL
-><LI
-><P
->[gewoehnlicherAllUser]</P
-></LI
-><LI
-><P
->all: Priv;all  </P
-></LI
-><LI
-><P
->experimental: Priv;all</P
-></LI
-></UL
->
-</P
-><P
->&#13;<P
-></P
+> This file contains the Database rights: <DIV
+CLASS="example"
+><A
+NAME="c_usergroups_cfg"
+></A
 ><P
 ><B
->test</B
+>Example 2-15. usergroups.cfg</B
 ></P
-><UL
-><LI
-><P
->[AdminUser] </P
-></LI
-><LI
-><P
->all: Priv;all </P
-></LI
-><LI
-><P
->experimental: Priv;all</P
-></LI
-><LI
-><P
->staff: Priv;all </P
-></LI
-><LI
-><P
->extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() </P
-></LI
-><LI
-><P
->forms: Priv;all </P
-></LI
-><LI
-><P
->forms_addresses: Priv;all</P
-></LI
-></UL
-></P
-><P
-> Dies ist nur für Gärtnereien interessant</P
-><P
-><P
-></P
-><UL
-><LI
-><P
->address_button_grave: Yes</P
-></LI
-><LI
-><P
->address_button_grave_position: 14</P
-></LI
-></UL
-></P
-><P
->&#13;
-Für jeden User muss ein Eintrag existieren. Der Eintrag für die Adminuser ist etwas komplexer. Eine genaue Erklärung erfolgt hier, wenn das Modul noch weiter fortgeschritten ist. Für den Anfang können diese Werte übernommen werden.</P
+><PRE
+CLASS="programlisting"
+>&#13;[USER]
+zope: zope_rights 
+heino: cuon_all 
+jhamel: cuon_all
+</PRE
+></DIV
+>
+ </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -173,7 +113,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x250.html"
+HREF="x269.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -191,7 +131,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x310.html"
+HREF="x281.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -201,13 +141,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->user.cfg</TD
+>sql.ini</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c167.html"
+HREF="c183.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -215,7 +155,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->clients.ini</TD
+>GroupRightsOther.cfg</TD
 ></TR
 ></TABLE
 ></DIV

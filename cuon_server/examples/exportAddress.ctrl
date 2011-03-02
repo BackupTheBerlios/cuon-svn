@@ -12,4 +12,5 @@ Group=
 [Values]
 Split=;
 Encoding = utf-8
-
+print_header = YES
+string_delimit =

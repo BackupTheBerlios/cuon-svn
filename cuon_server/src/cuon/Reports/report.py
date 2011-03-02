@@ -233,11 +233,34 @@ class report(MyXML):
             self.dicPage['SiteBackgroundY'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_y'))
             self.dicPage['SiteBackgroundWidth'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_width'))
             self.dicPage['SiteBackgroundHeight'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_height'))
+            self.dicPage['PropertyBG'] =  self.getEntrySpecification(cyRootNode[0],'PropertyBG')
         except Exception, params:
             print Exception, params
             
-
+        try:
+            
+            self.dicPage['SiteBackground_URL2'] =  self.getEntrySpecification(cyRootNode[0],'sitebackground_url2').encode('ascii')
+            self.dicPage['SiteBackgroundX2'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_x2'))
+            self.dicPage['SiteBackgroundY2'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_y2'))
+            self.dicPage['SiteBackgroundWidth2'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_width2'))
+            self.dicPage['SiteBackgroundHeight2'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_height2'))
+            self.dicPage['PropertyBG2'] =  self.getEntrySpecification(cyRootNode[0],'PropertyBG2')
+        except Exception, params:
+            print Exception, params
         
+        try:
+            
+            self.dicPage['SiteBackground_URL3'] =  self.getEntrySpecification(cyRootNode[0],'sitebackground_url3').encode('ascii')
+            self.dicPage['SiteBackgroundX3'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_x3'))
+            self.dicPage['SiteBackgroundY3'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_y3'))
+            self.dicPage['SiteBackgroundWidth3'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_width3'))
+            self.dicPage['SiteBackgroundHeight3'] =  int(self.getEntrySpecification(cyRootNode[0],'sitebackground_height3'))
+            self.dicPage['PropertyBG3'] =  self.getEntrySpecification(cyRootNode[0],'PropertyBG3')
+        except Exception, params:
+            print Exception, params
+            
+            
+            
         #
         # Report Header
         #
@@ -471,7 +494,7 @@ class report(MyXML):
         #print '+++++++'
         #print cyReportPageEntries
         liRecord = []
-     
+        dicRow = {'x1':x1, 'x2':x2,'y1':y1,'y2':y2}
         
         for i in range(len(cyReportPageEntries)):
             dicRow = self.getReportEntry(cyReportPageEntries[i])
@@ -1401,20 +1424,66 @@ class report(MyXML):
                 nHeight = self.dicPage['SiteBackgroundHeight'] 
                 x1 = self.dicPage['SiteBackgroundX']
                 y1 = self.dicPage['SiteBackgroundY']
+                dicRow = {'PropertyBG':self.dicPage['PropertyBG']}
+                if self.doPrintPart(dicRow, 'BG'):
+                    if nWidth > 0 and nHeight > 0:
+                        c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
+                    else:
+                        c.drawImage(sImage, x1, y1)
+                        
                 
-                if nWidth > 0 and nHeight > 0:
-                    c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
-                else:
-                    c.drawImage(sImage, x1, y1)
-                    
         except Exception, params:
             print Exception, params
-                 
-    def checkProperty(self,  liRecord, dicRow) :
-        
+            
+        try:
+            if self.dicPage.has_key('SiteBackground_URL2'):
+                
+                
+                sImage = str(self.dicPage['SiteBackground_URL2'])
+                #print 'ImageURL = ', sImage
+                nWidth = self.dicPage['SiteBackgroundWidth2'] 
+                nHeight = self.dicPage['SiteBackgroundHeight2'] 
+                x1 = self.dicPage['SiteBackgroundX2']
+                y1 = self.dicPage['SiteBackgroundY2']
+                dicRow = {'PropertyBG1':self.dicPage['PropertyBG2']}
+                if self.doPrintPart(dicRow, 'BG2'):
+                    if nWidth > 0 and nHeight > 0:
+                        c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
+                    else:
+                        c.drawImage(sImage, x1, y1)
+                        
+                
+        except Exception, params:
+            print Exception, params   
+            
+            
+        try:
+            if self.dicPage.has_key('SiteBackground_URL3'):
+                
+                
+                sImage = str(self.dicPage['SiteBackground_URL3'])
+                #print 'ImageURL = ', sImage
+                nWidth = self.dicPage['SiteBackgroundWidth3'] 
+                nHeight = self.dicPage['SiteBackgroundHeight3'] 
+                x1 = self.dicPage['SiteBackgroundX3']
+                y1 = self.dicPage['SiteBackgroundY3']
+                dicRow = {'PropertyBG3':self.dicPage['PropertyBG3']}
+                if self.doPrintPart(dicRow, 'BG3'):
+                    if nWidth > 0 and nHeight > 0:
+                        c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
+                    else:
+                        c.drawImage(sImage, x1, y1)
+                        
+                
+        except Exception, params:
+            print Exception, params
+            
+            
+            
+    def doPrintPart(self, dicRow,  Suffix = ''):
         doPrint = False
-        if dicRow.has_key('Property') and dicRow['Property']:
-            sProperty = dicRow['Property']
+        if dicRow.has_key('Property'+Suffix) and dicRow['Property'+Suffix]:
+            sProperty = dicRow['Property'+Suffix]
             printSite = sProperty[0].strip().upper()
             if printSite == 'A':
                 # all sites
@@ -1437,6 +1506,13 @@ class report(MyXML):
                 
         else:
             doPrint = True 
+        print dicRow, Suffix, doPrint
+        return doPrint
+        
+        
+    def checkProperty(self,  liRecord, dicRow) :
+        
+        doPrint = self.doPrintPart(dicRow)
         
         if doPrint:
             liRecord.append(dicRow)

@@ -82,8 +82,14 @@ Hardware
 Der Client-Rechner mu&szlig; eine grafische Oberfl&auml;che haben </para>
 <para>
 Der Install-client mu&szlig; ein Linux-Rechner sein. X mu&szlig; laufen und eine Oberfl&auml;che wie XFCE, Gnome, KDE, Blackbox, windowmaker oder eine andere Oberfl&auml;che mu&szlig; vorhanden sein.
-SSH zum Server/Localhost 
+
 </para>
+</sect1>
+<sect1 id="t1_1_1"><title>Download des Installers</title>
+<para>Als erstes: F&uuml;r eineinfaches Testen laden Sie bitte einfach ein <ulink url="http://cuon.org/Downloads/VirtualBox.html">VirtualBox Image</ulink> mit einem kompletten C.U.O.N. System ( Server, Setup und Client) hier herunter. </para>
+<para>Ansonsten laden Sie die entsprechenden Installer auf der <ulink url="http://cuon.org/Downloads/Download.html"> Cuon Download Seite</ulink> herunter und installieren diese.  </para>
+</sect1>
+<sect1 id="t1_1_1_1"><title>Vorbereitungen</title>
 <sect2 id="t2"><title>SSH key</title>
 <para>Als User f&uuml;hren Sie bitte folgendes aus, falls noch kein ssh Schl&uuml;sselpaar existiert.</para>
 
@@ -206,7 +212,7 @@ openssl genrsa -out serverkey.pem 2048
 
 openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 
-Kopieren sie dann die beiten Zertifikate nach /etc/cuon .
+Kopieren sie dann die beiden Zertifikate nach /etc/cuon .
 
 Dann starten Sie den xmlrpc server. einen ersten Test k&ouml;nnen Sie wie folgt machen:
 
@@ -218,12 +224,12 @@ F&uuml;r xxx.xxx.xxx.xxx bitte Ihre Server-IP einsetzen.
 </example>
 </sect3>
 </sect2> 
-
-<sect2 id="t8"><title>Haupt Installation  </title>
+</sect1>
+<sect1 id="t8"><title>Haupt Installation  </title>
 <para>
 
 Jetzt geht es mit den selben Schritten wie bei einem <link linkend='Update'><emphasis>Update</emphasis></link> weiter. </para>
-</sect2>
+
 <sect2 id="t13"><title>Server testen und Datenbank einrichten</title>
 
 <para>
@@ -254,7 +260,8 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 </itemizedlist> 
 
 </sect2>
-
+</sect1>
+<sect1 id="t9_u1"><title>Der C.U.O.N. Client </title>
 <sect2 id="t9"><title>Client starten </title>
 
 <para>Jetzt kann schon mit den client gearbeitet werden , dazu bei cuon.org --> Downloads -->Deutsch die Datei  Cuon-Client downloaden. Bitte den Anweisungen zur Installation und Konfiguration folgen:</para>
@@ -1140,11 +1147,29 @@ Dies sind die Definitionen, die den Report beschreiben. Auch hier gelten f&uuml;
 <leftMargin>40</leftMargin> ( Linker Rand )
 <papersizeX>595</papersizeX> ( Papierbreite )
 <papersizeY>842</papersizeY> ( Papierl&auml;nge )
+
+
 <sitebackground_url>/home/jhamel/frei08_12.jpg</sitebackground_url> (Pfad zum Hintergrundbild)
-<sitebackground_x>20</sitebackground_x></para>
+<sitebackground_x>20</sitebackground_x>
 <sitebackground_y>0</sitebackground_y>( x,y linke, untere Ecke des Hintergrundbildes
 <sitebackground_width>720</sitebackground_width> ( Gr&ouml;&szlig;e nach rechts )
 <sitebackground_height>1020</sitebackground_height> ( H&ouml;he nach oben ) 
+<PropertyBG>F</PropertyBG>
+
+<sitebackground_url2>/home/jhamel/frei08_12.jpg</sitebackground_url2> (Pfad zum Hintergrundbild)
+<sitebackground_x2>20</sitebackground_x2>
+<sitebackground_y2>0</sitebackground_y2>( x,y linke, untere Ecke des Hintergrundbildes
+<sitebackground_width2>720</sitebackground_width2> ( Gr&ouml;&szlig;e nach rechts )
+<sitebackground_height2>1020</sitebackground_height2> ( H&ouml;he nach oben ) 
+<PropertyBG2>N</PropertyBG2>
+
+<sitebackground_url3>/home/jhamel/frei08_12.jpg</sitebackground_url3> (Pfad zum Hintergrundbild)
+<sitebackground_x3>20</sitebackground_x3>
+<sitebackground_y3>0</sitebackground_y3>( x,y linke, untere Ecke des Hintergrundbildes
+<sitebackground_width3>720</sitebackground_width3> ( Gr&ouml;&szlig;e nach rechts )
+<sitebackground_height3>1020</sitebackground_height3> ( H&ouml;he nach oben ) 
+<PropertyBG3>L</PropertyBG3>
+
 
 ]]></programlisting>
 </example>
@@ -1248,11 +1273,29 @@ Hintergrundbilder (z.B. ganze Seite mit Firmenlogo, Text etc.) bieten eine schne
 <leftMargin>40</leftMargin>
 <papersizeX>595</papersizeX>
 <papersizeY>842</papersizeY>
+
+
 <sitebackground_url>/home/jhamel/frei08_12.jpg</sitebackground_url>
 <sitebackground_x>20</sitebackground_x>
 <sitebackground_y>0</sitebackground_y>
 <sitebackground_width>720</sitebackground_width>
 <sitebackground_height>1020</sitebackground_height>
+<PropertyBG>F</PropertyBG>
+
+<sitebackground_url2>/home/jhamel/frei08_12.jpg</sitebackground_url2> (Pfad zum Hintergrundbild)
+<sitebackground_x2>20</sitebackground_x2>
+<sitebackground_y2>0</sitebackground_y2>( x,y linke, untere Ecke des Hintergrundbildes
+<sitebackground_width2>720</sitebackground_width2> ( Gr&ouml;&szlig;e nach rechts )
+<sitebackground_height2>1020</sitebackground_height2> ( H&ouml;he nach oben ) 
+<PropertyBG2>N</PropertyBG2>
+
+<sitebackground_url3>/home/jhamel/frei08_12.jpg</sitebackground_url3> (Pfad zum Hintergrundbild)
+<sitebackground_x3>20</sitebackground_x3>
+<sitebackground_y3>0</sitebackground_y3>( x,y linke, untere Ecke des Hintergrundbildes
+<sitebackground_width3>720</sitebackground_width3> ( Gr&ouml;&szlig;e nach rechts )
+<sitebackground_height3>1020</sitebackground_height3> ( H&ouml;he nach oben ) 
+<PropertyBG3>L</PropertyBG3>
+
 ]]></programlisting>
 </example>
 

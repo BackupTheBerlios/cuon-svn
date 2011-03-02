@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Hilfe</TITLE
+>Haupt Installation  </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="C.U.O.N. Installation"
-HREF="c31.html"><LINK
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c47.html"><LINK
 REL="PREVIOUS"
-TITLE="Für fortgeschrittene"
-HREF="x118.html"><LINK
+TITLE="Postgres-Datenbank auf dem Server"
+HREF="x83.html"><LINK
 REL="NEXT"
-TITLE="Update"
-HREF="x132.html"></HEAD
+TITLE="Der C.U.O.N. Client "
+HREF="x159.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x118.html"
+HREF="x83.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 1. C.U.O.N. Installation</TD
+>Chapter 1. C.U.O.N. Installation und Wartung</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x132.html"
+HREF="x159.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,14 +73,113 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="t12"
->1.5. Hilfe</A
+NAME="t8"
+>1.6. Haupt Installation</A
 ></H1
 ><P
->Wenn Sie Hilfe benötigen, senden Sie eine Email an mich  cuon@cuon.org 
+>&#13;
+Jetzt geht es mit den selben Schritten wie bei einem <A
+HREF="x178.html"
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Update</I
+></SPAN
+></A
+> weiter. </P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="t13"
+>1.6.1. Server testen und Datenbank einrichten</A
+></H2
+><P
+>&#13;Zum ersten Testen der Installation langt ein laufender postgresql Server und der cuonxmlrpc Server. Um eine bessere Übersicht über das Geschehen zu haben empfiehlt es sich, den cuonxmlrpc Server per Hand zu starten um die Debug-Ausgabe im Terminal verfolgen zu können: python /usr/share/cuon/cuon_server/src/server_xmlrpc
 </P
 ><P
->Jügen Hamel </P
+>&#13;Dann in einem Fenster Logfile der SQL Datenbank öffnen:
+tail -f /var/log/postgresql/postg*main*.log
+cuon starten </P
+><P
+>&#13;Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Diese bitte so starten:
+</P
+><P
+></P
+><UL
+><LI
+><P
+>  /etc/init.d/cuonxmlrpc start</P
+></LI
+><LI
+><P
+> /etc/init.d/cuonweb start</P
+></LI
+><LI
+><P
+> /etc/init.d/cuonreport start </P
+></LI
+></UL
+><P
+>Um bei einem Neustart ein automatisches Hochfahren aller benötigten Programme zu gewährleisten kann man mit dem Programm rcconf diese Programmstarts auch schnell einrichten (bitte nicht vergessen die Datenbank postgresql zu starten).</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="opt_files"
+>1.6.2. Optionale Programme</A
+></H2
+><DIV
+CLASS="tip"
+><P
+></P
+><TABLE
+CLASS="tip"
+WIDTH="100%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/tip.gif"
+HSPACE="5"
+ALT="Tip"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>Zusätzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</P
+></TD
+></TR
+></TABLE
+></DIV
+><P
+></P
+><UL
+><LI
+><P
+> libots </P
+></LI
+><LI
+><P
+> pstotext  </P
+></LI
+><LI
+><P
+> odt2txt  </P
+></LI
+><LI
+><P
+> gocr  </P
+></LI
+></UL
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -98,7 +197,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x118.html"
+HREF="x83.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -116,7 +215,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x132.html"
+HREF="x159.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -126,13 +225,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Für fortgeschrittene</TD
+>Postgres-Datenbank auf dem Server</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c31.html"
+HREF="c47.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -140,7 +239,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Update</TD
+>Der C.U.O.N. Client</TD
 ></TR
 ></TABLE
 ></DIV

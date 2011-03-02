@@ -513,7 +513,7 @@ class MainWindow(windows):
         sFolder, sList = self.readDDialogData()
         print sFolder,  sList
         self.DialogWindow.hide()
-        self.editReportFile(sList.strip(),sFolder_strip())
+        self.editReportFile(sList.strip(),"user_" + sFolder.strip())
     
     def on_bDCancel_clicked(self, event):
         self.DialogWindow.hide()

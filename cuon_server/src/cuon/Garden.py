@@ -68,7 +68,7 @@ class Garden(xmlrpc.XMLRPC, basics):
         sSql = 'select invoice_number from list_of_invoices where order_number = ' + `orderNumber`
         
         dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        if dicResult not in ['NONE','ERROR']:
+        if dicResult not in self.liSQL_ERRORS:
            sSql1 = 'insert into list_of_invoices ( id, invoice_number, order_number) '
            sSql1 = sSql1 + ' values (nextval(\'list_of_invoices_id +sc +\'),nextval(\'numerical_misc_standard_invoice + sc + \'), ' 
            sSql1 = sSql1 + `orderNumber` + ' )'

@@ -301,7 +301,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 2, 'Rev': 27, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 3, 'Rev': 2, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1557,29 +1557,6 @@ else:
 
 td.SystemName = AlternateGui
 td.cuon_path = WorkingDir
-# set some pathes
-try:
-    print 'WorkingDir', WorkingDir
-    if not os.path.exists(WorkingDir + '/cuon_data'):
-        print 'make dir cuon_data'
-        os.mkdir(WorkingDir +'/cuon_data')
-        
-    if not os.path.exists(WorkingDir +'/cuon_data/dms'):
-        print 'make dir cuon_data/dms'
-        os.mkdir(WorkingDir +'/cuon_data/dms')
-
-    if not os.path.exists(WorkingDir +'/cuon_data/import'):
-        print 'make dir cuon_data/dms'
-        os.mkdir(WorkingDir +'/cuon_data/import')
-        
-        
-    if not os.path.exists(WorkingDir +'/cuon_data/export'):
-        print 'make dir cuon_data/dms'
-        os.mkdir(WorkingDir +'/cuon_data/export')
-            
-        
-except Exception, params:
-    print Exception,  params
 
 
 
@@ -1631,6 +1608,29 @@ if len(sys.argv) > 9:
         ClientID =  int(sys.argv[9].strip())
         print 'clientID =', ClientID   
 
+# set some pathes
+try:
+    print 'WorkingDir', WorkingDir
+    if not os.path.exists(WorkingDir + '/cuon_data'):
+        print 'make dir cuon_data'
+        os.mkdir(WorkingDir +'/cuon_data')
+        
+    if not os.path.exists(WorkingDir +'/cuon_data/dms'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/dms')
+
+    if not os.path.exists(WorkingDir +'/cuon_data/import'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/import')
+        
+        
+    if not os.path.exists(WorkingDir +'/cuon_data/export'):
+        print 'make dir cuon_data/dms'
+        os.mkdir(WorkingDir +'/cuon_data/export')
+            
+        
+except Exception, params:
+    print Exception,  params
 
 d = cuon.Databases.dumps.dumps(td)
 d.openDB()

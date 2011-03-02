@@ -20,7 +20,7 @@ import gtk
 import gtk.glade
 import string
 import ConfigParser
-
+import types
 from cuon.Misc.fileSelection import fileSelection
 import SingleImport
 
@@ -37,6 +37,7 @@ class export_generic1(fileSelection):
         self.dicFileAttributes['splitValue'] = ';'
         self.dicFileAttributes['fromChangedValue'] = None
         self.dicFileAttributes['toChangedValue'] = ''
+        self.dicFileAttributes['printHeader'] = 'YES'
         #self.dicFileAttributes['allTables'] = allTables
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
         self.iColumns = 0
@@ -80,7 +81,8 @@ class export_generic1(fileSelection):
         self.dicFileAttributes['Encoding'] = self.getConfigOption('Values', 'Encoding')
         self.dicFileAttributes['fromChangedValue'] = None
         self.dicFileAttributes['toChangedValue'] = ''
-        
+        self.dicFileAttributes['printHeader'] = self.getConfigOption('Values', 'print_header')
+        self.dicFileAttributes['stringDelimit'] = self.getConfigOption('Values', 'string_delimit')
         
         self.dicFileAttributes['exportHeader'] 
       
@@ -109,6 +111,7 @@ class export_generic1(fileSelection):
         if self.dicFileAttributes['Order'] :
             sSql += ' order by ' + self.dicFileAttributes['Order'] 
           
+        
         print 'sSql = ',  sSql
         liExport  = self.rpc.callRP('Database.executeNormalQuery', sSql, self.dicUser)
         
@@ -118,14 +121,38 @@ class export_generic1(fileSelection):
             pass
             
         exportFile = open(self.dicFileAttributes['exportFile'], 'a')   
-    
+        if self.dicFileAttributes['printHeader'].upper() == 'YES':
+            iHeader = len(liHeaders)
+            for aHeader in range(iHeader):
+                print 'Header', iHeader,  aHeader
+                if iHeader == aHeader+1:
+                    exportFile.write(liHeaders[aHeader] )
+                else:
+                    exportFile.write(liHeaders[aHeader]+ self.dicFileAttributes['splitValue'])
+                 
+            exportFile.write('\n\n')    
         if liExport:
+            
             
             for oneExport in liExport:
                 print 'onexport = ',  oneExport
-                for aRow in liHeaders:
-                    print oneExport[aRow.lower().strip()]
-                    exportFile.write(oneExport[aRow.lower().strip()]) 
+                iOneExport = len(liColumns)
+                for aColumn in range(iOneExport):
+                    aRow = liHeaders[aColumn].lower().strip()
+                    if aRow.find('.') >=0:
+                        aRow = aRow[aRow.find('.'):]
+                    print 'column',  iOneExport, aColumn
+                    if  isinstance(oneExport[aRow], types.StringType):
+                        if self.dicFileAttributes['stringDelimit']:
+                            oneExport[aRow] = self.dicFileAttributes['stringDelimit'] + oneExport[aRow]+ self.dicFileAttributes['stringDelimit']
+                    else:
+                        oneExport[aRow] = `oneExport[aRow]`
+                        
+                    if iOneExport == aColumn +1:
+                        exportFile.write(oneExport[aRow] ) 
+                    else:
+                        exportFile.write(oneExport[aRow]+self.dicFileAttributes['splitValue']) 
+                        
                 exportFile.write('\n')
                 
             

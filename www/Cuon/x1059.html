@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Adressverwaltung</TITLE
+>Windows </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,11 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Stammdaten"
-HREF="c1047.html"><LINK
+TITLE="Betriebssytemspezifische Tipps und Hilfen "
+HREF="c987.html"><LINK
 REL="PREVIOUS"
-TITLE="Stammdaten"
-HREF="c1047.html"></HEAD
+TITLE="Linux Distributionen"
+HREF="x995.html"><LINK
+REL="NEXT"
+TITLE="Troubleshooter"
+HREF="c1099.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -34,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1047.html"
+HREF="x995.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -50,12 +53,16 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 8. Stammdaten</TD
+>Chapter 6. Betriebssytemspezifische Tipps und Hilfen</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="c1099.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -66,69 +73,29 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN1059"
->8.2. Adressverwaltung</A
+NAME="windows"
+>6.3. Windows</A
 ></H1
-><P
->&#13;Die Adressmaske enthält die üblichen Angaben wie PLZ, Ort, Telefon-Nummern, etc. Hinzu kommen Kennfelder für Branche, Bankverbindung, Debitoren/Kreditoren-Nummern, Webshop-Abgleich, Steuernummern und Preisgruppen. Zu jeder Adresse können beliebig viele Gesprächspartner und evtl. Termine mit den jew. Gesprächspartnern hinterlegt werden. Auch dort können die üblichen Werte erfaßt werden. Der Listendruck wird, wie jeder Druck in pyCuon, über das PDF-Format realisiert. Eine Schnittstelle zum DMS ermöglicht es, umfassende, unterschiedlichste Information zu jeder Adresse zu hinterlegen.</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s2"
->8.2.1. Reiter Adressen</A
+NAME="w1e"
+>6.3.1. Einschränkungen</A
 ></H2
 ><P
->Der Button "Brief" ist für die Erzeugung eines Briefes zuständig. (siehe auch Briefe mit Office Programmen ) Über den Button Kontakt erreichen Sie die Kontaktverwaltung
-</P
-><DIV
-CLASS="figure"
-><A
-NAME="si2"
-></A
-><P
-><B
->Figure 8-2. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress01.png"
-ALIGN="center"></P
-></DIV
-><P
->&#13;Die meisten Funktionen lassen sich über den Reiter "Adressen" nutzen, lediglich für Termine ist der Eintrag eines Gesprächpartners nötig. Dieser lässt sich schnell mit dem Button "erzeuge Gesprächspartner" im Reiter "Gesprächspartner" erzeugen.
-</P
+>&#13;Unter Windows läuft nur der Client. Es ist nicht geplant auch den Server zu portieren. Zudem funktionieren einige Funktionen nur eingeschränkt:</P
 ><P
 ></P
 ><UL
 ><LI
 ><P
->Button Zusatzinformationen: Damit lassen sich Schriftstücke, Bilder oder eingescannte Dokumente einer Adresse zuordnen. Er führt direkt zum [:Dokument Management System: Dokument-Mangement-System (DMS)].</P
+>* keinen Scannen von Dokumenten möglich (Lösung: Umweg über normale Scansoftware)</P
 ></LI
 ><LI
 ><P
->Button Brief: Auch hier geht der Link direkt in das DMS. Allerdings werden alle Briefvorlagen ([:Briefe mit Office Programmen:Bitte im Benutzerhandbuch] nachlesen, wie diese angelegt werden) geöffnet. Der dortige Button "View" startet Openoffice (oder auch Koffice) mit den Adressdaten und der gewählten Vorlage. Im Officeprogramm das Dokument einfach speichern und dann "Letztes Dokument sichern" drücken und schon ist der geschriebene Brief auch wieder als Dokument in cuon hinterlegt (wird dann unter dem Button Zusatzinformationen (s.o.) angezeigt).</P
-></LI
-><LI
-><P
->Button Kontak: Das ist eine wichtige Funktion für z.B. Telefonmarketing. Hiermit lassen sich schnell Terminerinnerungen für jede Adresse einstellen (die dann als Pop-up Fenster auf dem Bildschirm erscheinen). Z.B. Rückruf in 5 Minuten, Telefonat heute um 15 Uhr o.ä. ( siehe unter Kontaktmanagement ?)</P
-></LI
-><LI
-><P
->Buttons "wähle Kontakter", "wähle Representant", "wähle Berater" greifen auf die Mitarbeiterdatenbank zu und weisen der jeweiligen Funktion einen Mitarbeiter zu.</P
-></LI
-><LI
-><P
->Button Send Email: Schnell und einfach eine Email an die Adresse verschicken.</P
-></LI
-><LI
-><P
->Feld Newsletter: Hier kann man beliebig viele Newsletterverteilerzugehörigkeiten eintragen. Wir verwenden bei uns immer 3 verschiedene Vorsätze (m=Newsletter per Mail, b=Newsletter per Brief, f=Newsletter per Fax). Die verschiedenen Newsletter müssen per Komma getrennt werden, also z.B. "b-allgemeineInfos,m-spontaneAktionen".</P
-></LI
-><LI
-><P
->Feld info: Hier können allgemeine Infos eingegeben werden, die oben in der Listenansicht erscheinen. Dadurch hat man eine schnelle Übersicht. </P
+> * momentan kein automatisches Update möglich (Lösung: tar und bunzip2 installieren)</P
 ></LI
 ></UL
 ></DIV
@@ -137,155 +104,74 @@ CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s4"
->8.2.2. Reiter Bank</A
+NAME="w1d"
+>6.3.2. Downloadhilfen</A
 ></H2
 ><P
->&#13;Hier kann man eine Kontoverbindung für die Adresse angeben. Wichtig: Damit das gelingt muss für die Bank ein Adressdatensatz erstellt werden. Im Prinzip langt ein einfacher Datensatz mit dem Banknamen (mehr ist nicht nötig).</P
-><DIV
-CLASS="figure"
-><A
-NAME="si3"
-></A
+>&#13;Um CUON unter Windows zum laufen zu bekommen müssen folgende Programme installiert werden:</P
 ><P
-><B
->Figure 8-3. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress02.png"
-ALIGN="center"></P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="s5"
->8.2.3. Reiter Verschiedenes</A
-></H2
-><P
->&#13;Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde fällt und ob er Mwst. pflichtig ist.</P
-><DIV
-CLASS="figure"
-><A
-NAME="si4"
-></A
-><P
-><B
->Figure 8-4. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress03.png"
-ALIGN="center"></P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="s6"
->8.2.4. Reiter Gesprächspartner</A
-></H2
-><P
->&#13;Zu jeden Kunden können beliebig viele Gesprächspartner hinterlegt werden. Die Buttons Brief und ext. Info gelten hier ebenso wie bei der Adresse. Über den Button E-Mail kann dem Adressaten schnell eine mail über das interne mailprogramm zugeschickt werden.</P
-><DIV
-CLASS="figure"
-><A
-NAME="si5"
-></A
-><P
-><B
->Figure 8-5. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress04.png"
-ALIGN="center"></P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="s7"
->8.2.5. Reiter Termine</A
-></H2
-><P
->&#13;<SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Wichtig: Damit ein Termin eingetragen werden kann, muss ein dazugehöriger Gesprächpartner markiert sein.</I
-></SPAN
-></P
-><DIV
-CLASS="figure"
-><A
-NAME="si6"
-></A
-><P
-><B
->Figure 8-6. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress05.png"
-ALIGN="center"></P
-></DIV
-><P
->&#13;Die meisten anderen Felder sind wieder selbsterklärend. Mit "search Staff" lässt sich ein Mitarbeiter dem Termin zuweisen. Die Termine erscheinen alle im Startfenster (Einstellung in der user.cfg beachten!!) von cuon (kann ein paar Sekunden dauern).
-</P
-><P
-></P
-><P
-><B
->Das Statusfeld:</B
 ></P
 ><UL
 ><LI
 ><P
-> 0-99 unbestätigter Termin</P
+>python2.4.4</P
 ></LI
 ><LI
 ><P
-> 100-800 bestätigter Termin</P
+>pycairo-1.2.6-1.win32-py2.4.exe</P
 ></LI
 ><LI
 ><P
-> 801-998 Abgebrochene Termine</P
+>pygobject-2.12.3-1.win32-py2.4.exe</P
 ></LI
 ><LI
 ><P
-> 999 gelöschter Termin (geht auch im Menü mit "set ready") </P
+>pygtk-2.10.4-1.win32-py2.4.exe</P
+></LI
+><LI
+><P
+>gtk-2.10.7-win32-1.exe</P
+></LI
+><LI
+><P
+>PIL-1.1.6.win32-py2.4.exe </P
 ></LI
 ></UL
 ><P
->Die Nummer hängen vom jeweiligen Client ab, mit dem man den, über iCal exportierten, Termin ansehen will.Man kann die Termine mit jedem x-beliebigen Kalenderprogramm (Kontact, Evolution, Palm etc.) ansehen (nur lesen, kein schreiben!). Dazu ist eine Webschnittstelle eingerichtet mit der man einfach über die URL:
-</P
+>&#13;Wahrscheinlich läuft cuon auch mit neueren Programmversionen, momentan ist es aber mit diesen Versionen getestet.</P
 ><P
->  http://servername:7081/iCal/iCal_cuonbenutzername</P
+>&#13;Jetzt bitte auf der cuon Seite den einfachen Client laden und hier ein einfaches  Startscript downloaden(bitte nach c:\cuon\bin kopieren und anpassen).</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="w1al"
+>6.3.3. Allgemeine Tipps</A
+></H2
 ><P
->&#13;die Daten als iCal Daten importieren kann.
-</P
+>&#13;Folgende Tips ( nach ca. 20 Windows-Installationen ):</P
 ><P
->Das rechte Kalenderfeld dient dem Ansehen / Checken der vorhandenen Termine:
-</P
-><P
->-&#62; search Staff (Mitarbeiter auswählen) -&#62;im rechten Kalenderfeld Termin anwählen -&#62; links davon werden im weißen Eingabefeld die Termine des gewählten Mitarbeiters für diesen Tag angezeigt
-</P
-><P
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Anmerkung: Bei alten C.U.O.N Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</I
-></SPAN
 ></P
+><UL
+><LI
+><P
+>* Packe das cuon-Verzeichnis direkt nach c:\ also c:\cuon</P
+></LI
+><LI
+><P
+>* nicht nach "eigene Dateien", Python kommt nur schwer mit den Leerzeichen klar.</P
+></LI
+><LI
+><P
+>* Packe OpenOffice? nach einen Pfad ohne Leerzeichen, ansonsten in den Einstellungen mit "c:\...\" den Pfad angeben. Auch OO ist kompliziert mit Leerzeichen im Pfad.</P
+></LI
+><LI
+><P
+>* Zur Vereinfachung für die User bitte nicht vergessen ein Startbutton anzulegen, der die Batchdatei startcuon.bat ausführt.</P
+></LI
+></UL
 ></DIV
 ></DIV
 ><DIV
@@ -304,7 +190,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1047.html"
+HREF="x995.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -321,20 +207,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="c1099.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Stammdaten</TD
+>Linux Distributionen</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1047.html"
+HREF="c987.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -342,7 +232,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Troubleshooter</TD
 ></TR
 ></TABLE
 ></DIV

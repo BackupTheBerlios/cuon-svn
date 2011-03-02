@@ -143,7 +143,7 @@ class articleswindow(chooseWindows):
         self.singleArticleSales.setTreeOrder('designation')
         self.singleArticleSales.setListHeader([_('Designation')])
 
-        self.singleArticleSales.sWhere  ='where articles_number = ' + `self.singleArticle.ID`
+        self.singleArticleSales.sWhere  ="where articles_number = '" + `self.singleArticle.ID` + "' "
         self.singleArticleSales.setTree(self.getWidget('tv_sale') )
 
   
@@ -765,7 +765,7 @@ class articleswindow(chooseWindows):
             self.singleArticlePurchase.refreshTree()
             self.singleArticlePurchase.setTreeSensitive(True)
         elif self.tabOption == self.tabSales:
-            self.singleArticleSales.sWhere  ='where articles_number = ' + `int(self.singleArticle.ID)`
+            self.singleArticleSales.sWhere  ="where articles_number = '" + `int(self.singleArticle.ID)` + "' "
             self.singleArticleSales.connectTree()
             self.singleArticleSales.refreshTree()
 

@@ -1,0 +1,16 @@
+[Export]
+Filename=articles.txt
+Tables=articles
+Columns=number,designation,wrapping,quantumperwrap,unit,manufactor_id,weight,sellingprice1,sellingprice2,sellingprice3,sellingprice4,tax_vat,material_group,associated_with,associated_id,tax_vat_id
+Headers=number,designation,wrapping,quantumperwrap,unit,manufactor_id,weight,sellingprice1,sellingprice2,sellingprice3,sellingprice4,tax_vat,material_group,associated_with,associated_id,tax_vat_id
+
+[SQL]
+Where=client_id = 1 and status != 'delete'
+Order= number, designation
+Group=
+
+[Values]
+Split=;
+Encoding = utf-8
+print_header = YES
+string_delimit =
