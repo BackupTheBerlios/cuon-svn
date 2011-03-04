@@ -1,4 +1,5 @@
-filename = /home/jhamel/cuon/blz.csv
+filename = /root/cuon_projekt/cuon/cuon_client/blz.csv
+
 table = address
 header = yes
 splitvalue = ;
