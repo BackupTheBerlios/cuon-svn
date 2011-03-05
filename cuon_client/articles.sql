@@ -102,13 +102,60 @@ CREATE OR REPLACE FUNCTION fct_get_taxvat_for_article( iArticleID integer) retur
     DECLARE
         sSql    text ;
         fTaxVat float ;
-        
+        iTaxVatArticle integer ;
+        rData  record ;
     BEGIN 
         fTaxVat := 0.00;
     
-    
-        fTaxVat = 19.00 ;
-    
+        select into rData tax_vat_id from articles where id = iArticleID ;
+        IF rData.tax_vat_id IS NULL then
+            iTaxVatArticle = 0;
+        ELSE
+            iTaxVatArticle = rData.tax_vat_id ;
+        END IF ;
+        
+        IF iTaxVatArticle= 0 THEN
+            select into rData  material_group.tax_vat from articles,material_group where articles.id = iArticleID and articles.material_group = material_group.id ;
+            IF rData.tax_vat IS NULL then
+                iTaxVatArticle = 0;
+            ELSE
+                iTaxVatArticle = rData.tax_vat ;
+            END IF ;
+        END IF ;
+        IF iTaxVatArticle>0 then
+            select into rData vat_value from tax_vat where id = iTaxVatArticle;
+            fTaxVat = rData.vat_value ;
+        else
+        
+            fTaxVat = 0.00 ;
+        END IF;
+
+        
         return fTaxVat ;
+    END ;
+    ' LANGUAGE 'plpgsql'; 
+
+       
+    
+CREATE OR REPLACE FUNCTION fct_get_net_for_article( iArticleID integer) returns  bool AS '
+ 
+    DECLARE
+        sSql    text ;
+        bNet bool ;
+        net bool ;
+        rData  record ;
+    BEGIN 
+        bNet := true ;
+        raise notice '' net value is %'',bNet ;
+        select into rData price_type_net from material_group, articles where articles.id = iArticleID and articles.material_group = material_group.id ;
+        
+        if rData.price_type_net is null then 
+            bNet := true ;
+        else
+            bNet := rData.price_type_net ;
+        end if ;
+        
+        raise notice '' net value is %'',bNet ;
+       return bNet ;
     END ;
     ' LANGUAGE 'plpgsql'; 

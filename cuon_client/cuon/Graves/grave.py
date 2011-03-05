@@ -1033,7 +1033,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
     def on_bInvoiceChooseTOP_clicked(self, event):
         print 'choose TOP'
-        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 1 )
         top.setChooseEntry('chooseTOP', self.getWidget( 'eInvoiceTOPID'))
         
     def on_eInvoiceTOPID_changed(self, event):

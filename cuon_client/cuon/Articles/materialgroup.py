@@ -222,7 +222,7 @@ class materialgroupwindow(chooseWindows):
         print 'cbVat search'
         print event
         
-        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 1 )
         pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
         
     def on_eTaxVatID_changed(self, event):

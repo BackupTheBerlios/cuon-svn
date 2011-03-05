@@ -34,7 +34,7 @@ from cuon.Windows.chooseWindows  import chooseWindows
 class prefsFinancewindow(chooseWindows):
 
     
-    def __init__(self, allTables):
+    def __init__(self, allTables, preparedTab = 0):
 
         chooseWindows.__init__(self)
         self.rpc = cuon.XMLRPC.xmlrpc.myXmlRpc()
@@ -161,7 +161,7 @@ class prefsFinancewindow(chooseWindows):
         print self.tabVat
         
         # start
-        
+        self.tabOption == preparedTab
         self.tabChanged()
 
   

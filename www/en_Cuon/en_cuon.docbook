@@ -341,7 +341,7 @@ jhamel: buero,rechnung
 
 </para>
 
-<para>Fuer die Auswertungen werden in der Sektion STATS folgende Daten benoetigt.</para>
+<para>You need to set this  section STATS with data to get some stats.</para>
 <para><example role="codelisting" id="config_user_stats">
 <title></title>
 <programlisting><![CDATA[
@@ -412,8 +412,8 @@ clientsIDs: 1
 <title></title>
 <programlisting><![CDATA[
 [CLIENT_1]
-#Einstellungen fuer den automatischen Mailversand 
-#Veraenderungen in den Notizen 
+# settings for the automatical email transfer
+# at ever changes in some notes we send an email 
 
 sendNotes0: YES
 Notes0_ID: 17
@@ -426,14 +426,17 @@ sendMailsNotes0: caller,rep,salesman # internal notes for caller, reps or salesm
 #Default term of payment 
 modul_order_default_top: 1 # ID of the term of payment 
 
-#Erinnerungen und Mahnungen im Rechnungswesen # Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhaengigkeit ist bei den Zahlungsbedingungen vermerkt. # Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen wuerde diese Rechnung bei u.g. Einstellungen # nach 18 Tagen das erste mal auf der Liste erscheinen. 
+# Memories and reminders in Accounting
+# These values determine the date from invoice appears in the reminders. A second dependence is noted for the payment.
+# So, in a cash unconditional "paying immediate net cash" and a waiting period of 8 days, this would would be the settings. 
+# after 18 days the first time appear on the list.
 reminder_all_days_after: 10 
 reminder_first_days_after: 14 
 reminder_second_days_after: 25 
 reminder_last_days_after: 32 
 reminder_summons_days_after: 40 
 
-# Liste nach Zahlungserinnerungen. 
+# list of reminders. 
 list_of_invoices_directDebit: 3 
 orderbook_number: !id,-,!year 
 orderbook_designation: !lastname,_,!city,_,!id 
@@ -481,7 +484,7 @@ StatsCallerWeek: 2
 
 <programlisting><![CDATA[
 
-# Hier bitte alle Gruppen durch Kommata getrennt eintragen
+# Here all registered groups separated by commas
 [GROUPS]
 NAMES: office,invoice
 
@@ -500,9 +503,6 @@ Garden: 217
 Project: 50 
 Articles: 80 
 Order: 50 
-# Her wird die Anzahl der Listeneintraege, die beim Modulstart angezeigt werden Modul eingetragen. 
-# Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseintraege 
-#Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Eintraege auf 500 stellen. 
 
 #Diese Eintraege gelten fuer die Auftragsbearbeitung 
 [modul_order] 

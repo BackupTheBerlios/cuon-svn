@@ -31,6 +31,7 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
     count   integer ;
     fTaxVat float ;
     iArticleID integer ;
+    bNet  bool ;
     BEGIN
        -- RAISE NOTICE ''begin total sum for id %'', iOrderid ;
         sCursor := ''SELECT amount, price, discount, articleid, tax_vat FROM orderposition WHERE  orderid = ''|| iOrderid || '' '' || fct_getWhere(2,'' '')  ;
@@ -51,9 +52,17 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
         END IF;
 
         fTaxVat := fct_get_taxvat_for_article(iArticleID);
-        if fTaxVat > 0 THEN
         
-            fSum := fSum + ( fAmount * ( fPrice + (fPrice *fTaxVat/100) * (100 - fDiscount)/100 ) ) ;
+        -- now search for brutto/netto
+        bNet := fct_get_net_for_article(iArticleID);
+         raise notice '' order bNet value is %'',bNet ;
+        if fTaxVat > 0 THEN
+            if bNet = true then 
+            -- raise notice '' order calc as bnet is true'';
+                fSum := fSum + ( fAmount * ( fPrice + (fPrice *fTaxVat/100) * (100 - fDiscount)/100 ) ) ;
+            else 
+                fSum := fSum + ( fAmount * (fPrice * (100 - fDiscount)/100 ) ) ;
+            end if ;
             
         ELSE    
             fSum := fSum + ( fAmount * (fPrice * (100 - fDiscount)/100 ) ) ;
@@ -219,13 +228,13 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
     BEGIN
     select nextval(''orderbook_id'') into newOrderID ;
     
-       select into rData user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number ,  versions_uuid   , staff_id  from orderbook where id =  iOrderID    ;
+       select into rData user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number ,  versions_uuid   , staff_id , addressnumber from orderbook where id =  iOrderID    ;
     
         
         RAISE NOTICE ''status by rdata = %'', rData.status;
         
         
-    insert into orderbook (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number  ,versions_uuid   , staff_id  ) values ( newOrderID, rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 ,  rData.number ,  rData.designation ,         rData.orderedat , rData.deliveredat , rData.packing_cost , rData.postage_cost , rData.misc_cost ,rData.build_retry , rData.type_retry  , rData.supply_retry, rData.gets_retry , rData.invoice_retry , rData.custom_retry_days , rData.modul_number  , rData.modul_order_number, rData.discount  , rData.ready_for_invoice , rData.process_status   , rData.proposal_number , rData.customers_ordernumber , rData.customers_partner_id , rData.project_id , 0,   fct_new_uuid()  , rData.staff_id) ;
+    insert into orderbook (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number  ,versions_uuid   , staff_id , addressnumber) values ( newOrderID, rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 ,  ''NEW-'' || rData.number ,  rData.designation ,         rData.orderedat , rData.deliveredat , rData.packing_cost , rData.postage_cost , rData.misc_cost ,rData.build_retry , rData.type_retry  , rData.supply_retry, rData.gets_retry , rData.invoice_retry , rData.custom_retry_days , rData.modul_number  , rData.modul_order_number, rData.discount  , rData.ready_for_invoice , rData.process_status   , rData.proposal_number , rData.customers_ordernumber , rData.customers_partner_id , rData.project_id , 0,   fct_new_uuid()  , rData.staff_id, rData.addressnumber) ;
             
        
      

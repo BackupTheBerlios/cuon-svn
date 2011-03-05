@@ -212,7 +212,7 @@ class graveyardMainwindow(chooseWindows):
         print 'cbVat search'
         print event
         
-        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        pf = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 0 )
         pf.setChooseEntry('chooseTaxVat', self.getWidget( 'eTaxVatID'))
         
     def on_eAdressID_changed(self, event):

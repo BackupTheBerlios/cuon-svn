@@ -393,7 +393,7 @@ class windows(rawWindow, MyXML, messages,  constants):
             elif cKeyR3 and gtk.gdk.keyval_name(event.keyval) == cKeyR3 :
                 ok = True
             
-        self.printOut( 'ok = ', ok)
+        #self.printOut( 'ok = ', ok)
         return ok
         
         

@@ -2464,6 +2464,16 @@
       <default>t</default>
       <comment />
     </field>
+     <field>
+      <name>discount_value</name>
+      <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
   </table>
   
   <!--table: ordersupply-->
@@ -2770,7 +2780,16 @@
       <default>0</default>
       <comment />
     </field>
-    
+      <field>
+      <name>different_billing_address_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>1</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
     </table>
   <table>
     <nameOfTable>planet</nameOfTable>

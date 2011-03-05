@@ -257,7 +257,12 @@ class proposalwindow(orderwindow):
     def on_edit1_activate(self, event):
         self.setEntriesEditable(self.EntriesOrder, True)
 
-
+    def  on_create_order1_activate(self, event):
+        print "start to change to Order"
+        ok = self.rpc.callRP('Order.changeProposal2Order',self.singleOrder.ID,  self.dicUser)
+        #self.on_quit1_activate(event)
+        self.refreshTree()
+             
     def on_print_proposal1_activate(self, event):
         dicOrder = {}
         print ' start proposal printing'
@@ -286,14 +291,15 @@ class proposalwindow(orderwindow):
         self.singleDMS.Rights = 'PROPOSAL'
         
         self.singleDMS.save(['document_image'])
-        
-        
+     
+    def  on_tbCreateOrder_clicked (self, event):
+        self.on_create_order1_activate(event)
         
     def on_DMS_activate(self, event):
         print 'show ext. Infos '
         dms = cuon.DMS.dms.dmswindow(self.allTables,self.MN['Proposal'], {'1':self.singleOrder.ID})
         
-        
+
     def refreshTree(self):
         self.singleOrder.disconnectTree()
         self.singleOrderSupply.disconnectTree()
@@ -1068,7 +1074,8 @@ class proposalwindow(orderwindow):
 #        iArtNumber = self.getChangedValue('eArticleID')
 #        eArtField = self.getWidget('tvArticle')
 #        liArt = self.singleArticle.getArticle(iArtNumber)
-#        self.setTextbuffer(eArtField,liArt)
+#        self.setTextbuffer(eArtField,liArt)   def  on_tbCreateOrder_clicked (self, event):
+#        self.on_create_order1_activate(event)
 #        record = self.singleArticle.getFirstRecord()
 #        if record:
 #            print record
@@ -1356,7 +1363,8 @@ class proposalwindow(orderwindow):
 #                self.on_PositionSave1_activate(None)        
 #
 #            elif sKey == 'KP_Subtract' :
-#                wAmount = self.getWidget('eAmount')
+#                wAmount = self.getWidget('eAmoun   def  on_tbCreateOrder_clicked (self, event):
+#        self.on_create_order1_activate(event)t')
 #
 #                self.on_PositionEdit1_activate(None)
 #                if wAmount.get_text() == '':

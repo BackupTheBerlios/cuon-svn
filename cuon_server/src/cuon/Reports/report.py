@@ -815,7 +815,7 @@ class report(MyXML):
 
         dicEntry['formula'] = self.getEntrySpecification(cyNode,'formula')
         if dicEntry['formula']:
-            dicEntry['formula'] = dicEntry['formula'].encode('ascii')
+            dicEntry['formula'] = dicEntry['formula'].encode('utf-8')
         else:
             dicEntry['formula'] = None
 

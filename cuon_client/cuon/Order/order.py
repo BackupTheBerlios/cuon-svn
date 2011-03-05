@@ -648,7 +648,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
         self.refreshTree()
 
-    # Tab Custom choose address 
+    # TabOrder 
     def on_bSearchCustom_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
         adr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
@@ -662,6 +662,25 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         liAdr = self.singleAddress.getAddress(iAdrNumber)
         self.setTextbuffer(eAdrField,liAdr)
 
+
+    
+    def on_eDiscountValue_changed(self, event):
+        print 'eDiscountValue  changed'
+        try:
+            fDiscountValue = self.getCheckedValue(self.getWidget('eDiscountValue').get_text(),"float")
+            if fDiscountValue:
+                print "fDiscountValue = ",  fDiscountValue
+                fTotalsum = self.getCheckedValue(self.getWidget('eTotalSum').get_text(),"float")
+                print "fTotalsum = ",  fTotalsum
+                fDiscountPercent = fDiscountValue*100/(fTotalsum) 
+                print 'fDiscountPercent = ',  fDiscountPercent
+                
+                self.getWidget("eDiscount").set_text(self.getCheckedValue(fDiscountPercent, "toLocaleString") + " %")
+            else:
+                 self.getWidget("eDiscount").set_text(" ")
+        except Exception, param:
+            print Exception,  param
+       
     # Tab Supply choose address 
     def on_bSearchSupply_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
@@ -684,7 +703,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         iAdrNumber = self.getChangedValue('eGetsNumber')
         eAdrField = self.getWidget('tvGets')
         liAdr = self.singleAddress.getAddress(iAdrNumber)
-        self.setTextbuffer(eAdrField,liAdr)
+        self.setTextbuffer(eAdrField,libChooseDifferentBillingAddressAdr)
 
     def on_bSearchGetsPartner_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
@@ -693,7 +712,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     def on_eGetsPartner_changed(self, event):
         print 'eGetsPartner changed'
         iAdrNumber = self.getChangedValue('eGetsPartner')
-        eAdrField = self.getWidget('tvGetsPartner')
+        eAdrField = self.getWidget('tvbChooseDifferentBillingAddressGetsPartner')
         liAdr = self.singlePartner.getAddress(iAdrNumber)
         self.setTextbuffer(eAdrField,liAdr)
 
@@ -722,7 +741,10 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         eAdrField = self.getWidget('tvContactPerson')
         liAdr = self.singlePartner.getAddress(iAdrNumber)
         self.setTextbuffer(eAdrField,liAdr)
-
+        
+        
+    ## Invoice specs
+    
     # Tax Vat choose
     def on_bTaxVatForAllPositions_clicked(self, event):
         print 'cbVat search'
@@ -740,8 +762,23 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         else:
             self.getWidget('eTaxVatForAllPositionsText').set_text('')
  
- 
- 
+    # different billing Address
+    
+    
+    def on_bChooseDifferentBillingAddress_clicked(self, event):
+        '''bChooseDifferentBillingAddress is clicked, choose a new address from addresswindow'''
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'eDifferentBillingAddressID'))
+
+    # signals from entry eAddressNumber
+    
+    def on_eDifferentBillingAddressID_changed(self, event):
+        ''' eDifferentBillingAddressID has changed, search for the corresponded address and display it at textwindow'''
+        iAdrNumber = self.getChangedValue('eDifferentBillingAddressID')
+        eAdrField = self.getWidget('tvDifferentBillingaddress')
+        liAdr = self.singleAddress.getAddress(iAdrNumber)
+        self.setTextbuffer(eAdrField,liAdr)
+     
 
         # staff search
     def on_bSearchStaff_clicked(self, event):
@@ -782,7 +819,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     
     
     def on_bPaymentSearchAccount_clicked(self, event):
-        acc = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        acc = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 3 )
         acc.setChooseEntry('choose_acct1', self.getWidget( 'ePaymentAccountID'))
 
                            
@@ -858,7 +895,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         
     def on_bInvoiceTOP_clicked(self, event):
         print 'choose TOP'
-        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 1 )
         top.setChooseEntry('chooseTOP', self.getWidget( 'eInvoiceTOPID'))
         
     def on_eInvoiceTOPID_changed(self, event):

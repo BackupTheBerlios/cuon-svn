@@ -1298,7 +1298,7 @@ class addresswindow(chooseWindows):
     
 
     def on_bSearchTOP_clicked(self, event):
-        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables)
+        top = cuon.PrefsFinance.prefsFinance.prefsFinancewindow(self.allTables, preparedTab = 1 )
         top.setChooseEntry('chooseTOP', self.getWidget( 'eTOPID'))
         
     def on_eTOPID_changed(self, event):

@@ -206,12 +206,12 @@ class dumps:
                             
                             value = value.strip()
                             convert = False
-                            print 'convert userlocales = ', self.dicUser['Locales']
+                            #print 'convert userlocales = ', self.dicUser['Locales']
                             for sLocale in self.decimalLocale['coma']:
                                 #print sLocale
                                 if sLocale == self.dicUser['Locales']:
                                     convert = True
-                            print 'convert = ',  convert,  value
+                            #print 'convert = ',  convert,  value
                             if convert:
                                 #print 'convert to normal float'
                                 #value = value.replace('.','')
@@ -220,8 +220,20 @@ class dumps:
                                 print 'convert2 = ',  convert,  value   
                             if value[0] == 'L'  or value[0] == 'l':
                                 value = value[1:]
+                            #print "value0 = ", value,  value[:-1]
+                            while not value[-1].isdigit() :
+                                if not value:
+                                    break
+                                try:
+                                    #print "value = ", value,  value[:-1]
+                                    value= value[:-1]
+                                    
+                                except:
+                                    break
+                                    
                         retValue = float(value)
-                    except:
+                    except Exception, params:
+                        #print Exception, params
                         retValue = 0.0
                 else:
                     retValue =  value 
