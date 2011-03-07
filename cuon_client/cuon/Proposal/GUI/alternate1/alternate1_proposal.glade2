@@ -983,6 +983,30 @@
                                 <property name="position">0</property>
                               </packing>
                             </child>
+                            <child>
+                              <widget class="GtkLabel" id="label4">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">/</property>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkEntry" id="eDiscountValue">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Hier feste Betr&#xE4;ge eingeben
+(keine Prozentangaben!)</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">10</property>
+                                <signal name="changed" handler="on_eDiscountValue_changed"/>
+                              </widget>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </widget>
                           <packing>
                             <property name="left_attach">3</property>

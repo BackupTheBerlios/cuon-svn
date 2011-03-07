@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <glade-interface>
-  <!-- interface-requires gtk+ 2.12 -->
+  <!-- interface-requires gtk+ 2.16 -->
   <!-- interface-naming-policy toplevel-contextual -->
   <widget class="GtkWindow" id="OrderMainwindow">
     <property name="visible">True</property>
@@ -1079,7 +1079,8 @@ Rechnung</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="has_tooltip">True</property>
-                                <property name="tooltip" translatable="yes">Strg-4</property>
+                                <property name="tooltip" translatable="yes">Strg-4
+Prozentbetrag</property>
                                 <property name="max_length">5</property>
                                 <property name="width_chars">5</property>
                                 <accelerator key="4" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
@@ -1088,6 +1089,29 @@ Rechnung</property>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkLabel" id="label4">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">/</property>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkEntry" id="eDiscountValue">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="tooltip" translatable="yes">Hier festen Rabattbetrag 
+eingeben.</property>
+                                <property name="invisible_char">&#x25CF;</property>
+                                <property name="width_chars">10</property>
+                                <signal name="changed" handler="on_eDiscountValue_changed"/>
+                              </widget>
+                              <packing>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </widget>
@@ -3462,7 +3486,48 @@ alle (!) Artikel. </property>
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <widget class="GtkHBox" id="hbox7">
+                    <child>
+                      <widget class="GtkLabel" id="label44">
+                        <property name="visible">True</property>
+                        <property name="yalign">0</property>
+                        <property name="label" translatable="yes">diff. Billing Address</property>
+                      </widget>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkEntry" id="eDifferentBillingAddressID">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                        <signal name="changed" handler="on_eDifferentBillingAddressID_changed"/>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkButton" id="bChooseDifferentBillingAddress">
+                        <property name="label" translatable="yes">choose Address</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="yalign">0</property>
+                        <signal name="activate" handler="on_bChooseDifferentBillingAddress_activate"/>
+                      </widget>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="y_options">GTK_EXPAND</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -3477,7 +3542,21 @@ alle (!) Artikel. </property>
                   <placeholder/>
                 </child>
                 <child>
-                  <placeholder/>
+                  <widget class="GtkScrolledWindow" id="scrolledwindow2">
+                    <property name="can_focus">True</property>
+                    <child>
+                      <widget class="GtkTextView" id="tvDifferentBillingaddress">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                  </packing>
                 </child>
               </widget>
               <packing>
