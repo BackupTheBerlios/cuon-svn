@@ -955,19 +955,19 @@ class report(MyXML):
                                           if self.dicMemory[liFormula[fw + 1]] not in ['NONE','ERROR'] and self.dicMemory[liFormula[fw + 1]][0]:
                                             ''' !THEN sequence'''
 
-                                            print "Value bei !IF", self.dicMemory[liFormula[fw + 1]][0]
+                                            print "Value bei !IF", self.dicMemory[liFormula[fw + 1]][-1]
                                             if self.dicMemory.has_key(liFormula[fw + 3]):
                                                 #print 'fw +3 '    
                                                 #print liFormula[fw + 3], self.dicMemory[liFormula[fw + 3]]
                                                  
-                                                formula += `self.dicMemory[liFormula[fw + 3]][0]`
+                                                formula += `self.dicMemory[liFormula[fw + 3]][-1]`
                                             else:
                                                 formula +=  liFormula[fw + 3]
                                           else:
                                             ''' !ELSE sequence '''
                                             if self.dicMemory.has_key(liFormula[fw + 5]):
                                                  
-                                                formula += `self.dicMemory[liFormula[fw + 5]][0]`
+                                                formula += `self.dicMemory[liFormula[fw + 5]][-1]`
                                             else:
                                                 formula +=  liFormula[fw + 5]
                                      #print 'FW =',  liFormula[fw]    

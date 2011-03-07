@@ -212,7 +212,7 @@ class basics(xmlrpc.XMLRPC):
                 
             value = self.getConfigOption('WEB3','PASSWORD')   
             if value:
-                self.WEB_PASSWORD33 = value
+                self.WEB_PASSWORD3 = value
                     
             value = self.getConfigOption('WEB3','CLIENT_ID')   
             if value:

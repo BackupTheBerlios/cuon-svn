@@ -15,7 +15,7 @@
 
 
 import bottle
-from bottle import route, run,  request,  response
+from bottle import route, run,  request,  response,  template
 from bottle import send_file, redirect, abort
 
 from cuon.basics import basics
@@ -30,27 +30,91 @@ sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XM
 web3user = basic.WEB_USER3
 
 dicUser = {}
+rootDir = '/var/cuon_www/SupportTicket/'
+print bottle.TEMPLATE_PATH 
+bottle.TEMPLATE_PATH = [rootDir +'views/']
+bottle.TEMPLATES.clear()
 
 def getAuth():
+    print 'get Auth'
     dicUser=sv.Support.getAuthorization(basic.WEB_USER3 ,  basic.WEB_PASSWORD3,  basic.WEB_CLIENT_ID3 )
-        
+    #print request.environ
+    
+    #env22  = request.environ['wsgi.input'].read(int(request.environ['CONTENT_LENGTH']))
+    #print env22
+    #args = gridxml().xmltodict(env22)   
+    #print args
+    
     return dicUser
     
     
     
 @route('/hello/', method = 'GET')
 def hello():
-    print self.sv.Database.is_running()
-    return "Hello World! " + `self.sv.Database.is_running()`
+    print "test the db"
+    print sv
+    print sv.Database.is_running()
+    print request.environ
+    return "Hello World! " + `sv.Database.is_running()`
 
-
-@route('/:name',  method = 'GET')
-def sendFile(name):
+@route('/index.html',  method = 'GET')
+@route('/',  method = 'GET')
+def sendIndexFile():
+    bottle.TEMPLATES.clear()
     dicUser = getAuth()
-    return send_file(name, root='/var/www/cuon/Support')
+    print dicUser
+    
+    print bottle.TEMPLATE_PATH 
+    result = sv.Support.getProjects(dicUser)
+    print result
+    
+    output = template('index_example',   rows=result)
+
     
     
- 
+    return output
+    
+    
+@route('/show_tickets/:id',  method = 'GET')
+def showTicketsForProject(id):
+    bottle.TEMPLATES.clear()
+    dicUser = getAuth()
+    print dicUser
+    response.set_cookie("SupportProjectID", id)
+    
+    result = sv.Support.getTickets(dicUser,  id )
+    print result
+    
+    output = template('showTickets_example',   rows=result)
+
+    
+    
+    return output
+    
+      
+@route('/show_ticket_details/:id',  method = 'GET')
+def showTicket_details(id):
+    bottle.TEMPLATES.clear()
+    dicUser = getAuth()
+    print dicUser
+    prID = request.get_cookie("SupportProjectID")
+    print 'Cookie ID = ',  prID
+    
+    
+    result = sv.Support.getTicketDetails(dicUser,  id )
+    print result
+    
+    output = template('showTicketDetails_example',   rows=result)
+
+    
+    
+    return output
+     
+    
+@route('/:name',  method = 'GET')
+def sendOtherFiles(name):
+    print "sendfile called"
+    return send_file(name, root=rootDir)
     
 
-run(  port=basic.WEB_PORT3, host=basic.WEB_HOST3) # This starts the HTTP server
+run(  port=basic.WEB_PORT3, host=basic.WEB_HOST3, reloader=True) # This starts the HTTP server

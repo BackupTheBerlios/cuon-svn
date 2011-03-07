@@ -676,8 +676,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
                 print 'fDiscountPercent = ',  fDiscountPercent
                 
                 self.getWidget("eDiscount").set_text(self.getCheckedValue(fDiscountPercent, "toLocaleString") + " %")
-            else:
-                 self.getWidget("eDiscount").set_text(" ")
+           
         except Exception, param:
             print Exception,  param
        

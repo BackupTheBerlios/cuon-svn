@@ -99,9 +99,13 @@ class setup:
         self.CUON_VAR =  "/var/cuon"
         self.CUON_VAR_WWW =  "/var/cuon_www"
         self.CUON_VAR_WWW_ICAL =  "/var/cuon_www/iCal"
+        
         self.CUON_VAR_WWW_AI = self.CUON_VAR_WWW + '/AI'
         self.CUON_VAR_WWW_GLADE = self.CUON_VAR_WWW + '/Glade'
         
+        self.CUON_VAR_WWW_ST = self.CUON_VAR_WWW + '/SupportTicket'
+         
+         
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
         self.CUON_TMP = self.CUON_VAR + "/tmp"
         self.CUON_DOCUMENTS_LISTS = self.CUON_DOCUMENTS + "/Lists"
@@ -292,10 +296,13 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW + " ] ; then mkdir " + self.CUON_VAR_WWW + " ; fi ") 
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_AI + " ] ; then mkdir " + self.CUON_VAR_WWW_AI + " ; fi ")   
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ST + " ] ; then mkdir " + self.CUON_VAR_WWW_ST + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_GLADE + " ] ; then mkdir " + self.CUON_VAR_WWW_GLADE + " ; fi ")   
         self.executeSCP(" -r ../cuon_server/WEB/html/*",  self.CUON_VAR_WWW  )
         self.executeSCP(" -r " +self.dest_glade + "/*",  self.CUON_VAR_WWW_GLADE  )
         self.executeSCP(" -r ../cuon_server/AI/*",  self.CUON_VAR_WWW_AI  )
+        self.executeSCP(" -r ../cuon_server/SupportTicket/*",  self.CUON_VAR_WWW_ST )
+        
         
         # create and copy reports and doc
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR + " ] ; then mkdir " + self.CUON_VAR + " ; fi ") 

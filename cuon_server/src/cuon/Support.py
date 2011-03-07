@@ -16,17 +16,17 @@ class Support(xmlrpc.XMLRPC, basics):
         self.oDatabase = Database.Database()
     
     
-    def getAuthorization(self,  Username,  Password,  ClientID):
-        ''' Web Authentication'''
+    def xmlrpc_getAuthorization(self,  Username,  Password,  ClientID):
+        ''' Web Authentication at support tickets'''
         ok = True
         #self.XMLRPC_PORT = 7080
         #self.XMLRPC_HOST = 'localhost'
         #self.XMLRPC_PROTO = "http"
         # Authorized
-        print 'Server',  self.sv
+        
         print Username,  Password
         
-        sid = self.sv.Database.createSessionID( Username, Password)
+        sid = self.oDatabase.xmlrpc_createSessionID( Username, Password)
         
         
         print sid
@@ -34,6 +34,31 @@ class Support(xmlrpc.XMLRPC, basics):
         self.dicUser={'Name':Username,'SessionID':sid,'userType':'cuon',  'client':int(ClientID)}
 
         return self.dicUser   
+        
+        
+    def xmlrpc_getProjects(self, dicUser, public=False):
+        
+        sSql = "select id,  support_project_number, designation, is_public from support_project where (is_public is not null and is_public = 1  )  "
+        sSql += self.getWhere(None,dicUser,2)
+        sSql += " order by support_project_number "
+        Result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print Result
+        return Result
+    def xmlrpc_getTickets(self, dicUser, id, public = False,  status = 0):
+        sSql = "select id, ticket_number,  short_designation  from support_ticket where support_project_id =" + `id` + " " 
+        sSql += self.getWhere(None,dicUser,2)
+        sSql += " order by ticket_number"
+        Result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print Result
+        return Result
+        
+    def xmlrpc_getTicketDetails(self, dicUser, id, public = False,  status = 0):
+        sSql = "select * from support_ticket where id =" + `id` + "  " 
+        sSql += self.getWhere(None,dicUser,2)
+        
+        Result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        print Result
+        return Result   
     def xmlrpc_getTicketComboBoxEntries(self, dicUser):
         print 'get comboBox Entries'
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
