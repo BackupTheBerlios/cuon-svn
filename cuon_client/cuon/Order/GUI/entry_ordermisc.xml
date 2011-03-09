@@ -1,6 +1,6 @@
 <entries_for_table>
     <table>
-      <table_name>orderget</table_name>
+      <table_name>ordermisc</table_name>
 
 
     <entry>
@@ -9,7 +9,7 @@
       <size>0</size>
       <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>build_retry</sql_field>
+      <sql_field>retry</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
      </entry>
@@ -20,7 +20,7 @@
       <size>0</size>
       <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>supply_retry</sql_field>
+      <sql_field>create_supply</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
      </entry>
@@ -31,7 +31,7 @@
       <size>0</size>
       <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>gets_retry</sql_field>
+      <sql_field>create_get</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
      </entry>
@@ -42,7 +42,7 @@
       <size>0</size>
       <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>invoice_retry</sql_field>
+      <sql_field>create_invoice</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
      </entry>
@@ -52,9 +52,9 @@
       <name>rbMonthly</name>
       <type>radiobuttongroup</type>
       <size>0</size>
-      <verify_type>int</verify_type>
+      <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>type_retry</sql_field>
+      <sql_field>monthly</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
      </entry>
@@ -71,15 +71,15 @@
       <fg_color>0</fg_color>
   </entry>
    <entry>
-      <name>eMiscProjectID</name>
-      <type>textline</type>
-      <size>50</size>
-      <verify_type>int</verify_type>
+      <name>cbPartOfOrder</name>
+      <type>checkbox</type>
+      <size>0</size>
+      <verify_type>bool</verify_type>
       <create_sql>1</create_sql>
-      <sql_field>project_id</sql_field>
+      <sql_field>part_of_order</sql_field>
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
-  </entry>
+     </entry>
   
     </table>
 

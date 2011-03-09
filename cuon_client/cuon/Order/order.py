@@ -27,7 +27,7 @@ import SingleOrderSupply
 import SingleOrderGet
 import SingleOrderPosition
 import SingleOrderPayment
-
+import SingleOrderMisc
 
 
 import logging
@@ -86,6 +86,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderSupply = SingleOrderSupply.SingleOrderSupply(allTables)
         self.singleOrderGet = SingleOrderGet.SingleOrderGet(allTables)
         self.singleOrderPosition = SingleOrderPosition.SingleOrderPosition(allTables)
+        self.singleOrderMisc = SingleOrderMisc.SingleOrderMisc(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         self.singleOrderPayment = SingleOrderPayment.SingleOrderPayment(allTables)
@@ -176,6 +177,20 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
             self.singleOrderInvoice.setTreeFields([])
             self.singleOrderInvoice.setTreeOrder('id')
             self.singleOrderInvoice.setTree(self.getWidget('tree1') )
+            
+             #singleOrderMisc
+            
+            self.loadEntries(self.EntriesOrderMisc)
+            self.singleOrderMisc.setEntries(self.getDataEntries('order_misc.xml') )
+            self.singleOrderMisc.setGladeXml(self.xml)
+            self.singleOrderMisc.setTreeFields( ['designation'] )
+            self.singleOrderMisc.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_UINT) ) 
+            self.singleOrderMisc.setTreeOrder('designation')
+            self.singleOrderMisc.setListHeader([_('Designation')])
+    
+            self.singleOrderMisc.sWhere  ='where orderid = ' + `self.singleOrder.ID`
+            self.singleOrderMisc.setTree(self.getWidget('tree1') )
+    
             # singleOrderPayment
             
             self.loadEntries(self.EntriesOrderPayment)
@@ -558,10 +573,10 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
     
     def on_MiscSave_activate(self, event):
         print "save misc v2"
-        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
-        self.singleOrder.save()
+        self.singleOrderMisc.Ordernumber = self.singleOrder.ID
+        self.singleOrderMisc.save()
         self.setEntriesEditable(self.EntriesOrderMisc, False)
-        self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
+       
         self.tabChanged()
   
     #Menu Payment
@@ -637,7 +652,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
             liSearch.append(sInvoiceNumber)    
        
         if iOrderType == 1:
-            liSearch.append('###id = (select * from fct_getUnreckonedOrder())' )
+            liSearch.append('###(select * from fct_getUnreckonedOrder(id)) ')
             liSearch.append(0)    
         if liSearch:     
             self.singleOrder.sWhere = self.getWhere(liSearch) 
@@ -679,7 +694,16 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
            
         except Exception, param:
             print Exception,  param
-       
+    
+    
+    def on_eDiscount_key_press_event(self, entry, event):
+        print 'eDiscount_key_press_event'
+        if self.checkKey(event,'CTRL','K'):
+            self.calcDiscount()
+            
+    def calcDiscount(self):
+        pass
+        
     # Tab Supply choose address 
     def on_bSearchSupply_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
@@ -1075,6 +1099,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         self.singleOrderGet.disconnectTree()
         self.singleOrderPosition.disconnectTree()
         #self.singleOrderInvoice.disconnectTree()
+        self.singleOrderMisc.disconnectTree()
         
         if self.tabOption == self.tabOrder:
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrder) )
@@ -1108,12 +1133,13 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
             print 'Singleid =',  self.singleOrderInvoice.findSingleId()
             
             self.singleOrderInvoice.refreshTree()
+            
             self.singleOrderInvoice.fillEntries(self.singleOrderInvoice.findSingleId())
             
         elif self.tabOption == self.tabMisc:
+            
             self.singleOrder.setEntries(self.getDataEntries(self.EntriesOrderMisc) )
-            self.singleOrder.connectTree()
-            self.singleOrder.refreshTree()
+           
 
         elif self.tabOption == self.tabPayment:
             self.singleOrderPayment.sWhere  ='where order_id = ' + `int(self.singleOrder.ID)`

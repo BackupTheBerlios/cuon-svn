@@ -209,8 +209,11 @@ CREATE OR REPLACE FUNCTION fct_getReminder( iDays integer) returns setof  record
 
     
      ' LANGUAGE 'plpgsql'; 
-       
-CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS '
+     
+     
+DROP FUNCTION fct_duplicateOrder(integer);
+
+CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer, OrderType=integer) returns int AS '
  DECLARE
      
     newOrderID int ;
@@ -225,7 +228,10 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
         sCursor text ;
         iPosID int ;
         cur1 refcursor ;
+        partPrefix text ;
     BEGIN
+    partPrefix = '''' ;
+    
     select nextval(''orderbook_id'') into newOrderID ;
     
        select into rData user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number ,  versions_uuid   , staff_id , addressnumber from orderbook where id =  iOrderID    ;
@@ -234,7 +240,7 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
         RAISE NOTICE ''status by rdata = %'', rData.status;
         
         
-    insert into orderbook (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number  ,versions_uuid   , staff_id , addressnumber) values ( newOrderID, rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 ,  ''NEW-'' || rData.number ,  rData.designation ,         rData.orderedat , rData.deliveredat , rData.packing_cost , rData.postage_cost , rData.misc_cost ,rData.build_retry , rData.type_retry  , rData.supply_retry, rData.gets_retry , rData.invoice_retry , rData.custom_retry_days , rData.modul_number  , rData.modul_order_number, rData.discount  , rData.ready_for_invoice , rData.process_status   , rData.proposal_number , rData.customers_ordernumber , rData.customers_partner_id , rData.project_id , 0,   fct_new_uuid()  , rData.staff_id, rData.addressnumber) ;
+    insert into orderbook (id, user_id , status ,  insert_time , update_time, update_user_id  ,  client ,  sep_info_1 ,  sep_info_2 ,  sep_info_3 ,  number ,  designation ,         orderedat , deliveredat , packing_cost , postage_cost , misc_cost ,build_retry , type_retry  , supply_retry, gets_retry , invoice_retry , custom_retry_days , modul_number  ,                modul_order_number, discount  , ready_for_invoice , process_status   , proposal_number , customers_ordernumber , customers_partner_id , project_id , versions_number  ,versions_uuid   , staff_id , addressnumber) values ( newOrderID, rData.user_id , rData.status ,  rData.insert_time , rData.update_time, rData.update_user_id  ,  rData.client ,  rData.sep_info_1 ,  rData.sep_info_2 ,  rData.sep_info_3 ,  ''NEW-'' || rData.number || partPrefix ,  rData.designation ,         rData.orderedat , rData.deliveredat , rData.packing_cost , rData.postage_cost , rData.misc_cost ,rData.build_retry , rData.type_retry  , rData.supply_retry, rData.gets_retry , rData.invoice_retry , rData.custom_retry_days , rData.modul_number  , rData.modul_order_number, rData.discount  , rData.ready_for_invoice , rData.process_status   , rData.proposal_number , rData.customers_ordernumber , rData.customers_partner_id , rData.project_id , 0,   fct_new_uuid()  , rData.staff_id, rData.addressnumber) ;
             
        
      
@@ -270,8 +276,8 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer) returns int AS 
 
      
 DROP function fct_getUnreckonedOrder() ;
-        
-CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns text AS '
+DROP function fct_getUnreckonedOrder(integer) ;
+CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder(OrderID integer) returns bool AS '
  DECLARE
      iClient int ;
     sSql text := '''';
@@ -281,23 +287,18 @@ CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder() returns text AS '
     bInsert bool ;
     
     BEGIN
-       sSql := '' select id from orderbook '' || '' '' ||  fct_getWhere(1,'' '') ;
        
-        FOR r in execute(sSql)  LOOP
-            bInsert = False ;
-            sSql := ''select id from list_of_invoices where order_number =  '' || r.id ||  '' '' ||  fct_getWhere(2,'' '') ;
+            bInsert = True ;
+            sSql := ''select id from list_of_invoices where order_number =  '' || OrderID ||  '' '' ||  fct_getWhere(2,'' '') ;
             raise notice ''sql  = %'',sSql ;
             FOR r2 in execute(sSql)  LOOP
                 raise notice ''id = %'',r2.id ;
                 if r2.id > 0 then
-                    bInsert = True;
+                    bInsert = False;
                 end if ;
             END LOOP ;
-             IF NOT bInsert  THEN
-                    t1 := t1 || '' or id = '' || r.id ;
-                END IF ;
-        END LOOP ;
-        return t1 ;
+            
+        return bInsert ;
     END ;
     
 

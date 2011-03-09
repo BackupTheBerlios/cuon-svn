@@ -56,7 +56,7 @@ import cuon.Editor.programmersEditor
 class projectwindow(chooseWindows):
 
     
-    def __init__(self, allTables, dicProject = None, newProject = False, project_id = 0):
+    def __init__(self, allTables, dicProject = None, newProject = False, project_id = 0,  project_phase_id = 0, project_task_id = 0 ,  choose = 'Project'):
 
         chooseWindows.__init__(self)
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()

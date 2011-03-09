@@ -67,7 +67,7 @@ class import_generic1(fileSelection):
                         liS[0] = liS[0][0:len(liS[0])]
                         print '1:', `liS`
                     if liS[0] == 'filename':
-                        self.dicFileAttributes['inputFile'] = liS[1]
+                        self.dicFileAttributes['inputFile'] = liS[1].strip()
                     if liS[0] == 'type':
                         self.dicFileAttributes['inputType'] = liS[1]
                     if liS[0] == 'table':
@@ -77,19 +77,19 @@ class import_generic1(fileSelection):
                     if liS[0] == 'from_changed_value':
                         self.dicFileAttributes['fromChangedValue'] = liS[1]
                     if liS[0] == 'to_changed_value':
-                        self.dicFileAttributes['toChangedValue'] = liS[1]
+                        self.dicFileAttributes['toChangedValue'] = liS[1].strip()
                     if liS[0] == 'decode_data':
-                        self.dicFileAttributes['decodeData'] = liS[1]
+                        self.dicFileAttributes['decodeData'] = liS[1].strip()
                     if liS[0] == 'update_data':
-                        self.dicFileAttributes['updateData'] = liS[1].upper()
+                        self.dicFileAttributes['updateData'] = liS[1].upper().strip()
                     if liS[0] == 'check_update_field':
-                        self.dicFileAttributes['checkUpdateField'] = liS[1]
+                        self.dicFileAttributes['checkUpdateField'] = liS[1].strip()
                     if liS[0] == 'fix_fields':
-                        self.dicFileAttributes['fixFields'] = liS[1]
+                        self.dicFileAttributes['fixFields'] = liS[1].strip()
                     if liS[0] == 'merge_data':
-                        self.dicFileAttributes['mergeData'] = liS[1].upper()
+                        self.dicFileAttributes['mergeData'] = liS[1].upper().strip()
                     if liS[0] == 'extra_function':
-                        self.dicFileAttributes['extraFunction'] = liS[1].upper()
+                        self.dicFileAttributes['extraFunction'] = liS[1].upper().strip()
     
                     if liS[0] == 'header':
                         self.dicFileAttributes['importHeader'] = liS[1]        
@@ -220,13 +220,16 @@ class import_generic1(fileSelection):
                     print 'update-id = ', updateID
                     if updateID > 0:
                         oSingleImport.ID = updateID
+                        if self.dicFileAttributes['updateData'] == 'IGNORE':
+                            print 'Ignore new data'
+                            oSingleImport.ID = -77
                     else:
                         oSingleImport.newRecord()
                     
-                    if self.dicFileAttributes['updateData'] == 'IGNORE':
-                        oSingleImport.ID = -77
+                    
                     
                 else:
+                    print 'New Data found'
                     oSingleImport.newRecord()
                     
                 if oSingleImport.ID != -77 :

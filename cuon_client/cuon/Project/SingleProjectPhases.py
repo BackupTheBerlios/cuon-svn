@@ -48,4 +48,36 @@ class SingleProjectPhases(SingleData):
         #self.statusfields = ['lastname', 'city']
 
  
+    def getInfoForID(self,  PhaseID):
+        liPhase = []
         
+        if PhaseID > 0:
+            try:
+                PhaseID = long(PhaseID)
+                
+                dicRecords = self.load(PhaseID)
+        
+            except:
+                id = 0
+                dicRecords = {}
+          
+            if dicRecords and dicRecords not in ['ERROR', 'NONE']:
+                dicRecord = dicRecords[0]
+                try:
+                    liPhase.append(dicRecord['name'])
+                    liPhase.append(dicRecord['designation'])
+                    liPhase.append(_('starts at: ') + `dicRecord['Phase_starts_at']`)
+                    liPhase.append(_('ends at: ') + `dicRecord['Phase_ends_at']`)
+                    liPhase.append(_('Time in days: ') + `dicRecord['time_in_days']`)
+                  
+                except:
+                    pass
+                    
+            if not liPhase:
+                liPhase.append(' ')
+                liPhase.append(' ')
+                liPhase.append(' ')
+                liPhase.append(' ')
+                liPhase.append(' ')
+            
+        return liPhase   

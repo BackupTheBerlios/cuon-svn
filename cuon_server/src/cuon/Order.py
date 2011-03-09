@@ -1230,8 +1230,8 @@ class Order(xmlrpc.XMLRPC, basics):
         return result
         
 
-    def xmlrpc_dup_order(self, iOrderID, dicUser):
-        sSql = "select * from  fct_duplicateOrder(" + `iOrderID` + ")" 
+    def xmlrpc_dup_order(self, iOrderID, dicUser, iType = 0):
+        sSql = "select * from  fct_duplicateOrder(" + `iOrderID` + ", " + `iType` + ")" 
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
         return result

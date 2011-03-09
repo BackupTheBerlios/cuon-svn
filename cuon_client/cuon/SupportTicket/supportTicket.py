@@ -28,11 +28,15 @@ from cuon.Windows.chooseWindows  import chooseWindows
 import SingleSupportProject
 import SingleSupportTicket
 
+
 import cuon.DMS.documentTools
 import cuon.DMS.dms
 import os
 import cuon.Project.project
 import cuon.Project.SingleProject
+import cuon.Addresses.addresses
+import cuon.Addresses.SingleAddress
+import cuon.Addresses.SinglePartner 
 
 class supportticketwindow(chooseWindows):
 
@@ -51,6 +55,8 @@ class supportticketwindow(chooseWindows):
         self.singleSupportTicket = SingleSupportTicket.SingleSupportTicket(allTables)
         
         self.singleProject = cuon.Project.SingleProject.SingleProject(allTables)
+        self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
+        self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
         
         self.entriesSupportProject = 'support_project.xml'
         self.entriesSupportTicket = 'support_ticket.xml'
@@ -131,8 +137,64 @@ class supportticketwindow(chooseWindows):
             cbFindTypeOfStatus.set_model(liststore)
             cbFindTypeOfStatus.set_text_column(0)
             cbFindTypeOfStatus.show()
+            
+            
+        cbTypeOfSeverity = self.getWidget('cbTicketSeverity')
+        if cbTypeOfSeverity:
+            liststore = gtk.ListStore(str)
+            for TypeOfSeverity in liSeverity:
+                liststore.append([TypeOfSeverity])
+            cbTypeOfSeverity.set_model(liststore)
+            cbTypeOfSeverity.set_text_column(0)
+            cbTypeOfSeverity.show()
+
+     #same for the find field 
+        cbFindTypeOfSeverity = self.getWidget('cbFindSeverity')
+        if cbFindTypeOfSeverity:
+            liststore = gtk.ListStore(str)
+            for TypeOfSeverity in liSeverity:
+                liststore.append([TypeOfSeverity])
+            cbFindTypeOfSeverity.set_model(liststore)
+            cbFindTypeOfSeverity.set_text_column(0)
+            cbFindTypeOfSeverity.show()
+            
+            
+            
+            
+        cbTypeOfPriority = self.getWidget('cbTicketPriority')
+        if cbTypeOfPriority:
+            liststore = gtk.ListStore(str)
+            for TypeOfPriority in liPriority:
+                liststore.append([TypeOfPriority])
+            cbTypeOfPriority.set_model(liststore)
+            cbTypeOfPriority.set_text_column(0)
+            cbTypeOfPriority.show()
         
         
+        
+           
+        cbTypeOfReproduced = self.getWidget('cbTicketReproduced')
+        if cbTypeOfReproduced:
+            liststore = gtk.ListStore(str)
+            for TypeOfReproduced in liReproduced:
+                liststore.append([TypeOfReproduced])
+            cbTypeOfReproduced.set_model(liststore)
+            cbTypeOfReproduced.set_text_column(0)
+            cbTypeOfReproduced.show()
+            
+         
+           
+        cbTypeOfPlatform = self.getWidget('cbTicketPlatform')
+        if cbTypeOfPlatform:
+            liststore = gtk.ListStore(str)
+            for TypeOfPlatform in liPlatform:
+                liststore.append([TypeOfPlatform])
+            cbTypeOfPlatform.set_model(liststore)
+            cbTypeOfPlatform.set_text_column(0)
+            cbTypeOfPlatform.show()
+            
+            
+            
         self.tabSupportProject = 0
         self.tabSupportTicket = 1
         # start
@@ -246,17 +308,21 @@ class supportticketwindow(chooseWindows):
         elif self.tabOption == self.tabSupportTicket:
             self.activateClick('Ticket_delete1')
         
+        
+    # modul buttons
+    
+    # Project
     def on_bSearchProject_clicked(self, event):
-        pr = cuon.Project.project.projectwindow(self.allTables)
-        pr.setChooseEntry('chooseProject', self.getWidget( 'eAccProjectID'))
+        pr = cuon.Project.project.projectwindow(self.allTables, choose='Phase')
+        pr.setChooseEntry('chooseProject', self.getWidget( 'eProjectPhaseID'))
 
                            
 
-    def on_eAccProjectID_changed(self, event):
+    def on_eProjectPhaseID_changed(self, event):
         print 'eProject changed'
-        iPrNumber = self.getChangedValue('eAccProjectID')
-        ePrField = self.getWidget("eProjectDiscription")
-        liPr = self.singleProject.getInfoForID(iPrNumber)
+        iPhNumber = self.getChangedValue('eProjectPhaseID')
+        ePrField = self.getWidget("eProjectPhaseDiscription")
+        liPr = self.singlePhase.getInfoForID(iPhNumber)
         sDesc = ' '
         if liPr:
             try:
@@ -265,7 +331,54 @@ class supportticketwindow(chooseWindows):
                 pass
         ePrField.set_text(sDesc)
      
+    #Address
+    def on_bSearchAddress_clicked(self, event):
+        addr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        addr.setChooseEntry('chooseAddress', self.getWidget( 'eAddressNumber'))
         
+
+     # signals from entry eAddressNumber
+    
+    def on_eAddressNumber_changed(self, event):
+        print 'eAdrnbr changed'
+        try:
+            iAdrNumber = self.getChangedValue('eAddressNumber')
+            eAdrField = self.getWidget('eAddressField')
+            liAdr = self.singleAddress.getAddress(iAdrNumber)
+            print 'Address = ',  liAdr
+            eAdrField.set_text(liAdr[0]+',  ' +liAdr[1])
+        except Exception,  param:
+            print Exception, param
+        
+       
+    def on_bGotoAddress_clicked(self, event):
+        iAddrNumber = self.getChangedValue('eAddressNumber')
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables, address_id = iAddrNumber)
+        
+    # Search and show partner
+    def on_bSearchPartner_clicked(self, event):
+        print 'choose partner'
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables)
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'ePartnerID'))
+        
+    def on_ePartnerID_changed(self, event):
+        print 'ePartner changed'
+        iAdrNumber = self.getChangedValue('ePartnerID')
+        eAdrField = self.getWidget('ePartnerField')
+        sAdr = self.singlePartner.getAddressFirstlast(iAdrNumber)
+        eAdrField.set_text(sAdr)
+            
+    def on_bGotoPartner_clicked(self, event):
+        print 'bshowPartner'
+        iPID = int(self.getWidget('ePartnerID').get_text())
+        print 'pid = ',  iPID
+        if iPID > 0:
+        
+            self.singlePartner.load(iPID)
+            print 'addressid = ',  self.singlePartner.getAddressID()
+            
+            adr = cuon.Addresses.addresses.addresswindow(self.allTables, self.singlePartner.getAddressID(), iPID)
+    
     def on_tbDMS_clicked(self, event):
         self.activateClick('dms1')
 
