@@ -36,14 +36,7 @@ class plantlists(cuonlists):
         
         liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         
-        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
-        if cbTypeOfGrave:
-            liststore = gtk.ListStore(str)
-            for TypeOfGrave in liTypeOfGrave:
-                liststore.append([TypeOfGrave])
-            cbTypeOfGrave.set_model(liststore)
-            cbTypeOfGrave.set_text_column(0)
-            cbTypeOfGrave.show()
+     
         
         
         cbService = self.getWidget('cbService')
@@ -54,6 +47,16 @@ class plantlists(cuonlists):
             cbService.set_model(liststore)
             cbService.set_text_column(0)
             cbService.show()
+      
+        cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
+        if cbTypeOfGrave:
+            liststore = gtk.ListStore(str)
+            for TypeOfGrave in liTypeOfGrave:
+                liststore.append([TypeOfGrave])
+            cbTypeOfGrave.set_model(liststore)
+            cbTypeOfGrave.set_text_column(0)
+            cbTypeOfGrave.show()      
+            
         cbTypeOfPaid = self.getWidget('cbTypeOfPaid')
         if cbTypeOfPaid:
             liststore = gtk.ListStore(str)
@@ -62,6 +65,8 @@ class plantlists(cuonlists):
             cbTypeOfPaid.set_model(liststore)
             cbTypeOfPaid.set_text_column(0)
             cbTypeOfPaid.show()
+        
+        
         
         
         liGraveYard = self.rpc.callRP('Grave.getComboGraveyards',self.dicUser)
@@ -112,7 +117,10 @@ class plantlists(cuonlists):
         liReturn.append( self.getWidget('eGraveTo').get_text() )
         liReturn.append( self.getWidget('eSequentialNumberFrom').get_text() )
         liReturn.append( self.getWidget('eSequentialNumberTo').get_text() )
-        
+        liReturn.append( self.getWidget('eContractBeginFrom').get_text() )
+        liReturn.append( self.getWidget('eContractBeginTo').get_text() )
+        liReturn.append( self.getWidget('eContractEndsFrom').get_text() )
+        liReturn.append( self.getWidget('eContractEndsTo').get_text() )
         sName = "grave_plant_list_standard.xml"
         return liReturn,  nRow,  sName
         

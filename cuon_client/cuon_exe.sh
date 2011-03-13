@@ -32,7 +32,7 @@ if [ $1 ] ; then
                 Typ=alternate4
         ;;
 		
-		p0) Server=http://192.168.17.2:7080
+		p0) Server=https://192.168.17.2:7580
                 ;;
 
         p1) Server=http://192.168.17.2:7100
@@ -46,7 +46,7 @@ if [ $1 ] ; then
     
 
 else
-    Server=http://192.168.17.2:7080 ;
+    Server=https://192.168.17.2:7580 ;
 fi
 
 echo " Server = $Server"

@@ -232,13 +232,21 @@ POSTGRES_HOST: localhost
 POSTGRES_PORT: 5432
 POSTGRES_USER: cuon_admin
 
+This are example data dor the postgres database, please set here your own values.
+
+
+[XMLRPC]
+ALLOW_HTTP: NO
+HTTP_PORT:7080
+HTTPS_PORT:7580
+HOST:localhost
+
+You can set here to allow http and https or only https, also you can set the ports for the protocols.
 
 [PDF]
 ENCODING: latin-1
 ]]></programlisting>
 </example>
-
-<para>This are example data dor the postgres database, please set here your own values. </para>
 
 
 <para>
@@ -584,27 +592,27 @@ jhamel: cuon_all
 
 
 <chapter><title>Druckvorlagen</title>
-<sect1 id="DMS_Vorlagen"><title>Briefe mit einem Office-Programm erzeugen </title>
+<sect1 id="DMS_Vorlagen"><title>Create letters with an Office program</title>
 <sect2 id="br1"><title>
-Allgemeine Bemerkungen </title>
+General comments </title>
 <para>
-Das <link linkend='dms1'><emphasis>DMS</emphasis></link> wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterstuetzt:</para>
+The <link linkend='dms1'> <emphasis> DMS </emphasis></link> is also used to create letters, newsletters or other correspondence. To this end I have prepared a short example of libre office (OpenOffice). Currently the following formats are supported:</para>
 <itemizedlist>
-    <listitem><para> Einfache Textdokumente</para></listitem>
+    <listitem><para> simple Text</para></listitem>
 	<listitem><para> LibreOffice</para></listitem>
    <listitem><para>  OpenOffice</para></listitem> </itemizedlist>
 <para>
-Falls ein von Ihnen gewuenschtes Format nicht vorhanden ist, schreiben sie mir bitte eine E-Mail. Das folgende Vorgehen ist grundsaetzlich bei allen Formaten gleich.
+If a desired format, that you need, do not exist, please write me an e-mail. The following procedure is basically the same for all formats.
  </para>
 <para>
-Es sollen 2 Vorlagen fuer den Schriftverkehr erstellt werden, ein Briefvordruck fuer ein direktes Anschreiben der Fa, ein Briefvordruck fuer ein Anschreiben an einen Gesraechspartner.</para>
+There are 2 templates for the correspondences are created, a form letter for a direct letter from the company, a letter template for a letter from a partner.</para>
 <para>
-Dazu erstellen Sie jeweils einen beliebigen Briefvordruck und setzen an die entsprechenden Stellen die Platzhalter, die mit ## beginnen und mit ;; enden. Fuer den Nachnahmen waere das also:</para>
+To create the letter use a normal text form and set the placeholders to the appropriate fields that start with ## and end with ;;. For the lastname would it be so:</para>
 <example role="codelisting" id="brpm">
-<title>Platzhlter Markierung</title>
+<title>Placeholder</title>
 <programlisting><![CDATA[
   ##lastname;;
-    (im odt Format,  kein rtf nehmen)
+    (use odt format, not rtf or so )
 
 ]]></programlisting>
 </example>

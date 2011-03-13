@@ -42,6 +42,7 @@ import binascii
 import cuon.XMLRPC.xmlrpc
 import base64
 from cuon.Databases.dumps import dumps
+import SingleDMS
 
 class documentTools(dumps):
 
@@ -325,7 +326,12 @@ class documentTools(dumps):
                         print 'singleDMS -f-suffix', `singleDMS.fileSuffix`
                         
             f.close()
-            
+    def load_mainwindow_logo(self,  allTables):        
+        self.singleDMS = SingleDMS.SingleDMS(allTables)
+        self.singleDMS.loadMainLogo()
+        return  self.singleDMS.createTmpFile(self.singleDMS.firstRecord['file_suffix'])
+        
+        
     def replaceValues(self, dicVars, s, dicUser):
         #print 'replace this in document: ',  dicVars
         for key in dicVars.keys():

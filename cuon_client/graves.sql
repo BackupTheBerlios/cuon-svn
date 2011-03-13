@@ -24,7 +24,7 @@
      ' LANGUAGE 'plpgsql'; 
 
 DROP FUNCTION fct_getGravePlantListValues(IN dicSearchfields text [], IN iRows int ) CASCADE ;
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text,  iRows int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, iRows int ) returns setof record AS '
  DECLARE
      iClient int ;
     r record;
@@ -55,8 +55,9 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
             searchsql := searchsql  || '' and pos_number between '' || eSequentialNumberFrom || '' and '' || eSequentialNumberTo || '' '' ;
         END IF ;
         
-        
-        
+        IF char_length(dContractBeginFrom) > 0 AND char_length(dContractBeginTo) > 0 THEN 
+            searchsql := searchsql  || '' and contract_begins_at between fct_to_date('' || quote_literal(dContractBeginFrom) || '') and fct_to_date('' || quote_literal(dContractBeginTo) ||'') '' ;
+        END IF ;
         
         searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.shortname, grave.pos_number, grave.lastname, grave.firstname '';
 

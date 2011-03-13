@@ -87,7 +87,9 @@ class SingleDMS(SingleData):
             if f:
                 f.write(b)
                 self.tmpFile = sFile
-                
+                f.close()
+               
+        return sFile
             
     def readNonWidgetEntries(self, dicValues):
         newTime = time.localtime()
@@ -171,10 +173,12 @@ class SingleDMS(SingleData):
             
         return dicValues
     def loadDocument(self):
-        
+        print 'self.ID = ',  self.ID
         sSql = 'select document_image from dms where id = ' + `self.ID`
         liResult = self.rpc.callRP('Database.executeNormalQuery', sSql, self.sqlDicUser )
+        
         if liResult:
+            print 'keys = ',  liResult[0].keys()
             s = liResult[0]['document_image']
             try:
                 self.imageData = base64.decodestring(s)
@@ -242,6 +246,19 @@ class SingleDMS(SingleData):
             self.setAllWidgetsVisible(True)
             print "all to visible "
 
+
+    def loadMainLogo(self):
+        self.imageData = None
+        id = self.rpc.callRP('Misc.getIdFromTitle', 'cuon_mainwindow_logo',  self.dicUser)
+        print "id for the logo = ",  id
+        if id > 0:
+            self.load(id)
+            
+            
+            self.loadDocument()
+        return self.imageData
+        
+        
 ##        s = oneRecord['document_image']
 ##        print len(s)
 ##        s2 = base64.decodestring(s)

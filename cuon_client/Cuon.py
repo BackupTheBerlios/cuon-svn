@@ -267,7 +267,16 @@ try:
     import cuon.Web2.web2
 except:
     print 'no Module Web2'
-
+try:
+    from PIL import Image
+except:
+    print 'no PIL Image found'
+    
+try:
+    import cuon.SQL_Shell.sql_shell
+except:
+    pass
+    
 # localisation
 import locale, gettext
 import time
@@ -286,6 +295,10 @@ import httplib, urllib
 #except:
 #    print "no Profile"
 
+import cuon.DMS.documentTools
+
+import bz2
+
 
 class MainWindow(windows):
     """
@@ -301,7 +314,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 3, 'Rev': 9, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 3, 'Rev': 13, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -600,6 +613,7 @@ class MainWindow(windows):
             # now start scheduling
             print 'Client = ', self.oUser.getSqlDicUser()['client']
             
+          
     
         
     def generateSqlObjects(self):
@@ -690,12 +704,12 @@ class MainWindow(windows):
         
     def on_clients1_activate(self, event):
         
-        print self.allTables
+        #print self.allTables
         self.dicUser = self.oUser.getDicUser()
         if event:
             self.ClientID = 0
         print 'cli = ',  self.ClientID
-        cli = cuon.Clients.clients.clientswindow(self.allTables, self.ClientID)
+        cli = cuon.Clients.clients.clientswindow(self.allTables, self.ClientID,  eClient = self.getWidget('eClient'))
         
     def on_staff1_activate(self, event):
         staff = cuon.Staff.staff.staffwindow(self.allTables) 
@@ -813,6 +827,12 @@ class MainWindow(windows):
         print 'export Data'
         import cuon.Databases.export_generic1
         exp1 =  cuon.Databases.export_generic1.export_generic1(self.allTables)
+        
+        
+        
+    def on_sql_shell_activated(self, event):
+        
+        sqlw = cuon.SQL_Shell.sql_shell.sql_shell()
     def on_test1_activate(self, event):
         import cuon.VTK.mainLogo
         import cuon.VTK.test
@@ -1264,7 +1284,27 @@ class MainWindow(windows):
     #def startTimer(self, seconds):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    
-    
+    def on_eClient_changed(self, event):
+        dt = cuon.DMS.documentTools.documentTools()
+        sFile = dt.load_mainwindow_logo(self.allTables)
+        if sFile:
+            print "image found"
+            logo = self.getWidget("company_logo")
+#            
+#            newIm = Image.fromstring('RGB',[1024, 1024], bz2.decompress( image))
+#            newIm.thumbnail([208,208])
+#            sFile = self.dicUser['prefPath']['tmp'] + 'cuon_mainwindow_logo.png'
+#            save(sFile)
+            print 'sFile = ',  sFile
+            
+            
+            pixbuf = gtk.gdk.pixbuf_new_from_file(sFile)
+            scaled_buf = pixbuf.scale_simple(208,208,gtk.gdk.INTERP_BILINEAR)
+            logo.set_from_pixbuf(scaled_buf)
+            logo.show()
+
+            
+            #logo.set_from_file(sFile)
     def on_onlineNews_activate(self, event):
        
           
@@ -1303,6 +1343,7 @@ class MainWindow(windows):
         #ML = cuon.VTK.mainLogo.mainLogo()
         #ML.startLogo()
 
+        
         self.ClientID = ClientID
         if sDebug:
             self.sDebug = sDebug
@@ -1398,6 +1439,8 @@ class MainWindow(windows):
             self.winNews.connect("delete_event", self.closeOnlineNews)
             self.swMap = self.getWidget('swOnlineNews')
             
+            
+                
         # Menu-items
        
         self.initMenuItemsMain()

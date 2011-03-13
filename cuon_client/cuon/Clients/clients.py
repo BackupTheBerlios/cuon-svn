@@ -40,12 +40,12 @@ import cuon.Addresses.addresses
 class clientswindow(chooseWindows):
 
     
-    def __init__(self, allTables, ClientID = 0):
+    def __init__(self, allTables, ClientID = 0, eClient = None):
 
         chooseWindows.__init__(self)
        
         self.singleClients = SingleClient.SingleClient(allTables)
-
+        self.eClient = eClient 
     
         self.loadGlade('clients.xml')
         self.win1 = self.getWidget('ClientMainwindow')
@@ -125,7 +125,11 @@ class clientswindow(chooseWindows):
             print `self.oUser.getSqlDicUser`
             self.openDB()
             self.oUser = self.saveObject('User', self.oUser)
+            
+            
             self.closeDB()
+            if self.eClient:
+                self.eClient.set_text(self.singleClients.getName(self.singleClients.ID))
             self.closeWindow() 
             self.rpc.callRP('User.setUserData',self.dicUser)
         else:

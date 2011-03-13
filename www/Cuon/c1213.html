@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Adressen- und Terminpflege </TITLE
+>Benutzer Konfiguration </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Umfangreiche Beispiele"
-HREF="p1211.html"><LINK
+TITLE="Benutzerhandbuch"
+HREF="p1118.html"><LINK
 REL="PREVIOUS"
-TITLE="Umfangreiche Beispiele"
-HREF="p1211.html"><LINK
+TITLE="Erster Kontakt "
+HREF="x1131.html"><LINK
 REL="NEXT"
-TITLE="Anleitung für Kontakter "
-HREF="x1226.html"></HEAD
+TITLE="Stammdaten"
+HREF="c1260.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="p1211.html"
+HREF="x1131.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1226.html"
+HREF="c1260.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -74,50 +74,191 @@ CLASS="chapter"
 ><A
 NAME="AEN1213"
 ></A
->Chapter 11. Adressen- und Terminpflege </H1
+>Chapter 10. Benutzer Konfiguration </H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="ub1"
->11.1. Voraussetzungen</A
+NAME="user_config"
+>10.1. Benutzerprofile</A
 ></H1
 ><P
->&#13;Nach dem Start von CUON und dem Anmelden sowie der Auswahl des Mandanten wählen wir im Menü Stammdaten den Eintrag Adressverwaltung aus. Es öffnet sich das Adressfenster mit den ersten Adressen. Nun können wir als erstes eine Auswahl treffen, also z.B. alle Adressen, die mit dem Buchstaben a beginnen und in dem Postleitzahlbereich 33445 sind.
-Dazu geben wir bei Nachname folgende Kombination ein:
-</P
-><DIV
-CLASS="example"
-><A
-NAME="regaus"
-></A
-><P
-><B
->Example 11-1. Regulärer ausdruck</B
-></P
-><PRE
-CLASS="programlisting"
->&#13; #~*'^a.*' (Lange Form) oder ^a ( Kurzform) und bei der Postleitzahl 33445.
-</PRE
-></DIV
-><P
->Dann einfach die Eingabetaste betätigen oder den Button Suchen anklicken. ( Nähere Hinweise zu regulären Suchbegriffen bitte [:regulären_Ausdrücken: hier nachschlagen]. Die gewünschten Adressen erscheinen in der Listenauswahl. Die gewünschte Adresse anklicken und alle relevanten Daten ( Adresse, Telefonnummer ) sind im unteren Detailbereich sichtbar. Jetzt kann der Teilnehmer angerufen werden.
-</P
-><P
->Es empfiehlt sich, die Adressverwaltung ein 2. mal zu öffnen und auf eine andere Arbeitsfläche zu legen (LINUX, BSD only). Wenn ein Kunde anruft, kann man ihn dann schnell suchen. auch hierbei sind die regulären Ausdrücke von entscheidener Bedeutung. Als Beispiel:
-</P
-><P
->Der Kunde Bach+Kampert Küchen-Traum ruft an. Jetzt lange suchen, wie der Kunde geschrieben wird,also mit + oder mit und ist nicht nur ineffektiv, sondern verärgert auch durch die lange Zeitdauer den Kunden. Also empfiehlt es sich, einfach bach.*küchen( oder küchen.*raum einzugeben und eine hohe Trefferquote wird erreicht. Der Punkt steht dabei für ein beliebiges Zeichen, der Stern für eine beliebige Menge, zusammen also <SPAN
+>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->irgendwas dazwischen</I
+>Werkzeuge --&#62; Einstellungen --&#62; Benutzer</I
 ></SPAN
->.
-</P
+> eingestellt. </P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_1"
+>10.1.1. Profile</A
+></H2
 ><P
->Benachrichtigung der Reps: Wenn der Rep keine PDF-Datei haben möchte, können wir ihm auch die Email als Microsoft-Word Dokument schicken.</P
+>Hier werden die grundlegenden Einstellung für das Benutzer Profil eingestellt. Für Deutschland sollte als SQL-Encoding utf-8 und als sprache de eingestellt werden. </P
+><DIV
+CLASS="figure"
+><A
+NAME="up1"
+></A
+><P
+><B
+>Figure 10-1. Benutzer Einstellungen Profile</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences1.png"
+ALIGN="center"></P
+></DIV
+><P
+>Mit Zeitvorgabe kann man +/- Stunden eingeben, wenn der Cuon-Server in einer anderen Zeitzone ist. Evtl. auch Sommer/Winterzeit einstellen, wenn der Server dies nicht unterstützt oder anders schaltet.Als Beispiel steht der Server in den USA, muß ein deutscher Client diese Vorgaben anpassen. </P
+><P
+>Der Schalter <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>check imap Folder</I
+></SPAN
+> schaltet das automatische Übernehmen der Emails in das DMS ein.</P
+><P
+>Mit dem Schalter <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>maximize window</I
+></SPAN
+> werden die Hauptfenster im maximalen Modus gestartet, andernfalls in der Original Größe</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_2"
+>10.1.2. Communication</A
+></H2
+><P
+>Hier werden die zu benutzenden Programme für Email, Chat. Facebook usw.  festgelegt.</P
+><DIV
+CLASS="figure"
+><A
+NAME="up2"
+></A
+><P
+><B
+>Figure 10-2. Benutzer Einstellungen Communication</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences2.png"
+ALIGN="center"></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_3"
+>10.1.3. Ausführen</A
+></H2
+><P
+>Programme und Pfade für auszuführenden Programme, z.B. um Rechnungen direkt auf einen Drucker zu leiten</P
+><DIV
+CLASS="figure"
+><A
+NAME="up3"
+></A
+><P
+><B
+>Figure 10-3. Benutzer Einstellungen Ausführen</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences3.png"
+ALIGN="center"></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_4"
+>10.1.4. Email</A
+></H2
+><P
+>Bitte tragen Sie hier ihre Email Einstellungen ein, und zwar jeweils für den Imap-Server und dem SMTP-Server ( wichtig fürs DMS) </P
+><DIV
+CLASS="figure"
+><A
+NAME="up4"
+></A
+><P
+><B
+>Figure 10-4. Benutzer Einstellungen E-Mail</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences4.png"
+ALIGN="center"></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_5"
+>10.1.5. Scanner</A
+></H2
+><P
+>Tragen sie hier die Werte für Ihren Scanner ein, er sollte automatisch erkannt werden. </P
+><DIV
+CLASS="figure"
+><A
+NAME="up5"
+></A
+><P
+><B
+>Figure 10-5. Benutzer Einstellungen Scanner</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences5.png"
+ALIGN="center"></P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="user_config_6"
+>10.1.6. </A
+></H2
+><P
+>Dies ist eine der wichtigsten Einstellungen. Tragen sie bitte hier ( ggf. mit Pfad) die Programme ein, die für die entsprechende Datei genutzt werden soll</P
+><DIV
+CLASS="figure"
+><A
+NAME="up6"
+></A
+><P
+><B
+>Figure 10-6. Benutzer Einstellungen DMS</B
+></P
+><P
+><IMG
+SRC="images/screenshots/iPreferences6.png"
+ALIGN="center"></P
+></DIV
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -136,7 +277,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="p1211.html"
+HREF="x1131.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -154,7 +295,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1226.html"
+HREF="c1260.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -164,13 +305,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Umfangreiche Beispiele</TD
+>Erster Kontakt</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="p1211.html"
+HREF="p1118.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -178,7 +319,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Anleitung für Kontakter</TD
+>Stammdaten</TD
 ></TR
 ></TABLE
 ></DIV

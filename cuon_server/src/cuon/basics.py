@@ -42,11 +42,14 @@ class basics(xmlrpc.XMLRPC):
         
         self.CUON_FS = '/etc/cuon'  
         
-       
-        self.XMLRPC_PORT = 7080
+       # xmlrpc settings
+        self.XMLRPC_HTTP_PORT = 7080
+        self.XMLRPC_HTTPS_PORT = 7580
         self.XMLRPC_HOST = 'localhost'
         self.XMLRPC_PROTO = "http"
-        
+        self.XMLRPC_ALLOW_HTTP = True
+
+
         self.WEBPATH = '/var/cuon_www/'
         self.WEB_HOST = 'localhost'
         self.WEB_PORT = 7081
@@ -144,6 +147,32 @@ class basics(xmlrpc.XMLRPC):
             self.cpServer = ConfigParser.ConfigParser()
             
             self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
+            
+            
+            
+            # xmlrpc settings
+             #ALLOW_HTTP: NO
+            #HTTP_PORT:7080
+            #HTTPS_PORT:7580
+            #HOST:localhost
+            
+            value = self.getConfigOption('XMLRPC','HOST')
+            if value:
+                self.XMLRPC_HOST = value
+                
+            value = self.getConfigOption('XMLRPC','HTTP_PORT')
+            if value:
+                self.XMLRPC_HTTP_PORT = int(value)
+            value = self.getConfigOption('XMLRPC','HTTPS_PORT')
+            if value:
+                self.XMLRPC_HTTPS_PORT = int(value)
+                    
+                
+            value = self.getConfigOption('XMLRPC','ALLOW_HTTP')
+            if value:
+            
+                self.XMLRPC_ALLOW_HTTP = self.checkBool(value)        
+                
             # Automatic schedul 
 
             value = self.getConfigOption('AUTOMATIC','SCHEDUL')

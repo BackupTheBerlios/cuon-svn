@@ -26,6 +26,20 @@ class Order(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
         self.oDatabase = Database.Database()
         
+    def xmlrpc_getSupply_GetNumber(self, orderNumber, dicUser):    
+        sGetNumber =  '0'
+        sSupplyNumber = '0'
+        
+        
+        sSql = "select gets_number from  fct_getGet_number(" + `orderNumber` + ") as gets_number(text) "
+        
+        sGetNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['gets_number']
+        sSql = "select supply_number from  fct_getSupply_number(" + `orderNumber` + ") as supply_number(text) "
+        
+        sSupplyNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['supply_number']
+        
+        
+        return sGetNumber,  sSupplyNumber
         
 
     def xmlrpc_getDeliveryNumber(self, orderNumber, dicUser ):

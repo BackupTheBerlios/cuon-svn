@@ -2,21 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->UserGroups.cfg </TITLE
+>sql.ini </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="
-       C.U.O.N. 
-    "
+TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Configuration"
-HREF="c167.html"><LINK
+HREF="c185.html"><LINK
 REL="PREVIOUS"
-TITLE="sql.ini "
-HREF="x267.html"></HEAD
+TITLE="clients.ini "
+HREF="x253.html"><LINK
+REL="NEXT"
+TITLE="UserGroups.cfg "
+HREF="x276.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -36,9 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.: 
-       Installation and Usage 
-    </TH
+>C.U.O.N.:  Installation and Usage </TH
 ></TR
 ><TR
 ><TD
@@ -46,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x267.html"
+HREF="x253.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +58,11 @@ VALIGN="bottom"
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="x276.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -70,19 +73,74 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="usergroups_cfg"
->2.6. UserGroups.cfg</A
+NAME="sql_ini"
+>2.5. sql.ini</A
 ></H1
 ><P
->&#13;Diese Datei sollte so aussehen:
-[USER]
-zope: zope_rights
-heino: cuon_all
-jhamel: cuon_all
-GroupRightsOther.cfg 
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_sql"
+></A
+><P
+><B
+>Example 2-14. Configuration sql.ini</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;
+# Here all registered groups separated by commas
+[GROUPS]
+NAMES: office,invoice
 
-[cuon_other]
-cuon_clients: select </P
+
+# set here the rights for some automatical actions
+# rwxrwxrwx
+# r = read, also lesen
+# w = write, also schreiben
+# x = eXecute, also ausfuehren
+# settings for  User, Group, All
+# a underline is the meaning of &#60;emphasis&#62;no right&#60;/emphasis&#62; 
+# Then, with comma separated a list of groups 
+[DEFAULT_MODUL_RIGHTS_DMS] INVOICE: rw_r__r__,rechnung 
+[LIMIT] Address: 30 
+Garden: 217 
+Project: 50 
+Articles: 80 
+Order: 50 
+
+#Diese Eintraege gelten fuer die Auftragsbearbeitung 
+[modul_order] 
+default_top: 1 
+#die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird 
+
+#The following entries are required for the hibernation module (horticulture): 
+[modul_hibernation] 
+replace_staff_pickup: 1 
+replace_staff_supply: 2 
+replace_plant_hibertion:3 
+replace_plant_add_pot:4 
+replace_plant_add_material:5 
+replace_plant_add_earth:6 
+replace_plant_add_misc:7 
+#These settings have the hibernation services (winter, delivery, etc. Umtopfarbeiten) solid articles (the number is the Item ID). Using this product after the tax, gross / #Nettorprice is set. 
+#The following are the text messages for billing: 
+translate_price_hibernation_for: Preis der Ueberwinterung fuer 
+translate_price_add_pot_for: Preis fuer groesseren Topf 
+translate_price_add_material_for: 
+Preis fuer zus. Material 
+translate_price_add_earth_for: 
+Preis fuer zus. Erde 
+translate_price_add_misc_for: Preis fuer Sonstiges 
+translate_price_staff_pickup_for: Abholkosten 
+translate_price_staff_supply_for: Anlieferkosten 
+translate_price_staff_pickup_for: Abholkosten 
+translate_price_staff_supply_for: Anlieferkosten 
+</PRE
+></DIV
+>
+
+</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -100,7 +158,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x267.html"
+HREF="x253.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -117,20 +175,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="x276.html"
+ACCESSKEY="N"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->sql.ini</TD
+>clients.ini</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c167.html"
+HREF="c185.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -138,7 +200,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>UserGroups.cfg</TD
 ></TR
 ></TABLE
 ></DIV

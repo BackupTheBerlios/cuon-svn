@@ -60,8 +60,8 @@ class SingleClient(SingleData):
         liAddress = []
         if dicRecords:
             dicRecord = dicRecords[0]
-            liAddress.append(dicRecord['lastname'])
-            liAddress.append(dicRecord['lastname2'])
+            liAddress.append(dicRecord['name'])
+            liAddress.append(dicRecord['name2'])
             liAddress.append(dicRecord['firstname'])
             liAddress.append(dicRecord['street'])
             liAddress.append(dicRecord['country'] + '-' +dicRecord['zip']+ ' ' + dicRecord['city'])
@@ -75,4 +75,17 @@ class SingleClient(SingleData):
         return liAddress
 
         
+    def getName(self,  id):
+        name = 'NONE'
+        try:
+            print "1"
+            dicRecords = self.load(id)
+            print "2", dicRecords
+            dicRecord = dicRecords[0]
+            print "3",  dicRecord
+            name = dicRecord['name']
+            print "4"
+        except:
+            print 'client name error'
+        return name
         

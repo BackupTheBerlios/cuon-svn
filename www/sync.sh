@@ -41,10 +41,10 @@ rsync -r -avz --numeric-ids -e 'ssh -p 22' images root@cuon.org://var/www/cuon_w
 # Api
 
 #client api
-cp -R ../api/html/* api
-cp  ../api/pdf/*.pdf  api
+rsync  -avz --numeric-ids ../api/html/* api
+rsync  -avz --numeric-ids  ../api/pdf/*.pdf  api
 # server api
-cp -R ../api/cuonserver api
+rsync  -avz --numeric-ids ../api/cuonserver api
 
 rsync -r -avz --numeric-ids -e 'ssh -p 22' api root@cuon.org://var/www/cuon_web
 

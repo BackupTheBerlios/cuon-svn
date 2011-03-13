@@ -558,3 +558,14 @@ class Misc(xmlrpc.XMLRPC, basics):
         return liResult
         
         
+    def xmlrpc_getIdFromTitle(self, sTitle,  dicUser):
+        id = 0
+        sSql = "select id from DMS where title = '" + sTitle + "' " 
+        sSql += self.getWhere("",dicUser,2)
+        liResult = self.oDatabase.xmlrpc_executeNormalQuery( sSql, dicUser )
+        
+        if liResult not in self.liSQL_ERRORS:
+            id = liResult[0]['id']
+        
+        return id
+        

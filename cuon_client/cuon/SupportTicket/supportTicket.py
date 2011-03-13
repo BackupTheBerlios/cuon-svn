@@ -101,17 +101,17 @@ class supportticketwindow(chooseWindows):
         self.addEnabledMenuItems('Ticket','Ticket')
         
         # enabledMenues for  Project
-        self.addEnabledMenuItems('editProject','new1')
-        self.addEnabledMenuItems('editProject','edit1')
-        self.addEnabledMenuItems('editProject','delete1')
+        self.addEnabledMenuItems('editProject','new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editProject','edit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editProject','delete1', self.dicUserKeys['delete'])
 
         # enabledMenues for  Ticket
-        self.addEnabledMenuItems('editTicket','Ticket_new1')
-        self.addEnabledMenuItems('editTicket','Ticket_edit1')
-        self.addEnabledMenuItems('editTicket','Ticket_delete1')
+        self.addEnabledMenuItems('editTicket','Ticket_new1', self.dicUserKeys['new'])
+        self.addEnabledMenuItems('editTicket','Ticket_edit1', self.dicUserKeys['edit'])
+        self.addEnabledMenuItems('editTicket','Ticket_delete1', self.dicUserKeys['delete'])
         # enabledMenues for Save 
-        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['articles_save'])
-        self.addEnabledMenuItems('editSave','Ticket_Save1', self.dicUserKeys['articles_save'])
+        self.addEnabledMenuItems('editSave','save1', self.dicUserKeys['save'])
+        self.addEnabledMenuItems('editSave','Ticket_Save1', self.dicUserKeys['save'])
         
         
         # add comboboxes
@@ -201,7 +201,7 @@ class supportticketwindow(chooseWindows):
         
         self.tabChanged()
      
-    #    self.win1.add_accel_group(self.accel_group)
+    self.win1.add_accel_group(self.accel_group)
         
     # File Menu
     def on_quit1_activate(self,  event):

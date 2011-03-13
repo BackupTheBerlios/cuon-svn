@@ -279,3 +279,19 @@ CREATE OR REPLACE FUNCTION fct_delete( ) returns OPAQUE AS '
      ' LANGUAGE 'plpgsql'; 
  
  
+CREATE OR REPLACE FUNCTION fct_to_date( sDate text) returns date AS '
+    
+    DECLARE
+        dDate date ;
+        sDateFormat text ;
+        
+    BEGIN
+        select into sDateFormat type_c from cuon_values  where name = ''SQLDateFormat''  ;
+        
+        select into dDate to_date(sDate,sDateFormat);
+        RETURN dDate ;
+    END;
+     
+     ' LANGUAGE 'plpgsql'; 
+
+    

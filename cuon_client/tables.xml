@@ -2512,6 +2512,26 @@
       <default />
       <comment />
     </field>
+        <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+      <field>
+      <name>number</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>25</size>
+      <default />
+      <comment>number of this note</comment>
+    </field>
   </table>
   <table>
     <nameOfTable>orderget</nameOfTable>
@@ -2658,6 +2678,17 @@
       <default />
       <comment />
     </field>
+     <field>
+      <name>orderid</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+    
   </table>
   <table>
     <nameOfTable>orderposition</nameOfTable>

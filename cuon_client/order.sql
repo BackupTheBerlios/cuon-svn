@@ -43,7 +43,7 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
         count := 0;
 
     WHILE FOUND LOOP
-        -- RAISE NOTICE ''total sum for position , amount %, price % , discount %'', fAmount,fPrice,fDiscount ;
+        RAISE NOTICE ''total sum for position , amount %, price % , discount %'', fAmount,fPrice,fDiscount ;
         if fDiscount IS NULL then
             fDiscount := 0.0 ;
         end if ;
@@ -55,11 +55,11 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
         
         -- now search for brutto/netto
         bNet := fct_get_net_for_article(iArticleID);
-         raise notice '' order bNet value is %'',bNet ;
+        raise notice '' order bNet value is %'',bNet ;
         if fTaxVat > 0 THEN
             if bNet = true then 
             -- raise notice '' order calc as bnet is true'';
-                fSum := fSum + ( fAmount * ( fPrice + (fPrice *fTaxVat/100) * (100 - fDiscount)/100 ) ) ;
+                fSum := fSum + ( fAmount * ( fPrice + (fPrice *fTaxVat/100) ) * (100 - fDiscount)/100 ) ;
             else 
                 fSum := fSum + ( fAmount * (fPrice * (100 - fDiscount)/100 ) ) ;
             end if ;
@@ -213,7 +213,7 @@ CREATE OR REPLACE FUNCTION fct_getReminder( iDays integer) returns setof  record
      
 DROP FUNCTION fct_duplicateOrder(integer);
 
-CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer, OrderType=integer) returns int AS '
+CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer, OrderType integer) returns int AS '
  DECLARE
      
     newOrderID int ;
@@ -305,3 +305,62 @@ CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder(OrderID integer) returns bool 
     
      ' LANGUAGE 'plpgsql'; 
      
+CREATE OR REPLACE FUNCTION fct_getGet_number(OrderID integer) returns  text AS '
+ DECLARE
+    sData text ;
+    sSql text ;
+    r2 record ;
+    
+    BEGIN
+       sData := ''0'' ;
+       sSql := ''select number as get_number from orderget where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
+       
+       FOR r2 in execute(sSql)  LOOP
+            
+            if r2.get_number is not null then 
+                sData := r2.get_number ;
+            else
+                sData := ''0'' ;
+            END IF ;
+            
+             
+        END LOOP ;
+     
+            
+     return sData ; 
+       
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 
+     
+CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  text AS '
+ DECLARE
+    sData text ;
+    sSql text ;
+    r2 record ;
+    
+    BEGIN
+       sData := ''0'' ;
+       sSql := ''select number as supply_number from ordersupply where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
+       
+       FOR r2 in execute(sSql)  LOOP
+           
+            if r2.supply_number is not null then 
+                sData := r2.supply_number ;
+            else
+                sData := ''0'' ;
+            END IF ;
+            
+             
+        END LOOP ;
+     
+            
+     return sData ; 
+       
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql';      

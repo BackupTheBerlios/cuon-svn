@@ -89,7 +89,14 @@ class SingleOrder(SingleData):
         except Exception, params:
             print Exception, params    
         
-        
+        try:
+            sGetNumber,  sSupplyNumber = self.rpc.callRP('Order.getSupply_GetNumber', self.ID, self.dicUser)
+            print 'get/supply = ',  sGetNumber,  sSupplyNumber
+            self.getWidget('eSupplyNumber').set_text(sSupplyNumber)
+            self.getWidget('eGetsNumber').set_text(sGetNumber)
+        except:
+            pass
+            
     def setOtherEmptyEntries(self):
         self.getWidget('eInvoiceNumber').set_text('')
     
