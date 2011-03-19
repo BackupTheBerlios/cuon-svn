@@ -6503,5 +6503,33 @@
     <sequence_cycle>Yes</sequence_cycle>
     <sequence_cache>0</sequence_cache>
   </database_sequence>
-    
+     <database_sequence>
+    <nameOfSequence>numerical_project_projectnumber</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1000</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
+  
+   <database_sequence>
+    <nameOfSequence>numerical_orderbook_ordernumber</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1000</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
+   <database_sequence>
+    <nameOfSequence>numerical_proposal_proposalnumber</nameOfSequence>
+    <sequence_increment>1</sequence_increment>
+    <sequence_start>1000</sequence_start>
+    <sequence_minvalue>1</sequence_minvalue>
+    <sequence_maxvalue>500000</sequence_maxvalue>
+    <sequence_cycle>Yes</sequence_cycle>
+    <sequence_cache>0</sequence_cache>
+  </database_sequence>
+  
 </database>

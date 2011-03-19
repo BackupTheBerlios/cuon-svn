@@ -103,7 +103,8 @@ class SingleDMS(SingleData):
         print 'readNonWidgetEntries(self) by SingleDMS'
         dicValues['size_x'] = [self.size_x,'int']
         dicValues['size_y'] = [self.size_y,'int']
-        dicValues['document_image'] = [self.imageData,'text']
+        if self.imageData:
+            dicValues['document_image'] = [self.imageData,'text']
         dicValues['file_format'] = [self.fileFormat, 'string']
         dicValues['file_suffix'] = [self.fileSuffix, 'string']
         dicValues['insert_from_module'] = [self.ModulNumber, 'int']

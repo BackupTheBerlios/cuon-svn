@@ -30,6 +30,7 @@ import os,  sys
 import os.path
 import string
 import math
+import re
 
 
 
@@ -713,6 +714,7 @@ class report(MyXML):
 
 
                             liRecord = self.checkProperty(liRecord, dicRow)
+                            
                         if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , lineOffset ):
                             
                             self.dicReportValues['pageDetails'] = liRecord
@@ -1266,8 +1268,12 @@ class report(MyXML):
                                 textobject = c.beginText()
                                 textobject.setTextOrigin(x1, y1)
                                 textobject.setFont(dicField['font'].encode('ascii'), dicField['fontsize'])
+                                
+                                
                                 textobject.textLines(sq)
+                                
                                 c.drawText(textobject)
+                                
                         except:
                             print 'error draw string'
                     else:
@@ -1445,7 +1451,7 @@ class report(MyXML):
                 nHeight = self.dicPage['SiteBackgroundHeight2'] 
                 x1 = self.dicPage['SiteBackgroundX2']
                 y1 = self.dicPage['SiteBackgroundY2']
-                dicRow = {'PropertyBG1':self.dicPage['PropertyBG2']}
+                dicRow = {'PropertyBG2':self.dicPage['PropertyBG2']}
                 if self.doPrintPart(dicRow, 'BG2'):
                     if nWidth > 0 and nHeight > 0:
                         c.drawImage(sImage, x1, y1, width = nWidth, height = nHeight)
@@ -1483,6 +1489,7 @@ class report(MyXML):
     def doPrintPart(self, dicRow,  Suffix = ''):
         doPrint = False
         if dicRow.has_key('Property'+Suffix) and dicRow['Property'+Suffix]:
+            print "sProperty = " ,  Suffix,  dicRow['Property'+Suffix]
             sProperty = dicRow['Property'+Suffix]
             printSite = sProperty[0].strip().upper()
             if printSite == 'A':

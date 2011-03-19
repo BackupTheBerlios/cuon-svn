@@ -49,10 +49,10 @@ class report_order_standard_invoice(report_basics):
         
         self.dicResults['Order'] = [dicOrder]
         
-        print dicOrder
+        #print dicOrder
         
         dicResult =  oOrder.xmlrpc_getInvoiceAddress( dicOrder, dicUser )
-        print "result by address: ", dicResult
+        #print "result by address: ", dicResult
         if dicResult not in ['NONE','ERROR']:
 ##            for i in dicResult:
 ##                for j in i.keys():
@@ -81,11 +81,11 @@ class report_order_standard_invoice(report_basics):
         
             print  dicResult 
             self.dicResults['positions'] = dicResult
-            print 'ReportPath = ', reportDefs['ReportPath'] + '/order_standardinvoice.xml'
+            #print 'ReportPath = ', reportDefs['ReportPath'] + '/order_standardinvoice.xml'
             
             dicResult =  oOrder.xmlrpc_getToP( dicOrder, dicUser )
 
-            print "result by top", dicResult
+            #print "result by top", dicResult
             
 ##    
 ##            for i in dicResult:
@@ -95,11 +95,14 @@ class report_order_standard_invoice(report_basics):
 ##                
 ##    
         
-            print  dicResult 
+            #print  dicResult 
             self.dicResults['terms_of_payment'] = dicResult
             
             dicResult =  oOrder.xmlrpc_getUserInfoInvoice( dicOrder, dicUser )
             self.dicResults['user_info'] = dicResult
+            
+            dicResult =  oOrder.xmlrpc_getArticleParts( dicOrder, dicUser )
+            self.dicResults['article_parts'] = dicResult
             # values in this order:
             # 1 reportname
             # 2 dicUser

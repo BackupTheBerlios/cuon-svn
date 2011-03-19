@@ -335,6 +335,7 @@ CREATE OR REPLACE FUNCTION fct_getGet_number(OrderID integer) returns  text AS '
     
      ' LANGUAGE 'plpgsql'; 
      
+
 CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  text AS '
  DECLARE
     sData text ;
@@ -343,6 +344,8 @@ CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  text A
     
     BEGIN
        sData := ''0'' ;
+       
+       
        sSql := ''select number as supply_number from ordersupply where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
        
        FOR r2 in execute(sSql)  LOOP
@@ -364,3 +367,93 @@ CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  text A
 
     
      ' LANGUAGE 'plpgsql';      
+
+     
+CREATE OR REPLACE FUNCTION  fct_getArticlePartsListForOrder(OrderID integer) returns setof record AS '
+ DECLARE
+ 
+ 
+    sSql text ;
+    r2 record ;
+    rPositions record ;
+    rArticlesPart record ;
+    
+    
+    BEGIN
+       
+       sSql := ''select articleid  as articl_id from orderpositions where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
+       
+       FOR r2 in execute(sSql)  LOOP
+           
+           
+      
+            
+            return next r2 ;
+            
+        END LOOP ;
+     
+            
+      
+       
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql';      
+
+     
+     
+     CREATE OR REPLACE FUNCTION  fct_getTopIDForOrder(OrderbookID integer) returns  integer AS '
+    DECLARE
+ 
+    t1 integer ;
+    sSql text ;
+    r2 record ;
+    
+    topID integer ;
+    
+    BEGIN
+    
+        topID := 0;
+    
+        select into r2  order_top from orderinvoice where orderid = OrderbookID ;
+        
+        IF r2.order_top is not NULL then 
+            
+            topID :=  r2.order_top ;
+            
+        END IF ;
+        
+        
+    
+        IF topID = 0 THEN 
+        
+            execute  ''select addresses_misc.top_id as adr_top_id from addresses_misc,orderbook where addresses_misc.address_id = orderbook.addressnumber and orderbook.id = '' || OrderbookID || '' '' ||  fct_getWhere(2,''addresses_misc.'') INTO  t1;
+       
+       
+            
+            raise notice ''top id adr = %'', t1 ;
+            
+            if t1 is  not null then 
+            
+                if t1 > 0 then 
+                    topID :=  t1;
+                end if;
+            end if ;
+  
+            
+        
+            
+            
+            
+        end if ;
+        
+        return topID ;
+        
+            
+      
+       
+    END ;
+    
+     ' LANGUAGE 'plpgsql';      
+     

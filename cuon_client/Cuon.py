@@ -314,7 +314,7 @@ class MainWindow(windows):
         
         windows.__init__(self)
         self.sStartType = sT
-        self.Version = {'Major': 11, 'Minor': 3, 'Rev': 13, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
+        self.Version = {'Major': 11, 'Minor': 3, 'Rev': 16, 'Species': 0, 'Maschine': 'Linux,BSD,Windows,Mac'}
         
         self.sTitle =  `self.Version['Major']` + '.' + `self.Version['Minor']` + '.' + `self.Version['Rev']` 
         self.t0 = None
@@ -1285,25 +1285,28 @@ class MainWindow(windows):
     #    self.t1 = threading.Timer(seconds, self.startChecking)
     #    self.t1.start()    
     def on_eClient_changed(self, event):
-        dt = cuon.DMS.documentTools.documentTools()
-        sFile = dt.load_mainwindow_logo(self.allTables)
-        if sFile:
-            print "image found"
-            logo = self.getWidget("company_logo")
-#            
-#            newIm = Image.fromstring('RGB',[1024, 1024], bz2.decompress( image))
-#            newIm.thumbnail([208,208])
-#            sFile = self.dicUser['prefPath']['tmp'] + 'cuon_mainwindow_logo.png'
-#            save(sFile)
-            print 'sFile = ',  sFile
-            
-            
-            pixbuf = gtk.gdk.pixbuf_new_from_file(sFile)
-            scaled_buf = pixbuf.scale_simple(208,208,gtk.gdk.INTERP_BILINEAR)
-            logo.set_from_pixbuf(scaled_buf)
-            logo.show()
+        ''' client ID changed '''
+        try:
+            dt = cuon.DMS.documentTools.documentTools()
+            sFile = dt.load_mainwindow_logo(self.allTables)
+            if sFile:
+                print "image found"
+                logo = self.getWidget("company_logo")
+    #            
+    #            newIm = Image.fromstring('RGB',[1024, 1024], bz2.decompress( image))
+    #            newIm.thumbnail([208,208])
+    #            sFile = self.dicUser['prefPath']['tmp'] + 'cuon_mainwindow_logo.png'
+    #            save(sFile)
+                print 'sFile = ',  sFile
+                
+                
+                pixbuf = gtk.gdk.pixbuf_new_from_file(sFile)
+                scaled_buf = pixbuf.scale_simple(208,208,gtk.gdk.INTERP_BILINEAR)
+                logo.set_from_pixbuf(scaled_buf)
+                logo.show()
 
-            
+        except:
+            pass
             #logo.set_from_file(sFile)
     def on_onlineNews_activate(self, event):
        

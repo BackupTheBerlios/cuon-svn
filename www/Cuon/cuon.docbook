@@ -377,6 +377,8 @@ ALLOW_HTTP: NO
 HTTP_PORT:7080
 HTTPS_PORT:7580
 HOST:localhost
+PROTOCOL: https
+
 
 Hier wird festgelegt, ob http und https erlaubt ist, oder nur HTTPS. ebenfalls können hier andere Ports angegeben werden.
 
@@ -2157,6 +2159,15 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 </sect3>
 </sect2>
 </sect1>
+</chapter>
+<chapter><title>Allgemeine Firmeneinstellungen</title>
+<sect1 id="company_logo">Firmenlogo<title>
+<para>Das Firmenlogo kann nun im DMS mit dem Titel "cuon_mainwindow_logo" angelegt werden, es kann ein übliches Format haben, jpg oder png beispielsweise.
+</para>
+</sect1>
+
+
+
 </chapter>
 <chapter><title>Benutzer Konfiguration </title>
 <sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile für seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten für den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>

@@ -528,7 +528,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSave = False
         print 102
         dicValues = {}
-    
+        sc = '_client_' + `dicUser['client']`
         try:
             cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
             defaultOrderNumber = self.getConfigOption('CLIENT_' + `dicUser['client']`,'orderbook_number', cpServer)
@@ -552,7 +552,12 @@ class Order(xmlrpc.XMLRPC, basics):
                         sON += `t1.tm_mon`    
                     elif i=='!day':
                         sON += `t1.tm_mday`
+                    elif i=='!seq':
+                        sSql = "select nextval('numerical_orderbook_ordernumber" +sc +"' )"
+                        print sSql
+                        newSeq = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)[0]['nextval']
                         
+                        sON += `newSeq`
                     else:
                         sON += i
                     print 'sON',  sON
@@ -734,8 +739,7 @@ class Order(xmlrpc.XMLRPC, basics):
     def getToPID(self, dicOrder, dicUser):
         
         topID = 0
-        sSql = "select addresses_misc.top_id as topid from addresses_misc,orderbook where addresses_misc.address_id = orderbook.addressnumber and orderbook.id = " + `dicOrder['orderid']`
-        sSql += self.getWhere(None,dicUser,2, "addresses_misc.")
+        sSql = "select * from fct_getTopIDForOrder(" + `dicOrder['orderid']` + " ) as topid "   
         #print 'Before ', sSql
         #print dicUser['Name']
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
@@ -1249,3 +1253,10 @@ class Order(xmlrpc.XMLRPC, basics):
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
         return result
+
+    def xmlrpc_getArticleParts(self, dicOrder, dicUser):
+        sSql = "select * from  fct_getArticlePartsListForOrder(" + `dicOrder['id']` + ")" 
+        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
+        
+        return result
+        

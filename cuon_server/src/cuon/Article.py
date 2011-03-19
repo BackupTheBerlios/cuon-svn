@@ -442,3 +442,9 @@ class Article(xmlrpc.XMLRPC, basics):
             print 'not correct float format'
             retValue = 0.00
         return self.getCurrency(retValue)
+
+
+    def xmlrpc_duplicateArticle(self, id, dicUser):
+        sSql = "select * from fct_duplicateArticle(" + `id` + ") as newid "
+        return  self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser) [0]['newid']
+        

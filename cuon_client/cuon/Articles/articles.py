@@ -483,6 +483,14 @@ class articleswindow(chooseWindows):
         elif self.tabOption == self.tabStock:
             self.on_StockSave1_activate(event)   
             
+            
+            
+    def on_tbDuplicate_clicked(self, event):       
+        print 'Duplicate this article'
+        newID = self.rpc.callRP("Article.duplicateArticle",self.singleArticle.ID ,  self.dicUser)
+
+
+            
     def on_chooseArticle_activate(self, event):
         # choose Article from other Modul
         self.setChooseValue(self.singleArticle.ID)

@@ -461,9 +461,10 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="cpPublic">
+                      <object class="GtkCheckButton" id="cbPublic">
                         <property name="label" translatable="yes">Public</property>
                         <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>

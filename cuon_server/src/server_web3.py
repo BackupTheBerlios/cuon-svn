@@ -26,7 +26,11 @@ import types
 
 basic = basics()
 
-sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_PORT`,  allow_none = 1)
+if basic.XMLRPC_ALLOW_HTTP:
+    sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_HTTP_PORT`,  allow_none = 1)
+else:
+    sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_HTTPS_PORT`,  allow_none = 1)
+
 web3user = basic.WEB_USER3
 
 dicUser = {}
@@ -97,9 +101,11 @@ def showTicket_details(id):
     bottle.TEMPLATES.clear()
     dicUser = getAuth()
     print dicUser
-    prID = request.get_cookie("SupportProjectID")
-    print 'Cookie ID = ',  prID
-    
+    try:
+        prID = request.get_cookie("SupportProjectID")
+        print 'Cookie ID = ',  prID
+    except:
+        prID = 0
     
     result = sv.Support.getTicketDetails(dicUser,  id )
     print result

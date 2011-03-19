@@ -1106,6 +1106,10 @@ class addresswindow(chooseWindows):
     
         #print 'lastname', dicSchedul['person1_lastname']
             Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Partner_Schedul_info'], {'1':-103}, dicSchedul, dicExtInfo)
+            
+    def on_bPhone_clicked(self, event):
+        pass
+        
     def getAddressInfos(self):
     
         firstRecord = None

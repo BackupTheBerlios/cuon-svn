@@ -201,7 +201,7 @@ class supportticketwindow(chooseWindows):
         
         self.tabChanged()
      
-    self.win1.add_accel_group(self.accel_group)
+        self.win1.add_accel_group(self.accel_group)
         
     # File Menu
     def on_quit1_activate(self,  event):

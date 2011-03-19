@@ -173,6 +173,10 @@ class basics(xmlrpc.XMLRPC):
             
                 self.XMLRPC_ALLOW_HTTP = self.checkBool(value)        
                 
+            value = self.getConfigOption('XMLRPC','PROTOCOL')
+            if value:
+                self.XMLRPC_PROTO = value    
+            
             # Automatic schedul 
 
             value = self.getConfigOption('AUTOMATIC','SCHEDUL')

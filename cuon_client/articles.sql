@@ -159,3 +159,25 @@ CREATE OR REPLACE FUNCTION fct_get_net_for_article( iArticleID integer) returns 
        return bNet ;
     END ;
     ' LANGUAGE 'plpgsql'; 
+
+    
+    
+    
+CREATE OR REPLACE FUNCTION  fct_duplicateArticle( iArticleID integer) returns  integer AS '
+    DECLARE
+        sSql    text ;
+        newID integer ;
+         rData  record ;
+    BEGIN 
+        newID = 0 ;
+        
+        select nextval(''articles_id'') into newID ;
+         
+        select into rData * from articles where articles.id = iArticleID ;
+        
+        insert into articles (id ,  sep_info_1 , sep_info_2 , sep_info_3 , number , designation  , wrapping , quantumperwrap , unit , manufactor_id , weight , sellingprice1 , sellingprice2 , sellingprice3 , sellingprice4 , tax_vat , material_group , associated_with , associated_id , tax_vat_id ) values (newID ,   rData.sep_info_1 , rData.sep_info_2 , rData.sep_info_3 , ''NEW-'' || rData.number , rData.designation  , rData.wrapping , rData.quantumperwrap , rData.unit , rData.manufactor_id , rData.weight , rData.sellingprice1 ,  rData.sellingprice2 ,  rData.sellingprice3 ,  rData.sellingprice4 , rData. tax_vat ,  rData.material_group ,  rData.associated_with , rData.associated_id ,  rData.tax_vat_id );
+        
+        
+        return newID ;
+    END ;
+    ' LANGUAGE 'plpgsql'; 
