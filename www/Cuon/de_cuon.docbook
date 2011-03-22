@@ -76,9 +76,9 @@ Diese Seite beschreibt die allgemeine Installation von cuon. Bitte unbedingt auc
 Hardware 
 </para>
 <para>Der Server ben&ouml;tigt einiges an Resourcen. So sollte es ungef&auml;hr so aussehen:
-<itemizedlist><listitem><para>Server und 1 Client auf dem selben Rechner 	ab 3GHz, 1GB RAM, 10 GB HD</para></listitem>
-<listitem><para>Server ohne GUI und 10 Clients 	ab 2.5 GHz, 1 GB RAM, 100 GB HD</para></listitem>
-<listitem><para>Server ohne GUI und 50 Clients 	ab 3 GHz, 4 GB RAM, 500 GB HD</para></listitem></itemizedlist>
+<itemizedlist><listitem><para>Server und 1 Client auf dem selben Rechner    ab 3GHz, 1GB RAM, 10 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 10 Clients  ab 2.5 GHz, 1 GB RAM, 100 GB HD</para></listitem>
+<listitem><para>Server ohne GUI und 50 Clients  ab 3 GHz, 4 GB RAM, 500 GB HD</para></listitem></itemizedlist>
 Der Client-Rechner mu&szlig; eine grafische Oberfl&auml;che haben </para>
 <para>
 Der Install-client mu&szlig; ein Linux-Rechner sein. X mu&szlig; laufen und eine Oberfl&auml;che wie XFCE, Gnome, KDE, Blackbox, windowmaker oder eine andere Oberfl&auml;che mu&szlig; vorhanden sein.
@@ -252,8 +252,8 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
  <sect2 id="opt_files"><title>Optionale Programme</title>
 <tip><para>Zus&auml;tzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para></tip>
 <itemizedlist>
-   	<listitem><para> libots </para></listitem>
-	<listitem><para> pstotext  </para></listitem>
+    <listitem><para> libots </para></listitem>
+    <listitem><para> pstotext  </para></listitem>
 
 <listitem><para> odt2txt  </para></listitem>
 <listitem><para> gocr  </para></listitem>
@@ -377,6 +377,8 @@ ALLOW_HTTP: NO
 HTTP_PORT:7080
 HTTPS_PORT:7580
 HOST:localhost
+PROTOCOL: https
+
 
 Hier wird festgelegt, ob http und https erlaubt ist, oder nur HTTPS. ebenfalls k&ouml;nnen hier andere Ports angegeben werden.
 
@@ -769,7 +771,7 @@ Allgemeine Bemerkungen </title>
 Das <link linkend='dms1'><emphasis>DMS</emphasis></link> wird auch benutzt, um Briefe, Rundschreiben oder sonstigen Schriftverkehr zu erzeugen. Dazu habe ich hier ein kleines Beispiel mit LibreOffice (OpenOffice) ausgearbeitet. Zur Zeit werden folgende Formate unterst&uuml;tzt:</para>
 <itemizedlist>
     <listitem><para> Einfache Textdokumente</para></listitem>
-	<listitem><para> LibreOffice</para></listitem>
+    <listitem><para> LibreOffice</para></listitem>
    <listitem><para>  OpenOffice</para></listitem> </itemizedlist>
 <para>
 Falls ein von Ihnen gew&uuml;nschtes Format nicht vorhanden ist, schreiben sie mir bitte eine E-Mail. Das folgende Vorgehen ist grunds&auml;tzlich bei allen Formaten gleich.
@@ -816,7 +818,7 @@ Dann speichern Sie das Dokument ab. Anschlie&szlig;end benutzen Sie die Addressv
         
       </row>
       <row>
-         <entry>Zeitstempel	</entry>
+         <entry>Zeitstempel </entry>
          <entry>date_timestamp</entry>
         
       </row>
@@ -827,54 +829,54 @@ Dann speichern Sie das Dokument ab. Anschlie&szlig;end benutzen Sie die Addressv
 </table>
 
 </para>
-	
-	<para>
-	
+    
+    <para>
+    
 <table id="tab2_benutzerinfo">
   <title>Benutzerinfo</title>
   <tgroup cols="2">
    <thead>
       <row>
          <entry>Benutzerinfo</entry>
-		<entry>Platzhalter</entry>
+        <entry>Platzhalter</entry>
       </row>
    </thead>
     <tbody>
       <row>
          <entry>Anrede</entry>
-		 <entry>userinfo_address</entry>
+         <entry>userinfo_address</entry>
       </row>
-		<row>
+        <row>
          <entry>Nachname</entry>
-		 <entry>userinfo_lastname</entry>
+         <entry>userinfo_lastname</entry>
       </row>
-		<row>
+        <row>
          <entry>Vorname</entry>
-		 <entry>userinfo_firstname</entry>
+         <entry>userinfo_firstname</entry>
       </row>
-		<row>
+        <row>
          <entry>Telefon</entry>
-		 <entry>userinfo_phone</entry>
+         <entry>userinfo_phone</entry>
       </row>
-		<row>
+        <row>
          <entry>Telefon 2</entry>
-		 <entry>userinfo_phone1</entry>
+         <entry>userinfo_phone1</entry>
       </row>
-		<row>
+        <row>
          <entry>Briefanrede1</entry>
-		 <entry>userinfo_letter_phrase_1</entry>
+         <entry>userinfo_letter_phrase_1</entry>
       </row>
-		<row>
+        <row>
          <entry>Mein zeichen</entry>
-		 <entry>userinfo_ my_sign_1</entry>
+         <entry>userinfo_ my_sign_1</entry>
       </row>
-		<row>
+        <row>
          <entry>L&auml;ngere Signatur 1 </entry>
-		 <entry>userinfo_signature_1</entry>
+         <entry>userinfo_signature_1</entry>
       </row>
-		<row>
+        <row>
          <entry>L&auml;ngere Signature 2</entry>
-		 <entry>userinfo_signature_2</entry>
+         <entry>userinfo_signature_2</entry>
       </row>
 
     </tbody>
@@ -918,78 +920,78 @@ Dieselben Benutzerinfos gibt es f&uuml;r person1_ oder person2_ anstelle von use
          <entry>Handynummer</entry>
          <entry>phone_handy</entry>
       </row>
-	  <row>
-		<entry>Stra&szlig;e</entry>
-		<entry>street</entry>
-	  </row>
-	  <row>
-		<entry>Postleitzahl</entry>
-		<entry>zip</entry>
-	  </row>
-	  <row>
-		<entry>Stadt</entry>
-		<entry>city</entry>
-	  </row>
-	  <row>
-		<entry>Briefanrede</entry>
-		<entry>letter_address</entry>
-	  </row>
-	  <row>
-		<entry>Branche</entry>
-		<entry>misc_line</entry>
-	  </row>
-	  <row>
-		<entry>Mwst-ID</entry>
-		<entry>misc_taxnumber</entry>
-	  </row>
-	  <row>
-		<entry>Mwst berechnen</entry>
-		<entry>misc_to_calc_tax</entry>
-	  </row>
-	  <row>
-		<entry>Preisgruppe</entry>
-		<entry>misc_price_group</entry>
-	  </row>
-	  <row>
-		<entry>Adressnummer</entry>
-		<entry>misc_address_number</entry>
-	  </row>
-	  <row>
-		<entry>Adresse ist im Webshop</entry>
-		<entry>misc_is_webshop</entry>
-	  </row>
-	  <row>
-		<entry>Adresse mit Webshop abgleichen</entry>
-		<entry>misc_update_from_webshop</entry>
-	  </row>
-	  <row>
-		<entry>Zahlungsbedinguen-ID</entry>
-		<entry>misc_top_id</entry>
-	  </row>
-	  <row>
-		<entry>Gr&uuml;ndungsdatum</entry>
-		<entry>misc_date_of_launch</entry>
-	  </row>
-	  <row>
-		<entry>Rechtsform</entry>
-		<entry>misc_legal_form</entry>
-	  </row>
-	  <row>
-		<entry>Umsatz</entry>
-		<entry>misc_turnover</entry>
-	  </row>
-	  <row>
-		<entry>Mitarbeiteranzahl</entry>
-		<entry>misc_count_of_employees</entry>
-	  </row>
-	  <row>
-		<entry>Handel</entry>
-		<entry>misc_trade</entry>
-	  </row>
-	  <row>
-		<entry>Typ</entry>
-		<entry>misc_cb_fashion</entry>
-	  </row>
+      <row>
+        <entry>Stra&szlig;e</entry>
+        <entry>street</entry>
+      </row>
+      <row>
+        <entry>Postleitzahl</entry>
+        <entry>zip</entry>
+      </row>
+      <row>
+        <entry>Stadt</entry>
+        <entry>city</entry>
+      </row>
+      <row>
+        <entry>Briefanrede</entry>
+        <entry>letter_address</entry>
+      </row>
+      <row>
+        <entry>Branche</entry>
+        <entry>misc_line</entry>
+      </row>
+      <row>
+        <entry>Mwst-ID</entry>
+        <entry>misc_taxnumber</entry>
+      </row>
+      <row>
+        <entry>Mwst berechnen</entry>
+        <entry>misc_to_calc_tax</entry>
+      </row>
+      <row>
+        <entry>Preisgruppe</entry>
+        <entry>misc_price_group</entry>
+      </row>
+      <row>
+        <entry>Adressnummer</entry>
+        <entry>misc_address_number</entry>
+      </row>
+      <row>
+        <entry>Adresse ist im Webshop</entry>
+        <entry>misc_is_webshop</entry>
+      </row>
+      <row>
+        <entry>Adresse mit Webshop abgleichen</entry>
+        <entry>misc_update_from_webshop</entry>
+      </row>
+      <row>
+        <entry>Zahlungsbedinguen-ID</entry>
+        <entry>misc_top_id</entry>
+      </row>
+      <row>
+        <entry>Gr&uuml;ndungsdatum</entry>
+        <entry>misc_date_of_launch</entry>
+      </row>
+      <row>
+        <entry>Rechtsform</entry>
+        <entry>misc_legal_form</entry>
+      </row>
+      <row>
+        <entry>Umsatz</entry>
+        <entry>misc_turnover</entry>
+      </row>
+      <row>
+        <entry>Mitarbeiteranzahl</entry>
+        <entry>misc_count_of_employees</entry>
+      </row>
+      <row>
+        <entry>Handel</entry>
+        <entry>misc_trade</entry>
+      </row>
+      <row>
+        <entry>Typ</entry>
+        <entry>misc_cb_fashion</entry>
+      </row>
     </tbody>
   </tgroup>
 </table>
@@ -1048,49 +1050,49 @@ Dieselben Benutzerinfos gibt es f&uuml;r person1_ oder person2_ anstelle von use
          <entry>Gespr&auml;chspartner-Nachname</entry>
          <entry>lastname</entry>
       </row>
-	  <row>
-		<entry>Gespr&auml;chspartner-Vorname</entry>
-		<entry>firstname</entry>
-	  </row>
-	  <row>
-		<entry>Gespr&auml;chspartner-Stra&szlig;e</entry>
-		<entry>street</entry>
-	  </row>
-	  <row>
-		<entry>Gespr&auml;chspartner-Postleitzahl</entry>
-		<entry>zip</entry>
-	  </row>
-	  <row>
-		<entry>Gespr&auml;chspartner-Briefanrede</entry>
-		<entry>letter_address</entry>
-	  </row>
+      <row>
+        <entry>Gespr&auml;chspartner-Vorname</entry>
+        <entry>firstname</entry>
+      </row>
+      <row>
+        <entry>Gespr&auml;chspartner-Stra&szlig;e</entry>
+        <entry>street</entry>
+      </row>
+      <row>
+        <entry>Gespr&auml;chspartner-Postleitzahl</entry>
+        <entry>zip</entry>
+      </row>
+      <row>
+        <entry>Gespr&auml;chspartner-Briefanrede</entry>
+        <entry>letter_address</entry>
+      </row>
     </tbody>
   </tgroup>
 </table>
 
 </para>
 <para>Platzhalter Termin 
-Beschreibung 	Platzhalter
-Adress-Anrede 	address_address
-Adress-Nachname 	address_lastname
-Adress-Nachname 2 	address_lastname2
-Adress-Vorname 	address_firstname
-Adress-Stra&szlig;e 	address_street
-Adress-Postleitzahl 	address_zip
-Adress-Stadt 	address_city
-Gespr&auml;chspartner-Anrede 	partner_address
-Gespr&auml;chspartner-Nachname 	lpartner_astname
-Gespr&auml;chspartner-Nachname 2 	partner_lastname2
-Gespr&auml;chspartner-Vorname 	partner_firstname
-Gespr&auml;chspartner-Stra&szlig;e 	partner_street
-Gespr&auml;chspartner-Postleitzahl 	partner_zip
-Gespr&auml;chspartner-Stadt 	partner_city
-Gespr&auml;chspartner-Briefanrede 	partner_letter_address
-Datum Termin 	schedul_date
-Beginn 	schedul_time_begin
-Ende 	schedul_time_end
-Kurze bemerkung 	short_remark
-Notiz 	notes</para>
+Beschreibung    Platzhalter
+Adress-Anrede   address_address
+Adress-Nachname     address_lastname
+Adress-Nachname 2   address_lastname2
+Adress-Vorname  address_firstname
+Adress-Stra&szlig;e   address_street
+Adress-Postleitzahl     address_zip
+Adress-Stadt    address_city
+Gespr&auml;chspartner-Anrede     partner_address
+Gespr&auml;chspartner-Nachname   lpartner_astname
+Gespr&auml;chspartner-Nachname 2     partner_lastname2
+Gespr&auml;chspartner-Vorname    partner_firstname
+Gespr&auml;chspartner-Stra&szlig;e     partner_street
+Gespr&auml;chspartner-Postleitzahl   partner_zip
+Gespr&auml;chspartner-Stadt  partner_city
+Gespr&auml;chspartner-Briefanrede    partner_letter_address
+Datum Termin    schedul_date
+Beginn  schedul_time_begin
+Ende    schedul_time_end
+Kurze bemerkung     short_remark
+Notiz   notes</para>
 </sect2>
 
 
@@ -1217,7 +1219,7 @@ Dies sind die Definitionen, die den Report beschreiben. Auch hier gelten f&uuml;
            <fontJustification>left</fontJustification>
            <foregroundColor>0,0,0</foregroundColor>
            <backgroundColor>0,0,0</backgroundColor> 
-		   <property>0</property>
+           <property>0</property>
      </entry> 
 ]]></programlisting>
 </example>
@@ -1235,7 +1237,7 @@ Dabei sind folgende Werte zul&auml;ssig:</para>
           <listitem><para>o DatabaseField? name ist dann das Feld im Resultset</para></listitem>
          <listitem><para> o Function Eine Funktion mit database-fields und Report-Variablen</para></listitem>
         <listitem><para>  o ImageURL Bild einf&uuml;gen</para></listitem> 
-		</itemizedlist></para></listitem>
+        </itemizedlist></para></listitem>
      <listitem><para>resultSet Name des zum databasefield zugeh&ouml;rigen Results</para></listitem>
     <listitem><para> formula Eine Formel zur class Function<itemizedlist>
           <listitem><para>o !SUM Summe wird gebildet</para></listitem>
@@ -1256,7 +1258,7 @@ Dabei sind folgende Werte zul&auml;ssig:</para>
     <listitem><para> foregroundColor Vordergrundfarbe, RGB</para></listitem>
    <listitem><para>  backgroundColor Hintergrundfarbe, RGB</para></listitem>
    <listitem><para>  appendtogroup 1 = Seitenfu&szlig; bzw. Reportfu&szlig; wird direkt unter der group gedurckt, 0 = Seiten- bzw. Reportfu&szlig; wird unten gedruckt </para></listitem>
-	<listitem><para>property Druckstil, diese Werte sind zul&auml;ssig: <itemizedlist>
+    <listitem><para>property Druckstil, diese Werte sind zul&auml;ssig: <itemizedlist>
 <listitem><para>A  Druck auf alle Seiten</para></listitem>
 <listitem><para>F  Druck auf die erste Seite</para></listitem>
 <listitem><para>N  Alle Seiten au&szlig;er der ersten Seite</para></listitem>
@@ -1427,7 +1429,7 @@ In den n&auml;chsten entrys brauchst man dann nur noch Muriel schreiben
          <entry>Auftragsbeschreibung</entry>
       </row>
     
-		<row>
+        <row>
          <entry>customers_ordernumber,</entry>
          <entry>Auftragsnummer des Kunden</entry>
       </row>
@@ -1484,7 +1486,7 @@ In den n&auml;chsten entrys brauchst man dann nur noch Muriel schreiben
          <entry>term_of_payment</entry>
          <entry>Zahlungsbedingung Tex</entry>
       </row>
- 	 <row>
+     <row>
          <entry>staff_lastname</entry>
          <entry>Sachbearbeiter Nachname</entry>
       </row>
@@ -1533,7 +1535,7 @@ In den n&auml;chsten entrys brauchst man dann nur noch Muriel schreiben
          <entry> Gespr&auml;chspartnerVorname Nachname</entry>
       </row>
  
-		<row>
+        <row>
          <entry>customers_ordernumber,</entry>
          <entry>Auftragsnummer des Kunden</entry>
       </row>
@@ -1857,11 +1859,11 @@ Diese Statistiken beziehen sich auf Auswertungen direkt aus der Adressverwaltung
     <tbody>
       <row>
          <entry>caller_name_ID</entry>
-         <entry>name des Kontakters	F&uuml;r ID die ID aus der Personalverwaltung einsetzen</entry>
+         <entry>name des Kontakters F&uuml;r ID die ID aus der Personalverwaltung einsetzen</entry>
       </row>
       <row>
          <entry>caller_ID_ZEITART_count_ZEITRAUM</entry>
-         <entry>Wert	F&uuml;r ID die ID aus der Personalverwaltung einsetz</entry>
+         <entry>Wert    F&uuml;r ID die ID aus der Personalverwaltung einsetz</entry>
       </row>
 
       <row>
@@ -2094,7 +2096,7 @@ Das einfachste ist die entsprechenden Eintr&auml;ge im Men&uuml; zu benutzen, z.
 Der Aufruf des Clients erfolgt folgenderma&szlig;en: /usr/bin/python Cuon.py [Server] [Type] [Debug] [Locale] [Cuonverzeichnis] [GUI] Also wird im Normalfall einfach nur /usr/bin/python Cuon.py aufgerufen, da die Vorgaben durch die Umgebungsvariablen bzw. durch das Programm gesetzt wurden. Die Parameter haben folgendes Format: 
 </para>
 <itemizedlist>
-	 <listitem><para>Server  Protokoll://host:Port/Pfad z.B.  http://84.244.7.139:7080</para></listitem>
+     <listitem><para>Server  Protokoll://host:Port/Pfad z.B.  http://84.244.7.139:7080</para></listitem>
 
     <listitem><para> Type client server</para></listitem>
      <listitem><para>Debug NO YES</para></listitem>
@@ -2116,38 +2118,38 @@ In der Regel sind folgende Tastenk&uuml;rzel aktiv:</para>
 <sect3 id="tb8"><title>Hauptfenster 
 </title>
 <para>Im Hauptfenster steht hinter vielen Men&uuml;-Eintr&auml;gen eine Steuerung-Buchstaben Kombination, z.B. Strg-l f&uuml;r Login, das hei&szlig;t also, das mit dr&uuml;cken der Tasten Strg und l sich das Login-Fenster sich &ouml;ffnet.</para>
-<itemizedlist><listitem><para>Strg + l	Login</para></listitem>
-<listitem><para>Strg + q	Beenden des Programmes	</para></listitem>
+<itemizedlist><listitem><para>Strg + l  Login</para></listitem>
+<listitem><para>Strg + q    Beenden des Programmes  </para></listitem>
 
 
-<listitem><para>Strg + a	&Ouml;ffnen des Adressfensters</para></listitem>
-<listitem><para>Strg + i	&Ouml;ffnen des Artikelfensters</para></listitem>
-<listitem><para>Strg + x	&Ouml;ffnen des Bankfensters</para></listitem>
-<listitem><para>Strg + s	&Ouml;ffnen des Personalfensters</para></listitem>
-<listitem><para>Strg + v	&Ouml;ffnen des Literaturfensters	</para></listitem>
+<listitem><para>Strg + a    &Ouml;ffnen des Adressfensters</para></listitem>
+<listitem><para>Strg + i    &Ouml;ffnen des Artikelfensters</para></listitem>
+<listitem><para>Strg + x    &Ouml;ffnen des Bankfensters</para></listitem>
+<listitem><para>Strg + s    &Ouml;ffnen des Personalfensters</para></listitem>
+<listitem><para>Strg + v    &Ouml;ffnen des Literaturfensters    </para></listitem>
 
 
-<listitem><para>Strg + p	&Ouml;ffnen des Angebotsfensters</para></listitem>
-<listitem><para>Strg + o	&Ouml;ffnen des Auftragsfensters</para></listitem>
-<listitem><para>Strg + k	&Ouml;ffnen des Lagerfensters</para></listitem>
-<listitem><para>Strg + d	&Ouml;ffnen des DMS-Fensters</para></listitem></itemizedlist>
+<listitem><para>Strg + p    &Ouml;ffnen des Angebotsfensters</para></listitem>
+<listitem><para>Strg + o    &Ouml;ffnen des Auftragsfensters</para></listitem>
+<listitem><para>Strg + k    &Ouml;ffnen des Lagerfensters</para></listitem>
+<listitem><para>Strg + d    &Ouml;ffnen des DMS-Fensters</para></listitem></itemizedlist>
 </sect3>
 <sect3 id="tb9">
 <title>Andere Fenster </title>
 <para>
 Dies gilt zum Schlie&szlig;en eines Fensters ( Nicht des Hauptfensters)</para>
-<itemizedlist><listitem><para>Strg + z	Schlie&szlig;en des aktuellen Fensters</para></listitem></itemizedlist>
+<itemizedlist><listitem><para>Strg + z  Schlie&szlig;en des aktuellen Fensters</para></listitem></itemizedlist>
 <para>Bedienung der Tabs </para>
-<itemizedlist><listitem><para>Strg + F1	&ouml;ffne erstes Tab</para></listitem>
-<listitem><para>Strg + F2	&ouml;ffne zweites Tab</para></listitem>
-<listitem><para>Strg + Fxx	&ouml;ffne xxx Tab</para></listitem>
+<itemizedlist><listitem><para>Strg + F1 &ouml;ffne erstes Tab</para></listitem>
+<listitem><para>Strg + F2   &ouml;ffne zweites Tab</para></listitem>
+<listitem><para>Strg + Fxx  &ouml;ffne xxx Tab</para></listitem>
 
 </itemizedlist>
 <para>Aktionen f&uuml;r den Datensatz </para>
-<itemizedlist><listitem><para>Strg + e	Bearbeite den Datensatz</para></listitem>
-<listitem><para>Strg + s	Sichere den Datensatz</para></listitem>
-<listitem><para>Strg + n	Neuer Datensatz</para></listitem>
-<listitem><para>Strg + d	L&ouml;sche den Datensatz ohne R&uuml;ckfrage</para></listitem>
+<itemizedlist><listitem><para>Strg + e  Bearbeite den Datensatz</para></listitem>
+<listitem><para>Strg + s    Sichere den Datensatz</para></listitem>
+<listitem><para>Strg + n    Neuer Datensatz</para></listitem>
+<listitem><para>Strg + d    L&ouml;sche den Datensatz ohne R&uuml;ckfrage</para></listitem>
 </itemizedlist>
 
 </sect3>
@@ -2157,6 +2159,15 @@ Dies gilt zum Schlie&szlig;en eines Fensters ( Nicht des Hauptfensters)</para>
 </sect3>
 </sect2>
 </sect1>
+</chapter>
+<chapter><title>Allgemeine Firmeneinstellungen</title>
+<sect1 id="company_logo"><title>Firmenlogo</title>
+<para>Das Firmenlogo kann nun im DMS mit dem Titel "cuon_mainwindow_logo" angelegt werden, es kann ein &uuml;bliches Format haben, jpg oder png beispielsweise.
+</para>
+</sect1>
+
+
+
 </chapter>
 <chapter><title>Benutzer Konfiguration </title>
 <sect1 id="user_config"><title>Benutzerprofile</title><para>Jeder Benutzer kann sich mehrere Profile erstellen, wobei 1 Profil als Standard festgelegt wird. So kann sich ein Benutzer z.B. auch ein Profile f&uuml;r seine Laptop-Umgebung erstellen. Die Einstellungen umfassen die Localisierung sowie die Pfade zu den Dokumenten und Reports. Ebenso werden hier die Daten f&uuml;r den Scanner festgelegt ( sofern vorhanden und erkannt).Das Benutzerprofil wird unter <emphasis>Werkzeuge --> Einstellungen --> Benutzer</emphasis> eingestellt. </para>
@@ -2361,8 +2372,8 @@ Dies ist ein Kernst&uuml;ck des Systems. Neben den &uuml;blichen Einscannen von 
 </itemizedlist> 
 <para>Zur vollen Unterst&uuml;tzung der Textindizierung sollten auf dem Server diese Programme installiert sein:</para>
 <itemizedlist>
-   	<listitem><para> libots </para></listitem>
-	<listitem><para> pstotext  </para></listitem>
+    <listitem><para> libots </para></listitem>
+    <listitem><para> pstotext  </para></listitem>
 
 </itemizedlist> 
 
@@ -2466,78 +2477,78 @@ Tipps und Tricks </para>
          <entry>Handynummer</entry>
          <entry>phone_handy</entry>
       </row>
-	  <row>
-		<entry>Stra&szlig;e</entry>
-		<entry>street</entry>
-	  </row>
-	  <row>
-		<entry>Postleitzahl</entry>
-		<entry>zip</entry>
-	  </row>
-	  <row>
-		<entry>Stadt</entry>
-		<entry>city</entry>
-	  </row>
-	  <row>
-		<entry>Briefanrede</entry>
-		<entry>letter_address</entry>
-	  </row>
-	  <row>
-		<entry>Branche</entry>
-		<entry>misc_line</entry>
-	  </row>
-	  <row>
-		<entry>Mwst-ID</entry>
-		<entry>misc_taxnumber</entry>
-	  </row>
-	  <row>
-		<entry>Mwst berechnen</entry>
-		<entry>misc_to_calc_tax</entry>
-	  </row>
-	  <row>
-		<entry>Preisgruppe</entry>
-		<entry>misc_price_group</entry>
-	  </row>
-	  <row>
-		<entry>Adressnummer</entry>
-		<entry>misc_address_number</entry>
-	  </row>
-	  <row>
-		<entry>Adresse ist im Webshop</entry>
-		<entry>misc_is_webshop</entry>
-	  </row>
-	  <row>
-		<entry>Adresse mit Webshop abgleichen</entry>
-		<entry>misc_update_from_webshop</entry>
-	  </row>
-	  <row>
-		<entry>Zahlungsbedinguen-ID</entry>
-		<entry>misc_top_id</entry>
-	  </row>
-	  <row>
-		<entry>Gr&uuml;ndungsdatum</entry>
-		<entry>misc_date_of_launch</entry>
-	  </row>
-	  <row>
-		<entry>Rechtsform</entry>
-		<entry>misc_legal_form</entry>
-	  </row>
-	  <row>
-		<entry>Umsatz</entry>
-		<entry>misc_turnover</entry>
-	  </row>
-	  <row>
-		<entry>Mitarbeiteranzahl</entry>
-		<entry>misc_count_of_employees</entry>
-	  </row>
-	  <row>
-		<entry>Handel</entry>
-		<entry>misc_trade</entry>
-	  </row>
-	  <row>
-		<entry>Typ</entry>
-		<entry>misc_cb_fashion</entry>
-	  </row>
+      <row>
+        <entry>Stra&szlig;e</entry>
+        <entry>street</entry>
+      </row>
+      <row>
+        <entry>Postleitzahl</entry>
+        <entry>zip</entry>
+      </row>
+      <row>
+        <entry>Stadt</entry>
+        <entry>city</entry>
+      </row>
+      <row>
+        <entry>Briefanrede</entry>
+        <entry>letter_address</entry>
+      </row>
+      <row>
+        <entry>Branche</entry>
+        <entry>misc_line</entry>
+      </row>
+      <row>
+        <entry>Mwst-ID</entry>
+        <entry>misc_taxnumber</entry>
+      </row>
+      <row>
+        <entry>Mwst berechnen</entry>
+        <entry>misc_to_calc_tax</entry>
+      </row>
+      <row>
+        <entry>Preisgruppe</entry>
+        <entry>misc_price_group</entry>
+      </row>
+      <row>
+        <entry>Adressnummer</entry>
+        <entry>misc_address_number</entry>
+      </row>
+      <row>
+        <entry>Adresse ist im Webshop</entry>
+        <entry>misc_is_webshop</entry>
+      </row>
+      <row>
+        <entry>Adresse mit Webshop abgleichen</entry>
+        <entry>misc_update_from_webshop</entry>
+      </row>
+      <row>
+        <entry>Zahlungsbedinguen-ID</entry>
+        <entry>misc_top_id</entry>
+      </row>
+      <row>
+        <entry>Gr&uuml;ndungsdatum</entry>
+        <entry>misc_date_of_launch</entry>
+      </row>
+      <row>
+        <entry>Rechtsform</entry>
+        <entry>misc_legal_form</entry>
+      </row>
+      <row>
+        <entry>Umsatz</entry>
+        <entry>misc_turnover</entry>
+      </row>
+      <row>
+        <entry>Mitarbeiteranzahl</entry>
+        <entry>misc_count_of_employees</entry>
+      </row>
+      <row>
+        <entry>Handel</entry>
+        <entry>misc_trade</entry>
+      </row>
+      <row>
+        <entry>Typ</entry>
+        <entry>misc_cb_fashion</entry>
+      </row>
     </tbody>
   </tgroup>
 </table>

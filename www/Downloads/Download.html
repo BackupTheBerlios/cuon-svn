@@ -3,7 +3,7 @@
 <title>CUON VirtualBox Image</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="Jürgen">
-<meta name="date" content="2011-01-22T18:07:28+0100">
+<meta name="date" content="2011-03-20T19:23:33+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="Download Virtualbox Cuon ERP Warenwirtschaft komplett Client Server Installer">
 <meta name="description" content="">
@@ -26,9 +26,6 @@ Hallo, <br />
 Hier k&ouml;nnt ihr die entsprechenden Versionen von CUON downloaden:<br />
 Ab jetzt gibt es auch die entspechenden Installationspakete f&uuml;r Ubuntu, Fedora, Suse, Gentoo, Slackware. Hier m&ouml;chte ich auch eine der h&auml;ufigsten Fragen beantworten: <br />
 Wenn der CUON-Client installiert ist, braucht er nicht nochmal installiert werden. Der Client aktualisiert sich automatisch passend zur eingesetzten Serverversion.<br /><br />
-<b>Wichtig - hier sind die  <a href="/downloads/md5check.txt" > Checksummen </a> der Dateien</b><br />
-<h2>Unterst&uuml;tzung f&uuml;r C.U.O.N.</h2>
-
 
 <h3>Debian, Ubuntu</h3>
 
@@ -44,7 +41,7 @@ Dann im Downloadverzeichnis dieses hier ausf&uuml;hren:<br /><br />
 Jetzt kann jeder Benutzer den Cuon Client vom Men&uuml; aus starten.
 
 <h4>Cuon Setup</h4>
-Dieses Program dient zum Setup und der Konfiguration des Cuon Servers. Er kann auf einen beliebigen Client installiert werden. Bitte unbedingt hier im <a href="http://85.214.52.49:8000/cuontrac/wiki/Adminhandbuch" target="Main" >Wiki (Dokumentation)</a><br> die Installations-Doku durchlesen. Mit diesem grafischen Frontend k&ouml;nnen sie die Cuon-Server starten, verwalten, User einrichten,Reports und 100 Sachen mehr !<br />
+Dieses Program dient zum Setup und der Konfiguration des Cuon Servers. Er kann auf einen beliebigen Client installiert werden. Bitte unbedingt hier im <a href="http://cuon.org/Cuon/index.html" target="Main" >Dokumentations-bereich</a><br> die Installations-Doku durchlesen. Mit diesem grafischen Frontend k&ouml;nnen sie die Cuon-Server starten, verwalten, User einrichten,Reports und 100 Sachen mehr !<br />
  
 Hier den <a href="/downloads/cuon-setup-1.0-all.deb" name="Cuon Setup Debian package"> Cuon Setup </a> f&uuml;r Ubuntu/Debian downloaden. Normalerweise sollte sich jetzt ein entsprechenden Programm zum installieren von <em>.deb</em> Paketen &ouml;ffnen. Einfach installieren und alles wird gut !<br />
 <strong>Andernfalls:</strong><br />
@@ -58,7 +55,7 @@ Jetzt kann der Administrator das Cuon Setup und Konfigurationsprogram vom Men&uu
 
 
 <h4>Cuon Server</h4>
-Dieses Program dient zur Installation des Cuon Servers. Es kann NUR auf den Server installiert werden. Bitte unbedingt hier im <a href="http://85.214.52.49:8000/cuontrac/wiki/Adminhandbuch" target="Main" >Wiki (Dokumentation)</a><br> die Installations-Doku durchlesen. Mit diesem Frontend werden alle Module installiert, die der Cuon-Server zum betrieb ben&ouml;tigt.<br />
+Dieses Program dient zur Installation des Cuon Servers. Es kann NUR auf den Server installiert werden. Bitte unbedingt hier im <a href="http://cuon.org/Cuon/index.html" target="Main" >Dokumentation-Bereich</a><br> die Installations-Doku durchlesen. Mit diesem Frontend werden alle Module installiert, die der Cuon-Server zum betrieb ben&ouml;tigt.<br />
  
 Hier den <a href="/downloads/cuon-server-1.0-all.deb" name="Cuon Server Debian package"> Cuon Server </a> f&uuml;r Ubuntu/Debian downloaden. Normalerweise sollte sich jetzt ein entsprechenden Programm zum installieren von <em>.deb</em> Paketen &ouml;ffnen. Einfach installieren und alles wird gut !<br />
 <strong>Andernfalls:</strong><br />
@@ -91,7 +88,10 @@ Im Prinzip gilt das gleiche wie f&uuml;r die Debian Pakete, hier also nur der do
 
 <h3>VirtualBox Image</h3>
 Hier ist eine vollst&auml;ndige (Server, Konfiguration und Client ) Installation auf ubuntu Lucid Lynx bereit zum download. Der Benutzername lautet cuon, Passwort ist ebenfalls cuon. die Installation ist komplett mit Postgres Server und kann immer geupdated werden. Dieses Image kann genausogut als vollständige Server Lösung dienen, mit Clients auf anderen Rechnern. <br />
-<a href="http://cuonconcept.de/downloads/Lucid Lynx.vdi.zip">Lucid Lynx.vdi</a> 
+<a href="http://cuonconcept.de/downloads/Lucid Lynx.vdi.zip">Lucid Lynx.vdi</a><br /><br /> 
+
+<b>hier sind die  <a href="/downloads/md5check.txt" > Checksummen </a> der Dateien</b><br />
+
 
 <h3>Downloads der Quellpakete</h3>
 
@@ -152,43 +152,13 @@ Hier der Originalton Robert ( nochmals danke ):<br />
 <br /><br />
 <h2>Installationshilfen</h2>
 <p>Hier sind ein paar Installationsskripte f&uuml;r die verschiedenen Linux-Distributionen<br />
-Danke an Robert f&uuml;r die fantastische Vorarbeit - ohne die w&auml;re ich nie hierangegangen!!!<br /><br />
-C.U.O.N. unterscheidet 3 Rechnertypen
-Server, CuonAdmin, Client
-Der Server sollte ein Stand-Alone Rechner oder eine virtuelle Maschine jeweils ohne GUI sein. Als einziger Login-User ist root vorgesehen. Hier l&auml;uft nur der postgresql im trust-Modus und die cuonserver.<br />
-Der CuonAdmin ben&ouml;tigt eine GUI, ebenso der oder die Clients.
-Es k&ouml;nnen nat&uuml;rlich 1, 2 oder alle Rechner auf einem Rechner laufen.
 
-
-<h3>Debian Etch</h3>
-Bitte hier <a href="/downloads/DebianEtch.tar.gz" name="DebianEtch.tar.gz"> DebianEtch.tar.gz</a> 
-downloaden , entpacken und folgenderma&szlig;en vorgehen:<br />
-Auf dem Server als Root CuonInstallDebian.sh ausf&uuml;hren, bei Erzeugen des Zertifikats bitte Werte einsetzen oder einfach enter.
-<br /><br />
-Auf dem DuonAdmin als ROOT CuonInstallDebianAdminToolUser.sh ausf&uuml;hren. dann als User 
-CuonInstallDebianAdminToolUser.sh anpassen und ausf&uuml;hren<br /><br />
- 
-Auf dem Debian-Linux-Client als Root CuonInstallDebianClient.sh ausf&uuml;hren, dann als User CuonInstallDebianClientUser.sh anpassen und ausf&uuml;hren. 
-<br /><br />
 
 <h3>SuSE</h3>
 F&uuml;r die Benutzer der SuSE Distri gibt es in wenigen Tagen vorkonfigurierte Pakete beim Millin-Verlag. Schaut einfach ab und zu <a href="http://www.vorkon.de">hier vorbei</a>. Mit dieser Hilfe kann der Server oder Client einfach per YAST unter SuSE installiert werden.
 
 <h3>Sonstiges</h3>
 
-
-</p>
-Dies hier ist ein einfacher Client, passend f&uuml;r alle Server-Typen<br /><br />
-Bitte nehmen Sie f&uuml;r Linux und Windows die o.g. grafischen Installer. 
-<br />
-<a href="/downloads/CuonClient-0.41-4.tar.bz2" name="CC 041-4">Cuon Client 0.41-4</a>
-<br />
-
-<a href="/downloads/CuonClient-0.40-0.tar.bz2" name="CC 040-0">Cuon Client 0.40-0</a>
-<br />
-
-<a href="/downloads/CuonClient-0.37-9.tar.bz2" name="CC 037-9">Cuon Client 0.37-9</a>
-<br /><br />
 
 </body>
 </html>

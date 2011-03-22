@@ -368,7 +368,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         dicOrder['invoiceNumber'] =  invoiceNumber        
         print ' start Invoice printing 3'
         
-        print dicOrder
+        #print dicOrder
         
         Pdf = self.rpc.callRP('Report.server_order_invoice_document', dicOrder, self.dicUser)
         fname = self.showPdf(Pdf, self.dicUser,'INVOICE')
@@ -781,7 +781,7 @@ class orderwindow(chooseWindows,  ArticlesFastSelection):
         iTaxVat = self.getChangedValue('eTaxVatForAllPositionsID')
         sTaxVat = self.singlePrefsFinanceVat.getNameAndDesignation(iTaxVat)
         if sTaxVat:
-            self.getWidget('eTaxVatForAllPositiosText').set_text(sTaxVat)
+            self.getWidget('eTaxVatForAllPositionsText').set_text(sTaxVat)
         else:
             self.getWidget('eTaxVatForAllPositionsText').set_text('')
  

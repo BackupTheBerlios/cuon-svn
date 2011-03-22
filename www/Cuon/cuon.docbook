@@ -2161,7 +2161,7 @@ Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</para>
 </sect1>
 </chapter>
 <chapter><title>Allgemeine Firmeneinstellungen</title>
-<sect1 id="company_logo">Firmenlogo<title>
+<sect1 id="company_logo"><title>Firmenlogo</title>
 <para>Das Firmenlogo kann nun im DMS mit dem Titel "cuon_mainwindow_logo" angelegt werden, es kann ein übliches Format haben, jpg oder png beispielsweise.
 </para>
 </sect1>

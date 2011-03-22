@@ -1,5 +1,13 @@
 case $1 in
 
+cuon5)
+cd ~/Projekte/cuon/Presse/Pro-Linux/cuon5
+
+docbook2html  cuon5.docbook && docbook2pdf cuon5.docbook
+evince cuon5.pdf
+
+;;
+
 en)
 
 

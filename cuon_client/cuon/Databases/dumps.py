@@ -138,12 +138,12 @@ class dumps:
         return s
         
     def showPdf(self, Pdf, dicUser, cDoc = 'PDF'):
-        #print "PDF", Pdf
+        print "PDF", Pdf
         
         s = self.doDecode(Pdf)
         fname = self.saveTmpData(s, 'pdf')
         print "fname = ",  fname
-        #print 'PDF-App = ', dicUser['prefApps']['PDF']
+        print 'PDF-App = ', dicUser['prefApps']['PDF']
         if cDoc == 'PDF':
             sOutput = os.system(dicUser['prefApps']['PDF'] + ' ' + fname + ' &')
         elif cDoc == 'SUPPLY':

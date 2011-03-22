@@ -167,6 +167,7 @@ class SingleDMS(SingleData):
         try:
             dicValues['dms_extract'] = [self.Extract.get_text(self.Extract.get_start_iter(), self.Extract.get_end_iter(), 1), 'text']   
         except Exception,  param:
+            print 'No Extract Widget'
             print Exception,  param
             
             

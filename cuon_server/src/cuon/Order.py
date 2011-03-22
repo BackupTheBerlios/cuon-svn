@@ -1255,7 +1255,7 @@ class Order(xmlrpc.XMLRPC, basics):
         return result
 
     def xmlrpc_getArticleParts(self, dicOrder, dicUser):
-        sSql = "select * from  fct_getArticlePartsListForOrder(" + `dicOrder['id']` + ")" 
+        sSql = "select * from  fct_getArticlePartsListForOrder(" + `dicOrder['orderid']` + ")" 
         result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
         
         return result
