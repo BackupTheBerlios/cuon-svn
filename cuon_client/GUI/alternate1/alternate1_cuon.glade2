@@ -1070,7 +1070,16 @@
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkCalendar" id="calendar1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="year">2011</property>
+                    <property name="month">2</property>
+                    <property name="day">28</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
