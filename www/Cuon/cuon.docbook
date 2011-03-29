@@ -556,7 +556,10 @@ Liste nach Zahlungserinnerungen.
 list_of_invoices_directDebit: 3
 
 orderbook_number: !id,-,!year
+Mögliche Werte: !id,!year,!month,!day,!seq, andere, beliebige Trennungszeichen
+
 orderbook_designation: !lastname,_,!city,_,!id
+beliebige Tabellennamen aus der Adressverwaltung mit vorgestellten !
 
 list_of_invoices_directDebit: 3
 
@@ -579,14 +582,23 @@ Projektverwaltung
 
 cbProjectStatus: neu angelegt,laufend,fertig
 
-Gräber 
 
-cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
-cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
-cbTypeOfPaying: jährlich,halbjährlich
-cbPercentsGrave: 100%,90%,80%,75%,50%,
-cbTypeOfPaying: jährlich,halbjährlich,quartal
-cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+#Graeber und die Einstellungen dafuer
+
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung,nur Pflanzung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab,Urnengrab mit Platteneinfassung,Einzelgrab mit Platteneinfassung,Familiengrab mit Platteneinfassung,Dreifachgrab mit Platteneinfassung,Urnengrab liegender Stein,Einzelgrab liegender Stein,Doppelgrab liegender Stein,Dreifachgrab liegender Stein,Gruft,Urnengemeinschaftsanlage,Urnenturm
+
+cbTypeOfPaying: jährlich,halbjährlich,TBF,Treuhand Nbg,keine Sammelrechnung
+cbPercentsGrave: 100%,90%,80%,75%,67%,60%,50%,40%,33%,30%,25%,20%,10%
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag,Schalenlieferung zur Anpflanzung
+cbGraveSummerPeriod: Anpflanzung,Muttertag,Pfingsten,Frohnleichnamm,Schalenlieferung zur Anpflanzung
+cbGraveAutumnPeriod: Anpflanzung,Kirchweih,Schalenlieferung zur Anpflanzung
+cbGraveWinterPeriod: 1. Advent,Nikolaus,2.Advent,3.Advent,4.Advent,Weihnachten,Silvester
+cbGraveUniquePeriod: unbekannt,Grabneuanlage,Telefonischer Auftrag,Faxauftrag,Direktbestellung im Laden
+cbGraveHollidayPeriod: Allerheiligen,Totensonntag,Allerheiligen-Lieferung,Totensonntag-Lieferung
+cbGraveYearlyPeriod: unbekannt,Geburtstag,Todestag,Hochzeit
+cbGraveSorting: Keine,Friedhof,Grabname,Laufnummer,Pflanzperiode
+
 
 Statistik 
 
@@ -1744,7 +1756,50 @@ Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
 
 
 </sect3>
+<sect3 id="graves_plant"><title>Pflanzenliste für Gräber</title>
+<sect4 id="gr_s3_s1"><title>Resultset grave</title>
+<example role="codelisting" id="code_grli1">
+<title>Resulset Graves</title>
+<programlisting><![CDATA[
+graveyard_id integer
+grave_id integer
+graveyard_shortname varchar
+graveyard_designation varchar
+grave_firstname varchar
+grave_lastname varchar
+grave_pos_number integer
+grave_contract_begins_at date
+grave_contract_ends_at date
+grave_detachment varchar
+grave_grave_number varchar
 
+]]></programlisting>
+</example></sect4>
+
+<sect4 id="gr_s3_s2"><title>Resultset articles </title>
+
+<example role="codelisting" id="code_grli2">
+<title>Pflanzenliste mit Artikeln</title>
+<programlisting><![CDATA[
+(graveyard_id integer
+grave_id integer
+graveyard_shortname varchar
+graveyard_designation varchar
+grave_firstname varchar
+grave_lastname varchar
+grave_pos_number integer
+grave_contract_begins_at date
+grave_contract_ends_at date
+grave_detachment varchar
+grave_grave_number varchar
+service_article_id integer
+article_number text
+article_designation text
+service_price float
+service_count float
+]]></programlisting>
+</example></sect4>
+</sect3>
 </sect2>
 </sect1>
 

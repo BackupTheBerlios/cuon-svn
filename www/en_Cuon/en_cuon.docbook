@@ -448,8 +448,14 @@ reminder_summons_days_after: 40
 
 # list of reminders. 
 list_of_invoices_directDebit: 3 
-orderbook_number: !id,-,!year 
-orderbook_designation: !lastname,_,!city,_,!id 
+
+
+orderbook_number: !id,-,!year
+possible values: !id,!year,!month,!day,!seq, all other words or letters as a part of the name
+
+orderbook_designation: !lastname,_,!city,_,!id
+all tablenames of the addresses with a "!" in front of them
+
 list_of_invoices_directDebit: 3 
 articles_sort1_number: b 
 articles_sort1_sellingprice: c 
@@ -466,12 +472,20 @@ cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
 cbProjectStatus: neu angelegt,laufend,fertig 
 
 #Graves
-cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung 
-cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab 
-cbTypeOfPaying: jaehrlich,halbjaehrlich 
-cbPercentsGrave: 100%,90%,80%,75%,50%, 
-cbTypeOfPaying: jaehrlich,halbjaehrlich,quartal 
-cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag 
+
+#Graves
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung,nur Pflanzung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab,Urnengrab mit Platteneinfassung,Einzelgrab mit Platteneinfassung,Familiengrab mit Platteneinfassung,Dreifachgrab mit Platteneinfassung,Urnengrab liegender Stein,Einzelgrab liegender Stein,Doppelgrab liegender Stein,Dreifachgrab liegender Stein,Gruft,Urnengemeinschaftsanlage,Urnenturm
+cbTypeOfPaying: jährlich,halbjährlich,TBF,Treuhand Nbg,keine Sammelrechnung
+cbPercentsGrave: 100%,90%,80%,75%,67%,60%,50%,40%,33%,30%,25%,20%,10%
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+cbGraveSummerPeriod: Anpflanzung,Muttertag,Pfingsten,Frohnleichnamm
+cbGraveAutumnPeriod: Anpflanzung,Kirchweih
+cbGraveWinterPeriod: 1. Advent,Nikolaus,2.Advent,3.Advent,4.Advent,Weihnachten,Silvester
+cbGraveUniquePeriod: unbekannt,Grabneuanlage,Telefonischer Auftrag,Faxauftrag,Direktbestellung im Laden
+cbGraveHollidayPeriod: Allerheiligen,Totensonntag
+cbGraveYearlyPeriod: unbekannt,Geburtstag,Todestag,Hochzeit
+cbGraveSorting:None,Graveyard,Grave,Sequence,Period
 
 #Stats
 SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820 
@@ -1574,7 +1588,50 @@ Das ist das entry eSequence und ist mit sequence_of_stock verbunden.
 
 
 </sect3>
+<sect3 id="graves_plant"><title>Pflanzenliste für Gräber</title>
+<sect4 id="gr_s3_s1"><title>Resultset grave</title>
+<example role="codelisting" id="code_grli1">
+<title>Resulset Graves</title>
+<programlisting><![CDATA[
+graveyard_id integer
+grave_id integer
+graveyard_shortname varchar
+graveyard_designation varchar
+grave_firstname varchar
+grave_lastname varchar
+grave_pos_number integer
+grave_contract_begins_at date
+grave_contract_ends_at date
+grave_detachment varchar
+grave_grave_number varchar
 
+]]></programlisting>
+</example></sect4>
+
+<sect4 id="gr_s3_s2"><title>Resultset articles </title>
+
+<example role="codelisting" id="code_grli2">
+<title>Pflanzenliste mit Artikeln</title>
+<programlisting><![CDATA[
+(graveyard_id integer
+grave_id integer
+graveyard_shortname varchar
+graveyard_designation varchar
+grave_firstname varchar
+grave_lastname varchar
+grave_pos_number integer
+grave_contract_begins_at date
+grave_contract_ends_at date
+grave_detachment varchar
+grave_grave_number varchar
+service_article_id integer
+article_number text
+article_designation text
+service_price float
+service_count float
+]]></programlisting>
+</example></sect4>
+</sect3>
 </sect2>
 </sect1>
 

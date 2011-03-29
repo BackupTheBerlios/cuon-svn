@@ -45,6 +45,7 @@ import cuon.Staff.staff
 import cuon.Staff.SingleStaff
 import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
+import cuon.Addresses.SinglePartner
 
 import cuon.Articles.articles
 import cuon.Articles.SingleArticle
@@ -69,6 +70,7 @@ class projectwindow(chooseWindows):
         self.singleProjectProgramming = SingleProjectProgramming.SingleProjectProgramming(allTables)
         self.singleStaff = cuon.Staff.SingleStaff.SingleStaff(allTables)
         self.singleAddress = cuon.Addresses.SingleAddress.SingleAddress(allTables)
+        self.singlePartner = cuon.Addresses.SinglePartner.SinglePartner(allTables)
         self.singleArticles = cuon.Articles.SingleArticle.SingleArticle(allTables)
         
         self.allTables = allTables
@@ -100,10 +102,10 @@ class projectwindow(chooseWindows):
         
         self.singleProject.setEntries(self.getDataEntries(self.EntriesProject) )
         self.singleProject.setGladeXml(self.xml)
-        self.singleProject.setTreeFields( ['name', 'designation', "project_starts_at", "project_ends_at", 'project_status'] )
-        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING,gobject.TYPE_UINT,   gobject.TYPE_UINT) ) 
+        self.singleProject.setTreeFields( ['name', 'designation', "project_starts_at", "project_ends_at", 'project_status', 'customer_id', 'partner_id'] )
+        self.singleProject.setStore( gtk.ListStore(gobject.TYPE_STRING,  gobject.TYPE_STRING,  gobject.TYPE_STRING, gobject.TYPE_STRING,gobject.TYPE_UINT,  gobject.TYPE_STRING, gobject.TYPE_STRING,   gobject.TYPE_UINT) ) 
         self.singleProject.setTreeOrder('name')
-        self.singleProject.setListHeader([_('Name'), _('Designation'),_('Start at'),_('End at'),  _('Status')])
+        self.singleProject.setListHeader([_('Name'), _('Designation'),_('Start at'),_('End at'),  _('Status'),  _('Customer'),  _('Partner')])
         self.singleProject.setTree(self.getWidget('tree1') )
 
   
@@ -508,6 +510,7 @@ class projectwindow(chooseWindows):
         print event 
         self.setDateToCalendar(event.get_text(),'calendar2')
         
+    # search for the address
     #choose button
     def on_bChoose_clicked(self, event):
         adr = cuon.Addresses.addresses.addresswindow(self.allTables)
@@ -520,6 +523,28 @@ class projectwindow(chooseWindows):
         eAdrField = self.getWidget('tvOrderer')
         liAdr = self.singleAddress.getAddress(self.getWidget( 'eAddressNumber').get_text())
         self.setTextbuffer(eAdrField,liAdr)
+        
+    # search for the partner
+    #choose button
+    def on_bSearchPartner_clicked(self, event):
+        print 'search partner'
+        adr = cuon.Addresses.addresses.addresswindow(self.allTables,  addrid=self.singleProject.getCustomerID() )
+        adr.setChooseEntry('chooseAddress', self.getWidget( 'eProjectPartner'))
+        
+    # signals from entry eAddressNumber
+    
+    def on_eProjectPartner_changed(self, event):
+        print 'epartnerNumber changed'
+        try:
+            ePartnerField = self.getWidget('ePartnerName')
+            sPartner = self.singlePartner.getAddressFirstlast(int(self.getWidget( 'eProjectPartner').get_text() ) ) 
+            ePartnerField.set_text(sPartner)
+        except Exception,  param :
+            print 'error at partner name'
+            print Exception,  param 
+        
+           
+        
     # Phase
 
     def on_PhaseCalendar1_day_selected_double_click(self, event):

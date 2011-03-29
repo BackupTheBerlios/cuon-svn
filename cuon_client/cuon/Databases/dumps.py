@@ -542,3 +542,29 @@ class dumps:
 ##    
 ##        print t1.month   
         
+    def  normalizeXML(self,  sValue,  normalize = True):
+        if sValue:
+            if normalize:
+                try:
+                    sValue = sValue.replace('&', '&amp;')
+              
+                    sValue = sValue.replace('\'', '&apos;')
+                    sValue = sValue.replace('\"', '&quot;')
+                    sValue = sValue.replace('<', '&lt;')
+                    sValue = sValue.replace('>', '&gt;')
+                except:
+                    pass
+            else:
+                try:
+                    sValue = sValue.replace('&amp;',  '&')
+              
+                    sValue = sValue.replace('&apos;', '\'' )
+                    sValue = sValue.replace('&quot;',  '\"')
+                    sValue = sValue.replace('&lt;',  '<')
+                    sValue = sValue.replace('&gt;',  '>')
+                except:
+                    pass
+                
+            # for testing:
+            #sValue = sValue.replace('/', '')
+        return sValue

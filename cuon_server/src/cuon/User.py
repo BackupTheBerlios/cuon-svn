@@ -264,7 +264,7 @@ class User(xmlrpc.XMLRPC, basics):
                 try:
                     conn = httplib.HTTPConnection(self.home_url, 6080)
                     conn.request("GET", '/sayVersion/' +sInfo)
-                    r2 = conn.getresponse()
+                    #r2 = conn.getresponse()
                     conn.close()
                 except:
                     pass

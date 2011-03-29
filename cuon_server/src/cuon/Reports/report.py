@@ -56,7 +56,7 @@ class report(MyXML):
         self.lastPage = False 
         self.beginPageX = 50
         self.beginPageY = 800
-        
+        self.lineOffset = 0
         self.dicPage = {}
         self.dicText = {}
 
@@ -397,7 +397,7 @@ class report(MyXML):
         print "Side Values = ",  self.dicPage['papersizeY'] , self.dicPage['topMargin'] ,  self.dicPage['headerY2'] ,  self.dicPage['endPageFooterY'] ,  self.dicPage['bottomMargin']  , self.dicPage['pageFooterY1']
         self.dicPage['reportDetailsY'] = self.dicPage['papersizeY'] - self.dicPage['topMargin'] - self.dicPage['headerY2'] - self.dicPage['bottomMargin']  - self.dicPage['pageFooterY2']
         
-        print "appendtogroup page,  report = ",  self.dicPage['PageFootAppendToGroup']  ,  self.dicPage['ReportFootAppendToGroup'] 
+        #print "appendtogroup page,  report = ",  self.dicPage['PageFootAppendToGroup']  ,  self.dicPage['ReportFootAppendToGroup'] 
         
         
         
@@ -521,8 +521,8 @@ class report(MyXML):
                     dicRow['y2'] = self.dicPage['beginPageFooterY']  - dicRow['y2']
 
             elif self.dicPage['PageFootAppendToGroup'] == 1:
-                print "appendtogroup is 1,  y1,  y2 = ", y1, y2,   dicRow['y1'] ,  dicRow['y2']
-                print "this are x values",  x1,  x2,  dicRow['x1'],  dicRow['x2']
+                #print "appendtogroup is 1,  y1,  y2 = ", y1, y2,   dicRow['y1'] ,  dicRow['y2']
+                #print "this are x values",  x1,  x2,  dicRow['x1'],  dicRow['x2']
                 footerhigh = self.dicPage['pageFooterY2']  - self.dicPage['pageFooterY1'] 
                 dicRow['x1'] =  self.dicPage['beginPageFooterX'] + dicRow['x1']
                 dicRow['y1'] =  y1 - dicRow['y1']
@@ -540,12 +540,12 @@ class report(MyXML):
                 
                 
             liRecord = self.checkProperty(liRecord, dicRow)
-            print 'PageFootAppend2Group= ', self.dicPage['PageFootAppendToGroup'] 
-            print 'y1, y2',  y1, y2
+            #print 'PageFootAppend2Group= ', self.dicPage['PageFootAppendToGroup'] 
+            #print 'y1, y2',  y1, y2
             
             
-            print 'PageFooterY1 = ',  self.dicPage['beginPageFooterY'] 
-            print 'PageFooterY2 = ',  self.dicPage['endPageFooterY'] 
+            #print 'PageFooterY1 = ',  self.dicPage['beginPageFooterY'] 
+            #print 'PageFooterY2 = ',  self.dicPage['endPageFooterY'] 
             
             
         #sys.exit(0)    
@@ -619,7 +619,7 @@ class report(MyXML):
         if resultKey and self.dicResults.has_key(resultKey):
             liResults = self.dicResults[resultKey.encode('ascii')]
        
-        lineOffset = 0
+        self.lineOffset = 0
 
   
         
@@ -662,7 +662,7 @@ class report(MyXML):
                 if ( (dicGroup['newValue'] != dicGroup['oldValue'] ) or iGroup == 1) or dicGroup['newValue'] == None :
                     dicGroup['oldValue'] = dicGroup['newValue']
                     cyPageDetailsNodes = self.getNodes(cyGroupEntry, 'pageDetails')
-                    #print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
+                    print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
 
                     for i in  range(len(cyPageDetailsNodes)):
 
@@ -703,19 +703,20 @@ class report(MyXML):
                             #print 'dicRow = ',  dicRow
                            # print dicRow['text']
                             #print '=============================================================================='
+                            sq = None
                             if dicRow['fontjustification'].upper() == 'TEXT':
                                 
                                # print 'dicRow at TEXT = ',  dicRow
-                                dicField = dicRow
-                                s = dicField['format']
-                                if dicField['text'] and dicField['fontsize']:
+                                
+                                s = dicRow['format']
+                                if dicRow['text'] and dicRow['fontsize']:
                                     #print 'text and fontsize = True'
                                     try:
-                                        sq = s % dicField['text'] 
+                                        sq = s % dicRow['text'] 
                                         try:
                                             sq = sq.encode('utf-8')
                                         except:
-                                            sq = s % dicField['text']                
+                                            sq = s % dicRow['text']                
                                         #to.textOut(sq)
                                         #c.drawText(to)
                                         #print 'SQ = ', sq
@@ -723,21 +724,79 @@ class report(MyXML):
                                         print 'Exception utf-8, latin'
                                         print Exception, params
                                         sq = ' '
+                               
+                                iIndex = 0
+                                x1 = dicRow['x1']
+                                x2 = dicRow['x2']
+                                y1 = dicRow['y1']
+                                y2 = dicRow['y2']
+                                
+                                fontoffset = 4
+                                z1 = 0
+                                while iIndex > -1:
+                                    #dicRow = self. getReportRow(dicEntry) 
+                                    #print 'sq, iIndex = ',  sq,  iIndex 
+                                    z1 += 1
+                                    if sq:
+                                        iIndex = sq.find('\n')
+                                    else: 
+                                        iIndex = -1
                                         
-                                    #print "sq = ",  sq 
-                                if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , lineOffset ):
+                                    if iIndex > -1:    
+                                        dicRow['text'] = sq[:iIndex]
+                                        sq = sq[iIndex+1:]
+                                    else:
+                                        dicRow['text'] = sq
+                                        sq = None
+                                       
+                                      
+                                    #print 'text at dicrow = ',  dicRow['text']
+                                    print 'dicRow before Values = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
+                                    print 'more = ',  self.dicPage['endPageDetailsY'] 
+                                    dicRow['x1'] = self.dicPage['beginPageDetailsX']  + x1
+                                    dicRow['y1'] = self.dicPage['endPageDetailsY'] - self.lineOffset  -y1
+                                    dicRow['x2'] = self.dicPage['beginPageDetailsX']  + x2
+                                    #dicRow['y2'] = self.dicPage['endPageDetailsY']  - self.lineOffset  -y2
+                                    dicRow['y2'] =  dicRow['y1'] 
                                     
-                                    liRecord = self.doEndOfPage(liRecord,  dicRow, c, cyRootNode)
                                     
+                                    dicRow['fontjustification'] = 'left'
+                                    dicRow['class'] = 'Label'
+                                    #dicRow['value'] = dicRow['text']
+                                    self.endOfRegion = dicRow['y2']
+        
+                                    #print dicRow
+                                    #print '####################################################***'
+        
+        
+                                    #print 'liRecord 1 = ',  len(liRecord),  liRecord[len(liRecord)-1]['text']
+                                    liRecord = self.checkProperty(liRecord, dicRow)
                                     
+                                    #print 'liRecord 2 = ',   len(liRecord),  liRecord[len(liRecord)-1]['text']
+                                    #print 'liRecord 3 = ',   len(liRecord),  liRecord[len(liRecord)-2]['text']
+                                    #print 'liRecord 4 = ',   len(liRecord),  liRecord[len(liRecord)-3]['text']
+                                    self.lineOffset +=  dicRow['fontsize'] + fontoffset
+                                        #print "sq = ",  sq 
+                                    print 'dicRow before end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
+                                    if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , self.lineOffset ):
+                                        
+                                        liRecord = self.doEndOfPage(liRecord,  dicRow, c, cyRootNode)
+                                        self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] 
+                                        self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] 
+                                        self.lineOffset = 30
+                                        print 'dicRow after end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
+                                  
+                                    
+                                sq = None
                             else:
                                 
                                 #dicRow = self. getReportRow(dicEntry) 
                                 #dicRow['text'] = dicEntry['text']
                                 dicRow['x1'] = self.dicPage['beginPageDetailsX']  + dicRow['x1']
-                                dicRow['y1'] = self.dicPage['endPageDetailsY'] - lineOffset - dicRow['y1']
+                                dicRow['y1'] = self.dicPage['endPageDetailsY'] - self.lineOffset - dicRow['y1']
                                 dicRow['x2'] = self.dicPage['beginPageDetailsX']  + dicRow['x2']
-                                dicRow['y2'] = self.dicPage['endPageDetailsY']  - lineOffset - dicRow['y2']
+                                dicRow['y2'] = self.dicPage['endPageDetailsY']  - self.lineOffset - dicRow['y2']
+                                
                                 self.endOfRegion = dicRow['y2']
     
                                 #print dicRow
@@ -747,12 +806,12 @@ class report(MyXML):
     
                                 liRecord = self.checkProperty(liRecord, dicRow)
                             
-                        if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , lineOffset ):
+                        if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , self.lineOffset ):
                             
                            liRecord = self.doEndOfPage(liRecord,  dicRow, c,  cyRootNode)
                             
                             
-                        lineOffset +=  self.dicPage['lineY']
+                        self.lineOffset +=  self.dicPage['lineY']
                       
                         self.dicGroups[`groupNumber`] = dicGroup
         self.dicReportValues['pageDetails'] = liRecord
@@ -800,6 +859,34 @@ class report(MyXML):
 
         
 ##        return dicRow
+    def testEndOfPage(self, dicRow, papersizeHeight, offSet ):
+        ok = False
+        yRow = dicRow['y1']
+        if dicRow.has_key('pagebreak'):
+            return True
+            
+            
+        #print "report17 test end of page"
+        #print 'yRow', yRow
+        #print 'offSet', offSet
+        #print 'papersizeHeight',  papersizeHeight
+        print 'sum yRow + offset', yRow + offSet
+        #print 'RangeSite = ',  self.dicPage['PrintRangeFirstSite'],  self.dicPage['PrintRangeNextSites']
+#        
+#        if  offSet > papersizeHeight or yRow < 0:
+#            #liRecord, yRow  = self.newPage(liRecord)
+#            ok = True
+#           
+        if self.firstPage:
+            if offSet + 2 * self.dicPage['lineY'] > self.dicPage['PrintRangeFirstSite']:
+                ok = True
+        else:
+             if offSet + 2 * self.dicPage['lineY'] > self.dicPage['PrintRangeNextSites']:
+                ok = True
+        
+        return ok
+    
+        #return liRecord, yRow
 
     def doEndOfPage(self,  liRecord,  dicRow, c,  cyRootNode):
         self.dicReportValues['pageDetails'] = liRecord
@@ -809,7 +896,7 @@ class report(MyXML):
         # begin new page
         liRecord = []
         #self.numberOfPage = self.numberOfPage + 1
-        lineOffset = 0
+        self.lineOffset = 0
         
         self.firstPage = False
        
@@ -1219,7 +1306,7 @@ class report(MyXML):
             p.moveTo(dicField['x1'],dicField['y1'])
             p.lineTo(dicField['x2'],dicField['y2'])
             c.drawPath(p, stroke = 1)
-
+            print 'Line = ',  dicField['eName'],  dicField['x1'],dicField['y1'],  ' to ', dicField['x2'],dicField['y2']
         elif dicField['class'] == 'Rectangle'  :
             
             c.setLineWidth( dicField['fontsize'])
@@ -1400,35 +1487,7 @@ class report(MyXML):
         pass
 
     
-    def testEndOfPage(self, dicRow, papersizeHeight, offSet ):
-        ok = False
-        yRow = dicRow['y1']
-        if dicRow.has_key('pagebreak'):
-            return True
-            
-            
-        #print "report17 test end of page"
-        #print 'yRow', yRow
-        #print 'offSet', offSet
-        #print 'papersizeHeight',  papersizeHeight
-        #print 'sum yRow + offset', yRow + offSet
-        #print 'RangeSite = ',  self.dicPage['PrintRangeFirstSite'],  self.dicPage['PrintRangeNextSites']
-#        
-#        if  offSet > papersizeHeight or yRow < 0:
-#            #liRecord, yRow  = self.newPage(liRecord)
-#            ok = True
-#           
-        if self.firstPage:
-            if offSet + 2 * self.dicPage['lineY'] > self.dicPage['PrintRangeFirstSite']:
-                ok = True
-        else:
-             if offSet + 2 * self.dicPage['lineY'] > self.dicPage['PrintRangeNextSites']:
-                ok = True
-        
-        return ok
-    
-        #return liRecord, yRow
-
+   
     def firstPage(self, liRecord):
         #self.numberOfPage = self.numberOfPage + 1
         liRecord = self.createStandardPageHeader(liRecord)
@@ -1524,8 +1583,9 @@ class report(MyXML):
             
     def doPrintPart(self, dicRow,  Suffix = ''):
         doPrint = False
+        printSite = None
         if dicRow.has_key('Property'+Suffix) and dicRow['Property'+Suffix]:
-            print "sProperty = " ,  Suffix,  dicRow['Property'+Suffix]
+            #print "sProperty = " ,  Suffix,  dicRow['Property'+Suffix]
             sProperty = dicRow['Property'+Suffix]
             printSite = sProperty[0].strip().upper()
             if printSite == 'A':
@@ -1549,7 +1609,9 @@ class report(MyXML):
                 
         else:
             doPrint = True 
-        #print dicRow, Suffix, doPrint
+        print 'do Print = ',   printSite,  Suffix, doPrint
+        print dicRow
+        
         return doPrint
         
         
@@ -1558,7 +1620,8 @@ class report(MyXML):
         doPrint = self.doPrintPart(dicRow)
         
         if doPrint:
-            liRecord.append(dicRow)
+            
+            liRecord.append(copy.deepcopy(dicRow))
         
         return liRecord
         

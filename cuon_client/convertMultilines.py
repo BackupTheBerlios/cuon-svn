@@ -10,12 +10,14 @@ def writeValues(f_out, liS1,liForbidden):
         #print forbidden
         sL2 = liS1[2].decode('ISO-8859-15').encode('utf-8')
         sL3 = liS1[3].decode('ISO-8859-15').encode('utf-8')
-        
+        sL16 = liS1[16].decode('ISO-8859-15').encode('utf-8')
         #print sL2
         
         if sL2.find(forbidden) >= 0:
             bOK = False
         if sL3.find(forbidden) >= 0:
+            bOK = False
+        if sL16.find(forbidden) >= 0:
             bOK = False    
     if bOK:
         for i in liS1:
@@ -73,13 +75,13 @@ while s1:
         if liS1[11].strip() == 'Telefax':
             #print 'set Telefax'
             
-            liS1[17] = liS1[15]
+            liS1[20] = liS1[15]
             #print liS1
         elif liS1[11].strip() == 'Mobil':
-            liS1[18] = liS1[15]
+            liS1[21] = liS1[15]
         else:
             #print 'Normal'
-            liS1[16] = liS1[15]
+            liS1[19] = liS1[15]
         #print liS1
         #print '::::::'
         #print liS2
@@ -94,11 +96,11 @@ while s1:
         
             #print 'len liS1', len(liS1)
             if liS1[11].strip() == '"Telefax"':
-                liS2[17] = liS1[15]
+                liS2[20] = liS1[15]
             elif liS1[11].strip() == '"Mobil"':
-                liS2[18] = liS1[15]
+                liS2[21] = liS1[15]
             else:
-                liS2[16] = liS1[15]
+                liS2[19] = liS1[15]
             liAll[lastIndex] = liS2
             
         else:
@@ -122,7 +124,7 @@ try:
     #s = s.encode(sEncode)
     
     print sDescode + ' ' + sEncode, s
-    liForb.append(s.strip())
+    liForb.append(s.strip()[:-1])
     s = f.readline()
 except Exception, params:
     print Exception, params

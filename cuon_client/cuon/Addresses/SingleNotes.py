@@ -45,21 +45,21 @@ class SingleNotes(SingleData):
     def readNonWidgetEntries(self, dicValues):
         print 'readNonWidgetEntries(self) by SingleMisc'
         dicValues['address_id'] = [self.addressId, 'int']
-        dicValues['notes_misc'] = [self.NotesMisc.get_text(self.NotesMisc.get_start_iter(), self.NotesMisc.get_end_iter(), 1), 'text']
-        dicValues['notes_contacter'] = [self.NotesContact.get_text(self.NotesContact.get_start_iter(), self.NotesContact.get_end_iter(), 1), 'text']
-        dicValues['notes_representant'] = [self.NotesRep.get_text(self.NotesRep.get_start_iter(), self.NotesRep.get_end_iter(), 1), 'text']
-        dicValues['notes_salesman'] = [self.NotesSalesman.get_text(self.NotesSalesman.get_start_iter(), self.NotesSalesman.get_end_iter(), 1), 'text']
-        dicValues['notes_organisation'] = [self.NotesOrganisation.get_text(self.NotesOrganisation.get_start_iter(), self.NotesOrganisation.get_end_iter(), 1), 'text']
+        dicValues['notes_misc'] = [self.normalizeXML(self.NotesMisc.get_text(self.NotesMisc.get_start_iter(), self.NotesMisc.get_end_iter(), 1)) , 'text']
+        dicValues['notes_contacter'] = [self.normalizeXML(self.NotesContact.get_text(self.NotesContact.get_start_iter(), self.NotesContact.get_end_iter(), 1)), 'text']
+        dicValues['notes_representant'] = [self.normalizeXML(self.NotesRep.get_text(self.NotesRep.get_start_iter(), self.NotesRep.get_end_iter(), 1)), 'text']
+        dicValues['notes_salesman'] = [self.normalizeXML(self.NotesSalesman.get_text(self.NotesSalesman.get_start_iter(), self.NotesSalesman.get_end_iter(), 1)), 'text']
+        dicValues['notes_organisation'] = [self.normalizeXML(self.NotesOrganisation.get_text(self.NotesOrganisation.get_start_iter(), self.NotesOrganisation.get_end_iter(), 1)), 'text']
 
         return dicValues
 
     def fillOtherEntries(self, oneRecord):
         #print "oneRecord = ",  oneRecord['notes_misc']
-        self.NotesMisc.set_text(oneRecord['notes_misc'])
-        self.NotesContact.set_text(oneRecord['notes_contacter'])
-        self.NotesRep.set_text(oneRecord['notes_representant'])
-        self.NotesSalesman.set_text(oneRecord['notes_salesman'])
-        self.NotesOrganisation.set_text(oneRecord['notes_organisation'])
+        self.NotesMisc.set_text(self.normalizeXML(oneRecord['notes_misc'], False) )
+        self.NotesContact.set_text(self.normalizeXML(oneRecord['notes_contacter'], False))
+        self.NotesRep.set_text(self.normalizeXML(oneRecord['notes_representant'], False))
+        self.NotesSalesman.set_text(self.normalizeXML(oneRecord['notes_salesman'], False))
+        self.NotesOrganisation.set_text(self.normalizeXML(oneRecord['notes_organisation'], False))
         
         
     def clearAllOtherFields(self):

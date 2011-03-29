@@ -650,7 +650,8 @@ class SingleData(gladeXml, logs):
                             pass
                             
                     elif string.count(str(widget), "GtkTextView") > 0:
-                        print 'GtkTextView = ',  sValue
+                        sValue = self.normalizeXML(sValue)
+                        #print 'GtkTextView = ',  sValue
                         buffer = gtk.TextBuffer(None)
                         buffer.set_text(sValue)
                         widget.set_buffer(buffer)
@@ -665,16 +666,11 @@ class SingleData(gladeXml, logs):
                         self.printOut( "GtkCheckButton ", entry.getName())
                         bValue = False
                         try:
-                            if sValue == 1:
+                            if sValue == 1 or sValue == 't' or sValue == 'True':
                                 bValue = True
                         except:
                             pass
-                        try:    
-                            if sValue == 't' or sValue == 'True': 
-                                bValue = True
-                        except:
-                            pass
-
+                            
                         sValue = bValue
                         self.printOut( 'Widget set to ', sValue)
                         widget.set_active(sValue)
@@ -736,10 +732,13 @@ class SingleData(gladeXml, logs):
                         #print "sValue at ", widget, sValue
                     elif string.count(str(widget), "GtkTextView") > 0:
                         buffer = widget.get_buffer()
-                        sValue = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1)
+                        sValue = self.normalizeXML(buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), 1))
+                        #print 'sValue at textview = ',  sValue
                     #elif string.count(str(widget), "GtkCombo") > 0:
                     elif string.count(str(widget), "GtkCheckButton") > 0:
                         sValue = `widget.get_active()`
+                        print 'GtkCheckButton = ',  sValue
+                        
                     elif string.count(str(widget), "GtkRadioButton") > 0:
                         sValue = `widget.get_active()`
                     elif string.count(str(widget), "GnomeDateEdit") > 0:

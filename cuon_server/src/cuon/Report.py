@@ -107,13 +107,13 @@ class Report(xmlrpc.XMLRPC, basics):
         return self.report_server.ReportServer.createReport(repData)
         
         
-    def xmlrpc_server_graves_plant_standard(self, dicSearchlist, dicUser,  nRows=0, sName ='standard'):
+    def xmlrpc_server_graves_plant_standard(self, dicSearchlist, dicUser,  nRows=0, sName ='standard', iOrderSort = 0):
         import Reports.report_grave_plant_lists
         import Grave
         
         print "startReport"
         oGrave= Grave.Grave()
-        oReports = Reports.report_grave_plant_lists.report_grave_plant_lists(nRows, sName)
+        oReports = Reports.report_grave_plant_lists.report_grave_plant_lists(nRows, sName, iOrderSort)
         print 'new report 041'
         repData = oReports.getReportData(dicSearchlist, dicUser, oGrave, self.ReportDefs)
         print 'get ReportData 042'

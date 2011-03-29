@@ -942,7 +942,13 @@ z.B. 1-5000)</property>
                       <placeholder/>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkLabel" id="lOpen">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">closed</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>

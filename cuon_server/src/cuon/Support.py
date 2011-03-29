@@ -57,7 +57,8 @@ class Support(xmlrpc.XMLRPC, basics):
         sSql += self.getWhere(None,dicUser,2)
         
         Result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser)
-        print Result
+        #print Result
+        
         return Result   
     def xmlrpc_getTicketComboBoxEntries(self, dicUser):
         print 'get comboBox Entries'

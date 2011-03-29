@@ -84,4 +84,7 @@ class SingleProject(SingleData):
         except Exception, params:
             print Exception, params
          
-        
+    def getCustomerID(self):
+        return self.firstRecord['customer_id'] 
+ 
+ 

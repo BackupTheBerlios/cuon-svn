@@ -25,6 +25,19 @@ class Grave(xmlrpc.XMLRPC, basics):
         basics.__init__(self)
         self.oDatabase = Database.Database()
     def xmlrpc_getComboBoxEntries(self, dicUser):
+        liGraveyards = []
+        liPercents = []
+        liPeriodAutumn = []
+        liPeriodHolliday = []
+        liPeriodSpring = []
+        liPeriodSummer = []
+        liPeriodWinter = []
+        liPeriodUnique = []
+        liPeriodYearly = []
+        liService = []
+        liSorting = []
+        liTypeOfGrave = []
+        
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
         liService0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveService', cpServer)
         liService = ['NONE']
@@ -86,11 +99,14 @@ class Grave(xmlrpc.XMLRPC, basics):
         if liPeriodYearly0:
             liPeriodYearly = liPeriodYearly0.split(',')
             
-  
+        liSorting0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveSorting', cpServer)
+        liSorting = ['NONE']
+        if liSorting0:
+            liSorting = liSorting0.split(',')
         
         
         
-        return liService, liTypeOfGrave, liTypeOfPaying, liPercents, liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday,  liPeriodUnique, liPeriodYearly
+        return liService, liTypeOfGrave, liTypeOfPaying, liPercents, liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday,  liPeriodUnique, liPeriodYearly,  liSorting
         
 
     def xmlrpc_getGravesForAddress(self, addressid, dicUser):
@@ -146,10 +162,25 @@ class Grave(xmlrpc.XMLRPC, basics):
                 sSql += "''" + ",  " 
         
         
-        sSql +=  `nRows` + ")  as (graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar) "
+        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + " )  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar) "
         
         print 'grave list sql = ',  sSql
         
         return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
         
-    
+    def getGravePlantListArticles(self,  liSearchfields, dicUser, nRows):
+        
+        sSql = "select * from fct_getGravePlantListArticles( "  
+        
+        for sSearch in liSearchfields:
+            if sSearch:
+                sSql += sSearch + ",  " 
+            else:
+                sSql += "''" + ",  " 
+        
+        
+        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + ")  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number text, article_designation text,service_price float, service_count float) "
+        
+        print 'grave list sql = ',  sSql
+        
+        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )

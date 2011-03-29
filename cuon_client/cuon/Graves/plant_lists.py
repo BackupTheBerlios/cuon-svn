@@ -34,7 +34,7 @@ class plantlists(cuonlists):
         print 'started the plants list'
         self.getWidget('listdialog1').show()
         
-        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly, liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         
      
         
@@ -95,8 +95,8 @@ class plantlists(cuonlists):
         """ Starts to print the list of graves for plants. """
         
         print 'ok clicked'
-        dicSearchfields,  nRow,  sName = self.readSearchDatafields()
-        Pdf = self.rpc.callRP('Report.server_graves_plant_standard', dicSearchfields, self.dicUser, nRow, sName)
+        dicSearchfields,  nRow,  sName , iOrderSort = self.readSearchDatafields()
+        Pdf = self.rpc.callRP('Report.server_graves_plant_standard', dicSearchfields, self.dicUser, nRow, sName,  iOrderSort)
         self.showPdf(Pdf, self.dicUser)
         di1 = self.getWidget('listdialog1')
         di1.hide()
@@ -106,11 +106,16 @@ class plantlists(cuonlists):
         """ read the entries at the search mask and convert them to values for the SQL-Search """
         liReturn = []
         nRow = 0
+        iOrderSort = 0
         sGyID = self.getActiveText(self.getWidget('cbGraveyard'))
         try:
             gyID = sGyID[sGyID.find('###')+ 3:].strip()
         except:
             gyID = 0
+        try:
+            iOrderSort = self.getWidget('cbGraveSorting').get_active()
+        except:
+            iOrderSort = 0
             
         liReturn.append( gyID)
         liReturn.append( self.getWidget('eGraveFrom').get_text() )
@@ -122,5 +127,5 @@ class plantlists(cuonlists):
         liReturn.append( self.getWidget('eContractEndsFrom').get_text() )
         liReturn.append( self.getWidget('eContractEndsTo').get_text() )
         sName = "grave_plant_list_standard.xml"
-        return liReturn,  nRow,  sName
+        return liReturn,  nRow,  sName,  iOrderSort
         

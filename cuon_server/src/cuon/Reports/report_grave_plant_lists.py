@@ -15,9 +15,11 @@ import os
 import types
 
 class report_grave_plant_lists:
-    def __init__(self,  nRows = 0,  sName = 'standard'):
+    def __init__(self,  nRows = 0,  sName = 'standard', iOrderSort=0):
         self.nRows = nRows
         self.sName = sName
+        self.iOrderSort = iOrderSort
+        
         self.dicReportData = {}
         
         self.dicReportData['Title'] = _(sName + ' generatet by CUON')
@@ -35,15 +37,18 @@ class report_grave_plant_lists:
         
         self.fileName = reportDefs['DocumentPathListsGraves'] + '/' +_( self.sName + '-') + `dicUser['Name']` +`self.nRows` + '.pdf' 
         reportDefs['pdfFile'] = os.path.normpath(self.fileName)
-        
+        dicUser['iOrderSort'] = self.iOrderSort
         dicResult =  oGrave.getGravePlantListValues( dicSearchfields, dicUser,  self.nRows)
 
     
         
-        print dicResult
-        print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
+        #print dicResult
+        #print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         
         self.dicResults['grave'] = dicResult
+        dicResult =  oGrave.getGravePlantListArticles( dicSearchfields, dicUser,  self.nRows)
+        self.dicResults['articles'] = dicResult
+        print 'Grave-Aricticle = ',  dicResult
         #self.loadXmlReport('addresses_phonelist1', 'ReportAddressLists')
         #values in this order:
         # 1 reportname

@@ -30,7 +30,7 @@ rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.css root@cuon.org://var/www/cuon
 
 rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/*.pdf root@cuon.org://var/www/cuon_web/Cuon 
 rsync  -avz --numeric-ids -e 'ssh -p 22' Cuon/images/screenshots/*.png root@cuon.org://var/www/cuon_web/Cuon/images/screenshots
-rsync  -avz --numeric-ids -e 'ssh -p 22'  Cyrus/*.html root@cuon.org://var/www/cuon_web/Cyrus
+# rsync  -avz --numeric-ids -e 'ssh -p 22'  Cyrus/*.html root@cuon.org://var/www/cuon_web/Cyrus
 rsync  -avz --numeric-ids -e 'ssh -p 22'  Downloads/*.html root@cuon.org://var/www/cuon_web/Downloads 
 rsync  -avz --numeric-ids -e 'ssh -p 22' Extensions/*.html root@cuon.org://var/www/cuon_web/Extensions 
 rsync  -avz --numeric-ids -e 'ssh -p 22' Screenshots/*.html root@cuon.org://var/www/cuon_web/Screenshots

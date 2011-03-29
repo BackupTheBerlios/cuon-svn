@@ -23,21 +23,28 @@
     
      ' LANGUAGE 'plpgsql'; 
 
-DROP FUNCTION fct_getGravePlantListValues(IN dicSearchfields text [], IN iRows int ) CASCADE ;
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, iRows int ) returns setof record AS '
+DROP FUNCTION IF EXISTS fct_getGravePlantListSQL(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
+DROP FUNCTION IF EXISTS fct_getGravePlantListSQL(  int, text,  text, text, text,  text, text, text, text, int,text,text ) CASCADE ;
+CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, iRows int ,additionalRows text, additionalTables text, additionalWhere text) returns text AS '   
  DECLARE
-     iClient int ;
-    r record;
-    searchsql text := '''';
+        iClient int ;
+       
+        searchsql text := '''';
    
     
     
     BEGIN
-        -- graveyard.lastname 
+    -- graveyard.lastname 
         -- grab laufnummer
         
-        -- raise notice '' sql = %'', searchsql ;
-        searchsql := ''select graveyard.shortname , graveyard.designation , grave.firstname , grave.lastname, grave.pos_number, grave. contract_begins_at , grave.contract_ends_at , grave.detachment , grave.grave_number from  graveyard, grave, address where grave.addressid = address.id and grave.graveyardid = graveyard.id ''  ;
+        
+        searchsql := ''select graveyard.id as graveyard_id, grave.id as grave_id, graveyard.shortname , graveyard.designation , grave.firstname , grave.lastname, grave.pos_number, grave. contract_begins_at , grave.contract_ends_at , grave.detachment , grave.grave_number '' ;
+         searchsql :=  searchsql  || additionalRows ;
+        
+        searchsql :=  searchsql  || ''from  graveyard, grave, address ''  || additionalTables || '' where ''  ;
+        
+        searchsql :=  searchsql  ||  '' grave.addressid = address.id and grave.graveyardid = graveyard.id ''  ;
+        searchsql :=  searchsql  || additionalWhere || '' '' ;
         
         IF graveyard_id > 0 THEN
         
@@ -59,11 +66,39 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
             searchsql := searchsql  || '' and contract_begins_at between fct_to_date('' || quote_literal(dContractBeginFrom) || '') and fct_to_date('' || quote_literal(dContractBeginTo) ||'') '' ;
         END IF ;
         
-        searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.shortname, grave.pos_number, grave.lastname, grave.firstname '';
+        
 
 
         raise notice '' sql = %'', searchsql ;
         
+        
+        return searchsql ;
+         
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 
+ 
+ 
+     
+DROP FUNCTION IF EXISTS fct_getGravePlantListValues(IN dicSearchfields text [], IN iRows int ) CASCADE ;
+DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
+DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
+
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, iRows int , iOrderSort int ) returns setof record AS '
+    DECLARE
+        iClient int ;
+        r record;
+        searchsql text := '''';
+        additionalTables text := '' '' ;
+        additionalWhere text  := '' '' ;
+         additionalRows text  := '' '' ;
+    
+    
+    BEGIN
+        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo , iRows,additionalRows,  additionalTables, additionalWhere) ;
+        searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by  graveyard.shortname, grave.pos_number, grave.lastname, grave.firstname '';
          FOR r in execute(searchsql)  LOOP
          
         
@@ -78,3 +113,34 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
      ' LANGUAGE 'plpgsql'; 
 
    
+DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
+DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
+
+CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, iRows int, iOrderSort int ) returns setof record AS '
+    DECLARE
+        iClient int ;
+        r record;
+        searchsql text := '''';
+         additionalTables text := '' '' ;
+        additionalWhere text  := '' '' ;
+        additionalRows text  := '' '' ;
+    
+    
+    BEGIN
+        additionalTables  :='',grave_work_maintenance as gm, articles as ar  '' ;
+        additionalWhere  := '' and gm.grave_id = grave.id,  gm.article_id = ar.id'' ;
+        additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count '' ;
+        
+        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo , iRows,additionalRows, additionalTables, additionalWhere) ;
+        -- searchsql := searchsql || '' '' ;
+        searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.id, grave.id, grave.pos_number'';
+        for r in execute(searchsql)  LOOP 
+            return  next r; 
+        END LOOP ;
+        
+        
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 

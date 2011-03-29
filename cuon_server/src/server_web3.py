@@ -28,10 +28,13 @@ basic = basics()
 
 if basic.XMLRPC_ALLOW_HTTP:
     sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_HTTP_PORT`,  allow_none = 1)
+    print 'Allow Http'
 else:
+    print 'use HTTPS'
     sv= ServerProxy(basic.XMLRPC_PROTO + '://' +basic.XMLRPC_HOST + ':' +  `basic.XMLRPC_HTTPS_PORT`,  allow_none = 1)
 
 web3user = basic.WEB_USER3
+print web3user
 
 dicUser = {}
 rootDir = '/var/cuon_www/SupportTicket/'
@@ -84,7 +87,14 @@ def showTicketsForProject(id):
     bottle.TEMPLATES.clear()
     dicUser = getAuth()
     print dicUser
-    response.set_cookie("SupportProjectID", id)
+    try:
+        print 'try1 '
+        response.set_cookie("SupportProjectID", id)
+        print 'try2 '
+
+    except Exception,  params:
+        print Exception,  params
+    
     
     result = sv.Support.getTickets(dicUser,  id )
     print result

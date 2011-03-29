@@ -770,9 +770,19 @@
                     <property name="visible">True</property>
                     <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkHBox" id="hbox13">
+                      <object class="GtkEntry" id="ePartnerName">
                         <property name="visible">True</property>
-                        <property name="homogeneous">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkHBox" id="hbox15">
+                        <property name="visible">True</property>
                         <child>
                           <object class="GtkLabel" id="label52">
                             <property name="visible">True</property>
@@ -795,23 +805,6 @@
                             <property name="fill">False</property>
                             <property name="position">1</property>
                           </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkHBox" id="hbox15">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -870,6 +863,9 @@
                       </packing>
                     </child>
                     <child>
+                      <placeholder/>
+                    </child>
+                    <child>
                       <object class="GtkHBox" id="hbox14">
                         <property name="visible">True</property>
                         <property name="homogeneous">True</property>
@@ -895,23 +891,6 @@
                             <property name="fill">False</property>
                             <property name="position">1</property>
                           </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">5</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkHBox" id="hbox21">
-                        <property name="visible">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -1305,13 +1284,36 @@
                   <object class="GtkHBox" id="hbox19">
                     <property name="visible">True</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkLabel" id="label11">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Partner</property>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkEntry" id="eProjectPartner">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">&#x25CF;</property>
+                        <signal name="changed" handler="on_eProjectPartner_changed"/>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                     <child>
-                      <placeholder/>
+                      <object class="GtkButton" id="bSearchPartner">
+                        <property name="label" translatable="yes">Choose Partner</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_bSearchPartner_clicked"/>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>

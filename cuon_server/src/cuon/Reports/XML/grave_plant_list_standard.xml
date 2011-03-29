@@ -111,13 +111,14 @@
 </pageHeader>
 
 
+
 <groups>
-    <count>1</count>
+    <count>2</count>
  
     <groupEntry>
       <number>1</number>
-      
-      <resultSet>grave</resultSet>
+      <changeGroupBy>grave_id</changeGroupBy>
+      <resultSet>articles</resultSet>
 
       <pageDetails>
     <posX1>0</posX1>
@@ -144,11 +145,27 @@
       <backgroundColor>0.7,0.2,0.2</backgroundColor>
       <grayScale>0.8</grayScale>
     </entry>
-    
+      <entry>
+      <name>grave_id</name>
+      <class>DatabaseField</class>
+      <resultSet>articles</resultSet>
+      <type>int</type>
+      <format>%i</format>
+      <posX1>10</posX1>
+      <posY1>10</posY1>
+      <posX2>20</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>12</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
  <entry>
       <name>graveyard_shortname</name>
       <class>DatabaseField</class>
-      <resultSet>grave</resultSet>
+      <resultSet>articles</resultSet>
       <type>string</type>
       <format>%s</format>
       <posX1>20</posX1>
@@ -168,7 +185,7 @@
     <entry>
       <name>grave_lastname</name>
       <class>DatabaseField</class>
-      <resultSet>grave</resultSet>
+      <resultSet>articles</resultSet>
       <type>string</type>
       <format>%s</format>
       <posX1>90</posX1>
@@ -184,8 +201,37 @@
 
       </pageDetails>
       </groupEntry>
+ <groupEntry>
+      <number>2</number>
+      
+      <resultSet>articles</resultSet>
 
+      <pageDetails>
+    <posX1>50</posX1>
+    <posY1>0</posY1>
+    <posX2>70</posX2>
+    <posY2>20</posY2>
+    <lineY>25</lineY>
 
+ <entry>
+      <name>service_article_id</name>
+      <class>DatabaseField</class>
+      <resultSet>articles</resultSet>
+      <type>int</type>
+      <format>%i</format>
+      <posX1>90</posX1>
+      <posY1>10</posY1>
+      <posX2>170</posX2>
+      <posY2>20</posY2>
+      <font>Helvetica</font>
+      <fontsize>11</fontsize>
+      <fontJustification>left</fontJustification>
+      <foregroundColor>0,0,0</foregroundColor>
+      <backgroundColor>0,0,0</backgroundColor>
+    </entry>
+
+      </pageDetails>
+      </groupEntry>
    
     </groups>
 

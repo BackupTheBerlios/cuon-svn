@@ -232,7 +232,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
         # set values for comboBox
 
-        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly= self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly,  liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         print liService   ,  liTypeOfGrave, liTypeOfPaid, liPercent
         print liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly
         
