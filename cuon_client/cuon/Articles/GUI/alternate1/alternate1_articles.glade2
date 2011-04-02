@@ -111,7 +111,7 @@
         <col id="0" translatable="yes">None</col>
       </row>
       <row>
-        <col id="0" translatable="yes">Botany</col>
+        <col id="0" translatable="yes">Pflanzen</col>
       </row>
     </data>
   </object>
@@ -122,7 +122,7 @@
     <property name="title" translatable="yes">Artikel</property>
     <property name="default_width">1024</property>
     <property name="default_height">768</property>
-    <property name="icon">article.svg</property>
+    <property name="icon">layout_content.xpm</property>
     <signal name="key_press_event" handler="on_Mainwindow_key_press_event"/>
     <child>
       <object class="GtkVBox" id="vb_main">
@@ -1021,6 +1021,8 @@ Alt-2</property>
                                     <signal name="changed" handler="on_cbAssociatedWith_changed"/>
                                   </object>
                                   <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
                                     <property name="position">0</property>
                                   </packing>
                                 </child>
@@ -1065,7 +1067,6 @@ Alt-2</property>
                                             </child>
                                             <child>
                                               <object class="GtkLabel" id="label44">
-                                                <property name="visible">True</property>
                                                 <property name="label" translatable="yes">Goto</property>
                                                 <property name="use_underline">True</property>
                                               </object>
@@ -1718,7 +1719,14 @@ Alt-2</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <placeholder/>
+                                  <object class="GtkEntry" id="eTaxVatText">
+                                    <property name="can_focus">True</property>
+                                    <property name="editable">False</property>
+                                    <property name="invisible_char">&#x25CF;</property>
+                                  </object>
+                                  <packing>
+                                    <property name="position">2</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
@@ -1736,7 +1744,6 @@ Alt-2</property>
                                 <child>
                                   <object class="GtkButton" id="bShowDMS">
                                     <property name="label" translatable="yes">weitere Daten</property>
-                                    <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="use_underline">True</property>
