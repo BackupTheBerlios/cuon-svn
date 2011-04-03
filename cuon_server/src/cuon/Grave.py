@@ -19,6 +19,7 @@ import xmlrpclib
 from twisted.web import xmlrpc
 from basics import basics
 import Database
+import types
 
 class Grave(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -157,7 +158,10 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         for sSearch in liSearchfields:
             if sSearch:
-                sSql += sSearch + ",  " 
+                if isinstance(sSearch,  types.IntType):
+                    sSql += `sSearch` + ",  " 
+                else:
+                    sSql += "'" + sSearch + "',  " 
             else:
                 sSql += "''" + ",  " 
         
@@ -174,12 +178,16 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         for sSearch in liSearchfields:
             if sSearch:
-                sSql += sSearch + ",  " 
+                if isinstance(sSearch,  types.IntType):
+                    sSql += `sSearch` + ",  " 
+                else:
+                    sSql += "'" + sSearch + "',  " 
             else:
+                
                 sSql += "''" + ",  " 
         
         
-        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + ")  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number text, article_designation text,service_price float, service_count float) "
+        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + ")  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number varchar(150), article_designation varchar(250),service_price float, service_count float) "
         
         print 'grave list sql = ',  sSql
         

@@ -246,10 +246,28 @@ class invoicebookwindow(windows):
         dEnd = self.getLastDayOfMonthAsSeconds()
         print dBegin,dEnd
         self.printListOfInpayment(dBegin,dEnd)
+        
     def on_inpayment_last_month1_activate(self, event):
         dBegin, dEnd = self.getFirstLastDayOfLastMonthAsSeconds()
         print dBegin,dEnd
         self.printListOfInpayment(dBegin,dEnd)
+        
+    def on_half_year1_activate(self, event):
+        dBegin,  dEnd = self.getFirstLastDayOfFirstHalfYearAsSeconds()
+        
+        print dBegin,dEnd
+        self.printListOfInpayment(dBegin,dEnd)
+        
+        
+    def on_current_year_1_activate(self, event):
+        print 'current Year'
+        dBegin,  dEnd = self.getFirstLastDayOfCurrentYearAsSeconds()
+        
+        print dBegin,dEnd
+        self.printListOfInpayment(dBegin,dEnd)
+        
+    def on_last_year_1_activate(self, event):
+        print 'last year'
         
     def printListOfInpayment(self, dBegin, dEnd):
         print 'print list this month'

@@ -1353,6 +1353,17 @@ ist der Pfad zu der Schrift ( auf dem Server !!!!)
 In den n&auml;chsten entrys brauchst man dann nur noch Muriel schreiben
 </para>
 </sect3>
+<sect3 id="id_rep_formula"><title>Formeln im Report</title>
+<para>Ebenso sind kurze Python Befehle m&ouml;glich, Leerzeichen d&uuml;rfen nicht enthalten sein. </para>
+<para>F&uuml;r l&auml;ngere Python Befehle bitte statt der class "Function" die class "Python" nehmen.</para>
+<example role="codelisting" id="cl_rep_formula">
+<title>Python funktion im formula Eintrag</title>
+<programlisting><![CDATA[
+ <formula>time.strftime("%d.%m.%Y",time.strptime(self.dicResult["date_of_invoice"],"%Y-%m-%d"))</formula>
+]]></programlisting>
+</example>
+
+</sect3>
 </sect2>
 </sect1>
 

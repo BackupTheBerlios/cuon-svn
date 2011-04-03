@@ -58,7 +58,7 @@ class articleswindow(chooseWindows):
         chooseWindows.__init__(self)
         self.loadGlade('articles.xml', 'ArticlesMainwindow')
         #self.win1 = self.getWidget('ArticlesMainwindow')
-        self.win1.maximize()
+        #self.win1.maximize()
         self.setStatusBar('vb_main')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
         self.ModulNumber = self.MN['Articles']        
@@ -239,7 +239,17 @@ class articleswindow(chooseWindows):
         self.tabWebshop = 4
         self.tabStock = 5
         
+        self.textbufferNotes,  self.viewNotes = self.getNotesEditor()
+        
+        
+        
+        Scrolledwindow = self.getWidget('scArticleNotes')
+        Scrolledwindow.add(self.viewNotes)
+        self.viewNotes.show_all()
+        Scrolledwindow.show_all()
 
+        # set the widget
+        self.singleArticle.NotesArticles = self.textbufferNotes
         # start
         
         self.tabChanged()

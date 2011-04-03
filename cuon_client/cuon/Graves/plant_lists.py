@@ -107,16 +107,36 @@ class plantlists(cuonlists):
         liReturn = []
         nRow = 0
         iOrderSort = 0
+        gyID = -1
+        
+        
         sGyID = self.getActiveText(self.getWidget('cbGraveyard'))
         try:
-            gyID = sGyID[sGyID.find('###')+ 3:].strip()
+            gyID = int(sGyID[sGyID.find('###')+ 3:].strip()) 
         except:
-            gyID = 0
+            gyID = -1
+            
         try:
             iOrderSort = self.getWidget('cbGraveSorting').get_active()
         except:
-            iOrderSort = 0
+            iOrderSort = -1
+         
+        iContract = 1
+        
+        if self.getWidget('rbContracts_current').get_active():
+            iContract = 1
+        elif self.getWidget('rbContracts_terminated').get_active():
+            iContract = 2
+        elif self.getWidget('rbContracts_all').get_active():
+            iContract = 3
             
+        iService = self.getWidget('cbService').get_active()
+       
+       
+        
+        iPlantation = self.getWidget('cbPlants').get_active()
+        
+        
         liReturn.append( gyID)
         liReturn.append( self.getWidget('eGraveFrom').get_text() )
         liReturn.append( self.getWidget('eGraveTo').get_text() )
@@ -126,6 +146,12 @@ class plantlists(cuonlists):
         liReturn.append( self.getWidget('eContractBeginTo').get_text() )
         liReturn.append( self.getWidget('eContractEndsFrom').get_text() )
         liReturn.append( self.getWidget('eContractEndsTo').get_text() )
+        liReturn.append(iContract)
+        liReturn.append(iService)
+        liReturn.append(iPlantation)
+        
+        print 'liReturn = ',  liReturn
+        
         sName = "grave_plant_list_standard.xml"
         return liReturn,  nRow,  sName,  iOrderSort
         

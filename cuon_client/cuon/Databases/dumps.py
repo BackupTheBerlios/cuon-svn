@@ -432,7 +432,11 @@ class dumps:
         dYear = dtDateTime.strftime("%Y")        #get the year
         
         return self.getDateTime(self.formatDate(dtDateTime,"%Y-12-31"))
-    
+        
+    def getLastOfHalfYear(self, dtDateTime):
+        dYear = dtDateTime.strftime("%Y")        #get the year
+        
+        return self.getDateTime(self.formatDate(dtDateTime,"%Y-06-30"))
     
     def getFirstDayOfMonth(self,sdate=None):
         if sdate == None:
@@ -462,7 +466,10 @@ class dumps:
     def getLastDayOfMonthAsSeconds(self,sdate=None):
         return self.getSeconds(self.getLastDayOfMonth(sdate))
         
-        
+    def getFirstDayOfYearAsSeconds(self,sdate=None):
+        return self.getSeconds(self.getFirstOfYear(sdate))
+    
+    
     def getFirstLastDayOfLastMonthAsSeconds(self,sdate=None):
         currentFirstDay = self.getFirstDayOfMonth(sdate)
         secs = self.getSeconds(currentFirstDay) - 10
@@ -474,6 +481,16 @@ class dumps:
         print dBegin,dEnd
         return dBegin,dEnd
         
+    def getFirstLastDayOfHalfYearAsSeconds(self, sdate=None):
+        currentFirstDay = self.getFirstDayOfMonth(sdate)
+        secs = self.getSeconds(currentFirstDay) - 10
+        print 'secs' , secs
+        ddate = datetime.datetime.fromtimestamp(secs)
+        
+        dBegin = self.getFirstDayOfMonthAsSeconds(ddate)
+        dEnd = self.getLastDayOfMonthAsSeconds(ddate)
+        print dBegin,dEnd
+        return dBegin,dEnd
         
     def startExternalPrg (self, sProgramName, *args):
         "Start an external program and return immediately, returning proc id"

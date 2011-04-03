@@ -41,7 +41,20 @@ class SingleArticle(SingleData):
         print len(self.table.Columns)
         #
         self.statusfields = ['number', 'designation']
+        self.NotesArticles = None
+           
+    def readNonWidgetEntries(self, dicValues):      
+        dicValues['articles_notes'] = [self.normalizeXML(self.NotesArticles.get_text(self.NotesArticles.get_start_iter(), self.NotesArticles.get_end_iter(), 1)) , 'text']
+        return dicValues
         
+        
+    def fillOtherEntries(self, oneRecord):
+        print 'oneRecord = ',  oneRecord
+        self.NotesArticles.set_text(self.normalizeXML(oneRecord['articles_notes'], False) )
+        
+        
+    def clearAllOtherFields(self):
+        self.NotesArticles.set_text('')
     def getArticle(self, id):
         dicRecords = self.load(id)
         liArticle = []

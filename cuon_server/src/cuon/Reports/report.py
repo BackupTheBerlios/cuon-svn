@@ -913,7 +913,7 @@ class report(MyXML):
         
         dicEntry = {}
         # set some defaults
-        dicEntry['Property'] = 0
+        dicEntry['Property'] = '0'
         
         dicEntry['eName']  =  self.getEntrySpecification(cyNode,'name').encode('ascii')
         try:
@@ -1051,6 +1051,18 @@ class report(MyXML):
                 eValue =  self.dicReportData[dicEntry['eName']]
             else:
                 eValue = ''
+        elif dicEntry['class'] == 'Python':
+            if dicEntry['formula']:
+        
+                try:
+                    #print 'Formula1 = ', formula
+                    exec formula
+                    #print 'Result of the formula = ', a
+                    eValue = a
+                except:
+                    eValue = None
+            else:
+                eValue = None
                 
         elif dicEntry['class'] == 'Function':
             if dicEntry['formula']:
@@ -1387,7 +1399,7 @@ class report(MyXML):
                                 c.drawRightString(x2,y1,sq)
                             elif dicField['fontjustification'] == 'center':
                                 c.drawCenteredString( (int(x1+x2)/2),y1,sq)
-                            elif dicField['fontjustification'] == 'text':
+                            elif dicField['fontjustification'] == 'blocktext':
                                 textobject = c.beginText()
                                 textobject.setTextOrigin(x1, y1)
                                 textobject.setFont(dicField['font'].encode('ascii'), dicField['fontsize'])
@@ -1609,8 +1621,8 @@ class report(MyXML):
                 
         else:
             doPrint = True 
-        print 'do Print = ',   printSite,  Suffix, doPrint
-        print dicRow
+        #print 'do Print = ',   printSite,  Suffix, doPrint
+        #print dicRow
         
         return doPrint
         

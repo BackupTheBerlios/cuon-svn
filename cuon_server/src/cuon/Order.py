@@ -681,7 +681,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql = ' select list_of_invoices.order_number as order_number,  list_of_invoices.invoice_number as invoice_number, '
         sSql += ' list_of_invoices.date_of_invoice as date_of_invoice, list_of_invoices.total_amount as total_amount, '
         sSql += ' list_of_invoices.maturity as maturity, '
-        sSql += 'address.lastname as lastname, address.city as city, address.id as addressid  '
+        sSql += 'address.lastname as lastname, address.city as city, address.id as addressid , address.zip as zip '
         sSql += ' from list_of_invoices, orderbook,address where  orderbook.id =  list_of_invoices.order_number and address.id = orderbook.addressnumber '
         sSql += " and list_of_invoices.date_of_invoice between '" + dBegin.strftime('%Y-%m-%d') + "' and '" + dEnd.strftime('%Y-%m-%d') +"' " 
         sSql += self.getWhere(None,dicUser,2,'list_of_invoices.')
