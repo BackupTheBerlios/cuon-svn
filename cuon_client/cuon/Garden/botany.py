@@ -48,7 +48,7 @@ class botanywindow(chooseWindows):
         self.loadGlade('botany.xml', 'BotanyMainwindow')
         #self.win1 = self.getWidget('BotanyMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        self.ModulNumber = 110500
+        self.ModulNumber =  self.MN['Botany']
         self.setStatusBar()
         self.sSearchTable = None
 

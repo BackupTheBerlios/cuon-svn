@@ -156,3 +156,48 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave
 
     
      ' LANGUAGE 'plpgsql'; 
+
+     
+     
+ 
+CREATE OR REPLACE FUNCTION fct_saveGraveServiceNote(iGraveID int, iGraveServiceID int,  sNote text ) returns int AS '
+ DECLARE
+  
+    iRecordID int ;
+    
+    BEGIN
+       select into iRecordID id from grave_service_notes where  grave_id = iGraveID and service_id = iGraveServiceID ;
+        if iRecordID is null then 
+            insert into grave_service_notes (id, grave_id, service_id, service_note) values (nextval(''grave_service_notes_id''),iGraveID,iGraveServiceID,sNote) ;
+            iRecordID = 0;
+        ELSE
+            update grave_service_notes set service_note = sNote where grave_id = iGraveID and service_id = iGraveServiceID ;
+        END IF ;
+        
+        return iRecordID ;
+        
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 
+   
+CREATE OR REPLACE FUNCTION fct_loadGraveServiceNote(iGraveID int, iGraveServiceID int ) returns text AS '
+ DECLARE
+  
+    sNote text ;
+    
+    BEGIN
+       select into sNote service_note from grave_service_notes where  grave_id = iGraveID and service_id = iGraveServiceID ;
+        if sNote is null then 
+            sNote = '' '' ;
+        
+        END IF ;
+        
+        return sNote;
+        
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 

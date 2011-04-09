@@ -19,7 +19,7 @@ class setup:
         self.CuonAdmin = None
         self.store = []
         self.liLocale = ['de','pt','pt_BR', 'nl', 'it', 'lv']
-        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" , "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids",  "SupportTicket"]
+        self.LocalDirs = [ "PrefsFinance" , "E_Mail" , "Calendar" ,  "Analysis" , "Login" , "Garden" , "Leasing" , "WebShop" , "Finances" , "XmlValues" , "Logging" , "Editor" , "Biblio" , "Graves" , "Order" , "Bank" , "TypeDefs" , "Proposal" , "AI" , "Web2" , "Stock" , "Preferences" ,"ReportBuilder",  "Staff" , "Windows" , "Misc" , "User" , "Project" , "Addresses" , "Stats" , "Clients" , "OpenOffice" , "Skeleton" , "DMS" , "locale" , "XMLRPC" , "XML" , "Think" , "starter" , "Articles" , "VTK" , "Help" , "Zip" , "Databases" , "Druids",  "SupportTicket"]
 
         self.xml = None
         self.xmlAutoconnect = False

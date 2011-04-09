@@ -17,16 +17,18 @@ import os
 from cuon.Databases.SingleData import SingleData
 import logging
 import threading
-import SingleGraveServiceNotes
 
-class SingleGraveHoliday(SingleData):
+
+
+
+class SingleGraveServiceNotes(SingleData):
 
     
     def __init__(self, allTables):
 
         SingleData.__init__(self)
         # tables.dbd and address
-        self.sNameOfTable =  "grave_work_holiday"
+        self.sNameOfTable =  "grave_service_notes"
         self.xmlTableDef = 0
         self.loadTable(allTables)
         # self.saveTable()
@@ -41,28 +43,30 @@ class SingleGraveHoliday(SingleData):
         #
         self.statusfields = ['lastname', 'city']
         self.graveID = 0
-      
-        self.singleGrave = None
-        self.graveServiceID = None
-        self.singleGraveNotes = SingleGraveServiceNotes.SingleGraveServiceNotes(allTables)
+        self.graveServiceID = 0
+     
+    def saveSpecial(self,  widget):
+       
+   
         
+        sText= self.readTextBuffer(widget) 
+        if not sText:
+            sText = " "
+        sSql = "select * from fct_saveGraveServiceNote(" + `self.graveID` + ",  " + `self.graveServiceID` + ",  '" +  sText+"' ) "
+        iRecord = self.rpc.callRP('Database.executeNormalQuery',  sSql, self.dicUser)
+
         
-    def readNonWidgetEntries(self, dicValues):
+        return iRecord
         
-        dicValues['grave_id'] = [self.graveID, 'int']
-        return dicValues
+    def loadSpecial(self,  widget):    
+        sSql = "select * from fct_loadGraveServiceNote(" + `self.graveID` + ",  " + `self.graveServiceID` + ") as snote "
+        liRecord = self.rpc.callRP('Database.executeNormalQuery',  sSql, self.dicUser)
+        if liRecord:
+            sText = liRecord[0]['snote']
+        else:
+            sText = ' '
         
-    def saveOtherDatatable(self, id):
-        text = self.readTextBuffer(self.getWidget('tvGrave'))
-        self.singleGrave.save()
-        self.singleGraveNotes.graveID = self.graveID
-        self.singleGraveNotes.graveServiceID = self.graveServiceID 
-        self.singleGraveNotes.saveSpecial(self.getWidget('tvDescriptionHolidays'))
-        
-    def loadOtherDatatable(self, id):
-        self.singleGraveNotes.graveID = self.graveID
-        self.singleGraveNotes.graveServiceID = self.graveServiceID 
-        self.singleGraveNotes.loadSpecial(self.getWidget('tvDescriptionHolidays'))
-    
-    
+        print 'sText = ',  liRecord,  sText
+        self.setTextbuffer(widget, [sText])
+
         

@@ -239,10 +239,18 @@
                     <child>
                       <object class="GtkMenuItem" id="edit_reports2">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Edit Reports</property>
+                        <property name="label" translatable="yes">Edit Reports TXT</property>
                         <property name="use_underline">True</property>
                         <accelerator key="e" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_edit_reports2_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="ReportsGUI">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Edit Reports GUI</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_reports_gui_activate"/>
                       </object>
                     </child>
                   </object>
@@ -828,7 +836,7 @@
   </object>
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name item text -->
+      <!-- column-name item -->
       <column type="gchararray"/>
     </columns>
   </object>

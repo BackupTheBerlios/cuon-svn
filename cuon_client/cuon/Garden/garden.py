@@ -40,7 +40,8 @@ class gardenwindow(chooseWindows):
         self.loadGlade('garden.xml')
         self.win1 = self.getWidget('GardenMainwindow')
         self.oDocumentTools = cuon.DMS.documentTools.documentTools()
-        self.ModulNumber = self.MN['Garden']        
+        self.ModulNumber = self.MN['Garden']      
+        print '--------------------------------------------------------- MN Garden ',  self.MN['Garden']  
         self.allTables = allTables
         self.singleArticle = SingleArticle.SingleArticle(allTables)
         self.singleArticlePurchase = SingleArticlePurchase.SingleArticlePurchase(allTables)

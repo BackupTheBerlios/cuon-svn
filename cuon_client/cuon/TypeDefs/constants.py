@@ -72,7 +72,26 @@ class constants:
         self.MN['Leasing'] = 30001
         
         self.MN['Grave'] = 40000
+        self.MN['GraveServiceNotesService'] = 40100
+        self.MN['GraveServiceNotesSpring'] = 40101
+        self.MN['GraveServiceNotesSummer'] = 40102
+        self.MN['GraveServiceNotesAutumn'] = 40103
+        self.MN['GraveServiceNotesWinter'] = 40104
+        self.MN['GraveServiceNotesAnnual'] = 40105
+        self.MN['GraveServiceNotesUnique'] = 40106
+        self.MN['GraveServiceNotesHolliday'] = 40107
+        
         self.MN['Graveyard'] = 41000
+        self.MN['Garden'] = 42000
+        
+        self.MN['Hibernation'] = 110000  
+        self.MN['HibernationPlantNumber'] = 110100
+         
+         
+        self.MN['Botany'] = 110500
+        
+          
+        
         
         self.MimeType = {}
         

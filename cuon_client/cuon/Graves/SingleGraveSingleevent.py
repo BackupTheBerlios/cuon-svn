@@ -17,6 +17,7 @@ import os
 from cuon.Databases.SingleData import SingleData
 import logging
 import threading
+import SingleGraveServiceNotes
 
 class SingleGraveSingleevent(SingleData):
 
@@ -41,6 +42,10 @@ class SingleGraveSingleevent(SingleData):
         self.statusfields = ['lastname', 'city']
         self.graveID = 0
  
+          
+        self.singleGrave = None
+        self.graveServiceID = None
+        self.singleGraveNotes = SingleGraveServiceNotes.SingleGraveServiceNotes(allTables)
         
     def readNonWidgetEntries(self, dicValues):
         
@@ -48,12 +53,15 @@ class SingleGraveSingleevent(SingleData):
         return dicValues
         
     def saveOtherDatatable(self, id):
-        text = self.readTextBuffer(self.getWidget('tvDescriptionUnique'))
+        text = self.readTextBuffer(self.getWidget('tvGrave'))
         self.singleGrave.save()
+        self.singleGraveNotes.graveID = self.graveID
+        self.singleGraveNotes.graveServiceID = self.graveServiceID 
+        self.singleGraveNotes.saveSpecial(self.getWidget('tvDescriptionUnique'))
         
     def loadOtherDatatable(self, id):
-        pass
-        
-        
+        self.singleGraveNotes.graveID = self.graveID
+        self.singleGraveNotes.graveServiceID = self.graveServiceID 
+        self.singleGraveNotes.loadSpecial(self.getWidget('tvDescriptionUnique'))
     
         

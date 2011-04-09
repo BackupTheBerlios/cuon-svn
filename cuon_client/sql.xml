@@ -1577,6 +1577,33 @@
       
     </trigger>
     
+    <trigger>
+      <nameOfTrigger>trg_insertgrave_service_notes</nameOfTrigger>
+      <table>grave_service_notes</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert() ;  </textOfTrigger>
+      <description>insert grave_service_notes </description>
+      
+    </trigger>
+ <trigger>
+      <nameOfTrigger>trg_deletegrave_service_notes</nameOfTrigger>
+      <table>grave_service_notes</table>
+      <action>before delete</action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_delete() ;  </textOfTrigger>
+      <description>if delete a grave_service_notes, set status to delete  </description>
+      
+    </trigger>
+   <trigger>
+      <nameOfTrigger>trg_updategrave_service_notes</nameOfTrigger>
+      <table>grave_service_notes</table>
+      <action>before update </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_update() ;  </textOfTrigger>
+      <description>update grave_service_notes </description>
+      
+    </trigger>
   </postgre_sql>
   
 </sql>

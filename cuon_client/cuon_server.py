@@ -315,7 +315,7 @@ import cPickle
 import ConfigParser
 import cuon.XMLRPC.xmlrpc
 import cuon.Editor.editor
-
+import cuon.ReportBuilder.reportbuilder
 class MainWindow(windows):
 
     
@@ -332,7 +332,7 @@ class MainWindow(windows):
         self.rpc.td = self.td
         self.DialogWindow = None
         self.dicUser = None
-       
+        self.editReport = 'TEXT'
             
     def on_end1_activate(self,event):
         print "exit cuon"
@@ -355,27 +355,7 @@ class MainWindow(windows):
         daba = cuon.Databases.databases.databaseswindow(True)
     
 
-    
-    def startSSHEdit(self, infile, sType = 'text/x-text' ):
-        self.openDB()
-        td = self.loadObject('td')
-        self.closeDB()
-        
-        #os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
-        #ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
-        dicFilename = {'TYPE':'SSH', 'USER':td.sPrefix[0:td.sPrefix.find('@')]}
-        dicFilename['HOST'] = td.sPrefix[td.sPrefix.find('@')+ 1:td.sPrefix.find(':/')]
-        dicFilename['PORT'] = td.sshPort 
-        dicFilename['NAME'] = infile 
-        
-        print 'dicFilename = ', dicFilename
-        
-            
-        ed = cuon.Editor.editor.editorwindow(dicFilename, True)
-        try:
-            ed.setLanguage(sType)
-        except Exception, params:
-            print Exception, params
+   
             
     #edit local config-files
     def on_versioncfg1_activate(self, event):
@@ -409,7 +389,16 @@ class MainWindow(windows):
     def on_sqlini1_activate(self, event):
         self.startSSHEdit('etc/cuon/sql.ini', 'text/x-ini-file')
         
+     
+    def on_edit_reports2_activate(self, event):
+        self.editReport = 'TEXT'
+        self.showReportDialog()
         
+    def on_reports_gui_activate(self, event):
+        self.editReport = 'GUI'
+        self.showReportDialog()
+        
+                                                                 
     #Buttons in notebook
     
     # /etc
@@ -470,18 +459,7 @@ class MainWindow(windows):
 ##        print s
 ##        os.system(s)
 ##        
-        
-    def  editReportFile(self, sName, sFolder):
-        
-        self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName, 'application/xml' ) 
-        
-    def readDDialogData(self):
-        sFolder = self.getWidget('eDFolder').get_text()
-        sList = self.getWidget('cbDLists').get_active_text()
-        return sFolder, sList
-        
-    
-    def on_edit_reports2_activate(self, event):
+    def showReportDialog(self):
         self.DialogWindow.show()
         liLists = self.rpc.callRP('Database.getComboReportLists',{'Name':'zope','client':-7}, '*.xml')
         print liLists
@@ -495,7 +473,44 @@ class MainWindow(windows):
             cbDLists.set_model(liststore)
             cbDLists.set_text_column(0)
             cbDLists.show()
+            
+            
+    def startSSHEdit(self, infile, sType = 'text/x-text' ):
+        self.openDB()
+        td = self.loadObject('td')
+        self.closeDB()
         
+        #os.system('scp -P ' + td.sshPort + ' ' + td.sPrefix + '/etc/cuon/user.cfg inifiles')
+        #ed = cuon.Editor.editor.editorwindow('inifiles/user.cfg', True)
+        dicFilename = {'TYPE':'SSH', 'USER':td.sPrefix[0:td.sPrefix.find('@')]}
+        dicFilename['HOST'] = td.sPrefix[td.sPrefix.find('@')+ 1:td.sPrefix.find(':/')]
+        dicFilename['PORT'] = td.sshPort 
+        dicFilename['NAME'] = infile 
+        
+        print 'dicFilename = ', dicFilename
+        
+                 
+        
+        if self.editReport == 'GUI':
+             rb = cuon.ReportBuilder.reportbuilder.reportbuilderwindow(dicFilename = dicFilename)
+        else:   
+            ed = cuon.Editor.editor.editorwindow(dicFilename, True)
+            try:
+                ed.setLanguage(sType)
+            except Exception, params:
+                print Exception, params
+             
+         
+    def  editReportFile(self, sName, sFolder):
+        
+        self.startSSHEdit('/usr/share/cuon/cuon_server/src/cuon/Reports/' +sFolder +'/' +sName, 'application/xml' ) 
+        
+    def readDDialogData(self):
+        sFolder = self.getWidget('eDFolder').get_text()
+        sList = self.getWidget('cbDLists').get_active_text()
+        return sFolder, sList
+        
+    
     
     def on_bDSystem_clicked(self, event):
         sFolder, sList = self.readDDialogData()

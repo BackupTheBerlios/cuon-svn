@@ -81,6 +81,7 @@ class SingleGrave(SingleData):
         
     def fillOtherEntries(self, oneRecord):
         
+        
         if  (oneRecord['pricegroup1'] == 'NONE' ):
             self.getWidget('rbPricegroupNone').set_active(True)
             

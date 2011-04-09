@@ -704,7 +704,7 @@ class report(MyXML):
                            # print dicRow['text']
                             #print '=============================================================================='
                             sq = None
-                            if dicRow['fontjustification'].upper() == 'TEXT':
+                            if dicRow.has_key('fontjustification') and dicRow['fontjustification'].upper() == 'TEXT':
                                 
                                # print 'dicRow at TEXT = ',  dicRow
                                 
@@ -777,14 +777,15 @@ class report(MyXML):
                                     #print 'liRecord 4 = ',   len(liRecord),  liRecord[len(liRecord)-3]['text']
                                     self.lineOffset +=  dicRow['fontsize'] + fontoffset
                                         #print "sq = ",  sq 
-                                    print 'dicRow before end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
+                                    #print 'dicRow before end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
                                     if self.testEndOfPage(dicRow ,self.dicPage['reportDetailsY'] , self.lineOffset ):
-                                        
+                                        dicRow['y1'] -= 12
+                                        dicRow['y2'] -= 12
                                         liRecord = self.doEndOfPage(liRecord,  dicRow, c, cyRootNode)
                                         self.dicPage['beginPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] 
                                         self.dicPage['endPageDetailsY'] =  self.dicPage['endPageHeaderOtherSitesY'] 
                                         self.lineOffset = 30
-                                        print 'dicRow after end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
+                                       # print 'dicRow after end = ',  dicRow['y1'] ,  dicRow['y2'] ,  self.lineOffset,  z1
                                   
                                     
                                 sq = None
@@ -1053,7 +1054,7 @@ class report(MyXML):
                 eValue = ''
         elif dicEntry['class'] == 'Python':
             if dicEntry['formula']:
-        
+                formula = dicEntry['formula']
                 try:
                     #print 'Formula1 = ', formula
                     exec formula

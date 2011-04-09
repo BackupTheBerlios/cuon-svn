@@ -18,6 +18,7 @@ import datetime
 from cuon.Databases.SingleData import SingleData
 import logging
 import threading
+import SingleGraveServiceNotes
 
 class SingleGraveYear(SingleData):
 
@@ -41,7 +42,11 @@ class SingleGraveYear(SingleData):
         #
         self.statusfields = ['lastname', 'city']
         self.graveID = 0
-    
+      
+        self.singleGrave = None
+        self.graveServiceID = None
+        self.singleGraveNotes = SingleGraveServiceNotes.SingleGraveServiceNotes(allTables)
+        
         
     def readNonWidgetEntries(self, dicValues):
         
@@ -62,11 +67,15 @@ class SingleGraveYear(SingleData):
 #        year_date = oneRecord['year_date']
 #        
     def saveOtherDatatable(self, id):
-        text = self.readTextBuffer(self.getWidget('tvDescriptionAnnual'))
+        text = self.readTextBuffer(self.getWidget('tvGrave'))
         self.singleGrave.save()
+        self.singleGraveNotes.graveID = self.graveID
+        self.singleGraveNotes.graveServiceID = self.graveServiceID 
+        self.singleGraveNotes.saveSpecial(self.getWidget('tvDescriptionAnnual'))
         
     def loadOtherDatatable(self, id):
-        pass
+        self.singleGraveNotes.graveID = self.graveID
+        self.singleGraveNotes.graveServiceID = self.graveServiceID 
+        self.singleGraveNotes.loadSpecial(self.getWidget('tvDescriptionAnnual'))
         
-            
         

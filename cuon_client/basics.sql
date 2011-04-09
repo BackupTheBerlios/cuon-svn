@@ -293,5 +293,95 @@ CREATE OR REPLACE FUNCTION fct_to_date( sDate text) returns date AS '
     END;
      
      ' LANGUAGE 'plpgsql'; 
+     
+     
+CREATE OR REPLACE FUNCTION fct_getFirstDayOfMonth(dDate date) returns int AS '
+    
+    DECLARE
+      iMonth int ;
 
+    BEGIN
+        iMonth := extract(month from dDate)   ;
+        return iMonth ;
+    END; 
+        ' LANGUAGE 'plpgsql'; 
+    
+CREATE OR REPLACE FUNCTION fct_getFirstDayOfMonth(iMonth int, iYear int) returns date AS '
+    
+    DECLARE
+        firstDay date ;
+      
+    BEGIN
+        firstDay := date(''01-'' || iMonth || ''-'' || iYear ) ;
+        RETURN firstDay ; 
+    END; 
+        ' LANGUAGE 'plpgsql'; 
+    
+    
+    
+
+CREATE OR REPLACE FUNCTION fct_getFirstDayOfMonth(dDate date) returns date AS '
+    
+    DECLARE
+        ret_val date ;
+        firstDay date ;
+        sDay date ;
+        sSql text ;
+    BEGIN
+        sDay := '' 01-'' || extract(month from dDate) ||''-'' || extract(year from dDate)  ;
+        sSql := ''SELECT date( '' || quote_literal(sDay) ||  '') '' ; 
+        execute sSql into ret_val ;
+        RETURN ret_val; 
+   
+    END;
+     
+     ' LANGUAGE 'plpgsql'; 
+CREATE OR REPLACE FUNCTION fct_getLastDayOfMonth(dDate date) returns date AS '
+    
+    DECLARE
+        ret_val date ;
+        firstDay date ;
+        
+    BEGIN
+        
+        SELECT date(substr(text(dDate + interval ''1 month''),1,7)||''-01'')-1 into ret_val; 
+        
+        RETURN ret_val; 
+   
+    END;
+     
+     ' LANGUAGE 'plpgsql'; 
+
+CREATE OR REPLACE FUNCTION fct_getLastDayOfMonth(iMonth int, iYear int) returns date AS '
+    
+    DECLARE
+        ret_val date ;
+        firstDay date ;
+        
+    BEGIN
+        firstDay := date(''01-'' || iMonth || ''-'' || iYear ) ;
+        SELECT date(substr(text(firstDay + interval ''1 month''),1,7)||''-01'')-1 into ret_val; 
+        
+        RETURN ret_val; 
+   
+    END;
+     
+     ' LANGUAGE 'plpgsql'; 
+     
+     
+CREATE OR REPLACE  FUNCTION fct_add_months(date, integer) RETURNS DATE AS ' 
+    DECLARE 
+       base_date ALIAS FOR $1 ; 
+       add_days ALIAS FOR $2 ; 
+       ret_val DATE ; 
+       sSql text ;
+       
+    BEGIN 
+        sSql := ''SELECT date(date('' || quote_literal(base_date) || '') + interval  '' || quote_literal(add_days || '' month'' ) || '') '' ;
+        execute sSql into ret_val ;
+       return ret_val; 
+    END; 
+
+    ' LANGUAGE 'plpgsql';
+    
     

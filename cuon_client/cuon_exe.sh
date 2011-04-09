@@ -10,7 +10,7 @@ Typ=LINUX-Standard
 echo $1 $2 $3 $4
 if [ $1 ] ; then
     case $1 in
-        qemu) Server=http://192.168.17.2:4080
+        qemu) Server=http://192.168.17.12:4080
         ;;
         bgu) Server=http://slox.homelinux.net:7080
         ;;
@@ -22,20 +22,20 @@ if [ $1 ] ; then
         ;;
         dietzel) Server=http://dietzel-normteile.dyndns.org:7080
         ;;
-        maemo) Server=http://192.168.17.2:7080 
+        maemo) Server=http://192.168.17.12:7080 
         Typ=Maemo
         ;;
-        alternate1) Server=http://192.168.17.2:7080 
+        alternate1) Server=http://192.168.17.12:7080 
                 Typ=alternate1
         ;;
-        alternate4) Server=http://192.168.17.2:7080 
+        alternate4) Server=http://192.168.17.12:7080 
                 Typ=alternate4
         ;;
 		
-		p0) Server=https://192.168.17.2:7580
+		p0) Server=https://192.168.17.12:7580
                 ;;
 
-        p1) Server=http://192.168.17.2:7100
+        p1) Server=http://192.168.17.12:7100
                 ;;
 
         *)
@@ -46,7 +46,7 @@ if [ $1 ] ; then
     
 
 else
-    Server=https://192.168.17.2:7580 ;
+    Server=https://192.168.17.12:7580 ;
 fi
 
 echo " Server = $Server"
