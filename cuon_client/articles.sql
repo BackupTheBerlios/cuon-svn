@@ -176,7 +176,7 @@ CREATE OR REPLACE FUNCTION  fct_duplicateArticle( iArticleID integer) returns  i
          
         select into rData * from articles where articles.id = iArticleID ;
         
-        insert into articles (id , client_id, sep_info_1 , sep_info_2 , sep_info_3 , number , designation  , wrapping , quantumperwrap , unit , manufactor_id , weight , sellingprice1 , sellingprice2 , sellingprice3 , sellingprice4 , tax_vat , material_group , associated_with , associated_id , tax_vat_id ) values (newID ,  fct_getUserDataClient(  ),  rData.sep_info_1 , rData.sep_info_2 , rData.sep_info_3 , ''NEW-'' || rData.number , rData.designation  , rData.wrapping , rData.quantumperwrap , rData.unit , rData.manufactor_id , rData.weight , rData.sellingprice1 ,  rData.sellingprice2 ,  rData.sellingprice3 ,  rData.sellingprice4 , rData. tax_vat ,  rData.material_group ,  rData.associated_with , rData.associated_id ,  rData.tax_vat_id );
+        insert into articles (id , client, sep_info_1 , sep_info_2 , sep_info_3 , number , designation  , wrapping , quantumperwrap , unit , manufactor_id , weight , sellingprice1 , sellingprice2 , sellingprice3 , sellingprice4 , tax_vat , material_group , associated_with , associated_id , tax_vat_id ) values (newID ,  rData.client,  rData.sep_info_1 , rData.sep_info_2 , rData.sep_info_3 , ''NEW-'' || rData.number , rData.designation  , rData.wrapping , rData.quantumperwrap , rData.unit , rData.manufactor_id , rData.weight , rData.sellingprice1 ,  rData.sellingprice2 ,  rData.sellingprice3 ,  rData.sellingprice4 , rData. tax_vat ,  rData.material_group ,  rData.associated_with , rData.associated_id ,  rData.tax_vat_id );
         
         
         return newID ;

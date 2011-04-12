@@ -57,12 +57,13 @@ class SingleOrder(SingleData):
         return self.proposalNumber
 
 
-    # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     def getSupplyNumber(self):
-        self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
-        print 'Invoice-Number' + `self.invoiceNumber`
-        return self.invoiceNumber
-        
+        self.supplyNumber =  self.rpc.callRP('Order.getDeliveryNumber', self.ID, self.dicUser)
+        print 'Supply-Number' + `self.supplyNumber`
+        return self.supplyNumber
+       
+    # TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     def getPickupNumber(self):
         self.invoiceNumber =  self.rpc.callRP('Order.getInvoiceNumber', self.ID, self.dicUser)
         print 'Invoice-Number' + `self.invoiceNumber`
@@ -90,12 +91,12 @@ class SingleOrder(SingleData):
             print Exception, params    
         
         try:
-            sGetNumber,  sSupplyNumber = self.rpc.callRP('Order.getSupply_GetNumber', self.ID, self.dicUser)
-            print 'get/supply = ',  sGetNumber,  sSupplyNumber
-            self.getWidget('eSupplyNumber').set_text(sSupplyNumber)
-            self.getWidget('eGetsNumber').set_text(sGetNumber)
-        except:
-            pass
+            iGetNumber,  iSupplyNumber = self.rpc.callRP('Order.getSupply_GetNumber', self.ID, self.dicUser)
+            print 'get/supply = ',  iGetNumber,  iSupplyNumber
+            self.getWidget('eSupplyNumber').set_text(`iSupplyNumber`)
+            self.getWidget('eGetsNumber').set_text(`iGetNumber`)
+        except Exception,  params:
+            print Exception,  params
             
     def setOtherEmptyEntries(self):
         self.getWidget('eInvoiceNumber').set_text('')

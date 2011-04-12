@@ -792,7 +792,7 @@ class databaseswindow(windows):
             print Exception, param
             
        
-        for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql', 'articles.sql']:
+        for configfile in  ['basics.sql', 'order.sql', 'address.sql', 'garden.sql', 'graves.sql', 'articles.sql', 'it.sql']:
             print 'configfile = ',  configfile
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             f = open('inifiles/' + configfile, 'r')
@@ -802,7 +802,10 @@ class databaseswindow(windows):
             print 'DatabaseValues = ',  SQL_DB, SQL_HOST, SQL_PORT, SQL_USER
             
             ok = self.rpc.callRP('Database.createPsql',  SQL_DB, SQL_HOST, SQL_PORT, SQL_USER, sSql)
-            
+        sSql = "select * from fct_create_AllIndex()"
+        ok = self.rpc.callRP('Database.executeNormalQuery',sSql,  self.dicUser)  
+        sSql = "select * from fct_create_AllTrigger()"
+        ok = self.rpc.callRP('Database.executeNormalQuery',sSql,  self.dicUser)   
         for configfile in ['sql.xml']:
             os.system('scp -P ' + self.td.sshPort + ' ' + self.td.sPrefix + '/etc/cuon/sql/'+configfile + ' inifiles')
             doc = self.readDocument('inifiles/'+configfile)

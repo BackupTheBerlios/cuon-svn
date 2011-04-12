@@ -278,8 +278,8 @@ CREATE OR REPLACE FUNCTION fct_duplicateOrder( iOrderID integer, OrderType integ
 DROP function fct_getUnreckonedOrder() ;
 DROP function fct_getUnreckonedOrder(integer) ;
 CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder(OrderID integer) returns bool AS '
- DECLARE
-     iClient int ;
+        DECLARE
+        iClient int ;
     sSql text := '''';
     t1  text := ''  -1 '' ;
     r record ;
@@ -304,30 +304,32 @@ CREATE OR REPLACE FUNCTION fct_getUnreckonedOrder(OrderID integer) returns bool 
 
     
      ' LANGUAGE 'plpgsql'; 
+
      
-CREATE OR REPLACE FUNCTION fct_getGet_number(OrderID integer) returns  text AS '
+drop function fct_getGet_number(int) ;
+CREATE OR REPLACE FUNCTION fct_getGet_number(OrderID integer) returns  int AS '
  DECLARE
-    sData text ;
+    iData int ;
     sSql text ;
     r2 record ;
     
     BEGIN
-       sData := ''0'' ;
+       iData := 0 ;
        sSql := ''select number as get_number from orderget where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
        
        FOR r2 in execute(sSql)  LOOP
             
             if r2.get_number is not null then 
-                sData := r2.get_number ;
+                iData := r2.get_number ;
             else
-                sData := ''0'' ;
+                iData := 0 ;
             END IF ;
             
              
         END LOOP ;
      
             
-     return sData ; 
+     return iData ; 
        
     END ;
     
@@ -335,32 +337,32 @@ CREATE OR REPLACE FUNCTION fct_getGet_number(OrderID integer) returns  text AS '
     
      ' LANGUAGE 'plpgsql'; 
      
-
-CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  text AS '
+drop function fct_getSupply_number(int) ;
+CREATE OR REPLACE FUNCTION fct_getSupply_number(OrderID integer) returns  int AS '
  DECLARE
-    sData text ;
+    iData int ;
     sSql text ;
     r2 record ;
     
     BEGIN
-       sData := ''0'' ;
+       iData := 0 ;
        
        
-       sSql := ''select number as supply_number from ordersupply where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
-       
+       sSql := ''select delivery_number as supply_number from list_of_deliveries where order_number = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
+       raise notice '' SQL at fct_getSupply_number = % '', sSql ;
        FOR r2 in execute(sSql)  LOOP
            
             if r2.supply_number is not null then 
-                sData := r2.supply_number ;
+                iData := r2.supply_number ;
             else
-                sData := ''0'' ;
+                iData := 0 ;
             END IF ;
-            
+            raise notice ''iData = %'',iData ;
              
         END LOOP ;
      
             
-     return sData ; 
+     return iData ; 
        
     END ;
     
