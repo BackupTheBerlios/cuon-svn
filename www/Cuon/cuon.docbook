@@ -263,6 +263,11 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <sect3 id="opt_txlb"><title>loadbalancing</title>
 <para>txloadbalancer</para>
 <para>twisted-conch</para>
+<para>python-setuptools</para>
+
+<para>Vor dem ersten benutzen muß im Verzeichnis /var/cuon/LoadBalancer folgendes ausgeführt werden.</para>
+<para>python setup.py install</para>
+
 <para>Der Zugangsport für Cuon ist dann von 7080 auf 7000 zu setzen, bzw. für HTTPS von 7580 auf 7500 .</para>
 </sect3>
 </sect2>

@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Konfiguration </TITLE
+>Der C.U.O.N. Client </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="C.U.O.N. Installation"
-HREF="c31.html"><LINK
+TITLE="C.U.O.N. Installation und Wartung"
+HREF="c47.html"><LINK
 REL="PREVIOUS"
-TITLE="Partielle Updates"
-HREF="x164.html"><LINK
+TITLE="Haupt Installation  "
+HREF="x128.html"><LINK
 REL="NEXT"
-TITLE="Erste Schritte"
-HREF="c196.html"></HEAD
+TITLE="Für Fortgeschrittene"
+HREF="x174.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x164.html"
+HREF="x128.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 1. C.U.O.N. Installation</TD
+>Chapter 1. C.U.O.N. Installation und Wartung</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c196.html"
+HREF="x174.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,371 +73,19 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="ks1"
->1.8. Konfiguration</A
+NAME="t9_u1"
+>1.7. Der C.U.O.N. Client</A
 ></H1
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="ks2"
->1.8.1. Konfigurationsdateien auf dem Server</A
+NAME="t9"
+>1.7.1. Client starten</A
 ></H2
 ><P
->Die Konfigurationsdateien liegen bei normaler Installation im Verzeichnis /etc/cuon </P
-><P
->Für alle Konfigurationsdateien gilt:</P
-><P
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Klein- und Großschrift wird nicht unterschieden!!</I
-></SPAN
-></P
-><P
->Kursive Bemerkungen bitte NICHT in die Konfigurdationsdatei übernehmen[[BR]] Zum Editieren umbedingt das setup Programm verwenden. Damit wird Sichergestellt, dass die Dateien in utf-8 Kodierung geschrieben werden!
-</P
-><P
->Nach dem Ändern von Usereinstellung immer "Edit-Configfiles-&#62;Server-&#62;SQL-Rights--&#62;Create Grantfiles" ausführen und danach die "Grants" neu einspielen <A
-HREF="x164.html#PartielleUpdatesUser"
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->siehe User Updates</I
-></SPAN
-></A
->
-</P
-><DIV
-CLASS="example"
-><A
-NAME="server_ini"
-></A
-><P
-><B
->Example 1-5. server.ini </B
-></P
-><PRE
-CLASS="programlisting"
->&#13;
-[AI]
-AI_HOST: cuon.org
-AI_PORT: 7082
-
-Der Ai-Server wird f&#38;uuml;r schnelle Erweiterungen (z.B. abgespeckte Funktionen etc.) genutzt. Momentaner Stand: Unfertiges Modul, dass noch nicht in Produktionseinsatz ist. Man erreicht eine Testoberfl&#38;auml;che f&#38;uuml;r den AI-Server &#38;uuml;ber die Men&#38;uuml;punkte: Sonstiges-&#62;Expertensystem.
-
-Bitte die hier gezeigten Standardwerte &#38;uuml;bernehmen. Ein eigener AI Server ist momentan noch nicht schnell und sauber zu installieren'''
-
-[POSTGRES]
-POSTGRES_DB: cuon
-POSTGRES_HOST: localhost
-POSTGRES_PORT: 5432
-POSTGRES_USER: cuon_admin
-
-
-[PDF]
-ENCODING: latin-1
-
-Die Postgresql Daten enthalten die Einstellungen zu der Datenbank. Im Normalfall k&#38;ouml;nnen diese Werte hier auch unver&#38;auml;ndert &#38;uuml;bernommen werden.
-
-
-[EMAIL]
-DEFAULTSERVER: oneInTheWorld
-DEFAULTPORT: 25
-DEFAULTUSER: set_username
-DEFAULTPASSWORD: set_secret
-EMAILENCODING: utf-8
-CRYPT: TLS
-
-Die Emaileinstellungen dienen zum als Standardwerte zum Versenden von Emails. Username und Passwort sind f&#38;uuml;r solche Server gedacht, die SMTP Authentifizierung erlauben. Crypt steht dabei dann f&#38;uuml;r das Versenden &#38;uuml;ber das verschl&#38;uuml;sselte TLS Protokoll.
-
-Der Port kann im Normalfall unver&#38;auml;ndert gelassen werden.
-
-Jabber Server zur Kommunikation mit der AI
-[JABBER]
-SERVER:cuonsim2.de
-USERNAME:cuon_test
-PASSWORD:secret
-
-Diese Einstellungen definieren eine Schnittstelle, um diesen user, im beispiel oben cuon_test, eine Nachricht zu schicken. diese Nachricht wird zu der AI weitergeleitet und entsprechend ausgewertet. Dann erfolgt von der AI die Anwort
-
-Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer &#38;uuml;bertragen wird, das hilft mir bei der Entscheidung &#38;uuml;ber die Entwicklung von mandantenbezogenen Modulen.
-
-[VERSION]
-SEND_VERSION_INFO = YES
-
-
-</PRE
-></DIV
-><DIV
-CLASS="example"
-><A
-NAME="user_cfg"
-></A
-><P
-><B
->Example 1-6. user.cfg </B
-></P
-><PRE
-CLASS="programlisting"
->&#13;
-
-[password]
-
-set_username: set_password
-
-jeweils bei set_username und set_password die entsprechenden Werte einsetzen.
-
-Wichtig: Nach jeder &#38;Auml;nderungen der user.cfg muss das Installationsprogramm laufen und die Datenbankrechte neu schreiben (Databasetools-&#62;Grants).
-
-Siehe auch die Seite Anlegen und Pflegen:"User pflegen und anlegen".
-
-F&#38;uuml;r die Rechtevergabe im DMS k&#38;ouml;nnen hier Gruppenrechte vergeben werden. Die Gruppen selber werden in der sql.ini definiert
-[GROUPS]
-jhamel: buero,rechnung
-
-
-
-F&#38;uuml;r die Auswertungen werden in der Sektion STATS folgende Daten ben&#38;ouml;tigt.
-[STATS]
-CALLER_ID: 1,2,3,5,8
-
-
-</PRE
-></DIV
-><DIV
-CLASS="example"
-><A
-NAME="menus_cfg"
-></A
-><P
-><B
->Example 1-7. menus.cfg </B
-></P
-><PRE
-CLASS="programlisting"
->&#13;
-
-[gewoehnlicherAllUser]
-all: Priv;all  
-experimental: Priv;all 
-
-[AdminUser] 
-all: Priv;all 
-experimental: Priv;all 
-staff: Priv;all 
-extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
-forms: Priv;all 
-forms_addresses: Priv;all
-
-# Dies ist nur f&#38;uuml;r G&#38;auml;rtnereien interessant
-address_button_grave: Yes
-address_button_grave_position: 14
-
-
-
-F&#38;uuml;r jeden User muss ein Eintrag existieren. Der Eintrag f&#38;uuml;r die Adminuser ist etwas komplexer. Eine genaue Erkl&#38;auml;rung erfolgt hier, wenn das Modul noch weiter fortgeschritten ist. F&#38;uuml;r den Anfang k&#38;ouml;nnen diese Werte &#38;uuml;bernommen werden.
-clients.ini 
-Berechtigungen f&#38;uuml;r die Mandanten 
-
-[set_username]
-clientsRightCreate: Yes
-clientsIDs: 1,2,3,4,5,6
-
-Hier werden die Berechtigungen der verschiedenen Benutzer auf die verschiedenen Mmandanten verteilt. Jede client-ID bedeutet einen Mandanten. Beispiel:
-
-[admin]
-clientsRightCreate: Yes
-clientsIDs: 1,2,3,4,5,6
-[jhamel]
-clientsRightCreate: No
-clientsIDs: 1
-
-Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 und darf KEINE neuen Mandanten anlegen.
-Der Abschnitt CLIENT_ 
-
-Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen.
-
-CLIENT_xxx ist die Mandanten ID
-
-[CLIENT_1]
-Einstellungen f&#38;uuml;r den automatischen Mailversand 
-Ver&#38;auml;nderungen in den Notizen 
-
-sendNotes0: YES
-Notes0_ID: 17
-AdditinalEmailAddressesNotes?0: jh@&#38;hellip;
-sendMailsNotes0: caller,rep,salesman
-
-sendNotes0: YES odeer NO zum Senden der Mails
-Notes0_ID: 17 ID des Dokuments aus dem DMS
-AdditinalEmailAddressesNotes?0: jh@&#38;hellip; zus&#38;auml;tzliche Empf&#38;auml;nger, mit , getrennt
-sendMailsNotes0: caller,rep,salesman interne Benachrichtigung f&#38;uuml;r Kontakter, Repr&#38;auml;sentanten und Beratern
-Default Zahlungsbedingung 
-
-modul_order_default_top:ID
-
-ID ist die id der default zahlungsbedingung
-
-Erinnerungen und Mahnungen im Rechnungswesen 
-
-Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abh&#38;auml;ngigkeit ist bei den Zahlungsbedingungen vermerkt. Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen w&#38;uuml;rde diese Rechnung bei u.g. Einstellungen nach 18 Tagen das erste mal auf der Liste erscheinen.
-
-reminder_all_days_after: 10
-reminder_first_days_after: 14
-reminder_second_days_after: 25
-reminder_last_days_after: 32
-reminder_summons_days_after: 40
-
-
-Liste nach Zahlungserinnerungen.
-
-list_of_invoices_directDebit: 3
-
-orderbook_number: !id,-,!year
-orderbook_designation: !lastname,_,!city,_,!id
-
-list_of_invoices_directDebit: 3
-
-articles_sort1_number: b
-articles_sort1_sellingprice: c
-articles_sort1_designation: a
-
-Auswahlboxen 
-Adressverwaltung 
-
-Hier sind die Eintr&#38;auml;ge f&#38;uuml;r die Auswahlboxen bei der Adressverwaltung, das Tab Verschiedenes.
-
-cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
-cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
-cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, &#38;uuml;ber 5 millionen
-cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
-
-Projektverwaltung 
-
-cbProjectStatus: neu angelegt,laufend,fertig
-
-Gr&#38;auml;ber 
-
-cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
-cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
-cbTypeOfPaying: j&#38;auml;hrlich,halbj&#38;auml;hrlich
-cbPercentsGrave: 100%,90%,80%,75%,50%,
-cbTypeOfPaying: j&#38;auml;hrlich,halbj&#38;auml;hrlich,quartal
-cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
-
-Statistik 
-
-SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
-
-StatsCallerCentury: 0
-StatsCallerDecade: 0
-StatsCallerYear: 1
-StatsCallerQuarter: 2
-StatsCallerMonth: 2
-StatsCallerWeek: 2
-
-
-</PRE
-></DIV
-><DIV
-CLASS="example"
-><A
-NAME="sql_ini"
-></A
-><P
-><B
->Example 1-8. sql.ini</B
-></P
-><PRE
-CLASS="programlisting"
->&#13;
-Hier bitte alle Gruppen durch Kommata getrennt eintragen
-[GROUPS]
-NAMES: buero,rechnung
-
-
-Hier die Vorgaberechte f&#38;uuml;r div. automatische Operationen eingeben. Dabei wird als ersten die Rechte eingetragen, nach dem Schema:
-rwxrwxrwx
-r = read, also lesen
-w = write, also schreiben
-x = eXecute, also ausf&#38;uuml;hren
-jeweils f&#38;uuml;r User, Gruppe, Alle
-ein Unterstrich bedeutet, kein Recht
-Danach, mit Kommata getrennt, die Gruppen, die eingetragen werden sollen.
-
-[DEFAULT_MODUL_RIGHTS_DMS] 
-INVOICE: rw_r__r__,rechnung 
-
-[LIMIT]
-Address: 30
-Garden: 217
-Project: 50
-Articles: 80
-Order: 50
-
-Her wird die Anzahl der Listeneintr&#38;auml;ge, die beim Modulstart angezeigt werden Modul eingetragen. Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseintr&#38;auml;ge
-
-Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Eintr&#38;auml;ge auf 500 stellen.
-
-Diese Eintr&#38;auml;ge gelten f&#38;uuml;r die Auftragsbearbeitung
-[modul_order]
-default_top: 1
-die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird
-
-Folgende Eintr&#38;auml;ge werden f&#38;uuml;r das &#38;Uuml;berwinterungsmodul (Gartenbaubetriebe) ben&#38;ouml;tigt:
-
-[modul_hibernation]
-replace_staff_pickup: 1
-replace_staff_supply: 2
-replace_plant_hibertion:3
-replace_plant_add_pot:4
-replace_plant_add_material:5
-replace_plant_add_earth:6
-replace_plant_add_misc:7
-
-Diese Einstellungen weisen den &#38;Uuml;berwinterungsdienstleistungen (&#38;Uuml;berwintern, Liefern, Umtopfarbeiten etc.) feste Artikel (die Nummer ist die Artikel-ID) zu. Anhand von diesen Artikel wird danach die Mehrwertsteuer, Brutto / Nettorpreis eingestellt.
-Die nachfolgende Eintr&#38;auml;ge sind der Text f&#38;uuml;r die Rechnungsstellung:
-
-translate_price_hibernation_for: Preis der &#38;Uuml;berwinterung f&#38;uuml;r
-translate_price_add_pot_for: Preis f&#38;uuml;r gr&#38;ouml;&#38;szlig;eren Topf
-translate_price_add_material_for: Preis f&#38;uuml;r zus. Material
-translate_price_add_earth_for: Preis f&#38;uuml;r zus. Erde
-translate_price_add_misc_for: Preis f&#38;uuml;r Sonstiges
-translate_price_staff_pickup_for: Abholkosten
-translate_price_staff_supply_for: Anlieferkosten
-translate_price_staff_pickup_for: Abholkosten
-translate_price_staff_supply_for: Anlieferkosten
-
-</PRE
-></DIV
-><DIV
-CLASS="example"
-><A
-NAME="UserGroups.cfg"
-></A
-><P
-><B
->Example 1-9. UserGroups.cfg</B
-></P
-><PRE
-CLASS="programlisting"
->&#13;Diese Datei liegt im Verzeichnis /etc/cuon/sql/ 
-
-Sie sollte so aussehen:
-[USER]
-zope: zope_rights
-heino: cuon_all
-jhamel: cuon_all
-GroupRightsOther.cfg 
-
-[cuon_other]
-cuon_clients: select 
-</PRE
-></DIV
+>Jetzt kann schon mit den client gearbeitet werden , dazu bei cuon.org --&#62; Downloads --&#62;Deutsch die Datei  Cuon-Client downloaden. Bitte den Anweisungen zur Installation und Konfiguration folgen:</P
 ></DIV
 ></DIV
 ><DIV
@@ -456,7 +104,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x164.html"
+HREF="x128.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -474,7 +122,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c196.html"
+HREF="x174.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -484,13 +132,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Partielle Updates</TD
+>Haupt Installation</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c31.html"
+HREF="c47.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -498,7 +146,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Erste Schritte</TD
+>Für Fortgeschrittene</TD
 ></TR
 ></TABLE
 ></DIV

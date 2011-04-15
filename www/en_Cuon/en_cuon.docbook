@@ -210,6 +210,11 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 <sect3 id="opt_txlb"><title>loadbalancing</title>
 <para>txloadbalancer</para>
 <para>twisted-conch</para>
+<para>python-setuptools</para>
+
+<para>Before the first use execute in the directory /var/cuon/LoadBalancer this here:</para>
+<para>python setup.py install</para>
+
 <para>To use the Loadbalancer please set in the cuon_client the port from 7080 to 7000 or for HTTPS from 7590 to 7500.</para> 
 </sect3>
 </sect2>

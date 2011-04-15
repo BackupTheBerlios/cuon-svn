@@ -25,7 +25,7 @@ import cuon.TypeDefs.typedefs_server
 import cuon.XMLRPC.xmlrpc
 import string
 import cPickle
-import sys, os
+import sys, os,  time
 import cuon.Databases.import_generic1
 import cuon.Databases.import_generic2
 import  cuon.Databases.SingleCuon
@@ -107,6 +107,8 @@ class databaseswindow(windows):
            
     def on_start_complete_update1_activate(self, event):
         print 'start complete Update'
+        t1 = time.mktime(time.localtime())
+        
         self.iPB = 1
         self.startProgressBar(Title='Complete Update')
         
@@ -131,7 +133,7 @@ class databaseswindow(windows):
         self.setProgressBar(self.iPB)
         
         self.stopProgressBar()
-        
+        print "complete need : ",  ` time.mktime(time.localtime()) -t1`
         
     def on_save_client1_activate(self,event):
 
@@ -191,7 +193,7 @@ class databaseswindow(windows):
 
 
     def on_dbcheck1_activate(self, event):
-        
+        t1 = time.mktime(time.localtime())
         self.iPB = 1
         clt = cyr_load_table.cyr_load_table()
         ### for Server-functions set the td-object
@@ -224,7 +226,7 @@ class databaseswindow(windows):
         print 'allTables = '
         print tableList    
         self.rpc.callRP('Database.saveInfo', 'allTables', self.doEncode(repr(cPickle.dumps(tableList) )))
-        
+        print "dbcheck need : ",  ` time.mktime(time.localtime()) -t1`
         
     def on_trigger1_activate(self, event):
          print 'create procedures and trigger'

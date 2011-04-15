@@ -88,17 +88,20 @@ def writeConfigfile():
 # </config>
 
     print 'write'
-    s = '   <config> \n\t<service name="cuon_http">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7000"/>\m\t\t\t<group name="server_xmlrpc" scheduler="roundr" enable="true">'
-    for i in range (0, iXMLRPC):
-        addPort = iPort *i
-        if baseSettings.XMLRPC_ALLOW_HTTP:
+    s = '   <config> \n\t<service name="cuon_http">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7000"/>' 
+    
+    if baseSettings.XMLRPC_ALLOW_HTTP:
+        s += '\n\t\t\t<group name="server_xmlrpc" scheduler="roundr" enable="true">'
+        for i in range (0, iXMLRPC):
+            addPort = iPort *i
+        
             s += '\n\t\t\t\t<host name="server_http_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.XMLRPC_HTTP_PORT + addPort`+ '"/>'
         
     s+= '\n\t\t\t</group>\n\t\t</service>'
 
     if baseSettings.XMLRPC_PROTO.upper() == 'HTTPS':
 
-        s += '\n\t<service name="cuon_https">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7500"/>\m\t\t\t<group name="server_xmlrpc" scheduler="roundr" enable="true">'
+        s += '\n\t<service name="cuon_https">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7500"/>\n\t\t\t<group name="server_xmlrpc_https" scheduler="roundr" enable="true">'
         for i in range (0, iXMLRPC):
             addPort = iPort *i
             s += '\n\t\t\t\t<host name="server_https_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.XMLRPC_HTTPS_PORT + addPort`+ '"/>'
