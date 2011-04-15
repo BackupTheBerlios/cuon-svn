@@ -1,0 +1,17 @@
+
+<config>
+    <service name="cuon">
+        <listen ip="192.168.17.12:7680"/>
+        <group name="servers" scheduler="roundr" enable="true">
+          <host name="server1" ip="192.168.17.12:7580"/>
+          <host name="server2" ip="192.168.17.12:7600"/>
+        </group>
+     </service>
+   
+ 	<admin>
+ 	   <web listen="localhost:7001" enable="true"/>
+	<ssh listen="localhost:7002" enable="true"/>
+ 	   <user name="admin" password="..xpoEyRReGzk" access="full"/>
+		
+ 	 </admin>
+ </config>

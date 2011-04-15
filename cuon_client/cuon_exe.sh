@@ -32,7 +32,7 @@ if [ $1 ] ; then
                 Typ=alternate4
         ;;
 		
-		p0) Server=https://192.168.17.12:7580
+		p0) Server=https://192.168.17.12:7500
                 ;;
 
         p1) Server=http://192.168.17.12:7100

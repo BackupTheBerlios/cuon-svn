@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Adressen- und Terminpflege </TITLE
+>Stammdaten</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Umfangreiche Beispiele"
-HREF="p1295.html"><LINK
+TITLE="Benutzerhandbuch"
+HREF="p1150.html"><LINK
 REL="PREVIOUS"
-TITLE="Umfangreiche Beispiele"
-HREF="p1295.html"><LINK
+TITLE="Benutzer Konfiguration "
+HREF="c1250.html"><LINK
 REL="NEXT"
-TITLE="Anleitung für Kontakter "
-HREF="x1310.html"></HEAD
+TITLE="Adressverwaltung"
+HREF="x1309.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="p1295.html"
+HREF="c1250.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1310.html"
+HREF="x1309.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -74,50 +74,44 @@ CLASS="chapter"
 ><A
 NAME="AEN1297"
 ></A
->Chapter 11. Adressen- und Terminpflege </H1
+>Chapter 12. Stammdaten</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="ub1"
->11.1. Voraussetzungen</A
+NAME="s1"
+>12.1. Mandanten</A
 ></H1
 ><P
->&#13;Nach dem Start von CUON und dem Anmelden sowie der Auswahl des Mandanten wählen wir im Menü Stammdaten den Eintrag Adressverwaltung aus. Es öffnet sich das Adressfenster mit den ersten Adressen. Nun können wir als erstes eine Auswahl treffen, also z.B. alle Adressen, die mit dem Buchstaben a beginnen und in dem Postleitzahlbereich 33445 sind.
-Dazu geben wir bei Nachname folgende Kombination ein:
+>Hier werden die Mandanten in C.U.O.N. gepflegt. Mindestens ein Mandant muß vorhanden sein. Ist beim ersten Start kein Mandant vorhanden, muß ein Mandant angelegt werden und dieser ausgewählt werden, bevor Mann/Frau weiterkommt . Jeder Mandant hat seinen eigenen Bereich(Eigene Rechnungsnummern, Kunden, etc.) und ist von den anderen Mandanten isoliert.
 </P
 ><DIV
-CLASS="example"
+CLASS="figure"
 ><A
-NAME="regaus"
+NAME="si1"
 ></A
 ><P
 ><B
->Example 11-1. Regulärer ausdruck</B
+>Figure 12-1. Mandantenfenster</B
 ></P
-><PRE
-CLASS="programlisting"
->&#13; #~*'^a.*' (Lange Form) oder ^a ( Kurzform) und bei der Postleitzahl 33445.
-</PRE
+><P
+><IMG
+SRC="images/screenshots/Mandanten.png"
+ALIGN="center"></P
 ></DIV
 ><P
->Dann einfach die Eingabetaste betätigen oder den Button Suchen anklicken. ( Nähere Hinweise zu regulären Suchbegriffen bitte [:regulären_Ausdrücken: hier nachschlagen]. Die gewünschten Adressen erscheinen in der Listenauswahl. Die gewünschte Adresse anklicken und alle relevanten Daten ( Adresse, Telefonnummer ) sind im unteren Detailbereich sichtbar. Jetzt kann der Teilnehmer angerufen werden.
-</P
+>Man kann damit sehr schön mehrere Firmen auf einem Server verwalten.</P
 ><P
->Es empfiehlt sich, die Adressverwaltung ein 2. mal zu öffnen und auf eine andere Arbeitsfläche zu legen (LINUX, BSD only). Wenn ein Kunde anruft, kann man ihn dann schnell suchen. auch hierbei sind die regulären Ausdrücke von entscheidener Bedeutung. Als Beispiel:
-</P
+>In der Datei /etc/cuon/clients.ini wird festgelegt, welcher User, welchen Mandant sehen und auswählen kann.</P
 ><P
->Der Kunde Bach+Kampert Küchen-Traum ruft an. Jetzt lange suchen, wie der Kunde geschrieben wird,also mit + oder mit und ist nicht nur ineffektiv, sondern verärgert auch durch die lange Zeitdauer den Kunden. Also empfiehlt es sich, einfach bach.*küchen( oder küchen.*raum einzugeben und eine hohe Trefferquote wird erreicht. Der Punkt steht dabei für ein beliebiges Zeichen, der Stern für eine beliebige Menge, zusammen also <SPAN
+><SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->irgendwas dazwischen</I
+>Achtung: Momentan lassen sich angelegte Mandanten nicht mehr löschen (das muss per Hand auf Datenbankebene gemacht werden).</I
 ></SPAN
->.
-</P
-><P
->Benachrichtigung der Reps: Wenn der Rep keine PDF-Datei haben möchte, können wir ihm auch die Email als Microsoft-Word Dokument schicken.</P
+></P
 ></DIV
 ></DIV
 ><DIV
@@ -136,7 +130,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="p1295.html"
+HREF="c1250.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -154,7 +148,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1310.html"
+HREF="x1309.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -164,13 +158,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Umfangreiche Beispiele</TD
+>Benutzer Konfiguration</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="p1295.html"
+HREF="p1150.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -178,7 +172,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Anleitung für Kontakter</TD
+>Adressverwaltung</TD
 ></TR
 ></TABLE
 ></DIV

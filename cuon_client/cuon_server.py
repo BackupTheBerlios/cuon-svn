@@ -315,7 +315,11 @@ import cPickle
 import ConfigParser
 import cuon.XMLRPC.xmlrpc
 import cuon.Editor.editor
-import cuon.ReportBuilder.reportbuilder
+try:
+        import cuon.ReportBuilder.reportbuilder
+except:
+        print 'could not read cuon.ReportBuilder.reportbuilder '
+        
 class MainWindow(windows):
 
     

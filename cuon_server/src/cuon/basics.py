@@ -42,6 +42,11 @@ class basics(xmlrpc.XMLRPC):
         
         self.CUON_FS = '/etc/cuon'  
         
+        # instances
+        self.XMLRPC_INSTANCES = 1
+        self.REPORT_INSTANCES = 1
+        self.ADD_PORT_INSTANCES = 20
+        
        # xmlrpc settings
         self.XMLRPC_HTTP_PORT = 7080
         self.XMLRPC_HTTPS_PORT = 7580
@@ -149,6 +154,21 @@ class basics(xmlrpc.XMLRPC):
             self.cpServer.readfp(open(self.CUON_FS + '/server.ini'))
             
             
+            # Instances 
+            value = self.getConfigOption('INSTANCES','XMLRPC')
+            if value:
+                self.XMLRPC_INSTANCES = int(value)
+              
+            value = self.getConfigOption('INSTANCES','REPORT')
+            if value:
+                self.REPORT_INSTANCES = int(value)   
+            value = self.getConfigOption('INSTANCES','ADD_PORT')
+            if value:
+                self.ADD_PORT_INSTANCES = int(value)   
+                if self.ADD_PORT_INSTANCES < 10:
+                    self.ADD_PORT_INSTANCES = 10
+            
+            
             
             # xmlrpc settings
              #ALLOW_HTTP: NO
@@ -163,6 +183,7 @@ class basics(xmlrpc.XMLRPC):
             value = self.getConfigOption('XMLRPC','HTTP_PORT')
             if value:
                 self.XMLRPC_HTTP_PORT = int(value)
+                
             value = self.getConfigOption('XMLRPC','HTTPS_PORT')
             if value:
                 self.XMLRPC_HTTPS_PORT = int(value)

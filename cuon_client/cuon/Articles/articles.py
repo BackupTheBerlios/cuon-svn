@@ -749,6 +749,12 @@ class articleswindow(chooseWindows):
         liAdr = self.singleAddress.getAddress(self.getWidget( 'eManufactorNumber').get_text())
         eAdrField.set_text(liAdr[0] + ', ' + liAdr[4])
 
+    def on_tbDMS_clicked(self, event):
+        print 'dms clicked'
+        if self.singleArticle.ID > 0:
+            print 'ModulNumber', self.ModulNumber
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleArticle.ID})
+        
 
     def on_bShowDMS_clicked(self, event):
         print 'dms clicked'

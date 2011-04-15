@@ -1,69 +1,8 @@
 <sql>
   <postgre_sql>
     <nameOfSqlDatabase>Postgre SQL</nameOfSqlDatabase>
-      <index>
-        <index_name> cuon_user_idx_name</index_name>
-        <index_special> </index_special>
-        <index_table>cuon_user</index_table>
-        <index_column>name</index_column>
-    </index>
-    
-    <index>
-        <index_name> address_idx_lastname</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>lastname</index_column>
-    </index>
-   <index>
-        <index_name> address_idx_firstname</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>firstname</index_column>
-    </index>
-     <index>
-        <index_name> address_idx_phone</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>phone</index_column>
-    </index>
-    <index>
-        <index_name> address_idx_lastname_firstname</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>lastname,firstname</index_column>
-    </index>
-     <index>
-        <index_name> address_idx_status_info</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>status_info</index_column>
-    </index>
-    
-    <index>
-        <index_name> address_idx_status_client</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>status,client</index_column>
-    </index>
-     <index>
-        <index_name> address_idx_caller_id</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>caller_id</index_column>
-    </index>
-      <index>
-        <index_name> address_idx_rep_id</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>rep_id</index_column>
-    </index>
-      <index>
-        <index_name> address_idx_salesman_id</index_name>
-        <index_special> </index_special>
-        <index_table>address</index_table>
-        <index_column>salesman_id</index_column>
-    </index>
-    
+     
+  
     
     
     <index>
@@ -79,30 +18,9 @@
         <index_table>partner</index_table>
         <index_column>status,client</index_column>
     </index>
-    <index>
-        <index_name>partner_schedul_idx_partnerid</index_name>
-        <index_special> </index_special>
-        <index_table>partner_schedul</index_table>
-        <index_column>partnerid</index_column>
-    </index>
-    <index>
-        <index_name>partner_schedul_idx_process_status</index_name>
-        <index_special> </index_special>
-        <index_table>partner_schedul</index_table>
-        <index_column>process_status</index_column>
-    </index>
-     <index>
-        <index_name>partner_schedul_idx_status_client</index_name>
-        <index_special> </index_special>
-        <index_table>partner_schedul</index_table>
-        <index_column>status,client</index_column>
-    </index>
-    <index>
-        <index_name>partner_schedul_idx_user_id</index_name>
-        <index_special> </index_special>
-        <index_table>partner_schedul</index_table>
-        <index_column>user_id</index_column>
-    </index>
+    
+    
+   
     
     <index>
         <index_name>partner_schedul_idx_schedul_date</index_name>
@@ -146,14 +64,7 @@
         <index_table>partner_schedul</index_table>
         <index_column>date_part('year',insert_time)</index_column>
     </index>
-    <index>
-        <index_name>partner_schedul_idx_schedul_staff_id</index_name>
-        <index_special> </index_special>
-        <index_table>partner_schedul</index_table>
-        <index_column>schedul_staff_id</index_column>
-    </index>
-    
-    
+  
     
       <index>
         <index_name>address_notes_idx_address_id</index_name>

@@ -195,6 +195,8 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 </sect2>
 
  <sect2 id="opt_files"><title>Optional Programs</title>
+ 
+ <sect3 id="opt_text"><title>Extract text summary</title>
 <para>It is a good idea to install this additional programs, they are working with the email program and the DMS to extract data and save them into the DMS for the FULL TEXT SEARCH:</para>
 <itemizedlist>
     <listitem><para> libots </para></listitem>
@@ -204,7 +206,12 @@ openssl req -new -x509 -key serverkey.pem -out servercert.pem -days 1095
 <listitem><para> gocr  </para></listitem>
 <listitem><para> html2text  </para></listitem>
 </itemizedlist> 
-
+</sect3>
+<sect3 id="opt_txlb"><title>loadbalancing</title>
+<para>txloadbalancer</para>
+<para>twisted-conch</para>
+<para>To use the Loadbalancer please set in the cuon_client the port from 7080 to 7000 or for HTTPS from 7590 to 7500.</para> 
+</sect3>
 </sect2>
     </sect1>
   </chapter>
@@ -290,15 +297,30 @@ USERNAME: MyName?
 PASSWORD: secret
 PORT: 143
 ]]></programlisting>
+
+
+<para>this is the entry for the LoadBalancer.</para>
+<para><example role="codelisting" id="config_server_lb">
+<title>Loadbalancer</title>
+<programlisting><![CDATA[
+[INSTANCES]
+XMLRPC :6
+REPORT: 3
+ADD_PORT:  20
+]]></programlisting>
+</example></para>
+
+
 </example></para>
 <para> send the version number for stats to program better client modules </para>
 <example role="codelisting" id="config_server_version">
 <title></title>
 <programlisting><![CDATA[
 
+
+
 [VERSION]
 SEND_VERSION_INFO: YES
-
 
 ]]></programlisting>
 </example>
@@ -1301,26 +1323,26 @@ In den naechsten entrys brauchst man dann nur noch Muriel schreiben
    <thead>
       <row>
          <entry>Variable </entry>
-         <entry>Beschreibung</entry>
+         <entry>Description</entry>
       </row>
    </thead>
     <tbody>
       <row>
          <entry>orderid</entry>
-         <entry>Id des Auftrags</entry>
+         <entry>Order Id </entry>
       </row>
       <row>
          <entry>orderNumber</entry>
-         <entry>Auftragsnummer</entry>
+         <entry>Ordernumber</entry>
       </row>
       <row>
          <entry>invoiceNumber</entry>
-         <entry>Rechnungsnummer</entry>
+         <entry>Invoicenumber</entry>
       </row>
 
       <row>
          <entry>invoiceDate</entry>
-         <entry>Rechnungsdatum</entry>
+         <entry>date of invoice</entry>
       </row>
       <row>
          <entry>discount</entry>
@@ -1395,7 +1417,14 @@ In den naechsten entrys brauchst man dann nur noch Muriel schreiben
          <entry>customers_ordernumber,</entry>
          <entry>Auftragsnummer des Kunden</entry>
       </row>
-
+ <row>
+         <entry>gets_number</entry>
+         <entry>Abholscheinnummer</entry>
+      </row>
+       <row>
+         <entry>supply_number</entry>
+         <entry>Lieferscheinnummer</entry>
+      </row>
     </tbody>
   </tgroup>
 </table>

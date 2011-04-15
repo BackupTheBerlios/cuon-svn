@@ -1,25 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->clients.ini </TITLE
+>user.cfg </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="
-       C.U.O.N. 
-    "
+TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Configuration"
-HREF="c167.html"><LINK
+HREF="c193.html"><LINK
 REL="PREVIOUS"
-TITLE="menu.cfg "
-HREF="x226.html"><LINK
+TITLE="Configuration"
+HREF="c193.html"><LINK
 REL="NEXT"
-TITLE="sql.ini "
-HREF="x247.html"></HEAD
+TITLE="menu.cfg "
+HREF="x259.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -39,9 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.: 
-       Installation and Usage 
-    </TH
+>C.U.O.N.:  Installation and Usage </TH
 ></TR
 ><TR
 ><TD
@@ -49,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x226.html"
+HREF="c193.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -63,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x247.html"
+HREF="x259.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,150 +73,111 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="clients_ini"
->2.4. clients.ini</A
+NAME="user_cfg"
+>2.2. user.cfg</A
 ></H1
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="userrights_clients"
->2.4.1. userrights for different clients</A
-></H2
 ><P
->Berechtigungen für die Mandanten </P
 ><DIV
 CLASS="example"
 ><A
-NAME=""
+NAME="config_user_password"
 ></A
 ><P
 ><B
->Example 2-10. clients.ini</B
+>Example 2-8. User Password</B
 ></P
 ><PRE
 CLASS="programlisting"
->&#13;[username]
-clientsRightCreate: Yes
-clientsIDs: 1,2,3,4,5,6
+>&#13;[password]
+username: password
 
-Hier werden die Berechtigungen der verschiedenen Benutzer auf die verschiedenen Mmandanten verteilt. Jede client-ID bedeutet einen Mandanten. Beispiel:
 
-[admin]
-clientsRightCreate: Yes
-clientsIDs: 1,2,3,4,5,6
-[jhamel]
-clientsRightCreate: No
-clientsIDs: 1
+</PRE
+></DIV
+></P
+><P
+>set for username your cuon username and then the choosen password </P
+><P
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Important: At the first Installation of C.U.O.N. or after each change of user.cfg,  you need to run the the setup program and choose:</I
+></SPAN
+>
+</P
+><DIV
+CLASS="example"
+><A
+NAME="menu_create_grants"
+></A
+><P
+><B
+>Example 2-9. Create Grants File</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;Services --&#62; Database Tools
+There Edit configfiles --&#62; Server--&#62;SQL-Rights--&#62;Create Grant File
 </PRE
 ></DIV
 ><P
->&#13;Der User mit dem Usernamen admin darf neue Mandanten (Firmen) anlegen und hat Zugriff auf die Mandanten mit den IDs 1-6. Der User jhameln hat Zugriff auf Mandant 1 und darf KEINE neuen Mandanten anlegen.</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="clients"
->2.4.2. Der Abschnitt CLIENT_</A
-></H2
-><P
-> 
-Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen.
-
-CLIENT_xxx ist die Mandanten ID
-
-[CLIENT_1]
-Einstellungen für den automatischen Mailversand ¶
-Veränderungen in den Notizen ¶
-
-sendNotes0: YES
-Notes0_ID: 17
-AdditinalEmailAddressesNotes0: <CODE
-CLASS="email"
->&#60;<A
-HREF="mailto:user@web.com"
->user@web.com</A
->&#62;</CODE
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>&#13;and write the new database rights.</I
+></SPAN
 >
-sendMailsNotes0: caller,rep,salesman
+</P
+><P
+>after this you should do connect to the database and then choose:
+Tools--&#62;Database--&#62;Database--&#62;SQL-Server--&#62;grants
 
-sendNotes0: YES odeer NO zum Senden der Mails
-Notes0_ID: 17 ID des Dokuments aus dem DMS
-AdditinalEmailAddressesNotes?0: <CODE
-CLASS="email"
->&#60;<A
-HREF="mailto:jh@web.com"
->jh@web.com</A
->&#62;</CODE
-> zusätzliche Empfänger, mit , getrennt
-sendMailsNotes0: caller,rep,salesman interne Benachrichtigung für Kontakter, Repräsentanten und Beratern
-Default Zahlungsbedingung 
+</P
+><P
+>Look also at "User create and attend". </P
+><P
+>Set here some rights for the DMS, look also at the "sql.ini"</P
+><P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_user_group"
+></A
+><P
+><B
+>Example 2-10. Groups for DMS rights</B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[GROUPS]
+jhamel: buero,rechnung
 
-modul_order_default_top:ID
-
-ID ist die id der default zahlungsbedingung
-
-Erinnerungen und Mahnungen im Rechnungswesen ¶
-
-Diese Werte bestimmen, ab wann eine Rechnung im mahnwesen auftaucht. Eine zweite Abhängigkeit ist bei den Zahlungsbedingungen vermerkt. Also, bei einer zahlungsbedingung "Zahglbar sofort netto Kasse" und einer Wartezeit von 8 Tagen würde diese Rechnung bei u.g. Einstellungen nach 18 Tagen das erste mal auf der Liste erscheinen.
-
-reminder_all_days_after: 10
-reminder_first_days_after: 14
-reminder_second_days_after: 25
-reminder_last_days_after: 32
-reminder_summons_days_after: 40
-
-
-Liste nach Zahlungserinnerungen.
-
-list_of_invoices_directDebit: 3
-
-orderbook_number: !id,-,!year
-orderbook_designation: !lastname,_,!city,_,!id
-
-list_of_invoices_directDebit: 3
-
-articles_sort1_number: b
-articles_sort1_sellingprice: c
-articles_sort1_designation: a
-
-Auswahlboxen ¶
-Adressverwaltung ¶
-
-Hier sind die Einträge für die Auswahlboxen bei der Adressverwaltung, das Tab Verschiedenes.
-
-cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige
-cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG
-cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, über 5 millionen
-cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung
-
-Projektverwaltung ¶
-
-cbProjectStatus: neu angelegt,laufend,fertig
-
-Gräber ¶
-
-cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung
-cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab
-cbTypeOfPaying: jährlich,halbjährlich
-cbPercentsGrave: 100%,90%,80%,75%,50%,
-cbTypeOfPaying: jährlich,halbjährlich,quartal
-cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
-
-Statistik ¶
-
-SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820
-
-StatsCallerCentury: 0
-StatsCallerDecade: 0
-StatsCallerYear: 1
-StatsCallerQuarter: 2
-StatsCallerMonth: 2
-StatsCallerWeek: 2</P
+</PRE
 ></DIV
+>
+
+</P
+><P
+>You need to set this  section STATS with data to get some stats.</P
+><P
+><DIV
+CLASS="example"
+><A
+NAME="config_user_stats"
+></A
+><P
+><B
+>Example 2-11. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[STATS]
+CALLER_ID: 1,2,3,5,8
+</PRE
+></DIV
+></P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -238,7 +195,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x226.html"
+HREF="c193.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -256,7 +213,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x247.html"
+HREF="x259.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -266,13 +223,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->menu.cfg</TD
+>Configuration</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c167.html"
+HREF="c193.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -280,7 +237,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->sql.ini</TD
+>menu.cfg</TD
 ></TR
 ></TABLE
 ></DIV

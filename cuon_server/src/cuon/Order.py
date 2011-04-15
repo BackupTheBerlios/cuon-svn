@@ -27,42 +27,42 @@ class Order(xmlrpc.XMLRPC, basics):
         self.oDatabase = Database.Database()
         
     def xmlrpc_getSupply_GetNumber(self, orderNumber, dicUser):    
-        sGetNumber =  '0'
-        sSupplyNumber = '0'
+        iGetNumber =  0
+        iSupplyNumber = 0
         
         
-        sSql = "select gets_number from  fct_getGet_number(" + `orderNumber` + ") as gets_number(text) "
+        sSql = "select gets_number from  fct_getGet_number(" + `orderNumber` + ") as gets_number(integer) "
         
-        sGetNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['gets_number']
-        sSql = "select supply_number from  fct_getSupply_number(" + `orderNumber` + ") as supply_number(text) "
+        iGetNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['gets_number']
+        sSql = "select supply_number from  fct_getSupply_number(" + `orderNumber` + ") as supply_number(integer) "
         
-        sSupplyNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['supply_number']
+        iSupplyNumber =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )[0]['supply_number']
         
         
-        return sGetNumber,  sSupplyNumber
+        return iGetNumber,  iSupplyNumber
         
 
     def xmlrpc_getDeliveryNumber(self, orderNumber, dicUser ):
         nr = 0
         sc = '_client_' + `dicUser['client']`
         sSql = 'select delivery_number from list_of_deliveries where order_number = ' + `orderNumber`
-        sSql = sSql + self.getWhere("",dicUser,1)
+        sSql = sSql + self.getWhere("",dicUser,2)
         
-        dicResult =  oDatabase.xmlrpc_py_executeNormalQuery(sSql, dicUser )
-        if dicResult == 'NONE':
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        if dicResult in self.liSQL_ERRORS:
             liFields, liValues = self.getNormalSqlData(dicUser)
             
             sSql1 = 'insert into list_of_deliveries ( id, delivery_number, order_number '
             for sFields in liFields:
                 sSql1 += sFields
-            sSql1 +=  ' values (nextval(\'list_of_deliveries_id+ sc +\'),nextval(\'numerical_misc_standard_delivery +sc +\'), ' 
+            sSql1 +=  " values (nextval(\'list_of_deliveries_id\'),nextval(\'numerical_misc_standard_delivery"+sc +"\'), " 
             sSql1 +=  `orderNumber` 
             for sValues in liValues:
                 sSql1 += sValues
         
-            oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
+            self.oDatabase.xmlrpc_executeNormalQuery(sSql1, dicUser )
         
-            dicResult =  oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
     
         if dicResult not in ['NONE','ERROR']:
            nr = dicResult[0]['delivery_number']
@@ -181,6 +181,28 @@ class Order(xmlrpc.XMLRPC, basics):
             date = ' '
         return date
         
+    def xmlrpc_getSupplyDate(self, orderNumber, dicUser):
+        
+        date = ' '
+        
+        try:
+            orderNumber = int(orderNumber)
+        except:
+            orderNumber = 0
+            
+        sc = '_client_' + `dicUser['client']`
+        
+        sSql = "select to_char(date_of_delivery, \'" + dicUser['SQLDateFormat'] + "\')  as date_of_delivery  from list_of_delivery where order_number = " + `orderNumber`
+        sSql += self.getWhere(None, dicUser,2)
+        
+        dicResult =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )    
+        if dicResult not in ['NONE','ERROR']:
+            date = dicResult[0]['date_of_delivery']
+        else:
+            date = ' '
+        return date   
+        
+        
     def xmlrpc_getOrderValues(self, orderid, dicUser):
         liResultStaff = None
         liResultPartner = None
@@ -215,7 +237,11 @@ class Order(xmlrpc.XMLRPC, basics):
                     sSql = "select *, lastname || ', ' || firstname as last_first, firstname || ' ' || lastname as first_last from partner where id = " + `row['order_customers_partner_id']` 
                     liResultPartner = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser ) 
             except:
-                pass           
+                pass    
+            
+            
+                
+            
         #print 'liResultStaff = ',  liResultStaff
         if liResultStaff:
             try:
@@ -261,6 +287,8 @@ class Order(xmlrpc.XMLRPC, basics):
                 liResult[0]['term_of_payment'] = liResultTop2[0]['term_of_payment']
             else :
                 liResult[0]['term_of_payment'] = ''
+        
+        liResult[0]['gets_number'],  liResult[0]['supply_number'] = self.xmlrpc_getSupply_GetNumber(orderid, dicUser)
         
         return liResult
         
@@ -382,7 +410,7 @@ class Order(xmlrpc.XMLRPC, basics):
         sSql += " (select  material_group.tax_vat from material_group,articles  where "
         sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
         sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
-        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id, "
+        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id,  articles.articles_notes as articles_notes, "
         sSql += "articles.wrapping as article_wrapping, articles.quantumperwrap as article_quantumperwrap,  articles.unit as article_unit,  "
         sSql += " orderposition.designation as designation, orderposition.amount as amount, "
         sSql += " orderposition.position as position, orderposition.price as price, "

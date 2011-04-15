@@ -1,25 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->GroupRightsOther.cfg </TITLE
+>menu.cfg </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="
-       C.U.O.N. 
-    "
+TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Configuration"
-HREF="c167.html"><LINK
+HREF="c192.html"><LINK
 REL="PREVIOUS"
-TITLE="UserGroups.cfg "
-HREF="x255.html"><LINK
+TITLE="user.cfg "
+HREF="x232.html"><LINK
 REL="NEXT"
-TITLE="Setup Tool"
-HREF="c261.html"></HEAD
+TITLE="clients.ini "
+HREF="x265.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -39,9 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.: 
-       Installation and Usage 
-    </TH
+>C.U.O.N.:  Installation and Usage </TH
 ></TR
 ><TR
 ><TD
@@ -49,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x255.html"
+HREF="x232.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -63,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c261.html"
+HREF="x265.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,12 +73,42 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="grouprights_other"
->2.7. GroupRightsOther.cfg</A
+NAME="menu_cfg"
+>2.3. menu.cfg</A
 ></H1
 ><P
->&#13;[cuon_other]
-cuon_clients: select </P
+>&#13;<DIV
+CLASS="example"
+><A
+NAME="config_menu_privs"
+></A
+><P
+><B
+>Example 2-12. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[normalAllUser]
+all: Priv;all  
+experimental: Priv;all 
+
+[AdminUser] 
+all: Priv;all 
+experimental: Priv;all 
+staff: Priv;all 
+extendet_gpl:Priv;all#MenuItem;{Main;data,Sub;Extendet1}#Imports;[cuon.Ext1.ext1,cuon.Ext1.ext2]#MenuStart;cuon.Ext1.ext1.ext1() 
+forms: Priv;all 
+forms_addresses: Priv;all
+
+# This is only important for market-garden
+address_button_grave: Yes
+address_button_grave_position: 14
+
+</PRE
+></DIV
+></P
+><P
+> You shall set 1 entry for every user. The admin user can have some more details. For now you can use this values, later I will expand it a little. </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -100,7 +126,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x255.html"
+HREF="x232.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -118,7 +144,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c261.html"
+HREF="x265.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -128,13 +154,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->UserGroups.cfg</TD
+>user.cfg</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c167.html"
+HREF="c192.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -142,7 +168,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Setup Tool</TD
+>clients.ini</TD
 ></TR
 ></TABLE
 ></DIV

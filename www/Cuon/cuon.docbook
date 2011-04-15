@@ -250,6 +250,7 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
  </sect2>
 
  <sect2 id="opt_files"><title>Optionale Programme</title>
+ <sect3 id="opt_text"><title>Texterkennung</title>
 <tip><para>Zusätzlich empfiehlt es sich, diese optionalen Programme zu installieren.Sie dienen zur Texterkennung, Textumwandlung und dem Zusammenfassen von Text:</para></tip>
 <itemizedlist>
     <listitem><para> libots </para></listitem>
@@ -258,7 +259,12 @@ Im Linux Startverzeichnis sollten jetzt 3 wichtige cuon Startscripte liegen. Die
 <listitem><para> odt2txt  </para></listitem>
 <listitem><para> gocr  </para></listitem>
 </itemizedlist> 
-
+</sect3>
+<sect3 id="opt_txlb"><title>loadbalancing</title>
+<para>txloadbalancer</para>
+<para>twisted-conch</para>
+<para>Der Zugangsport für Cuon ist dann von 7080 auf 7000 zu setzen, bzw. für HTTPS von 7580 auf 7500 .</para>
+</sect3>
 </sect2>
 </sect1>
 <sect1 id="t9_u1"><title>Der C.U.O.N. Client </title>
@@ -417,6 +423,15 @@ PORT=22 #SSH Port
 USER=Faxuser
 Diese Faxwerte nur eintragen, wenn der Faxserver auf einen anderen Host liegt, 
 ansonsten wird das lokale sendfax benutzt
+
+
+Dies ist der entsprechende Eintrag für den LoadBalancer.
+[INSTANCES]
+XMLRPC :6
+REPORT: 3
+ADD_PORT:  20
+
+
 
 Hiermit wird festgelegt, ob zur statistischen Auswertung ein Key mit der Versionsnummer 
 übertragen wird, das hilft mir bei der Entscheidung über die Entwicklung von 
@@ -1559,10 +1574,17 @@ In den nächsten entrys brauchst man dann nur noch Muriel schreiben
       </row>
  
         <row>
-         <entry>customers_ordernumber,</entry>
+         <entry>customers_ordernumber</entry>
          <entry>Auftragsnummer des Kunden</entry>
       </row>
-
+     <row>
+         <entry>gets_number</entry>
+         <entry>Abholscheinnummer</entry>
+      </row>
+       <row>
+         <entry>supply_number</entry>
+         <entry>Lieferscheinnummer</entry>
+      </row>
     </tbody>
   </tgroup>
 </table>

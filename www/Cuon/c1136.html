@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Stammdaten</TITLE
+>Postgres Tips und Tricks</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Benutzerhandbuch"
-HREF="p1039.html"><LINK
+TITLE="C.U.O.N. Administration"
+HREF="p45.html"><LINK
 REL="PREVIOUS"
-TITLE="Benutzer Konfiguration "
+TITLE="Troubleshooter"
 HREF="c1131.html"><LINK
 REL="NEXT"
-TITLE="Adressverwaltung"
-HREF="x1148.html"></HEAD
+TITLE="Benutzerhandbuch"
+HREF="p1150.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->C.U.O.N.:  Installation and Benutzung </TH
+>C.U.O.N.:  Installation und Benutzung </TH
 ></TR
 ><TR
 ><TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1148.html"
+HREF="p1150.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -74,44 +74,78 @@ CLASS="chapter"
 ><A
 NAME="AEN1136"
 ></A
->Chapter 9. Stammdaten</H1
+>Chapter 8. Postgres Tips und Tricks</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="s1"
->9.1. Mandanten</A
+NAME="pgt1"
+>8.1. Fortlaufende Nummerierung anpassen</A
 ></H1
 ><P
->Hier werden die Mandanten in C.U.O.N. gepflegt. Mindestens ein Mandant muß vorhanden sein. Ist beim ersten Start kein Mandant vorhanden, muß ein Mandant angelegt werden und dieser ausgewählt werden, bevor Mann/Frau weiterkommt . Jeder Mandant hat seinen eigenen Bereich(Eigene Rechnungsnummern, Kunden, etc.) und ist von den anderen Mandanten isoliert.
-</P
-><DIV
-CLASS="figure"
+> 
+Diese Sequenzen bilden die fortlaufende Numerierung für Rechnungen, Lieferscheine, etc. ab. 
+<DIV
+CLASS="example"
 ><A
-NAME="si1"
+NAME="Sequences"
 ></A
 ><P
 ><B
->Figure 9-1. Mandantenfenster</B
+>Example 8-1. Sequencen im Cuon System</B
 ></P
-><P
-><IMG
-SRC="images/screenshots/Mandanten.png"
-ALIGN="center"></P
+><PRE
+CLASS="programlisting"
+>&#13;
+                              Liste der Relationen
+ Schema |                       Name                       |   Typ   |  
+--------+--------------------------------------------------+---------+
+ public | numerical_cash_account_book_doc_number1          | Sequenz | 
+ public | numerical_cash_account_book_doc_number1_client_1 | Sequenz | 
+ public | numerical_finance_account_number1                | Sequenz | 
+ public | numerical_finance_account_number1_client_1       | Sequenz | 
+ public | numerical_hibernation_incoming_document          | Sequenz | 
+ public | numerical_hibernation_incoming_document_client_1 | Sequenz | 
+ public | numerical_hibernation_invoice_document           | Sequenz | 
+ public | numerical_hibernation_invoice_document_client_1  | Sequenz | 
+ public | numerical_hibernation_ordernumber                | Sequenz | 
+ public | numerical_hibernation_ordernumber_client_1       | Sequenz | 
+ public | numerical_hibernation_outgoing_document          | Sequenz | 
+ public | numerical_hibernation_outgoing_document_client_1 | Sequenz | 
+ public | numerical_hibernation_pickup_document            | Sequenz | 
+ public | numerical_hibernation_pickup_document_client_1   | Sequenz | 
+ public | numerical_misc_standard_delivery                 | Sequenz | 
+ public | numerical_misc_standard_delivery_client_1        | Sequenz | 
+ public | numerical_misc_standard_invoice                  | Sequenz | 
+ public | numerical_misc_standard_invoice_client_1         | Sequenz | 
+ public | numerical_misc_standard_pickup                   | Sequenz | 
+ public | numerical_misc_standard_pickup_client_1          | Sequenz | 
+
+</PRE
 ></DIV
+>
+</P
 ><P
->Man kann damit sehr schön mehrere Firmen auf einem Server verwalten.</P
-><P
->In der Datei /etc/cuon/clients.ini wird festgelegt, welcher User, welchen Mandant sehen und auswählen kann.</P
+>Einfach auf der SQL-Shell folgenden Befehl eingeben(ein Beispiel):</P
 ><P
 ><SPAN
 CLASS="emphasis"
 ><I
 CLASS="emphasis"
->Achtung: Momentan lassen sich angelegte Mandanten nicht mehr löschen (das muss per Hand auf Datenbankebene gemacht werden).</I
+>alter sequence numerical_misc_standard_invoice_client_1 restart with 10065 ;</I
 ></SPAN
 ></P
+><P
+>Damit wird die Sequenz numerical_misc_standard_invoice_client_1 mit 10065 als Startwert neu gestartet.</P
+><P
+>Der Prefix <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>client_1</I
+></SPAN
+> ist damit der mandant mit der ID 1</P
 ></DIV
 ></DIV
 ><DIV
@@ -148,7 +182,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1148.html"
+HREF="p1150.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -158,13 +192,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Benutzer Konfiguration</TD
+>Troubleshooter</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="p1039.html"
+HREF="p45.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -172,7 +206,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Adressverwaltung</TD
+>Benutzerhandbuch</TD
 ></TR
 ></TABLE
 ></DIV

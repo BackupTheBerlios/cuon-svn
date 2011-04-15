@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Adressverwaltung</TITLE
+>Erster Kontakt </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
-TITLE="Stammdaten"
-HREF="c1151.html"><LINK
+TITLE="Erste Schritte"
+HREF="c1152.html"><LINK
 REL="PREVIOUS"
-TITLE="Stammdaten"
-HREF="c1151.html"><LINK
+TITLE="Erste Schritte"
+HREF="c1152.html"><LINK
 REL="NEXT"
-TITLE="Document Management System ( DMS) "
-HREF="c1231.html"></HEAD
+TITLE="Allgemeine Firmeneinstellungen"
+HREF="c1245.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1151.html"
+HREF="c1152.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 9. Stammdaten</TD
+>Chapter 9. Erste Schritte</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c1231.html"
+HREF="c1245.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,226 +73,221 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN1163"
->9.2. Adressverwaltung</A
+NAME="tb2"
+>9.2. Erster Kontakt</A
 ></H1
-><P
->&#13;Die Adressmaske enthält die üblichen Angaben wie PLZ, Ort, Telefon-Nummern, etc. Hinzu kommen Kennfelder für Branche, Bankverbindung, Debitoren/Kreditoren-Nummern, Webshop-Abgleich, Steuernummern und Preisgruppen. Zu jeder Adresse können beliebig viele Gesprächspartner und evtl. Termine mit den jew. Gesprächspartnern hinterlegt werden. Auch dort können die üblichen Werte erfaßt werden. Der Listendruck wird, wie jeder Druck in pyCuon, über das PDF-Format realisiert. Eine Schnittstelle zum DMS ermöglicht es, umfassende, unterschiedlichste Information zu jeder Adresse zu hinterlegen.</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s2"
->9.2.1. Reiter Adressen</A
+NAME="tb3"
+>9.2.1. Starten von C.U.O.N.</A
 ></H2
-><P
->Der Button "Brief" ist für die Erzeugung eines Briefes zuständig. (siehe auch Briefe mit Office Programmen ) Über den Button Kontakt erreichen Sie die Kontaktverwaltung
-</P
 ><DIV
-CLASS="figure"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="si2"
-></A
+NAME="tb4"
+>9.2.1.1. Vom Menü aus</A
+></H3
 ><P
-><B
->Figure 9-2. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress01.png"
-ALIGN="center"></P
+>&#13;Das einfachste ist die entsprechenden Einträge im Menü zu benutzen, z.B. unter Ubuntu im Ordner "Büro" den Cuon client starten. Bei der Erst-Installation wird auch der Konfigurations-Wizard aufgerufen, dort einfach nur das User Verzeichnis ändern und den cuon-Server eintragen. Den Eintrag für die deutsche Übersetzung im Idealfall einfach mit "/locale" belassen. Der Konfigurations-Wizard ist ebenfalls einfach vom Menü "System"--&#62;"Einstellungen"-_&#62;"Cuon client Konfiguration" aufzurufen, wenn sie Änderungen vornehmen wollen.</P
 ></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="tb5"
+>9.2.1.2. Von der Kommandozeile aus</A
+></H3
 ><P
->&#13;Die meisten Funktionen lassen sich über den Reiter "Adressen" nutzen, lediglich für Termine ist der Eintrag eines Gesprächpartners nötig. Dieser lässt sich schnell mit dem Button "erzeuge Gesprächspartner" im Reiter "Gesprächspartner" erzeugen.
+>&#13;Der Aufruf des Clients erfolgt folgendermaßen: /usr/bin/python Cuon.py [Server] [Type] [Debug] [Locale] [Cuonverzeichnis] [GUI] Also wird im Normalfall einfach nur /usr/bin/python Cuon.py aufgerufen, da die Vorgaben durch die Umgebungsvariablen bzw. durch das Programm gesetzt wurden. Die Parameter haben folgendes Format: 
 </P
 ><P
 ></P
 ><UL
 ><LI
 ><P
->Button Zusatzinformationen: Damit lassen sich Schriftstücke, Bilder oder eingescannte Dokumente einer Adresse zuordnen. Er führt direkt zum [:Dokument Management System: Dokument-Mangement-System (DMS)].</P
+>Server  Protokoll://host:Port/Pfad z.B.  http://84.244.7.139:7080</P
 ></LI
 ><LI
 ><P
->Button Brief: Auch hier geht der Link direkt in das DMS. Allerdings werden alle Briefvorlagen ([:Briefe mit Office Programmen:Bitte im Benutzerhandbuch] nachlesen, wie diese angelegt werden) geöffnet. Der dortige Button "View" startet Openoffice (oder auch Koffice) mit den Adressdaten und der gewählten Vorlage. Im Officeprogramm das Dokument einfach speichern und dann "Letztes Dokument sichern" drücken und schon ist der geschriebene Brief auch wieder als Dokument in cuon hinterlegt (wird dann unter dem Button Zusatzinformationen (s.o.) angezeigt).</P
+> Type client server</P
 ></LI
 ><LI
 ><P
->Button Kontak: Das ist eine wichtige Funktion für z.B. Telefonmarketing. Hiermit lassen sich schnell Terminerinnerungen für jede Adresse einstellen (die dann als Pop-up Fenster auf dem Bildschirm erscheinen). Z.B. Rückruf in 5 Minuten, Telefonat heute um 15 Uhr o.ä. ( siehe unter Kontaktmanagement ?)</P
+>Debug NO YES</P
 ></LI
 ><LI
 ><P
->Buttons "wähle Kontakter", "wähle Representant", "wähle Berater" greifen auf die Mitarbeiterdatenbank zu und weisen der jeweiligen Funktion einen Mitarbeiter zu.</P
+>Locale NO "Path to locale"</P
 ></LI
 ><LI
 ><P
->Button Send Email: Schnell und einfach eine Email an die Adresse verschicken.</P
+> Cuonverzeichnis c:\cuon oder /home/userx/cuon</P
 ></LI
 ><LI
 ><P
->Feld Newsletter: Hier kann man beliebig viele Newsletterverteilerzugehörigkeiten eintragen. Wir verwenden bei uns immer 3 verschiedene Vorsätze (m=Newsletter per Mail, b=Newsletter per Brief, f=Newsletter per Fax). Die verschiedenen Newsletter müssen per Komma getrennt werden, also z.B. "b-allgemeineInfos,m-spontaneAktionen".</P
-></LI
-><LI
-><P
->Feld info: Hier können allgemeine Infos eingegeben werden, die oben in der Listenansicht erscheinen. Dadurch hat man eine schnelle Übersicht. </P
+>GUI maemo oder standard1 oder eigener Name</P
 ></LI
 ></UL
 ></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="s4"
->9.2.2. Reiter Bank</A
-></H2
-><P
->&#13;Hier kann man eine Kontoverbindung für die Adresse angeben. Wichtig: Damit das gelingt muss für die Bank ein Adressdatensatz erstellt werden. Im Prinzip langt ein einfacher Datensatz mit dem Banknamen (mehr ist nicht nötig).</P
-><DIV
-CLASS="figure"
-><A
-NAME="si3"
-></A
-><P
-><B
->Figure 9-3. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress02.png"
-ALIGN="center"></P
-></DIV
 ></DIV
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s5"
->9.2.3. Reiter Verschiedenes</A
+NAME="tb6"
+>9.2.2. Anmelden</A
 ></H2
 ><P
->&#13;Hier gibt es div. Informationen zur Adresse, z.B. die Branche, aber auch in welche Preisgruppe der Kunde fällt und ob er Mwst. pflichtig ist.</P
-><DIV
-CLASS="figure"
-><A
-NAME="si4"
-></A
-><P
-><B
->Figure 9-4. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress03.png"
-ALIGN="center"></P
-></DIV
+>&#13;Nachdem Start führt Mann/Frau die Anmeldeprozedur aus: »Verbinden/Anmelden» und das Login-Fenster öffnet sich. Nach einem erfolgreichen Anmelden ist der Username und der aktuelle Server im Hauptfenster zu sehen. Jetzt stehen diverse Menüpunkte zur Verfügung. Außerdem öffnet sich das Mandantenfenster. Hier ist es zwingend erforderlich, einen Mandanten auszuwählen. Ist noch keiner vorhanden, MUSS hier ein Mandant angelegt werden. Siehe auch bei Mandanten.
+wichtige Einstellungen </P
 ></DIV
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="s6"
->9.2.4. Reiter Gesprächspartner</A
+NAME="tb7"
+>9.2.3. Tastenkürzel</A
 ></H2
 ><P
->&#13;Zu jeden Kunden können beliebig viele Gesprächspartner hinterlegt werden. Die Buttons Brief und ext. Info gelten hier ebenso wie bei der Adresse. Über den Button E-Mail kann dem Adressaten schnell eine mail über das interne mailprogramm zugeschickt werden.</P
+>&#13;In der Regel sind folgende Tastenkürzel aktiv:</P
 ><DIV
-CLASS="figure"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="si5"
-></A
+NAME="tb8"
+>9.2.3.1. Hauptfenster</A
+></H3
 ><P
-><B
->Figure 9-5. </B
-></P
+>Im Hauptfenster steht hinter vielen Menü-Einträgen eine Steuerung-Buchstaben Kombination, z.B. Strg-l für Login, das heißt also, das mit drücken der Tasten Strg und l sich das Login-Fenster sich öffnet.</P
 ><P
-><IMG
-SRC="images/screenshots/iAddress04.png"
-ALIGN="center"></P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="s7"
->9.2.5. Reiter Termine</A
-></H2
-><P
->&#13;<SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Wichtig: Damit ein Termin eingetragen werden kann, muss ein dazugehöriger Gesprächpartner markiert sein.</I
-></SPAN
-></P
-><DIV
-CLASS="figure"
-><A
-NAME="si6"
-></A
-><P
-><B
->Figure 9-6. </B
-></P
-><P
-><IMG
-SRC="images/screenshots/iAddress05.png"
-ALIGN="center"></P
-></DIV
-><P
->&#13;Die meisten anderen Felder sind wieder selbsterklärend. Mit "search Staff" lässt sich ein Mitarbeiter dem Termin zuweisen. Die Termine erscheinen alle im Startfenster (Einstellung in der user.cfg beachten!!) von cuon (kann ein paar Sekunden dauern).
-</P
-><P
-></P
-><P
-><B
->Das Statusfeld:</B
 ></P
 ><UL
 ><LI
 ><P
-> 0-99 unbestätigter Termin</P
+>Strg + l  Login</P
 ></LI
 ><LI
 ><P
-> 100-800 bestätigter Termin</P
+>Strg + q    Beenden des Programmes  </P
 ></LI
 ><LI
 ><P
-> 801-998 Abgebrochene Termine</P
+>Strg + a    Öffnen des Adressfensters</P
 ></LI
 ><LI
 ><P
-> 999 gelöschter Termin (geht auch im Menü mit "set ready") </P
+>Strg + i    Öffnen des Artikelfensters</P
+></LI
+><LI
+><P
+>Strg + x    Öffnen des Bankfensters</P
+></LI
+><LI
+><P
+>Strg + s    Öffnen des Personalfensters</P
+></LI
+><LI
+><P
+>Strg + v    Öffnen des Literaturfensters    </P
+></LI
+><LI
+><P
+>Strg + p    Öffnen des Angebotsfensters</P
+></LI
+><LI
+><P
+>Strg + o    Öffnen des Auftragsfensters</P
+></LI
+><LI
+><P
+>Strg + k    Öffnen des Lagerfensters</P
+></LI
+><LI
+><P
+>Strg + d    Öffnen des DMS-Fensters</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="tb9"
+>9.2.3.2. Andere Fenster</A
+></H3
+><P
+>&#13;Dies gilt zum Schließen eines Fensters ( Nicht des Hauptfensters)</P
+><P
+></P
+><UL
+><LI
+><P
+>Strg + z  Schließen des aktuellen Fensters</P
 ></LI
 ></UL
 ><P
->Die Nummer hängen vom jeweiligen Client ab, mit dem man den, über iCal exportierten, Termin ansehen will.Man kann die Termine mit jedem x-beliebigen Kalenderprogramm (Kontact, Evolution, Palm etc.) ansehen (nur lesen, kein schreiben!). Dazu ist eine Webschnittstelle eingerichtet mit der man einfach über die URL:
-</P
+>Bedienung der Tabs </P
 ><P
->  http://servername:7081/iCal/iCal_cuonbenutzername</P
-><P
->&#13;die Daten als iCal Daten importieren kann.
-</P
-><P
->Das rechte Kalenderfeld dient dem Ansehen / Checken der vorhandenen Termine:
-</P
-><P
->-&#62; search Staff (Mitarbeiter auswählen) -&#62;im rechten Kalenderfeld Termin anwählen -&#62; links davon werden im weißen Eingabefeld die Termine des gewählten Mitarbeiters für diesen Tag angezeigt
-</P
-><P
-><SPAN
-CLASS="emphasis"
-><I
-CLASS="emphasis"
->Anmerkung: Bei alten C.U.O.N Installationen muss das Verzeichnis /var/cuon_www/iCal per Hand angelegt werden.</I
-></SPAN
 ></P
+><UL
+><LI
+><P
+>Strg + F1 öffne erstes Tab</P
+></LI
+><LI
+><P
+>Strg + F2   öffne zweites Tab</P
+></LI
+><LI
+><P
+>Strg + Fxx  öffne xxx Tab</P
+></LI
+></UL
+><P
+>Aktionen für den Datensatz </P
+><P
+></P
+><UL
+><LI
+><P
+>Strg + e  Bearbeite den Datensatz</P
+></LI
+><LI
+><P
+>Strg + s    Sichere den Datensatz</P
+></LI
+><LI
+><P
+>Strg + n    Neuer Datensatz</P
+></LI
+><LI
+><P
+>Strg + d    Lösche den Datensatz ohne Rückfrage</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="tb10"
+>9.2.3.3. Fenster Operationen</A
+></H3
+><P
+>In den meisten Fenstern ist eine Liste der Datensätze zu sehen. Diese Liste besitzt oben sogenannte Kopfzeilen. Sie können die Kopfzeilen anklicken, um die Sortierreihenfolgen zu ändern. Also z.B. in der Adressverwaltung die Einträge nach der Straße zu sortieren anstatt nach dem Namen. In den Kopfzeilen sind kleine Pfleile, die hoch bzw. runter zeigen, damit ist die Sortierreihenfolge dargestellt.
+</P
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -311,7 +306,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1151.html"
+HREF="c1152.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -329,7 +324,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c1231.html"
+HREF="c1245.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -339,13 +334,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Stammdaten</TD
+>Erste Schritte</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1151.html"
+HREF="c1152.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -353,7 +348,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Document Management System ( DMS)</TD
+>Allgemeine Firmeneinstellungen</TD
 ></TR
 ></TABLE
 ></DIV

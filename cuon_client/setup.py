@@ -104,7 +104,7 @@ class setup:
         self.CUON_VAR_WWW_GLADE = self.CUON_VAR_WWW + '/Glade'
         
         self.CUON_VAR_WWW_ST = self.CUON_VAR_WWW + '/SupportTicket'
-         
+        self.CUON_VAR_LB = self.CUON_VAR + '/LoadBalancer'
          
         self.CUON_DOCUMENTS = self.CUON_VAR + "/Documents"
         self.CUON_TMP = self.CUON_VAR + "/tmp"
@@ -297,11 +297,13 @@ class setup:
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ICAL + " ] ; then mkdir " + self.CUON_VAR_WWW_ICAL + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_AI + " ] ; then mkdir " + self.CUON_VAR_WWW_AI + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_ST + " ] ; then mkdir " + self.CUON_VAR_WWW_ST + " ; fi ")   
+        self.executeSSH(" if  [ ! -d " + self.CUON_VAR_LB + " ] ; then mkdir " + self.CUON_VAR_LB + " ; fi ")   
         self.executeSSH(" if  [ ! -d " + self.CUON_VAR_WWW_GLADE + " ] ; then mkdir " + self.CUON_VAR_WWW_GLADE + " ; fi ")   
         self.executeSCP(" -r ../cuon_server/WEB/html/*",  self.CUON_VAR_WWW  )
         self.executeSCP(" -r " +self.dest_glade + "/*",  self.CUON_VAR_WWW_GLADE  )
         self.executeSCP(" -r ../cuon_server/AI/*",  self.CUON_VAR_WWW_AI  )
         self.executeSCP(" -r ../cuon_server/SupportTicket/*",  self.CUON_VAR_WWW_ST )
+        self.executeSCP(" -r ../cuon_server/LoadBalancer/*",  self.CUON_VAR_LB )
         
         
         # create and copy reports and doc
@@ -342,6 +344,10 @@ class setup:
        
         # startscripts in /etc/init.d
         
+        
+        self.executeSCP(" scp ../cuon_server/src/cuond.sh ","/usr/bin/")
+        self.executeSCP(" scp ../cuon_server/src/cuond ","/etc/init.d")
+        
 ##        self.executeSCP(" scp ../cuon_server/src/cuonxmlrpc ","/etc/init.d")
 ##        self.executeSCP(" scp ../cuon_server/src/cuonai " , "/etc/init.d")
 ##        self.executeSCP(" scp ../cuon_server/src/cuonreport " , "/etc/init.d")
@@ -372,15 +378,19 @@ class setup:
         
         # make executable
         self.executeSSH(" chmod a+x " + self.SERVERDIRSHARE + "/cuon_server/src/server_*")
+        
         self.executeSSH(" chmod u+x /etc/init.d/cuon*")
+        self.executeSSH(" chmod u+x /usr/bin/cuond*")
+        
         # aktivierung setzen
-        self.executeSSH(" update-rc.d cuonxmlrpc defaults")
-        self.executeSSH(" update-rc.d cuonweb defaults")
-        self.executeSSH(" update-rc.d cuonreport defaults")
-        self.executeSSH(" update-rc.d cuonai defaults")
-        self.executeSSH(" update-rc.d cuonweb2 defaults")
-        self.executeSSH(" update-rc.d cuonweb3 defaults")
-        self.executeSSH(" update-rc.d cuonjabber defaults")
+        #self.executeSSH(" update-rc.d cuond defaults")
+        #self.executeSSH(" update-rc.d cuonxmlrpc defaults")
+        #self.executeSSH(" update-rc.d cuonweb defaults")
+        #self.executeSSH(" update-rc.d cuonreport defaults")
+        #self.executeSSH(" update-rc.d cuonai defaults")
+        #self.executeSSH(" update-rc.d cuonweb2 defaults")
+        #self.executeSSH(" update-rc.d cuonweb3 defaults")
+        #self.executeSSH(" update-rc.d cuonjabber defaults")
        
         
         # Then check the files 
@@ -431,14 +441,16 @@ class setup:
         
     def restartServer(self):
         # restart the server
-        self.executeSSH(" nohup /etc/init.d/cuonxmlrpc restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonweb3 restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonai restart &")
-        self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
+        self.executeSSH(" nohup /etc/init.d/cuond restart &")
         
+#        self.executeSSH(" nohup /etc/init.d/cuonxmlrpc restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonweb3 restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonai restart &")
+#        self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
+#        
         
         
         # start some sql-things
@@ -868,8 +880,10 @@ class setup:
         
     def on_bTest_clicked(self,  event):
         print "test"
+    
+    def on_bCancel_clicked(self, event):  
+        sys.exit(0)
         
-
     def gtk_main_quit(self):
         #os.system('rm users.cfg')
         

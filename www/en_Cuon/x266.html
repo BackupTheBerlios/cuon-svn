@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->sql.ini </TITLE
+>clients.ini </TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -11,13 +11,13 @@ TITLE=" C.U.O.N. "
 HREF="index.html"><LINK
 REL="UP"
 TITLE="Configuration"
-HREF="c181.html"><LINK
+HREF="c193.html"><LINK
 REL="PREVIOUS"
-TITLE="clients.ini "
-HREF="x249.html"><LINK
+TITLE="menu.cfg "
+HREF="x259.html"><LINK
 REL="NEXT"
-TITLE="UserGroups.cfg "
-HREF="x272.html"></HEAD
+TITLE="sql.ini "
+HREF="x283.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x249.html"
+HREF="x259.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x272.html"
+HREF="x283.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -73,77 +73,149 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="sql_ini"
->2.5. sql.ini</A
+NAME="clients_ini"
+>2.4. clients.ini</A
 ></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="userrights_clients"
+>2.4.1. userrights for different clients</A
+></H2
 ><P
->&#13;<DIV
+>Berechtigungen fuer die Mandanten </P
+><DIV
 CLASS="example"
 ><A
-NAME="config_sql"
+NAME="config_clients_clients"
 ></A
 ><P
 ><B
->Example 2-14. Configuration sql.ini</B
+>Example 2-13. clients.ini</B
 ></P
 ><PRE
 CLASS="programlisting"
->&#13;
-# Hier bitte alle Gruppen durch Kommata getrennt eintragen
-[GROUPS]
-NAMES: office,invoice
+>&#13;[username]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
 
-
-# set here the rights for some automatical actions
-# rwxrwxrwx
-# r = read, also lesen
-# w = write, also schreiben
-# x = eXecute, also ausführen
-# settings for  User, Group, All
-# a underline is the meaning of &#60;emphasis&#62;no right&#60;/emphasis&#62; 
-# Then, with comma separated a list of groups 
-[DEFAULT_MODUL_RIGHTS_DMS] INVOICE: rw_r__r__,rechnung 
-[LIMIT] Address: 30 
-Garden: 217 
-Project: 50 
-Articles: 80 
-Order: 50 
-# Her wird die Anzahl der Listeneinträge, die beim Modulstart angezeigt werden Modul eingetragen. 
-# Beispiel Adress:30 zeigt beim Laden des Adressmoduls die ersten 30 Adresseinträge 
-#Bei einer schnellen Netzwerkverbindung zu dem Server kann man getrost die meisten Einträge auf 500 stellen. 
-
-#Diese Einträge gelten für die Auftragsbearbeitung 
-[modul_order] 
-default_top: 1 
-#die default zahlungsbedingung, wenn keine beim Auftrag gefunden wird 
-
-#The following entries are required for the hibernation module (horticulture): 
-[modul_hibernation] 
-replace_staff_pickup: 1 
-replace_staff_supply: 2 
-replace_plant_hibertion:3 
-replace_plant_add_pot:4 
-replace_plant_add_material:5 
-replace_plant_add_earth:6 
-replace_plant_add_misc:7 
-#These settings have the hibernation services (winter, delivery, etc. Umtopfarbeiten) solid articles (the number is the Item ID). Using this product after the tax, gross / #Nettorprice is set. 
-#The following are the text messages for billing: 
-translate_price_hibernation_for: Preis der Ueberwinterung für 
-translate_price_add_pot_for: Preis für groesseren Topf 
-translate_price_add_material_for: 
-Preis für zus. Material 
-translate_price_add_earth_for: 
-Preis für zus. Erde 
-translate_price_add_misc_for: Preis für Sonstiges 
-translate_price_staff_pickup_for: Abholkosten 
-translate_price_staff_supply_for: Anlieferkosten 
-translate_price_staff_pickup_for: Abholkosten 
-translate_price_staff_supply_for: Anlieferkosten 
+#You set here the rights of the different user for the clients, Each client ID is one client, for example:
+[admin]
+clientsRightCreate: Yes
+clientsIDs: 1,2,3,4,5,6
+[jhamel]
+clientsRightCreate: No
+clientsIDs: 1
 </PRE
 ></DIV
->
+><P
+> The user with the name "admin" is allowed to create new clients and see after login the clients with the id's 1-6, the user with the name "jhamel" see only client 1 and has no right to create new clients.</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="clients"
+>2.4.2. Der Abschnitt CLIENT_</A
+></H2
+><P
+> Jeweils ein Abschnitt beginnenend mit CLIENT_ gefolgt von der client ID beschreibt die mandantenspezifischen Einstellungen. </P
+><P
+>CLIENT_xxx ist die Mandanten ID</P
+><P
+><DIV
+CLASS="example"
+><A
+NAME="config_clients"
+></A
+><P
+><B
+>Example 2-14. </B
+></P
+><PRE
+CLASS="programlisting"
+>&#13;[CLIENT_1]
+# settings for the automatical email transfer
+# at ever changes in some notes we send an email 
 
-</P
+sendNotes0: YES
+Notes0_ID: 17
+AdditinalEmailAddressesNotes0: &#60;email&#62;user@web.com&#60;/email&#62; 
+sendMailsNotes0: caller,rep,salesman 
+sendNotes0: YES # or NO to decide if you wish send automatic mails or not 
+Notes0_ID: 17 # ID of the docucument from the DMS that shall be send 
+AdditinalEmailAddressesNotes0: &#60;email&#62;jh@web.com&#60;/email&#62; # additional email addresses, separate by comma 
+sendMailsNotes0: caller,rep,salesman # internal notes for caller, reps or salesman 
+#Default term of payment 
+modul_order_default_top: 1 # ID of the term of payment 
+
+# Memories and reminders in Accounting
+# These values determine the date from invoice appears in the reminders. A second dependence is noted for the payment.
+# So, in a cash unconditional "paying immediate net cash" and a waiting period of 8 days, this would would be the settings. 
+# after 18 days the first time appear on the list.
+reminder_all_days_after: 10 
+reminder_first_days_after: 14 
+reminder_second_days_after: 25 
+reminder_last_days_after: 32 
+reminder_summons_days_after: 40 
+
+# list of reminders. 
+list_of_invoices_directDebit: 3 
+
+
+orderbook_number: !id,-,!year
+possible values: !id,!year,!month,!day,!seq, all other words or letters as a part of the name
+
+orderbook_designation: !lastname,_,!city,_,!id
+all tablenames of the addresses with a "!" in front of them
+
+list_of_invoices_directDebit: 3 
+articles_sort1_number: b 
+articles_sort1_sellingprice: c 
+articles_sort1_designation: a 
+
+# Checkboxes 
+
+# Addresses # Here are the entries for the selection boxes at the address, the tab Miscellaneous. 
+cbTrade: Keine Angabe,Industrie,Heimwerk,Einzelhande,Gastgewerbe,Transport, Dienstleistung, Sonstige 
+cbLegalform: keine Angabe,Einzelhandel, GmbH,GbR,oHG 
+cbTurnover: Keine Angabe,bis 100.000, bis 250.000, bis 500.000, bis 1 Million, bis 5 Millionen, ueber 5 millionen 
+cbFashion: Keine Angabe,Kunde,Lieferant,Verwaltung 
+#Projektverwaltung 
+cbProjectStatus: neu angelegt,laufend,fertig 
+
+#Graves
+
+#Graves
+cbGraveService: Standardpflege,Premiumpflege,individuelle Vereinbarung,nur Pflanzung
+cbTypeOfGrave: Urnengrab,Einzelgrab,Familiengrab,Dreifachgrab,Urnengrab mit Platteneinfassung,Einzelgrab mit Platteneinfassung,Familiengrab mit Platteneinfassung,Dreifachgrab mit Platteneinfassung,Urnengrab liegender Stein,Einzelgrab liegender Stein,Doppelgrab liegender Stein,Dreifachgrab liegender Stein,Gruft,Urnengemeinschaftsanlage,Urnenturm
+cbTypeOfPaying: jährlich,halbjährlich,TBF,Treuhand Nbg,keine Sammelrechnung
+cbPercentsGrave: 100%,90%,80%,75%,67%,60%,50%,40%,33%,30%,25%,20%,10%
+cbGraveSpringPeriod: Anpflanzung,Ostern,Valentinstag
+cbGraveSummerPeriod: Anpflanzung,Muttertag,Pfingsten,Frohnleichnamm
+cbGraveAutumnPeriod: Anpflanzung,Kirchweih
+cbGraveWinterPeriod: 1. Advent,Nikolaus,2.Advent,3.Advent,4.Advent,Weihnachten,Silvester
+cbGraveUniquePeriod: unbekannt,Grabneuanlage,Telefonischer Auftrag,Faxauftrag,Direktbestellung im Laden
+cbGraveHollidayPeriod: Allerheiligen,Totensonntag
+cbGraveYearlyPeriod: unbekannt,Geburtstag,Todestag,Hochzeit
+cbGraveSorting:None,Graveyard,Grave,Sequence,Period
+
+#Stats
+SchedulProcessStatus:0,1,2,100,101,200,201,801,802,803,804,810,820 
+StatsCallerCentury: 0 
+StatsCallerDecade: 0 
+StatsCallerYear: 1 
+StatsCallerQuarter: 2 
+StatsCallerMonth: 2 
+StatsCallerWeek: 2 
+
+</PRE
+></DIV
+></P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -161,7 +233,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x249.html"
+HREF="x259.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -179,7 +251,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x272.html"
+HREF="x283.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -189,13 +261,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->clients.ini</TD
+>menu.cfg</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c181.html"
+HREF="c193.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -203,7 +275,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->UserGroups.cfg</TD
+>sql.ini</TD
 ></TR
 ></TABLE
 ></DIV
