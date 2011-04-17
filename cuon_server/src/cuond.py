@@ -88,7 +88,7 @@ def writeConfigfile():
 # </config>
 
     print 'write'
-    s = '   <config> ' 
+    s = '<config> ' 
     
     if baseSettings.XMLRPC_ALLOW_HTTP:
         s += '\n\t<service name="cuon_http">\n\t\t<listen ip="' + baseSettings.XMLRPC_HOST + ':7000"/>\n\t\t\t<group name="server_xmlrpc" scheduler="roundr" enable="true">'
@@ -107,8 +107,18 @@ def writeConfigfile():
             s += '\n\t\t\t\t<host name="server_https_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.XMLRPC_HTTPS_PORT + addPort`+ '"/>'
             
         s+= '\n\t\t\t</group>\n\t\t</service>'       
-    s+= '	<admin>  <web listen="localhost:7001" enable="true"/> <ssh listen="localhost:7002" enable="true"/> <user name="admin" password="..xpoEyRReGzk" access="full"/></admin> </config>'
+   
+    s += '\n\n\t<service name="cuon_report">\n\t\t<listen ip="localhost:' + `baseSettings.REPORT_PORT ` + '"/>\n\t\t\t<group name="server_report" scheduler="roundr" enable="true">'
+    for i in range (1, iREPORT +1):
+        addPort = iPort *i
     
+        s += '\n\t\t\t\t<host name="server_report_' + `i` + '" ip="' +  baseSettings.XMLRPC_HOST + ':' + `baseSettings.REPORT_PORT + addPort` + '"/>'
+    
+    s+= '\n\t\t\t</group>\n\t\t</service>'
+    
+    s+= '	\n\t<admin>  \n\t\t<web listen="localhost:7001" enable="true"/> \n\t\t<ssh listen="localhost:7002" enable="true"/> \n\t\t<user name="admin" password="' + baseSettings.INSTANCES_PASSWORD + '" access="full"/>\n\t</admin> \n</config>'
+    
+        
     f = open(lb_path + '/etc/config.xml', 'w')
     f.write(s)
     f.close()
@@ -121,7 +131,7 @@ def startLoadBalancing():
     oStatus = subprocess.Popen(shellcommand, stdout=subprocess.PIPE,   shell = True)
     #oStatus.wait()
 def killAll():
-    liProcesses = ['server_ai', 'server_ical',  'server_jabber',  'server_report',  'server_web2',  'server_web3',  'server_xmlrpc']
+    liProcesses = ['server_ai', 'server_ical',  'server_jabber',  'server_report',  'server_web2',  'server_web3',  'server_xmlrpc', '/bin/txlb.tac']
     for sName in liProcesses:
         killProcess(sName)
         
@@ -165,7 +175,7 @@ if sStart in ['START', 'RESTART', 'RELOAD']:
         print 'load balance starting'
         for i in range(0, iXMLRPC):
             startXmlRpc(iPort *i)
-        for i in range(0, iREPORT ):    
+        for i in range(1, iREPORT + 1 ):    
             startReport(iPort *i)
         
         addPort = 0

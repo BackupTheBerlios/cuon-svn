@@ -383,7 +383,7 @@ CREATE OR REPLACE FUNCTION  fct_getArticlePartsListForOrder(OrderID integer) ret
     
     BEGIN
        
-       sSql := ''select articleid  as articl_id from orderpositions where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
+       sSql := ''select articleid  as article_id from orderpositions where orderid = '' || OrderID || '' '' ||  fct_getWhere(2,'' '') ;
        
        FOR r2 in execute(sSql)  LOOP
            

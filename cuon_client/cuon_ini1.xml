@@ -853,6 +853,13 @@
       <Glade-File>maemo_cuon.xml</Glade-File>
       <Glade-FileValue>../usr/share/cuon/glade/maemo_cuon.glade2</Glade-FileValue>
     </GladeEntries>
+     
+    <GladeEntries>
+      <Glade-Name>cuon</Glade-Name>
+      <Glade-File>alternate6_proposal.xml</Glade-File>
+      <Glade-FileValue>../usr/share/cuon/glade/alternate6_proposal.glade2</Glade-FileValue>
+    </GladeEntries>
+    
     </Glade_Init_Files>
   <Grant_Init_Files>    
     <GrantEntries>

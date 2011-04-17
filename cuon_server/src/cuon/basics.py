@@ -46,6 +46,7 @@ class basics(xmlrpc.XMLRPC):
         self.XMLRPC_INSTANCES = 1
         self.REPORT_INSTANCES = 1
         self.ADD_PORT_INSTANCES = 20
+        self.INSTANCES_PASSWORD = 'Test'
         
        # xmlrpc settings
         self.XMLRPC_HTTP_PORT = 7080
