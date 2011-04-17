@@ -439,18 +439,33 @@ class setup:
         
         self.restartServer()
         
+    def QuestionMsg(self, sText):
+        # gtk
+        ok = False
+        print 'QuestionMsg'
+        dialog = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_QUESTION,gtk.BUTTONS_YES_NO, sText);
+        response = dialog.run ();
+        dialog.destroy ();
+        print 'Response', response
+        if response == gtk.RESPONSE_YES:
+            ok = True
+        return ok    
     def restartServer(self):
         # restart the server
-        self.executeSSH(" nohup /etc/init.d/cuond restart &")
         
-#        self.executeSSH(" nohup /etc/init.d/cuonxmlrpc restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonweb3 restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonai restart &")
-#        self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
-#        
+        if self.QuestionMsg('Restart the Load Balancing System ( cuond ) ?' ):
+            self.executeSSH(" nohup /etc/init.d/cuond restart &")
+        else:
+            
+            if self.QuestionMsg('Restart the normal Cuon Server ?' ):
+                self.executeSSH(" nohup /etc/init.d/cuonxmlrpc restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonreport restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonweb restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonweb2 restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonweb3 restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonai restart &")
+                self.executeSSH(" nohup /etc/init.d/cuonjabber restart &")
+                
         
         
         # start some sql-things
