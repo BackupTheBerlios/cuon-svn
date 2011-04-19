@@ -1,5 +1,14 @@
 class constants:
     def __init__(self):
+        
+        
+        self.pagesizes = {}
+
+
+        self.pagesizes['A3'] = (841.88976377952747, 1190.5511811023621)
+        self.pagesizes['A4'] = (595.27559055118104, 841.88976377952747)
+        self.pagesizes['A5'] = (420.94488188976374, 595.27559055118104)
+        self.pagesizes['A6'] = (297.63779527559052, 420.94488188976374)
         self.MN = {}
         self.MN['Mainwindow'] = 10
         self.MN['Client'] = 1000

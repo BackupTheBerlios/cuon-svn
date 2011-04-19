@@ -316,9 +316,10 @@ import ConfigParser
 import cuon.XMLRPC.xmlrpc
 import cuon.Editor.editor
 try:
-        import cuon.ReportBuilder.reportbuilder
-except:
-        print 'could not read cuon.ReportBuilder.reportbuilder '
+    import cuon.ReportBuilder.reportbuilder
+except Exception,  params:
+    print 'could not read cuon.ReportBuilder.reportbuilder '
+    print Exception,  params
         
 class MainWindow(windows):
 
