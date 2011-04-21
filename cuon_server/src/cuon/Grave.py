@@ -157,13 +157,11 @@ class Grave(xmlrpc.XMLRPC, basics):
         sSql = "select * from fct_getGravePlantListValues( "  
         
         for sSearch in liSearchfields:
-            if sSearch:
-                if isinstance(sSearch,  types.IntType):
-                    sSql += `sSearch` + ",  " 
-                else:
-                    sSql += "'" + sSearch + "',  " 
+            if isinstance(sSearch,  types.IntType):
+                sSql += `sSearch` + ",  " 
             else:
-                sSql += "''" + ",  " 
+                sSql += "'" + sSearch.strip() + "',  " 
+            
         
         
         sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + " )  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar) "
@@ -177,14 +175,11 @@ class Grave(xmlrpc.XMLRPC, basics):
         sSql = "select * from fct_getGravePlantListArticles( "  
         
         for sSearch in liSearchfields:
-            if sSearch:
-                if isinstance(sSearch,  types.IntType):
-                    sSql += `sSearch` + ",  " 
-                else:
-                    sSql += "'" + sSearch + "',  " 
+            if isinstance(sSearch,  types.IntType):
+                sSql += `sSearch` + ",  " 
             else:
-                
-                sSql += "''" + ",  " 
+                sSql += "'" + sSearch.strip() + "',  " 
+            
         
         
         sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + ")  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number varchar(150), article_designation varchar(250),service_price float, service_count float) "

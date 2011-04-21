@@ -6,6 +6,7 @@ import gtk
 import operator
 import time
 import string
+
 from cuon.Windows.gladeXml import gladeXml
 
 
@@ -25,24 +26,34 @@ class drawingReport(gladeXml):
         self.table = gtk.Table(2,2)
         self.hruler = gtk.HRuler()
         self.vruler = gtk.VRuler()
-        self.Zoom = 2
+        self.Zoom = 4
+        
+        self.ColorRed = gtk.gdk.color_parse("red")
+        self.ColorBlue = gtk.gdk.color_parse("blue")
+        self.ColorGreen = gtk.gdk.color_parse("green")
+        self.ColorNavajoWhite = gtk.gdk.color_parse("navajowhite")
+        self.ColorBlack = gtk.gdk.color_parse("black")
+        self.ColorWhite = gtk.gdk.color_parse("white")
+        
         
     def createDA(self, sw, vp, da,  width,  height):
         self.area = da
         self.sw = sw
+        self.width = width
+        self.height = height
         
         self.area.set_size_request(width*self.Zoom,  height*self.Zoom)
         self.pangolayout = self.area.create_pango_layout("")
-        self.hruler.set_range(0, width*self.Zoom, 0, width*self.Zoom)
-        self.vruler.set_range(0, height*self.Zoom,  0, height*self.Zoom)
-        self.table.attach(self.hruler, 1, 2, 0, 1, yoptions=0)
-        self.table.attach(self.vruler, 0, 1, 1, 2, xoptions=0)
-        self.table.attach(self.sw, 1, 2, 1, 2)
-        self.sw.add(self.table)
-        self.area.set_events(gtk.gdk.POINTER_MOTION_MASK |
-                             gtk.gdk.POINTER_MOTION_HINT_MASK )
+        #self.hruler.set_range(0, width*self.Zoom, 0, width*self.Zoom)
+        #self.vruler.set_range(0, height*self.Zoom,  0, height*self.Zoom)
+        #self.table.attach(self.hruler, 1, 2, 0, 1, yoptions=0)
+        #self.table.attach(self.vruler, 0, 1, 1, 2, xoptions=0)
+        #self.table.attach(self.sw, 1, 2, 1, 2)
+        #self.sw.add(self.table)
+        #self.area.set_events(gtk.gdk.POINTER_MOTION_MASK | gtk.gdk.POINTER_MOTION_HINT_MASK )
         self.area.connect("expose-event", self.area_expose_cb)
         
+    
         
         def motion_notify(ruler, event):
             return ruler.emit("motion_notify_event", event)
@@ -79,27 +90,58 @@ class drawingReport(gladeXml):
         self.sw.show()
         self.table.show()
         #self.area.show()
-
+    def getEntryAtPosition(self, x,  y):
+        liEntries = []
+        for dicEntry in self.drawObjects:
+            #print 'Values = ', x, dicEntry['x1']*self.Zoom , dicEntry['x2']*self.Zoom , y, dicEntry['y1']*self.Zoom ,  dicEntry['y2']*self.Zoom
+            if x >= dicEntry['x1']*self.Zoom and  x <= dicEntry['x2'] *self.Zoom and  y >= dicEntry['y1'] *self.Zoom  and  y <= dicEntry['y2']*self.Zoom :
+                liEntries.append(dicEntry)
+        return liEntries
+            
+    def setEntry(self, dicEntry):
+        if dicEntry['y2'] != dicEntry['y1'] and dicEntry['y2'] == 0:
+            dicEntry['y2'] = dicEntry['y1']
+        if dicEntry['class'] not in ['Line']:
+            if dicEntry['y2'] == dicEntry['y1'] or dicEntry['y2'] == 0:
+                dicEntry['y2'] = dicEntry['y1'] +15   
+        self.drawObjects.append(dicEntry)
     def area_expose_cb(self, area, event):
         self.style = self.area.get_style()
         self.gc = self.style.fg_gc[gtk.STATE_NORMAL]
+        
+        self.gc.set_rgb_bg_color(self.ColorWhite)
+        self.gc.set_rgb_fg_color(self.ColorWhite)
+        
+        self.area.window.draw_rectangle(self.gc, True,0, 0, self.width*self.Zoom,  self.height*self.Zoom)
+        
+        
         for entry in self.drawObjects:
-            
-            self.draw_rectangle(entry)
+            if entry['class'] in ['LINE']:
+                self.draw_line(self.ColorRed,  entry)
+            else:
+                self.draw_rectangle(self.ColorBlue,  entry)
         return True
 
 
 
-    def draw_rectangle(self,  dicEntry):
-        dicEntry['y2'] = dicEntry['y1'] +15
+    def draw_rectangle(self,color,    dicEntry):
+        
         width = dicEntry['x2'] - dicEntry['x1']
-        height = dicEntry['y1'] - dicEntry['y2']
-        self.area.window.draw_rectangle(self.gc, False, dicEntry['x1'] *self.Zoom, dicEntry['y1']*self.Zoom,  width*self.Zoom,  height*self.Zoom )
+        height = dicEntry['y2'] - dicEntry['y1']
+        
+        
+        for i in [True, False]:
+            if i:
+                self.gc.set_rgb_fg_color(self.ColorNavajoWhite)
+            else:
+                self.gc.set_rgb_fg_color(color)
+            self.area.window.draw_rectangle(self.gc, i, dicEntry['x1'] *self.Zoom, dicEntry['y1']*self.Zoom,  width*self.Zoom,  height*self.Zoom )
         #self.area.window.draw_rectangle(self.gc, True, x+10, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+50, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+20, y+50, 40, 10)
         self.pangolayout.set_text(dicEntry['eName'])
-        self.area.window.draw_layout(self.gc, dicEntry['x1']*self.Zoom, dicEntry['y2']*self.Zoom,  self.pangolayout)
+        self.gc.set_rgb_fg_color(self.ColorBlack)
+        self.area.window.draw_layout(self.gc, dicEntry['x1']*self.Zoom, dicEntry['y1']*self.Zoom,  self.pangolayout)
         return
 
     def draw_point(self, x, y):
@@ -116,10 +158,12 @@ class drawingReport(gladeXml):
         self.area.window.draw_layout(self.gc, x+5, y+50, self.pangolayout)
         return
 
-    def draw_line(self, x, y):
-        self.area.window.draw_line(self.gc, x+10, y+10, x+20, y+30)
-        self.pangolayout.set_text("Line")
-        self.area.window.draw_layout(self.gc, x+5, y+50, self.pangolayout)
+    def draw_line(self,color,  dicEntry):
+        self.gc.set_rgb_fg_color(color)
+        self.area.window.draw_line(self.gc,dicEntry['x1']*self.Zoom , dicEntry['y1']*self.Zoom, self.gc,dicEntry['x2']*self.Zoom , dicEntry['y2']*self.Zoom)
+        self.pangolayout.set_text(dicEntry['eName'])
+        self.gc.set_rgb_fg_color(self.ColorBlack)
+        self.area.window.draw_layout(self.gc,dicEntry['x1']*self.Zoom , dicEntry['y1']*self.Zoom +5, self.pangolayout)
         return
 
     def draw_lines(self, x, y):

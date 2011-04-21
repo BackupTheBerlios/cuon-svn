@@ -135,7 +135,7 @@ class plantlists(cuonlists):
        
         
         iPlantation = self.getWidget('cbPlants').get_active()
-        
+        print 'iservice,  iPlantation = ',  iService,  iPlantation
         
         liReturn.append( gyID)
         liReturn.append( self.getWidget('eGraveFrom').get_text() )

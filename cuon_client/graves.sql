@@ -43,7 +43,8 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_last
         
         searchsql :=  searchsql  || ''from  graveyard, grave, address ''  || additionalTables || '' where ''  ;
         
-        searchsql :=  searchsql  ||  '' grave.addressid = address.id and grave.graveyardid = graveyard.id ''  ;
+        searchsql :=  searchsql  ||  '' grave.addressid = address.id and grave.graveyardid = graveyard.id and graveyard.id = '' || graveyard_id || '' ''  ;
+        searchsql := searchsql || '' and grave.status != ''''delete'''' '' ;
         searchsql :=  searchsql  || additionalWhere || '' '' ;
         
         IF graveyard_id > 0 THEN
@@ -137,12 +138,20 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave
     
     BEGIN
         additionalTables  :='',grave_work_maintenance as gm, articles as ar  '' ;
-        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id'' ;
+        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id '' ;
+        IF service > -1 THEN
+            -- show the service graves
+            
+            additionalWhere := additionalWhere  || '' and gm.grave_service_id = '' || service || '' and gm.status != ''''delete'''' ''   ;
+        END IF ;
         additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count '' ;
         
         searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation,   iRows,additionalRows, additionalTables, additionalWhere) ;
         -- searchsql := searchsql || '' '' ;
-        searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.id, grave.id, grave.pos_number'';
+        
+        
+       
+        searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by graveyard.id, grave.pos_number'';
         raise notice ''SQL = %'',searchsql ;
         
         for r in execute(searchsql)  LOOP 
