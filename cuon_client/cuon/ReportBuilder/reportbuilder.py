@@ -76,7 +76,7 @@ class reportbuilderwindow(modifyEntryWindow):
         self.dicText['TopMargin'] = 30
         self.activeRegion = 1
         self.activeGroup = 0
-        
+        self.activeDA = None
         self.drawReportHeader = {}
         self.drawPageHeader = {}
         self.drawGroup = {}
@@ -270,6 +270,7 @@ class reportbuilderwindow(modifyEntryWindow):
       
     def on_bRefresh_clicked(self, event):
         print 'bRefresh clicked'
+        self.activeDA.area_expose_cb(None, event)
         
         
     def on_tbSave_clicked(self, event):
@@ -279,20 +280,20 @@ class reportbuilderwindow(modifyEntryWindow):
     def replaceEntry(self,  dicEntry):
         
         print 'active Region = ',  self.activeRegion
-        da = None
+        self.activeDA = None
         if self.activeRegion == 1:
-            da = self.reportHeaderDA
+            self.activeDA = self.reportHeaderDA
         elif self.activeRegion == 2:
-            da = self.PageHeaderDA
+            self.activeDA= self.PageHeaderDA
         elif self.activeRegion == 3:
-            da = self.reportGroupsDA[self.activeGroup]
+            self.activeDA = self.reportGroupsDA[self.activeGroup]
         elif self.activeRegion == 4:
-            da = self.PageFooterDA
+            self.activeDA = self.PageFooterDA
         elif self.activeRegion == 5:
-            da = self.reportFooterDA              
+            self.activeDA  = self.reportFooterDA              
             
-        da.replaceEntryByName(dicEntry)
-        
+        self.activeDA.replaceEntryByName(dicEntry)
+
         
     def saveFile(self):    
         liEntry,  liReport = self.reportValues.getEntries()

@@ -95,7 +95,7 @@ class drawingReport(gladeXml):
     def replaceEntryByName(self, dicEntry):
         replace = False
         for i in range(len(self.drawObjects)):
-            if self.drawObjects[i].['eName'] == dicEntry['eName']:
+            if self.drawObjects[i]['eName'] == dicEntry['eName']:
                 self.drawObjects[i] = dicEntry
                 replace = True
                 break

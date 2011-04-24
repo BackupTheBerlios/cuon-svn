@@ -90,7 +90,9 @@ class modifyEntryWindow(chooseWindows):
         self.ePosX2.set_text(`dicEntry['posX2']`)
         self.ePosY1.set_text(`dicEntry['posY1']`)
         self.ePosY2.set_text(`dicEntry['posY2']`)
-     
+        self.eClass.set_text(`dicEntry['class']`)
+        
+        
     def readEntries(self):
         dicEntry = {}
         dicEntry['eName'] = self.eName.get_text()
@@ -98,7 +100,7 @@ class modifyEntryWindow(chooseWindows):
         dicEntry['posX2'] = int(self.ePosX2.get_text())
         dicEntry['posY1'] = int(self.ePosY1.get_text())
         dicEntry['posY2'] = int(self.ePosY2.get_text())
-        
+        dicEntry['class'] = self.eClass.get_text()
         self.replaceEntry( dicEntry)
         
         self.activateClick('bRefresh',sAction = "clicked")
