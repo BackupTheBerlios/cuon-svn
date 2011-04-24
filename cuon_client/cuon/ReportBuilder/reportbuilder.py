@@ -75,6 +75,7 @@ class reportbuilderwindow(modifyEntryWindow):
         
         self.dicText['TopMargin'] = 30
         self.activeRegion = 1
+        self.activeGroup = 0
         
         self.drawReportHeader = {}
         self.drawPageHeader = {}
@@ -278,6 +279,20 @@ class reportbuilderwindow(modifyEntryWindow):
     def replaceEntry(self,  dicEntry):
         
         print 'active Region = ',  self.activeRegion
+        da = None
+        if self.activeRegion == 1:
+            da = self.reportHeaderDA
+        elif self.activeRegion == 2:
+            da = self.PageHeaderDA
+        elif self.activeRegion == 3:
+            da = self.reportGroupsDA[self.activeGroup]
+        elif self.activeRegion == 4:
+            da = self.PageFooterDA
+        elif self.activeRegion == 5:
+            da = self.reportFooterDA              
+            
+        da.replaceEntryByName(dicEntry)
+        
         
     def saveFile(self):    
         liEntry,  liReport = self.reportValues.getEntries()

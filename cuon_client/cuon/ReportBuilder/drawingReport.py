@@ -91,6 +91,18 @@ class drawingReport(gladeXml):
         self.sw.show()
         self.table.show()
         #self.area.show()
+        
+    def replaceEntryByName(self, dicEntry):
+        replace = False
+        for i in range(len(self.drawObjects)):
+            if self.drawObjects[i].['eName'] == dicEntry['eName']:
+                self.drawObjects[i] = dicEntry
+                replace = True
+                break
+        if not replace:
+            self.drawObjects.append(dicEntry)
+            
+            
     def getEntryAtPosition(self, x,  y):
         liEntries = []
         for dicEntry in self.drawObjects:
