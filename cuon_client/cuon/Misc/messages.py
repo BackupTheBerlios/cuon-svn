@@ -11,7 +11,8 @@ class messages:
         self.Buttons = {}
         
         #
-        
+       
+  
     def errorMsg(self, sText):
         # gtk
         ok = False

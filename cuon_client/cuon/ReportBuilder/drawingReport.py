@@ -22,6 +22,7 @@ class drawingReport(gladeXml):
         self.vruler = None
         
         self.drawObjects = []
+        self.reportObjects = []
         
         self.table = gtk.Table(2,2)
         self.hruler = gtk.HRuler()
@@ -93,18 +94,29 @@ class drawingReport(gladeXml):
     def getEntryAtPosition(self, x,  y):
         liEntries = []
         for dicEntry in self.drawObjects:
-            #print 'Values = ', x, dicEntry['x1']*self.Zoom , dicEntry['x2']*self.Zoom , y, dicEntry['y1']*self.Zoom ,  dicEntry['y2']*self.Zoom
-            if x >= dicEntry['x1']*self.Zoom and  x <= dicEntry['x2'] *self.Zoom and  y >= dicEntry['y1'] *self.Zoom  and  y <= dicEntry['y2']*self.Zoom :
+            print 'Values = ',dicEntry['eName'],  x, dicEntry['posX1']*self.Zoom , dicEntry['posX2']*self.Zoom , y, dicEntry['posY1']*self.Zoom ,  dicEntry['posY2']*self.Zoom
+            if x >= dicEntry['posX1']*self.Zoom and  x <= dicEntry['posX2'] *self.Zoom and  y >= dicEntry['posY1'] *self.Zoom  and  y <= dicEntry['posY2']*self.Zoom :
                 liEntries.append(dicEntry)
         return liEntries
             
     def setEntry(self, dicEntry):
-        if dicEntry['y2'] != dicEntry['y1'] and dicEntry['y2'] == 0:
-            dicEntry['y2'] = dicEntry['y1']
+        print 'setEntry ',  dicEntry['eName'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']
+        
+        if dicEntry['posY2'] != dicEntry['posY1'] and dicEntry['posY2'] == 0:
+            dicEntry['posY2'] = dicEntry['posY1']
         if dicEntry['class'] not in ['Line']:
-            if dicEntry['y2'] == dicEntry['y1'] or dicEntry['y2'] == 0:
-                dicEntry['y2'] = dicEntry['y1'] +15   
+            if dicEntry['posY2'] == dicEntry['posY1'] or dicEntry['posY2'] == 0:
+                dicEntry['posY2'] = dicEntry['posY1'] +15  
+        print 'setEntry2 ',  dicEntry['eName'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']       
         self.drawObjects.append(dicEntry)
+        
+    def setReportEntry(self, dicEntry):
+        self.reportObjects.append(dicEntry)
+        
+        
+        
+    def getEntries(self):
+        return self.drawObjects,  self.reportObjects 
     def area_expose_cb(self, area, event):
         self.style = self.area.get_style()
         self.gc = self.style.fg_gc[gtk.STATE_NORMAL]
@@ -126,8 +138,8 @@ class drawingReport(gladeXml):
 
     def draw_rectangle(self,color,    dicEntry):
         
-        width = dicEntry['x2'] - dicEntry['x1']
-        height = dicEntry['y2'] - dicEntry['y1']
+        width = dicEntry['posX2'] - dicEntry['posX1']
+        height = dicEntry['posY2'] - dicEntry['posY1']
         
         
         for i in [True, False]:
@@ -135,13 +147,13 @@ class drawingReport(gladeXml):
                 self.gc.set_rgb_fg_color(self.ColorNavajoWhite)
             else:
                 self.gc.set_rgb_fg_color(color)
-            self.area.window.draw_rectangle(self.gc, i, dicEntry['x1'] *self.Zoom, dicEntry['y1']*self.Zoom,  width*self.Zoom,  height*self.Zoom )
+            self.area.window.draw_rectangle(self.gc, i, dicEntry['posX1'] *self.Zoom, dicEntry['posY1']*self.Zoom,  width*self.Zoom,  height*self.Zoom )
         #self.area.window.draw_rectangle(self.gc, True, x+10, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+50, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+20, y+50, 40, 10)
         self.pangolayout.set_text(dicEntry['eName'])
         self.gc.set_rgb_fg_color(self.ColorBlack)
-        self.area.window.draw_layout(self.gc, dicEntry['x1']*self.Zoom, dicEntry['y1']*self.Zoom,  self.pangolayout)
+        self.area.window.draw_layout(self.gc, dicEntry['posX1']*self.Zoom, dicEntry['posY1']*self.Zoom,  self.pangolayout)
         return
 
     def draw_point(self, x, y):
@@ -160,10 +172,10 @@ class drawingReport(gladeXml):
 
     def draw_line(self,color,  dicEntry):
         self.gc.set_rgb_fg_color(color)
-        self.area.window.draw_line(self.gc,dicEntry['x1']*self.Zoom , dicEntry['y1']*self.Zoom, self.gc,dicEntry['x2']*self.Zoom , dicEntry['y2']*self.Zoom)
+        self.area.window.draw_line(self.gc,dicEntry['posX1']*self.Zoom , dicEntry['posY1']*self.Zoom, self.gc,dicEntry['posX2']*self.Zoom , dicEntry['posY2']*self.Zoom)
         self.pangolayout.set_text(dicEntry['eName'])
         self.gc.set_rgb_fg_color(self.ColorBlack)
-        self.area.window.draw_layout(self.gc,dicEntry['x1']*self.Zoom , dicEntry['y1']*self.Zoom +5, self.pangolayout)
+        self.area.window.draw_layout(self.gc,dicEntry['posX1']*self.Zoom , dicEntry['posY1']*self.Zoom +5, self.pangolayout)
         return
 
     def draw_lines(self, x, y):

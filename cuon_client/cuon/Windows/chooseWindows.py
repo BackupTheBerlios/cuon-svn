@@ -23,6 +23,12 @@ class chooseWindows(windows):
         self.chooseEntry = None
         self.chooseMenuItem = None
         
+        self.specialValue = None 
+        self.chooseButton = None
+    def setChooseButton(self,  button):
+        self.chooseButton = button
+        
+        
     def setChooseEntry(self,sName, entry):
         # sName = name of Menuitem for choose
         # entry = entry to set value
@@ -33,6 +39,10 @@ class chooseWindows(windows):
         self.chooseMenuitem.set_sensitive(True)
         
 
+    def pressChoosebutton(self):
+        if self.chooseButton:
+            self.activateClick(self.chooseButton, 'clicked')
+            
     def setChooseValue(self, chooseValue):
         print '<<<<<<<<<<<<<<< setCooseValue <<<<<<<<<<<<<<<<<<<<<'
         

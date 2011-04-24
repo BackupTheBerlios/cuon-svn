@@ -15,7 +15,7 @@
 import sys
 import os
 import os.path
-from types import *
+import types
 import pygtk
 pygtk.require('2.0')
 import gtk
@@ -35,6 +35,8 @@ locale.setlocale (locale.LC_NUMERIC, '')
 import threading
 import datetime as DateTime
 import drawingReport
+import cuon.Misc.cuon_dialog
+
 from modifyEntry import modifyEntryWindow
 
 class reportbuilderwindow(modifyEntryWindow):
@@ -72,17 +74,35 @@ class reportbuilderwindow(modifyEntryWindow):
         self.dicPage['PageFootAppendToGroup']  = 0 
         
         self.dicText['TopMargin'] = 30
-           
+        self.activeRegion = 1
+        
         self.drawReportHeader = {}
         self.drawPageHeader = {}
         self.drawGroup = {}
         self.drawPageFooter = {}
         self.drawReportFooter = {}
+        self.reportHeaderDA = None
+        self.PageHeaderDA = None
+        self.reportGroupsDA = []
+        self.PageFooterDA = None
+        self.reportFooterDA = None
         
         
-        daReportHeader = self.getWidget('daReportHeader')
+        daR = self.getWidget('daReportHeader')
+        daR.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
+      
+        daR = self.getWidget('daPageHeader')
+        daR.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
         
-        daReportHeader.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
+        daR = self.getWidget('daGroups')
+        daR.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
+        
+        daR = self.getWidget('daPageFooter')
+        daR.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
+        
+        daR = self.getWidget('daReportFooter')
+        daR.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.LEAVE_NOTIFY_MASK | gtk.gdk.BUTTON_PRESS_MASK | gtk.gdk.POINTER_MOTION_MASK  | gtk.gdk.POINTER_MOTION_HINT_MASK)
+      
         
  
         #self.loadGlade('reportbuilder.xml')
@@ -100,10 +120,22 @@ class reportbuilderwindow(modifyEntryWindow):
             self.dicCurrentFilename = {'TYPE':'FILE','NAME':'./new.txt'}
        
         
-        
+    # menu File
+    def on_save_activate(self, event):
+        print 'save clicked'
+        self.saveFile()
+    
+    
+    #Events
+    
+    # Report Header
+    
+    
+    
     def on_daReportHeader_button_press_event(self,  oWidget,  data):
       
         print 'mouse button = ',  oWidget , data,  data.x,  data.y
+        self.activateClick("rRHactive", "clicked")
         if data.button == 3:
             liEntries = self.reportHeaderDA.getEntryAtPosition(data.x,  data.y)
             for dicEntry in liEntries:
@@ -111,11 +143,263 @@ class reportbuilderwindow(modifyEntryWindow):
             if liEntries:
                 self.modifyEntry(liEntries[0])
      
-    def modifyEntry(self, dicEntry):
-        self.ModifyEntryShow(dicEntry)
+    
         
     def on_daReportHeader_key_press_event(self, oWidget,  data ):
         print 'key = ',  oWidget,  data
+     
+        
+        
+    # Page Header
+    
+    
+    
+    def on_daPageHeader_button_press_event(self,  oWidget,  data):
+      
+        print 'mouse button = ',  oWidget , data,  data.x,  data.y
+        self.activateClick("rPHactive", "clicked")
+        if data.button == 3:
+            liEntries = self.PageHeaderDA.getEntryAtPosition(data.x,  data.y)
+            for dicEntry in liEntries:
+                print 'Entry at mousepointer: ',  dicEntry['eName']
+            if liEntries:
+                self.modifyEntry(liEntries[0])
+     
+    
+        
+    def on_daPageHeader_key_press_event(self, oWidget,  data ):
+        print 'key = ',  oWidget,  data
+     
+     # Report Groups
+    
+    
+    
+    def on_daGroups_button_press_event(self,  oWidget,  data):
+      
+        print 'mouse button = ',  oWidget , data,  data.x,  data.y
+        self.activateClick("rGactive", "clicked")
+        if data.button == 3:
+            liEntries = self.reportGroupsDA[0].getEntryAtPosition(data.x,  data.y)
+            for dicEntry in liEntries:
+                print 'Entry at mousepointer: ',  dicEntry['eName']
+            if liEntries:
+                self.modifyEntry(liEntries[0])
+     
+    
+        
+    def on_daGroups_key_press_event(self, oWidget,  data ):
+        print 'key = ',  oWidget,  data
+     
+     # Page Footer
+    
+    
+    
+    def on_daPageFooter_button_press_event(self,  oWidget,  data):
+      
+        print 'mouse button = ',  oWidget , data,  data.x,  data.y
+        self.activateClick("rPFactive", "clicked")
+        if data.button == 3:
+            liEntries = self.PageFooterDA.getEntryAtPosition(data.x,  data.y)
+            for dicEntry in liEntries:
+                print 'Entry at mousepointer: ',  dicEntry['eName']
+            if liEntries:
+                #print liEntries,  len(liEntries)
+                if len(liEntries)> 1:
+                    sText = 'Choose: \n'
+                    for l in range(0, len(liEntries)):
+                        sText += `l` + "  "  + liEntries[l]['eName'] + "\n"
+                        
+                    cd = cuon.Misc.cuon_dialog.cuon_dialog()
+                    ok, res = cd.inputLine(  'choose',  sText)
+                    print 'ok = ',  ok, 'Res = ',  res
+                    if ok and res:   
+                        try:
+                            self.modifyEntry(liEntries[int(res)])
+                        except:
+                            pass
+                            
+                        
+                        
+                else:
+                    self.modifyEntry(liEntries[0])
+     
+    
+        
+    def on_daPageFooter_key_press_event(self, oWidget,  data ):
+        print 'key = ',  oWidget,  data
+     
+     # Report Footer
+    
+    
+    
+    def on_daReportFooter_button_press_event(self,  oWidget,  data):
+      
+        print 'mouse button = ',  oWidget , data,  data.x,  data.y
+        self.activateClick("rRFactive", "clicked")
+        if data.button == 3:
+            liEntries = self.reportFooterDA.getEntryAtPosition(data.x,  data.y)
+            for dicEntry in liEntries:
+                print 'Entry at mousepointer: ',  dicEntry['eName']
+            if liEntries:
+                self.modifyEntry(liEntries[0])
+     
+    
+        
+    def on_daReportFooter_key_press_event(self, oWidget,  data ):
+        print 'key = ',  oWidget,  data
+     
+     
+     
+     
+    # toggle report part
+    
+    def on_rAll_toggled(self, event):
+        print 'radiobutton toggled'
+        liButtons = ['rRHactive', 'rPHactive','rGactive','rPFactive','rRFactive']
+        for l in range (len(liButtons)):
+            rAll = self.getWidget(liButtons[l])
+            if rAll.get_active():
+                self.activeRegion = l+1
+                print 'active = ',  self.activeRegion
+            
+    # functions
+    
+    def modifyEntry(self, dicEntry):
+        self.ModifyEntryShow(dicEntry)
+      
+    def on_bRefresh_clicked(self, event):
+        print 'bRefresh clicked'
+        
+        
+    def on_tbSave_clicked(self, event):
+        self.activateClick('save')
+        self.saveFile()
+     
+    def replaceEntry(self,  dicEntry):
+        
+        print 'active Region = ',  self.activeRegion
+        
+    def saveFile(self):    
+        liEntry,  liReport = self.reportValues.getEntries()
+        
+        # report header
+        sDoc = "<report>\n"
+        if liReport:
+            
+            sDoc = self.addList(sDoc,  liReport)
+                    
+        
+        
+        # page Header
+        liEntry, liReport = self.reportHeaderDA.getEntries()
+        if liReport:
+            print liReport
+            sDoc += "<reportHeader>\n"
+            sDoc = self.addList(sDoc,  liReport)
+        
+        if liEntry:
+            #print liEntry
+            #print sDoc  
+            sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
+            
+                
+            sDoc += "</reportHeader>\n"    
+                
+                
+            #doc = self.dic2xml(doc, liEntry, "reportHeader")
+            
+            
+         # page groups
+        for k in self.reportGroupsDA:
+            liEntry, liReport = k.getEntries()
+            if liReport:
+                print liReport
+                sDoc += "<groups>\n"
+                sDoc = self.addList(sDoc,  liReport)
+        
+            if liEntry:
+                #print liEntry
+                #print sDoc  
+                sDoc += "<groupEntry>\n"
+                sDoc += "<pageDetails>\n"
+                sDoc = self.addList(sDoc,  liReport)
+                
+                sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
+                
+                sDoc += "</pageDetails>\n"
+                sDoc += "</groupEntry>\n"
+            
+                
+            sDoc += "</groups>\n" 
+            
+         # page Footer
+        liEntry, liReport = self.PageFooterDA.getEntries()
+        if liReport:
+            print liReport
+            sDoc += "\n<pageFooter>\n"
+            sDoc = self.addList(sDoc,  liReport)
+        
+        if liEntry:
+            #print liEntry
+            #print sDoc  
+            sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
+            
+                
+            sDoc += "</pageFooter>\n"    
+                
+                
+            #doc = self.dic2xml(doc, liEntry, "reportHeader")
+            
+            
+        # report Footer
+        liEntry, liReport = self.reportFooterDA.getEntries()
+        if liReport:
+            print liReport
+            sDoc += "\n<reportFooter>\n"
+            sDoc = self.addList(sDoc,  liReport)
+        
+        if liEntry:
+            #print liEntry
+            #print sDoc  
+            sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
+            
+                
+            sDoc += "</reportFooter>\n"    
+                
+                
+            #doc = self.dic2xml(doc, liEntry, "reportHeader")        
+        sDoc += "</report> "
+        print sDoc
+        
+    def addList(self, sDoc,  liReport,  sEntry=None):
+        for i in liReport:
+            if sEntry:
+                sDoc += "\t<entry>\n"
+            for key in i.keys():
+                if sEntry:
+                    sDoc += "\t"
+                sDoc += "\t<" + key +">"
+                sValue = i[key]
+                sValue = self.checkXmlValue(sValue)
+                sDoc += sValue
+                sDoc += "</" + key +">\n"
+            if sEntry:
+                sDoc += "\t</entry>\n"
+                
+        return sDoc
+        
+    def checkXmlValue(self, sValue):
+                            
+        if not sValue:
+            sValue = ""
+        if isinstance(sValue, types.IntType):
+            sValue = `sValue`
+        elif isinstance(sValue, types.FloatType):
+            sValue = `sValue`
+        elif isinstance(sValue, types.DictType):
+            if sValue.has_key('rColor'):
+                sValue = `sValue['rColor']` + ', ' + `sValue['gColor']` + ', ' + `sValue['bColor']` 
+        return sValue
         
         
     def readReportDocument(self, dicFilename):
@@ -141,22 +425,54 @@ class reportbuilderwindow(modifyEntryWindow):
         
         self.setReportValues(cyRootNode)
             
-            
-        cyReportHeaderNode = self.getNode(cyRootNode, 'reportHeader')
-        print 'node = ',  cyReportHeaderNode[0].toxml()
-        cyReportHeaderEntries = self.getNodes(cyReportHeaderNode[0], 'entry')
+        self.reportValues = drawingReport.drawingReport()  
        
+        self.reportValues.setReportEntry({'topMargin':self.dicPage['topMargin']})
+        self.reportValues.setReportEntry({'bottomMargin':self.dicPage['bottomMargin']})
+        self.reportValues.setReportEntry({'rightMargin':self.dicPage['rightMargin']})
+        self.reportValues.setReportEntry({'leftMargin':self.dicPage['leftMargin']})
+
+        self.reportValues.setReportEntry({'papersizeX':self.dicPage['papersizeX']})
+        self.reportValues.setReportEntry({'papersizeY':self.dicPage['papersizeY']})
+        self.reportValues.setReportEntry({'orientation':self.dicPage['orientation']})
+
+        if self.dicPage.has_key('SiteBackground_URL'):
+            self.reportValues.setReportEntry({'SiteBackground_URL':self.dicPage['SiteBackground_URL']})
+            self.reportValues.setReportEntry({'SiteBackgroundHeight':self.dicPage['SiteBackgroundHeight']})
+            self.reportValues.setReportEntry({'SiteBackgroundWidth':self.dicPage['SiteBackgroundWidth']})
+            self.reportValues.setReportEntry({'SiteBackgroundX':self.dicPage['SiteBackgroundX']})
+            self.reportValues.setReportEntry({'SiteBackgroundY':self.dicPage['SiteBackgroundY']})
+            
+        if self.dicPage.has_key('SiteBackground_URL2'):
+            self.reportValues.setReportEntry({'SiteBackground_URL2':self.dicPage['SiteBackground_URL2']})
+            self.reportValues.setReportEntry({'SiteBackgroundHeight2':self.dicPage['SiteBackgroundHeight2']})
+            self.reportValues.setReportEntry({'SiteBackgroundWidth2':self.dicPage['SiteBackgroundWidth2']})
+            self.reportValues.setReportEntry({'SiteBackgroundX2':self.dicPage['SiteBackgroundX2']})
+            self.reportValues.setReportEntry({'SiteBackgroundY2':self.dicPage['SiteBackgroundY2']})
+        if self.dicPage.has_key('SiteBackground_URL3'):
+            self.reportValues.setReportEntry({'SiteBackground_URL3':self.dicPage['SiteBackground_URL3']})
+            self.reportValues.setReportEntry({'SiteBackgroundHeight3':self.dicPage['SiteBackgroundHeight3']})
+            self.reportValues.setReportEntry({'SiteBackgroundWidth3':self.dicPage['SiteBackgroundWidth3']})
+            self.reportValues.setReportEntry({'SiteBackgroundX3':self.dicPage['SiteBackgroundX3']})
+            self.reportValues.setReportEntry({'SiteBackgroundY3':self.dicPage['SiteBackgroundY3']})
+
+        cyReportHeaderNode = self.getNode(cyRootNode, 'reportHeader')
+        #print 'node = ',  cyReportHeaderNode[0].toxml()
+        
+        cyReportHeaderEntries = self.getNodes(cyReportHeaderNode[0], 'entry')
+        
         
         if cyReportHeaderEntries:
-            self.dicPage['RheaderX1'] =  int(self.getEntrySpecification(cyReportHeaderNode[0],'posX1'))
-            self.dicPage['RheaderX2'] =  int(self.getEntrySpecification(cyReportHeaderNode[0],'posX2'))
-            self.dicPage['RheaderY1'] =  int(self.getEntrySpecification(cyReportHeaderNode[0],'posY1'))
-            self.dicPage['RheaderY2'] =  int(self.getEntrySpecification(cyReportHeaderNode[0],'posY2'))
-            width = self.dicPage['RheaderX2'] - self.dicPage['RheaderX1'] 
-            height = self.dicPage['RheaderY2'] - self.dicPage['RheaderY1']
+            
+            width = self.dicPage['headerX2'] - self.dicPage['headerX1'] 
+            height = self.dicPage['headerY2'] - self.dicPage['headerY1']
             
             self.reportHeaderDA = drawingReport.drawingReport()
             self.reportHeaderDA.createDA( self.getWidget('scReportHeader'), self.getWidget('vpReportHeader'), self.getWidget('daReportHeader'), width,  height)
+            self.reportHeaderDA.setReportEntry({'posX1':self.dicPage['headerX1'] })
+            self.reportHeaderDA.setReportEntry({'posX2':self.dicPage['headerX2'] })
+            self.reportHeaderDA.setReportEntry({'posY1':self.dicPage['headerY1'] })
+            self.reportHeaderDA.setReportEntry({'posY2':self.dicPage['headerY2'] })
             
             for i in cyReportHeaderEntries:
                 
@@ -168,56 +484,72 @@ class reportbuilderwindow(modifyEntryWindow):
         cyReportPageHeaderNode = self.getNode(cyRootNode, 'pageHeader')
         cyPageHeaderEntries = self.getNodes(cyReportPageHeaderNode[0], 'entry')
         if cyPageHeaderEntries:
-            self.dicPage['PheaderX1'] =  int(self.getEntrySpecification(cyReportPageHeaderNode[0],'posX1'))
-            self.dicPage['PheaderX2'] =  int(self.getEntrySpecification(cyReportPageHeaderNode[0],'posX2'))
-            self.dicPage['PheaderY1'] =  int(self.getEntrySpecification(cyReportPageHeaderNode[0],'posY1'))
-            self.dicPage['PheaderY2'] =  int(self.getEntrySpecification(cyReportPageHeaderNode[0],'posY2'))
-            width = self.dicPage['PheaderX2'] - self.dicPage['PheaderX1'] 
-            height = self.dicPage['PheaderY2'] - self.dicPage['PheaderY1']
+            
+            width = self.dicPage['pageX2'] - self.dicPage['pageX1'] 
+            height = self.dicPage['pageY2'] - self.dicPage['pageY1']
             
             self.PageHeaderDA = drawingReport.drawingReport()
             self.PageHeaderDA.createDA( self.getWidget('scPageHeader'), self.getWidget('vpPageHeader'), self.getWidget('daPageHeader'), width,  height)
+            self.PageHeaderDA.setReportEntry({'posX1':self.dicPage['pageX1'] })
+            self.PageHeaderDA.setReportEntry({'posX2':self.dicPage['pageX2'] })
+            self.PageHeaderDA.setReportEntry({'posY1':self.dicPage['pageY1'] })
+            self.PageHeaderDA.setReportEntry({'posY2':self.dicPage['pageY2'] })
+            
             for i in cyPageHeaderEntries:
                 
                 #print i.toxml()
-                self.PageHeaderDA.drawObjects.append(self.getXmlEntry(i))
+                self.PageHeaderDA.setEntry(self.getXmlEntry(i))
                 #print 'dicEntry = ',  dicEntry
-        cyReportGroupsNode = self.getNode(cyRootNode, 'groups')
-        cyReportGroupsEntries = self.getNodes(cyReportGroupsNode[0], 'entry')
+                
+                
+        cyReportGroupsNodes = self.getNode(cyRootNode, 'groups')
+        
        
         
-        if cyReportGroupsEntries:
-            self.dicPage['GroupsX1'] =  int(self.getEntrySpecification(cyReportGroupsNode[0],'posX1'))
-            self.dicPage['GroupsX2'] =  int(self.getEntrySpecification(cyReportGroupsNode[0],'posX2'))
-            self.dicPage['GroupsY1'] =  int(self.getEntrySpecification(cyReportGroupsNode[0],'posY1'))
-            self.dicPage['GroupsY2'] =  int(self.getEntrySpecification(cyReportGroupsNode[0],'posY2'))
-            width = self.dicPage['GroupsX2'] - self.dicPage['GroupsX1'] 
-            height = self.dicPage['GroupsY2'] - self.dicPage['GroupsY1']
-            
-            self.reportGroupsDA = drawingReport.drawingReport()
-            self.reportGroupsDA.createDA( self.getWidget('scGroups'), self.getWidget('vpGroups'), self.getWidget('daGroups'), width,  height)
-            for i in cyReportGroupsEntries:
+        if cyReportGroupsNodes:
+            for k in range(len(cyReportGroupsNodes)):
+                cyGroupsEntries = self.getNodes(cyReportGroupsNodes[k], 'entry')
                 
-                #print i.toxml()
-                self.reportGroupsDA.drawObjects.append(self.getXmlEntry(i))
-                #print 'dicEntry = ',  dicEntry
+    
+    #            cyPageDetailsNodes = self.getNodes(cyGroupEntry, 'pageDetails')
+    #            print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
+    #    
+    #            for i in  range(len(cyPageDetailsNodes)):
+                width = self.dicPage['0_detailsX2'] - self.dicPage['0_detailsX1'] 
+                height = self.dicPage['0_detailsY2'] - self.dicPage['0_detailsY1']
+                
+                self.reportGroupsDA.append(drawingReport.drawingReport())
+                self.reportGroupsDA[k].createDA( self.getWidget('scGroups'), self.getWidget('vpGroups'), self.getWidget('daGroups'), width,  height)
+                self.reportGroupsDA[k].setReportEntry({'posX1':self.dicPage['0_detailsX1'] })
+                self.reportGroupsDA[k].setReportEntry({'posX2':self.dicPage['0_detailsX2'] })
+                self.reportGroupsDA[k].setReportEntry({'posY1':self.dicPage['0_detailsY1'] })
+                self.reportGroupsDA[k].setReportEntry({'posY2':self.dicPage['0_detailsY2'] })
+                
+                #print cyGroupEntry.toxml()
+                
+                for i in cyGroupsEntries:
+                    #print i.toxml()
+                    self.reportGroupsDA[k].setEntry(self.getXmlEntry(i))
+                    #print 'dicEntry = ',  dicEntry
           
         cyReportPageFooterNode = self.getNode(cyRootNode, 'pageFooter')
         cyPageFooterEntries = self.getNodes(cyReportPageFooterNode[0], 'entry')
         if cyPageFooterEntries:
-            self.dicPage['PFooterX1'] =  int(self.getEntrySpecification(cyReportPageFooterNode[0],'posX1'))
-            self.dicPage['PFooterX2'] =  int(self.getEntrySpecification(cyReportPageFooterNode[0],'posX2'))
-            self.dicPage['PFooterY1'] =  int(self.getEntrySpecification(cyReportPageFooterNode[0],'posY1'))
-            self.dicPage['PFooterY2'] =  int(self.getEntrySpecification(cyReportPageFooterNode[0],'posY2'))
-            width = self.dicPage['PFooterX2'] - self.dicPage['PFooterX1'] 
-            height = self.dicPage['PFooterY2'] - self.dicPage['PFooterY1']
+            
+            width = self.dicPage['pageFooterX2'] - self.dicPage['pageFooterX1'] 
+            height = self.dicPage['pageFooterY2'] - self.dicPage['pageFooterY1']
             
             self.PageFooterDA = drawingReport.drawingReport()
             self.PageFooterDA.createDA( self.getWidget('scPageFooter'), self.getWidget('vpPageFooter'), self.getWidget('daPageFooter'), width,  height)
+            self.PageFooterDA.setReportEntry({'posX1':self.dicPage['pageFooterX1'] })
+            self.PageFooterDA.setReportEntry({'posX2':self.dicPage['pageFooterX2'] })
+            self.PageFooterDA.setReportEntry({'posY1':self.dicPage['pageFooterY1'] })
+            self.PageFooterDA.setReportEntry({'posY2':self.dicPage['pageFooterY2'] })
+            
             for i in cyPageFooterEntries:
                 
                 #print i.toxml()
-                self.PageFooterDA.drawObjects.append(self.getXmlEntry(i))
+                self.PageFooterDA.setEntry(self.getXmlEntry(i))
                 #print 'dicEntry = ',  dicEntry
         cyReportFooterNode = self.getNode(cyRootNode, 'reportFooter')
         
@@ -225,19 +557,21 @@ class reportbuilderwindow(modifyEntryWindow):
        
         
         if cyReportFooterEntries:
-            self.dicPage['RFooterX1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX1'))
-            self.dicPage['RFooterX2'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posX2'))
-            self.dicPage['RFooterY1'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posY1'))
-            self.dicPage['RFooterY2'] =  int(self.getEntrySpecification(cyReportFooterNode[0],'posY2'))
-            width = self.dicPage['RFooterX2'] - self.dicPage['RFooterX1'] 
-            height = self.dicPage['RFooterY2'] - self.dicPage['RFooterY1']
+            
+            width = self.dicPage['footerX2'] - self.dicPage['footerX1'] 
+            height = self.dicPage['footerY2'] - self.dicPage['footerY1']
             
             self.reportFooterDA = drawingReport.drawingReport()
             self.reportFooterDA.createDA( self.getWidget('scReportFooter'), self.getWidget('vpReportFooter'), self.getWidget('daReportFooter'), width,  height)
+            self.reportFooterDA.setReportEntry({'posX1':self.dicPage['footerX1'] })
+            self.reportFooterDA.setReportEntry({'posX2':self.dicPage['footerX2'] })
+            self.reportFooterDA.setReportEntry({'posY1':self.dicPage['footerY1'] })
+            self.reportFooterDA.setReportEntry({'posY2':self.dicPage['footerY2'] })
+
             for i in cyReportFooterEntries:
                 
                 #print i.toxml()
-                self.reportFooterDA.drawObjects.append(self.getXmlEntry(i))
+                self.reportFooterDA.setEntry(self.getXmlEntry(i))
                 #print 'dicEntry = ',  dicEntry
            
          
@@ -257,10 +591,10 @@ class reportbuilderwindow(modifyEntryWindow):
         except:
             dicEntry['height'] =  0
             
-        dicEntry['x1'] =  int(self.getEntrySpecification(cyNode,'posX1'))
-        dicEntry['x2'] =  int(self.getEntrySpecification(cyNode,'posX2'))
-        dicEntry['y1'] =  int(self.getEntrySpecification(cyNode,'posY1'))
-        dicEntry['y2'] =  int(self.getEntrySpecification(cyNode,'posY2'))
+        dicEntry['posX1'] =  int(self.getEntrySpecification(cyNode,'posX1'))
+        dicEntry['posX2'] =  int(self.getEntrySpecification(cyNode,'posX2'))
+        dicEntry['posY1'] =  int(self.getEntrySpecification(cyNode,'posY1'))
+        dicEntry['posY2'] =  int(self.getEntrySpecification(cyNode,'posY2'))
         
         dicEntry['eType'] =  self.getEntrySpecification(cyNode,'type').encode('ascii')
         
@@ -372,7 +706,7 @@ class reportbuilderwindow(modifyEntryWindow):
             self.dicText['Papersize'] = self.pagesizes['A4']
             
             
-        self.dicPage['orientation'] =  self.getEntrySpecification(cyRootNode[0],'papersizeX').encode('ascii')
+        self.dicPage['orientation'] =  self.getEntrySpecification(cyRootNode[0],'orientation').encode('ascii')
         if self.dicPage['orientation'] =='Portrait':
             self.dicPage['papersizeX'] =  int(self.getEntrySpecification(cyRootNode[0],'papersizeX'))
             self.dicPage['papersizeY'] =  int(self.getEntrySpecification(cyRootNode[0],'papersizeY'))
@@ -554,7 +888,34 @@ class reportbuilderwindow(modifyEntryWindow):
         print "Side Values = ",  self.dicPage['papersizeY'] , self.dicPage['topMargin'] ,  self.dicPage['headerY2'] ,  self.dicPage['endPageFooterY'] ,  self.dicPage['bottomMargin']  , self.dicPage['pageFooterY1']
         self.dicPage['reportDetailsY'] = self.dicPage['papersizeY'] - self.dicPage['topMargin'] - self.dicPage['headerY2'] - self.dicPage['bottomMargin']  - self.dicPage['pageFooterY2']
         
+        
+        
+        
+        
         #print "appendtogroup page,  report = ",  self.dicPage['PageFootAppendToGroup']  ,  self.dicPage['ReportFootAppendToGroup'] 
-   
+        
+        cyGroupNode = self.getNode(cyRootNode, 'groups')
+        cyGroupEntries = self.getNodes(cyGroupNode[0], 'groupEntry')
+            #print cyGroupEntries
+
+        for k in range(len(cyGroupEntries)):
+            cyGroupEntry = cyGroupEntries[k]
+            self.dicPage[`k` + 'ChangeGroupBy'] = self.getEntrySpecification(cyGroupEntry,'changeGroupBy')
+            self.dicPage[`k` + 'groupNumber'] = int(self.getEntrySpecification(cyGroupEntry,'number'))
+
+    
+            cyPageDetailsNodes = self.getNodes(cyGroupEntry, 'pageDetails')
+            print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
+    
+            for i in  range(len(cyPageDetailsNodes)):
+                cyReportDetailsNode = cyPageDetailsNodes[i]
+                cyReportDetailsEntries = self.getNodes(cyReportDetailsNode, 'entry')
+    
+                self.dicPage[`i` + '_detailsX1'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posX1'))
+                self.dicPage[`i` + '_detailsX2'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posX2'))
+                self.dicPage[`i` + '_detailsY1'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posY1'))
+                self.dicPage[`i` + '_detailsY2'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posY2'))
+                self.dicPage[`i` + '_lineY'] =  int(self.getEntrySpecification(cyReportDetailsNode,'lineY'))
 
 
+  

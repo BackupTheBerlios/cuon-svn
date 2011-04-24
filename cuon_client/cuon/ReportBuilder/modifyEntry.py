@@ -71,6 +71,7 @@ class modifyEntryWindow(chooseWindows):
         self.win_me = self.getWidget('EntryDialog')
         self.win_me.hide()
        
+        self.modifiedEntry = None
       
         
     def ModifyEntryShow(self,  dicEntry):
@@ -85,18 +86,25 @@ class modifyEntryWindow(chooseWindows):
         
     def fillEntries(self,  dicEntry):
         self.eName.set_text(dicEntry['eName'])
-        self.ePosX1.set_text(`dicEntry['x1']`)
-        self.ePosX2.set_text(`dicEntry['x2']`)
-        self.ePosY1.set_text(`dicEntry['y1']`)
-        self.ePosY2.set_text(`dicEntry['y2']`)
+        self.ePosX1.set_text(`dicEntry['posX1']`)
+        self.ePosX2.set_text(`dicEntry['posX2']`)
+        self.ePosY1.set_text(`dicEntry['posY1']`)
+        self.ePosY2.set_text(`dicEntry['posY2']`)
      
     def readEntries(self):
         dicEntry = {}
         dicEntry['eName'] = self.eName.get_text()
-        dicEntry['x1'] = int(self.ePosX1.get_text())
-        dicEntry['x2'] = int(self.ePosX2.get_text())
-        dicEntry['y1'] = int(self.ePosY1.get_text())
-        dicEntry['y2'] = int(self.ePosY2.get_text())
+        dicEntry['posX1'] = int(self.ePosX1.get_text())
+        dicEntry['posX2'] = int(self.ePosX2.get_text())
+        dicEntry['posY1'] = int(self.ePosY1.get_text())
+        dicEntry['posY2'] = int(self.ePosY2.get_text())
         
+        self.replaceEntry( dicEntry)
+        
+        self.activateClick('bRefresh',sAction = "clicked")
         
         return dicEntry
+
+    def replaceEntry(self,  dicEntry):
+        pass
+        

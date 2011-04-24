@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy toplevel-contextual -->
+  <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="reportbuildermainwindow">
     <property name="width_request">1160</property>
     <property name="height_request">1000</property>
@@ -37,11 +37,12 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem3">
+                      <object class="GtkImageMenuItem" id="save">
                         <property name="label">gtk-save</property>
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_save_activate"/>
                       </object>
                     </child>
                     <child>
@@ -150,10 +151,34 @@
           <object class="GtkToolbar" id="toolbar1">
             <property name="visible">True</property>
             <child>
-              <object class="GtkToolButton" id="toolbutton1">
+              <object class="GtkToolButton" id="tbSave">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">toolbutton1</property>
+                <property name="label" translatable="yes">Save</property>
                 <property name="use_underline">True</property>
+                <property name="stock_id">gtk-save</property>
+                <signal name="clicked" handler="on_tbSave_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="toolbutton1">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="bRefresh">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Refresh</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-refresh</property>
+                <signal name="clicked" handler="on_bRefresh_clicked"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -167,130 +192,375 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="scrolledwindow1">
-            <property name="width_request">1160</property>
-            <property name="height_request">1000</property>
+          <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
             <child>
-              <object class="GtkViewport" id="viewport1">
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledwindow1">
+                <property name="width_request">1160</property>
+                <property name="height_request">1000</property>
                 <property name="visible">True</property>
-                <property name="resize_mode">queue</property>
+                <property name="can_focus">True</property>
                 <child>
-                  <object class="GtkVBox" id="vbReport">
+                  <object class="GtkViewport" id="viewport1">
+                    <property name="width_request">1160</property>
+                    <property name="height_request">1000</property>
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
+                    <property name="resize_mode">queue</property>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scReportHeader">
+                      <object class="GtkVBox" id="vbReport">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
+                        <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkViewport" id="vpReportHeader">
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <object class="GtkHBox" id="hbox2">
                             <property name="visible">True</property>
-                            <property name="resize_mode">queue</property>
                             <child>
-                              <object class="GtkDrawingArea" id="daReportHeader">
+                              <object class="GtkVBox" id="vbox2">
                                 <property name="visible">True</property>
-                                <signal name="button_press_event" handler="on_daReportHeader_button_press_event"/>
-                                <signal name="key_press_event" handler="on_daReportHeader_key_press_event"/>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rRHactive">
+                                    <property name="label" translatable="yes">Active</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="active">True</property>
+                                    <property name="draw_indicator">True</property>
+                                    <signal name="toggled" handler="on_rAll_toggled"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scReportHeader">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="vpReportHeader">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkDrawingArea" id="daReportHeader">
+                                        <property name="visible">True</property>
+                                        <signal name="button_press_event" handler="on_daReportHeader_button_press_event"/>
+                                        <signal name="key_press_event" handler="on_daReportHeader_key_press_event"/>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
+                          <packing>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scPageHeader">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
                         <child>
-                          <object class="GtkViewport" id="vpPageHeader">
+                          <object class="GtkHBox" id="hbox3">
                             <property name="visible">True</property>
-                            <property name="resize_mode">queue</property>
                             <child>
-                              <object class="GtkDrawingArea" id="daPageHeader">
+                              <object class="GtkVBox" id="vbox3">
                                 <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rPHactive">
+                                    <property name="label" translatable="yes">Active</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rRHactive</property>
+                                    <signal name="toggled" handler="on_rAll_toggled"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scPageHeader">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="vpPageHeader">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkDrawingArea" id="daPageHeader">
+                                        <property name="visible">True</property>
+                                        <signal name="button_press_event" handler="on_daPageHeader_button_press_event"/>
+                                        <signal name="key_press_event" handler="on_daPageHeader_key_press_event"/>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
+                          <packing>
+                            <property name="position">3</property>
+                          </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scGroups">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
                         <child>
-                          <object class="GtkViewport" id="vpGroups">
+                          <object class="GtkHBox" id="hbox4">
                             <property name="visible">True</property>
-                            <property name="resize_mode">queue</property>
                             <child>
-                              <object class="GtkDrawingArea" id="daGroups">
+                              <object class="GtkVBox" id="vbox4">
                                 <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rGactive">
+                                    <property name="label" translatable="yes">Active</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rRHactive</property>
+                                    <signal name="toggled" handler="on_rAll_toggled"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scGroups">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="vpGroups">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkDrawingArea" id="daGroups">
+                                        <property name="visible">True</property>
+                                        <signal name="button_press_event" handler="on_daGroups_button_press_event"/>
+                                        <signal name="key_press_event" handler="on_daGroups_key_press_event"/>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
+                          <packing>
+                            <property name="position">4</property>
+                          </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="position">4</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scPageFooter">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
                         <child>
-                          <object class="GtkViewport" id="vpPageFooter">
+                          <object class="GtkHBox" id="hbox5">
                             <property name="visible">True</property>
-                            <property name="resize_mode">queue</property>
                             <child>
-                              <object class="GtkDrawingArea" id="daPageFooter">
+                              <object class="GtkVBox" id="vbox5">
                                 <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rPFactive">
+                                    <property name="label" translatable="yes">Active</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rRHactive</property>
+                                    <signal name="toggled" handler="on_rAll_toggled"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scPageFooter">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="vpPageFooter">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkDrawingArea" id="daPageFooter">
+                                        <property name="visible">True</property>
+                                        <signal name="button_press_event" handler="on_daPageFooter_button_press_event"/>
+                                        <signal name="key_press_event" handler="on_daPageFooter_key_press_event"/>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
+                          <packing>
+                            <property name="position">5</property>
+                          </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="position">5</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow" id="scReportFooter">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
                         <child>
-                          <object class="GtkViewport" id="vpReportFooter">
+                          <object class="GtkHBox" id="hbox6">
                             <property name="visible">True</property>
-                            <property name="resize_mode">queue</property>
                             <child>
-                              <object class="GtkDrawingArea" id="daReportFooter">
+                              <object class="GtkVBox" id="vbox6">
                                 <property name="visible">True</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkRadioButton" id="rRFactive">
+                                    <property name="label" translatable="yes">Active</property>
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">False</property>
+                                    <property name="draw_indicator">True</property>
+                                    <property name="group">rRHactive</property>
+                                    <signal name="toggled" handler="on_rAll_toggled"/>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">False</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
                               </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkScrolledWindow" id="scReportFooter">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <child>
+                                  <object class="GtkViewport" id="vpReportFooter">
+                                    <property name="visible">True</property>
+                                    <property name="resize_mode">queue</property>
+                                    <child>
+                                      <object class="GtkDrawingArea" id="daReportFooter">
+                                        <property name="visible">True</property>
+                                        <signal name="button_press_event" handler="on_daReportFooter_button_press_event"/>
+                                        <signal name="key_press_event" handler="on_daReportFooter_key_press_event"/>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
+                          <packing>
+                            <property name="position">6</property>
+                          </packing>
                         </child>
                       </object>
-                      <packing>
-                        <property name="position">6</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
               </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -302,6 +572,7 @@
   </object>
   <object class="GtkWindow" id="EntryDialog">
     <property name="type">popup</property>
+    <property name="modal">True</property>
     <property name="window_position">mouse</property>
     <child>
       <object class="GtkVBox" id="vbox_me1">
@@ -547,6 +818,346 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <signal name="clicked" handler="on_bOK_clicked"/>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="modifyHeader">
+    <property name="type_hint">menu</property>
+    <child>
+      <object class="GtkVBox" id="vbox_me2">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="label3">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Modify Header</property>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTable" id="table_me2">
+            <property name="visible">True</property>
+            <property name="n_rows">15</property>
+            <property name="n_columns">2</property>
+            <child>
+              <object class="GtkLabel" id="label202">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">name</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label203">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Pos X1</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eMHName">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label204">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Pos Y1</property>
+              </object>
+              <packing>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label205">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">PosX2</property>
+              </object>
+              <packing>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label206">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">PosY2</property>
+              </object>
+              <packing>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eMHPosX1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eMHPosY1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eMHPosX2">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">3</property>
+                <property name="bottom_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eMHPosY2">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">4</property>
+                <property name="bottom_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHSeparator" id="hseparator1">
+                <property name="height_request">2</property>
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHSeparator" id="hseparator2">
+                <property name="height_request">2</property>
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">5</property>
+                <property name="bottom_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label_whr">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">only whole report</property>
+              </object>
+              <packing>
+                <property name="top_attach">6</property>
+                <property name="bottom_attach">7</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label208">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Orientation</property>
+              </object>
+              <packing>
+                <property name="top_attach">7</property>
+                <property name="bottom_attach">8</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label209">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Top margin</property>
+              </object>
+              <packing>
+                <property name="top_attach">8</property>
+                <property name="bottom_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label210">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Bottom margin</property>
+              </object>
+              <packing>
+                <property name="top_attach">9</property>
+                <property name="bottom_attach">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label211">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Right margin</property>
+              </object>
+              <packing>
+                <property name="top_attach">10</property>
+                <property name="bottom_attach">11</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Left margin</property>
+              </object>
+              <packing>
+                <property name="top_attach">11</property>
+                <property name="bottom_attach">12</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eOrientation">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">7</property>
+                <property name="bottom_attach">8</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="etopMargin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">8</property>
+                <property name="bottom_attach">9</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eBottomMargin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">9</property>
+                <property name="bottom_attach">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eRightMargin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">10</property>
+                <property name="bottom_attach">11</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="eLeftMargin">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="invisible_char">&#x25CF;</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">11</property>
+                <property name="bottom_attach">12</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox_me201">
+            <property name="visible">True</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkButton" id="bMHCancel">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bMHCancel_clicked"/>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="bMHOK">
+                <property name="label" translatable="yes">O.K.</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bMHOK_clicked"/>
               </object>
               <packing>
                 <property name="position">2</property>
