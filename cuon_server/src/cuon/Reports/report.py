@@ -215,7 +215,7 @@ class report(MyXML):
             self.dicText['Papersize'] = pagesizes.A4
             
             
-        self.dicPage['orientation'] =  self.getEntrySpecification(cyRootNode[0],'papersizeX').encode('ascii')
+        self.dicPage['orientation'] =  self.getEntrySpecification(cyRootNode[0],'orientation').encode('ascii')
         if self.dicPage['orientation'] =='Portrait':
             self.dicPage['papersizeX'] =  int(self.getEntrySpecification(cyRootNode[0],'papersizeX'))
             self.dicPage['papersizeY'] =  int(self.getEntrySpecification(cyRootNode[0],'papersizeY'))
@@ -261,7 +261,7 @@ class report(MyXML):
         except Exception, params:
             print Exception, params
             
-            
+        print 'dicPage = ',  self.dicPage
             
         #
         # Report Header

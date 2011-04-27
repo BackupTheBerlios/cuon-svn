@@ -139,10 +139,8 @@ class reportbuilderwindow(modifyEntryWindow):
         self.activateClick("rRHactive", "clicked")
         if data.button == 3:
             liEntries = self.reportHeaderDA.getEntryAtPosition(data.x,  data.y)
-            for dicEntry in liEntries:
-                print 'Entry at mousepointer: ',  dicEntry['eName']
             if liEntries:
-                self.modifyEntry(liEntries[0])
+                self.chooseFromEntries(liEntries)
      
     
         
@@ -161,12 +159,9 @@ class reportbuilderwindow(modifyEntryWindow):
         self.activateClick("rPHactive", "clicked")
         if data.button == 3:
             liEntries = self.PageHeaderDA.getEntryAtPosition(data.x,  data.y)
-            for dicEntry in liEntries:
-                print 'Entry at mousepointer: ',  dicEntry['eName']
+            
             if liEntries:
-                self.modifyEntry(liEntries[0])
-     
-    
+                self.chooseFromEntries(liEntries)
         
     def on_daPageHeader_key_press_event(self, oWidget,  data ):
         print 'key = ',  oWidget,  data
@@ -181,11 +176,9 @@ class reportbuilderwindow(modifyEntryWindow):
         self.activateClick("rGactive", "clicked")
         if data.button == 3:
             liEntries = self.reportGroupsDA[0].getEntryAtPosition(data.x,  data.y)
-            for dicEntry in liEntries:
-                print 'Entry at mousepointer: ',  dicEntry['eName']
+            
             if liEntries:
-                self.modifyEntry(liEntries[0])
-     
+                self.chooseFromEntries(liEntries)
     
         
     def on_daGroups_key_press_event(self, oWidget,  data ):
@@ -201,31 +194,13 @@ class reportbuilderwindow(modifyEntryWindow):
         self.activateClick("rPFactive", "clicked")
         if data.button == 3:
             liEntries = self.PageFooterDA.getEntryAtPosition(data.x,  data.y)
-            for dicEntry in liEntries:
-                print 'Entry at mousepointer: ',  dicEntry['eName']
+            
             if liEntries:
-                #print liEntries,  len(liEntries)
-                if len(liEntries)> 1:
-                    sText = 'Choose: \n'
-                    for l in range(0, len(liEntries)):
-                        sText += `l` + "  "  + liEntries[l]['eName'] + "\n"
-                        
-                    cd = cuon.Misc.cuon_dialog.cuon_dialog()
-                    ok, res = cd.inputLine(  'choose',  sText)
-                    print 'ok = ',  ok, 'Res = ',  res
-                    if ok and res:   
-                        try:
-                            self.modifyEntry(liEntries[int(res)])
-                        except:
-                            pass
-                            
-                        
-                        
-                else:
-                    self.modifyEntry(liEntries[0])
+                self.chooseFromEntries(liEntries)
      
     
-        
+    
+      
     def on_daPageFooter_key_press_event(self, oWidget,  data ):
         print 'key = ',  oWidget,  data
      
@@ -239,11 +214,11 @@ class reportbuilderwindow(modifyEntryWindow):
         self.activateClick("rRFactive", "clicked")
         if data.button == 3:
             liEntries = self.reportFooterDA.getEntryAtPosition(data.x,  data.y)
-            for dicEntry in liEntries:
-                print 'Entry at mousepointer: ',  dicEntry['eName']
-            if liEntries:
-                self.modifyEntry(liEntries[0])
-     
+            self.chooseFromEntries(self,  liEntries) 
+      
+                    
+                
+      
     
         
     def on_daReportFooter_key_press_event(self, oWidget,  data ):
@@ -264,7 +239,26 @@ class reportbuilderwindow(modifyEntryWindow):
                 print 'active = ',  self.activeRegion
             
     # functions
-    
+    def chooseFromEntries(self,  liEntries):  
+      #print liEntries,  len(liEntries)
+        if len(liEntries)> 1:
+            sText = 'Choose: \n'
+            for l in range(0, len(liEntries)):
+                sText += `l` + "  "  + liEntries[l]['name'] + "\n"
+                
+            cd = cuon.Misc.cuon_dialog.cuon_dialog()
+            ok, res = cd.inputLine(  'choose',  sText)
+            print 'ok = ',  ok, 'Res = ',  res
+            if ok and res:   
+                try:
+                    self.modifyEntry(liEntries[int(res)])
+                except:
+                    pass
+                    
+                
+                
+        else:
+            self.modifyEntry(liEntries[0])  
     def modifyEntry(self, dicEntry):
         self.ModifyEntryShow(dicEntry)
       
@@ -275,7 +269,7 @@ class reportbuilderwindow(modifyEntryWindow):
         
     def on_tbSave_clicked(self, event):
         self.activateClick('save')
-        self.saveFile()
+        #self.saveFile()
      
     def replaceEntry(self,  dicEntry):
         
@@ -294,11 +288,34 @@ class reportbuilderwindow(modifyEntryWindow):
             
         self.activeDA.replaceEntryByName(dicEntry)
 
+    def save_file(self, dicFilename, data):
+        "Saves the data to the file located by the filename"
+        print 'save this ', dicFilename
         
+        if dicFilename['TYPE'] == 'SSH':
+            sFile = dicFilename['TMPNAME']
+        else:
+            sFile = dicFilename['NAME']
+        outfile = open(sFile, "w")
+        if outfile:
+            outfile.write(data)
+            outfile.close() 
+            #mark as unmodified since last save
+            #self.textbuffer.set_modified(False)
+            
+        if dicFilename['TYPE'] == 'SSH':
+            os.system('cp -f ' + dicFilename['TMPNAME']  +' ' + os.path.basename(dicFilename['NAME'] ) )
+            s1 = 'scp -P ' + dicFilename['PORT'] +   ' ' + os.path.basename(dicFilename['NAME'] )  + ' '  + dicFilename['USER'] + '@' + dicFilename['HOST'] + '://' 
+            s1 +=  os.path.dirname(dicFilename['NAME'] )
+            print s1
+            
+            os.system(s1)
+            os.system('rm ' +  os.path.basename(dicFilename['NAME'] ) )
+            print 'Files saved'    
     def saveFile(self):    
         liEntry,  liReport = self.reportValues.getEntries()
         
-        # report header
+        # report Head
         sDoc = "<report>\n"
         if liReport:
             
@@ -306,7 +323,7 @@ class reportbuilderwindow(modifyEntryWindow):
                     
         
         
-        # page Header
+        # report header
         liEntry, liReport = self.reportHeaderDA.getEntries()
         if liReport:
             print liReport
@@ -323,21 +340,45 @@ class reportbuilderwindow(modifyEntryWindow):
                 
                 
             #doc = self.dic2xml(doc, liEntry, "reportHeader")
+        
+        # Page Header
+        liEntry, liReport = self.PageHeaderDA.getEntries()
+        if liReport:
+            print liReport
+            sDoc += "<pageHeader>\n"
+            sDoc = self.addList(sDoc,  liReport)
+        
+        if liEntry:
+            #print liEntry
+            #print sDoc  
+            sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
             
-            
+                
+            sDoc += "</pageHeader>\n"       
          # page groups
-        for k in self.reportGroupsDA:
-            liEntry, liReport = k.getEntries()
+        sDoc += "<groups>\n" 
+        sDoc += "<count>" + `self.dicPage['count']` + "</count>"
+        
+        for k in range(len(self.reportGroupsDA)):
+            liEntry, liReport = self.reportGroupsDA[k].getEntries()
             if liReport:
                 print liReport
-                sDoc += "<groups>\n"
-                sDoc = self.addList(sDoc,  liReport)
+                
+               
         
             if liEntry:
                 #print liEntry
                 #print sDoc  
                 sDoc += "<groupEntry>\n"
-                sDoc += "<pageDetails>\n"
+                sDoc += "\t<number>" + `self.dicPage[`k` + '_groupNumber']` + "</number>\n"
+                sDoc += "\t<resultSet>" + `self.dicPage[`k` + '_groupResultSet']` + "</resultSet>\n"
+                sDoc += "\t<pageDetails>\n"
+                sDoc += "\t\t<posX1>" + str(self.dicPage[`k` + '_detailsX1'])  + "</posX1>\n"
+                sDoc += "\t\t<posX2>" + str(self.dicPage[`k` + '_detailsX2'])  + "</posX2>\n"
+                sDoc += "\t\t<posY1>" + str(self.dicPage[`k` + '_detailsY1'])  + "</posY1>\n"
+                sDoc += "\t\t<posY2>" + str(self.dicPage[`k` + '_detailsY2'])  + "</posY2>\n"
+                sDoc += "\t\t<lineY>" + str(self.dicPage[`k` + '_detailslineY'])  + "</lineY>\n"
+                
                 sDoc = self.addList(sDoc,  liReport)
                 
                 sDoc = self.addList(sDoc,  liEntry, sEntry="entry")
@@ -346,7 +387,7 @@ class reportbuilderwindow(modifyEntryWindow):
                 sDoc += "</groupEntry>\n"
             
                 
-            sDoc += "</groups>\n" 
+        sDoc += "</groups>\n" 
             
          # page Footer
         liEntry, liReport = self.PageFooterDA.getEntries()
@@ -386,36 +427,40 @@ class reportbuilderwindow(modifyEntryWindow):
             #doc = self.dic2xml(doc, liEntry, "reportHeader")        
         sDoc += "</report> "
         print sDoc
+        self.save_file(self.dicCurrentFilename, sDoc)
+        
         
     def addList(self, sDoc,  liReport,  sEntry=None):
         for i in liReport:
             if sEntry:
+                
                 sDoc += "\t<entry>\n"
-            for key in i.keys():
-                if sEntry:
-                    sDoc += "\t"
-                sDoc += "\t<" + key +">"
-                sValue = i[key]
-                sValue = self.checkXmlValue(sValue)
-                sDoc += sValue
-                sDoc += "</" + key +">\n"
-            if sEntry:
+                
+                for key in ['name', 'posX1', 'posX2', 'posY1', 'posY2', 'class', 'value', 'type','resultSet',  'format', 'variable', 'memory', 'formula', 'property','font', 'fontsize', 'fontjustification', 'foregroundColor' , 'backgroundColor', 'grayScale']:
+                    if i.has_key(key):
+                        if sEntry:
+                            sDoc += "\t"
+                            
+                        sDoc += "\t<" + key +">"
+                        sValue = i[key]
+                        sValue = self.checkXmlValue(sValue)
+                        sDoc += sValue
+                        sDoc += "</" + key +">\n"
+            
                 sDoc += "\t</entry>\n"
                 
+            else:
+                for key in i.keys():
+                    if sEntry:
+                        sDoc += "\t"
+                    sDoc += "\t<" + key +">"
+                    sValue = i[key]
+                    sValue = self.checkXmlValue(sValue)
+                    sDoc += sValue
+                    sDoc += "</" + key +">\n"
         return sDoc
         
-    def checkXmlValue(self, sValue):
-                            
-        if not sValue:
-            sValue = ""
-        if isinstance(sValue, types.IntType):
-            sValue = `sValue`
-        elif isinstance(sValue, types.FloatType):
-            sValue = `sValue`
-        elif isinstance(sValue, types.DictType):
-            if sValue.has_key('rColor'):
-                sValue = `sValue['rColor']` + ', ' + `sValue['gColor']` + ', ' + `sValue['bColor']` 
-        return sValue
+    
         
         
     def readReportDocument(self, dicFilename):
@@ -492,7 +537,7 @@ class reportbuilderwindow(modifyEntryWindow):
             
             for i in cyReportHeaderEntries:
                 
-                #print i.toxml()
+                print i.toxml()
                 self.reportHeaderDA.setEntry(self.getXmlEntry(i))
                 #print 'dicEntry = ',  dicEntry
           
@@ -531,16 +576,17 @@ class reportbuilderwindow(modifyEntryWindow):
     #            print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
     #    
     #            for i in  range(len(cyPageDetailsNodes)):
-                width = self.dicPage['0_detailsX2'] - self.dicPage['0_detailsX1'] 
-                height = self.dicPage['0_detailsY2'] - self.dicPage['0_detailsY1']
+                width = self.dicPage[`k` + '_detailsX2'] - self.dicPage[`k` + '_detailsX1'] 
+                height = self.dicPage[`k` + '_detailsY2'] - self.dicPage[`k` + '_detailsY1']
                 
                 self.reportGroupsDA.append(drawingReport.drawingReport())
                 self.reportGroupsDA[k].createDA( self.getWidget('scGroups'), self.getWidget('vpGroups'), self.getWidget('daGroups'), width,  height)
-                self.reportGroupsDA[k].setReportEntry({'posX1':self.dicPage['0_detailsX1'] })
-                self.reportGroupsDA[k].setReportEntry({'posX2':self.dicPage['0_detailsX2'] })
-                self.reportGroupsDA[k].setReportEntry({'posY1':self.dicPage['0_detailsY1'] })
-                self.reportGroupsDA[k].setReportEntry({'posY2':self.dicPage['0_detailsY2'] })
-                
+                self.reportGroupsDA[k].setReportEntry({'posX1':self.dicPage[`k` + '_detailsX1'] })
+                self.reportGroupsDA[k].setReportEntry({'posX2':self.dicPage[`k` + '_detailsX2'] })
+                self.reportGroupsDA[k].setReportEntry({'posY1':self.dicPage[`k` + '_detailsY1'] })
+                self.reportGroupsDA[k].setReportEntry({'posY2':self.dicPage[`k` + '_detailsY2'] })
+                self.reportGroupsDA[k].setReportEntry({'posY2':self.dicPage[`k` + '_detailsY2'] })
+                self.reportGroupsDA[k].setReportEntry({'lineY':self.dicPage[`k` + '_detailslineY'] })
                 #print cyGroupEntry.toxml()
                 
                 for i in cyGroupsEntries:
@@ -597,7 +643,7 @@ class reportbuilderwindow(modifyEntryWindow):
         # set some defaults
         dicEntry['Property'] = '0'
         
-        dicEntry['eName']  =  self.getEntrySpecification(cyNode,'name').encode('ascii')
+        dicEntry['name']  =  self.getEntrySpecification(cyNode,'name').encode('ascii')
         try:
             dicEntry['width'] =  int(self.getEntrySpecification(cyNode,'width'))
         except:
@@ -612,9 +658,9 @@ class reportbuilderwindow(modifyEntryWindow):
         dicEntry['posY1'] =  int(self.getEntrySpecification(cyNode,'posY1'))
         dicEntry['posY2'] =  int(self.getEntrySpecification(cyNode,'posY2'))
         
-        dicEntry['eType'] =  self.getEntrySpecification(cyNode,'type').encode('ascii')
+        dicEntry['type'] =  self.getEntrySpecification(cyNode,'type').encode('ascii')
         
-        dicEntry['class'] =  self.getEntrySpecification(cyNode,'class').encode('ascii')
+        dicEntry['class'] =  self.getEntrySpecification(cyNode,'class').encode('utf-8')
         dicEntry['value'] = self.getEntrySpecification(cyNode,'value')
         dicEntry['format'] = self.getEntrySpecification(cyNode,'format')
         if dicEntry['format']:
@@ -632,7 +678,7 @@ class reportbuilderwindow(modifyEntryWindow):
         else:
             dicEntry['memory'] = None
             
-        
+        dicEntry['type'] = self.getEntrySpecification(cyNode,'type')
         sResultSet =  self.getEntrySpecification(cyNode,'resultSet')
         if sResultSet:
             sResultSet = sResultSet.encode('ascii')
@@ -643,9 +689,9 @@ class reportbuilderwindow(modifyEntryWindow):
         sVariable =  self.getEntrySpecification(cyNode,'variable')
         if sVariable:
             sVariable = sVariable.encode('ascii')
-            dicEntry['Variable'] = sVariable
+            dicEntry['variable'] = sVariable
         else:
-            dicEntry['Variable'] = None 
+            dicEntry['variable'] = None 
             
         sFont = self.getEntrySpecification(cyNode,'font')
         liFont = sFont.split(';')
@@ -694,7 +740,7 @@ class reportbuilderwindow(modifyEntryWindow):
         else:
             dicEntry['fontjustification'] = None
 
-        dicEntry['Property'] =  self.getEntrySpecification(cyNode,'property')
+        dicEntry['property'] =  self.getEntrySpecification(cyNode,'property')
                  
         
         return dicEntry
@@ -911,14 +957,16 @@ class reportbuilderwindow(modifyEntryWindow):
         #print "appendtogroup page,  report = ",  self.dicPage['PageFootAppendToGroup']  ,  self.dicPage['ReportFootAppendToGroup'] 
         
         cyGroupNode = self.getNode(cyRootNode, 'groups')
+        
+        self.dicPage['count'] = self.getEntrySpecification(cyGroupNode[0],'count')
         cyGroupEntries = self.getNodes(cyGroupNode[0], 'groupEntry')
             #print cyGroupEntries
 
         for k in range(len(cyGroupEntries)):
             cyGroupEntry = cyGroupEntries[k]
-            self.dicPage[`k` + 'ChangeGroupBy'] = self.getEntrySpecification(cyGroupEntry,'changeGroupBy')
-            self.dicPage[`k` + 'groupNumber'] = int(self.getEntrySpecification(cyGroupEntry,'number'))
-
+            self.dicPage[`k` + '_ChangeGroupBy'] = self.getEntrySpecification(cyGroupEntry,'changeGroupBy')
+            self.dicPage[`k` + '_groupNumber'] = int(self.getEntrySpecification(cyGroupEntry,'number'))
+            self.dicPage[`k` + '_groupResultSet'] = self.getEntrySpecification(cyGroupEntry,'resultSet')
     
             cyPageDetailsNodes = self.getNodes(cyGroupEntry, 'pageDetails')
             print'+++++++ cyPageDetailsNodes = ',    cyPageDetailsNodes
@@ -931,7 +979,7 @@ class reportbuilderwindow(modifyEntryWindow):
                 self.dicPage[`i` + '_detailsX2'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posX2'))
                 self.dicPage[`i` + '_detailsY1'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posY1'))
                 self.dicPage[`i` + '_detailsY2'] =  int(self.getEntrySpecification(cyReportDetailsNode,'posY2'))
-                self.dicPage[`i` + '_lineY'] =  int(self.getEntrySpecification(cyReportDetailsNode,'lineY'))
+                self.dicPage[`i` + '_detailslineY'] =  int(self.getEntrySpecification(cyReportDetailsNode,'lineY'))
 
 
   

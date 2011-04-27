@@ -24,7 +24,7 @@ import gobject
 
 
 import string
-
+import types
 import logging
 
 import cPickle
@@ -66,6 +66,22 @@ class modifyEntryWindow(chooseWindows):
         self.ePosY1 = self.getWidget('ePosY1')
         self.ePosY2 = self.getWidget('ePosY2')
         self.eClass = self.getWidget('eClass')
+        self.eValue = self.getWidget('eValue')
+        self.eType = self.getWidget('eType')
+        self.eResultSet = self.getWidget('eResultSet')
+        self.eFormat = self.getWidget('eFormat')
+        self.eVariable = self.getWidget('eVariable')
+        self.eMemory = self.getWidget('eMemory')
+        self.eFormula = self.getWidget('eFormula')
+        self.eProperty = self.getWidget('eProperty')
+        
+        self.eFont = self.getWidget('eFont')
+        self.eFontSize = self.getWidget('eFontSize')
+        self.eJustification = self.getWidget('eJustification')
+        self.eFG = self.getWidget('eFG')
+        self.eBG = self.getWidget('eBG')
+        self.eGrayScale = self.getWidget('eGrayScale')
+        
         
         
         self.win_me = self.getWidget('EntryDialog')
@@ -83,24 +99,82 @@ class modifyEntryWindow(chooseWindows):
     def on_bOK_clicked(self, event):
         self.retEntries = self.readEntries()
         self.win_me.hide()
+    
+    def on_bApply_clicked(self, event):
+        self.retEntries = self.readEntries()
         
+    def on_bCancel_clicked(self, event):
+        self.win_me.hide()    
+        
+    def checkXmlValue(self, sValue):
+        
+        if isinstance(sValue, types.IntType):
+            sValue = `sValue`
+        elif isinstance(sValue, types.FloatType):
+            sValue = `sValue`
+        elif isinstance(sValue, types.DictType):
+            if sValue.has_key('rColor'):
+                sValue = `sValue['rColor']` + ', ' + `sValue['gColor']` + ', ' + `sValue['bColor']` 
+        else:
+            if not sValue:
+                sValue = ""
+            sValue = sValue.strip()
+
+        return sValue
     def fillEntries(self,  dicEntry):
-        self.eName.set_text(dicEntry['eName'])
-        self.ePosX1.set_text(`dicEntry['posX1']`)
-        self.ePosX2.set_text(`dicEntry['posX2']`)
-        self.ePosY1.set_text(`dicEntry['posY1']`)
-        self.ePosY2.set_text(`dicEntry['posY2']`)
-        self.eClass.set_text(`dicEntry['class']`)
+        self.eName.set_text(self.checkXmlValue(dicEntry['name']))
         
+        self.ePosX1.set_text(self.checkXmlValue(dicEntry['posX1']))
+        self.ePosX2.set_text(self.checkXmlValue(dicEntry['posX2']))
+        self.ePosY1.set_text(self.checkXmlValue(dicEntry['posY1']))
+        self.ePosY2.set_text(self.checkXmlValue(dicEntry['posY2']))
+        self.eClass.set_text(self.checkXmlValue(dicEntry['class']))
+        self.eValue.set_text(self.checkXmlValue(dicEntry['value']))
+        self.eType.set_text(self.checkXmlValue(dicEntry['type']))
+        self.eResultSet.set_text(self.checkXmlValue(dicEntry['resultSet']))
+        self.eFormat.set_text(self.checkXmlValue(dicEntry['format']))
+        self.eVariable.set_text(self.checkXmlValue(dicEntry['variable']))
+        self.eMemory.set_text(self.checkXmlValue(dicEntry['memory']))
+        self.eFormula.set_text(self.checkXmlValue(dicEntry['formula']))
+        self.eProperty.set_text(self.checkXmlValue(dicEntry['property']))
+        self.eFont.set_text(self.checkXmlValue(dicEntry['font']))
+        self.eFontSize.set_text(self.checkXmlValue(dicEntry['fontsize']))
+        self.eJustification.set_text(self.checkXmlValue(dicEntry['fontjustification']))
+        self.eFG.set_text(self.checkXmlValue(dicEntry['foregroundColor']))
+        self.eBG.set_text(self.checkXmlValue(dicEntry['backgroundColor']))
+        if dicEntry['grayScale']:
+            self.eGrayScale.set_text(self.checkXmlValue(dicEntry['grayScale']))
+        else:
+            self.eGrayScale.set_text("0.0")
+            
         
     def readEntries(self):
         dicEntry = {}
-        dicEntry['eName'] = self.eName.get_text()
+        dicEntry['name'] = self.eName.get_text()
         dicEntry['posX1'] = int(self.ePosX1.get_text())
         dicEntry['posX2'] = int(self.ePosX2.get_text())
         dicEntry['posY1'] = int(self.ePosY1.get_text())
         dicEntry['posY2'] = int(self.ePosY2.get_text())
         dicEntry['class'] = self.eClass.get_text()
+        dicEntry['value'] = self.eValue.get_text()
+        dicEntry['type'] = self.eType.get_text()
+        dicEntry['resultSet'] = self.eResultSet.get_text()
+        dicEntry['format'] = self.eFormat.get_text()
+        dicEntry['variable'] = self.eVariable.get_text()
+        dicEntry['memory'] = self.eMemory.get_text()
+        dicEntry['formula'] = self.eFormula.get_text()
+        dicEntry['property'] = self.eProperty.get_text()
+        dicEntry['font'] = self.eFont.get_text()
+        dicEntry['fontsize'] = self.eFontSize.get_text()
+        dicEntry['fontjustification'] = self.eJustification.get_text()
+        dicEntry['foregroundColor'] = self.eFG.get_text()
+        dicEntry['backgroundColor'] = self.eBG.get_text()
+        try:
+            dicEntry['grayScale'] = float(self.eGrayScale.get_text())
+        except:
+            dicEntry['grayScale'] = 0.0
+        
+        print 'dicEntry at modifyEntry1',  dicEntry
         self.replaceEntry( dicEntry)
         
         self.activateClick('bRefresh',sAction = "clicked")

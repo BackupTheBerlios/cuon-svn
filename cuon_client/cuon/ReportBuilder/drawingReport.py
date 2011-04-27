@@ -95,7 +95,7 @@ class drawingReport(gladeXml):
     def replaceEntryByName(self, dicEntry):
         replace = False
         for i in range(len(self.drawObjects)):
-            if self.drawObjects[i]['eName'] == dicEntry['eName']:
+            if self.drawObjects[i]['name'] == dicEntry['name']:
                 self.drawObjects[i] = dicEntry
                 replace = True
                 break
@@ -106,20 +106,20 @@ class drawingReport(gladeXml):
     def getEntryAtPosition(self, x,  y):
         liEntries = []
         for dicEntry in self.drawObjects:
-            print 'Values = ',dicEntry['eName'],  x, dicEntry['posX1']*self.Zoom , dicEntry['posX2']*self.Zoom , y, dicEntry['posY1']*self.Zoom ,  dicEntry['posY2']*self.Zoom
+            #print 'Values = ',dicEntry['name'],  x, dicEntry['posX1']*self.Zoom , dicEntry['posX2']*self.Zoom , y, dicEntry['posY1']*self.Zoom ,  dicEntry['posY2']*self.Zoom
             if x >= dicEntry['posX1']*self.Zoom and  x <= dicEntry['posX2'] *self.Zoom and  y >= dicEntry['posY1'] *self.Zoom  and  y <= dicEntry['posY2']*self.Zoom :
                 liEntries.append(dicEntry)
         return liEntries
             
     def setEntry(self, dicEntry):
-        print 'setEntry ',  dicEntry['eName'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']
+        print 'setEntry ',  dicEntry['name'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']
         
         if dicEntry['posY2'] != dicEntry['posY1'] and dicEntry['posY2'] == 0:
             dicEntry['posY2'] = dicEntry['posY1']
         if dicEntry['class'] not in ['Line']:
             if dicEntry['posY2'] == dicEntry['posY1'] or dicEntry['posY2'] == 0:
                 dicEntry['posY2'] = dicEntry['posY1'] +15  
-        print 'setEntry2 ',  dicEntry['eName'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']       
+        print 'setEntry2 ',  dicEntry['name'],  dicEntry['posX1'],  dicEntry['posX2'], dicEntry['posY1'], dicEntry['posY2']       
         self.drawObjects.append(dicEntry)
         
     def setReportEntry(self, dicEntry):
@@ -163,7 +163,7 @@ class drawingReport(gladeXml):
         #self.area.window.draw_rectangle(self.gc, True, x+10, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+50, y+10, 20, 20)
         #self.area.window.draw_rectangle(self.gc, True, x+20, y+50, 40, 10)
-        self.pangolayout.set_text(dicEntry['eName'])
+        self.pangolayout.set_text(dicEntry['name'])
         self.gc.set_rgb_fg_color(self.ColorBlack)
         self.area.window.draw_layout(self.gc, dicEntry['posX1']*self.Zoom, dicEntry['posY1']*self.Zoom,  self.pangolayout)
         return
@@ -185,7 +185,7 @@ class drawingReport(gladeXml):
     def draw_line(self,color,  dicEntry):
         self.gc.set_rgb_fg_color(color)
         self.area.window.draw_line(self.gc,dicEntry['posX1']*self.Zoom , dicEntry['posY1']*self.Zoom, self.gc,dicEntry['posX2']*self.Zoom , dicEntry['posY2']*self.Zoom)
-        self.pangolayout.set_text(dicEntry['eName'])
+        self.pangolayout.set_text(dicEntry['name'])
         self.gc.set_rgb_fg_color(self.ColorBlack)
         self.area.window.draw_layout(self.gc,dicEntry['posX1']*self.Zoom , dicEntry['posY1']*self.Zoom +5, self.pangolayout)
         return

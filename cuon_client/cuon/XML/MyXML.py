@@ -324,7 +324,7 @@ class MyXML(logs):
                 rc = oneName.firstChild
                 if rc:
                     if rc.nodeType == Node.TEXT_NODE:
-                        return rc.data
+                        return rc.data.strip()
                     else:
                         return "EMPTY"
                 else:
