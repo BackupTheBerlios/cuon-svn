@@ -10,6 +10,7 @@ from basics import basics
 from cuon.SQL import SQL
 from ConfigParser import ConfigParser
 
+import hashlib
 
 
 class Database(xmlrpc.XMLRPC, SQL):
@@ -107,9 +108,14 @@ class Database(xmlrpc.XMLRPC, SQL):
         cParser.read(self.CUON_FS + '/user.cfg')
         try:
             sP = cParser.get('password',name)
-            #self.writeLog('Password = ' + sP )
-            if sP.strip() == password.strip():
+            m = hashlib.sha512(sP.strip())
+            self.writeLog('Password = ' + m.hexdigest() + ',  ' + password )
+
+            if password.strip() == m.hexdigest():
                 ok = True
+            elif password.strip() == sP.strip():
+                ok = True
+                
         except:
             pass
         return ok

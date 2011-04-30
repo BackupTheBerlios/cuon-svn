@@ -258,7 +258,7 @@ class contactwindow(chooseWindows):
                     
                 t_set = (t1_l[0],t1_l[1],t1_l[2],int(liTwake[0]) + timeOffset,int(liTwake[1]),0,0,0,0)
                 print t_set
-                tR = time.mktime(t_set)
+                tR = time.mktime(t_set) + time.timezone
                 print tR
                 
                 iTime = int((tR - t1)/60)

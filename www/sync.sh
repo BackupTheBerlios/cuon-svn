@@ -22,6 +22,7 @@ rsync  -avz --numeric-ids -e 'ssh -p 22'  *.css root@cuon.org://var/www/cuon_web
 
 rsync  -avz --numeric-ids -e 'ssh -p 22'  *.gif root@cuon.org://var/www/cuon_web
 
+rsync  -r -avz --numeric-ids -e 'ssh -p 22'  FAQ root@cuon.org://var/www/cuon_web
 
 
 

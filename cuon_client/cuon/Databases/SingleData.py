@@ -151,19 +151,20 @@ class SingleData(gladeXml, logs):
                         for i in range(len(self.statusfields)):
                             self.sStatus = self.sStatus + firstRecord[self.statusfields[i]] + ', '
                 except:
-                    self.printOut( 'no statusfield')
+                    pass
+                    #self.printOut( 'no statusfield')
                     
             self.firstRecord = firstRecord
             #print 'firstRecord by SingleData2', firstRecord
         except AssertionError:
-            self.printOut( 'assert error')
+            #self.printOut( 'assert error')
             liRecords = None
         except Exception, param:
             print 'Error by load Data'
             print Exception,  param
             
             
-        #self.printOut( liRecords    )
+        ##self.printOut( liRecords    )
         self.loadOtherDatatable(self.ID)
         self.setNormalCursor()
         return liRecords
@@ -201,8 +202,8 @@ class SingleData(gladeXml, logs):
         if liBigEntries != 'NO':
             
             for lb in liBigEntries:
-                #self.printOut( 'lb = ' + `lb`)
-                #self.printOut( lb
+                ##self.printOut( 'lb = ' + `lb`)
+                ##self.printOut( lb
                 #print dicValues[lb][0]
                 dicValues[lb][0] =  base64.encodestring(dicValues[lb][0])
                 
@@ -210,24 +211,24 @@ class SingleData(gladeXml, logs):
 ##        if liBigEntries != 'NO':
 ##            
 ##            for lb in liBigEntries:
-##                #self.printOut( 'lb = '
-##                #self.printOut( lb
+##                ##self.printOut( 'lb = '
+##                ##self.printOut( lb
 ##                j = 0
 ##                k = 2048*30
 ##                en =  base64.encodestring(dicValues[lb][0])
 ##
 ##                endFile = len(en)
-##                #self.printOut( endFile)
+##                ##self.printOut( endFile)
 ##                while j < endFile:
 ##                    ok = self.rpc.callRP('Database.createBigRow',lb, en[j:k] , j,  self.sqlDicUser)
-##                    #self.printOut( ok)
+##                    ##self.printOut( ok)
 ##                    j = k
 ##                    k = k + 2048*30
-##                    #self.printOut( j)
-##                    #self.printOut( k)
+##                    ##self.printOut( j)
+##                    ##self.printOut( k)
 ##                dicValues[lb][0] = ' '
         
-        #self.printOut( "saveValues - self.id = ", self.ID)
+        ##self.printOut( "saveValues - self.id = ", self.ID)
         #print 'save record'
         #print self.sNameOfTable, self.ID
         #print 'int Type = ', isinstance(self.ID, types.IntType)
@@ -238,7 +239,7 @@ class SingleData(gladeXml, logs):
         #print '-----------------------------------------------------------------------_'
         
         liResult = self.rpc.callRP('Database.saveRecord',self.sNameOfTable, self.ID, dicValues, self.sqlDicUser, liBigEntries)
-        print 'liResult by SingleData = ', liResult
+        #print 'liResult by SingleData = ', liResult
         
         if self.ID < 0 and liResult:
             try:
@@ -250,7 +251,7 @@ class SingleData(gladeXml, logs):
 
         if liResult == 0:
             id = 0
-        print 'id by save = ', id    
+        #print 'id by save = ', id    
     
         self.saveOtherDatatable(id)
         return id
@@ -282,7 +283,7 @@ class SingleData(gladeXml, logs):
 
 
     def loadTable(self, allTables = None):
-        self.printOut( 'allTables (SD)  = ',`allTables`)
+        #self.printOut( 'allTables (SD)  = ',`allTables`)
         if allTables:
             self.table = allTables[self.sNameOfTable]
         else:
@@ -330,7 +331,8 @@ class SingleData(gladeXml, logs):
                 
                     
             except:
-                self.printOut( 'no Tree exist')
+                pass
+                #self.printOut( 'no Tree exist')
         else:
             try:
                 assert self.tree1
@@ -339,7 +341,8 @@ class SingleData(gladeXml, logs):
                 
                     
             except:
-                self.printOut( 'no Tree exist') 
+                pass
+                #self.printOut( 'no Tree exist') 
                 
     def refreshTreeWithoutNewItems(self):
         try:
@@ -347,7 +350,8 @@ class SingleData(gladeXml, logs):
             self.fillTree(self.tree1, self.getListEntries() )
             self.treeSelectRow()
         except:
-            self.printOut( 'no Tree exist')
+            pass
+            #self.printOut( 'no Tree exist')
 
     def tree_select_callback(self, treeSelection):
         # self.out( 'tree_select entered')
@@ -497,12 +501,12 @@ class SingleData(gladeXml, logs):
         except:
             self.ID = 0
             
-        self.printOut( "getFirstentry", liEntries)
+        #self.printOut( "getFirstentry", liEntries)
         
         
         
     def clearAllFields(self):
-        #self.printOut( 'clear all widgets ')
+        ##self.printOut( 'clear all widgets ')
         nCount = self.dicEntries.getCountOfEntries()
         
         
@@ -520,21 +524,21 @@ class SingleData(gladeXml, logs):
             elif string.count(str(widget), "GtkCheckButton") > 0:
                 widget.set_active(False)
             elif string.count(str(widget), "GtkRadioButton") > 0:
-                print 'RadioButton set to false'
+                #print 'RadioButton set to false'
                 widget.set_active(False)
                   
             elif string.count(str(widget), "GnomeDateEdit") > 0:
                 newDate = '01.01.1900'
                 try:
                     newDate = time.strptime('0001/01/01', 'Y/m/d') 
-                    self.printOut( newDate)
+                    #self.printOut( newDate)
                     widget.set_time(int(time.mktime(newDate)))
                 except:
                     pass
                                            
             elif string.count(str(widget), "GtkComboBoxEntry") > 0:
-                self.printOut( "Cbe", 'löschen')
-                self.printOut( widget.get_name())
+                #self.printOut( "Cbe", 'löschen')
+                #self.printOut( widget.get_name())
                 
                 widget.set_active(0)
         self.clearAllOtherFields()
@@ -542,21 +546,21 @@ class SingleData(gladeXml, logs):
     def clearAllOtherFields(self):
         pass
     def fillEntries(self, id):
-        print 'id by fillentries: ',  id
+        #print 'id by fillentries: ',  id
         self.ID = id
         if id < 1:
             self.clearAllFields()
         else:
             oneRecord = []
             dicRecord = self.load(id)
-            print  'Record by fillEntries: ', dicRecord
+            #print  'Record by fillEntries: ', dicRecord
             if dicRecord:
                 oneRecord = dicRecord[0]
             if not oneRecord:
                 self.clearAllFields()
             for i in range(len(oneRecord)):
                 sValue = oneRecord[oneRecord.keys()[i]]
-                #self.printOut( 'sValue = ', sValue)
+                ##self.printOut( 'sValue = ', sValue)
                 
                 if self.dicEntries.getEntryByName(oneRecord.keys()[i]) == None:
                     #self.fillExternalWidget(oneRecord[sValue], id)
@@ -565,13 +569,13 @@ class SingleData(gladeXml, logs):
                     #self.fillExternalWidget(sValue, id)
                     self.fillExternalWidget(sValue, oneRecord)
                 elif self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql() == '0'  :
-                    self.printOut( 'createSql 0= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql())
+                    #self.printOut( 'createSql 0= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql())
                     self.fillExtraEntries(oneRecord)
                 else :
-                    self.printOut( 'createSql 1= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql())
+                    #self.printOut( 'createSql 1= ', self.dicEntries.getEntryByName(oneRecord.keys()[i]).getCreateSql())
                     entry = self.dicEntries.getEntryByName(oneRecord.keys()[i])
                     # self.out( type(sValue))
-                    self.printOut( sValue, type(sValue))
+                    #self.printOut( sValue, type(sValue))
                     if isinstance(sValue, types.ClassType) or isinstance(sValue, types.InstanceType):
                         sValue = `sValue`
                     if entry.getVerifyType() == 'string' and isinstance(sValue, types.StringType):
@@ -596,7 +600,7 @@ class SingleData(gladeXml, logs):
                             if iR == -1:
                                 iR = 2
                             sValue = "%0.*f" % (iR, sValue)
-                            self.printOut( sValue)
+                            #self.printOut( sValue)
                         except:
                             pass
                             
@@ -613,17 +617,17 @@ class SingleData(gladeXml, logs):
                     elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                         
                         #sValue = sValue.encode(self.sCoding)
-                        self.printOut( 'date string = ', sValue)
+                        #self.printOut( 'date string = ', sValue)
                         
                         sValue = self.getCheckedValue(sValue, 'formatedDate')
                         
                         #dt = time.strptime(sValue, "YYYY-MM-DD HH:MM:SS.ss")
-                        #self.printOut( dt
+                        ##self.printOut( dt
                         #dt = DateTime.strptime(sValue, self.sqlDicUser['DateFormatString'])
-                        #self.printOut( dt
-                        #self.printOut( self.sqlDicUser['DateTimeformatString']
+                        ##self.printOut( dt
+                        ##self.printOut( self.sqlDicUser['DateTimeformatString']
                         #sValue = time.strptime(sValue, self.sqlDicUser['DateFormatString'] )
-                        #self.printOut( newDate
+                        ##self.printOut( newDate
                         
                     #elif entry.getVerifyType() == 'date' and isinstance(sValue, types.StringType):
                     #    dt = DateTime.DateTimeFrom(sValue)
@@ -638,7 +642,7 @@ class SingleData(gladeXml, logs):
                         sValue = str(sValue)
 
                     widget = self.getWidget(entry.getName())
-                    print  "widget: " , entry.getName() ,  str(widget) 
+                    #print  "widget: " , entry.getName() ,  str(widget) 
                     
                     
                     if string.count(str(widget), "GtkEntry") > 0:
@@ -662,8 +666,8 @@ class SingleData(gladeXml, logs):
                             # -1 don`t function -- proof later
                             widget.set_active(-1)
                     elif string.count(str(widget), "GtkCheckButton") > 0 :
-                        self.printOut( 'Bool-Value from Database', sValue)
-                        self.printOut( "GtkCheckButton ", entry.getName())
+                        ##self.printOut( 'Bool-Value from Database', sValue)
+                        ##self.printOut( "GtkCheckButton ", entry.getName())
                         bValue = False
                         try:
                             if sValue == 1 or sValue == 't' or sValue == 'True':
@@ -672,35 +676,36 @@ class SingleData(gladeXml, logs):
                             pass
                             
                         sValue = bValue
-                        self.printOut( 'Widget set to ', sValue)
+                        ##self.printOut( 'Widget set to ', sValue)
                         widget.set_active(sValue)
-                        self.printOut( widget, widget.get_active())
+                        ##self.printOut( widget, widget.get_active())
                             
                     elif string.count(str(widget), "GtkRadioButton") > 0:
-                        print 'Bool-Value from Database', sValue
-                        print "GtkCheckButton ", entry.getName()
+                        #print 'Bool-Value from Database', sValue
+                        #print "GtkCheckButton ", entry.getName()
                         
                         
                         if sValue == 1 or sValue == 't' or sValue == 'True': 
                             sValue = True
-                            self.printOut( 'is true !')
+                            #self.printOut( 'is true !')
                         else:
                             sValue = False
-                            self.printOut( 'is false')
+                            #self.printOut( 'is false')
                             
-                        self.printOut( 'Widget set to ', sValue)
+                        #self.printOut( 'Widget set to ', sValue)
                         if sValue:
                             widget.set_active(sValue)
                             
-                        self.printOut( widget, widget.get_active())
+                        #self.printOut( widget, widget.get_active())
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
                         try:
-                            self.printOut( self.sqlDicUser['DateTimeformatString'])
+                            #self.printOut( self.sqlDicUser['DateTimeformatString'])
                             newDate = time.strptime(sValue, self.sqlDicUser['DateTimeformatString'] )
-                            self.printOut( newDate)
+                            #self.printOut( newDate)
                             widget.set_time(int(time.mktime(newDate)))
                         except:
-                            self.printOut( 'ERORR - Time not match')
+                            pass
+                            #self.printOut( 'ERORR - Time not match')
                             
                     elif string.count(str(widget), "GtkFileChooserButton") > 0:
                         widget.set_filename(sValue)
@@ -743,27 +748,27 @@ class SingleData(gladeXml, logs):
                         sValue = `widget.get_active()`
                     elif string.count(str(widget), "GnomeDateEdit") > 0:
                         newTime = time.localtime(widget.get_time())
-        #                self.printOut( "Datum und Zeit"
-        #                self.printOut( newTime
+        #                #self.printOut( "Datum und Zeit"
+        #                #self.printOut( newTime
                         #if entry.getVerifyType() == 'date':
                          #   sValue = time.strftime(self.sqlDicUser['DateformatString'], newTime)
                         #else:
                         sValue = time.strftime(self.sqlDicUser['DateTimeformatString'], newTime)
-        #                self.printOut( sValue
+        #                #self.printOut( sValue
                     elif string.count(str(widget), "GtkComboBoxEntry") > 0:
                         sValue = widget.get_active()
-                        self.printOut( "GtkComboEntry", sValue)
-                        self.printOut( "Text = ", widget.get_active_text())
+                        #self.printOut( "GtkComboEntry", sValue)
+                        #self.printOut( "Text = ", widget.get_active_text())
 
                     elif string.count(str(widget), "GtkFileChooserButton") > 0:
-                        self.printOut( "  GtkFileChooserButton ")
+                        #self.printOut( "  GtkFileChooserButton ")
                         sValue =  widget.get_filename()
-                        self.printOut( sValue)
+                        #self.printOut( sValue)
                         
                     else:
                         sValue = widget.get_text()
                 except Exception, param:
-                        self.printOut( 'Exception Error:', param )
+                        #self.printOut( 'Exception Error:', param )
                         sValue = ''
 
 
@@ -771,23 +776,24 @@ class SingleData(gladeXml, logs):
                     assert entry.getCreateSql() == '1'
                     dicValues[entry.getSqlField()] = [sValue , entry.getVerifyType() ]
                 except Exception, param:
-                    self.printOut( 'no SQL-Field')
+                    pass
+                    #self.printOut( 'no SQL-Field')
                     
                     
                 # self.out( 'Value by sql = ' + `dicValues[entry.getSqlField()]`)
 
             # self.out( 'dicValue by readEntries = ')
             #print 'dicValues read entries',   dicValues
-            #self.printOut(  'read-Entries' , dicValues )
+            ##self.printOut(  'read-Entries' , dicValues )
             dicValues = self.readNonWidgetEntries(dicValues)
         except AssertionError:
-            self.printOut( 'assert error')
+            #self.printOut( 'assert error')
             dicValues = None
         
         dicValues['client'] = [self.sqlDicUser['client'], 'int']
         dicValues = self.readExtraEntries(dicValues)
         dicValues = self.verifyValues(dicValues)
-        #self.printOut(  'after Verify' , `dicValues`)
+        ##self.printOut(  'after Verify' , `dicValues`)
         return dicValues
  
     def readExtraEntries(self, dicValues):
@@ -796,7 +802,7 @@ class SingleData(gladeXml, logs):
     def verifyValues(self, dicValues):
         try:
             assert dicValues != None
-            #self.printOut( dicValues)
+            ##self.printOut( dicValues)
             for i in dicValues.keys():
                 oValue = dicValues[i][0]
                 sVerify = dicValues[i][1]
@@ -823,7 +829,7 @@ class SingleData(gladeXml, logs):
 ##                        oValue = 0
 ##                    # self.out( oValue, self.INFO)
 ##                    # self.out( '++++++++++++++++++++++++++++++++++',self.INFO)
-##                    self.printOut( oValue)
+##                    #self.printOut( oValue)
 ##                    if (not isinstance(oValue, types.IntType)) and isinstance(oValue, types.StringType):
 ##                        if oValue.isdigit():
 ##                            oValue = int(oValue)
@@ -848,7 +854,7 @@ class SingleData(gladeXml, logs):
                         oValue = 0.0
                     # self.out( oValue)
                     # self.out( '++++++++++++++++++++++++++++++++++')
-                    #self.printOut( oValue)
+                    ##self.printOut( oValue)
 #                    elif (not isinstance(oValue, types.FloatType)) and isinstance(oValue, types.StringType) :
 #                        oValue = string.replace(oValue,',','.')
 #                        oValue = float(oValue)
@@ -864,17 +870,17 @@ class SingleData(gladeXml, logs):
                     if oValue == '':
                         oValue = '01.01.1900'
                     else:
-                        self.printOut('Date by Verify:', oValue)
+                        #self.printOut('Date by Verify:', oValue)
                         oDate =  time.strptime(oValue, self.sqlDicUser['DateformatString'])
                         oValue = time.strftime("%Y/%m/%d",oDate)
-                        self.printOut('Date by Verify 2:', oValue)
+                        #self.printOut('Date by Verify 2:', oValue)
                 #print i, dicValues[i]
                 #print oValue, sVerify
                 dicValues[i][0] = oValue
                 dicValues[i][1] = sVerify
 
         except AssertionError:
-            self.printOut( 'assert error')
+            #self.printOut( 'assert error')
             dicValues = None
      
         self.out("DicValues by readEntries = " + `dicValues`)
@@ -926,10 +932,10 @@ class SingleData(gladeXml, logs):
     def getListEntries(self):
         liItems = []
         dicFields = {}
-        self.printOut('liFields',self.liFields)
+        #self.printOut('liFields',self.liFields)
         for i in self.liFields:
             entry = self.dicEntries.getEntryByName(i)
-            self.printOut('entry = ', `entry`)
+            #self.printOut('entry = ', `entry`)
             if entry:
                 dicFields[i] = entry.getVerifyType()
             elif i == 'id':
@@ -948,7 +954,7 @@ class SingleData(gladeXml, logs):
             dicLists = {}
             
         # self.out( dicLists)
-        #self.printOut( 'dicLists =',  dicLists)
+        ##self.printOut( 'dicLists =',  dicLists)
         #print 'dicLists =',  dicLists
         
         try:
@@ -956,49 +962,43 @@ class SingleData(gladeXml, logs):
                 liSubItems =[]
                 for j in self.liFields:
                     m = self.p1.match(j)
-                    self.printOut('m = ', m)
+                    #self.printOut('m = ', m)
                     if m:
                         m1 = j[m.end():]
-                        self.printOut('m1 = ', m1)    
+                        #self.printOut('m1 = ', m1)    
                         j = m1.strip()
-                        self.printOut('j = ',j)    
-                    self.printOut('i-end = ', i)
-                    self.printOut('j-end = ', j)
+                        #self.printOut('j = ',j)    
+                    #self.printOut('i-end = ', i)
+                    #self.printOut('j-end = ', j)
                     zAs = j.find(' as ')
                     if zAs > 0:
                         j = j[zAs + 4:]
                         j = j.strip()
-                    self.printOut('j0 = ', j)
+                    #self.printOut('j0 = ', j)
                     
                     sValue = i[j]
-                    self.printOut('sValue = ',sValue)
+                    #self.printOut('sValue = ',sValue)
                     #if isinstance(sValue, types.StringType):
                     #    sValue = unicode(sValue, 'utf-7')
                     if isinstance(sValue, types.UnicodeType):
                         sValue = sValue.encode(self.sCoding)     
-                    self.printOut( ( 'name of j = ' + `j` + 'Value = ' + `sValue`))
+                    #self.printOut( ( 'name of j = ' + `j` + 'Value = ' + `sValue`))
                     if j != 'id':
                         entry = self.dicEntries.getEntryByName(j)
-                        if entry:
-                            pass
-                            # self.out( entry.getName())
-
-                        else:
-                            self.printOut( 'no entry with this  name found')
-                            #sValue = None
-
+                        
 
                     liSubItems.append(sValue)
                 liItems.append(liSubItems)
         except Exception, param:
-            self.printOut( 'Error ')
-            self.printOut( Exception,param)
+            pass
+            #self.printOut( 'Error ')
+            #self.printOut( Exception,param)
             
                 
         # self.out( '-----------------------------------------------------------------------------------------------------------------------------------')
         # self.out( liItems)
         # self.out( '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-        #self.printOut( 'liItems ---', `liItems`)
+        ##self.printOut( 'liItems ---', `liItems`)
         #print  'liItems ---', `liItems`
         self.liItems = liItems
         return liItems

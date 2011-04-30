@@ -21,7 +21,7 @@ import gtk.glade
 import gobject
 #from gtk import TRUE, FALSE
 import string
-
+import hashlib
 import logging
 from cuon.Windows.windows  import windows
 try:
@@ -126,8 +126,11 @@ class loginwindow(windows):
         sPw = self.getWidget('TPassword').get_text()
 
         print 'New Auth data ( Session_id )'
+        m = hashlib.sha512(sPw)
+        print m.hexdigest()
+        
         #print self.oUser.getUserName(), sPw
-        sid = self.rpc.callRP('Database.createSessionID', self.oUser.getUserName(), sPw)
+        sid = self.rpc.callRP('Database.createSessionID', self.oUser.getUserName(), m.hexdigest())
         print "Session-ID0 = ", `sid`
         if sid:
             print "Session-ID1 = ", `sid`

@@ -137,7 +137,7 @@ class documentTools(dumps):
         print 'exe2 = ', exe
         if Action == 'PrintNewsletter':
             sExe = dicUser['prefApps']['printNewsletter']
-            print 'sExe', sExe
+            print 'sExe', sExe, singleDMS.tmpFile 
             os.system(sExe + ' ' + singleDMS.tmpFile)
         elif Action == 'sentAutomaticEmail':
             print 'sentAutomaticEmail'
