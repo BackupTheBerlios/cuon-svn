@@ -108,13 +108,19 @@ class plantlists(cuonlists):
         nRow = 0
         iOrderSort = 0
         gyID = -1
-        
+        priceID = -1
         
         sGyID = self.getActiveText(self.getWidget('cbGraveyard'))
         try:
             gyID = int(sGyID[sGyID.find('###')+ 3:].strip()) 
         except:
             gyID = -1
+            
+        sPriceID = self.getActiveText(self.getWidget('cbTypeOfPaid'))
+        try:
+            priceID = int(sPriceID[sPriceID.find('###')+ 3:].strip()) 
+        except:
+            priceID = -1    
             
         try:
             iOrderSort = self.getWidget('cbGraveSorting').get_active()
@@ -149,9 +155,10 @@ class plantlists(cuonlists):
         liReturn.append(iContract)
         liReturn.append(iService)
         liReturn.append(iPlantation)
+        liReturn.append(priceID)
         
         print 'liReturn = ',  liReturn
         
-        sName = "grave_plant_list_standard.xml"
+        sName = self.getActiveText(self.getWidget("cbListOfReport"))
         return liReturn,  nRow,  sName,  iOrderSort
         

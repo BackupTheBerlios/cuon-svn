@@ -25,14 +25,17 @@
 
 DROP FUNCTION IF EXISTS fct_getGravePlantListSQL(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
 DROP FUNCTION IF EXISTS fct_getGravePlantListSQL(  int, text,  text, text, text,  text, text, text, text, int,text,text ) CASCADE ;
-CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int, iRows int ,additionalRows text, additionalTables text, additionalWhere text) returns text AS '   
+CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int,price int, iRows int ,additionalRows text, additionalTables text, additionalWhere text) returns text AS '   
  DECLARE
         iClient int ;
        
         searchsql text := '''';
    
-    
-    
+        iIndex integer ;
+        iIndex2 integer  ;
+        sSub1 text ;
+        sSub2 text ;
+        
     BEGIN
     -- graveyard.lastname 
         -- grab laufnummer
@@ -56,6 +59,25 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_last
             
             searchsql := searchsql  || '' and grave.lastname between '' || quote_literal(grave_lastname_from) || '' and '' || quote_literal(grave_lastname_to)   || '' '' ;
         
+        END IF ;
+         IF char_length(grave_lastname_from) > 0 AND char_length(grave_lastname_to) = 0 THEN 
+            iIndex := position(''#!#'' in grave_lastname_from) ;
+            
+            if iIndex > -1 then
+                grave_lastname_from := overlay(grave_lastname_from placing '''' from iIndex for 3) ;
+                
+            end if ;
+            sSub1 := substring(grave_lastname_from from 0 for iIndex) ;
+            
+            iIndex2 := position(''#!#'' in grave_lastname_from) ;
+            
+            if iIndex2 > -1 then
+                grave_lastname_from := overlay(grave_lastname_from placing '''' from iIndex2 for 3) ;
+                
+            end if ;
+            sSub2 := substring(grave_lastname_from from iIndex ) ;
+            grave_lastname_from := sSub1 || quote_literal(sSub2) ;
+            searchsql := searchsql  || '' and grave.lastname '' || grave_lastname_from || '' '' ;
         END IF ;
         
         IF char_length(eSequentialNumberFrom) > 0 AND char_length(eSequentialNumberTo) > 0 THEN 
@@ -96,7 +118,7 @@ DROP FUNCTION IF EXISTS fct_getGravePlantListValues(IN dicSearchfields text [], 
 DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
 DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
 
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int,service int, plantation int, iRows int , iOrderSort int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int,service int, plantation int, price int, iRows int , iOrderSort int ) returns setof record AS '
     DECLARE
         iClient int ;
         r record;
@@ -126,7 +148,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
 DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
 DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
 
-CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int, iRows int, iOrderSort int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int, price int,  iRows int, iOrderSort int ) returns setof record AS '
     DECLARE
         iClient int ;
         r record;

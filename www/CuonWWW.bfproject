@@ -32,7 +32,7 @@ recent_files: /opt/Projekte/cuon/www/en_Cuon/en_Cuon.html
 recent_files: /opt/Projekte/cuon/www/en_Cuon/en_Main.html
 recent_files: /opt/Projekte/cuon/www/main_index.css
 opendir: /opt/Projekte/cuon/www
-savedir: /opt/Projekte/cuon/www/Cuon
+savedir: /opt/Projekte/cuon/www
 view_html_toolbar: 1
 view_custom_menu: 1
 view_main_toolbar: 1

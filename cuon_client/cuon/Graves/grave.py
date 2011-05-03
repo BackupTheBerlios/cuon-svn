@@ -127,7 +127,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveMaintenance.setGladeXml(self.xml)
         self.singleGraveMaintenance.setTreeFields( ['article_id', 'grave_service_id' ] )
         self.singleGraveMaintenance.setStore( gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_INT,  gobject.TYPE_UINT) ) 
-        self.singleGraveMaintenance.setTreeOrder('article_id')
+        self.singleGraveMaintenance.setTreeOrder('id desc')
         self.singleGraveMaintenance.setListHeader([_('Article-ID'),  _('Service-ID')])
         self.singleGraveMaintenance.setTree(self.getWidget('tree1') )
         self.singleGraveMaintenance.sWhere  ='where grave_id = ' + `self.singleGrave.ID`
@@ -590,11 +590,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         
         
         
-        self.singleGraveMaintenance.graveID = self.singleGrave.ID
-        self.singleGraveMaintenance.save()
-        
         self.singleGraveServiceNotes.graveID = self.singleGrave.ID
-        self.singleGraveMaintenance.graveServiceID =  self.MN['GraveServiceNotesService'] 
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesService'] 
         self.singleGraveServiceNotes.save()
         
         
@@ -629,6 +626,10 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSpring.graveServiceID =  self.MN['GraveServiceNotesSpring'] 
         self.singleGraveSpring.singleGrave = self.singleGrave
         self.singleGraveSpring.save()
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesSpring'] 
+        self.singleGraveServiceNotes.save()
         
         self.setEntriesEditable(self.EntriesGravesSpring, False)
         self.setEntriesEditable(self.EntriesGraves, False)
@@ -666,6 +667,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveSummer.graveServiceID =  self.MN['GraveServiceNotesSummer'] 
         self.singleGraveSummer.singleGrave = self.singleGrave
         self.singleGraveSummer.save()
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesSummer'] 
+        self.singleGraveServiceNotes.save()
+        
+        
         self.setEntriesEditable(self.EntriesGravesSummer, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
@@ -702,6 +709,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveAutumn.graveServiceID =  self.MN['GraveServiceNotesAutumn'] 
         self.singleGraveAutumn.singleGrave = self.singleGrave
         self.singleGraveAutumn.save()
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesAutumn'] 
+        self.singleGraveServiceNotes.save()
+        
+        
         self.setEntriesEditable(self.EntriesGravesAutumn, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
@@ -734,6 +747,11 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveWinter.graveServiceID =  self.MN['GraveServiceNotesWinter'] 
         self.singleGraveWinter.singleGrave = self.singleGrave
         self.singleGraveWinter.save()
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesWinter'] 
+        self.singleGraveServiceNotes.save()
+        
         self.setEntriesEditable(self.EntriesGravesWinter, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
@@ -768,6 +786,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveHolidays.graveServiceID =  self.MN['GraveServiceNotesHolliday'] 
         self.singleGraveHolidays.singleGrave = self.singleGrave
         self.singleGraveHolidays.save()
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesHolliday'] 
+        self.singleGraveServiceNotes.save()
+        
+        
         self.setEntriesEditable(self.EntriesGravesHolidays, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
@@ -800,6 +824,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveAnnual.graveServiceID =  self.MN['GraveServiceNotesAnnual'] 
         self.singleGraveAnnual.singleGrave = self.singleGrave
         self.singleGraveAnnual.save()
+        
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesAnnual'] 
+        self.singleGraveServiceNotes.save()
+        
+        
         self.setEntriesEditable(self.EntriesGravesAnnual, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()
@@ -833,6 +864,13 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.singleGraveUnique.graveServiceID =  self.MN['GraveServiceNotesUnique'] 
         self.singleGraveUnique.singleGrave = self.singleGrave
         self.singleGraveUnique.save()
+        
+        
+        self.singleGraveServiceNotes.graveID = self.singleGrave.ID
+        self.singleGraveServiceNotes.graveServiceID =  self.MN['GraveServiceNotesUnique'] 
+        self.singleGraveServiceNotes.save()
+        
+        
         self.setEntriesEditable(self.EntriesGravesUnique, False)
         self.setEntriesEditable(self.EntriesGraves, False)
         self.tabChanged()

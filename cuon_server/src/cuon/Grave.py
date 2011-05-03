@@ -160,7 +160,8 @@ class Grave(xmlrpc.XMLRPC, basics):
             if isinstance(sSearch,  types.IntType):
                 sSql += `sSearch` + ",  " 
             else:
-                sSql += "'" + sSearch.strip() + "',  " 
+                sSearch = sSearch.strip().replace("'", "#!#")
+                sSql += "'" + sSearch + "',  " 
             
         
         
@@ -178,7 +179,8 @@ class Grave(xmlrpc.XMLRPC, basics):
             if isinstance(sSearch,  types.IntType):
                 sSql += `sSearch` + ",  " 
             else:
-                sSql += "'" + sSearch.strip() + "',  " 
+                sSearch = sSearch.strip().replace("'", "#!#")
+                sSql += "'" + sSearch + "',  " 
             
         
         

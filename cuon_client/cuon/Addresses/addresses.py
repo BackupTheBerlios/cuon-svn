@@ -74,9 +74,9 @@ try:
     import cuon.Graves.grave
     #import cuon.Graves.graveyard
     
-except:
+except Exception, params:
     print "graves import not possible"
-
+    print Exception,  params
 bHtml = False
 try:
     #import gtkhtml2
