@@ -84,6 +84,9 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_last
            
             searchsql := searchsql  || '' and pos_number between '' || eSequentialNumberFrom || '' and '' || eSequentialNumberTo || '' '' ;
         END IF ;
+        if price > -1 then 
+            searchsql := searchsql  || '' and type_of_paid = price '' ;
+        end if ;
         
         IF char_length(dContractBeginFrom) > 0 AND char_length(dContractBeginTo) > 0 THEN 
             searchsql := searchsql  || '' and contract_begins_at between fct_to_date('' || quote_literal(dContractBeginFrom) || '') and fct_to_date('' || quote_literal(dContractBeginTo) ||'') '' ;
@@ -129,7 +132,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
     
     
     BEGIN
-        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation, iRows,additionalRows,  additionalTables, additionalWhere) ;
+        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation, price, iRows,additionalRows,  additionalTables, additionalWhere) ;
         searchsql := searchsql  ||  fct_getWhere(2,''graveyard.'') || '' order by  graveyard.shortname, grave.pos_number, grave.lastname, grave.firstname '';
          FOR r in execute(searchsql)  LOOP
          
@@ -168,7 +171,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave
         END IF ;
         additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count '' ;
         
-        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation,   iRows,additionalRows, additionalTables, additionalWhere) ;
+        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation, price,  iRows,additionalRows, additionalTables, additionalWhere) ;
         -- searchsql := searchsql || '' '' ;
         
         
