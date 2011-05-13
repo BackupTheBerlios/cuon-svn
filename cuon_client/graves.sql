@@ -33,6 +33,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_last
    
         iIndex integer ;
         iIndex2 integer  ;
+        newGravename text ;
         sSub1 text ;
         sSub2 text ;
         
@@ -61,23 +62,25 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListSQL(graveyard_id int, grave_last
         
         END IF ;
          IF char_length(grave_lastname_from) > 0 AND char_length(grave_lastname_to) = 0 THEN 
-            iIndex := position(''#!#'' in grave_lastname_from) ;
+         
+            newGravename := grave_lastname_from ;
+            iIndex := position(''#!#'' in newGravename) ;
             
             if iIndex > -1 then
-                grave_lastname_from := overlay(grave_lastname_from placing '''' from iIndex for 3) ;
+                newGravename := overlay(newGravename placing '''' from iIndex for 3) ;
                 
             end if ;
-            sSub1 := substring(grave_lastname_from from 0 for iIndex) ;
+            sSub1 := substring(newGravename from 0 for iIndex) ;
             
-            iIndex2 := position(''#!#'' in grave_lastname_from) ;
+            iIndex2 := position(''#!#'' in newGravename) ;
             
             if iIndex2 > -1 then
-                grave_lastname_from := overlay(grave_lastname_from placing '''' from iIndex2 for 3) ;
+                newGravename := overlay(newGravename placing '''' from iIndex2 for 3) ;
                 
             end if ;
-            sSub2 := substring(grave_lastname_from from iIndex ) ;
-            grave_lastname_from := sSub1 || quote_literal(sSub2) ;
-            searchsql := searchsql  || '' and grave.lastname '' || grave_lastname_from || '' '' ;
+            sSub2 := substring(newGravename from iIndex ) ;
+            newGravename := sSub1 || quote_literal(sSub2) ;
+            searchsql := searchsql  || '' and grave.lastname '' || newGravename || '' '' ;
         END IF ;
         
         IF char_length(eSequentialNumberFrom) > 0 AND char_length(eSequentialNumberTo) > 0 THEN 
@@ -121,7 +124,7 @@ DROP FUNCTION IF EXISTS fct_getGravePlantListValues(IN dicSearchfields text [], 
 DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
 DROP FUNCTION IF EXISTS fct_getGravePlantListValues(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
 
-CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int,service int, plantation int, price int, iRows int , iOrderSort int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int,service int, plantation int, price int, timetab int, iRows int , iOrderSort int ) returns setof record AS '
     DECLARE
         iClient int ;
         r record;
@@ -151,7 +154,7 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListValues(graveyard_id int, grave_l
 DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int ) CASCADE ;
 DROP FUNCTION IF EXISTS fct_getGravePlantListArticles(  int, text,  text, text, text,  text, text, text, text, int, int ) CASCADE ;
 
-CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int, price int,  iRows int, iOrderSort int ) returns setof record AS '
+CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave_lastname_from text, grave_lastname_to text, eSequentialNumberFrom text, eSequentialNumberTo text, dContractBeginFrom text, dContractBeginTo text, dContractEndsFrom text, dContractEndsTo text, contract int, service int, plantation int, price int, timetab int,  iRows int, iOrderSort int ) returns setof record AS '
     DECLARE
         iClient int ;
         r record;
@@ -162,12 +165,32 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave
     
     
     BEGIN
-        additionalTables  :='',grave_work_maintenance as gm, articles as ar  '' ;
-        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id '' ;
+        IF timetab = 0 then 
+            additionalTables  :='',grave_work_maintenance as gm, articles as ar  '' ;
+        ELSEIF timetab = 1 then 
+            additionalTables  :='',grave_work_spring as gm, articles as ar  '' ;
+        ELSEIF timetab = 2 then 
+            additionalTables  :='',grave_work_summer as gm, articles as ar  '' ;
+        ELSEIF timetab = 3 then 
+            additionalTables  :='',grave_work_autumn as gm, articles as ar  '' ;
+        ELSEIF timetab = 4 then 
+            additionalTables  :='',grave_work_holiday as gm, articles as ar  '' ;
+                       
+        ELSEIF timetab = 5 then 
+            additionalTables  :='',grave_work_winter as gm, articles as ar  '' ;
+        ELSEIF timetab = 6 then 
+            additionalTables  :='',grave_work_year as gm, articles as ar  '' ;
+                   
+        ELSEIF timetab = 7 then 
+            additionalTables  :='',grave_work_single as gm, articles as ar  '' ;
+               
+        END IF ;    
+            
+        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id '' || '' and gm.status != ''''delete'''' ''   ;
         IF service > -1 THEN
             -- show the service graves
             
-            additionalWhere := additionalWhere  || '' and gm.grave_service_id = '' || service || '' and gm.status != ''''delete'''' ''   ;
+            additionalWhere := additionalWhere  || '' and gm.grave_service_id = '' || service ;
         END IF ;
         additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count '' ;
         

@@ -34,19 +34,19 @@ class plantlists(cuonlists):
         print 'started the plants list'
         self.getWidget('listdialog1').show()
         
-        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly, liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        liTimeTab,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly, liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
         
      
         
         
-        cbService = self.getWidget('cbService')
-        if cbService:
+        cbTimeTab = self.getWidget('cbTimeTab')
+        if cbTimeTab:
             liststore = gtk.ListStore(str)
-            for service in liService:
-                liststore.append([service])
-            cbService.set_model(liststore)
-            cbService.set_text_column(0)
-            cbService.show()
+            for tt in liTimeTab:
+                liststore.append([tt])
+            cbTimeTab.set_model(liststore)
+            cbTimeTab.set_text_column(0)
+            cbTimeTab.show()
       
         cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
         if cbTypeOfGrave:
@@ -91,6 +91,7 @@ class plantlists(cuonlists):
             cbPlantLists.show()
         
         
+        
     def on_bOK_clicked(self, event):
         """ Starts to print the list of graves for plants. """
         
@@ -102,6 +103,20 @@ class plantlists(cuonlists):
         di1.hide()
         self.quitFinddialog()
 
+    def on_cbTimeTab_changed(self, event):
+        
+        
+        liService = self.rpc.callRP('Grave.getService',self.dicUser,self.getWidget('cbTimeTab').get_active() )
+        
+        
+        cbService = self.getWidget('cbService')
+        if cbService:
+            liststore = gtk.ListStore(str)
+            for service in liService:
+                liststore.append([service])
+            cbService.set_model(liststore)
+            cbService.set_text_column(0)
+            cbService.show()
     def readSearchDatafields(self):
         """ read the entries at the search mask and convert them to values for the SQL-Search """
         liReturn = []
@@ -109,6 +124,7 @@ class plantlists(cuonlists):
         iOrderSort = 0
         gyID = -1
         priceID = -1
+        iTimeTab = -1
         
         sGyID = self.getActiveText(self.getWidget('cbGraveyard'))
         try:
@@ -137,7 +153,7 @@ class plantlists(cuonlists):
             iContract = 3
             
         iService = self.getWidget('cbService').get_active()
-       
+        iTimeTab =  self.getWidget('cbTimeTab').get_active()
        
         
         iPlantation = self.getWidget('cbPlants').get_active()
@@ -156,7 +172,7 @@ class plantlists(cuonlists):
         liReturn.append(iService)
         liReturn.append(iPlantation)
         liReturn.append(priceID)
-        
+        liReturn.append(iTimeTab)
         print 'liReturn = ',  liReturn
         
         sName = self.getActiveText(self.getWidget("cbListOfReport"))

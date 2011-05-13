@@ -35,15 +35,15 @@ class Grave(xmlrpc.XMLRPC, basics):
         liPeriodWinter = []
         liPeriodUnique = []
         liPeriodYearly = []
-        liService = []
+        liTimeTab = []
         liSorting = []
         liTypeOfGrave = []
         
         cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
-        liService0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveService', cpServer)
-        liService = ['NONE']
-        if liService0:
-            liService = liService0.split(',')
+        liTimeTab0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbGraveTypeOfTab', cpServer)
+        liTimeTab = ['NONE']
+        if liTimeTab0:
+            liTimeTab = liTimeTab0.split(',')
         
         liTypeOfGrave0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,'cbTypeOfGrave', cpServer)
         liTypeOfGrave = ['NONE']
@@ -107,9 +107,45 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         
         
-        return liService, liTypeOfGrave, liTypeOfPaying, liPercents, liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday,  liPeriodUnique, liPeriodYearly,  liSorting
+        return liTimeTab, liTypeOfGrave, liTypeOfPaying, liPercents, liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday,  liPeriodUnique, liPeriodYearly,  liSorting
         
-
+        
+    def xmlrpc_getService(self, dicUser,  timeTab):
+        
+        sService = None
+        liTimeTab = ['NONE']
+        
+        if timeTab == 0:
+            sService = 'cbGraveService'
+        elif timeTab == 1:
+             sService = 'cbGraveSpringPeriod'
+        elif timeTab == 2:
+             sService = 'cbGraveSummerPeriod'
+        elif timeTab == 3:
+             sService = 'cbGraveAutumnPeriod'
+             
+        elif timeTab == 4:
+             sService = 'cbGraveHollidayPeriod'
+             
+        elif timeTab == 5:
+             sService = 'cbGraveWinterPeriod'
+        elif timeTab == 6:
+             sService = 'cbGraveYearlyPeriod'
+        elif timeTab == 7:
+             sService = 'cbGraveUniquePeriod'
+        
+                
+       
+             
+        if sService:     
+            cpServer, f = self.getParser(self.CUON_FS + '/clients.ini')
+            liTimeTab0 = self.getConfigOption('CLIENT_' + `dicUser['client']`,sService,  cpServer)
+            liTimeTab = ['NONE']
+            if liTimeTab0:
+                liTimeTab = liTimeTab0.split(',')
+            
+        return liTimeTab
+        
     def xmlrpc_getGravesForAddress(self, addressid, dicUser):
         sSql = "select * from fct_getGravesForAddressID(" + `addressid` +")  as Graves "
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
