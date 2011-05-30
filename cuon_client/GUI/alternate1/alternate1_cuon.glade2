@@ -13,6 +13,7 @@
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
@@ -888,6 +889,7 @@
             <child>
               <object class="GtkVBox" id="vbox3">
                 <property name="visible">True</property>
+                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkVBox" id="vbox4">
                     <property name="visible">True</property>
@@ -1073,9 +1075,7 @@
                   <object class="GtkCalendar" id="calendar1">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="year">2011</property>
-                    <property name="month">2</property>
-                    <property name="day">28</property>
+                    <property name="show_week_numbers">True</property>
                   </object>
                   <packing>
                     <property name="position">2</property>
