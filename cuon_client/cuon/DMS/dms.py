@@ -72,6 +72,8 @@ class dmswindow(windows):
         self.ModulNumber = self.MN['DMS']
         self.dicVars = dicVars
         self.dicExtInfo = dicExtInfo
+        self.dicExtInfo['Modul'] = module 
+        self.dicExtInfo['Sep_Info'] = sep_info 
         
             
         self.allTables = allTables
@@ -185,12 +187,23 @@ class dmswindow(windows):
         #Now check for automatic-Actions
         self.LastDoc = None
         #print '9 --'
-        if self.dicExtInfo and self.dicExtInfo.has_key('LastDoc'):
-            print 'lastdoc found'
-            self.activateClick('new1')
-            self.LastDoc =self.dicExtInfo['LastDoc']
-            self.activateClick('bImport',None,'clicked')
-        
+        try:
+            if self.dicExtInfo and self.dicExtInfo.has_key('LastDoc'):
+                print 'lastdoc found'
+                if self.dicExtInfo['Save'] == 'NEW': 
+                    self.activateClick('new1')
+                    self.LastDoc =self.dicExtInfo['LastDoc']
+                    self.activateClick('bImport',None,'clicked')
+                    self.getWidget('eTitle').set_text('NEWLASTDOCUMENT')
+                    self.activateClick('save1')
+                    self.getWidget('eSearchTitle').set_text('NEWLASTDOCUMENT')
+                    self.activateClick('bSearch', 'clicked')
+                    del self.dicExtInfo['LastDoc']
+                    del self.dicExtInfo['Save'] 
+                    
+        except Exception,  params:
+            print 'error at dicExtInfo',  Exception,  params
+            
         
         # notes
         print 'GTKSV = ',  GtkSV
@@ -237,6 +250,7 @@ class dmswindow(windows):
         self.tabChanged()
         
     def on_new1_activate(self, event):
+        print 'DMS NEW1 activated'
         self.singleDMS.newRecord()
         dicDate = self.getActualDateTime()
         self.getWidget('eDocumentDate').set_text(dicDate['date'])
@@ -381,10 +395,12 @@ class dmswindow(windows):
                 self.rpc.callRP('Misc.faxData',self.dicUser, base64.encodestring(singleDMS2.imageData),phone_number)
     def on_bWriteLastDocument_clicked(self, event):
         print 'write last document back'
-        if self.dicExtInfo:
+        try:
             self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
             self.dicExtInfo['Save'] = 'OVERWRITE'
-        self.LastDoc = self.singleDMS.tmpFile
+            self.LastDoc = self.singleDMS.tmpFile
+        except:
+            print 'error at setting self.dicExtInfo',  self.dicExtInfo
 
         self.on_edit1_activate(None)
         
@@ -393,12 +409,13 @@ class dmswindow(windows):
         
             
     def on_bWriteLastDocumentAs_clicked(self, event):
+        print 'write last doc as',  self.dicExtInfo
         if self.dicExtInfo:
             self.dicExtInfo['LastDoc'] = self.singleDMS.tmpFile
             self.dicExtInfo['Save'] = 'NEW'
-
-            dm2 = cuon.DMS.dms.dmswindow(self.allTables, self.dicExtInfo['Modul'], self.dicExtInfo['sep_info'],None,self.dicExtInfo)
-    
+            print 'now open new Window '
+            dm2 = cuon.DMS.dms.dmswindow(self.allTables, self.dicExtInfo['Modul'], self.dicExtInfo['Sep_Info'],None,self.dicExtInfo)
+       
     def on_bView_clicked(self, event):
         print  self.dicUser['prefDMS']['fileformat']['scanImage']['format']
         print  self.singleDMS.fileFormat

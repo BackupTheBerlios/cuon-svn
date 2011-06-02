@@ -162,39 +162,64 @@ CREATE OR REPLACE FUNCTION fct_getGravePlantListArticles(graveyard_id int, grave
          additionalTables text := '' '' ;
         additionalWhere text  := '' '' ;
         additionalRows text  := '' '' ;
-    
-    
+        GraveServiceNotesService int  := 40100  ;
+        GraveServiceNotesSpring int  := 40101 ;
+        GraveServiceNotesSummer int  := 40102 ;
+        GraveServiceNotesAutumn int  := 40103 ;
+        GraveServiceNotesWinter int  := 40104 ;
+        GraveServiceNotesAnnual int  := 40105 ;
+        GraveServiceNotesUnique int  := 40106 ;
+        GraveServiceNotesHolliday int  := 40107 ;
+         iGraveServiceID  int := 0 ;
+         iRecordID int ;
+        
     BEGIN
         IF timetab = 0 then 
             additionalTables  :='',grave_work_maintenance as gm, articles as ar  '' ;
+             iGraveServiceID := GraveServiceNotesService ;
         ELSEIF timetab = 1 then 
             additionalTables  :='',grave_work_spring as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesSpring ;
         ELSEIF timetab = 2 then 
             additionalTables  :='',grave_work_summer as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesSummer ;
         ELSEIF timetab = 3 then 
             additionalTables  :='',grave_work_autumn as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesAutumn ;
         ELSEIF timetab = 4 then 
             additionalTables  :='',grave_work_holiday as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesHolliday ;
                        
         ELSEIF timetab = 5 then 
             additionalTables  :='',grave_work_winter as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesWinter ;
         ELSEIF timetab = 6 then 
             additionalTables  :='',grave_work_year as gm, articles as ar  '' ;
-                   
+             iGraveServiceID := GraveServiceNotesAnnual;       
         ELSEIF timetab = 7 then 
             additionalTables  :='',grave_work_single as gm, articles as ar  '' ;
+              iGraveServiceID := GraveServiceNotesUnique ;
                
         END IF ;    
+         
+               
+     
             
-        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id '' || '' and gm.status != ''''delete'''' ''   ;
+        additionalWhere  := '' and gm.grave_id = grave.id and  gm.article_id = ar.id '' || '' and gm.status != ''''delete'''' ''    ;
+        
         IF service > -1 THEN
             -- show the service graves
-            
-            additionalWhere := additionalWhere  || '' and gm.grave_service_id = '' || service ;
+                IF timetab = 0 then 
+                        additionalWhere := additionalWhere  || '' and gm.grave_service_id = '' || service ;
+                ELSE 
+                        additionalWhere := additionalWhere  || '' and gm.period_id = '' || service ; 
+                END IF ;
         END IF ;
-        additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count '' ;
         
-        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation, price,  iRows,additionalRows, additionalTables, additionalWhere) ;
+        additionalRows  := '', gm.article_id as service_article_id , ar.number as article_number, ar.designation as article_designation,gm.service_price as service_price, gm.service_count as service_count, gm.service_notes as article_notes,  (select fct_loadGraveServiceNote(gm.grave_id, ''  ||  iGraveServiceID  || '' ) as service_notes ) , grave.common_notes as grave_notes '' ;
+        
+        searchsql := fct_getGravePlantListSQL(graveyard_id , grave_lastname_from , grave_lastname_to , eSequentialNumberFrom , eSequentialNumberTo , dContractBeginFrom , dContractBeginTo , dContractEndsFrom , dContractEndsTo ,contract,service, plantation, price,  iRows,additionalRows, additionalTables, additionalWhere)  
+        ;
         -- searchsql := searchsql || '' '' ;
         
         
@@ -248,7 +273,9 @@ CREATE OR REPLACE FUNCTION fct_loadGraveServiceNote(iGraveID int, iGraveServiceI
        select into sNote service_note from grave_service_notes where  grave_id = iGraveID and service_id = iGraveServiceID ;
         if sNote is null then 
             sNote = '' '' ;
-        
+        ELSEIF ascii(sNote) = 32 then 
+            sNote = '' '' ;
+            
         END IF ;
         
         return sNote;

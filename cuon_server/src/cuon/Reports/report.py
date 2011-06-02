@@ -723,9 +723,10 @@ class report(MyXML):
                                     except Exception, params:
                                         print 'Exception utf-8, latin'
                                         print Exception, params
-                                        sq = ' '
+                                        sq = ''
                                
                                 iIndex = 0
+                               
                                 x1 = dicRow['x1']
                                 x2 = dicRow['x2']
                                 y1 = dicRow['y1']
@@ -733,6 +734,8 @@ class report(MyXML):
                                 
                                 fontoffset = 4
                                 z1 = 0
+                                if not sq or (len(sq) == 1 and sq[0] == ' ') or sq.upper() == 'NONE':
+                                    iIndex = -1
                                 while iIndex > -1:
                                     #dicRow = self. getReportRow(dicEntry) 
                                     #print 'sq, iIndex = ',  sq,  iIndex 

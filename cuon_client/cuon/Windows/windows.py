@@ -159,7 +159,9 @@ class windows(rawWindow, MyXML, messages,  constants):
         self.tabChanged()
         
     def activateClick(self, sItem, event = None, sAction = 'activate'):
+        print 'activate click',  sItem
         item = self.getWidget(sItem)
+        print 'item = ',  item
         if item:
             item.emit(sAction)
         

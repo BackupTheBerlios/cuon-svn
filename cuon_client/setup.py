@@ -738,8 +738,8 @@ class setup:
                 sVersion = ' '
             self.getWidget("eThisVersion").set_text(sThisVersion)
             self.getWidget("eServerVersion").set_text(sVersion)
-        except Exceptions,  params:
-            print Exceptions,  params
+        except Exception,  params:
+            print Exception,  params
 
     def on_cbeName_editing_done(self, event):
         print event

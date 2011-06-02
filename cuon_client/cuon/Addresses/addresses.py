@@ -1030,7 +1030,7 @@ class addresswindow(chooseWindows):
         print 'dms clicked'
         if self.singleAddress.ID > 0:
             print 'ModulNumber', self.ModulNumber
-            Dms = cuon.DMS.dms.dmswindow(self.allTables, self.ModulNumber, {'1':self.singleAddress.ID})
+            Dms = cuon.DMS.dms.dmswindow(self.allTables, module=self.ModulNumber, sep_info = {'1':self.singleAddress.ID})
             
     def on_bGeneratePartner_clicked(self, event):
         self.activateClick('PartnerNew1')

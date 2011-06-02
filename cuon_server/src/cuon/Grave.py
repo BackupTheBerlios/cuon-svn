@@ -20,6 +20,7 @@ from twisted.web import xmlrpc
 from basics import basics
 import Database
 import types
+from copy import deepcopy
 
 class Grave(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -146,6 +147,8 @@ class Grave(xmlrpc.XMLRPC, basics):
             
         return liTimeTab
         
+    
+        
     def xmlrpc_getGravesForAddress(self, addressid, dicUser):
         sSql = "select * from fct_getGravesForAddressID(" + `addressid` +")  as Graves "
         dicResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
@@ -220,8 +223,28 @@ class Grave(xmlrpc.XMLRPC, basics):
             
         
         
-        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + ")  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number varchar(150), article_designation varchar(250),service_price float, service_count float) "
+        sSql +=  `nRows` + ", " + `dicUser['iOrderSort']` + " )  as (graveyard_id integer, grave_id integer, graveyard_shortname varchar, graveyard_designation varchar,grave_firstname varchar, grave_lastname varchar, grave_pos_number integer , grave_contract_begins_at date , grave_contract_ends_at date , grave_detachment varchar, grave_grave_number varchar, service_article_id integer, article_number varchar(150), article_designation varchar(250),service_price float, service_count float, article_notes text, service_notes text, grave_notes text) "
         
         print 'grave list sql = ',  sSql
         
-        return self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        result1 =  self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+        self.writeLog( 'result1 = ' + `result1`)
+        result2 = []
+        for row1 in result1:
+            found = False
+            #self.writeLog('Row1 = ' +  `row1`)
+            if result2:
+                for iRow2 in range(len(result2)):
+                    #self.writeLog('iRow2 = ' + `iRow2`)
+                    if result2[iRow2]['service_article_id'] == row1['service_article_id']:
+                        result2[iRow2]['service_count'] += row1['service_count']
+                        found = True
+                        break 
+                        
+            if not found:
+                result2.append(deepcopy(row1))
+                
+        #self.writeLog( 'result2 = ' + `result2`)
+        
+        return result1,  result2
+        

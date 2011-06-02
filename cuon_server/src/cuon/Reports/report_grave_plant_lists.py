@@ -46,9 +46,8 @@ class report_grave_plant_lists:
         #print '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*'
         
         self.dicResults['grave'] = dicResult
-        dicResult =  oGrave.getGravePlantListArticles( dicSearchfields, dicUser,  self.nRows)
-        self.dicResults['articles'] = dicResult
-        print 'Grave-Aricticle = ',  dicResult
+        self.dicResults['articles'],  self.dicResults['sums']  =  oGrave.getGravePlantListArticles( dicSearchfields, dicUser,  self.nRows)
+        
         #self.loadXmlReport('addresses_phonelist1', 'ReportAddressLists')
         #values in this order:
         # 1 reportname

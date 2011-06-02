@@ -472,6 +472,10 @@ class Order(xmlrpc.XMLRPC, basics):
                 oneResult['MWST_VALUE'] = 0
                 oneResult['MWST_NAME'] = ''
                 self.writeLog( 'TAXVATRESULT ' + `result2`)
+                for i in result[2]:
+                    if i['articles_notes'] in liSQL_ERRORS:
+                        i['articles_notes'] = ''
+                        
         return result2
         
 

@@ -234,18 +234,12 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
        
         # set values for comboBox
 
-        liService,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly,  liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
-        print liService   ,  liTypeOfGrave, liTypeOfPaid, liPercent
+        liTabItem,  liTypeOfGrave, liTypeOfPaid, liPercent,  liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly,  liSorting = self.rpc.callRP('Grave.getComboBoxEntries',self.dicUser)
+        
+        print   liTypeOfGrave, liTypeOfPaid, liPercent
         print liPeriodSpring, liPeriodSummer, liPeriodAutumn, liPeriodWinter, liPeriodHolliday, liPeriodUnique, liPeriodYearly
         
-        cbService = self.getWidget('cbServiceType')
-        if cbService:
-            liststore = gtk.ListStore(str)
-            for service in liService:
-                liststore.append([service])
-            cbService.set_model(liststore)
-            cbService.set_text_column(0)
-            cbService.show()
+       
         
         cbTypeOfGrave = self.getWidget('cbTypeOfGrave')
         if cbTypeOfGrave:
@@ -1629,8 +1623,18 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             self.setTreeVisible(True)
             self.setStatusbarText([self.singleGrave.sStatus])
             
-            
-      
+        if self.tabOption ==2:
+            liService = self.rpc.callRP('Grave.getService',self.dicUser,  self.tabOption -2)
+                                        
+            cbService = self.getWidget('cbServiceType')
+            if cbService:
+                liststore = gtk.ListStore(str)
+                for service in liService:
+                    liststore.append([service])
+                cbService.set_model(liststore)
+                cbService.set_text_column(0)
+                cbService.show()
+          
        
         
            # refresh the Tree
