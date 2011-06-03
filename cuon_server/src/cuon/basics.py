@@ -767,7 +767,10 @@ class basics(xmlrpc.XMLRPC):
                 
             return newTime.tm_year - beforeYears       
             
-    def getNow(self, vSql, z1,  year=2010):
+    def getNow(self, vSql, z1,  year=1900):
+        newTime = time.localtime()
+        if year == 1900:
+            year = time.strftime('%Y', newTime)
         newTime = time.localtime()
         datepart = vSql['id']
         now = 0
