@@ -285,3 +285,46 @@ CREATE OR REPLACE FUNCTION fct_loadGraveServiceNote(iGraveID int, iGraveServiceI
 
     
      ' LANGUAGE 'plpgsql'; 
+
+     
+   
+CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iServiceID int ) returns int AS '
+ DECLARE
+  
+    iClient int ;
+    sSql text   ;
+    iNewOrderID int ;
+    r1 record ;
+    r2 record ;
+    
+    BEGIN
+        iClient = fct_getUserDataClient(  ) ;
+        
+        select into iNewOrderID nextval(''orderbook_id'' ) ;
+    
+        raise notice '' new OrderNumber = %'', iNewOrderID ;
+        
+        sSql := '' select grave.* from grave, ''
+        if sService = ''Service'' then
+            sSql = sSql || ''grave_work_maintenance as gm''
+        end if ;
+        sSql := sSql || ''where grave.id = gm.grave_id ''  || fct_getWhere(2,''grave.'') ;
+        execute(sSql) into r1 ;
+        raise notice ''r1 = % '', r1.id 
+        sSql := '' insert into orderbook (id,addressnumber,ready_for_invoice,pricegroup1,pricegroup2,pricegroup3,pricegroup4,pricegroup_none) values (''
+        sSql := sSql || iNewOrderID || '', '' || r1.addressid || '', true, '' || r1.pricegroup1 || '', '' || r1.pricegroup2 || '', '' || r1.pricegroup3 || '', '' || r1.pricegroup4 || '', '' || r1.pricegroup_none || '' ) '' ;
+        
+            
+        
+        
+        
+        --sSql := '' select article_id, price, amount 
+       
+        
+        return iNewOrderID;
+        
+    END ;
+    
+
+    
+     ' LANGUAGE 'plpgsql'; 

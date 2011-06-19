@@ -459,3 +459,131 @@ CREATE OR REPLACE FUNCTION  fct_getArticlePartsListForOrder(OrderID integer) ret
     
      ' LANGUAGE 'plpgsql';      
      
+
+     
+CREATE OR REPLACE FUNCTION  fct_getStatTaxVat() returns  setof record AS '
+    DECLARE
+    r1 record ;
+    r2 record ;
+    r3 record ;
+    
+    iMonth int ;
+    iYear int ;
+    sSql text ;
+    sSql2 text ;
+    invoice_netto float;
+    invoice_taxvat float ;
+    
+    br1 float ;
+    br0 float ;
+    BEGIN
+    
+        br0 = 0.00 ;
+        br1 = 0.00 ;
+  
+        FOR i IN 0 .. 1 LOOP
+            
+            iMonth := date_part(''month'',current_date) - i ;
+            
+            iYear := date_part(''year'',current_date) ;
+            if iMonth < 1 then
+                iMonth = iMonth + 12 ;
+                iYear = iYear -1 ;
+            end if ;
+            
+            
+            FOR  r1 in select  id, vat_value, vat_name, vat_designation,0.00 as tax_vatSum, 0.00 as sum_price_netto, i as z1 from tax_vat  LOOP
+    
+                sSql := ''select li.invoice_number as invoice_number,  li.date_of_invoice as li_date, '' || i || '' as z1, li.order_number  as li_orderid from list_of_invoices  as li  where  date_part(''''month'''', li.date_of_invoice) = '' ||  iMonth  || '' and date_part(''''year'''', li.date_of_invoice) = '' || iYear ||  fct_getWhere(2,'' '') || '' order by li.invoice_number '' ; 
+               
+                FOR r2 in execute(sSql)  LOOP
+                 invoice_taxvat := 0.00 ;
+                invoice_netto := 0.00 ;
+               
+                -- raise notice '' Invoice Number % Invoice Date % Order ID % '',r2.invoice_number, r2.li_date, r2.li_orderid ;
+
+                    br0 :=   r1.tax_vatSum   +  r1.sum_price_netto ;
+                     
+                     
+                    sSql2 := ''select ( select tax_vat_for_all_positions from orderinvoice where orderinvoice.orderid  = '' || r2.li_orderid  || '' ) as   tax_vat_for_all_positions ,   
+                    orderposition.amount as amount,  orderposition.position as position, orderposition.price as price, 
+                    orderposition.discount as discount, orderposition.tax_vat as position_tax_vat, 
+                    (select  material_group.tax_vat from material_group,articles where  articles.material_group = material_group.id and articles.id = orderposition.articleid) as m_group_taxvat, 
+                    case 
+                        ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)
+                        when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  
+                        where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00
+                    end  as end_price_netto,  
+                    case 
+                        ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  
+                        articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  
+                        where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) 
+                        when false then price when NULL then 0.00 
+                    end as end_price_gross  
+                    from  orderposition, articles, orderbook  
+                    where orderbook.id = '' || r2.li_orderid  || '' and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid ''  ||  fct_getWhere(2,''orderposition.'')  ;
+                   
+                    FOR r3 in execute(sSql2) LOOP
+                        IF r3.discount IS NULL THEN 
+                            r3.discount := 0.00 ;
+                        END IF ;
+                        
+                        IF r3.position_tax_vat IS NOT NULL and  r3.position_tax_vat > 0.00  and r1.vat_value = r3.position_tax_vat THEN
+                             r1.tax_vatSum :=   r1.tax_vatSum +( (r3.end_price_netto -r3.discount)  * r3.amount * r3.position_tax_vat / 100 ) ;
+                             r1.sum_price_netto:=   r1.sum_price_netto +( r3.end_price_netto  * r3.amount );
+                             raise notice '' position taxvat = % '', r3.position_tax_vat ;
+                        ELSEIF r3.tax_vat_for_all_positions IS NOT NULL and r3.tax_vat_for_all_positions > 0 and  r3.tax_vat_for_all_positions =  r1.id  THEN
+                             r1.tax_vatSum :=   r1.tax_vatSum +  ( (r3.end_price_netto -r3.discount) * r3.amount * r1.vat_value /100 );
+                             r1.sum_price_netto:=   r1.sum_price_netto + ( r3.end_price_netto  * r3.amount );
+                             raise notice  ''tax vatforalpositions ''  ;
+                      
+                        ELSEIF  r3.m_group_taxvat IS NOT NULL and r3.m_group_taxvat > 0 and   r3.m_group_taxvat= r1.id and not (r3.tax_vat_for_all_positions IS NOT NULL and r3.tax_vat_for_all_positions > 0 ) THEN
+                             r1.tax_vatSum :=   r1.tax_vatSum +( (r3.end_price_netto-r3.discount)  * r3.amount * r1.vat_value / 100 );
+                             r1.sum_price_netto:=   r1.sum_price_netto + (r3.end_price_netto  * r3.amount );
+                            raise notice '' materialgroup taxvat '' ;
+                              
+                       
+                        END IF ;
+                       
+                         -- raise notice '' Orderid % Posion ID % TaxVat %  Menge % Netto % '', r2.li_orderid,r3.position,r1.vat_value,  r3.amount,r3.end_price_netto *  r3.amount ;
+                    
+                        
+                        
+                        
+                    END LOOP ;
+                      br1 :=  r1.tax_vatSum   +  r1.sum_price_netto ;
+                      raise notice ''  Invoice Number %           Br1 = % '',r2.invoice_number,  br1 - br0  ;
+                     
+                END LOOP ;
+            RETURN NEXT r1;
+        
+            END LOOP ;
+             -- raise notice '' Discount =   % '',  invoice_netto ;
+
+        END LOOP;
+    
+     
+       
+    END ;
+    
+     ' LANGUAGE 'plpgsql';      
+
+     
+     
+CREATE OR REPLACE FUNCTION  fct_getInvoiceGross() returns  setof record AS '
+    DECLARE
+    r1 record ;
+    BEGIN 
+    
+        for i in 4614 .. 4714 LOOP 
+            select into r1 list_of_invoices.invoice_number,  list_of_invoices.order_number, sum(amount*price) from orderposition, list_of_invoices where list_of_invoices.invoice_number = i and orderposition.orderid = list_of_invoices.order_number group by list_of_invoices.invoice_number, list_of_invoices.order_number ;
+             
+            return next r1 ;
+        END LOOP ;
+        
+     
+     
+          
+    END ;
+    
+     ' LANGUAGE 'plpgsql';      

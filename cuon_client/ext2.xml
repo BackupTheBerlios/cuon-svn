@@ -1301,6 +1301,16 @@
       <default />
       <comment />
     </field>
+     <field>
+      <name>automatic_price</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>1</default>
+      <comment />
+    </field>
     </table>
     
      <table>
@@ -1404,7 +1414,16 @@
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
+      <default /> <field>
+      <name>period_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
       <default />
+      <comment />
+    </field>
       <comment />
     </field>
           
@@ -1492,7 +1511,7 @@
       <field>
       <name>service_date</name>
       <type>date</type>
-      <pkey>0</pkey>
+      <pkey>0</pkey>http://www.py3d-worlds.net:8000/trac/wiki/de_virtualbox_image
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
@@ -1529,7 +1548,16 @@
       <default />
       <comment />
     </field>
-    
+      <field>
+      <name>automatic_price</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>1</default>
+      <comment />
+    </field>
      </table>
      
       <table>

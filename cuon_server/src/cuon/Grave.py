@@ -21,6 +21,7 @@ from basics import basics
 import Database
 import types
 from copy import deepcopy
+import Order
 
 class Grave(xmlrpc.XMLRPC, basics):
     def __init__(self):
@@ -247,4 +248,24 @@ class Grave(xmlrpc.XMLRPC, basics):
         #self.writeLog( 'result2 = ' + `result2`)
         
         return result1,  result2
+        
+    def xmlrpc_createNewInvoice(self,  dicUser,  sService,  serviceID):
+        print 'new Invoice = ', sService,  serviceID 
+        defaultOrderNumber = ''
+        defaultOrderDesignation  = ''
+        oOrder = Order.Order()
+        
+        oOrder.checkDefaultOrder(self,  dicUser,  id) 
+        sSql = "select * from fct_createNewInvoice('" + sService + "' , " + `serviceID` + "  ) as order_id "
+        
+        newOrderID = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )[0] ['order_id']
+        
+        
+        if newOrderID > 0:
+            dicValues,  sSave  = self.checkDefaultOrder(dicUser,  newOrderID)
+            if sSave:
+                dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
+                    
+                    
+        return newOrderID
         

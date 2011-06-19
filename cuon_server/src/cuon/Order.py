@@ -395,87 +395,91 @@ class Order(xmlrpc.XMLRPC, basics):
         return nr
                
     def xmlrpc_getStandardInvoice(self, dicOrder , dicUser):
-        print dicOrder
-        sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
-        sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
-        sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
-        sSql += " orderbook.discount as total_discount,  "
-        sSql += "(select  tax_vat_for_all_positions from orderinvoice  where orderinvoice.orderid = " + `dicOrder['orderid']`  
-        sSql += " ) as tax_vat_for_all_positions, "
-        sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
-        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
-        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
-        sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
-        sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
-        sSql += " (select  material_group.tax_vat from material_group,articles  where "
-        sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
-        sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
-        sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id,  articles.articles_notes as articles_notes, "
-        sSql += "articles.wrapping as article_wrapping, articles.quantumperwrap as article_quantumperwrap,  articles.unit as article_unit,  "
-        sSql += " orderposition.designation as designation, orderposition.amount as amount, "
-        sSql += " orderposition.position as position, orderposition.price as price, "
-        sSql += " orderposition.discount as discount,  "
-        sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
-        sSql += " case articles.associated_with when 1 then (select botany.description from botany, articles where botany.article_id = articles.id and articles.id = orderposition.articleid and orderbook.id = " + `dicOrder['orderid']` + ") when 0 then articles.designation end as pos_designation "
-        sSql += " from orderposition, articles, orderbook  where orderbook.id = " + `dicOrder['orderid']` 
-        sSql += " and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
-        sSql += " order by orderposition.position "
-        dicUser['noWhereClient'] = 'Yes'
-        result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        result2 = []
-        for oneResult in result:
-            try:
-                print 'oneResult = ',  oneResult
-                oneResult['MWST_ID'] =   0
-                oneResult['MWST_VALUE'] = 0
-                oneResult['MWST_NAME'] = ''
-           
-                if oneResult not in self.liSQL_ERRORS :
-                    if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
-                        if oneResult['tax_vat_for_all_positions']  > 0:
-                            oneResult['MWST_ID'] = oneResult['tax_vat_for_all_positions'] 
-                            self.writeLog( 'TAXVATNEW1 '+ `oneResult['MWST_ID']`)
-                    if oneResult['MWST_ID'] ==   0:
-                        if oneResult['order_tax_vat_order_position_id'] not in self.liSQL_ERRORS:
-                            if oneResult['order_tax_vat_order_position_id'] > 0:
-                                oneResult['MWST_ID'] = oneResult['order_tax_vat_order_position_id']
-                                self.writeLog( 'TAXVATNEW2 '+ `oneResult['MWST_ID']`)
+        result2=[]
+        try:
+            print dicOrder
+            sSql = "select orderbook.number as order_number, orderbook.designation as order_designation , "
+            sSql += " to_char(orderbook.orderedat, \'" + dicUser['SQLDateFormat'] + "\')  as order_orderedat ,"
+            sSql += " to_char(orderbook.deliveredat, \'" + dicUser['SQLDateFormat'] + "\') as  order_deliverdat, "
+            sSql += " orderbook.discount as total_discount,  "
+            sSql += "(select  tax_vat_for_all_positions from orderinvoice  where orderinvoice.orderid = " + `dicOrder['orderid']`  
+            sSql += " ) as tax_vat_for_all_positions, "
+            sSql += " orderposition.tax_vat as order_tax_vat_order_position_id, "
+            sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+            sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat, "
+            sSql += " (select  tax_vat.vat_value from tax_vat,material_group,articles  where "
+            sSql += " articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid) as tax_vat_material_group, "
+            sSql += " (select  material_group.tax_vat from material_group,articles  where "
+            sSql += " articles.material_group = material_group.id and articles.id = orderposition.articleid) as tax_vat_material_group_id, "
+            sSql  += "(select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid) as material_group_price_type_net,  "
+            sSql += " articles.number as article_id, articles.designation as article_designation, articles.tax_vat_id as tax_vat_article_id,  articles.articles_notes as articles_notes, "
+            sSql += "articles.wrapping as article_wrapping, articles.quantumperwrap as article_quantumperwrap,  articles.unit as article_unit,  "
+            sSql += " orderposition.designation as designation, orderposition.amount as amount, "
+            sSql += " orderposition.position as position, orderposition.price as price, "
+            sSql += " orderposition.discount as discount,  "
+            sSql += "   case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price when false then price / (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) * 100  when NULL then 0.00 end as end_price_netto,  case ( select material_group.price_type_net from material_group, articles where  articles.material_group = material_group.id and  articles.id = orderposition.articleid)  when true then price /100 * (100 + (select  tax_vat.vat_value from tax_vat,material_group,articles  where  articles.material_group = material_group.id and material_group.tax_vat = tax_vat.id and articles.id = orderposition.articleid)) when false then price when NULL then 0.00 end as end_price_gross , "
+            sSql += " case articles.associated_with when 1 then (select botany.description from botany, articles where botany.article_id = articles.id and articles.id = orderposition.articleid and orderbook.id = " + `dicOrder['orderid']` + ") when 0 then articles.designation end as pos_designation "
+            sSql += " from orderposition, articles, orderbook  where orderbook.id = " + `dicOrder['orderid']` 
+            sSql += " and orderposition.orderid = orderbook.id and articles.id = orderposition.articleid " 
+            sSql += " order by orderposition.position "
+            dicUser['noWhereClient'] = 'Yes'
+            result = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+            result2 = []
+            for oneResult in result:
+                try:
+                    print 'oneResult = ',  oneResult
+                    oneResult['MWST_ID'] =   0
+                    oneResult['MWST_VALUE'] = 0
+                    oneResult['MWST_NAME'] = ''
+               
+                    if oneResult not in self.liSQL_ERRORS :
+                        if oneResult['tax_vat_for_all_positions'] not in self.liSQL_ERRORS:
+                            if oneResult['tax_vat_for_all_positions']  > 0:
+                                oneResult['MWST_ID'] = oneResult['tax_vat_for_all_positions'] 
+                                self.writeLog( 'TAXVATNEW1 '+ `oneResult['MWST_ID']`)
+                        if oneResult['MWST_ID'] ==   0:
+                            if oneResult['order_tax_vat_order_position_id'] not in self.liSQL_ERRORS:
+                                if oneResult['order_tax_vat_order_position_id'] > 0:
+                                    oneResult['MWST_ID'] = oneResult['order_tax_vat_order_position_id']
+                                    self.writeLog( 'TAXVATNEW2 '+ `oneResult['MWST_ID']`)
+                            
                         
-                    
-                    if oneResult['tax_vat_article_id'] not in self.liSQL_ERRORS:
-                        if oneResult['tax_vat_article_id'] > 0:
-                            oneResult['MWST_ID'] = oneResult['tax_vat_article_id']
-                            self.writeLog( 'TAXVATNEW3 '+ `oneResult['MWST_ID']`)
+                        if oneResult['tax_vat_article_id'] not in self.liSQL_ERRORS:
+                            if oneResult['tax_vat_article_id'] > 0:
+                                oneResult['MWST_ID'] = oneResult['tax_vat_article_id']
+                                self.writeLog( 'TAXVATNEW3 '+ `oneResult['MWST_ID']`)
+        
+                        if oneResult['MWST_ID'] ==   0:
+                            if oneResult['tax_vat_material_group_id'] not in self.liSQL_ERRORS:
+                                if oneResult['tax_vat_material_group_id'] > 0:
+                                    oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
+                                    self.writeLog( 'TAXVATNEW4 '+ `oneResult['MWST_ID']`)
+        
+                        if oneResult['MWST_ID'] > 0:
+                            sSql = "select  vat_value, vat_name, vat_designation from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
+                            mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
+                            try:
+                                oneResult['MWST_VALUE'] = mwstResult[0]['vat_value']
+                                oneResult['MWST_NAME'] = mwstResult[0]['vat_name']
+                                oneResult['MWST_DESIGNATION'] = mwstResult[0]['vat_designation']
+                            except:
+                                pass
+                            self.writeLog( 'TAXVATNEWValue '+ `oneResult['MWST_VALUE']`)
     
-                    if oneResult['MWST_ID'] ==   0:
-                        if oneResult['tax_vat_material_group_id'] not in self.liSQL_ERRORS:
-                            if oneResult['tax_vat_material_group_id'] > 0:
-                                oneResult['MWST_ID'] = oneResult['tax_vat_material_group_id']
-                                self.writeLog( 'TAXVATNEW4 '+ `oneResult['MWST_ID']`)
-    
-                    if oneResult['MWST_ID'] > 0:
-                        sSql = "select  vat_value, vat_name, vat_designation from tax_vat where tax_vat.id = " + `oneResult['MWST_ID']`
-                        mwstResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-                        try:
-                            oneResult['MWST_VALUE'] = mwstResult[0]['vat_value']
-                            oneResult['MWST_NAME'] = mwstResult[0]['vat_name']
-                            oneResult['MWST_DESIGNATION'] = mwstResult[0]['vat_designation']
-                        except:
-                            pass
-                        self.writeLog( 'TAXVATNEWValue '+ `oneResult['MWST_VALUE']`)
-
-                result2.append(oneResult)
-            except:
-                oneResult = {}
-                #print 'oneResult = ',  oneResult
-                oneResult['MWST_ID'] =   0
-                oneResult['MWST_VALUE'] = 0
-                oneResult['MWST_NAME'] = ''
-                self.writeLog( 'TAXVATRESULT ' + `result2`)
-                for i in result[2]:
-                    if i['articles_notes'] in liSQL_ERRORS:
-                        i['articles_notes'] = ''
-                        
+                    result2.append(oneResult)
+                except:
+                    oneResult = {}
+                    #print 'oneResult = ',  oneResult
+                    oneResult['MWST_ID'] =   0
+                    oneResult['MWST_VALUE'] = 0
+                    oneResult['MWST_NAME'] = ''
+                    self.writeLog( 'TAXVATRESULT ' + `result2`)
+                    for i in result[2]:
+                        if i['articles_notes'] in liSQL_ERRORS:
+                            i['articles_notes'] = ''
+        except Exception,  params:
+            
+            self.writeLog('Error at getStandardInvoice = ' + Exception + ',  ' + params )
         return result2
         
 
@@ -1180,101 +1184,23 @@ class Order(xmlrpc.XMLRPC, basics):
 
     def xmlrpc_getStatTaxVat1(self, dicUser):
         self.writeLog('start tax vat stats')
-        AllOrderIDs = []
-        result = ['NONE']
-        iCentury = 2
-        iDecade = 5
-        iYear = 3
-        iQuarter = 6
-        iMonth = 5
-        liSql = []
-        liSql.append({'id':'month','sql':'month','logic':'='})
-        #liSql.append({'id':'quarter','sql':'quarter','logic':'='})
-        #liSql.append({'id':'year','sql':'year','logic':'='})
-        #liSql.append({'id':'decade','sql':'decade','logic':'='})
-        #liSql.append({'id':'century','sql':'century','logic':'='})
-        sSql = "select now(),  "
-        self.writeLog('tax vat stats 1 ' + sSql)
-        sSql = "select  id, vat_value, vat_name, vat_designation from tax_vat "
-        sSql += self.getWhere('', dicUser, 1)
-        tax_vatResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql, dicUser )
-        dicTaxVat = {}
-        for oneRecord  in tax_vatResult:
-            dicTaxVat[oneRecord['id']] = {'id':oneRecord['id'], 'vat_value':oneRecord['vat_value'], 'vat_name':oneRecord['vat_name'], 'vat_designation':oneRecord['vat_designation'], 'tax_vatSum':0, 'sum_price_netto':0, 'z1':0 }
-        print 'emptyTaxVat',  dicTaxVat
-        for vSql in liSql:
-            for z1 in range(0,30):
-#                if vSql['id'] == 'decade' and z1 > iDecade:
-#                    pass
-#                elif vSql['id'] == 'century' and z1 > iCentury:
-#                    pass 
-#                elif vSql['id'] == 'year' and z1 > iYear:
-#                    pass 
-#                elif vSql['id'] == 'quarter' and z1 > iQuarter:
-#                    pass 
-                if vSql['id'] == 'month' and z1 > iMonth:
-                    pass     
-    #                elif vSql['id'] == 'week' and z1 > iWeek:
-    #                    pass     
-    #                
-                else:
-                    tmpResult = {}
-                    sSql = "select li.date_of_invoice as li_date,  " + `z1` + " as z1,  "
-                    sSql += "li.order_number  as li_orderid from list_of_invoices  as li "
-                    sSql += " where date_part('" + vSql['sql'] +"', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[0]  
-                    sSql += " and date_part('year', li.date_of_invoice) " + vSql['logic'] + " " + self.getNow(vSql,  z1)[1]
-                    sSql += self.getWhere('', dicUser, 2,'li.')
-                    
-                    self.writeLog('start tax vat stats inner cycle ' + `z1`)
-                    tmpResult [vSql['id'] +'_' + `z1`] =   self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)
-                    AllOrderIDs.append(tmpResult)
-        #sSql = sSql[0:len(sSql)-2]
-            #print "len sql = ",  len(sSql)
-        self.writeLog('orderstat1 = ' + `AllOrderIDs`)
-        dicOrder = {}
+        
+        sSql = " select * from fct_getStatTaxVat() as (id int, vat_value float , vat_name varchar(20), vat_designation varchar(60), tax_vatSum numeric, sum_price_netto numeric, z1 int) "
+        
+        res1 = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser)
+        #print 'Data from sql = ' ,  res1
         result = {}
-        for dicMonth in AllOrderIDs:
-            self.writeLog('orderstat2 (dicMonth) = ' + `dicMonth`)
-            for key in dicTaxVat:
-                
-                dicTaxVat[key]['sum_price_netto'] = 0
-                dicTaxVat[key]['tax_vatSum'] = 0
-            for keyOrder in dicMonth.keys():
-                self.writeLog('orderstat3 (keyOrder) = ' + `keyOrder`)
-                if dicMonth[keyOrder] not in ['ERROR']:
-                    for oneOrder in dicMonth[keyOrder]:
-                        if oneOrder not in ['ERROR'] :
-                            print dicMonth
-                            print dicOrder
-                            print oneOrder
-                            
-                            dicOrder['orderid'] = oneOrder['li_orderid']
-                            liPositions = self.xmlrpc_getStandardInvoice(dicOrder, dicUser)
-                            for position in liPositions:
-                                if dicTaxVat.has_key(position['MWST_ID']):
-                                    dicTaxVat[position['MWST_ID']]['sum_price_netto'] += position['end_price_netto'] * position['amount']
-                                    dicTaxVat[position['MWST_ID']]['tax_vatSum'] += position['end_price_netto'] * position['amount'] * position['MWST_VALUE'] /100
-                                    dicTaxVat[position['MWST_ID']]['z1'] = oneOrder['z1']
-            self.writeLog('dicTaxVat = ' + `dicTaxVat`) 
-            print 'complete = ',  `dicTaxVat`
-            for key in dicTaxVat.keys():
-                print key
-                print `dicTaxVat[key]`
-                print 'z1',  dicTaxVat[key]['z1']
-                print 'tvSum', dicTaxVat[key]['tax_vatSum']
-                
-                result['TaxVat_month_tax_vatSum_taxvatID_' + `key` + '_taxvatMonth_' + `dicTaxVat[key]['z1']`] =  dicTaxVat[key]['tax_vatSum']     
-                result['TaxVat_month_tax_vatValue_taxvatID_' + `key` + '_taxvatMonth_' + `dicTaxVat[key]['z1']`] =  dicTaxVat[key]['vat_value']               
-                result['TaxVat_month_tax_vatName_taxvatID_' + `key` + '_taxvatMonth_' + `dicTaxVat[key]['z1']`] =  dicTaxVat[key]['vat_name']               
-                    
-#            for key in dicTaxVat.keys():
-#                result.append
-#                
-#        self.writeLog(sSql)
-#            
+        for row in res1:
+         
+            #print row['id'],  row['z1'], row['tax_vatsum'], row['vat_value'] , row['vat_name']   
+            result['TaxVat_month_tax_vatSum_taxvatID_' + `row['id']` + '_taxvatMonth_' + `row['z1']`] =  float(row['tax_vatsum'] )
+            result['TaxVat_month_tax_vatValue_taxvatID_' + `row['id']` + '_taxvatMonth_' + `row['z1']`] =  row['vat_value']               
+            result['TaxVat_month_tax_vatName_taxvatID_' + `row['id']` + '_taxvatMonth_' + `row['z1']`] =    row['vat_name']         
+            result['TaxVat_month_tax_NetSum_taxvatID_' + `row['id']` + '_taxvatMonth_' + `row['z1']`] =  float(row['sum_price_netto'] )
+          
         
         
-        self.writeLog('STATS-RESULT = ' + `result`)
+        #self.writeLog('STATS-RESULT = ' + `result`)
         
                 
         return result

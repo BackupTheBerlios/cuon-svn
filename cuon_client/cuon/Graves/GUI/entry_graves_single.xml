@@ -80,6 +80,16 @@
       <bg_color>0</bg_color>
       <fg_color>0</fg_color>
     </entry>
-   
+  <entry>
+      <name>cbAutomaticPriceUnique</name>
+      <type>checkbox</type>
+      <size>1</size>
+      <verify_type>int</verify_type>
+      <create_sql>1</create_sql>
+      <sql_field>automatic_price</sql_field>
+      <duty>NO</duty>
+      <bg_color>0</bg_color>
+      <fg_color>0</fg_color>
+    </entry>   
        </table>
 </entries_for_table>

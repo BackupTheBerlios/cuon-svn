@@ -1420,7 +1420,19 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             addressid = self.singleGrave.getAddressID(self.singleGrave.ID)
             if addressid > 0:
                 Dms = cuon.DMS.dms.dmswindow(self.allTables, self.MN['Address'], {'1':addressid})
-       
+    
+    
+    
+    def  on_CreateSingleInvoice_activate(self,  event):
+        if self.tabOption == self.tabGraveMaintenance:
+            print 'create Single Invoice'
+            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, 'Service',  self.singleGraveMaintenance.ID )
+            print 'newOrderNumber = ',  newOrderNumber
+           
+    def on_CreateAllInvoices_activate(self,  event):
+        pass
+   
+   
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()

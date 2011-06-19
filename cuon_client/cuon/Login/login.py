@@ -132,6 +132,8 @@ class loginwindow(windows):
         #print self.oUser.getUserName(), sPw
         sid = self.rpc.callRP('Database.createSessionID', self.oUser.getUserName(), m.hexdigest())
         print "Session-ID0 = ", `sid`
+        if not sid:
+            sid = self.rpc.callRP('Database.createSessionID', self.oUser.getUserName(), sPw)
         if sid:
             print "Session-ID1 = ", `sid`
             

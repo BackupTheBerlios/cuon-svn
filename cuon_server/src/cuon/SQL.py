@@ -64,7 +64,8 @@ class SQL(xmlrpc.XMLRPC, basics):
                 #conn = pg.connect(dbname = 'cuon',host = self.POSTGRES_HOST, user = sUser)
                 #curs.execute(cSql.decode('utf-8'))
                 #conn = libpq.PQconnectdb(dbname='cuon',host = 'localhost', user = sUser)
-                print "conn = ",  conn
+                #print "conn = ",  conn
+                self.writeLog('conn for session  = ' + `conn`)
                 try:
                                            
                     rows = conn.query(cSql.encode('utf-8'))

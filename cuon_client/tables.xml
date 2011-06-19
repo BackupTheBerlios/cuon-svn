@@ -1737,7 +1737,7 @@
      <field>
       <name>articles_notes</name>
       <type>text</type>
-      <pkey>0</pkey>
+      <pkey>0</pkey>articles
       <unique>0</unique>
       <notnull>0</notnull>
       <size>0</size>
