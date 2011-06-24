@@ -18,6 +18,8 @@ class Database(xmlrpc.XMLRPC, SQL):
         basics.__init__(self)
         SQL.__init__(self)
         
+        
+        
     def xmlrpc_is_running(self):
         print 'is running 42'
         return 42
@@ -727,3 +729,55 @@ class Database(xmlrpc.XMLRPC, SQL):
     def xmlrpc_getDIC_USER(self):
         return self.DIC_USER
         
+    def writeConfigFiles2Database(self):
+        print '-------------------------------------------------------------------------- start write config2SQL'
+        
+        cParser = ConfigParser()
+        cParser.read(self.CUON_FS + '/user.cfg')
+        try:
+            sP = cParser.get('password',self.POSTGRES_USER)
+            print sP
+            sID = self.xmlrpc_createSessionID(self.POSTGRES_USER, sP)
+                
+        
+            dicUser = {'Name': self.POSTGRES_USER, 'SessionID':sID, 'userType':'cuon' }
+            print '2-------------------------------------------------------------------------- start write config2SQL ',  dicUser
+            
+            
+                        
+                        
+           #clients
+            sSql = "select id from clients where status != 'delete'"
+            result = self.xmlrpc_executeNormalQuery(sSql, dicUser )
+            print '3-------------------------------------------------------------------------- start write config2SQL ',  sSql,  result
+
+            if result and result not in self.liSQL_ERRORS:
+                for row  in result:
+                    client_id = row["id"]
+                    cpSection = "CLIENT_" + `client_id`
+                    cParser = ConfigParser()
+                    cParser.read(self.CUON_FS + '/clients.ini')
+                    print '4-------------------------------------------------------------------------- start write config2SQL'
+
+                    if cParser. has_section(cpSection):
+                        print cParser.options(cpSection)
+                        for sOptions in self.liClientsOptions:
+                            print '5-------------------------------------------------------------------------- start write config2SQL ',  cpSection,  sOptions
+
+                            sValue = self.getConfigOption(cpSection, sOptions,  cParser)
+                            if sValue:
+                                print '6-------------------------------------------------------------------------- start write config2SQL ', cpSection, sOptions, sValue
+                                sSql = "select * from fct_write_config_value(" + `client_id` + ", '" + 'clients.ini' + "', '" + cpSection + "', '" + sOptions + "', '" + sValue + "' ) "
+                                print sSql
+                                self.xmlrpc_executeNormalQuery(sSql, dicUser)
+                                
+            sSql =  "select * from fct_get_config_option(1,'clients.ini', 'client_1', 'order_main_headline_articles_id') "
+            print sSql
+            result = self.xmlrpc_executeNormalQuery(sSql, dicUser)
+            print result 
+                           
+                          
+                         
+        except Exception,  params:
+            print Exception,  params
+            

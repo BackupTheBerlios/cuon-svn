@@ -255,17 +255,19 @@ class Grave(xmlrpc.XMLRPC, basics):
         defaultOrderDesignation  = ''
         oOrder = Order.Order()
         
-        oOrder.checkDefaultOrder(self,  dicUser,  id) 
+        #oOrder.checkDefaultOrder(dicUser,  id) 
         sSql = "select * from fct_createNewInvoice('" + sService + "' , " + `serviceID` + "  ) as order_id "
         
         newOrderID = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )[0] ['order_id']
         
         
         if newOrderID > 0:
-            dicValues,  sSave  = self.checkDefaultOrder(dicUser,  newOrderID)
+            dicValues,  sSave  = oOrder.checkDefaultOrder(dicUser,  newOrderID)
             if sSave:
                 dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
                     
-                    
+            sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + "  ) as bOK "
+            self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
+            
         return newOrderID
         

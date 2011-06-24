@@ -385,3 +385,43 @@ CREATE OR REPLACE  FUNCTION fct_add_months(date, integer) RETURNS DATE AS '
     ' LANGUAGE 'plpgsql';
     
     
+   
+CREATE OR REPLACE  FUNCTION fct_write_config_value( iClientID int, sFile varchar(200), cpSection varchar(250), sOptions  varchar(250), sValue text) RETURNS boolean AS ' 
+    DECLARE 
+     r1 record ;
+     ok boolean ;
+    BEGIN 
+        ok = true ;
+        select into r1  key_id  from cuon_config where client_id = iClientID and config_file = sFile   and  section = cpSection and  option = sOptions ;
+        IF r1.key_id IS NULL THEN 
+            insert into cuon_config (client_id, config_file , section , option, value ) values (iClientID, sFile,cpSection,sOptions, sValue );
+        ELSE
+            update cuon_config set client_id = iClientID, config_file = sFile, section = cpSection, option = sOptions,value = sValue  where key_id = r1.key_id ;
+            
+        END IF ;
+        return ok ;
+
+    END; 
+
+    
+    ' LANGUAGE 'plpgsql';
+  
+  
+  
+CREATE OR REPLACE  FUNCTION   fct_get_config_option(iClientID int,sFile varchar(200), cpSection varchar(250), sOptions  varchar(250 ) )RETURNS text AS ' 
+    DECLARE 
+     r1 record ;
+     svalue text ;
+     ok boolean ;
+     sSql text ;
+    BEGIN 
+        sSql := ''select value from cuon_config where client_id = '' || iClientID || '' and config_file = ''  || quote_literal(sFile) || ''  and  section = '' || quote_literal(cpSection) || '' and  option = '' || quote_literal(sOptions )  ;
+        raise notice '' sSql = %'', sSql ;
+        execute(sSql) into svalue ;
+        
+        return svalue ;
+
+    END; 
+
+    
+    ' LANGUAGE 'plpgsql';

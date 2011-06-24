@@ -241,7 +241,7 @@
 
   <table>
     <nameOfTable>cuon_clients</nameOfTable>
-    <specials>inherits (t_standard);</specials>
+    <specials>inherits (t_standard);</specials>["sendNotes0"]
     <x>152</x>
     <y>115</y>
     <field>
@@ -275,6 +275,82 @@
       <comment />
     </field>
 </table>
+
+  <!--table: cuon_config-->
+
+  <table>
+    <nameOfTable>cuon_config</nameOfTable>
+    
+    <x>152</x>
+    <y>115</y>
+    
+    <field>
+      <name>client_id</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+    
+    <field>
+      <name>config_file</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>200</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>section</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    
+    <field>
+      <name>option</name>
+      <type>varchar</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>250</size>
+      <default />
+      <comment />
+    </field>
+    
+      <field>
+      <name>value</name>
+      <type>text</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>5000</size>
+      <default />
+      <comment />
+    </field>
+     <field>
+      <name>key_id</name>
+      <type>serial</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>1</notnull>
+      <size>0</size>
+      <default />
+      <comment />
+    </field>
+</table>
+
+
 <!--table: account_plan-->
   <table>
     <nameOfTable>account_plan</nameOfTable>
@@ -2478,6 +2554,26 @@
      <field>
       <name>discount_value</name>
       <type>float</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+      <field>
+      <name>from_modul</name>
+      <type>int</type>
+      <pkey>0</pkey>
+      <unique>0</unique>
+      <notnull>0</notnull>
+      <size>0</size>
+      <default>0</default>
+      <comment />
+    </field>
+        <field>
+      <name>from_modul_id</name>
+      <type>int</type>
       <pkey>0</pkey>
       <unique>0</unique>
       <notnull>0</notnull>

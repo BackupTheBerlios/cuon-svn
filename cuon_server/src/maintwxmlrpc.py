@@ -83,6 +83,7 @@ class ServerData:
         r = cuon.CuonFuncs.CuonFuncs()
         oWeb = cuon.Web.Web()
         oDatabase = cuon.Database.Database()
+        oDatabase.writeConfigFiles2Database()
         oUser = cuon.User.User()
         oStock = cuon.Stock.Stock()
         oAI = cuon.AI.AI()

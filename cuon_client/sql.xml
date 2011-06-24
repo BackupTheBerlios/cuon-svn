@@ -699,6 +699,16 @@
       <description>new orderposition </description>
       
     </trigger>
+     <trigger>
+      <nameOfTrigger>trg_newOrderposition</nameOfTrigger>
+      <table>orderposition</table>
+      <action>before insert </action>
+      <cursor>FOR EACH ROW</cursor>
+      <textOfTrigger>EXECUTE PROCEDURE fct_insert () ;  </textOfTrigger>
+      <description>new orderposition </description>
+      
+    </trigger>
+    
    <trigger>
       <nameOfTrigger>trg_insertStockGoods</nameOfTrigger>
       <table>stock_goods</table>
