@@ -415,6 +415,7 @@ CREATE OR REPLACE  FUNCTION   fct_get_config_option(iClientID int,sFile varchar(
      ok boolean ;
      sSql text ;
     BEGIN 
+     raise notice '' config options = % , %, %, %'', iClientID, sFile,cpSection,sOptions ;
         sSql := ''select value from cuon_config where client_id = '' || iClientID || '' and config_file = ''  || quote_literal(sFile) || ''  and  section = '' || quote_literal(cpSection) || '' and  option = '' || quote_literal(sOptions )  ;
         raise notice '' sSql = %'', sSql ;
         execute(sSql) into svalue ;

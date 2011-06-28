@@ -249,25 +249,26 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         return result1,  result2
         
-    def xmlrpc_createNewInvoice(self,  dicUser,  sService,  serviceID):
-        print 'new Invoice = ', sService,  serviceID 
+    def xmlrpc_createNewInvoice(self,  dicUser,  liService,  serviceID):
+        print 'new Invoice = ', liService,  serviceID 
         defaultOrderNumber = ''
         defaultOrderDesignation  = ''
         oOrder = Order.Order()
         
         #oOrder.checkDefaultOrder(dicUser,  id) 
-        sSql = "select * from fct_createNewInvoice('" + sService + "' , " + `serviceID` + "  ) as order_id "
+        sSql = "select * from fct_createNewInvoice('" + liService[0] + "' , " + `serviceID` + "  ) as order_id "
         
         newOrderID = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )[0] ['order_id']
         
         
         if newOrderID > 0:
-            dicValues,  sSave  = oOrder.checkDefaultOrder(dicUser,  newOrderID)
-            if sSave:
-                dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
-                    
-            sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + "  ) as bOK "
-            self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
+            for sService in liService:
+                dicValues,  sSave  = oOrder.checkDefaultOrder(dicUser,  newOrderID)
+                if sSave:
+                    dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
+                        
+                sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + "  ) as bOK "
+                self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
             
         return newOrderID
         

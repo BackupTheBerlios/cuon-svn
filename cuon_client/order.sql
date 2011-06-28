@@ -50,7 +50,9 @@ CREATE OR REPLACE FUNCTION fct_getOrderTotalSum(  iOrderid int) returns float AS
         if fTaxVat IS NULL then 
             fTaxVat:= 0.00;
         END IF;
-
+        if fPrice IS NULL then
+            fPrice := 0.0 ;
+        end if ;
         fTaxVat := fct_get_taxvat_for_article(iArticleID);
         
         -- now search for brutto/netto

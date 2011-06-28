@@ -1424,15 +1424,66 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     
     
     def  on_CreateSingleInvoice_activate(self,  event):
-        if self.tabOption == self.tabGraveMaintenance:
+        if self.tabOption == self.tabGrave:
+            self.getWidget('chooseInvoices').show()
+            
+            
+        elif self.tabOption == self.tabGraveMaintenance:
             print 'create Single Invoice'
-            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, 'Service',  self.singleGraveMaintenance.ID )
+            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, ['Service'],  self.singleGraveMaintenance.ID )
             print 'newOrderNumber = ',  newOrderNumber
+            
+            
            
     def on_CreateAllInvoices_activate(self,  event):
         pass
    
-   
+    def on_bCIOK_clicked(self, event):
+        liInvoices = []
+        
+        if  self.getWidget('chService').get_active() :
+            liInvoices.append('Service')
+        if  self.getWidget('chSpring').get_active() :
+            liInvoices.append('Spring')
+        if  self.getWidget('chSummer').get_active() :
+            liInvoices.append('Summer')
+        if  self.getWidget('chAutumn').get_active() :
+            liInvoices.append('Autumn')
+        if  self.getWidget('chWinter').get_active() :
+            liInvoices.append('Winter')
+        if  self.getWidget('chHolliday').get_active() :
+            liInvoices.append('Holliday')
+        if  self.getWidget('chUnique').get_active() :
+            liInvoices.append('Unique')
+        if  self.getWidget('chYearly').get_active() :
+            liInvoices.append('Yearly')
+        if  self.getWidget('chAllTogether').get_active() :
+            liInvoices = [] 
+            liInvoices.append('Service')
+            liInvoices.append('Spring')
+            liInvoices.append('Summer')
+            liInvoices.append('Autumn')
+            liInvoices.append('Winter')
+            liInvoices.append('Holliday')
+            liInvoices.append('Unique')
+            liInvoices.append('Yearly')
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        print 'create Single Invoice',  liInvoices
+        newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, liInvoices,  self.singleGrave.ID )
+        print 'newOrderNumber = ',  newOrderNumber
+            
+            
+        self.getWidget('chooseInvoices').hide()
+        
+    def on_bCICancel_clicked(self, event):
+        self.getWidget('chooseInvoices').hide()   
+        
     def refreshTree(self):
         self.singleGrave.disconnectTree()
         self.singleGraveMaintenance.disconnectTree()

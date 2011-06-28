@@ -287,7 +287,6 @@ CREATE OR REPLACE FUNCTION fct_loadGraveServiceNote(iGraveID int, iGraveServiceI
      ' LANGUAGE 'plpgsql'; 
 
      
-   
 CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iServiceID int ) returns int AS '
  DECLARE
     
@@ -302,16 +301,19 @@ CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iServiceID int )
     BEGIN
     
         iClient = fct_getUserDataClient(  ) ;
+         raise notice '' Client Number = %'',iClient ;
         grave_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_main_headline_articles_id'') ;
+        
+        
         select into iNewOrderID nextval(''orderbook_id'' ) ;
     
         raise notice '' new OrderNumber = %'', iNewOrderID ;
         
-        sSql := '' select grave.*, graveyard.shortname as graveyard_shortname from grave, '' ;
+        sSql := '' select grave.*, graveyard.shortname as graveyard_shortname from grave, graveyard '' ;
         
         if sService = ''Service'' then
          
-            sSql = sSql || ''grave_work_maintenance as gm '' ;
+            sSql = sSql || '', grave_work_maintenance as gm '' ;
         end if ;
         
         sSql := sSql || '' where graveyard.id = grave.graveyardid and grave.id = gm.grave_id and gm.id = '' || iServiceID || '' ''  || fct_getWhere(2,''grave.'') ;
@@ -333,12 +335,13 @@ CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iServiceID int )
             last_position = 0 ;
         end if ;
         
-        grave_headline_designation := r1.lastname || '', '' || r1.detachment || '',  '' || r1.graveyard_shortname ;
+        grave_headline_designation := r1.lastname || '', Nr: '' || r1.detachment || '',  '' || r1.graveyard_shortname ;
          last_position := last_position + 1 ;
          
          
-           sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
-            sSql := sSql ||  iNewOrderID || '', '' || grave_headline ||  '', '''''' || grave_headline_designation || '''''', '' || 1   || '', '' || last_position  || '' ) '' ;
+        sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+        sSql := sSql ||  iNewOrderID || '', '' || grave_headline ||  '', '' || quote_literal(grave_headline_designation) || '', '' || 1   || '', '' || last_position  || '' ) '' ;
+        raise notice ''SQL for headline %'' , sSql ;
           execute (sSql) ;  
         
         return iNewOrderID;
@@ -351,7 +354,9 @@ CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iServiceID int )
 
      
       
-   
+  
+ 
+ 
 CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID int ) returns boolean AS '
  DECLARE
   
@@ -360,6 +365,7 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
     sSql2 text ;
     sSql3 text ;
     sSql4 text ;
+    sSql5 text ;
     r1 record ;
     r2 record ;
     ok boolean ;
@@ -370,7 +376,10 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
      
     BEGIN
         ok := true ;
-        
+         iClient = fct_getUserDataClient(  ) ;
+         raise notice '' Client Number = %'',iClient ;
+         
+         
         sSql := ''select  from_modul_id from orderbook where id = '' || iNewOrderID  ;
         raise notice '' fetch grave id sSql = % '', sSql ;
         
@@ -382,9 +391,13 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
           
         if sService = ''Service'' then
            article_headline = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_service_headline_articles_id'') ;
+            raise notice '' article headline = %'', article_headline ;
+            
            IF article_headline IS NOT NULL THEN 
                sSql4 := ''select designation from articles where id = '' || article_headline ;
+               
                execute(sSql4) into article_headline_designation ;
+               
             END IF ;
             
             sSql := sSql || ''grave_work_maintenance as gm '' ;
@@ -399,24 +412,29 @@ CREATE OR REPLACE FUNCTION fct_addPositionToInvoice(sService text , iNewOrderID 
         raise notice '' fetch positions  sSql = % '', sSql ;
         
         select into last_position max(position) from orderposition where orderid = iNewOrderID ;
+        
         if last_position IS NULL then 
             last_position = 0 ;
         end if ;
          last_position := last_position + 1 ;
-           sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
-            sSql := sSql ||  iNewOrderID || '', '' || article_headline ||  '', '''''' || article_headline_designation || '''''', '' || 1   || '', '' || last_position  || '' ) '' ;
-          execute (sSql) ;  
+         
+           sSql5 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+            sSql5 := sSql5 ||  iNewOrderID || '', '' || article_headline ||  '', '''''' || article_headline_designation || '''''', '' || 1   || '', '' || last_position  || '' ) '' ;
+          execute (sSql5) ;  
+          
+          
+        raise notice '' look at r1 for position   sSql = % '', sSql ;
         FOR r1 in execute(sSql)  LOOP
             if r1.created_order is null then
                 r1.created_order = 0 ;
             end if ;
             if r1.created_order = 0 then
                 last_position := last_position + 1 ;
-                sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position , price ) values (  (select nextval(''''orderposition_id'''') ) , '' ;
-                sSql := sSql ||  iNewOrderID || '', '' || r1.article_id ||  '', '''''' || r1.service_designation || '''''', '' || r1.service_count   || '', '' || last_position ;
-                sSql := sSql || '', '' || r1.service_price || '' ) '' ;
-                raise notice '' insert position sSql = % '', sSql ;
-                execute (sSql) ;
+                sSql4 := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position , price ) values (  (select nextval(''''orderposition_id'''') ) , '' ;
+                sSql4 := sSql4 ||  iNewOrderID || '', '' || r1.article_id ||  '', '''''' || '''' || '''''', '' || r1.service_count   || '', '' || last_position ;
+                sSql4 := sSql4 || '', '' || r1.service_price || '' ) '' ;
+                raise notice '' insert position sSql4 = % '', sSql4 ;
+                execute (sSql4) ;
                 sSql3 := sSql2 || r1.id ;
                 raise notice '' update = % '', sSql3 ;
                 execute(sSql3);
