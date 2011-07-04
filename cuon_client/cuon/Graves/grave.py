@@ -1257,13 +1257,14 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     def on_bQuickAppend_clicked(self, event):
         print "bQuickappend activated"
         self.AutoInsert = False
+       # Modul,iModulID,   iArticleID,  dicUser)
         if self.tabOption == self.tabGraveMaintenance:
             self.activateClick('MaintenanceNew1')
             self.AutoInsert = True 
             #self.getWidget('eSpringArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eServiceCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eServicePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eServicePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice', 'grave', self.singleGrave.ID,  self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eServiceArticleID').set_text(`self.fillArticlesNewID`)
         elif self.tabOption == self.tabGraveSpring:
             self.activateClick('SpringNew1')
@@ -1271,7 +1272,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eSpringArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eSpringCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eSpringPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eSpringPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice','grave', self.singleGrave.ID,   self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSpringArticleID').set_text(`self.fillArticlesNewID`)
         elif self.tabOption == self.tabGraveSummer:
             self.activateClick('SummerNew1')
@@ -1279,7 +1280,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eSummerArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eSummerCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eSummerPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eSummerPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice','grave', self.singleGrave.ID,   self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eSummerArticleID').set_text(`self.fillArticlesNewID`)
 
         elif self.tabOption == self.tabGraveAutumn:
@@ -1288,7 +1289,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eAutumnArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eAutumnCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eAutumnPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice', 'grave', self.singleGrave.ID,  self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eAutumnArticleID').set_text(`self.fillArticlesNewID`)
 
         elif self.tabOption == self.tabGraveHollidays:
@@ -1297,7 +1298,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eWinterArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eHolidaysCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eHolidaysPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice', 'grave', self.singleGrave.ID,  self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eHolidaysArticleID').set_text(`self.fillArticlesNewID`)
 
         elif self.tabOption == self.tabGraveWinter:
@@ -1306,7 +1307,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eWinterArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eWinterCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eWinterPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eWinterPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice', 'grave', self.singleGrave.ID,  self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eWinterArticleID').set_text(`self.fillArticlesNewID`)
 
         elif self.tabOption == self.tabGraveUnique:
@@ -1315,7 +1316,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eWinterArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eUniqueCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eUniquePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eUniquePrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice',  'grave', self.singleGrave.ID, self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eUniqueArticleID').set_text(`self.fillArticlesNewID`)
 
         elif self.tabOption == self.tabGraveAnnual:
@@ -1324,7 +1325,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             #self.getWidget('eWinterArticleID').set_text(' ')
             print "article ID = " ,  self.fillArticlesNewID
             self.getWidget('eAnnualCounts').set_text(self.getCheckedValue('1.00', 'toStringFloat') )
-            self.getWidget('eAnnualPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getArticlePrice', self.fillArticlesNewID,self.dicUser),'toStringFloat'))
+            self.getWidget('eAnnualPrice').set_text(self.getCheckedValue(self.rpc.callRP('Article.getPrice',  'grave', self.singleGrave.ID,  self.fillArticlesNewID,self.dicUser),'toStringFloat'))
             self.getWidget('eAnnualArticleID').set_text(`self.fillArticlesNewID`)
 
             #
@@ -1430,7 +1431,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
         elif self.tabOption == self.tabGraveMaintenance:
             print 'create Single Invoice'
-            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, ['Service'],  self.singleGraveMaintenance.ID )
+            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, ['Service'],  self.singleGrave.ID )
             print 'newOrderNumber = ',  newOrderNumber
             
             

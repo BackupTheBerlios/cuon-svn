@@ -408,7 +408,7 @@ class Article(xmlrpc.XMLRPC, basics):
 
         return dicResult
         
-    def xmlrpc_getArticlePrice(self, id, dicUser):
+    def xmlrpc_getArticlePrice(self, id, dicUser,  sModul = 'grave',  iModulID = 0):
         price = '0.00'
         sSql = "select sellingprice1 from articles where id = " + `id`
         liResult = self.oDatabase.xmlrpc_executeNormalQuery(sSql,dicUser)

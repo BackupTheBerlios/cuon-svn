@@ -249,26 +249,39 @@ class Grave(xmlrpc.XMLRPC, basics):
         
         return result1,  result2
         
-    def xmlrpc_createNewInvoice(self,  dicUser,  liService,  serviceID):
-        print 'new Invoice = ', liService,  serviceID 
+    def xmlrpc_createNewInvoice(self,  dicUser,  liService,  graveID):
+        print 'new Invoice = ', liService,  graveID 
         defaultOrderNumber = ''
         defaultOrderDesignation  = ''
         oOrder = Order.Order()
         
         #oOrder.checkDefaultOrder(dicUser,  id) 
-        sSql = "select * from fct_createNewInvoice('" + liService[0] + "' , " + `serviceID` + "  ) as order_id "
+        sSql = "select * from fct_createNewInvoice('" + liService[0] + "' , " + `graveID` + "  ) as order_id "
         
-        newOrderID = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )[0] ['order_id']
+        allInvoices = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )
         
-        
-        if newOrderID > 0:
-            for sService in liService:
-                dicValues,  sSave  = oOrder.checkDefaultOrder(dicUser,  newOrderID)
-                if sSave:
-                    dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
+        for i in range(len(allInvoices)):
+            newOrderID = allInvoices[i]['order_id']
+            if newOrderID > 0:
+                
+                for sService in liService:
+                    dicValues,  sSave  = oOrder.checkDefaultOrder(dicUser,  newOrderID)
+                    if sSave:
+                        dR4 = self.oDatabase.xmlrpc_saveRecord('orderbook', newOrderID, dicValues, dicUser, 'NO')
+                    
+                    if i == len(allInvoices):
                         
-                sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + "  ) as bOK "
-                self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
-            
+                        sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + ",1  ) as bOK "
+                    else:
+                        sSql = "select * from fct_addPositionToInvoice('" + sService + "' , " + `newOrderID` + " ,0 ) as bOK "
+                        
+                    self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
+        
+        
+        # Now mark it as done 
+        sSql = " update grave set created_order = 1 where id = " + `graveID` ;
+        self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser ) 
+        
+        
         return newOrderID
         

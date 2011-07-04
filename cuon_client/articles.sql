@@ -1,4 +1,4 @@
- 
+
 
 CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModulID integer, iArticleID integer) returns  float AS '
  
@@ -12,17 +12,19 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
     BEGIN 
         fPrice := 0.00 ;
            IF sModul = ''grave'' THEN
-                select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from grave where grave.id = iModulID ;
+               sSql := '' select pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from grave where grave.id = '' || iModulID ;
             ELSEIF sModul = ''orderposition'' THEN
-                select into recData pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from orderbook where id = iModulID ;
+               sSql := '' select pricegroup1, pricegroup2,pricegroup3,pricegroup4,pricegroup_none from orderbook where id = '' || iModulID ;
+               
             END IF ;
-           
+            execute(sSql) into recData ;
+            
             if recData.pricegroup1 IS NULL then
                 pricegroupID :=5 ;
             ELSEIF recData.pricegroup1 = TRUE THEN 
                 pricegroupID :=1 ;
             ELSEIF recData.pricegroup2 = TRUE THEN 
-                recData.pricegroupID :=2 ;
+                pricegroupID :=2 ;
             ELSEIF recData.pricegroup3 = TRUE THEN 
                 pricegroupID :=3 ;
             ELSEIF recData.pricegroup4 = TRUE THEN 
@@ -33,7 +35,7 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
                 pricegroupID :=5 ;
             END IF ;
             
-            -- raise notice '' pricegroup id = % '',pricegroupID ;
+            raise notice '' pricegroup id = % '',pricegroupID ;
             
             
             
