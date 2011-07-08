@@ -116,8 +116,50 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="clear1">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Delete</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_clear1_activate"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem5">
                         <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="createGraveInvoices">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">create Grave Invoice</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu3">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkMenuItem" id="createGraveSingleInvoice">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">create Single Invoice</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuItem" id="createAllInvoices">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Create All Invoices</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="calcPrices">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Calc Prices</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_calcPrices_activate"/>
                       </object>
                     </child>
                     <child>
@@ -142,14 +184,6 @@
                     <child>
                       <object class="GtkSeparatorMenuItem" id="menuitem6">
                         <property name="visible">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="clear1">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Delete</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="on_clear1_activate"/>
                       </object>
                     </child>
                   </object>
@@ -238,17 +272,45 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="menuitem8">
-                        <property name="visible">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="MaintenanceClear1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Delete</property>
                         <property name="use_underline">True</property>
                         <accelerator key="d" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <signal name="activate" handler="on_MaintenanceClear1_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="menuitem8">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="InvoicesService">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Invoices</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu2">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateSingleInvoiceService">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Create Single Invoice</property>
+                                <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_CreateSingleInvoice_activate"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateAllInvoicesService">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Create All Invoices</property>
+                                <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_CreateAllInvoices_activate"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -287,16 +349,44 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separator1">
-                        <property name="visible">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="SpringClear1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Delete</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_SpringClear1_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separator1">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="Invoices">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Invoices</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu1">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateSingleInvoiceSpring">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">SingleInvoice</property>
+                                <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_CreateSingleInvoice_activate"/>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateAllInvoicesSpring">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Create All Invoices</property>
+                                <property name="use_underline">True</property>
+                                <signal name="activate" handler="on_CreateAllInvoices_activate"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -335,16 +425,42 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separator2">
-                        <property name="visible">True</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="SummerClear1">
                         <property name="visible">True</property>
                         <property name="label" translatable="yes">Delete</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="on_SummerClear1_activate"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separator2">
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuItem" id="CreateInvoicesSummer">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Invoices</property>
+                        <property name="use_underline">True</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="menu4">
+                            <property name="visible">True</property>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateSingleInvoiceSummer">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Create Single Invoice</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuItem" id="CreateAllInvoicesSummer">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">createAllInvoicessummer</property>
+                                <property name="use_underline">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -676,6 +792,32 @@
                 <property name="icon_name">accessories-text-editor</property>
                 <accelerator key="p" signal="clicked" modifiers="GDK_MOD1_MASK"/>
                 <signal name="clicked" handler="on_plant_lists_activate"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="tb_create_single_invoice">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Single Invoice</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-dnd</property>
+                <signal name="clicked" handler="on_CreateSingleInvoice_activate"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="tb_create_all_invoices">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">All Invoices</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-dnd-multiple</property>
+                <signal name="clicked" handler="on_CreateAllInvoices_activate"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -2716,6 +2858,22 @@ sind f&#xFC;r die Men&#xFC;punkte "Grab" und  "Rechnung" inaktiv.</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkCheckButton" id="cbAutomaticPriceService">
+                            <property name="label" translatable="yes">automat. Preisanpassung</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="active">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -3040,6 +3198,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceSpring">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -3382,6 +3553,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                                 <property name="position">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceSummer">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -3718,6 +3902,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceAutumn">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -4067,6 +4264,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                                 <property name="position">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceHolidays">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -4405,6 +4615,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceWinter">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -4810,6 +5033,19 @@ zus&#xE4;tzliche Artikelbeschreibung
                                 <property name="position">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceAnnual">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -5201,6 +5437,19 @@ TT.MM.JJJJ</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
+                            <child>
+                              <object class="GtkCheckButton" id="cbAutomaticPriceUnique">
+                                <property name="label" translatable="yes">automat. Preisanpassung</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -5514,5 +5763,221 @@ bestellter Strau&#xDF; zum Todestag oder eine Erdauff&#xFC;llung).</property>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkDialog" id="chooseInvoices">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Grabdaten zur Rechnungserstellung ausw&#xE4;hlen</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox3">
+        <property name="visible">True</property>
+        <property name="spacing">2</property>
+        <child>
+          <object class="GtkLabel" id="label2008">
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">bitte ausw&#xE4;hlen</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTable" id="table1">
+            <property name="visible">True</property>
+            <property name="n_rows">3</property>
+            <property name="n_columns">4</property>
+            <child>
+              <object class="GtkCheckButton" id="chService">
+                <property name="label" translatable="yes">Pflege</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chSpring">
+                <property name="label" translatable="yes">Fr&#xFC;hjahr</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0.52999997138977051</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chSummer">
+                <property name="label" translatable="yes">Sommer</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chAutumn">
+                <property name="label" translatable="yes">Herbst</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0.50999999046325684</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chWinter">
+                <property name="label" translatable="yes">Winter</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chHolliday">
+                <property name="label" translatable="yes">Gedenktage</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chUnique">
+                <property name="label" translatable="yes">einmalig</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chYearly">
+                <property name="label" translatable="yes">j&#xE4;hrlich</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="chAllTogether">
+                <property name="label" translatable="yes">Komplettrechnung</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="right_attach">3</property>
+                <property name="top_attach">2</property>
+                <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxEntry" id="cbChooseTypeOfPaid">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="right_attach">4</property>
+                <property name="x_options"></property>
+                <property name="y_options"></property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area3">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="bCancel">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bCICancel_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="bOK">
+                <property name="label" translatable="yes">O.K.</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_bCIOK_clicked"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">bCancel</action-widget>
+      <action-widget response="0">bOK</action-widget>
+    </action-widgets>
   </object>
 </interface>
