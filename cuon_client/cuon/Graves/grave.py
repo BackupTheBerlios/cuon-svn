@@ -40,6 +40,7 @@ import cuon.Addresses.addresses
 import cuon.Addresses.SingleAddress
 import cuon.PrefsFinance.prefsFinance
 import cuon.PrefsFinance.SinglePrefsFinanceTop
+import cuon.Misc.messages
 
 from cuon.Windows.chooseWindows  import chooseWindows
 import cPickle
@@ -67,7 +68,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.graveyardID = graveyardid
         self.graveID = graveid
         self.addressID = addressid
-        
+        self.pressedTypeOfInvoice = 0
         self.ModulNumber = self.MN['Grave']
         self.singleGrave = SingleGrave.SingleGrave(allTables)
         self.singleGraveMaintenance = SingleGraveMaintenance.SingleGraveMaintenance(allTables)
@@ -280,6 +281,17 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             cbFindTypeOfPaid.set_model(liststore)
             cbFindTypeOfPaid.set_text_column(0)
             cbFindTypeOfPaid.show()
+            
+        # same for choose paid 
+        
+        cbChooseTypeOfPaid = self.getWidget('cbChooseTypeOfPaid')
+        if cbChooseTypeOfPaid:
+            liststore = gtk.ListStore(str)
+            for TypeOfPaid in liTypeOfPaid:
+                liststore.append([TypeOfPaid])
+            cbChooseTypeOfPaid.set_model(liststore)
+            cbChooseTypeOfPaid.set_text_column(0)
+            cbChooseTypeOfPaid.show()
             
         cbPercent = self.getWidget('cbPercent')
         if cbPercent:
@@ -537,6 +549,16 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
         self.out( "delete grave v2")
         self.singleGrave.deleteRecord()
 
+
+    def on_calcPrices_activate(self,  event):
+        print 'calc all prices'
+        wMessage = cuon.Misc.messages.messages()
+        if wMessage.QuestionMsg('Would you really calc all Prices ???') == True:
+            bOK = self.rpc.callRP('Grave.calcAllPrices',self.dicUser )
+            print 'calc all prices = ',  bOK
+
+        else:
+            print 'cancel calc prices '
    #Menu Invoice Info
         
    
@@ -1425,6 +1447,7 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
     
     
     def  on_CreateSingleInvoice_activate(self,  event):
+        self.pressedTypeOfInvoice = 1
         if self.tabOption == self.tabGrave:
             self.getWidget('chooseInvoices').show()
             
@@ -1437,7 +1460,8 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             
            
     def on_CreateAllInvoices_activate(self,  event):
-        pass
+        self.pressedTypeOfInvoice = 2
+        self.getWidget('chooseInvoices').show()
    
     def on_bCIOK_clicked(self, event):
         liInvoices = []
@@ -1470,15 +1494,20 @@ class graveswindow(chooseWindows, ArticlesFastSelection):
             liInvoices.append('Yearly')
  
  
- 
+        
+        liValues = []
+        liValues.append(liInvoices)
+        liValues.append(self.getWidget('cbChooseTypeOfPaid').get_active())
  
  
  
  
         print 'create Single Invoice',  liInvoices
-        newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, liInvoices,  self.singleGrave.ID )
-        print 'newOrderNumber = ',  newOrderNumber
-            
+        if self.pressedTypeOfInvoice == 1:
+            newOrderNumber = self.rpc.callRP('Grave.createNewInvoice',self.dicUser, liValues,  self.singleGrave.ID )
+            print 'newOrderNumber = ',  newOrderNumber
+        elif self.pressedTypeOfInvoice == 2:
+            bOK = self.rpc.callRP('Grave.createAllNewInvoice',self.dicUser, liValues )
             
         self.getWidget('chooseInvoices').hide()
         

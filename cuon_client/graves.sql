@@ -294,8 +294,13 @@ CREATE OR REPLACE FUNCTION fct_createNewInvoice(sService text , iGraveID int ) r
      r0 record ;
     counter int ; 
      iDiscount float ;   
+    
+     
     BEGIN
-        counter = 1 ;
+        isPart := false ;
+        counter := 1 ;
+       
+            
          if counter = 1 then 
             sSql := '' select grave.id , grave.addressid,inv.address_id as partner_id ,inv.part, sum(inv.part) as sum_part from grave left join grave_invoice_info inv on  grave.id =  inv.grave_id where grave.id = '' || iGraveID || '' group by grave.id, grave.addressid, inv.address_id, inv.part ''  ;
             FOR r0 in execute(sSql)  LOOP
@@ -408,6 +413,17 @@ CREATE OR REPLACE FUNCTION fct_createSingleNewInvoice(sService text , iGraveID i
             last_position = 0 ;
         end if ;
         
+        
+        
+        if iDiscount > 0 THEN 
+             grave_part = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_part_id'') ;
+              last_position := last_position + 1 ;
+               sSql := ''insert into orderposition ( id, orderid , articleid , designation, amount  ,  position, price)  values (  (select nextval(''''orderposition_id'''') ) , '' ;
+        sSql := sSql ||  iNewOrderID || '', '' || grave_part ||  '', '' || quote_literal(iDiscount || ''%'') || '', '' || 1   || '', '' || last_position  || '', 0 ) '' ;
+        raise notice ''SQL for Discount %'' , sSql ;
+          execute (sSql) ; 
+        END IF ;
+             
         grave_headline_designation := r1.lastname || '', Nr: '' || r1.detachment || '' / '' || r1.grave_number || '',  '' || r1.graveyard_shortname ;
          last_position := last_position + 1 ;
          

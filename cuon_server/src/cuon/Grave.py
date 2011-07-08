@@ -248,8 +248,26 @@ class Grave(xmlrpc.XMLRPC, basics):
         #self.writeLog( 'result2 = ' + `result2`)
         
         return result1,  result2
+   
+    def xmlrpc_calcAllPrices(self,  dicUser):
+        bOK = False
         
-    def xmlrpc_createNewInvoice(self,  dicUser,  liService,  graveID):
+        
+        
+        return bOK 
+        
+        
+    def xmlrpc_createAllNewInvoice(self,  dicUser,  liValues):
+        print 'All Invoices',  liValues
+        bOK = False
+        
+        
+        return bOK
+        
+        
+    def xmlrpc_createNewInvoice(self,  dicUser,  liValues,  graveID):
+        print '1 new Invoice',  liValues
+        liService = liValues[0]
         print 'new Invoice = ', liService,  graveID 
         defaultOrderNumber = ''
         defaultOrderDesignation  = ''

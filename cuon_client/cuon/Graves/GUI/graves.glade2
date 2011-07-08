@@ -152,6 +152,23 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="calcPrices">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="label" translatable="yes">Calc Prices</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="on_calcPrices_activate" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem4">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_action_appearance">False</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkMenuItem" id="mi_lists">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -6719,7 +6736,7 @@ z.B. 1-5000)</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="n_rows">3</property>
-            <property name="n_columns">3</property>
+            <property name="n_columns">4</property>
             <child>
               <object class="GtkCheckButton" id="chService">
                 <property name="label" translatable="yes">Service</property>
@@ -6850,6 +6867,35 @@ z.B. 1-5000)</property>
                 <property name="right_attach">3</property>
                 <property name="top_attach">2</property>
                 <property name="bottom_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkComboBoxEntry" id="cbChooseTypeOfPaid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child internal-child="entry">
+                  <object class="GtkEntry" id="comboboxentry-entry1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="invisible_char">●</property>
+                    <property name="primary_icon_activatable">False</property>
+                    <property name="secondary_icon_activatable">False</property>
+                    <property name="primary_icon_sensitive">True</property>
+                    <property name="secondary_icon_sensitive">True</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="right_attach">4</property>
+                <property name="x_options"></property>
+                <property name="y_options"></property>
               </packing>
             </child>
           </object>
