@@ -666,14 +666,16 @@ class SingleData(gladeXml, logs):
                             # -1 don`t function -- proof later
                             widget.set_active(-1)
                     elif string.count(str(widget), "GtkCheckButton") > 0 :
-                        ##self.printOut( 'Bool-Value from Database', sValue)
-                        ##self.printOut( "GtkCheckButton ", entry.getName())
+                        print  'Bool-Value from Database', sValue
+                        print  "GtkCheckButton ", entry.getName()
                         bValue = False
                         try:
-                            if sValue == 1 or sValue == 't' or sValue == 'True':
+                            if sValue == '1' or sValue == 1 or sValue == 't' or sValue == 'True':
                                 bValue = True
-                        except:
-                            pass
+                                print 'GtkCheckButton set to ',  sValue,  bValue
+
+                        except Exception,  params:
+                            print Exception, params
                             
                         sValue = bValue
                         ##self.printOut( 'Widget set to ', sValue)
@@ -741,7 +743,7 @@ class SingleData(gladeXml, logs):
                         #print 'sValue at textview = ',  sValue
                     #elif string.count(str(widget), "GtkCombo") > 0:
                     elif string.count(str(widget), "GtkCheckButton") > 0:
-                        sValue = `widget.get_active()`
+                        sValue = 1 if `widget.get_active()` else 0 
                         print 'GtkCheckButton = ',  sValue
                         
                     elif string.count(str(widget), "GtkRadioButton") > 0:

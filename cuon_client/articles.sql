@@ -98,6 +98,53 @@ CREATE OR REPLACE FUNCTION fct_get_price_for_pricegroup(  sModul varchar, iModul
     ' LANGUAGE 'plpgsql'; 
 
     
+CREATE OR REPLACE FUNCTION fct_get_new_tax_vat_for_article_1(iArticleID int) returns float AS '
+ DECLARE
+    sSql text   ;
+     r0 record ;
+    iNewTaxVat int ;
+    sNewTaxVat text ;
+    iMGroup record ;
+    aMGroups int[] ;
+    aMGroupsString text[] ;
+    
+    sMGroups text ;
+    iMGroupsTaxVat int ;
+    iClient int ;
+    i int ;
+    fTaxVat float ;
+    
+    BEGIN
+        iNewTaxVat = -1;
+        fTaxVat := 0.00 ;
+        
+        iClient = fct_getUserDataClient(  ) ;
+        sMGroups = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_grave_materialgroups_for_tax_vat_1'') ;
+        sNewTaxVat = fct_get_config_option(iClient,''clients.ini'', ''CLIENT_'' || iClient, ''order_grave_materialgroups_new_tax_vat_id_1'') ;
+        
+        sSql := ''select articles.material_group  from articles where articles.id = '' || iArticleID  ;
+        execute(sSql) into r0 ;
+       
+        aMGroupsString =  string_to_array(sMGroups, '','') ; 
+        
+        IF r0.material_group IS NOT NULL THEN 
+            FOR i IN 1..array_length(aMGroupsString, 1) LOOP
+                IF r0.material_group = aMGroupsString[i]::INTEGER THEN 
+                    iNewTaxVat =sNewTaxVat::integer ;
+                END IF ;
+            END LOOP; 
+  
+        END IF ;
+    
+        IF iNewTaxVat > -1 THEN 
+            select into fTaxVat tax_vat_value from tax_vat where id = iNewTaxVat ;
+        END IF ;
+        
+        return fTaxVat ;
+    END ;
+    
+     ' LANGUAGE 'plpgsql'; 
+    
     
 CREATE OR REPLACE FUNCTION fct_get_taxvat_for_article( iArticleID integer) returns  float AS '
  

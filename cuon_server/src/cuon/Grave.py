@@ -251,7 +251,8 @@ class Grave(xmlrpc.XMLRPC, basics):
    
     def xmlrpc_calcAllPrices(self,  dicUser):
         bOK = False
-        
+        sSql = "select * from fct_calc_all_prices()"
+        bOK = self.oDatabase.xmlrpc_executeNormalQuery(sSql,  dicUser )
         
         
         return bOK 

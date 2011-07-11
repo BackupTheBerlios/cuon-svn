@@ -44,7 +44,7 @@ class basics(xmlrpc.XMLRPC):
         liClients = []
         self.liClientsOptionsMail = ["sendNotes0"]
         self.liClientsOptionsGrave = ["cbGraveService", "cbTypeOfGrave", "cbTypeOfPaying", "cbPercentsGrave", "cbGraveSpringPeriod",  "cbGraveAutumnPeriod",  "cbGraveWinterPeriod",  "cbGraveUniquePeriod", "cbGraveHollidayPeriod", "cbGraveYearlyPeriod", "cbGraveSorting", "cbGraveTypeOfTab"]
-        self.liClientsOptionsGraveHeadlines = ["order_main_headline_articles_id",  "order_service_headline_articles_id",  "order_spring_headline_articles_id", "order_summer_headline_articles_id", "order_autumn_headline_articles_id", "order_winter_headline_articles_id",  "order_holliday_headline_articles_id",  "order_Yearly_headline_articles_id",  "order_Unique_headline_articles_id", "order_part_id"]
+        self.liClientsOptionsGraveHeadlines = ["order_main_headline_articles_id",  "order_service_headline_articles_id",  "order_spring_headline_articles_id", "order_summer_headline_articles_id", "order_autumn_headline_articles_id", "order_winter_headline_articles_id",  "order_holliday_headline_articles_id",  "order_Yearly_headline_articles_id",  "order_Unique_headline_articles_id", "order_part_id", "order_grave_materialgroups_for_tax_vat_1","order_grave_materialgroups_new_tax_vat_id_1"  ]
 
         liClients.append(self.liClientsOptionsMail)
         liClients.append( self.liClientsOptionsGrave)
